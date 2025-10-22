@@ -1,0 +1,49 @@
+/* Prestige Noir + Liquid Gold — moldura */
+.frame {
+    position: relative;
+    isolation: isolate;
+    width: min(72rem, 96vw);
+    margin-inline: auto;
+    border-radius: 14px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 55%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12)),
+        var(--sl-navy-900);
+
+    box-shadow:
+        0 0 0 2px var(--sl-gold-500),
+        0 0 0 6px rgba(167, 116, 25, 0.35);
+}
+
+/* Imagem sem cortes */
+.image {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    margin-inline: auto;
+    filter: saturate(1.02) contrast(1.03);
+}
+
+/* Legenda */
+.caption {
+    position: absolute;
+    inset-block-end: .35rem;
+    inset-inline: .75rem;
+    z-index: 2;
+    font-family: var(--sl-ff-display, inherit);
+    font-size: clamp(0.7rem, 0.6rem + 0.5vw, 0.95rem);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .frame {
+        border-radius: 10px;
+    }
+}

@@ -7,67 +7,91 @@
     flex-direction: column;
     align-items: center;
 
-  
-
     /* Largura fluida e centrada */
     width: min(var(--sl-container-lg), 100%);
+    min-height: 100svh;
+    /* melhor em mobile moderno */
     min-height: 100dvh;
     margin-inline: auto;
 
-   
-    /* Fundo premium de marca (tema Prestige Noir) */
+ 
+    padding-block: clamp(1.5rem, 2vw, 2.5rem);
+ 
+
+    /* Fundo premium de marca (Prestige Noir) */
     background: var(--sl-bg-gradient);
     color: var(--sl-color-text);
 
-    /* Borda/shine muito subtil para profundidade */
+    /* Profundidade subtil */
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
     border-radius: 0;
     /* a página ocupa o viewport; módulos internos têm radius */
     isolation: isolate;
-    /* prepara para camadas ::before/::after */
+    /* prepara camadas ::before/::after */
 }
 
 /* Glow dourado muito subtil no fundo, afinado ao novo ouro */
 .page::before {
-   
+    content: "";
+    /* necessário para renderizar */
     position: absolute;
     z-index: var(--z-0, 0);
     inset: -10% -20% auto -20%;
     height: min(45vh, 520px);
-    background:
-        /* halo dourado leve */
-        radial-gradient(55% 60% at 60% 30%,
-            color-mix(in oklab, var(--sl-gold-400), transparent 68%),
-            transparent 70%),
-        /* variações de brilho com o navy profundo */
-        conic-gradient(from 220deg at 60% 30%,
-            color-mix(in oklab, var(--sl-gold-500), transparent 88%),
-            transparent 30%,
-            color-mix(in oklab, var(--sl-gold-400), transparent 90%) 60%,
-            transparent 90%);
-    filter: blur(42px);
     pointer-events: none;
+    filter: blur(42px);
+
+    /* Fallback quando color-mix não existe */
+    background:
+        radial-gradient(55% 60% at 60% 30%, rgba(199, 134, 21, 0.24), transparent 70%),
+        conic-gradient(from 220deg at 60% 30%, rgba(161, 98, 7, 0.12), transparent 30%, rgba(199, 134, 21, 0.10) 60%, transparent 90%);
 }
 
-/* Wrapper para as secções da página (inclui Overview + próximas 4) */
+/* Upgrade com color-mix (browsers que suportam) */
+@supports (background: color-mix(in oklab, white, black)) {
+    .page::before {
+        background:
+            radial-gradient(55% 60% at 60% 30%,
+                color-mix(in oklab, var(--sl-gold-400), transparent 68%),
+                transparent 70%),
+            conic-gradient(from 220deg at 60% 30%,
+                color-mix(in oklab, var(--sl-gold-500), transparent 88%),
+                transparent 30%,
+                color-mix(in oklab, var(--sl-gold-400), transparent 90%) 60%,
+                transparent 90%);
+    }
+}
+
+/* Wrapper para as secções da página (se preferires grid interno) */
 .sections {
     display: grid;
     gap: clamp(calc(var(--sl-baseline) * 1.25), 3vw, calc(var(--sl-baseline) * 2.25));
+    width: 100%;
 }
 
 /* Secção base */
 .section {
     width: 100%;
+    scroll-margin-top: 84px;
+    /* âncoras suaves quando houver header fixo */
 }
 
-/* Variante com superfície alternada (ligeira elevação) — usa escala --gray-* do tema */
+/* Variante com superfície alternada — usa tokens do tema */
 .sectionAlt {
     width: 100%;
-    background: linear-gradient(180deg, var(--gray-2), var(--gray-3));
-   
-    border-radius: var(--sl-radius-sm);
-    box-shadow: var(--sl-shadow-gold, 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35));
+    background: linear-gradient(180deg,
+            color-mix(in oklab, var(--sl-platinum-100), transparent 20%),
+            color-mix(in oklab, var(--sl-platinum-300), transparent 35%));
+    border-radius: var(--sl-radius-sm, 12px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 8px 24px rgba(0, 0, 0, .30);
     padding: clamp(1rem, 3vw, 2rem);
+}
+
+/* Fallback da sectionAlt para browsers sem color-mix */
+@supports not (background: color-mix(in oklab, white, black)) {
+    .sectionAlt {
+        background: linear-gradient(180deg, #e6e6e6, #d9d9d9);
+    }
 }
 
 /* Separador premium entre blocos longos (dourado suave) */
@@ -77,7 +101,7 @@
     border: 0;
     background: linear-gradient(90deg,
             transparent,
-            color-mix(in oklab, var(--sl-gold-400), transparent 70%),
+            rgba(199, 134, 21, 0.45),
             transparent);
     margin-block: clamp(0.75rem, 2vw, 1.5rem);
 }

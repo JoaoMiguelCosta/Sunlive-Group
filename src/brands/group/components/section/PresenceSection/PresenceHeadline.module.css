@@ -1,0 +1,47 @@
+.wrap {
+    position: relative;
+    /* necessário para o ::before */
+    isolation: isolate;
+    /* evita o glow “vazar” */
+    display: grid;
+    place-items: center;
+    padding: clamp(1.25rem, 1.5vw, 2rem) 0;
+
+    /* fundo base coerente */
+    background:
+        radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 55%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12)),
+        var(--sl-navy-900);
+}
+
+/* ⭐ brilho do hero full-bleed */
+.wrap::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    /* cobre toda a largura do viewport */
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+
+    background: var(--grad-hero, var(--sl-bg-gradient));
+    opacity: .85;
+    /* ajusta a intensidade */
+
+    /* suaviza as bordas da faixa */
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.img {
+    position: relative;
+    /* acima do ::before */
+    z-index: 1;
+    display: block;
+    width: min(50rem, 92vw);
+    height: auto;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .35));
+}

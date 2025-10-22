@@ -1,0 +1,75 @@
+/* Wrapper da PeopleSection — mantém coerência com OverviewSection */
+.section {
+    background:
+        radial-gradient(120% 90% at 50% -10%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 55%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12)),
+        var(--sl-navy-900);
+
+        
+            /* Stack vertical dos blocos (UtilityBar, BrandHero, etc.) */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        
+        
+            min-width: 0;
+            /* impede overflow por conteúdo interno */
+            overflow: clip;
+            /* protege contra halos/decorações futuras */
+        
+            /* Espaçamento fluido entre blocos */
+}
+
+.inner {
+    width: min(var(--sl-container-lg, 90rem), 96vw);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== NOVO: faixa full-bleed para o gradiente do hero ===== */
+.band {
+    position: relative;
+    isolation: isolate;
+}
+
+/* cobre toda a largura do viewport, não apenas a imagem */
+.band::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    /* full-bleed */
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+
+    background: var(--grad-hero, var(--sl-bg-gradient));
+    opacity: .85;
+
+    /* suaviza as bordas superior/inferior da faixa */
+    mask-image: linear-gradient(to bottom,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%);
+}
+
+/* garante que o conteúdo fica acima do ::before */
+.band>* {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 640px) {
+    .inner {
+        padding: 2rem 0;
+    }
+}
