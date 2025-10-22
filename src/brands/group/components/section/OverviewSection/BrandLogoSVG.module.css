@@ -1,0 +1,103 @@
+/* OverviewSection/BrandLogoSVG.module.css */
+/* Logo SVG — Sunlive “Performance Prestige” (Prestige Noir + Liquid Gold) */
+
+.logo {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    /* tokens do tema (ouro líquido) */
+    --gold-1: var(--sl-gold-400);
+    --gold-2: var(--sl-gold-500);
+
+    /* paleta “metal” fria p/ navy profundo */
+    --metal-1: #F4F7FC;
+    /* ≈ var(--sl-platinum-100) */
+    --metal-2: #E6EBF5;
+    --metal-3: #D9E0EE;
+    /* ≈ var(--sl-platinum-300) */
+    --metal-4: #BFC9DD;
+
+    /* segurança de layout com filtros/gradientes no SVG */
+    min-width: 0;
+    /* evita alongar grids/containers */
+    contain: layout paint;
+    /* isola repaints de filtros */
+}
+
+.wordMain,
+.wordSub {
+    font-family: var(--sl-ff-display, "Orbitron", "Eurostile", var(--font-sans));
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    /* fill/stroke vêm do próprio SVG (gradients) */
+}
+
+.wordMain {
+    font-weight: 800;
+    font-size: 210px;
+    letter-spacing: 8px;
+}
+
+.wordSub {
+    font-weight: 800;
+    font-size: 90px;
+    letter-spacing: 7px;
+}
+
+/* ===== Opcionais (aplica via className no <svg> ou wrapper) ===== */
+
+/* realce dourado subtil */
+.logo--glow {
+    filter:
+        drop-shadow(0 0 0.5px color-mix(in oklab, var(--gold-1), transparent 60%)) drop-shadow(0 6px 18px rgba(0, 0, 0, .45));
+    will-change: filter;
+}
+
+/* borda luminosa “prestige” em hover (para logos clicáveis) */
+.logo--interactive:hover {
+    filter:
+        drop-shadow(0 0 0.75px color-mix(in oklab, var(--gold-1), white 20%)) drop-shadow(0 10px 24px rgba(0, 0, 0, .5));
+    transition: filter .2s ease;
+}
+
+/* A11y foco — escopado ao logo */
+.logo:focus-visible {
+    outline: 0;
+    box-shadow:
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--gold-1), white 20%);
+    border-radius: 10px;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .wordMain {
+        font-size: 160px;
+        letter-spacing: 6px;
+    }
+
+    .wordSub {
+        font-size: 72px;
+        letter-spacing: 5px;
+    }
+}
+
+@media (max-width: 640px) {
+    .wordMain {
+        font-size: 116px;
+        letter-spacing: 4px;
+    }
+
+    .wordSub {
+        font-size: 52px;
+        letter-spacing: 3px;
+    }
+}
+
+/* Motion-safe */
+@media (prefers-reduced-motion: reduce) {
+    .logo--interactive:hover {
+        filter: none;
+    }
+}

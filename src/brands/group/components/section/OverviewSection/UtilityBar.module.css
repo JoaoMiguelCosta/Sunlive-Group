@@ -1,0 +1,224 @@
+/* Utility Bar — Sunlive “Performance Prestige” (fluido e responsivo)
+   - Variáveis internas ajustam tamanhos com clamp() para escalar com o ecrã
+*/
+
+.utilityBar {
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+    /* Escala fluida para todo o cluster (ícones, botão e dropdown) */
+    --ub-touch: clamp(36px, 4.2vw, 44px);
+    /* alvo de toque */
+    --ub-icon: clamp(18px, 1.8vw, 24px);
+    /* tamanho do ícone */
+    --ub-gap: clamp(.35rem, 0.8vw, .6rem);
+    --ub-fs: clamp(.9rem, 1.1vw, 1rem);
+    /* texto PT */
+    --ub-chev: clamp(.66rem, .9vw, .8rem);
+    --ub-menu-w: clamp(160px, 26vw, 260px);
+    --ub-menu-pad: clamp(6px, 1vw, 8px);
+    --ub-item-pad: clamp(.55rem, 1.3vw, .7rem) clamp(.6rem, 1.4vw, .8rem);
+    --ub-radius: clamp(10px, 1.2vw, 12px);
+    --ub-shadow: 0 10px 24px rgba(0, 0, 0, .35);
+    z-index: 10;
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: 2.875rem;
+    padding-inline: clamp(.5rem, 1.2vw, 1rem);
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: var(--ub-gap);
+}
+
+.label {
+    display: none !important;
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--ub-gap) * .35);
+}
+
+/* Ícones: branco -> hover amarelo */
+.socialLink {
+    display: inline-grid;
+    place-items: center;
+    width: var(--ub-touch);
+    height: var(--ub-touch);
+    border-radius: 999px;
+    color: #fff;
+    text-decoration: none;
+    border: 0;
+    background: transparent;
+    transition: transform 120ms ease, opacity 120ms ease, filter 120ms ease, color 120ms ease;
+}
+
+.socialIcon {
+    width: var(--ub-icon);
+    height: var(--ub-icon);
+}
+
+.socialLink:hover {
+    transform: translateY(-1px);
+    opacity: .95;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .25));
+    color: var(--accent);
+}
+
+.socialLink:active {
+    transform: translateY(0);
+}
+
+.socialLink:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Idioma */
+.langWrap {
+    position: relative;
+    z-index: 1000;
+}
+
+.langBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .45rem;
+    min-width: var(--ub-touch);
+    height: var(--ub-touch);
+    padding: 0 clamp(.5rem, 1.4vw, .8rem);
+    background: transparent;
+    border: 0;
+    border-radius: 999px;
+    transition: transform 120ms ease, opacity 120ms ease, filter 120ms ease;
+    touch-action: manipulation;
+}
+
+.langText {
+    color: #fff;
+    font-family: var(--sl-ff-ui, var(--font-sans));
+    font-weight: 700;
+    line-height: 1;
+    font-size: var(--ub-fs);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.chevron {
+    width: var(--ub-chev);
+    height: calc(var(--ub-chev) / 2);
+    color: #fff;
+}
+
+.langBtn:hover .langText,
+.langBtn:hover .chevron {
+    color: var(--accent);
+}
+
+.langBtn:hover {
+    transform: translateY(-1px);
+    opacity: .95;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .25));
+}
+
+.langBtn:active {
+    transform: translateY(0);
+}
+
+.langBtn:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Menu de idiomas — responsivo */
+.langMenu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: var(--ub-menu-w);
+    max-width: min(92vw, 320px);
+    max-height: min(50vh, 360px);
+    overflow-y: auto;
+    padding: var(--ub-menu-pad);
+    border-radius: var(--ub-radius);
+    background: rgba(15, 20, 30, 0.92);
+    backdrop-filter: blur(6px);
+    box-shadow: var(--ub-shadow);
+    list-style: none;
+    margin: 0;
+    z-index: 2000;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Itens do menu */
+.langItem {
+    width: 100%;
+    min-height: var(--ub-touch);
+    padding: var(--ub-item-pad);
+    background: transparent;
+    border: 0;
+    text-align: left;
+    color: #fff;
+    font-family: var(--sl-ff-ui, var(--font-sans));
+    border-radius: calc(var(--ub-radius) - 2px);
+    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+    gap: .55rem;
+    transition: background 120ms ease, color 120ms ease;
+    direction: ltr;
+    /* mantém alinhamento à esquerda */
+}
+
+.langItem:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, .06);
+}
+
+.langItemLabel {
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.langItemName {
+    opacity: .9;
+    font-size: clamp(.9rem, 1vw, .95rem);
+    line-height: 1.2;
+    white-space: normal;
+}
+
+/* Nome em árabe: renderiza RTL mas fica ancorado à esquerda */
+.langItemName[dir="rtl"] {
+    direction: rtl;
+    unicode-bidi: isolate;
+    text-align: left;
+}
+
+/* Pequenos ajustes */
+@media (max-width: 840px) {
+    .inner {
+        gap: .5rem;
+        padding-right: .5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .socialLink,
+    .langBtn {
+        transition: none;
+    }
+}

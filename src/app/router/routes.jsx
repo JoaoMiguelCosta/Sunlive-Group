@@ -1,23 +1,32 @@
 // src/app/router/routes.jsx
 import { Routes, Route, Navigate } from "react-router-dom";
-
-import GroupHome from "../../brands/group/Home.jsx";
-import SportsHome from "../../brands/sports/Home.jsx";
-import HotelHome from "../../brands/hotel/Home.jsx";
-import TravelHome from "../../brands/travel/Home.jsx";
+import GroupPage from "../../brands/group/pages/GroupPage.jsx";
 
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/group" replace />} />
-      <Route path="/group" element={<GroupHome />} />
-      <Route path="/sports" element={<SportsHome />} />
-      <Route path="/hotel" element={<HotelHome />} />
-      <Route path="/travel" element={<TravelHome />} />
+      <Route path="/" element={<GroupPage />} />
+      <Route path="/sunlive-group" element={<GroupPage />} />
+
+      {/* Rotas ainda sem página → redirect para Home */}
       <Route
-        path="*"
-        element={<div style={{ padding: 16 }}>404 — Página não encontrada</div>}
+        path="/sunlive-group-logos"
+        element={<Navigate to="/sunlive-group" replace />}
       />
+      <Route
+        path="/sunlive-group/travel"
+        element={<Navigate to="/sunlive-group" replace />}
+      />
+      <Route
+        path="/sunlive-group/sports/*"
+        element={<Navigate to="/sunlive-group" replace />}
+      />
+      <Route
+        path="/sunlive-group/our-home/*"
+        element={<Navigate to="/sunlive-group" replace />}
+      />
+
+      <Route path="*" element={<Navigate to="/sunlive-group" replace />} />
     </Routes>
   );
 }

@@ -1,0 +1,137 @@
+/* OverviewSection/HeadlineStrip.module.css */
+/* Headline Strip — Sunlive “Performance Prestige” (Prestige Noir + Liquid Gold) */
+
+/* O wrapper pinta o MESMO gradiente do hero atrás da box */
+.wrap {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    padding-block: clamp(.5rem, 2.4vw, 1.25rem);
+    /* respiro para o halo */
+    isolation: isolate;
+    /* camadas seguras */
+    overflow: clip;
+    /* evita scroll lateral por causa do glow */
+    min-width: 0;
+}
+
+/* Gradiente do hero aplicado apenas nesta faixa */
+.wrap::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background: var(--grad-hero);
+    /* mesmo gradiente do hero */
+    opacity: .85;
+    /* ajusta intensidade (1 = igual ao hero) */
+
+    /* suaviza as bordas do gradiente na transição com o fundo */
+    mask-image: linear-gradient(to bottom,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%);
+}
+
+/* Moldura premium + glow subtil */
+.box {
+    position: relative;
+    z-index: 1;
+    /* fica acima do gradiente do wrapper */
+    width: min(50rem, 92%);
+    min-height: clamp(4.5rem, 10vw, 8.125rem);
+
+    display: grid;
+    place-items: center;
+
+    padding: clamp(.6rem, 2.2vw, 1rem);
+
+
+
+  
+    isolation: isolate;
+
+    /* Evita overflow, gerencia espaço para o glow */
+    overflow: clip;
+    min-width: 0;
+}
+
+/* Glow dourado (decorativo, discreto) */
+.box::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -25% -20% auto -20%;
+    height: clamp(90px, 16vh, 180px);
+    background: radial-gradient(55% 60% at 50% 50%,
+            color-mix(in oklab, var(--accent), transparent 72%),
+            transparent 70%);
+    filter: blur(32px);
+    pointer-events: none;
+}
+
+/* IMG quando o headline é imagem */
+.figure {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    filter:
+        drop-shadow(0 1px 0 rgba(255, 255, 255, .03)) drop-shadow(0 8px 18px rgba(0, 0, 0, .35));
+}
+
+/* Texto (se usares títulos na box sem o SVG) */
+.title {
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-family: var(--sl-ff-display, "Orbitron", "Eurostile", var(--font-sans));
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--text-1);
+    font-size: clamp(1.1rem, 2.6vw, 1.75rem);
+}
+
+.subtitle {
+    margin: .375rem 0 0 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-family: var(--sl-ff-ui, var(--font-sans));
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--text-2);
+    font-size: clamp(.7rem, 1.6vw, .875rem);
+}
+
+/* Interações / A11y (escopado à box) */
+.box:focus-within {
+    outline: 0;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .04),
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--accent), white 25%);
+}
+
+/* Motion-safe */
+@media (prefers-reduced-motion: reduce) {
+    .box::before {
+        display: none;
+    }
+
+    .wrap::before {
+        opacity: .9;
+        filter: none;
+    }
+
+    /* mantém estático */
+}

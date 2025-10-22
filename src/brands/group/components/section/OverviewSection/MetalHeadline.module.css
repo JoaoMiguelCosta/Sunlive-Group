@@ -1,0 +1,106 @@
+/* OverviewSection/MetalHeadline.module.css */
+/* Metal Headline — Sunlive “Performance Prestige” (Prestige Noir + Liquid Gold) */
+
+.headline {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    /* Ouro do tema */
+    --mh-gold-1: var(--sl-gold-400);
+    --mh-gold-2: var(--sl-gold-500);
+
+    /* Gradiente “metal” ajustado à platina fria do tema */
+    --mh-metal-1: #F4F7FC;
+    /* ≈ var(--sl-platinum-100) */
+    --mh-metal-2: #E6EBF5;
+    --mh-metal-3: #FFFFFF;
+    --mh-metal-4: #C9D2E4;
+    --mh-metal-5: #EEF2F9;
+    --mh-metal-6: #D9E0EE;
+    /* ≈ var(--sl-platinum-300) */
+}
+
+.group {
+    font-family: var(--sl-ff-display, "Orbitron", "Eurostile", var(--font-sans));
+    text-anchor: middle;
+    /* aplica-se ao <text> dentro do SVG */
+}
+
+.title,
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    fill: currentColor;
+    /* O fill real vem do gradient no SVG */
+}
+
+.title {
+    font-weight: 800;
+    font-size: 68px;
+    letter-spacing: 3px;
+}
+
+.subtitle {
+    font-weight: 700;
+    font-size: 36px;
+    letter-spacing: 2.5px;
+}
+
+/* ===== Opcionais para elevar o look ===== */
+
+/* Bisel/contorno suave e glow dourado (aplica no wrapper <svg> com className extra) */
+.headline--glow {
+    filter:
+        drop-shadow(0 0 0.6px color-mix(in oklab, var(--mh-gold-1), transparent 60%)) drop-shadow(0 8px 22px rgba(0, 0, 0, .45));
+    will-change: filter;
+}
+
+/* Stroke para texto SVG (se necessário) */
+.headline--stroke text {
+    paint-order: stroke fill;
+    stroke: color-mix(in oklab, var(--mh-gold-2), white 20%);
+    stroke-width: .6px;
+    stroke-linejoin: round;
+}
+
+/* Acessibilidade (se o SVG for focável) */
+.headline:focus-visible {
+    outline: 0;
+    box-shadow:
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--mh-gold-1), white 20%);
+    border-radius: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .title {
+        font-size: 56px;
+        letter-spacing: 2.5px;
+    }
+
+    .subtitle {
+        font-size: 30px;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 640px) {
+    .title {
+        font-size: 44px;
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        font-size: 24px;
+        letter-spacing: 1.6px;
+    }
+}
+
+/* Motion-safe */
+@media (prefers-reduced-motion: reduce) {
+    .headline--glow {
+        filter: none;
+    }
+}

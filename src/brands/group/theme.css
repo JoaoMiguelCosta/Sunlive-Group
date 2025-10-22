@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Sunlive Group — theme.css
+   Tema: Prestige Noir + Liquid Gold (Performance Prestige)
+   Mantém os mesmos nomes de variáveis para não quebrar nada no projeto.
+   ========================================================================== */
+
+/* Layout safety (evita overflow horizontal e soma de paddings) */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: clip;
+}
+
+/* ===== Tokens de Marca (SL) ===== */
+:root {
+    /* Cores base */
+    --sl-navy-900: #070B12;
+    /* quase preto azulado (fundo profundo) */
+    --sl-navy-800: #0C1320;
+    /* navy denso (camadas acima) */
+    --sl-ink-900: rgba(0, 0, 0, .30);
+    /* tinta/overlay */
+    --sl-platinum-100: #F4F7FC;
+    /* texto principal */
+    --sl-platinum-300: #D9E0EE;
+    /* texto secundário/linhas suaves */
+
+    /* Ouro (accent) — líquido e quente */
+    --sl-gold-500: #C7981F;
+    --sl-gold-400: #F0C450;
+
+    /* Tipografia */
+    --sl-ff-ui: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --sl-ff-display: "Orbitron", "Eurostile", var(--sl-ff-ui);
+
+    /* Layout */
+    --sl-container-sm: 78rem;
+    --sl-container-lg: 90rem;
+    --sl-baseline: 1.25rem;
+    --sl-radius-sm: 8px;
+
+    /* Efeitos */
+    --sl-focus: 0 0 0 2px rgba(247, 208, 96, .75);
+    --sl-shadow-gold: 0 0 0 1px rgba(207, 161, 48, .55), 0 12px 32px rgba(0, 0, 0, .45);
+
+    /* Fundo / texto da página */
+    --sl-body-bg: var(--sl-navy-800);
+    --sl-color-text: var(--sl-platinum-100);
+
+    /* Gradientes principais */
+    --sl-bg-gradient: linear-gradient(180deg, var(--sl-navy-800) 0%, var(--sl-navy-900) 100%);
+    --grad-hero:
+        radial-gradient(1200px 800px at 72% -12%, rgba(240, 196, 80, .28), transparent 60%),
+        conic-gradient(from 220deg at 50% 50%, rgba(240, 196, 80, .10), rgba(30, 70, 160, .08) 35%, rgba(240, 196, 80, .06) 65%, rgba(30, 70, 160, .12) 90%, rgba(240, 196, 80, .10) 100%),
+        linear-gradient(180deg, var(--sl-navy-800) 0%, var(--sl-navy-900) 60%);
+}
+
+/* ===== Bridge para tokens globais (mesmo sem global.css) ================== */
+:root {
+    /* Texto */
+    --text-1: var(--sl-platinum-100);
+    --text-2: color-mix(in oklab, var(--sl-platinum-100), black 25%);
+
+    /* Accents (mantém nomes; usa o novo ouro) */
+    --accent: var(--sl-gold-400);
+    --accent-2: color-mix(in oklab, var(--sl-gold-400), white 20%);
+
+    /* Escala de cinzentos para camadas (afinada para o fundo mais escuro) */
+    --gray-0: color-mix(in oklab, var(--sl-navy-900), black 6%);
+    --gray-1: var(--sl-navy-800);
+    --gray-2: color-mix(in oklab, var(--sl-navy-800), white 6%);
+    --gray-3: color-mix(in oklab, var(--sl-navy-800), white 12%);
+    --gray-4: color-mix(in oklab, var(--sl-navy-800), white 20%);
+    --gray-5: color-mix(in oklab, var(--sl-navy-800), white 28%);
+    --gray-6: color-mix(in oklab, var(--sl-navy-800), white 38%);
+
+    /* Gradiente hero global alinhado ao tema */
+    --grad-hero:
+        radial-gradient(1200px 800px at 72% -12%, rgba(240, 196, 80, .28), transparent 60%),
+        conic-gradient(from 220deg at 50% 50%, rgba(240, 196, 80, .10), rgba(30, 70, 160, .08) 35%, rgba(240, 196, 80, .06) 65%, rgba(30, 70, 160, .12) 90%, rgba(240, 196, 80, .10) 100%),
+        linear-gradient(180deg, var(--sl-navy-800) 0%, var(--sl-navy-900) 60%);
+
+    /* Font family global */
+    --font-sans: var(--sl-ff-ui);
+}
+
+/* ===== Aplicação imediata no body ===== */
+html,
+body {
+    background: var(--sl-body-bg);
+    color: var(--sl-color-text);
+    font-family: var(--sl-ff-ui);
+    margin: 0;
+        padding: 0;
+}
+
+/* Headings “display” opcionais para impacto */
+.sl-display {
+    font-family: var(--sl-ff-display);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-weight: 800;
+}
+
+/* Focus ring dourado consistente */
+:focus-visible {
+    box-shadow:
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--sl-gold-400), white 20%);
+    outline: 0;
+    border-radius: var(--sl-radius-sm);
+}
+
+/* ===== Utilitários opcionais (acabamento premium) ===== */
+.u-card-prestige {
+    background: linear-gradient(180deg,
+            color-mix(in oklab, var(--gray-1), white 4%) 0%,
+            var(--gray-2) 100%);
+    box-shadow: var(--sl-shadow-gold);
+    border: 1px solid color-mix(in oklab, var(--sl-gold-500), transparent 70%);
+    border-radius: var(--sl-radius-sm);
+}
+
+.u-cta:hover {
+    box-shadow:
+        0 0 0 1px color-mix(in oklab, var(--sl-gold-400), transparent 55%),
+        0 10px 28px rgba(0, 0, 0, .35);
+    transform: translateY(-1px);
+    transition: box-shadow .2s ease, transform .2s ease;
+}

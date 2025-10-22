@@ -1,0 +1,135 @@
+/* OverviewSection/BrandHero.module.css */
+/* Brand Hero — Sunlive “Performance Prestige” (Prestige Noir + Liquid Gold) */
+
+.hero {
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+    /* Fundo premium do tema (hero com halos) */
+    background: var(--grad-hero);
+    isolation: isolate;
+    /* garante camadas seguras para o glow */
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -10% -20% auto -20%;
+    height: clamp(160px, 28vh, 420px);
+    background:
+        /* halo dourado suave alinhado ao liquid gold */
+        radial-gradient(60% 60% at 60% 35%,
+            color-mix(in oklab, var(--accent), transparent 68%),
+            transparent 66%),
+        /* leve brilho angular sobre o navy profundo */
+        conic-gradient(from 220deg at 60% 35%,
+            color-mix(in oklab, var(--sl-gold-500), transparent 90%),
+            transparent 35%,
+            color-mix(in oklab, var(--sl-gold-400), transparent 92%) 65%,
+            transparent 95%);
+    filter: blur(38px);
+    pointer-events: none;
+}
+
+
+.inner {
+    width: min(var(--sl-container-sm), 100%);
+   
+    display: grid;
+    place-items: center;
+    padding-inline: clamp(1rem, 4vw, 6rem);
+    padding-block: clamp(.75rem, 2vw, 1.5rem);
+    min-width: 0;
+    /* evita overflow por conteúdo longo */
+
+    /* linha superior muito subtil para “corte” premium */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+
+.logoBox {
+    width: clamp(18rem, 47vw, 36.9375rem);
+    height: clamp(7rem, 20vw, 15.5625rem);
+    display: grid;
+    place-items: center;
+   
+
+  
+   
+}
+
+.logoImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    /* legibilidade em fundos escuros + tema dourado */
+    filter:
+        drop-shadow(0 1px 0 rgba(255, 255, 255, .04)) drop-shadow(0 10px 28px rgba(0, 0, 0, .45));
+}
+
+/* Fallback textual com “metal + dourado” */
+.fallback {
+    margin: 0;
+    text-align: center;
+    font-family: var(--sl-ff-display, "Orbitron", "Eurostile", var(--font-sans));
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: clamp(1.25rem, 3.5vw, 2rem);
+    line-height: 1.1;
+
+    /* texto com gradiente dourado */
+    background: linear-gradient(180deg,
+            color-mix(in oklab, var(--accent), white 15%),
+            var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    /* contorno leve para contraste */
+    text-shadow:
+        0 0 0.5px rgba(0, 0, 0, .35),
+        0 6px 18px rgba(0, 0, 0, .35);
+}
+
+/* Acessibilidade – ESCOPADO ao hero */
+.hero :focus-visible {
+    outline: 0;
+    box-shadow:
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--accent), white 22%);
+    border-radius: 10px;
+}
+
+/* Motion-safe */
+@media (prefers-reduced-motion: reduce) {
+    .hero::before {
+        display: none;
+    }
+}
+
+/* Responsividade fina */
+@media (max-width: 1024px) {
+    .inner {
+        height: clamp(7rem, 24vw, 13rem);
+    }
+
+    .logoBox {
+        width: clamp(16rem, 54vw, 30rem);
+        height: clamp(6rem, 22vw, 13rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .inner {
+        height: clamp(6.5rem, 28vw, 11.5rem);
+    }
+
+    .logoBox {
+        width: clamp(14rem, 60vw, 24rem);
+        height: clamp(5.5rem, 26vw, 11rem);
+    }
+}
