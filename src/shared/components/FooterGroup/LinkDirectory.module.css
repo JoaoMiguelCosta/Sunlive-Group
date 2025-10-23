@@ -1,0 +1,127 @@
+/* Prestige Noir + Liquid Gold — Link Directory (footer) */
+
+.sectionWrap {
+    position: relative;
+    padding-block: clamp(1.1rem, 2.4vw, 1.8rem);
+    color: var(--sl-platinum-100);
+}
+
+.inner {
+    width: min(var(--sl-container-lg), 100%);
+    margin-inline: auto;
+    padding-inline: clamp(0rem, 5vw - 1.5rem, 1rem);
+    box-sizing: border-box;
+
+    /* 2 blocos lado a lado em desktop */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+@media (min-width: 1100px) {
+    .inner {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+
+.blockTitle {
+    display: grid;
+    place-items: center;
+    margin-bottom: clamp(.6rem, 1.2vw, .8rem);
+}
+
+/* Título em “badge” (pílula com aro dourado) */
+.badge {
+    display: inline-block;
+    padding: .5rem 1.1rem;
+    border: 2px solid var(--sl-gold-400);
+    border-radius: 999px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    color: var(--sl-platinum-100);
+    background: rgba(199, 134, 21, 0.08);
+    white-space: nowrap;
+}
+
+/* ===== Grade Esquerda (2 colunas de pills) ===== */
+.gridLeft {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .9rem 1.2rem;
+}
+
+@media (min-width: 720px) {
+    .gridLeft {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.col {
+    display: grid;
+    gap: .75rem;
+}
+
+/* ===== Grade Direita (lista vertical de pills) ===== */
+.gridRight {
+    display: grid;
+    gap: .9rem;
+}
+
+/* ===== Pill ===== */
+.pill {
+    --pill-h: clamp(38px, 3vw, 46px);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--pill-h);
+    padding: .45rem 1rem;
+
+    width: 100%;
+    max-width: 20rem;
+    /* para ter “peso” visual consistente */
+    margin-inline: auto;
+
+    border: 2px solid var(--sl-gold-400);
+    border-radius: 1.35rem;
+
+    text-decoration: none;
+    color: var(--sl-platinum-100);
+    font-weight: 700;
+    letter-spacing: .2px;
+
+    background: rgba(2, 10, 32, 1);
+    transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
+}
+
+.pill:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 162, 0, .12);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+}
+
+.pill:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(199, 134, 21, .35);
+}
+
+.disabled {
+    opacity: .55;
+    pointer-events: none;
+}
+
+.pillLabel {
+    font-size: clamp(.95rem, .4vw + .9rem, 1.05rem);
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* reduz animações para quem preferir */
+@media (prefers-reduced-motion: reduce) {
+    .pill {
+        transition: none;
+    }
+}

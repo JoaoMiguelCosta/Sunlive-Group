@@ -25,6 +25,8 @@ import kuwait from "./assets/kuwait.png";
 import iraq from "./assets/iraq.png";
 import lebanon from "./assets/lebanon.png";
 
+import acknowledgementsImg from "./assets/acknowledgementsImg.png";
+
 /* ======================================================================
    SHARED: props comuns e pequenos utilitários de dados
 ====================================================================== */
@@ -276,4 +278,221 @@ export const contacts = {
       defaultOpen: false,
     },
   ],
+};
+
+/* ======================================================================
+   SECTION 5 — PARTNERS
+   (headline + grelha de categorias -> navegam para páginas próprias)
+====================================================================== */
+export const partners = {
+  id: "partners",
+
+  headline: {
+    // mantém o mesmo estilo que usaste noutras secções (SectionLead)
+    title: "Our Network of Partners",
+    subtitle: null, // se quiseres uma linha secundária, preenche aqui
+  },
+
+  // Cards que navegam (Link) para páginas/rotas
+  categories: [
+    {
+      key: "committees",
+      label: "Committees", // (corrigido o inglês)
+      href: "/partners/committees",
+    },
+    {
+      key: "federations",
+      label: "Federations",
+      href: "/partners/federations",
+    },
+    {
+      key: "teams",
+      label: "Teams",
+      href: "/partners/teams",
+    },
+    {
+      key: "associations",
+      label: "Associations",
+      href: "/partners/associations",
+    },
+    {
+      key: "others",
+      label: "Other Partners",
+      href: "/partners/others",
+    },
+  ],
+};
+
+/* ======================================================================
+   SECTION 6 — BOOK
+   (cta em pill que descarrega o PDF do Book)
+====================================================================== */
+export const book = {
+  id: "book",
+  cta: {
+    label: "Open Book Sunlive Group",
+    // ⬇️ relativo ao BASE_URL (não começa com "/")
+    href: "books/sunlive-group-book.pdf",
+    filename: "Sunlive-Group-Book.pdf",
+    ariaLabel: "Download Sunlive Group Book (PDF)",
+  },
+  meta: {
+    filetype: "pdf",
+  },
+};
+
+/* ======================================================================
+   SECTION 7 — FOOTER
+   7.1 InfoHeader (About • Location • Contacts • Socials)
+====================================================================== */
+export const footer = {
+  id: "footer",
+
+  infoHeader: {
+    brand: {
+      title: "Sunlive Group",
+      tagline: "Transformando desafios em soluções com excelência.",
+      // podes usar \n para quebra de linha dentro do componente
+      about:
+        "Na Sunlive Group, acreditamos que o verdadeiro impacto surge da união entre visão, ação e valores humanos.\n\n" +
+        "Desenvolvemos soluções integradas em desporto, turismo, educação e negócio, criando oportunidades sustentáveis e ligações com impacto local e global.",
+      link: { label: "Sunlive Group", href: "/" }, // link do nome dentro do texto
+    },
+
+    location: {
+      title: "Localização",
+      addressLines: [
+        "Rua Narciso da Marça, 3780-101",
+        "Sangalhos, Anadia – Aveiro",
+      ],
+      // se quiseres abrir mapas:
+      mapHref:
+        "https://maps.google.com/?q=Rua%20Narciso%20da%20Mar%C3%A7a%2C%203780-101%2C%20Sangalhos%2C%20Anadia",
+    },
+
+    contacts: {
+      title: "Contactos",
+      email: { label: "lucas@sunlive.pt", href: "mailto:lucas@sunlive.pt" },
+      phone: { label: "+351 933 600 364", href: "tel:+351933600364" },
+    },
+
+    socials: {
+      title: "Redes Sociais",
+      // podes simplesmente reutilizar as redes do overview para não duplicar
+      items: [
+        {
+          key: "fb",
+          href: "https://facebook.com/sunlive07",
+          label: "Facebook",
+          Icon: FacebookIcon,
+        },
+        {
+          key: "ig",
+          href: "https://instagram.com/sunlive.group/",
+          label: "Instagram",
+          Icon: InstagramIcon,
+        },
+      ],
+      // ou: items: overview.socials
+    },
+  },
+
+  // as próximas subdivisões (preenchemos depois)
+  linkDirectory: {
+    left: {
+      title: "Contactos Sunlive Group",
+      // 2 colunas: Unidades + Países (atalhos)
+      columns: [
+        {
+          key: "units",
+          items: [
+            {
+              key: "group",
+              label: "Sunlive Group",
+              href: "/sunlive-group#contacts",
+            },
+            { key: "travel", label: "Travel", href: "/travel" },
+            { key: "business", label: "Business", href: "/business" },
+            { key: "sports", label: "Sports", href: "/sports" },
+            {
+              key: "international",
+              label: "International",
+              href: "/international",
+            },
+            { key: "hotel", label: "Hotel", href: "/hotel" },
+            {
+              key: "commercial",
+              label: "Commercial",
+              href: "/sunlive-group#contacts",
+            },
+          ],
+        },
+        {
+          key: "countries",
+          items: [
+            { key: "malta", label: "Malta", href: "/sunlive-group#contacts" },
+            { key: "qatar", label: "Catar", href: "/sunlive-group#contacts" },
+            { key: "kuwait", label: "Kuwait", href: "/sunlive-group#contacts" },
+            {
+              key: "lebanon",
+              label: "Lebanon",
+              href: "/sunlive-group#contacts",
+            },
+            { key: "iraq", label: "Iraq", href: "/sunlive-group#contacts" },
+          ],
+        },
+      ],
+    },
+
+    right: {
+      title: "Rede de Parceiros",
+      items: [
+        { key: "committees", label: "Comités", href: "/partners/committees" },
+        {
+          key: "federations",
+          label: "Federações",
+          href: "/partners/federations",
+        },
+        { key: "teams", label: "Equipas", href: "/partners/teams" },
+        {
+          key: "associations",
+          label: "Associações",
+          href: "/partners/associations",
+        },
+        { key: "others", label: "Outros Parceiros", href: "/partners/others" },
+      ],
+    },
+  },
+  acknowledgements: {
+    image: {
+      src: acknowledgementsImg,
+      alt: "PRR — República Portuguesa — Financiado pela União Europeia (NextGenerationEU)",
+      // herda as opções comuns (lazy/async) se quiseres
+      ...IMG_COMMON,
+    },
+    link: {
+      // ficheiro que já colocaste em /public/books
+      href: "books/acknowledgements.pdf",
+      target: "_blank",
+      rel: "noopener",
+      ariaLabel: "Abrir Acknowledgements (PDF)",
+    },
+  },
+  policiesBar: {
+    links: [
+      { key: "privacy", label: "Política e Privacidade", href: "/privacy" },
+      { key: "terms", label: "Termos de Utilização", href: "/terms" },
+      { key: "cookies", label: "Cookies", href: "/cookies" },
+      { key: "complaints", label: "Livro de Reclamações", href: "/complaints" },
+    ],
+    // se 'year' não vier, o componente usa o ano atual automaticamente
+    copyright: {
+      year: 2025,
+      holder: "Sunlive Group. Todos os direitos reservados.",
+    },
+    // Ícone (coloca um Shield.jsx em shared/ui/icons e exporta no index)
+    icon: {
+      ariaLabel: "Protegido",
+    },
+  },
 };

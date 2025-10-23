@@ -1,0 +1,31 @@
+/* =============================================================================
+   FooterGroup “casca”
+   Paleta: Prestige Noir + Liquid Gold
+   Cada sub-secção já tem as suas próprias linhas de separação.
+============================================================================= */
+
+.footerWrap {
+    position: relative;
+    isolation: isolate;
+
+    /* fundo escuro com leve vinheta */
+    background:
+        radial-gradient(1200px 420px at 50% -10%, rgba(199, 134, 21, .10), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(10, 28, 54, .25), transparent 60%),
+        #070f1e;
+    /* fallback */
+
+    color: var(--sl-platinum-100);
+    /* pequena linha de topo para fundir com o conteúdo acima, opcional */
+    border-top: 1px solid rgba(199, 134, 21, 0.35);
+
+    /* evita que possíveis sombras internas cortem */
+    overflow: clip;
+}
+
+/* Se precisares de um espaçamento extra acima/abaixo do footer
+.footerWrap {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+*/

@@ -1,0 +1,48 @@
+/* Prestige Noir + Liquid Gold — Acknowledgements strip */
+
+.sectionWrap {
+    position: relative;
+    background: transparent;
+    color: var(--sl-platinum-100);
+    padding-block: clamp(.6rem, 1.6vw, 1rem);
+
+    /* linhas finas, como no mock */
+    border-top: 1px solid rgba(199, 134, 21, .35);
+    border-bottom: 1px solid rgba(199, 134, 21, .20);
+}
+
+.inner {
+    width: min(var(--sl-container-lg), 100%);
+    margin-inline: auto;
+    padding-inline: clamp(0rem, 5vw - 1.5rem, 1rem);
+    box-sizing: border-box;
+
+    display: grid;
+    place-items: center;
+}
+
+/* Link “transparente” para permitir hover */
+.click {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 120ms ease, filter 120ms ease;
+}
+
+.click:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+}
+
+/* Imagem responsiva e nítida */
+.img {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    max-height: 86px;
+    /* altura da faixa do mock */
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}

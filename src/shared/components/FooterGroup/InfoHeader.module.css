@@ -1,0 +1,173 @@
+/* Prestige Noir + Liquid Gold */
+
+.strip {
+    position: relative;
+    background: transparent;
+    /* herda do footer */
+    color: var(--sl-platinum-100);
+    padding-block: clamp(1.25rem, 2.5vw, 1.75rem);
+    border-bottom: 1px solid rgba(199, 134, 21, 0.35);
+    /* linha separadora */
+}
+
+.inner {
+    width: min(var(--sl-container-lg), 100%);
+    margin-inline: auto;
+    padding-inline: clamp(0rem, 5vw - 1.5rem, 1rem);
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(1rem, 2vw, 1.25rem) 1.25rem;
+}
+
+/* 4 colunas iguais em desktop, 2 em tablet, 1 em mobile */
+.col {
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 720px) {
+    .col {
+        grid-column: span 6;
+    }
+}
+
+@media (min-width: 1100px) {
+    .col {
+        grid-column: span 3;
+    }
+}
+
+/* Títulos com ícone */
+.title {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-size: clamp(1.05rem, 1.1rem + .3vw, 1.25rem);
+    font-weight: 800;
+    letter-spacing: .2px;
+    margin: 0 0 .4rem 0;
+    color: var(--sl-platinum-100);
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--sl-gold-400);
+    border-radius: 999px;
+    color: var(--sl-gold-400);
+    background: rgba(199, 134, 21, 0.08);
+}
+
+/* Tagline dourada */
+.tagline {
+    margin: 0 0 .6rem 0;
+    font-weight: 800;
+    color: var(--sl-gold-400);
+}
+
+/* Texto “about” com espaçamento suave */
+.about p {
+    margin: 0 0 .5rem 0;
+    line-height: 1.55;
+}
+
+/* Link inline dentro do texto */
+.inlineLink {
+    color: var(--sl-gold-400);
+    font-weight: 800;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(199, 134, 21, .5);
+}
+
+.inlineLink:hover {
+    border-bottom-style: solid;
+}
+
+/* Localização */
+.address {
+    font-style: normal;
+    line-height: 1.55;
+    opacity: .95;
+    margin-bottom: .35rem;
+}
+
+.subtleLink {
+    display: inline-block;
+    margin-top: .15rem;
+    color: var(--sl-platinum-100);
+    opacity: .7;
+    text-decoration: none;
+}
+
+.subtleLink:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Contactos */
+.contactRow {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    align-items: center;
+    gap: .55rem;
+    margin: .35rem 0;
+}
+
+.cIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sl-gold-400);
+}
+
+.link {
+    color: var(--sl-platinum-100);
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.textMuted {
+    opacity: .6;
+}
+
+/* Socials (botões redondos com aro dourado) */
+.socials {
+    display: flex;
+    gap: .55rem;
+    margin-top: .25rem;
+}
+
+.socialBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 2px solid var(--sl-gold-400);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sl-platinum-100);
+    text-decoration: none;
+    transition: transform 120ms ease, background 120ms ease;
+    background: rgba(199, 134, 21, 0.08);
+}
+
+.socialBtn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 162, 0, .12);
+}
+
+.sIcon {
+    width: 18px;
+    height: 18px;
+}
+
+.sFallback {
+    font-weight: 800;
+}
