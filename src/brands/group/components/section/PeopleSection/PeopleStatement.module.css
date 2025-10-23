@@ -1,41 +1,19 @@
-/* Prestige Noir + Liquid Gold (sem linhas) */
+/* Prestige Noir + Liquid Gold (sem linhas / sem glow local) */
 .wrap {
     position: relative;
-    /* necessário para o ::before */
     isolation: isolate;
-    /* cria contexto (evita “vazar” brilhos) */
     display: grid;
     place-items: center;
     padding: clamp(2rem, 2vw + 1rem, 3rem) 0;
-
-    /* Fundo base escuro (igual ao que já tinhas) */
-    background:
-        radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 55%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12)),
-        var(--sl-navy-900);
+    /* sem fundo local — usa o da página */
+    background: transparent;
 }
 
-/* Gradiente do hero aplicado apenas nesta faixa */
-.wrap::before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    inset: 0;
-    pointer-events: none;
-
-    /* usa o mesmo token do hero (troca o nome se for diferente no teu tema) */
-    background: var(--grad-hero, var(--sl-bg-gradient));
-    opacity: .85;
-    /* ajusta intensidade (1 = igual ao hero) */
-
-    /* suaviza a transição nas bordas */
-    mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-}
+/* Removido o ::before com var(--grad-hero) */
 
 .img {
     position: relative;
-    /* fica acima do ::before */
+    /* acima de quaisquer fundos globais */
     z-index: 1;
     display: block;
     width: min(50rem, 92vw);

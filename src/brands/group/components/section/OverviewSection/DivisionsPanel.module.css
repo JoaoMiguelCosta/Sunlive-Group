@@ -1,54 +1,22 @@
-/* OverviewSection/DivisionsPanel.module.css */
-/* Divisions Panel — Sunlive “Performance Prestige” (Prestige Noir + Liquid Gold) */
-
+/* Divisions Panel — Sunlive “Performance Prestige” (sem glow local) */
 .sectionWrap {
     position: relative;
     width: 100%;
-    isolation: isolate;
     padding-block: clamp(0.75rem, 2.4vw, 1.75rem);
-}
-
-.sectionWrap::before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    background: var(--grad-hero);
-    opacity: .85;
-    pointer-events: none;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
 .panel {
     position: relative;
-    z-index: 1;
     display: grid;
     gap: clamp(.6rem, 1.6vw, 1rem);
     width: min(var(--sl-container-sm), 100%);
     margin-inline: auto;
     padding-block: clamp(.4rem, 1.4vw, .8rem);
     padding-inline: clamp(.75rem, 5vw, 4rem);
-    isolation: isolate;
     overflow: clip;
     min-width: 0;
-}
-
-.panel::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: -8% -12% auto -12%;
-    height: clamp(120px, 18vh, 240px);
-    background: radial-gradient(55% 60% at 60% 40%,
-            color-mix(in oklab, var(--accent), transparent 75%),
-            transparent 70%);
-    filter: blur(36px);
-    pointer-events: none;
+    border: 2px solid rgba(199, 134, 21, 0.9);
+    border-radius: 14px;
 }
 
 .row {
@@ -57,6 +25,7 @@
     gap: clamp(.75rem, 2vw, 1.25rem);
     grid-template-columns: repeat(4, minmax(0, 1fr));
     min-width: 0;
+    justify-items: center;
 }
 
 @media (max-width: 1200px) {
@@ -78,76 +47,57 @@
     padding-top: clamp(.4rem, 1.2vw, .8rem);
 }
 
-/* Card base */
-.card {
+/* ===== Cards (base compartilhada) ===== */
+.card,
+.homeCard {
     --card-scale: 1.0;
     --card-border: color-mix(in oklab, var(--accent), transparent 55%);
-
     position: relative;
     display: grid;
     place-items: center;
     width: 100%;
     aspect-ratio: 245 / 97;
     border-radius: calc(var(--sl-radius-sm) - 2px);
-
-    background: linear-gradient(180deg, var(--gray-2), var(--gray-3));
+    background-color: rgba(2, 10, 32, 1);
     border: 1px solid var(--card-border);
     text-decoration: none;
-
     transition:
         transform var(--dur-2, 180ms) var(--ease-out, ease),
         box-shadow var(--dur-2, 180ms) var(--ease-out, ease),
         border-color var(--dur-2, 180ms) var(--ease-out, ease),
         filter var(--dur-2, 180ms) var(--ease-out, ease),
         background 200ms ease;
-
-    will-change: transform, box-shadow, border-color, filter;
     -webkit-tap-highlight-color: transparent;
     transform: scale(var(--card-scale));
 }
 
-/* Brilhos/glows */
+/* Larguras específicas */
+.card {
+    max-width: clamp(210px, 46vw, 320px);
+}
+
+/* 4 colunas → 3 gaps: Our Home fica com a mesma largura de uma coluna */
+.homeCard {
+    max-width: calc((100% - (clamp(.75rem, 2vw, 1.25rem) * 3)) / 4);
+}
+
+/* Hover marcante + overlay dourado (ambos os tipos) */
 .card::after,
-.card::before {
+.homeCard::after {
     content: "";
     position: absolute;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 220ms ease, transform 220ms ease, filter 220ms ease;
-}
-
-/* brilho superior + reforço interno */
-.card::after {
-    inset: -2px;
+    inset: 0;
     border-radius: inherit;
-    z-index: 0;
-    background:
-        radial-gradient(120% 100% at 50% -10%,
-            color-mix(in oklab, var(--accent), white 20%) 0%,
-            transparent 55%),
-        radial-gradient(80% 50% at 50% 120%,
-            color-mix(in oklab, var(--accent), black 70%) 0%,
-            transparent 65%);
-    filter: blur(6px);
+    background-color: rgba(255, 162, 0, 0.12);
+    opacity: 0;
+    transition: opacity 180ms ease;
+    pointer-events: none;
 }
 
-/* underglow por baixo */
-.card::before {
-    left: -8%;
-    right: -8%;
-    bottom: -18%;
-    height: 42%;
-    border-radius: 999px;
-    z-index: -1;
-    background: radial-gradient(80% 120% at 50% 0%,
-            color-mix(in oklab, var(--accent), white 10%) 0%,
-            transparent 70%);
-    filter: blur(20px);
-}
-
-/* Hover marcante (inclui underglow) */
 @media (hover: hover) {
-    .card:hover {
+
+    .card:hover,
+    .homeCard:hover {
         --card-scale: 1.015;
         border-color: color-mix(in oklab, var(--accent), transparent 10%);
         box-shadow:
@@ -159,25 +109,25 @@
                 color-mix(in oklab, var(--gray-3), black 4%));
     }
 
-    .card:hover::after {
-        opacity: .75;
+    .card:hover::after,
+    .homeCard:hover::after {
+        opacity: 1;
     }
 
-    .card:hover::before {
-        opacity: .85;
-    }
-
-    .card:hover .cardImg {
+    .card:hover .cardImg,
+    .homeCard:hover .cardImg {
         filter: drop-shadow(0 1px 0 rgba(255, 255, 255, .04)) drop-shadow(0 14px 28px rgba(0, 0, 0, .5)) brightness(1.03);
     }
 }
 
-.card:active {
+.card:active,
+.homeCard:active {
     --card-scale: 1.0;
 }
 
-/* Focus acessível */
-.card:focus-visible {
+/* Focus acessível (ambos) */
+.card:focus-visible,
+.homeCard:focus-visible {
     outline: 0;
     box-shadow:
         0 0 0 2px color-mix(in oklab, var(--sl-navy-900), transparent 20%),
@@ -185,7 +135,32 @@
     border-color: color-mix(in oklab, var(--accent), transparent 15%);
 }
 
-/* Tipografia interna */
+.card:focus-visible::after,
+.homeCard:focus-visible::after {
+    opacity: 1;
+}
+
+/* Desativado */
+.cardDisabled {
+    cursor: not-allowed;
+    opacity: .75;
+    filter: grayscale(.15) saturate(.9);
+    border-color: color-mix(in oklab, var(--accent), transparent 60%);
+}
+
+.cardDisabled::after {
+    opacity: 0 !important;
+}
+
+.cardDisabled:hover,
+.cardDisabled:active,
+.cardDisabled:focus-visible {
+    transform: none;
+    box-shadow: none;
+    outline: none;
+}
+
+/* Tipografia/Imagens dentro do card (válido para ambos) */
 .cardTitle {
     color: var(--text-1);
     text-transform: uppercase;
@@ -207,7 +182,6 @@
     font-size: clamp(.55rem, 1.2vw, .625rem);
 }
 
-/* Imagens */
 .cardImg {
     width: 92%;
     height: 92%;
@@ -218,83 +192,75 @@
     filter: drop-shadow(0 1px 0 rgba(255, 255, 255, .03)) drop-shadow(0 8px 18px rgba(0, 0, 0, .35));
 }
 
-/* === Badge “Brevemente” para desativados === */
+/* Badge “Brevemente” */
 .badge {
     position: absolute;
     top: -0.9rem;
-    /* sobe para ficar visível acima da moldura */
     right: .75rem;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: .22rem .6rem;
-
     font-family: var(--sl-ff-ui, var(--font-sans));
     font-weight: 900;
     letter-spacing: .06em;
     text-transform: uppercase;
     font-size: clamp(.62rem, 1vw, .72rem);
-
     color: #121418;
-    background:
-        linear-gradient(180deg,
+    background: linear-gradient(180deg,
             color-mix(in oklab, var(--accent), white 24%),
             color-mix(in oklab, var(--accent), black 6%));
     border: 1px solid color-mix(in oklab, var(--accent), black 28%);
     border-radius: 999px;
-
     box-shadow:
         0 8px 18px rgba(0, 0, 0, .45),
         inset 0 1px 0 rgba(255, 255, 255, .35);
     pointer-events: none;
-    /* não capta cliques */
     transform: translateY(-10%);
-    /* pequeno lift */
 }
 
-/* Card desativado */
-.cardDisabled {
-    cursor: not-allowed;
-    opacity: .75;
-    filter: grayscale(.15) saturate(.9);
-    border-color: color-mix(in oklab, var(--accent), transparent 60%);
-}
+/* ===== Responsividade extra ===== */
+@media (max-width: 900px) {
+    .panel {
+        padding-inline: clamp(.75rem, 3vw, 2rem);
+        padding-block: clamp(.35rem, 1vw, .6rem);
+    }
 
-.cardDisabled:hover,
-.cardDisabled:active,
-.cardDisabled:focus-visible {
-    transform: none;
-    box-shadow: none;
-    outline: none;
-}
-
-.cardDisabled::after,
-.cardDisabled::before {
-    display: none !important;
-}
-
-.cardDisabled .cardImg {
-    filter: grayscale(.08) opacity(.92);
-}
-
-/* Destaque “Our Home” */
-.homeCard {
-    width: clamp(10rem, 30vw, 20rem);
-    border-color: color-mix(in oklab, var(--accent), transparent 35%);
-    background: linear-gradient(180deg, var(--gray-2), var(--gray-3));
-}
-
-/* Motion-safe */
-@media (prefers-reduced-motion: reduce) {
-
-    .panel::before,
-    .card::after,
-    .card::before {
-        display: none;
+    .row {
+        gap: clamp(.6rem, 1.6vw, .9rem);
     }
 
     .card {
-        transition: none;
+        max-width: clamp(200px, 42vw, 300px);
+    }
+}
+
+@media (max-width: 560px) {
+    .panel {
+        padding-inline: clamp(.5rem, 4vw, 1rem);
+        border-radius: 12px;
+    }
+
+    .row {
+        gap: .6rem;
+    }
+
+    .homeRow {
+        padding-top: .5rem;
+    }
+
+    .card {
+        max-width: clamp(190px, 86vw, 280px);
+    }
+
+    .badge {
+        top: -0.7rem;
+        right: .5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .card {
+        max-width: 92vw;
     }
 }

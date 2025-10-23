@@ -1,0 +1,119 @@
+/* ================================
+   GroupHub — Prestige Noir + Liquid Gold (sem glows locais)
+=================================== */
+
+/* Pai: define uma “fonte de verdade” para a largura dos cards */
+.wrap {
+    --hub-w: clamp(210px, 46vw, 320px);
+    /* mesma largura dos restantes cards */
+
+    display: grid;
+    grid-template-columns: minmax(0, var(--hub-w));
+    justify-content: center;
+    /* centra a coluna */
+    justify-items: stretch;
+    /* items ocupam a coluna toda */
+    gap: 0.75rem;
+    width: 100%;
+}
+
+/* Botão pill (título) */
+.pill {
+    position: relative;
+    overflow: visible;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    /* deixa o aspect-ratio controlar a altura */
+    padding-inline: 1.1rem;
+    padding-block: 0;
+
+    border: 3px solid var(--sl-gold-400);
+    border-radius: 1.75rem;
+    background: rgba(2, 10, 32, 1);
+    color: #e8edf8;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+
+    /* mesmas dimensões dos outros cards */
+    width: 100%;
+    max-width: var(--hub-w);
+    aspect-ratio: 245 / 45;
+    box-sizing: border-box;
+    /* inclui a borda no cálculo */
+}
+
+.pill:hover {
+    transform: translateY(-1px);
+    background-color: rgba(255, 162, 0, 0.12);
+}
+
+.pill:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(199, 134, 21, .35);
+}
+
+.pillText {
+    font-size: clamp(1rem, .9rem + .3vw, 1.25rem);
+}
+
+.caret {
+    color: var(--sl-gold-400);
+    transform: translateY(1px);
+}
+
+/* Cartão de contactos (submenu) — igual ao pill em largura */
+.card {
+    width: 100%;
+    max-width: var(--hub-w);
+    box-sizing: border-box;
+
+    padding: 1rem 1.25rem;
+    border: 3px solid var(--sl-gold-400);
+    border-radius: 1.25rem;
+    background: rgba(2, 10, 32, 1);
+
+    display: grid;
+    gap: 0.75rem;
+    position: relative;
+    overflow: visible;
+}
+
+.card:hover {
+    background-color: rgba(255, 162, 0, 0.12);
+}
+
+/* Linhas do submenu */
+.row {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.25rem;
+    color: #eef3ff;
+    text-decoration: none;
+}
+
+.row:hover {
+    text-decoration: underline;
+}
+
+.icon {
+    color: var(--sl-gold-400);
+}
+
+.muted {
+    opacity: .6;
+}
+
+/* Acessibilidade — reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+    .pill {
+        transition: none;
+    }
+}

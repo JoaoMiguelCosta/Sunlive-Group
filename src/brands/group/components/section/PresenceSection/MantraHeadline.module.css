@@ -1,34 +1,15 @@
+/* Mantra Headline — sem gradiente local */
 .wrap {
     position: relative;
     isolation: isolate;
     display: grid;
     place-items: center;
-    padding: clamp(1.25rem, 1.5vw, 2rem) 0;
-
-    background:
-        radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 55%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12)),
-        var(--sl-navy-900);
+    
+    background: transparent;
+    /* fundo vem da página */
 }
 
-/* ⭐ brilho do hero full-bleed */
-.wrap::before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    top: 0;
-    bottom: 0;
-    pointer-events: none;
-
-    background: var(--grad-hero, var(--sl-bg-gradient));
-    opacity: .85;
-
-    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-}
+/* ::before com var(--grad-hero) REMOVIDO */
 
 .img {
     position: relative;

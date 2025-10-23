@@ -1,23 +1,12 @@
-/* Wrapper — mesmo fundo da página/people */
+/* Wrapper PresenceSection — usar apenas o tapete global da página */
 .section {
-    background:
-        radial-gradient(120% 90% at 50% -10%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 55%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12)),
-        var(--sl-navy-900);
-      
-        
-            /* Stack vertical dos blocos (UtilityBar, BrandHero, etc.) */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        
-         
-            min-width: 0;
-            /* impede overflow por conteúdo interno */
-            overflow: clip;
-            /* protege contra halos/decorações futuras */
-        
-            /* Espaçamento fluido entre blocos */
+    background: transparent;
+    /* removidos gradientes locais */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    overflow: clip;
 }
 
 .inner {
@@ -25,31 +14,16 @@
     margin-inline: auto;
     display: flex;
     flex-direction: column;
- 
 }
 
-/* Faixa full-bleed para aplicar o mesmo gradiente do hero atrás do painel */
+/* Faixa full-bleed (band) — sem ::before */
 .band {
     position: relative;
     isolation: isolate;
     padding-block: clamp(0.5rem, 1.2vw, 1.25rem);
 }
 
-.band::before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    top: 0;
-    bottom: 0;
-    pointer-events: none;
-    background: var(--grad-hero, var(--sl-bg-gradient));
-    opacity: .85;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-}
+/* ::before da .band com var(--grad-hero) REMOVIDO */
 
 .band>* {
     position: relative;

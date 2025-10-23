@@ -4,7 +4,7 @@
    Mantém os mesmos nomes de variáveis para não quebrar nada no projeto.
    ========================================================================== */
 
-/* Layout safety (evita overflow horizontal e soma de paddings) */
+/* Layout safety */
 *,
 *::before,
 *::after {
@@ -20,17 +20,14 @@ body {
 :root {
     /* Cores base */
     --sl-navy-900: #070B12;
-    /* quase preto azulado (fundo profundo) */
+    /* fundo profundo */
     --sl-navy-800: #0C1320;
-    /* navy denso (camadas acima) */
+    /* camadas acima */
     --sl-ink-900: rgba(0, 0, 0, .30);
-    /* tinta/overlay */
     --sl-platinum-100: #F4F7FC;
-    /* texto principal */
     --sl-platinum-300: #D9E0EE;
-    /* texto secundário/linhas suaves */
 
-    /* Ouro (accent) — líquido e quente */
+    /* Ouro (accent) */
     --sl-gold-500: #C7981F;
     --sl-gold-400: #F0C450;
 
@@ -60,17 +57,14 @@ body {
         linear-gradient(180deg, var(--sl-navy-800) 0%, var(--sl-navy-900) 60%);
 }
 
-/* ===== Bridge para tokens globais (mesmo sem global.css) ================== */
+/* ===== Bridge para tokens globais ===== */
 :root {
-    /* Texto */
     --text-1: var(--sl-platinum-100);
     --text-2: color-mix(in oklab, var(--sl-platinum-100), black 25%);
-
-    /* Accents (mantém nomes; usa o novo ouro) */
     --accent: var(--sl-gold-400);
     --accent-2: color-mix(in oklab, var(--sl-gold-400), white 20%);
 
-    /* Escala de cinzentos para camadas (afinada para o fundo mais escuro) */
+    /* Escala de cinzentos (afinada ao fundo escuro) */
     --gray-0: color-mix(in oklab, var(--sl-navy-900), black 6%);
     --gray-1: var(--sl-navy-800);
     --gray-2: color-mix(in oklab, var(--sl-navy-800), white 6%);
@@ -79,7 +73,7 @@ body {
     --gray-5: color-mix(in oklab, var(--sl-navy-800), white 28%);
     --gray-6: color-mix(in oklab, var(--sl-navy-800), white 38%);
 
-    /* Gradiente hero global alinhado ao tema */
+    /* Gradiente hero global */
     --grad-hero:
         radial-gradient(1200px 800px at 72% -12%, rgba(240, 196, 80, .28), transparent 60%),
         conic-gradient(from 220deg at 50% 50%, rgba(240, 196, 80, .10), rgba(30, 70, 160, .08) 35%, rgba(240, 196, 80, .06) 65%, rgba(30, 70, 160, .12) 90%, rgba(240, 196, 80, .10) 100%),
@@ -96,10 +90,64 @@ body {
     color: var(--sl-color-text);
     font-family: var(--sl-ff-ui);
     margin: 0;
-        padding: 0;
+    padding: 0;
 }
 
-/* Headings “display” opcionais para impacto */
+/* Conteúdo acima do glow */
+body {
+    position: relative;
+}
+
+#root,
+#app {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== Glow global por trás do conteúdo ===== */
+:root {
+    /* Controlos rápidos de intensidade/temperatura */
+    --sl-glow-top: color-mix(in oklab, var(--sl-gold-400), transparent 68%);
+    --sl-glow-ring: color-mix(in oklab, var(--sl-gold-400), transparent 82%);
+    --sl-glow-bottom: color-mix(in oklab, var(--sl-gold-500), transparent 78%);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    /* cobre o viewport inteiro */
+    inset: 0;
+    z-index: 0;
+    /* atrás do conteúdo; acima do background do body */
+    pointer-events: none;
+
+    /* 3 camadas de glow + gradiente base */
+    background:
+        radial-gradient(110rem 55rem at 50% -14%, var(--sl-glow-top), transparent 62%),
+        conic-gradient(from 220deg at 50% 22%,
+            var(--sl-glow-ring),
+            transparent 32%,
+            color-mix(in oklab, var(--sl-gold-400), transparent 88%) 58%,
+            transparent 92%,
+            var(--sl-glow-ring) 100%),
+        radial-gradient(95rem 45rem at 50% 112%, var(--sl-glow-bottom), transparent 64%),
+        var(--sl-bg-gradient);
+
+    filter: saturate(1.08) contrast(1.03);
+}
+
+/* Fallback sem color-mix */
+@supports not (background: color-mix(in oklab, white, black)) {
+    body::before {
+        background:
+            radial-gradient(110rem 55rem at 50% -14%, rgba(240, 196, 80, .30), transparent 62%),
+            conic-gradient(from 220deg at 50% 22%, rgba(240, 196, 80, .18), transparent 32%, rgba(240, 196, 80, .10) 58%, transparent 92%, rgba(240, 196, 80, .18) 100%),
+            radial-gradient(95rem 45rem at 50% 112%, rgba(199, 134, 21, .22), transparent 64%),
+            var(--sl-bg-gradient);
+    }
+}
+
+/* Headings “display” opcionais */
 .sl-display {
     font-family: var(--sl-ff-display);
     text-transform: uppercase;
@@ -116,7 +164,7 @@ body {
     border-radius: var(--sl-radius-sm);
 }
 
-/* ===== Utilitários opcionais (acabamento premium) ===== */
+/* ===== Utilitários ===== */
 .u-card-prestige {
     background: linear-gradient(180deg,
             color-mix(in oklab, var(--gray-1), white 4%) 0%,

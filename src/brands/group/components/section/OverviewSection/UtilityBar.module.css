@@ -25,13 +25,31 @@
     z-index: 10;
 }
 
+/* Linha dourada inferior (igual ao hr.separator) */
+.utilityBar::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+
+    /* mesma largura do separator */
+    width: min(var(--sl-container-lg), 100%);
+
+    /* “exactamente igual”: 2px solid gold com 0.9 de opacidade */
+    height: 0;
+    border-top: 2px solid rgba(199, 134, 21, 0.9);
+    opacity: 0.9;
+
+    pointer-events: none;
+}
+
 .inner {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     width: 100%;
     min-height: 2.875rem;
-    padding-inline: clamp(.5rem, 1.2vw, 1rem);
 }
 
 .right {

@@ -182,7 +182,7 @@ export const contacts = {
     title: "Sunlive Group",
     email: "lucas@sunlive.pt",
     phone: "+351 933 600 364",
-    defaultOpen: true, // único a iniciar aberto
+    defaultOpen: false, // único a iniciar aberto
   },
 
   /* ---------- 4.2 Business Units (marcas/áreas) ---------- */

@@ -1,16 +1,15 @@
-/* Moldura ouro + fundo Navy */
+/* Global Presence Panel — sem fundo/moldura locais */
 .panel {
     width: min(60rem, 96vw);
     margin-inline: auto;
     border-radius: 14px;
     padding: clamp(0.75rem, 1.8vw, 1.25rem);
-    background: linear-gradient(180deg, var(--gray-2), var(--gray-3));
-    box-shadow:
-        0 0 0 3px var(--sl-gold-500),
-        0 0 0 8px rgba(167, 116, 25, 0.35);
+    border: 2px solid rgba(199, 134, 21, 0.9);
+    border-radius: 14px;
+    background-color: rgba(2, 10, 32, 1);
 }
 
-/* GRID 6 colunas (permite “encaixar” a 2ª linha entre as de cima) */
+/* GRID 6 colunas (encaixa a 2ª linha entre as de cima) */
 .grid {
     list-style: none;
     margin: 0;
@@ -39,8 +38,7 @@
 }
 
 /* Kuwait  */
-
-/* Bottom row (2 logos centrados ENTRE os de cima) */
+/* Bottom row (2 logos centrados entre os de cima) */
 .grid>li:nth-child(4) {
     grid-column: 2 / span 2;
 }
@@ -53,22 +51,34 @@
 /* Lebanon */
 
 .item {
-    display: grid;
-    place-items: center;
+    border-radius: 12px;
+    /* não muda o layout; só arredonda o fundo */
+    transition: background-color 160ms ease;
 }
 
+.item:hover {
+    background-color: rgba(146, 103, 29, 0.742);
+}
+
+/* tamanho base dos logotipos */
 .item img {
     display: block;
     max-width: min(16rem, 28vw);
     width: auto;
     height: auto;
-    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .35));
+
 }
 
-/* Responsivo — 2 colunas e depois 1, sem posicionamento manual */
+/* ===== Responsivo — 2 colunas e depois 1 + redução progressiva ===== */
 @media (max-width: 900px) {
+    .panel {
+        padding: clamp(.6rem, 2.2vw, 1rem);
+        border-radius: 12px;
+    }
+
     .grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: clamp(.75rem, 2.4vw, 1.25rem);
     }
 
     .grid>li {
@@ -80,13 +90,31 @@
     }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 640px) {
+    .panel {
+        padding: clamp(.5rem, 3vw, .9rem);
+    }
+
     .grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: .9rem;
     }
 
     .item img {
-        max-width: min(14rem, 80vw);
+        max-width: min(11rem, 74vw);
     }
+
+    /* <<< reduz em telemóvel */
+}
+
+@media (max-width: 420px) {
+    .panel {
+        border-radius: 10px;
+    }
+
+    .item img {
+        max-width: min(9.5rem, 86vw);
+    }
+
+    /* ainda mais compacto */
 }

@@ -22,7 +22,7 @@
 
 
   /* Corte premium muito subtil no topo (linha “polida”) */
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+  
   isolation: isolate;
   /* protege camadas decorativas futuras */
 }
