@@ -3,7 +3,7 @@
     width: min(60rem, 96vw);
     margin-inline: auto;
     border-radius: 14px;
-    padding: clamp(0.75rem, 1.8vw, 1.25rem);
+   
     border: 2px solid rgba(199, 134, 21, 0.9);
     border-radius: 14px;
     background-color: rgba(2, 10, 32, 1);

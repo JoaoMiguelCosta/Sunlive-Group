@@ -5,7 +5,7 @@
     display: grid;
     place-items: center;
     width: 100%;
-    padding-block: clamp(.5rem, 2.4vw, 1.25rem);
+    
     overflow: clip;
     /* evita scroll lateral */
     min-width: 0;

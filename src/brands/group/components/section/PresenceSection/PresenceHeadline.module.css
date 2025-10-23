@@ -4,7 +4,7 @@
     isolation: isolate;
     display: grid;
     place-items: center;
-    padding: clamp(1.25rem, 1.5vw, 2rem) 0;
+    
     background: transparent;
     /* fundo vem da página */
 }
