@@ -23,6 +23,7 @@
     --ub-radius: clamp(10px, 1.2vw, 12px);
     --ub-shadow: 0 10px 24px rgba(0, 0, 0, .35);
     z-index: 10;
+    
 }
 
 /* Linha dourada inferior (igual ao hr.separator) */
@@ -36,11 +37,10 @@
     /* mesma largura do separator */
     width: min(var(--sl-container-lg), 100%);
 
-    /* “exactamente igual”: 2px solid gold com 0.9 de opacidade */
-    height: 0;
     border-top: 2px solid rgba(199, 134, 21, 0.9);
-    opacity: 0.9;
-
+        opacity: 0.9;
+    height: 0;
+  
     pointer-events: none;
 }
 
@@ -50,6 +50,7 @@
     justify-content: flex-end;
     width: 100%;
     min-height: 2.875rem;
+   
 }
 
 .right {

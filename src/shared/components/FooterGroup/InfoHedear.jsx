@@ -1,5 +1,11 @@
 import styles from "./InfoHeader.module.css";
-import { GlobeIcon, PinIcon, CardIcon, MailIcon, PhoneIcon } from "../../ui/icons";
+import {
+  GlobeIcon,
+  PinIcon,
+  CardIcon,
+  MailIcon,
+  PhoneIcon,
+} from "../../ui/icons";
 
 /**
  * data esperado em props (footer.infoHeader)
@@ -7,18 +13,23 @@ import { GlobeIcon, PinIcon, CardIcon, MailIcon, PhoneIcon } from "../../ui/icon
 export default function InfoHeader({ data }) {
   if (!data) return null;
   const { brand, location, contacts, socials } = data;
+
+  // Garante nome de marca consistente
+  const brandName = brand?.title || "Sunlive Group";
+
+  // Divide o about vindo do CMS, mas vamos sobrepor o 1º parágrafo
   const aboutParts = (brand?.about || "").split("\n").filter(Boolean);
 
   return (
     <section className={styles.strip} aria-label="Footer — Company Info">
       <div className={styles.inner}>
-        {/* Coluna 1 — Brand/About */}
+        {/* 1) Brand/About — esquerda */}
         <div className={styles.col}>
           <h3 className={styles.title}>
             <span className={styles.icon}>
               <GlobeIcon />
             </span>
-            <span>{brand?.title || "Sunlive Group"}</span>
+            <span>{brandName}</span>
           </h3>
 
           {brand?.tagline && <p className={styles.tagline}>{brand.tagline}</p>}
@@ -26,12 +37,11 @@ export default function InfoHeader({ data }) {
           <div className={styles.about}>
             {aboutParts.map((p, i) => (
               <p key={i}>
-                {brand?.link?.label && brand?.link?.href && i === 0 ? (
+                {i === 0 ? (
                   <>
-                    {p.replace(brand.link.label, "")}
-                    <a className={styles.inlineLink} href={brand.link.href}>
-                      {brand.link.label}
-                    </a>
+                    Na <span className={styles.brandEmph}>{brandName}</span>,
+                    acreditamos que o verdadeiro impacto surge da união entre
+                    visão, ação e valores humanos.
                   </>
                 ) : (
                   p
@@ -41,76 +51,84 @@ export default function InfoHeader({ data }) {
           </div>
         </div>
 
-        {/* Coluna 2 — Location */}
-        <div className={styles.col}>
+        {/* 2) Localização — alinhado ao nível do ícone */}
+        <div
+          className={`${styles.col} ${styles.colStart} ${styles.colIconLead}`}
+        >
           <h3 className={styles.title}>
             <span className={styles.icon}>
               <PinIcon />
             </span>
-            <span>{location?.title || "Location"}</span>
+            <span>{location?.title || "Localização"}</span>
           </h3>
 
-          <address className={styles.address}>
-            {(location?.addressLines || []).map((line, i) => (
-              <div key={i}>{line}</div>
-            ))}
-          </address>
+          <div className={styles.contentLeadIcon}>
+            <address className={styles.address}>
+              {(location?.addressLines || []).map((line, i) => (
+                <div key={i}>{line}</div>
+              ))}
+            </address>
 
-          {location?.mapHref && (
-            <a
-              className={styles.subtleLink}
-              href={location.mapHref}
-              target="_blank"
-              rel="noopener"
-            >
-              Open on Maps →
-            </a>
-          )}
+            {location?.mapHref && (
+              <a
+                className={styles.subtleLink}
+                href={location.mapHref}
+                target="_blank"
+                rel="noopener"
+              >
+                Open on Maps →
+              </a>
+            )}
+          </div>
         </div>
 
-        {/* Coluna 3 — Contacts */}
-        <div className={styles.col}>
+        {/* 3) Contactos — alinhado ao nível do ícone */}
+        <div
+          className={`${styles.col} ${styles.colStart} ${styles.colIconLead}`}
+        >
           <h3 className={styles.title}>
             <span className={styles.icon}>
               <CardIcon />
             </span>
-            <span>{contacts?.title || "Contacts"}</span>
+            <span>{contacts?.title || "Contactos"}</span>
           </h3>
 
-          <div className={styles.contactRow}>
-            <span className={styles.cIcon}>
-              <MailIcon />
-            </span>
-            {contacts?.email?.href ? (
-              <a href={contacts.email.href} className={styles.link}>
-                {contacts.email.label}
-              </a>
-            ) : (
-              <span className={styles.textMuted}>—</span>
-            )}
-          </div>
+          <div className={styles.contentLeadIcon}>
+            <div className={styles.contactRow}>
+              <span className={styles.cIcon}>
+                <MailIcon />
+              </span>
+              {contacts?.email?.href ? (
+                <a href={contacts.email.href} className={styles.link}>
+                  {contacts.email.label}
+                </a>
+              ) : (
+                <span className={styles.textMuted}>—</span>
+              )}
+            </div>
 
-          <div className={styles.contactRow}>
-            <span className={styles.cIcon}>
-              <PhoneIcon />
-            </span>
-            {contacts?.phone?.href ? (
-              <a href={contacts.phone.href} className={styles.link}>
-                {contacts.phone.label}
-              </a>
-            ) : (
-              <span className={styles.textMuted}>—</span>
-            )}
+            <div className={styles.contactRow}>
+              <span className={styles.cIcon}>
+                <PhoneIcon />
+              </span>
+              {contacts?.phone?.href ? (
+                <a href={contacts.phone.href} className={styles.link}>
+                  {contacts.phone.label}
+                </a>
+              ) : (
+                <span className={styles.textMuted}>—</span>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Coluna 4 — Socials */}
-        <div className={styles.col}>
+        {/* 4) Redes — esquerda (igual às outras) */}
+        <div className={`${styles.col}`}>
           <h3 className={styles.title}>
             <span className={styles.icon}>
               <GlobeIcon />
             </span>
-            <span>{socials?.title || "Socials"}</span>
+            <span>{socials?.title || "Redes Sociais"}</span>
           </h3>
 
           <div className={styles.socials}>

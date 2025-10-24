@@ -1,9 +1,9 @@
 import styles from "./BookSection.module.css";
-import { book as bookConfig } from "../../../config.js";
+import { book as bookConfig } from "../../../config.jsx";
 
 /**
  * BookSection — CTA em formato “pill” que descarrega o PDF do Book.
- * O PDF deve estar em /public/books/... e a URL vem de pages/config.js (section 6 — book).
+ * O PDF deve estar em /public/books/... e a URL vem de pages/config.jsx (section 6 — book).
  * Usa BASE_URL para funcionar em sub-paths (ex.: GitHub Pages).
  */
 export default function BookSection() {

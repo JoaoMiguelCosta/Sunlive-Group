@@ -2,7 +2,7 @@
 import styles from "./PartnersSection.module.css";
 import SectionLead from "./SectionLead.jsx";
 import PartnersGrid from "./PartnersGrid.jsx";
-import { partners as partnersConfig } from "../../../config.js";
+import { partners as partnersConfig } from "../../../config.jsx";
 
 export default function PartnersSection() {
   const { id, headline, categories } = partnersConfig ?? {};

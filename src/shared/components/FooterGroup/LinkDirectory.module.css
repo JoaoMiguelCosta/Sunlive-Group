@@ -1,88 +1,119 @@
 /* Prestige Noir + Liquid Gold — Link Directory (footer) */
 
+/* ===== Vars ===== */
+:root {
+    --ld-row-max: clamp(1100px, 82vw, 1280px);
+    --ld-col-w: clamp(14rem, 20vw, 18rem);
+    --ld-pill-h: clamp(42px, 3.2vw, 54px);
+    --ld-gap-x: 1.35rem;
+}
+
+/* ===== Section wrapper ===== */
 .sectionWrap {
     position: relative;
     padding-block: clamp(1.1rem, 2.4vw, 1.8rem);
     color: var(--sl-platinum-100);
 }
 
+/* Centro o PAI do conjunto */
 .inner {
-    width: min(var(--sl-container-lg), 100%);
+    max-width: var(--ld-row-max);
+    width: 100%;
     margin-inline: auto;
-    padding-inline: clamp(0rem, 5vw - 1.5rem, 1rem);
+    padding-inline: clamp(.5rem, 2vw, 1rem);
     box-sizing: border-box;
 
-    /* 2 blocos lado a lado em desktop */
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(1rem, 2vw, 1.5rem);
+    /* mobile */
+    gap: clamp(1rem, 2vw, 1.6rem);
 }
 
+/* Desktop: 2 blocos lado a lado */
 @media (min-width: 1100px) {
     .inner {
         grid-template-columns: 1fr 1fr;
+        align-items: start;
+        column-gap: clamp(2rem, 4vw, 3rem);
     }
 }
 
-
-
-.blockTitle {
+/* Cada bloco = título (auto) + grade (1fr) */
+.block {
     display: grid;
-    place-items: center;
-    margin-bottom: clamp(.6rem, 1.2vw, .8rem);
+    grid-template-rows: auto 1fr;
+    align-content: start;
 }
 
-/* Título em “badge” (pílula com aro dourado) */
-.badge {
-    display: inline-block;
-    padding: .5rem 1.1rem;
-    border: 2px solid var(--sl-gold-400);
-    border-radius: 999px;
+/* Títulos */
+.sectionTitle {
+    margin: 0 0 clamp(.8rem, 1.2vw, 1rem) 0;
     font-weight: 800;
-    letter-spacing: .2px;
     color: var(--sl-platinum-100);
-    background: rgba(199, 134, 21, 0.08);
-    white-space: nowrap;
+    letter-spacing: .2px;
+    line-height: 1.1;
+    font-size: clamp(1.05rem, 1.1rem + .3vw, 1.25rem);
 }
 
-/* ===== Grade Esquerda (2 colunas de pills) ===== */
+.sectionTitleLeft {
+    width: calc(var(--ld-col-w) * 2 + var(--ld-gap-x));
+    margin-inline: auto;
+    text-align: center;
+}
+
+.sectionTitleRight {
+    width: var(--ld-col-w);
+    margin-inline: auto;
+    text-align: center;
+}
+
+/* ===== Grade esquerda (2 colunas fixas) ===== */
 .gridLeft {
     display: grid;
     grid-template-columns: 1fr;
-    gap: .9rem 1.2rem;
+    /* mobile */
+    gap: 1.1rem var(--ld-gap-x);
+    align-content: start;
+    justify-content: center;
 }
 
 @media (min-width: 720px) {
     .gridLeft {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, auto);
     }
 }
 
 .col {
+    width: var(--ld-col-w);
     display: grid;
-    gap: .75rem;
+    gap: 1.1rem;
+    align-content: start;
+    justify-items: stretch;
 }
 
-/* ===== Grade Direita (lista vertical de pills) ===== */
+/* ===== Grade direita (lista vertical) ===== */
 .gridRight {
     display: grid;
-    gap: .9rem;
+    gap: 1.1rem;
+    align-content: start;
+    justify-items: center;
 }
 
-/* ===== Pill ===== */
-.pill {
-    --pill-h: clamp(38px, 3vw, 46px);
+.gridRight>* {
+    width: var(--ld-col-w);
+}
 
-    display: inline-flex;
+/* =========================================================================
+   PILL — conteúdo centrado (flag colada ao nome)
+   ======================================================================= */
+.pill {
+    display: flex;
     align-items: center;
     justify-content: center;
-    min-height: var(--pill-h);
-    padding: .45rem 1rem;
-
+    /* grupo centrado no card */
+    min-height: var(--ld-pill-h);
     width: 100%;
-    max-width: 20rem;
-    /* para ter “peso” visual consistente */
-    margin-inline: auto;
+    padding: .45rem 1rem;
 
     border: 2px solid var(--sl-gold-400);
     border-radius: 1.35rem;
@@ -96,6 +127,52 @@
     transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
 }
 
+/* Grupo compacto: flag + nome (um só bloco) */
+.pillContent {
+    display: inline-flex;
+    align-items: center;
+    gap: .70rem;
+    /* distância entre a bandeira e o nome */
+    line-height: 1;
+    text-align: center;
+    /* nome centrado visualmente */
+}
+
+/* Caixa da flag normalizada (24x16) */
+.flagBox {
+    width: 24px;
+    height: 16px;
+    overflow: hidden;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .25) inset;
+}
+
+.flagBox>svg,
+.flagBox img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    shape-rendering: crispEdges;
+}
+
+/* (compat) caso uses .flag noutro local */
+.flag {
+    width: 24px;
+    height: 16px;
+    display: block;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .25) inset;
+}
+
+/* Texto */
+.pillLabel {
+    font-size: clamp(.95rem, .4vw + .9rem, 1.05rem);
+    white-space: nowrap;
+    line-height: 1;
+}
+
+/* Interações */
 .pill:hover {
     transform: translateY(-1px);
     background: rgba(255, 162, 0, .12);
@@ -112,16 +189,70 @@
     pointer-events: none;
 }
 
-.pillLabel {
-    font-size: clamp(.95rem, .4vw + .9rem, 1.05rem);
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
+/* ===== Ajustes óticos por país ===== */
+.pill--malta .pillContent {
+    transform: translateX(2px);
 }
 
-/* reduz animações para quem preferir */
-@media (prefers-reduced-motion: reduce) {
-    .pill {
-        transition: none;
+.pill--qatar .pillContent {
+    transform: translateX(1px);
+}
+
+/* ✅ Kuwait e Lebanon mais 2px à direita */
+.pill--kuwait .pillContent {
+    transform: translateX(6px);
+}
+
+.pill--lebanon .pillContent {
+    transform: translateX(13px);
+}
+
+.pill--iraq .pillContent {
+    transform: translateX(-5px);
+}
+
+
+/* ===== Responsivo ===== */
+@media (max-width: 1099px) {
+    :root {
+        --ld-col-w: clamp(14rem, 70vw, 22rem);
+    }
+
+    .sectionTitleLeft,
+    .sectionTitleRight {
+        width: auto;
+        margin-inline: 0;
+        text-align: center;
+    }
+}
+
+/* =====<= 720px: tudo 100% centrado ===== */
+@media (max-width: 720px) {
+
+    /* títulos ocupam a largura disponível e ficam centrados */
+    .sectionTitleLeft,
+    .sectionTitleRight {
+        width: auto;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    /* grade da esquerda (1 coluna) bem centrada */
+    .gridLeft {
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .col {
+        justify-items: stretch;
+    }
+
+    /* anula ajustes óticos por país para ficar pixel-centrado */
+    .pill--malta .pillContent,
+    .pill--qatar .pillContent,
+    .pill--kuwait .pillContent,
+    .pill--lebanon .pillContent,
+    .pill--iraq .pillContent {
+        transform: none;
     }
 }

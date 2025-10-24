@@ -1,7 +1,7 @@
 import styles from "./FooterGroup.module.css";
 
 // sub-blocos
-import InfoHeader from "./InfoHedear.jsx"; // (mantive o nome do teu ficheiro)
+import InfoHeader from "./InfoHedear.jsx"; // mantém o nome do teu ficheiro
 import LinkDirectory from "./LinkDirectory.jsx";
 import Acknowledgements from "./Acknowledgements.jsx";
 import PoliciesBar from "./PoliciesBar.jsx";
@@ -15,7 +15,8 @@ import PoliciesBar from "./PoliciesBar.jsx";
  *      infoHeader,        // obj (secção 7.1)
  *      linkDirectory,     // obj (secção 7.2)
  *      acknowledgements,  // obj (secção 7.3)
- *      policiesBar        // obj (secção 7.4)
+ *      policiesBar,       // obj (secção 7.4)
+ *      id                 // opcional (default "footer")
  *    }
  *
  * Sugestão de uso:
@@ -35,17 +36,20 @@ export default function FooterGroup({ data }) {
 
   return (
     <footer id={id} className={styles.footerWrap} role="contentinfo">
-      {/* 7.1 */}
-      {infoHeader && <InfoHeader data={infoHeader} />}
+      {/* Frame com a mesma largura/margens das outras secções */}
+      <div className={styles.frame}>
+        {/* 7.1 */}
+        {infoHeader && <InfoHeader data={infoHeader} />}
 
-      {/* 7.2 */}
-      {linkDirectory && <LinkDirectory data={linkDirectory} />}
+        {/* 7.2 */}
+        {linkDirectory && <LinkDirectory data={linkDirectory} />}
 
-      {/* 7.3 */}
-      {acknowledgements && <Acknowledgements data={acknowledgements} />}
+        {/* 7.3 */}
+        {acknowledgements && <Acknowledgements data={acknowledgements} />}
 
-      {/* 7.4 */}
-      {policiesBar && <PoliciesBar data={policiesBar} />}
+        {/* 7.4 */}
+        {policiesBar && <PoliciesBar data={policiesBar} />}
+      </div>
     </footer>
   );
 }

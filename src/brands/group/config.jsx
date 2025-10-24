@@ -1,4 +1,4 @@
-// src/brands/group/pages/config.js
+// src/brands/group/pages/config.jsx
 import { FacebookIcon, InstagramIcon } from "../../shared/ui/icons/index.js";
 
 /* ---------- Assets Overview ---------- */
@@ -171,11 +171,95 @@ export const presence = {
     alt: "Dream, Dare and Do",
   },
 };
-
 /* ======================================================================
    SECTION 4 — CONTACTS
    (Group Hub + Business Units + Regional Offices)
 ====================================================================== */
+
+/* ---------- Inline SVG Icons (leves) ---------- */
+const MailIcon = (props = {}) => (
+  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" {...props}>
+    <path
+      fill="currentColor"
+      d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5Z"
+    />
+  </svg>
+);
+
+const PhoneIcon = (props = {}) => (
+  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" {...props}>
+    <path
+      fill="currentColor"
+      d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1 .3 2 .5 3 .5.7 0 1.2.5 1.2 1.2V20c0 .7-.5 1.2-1.2 1.2C10.6 21.2 2.8 13.4 2.8 3.2 2.8 2.5 3.3 2 4 2h3.4c.7 0 1.2.5 1.2 1.2 0 1 .2 2 .5 3 .1.4 0 .9-.3 1.2l-2.2 2.4Z"
+    />
+  </svg>
+);
+
+/* ---------- Malta (24x16, inteiro) ---------- */
+const MaltaFlag = (props = {}) => (
+  <svg viewBox="0 0 24 16" aria-hidden="true" {...props}>
+    <rect x="12" y="0" width="12" height="16" fill="#d00" />
+    <rect x="0"  y="0" width="12" height="16" fill="#fff" />
+    <rect x="2"  y="2" width="4"  height="4"  fill="#c0c0c0" rx="0.4" />
+    <rect x="3.4" y="2" width="1.2" height="4"  fill="#a00" />
+    <rect x="2"  y="3.4" width="4"  height="1.2" fill="#a00" />
+  </svg>
+);
+
+/* ---------- Qatar (serrilhado inteiro, 24x16) ---------- */
+const QatarFlag = (props = {}) => (
+  <svg viewBox="0 0 24 16" aria-hidden="true" {...props}>
+    <rect width="24" height="16" fill="#8d153a" />
+    <polygon
+      fill="#fff"
+      points="
+        0,0 12,0
+        10,2 12,4
+        10,6 12,8
+        10,10 12,12
+        10,14 12,16
+        0,16
+      "
+    />
+  </svg>
+);
+
+/* ---------- Kuwait (faixas 5/6/5 + trapézio) ---------- */
+const KuwaitFlag = (props = {}) => (
+  <svg viewBox="0 0 24 16" aria-hidden="true" {...props}>
+    <rect y="0"  width="24" height="5"  fill="#009e60" />
+    <rect y="5"  width="24" height="6"  fill="#fff" />
+    <rect y="11" width="24" height="5"  fill="#ce1126" />
+    <polygon points="0,0 8,4 8,12 0,16" fill="#000" />
+  </svg>
+);
+
+/* ---------- Lebanon (4/8/4 + pinheiro simplificado) ---------- */
+const LebanonFlag = (props = {}) => (
+  <svg viewBox="0 0 24 16" aria-hidden="true" {...props}>
+    <rect width="24" height="16" fill="#fff" />
+    <rect y="0"  width="24" height="4" fill="#ce1126" />
+    <rect y="12" width="24" height="4" fill="#ce1126" />
+    <path
+      d="M12 4 L9 8 H11 L10 10 H12 L11 11 H13 L12 10 H14 L13 8 H15 L12 4 Z"
+      fill="#007a3d"
+    />
+  </svg>
+);
+
+/* ---------- Iraq (5/6/5 + faixa verde simbólica) ---------- */
+const IraqFlag = (props = {}) => (
+  <svg viewBox="0 0 24 16" aria-hidden="true" {...props}>
+    <rect width="24" height="16" fill="#fff" />
+    <rect y="0"  width="24" height="5" fill="#ce1126" />
+    <rect y="11" width="24" height="5" fill="#000" />
+    <rect x="7" y="7" width="10" height="2" fill="#007a3d" rx="0.3" />
+  </svg>
+);
+
+
+/* ====================================================================== */
+
 export const contacts = {
   id: "contacts",
 
@@ -235,12 +319,18 @@ export const contacts = {
     },
   ],
 
+  /* ---------- Ícones disponíveis para componentes ---------- */
+  icons: {
+    Mail: MailIcon,
+    Phone: PhoneIcon,
+  },
+
   /* ---------- 4.3 Regional Offices (países) ---------- */
   regionalOffices: [
     {
       key: "malta",
       label: "Malta",
-      flagSrc: malta,
+      Flag: MaltaFlag,
       email: "malta@sunlive.pt",
       phone: "+351 916 626 270",
       defaultOpen: false,
@@ -248,7 +338,7 @@ export const contacts = {
     {
       key: "qatar",
       label: "Qatar",
-      flagSrc: qatar,
+      Flag: QatarFlag,
       email: "qatar@sunlive.pt",
       phone: "+351 916 626 270",
       defaultOpen: false,
@@ -256,7 +346,7 @@ export const contacts = {
     {
       key: "kuwait",
       label: "Kuwait",
-      flagSrc: kuwait,
+      Flag: KuwaitFlag,
       email: "kuwait@sunlive.pt",
       phone: "+96 599 255 116",
       defaultOpen: false,
@@ -264,7 +354,7 @@ export const contacts = {
     {
       key: "lebanon",
       label: "Lebanon",
-      flagSrc: lebanon,
+      Flag: LebanonFlag,
       email: "lebanon@sunlive.pt",
       phone: null,
       defaultOpen: false,
@@ -272,7 +362,7 @@ export const contacts = {
     {
       key: "iraq",
       label: "Iraq",
-      flagSrc: iraq,
+      Flag: IraqFlag,
       email: "iraq@sunlive.pt",
       phone: null,
       defaultOpen: false,

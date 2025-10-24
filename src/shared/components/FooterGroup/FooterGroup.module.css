@@ -1,31 +1,42 @@
 /* =============================================================================
-   FooterGroup “casca”
-   Paleta: Prestige Noir + Liquid Gold
-   Cada sub-secção já tem as suas próprias linhas de separação.
+   FooterGroup “casca” (Prestige Noir + Liquid Gold)
+   O fundo vive no .frame, que usa a mesma largura do container do site.
+   IMPORTANTE: não colocar padding-inline no .frame, porque as subsecções
+   (.strip > .inner) já tratam do padding lateral.
 ============================================================================= */
 
 .footerWrap {
-    position: relative;
-    isolation: isolate;
-
-    /* fundo escuro com leve vinheta */
-    background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(199, 134, 21, .10), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(10, 28, 54, .25), transparent 60%),
-        #070f1e;
-    /* fallback */
-
-    color: var(--sl-platinum-100);
-    /* pequena linha de topo para fundir com o conteúdo acima, opcional */
-    border-top: 1px solid rgba(199, 134, 21, 0.35);
-
-    /* evita que possíveis sombras internas cortem */
-    overflow: clip;
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  /* full-bleed sem fundo aqui */
+  color: var(--sl-platinum-100);
+  overflow: clip;
+  /* previne cortes de sombras internas */
 }
 
-/* Se precisares de um espaçamento extra acima/abaixo do footer
-.footerWrap {
-  padding-top: 0;
-  padding-bottom: 0;
+/* Frame interno com a mesma largura do resto do site */
+.frame {
+  width: min(var(--sl-container-lg), 100%);
+  margin-inline: auto;
+  padding-inline: 0;
+  /* <- REMOVIDO para não “encolher” o conteúdo */
+  box-sizing: border-box;
+
+  /* Fundo escuro com leve vinheta */
+  background:
+    radial-gradient(1200px 420px at 50% -10%, rgba(199, 134, 21, .10), transparent 60%),
+    radial-gradient(900px 380px at 70% 115%, rgba(10, 28, 54, .25), transparent 60%),
+    #070f1e;
+  /* fallback */
+
+  /* Linha de topo para fundir com a secção anterior */
+  border-top: 1px solid rgba(199, 134, 21, 0.35);
+  overflow: clip;
+}
+
+/* Caso precises, controla o “respiro” vertical do bloco do footer aqui:
+.frame {
+  padding-block: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 */

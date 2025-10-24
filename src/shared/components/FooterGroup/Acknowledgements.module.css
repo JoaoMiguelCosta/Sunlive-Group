@@ -4,45 +4,75 @@
     position: relative;
     background: transparent;
     color: var(--sl-platinum-100);
-    padding-block: clamp(.6rem, 1.6vw, 1rem);
+    padding-block: clamp(0.5rem, 1.2vw, 0.9rem);
 
-    /* linhas finas, como no mock */
-    border-top: 1px solid rgba(199, 134, 21, .35);
-    border-bottom: 1px solid rgba(199, 134, 21, .20);
+    /* linhas finas (full-bleed) */
+    border-top: 2px solid rgba(199, 134, 21, 0.9);
+    border-bottom: 2px solid rgba(199, 134, 21, 0.9);
 }
 
+/* content wrapper: centra tudo */
 .inner {
-    width: min(var(--sl-container-lg), 100%);
+    /* a faixa é full width; o conteúdo (logo strip) é centrado */
+    inline-size: 100%;
     margin-inline: auto;
-    padding-inline: clamp(0rem, 5vw - 1.5rem, 1rem);
+    padding-inline: clamp(0.5rem, 4vw, 1rem);
     box-sizing: border-box;
 
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Link “transparente” para permitir hover */
+/* Link “transparente” (tap target confortável) */
 .click {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     transition: transform 120ms ease, filter 120ms ease;
+    padding: clamp(0rem, 0.6vw, 0.25rem);
+    /* melhora alvo de toque sem “empurrar” layout */
 }
 
 .click:hover {
     transform: translateY(-1px);
     filter: brightness(1.02);
+    background: rgba(255, 162, 0, .12);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .click {
+        transition: none;
+    }
 }
 
 /* Imagem responsiva e nítida */
 .img {
     display: block;
-    width: 100%;
-    max-width: 1200px;
-    max-height: 86px;
-    /* altura da faixa do mock */
+
+    /* ocupa a largura disponível até um teto confortável; mantém proporção */
+    max-inline-size: min(100%, 1240px);
+    inline-size: 100%;
+    block-size: auto;
+
+    /* altura máxima fluida: encolhe em ecrãs pequenos, limita nos grandes */
+    max-height: clamp(42px, 8vw, 86px);
+
     object-fit: contain;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
+
+    /* Evita filtros agressivos de “image-rendering” que podem piorar em HiDPI */
+    image-rendering: auto;
+}
+
+/* micro-ajustes em ecrãs muito estreitos */
+@media (max-width: 360px) {
+    .sectionWrap {
+        padding-block: 0.4rem;
+    }
+
+    .img {
+        max-height: clamp(36px, 9vw, 72px);
+    }
 }

@@ -102,6 +102,7 @@
 
 .row:hover {
     text-decoration: underline;
+    color: var(--sl-gold-400);
 }
 
 .icon {
