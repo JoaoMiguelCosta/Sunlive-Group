@@ -1,12 +1,18 @@
 import styles from "./LinkDirectory.module.css";
 import { contacts } from "../../../brands/group/config.jsx";
 
+/**
+ * LinkDirectory — lista de atalhos (unidades/países + parceiros).
+ * Espera um objeto `data` com a forma de `linkDirectory` do config.
+ *
+ * A coluna da esquerda pode mostrar bandeiras (mapeadas em contacts.regionalOffices).
+ */
 export default function LinkDirectory({ data }) {
   if (!data) return null;
 
   const { left, right } = data;
 
-  // Mapa key/label -> componente da Flag
+  // ---- Mapa key/label -> Componente de Flag (opcional, só para o bloco esquerdo)
   const flagMap = new Map(
     (contacts?.regionalOffices || [])
       .map((o) => {
@@ -14,26 +20,25 @@ export default function LinkDirectory({ data }) {
         const byLabel = [o.label?.toLowerCase(), o.Flag];
         return [byKey, byLabel];
       })
-      .flat(1)
+      .flat()
   );
 
   const getFlagComp = (item) => {
-    const key = item?.key?.toLowerCase?.();
-    const label = item?.label?.toLowerCase?.();
-    return flagMap.get(key) || flagMap.get(label) || null;
+    const k = item?.key?.toLowerCase?.();
+    const l = item?.label?.toLowerCase?.();
+    return flagMap.get(k) || flagMap.get(l) || null;
   };
 
-  // devolve a classe modificadora por país (ex.: "pill--malta")
+  // Classe modificadora por país (ex.: "pill--malta")
   const modClassFor = (key) => {
     const k = key?.toLowerCase?.();
-    const className = k && styles[`pill--${k}`];
-    return className ? className : "";
+    return (k && styles[`pill--${k}`]) || "";
   };
 
   return (
     <section className={styles.sectionWrap} aria-label="Footer — Quick Links">
       <div className={styles.inner}>
-        {/* Bloco Esquerdo: Contactos Sunlive Group */}
+        {/* -------- Bloco Esquerdo: Contactos -------- */}
         <div className={styles.block}>
           {left?.title && (
             <h3 className={`${styles.sectionTitle} ${styles.sectionTitleLeft}`}>
@@ -47,7 +52,7 @@ export default function LinkDirectory({ data }) {
                 {(col.items || []).map((item) => {
                   const { key, label, href, disabled } = item;
                   const Flag = getFlagComp(item);
-                  const mod = modClassFor(item.key);
+                  const mod = modClassFor(key);
 
                   return (
                     <a
@@ -58,11 +63,11 @@ export default function LinkDirectory({ data }) {
                       tabIndex={disabled ? -1 : 0}
                     >
                       <span className={styles.pillContent}>
-                        {Flag ? (
+                        {Flag && (
                           <span className={styles.flagBox}>
                             <Flag />
                           </span>
-                        ) : null}
+                        )}
                         <span className={styles.pillLabel}>{label}</span>
                       </span>
                     </a>
@@ -73,7 +78,7 @@ export default function LinkDirectory({ data }) {
           </div>
         </div>
 
-        {/* Bloco Direito: Rede de Parceiros (sem bandeiras) */}
+        {/* -------- Bloco Direito: Rede de Parceiros -------- */}
         <div className={styles.block}>
           {right?.title && (
             <h3

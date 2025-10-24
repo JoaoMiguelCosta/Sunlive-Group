@@ -490,7 +490,7 @@ export const footer = {
   // as próximas subdivisões (preenchemos depois)
   linkDirectory: {
     left: {
-      title: "Contactos Sunlive Group",
+      title: "Contacts Sunlive Group", // <- atualizado
       // 2 colunas: Unidades + Países (atalhos)
       columns: [
         {
@@ -521,7 +521,7 @@ export const footer = {
           key: "countries",
           items: [
             { key: "malta", label: "Malta", href: "/sunlive-group#contacts" },
-            { key: "qatar", label: "Catar", href: "/sunlive-group#contacts" },
+            { key: "qatar", label: "Catar", href: "/sunlive-group#contacts" }, // mantém PT se quiseres muda para "Qatar"
             { key: "kuwait", label: "Kuwait", href: "/sunlive-group#contacts" },
             {
               key: "lebanon",
@@ -535,21 +535,25 @@ export const footer = {
     },
 
     right: {
-      title: "Rede de Parceiros",
+      title: "Our Network of Partners",
       items: [
-        { key: "committees", label: "Comités", href: "/partners/committees" },
+        {
+          key: "committees",
+          label: "Committees",
+          href: "/partners/committees",
+        },
         {
           key: "federations",
-          label: "Federações",
+          label: "Federations",
           href: "/partners/federations",
         },
-        { key: "teams", label: "Equipas", href: "/partners/teams" },
+        { key: "teams", label: "Teams", href: "/partners/teams" },
         {
           key: "associations",
-          label: "Associações",
+          label: "Associations",
           href: "/partners/associations",
         },
-        { key: "others", label: "Outros Parceiros", href: "/partners/others" },
+        { key: "others", label: "Other Partners", href: "/partners/others" },
       ],
     },
   },
