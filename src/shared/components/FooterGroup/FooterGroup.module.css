@@ -1,42 +1,58 @@
 /* =============================================================================
-   FooterGroup “casca” (Prestige Noir + Liquid Gold)
-   O fundo vive no .frame, que usa a mesma largura do container do site.
-   IMPORTANTE: não colocar padding-inline no .frame, porque as subsecções
-   (.strip > .inner) já tratam do padding lateral.
+   FooterGroup — alinhado ao mesmo container + inset das secções
 ============================================================================= */
 
 .footerWrap {
   position: relative;
   isolation: isolate;
   background: transparent;
-  /* full-bleed sem fundo aqui */
   color: var(--sl-platinum-100);
   overflow: clip;
-  /* previne cortes de sombras internas */
+
+  /* Agora herda 1) --sl-line-inset da página, 2) --line-inset local (fallback),
+     3) um valor default. Assim o footer acompanha SEMPRE a linha acima. */
+  --section-inset: var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)));
+  --rule-thickness: 2px;
 }
 
-/* Frame interno com a mesma largura do resto do site */
+/* 
+  A “caixa azul” tem a MESMA largura que o traço dourado:
+  width = container − 2 × inset. Sem padding lateral aqui.
+*/
 .frame {
-  width: min(var(--sl-container-lg), 100%);
+  inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
   margin-inline: auto;
-  padding-inline: 0;
-  /* <- REMOVIDO para não “encolher” o conteúdo */
   box-sizing: border-box;
+  position: relative;
+  overflow: clip;
+  padding: 0;
 
-  /* Fundo escuro com leve vinheta */
   background:
     radial-gradient(1200px 420px at 50% -10%, rgba(199, 134, 21, .10), transparent 60%),
     radial-gradient(900px 380px at 70% 115%, rgba(10, 28, 54, .25), transparent 60%),
     #070f1e;
-  /* fallback */
-
-  /* Linha de topo para fundir com a secção anterior */
-  border-top: 1px solid rgba(199, 134, 21, 0.35);
-  overflow: clip;
 }
 
-/* Caso precises, controla o “respiro” vertical do bloco do footer aqui:
-.frame {
-  padding-block: clamp(1.25rem, 2.5vw, 1.75rem);
+/* Linha de topo — ocupa 100% da largura do frame (já reduzida pelo inset) */
+.frame::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: var(--rule-thickness);
+  background: rgba(199, 134, 21, 0.35);
+  pointer-events: none;
 }
-*/
+
+/* Cola o frame ao bloco anterior (compensa a espessura da linha) */
+.flushTop .frame {
+  margin-top: calc(-1 * var(--rule-thickness) - 1px);
+}
+
+/* Se precisares de uma “strip” acima, com o MESMO alinhamento: */
+.strip {
+  inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
+  margin-inline: auto;
+  box-sizing: border-box;
+  border-top: var(--rule-thickness) solid rgba(199, 134, 21, 0.35);
+}

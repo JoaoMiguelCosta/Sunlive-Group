@@ -1,0 +1,299 @@
+/* Divisions Panel — Sunlive “Performance Prestige” (sem glow local) */
+.sectionWrap {
+    position: relative;
+    width: 100%;
+    padding-block: clamp(0.75rem, 2.4vw, 1.75rem);
+
+    /* usar a mesma variável das linhas laterais desta secção */
+    --section-inset: clamp(16px, 3.5vw, 44px);
+}
+
+/* (Opcional) Se quiseres que as próprias linhas vivam aqui: */
+.sectionWrap::before,
+.sectionWrap::after {
+    content: "";
+    position: absolute;
+    left: var(--section-inset);
+    right: var(--section-inset);
+    height: 2px;
+  
+    pointer-events: none;
+}
+
+.sectionWrap::before {
+    top: 0;
+}
+
+.sectionWrap::after {
+    bottom: 0;
+}
+
+/* Painel com borda alinhada às linhas laterais */
+.panel {
+    position: relative;
+    display: grid;
+    gap: clamp(.6rem, 1.6vw, 1rem);
+
+    width: calc(100% - (var(--section-inset) * 2));
+    margin-inline: var(--section-inset);
+
+    padding-block: clamp(.4rem, 1.4vw, .8rem);
+    padding-inline: clamp(.75rem, 3.5vw, 2.25rem);
+
+    overflow: clip;
+    min-width: 0;
+
+    border: 2px solid rgba(199, 134, 21, 0.9);
+    border-radius: 14px;
+    background-color: rgba(2, 10, 32, 1);
+    box-sizing: border-box;
+    /* inclui a borda no cálculo */
+}
+
+.row {
+    display: grid;
+    width: 100%;
+    gap: clamp(.75rem, 2vw, 1.25rem);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    min-width: 0;
+    justify-items: center;
+}
+
+@media (max-width: 1200px) {
+    .row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.homeRow {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    padding-top: clamp(.4rem, 1.2vw, .8rem);
+}
+
+/* ===== Cards (base compartilhada) ===== */
+.card,
+.homeCard {
+    --card-scale: 1.0;
+    --card-border: color-mix(in oklab, var(--accent), transparent 55%);
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    aspect-ratio: 245 / 97;
+    border-radius: calc(var(--sl-radius-sm) - 2px);
+    background-color: rgba(2, 10, 32, 1);
+    border: 2px solid rgba(199, 134, 21, 0.9);
+    text-decoration: none;
+    transition:
+        transform var(--dur-2, 180ms) var(--ease-out, ease),
+        box-shadow var(--dur-2, 180ms) var(--ease-out, ease),
+        border-color var(--dur-2, 180ms) var(--ease-out, ease),
+        filter var(--dur-2, 180ms) var(--ease-out, ease),
+        background 200ms ease;
+    -webkit-tap-highlight-color: transparent;
+    transform: scale(var(--card-scale));
+}
+
+/* Larguras específicas */
+.card {
+    max-width: clamp(210px, 46vw, 320px);
+}
+
+/* 4 colunas → 3 gaps: Our Home fica com a mesma largura de uma coluna */
+.homeCard {
+    max-width: calc((100% - (clamp(.75rem, 2vw, 1.25rem) * 3)) / 4);
+}
+
+/* Hover marcante + overlay dourado (ambos os tipos) */
+.card::after,
+.homeCard::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: rgba(255, 162, 0, 0.12);
+    opacity: 0;
+    transition: opacity 180ms ease;
+    pointer-events: none;
+}
+
+@media (hover: hover) {
+
+    .card:hover,
+    .homeCard:hover {
+        --card-scale: 1.015;
+        border-color: color-mix(in oklab, var(--accent), transparent 10%);
+        box-shadow:
+            0 0 0 1px color-mix(in oklab, var(--accent), black 25%),
+            0 16px 48px rgba(0, 0, 0, .50);
+        background:
+            linear-gradient(180deg,
+                color-mix(in oklab, var(--gray-2), white 2%),
+                color-mix(in oklab, var(--gray-3), black 4%));
+    }
+
+    .card:hover::after,
+    .homeCard:hover::after {
+        opacity: 1;
+    }
+
+    .card:hover .cardImg,
+    .homeCard:hover .cardImg {
+        filter:
+            drop-shadow(0 1px 0 rgba(255, 255, 255, .04)) drop-shadow(0 14px 28px rgba(0, 0, 0, .5)) brightness(1.03);
+    }
+}
+
+.card:active,
+.homeCard:active {
+    --card-scale: 1.0;
+}
+
+/* Focus acessível (ambos) */
+.card:focus-visible,
+.homeCard:focus-visible {
+    outline: 0;
+    box-shadow:
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--accent), white 25%);
+    border-color: color-mix(in oklab, var(--accent), transparent 15%);
+}
+
+.card:focus-visible::after,
+.homeCard:focus-visible::after {
+    opacity: 1;
+}
+
+/* Desativado */
+.cardDisabled {
+    cursor: not-allowed;
+    opacity: .75;
+    filter: grayscale(.15) saturate(.9);
+    border-color: color-mix(in oklab, var(--accent), transparent 60%);
+}
+
+.cardDisabled::after {
+    opacity: 0 !important;
+}
+
+.cardDisabled:hover,
+.cardDisabled:active,
+.cardDisabled:focus-visible {
+    transform: none;
+    box-shadow: none;
+    outline: none;
+}
+
+/* Tipografia/Imagens dentro do card */
+.cardTitle {
+    color: var(--text-1);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-family: var(--sl-ff-display, "Orbitron", "Eurostile", var(--font-sans));
+    font-weight: 800;
+    line-height: 1;
+    font-size: clamp(.9rem, 1.8vw, 1rem);
+}
+
+.cardSub {
+    margin-top: .35rem;
+    color: var(--text-2);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-family: var(--sl-ff-ui, var(--font-sans));
+    font-weight: 600;
+    line-height: 1;
+    font-size: clamp(.55rem, 1.2vw, .625rem);
+}
+
+.cardImg {
+    width: 92%;
+    height: 92%;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    filter:
+        drop-shadow(0 1px 0 rgba(255, 255, 255, .03)) drop-shadow(0 8px 18px rgba(0, 0, 0, .35));
+}
+
+/* Badge “Brevemente” */
+.badge {
+    position: absolute;
+    top: -0.9rem;
+    right: .75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .22rem .6rem;
+    font-family: var(--sl-ff-ui, var(--font-sans));
+    font-weight: 900;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-size: clamp(.62rem, 1vw, .72rem);
+    color: #121418;
+    background: linear-gradient(180deg,
+            color-mix(in oklab, var(--accent), white 24%),
+            color-mix(in oklab, var(--accent), black 6%));
+    border: 1px solid color-mix(in oklab, var(--accent), black 28%);
+    border-radius: 999px;
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, .45),
+        inset 0 1px 0 rgba(255, 255, 255, .35);
+    pointer-events: none;
+    transform: translateY(-10%);
+}
+
+/* ===== Responsividade extra ===== */
+@media (max-width: 900px) {
+    .panel {
+        padding-inline: clamp(.75rem, 3vw, 2rem);
+        padding-block: clamp(.35rem, 1vw, .6rem);
+    }
+
+    .row {
+        gap: clamp(.6rem, 1.6vw, .9rem);
+    }
+
+    .card {
+        max-width: clamp(200px, 42vw, 300px);
+    }
+}
+
+@media (max-width: 560px) {
+    .panel {
+        padding-inline: clamp(.5rem, 4vw, 1rem);
+        border-radius: 12px;
+    }
+
+    .row {
+        gap: .6rem;
+    }
+
+    .homeRow {
+        padding-top: .5rem;
+    }
+
+    .card {
+        max-width: clamp(190px, 86vw, 280px);
+    }
+
+    .badge {
+        top: -0.7rem;
+        right: .5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .card {
+        max-width: 92vw;
+    }
+}

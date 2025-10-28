@@ -1,0 +1,11 @@
+/* âncoras: reserva espaço ao topo quando se navega por #id */
+:where(section[id]) {
+    scroll-margin-top: var(--anchor-offset, 24px);
+}
+
+@media (min-width: 1024px) {
+    :where(section[id]) {
+        --anchor-offset: 48px;
+        /* ajusta ao teu header sticky */
+    }
+}

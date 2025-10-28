@@ -14,6 +14,9 @@
     background: transparent;
     color: var(--sl-color-text);
     isolation: isolate;
+
+    /* NOVO: token de alinhamento para TODAS as linhas/frames da página */
+    --sl-line-inset: clamp(12px, 4vw, 40px);
 }
 
 /* ========= CAMADA 2 — CONTEÚDO CENTRADO ========= */
@@ -28,16 +31,20 @@
     width: min(var(--sl-container-lg), 100%);
     margin-inline: auto;
 
-  
-
+    /* linha suave no topo da área de conteúdo */
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 /* Grid de secções internas */
 .sections {
     display: grid;
-   
     width: 100%;
+    row-gap: clamp(1.25rem, 2.6vw, 2rem);
+}
+
+/* remover qualquer “gap” antes do footer */
+.sections>*:last-child {
+    margin-bottom: 0 !important;
 }
 
 /* Secção base */

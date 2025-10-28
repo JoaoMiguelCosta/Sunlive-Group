@@ -1,0 +1,59 @@
+/* Performance Prestige — botão com aro dourado e leve brilho */
+
+.button {
+    --gold-400: var(--sl-gold-400, #C78615);
+    --gold-500: var(--sl-gold-500, #A16207);
+
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+
+    padding: .55rem .9rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #fff;
+
+    border: 1.5px solid var(--gold-400);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
+        radial-gradient(120% 140% at 50% 0%, rgba(255, 226, 167, .10), rgba(255, 255, 255, 0) 60%);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .06),
+        0 8px 20px rgba(0, 0, 0, .25);
+
+    font: 600 .98rem/1 var(--sl-ff-ui, Inter, system-ui, sans-serif);
+    letter-spacing: .02em;
+
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, filter .18s ease;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+    border-color: var(--gold-500);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .08),
+        0 10px 24px rgba(0, 0, 0, .30);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .25));
+    background-color: rgba(255, 162, 0, 0.12);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.button:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 3px rgba(199, 134, 21, .22),
+        0 8px 20px rgba(0, 0, 0, .25);
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+}
+
+.label {
+    white-space: nowrap;
+}

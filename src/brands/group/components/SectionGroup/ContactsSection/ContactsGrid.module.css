@@ -1,0 +1,143 @@
+/* =========================================
+   Contacts Grid (BusinessUnits + RegionalOffices)
+   Prestige Noir + Liquid Gold — sem glows locais
+========================================= */
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* ligeiramente mais espaço vertical entre itens */
+    gap: clamp(1.1rem, 1.8vw, 1.6rem) 1rem;
+}
+
+.item {
+    grid-column: span 12;
+}
+
+@media (min-width: 720px) {
+    .item {
+        grid-column: span 6;
+    }
+}
+
+@media (min-width: 1100px) {
+    .item {
+        grid-column: span 4;
+    }
+}
+
+/* ---------- Layout especial: 5 itens (3 em cima + 2 centrados) ---------- */
+@media (min-width: 1100px) {
+
+    /* aplica só quando o grid declara data-count="5" (RegionalOffices) */
+    .grid[data-count="5"] .item:nth-child(4) {
+        grid-column: 3 / span 4;
+    }
+
+    .grid[data-count="5"] .item:nth-child(5) {
+        grid-column: 7 / span 4;
+    }
+}
+
+/* PILL (btn) */
+.pill {
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+
+    /* padding comum a BU/RO */
+    padding: .52rem .9rem;
+
+    border: 3px solid var(--sl-gold-400);
+    border-radius: 1.35rem;
+    background: rgba(2, 10, 32, 1);
+    color: #eaf0ff;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease,
+        background-color 120ms ease, opacity 120ms ease;
+}
+
+.pill:hover {
+    transform: translateY(-1px);
+    background-color: rgba(255, 162, 0, .12);
+}
+
+.pill:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(199, 134, 21, .35);
+}
+
+/* Texto e ícones do pill */
+.pillText {
+    font-size: clamp(.95rem, .85rem + .3vw, 1.28rem);
+}
+
+.caret {
+    color: var(--sl-gold-400);
+    display: inline-block;
+        /* necessário para rodar */
+        transform: rotate(90deg);
+        /* direita → baixo */
+        transform-origin: center;
+        line-height: 1;
+}
+
+.flag {
+    width: 18px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+/* CARTÃO (conteúdo aberto) */
+.card {
+    /* ligeiramente mais espaço entre pill e cartão */
+    margin-top: .75rem;
+    padding: .9rem 1rem;
+    border: 3px solid var(--sl-gold-400);
+    border-radius: 1rem;
+    background: rgba(2, 10, 32, 1);
+    display: grid;
+    gap: .6rem;
+    position: relative;
+    overflow: visible;
+}
+
+.card:hover {
+    background-color: rgba(255, 162, 0, .12);
+}
+
+/* Linhas/entradas dentro do cartão */
+.row {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    align-items: center;
+    gap: .5rem;
+    color: #eef3ff;
+    text-decoration: none;
+}
+
+.row:hover {
+    text-decoration: underline;
+    color: var(--sl-gold-400);
+}
+
+.icon {
+    color: var(--sl-gold-400);
+}
+
+.muted {
+    opacity: .6;
+}
+
+/* Motion-safe */
+@media (prefers-reduced-motion: reduce) {
+    .pill {
+        transition: none;
+    }
+}

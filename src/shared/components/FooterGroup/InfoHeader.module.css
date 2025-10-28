@@ -1,5 +1,6 @@
 /* ==========================================================================
    InfoHeader.module.css — Desktop consistente (≥1100px) + mobile centrado
+   Alinhado com o frame e com as linhas (— mesmo início/fim —)
    ========================================================================== */
 
 /* -------------------------------
@@ -7,12 +8,16 @@
 --------------------------------*/
 .inner {
     /* espaçamento entre colunas e linhas */
-    --gap-x: clamp(1.25rem, 2.2vw, 1.75rem);
+    --gap-x: clamp(1rem, 2.2vw, 1.75rem);
     --gap-y: clamp(1.10rem, 2vw, 1.60rem);
 
-    /* margens internas (“edge”): valores default (mobile/tablet) */
-    --edge-left: var(--gap-x);
-    --edge-right: var(--gap-x);
+    /* linha/inset padrão do site (mesmo das secções) */
+    --line-inset: clamp(12px, 4vw, 40px);
+
+    /* margens internas (“edge”) — por defeito iguais ao line-inset
+     (garante que conteúdo começa/termina onde a linha começa/termina) */
+    --edge-left: var(--line-inset);
+    --edge-right: var(--line-inset);
 
     /* título/ícone */
     --title-icon: 28px;
@@ -39,8 +44,10 @@
    Container (flex com column-gap)
 --------------------------------*/
 .inner {
-    max-width: 1920px;
-    /* respira bem em 4K */
+    /* o frame já tem a largura “útil” (container - 2*line-inset)
+     aqui ocupamos 100% do frame e recuamos só o suficiente para alinhar com as linhas */
+    width: 100%;
+    max-width: none;
     margin-inline: auto;
     padding-left: var(--edge-left);
     padding-right: var(--edge-right);
@@ -73,18 +80,33 @@
     gap: .25rem;
 }
 
-/* ================================
-   DESKTOP — manter 4 colunas numa linha
-   ================================ */
+/* === Desktop: manter SEMPRE 4 colunas (≥1100px) ========================= */
+@media (min-width: 1100px) {
+    .inner {
+        flex-wrap: nowrap;
+        /* não quebra linha */
+    }
+
+    .col {
+        /* 4 colunas: 100% menos 3 gaps, dividido por 4 */
+        flex: 0 0 calc((100% - 3 * var(--gap-x)) / 4);
+        min-width: 0;
+        /* deixa encolher para caber */
+        max-width: none;
+    }
+}
 
 /* ≥ 1800px */
 @media (min-width: 1800px) {
     .inner {
-        --gap-x: clamp(2.0rem, 2.2vw, 2.6rem);
-        --edge-left: calc(var(--gap-x) * 3.6);
-        --edge-right: var(--gap-x);
+        --gap-x: clamp(1rem, 2.2vw, 1rem);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 2);
+        --edge-right: var(--line-inset);
         flex-wrap: nowrap;
-        /* 4 colunas na mesma linha */
+    }
+
+    .col {
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
     }
 }
 
@@ -92,9 +114,13 @@
 @media (min-width: 1600px) and (max-width: 1799.98px) {
     .inner {
         --gap-x: clamp(1.8rem, 2.1vw, 2.4rem);
-        --edge-left: calc(var(--gap-x) * 3.4);
-        --edge-right: var(--gap-x);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 2);
+        --edge-right: var(--line-inset);
         flex-wrap: nowrap;
+    }
+
+    .col {
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
     }
 }
 
@@ -102,23 +128,27 @@
 @media (min-width: 1440px) and (max-width: 1599.98px) {
     .inner {
         --gap-x: clamp(1.7rem, 2.0vw, 2.2rem);
-        --edge-left: calc(var(--gap-x) * 3.2);
-        --edge-right: var(--gap-x);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 2);
+        --edge-right: var(--line-inset);
         flex-wrap: nowrap;
+    }
+
+    .col {
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
     }
 }
 
 /* 1366–1439px */
 @media (min-width: 1366px) and (max-width: 1439.98px) {
     .inner {
-        --gap-x: clamp(1.6rem, 1.9vw, 2.0rem);
-        --edge-left: calc(var(--gap-x) * 2.8);
-        --edge-right: var(--gap-x);
+        --gap-x: clamp(1.6rem, 1.9vw, 2rem);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 2);
+        --edge-right: var(--line-inset);
         flex-wrap: nowrap;
     }
 
     .col {
-        min-width: 250px;
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
     }
 }
 
@@ -126,13 +156,13 @@
 @media (min-width: 1280px) and (max-width: 1365.98px) {
     .inner {
         --gap-x: clamp(1.5rem, 1.8vw, 1.9rem);
-        --edge-left: calc(var(--gap-x) * 2.4);
-        --edge-right: var(--gap-x);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 1);
+        --edge-right: var(--line-inset);
         flex-wrap: nowrap;
     }
 
     .col {
-        min-width: 245px;
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
     }
 }
 
@@ -140,13 +170,13 @@
 @media (min-width: 1100px) and (max-width: 1279.98px) {
     .inner {
         --gap-x: clamp(1.4rem, 1.7vw, 1.8rem);
-        --edge-left: calc(var(--gap-x) * 2.0);
-        --edge-right: var(--gap-x);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 2);
+        --edge-right: var(--line-inset);
         flex-wrap: nowrap;
     }
 
     .col {
-        min-width: 240px;
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
     }
 }
 
@@ -155,8 +185,9 @@
    ================================ */
 @media (max-width: 1099.98px) {
     .inner {
-        padding-left: var(--gap-x);
-        padding-right: var(--gap-x);
+        /* padding lateral continua alinhado à régua das linhas */
+        padding-left: var(--line-inset);
+        padding-right: var(--line-inset);
 
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -170,8 +201,6 @@
         max-width: none;
     }
 }
-
-
 
 /* -------------------------------
    Títulos
@@ -407,7 +436,6 @@
         margin: 0;
     }
 
-    /* sem deslocamentos laterais */
     /* Links e texto centrados */
     .link,
     .textMuted {

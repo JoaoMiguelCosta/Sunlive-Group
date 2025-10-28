@@ -1,0 +1,121 @@
+/* src/brands/group/components/SectionGroup/Booksection/Booksection.module.css */
+
+/* Booksection — container igual às restantes secções */
+.sectionWrap {
+    position: relative;
+    isolation: isolate;
+    padding-block: clamp(2rem, 5vw, 4rem);
+    color: var(--sl-platinum-100);
+    overflow: clip;
+
+    /* controla a margem visível nas pontas das linhas */
+    --line-inset: clamp(12px, 4vw, 40px);
+}
+
+/* ===== Linhas TOP/BOTTOM no PRÓPRIO WRAPPER ===== */
+.sectionWrap::before,
+.sectionWrap::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* largura alinhada ao content width, com margens proporcionais nas pontas */
+    inline-size: calc(min(var(--sl-container-lg), 100%) - 2 * var(--line-inset));
+    block-size: 2px;
+
+    background: rgba(199, 134, 21, 0.9);
+    border-radius: 2px;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.sectionWrap::before {
+    inset-block-start: 0;
+}
+
+/* TOP */
+.sectionWrap::after {
+    inset-block-end: 0;
+}
+
+/* BOTTOM */
+
+/* Largura do conteúdo */
+.inner {
+    width: min(var(--sl-container-lg), 100%);
+    margin-inline: auto;
+
+    /* mesma grelha (12 colunas) dos outros blocos */
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.25rem 1rem;
+    align-items: start;
+    justify-items: stretch;
+    box-sizing: border-box;
+}
+
+/* ===== Pill (mesmo look & feel dos restantes) ===== */
+.button {
+    --pill-h: clamp(42px, 3.1vw, 48px);
+
+    grid-column: 1 / span 12;
+    width: 100%;
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+
+    min-height: var(--pill-h);
+    padding: .5rem 1.1rem;
+    border: 3px solid var(--sl-gold-400);
+    border-radius: 1.35rem;
+    background: rgba(2, 10, 32, 1);
+    color: #eaf0ff;
+    font-weight: 800;
+    text-decoration: none;
+
+    transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+    box-shadow: none;
+}
+
+/* Tablet: 6/12 centrado */
+@media (min-width: 720px) {
+    .button {
+        grid-column: 4 / span 6;
+    }
+}
+
+/* Desktop: 4/12 centrado (mesma largura dos outros cards) */
+@media (min-width: 1100px) {
+    .button {
+        --pill-h: 47.2px;
+        /* mesma altura dos pills em desktop */
+        grid-column: 5 / span 4;
+    }
+}
+
+.button:hover {
+    transform: translateY(-1px);
+    background-color: rgba(255, 162, 0, .12);
+}
+
+.button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(199, 134, 21, .35);
+}
+
+.label {
+    font-size: clamp(.95rem, .85rem + .3vw, 1.25rem);
+    line-height: 1;
+    letter-spacing: .2px;
+}
+
+.arrow {
+    font-size: 1.15rem;
+    line-height: 1;
+    color: var(--sl-gold-400);
+   
+}

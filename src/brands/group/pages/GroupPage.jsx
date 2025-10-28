@@ -1,45 +1,51 @@
 // src/brands/group/pages/GroupPage.jsx
 import styles from "./GroupPage.module.css";
 
-import OverviewSection from "../components/section/OverviewSection";
-import PeopleSection from "../components/section/PeopleSection";
-import PresenceSection from "../components/section/PresenceSection";
-import ContactsSection from "../components/section/ContactsSection";
-import PartnersSection from "../components/section/PartnersSection";
-import BookSection from "../components/section/BookSection";
+import Overviewsection from "../components/SectionGroup/OverviewSection";
+import Peoplesection from "../components/SectionGroup/PeopleSection";
+import Presencesection from "../components/SectionGroup/PresenceSection";
+import ContactsSection from "../components/SectionGroup/ContactsSection";
+import Partnerssection from "../components/SectionGroup/PartnersSection";
+import Booksection from "../components/SectionGroup/BookSection";
 
 // Footer compartilhado (casca que orquestra as 4 subsecções)
 import FooterGroup from "../../../shared/components/FooterGroup";
 // Config da própria brand (onde está a secção 7 — footer)
-import { footer as footerConfig } from "../config";
+import { footer as footerConfig } from "../ConfigGroup";
+
+// Hook para scroll suave quando a rota vem com #hash (ex.: #country-malta)
+import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
 export default function GroupPage() {
+  // Compensa header/linha fixa (ajusta se necessário)
+  useScrollToHash(24);
+
   return (
     <div className={styles.pageWrap}>
       <main className={styles.inner}>
         <div className={styles.sections}>
-          {/* Section 1 — Overview */}
-          <OverviewSection />
+          {/* section 1 — Overview */}
+          <Overviewsection />
 
-          {/* Section 2 — People */}
-          <PeopleSection />
+          {/* section 2 — People */}
+          <Peoplesection />
 
-          {/* Section 3 — Presence */}
-          <PresenceSection />
+          {/* section 3 — Presence */}
+          <Presencesection />
 
-          {/* Section 4 — Contacts */}
+          {/* section 4 — Contacts */}
           <ContactsSection />
 
-          {/* Section 5 — Partners */}
-          <PartnersSection />
+          {/* section 5 — Partners */}
+          <Partnerssection />
 
-          {/* Section 6 — Book (PDF) */}
-          <BookSection />
+          {/* section 6 — Book (PDF) */}
+          <Booksection />
         </div>
       </main>
 
-      {/* Section 7 — Footer */}
-      <FooterGroup data={footerConfig} />
+      {/* section 7 — Footer (colado ao bloco anterior) */}
+      <FooterGroup data={footerConfig} flushTop />
     </div>
   );
 }

@@ -1,44 +1,29 @@
+// src/shared/components/FooterGroup/LinkDirectory.jsx
 import styles from "./LinkDirectory.module.css";
-import { contacts } from "../../../brands/group/config.jsx";
+import { contacts } from "../../../brands/group/ConfigGroup.jsx";
 
-/**
- * LinkDirectory — lista de atalhos (unidades/países + parceiros).
- * Espera um objeto `data` com a forma de `linkDirectory` do config.
- *
- * A coluna da esquerda pode mostrar bandeiras (mapeadas em contacts.regionalOffices).
- */
+import useSmartAnchorNav from "./hooks/useSmartAnchorNav";
+import PillLink from "./PillLink.jsx";
+import { buildFlagMap, getFlagComp, modClassFor } from "./utils/flagHelpers";
+
 export default function LinkDirectory({ data }) {
   if (!data) return null;
-
   const { left, right } = data;
 
-  // ---- Mapa key/label -> Componente de Flag (opcional, só para o bloco esquerdo)
-  const flagMap = new Map(
-    (contacts?.regionalOffices || [])
-      .map((o) => {
-        const byKey = [o.key?.toLowerCase(), o.Flag];
-        const byLabel = [o.label?.toLowerCase(), o.Flag];
-        return [byKey, byLabel];
-      })
-      .flat()
-  );
+  const { handleSmartAnchorClick: toLogos } = useSmartAnchorNav({
+    targetPath: "/sunlive-group/logos",
+    offset: 24,
+  });
+  const { handleSmartAnchorClick: toGroup } = useSmartAnchorNav({
+    targetPath: "/sunlive-group",
+    offset: 24,
+  });
 
-  const getFlagComp = (item) => {
-    const k = item?.key?.toLowerCase?.();
-    const l = item?.label?.toLowerCase?.();
-    return flagMap.get(k) || flagMap.get(l) || null;
-  };
-
-  // Classe modificadora por país (ex.: "pill--malta")
-  const modClassFor = (key) => {
-    const k = key?.toLowerCase?.();
-    return (k && styles[`pill--${k}`]) || "";
-  };
+  const flagMap = buildFlagMap(contacts?.regionalOffices || []);
 
   return (
     <section className={styles.sectionWrap} aria-label="Footer — Quick Links">
       <div className={styles.inner}>
-        {/* -------- Bloco Esquerdo: Contactos -------- */}
         <div className={styles.block}>
           {left?.title && (
             <h3 className={`${styles.sectionTitle} ${styles.sectionTitleLeft}`}>
@@ -51,16 +36,22 @@ export default function LinkDirectory({ data }) {
               <div key={col.key} className={styles.col}>
                 {(col.items || []).map((item) => {
                   const { key, label, href, disabled } = item;
-                  const Flag = getFlagComp(item);
-                  const mod = modClassFor(key);
+                  const Flag = getFlagComp(flagMap, item);
+                  const mod = modClassFor(styles, key);
+
+                  // agora 'units' e 'countries' usam toGroup (mesma página)
+                  const onSmartClick =
+                    col.key === "countries" || col.key === "units"
+                      ? toGroup
+                      : undefined;
 
                   return (
-                    <a
+                    <PillLink
                       key={key}
+                      href={href}
+                      disabled={disabled}
                       className={`${styles.pill} ${mod} ${disabled ? styles.disabled : ""}`}
-                      href={disabled ? undefined : href}
-                      aria-disabled={disabled ? "true" : "false"}
-                      tabIndex={disabled ? -1 : 0}
+                      onSmartClick={onSmartClick}
                     >
                       <span className={styles.pillContent}>
                         {Flag && (
@@ -70,7 +61,7 @@ export default function LinkDirectory({ data }) {
                         )}
                         <span className={styles.pillLabel}>{label}</span>
                       </span>
-                    </a>
+                    </PillLink>
                   );
                 })}
               </div>
@@ -78,7 +69,7 @@ export default function LinkDirectory({ data }) {
           </div>
         </div>
 
-        {/* -------- Bloco Direito: Rede de Parceiros -------- */}
+        {/* -------- Bloco Direito -------- */}
         <div className={styles.block}>
           {right?.title && (
             <h3
@@ -90,17 +81,17 @@ export default function LinkDirectory({ data }) {
 
           <div className={styles.gridRight}>
             {(right?.items || []).map(({ key, label, href, disabled }) => (
-              <a
+              <PillLink
                 key={key}
+                href={href}
+                disabled={disabled}
                 className={`${styles.pill} ${disabled ? styles.disabled : ""}`}
-                href={disabled ? undefined : href}
-                aria-disabled={disabled ? "true" : "false"}
-                tabIndex={disabled ? -1 : 0}
+                onSmartClick={toLogos}
               >
                 <span className={styles.pillContent}>
                   <span className={styles.pillLabel}>{label}</span>
                 </span>
-              </a>
+              </PillLink>
             ))}
           </div>
         </div>

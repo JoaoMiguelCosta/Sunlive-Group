@@ -1,0 +1,78 @@
+/* Wrapper Presencesection — usa apenas o tapete global da página */
+.section {
+    /* um único inset para linhas + painel */
+    --section-inset: clamp(16px, 3.5vw, 44px);
+
+    background: transparent;
+    /* sem gradientes locais */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    overflow: clip;
+}
+
+.inner {
+    width: min(var(--sl-container-lg, 90rem), 100%);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 0;
+    /* evita desalinhamentos laterais */
+    box-sizing: border-box;
+}
+
+/* Faixa full-bleed (band) — agora com linhas alinhadas */
+.band {
+    position: relative;
+    isolation: isolate;
+    padding-block: clamp(0.5rem, 1.2vw, 1.25rem);
+}
+
+/* Linhas decorativas: usam o mesmo inset do painel */
+.band::before,
+.band::after {
+    content: "";
+    position: absolute;
+    left: var(--section-inset);
+    right: var(--section-inset);
+    height: 2px;
+   
+    opacity: .9;
+    pointer-events: none;
+}
+
+/* posiciona conforme precisares */
+.band::before {
+    top: 0;
+}
+
+.band::after {
+    bottom: 0;
+}
+
+/* garantir que o conteúdo fica acima das linhas */
+.band>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== Alinhamento do painel interno por esta wrapper (override seguro) ===== */
+.section .panel {
+    box-sizing: border-box;
+    width: calc(100% - (var(--section-inset) * 2));
+    margin-inline: var(--section-inset);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 640px) {
+    .inner {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .section {
+        --section-inset: clamp(10px, 4vw, 20px);
+    }
+}

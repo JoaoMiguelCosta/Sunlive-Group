@@ -1,0 +1,102 @@
+/* ============================================================================
+   LogosSection.module.css — v4.4
+   Container comum das secções de LOGOS (Partners)
+   - Mantém alinhamento com as linhas/gold rule e footer
+   - Evita sub-píxeis: largura do conteúdo baseada no CONTAINER
+============================================================================ */
+
+/* Tokens comuns desta família de secções */
+:root {
+    --section-inset: clamp(16px, 3.5vw, 44px);
+    /* recuo lateral */
+    --rule-thickness: 2px;
+    /* espessura da linha dourada */
+}
+
+/* ===== Secção base ===== */
+.section {
+    position: relative;
+    width: 100%;
+    margin: 0;
+
+    /* respiros verticais padrão da secção */
+    --pad-top: clamp(0.75rem, 1.5vw, 1rem);
+    --pad-bottom: clamp(1rem, 2.2vw, 1.4rem);
+    padding-block: var(--pad-top) var(--pad-bottom);
+}
+
+/* O filho direto ocupa o container com padding lateral consistente */
+.section>* {
+    max-width: min(var(--sl-container-lg, 90rem), 100%);
+    padding-inline: var(--section-inset);
+    margin-inline: auto;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Wrapper, Grid e Regra dourada usam SEMPRE 100% do container acima */
+.section :global(.wrap),
+.section :global(.grid),
+.section :global(.goldRule) {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Linha dourada coerente com o restante site */
+.section :global(.goldRule) {
+    height: var(--rule-thickness);
+    background: var(--sl-gold-400, #C78615);
+    border: 0;
+}
+
+/* ===== Variantes de densidade (opcional) ===== */
+.compact {
+    --pad-top: clamp(.5rem, 1vw, .75rem);
+    --pad-bottom: clamp(.75rem, 1.5vw, 1rem);
+}
+
+.cozy {
+    --pad-top: clamp(.9rem, 2vw, 1.25rem);
+    --pad-bottom: clamp(1.25rem, 2.8vw, 1.75rem);
+}
+
+.spacious {
+    --pad-top: clamp(1.25rem, 3vw, 1.75rem);
+    --pad-bottom: clamp(1.75rem, 4vw, 2.25rem);
+}
+
+/* ===== Colar ao bloco seguinte / Footer ===== */
+
+/* remove o “respiro” em baixo da secção */
+.flushBottom {
+    --pad-bottom: 0;
+}
+
+/* garante que nenhum dos wrappers internos deixa margem/padding extra */
+.flushBottom :global(.wrap),
+.flushBottom :global(.grid),
+.flushBottom :global(.goldRule) {
+    margin-bottom: 0;
+}
+
+/* sobe a secção o equivalente à espessura da goldRule para encaixar a 2px */
+.pairNextTight {
+    margin-bottom: calc(-1 * var(--rule-thickness));
+}
+
+/* ajuste fino extra caso o grid tenha padding-bottom interno */
+.tightBottom :global(.wrap),
+.tightBottom :global(.grid) {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* ============================================================================
+   NOTAS:
+   - As dimensões dos CARDS/LOGOS foram movidas para o módulo do componente
+     (LogoGridSection.module.css) e agora usam container queries (cqw)
+     para evitar desalinhamentos por sub-píxeis (vw).
+   - Se precisares de um inset diferente nesta página específica, podes
+     sobrepor com: style={{ "--section-inset": "clamp(16px, 3.5vw, 44px)" }}
+============================================================================ */

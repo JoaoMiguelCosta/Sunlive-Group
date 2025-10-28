@@ -1,0 +1,47 @@
+/* Overview — Sunlive “Performance Prestige” (Prestige Noir + Liquid Gold) */
+.section {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  min-width: 0;
+  overflow: clip;
+  isolation: isolate;
+
+  /* default herdado pelos filhos que tiverem linhas/painéis */
+  --section-inset: clamp(16px, 3.5vw, 44px);
+}
+
+/* Limitar a largura dos blocos internos ao small container */
+.section>* {
+  width: min(var(--sl-container-sm), 100%);
+  min-width: 0;
+  /* evita que grids/figuras alarguem o container */
+}
+
+/* ==== EXCEÇÃO: Divisions Panel precisa largura total para alinhar com as linhas ==== */
+/* Se a tua wrapper desta secção se chama .sectionWrap, remove a limitação aqui */
+.section>.sectionWrap {
+  width: 100%;
+  padding-inline: 0;
+  /* impede “empurrões” laterais */
+  box-sizing: border-box;
+}
+
+/* Ajustes finos para ecrãs muito estreitos */
+@media (max-width: 480px) {
+  .section {
+    gap: clamp(.6rem, 3vw, .9rem);
+    padding-block: clamp(.2rem, 2.5vw, .6rem);
+  }
+}
+
+/* Motion-safe */
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    box-shadow: none;
+  }
+}

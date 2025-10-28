@@ -1,0 +1,20 @@
+/* src/brands/group/components/SectionLogos/Teams/Teams.module.css */
+
+.sectionWrap {
+    width: min(var(--sl-container-lg, 90rem), 100%);
+    margin-inline: auto;
+    padding-block: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+/* Mantém a mesma proximidade legenda–moldura usada nas outras secções */
+.sectionWrap :global(.logoCard-caption) {
+    margin-top: 0.5rem;
+    line-height: 1.25;
+}
+
+/* Em mobile dá um pouco mais de respiro */
+@media (max-width: 719.98px) {
+    .sectionWrap {
+        padding-block: 1rem;
+    }
+}

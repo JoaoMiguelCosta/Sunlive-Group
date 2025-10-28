@@ -1,4 +1,4 @@
-// vite.config.jsx
+// vite.ConfigGroup.jsx
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 

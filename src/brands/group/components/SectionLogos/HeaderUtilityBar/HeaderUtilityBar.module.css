@@ -1,0 +1,7 @@
+/* src/brands/group/components/SectionLogos/HeaderUtilityBar/HeaderUtilityBar.module.css */
+.wrap {
+    position: relative;
+    width: 100%;
+    z-index: 12;
+    /* acima do conteúdo seguinte; UtilityBar gere o resto */
+}
