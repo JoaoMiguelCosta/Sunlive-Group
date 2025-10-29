@@ -57,7 +57,7 @@ export const overview = {
       key: "travel",
       label: "Travel",
       sub: "Sunlive",
-      href: "/travel",
+      href: "/sunlive-group/travel",
       renderAs: "image",
       imageSrc: travelImg,
     },
