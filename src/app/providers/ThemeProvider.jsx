@@ -1,10 +1,9 @@
-// src/app/providers/ThemeProvider.jsx
 import { useEffect } from "react";
 import { useBrand } from "./BrandProvider.jsx";
 
 /**
- * Aplica data-brand="group|sports|travel|..." ao <html>
- * para poderes tematizar via CSS (ex.: :root[data-brand="sports"] {...})
+ * Aplica data-brand="group|travel|sports|..." ao <html>
+ * para tematização via CSS (ex.: :root[data-brand="travel"] {...})
  */
 export default function ThemeProvider({ children }) {
   const { prefix } = useBrand();

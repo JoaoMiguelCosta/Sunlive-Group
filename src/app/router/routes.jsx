@@ -1,7 +1,7 @@
-// src/app/router/routes.jsx
 import { Routes, Route, Navigate } from "react-router-dom";
 import GroupPage from "../../brands/group/pages/GroupPage.jsx";
 import PartnersLogosPage from "../../brands/group/pages/PartnersLogosPage.jsx";
+import TravelPage from "../../brands/travel/page/TravelPage.jsx";
 
 export default function AppRoutes() {
   return (
@@ -13,14 +13,13 @@ export default function AppRoutes() {
       {/* Subpágina — Logos dos Parceiros */}
       <Route path="/sunlive-group/logos" element={<PartnersLogosPage />} />
 
+      {/* Submarca — Travel */}
+      <Route path="/sunlive-group/travel" element={<TravelPage />} />
+
       {/* Redirects legacy/temporários */}
       <Route
         path="/sunlive-group-logos"
         element={<Navigate to="/sunlive-group/logos" replace />}
-      />
-      <Route
-        path="/sunlive-group/travel"
-        element={<Navigate to="/sunlive-group" replace />}
       />
       <Route
         path="/sunlive-group/sports/*"
