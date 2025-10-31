@@ -1,6 +1,6 @@
 // src/brands/group/hooks/useLangMenu.js
 import { useRef, useState, useMemo } from "react";
-import { useDisclosure } from "./useDisclosure.js";
+import useDisclosure from "./useDisclosure.js"; // <- default import
 import { useOutsideClick } from "./useOutsideClick.js";
 
 function normalizeOpts(opts = []) {
@@ -31,8 +31,9 @@ export function useLangMenu({ current = "pt", options = [] } = {}) {
 
     if (next) {
       setSelected(next);
-      // Futuro: i18n.changeLanguage(next.code);
-      //      : document.documentElement.dir = next.dir ?? "ltr";
+      // Futuro:
+      // i18n.changeLanguage(next.code);
+      // document.documentElement.dir = next.dir ?? "ltr";
     }
     close();
   }

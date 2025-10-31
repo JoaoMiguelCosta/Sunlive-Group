@@ -23,6 +23,7 @@ export default function HeaderUtilityBar() {
   return (
     <div className={styles.wrap} aria-label="Header — Partners Logos">
       <UtilityBar
+        variant="logos-header"
         leftSlot={<BackButton {...configGroupLogos.backLink} />}
         socials={socials}
         lang={lang}

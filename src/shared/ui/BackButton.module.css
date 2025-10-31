@@ -1,19 +1,33 @@
-/* Performance Prestige — botão com aro dourado e leve brilho */
-
+/* Performance Prestige — botão com aro dourado e leve brilho (RESPONSIVO) */
 .button {
     --gold-400: var(--sl-gold-400, #C78615);
     --gold-500: var(--sl-gold-500, #A16207);
 
+    /* escala fluida */
+    --btn-fs: clamp(.88rem, 1.2vw, .98rem);
+    --btn-pad-y: clamp(.44rem, 1.2vw, .55rem);
+    --btn-pad-x: clamp(.66rem, 1.6vw, .9rem);
+    --btn-gap: clamp(.38rem, 1.2vw, .6rem);
+    --btn-icon: clamp(16px, 1.6vw, 18px);
+    --btn-radius: 999px;
+
     display: inline-flex;
     align-items: center;
-    gap: .6rem;
+    gap: var(--btn-gap);
 
-    padding: .55rem .9rem;
-    border-radius: 999px;
+    padding: var(--btn-pad-y) var(--btn-pad-x);
+    /* ⚠️ evita corte da última letra: deixa o botão crescer ao conteúdo */
+    min-inline-size: max-content;
+    /* continua a respeitar o container */
+    max-inline-size: 100%;
+    box-sizing: border-box;
+
+    border-radius: var(--btn-radius);
     text-decoration: none;
     color: #fff;
 
-    border: 1.5px solid var(--gold-400);
+    border: 2px solid rgba(255, 162, 0, 0.573);
+    ;
     background:
         linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
         radial-gradient(120% 140% at 50% 0%, rgba(255, 226, 167, .10), rgba(255, 255, 255, 0) 60%);
@@ -21,10 +35,15 @@
         inset 0 0 0 1px rgba(255, 255, 255, .06),
         0 8px 20px rgba(0, 0, 0, .25);
 
-    font: 600 .98rem/1 var(--sl-ff-ui, Inter, system-ui, sans-serif);
+    font: 600 var(--btn-fs)/1 var(--sl-ff-ui, Inter, system-ui, sans-serif);
     letter-spacing: .02em;
 
-    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, filter .18s ease;
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease,
+        filter .18s ease,
+        background-color .18s ease;
 }
 
 .button:hover {
@@ -34,7 +53,8 @@
         inset 0 0 0 1px rgba(255, 255, 255, .08),
         0 10px 24px rgba(0, 0, 0, .30);
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .25));
-    background-color: rgba(255, 162, 0, 0.12);
+    background-color:rgba(255, 162, 0, 0.573);
+    
 }
 
 .button:active {
@@ -48,12 +68,49 @@
         0 8px 20px rgba(0, 0, 0, .25);
 }
 
+/* Ícone e rótulo */
 .icon {
-    width: 18px;
-    height: 18px;
-    flex: 0 0 18px;
+    inline-size: var(--btn-icon);
+    block-size: var(--btn-icon);
+    flex: 0 0 var(--btn-icon);
 }
 
+/* ✅ sem elipse por defeito (evita cortar última letra) */
 .label {
     white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+/* Variante do botão Voltar — ligeiro ajuste de encosto + “folga” à direita */
+.button--back {
+    padding-inline-start: calc(var(--btn-pad-x) - .1rem);
+    padding-inline-end: calc(var(--btn-pad-x) + .12rem);
+    /* evita corte sub-pixel */
+}
+
+.button--back .icon {
+    margin-inline-end: calc(var(--btn-gap) - .1rem);
+}
+
+/* Quebra suave para cabeçalho em 2 linhas */
+@media (max-width: 909px) {
+    .button {
+        --btn-fs: clamp(.84rem, 2.4vw, .94rem);
+        --btn-pad-y: clamp(.38rem, 1.8vw, .5rem);
+        --btn-pad-x: clamp(.55rem, 2.6vw, .8rem);
+        --btn-gap: clamp(.32rem, 1.8vw, .5rem);
+        --btn-icon: clamp(14px, 2.2vw, 17px);
+    }
+}
+
+/* Muito estreito: modo compacto opcional */
+@media (max-width: 360px) {
+    .button[data-compact="auto"] .label {
+        display: none;
+    }
+
+    .button[data-compact="auto"] {
+        padding-inline: calc(var(--btn-pad-x) - .1rem);
+    }
 }

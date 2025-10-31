@@ -1,0 +1,73 @@
+/* ====== LOGO — fixo no desktop, responsivo no resto ====== */
+
+/* 👉 escolhe aqui a altura fixa de desktop (a que tens agora) */
+:root {
+    --logo-desktop-h: 96px;
+    /* ajusta se precisares (90–110px costuma resultar bem) */
+}
+
+.logoLink {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 1;
+    min-width: 0;
+    flex: 0 1 auto;
+}
+
+.logo {
+    /* Desktop ≥1180px: mantém exatamente esta altura */
+    block-size: var(--logo-desktop-h);
+    inline-size: auto;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, .06));
+    transition: transform .18s ease;
+    /* largura máxima conservadora para não “arrebentar” layout */
+    max-inline-size: min(44vw, 560px);
+}
+
+.logoLink:hover .logo,
+.logoLink:focus-visible .logo {
+    transform: translateY(-1px);
+}
+
+/* 910–1179px — tablets/portáteis médios: escala suave até ao limite de desktop */
+@media (max-width: 1179px) and (min-width: 910px) {
+    .logo {
+        block-size: clamp(72px, 7.2vw, var(--logo-desktop-h));
+        max-inline-size: min(52vw, 520px);
+    }
+}
+
+/* 721–909px — telefones grandes/tablets pequenos */
+@media (max-width: 909px) and (min-width: 721px) {
+    .logo {
+        block-size: clamp(64px, 9vw, var(--logo-desktop-h));
+        max-inline-size: min(62vw, 520px);
+    }
+}
+
+/* 561–720px — manter presença forte como no iPhone */
+@media (max-width: 720px) and (min-width: 561px) {
+    .logo {
+        block-size: clamp(60px, 18vw, var(--logo-desktop-h));
+        max-inline-size: min(72vw, 540px);
+    }
+}
+
+/* ≤560px — telefones comuns */
+@media (max-width: 560px) {
+    .logo {
+        block-size: clamp(64px, 21vw, 110px);
+        max-inline-size: min(82vw, 560px);
+    }
+}
+
+/* ≤390px — muito compacto (SE/mini) */
+@media (max-width: 390px) {
+    .logo {
+        block-size: clamp(68px, 23vw, 118px);
+        max-inline-size: min(86vw, 600px);
+    }
+}

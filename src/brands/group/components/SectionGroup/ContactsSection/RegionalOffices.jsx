@@ -1,15 +1,16 @@
+// src/brands/group/components/SectionGroup/ContactsSection/RegionalOffices.jsx
 import styles from "./ContactsGrid.module.css";
-import useAccordion from "./hooks/useAccordion";
-import { contacts } from "../../../ConfigGroup.jsx";
 import OfficeItem from "./OfficeItem.jsx";
-import useOpenFromHash from "./hooks/useOpenFromHash";
+import useAccordion from "../../../../../shared/hooks/useAccordion.js";
+import useOpenFromHash from "../../../../../shared/hooks/useOpenFromHash.js";
 
-export default function RegionalOffices() {
-  const items = contacts?.regionalOffices || [];
-  const Icons = contacts?.icons || {};
-  const MailIcon = Icons.Mail || (() => null);
-  const PhoneIcon = Icons.Phone || (() => null);
+// Ícones partilhados (consistentes com BusinessUnits)
+import {
+  MailIcon as MailIcon,
+  PhoneIcon as PhoneIcon,
+} from "../../../../../shared/ui/icons/index.js";
 
+export default function RegionalOffices({ items = [] }) {
   const { isOpen, toggle } = useAccordion(items, { allowMultiple: true });
 
   // Abre automaticamente o país do hash (só 1x por hash)

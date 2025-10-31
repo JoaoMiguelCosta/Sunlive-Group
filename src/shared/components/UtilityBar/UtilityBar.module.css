@@ -1,22 +1,18 @@
-/* Utility Bar — Sunlive “Performance Prestige” (fluido e responsivo)
-   - Linha dourada alinhada ao mesmo nível das restantes secções
-   - Conteúdo limitado ao container, linha a 100% com o mesmo inset
-*/
+/* =======================================================
+   UtilityBar — Sunlive “Performance Prestige”
+   ======================================================= */
 
-/* Wrapper full-width da barra */
 .utilityBar {
     position: relative;
     width: 100%;
     display: grid;
     place-items: center;
 
-    /* ⬅️ usa EXACTAMENTE o mesmo inset das outras linhas da secção */
+    /* Tokens */
     --line-inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
-
-    /* resto das vars já existentes */
     --ub-touch: clamp(36px, 4.2vw, 44px);
     --ub-icon: clamp(18px, 1.8vw, 24px);
-    --ub-gap: clamp(.35rem, 0.8vw, .6rem);
+    --ub-gap: clamp(.35rem, .8vw, .6rem);
     --ub-fs: clamp(.9rem, 1.1vw, 1rem);
     --ub-chev: clamp(.66rem, .9vw, .8rem);
     --ub-menu-w: clamp(160px, 26vw, 260px);
@@ -24,74 +20,71 @@
     --ub-item-pad: clamp(.55rem, 1.3vw, .7rem) clamp(.6rem, 1.4vw, .8rem);
     --ub-radius: clamp(10px, 1.2vw, 12px);
     --ub-shadow: 0 10px 24px rgba(0, 0, 0, .35);
-    z-index: 10;
+
+    z-index: 50;
+    /* base do header */
+    overflow: visible;
+    /* nunca cortar dropdowns */
 }
 
+/* Conteúdo limitado pela régua */
 .utilityBar .inner {
-    width: calc(100% - (var(--line-inset) * 2));
-    margin-inline: var(--line-inset);
+    inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
+    margin-inline: auto;
     box-sizing: border-box;
-    /* mantém o layout atual */
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
     min-height: 2.875rem;
+
     position: relative;
+    z-index: 2;
+    /* acima da régua */
+    overflow: visible;
 }
 
-/* Linha dourada: mesma largura visível que as outras secções */
+/* Linha dourada (régua) */
 .utilityBar::after {
     content: "";
     position: absolute;
     inset-block-end: 0;
     inset-inline: var(--line-inset);
-    /* ⬅️ alinhado com as outras linhas */
-    block-size: clamp(1px, 0.15rem, 2px);
+    block-size: clamp(1px, .15rem, 2px);
     background: rgba(199, 134, 21, .9);
     opacity: .9;
     border-radius: 2px;
     pointer-events: none;
+    z-index: 1;
+    /* atrás de tudo do header */
 }
 
-/* Conteúdo limitado ao container — sem padding lateral para não desalinhar */
-.inner {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: min(var(--sl-container-sm), 100%);
-    margin-inline: auto;
-    min-height: 2.875rem;
-    position: relative;
-}
-
-.utilityBar .inner.hasLeft {
-    justify-content: space-between;
-}
-
-/* Se existir conteúdo à esquerda */
-.hasLeft {
-    justify-content: space-between;
-}
-
-/* Cluster à esquerda (ex.: BackButton) */
-.left {
-    display: flex;
-    align-items: center;
-    gap: var(--ub-gap);
-}
-
-/* Lado direito (socials + idioma) */
+/* Clusters */
+.left,
 .right {
     display: flex;
     align-items: center;
     gap: var(--ub-gap);
+    position: relative;
+    overflow: visible;
+}
+
+.left {
+    z-index: 4000;
+}
+
+/* nav/submenus por cima de tudo */
+.right {
+    z-index: 3000;
 }
 
 .label {
     display: none !important;
 }
 
-/* Ícones sociais */
+/* =================
+   Sociais
+   ================= */
 .socials {
     display: flex;
     align-items: center;
@@ -104,10 +97,9 @@
     height: var(--ub-touch);
     border-radius: 999px;
     color: #fff;
-    text-decoration: none;
-    border: 0;
     background: transparent;
-    transition: transform 120ms ease, opacity 120ms ease, filter 120ms ease, color 120ms ease;
+    border: 0;
+    transition: transform .12s ease, opacity .12s ease, filter .12s ease, color .12s ease;
 }
 
 .socialIcon {
@@ -131,10 +123,12 @@
     box-shadow: none;
 }
 
-/* Idioma */
+/* =================
+   Idiomas
+   ================= */
 .langWrap {
     position: relative;
-    z-index: 1000;
+    z-index: 3500;
 }
 
 .langBtn {
@@ -148,7 +142,7 @@
     background: transparent;
     border: 0;
     border-radius: 999px;
-    transition: transform 120ms ease, opacity 120ms ease, filter 120ms ease;
+    transition: transform .12s ease, opacity .12s ease, filter .12s ease;
     touch-action: manipulation;
 }
 
@@ -162,10 +156,20 @@
     text-transform: uppercase;
 }
 
+/* Chevron igual às “pills” */
 .chevron {
     width: var(--ub-chev);
-    height: calc(var(--ub-chev) / 2);
-    color: #fff;
+    height: calc(var(--ub-chev)/2);
+    display: inline-block;
+    vertical-align: middle;
+    color: rgba(255, 162, 0, .85);
+    transition: transform .18s ease, color .12s ease, filter .12s ease;
+}
+
+.chevron path {
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .langBtn:hover .langText,
@@ -179,6 +183,10 @@
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .25));
 }
 
+.langBtn[data-open="true"] .chevron {
+    transform: rotate(180deg);
+}
+
 .langBtn:active {
     transform: translateY(0);
 }
@@ -188,7 +196,6 @@
     box-shadow: none;
 }
 
-/* Menu de idiomas — responsivo */
 .langMenu {
     position: absolute;
     top: calc(100% + 6px);
@@ -199,16 +206,16 @@
     overflow-y: auto;
     padding: var(--ub-menu-pad);
     border-radius: var(--ub-radius);
-    background: rgba(15, 20, 30, 0.92);
+    background: rgba(15, 20, 30, .92);
     backdrop-filter: blur(6px);
     box-shadow: var(--ub-shadow);
     list-style: none;
     margin: 0;
-    z-index: 2000;
+    z-index: 4500;
+    /* acima dos submenus se colidirem */
     -webkit-overflow-scrolling: touch;
 }
 
-/* Itens do menu */
 .langItem {
     width: 100%;
     min-height: var(--ub-touch);
@@ -223,9 +230,8 @@
     display: flex;
     align-items: baseline;
     gap: .55rem;
-    transition: background 120ms ease, color 120ms ease;
+    transition: background .12s ease, color .12s ease;
     direction: ltr;
-    /* mantém alinhamento à esquerda */
 }
 
 .langItem:hover {
@@ -252,19 +258,84 @@
     text-align: left;
 }
 
-/* Pequenos ajustes */
-@media (max-width: 840px) {
-    .inner {
-        gap: .5rem;
-        /* sem padding-right para não desalinhar com a linha */
-    }
-}
-
-/* Acessibilidade: reduz movimento */
+/* Motion */
 @media (prefers-reduced-motion: reduce) {
 
     .socialLink,
-    .langBtn {
+    .langBtn,
+    .chevron {
         transition: none;
     }
+}
+
+/* =======================================================
+   Variant: Travel Header
+   ======================================================= */
+
+/* < 910px — centro óptico */
+@media (max-width: 908px) {
+    .utilityBar[data-variant="travel-header"] .inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .utilityBar[data-variant="travel-header"] .left {
+        width: 100%;
+        justify-self: center;
+    }
+
+    .utilityBar[data-variant="travel-header"] .right {
+        justify-self: center;
+    }
+}
+
+/* ≥ 910px — “encostado” */
+@media (min-width: 910px) {
+    .utilityBar[data-variant="travel-header"] .inner {
+        justify-content: space-between;
+    }
+
+    .utilityBar[data-variant="travel-header"] .left {
+        display: grid;
+        grid-template-columns: auto auto 1fr auto;
+        /* Back | Logo | Nav | CTA */
+        align-items: center;
+        gap: var(--header-gap, .9rem);
+        min-height: var(--header-height, 72px);
+        padding-block: var(--header-pad-y, .75rem);
+    }
+
+    .utilityBar[data-variant="travel-header"] .right {
+        display: flex;
+        align-items: center;
+        gap: var(--ub-gap, .75rem);
+    }
+
+    .utilityBar[data-variant="travel-header"] :where(.navList) {
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow: visible;
+    }
+}
+
+/* =======================================================
+   Variant: Logos Header
+   ======================================================= */
+.utilityBar[data-variant="logos-header"] .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* encosta lados ao content width */
+    inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
+    margin-inline: auto;
+    box-sizing: border-box;
+}
+
+.utilityBar[data-variant="logos-header"] .left,
+.utilityBar[data-variant="logos-header"] .right {
+    display: flex;
+    align-items: center;
+    gap: var(--ub-gap, .75rem);
+    min-width: 0;
 }

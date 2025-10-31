@@ -1,3 +1,4 @@
+// src/brands/group/components/SectionGroup/ContactsSection/OfficeItem.jsx
 import styles from "./ContactsGrid.module.css";
 import OfficeCard from "./OfficeCard.jsx";
 
@@ -22,7 +23,7 @@ export default function OfficeItem({
       >
         <Flag className={styles.flag} />
         <span className={styles.pillText}>{item.label}</span>
-        <span className={styles.caret} aria-hidden>
+        <span className={styles.caret} aria-hidden="true">
           ➜
         </span>
       </button>

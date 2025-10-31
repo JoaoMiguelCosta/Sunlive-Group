@@ -4,12 +4,14 @@ import { useLangMenu } from "../../hooks/useLangMenu.js";
 /**
  * UtilityBar (shared)
  * Props:
+ * - variant?: string            // e.g. "travel-header" (escopa estilos)
  * - leftSlot?: ReactNode
  * - socials?: Array<{ key:string, href:string, label:string, Icon:React.FC }>
  * - lang?: { current:string, options:Array<{label:string,name:string,code:string,dir?:"rtl"|"ltr"}> }
  * - ariaLabel?: string
  */
 export default function UtilityBar({
+  variant,
   leftSlot = null,
   socials = [],
   lang = {
@@ -28,6 +30,7 @@ export default function UtilityBar({
   return (
     <aside
       className={styles.utilityBar}
+      data-variant={variant || undefined}
       aria-label={ariaLabel}
       onKeyDown={onKeyDown}
     >
@@ -63,6 +66,7 @@ export default function UtilityBar({
               aria-expanded={isOpen}
               aria-label="Select language"
               onClick={toggle}
+              data-open={isOpen ? "true" : "false"} // 👈 controla rotação da seta
             >
               <span className={styles.langText}>{selected.label}</span>
               <svg
@@ -72,10 +76,12 @@ export default function UtilityBar({
                 focusable="false"
               >
                 <path
-                  d="M1 1l5 4 5-4"
+                  d="M1 1 L6 5 L11 1"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="1"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </button>

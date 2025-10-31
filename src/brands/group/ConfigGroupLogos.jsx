@@ -1,12 +1,14 @@
 // src/brands/group/pages/ConfigGroupLogos.jsx
 
-// ===== Committees =====
+import { LOGOS_BACKLINK } from "../../shared/config/BrandDefault.jsx";
+
+/* ===== Committees ===== */
 import uec from "./assets/logos/committes/uec.png";
 import cob from "./assets/logos/committes/cob.png";
 import cop from "./assets/logos/committes/cop.png";
 import coa from "./assets/logos/committes/coa.png";
 
-// ===== Portuguese Federations =====
+/* ===== Portuguese Federations ===== */
 import fpb from "./assets/logos/portugueseFederations/fpb.png"; // Basquetebol
 import fpc from "./assets/logos/portugueseFederations/fdc.png"; // Ciclismo
 import fpg from "./assets/logos/portugueseFederations/fgp.png"; // Ginástica
@@ -15,7 +17,7 @@ import fnkp from "./assets/logos/portugueseFederations/fpk.png"; // Karate (FNKP
 import fpe from "./assets/logos/portugueseFederations/fpe.png"; // Esgrima
 import fpa from "./assets/logos/portugueseFederations/fap.png"; // Andebol
 
-// ===== International Federations =====
+/* ===== International Federations ===== */
 import agn from "./assets/logos/internationalFederations/agn.png";
 import bg from "./assets/logos/internationalFederations/bg.png";
 import ca from "./assets/logos/internationalFederations/ca.png";
@@ -36,7 +38,7 @@ import pi from "./assets/logos/internationalFederations/pi.png";
 import saudi from "./assets/logos/internationalFederations/saudi.png";
 import uggf from "./assets/logos/internationalFederations/uggf.png";
 
-// ===== Teams =====
+/* ===== Teams ===== */
 import ads from "./assets/logos/teams/ads.png";
 import afc from "./assets/logos/teams/afc.png";
 import agc from "./assets/logos/teams/agc.png";
@@ -73,14 +75,14 @@ import tv from "./assets/logos/teams/tv.png";
 import utto from "./assets/logos/teams/utto.png";
 import woking from "./assets/logos/teams/woking.png";
 
-// ===== Associations =====
+/* ===== Associations ===== */
 import aca from "./assets/logos/associations/aca.png"; // Associação de Ciclismo de Anadia
 import aba from "./assets/logos/associations/abv.png"; // Associação Basquetebol de Anadia (ficheiro abv.png)
 import ace from "./assets/logos/associations/ace.png"; // Athletic Challenge Event
 import afa from "./assets/logos/associations/afa.png"; // Associação de Futebol de Aveiro
 
 const configGroupLogos = {
-  backLink: { href: "/sunlive-group", label: "Voltar Sunlive Group" },
+  backLink: LOGOS_BACKLINK,
 
   committees: {
     title: "COMMITTEES",
@@ -222,7 +224,6 @@ const configGroupLogos = {
         name: "Federación Colombiana de Ciclismo",
         caption: "Federación Colombiana de Ciclismo",
         src: fcc,
-      
       },
       {
         key: "ftgym",
@@ -392,8 +393,6 @@ const configGroupLogos = {
         name: "ACA – Associação de Ciclismo de Anadia",
         caption: "ACA – Associação de Ciclismo de Anadia",
         src: aca,
-        // exemplo de pequeno crop se o PNG tiver moldura interna
-        // cropInset: "3% 3% 3% 3%",
       },
       {
         key: "aba",

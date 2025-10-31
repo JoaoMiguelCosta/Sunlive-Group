@@ -1,10 +1,12 @@
 /* Sunlive Travel — Overrides de tema
-   Mantém a base Prestige Noir + Liquid Gold (carregada pelo group/theme.css)
+   Mantém a base Prestige Noir + Liquid Gold (group/theme.css)
    e só troca/acrescenta tokens quando data-brand="travel".
 */
 
 :root[data-brand="travel"] {
-    /* Acento secundário (Travel) */
+    /* Acentos Travel */
+    --sl-accent-400: #56BCEB;
+    /* util p/ hover/focus */
     --sl-accent-500: #2EA7E0;
     /* azul-atlântico */
     --sl-accent-600: #1F7FAB;
@@ -12,13 +14,23 @@
     /* Halo / ornamentos */
     --sl-ornament-alpha: .12;
 
-    /* Opcional: ligeiro ajuste do glow para dar “tom Travel” */
-    --sl-glow-top: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 20%);
-    --sl-glow-ring: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 15%);
-    --sl-glow-bottom: color-mix(in oklab, var(--sl-gold-500), var(--sl-accent-500) 10%);
+    /* ===== Glow (fallbacks + color-mix) ===== */
+    /* Fallbacks imediatos */
+    --sl-glow-top: #C78615;
+    /* gold-400 */
+    --sl-glow-ring: #C78615;
+    --sl-glow-bottom: #A16207;
+    /* gold-500 */
+
+    /* Melhora se o browser suportar color-mix/oklab */
+    @supports (color: color-mix(in oklab, white, black)) {
+        --sl-glow-top: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 20%);
+        --sl-glow-ring: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 15%);
+        --sl-glow-bottom: color-mix(in oklab, var(--sl-gold-500), var(--sl-accent-500) 10%);
+    }
 }
 
-/* Utilitários/variantes Travel (usar quando fizer sentido) */
+/* Utilitários/variantes Travel */
 :root[data-brand="travel"] .u-badge-accent {
     background: color-mix(in oklab, var(--sl-accent-500), black 82%);
     color: var(--sl-platinum-100);
@@ -29,12 +41,23 @@
     letter-spacing: .02em;
 }
 
+/* Botão secundário Travel */
 :root[data-brand="travel"] .button--secondary {
     background: color-mix(in oklab, var(--sl-accent-500) 88%, black);
     border: 1px solid var(--sl-accent-600);
     color: white;
 }
 
+:root[data-brand="travel"] .button--secondary:hover {
+    background: color-mix(in oklab, var(--sl-accent-400) 88%, black);
+    border-color: var(--sl-accent-500);
+}
+
+/* Links acentuados Travel */
 :root[data-brand="travel"] .link-accent {
     color: var(--sl-accent-500);
+}
+
+:root[data-brand="travel"] .link-accent:hover {
+    color: var(--sl-accent-400);
 }
