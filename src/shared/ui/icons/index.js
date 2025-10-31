@@ -1,9 +1,56 @@
-export { default as FacebookIcon } from "./Facebook.jsx";
-export { default as InstagramIcon } from "./Instagram.jsx";
+// ===== Imports individuais =====
+import FacebookIcon from "./Facebook.jsx";
+import InstagramIcon from "./Instagram.jsx";
 
-export { default as GlobeIcon } from "./Globe.jsx";
-export { default as PinIcon } from "./Pin.jsx";
-export { default as CardIcon } from "./Card.jsx";
-export { default as MailIcon } from "./Mail.jsx";
-export { default as PhoneIcon } from "./Phone.jsx";
-export { default as ShieldIcon } from "./Shield.jsx";
+import GlobeIcon from "./Globe.jsx";
+import PinIcon from "./Pin.jsx";
+import CardIcon from "./Card.jsx";
+import MailIcon from "./Mail.jsx";
+import PhoneIcon from "./Phone.jsx";
+import ShieldIcon from "./Shield.jsx";
+
+// Novos ícones (Travel / Logística)
+import PlaneIcon from "./Plane.jsx";
+import BusIcon from "./Bus.jsx";
+import TourBusIcon from "./TourBus.jsx";
+import PackageIcon from "./Package.jsx";
+
+// ===== Exports nomeados =====
+export {
+  FacebookIcon,
+  InstagramIcon,
+  GlobeIcon,
+  PinIcon,
+  CardIcon,
+  MailIcon,
+  PhoneIcon,
+  ShieldIcon,
+  PlaneIcon,
+  BusIcon,
+  TourBusIcon,
+  PackageIcon,
+};
+
+// ===== Mapa conveniente para usar por chave (iconKey) =====
+export const ICONS = {
+  // travel/logística
+  plane: PlaneIcon,
+  bus: BusIcon,
+  "tour-bus": TourBusIcon,
+  package: PackageIcon,
+  pin: PinIcon,
+
+  // utilitários / sociais (se precisares)
+  globe: GlobeIcon,
+  mail: MailIcon,
+  phone: PhoneIcon,
+  shield: ShieldIcon,
+  card: CardIcon,
+  instagram: InstagramIcon,
+  facebook: FacebookIcon,
+};
+
+// Helper opcional
+export function getIconByKey(key) {
+  return ICONS[key] || null;
+}

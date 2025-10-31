@@ -1,0 +1,243 @@
+/* ================================================
+   ServiceOfferingsGrid — uniform cards (strict align)
+   ================================================ */
+
+.wrap {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    color: var(--sl-platinum-100, #f6f7fb);
+    padding-block: clamp(0.8rem, 2.6vw, 1.4rem);
+    --line-inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
+
+    /* Alturas base (ajustadas por breakpoints) */
+    --top-h: 86px;
+    /* banda com ícone */
+    --title-h: 56px;
+    /* faixa do título */
+    --summary-fixed: 7.4rem;
+    /* base mobile */
+    --includes-min: 11.6rem;
+    /* base mobile */
+
+    /* Altura mínima do card */
+    --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
+}
+
+.grid {
+    margin-inline: auto;
+    inline-size: min(var(--sl-container-lg, 1200px), 100%);
+    padding-inline: var(--line-inset);
+
+    display: grid;
+    align-items: stretch;
+    gap: clamp(10px, 1.6vw, 18px);
+    grid-template-columns: 1fr;
+    /* mobile */
+}
+
+.cell {
+    min-width: 0;
+    display: flex;
+}
+
+.cell>* {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+/* ======= AJUSTES “MODO COMPACTO” POR FAIXA ======= */
+
+/* 423px–767px: ainda mais compacto */
+@media (min-width: 423px) and (max-width: 767px) {
+    .wrap {
+        --summary-fixed: 6.2rem;
+        /* ↓ mais 0.6rem */
+        --includes-min: 12.8rem;
+        /* ↑ mais 0.6rem */
+        --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
+    }
+}
+
+/* ≥768px → 2 colunas (tablet) */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wrap {
+        --summary-fixed: 8.0rem;
+        --includes-min: 12.4rem;
+        --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
+    }
+}
+
+/* 850px–1099px: ainda mais compacto */
+@media (min-width: 850px) and (max-width: 1099px) {
+    .wrap {
+        --summary-fixed: 7.2rem;
+        /* ↓ mais 0.6rem */
+        --includes-min: 13.8rem;
+        /* ↑ mais 0.6rem */
+        --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
+    }
+}
+
+/* ≥1100px → 6 colunas (cada card ocupa 2) e 2.ª linha centrada */
+@media (min-width: 1100px) {
+    .grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .cell {
+        grid-column: span 2;
+    }
+
+    /* Centrar 4.º e 5.º cards quando houver 5 itens */
+    .grid>.cell:nth-child(4) {
+        grid-column: 2 / span 2;
+    }
+
+    .grid>.cell:nth-child(5) {
+        grid-column: 4 / span 2;
+    }
+
+    .wrap {
+        --summary-fixed: 9.0rem;
+        --includes-min: 13.6rem;
+        --card-min-h: clamp(480px, 48vw, 560px);
+    }
+}
+
+/* ≥1440px: ainda mais compacto em ecrãs grandes */
+@media (min-width: 1440px) {
+    .wrap {
+        --summary-fixed: 7.8rem;
+        /* ↓ mais 0.6rem */
+        --includes-min: 14.8rem;
+        /* ↑ mais 0.6rem */
+        --card-min-h: clamp(540px, 42vw, 620px);
+    }
+}
+
+/* ===== Forçar FLEX no cartão + normalizações internas ===== */
+.grid :global(article[class^="_card_"],
+    article[class^="ServiceCard_card__"],
+    article[class*=" card"],
+    article[class*="card_"]) {
+    --card-radius: 12px;
+    --card-stroke: rgba(199, 134, 21, .9);
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    height: 100% !important;
+    min-block-size: var(--card-min-h) !important;
+
+    border: 0 !important;
+    border-radius: var(--card-radius) !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .06),
+        0 8px 20px rgba(0, 0, 0, .35),
+        0 0 0 1.8px var(--card-stroke) !important;
+
+    overflow: visible !important;
+    contain: paint;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    font-size: 0.94em;
+}
+
+/* Top band e título — alturas FIXAS */
+.grid :global(.topBand) {
+    flex: 0 0 var(--top-h);
+    block-size: var(--top-h);
+    display: grid;
+    place-items: center;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-sizing: border-box;
+}
+
+.grid :global(.iconWrap) {
+    inline-size: 54px;
+    block-size: 54px;
+}
+
+.grid :global(.titleBand) {
+    flex: 0 0 var(--title-h);
+    block-size: var(--title-h);
+    display: grid;
+    place-items: center;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-top-left-radius: var(--card-radius);
+    border-top-right-radius: var(--card-radius);
+    border-bottom: 1px solid color-mix(in oklab, var(--sl-gold-500, #A16207), #000 30%);
+}
+
+.grid :global(.title) {
+    font-size: clamp(1rem, 1.28vw, 1.12rem);
+    line-height: 1;
+    margin: 0 !important;
+}
+
+/* Summary — altura fixa + clamp */
+.grid :global(.summaryBlock) {
+    flex: 0 0 auto;
+    block-size: var(--summary-fixed);
+    padding: .8rem .9rem !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-sizing: border-box;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    overflow: hidden;
+}
+
+/* "Inclui" ocupa o resto (mínimo variável por faixa) */
+.grid :global(.includesBlock) {
+    flex: 1 1 auto;
+    min-height: var(--includes-min);
+    display: flex;
+    flex-direction: column;
+    padding: .7rem .9rem .9rem !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-bottom-left-radius: var(--card-radius);
+    border-bottom-right-radius: var(--card-radius);
+    box-sizing: border-box;
+}
+
+/* Resets */
+.grid :global(.includesBlock p),
+.grid :global(.includesBlock ul) {
+    margin: 0;
+}
+
+.grid :global(.includesLabel) {
+    line-height: 1.1;
+    margin: 0 0 .42rem 0 !important;
+}
+
+.grid :global(.list) {
+    gap: .42rem;
+}
+
+.grid :global(.listItem) {
+    padding-block: .06rem;
+}
+
+.grid :global(.bullet) {
+    inline-size: .5rem;
+    block-size: .5rem;
+}
+

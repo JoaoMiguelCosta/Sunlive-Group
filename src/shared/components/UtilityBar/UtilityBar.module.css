@@ -22,12 +22,9 @@
     --ub-shadow: 0 10px 24px rgba(0, 0, 0, .35);
 
     z-index: 50;
-    /* base do header */
     overflow: visible;
-    /* nunca cortar dropdowns */
 }
 
-/* Conteúdo limitado pela régua */
 .utilityBar .inner {
     inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
     margin-inline: auto;
@@ -40,11 +37,10 @@
 
     position: relative;
     z-index: 2;
-    /* acima da régua */
     overflow: visible;
 }
 
-/* Linha dourada (régua) */
+/* Régua dourada */
 .utilityBar::after {
     content: "";
     position: absolute;
@@ -56,7 +52,6 @@
     border-radius: 2px;
     pointer-events: none;
     z-index: 1;
-    /* atrás de tudo do header */
 }
 
 /* Clusters */
@@ -73,7 +68,6 @@
     z-index: 4000;
 }
 
-/* nav/submenus por cima de tudo */
 .right {
     z-index: 3000;
 }
@@ -156,10 +150,9 @@
     text-transform: uppercase;
 }
 
-/* Chevron igual às “pills” */
 .chevron {
     width: var(--ub-chev);
-    height: calc(var(--ub-chev)/2);
+    height: calc(var(--ub-chev) / 2);
     display: inline-block;
     vertical-align: middle;
     color: rgba(255, 162, 0, .85);
@@ -212,7 +205,6 @@
     list-style: none;
     margin: 0;
     z-index: 4500;
-    /* acima dos submenus se colidirem */
     -webkit-overflow-scrolling: touch;
 }
 
@@ -272,8 +264,8 @@
    Variant: Travel Header
    ======================================================= */
 
-/* < 910px — centro óptico */
-@media (max-width: 908px) {
+/* ≤ 1025px — centro óptico (estendido) */
+@media (max-width: 1025px) {
     .utilityBar[data-variant="travel-header"] .inner {
         display: grid;
         grid-template-columns: 1fr;
@@ -290,28 +282,28 @@
     }
 }
 
-/* ≥ 910px — “encostado” */
-@media (min-width: 910px) {
+/* ≥ 1026px — layout desktop “fixo” */
+@media (min-width: 1026px) {
     .utilityBar[data-variant="travel-header"] .inner {
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        /* esquerda ocupa 100% | direita encosta */
+        align-items: center;
     }
 
     .utilityBar[data-variant="travel-header"] .left {
-        display: grid;
-        grid-template-columns: auto auto 1fr auto;
-        /* Back | Logo | Nav | CTA */
-        align-items: center;
-        gap: var(--header-gap, .9rem);
-        min-height: var(--header-height, 72px);
-        padding-block: var(--header-pad-y, .75rem);
+        width: 100%;
     }
 
+    /* Ícones + PT encostados à direita da régua */
     .utilityBar[data-variant="travel-header"] .right {
-        display: flex;
+        justify-self: end;
+        display: inline-flex;
         align-items: center;
         gap: var(--ub-gap, .75rem);
     }
 
+    /* Garantir que os submenus não são cortados */
     .utilityBar[data-variant="travel-header"] :where(.navList) {
         justify-content: center;
         flex-wrap: wrap;
@@ -326,7 +318,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* encosta lados ao content width */
     inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
     margin-inline: auto;
     box-sizing: border-box;

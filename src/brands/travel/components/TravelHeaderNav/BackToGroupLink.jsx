@@ -2,6 +2,15 @@
 import BackButton from "../../../../shared/ui/BackButton.jsx";
 import { LOGOS_BACKLINK } from "../../../../shared/config/BrandDefault.jsx";
 
-export default function BackToGroupLink() {
-  return <BackButton href={LOGOS_BACKLINK.href} label={LOGOS_BACKLINK.label} />;
+/**
+ * BackToGroupLink — “Voltar Sunlive Group”
+ * Props opcionais permitem override do href/label se precisares.
+ */
+export default function BackToGroupLink({
+  href = LOGOS_BACKLINK?.href,
+  label = LOGOS_BACKLINK?.label,
+  ...rest
+}) {
+  if (!href) return null;
+  return <BackButton href={href} label={label} {...rest} />;
 }

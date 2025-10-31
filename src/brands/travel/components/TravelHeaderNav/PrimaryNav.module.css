@@ -12,7 +12,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: .9rem;
-    /* base; ajustado nos breakpoints */
+    /* base; depois é afinado por clamps lá no fim */
     list-style: none;
     margin: 0;
     padding: 0;
@@ -227,7 +227,8 @@
     }
 }
 
-@media (min-width: 910px) and (max-width: 1177px) {
+/* >>> Desktop “médio”: agora só entre 1026–1177px (antes começava em 910px) */
+@media (min-width: 1026px) and (max-width: 1177px) {
     .navList {
         gap: .85rem;
     }
@@ -246,7 +247,8 @@
     }
 }
 
-@media (min-width: 561px) and (max-width: 909px) {
+/* >>> Tablet/grande-phone: estendido até 1025px */
+@media (min-width: 561px) and (max-width: 1025px) {
     .navList {
         gap: .7rem;
     }
@@ -284,13 +286,12 @@
     }
 }
 
-/* --- Mobile: sem scroll horizontal na lista; dropdown centrado sob o pill --- */
+/* --- Mobile: sem scroll horizontal; dropdown centrado sob o pill --- */
 @media (max-width: 720px) {
     .navList {
         overflow: visible !important;
     }
 
-    /* centra o dropdown e limita à viewport */
     .navItem[data-has-submenu] .submenu {
         left: 50%;
         transform: translate(-70%, 0);
@@ -299,7 +300,8 @@
     }
 }
 
-@media (min-width: 1300px) {
+/* === Layout “bom” (grid 2x2) — agora só a partir de 1026px === */
+@media (min-width: 1026px) {
     .navList {
         /* troca de flex → grid para controlar o arranjo */
         display: grid;
@@ -308,11 +310,11 @@
         grid-auto-rows: max-content;
         /* 2 linhas */
         column-gap: 1.25rem;
-        /* espaço horiz. entre pills */
+        /* espaço horiz. */
         row-gap: .9rem;
-        /* espaço vert. entre linhas */
+        /* espaço vert. */
         justify-content: center;
-        /* centra o bloco das pills */
+        /* centra pills */
         align-content: center;
     }
 
@@ -320,4 +322,14 @@
     .navItem {
         flex: initial;
     }
+}
+
+/* === Gap entre pills — contínuo (∈ [0.55rem, 1.15rem]) === */
+.navList {
+    gap: clamp(.55rem, 1vw, 1.15rem);
+}
+
+/* === Espaço entre texto e chevron dentro do pill (∈ [.42,.60]) === */
+.navLink {
+    --pill-gap: clamp(.42rem, 0.8vw, .60rem);
 }

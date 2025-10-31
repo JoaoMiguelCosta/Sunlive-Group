@@ -1,0 +1,195 @@
+/* =========================================================
+   ServiceCard.module.css — Prestige Noir + Liquid Gold + acento brand
+   ========================================================= */
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid rgba(199, 134, 21, 0.9);
+    /* ouro */
+    background: linear-gradient(180deg, #0b142b 0%, #060e22 100%);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .04),
+        0 8px 20px rgba(0, 0, 0, .35);
+}
+
+/* ==== Top band + ícone ==== */
+.topBand {
+    position: relative;
+    height: var(--top-h, 86px);
+    background: var(--sl-gold-500, #A16207);
+    border-bottom: 1px solid color-mix(in oklab, var(--sl-gold-500, #A16207), #000 30%);
+}
+
+.iconWrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -28%;
+    width: clamp(54px, 7vw, 72px);
+    height: clamp(54px, 7vw, 72px);
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background:
+        radial-gradient(120% 140% at 50% 30%, rgba(0, 0, 0, .25), rgba(0, 0, 0, .55)),
+        linear-gradient(180deg, color-mix(in oklab, var(--sl-gold-500, #A16207), #000 15%), #3b2a07);
+    color: #fff;
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, .35),
+        inset 0 0 0 1px rgba(255, 255, 255, .08);
+}
+
+.icon {
+    width: 58%;
+    height: 58%;
+}
+
+/* ==== Título (banda dourada) ==== */
+.titleBand {
+    background: var(--sl-gold-500, #A16207);
+    padding-block: .6rem;
+    border-top: 1px solid rgba(255, 255, 255, .25);
+    border-bottom: 1px solid color-mix(in oklab, var(--sl-gold-500, #A16207), #000 35%);
+    text-align: center;
+    min-block-size: var(--title-h, 56px);
+    display: grid;
+    place-items: center;
+}
+
+.title {
+    margin: 0;
+    color: #fff;
+    font-weight: 800;
+    font-size: clamp(1.05rem, 1.9vw, 1.3rem);
+    line-height: 1.2;
+}
+
+/* ==== Sumário (faixa azul com glow) ==== */
+.summaryBlock {
+    padding: clamp(.9rem, 2.2vw, 1.2rem) clamp(.9rem, 2.2vw, 1.2rem);
+    background:
+        radial-gradient(180% 140% at 50% -10%, color-mix(in oklab, var(--sl-accent-500, #2EA7E0), transparent 75%), transparent 60%),
+        linear-gradient(180deg, rgba(7, 17, 38, 1) 0%, rgba(4, 11, 26, 1) 100%);
+    border-top: 1px solid rgba(0, 0, 0, .6);
+    block-size: var(--summary-fixed, 9.0rem);
+    /* controlado pela grelha */
+}
+
+.summary {
+    margin: 0;
+    color: var(--sl-platinum-100, #f6f7fb);
+    font-size: clamp(.95rem, 1.6vw, 1.08rem);
+    line-height: 1.5;
+}
+
+/* ==== Inclui + lista ==== */
+.includesBlock {
+    background:
+        radial-gradient(140% 160% at 0% 100%, color-mix(in oklab, var(--sl-accent-500, #2EA7E0), transparent 80%), transparent 60%),
+        linear-gradient(180deg, rgba(6, 16, 35, 1), rgba(5, 13, 30, 1));
+    border-top: 1px solid rgba(0, 0, 0, .6);
+    padding: clamp(.75rem, 2vw, 1rem) clamp(.9rem, 2.2vw, 1.2rem) clamp(1rem, 2.6vw, 1.4rem);
+
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    flex: 1 1 auto;
+    min-block-size: var(--includes-min, 12rem);
+    /* controlado pela grelha */
+}
+
+.includesLabel {
+    margin: 0;
+    color: #e9ecf6;
+    font-weight: 800;
+    font-size: clamp(.95rem, 1.4vw, 1.05rem);
+}
+
+/* ===== Lista (hover na bolinha + background no texto) ===== */
+.list {
+    display: grid;
+    gap: clamp(.5rem, 1.2vw, .75rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.listItem {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: .7rem;
+    color: #e7ebf7;
+    font-size: clamp(.95rem, 1.4vw, 1.05rem);
+    cursor: default;
+    transition: color .18s ease;
+}
+
+.bullet {
+    margin-top: .45rem;
+    width: .55rem;
+    height: .55rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--sl-accent-500, #2EA7E0), #C78615 25%);
+    box-shadow:
+        0 0 0 2px rgba(0, 0, 0, .35) inset,
+        0 0 8px rgba(46, 167, 224, .35);
+    transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, filter .18s ease;
+    will-change: transform, box-shadow, filter;
+}
+
+/* Texto do item — preparado para fundo em múltiplas linhas */
+.listItem>span:last-child {
+    display: inline;
+    padding: .08rem .28rem;
+    /* padding pequeno (compensa o fundo) */
+    border-radius: .35rem;
+    background: transparent;
+    transition: background-color .18s ease, color .18s ease, filter .18s ease;
+    box-decoration-break: clone;
+    /* mantém o fundo quando quebra de linha */
+    -webkit-box-decoration-break: clone;
+}
+
+/* Hover / Focus-visible */
+.listItem:hover .bullet,
+.listItem:focus-within .bullet {
+    background: color-mix(in oklab, var(--sl-accent-400, #56BCEB), #fff 8%);
+    box-shadow:
+        0 0 0 2px rgba(0, 0, 0, .35) inset,
+        0 0 14px color-mix(in oklab, var(--sl-accent-500, #2EA7E0), #7dd3fc 20%);
+    transform: scale(1.15);
+    filter: brightness(1.06);
+}
+
+/* Fundo azul-atlântico subtil no texto (sem sublinhado) */
+.listItem:hover>span:last-child,
+.listItem:focus-within>span:last-child {
+    color: #f7fbff;
+    background-color: color-mix(in oklab, var(--sl-accent-500, #2EA7E0), transparent 70%);
+    /* opcional: um ligeiro brilho */
+    filter: drop-shadow(0 0 4px color-mix(in oklab, var(--sl-accent-500, #2EA7E0), transparent 70%));
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bullet {
+        transition: none;
+    }
+
+    .listItem,
+    .listItem>span:last-child {
+        transition: none;
+    }
+}
+
+/* ==== Responsivo (pequena correção do ícone) ==== */
+@media (max-width: 640px) {
+    .iconWrap {
+        translate: -50% -35%;
+    }
+}

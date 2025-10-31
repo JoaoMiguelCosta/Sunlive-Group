@@ -1,0 +1,10 @@
+/* Wrapper da headline — apenas espaçamentos e herança de variáveis */
+.wrap {
+    position: relative;
+    width: 100%;
+   
+
+    /* herda do section; se isolado, define defaults seguros */
+    --line-inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
+    --content-w: min(var(--sl-container-lg, 1200px), 100%);
+}

@@ -1,5 +1,5 @@
 /* ============================
-   Partners / Logos Grid — v4.4
+   Partners / Logos Grid — v4.5 (compact)
    Alinhado às linhas globais via --section-inset
 ============================ */
 
@@ -9,9 +9,10 @@
     margin-inline: auto;
 
     /* cards dimensionados pelo CONTAINER, não pelo viewport  */
-    --logo-size: clamp(190px, 22cqw, 235px);
-    /* antes: 21vw */
-    --logo-pad: clamp(.40rem, .9vw, .65rem);
+    --logo-size: clamp(176px, 20cqw, 220px);
+    /* ↓ ligeiro */
+    --logo-pad: clamp(.34rem, .8vw, .56rem);
+    /* ↓ */
     --logo-crop: 2.5%;
 }
 
@@ -19,7 +20,7 @@
 .header {
     display: grid;
     place-items: center;
-    margin-block: clamp(1rem, 3vw, 1.5rem) clamp(1.25rem, 3vw, 1.75rem);
+    margin-block: clamp(.9rem, 2.6vw, 1.4rem) clamp(1rem, 2.6vw, 1.6rem);
 }
 
 .title {
@@ -28,7 +29,8 @@
     letter-spacing: .06em;
     text-transform: uppercase;
     color: var(--sl-gold-400, #C78615);
-    font-size: clamp(1.25rem, 2.6vw, 2rem);
+    font-size: clamp(1.2rem, 2.3vw, 1.85rem);
+    /* ↓ muito leve */
     text-align: center;
 }
 
@@ -38,8 +40,10 @@
     container-type: inline-size;
 
     --cols: min(var(--cols-max, 4), 4);
-    --zone-pad-y: clamp(.9rem, 2.4vw, 1.25rem);
-    --gap: clamp(.9rem, 2vw, 1.25rem);
+    --zone-pad-y: clamp(.75rem, 2.1vw, 1.1rem);
+    /* ↓ */
+    --gap: clamp(.75rem, 1.7vw, 1.05rem);
+    /* ↓ */
 
     display: grid;
     grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
@@ -47,7 +51,8 @@
 
     width: calc(100% - (var(--section-inset) * 2));
     margin-inline: var(--section-inset);
-    padding-inline: clamp(.75rem, 2vw, 1rem);
+    padding-inline: clamp(.6rem, 1.6vw, .9rem);
+    /* ↓ */
     padding-block: var(--zone-pad-y);
     background-color: rgba(2, 10, 32, 1);
     justify-items: center;
@@ -70,7 +75,8 @@
 .card {
     display: grid;
     justify-items: center;
-    gap: clamp(.4rem, .9vw, .6rem);
+    gap: clamp(.34rem, .8vw, .54rem);
+    /* ↓ */
     width: var(--logo-size);
 }
 
@@ -81,13 +87,16 @@
     aspect-ratio: 1 / 1;
     width: var(--logo-size);
     height: var(--logo-size);
-    border-radius: 14px;
+    border-radius: 12px;
+    /* ↓ */
     padding: var(--logo-pad);
-    border: 2px solid rgba(199, 134, 21, 0.85);
+    border: 1.6px solid rgba(199, 134, 21, 0.85);
+    /* ↓ */
     background-color: transparent;
     box-shadow:
         inset 0 0 0 1px rgba(255, 255, 255, .06),
-        0 16px 28px rgba(0, 0, 0, .38);
+        0 14px 24px rgba(0, 0, 0, .34);
+    /* ↓ leve */
     display: grid;
     place-items: center;
     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
@@ -131,13 +140,15 @@
 /* Legenda */
 .caption {
     width: var(--logo-size);
-    min-height: clamp(2.4rem, 3.2vw, 2.8rem);
+    min-height: clamp(2.2rem, 3vw, 2.6rem);
+    /* ↓ */
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--sl-gold-400, #C78615);
     font-family: var(--sl-ff-ui, Inter, system-ui, sans-serif);
-    font-size: clamp(.9rem, 1.2vw, 1rem);
+    font-size: clamp(.86rem, 1.1vw, .96rem);
+    /* ↓ */
     line-height: 1.25;
     text-align: center;
     opacity: .95;
@@ -161,10 +172,11 @@
 .card:hover .logoFrame,
 .logoFrame:hover {
     border-color: rgba(230, 170, 40, .98);
-    transform: translateY(-2px) scale(1.012);
+    transform: translateY(-2px) scale(1.009);
+    /* ligeiro */
     box-shadow:
         inset 0 0 0 1px rgba(255, 255, 255, .10),
-        0 24px 38px rgba(0, 0, 0, .48),
+        0 22px 32px rgba(0, 0, 0, .42),
         0 0 0 3px rgba(226, 192, 126, .28);
 }
 
@@ -185,15 +197,14 @@
 @media (max-width: 720px) {
     .grid {
         --cols: 2;
-        --zone-pad-y: clamp(.75rem, 4vw, 1rem);
+        --zone-pad-y: clamp(.65rem, 3.4vw, .9rem);
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .wrap {
-        --logo-size: clamp(160px, 42cqw, 200px);
+        --logo-size: clamp(150px, 40cqw, 188px);
+        /* ↓ */
     }
-
-    /* antes: 34vw */
 }
 
 /* Reduced motion */

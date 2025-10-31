@@ -1,0 +1,273 @@
+/* =========================================================
+   HeadlineBlock — Prestige Noir + Liquid Gold (brand-agnostic)
+   Responsivo: XS ≤480 | SM ≤640 | MD ≤768 | LG ≤1024 | XL ≥1280
+   ========================================================= */
+
+.wrap {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    color: var(--sl-platinum-100, #f6f7fb);
+
+    /* === Content width herdada do <section> ===
+     A secção define:
+       --content-w: min(var(--sl-container-lg), 100%)
+       --line-inset: ...
+     Aqui calculamos a largura útil ENTRE linhas: */
+    --content-w-effective: calc(var(--content-w, min(var(--sl-container-lg, 1200px), 100%)) - 2 * var(--line-inset, 0px));
+
+    /* mapear opções “max-*” para a largura útil */
+    --content-w-sm: min(720px, 100%);
+    --content-w-md: min(920px, 100%);
+    --content-w-lg: var(--content-w-effective);
+
+    /* tokens responsivos base */
+    --radius: 12px;
+    /* ajustado por MQ abaixo */
+    --band-h: clamp(16px, 1.6vw, 22px);
+    /* altura da faixa */
+    --pad-y: clamp(0.9rem, 2.6vw, 1.6rem);
+    /* padding da caixa */
+}
+
+/* ===== Faixa dourada com a MESMA largura das linhas ===== */
+.band {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    inline-size: var(--content-w-effective);
+    height: var(--band-h);
+    background: rgba(199, 134, 21, 0.9);
+    border: 1px solid color-mix(in oklab, var(--sl-gold-500, #a16207), black 20%);
+    border-bottom: 0;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+}
+
+/* ===== Caixa interior ===== */
+.variant-banded .inner {
+    box-sizing: border-box;
+    width: var(--content-w-effective);
+    margin-inline: auto;
+    border-radius: var(--radius);
+    padding: var(--pad-y);
+    background:
+        radial-gradient(160% 140% at 50% 0%,
+            color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 18%, transparent),
+            transparent 60%),
+        linear-gradient(180deg, rgba(9, 18, 44, .88), rgba(3, 8, 22, .94));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .05);
+    overflow: clip;
+    /* cantos perfeitos sem bleed */
+    background-clip: padding-box;
+    /* não pinta o aro/borda */
+}
+
+/* Versão sem banda/caixa */
+.variant-plain .inner {
+    box-sizing: border-box;
+    width: var(--content-w-effective);
+    margin-inline: auto;
+    padding-block: clamp(0.5rem, 1.8vw, 1rem);
+}
+
+/* ===== Alinhamento e larguras ===== */
+.inner {
+    text-align: center;
+}
+
+.max-sm .inner {
+    width: calc(var(--content-w-sm) - 2 * var(--line-inset));
+}
+
+.max-md .inner {
+    width: calc(var(--content-w-md) - 2 * var(--line-inset));
+}
+
+.max-lg .inner {
+    width: var(--content-w-effective);
+}
+
+.align-left .inner {
+    text-align: left;
+}
+
+/* ===== Título ===== */
+.title {
+    margin: 0 0 clamp(2rem, 1.2vw, .7rem) 0;
+    /* gap sob o título */
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: .01em;
+    font-size: clamp(1.20rem, 2.6vw, 2.20rem);
+    /* texto fluido */
+    color: color-mix(in oklab, var(--sl-gold-400) 84%, var(--sl-accent-500) 16%);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .35);
+}
+
+/* ===== Lead / texto ===== */
+.lead {
+    margin: 0;
+    /* o espaçamento vem do .title */
+    font-weight: 500;
+    line-height: clamp(1.46, 2.2vw, 1.6);
+    font-size: clamp(0.98rem, 1.8vw, 1.18rem);
+    color: color-mix(in oklab, var(--sl-platinum-100, #f6f7fb) 80%, var(--sl-accent-500, #2EA7E0) 10%);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
+}
+
+/* =========================
+   RESPONSIVIDADE (breakpoints)
+   ========================= */
+
+/* XS — ≤480px: raio menor, banda mais baixa, largura 100% */
+@media (max-width: 480px) {
+    .wrap {
+        --radius: 10px;
+        --band-h: 14px;
+        --pad-y: clamp(.8rem, 4.5vw, 1rem);
+    }
+
+    .band {
+        inline-size: var(--content-w-effective);
+    }
+
+    .variant-banded .inner,
+    .variant-plain .inner {
+        width: var(--content-w-effective);
+    }
+
+    .title {
+        font-size: clamp(1.15rem, 6vw, 1.6rem);
+    }
+
+    .lead {
+        font-size: clamp(.95rem, 4.2vw, 1.05rem);
+    }
+}
+
+/* SM — 481–640px */
+@media (min-width: 481px) and (max-width: 640px) {
+    .wrap {
+        --radius: 11px;
+        --band-h: 16px;
+        --pad-y: clamp(.9rem, 4vw, 1.2rem);
+    }
+
+    .title {
+        font-size: clamp(1.2rem, 5.2vw, 1.7rem);
+    }
+
+    .lead {
+        font-size: clamp(.98rem, 3.6vw, 1.1rem);
+    }
+}
+
+/* MD — 641–768px */
+@media (min-width: 641px) and (max-width: 768px) {
+    .wrap {
+        --radius: 12px;
+        --band-h: 18px;
+        --pad-y: clamp(1rem, 3.6vw, 1.3rem);
+    }
+
+    .title {
+        font-size: clamp(1.3rem, 3.8vw, 1.9rem);
+    }
+
+    .lead {
+        font-size: clamp(1rem, 2.6vw, 1.12rem);
+    }
+}
+
+/* LG — 769–1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .wrap {
+        --radius: 12px;
+        --band-h: 20px;
+        --pad-y: clamp(1.05rem, 2.8vw, 1.4rem);
+    }
+
+    .title {
+        font-size: clamp(1.35rem, 3vw, 2.1rem);
+    }
+}
+
+@media (min-width: 1280px) {
+    .title {
+        font-size: clamp(1.35rem, 2.1vw, 2.30rem);
+    }
+}
+
+/* XL — ≥1280px: caixa mais generosa, texto ligeiramente maior */
+@media (min-width: 1280px) {
+    .wrap {
+        --radius: 14px;
+        --band-h: 22px;
+        --pad-y: clamp(1.2rem, 2.2vw, 1.6rem);
+    }
+
+    .title {
+        font-size: clamp(1.5rem, 2.4vw, 2.5rem);
+    }
+
+    .lead {
+        font-size: clamp(1.03rem, 1.6vw, 1.22rem);
+    }
+}
+
+/* 2XL — ≥1536px: respeita content width do section; não estica mais */
+@media (min-width: 1536px) {
+    .band {
+        inline-size: var(--content-w-effective);
+    }
+
+    .variant-banded .inner,
+    .variant-plain .inner {
+        width: var(--content-w-effective);
+    }
+}
+
+/* =========================
+   Hover Travel (apenas INTERIOR)
+   ========================= */
+@media (hover: hover) {
+    .variant-banded .inner {
+        transition: background .28s ease;
+    }
+
+    .variant-banded .inner:hover {
+        background:
+            /* véu dourado subtil */
+            linear-gradient(180deg,
+                color-mix(in oklab, var(--sl-gold-400, #C78615) 6%, transparent) 0%,
+                transparent 22%),
+            /* halo azul-Atlântico reforçado */
+            radial-gradient(160% 140% at 50% 0%,
+                color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 46%, transparent),
+                transparent 62%),
+            /* vinheta leve */
+            radial-gradient(120% 120% at 50% 120%, rgba(0, 0, 0, .18), transparent 58%),
+            /* base Prestige Noir */
+            linear-gradient(180deg, rgba(12, 20, 44, .94), rgba(5, 9, 26, .98));
+    }
+}
+
+/* Fallback sem color-mix (aproxima visual) */
+@supports not (color: color-mix(in oklab, white, black)) {
+    .variant-banded .inner:hover {
+        background:
+            linear-gradient(180deg, rgba(199, 134, 21, .06), rgba(199, 134, 21, 0) 22%),
+            radial-gradient(160% 140% at 50% 0%, rgba(46, 167, 224, .46), transparent 62%),
+            radial-gradient(120% 120% at 50% 120%, rgba(0, 0, 0, .18), transparent 58%),
+            linear-gradient(180deg, rgba(12, 20, 44, .94), rgba(5, 9, 26, .98));
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .variant-banded .inner {
+        transition: none;
+    }
+}
