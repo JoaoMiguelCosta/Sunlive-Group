@@ -1,0 +1,277 @@
+/* ===== Tokens base (Prestige Noir + Liquid Gold + Travel) ===== */
+:root {
+    --gold-400: var(--sl-gold-400, #C78615);
+    --gold-500: var(--sl-gold-500, #A16207);
+    --accent-500: var(--sl-accent-500, #2EA7E0);
+    --text-strong: #eef3fb;
+    --text: #e1e8f5;
+    --muted: #c8d0dc;
+    --panel: #081426;
+    --panel-2: #0b172d;
+    --shadow: rgba(0, 0, 0, .35);
+}
+
+/* ===== Cartão ===== */
+.card {
+    position: relative;
+
+    /* Grid em 3 faixas: imagem | barra título | corpo (expansível) */
+    display: grid;
+    grid-template-rows:
+        auto
+        /* imagem  */
+        auto
+        /* title   */
+        1fr;
+    /* body    */
+
+    background: linear-gradient(180deg, rgba(8, 20, 38, .88), rgba(5, 12, 24, .96));
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 24px var(--shadow);
+
+    /* altura mínima coerente em ecrãs médios/grandes */
+    min-height: clamp(360px, 44vw, 470px);
+}
+
+/* ===== Imagem com ratio fixo (uniformiza alturas) ===== */
+.imageWrap {
+    position: relative;
+    aspect-ratio: var(--card-img-ratio, 16 / 9);
+    /* pode ser alterado via style inline */
+    overflow: hidden;
+    background: #0b1a2d;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Badge no canto */
+.badge {
+    position: absolute;
+    top: .6rem;
+    left: .6rem;
+    background: color-mix(in oklab, var(--gold-500) 86%, black);
+    color: #fff;
+    padding: .28rem .66rem;
+    border-radius: 999px;
+    font-size: clamp(.72rem, .9vw, .82rem);
+    font-weight: 600;
+    letter-spacing: .2px;
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, .35),
+        inset 0 0 0 1px rgba(255, 255, 255, .12);
+}
+
+/* ===== Barra de título dourada ===== */
+.titleBar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    /* ligeiro ajuste do espaçamento */
+    background: var(--gold-500);
+    color: #fff;
+    padding: .55rem .9rem;
+    border-block: 1px solid rgba(0, 0, 0, .4);
+    min-height: var(--card-citybar-min, 48px);
+    --flag-size: 2rem;
+}
+
+.title {
+    display: inline-flex;
+    /* garante alinhamento interno da linha */
+    align-items: center;
+    /* baseline uniforme com o SVG */
+    font-weight: 800;
+    font-size: clamp(1.02rem, 1.4vw, 1.22rem);
+    letter-spacing: .3px;
+}
+
+/* --- Bandeira (SVG) — maior e alinhada com o texto --- */
+.flag {
+    inline-size: var(--flag-size);
+    block-size: var(--flag-size);
+    display: inline-block;
+    flex: 0 0 auto;
+    align-self: center;
+    transform: translateY(1px);
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .25));
+}
+
+/* Ajustes opcionais quando variant="international" */
+.card[data-variant="international"] .title {
+    letter-spacing: .32px;
+}
+
+/* ===== Corpo ===== */
+.body {
+    display: grid;
+    grid-auto-rows: min-content;
+    gap: .9rem;
+    padding: clamp(.9rem, 1.6vw, 1.2rem);
+    color: var(--text);
+}
+
+/* Resumo com line-clamp + altura mínima equivalente às linhas */
+.summary {
+    --_lines: var(--card-summary-lines, 3);
+    line-height: var(--card-summary-lh, 1.45);
+    font-size: clamp(.95rem, 1.1vw, 1.06rem);
+    margin: 0;
+    color: var(--text-strong);
+    background:
+        linear-gradient(180deg, rgba(46, 167, 224, .10), rgba(7, 20, 41, 0) 75%);
+    padding: .2rem 0 .4rem;
+
+    display: -webkit-box;
+    -webkit-line-clamp: var(--_lines);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    min-height: calc(var(--_lines) * 1em * var(--card-summary-lh, 1.45));
+}
+
+/* Duração (ícone relógio via CSS) */
+.durationRow {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    color: var(--muted);
+    font-weight: 600;
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    padding-top: .7rem;
+    margin-top: auto;
+}
+
+.durationIcon {
+    width: 1.05rem;
+    height: 1.05rem;
+    border: 2px solid rgba(255, 255, 255, .55);
+    border-radius: 50%;
+    position: relative;
+}
+
+.durationIcon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 2px;
+    height: 40%;
+    background: rgba(255, 255, 255, .85);
+    transform: translate(-50%, -50%) rotate(45deg);
+    transform-origin: bottom center;
+}
+
+.durationText {}
+
+/* ===== Destaques ===== */
+.hlBlock {
+    margin-top: .2rem;
+}
+
+.hlHeader {
+    color: color-mix(in oklab, var(--gold-400) 90%, white 10%);
+    font-weight: 800;
+    letter-spacing: .3px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
+    margin-bottom: .55rem;
+}
+
+.hlList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem .8rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hlPill {
+    display: inline-flex;
+    align-items: center;
+    padding: .34rem .7rem;
+    border-radius: 999px;
+    font-size: clamp(.8rem, .95vw, .92rem);
+    color: #fff;
+    background:
+        linear-gradient(180deg, rgba(46, 167, 224, .18), rgba(46, 167, 224, .06)),
+        linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0));
+    border: 1.5px solid color-mix(in oklab, var(--gold-400) 75%, #000 25%);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .06),
+        0 6px 16px rgba(0, 0, 0, .28);
+    white-space: nowrap;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 750px) {
+    .card {
+        min-height: auto;
+    }
+
+    .summary {
+        --_lines: var(--card-summary-lines-sm, 4);
+    }
+}
+
+/* ===== Interações — Destaques (hlPill) ===== */
+.hlPill {
+    transition:
+        background-color .18s ease,
+        border-color .18s ease,
+        box-shadow .18s ease,
+        transform .06s ease;
+}
+
+/* Hover das pills */
+.hlPill:hover,
+.hlPill:focus-visible {
+    --pill-mix: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 73%, var(--sl-gold-400, #C78615) 27%);
+    --pill-mix-dk: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 58%, var(--sl-gold-400, #C78615) 42%);
+    background:
+        linear-gradient(180deg, var(--pill-mix) 0%,
+            color-mix(in oklab, var(--pill-mix-dk) 88%, black 12%) 100%);
+    border-color: color-mix(in oklab, var(--sl-gold-400, #C78615) 78%, #000 22%);
+    color: #fff;
+    text-shadow: none;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .06),
+        0 10px 18px rgba(0, 0, 0, .32),
+        0 0 0 2px color-mix(in oklab, var(--sl-gold-400, #C78615) 55%, transparent);
+    outline: none;
+}
+
+/* Inclui — mesmo hover das pills de destaque */
+.incPill:hover,
+.incPill:focus-visible,
+.includes .pill:hover,
+.includes .pill:focus-visible {
+    --pill-mix: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 73%, var(--sl-gold-400, #C78615) 27%);
+    --pill-mix-dk: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 58%, var(--sl-gold-400, #C78615) 42%);
+    background:
+        linear-gradient(180deg, var(--pill-mix) 0%,
+            color-mix(in oklab, var(--pill-mix-dk) 88%, black 12%) 100%);
+    border-color: color-mix(in oklab, var(--sl-gold-400, #C78615) 78%, #000 22%);
+    color: #fff;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .06),
+        0 10px 18px rgba(0, 0, 0, .32),
+        0 0 0 2px color-mix(in oklab, var(--sl-gold-400, #C78615) 55%, transparent);
+    outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hlPill,
+    .incPill,
+    .includes .pill {
+        transition: none;
+    }
+}

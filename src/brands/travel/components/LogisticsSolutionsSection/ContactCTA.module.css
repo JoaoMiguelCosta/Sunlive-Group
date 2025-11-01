@@ -1,0 +1,110 @@
+/* src/brands/travel/components/DomesticDestinationsSection/ContactCTA.module.css */
+
+/* =======================================================
+   ContactCTA — barra de CTA por baixo dos cards (ultra compacta)
+   ======================================================= */
+
+/* Wrapper da secção */
+.section {
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+    /* espaçamento BASE — ainda mais reduzido */
+    --pad-top: clamp(8px, 1vw, 12px);
+    --pad-bot: clamp(4px, 0.8vw, 8px);
+
+    padding-block: var(--pad-top) var(--pad-bot);
+}
+
+/* Content container (futuro texto auxiliar) */
+.inner {
+    display: grid;
+    place-items: center;
+    gap: clamp(.32rem, 1vw, .7rem);
+    max-inline-size: var(--sl-container-md, 1100px);
+    inline-size: 100%;
+    padding-inline: var(--section-inset, clamp(16px, 3.5vw, 44px));
+}
+
+/* Envelope do botão: posiciona halo sem afetar o anchor */
+.ctaWrap {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    padding: clamp(1px, .4vw, 4px);
+    /* acolchoamento mínimo */
+    border-radius: 999px;
+}
+
+/* Halo suave atrás do botão */
+.halo {
+    position: absolute;
+    inset: -14% -18%;
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(9px);
+    opacity: .32;
+    background:
+        radial-gradient(120% 160% at 60% 40%,
+            color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 24%, transparent) 0%,
+            transparent 62%),
+        radial-gradient(120% 140% at 40% 60%,
+            color-mix(in oklab, var(--sl-gold-400, #C78615) 20%, transparent) 0%,
+            transparent 70%);
+}
+
+/* Botão acima do halo */
+.ctaWrap> :global(a) {
+    position: relative;
+    z-index: 1;
+}
+
+/* CTA um pouco reforçado (mas sem aumentar muito) */
+.ctaButton {
+    --pill-fs: clamp(1.02rem, 1vw, 1.12rem);
+    --pill-pad-y: clamp(.54rem, .8vw, .68rem);
+    --pill-pad-x: clamp(1.0rem, 1.3vw, 1.24rem);
+    --pill-min: 46px;
+    --pill-gap: clamp(.48rem, .8vw, .64rem);
+    border-width: 2.2px;
+}
+
+/* ===== Breakpoints ===== */
+
+/* ≥1333px: manter compacto mesmo em desktop largo */
+@media (min-width: 1333px) {
+    .section {
+        --pad-top: clamp(6px, .8vw, 10px);
+        --pad-bot: clamp(2px, .6vw, 6px);
+    }
+
+    .ctaButton {
+        --pill-fs: 1.1rem;
+        --pill-min: 48px;
+    }
+}
+
+/* ≤560px: ultra compacto em mobile */
+@media (max-width: 560px) {
+    .section {
+        --pad-top: 6px;
+        --pad-bot: 6px;
+    }
+
+    .ctaButton {
+        --pill-fs: 1rem;
+        --pill-pad-y: .5rem;
+        --pill-pad-x: 1rem;
+        --pill-min: 44px;
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .halo {
+        filter: blur(7px);
+    }
+}

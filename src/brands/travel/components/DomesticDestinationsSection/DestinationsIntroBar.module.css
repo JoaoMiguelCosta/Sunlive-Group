@@ -1,0 +1,30 @@
+/* src/brands/travel/sections/DomesticDestinationsSection/DestinationsIntroBar.module.css */
+
+/* Wrapper da headline — herda largura da section e NÃO a redefine diferente */
+.wrap {
+    position: relative;
+    width: 100%;
+    isolation: isolate;
+
+    /* mesmo recuo da secção */
+    --_inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
+
+    /* 👇 largura efetiva PARTILHADA (igual à da secção + grid) */
+    --content-w-effective: min(var(--sl-container-lg, 1152px),
+            calc(100% - (var(--_inset) * 2)));
+
+    /* Mapas para o que o HeadlineBlock/band possam esperar */
+    --content-w: var(--content-w-effective);
+    --band-w: var(--content-w-effective);
+
+    /* Margens do header do HeadlineBlock (super compactas) */
+    --headline-mt: clamp(6px, 0.8vw, 10px);
+    --headline-mb: clamp(6px, 1vw, 10px);
+}
+
+/* Se o HeadlineBlock expõe classes, podes alinhar assim:
+.wrap :global(.headline__header) {
+  margin-top: var(--headline-mt);
+  margin-bottom: var(--headline-mb);
+}
+*/
