@@ -1,7 +1,7 @@
 /* ================================================
    ServiceOfferingsGrid — uniform cards (strict align)
+   (não esticar os irmãos quando 1 abre)
    ================================================ */
-
 .wrap {
     position: relative;
     isolation: isolate;
@@ -12,15 +12,13 @@
 
     /* Alturas base (ajustadas por breakpoints) */
     --top-h: 86px;
-    /* banda com ícone */
     --title-h: 56px;
-    /* faixa do título */
     --summary-fixed: 7.4rem;
     /* base mobile */
     --includes-min: 11.6rem;
     /* base mobile */
 
-    /* Altura mínima do card */
+    /* Altura mínima do card (estado fechado) */
     --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
 }
 
@@ -30,33 +28,30 @@
     padding-inline: var(--line-inset);
 
     display: grid;
-    align-items: stretch;
+    /* >>> não esticar os itens para a altura da linha */
+    align-items: start;
     gap: clamp(10px, 1.6vw, 18px);
     grid-template-columns: 1fr;
     /* mobile */
 }
 
+/* cada célula já não força o filho a ocupar 100% da altura da linha */
 .cell {
     min-width: 0;
-    display: flex;
+    display: block;
 }
 
 .cell>* {
     width: 100%;
-    height: 100%;
-    min-height: 100%;
-    box-sizing: border-box;
 }
 
-/* ======= AJUSTES “MODO COMPACTO” POR FAIXA ======= */
+/* sem height:100% aqui */
 
-/* 423px–767px: ainda mais compacto */
+/* ======= Compactações por faixa ======= */
 @media (min-width: 423px) and (max-width: 767px) {
     .wrap {
         --summary-fixed: 6.2rem;
-        /* ↓ mais 0.6rem */
         --includes-min: 12.8rem;
-        /* ↑ mais 0.6rem */
         --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
     }
 }
@@ -68,24 +63,22 @@
     }
 
     .wrap {
-        --summary-fixed: 8.0rem;
+        --summary-fixed: 7rem;
         --includes-min: 12.4rem;
         --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
     }
 }
 
-/* 850px–1099px: ainda mais compacto */
+/* 850–1099px */
 @media (min-width: 850px) and (max-width: 1099px) {
     .wrap {
-        --summary-fixed: 7.2rem;
-        /* ↓ mais 0.6rem */
+        --summary-fixed: 6.5rem;
         --includes-min: 13.8rem;
-        /* ↑ mais 0.6rem */
         --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
     }
 }
 
-/* ≥1100px → 6 colunas (cada card ocupa 2) e 2.ª linha centrada */
+/* ≥1100px → 6 colunas (cada card ocupa 2) */
 @media (min-width: 1100px) {
     .grid {
         grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -95,7 +88,7 @@
         grid-column: span 2;
     }
 
-    /* Centrar 4.º e 5.º cards quando houver 5 itens */
+    /* Centrar 4.º e 5.º quando houver 5 cards */
     .grid>.cell:nth-child(4) {
         grid-column: 2 / span 2;
     }
@@ -105,24 +98,22 @@
     }
 
     .wrap {
-        --summary-fixed: 9.0rem;
+        --summary-fixed: 8.5rem;
         --includes-min: 13.6rem;
         --card-min-h: clamp(480px, 48vw, 560px);
     }
 }
 
-/* ≥1440px: ainda mais compacto em ecrãs grandes */
+/* ≥1440px */
 @media (min-width: 1440px) {
     .wrap {
-        --summary-fixed: 7.8rem;
-        /* ↓ mais 0.6rem */
+        --summary-fixed: 7rem;
         --includes-min: 14.8rem;
-        /* ↑ mais 0.6rem */
         --card-min-h: clamp(540px, 42vw, 620px);
     }
 }
 
-/* ===== Forçar FLEX no cartão + normalizações internas ===== */
+/* ===== Normalizações internas do cartão ===== */
 .grid :global(article[class^="_card_"],
     article[class^="ServiceCard_card__"],
     article[class*=" card"],
@@ -133,8 +124,12 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    height: 100% !important;
+
+    /* >>> não forçar altura total da linha */
+    height: auto !important;
+
     min-block-size: var(--card-min-h) !important;
+    /* altura mínima fechada */
 
     border: 0 !important;
     border-radius: var(--card-radius) !important;
@@ -203,7 +198,7 @@
     overflow: hidden;
 }
 
-/* "Inclui" ocupa o resto (mínimo variável por faixa) */
+/* "Inclui" ocupa o resto quando aberto (cada card cresce sozinho) */
 .grid :global(.includesBlock) {
     flex: 1 1 auto;
     min-height: var(--includes-min);
@@ -240,4 +235,3 @@
     inline-size: .5rem;
     block-size: .5rem;
 }
-

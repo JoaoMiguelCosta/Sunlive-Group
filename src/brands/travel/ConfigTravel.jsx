@@ -98,8 +98,8 @@ export const travelBrand = {
       headline: {
         title: "Soluções Integradas de Logística para o Turismo",
         lead:
-          "Oferecemos soluções completas de logística e transporte para turismo desportivo, cultural e de saúde, incluindo transportes, transfers, alojamentos e refeições. " +
-          "Garantimos conforto, segurança e pontualidade, adaptando-nos às necessidades de cada cliente para uma experiência única e sem preocupações.",
+          "Prestamos soluções completas de logística e transporte para turismo desportivo, cultural e de saúde, incluindo transportes, transfers, alojamentos e refeições. " +
+          "Asseguramos conforto, segurança e pontualidade, adaptando o serviço às necessidades de cada cliente para uma experiência única e sem preocupações.",
       },
 
       // Grid de cards (consumido por ServiceOfferingsGrid)
