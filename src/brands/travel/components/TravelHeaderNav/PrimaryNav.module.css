@@ -29,7 +29,7 @@
 
 /* Eleva MUITO o item quando aberto para sobrepor vizinhos */
 .navItem[data-open="true"] {
-    z-index: 5000;
+    z-index: 10010;
 }
 
 /* --- Pills: aro dourado + leve brilho (base) --- */
@@ -145,7 +145,7 @@
     transform: translateY(-4px);
     transition: opacity .18s ease, transform .18s ease;
 
-    z-index: 5001;
+    z-index: 10011;
     /* acima do item aberto e do resto do header */
 }
 
