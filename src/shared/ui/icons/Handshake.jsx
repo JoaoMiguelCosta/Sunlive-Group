@@ -1,19 +1,30 @@
 // src/shared/ui/icons/Handshake.jsx
-export default function HandshakeIcon({ size = 24, className = "", ...props }) {
+export default function HandshakeIcon({ size = 26, className = "", ...props }) {
   return (
     <svg
-      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#e4bf07" /* dourado fixo */
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={[
+        "lucide",
+        "lucide-handshake-icon",
+        "lucide-handshake",
+        className,
+      ].join(" ")}
       aria-hidden="true"
-      focusable="false"
-      className={className}
       {...props}
     >
-      <path
-        fill="currentColor"
-        d="M2 7a3 3 0 0 1 3-3h3.5c.53 0 1.04.21 1.41.59L12 6.17l1.09-1.08A2 2 0 0 1 14.5 4H18a3 3 0 0 1 3 3v1.5a2 2 0 0 1-.59 1.41l-2.8 2.8a2.75 2.75 0 0 1-3.89 0l-.02-.02-.55.55a2.75 2.75 0 0 1-3.89 0l-.02-.02-.55.55a2.75 2.75 0 0 1-3.89 0L2.6 9.91A2 2 0 0 1 2 8.5V7Zm3-1a1 1 0 0 0-1 1v1.5c0 .27.1.52.29.71l2.8 2.8a.75.75 0 0 0 1.06 0L9.7 10.3a1 1 0 0 1 1.41 0l1.24 1.24a.75.75 0 0 0 1.06 0l2.83-2.83c.19-.19.29-.44.29-.71V7a1 1 0 0 0-1-1h-3.5l-2 2-2-2H5Zm13 9.25 2.41-2.41a3.5 3.5 0 0 0 1.02-2.48V8.5a.75.75 0 0 0-1.5 0v.86c0 .4-.16.78-.44 1.06l-2.82 2.82a4.25 4.25 0 0 1-6.01 0l-.19-.2-.55.55a4.25 4.25 0 0 1-5.66.2l-.2-.2-1.1-1.1a.75.75 0 1 0-1.06 1.06l1.1 1.1a5.75 5.75 0 0 0 7.87 0l.19-.2.19.2a5.75 5.75 0 0 0 7.86 0Z"
-      />
+      <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+      <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+      <path d="m21 3 1 11h-2" />
+      <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+      <path d="M3 4h8" />
     </svg>
   );
 }

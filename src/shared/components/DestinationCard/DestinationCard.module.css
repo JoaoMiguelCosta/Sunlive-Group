@@ -486,7 +486,7 @@
     opacity: .9;
 }
 
-/* ===== Variant: partner (logos) — CENTRADO PERFEITO ===== */
+/* ===== Variant: partner (logos) — CENTRADO + ESTILO TRAVEL ===== */
 /* Largura controlada do cartão + centrado na coluna/grid */
 .card[data-variant="partner"] {
     inline-size: clamp(340px, 28vw, 440px);
@@ -500,14 +500,19 @@
     }
 }
 
-/* Canvas da imagem do parceiro (logo centrado) */
+/* Canvas da imagem do parceiro (logo centrado) — fundo “Travel” */
 .card[data-variant="partner"] .imageWrap {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: color-mix(in oklab, var(--sl-gold-500, #A16207) 86%, black 14%);
+
+    /* camadas: glow azul + navy vertical + padrão diagonal subtil */
+background-color: var(--sl-body-bg);
+
     aspect-ratio: var(--card-img-ratio, 16 / 9);
     padding: clamp(10px, 2.6vw, 22px);
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
 }
 
 /* O logo respeita proporção; ocupa até X% do canvas */
