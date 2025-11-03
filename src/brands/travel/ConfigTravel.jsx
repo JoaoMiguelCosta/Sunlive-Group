@@ -1,3 +1,4 @@
+// src/brands/travel/ConfigTravel.jsx
 import {
   IMG_COMMON,
   LANG_DEFAULT,
@@ -12,6 +13,8 @@ import {
   TourBusIcon,
   PackageIcon,
   PhoneIcon,
+  // 👇 novo ícone
+  HandshakeIcon,
 } from "../../shared/ui/icons/index.js";
 
 import logoTravel from "./assets/LogoSunliveTravel/travel.png";
@@ -34,6 +37,8 @@ export const travelBrand = {
     "tour-bus": TourBusIcon,
     package: PackageIcon,
     phone: PhoneIcon,
+    // para banners/selos de confiança
+    handshake: HandshakeIcon,
   },
 
   lang: LANG_DEFAULT,
@@ -81,6 +86,9 @@ export const travelBrand = {
   ],
 
   sections: {
+    /* =========================
+       Soluções de Logística
+       ========================= */
     logisticsSolutions: {
       headline: {
         title: "Soluções Integradas de Logística para o Turismo",
@@ -163,6 +171,9 @@ export const travelBrand = {
       },
     },
 
+    /* =========================
+       Destinos Nacionais
+       ========================= */
     domesticDestinations: {
       id: "destinos-nacionais",
       headline: {
@@ -258,6 +269,9 @@ export const travelBrand = {
       cta: makeDefaultCTA("Sunlive Travel"),
     },
 
+    /* =========================
+       Destinos Internacionais
+       ========================= */
     internationalDestinations: {
       id: "destinos-internacionais",
       headline: {
@@ -327,6 +341,114 @@ export const travelBrand = {
           },
         },
       ],
+      cta: makeDefaultCTA("Sunlive Travel"),
+    },
+
+    /* =========================
+       Hotéis Parceiros
+       ========================= */
+    partnerHotels: {
+      id: "parceiros-hoteis",
+      headline: {
+        eyebrow: "Hotéis Parceiros Sunlive Travel",
+        title: "Fique com Conforto",
+        lead:
+          "Em parceria com hotéis selecionados, dispomos de experiências de viagem completas incluindo alojamento de alta qualidade, conforto e excelentes localizações.\n\n" +
+          "Combine transporte, tours e alojamento num único pacote personalizado com a Sunlive Travel.",
+      },
+      hotels: [
+        {
+          key: "curia",
+          name: "Hotel Termas da Curia",
+          badge: "Curia",
+          summary:
+            "Rodeado por natureza: spa, jardins, lago e experiências termais num ambiente relaxante.",
+          href: "https://www.termasdacuria.com/",
+          picture: { src: "", alt: "Fachada do Hotel Termas da Curia" },
+        },
+        {
+          key: "pateira",
+          name: "Estalagem da Pateira",
+          badge: "Fermentelos",
+          summary:
+            "Junto à Lagoa da Pateira: belas vistas e uma estadia calma em contacto com a natureza.",
+          href: "https://pateira.com/",
+          picture: {
+            src: "",
+            alt: "Vista para a lagoa e Estalagem da Pateira",
+          },
+        },
+        {
+          key: "estancia",
+          name: "Residential Estância",
+          badge: "Oliveira do Bairro",
+          summary:
+            "Ambiente familiar e tranquilo — simplicidade, conforto e boa localização.",
+          href: "https://www.facebook.com/residencial.estancia/?locale=pt_PT",
+          picture: {
+            src: "",
+            alt: "Residential Estância em Oliveira do Bairro",
+          },
+        },
+        {
+          key: "gold",
+          name: "In Gold Hotel & Spa",
+          badge: "Águeda",
+          summary:
+            "Hotel moderno com spa, piscina e restaurante — ideal para lazer ou negócios.",
+          href: "https://www.ingoldhotel.pt/pt/Menu/Home.aspx",
+          picture: { src: "", alt: "In Gold Hotel & Spa em Águeda" },
+        },
+        {
+          key: "grand",
+          name: "Grand Hotel de Luso",
+          badge: "Luso",
+          summary:
+            "Conforto e tradição junto às Termas do Luso, com spa, piscina olímpica e acesso direto às termas.",
+          href: "https://www.hoteluso.com/pt/",
+          picture: { src: "", alt: "Grand Hotel de Luso à noite" },
+        },
+      ],
+      cta: {
+        label: "Contactar",
+        href: "#contactar",
+        ariaLabel: "Contactar Sunlive Travel",
+        iconKey: "phone",
+      },
+    },
+
+    /* =========================
+       NOVA — Parceiros de Viagem
+       ========================= */
+    travelPartners: {
+      id: "parceiros-viagens",
+      headline: {
+        title: "Parceiros de Viagem Sunlive Travel",
+        lead: "Para garantir uma experiência de viagem completa e de alta qualidade, trabalhamos em parceria com operadores certificados e experientes:",
+      },
+      partners: [
+        {
+          key: "portugalissimo",
+          name: "Portugalissimo",
+          summary:
+            "Especialistas em turismo e imobiliário focados no estilo de vida português.",
+          href: "https://www.portugalissimmo.com/",
+          picture: { src: "", alt: "Logótipo Portugalissimo" },
+        },
+        {
+          key: "vago",
+          name: "Vago Viagens",
+          summary:
+            "Agência de viagens licenciada especializada em viagens autênticas e personalizadas.",
+          href: "https://vagoviagens.pt/",
+          picture: { src: "", alt: "Logótipo Vago Viagens" },
+        },
+      ],
+      trustedBanner: {
+        iconKey: "handshake",
+        title: "Colaboração de Confiança",
+        lead: "Estas parcerias estratégicas permitem-nos alargar a nossa oferta com soluções integradas e ajustadas, aliando a excelência da nossa operação logística desportiva ao conhecimento local e à competência técnica dos nossos parceiros certificados.",
+      },
       cta: makeDefaultCTA("Sunlive Travel"),
     },
   },

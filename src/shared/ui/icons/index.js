@@ -15,6 +15,9 @@ import BusIcon from "./Bus.jsx";
 import TourBusIcon from "./TourBus.jsx";
 import PackageIcon from "./Package.jsx";
 
+// Parcerias / Confiança
+import HandshakeIcon from "./Handshake.jsx";
+
 // ===== Exports nomeados =====
 export {
   FacebookIcon,
@@ -29,6 +32,7 @@ export {
   BusIcon,
   TourBusIcon,
   PackageIcon,
+  HandshakeIcon,
 };
 
 // ===== Mapa conveniente para usar por chave (iconKey) =====
@@ -40,7 +44,10 @@ export const ICONS = {
   package: PackageIcon,
   pin: PinIcon,
 
-  // utilitários / sociais (se precisares)
+  // parcerias / confiança
+  handshake: HandshakeIcon,
+
+  // utilitários / sociais
   globe: GlobeIcon,
   mail: MailIcon,
   phone: PhoneIcon,

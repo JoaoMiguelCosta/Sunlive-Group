@@ -4,6 +4,8 @@ import TravelHeaderNav from "../components/TravelHeaderNav/index.jsx";
 import LogisticsSolutionsSection from "../components/LogisticsSolutionsSection/index.jsx";
 import DomesticDestinationsSection from "../components/DomesticDestinationsSection/index.jsx";
 import InternationalDestinationsSection from "../components/InternationalDestinationsSection/index.jsx";
+import PartnerHotelsSection from "../components/PartnerHotelsSection/index.jsx";
+import TravelPartnersSection from "../components/TravelPartnersSection/index.jsx";
 
 export default function TravelPage() {
   return (
@@ -19,6 +21,12 @@ export default function TravelPage() {
 
       {/* Secção 4: Destinos Internacionais */}
       <InternationalDestinationsSection />
+
+      {/* Secção 5: Hotéis Parceiros */}
+      <PartnerHotelsSection />
+
+      {/* Secção 6: Parceiros de Viagem */}
+      <TravelPartnersSection />
     </main>
   );
 }

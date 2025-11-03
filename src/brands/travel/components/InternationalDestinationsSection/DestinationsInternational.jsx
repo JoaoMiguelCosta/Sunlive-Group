@@ -49,6 +49,7 @@ export default function DestinationsInternational() {
           return (
             <div role="listitem" key={d.key} className={styles.gridItem}>
               <DestinationCard
+                variant="international"       
                 city={d.city}
                 badge={d.badge}
                 imageSrc={imageSrc}

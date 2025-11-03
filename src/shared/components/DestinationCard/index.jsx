@@ -1,9 +1,12 @@
+// src/shared/components/DestinationCard/index.jsx (ou DestinationCard.jsx)
 import React from "react";
 import styles from "./DestinationCard.module.css";
 
 /**
  * DestinationCard
- * - flagIcon?: React.FC   -> componente de bandeira (SVG/React)
+ * - variant?: "international" | "domestic" | "hotel" | "partner" | undefined   // ✅ inclui "partner"
+ * - flagIcon?: React.FC -> componente de bandeira (SVG/React)
+ * - cta?: { label: string; href: string; external?: boolean }
  */
 export default function DestinationCard({
   city,
@@ -15,11 +18,21 @@ export default function DestinationCard({
   highlights = [],
   includes = [],
   flagIcon: FlagIcon,
+  variant,
+  cta,
 }) {
   if (!city || !imageSrc || !imageAlt) return null;
 
+  // ✅ aria-label mais correto para parceiros
+  const ariaLabel =
+    variant === "partner" ? `Parceiro: ${city}` : `Destino: ${city}`;
+
   return (
-    <article className={styles.card} aria-label={`Destino: ${city}`}>
+    <article
+      className={styles.card}
+      aria-label={ariaLabel}
+      data-variant={variant}
+    >
       {/* Imagem + badge */}
       <div className={styles.imageWrap}>
         <img
@@ -76,6 +89,21 @@ export default function DestinationCard({
                 </li>
               ))}
             </ul>
+          </div>
+        ) : null}
+
+        {cta?.href ? (
+          <div className={styles.ctaRow}>
+            <a
+              className={styles.ctaButton}
+              href={cta.href}
+              target={cta.external !== false ? "_blank" : "_self"}
+              rel={cta.external !== false ? "noopener noreferrer" : undefined}
+              aria-label={`${cta.label} – ${city}`}
+            >
+              {cta.label}
+              <span aria-hidden="true" className={styles.ctaIcon} />
+            </a>
           </div>
         ) : null}
       </div>

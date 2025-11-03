@@ -1,0 +1,109 @@
+/* =======================================================
+   ContactCTA.module.css — barra de CTA por baixo dos cards
+   ======================================================= */
+
+/* Wrapper da secção */
+.section {
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+    /* espaçamento base (podes alterar aqui) */
+    --pad-top: clamp(16px, 3vw, 28px);
+
+    padding-block: var(--pad-top) var(--pad-bot);
+}
+
+/* Content container (caso precises de colocar textos auxiliares no futuro) */
+.inner {
+    display: grid;
+    place-items: center;
+    gap: clamp(.4rem, 1.4vw, .9rem);
+    max-inline-size: var(--sl-container-md, 1100px);
+    inline-size: 100%;
+    padding-inline: var(--section-inset, clamp(16px, 3.5vw, 44px));
+}
+
+/* Envelope do botão: posiciona halo sem afetar o anchor */
+.ctaWrap {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    padding: clamp(2px, .6vw, 6px);
+    /* “acolchoamento” para o halo respirar */
+    border-radius: 999px;
+}
+
+/* Halo suave atrás do botão (accent Travel + toque dourado) */
+.halo {
+    position: absolute;
+    inset: -18% -22%;
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(10px);
+    opacity: .35;
+    background:
+        radial-gradient(120% 160% at 60% 40%,
+            color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 26%, transparent) 0%,
+            transparent 62%),
+        radial-gradient(120% 140% at 40% 60%,
+            color-mix(in oklab, var(--sl-gold-400, #C78615) 22%, transparent) 0%,
+            transparent 70%);
+}
+
+/* Garante que o botão (anchor) fica acima do halo */
+.ctaWrap> :global(a) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Aumenta o CTA só nesta secção (sem tocar nos restantes) */
+.ctaButton {
+    /* tamanhos maiores via CSS vars do botão shared */
+    --pill-fs: clamp(1.06rem, 1.15vw, 1.18rem);
+    --pill-pad-y: clamp(.60rem, .9vw, .74rem);
+    --pill-pad-x: clamp(1.10rem, 1.5vw, 1.38rem);
+    --pill-min: 50px;
+    --pill-gap: clamp(.52rem, .9vw, .72rem);
+    border-width: 2.5px;
+    /* aro um pouco mais espesso */
+}
+
+/* ===== Breakpoints (sem duplicações) ===== */
+
+/* ≥1333px: respira mais e CTA ligeiramente maior */
+@media (min-width: 1333px) {
+    .section {
+        --pad-top: clamp(20px, 2.2vw, 36px);
+        --pad-bot: clamp(28px, 3.8vw, 72px);
+    }
+
+    .ctaButton {
+        --pill-fs: 1.22rem;
+        --pill-min: 52px;
+    }
+}
+
+/* ≤560px: compacta a secção e o CTA */
+@media (max-width: 560px) {
+    .section {
+        --pad-top: 14px;
+        --pad-bot: 22px;
+    }
+
+    .ctaButton {
+        --pill-fs: 1.02rem;
+        --pill-pad-y: .56rem;
+        --pill-pad-x: 1.08rem;
+        --pill-min: 46px;
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .halo {
+        filter: blur(8px);
+    }
+}

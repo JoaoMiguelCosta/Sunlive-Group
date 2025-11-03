@@ -23,14 +23,10 @@ const IMAGE_BY_KEY = {
 };
 
 // Grupos fixos
-const MAIN_KEYS = new Set(["aveiro", "porto", "lisboa"]); // Principais
-const OTHER_KEYS = new Set(["coimbra", "sintra", "obidos"]); // Outros
+const MAIN_KEYS = new Set(["aveiro", "porto", "lisboa"]);
+const OTHER_KEYS = new Set(["coimbra", "sintra", "obidos"]);
 const CATS = [
-  {
-    key: "principais",
-    label: "Principais",
-    predicate: (d) => MAIN_KEYS.has(d.key),
-  },
+  { key: "principais", label: "Principais", predicate: (d) => MAIN_KEYS.has(d.key) },
   { key: "outros", label: "Outros", predicate: (d) => OTHER_KEYS.has(d.key) },
   { key: "todos", label: "Todos", predicate: () => true },
 ];
@@ -39,18 +35,14 @@ export default function DestinationsBrowser() {
   const raw = travelBrand?.sections?.domesticDestinations?.destinations || [];
   const data = normalizeDestinations(raw, IMAGE_BY_KEY);
 
- const { tab, setTab, filtered } = useTabsFilter(data, CATS, "principais");
+  const { tab, setTab, filtered } = useTabsFilter(data, CATS, "principais");
   if (!data.length) return null;
 
   return (
     <section className={styles.wrapper} aria-label="Explorar destinos">
       {/* Pills: Principais | Outros | Todos */}
       <div className={styles.controls}>
-        <div
-          className={styles.filters}
-          role="tablist"
-          aria-label="Filtrar por grupo"
-        >
+        <div className={styles.filters} role="tablist" aria-label="Filtrar por grupo">
           {CATS.map((t) => (
             <button
               key={t.key}
@@ -72,6 +64,7 @@ export default function DestinationsBrowser() {
         {filtered.map((d) => (
           <div role="listitem" key={d.key} className={styles.item}>
             <DestinationCard
+              variant="domestic"          
               city={d.city}
               badge={d.badge}
               imageSrc={d.imageSrc}

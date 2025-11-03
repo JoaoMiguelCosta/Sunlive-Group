@@ -1,0 +1,59 @@
+/* src/brands/travel/components/TravelPartnersSection/TravelPartnersCardsGrid.module.css */
+
+.container {
+    inline-size: var(--content-w-effective);
+    margin-inline: auto;
+    padding-inline: 0;
+}
+
+/* ===== GRID ===== */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* mobile */
+    gap: clamp(0.8rem, 1.8vw, 1.1rem);
+    align-content: start;
+
+    /* largura alvo de cada cartão */
+    --partner-card-w: clamp(340px, 28vw, 440px);
+
+    /* 💡 centra o conjunto das colunas dentro do grid */
+    justify-content: center;
+
+    /* opcional: centra cada item dentro do track (se não ocupar 100%) */
+    justify-items: center;
+}
+
+/* cada item não estica; casa com a largura do track */
+.item {
+    min-width: 0;
+    inline-size: var(--partner-card-w);
+}
+
+/* ≥720px: 2 colunas fixas, centradas */
+@media (min-width: 720px) {
+    .grid {
+        grid-template-columns: repeat(2, var(--partner-card-w));
+        gap: clamp(0.9rem, 1.6vw, 1.1rem);
+    }
+}
+
+/* ≥1180px: até 3 colunas, mas adapta se só houver 1–2 itens */
+@media (min-width: 1180px) {
+    .grid {
+        grid-template-columns: repeat(3, var(--partner-card-w));
+        justify-content: center;
+        /* centra o conjunto de colunas */
+        gap: clamp(0.9rem, 1.2vw, 1.1rem);
+    }
+
+    /* 🔧 Se houver exatamente 2 itens, usa só 2 colunas (continua centrado) */
+    .grid:has(> .item:nth-child(2):last-child) {
+        grid-template-columns: repeat(2, var(--partner-card-w));
+    }
+
+    /* 🔧 Se houver só 1 item, usa 1 coluna e mantém centrado */
+    .grid:has(> .item:nth-child(1):last-child) {
+        grid-template-columns: var(--partner-card-w);
+    }
+}

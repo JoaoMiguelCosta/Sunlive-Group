@@ -1,0 +1,19 @@
+/* src/brands/travel/components/PartnerHotelsSection/PartnerHotelsHeadline.module.css */
+.wrap {
+    inline-size: var(--content-w-effective);
+    margin-inline: auto;
+    /* controla a aproximação ao grid seguinte (se estiveres a usar) */
+    --band-overlap: clamp(12px, 1.6vw, 16px);
+    margin-block-end: var(--band-overlap);
+}
+
+/* Sub-headline que aparece por baixo do título, dentro do <p.lead> */
+.subhead {
+    display: inline-block;
+    font-weight: 700;
+    opacity: .9;
+    /* ligeiramente maior que o texto do parágrafo */
+    font-size: clamp(1.05rem, 1.9vw, 1.25rem);
+    color: color-mix(in oklab, var(--sl-platinum-100, #f6f7fb) 92%, var(--sl-gold-400, #C78615) 8%);
+    margin-bottom: .2rem;
+}

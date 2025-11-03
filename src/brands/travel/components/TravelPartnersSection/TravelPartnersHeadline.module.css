@@ -1,0 +1,7 @@
+/* Apenas um wrapper fino para herdar o content width do section */
+.wrap {
+    position: relative;
+    width: 100%;
+    /* O HeadlineBlock já respeita:
+     --content-w, --line-inset, --content-w-effective */
+}

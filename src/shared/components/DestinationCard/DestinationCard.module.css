@@ -14,32 +14,21 @@
 /* ===== Cartão ===== */
 .card {
     position: relative;
-
-    /* Grid em 3 faixas: imagem | barra título | corpo (expansível) */
     display: grid;
-    grid-template-rows:
-        auto
-        /* imagem  */
-        auto
-        /* title   */
-        1fr;
-    /* body    */
-
+    grid-template-rows: auto auto 1fr;
+    /* imagem | título | corpo */
     background: linear-gradient(180deg, rgba(8, 20, 38, .88), rgba(5, 12, 24, .96));
     border: 1px solid rgba(255, 255, 255, .06);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 10px 24px var(--shadow);
-
-    /* altura mínima coerente em ecrãs médios/grandes */
     min-height: clamp(360px, 44vw, 470px);
 }
 
-/* ===== Imagem com ratio fixo (uniformiza alturas) ===== */
+/* ===== Imagem (ratio fixo) ===== */
 .imageWrap {
     position: relative;
     aspect-ratio: var(--card-img-ratio, 16 / 9);
-    /* pode ser alterado via style inline */
     overflow: hidden;
     background: #0b1a2d;
 }
@@ -63,18 +52,15 @@
     font-size: clamp(.72rem, .9vw, .82rem);
     font-weight: 600;
     letter-spacing: .2px;
-    box-shadow:
-        0 4px 10px rgba(0, 0, 0, .35),
-        inset 0 0 0 1px rgba(255, 255, 255, .12);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .35), inset 0 0 0 1px rgba(255, 255, 255, .12);
 }
 
-/* ===== Barra de título dourada ===== */
+/* ===== Barra de título ===== */
 .titleBar {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: .55rem;
-    /* ligeiro ajuste do espaçamento */
     background: var(--gold-500);
     color: #fff;
     padding: .55rem .9rem;
@@ -85,15 +71,13 @@
 
 .title {
     display: inline-flex;
-    /* garante alinhamento interno da linha */
     align-items: center;
-    /* baseline uniforme com o SVG */
     font-weight: 800;
     font-size: clamp(1.02rem, 1.4vw, 1.22rem);
     letter-spacing: .3px;
 }
 
-/* --- Bandeira (SVG) — maior e alinhada com o texto --- */
+/* Bandeira/ícone ao lado do título */
 .flag {
     inline-size: var(--flag-size);
     block-size: var(--flag-size);
@@ -104,7 +88,7 @@
     filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .25));
 }
 
-/* Ajustes opcionais quando variant="international" */
+/* Ajuste fino internacional */
 .card[data-variant="international"] .title {
     letter-spacing: .32px;
 }
@@ -118,26 +102,23 @@
     color: var(--text);
 }
 
-/* Resumo com line-clamp + altura mínima equivalente às linhas */
+/* Resumo com clamp */
 .summary {
     --_lines: var(--card-summary-lines, 3);
     line-height: var(--card-summary-lh, 1.45);
     font-size: clamp(.95rem, 1.1vw, 1.06rem);
     margin: 0;
     color: var(--text-strong);
-    background:
-        linear-gradient(180deg, rgba(46, 167, 224, .10), rgba(7, 20, 41, 0) 75%);
+    background: linear-gradient(180deg, rgba(46, 167, 224, .10), rgba(7, 20, 41, 0) 75%);
     padding: .2rem 0 .4rem;
-
     display: -webkit-box;
     -webkit-line-clamp: var(--_lines);
     -webkit-box-orient: vertical;
     overflow: hidden;
-
     min-height: calc(var(--_lines) * 1em * var(--card-summary-lh, 1.45));
 }
 
-/* Duração (ícone relógio via CSS) */
+/* Duração (ícone relógio) */
 .durationRow {
     display: inline-flex;
     align-items: center;
@@ -169,9 +150,7 @@
     transform-origin: bottom center;
 }
 
-.durationText {}
-
-/* ===== Destaques ===== */
+/* ===== Destaques / inclui ===== */
 .hlBlock {
     margin-top: .2rem;
 }
@@ -204,9 +183,7 @@
         linear-gradient(180deg, rgba(46, 167, 224, .18), rgba(46, 167, 224, .06)),
         linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0));
     border: 1.5px solid color-mix(in oklab, var(--gold-400) 75%, #000 25%);
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .06),
-        0 6px 16px rgba(0, 0, 0, .28);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 6px 16px rgba(0, 0, 0, .28);
     white-space: nowrap;
 }
 
@@ -221,49 +198,33 @@
     }
 }
 
-/* ===== Interações — Destaques (hlPill) ===== */
+/* ===== Interações (pills) ===== */
 .hlPill {
-    transition:
-        background-color .18s ease,
-        border-color .18s ease,
-        box-shadow .18s ease,
-        transform .06s ease;
+    transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .06s ease;
 }
 
-/* Hover das pills */
 .hlPill:hover,
 .hlPill:focus-visible {
     --pill-mix: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 73%, var(--sl-gold-400, #C78615) 27%);
     --pill-mix-dk: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 58%, var(--sl-gold-400, #C78615) 42%);
-    background:
-        linear-gradient(180deg, var(--pill-mix) 0%,
-            color-mix(in oklab, var(--pill-mix-dk) 88%, black 12%) 100%);
+    background: linear-gradient(180deg, var(--pill-mix) 0%, color-mix(in oklab, var(--pill-mix-dk) 88%, black 12%) 100%);
     border-color: color-mix(in oklab, var(--sl-gold-400, #C78615) 78%, #000 22%);
     color: #fff;
     text-shadow: none;
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .06),
-        0 10px 18px rgba(0, 0, 0, .32),
-        0 0 0 2px color-mix(in oklab, var(--sl-gold-400, #C78615) 55%, transparent);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 10px 18px rgba(0, 0, 0, .32), 0 0 0 2px color-mix(in oklab, var(--sl-gold-400, #C78615) 55%, transparent);
     outline: none;
 }
 
-/* Inclui — mesmo hover das pills de destaque */
 .incPill:hover,
 .incPill:focus-visible,
 .includes .pill:hover,
 .includes .pill:focus-visible {
     --pill-mix: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 73%, var(--sl-gold-400, #C78615) 27%);
     --pill-mix-dk: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 58%, var(--sl-gold-400, #C78615) 42%);
-    background:
-        linear-gradient(180deg, var(--pill-mix) 0%,
-            color-mix(in oklab, var(--pill-mix-dk) 88%, black 12%) 100%);
+    background: linear-gradient(180deg, var(--pill-mix) 0%, color-mix(in oklab, var(--pill-mix-dk) 88%, black 12%) 100%);
     border-color: color-mix(in oklab, var(--sl-gold-400, #C78615) 78%, #000 22%);
     color: #fff;
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .06),
-        0 10px 18px rgba(0, 0, 0, .32),
-        0 0 0 2px color-mix(in oklab, var(--sl-gold-400, #C78615) 55%, transparent);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 10px 18px rgba(0, 0, 0, .32), 0 0 0 2px color-mix(in oklab, var(--sl-gold-400, #C78615) 55%, transparent);
     outline: none;
 }
 
@@ -274,4 +235,295 @@
     .includes .pill {
         transition: none;
     }
+}
+
+/* ===========================================================
+   MOVIMENTO — international + domestic + hotel + partner
+   =========================================================== */
+.card[data-variant="international"],
+.card[data-variant="domestic"],
+.card[data-variant="hotel"],
+.card[data-variant="partner"] {
+    --intl-raise-y: -4px;
+    --intl-scale: 1.012;
+    --intl-shadow: 0 14px 28px rgba(0, 0, 0, .38), 0 0 0 1px rgba(255, 255, 255, .05);
+    --intl-zoom: 1.06;
+    --intl-pan-y: -1.5%;
+    transition: transform .24s cubic-bezier(.2, .7, .2, 1), box-shadow .24s ease, outline-color .2s ease;
+    will-change: transform, box-shadow;
+}
+
+@media (hover:hover) {
+
+    .card[data-variant="international"]:hover,
+    .card[data-variant="international"]:focus-within,
+    .card[data-variant="domestic"]:hover,
+    .card[data-variant="domestic"]:focus-within,
+    .card[data-variant="hotel"]:hover,
+    .card[data-variant="hotel"]:focus-within,
+    .card[data-variant="partner"]:hover,
+    .card[data-variant="partner"]:focus-within {
+        transform: translateY(var(--intl-raise-y)) scale(var(--intl-scale));
+        box-shadow: var(--intl-shadow);
+    }
+}
+
+/* Parallax / Zoom na imagem */
+.card[data-variant="international"] .image,
+.card[data-variant="domestic"] .image,
+.card[data-variant="hotel"] .image,
+.card[data-variant="partner"] .image {
+    transition: transform .45s cubic-bezier(.22, .75, .2, 1), filter .3s ease;
+    will-change: transform;
+}
+
+@media (hover:hover) {
+
+    .card[data-variant="international"]:hover .image,
+    .card[data-variant="international"]:focus-within .image,
+    .card[data-variant="domestic"]:hover .image,
+    .card[data-variant="domestic"]:focus-within .image,
+    .card[data-variant="hotel"]:hover .image,
+    .card[data-variant="hotel"]:focus-within .image,
+    .card[data-variant="partner"]:hover .image,
+    .card[data-variant="partner"]:focus-within .image {
+        transform: scale(var(--intl-zoom)) translateY(var(--intl-pan-y));
+        filter: saturate(1.06);
+    }
+}
+
+/* Halo por cima da imagem (azul / dourado / partner sem halo) */
+.card[data-variant="international"] .imageWrap::after,
+.card[data-variant="domestic"] .imageWrap::after,
+.card[data-variant="hotel"] .imageWrap::after,
+.card[data-variant="partner"] .imageWrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(120% 60% at 50% 0%, color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 18%, transparent) 0%, transparent 60%);
+    opacity: .0;
+    transition: opacity .35s ease;
+}
+
+.card[data-variant="hotel"] .imageWrap::after {
+    background: radial-gradient(120% 60% at 50% 0%, color-mix(in oklab, var(--gold-400) 22%, transparent) 0%, transparent 62%);
+}
+
+.card[data-variant="partner"] .imageWrap::after {
+    content: none;
+}
+
+@media (hover:hover) {
+
+    .card[data-variant="international"]:hover .imageWrap::after,
+    .card[data-variant="international"]:focus-within .imageWrap::after,
+    .card[data-variant="domestic"]:hover .imageWrap::after,
+    .card[data-variant="domestic"]:focus-within .imageWrap::after,
+    .card[data-variant="hotel"]:hover .imageWrap::after,
+    .card[data-variant="hotel"]:focus-within .imageWrap::after,
+    .card[data-variant="partner"]:hover .imageWrap::after,
+    .card[data-variant="partner"]:focus-within .imageWrap::after {
+        opacity: .7;
+    }
+}
+
+/* Brilho/acento na barra de título */
+.card[data-variant="international"] .titleBar,
+.card[data-variant="domestic"] .titleBar,
+.card[data-variant="hotel"] .titleBar,
+.card[data-variant="partner"] .titleBar {
+    position: relative;
+    isolation: isolate;
+}
+
+.card[data-variant="international"] .titleBar::before,
+.card[data-variant="domestic"] .titleBar::before,
+.card[data-variant="hotel"] .titleBar::before,
+.card[data-variant="partner"] .titleBar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 28%, transparent) 40%, transparent 100%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity .28s ease;
+}
+
+.card[data-variant="hotel"] .titleBar::before {
+    background: linear-gradient(90deg, transparent 0%, color-mix(in oklab, var(--gold-400) 38%, transparent) 45%, transparent 100%);
+}
+
+@media (hover:hover) {
+
+    .card[data-variant="international"]:hover .titleBar::before,
+    .card[data-variant="international"]:focus-within .titleBar::before,
+    .card[data-variant="domestic"]:hover .titleBar::before,
+    .card[data-variant="domestic"]:focus-within .titleBar::before,
+    .card[data-variant="hotel"]:hover .titleBar::before,
+    .card[data-variant="hotel"]:focus-within .titleBar::before,
+    .card[data-variant="partner"]:hover .titleBar::before,
+    .card[data-variant="partner"]:focus-within .titleBar::before {
+        opacity: .55;
+    }
+}
+
+/* Bandeira/ícone “respira” */
+.flag {
+    transition: transform .18s ease, filter .18s ease;
+}
+
+@media (hover:hover) {
+
+    .card[data-variant="international"]:hover .flag,
+    .card[data-variant="international"]:focus-within .flag,
+    .card[data-variant="domestic"]:hover .flag,
+    .card[data-variant="domestic"]:focus-within .flag,
+    .card[data-variant="hotel"]:hover .flag,
+    .card[data-variant="hotel"]:focus-within .flag,
+    .card[data-variant="partner"]:hover .flag,
+    .card[data-variant="partner"]:focus-within .flag {
+        transform: translateY(0) scale(1.04);
+        filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .3));
+    }
+}
+
+/* Idle float */
+@media (prefers-reduced-motion: no-preference) {
+
+    .card[data-variant="international"],
+    .card[data-variant="domestic"],
+    .card[data-variant="hotel"],
+    .card[data-variant="partner"] {
+        animation: intl-float 6s ease-in-out infinite;
+    }
+
+    .card[data-variant="international"]:hover,
+    .card[data-variant="international"]:focus-within,
+    .card[data-variant="domestic"]:hover,
+    .card[data-variant="domestic"]:focus-within,
+    .card[data-variant="hotel"]:hover,
+    .card[data-variant="hotel"]:focus-within,
+    .card[data-variant="partner"]:hover,
+    .card[data-variant="partner"]:focus-within {
+        animation-play-state: paused;
+    }
+
+    @keyframes intl-float {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-2px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+}
+
+/* Foco visível */
+.card[data-variant="international"]:focus-within,
+.card[data-variant="domestic"]:focus-within,
+.card[data-variant="hotel"]:focus-within,
+.card[data-variant="partner"]:focus-within {
+    outline: 2px solid color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 60%, transparent);
+    outline-offset: 2px;
+}
+
+/* ===== CTA (Saiba Mais) ===== */
+.ctaRow {
+    margin-top: .2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ctaButton {
+    --pill-fs: clamp(.9rem, 1vw, 1rem);
+    --pill-pad-y: .48rem;
+    --pill-pad-x: .82rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: var(--pill-pad-y) var(--pill-pad-x);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: var(--pill-fs);
+    color: #fff;
+    text-decoration: none;
+    border: 1.5px solid var(--gold-400);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
+        linear-gradient(180deg,
+            color-mix(in oklab, var(--gold-500) 16%, #000 84%),
+            color-mix(in oklab, var(--gold-500) 10%, #000 90%));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 6px 14px rgba(0, 0, 0, .28);
+    transition: transform .06s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease;
+}
+
+.ctaButton:hover,
+.ctaButton:focus-visible {
+    border-color: color-mix(in oklab, var(--gold-400) 80%, #000 20%);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .08),
+        0 10px 18px rgba(0, 0, 0, .36),
+        0 0 0 2px color-mix(in oklab, var(--gold-400) 50%, transparent);
+}
+
+.ctaButton:active {
+    transform: translateY(1px);
+}
+
+.ctaIcon {
+    inline-size: .9rem;
+    block-size: .9rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    margin-left: .2rem;
+    opacity: .9;
+}
+
+/* ===== Variant: partner (logos) — CENTRADO PERFEITO ===== */
+/* Largura controlada do cartão + centrado na coluna/grid */
+.card[data-variant="partner"] {
+    inline-size: clamp(340px, 28vw, 440px);
+    margin-inline: auto;
+}
+
+/* Em ecrãs muito pequenos, pode ocupar 100% até ao máximo definido */
+@media (max-width: 719px) {
+    .card[data-variant="partner"] {
+        inline-size: min(100%, 440px);
+    }
+}
+
+/* Canvas da imagem do parceiro (logo centrado) */
+.card[data-variant="partner"] .imageWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in oklab, var(--sl-gold-500, #A16207) 86%, black 14%);
+    aspect-ratio: var(--card-img-ratio, 16 / 9);
+    padding: clamp(10px, 2.6vw, 22px);
+}
+
+/* O logo respeita proporção; ocupa até X% do canvas */
+.card[data-variant="partner"] .image {
+    width: auto;
+    height: auto;
+    max-inline-size: min(100%, 440px);
+    max-block-size: min(100%, 180px);
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .25));
+}
+
+/* Barra de título para partner (dourado consistente) */
+.card[data-variant="partner"] .titleBar {
+    background: var(--sl-gold-500, #A16207);
+    border-block: 1px solid rgba(0, 0, 0, .4);
 }
