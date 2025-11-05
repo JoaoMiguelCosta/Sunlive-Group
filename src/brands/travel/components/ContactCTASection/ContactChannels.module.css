@@ -1,0 +1,83 @@
+/* src/brands/travel/components/ContactCTASection/ContactChannels.module.css */
+:root {
+    --gold-400: var(--sl-gold-400, #C78615);
+    --text-strong: #eef3fb;
+    --shadow: rgba(0, 0, 0, .35);
+}
+
+.wrap {
+    width: 100%;
+}
+
+/* mostra 2 pills lado a lado e centraliza */
+.list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: clamp(.8rem, 1.6vw, 1.1rem);
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (max-width: 720px) {
+    .list {
+        grid-auto-flow: row;
+        grid-auto-columns: unset;
+        grid-template-columns: 1fr;
+    }
+}
+
+.item {
+    display: contents;
+}
+
+/* pill grande e chamativo */
+.link {
+    position: relative;
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: clamp(.6rem, 1vw, .8rem);
+    padding: clamp(.9rem, 1.6vw, 1.1rem) clamp(1.2rem, 2vw, 1.6rem);
+    border-radius: 999px;
+    border: 1.5px solid rgba(255, 255, 255, .10);
+    background:
+        linear-gradient(90deg, rgba(9, 23, 43, 1) 0%, rgba(23, 60, 78, .55) 50%, rgba(24, 27, 30, .85) 100%);
+    color: var(--text-strong);
+    text-decoration: none;
+    box-shadow:
+        0 6px 18px var(--shadow),
+        0 0 0 2px rgba(199, 134, 21, .18);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+    min-height: 52px;
+}
+
+.link:hover,
+.link:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, .18);
+    box-shadow:
+        0 0 0 2px rgba(199, 134, 21, .22),
+        0 22px 46px rgba(0, 0, 0, .5),
+        0 0 70px rgba(199, 134, 21, .35);
+    outline: none;
+}
+
+.icon {
+    width: clamp(20px, 1.8vw, 22px);
+    height: clamp(20px, 1.8vw, 22px);
+    color: var(--gold-400);
+    filter: drop-shadow(0 0 10px rgba(199, 134, 21, .25));
+}
+
+.label {
+    font-size: clamp(1.02rem, 1.15vw, 1.1rem);
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

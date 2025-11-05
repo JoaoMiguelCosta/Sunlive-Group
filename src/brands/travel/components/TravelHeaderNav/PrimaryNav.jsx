@@ -1,6 +1,7 @@
 // src/brands/travel/components/TravelHeaderNav/PrimaryNav.jsx
 import { useRef, useState } from "react";
 import { useOutsideClick } from "../../../../shared/hooks/useOutsideClick.js";
+import useLocalSmoothAnchors from "../../../../shared/hooks/useLocalSmoothAnchors.js";
 import styles from "./PrimaryNav.module.css";
 
 function Chev() {
@@ -23,8 +24,14 @@ function Chev() {
   );
 }
 
-function Submenu({ items = [], onSelect }) {
+function Submenu({ items = [], onSelect, onAnchorClick }) {
   if (!items.length) return null;
+
+  const handleSubClick = (e, href) => {
+    onAnchorClick?.(e, href, onSelect); // se for hash local → previne e faz smooth; depois fecha
+    // se não for hash local, a navegação normal prossegue
+  };
+
   return (
     <ul className={styles.submenu} role="menu">
       {items.map((sub) => (
@@ -33,7 +40,7 @@ function Submenu({ items = [], onSelect }) {
             role="menuitem"
             href={sub.href}
             className={styles.subLink}
-            onClick={onSelect}
+            onClick={(e) => handleSubClick(e, sub.href)}
           >
             {sub.label}
           </a>
@@ -43,14 +50,18 @@ function Submenu({ items = [], onSelect }) {
   );
 }
 
-function NavItem({ item, isOpen, onToggle, onClose }) {
+function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick }) {
   const hasSub = Array.isArray(item.submenu) && item.submenu.length > 0;
   const href = item.href || "#";
 
   const handleClick = (e) => {
-    if (!hasSub) return; // link simples
-    e.preventDefault();
-    onToggle(item.key);
+    if (hasSub) {
+      e.preventDefault();
+      onToggle(item.key);
+      return;
+    }
+    onAnchorClick(e, href, onClose); // smooth se for hash local; fecha menus
+    // caso contrário (outra rota), deixa seguir navegação normal
   };
 
   return (
@@ -66,9 +77,8 @@ function NavItem({ item, isOpen, onToggle, onClose }) {
       {hasSub && (
         <Submenu
           items={item.submenu}
-          onSelect={() => {
-            onClose();
-          }}
+          onSelect={onClose}
+          onAnchorClick={onAnchorClick}
         />
       )}
     </li>
@@ -79,8 +89,10 @@ export default function PrimaryNav({ items = [] }) {
   const [openKey, setOpenKey] = useState(null);
   const navRef = useRef(null);
 
-  // usar o hook partilhado
+  // fecha dropdowns ao clicar fora
   useOutsideClick(navRef, () => setOpenKey(null), true);
+
+  const { handleAnchorClick } = useLocalSmoothAnchors();
 
   if (!items.length) return null;
 
@@ -100,6 +112,7 @@ export default function PrimaryNav({ items = [] }) {
             isOpen={openKey === it.key}
             onToggle={toggleItem}
             onClose={closeAll}
+            onAnchorClick={handleAnchorClick}
           />
         ))}
       </ul>

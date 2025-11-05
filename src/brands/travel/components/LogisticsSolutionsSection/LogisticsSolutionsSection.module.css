@@ -8,6 +8,7 @@
     color: var(--sl-platinum-100, #f6f7fb);
     --line-inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
     --content-w: min(var(--sl-container-lg, 1200px), 100%);
+    
 }
 
 /* 641px–1025px: margem maior */

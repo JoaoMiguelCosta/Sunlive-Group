@@ -1,0 +1,49 @@
+/* =============================================================================
+   TravelFooter — alinhado ao mesmo container + inset das secções
+============================================================================= */
+
+.footerWrap {
+    position: relative;
+    isolation: isolate;
+    background: transparent;
+    color: var(--sl-platinum-100);
+    overflow: clip;
+
+    --section-inset: var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)));
+    --rule-thickness: 2px;
+}
+
+.frame {
+    inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
+    margin-inline: auto;
+    box-sizing: border-box;
+    position: relative;
+    overflow: clip;
+    padding: 0;
+
+    background:
+        radial-gradient(1200px 420px at 50% -10%, rgba(199, 134, 21, .10), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(10, 28, 54, .25), transparent 60%),
+        #070f1e;
+}
+
+.frame::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: var(--rule-thickness);
+    background: rgba(199, 134, 21, 0.35);
+    pointer-events: none;
+}
+
+.flushTop .frame {
+    margin-top: calc(-1 * var(--rule-thickness) - 1px);
+}
+
+.strip {
+    inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
+    margin-inline: auto;
+    box-sizing: border-box;
+    border-top: var(--rule-thickness) solid rgba(199, 134, 21, 0.35);
+}

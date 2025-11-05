@@ -1,32 +1,79 @@
 // src/brands/travel/pages/TravelPage.jsx
 import styles from "./TravelPage.module.css";
-import TravelHeaderNav from "../components/TravelHeaderNav/index.jsx";
-import LogisticsSolutionsSection from "../components/LogisticsSolutionsSection/index.jsx";
-import DomesticDestinationsSection from "../components/DomesticDestinationsSection/index.jsx";
-import InternationalDestinationsSection from "../components/InternationalDestinationsSection/index.jsx";
-import PartnerHotelsSection from "../components/PartnerHotelsSection/index.jsx";
-import TravelPartnersSection from "../components/TravelPartnersSection/index.jsx";
+
+import TravelHeaderNav from "../components/TravelHeaderNav";
+import LogisticsSolutionsSection from "../components/LogisticsSolutionsSection";
+import DomesticDestinationsSection from "../components/DomesticDestinationsSection";
+import InternationalDestinationsSection from "../components/InternationalDestinationsSection";
+import PartnerHotelsSection from "../components/PartnerHotelsSection";
+import TravelPartnersSection from "../components/TravelPartnersSection";
+import TestimonialsAndMetricsSection from "../components/TestimonialsAndMetricsSection";
+import ContactCTASection from "../components/ContactCTASection";
+
+import TravelFooter from "../components/TravelFooter";
+import travelBrand from "../ConfigTravel.jsx";
+import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
+
+// Scroll suave quando a rota vem com #hash (ex.: #destinos-nacionais)
+import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
 export default function TravelPage() {
+  // Compensa o header fixo (ajusta o valor se necessário)
+  useScrollToHash(24);
+
+  // Base do footer (Travel)
+  const rawFooter = travelBrand.sections?.footer ?? {};
+
+  // Normalizar InfoHeader (Travel config usa "InfoHeader")
+  const { InfoHeader, infoHeader, acknowledgements, id, ...rest } = rawFooter;
+
+  const footerData = {
+    ...rest,
+    id: id || "footer-travel",
+    infoHeader: infoHeader ?? InfoHeader ?? null,
+    acknowledgements: acknowledgements ?? groupFooter?.acknowledgements ?? null,
+  };
+
   return (
-    <main className={styles.page}>
-      {/* Secção 1: Header numa só linha */}
-      <TravelHeaderNav />
+    <div className={styles.pageWrap}>
+      <main className={styles.inner}>
+        <div className={styles.sections}>
+          <section className={styles.section}>
+            <TravelHeaderNav />
+          </section>
 
-      {/* Secção 2: Soluções de Logística */}
-      <LogisticsSolutionsSection />
+          <section id="logistica" className={styles.section}>
+            <LogisticsSolutionsSection />
+          </section>
 
-      {/* Secção 3: Destinos Nacionais */}
-      <DomesticDestinationsSection />
+          <section id="destinos-nacionais" className={styles.section}>
+            <DomesticDestinationsSection />
+          </section>
 
-      {/* Secção 4: Destinos Internacionais */}
-      <InternationalDestinationsSection />
+          <section id="destinos-internacionais" className={styles.section}>
+            <InternationalDestinationsSection />
+          </section>
 
-      {/* Secção 5: Hotéis Parceiros */}
-      <PartnerHotelsSection />
+          <section id="hoteis-parceiros" className={styles.section}>
+            <PartnerHotelsSection />
+          </section>
 
-      {/* Secção 6: Parceiros de Viagem */}
-      <TravelPartnersSection />
-    </main>
+          <section id="parceiros-viagens" className={styles.section}>
+            <TravelPartnersSection />
+          </section>
+
+          <section id="testemunhos" className={styles.section}>
+            <TestimonialsAndMetricsSection />
+          </section>
+
+          <section className={styles.section}>
+            <ContactCTASection />
+          </section>
+        </div>
+      </main>
+
+      {/* Footer colado ao bloco anterior */}
+      <TravelFooter data={footerData} flushTop />
+    </div>
   );
 }

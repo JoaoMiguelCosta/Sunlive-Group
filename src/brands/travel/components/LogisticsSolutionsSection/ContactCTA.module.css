@@ -26,6 +26,7 @@
     max-inline-size: var(--sl-container-md, 1100px);
     inline-size: 100%;
     padding-inline: var(--section-inset, clamp(16px, 3.5vw, 44px));
+    
 }
 
 /* Envelope do botão: posiciona halo sem afetar o anchor */

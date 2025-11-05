@@ -1,6 +1,9 @@
 // src/shared/ui/CTAButton/index.jsx
 import styles from "./CTAButton.module.css";
-import { useBlink } from "../../shared/hooks/useBlink.js";
+
+/* Hooks (rota certa a partir de shared/ui/CTAButton) */
+import { useBlink } from "../hooks/useBlink.js";
+import useLocalSmoothAnchors from "../hooks/useLocalSmoothAnchors.js";
 
 /**
  * CTAButton (shared)
@@ -10,6 +13,7 @@ import { useBlink } from "../../shared/hooks/useBlink.js";
  *  - blink?: boolean                 // default: true
  *  - compact?: "auto" | true | false // default: "auto"
  *  - Icon?: React.FC                 // opcional (ícone à esquerda)
+ *  - scrollOffset?: number           // default: 72 (desconto do header fixo)
  */
 export default function CTAButton({
   cta,
@@ -17,14 +21,60 @@ export default function CTAButton({
   blink = true,
   compact = "auto",
   Icon,
+  scrollOffset = 72,
 }) {
   if (!cta?.href) return null;
 
-  const isExternal = /^https?:\/\//i.test(cta.href);
+  const href = cta.href;
+  const isExternal = /^https?:\/\//i.test(href);
   const ariaLabel = cta.ariaLabel || cta.label || "Contactar";
 
   // Blink: 2s por ciclo (1s OFF + 1s ON)
   const { on, bind } = useBlink({ cycleMs: 2000, disabled: !blink });
+
+  // Smooth anchors (mesma página)
+  const { isSamePageHash } = useLocalSmoothAnchors();
+
+  const prefersReduce =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const scrollToHashWithOffset = (hash) => {
+    if (typeof window === "undefined" || !hash) return;
+
+    const id = decodeURIComponent(hash.replace(/^#/, ""));
+    const el =
+      document.getElementById(id) ||
+      (hash.startsWith("#") ? document.querySelector(hash) : null);
+
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const targetY = rect.top + window.pageYOffset - Number(scrollOffset || 0);
+
+    try {
+      window.history.pushState({}, "", `#${id}`);
+    } catch (_) {}
+
+    window.scrollTo({
+      top: targetY,
+      behavior: prefersReduce ? "auto" : "smooth",
+    });
+  };
+
+  const onClick = (e) => {
+    // deixa links externos navegarem normalmente
+    if (isExternal) return;
+
+    // mesma página com hash -> scroll suave com offset
+    if (isSamePageHash(href)) {
+      e.preventDefault();
+      const url = new URL(href, window.location.href);
+      scrollToHashWithOffset(url.hash || href);
+    }
+    // sem hash -> navegação normal
+  };
 
   const classes = [styles.button];
   if (blink) classes.push(styles["button--blink"]);
@@ -32,11 +82,12 @@ export default function CTAButton({
 
   return (
     <a
-      href={cta.href}
+      href={href}
       aria-label={ariaLabel}
       className={classes.join(" ")}
       data-compact={compact}
       data-on={on ? "true" : "false"}
+      onClick={onClick}
       {...bind}
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >

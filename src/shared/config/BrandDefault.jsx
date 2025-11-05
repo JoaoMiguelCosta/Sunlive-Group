@@ -143,10 +143,53 @@ export function withSocialIcons(list = []) {
   }));
 }
 
+/* === Exporta SOCIALS já com ícones injetados === */
+export const SOCIALS = withSocialIcons(SOCIALS_DEFAULT);
+
 export function makeDefaultCTA(brandTitle = "Sunlive") {
   return {
     label: "Contactar",
     href: "#contactar",
     ariaLabel: `Contactar ${brandTitle}`,
+  };
+}
+
+/* =========================================================
+   HELPER: makeFooterInfoHeader
+   - Normaliza a estrutura do bloco infoHeader (footer)
+   - Aplica contactos & socials por unidade
+   - Permite overrides por brand (copy, localização, etc.)
+   ========================================================= */
+export function makeFooterInfoHeader(unitKey = "group", overrides = {}) {
+  const base = {
+    brand: {
+      title: "Sunlive Group",
+      tagline: "",
+      about: "",
+      // opcional: substituir o 1.º parágrafo no componente
+      aboutIntro: undefined,
+      link: { label: "Sunlive Group", href: "/" },
+    },
+    location: {
+      title: "Localização",
+      addressLines: [],
+      mapHref: "",
+    },
+    contacts: makeFooterContacts(unitKey),
+    socials: { title: "Redes Sociais", items: SOCIALS },
+    options: {
+      // true => o componente NÃO substitui a 1.ª linha do about
+      keepOriginalAboutFirstLine: false,
+    },
+  };
+
+  return {
+    ...base,
+    ...overrides,
+    brand: { ...base.brand, ...(overrides.brand || {}) },
+    location: { ...base.location, ...(overrides.location || {}) },
+    contacts: { ...base.contacts, ...(overrides.contacts || {}) },
+    socials: { ...base.socials, ...(overrides.socials || {}) },
+    options: { ...base.options, ...(overrides.options || {}) },
   };
 }

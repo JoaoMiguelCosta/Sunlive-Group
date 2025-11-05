@@ -8,7 +8,7 @@ export default function DestinationsIntroBar() {
   if (!headline) return null;
 
   return (
-    <div id="destinos-internacionais" className={styles.wrap}>
+    <div className={styles.wrap}>
       <HeadlineBlock
         title={headline.title}
         lead={headline.lead}

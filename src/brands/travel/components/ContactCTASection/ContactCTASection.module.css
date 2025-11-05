@@ -1,0 +1,75 @@
+/* src/brands/travel/components/ContactCTASection/ContactCTASection.module.css */
+:root {
+    --gold-400: var(--sl-gold-400, #C78615);
+    --text-strong: #eef3fb;
+    --panel: #081426;
+    --panel-2: #0b172d;
+    --shadow: rgba(0, 0, 0, .35);
+}
+
+.section {
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding-block: clamp(1.8rem, 4.5vw, 3rem);
+}
+
+.section::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0,
+            rgba(255, 255, 255, .16) var(--line-inset, clamp(16px, 3.5vw, 44px)),
+            rgba(255, 255, 255, .16) calc(100% - var(--line-inset, clamp(16px, 3.5vw, 44px))),
+            transparent 100%);
+    pointer-events: none;
+}
+
+.container {
+    width: var(--content-w-effective, min(var(--sl-container-lg, 1200px), 100%));
+    margin-inline: auto;
+    padding-inline: clamp(12px, 3vw, 28px);
+}
+
+/* ===== Grid (uma coluna, centrado) ===== */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* ← sem segunda coluna */
+    justify-items: center;
+    /* centra o conteúdo */
+    gap: clamp(1rem, 2.2vw, 1.6rem);
+    margin-top: clamp(1rem, 2.2vw, 1.6rem);
+}
+
+.col {
+    min-width: 0;
+    width: min(980px, 100%);
+    /* largura controlada para alinhar com o callout */
+}
+
+/* ===== Callout destacado (canais) ===== */
+.callout {
+    position: relative;
+    margin-top: clamp(1.2rem, 3vw, 1.8rem);
+    padding: clamp(.8rem, 1.6vw, 1.1rem);
+    border-radius: 18px;
+    background:
+        radial-gradient(120% 140% at 10% 10%, rgba(46, 167, 224, .16), transparent 45%),
+        linear-gradient(180deg, rgba(8, 20, 38, .92), rgba(5, 12, 24, .98));
+    border: 2px solid color-mix(in oklab, var(--gold-400) 70%, #fff 5%);
+    box-shadow:
+        0 0 0 2px rgba(199, 134, 21, .10) inset,
+        0 18px 42px var(--shadow),
+        0 0 60px rgba(199, 134, 21, .25);
+}
+
+.callout>* {
+    max-width: min(980px, 100%);
+    margin-inline: auto;
+    display: block;
+}

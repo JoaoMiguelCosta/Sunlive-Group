@@ -18,6 +18,11 @@ import PackageIcon from "./Package.jsx";
 // Parcerias / Confiança
 import HandshakeIcon from "./Handshake.jsx";
 
+import StarIcon from "./Star.jsx";
+
+// Vetor personalizado (avião+carro)
+import TravelVector from "./TravelVector.jsx";
+
 // ===== Exports nomeados =====
 export {
   FacebookIcon,
@@ -33,19 +38,27 @@ export {
   TourBusIcon,
   PackageIcon,
   HandshakeIcon,
+  StarIcon,
+  TravelVector,
 };
 
 // ===== Mapa conveniente para usar por chave (iconKey) =====
 export const ICONS = {
-  // travel/logística
+  // travel / logística
   plane: PlaneIcon,
   bus: BusIcon,
   "tour-bus": TourBusIcon,
   package: PackageIcon,
   pin: PinIcon,
+  travel: TravelVector, // <— novo
+  "travel-vector": TravelVector, // alias
 
   // parcerias / confiança
   handshake: HandshakeIcon,
+
+  // rating / destaque
+  star: StarIcon,
+  "rating-star": StarIcon, // alias opcional
 
   // utilitários / sociais
   globe: GlobeIcon,

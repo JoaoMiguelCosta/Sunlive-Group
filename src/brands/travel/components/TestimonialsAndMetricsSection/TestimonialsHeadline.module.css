@@ -1,0 +1,7 @@
+/* src/brands/travel/components/TestimonialsAndMetricsSection/TestimonialsHeadline.module.css */
+
+.wrap {
+    width: var(--content-w, min(var(--sl-container-lg, 1200px), 100%));
+    margin-inline: auto;
+    padding-block: clamp(12px, 2.6vw, 18px);
+}

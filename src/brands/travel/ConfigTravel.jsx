@@ -4,6 +4,7 @@ import {
   LANG_DEFAULT,
   withSocialIcons,
   makeDefaultCTA,
+  makeFooterInfoHeader,
 } from "../../shared/config/BrandDefault.jsx";
 
 import {
@@ -13,8 +14,10 @@ import {
   TourBusIcon,
   PackageIcon,
   PhoneIcon,
-  // 👇 novo ícone
   HandshakeIcon,
+  MailIcon,
+  StarIcon,
+  TravelVector,
 } from "../../shared/ui/icons/index.js";
 
 import logoTravel from "./assets/LogoSunliveTravel/travel.png";
@@ -37,11 +40,15 @@ export const travelBrand = {
     "tour-bus": TourBusIcon,
     package: PackageIcon,
     phone: PhoneIcon,
-    // para banners/selos de confiança
     handshake: HandshakeIcon,
+    mail: MailIcon,
+    // ⭐ disponível para componentes desta secção
+    star: StarIcon,
+    "rating-star": StarIcon,
   },
 
   lang: LANG_DEFAULT,
+
   socials: withSocialIcons([
     {
       key: "fb",
@@ -54,13 +61,16 @@ export const travelBrand = {
       href: "https://www.instagram.com/sunlivetravel/",
     },
   ]),
+
   cta: makeDefaultCTA("Sunlive Travel"),
 
+  /// ===== Navegação (Header) =====
   nav: [
     { key: "logistica", label: "Logística", href: "#logistica" },
     {
       key: "destinos",
       label: "Destinos",
+      // topo sem href → só abre submenu
       submenu: [
         {
           key: "destinos-nacionais",
@@ -77,8 +87,9 @@ export const travelBrand = {
     {
       key: "parceiros",
       label: "Parceiros",
+      // topo sem href → só abre submenu
       submenu: [
-        { key: "hoteis", label: "Hotéis", href: "#parceiros-hoteis" },
+        { key: "hoteis", label: "Hotéis", href: "#hoteis-parceiros" }, // <- atualizado
         { key: "viagens", label: "Viagens", href: "#parceiros-viagens" },
       ],
     },
@@ -380,14 +391,14 @@ export const travelBrand = {
         },
         {
           key: "estancia",
-          name: "Residential Estância",
+          name: "Residencial Estância",
           badge: "Oliveira do Bairro",
           summary:
             "Ambiente familiar e tranquilo — simplicidade, conforto e boa localização.",
           href: "https://www.facebook.com/residencial.estancia/?locale=pt_PT",
           picture: {
             src: "",
-            alt: "Residential Estância em Oliveira do Bairro",
+            alt: "Residencial Estância em Oliveira do Bairro",
           },
         },
         {
@@ -418,7 +429,7 @@ export const travelBrand = {
     },
 
     /* =========================
-       NOVA — Parceiros de Viagem
+       Parceiros de Viagem
        ========================= */
     travelPartners: {
       id: "parceiros-viagens",
@@ -451,7 +462,357 @@ export const travelBrand = {
       },
       cta: makeDefaultCTA("Sunlive Travel"),
     },
-  },
-};
+
+    /* =========================
+       NOVA — Testemunhos + Métricas
+       ========================= */
+    testimonialsAndMetrics: {
+      id: "testemunhos",
+      headline: {
+        title: "O que dizem os nossos Clientes",
+        lead: "Satisfação dos nossos clientes é a nossa maior conquista. Veja o que dizem sobre os nossos serviços.",
+      },
+      testimonials: [
+        {
+          key: "t1",
+          quote:
+            "Excelente serviço! A Sunlive Travel transportou a nossa equipa com total profissionalismo. Pontualidade impecável e veículos muito confortáveis. Recomendo vivamente!",
+          rating: 5,
+          iconKey: "star",
+          author: {
+            name: "Carlos Silva",
+            role: "Treinador – FC Exemplo",
+            avatar: "",
+          },
+        },
+        {
+          key: "t2",
+          quote:
+            "Serviço exemplar do início ao fim. Equipa atenta aos detalhes e muito disponível.",
+          rating: 5,
+          iconKey: "star",
+          author: {
+            name: "Ana Pereira",
+            role: "Team Manager – Academia XPTO",
+            avatar: "",
+          },
+        },
+        {
+          key: "t3",
+          quote:
+            "Transporte seguro, cómodo e sempre a horas. Voltaremos a contratar.",
+          rating: 5,
+          iconKey: "star",
+          author: {
+            name: "Miguel Rocha",
+            role: "Diretor Desportivo – Clube Y",
+            avatar: "",
+          },
+        },
+        {
+          key: "t4",
+          quote:
+            "Comunicação fácil e soluções à medida — tornaram a nossa viagem muito simples.",
+          rating: 5,
+          iconKey: "star",
+          author: {
+            name: "Joana Gomes",
+            role: "Coordenadora – Associação Z",
+            avatar: "",
+          },
+        },
+        {
+          key: "t5",
+          quote:
+            "Motoristas profissionais e simpáticos. Excelente relação qualidade-preço.",
+          rating: 5,
+          iconKey: "star",
+          author: {
+            name: "Rui Almeida",
+            role: "Treinador – Sub19",
+            avatar: "",
+          },
+        },
+        {
+          key: "t6",
+          quote:
+            "Recomendo sem reservas. Organização e conforto acima da média.",
+          rating: 5,
+          iconKey: "star",
+          author: {
+            name: "Sofia Marques",
+            role: "Gestora de Eventos",
+            avatar: "",
+          },
+        },
+      ],
+      metrics: [
+        { key: "clients", value: "1000 +", label: "Clientes Satisfeitos" },
+        { key: "trips", value: "2000 +", label: "Viagens Realizadas" },
+        { key: "teams", value: "1000 +", label: "Equipas Transportadas" },
+        {
+          key: "rating",
+          value: "4.8 ★",
+          label: "Avaliação média",
+          iconKey: "star",
+          ariaLabel: "Avaliação média 4.8 em 5",
+        },
+      ],
+      cta: makeDefaultCTA("Sunlive Travel"),
+    },
+
+    /* =========================
+       Contact CTA (antes do footer)
+       ========================= */
+    contactCTA: {
+      id: "contactar",
+      headline: {
+        title: "Pronto para a sua próxima Viagem?",
+        lead: "Contacte-nos diretamente e sem compromisso. Estamos disponíveis para responder o mais rapidamente possível às suas questões.",
+      },
+      checklist: [
+        { key: "date-time", label: "Data e Hora da Viagem" },
+        { key: "route", label: "Local de Partida e Destino" },
+        { key: "duration", label: "Duração Estimada" },
+        { key: "passengers", label: "Nº de Passageiros" },
+        { key: "service-type", label: "Tipo de Serviços" },
+        { key: "special-needs", label: "Necessidades Especiais" },
+      ],
+      channels: [
+        {
+          key: "phone",
+          iconKey: "phone",
+          label: "+351 935 630 798",
+          href: "tel:+351935630798",
+          ariaLabel: "Ligar para a Sunlive Travel",
+        },
+        {
+          key: "mail",
+          iconKey: "mail",
+          label: "travel@sunlive.pt",
+          href: "mailto:travel@sunlive.pt",
+          ariaLabel: "Enviar email para a Sunlive Travel",
+        },
+      ],
+      cta: makeDefaultCTA("Sunlive Travel"),
+    },
+
+    /* =========================
+   Footer (Travel)
+   ========================= */
+    footer: {
+      // 1) InfoHeader — normalizado via helper (estrutura + defaults)
+      infoHeader: makeFooterInfoHeader("travel", {
+        brand: {
+          Icon: TravelVector,
+          title: "Sunlive Travel",
+          tagline: "Transformando viagens em experiências memoráveis.",
+          about:
+            "Na Sunlive Travel, acreditamos que viajar é mais do que deslocar-se — é criar ligações, conhecer culturas e viver experiências com significado.\n\n" +
+            "Comprometemo-nos a oferecer soluções de mobilidade e alojamento com qualidade, conforto e segurança.",
+          aboutIntro:
+            "Na Sunlive Travel, acreditamos que viajar é mais do que deslocar-se — é criar ligações, conhecer culturas e viver experiências com significado.",
+        },
+        location: {
+          title: "Localização",
+          addressLines: [
+            "Rua Narciso da Marça, 3780-101",
+            "Sangalhos, Anadia – Aveiro",
+          ],
+          mapHref:
+            "https://www.google.com/maps/search/?api=1&query=Rua%20Narciso%20da%20Mar%C3%A7a%203780-101%20Sangalhos",
+        },
+        contacts: {
+          title: "Contactos",
+          email: {
+            href: "mailto:travel@sunlive.pt",
+            label: "travel@sunlive.pt",
+          },
+          phone: { href: "tel:+351935630798", label: "+351 935 630 798" },
+        },
+        socials: {
+          title: "Redes Sociais",
+          items: withSocialIcons([
+            {
+              key: "fb",
+              label: "Facebook",
+              href: "https://www.facebook.com/travelsunlive/?locale=pt_PT",
+            },
+            {
+              key: "ig",
+              label: "Instagram",
+              href: "https://www.instagram.com/sunlivetravel/",
+            },
+          ]),
+        },
+        // options: { keepOriginalAboutFirstLine: true } // opcional
+      }),
+
+      // 2) LinkDirectory — 3 colunas + blocos de parceiros (mesma pill UI)
+      linkDirectory: {
+        left: {
+          columns: [
+            {
+              key: "logistics",
+              title: "Logística",
+              items: [
+                {
+                  key: "transfers-airport",
+                  label: "Transfers Aeroporto",
+                  href: "#svc-transfers-airport",
+                },
+                {
+                  key: "team-transport",
+                  label: "Transporte para Equipas",
+                  href: "#svc-team-transport",
+                },
+                { key: "tours", label: "Tours Turísticos", href: "#svc-tours" },
+                { key: "lodging", label: "Alojamentos", href: "#svc-lodging" },
+                {
+                  key: "full-packages",
+                  label: "Pacotes Completos",
+                  href: "#svc-full-packages",
+                },
+              ],
+            },
+            {
+              key: "domestic",
+              title: "Destinos Nacionais",
+              items: [
+                {
+                  key: "aveiro",
+                  label: "Aveiro",
+                  href: "#destinos-nacionais-aveiro",
+                },
+                {
+                  key: "coimbra",
+                  label: "Coimbra",
+                  href: "#destinos-nacionais-coimbra",
+                },
+                {
+                  key: "porto",
+                  label: "Porto",
+                  href: "#destinos-nacionais-porto",
+                },
+                {
+                  key: "lisboa",
+                  label: "Lisboa",
+                  href: "#destinos-nacionais-lisboa",
+                },
+                {
+                  key: "sintra",
+                  label: "Sintra",
+                  href: "#destinos-nacionais-sintra",
+                },
+                {
+                  key: "obidos",
+                  label: "Óbidos",
+                  href: "#destinos-nacionais-obidos",
+                },
+              ],
+            },
+            {
+              key: "international",
+              title: "Destinos Internacionais",
+              items: [
+                {
+                  key: "malta",
+                  label: "Malta",
+                  href: "#destinos-internacionais-malta",
+                },
+                {
+                  key: "qatar",
+                  label: "Catar",
+                  href: "#destinos-internacionais-qatar",
+                },
+                {
+                  key: "saudi-arabia",
+                  label: "Arábia Saudita",
+                  href: "#destinos-internacionais-saudi-arabia",
+                },
+                {
+                  key: "kuwait",
+                  label: "Kuwait",
+                  href: "#destinos-internacionais-kuwait",
+                },
+                {
+                  key: "brazil",
+                  label: "Brasil",
+                  href: "#destinos-internacionais-brazil",
+                },
+              ],
+            },
+          ],
+        },
+
+        // Blocos inferiores (linha divisória visual na UI)
+        partners: {
+          trips: {
+            title: "Viagens em colaboração com:",
+            iconKeys: ["plane", "bus"],
+            items: [
+              {
+                key: "portugalissimo",
+                label: "Portugalíssimo",
+                href: "https://www.portugalissimmo.com/",
+              },
+              {
+                key: "vago",
+                label: "Vago Viagens",
+                href: "https://vagoviagens.pt/",
+              },
+            ],
+          },
+          hotels: {
+            title: "Alojamentos em colaboração com:",
+            items: [
+              {
+                key: "curia",
+                label: "Hotel Termas da Curia",
+                href: "https://www.termasdacuria.com/",
+              },
+              {
+                key: "estancia",
+                label: "Residencial Estância",
+                href: "https://www.facebook.com/residencial.estancia/?locale=pt_PT",
+              },
+              {
+                key: "pateira",
+                label: "Estalagem da Pateira",
+                href: "https://pateira.com/",
+              },
+              {
+                key: "gold",
+                label: "In Gold Hotel & Spa",
+                href: "https://www.ingoldhotel.pt/pt/Menu/Home.aspx",
+              },
+              {
+                key: "grand",
+                label: "Grand Hotel de Luso",
+                href: "https://www.hoteluso.com/pt/",
+              },
+            ],
+          },
+        },
+      },
+
+      // 3) Acknowledgements & PoliciesBar — UI igual ao Group
+      acknowledgements: undefined,
+      policiesBar: {
+        links: [
+          { key: "privacy", label: "Política e Privacidade", href: "/privacy" },
+          { key: "terms", label: "Termos de Utilização", href: "/terms" },
+          { key: "cookies", label: "Cookies", href: "/cookies" },
+          {
+            key: "complaints",
+            label: "Livro de Reclamações",
+            href: "/complaints",
+          },
+        ],
+        copyright: { holder: "Sunlive Travel" },
+      },
+    }, // <-- fecha footer
+  }, // <-- fecha sections
+}; // <-- fecha travelBrand
 
 export default travelBrand;

@@ -1,11 +1,10 @@
 import styles from "./FooterGroup.module.css";
 
 // sub-blocos
-import InfoHeader from "./InfoHedear.jsx";
+import InfoHeader from "./InfoHeader.jsx";
 import LinkDirectory from "./LinkDirectory.jsx";
 import Acknowledgements from "./Acknowledgements.jsx";
 import PoliciesBar from "./PoliciesBar.jsx";
-
 
 export default function FooterGroup({
   data,
@@ -15,8 +14,9 @@ export default function FooterGroup({
 }) {
   if (!data) return null;
 
+  // ⚠️ NÃO usar "InfoHeader" aqui, para não colidir com o componente importado
   const {
-    infoHeader,
+    infoHeader: infoHeaderData, // <- alias claro
     linkDirectory,
     acknowledgements,
     policiesBar,
@@ -37,10 +37,10 @@ export default function FooterGroup({
       className={classes}
       role="contentinfo"
       aria-label="Footer — Sunlive Group"
-      {...rest}                
+      {...rest}
     >
       <div className={styles.frame}>
-        {infoHeader && <InfoHeader data={infoHeader} />}
+        {infoHeaderData && <InfoHeader data={infoHeaderData} />}
         {linkDirectory && <LinkDirectory data={linkDirectory} />}
         {acknowledgements && <Acknowledgements data={acknowledgements} />}
         {policiesBar && <PoliciesBar data={policiesBar} />}

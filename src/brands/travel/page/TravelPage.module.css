@@ -1,12 +1,39 @@
+/* src/brands/travel/pages/TravelPage.module.css */
+
+/* Fundo geral — igual ao Group */
 .page {
-    background: #050e24;
+    position: relative;
+    min-height: 100svh;
     min-height: 100dvh;
-    color: #fff;
+    width: 100%;
+    overflow: clip;
+
+    /* O gradiente/glow vem do body::before (tema global) */
+    background: transparent;
+    color: var(--sl-color-text);
+    isolation: isolate;
+
+    /* Token de alinhamento p/ linhas/frames */
+    --sl-line-inset: clamp(12px, 4vw, 40px);
+
+    /* Centro e limita a largura do conteúdo */
+    width: min(var(--sl-container-lg, 1200px), 100%);
+    margin-inline: auto;
+    padding-inline: clamp(12px, 3vw, 28px);
 }
 
+/* Espaçamento vertical entre secções diretas da página */
+.page>*+* {
+    margin-top: clamp(1.25rem, 2.6vw, 2rem);
+}
 
-
-
+/* ===== Secção com o MESMO fundo da página ===== */
 .section {
-    min-height: 40vh;
+    width: 100%;
+    background: transparent;
+    /* igual à .page */
+scroll-margin-top: var(--header-offset, 84px);
+    /* âncoras suaves */
+    /* linha suave no topo da secção (como na .page do Group) */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }

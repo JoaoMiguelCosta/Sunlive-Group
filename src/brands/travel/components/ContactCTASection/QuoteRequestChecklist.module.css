@@ -1,0 +1,117 @@
+/* src/brands/travel/components/ContactCTASection/QuoteRequestChecklist.module.css */
+
+/* ===== Tokens base (Prestige Noir + Liquid Gold + Travel) ===== */
+:root {
+    --gold-400: var(--sl-gold-400, #C78615);
+    --gold-500: var(--sl-gold-500, #A16207);
+    --accent-500: var(--sl-accent-500, #2EA7E0);
+    --text-strong: #eef3fb;
+    --text: #e1e8f5;
+    --panel: #081426;
+}
+
+/* ===== Wrapper ===== */
+.wrap {
+    width: var(--content-w-effective, min(var(--sl-container-lg, 1200px), 100%));
+    margin-inline: auto;
+    padding-inline: clamp(12px, 3vw, 28px);
+}
+
+/* ===== Lista ===== */
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(.6rem, 1.4vw, .95rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (max-width: 720px) {
+    .list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Item ===== */
+.item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: clamp(.5rem, 1vw, .7rem);
+    background: linear-gradient(180deg, rgba(8, 20, 38, .88), rgba(5, 12, 24, .96));
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 12px;
+    padding: clamp(.65rem, 1.2vw, .85rem) clamp(.75rem, 1.4vw, 1rem);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+    will-change: transform, box-shadow;
+}
+
+/* Hover/focus — estilo Travel (radial + gold glow via color-mix) */
+.item:hover,
+.item:focus-visible {
+    transform: translateY(-1px);
+    background:
+        radial-gradient(120% 120% at 15% 10%, color-mix(in srgb, var(--accent-500) 16%, transparent) 0%, transparent 62%),
+        linear-gradient(180deg, color-mix(in srgb, var(--gold-500) 24%, transparent) 0%, transparent 100%);
+    box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--gold-500) 40%, transparent),
+        0 8px 22px rgba(0, 0, 0, .28);
+    border-color: rgba(255, 255, 255, .12);
+    outline: none;
+}
+
+/* Fallback para browsers sem color-mix */
+@supports not (color: color-mix(in srgb, #000 0%, #000 0%)) {
+
+    .item:hover,
+    .item:focus-visible {
+        background:
+            radial-gradient(120% 120% at 15% 10%, rgba(46, 167, 224, .16) 0%, transparent 62%),
+            linear-gradient(180deg, rgba(161, 98, 7, .24) 0%, transparent 100%);
+        box-shadow:
+            0 0 0 1px rgba(161, 98, 7, .40),
+            0 8px 22px rgba(0, 0, 0, .28);
+    }
+}
+
+/* círculo dourado como marcador */
+.bullet {
+    width: .66rem;
+    height: .66rem;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 30%, var(--gold-400), var(--gold-500));
+    box-shadow: 0 0 0 2px rgba(199, 134, 21, .15), 0 0 18px rgba(199, 134, 21, .35);
+    margin-top: .2rem;
+    transition: box-shadow .18s ease, transform .18s ease;
+}
+
+/* bullet ganha brilho no hover/focus do item */
+.item:hover .bullet,
+.item:focus-visible .bullet {
+    box-shadow:
+        0 0 0 2px rgba(199, 134, 21, .22),
+        0 0 28px rgba(199, 134, 21, .55);
+    transform: scale(1.05);
+}
+
+.label {
+    color: var(--text, #e1e8f5);
+    font-size: clamp(.96rem, 1.05vw, 1.02rem);
+    line-height: 1.35;
+}
+
+/* Respeita utilizadores com redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+
+    .item,
+    .bullet {
+        transition: none;
+    }
+
+    .item:hover,
+    .item:focus-visible {
+        transform: none;
+    }
+}

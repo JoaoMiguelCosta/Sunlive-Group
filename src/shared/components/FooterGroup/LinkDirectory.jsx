@@ -2,7 +2,7 @@
 import styles from "./LinkDirectory.module.css";
 import { contacts } from "../../../brands/group/ConfigGroup.jsx";
 
-import useSmartAnchorNav from "./hooks/useSmartAnchorNav";
+import useSmartAnchorNav from "../../../shared/hooks/useSmartAnchorNav.js";
 import PillLink from "./PillLink.jsx";
 import { buildFlagMap, getFlagComp, modClassFor } from "./utils/flagHelpers";
 

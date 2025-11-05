@@ -3,7 +3,6 @@
 /* Helpers/constantes (sem React) */
 import {
   PARTNERS_TITLE,
-  SOCIALS as SOCIALS_META,
   PARTNER_LINKS,
   unitsToFooter,
   countriesToFooter,
@@ -17,8 +16,9 @@ import {
   IMG_COMMON,
   makeBook,
   makeBusinessUnits,
-  makeFooterContacts,
   DEFAULT_GROUP_CONTACTS,
+  SOCIALS, // já vem com Icon injetado
+  makeFooterInfoHeader, // novo helper p/ normalizar infoHeader
 } from "../../shared/config/BrandDefault.jsx";
 
 /* ---------- Assets Overview ---------- */
@@ -47,10 +47,6 @@ import lebanon from "./assets/lebanon.png";
 
 /* ---------- Footer acknowledgements ---------- */
 import acknowledgementsImg from "./assets/acknowledgementsImg.png";
-
-/* Mapear meta-sociais -> acrescentar o componente Icon */
-const iconByKey = { fb: ICONS.FacebookIcon, ig: ICONS.InstagramIcon };
-const SOCIALS = SOCIALS_META.map((s) => ({ ...s, Icon: iconByKey[s.key] }));
 
 /* ======================================================================
    section 1 — OVERVIEW
@@ -110,6 +106,7 @@ export const overview = {
     sub: "Sunlive",
   },
 
+  // usa SOCIALS partilhado (já com Icon)
   socials: SOCIALS,
 
   lang: { ...LANG_DEFAULT },
@@ -242,7 +239,8 @@ export const book = makeBook({
 export const footer = {
   id: "footer",
 
-  infoHeader: {
+  // infoHeader normalizado via helper (contacts & socials por defeito)
+  infoHeader: makeFooterInfoHeader("group", {
     brand: {
       title: "Sunlive Group",
       tagline: "Transformando desafios em soluções com excelência.",
@@ -250,8 +248,9 @@ export const footer = {
         "Na Sunlive Group, acreditamos que o verdadeiro impacto surge da união entre visão, ação e valores humanos.\n\n" +
         "Desenvolvemos soluções integradas em desporto, turismo, educação e negócio, criando oportunidades sustentáveis e ligações com impacto local e global.",
       link: { label: "Sunlive Group", href: "/" },
+      // Se quiseres impedir o texto genérico do componente no 1.º parágrafo:
+      // aboutIntro: "Na Sunlive Group, acreditamos que o verdadeiro impacto surge da união entre visão, ação e valores humanos.",
     },
-
     location: {
       title: "Localização",
       addressLines: [
@@ -261,12 +260,11 @@ export const footer = {
       mapHref:
         "https://maps.google.com/?q=Rua%20Narciso%20da%20Mar%C3%A7a%2C%203780-101%2C%20Sangalhos%2C%20Anadia",
     },
-
-    // 👇 Footer contacts dependentes da unidade atual
-    contacts: makeFooterContacts("group"),
-
+    // contacts: vem de makeFooterInfoHeader("group") -> makeFooterContacts("group")
     socials: { title: "Redes Sociais", items: SOCIALS },
-  },
+    // Opcional: forçar a manter a 1.ª linha do about original
+    // options: { keepOriginalAboutFirstLine: true }
+  }),
 
   // LinkDirectory — derivado via helpers (sem duplicação)
   linkDirectory: {

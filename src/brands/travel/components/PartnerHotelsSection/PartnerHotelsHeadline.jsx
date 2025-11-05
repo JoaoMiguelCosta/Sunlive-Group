@@ -16,7 +16,7 @@ export default function PartnerHotelsHeadline() {
   const subhead = hl.title || "Fique com Conforto";
 
   return (
-    <div id="parceiros-hoteis" className={styles.wrap}>
+    <div  className={styles.wrap}>
       <HeadlineBlock
         /* sem eyebrow para não aparecer acima do título */
         title={mainTitle}

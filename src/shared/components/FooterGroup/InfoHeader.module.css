@@ -80,12 +80,20 @@
     gap: .25rem;
 }
 
+/* Ajuda semântica usada no JSX (mantém-se igual a .col por clareza) */
+.colStart {
+    align-items: flex-start;
+}
+
+
+
 /* === Desktop: manter SEMPRE 4 colunas (≥1100px) ========================= */
 @media (min-width: 1100px) {
     .inner {
         flex-wrap: nowrap;
-        /* não quebra linha */
     }
+
+    /* não quebra linha */
 
     .col {
         /* 4 colunas: 100% menos 3 gaps, dividido por 4 */
@@ -222,13 +230,13 @@
     justify-content: center;
     width: var(--title-icon);
     height: var(--title-icon);
-    border: 2px solid var(--sl-gold-400);
+
     border-radius: 999px;
     color: var(--sl-gold-400);
     background: rgba(199, 134, 21, .08);
 }
 
-/* texto “Sunlive Group” em dourado, sem sublinhado */
+/* texto “Sunlive Group/Travel” em dourado, sem sublinhado */
 .brandEmph {
     color: var(--sl-gold-400);
     font-weight: 800;
@@ -236,11 +244,11 @@
 }
 
 /* alinhamento sob o título (usar no JSX se precisares) */
-.colIconLead .contentLeadIcon {
+.contentLeadIcon {
     padding-left: var(--lead-icon-start);
 }
 
-.colIconLead .contentLeadText {
+.contentLeadText {
     padding-left: var(--lead-text-start);
 }
 
@@ -345,8 +353,14 @@
     justify-content: center;
     color: var(--sl-platinum-100);
     text-decoration: none;
-    transition: transform 120ms ease, background 120ms ease;
     background: rgba(199, 134, 21, .08);
+    transition: transform 120ms ease, background 120ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .socialBtn {
+        transition: background 120ms ease;
+    }
 }
 
 .socialBtn:hover {
@@ -387,17 +401,14 @@
     }
 
     /* títulos + tagline centrados */
-    .title {
-        text-align: center;
-    }
-
+    .title,
     .tagline {
         text-align: center;
     }
 
     /* remover indentações herdadas em mobile */
-    .colIconLead .contentLeadIcon,
-    .colIconLead .contentLeadText {
+    .contentLeadIcon,
+    .contentLeadText {
         padding-left: 0;
     }
 

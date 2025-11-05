@@ -1,0 +1,172 @@
+/* src/brands/travel/components/TestimonialsAndMetricsSection/KeyMetricsBar.module.css */
+
+/* ===== Tokens locais com fallback ao tema Travel ===== */
+:root {
+    --gold-400: var(--sl-gold-400, #C78615);
+    --gold-500: var(--sl-gold-500, #A16207);
+    --accent-500: var(--sl-accent-500, #2EA7E0);
+    --panel: var(--sl-navy-900, #081426);
+    --panel-2: var(--sl-navy-800, #0b172d);
+    --text-strong: var(--sl-platinum-100, #eef3fb);
+    --text: var(--sl-platinum-200, #e1e8f5);
+    --shadow: rgba(0, 0, 0, .35);
+}
+
+/* ===== Wrapper da secção ===== */
+.section {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding-block: clamp(12px, 2.6vw, 22px);
+}
+
+/* ===== Barra (container) ===== */
+.bar {
+    --content-w: min(var(--sl-container-lg, 1200px), 100%);
+    width: var(--content-w);
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(8px, 1.6vw, 16px);
+
+    padding: clamp(12px, 2.2vw, 18px);
+    border-radius: 14px;
+
+    /* Borda dourada + fundo Prestige Noir com “Atlantic Blue” subtil */
+    border: 2px solid color-mix(in srgb, var(--gold-500) 92%, #000 8%);
+box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+        0 18px 38px rgba(0, 0, 0, .32);
+
+    background: var(--sl-navy-900, #020a20);
+}
+
+/* ===== Item ===== */
+.item {
+    display: grid;
+    gap: clamp(4px, .8vw, 6px);
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+    padding: clamp(8px, 1.2vw, 12px);
+}
+
+/* linha vertical subtil entre itens no desktop */
+.item:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, .08);
+}
+
+.valueWrap {
+    display: inline-flex;
+    align-items: baseline;
+    gap: clamp(6px, 1vw, 10px);
+    line-height: 1;
+}
+
+.value {
+    font-weight: 800;
+    letter-spacing: .02em;
+    color: color-mix(in srgb, var(--gold-400) 92%, #fff 8%);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .45);
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+}
+
+.icon {
+    inline-size: clamp(18px, 2.2vw, 24px);
+    block-size: clamp(18px, 2.2vw, 24px);
+    color: color-mix(in srgb, var(--gold-400) 88%, #fff 12%);
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .5));
+    transform: translateY(2px);
+}
+
+.label {
+    color: var(--text-strong);
+    font-size: clamp(.92rem, 1.2vw, 1rem);
+    opacity: .95;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 1024px) {
+    .bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .item:nth-child(2) {
+        border-right: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .bar {
+        grid-template-columns: 1fr;
+    }
+
+    .item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .item:last-child {
+        border-bottom: none;
+    }
+}
+
+/* A11y helper */
+.visuallyHidden {
+    position: absolute !important;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
+/* === HOVER estilizado ao estilo Travel === */
+.item {
+    position: relative;
+    border-radius: 10px;
+    transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+/* fundo + brilho dourado/azulado ao pairar */
+.item:hover,
+.item:focus-visible {
+    background:
+        radial-gradient(120% 120% at 15% 10%, color-mix(in srgb, var(--accent-500) 16%, transparent) 0%, transparent 62%),
+        linear-gradient(180deg, color-mix(in srgb, var(--gold-500) 24%, transparent) 0%, transparent 100%);
+    box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--gold-500) 40%, transparent),
+        0 8px 22px rgba(0, 0, 0, .28);
+}
+
+/* ligeiro “lift” */
+.item:hover {
+    transform: translateY(-1px);
+}
+
+/* reforça leitura no hover */
+.item:hover .value {
+    color: color-mix(in srgb, var(--gold-400) 96%, #fff 4%);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+}
+
+.item:hover .label {
+    opacity: 1;
+}
+
+/* acessibilidade: outline limpo no focus via teclado */
+.item:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent-500) 60%, #fff 0%);
+    outline-offset: 2px;
+}
+
+/* opcional: reduzir animação quando prefer-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .item {
+        transition: background .01s linear, box-shadow .01s linear;
+    }
+
+    .item:hover {
+        transform: none;
+    }
+}

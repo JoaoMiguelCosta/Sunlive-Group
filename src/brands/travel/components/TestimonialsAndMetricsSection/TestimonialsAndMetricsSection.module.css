@@ -1,0 +1,53 @@
+/* src/brands/travel/components/TestimonialsAndMetricsSection/TestimonialsAndMetricsSection.module.css */
+
+/* ===== Tokens locais com fallback ao tema Travel ===== */
+:root {
+    --gold-400: var(--sl-gold-400, #C78615);
+    --gold-500: var(--sl-gold-500, #A16207);
+    --accent-500: var(--sl-accent-500, #2EA7E0);
+    --panel: var(--sl-navy-900, #081426);
+    --panel-2: var(--sl-navy-800, #0b172d);
+    --text-strong: var(--sl-platinum-100, #eef3fb);
+    --text: var(--sl-platinum-200, #e1e8f5);
+    --shadow: rgba(0, 0, 0, .35);
+}
+
+/* ===== Wrapper da secção — MESMO fundo/linha das secções no TravelPage ===== */
+.section {
+    width: 100%;
+    background: transparent;
+    /* igual às restantes secções */
+    scroll-margin-top: 84px;
+    /* âncoras suaves com header fixo */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+    /* linha suave no topo */
+}
+
+/* ===== Content width + respiros ===== */
+.inner {
+    width: var(--content-w-effective, min(var(--sl-container-lg, 1200px), 100%));
+    margin-inline: auto;
+    padding-inline: clamp(12px, 3vw, 28px);
+    padding-block: clamp(14px, 3.5vw, 28px);
+
+    display: grid;
+    gap: clamp(10px, 2vw, 16px);
+}
+
+/* bloco da grelha de cards */
+.gridBlock {
+    margin-top: clamp(8px, 1.6vw, 12px);
+}
+
+/* bloco da barra de métricas */
+.metricsBlock {
+    margin-top: clamp(12px, 2.2vw, 18px);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 640px) {
+    .inner {
+        padding-block: clamp(18px, 6vw, 36px);
+        gap: clamp(14px, 5vw, 28px);
+    }
+}

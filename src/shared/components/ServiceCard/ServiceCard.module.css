@@ -116,11 +116,10 @@ overflow: visible;
     display: grid;
     place-items: center;
     padding: .35rem 0;
-    background:
-        linear-gradient(180deg,
-            rgba(0, 0, 0, .35) 0%,
-            rgba(0, 0, 0, .26) 60%,
-            rgba(0, 0, 0, .18) 100%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+            0 18px 38px rgba(0, 0, 0, .32);
+    
+        background: var(--sl-navy-900, #020a20);
     border-top: 1px solid rgba(0, 0, 0, .55);
 }
 
@@ -174,9 +173,10 @@ overflow: visible;
 /* ===== Sumário ===== */
 .summaryBlock {
     padding: clamp(.9rem, 2.2vw, 1.2rem) clamp(.9rem, 2.2vw, 1.2rem);
-    background:
-        radial-gradient(180% 140% at 50% -10%, color-mix(in oklab, var(--sl-accent-500, #2EA7E0), transparent 75%), transparent 60%),
-        linear-gradient(180deg, rgba(7, 17, 38, 1) 0%, rgba(4, 11, 26, 1) 100%);
+box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+        0 18px 38px rgba(0, 0, 0, .32);
+
+    background: var(--sl-navy-900, #020a20);
     border-top: 1px solid rgba(0, 0, 0, .6);
     block-size: var(--summary-fixed, 9.0rem);
 }

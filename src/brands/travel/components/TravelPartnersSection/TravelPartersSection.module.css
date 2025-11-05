@@ -17,8 +17,10 @@
     --content-w-effective: calc(var(--content-w) - 2 * var(--line-inset));
 
     /* Espaçamento vertical vs. secção anterior/seguinte */
-    margin-block: clamp(1.2rem, 3.6vw, 2rem);
+  
     color: var(--sl-platinum-100, #f6f7fb);
+
+    
 }
 
 @media (min-width: 1280px) {

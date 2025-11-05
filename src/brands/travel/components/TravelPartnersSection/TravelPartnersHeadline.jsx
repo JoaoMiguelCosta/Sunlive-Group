@@ -12,7 +12,7 @@ export default function TravelPartnersHeadline() {
   if (!hl) return null;
 
   return (
-    <div id="parceiros-viagens" className={styles.wrap}>
+    <div className={styles.wrap}>
       <HeadlineBlock
         eyebrow={hl.eyebrow}
         title={hl.title}

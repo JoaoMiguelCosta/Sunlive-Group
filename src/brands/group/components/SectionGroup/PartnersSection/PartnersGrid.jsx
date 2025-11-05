@@ -1,5 +1,5 @@
 import styles from "./PartnersGrid.module.css";
-import useSmartAnchorNav from "../../../../../shared/components/FooterGroup/hooks/useSmartAnchorNav";
+import useSmartAnchorNav from "../../../../../shared/hooks/useSmartAnchorNav.js";
 
 export default function PartnersGrid({ items = [] }) {
   const { handleSmartAnchorClick: toLogos } = useSmartAnchorNav({

@@ -100,6 +100,11 @@
     gap: .9rem;
     padding: clamp(.9rem, 1.6vw, 1.2rem);
     color: var(--text);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+                0 18px 38px rgba(0, 0, 0, .32);
+        
+            background: var(--sl-navy-900, #020a20);
+
 }
 
 /* Resumo com clamp */
@@ -109,7 +114,10 @@
     font-size: clamp(.95rem, 1.1vw, 1.06rem);
     margin: 0;
     color: var(--text-strong);
-    background: linear-gradient(180deg, rgba(46, 167, 224, .10), rgba(7, 20, 41, 0) 75%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+            0 18px 38px rgba(0, 0, 0, .32);
+    
+        background: var(--sl-navy-900, #020a20);
     padding: .2rem 0 .4rem;
     display: -webkit-box;
     -webkit-line-clamp: var(--_lines);
@@ -312,6 +320,11 @@
 
 .card[data-variant="partner"] .imageWrap::after {
     content: none;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+            0 18px 38px rgba(0, 0, 0, .32);
+    
+        background: var(--sl-navy-900, #020a20);
+
 }
 
 @media (hover:hover) {

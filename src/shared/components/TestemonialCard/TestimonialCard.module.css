@@ -1,0 +1,130 @@
+/* src/shared/components/TestimonialCard.module.css */
+
+:root {
+    --tc-panel: var(--sl-navy-900, #081426);
+    --tc-panel-2: var(--sl-navy-800, #0b172d);
+    --tc-gold: var(--sl-gold-500, #A16207);
+    --tc-gold-2: var(--sl-gold-400, #C78615);
+    --tc-text-strong: var(--sl-platinum-100, #eef3fb);
+    --tc-text: var(--sl-platinum-200, #e1e8f5);
+    --tc-shadow: rgba(0, 0, 0, .35);
+}
+
+/* ===== Card ===== */
+.card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    /* topBar | body expande | footer */
+    height: 100%;
+    /* ocupa toda a célula do grid pai */
+    background: linear-gradient(180deg, rgba(8, 20, 38, .88), rgba(5, 12, 24, .96));
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px var(--tc-shadow);
+}
+
+/* ===== Top bar (aspas + estrelas) ===== */
+.topBar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(.4rem, 1.1vw, .7rem);
+    padding: clamp(.35rem, 1.1vw, .6rem) clamp(.6rem, 1.6vw, 1rem);
+    background:
+        linear-gradient(120deg, rgba(46, 167, 224, .18), rgba(8, 20, 38, 0) 70%),
+        linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, 0));
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+.quoteMark {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: var(--tc-text-strong);
+    opacity: .75;
+    letter-spacing: .04em;
+}
+
+.stars {
+    display: inline-flex;
+    gap: clamp(4px, .6vw, 6px);
+}
+
+.starIcon {
+    inline-size: 16px;
+    block-size: 16px;
+    color: var(--tc-gold-2);
+    /* usa a cor do tema */
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .35));
+}
+
+/* ===== Corpo (quote) — ocupa o espaço livre ===== */
+.body {
+    margin: 0;
+    padding: clamp(.9rem, 2vw, 1.1rem) clamp(1rem, 2.4vw, 1.4rem);
+    color: var(--tc-text);
+    font-size: clamp(.94rem, 1.05vw, 1rem);
+    line-height: 1.6;
+
+    /* faz o body expandir e empurrar o footer para o fundo */
+    display: flex;
+    align-items: flex-start;
+}
+
+.body :where(p) {
+    margin: 0;
+    /* remove margens do parágrafo dentro do blockquote */
+}
+
+/* ===== Footer (autor) — fica sempre alinhado entre cards ===== */
+.footer {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: clamp(.6rem, 1.4vw, .9rem);
+    padding: clamp(.65rem, 1.6vw, .9rem) clamp(1rem, 2.4vw, 1.4rem);
+    background:
+        linear-gradient(180deg,
+            color-mix(in srgb, var(--tc-gold) 78%, #000 0%) 0%,
+            color-mix(in srgb, var(--tc-gold-2) 75%, #000 0%) 100%);
+    border-top: 1px solid rgba(0, 0, 0, .25);
+}
+
+.avatarWrap {
+    inline-size: clamp(46px, 5.4vw, 64px);
+    block-size: clamp(46px, 5.4vw, 64px);
+    border-radius: 50%;
+    overflow: hidden;
+    background: radial-gradient(circle at 35% 35%, #ff4a38 0%, #c40000 62%, #660000 100%);
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .25);
+}
+
+.avatarImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.avatarFallback {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.meta {
+    display: grid;
+    gap: 2px;
+}
+
+.name {
+    color: var(--tc-text-strong);
+    font-weight: 700;
+    font-size: clamp(.95rem, 1.05vw, 1rem);
+}
+
+.role {
+    color: color-mix(in srgb, var(--tc-text) 92%, #000 8%);
+    font-size: clamp(.82rem, .95vw, .92rem);
+    opacity: .95;
+}
+
