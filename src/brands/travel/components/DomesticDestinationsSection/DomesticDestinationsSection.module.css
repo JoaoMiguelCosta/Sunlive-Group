@@ -1,6 +1,4 @@
-/* src/brands/travel/components/DomesticDestinationsSection/DomesticDestinationsSection.module.css */
-
-/* Section wrapper — Prestige Noir + Liquid Gold */
+/* Section wrapper — alinhada ao header (sem padding lateral) */
 .section {
     position: relative;
     isolation: isolate;
@@ -8,20 +6,27 @@
     display: grid;
     gap: clamp(0.25rem, 0.7vw, 0.5rem);
     padding-block: clamp(1.25rem, 4vw, 2.2rem);
+    padding-inline: 0;
+    /* ← sem padding, nivela com o header */
     color: var(--sl-platinum-100, #f6f7fb);
 
-    /* tokens e recuos */
-    --_inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
-
-    /* 👇 largura efetiva PARTILHADA por band/headline + grid */
-    --content-w-effective: min(var(--sl-container-lg, 1152px),
-            calc(100% - (var(--_inset) * 2)));
+    /* âncora e linha suave como no resto */
+    scroll-margin-top: var(--header-offset, 84px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
 }
 
+/* Contentor com a MESMA largura do header */
+.inner {
+    inline-size: min(var(--sl-container-lg, 1152px), 100%);
+    margin-inline: auto;
+    padding-inline: 0;
+    /* não somar padding */
+}
+
+/* Mobile: continua sem padding lateral na secção */
 @media (max-width: 640px) {
-    .section {
-        --_inset: clamp(10px, 4vw, 22px);
-        gap: clamp(.9rem, 3.4vw, 1.2rem);
+    .inner {
+        gap: clamp(0.9rem, 3.4vw, 1.2rem);
         padding-block: clamp(1rem, 5vw, 1.6rem);
     }
 }

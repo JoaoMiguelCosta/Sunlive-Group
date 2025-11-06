@@ -34,46 +34,25 @@ export default function TravelPage() {
     acknowledgements: acknowledgements ?? groupFooter?.acknowledgements ?? null,
   };
 
-  return (
-    <div className={styles.pageWrap}>
-      <main className={styles.inner}>
-        <div className={styles.sections}>
-          <section className={styles.section}>
-            <TravelHeaderNav />
-          </section>
+return (
+  <div className={styles.pageWrap}>
+    <main className={styles.inner}>
+      <div className={styles.sections}>
+        {/* Header pode ser <section> lá dentro ou <header>, aqui não embrulhamos */}
+        <TravelHeaderNav />
 
-          <section id="logistica" className={styles.section}>
-            <LogisticsSolutionsSection />
-          </section>
+        {/* Cada um já devolve <section id="…"> */}
+        <LogisticsSolutionsSection />
+        <DomesticDestinationsSection />
+        <InternationalDestinationsSection />
+        <PartnerHotelsSection />
+        <TravelPartnersSection />
+        <TestimonialsAndMetricsSection />
+        <ContactCTASection />
+      </div>
+    </main>
 
-          <section id="destinos-nacionais" className={styles.section}>
-            <DomesticDestinationsSection />
-          </section>
-
-          <section id="destinos-internacionais" className={styles.section}>
-            <InternationalDestinationsSection />
-          </section>
-
-          <section id="hoteis-parceiros" className={styles.section}>
-            <PartnerHotelsSection />
-          </section>
-
-          <section id="parceiros-viagens" className={styles.section}>
-            <TravelPartnersSection />
-          </section>
-
-          <section id="testemunhos" className={styles.section}>
-            <TestimonialsAndMetricsSection />
-          </section>
-
-          <section className={styles.section}>
-            <ContactCTASection />
-          </section>
-        </div>
-      </main>
-
-      {/* Footer colado ao bloco anterior */}
-      <TravelFooter data={footerData} flushTop />
-    </div>
-  );
+    <TravelFooter data={footerData} flushTop />
+  </div>
+);
 }

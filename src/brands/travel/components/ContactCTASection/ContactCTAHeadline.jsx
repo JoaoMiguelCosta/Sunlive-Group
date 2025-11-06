@@ -8,15 +8,16 @@ export default function ContactCTAHeadline() {
   if (!headline) return null;
 
   return (
+    // wrapper com a MESMA largura útil que o banner/hotéis
     <div className={styles.wrap}>
       <HeadlineBlock
-        id="contactar-heading" // garante acessibilidade para aria-labelledby
+        id="contactar-heading" // acessibilidade para aria-labelledby
         title={headline.title}
         lead={headline.lead}
         align="center"
         variant="banded"
         as="h2"
-        max="lg"
+        max="lg" // mapeia para --content-w-effective
       />
     </div>
   );

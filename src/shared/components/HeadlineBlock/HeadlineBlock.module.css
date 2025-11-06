@@ -9,12 +9,16 @@
     width: 100%;
     color: var(--sl-platinum-100, #f6f7fb);
 
+    /* === Interruptor: consumir (1) ou não (0) o line inset === */
+  
+
     /* === Content width herdada do <section> ===
      A secção define:
        --content-w: min(var(--sl-container-lg), 100%)
        --line-inset: ...
-     Aqui calculamos a largura útil ENTRE linhas: */
-    --content-w-effective: calc(var(--content-w, min(var(--sl-container-lg, 1200px), 100%)) - 2 * var(--line-inset, 0px));
+     Aqui calculamos a largura útil ENTRE linhas,
+     podendo ou não subtrair o inset (Variante B já aplicada a montante): */
+    --content-w-effective: calc(var(--content-w, min(var(--sl-container-lg, 1200px), 100%)) - (var(--hb-consume-inset, 1) * 2 * var(--line-inset, 0px)));
 
     /* mapear opções “max-*” para a largura útil */
     --content-w-sm: min(720px, 100%);
@@ -23,11 +27,8 @@
 
     /* tokens responsivos base */
     --radius: 12px;
-    /* ajustado por MQ abaixo */
     --band-h: clamp(16px, 1.6vw, 22px);
-    /* altura da faixa */
     --pad-y: clamp(0.9rem, 2.6vw, 1.6rem);
-    /* padding da caixa */
 }
 
 /* ===== Faixa dourada com a MESMA largura das linhas ===== */
@@ -52,14 +53,12 @@
     margin-inline: auto;
     border-radius: var(--radius);
     padding: var(--pad-y);
-box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .04) inset,
         0 18px 38px rgba(0, 0, 0, .32);
-
     background: var(--sl-navy-900, #020a20);
     overflow: clip;
-    /* cantos perfeitos sem bleed */
     background-clip: padding-box;
-    /* não pinta o aro/borda */
 }
 
 /* Versão sem banda/caixa */
@@ -73,7 +72,6 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
 /* ===== Alinhamento e larguras ===== */
 .inner {
     text-align: center;
-    
 }
 
 .max-sm .inner {
@@ -95,12 +93,10 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
 /* ===== Título ===== */
 .title {
     margin: 0 0 clamp(2rem, 1.2vw, .7rem) 0;
-    /* gap sob o título */
     font-weight: 800;
     line-height: 1.2;
     letter-spacing: .01em;
     font-size: clamp(1.20rem, 2.6vw, 2.20rem);
-    /* texto fluido */
     color: color-mix(in oklab, var(--sl-gold-400) 84%, var(--sl-accent-500) 16%);
     text-shadow: 0 1px 0 rgba(0, 0, 0, .35);
 }
@@ -108,7 +104,6 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
 /* ===== Lead / texto ===== */
 .lead {
     margin: 0;
-    /* o espaçamento vem do .title */
     font-weight: 500;
     line-height: clamp(1.46, 2.2vw, 1.6);
     font-size: clamp(0.98rem, 1.8vw, 1.18rem);
@@ -120,7 +115,7 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
    RESPONSIVIDADE (breakpoints)
    ========================= */
 
-/* XS — ≤480px: raio menor, banda mais baixa, largura 100% */
+/* XS — ≤480px */
 @media (max-width: 480px) {
     .wrap {
         --radius: 10px;
@@ -193,14 +188,12 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
     }
 }
 
+/* XL — ≥1280px */
 @media (min-width: 1280px) {
     .title {
         font-size: clamp(1.35rem, 2.1vw, 2.30rem);
     }
-}
 
-/* XL — ≥1280px: caixa mais generosa, texto ligeiramente maior */
-@media (min-width: 1280px) {
     .wrap {
         --radius: 14px;
         --band-h: 22px;
@@ -216,7 +209,7 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
     }
 }
 
-/* 2XL — ≥1536px: respeita content width do section; não estica mais */
+/* 2XL — ≥1536px */
 @media (min-width: 1536px) {
     .band {
         inline-size: var(--content-w-effective);
@@ -238,22 +231,18 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
 
     .variant-banded .inner:hover {
         background:
-            /* véu dourado subtil */
             linear-gradient(180deg,
                 color-mix(in oklab, var(--sl-gold-400, #C78615) 6%, transparent) 0%,
                 transparent 22%),
-            /* halo azul-Atlântico reforçado */
             radial-gradient(160% 140% at 50% 0%,
                 color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 46%, transparent),
                 transparent 62%),
-            /* vinheta leve */
             radial-gradient(120% 120% at 50% 120%, rgba(0, 0, 0, .18), transparent 58%),
-            /* base Prestige Noir */
             linear-gradient(180deg, rgba(12, 20, 44, .94), rgba(5, 9, 26, .98));
     }
 }
 
-/* Fallback sem color-mix (aproxima visual) */
+/* Fallback sem color-mix */
 @supports not (color: color-mix(in oklab, white, black)) {
     .variant-banded .inner:hover {
         background:

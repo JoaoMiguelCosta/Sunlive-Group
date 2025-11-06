@@ -1,30 +1,28 @@
-/* src/brands/travel/sections/DomesticDestinationsSection/DestinationsIntroBar.module.css */
+/* src/brands/travel/components/ContactCTASection/ContactCTAHeadline.module.css */
 
-/* Wrapper da headline — herda largura da section e NÃO a redefine diferente */
+/* Wrapper da headline — usa a largura global e não recalcula insets */
 .wrap {
-    position: relative;
-    width: 100%;
-    isolation: isolate;
+  position: relative;
+  isolation: isolate;
 
-    /* mesmo recuo da secção */
-    --_inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
-
-    /* 👇 largura efetiva PARTILHADA (igual à da secção + grid) */
-    --content-w-effective: min(var(--sl-container-lg, 1152px),
-            calc(100% - (var(--_inset) * 2)));
-
-    /* Mapas para o que o HeadlineBlock/band possam esperar */
-    --content-w: var(--content-w-effective);
-    --band-w: var(--content-w-effective);
-
-    /* Margens do header do HeadlineBlock (super compactas) */
-    --headline-mt: clamp(6px, 0.8vw, 10px);
-    --headline-mb: clamp(6px, 1vw, 10px);
+    margin-inline: auto;
+  
+  
+  --hb-consume-inset: 0;  /* Headline NÃO deve subtrair gutter internamente */
+    
+    --hb-line-inset: 0;
+  
+    padding-inline: 0;
 }
 
-/* Se o HeadlineBlock expõe classes, podes alinhar assim:
+/* opcional: afinar margens do header do HeadlineBlock */
 .wrap :global(.headline__header) {
-  margin-top: var(--headline-mt);
-  margin-bottom: var(--headline-mb);
+  margin-top: var(--headline-mt, 0);
+  margin-bottom: var(--headline-mb, 0);
 }
-*/
+
+@media (max-width: 640px) {
+  .wrap {
+    padding-inline: 0;
+  }
+}

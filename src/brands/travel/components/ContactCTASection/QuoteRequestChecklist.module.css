@@ -1,5 +1,3 @@
-/* src/brands/travel/components/ContactCTASection/QuoteRequestChecklist.module.css */
-
 /* ===== Tokens base (Prestige Noir + Liquid Gold + Travel) ===== */
 :root {
     --gold-400: var(--sl-gold-400, #C78615);
@@ -10,11 +8,14 @@
     --panel: #081426;
 }
 
-/* ===== Wrapper ===== */
+/* ===== Wrapper =====
+   👉 Variante B: este bloco herda a largura/gutter do .container da secção,
+   portanto fica a 100% e sem padding lateral extra. */
 .wrap {
-    width: var(--content-w-effective, min(var(--sl-container-lg, 1200px), 100%));
+    box-sizing: border-box;
+    width: 100%;
     margin-inline: auto;
-    padding-inline: clamp(12px, 3vw, 28px);
+    padding-inline: 0;
 }
 
 /* ===== Lista ===== */

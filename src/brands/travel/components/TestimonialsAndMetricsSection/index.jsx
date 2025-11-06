@@ -1,4 +1,3 @@
-// src/brands/travel/components/TestimonialsAndMetricsSection/index.jsx
 import styles from "./TestimonialsAndMetricsSection.module.css";
 
 import TestimonialsHeadline from "./TestimonialsHeadline.jsx";
@@ -9,16 +8,23 @@ import KeyMetricsBar from "./KeyMetricsBar.jsx";
  * TestimonialsAndMetricsSection
  * - Wrapper da secção com espaçamentos consistentes (Prestige Noir + Liquid Gold)
  * - Ordem: Headline → Grid → KeyMetricsBar
- * - O anchor #testemunhos é definido no TestimonialsHeadline; aqui é apenas contentor.
+ * - #testemunhos é tratado dentro do TestimonialsHeadline (via HeadlineBlock)
  */
 export default function TestimonialsAndMetricsSection() {
   return (
     <section className={styles.section} aria-label="Testemunhos e Métricas">
       <div className={styles.inner}>
-        <TestimonialsHeadline />
+        {/* Headline alinhada à mesma largura do banner/hotéis */}
+        <div className={styles.headerRow}>
+          <TestimonialsHeadline />
+        </div>
+
+        {/* Grelha de testemunhos */}
         <div className={styles.gridBlock}>
           <TestimonialsGrid />
         </div>
+
+        {/* Barra de métricas/chips */}
         <div className={styles.metricsBlock}>
           <KeyMetricsBar />
         </div>

@@ -1,4 +1,3 @@
-/* src/brands/travel/components/ContactCTASection/ContactCTASection.module.css */
 :root {
     --gold-400: var(--sl-gold-400, #C78615);
     --text-strong: #eef3fb;
@@ -8,40 +7,44 @@
 }
 
 .section {
-    position: relative;
-    width: 100%;
-    display: grid;
-    place-items: center;
-    padding-block: clamp(1.8rem, 4.5vw, 3rem);
+  /* estas duas linhas asseguram consistência para TODAS as secções */
+  --content-w: min(var(--sl-container-lg, 1200px), 100%);
+  --line-inset: var(--section-inset, clamp(12px, 4vw, 40px));
+
+  /* calcula a largura útil comum entre linhas */
+  --content-w-effective: calc(var(--content-w) - 2 * var(--line-inset));
 }
 
+/* Linha do topo com a MESMA largura útil da página */
 .section::before {
-    content: "";
-    position: absolute;
-    inset-inline: 0;
-    top: 0;
-    height: 1px;
-    background: linear-gradient(90deg,
-            transparent 0,
-            rgba(255, 255, 255, .16) var(--line-inset, clamp(16px, 3.5vw, 44px)),
-            rgba(255, 255, 255, .16) calc(100% - var(--line-inset, clamp(16px, 3.5vw, 44px))),
-            transparent 100%);
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--content-w-effective);
+  height: 1px;
+  background: rgba(255, 255, 255, .16);
+  pointer-events: none;
 }
 
+/* === LARGURA ÚTIL COMUM (igual às outras secções) === */
 .container {
-    width: var(--content-w-effective, min(var(--sl-container-lg, 1200px), 100%));
+    inline-size: min(100%, var(--content-w-effective));
     margin-inline: auto;
-    padding-inline: clamp(12px, 3vw, 28px);
+    /* nada de padding-inline aqui */
+}
+
+/* Se precisares de “gutter” interno, usa um nível abaixo */
+.content {
+    padding-inline: var(--line-inset, var(--section-inset, 16px));
 }
 
 /* ===== Grid (uma coluna, centrado) ===== */
 .grid {
     display: grid;
     grid-template-columns: 1fr;
-    /* ← sem segunda coluna */
     justify-items: center;
-    /* centra o conteúdo */
     gap: clamp(1rem, 2.2vw, 1.6rem);
     margin-top: clamp(1rem, 2.2vw, 1.6rem);
 }
@@ -49,7 +52,6 @@
 .col {
     min-width: 0;
     width: min(980px, 100%);
-    /* largura controlada para alinhar com o callout */
 }
 
 /* ===== Callout destacado (canais) ===== */
@@ -72,4 +74,14 @@
     max-width: min(980px, 100%);
     margin-inline: auto;
     display: block;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 640px) {
+
+    /* mantém a secção sem padding lateral próprio */
+    .content {
+        /* respiro vertical sem mexer no alinhamento lateral */
+        padding-block: clamp(1rem, 5vw, 1.6rem);
+    }
 }

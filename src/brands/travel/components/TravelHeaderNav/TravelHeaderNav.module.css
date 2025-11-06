@@ -1,22 +1,20 @@
-/* TravelHeaderNav — container “limpo”
-   ⚠️ Deixamos a largura/inset da linha 100% a cargo da UtilityBar.
-*/
+/* TravelHeaderNav.module.css */
 
+/* Header “limpo”: sem padding lateral, sem borda; linha vem da UtilityBar */
 .wrap {
     position: relative;
+    width: 100%;
     border-bottom: none;
 }
 
+/* sem pseudo-linhas aqui, deixamos isso para a UtilityBar */
 .wrap::after {
     content: none;
 }
 
-/* O conteúdo nunca sai do container mas NÃO tem padding lateral extra
-   (evita duplicar o inset da linha) */
+/* Container com a MESMA largura das secções (e zero padding) */
 .container {
-    inline-size: min(var(--sl-container-lg, 90rem), 100%);
+    inline-size: min(var(--sl-container-lg, 1200px), 100%);
     margin-inline: auto;
     padding-inline: 0;
-    /* importante: sem padding aqui */
-    
 }

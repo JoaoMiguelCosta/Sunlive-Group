@@ -1,4 +1,3 @@
-// src/brands/travel/components/PartnerHotelsSection/index.jsx
 import styles from "./PartnerHotelsSection.module.css";
 import PartnerHotelsHeadline from "./PartnerHotelsHeadline.jsx";
 import PartnerHotelsCardsGrid from "./PartnerHotelsCardsGrid.jsx";
@@ -10,19 +9,20 @@ export default function PartnerHotelsSection({ className = "" }) {
   if (!cfg) return null;
 
   const { id = "parceiros-hoteis", cta } = cfg;
-  const sectionId = `${id}-section`;
 
   return (
     <section
-      id={sectionId}
+      id={id}
       className={[styles.section, className].filter(Boolean).join(" ")}
       role="region"
       aria-label="Hotéis parceiros Sunlive Travel"
       data-theme="prestige-noir"
     >
-      <PartnerHotelsHeadline />
-      <PartnerHotelsCardsGrid />
-      <ContactCTA cta={cta} />
+      <div className={styles.inner}>
+        <PartnerHotelsHeadline />
+        <PartnerHotelsCardsGrid />
+        <ContactCTA cta={cta} />
+      </div>
     </section>
   );
 }

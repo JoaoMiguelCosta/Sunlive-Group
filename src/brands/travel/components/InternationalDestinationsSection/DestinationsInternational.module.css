@@ -1,6 +1,8 @@
 /* ===== Container: EXACTAMENTE igual ao Headline/Band ===== */
+/* ===== Container: EXACTAMENTE igual ao Headline/Band ===== */
 .container {
-    inline-size: var(--content-w-effective);
+    /* usa a var se vier da secção; senão, aplica fallback consistente */
+    inline-size: var(--content-w-effective, min(var(--sl-container-lg, 1152px), 100%));
     margin-inline: auto;
     padding-inline: 0;
 

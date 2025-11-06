@@ -1,5 +1,3 @@
-/* src/brands/travel/components/TravelPartnersSection/TrustedCollaborationBanner.module.css */
-
 /* ===== Tokens locais com fallback ao tema Travel ===== */
 :root {
     --gold-400: var(--sl-gold-400, #C78615);
@@ -11,18 +9,14 @@
     --text: #e1e8f5;
 }
 
-/* ===== Wrapper — ocupa a largura do content e centra ===== */
+/* ===== Wrapper — usa SEMPRE a largura útil global ===== */
 .wrapper {
-    width: var(--content-w-effective, min(var(--sl-container-lg, 1200px), 100%));
+    inline-size: min(100%, var(--content-w-effective));
     margin-inline: auto;
-    padding-inline: clamp(8px, 2vw, 12px);
+    /* não dar padding-inline aqui para não desalinhar das outras secções */
 }
 
-/* ===== Corpo do banner =====
-   - Navy com gradiente vertical
-   - Glow azul “Travel”
-   - Linha dourada subtil no topo
-*/
+/* ===== Corpo do banner ===== */
 .inner {
     position: relative;
     display: grid;
@@ -30,17 +24,16 @@
     align-items: center;
     gap: clamp(1rem, 2.2vw, 2rem);
 
-    /* fonte de verdade para espaçamentos associados ao ícone */
     --icon-gap: clamp(1rem, 2.2vw, 2rem);
 
     padding: clamp(.9rem, 2.4vw, 1.25rem);
     border-radius: 14px;
 
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
-            0 18px 38px rgba(0, 0, 0, .32);
-    
-        background: var(--sl-navy-900, #020a20);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .04) inset,
+        0 18px 38px rgba(0, 0, 0, .32);
 
+    background: var(--sl-navy-900, #020a20);
     color: var(--text-strong);
     isolation: isolate;
 }
@@ -52,12 +45,12 @@
     inset: 0;
     border-radius: inherit;
     pointer-events: none;
-    background:
-        linear-gradient(180deg,
+    background: linear-gradient(180deg,
             color-mix(in oklab, var(--gold-500) 38%, transparent) 0%,
             transparent 24%);
     mask: linear-gradient(#000 0 34%, transparent 35%);
     opacity: .55;
+    /* NÃO redefinir --content-w-effective aqui. */
 }
 
 /* ===== Icon bubble ===== */
@@ -68,8 +61,6 @@
     border-radius: 50%;
     display: grid;
     place-items: center;
-
-    /* centra a bolha no seu track em todos os layouts */
     justify-self: center;
 
     background:
@@ -85,7 +76,6 @@
         0 6px 18px rgba(0, 0, 0, .4);
 }
 
-/* anel externo suave */
 .ring {
     position: absolute;
     inset: -8px;
@@ -93,12 +83,10 @@
     box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent-500) 18%, transparent);
 }
 
-/* o SVG (handshake/shield) */
 .icon {
     width: 58%;
     height: 58%;
     color: #fff;
-    /* apenas se o SVG usar currentColor */
     filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .35));
 }
 
@@ -128,8 +116,6 @@
 }
 
 /* ===== Responsivo ===== */
-
-/* ≤ 560px: stack vertical; gap proporcional acima do texto */
 @media (max-width: 560px) {
     .inner {
         grid-template-columns: 1fr;
@@ -162,14 +148,11 @@
     }
 }
 
-/* 561–768px: 2 colunas; mais espaço horizontal entre ícone e texto */
 @media (min-width: 561px) and (max-width: 768px) {
     .inner {
         grid-template-columns: auto minmax(0, 1fr);
         column-gap: clamp(1.2rem, 3.2vw, 2rem);
-        /* ⇠ afastamento lateral maior */
         row-gap: clamp(0.6rem, 1.6vw, 0.9rem);
-        /* altura controlada */
         --icon-gap: clamp(1.2rem, 3.2vw, 2rem);
         padding: clamp(1.05rem, 3vw, 1.35rem);
     }
@@ -183,7 +166,6 @@
     }
 }
 
-/* 769–1180px: layout padrão com um toque extra de espaço */
 @media (min-width: 769px) and (max-width: 1179px) {
     .inner {
         gap: clamp(1.1rem, 2.2vw, 1.6rem);
@@ -204,7 +186,6 @@
     }
 }
 
-/* ≥1180px: banner mais “prestige”, mais padding e ícone maior */
 @media (min-width: 1180px) {
     .inner {
         gap: clamp(1.4rem, 2vw, 2.2rem);
@@ -216,7 +197,6 @@
     .iconWrap {
         inline-size: clamp(56px, 4.8vw, 70px);
         block-size: clamp(56px, 4.8vw, 70px);
-        margin-block-end: 0;
     }
 
     .title {
@@ -228,18 +208,14 @@
     }
 }
 
-/* ≥1536px: alargar ligeiro e limitar largura de texto */
+/* ≥1536px: sem override de largura (mantém alinhamento) */
 @media (min-width: 1536px) {
-    .wrapper {
-        width: min(var(--sl-container-xl, 1320px), 100%);
-    }
-
     .subtitle {
         max-width: 68ch;
     }
 }
 
-/* ≥1920px: mais respiro e leve realce da linha dourada */
+/* ≥1920px: ajuste leve */
 @media (min-width: 1920px) {
     .inner {
         padding: clamp(1.2rem, 1.4vw, 1.8rem);
@@ -250,14 +226,14 @@
     }
 }
 
-/* Acessibilidade: reduzir animações/halos em R-M */
+/* Acessibilidade */
 @media (prefers-reduced-motion: reduce) {
     .ring {
         box-shadow: none;
     }
 }
 
-/* Hover/Focus — reforça o glow e aro dourado */
+/* Hover/Focus */
 @media (hover:hover) {
 
     .inner:hover .iconWrap,

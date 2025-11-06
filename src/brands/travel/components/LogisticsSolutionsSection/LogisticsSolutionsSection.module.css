@@ -1,17 +1,17 @@
 .section {
     position: relative;
     width: 100%;
+    /* herda a largura do .inner */
     display: grid;
     gap: clamp(.25rem, .7vw, .5rem);
     margin-top: 6.5rem;
-    /* default */
     color: var(--sl-platinum-100, #f6f7fb);
+
+    /* se precisares de um inset interno extra, lê o mesmo token */
     --line-inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
-    --content-w: min(var(--sl-container-lg, 1200px), 100%);
-    
 }
 
-/* 641px–1025px: margem maior */
+/* breakpoints como já tinhas */
 @media (min-width: 641px) and (max-width: 1025px) {
     .section {
         margin-top: 8rem;
@@ -20,7 +20,6 @@
 
 @media (max-width: 640px) {
     .section {
-        --line-inset: clamp(10px, 4vw, 22px);
         gap: clamp(.9rem, 3.4vw, 1.2rem);
         padding-block: clamp(1rem, 5vw, 1.6rem);
     }

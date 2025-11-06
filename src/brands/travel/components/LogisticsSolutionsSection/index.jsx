@@ -1,4 +1,3 @@
-// src/brands/travel/sections/LogisticsSolutionsSection/index.jsx
 import styles from "./LogisticsSolutionsSection.module.css";
 import LogisticsSolutionsHeadline from "./LogisticsSolutionsHeadline.jsx";
 import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
@@ -13,14 +12,11 @@ export default function LogisticsSolutionsSection() {
       data-section="logistics-solutions"
       aria-label="Soluções Integradas de Logística"
     >
-      {/* Título + lead */}
-      <LogisticsSolutionsHeadline />
-
-      {/* Grid dos serviços (lê do ConfigTravel por omissão) */}
-      <ServiceOfferingsGrid />
-
-      {/* CTA “Contactar” centrado por baixo dos cards */}
-      <ContactCTA cta={travelBrand?.cta} />
+      <div className={styles.inner}>
+        <LogisticsSolutionsHeadline />
+        <ServiceOfferingsGrid />
+        <ContactCTA cta={travelBrand?.cta} />
+      </div>
     </section>
   );
 }

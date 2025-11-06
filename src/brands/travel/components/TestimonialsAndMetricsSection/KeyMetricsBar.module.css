@@ -1,6 +1,3 @@
-/* src/brands/travel/components/TestimonialsAndMetricsSection/KeyMetricsBar.module.css */
-
-/* ===== Tokens locais com fallback ao tema Travel ===== */
 :root {
     --gold-400: var(--sl-gold-400, #C78615);
     --gold-500: var(--sl-gold-500, #A16207);
@@ -12,7 +9,7 @@
     --shadow: rgba(0, 0, 0, .35);
 }
 
-/* ===== Wrapper da secção ===== */
+/* wrapper da secção da barra */
 .section {
     width: 100%;
     display: grid;
@@ -20,10 +17,11 @@
     padding-block: clamp(12px, 2.6vw, 22px);
 }
 
-/* ===== Barra (container) ===== */
+/* NOTA: o recuo e a largura efetiva são aplicados no .metricsBlock (na secção).
+   Aqui a .bar ocupa 100% desse bloco para não somar gutters. */
 .bar {
-    --content-w: min(var(--sl-container-lg, 1200px), 100%);
-    width: var(--content-w);
+    box-sizing: border-box;
+    width: 100%;
     margin-inline: auto;
 
     display: grid;
@@ -33,25 +31,25 @@
     padding: clamp(12px, 2.2vw, 18px);
     border-radius: 14px;
 
-    /* Borda dourada + fundo Prestige Noir com “Atlantic Blue” subtil */
     border: 2px solid color-mix(in srgb, var(--gold-500) 92%, #000 8%);
-box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
         0 18px 38px rgba(0, 0, 0, .32);
-
     background: var(--sl-navy-900, #020a20);
 }
 
-/* ===== Item ===== */
 .item {
+    position: relative;
     display: grid;
     gap: clamp(4px, .8vw, 6px);
     align-content: center;
     justify-items: center;
     text-align: center;
     padding: clamp(8px, 1.2vw, 12px);
+    border-radius: 10px;
+    transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
 }
 
-/* linha vertical subtil entre itens no desktop */
+/* separador vertical (desktop) */
 .item:not(:last-child) {
     border-right: 1px solid rgba(255, 255, 255, .08);
 }
@@ -85,7 +83,7 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
     opacity: .95;
 }
 
-/* ===== Responsivo ===== */
+/* Responsivo */
 @media (max-width: 1024px) {
     .bar {
         grid-template-columns: repeat(2, 1fr);
@@ -111,7 +109,7 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
     }
 }
 
-/* A11y helper */
+/* A11y */
 .visuallyHidden {
     position: absolute !important;
     inline-size: 1px;
@@ -121,14 +119,7 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
     white-space: nowrap;
 }
 
-/* === HOVER estilizado ao estilo Travel === */
-.item {
-    position: relative;
-    border-radius: 10px;
-    transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
-}
-
-/* fundo + brilho dourado/azulado ao pairar */
+/* Hover/Focus */
 .item:hover,
 .item:focus-visible {
     background:
@@ -139,12 +130,10 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
         0 8px 22px rgba(0, 0, 0, .28);
 }
 
-/* ligeiro “lift” */
 .item:hover {
     transform: translateY(-1px);
 }
 
-/* reforça leitura no hover */
 .item:hover .value {
     color: color-mix(in srgb, var(--gold-400) 96%, #fff 4%);
     text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
@@ -154,13 +143,6 @@ box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
     opacity: 1;
 }
 
-/* acessibilidade: outline limpo no focus via teclado */
-.item:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--accent-500) 60%, #fff 0%);
-    outline-offset: 2px;
-}
-
-/* opcional: reduzir animação quando prefer-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
     .item {
         transition: background .01s linear, box-shadow .01s linear;

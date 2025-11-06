@@ -8,21 +8,22 @@
     width: 100%;
     display: grid;
     place-items: center;
-
-    /* espaçamento base (podes alterar aqui) */
     --pad-top: clamp(16px, 3vw, 28px);
-
+    --pad-bot: var(--pad-bot, 0);
     padding-block: var(--pad-top) var(--pad-bot);
+    /* nada de padding-inline aqui */
 }
 
-/* Content container (caso precises de colocar textos auxiliares no futuro) */
+/* Content container: MESMA largura que o resto das secções */
 .inner {
     display: grid;
     place-items: center;
     gap: clamp(.4rem, 1.4vw, .9rem);
-    max-inline-size: var(--sl-container-md, 1100px);
-    inline-size: 100%;
-    padding-inline: var(--section-inset, clamp(16px, 3.5vw, 44px));
+    inline-size: var(--content-w-effective);
+    /* 👈 chave */
+    margin-inline: auto;
+    padding-inline: 0;
+    /* 👈 sem somar inset */
 }
 
 /* Envelope do botão: posiciona halo sem afetar o anchor */

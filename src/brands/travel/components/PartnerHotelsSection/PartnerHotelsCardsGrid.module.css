@@ -8,7 +8,8 @@
     --card-img-ratio: 4 / 3;
     /* hotéis: imagens mais “respiráveis” */
     /* encostar ao band acima (mantém o que já tinhas) */
-    margin-block-start: calc(-1 * var(--band-overlap, clamp(12px, 1.6vw, 16px)));
+    --content-w-effective: calc(var(--content-w, min(var(--sl-container-lg, 1200px), 100%)) - 2 * var(--line-inset, 0px));
+    
 }
 
 /* ===== Grelha base (fallback): 3 colunas ===== */

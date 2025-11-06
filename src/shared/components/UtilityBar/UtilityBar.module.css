@@ -278,15 +278,24 @@
         display: grid;
         grid-template-columns: 1fr;
         justify-items: center;
+
+        /* visual */
+        background: var(--sl-navy-900, #020a20);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+            0 18px 38px rgba(0, 0, 0, .32);
+        border-bottom: 2px solid rgba(255, 162, 0, .85);
     }
 
     .utilityBar[data-variant="travel-header"] .left {
         width: 100%;
         justify-self: center;
+        padding-inline: clamp(8px, 1.2vw, 14px);
+        /* micro-gutter */
     }
 
     .utilityBar[data-variant="travel-header"] .right {
         justify-self: center;
+        padding-inline: clamp(8px, 1.2vw, 14px);
     }
 }
 
@@ -295,30 +304,34 @@
     .utilityBar[data-variant="travel-header"] .inner {
         display: grid;
         grid-template-columns: 1fr auto;
-        /* esquerda ocupa 100% | direita encosta */
         align-items: center;
+
+        background: var(--sl-navy-900, #020a20);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+            0 18px 38px rgba(0, 0, 0, .32);
+        border-bottom: 2px solid rgba(255, 162, 0, .85);
     }
 
     .utilityBar[data-variant="travel-header"] .left {
         width: 100%;
+        padding-inline-start: clamp(8px, 1.2vw, 14px);
     }
 
-    /* Ícones + PT encostados à direita da régua */
     .utilityBar[data-variant="travel-header"] .right {
         justify-self: end;
         display: inline-flex;
         align-items: center;
         gap: var(--ub-gap, .75rem);
+        padding-inline-end: clamp(8px, 1.2vw, 14px);
     }
 
-    /* Garantir que os submenus não são cortados */
+    /* Garantir que submenus não cortam */
     .utilityBar[data-variant="travel-header"] :where(.navList) {
         justify-content: center;
         flex-wrap: wrap;
         overflow: visible;
     }
 }
-
 /* =======================================================
    Variant: Logos Header
    ======================================================= */

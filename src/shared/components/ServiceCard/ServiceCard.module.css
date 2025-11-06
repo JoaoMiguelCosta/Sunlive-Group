@@ -16,7 +16,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
+  
 overflow: visible;
     border: 2px solid rgba(199, 134, 21, 0.9);
     background: linear-gradient(180deg, #0b142b 0%, #060e22 100%);

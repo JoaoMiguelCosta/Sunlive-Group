@@ -14,10 +14,7 @@
     position: relative;
     isolation: isolate;
     color: var(--sl-platinum-100, #f5f5f5);
-    background: var(--sl-navy-900, #020a20);
-    box-shadow:
-        0 1px 0 rgba(255, 255, 255, .04) inset,
-        0 18px 38px rgba(0, 0, 0, .32);
+
 }
 
 /* >=861px: “modo 2ª imagem” para todo o desktop */

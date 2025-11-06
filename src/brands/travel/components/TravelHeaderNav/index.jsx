@@ -9,11 +9,15 @@ export default function TravelHeaderNav() {
   const { logo, nav = [], cta, socials, lang } = travelBrand;
 
   return (
-    <HeaderShell className={styles.wrap}>
-      {/* 👇 garante largura idêntica à “linha amarela” + insets */}
+    <HeaderShell
+      as="header"
+      className={styles.wrap}
+      role="banner"
+      aria-label="Header — Sunlive Travel"
+    >
       <div className={styles.container}>
         <UtilityBar
-          variant="travel-header" // 👈 ativa estilos escopados só aqui
+          variant="travel-header"
           ariaLabel="Header — Sunlive Travel"
           leftSlot={<LeftRow logo={logo} nav={nav} cta={cta} />}
           socials={socials}

@@ -1,7 +1,6 @@
-/* =============================================================================
-   TravelFooter — alinhado ao mesmo container + inset das secções
-============================================================================= */
-
+/* ============================================================================
+   TravelFooter — alinhado ao container do header (sem padding lateral)
+============================================================================ */
 .footerWrap {
     position: relative;
     isolation: isolate;
@@ -9,12 +8,15 @@
     color: var(--sl-platinum-100);
     overflow: clip;
 
-    --section-inset: var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)));
     --rule-thickness: 2px;
+
+    /* nada de padding lateral aqui */
+    padding-inline: 0;
 }
 
+/* Conteúdo centrado e sem padding lateral (não somar nada) */
 .frame {
-    inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
+    inline-size: min(100%, var(--content-w-effective));
     margin-inline: auto;
     box-sizing: border-box;
     position: relative;
@@ -27,6 +29,7 @@
         #070f1e;
 }
 
+/* Regra (linha) no topo — alinha com o contentor do header */
 .frame::before {
     content: "";
     position: absolute;
@@ -37,13 +40,22 @@
     pointer-events: none;
 }
 
+/* Quando o footer cola ao bloco de cima, sobe 1px como no resto do site */
 .flushTop .frame {
     margin-top: calc(-1 * var(--rule-thickness) - 1px);
 }
 
+/* Strips auxiliares com a MESMA largura efetiva */
 .strip {
-    inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
+    inline-size: min(100%, var(--content-w-effective));
     margin-inline: auto;
     box-sizing: border-box;
     border-top: var(--rule-thickness) solid rgba(199, 134, 21, 0.35);
+}
+
+/* Mobile — continua SEM padding lateral no wrapper */
+@media (max-width: 640px) {
+    .footerWrap {
+        padding-inline: 0;
+    }
 }

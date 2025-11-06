@@ -1,10 +1,11 @@
 /* src/brands/travel/components/PartnerHotelsSection/PartnerHotelsHeadline.module.css */
 .wrap {
-    inline-size: var(--content-w-effective);
+ 
     margin-inline: auto;
     /* controla a aproximação ao grid seguinte (se estiveres a usar) */
     --band-overlap: clamp(12px, 1.6vw, 16px);
     margin-block-end: var(--band-overlap);
+    
 }
 
 /* Sub-headline que aparece por baixo do título, dentro do <p.lead> */

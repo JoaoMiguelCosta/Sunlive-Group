@@ -157,7 +157,7 @@ export const travelBrand = {
           summary:
             "Experiências culturais e turísticas personalizadas com guias especializados e roteiros únicos.",
           includesLabel: "Inclui:",
-          items: ["Guias", "Roteiros Personalizados", "Grupos", "Autênticas"],
+          items: ["Guias", "Roteiros Personalizados", "Grupos", " Experiências Autênticas"],
         },
         {
           key: "full-packages",
