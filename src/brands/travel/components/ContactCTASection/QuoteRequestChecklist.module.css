@@ -8,9 +8,7 @@
     --panel: #081426;
 }
 
-/* ===== Wrapper =====
-   👉 Variante B: este bloco herda a largura/gutter do .container da secção,
-   portanto fica a 100% e sem padding lateral extra. */
+/* ===== Wrapper ===== */
 .wrap {
     box-sizing: border-box;
     width: 100%;
@@ -36,6 +34,8 @@
 
 /* ===== Item ===== */
 .item {
+    position: relative;
+    /* overlay */
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: start;
@@ -45,65 +45,110 @@
     border-radius: 12px;
     padding: clamp(.65rem, 1.2vw, .85rem) clamp(.75rem, 1.4vw, 1rem);
     box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
-    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease,
+        background .18s ease;
     will-change: transform, box-shadow;
 }
 
-/* Hover/focus — estilo Travel (radial + gold glow via color-mix) */
+/* Overlay dourado (INTENSO) */
+.item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .18s ease;
+    background:
+        radial-gradient(160% 150% at 12% 0%,
+            color-mix(in oklab, var(--gold-400) 42%, transparent) 0%,
+            transparent 60%),
+        linear-gradient(180deg,
+            color-mix(in oklab, var(--gold-500) 26%, transparent) 0%,
+            transparent 40%);
+}
+
+/* ===== Hover/focus — GOLD+ legível ===== */
 .item:hover,
 .item:focus-visible {
     transform: translateY(-1px);
+    /* base mais escura para dar contraste ao ouro */
     background:
-        radial-gradient(120% 120% at 15% 10%, color-mix(in srgb, var(--accent-500) 16%, transparent) 0%, transparent 62%),
-        linear-gradient(180deg, color-mix(in srgb, var(--gold-500) 24%, transparent) 0%, transparent 100%);
+        linear-gradient(180deg,
+            color-mix(in oklab, #0a1322 85%, black 15%) 0%,
+            color-mix(in oklab, #071226 90%, black 10%) 100%),
+        /* glaze com ouro mais presente */
+        linear-gradient(180deg,
+            color-mix(in oklab, var(--gold-500) 46%, #0a1322 54%) 0%,
+            color-mix(in oklab, var(--gold-500) 22%, #0a1322 78%) 65%,
+            transparent 100%);
+    border-color: color-mix(in oklab, var(--gold-500) 58%, #000 42%);
     box-shadow:
-        0 0 0 1px color-mix(in srgb, var(--gold-500) 40%, transparent),
-        0 8px 22px rgba(0, 0, 0, .28);
-    border-color: rgba(255, 255, 255, .12);
+        0 0 0 3px color-mix(in oklab, var(--gold-400) 64%, transparent),
+        0 12px 26px rgba(0, 0, 0, .42),
+        inset 0 1px 0 rgba(255, 255, 255, .06);
     outline: none;
 }
 
-/* Fallback para browsers sem color-mix */
-@supports not (color: color-mix(in srgb, #000 0%, #000 0%)) {
+.item:hover::after,
+.item:focus-visible::after {
+    opacity: 1;
+}
+
+/* ===== Fallback (sem color-mix) ===== */
+@supports not (color: color-mix(in oklab, white, black)) {
 
     .item:hover,
     .item:focus-visible {
         background:
-            radial-gradient(120% 120% at 15% 10%, rgba(46, 167, 224, .16) 0%, transparent 62%),
-            linear-gradient(180deg, rgba(161, 98, 7, .24) 0%, transparent 100%);
+            linear-gradient(180deg, #0a1322 0%, #071226 100%),
+            linear-gradient(180deg, rgba(161, 98, 7, .46) 0%, rgba(161, 98, 7, .22) 65%, transparent 100%);
+        border-color: rgba(161, 98, 7, .68);
         box-shadow:
-            0 0 0 1px rgba(161, 98, 7, .40),
-            0 8px 22px rgba(0, 0, 0, .28);
+            0 0 0 3px rgba(199, 134, 21, .64),
+            0 12px 26px rgba(0, 0, 0, .42),
+            inset 0 1px 0 rgba(255, 255, 255, .06);
+    }
+
+    .item::after {
+        background:
+            radial-gradient(160% 150% at 12% 0%, rgba(199, 134, 21, .42), transparent 60%),
+            linear-gradient(180deg, rgba(161, 98, 7, .26) 0%, transparent 40%);
     }
 }
 
-/* círculo dourado como marcador */
+/* ===== Bullet ===== */
 .bullet {
     width: .66rem;
     height: .66rem;
     border-radius: 999px;
     background: radial-gradient(circle at 30% 30%, var(--gold-400), var(--gold-500));
-    box-shadow: 0 0 0 2px rgba(199, 134, 21, .15), 0 0 18px rgba(199, 134, 21, .35);
+    box-shadow:
+        0 0 0 2px rgba(199, 134, 21, .18),
+        0 0 22px rgba(199, 134, 21, .45);
     margin-top: .2rem;
     transition: box-shadow .18s ease, transform .18s ease;
 }
 
-/* bullet ganha brilho no hover/focus do item */
+/* bullet reage ao hover */
 .item:hover .bullet,
 .item:focus-visible .bullet {
     box-shadow:
-        0 0 0 2px rgba(199, 134, 21, .22),
-        0 0 28px rgba(199, 134, 21, .55);
-    transform: scale(1.05);
+        0 0 0 2px rgba(199, 134, 21, .26),
+        0 0 32px rgba(199, 134, 21, .65);
+    transform: scale(1.06);
 }
 
+/* ===== Label ===== */
 .label {
     color: var(--text, #e1e8f5);
     font-size: clamp(.96rem, 1.05vw, 1.02rem);
     line-height: 1.35;
 }
 
-/* Respeita utilizadores com redução de movimento */
+/* ===== Reduce Motion ===== */
 @media (prefers-reduced-motion: reduce) {
 
     .item,

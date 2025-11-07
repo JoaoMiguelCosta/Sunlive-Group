@@ -1,14 +1,25 @@
+/* =========================================================
+   Destination / Partner Cards — Travel (cores + efeitos)
+   (Dimensões inalteradas)
+   ========================================================= */
+
 /* ===== Tokens base (Prestige Noir + Liquid Gold + Travel) ===== */
 :root {
     --gold-400: var(--sl-gold-400, #C78615);
     --gold-500: var(--sl-gold-500, #A16207);
     --accent-500: var(--sl-accent-500, #2EA7E0);
+
     --text-strong: #eef3fb;
     --text: #e1e8f5;
     --muted: #c8d0dc;
+
     --panel: #081426;
     --panel-2: #0b172d;
     --shadow: rgba(0, 0, 0, .35);
+
+    /* aneis e brilhos */
+    --ring-outer: color-mix(in oklab, var(--gold-400) 50%, transparent);
+    --ring-inner: rgba(255, 255, 255, .06);
 }
 
 /* ===== Cartão ===== */
@@ -17,7 +28,9 @@
     display: grid;
     grid-template-rows: auto auto 1fr;
     /* imagem | título | corpo */
-    background: linear-gradient(180deg, rgba(8, 20, 38, .88), rgba(5, 12, 24, .96));
+    background:
+        radial-gradient(140% 120% at 50% -10%, rgba(46, 167, 224, .10), transparent 58%),
+        linear-gradient(180deg, rgba(8, 20, 38, .92), rgba(5, 12, 24, .98));
     border: 1px solid rgba(255, 255, 255, .06);
     border-radius: 12px;
     overflow: hidden;
@@ -52,7 +65,9 @@
     font-size: clamp(.72rem, .9vw, .82rem);
     font-weight: 600;
     letter-spacing: .2px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, .35), inset 0 0 0 1px rgba(255, 255, 255, .12);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .12),
+        0 6px 14px rgba(0, 0, 0, .35);
 }
 
 /* ===== Barra de título ===== */
@@ -100,30 +115,30 @@
     gap: .9rem;
     padding: clamp(.9rem, 1.6vw, 1.2rem);
     color: var(--text);
-        box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
-                0 18px 38px rgba(0, 0, 0, .32);
-        
-            background: var(--sl-navy-900, #020a20);
-
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .04),
+        0 18px 38px rgba(0, 0, 0, .32);
+    background:
+        radial-gradient(120% 120% at 50% 120%, rgba(0, 0, 0, .14), transparent 58%),
+        var(--sl-navy-900, #020a20);
 }
 
-/* Resumo com clamp */
+/* Resumo com clamp — ALTURA EXATA */
 .summary {
     --_lines: var(--card-summary-lines, 3);
-    line-height: var(--card-summary-lh, 1.45);
+    --_lh: var(--card-summary-lh, 1.45);
+    line-height: var(--_lh);
     font-size: clamp(.95rem, 1.1vw, 1.06rem);
     margin: 0;
     color: var(--text-strong);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
-            0 18px 38px rgba(0, 0, 0, .32);
-    
-        background: var(--sl-navy-900, #020a20);
+    background: transparent;
     padding: .2rem 0 .4rem;
     display: -webkit-box;
     -webkit-line-clamp: var(--_lines);
     -webkit-box-orient: vertical;
     overflow: hidden;
-    min-height: calc(var(--_lines) * 1em * var(--card-summary-lh, 1.45));
+    min-height: calc(var(--_lines) * 1em * var(--_lh));
+    max-height: calc(var(--_lines) * 1em * var(--_lh));
 }
 
 /* Duração (ícone relógio) */
@@ -180,6 +195,7 @@
     padding: 0;
 }
 
+/* Pill base — navy com aro dourado, leve banho de accent */
 .hlPill {
     display: inline-flex;
     align-items: center;
@@ -188,10 +204,12 @@
     font-size: clamp(.8rem, .95vw, .92rem);
     color: #fff;
     background:
-        linear-gradient(180deg, rgba(46, 167, 224, .18), rgba(46, 167, 224, .06)),
-        linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0));
+        linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
+        linear-gradient(180deg, rgba(12, 20, 44, .92), rgba(5, 9, 26, .98));
     border: 1.5px solid color-mix(in oklab, var(--gold-400) 75%, #000 25%);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 6px 16px rgba(0, 0, 0, .28);
+    box-shadow:
+        inset 0 0 0 1px var(--ring-inner),
+        0 6px 16px rgba(0, 0, 0, .28);
     white-space: nowrap;
 }
 
@@ -206,58 +224,50 @@
     }
 }
 
-/* ===== Interações (pills) ===== */
+/* ===== Interações (pills) — HOVER BEM VISÍVEL ===== */
 .hlPill {
-    transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .06s ease;
+    transition:
+        background .18s ease,
+        border-color .18s ease,
+        box-shadow .18s ease,
+        transform .06s ease,
+        color .12s ease;
 }
 
+/* Variante forte (sheen dourado + wash azul Travel) */
 .hlPill:hover,
 .hlPill:focus-visible {
-    --pill-mix: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 73%, var(--sl-gold-400, #C78615) 27%);
-    --pill-mix-dk: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 58%, var(--sl-gold-400, #C78615) 42%);
-    background: linear-gradient(180deg, var(--pill-mix) 0%, color-mix(in oklab, var(--pill-mix-dk) 88%, black 12%) 100%);
-    border-color: color-mix(in oklab, var(--sl-gold-400, #C78615) 78%, #000 22%);
     color: #fff;
-    text-shadow: none;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 10px 18px rgba(0, 0, 0, .32), 0 0 0 2px color-mix(in oklab, var(--sl-gold-400, #C78615) 55%, transparent);
+    background:
+        linear-gradient(180deg, rgba(199, 134, 21, .10), rgba(199, 134, 21, 0) 22%),
+        radial-gradient(160% 140% at 50% 0%, rgba(46, 167, 224, .28), transparent 62%),
+        radial-gradient(120% 120% at 50% 120%, rgba(0, 0, 0, .16), transparent 58%),
+        linear-gradient(180deg, rgba(12, 20, 44, .96), rgba(5, 9, 26, .98));
+    border-color: color-mix(in oklab, var(--gold-400) 86%, #000 14%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .08),
+        0 12px 22px rgba(0, 0, 0, .32),
+        0 0 0 2px var(--ring-outer);
     outline: none;
+    transform: translateY(-1px);
 }
 
-.incPill:hover,
-.incPill:focus-visible,
-.includes .pill:hover,
-.includes .pill:focus-visible {
-    --pill-mix: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 73%, var(--sl-gold-400, #C78615) 27%);
-    --pill-mix-dk: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 58%, var(--sl-gold-400, #C78615) 42%);
-    background: linear-gradient(180deg, var(--pill-mix) 0%, color-mix(in oklab, var(--pill-mix-dk) 88%, black 12%) 100%);
-    border-color: color-mix(in oklab, var(--sl-gold-400, #C78615) 78%, #000 22%);
-    color: #fff;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 10px 18px rgba(0, 0, 0, .32), 0 0 0 2px color-mix(in oklab, var(--sl-gold-400, #C78615) 55%, transparent);
-    outline: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    .hlPill,
-    .incPill,
-    .includes .pill {
-        transition: none;
-    }
-}
-
-/* ===========================================================
-   MOVIMENTO — international + domestic + hotel + partner
-   =========================================================== */
+/* ===== MOVIMENTO (cartões) — coerente com Travel ===== */
 .card[data-variant="international"],
 .card[data-variant="domestic"],
 .card[data-variant="hotel"],
 .card[data-variant="partner"] {
     --intl-raise-y: -4px;
     --intl-scale: 1.012;
-    --intl-shadow: 0 14px 28px rgba(0, 0, 0, .38), 0 0 0 1px rgba(255, 255, 255, .05);
+    --intl-shadow:
+        0 14px 28px rgba(0, 0, 0, .38),
+        0 0 0 1px rgba(255, 255, 255, .05);
     --intl-zoom: 1.06;
     --intl-pan-y: -1.5%;
-    transition: transform .24s cubic-bezier(.2, .7, .2, 1), box-shadow .24s ease, outline-color .2s ease;
+    transition:
+        transform .24s cubic-bezier(.2, .7, .2, 1),
+        box-shadow .24s ease,
+        outline-color .2s ease;
     will-change: transform, box-shadow;
 }
 
@@ -320,11 +330,6 @@
 
 .card[data-variant="partner"] .imageWrap::after {
     content: none;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
-            0 18px 38px rgba(0, 0, 0, .32);
-    
-        background: var(--sl-navy-900, #020a20);
-
 }
 
 @media (hover:hover) {
@@ -357,14 +362,14 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent 0%, color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 28%, transparent) 40%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 28%, transparent) 42%, transparent 100%);
     opacity: 0;
     z-index: -1;
     transition: opacity .28s ease;
 }
 
 .card[data-variant="hotel"] .titleBar::before {
-    background: linear-gradient(90deg, transparent 0%, color-mix(in oklab, var(--gold-400) 38%, transparent) 45%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, color-mix(in oklab, var(--gold-400) 36%, transparent) 46%, transparent 100%);
 }
 
 @media (hover:hover) {
@@ -437,7 +442,7 @@
     }
 }
 
-/* Foco visível */
+/* Foco visível (teclado) */
 .card[data-variant="international"]:focus-within,
 .card[data-variant="domestic"]:focus-within,
 .card[data-variant="hotel"]:focus-within,
@@ -457,6 +462,7 @@
     --pill-fs: clamp(.9rem, 1vw, 1rem);
     --pill-pad-y: .48rem;
     --pill-pad-x: .82rem;
+
     display: inline-flex;
     align-items: center;
     gap: .5rem;
@@ -466,13 +472,16 @@
     font-size: var(--pill-fs);
     color: #fff;
     text-decoration: none;
+
     border: 1.5px solid var(--gold-400);
     background:
         linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
         linear-gradient(180deg,
             color-mix(in oklab, var(--gold-500) 16%, #000 84%),
             color-mix(in oklab, var(--gold-500) 10%, #000 90%));
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06), 0 6px 14px rgba(0, 0, 0, .28);
+    box-shadow:
+        inset 0 0 0 1px var(--ring-inner),
+        0 6px 14px rgba(0, 0, 0, .28);
     transition: transform .06s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease;
 }
 
@@ -482,7 +491,7 @@
     box-shadow:
         inset 0 0 0 1px rgba(255, 255, 255, .08),
         0 10px 18px rgba(0, 0, 0, .36),
-        0 0 0 2px color-mix(in oklab, var(--gold-400) 50%, transparent);
+        0 0 0 2px var(--ring-outer);
 }
 
 .ctaButton:active {
@@ -499,36 +508,29 @@
     opacity: .9;
 }
 
-/* ===== Variant: partner (logos) — CENTRADO + ESTILO TRAVEL ===== */
-/* Largura controlada do cartão + centrado na coluna/grid */
+/* ===== Variant: partner (logos) — centrado ===== */
 .card[data-variant="partner"] {
     inline-size: clamp(340px, 28vw, 440px);
     margin-inline: auto;
 }
 
-/* Em ecrãs muito pequenos, pode ocupar 100% até ao máximo definido */
 @media (max-width: 719px) {
     .card[data-variant="partner"] {
         inline-size: min(100%, 440px);
     }
 }
 
-/* Canvas da imagem do parceiro (logo centrado) — fundo “Travel” */
 .card[data-variant="partner"] .imageWrap {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* camadas: glow azul + navy vertical + padrão diagonal subtil */
-background-color: var(--sl-body-bg);
-
+    background-color: var(--sl-body-bg);
     aspect-ratio: var(--card-img-ratio, 16 / 9);
     padding: clamp(10px, 2.6vw, 22px);
     border-bottom: 1px solid rgba(255, 255, 255, .06);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
 }
 
-/* O logo respeita proporção; ocupa até X% do canvas */
 .card[data-variant="partner"] .image {
     width: auto;
     height: auto;
@@ -540,8 +542,16 @@ background-color: var(--sl-body-bg);
     filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .25));
 }
 
-/* Barra de título para partner (dourado consistente) */
 .card[data-variant="partner"] .titleBar {
     background: var(--sl-gold-500, #A16207);
     border-block: 1px solid rgba(0, 0, 0, .4);
+}
+
+/* ===== Micro-estabilização ≥1536px ===== */
+@media (min-width: 1536px) {
+    .card {
+        contain: layout paint;
+    }
+
+    /* evita variações sub-píxel entre colunas */
 }

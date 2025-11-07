@@ -6,9 +6,6 @@
   width: 100%;
   isolation: isolate;
 
-  /* não precisas do _inset aqui, já não o usamos para a largura */
-  /* --_inset: var(--section-inset, clamp(16px, 3.5vw, 44px)); */
-
   /* 👇 LARGURA IGUAL À DAS SECÇÕES (sem subtrair inset) */
   --content-w-effective: min(var(--sl-container-lg, 1152px), 100%);
 
@@ -19,4 +16,8 @@
   /* Margens compactas do header */
   --headline-mt: clamp(6px, 0.8vw, 10px);
   --headline-mb: clamp(6px, 1vw, 10px);
+
+  /* === NOVO: gap consistente para os cards (igual aos Hotéis) === */
+  --cards-gap-top: clamp(12px, 1.6vw, 16px);
+  margin-block-end: var(--cards-gap-top);
 }

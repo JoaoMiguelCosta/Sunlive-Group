@@ -70,9 +70,7 @@ export default function TravelLinkDirectory({ data }) {
                         className={`${styles.pill} ${disabled ? styles.disabled : ""}`}
                       >
                         <span
-                          className={`${styles.pillContent} ${
-                            isInternational ? styles.intl : ""
-                          }`}
+                          className={`${styles.pillContent} ${isInternational ? styles.intl : ""}`}
                         >
                           {/* Bandeira apenas na coluna Internacional, fixa à esquerda */}
                           {FlagIcon ? (
@@ -116,7 +114,7 @@ export default function TravelLinkDirectory({ data }) {
                   ({ key, label, disabled }) => (
                     <PillLink
                       key={key}
-                      href={`/sunlive-group/travel#hoteis-parceiros`}
+                      href={`/sunlive-group/travel#parceiros-hoteis`}
                       disabled={disabled}
                       onSmartClick={toTravel}
                       className={`${styles.pill} ${styles.partnerPill} ${

@@ -37,6 +37,7 @@
     inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
     margin-inline: auto;
     box-sizing: border-box;
+    padding-inline: var(--line-inset);
 
     display: flex;
     align-items: center;
@@ -332,6 +333,7 @@
         overflow: visible;
     }
 }
+
 /* =======================================================
    Variant: Logos Header
    ======================================================= */
@@ -350,4 +352,12 @@
     align-items: center;
     gap: var(--ub-gap, .75rem);
     min-width: 0;
+}
+
+@media (max-width: 400px) {
+
+    .utilityBar[data-variant="travel-header"] .left,
+    .utilityBar[data-variant="travel-header"] .right {
+        padding-inline: 6px;
+    }
 }

@@ -1,4 +1,3 @@
-// src/shared/ui/CTAButton/index.jsx
 import styles from "./CTAButton.module.css";
 
 /* Hooks (rota certa a partir de shared/ui/CTAButton) */
@@ -14,6 +13,7 @@ import useLocalSmoothAnchors from "../hooks/useLocalSmoothAnchors.js";
  *  - compact?: "auto" | true | false // default: "auto"
  *  - Icon?: React.FC                 // opcional (ícone à esquerda)
  *  - scrollOffset?: number           // default: 72 (desconto do header fixo)
+ *  - variant?: "default" | "hero"    // default: "hero" (máximo destaque)
  */
 export default function CTAButton({
   cta,
@@ -22,6 +22,7 @@ export default function CTAButton({
   compact = "auto",
   Icon,
   scrollOffset = 72,
+  variant = "hero",
 }) {
   if (!cta?.href) return null;
 
@@ -30,7 +31,7 @@ export default function CTAButton({
   const ariaLabel = cta.ariaLabel || cta.label || "Contactar";
 
   // Blink: 2s por ciclo (1s OFF + 1s ON)
-  const { on, bind } = useBlink({ cycleMs: 2000, disabled: !blink });
+ const { on, bind } = useBlink({ cycleMs: 1800, disabled: !blink });
 
   // Smooth anchors (mesma página)
   const { isSamePageHash } = useLocalSmoothAnchors();
@@ -78,6 +79,7 @@ export default function CTAButton({
 
   const classes = [styles.button];
   if (blink) classes.push(styles["button--blink"]);
+  if (variant === "hero") classes.push(styles["button--hero"]);
   if (className) classes.push(className);
 
   return (

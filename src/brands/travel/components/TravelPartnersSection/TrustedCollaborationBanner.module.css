@@ -13,17 +13,23 @@
 .wrapper {
     inline-size: min(100%, var(--content-w-effective));
     margin-inline: auto;
-    /* não dar padding-inline aqui para não desalinhar das outras secções */
 }
 
 /* ===== Corpo do banner ===== */
 .inner {
     position: relative;
     display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: clamp(1rem, 2.2vw, 2rem);
 
+    /* MOBILE por defeito: empilhado e centrado */
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "icon"
+        "text";
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+
+    gap: clamp(1rem, 2.2vw, 2rem);
     --icon-gap: clamp(1rem, 2.2vw, 2rem);
 
     padding: clamp(.9rem, 2.4vw, 1.25rem);
@@ -36,6 +42,7 @@
     background: var(--sl-navy-900, #020a20);
     color: var(--text-strong);
     isolation: isolate;
+    transition: background .22s ease, box-shadow .22s ease;
 }
 
 /* Linha dourada discreta no topo */
@@ -50,11 +57,11 @@
             transparent 24%);
     mask: linear-gradient(#000 0 34%, transparent 35%);
     opacity: .55;
-    /* NÃO redefinir --content-w-effective aqui. */
 }
 
 /* ===== Icon bubble ===== */
 .iconWrap {
+    grid-area: icon;
     position: relative;
     inline-size: clamp(46px, 6.4vw, 62px);
     block-size: clamp(46px, 6.4vw, 62px);
@@ -92,9 +99,11 @@
 
 /* ===== Texto ===== */
 .textBlock {
+    grid-area: text;
     min-width: 0;
     display: grid;
     gap: .25rem;
+    justify-items: center;
 }
 
 .title {
@@ -103,8 +112,9 @@
     letter-spacing: .2px;
     font-size: clamp(1.02rem, 2.1vw, 1.28rem);
     line-height: 1.15;
-    color: var(--text-strong);
-    text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+    /* dourado claro */
+    color: color-mix(in oklab, var(--gold-400) 68%, #fff 32%);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .45);
 }
 
 .subtitle {
@@ -115,32 +125,39 @@
     max-width: 78ch;
 }
 
-/* ===== Responsivo ===== */
-@media (max-width: 560px) {
+/* ===== Layout ≥561px: ÍCONE À ESQUERDA, APROXIMADO ===== */
+@media (min-width: 561px) {
     .inner {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        gap: .9rem;
-        --icon-gap: .9rem;
-        padding: clamp(1rem, 4vw, 1.25rem);
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-areas: "icon text";
+        column-gap: clamp(.6rem, 1.4vw, 1rem);
+        align-items: center;
+        justify-items: start;
+        text-align: left;
     }
 
     .iconWrap {
-        inline-size: 52px;
-        block-size: 52px;
+        justify-self: end;
+    }
+
+    .textBlock {
+        justify-items: start;
+    }
+}
+
+/* ===== Responsivo fino ===== */
+@media (max-width: 560px) {
+    .iconWrap {
         margin-block-end: var(--icon-gap);
     }
 
     .title {
         font-size: clamp(1.04rem, 5.4vw, 1.2rem);
-        line-height: 1.18;
-        text-align: center;
     }
 
     .subtitle {
         font-size: clamp(.94rem, 4.4vw, 1rem);
         max-width: 100%;
-        text-align: center;
     }
 
     .ring {
@@ -148,33 +165,10 @@
     }
 }
 
-@media (min-width: 561px) and (max-width: 768px) {
-    .inner {
-        grid-template-columns: auto minmax(0, 1fr);
-        column-gap: clamp(1.2rem, 3.2vw, 2rem);
-        row-gap: clamp(0.6rem, 1.6vw, 0.9rem);
-        --icon-gap: clamp(1.2rem, 3.2vw, 2rem);
-        padding: clamp(1.05rem, 3vw, 1.35rem);
-    }
-
-    .iconWrap {
-        margin-block-end: 0;
-    }
-
-    .subtitle {
-        max-width: 70ch;
-    }
-}
-
 @media (min-width: 769px) and (max-width: 1179px) {
     .inner {
         gap: clamp(1.1rem, 2.2vw, 1.6rem);
-        --icon-gap: clamp(1.1rem, 2.2vw, 1.6rem);
         padding: clamp(1.05rem, 2.6vw, 1.5rem);
-    }
-
-    .iconWrap {
-        margin-block-end: 0;
     }
 
     .title {
@@ -188,8 +182,7 @@
 
 @media (min-width: 1180px) {
     .inner {
-        gap: clamp(1.4rem, 2vw, 2.2rem);
-        --icon-gap: clamp(1.4rem, 2vw, 2.2rem);
+        gap: clamp(1.2rem, 1.8vw, 2rem);
         padding: clamp(1.15rem, 1.9vw, 1.75rem);
         border-radius: 16px;
     }
@@ -208,14 +201,12 @@
     }
 }
 
-/* ≥1536px: sem override de largura (mantém alinhamento) */
 @media (min-width: 1536px) {
     .subtitle {
         max-width: 68ch;
     }
 }
 
-/* ≥1920px: ajuste leve */
 @media (min-width: 1920px) {
     .inner {
         padding: clamp(1.2rem, 1.4vw, 1.8rem);
@@ -233,9 +224,32 @@
     }
 }
 
-/* Hover/Focus */
-@media (hover:hover) {
+/* =========================
+   Hover/Focus — MESMO efeito do Headline (ouro a 60%)
+   ========================= */
+@media (hover: hover) {
 
+    .inner:hover,
+    .inner:focus-visible {
+        background:
+            /* halo azul suave */
+            radial-gradient(120% 120% at 15% 10%,
+                color-mix(in srgb, var(--sl-accent-500, #2EA7E0) 14%, transparent) 0%,
+                transparent 62%),
+            /* lâmina dourada forte (60%) */
+            linear-gradient(180deg,
+                color-mix(in srgb, var(--sl-gold-500, #A16207) 60%, transparent) 0%,
+                transparent 100%),
+            /* base navy */
+            linear-gradient(180deg, rgba(12, 20, 44, .94), rgba(5, 9, 26, .98));
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .05),
+            0 22px 44px rgba(0, 0, 0, .34),
+            inset 0 0 0 1px color-mix(in srgb, var(--sl-gold-400, #C78615) 22%, transparent);
+        outline: none;
+    }
+
+    /* mantém os efeitos do ícone durante o hover/focus */
     .inner:hover .iconWrap,
     .inner:focus-within .iconWrap {
         border-color: color-mix(in oklab, var(--gold-400) 80%, #000 20%);
@@ -247,5 +261,21 @@
     .inner:hover .ring,
     .inner:focus-within .ring {
         box-shadow: 0 0 0 8px color-mix(in oklab, var(--accent-500) 22%, transparent);
+    }
+}
+
+/* Fallback sem color-mix */
+@supports not (color: color-mix(in oklab, white, black)) {
+
+    .inner:hover,
+    .inner:focus-visible {
+        background:
+            radial-gradient(120% 120% at 15% 10%, rgba(46, 167, 224, .14) 0%, transparent 62%),
+            linear-gradient(180deg, rgba(161, 98, 7, .60) 0%, transparent 100%),
+            linear-gradient(180deg, rgba(12, 20, 44, .94), rgba(5, 9, 26, .98));
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .05),
+            0 22px 44px rgba(0, 0, 0, .34),
+            inset 0 0 0 1px rgba(199, 134, 21, .22);
     }
 }

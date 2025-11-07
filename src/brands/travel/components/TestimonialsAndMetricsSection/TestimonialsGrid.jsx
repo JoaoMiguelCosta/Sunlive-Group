@@ -9,7 +9,7 @@ export default function TestimonialsGrid() {
   const items = travelBrand?.sections?.testimonialsAndMetrics?.testimonials;
   if (!items?.length) return null;
 
-  // usa o hook local (podes ajustar o tempo aqui)
+  // autoplay: 2.5s
   const { index, setIndex, onMouseEnter, onMouseLeave } = useSpotlightCycle(
     items.length,
     2500
@@ -20,7 +20,6 @@ export default function TestimonialsGrid() {
   const handleKeyDown = useCallback(
     (e) => {
       if (e.altKey || e.ctrlKey || e.metaKey) return;
-
       switch (e.key) {
         case "ArrowRight":
           e.preventDefault();
@@ -45,6 +44,9 @@ export default function TestimonialsGrid() {
     [items.length, setIndex]
   );
 
+  const goPrev = () => setIndex((i) => (i - 1 + items.length) % items.length);
+  const goNext = () => setIndex((i) => (i + 1) % items.length);
+
   return (
     <div
       ref={wrapRef}
@@ -56,25 +58,40 @@ export default function TestimonialsGrid() {
       role="region"
       aria-label="Testemunhos — usar setas esquerda/direita para navegar"
     >
-      {/* Dots em cima */}
-      <div className={styles.dots} role="tablist" aria-label="Testemunhos">
-        {items.map((_, i) => {
-          const active = i === index;
-          return (
-            <button
-              key={i}
-              type="button"
-              className={styles.dot}
-              data-active={active}
-              aria-label={`Ver testemunho ${i + 1}`}
-              aria-controls={`tcard-${i}`}
-              aria-current={active ? "true" : undefined}
-              onClick={() => setIndex(i)}
-            />
-          );
-        })}
+      {/* Controlo (setas + dots) */}
+      <div className={styles.controls}>
+        <button
+          type="button"
+          className={`${styles.arrowBtn} ${styles.prev}`}
+          aria-label="Testemunho anterior"
+          onClick={goPrev}
+        />
+        <div className={styles.dots} role="tablist" aria-label="Testemunhos">
+          {items.map((_, i) => {
+            const active = i === index;
+            return (
+              <button
+                key={i}
+                type="button"
+                className={styles.dot}
+                data-active={active}
+                aria-label={`Ver testemunho ${i + 1}`}
+                aria-controls={`tcard-${i}`}
+                aria-current={active ? "true" : undefined}
+                onClick={() => setIndex(i)}
+              />
+            );
+          })}
+        </div>
+        <button
+          type="button"
+          className={`${styles.arrowBtn} ${styles.next}`}
+          aria-label="Próximo testemunho"
+          onClick={goNext}
+        />
       </div>
 
+      {/* Cards */}
       <div className={styles.grid} role="list">
         {items.map((t, i) => {
           const active = i === index;

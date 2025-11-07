@@ -1,6 +1,5 @@
 /* ================================
-   PrimaryNav.module.css — completo
-   Pills “Performance Prestige”
+   PrimaryNav.module.css — atualizado
    ================================ */
 
 /* --- Estrutura --- */
@@ -12,7 +11,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: .9rem;
-    /* base; depois é afinado por clamps lá no fim */
     list-style: none;
     margin: 0;
     padding: 0;
@@ -131,14 +129,12 @@
     margin: 0;
     list-style: none;
     border-radius: 12px;
-    border: 1px solid color-mix(in oklab, var(--sl-gold-400, #C78615), black 60%);
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, 0)),
-        color-mix(in oklab, black 80%, var(--sl-accent-500, #2EA7E0) 4%);
-    box-shadow:
-        0 8px 26px rgba(0, 0, 0, .42),
-        inset 0 0 0 1px rgba(255, 255, 255, .04);
+
+    /* === ALINHADO AO MENU DE IDIOMAS === */
+    border: 1px solid rgba(255, 255, 255, .06);
+    background: rgba(15, 20, 30, .92);
     backdrop-filter: blur(6px);
+    box-shadow: 0 8px 26px rgba(0, 0, 0, .42);
 
     pointer-events: none;
     opacity: 0;
@@ -174,11 +170,13 @@
     /* alvo mínimo recomendado */
 }
 
+/* === HOVER/FOCUS IGUAL AO “PT Português” === */
 .subLink:hover,
 .subLink:focus-visible {
-    color: #fff;
-    background: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 22%, black);
+    color: var(--sl-accent-500, #2EA7E0);
+    background: rgba(255, 255, 255, .06);
     outline: none;
+    /* sem blur no item — o blur fica no painel */
 }
 
 /* --- Micro-ajuste quando o header quebra para 2 linhas --- */
@@ -227,7 +225,7 @@
     }
 }
 
-/* >>> Desktop “médio”: agora só entre 1026–1177px (antes começava em 910px) */
+/* >>> Desktop “médio”: agora só entre 1026–1177px */
 @media (min-width: 1026px) and (max-width: 1177px) {
     .navList {
         gap: .85rem;
@@ -303,8 +301,8 @@
 /* === Layout “bom” (grid 2x2) — agora só a partir de 1026px === */
 @media (min-width: 1026px) {
     .navList {
-        /* troca de flex → grid para controlar o arranjo */
         display: grid;
+        /* troca de flex → grid para controlar o arranjo */
         grid-template-columns: repeat(2, max-content);
         /* 2 colunas */
         grid-auto-rows: max-content;
@@ -318,10 +316,11 @@
         align-content: center;
     }
 
-    /* reset do flex dos itens quando estamos em grid */
     .navItem {
         flex: initial;
     }
+
+    /* reset do flex dos itens quando estamos em grid */
 }
 
 /* === Gap entre pills — contínuo (∈ [0.55rem, 1.15rem]) === */
@@ -332,4 +331,36 @@
 /* === Espaço entre texto e chevron dentro do pill (∈ [.42,.60]) === */
 .navLink {
     --pill-gap: clamp(.42rem, 0.8vw, .60rem);
+}
+
+/* MOBILE LOCK — manter layout de ~381px para baixo */
+@media (max-width: 560px) {
+    .navList {
+        /* igual ao bloco 561–1025 */
+        justify-content: center;
+        gap: .7rem;
+        flex-wrap: wrap;
+        overflow: visible !important;
+    }
+
+    .navLink {
+        --pill-fs: .96rem;
+        --pill-pad-y: .48rem;
+        --pill-pad-x: .85rem;
+        --pill-min: 40px;
+        --pill-gap: .52rem;
+    }
+
+    .chev {
+        width: 11.5px;
+        height: 5.75px;
+    }
+
+    /* dropdown centrado, sem desvio extra */
+    .navItem[data-has-submenu] .submenu {
+        left: 50%;
+        transform: translate(-50%, 0);
+        /* antes tinhas -70% */
+        width: clamp(240px, calc(100% + 12px), calc(100vw - 2 * var(--line-inset, 16px)));
+    }
 }

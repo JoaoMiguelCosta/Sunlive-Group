@@ -394,7 +394,7 @@
 
     /* cada coluna ocupa largura confortável e fica centrada */
     .col {
-        width: min(92vw, 520px);
+       
         margin-inline: auto;
         align-items: center;
         /* centra títulos/linhas pequenas */

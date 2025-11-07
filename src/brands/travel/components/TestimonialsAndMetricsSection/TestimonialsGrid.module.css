@@ -1,49 +1,121 @@
-/* O recuo/limite é aplicado no .gridBlock (secção).
-   Aqui o wrapper fica a 100% para não somar recuos. */
+/* ===== Tokens locais ===== */
+:root {
+    --gold-400: var(--sl-gold-400, #C78615);
+    --gold-500: var(--sl-gold-500, #A16207);
+    --accent-500: var(--sl-accent-500, #2EA7E0);
+    --navy-900: var(--sl-navy-900, #0A1322);
+}
+
+/* Wrapper (herda largura da secção/pai) */
 .wrap {
     box-sizing: border-box;
     width: 100%;
     margin-inline: auto;
-    
-}
-
-/* ===== Acessibilidade: foco do wrapper ===== */
-.wrap:focus {
     outline: none;
 }
 
 .wrap:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--sl-gold-400, #C78615) 70%, #000 0%);
+    outline: 2px solid color-mix(in oklab, var(--gold-400) 70%, #000 0%);
     outline-offset: 4px;
     border-radius: 10px;
 }
 
-/* ===== Dots em cima ===== */
-.dots {
+/* ===== Controlo (setas + dots) ===== */
+.controls {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: clamp(6px, .8vw, 10px);
+    gap: clamp(10px, 1.6vw, 14px);
     margin-bottom: clamp(10px, 1.6vw, 14px);
 }
 
+/* ===== Setas — fundo dourado/laranja + chevron branco ===== */
+.arrowBtn {
+    -webkit-tap-highlight-color: transparent;
+    appearance: none;
+    cursor: pointer;
+
+    width: clamp(34px, 3.2vw, 38px);
+    height: clamp(34px, 3.2vw, 38px);
+    border-radius: 999px;
+    border: 1.5px solid color-mix(in oklab, var(--gold-400) 78%, #000 22%);
+    background:
+        radial-gradient(140% 160% at 50% 10%, rgba(255, 255, 255, .10), transparent 60%),
+        linear-gradient(180deg,
+            color-mix(in oklab, var(--gold-500) 78%, #000 22%),
+            color-mix(in oklab, var(--gold-500) 62%, #000 38%));
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .08),
+        0 8px 18px rgba(0, 0, 0, .30);
+
+    position: relative;
+    display: grid;
+    place-items: center;
+    transition: transform .12s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+/* Chevron (branco) */
+.arrowBtn::before {
+    content: "";
+    width: 11px;
+    height: 11px;
+    border-right: 2.25px solid #fff;
+    border-bottom: 2.25px solid #fff;
+    display: block;
+    transform: rotate(-45deg);
+    /* next (→) */
+}
+
+.prev::before {
+    transform: rotate(135deg);
+}
+
+/* prev (←) */
+
+.arrowBtn:hover {
+    transform: translateY(-1px);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, .10),
+        0 12px 24px rgba(0, 0, 0, .34);
+}
+
+.arrowBtn:focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--gold-400) 70%, #fff 30%);
+    outline-offset: 2px;
+}
+
+/* ===== Dots ===== */
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: clamp(8px, 1vw, 12px);
+}
+
+/* Inativos — azul Travel reforçado (como a barra do título) */
 .dot {
     -webkit-tap-highlight-color: transparent;
     appearance: none;
     border: none;
     cursor: pointer;
-    width: clamp(8px, .9vw, 10px);
-    height: clamp(8px, .9vw, 10px);
+
+    /* + ligeiramente maiores */
+    width: clamp(10px, 1.2vw, 12px);
+    height: clamp(10px, 1.2vw, 12px);
     border-radius: 999px;
-    background:
-        radial-gradient(circle at 50% 50%,
-            color-mix(in srgb, var(--sl-gold-400, #C78615) 85%, #000 0%) 0%,
-            color-mix(in srgb, var(--sl-gold-500, #A16207) 75%, #000 0%) 100%);
-    opacity: .45;
-    transition: opacity .2s ease, transform .2s ease;
+
+    box-shadow:
+            0 1px 0 rgba(255, 255, 255, .04) inset,
+            0 18px 38px rgba(0, 0, 0, .32);
+        background: var(--sl-navy-900, #1b316d);
+    opacity: .77;
+
+   
+
+    transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
 .dot:hover {
-    opacity: .8;
+    opacity: 1;
 }
 
 .dot:focus {
@@ -51,15 +123,23 @@
 }
 
 .dot:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--sl-gold-400, #C78615) 60%, transparent),
-        0 0 12px color-mix(in srgb, var(--sl-gold-400, #C78615) 55%, transparent);
-    transform: scale(1.15);
+    box-shadow:
+        0 0 0 3px color-mix(in oklab, var(--accent-500) 55%, transparent),
+        0 0 14px color-mix(in oklab, var(--accent-500) 55%, transparent);
+    transform: scale(1.12);
 }
 
+/* Ativo — ouro mais intenso + glow maior */
 .dot[data-active="true"] {
-    opacity: 1;
-    transform: scale(1.15);
-    box-shadow: 0 0 14px color-mix(in srgb, var(--sl-gold-400, #C78615) 55%, transparent);
+    transform: scale(1.22);
+    background:
+        radial-gradient(circle at 30% 30%,
+            color-mix(in oklab, var(--gold-400) 88%, #000 12%) 0%,
+            color-mix(in oklab, var(--gold-500) 78%, #000 22%) 100%);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, .35),
+        0 0 22px color-mix(in oklab, var(--gold-400) 60%, transparent),
+        inset 0 0 0 1px rgba(255, 255, 255, .18);
 }
 
 /* ===== Grid + spotlight ===== */
@@ -99,5 +179,15 @@
     box-shadow:
         0 10px 24px rgba(0, 0, 0, .35),
         0 0 0 1px rgba(255, 255, 255, .06),
-        0 0 40px color-mix(in srgb, var(--sl-gold-400, #C78615) 26%, transparent);
+        0 0 40px color-mix(in oklab, var(--gold-400) 26%, transparent);
+}
+
+/* Acessibilidade: reduzir animações */
+@media (prefers-reduced-motion: reduce) {
+
+    .dot,
+    .arrowBtn,
+    .item {
+        transition: none;
+    }
 }

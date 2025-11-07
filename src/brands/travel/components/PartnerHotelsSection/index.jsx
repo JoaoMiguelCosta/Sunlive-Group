@@ -12,6 +12,7 @@ export default function PartnerHotelsSection({ className = "" }) {
 
   return (
     <section
+    
       id={id}
       className={[styles.section, className].filter(Boolean).join(" ")}
       role="region"

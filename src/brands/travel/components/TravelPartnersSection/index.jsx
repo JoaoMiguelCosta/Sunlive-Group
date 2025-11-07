@@ -9,10 +9,9 @@ export default function TravelPartnersSection({ className = "" }) {
   const cfg = travelBrand?.sections?.travelPartners;
   if (!cfg) return null;
 
+  // usa o id vindo da config, com fallback sem sufixos
   const { id = "parceiros-viagens" } = cfg;
-  const sectionId = `${id}-section`;
 
-  // Tenta ler títulos/subtítulos da config; usa defaults do componente se não existirem
   const title =
     cfg?.headline?.title || cfg?.title || "Parceiros de Viagem Sunlive Travel";
   const subtitle =
@@ -22,16 +21,13 @@ export default function TravelPartnersSection({ className = "" }) {
 
   return (
     <section
-      id={sectionId}
+      id={id}
       className={[styles.section, className].filter(Boolean).join(" ")}
       role="region"
       aria-label="Parceiros de Viagem"
       data-theme="prestige-noir"
     >
-      {/* Banner Travel com ícone/halo (substitui o antigo Headline) */}
       <TrustedCollaborationBanner title={title} subtitle={subtitle} />
-
-      {/* Grelha de parceiros (DestinationCard variant="partner") */}
       <TravelPartnersCardsGrid />
     </section>
   );

@@ -89,7 +89,7 @@ export const travelBrand = {
       label: "Parceiros",
       // topo sem href → só abre submenu
       submenu: [
-        { key: "hoteis", label: "Hotéis", href: "#hoteis-parceiros" }, // <- atualizado
+        { key: "hoteis", label: "Hotéis", href: "#parceiros-hoteis" }, // <- atualizado
         { key: "viagens", label: "Viagens", href: "#parceiros-viagens" },
       ],
     },
@@ -144,9 +144,9 @@ export const travelBrand = {
             "Opções de estadia cuidadosamente selecionadas para garantir conforto, localização e uma experiência completa.",
           includesLabel: "Inclui:",
           items: [
-            "Hotéis Parceiros Selecionados",
-            "Localizações centrais ou tranquilas",
-            "Spa, piscina ou vistas únicas",
+            "Hotéis parceiros selecionados",
+            "Localizações centrais/tranquilas",
+            "Spa, piscina e vistas únicas",
             "Para grupos, famílias ou individuais",
           ],
         },
@@ -157,7 +157,12 @@ export const travelBrand = {
           summary:
             "Experiências culturais e turísticas personalizadas com guias especializados e roteiros únicos.",
           includesLabel: "Inclui:",
-          items: ["Guias", "Roteiros Personalizados", "Grupos", " Experiências Autênticas"],
+          items: [
+            "Guias",
+            "Roteiros Personalizados",
+            "Grupos",
+            " Experiências Autênticas",
+          ],
         },
         {
           key: "full-packages",
@@ -748,7 +753,7 @@ export const travelBrand = {
         // Blocos inferiores (linha divisória visual na UI)
         partners: {
           trips: {
-            title: "Viagens em colaboração com:",
+            title: "Viagens em colaboração",
             iconKeys: ["plane", "bus"],
             items: [
               {
@@ -764,7 +769,7 @@ export const travelBrand = {
             ],
           },
           hotels: {
-            title: "Alojamentos em colaboração com:",
+            title: "Alojamentos em colaboração",
             items: [
               {
                 key: "curia",

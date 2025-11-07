@@ -29,3 +29,13 @@
         padding-block: clamp(1rem, 5vw, 1.6rem);
     }
 }
+
+.section:focus {
+    outline: 0;
+}
+
+/* por segurança */
+.section:focus-visible {
+    box-shadow: none !important;
+    outline: 0 !important;
+}

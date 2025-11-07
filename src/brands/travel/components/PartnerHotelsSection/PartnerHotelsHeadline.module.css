@@ -1,20 +1,16 @@
-/* src/brands/travel/components/PartnerHotelsSection/PartnerHotelsHeadline.module.css */
+/* PartnerHotelsHeadline.module.css */
 .wrap {
- 
+    position: relative;
+    width: 100%;
+    inline-size: min(var(--sl-container-lg, 1152px), 100%);
     margin-inline: auto;
-    /* controla a aproximação ao grid seguinte (se estiveres a usar) */
-    --band-overlap: clamp(12px, 1.6vw, 16px);
-    margin-block-end: var(--band-overlap);
-    
-}
 
-/* Sub-headline que aparece por baixo do título, dentro do <p.lead> */
-.subhead {
-    display: inline-block;
-    font-weight: 700;
-    opacity: .9;
-    /* ligeiramente maior que o texto do parágrafo */
-    font-size: clamp(1.05rem, 1.9vw, 1.25rem);
-    color: color-mix(in oklab, var(--sl-platinum-100, #f6f7fb) 92%, var(--sl-gold-400, #C78615) 8%);
-    margin-bottom: .2rem;
+    /* controla a aproximação ao grid seguinte (mantém valores) */
+    --band-overlap: clamp(12px, 1.6vw, 16px);
+
+    /* === NOVO: alinhar nome da var com Internacionais === */
+    --cards-gap-top: var(--band-overlap);
+
+    /* usar a mesma variável para o espaçamento final */
+    margin-block-end: var(--cards-gap-top);
 }

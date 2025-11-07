@@ -34,25 +34,25 @@ export default function TravelPage() {
     acknowledgements: acknowledgements ?? groupFooter?.acknowledgements ?? null,
   };
 
-return (
-  <div className={styles.pageWrap}>
-    <main className={styles.inner}>
-      <div className={styles.sections}>
-        {/* Header pode ser <section> lá dentro ou <header>, aqui não embrulhamos */}
-        <TravelHeaderNav />
+  return (
+    <div className={`${styles.pageWrap} ${styles.page}`}>
+      <main className={styles.inner}>
+        <div className={styles.sections}>
+          {/* Header pode ser <section> lá dentro ou <header>, aqui não embrulhamos */}
+          <TravelHeaderNav />
 
-        {/* Cada um já devolve <section id="…"> */}
-        <LogisticsSolutionsSection />
-        <DomesticDestinationsSection />
-        <InternationalDestinationsSection />
-        <PartnerHotelsSection />
-        <TravelPartnersSection />
-        <TestimonialsAndMetricsSection />
-        <ContactCTASection />
-      </div>
-    </main>
+          {/* Cada um já devolve <section id="…"> */}
+          <LogisticsSolutionsSection />
+          <DomesticDestinationsSection />
+          <InternationalDestinationsSection />
+          <PartnerHotelsSection />
+          <TravelPartnersSection />
+          <TestimonialsAndMetricsSection />
+          <ContactCTASection />
+        </div>
+      </main>
 
-    <TravelFooter data={footerData} flushTop />
-  </div>
-);
+      <TravelFooter data={footerData} flushTop />
+    </div>
+  );
 }

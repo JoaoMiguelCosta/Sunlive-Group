@@ -11,6 +11,16 @@
     --line-inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
 }
 
+.section:focus {
+    outline: 0;
+}
+
+/* por segurança */
+.section:focus-visible {
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+
 /* breakpoints como já tinhas */
 @media (min-width: 641px) and (max-width: 1025px) {
     .section {

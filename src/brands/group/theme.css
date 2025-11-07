@@ -155,14 +155,7 @@ body::before {
     font-weight: 800;
 }
 
-/* Focus ring dourado consistente */
-:focus-visible {
-    box-shadow:
-        0 0 0 2px color-mix(in oklab, var(--sl-navy-900), transparent 20%),
-        0 0 0 4px color-mix(in oklab, var(--sl-gold-400), white 20%);
-    outline: 0;
-    border-radius: var(--sl-radius-sm);
-}
+
 
 /* ===== Utilitários ===== */
 .u-card-prestige {

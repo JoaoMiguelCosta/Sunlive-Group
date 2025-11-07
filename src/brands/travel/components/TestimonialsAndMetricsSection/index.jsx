@@ -12,7 +12,7 @@ import KeyMetricsBar from "./KeyMetricsBar.jsx";
  */
 export default function TestimonialsAndMetricsSection() {
   return (
-    <section className={styles.section} aria-label="Testemunhos e Métricas">
+    <section id = "testemunhos" className={styles.section} aria-label="Testemunhos e Métricas">
       <div className={styles.inner}>
         {/* Headline alinhada à mesma largura do banner/hotéis */}
         <div className={styles.headerRow}>
