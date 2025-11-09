@@ -1,35 +1,15 @@
-// src/brands/travel/components/TravelHeaderNav/PrimaryNav.jsx
 import { useRef, useState } from "react";
 import { useOutsideClick } from "../../../../shared/hooks/useOutsideClick.js";
 import useLocalSmoothAnchors from "../../../../shared/hooks/useLocalSmoothAnchors.js";
+import travelBrand from "../../ConfigTravel.jsx";
 import styles from "./PrimaryNav.module.css";
 
-function Chev() {
-  return (
-    <svg
-      className={styles.chev}
-      viewBox="0 0 12 6"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <path
-        d="M1 1l5 4 5-4"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
+/** Submenu */
 function Submenu({ items = [], onSelect, onAnchorClick }) {
   if (!items.length) return null;
 
   const handleSubClick = (e, href) => {
-    onAnchorClick?.(e, href, onSelect); // se for hash local → previne e faz smooth; depois fecha
-    // se não for hash local, a navegação normal prossegue
+    onAnchorClick?.(e, href, onSelect); // se for hash local → smooth + fecha
   };
 
   return (
@@ -50,7 +30,8 @@ function Submenu({ items = [], onSelect, onAnchorClick }) {
   );
 }
 
-function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick }) {
+/** Item */
+function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
   const hasSub = Array.isArray(item.submenu) && item.submenu.length > 0;
   const href = item.href || "#";
 
@@ -61,7 +42,6 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick }) {
       return;
     }
     onAnchorClick(e, href, onClose); // smooth se for hash local; fecha menus
-    // caso contrário (outra rota), deixa seguir navegação normal
   };
 
   return (
@@ -72,7 +52,14 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick }) {
     >
       <a href={href} className={styles.navLink} onClick={handleClick}>
         <span>{item.label}</span>
-        {hasSub && <Chev />}
+        {hasSub &&
+          (ChevIcon ? (
+            <ChevIcon className={styles.chev} aria-hidden="true" />
+          ) : (
+            <span className={styles.chev} aria-hidden="true">
+              ▾
+            </span>
+          ))}
       </a>
       {hasSub && (
         <Submenu
@@ -85,6 +72,7 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick }) {
   );
 }
 
+/** PrimaryNav */
 export default function PrimaryNav({ items = [] }) {
   const [openKey, setOpenKey] = useState(null);
   const navRef = useRef(null);
@@ -93,14 +81,13 @@ export default function PrimaryNav({ items = [] }) {
   useOutsideClick(navRef, () => setOpenKey(null), true);
 
   const { handleAnchorClick } = useLocalSmoothAnchors();
-
   if (!items.length) return null;
 
-  const toggleItem = (key) => {
-    setOpenKey((prev) => (prev === key ? null : key));
-  };
-
+  const toggleItem = (key) => setOpenKey((prev) => (prev === key ? null : key));
   const closeAll = () => setOpenKey(null);
+
+  // Ícone chevron vindo do config da brand
+  const ChevIcon = travelBrand?.icons?.chevronDown || null;
 
   return (
     <nav ref={navRef} className={styles.nav} aria-label="Navegação principal">
@@ -113,6 +100,7 @@ export default function PrimaryNav({ items = [] }) {
             onToggle={toggleItem}
             onClose={closeAll}
             onAnchorClick={handleAnchorClick}
+            ChevIcon={ChevIcon}
           />
         ))}
       </ul>

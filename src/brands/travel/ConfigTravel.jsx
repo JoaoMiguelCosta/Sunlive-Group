@@ -1,30 +1,49 @@
-// src/brands/travel/ConfigTravel.jsx
 import {
   IMG_COMMON,
   LANG_DEFAULT,
   withSocialIcons,
   makeDefaultCTA,
   makeFooterInfoHeader,
+  makePoliciesBar,
+  FLAGS,
+  ICONS,
+  makeBackLink, // 👈 novo
 } from "../../shared/config/BrandDefault.jsx";
 
-import {
-  PlaneIcon,
-  BusIcon,
-  PinIcon,
-  TourBusIcon,
-  PackageIcon,
-  PhoneIcon,
-  HandshakeIcon,
-  MailIcon,
-  StarIcon,
-  TravelVector,
-} from "../../shared/ui/icons/index.js";
-
 import logoTravel from "./assets/LogoSunliveTravel/travel.png";
+
+/* ===== Imagens — Destinos Internacionais ===== */
+import maltaImg from "./assets/InternationalDestinations/malta.png";
+import qatarImg from "./assets/InternationalDestinations/catar.png";
+import saudiImg from "./assets/InternationalDestinations/arabia.png";
+import kuwaitImg from "./assets/InternationalDestinations/kuwait.png";
+import brazilImg from "./assets/InternationalDestinations/brasil.png";
+
+/* ===== Imagens — Destinos Nacionais ===== */
+import aveiroImg from "./assets/DomesticDestinations/aveiro.png";
+import portoImg from "./assets/DomesticDestinations/porto.png";
+import lisboaImg from "./assets/DomesticDestinations/lisboa.png";
+import coimbraImg from "./assets/DomesticDestinations/coimbra.png";
+import sintraImg from "./assets/DomesticDestinations/sintra.png";
+import obidosImg from "./assets/DomesticDestinations/obidos.png";
+
+/* ===== Imagens — Hotéis Parceiros ===== */
+import curiaImg from "./assets/PartnerHotels/curia.png";
+import pateiraImg from "./assets/PartnerHotels/pateira.png";
+import estanciaImg from "./assets/PartnerHotels/estancia.png";
+import goldImg from "./assets/PartnerHotels/gold.png";
+import grandImg from "./assets/PartnerHotels/grand.png";
+
+/* ===== Imagens — Parceiros de Viagem ===== */
+import portugalissimoImg from "./assets/TravelPartners/portugalissimo.png";
+import vagoImg from "./assets/TravelPartners/vago.png";
 
 export const travelBrand = {
   id: "travel",
   title: "Sunlive Travel",
+
+  // 🔙 Back link partilhado (podes customizar o label/href aqui se precisares)
+  backLink: makeBackLink(), // { href: "/sunlive-group", label: "Voltar Sunlive Group" }
 
   logo: {
     src: logoTravel,
@@ -33,18 +52,30 @@ export const travelBrand = {
     ...IMG_COMMON,
   },
 
+  /* Ícones disponíveis para componentes (resolvidos via BrandDefault) */
   icons: {
-    plane: PlaneIcon,
-    bus: BusIcon,
-    pin: PinIcon,
-    "tour-bus": TourBusIcon,
-    package: PackageIcon,
-    phone: PhoneIcon,
-    handshake: HandshakeIcon,
-    mail: MailIcon,
-    // ⭐ disponível para componentes desta secção
-    star: StarIcon,
-    "rating-star": StarIcon,
+    plane: ICONS.PlaneIcon,
+    bus: ICONS.BusIcon,
+    pin: ICONS.PinIcon,
+    "tour-bus": ICONS.TourBusIcon,
+    package: ICONS.PackageIcon,
+    phone: ICONS.PhoneIcon,
+    handshake: ICONS.HandshakeIcon,
+    mail: ICONS.MailIcon,
+    star: ICONS.StarIcon,
+    "rating-star": ICONS.StarIcon,
+    travel: ICONS.TravelVector,
+    chevronDown: ICONS.ChevronDownIcon,
+    shield: ICONS.ShieldIcon,
+  },
+
+  /* Bandeiras disponíveis para componentes */
+  flags: {
+    malta: FLAGS.malta,
+    qatar: FLAGS.qatar,
+    kuwait: FLAGS.kuwait,
+    saudiArabia: FLAGS.saudiArabia,
+    brazil: FLAGS.brazil,
   },
 
   lang: LANG_DEFAULT,
@@ -70,7 +101,6 @@ export const travelBrand = {
     {
       key: "destinos",
       label: "Destinos",
-      // topo sem href → só abre submenu
       submenu: [
         {
           key: "destinos-nacionais",
@@ -87,9 +117,8 @@ export const travelBrand = {
     {
       key: "parceiros",
       label: "Parceiros",
-      // topo sem href → só abre submenu
       submenu: [
-        { key: "hoteis", label: "Hotéis", href: "#parceiros-hoteis" }, // <- atualizado
+        { key: "hoteis", label: "Hotéis", href: "#parceiros-hoteis" },
         { key: "viagens", label: "Viagens", href: "#parceiros-viagens" },
       ],
     },
@@ -209,7 +238,7 @@ export const travelBrand = {
             "Canais de Aveiro",
             "Costa Nova",
           ],
-          picture: { src: "", alt: "Canais de Aveiro com moliceiros" },
+          picture: { src: aveiroImg, alt: "Canais de Aveiro com moliceiros" },
         },
         {
           key: "porto",
@@ -222,7 +251,10 @@ export const travelBrand = {
             "Caves Vinho do Porto",
             "Ribeira",
           ],
-          picture: { src: "", alt: "Vista do Rio Douro e Ribeira do Porto" },
+          picture: {
+            src: portoImg,
+            alt: "Vista do Rio Douro e Ribeira do Porto",
+          },
         },
         {
           key: "lisboa",
@@ -237,7 +269,10 @@ export const travelBrand = {
             "Alfama",
             "Torre de Belém",
           ],
-          picture: { src: "", alt: "Elétrico amarelo a passar em Lisboa" },
+          picture: {
+            src: lisboaImg,
+            alt: "Elétrico amarelo a passar em Lisboa",
+          },
         },
         {
           key: "coimbra",
@@ -251,7 +286,7 @@ export const travelBrand = {
             "Fado de Coimbra",
             "Biblioteca Joanina",
           ],
-          picture: { src: "", alt: "Pátio da Universidade de Coimbra" },
+          picture: { src: coimbraImg, alt: "Pátio da Universidade de Coimbra" },
         },
         {
           key: "sintra",
@@ -265,7 +300,7 @@ export const travelBrand = {
             "Cabo da Roca",
             "Convento dos Capuchos",
           ],
-          picture: { src: "", alt: "Palácio da Pena em Sintra" },
+          picture: { src: sintraImg, alt: "Palácio da Pena em Sintra" },
         },
         {
           key: "obidos",
@@ -279,7 +314,7 @@ export const travelBrand = {
             "Rua Direita",
             "Ginjinha de Óbidos",
           ],
-          picture: { src: "", alt: "Muralhas e vistas de Óbidos" },
+          picture: { src: obidosImg, alt: "Muralhas e vistas de Óbidos" },
         },
       ],
       cta: makeDefaultCTA("Sunlive Travel"),
@@ -302,9 +337,10 @@ export const travelBrand = {
           badge: "Malta",
           badgeIcon: "pin",
           ratio: "4/3",
+          flagKey: "malta",
           summary:
             "Uma ilha encantadora no Mediterrâneo, com praias deslumbrantes, vilas históricas e clima agradável o ano todo.",
-          picture: { src: "", alt: "Vista de Valeta, Malta" },
+          picture: { src: maltaImg, alt: "Vista de Valeta, Malta" },
         },
         {
           key: "qatar",
@@ -313,9 +349,10 @@ export const travelBrand = {
           badge: "Catar",
           badgeIcon: "pin",
           ratio: "4/3",
+          flagKey: "qatar",
           summary:
             "Combina modernidade e tradição no coração do Golfo. Ideal para quem busca cultura e experiências únicas no deserto.",
-          picture: { src: "", alt: "Skyline de Doha, Catar" },
+          picture: { src: qatarImg, alt: "Skyline de Doha, Catar" },
         },
         {
           key: "saudi-arabia",
@@ -324,10 +361,11 @@ export const travelBrand = {
           badge: "Arábia Saudita",
           badgeIcon: "pin",
           ratio: "4/3",
+          flagKey: "saudiArabia",
           summary:
             "Tradição e modernidade no berço do Islão, com paisagens desérticas, cidades futuristas e rica herança cultural.",
           picture: {
-            src: "",
+            src: saudiImg,
             alt: "Arquitetura e arranha-céus na Arábia Saudita",
           },
         },
@@ -338,9 +376,10 @@ export const travelBrand = {
           badge: "Kuwait",
           badgeIcon: "pin",
           ratio: "4/3",
+          flagKey: "kuwait",
           summary:
             "Forte identidade cultural, museus, mercados tradicionais e vistas para o Golfo Pérsico.",
-          picture: { src: "", alt: "Skyline noturno de Kuwait City" },
+          picture: { src: kuwaitImg, alt: "Skyline noturno de Kuwait City" },
         },
         {
           key: "brazil",
@@ -349,10 +388,11 @@ export const travelBrand = {
           badge: "Brasil",
           badgeIcon: "pin",
           ratio: "4/3",
+          flagKey: "brazil",
           summary:
             "Diversidade em estado puro: praias tropicais, florestas, cidades vibrantes e uma cultura acolhedora e festiva.",
           picture: {
-            src: "",
+            src: brazilImg,
             alt: "Pão de Açúcar e Baía de Guanabara, Rio de Janeiro",
           },
         },
@@ -380,7 +420,7 @@ export const travelBrand = {
           summary:
             "Rodeado por natureza: spa, jardins, lago e experiências termais num ambiente relaxante.",
           href: "https://www.termasdacuria.com/",
-          picture: { src: "", alt: "Fachada do Hotel Termas da Curia" },
+          picture: { src: curiaImg, alt: "Fachada do Hotel Termas da Curia" },
         },
         {
           key: "pateira",
@@ -390,7 +430,7 @@ export const travelBrand = {
             "Junto à Lagoa da Pateira: belas vistas e uma estadia calma em contacto com a natureza.",
           href: "https://pateira.com/",
           picture: {
-            src: "",
+            src: pateiraImg,
             alt: "Vista para a lagoa e Estalagem da Pateira",
           },
         },
@@ -402,7 +442,7 @@ export const travelBrand = {
             "Ambiente familiar e tranquilo — simplicidade, conforto e boa localização.",
           href: "https://www.facebook.com/residencial.estancia/?locale=pt_PT",
           picture: {
-            src: "",
+            src: estanciaImg,
             alt: "Residencial Estância em Oliveira do Bairro",
           },
         },
@@ -413,7 +453,7 @@ export const travelBrand = {
           summary:
             "Hotel moderno com spa, piscina e restaurante — ideal para lazer ou negócios.",
           href: "https://www.ingoldhotel.pt/pt/Menu/Home.aspx",
-          picture: { src: "", alt: "In Gold Hotel & Spa em Águeda" },
+          picture: { src: goldImg, alt: "In Gold Hotel & Spa em Águeda" },
         },
         {
           key: "grand",
@@ -422,7 +462,7 @@ export const travelBrand = {
           summary:
             "Conforto e tradição junto às Termas do Luso, com spa, piscina olímpica e acesso direto às termas.",
           href: "https://www.hoteluso.com/pt/",
-          picture: { src: "", alt: "Grand Hotel de Luso à noite" },
+          picture: { src: grandImg, alt: "Grand Hotel de Luso à noite" },
         },
       ],
       cta: {
@@ -449,7 +489,7 @@ export const travelBrand = {
           summary:
             "Especialistas em turismo e imobiliário focados no estilo de vida português.",
           href: "https://www.portugalissimmo.com/",
-          picture: { src: "", alt: "Logótipo Portugalissimo" },
+          picture: { src: portugalissimoImg, alt: "Logótipo Portugalissimo" },
         },
         {
           key: "vago",
@@ -457,7 +497,7 @@ export const travelBrand = {
           summary:
             "Agência de viagens licenciada especializada em viagens autênticas e personalizadas.",
           href: "https://vagoviagens.pt/",
-          picture: { src: "", alt: "Logótipo Vago Viagens" },
+          picture: { src: vagoImg, alt: "Logótipo Vago Viagens" },
         },
       ],
       trustedBanner: {
@@ -603,13 +643,12 @@ export const travelBrand = {
     },
 
     /* =========================
-   Footer (Travel)
-   ========================= */
+       Footer (Travel)
+       ========================= */
     footer: {
-      // 1) InfoHeader — normalizado via helper (estrutura + defaults)
       infoHeader: makeFooterInfoHeader("travel", {
         brand: {
-          Icon: TravelVector,
+          Icon: ICONS.TravelVector,
           title: "Sunlive Travel",
           tagline: "Transformando viagens em experiências memoráveis.",
           about:
@@ -650,10 +689,8 @@ export const travelBrand = {
             },
           ]),
         },
-        // options: { keepOriginalAboutFirstLine: true } // opcional
       }),
 
-      // 2) LinkDirectory — 3 colunas + blocos de parceiros (mesma pill UI)
       linkDirectory: {
         left: {
           columns: [
@@ -724,33 +761,37 @@ export const travelBrand = {
                   key: "malta",
                   label: "Malta",
                   href: "#destinos-internacionais-malta",
+                  flagKey: "malta",
                 },
                 {
                   key: "qatar",
                   label: "Catar",
                   href: "#destinos-internacionais-qatar",
+                  flagKey: "qatar",
                 },
                 {
                   key: "saudi-arabia",
                   label: "Arábia Saudita",
                   href: "#destinos-internacionais-saudi-arabia",
+                  flagKey: "saudiArabia",
                 },
                 {
                   key: "kuwait",
                   label: "Kuwait",
                   href: "#destinos-internacionais-kuwait",
+                  flagKey: "kuwait",
                 },
                 {
                   key: "brazil",
                   label: "Brasil",
                   href: "#destinos-internacionais-brazil",
+                  flagKey: "brazil",
                 },
               ],
             },
           ],
         },
 
-        // Blocos inferiores (linha divisória visual na UI)
         partners: {
           trips: {
             title: "Viagens em colaboração",
@@ -801,23 +842,10 @@ export const travelBrand = {
         },
       },
 
-      // 3) Acknowledgements & PoliciesBar — UI igual ao Group
       acknowledgements: undefined,
-      policiesBar: {
-        links: [
-          { key: "privacy", label: "Política e Privacidade", href: "/privacy" },
-          { key: "terms", label: "Termos de Utilização", href: "/terms" },
-          { key: "cookies", label: "Cookies", href: "/cookies" },
-          {
-            key: "complaints",
-            label: "Livro de Reclamações",
-            href: "/complaints",
-          },
-        ],
-        copyright: { holder: "Sunlive Travel" },
-      },
-    }, // <-- fecha footer
-  }, // <-- fecha sections
-}; // <-- fecha travelBrand
+      policiesBar: makePoliciesBar({ holder: "Sunlive Travel" }),
+    },
+  },
+};
 
 export default travelBrand;

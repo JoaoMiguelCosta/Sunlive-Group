@@ -2,14 +2,6 @@
 import styles from "./TrustedCollaborationBanner.module.css";
 import travelBrand from "../../ConfigTravel.jsx";
 
-/* Ícones disponíveis (adiciona aqui mais se precisares) */
-import { ShieldIcon, HandshakeIcon } from "../../../../shared/ui/icons";
-
-const ICON_BY_KEY = {
-  handshake: HandshakeIcon,
-  shield: ShieldIcon,
-};
-
 export default function TrustedCollaborationBanner({
   title: titleProp = "Parceiros de Viagem Sunlive Travel",
   subtitle:
@@ -20,14 +12,19 @@ export default function TrustedCollaborationBanner({
   const Title = cfg?.title ?? titleProp;
   const Lead = cfg?.lead ?? subtitleProp;
 
+  // Ícones obtidos da brand (evita imports diretos no componente)
+  const icons = travelBrand?.icons || {};
+  const fallbackIcon = icons.shield || icons.handshake || null;
   const Icon =
-    (cfg?.iconKey && ICON_BY_KEY[cfg.iconKey.toLowerCase()]) || ShieldIcon;
+    (cfg?.iconKey && icons[cfg.iconKey]) ||
+    (cfg?.iconKey && icons[cfg.iconKey.toLowerCase?.()]) ||
+    fallbackIcon;
 
   return (
     <section className={[styles.wrapper, className].filter(Boolean).join(" ")}>
       <div className={styles.inner}>
         <div className={styles.iconWrap} aria-hidden="true">
-          <Icon className={styles.icon} />
+          {Icon ? <Icon className={styles.icon} /> : null}
           <span className={styles.ring} />
         </div>
 

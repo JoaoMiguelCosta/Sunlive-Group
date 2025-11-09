@@ -1,14 +1,10 @@
-// src/brands/group/components/SectionGroup/ContactsSection/RegionalOffices.jsx
 import styles from "./ContactsGrid.module.css";
 import OfficeItem from "./OfficeItem.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../../shared/hooks/useOpenFromHash.js";
 
-// Ícones partilhados (consistentes com BusinessUnits)
-import {
-  MailIcon as MailIcon,
-  PhoneIcon as PhoneIcon,
-} from "../../../../../shared/ui/icons/index.js";
+// Ícones vindos do Config (mantém consistência com BusinessUnits/GroupHub)
+import { contacts as groupContacts } from "../../../ConfigGroup.jsx";
 
 export default function RegionalOffices({ items = [] }) {
   const { isOpen, toggle } = useAccordion(items, { allowMultiple: true });
@@ -23,6 +19,10 @@ export default function RegionalOffices({ items = [] }) {
   });
 
   if (!items.length) return null;
+
+  // Ícones do config (fallbacks seguros)
+  const MailIcon = groupContacts?.icons?.Mail || (() => null);
+  const PhoneIcon = groupContacts?.icons?.Phone || (() => null);
 
   return (
     <div className={styles.grid} role="list" data-count={items.length}>

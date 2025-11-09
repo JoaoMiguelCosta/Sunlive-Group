@@ -1,19 +1,7 @@
-// src/brands/travel/components/TravelFooter/TravelLinkDirectory.jsx
 import styles from "./TravelLinkDirectory.module.css";
 import PillLink from "../../../../shared/components/FooterGroup/PillLink.jsx";
 import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
-
-/* Bandeiras */
-import { FLAGS } from "../../../../shared/config/BrandDefault.jsx";
-
-/* Bandeiras via FLAGS (todas as usadas) */
-const FLAG_ICON_BY_KEY = {
-  malta: FLAGS.malta,
-  qatar: FLAGS.qatar,
-  kuwait: FLAGS.kuwait,
-  "saudi-arabia": FLAGS.saudiArabia,
-  brazil: FLAGS.brazil,
-};
+import travelBrand from "../../ConfigTravel.jsx";
 
 export default function TravelLinkDirectory({ data }) {
   if (!data) return null;
@@ -38,6 +26,9 @@ export default function TravelLinkDirectory({ data }) {
     }
   };
 
+  // resolver de bandeira através do config da brand (evita import direto de FLAGS)
+  const resolveFlagIcon = (flagKey) => travelBrand?.flags?.[flagKey] || null;
+
   return (
     <section
       className={styles.sectionWrap}
@@ -57,38 +48,41 @@ export default function TravelLinkDirectory({ data }) {
                 )}
 
                 <div className={styles.colList}>
-                  {(col.items || []).map(({ key, label, disabled }) => {
-                    const FlagIcon =
-                      isInternational && key ? FLAG_ICON_BY_KEY[key] : null;
+                  {(col.items || []).map(
+                    ({ key, label, disabled, flagKey }) => {
+                      const FlagIcon = isInternational
+                        ? resolveFlagIcon(flagKey || key)
+                        : null;
 
-                    return (
-                      <PillLink
-                        key={key}
-                        href={`/sunlive-group/travel${colHash}`}
-                        disabled={disabled}
-                        onSmartClick={toTravel}
-                        className={`${styles.pill} ${disabled ? styles.disabled : ""}`}
-                      >
-                        <span
-                          className={`${styles.pillContent} ${isInternational ? styles.intl : ""}`}
+                      return (
+                        <PillLink
+                          key={key}
+                          href={`/sunlive-group/travel${colHash}`}
+                          disabled={disabled}
+                          onSmartClick={toTravel}
+                          className={`${styles.pill} ${disabled ? styles.disabled : ""}`}
                         >
-                          {/* Bandeira apenas na coluna Internacional, fixa à esquerda */}
-                          {FlagIcon ? (
-                            <span
-                              className={styles.flagWrap}
-                              aria-hidden="true"
-                            >
-                              <FlagIcon
-                                className={styles.flagSvg}
-                                focusable="false"
-                              />
-                            </span>
-                          ) : null}
-                          <span className={styles.pillLabel}>{label}</span>
-                        </span>
-                      </PillLink>
-                    );
-                  })}
+                          <span
+                            className={`${styles.pillContent} ${isInternational ? styles.intl : ""}`}
+                          >
+                            {/* Bandeira apenas na coluna Internacional, fixa à esquerda */}
+                            {FlagIcon ? (
+                              <span
+                                className={styles.flagWrap}
+                                aria-hidden="true"
+                              >
+                                <FlagIcon
+                                  className={styles.flagSvg}
+                                  focusable="false"
+                                />
+                              </span>
+                            ) : null}
+                            <span className={styles.pillLabel}>{label}</span>
+                          </span>
+                        </PillLink>
+                      );
+                    }
+                  )}
                 </div>
               </div>
             );

@@ -1,13 +1,9 @@
-// src/brands/group/components/SectionGroup/ContactsSection/GroupHub.jsx
 import styles from "./GroupHub.module.css";
 import useDisclosure from "../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../../shared/hooks/useOpenFromHash.js";
 
-// Ícones partilhados
-import {
-  MailIcon as Mail,
-  PhoneIcon as Phone,
-} from "../../../../../shared/ui/icons/index.js";
+// Ícones vindos do Config (evita imports diretos de SVG)
+import { contacts as groupContacts } from "../../../ConfigGroup.jsx";
 
 export default function GroupHub({ data }) {
   if (!data) return null;
@@ -26,6 +22,10 @@ export default function GroupHub({ data }) {
       if (key === "group" && !isOpen) toggle();
     },
   });
+
+  // Ícones do config (fallbacks seguros para não quebrar a UI)
+  const Mail = groupContacts?.icons?.Mail || (() => null);
+  const Phone = groupContacts?.icons?.Phone || (() => null);
 
   return (
     <div className={styles.wrap} id="unit-group">

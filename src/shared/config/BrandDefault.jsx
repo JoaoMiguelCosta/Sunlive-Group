@@ -8,6 +8,15 @@ import {
   PinIcon,
   CardIcon,
   ShieldIcon,
+  // usados em Travel/Footers
+  PlaneIcon,
+  BusIcon,
+  TourBusIcon,
+  PackageIcon,
+  HandshakeIcon,
+  StarIcon,
+  TravelVector,
+  ChevronDownIcon,
 } from "../ui/icons/index.js";
 
 /* ===== Bandeiras partilhadas ===== */
@@ -31,6 +40,14 @@ export const ICONS = {
   PinIcon,
   CardIcon,
   ShieldIcon,
+  PlaneIcon,
+  BusIcon,
+  TourBusIcon,
+  PackageIcon,
+  HandshakeIcon,
+  StarIcon,
+  TravelVector,
+  ChevronDownIcon,
 };
 
 export const FLAGS = {
@@ -54,11 +71,15 @@ export const LANG_DEFAULT = {
 
 export const IMG_COMMON = { loading: "lazy", decoding: "async" };
 
-export const LOGOS_BACKLINK = {
-  href: "/sunlive-group",
-  label: "Voltar Sunlive Group",
-};
+/* ===== BackLink (partilhado) ===== */
+export function makeBackLink({
+  href = "/sunlive-group",
+  label = "Voltar Sunlive Group",
+} = {}) {
+  return { href, label };
+}
 
+/* ===== Book ===== */
 export function makeBook({
   id = "book",
   label = "Open Book",
@@ -70,6 +91,7 @@ export function makeBook({
   return { id, cta: { label, href, filename, ariaLabel }, meta };
 }
 
+/* ===== Contactos / Unidades ===== */
 export const BUSINESS_UNITS_BASE = [
   { key: "travel", label: "Travel", defaultOpen: false },
   { key: "business", label: "Business", defaultOpen: false },
@@ -109,7 +131,6 @@ export function makeFooterContacts(
   const src = unitKey === "group" ? group : (units[unitKey] ?? group);
   const emailLabel = src.email ?? group.email;
   const phoneLabel = src.phone ?? group.phone;
-
   return {
     email: {
       label: emailLabel,
@@ -122,6 +143,7 @@ export function makeFooterContacts(
   };
 }
 
+/* ===== Sociais ===== */
 export const SOCIAL_ICON_BY_KEY = {
   fb: ICONS.FacebookIcon,
   ig: ICONS.InstagramIcon,
@@ -137,15 +159,12 @@ export const SOCIALS_DEFAULT = [
 ];
 
 export function withSocialIcons(list = []) {
-  return list.map((s) => ({
-    ...s,
-    Icon: s.Icon ?? SOCIAL_ICON_BY_KEY[s.key],
-  }));
+  return list.map((s) => ({ ...s, Icon: s.Icon ?? SOCIAL_ICON_BY_KEY[s.key] }));
 }
 
-/* === Exporta SOCIALS já com ícones injetados === */
 export const SOCIALS = withSocialIcons(SOCIALS_DEFAULT);
 
+/* ===== CTA default ===== */
 export function makeDefaultCTA(brandTitle = "Sunlive") {
   return {
     label: "Contactar",
@@ -154,35 +173,22 @@ export function makeDefaultCTA(brandTitle = "Sunlive") {
   };
 }
 
-/* =========================================================
-   HELPER: makeFooterInfoHeader
-   - Normaliza a estrutura do bloco infoHeader (footer)
-   - Aplica contactos & socials por unidade
-   - Permite overrides por brand (copy, localização, etc.)
-   ========================================================= */
+/* ===== Footer: InfoHeader normalizado ===== */
 export function makeFooterInfoHeader(unitKey = "group", overrides = {}) {
   const base = {
     brand: {
+      Icon: undefined,
       title: "Sunlive Group",
       tagline: "",
       about: "",
-      // opcional: substituir o 1.º parágrafo no componente
       aboutIntro: undefined,
       link: { label: "Sunlive Group", href: "/" },
     },
-    location: {
-      title: "Localização",
-      addressLines: [],
-      mapHref: "",
-    },
+    location: { title: "Localização", addressLines: [], mapHref: "" },
     contacts: makeFooterContacts(unitKey),
     socials: { title: "Redes Sociais", items: SOCIALS },
-    options: {
-      // true => o componente NÃO substitui a 1.ª linha do about
-      keepOriginalAboutFirstLine: false,
-    },
+    options: { keepOriginalAboutFirstLine: false },
   };
-
   return {
     ...base,
     ...overrides,
@@ -192,4 +198,48 @@ export function makeFooterInfoHeader(unitKey = "group", overrides = {}) {
     socials: { ...base.socials, ...(overrides.socials || {}) },
     options: { ...base.options, ...(overrides.options || {}) },
   };
+}
+
+/* ===== Políticas ===== */
+export const POLICIES_LINKS_DEFAULT = [
+  { key: "privacy", label: "Política e Privacidade", href: "/privacy" },
+  { key: "terms", label: "Termos de Utilização", href: "/terms" },
+  { key: "cookies", label: "Cookies", href: "/cookies" },
+  { key: "complaints", label: "Livro de Reclamações", href: "/complaints" },
+];
+
+export function makePoliciesBar({
+  holder,
+  year,
+  iconAriaLabel,
+  links = POLICIES_LINKS_DEFAULT,
+} = {}) {
+  const base = { links, copyright: { holder } };
+  if (typeof year === "number") base.copyright.year = year;
+  if (iconAriaLabel) base.icon = { ariaLabel: iconAriaLabel };
+  return base;
+}
+
+/* ===== LinkDirectory helpers (Group) ===== */
+export function unitsToFooterGeneric(
+  units = [],
+  basePath = "/sunlive-group",
+  slugMap = {}
+) {
+  return units.map((u) => {
+    const href = slugMap[u.key] ?? `${basePath}/${u.key}`;
+    return { key: u.key, label: u.label ?? u.key, href };
+  });
+}
+
+export function countriesToFooterGeneric(
+  countries = [],
+  basePath = "/sunlive-group",
+  sectionId = "presence"
+) {
+  return countries.map((c) => ({
+    key: c.key,
+    label: c.label ?? c.key,
+    href: `${basePath}#${sectionId}-${c.key}`,
+  }));
 }

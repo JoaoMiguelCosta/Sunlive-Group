@@ -1,6 +1,4 @@
-// src/brands/group/pages/ConfigGroupLogos.jsx
-
-import { LOGOS_BACKLINK } from "../../shared/config/BrandDefault.jsx";
+import { makeBackLink } from "../../shared/config/BrandDefault.jsx";
 
 /* ===== Committees ===== */
 import uec from "./assets/logos/committes/uec.png";
@@ -9,13 +7,13 @@ import cop from "./assets/logos/committes/cop.png";
 import coa from "./assets/logos/committes/coa.png";
 
 /* ===== Portuguese Federations ===== */
-import fpb from "./assets/logos/portugueseFederations/fpb.png"; // Basquetebol
-import fpc from "./assets/logos/portugueseFederations/fdc.png"; // Ciclismo
-import fpg from "./assets/logos/portugueseFederations/fgp.png"; // Ginástica
-import fpj from "./assets/logos/portugueseFederations/fpj.png"; // Judo
-import fnkp from "./assets/logos/portugueseFederations/fpk.png"; // Karate (FNKP)
-import fpe from "./assets/logos/portugueseFederations/fpe.png"; // Esgrima
-import fpa from "./assets/logos/portugueseFederations/fap.png"; // Andebol
+import fpb from "./assets/logos/portugueseFederations/fpb.png";
+import fpc from "./assets/logos/portugueseFederations/fdc.png";
+import fpg from "./assets/logos/portugueseFederations/fgp.png";
+import fpj from "./assets/logos/portugueseFederations/fpj.png";
+import fnkp from "./assets/logos/portugueseFederations/fpk.png";
+import fpe from "./assets/logos/portugueseFederations/fpe.png";
+import fpa from "./assets/logos/portugueseFederations/fap.png";
 
 /* ===== International Federations ===== */
 import agn from "./assets/logos/internationalFederations/agn.png";
@@ -76,13 +74,14 @@ import utto from "./assets/logos/teams/utto.png";
 import woking from "./assets/logos/teams/woking.png";
 
 /* ===== Associations ===== */
-import aca from "./assets/logos/associations/aca.png"; // Associação de Ciclismo de Anadia
-import aba from "./assets/logos/associations/abv.png"; // Associação Basquetebol de Anadia (ficheiro abv.png)
-import ace from "./assets/logos/associations/ace.png"; // Athletic Challenge Event
-import afa from "./assets/logos/associations/afa.png"; // Associação de Futebol de Aveiro
+import aca from "./assets/logos/associations/aca.png";
+import aba from "./assets/logos/associations/abv.png";
+import ace from "./assets/logos/associations/ace.png";
+import afa from "./assets/logos/associations/afa.png";
 
 const configGroupLogos = {
-  backLink: LOGOS_BACKLINK,
+  // 🔙 Back link agora via helper partilhado
+  backLink: makeBackLink(), // { href: "/sunlive-group", label: "Voltar Sunlive Group" }
 
   committees: {
     title: "COMMITTEES",
@@ -239,8 +238,8 @@ const configGroupLogos = {
       },
       {
         key: "ffc",
-        name: "Fédération Française de Cyclisme – Région Normandie",
-        caption: "Fédération Française de Cyclisme – Région Normandie",
+        name: "Fédération Française de Cyclisme – Normandie",
+        caption: "Fédération Française de Cyclisme – Normandie",
         src: ffc,
       },
       {

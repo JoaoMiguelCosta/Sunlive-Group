@@ -23,6 +23,9 @@ import StarIcon from "./Star.jsx";
 // Vetor personalizado (avião+carro)
 import TravelVector from "./TravelVector.jsx";
 
+// >>> NOVO: Chevron do menu
+import ChevronDownIcon from "./ChevronDown.jsx";
+
 // ===== Exports nomeados =====
 export {
   FacebookIcon,
@@ -40,6 +43,7 @@ export {
   HandshakeIcon,
   StarIcon,
   TravelVector,
+  ChevronDownIcon,
 };
 
 // ===== Mapa conveniente para usar por chave (iconKey) =====
@@ -50,7 +54,7 @@ export const ICONS = {
   "tour-bus": TourBusIcon,
   package: PackageIcon,
   pin: PinIcon,
-  travel: TravelVector, // <— novo
+  travel: TravelVector, // <— existente
   "travel-vector": TravelVector, // alias
 
   // parcerias / confiança
@@ -68,9 +72,11 @@ export const ICONS = {
   card: CardIcon,
   instagram: InstagramIcon,
   facebook: FacebookIcon,
+
+  // >>> NOVO
+  "chevron-down": ChevronDownIcon,
 };
 
-// Helper opcional
 export function getIconByKey(key) {
   return ICONS[key] || null;
 }

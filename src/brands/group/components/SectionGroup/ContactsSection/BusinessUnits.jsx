@@ -1,13 +1,9 @@
-// src/brands/group/components/SectionGroup/ContactsSection/BusinessUnits.jsx
 import styles from "./ContactsGrid.module.css";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../../shared/hooks/useOpenFromHash.js";
 
-// 👉 Ícones partilhados (sem SVG inline)
-import {
-  MailIcon as Mail,
-  PhoneIcon as Phone,
-} from "../../../../../shared/ui/icons/index.js";
+// 👉 Ícones agora vêm do config (sem imports diretos de SVGs)
+import { contacts as groupContacts } from "../../../ConfigGroup.jsx";
 
 export default function BusinessUnits({ items = [] }) {
   // Ordem desejada (mantém só os existentes)
@@ -37,6 +33,10 @@ export default function BusinessUnits({ items = [] }) {
     toggle,
   });
 
+  // Ícones do config
+  const Mail = groupContacts?.icons?.Mail || (() => null);
+  const Phone = groupContacts?.icons?.Phone || (() => null);
+
   return (
     <div className={styles.grid} role="list">
       {orderedItems.map((it) => {
@@ -48,7 +48,7 @@ export default function BusinessUnits({ items = [] }) {
             key={it.key}
             role="listitem"
             className={styles.item}
-            id={`unit-${it.key}`} // alvo do scroll
+            id={`unit-${it.key}`}
           >
             <button
               type="button"

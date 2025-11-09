@@ -1,7 +1,6 @@
 import styles from "./TestimonialsGrid.module.css";
 import travelBrand from "../../ConfigTravel.jsx";
 import TestemonialCard from "../../../../shared/components/TestemonialCard/index.jsx";
-import { StarIcon } from "../../../../shared/ui/icons/index.js";
 import useSpotlightCycle from "../../../../shared/hooks/useSpotlightCycle.js";
 import { useCallback, useRef } from "react";
 
@@ -46,6 +45,10 @@ export default function TestimonialsGrid() {
 
   const goPrev = () => setIndex((i) => (i - 1 + items.length) % items.length);
   const goNext = () => setIndex((i) => (i + 1) % items.length);
+
+  // resolve ícone por item (ex.: "star") com fallback para star global
+  const resolveIcon = (key) =>
+    (travelBrand?.icons && travelBrand.icons[key]) || travelBrand?.icons?.star;
 
   return (
     <div
@@ -96,13 +99,14 @@ export default function TestimonialsGrid() {
         {items.map((t, i) => {
           const active = i === index;
           const id = `tcard-${i}`;
+          const Icon = resolveIcon(t.iconKey);
           return (
             <TestemonialCard
               key={t.key || t.quote}
               quote={t.quote}
               rating={t.rating}
               author={t.author}
-              Icon={StarIcon}
+              Icon={Icon}
               className={styles.item}
               data-active={active}
               aria-current={active ? "true" : undefined}

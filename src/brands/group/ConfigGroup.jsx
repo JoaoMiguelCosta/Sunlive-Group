@@ -1,14 +1,10 @@
-// src/brands/group/pages/ConfigGroup.jsx
+// src/brands/group/ConfigGroup.jsx
 
-/* Helpers/constantes (sem React) */
-import {
-  PARTNERS_TITLE,
-  PARTNER_LINKS,
-  unitsToFooter,
-  countriesToFooter,
-} from "./config.helpers.js";
+/* =========================================
+   Conteúdo específico do GROUP (sem React)
+   ========================================= */
 
-/* Defaults partilhados */
+/* Defaults/Helpers partilhados */
 import {
   ICONS,
   FLAGS,
@@ -17,9 +13,58 @@ import {
   makeBook,
   makeBusinessUnits,
   DEFAULT_GROUP_CONTACTS,
-  SOCIALS, // já vem com Icon injetado
-  makeFooterInfoHeader, // novo helper p/ normalizar infoHeader
+  makeFooterInfoHeader,
+  makePoliciesBar,
+  unitsToFooterGeneric,
+  countriesToFooterGeneric,
+  withSocialIcons,
 } from "../../shared/config/BrandDefault.jsx";
+
+/* ---------- Constantes ESPECÍFICAS do GROUP (inline) ---------- */
+
+// Título comum usado em Partners e no Footer
+export const PARTNERS_TITLE = "Our Network of Partners";
+
+// Redes sociais (links do GROUP; ícones injetados via withSocialIcons)
+export const GROUP_SOCIALS = withSocialIcons([
+  { key: "fb", label: "Facebook", href: "https://facebook.com/sunlive07" },
+  {
+    key: "ig",
+    label: "Instagram",
+    href: "https://instagram.com/sunlive.group/",
+  },
+]);
+
+// Links de categorias (página /sunlive-group/logos)
+export const PARTNER_LINKS = [
+  {
+    key: "committees",
+    label: "Committees",
+    href: "/sunlive-group/logos#committees",
+  },
+  {
+    key: "federations-pt",
+    label: "Portuguese Federations",
+    href: "/sunlive-group/logos#federations-pt",
+  },
+  {
+    key: "federations-intl",
+    label: "International Federations",
+    href: "/sunlive-group/logos#federations-intl",
+  },
+  { key: "teams", label: "Teams", href: "/sunlive-group/logos#teams" },
+  {
+    key: "associations",
+    label: "Associations",
+    href: "/sunlive-group/logos#associations",
+  },
+  {
+    key: "others",
+    label: "Other Partners",
+    href: "/sunlive-group/logos#others",
+    disabled: true,
+  },
+];
 
 /* ---------- Assets Overview ---------- */
 import logoGroup from "./assets/logo-group.png";
@@ -106,8 +151,8 @@ export const overview = {
     sub: "Sunlive",
   },
 
-  // usa SOCIALS partilhado (já com Icon)
-  socials: SOCIALS,
+  // Socials do GROUP (ícones resolvidos via BrandDefault)
+  socials: GROUP_SOCIALS,
 
   lang: { ...LANG_DEFAULT },
 };
@@ -135,7 +180,6 @@ export const presence = {
     src: phraseTogether,
     alt: "Together we are stronger",
   },
-
   countries: [
     { key: "qatar", label: "Qatar — Sunlive", src: qatar },
     { key: "malta", label: "Malta — Sunlive", src: malta },
@@ -143,7 +187,6 @@ export const presence = {
     { key: "iraq", label: "Iraq — Sunlive", src: iraq },
     { key: "lebanon", label: "Lebanon — Sunlive", src: lebanon },
   ],
-
   headlineBottom: {
     renderAs: "image",
     src: phraseDream,
@@ -236,6 +279,8 @@ export const book = makeBook({
 /* ======================================================================
    section 7 — FOOTER
 ====================================================================== */
+const BASE_PATH = "/sunlive-group";
+
 export const footer = {
   id: "footer",
 
@@ -248,8 +293,6 @@ export const footer = {
         "Na Sunlive Group, acreditamos que o verdadeiro impacto surge da união entre visão, ação e valores humanos.\n\n" +
         "Desenvolvemos soluções integradas em desporto, turismo, educação e negócio, criando oportunidades sustentáveis e ligações com impacto local e global.",
       link: { label: "Sunlive Group", href: "/" },
-      // Se quiseres impedir o texto genérico do componente no 1.º parágrafo:
-      // aboutIntro: "Na Sunlive Group, acreditamos que o verdadeiro impacto surge da união entre visão, ação e valores humanos.",
     },
     location: {
       title: "Localização",
@@ -260,21 +303,24 @@ export const footer = {
       mapHref:
         "https://maps.google.com/?q=Rua%20Narciso%20da%20Mar%C3%A7a%2C%203780-101%2C%20Sangalhos%2C%20Anadia",
     },
-    // contacts: vem de makeFooterInfoHeader("group") -> makeFooterContacts("group")
-    socials: { title: "Redes Sociais", items: SOCIALS },
-    // Opcional: forçar a manter a 1.ª linha do about original
-    // options: { keepOriginalAboutFirstLine: true }
+    socials: { title: "Redes Sociais", items: GROUP_SOCIALS },
   }),
 
-  // LinkDirectory — derivado via helpers (sem duplicação)
+  // LinkDirectory — derivado via helpers genéricos (sem duplicação)
   linkDirectory: {
     left: {
       title: "Contacts Sunlive Group",
       columns: [
-        { key: "units", items: unitsToFooter(contacts.businessUnits) },
+        {
+          key: "units",
+          items: unitsToFooterGeneric(contacts.businessUnits, `${BASE_PATH}`),
+        },
         {
           key: "countries",
-          items: countriesToFooter(contacts.regionalOffices),
+          items: countriesToFooterGeneric(
+            contacts.regionalOffices,
+            `${BASE_PATH}`
+          ),
         },
       ],
     },
@@ -296,20 +342,12 @@ export const footer = {
     },
   },
 
-  // Policies bar
-  policiesBar: {
-    links: [
-      { key: "privacy", label: "Política e Privacidade", href: "/privacy" },
-      { key: "terms", label: "Termos de Utilização", href: "/terms" },
-      { key: "cookies", label: "Cookies", href: "/cookies" },
-      { key: "complaints", label: "Livro de Reclamações", href: "/complaints" },
-    ],
-    copyright: {
-      year: 2025,
-      holder: "Sunlive Group. Todos os direitos reservados.",
-    },
-    icon: { ariaLabel: "Protegido" },
-  },
+  // Policies bar (deduplicado via helper; mantém shape/valores)
+  policiesBar: makePoliciesBar({
+    holder: "Sunlive Group. Todos os direitos reservados.",
+    year: 2025,
+    iconAriaLabel: "Protegido",
+  }),
 };
 
-export { IMG_COMMON }; // opcional, caso precises localmente
+export { IMG_COMMON }; // opcional
