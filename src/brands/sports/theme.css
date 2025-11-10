@@ -1,0 +1,71 @@
+/* Sunlive Sports — Overrides de tema
+   Base: Prestige Noir + Liquid Gold (group/theme.css)
+   Activa quando data-brand="sports".
+*/
+
+:root[data-brand="sports"] {
+    /* Acentos Sports (verde-vital performance) */
+    --sl-accent-400: #4CD29A;
+    /* ~ +luminosidade para hover */
+    --sl-accent-500: #2EC27E;
+    /* cor principal */
+    --sl-accent-600: #1F8D5C;
+    /* ~ +profundo para bordas/focus */
+
+    /* Halo / ornamentos */
+    --sl-ornament-alpha: .12;
+
+    /* ===== Glow (fallbacks + color-mix) ===== */
+    /* Fallbacks imediatos (sem color-mix) */
+    --sl-glow-top: #C78615;
+    /* gold-400 */
+    --sl-glow-ring: #C78615;
+    /* gold-400 */
+    --sl-glow-bottom: #A16207;
+    /* gold-500 */
+
+    /* Versão melhorada (quando suportado) */
+    @supports (color: color-mix(in oklab, white, black)) {
+        --sl-glow-top: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 24%);
+        --sl-glow-ring: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 18%);
+        --sl-glow-bottom: color-mix(in oklab, var(--sl-gold-500), var(--sl-accent-500) 12%);
+    }
+}
+
+/* Utilitários/variantes Sports */
+:root[data-brand="sports"] .u-badge-accent {
+    background: color-mix(in oklab, var(--sl-accent-500), black 80%);
+    color: var(--sl-platinum-100);
+    border: 1px solid color-mix(in oklab, var(--sl-accent-600), white 18%);
+    border-radius: 999px;
+    padding: .25rem .6rem;
+    font-size: .8rem;
+    letter-spacing: .02em;
+}
+
+/* Botão secundário Sports */
+:root[data-brand="sports"] .button--secondary {
+    background: color-mix(in oklab, var(--sl-accent-500) 88%, black);
+    border: 1px solid var(--sl-accent-600);
+    color: white;
+}
+
+:root[data-brand="sports"] .button--secondary:hover {
+    background: color-mix(in oklab, var(--sl-accent-400) 88%, black);
+    border-color: var(--sl-accent-500);
+}
+
+/* Links acentuados Sports */
+:root[data-brand="sports"] .link-accent {
+    color: var(--sl-accent-500);
+}
+
+:root[data-brand="sports"] .link-accent:hover {
+    color: var(--sl-accent-400);
+}
+
+/* (Opcional) Focus ring coerente com o verde */
+:root[data-brand="sports"] :is(a, button, input, textarea):focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--sl-accent-500), white 15%);
+    outline-offset: 2px;
+}

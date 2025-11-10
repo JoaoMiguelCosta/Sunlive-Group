@@ -1,0 +1,57 @@
+/* Brand Hero — Sunlive “Performance Prestige” (imagem apenas, sem glow local) */
+
+.hero {
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.inner {
+    width: min(var(--sl-container-sm), 100%);
+    display: grid;
+    place-items: center;
+    padding-inline: clamp(1rem, 4vw, 6rem);
+    padding-block: clamp(.75rem, 2vw, 1.5rem);
+    min-width: 0;
+
+
+}
+
+.logoBox {
+    width: clamp(18rem, 47vw, 36.9375rem);
+    height: clamp(7rem, 20vw, 15.5625rem);
+    display: grid;
+    place-items: center;
+}
+
+.logoImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter:
+        drop-shadow(0 1px 0 rgba(255, 255, 255, .04)) drop-shadow(0 10px 28px rgba(0, 0, 0, .45));
+}
+
+/* Responsividade fina */
+@media (max-width: 1024px) {
+    .inner {
+        height: clamp(7rem, 24vw, 13rem);
+    }
+
+    .logoBox {
+        width: clamp(16rem, 54vw, 30rem);
+        height: clamp(6rem, 22vw, 13rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .inner {
+        height: clamp(6.5rem, 28vw, 11.5rem);
+    }
+
+    .logoBox {
+        width: clamp(14rem, 60vw, 24rem);
+        height: clamp(5.5rem, 26vw, 11rem);
+    }
+}

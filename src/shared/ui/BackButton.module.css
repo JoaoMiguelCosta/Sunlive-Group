@@ -114,3 +114,14 @@
         padding-inline: calc(var(--btn-pad-x) - .1rem);
     }
 }
+
+/* === Sports override === */
+:where([data-brand="sports"]) .button {
+    border: 2px solid #F6C05C;
+}
+
+/* garantir que o hover/focus não troca a cor */
+:where([data-brand="sports"]) .button:hover,
+:where([data-brand="sports"]) .button:focus-visible {
+    border-color: #F6C05C;
+}

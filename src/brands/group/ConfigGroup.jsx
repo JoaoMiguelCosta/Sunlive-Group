@@ -128,7 +128,7 @@ export const overview = {
       key: "sports",
       label: "Sports",
       sub: "Sunlive",
-      href: "/sports",
+      href: "/sunlive-group/sports",
       renderAs: "image",
       imageSrc: sportsImg,
     },

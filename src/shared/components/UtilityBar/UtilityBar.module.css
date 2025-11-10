@@ -273,6 +273,11 @@
    Variant: Travel Header
    ======================================================= */
 
+/* Accent azul atlântico para Travel */
+.utilityBar[data-variant="travel-header"] {
+    --accent: var(--sl-accent-500, #2EA7E0);
+}
+
 /* ≤ 1025px — centro óptico (estendido) */
 @media (max-width: 1025px) {
     .utilityBar[data-variant="travel-header"] .inner {
@@ -282,7 +287,8 @@
 
         /* visual */
         background: var(--sl-navy-900, #020a20);
-        box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+        box-shadow:
+            0 1px 0 rgba(255, 255, 255, .04) inset,
             0 18px 38px rgba(0, 0, 0, .32);
         border-bottom: 2px solid rgba(255, 162, 0, .85);
     }
@@ -291,7 +297,6 @@
         width: 100%;
         justify-self: center;
         padding-inline: clamp(8px, 1.2vw, 14px);
-        /* micro-gutter */
     }
 
     .utilityBar[data-variant="travel-header"] .right {
@@ -308,7 +313,8 @@
         align-items: center;
 
         background: var(--sl-navy-900, #020a20);
-        box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
+        box-shadow:
+            0 1px 0 rgba(255, 255, 255, .04) inset,
             0 18px 38px rgba(0, 0, 0, .32);
         border-bottom: 2px solid rgba(255, 162, 0, .85);
     }
@@ -334,6 +340,16 @@
     }
 }
 
+/* Realces opcionais no menu de idioma (Travel) */
+.utilityBar[data-variant="travel-header"] .langItem[aria-current="true"] {
+    color: var(--accent);
+    background: rgba(46, 167, 224, .12);
+}
+
+.utilityBar[data-variant="travel-header"] .langBtn[data-open="true"] .chevron {
+    color: var(--accent);
+}
+
 /* =======================================================
    Variant: Logos Header
    ======================================================= */
@@ -354,10 +370,40 @@
     min-width: 0;
 }
 
+/* =======================================================
+   Variant: Sports Header — igual ao logos-header
+   ======================================================= */
+.utilityBar[data-variant="sports-header"] {
+    --accent: var(--sl-accent-500, #2EC27E);
+    /* hovers (socials/lang) */
+}
+
+.utilityBar[data-variant="sports-header"] .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
+    margin-inline: auto;
+    box-sizing: border-box;
+    border-bottom: 2px solid #F6C05C;
+}
+
+.utilityBar[data-variant="sports-header"] .left,
+.utilityBar[data-variant="sports-header"] .right {
+    display: flex;
+    align-items: center;
+    gap: var(--ub-gap, .75rem);
+    min-width: 0;
+   
+}
+
+/* Micro-ajustes XS */
 @media (max-width: 400px) {
 
     .utilityBar[data-variant="travel-header"] .left,
-    .utilityBar[data-variant="travel-header"] .right {
+    .utilityBar[data-variant="travel-header"] .right,
+    .utilityBar[data-variant="sports-header"] .left,
+    .utilityBar[data-variant="sports-header"] .right {
         padding-inline: 6px;
     }
 }
