@@ -843,7 +843,9 @@ export const travelBrand = {
       },
 
       acknowledgements: undefined,
-      policiesBar: makePoliciesBar({ holder: "Sunlive Travel" }),
+      policiesBar: makePoliciesBar({
+        holder: "Sunlive Travel. Todos os direitos reservados.",
+      }),
     },
   },
 };

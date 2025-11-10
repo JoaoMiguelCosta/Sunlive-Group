@@ -20,6 +20,9 @@ import HandshakeIcon from "./Handshake.jsx";
 
 import StarIcon from "./Star.jsx";
 
+// 🆕 Medalha
+import MedalIcon from "./Medal.jsx";
+
 // Vetor personalizado (avião+carro)
 import TravelVector from "./TravelVector.jsx";
 
@@ -42,6 +45,7 @@ export {
   PackageIcon,
   HandshakeIcon,
   StarIcon,
+  MedalIcon, // 🆕
   TravelVector,
   ChevronDownIcon,
 };
@@ -63,6 +67,10 @@ export const ICONS = {
   // rating / destaque
   star: StarIcon,
   "rating-star": StarIcon, // alias opcional
+
+  // 🆕 prémios / distinções
+  medal: MedalIcon,
+  "award-medal": MedalIcon, // alias
 
   // utilitários / sociais
   globe: GlobeIcon,

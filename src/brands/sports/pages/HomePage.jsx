@@ -1,9 +1,15 @@
 // src/brands/sports/pages/HomePage.jsx
-import SectionHome from "../components/SectionHome"; // pega no index.jsx da pasta
-import styles from "./SportsPage.module.css";
-
+import styles from "./HomePage.module.css";
+import SectionHome from "../components/SectionHome";
+import FooterSports from "../components/FooterSports";
+import sportsBrand from "../configSports.jsx";
+import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
+import { buildFooterData } from "../../../shared/utils/normalizeFooter.js";
 
 export default function HomePage() {
+  const rawFooter = sportsBrand.sections?.footer;
+  const footerData = buildFooterData(rawFooter, groupFooter, "footer-sports");
+
   return (
     <main
       data-brand="sports"
@@ -11,6 +17,7 @@ export default function HomePage() {
       aria-label="Sunlive Sports — Home"
     >
       <SectionHome />
+      <FooterSports data={footerData} flushTop />
     </main>
   );
 }

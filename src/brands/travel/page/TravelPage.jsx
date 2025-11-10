@@ -1,4 +1,3 @@
-// src/brands/travel/pages/TravelPage.jsx
 import styles from "./TravelPage.module.css";
 
 import TravelHeaderNav from "../components/TravelHeaderNav";
@@ -17,6 +16,9 @@ import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
 // Scroll suave quando a rota vem com #hash (ex.: #destinos-nacionais)
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
+// 👇 NOVO: helper de normalização
+import { buildFooterData } from "../../../shared/utils/normalizeFooter.js";
+
 export default function TravelPage() {
   // Compensa o header fixo (ajusta o valor se necessário)
   useScrollToHash(24);
@@ -24,15 +26,8 @@ export default function TravelPage() {
   // Base do footer (Travel)
   const rawFooter = travelBrand.sections?.footer ?? {};
 
-  // Normalizar InfoHeader (Travel config usa "InfoHeader")
-  const { InfoHeader, infoHeader, acknowledgements, id, ...rest } = rawFooter;
-
-  const footerData = {
-    ...rest,
-    id: id || "footer-travel",
-    infoHeader: infoHeader ?? InfoHeader ?? null,
-    acknowledgements: acknowledgements ?? groupFooter?.acknowledgements ?? null,
-  };
+  // Normalização centralizada (helper reutilizável)
+  const footerData = buildFooterData(rawFooter, groupFooter, "footer-travel");
 
   return (
     <div className={`${styles.pageWrap} ${styles.page}`}>

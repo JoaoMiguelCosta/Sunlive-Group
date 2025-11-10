@@ -1,0 +1,47 @@
+/* ============================================================================
+   FooterSports — alinhado ao container do header (sem padding lateral)
+============================================================================ */
+.footerWrap {
+    position: relative;
+    isolation: isolate;
+    background: transparent;
+    color: var(--sl-platinum-100);
+    overflow: clip;
+
+    --rule-thickness: 2px;
+
+    /* nada de padding lateral aqui */
+    padding-inline: 0;
+}
+
+/* Conteúdo centrado e sem padding lateral (não somar nada) */
+.frame {
+    inline-size: min(100%, var(--content-w-effective));
+    margin-inline: auto;
+    box-sizing: border-box;
+    position: relative;
+    overflow: clip;
+    padding: 0;
+
+    background:
+        radial-gradient(1200px 420px at 50% -10%, rgba(199, 134, 21, .10), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(10, 28, 54, .25), transparent 60%),
+        #070f1e;
+}
+
+/* Regra (linha) no topo — alinha com o contentor do header */
+.frame::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: var(--rule-thickness);
+    background: rgba(199, 134, 21, 0.35);
+    pointer-events: none;
+}
+
+/* Quando o footer cola ao bloco de cima, sobe 1px como no resto do site */
+.flushTop .frame {
+    margin-top: calc(-1 * var(--rule-thickness) - 1px);
+}
+

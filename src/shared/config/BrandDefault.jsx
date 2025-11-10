@@ -8,7 +8,8 @@ import {
   PinIcon,
   CardIcon,
   ShieldIcon,
-  // usados em Travel/Footers
+  MedalIcon,
+ 
   PlaneIcon,
   BusIcon,
   TourBusIcon,
@@ -48,6 +49,7 @@ export const ICONS = {
   StarIcon,
   TravelVector,
   ChevronDownIcon,
+  MedalIcon
 };
 
 export const FLAGS = {

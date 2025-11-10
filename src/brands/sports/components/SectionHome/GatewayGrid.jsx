@@ -1,14 +1,14 @@
+// GatewayGrid.jsx
 import { Link } from "react-router-dom";
 import styles from "./GatewayGrid.module.css";
+// ⚠️ ajusta o caminho conforme a tua estrutura
 import sportsBrand from "../../configSports.jsx";
 
-/**
- * GatewayGrid — grelha de pontos de entrada
- * - Lê itens de sportsBrand.home.gateway
- * - item.variant === "cta" aplica estilo de call-to-action
- */
+// …
 export default function GatewayGrid() {
-  const items = sportsBrand?.home?.gateway ?? [];
+  // 👇 CORRIGIDO: buscar em sections.home
+  const items = sportsBrand?.sections?.home?.gateway ?? [];
+  if (!items.length) return null; // evita espaço vazio + footer colado
 
   return (
     <section className={styles.section} aria-label="Entradas — Sunlive Sports">
@@ -19,9 +19,7 @@ export default function GatewayGrid() {
               styles.item,
               it.variant === "cta" ? styles.cta : "",
             ].join(" ");
-
             const content = <span className={styles.label}>{it.label}</span>;
-
             const isHash =
               typeof it.href === "string" && it.href.startsWith("#");
             const isExternal =
