@@ -1,3 +1,5 @@
+// TravelFooter — alinhado ao container do header (igual ao Group)
+
 import styles from "./TravelFooter.module.css";
 
 import InfoHeader from "../../../../shared/components/FooterGroup/InfoHeader.jsx";

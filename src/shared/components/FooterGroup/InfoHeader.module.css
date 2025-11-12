@@ -394,7 +394,7 @@
 
     /* cada coluna ocupa largura confortável e fica centrada */
     .col {
-       
+
         margin-inline: auto;
         align-items: center;
         /* centra títulos/linhas pequenas */
@@ -463,5 +463,32 @@
     .sectionTitle,
     .title {
         text-align: center;
+    }
+}
+
+/* =======================
+   Overrides — SPORTS only
+   ======================= */
+
+/* Faixa (margem vertical) apenas em Sports */
+:global([data-brand="sports"]) .strip {
+    padding-block: clamp(1rem, 2vw, 1.35rem);
+}
+
+/* Gaps e recuos laterais (apenas Sports) */
+:global([data-brand="sports"]) .inner {
+    --gap-x: clamp(4rem, 1.6vw, 1.8rem);
+    --gap-y: clamp(.9rem, 1.2vw, 1.1rem);
+    --edge-left: calc(var(--line-inset) + 8px);
+    --edge-right: var(--line-inset);
+}
+
+
+
+/* Mobile — se quiseres gaps menores só em Sports */
+@media (max-width: 719.98px) {
+    :global([data-brand="sports"]) .inner {
+        --gap-x: 1rem;
+        --gap-y: .8rem;
     }
 }

@@ -1,5 +1,5 @@
 /* ============================================================================
-   FooterSports — alinhado ao container do header (sem padding lateral)
+   FooterSports — alinhado ao mesmo container + inset das secções (Group/Travel)
 ============================================================================ */
 .footerWrap {
     position: relative;
@@ -10,13 +10,19 @@
 
     --rule-thickness: 2px;
 
-    /* nada de padding lateral aqui */
+    /* Herda o token de alinhamento da página (com fallbacks) */
+    --section-inset: var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)));
+
+    /* sem padding lateral (a largura é controlada pelo frame) */
     padding-inline: 0;
 }
 
-/* Conteúdo centrado e sem padding lateral (não somar nada) */
+/* 
+  A “caixa azul” tem a MESMA largura do traço dourado acima:
+  width = min(sl-container-lg, 100%) − 2 × section-inset
+*/
 .frame {
-    inline-size: min(100%, var(--content-w-effective));
+    inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
     margin-inline: auto;
     box-sizing: border-box;
     position: relative;
@@ -29,7 +35,7 @@
         #070f1e;
 }
 
-/* Regra (linha) no topo — alinha com o contentor do header */
+/* Linha (regra) no topo — largura = largura do frame */
 .frame::before {
     content: "";
     position: absolute;
@@ -40,8 +46,22 @@
     pointer-events: none;
 }
 
-/* Quando o footer cola ao bloco de cima, sobe 1px como no resto do site */
+/* Quando cola ao bloco anterior, sobe 1px como no resto do site */
 .flushTop .frame {
     margin-top: calc(-1 * var(--rule-thickness) - 1px);
 }
 
+/* Strip auxiliar com a MESMA largura efetiva (se precisares) */
+.strip {
+    inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
+    margin-inline: auto;
+    box-sizing: border-box;
+    border-top: var(--rule-thickness) solid rgba(199, 134, 21, 0.35);
+}
+
+/* Mobile — manter sem padding lateral no wrapper */
+@media (max-width: 640px) {
+    .footerWrap {
+        padding-inline: 0;
+    }
+}

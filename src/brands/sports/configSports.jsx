@@ -122,6 +122,9 @@ const sportsBrand = {
           aboutIntro:
             "Na Sunlive Sports, acreditamos no desporto como motor de desenvolvimento pessoal, educativo e profissional.",
         },
+        options: {
+          keepOriginalAboutFirstLine: true, // 👈 mostra o teu parágrafo completo
+        },
         location: {
           title: "Localização",
           addressLines: [

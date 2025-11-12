@@ -1,3 +1,5 @@
+// FooterSports — alinhado ao container do header (igual a Group/Travel)
+
 import styles from "./FooterSports.module.css";
 
 import InfoHeader from "../../../../shared/components/FooterGroup/InfoHeader.jsx";
@@ -18,9 +20,9 @@ export default function FooterSports({
 }) {
   if (!data) return null;
 
-  // ⚠️ Nunca uses "InfoHeader" como variável local
+  // ⚠️ Não usar "InfoHeader" como var local
   const {
-    InfoHeader: infoHeaderFromConfig, // maiúsculas (compat Travel)
+    InfoHeader: infoHeaderFromConfig, // maiúsculas (compat)
     infoHeader, // minúsculas (fallback)
     linkDirectory,
     acknowledgements,

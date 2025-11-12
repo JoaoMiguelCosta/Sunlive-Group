@@ -1,3 +1,5 @@
+// Sunlive Travel — Página principal (alinhada ao layout “Performance Prestige”)
+
 import styles from "./TravelPage.module.css";
 
 import TravelHeaderNav from "../components/TravelHeaderNav";
@@ -16,11 +18,11 @@ import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
 // Scroll suave quando a rota vem com #hash (ex.: #destinos-nacionais)
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
-// 👇 NOVO: helper de normalização
+// Normalizador partilhado do footer
 import { buildFooterData } from "../../../shared/utils/normalizeFooter.js";
 
 export default function TravelPage() {
-  // Compensa o header fixo (ajusta o valor se necessário)
+  // Compensa header/linha fixa (ajusta se necessário)
   useScrollToHash(24);
 
   // Base do footer (Travel)
@@ -30,13 +32,13 @@ export default function TravelPage() {
   const footerData = buildFooterData(rawFooter, groupFooter, "footer-travel");
 
   return (
-    <div className={`${styles.pageWrap} ${styles.page}`}>
-      <main className={styles.inner}>
+    <div className={styles.pageWrap} data-brand="travel">
+      <main className={styles.inner} aria-label="Sunlive Travel — Home">
         <div className={styles.sections}>
-          {/* Header pode ser <section> lá dentro ou <header>, aqui não embrulhamos */}
+          {/* Header utilitário / navegação */}
           <TravelHeaderNav />
 
-          {/* Cada um já devolve <section id="…"> */}
+          {/* Secções principais */}
           <LogisticsSolutionsSection />
           <DomesticDestinationsSection />
           <InternationalDestinationsSection />
@@ -47,6 +49,7 @@ export default function TravelPage() {
         </div>
       </main>
 
+      {/* Footer colado ao bloco anterior */}
       <TravelFooter data={footerData} flushTop />
     </div>
   );

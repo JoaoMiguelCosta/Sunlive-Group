@@ -1,74 +1,104 @@
-/* ===== Tokens partilhados p/ toda a página ===== */
-:root {
-    /* recuo de referência p/ linhas/reguas (usado no header e afins) */
-    --section-inset: clamp(12px, 4vw, 40px);
-    /* largura “container” da marca */
-    --sl-container-lg: 1200px;
-}
+/* Sunlive Travel — Performance Prestige (Prestige Noir + Liquid Gold)
+   Layout base idêntico ao Group para alinhamento e consistência visual
+*/
 
-/* ===== Page wrapper ===== */
+/* ========= CAMADA 1 — FUNDO GLOBAL DA PÁGINA ========= */
 .pageWrap {
     position: relative;
     min-height: 100svh;
+    /* mobile moderno */
+    min-height: 100dvh;
+    /* fallback */
     width: 100%;
     overflow: clip;
+
+    /* Transparente: gradiente/glow vêm do body::before (controlado por brand) */
     background: transparent;
-    /* o glow vem do body::before */
     color: var(--sl-color-text);
     isolation: isolate;
 
-    --line-inset: var(--section-inset);
-    /* largura útil robusta (não colapsa em mobile) */
-    --content-w-effective: max(0px,
-            calc(min(var(--sl-container-lg, 1200px), 100%) - 2 * var(--line-inset)));
+    /* Token de alinhamento para linhas/reguas */
+    --sl-line-inset: clamp(12px, 4vw, 40px);
 }
 
-/* Variáveis de espaçamento vertical globais (ajusta aqui) */
-.page {
-    --sec-gap-top: clamp(18px, 2.6vw, 28px);
-    --sec-gap-bot: clamp(22px, 3.4vw, 36px);
-}
-
-/* <main> não limita a largura; quem limita são os contentores internos de cada secção */
+/* ========= CAMADA 2 — CONTEÚDO CENTRADO ========= */
 .inner {
-    inline-size: 100%;
-    margin-inline: 0;
+    position: relative;
+    z-index: 1;
+    /* acima do glow global */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: min(var(--sl-container-lg, 1200px), 100%);
+    margin-inline: auto;
+
+    /* linha suave no topo da área de conteúdo */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-/* Stack das secções: usamos padding nos filhos para evitar colapso de margens */
+/* Grid de secções internas */
 .sections {
     display: grid;
-    gap: 0;
+    width: 100%;
+    row-gap: clamp(1.25rem, 2.6vw, 2rem);
 }
 
-/* Aplica o MESMO respiro a cada <section> devolvida pelos componentes.
-   :where() mantém baixa especificidade; !important garante que bate
-   as definições internas de módulos quando estes acrescentam padding. */
-.sections> :where(section, [role="region"]) {
-    padding-block: var(--sec-gap-top) var(--sec-gap-bot) !important;
-    /* sem padding lateral por defeito — cada módulo controla a sua largura */
-    padding-inline: 0 !important;
-    /* âncoras suaves c/ header fixo + linha de topo consistente */
-    scroll-margin-top: var(--header-offset, 84px);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+/* remover qualquer “gap” antes do footer */
+.sections>*:last-child {
+    margin-bottom: 0 !important;
 }
 
-/* Mobile: dá um respiro mínimo lateral apenas quando necessário */
-@media (max-width: 640px) {
-    .sections> :where(section, [role="region"]) {
-        padding-inline: clamp(10px, 4vw, 22px) !important;
+/* Secção base (cada componente retorna <section>) */
+.section {
+    width: 100%;
+    scroll-margin-top: 84px;
+    /* âncoras suaves com header fixo */
+}
+
+/* Variante de superfície alternada (cartão amplo) */
+.sectionAlt {
+    width: 100%;
+    background: linear-gradient(180deg,
+            color-mix(in oklab, var(--sl-platinum-100), transparent 20%),
+            color-mix(in oklab, var(--sl-platinum-300), transparent 35%));
+    border-radius: var(--sl-radius-sm, 12px);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, .35),
+        0 8px 24px rgba(0, 0, 0, .30);
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+/* Fallback para browsers sem color-mix */
+@supports not (background: color-mix(in oklab, white, black)) {
+    .sectionAlt {
+        background: linear-gradient(180deg, #e6e6e6, #d9d9d9);
     }
-
-    .page {
-        --sec-gap-top: clamp(14px, 4.6vw, 22px);
-        --sec-gap-bot: clamp(16px, 5.2vw, 26px);
-    }
 }
 
-/* ≥1536px: ligeiro aumento de “respiro” */
-@media (min-width: 1536px) {
-    .page {
-        --sec-gap-top: clamp(22px, 2vw, 32px);
-        --sec-gap-bot: clamp(26px, 2.4vw, 42px);
+/* Separador premium */
+.divider {
+    height: 1px;
+    width: 100%;
+    border: 0;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(199, 134, 21, .45),
+            transparent);
+    margin-block: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+/* Linha de CTAs */
+.ctaRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.6rem, 1.2vw, 1rem);
+    align-items: center;
+    justify-content: flex-start;
+}
+
+@media (max-width: 480px) {
+    .ctaRow {
+        justify-content: center;
     }
 }

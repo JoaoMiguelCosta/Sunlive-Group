@@ -1,6 +1,6 @@
 /* =========================================================
    SportsLinkDirectory — “Links Rápidos” + “Colaboramos com”
-   Sem ícones, chips com borda dourada
+   Alinhado ao frame do FooterSports (mesmo inset lateral)
    ========================================================= */
 
 .wrap {
@@ -12,7 +12,12 @@
     --block-gap: clamp(16px, 2vw, 20px);
 
     row-gap: var(--block-gap);
-    padding-block: var(--block-gap);
+
+    /* respiro vertical sem tocar na linha dourada do topo */
+    margin-block: var(--block-gap);
+
+    /* alinhar com as colunas internas do InfoHeader / frame */
+    padding-inline: var(--section-inset);
 
     color: var(--sl-platinum-050, #e7ebf3);
 }
@@ -28,8 +33,9 @@
     gap: .6rem;
     font-size: clamp(1rem, 1.3vw, 1.1rem);
     font-weight: 700;
-    color: var(--sl-gold-400, #C78615);
+color: var(--sl-platinum-100);
     letter-spacing: .2px;
+    margin: 0;
 }
 
 .chipsGrid {
@@ -80,7 +86,10 @@
     font-weight: 600;
     letter-spacing: .2px;
     white-space: nowrap;
-    transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
+    transition:
+        transform .15s ease,
+        background-color .15s ease,
+        border-color .15s ease;
 }
 
 .chip:hover {

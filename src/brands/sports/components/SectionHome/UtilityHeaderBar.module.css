@@ -1,0 +1,45 @@
+/* Mantém a mesma largura do “traço” amarelo do header */
+.wrap {
+    /* largura útil = container alinhado às linhas do site */
+   
+    margin-inline: auto;
+
+    /* respiro vertical fluido; sem padding-inline para não somar inset */
+    padding-block: clamp(6px, 1.2vw, 10px);
+
+    /* garante que o conteúdo não rebenta e escala bem */
+    min-width: 0;
+}
+
+/* A UtilityBar deve ocupar toda a largura da wrap */
+.wrap>* {
+    inline-size: 100%;
+    min-width: 0;
+}
+
+/* ===== OPCIONAL: tornar sticky no topo ===== */
+/* ativa adicionando .sticky à div.wrap no JSX se quiseres */
+.sticky {
+    position: sticky;
+    top: 0;
+    /* ajusta se tiveres um header superior */
+    z-index: 40;
+    /* leve backdrop em devices modernos */
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+}
+
+/* ===== OPCIONAL: versão full-bleed só quando precisares ===== */
+/* aplica .bleed na wrap para deixar a barra ir de margem a margem */
+.bleed {
+    inline-size: 100%;
+    padding-inline: 0;
+    margin-inline: 0;
+}
+
+/* ===== Motion-reduce (qualquer tela) ===== */
+@media (prefers-reduced-motion: reduce) {
+    .wrap * {
+        transition: none !important;
+    }
+}

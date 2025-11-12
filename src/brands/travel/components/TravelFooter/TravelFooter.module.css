@@ -1,5 +1,5 @@
 /* ============================================================================
-   TravelFooter — alinhado ao container do header (sem padding lateral)
+   TravelFooter — alinhado ao mesmo container + inset das secções (como o Group)
 ============================================================================ */
 .footerWrap {
     position: relative;
@@ -10,13 +10,20 @@
 
     --rule-thickness: 2px;
 
+    /* Herda o token de alinhamento da página (com fallbacks),
+     garantindo que a largura acompanha a “linha” acima. */
+    --section-inset: var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)));
+
     /* nada de padding lateral aqui */
     padding-inline: 0;
 }
 
-/* Conteúdo centrado e sem padding lateral (não somar nada) */
+/* 
+  A “caixa azul” tem a MESMA largura que o traço dourado:
+  width = min(sl-container-lg, 100%) − 2 × section-inset
+*/
 .frame {
-    inline-size: min(100%, var(--content-w-effective));
+    inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
     margin-inline: auto;
     box-sizing: border-box;
     position: relative;
@@ -29,7 +36,7 @@
         #070f1e;
 }
 
-/* Regra (linha) no topo — alinha com o contentor do header */
+/* Regra (linha) no topo — ocupa 100% da largura do frame */
 .frame::before {
     content: "";
     position: absolute;
@@ -47,7 +54,7 @@
 
 /* Strips auxiliares com a MESMA largura efetiva */
 .strip {
-    inline-size: min(100%, var(--content-w-effective));
+    inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
     margin-inline: auto;
     box-sizing: border-box;
     border-top: var(--rule-thickness) solid rgba(199, 134, 21, 0.35);

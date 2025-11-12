@@ -1,14 +1,14 @@
 import styles from "./UtilityHeaderBar.module.css";
-import UtilityBar from "../../../../shared/components/UtilityBar/index.jsx";
+import UtilityBar from "../../../../shared/components/UtilityBar";
 import BackButton from "../../../../shared/ui/BackButton.jsx";
 import sportsBrand from "../../configSports.jsx";
 
 export default function UtilityHeaderBar() {
   const { backLink, socials = [], lang = {} } = sportsBrand.header || {};
   return (
-    <div className={styles.wrap} aria-label="Header — Sports">
+    <div className={styles.wrap} role="banner" aria-label="Header — Sports">
       <UtilityBar
-        variant="sports-header"        
+        variant="sports-header"
         leftSlot={<BackButton {...backLink} />}
         socials={socials}
         lang={lang}

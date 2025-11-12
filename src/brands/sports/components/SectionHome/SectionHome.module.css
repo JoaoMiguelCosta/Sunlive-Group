@@ -2,7 +2,5 @@
     position: relative;
     width: 100%;
     isolation: isolate;
-  
-    /* base noir */
     color: var(--sl-platinum-100, #f6f7fb);
 }

@@ -1,5 +1,4 @@
-/* Brand Hero — Sunlive “Performance Prestige” (imagem apenas, sem glow local) */
-
+/* Brand Hero — alinhado ao mesmo container/inset do header */
 .hero {
     position: relative;
     width: 100%;
@@ -7,51 +6,63 @@
     place-items: center;
 }
 
+/* frame alinhado ao header/footer */
 .inner {
-    width: min(var(--sl-container-sm), 100%);
+    inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset, var(--sl-line-inset, clamp(12px, 3.5vw, 44px))));
+    margin-inline: auto;
     display: grid;
     place-items: center;
-    padding-inline: clamp(1rem, 4vw, 6rem);
-    padding-block: clamp(.75rem, 2vw, 1.5rem);
+
+    /* respiro vertical fluido + segurança para ecrãs muito baixos */
+    padding-block: clamp(.6rem, 2.2vw, 1.6rem);
+    min-block-size: clamp(5rem, 12vh, 12rem);
+    /* altura mínima responsiva */
+    max-block-size: 40dvh;
+    /* evita crescer demais em monitores altos */
     min-width: 0;
-
-
 }
 
+/* ===== Logo ===== */
+/* Define o rácio do teu logo (ex.: 591x249 ≈ 2.375) */
 .logoBox {
-    width: clamp(18rem, 47vw, 36.9375rem);
-    height: clamp(7rem, 20vw, 15.5625rem);
+    --logo-ar: 2.375;
+    /* ajusta ao teu ficheiro */
+    inline-size: clamp(14rem, 40vw, 37rem);
+    /* largura flui com ecrã */
+    aspect-ratio: var(--logo-ar);
+    /* altura vem do ratio */
     display: grid;
     place-items: center;
+}
+
+/* Fallback se não houver suporte a aspect-ratio */
+@supports not (aspect-ratio: 1) {
+    .logoBox {
+        height: auto;
+    }
+
+    .logoImg {
+        height: auto;
+    }
 }
 
 .logoImg {
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: auto;
+    /* preserva proporção */
     object-fit: contain;
     filter:
         drop-shadow(0 1px 0 rgba(255, 255, 255, .04)) drop-shadow(0 10px 28px rgba(0, 0, 0, .45));
 }
 
-/* Responsividade fina */
-@media (max-width: 1024px) {
+/* Ajustes finos em ecrãs muito baixos (ex.: laptops 768px de altura) */
+@media (max-height: 720px) {
     .inner {
-        height: clamp(7rem, 24vw, 13rem);
+        max-block-size: 32dvh;
+        padding-block: clamp(.5rem, 1.6vw, 1.1rem);
     }
 
     .logoBox {
-        width: clamp(16rem, 54vw, 30rem);
-        height: clamp(6rem, 22vw, 13rem);
-    }
-}
-
-@media (max-width: 640px) {
-    .inner {
-        height: clamp(6.5rem, 28vw, 11.5rem);
-    }
-
-    .logoBox {
-        width: clamp(14rem, 60vw, 24rem);
-        height: clamp(5.5rem, 26vw, 11rem);
+        inline-size: clamp(12rem, 34vw, 30rem);
     }
 }
