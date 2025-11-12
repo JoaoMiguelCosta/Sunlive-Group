@@ -1,6 +1,6 @@
 // src/brands/travel/components/InternationalDestinationsSection/DestinationsInternational.jsx
 import styles from "./DestinationsInternational.module.css";
-import DestinationCard from "../../../../shared/components/DestinationCard";
+import DestinationCard from "../../../../shared/components/Travel/DestinationCard/index.jsx";
 import travelBrand from "../../ConfigTravel.jsx";
 // ❌ remove: import { FLAGS } from "../../../../shared/config/BrandDefault.jsx";
 

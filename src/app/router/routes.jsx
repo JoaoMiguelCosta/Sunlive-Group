@@ -8,7 +8,11 @@ import PartnersLogosPage from "../../brands/group/pages/PartnersLogosPage.jsx";
 /* Travel */
 import TravelPage from "../../brands/travel/page/TravelPage.jsx";
 
-/* Sports (13 páginas) */
+/* Sports — layouts */
+import SportsShellHome from "../../brands/sports/layouts/SportsShellHome.jsx";
+import SportsShellInner from "../../brands/sports/layouts/SportsShellInner.jsx";
+
+/* Sports — páginas */
 import SportsHomePage from "../../brands/sports/pages/HomePage.jsx";
 import TrainingCamps from "../../brands/sports/pages/TrainingCamps.jsx";
 import Academies from "../../brands/sports/pages/Academies.jsx";
@@ -36,51 +40,42 @@ export default function AppRoutes() {
       {/* Submarca — Travel */}
       <Route path="/sunlive-group/travel" element={<TravelPage />} />
 
-      {/* Submarca — Sports (13 páginas) */}
-      <Route path="/sunlive-group/sports" element={<SportsHomePage />} />
-      <Route
-        path="/sunlive-group/sports/training-camps"
-        element={<TrainingCamps />}
-      />
-      <Route path="/sunlive-group/sports/academies" element={<Academies />} />
-      <Route path="/sunlive-group/sports/events" element={<Events />} />
-      <Route
-        path="/sunlive-group/sports/sunlive-athletes"
-        element={<SunliveAthletes />}
-      />
-      <Route
-        path="/sunlive-group/sports/specialised-services"
-        element={<SpecialisedServices />}
-      />
-      <Route path="/sunlive-group/sports/education" element={<Education />} />
-      <Route
-        path="/sunlive-group/sports/leisure-sports-tourism"
-        element={<LeisureSportsTourism />}
-      />
-      <Route
-        path="/sunlive-group/sports/sports-disciplines"
-        element={<SportsDisciplines />}
-      />
-      <Route
-        path="/sunlive-group/sports/infrastructures"
-        element={<Infrastructures />}
-      />
-      <Route path="/sunlive-group/sports/logistics" element={<Logistics />} />
-      <Route
-        path="/sunlive-group/sports/consultancy"
-        element={<Consultancy />}
-      />
-      <Route path="/sunlive-group/sports/gallery" element={<Gallery />} />
+      {/* ===== Submarca — Sports ===== */}
+
+      {/* Grupo 1: HOME (back → Sunlive Group) */}
+      <Route path="/sunlive-group/sports" element={<SportsShellHome />}>
+        <Route index element={<SportsHomePage />} />
+      </Route>
+
+      {/* Grupo 2: Restantes páginas (back → Menu Sports) */}
+      <Route path="/sunlive-group/sports" element={<SportsShellInner />}>
+        <Route path="training-camps" element={<TrainingCamps />} />
+        <Route path="academies" element={<Academies />} />
+        <Route path="events" element={<Events />} />
+        <Route path="sunlive-athletes" element={<SunliveAthletes />} />
+        <Route path="specialised-services" element={<SpecialisedServices />} />
+        <Route path="education" element={<Education />} />
+        <Route
+          path="leisure-sports-tourism"
+          element={<LeisureSportsTourism />}
+        />
+        <Route path="sports-disciplines" element={<SportsDisciplines />} />
+        <Route path="infrastructures" element={<Infrastructures />} />
+        <Route path="logistics" element={<Logistics />} />
+        <Route path="consultancy" element={<Consultancy />} />
+        <Route path="gallery" element={<Gallery />} />
+
+        {/* Qualquer sub-rota inválida dentro de /sports → home de Sports */}
+        <Route
+          path="*"
+          element={<Navigate to="/sunlive-group/sports" replace />}
+        />
+      </Route>
 
       {/* Redirects legacy/temporários */}
       <Route
         path="/sunlive-group-logos"
         element={<Navigate to="/sunlive-group/logos" replace />}
-      />
-      {/* Qualquer rota inválida dentro de /sports → home do Sports */}
-      <Route
-        path="/sunlive-group/sports/*"
-        element={<Navigate to="/sunlive-group/sports" replace />}
       />
       <Route
         path="/sunlive-group/our-home/*"

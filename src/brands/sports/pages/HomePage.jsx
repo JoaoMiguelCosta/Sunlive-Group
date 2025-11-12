@@ -2,8 +2,7 @@
 
 import styles from "./HomePage.module.css";
 
-import SectionHome from "../components/SectionHome";
-import FooterSports from "../components/FooterSports";
+import SectionHome from "../components/Home";
 
 import sportsBrand from "../configSports.jsx";
 import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
@@ -22,9 +21,6 @@ export default function HomePage() {
           <SectionHome />
         </div>
       </main>
-
-      {/* Footer colado ao bloco anterior */}
-      <FooterSports data={footerData} flushTop />
     </div>
   );
 }

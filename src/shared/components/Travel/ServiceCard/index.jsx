@@ -1,7 +1,7 @@
 // shared/ui/ServiceCard/ServiceCard.jsx
 import { useCallback } from "react";
 import styles from "./ServiceCard.module.css";
-import { slugify } from "../../utils/slugify.js";
+import { slugify } from "../../../utils/slugify.js";
 
 export default function ServiceCard({
   icon: Icon,

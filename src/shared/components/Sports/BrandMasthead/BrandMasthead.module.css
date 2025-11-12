@@ -18,18 +18,16 @@
     min-block-size: clamp(5rem, 12vh, 12rem);
     /* altura mínima responsiva */
     max-block-size: 40dvh;
-    /* evita crescer demais em monitores altos */
+    /* evita crescer demais */
     min-width: 0;
 }
 
 /* ===== Logo ===== */
-/* Define o rácio do teu logo (ex.: 591x249 ≈ 2.375) */
+/* Se não vier por inline style, usa 2.375 por defeito */
 .logoBox {
-    --logo-ar: 2.375;
-    /* ajusta ao teu ficheiro */
     inline-size: clamp(14rem, 40vw, 37rem);
     /* largura flui com ecrã */
-    aspect-ratio: var(--logo-ar);
+    aspect-ratio: var(--logo-ar, 2.375);
     /* altura vem do ratio */
     display: grid;
     place-items: center;

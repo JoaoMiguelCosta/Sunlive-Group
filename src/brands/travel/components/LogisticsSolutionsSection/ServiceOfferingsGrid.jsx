@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import styles from "./ServiceOfferingsGrid.module.css";
-import ServiceCard from "../../../../shared/components/ServiceCard";
+import ServiceCard from "../../../../shared/components/Travel/ServiceCard/index.jsx";
 import travelBrand from "../../ConfigTravel.jsx";
 import useAccordion from "../../../../shared/hooks/useAccordion";
 

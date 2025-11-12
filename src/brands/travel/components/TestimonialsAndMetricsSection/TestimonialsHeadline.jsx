@@ -1,6 +1,6 @@
 // src/brands/travel/components/TestimonialsAndMetricsSection/TestimonialsHeadline.jsx
 import styles from "./TestimonialsHeadline.module.css";
-import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
+import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx"
 import travelBrand from "../../ConfigTravel.jsx";
 
 export default function TestimonialsHeadline() {

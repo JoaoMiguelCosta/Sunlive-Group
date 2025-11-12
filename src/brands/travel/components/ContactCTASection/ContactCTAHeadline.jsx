@@ -1,6 +1,6 @@
 // src/brands/travel/components/ContactCTASection/ContactCTAHeadline.jsx
 import styles from "./ContactCTAHeadline.module.css";
-import HeadlineBlock from "../../../../shared/components/HeadlineBlock";
+import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import travelBrand from "../../ConfigTravel.jsx";
 
 export default function ContactCTAHeadline() {

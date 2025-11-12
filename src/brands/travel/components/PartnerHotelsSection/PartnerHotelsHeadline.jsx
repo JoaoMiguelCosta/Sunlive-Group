@@ -1,6 +1,6 @@
 // src/brands/travel/components/PartnerHotelsSection/PartnerHotelsHeadline.jsx
 import styles from "./PartnerHotelsHeadline.module.css";
-import HeadlineBlock from "../../../../shared/components/HeadlineBlock";
+import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import travelBrand from "../../ConfigTravel.jsx";
 
 export default function PartnerHotelsHeadline() {

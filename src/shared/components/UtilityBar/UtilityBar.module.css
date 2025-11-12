@@ -7,7 +7,10 @@
     width: 100%;
     display: grid;
     place-items: center;
+  
 
+           
+      
     /* Tokens */
     --line-inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
     --ub-touch: clamp(36px, 4.2vw, 44px);
@@ -31,6 +34,9 @@
 .right {
     position: relative;
     overflow: visible;
+    min-height: var(--ub-touch);
+        align-items: center;
+        padding-block: 2px;
 }
 
 .utilityBar .inner {
@@ -38,23 +44,29 @@
     margin-inline: auto;
     box-sizing: border-box;
     padding-inline: var(--line-inset);
-
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    /* default sem conteúdo à esquerda */
     min-height: 2.875rem;
-
     position: relative;
     z-index: 2;
     overflow: visible;
 }
 
-/* Régua dourada */
-.utilityBar::after {
+/* Quando existe backLink/leftSlot, abre o espaço à esquerda */
+.hasLeft {
+    justify-content: space-between !important;
+}
+
+/* ===== Régua dourada (alinhada ao container) ===== */
+/* ANTES: .utilityBar::after  — REMOVIDO */
+.utilityBar .inner::after {
     content: "";
     position: absolute;
     inset-block-end: 0;
-    inset-inline: var(--line-inset);
+    inset-inline: 0;
+    /* cola às bordas internas (respeita o padding) */
     block-size: clamp(1px, .15rem, 2px);
     background: rgba(199, 134, 21, .9);
     opacity: .9;
@@ -83,6 +95,74 @@
 
 .label {
     display: none !important;
+}
+
+/* =================
+   Botão Voltar (pílula)
+   ================= */
+.backLink {
+    --pill-fs: var(--ub-fs);
+    --pill-pad-y: .5rem;
+    /* ↑ mais respiro vertical */
+    --pill-pad-x: .9rem;
+    --pill-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    padding: var(--pill-pad-y) var(--pill-pad-x);
+    border-radius: var(--pill-radius);
+    text-decoration: none;
+
+    font-weight: 700;
+    font-size: var(--pill-fs);
+    line-height: 1.18;
+    /* ↑ evita cortar letras altas (P) */
+    color: #fff;
+
+    /* altura mínima estável (se existir token do header) */
+    min-height: var(--ub-touch, 0px);
+
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
+        radial-gradient(120% 140% at 50% 0%, rgba(255, 226, 167, .10), rgba(255, 255, 255, 0) 60%);
+    border: 1.5px solid rgba(246, 192, 92, .9);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .08) inset,
+        0 10px 24px rgba(0, 0, 0, .35);
+
+    transition: transform .12s ease, opacity .12s ease, filter .12s ease,
+        color .12s ease, border-color .12s ease;
+}
+
+.backIcon {
+    inline-size: 1.1em;
+    block-size: 1.1em;
+}
+
+.backText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-inline-size: 60vw;
+    /* segurança mobile */
+}
+
+.backLink:hover {
+    transform: translateY(-1px);
+    opacity: .98;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .25));
+    color: var(--accent, #F6C05C);
+    border-color: color-mix(in oklab, #F6C05C 85%, white 15%);
+}
+
+.backLink:active {
+    transform: translateY(0);
+}
+
+.backLink:focus-visible {
+    outline: none;
+    box-shadow: none;
 }
 
 /* =================
@@ -264,7 +344,8 @@
 
     .socialLink,
     .langBtn,
-    .chevron {
+    .chevron,
+    .backLink {
         transition: none;
     }
 }
@@ -276,20 +357,21 @@
 /* Accent azul atlântico para Travel */
 .utilityBar[data-variant="travel-header"] {
     --accent: var(--sl-accent-500, #2EA7E0);
+    --sl-container-lg: 85rem;
 }
 
-/* ≤ 1025px — centro óptico (estendido) */
+/* Desativar régua extra (usa o border-bottom desta variante) */
+.utilityBar[data-variant="travel-header"] .inner::after {
+    content: none;
+}
+
 @media (max-width: 1025px) {
     .utilityBar[data-variant="travel-header"] .inner {
         display: grid;
         grid-template-columns: 1fr;
         justify-items: center;
-
-        /* visual */
         background: var(--sl-navy-900, #020a20);
-        box-shadow:
-            0 1px 0 rgba(255, 255, 255, .04) inset,
-            0 18px 38px rgba(0, 0, 0, .32);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 18px 38px rgba(0, 0, 0, .32);
         border-bottom: 2px solid rgba(255, 162, 0, .85);
     }
 
@@ -305,17 +387,13 @@
     }
 }
 
-/* ≥ 1026px — layout desktop “fixo” */
 @media (min-width: 1026px) {
     .utilityBar[data-variant="travel-header"] .inner {
         display: grid;
         grid-template-columns: 1fr auto;
         align-items: center;
-
         background: var(--sl-navy-900, #020a20);
-        box-shadow:
-            0 1px 0 rgba(255, 255, 255, .04) inset,
-            0 18px 38px rgba(0, 0, 0, .32);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 18px 38px rgba(0, 0, 0, .32);
         border-bottom: 2px solid rgba(255, 162, 0, .85);
     }
 
@@ -332,7 +410,6 @@
         padding-inline-end: clamp(8px, 1.2vw, 14px);
     }
 
-    /* Garantir que submenus não cortam */
     .utilityBar[data-variant="travel-header"] :where(.navList) {
         justify-content: center;
         flex-wrap: wrap;
@@ -340,7 +417,6 @@
     }
 }
 
-/* Realces opcionais no menu de idioma (Travel) */
 .utilityBar[data-variant="travel-header"] .langItem[aria-current="true"] {
     color: var(--accent);
     background: rgba(46, 167, 224, .12);
@@ -348,6 +424,10 @@
 
 .utilityBar[data-variant="travel-header"] .langBtn[data-open="true"] .chevron {
     color: var(--accent);
+}
+
+.utilityBar[data-variant="travel-header"] .backLink {
+    border-color: rgba(255, 162, 0, .85);
 }
 
 /* =======================================================
@@ -360,14 +440,7 @@
     inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
     margin-inline: auto;
     box-sizing: border-box;
-}
-
-.utilityBar[data-variant="logos-header"] .left,
-.utilityBar[data-variant="logos-header"] .right {
-    display: flex;
-    align-items: center;
-    gap: var(--ub-gap, .75rem);
-    min-width: 0;
+    --sl-container-lg: 85rem;
 }
 
 /* =======================================================
@@ -375,7 +448,12 @@
    ======================================================= */
 .utilityBar[data-variant="sports-header"] {
     --accent: var(--sl-accent-500, #2EC27E);
-    /* hovers (socials/lang) */
+    --sl-container-lg: 85rem;
+}
+
+/* Desativar régua extra (usa o border-bottom desta variante) */
+.utilityBar[data-variant="sports-header"] .inner::after {
+    content: none;
 }
 
 .utilityBar[data-variant="sports-header"] .inner {
@@ -394,7 +472,10 @@
     align-items: center;
     gap: var(--ub-gap, .75rem);
     min-width: 0;
-   
+}
+
+.utilityBar[data-variant="sports-header"] .backLink {
+    border-color: #F6C05C;
 }
 
 /* Micro-ajustes XS */
@@ -405,5 +486,9 @@
     .utilityBar[data-variant="sports-header"] .left,
     .utilityBar[data-variant="sports-header"] .right {
         padding-inline: 6px;
+    }
+
+    .backText {
+        max-inline-size: 50vw;
     }
 }

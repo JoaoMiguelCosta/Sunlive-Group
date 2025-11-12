@@ -1,7 +1,7 @@
 // src/brands/group/components/SectionLogos/Associations/index.jsx
 import styles from "../../../../../shared/styles/LogosSection.module.css";
 import configGroupLogos from "../../../ConfigGroupLogos.jsx";
-import LogoGridSection from "../../../../../shared/components/LogoGridSection";
+import LogoGridSection from "../../../../../shared/components/Group/LogoGridSection/index.jsx";
 
 export default function Associations() {
   const data = configGroupLogos?.associations;

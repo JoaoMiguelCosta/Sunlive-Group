@@ -1,5 +1,5 @@
 import styles from "./DestinationsBrowser.module.css";
-import DestinationCard from "../../../../shared/components/DestinationCard";
+import DestinationCard from "../../../../shared/components/Travel/DestinationCard/index.jsx";
 import travelBrand from "../../ConfigTravel.jsx";
 
 import { useTabsFilter } from "../../../../shared/hooks/useTabsFilter.js";

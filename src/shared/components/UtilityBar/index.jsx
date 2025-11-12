@@ -1,17 +1,10 @@
+// shared/components/UtilityBar/index.jsx
 import styles from "./UtilityBar.module.css";
 import { useLangMenu } from "../../hooks/useLangMenu.js";
 
-/**
- * UtilityBar (shared)
- * Props:
- * - variant?: string            // e.g. "travel-header" (escopa estilos)
- * - leftSlot?: ReactNode
- * - socials?: Array<{ key:string, href:string, label:string, Icon:React.FC }>
- * - lang?: { current:string, options:Array<{label:string,name:string,code:string,dir?:"rtl"|"ltr"}> }
- * - ariaLabel?: string
- */
 export default function UtilityBar({
   variant,
+  backLink, // 👈 NOVO
   leftSlot = null,
   socials = [],
   lang = {
@@ -19,6 +12,7 @@ export default function UtilityBar({
     options: [{ label: "PT", name: "Português", code: "pt" }],
   },
   ariaLabel = "Utility bar",
+ 
 }) {
   const { ref, isOpen, selected, options, toggle, choose, close } =
     useLangMenu(lang);
@@ -27,6 +21,8 @@ export default function UtilityBar({
     if (e.key === "Escape") close();
   }
 
+  const hasLeft = Boolean(backLink || leftSlot);
+
   return (
     <aside
       className={styles.utilityBar}
@@ -34,11 +30,38 @@ export default function UtilityBar({
       aria-label={ariaLabel}
       onKeyDown={onKeyDown}
     >
-      <div className={`${styles.inner} ${leftSlot ? styles.hasLeft : ""}`}>
-        {leftSlot && <div className={styles.left}>{leftSlot}</div>}
+      <div className={`${styles.inner} ${hasLeft ? styles.hasLeft : ""}`}>
+        {hasLeft && (
+          <div className={styles.left}>
+            {backLink && (
+              <a href={backLink.href} className={styles.backLink}>
+                {/* Ícone default se não vier via prop */}
+                {backLink.Icon ? (
+                  <backLink.Icon className={styles.backIcon} />
+                ) : (
+                  <svg
+                    className={styles.backIcon}
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M15 18l-6-6 6-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
+                <span className={styles.backText}>{backLink.label}</span>
+              </a>
+            )}
+            {leftSlot}
+          </div>
+        )}
 
         <div className={styles.right}>
-          {/* Redes sociais */}
           {!!socials.length && (
             <nav className={styles.socials} aria-label="Social networks">
               {socials.map(({ key, href, label, Icon }) => (
@@ -57,7 +80,6 @@ export default function UtilityBar({
             </nav>
           )}
 
-          {/* Idiomas */}
           <div className={styles.langWrap} ref={ref}>
             <button
               type="button"
@@ -66,14 +88,13 @@ export default function UtilityBar({
               aria-expanded={isOpen}
               aria-label="Select language"
               onClick={toggle}
-              data-open={isOpen ? "true" : "false"} // 👈 controla rotação da seta
+              data-open={isOpen ? "true" : "false"}
             >
               <span className={styles.langText}>{selected.label}</span>
               <svg
                 className={styles.chevron}
                 viewBox="0 0 12 6"
                 aria-hidden="true"
-                focusable="false"
               >
                 <path
                   d="M1 1 L6 5 L11 1"

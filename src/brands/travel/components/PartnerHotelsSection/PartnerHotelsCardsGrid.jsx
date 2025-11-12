@@ -1,5 +1,5 @@
 import styles from "./PartnerHotelsCardsGrid.module.css";
-import DestinationCard from "../../../../shared/components/DestinationCard";
+import DestinationCard from "../../../../shared/components/Travel/DestinationCard/index.jsx";
 import travelBrand from "../../ConfigTravel.jsx";
 
 export default function PartnerHotelsCardsGrid() {
