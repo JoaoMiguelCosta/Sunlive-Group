@@ -1,0 +1,15 @@
+/* =========================================================
+   OverviewSection — Turismo Desportivo Lúdico
+   Bloco texto+imagem + barra de pills
+   ========================================================= */
+
+.wrap {
+    width: 100%;
+}
+
+/* A TextMediaSection já trata do container + glow.
+   Aqui só criamos a zona da barra de pills. */
+
+.pillsRow {
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+}

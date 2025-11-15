@@ -5,15 +5,14 @@ import CTAButton2 from "../../../ui/CTAButton2.jsx";
 /**
  * Painel de fecho / transição para próximo passo (Sports)
  *
- * props esperadas (exemplo a partir do config):
- * {
- *   id,
- *   chipLabel,
- *   title,
- *   bodyLines: string[],
- *   primaryCta: { label, href, ariaLabel?, icon? },
- *   secondaryCta: { label, href, ariaLabel? }
- * }
+ * props:
+ *  id,
+ *  chipLabel,
+ *  title,
+ *  bodyLines: string[],
+ *  primaryCta?: { label, href, ariaLabel?, icon? },
+ *  secondaryCta?: { label, href, ariaLabel? },
+ *  backCta?: { label, href, ariaLabel? }
  */
 export default function SportsClosingPanel({
   id,
@@ -22,13 +21,17 @@ export default function SportsClosingPanel({
   bodyLines,
   primaryCta,
   secondaryCta,
+  backCta,
   className = "",
   ...rest
 }) {
   const hasPrimary = !!primaryCta?.label;
   const hasSecondary = !!secondaryCta?.label;
+  const hasBack = !!backCta?.label;
 
   const panelClasses = [styles.panel, className].filter(Boolean).join(" ");
+
+  const hasAnyAction = hasPrimary || hasSecondary || hasBack;
 
   return (
     <section
@@ -51,8 +54,18 @@ export default function SportsClosingPanel({
         </div>
       )}
 
-      {(hasPrimary || hasSecondary) && (
+      {hasAnyAction && (
         <div className={styles.actions}>
+          {hasBack && (
+            <a
+              href={backCta.href}
+              className={`${styles.secondary} ${styles.back}`}
+              aria-label={backCta.ariaLabel || backCta.label}
+            >
+              <span aria-hidden="true">←</span> {backCta.label}
+            </a>
+          )}
+
           {hasPrimary && (
             <CTAButton2
               label={primaryCta.label}

@@ -18,7 +18,7 @@ import {
   ChevronDownIcon,
   BrainIcon,
   UsersIcon,
-  EarthIcon,
+  HeartIcon,
   SpeedIcon,
   SunIcon,
 } from "../ui/icons/index.js";
@@ -56,7 +56,7 @@ export const ICONS = {
   MedalIcon,
   BrainIcon,
   UsersIcon,
-  EarthIcon,
+  HeartIcon,
   SpeedIcon,
   SunIcon,
 };

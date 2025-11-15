@@ -1,0 +1,14 @@
+/* =========================================================
+   Athletes OverviewSection — Texto + Pilares
+   ========================================================= */
+
+.wrap {
+    width: 100%;
+}
+
+/* A TextMediaSection já cuida do container + glow.
+   Aqui só criamos uma zona para a barra de pills. */
+
+.pillsRow {
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+}

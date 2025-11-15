@@ -1,0 +1,55 @@
+/* =========================================================
+   SpecialisedServicesPage — Layout Sports
+   Alinhado ao mesmo container de TrainingCamps/Academies
+   ========================================================= */
+
+:root {
+    --section-inset: clamp(12px, 4vw, 40px);
+    --sl-container-lg: 1200px;
+}
+
+/* Wrapper da página dentro do Outlet */
+.pageWrap {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    color: var(--sl-platinum-050, #e7ebf3);
+}
+
+/* Container principal alinhado ao header + masthead */
+.inner {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+
+    padding-inline: var(--section-inset);
+    padding-block: clamp(2.6rem, 3.4vw, 3.1rem) clamp(2.8rem, 3.6vw, 3.4rem);
+
+    box-sizing: border-box;
+}
+
+/* Hero */
+.heroSection {
+    margin-bottom: clamp(2rem, 3vw, 2.6rem);
+}
+
+/* Stack das secções (Overview + ClosingPanel) */
+.sections {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.2rem, 3.2vw, 2.8rem);
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+    .inner {
+        padding-block: 2rem 2.6rem;
+    }
+
+    .heroSection {
+        margin-bottom: 2rem;
+    }
+}

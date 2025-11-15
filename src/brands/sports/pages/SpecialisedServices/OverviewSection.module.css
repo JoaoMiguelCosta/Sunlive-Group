@@ -1,0 +1,14 @@
+/* =========================================================
+   OverviewSection — “O que faz a diferença no alto rendimento”
+   ========================================================= */
+
+.wrap {
+    width: 100%;
+}
+
+/* A TextMediaSection já trata do container + glow.
+   Aqui apenas criamos a zona para a barra de pills. */
+
+.pillsRow {
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+}

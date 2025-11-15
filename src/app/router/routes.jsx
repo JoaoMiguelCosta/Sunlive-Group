@@ -15,17 +15,23 @@ import SportsShellInner from "../../brands/sports/layouts/SportsShellInner.jsx";
 /* Sports — páginas */
 import HomePageSports from "../../brands/sports/pages/Home/index.jsx";
 import TrainingCampsPage from "../../brands/sports/pages/TrainingCamps/index.jsx";
-import Academies from "../../brands/sports/pages/Academies.jsx";
-import Events from "../../brands/sports/pages/Events.jsx";
-import SunliveAthletes from "../../brands/sports/pages/SunliveAthletes.jsx";
-import SpecialisedServices from "../../brands/sports/pages/SpecialisedServices.jsx";
-import Education from "../../brands/sports/pages/Education.jsx";
-import LeisureSportsTourism from "../../brands/sports/pages/LeisureSportsTourism.jsx";
-import SportsDisciplines from "../../brands/sports/pages/SportsDisciplines.jsx";
-import Infrastructures from "../../brands/sports/pages/Infrastructures.jsx";
-import Logistics from "../../brands/sports/pages/Logistics.jsx";
-import Consultancy from "../../brands/sports/pages/Consultancy.jsx";
+
+import AcademiesPage from "../../brands/sports/pages/Academies/index.jsx";
+import EventsPage from "../../brands/sports/pages/Events/index.jsx";
+import AthletesPage from "../../brands/sports/pages/Athletes/index.jsx";
+import SpecialisedServicesPage from "../../brands/sports/pages/SpecialisedServices/index.jsx";
+import EducationPage from "../../brands/sports/pages/Education/index.jsx";
+import LeisureSportsTourismPage from "../../brands/sports/pages/LeisureSportsTourism/index.jsx";
+import DisciplinesPage from "../../brands/sports/pages/Disciplines/index.jsx";
+import InfrastructuresPage from "../../brands/sports/pages/Infrastructures/index.jsx";
+import LogisticsPage from "../../brands/sports/pages/Logistics/index.jsx";
+import ConsultancyPage from "../../brands/sports/pages/Consultancy/index.jsx";
+
+/*
+
+
 import Gallery from "../../brands/sports/pages/Gallery.jsx";
+*/
 
 export default function AppRoutes() {
   return (
@@ -50,21 +56,28 @@ export default function AppRoutes() {
       {/* Grupo 2: Restantes páginas (back → Menu Sports) */}
       <Route path="/sunlive-group/sports" element={<SportsShellInner />}>
         <Route path="training-camps" element={<TrainingCampsPage />} />
-        <Route path="academies" element={<Academies />} />
-        <Route path="events" element={<Events />} />
-        <Route path="sunlive-athletes" element={<SunliveAthletes />} />
-        <Route path="specialised-services" element={<SpecialisedServices />} />
-        <Route path="education" element={<Education />} />
+
+        <Route path="academies" element={<AcademiesPage />} />
+        <Route path="events" element={<EventsPage />} />
+        <Route path="sunlive-athletes" element={<AthletesPage />} />
+        <Route
+          path="specialised-services"
+          element={<SpecialisedServicesPage />}
+        />
+        <Route path="education" element={<EducationPage />} />
         <Route
           path="leisure-sports-tourism"
-          element={<LeisureSportsTourism />}
+          element={<LeisureSportsTourismPage />}
         />
-        <Route path="sports-disciplines" element={<SportsDisciplines />} />
-        <Route path="infrastructures" element={<Infrastructures />} />
-        <Route path="logistics" element={<Logistics />} />
-        <Route path="consultancy" element={<Consultancy />} />
-        <Route path="gallery" element={<Gallery />} />
+        <Route path="sports-disciplines" element={<DisciplinesPage />} />
+        <Route path="infrastructures" element={<InfrastructuresPage />} />
+        <Route path="logistics" element={<LogisticsPage />} />
+        <Route path="consultancy" element={<ConsultancyPage />} />
+        {/*
 
+
+<Route path="gallery" element={<Gallery />} />
+*/}
         {/* Qualquer sub-rota inválida dentro de /sports → home de Sports */}
         <Route
           path="*"

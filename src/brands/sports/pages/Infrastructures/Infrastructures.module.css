@@ -1,0 +1,55 @@
+/* =========================================================
+   InfrastructuresPage — Layout Sports
+   Igual ao padrão das restantes páginas Sports
+   ========================================================= */
+
+:root {
+    --section-inset: clamp(12px, 4vw, 40px);
+    --sl-container-lg: 1200px;
+}
+
+/* Wrapper da página dentro do Outlet */
+.pageWrap {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    color: var(--sl-platinum-050, #e7ebf3);
+}
+
+/* Container principal alinhado ao header + masthead */
+.inner {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+
+    padding-inline: var(--section-inset);
+    margin-top: 3rem;
+
+    box-sizing: border-box;
+}
+
+/* Stack das secções (Overview + ClosingPanel) */
+.sections {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.2rem, 3vw, 2.8rem);
+}
+
+/* Hero separado com um pouco de respiro */
+.heroSection {
+    margin-bottom: clamp(2.2rem, 3.2vw, 2.8rem);
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+    .inner {
+        padding-block: 1.8rem 2.6rem;
+    }
+
+    .heroSection {
+        margin-bottom: 2.1rem;
+    }
+}

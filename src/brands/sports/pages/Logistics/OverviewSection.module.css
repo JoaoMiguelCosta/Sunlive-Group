@@ -1,0 +1,14 @@
+/* =========================================================
+   OverviewSection — Logística
+   Texto + imagem + barra de pilares
+   ========================================================= */
+
+.wrap {
+    width: 100%;
+}
+
+/* A TextMediaSection já trata do container/glow.
+   Aqui só gerimos o respiro da barra de pills. */
+.pillsRow {
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+}

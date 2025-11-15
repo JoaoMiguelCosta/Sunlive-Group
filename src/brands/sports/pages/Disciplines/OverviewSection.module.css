@@ -1,0 +1,14 @@
+/* =========================================================
+   OverviewSection — “Mais do que modalidades”
+   ========================================================= */
+
+.wrap {
+    width: 100%;
+}
+
+/* A TextMediaSection já gere container + glow.
+   Aqui só criamos a zona da barra de pills. */
+
+.pillsRow {
+    margin-top: clamp(1.6rem, 3vw, 2.2rem);
+}
