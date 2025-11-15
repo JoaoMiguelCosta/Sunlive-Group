@@ -1,0 +1,21 @@
+/* =========================================================
+   SportsShell — Layout base da brand Sports
+   (UtilityBar + BrandMasthead + main (Outlet) + Footer)
+   ========================================================= */
+
+:root {
+    --section-inset: clamp(12px, 4vw, 40px);
+    --sl-container-lg: 1200px;
+}
+
+.shell {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    color: var(--sl-platinum-050, #e7ebf3);
+}
+
+/* main é só wrapper do <Outlet /> */
+.main {
+    width: 100%;
+}

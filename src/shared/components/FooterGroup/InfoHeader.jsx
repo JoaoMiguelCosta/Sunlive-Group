@@ -37,8 +37,6 @@ export default function InfoHeader({ data }) {
 
   const { brand, location, contacts, socials, options } = data;
   const brandName = brand?.title || "Sunlive Group";
-
-  // Usa o ícone específico da marca se vier no config; senão, fallback Globe
   const BrandIcon = brand?.Icon || GlobeIcon;
 
   const aboutParts = (brand?.about || "").split("\n").filter(Boolean);
@@ -56,7 +54,7 @@ export default function InfoHeader({ data }) {
   );
 
   const firstNode = keepRawFirst
-    ? null // usa o 1.º parágrafo do about, mas com destaque
+    ? null
     : customIntro
       ? withBrandEmph(customIntro, brandName)
       : genericIntro;
@@ -64,7 +62,7 @@ export default function InfoHeader({ data }) {
   return (
     <section className={styles.strip} aria-label="Footer — Company Info">
       <div className={styles.inner}>
-        {/* 1) Brand/About — esquerda */}
+        {/* 1) Brand/About */}
         <div className={styles.col}>
           <h3 className={styles.title}>
             <span className={styles.icon}>

@@ -1,110 +1,70 @@
 /* ==========================================================================
    InfoHeader.module.css — Desktop consistente (≥1100px) + mobile centrado
-   Alinhado com o frame e com as linhas (— mesmo início/fim —)
    ========================================================================== */
 
-/* -------------------------------
-   Variáveis gerais (títulos/alinhamentos)
---------------------------------*/
 .inner {
-    /* espaçamento entre colunas e linhas */
     --gap-x: clamp(1rem, 2.2vw, 1.75rem);
     --gap-y: clamp(1.10rem, 2vw, 1.60rem);
-
-    /* linha/inset padrão do site (mesmo das secções) */
     --line-inset: clamp(12px, 4vw, 40px);
-
-    /* margens internas (“edge”) — por defeito iguais ao line-inset
-     (garante que conteúdo começa/termina onde a linha começa/termina) */
     --edge-left: var(--line-inset);
     --edge-right: var(--line-inset);
-
-    /* título/ícone */
     --title-icon: 28px;
     --title-gap: 0.6rem;
-
-    /* alinhar conteúdo sob o título (se precisares) */
     --lead-icon-start: 0px;
     --lead-text-start: calc(var(--title-icon) + var(--title-gap));
 }
 
-/* -------------------------------
-   Faixa
---------------------------------*/
 .strip {
     position: relative;
     background: transparent;
     color: var(--sl-platinum-100);
     padding-block: clamp(1.25rem, 2.5vw, 1.75rem);
     border-bottom: 2px solid rgba(199, 134, 21, 0.9);
-    box-sizing: border-box;
+    border-top: 2px solid rgba(199, 134, 21, 0.9);
 }
 
-/* -------------------------------
-   Container (flex com column-gap)
---------------------------------*/
 .inner {
-    /* o frame já tem a largura “útil” (container - 2*line-inset)
-     aqui ocupamos 100% do frame e recuamos só o suficiente para alinhar com as linhas */
     width: 100%;
     max-width: none;
     margin-inline: auto;
     padding-left: var(--edge-left);
     padding-right: var(--edge-right);
     box-sizing: border-box;
-
     display: flex;
     flex-wrap: wrap;
-    /* mobile/tablet quebram */
     justify-content: flex-start;
     align-items: flex-start;
-
     column-gap: var(--gap-x);
     row-gap: var(--gap-y);
 }
 
-/* -------------------------------
-   Colunas (largura intrínseca)
---------------------------------*/
 .col {
     flex: 0 0 auto;
-    /* não cresce nem encolhe */
     width: max-content;
-    /* mede pelo conteúdo */
     min-width: 260px;
     max-width: 420px;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: .25rem;
 }
 
-/* Ajuda semântica usada no JSX (mantém-se igual a .col por clareza) */
 .colStart {
     align-items: flex-start;
 }
 
-
-
-/* === Desktop: manter SEMPRE 4 colunas (≥1100px) ========================= */
 @media (min-width: 1100px) {
     .inner {
         flex-wrap: nowrap;
     }
 
-    /* não quebra linha */
-
     .col {
-        /* 4 colunas: 100% menos 3 gaps, dividido por 4 */
         flex: 0 0 calc((100% - 3 * var(--gap-x)) / 4);
         min-width: 0;
-        /* deixa encolher para caber */
         max-width: none;
     }
 }
 
-/* ≥ 1800px */
 @media (min-width: 1800px) {
     .inner {
         --gap-x: clamp(1rem, 2.2vw, 1rem);
@@ -118,7 +78,6 @@
     }
 }
 
-/* 1600–1799px */
 @media (min-width: 1600px) and (max-width: 1799.98px) {
     .inner {
         --gap-x: clamp(1.8rem, 2.1vw, 2.4rem);
@@ -132,7 +91,6 @@
     }
 }
 
-/* 1440–1599px */
 @media (min-width: 1440px) and (max-width: 1599.98px) {
     .inner {
         --gap-x: clamp(1.7rem, 2.0vw, 2.2rem);
@@ -146,7 +104,6 @@
     }
 }
 
-/* 1366–1439px */
 @media (min-width: 1366px) and (max-width: 1439.98px) {
     .inner {
         --gap-x: clamp(1.6rem, 1.9vw, 2rem);
@@ -160,7 +117,6 @@
     }
 }
 
-/* 1280–1365px */
 @media (min-width: 1280px) and (max-width: 1365.98px) {
     .inner {
         --gap-x: clamp(1.5rem, 1.8vw, 1.9rem);
@@ -174,7 +130,6 @@
     }
 }
 
-/* 1100–1279px */
 @media (min-width: 1100px) and (max-width: 1279.98px) {
     .inner {
         --gap-x: clamp(1.4rem, 1.7vw, 1.8rem);
@@ -188,15 +143,10 @@
     }
 }
 
-/* ================================
-   Tablet e Mobile (quebrar para 2/1 colunas)
-   ================================ */
 @media (max-width: 1099.98px) {
     .inner {
-        /* padding lateral continua alinhado à régua das linhas */
         padding-left: var(--line-inset);
         padding-right: var(--line-inset);
-
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         column-gap: var(--gap-x);
@@ -210,9 +160,6 @@
     }
 }
 
-/* -------------------------------
-   Títulos
---------------------------------*/
 .title {
     display: flex;
     align-items: center;
@@ -230,20 +177,17 @@
     justify-content: center;
     width: var(--title-icon);
     height: var(--title-icon);
-
     border-radius: 999px;
     color: var(--sl-gold-400);
     background: rgba(199, 134, 21, .08);
 }
 
-/* texto “Sunlive Group/Travel” em dourado, sem sublinhado */
 .brandEmph {
     color: var(--sl-gold-400);
     font-weight: 800;
     text-decoration: none;
 }
 
-/* alinhamento sob o título (usar no JSX se precisares) */
 .contentLeadIcon {
     padding-left: var(--lead-icon-start);
 }
@@ -252,18 +196,12 @@
     padding-left: var(--lead-text-start);
 }
 
-/* -------------------------------
-   Tagline
---------------------------------*/
 .tagline {
     margin: 0 0 .6rem 0;
     font-weight: 800;
     color: var(--sl-gold-400);
 }
 
-/* -------------------------------
-   ABOUT
---------------------------------*/
 .about {
     line-height: 1.55;
     max-width: 40ch;
@@ -280,9 +218,6 @@
     margin-top: .65rem;
 }
 
-/* -------------------------------
-   Localização
---------------------------------*/
 .address {
     font-style: normal;
     line-height: 1.55;
@@ -303,9 +238,6 @@
     color: var(--sl-gold-400);
 }
 
-/* -------------------------------
-   Contactos
---------------------------------*/
 .contactRow {
     display: grid;
     grid-template-columns: 20px 1fr;
@@ -334,9 +266,6 @@
     opacity: .6;
 }
 
-/* -------------------------------
-   Socials
---------------------------------*/
 .socials {
     display: flex;
     gap: .55rem;
@@ -377,55 +306,40 @@
     font-weight: 800;
 }
 
-/* -------------------------------
-   Link inline no ABOUT
---------------------------------*/
 .inlineLink {
     color: var(--sl-platinum-100);
     text-decoration: underline;
     text-underline-offset: 2px;
 }
 
-/* =====<= 720px: centrado real de TODO o conteúdo ===== */
 @media (max-width: 719.98px) {
     .inner {
         grid-template-columns: 1fr;
     }
 
-    /* cada coluna ocupa largura confortável e fica centrada */
     .col {
-
         margin-inline: auto;
         align-items: center;
-        /* centra títulos/linhas pequenas */
     }
 
-    /* títulos + tagline centrados */
     .title,
     .tagline {
         text-align: center;
     }
 
-    /* remover indentações herdadas em mobile */
     .contentLeadIcon,
     .contentLeadText {
         padding-left: 0;
     }
 
-    /* SOBRE (parágrafos) centrado e sem max-width estreita */
     .about {
         max-width: none;
         width: 100%;
         text-align: center;
     }
 
-    .about p {
-        text-align: center;
-    }
-
-    /* Localização centrada + link maps centrado */
+    .about p,
     .address {
-        width: 100%;
         text-align: center;
     }
 
@@ -434,48 +348,28 @@
         text-align: center;
     }
 
-    /* Contactos: 1 coluna, tudo ao centro */
     .contactRow {
         grid-template-columns: 1fr;
-        /* deixa de ter 20px + 1fr */
         justify-items: center;
         text-align: center;
         gap: .45rem;
     }
 
-    .cIcon {
-        margin: 0;
-    }
-
-    /* Links e texto centrados */
-    .link,
-    .textMuted {
-        display: inline-block;
-        text-align: center;
-    }
-
-    /* Redes sociais centradas visualmente */
     .socials {
         justify-content: center;
     }
 
-    /* Títulos das secções “Localização / Contactos / Redes Sociais” */
     .sectionTitle,
     .title {
         text-align: center;
     }
 }
 
-/* =======================
-   Overrides — SPORTS only
-   ======================= */
-
-/* Faixa (margem vertical) apenas em Sports */
+/* Overrides — SPORTS */
 :global([data-brand="sports"]) .strip {
     padding-block: clamp(1rem, 2vw, 1.35rem);
 }
 
-/* Gaps e recuos laterais (apenas Sports) */
 :global([data-brand="sports"]) .inner {
     --gap-x: clamp(4rem, 1.6vw, 1.8rem);
     --gap-y: clamp(.9rem, 1.2vw, 1.1rem);
@@ -483,9 +377,6 @@
     --edge-right: var(--line-inset);
 }
 
-
-
-/* Mobile — se quiseres gaps menores só em Sports */
 @media (max-width: 719.98px) {
     :global([data-brand="sports"]) .inner {
         --gap-x: 1rem;

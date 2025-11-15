@@ -1,4 +1,3 @@
-/* ===== Ícones partilhados ===== */
 import {
   FacebookIcon,
   InstagramIcon,
@@ -9,7 +8,6 @@ import {
   CardIcon,
   ShieldIcon,
   MedalIcon,
- 
   PlaneIcon,
   BusIcon,
   TourBusIcon,
@@ -18,6 +16,11 @@ import {
   StarIcon,
   TravelVector,
   ChevronDownIcon,
+  BrainIcon,
+  UsersIcon,
+  EarthIcon,
+  SpeedIcon,
+  SunIcon,
 } from "../ui/icons/index.js";
 
 /* ===== Bandeiras partilhadas ===== */
@@ -31,6 +34,7 @@ import {
   SaudiArabiaFlag,
 } from "../ui/icons/flags/index.js";
 
+/* ===== Reexports úteis ===== */
 /* ===== Reexports úteis ===== */
 export const ICONS = {
   FacebookIcon,
@@ -49,7 +53,12 @@ export const ICONS = {
   StarIcon,
   TravelVector,
   ChevronDownIcon,
-  MedalIcon
+  MedalIcon,
+  BrainIcon,
+  UsersIcon,
+  EarthIcon,
+  SpeedIcon,
+  SunIcon,
 };
 
 export const FLAGS = {
@@ -220,6 +229,21 @@ export function makePoliciesBar({
   if (typeof year === "number") base.copyright.year = year;
   if (iconAriaLabel) base.icon = { ariaLabel: iconAriaLabel };
   return base;
+}
+
+/* ===== Acknowledgements helper (opcional) ===== */
+export function makeAcknowledgements({
+  src,
+  alt = "Acknowledgements",
+  pdf,
+} = {}) {
+  if (!src) return undefined;
+  return {
+    image: { src, alt, ...IMG_COMMON },
+    link: pdf
+      ? { href: pdf, target: "_blank", rel: "noopener", ariaLabel: "Abrir PDF" }
+      : undefined,
+  };
 }
 
 /* ===== LinkDirectory helpers (Group) ===== */

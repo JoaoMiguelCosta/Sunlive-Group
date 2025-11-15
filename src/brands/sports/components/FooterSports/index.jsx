@@ -1,18 +1,7 @@
-// FooterSports — alinhado ao container do header (igual a Group/Travel)
-
-import styles from "./FooterSports.module.css";
-
-import InfoHeader from "../../../../shared/components/FooterGroup/InfoHeader.jsx";
-import Acknowledgements from "../../../../shared/components/FooterGroup/Acknowledgements.jsx";
-import PoliciesBar from "../../../../shared/components/FooterGroup/PoliciesBar.jsx";
-
+import FooterGroup from "../../../../shared/components/FooterGroup";
 import SportsLinkDirectory from "./SportsLinkDirectory.jsx";
 
-/**
- * FooterSports — compõe o footer para a marca Sports
- * Props: `data` vindo de sportsBrand.sections.footer
- */
-export default function FooterSports({
+export default function SportsFooter({
   data,
   flushTop = false,
   variant = "default",
@@ -20,42 +9,14 @@ export default function FooterSports({
 }) {
   if (!data) return null;
 
-  // ⚠️ Não usar "InfoHeader" como var local
-  const {
-    InfoHeader: infoHeaderFromConfig, // maiúsculas (compat)
-    infoHeader, // minúsculas (fallback)
-    linkDirectory,
-    acknowledgements,
-    policiesBar,
-    id = "footer-sports",
-  } = data;
-
-  const infoHeaderData = infoHeader ?? infoHeaderFromConfig ?? null;
-
-  const classes = [
-    styles.footerWrap,
-    flushTop ? styles.flushTop : "",
-    variant === "wide" ? styles.wide : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
   return (
-    <footer
-      id={id}
-      className={classes}
-      role="contentinfo"
-      aria-label="Footer — Sunlive Sports"
+    <FooterGroup
+      data={data}
+      flushTop={flushTop}
+      variant={variant}
+      footerAccent="#2EC27E" // acento Sports
+      components={{ LinkDirectory: SportsLinkDirectory }} // override do bloco do meio
       {...rest}
-    >
-      <div className={styles.frame}>
-        {infoHeaderData && <InfoHeader data={infoHeaderData} />}
-
-        {linkDirectory && <SportsLinkDirectory data={linkDirectory} />}
-
-        {acknowledgements && <Acknowledgements data={acknowledgements} />}
-        {policiesBar && <PoliciesBar data={policiesBar} />}
-      </div>
-    </footer>
+    />
   );
 }

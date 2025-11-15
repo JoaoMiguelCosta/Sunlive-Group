@@ -1,0 +1,140 @@
+/* =========================================================
+   SportsClosingPanel — painel de fecho / transição
+   Performance Prestige: Noir + dourado + verde-vital
+   ========================================================= */
+
+.panel {
+    width: 100%;
+        max-width: var(--sl-container-lg, 1200px);
+        margin-inline: auto;
+    
+        /* encostado em cima, espaço igual em baixo até ao footer */
+        margin-block-start: 0;
+        margin-block-end: clamp(2.6rem, 4.2vw, 3.4rem);
+    
+        padding: clamp(1.8rem, 3vw, 2.4rem) clamp(1.8rem, 3vw, 2.6rem);
+        border-radius: 999px;
+        box-sizing: border-box;
+
+    background:
+        radial-gradient(circle at 0 0,
+            rgba(199, 134, 21, 0.35) 0,
+            transparent 55%),
+        radial-gradient(circle at 100% 100%,
+            rgba(46, 194, 126, 0.35) 0,
+            transparent 60%),
+        color-mix(in oklab, #040712 86%, black 14%);
+    border: 1px solid rgba(199, 134, 21, .9);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.7),
+        0 22px 48px rgba(0, 0, 0, 0.9);
+
+    text-align: center;
+    color: var(--sl-platinum-030, #f0f3ff);
+}
+
+/* chip / etiqueta no topo */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.25rem 0.9rem;
+    border-radius: 999px;
+
+    border: 1px solid rgba(199, 134, 21, .8);
+    background: rgba(5, 7, 16, 0.7);
+
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.95;
+}
+
+.title {
+    margin-top: 1rem;
+    font-size: clamp(1.35rem, 2.1vw, 1.7rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.body {
+    margin-top: 0.8rem;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.bodyLine {
+    font-size: clamp(0.96rem, 1.1vw, 1.03rem);
+    line-height: 1.6;
+}
+
+/* ações (botões / links) */
+
+.actions {
+    margin-top: clamp(1.3rem, 2vw, 1.6rem);
+    display: flex;
+    justify-content: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+}
+
+.secondary {
+    align-self: center;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+
+    padding: 0.7rem 1.9rem;
+    border-radius: 999px;
+
+    border: 1px solid rgba(199, 134, 21, 0.6);
+    background: transparent;
+
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--sl-platinum-050, #e7ebf3);
+    text-decoration: none;
+
+    transition:
+        background 150ms ease-out,
+        color 150ms ease-out,
+        border-color 150ms ease-out,
+        transform 140ms ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .secondary:hover {
+        background: rgba(7, 13, 30, 0.95);
+        border-color: rgba(240, 155, 7, 0.9);
+        transform: translateY(-1px);
+    }
+}
+
+/* responsivo */
+
+@media (max-width: 768px) {
+    .panel {
+        border-radius: 32px;
+    }
+}
+
+@media (max-width: 540px) {
+    .panel {
+        margin-block: 2rem;
+        padding-inline: 1.4rem;
+        border-radius: 24px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,7 +1,5 @@
-// src/shared/components/FooterGroup/LinkDirectory.jsx
 import styles from "./LinkDirectory.module.css";
 import { contacts } from "../../../brands/group/ConfigGroup.jsx";
-
 import useSmartAnchorNav from "../../../shared/hooks/useSmartAnchorNav.js";
 import PillLink from "./PillLink.jsx";
 import { buildFlagMap, getFlagComp, modClassFor } from "./utils/flagHelpers";
@@ -24,6 +22,7 @@ export default function LinkDirectory({ data }) {
   return (
     <section className={styles.sectionWrap} aria-label="Footer — Quick Links">
       <div className={styles.inner}>
+        {/* ------ Bloco Esquerdo ------ */}
         <div className={styles.block}>
           {left?.title && (
             <h3 className={`${styles.sectionTitle} ${styles.sectionTitleLeft}`}>
@@ -39,7 +38,6 @@ export default function LinkDirectory({ data }) {
                   const Flag = getFlagComp(flagMap, item);
                   const mod = modClassFor(styles, key);
 
-                  // agora 'units' e 'countries' usam toGroup (mesma página)
                   const onSmartClick =
                     col.key === "countries" || col.key === "units"
                       ? toGroup
@@ -69,7 +67,7 @@ export default function LinkDirectory({ data }) {
           </div>
         </div>
 
-        {/* -------- Bloco Direito -------- */}
+        {/* ------ Bloco Direito ------ */}
         <div className={styles.block}>
           {right?.title && (
             <h3

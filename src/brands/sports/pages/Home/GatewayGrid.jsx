@@ -1,14 +1,14 @@
-// GatewayGrid.jsx
+// GatewayGrid — “Entradas” principais da Home Sports
 import { Link } from "react-router-dom";
 import styles from "./GatewayGrid.module.css";
-// ⚠️ ajusta o caminho conforme a tua estrutura
+
+// ajusta o caminho conforme a tua estrutura real
 import sportsBrand from "../../configSports.jsx";
 
-// …
 export default function GatewayGrid() {
-  // 👇 CORRIGIDO: buscar em sections.home
+  // buscar items em sections.home.gateway
   const items = sportsBrand?.sections?.home?.gateway ?? [];
-  if (!items.length) return null; // evita espaço vazio + footer colado
+  if (!items.length) return null; // evita bloco vazio
 
   return (
     <section className={styles.section} aria-label="Entradas — Sunlive Sports">
@@ -18,34 +18,36 @@ export default function GatewayGrid() {
             const className = [
               styles.item,
               it.variant === "cta" ? styles.cta : "",
-            ].join(" ");
+            ]
+              .filter(Boolean)
+              .join(" ");
+
             const content = <span className={styles.label}>{it.label}</span>;
-            const isHash =
-              typeof it.href === "string" && it.href.startsWith("#");
+
+            const href = it.href ?? "#";
+            const isHash = typeof href === "string" && href.startsWith("#");
             const isExternal =
-              typeof it.href === "string" && /^https?:\/\//i.test(it.href);
+              typeof href === "string" && /^https?:\/\//i.test(href);
 
             return (
               <div key={it.key} className={className}>
                 {isExternal ? (
                   <a
-                    href={it.href}
+                    href={href}
                     className={styles.click}
                     aria-label={it.label}
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     {content}
                   </a>
                 ) : isHash ? (
-                  <a
-                    href={it.href}
-                    className={styles.click}
-                    aria-label={it.label}
-                  >
+                  <a href={href} className={styles.click} aria-label={it.label}>
                     {content}
                   </a>
                 ) : (
                   <Link
-                    to={it.href}
+                    to={href}
                     className={styles.click}
                     aria-label={it.label}
                   >

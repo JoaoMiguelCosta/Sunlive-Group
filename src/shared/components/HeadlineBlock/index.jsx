@@ -5,6 +5,7 @@ import styles from "./HeadlineBlock.module.css";
  * - Variants: "banded" | "plain"
  * - Align: "center" | "left"
  * - max: "sm" | "md" | "lg"
+ * - theme: "default" | "sports" | outros (mapeados em CSS via [data-variant])
  */
 export default function HeadlineBlock({
   eyebrow,
@@ -15,6 +16,7 @@ export default function HeadlineBlock({
   icon: Icon,
   as = "h2",
   max = "lg",
+  theme = "default", // <-- novo
   className = "",
 }) {
   if (!title && !lead) return null;
@@ -31,7 +33,11 @@ export default function HeadlineBlock({
     .join(" ");
 
   return (
-    <section className={classes} aria-label={title || eyebrow || "Headline"}>
+    <section
+      className={classes}
+      data-variant={theme} // <-- aqui nasce o data-variant="sports"
+      aria-label={title || eyebrow || "Headline"}
+    >
       {variant === "banded" && (
         <div className={styles.band} aria-hidden="true" />
       )}

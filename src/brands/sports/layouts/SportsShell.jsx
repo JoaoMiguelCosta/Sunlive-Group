@@ -1,9 +1,10 @@
 // src/brands/sports/layouts/SportsShell.jsx
 import { Outlet } from "react-router-dom";
-import UtilityBar from "../../../shared/components/UtilityBar";
-import BrandMasthead from "../../../shared/components/Sports/BrandMasthead/index.jsx";
 
+import UtilityBar from "../../../shared/components/UtilityBar";
+import BrandMasthead from "../../../shared/components/Sports/BrandMasthead";
 import FooterSports from "../components/FooterSports";
+
 import sportsBrand from "../configSports.jsx";
 import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
 import { buildFooterData } from "../../../shared/utils/normalizeFooter.js";
@@ -11,15 +12,17 @@ import { buildFooterData } from "../../../shared/utils/normalizeFooter.js";
 import sportsLogo from "../assets/LogoSunliveSports/sports.png";
 import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
 
+import styles from "./SportsShell.module.css";
+
 export default function SportsShell({ backLink }) {
   const footerRaw = sportsBrand.sections?.footer;
   const footerData = buildFooterData(footerRaw, groupFooter, "footer-sports");
 
-  const socials = sportsBrand?.header?.socials ?? []; // já vêm com Icon via withSocialIcons
+  const socials = sportsBrand?.header?.socials ?? [];
   const lang = sportsBrand?.header?.lang ?? LANG_DEFAULT;
 
   return (
-    <div data-brand="sports">
+    <div className={styles.shell} data-brand="sports" data-shell="sports">
       <UtilityBar
         variant="sports-header"
         backLink={backLink}
@@ -28,13 +31,13 @@ export default function SportsShell({ backLink }) {
       />
 
       <BrandMasthead
-        src={sportsLogo} // usa SEMPRE o asset local
+        src={sportsLogo}
         alt="Sunlive Sports"
         logoAr={2.375}
         loading="eager"
       />
 
-      <main>
+      <main className={styles.main} aria-label="Sunlive Sports — Conteúdo">
         <Outlet />
       </main>
 

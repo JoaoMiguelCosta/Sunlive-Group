@@ -284,7 +284,6 @@ const BASE_PATH = "/sunlive-group";
 export const footer = {
   id: "footer",
 
-  // infoHeader normalizado via helper (contacts & socials por defeito)
   infoHeader: makeFooterInfoHeader("group", {
     brand: {
       title: "Sunlive Group",
@@ -306,7 +305,6 @@ export const footer = {
     socials: { title: "Redes Sociais", items: GROUP_SOCIALS },
   }),
 
-  // LinkDirectory — derivado via helpers genéricos (sem duplicação)
   linkDirectory: {
     left: {
       title: "Contacts Sunlive Group",
@@ -327,7 +325,6 @@ export const footer = {
     right: { title: PARTNERS_TITLE, items: PARTNER_LINKS },
   },
 
-  // Acknowledgements
   acknowledgements: {
     image: {
       src: acknowledgementsImg,
@@ -342,7 +339,6 @@ export const footer = {
     },
   },
 
-  // Policies bar (deduplicado via helper; mantém shape/valores)
   policiesBar: makePoliciesBar({
     holder: "Sunlive Group. Todos os direitos reservados.",
     year: 2025,

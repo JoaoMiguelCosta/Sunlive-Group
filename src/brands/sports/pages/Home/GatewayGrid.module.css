@@ -1,0 +1,148 @@
+/* =========================================================
+   GatewayGrid — Entradas principais Home Sports
+   Prestige Noir + Liquid Gold + verde-vital (#2EC27E)
+   ========================================================= */
+
+.section {
+    width: 100%;
+    padding-inline: var(--section-inset, clamp(12px, 4vw, 40px));
+
+    /* menos margem em cima/baixo */
+    margin-block: clamp(1.4rem, 3vw, 2.1rem);
+
+
+}
+.inner {
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+ 
+}
+
+/* ===== Grid ===== */
+
+.grid {
+    display: grid;
+    gap: clamp(0.85rem, 1.8vw, 1.25rem);
+}
+
+/* XS/SM: 1 coluna */
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* MD: 2 colunas */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* LG+: 3 colunas */
+@media (min-width: 1025px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* ===== Item base ===== */
+
+.item {
+    position: relative;
+    border-radius: 999px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 0 0,
+            rgba(199, 134, 21, 0.4) 0,
+            transparent 55%),
+        radial-gradient(circle at 100% 100%,
+            rgba(46, 194, 126, 0.36) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 86%, black 14%);
+
+border: 2px solid rgba(199, 134, 21, .9);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.8),
+        0 16px 38px rgba(0, 0, 0, 0.9);
+
+    transition:
+        transform 150ms ease-out,
+        box-shadow 150ms ease-out,
+        border-color 150ms ease-out,
+        background 150ms ease-out;
+}
+
+/* Hover / focus dentro do item */
+.item:hover {
+    transform: translateY(-1px);
+background:
+        rgba(241, 155, 8, 0.9);
+        border: 2px solid rgba(240, 155, 7, 0.9);
+}
+
+/* ===== Link clicável ===== */
+
+.click {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    inline-size: 100%;
+    block-size: 100%;
+
+    padding-block: clamp(0.85rem, 1.8vw, 1.15rem);
+    padding-inline: clamp(1.1rem, 2.1vw, 1.6rem);
+
+    text-decoration: none;
+    background: transparent;
+
+    color: var(--sl-platinum-050, #e7ebf3);
+}
+
+/* ===== Label ===== */
+
+.label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.7);
+}
+
+/* XS: permitir quebra em 2 linhas se for muito texto */
+@media (max-width: 480px) {
+    .label {
+        white-space: normal;
+    }
+}
+
+/* ===== Variante CTA (mais forte / destaque) ===== */
+
+.cta {
+    background:
+  rgba(227, 152, 12, 0.977);
+      
+       
+    
+border: 2px solid rgba(199, 134, 21, .9);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 22px 52px rgba(0, 0, 0, 0.95);
+}
+
+.cta .label {
+    color: color-mix(in oklab, var(--sl-platinum-050, #e7ebf3) 80%, white 20%);
+}
+
+/* Hover na CTA fica ainda mais “performante” */
+.cta:hover {
+    transform: translateY(-2px);
+background:
+        #c96c02d7
+}

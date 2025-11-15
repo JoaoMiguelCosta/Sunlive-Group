@@ -36,6 +36,7 @@
     top: 0;
     inline-size: var(--content-w-effective);
     height: var(--band-h);
+
     background: rgba(199, 134, 21, 0.9);
     border: 1px solid color-mix(in oklab, var(--sl-gold-500, #a16207), black 20%);
     border-bottom: 0;
@@ -50,9 +51,11 @@
     margin-inline: auto;
     border-radius: var(--radius);
     padding: var(--pad-y);
+
     box-shadow:
         0 1px 0 rgba(255, 255, 255, .04) inset,
         0 18px 38px rgba(0, 0, 0, .32);
+
     background: var(--sl-navy-900, #020a20);
     overflow: clip;
     background-clip: padding-box;
@@ -87,187 +90,113 @@
     text-align: left;
 }
 
-/* ===== Título ===== */
+/* ===== Título (default: usa accent genérico) ===== */
 .title {
     margin: 0 0 clamp(2rem, 1.2vw, .7rem) 0;
     font-weight: 800;
     line-height: 1.2;
     letter-spacing: .01em;
     font-size: clamp(1.20rem, 2.6vw, 2.20rem);
+
     color: color-mix(in oklab, var(--sl-gold-400) 84%, var(--sl-accent-500) 16%);
     text-shadow: 0 1px 0 rgba(0, 0, 0, .35);
 }
 
-/* ===== Lead / texto ===== */
+/* ===== Lead / texto (default) ===== */
 .lead {
     margin: 0;
     font-weight: 500;
     line-height: clamp(1.46, 2.2vw, 1.6);
     font-size: clamp(0.98rem, 1.8vw, 1.18rem);
-    color: color-mix(in oklab, var(--sl-platinum-100, #f6f7fb) 80%, var(--sl-accent-500, #2EA7E0) 10%);
+
+    color: color-mix(in oklab,
+            var(--sl-platinum-100, #f6f7fb) 80%,
+            var(--sl-accent-500, #2EA7E0) 10%);
     text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
 }
 
-/* =========================
-   RESPONSIVIDADE (breakpoints)
-   ========================= */
-
-/* XS — ≤480px */
-@media (max-width: 480px) {
-    .wrap {
-        --radius: 10px;
-        --band-h: 14px;
-        --pad-y: clamp(.8rem, 4.5vw, 1rem);
-    }
-
-    .band {
-        inline-size: var(--content-w-effective);
-    }
-
-    .variant-banded .inner,
-    .variant-plain .inner {
-        width: var(--content-w-effective);
-    }
-
-    .title {
-        font-size: clamp(1.15rem, 6vw, 1.6rem);
-    }
-
-    .lead {
-        font-size: clamp(.95rem, 4.2vw, 1.05rem);
-    }
+/* Eyebrow + icon (base genérico, caso ainda não exista) */
+.eyebrow {
+    margin: 0 0 .4rem 0;
+    font-size: .78rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: color-mix(in oklab, var(--sl-platinum-120, #dde3f0) 80%, var(--sl-gold-400) 20%);
 }
 
-/* SM — 481–640px */
-@media (min-width: 481px) and (max-width: 640px) {
-    .wrap {
-        --radius: 11px;
-        --band-h: 16px;
-        --pad-y: clamp(.9rem, 4vw, 1.2rem);
-    }
+.icon {
+    margin-bottom: .5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    .title {
-        font-size: clamp(1.2rem, 5.2vw, 1.7rem);
-    }
+    inline-size: 2.6rem;
+    block-size: 2.6rem;
+    border-radius: 999px;
 
-    .lead {
-        font-size: clamp(.98rem, 3.6vw, 1.1rem);
-    }
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.18) 0, transparent 55%),
+        color-mix(in oklab, #050609 80%, black 20%);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--sl-gold-400, #c78615);
 }
 
-/* MD — 641–768px */
-@media (min-width: 641px) and (max-width: 768px) {
-    .wrap {
-        --radius: 12px;
-        --band-h: 18px;
-        --pad-y: clamp(1rem, 3.6vw, 1.3rem);
-    }
-
-    .title {
-        font-size: clamp(1.3rem, 3.8vw, 1.9rem);
-    }
-
-    .lead {
-        font-size: clamp(1rem, 2.6vw, 1.12rem);
-    }
-}
-
-/* LG — 769–1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .wrap {
-        --radius: 12px;
-        --band-h: 20px;
-        --pad-y: clamp(1.05rem, 2.8vw, 1.4rem);
-    }
-
-    .title {
-        font-size: clamp(1.35rem, 3vw, 2.1rem);
-    }
-}
-
-/* XL — ≥1280px */
-@media (min-width: 1280px) {
-    .title {
-        font-size: clamp(1.35rem, 2.1vw, 2.30rem);
-    }
-
-    .wrap {
-        --radius: 14px;
-        --band-h: 22px;
-        --pad-y: clamp(1.2rem, 2.2vw, 1.6rem);
-    }
-
-    .title {
-        font-size: clamp(1.5rem, 2.4vw, 2.5rem);
-    }
-
-    .lead {
-        font-size: clamp(1.03rem, 1.6vw, 1.22rem);
-    }
-}
-
-/* 2XL — ≥1536px */
-@media (min-width: 1536px) {
-    .band {
-        inline-size: var(--content-w-effective);
-    }
-
-    .variant-banded .inner,
-    .variant-plain .inner {
-        width: var(--content-w-effective);
-    }
+.icon svg {
+    inline-size: 1.3rem;
+    block-size: 1.3rem;
 }
 
 /* =========================
-   Hover Travel (interior) — DOURADO + INTENSO
+   VARIANTE SPORTS (verde #2EC27E)
    ========================= */
-@media (hover: hover) {
-    .variant-banded .inner {
-        transition: background .22s ease, box-shadow .22s ease;
-    }
-
-    .variant-banded .inner:hover,
-    .variant-banded .inner:focus-visible {
-        background:
-            /* halo azul suave (mantém o ADN Travel) */
-            radial-gradient(120% 120% at 15% 10%,
-                color-mix(in srgb, var(--sl-accent-500, #2EA7E0) 14%, transparent) 0%,
-                transparent 62%),
-            /* lâmina dourada MAIS presente no topo */
-            linear-gradient(180deg,
-                color-mix(in srgb, var(--sl-gold-500, #A16207) 60%, transparent) 0%,
-                transparent 100%),
-            /* base navy */
-            linear-gradient(180deg, rgba(12, 20, 44, .94), rgba(5, 9, 26, .98));
-
-        /* leve “anel” dourado pela borda interna para realçar */
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, .05),
-            0 22px 44px rgba(0, 0, 0, .34),
-            inset 0 0 0 1px color-mix(in srgb, var(--sl-gold-400, #C78615) 22%, transparent);
-        outline: none;
-    }
+   
+   /* Caixa interna banded — halo ligeiro verde/dourado */
+.wrap[data-variant="sports"].variant-banded .inner {
+background: radial-gradient(circle at top right,
+            color-mix(in oklab, var(--sl-accent-500, #2EC27E), transparent 40%) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 88%, black 12%);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .05) inset,
+        0 22px 46px rgba(0, 0, 0, .48);
 }
 
-/* Fallback sem color-mix */
-@supports not (color: color-mix(in oklab, white, black)) {
-
-    .variant-banded .inner:hover,
-    .variant-banded .inner:focus-visible {
-        background:
-            radial-gradient(120% 120% at 15% 10%, rgba(46, 167, 224, .14) 0%, transparent 62%),
-            linear-gradient(180deg, rgba(161, 98, 7, .26) 0%, transparent 100%),
-            linear-gradient(180deg, rgba(12, 20, 44, .94), rgba(5, 9, 26, .98));
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, .05),
-            0 22px 44px rgba(0, 0, 0, .34),
-            inset 0 0 0 1px rgba(199, 134, 21, .22);
-    }
+/* Título — puxa mais para o verde performance */
+.wrap[data-variant="sports"] .title {
+    color: color-mix(in oklab,
+            var(--sl-accent-500, #2EC27E) 60%,
+            var(--sl-gold-400, #c78615) 40%);
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, .5),
+        0 0 20px rgba(46, 194, 126, 0.5);
 }
 
-/* Acessibilidade */
-@media (prefers-reduced-motion: reduce) {
-    .variant-banded .inner {
-        transition: none;
-    }
+
+/* Eyebrow — verde discreto, mais técnico/performance */
+.wrap[data-variant="sports"] .eyebrow {
+    color: color-mix(in oklab,
+            var(--sl-accent-400, #4CD29A) 70%,
+            var(--sl-platinum-120, #dde3f0) 30%);
+}
+
+/* Icon — cercado por halo verde/dourado */
+.wrap[data-variant="sports"] .icon {
+    background:
+        radial-gradient(circle at 30% 20%,
+            color-mix(in oklab, var(--sl-accent-400, #4CD29A), white 10%) 0,
+            transparent 55%),
+        radial-gradient(circle at 80% 80%,
+            color-mix(in oklab, var(--sl-gold-400, #c78615), black 20%) 0,
+            transparent 70%),
+        color-mix(in oklab, #050609 80%, black 20%);
+
+    border-color: color-mix(in oklab,
+            var(--sl-accent-600, #1F8D5C),
+            var(--sl-gold-400, #c78615) 30%);
+    color: var(--sl-platinum-050, #e7ebf3);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.7),
+        0 0 22px rgba(46, 194, 126, 0.6);
 }

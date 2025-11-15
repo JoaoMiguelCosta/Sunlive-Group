@@ -1,0 +1,415 @@
+/* =========================================================
+   ProgramDetailSection — Card de programa Performance Prestige
+   Base: Noir + Gold + Sports (verde-vital)
+   ========================================================= */
+
+.section {
+    width: 100%;
+
+    /* 🔥 base para o reveal */
+    will-change: opacity, transform;
+}
+
+/* ===== Scroll reveal ===== */
+
+/* estado base: fora e transparente */
+.reveal {
+    opacity: 0;
+    transform: translateX(0);
+    transition:
+        opacity 0.6s ease-out,
+        transform 0.6s ease-out;
+}
+
+.fromLeft {
+    transform: translateX(-60px);
+}
+
+.fromRight {
+    transform: translateX(60px);
+}
+
+/* quando entra no viewport */
+.isVisible {
+    opacity: 1;
+    transform: translateX(0);
+}
+/* Card principal */
+.inner {
+    position: relative;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+
+    display: grid;
+    gap: clamp(1.25rem, 2.4vw, 1.8rem);
+    /* ↓ ligeiro */
+
+    /* ↓ padding reduzido para baixar a altura geral */
+    padding: clamp(1.25rem, 2.4vw, 1.8rem);
+    border-radius: 1.5rem;
+
+    background:
+        radial-gradient(circle at top left,
+            color-mix(in oklab, var(--sl-accent-500, #2EC27E) 14%, transparent) 0,
+            transparent 55%),
+        radial-gradient(circle at bottom right,
+            color-mix(in oklab, var(--sl-gold-400, #C78615) 18%, transparent) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 85%, black 15%);
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #A16207),
+            var(--sl-accent-600, #1F8D5C) 32%);
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+
+    overflow: hidden;
+}
+
+/* Layout responsivo texto + media */
+.textPanel,
+.mediaPanel {
+    position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 900px) {
+    .inner {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        /* esticar ambas as colunas à mesma altura */
+        align-items: stretch;
+    }
+
+    /* Imagem à esquerda */
+    .imageLeft .textPanel {
+        order: 2;
+    }
+
+    .imageLeft .mediaPanel {
+        order: 1;
+    }
+
+    /* Imagem à direita (default) */
+    .imageRight .textPanel {
+        order: 1;
+    }
+
+    .imageRight .mediaPanel {
+        order: 2;
+    }
+}
+
+/* ===== Header / título ===== */
+
+.header {
+    margin-bottom: clamp(0.6rem, 1.2vw, 0.9rem);
+    /* ↓ */
+}
+
+.headerMain {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.iconWrap {
+    flex-shrink: 0;
+    inline-size: 2.7rem;
+    block-size: 2.7rem;
+    border-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at 30% 20%,
+            color-mix(in oklab, var(--sl-accent-500, #2EC27E), white 8%) 0,
+            transparent 65%),
+        radial-gradient(circle at 70% 80%,
+            color-mix(in oklab, var(--sl-gold-400, #C78615), black 18%) 0,
+            transparent 70%),
+        color-mix(in oklab, #050609 80%, black 20%);
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-accent-600, #1F8D5C),
+            var(--sl-gold-400, #C78615) 28%);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.6),
+        0 0 18px rgba(46, 194, 126, 0.5);
+    color: var(--sl-platinum-050, #e7ebf3);
+}
+
+.iconWrap svg {
+    inline-size: 1.35rem;
+    block-size: 1.35rem;
+}
+
+.title {
+    font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--sl-platinum-050, #e7ebf3);
+}
+
+/* ===== Corpo do texto ===== */
+
+.body {
+    display: grid;
+    gap: clamp(0.75rem, 1.6vw, 1.1rem);
+    /* ↓ um pouco */
+}
+
+.description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--sl-platinum-150, #f4f5fb);
+    max-width: 38rem;
+}
+
+.block {
+    display: grid;
+    gap: 0.3rem;
+}
+
+.blockTitle {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: color-mix(in oklab,
+            var(--sl-gold-400, #C78615),
+            var(--sl-accent-500, #2EC27E) 32%);
+}
+
+.blockText {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--sl-platinum-120, #dde3f0);
+}
+
+/* Lista de atividades */
+
+.activitiesList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: grid;
+    gap: 0.25rem;
+    /* ↓ */
+}
+
+.activityItem {
+    position: relative;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--sl-platinum-120, #dde3f0);
+}
+
+.activityItem::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0.55em;
+    inset-inline-start: 0.1rem;
+    inline-size: 0.4rem;
+    block-size: 0.4rem;
+    border-radius: 999px;
+
+    background:
+        radial-gradient(circle,
+            var(--sl-accent-500, #2EC27E) 0,
+            color-mix(in oklab,
+                var(--sl-gold-400, #C78615),
+                var(--sl-accent-500, #2EC27E) 30%) 60%,
+            transparent 100%);
+}
+
+/* ===== Media (imagem) ===== */
+
+.mediaPanel {
+    position: relative;
+
+    /* faz a coluna da media esticar à altura da grid */
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    background-color: red;
+    /* TODO: remover quando tiveres imagens reais */
+}
+
+.mediaFigure,
+.mediaPlaceholder {
+    position: relative;
+    inline-size: min(100%, 400px);
+    /* ↓ ligeiro */
+    margin: 0 0 0 auto;
+
+    border-radius: 1.4rem;
+    overflow: clip;
+
+    /* altura = altura do card (coluna) */
+    height: 100%;
+    block-size: 100%;
+}
+
+/* Fundo/halo da figura real */
+.mediaFigure {
+    background: radial-gradient(circle at 20% 0,
+            rgba(199, 134, 21, 0.35) 0,
+            transparent 55%);
+}
+
+/* Glow por trás da imagem */
+.mediaGlow {
+    position: absolute;
+    inset: -25%;
+    z-index: -1;
+
+    background:
+        radial-gradient(circle at 20% 0,
+            rgba(199, 134, 21, var(--sl-ornament-alpha, 0.12)) 0,
+            transparent 55%),
+        radial-gradient(circle at 80% 100%,
+            rgba(46, 194, 126, 0.35) 0,
+            transparent 60%);
+    filter: blur(22px);
+}
+
+.mediaFigure img {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Placeholder quando não há imagem */
+.mediaPlaceholder {
+    /* ↓ altura mínima ligeiramente mais baixa */
+    min-block-size: 190px;
+
+    background:
+        repeating-linear-gradient(135deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.06) 1px,
+            transparent 1px,
+            transparent 7px);
+    opacity: 0.35;
+}
+
+/* ===== Mobile tweaks ===== */
+
+@media (max-width: 899.98px) {
+    .inner {
+        padding: 1.1rem 1rem;
+        /* ↓ */
+    }
+
+    .mediaPanel {
+        justify-content: center;
+    }
+
+    .mediaFigure,
+    .mediaPlaceholder {
+        margin-inline: auto;
+        margin-block-start: 0.7rem;
+
+        /* em mobile deixamos a altura seguir o conteúdo */
+        height: auto;
+        block-size: auto;
+    }
+
+    .headerMain {
+        align-items: flex-start;
+    }
+}
+
+.activityItem {
+    position: relative;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--sl-platinum-120, #dde3f0);
+}
+
+/* Botão do acordeão (título + seta) */
+.blockToggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    width: 100%;
+    padding: 0.2rem 0;
+
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+
+    text-align: left;
+}
+
+/* Mantém o h4 igual mas sem margens extra no botão */
+.blockToggle .blockTitle {
+    margin: 0;
+}
+
+/* Chevron “Performance Prestige” */
+.chevron {
+    inline-size: 1.6rem;
+    block-size: 1.6rem;
+    border-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-accent-500, #2EC27E),
+            var(--sl-gold-400, #C78615) 32%);
+    background:
+        radial-gradient(circle at 30% 20%,
+            color-mix(in oklab, var(--sl-accent-500, #2EC27E), white 10%) 0,
+            transparent 65%),
+        color-mix(in oklab, #050609 90%, black 10%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.7),
+        0 0 10px rgba(46, 194, 126, 0.45);
+
+    transition: transform 0.22s ease, box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+.chevron svg {
+    inline-size: 0.9rem;
+    block-size: 0.9rem;
+}
+
+/* Estado aberto (seta para cima) */
+.chevronOpen {
+    transform: rotate(180deg);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.8),
+        0 0 14px rgba(199, 134, 21, 0.75);
+}
+
+/* Destaque do prefixo da atividade (verde + bold) */
+.activityLabel {
+    font-weight: 700;
+    color: color-mix(in oklab,
+            var(--sl-accent-400, #33d089),
+            var(--sl-gold-300, #e0a63a) 25%);
+}
+
+.activityRest {
+    color: var(--sl-platinum-120, #dde3f0);
+}
+

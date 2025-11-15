@@ -1,5 +1,6 @@
 /* =============================================================================
    FooterGroup — alinhado ao mesmo container + inset das secções
+   Controla o fundo do frame via --footer-accent (por marca)
 ============================================================================= */
 
 .footerWrap {
@@ -9,16 +10,28 @@
   color: var(--sl-platinum-100);
   overflow: clip;
 
-  /* Agora herda 1) --sl-line-inset da página, 2) --line-inset local (fallback),
-     3) um valor default. Assim o footer acompanha SEMPRE a linha acima. */
+  /* Alinhamento horizontal (acompanha a “linha” acima) */
   --section-inset: var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)));
   --rule-thickness: 2px;
+
+  /* Cores base do footer (fallback neutro) */
+  --footer-accent: rgba(255, 255, 255, 0.0);
+  --footer-base: #070f1e;
 }
 
-/* 
-  A “caixa azul” tem a MESMA largura que o traço dourado:
-  width = container − 2 × inset. Sem padding lateral aqui.
-*/
+/* Overrides por marca */
+:global([data-brand="travel"]) .footerWrap {
+  --footer-accent: #2EA7E0;
+}
+
+/* azul */
+:global([data-brand="sports"]) .footerWrap {
+  --footer-accent: #2EC27E;
+}
+
+/* verde */
+
+/* Largura = min(container, 100%) − 2×inset */
 .frame {
   inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
   margin-inline: auto;
@@ -27,13 +40,16 @@
   overflow: clip;
   padding: 0;
 
+  /* Fundo com “tint” da cor de acento */
   background:
-    radial-gradient(1200px 420px at 50% -10%, rgba(199, 134, 21, .10), transparent 60%),
-    radial-gradient(900px 380px at 70% 115%, rgba(10, 28, 54, .25), transparent 60%),
-    #070f1e;
+    radial-gradient(1200px 420px at 50% -10%,
+      color-mix(in oklab, var(--footer-accent), transparent 85%), transparent 60%),
+    radial-gradient(900px 380px at 70% 115%,
+      color-mix(in oklab, var(--footer-accent), transparent 75%), transparent 60%),
+    var(--footer-base);
 }
 
-/* Linha de topo — ocupa 100% da largura do frame (já reduzida pelo inset) */
+/* Linha de topo (traço dourado) */
 .frame::before {
   content: "";
   position: absolute;
@@ -44,15 +60,52 @@
   pointer-events: none;
 }
 
-/* Cola o frame ao bloco anterior (compensa a espessura da linha) */
+/* “Colar” ao bloco anterior quando necessário */
 .flushTop .frame {
   margin-top: calc(-1 * var(--rule-thickness) - 1px);
 }
 
-/* Se precisares de uma “strip” acima, com o MESMO alinhamento: */
+/* Modificador — quando o InfoHeader já tem border-top (evitar linha dupla) */
+.noTopRule {
+  --rule-thickness: 0px;
+}
+
+.noTopRule::before {
+  content: none;
+}
+
+.flushTop .noTopRule {
+  margin-top: 0;
+}
+
+/* Strip auxiliar com o mesmo alinhamento (se precisares) */
 .strip {
   inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
   margin-inline: auto;
   box-sizing: border-box;
   border-top: var(--rule-thickness) solid rgba(199, 134, 21, 0.35);
+}
+
+/* Fallback sem color-mix */
+@supports not (background: color-mix(in oklab, white, black)) {
+  .frame {
+    background:
+      radial-gradient(1200px 420px at 50% -10%, rgba(255, 255, 255, .04), transparent 60%),
+      radial-gradient(900px 380px at 70% 115%, rgba(255, 255, 255, .03), transparent 60%),
+      var(--footer-base);
+  }
+
+  :global([data-brand="travel"]) .frame {
+    background:
+      radial-gradient(1200px 420px at 50% -10%, rgba(46, 167, 224, .15), transparent 60%),
+      radial-gradient(900px 380px at 70% 115%, rgba(46, 167, 224, .10), transparent 60%),
+      var(--footer-base);
+  }
+
+  :global([data-brand="sports"]) .frame {
+    background:
+      radial-gradient(1200px 420px at 50% -10%, rgba(46, 194, 126, .15), transparent 60%),
+      radial-gradient(900px 380px at 70% 115%, rgba(46, 194, 126, .10), transparent 60%),
+      var(--footer-base);
+  }
 }

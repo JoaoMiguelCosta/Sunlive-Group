@@ -1,7 +1,8 @@
 import styles from "./SportsLinkDirectory.module.css";
 
 /**
- * data.left.columns: [{ key, title, items:[{key,label,href}] }]
+ * Espera:
+ * data.left.columns: [{ key, title, items:[{key,label,href,variant?}] }]
  * data.partners.collaborators: { title, items:[{key,label}] }
  */
 export default function SportsLinkDirectory({ data }) {

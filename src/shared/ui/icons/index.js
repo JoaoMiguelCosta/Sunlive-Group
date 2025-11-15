@@ -8,6 +8,12 @@ import CardIcon from "./Card.jsx";
 import MailIcon from "./Mail.jsx";
 import PhoneIcon from "./Phone.jsx";
 import ShieldIcon from "./Shield.jsx";
+import UsersIcon from "./Users.jsx";
+import BrainIcon from "./Brain.jsx";
+import EarthIcon from  "./Earth.jsx";
+import SunIcon from "./Sun.jsx";
+import SpeedIcon from "./Speed.jsx";
+
 
 // Novos ícones (Travel / Logística)
 import PlaneIcon from "./Plane.jsx";
@@ -45,9 +51,14 @@ export {
   PackageIcon,
   HandshakeIcon,
   StarIcon,
-  MedalIcon, // 🆕
+  MedalIcon, 
   TravelVector,
   ChevronDownIcon,
+  UsersIcon,
+  BrainIcon,
+  EarthIcon,
+  SpeedIcon,
+  SunIcon,
 };
 
 // ===== Mapa conveniente para usar por chave (iconKey) =====

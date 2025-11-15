@@ -1,0 +1,133 @@
+/* =========================================================
+   ValuePillsBar (Sports)
+   Pilares em chips compridos — Prestige Noir + Gold + Verde
+   ========================================================= */
+
+.wrap {
+    width: 100%;
+    padding-inline: var(--section-inset, clamp(12px, 4vw, 40px));
+    margin-block: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.inner {
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1rem, 2vw, 1.5rem);
+
+    justify-content: center;
+}
+
+/* ===== Alinhamentos opcionais (prop align) ===== */
+
+.alignLeft {
+    justify-content: flex-start;
+}
+
+.alignCenter {
+    justify-content: center;
+}
+
+.alignRight {
+    justify-content: flex-end;
+}
+
+/* ===== Pill / card de pilar ===== */
+
+.pill {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+
+    padding-block: 0.55rem;
+    padding-inline: clamp(1.6rem, 3vw, 2rem);
+    border-radius: 999px;
+
+    /* 👇 LARGURA FIXA — todos iguais */
+    --pill-width: 320px;
+    inline-size: var(--pill-width);
+    flex: 0 0 var(--pill-width);
+    max-width: 100%;
+
+    background:
+        radial-gradient(circle at 0 0,
+            rgba(46, 194, 126, 0.28) 0,
+            transparent 55%),
+        radial-gradient(circle at 100% 100%,
+            rgba(199, 134, 21, 0.32) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 86%, black 14%);
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-400, #C78615) 70%,
+            var(--sl-accent-600, #1F8D5C) 30%);
+
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(0, 0, 0, 0.7);
+    color: var(--sl-platinum-050, #e7ebf3);
+    text-align: center;
+}
+
+/* hover / focus */
+
+.pill:hover {
+    background:
+            rgba(201, 136, 16, 0.871);
+    transform: translateY(-1px);
+}
+
+.pill:focus-visible {
+    outline: 2px solid color-mix(in oklab,
+            var(--sl-accent-500, #2EC27E),
+            white 18%);
+    outline-offset: 3px;
+}
+
+/* ===== Ícone ===== */
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.icon svg {
+    width: 1.35rem;
+    height: 1.35rem;
+    stroke: #e4bf07;
+    /* dourado consistente */
+    color: #e4bf07;
+}
+
+/* ===== Label ===== */
+
+.label {
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    /* ⚠️ deixamos quebrar linha para não esticar o pill */
+    white-space: normal;
+}
+
+/* ===== Mobile / tablets ===== */
+
+@media (max-width: 899.98px) {
+    .inner {
+        justify-content: center;
+    }
+
+    .pill {
+        --pill-width: min(100%, 280px);
+        inline-size: var(--pill-width);
+        flex-basis: var(--pill-width);
+    }
+}

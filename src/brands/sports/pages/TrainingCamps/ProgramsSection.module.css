@@ -1,0 +1,24 @@
+/* =========================================================
+   ProgramsSection — Lista de ProgramDetailSection
+   ========================================================= */
+
+.wrap {
+    width: 100%;
+
+    margin-block: clamp(2.8rem, 5vw, 4rem);
+}
+
+.grid {
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 3.5vw, 3rem);
+}
+
+/* Pequeno respiro extra no último card para separar do footer
+   (ou da próxima secção) */
+.grid> :last-child {
+    margin-bottom: 0.5rem;
+}

@@ -13,8 +13,8 @@ import SportsShellHome from "../../brands/sports/layouts/SportsShellHome.jsx";
 import SportsShellInner from "../../brands/sports/layouts/SportsShellInner.jsx";
 
 /* Sports — páginas */
-import SportsHomePage from "../../brands/sports/pages/HomePage.jsx";
-import TrainingCamps from "../../brands/sports/pages/TrainingCamps.jsx";
+import HomePageSports from "../../brands/sports/pages/Home/index.jsx";
+import TrainingCampsPage from "../../brands/sports/pages/TrainingCamps/index.jsx";
 import Academies from "../../brands/sports/pages/Academies.jsx";
 import Events from "../../brands/sports/pages/Events.jsx";
 import SunliveAthletes from "../../brands/sports/pages/SunliveAthletes.jsx";
@@ -44,12 +44,12 @@ export default function AppRoutes() {
 
       {/* Grupo 1: HOME (back → Sunlive Group) */}
       <Route path="/sunlive-group/sports" element={<SportsShellHome />}>
-        <Route index element={<SportsHomePage />} />
+        <Route index element={<HomePageSports />} />
       </Route>
 
       {/* Grupo 2: Restantes páginas (back → Menu Sports) */}
       <Route path="/sunlive-group/sports" element={<SportsShellInner />}>
-        <Route path="training-camps" element={<TrainingCamps />} />
+        <Route path="training-camps" element={<TrainingCampsPage />} />
         <Route path="academies" element={<Academies />} />
         <Route path="events" element={<Events />} />
         <Route path="sunlive-athletes" element={<SunliveAthletes />} />

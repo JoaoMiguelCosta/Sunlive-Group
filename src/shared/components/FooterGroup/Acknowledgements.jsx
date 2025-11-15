@@ -1,10 +1,8 @@
 import styles from "./Acknowledgements.module.css";
 
 /**
- * Acknowledgements — faixa com as logomarcas (PRR, República Portuguesa, UE).
- * Ao clicar na imagem abre o PDF em nova aba.
- *
- * Props: { data: { image:{src,alt,...}, link:{href,target,rel,ariaLabel} } }
+ * Acknowledgements — faixa com logomarcas (PRR, República Portuguesa, UE).
+ * Props: { data: { image:{src,alt,...}, link?:{href,target,rel,ariaLabel} } }
  */
 export default function Acknowledgements({ data }) {
   if (!data?.image?.src) return null;

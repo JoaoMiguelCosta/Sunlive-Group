@@ -1,7 +1,8 @@
+// src/brands/travel/components/TravelFooter/TravelLinkDirectory.jsx
 import styles from "./TravelLinkDirectory.module.css";
 import PillLink from "../../../../shared/components/FooterGroup/PillLink.jsx";
 import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
-import travelBrand from "../../ConfigTravel.jsx";
+import { FLAGS } from "../../../../shared/config/BrandDefault.jsx"; // 👈 usa FLAGS partilhadas
 
 export default function TravelLinkDirectory({ data }) {
   if (!data) return null;
@@ -26,8 +27,7 @@ export default function TravelLinkDirectory({ data }) {
     }
   };
 
-  // resolver de bandeira através do config da brand (evita import direto de FLAGS)
-  const resolveFlagIcon = (flagKey) => travelBrand?.flags?.[flagKey] || null;
+  const resolveFlagIcon = (flagKey) => FLAGS?.[flagKey] || null;
 
   return (
     <section
@@ -39,7 +39,7 @@ export default function TravelLinkDirectory({ data }) {
         <div className={styles.columns}>
           {(left?.columns || []).map((col) => {
             const colHash = hashForCol(col.key);
-            const isInternational = col.key === "international";
+            const isIntl = col.key === "international";
 
             return (
               <div key={col.key} className={styles.col}>
@@ -50,7 +50,7 @@ export default function TravelLinkDirectory({ data }) {
                 <div className={styles.colList}>
                   {(col.items || []).map(
                     ({ key, label, disabled, flagKey }) => {
-                      const FlagIcon = isInternational
+                      const FlagIcon = isIntl
                         ? resolveFlagIcon(flagKey || key)
                         : null;
 
@@ -63,10 +63,9 @@ export default function TravelLinkDirectory({ data }) {
                           className={`${styles.pill} ${disabled ? styles.disabled : ""}`}
                         >
                           <span
-                            className={`${styles.pillContent} ${isInternational ? styles.intl : ""}`}
+                            className={`${styles.pillContent} ${isIntl ? styles.intl : ""}`}
                           >
-                            {/* Bandeira apenas na coluna Internacional, fixa à esquerda */}
-                            {FlagIcon ? (
+                            {FlagIcon && (
                               <span
                                 className={styles.flagWrap}
                                 aria-hidden="true"
@@ -76,7 +75,7 @@ export default function TravelLinkDirectory({ data }) {
                                   focusable="false"
                                 />
                               </span>
-                            ) : null}
+                            )}
                             <span className={styles.pillLabel}>{label}</span>
                           </span>
                         </PillLink>
@@ -89,7 +88,7 @@ export default function TravelLinkDirectory({ data }) {
           })}
         </div>
 
-        {/* ===== PARCEIROS (ALINHADOS: 1ª e 2ª COLUNAS) ===== */}
+        {/* ===== PARCEIROS ===== */}
         <div
           className={styles.partnersWrap}
           role="group"
@@ -102,7 +101,6 @@ export default function TravelLinkDirectory({ data }) {
                   {partners.hotels.title || "Alojamentos em colaboração com:"}
                 </span>
               </div>
-
               <div className={styles.partnerPills}>
                 {(partners.hotels.items || []).map(
                   ({ key, label, disabled }) => (
@@ -111,9 +109,7 @@ export default function TravelLinkDirectory({ data }) {
                       href={`/sunlive-group/travel#parceiros-hoteis`}
                       disabled={disabled}
                       onSmartClick={toTravel}
-                      className={`${styles.pill} ${styles.partnerPill} ${
-                        disabled ? styles.disabled : ""
-                      }`}
+                      className={`${styles.pill} ${styles.partnerPill} ${disabled ? styles.disabled : ""}`}
                     >
                       <span className={styles.pillContent}>
                         <span className={styles.pillLabel}>{label}</span>
@@ -132,7 +128,6 @@ export default function TravelLinkDirectory({ data }) {
                   {partners.trips.title || "Viagens em colaboração com:"}
                 </span>
               </div>
-
               <div className={styles.partnerPills}>
                 {(partners.trips.items || []).map(
                   ({ key, label, disabled }) => (
@@ -141,9 +136,7 @@ export default function TravelLinkDirectory({ data }) {
                       href={`/sunlive-group/travel#parceiros-viagens`}
                       disabled={disabled}
                       onSmartClick={toTravel}
-                      className={`${styles.pill} ${styles.partnerPill} ${
-                        disabled ? styles.disabled : ""
-                      }`}
+                      className={`${styles.pill} ${styles.partnerPill} ${disabled ? styles.disabled : ""}`}
                     >
                       <span className={styles.pillContent}>
                         <span className={styles.pillLabel}>{label}</span>

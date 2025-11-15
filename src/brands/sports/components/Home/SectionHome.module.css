@@ -1,6 +1,0 @@
-.section {
-    position: relative;
-    width: 100%;
-    isolation: isolate;
-    color: var(--sl-platinum-100, #f6f7fb);
-}
