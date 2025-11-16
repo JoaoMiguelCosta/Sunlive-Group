@@ -5,3 +5,4 @@ export { default as LebanonFlag } from "./Lebanon.jsx";
 export { default as IraqFlag } from "./Iraq.jsx";
 export { default as BrazilFlag } from "./Brasil.jsx";
 export { default as SaudiArabiaFlag } from "./Arabia.jsx";
+export { default as PortugalFlag } from "./Portugal.jsx";

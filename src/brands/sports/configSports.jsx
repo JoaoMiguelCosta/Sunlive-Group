@@ -6,6 +6,7 @@ import {
   makePoliciesBar,
   makeFooterInfoHeader,
   ICONS,
+  FLAGS,
 } from "../../shared/config/BrandDefault.jsx";
 
 /* ===== Redes sociais (Sports) ===== */
@@ -517,9 +518,14 @@ const events = {
   },
 };
 
+
+
 /* =========================================================
    Atletas Sunlive — página dedicada
    ========================================================= */
+
+const { portugal: PortugalFlag } = FLAGS;
+
 const athletes = {
   id: "sunlive-athletes",
 
@@ -561,6 +567,116 @@ const athletes = {
     ],
   },
 
+  // HeadlineBlock intermédio: "Conhece os Nossos Atletas"
+  profilesIntro: {
+    id: "athletes-profiles-intro",
+    title: "Conhece os Nossos Atletas",
+    lead: "Conheça as histórias inspiradoras dos atletas que representam os valores Sunlive.",
+  },
+
+  profiles: {
+    id: "athletes-profiles",
+
+    items: [
+      {
+        key: "miguel-santos-1",
+        name: "Miguel Santos",
+        age: 26,
+        FlagIcon: PortugalFlag,
+        sportLabel: "Jiu-Jitsu",
+        bio: "Nascido nas montanhas do Norte, Miguel descobriu a sua paixão pelo trail running aos 25 anos. Desde então, tem conquistado trilhos por todo o país, sempre com o objetivo de inspirar outros a descobrirem a natureza através do desporto.",
+        achievements: [
+          "Vencedor Ultra Trail Serra da Estrela 2023",
+          "Top 5 Circuito Nacional Trail 2024",
+          "Representante Sunlive em eventos de montanha",
+        ],
+        quote:
+          "Cada trilho é uma oportunidade de me superar e de mostrar que os limites existem apenas na nossa mente.",
+        instagramUrl: "https://instagram.com/",
+      },
+      {
+        key: "miguel-santos-2",
+        name: "Miguel Santos",
+        age: 26,
+        FlagIcon: PortugalFlag,
+        sportLabel: "Jiu-Jitsu",
+        bio: "Nascido nas montanhas do Norte, Miguel descobriu a sua paixão pelo trail running aos 25 anos. Desde então, tem conquistado trilhos por todo o país, sempre com o objetivo de inspirar outros a descobrirem a natureza através do desporto.",
+        achievements: [
+          "Vencedor Ultra Trail Serra da Estrela 2023",
+          "Top 5 Circuito Nacional Trail 2024",
+          "Representante Sunlive em eventos de montanha",
+        ],
+        quote:
+          "Cada trilho é uma oportunidade de me superar e de mostrar que os limites existem apenas na nossa mente.",
+        instagramUrl: "https://instagram.com/",
+      },
+      {
+        key: "miguel-santos-3",
+        name: "Miguel Santos",
+        age: 26,
+        FlagIcon: PortugalFlag,
+        sportLabel: "Jiu-Jitsu",
+        bio: "Nascido nas montanhas do Norte, Miguel descobriu a sua paixão pelo trail running aos 25 anos. Desde então, tem conquistado trilhos por todo o país, sempre com o objetivo de inspirar outros a descobrirem a natureza através do desporto.",
+        achievements: [
+          "Vencedor Ultra Trail Serra da Estrela 2023",
+          "Top 5 Circuito Nacional Trail 2024",
+          "Representante Sunlive em eventos de montanha",
+        ],
+        quote:
+          "Cada trilho é uma oportunidade de me superar e de mostrar que os limites existem apenas na nossa mente.",
+        instagramUrl: "https://instagram.com/",
+      },
+      {
+        key: "miguel-santos-4",
+        name: "Miguel Santos",
+        age: 26,
+        FlagIcon: PortugalFlag,
+        sportLabel: "Jiu-Jitsu",
+        bio: "Nascido nas montanhas do Norte, Miguel descobriu a sua paixão pelo trail running aos 25 anos. Desde então, tem conquistado trilhos por todo o país, sempre com o objetivo de inspirar outros a descobrirem a natureza através do desporto.",
+        achievements: [
+          "Vencedor Ultra Trail Serra da Estrela 2023",
+          "Top 5 Circuito Nacional Trail 2024",
+          "Representante Sunlive em eventos de montanha",
+        ],
+        quote:
+          "Cada trilho é uma oportunidade de me superar e de mostrar que os limites existem apenas na nossa mente.",
+        instagramUrl: "https://instagram.com/",
+      },
+      {
+        key: "miguel-santos-5",
+        name: "Miguel Santos",
+        age: 26,
+        FlagIcon: PortugalFlag,
+        sportLabel: "Jiu-Jitsu",
+        bio: "Nascido nas montanhas do Norte, Miguel descobriu a sua paixão pelo trail running aos 25 anos. Desde então, tem conquistado trilhos por todo o país, sempre com o objetivo de inspirar outros a descobrirem a natureza através do desporto.",
+        achievements: [
+          "Vencedor Ultra Trail Serra da Estrela 2023",
+          "Top 5 Circuito Nacional Trail 2024",
+          "Representante Sunlive em eventos de montanha",
+        ],
+        quote:
+          "Cada trilho é uma oportunidade de me superar e de mostrar que os limites existem apenas na nossa mente.",
+        instagramUrl: "https://instagram.com/",
+      },
+      {
+        key: "miguel-santos-6",
+        name: "Miguel Santos",
+        age: 26,
+        FlagIcon: PortugalFlag,
+        sportLabel: "Jiu-Jitsu",
+        bio: "Nascido nas montanhas do Norte, Miguel descobriu a sua paixão pelo trail running aos 25 anos. Desde então, tem conquistado trilhos por todo o país, sempre com o objetivo de inspirar outros a descobrirem a natureza através do desporto.",
+        achievements: [
+          "Vencedor Ultra Trail Serra da Estrela 2023",
+          "Top 5 Circuito Nacional Trail 2024",
+          "Representante Sunlive em eventos de montanha",
+        ],
+        quote:
+          "Cada trilho é uma oportunidade de me superar e de mostrar que os limites existem apenas na nossa mente.",
+        instagramUrl: "https://instagram.com/",
+      },
+    ],
+  },
+
   closingPanel: {
     id: "athletes-closing-panel",
     chipLabel: "Próximo passo",
@@ -589,6 +705,7 @@ const athletes = {
     },
   },
 };
+
 
 /* =========================================================
    Serviços Especializados — página dedicada
@@ -619,7 +736,12 @@ const specialisedServices = {
     },
   },
 
-  
+  /* 2.1) Headline intermédio — Áreas de Especialização */
+  areasIntro: {
+    id: "specialised-services-areas-intro",
+    title: "Áreas de Especialização",
+    lead: "Cobrimos todas as dimensões do apoio ao atleta, desde a preparação física até ao suporte psicológico, passando pela análise técnica e cuidados médicos especializados.",
+  },
 
   /* 3) Pilares — Prevenção / Performance / Recuperação */
   pillars: {
@@ -668,10 +790,9 @@ const specialisedServices = {
       href: "/sunlive-group/sports/sunlive-athletes",
       ariaLabel: "Voltar para a página de Atletas Sunlive da Sunlive Sports",
     },
-    
   },
-  
 };
+
 
 /* =========================================================
    Educação — página dedicada
@@ -700,6 +821,28 @@ const education = {
       src: null,
       alt: "Estudantes-atletas em contexto de estudo e treino.",
     },
+  },
+
+  /* 2.x) Headlines intermédios (3 blocos seguidos) */
+  levelsIntro: {
+    id: "education-levels-intro",
+    title: "Níveis de Ensino",
+    lead:
+      "Desde o ensino básico até ao superior, oferecemos um percurso educativo completo e adaptado às necessidades dos nossos estudantes-atletas.",
+  },
+
+  bilingualIntro: {
+    id: "education-bilingual-intro",
+    title: "Ensino Bilingue",
+    lead:
+      "Oferecemos uma abordagem educativa única que combina o melhor dos sistemas português e internacional, preparando os nossos alunos para um futuro sem fronteiras.",
+  },
+
+  careersIntro: {
+    id: "education-careers-intro",
+    title: "Percursos Profissionais",
+    lead:
+      "Preparamos os nossos estudantes para carreiras de sucesso no mundo do desporto e além, oferecendo especializações reconhecidas internacionalmente.",
   },
 
   /* 3) Pilares — Educação / Valores / Orientação */
@@ -752,6 +895,7 @@ const education = {
   },
 };
 
+
 /* =========================================================
    Turismo Desportivo Lúdico — página dedicada
    ========================================================= */
@@ -779,6 +923,28 @@ const leisureSportsTourism = {
       src: null, // FOTO a definir
       alt: "Atletas a viver experiências de turismo desportivo em Portugal.",
     },
+  },
+
+  /* 2.x) Headlines intermédios (3 blocos seguidos) */
+  experiencesIntro: {
+    id: "leisure-sports-tourism-experiences-intro",
+    title: "Experiências Inesquecíveis",
+    lead:
+      "Uma seleção cuidadosa de atividades que despertam os sentidos, renovam energias e criam memórias que durarão para toda a vida.",
+  },
+
+  destinationsIntro: {
+    id: "leisure-sports-tourism-destinations-intro",
+    title: "Destinos que Encantam",
+    lead:
+      "O centro de Portugal revela-se como um tesouro de paisagens, sabores e tradições que conquistam atletas de todo o mundo, criando ligações profundas e duradouras.",
+  },
+
+  benefitsIntro: {
+    id: "leisure-sports-tourism-benefits-intro",
+    title: "Benefícios para os Atletas",
+    lead:
+      "Cada experiência é cuidadosamente desenhada para complementar o treino intensivo, proporcionando benefícios tangíveis para a performance e bem-estar dos atletas.",
   },
 
   /* 3) Pilares — União / Bem-estar / Enriquecimento Global */
@@ -812,10 +978,7 @@ const leisureSportsTourism = {
     title:
       "Do lazer à prática: descobre como o desporto encontra o lazer no Turismo Desportivo.",
 
-    bodyLines: [
-      "Do lazer à prática.",
-      "Entra no universo das Modalidades.",
-    ],
+    bodyLines: ["Do lazer à prática.", "Entra no universo das Modalidades."],
 
     primaryCta: {
       label: "Contactar",
@@ -838,6 +1001,7 @@ const leisureSportsTourism = {
     },
   },
 };
+
 
 /* =========================================================
    Modalidades — página dedicada
@@ -866,6 +1030,50 @@ const disciplines = {
       src: null,
       alt: "Atletas em diferentes modalidades desportivas Sunlive.",
     },
+  },
+
+  /* 2.x) Headlines intermédios — modalidades específicas */
+
+  cyclingIntro: {
+    id: "disciplines-cycling-intro",
+    title: "Ciclismo",
+    lead:
+      "Modalidade de referência da Sunlive, com infraestruturas de excelência, programas especializados e organização regular de eventos nacionais e internacionais.",
+  },
+
+  gymnasticsIntro: {
+    id: "disciplines-gymnastics-intro",
+    title: "Ginástica",
+    lead:
+      "Modalidade de referência da Sunlive, com uma oferta abrangente, ambiente técnico de alto nível e realização frequente de eventos e estágios especializados.",
+  },
+
+  footballIntro: {
+    id: "disciplines-football-intro",
+    title: "Futebol",
+    lead:
+      "Formação sólida através da Pro Football Academy, com treinos técnicos, táticos e físicos. Integração com alojamento e apoio escolar, focada na progressão desportiva.",
+  },
+
+  karateIntro: {
+    id: "disciplines-karate-intro",
+    title: "Karaté",
+    lead:
+      "Formação contínua através da Sunlive Karate Academy (SKA), com treinos técnicos e valorização de princípios como disciplina, respeito e superação. Ambiente ideal para o crescimento desportivo e pessoal.",
+  },
+
+  basketballIntro: {
+    id: "disciplines-basketball-intro",
+    title: "Basquetebol",
+    lead:
+      "Programas da Academia Basquetebol Sunlive para a evolução técnica e competitiva. Ideal para jovens atletas em fase de crescimento desportivo.",
+  },
+
+  otherDisciplinesIntro: {
+    id: "disciplines-other-intro",
+    title: "Outras Modalidades",
+    lead:
+      "A Sunlive disponibiliza também condições para a prática de modalidades como andebol, voleibol, judo, surf e esgrima, com acesso a alojamento e apoio logístico para treinos e concentrações.",
   },
 
   /* 3) Pilares — Treino / Infraestruturas / Segurança */
@@ -1033,6 +1241,14 @@ const logistics = {
     },
   },
 
+  /* 2.x) Headline intermédio — Serviços Logísticos */
+  servicesIntro: {
+    id: "logistics-services-intro",
+    title: "Serviços Logísticos",
+    lead:
+      "Uma gama completa de serviços integrados que cobrem todas as necessidades de uma viagem desportiva, desde o planeamento até à execução final.",
+  },
+
   /* 3) Pilares — Pontualidade / Adaptação / Contacto */
   pillars: {
     items: [
@@ -1069,7 +1285,6 @@ const logistics = {
       "Finalizamos com a Consultoria.",
     ],
 
-    // Botão principal: Contactar
     primaryCta: {
       label: "Contactar",
       href: "/sunlive-group/sports/contacts",
@@ -1077,14 +1292,12 @@ const logistics = {
       icon: "phone",
     },
 
-    // Botão ghost à direita: Seguir para Consultoria
     secondaryCta: {
       label: "Seguir para Consultoria",
       href: "/sunlive-group/sports/consultancy",
       ariaLabel: "Seguir para a página de Consultoria da Sunlive Sports",
     },
 
-    // Botão ghost à esquerda: Voltar para Infraestruturas
     backCta: {
       label: "Voltar para Infraestruturas",
       href: "/sunlive-group/sports/infrastructures",
@@ -1121,6 +1334,14 @@ const consultancy = {
       src: null, // FOTO a definir
       alt: "Reunião de consultoria estratégica Sunlive Sports com parceiros do desporto.",
     },
+  },
+
+  /* 2.x) Headline intermédio — Áreas de Consultoria */
+  areasIntro: {
+    id: "consultancy-areas-intro",
+    title: "Áreas de Consultoria",
+    lead:
+      "Cobrimos todas as dimensões da gestão desportiva moderna, desde a estratégia organizacional até à implementação operacional, sempre com foco em resultados mensuráveis.",
   },
 
   /* 3) Pilares — Experiência / Estratégia / Resultados */

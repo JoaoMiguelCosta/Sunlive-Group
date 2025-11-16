@@ -32,9 +32,112 @@ export default function DisciplinesPage() {
 
         {/* Conteúdo principal */}
         <div className={styles.sections}>
+          {/* 1) Bloco texto + imagem */}
           <OverviewSection data={data} />
 
-          {/* Painel de fecho / transição para Infraestruturas */}
+          {/* 2) Ciclismo */}
+          {data.cyclingIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.cyclingIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.cyclingIntro.title}
+                lead={data.cyclingIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 3) Ginástica */}
+          {data.gymnasticsIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.gymnasticsIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.gymnasticsIntro.title}
+                lead={data.gymnasticsIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 4) Futebol */}
+          {data.footballIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.footballIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.footballIntro.title}
+                lead={data.footballIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 5) Karaté */}
+          {data.karateIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.karateIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.karateIntro.title}
+                lead={data.karateIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 6) Basquetebol */}
+          {data.basketballIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.basketballIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.basketballIntro.title}
+                lead={data.basketballIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 7) Outras Modalidades */}
+          {data.otherDisciplinesIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.otherDisciplinesIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.otherDisciplinesIntro.title}
+                lead={data.otherDisciplinesIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 8) Painel de fecho / transição para Infraestruturas */}
           <DisciplinesClosingPanel data={data} />
         </div>
       </main>

@@ -34,7 +34,27 @@ export default function SpecialisedServicesPage() {
 
         {/* Conteúdo principal */}
         <div className={styles.sections}>
+          {/* 1) Bloco texto + imagem */}
           <OverviewSection data={data} />
+
+          {/* 2) Headline intermédio — Áreas de Especialização */}
+          {data.areasIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label="Áreas de Especialização"
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.areasIntro.title}
+                lead={data.areasIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 3) Painel de fecho */}
           <SpecialisedServicesClosingPanel data={data} />
         </div>
       </main>

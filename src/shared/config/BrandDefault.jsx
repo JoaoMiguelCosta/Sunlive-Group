@@ -32,6 +32,7 @@ import {
   IraqFlag,
   BrazilFlag,
   SaudiArabiaFlag,
+  PortugalFlag,
 } from "../ui/icons/flags/index.js";
 
 /* ===== Reexports úteis ===== */
@@ -69,6 +70,7 @@ export const FLAGS = {
   iraq: IraqFlag,
   saudiArabia: SaudiArabiaFlag,
   brazil: BrazilFlag,
+  portugal: PortugalFlag,
 };
 
 export const LANG_DEFAULT = {

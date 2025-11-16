@@ -32,7 +32,27 @@ export default function ConsultancyPage() {
 
         {/* Conteúdo principal */}
         <div className={styles.sections}>
+          {/* 1) Bloco texto + imagem */}
           <OverviewSection data={data} />
+
+          {/* 2) Headline intermédio — Áreas de Consultoria */}
+          {data.areasIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.areasIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.areasIntro.title}
+                lead={data.areasIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 3) Painel de fecho / fim da jornada Sports */}
           <ConsultancyClosingPanel data={data} />
         </div>
       </main>

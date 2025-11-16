@@ -31,7 +31,27 @@ export default function LogisticsPage() {
 
         {/* Conteúdo principal */}
         <div className={styles.sections}>
+          {/* 1) Bloco texto + imagem */}
           <OverviewSection data={data} />
+
+          {/* 2) Headline intermédio — Serviços Logísticos */}
+          {data.servicesIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.servicesIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.servicesIntro.title}
+                lead={data.servicesIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 3) Painel de fecho / transição para Consultoria */}
           <LogisticsClosingPanel data={data} />
         </div>
       </main>

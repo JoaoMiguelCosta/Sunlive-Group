@@ -32,7 +32,61 @@ export default function EducationPage() {
 
         {/* Conteúdo principal */}
         <div className={styles.sections}>
+          {/* 1) Bloco texto + imagem */}
           <OverviewSection data={data} />
+
+          {/* 2) Níveis de Ensino */}
+          {data.levelsIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.levelsIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.levelsIntro.title}
+                lead={data.levelsIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 3) Ensino Bilingue */}
+          {data.bilingualIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.bilingualIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.bilingualIntro.title}
+                lead={data.bilingualIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 4) Percursos Profissionais */}
+          {data.careersIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.careersIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.careersIntro.title}
+                lead={data.careersIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 5) Painel de fecho */}
           <EducationClosingPanel data={data} />
         </div>
       </main>

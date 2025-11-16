@@ -6,6 +6,7 @@ import sportsBrand from "../../configSports.jsx";
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./OverviewSection.jsx";
 import AthletesClosingPanel from "./AthletesClosingPanel.jsx";
+import ProfilesSection from "./ProfilesSection.jsx";
 
 /**
  * Página Atletas Sunlive — Sunlive Sports
@@ -38,7 +39,27 @@ export default function AthletesPage() {
           {/* 1) Bloco de valores / texto longo + pilares Sonhar/Ousar/Realizar */}
           <OverviewSection data={data} />
 
-          {/* 2) Painel de fecho (Voltar / Contactar / Serviços Especializados) */}
+          {/* 2) Headline intermédio — Conhece os Nossos Atletas */}
+          {data.profilesIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label="Conhece os Nossos Atletas"
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.profilesIntro.title}
+                lead={data.profilesIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 3) Grid de perfis de atletas */}
+          <ProfilesSection data={data} />
+
+          {/* 4) Painel de fecho (Voltar / Contactar / Serviços Especializados) */}
           <AthletesClosingPanel data={data} />
         </div>
       </main>

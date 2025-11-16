@@ -38,7 +38,58 @@ export default function LeisureSportsTourismPage() {
           {/* 1) Bloco texto + foto + pills */}
           <OverviewSection data={data} />
 
-          {/* 2) Painel de fecho / próximo passo */}
+          {/* 2) Experiências Inesquecíveis */}
+          {data.experiencesIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.experiencesIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.experiencesIntro.title}
+                lead={data.experiencesIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 3) Destinos que Encantam */}
+          {data.destinationsIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.destinationsIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.destinationsIntro.title}
+                lead={data.destinationsIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 4) Benefícios para os Atletas */}
+          {data.benefitsIntro && (
+            <section
+              className={styles.heroSection}
+              aria-label={data.benefitsIntro.title}
+            >
+              <HeadlineBlock
+                theme="sports"
+                variant="banded"
+                align="center"
+                max="lg"
+                title={data.benefitsIntro.title}
+                lead={data.benefitsIntro.lead}
+              />
+            </section>
+          )}
+
+          {/* 5) Painel de fecho / próximo passo */}
           <LeisureSportsTourismClosingPanel data={data} />
         </div>
       </main>
