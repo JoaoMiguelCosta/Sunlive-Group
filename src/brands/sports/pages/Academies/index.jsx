@@ -6,6 +6,8 @@ import sportsBrand from "../../configSports.jsx";
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./OverviewSection.jsx";
 import AcademiesClosingPanel from "./AcademiesClosingPanel.jsx";
+import AcademiesCardsSection from "./AcademiesCardsSection.jsx";
+
 
 /**
  * Página Academias — Sunlive Sports
@@ -34,6 +36,7 @@ export default function AcademiesPage() {
         <div className={styles.sections}>
           {/* 1) Bloco texto + imagem + pilares */}
           <OverviewSection data={data} />
+          <AcademiesCardsSection data={data} />
 
           {/* 2) Painel de fecho (3 CTAs: voltar / contactar / eventos) */}
           <AcademiesClosingPanel data={data} />

@@ -1,7 +1,6 @@
 /* =========================================================
-   CTAButton2 — botão primário Sports (Contactar)
-   Estado normal: ouro cheio
-   Hover: Noir + brilhos verde/dourado
+   CTAButton2 — Sports
+   Performance Prestige: Noir + Dourado + Verde-vital
    ========================================================= */
 
 .ctaButton {
@@ -14,9 +13,11 @@
     padding: 0.9rem 2.4rem;
     border-radius: 999px;
 
-    /* === ESTADO NORMAL (ANTES ERA HOVER) === */
-    background: rgba(241, 155, 8, 0.9);
-    border: 2px solid rgba(240, 155, 7, 0.95);
+    /* ESTADO NORMAL: dourado mais carregado */
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.85),
@@ -44,21 +45,23 @@
 
 @media (hover: hover) and (pointer: fine) {
     .ctaButton:hover {
-        /* === ESTADO HOVER (ANTES ERA NORMAL) === */
+        /* ESTADO HOVER: gradient ouro → verde Sports + glow */
         transform: translateY(-1px);
         letter-spacing: 0.04em;
         filter: saturate(1.05);
 
         background:
             radial-gradient(circle at 0 0,
-                rgba(199, 134, 21, 0.45) 0,
+                color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 22%) 0,
                 transparent 55%),
             radial-gradient(circle at 100% 100%,
-                rgba(46, 194, 126, 0.4) 0,
+                color-mix(in oklab, var(--sl-accent-500), black 12%) 0,
                 transparent 60%),
-            color-mix(in oklab, #050609 86%, black 14%);
+            color-mix(in oklab, #050609 84%, black 16%);
 
-        border: 2px solid rgba(199, 134, 21, .9);
+        border: 2px solid color-mix(in oklab,
+                var(--sl-gold-400),
+                var(--sl-accent-600) 18%);
 
         box-shadow:
             0 0 0 1px rgba(0, 0, 0, 0.8),
@@ -79,7 +82,9 @@
     outline: none;
     box-shadow:
         0 0 0 1px rgba(5, 8, 20, 0.9),
-        0 0 0 3px var(--sl-gold-300, #e0a646),
+        0 0 0 3px color-mix(in oklab,
+            var(--sl-gold-300),
+            var(--sl-accent-500) 22%),
         0 18px 36px rgba(0, 0, 0, 0.95);
 }
 

@@ -1,0 +1,290 @@
+/* =========================================================
+   SportsAcademyCard — Performance Prestige (Sports)
+   Base Noir + Dourado + Verde-vital
+   ========================================================= */
+
+.card {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: 100%;
+    max-width: 640px;
+
+    /* Noir com glow subtil verde + dourado */
+    background:
+        radial-gradient(circle at 0 0,
+            rgba(76, 210, 154, 0.18),
+            /* ~ --sl-accent-400 */
+            transparent 55%),
+        radial-gradient(circle at 100% 100%,
+            rgba(199, 134, 21, 0.22),
+            /* gold */
+            transparent 55%),
+        var(--sl-noir-950, #020617);
+
+    color: var(--sl-platinum-050, #e7ebf3);
+    border-radius: 8px;
+    border: 1.5px solid var(--sl-gold-400, #c78615);
+    box-shadow:
+        0 0 0 1px rgba(3, 7, 18, 0.85),
+        0 20px 40px rgba(0, 0, 0, 0.8);
+
+    overflow: hidden;
+    isolation: isolate;
+
+    transition:
+        transform 160ms ease-out,
+        box-shadow 160ms ease-out,
+        border-color 160ms ease-out,
+        background 160ms ease-out;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--sl-accent-500, #2EC27E);
+    box-shadow:
+        0 0 0 1px rgba(46, 194, 126, 0.7),
+        0 26px 60px rgba(0, 0, 0, 0.9);
+}
+
+/* ===== Header: logo + nome ===== */
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.7rem, 1.4vw, 1rem);
+    /* ligeiramente mais baixo */
+    padding: clamp(0.7rem, 1.3vw, 0.95rem) clamp(1.4rem, 2.4vw, 1.9rem);
+
+    background: linear-gradient(135deg,
+            var(--sl-gold-500, #c78615),
+            var(--sl-gold-300, #facc15));
+    color: var(--sl-noir-950, #020617);
+}
+
+.logoWrap {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 30% 0,
+            rgba(255, 255, 255, 0.85),
+            transparent 65%);
+}
+
+.logo {
+    display: block;
+    width: clamp(50px, 4.6vw, 60px);
+    height: clamp(50px, 4.6vw, 60px);
+    border-radius: 999px;
+    object-fit: contain;
+}
+
+.title {
+    font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+    font-weight: 700;
+    letter-spacing: 0.25px;
+}
+
+/* ===== Body: descrição ===== */
+
+.body {
+    padding: clamp(1rem, 1.6vw, 1.3rem) clamp(1.4rem, 2.6vw, 1.9rem);
+
+    background:
+        radial-gradient(circle at 0 0,
+            rgba(76, 210, 154, 0.18),
+            transparent 55%),
+        linear-gradient(180deg,
+            rgba(10, 10, 15, 0.98),
+            rgba(2, 2, 6, 1));
+    border-block: 1px solid rgba(15, 15, 20, 1);
+}
+
+.description {
+    font-size: clamp(0.96rem, 1.08vw, 1rem);
+    line-height: 1.6;
+    color: var(--sl-platinum-050, #e7ebf3);
+}
+
+/* ===== Footer: redes + CTAs ===== */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(0.75rem, 1.6vw, 1.2rem);
+
+    padding: clamp(0.75rem, 1.4vw, 1rem) clamp(1.4rem, 2.6vw, 1.9rem);
+
+    /* noir com leve inclinação para o verde */
+    background: linear-gradient(90deg,
+            rgba(5, 7, 10, 1),
+            rgba(4, 15, 10, 1));
+}
+
+/* Caso especial: só botão de book → centrar */
+.footerSolo {
+    justify-content: center;
+}
+
+/* Redes sociais */
+
+.socials {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.6rem, 1.1vw, 0.8rem);
+}
+
+.socialButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: clamp(2.3rem, 2.8vw, 2.6rem);
+    height: clamp(2.3rem, 2.8vw, 2.6rem);
+
+    border-radius: 999px;
+    border: 1px solid var(--sl-gold-400, #c78615);
+    background:
+        radial-gradient(circle at 30% 0,
+            rgba(76, 210, 154, 0.24),
+            /* verde-vital */
+            transparent 55%),
+        rgba(8, 12, 10, 0.98);
+    /* noir */
+
+    color: var(--sl-gold-200, #fef3c7);
+    cursor: pointer;
+
+    transition:
+        border-color 130ms ease-out,
+        box-shadow 130ms ease-out,
+        transform 130ms ease-out,
+        background 130ms ease-out,
+        color 130ms ease-out;
+}
+
+.socialButton:hover {
+    border-color: var(--sl-accent-500, #2EC27E);
+    color: var(--sl-platinum-050, #e7ebf3);
+    box-shadow:
+        0 0 0 1px rgba(46, 194, 126, 0.8),
+        0 10px 24px rgba(0, 0, 0, 0.85);
+    transform: translateY(-1px);
+}
+
+.socialIcon {
+    width: clamp(1.1rem, 1.4vw, 1.25rem);
+    height: clamp(1.1rem, 1.4vw, 1.25rem);
+}
+
+/* CTAs */
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: clamp(0.55rem, 1vw, 0.8rem);
+}
+
+/* quando é só o book */
+.actionsSolo {
+    justify-content: center;
+}
+
+/* garantir que o botão fica mesmo no centro em ecrãs largos */
+.actionsSolo .button {
+    min-width: clamp(9rem, 12vw, 11rem);
+}
+
+.button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+
+    padding: clamp(0.55rem, 0.9vw, 0.7rem) clamp(1.15rem, 2vw, 1.5rem);
+
+    font-size: clamp(0.9rem, 1vw, 0.96rem);
+    font-weight: 600;
+    letter-spacing: 0.26px;
+
+    border-radius: 999px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+        background 140ms ease-out,
+        color 140ms ease-out,
+        border-color 140ms ease-out,
+        box-shadow 140ms ease-out,
+        transform 140ms ease-out;
+}
+
+/* Ver mais */
+.primary {
+    background: linear-gradient(135deg,
+            var(--sl-gold-500, #c78615),
+            var(--sl-gold-300, #facc15));
+    color: var(--sl-noir-950, #020617);
+    border-color: rgba(15, 23, 42, 1);
+}
+
+.primary:hover {
+    background: linear-gradient(135deg,
+            var(--sl-gold-300, #facc15),
+            var(--sl-gold-200, #fef3c7));
+    box-shadow:
+        0 0 0 1px rgba(46, 194, 126, 0.7),
+        0 12px 30px rgba(0, 0, 0, 0.85);
+    transform: translateY(-1px);
+}
+
+/* Abrir book */
+.secondary {
+    background: transparent;
+    color: var(--sl-platinum-050, #e7ebf3);
+    border-color: rgba(148, 163, 184, 0.9);
+}
+
+.secondary:hover {
+    background:
+        radial-gradient(circle at 0 0,
+            rgba(76, 210, 154, 0.16),
+            transparent 60%);
+    border-color: var(--sl-accent-500, #2EC27E);
+    box-shadow:
+        0 0 0 1px rgba(46, 194, 126, 0.7),
+        0 10px 26px rgba(0, 0, 0, 0.8);
+}
+
+/* Ícone de seta / download */
+.buttonIcon {
+    font-size: 0.8em;
+    transform: translateY(1px);
+}
+
+/* ===== Responsivo ===== */
+
+@media (max-width: 768px) {
+    .card {
+        max-width: 100%;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .actions,
+    .actionsSolo {
+        justify-content: flex-start;
+    }
+}

@@ -1,0 +1,52 @@
+/* =========================================================
+   AcademiesCardsSection — grelha de academias
+   Performance Prestige (Sports)
+   ========================================================= */
+
+.cardsSection {
+    position: relative;
+    width: 100%;
+    display: block;
+
+    margin-block: clamp(2rem, 4vw, 3rem);
+}
+
+.cardsInner {
+    position: relative;
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--section-inset, clamp(12px, 4vw, 40px));
+    box-sizing: border-box;
+}
+
+/* Grelha 2x2 em desktop, 1 coluna em mobile */
+.cardsGrid {
+    display: grid;
+    width: 100%;
+    gap: clamp(1.6rem, 2.6vw, 2.1rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+}
+
+.cardsGrid>* {
+    height: 100%;
+}
+
+/* ===== Responsivo ===== */
+
+@media (max-width: 960px) {
+    .cardsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .cardsSection {
+        margin-block: clamp(1.6rem, 5vw, 2.2rem);
+    }
+
+    .cardsInner {
+        padding-inline: clamp(1rem, 5vw, 1.4rem);
+    }
+}

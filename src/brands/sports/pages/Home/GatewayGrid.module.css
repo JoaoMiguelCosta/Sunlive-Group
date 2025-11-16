@@ -12,10 +12,11 @@
 
 
 }
+
 .inner {
     max-width: var(--sl-container-lg, 1200px);
     margin-inline: auto;
- 
+
 }
 
 /* ===== Grid ===== */
@@ -62,7 +63,7 @@
             transparent 60%),
         color-mix(in oklab, #050609 86%, black 14%);
 
-border: 2px solid rgba(199, 134, 21, .9);
+    border: 2px solid rgba(199, 134, 21, .9);
 
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.8),
@@ -78,9 +79,10 @@ border: 2px solid rgba(199, 134, 21, .9);
 /* Hover / focus dentro do item */
 .item:hover {
     transform: translateY(-1px);
-background:
-        rgba(241, 155, 8, 0.9);
-        border: 2px solid rgba(240, 155, 7, 0.9);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 /* ===== Link clicável ===== */
@@ -125,12 +127,10 @@ background:
 /* ===== Variante CTA (mais forte / destaque) ===== */
 
 .cta {
-    background:
-  rgba(227, 152, 12, 0.977);
-      
-       
-    
-border: 2px solid rgba(199, 134, 21, .9);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.06),
         0 22px 52px rgba(0, 0, 0, 0.95);
@@ -143,6 +143,6 @@ border: 2px solid rgba(199, 134, 21, .9);
 /* Hover na CTA fica ainda mais “performante” */
 .cta:hover {
     transform: translateY(-2px);
-background:
-        #c96c02d7
+    background:
+        rgba(199, 134, 21, .9);
 }

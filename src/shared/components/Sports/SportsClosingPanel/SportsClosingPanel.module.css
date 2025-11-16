@@ -1,30 +1,30 @@
 /* =========================================================
    SportsClosingPanel — painel de fecho / transição
-   Performance Prestige: Noir + dourado + verde-vital
+   Performance Prestige: Noir + Dourado + Verde-vital
    ========================================================= */
 
 .panel {
     width: 100%;
-        max-width: var(--sl-container-lg, 1200px);
-        margin-inline: auto;
-    
-        /* encostado em cima, espaço igual em baixo até ao footer */
-        margin-block-start: 0;
-        margin-block-end: clamp(2.6rem, 4.2vw, 3.4rem);
-    
-        padding: clamp(1.8rem, 3vw, 2.4rem) clamp(1.8rem, 3vw, 2.6rem);
-        border-radius: 999px;
-        box-sizing: border-box;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+
+    /* encostado em cima, espaço igual em baixo até ao footer */
+    margin-block-start: 0;
+    margin-block-end: clamp(2.6rem, 4.2vw, 3.4rem);
+
+    padding: clamp(1.8rem, 3vw, 2.4rem) clamp(1.8rem, 3vw, 2.6rem);
+    border-radius: 999px;
+    box-sizing: border-box;
 
     background:
         radial-gradient(circle at 0 0,
-            rgba(199, 134, 21, 0.35) 0,
+            color-mix(in oklab, var(--sl-glow-top, #c78615), var(--sl-accent-500) 18%) 0,
             transparent 55%),
         radial-gradient(circle at 100% 100%,
-            rgba(46, 194, 126, 0.35) 0,
+            color-mix(in oklab, var(--sl-accent-500), black 12%) 0,
             transparent 60%),
         color-mix(in oklab, #040712 86%, black 14%);
-    border: 1px solid rgba(199, 134, 21, .9);
+    border: 1px solid var(--sl-glow-ring, #c78615);
 
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.7),
@@ -35,6 +35,7 @@
 }
 
 /* chip / etiqueta no topo */
+
 .chip {
     display: inline-flex;
     align-items: center;
@@ -43,8 +44,10 @@
     padding: 0.25rem 0.9rem;
     border-radius: 999px;
 
-    border: 1px solid rgba(199, 134, 21, .8);
-    background: rgba(5, 7, 16, 0.7);
+    border: 1px solid color-mix(in oklab,
+            var(--sl-glow-ring, #c78615),
+            var(--sl-accent-600) 18%);
+    background: rgba(5, 7, 16, 0.75);
 
     font-size: 0.8rem;
     letter-spacing: 0.14em;
@@ -80,6 +83,8 @@
     flex-wrap: wrap;
 }
 
+/* Botões secundários (ghost) — usados em Voltar / Seguir */
+
 .secondary {
     align-self: center;
 
@@ -91,8 +96,12 @@
     padding: 0.7rem 1.9rem;
     border-radius: 999px;
 
-    border: 1px solid rgba(199, 134, 21, 0.6);
-    background: transparent;
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-400, #c78615),
+            var(--sl-accent-600, #1F8D5C) 14%);
+    background: radial-gradient(circle at 50% 0,
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.9));
 
     font-size: 0.95rem;
     font-weight: 500;
@@ -103,14 +112,34 @@
         background 150ms ease-out,
         color 150ms ease-out,
         border-color 150ms ease-out,
-        transform 140ms ease-out;
+        transform 140ms ease-out,
+        box-shadow 140ms ease-out;
 }
+
+/* “Voltar” poderia ter um estilo extra aqui se precisares
+.back { }
+*/
 
 @media (hover: hover) and (pointer: fine) {
     .secondary:hover {
-        background: rgba(7, 13, 30, 0.95);
-        border-color: rgba(240, 155, 7, 0.9);
+        background:
+            radial-gradient(circle at 0 0,
+                rgba(76, 210, 154, 0.22),
+                /* verde-vital glow */
+                transparent 55%),
+            linear-gradient(90deg,
+                rgba(5, 7, 10, 1),
+                rgba(6, 18, 12, 1)
+                /* Noir com leve verde, sem azul */
+            );
+
+        border-color: color-mix(in oklab,
+                var(--sl-gold-400, #c78615),
+                var(--sl-accent-500, #2EC27E) 20%);
         transform: translateY(-1px);
+        box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.7),
+            0 14px 30px rgba(0, 0, 0, 0.85);
     }
 }
 
