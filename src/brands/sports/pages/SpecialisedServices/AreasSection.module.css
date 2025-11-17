@@ -1,0 +1,44 @@
+/* =========================================================
+   AreasSection — Serviços Especializados (Sports)
+   Grid de cards de serviços
+   ========================================================= */
+
+.section {
+    position: relative;
+    width: 100%;
+    padding-block: clamp(2.2rem, 5vh, 3.2rem);
+    color: var(--sl-platinum-030, #e5e7eb);
+}
+
+.inner {
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+    
+    box-sizing: content-box;
+
+    display: block;
+}
+
+/* Grelha de cards */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(1.2rem, 1.8vw, 1.6rem);
+    align-items: flex-start;
+}
+
+/* Responsivo */
+
+@media (max-width: 768px) {
+    .section {
+        padding-block: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        gap: 1.1rem;
+    }
+}

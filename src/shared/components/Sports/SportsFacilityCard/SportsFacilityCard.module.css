@@ -1,0 +1,320 @@
+/* =========================================================
+   SportsFacilityCard — Performance Prestige
+   Noir + Dourado + Verde-vital (Sports)
+   ========================================================= */
+.card {
+    position: relative;
+    width: min(100%, 420px);
+    border-radius: 20px;
+    overflow: hidden;
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 40%);
+
+    background:
+        radial-gradient(circle at 0 0,
+            color-mix(in oklab, var(--sl-gold-400, #eab308), transparent 80%),
+            transparent 70%),
+        radial-gradient(circle at 100% 0,
+            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), transparent 80%),
+            transparent 70%),
+        linear-gradient(to bottom, #020617 0%, #00010a 100%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.8),
+        0 22px 55px rgba(0, 0, 0, 0.95);
+
+    color: var(--sl-platinum-040, #edf1ff);
+
+    /* 🔧 Tokens de altura para TODO o interior (titulo + resumo) */
+    --facility-title-min-h: clamp(3.4rem, 4vw, 4.6rem);
+
+    /* ⬆️ Aumentado para igualar todos os cards
+       (descrição + pill + chevron cabem aqui sem crescer) */
+    --facility-summary-min-h: clamp(12rem, 14vw, 13.8rem);
+
+    /* 🔧 Altura mínima da descrição ≈ 3 linhas */
+    --facility-description-min-h: 4.5em;
+
+    /* 🔑 garante que o card não é esticado na linha do flex */
+    align-self: flex-start;
+}
+
+/* ===== Topo / media ===== */
+
+.media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.mediaPlaceholder {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* ===== Barra de título dourada ===== */
+
+.titleBar {
+    padding-inline: 1rem;
+    padding-block: 0.55rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    min-height: 4.4rem;
+
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #b77713), black 5%),
+            color-mix(in oklab, var(--sl-gold-400, #eab308), black 5%));
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+    font-weight: 700;
+    color: #fff;
+}
+
+/* ===== Corpo ===== */
+
+.content {
+    padding: 1.1rem 1.5rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* === BLOCO COM ALTURA IGUAL EM TODOS OS CARDS === */
+/* Descrição + pill + trigger:
+   garante que "Características principais"
+   começa exactamente na mesma linha em todos os cards da fila. */
+
+.summaryBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    min-height: var(--facility-summary-min-h);
+}
+
+.description {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--sl-platinum-080, #dbe2ff);
+
+    /* 🔑 simula sempre 3 linhas de texto */
+    min-height: var(--facility-description-min-h);
+}
+
+/* ===== Botão/acordeão (círculo verde com seta) ===== */
+
+.accordionToggle {
+    margin-top: 0.9rem;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.accordionToggle:focus-visible {
+    outline: 2px solid color-mix(in oklab,
+            var(--sl-sports-accent-400, #4ade80),
+            white 15%);
+    outline-offset: 3px;
+}
+
+.accordionIcon {
+    inline-size: 2.4rem;
+    block-size: 2.4rem;
+    border-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-sports-accent-500, #22c55e),
+            var(--sl-gold-400, #eab308) 30%);
+
+    background:
+        radial-gradient(circle at 30% 20%,
+            color-mix(in oklab,
+                var(--sl-sports-accent-400, #4ade80),
+                white 12%) 0,
+            transparent 60%),
+        radial-gradient(circle at 50% 110%,
+            color-mix(in oklab,
+                var(--sl-sports-accent-600, #15803d),
+                black 10%),
+            #020617 70%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.8),
+        0 0 18px rgba(46, 194, 126, 0.55);
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+.accordionIcon svg {
+    inline-size: 1.1rem;
+    block-size: 1.1rem;
+    color: var(--sl-platinum-020, #f9fafb);
+}
+
+.accordionIconOpen {
+    transform: rotate(180deg);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 0 20px rgba(199, 134, 21, 0.8);
+}
+
+/* Pill de destaque */
+
+.highlightPill {
+    margin-top: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.7rem 1.8rem;
+    border-radius: 999px;
+
+    /* Fundo escuro com glow verde e dourado (como no devtools) */
+    background:
+        radial-gradient(circle at 0 0,
+            rgba(76, 210, 154, 0.26) 0,
+            transparent 55%),
+        radial-gradient(circle at 100% 100%,
+            rgba(199, 134, 21, 0.32) 0,
+            transparent 60%),
+        color-mix(in oklab,
+            #050609 86%,
+            black 14%);
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-400, #c78615) 70%,
+            var(--sl-sports-accent-600, #1fb05c) 30%);
+
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.75),
+        0 0 1px rgba(0, 0, 0, 0.7);
+}
+
+.highlightText {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--sl-platinum-020, #f9fbff);
+    text-align: center;
+}
+
+/* ===== Lista de características ===== */
+
+.featuresBlock {
+    margin-top: 1.4rem;
+}
+
+.featuresTitle {
+    margin: 0 0 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--sl-platinum-060, #d0d7ec);
+}
+
+.featuresList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.55rem;
+}
+
+.featureItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.featureBullet {
+    flex: 0 0 auto;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    background: radial-gradient(circle at 30% 0,
+            #bbf7d0,
+            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), black 18%));
+
+    color: #020617;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.7),
+        0 6px 14px rgba(0, 0, 0, 0.9);
+}
+
+.featureText {
+    color: var(--sl-platinum-090, #eef1ff);
+}
+
+/* ===== Responsivo ===== */
+
+@media (max-width: 720px) {
+    .card {
+        --facility-summary-min-h: auto;
+    }
+
+    .summaryBlock {
+        min-height: auto;
+    }
+
+    /* Em mobile deixamos a descrição crescer livremente */
+    .description {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding-inline: 1.1rem;
+    }
+
+    .highlightPill {
+        width: 100%;
+        padding-inline: 1.2rem;
+    }
+}

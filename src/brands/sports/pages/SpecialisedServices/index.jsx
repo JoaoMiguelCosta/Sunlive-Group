@@ -5,6 +5,7 @@ import sportsBrand from "../../configSports.jsx";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./OverviewSection.jsx";
+import AreasSection from "./AreasSection.jsx";
 import SpecialisedServicesClosingPanel from "./SpecialisedServicesClosingPanel.jsx";
 
 /**
@@ -54,7 +55,10 @@ export default function SpecialisedServicesPage() {
             </section>
           )}
 
-          {/* 3) Painel de fecho */}
+          {/* 3) Grid de cards — Áreas de Especialização */}
+          <AreasSection data={data} />
+
+          {/* 4) Painel de fecho */}
           <SpecialisedServicesClosingPanel data={data} />
         </div>
       </main>

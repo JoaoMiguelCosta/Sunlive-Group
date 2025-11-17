@@ -5,6 +5,7 @@ import sportsBrand from "../../configSports.jsx";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./OverviewSection.jsx";
+import  FacilitiesSection from "./FacilitiesSection.jsx"
 import InfrastructuresClosingPanel from "./InfrastructuresClosingPanel.jsx";
 
 /**
@@ -35,6 +36,7 @@ export default function InfrastructuresPage() {
         {/* Conteúdo principal */}
         <div className={styles.sections}>
           <OverviewSection data={data} />
+          <FacilitiesSection data={data} />
           <InfrastructuresClosingPanel data={data} />
         </div>
       </main>

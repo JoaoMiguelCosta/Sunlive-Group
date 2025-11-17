@@ -1,0 +1,48 @@
+/* =========================================================
+   FacilitiesSection — grelha 3x3 de infraestruturas
+   ========================================================= */
+
+.section {
+    position: relative;
+    width: 100%;
+    padding-block: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--sl-platinum-040, #edf1ff);
+}
+
+.inner {
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+}
+
+/* ===== Grelha de cards (flexbox com alturas independentes) ===== */
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    /* 🔑 cada card fica com a sua altura */
+    gap: clamp(1.2rem, 2vw, 1.8rem);
+}
+
+/* Cada filho da grid é um card */
+.grid>* {
+    flex: 1 1 100%;
+    max-width: 420px;
+    /* acompanha o width do .card */
+}
+
+/* >= tablet: tende para 2 colunas */
+@media (min-width: 720px) {
+    .grid>* {
+        flex: 1 1 calc(50% - 0.8rem);
+    }
+}
+
+/* >= desktop largo: tende para 3 colunas (3x3) */
+@media (min-width: 1120px) {
+    .grid>* {
+        flex: 1 1 calc(33.333% - 1rem);
+    }
+}
