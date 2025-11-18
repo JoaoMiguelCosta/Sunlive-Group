@@ -5,6 +5,7 @@ import sportsBrand from "../../configSports.jsx";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./OverviewSection.jsx";
+import ConsultancyAreasSection from "./ConsultancyAreasSection.jsx";
 import ConsultancyClosingPanel from "./ConsultancyClosingPanel.jsx";
 
 /**
@@ -52,7 +53,8 @@ export default function ConsultancyPage() {
             </section>
           )}
 
-          {/* 3) Painel de fecho / fim da jornada Sports */}
+         
+          <ConsultancyAreasSection data={data} />
           <ConsultancyClosingPanel data={data} />
         </div>
       </main>

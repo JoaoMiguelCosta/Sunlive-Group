@@ -1,0 +1,41 @@
+/* =========================================================
+   LogisticsServicesSection — grelha de serviços logísticos
+   ========================================================= */
+
+.section {
+    position: relative;
+    width: 100%;
+    padding-block: clamp(2.1rem, 4vw, 2.9rem);
+}
+
+.inner {
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+    padding-inline: var(--sl-section-inline, 1.2rem);
+}
+
+/* ===== Grelha de cards ===== */
+
+.grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.2rem, 2vw, 1.8rem);
+    justify-items: center;
+    align-items: start;
+    /* <- impede o stretch vertical */
+}
+
+/* >= tablet: 2 colunas */
+@media (min-width: 720px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* >= desktop largo: ligeiro respiro horizontal */
+@media (min-width: 1120px) {
+    .inner {
+        padding-inline: 0;
+    }
+}

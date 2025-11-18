@@ -35,13 +35,9 @@
 .sections {
     display: flex;
     flex-direction: column;
-    gap: clamp(2.2rem, 3vw, 2.8rem);
+
 }
 
-/* Hero separado com um pouco de respiro */
-.heroSection {
-    margin-bottom: clamp(2.2rem, 3.2vw, 2.8rem);
-}
 
 /* Mobile tweaks */
 @media (max-width: 768px) {

@@ -30,9 +30,7 @@
     box-sizing: border-box;
 }
 
-.heroSection {
-    margin-bottom: clamp(2rem, 3vw, 2.6rem);
-}
+
 
 /* Stack das secções (Overview + ClosingPanel) */
 .sections {

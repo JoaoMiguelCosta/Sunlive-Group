@@ -5,6 +5,7 @@ import sportsBrand from "../../configSports.jsx";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./OverviewSection.jsx";
+import LogisticsServicesSection from "./LogisticsServicesSection.jsx";
 import LogisticsClosingPanel from "./LogisticsClosingPanel.jsx";
 
 /**
@@ -51,7 +52,7 @@ export default function LogisticsPage() {
             </section>
           )}
 
-          {/* 3) Painel de fecho / transição para Consultoria */}
+          <LogisticsServicesSection data={data} />
           <LogisticsClosingPanel data={data} />
         </div>
       </main>

@@ -1493,7 +1493,8 @@ const logistics = {
     },
   },
 
-  /* 2.x) Headline intermédio — Serviços Logísticos */
+  /* 2.x) Headline intermédio — Serviços Logísticos
+     (mantemos no config caso precises noutra secção) */
   servicesIntro: {
     id: "logistics-services-intro",
     title: "Serviços Logísticos",
@@ -1522,7 +1523,83 @@ const logistics = {
     ],
   },
 
-  /* 4) Painel de fecho / transição para Consultoria */
+  /* 4) Painéis de serviço detalhados (5 cards) */
+  servicesPanels: {
+    id: "logistics-services-panels",
+    items: [
+      {
+        key: "local-transport",
+        title: "Transporte Local",
+        iconKey: "van", // mapeias depois para o ícone certo
+        summary:
+          "Mobilidade completa durante a estadia, com veículos adequados a cada necessidade.",
+        items: [
+          "Disponibilidade para treinos e jogos",
+          "Frota diversificada (carros, autocarros)",
+          "Rotas otimizadas para instalações",
+          "GPS e comunicação constante",
+        ],
+      },
+      {
+        key: "airport-transfers",
+        title: "Transfers Aeroportuários",
+        iconKey: "plane",
+        summary:
+          "Transporte direto e pontual entre aeroportos e destinos, com acompanhamento personalizado.",
+        items: [
+          "Receção personalizada no aeroporto",
+          "Gestão de bagagens e equipamentos",
+          "Flexibilidade para alterações de voos",
+          "Acompanhamento multilingue",
+          "Serviço 24/7 disponível",
+        ],
+      },
+      {
+        key: "meals-coordination",
+        title: "Coordenação de Refeições",
+        iconKey: "cutlery",
+        summary:
+          "Planeamento nutricional e logístico de todas as refeições durante a estadia.",
+        items: [
+          "Menus adaptados a atletas",
+          "Opções para dietas especiais",
+          "Controlo de qualidade alimentar",
+          "Catering para instalações",
+          "Horários flexíveis de refeições",
+        ],
+      },
+      {
+        key: "accommodation-management",
+        title: "Gestão de Alojamento",
+        iconKey: "bed",
+        summary:
+          "Reserva e coordenação de hotéis e residências adaptadas às necessidades desportivas.",
+        items: [
+          "Hotéis 3–5 estrelas selecionados",
+          "Quartos adaptados para atletas",
+          "Proximidade às instalações desportivas",
+          "Salas de reunião disponíveis",
+          "Serviço 24/7 disponível",
+        ],
+      },
+      {
+        key: "other-services",
+        title: "Outros Serviços",
+        iconKey: "jersey",
+        summary:
+          "Lavagem e tratamento de equipamentos desportivos e roupa pessoal.",
+        items: [
+          "Tratamento especializado de equipamentos",
+          "Recolha e entrega no alojamento",
+          "Serviço de engomadoria",
+          "Embalagem organizada por atleta/grupo",
+          "Produtos adequados a tecidos técnicos",
+        ],
+      },
+    ],
+  },
+
+  /* 5) Painel de fecho / transição para Consultoria */
   closingPanel: {
     id: "logistics-closing-panel",
 
@@ -1557,6 +1634,7 @@ const logistics = {
     },
   },
 };
+
 
 /* =========================================================
    Consultoria — página dedicada
@@ -1596,7 +1674,118 @@ const consultancy = {
       "Cobrimos todas as dimensões da gestão desportiva moderna, desde a estratégia organizacional até à implementação operacional, sempre com foco em resultados mensuráveis.",
   },
 
-  /* 3) Pilares — Experiência / Estratégia / Resultados */
+  /* 3) Áreas de Consultoria — cards em acordeão (ServiceFeaturePanel) */
+  areasPanels: {
+    id: "consultancy-areas-panels",
+    items: [
+      {
+        key: "international-expansion",
+        title: "Expansão Internacional",
+        summary:
+          "Estratégias para internacionalização e desenvolvimento de projetos desportivos globais.",
+        items: [
+          "Análise de mercados internacionais",
+          "Estratégias de entrada em novos países",
+          "Parcerias estratégicas globais",
+          "Adaptação cultural de programas",
+          "Gestão de projetos transfronteiriços",
+        ],
+      },
+      {
+        key: "sports-management",
+        title: "Gestão Desportiva",
+        summary:
+          "Estratégias integradas para otimizar a gestão de clubes, federações e organizações desportivas.",
+        items: [
+          "Planeamento estratégico organizacional",
+          "Estruturação de departamentos técnicos",
+          "Sistemas de gestão de performance",
+          "Políticas de desenvolvimento de atletas",
+          "Modelos de sustentabilidade financeira",
+        ],
+      },
+      {
+        key: "club-development",
+        title: "Desenvolvimento de Clubes",
+        summary:
+          "Soluções personalizadas para crescimento sustentável e modernização de estruturas clubísticas.",
+        items: [
+          "Estratégias de captação de talentos",
+          "Reestruturação de modelos de negócio",
+          "Expansão para novos mercados",
+          "Auditoria organizacional completa",
+          "Desenvolvimento de academias juvenis",
+        ],
+      },
+      {
+        key: "infrastructure-planning",
+        title: "Planeamento de Infraestruturas",
+        summary:
+          "Conceção e desenvolvimento de instalações desportivas modernas e funcionais.",
+        items: [
+          "Estudos de viabilidade técnica",
+          "Desenho funcional de instalações",
+          "Planeamento de equipamentos especializados",
+          "Sustentabilidade e eficiência energética",
+          "Gestão de projetos de construção",
+        ],
+      },
+      {
+        key: "training-systems",
+        title: "Sistemas de Formação",
+        summary:
+          "Desenvolvimento de metodologias e programas de formação desportiva de excelência.",
+        items: [
+          "Metodologias de treino inovadoras",
+          "Currículos de formação técnica",
+          "Sistemas de avaliação de atletas",
+          "Programas de desenvolvimento de treinadores",
+          "Protocolos de progressão atlética",
+        ],
+      },
+      {
+        key: "sport-development",
+        title: "Desenvolvimento de Modalidades",
+        summary:
+          "Soluções estratégicas para potenciar o crescimento sustentável e competitivo de diferentes modalidades desportivas.",
+        items: [
+          "Diagnóstico e planeamento de modalidades emergentes",
+          "Definição de estruturas técnicas e competitivas",
+          "Modelos de desenvolvimento por escalões",
+          "Criação de centros de treino especializados",
+          "Integração de metodologias de alto rendimento",
+        ],
+      },
+      {
+        key: "event-management",
+        title: "Gestão de Eventos",
+        summary:
+          "Organização e gestão profissional de eventos desportivos com foco em excelência operacional e impacto internacional.",
+        items: [
+          "Planeamento estratégico de eventos",
+          "Gestão logística e técnica integral",
+          "Coordenação de stakeholders e parceiros",
+          "Estratégias de comunicação e promoção",
+          "Avaliação de impacto e relatórios pós-evento",
+        ],
+      },
+      {
+        key: "operational-logistics",
+        title: "Logística Operacional",
+        summary:
+          "Otimização de processos operacionais para eventos, competições e atividades desportivas regulares.",
+        items: [
+          "Desenho de processos operacionais",
+          "Gestão de recursos humanos especializados",
+          "Sistemas de logística para eventos",
+          "Gestão de fornecedores e parcerias",
+          "Protocolos de segurança e emergência",
+        ],
+      },
+    ],
+  },
+
+  /* 4) Pilares — Experiência / Estratégia / Resultados */
   pillars: {
     items: [
       {
@@ -1617,7 +1806,7 @@ const consultancy = {
     ],
   },
 
-  /* 4) Painel de fecho / fim da jornada Sports */
+  /* 5) Painel de fecho / fim da jornada Sports */
   closingPanel: {
     id: "consultancy-closing-panel",
 

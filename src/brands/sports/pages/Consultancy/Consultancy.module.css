@@ -31,10 +31,7 @@
     box-sizing: border-box;
 }
 
-/* Hero (HeadlineBlock) */
-.heroSection {
-    margin-bottom: clamp(2rem, 3vw, 2.8rem);
-}
+
 
 /* Stack das secções (Overview + ClosingPanel) */
 .sections {

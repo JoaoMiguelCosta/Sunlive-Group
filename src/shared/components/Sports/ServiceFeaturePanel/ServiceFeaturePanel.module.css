@@ -1,0 +1,266 @@
+/* =========================================================
+   ServiceFeaturePanel — Sports
+   Performance Prestige (Noir + Dourado + Verde-vital)
+   ========================================================= */
+
+.card {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    border-radius: 18px;
+    overflow: hidden;
+
+    color: var(--sl-platinum-020, #f9fafb);
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 45%);
+    background:
+        radial-gradient(circle at 0 0,
+            color-mix(in oklab, var(--sl-gold-400, #eab308), transparent 82%),
+            transparent 70%),
+        radial-gradient(circle at 100% 0,
+            color-mix(in oklab,
+                var(--sl-sports-accent-500, #22c55e),
+                transparent 88%),
+            transparent 72%),
+        linear-gradient(to bottom, #020617 0%, #000000 52%, #020617 100%);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.85),
+        0 18px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* ===== Header ===== */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding: 0.95rem 1.4rem;
+
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-700, #b8860b), #000 12%),
+            color-mix(in oklab, var(--sl-gold-500, #c78615), #000 12%));
+    border-bottom: 1px solid color-mix(in oklab,
+            var(--sl-gold-400, #eab308),
+            black 40%);
+}
+
+.headerMain {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+.iconWrap {
+    width: 3.1rem;
+    height: 3.1rem;
+    border-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            var(--sl-gold-300, #facc15),
+            var(--sl-gold-700, #b8860b));
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 10px 22px rgba(0, 0, 0, 0.7);
+    color: var(--sl-platinum-010, #fdfdfd);
+}
+
+.title {
+    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+    font-weight: 650;
+    letter-spacing: 0.01em;
+    flex: 1;
+    min-width: 0;
+}
+
+/* ===== Linha “Inclui” + botão acordeão ===== */
+
+.tagRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.tagLabel {
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: color-mix(in oklab,
+            var(--sl-gold-200, #fef08a),
+            #ffffff 8%);
+    margin: 0;
+}
+
+/* ===== Botão verde igual ao "IDEAL PARA" + glow ===== */
+
+.toggleButton {
+    position: relative;
+    width: 1.6rem;
+    height: 1.6rem;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab,
+            var(--sl-sports-accent-500, #22c55e),
+            var(--sl-gold-400, #eab308) 30%);
+
+    background:
+        radial-gradient(circle at 30% 20%,
+            color-mix(in oklab,
+                var(--sl-sports-accent-500, #22c55e),
+                #1e293b 15%),
+            #020617 75%),
+        linear-gradient(145deg, #020b06 0%, #071d10 100%);
+
+    box-shadow:
+        inset 0 0 10px rgba(255, 255, 255, 0.08),
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(34, 197, 94, 0.55),
+        /* glow verde */
+        0 10px 24px rgba(0, 0, 0, 0.85);
+
+    color: var(--sl-platinum-020, #f9fafb);
+    cursor: pointer;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+.toggleButton:hover {
+    transform: translateY(-1px);
+    box-shadow:
+        inset 0 0 12px rgba(255, 255, 255, 0.12),
+        0 0 16px rgba(34, 197, 94, 0.7),
+        0 14px 30px rgba(0, 0, 0, 0.95);
+}
+
+.toggleButton:active {
+    transform: translateY(0);
+    box-shadow:
+        inset 0 0 8px rgba(255, 255, 255, 0.08),
+        0 0 10px rgba(34, 197, 94, 0.5),
+        0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Chevron central */
+.toggleIcon {
+    display: block;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-right: 2px solid #bdfcc0;
+    border-bottom: 2px solid #bdfcc0;
+    transform: rotate(45deg);
+    /* fechado = seta para baixo */
+    transform-origin: center;
+    transition: transform 0.22s ease;
+}
+
+.open .toggleIcon {
+    transform: rotate(-135deg);
+    /* aberto = seta para cima */
+}
+
+/* ===== Faixa resumo ===== */
+
+.summaryBand {
+    padding: 1.1rem 1.6rem 1.05rem;
+    background: radial-gradient(circle at 0 0,
+            color-mix(in oklab,
+                var(--sl-sports-accent-500, #22c55e),
+                transparent 88%),
+            transparent 68%),
+        linear-gradient(to bottom,
+            #020617 0%,
+            color-mix(in oklab, #020617 80%, #000 20%) 100%);
+    border-bottom: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 55%);
+}
+
+.summaryText {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 56ch;
+}
+
+/* ===== Corpo + lista ===== */
+
+.body {
+    padding: 1.1rem 1.6rem 1.4rem;
+    background: radial-gradient(circle at 0 0,
+            color-mix(in oklab,
+                var(--sl-sports-accent-700, #16a34a),
+                transparent 90%),
+            transparent 72%),
+        radial-gradient(circle at 100% 100%,
+            rgba(0, 0, 0, 0.8),
+            transparent 60%),
+        linear-gradient(to bottom, #020617 0%, #020617 100%);
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    /* bullet centrado com o texto */
+    gap: 0.55rem;
+}
+
+.bullet {
+    width: 0.48rem;
+    height: 0.48rem;
+    border-radius: 999px;
+
+    background: radial-gradient(circle at 30% 30%,
+            var(--sl-gold-300, #facc15),
+            var(--sl-gold-600, #d97706));
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.85),
+        0 0 8px rgba(250, 204, 21, 0.55);
+    flex-shrink: 0;
+}
+
+.itemText {
+    font-size: 0.93rem;
+    line-height: 1.55;
+    color: var(--sl-platinum-030, #e5e7eb);
+}
+
+/* ===== Responsivo ===== */
+
+@media (max-width: 480px) {
+    .header {
+        align-items: flex-start;
+    }
+
+    .title {
+        font-size: 1.05rem;
+    }
+
+    .summaryBand,
+    .body {
+        padding-inline: 1.2rem;
+    }
+}

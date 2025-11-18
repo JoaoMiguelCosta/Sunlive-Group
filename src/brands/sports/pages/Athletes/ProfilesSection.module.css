@@ -9,17 +9,23 @@
 
 .inner {
     width: 100%;
-    max-width: var(--sl-container-lg, 1200px);
+    max-width: var(--sl-container-xl, 1360px);
+    /* se tiveres este token */
     margin-inline: auto;
-    padding-inline: var(--section-inset, clamp(12px, 4vw, 40px));
 }
 
 /* Grid dos cards */
-
 .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(1.1rem, 2.1vw, 1.7rem);
+
+    max-width: 1360px;
+    /* largura do bloco */
+    margin-inline: auto;
+    /* 🔹 centra o grid */
+    justify-items: center;
+    /* opcional: cards centrados em cada coluna */
 }
 
 @media (max-width: 1024px) {
