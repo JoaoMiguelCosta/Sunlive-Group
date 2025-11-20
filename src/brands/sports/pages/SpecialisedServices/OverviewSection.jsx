@@ -7,8 +7,8 @@ import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
 
 const PILL_ICONS = {
   prevention: ICONS.ShieldIcon,
-  performance: ICONS.StarIcon,
-  recovery: ICONS.HeartIcon,
+  monitor: ICONS.MonitorIcon,
+  recycle: ICONS.RecycleIcon,
 };
 
 /**

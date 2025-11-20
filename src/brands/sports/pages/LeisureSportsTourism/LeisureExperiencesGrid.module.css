@@ -1,0 +1,48 @@
+/* =========================================================
+   LeisureExperiencesGrid — Turismo Desportivo Lúdico
+   Grelha de cartões (4) — Sports
+   ========================================================= */
+
+.section {
+    position: relative;
+    width: 100%;
+    color: var(--sl-platinum-040, #edf1ff);
+}
+
+.inner {
+    width: 100%;
+    margin-inline: auto;
+    /* removido o max-width: 1200px */
+}
+
+/* ================= GRELHA DOS CARTÕES ================= */
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    /* não esticar à altura do maior */
+    gap: clamp(1.3rem, 2.2vw, 1.8rem);
+}
+
+/* MOBILE: 1 card por linha */
+.grid>* {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* >= tablet: 2 cards por linha fixos */
+@media (min-width: 720px) {
+    .grid>* {
+        flex: 0 0 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+}
+
+/* >= desktop grande: só ajustamos o gap, mantemos 2 colunas */
+@media (min-width: 1120px) {
+    .grid {
+        gap: clamp(1.5rem, 2.4vw, 2rem);
+    }
+}

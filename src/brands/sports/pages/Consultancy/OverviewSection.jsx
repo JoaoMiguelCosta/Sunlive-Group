@@ -10,9 +10,9 @@ import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
  * Se algum não existir em ICONS, o componente de pills ignora o ícone.
  */
 const PILL_ICONS = {
-  map: ICONS.PinIcon,
-  target: ICONS.TargetIcon,
-  trendingUp: ICONS.TrendingUpIcon,
+  experience: ICONS.ConsultingExperienceIcon,
+  eye: ICONS.EyeIcon,
+  chart: ICONS.ChartIcon,
 };
 
 /**

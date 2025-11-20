@@ -1,112 +1,210 @@
 /* =========================================================
    ServiceFeaturePanel — Sports
-   Performance Prestige (Noir + Dourado + Verde-vital)
+   Performance Prestige: Noir + Dourado + Verde-vital
    ========================================================= */
 
 .card {
     position: relative;
     width: 100%;
-    max-width: 720px;
-    border-radius: 18px;
-    overflow: hidden;
+    max-width: 460px;
 
-    color: var(--sl-platinum-020, #f9fafb);
+    padding: 1.4rem 1.6rem 1.6rem;
+    border-radius: 20px;
+
+    /* Moldura dourado + noir */
     border: 1px solid color-mix(in oklab,
-            var(--sl-gold-500, #c78615),
-            black 45%);
+            var(--sl-gold-500, #a16207),
+            black 32%);
+
+    /* Fundo Noir com halos dourado + verde */
     background:
         radial-gradient(circle at 0 0,
-            color-mix(in oklab, var(--sl-gold-400, #eab308), transparent 82%),
+            color-mix(in oklab,
+                var(--sl-gold-400, #c78615),
+                transparent 80%),
             transparent 70%),
         radial-gradient(circle at 100% 0,
             color-mix(in oklab,
-                var(--sl-sports-accent-500, #22c55e),
-                transparent 88%),
+                var(--sl-accent-500, #2EC27E),
+                transparent 82%),
             transparent 72%),
-        linear-gradient(to bottom, #020617 0%, #000000 52%, #020617 100%);
+        linear-gradient(to bottom,
+            #02040b 0%,
+            #02040b 40%,
+            #000000 100%);
+
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.85),
-        0 18px 40px rgba(0, 0, 0, 0.9);
+        0 18px 40px rgba(0, 0, 0, 0.95);
+
+    color: var(--sl-platinum-040, #e5e7eb);
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+
+    transition:
+        box-shadow 180ms ease-out,
+        transform 180ms ease-out,
+        border-color 180ms ease-out;
 }
 
-/* ===== Header ===== */
+.card:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in oklab,
+            var(--sl-gold-400, #c78615),
+            var(--sl-accent-500, #2EC27E) 26%);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.95),
+        0 22px 48px rgba(0, 0, 0, 0.98);
+}
+
+/* =======================
+   Header: ícone + título
+   ======================= */
 
 .header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.9rem;
-    padding: 0.95rem 1.4rem;
-
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-700, #b8860b), #000 12%),
-            color-mix(in oklab, var(--sl-gold-500, #c78615), #000 12%));
-    border-bottom: 1px solid color-mix(in oklab,
-            var(--sl-gold-400, #eab308),
-            black 40%);
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .headerMain {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    min-width: 0;
 }
 
+/* Cápsula para o ícone (verde-vital com halo) */
 .iconWrap {
-    width: 3.1rem;
-    height: 3.1rem;
-    border-radius: 999px;
+    flex: 0 0 auto;
+    width: 2.6rem;
+    height: 2.6rem;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
+    border-radius: 999px;
     background:
-        radial-gradient(circle at 30% 30%,
-            var(--sl-gold-300, #facc15),
-            var(--sl-gold-700, #b8860b));
+        radial-gradient(circle at 30% 20%,
+            color-mix(in oklab,
+                var(--sl-accent-400, #4CD29A),
+                white 6%),
+            transparent 60%),
+        radial-gradient(circle at 70% 90%,
+            color-mix(in oklab,
+                var(--sl-accent-600, #1F8D5C),
+                black 10%),
+            transparent 70%);
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.9),
-        0 10px 22px rgba(0, 0, 0, 0.7);
-    color: var(--sl-platinum-010, #fdfdfd);
+        0 8px 18px rgba(0, 0, 0, 0.9);
+    color: var(--sl-platinum-020, #f9fafb);
 }
 
+/* Título do painel */
 .title {
-    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-    font-weight: 650;
-    letter-spacing: 0.01em;
-    flex: 1;
-    min-width: 0;
+    font-size: clamp(1.05rem, 1vw + 1rem, 1.22rem);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+
+    color: var(--sl-platinum-020, #f9fafb);
 }
 
-/* ===== Linha “Inclui” + botão acordeão ===== */
+/* =======================
+   Faixa de resumo
+   ======================= */
 
+.summaryBand {
+    position: relative;
+    margin-top: 0.15rem;
+    padding: 0.7rem 0.85rem;
+    border-radius: 14px;
+
+    /* Blend dourado + verde sobre noir */
+    background:
+        radial-gradient(circle at 0 0,
+            color-mix(in oklab,
+                var(--sl-gold-400, #c78615),
+                transparent 78%),
+            transparent 70%),
+        radial-gradient(circle at 100% 100%,
+            color-mix(in oklab,
+                var(--sl-accent-500, #2EC27E),
+                transparent 80%),
+            transparent 72%),
+        linear-gradient(120deg,
+            color-mix(in oklab, #02040b, var(--sl-gold-500, #a16207) 8%) 0%,
+            color-mix(in oklab, #02040b, var(--sl-accent-600, #1F8D5C) 12%) 45%,
+            #02040b 100%);
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #a16207),
+            var(--sl-accent-600, #1F8D5C) 38%);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.7),
+        0 10px 22px rgba(0, 0, 0, 0.85);
+}
+
+.summaryText {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: color-mix(in oklab,
+            var(--sl-platinum-060, #e5e7eb),
+            black 10%);
+}
+
+/* =======================
+   Corpo: "Inclui" + lista
+   ======================= */
+
+.body {
+    margin-top: 0.35rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.85);
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+/* Linha superior: etiqueta + botão toggle */
 .tagRow {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.9rem;
-    margin-bottom: 0.75rem;
+    gap: 0.75rem;
 }
 
 .tagLabel {
-    font-size: 0.92rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.26rem 0.6rem;
+    border-radius: 999px;
+
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: color-mix(in oklab,
-            var(--sl-gold-200, #fef08a),
-            #ffffff 8%);
-    margin: 0;
+
+    background: color-mix(in oklab,
+            var(--sl-accent-500, #2EC27E),
+            black 82%);
+    color: var(--sl-platinum-020, #f9fafb);
+    border: 1px solid color-mix(in oklab,
+            var(--sl-accent-600, #1F8D5C),
+            white 18%);
 }
 
-/* ===== Botão verde igual ao "IDEAL PARA" + glow ===== */
-
+/* Botão de toggle (círculo discreto) */
 .toggleButton {
-    position: relative;
-    width: 1.6rem;
-    height: 1.6rem;
+    flex: 0 0 auto;
+    width: 2.1rem;
+    height: 2.1rem;
 
     display: inline-flex;
     align-items: center;
@@ -114,153 +212,132 @@
 
     border-radius: 999px;
     border: 1px solid color-mix(in oklab,
-            var(--sl-sports-accent-500, #22c55e),
-            var(--sl-gold-400, #eab308) 30%);
-
-    background:
-        radial-gradient(circle at 30% 20%,
+            var(--sl-accent-600, #1F8D5C),
+            black 10%);
+    background: radial-gradient(circle at 30% 20%,
             color-mix(in oklab,
-                var(--sl-sports-accent-500, #22c55e),
-                #1e293b 15%),
-            #020617 75%),
-        linear-gradient(145deg, #020b06 0%, #071d10 100%);
-
+                var(--sl-accent-500, #2EC27E),
+                black 60%),
+            #02040b 70%);
     box-shadow:
-        inset 0 0 10px rgba(255, 255, 255, 0.08),
-        0 0 0 1px rgba(0, 0, 0, 0.9),
-        0 0 12px rgba(34, 197, 94, 0.55),
-        /* glow verde */
-        0 10px 24px rgba(0, 0, 0, 0.85);
+        0 0 0 1px rgba(0, 0, 0, 0.85),
+        0 8px 18px rgba(0, 0, 0, 0.9);
 
-    color: var(--sl-platinum-020, #f9fafb);
     cursor: pointer;
+    outline: none;
     transition:
-        transform 0.22s ease,
-        box-shadow 0.22s ease,
-        background 0.22s ease;
+        transform 160ms ease-out,
+        box-shadow 160ms ease-out,
+        border-color 160ms ease-out,
+        background 160ms ease-out;
 }
 
 .toggleButton:hover {
     transform: translateY(-1px);
+    border-color: color-mix(in oklab,
+            var(--sl-accent-400, #4CD29A),
+            white 16%);
     box-shadow:
-        inset 0 0 12px rgba(255, 255, 255, 0.12),
-        0 0 16px rgba(34, 197, 94, 0.7),
-        0 14px 30px rgba(0, 0, 0, 0.95);
+        0 0 0 1px rgba(0, 0, 0, 0.95),
+        0 10px 22px rgba(0, 0, 0, 0.98);
 }
 
 .toggleButton:active {
     transform: translateY(0);
     box-shadow:
-        inset 0 0 8px rgba(255, 255, 255, 0.08),
-        0 0 10px rgba(34, 197, 94, 0.5),
-        0 8px 20px rgba(0, 0, 0, 0.8);
+        0 0 0 1px rgba(0, 0, 0, 0.95),
+        0 6px 14px rgba(0, 0, 0, 0.9);
 }
 
-/* Chevron central */
+/* Ícone seta (usa o <span> interno) */
 .toggleIcon {
-    display: block;
-    width: 0.9rem;
-    height: 0.9rem;
-    border-right: 2px solid #bdfcc0;
-    border-bottom: 2px solid #bdfcc0;
-    transform: rotate(45deg);
-    /* fechado = seta para baixo */
+    width: 0.7rem;
+    height: 0.7rem;
+
+    border-radius: 2px;
+
+    border-left: 2px solid var(--sl-platinum-020, #f9fafb);
+    border-bottom: 2px solid var(--sl-platinum-020, #f9fafb);
+
+    transform: rotate(-45deg) translateY(-1px);
     transform-origin: center;
-    transition: transform 0.22s ease;
+    transition: transform 160ms ease-out;
 }
 
+/* Estado aberto: seta vira para baixo */
 .open .toggleIcon {
-    transform: rotate(-135deg);
-    /* aberto = seta para cima */
+    transform: rotate(135deg) translateY(1px);
 }
 
-/* ===== Faixa resumo ===== */
-
-.summaryBand {
-    padding: 1.1rem 1.6rem 1.05rem;
-    background: radial-gradient(circle at 0 0,
-            color-mix(in oklab,
-                var(--sl-sports-accent-500, #22c55e),
-                transparent 88%),
-            transparent 68%),
-        linear-gradient(to bottom,
-            #020617 0%,
-            color-mix(in oklab, #020617 80%, #000 20%) 100%);
-    border-bottom: 1px solid color-mix(in oklab,
-            var(--sl-gold-500, #c78615),
-            black 55%);
-}
-
-.summaryText {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    max-width: 56ch;
-}
-
-/* ===== Corpo + lista ===== */
-
-.body {
-    padding: 1.1rem 1.6rem 1.4rem;
-    background: radial-gradient(circle at 0 0,
-            color-mix(in oklab,
-                var(--sl-sports-accent-700, #16a34a),
-                transparent 90%),
-            transparent 72%),
-        radial-gradient(circle at 100% 100%,
-            rgba(0, 0, 0, 0.8),
-            transparent 60%),
-        linear-gradient(to bottom, #020617 0%, #020617 100%);
-}
+/* =======================
+   Lista de itens
+   ======================= */
 
 .list {
     list-style: none;
+    margin: 0.2rem 0 0;
     padding: 0;
-    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0.5rem;
 }
 
 .listItem {
     display: flex;
-    align-items: center;
-    /* bullet centrado com o texto */
+    align-items: flex-start;
     gap: 0.55rem;
 }
 
 .bullet {
-    width: 0.48rem;
-    height: 0.48rem;
+    margin-top: 0.4rem;
+    width: 0.52rem;
+    height: 0.52rem;
     border-radius: 999px;
 
-    background: radial-gradient(circle at 30% 30%,
-            var(--sl-gold-300, #facc15),
-            var(--sl-gold-600, #d97706));
+    background:
+        radial-gradient(circle at 30% 20%,
+            color-mix(in oklab,
+                var(--sl-accent-400, #4CD29A),
+                white 8%),
+            transparent 60%),
+        radial-gradient(circle at 70% 90%,
+            color-mix(in oklab,
+                var(--sl-accent-600, #1F8D5C),
+                black 10%),
+            transparent 70%);
     box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.85),
-        0 0 8px rgba(250, 204, 21, 0.55);
-    flex-shrink: 0;
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(46, 194, 126, 0.6);
 }
 
 .itemText {
-    font-size: 0.93rem;
-    line-height: 1.55;
-    color: var(--sl-platinum-030, #e5e7eb);
+    flex: 1;
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: color-mix(in oklab,
+            var(--sl-platinum-060, #e5e7eb),
+            black 6%);
 }
 
-/* ===== Responsivo ===== */
+/* =======================
+   Responsivo
+   ======================= */
 
-@media (max-width: 480px) {
-    .header {
+@media (max-width: 640px) {
+    .card {
+        padding: 1.2rem 1.15rem 1.3rem;
+        border-radius: 18px;
+    }
+
+    .headerMain {
         align-items: flex-start;
     }
 
     .title {
-        font-size: 1.05rem;
+        font-size: 1.02rem;
     }
 
-    .summaryBand,
-    .body {
-        padding-inline: 1.2rem;
+    .summaryBand {
+        padding: 0.6rem 0.7rem;
     }
 }

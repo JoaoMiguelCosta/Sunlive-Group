@@ -10,14 +10,14 @@
 
     border: 1px solid color-mix(in oklab,
             var(--sl-gold-500, #c78615),
-            black 40%);
+            var(--sl-accent-600, #1F8D5C) 28%);
 
     background:
         radial-gradient(circle at 0 0,
             color-mix(in oklab, var(--sl-gold-400, #eab308), transparent 80%),
             transparent 70%),
         radial-gradient(circle at 100% 0,
-            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), transparent 80%),
+            color-mix(in oklab, var(--sl-accent-500, #2EC27E), transparent 78%),
             transparent 70%),
         linear-gradient(to bottom, #020617 0%, #00010a 100%);
 
@@ -47,7 +47,11 @@
     position: relative;
     width: 100%;
     aspect-ratio: 4 / 3;
-    background: red;
+    background: radial-gradient(circle at 50% 0,
+            color-mix(in oklab,
+                var(--sl-accent-500, #2EC27E),
+                black 40%),
+            #020617 70%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,7 +147,7 @@
 
 .accordionToggle:focus-visible {
     outline: 2px solid color-mix(in oklab,
-            var(--sl-sports-accent-400, #4ade80),
+            var(--sl-accent-400, #4CD29A),
             white 15%);
     outline-offset: 3px;
 }
@@ -158,18 +162,18 @@
     justify-content: center;
 
     border: 1px solid color-mix(in oklab,
-            var(--sl-sports-accent-500, #22c55e),
+            var(--sl-accent-500, #2EC27E),
             var(--sl-gold-400, #eab308) 30%);
 
     background:
         radial-gradient(circle at 30% 20%,
             color-mix(in oklab,
-                var(--sl-sports-accent-400, #4ade80),
+                var(--sl-accent-400, #4CD29A),
                 white 12%) 0,
             transparent 60%),
         radial-gradient(circle at 50% 110%,
             color-mix(in oklab,
-                var(--sl-sports-accent-600, #15803d),
+                var(--sl-accent-600, #1F8D5C),
                 black 10%),
             #020617 70%);
 
@@ -207,7 +211,7 @@
     padding: 0.7rem 1.8rem;
     border-radius: 999px;
 
-    /* Fundo escuro com glow verde e dourado (como no devtools) */
+    /* Fundo escuro com glow verde e dourado */
     background:
         radial-gradient(circle at 0 0,
             rgba(76, 210, 154, 0.26) 0,
@@ -221,7 +225,7 @@
 
     border: 1px solid color-mix(in oklab,
             var(--sl-gold-400, #c78615) 70%,
-            var(--sl-sports-accent-600, #1fb05c) 30%);
+            var(--sl-accent-600, #1F8D5C) 30%);
 
     box-shadow:
         0 10px 24px rgba(0, 0, 0, 0.75),
@@ -245,7 +249,9 @@
     margin: 0 0 0.6rem;
     font-size: 0.9rem;
     font-weight: 700;
-    color: var(--sl-platinum-060, #d0d7ec);
+    color: color-mix(in oklab,
+            var(--sl-platinum-060, #d0d7ec),
+            var(--sl-gold-300, #facc15) 8%);
 }
 
 .featuresList {
@@ -278,8 +284,12 @@
     font-weight: 700;
 
     background: radial-gradient(circle at 30% 0,
-            #bbf7d0,
-            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), black 18%));
+            color-mix(in oklab,
+                var(--sl-accent-400, #4CD29A),
+                white 18%),
+            color-mix(in oklab,
+                var(--sl-accent-500, #2EC27E),
+                black 18%));
 
     color: #020617;
     box-shadow:

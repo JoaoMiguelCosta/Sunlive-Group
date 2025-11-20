@@ -24,7 +24,9 @@
 
     color: var(--sl-platinum-050, #e7ebf3);
     border-radius: 8px;
-    border: 1.5px solid var(--sl-gold-400, #c78615);
+    border: 1.5px solid color-mix(in oklab,
+            var(--sl-gold-400, #c78615),
+            var(--sl-accent-500, #2EC27E) 35%);
     box-shadow:
         0 0 0 1px rgba(3, 7, 18, 0.85),
         0 20px 40px rgba(0, 0, 0, 0.8);
@@ -43,7 +45,7 @@
     transform: translateY(-3px);
     border-color: var(--sl-accent-500, #2EC27E);
     box-shadow:
-        0 0 0 1px rgba(46, 194, 126, 0.7),
+        0 0 0 1px rgba(46, 194, 126, 0.8),
         0 26px 60px rgba(0, 0, 0, 0.9);
 }
 
@@ -56,6 +58,7 @@
     /* ligeiramente mais baixo */
     padding: clamp(0.7rem, 1.3vw, 0.95rem) clamp(1.4rem, 2.4vw, 1.9rem);
 
+    /* Dourado prestige (mantido) */
     background: linear-gradient(135deg,
             var(--sl-gold-500, #c78615),
             var(--sl-gold-300, #facc15));
@@ -121,10 +124,12 @@
 
     padding: clamp(0.75rem, 1.4vw, 1rem) clamp(1.4rem, 2.6vw, 1.9rem);
 
-    /* noir com leve inclinação para o verde */
+    /* noir com inclinação clara para o verde-vital */
     background: linear-gradient(90deg,
             rgba(5, 7, 10, 1),
-            rgba(4, 15, 10, 1));
+            color-mix(in oklab,
+                #020617,
+                var(--sl-accent-600, #1F8D5C) 22%));
 }
 
 /* Caso especial: só botão de book → centrar */
@@ -149,16 +154,17 @@
     height: clamp(2.3rem, 2.8vw, 2.6rem);
 
     border-radius: 999px;
-    border: 1px solid var(--sl-gold-400, #c78615);
+    border: 1px solid color-mix(in oklab,
+            var(--sl-accent-500, #2EC27E),
+            black 18%);
     background:
         radial-gradient(circle at 30% 0,
-            rgba(76, 210, 154, 0.24),
+            rgba(76, 210, 154, 0.28),
             /* verde-vital */
             transparent 55%),
         rgba(8, 12, 10, 0.98);
-    /* noir */
 
-    color: var(--sl-gold-200, #fef3c7);
+    color: var(--sl-platinum-020, #f9fafb);
     cursor: pointer;
 
     transition:
@@ -170,10 +176,10 @@
 }
 
 .socialButton:hover {
-    border-color: var(--sl-accent-500, #2EC27E);
+    border-color: var(--sl-accent-400, #4CD29A);
     color: var(--sl-platinum-050, #e7ebf3);
     box-shadow:
-        0 0 0 1px rgba(46, 194, 126, 0.8),
+        0 0 0 1px rgba(46, 194, 126, 0.85),
         0 10px 24px rgba(0, 0, 0, 0.85);
     transform: translateY(-1px);
 }
@@ -228,7 +234,7 @@
         transform 140ms ease-out;
 }
 
-/* Ver mais */
+/* Ver mais (mantém dourado prestige) */
 .primary {
     background: linear-gradient(135deg,
             var(--sl-gold-500, #c78615),
@@ -247,22 +253,27 @@
     transform: translateY(-1px);
 }
 
-/* Abrir book */
+/* Abrir book — agora mais “Sports”, outline verde */
 .secondary {
     background: transparent;
-    color: var(--sl-platinum-050, #e7ebf3);
-    border-color: rgba(148, 163, 184, 0.9);
+    color: color-mix(in oklab,
+            var(--sl-accent-400, #4CD29A),
+            white 10%);
+    border-color: color-mix(in oklab,
+            var(--sl-accent-600, #1F8D5C),
+            white 18%);
 }
 
 .secondary:hover {
     background:
         radial-gradient(circle at 0 0,
-            rgba(76, 210, 154, 0.16),
+            rgba(76, 210, 154, 0.18),
             transparent 60%);
     border-color: var(--sl-accent-500, #2EC27E);
     box-shadow:
-        0 0 0 1px rgba(46, 194, 126, 0.7),
+        0 0 0 1px rgba(46, 194, 126, 0.75),
         0 10px 26px rgba(0, 0, 0, 0.8);
+    color: var(--sl-platinum-020, #f9fafb);
 }
 
 /* Ícone de seta / download */
@@ -286,5 +297,43 @@
     .actions,
     .actionsSolo {
         justify-content: flex-start;
+    }
+}
+
+.logoIconWrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: clamp(2.6rem, 3.2vw, 3rem);
+    height: clamp(2.6rem, 3.2vw, 3rem);
+
+    border-radius: 999px;
+    padding: 4px;
+
+    background:
+        radial-gradient(circle at 30% 0,
+            rgba(255, 255, 255, 0.85),
+            transparent 65%);
+}
+
+.logoIcon {
+    width: 65%;
+    height: 65%;
+}
+
+.footerCenter {
+    justify-content: center;
+}
+
+/* Grupo de botões centrado nesse caso */
+.actionsCenter {
+    justify-content: center;
+}
+
+/* Em mobile continuamos a centrar este caso específico */
+@media (max-width: 768px) {
+    .actionsCenter {
+        justify-content: center;
     }
 }

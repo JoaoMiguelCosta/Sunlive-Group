@@ -13,6 +13,19 @@ import BrainIcon from "./Brain.jsx";
 import HeartIcon from "./Heart.jsx";
 import SunIcon from "./Sun.jsx";
 import SpeedIcon from "./Speed.jsx";
+import DreamIcon from "./Dream.jsx";
+import BoltIcon from "./Bolt.jsx";
+import FlagIcon from "./Flag.jsx";
+import MonitorIcon from "./Monitor.jsx";
+import RecycleIcon from "./Recycle.jsx";
+import GraduationCapIcon from "./GraduationCap.jsx";
+import CompassIcon from "./Compassion.jsx";
+import BrushCleaningIcon from "./BrushCleaning.jsx";
+import AthleteBarbellIcon from "./AthleteBarbell.jsx";
+import ClockIcon from "./Clock.jsx";
+import ChartIcon from "./Chart.jsx";
+import EyeIcon from "./Eye.jsx";
+import ConsultingExperienceIcon from "./Experience.jsx";
 
 // Novos ícones (Travel / Logística)
 import PlaneIcon from "./Plane.jsx";
@@ -33,6 +46,7 @@ import TravelVector from "./TravelVector.jsx";
 
 // >>> NOVO: Chevron do menu
 import ChevronDownIcon from "./ChevronDown.jsx";
+
 
 // ===== Exports nomeados =====
 export {
@@ -58,6 +72,19 @@ export {
   HeartIcon,
   SpeedIcon,
   SunIcon,
+  DreamIcon,
+  BoltIcon,
+  FlagIcon,
+  MonitorIcon,
+  RecycleIcon,
+  GraduationCapIcon,
+  CompassIcon,
+  BrushCleaningIcon,
+  AthleteBarbellIcon,
+ ClockIcon,
+ ChartIcon,
+ EyeIcon,
+ ConsultingExperienceIcon,
 };
 
 // ===== Mapa conveniente para usar por chave (iconKey) =====
@@ -90,8 +117,21 @@ export const ICONS = {
   card: CardIcon,
   instagram: InstagramIcon,
   facebook: FacebookIcon,
+  dream: DreamIcon,
+  bolt: BoltIcon,
+  flag: FlagIcon,
+  monitor: MonitorIcon,
+  recycle: RecycleIcon,
+  graduation: GraduationCapIcon,
+  compassion:  CompassIcon,
+  brush: BrushCleaningIcon,
+  athlete: AthleteBarbellIcon,
+  clock: ClockIcon,
+  chart: ChartIcon,
+  Eyeh: EyeIcon,
+  experience: ConsultingExperienceIcon,
 
-  // >>> NOVO
+
   "chevron-down": ChevronDownIcon,
 };
 

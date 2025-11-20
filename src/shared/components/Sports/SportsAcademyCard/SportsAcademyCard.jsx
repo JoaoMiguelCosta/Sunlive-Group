@@ -4,51 +4,92 @@ import styles from "./SportsAcademyCard.module.css";
 import InstagramIcon from "../../../ui/icons/Instagram.jsx";
 import FacebookIcon from "../../../ui/icons/Facebook.jsx";
 
+/**
+ * SportsAcademyCard — totalmente opcional por zona:
+ * 1) Topo: logo (imagem) OU ícone OU nada
+ * 2) Redes sociais: Instagram / Facebook (ícone com link) OU nada
+ * 3) Botão "Ver mais" opcional
+ * 4) Botão "Abrir Book" opcional
+ */
 export default function SportsAcademyCard({
+  // Topo visual
   logoSrc,
   logoAlt,
+  icon: Icon, // componente de ícone (ex: Trophy, MapPin, etc.)
+
+  // Conteúdo principal
   title,
   description,
+
+  // Redes sociais (se não passares, não aparece nada)
   instagramHref,
   facebookHref,
+
+  // Ações
   moreHref,
   moreLabel = "Ver mais",
   bookHref,
   bookLabel = "Abrir Book",
+
+  // Extra
   className = "",
   ...rest
 }) {
   if (!title && !description) return null;
 
-  const hasSocials = instagramHref || facebookHref;
-  const hasMore = !!moreHref;
-  const hasBook = !!bookHref;
-  const hasAnyFooter = hasSocials || hasMore || hasBook;
+  // Flags por zona
+  const showInstagram = Boolean(instagramHref);
+  const showFacebook = Boolean(facebookHref);
+  const showMoreButton = Boolean(moreHref);
+  const showBookButton = Boolean(bookHref);
 
-  // caso especial: só tem book → queremos o botão centrado
-  const onlyBook = hasBook && !hasSocials && !hasMore;
+  const hasSocials = showInstagram || showFacebook;
+  const hasAnyFooter = hasSocials || showMoreButton || showBookButton;
+
+  // Caso especial 1: só Book (sem redes, sem "Ver mais")
+  const onlyBook = showBookButton && !hasSocials && !showMoreButton;
+
+  // ✅ Caso especial 2: redes + Book, sem "Ver mais" → centrar tudo
+  const centerSocialsAndBook = hasSocials && showBookButton && !showMoreButton;
 
   const cardClasses = [styles.card, className].filter(Boolean).join(" ");
-  const footerClasses = [styles.footer, onlyBook ? styles.footerSolo : ""]
+
+  const footerClasses = [
+    styles.footer,
+    onlyBook ? styles.footerSolo : "",
+    centerSocialsAndBook ? styles.footerCenter : "", // 👈 novo
+  ]
     .filter(Boolean)
     .join(" ");
 
-  const actionsClasses = [styles.actions, onlyBook ? styles.actionsSolo : ""]
+  const actionsClasses = [
+    styles.actions,
+    onlyBook ? styles.actionsSolo : "",
+    centerSocialsAndBook ? styles.actionsCenter : "", // 👈 novo
+  ]
     .filter(Boolean)
     .join(" ");
+
+  const hasHeaderVisual = Boolean(logoSrc) || Boolean(Icon);
 
   return (
     <article className={cardClasses} {...rest}>
-      {/* Topo: logo + nome academia */}
+      {/* Topo: logo (imagem) ou ícone ou nada */}
       <header className={styles.header}>
-        {logoSrc && (
+        {hasHeaderVisual && (
           <div className={styles.logoWrap}>
-            <img
-              src={logoSrc}
-              alt={logoAlt || title || ""}
-              loading="lazy"
-              className={styles.logo}
-            />
+            {logoSrc ? (
+              <img
+                src={logoSrc}
+                alt={logoAlt || title || ""}
+                loading="lazy"
+                className={styles.logo}
+              />
+            ) : Icon ? (
+              <span className={styles.logoIconWrap}>
+                <Icon className={styles.logoIcon} aria-hidden="true" />
+              </span>
+            ) : null}
           </div>
         )}
 
@@ -62,13 +103,13 @@ export default function SportsAcademyCard({
         </div>
       )}
 
-      {/* Footer interno do card: redes + botões */}
+      {/* Footer: redes sociais + botões (tudo opcional) */}
       {hasAnyFooter && (
         <footer className={footerClasses}>
           {/* Redes sociais */}
           {hasSocials && (
             <div className={styles.socials}>
-              {instagramHref && (
+              {showInstagram && (
                 <a
                   href={instagramHref}
                   target="_blank"
@@ -80,7 +121,7 @@ export default function SportsAcademyCard({
                 </a>
               )}
 
-              {facebookHref && (
+              {showFacebook && (
                 <a
                   href={facebookHref}
                   target="_blank"
@@ -96,7 +137,7 @@ export default function SportsAcademyCard({
 
           {/* Ações principais */}
           <div className={actionsClasses}>
-            {moreHref && (
+            {showMoreButton && (
               <a
                 href={moreHref}
                 className={`${styles.button} ${styles.primary}`}
@@ -106,7 +147,7 @@ export default function SportsAcademyCard({
               </a>
             )}
 
-            {bookHref && (
+            {showBookButton && (
               <a
                 href={bookHref}
                 download

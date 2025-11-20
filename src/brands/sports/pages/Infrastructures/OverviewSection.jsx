@@ -7,7 +7,7 @@ import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
 
 const PILL_ICONS = {
   pin: ICONS.PinIcon,
-  clock: ICONS.ClockIcon, // se ainda não existir, podes mapear mais tarde
+  phone: ICONS.PhoneIcon, // se ainda não existir, podes mapear mais tarde
   users: ICONS.UsersIcon,
 };
 

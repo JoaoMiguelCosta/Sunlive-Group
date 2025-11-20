@@ -8,7 +8,7 @@ import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
 const PILL_ICONS = {
   users: ICONS.UsersIcon,
   heart: ICONS.HeartIcon,
-  leaf: ICONS.LeafIcon,
+ globe: ICONS.GlobeIcon,
 };
 
 /**

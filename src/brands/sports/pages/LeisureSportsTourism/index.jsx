@@ -6,6 +6,9 @@ import sportsBrand from "../../configSports.jsx";
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./OverviewSection.jsx";
 import LeisureSportsTourismClosingPanel from "./LeisureSportsTourismClosingPanel.jsx";
+import LeisureExperiencesGrid from "./LeisureExperiencesGrid.jsx";
+import LeisureDestinationsGrid from "./LeisureDestinationsGrid.jsx";
+import LeisureBenefitsGrid from "./LeisureBenefitsGrid.jsx";
 
 /**
  * Página Turismo Desportivo Lúdico — Sunlive Sports
@@ -38,55 +41,75 @@ export default function LeisureSportsTourismPage() {
           {/* 1) Bloco texto + foto + pills */}
           <OverviewSection data={data} />
 
-          {/* 2) Experiências Inesquecíveis */}
+          {/* 2) Experiências Inesquecíveis + grelha de cartões */}
           {data.experiencesIntro && (
-            <section
-              className={styles.heroSection}
-              aria-label={data.experiencesIntro.title}
-            >
-              <HeadlineBlock
-                theme="sports"
-                variant="banded"
-                align="center"
-                max="lg"
-                title={data.experiencesIntro.title}
-                lead={data.experiencesIntro.lead}
-              />
-            </section>
+            <>
+              <section
+                className={styles.heroSection}
+                aria-label={data.experiencesIntro.title}
+              >
+                <HeadlineBlock
+                  theme="sports"
+                  variant="banded"
+                  align="center"
+                  max="lg"
+                  title={data.experiencesIntro.title}
+                  lead={data.experiencesIntro.lead}
+                />
+              </section>
+
+              {data.leisureExperiences && (
+                <LeisureExperiencesGrid data={data.leisureExperiences} />
+              )}
+            </>
           )}
 
-          {/* 3) Destinos que Encantam */}
+          {/* 3) Destinos que Encantam + grelha de destinos */}
           {data.destinationsIntro && (
-            <section
-              className={styles.heroSection}
-              aria-label={data.destinationsIntro.title}
-            >
-              <HeadlineBlock
-                theme="sports"
-                variant="banded"
-                align="center"
-                max="lg"
-                title={data.destinationsIntro.title}
-                lead={data.destinationsIntro.lead}
-              />
-            </section>
+            <>
+              <section
+                className={styles.heroSection}
+                aria-label={data.destinationsIntro.title}
+              >
+                <HeadlineBlock
+                  theme="sports"
+                  variant="banded"
+                  align="center"
+                  max="lg"
+                  title={data.destinationsIntro.title}
+                  lead={data.destinationsIntro.lead}
+                />
+              </section>
+
+              {data.leisureDestinations && (
+                <LeisureDestinationsGrid data={data.leisureDestinations} />
+              )}
+            </>
           )}
 
           {/* 4) Benefícios para os Atletas */}
           {data.benefitsIntro && (
-            <section
-              className={styles.heroSection}
-              aria-label={data.benefitsIntro.title}
-            >
-              <HeadlineBlock
-                theme="sports"
-                variant="banded"
-                align="center"
-                max="lg"
-                title={data.benefitsIntro.title}
-                lead={data.benefitsIntro.lead}
+            <>
+              <section
+                id={data.benefitsIntro.id}
+                className={styles.heroSection}
+                aria-label={data.benefitsIntro.title}
+              >
+                <HeadlineBlock
+                  theme="sports"
+                  variant="banded"
+                  align="center"
+                  max="lg"
+                  title={data.benefitsIntro.title}
+                  lead={data.benefitsIntro.lead}
+                />
+              </section>
+
+              <LeisureBenefitsGrid
+                data={data.benefitsIntro}
+                iconSet={sportsBrand.icons}
               />
-            </section>
+            </>
           )}
 
           {/* 5) Painel de fecho / próximo passo */}

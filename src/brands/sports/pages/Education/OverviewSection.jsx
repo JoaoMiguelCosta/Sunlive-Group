@@ -6,9 +6,9 @@ import ValuePillsBar from "../../../../shared/components/Sports/ValuePillsBar/Va
 import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
 
 const PILL_ICONS = {
-  education: ICONS.BookIcon,
+  GraduationCapIcon: ICONS.GraduationCapIcon,
   values: ICONS.HeartIcon,
-  guidance: ICONS.CompassIcon,
+  compass: ICONS.CompassIcon,
 };
 
 /**

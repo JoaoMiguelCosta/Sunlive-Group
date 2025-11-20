@@ -1,0 +1,39 @@
+/* =========================================================
+   LeisureBenefitsGrid — Turismo Desportivo Lúdico (Sports)
+   Grelha de cartões — Benefícios para os Atletas
+   ========================================================= */
+
+.section {
+    position: relative;
+    width: 100%;
+
+    color: var(--sl-platinum-040, #edf1ff);
+}
+
+.inner {
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+}
+
+/* Grelha dos cartões */
+.grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.3rem, 2.2vw, 1.8rem);
+    justify-items: center;
+}
+
+/* >= tablet: 2 colunas */
+@media (min-width: 720px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* >= desktop largo: 4 colunas */
+@media (min-width: 1100px) {
+    .grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}

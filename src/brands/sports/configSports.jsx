@@ -274,11 +274,10 @@ const trainingCamps = {
    Academias — página dedicada
    ========================================================= */
 
-   import acaLogo from "./assets/Academies/aca.png";
-   import basketLogo from "./assets/Academies/basket.png";
-   import footLogo from "./assets/Academies/foot.png";
-   import karateLogo from "./assets/Academies/karate.png";
-
+import acaLogo from "./assets/Academies/aca.png";
+import basketLogo from "./assets/Academies/basket.png";
+import footLogo from "./assets/Academies/foot.png";
+import karateLogo from "./assets/Academies/karate.png";
 
 const academies = {
   id: "academies",
@@ -442,7 +441,6 @@ const academies = {
   },
 };
 
-
 /* =========================================================
    Eventos — página dedicada
    ========================================================= */
@@ -518,8 +516,6 @@ const events = {
   },
 };
 
-
-
 /* =========================================================
    Atletas Sunlive — página dedicada
    ========================================================= */
@@ -552,15 +548,15 @@ const athletes = {
       {
         key: "dream",
         label: "Sonhar",
+        iconKey: "dream",
+      },
+      {
+        key: "bolt",
+        label: "Ousar",
         iconKey: "bolt",
       },
       {
-        key: "dare",
-        label: "Ousar",
-        iconKey: "cloud",
-      },
-      {
-        key: "achieve",
+        key: "flag",
         label: "Realizar",
         iconKey: "flag",
       },
@@ -706,7 +702,6 @@ const athletes = {
   },
 };
 
-
 /* =========================================================
    Serviços Especializados — página dedicada
    ========================================================= */
@@ -747,8 +742,8 @@ const specialisedServices = {
   pillars: {
     items: [
       { key: "prevention", label: "Prevenção", iconKey: "prevention" },
-      { key: "performance", label: "Performance", iconKey: "performance" },
-      { key: "recovery", label: "Recuperação Acelerada", iconKey: "recovery" },
+      { key: "monitor", label: "Performance", iconKey: "monitor" },
+      { key: "recycle", label: "Recuperação Acelerada", iconKey: "recycle" },
     ],
   },
 
@@ -903,8 +898,6 @@ const specialisedServices = {
   },
 };
 
-
-
 /* =========================================================
    Educação — página dedicada
    ========================================================= */
@@ -938,31 +931,28 @@ const education = {
   levelsIntro: {
     id: "education-levels-intro",
     title: "Níveis de Ensino",
-    lead:
-      "Desde o ensino básico até ao superior, oferecemos um percurso educativo completo e adaptado às necessidades dos nossos estudantes-atletas.",
+    lead: "Desde o ensino básico até ao superior, oferecemos um percurso educativo completo e adaptado às necessidades dos nossos estudantes-atletas.",
   },
 
   bilingualIntro: {
     id: "education-bilingual-intro",
     title: "Ensino Bilingue",
-    lead:
-      "Oferecemos uma abordagem educativa única que combina o melhor dos sistemas português e internacional, preparando os nossos alunos para um futuro sem fronteiras.",
+    lead: "Oferecemos uma abordagem educativa única que combina o melhor dos sistemas português e internacional, preparando os nossos alunos para um futuro sem fronteiras.",
   },
 
   careersIntro: {
     id: "education-careers-intro",
     title: "Percursos Profissionais",
-    lead:
-      "Preparamos os nossos estudantes para carreiras de sucesso no mundo do desporto e além, oferecendo especializações reconhecidas internacionalmente.",
+    lead: "Preparamos os nossos estudantes para carreiras de sucesso no mundo do desporto e além, oferecendo especializações reconhecidas internacionalmente.",
   },
 
   /* 3) Pilares — Educação / Valores / Orientação */
   pillars: {
     items: [
       {
-        key: "education",
+        key: "GraduationCapIcon",
         label: "Educação",
-        iconKey: "education",
+        iconKey: "GraduationCapIcon",
       },
       {
         key: "values",
@@ -970,9 +960,9 @@ const education = {
         iconKey: "values",
       },
       {
-        key: "guidance",
+        key: "compass",
         label: "Orientação",
-        iconKey: "guidance",
+        iconKey: "compass",
       },
     ],
   },
@@ -1005,7 +995,6 @@ const education = {
     },
   },
 };
-
 
 /* =========================================================
    Turismo Desportivo Lúdico — página dedicada
@@ -1040,22 +1029,208 @@ const leisureSportsTourism = {
   experiencesIntro: {
     id: "leisure-sports-tourism-experiences-intro",
     title: "Experiências Inesquecíveis",
-    lead:
-      "Uma seleção cuidadosa de atividades que despertam os sentidos, renovam energias e criam memórias que durarão para toda a vida.",
+    lead: "Uma seleção cuidadosa de atividades que despertam os sentidos, renovam energias e criam memórias que durarão para toda a vida.",
+  },
+
+  /* 2.x.a) Grelha de experiências (4 cartões) */
+  leisureExperiences: {
+    id: "leisure-sports-tourism-experiences-grid",
+    items: [
+      {
+        key: "water-sports",
+        title: "Desportos Aquáticos",
+        description:
+          "Ondas perfeitas no litoral. Desde a Praia da Barra à Costa Nova e Vagueira — ideais para todos os níveis.",
+        experiences: [
+          "Aulas de surf",
+          "Bodyboard",
+          "Canoagem costeira",
+          "Stand-Up Paddle",
+        ],
+        image: {
+          src: null, // FOTO a definir
+          alt: "Desportos aquáticos na costa de Aveiro.",
+        },
+      },
+      {
+        key: "trails-hiking",
+        title: "Trilhos e Caminhadas",
+        description:
+          "Descoberta da natureza exuberante da Serra do Caramulo e Buçaco.",
+        experiences: [
+          "Ecopista do Dão",
+          "Rota dos Vinhos da Bairrada",
+          "Trilhos da Serra da Lousã",
+          "Ciclovias junto ao mar",
+        ],
+        image: {
+          src: null, // FOTO a definir
+          alt: "Trilhos pedestres e caminhadas na natureza.",
+        },
+      },
+      {
+        key: "cycle-tourism",
+        title: "Cicloturismo",
+        description:
+          "Percursos únicos entre vinhas, florestas e aldeias tradicionais.",
+        experiences: [
+          "Trilho das Fragas de São Simão",
+          "Mata Nacional do Buçaco",
+          "Miradouros da Serra do Caramulo",
+          "Caminho de Santiago português",
+        ],
+        image: {
+          src: null, // FOTO a definir
+          alt: "Cicloturismo em paisagens naturais e rurais.",
+        },
+      },
+      {
+        key: "padel",
+        title: "Padel",
+        description:
+          "Modalidade em crescimento, com campos modernos e um ambiente social dinâmico e competitivo.",
+        experiences: [
+          "Sessões técnicas com treinadores",
+          "Torneios internos e jogos entre grupos",
+          "Campos indoor e outdoor de última geração",
+          "Aulas para iniciantes e atletas experientes",
+        ],
+        image: {
+          src: null, // FOTO a definir
+          alt: "Jogo de padel em ambiente competitivo.",
+        },
+      },
+    ],
   },
 
   destinationsIntro: {
     id: "leisure-sports-tourism-destinations-intro",
     title: "Destinos que Encantam",
-    lead:
-      "O centro de Portugal revela-se como um tesouro de paisagens, sabores e tradições que conquistam atletas de todo o mundo, criando ligações profundas e duradouras.",
+    lead: "O centro de Portugal revela-se como um tesouro de paisagens, sabores e tradições que conquistam atletas de todo o mundo, criando ligações profundas e duradouras.",
   },
 
+  /* 2.x.b) Grelha de destinos (5 cartões) */
+  leisureDestinations: {
+    id: "leisure-sports-tourism-destinations-grid",
+    items: [
+      {
+        key: "aveiro",
+        title: "Aveiro",
+        description:
+          'Conhecida como a "Veneza de Portugal", combina tradição, canais encantadores e uma identidade cultural única.',
+        highlights: [
+          "Passeios de moliceiro pelos canais",
+          "Arquitetura Arte Nova e fachadas coloridas",
+          "Doces regionais como os ovos moles",
+          "Tradições ligadas à ria e salinas históricas",
+        ],
+        image: {
+          src: null, // FOTO a definir
+          alt: "Canais e moliceiros na cidade de Aveiro.",
+        },
+      },
+      {
+        key: "coimbra",
+        title: "Coimbra",
+        description:
+          "Cidade universitária milenar, berço da cultura e conhecimento.",
+        highlights: [
+          "Universidade mais antiga de Portugal",
+          "Biblioteca Joanina deslumbrante",
+          "Fado de Coimbra autêntico",
+          "Mosteiro de Santa Clara-a-Velha",
+        ],
+        image: {
+          src: null,
+          alt: "Vista sobre a cidade universitária de Coimbra.",
+        },
+      },
+      {
+        key: "serras",
+        title: "Serras",
+        description:
+          "Montanhas majestosas, ar puro e vistas panorâmicas deslumbrantes.",
+        highlights: [
+          "Miradouros com vistas até ao mar",
+          "Trilhos entre florestas centenárias",
+          "Ar puro das montanhas",
+          "Museu do Automóvel único (Serra do Caramulo)",
+        ],
+        image: {
+          src: null,
+          alt: "Paisagens de serra com vistas panorâmicas.",
+        },
+      },
+      {
+        key: "praias",
+        title: "Praias",
+        description:
+          "Destino ideal para quem procura sol, mar e natureza, com paisagens únicas e experiências costeiras autênticas.",
+        highlights: [
+          "Ícones fotogénicos e cheios de história",
+          "Ideal para surf, banhos de sol e caminhadas",
+          "Gastronomia local com sabor a mar",
+          "Falésias, dunas e paisagens imperdíveis",
+        ],
+        image: {
+          src: null,
+          alt: "Praias de areia dourada e mar azul.",
+        },
+      },
+      {
+        key: "bairrada",
+        title: "Região da Bairrada",
+        description:
+          "Terra de vinhos espumantes, gastronomia rica e paisagens verdejantes.",
+        highlights: [
+          "Caves históricas com séculos de tradição",
+          "Leitão da Bairrada mundialmente famoso",
+          "Paisagens de vinhas ondulantes",
+          "Aldeias pitorescas preservadas",
+        ],
+        image: {
+          src: null,
+          alt: "Vinhas e paisagens da região da Bairrada.",
+        },
+      },
+    ],
+  },
+
+  /* INTRO + CARDS DE BENEFÍCIOS */
   benefitsIntro: {
     id: "leisure-sports-tourism-benefits-intro",
     title: "Benefícios para os Atletas",
-    lead:
-      "Cada experiência é cuidadosamente desenhada para complementar o treino intensivo, proporcionando benefícios tangíveis para a performance e bem-estar dos atletas.",
+    lead: "Cada experiência é cuidadosamente desenhada para complementar o treino intensivo, proporcionando benefícios tangíveis para a performance e bem-estar dos atletas.",
+    items: [
+      {
+        key: "active-recovery",
+        iconKey: "heart",
+        title: "Recuperação Ativa",
+        description:
+          "Atividades de baixo impacto que promovem a recuperação muscular e mental.",
+      },
+      {
+        key: "mental-balance",
+        iconKey: "smile",
+        title: "Equilíbrio Mental",
+        description:
+          "Momentos de desconexão que renovam a motivação e perspetiva.",
+      },
+      {
+        key: "cultural-enrichment",
+        iconKey: "star",
+        title: "Enriquecimento Cultural",
+        description:
+          "Aprendizagem e crescimento pessoal através de novas experiências.",
+      },
+      {
+        key: "natural-team-building",
+        iconKey: "users",
+        title: "Team Building Natural",
+        description:
+          "Experiências partilhadas que fortalecem os laços entre companheiros de equipa.",
+      },
+    ],
   },
 
   /* 3) Pilares — União / Bem-estar / Enriquecimento Global */
@@ -1072,9 +1247,9 @@ const leisureSportsTourism = {
         iconKey: "heart",
       },
       {
-        key: "global-enrichment",
+        key: "globe",
         label: "Enriquecimento Global",
-        iconKey: "leaf",
+        iconKey: "globe",
       },
     ],
   },
@@ -1082,29 +1257,21 @@ const leisureSportsTourism = {
   /* 4) Painel de fecho / transição para Modalidades */
   closingPanel: {
     id: "leisure-sports-tourism-closing-panel",
-
-    chipLabel:
-      "Próximo Passo",
-
+    chipLabel: "Próximo Passo",
     title:
       "Do lazer à prática: descobre como o desporto encontra o lazer no Turismo Desportivo.",
-
     bodyLines: ["Do lazer à prática.", "Entra no universo das Modalidades."],
-
     primaryCta: {
       label: "Contactar",
       href: "/sunlive-group/sports/contacts",
-      ariaLabel:
-        "Contactar a Sunlive Sports sobre Turismo Desportivo Lúdico",
+      ariaLabel: "Contactar a Sunlive Sports sobre Turismo Desportivo Lúdico",
       icon: "phone",
     },
-
     backCta: {
       label: "Voltar para Educação",
       href: "/sunlive-group/sports/education",
       ariaLabel: "Voltar para a página de Educação da Sunlive Sports",
     },
-
     secondaryCta: {
       label: "Seguir para Modalidades",
       href: "/sunlive-group/sports/sports-disciplines",
@@ -1112,7 +1279,6 @@ const leisureSportsTourism = {
     },
   },
 };
-
 
 /* =========================================================
    Modalidades — página dedicada
@@ -1148,57 +1314,51 @@ const disciplines = {
   cyclingIntro: {
     id: "disciplines-cycling-intro",
     title: "Ciclismo",
-    lead:
-      "Modalidade de referência da Sunlive, com infraestruturas de excelência, programas especializados e organização regular de eventos nacionais e internacionais.",
+    lead: "Modalidade de referência da Sunlive, com infraestruturas de excelência, programas especializados e organização regular de eventos nacionais e internacionais.",
   },
 
   gymnasticsIntro: {
     id: "disciplines-gymnastics-intro",
     title: "Ginástica",
-    lead:
-      "Modalidade de referência da Sunlive, com uma oferta abrangente, ambiente técnico de alto nível e realização frequente de eventos e estágios especializados.",
+    lead: "Modalidade de referência da Sunlive, com uma oferta abrangente, ambiente técnico de alto nível e realização frequente de eventos e estágios especializados.",
   },
 
   footballIntro: {
     id: "disciplines-football-intro",
     title: "Futebol",
-    lead:
-      "Formação sólida através da Pro Football Academy, com treinos técnicos, táticos e físicos. Integração com alojamento e apoio escolar, focada na progressão desportiva.",
+    lead: "Formação sólida através da Pro Football Academy, com treinos técnicos, táticos e físicos. Integração com alojamento e apoio escolar, focada na progressão desportiva.",
   },
 
   karateIntro: {
     id: "disciplines-karate-intro",
     title: "Karaté",
-    lead:
-      "Formação contínua através da Sunlive Karate Academy (SKA), com treinos técnicos e valorização de princípios como disciplina, respeito e superação. Ambiente ideal para o crescimento desportivo e pessoal.",
+    lead: "Formação contínua através da Sunlive Karate Academy (SKA), com treinos técnicos e valorização de princípios como disciplina, respeito e superação. Ambiente ideal para o crescimento desportivo e pessoal.",
   },
 
   basketballIntro: {
     id: "disciplines-basketball-intro",
     title: "Basquetebol",
-    lead:
-      "Programas da Academia Basquetebol Sunlive para a evolução técnica e competitiva. Ideal para jovens atletas em fase de crescimento desportivo.",
+    lead: "Programas da Academia Basquetebol Sunlive para a evolução técnica e competitiva. Ideal para jovens atletas em fase de crescimento desportivo.",
   },
 
   otherDisciplinesIntro: {
     id: "disciplines-other-intro",
     title: "Outras Modalidades",
-    lead:
-      "A Sunlive disponibiliza também condições para a prática de modalidades como andebol, voleibol, judo, surf e esgrima, com acesso a alojamento e apoio logístico para treinos e concentrações.",
+    lead: "A Sunlive disponibiliza também condições para a prática de modalidades como andebol, voleibol, judo, surf e esgrima, com acesso a alojamento e apoio logístico para treinos e concentrações.",
   },
 
   /* 3) Pilares — Treino / Infraestruturas / Segurança */
   pillars: {
     items: [
       {
-        key: "specialised-training",
+        key: "athlete",
         label: "Treino Especializado",
-        iconKey: "trophy",
+        iconKey: "athlete",
       },
       {
-        key: "top-infrastructure",
+        key: "brush",
         label: "Infraestruturas de Excelência",
-        iconKey: "medal",
+        iconKey: "brush",
       },
       {
         key: "safety-wellbeing",
@@ -1282,9 +1442,9 @@ const infrastructures = {
         iconKey: "pin",
       },
       {
-        key: "availability-247",
+        key: "phone",
         label: "Disponibilidade 24/7",
-        iconKey: "clock",
+        iconKey: "phone",
       },
       {
         key: "large-groups-capacity",
@@ -1463,7 +1623,6 @@ const infrastructures = {
   },
 };
 
-
 /* =========================================================
    Logística — página dedicada
    ========================================================= */
@@ -1498,15 +1657,14 @@ const logistics = {
   servicesIntro: {
     id: "logistics-services-intro",
     title: "Serviços Logísticos",
-    lead:
-      "Uma gama completa de serviços integrados que cobrem todas as necessidades de uma viagem desportiva, desde o planeamento até à execução final.",
+    lead: "Uma gama completa de serviços integrados que cobrem todas as necessidades de uma viagem desportiva, desde o planeamento até à execução final.",
   },
 
   /* 3) Pilares — Pontualidade / Adaptação / Contacto */
   pillars: {
     items: [
       {
-        key: "timing",
+        key: "clock",
         label: "Pontualidade",
         iconKey: "clock",
       },
@@ -1635,7 +1793,6 @@ const logistics = {
   },
 };
 
-
 /* =========================================================
    Consultoria — página dedicada
    ========================================================= */
@@ -1670,8 +1827,7 @@ const consultancy = {
   areasIntro: {
     id: "consultancy-areas-intro",
     title: "Áreas de Consultoria",
-    lead:
-      "Cobrimos todas as dimensões da gestão desportiva moderna, desde a estratégia organizacional até à implementação operacional, sempre com foco em resultados mensuráveis.",
+    lead: "Cobrimos todas as dimensões da gestão desportiva moderna, desde a estratégia organizacional até à implementação operacional, sempre com foco em resultados mensuráveis.",
   },
 
   /* 3) Áreas de Consultoria — cards em acordeão (ServiceFeaturePanel) */
@@ -1789,19 +1945,19 @@ const consultancy = {
   pillars: {
     items: [
       {
-        key: "field-experience",
+        key: "experience",
         label: "Experiência de Campo",
-        iconKey: "map",
+        iconKey: "experience",
       },
       {
-        key: "strategic-vision",
+        key: "eye",
         label: "Visão Estratégica",
-        iconKey: "target",
+        iconKey: "eye",
       },
       {
-        key: "sustainable-results",
+        key: "chart",
         label: "Resultados Sustentáveis",
-        iconKey: "trendingUp",
+        iconKey: "chart",
       },
     ],
   },
@@ -1835,7 +1991,6 @@ const consultancy = {
   },
 };
 
-
 /* =========================================================
    Objeto principal da marca Sports
    ========================================================= */
@@ -1856,7 +2011,6 @@ const sportsBrand = {
     infrastructures,
     logistics,
     consultancy,
-
 
     footer: {
       infoHeader: makeFooterInfoHeader("sports", {

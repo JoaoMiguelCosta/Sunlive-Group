@@ -49,7 +49,7 @@
     border-radius: 999px;
 
     /* 👇 LARGURA FIXA — todos iguais */
-    --pill-width: 320px;
+    --pill-width: 370px;
     inline-size: var(--pill-width);
     flex: 0 0 var(--pill-width);
     max-width: 100%;
@@ -112,17 +112,42 @@
     outline-offset: 3px;
 }
 
-/* ===== Ícone ===== */
+/* ===== Ícone circular (match ProgramDetailSection.iconWrap) ===== */
 
-.icon {
+.iconCircle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+
+    /* ⚠️ dimensões mantidas como no módulo de pills */
+    inline-size: 1.9rem;
+    block-size: 1.9rem;
+    border-radius: 999px;
+
+    background:
+        radial-gradient(circle at 30% 20%,
+            color-mix(in oklab, var(--sl-accent-500, #2EC27E), white 8%) 0,
+            transparent 65%),
+        radial-gradient(circle at 70% 80%,
+            color-mix(in oklab, var(--sl-gold-400, #C78615), black 18%) 0,
+            transparent 70%),
+        color-mix(in oklab, #050609 80%, black 20%);
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-accent-600, #1F8D5C),
+            var(--sl-gold-400, #C78615) 28%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.6),
+        0 0 18px rgba(46, 194, 126, 0.5);
+
+    color: var(--sl-platinum-050, #e7ebf3);
 }
 
-.icon svg {
-    width: 1.35rem;
-    height: 1.35rem;
+.iconCircle svg {
+    inline-size: 1.2rem;
+    block-size: 1.2rem;
     stroke: var(--sl-gold-300, #e4bf07);
     color: var(--sl-gold-300, #e4bf07);
 }
@@ -134,8 +159,8 @@
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    /* deixamos quebrar linha para não esticar o pill */
     white-space: normal;
+    line-height: 1.25;
 }
 
 /* ===== Mobile / tablets ===== */

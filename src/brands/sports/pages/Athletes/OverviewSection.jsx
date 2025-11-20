@@ -6,8 +6,8 @@ import ValuePillsBar from "../../../../shared/components/Sports/ValuePillsBar/Va
 import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
 
 const PILL_ICONS = {
+  dream: ICONS.DreamIcon,
   bolt: ICONS.BoltIcon,
-  cloud: ICONS.CloudIcon,
   flag: ICONS.FlagIcon,
 };
 

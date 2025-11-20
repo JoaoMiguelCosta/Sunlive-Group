@@ -21,6 +21,19 @@ import {
   HeartIcon,
   SpeedIcon,
   SunIcon,
+  DreamIcon,
+  BoltIcon,
+  FlagIcon,
+  MonitorIcon,
+  RecycleIcon,
+  GraduationCapIcon,
+  CompassIcon,
+  BrushCleaningIcon,
+  AthleteBarbellIcon,
+  ClockIcon,
+  ChartIcon,
+  EyeIcon,
+  ConsultingExperienceIcon,
 } from "../ui/icons/index.js";
 
 /* ===== Bandeiras partilhadas ===== */
@@ -60,6 +73,19 @@ export const ICONS = {
   HeartIcon,
   SpeedIcon,
   SunIcon,
+  DreamIcon,
+  BoltIcon,
+  FlagIcon,
+  MonitorIcon,
+  RecycleIcon,
+  GraduationCapIcon,
+  CompassIcon,
+  BrushCleaningIcon,
+  AthleteBarbellIcon,
+  ClockIcon,
+  ChartIcon,
+  EyeIcon,
+  ConsultingExperienceIcon,
 };
 
 export const FLAGS = {

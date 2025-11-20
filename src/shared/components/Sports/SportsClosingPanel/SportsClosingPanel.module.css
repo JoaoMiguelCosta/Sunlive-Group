@@ -8,27 +8,37 @@
     max-width: var(--sl-container-lg, 1200px);
     margin-inline: auto;
 
-    /* encostado em cima, espaço igual em baixo até ao footer */
     margin-block-start: 0;
     margin-block-end: clamp(2.6rem, 4.2vw, 3.4rem);
 
-    padding: clamp(1.8rem, 3vw, 2.4rem) clamp(1.8rem, 3vw, 2.6rem);
-    border-radius: 999px;
+    padding: clamp(1.9rem, 3.2vw, 2.5rem) clamp(1.9rem, 3.3vw, 2.7rem);
+    border-radius: 36px;
     box-sizing: border-box;
 
+    /* Noir com halos dourado + verde */
     background:
         radial-gradient(circle at 0 0,
-            color-mix(in oklab, var(--sl-glow-top, #c78615), var(--sl-accent-500) 18%) 0,
-            transparent 55%),
+            color-mix(in oklab,
+                var(--sl-gold-400, #c78615),
+                var(--sl-accent-500, #2EC27E) 30%) 0,
+            transparent 58%),
         radial-gradient(circle at 100% 100%,
-            color-mix(in oklab, var(--sl-accent-500), black 12%) 0,
-            transparent 60%),
-        color-mix(in oklab, #040712 86%, black 14%);
-    border: 1px solid var(--sl-glow-ring, #c78615);
+            color-mix(in oklab,
+                var(--sl-accent-500, #2EC27E),
+                black 18%) 0,
+            transparent 62%),
+        linear-gradient(145deg,
+            #020617 0%,
+            #020814 55%,
+            #000000 100%);
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #a16207),
+            var(--sl-accent-600, #1F8D5C) 24%);
 
     box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.7),
-        0 22px 48px rgba(0, 0, 0, 0.9);
+        0 0 0 1px rgba(0, 0, 0, 0.8),
+        0 24px 56px rgba(0, 0, 0, 0.9);
 
     text-align: center;
     color: var(--sl-platinum-030, #f0f3ff);
@@ -41,49 +51,60 @@
     align-items: center;
     justify-content: center;
 
-    padding: 0.25rem 0.9rem;
+    padding: 0.28rem 0.95rem;
     border-radius: 999px;
 
     border: 1px solid color-mix(in oklab,
-            var(--sl-glow-ring, #c78615),
-            var(--sl-accent-600) 18%);
-    background: rgba(5, 7, 16, 0.75);
+            var(--sl-accent-600, #1F8D5C),
+            var(--sl-gold-400, #c78615) 30%);
+    background:
+        radial-gradient(circle at 0 0,
+            rgba(76, 210, 154, 0.18),
+            transparent 60%),
+        rgba(7, 10, 20, 0.92);
 
     font-size: 0.8rem;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    opacity: 0.95;
+    color: color-mix(in oklab,
+            var(--sl-platinum-050, #e7ebf3),
+            black 10%);
+    opacity: 0.98;
 }
 
 .title {
     margin-top: 1rem;
-    font-size: clamp(1.35rem, 2.1vw, 1.7rem);
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
     font-weight: 700;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
+    color: var(--sl-platinum-020, #f9fafb);
 }
 
 .body {
-    margin-top: 0.8rem;
+    margin-top: 0.85rem;
     display: grid;
-    gap: 0.35rem;
+    gap: 0.4rem;
 }
 
 .bodyLine {
-    font-size: clamp(0.96rem, 1.1vw, 1.03rem);
+    font-size: clamp(0.96rem, 1.08vw, 1.04rem);
     line-height: 1.6;
+    color: color-mix(in oklab,
+            var(--sl-platinum-060, #e5e7eb),
+            black 8%);
 }
 
 /* ações (botões / links) */
 
 .actions {
-    margin-top: clamp(1.3rem, 2vw, 1.6rem);
+    margin-top: clamp(1.35rem, 2.1vw, 1.7rem);
     display: flex;
     justify-content: center;
-    gap: 0.9rem;
+    gap: 0.95rem;
     flex-wrap: wrap;
 }
 
-/* Botões secundários (ghost) — usados em Voltar / Seguir */
+/* Botões secundários (ghost) — Voltar / Seguir mais info */
 
 .secondary {
     align-self: center;
@@ -97,17 +118,27 @@
     border-radius: 999px;
 
     border: 1px solid color-mix(in oklab,
-            var(--sl-gold-400, #c78615),
-            var(--sl-accent-600, #1F8D5C) 14%);
-    background: radial-gradient(circle at 50% 0,
-            rgba(0, 0, 0, 0.55),
-            rgba(0, 0, 0, 0.9));
+            var(--sl-accent-600, #1F8D5C),
+            var(--sl-gold-400, #c78615) 26%);
+    background:
+        radial-gradient(circle at 0 0,
+            rgba(76, 210, 154, 0.18),
+            transparent 60%),
+        linear-gradient(100deg,
+            rgba(5, 7, 12, 0.98),
+            rgba(6, 16, 12, 1));
 
-    font-size: 0.95rem;
+    font-size: 0.94rem;
     font-weight: 500;
-    color: var(--sl-platinum-050, #e7ebf3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: color-mix(in oklab,
+            var(--sl-platinum-050, #e7ebf3),
+            var(--sl-accent-400, #4CD29A) 15%);
     text-decoration: none;
 
+    cursor: pointer;
     transition:
         background 150ms ease-out,
         color 150ms ease-out,
@@ -116,30 +147,27 @@
         box-shadow 140ms ease-out;
 }
 
-/* “Voltar” poderia ter um estilo extra aqui se precisares
-.back { }
-*/
+.back {
+    opacity: 0.92;
+}
 
 @media (hover: hover) and (pointer: fine) {
     .secondary:hover {
         background:
             radial-gradient(circle at 0 0,
-                rgba(76, 210, 154, 0.22),
-                /* verde-vital glow */
-                transparent 55%),
-            linear-gradient(90deg,
-                rgba(5, 7, 10, 1),
-                rgba(6, 18, 12, 1)
-                /* Noir com leve verde, sem azul */
-            );
-
+                rgba(76, 210, 154, 0.26),
+                transparent 60%),
+            linear-gradient(110deg,
+                rgba(4, 9, 8, 1),
+                rgba(7, 22, 14, 1));
         border-color: color-mix(in oklab,
-                var(--sl-gold-400, #c78615),
-                var(--sl-accent-500, #2EC27E) 20%);
+                var(--sl-accent-500, #2EC27E),
+                var(--sl-gold-400, #c78615) 35%);
+        color: var(--sl-platinum-020, #f9fafb);
         transform: translateY(-1px);
         box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.7),
-            0 14px 30px rgba(0, 0, 0, 0.85);
+            0 0 0 1px rgba(0, 0, 0, 0.8),
+            0 16px 34px rgba(0, 0, 0, 0.9);
     }
 }
 
@@ -147,7 +175,7 @@
 
 @media (max-width: 768px) {
     .panel {
-        border-radius: 32px;
+        border-radius: 28px;
     }
 }
 
@@ -155,7 +183,7 @@
     .panel {
         margin-block: 2rem;
         padding-inline: 1.4rem;
-        border-radius: 24px;
+        border-radius: 22px;
     }
 
     .actions {
