@@ -2,6 +2,15 @@
 import styles from "./LeisureBenefitsGrid.module.css";
 
 import LeisureExperienceCard from "../../../../shared/components/Sports/LeisureExperienceCard/LeisureExperienceCard.jsx";
+import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
+
+// iconKey → componente
+const CARD_ICONS = {
+heart: ICONS.HeartIcon,
+users: ICONS.UsersIcon,
+star:  ICONS.StarIcon,
+smile: ICONS.SmileIcon,
+};
 
 /**
  * Grelha de Benefícios para os Atletas — Turismo Desportivo Lúdico
@@ -21,7 +30,8 @@ export default function LeisureBenefitsGrid({ data, iconSet }) {
       <div className={styles.inner}>
         <div className={styles.grid}>
           {items.map((item) => {
-            const Icon = iconSet?.[item.iconKey];
+            const Icon =
+              iconSet?.[item.iconKey] || CARD_ICONS[item.iconKey] || null;
 
             return (
               <LeisureExperienceCard

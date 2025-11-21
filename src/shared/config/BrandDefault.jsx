@@ -34,6 +34,19 @@ import {
   ChartIcon,
   EyeIcon,
   ConsultingExperienceIcon,
+  AppleIcon,
+  VideoIcon,
+  SearchIcon,
+  BicepsFlexedIcon,
+  PhysicalTherapyIcon,
+  SmileIcon,
+  SoupIcon,
+  BedIcon,
+  ShirtIcon,
+  LuggageIcon,
+  TrendUpIcon,
+  CogIcon,
+  CircusTentIcon,
 } from "../ui/icons/index.js";
 
 /* ===== Bandeiras partilhadas ===== */
@@ -86,6 +99,19 @@ export const ICONS = {
   ChartIcon,
   EyeIcon,
   ConsultingExperienceIcon,
+  AppleIcon,
+  VideoIcon,
+  SearchIcon,
+  BicepsFlexedIcon,
+  PhysicalTherapyIcon,
+  SmileIcon,
+  SoupIcon,
+  BedIcon,
+  ShirtIcon,
+  LuggageIcon,
+  TrendUpIcon,
+  CogIcon,
+  CircusTentIcon,
 };
 
 export const FLAGS = {

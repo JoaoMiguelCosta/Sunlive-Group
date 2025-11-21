@@ -26,6 +26,20 @@ import ClockIcon from "./Clock.jsx";
 import ChartIcon from "./Chart.jsx";
 import EyeIcon from "./Eye.jsx";
 import ConsultingExperienceIcon from "./Experience.jsx";
+import AppleIcon from "./Apple.jsx";
+import VideoIcon from "./Video.jsx";
+import SearchIcon from "./Search.jsx";
+import BicepsFlexedIcon from  "./BicepsFlexed.jsx";
+import PhysicalTherapyIcon from "./PhysicalTherapy.jsx";
+import SmileIcon from "./SmileIcon.jsx";
+import SoupIcon from "./Soup.jsx";
+import BedIcon from "./Bed.jsx";
+import ShirtIcon from "./Shirt.jsx";
+import LuggageIcon from "./Luggage.jsx";
+import TrendUpIcon from "./TrendUp.jsx";
+import CogIcon from "./Cog.jsx";
+import CircusTentIcon from "./Circus.jsx";
+
 
 // Novos ícones (Travel / Logística)
 import PlaneIcon from "./Plane.jsx";
@@ -81,10 +95,23 @@ export {
   CompassIcon,
   BrushCleaningIcon,
   AthleteBarbellIcon,
- ClockIcon,
- ChartIcon,
- EyeIcon,
- ConsultingExperienceIcon,
+  ClockIcon,
+  ChartIcon,
+  EyeIcon,
+  ConsultingExperienceIcon,
+  AppleIcon,
+  VideoIcon,
+  SearchIcon,
+  BicepsFlexedIcon,
+  PhysicalTherapyIcon,
+  SmileIcon,
+  SoupIcon,
+  BedIcon,
+  ShirtIcon,
+  LuggageIcon,
+  TrendUpIcon,
+  CogIcon,
+  CircusTentIcon,
 };
 
 // ===== Mapa conveniente para usar por chave (iconKey) =====
@@ -128,8 +155,22 @@ export const ICONS = {
   athlete: AthleteBarbellIcon,
   clock: ClockIcon,
   chart: ChartIcon,
-  Eyeh: EyeIcon,
+  Eye: EyeIcon,
   experience: ConsultingExperienceIcon,
+  apple: AppleIcon,
+  video: VideoIcon,
+  search: SearchIcon,
+  bicipe: BicepsFlexedIcon,
+  physical: PhysicalTherapyIcon,
+  smile: SmileIcon,
+  soup: SoupIcon,
+  bed: BedIcon,
+  shirt: ShirtIcon,
+  luggage: LuggageIcon,
+  trend: TrendUpIcon,
+  cog: CogIcon,
+  circus: CircusTentIcon,
+  
 
 
   "chevron-down": ChevronDownIcon,

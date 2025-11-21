@@ -9,17 +9,13 @@ export default function SpecialistServiceCard({
   description,
   items = [],
   listTitle = "Serviços incluídos:",
-  icon,
+  icon, // recebe um elemento React, ex: <AppleIcon />
   className = "",
   ...rest
 }) {
   const hasList = Array.isArray(items) && items.length > 0;
 
-  // acordeão LOCAL, como no ProgramDetailSection
-  const accordionItems = useMemo(
-    () => [{ key: "services" }], // começa fechado
-    []
-  );
+  const accordionItems = useMemo(() => [{ key: "services" }], []);
 
   const { isOpen, toggle } = useAccordion(accordionItems, {
     allowMultiple: true,
@@ -42,12 +38,15 @@ export default function SpecialistServiceCard({
     >
       {/* Topo: ícone + título + badge */}
       <header className={styles.header}>
-        <div className={styles.iconCircle} aria-hidden="true">
-          {icon ?? <span className={styles.iconFallback}></span>}
-        </div>
-
         <div className={styles.headerText}>
-          <h3 className={styles.title}>{title}</h3>
+          <div className={styles.iconTitleRow}>
+            <div className={styles.iconCircle} aria-hidden="true">
+              {icon ?? <span className={styles.iconFallback}></span>}
+            </div>
+
+            <h3 className={styles.title}>{title}</h3>
+          </div>
+
           {badge && <span className={styles.badge}>{badge}</span>}
         </div>
       </header>
@@ -58,7 +57,7 @@ export default function SpecialistServiceCard({
       {/* Linha dourada */}
       {hasList && <div className={styles.divider} aria-hidden="true" />}
 
-      {/* Bloco lista com acordeão */}
+      {/* Lista com acordeão */}
       {hasList && (
         <div className={styles.listBlock}>
           <button

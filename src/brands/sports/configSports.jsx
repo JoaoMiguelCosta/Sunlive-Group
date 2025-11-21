@@ -750,8 +750,8 @@ const specialisedServices = {
   /* 3.1) Serviços Especializados — cards principais */
   serviceCards: [
     {
-      key: "sports-nutrition",
-      iconKey: "nutrition",
+      key: "apple",
+      iconKey: "apple",
       title: "Nutrição Desportiva",
       badge: "Nutricionistas desportivos",
       description:
@@ -767,7 +767,7 @@ const specialisedServices = {
       ],
     },
     {
-      key: "video-analysis",
+      key: "video",
       iconKey: "video",
       title: "Análise de Vídeo",
       badge: "Analistas técnicos especializados",
@@ -784,8 +784,8 @@ const specialisedServices = {
       ],
     },
     {
-      key: "sports-physiotherapy",
-      iconKey: "physiotherapy",
+      key: "physical",
+      iconKey: "physical",
       title: "Fisioterapia Desportiva",
       badge: "Fisioterapeutas certificados",
       description:
@@ -801,8 +801,8 @@ const specialisedServices = {
       ],
     },
     {
-      key: "scouting",
-      iconKey: "scouting",
+      key: "search",
+      iconKey: "search",
       title: "Scouting e Observação",
       badge: "Scouts e observadores certificados",
       description:
@@ -818,8 +818,8 @@ const specialisedServices = {
       ],
     },
     {
-      key: "sports-psychology",
-      iconKey: "psychology",
+      key: "brain",
+      iconKey: "brain",
       title: "Psicologia Desportiva",
       badge: "Psicólogos desportivos certificados",
       description:
@@ -835,8 +835,8 @@ const specialisedServices = {
       ],
     },
     {
-      key: "strength-conditioning",
-      iconKey: "strength",
+      key: "bicipe",
+      iconKey: "bicipe",
       title: "Preparação Física",
       badge: "Preparadores Físicos Especializados",
       description:
@@ -852,8 +852,8 @@ const specialisedServices = {
       ],
     },
     {
-      key: "consulting",
-      iconKey: "consulting",
+      key: "chart",
+      iconKey: "chart",
       title: "Consultoria Especializada",
       badge: "Consultores em Estratégia Desportiva",
       description:
@@ -1203,28 +1203,28 @@ const leisureSportsTourism = {
     lead: "Cada experiência é cuidadosamente desenhada para complementar o treino intensivo, proporcionando benefícios tangíveis para a performance e bem-estar dos atletas.",
     items: [
       {
-        key: "active-recovery",
+        key: "heart",
         iconKey: "heart",
         title: "Recuperação Ativa",
         description:
           "Atividades de baixo impacto que promovem a recuperação muscular e mental.",
       },
       {
-        key: "mental-balance",
+        key: "smile",
         iconKey: "smile",
         title: "Equilíbrio Mental",
         description:
           "Momentos de desconexão que renovam a motivação e perspetiva.",
       },
       {
-        key: "cultural-enrichment",
+        key: "star",
         iconKey: "star",
         title: "Enriquecimento Cultural",
         description:
           "Aprendizagem e crescimento pessoal através de novas experiências.",
       },
       {
-        key: "natural-team-building",
+        key: "users",
         iconKey: "users",
         title: "Team Building Natural",
         description:
@@ -1686,9 +1686,9 @@ const logistics = {
     id: "logistics-services-panels",
     items: [
       {
-        key: "local-transport",
+        key: "transport",
         title: "Transporte Local",
-        iconKey: "van", // mapeias depois para o ícone certo
+        iconKey: "transport", // mapeias depois para o ícone certo
         summary:
           "Mobilidade completa durante a estadia, com veículos adequados a cada necessidade.",
         items: [
@@ -1699,7 +1699,7 @@ const logistics = {
         ],
       },
       {
-        key: "airport-transfers",
+        key: "plane",
         title: "Transfers Aeroportuários",
         iconKey: "plane",
         summary:
@@ -1713,9 +1713,9 @@ const logistics = {
         ],
       },
       {
-        key: "meals-coordination",
+        key: "soup",
         title: "Coordenação de Refeições",
-        iconKey: "cutlery",
+        iconKey: "soup",
         summary:
           "Planeamento nutricional e logístico de todas as refeições durante a estadia.",
         items: [
@@ -1727,7 +1727,7 @@ const logistics = {
         ],
       },
       {
-        key: "accommodation-management",
+        key: "bed",
         title: "Gestão de Alojamento",
         iconKey: "bed",
         summary:
@@ -1741,9 +1741,9 @@ const logistics = {
         ],
       },
       {
-        key: "other-services",
+        key: "shirt",
         title: "Outros Serviços",
-        iconKey: "jersey",
+        iconKey: "shirt",
         summary:
           "Lavagem e tratamento de equipamentos desportivos e roupa pessoal.",
         items: [
@@ -1835,7 +1835,8 @@ const consultancy = {
     id: "consultancy-areas-panels",
     items: [
       {
-        key: "international-expansion",
+        key: "global",
+        iconKey: "global",
         title: "Expansão Internacional",
         summary:
           "Estratégias para internacionalização e desenvolvimento de projetos desportivos globais.",
@@ -1848,7 +1849,8 @@ const consultancy = {
         ],
       },
       {
-        key: "sports-management",
+        key: "luggage",
+        iconKey: "luggage",
         title: "Gestão Desportiva",
         summary:
           "Estratégias integradas para otimizar a gestão de clubes, federações e organizações desportivas.",
@@ -1861,7 +1863,8 @@ const consultancy = {
         ],
       },
       {
-        key: "club-development",
+        key: "trendup",
+        iconKey: "trendup",
         title: "Desenvolvimento de Clubes",
         summary:
           "Soluções personalizadas para crescimento sustentável e modernização de estruturas clubísticas.",
@@ -1900,7 +1903,8 @@ const consultancy = {
         ],
       },
       {
-        key: "sport-development",
+        key: "medal",
+        iconKey: "medal",
         title: "Desenvolvimento de Modalidades",
         summary:
           "Soluções estratégicas para potenciar o crescimento sustentável e competitivo de diferentes modalidades desportivas.",
@@ -1913,7 +1917,8 @@ const consultancy = {
         ],
       },
       {
-        key: "event-management",
+        key: "circus",
+        iconKey: "circus",
         title: "Gestão de Eventos",
         summary:
           "Organização e gestão profissional de eventos desportivos com foco em excelência operacional e impacto internacional.",
@@ -1926,7 +1931,8 @@ const consultancy = {
         ],
       },
       {
-        key: "operational-logistics",
+        key: "cog",
+        iconKey: "cog",
         title: "Logística Operacional",
         summary:
           "Otimização de processos operacionais para eventos, competições e atividades desportivas regulares.",

@@ -6,30 +6,37 @@
 .section {
     position: relative;
     width: 100%;
-
     color: var(--sl-platinum-030, #e5e7eb);
 }
 
 .inner {
     width: 100%;
-    max-width: var(--sl-container-lg, 1200px);
+    max-width: 1360px;
+    /* limite que definiste para desktop */
     margin-inline: auto;
-    
     box-sizing: content-box;
-
     display: block;
 }
 
-/* Grelha de cards */
+/* ===================== Grelha de cards ===================== */
+
+/*
+   Cards têm largura alvo ~390px.
+   Usamos auto-fit + minmax(390px, 1fr) para:
+   - nunca encolher abaixo de ~390px (não corta o card)
+   - aumentar o nº de colunas conforme houver espaço.
+*/
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
     gap: clamp(1.2rem, 1.8vw, 1.6rem);
     align-items: flex-start;
+    justify-items: center;
+    /* centra os cards dentro de cada coluna */
 }
 
-/* Responsivo */
+/* ===================== Responsivo ===================== */
 
 @media (max-width: 768px) {
     .section {
@@ -37,8 +44,19 @@
     }
 }
 
+/* em ecrãs muito pequenos apenas afinamos o gap */
 @media (max-width: 480px) {
     .grid {
         gap: 1.1rem;
     }
+}
+
+/* ===================== Ícone dentro do círculo do card ===================== */
+
+.cardIcon {
+    width: 38px;
+    height: 38px;
+    display: block;
+    stroke: var(--sl-gold-300, #e4bf07);
+    color: var(--sl-gold-300, #e4bf07);
 }
