@@ -25,9 +25,11 @@
 
     color: var(--sl-platinum-040, #edf2ff);
 
-    font-size: 1.02rem;
+/* ⬇️ texto um pouco menor para equilibrar */
+    font-size: 0.94rem;
+    /* antes: ~1rem */
     font-weight: 600;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.08rem;
     text-decoration: none;
 
     cursor: pointer;

@@ -256,6 +256,7 @@ const trainingCamps = {
       "Aqui começa o caminho, onde o treino molda atitude e resiliência.",
       "Agora, é tempo de conhecer onde o talento cresce: as nossas Academias.",
     ],
+    accentWords: ["Academias", "atitude", "resiliência", "caminho"],
     primaryCta: {
       label: "Contactar",
       href: "/sunlive-group/sports/contacts",
@@ -419,9 +420,10 @@ const academies = {
     title:
       "Queres fazer parte de uma Academia ou saber mais? Estamos aqui para esclarecer todas as tuas dúvidas.",
     bodyLines: [
-      "Formar é apenas o início. Cada atleta merece um palco.",
+      "Formar é apenas o início. Cada Atleta merece um palco.",
       "A seguir, mergulha nos Eventos onde o esforço ganha luz.",
     ],
+    accentWords: ["Atleta", "Eventos"],
     primaryCta: {
       label: "Contactar",
       href: "/sunlive-group/sports/contacts",
@@ -494,8 +496,17 @@ const events = {
     title:
       "Queres conhecer melhor os nossos eventos desportivos ou organizar o teu? Estamos aqui para ti.",
     bodyLines: [
-      "Cada evento é impulsionado por pessoas extraordinárias.",
+      "Cada Evento é impulsionado por pessoas extraordinárias.",
       "Descubra os Atletas Sunlive que representam a excelência, os valores e a missão da Sunlive.",
+    ],
+    accentWords: [
+      "Evento",
+      "Atletas Sunlive",
+      "valores",
+      "missão",
+      "Sunlive",
+      "pessoas extraordinárias",
+      "excelência",
     ],
     primaryCta: {
       label: "Contactar",
@@ -677,10 +688,19 @@ const athletes = {
     id: "athletes-closing-panel",
     chipLabel: "Próximo passo",
     title:
-      "Tens dúvidas ou queres saber mais sobre os nossos atletas e programas de apoio? A nossa equipa está disponível para esclarecer tudo.",
+      "Tens dúvidas ou queres saber mais sobre os nossos Atletas e programas de apoio? A nossa equipa está disponível para esclarecer tudo.",
     bodyLines: [
-      "Por trás de cada atleta de excelência, existe uma equipa de especialistas.",
-      "Descubra os serviços que sustentam a performance e o bem-estar dos nossos atletas.",
+      "Por trás de cada Atleta de excelência, existe uma equipa de especialistas.",
+      "Descubra os Serviços Especializados que sustentam a performance e o bem-estar dos nossos Atletas.",
+    ],
+    accentWords: [
+      "Serviços Especializados",
+      "Atletas",
+      "equipa de especialistas",
+      "Atleta",
+      "performance",
+      "bem-estar",
+      "excelência",
     ],
     primaryCta: {
       label: "Contactar",
@@ -879,6 +899,7 @@ const specialisedServices = {
       "Conhecimento também faz parte do treino.",
       "Entra no universo da Educação.",
     ],
+    accentWords: ["Educação", "Conhecimento", "treino"],
     primaryCta: {
       label: "Contactar",
       href: "/sunlive-group/sports/contacts",
@@ -973,8 +994,9 @@ const education = {
     chipLabel: "Próximo passo",
     title: "Fala connosco sobre programas educativos ligados ao desporto.",
     bodyLines: [
-      "Do saber à experiência: descobre como o desporto encontra o lazer no Turismo Desportivo.",
+      "Do saber à experiência: descobre como o desporto encontra o lazer no Turismo Desportivo Lúdico.",
     ],
+    accentWords: ["lazer", "Turismo Desportivo Lúdico"],
     primaryCta: {
       label: "Contactar",
       href: "/sunlive-group/sports/contacts",
@@ -1261,6 +1283,7 @@ const leisureSportsTourism = {
     title:
       "Do lazer à prática: descobre como o desporto encontra o lazer no Turismo Desportivo.",
     bodyLines: ["Do lazer à prática.", "Entra no universo das Modalidades."],
+    accentWords: ["lazer", "prática", "Modalidades"],
     primaryCta: {
       label: "Contactar",
       href: "/sunlive-group/sports/contacts",
@@ -1381,7 +1404,7 @@ const disciplines = {
       "Cada Modalidade precisa de um espaço à altura.",
       "Conhece as Infraestruturas que as sustentam.",
     ],
-
+    accentWords: ["Modalidade", "Infraestruturas"],
     primaryCta: {
       label: "Contactar",
       href: "/sunlive-group/sports/contacts",
@@ -1601,9 +1624,11 @@ const infrastructures = {
     title:
       "Queres saber mais sobre as nossas infraestruturas, localizações e condições? A nossa equipa está disponível para esclarecer.",
     bodyLines: [
-      "Com as infraestruturas no lugar, é hora de pôr tudo em movimento.",
+      "Com as Infraestruturas no lugar, é hora de pôr tudo em movimento.",
       "Descobre a Logística que conecta cada elemento com propósito.",
     ],
+    accentWords: ["Infraestruturas", "Logística"],
+
     primaryCta: {
       label: "Contactar",
       href: "/sunlive-group/sports/contacts",
@@ -1771,6 +1796,14 @@ const logistics = {
       "Chegámos ao ponto onde a visão encontra a estratégia.",
       "Finalizamos com a Consultoria.",
     ],
+    accentWords: [
+      "pessoas",
+      "ideias",
+      "visão",
+      "estratégia",
+      "estruturas",
+      "Consultoria",
+    ],
 
     primaryCta: {
       label: "Contactar",
@@ -1877,7 +1910,8 @@ const consultancy = {
         ],
       },
       {
-        key: "infrastructure-planning",
+        key: "build2",
+        iconKey: "build2",
         title: "Planeamento de Infraestruturas",
         summary:
           "Conceção e desenvolvimento de instalações desportivas modernas e funcionais.",
@@ -1890,7 +1924,8 @@ const consultancy = {
         ],
       },
       {
-        key: "training-systems",
+        key: "goal",
+        iconKey: "goal",
         title: "Sistemas de Formação",
         summary:
           "Desenvolvimento de metodologias e programas de formação desportiva de excelência.",
@@ -1981,6 +2016,7 @@ const consultancy = {
       "Construímos este caminho contigo.",
       "Agora é o momento de transformar planos em ação.",
     ],
+    accentWords: ["caminho contigo", "planos", "ação"],
 
     primaryCta: {
       label: "Contactar",

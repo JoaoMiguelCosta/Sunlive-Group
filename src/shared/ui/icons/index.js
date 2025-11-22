@@ -39,6 +39,8 @@ import LuggageIcon from "./Luggage.jsx";
 import TrendUpIcon from "./TrendUp.jsx";
 import CogIcon from "./Cog.jsx";
 import CircusTentIcon from "./Circus.jsx";
+import Building2Icon from "./Building2.jsx";
+import GoalIcon from "./Goal.jsx";
 
 
 // Novos ícones (Travel / Logística)
@@ -112,6 +114,8 @@ export {
   TrendUpIcon,
   CogIcon,
   CircusTentIcon,
+  Building2Icon,
+  GoalIcon,
 };
 
 // ===== Mapa conveniente para usar por chave (iconKey) =====
@@ -170,6 +174,8 @@ export const ICONS = {
   trend: TrendUpIcon,
   cog: CogIcon,
   circus: CircusTentIcon,
+  build2: Building2Icon,
+  goal: GoalIcon,
   
 
 

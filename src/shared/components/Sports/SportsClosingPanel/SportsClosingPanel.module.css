@@ -74,12 +74,20 @@
 
 .title {
     margin-top: 1rem;
-    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
     font-weight: 700;
     letter-spacing: 0.03em;
-    color: var(--sl-platinum-020, #f9fafb);
-}
 
+    /* dourado mais leve, ainda com contraste */
+    color: color-mix(in oklab,
+            var(--sl-gold-400, #fbbf24),
+            black 15%);
+
+    /* sombra mais suave, só para separar do fundo */
+    text-shadow:
+        0 0 8px rgba(0, 0, 0, 0.7),
+        0 0 1px rgba(0, 0, 0, 0.9);
+}
 .body {
     margin-top: 0.85rem;
     display: grid;
@@ -94,14 +102,33 @@
             black 8%);
 }
 
-/* ações (botões / links) */
+.bodyAccent {
+    color: color-mix(in oklab,
+            var(--sl-gold-400, #fbbf24),
+            black 8%);
+    font-weight: 600;
+}
+
+/* =========================================================
+   Ações (botões / links)
+   Desktop: 3 botões na mesma linha, espaçados
+   ========================================================= */
 
 .actions {
     margin-top: clamp(1.35rem, 2.1vw, 1.7rem);
     display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    /* controla a distância entre os 3 botões */
+    gap: clamp(1.4rem, 3vw, 2rem);
+
+    /* distribui-os ao longo da largura do painel */
     justify-content: center;
-    gap: 0.95rem;
-    flex-wrap: wrap;
+}
+
+.actions>* {
+    flex: 0 0 auto;
 }
 
 /* Botões secundários (ghost) — Voltar / Seguir mais info */
@@ -171,7 +198,9 @@
     }
 }
 
-/* responsivo */
+/* =========================================================
+   Responsivo
+   ========================================================= */
 
 @media (max-width: 768px) {
     .panel {
@@ -188,6 +217,14 @@
 
     .actions {
         flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .actions>* {
+        width: 100%;
+        justify-content: center;
     }
 
     .secondary {

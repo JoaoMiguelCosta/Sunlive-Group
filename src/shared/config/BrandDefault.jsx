@@ -47,6 +47,8 @@ import {
   TrendUpIcon,
   CogIcon,
   CircusTentIcon,
+  Building2Icon,
+  GoalIcon,
 } from "../ui/icons/index.js";
 
 /* ===== Bandeiras partilhadas ===== */
@@ -112,6 +114,8 @@ export const ICONS = {
   TrendUpIcon,
   CogIcon,
   CircusTentIcon,
+  Building2Icon,
+  GoalIcon,
 };
 
 export const FLAGS = {

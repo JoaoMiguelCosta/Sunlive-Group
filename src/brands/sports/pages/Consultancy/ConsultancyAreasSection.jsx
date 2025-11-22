@@ -17,6 +17,8 @@ const PANEL_ICONS = {
   cog: ICONS.CogIcon,
   medal: ICONS.MedalIcon,
   circus: ICONS.CircusTentIcon,
+  build2: ICONS.Building2Icon,
+  goal: ICONS.GoalIcon,
 };
 
 /**
