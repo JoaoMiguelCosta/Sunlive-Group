@@ -1,0 +1,262 @@
+/* src/shared/components/Sports/SportsEducationCard/SportsEducationCard.module.css */
+
+/* ===== Card base ===== */
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    padding: 1.5rem 1.5rem 1.6rem;
+    border-radius: 18px;
+
+    color: var(--sl-platinum-030, #e5e7eb);
+
+    background:
+        radial-gradient(circle at 0 0,
+            rgba(34, 197, 94, 0.18),
+            transparent 55%),
+        radial-gradient(circle at 100% 0,
+            rgba(234, 179, 8, 0.16),
+            transparent 60%),
+        color-mix(in oklab,
+            var(--sl-noir-950, #020617),
+            black 4%);
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 40%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.88),
+        0 20px 42px rgba(0, 0, 0, 0.95);
+
+    transition:
+        transform 0.2s ease-out,
+        box-shadow 0.2s ease-out,
+        border-color 0.2s ease-out,
+        background 0.2s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab,
+            var(--sl-gold-300, #facc15),
+            var(--sl-sports-accent-500, #22c55e) 26%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.95),
+        0 26px 52px rgba(0, 0, 0, 0.98);
+}
+
+/* ===== Header ===== */
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
+
+    border-bottom: 1px solid rgba(15, 23, 42, 0.85);
+}
+
+.iconBadge {
+    flex: 0 0 auto;
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            #facc15,
+            #c78615 60%,
+            #1e293b 100%);
+
+    color: #0f172a;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.8),
+        0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* ícone interno escala ligeira */
+.iconBadge>svg {
+    width: 26px;
+    height: 26px;
+}
+
+.headerText {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.titleRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem;
+}
+
+.title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--sl-platinum-010, #f9fafb);
+}
+
+.ageRange {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: color-mix(in oklab,
+            var(--sl-sports-accent-300, #86efac),
+            white 10%);
+}
+
+/* ===== Conteúdo ===== */
+
+.subtitle {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.55rem;
+
+    color: color-mix(in oklab,
+            var(--sl-platinum-010, #f9fafb),
+            white 4%);
+}
+
+.description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+
+    color: color-mix(in oklab,
+            var(--sl-platinum-060, #9ca3af),
+            white 6%);
+}
+
+/* ===== Características ===== */
+
+.featuresBlock {
+    margin-top: 0.2rem;
+}
+
+.featuresTitle {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+
+    color: color-mix(in oklab,
+            var(--sl-gold-200, #fef08a),
+            white 5%);
+}
+
+.featuresList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: grid;
+    gap: 0.3rem;
+}
+
+.featureItem {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: flex-start;
+    gap: 0.45rem;
+
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: color-mix(in oklab,
+            var(--sl-platinum-050, #d1d5db),
+            white 4%);
+}
+
+.featureBullet {
+    margin-top: 0.33rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: radial-gradient(circle,
+            var(--sl-sports-accent-400, #4ade80),
+            transparent 65%);
+}
+
+/* ===== CTA Book opcional ===== */
+
+.bookCtaWrapper {
+    margin-top: 1.4rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.bookCta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.6rem 1.9rem;
+    border-radius: 999px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    color: color-mix(in oklab,
+            var(--sl-sports-accent-200, #bbf7d0),
+            white 8%);
+
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-noir-900, #020617), black 0%),
+            color-mix(in oklab, var(--sl-noir-950, #020617), black 10%));
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-sports-accent-400, #4ade80),
+            black 40%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 18px 36px rgba(0, 0, 0, 0.95);
+
+    text-decoration: none;
+    transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        border-color 0.18s ease-out,
+        color 0.18s ease-out,
+        background 0.18s ease-out;
+}
+
+.bookCta::after {
+    content: "↓";
+    margin-left: 0.55rem;
+    font-size: 0.98rem;
+    transform: translateY(1px);
+}
+
+.bookCta:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab,
+            var(--sl-sports-accent-300, #86efac),
+            var(--sl-gold-300, #facc15) 28%);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-sports-accent-600, #16a34a), black 32%),
+            color-mix(in oklab, var(--sl-noir-950, #020617), black 0%));
+    color: color-mix(in oklab,
+            var(--sl-platinum-010, #f9fafb),
+            white 10%);
+}
+
+.bookCta:active {
+    transform: translateY(0);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 1),
+        0 10px 24px rgba(0, 0, 0, 0.96);
+}

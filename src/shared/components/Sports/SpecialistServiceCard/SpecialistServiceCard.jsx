@@ -40,8 +40,12 @@ export default function SpecialistServiceCard({
       <header className={styles.header}>
         <div className={styles.headerText}>
           <div className={styles.iconTitleRow}>
-            <div className={styles.iconCircle} aria-hidden="true">
-              {icon ?? <span className={styles.iconFallback}></span>}
+            <div className={styles.iconCircle} aria-hidden="true" >
+              {icon ? (
+                <span className={styles.icon}>{icon}</span>
+              ) : (
+                <span className={styles.iconFallback}></span>
+              )}
             </div>
 
             <h3 className={styles.title}>{title}</h3>

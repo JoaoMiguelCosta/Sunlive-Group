@@ -22,7 +22,7 @@
             transparent 55%),
         var(--sl-noir-950, #020617);
 
-    color: var(--sl-platinum-050, #e7ebf3);
+    color: var(--sl-platinum-050, #e4f5ea);
     border-radius: 8px;
     border: 1.5px solid color-mix(in oklab,
             var(--sl-gold-400, #c78615),
@@ -111,7 +111,7 @@
 .description {
     font-size: clamp(0.96rem, 1.08vw, 1rem);
     line-height: 1.6;
-    color: var(--sl-platinum-050, #e7ebf3);
+    color: var(--sl-platinum-050, #e4f5ea);
 }
 
 /* ===== Footer: redes + CTAs ===== */
@@ -164,7 +164,7 @@
             transparent 55%),
         rgba(8, 12, 10, 0.98);
 
-    color: var(--sl-platinum-020, #f9fafb);
+    color: var(--sl-platinum-020, #f9fdf9);
     cursor: pointer;
 
     transition:
@@ -177,7 +177,7 @@
 
 .socialButton:hover {
     border-color: var(--sl-accent-400, #4CD29A);
-    color: var(--sl-platinum-050, #e7ebf3);
+    color: var(--sl-platinum-050, #e4f5ea);
     box-shadow:
         0 0 0 1px rgba(46, 194, 126, 0.85),
         0 10px 24px rgba(0, 0, 0, 0.85);
@@ -273,7 +273,7 @@
     box-shadow:
         0 0 0 1px rgba(46, 194, 126, 0.75),
         0 10px 26px rgba(0, 0, 0, 0.8);
-    color: var(--sl-platinum-020, #f9fafb);
+    color: var(--sl-platinum-020, #f9fdf9);
 }
 
 /* Ícone de seta / download */

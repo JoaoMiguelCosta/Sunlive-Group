@@ -89,7 +89,10 @@ export default function ProgramDetailSection({
               <div className={styles.headerMain}>
                 {Icon && (
                   <span className={styles.iconWrap}>
-                    <Icon aria-hidden="true" />
+                    <Icon
+                      aria-hidden="true"
+                      color="rgb(240, 196, 80)" // 👈 todos os icons desta secção usam esta cor
+                    />
                   </span>
                 )}
                 {title && <h3 className={styles.title}>{title}</h3>}

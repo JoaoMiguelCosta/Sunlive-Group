@@ -1,0 +1,63 @@
+/* src/brands/sports/pages/Education/EducationLevelsSection.module.css */
+
+/* ===== Secção base ===== */
+
+.section {
+    position: relative;
+    width: 100%;
+   
+    color: var(--sl-platinum-040, #e5e7eb);
+}
+
+.inner {
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+
+    box-sizing: content-box;
+}
+
+/* ===== Header "Níveis de Ensino" ===== */
+
+.header {
+    max-width: 720px;
+    margin-bottom: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+.title {
+    font-size: clamp(1.4rem, 2.3vw, 1.9rem);
+    line-height: 1.15;
+    font-weight: 700;
+    color: var(--sl-platinum-010, #f9fafb);
+}
+
+.lead {
+    margin-top: 0.7rem;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: color-mix(in oklab,
+            var(--sl-platinum-060, #9ca3af),
+            white 8%);
+}
+
+/* ===== Grelha dos cards ===== */
+
+.grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.2rem, 2.1vw, 1.6rem);
+}
+
+/* >= tablet: 2 colunas */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* >= desktop: 3 colunas */
+@media (min-width: 1120px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

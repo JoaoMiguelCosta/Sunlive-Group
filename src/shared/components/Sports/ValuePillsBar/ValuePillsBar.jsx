@@ -32,7 +32,10 @@ export default function ValuePillsBar({ items = [], align = "center" }) {
           <div key={key} className={styles.pill}>
             {Icon && (
               <span className={styles.iconCircle}>
-                <Icon aria-hidden="true" />
+                <Icon
+                  aria-hidden="true"
+                  color="rgb(240, 196, 80)" // 👈 mesma cor dourada aqui
+                />
               </span>
             )}
             <span className={styles.label}>{label}</span>

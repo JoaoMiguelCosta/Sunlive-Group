@@ -1,0 +1,146 @@
+/* =========================================================
+   ConsultancyEntitiesSection — Sports
+   Performance Prestige (Noir + Dourado + Verde-vital)
+   ========================================================= */
+
+.section {
+    position: relative;
+    width: 100%;
+  
+    color: var(--sl-platinum-040, #edf1ff);
+}
+
+.inner {
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+}
+
+/* ===== Cabeçalho ===== */
+
+.header {
+    margin-bottom: clamp(1.1rem, 2vw, 1.5rem);
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.85rem 2.4rem;
+    max-width: 520px;
+    width: 100%;
+
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 26%);
+
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 4%),
+            color-mix(in oklab, var(--sl-gold-400, #facc15), black 6%));
+
+    color: #edf1ff;
+    text-align: center;
+
+    font-size: clamp(1.08rem, 1.1rem + 0.28vw, 1.28rem);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 14px 32px rgba(0, 0, 0, 0.85);
+
+    /* 👇 transições suaves para o hover */
+    transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        background 0.18s ease-out,
+        border-color 0.18s ease-out;
+}
+
+
+/* ===== Grid de entidades ===== */
+
+.grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(0.9rem, 1.6vw, 1.3rem);
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Card tipo "pill" */
+
+.card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+
+    padding: 0.9rem 1.4rem;
+
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 32%);
+
+    background:
+            radial-gradient(circle at top right,
+                color-mix(in oklab, var(--sl-accent-500, #2EC27E), transparent 40%) 0,
+                transparent 60%),
+            color-mix(in oklab, #050609 88%, black 12%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 18px 40px rgba(0, 0, 0, 0.9);
+}
+
+.card:hover {transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);}
+/* Ícone check circular */
+
+.iconWrap {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+
+    background:
+        radial-gradient(circle at 30% 25%,
+            var(--sl-sports-accent-400, #22c55e),
+            color-mix(in oklab,
+                var(--sl-sports-accent-700, #15803d),
+                black 18%));
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-400, #facc15),
+            black 45%);
+}
+
+.iconCheck {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #02140a;
+}
+
+/* Texto da entidade */
+
+.label {
+    font-size: 0.96rem;
+    line-height: 1.4;
+    font-weight: 500;
+}

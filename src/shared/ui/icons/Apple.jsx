@@ -1,13 +1,22 @@
 // src/shared/ui/icons/Apple.jsx
-export default function AppleIcon(props) {
+export default function AppleIcon({
+  size = 26,
+  color = "currentColor",
+  className = "",
+  ...props
+}) {
   return (
     <svg
       viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      aria-hidden="true"
       fill="none"
-      stroke="currentColor"
+      stroke={color}
       strokeWidth="1.7"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className={className}
       {...props}
     >
       <path d="M12 6.528V3a1 1 0 0 1 1-1h0" />

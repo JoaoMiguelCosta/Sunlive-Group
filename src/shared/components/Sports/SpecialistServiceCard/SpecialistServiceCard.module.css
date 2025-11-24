@@ -14,22 +14,14 @@
     border-radius: 18px;
     border: 1px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 40%);
 
-    background:
-        radial-gradient(circle at 0 0,
-            color-mix(in oklab, var(--sl-gold-400, #eab308), transparent 82%),
-            transparent 70%),
-        radial-gradient(circle at 100% 0,
-            color-mix(in oklab,
-                var(--sl-sports-accent-500, #22c55e),
-                transparent 86%),
-            transparent 72%),
-        linear-gradient(to bottom, #020617 0%, #000000 40%, #020617 100%);
+background: radial-gradient(circle at top right,
+            color-mix(in oklab, var(--sl-accent-500, #2EC27E), transparent 40%) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 88%, black 12%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .05) inset,
+        0 22px 46px rgba(0, 0, 0, .48);
 
-    box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.85),
-        0 18px 40px rgba(0, 0, 0, 0.95);
-
-    color: var(--sl-platinum-030, #edf2f7);
+ 
 }
 
 /* ===================== Header ===================== */
@@ -69,11 +61,22 @@
             color-mix(in oklab, var(--sl-gold-400, #C78615), black 18%) 0,
             transparent 70%),
         color-mix(in oklab, #050609 80%, black 20%);
-}
 
+    border: 1px solid color-mix(in oklab,
+            var(--sl-accent-600, #1F8D5C),
+            var(--sl-gold-400, #C78615) 28%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.6),
+        0 0 18px rgba(46, 194, 126, 0.5);
+}
 .iconFallback {
     font-size: 1.3rem;
-    color: #111827;
+    color: var(--sl-gold-300, #facc15);
+}
+
+.icon svg {
+    color: rgb(240, 196, 80);
 }
 
 /* texto do header */
@@ -139,6 +142,10 @@
     color: var(--sl-platinum-050, #e5e7eb);
     min-height: 4.4rem;
 }
+
+.description:hover {background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #956015), black 20%),
+            color-mix(in oklab, var(--sl-gold-400, #d3a93e), black 20%));}
 
 .divider {
     width: 100%;
@@ -256,6 +263,10 @@
     line-height: 1.45;
     color: var(--sl-platinum-060, #d1d5db);
 }
+
+.listItem:hover {background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #956015), black 20%),
+            color-mix(in oklab, var(--sl-gold-400, #d3a93e), black 20%));}
 
 .bullet {
     flex-shrink: 0;

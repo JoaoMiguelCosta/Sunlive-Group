@@ -59,11 +59,8 @@
     align-items: center;
     justify-content: center;
 
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #d09b20), black 10%),
-            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), black 15%));
-
-    color: rgba(15, 23, 42, 0.96);
+    background: red;
+ 
     font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: 0.09em;
@@ -106,11 +103,12 @@
     padding: 0.9rem 1.25rem 1.05rem;
 
     color: var(--sl-platinum-040, #e5e7eb);
-    background: radial-gradient(circle at 0 0,
-            rgba(34, 197, 94, 0.08),
-            transparent 55%),
-        #020617;
-
+background: radial-gradient(circle at top right,
+            color-mix(in oklab, var(--sl-accent-500, #2EC27E), transparent 40%) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 88%, black 12%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .05) inset,
+        0 22px 46px rgba(0, 0, 0, .48);
     display: flex;
     flex-direction: column;
 }
@@ -248,6 +246,10 @@
     line-height: 1.5;
     color: var(--sl-platinum-060, #e5e7eb);
 }
+
+.experienceItem:hover {background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #956015), black 20%),
+            color-mix(in oklab, var(--sl-gold-400, #d3a93e), black 20%));}
 
 .experienceItem::before {
     content: "";

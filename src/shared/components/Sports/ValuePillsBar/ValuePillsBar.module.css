@@ -85,24 +85,11 @@
 /* hover / focus */
 
 .pill:hover {
-    background:
-        radial-gradient(circle at 0 0,
-            rgba(76, 210, 154, 0.32) 0,
-            transparent 55%),
-        radial-gradient(circle at 100% 100%,
-            color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 20%) 0,
-            transparent 60%),
-        color-mix(in oklab, #050609 82%, black 18%);
-
-    border-color: color-mix(in oklab,
-            var(--sl-gold-400, #C78615),
-            var(--sl-accent-500, #2EC27E) 26%);
-
-    box-shadow:
-        0 14px 30px rgba(0, 0, 0, 0.85),
-        0 0 0 1px rgba(0, 0, 0, 0.75);
-
-    transform: translateY(-1px);
+transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+   
 }
 
 .pill:focus-visible {
@@ -148,8 +135,9 @@
 .iconCircle svg {
     inline-size: 1.2rem;
     block-size: 1.2rem;
-    stroke: var(--sl-gold-300, #e4bf07);
-    color: var(--sl-gold-300, #e4bf07);
+    stroke: rgb(228, 191, 7);
+   
+
 }
 
 /* ===== Label ===== */

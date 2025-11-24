@@ -5,6 +5,10 @@ import sportsBrand from "../../configSports.jsx";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./OverviewSection.jsx";
+import EducationLevelsSection from "./EducationLevelsSection.jsx";
+import EducationBilingualSection from "./EducationBilingualSection.jsx";
+import EducationBilingualCertification from "./EducationBilingualCertification.jsx";
+import EducationCareersSection from "./EducationCareersSection.jsx";
 import EducationClosingPanel from "./EducationClosingPanel.jsx";
 
 /**
@@ -35,55 +39,68 @@ export default function EducationPage() {
           {/* 1) Bloco texto + imagem */}
           <OverviewSection data={data} />
 
-          {/* 2) Níveis de Ensino */}
+          {/* 2) Níveis de Ensino (headline + cards) */}
           {data.levelsIntro && (
-            <section
-              className={styles.heroSection}
-              aria-label={data.levelsIntro.title}
-            >
-              <HeadlineBlock
-                theme="sports"
-                variant="banded"
-                align="center"
-                max="lg"
-                title={data.levelsIntro.title}
-                lead={data.levelsIntro.lead}
-              />
-            </section>
+            <>
+              <section
+                className={styles.heroSection}
+                aria-label={data.levelsIntro.title}
+              >
+                <HeadlineBlock
+                  theme="sports"
+                  variant="banded"
+                  align="center"
+                  max="lg"
+                  title={data.levelsIntro.title}
+                  lead={data.levelsIntro.lead}
+                />
+              </section>
+
+              <EducationLevelsSection data={data} />
+            </>
           )}
 
-          {/* 3) Ensino Bilingue */}
+          {/* 3) Ensino Bilingue (headline + cards + certificação dupla) */}
           {data.bilingualIntro && (
-            <section
-              className={styles.heroSection}
-              aria-label={data.bilingualIntro.title}
-            >
-              <HeadlineBlock
-                theme="sports"
-                variant="banded"
-                align="center"
-                max="lg"
-                title={data.bilingualIntro.title}
-                lead={data.bilingualIntro.lead}
-              />
-            </section>
+            <>
+              <section
+                className={styles.heroSection}
+                aria-label={data.bilingualIntro.title}
+              >
+                <HeadlineBlock
+                  theme="sports"
+                  variant="banded"
+                  align="center"
+                  max="lg"
+                  title={data.bilingualIntro.title}
+                  lead={data.bilingualIntro.lead}
+                />
+              </section>
+
+              <EducationBilingualSection data={data} />
+              <EducationBilingualCertification data={data} />
+            </>
           )}
 
-          {/* 4) Percursos Profissionais */}
+          {/* 4) Percursos Profissionais (headline + cards) */}
           {data.careersIntro && (
-            <section
-              className={styles.heroSection}
-              aria-label={data.careersIntro.title}
-            >
-              <HeadlineBlock
-                theme="sports"
-                variant="banded"
-                align="center"
-                max="lg"
-                title={data.careersIntro.title}
-                lead={data.careersIntro.lead}
-              />
-            </section>
+            <>
+              <section
+                className={styles.heroSection}
+                aria-label={data.careersIntro.title}
+              >
+                <HeadlineBlock
+                  theme="sports"
+                  variant="banded"
+                  align="center"
+                  max="lg"
+                  title={data.careersIntro.title}
+                  lead={data.careersIntro.lead}
+                />
+              </section>
+
+              <EducationCareersSection data={data} />
+            </>
           )}
 
           {/* 5) Painel de fecho */}

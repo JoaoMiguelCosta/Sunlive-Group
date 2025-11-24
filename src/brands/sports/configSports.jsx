@@ -955,16 +955,159 @@ const education = {
     lead: "Desde o ensino básico até ao superior, oferecemos um percurso educativo completo e adaptado às necessidades dos nossos estudantes-atletas.",
   },
 
+  /* Níveis de Ensino — cards + Books */
+  levels: {
+    id: "education-levels",
+    items: [
+      {
+        id: "basic-education",
+        title: "Ensino Básico",
+        ageRange: "6–15 anos",
+        subtitle: "1.º, 2.º e 3.º Ciclos",
+        description:
+          "Formação sólida nas competências fundamentais, adaptada aos horários de treino desportivo.",
+        features: [
+          "Currículo Nacional Português",
+          "Apoio individualizado",
+          "Horários flexíveis",
+          "Desenvolvimento de competências sociais",
+          "Acompanhamento pedagógico especializado",
+        ],
+        book: {
+          label: "Abrir Book",
+          href: "/books/MiddleSchool.pdf",
+        },
+      },
+      {
+        id: "secondary-education",
+        title: "Ensino Secundário",
+        ageRange: "15–18 anos",
+        subtitle: "IGCSE & Currículo Nacional",
+        description:
+          "Dupla certificação que abre portas tanto em Portugal como internacionalmente.",
+        features: [
+          "Certificação dupla (Nacional + IGCSE)",
+          "Ensino bilingue (PT/EN)",
+          "Preparação para universidades",
+          "Disciplinas de especialização desportiva",
+          "Orientação vocacional",
+        ],
+        book: {
+          label: "Abrir Book",
+          href: "/books/HighSchool.pdf",
+        },
+      },
+      {
+        id: "higher-education",
+        title: "Ensino Superior",
+        ageRange: "18+ anos",
+        subtitle: "Licenciaturas & Especializações",
+        description:
+          "Programas universitários focados no desporto e áreas complementares.",
+        features: [
+          "Gestão Desportiva",
+          "Treinador UEFA certificado",
+          "Ciências do Desporto",
+          "Fisioterapia Desportiva",
+          "Parcerias universitárias internacionais",
+        ],
+        book: {
+          label: "Abrir Book",
+          href: "/books/University.pdf",
+        },
+      },
+    ],
+  },
+
   bilingualIntro: {
     id: "education-bilingual-intro",
     title: "Ensino Bilingue",
     lead: "Oferecemos uma abordagem educativa única que combina o melhor dos sistemas português e internacional, preparando os nossos alunos para um futuro sem fronteiras.",
   },
 
+  /* Ensino Bilingue — 2 cards (sem Book) */
+  bilingual: {
+    id: "education-bilingual",
+    items: [
+      {
+        id: "national-curriculum",
+        title: "Currículo Nacional Português",
+        description:
+          "Programa oficial do Ministério da Educação, garantindo equivalências nacionais.",
+        featuresLabel: "Vantagens:",
+        features: [
+          "Reconhecimento oficial em Portugal",
+          "Acesso ao ensino superior nacional",
+          "Certificação válida em toda a UE",
+          "Preparação para exames nacionais",
+        ],
+      },
+      {
+        id: "international-igcse",
+        title: "Currículo Internacional IGCSE",
+        description:
+          "Sistema britânico reconhecido mundialmente, ministrado em inglês.",
+        featuresLabel: "Vantagens:",
+        features: [
+          "Reconhecimento internacional",
+          "Acesso a universidades globais",
+          "Desenvolvimento do inglês académico",
+          "Metodologia de ensino inovadora",
+        ],
+      },
+    ],
+  },
+
+  /* Ensino Bilingue — Certificação Dupla (card largo) */
+  bilingualCertification: {
+    id: "education-bilingual-certification",
+    title: "Certificação Dupla",
+    description:
+      "Os nossos alunos obtêm certificações tanto do sistema português como do sistema internacional IGCSE, maximizando as suas oportunidades futuras.",
+    badges: [
+      "Acesso a universidades Portuguesas",
+      "Acesso a universidades Internacionais",
+    ],
+  },
+
+  /* Percursos Profissionais — headline + cards */
   careersIntro: {
     id: "education-careers-intro",
     title: "Percursos Profissionais",
     lead: "Preparamos os nossos estudantes para carreiras de sucesso no mundo do desporto e além, oferecendo especializações reconhecidas internacionalmente.",
+  },
+
+  careers: {
+    id: "education-careers",
+    items: [
+      {
+        id: "uefa-coach",
+        title: "Treinador da Uefa",
+        ageRange: "2 – 4 anos",
+        description:
+          "Certificação oficial para treinar equipas profissionais e semi-profissionais.",
+        featuresLabel: "Níveis Disponíveis:",
+        features: ["UEFA C", "UEFA B", "UEFA A", "UEFA Pro"],
+      },
+      {
+        id: "sports-management",
+        title: "Gestão Desportiva",
+        ageRange: "3 – 5 anos",
+        description:
+          "Licenciatura focada na administração e gestão de organizações desportivas.",
+        featuresLabel: "Níveis Disponíveis:",
+        features: ["Licenciatura", "Mestrado", "MBA Desportivo"],
+      },
+      {
+        id: "sports-science",
+        title: "Ciências do Desporto",
+        ageRange: "3 – 8 anos",
+        description:
+          "Formação científica em fisiologia, biomecânica e psicologia desportiva.",
+        featuresLabel: "Níveis Disponíveis:",
+        features: ["Licenciatura", "Mestrado", "Doutoramento"],
+      },
+    ],
   },
 
   /* 3) Pilares — Educação / Valores / Orientação */
@@ -1017,6 +1160,7 @@ const education = {
     },
   },
 };
+
 
 /* =========================================================
    Turismo Desportivo Lúdico — página dedicada
@@ -1982,7 +2126,19 @@ const consultancy = {
     ],
   },
 
-  /* 4) Pilares — Experiência / Estratégia / Resultados */
+  /* 4) Entidades com quem colaboramos */
+  entities: {
+    id: "consultancy-entities",
+    title: "Entidades com quem colaboramos:",
+    items: [
+      "Clubes Profissionais e Amadores",
+      "Municípios, Autarquias, Escolas e Privados",
+      "Organizações de Turismo Ativo",
+      "Federações Internacionais, Nacionais e Regionais",
+    ],
+  },
+
+  /* 5) Pilares — Experiência / Estratégia / Resultados */
   pillars: {
     items: [
       {
@@ -2003,7 +2159,7 @@ const consultancy = {
     ],
   },
 
-  /* 5) Painel de fecho / fim da jornada Sports */
+  /* 6) Painel de fecho / fim da jornada Sports */
   closingPanel: {
     id: "consultancy-closing-panel",
 
@@ -2032,7 +2188,6 @@ const consultancy = {
     },
   },
 };
-
 /* =========================================================
    Objeto principal da marca Sports
    ========================================================= */

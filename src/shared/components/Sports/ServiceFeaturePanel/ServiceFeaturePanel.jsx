@@ -42,7 +42,7 @@ export default function ServiceFeaturePanel({
       <header className={styles.header}>
         <div className={styles.headerMain}>
           {icon && (
-            <div className={styles.iconWrap} aria-hidden="true">
+            <div className={styles.iconWrap} aria-hidden="true" >
               {icon}
             </div>
           )}

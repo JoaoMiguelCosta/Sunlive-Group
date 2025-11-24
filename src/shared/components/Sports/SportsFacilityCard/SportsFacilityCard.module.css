@@ -11,20 +11,11 @@
     border: 1px solid color-mix(in oklab,
             var(--sl-gold-500, #c78615),
             var(--sl-accent-600, #1F8D5C) 28%);
-
-    background:
-        radial-gradient(circle at 0 0,
-            color-mix(in oklab, var(--sl-gold-400, #eab308), transparent 80%),
-            transparent 70%),
-        radial-gradient(circle at 100% 0,
-            color-mix(in oklab, var(--sl-accent-500, #2EC27E), transparent 78%),
-            transparent 70%),
-        linear-gradient(to bottom, #020617 0%, #00010a 100%);
-
-    box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.8),
-        0 22px 55px rgba(0, 0, 0, 0.95);
-
+background:
+        radial-gradient(circle at top right,
+            color-mix(in oklab, var(--sl-accent-500, #2EC27E), transparent 40%) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 88%, black 12%);
     color: var(--sl-platinum-040, #edf1ff);
 
     /* 🔧 Tokens de altura para TODO o interior (titulo + resumo) */
@@ -47,11 +38,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 4 / 3;
-    background: radial-gradient(circle at 50% 0,
-            color-mix(in oklab,
-                var(--sl-accent-500, #2EC27E),
-                black 40%),
-            #020617 70%);
+    background: red;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -232,6 +219,12 @@
         0 0 1px rgba(0, 0, 0, 0.7);
 }
 
+.highlightPill:hover {
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #956015), black 20%),
+            color-mix(in oklab, var(--sl-gold-400, #d3a93e), black 20%));
+}
+
 .highlightText {
     font-size: 0.9rem;
     font-weight: 600;
@@ -269,6 +262,10 @@
     font-size: 0.9rem;
     line-height: 1.45;
 }
+
+.featureItem:hover {background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #956015), black 20%),
+            color-mix(in oklab, var(--sl-gold-400, #d3a93e), black 20%));}
 
 .featureBullet {
     flex: 0 0 auto;

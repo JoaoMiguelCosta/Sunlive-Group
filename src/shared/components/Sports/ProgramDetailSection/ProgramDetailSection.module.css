@@ -138,12 +138,15 @@
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.6),
         0 0 18px rgba(46, 194, 126, 0.5);
-    color: var(--sl-platinum-050, #e7ebf3);
+   
 }
+
+
 
 .iconWrap svg {
     inline-size: 1.35rem;
     block-size: 1.35rem;
+    stroke: rgb(228, 191, 7);
 }
 
 .title {
@@ -169,6 +172,8 @@
     max-width: 38rem;
 }
 
+
+
 .block {
     display: grid;
     gap: 0.3rem;
@@ -189,6 +194,9 @@
     line-height: 1.6;
     color: var(--sl-platinum-120, #dde3f0);
 }
+.blockText:hover {background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #956015), black 20%),
+            color-mix(in oklab, var(--sl-gold-400, #d3a93e), black 20%));}
 
 /* Lista de atividades */
 
@@ -209,6 +217,10 @@
     line-height: 1.5;
     color: var(--sl-platinum-120, #dde3f0);
 }
+
+.activityItem:hover {background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #956015), black 20%),
+            color-mix(in oklab, var(--sl-gold-400, #d3a93e), black 20%));}
 
 .activityItem::before {
     content: "";

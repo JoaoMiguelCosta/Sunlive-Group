@@ -1,5 +1,10 @@
 // src/shared/ui/icons/Globe.jsx
-export default function GlobeIcon({ size = 26, className = "", ...props }) {
+export default function GlobeIcon({
+  size = 26,
+  color = "currentColor", // por defeito herda de CSS
+  className = "",
+  ...props
+}) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -7,7 +12,7 @@ export default function GlobeIcon({ size = 26, className = "", ...props }) {
       height={size}
       aria-hidden="true"
       fill="none"
-      stroke="#e4bf07"
+      stroke={color} // usa a prop
       strokeWidth="1.8"
       strokeLinecap="round"
       strokeLinejoin="round"

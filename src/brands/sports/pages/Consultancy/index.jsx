@@ -5,6 +5,7 @@ import sportsBrand from "../../configSports.jsx";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./OverviewSection.jsx";
+import ConsultancyEntitiesSection from "./ConsultancyEntitiesSection.jsx";
 import ConsultancyAreasSection from "./ConsultancyAreasSection.jsx";
 import ConsultancyClosingPanel from "./ConsultancyClosingPanel.jsx";
 
@@ -36,6 +37,9 @@ export default function ConsultancyPage() {
           {/* 1) Bloco texto + imagem */}
           <OverviewSection data={data} />
 
+          {/* 1.x) Entidades com quem colaboramos */}
+          {data.entities && <ConsultancyEntitiesSection data={data} />}
+
           {/* 2) Headline intermédio — Áreas de Consultoria */}
           {data.areasIntro && (
             <section
@@ -53,8 +57,10 @@ export default function ConsultancyPage() {
             </section>
           )}
 
-         
+          {/* 3) Áreas de Consultoria (acordeão) */}
           <ConsultancyAreasSection data={data} />
+
+          {/* 4) Painel de fecho */}
           <ConsultancyClosingPanel data={data} />
         </div>
       </main>

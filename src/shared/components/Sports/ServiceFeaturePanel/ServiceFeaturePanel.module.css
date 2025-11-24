@@ -18,21 +18,10 @@
 
     /* Fundo Noir com halos dourado + verde */
     background:
-        radial-gradient(circle at 0 0,
-            color-mix(in oklab,
-                var(--sl-gold-400, #c78615),
-                transparent 80%),
-            transparent 70%),
-        radial-gradient(circle at 100% 0,
-            color-mix(in oklab,
-                var(--sl-accent-500, #2EC27E),
-                transparent 82%),
-            transparent 72%),
-        linear-gradient(to bottom,
-            #02040b 0%,
-            #02040b 40%,
-            #000000 100%);
-
+            radial-gradient(circle at top right,
+                color-mix(in oklab, var(--sl-accent-500, #2EC27E), transparent 40%) 0,
+                transparent 60%),
+            color-mix(in oklab, #050609 88%, black 12%);
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.85),
         0 18px 40px rgba(0, 0, 0, 0.95);
@@ -47,6 +36,11 @@
         box-shadow 180ms ease-out,
         transform 180ms ease-out,
         border-color 180ms ease-out;
+}
+
+.iconWrap svg {
+    stroke: rgb(228, 191, 7);
+   
 }
 
 .card:hover {
@@ -86,22 +80,22 @@
     justify-content: center;
 
     border-radius: 999px;
-    background:
-        radial-gradient(circle at 30% 20%,
-            color-mix(in oklab,
-                var(--sl-accent-400, #4CD29A),
-                white 6%),
-            transparent 60%),
-        radial-gradient(circle at 70% 90%,
-            color-mix(in oklab,
-                var(--sl-accent-600, #1F8D5C),
-                black 10%),
-            transparent 70%);
-    box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.9),
-        0 8px 18px rgba(0, 0, 0, 0.9);
-    color: var(--sl-platinum-020, #f9fafb);
+background: radial-gradient(circle at 30% 20%,
+            color-mix(in oklab, var(--sl-accent-500, #2EC27E), white 8%) 0,
+            transparent 65%),
+        radial-gradient(circle at 70% 80%,
+            color-mix(in oklab, var(--sl-gold-400, #C78615), black 18%) 0,
+            transparent 70%),
+        color-mix(in oklab, #050609 80%, black 20%);
+    border: 1px solid color-mix(in oklab,
+            var(--sl-accent-600, #1F8D5C),
+            var(--sl-gold-400, #C78615) 28%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6),
+        0 0 18px rgba(46, 194, 126, 0.5);
+
 }
+
+
 
 /* Título do painel */
 .title {
@@ -147,6 +141,12 @@
         0 0 0 1px rgba(0, 0, 0, 0.7),
         0 10px 22px rgba(0, 0, 0, 0.85);
 }
+
+.summaryBand:hover{
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #956015), black 20%),
+            color-mix(in oklab, var(--sl-gold-400, #d3a93e), black 20%));
+  }
 
 .summaryText {
     font-size: 0.92rem;
@@ -288,6 +288,7 @@
     gap: 0.55rem;
 }
 
+
 .bullet {
     margin-top: 0.4rem;
     width: 0.52rem;
@@ -318,6 +319,12 @@
             var(--sl-platinum-060, #e5e7eb),
             black 6%);
 }
+
+.itemText:hover {
+background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #956015), black 20%),
+            color-mix(in oklab, var(--sl-gold-400, #d3a93e), black 20%));
+    }
 
 /* =======================
    Responsivo

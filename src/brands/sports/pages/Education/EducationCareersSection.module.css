@@ -1,0 +1,40 @@
+/* src/brands/sports/pages/Education/EducationCareersSection.module.css */
+
+/* Secção base */
+
+.section {
+    position: relative;
+    width: 100%;
+
+    color: var(--sl-platinum-040, #e5e7eb);
+}
+
+.inner {
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+
+    box-sizing: content-box;
+}
+
+/* Grelha dos 3 cards */
+
+.grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.2rem, 2.1vw, 1.6rem);
+}
+
+/* >= tablet: 2 colunas */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* >= desktop: 3 colunas */
+@media (min-width: 1120px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

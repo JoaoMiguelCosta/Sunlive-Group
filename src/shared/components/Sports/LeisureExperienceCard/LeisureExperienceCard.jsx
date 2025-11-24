@@ -1,14 +1,6 @@
 // src/shared/components/Sports/LeisureExperienceCard/index.jsx
 import styles from "./LeisureExperienceCard.module.css";
 
-/**
- * LeisureExperienceCard — card reutilizável (Sports)
- *
- * Props:
- *  - icon: componente React (ex: HeartIcon)
- *  - title: string
- *  - description: string
- */
 export default function LeisureExperienceCard({
   icon: Icon,
   title,
