@@ -8,12 +8,16 @@ import OverviewSection from "./OverviewSection.jsx";
 import ConsultancyEntitiesSection from "./ConsultancyEntitiesSection.jsx";
 import ConsultancyAreasSection from "./ConsultancyAreasSection.jsx";
 import ConsultancyClosingPanel from "./ConsultancyClosingPanel.jsx";
+import useScrollToHash from "../../../../shared/hooks/useScrollToHash.js";
 
 /**
  * Página Consultoria — Sunlive Sports
  * Usa o mesmo layout base das restantes páginas Sports.
  */
 export default function ConsultancyPage() {
+  // Scroll suave para âncoras, compensando o header fixo (~96px)
+  useScrollToHash(96);
+
   const data = sportsBrand.sections?.consultancy;
   if (!data) return null;
 

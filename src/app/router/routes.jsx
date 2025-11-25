@@ -26,6 +26,7 @@ import DisciplinesPage from "../../brands/sports/pages/Disciplines/index.jsx";
 import InfrastructuresPage from "../../brands/sports/pages/Infrastructures/index.jsx";
 import LogisticsPage from "../../brands/sports/pages/Logistics/index.jsx";
 import ConsultancyPage from "../../brands/sports/pages/Consultancy/index.jsx";
+import ContactsPage from "../../brands/sports/pages/Contacts/index.jsx";
 
 /*
 
@@ -56,7 +57,6 @@ export default function AppRoutes() {
       {/* Grupo 2: Restantes páginas (back → Menu Sports) */}
       <Route path="/sunlive-group/sports" element={<SportsShellInner />}>
         <Route path="training-camps" element={<TrainingCampsPage />} />
-
         <Route path="academies" element={<AcademiesPage />} />
         <Route path="events" element={<EventsPage />} />
         <Route path="sunlive-athletes" element={<AthletesPage />} />
@@ -73,6 +73,7 @@ export default function AppRoutes() {
         <Route path="infrastructures" element={<InfrastructuresPage />} />
         <Route path="logistics" element={<LogisticsPage />} />
         <Route path="consultancy" element={<ConsultancyPage />} />
+        <Route path="contacts" element={<ContactsPage />} /> {/* 👈 aqui */}
         {/*
 
 

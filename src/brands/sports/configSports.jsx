@@ -33,6 +33,7 @@ const header = {
   socials: SPORTS_SOCIALS,
 };
 
+
 /* ===== Home — Gateway ===== */
 const gateway = [
   {
@@ -86,22 +87,43 @@ const gateway = [
     label: "Consultoria",
     href: "/sunlive-group/sports/consultancy",
   },
-  { key: "contact", label: "Contactar", href: "#contactar", variant: "cta" },
+  {
+    key: "contact",
+    label: "Contactar",
+    href: "/sunlive-group/sports/contacts", // 👈 atualizado
+    variant: "cta",
+  },
 ];
 
+
 /* ===== Links Rápidos (chips a partir do gateway) ===== */
-const SPORTS_QUICK_LINKS = gateway
-  .filter((item) => item.key !== "contact")
-  .map(({ key, label, href }) => ({ key, label, href }));
+const SPORTS_QUICK_LINKS = gateway.map(({ key, label, href }) => ({
+  key,
+  label,
+  href,
+}));
+
+const CONSULTANCY_ENTITIES_HREF =
+  "/sunlive-group/sports/consultancy#consultancy-entities";
 
 /* ===== “Colaboramos com” (chips, sem ícones) ===== */
 const SPORTS_COLLAB_GROUPS = [
-  { key: "orgs", label: "Organizações Internacionais" },
-  { key: "feds", label: "Federações" },
-  { key: "cities", label: "Municípios" },
-  { key: "clubs", label: "Clubes" },
-  { key: "schools", label: "Escolas" },
-  { key: "private", label: "Privados" },
+  {
+    key: "orgs",
+    label: "Organizações Internacionais",
+    href: CONSULTANCY_ENTITIES_HREF,
+  },
+  { key: "feds", label: "Federações", href: CONSULTANCY_ENTITIES_HREF },
+  { key: "cities", label: "Municípios", href: CONSULTANCY_ENTITIES_HREF },
+  { key: "autarquias", label: "Autarquias", href: CONSULTANCY_ENTITIES_HREF },
+  { key: "clubs", label: "Clubes", href: CONSULTANCY_ENTITIES_HREF },
+  { key: "schools", label: "Escolas", href: CONSULTANCY_ENTITIES_HREF },
+  { key: "private", label: "Privados", href: CONSULTANCY_ENTITIES_HREF },
+  {
+    key: "active-tourism",
+    label: "Organizações de Turismo Ativo",
+    href: CONSULTANCY_ENTITIES_HREF,
+  },
 ];
 
 /* =========================================================
@@ -1484,10 +1506,162 @@ const disciplines = {
     lead: "Modalidade de referência da Sunlive, com infraestruturas de excelência, programas especializados e organização regular de eventos nacionais e internacionais.",
   },
 
+  cyclingHighlight: {
+    id: "disciplines-cycling-highlight",
+    title: "Explore o Universo Ciclismo Sunlive",
+    description:
+      "O universo do ciclismo na Sunlive — estágios, velódromo, programas de treino, instalações, infraestruturas e muito mais.",
+    instagramHref: "https://www.instagram.com/sunlivecycling/",
+    bookHref: "/books/cycling.pdf",
+    bookLabel: "Abrir Book",
+  },
+
+  // Grelha de disciplinas de ciclismo (Estrada, BTT, BMX, Pista, Trial)
+  cyclingDisciplines: {
+    id: "disciplines-cycling-disciplines",
+    items: [
+      {
+        key: "road",
+        title: "Estrada",
+        description:
+          "Provas realizadas em estradas e circuitos pavimentados, incluindo contrarrelógios, criteriums e granfondos.",
+      },
+      {
+        key: "mtb",
+        title: "BTT (Mountain Bike)",
+        description:
+          "Modalidades fora de estrada, como cross-country (XCO), maratona (XCM), downhill, enduro, entre outras.",
+      },
+      {
+        key: "bmx",
+        title: "BMX",
+        description:
+          "Corridas em pistas curtas com obstáculos e modalidades freestyle, focadas em manobras e estilo.",
+      },
+      {
+        key: "track",
+        title: "Pista",
+        description:
+          "Competições em velódromos, com diversas disciplinas como contrarrelógio, scratch, perseguição individual e por equipas.",
+      },
+      {
+        key: "trial",
+        title: "Trial Bike",
+        description:
+          "Modalidade que exige alta habilidade técnica para superar obstáculos sem tocar o chão com os pés.",
+      },
+    ],
+  },
+
+  // 🔥 NOVO: Projetos de Ciclismo (cards com SportsAcademyCard)
+  cyclingProjects: {
+    id: "disciplines-cycling-projects",
+    heading: "Projetos",
+    items: [
+      {
+        key: "cycling-academy",
+        title: "Anadia Cycling Academy (ACA)",
+        logoSrc: acaLogo,
+        logoAlt: "Logótipo Anadia Cycling Academy (ACA)",
+        description:
+          "Academia contínua de ciclismo para jovens atletas com treinos técnicos e alojamento.",
+        instagramHref: null,
+        facebookHref: null,
+        bookHref: "/books/cycling-academie.pdf",
+        bookLabel: "Abrir Book",
+      },
+      {
+        key: "aero-edge",
+        title: "Aero Edge",
+        logoSrc: null,
+        logoAlt: null,
+        description:
+          "Testes de aerodinâmica de nível avançado com túnel de vento e análise de dados. Programas especializados como “Hour Record” e “Outdoor Aero Testing” para otimização da performance.",
+        instagramHref: null,
+        facebookHref: null,
+        bookHref: "/books/AeroEdge.pdf",
+        bookLabel: "Abrir Book",
+      },
+      {
+        key: "training-from-pro",
+        title: "Training From Pro (TFP)",
+        logoSrc: null,
+        logoAlt: null,
+        description:
+          "Campos de treino de alto rendimento com base científica, incluindo treinos em estrada, pista e ginásio, além de palestras sobre nutrição, biomecânica e sono.",
+        instagramHref: null,
+        facebookHref: null,
+        bookHref: "/books/Training-from-pro.pdf",
+        bookLabel: "Abrir Book",
+      },
+    ],
+  },
+
   gymnasticsIntro: {
     id: "disciplines-gymnastics-intro",
     title: "Ginástica",
     lead: "Modalidade de referência da Sunlive, com uma oferta abrangente, ambiente técnico de alto nível e realização frequente de eventos e estágios especializados.",
+  },
+
+  // 🔥 Novo: disciplinas de Ginástica (9 cards)
+  gymnasticsDisciplines: {
+    id: "disciplines-gymnastics-disciplines",
+    items: [
+      {
+        key: "artistic-men",
+        title: "Ginástica Artística Masculina",
+        description:
+          "Inclui provas em solo, cavalo com arções, argolas, paralelas e barra fixa, destacando força e precisão.",
+      },
+      {
+        key: "artistic-women",
+        title: "Ginástica Artística Feminina",
+        description:
+          "Provas em aparelhos como solo, salto, trave e paralelas assimétricas, com foco em força e elegância.",
+      },
+      {
+        key: "rhythmic",
+        title: "Ginástica Rítmica",
+        description:
+          "Coreografias com corda, arco, bola, maças e fita, unindo música, dança e expressividade.",
+      },
+      {
+        key: "acrobatic",
+        title: "Ginástica Acrobática",
+        description:
+          "Exercícios em pares ou grupos com equilíbrio, força e movimentos sincronizados.",
+      },
+      {
+        key: "aerobic",
+        title: "Ginástica Aeróbica",
+        description:
+          "Rotinas dinâmicas de alta intensidade com coreografias, música e exigência física.",
+      },
+      {
+        key: "trampolines",
+        title: "Trampolins",
+        description:
+          "Saltos acrobáticos em trampolim, duplo mini-trampolim e trampolim sincronizado.",
+      },
+      {
+        key: "parkour",
+        title: "Parkour",
+        description:
+          "Centrado em ultrapassar obstáculos com fluidez, força e agilidade em ambientes urbanos ou naturais.",
+      },
+      {
+        key: "gym-for-all",
+        title: "Ginástica para Todos",
+        description:
+          "Atividade inclusiva, com foco na participação, bem-estar e expressão corporal, sem vertente competitiva.",
+      },
+      {
+        key: "teamgym",
+        title: "TeamGym",
+        description:
+          "Modalidade em equipa com exercícios de solo, mini-trampolim e tumbling, promovendo espírito coletivo e técnica.",
+      },
+    ],
   },
 
   footballIntro: {
@@ -2128,7 +2302,7 @@ const consultancy = {
 
   /* 4) Entidades com quem colaboramos */
   entities: {
-    id: "consultancy-entities",
+    id: "consultancy-entities", // 👈 este id é o alvo do #hash
     title: "Entidades com quem colaboramos:",
     items: [
       "Clubes Profissionais e Amadores",
@@ -2189,6 +2363,26 @@ const consultancy = {
   },
 };
 /* =========================================================
+   Contactos — página dedicada
+   ========================================================= */
+const contacts = {
+  id: "contacts",
+
+  /* 1) Headline */
+  hero: {
+    title: "Contactos Sunlive Sports",
+    description:
+      "A nossa equipa está sempre disponível para esclarecer dúvidas, prestar apoio e construir novas parcerias. Seja para integrar um programa, organizar um evento ou simplesmente saber mais sobre os nossos serviços — estamos aqui para ajudar.",
+  },
+
+  // 2) Conteúdos futuros:
+  // - cards de contacto
+  // - formulário
+  // - contactos por área / país
+};
+
+
+/* =========================================================
    Objeto principal da marca Sports
    ========================================================= */
 const sportsBrand = {
@@ -2208,6 +2402,7 @@ const sportsBrand = {
     infrastructures,
     logistics,
     consultancy,
+    contacts,
 
     footer: {
       infoHeader: makeFooterInfoHeader("sports", {

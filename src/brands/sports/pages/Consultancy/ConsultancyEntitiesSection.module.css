@@ -6,7 +6,7 @@
 .section {
     position: relative;
     width: 100%;
-  
+scroll-margin-top: 96px;
     color: var(--sl-platinum-040, #edf1ff);
 }
 

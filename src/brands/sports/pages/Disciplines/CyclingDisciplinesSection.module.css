@@ -1,0 +1,213 @@
+/* =========================================================
+   CyclingDisciplinesSection — Modalidades (Ciclismo)
+   Grelha de cards Performance Prestige
+   ========================================================= */
+
+.section {
+    position: relative;
+    width: 100%;
+    /* margem um pouco mais curta para ficar mais próximo do highlight */
+ 
+    color: var(--sl-platinum-040, #e5e7eb);
+}
+
+.inner {
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+    box-sizing: content-box;
+}
+
+/* ===== Header + botão de acordeão ===== */
+
+.header {
+    margin-bottom: clamp(1.1rem, 2vw, 1.5rem);
+    display: flex;
+    justify-content: center;
+    /* ⬅️ centrado */
+}
+
+.headerButton {
+    width: auto;
+    max-width: 420px;
+    padding: 0.65rem 1.4rem;
+    border-radius: 999px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 12%));
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 24%);
+
+    color: var(--sl-platinum-010, #f9fafb);
+    cursor: pointer;
+    outline: none;
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.8),
+        0 14px 28px rgba(0, 0, 0, 0.85);
+
+    transition:
+        background 0.2s ease-out,
+        box-shadow 0.2s ease-out,
+        transform 0.2s ease-out,
+        border-color 0.2s ease-out;
+}
+
+.headerButton:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 2%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 6%));
+    border-color: color-mix(in oklab,
+            var(--sl-gold-400, #fbbf24),
+            var(--sl-sports-accent-500, #22c55e) 26%);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 18px 36px rgba(0, 0, 0, 0.95);
+}
+
+.headerLeft {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.headerIconWrap {
+    flex: 0 0 auto;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: radial-gradient(circle at 30% 20%,
+            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), white 8%),
+            transparent 65%),
+        radial-gradient(circle at 70% 90%,
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 16%),
+            transparent 70%),
+        color-mix(in oklab, #020617, black 8%);
+    border: 1px solid color-mix(in oklab,
+            var(--sl-sports-accent-600, #16a34a),
+            var(--sl-gold-400, #fbbf24) 28%);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.7),
+        0 0 16px rgba(34, 197, 94, 0.6);
+}
+
+.headerTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* Chevron do acordeão */
+
+.chevron {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    border-radius: 2px;
+    transform: rotate(-45deg) translateY(-1px);
+    transition: transform 0.18s ease-out;
+}
+
+.chevronOpen {
+    transform: rotate(135deg) translateY(1px);
+}
+
+/* Corpo do painel */
+.panelBody {
+    padding: clamp(1.6rem, 2.4vw, 2rem) 1.4rem clamp(1.4rem, 2vw, 1.8rem);
+    /*       top                               sides          bottom  */
+
+    margin-top: 0.4rem;
+
+    border-radius: 22px;
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 32%);
+
+    background:
+        radial-gradient(circle at 0 0,
+            color-mix(in oklab,
+                var(--sl-sports-accent-400, #4ade80),
+                transparent 82%),
+            transparent 68%),
+        radial-gradient(circle at 100% 100%,
+            color-mix(in oklab,
+                var(--sl-gold-400, #fbbf24),
+                transparent 82%),
+            transparent 72%),
+        var(--sl-noir-950, #020617);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 22px 48px rgba(0, 0, 0, 0.98);
+}
+
+/* ===== Grelha base ===== */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(1.4rem, 2.2vw, 1.8rem);
+    justify-content: center;
+    align-items: stretch;
+}
+
+/* Desktop: 3 em cima, 2 centrados em baixo */
+@media (min-width: 980px) {
+    .grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .grid>*:nth-child(1) {
+        grid-column: 1 / span 2;
+    }
+
+    .grid>*:nth-child(2) {
+        grid-column: 3 / span 2;
+    }
+
+    .grid>*:nth-child(3) {
+        grid-column: 5 / span 2;
+    }
+
+    .grid>*:nth-child(4) {
+        grid-column: 2 / span 2;
+    }
+
+    .grid>*:nth-child(5) {
+        grid-column: 4 / span 2;
+    }
+}
+
+/* Tablet */
+@media (max-width: 960px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .headerButton {
+        width: 100%;
+        max-width: none;
+    }
+
+    .grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

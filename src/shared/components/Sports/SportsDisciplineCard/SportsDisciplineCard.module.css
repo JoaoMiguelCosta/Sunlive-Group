@@ -1,0 +1,95 @@
+/* =========================================================
+   SportsDisciplineCard — Modalidades / Disciplinas
+   Performance Prestige: Noir + Dourado + Verde-vital Sports
+   ========================================================= */
+
+.card {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+
+    width: 100%;
+    max-width: 420px;
+    min-height: 150px;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    border: 1.5px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 20%);
+
+    background:
+        radial-gradient(circle at 0 0,
+            color-mix(in oklab, var(--sl-sports-accent-400, #4ade80), transparent 85%),
+            transparent 70%),
+        radial-gradient(circle at 100% 100%,
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 88%),
+            transparent 72%),
+        var(--sl-noir-950, #020617);
+
+    color: var(--sl-platinum-030, #e5e7eb);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.75),
+        0 18px 40px rgba(0, 0, 0, 0.75);
+
+    transition:
+        transform 0.22s ease-out,
+        box-shadow 0.22s ease-out,
+        border-color 0.22s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab,
+            var(--sl-sports-accent-400, #4ade80),
+            var(--sl-gold-400, #fbbf24) 30%);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.8),
+        0 24px 60px rgba(0, 0, 0, 0.85);
+}
+
+/* Header dourado */
+
+.header {
+    padding: 0.7rem 1.4rem;
+
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 10%));
+
+    border-bottom: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 35%);
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--sl-platinum-010, #f9fafb);
+}
+
+/* Corpo Noir + ligeiro brilho verde */
+
+.body {
+    padding: 0.95rem 1.4rem 1.15rem;
+
+    background: linear-gradient(to bottom,
+            color-mix(in oklab, var(--sl-noir-950, #020617), black 0%),
+            color-mix(in oklab,
+                var(--sl-noir-950, #020617),
+                var(--sl-sports-accent-500, #22c55e) 5%));
+}
+
+.description {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    text-align: center;
+    color: var(--sl-platinum-040, #e5e7eb);
+}

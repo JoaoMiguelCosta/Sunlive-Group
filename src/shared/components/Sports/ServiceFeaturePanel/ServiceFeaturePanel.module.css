@@ -103,8 +103,15 @@ background: radial-gradient(circle at 30% 20%,
     font-weight: 600;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-
     color: var(--sl-platinum-020, #f9fafb);
+
+    line-height: 1.3;
+    /* 👉 reserva espaço para ~2 linhas */
+    min-height: calc(1.3em * 2);
+
+    display: flex;
+    align-items: center;
+    /* centra verticalmente o texto dentro dessa altura */
 }
 
 /* =======================
@@ -154,6 +161,13 @@ background: radial-gradient(circle at 30% 20%,
     color: color-mix(in oklab,
             var(--sl-platinum-060, #e5e7eb),
             black 10%);
+
+    /* 👉 reserva espaço para ~3 linhas */
+    min-height: calc(1.5em * 3);
+
+    display: flex;
+    align-items: center;
+    /* mantém o texto centrado dentro desse bloco */
 }
 
 /* =======================
