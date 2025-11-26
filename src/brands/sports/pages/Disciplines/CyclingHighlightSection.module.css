@@ -1,21 +1,49 @@
 /* =========================================================
    CyclingHighlightSection — Modalidades (Ciclismo)
-   Wrap simples para o SportsAcademyCard
+   Wrap com panelBody + SportsAcademyCard centrado
    ========================================================= */
 
 .section {
     position: relative;
     width: 100%;
-
     color: var(--sl-platinum-040, #e5e7eb);
 }
 
+/* Panel body em tudo igual ao painel das disciplinas de ciclismo */
+.panelBody {
+    position: relative;
+    width: 100%;
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+    margin-top: 0.4rem;
+
+    padding: clamp(1.6rem, 2.4vw, 2.2rem) clamp(1.4rem, 2vw, 1.8rem) clamp(1.4rem, 2vw, 1.8rem);
+
+    border-radius: 22px;
+    border: 1px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 32%);
+
+    background:
+        radial-gradient(circle at 0 0,
+            color-mix(in oklab, var(--sl-sports-accent-400, #4ade80), transparent 82%),
+            transparent 82%),
+        radial-gradient(circle at 100% 100%,
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 72%),
+            transparent 72%),
+        linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-noir-950, #020617), black 12%),
+            color-mix(in oklab, var(--sl-noir-900, #111827), black 26%));
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 22px 48px rgba(0, 0, 0, 0.7);
+}
+
+/* inner só trata do alinhamento do card lá dentro */
 .inner {
     width: 100%;
     max-width: 780px;
     margin-inline: auto;
 
-    /* 👉 centra o card dentro do inner */
     display: flex;
     justify-content: center;
 }

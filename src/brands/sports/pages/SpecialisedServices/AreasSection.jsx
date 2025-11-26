@@ -43,6 +43,7 @@ export default function AreasSection({ data }) {
                 description={card.description}
                 items={card.items}
                 listTitle={card.listTitle}
+                enableFlip // 👈 ativa o mini flip/tilt neste contexto
                 icon={
                   IconComponent ? (
                     <IconComponent className={styles.cardIcon} />

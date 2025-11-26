@@ -33,6 +33,21 @@
     height: 100%;
 }
 
+/* Wrapper animado para cada card (stagger) */
+.cardWrap {
+    opacity: 0;
+    transform: translateY(16px) scale(0.99);
+    will-change: opacity, transform;
+    transition:
+        opacity 460ms ease-out,
+        transform 460ms ease-out;
+}
+
+.cardWrap[data-visible="true"] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
 /* ===== Responsivo ===== */
 
 @media (max-width: 960px) {

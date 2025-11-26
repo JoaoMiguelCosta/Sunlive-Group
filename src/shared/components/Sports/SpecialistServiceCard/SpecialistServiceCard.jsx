@@ -1,6 +1,7 @@
 // src/shared/components/Sports/SpecialistServiceCard/SpecialistServiceCard.jsx
 import { useMemo } from "react";
 import useAccordion from "../../../hooks/useAccordion.js";
+import useFlipOnToggle from "../../../hooks/useFlipOnToggle.js";
 import styles from "./SpecialistServiceCard.module.css";
 
 export default function SpecialistServiceCard({
@@ -10,18 +11,21 @@ export default function SpecialistServiceCard({
   items = [],
   listTitle = "Serviços incluídos:",
   icon, // recebe um elemento React, ex: <AppleIcon />
+  enableFlip = false, // 👈 novo
   className = "",
   ...rest
 }) {
   const hasList = Array.isArray(items) && items.length > 0;
 
+  // acordeão da lista
   const accordionItems = useMemo(() => [{ key: "services" }], []);
-
   const { isOpen, toggle } = useAccordion(accordionItems, {
     allowMultiple: true,
   });
-
   const servicesOpen = isOpen("services");
+
+  // mini flip/tilt
+  const { flipped, toggle: toggleFlip } = useFlipOnToggle(false);
 
   const chevronClassName = [
     styles.chevron,
@@ -30,17 +34,31 @@ export default function SpecialistServiceCard({
     .filter(Boolean)
     .join(" ");
 
+  const cardClasses = [styles.card, className].filter(Boolean).join(" ");
+
+  const handleCardClick = (event) => {
+    if (!enableFlip) return;
+
+    // não dá flip quando clicas em botões / links dentro do card
+    const interactive = event.target.closest("button, a");
+    if (interactive) return;
+
+    toggleFlip();
+  };
+
   return (
     <section
-      className={[styles.card, className].filter(Boolean).join(" ")}
+      className={cardClasses}
       aria-label={title}
+      data-flipped={enableFlip && flipped ? "true" : "false"}
+      onClick={handleCardClick}
       {...rest}
     >
       {/* Topo: ícone + título + badge */}
       <header className={styles.header}>
         <div className={styles.headerText}>
           <div className={styles.iconTitleRow}>
-            <div className={styles.iconCircle} aria-hidden="true" >
+            <div className={styles.iconCircle} aria-hidden="true">
               {icon ? (
                 <span className={styles.icon}>{icon}</span>
               ) : (

@@ -1,0 +1,194 @@
+/* src/brands/sports/pages/Contacts/ContactCardsSection.module.css */
+/* Secção de contactos — Sunlive Sports */
+.section {
+    width: 100%;
+  
+}
+
+.inner {
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+    box-sizing: content-box;
+
+}
+
+/* Grelha dos 2 cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(1.6rem, 3vw, 2.4rem);
+    align-items: stretch;
+}
+
+/* Card base */
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: clamp(1.8rem, 3.4vw, 2.4rem) clamp(1.8rem, 3.2vw, 2.6rem);
+    border-radius: 18px;
+
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 36%);
+
+    background:
+        radial-gradient(circle at 0 0,
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 86%),
+            transparent 70%),
+        radial-gradient(circle at 100% 100%,
+            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), transparent 88%),
+            transparent 72%),
+        linear-gradient(145deg,
+            #020617 0%,
+            color-mix(in oklab, #020617, var(--sl-sports-accent-800, #065f46) 24%) 50%,
+            #020617 100%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.85),
+        0 20px 45px rgba(0, 0, 0, 0.9);
+
+    text-decoration: none;
+    color: var(--sl-platinum-030, #e5e7eb);
+
+    transition:
+        transform 0.22s ease-out,
+        box-shadow 0.22s ease-out,
+        border-color 0.22s ease-out,
+        background 0.22s ease-out;
+    overflow: hidden;
+}
+
+
+.card:hover,
+.card:focus-visible {
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab,
+            var(--sl-gold-400, #fbbf24),
+            black 15%);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 26px 60px rgba(0, 0, 0, 0.98);
+    outline: none;
+}
+
+.card:focus-visible {
+    box-shadow:
+        0 0 0 2px color-mix(in oklab,
+            var(--sl-gold-400, #fbbf24),
+            black 18%),
+        0 26px 60px rgba(0, 0, 0, 0.98);
+}
+
+/* Círculo do ícone */
+.iconCircle {
+    width: clamp(6rem, 9vw, 7.2rem);
+    aspect-ratio: 1 / 1;
+    border-radius: 999px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--sl-gold-400, #fbbf24);
+    background:
+        radial-gradient(circle at 30% 20%,
+            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), transparent 8%),
+            transparent 70%),
+        radial-gradient(circle at 70% 80%,
+            color-mix(in oklab, var(--sl-gold-500, #eab308), transparent 30%),
+            transparent 72%),
+        radial-gradient(circle at 50% 50%,
+            color-mix(in oklab, #020617, black 4%),
+            #020617 80%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.8),
+        0 18px 32px rgba(0, 0, 0, 0.95);
+
+    margin-bottom: clamp(1.3rem, 2.4vw, 1.6rem);
+}
+
+/* Ícone (usa currentColor) */
+.icon {
+    width: clamp(2.4rem, 4vw, 2.8rem);
+    height: clamp(2.4rem, 4vw, 2.8rem);
+    display: block;
+}
+
+/* Faixa do título */
+.titleBand {
+    margin-top: clamp(0.4rem, 1vw, 0.7rem);
+    margin-bottom: clamp(0.9rem, 1.4vw, 1.1rem);
+
+    padding-block: 0.7rem;
+    padding-inline: clamp(2.6rem, 5vw, 3rem);
+
+    max-width: 480px;
+    width: 100%;
+
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 30%);
+
+    background:
+        linear-gradient(135deg,
+            color-mix(in oklab, #020617, black 2%),
+            color-mix(in oklab, #020617, var(--sl-sports-accent-800, #065f46) 16%));
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 10px 26px rgba(0, 0, 0, 0.9);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: clamp(1.05rem, 1.4vw, 1.15rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: color-mix(in oklab,
+            var(--sl-gold-300, #facc15),
+            black 10%);
+}
+
+/* Linha do valor (email / telefone) */
+.value {
+    margin-top: clamp(0.8rem, 1.6vw, 1.1rem);
+
+    font-size: clamp(1.02rem, 1.5vw, 1.18rem);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-align: center;
+
+    color: var(--sl-platinum-010, #f9fafb);
+
+    text-shadow:
+        0 0 16px rgba(0, 0, 0, 0.9),
+        0 0 28px rgba(0, 0, 0, 0.8);
+}
+
+/* Responsivo */
+@media (max-width: 720px) {
+    .section {
+        padding-block: 2.2rem;
+    }
+
+    .inner {
+        padding-inline: 1.4rem;
+    }
+
+    .grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .card {
+        padding-inline: 1.6rem;
+    }
+}

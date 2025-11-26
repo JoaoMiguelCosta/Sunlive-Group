@@ -1,6 +1,32 @@
 // src/brands/sports/pages/Athletes/ProfilesSection.jsx
 import styles from "./ProfilesSection.module.css";
 import AthleteProfileCard from "../../../../shared/components/Sports/AthleteProfileCard/AthleteProfileCard.jsx";
+import useHoverLift from "../../../../shared/hooks/useHoverLift.js";
+
+function ProfileItem({ athlete }) {
+  const { ref, isHovered } = useHoverLift();
+
+  return (
+    <div
+      ref={ref}
+      className={styles.cardWrap}
+      data-hovered={isHovered ? "true" : "false"}
+    >
+      <AthleteProfileCard
+        photoSrc={athlete.photoSrc}
+        photoAlt={athlete.photoAlt || athlete.name}
+        FlagIcon={athlete.FlagIcon}
+        name={athlete.name}
+        age={athlete.age}
+        sportLabel={athlete.sportLabel}
+        bio={athlete.bio}
+        achievements={athlete.achievements}
+        quote={athlete.quote}
+        instagramUrl={athlete.instagramUrl}
+      />
+    </div>
+  );
+}
 
 export default function ProfilesSection({ data }) {
   // espera data = secção "athletes" de configSports
@@ -18,19 +44,7 @@ export default function ProfilesSection({ data }) {
       <div className={styles.inner}>
         <div className={styles.grid}>
           {items.map((athlete) => (
-            <AthleteProfileCard
-              key={athlete.key}
-              photoSrc={athlete.photoSrc}
-              photoAlt={athlete.photoAlt || athlete.name}
-              FlagIcon={athlete.FlagIcon}
-              name={athlete.name}
-              age={athlete.age}
-              sportLabel={athlete.sportLabel}
-              bio={athlete.bio}
-              achievements={athlete.achievements}
-              quote={athlete.quote}
-              instagramUrl={athlete.instagramUrl}
-            />
+            <ProfileItem key={athlete.key} athlete={athlete} />
           ))}
         </div>
       </div>

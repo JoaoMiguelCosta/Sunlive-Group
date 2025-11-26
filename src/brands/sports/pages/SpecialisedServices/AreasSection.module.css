@@ -34,6 +34,9 @@
     align-items: flex-start;
     justify-items: center;
     /* centra os cards dentro de cada coluna */
+
+    perspective: 1200px;
+    /* 👈 novo: dá 3D real ao rotateY */
 }
 
 /* ===================== Responsivo ===================== */

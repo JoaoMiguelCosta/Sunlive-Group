@@ -28,7 +28,7 @@
 /* O filho direto ocupa o container com padding lateral consistente */
 .section>* {
     max-width: min(var(--sl-container-lg, 90rem), 100%);
-    padding-inline: var(--section-inset);
+
     margin-inline: auto;
     box-sizing: border-box;
     width: 100%;

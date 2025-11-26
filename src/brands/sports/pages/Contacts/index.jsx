@@ -3,11 +3,9 @@ import styles from "./Contacts.module.css";
 
 import sportsBrand from "../../configSports.jsx";
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
+import ContactsJourneySection from "./ContactsJourneySection.jsx";
+import ContactCardsSection from "./ContactCardsSection.jsx";
 
-/**
- * Página Contactos — Sunlive Sports
- * Layout alinhado às restantes páginas Sports (Performance Prestige).
- */
 export default function ContactsPage() {
   const data = sportsBrand.sections?.contacts;
   if (!data) return null;
@@ -15,7 +13,6 @@ export default function ContactsPage() {
   return (
     <div className={styles.pageWrap} data-brand="sports">
       <main className={styles.inner} aria-label="Contactos Sunlive Sports">
-        {/* Hero / faixa inicial */}
         <header className={styles.heroSection}>
           <HeadlineBlock
             theme="sports"
@@ -27,13 +24,9 @@ export default function ContactsPage() {
           />
         </header>
 
-        {/* Conteúdo principal (futuro formulário, blocos de contacto, etc.) */}
         <div className={styles.sections}>
-          {/* Aqui depois podemos colocar:
-              - Contact cards
-              - Formulário de contacto
-              - Informação de parceiros / departamentos
-           */}
+          <ContactCardsSection />
+          <ContactsJourneySection />
         </div>
       </main>
     </div>

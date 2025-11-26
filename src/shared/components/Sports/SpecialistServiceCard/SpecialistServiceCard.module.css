@@ -2,27 +2,43 @@
    SpecialistServiceCard — Sports
    Performance Prestige (Noir + Dourado + Verde-vital)
    ========================================================= */
-
 .card {
     position: relative;
     width: 100%;
     min-width: 390px;
-    /* antes: 420px */
-
     padding: 1.4rem 1.6rem 1.6rem;
-
     border-radius: 18px;
     border: 1px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 40%);
 
-background: radial-gradient(circle at top right,
+    background: radial-gradient(circle at top right,
             color-mix(in oklab, var(--sl-accent-500, #2EC27E), transparent 40%) 0,
             transparent 60%),
         color-mix(in oklab, #050609 88%, black 12%);
     box-shadow: 0 1px 0 rgba(255, 255, 255, .05) inset,
         0 22px 46px rgba(0, 0, 0, .48);
 
- 
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    transition:
+        transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, box-shadow;
+
+    cursor: pointer;
+    /* 👈 para perceber que é clicável */
 }
+
+.card[data-flipped="true"] {
+    transform: rotateY(-14deg) translateY(-3px) scale(1.01);
+    /* 👆 ângulo maior e leve scale para se notar bem */
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.55),
+        0 0 0 1px color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 40%);
+}
+
 
 /* ===================== Header ===================== */
 

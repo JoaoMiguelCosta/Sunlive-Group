@@ -1,26 +1,23 @@
-/* Prestige Noir + Liquid Gold — moldura */
 .frame {
     position: relative;
     isolation: isolate;
-    width: min(72rem, 96vw);
+
+    /* 1352px de máximo */
+    width: min(84.5rem, 96vw);
+    /* 1352px / 16 = 84.5rem */
     margin-inline: auto;
- 
+
     overflow: hidden;
-
-   
-       
-
-  
 }
-
 /* Imagem sem cortes */
 .image {
     display: block;
-    max-width: 100%;
-    width: auto;
+    width: 100%;
     height: auto;
     margin-inline: auto;
-    filter: saturate(1.02) contrast(1.03);
+
+    /* mais brilho + um pouco mais de contraste/cor */
+    filter: brightness(1.12) contrast(1.06) saturate(1.08);
 }
 
 /* Legenda */

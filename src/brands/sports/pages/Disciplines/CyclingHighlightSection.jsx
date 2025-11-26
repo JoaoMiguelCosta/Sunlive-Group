@@ -1,3 +1,4 @@
+// src/brands/sports/pages/Disciplines/CyclingHighlightSection.jsx
 import styles from "./CyclingHighlightSection.module.css";
 
 import SportsAcademyCard from "../../../../shared/components/Sports/SportsAcademyCard/SportsAcademyCard.jsx";
@@ -12,20 +13,24 @@ export default function CyclingHighlightSection({ data }) {
   const { id, title, description, instagramHref, bookHref, bookLabel } =
     data.cyclingHighlight;
 
+  const panelId = `${id}-panel`;
+
   return (
     <section
       id={id}
       className={styles.section}
       aria-label="Explorar o universo Ciclismo Sunlive"
     >
-      <div className={styles.inner}>
-        <SportsAcademyCard
-          title={title}
-          description={description}
-          instagramHref={instagramHref}
-          bookHref={bookHref}
-          bookLabel={bookLabel}
-        />
+      <div id={panelId} className={styles.panelBody}>
+        <div className={styles.inner}>
+          <SportsAcademyCard
+            title={title}
+            description={description}
+            instagramHref={instagramHref}
+            bookHref={bookHref}
+            bookLabel={bookLabel}
+          />
+        </div>
       </div>
     </section>
   );

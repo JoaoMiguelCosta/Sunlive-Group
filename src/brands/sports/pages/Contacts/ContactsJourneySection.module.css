@@ -1,0 +1,163 @@
+/* =========================================================
+   ContactsJourneySection — Bloco de compromisso
+   Performance Prestige (Noir + Gold + Sports)
+   ========================================================= */
+
+.section {
+    width: 100%;
+
+}
+
+.inner {
+    max-width: var(--sl-container-lg, 1200px);
+    margin-inline: auto;
+    box-sizing: content-box;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+/* ===== Bloco principal (título + texto) ===== */
+
+.mainBlock {
+    width: 100%;
+    max-width: 1040px;
+
+    border-radius: 6px;
+    border: 2px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 22%);
+
+    overflow: hidden;
+    background: #020617;
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 22px 50px rgba(0, 0, 0, 0.95);
+}
+
+/* faixa dourada do título */
+.titleBand {
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 4%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 6%));
+    padding: clamp(1rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.4rem);
+    text-align: center;
+}
+
+.title {
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #fefce8;
+}
+
+/* faixa escura do parágrafo */
+.bodyBand {
+    padding: clamp(1.1rem, 2.4vw, 1.6rem) clamp(1.8rem, 3.4vw, 2.8rem);
+
+    background:
+        radial-gradient(circle at 50% 0,
+            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), transparent 86%),
+            transparent 70%),
+        radial-gradient(circle at 0 100%,
+            color-mix(in oklab, #0f172a, black 8%),
+            #020617 72%);
+}
+
+.body {
+    margin: 0;
+    font-size: clamp(1.02rem, 1.5vw, 1.15rem);
+    font-weight: 500;
+    line-height: 1.55;
+    text-align: center;
+    color: var(--sl-platinum-010, #f9fafb);
+}
+
+/* ===== Blocos da marca ===== */
+
+.brandBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.7rem, 1.2vw, 0.9rem);
+}
+
+/* barra com o nome Sunlive Sports */
+.brandNameBand {
+    min-width: min(420px, 100%);
+    padding-block: 0.7rem;
+    padding-inline: clamp(2rem, 4vw, 3rem);
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(130deg,
+            color-mix(in oklab, var(--sl-sports-accent-700, #15803d), black 8%),
+            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), black 12%));
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.85),
+        0 18px 36px rgba(0, 0, 0, 0.98);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brandName {
+    font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: color-mix(in oklab,
+            #fef9c3,
+            black 8%);
+}
+
+/* barra com a tagline */
+.brandTaglineBand {
+    min-width: min(520px, 100%);
+    padding-block: 0.85rem;
+    padding-inline: clamp(2.4rem, 4.4vw, 3.2rem);
+
+    border-radius: 6px;
+
+    border: 2px solid color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            black 26%);
+
+    background:
+        linear-gradient(140deg,
+            color-mix(in oklab, #020617, black 2%),
+            color-mix(in oklab, #020617, var(--sl-sports-accent-900, #022c22) 18%));
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.85),
+        0 18px 40px rgba(0, 0, 0, 0.96);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brandTagline {
+    font-size: clamp(1.02rem, 1.5vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--sl-platinum-020, #e5e7eb);
+}
+
+/* ===== Responsivo ===== */
+
+@media (max-width: 720px) {
+    .inner {
+        padding-inline: 1.25rem;
+    }
+
+    .brandNameBand,
+    .brandTaglineBand {
+        min-width: 100%;
+    }
+}

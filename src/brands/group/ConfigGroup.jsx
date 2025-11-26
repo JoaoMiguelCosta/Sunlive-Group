@@ -281,6 +281,16 @@ export const book = makeBook({
 ====================================================================== */
 const BASE_PATH = "/sunlive-group";
 
+const CONTACT_UNIT_SLUGS = {
+  group: `${BASE_PATH}#unit-group`,
+  travel: `${BASE_PATH}#unit-travel`,
+  business: `${BASE_PATH}#unit-business`,
+  sports: `${BASE_PATH}#unit-sports`,
+  international: `${BASE_PATH}#unit-international`,
+  hotel: `${BASE_PATH}#unit-hotel`,
+  commercial: `${BASE_PATH}#unit-commercial`,
+};
+
 export const footer = {
   id: "footer",
 
@@ -311,13 +321,23 @@ export const footer = {
       columns: [
         {
           key: "units",
-          items: unitsToFooterGeneric(contacts.businessUnits, `${BASE_PATH}`),
+          // 👉 adiciona o card "Sunlive Group" + anchors #unit-...
+          items: unitsToFooterGeneric(
+            [
+              { key: "group", label: "Sunlive Group" },
+              ...(contacts.businessUnits || []),
+            ],
+            BASE_PATH,
+            CONTACT_UNIT_SLUGS
+          ),
         },
         {
           key: "countries",
+          // 👉 gera /sunlive-group#country-<key>
           items: countriesToFooterGeneric(
-            contacts.regionalOffices,
-            `${BASE_PATH}`
+            contacts.regionalOffices || [],
+            BASE_PATH,
+            "country"
           ),
         },
       ],
