@@ -108,15 +108,22 @@
     font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 0.01em;
+    color: var(--sl-platinum-020, #f9fafb);
 }
 
 /* Corpo do card */
 
 .cardBody {
     padding: 1.1rem 1.6rem 1.4rem;
-    background: radial-gradient(circle at 0 0,
-            rgba(0, 0, 0, 0.15),
-            transparent 60%);
+
+    /* 👇 Fundo igual ao ServiceFeaturePanel — Noir + Verde-vital */
+    background:
+        radial-gradient(circle at top right,
+            color-mix(in oklab,
+                var(--sl-sports-accent-500, #22c55e),
+                transparent 40%) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 88%, black 12%);
 }
 
 .description {
@@ -148,16 +155,36 @@
     font-size: 0.9rem;
     font-weight: 600;
 
+    /* 🌟 Estado normal — DOURADO */
     background: linear-gradient(135deg,
             color-mix(in oklab, var(--sl-gold-500, #eab308), black 6%),
             color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 12%));
-
     color: #0f172a;
+
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.8),
         0 12px 24px rgba(0, 0, 0, 0.85);
+
+    transition:
+        background 0.18s ease-out,
+        color 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        transform 0.18s ease-out;
 }
 
+/* 🟢 Hover / focus — VERDE */
+.badge:hover,
+.badge:focus-visible {
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-sports-accent-700, #15803d), black 4%),
+            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), black 8%));
+    color: var(--sl-platinum-010, #f9fafb);
+
+    transform: translateY(-1px);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 14px 28px rgba(0, 0, 0, 0.9);
+}
 .badgeIcon {
     font-size: 0.95rem;
 }

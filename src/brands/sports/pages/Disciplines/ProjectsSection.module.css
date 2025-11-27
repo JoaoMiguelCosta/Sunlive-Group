@@ -137,22 +137,17 @@
             var(--sl-gold-500, #c78615),
             black 32%);
 
-    background:
-        radial-gradient(circle at 0 0,
+background:
+        radial-gradient(circle at top right,
             color-mix(in oklab,
-                var(--sl-sports-accent-400, #4ade80),
-                transparent 82%),
-            transparent 68%),
-        radial-gradient(circle at 100% 100%,
-            color-mix(in oklab,
-                var(--sl-gold-400, #fbbf24),
-                transparent 82%),
-            transparent 72%),
-        var(--sl-noir-950, #020617);
+                var(--sl-sports-accent-500, #22c55e),
+                transparent 40%) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 88%, black 12%);
+
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.9),
         0 22px 48px rgba(0, 0, 0, 0.98);
-
     /* 🔥 Centro o conteúdo dentro do painel */
     display: flex;
     justify-content: center;

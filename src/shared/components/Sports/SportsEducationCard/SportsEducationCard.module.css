@@ -169,7 +169,8 @@
 .featureItem {
     display: grid;
     grid-template-columns: auto 1fr;
-    align-items: flex-start;
+    align-items: center;
+    /* 👈 antes: flex-start */
     gap: 0.45rem;
 
     font-size: 0.88rem;
@@ -177,14 +178,11 @@
     color: var(--sl-platinum-060, #d1d5db);
 }
 
-.featureItem:hover {
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #956015), black 20%),
-            color-mix(in oklab, var(--sl-gold-400, #d3a93e), black 20%));
-}
-
 .featureBullet {
-    margin-top: 0.33rem;
+    /* margin-top: 0.33rem;  👈 remove isto */
+    align-self: center;
+    /* 👈 garante que o círculo fica centrado */
+
     width: 7px;
     height: 7px;
     border-radius: 999px;
@@ -198,6 +196,14 @@
         0 0 0 1px rgba(0, 0, 0, 0.85),
         0 0 10px rgba(34, 197, 94, 0.6);
 }
+
+.featureItem:hover {
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #956015), black 20%),
+            color-mix(in oklab, var(--sl-gold-400, #d3a93e), black 20%));
+}
+
+
 
 /* ===== CTA Book opcional ===== */
 
@@ -221,17 +227,15 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
 
+    /* 👇 Cores iguais ao botão secundário (estado normal) */
+    background: transparent;
     color: color-mix(in oklab,
-            var(--sl-sports-accent-200, #bbf7d0),
-            white 8%);
-
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-noir-900, #020617), black 0%),
-            color-mix(in oklab, var(--sl-noir-950, #020617), black 10%));
+            var(--sl-sports-accent-400, #4ade80),
+            white 10%);
 
     border: 1px solid color-mix(in oklab,
-            var(--sl-sports-accent-400, #4ade80),
-            black 40%);
+            var(--sl-sports-accent-600, #16a34a),
+            var(--sl-gold-400, #fbbf24) 20%);
 
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.9),
@@ -253,17 +257,32 @@
     transform: translateY(1px);
 }
 
-.bookCta:hover {
+/* Hover igual ao “Abrir Book” secundário (preenche verde) */
+.bookCta:hover,
+.bookCta:focus-visible {
     transform: translateY(-2px);
+
+    background:
+        radial-gradient(circle at 30% 0,
+            color-mix(in oklab,
+                var(--sl-sports-accent-400, #4ade80),
+                white 6%) 0,
+            transparent 60%),
+        color-mix(in oklab,
+            var(--sl-noir-950, #020617),
+            var(--sl-sports-accent-700, #15803d) 24%);
+
     border-color: color-mix(in oklab,
             var(--sl-sports-accent-300, #86efac),
-            var(--sl-gold-300, #facc15) 28%);
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-sports-accent-600, #16a34a), black 32%),
-            color-mix(in oklab, var(--sl-noir-950, #020617), black 0%));
+            var(--sl-gold-300, #facc15) 26%);
+
     color: color-mix(in oklab,
             var(--sl-platinum-010, #f9fafb),
             white 10%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 1),
+        0 22px 42px rgba(0, 0, 0, 0.98);
 }
 
 .bookCta:active {
@@ -272,3 +291,4 @@
         0 0 0 1px rgba(0, 0, 0, 1),
         0 10px 24px rgba(0, 0, 0, 0.96);
 }
+

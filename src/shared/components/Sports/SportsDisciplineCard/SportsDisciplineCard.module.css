@@ -79,11 +79,17 @@
 .body {
     padding: 0.95rem 1.4rem 1.15rem;
 
-    background: linear-gradient(to bottom,
-            color-mix(in oklab, var(--sl-noir-950, #020617), black 0%),
+background:
+        radial-gradient(circle at top right,
             color-mix(in oklab,
-                var(--sl-noir-950, #020617),
-                var(--sl-sports-accent-500, #22c55e) 5%));
+                var(--sl-sports-accent-500, #22c55e),
+                transparent 40%) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 88%, black 12%);
+
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 22px 48px rgba(0, 0, 0, 0.98);
 }
 
 .description {

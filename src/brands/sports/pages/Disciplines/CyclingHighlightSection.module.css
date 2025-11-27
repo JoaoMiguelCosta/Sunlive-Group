@@ -20,18 +20,20 @@
     padding: clamp(1.6rem, 2.4vw, 2.2rem) clamp(1.4rem, 2vw, 1.8rem) clamp(1.4rem, 2vw, 1.8rem);
 
     border-radius: 22px;
-    border: 1px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 32%);
 
+    /* mesma borda dos cards de consultoria */
+    border: 1px solid color-mix(in oklab,
+            var(--sl-gold-500, #a16207),
+            black 32%);
+
+    /* 👇 FUNDO IGUAL AO DOS CARDS (2.ª imagem) */
     background:
-        radial-gradient(circle at 0 0,
-            color-mix(in oklab, var(--sl-sports-accent-400, #4ade80), transparent 82%),
-            transparent 82%),
-        radial-gradient(circle at 100% 100%,
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 72%),
-            transparent 72%),
-        linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-noir-950, #020617), black 12%),
-            color-mix(in oklab, var(--sl-noir-900, #111827), black 26%));
+        radial-gradient(circle at top right,
+            color-mix(in oklab,
+                var(--sl-sports-accent-500, #22c55e),
+                transparent 40%) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 88%, black 12%);
 
     box-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.35),
