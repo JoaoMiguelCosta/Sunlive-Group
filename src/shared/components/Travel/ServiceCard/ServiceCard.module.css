@@ -79,7 +79,7 @@
     background:
         radial-gradient(120% 140% at 50% 30%, rgba(0, 0, 0, .22), rgba(0, 0, 0, .55)),
         linear-gradient(180deg, color-mix(in oklab, var(--sl-gold-500, #A16207) 88%, #000 12%), #3b2a07);
-    color: #fff;
+    color: #2EA7E0;
     box-shadow: 0 2px 12px rgba(0, 0, 0, .38), inset 0 0 0 1px rgba(255, 255, 255, .08);
     z-index: 2;
     transition: filter .18s ease, transform .18s ease;
@@ -252,7 +252,8 @@
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: auto 1fr;
-    align-items: start;
+    align-items: center;
+    /* ⬅ centra o bullet com o texto */
     gap: .7rem;
     color: #e7ebf7;
     font-size: clamp(.95rem, 1.4vw, 1.05rem);
@@ -260,7 +261,8 @@
 }
 
 .bullet {
-    margin-top: .45rem;
+    margin-top: 0;
+        align-self: center;
     width: .55rem;
     height: .55rem;
     border-radius: 999px;

@@ -38,7 +38,8 @@
     /* overlay */
     display: grid;
     grid-template-columns: auto 1fr;
-    align-items: start;
+    align-items: center;
+    /* ⬅ bullet + texto alinhados ao meio */
     gap: clamp(.5rem, 1vw, .7rem);
     background: linear-gradient(180deg, rgba(8, 20, 38, .88), rgba(5, 12, 24, .96));
     border: 1px solid rgba(255, 255, 255, .06);
@@ -120,16 +121,29 @@
 }
 
 /* ===== Bullet ===== */
+/* ===== Bullet ===== */
 .bullet {
     width: .66rem;
     height: .66rem;
     border-radius: 999px;
-    background: radial-gradient(circle at 30% 30%, var(--gold-400), var(--gold-500));
+    background: #2EA7E0;
+    /* azul Travel */
     box-shadow:
-        0 0 0 2px rgba(199, 134, 21, .18),
-        0 0 22px rgba(199, 134, 21, .45);
-    margin-top: .2rem;
-    transition: box-shadow .18s ease, transform .18s ease;
+        0 0 0 2px rgba(46, 167, 224, .25),
+        0 0 22px rgba(46, 167, 224, .55);
+    margin-top: 0;
+    align-self: center;
+    transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
+}
+
+/* bullet reage ao hover */
+.item:hover .bullet,
+.item:focus-visible .bullet {
+    box-shadow:
+        0 0 0 2px rgba(46, 167, 224, .35),
+        0 0 32px rgba(46, 167, 224, .80);
+    transform: scale(1.06);
+    filter: brightness(1.08);
 }
 
 /* bullet reage ao hover */

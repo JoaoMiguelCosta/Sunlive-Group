@@ -4,7 +4,7 @@
     /* herda a largura do .inner */
     display: grid;
     gap: clamp(.25rem, .7vw, .5rem);
-    margin-top: 6.5rem;
+ 
     color: var(--sl-platinum-100, #f6f7fb);
 
     /* se precisares de um inset interno extra, lê o mesmo token */

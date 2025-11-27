@@ -33,6 +33,7 @@
 }
 
 /* Utilitários/variantes Sports */
+/* Utilitários/variantes Sports */
 :root[data-brand="sports"] .u-badge-accent {
     /* 🎨 verde ainda escuro mas menos “preto” */
     background: color-mix(in oklab, var(--sl-accent-500, #2EC27E), black 70%);
@@ -45,6 +46,25 @@
     padding: 0.28rem 0.9rem;
     font-size: 1rem;
     letter-spacing: 0.08em;
+
+    /* animação suave do hover */
+    transition:
+        transform 150ms ease-out,
+        background 150ms ease-out,
+        border-color 150ms ease-out;
+
+    /* se for clicável, ajuda: */
+    cursor: pointer;
+}
+
+/* Hover + foco teclado com estilo dourado */
+:root[data-brand="sports"] .u-badge-accent:hover,
+:root[data-brand="sports"] .u-badge-accent:focus-visible {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 /* Botão secundário Sports */

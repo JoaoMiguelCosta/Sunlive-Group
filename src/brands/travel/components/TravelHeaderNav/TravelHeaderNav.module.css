@@ -5,6 +5,7 @@
     position: relative;
     width: 100%;
     border-bottom: none;
+    z-index: 10;
 }
 
 /* sem pseudo-linhas aqui, deixamos isso para a UtilityBar */

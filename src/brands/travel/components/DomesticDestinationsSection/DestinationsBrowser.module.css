@@ -1,19 +1,21 @@
 .wrapper {
     inline-size: var(--content-w-effective);
-    /* 👈 mesma largura */
+    /* 👈 mesma largura que o resto da página */
     margin-inline: auto;
     padding-inline: 0;
     display: grid;
     gap: clamp(.7rem, 2.2vw, 1.4rem);
+
+    /* fallback local se não vier da page */
     --content-w-effective: calc(var(--content-w, min(var(--sl-container-lg, 1200px), 100%)) - 2 * var(--line-inset, 0px));
 }
+
 /* ===== Controlo superior ===== */
 .controls {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     margin-top: 1rem;
-    
 }
 
 .filters {
@@ -22,90 +24,103 @@
     gap: .5rem .6rem;
 }
 
-/* INATIVO — ouro translúcido “glass” (mais discreto) */
+/* ===== Pills — Performance Prestige (Noir + Gold + Atlantic Blue) ===== */
+
+/* INATIVO — navy + aro dourado + vidro suave */
 .pill {
     --gold: var(--sl-gold-400, #C78615);
     --gold2: var(--sl-gold-500, #A16207);
     --accent: var(--sl-accent-500, #2EA7E0);
 
-    padding: .44rem .86rem;
+    padding: .44rem .96rem;
     border-radius: 999px;
     font-weight: 700;
     font-size: .92rem;
+    letter-spacing: .02em;
     text-decoration: none;
-    color: #fff;
+    color: #fdfaf3;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .45);
 
-    /* borda + fundo mais transparentes que antes */
-    border: 2px solid color-mix(in oklab, var(--gold2) 42%, transparent);
+    border: 1.5px solid color-mix(in oklab, var(--gold2) 82%, #000 18%);
     background:
-        /* brilho suave */
-        radial-gradient(120% 160% at 20% 0%,
-            color-mix(in oklab, var(--gold) 18%, transparent) 0%,
+        /* glow azul muito leve */
+        radial-gradient(140% 160% at 18% -20%,
+            color-mix(in oklab, var(--accent) 18%, transparent) 0%,
             transparent 60%),
-        /* lâmina ouro com bastante transparência */
+        /* película dourada muito subtil */
         linear-gradient(180deg,
-            color-mix(in oklab, var(--gold2) 28%, transparent) 0%,
-            color-mix(in oklab, var(--gold2) 16%, transparent) 100%),
-        /* película de vidro */
-        linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0));
+            color-mix(in oklab, var(--gold2) 18%, transparent) 0%,
+            transparent 35%),
+        /* base noir */
+        linear-gradient(180deg, #0b1324 0%, #050915 100%);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .08),
-        0 6px 16px rgba(0, 0, 0, .22);
+        inset 0 0 0 1px rgba(255, 255, 255, .06),
+        0 8px 20px rgba(0, 0, 0, .36);
 
     transition:
-        transform .06s ease,
+        transform .08s ease,
         box-shadow .18s ease,
         background .18s ease,
         border-color .18s ease,
-        color .18s ease;
+        color .18s ease,
+        text-shadow .18s ease;
+    cursor: pointer;
 }
 
-/* HOVER/Foco apenas para INATIVOS — aquece um pouco o ouro */
+/* HOVER/Foco apenas para INATIVOS — aquece o ouro e reforça o azul */
 .pill:not([aria-current="true"]):hover,
 .pill:not([aria-current="true"]):focus-visible,
 .pill:not([data-active="true"]):hover,
 .pill:not([data-active="true"]):focus-visible {
-    border-color: color-mix(in oklab, var(--gold2) 62%, transparent);
+    border-color: color-mix(in oklab, var(--gold2) 68%, #000 32%);
     background:
-        radial-gradient(120% 160% at 20% 0%,
-            color-mix(in oklab, var(--gold) 26%, transparent) 0%,
+        radial-gradient(150% 170% at 18% -20%,
+            color-mix(in oklab, var(--accent) 26%, transparent) 0%,
             transparent 60%),
         linear-gradient(180deg,
-            color-mix(in oklab, var(--gold2) 44%, transparent) 0%,
-            color-mix(in oklab, var(--gold2) 28%, transparent) 100%),
-        linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0));
+            color-mix(in oklab, var(--gold2) 32%, transparent) 0%,
+            transparent 40%),
+        linear-gradient(180deg, #0b1428 0%, #040814 100%);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .10),
-        0 10px 20px rgba(0, 0, 0, .26),
-        0 0 0 2px color-mix(in oklab, var(--gold) 28%, transparent);
-    outline: none;
+        inset 0 0 0 1px rgba(255, 255, 255, .08),
+        0 10px 24px rgba(0, 0, 0, .44),
+        0 0 0 2px color-mix(in oklab, var(--gold) 32%, transparent);
     transform: translateY(-1px);
+    outline: none;
 }
 
-/* ATIVO — mantém o navy com “accent” Travel */
+/* Foco visível mais explícito (teclado) */
+.pill:focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--accent) 70%, transparent);
+    outline-offset: 2px;
+}
+
+/* ATIVO — fundo azul Atlântico sólido */
 .pillActive,
 .pill[aria-current="true"],
 .pill[data-active="true"] {
+    --gold: var(--sl-gold-400, #C78615);
+    --gold2: var(--sl-gold-500, #A16207);
+
     color: #fff;
-    border-color: color-mix(in oklab, var(--gold2) 88%, #000 12%);
-    background:
-        linear-gradient(180deg,
-            color-mix(in oklab, var(--accent) 18%, #0A1322) 0%,
-            #0A1322 100%);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .55);
+
+    border-color: color-mix(in oklab, var(--gold2) 90%, #000 10%);
+    background: #2EA7E0;
+    /* 👈 fundo azul do botão selecionado */
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .08),
-        0 10px 18px rgba(0, 0, 0, .36),
-        0 0 0 2px color-mix(in oklab, var(--gold) 40%, transparent);
+        inset 0 0 0 1px rgba(255, 255, 255, .10),
+        0 12px 26px rgba(0, 0, 0, .48),
+        0 0 0 2px color-mix(in oklab, var(--gold) 42%, transparent);
 }
 
-/* ATIVO + HOVER — ligeiro boost de accent (igual) */
+/* ATIVO + HOVER — mantém o mesmo fundo azul */
 .pillActive:hover,
 .pill[aria-current="true"]:hover,
 .pill[data-active="true"]:hover {
-    background:
-        linear-gradient(180deg,
-            color-mix(in oklab, var(--accent) 24%, #0A1322) 0%,
-            #0A1322 100%);
+    background: #2EA7E0;
+    /* 👈 não muda ao passar o rato */
+    color: #fff;
 }
 /* ===== Grelha ===== */
 .grid {
@@ -118,6 +133,8 @@
     min-width: 0;
     display: flex;
 }
+
+
 
 .item>* {
     flex: 1 1 auto;
