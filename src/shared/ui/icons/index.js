@@ -41,6 +41,9 @@ import CogIcon from "./Cog.jsx";
 import CircusTentIcon from "./Circus.jsx";
 import Building2Icon from "./Building2.jsx";
 import GoalIcon from "./Goal.jsx";
+import ChartFrameIcon from "./ChartFrame.jsx";
+import BikeIcon from "./Bike.jsx";
+import WorkflowIcon from "./WorkFlow.jsx";
 
 
 // Novos ícones (Travel / Logística)
@@ -116,6 +119,9 @@ export {
   CircusTentIcon,
   Building2Icon,
   GoalIcon,
+  ChartFrameIcon,
+  BikeIcon,
+  WorkflowIcon,
 };
 
 // ===== Mapa conveniente para usar por chave (iconKey) =====
@@ -176,6 +182,9 @@ export const ICONS = {
   circus: CircusTentIcon,
   build2: Building2Icon,
   goal: GoalIcon,
+  chart: ChartFrameIcon,
+  bike: BikeIcon,
+  work: WorkflowIcon,
   
 
 

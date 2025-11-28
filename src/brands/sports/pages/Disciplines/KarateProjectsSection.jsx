@@ -5,6 +5,10 @@ import styles from "./ProjectsSection.module.css";
 import sportsBrand from "../../configSports.jsx";
 import SportsAcademyCard from "../../../../shared/components/Sports/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../shared/hooks/useAccordion.js";
+import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
+
+// ícone por defeito do header (igual aos outros Projects)
+const HEADER_DEFAULT_ICON = ICONS.ChartIcon;
 
 /**
  * KarateProjectsSection
@@ -41,6 +45,9 @@ export default function KarateProjectsSection({ icon = null }) {
 
   const handleToggle = () => toggle(panelKey);
 
+  // ícone do header: prop `icon` > ChartIcon por defeito
+  const HeaderIcon = icon || HEADER_DEFAULT_ICON;
+
   return (
     <section
       id={id}
@@ -58,9 +65,9 @@ export default function KarateProjectsSection({ icon = null }) {
             aria-controls={`${id}-panel`}
           >
             <div className={styles.headerLeft}>
-              {icon && (
+              {HeaderIcon && (
                 <span className={styles.headerIconWrap} aria-hidden="true">
-                  {icon}
+                  <HeaderIcon className={styles.headerIcon} size={20} />
                 </span>
               )}
 

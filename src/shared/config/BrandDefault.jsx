@@ -49,6 +49,10 @@ import {
   CircusTentIcon,
   Building2Icon,
   GoalIcon,
+  ChartFrameIcon,
+  BikeIcon,
+  WorkflowIcon,
+  
 } from "../ui/icons/index.js";
 
 /* ===== Bandeiras partilhadas ===== */
@@ -116,6 +120,10 @@ export const ICONS = {
   CircusTentIcon,
   Building2Icon,
   GoalIcon,
+  ChartFrameIcon,
+  BikeIcon,
+  WorkflowIcon,
+
 };
 
 export const FLAGS = {

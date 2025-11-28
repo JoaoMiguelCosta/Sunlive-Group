@@ -78,28 +78,48 @@
 }
 
 .headerIconWrap {
-    flex: 0 0 auto;
-    width: 2.2rem;
-    height: 2.2rem;
-    border-radius: 999px;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 
-    background: radial-gradient(circle at 30% 20%,
-            color-mix(in oklab, var(--sl-sports-accent-500, #22c55e), white 8%),
-            transparent 65%),
-        radial-gradient(circle at 70% 90%,
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 16%),
+    inline-size: clamp(2.6rem, 3.1vw, 2.9rem);
+    block-size: clamp(2.6rem, 3.1vw, 2.9rem);
+
+    border-radius: 999px;
+    padding: 4px;
+
+    /* mesmo “mood” dos cards: preto + verde sports */
+    background:
+        /* highlight topo esquerdo */
+        radial-gradient(circle at 30% 0,
+            color-mix(in oklab,
+                var(--sl-sports-accent-300, #86efac),
+                white 10%) 0,
+            transparent 55%),
+        /* glow verde profundo em baixo/direita */
+        radial-gradient(circle at 70% 80%,
+            color-mix(in oklab,
+                #000000,
+                var(--sl-sports-accent-700, #15803d) 40%) 0,
             transparent 70%),
-        color-mix(in oklab, #020617, black 8%);
+        /* base noir escura */
+        color-mix(in oklab,
+            #020617,
+            black 40%);
+
     border: 1px solid color-mix(in oklab,
-            var(--sl-sports-accent-600, #16a34a),
-            var(--sl-gold-400, #fbbf24) 28%);
+            var(--sl-sports-accent-500, #22c55e),
+            black 45%);
+
     box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.7),
-        0 0 16px rgba(34, 197, 94, 0.6);
+        0 0 0 1px rgba(0, 0, 0, 0.9),
+        0 10px 24px rgba(0, 0, 0, 0.95);
+
+    /* cor herdada pelo SVG (stroke: currentColor) */
+    color: color-mix(in oklab,
+            var(--sl-sports-accent-200, #bbf7d0),
+            white 6%);
 }
 
 .headerTitle {

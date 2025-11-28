@@ -3,12 +3,16 @@ import styles from "./CyclingProjectsSection.module.css";
 
 import SportsAcademyCard from "../../../../shared/components/Sports/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../shared/hooks/useAccordion.js";
+import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
 
-/**
- * CyclingProjectsSection
- * Secção "Projetos" — usa SportsAcademyCard
- * Lê do bloco disciplines.cyclingProjects em configSports.
- */
+const PANEL_ICONS = {
+  "aero-edge": ICONS.ChartFrameIcon,
+  "training-from-pro": ICONS.MonitorIcon,
+};
+
+// ícone por defeito do header
+const HEADER_DEFAULT_ICON = ICONS.ChartIcon;
+
 export default function CyclingProjectsSection({ data, icon = null }) {
   const section = data?.cyclingProjects;
   if (!section?.items?.length) return null;
@@ -30,6 +34,9 @@ export default function CyclingProjectsSection({ data, icon = null }) {
 
   const handleToggle = () => toggle(panelKey);
 
+  // ícone do header: prop `icon` > ChartIcon por defeito
+  const HeaderIcon = icon || HEADER_DEFAULT_ICON;
+
   return (
     <section
       id={id}
@@ -47,9 +54,9 @@ export default function CyclingProjectsSection({ data, icon = null }) {
             aria-controls={`${id}-panel`}
           >
             <div className={styles.headerLeft}>
-              {icon && (
+              {HeaderIcon && (
                 <span className={styles.headerIconWrap} aria-hidden="true">
-                  {icon}
+                  <HeaderIcon className={styles.headerIcon} size={20} />
                 </span>
               )}
 
@@ -67,19 +74,25 @@ export default function CyclingProjectsSection({ data, icon = null }) {
         {open && (
           <div id={`${id}-panel`} className={styles.panelBody}>
             <div className={styles.grid}>
-              {items.map((item) => (
-                <SportsAcademyCard
-                  key={item.key}
-                  logoSrc={item.logoSrc}
-                  logoAlt={item.logoAlt}
-                  title={item.title}
-                  description={item.description}
-                  instagramHref={item.instagramHref}
-                  facebookHref={item.facebookHref}
-                  bookHref={item.bookHref}
-                  bookLabel={item.bookLabel}
-                />
-              ))}
+              {items.map((item) => {
+                const CardIcon =
+                  item.icon || (item.iconKey && PANEL_ICONS[item.iconKey]);
+
+                return (
+                  <SportsAcademyCard
+                    key={item.key}
+                    logoSrc={item.logoSrc}
+                    logoAlt={item.logoAlt}
+                    icon={CardIcon}
+                    title={item.title}
+                    description={item.description}
+                    instagramHref={item.instagramHref}
+                    facebookHref={item.facebookHref}
+                    bookHref={item.bookHref}
+                    bookLabel={item.bookLabel}
+                  />
+                );
+              })}
             </div>
           </div>
         )}

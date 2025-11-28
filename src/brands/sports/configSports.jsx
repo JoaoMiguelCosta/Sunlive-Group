@@ -1511,6 +1511,7 @@ const disciplines = {
     instagramHref: "https://www.instagram.com/sunlivecycling/",
     bookHref: "/books/cycling.pdf",
     bookLabel: "Abrir Book",
+    iconKey: "bike", // 👈 novo
   },
 
   // Grelha de disciplinas de ciclismo (Estrada, BTT, BMX, Pista, Trial)
@@ -1568,6 +1569,7 @@ const disciplines = {
         bookLabel: "Abrir Book",
       },
       {
+        iconKey: "aero-edge",
         key: "aero-edge",
         title: "Aero Edge",
         logoSrc: null,
@@ -1580,6 +1582,7 @@ const disciplines = {
         bookLabel: "Abrir Book",
       },
       {
+        iconKey: "training-from-pro",
         key: "training-from-pro",
         title: "Training From Pro (TFP)",
         logoSrc: null,

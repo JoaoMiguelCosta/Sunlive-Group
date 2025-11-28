@@ -4,6 +4,10 @@ import styles from "./CyclingDisciplinesSection.module.css";
 
 import SportsDisciplineCard from "../../../../shared/components/Sports/SportsDisciplineCard/SportsDisciplineCard.jsx";
 import useAccordion from "../../../../shared/hooks/useAccordion.js";
+import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
+
+// ícone por defeito do header (workflow)
+const HEADER_DEFAULT_ICON = ICONS.WorkflowIcon;
 
 /**
  * CyclingDisciplinesSection
@@ -13,8 +17,8 @@ import useAccordion from "../../../../shared/hooks/useAccordion.js";
  * com a chave `cyclingDisciplines`.
  *
  * Props extra:
- *  - icon?: ReactNode   (ícone no header)
- *  - heading?: string   (texto do header, default "Disciplinas")
+ *  - icon?: ReactComponent   (ícone no header)
+ *  - heading?: string        (texto do header, default "Disciplinas")
  */
 export default function CyclingDisciplinesSection({
   data,
@@ -41,6 +45,9 @@ export default function CyclingDisciplinesSection({
 
   const handleToggle = () => toggle(panelKey);
 
+  // ícone do header: prop `icon` > WorkflowIcon por defeito
+  const HeaderIcon = icon || HEADER_DEFAULT_ICON;
+
   return (
     <section
       id={id}
@@ -58,9 +65,9 @@ export default function CyclingDisciplinesSection({
             aria-controls={`${id}-panel`}
           >
             <div className={styles.headerLeft}>
-              {icon && (
+              {HeaderIcon && (
                 <span className={styles.headerIconWrap} aria-hidden="true">
-                  {icon}
+                  <HeaderIcon className={styles.headerIcon} size={20} />
                 </span>
               )}
 
@@ -74,7 +81,7 @@ export default function CyclingDisciplinesSection({
           </button>
         </header>
 
-        {/* Corpo: grelha de disciplinas, exactamente como tinhas */}
+        {/* Corpo: grelha de disciplinas */}
         {open && (
           <div id={`${id}-panel`} className={styles.panelBody}>
             <div className={styles.grid}>

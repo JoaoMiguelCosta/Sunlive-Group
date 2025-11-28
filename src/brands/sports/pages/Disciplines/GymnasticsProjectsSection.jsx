@@ -1,10 +1,14 @@
 // src/brands/sports/pages/Disciplines/GymnasticsProjectsSection.jsx
 import { useMemo } from "react";
-import styles from "./ProjectsSection.module.css"; 
+import styles from "./ProjectsSection.module.css";
 
 import sportsBrand from "../../configSports.jsx";
 import SportsAcademyCard from "../../../../shared/components/Sports/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../shared/hooks/useAccordion.js";
+import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
+
+// ícone por defeito do header (igual aos outros Projects)
+const HEADER_DEFAULT_ICON = ICONS.ChartIcon;
 
 /**
  * GymnasticsProjectsSection
@@ -42,6 +46,9 @@ export default function GymnasticsProjectsSection({ icon = null }) {
 
   const handleToggle = () => toggle(panelKey);
 
+  // ícone do header: prop `icon` > ChartIcon por defeito
+  const HeaderIcon = icon || HEADER_DEFAULT_ICON;
+
   return (
     <section
       id={id}
@@ -59,9 +66,9 @@ export default function GymnasticsProjectsSection({ icon = null }) {
             aria-controls={`${id}-panel`}
           >
             <div className={styles.headerLeft}>
-              {icon && (
+              {HeaderIcon && (
                 <span className={styles.headerIconWrap} aria-hidden="true">
-                  {icon}
+                  <HeaderIcon className={styles.headerIcon} size={20} />
                 </span>
               )}
 
@@ -69,9 +76,7 @@ export default function GymnasticsProjectsSection({ icon = null }) {
             </div>
 
             <span
-              className={`${styles.chevron} ${
-                open ? styles.chevronOpen : ""
-              }`}
+              className={`${styles.chevron} ${open ? styles.chevronOpen : ""}`}
               aria-hidden="true"
             />
           </button>
@@ -88,8 +93,8 @@ export default function GymnasticsProjectsSection({ icon = null }) {
                   logoAlt={item.logo?.alt}
                   title={item.title}
                   description={item.description}
-                  instagramHref={item.instagram}
-                  facebookHref={item.facebook}
+                  instagramHref={item.instagram?.href}
+                  facebookHref={item.facebook?.href}
                   moreHref={item.more?.href}
                   moreLabel={item.more?.label}
                   bookHref={item.book?.href}

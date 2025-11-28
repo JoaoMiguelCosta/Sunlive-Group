@@ -3,6 +3,10 @@ import styles from "./GymnasticsDisciplinesSection.module.css";
 
 import SportsDisciplineCard from "../../../../shared/components/Sports/SportsDisciplineCard/SportsDisciplineCard.jsx";
 import useAccordion from "../../../../shared/hooks/useAccordion.js";
+import { ICONS } from "../../../../shared/config/BrandDefault.jsx";
+
+// ícone por defeito do header (workflow)
+const HEADER_DEFAULT_ICON = ICONS.WorkflowIcon;
 
 /**
  * GymnasticsDisciplinesSection
@@ -39,6 +43,9 @@ export default function GymnasticsDisciplinesSection({
 
   const handleToggle = () => toggle(panelKey);
 
+  // ícone do header: prop `icon` > WorkflowIcon por defeito
+  const HeaderIcon = icon || HEADER_DEFAULT_ICON;
+
   return (
     <section
       id={id}
@@ -56,9 +63,9 @@ export default function GymnasticsDisciplinesSection({
             aria-controls={`${id}-panel`}
           >
             <div className={styles.headerLeft}>
-              {icon && (
+              {HeaderIcon && (
                 <span className={styles.headerIconWrap} aria-hidden="true">
-                  {icon}
+                  <HeaderIcon className={styles.headerIcon} size={20} />
                 </span>
               )}
 
