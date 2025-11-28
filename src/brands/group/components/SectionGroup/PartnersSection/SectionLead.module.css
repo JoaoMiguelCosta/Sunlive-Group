@@ -1,4 +1,5 @@
 /* src/brands/group/components/SectionGroup/Partnerssection/SectionGroupLead.module.css */
+
 .lead {
     text-align: center;
     margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
@@ -10,19 +11,19 @@
     margin-inline: auto;
     width: 100%;
     max-width: 100%;
-
-
-
+    /* a faixa em si é normalmente uma imagem, por isso sem bg local */
 }
 
 .title {
     margin-top: -2.1em;
-    /* sobe o texto para "dentro" da faixa, como no exemplo */
+    /* sobe o texto para "dentro" da faixa */
     font-family: var(--sl-ff-display);
     font-weight: 800;
     letter-spacing: 0.02em;
     font-size: clamp(1.4rem, 3.2vw, 2.25rem);
-    color: var(--sl-gold-400);
+
+    /* Ouro Sunlive Group */
+    color: var(--sl-gold-400, #F3C970);
     text-shadow: 0 1px 0 rgba(0, 0, 0, .25);
 }
 

@@ -19,8 +19,12 @@
     background: transparent;
     color: var(--sl-platinum-100);
     padding-block: clamp(1.25rem, 2.5vw, 1.75rem);
-    border-bottom: 2px solid rgba(199, 134, 21, 0.9);
-    border-top: 2px solid rgba(199, 134, 21, 0.9);
+
+    /* Accent por marca (fallback Group = ouro) */
+    --info-accent: var(--sl-gold-400, #c78615);
+
+    border-bottom: 2px solid color-mix(in oklab, var(--info-accent), black 8%);
+    border-top: 2px solid color-mix(in oklab, var(--info-accent), black 8%);
 }
 
 .inner {
@@ -178,12 +182,12 @@
     width: var(--title-icon);
     height: var(--title-icon);
     border-radius: 999px;
-    color: var(--sl-gold-400);
-    background: rgba(199, 134, 21, .08);
+    color: var(--info-accent);
+    background: color-mix(in oklab, var(--info-accent) 16%, transparent);
 }
 
 .brandEmph {
-    color: var(--sl-gold-400);
+    color: var(--info-accent);
     font-weight: 800;
     text-decoration: none;
 }
@@ -199,7 +203,7 @@
 .tagline {
     margin: 0 0 .6rem 0;
     font-weight: 800;
-    color: var(--sl-gold-400);
+    color: var(--info-accent);
 }
 
 .about {
@@ -235,7 +239,7 @@
 
 .subtleLink:hover {
     opacity: 1;
-    color: var(--sl-gold-400);
+    color: var(--info-accent);
 }
 
 .contactRow {
@@ -250,7 +254,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--sl-gold-400);
+    color: var(--info-accent);
 }
 
 .link {
@@ -259,7 +263,7 @@
 }
 
 .link:hover {
-    color: var(--sl-gold-400);
+    color: var(--info-accent);
 }
 
 .textMuted {
@@ -276,14 +280,19 @@
     width: 36px;
     height: 36px;
     border-radius: 999px;
-    border: 2px solid var(--sl-gold-400);
+    border: 2px solid var(--info-accent);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: var(--sl-platinum-100);
     text-decoration: none;
-    background: rgba(199, 134, 21, .08);
-    transition: transform 120ms ease, background 120ms ease;
+    background: color-mix(in oklab, var(--info-accent) 16%, transparent);
+    transition:
+        transform 120ms ease,
+        background 120ms ease,
+        box-shadow 120ms ease,
+        border-color 120ms ease,
+        color 120ms ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -294,7 +303,12 @@
 
 .socialBtn:hover {
     transform: translateY(-1px);
-    background: rgba(255, 162, 0, .12);
+    background: var(--info-accent);
+    /* 👈 fundo na cor da marca */
+    color: var(--sl-platinum-010);
+    /* texto/ícone bem claro */
+    border-color: color-mix(in oklab, var(--info-accent), white 16%);
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--info-accent), black 40%);
 }
 
 .sIcon {
@@ -365,7 +379,26 @@
     }
 }
 
-/* Overrides — SPORTS */
+/* ============================
+   Overrides de acento por marca
+   ============================ */
+
+:global([data-brand="travel"]) .strip {
+    --info-accent: #2EA7E0;
+    /* azul-atlântico */
+}
+
+:global([data-brand="sports"]) .strip {
+    --info-accent: #2EC27E;
+    /* verde-vital */
+}
+
+/* opcional, mas explícito — Group = ouro */
+:global([data-brand="group"]) .strip {
+    --info-accent: var(--sl-gold-400, #c78615);
+}
+
+/* Overrides — SPORTS (spacing/layout) */
 :global([data-brand="sports"]) .strip {
     padding-block: clamp(1rem, 2vw, 1.35rem);
 }

@@ -14,8 +14,6 @@
     padding-inline: clamp(1rem, 4vw, 6rem);
     padding-block: clamp(.75rem, 2vw, 1.5rem);
     min-width: 0;
-    
-   
 }
 
 .logoBox {
@@ -29,8 +27,10 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+
+    /* Drop-shadow afinado ao dourado-aurora do Group */
     filter:
-        drop-shadow(0 1px 0 rgba(255, 255, 255, .04)) drop-shadow(0 10px 28px rgba(0, 0, 0, .45));
+        drop-shadow(0 1px 0 color-mix(in oklab, var(--sl-gold-400, #F3C970), transparent 70%)) drop-shadow(0 10px 28px rgba(0, 0, 0, .48));
 }
 
 /* Responsividade fina */

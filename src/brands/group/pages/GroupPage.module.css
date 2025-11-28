@@ -10,12 +10,12 @@
     width: 100%;
     overflow: clip;
 
-    /* Agora transparente: o gradiente+glow vêm do body::before */
+    /* transparente: o gradiente+glow vêm do body::before */
     background: transparent;
     color: var(--sl-color-text);
     isolation: isolate;
 
-    /* NOVO: token de alinhamento para TODAS as linhas/frames da página */
+    /* token de alinhamento para TODAS as linhas/frames da página */
     --sl-line-inset: clamp(12px, 4vw, 40px);
 }
 
@@ -54,32 +54,47 @@
     /* âncoras suaves com header fixo */
 }
 
-/* Variante de superfície alternada (cartão amplo) */
+/* ========= Variante de superfície alternada (cartão amplo) ========= */
+/* Agora alinhada ao mood Prestige Noir + Liquid Gold do Sunlive Group */
 .sectionAlt {
     width: 100%;
+
     background: linear-gradient(180deg,
-            color-mix(in oklab, var(--sl-platinum-100), transparent 20%),
-            color-mix(in oklab, var(--sl-platinum-300), transparent 35%));
+            color-mix(in oklab, var(--gray-1, #0c1320), white 4%) 0%,
+            color-mix(in oklab, var(--gray-2, #111a2b), black 2%) 100%);
+
     border-radius: var(--sl-radius-sm, 12px);
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, .35),
-        0 8px 24px rgba(0, 0, 0, .30);
+    border: 1px solid color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 70%);
+
+    box-shadow: var(--sl-shadow-gold,
+            0 0 0 1px rgba(207, 161, 48, .55),
+            0 12px 32px rgba(0, 0, 0, .45));
+
     padding: clamp(1rem, 3vw, 2rem);
 }
 
 /* Fallback para browsers sem color-mix */
 @supports not (background: color-mix(in oklab, white, black)) {
     .sectionAlt {
-        background: linear-gradient(180deg, #e6e6e6, #d9d9d9);
+        background: linear-gradient(180deg, #161c2c, #101524);
+        border: 1px solid rgba(199, 134, 21, .55);
+        box-shadow:
+            0 0 0 1px rgba(199, 134, 21, .35),
+            0 12px 32px rgba(0, 0, 0, .45);
     }
 }
 
-/* Separador premium */
+/* ========= Separador premium ========= */
 .divider {
     height: 1px;
     width: 100%;
     border: 0;
-    background: linear-gradient(90deg, transparent, rgba(199, 134, 21, .45), transparent);
+
+    background: linear-gradient(90deg,
+            transparent,
+            color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 45%),
+            transparent);
+
     margin-block: clamp(0.75rem, 2vw, 1.5rem);
 }
 

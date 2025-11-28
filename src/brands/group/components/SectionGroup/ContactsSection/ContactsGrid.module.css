@@ -1,6 +1,6 @@
 /* =========================================
    Contacts Grid (BusinessUnits + RegionalOffices)
-   Prestige Noir + Liquid Gold — sem glows locais
+   Prestige Noir + Liquid Gold Aurora — sem glows locais
 ========================================= */
 
 /* GRID */
@@ -53,24 +53,36 @@
     /* padding comum a BU/RO */
     padding: .52rem .9rem;
 
-    border: 3px solid var(--sl-gold-400);
+    /* Dourado-aurora na borda */
+    border: 3px solid color-mix(in oklab, var(--sl-gold-500, #C78615), white 10%);
     border-radius: 1.35rem;
-    background: rgba(2, 10, 32, 1);
+
+    background: rgba(4, 8, 20, 0.96);
+   
+
     color: #eaf0ff;
     font-weight: 800;
     cursor: pointer;
-    transition: transform 120ms ease, box-shadow 120ms ease,
-        background-color 120ms ease, opacity 120ms ease;
+    transition:
+        transform 120ms ease,
+        box-shadow 120ms ease,
+        background-color 120ms ease,
+        opacity 120ms ease,
+        border-color 120ms ease,
+        color 120ms ease;
 }
 
 .pill:hover {
-    transform: translateY(-1px);
-    background-color: rgba(255, 162, 0, .12);
+transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 .pill:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(199, 134, 21, .35);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--sl-gold-400), transparent 45%);
 }
 
 /* Texto e ícones do pill */
@@ -81,11 +93,11 @@
 .caret {
     color: var(--sl-gold-400);
     display: inline-block;
-        /* necessário para rodar */
-        transform: rotate(90deg);
-        /* direita → baixo */
-        transform-origin: center;
-        line-height: 1;
+    /* necessário para rodar */
+    transform: rotate(90deg);
+    /* direita → baixo */
+    transform-origin: center;
+    line-height: 1;
 }
 
 .flag {
@@ -99,9 +111,13 @@
     /* ligeiramente mais espaço entre pill e cartão */
     margin-top: .75rem;
     padding: .9rem 1rem;
-    border: 3px solid var(--sl-gold-400);
+
+    border: 3px solid color-mix(in oklab, var(--sl-gold-500), white 8%);
     border-radius: 1rem;
-    background: rgba(2, 10, 32, 1);
+
+    background: color-mix(in oklab,
+                #020a20 82%,
+                var(--sl-gold-500, #C78615) 18%);
     display: grid;
     gap: .6rem;
     position: relative;
@@ -109,7 +125,7 @@
 }
 
 .card:hover {
-    background-color: rgba(255, 162, 0, .12);
+    background: color-mix(in oklab, var(--sl-gold-500), transparent 82%);
 }
 
 /* Linhas/entradas dentro do cartão */
@@ -123,8 +139,11 @@
 }
 
 .row:hover {
-    text-decoration: underline;
-    color: var(--sl-gold-400);
+transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 .icon {

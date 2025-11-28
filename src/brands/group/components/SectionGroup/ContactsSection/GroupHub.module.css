@@ -1,5 +1,5 @@
 /* ================================
-   GroupHub — Prestige Noir + Liquid Gold (sem glows locais)
+   GroupHub — Prestige Noir + Liquid Gold Aurora (sem glows locais)
 =================================== */
 
 /* Pai: define uma “fonte de verdade” para a largura dos cards */
@@ -31,14 +31,22 @@
     padding-inline: 1.1rem;
     padding-block: 0;
 
-    border: 3px solid var(--sl-gold-400);
+    /* Dourado-aurora na borda */
+    border: 3px solid color-mix(in oklab, var(--sl-gold-500), white 10%);
     border-radius: 1.75rem;
-    background: rgba(2, 10, 32, 1);
+
+    /* Noir alinhado com theme Group */
+    background: rgba(4, 8, 20, 0.98);
     color: #e8edf8;
     font-weight: 700;
     letter-spacing: 0.01em;
     cursor: pointer;
-    transition: transform 120ms ease, box-shadow 120ms ease;
+    transition:
+        transform 120ms ease,
+        box-shadow 120ms ease,
+        background-color 120ms ease,
+        border-color 120ms ease,
+        color 120ms ease;
 
     /* mesmas dimensões dos outros cards */
     width: 100%;
@@ -49,13 +57,16 @@
 }
 
 .pill:hover {
-    transform: translateY(-1px);
-    background-color: rgba(255, 162, 0, 0.12);
+transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 .pill:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(199, 134, 21, .35);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--sl-gold-400), transparent 45%);
 }
 
 .pillText {
@@ -65,11 +76,11 @@
 .caret {
     color: var(--sl-gold-400);
     display: inline-block;
-        /* necessário para rodar */
-        transform: rotate(90deg);
-        /* direita → baixo */
-        transform-origin: center;
-        line-height: 1;
+    /* necessário para rodar */
+    transform: rotate(90deg);
+    /* direita → baixo */
+    transform-origin: center;
+    line-height: 1;
 }
 
 /* Cartão de contactos (submenu) — igual ao pill em largura */
@@ -79,9 +90,14 @@
     box-sizing: border-box;
 
     padding: 1rem 1.25rem;
-    border: 3px solid var(--sl-gold-400);
+
+    border: 3px solid color-mix(in oklab, var(--sl-gold-500, #C78615), white 8%);
     border-radius: 1.25rem;
-    background: rgba(2, 10, 32, 1);
+
+    /* 🔹 Mesmo fundo Noir + dourado-aurora dos outros cards */
+    background: color-mix(in oklab,
+            #020a20 82%,
+            var(--sl-gold-500, #C78615) 18%);
 
     display: grid;
     gap: 0.75rem;
@@ -90,8 +106,11 @@
 }
 
 .card:hover {
-    background: rgba(255, 162, 0, .12);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 /* Linhas do submenu */

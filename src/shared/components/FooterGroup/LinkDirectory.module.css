@@ -11,6 +11,9 @@
     position: relative;
     padding-block: clamp(1.1rem, 2.4vw, 1.8rem);
     color: var(--sl-platinum-100);
+
+    /* Accent por marca (fallback Group = ouro) */
+    --ld-accent: var(--sl-gold-400, #c78615);
 }
 
 .inner {
@@ -100,13 +103,16 @@
     min-height: var(--ld-pill-h);
     width: 100%;
     padding: .45rem 1rem;
-    border: 2px solid var(--sl-gold-400);
+    border: 2px solid var(--ld-accent);
     border-radius: 1.35rem;
     text-decoration: none;
     color: var(--sl-platinum-100);
     font-weight: 700;
     letter-spacing: .2px;
-    background: rgba(2, 10, 32, 1);
+
+    /* base Noir com leve tint na cor da marca */
+    background: color-mix(in oklab, #020a20 82%, var(--ld-accent) 18%);
+
     transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
 }
 
@@ -150,14 +156,16 @@
 }
 
 .pill:hover {
-    transform: translateY(-1px);
-    background: rgba(255, 162, 0, .12);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 .pill:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(199, 134, 21, .35);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--ld-accent), transparent 55%);
 }
 
 .disabled {
@@ -244,4 +252,23 @@
     .gridRight>* {
         width: 100%;
     }
+}
+
+/* ============================
+   Overrides de acento por marca
+   ============================ */
+
+:global([data-brand="travel"]) .sectionWrap {
+    --ld-accent: #2EA7E0;
+    /* azul-atlântico */
+}
+
+:global([data-brand="sports"]) .sectionWrap {
+    --ld-accent: #2EC27E;
+    /* verde-vital */
+}
+
+/* opcional mas explícito — Group = ouro */
+:global([data-brand="group"]) .sectionWrap {
+    --ld-accent: var(--sl-gold-400, #c78615);
 }

@@ -1,6 +1,6 @@
 /* ==========================================================================
    Sunlive Group — theme.css
-   Tema: Prestige Noir + Liquid Gold (Performance Prestige)
+   Tema: Prestige Noir + Liquid Gold Aurora (Performance Prestige)
    Mantém os mesmos nomes de variáveis para não quebrar nada no projeto.
    ========================================================================== */
 
@@ -18,18 +18,21 @@ body {
 
 /* ===== Tokens de Marca (SL) ===== */
 :root {
-    /* Cores base */
-    --sl-navy-900: #070B12;
+    /* Cores base — Noir alinhado com o footer Group */
+    --sl-navy-900: #04060C;
     /* fundo profundo */
-    --sl-navy-800: #0C1320;
+    --sl-navy-800: #070B16;
     /* camadas acima */
+
     --sl-ink-900: rgba(0, 0, 0, .30);
     --sl-platinum-100: #F4F7FC;
     --sl-platinum-300: #D9E0EE;
 
-    /* Ouro (accent) */
-    --sl-gold-500: #C7981F;
-    --sl-gold-400: #F0C450;
+    /* Ouro (accent) — Dourado Aurora */
+    --sl-gold-500: #C78615;
+    /* dourado-aurora (principal) */
+    --sl-gold-400: #F3C970;
+    /* ouro líquido mais claro / halo */
 
     /* Tipografia */
     --sl-ff-ui: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
@@ -42,18 +45,29 @@ body {
     --sl-radius-sm: 8px;
 
     /* Efeitos */
-    --sl-focus: 0 0 0 2px rgba(247, 208, 96, .75);
-    --sl-shadow-gold: 0 0 0 1px rgba(207, 161, 48, .55), 0 12px 32px rgba(0, 0, 0, .45);
+    --sl-focus: 0 0 0 2px color-mix(in oklab, var(--sl-gold-400), transparent 35%);
+    --sl-shadow-gold:
+        0 0 0 1px color-mix(in oklab, var(--sl-gold-500), transparent 55%),
+        0 12px 32px rgba(0, 0, 0, .45);
 
     /* Fundo / texto da página */
     --sl-body-bg: var(--sl-navy-800);
     --sl-color-text: var(--sl-platinum-100);
 
-    /* Gradientes principais */
+    /* Gradiente base da página */
     --sl-bg-gradient: linear-gradient(180deg, var(--sl-navy-800) 0%, var(--sl-navy-900) 100%);
+
+    /* Gradiente hero — só ouro (sem azuis), alinhado ao footer Group */
     --grad-hero:
-        radial-gradient(1200px 800px at 72% -12%, rgba(240, 196, 80, .28), transparent 60%),
-        conic-gradient(from 220deg at 50% 50%, rgba(240, 196, 80, .10), rgba(30, 70, 160, .08) 35%, rgba(240, 196, 80, .06) 65%, rgba(30, 70, 160, .12) 90%, rgba(240, 196, 80, .10) 100%),
+        radial-gradient(1200px 800px at 72% -12%,
+            color-mix(in oklab, var(--sl-gold-400), transparent 65%),
+            transparent 60%),
+        conic-gradient(from 210deg at 50% 42%,
+            color-mix(in oklab, var(--sl-gold-400), transparent 80%) 0%,
+            color-mix(in oklab, var(--sl-gold-500), transparent 82%) 30%,
+            transparent 62%,
+            color-mix(in oklab, var(--sl-gold-400), transparent 82%) 85%,
+            color-mix(in oklab, var(--sl-gold-500), transparent 80%) 100%),
         linear-gradient(180deg, var(--sl-navy-800) 0%, var(--sl-navy-900) 60%);
 }
 
@@ -61,8 +75,10 @@ body {
 :root {
     --text-1: var(--sl-platinum-100);
     --text-2: color-mix(in oklab, var(--sl-platinum-100), black 25%);
-    --accent: var(--sl-gold-400);
-    --accent-2: color-mix(in oklab, var(--sl-gold-400), white 20%);
+
+    /* Accent global = ouro da marca Group */
+--accent: var(--sl-gold-500);
+    --accent-2: color-mix(in oklab, var(--sl-gold-500), white 20%);
 
     /* Escala de cinzentos (afinada ao fundo escuro) */
     --gray-0: color-mix(in oklab, var(--sl-navy-900), black 6%);
@@ -73,10 +89,17 @@ body {
     --gray-5: color-mix(in oklab, var(--sl-navy-800), white 28%);
     --gray-6: color-mix(in oklab, var(--sl-navy-800), white 38%);
 
-    /* Gradiente hero global */
+    /* Gradiente hero global (mantém o mesmo token, mas já com o novo ouro) */
     --grad-hero:
-        radial-gradient(1200px 800px at 72% -12%, rgba(240, 196, 80, .28), transparent 60%),
-        conic-gradient(from 220deg at 50% 50%, rgba(240, 196, 80, .10), rgba(30, 70, 160, .08) 35%, rgba(240, 196, 80, .06) 65%, rgba(30, 70, 160, .12) 90%, rgba(240, 196, 80, .10) 100%),
+        radial-gradient(1200px 800px at 72% -12%,
+            color-mix(in oklab, var(--sl-gold-400), transparent 65%),
+            transparent 60%),
+        conic-gradient(from 210deg at 50% 42%,
+            color-mix(in oklab, var(--sl-gold-400), transparent 80%) 0%,
+            color-mix(in oklab, var(--sl-gold-500), transparent 82%) 30%,
+            transparent 62%,
+            color-mix(in oklab, var(--sl-gold-400), transparent 82%) 85%,
+            color-mix(in oklab, var(--sl-gold-500), transparent 80%) 100%),
         linear-gradient(180deg, var(--sl-navy-800) 0%, var(--sl-navy-900) 60%);
 
     /* Font family global */
@@ -106,7 +129,7 @@ body {
 
 /* ===== Glow global por trás do conteúdo ===== */
 :root {
-    /* Controlos rápidos de intensidade/temperatura */
+    /* Controlos rápidos de intensidade/temperatura com o novo ouro */
     --sl-glow-top: color-mix(in oklab, var(--sl-gold-400), transparent 68%);
     --sl-glow-ring: color-mix(in oklab, var(--sl-gold-400), transparent 82%);
     --sl-glow-bottom: color-mix(in oklab, var(--sl-gold-500), transparent 78%);
@@ -140,8 +163,8 @@ body::before {
 @supports not (background: color-mix(in oklab, white, black)) {
     body::before {
         background:
-            radial-gradient(110rem 55rem at 50% -14%, rgba(240, 196, 80, .30), transparent 62%),
-            conic-gradient(from 220deg at 50% 22%, rgba(240, 196, 80, .18), transparent 32%, rgba(240, 196, 80, .10) 58%, transparent 92%, rgba(240, 196, 80, .18) 100%),
+            radial-gradient(110rem 55rem at 50% -14%, rgba(243, 201, 112, .30), transparent 62%),
+            conic-gradient(from 220deg at 50% 22%, rgba(243, 201, 112, .18), transparent 32%, rgba(243, 201, 112, .10) 58%, transparent 92%, rgba(243, 201, 112, .18) 100%),
             radial-gradient(95rem 45rem at 50% 112%, rgba(199, 134, 21, .22), transparent 64%),
             var(--sl-bg-gradient);
     }
@@ -154,8 +177,6 @@ body::before {
     letter-spacing: .04em;
     font-weight: 800;
 }
-
-
 
 /* ===== Utilitários ===== */
 .u-card-prestige {

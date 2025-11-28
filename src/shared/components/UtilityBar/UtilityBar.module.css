@@ -488,8 +488,63 @@
     .utilityBar[data-variant="sports-header"] .right {
         padding-inline: 6px;
     }
+         .utilityBar[data-variant="group-header"] .left,
+         .utilityBar[data-variant="group-header"] .right {
+             padding-inline: 6px;
+         }
 
     .backText {
         max-inline-size: 50vw;
     }
+}
+
+/* =======================================================
+   Variant: Group Header — Sunlive Group (dourado-aurora)
+   ======================================================= */
+
+.utilityBar[data-variant="group-header"] {
+    --accent: var(--sl-gold-400, #C78615);
+    --sl-container-lg: 90rem;
+}
+
+/* Desativar régua interna, usamos a border-bottom deste header */
+.utilityBar[data-variant="group-header"] .inner::after {
+    content: none;
+}
+
+.utilityBar[data-variant="group-header"] .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
+    margin-inline: auto;
+    box-sizing: border-box;
+
+    border-bottom: 2px solid color-mix(in oklab, var(--accent), black 8%);
+}
+
+/* Clusters left/right alinhados ao restante layout */
+.utilityBar[data-variant="group-header"] .left,
+.utilityBar[data-variant="group-header"] .right {
+    display: flex;
+    align-items: center;
+    gap: var(--ub-gap, .75rem);
+    min-width: 0;
+}
+
+/* Idiomas — item ativo + chevron aberto em dourado-aurora */
+.utilityBar[data-variant="group-header"] .langItem[aria-current="true"] {
+    color: var(--accent);
+    background: color-mix(in oklab, var(--accent), transparent 82%);
+}
+
+.utilityBar[data-variant="group-header"] .langBtn[data-open="true"] .chevron {
+    color: var(--accent);
+}
+
+/* BackLink com moldura em dourado-aurora */
+.utilityBar[data-variant="group-header"] .backLink {
+    border-color:
+        color-mix(in oklab, var(--accent), white 12%);
 }

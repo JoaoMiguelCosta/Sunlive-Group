@@ -12,7 +12,7 @@
     --line-inset: clamp(12px, 4vw, 40px);
 }
 
-/* ===== Linhas TOP/BOTTOM no PRÓPRIO WRAPPER ===== */
+/* ===== Linhas decorativas — apenas TOP com gradiente ===== */
 .sectionWrap::before,
 .sectionWrap::after {
     content: "";
@@ -24,22 +24,26 @@
     inline-size: calc(min(var(--sl-container-lg), 100%) - 2 * var(--line-inset));
     block-size: 2px;
 
-    background: rgba(199, 134, 21, 0.9);
     border-radius: 2px;
     opacity: 0.9;
     pointer-events: none;
 }
 
+/* TOP — linha dourado-aurora (mesma linguagem do footer Group) */
 .sectionWrap::before {
     inset-block-start: 0;
+    background: linear-gradient(90deg,
+            color-mix(in oklab, var(--sl-gold-500), transparent 40%),
+            color-mix(in oklab, var(--sl-gold-400), transparent 10%),
+            color-mix(in oklab, var(--sl-gold-500), transparent 40%));
 }
 
-/* TOP */
+/* BOTTOM — sem linha visível */
 .sectionWrap::after {
     inset-block-end: 0;
+    background: none;
+    block-size: 0;
 }
-
-/* BOTTOM */
 
 /* Largura do conteúdo */
 .inner {
@@ -70,14 +74,24 @@
 
     min-height: var(--pill-h);
     padding: .5rem 1.1rem;
-    border: 3px solid var(--sl-gold-400);
+
+    /* Ouro aurora na borda */
+    border: 3px solid color-mix(in oklab, var(--sl-gold-500), white 10%);
     border-radius: 1.35rem;
-    background: rgba(2, 10, 32, 1);
-    color: #eaf0ff;
+
+    /* Noir + leve halo dourado */
+    /* 🔹 Mesmo mood de fundo que os outros cards do Group */
+    background: rgba(4, 8, 20, 0.98);
+    color: var(--sl-platinum-100);
     font-weight: 800;
     text-decoration: none;
 
-    transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+    transition:
+        transform 120ms ease,
+        box-shadow 120ms ease,
+        background-color 120ms ease,
+        border-color 120ms ease,
+        color 120ms ease;
     box-shadow: none;
 }
 
@@ -99,12 +113,15 @@
 
 .button:hover {
     transform: translateY(-1px);
-    background-color: rgba(255, 162, 0, .12);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 .button:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(199, 134, 21, .35);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--sl-gold-400), transparent 45%);
 }
 
 .label {
@@ -117,5 +134,4 @@
     font-size: 1.15rem;
     line-height: 1;
     color: var(--sl-gold-400);
-   
 }

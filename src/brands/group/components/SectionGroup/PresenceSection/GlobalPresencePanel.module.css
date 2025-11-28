@@ -12,7 +12,7 @@
     padding-inline: 0;
 }
 
-/* === (Opcional) se as tuas linhas são ::before/::after deste section === */
+/* === Linhas decorativas alinhadas ao estilo Sunlive Group === */
 /* Se já estiverem noutro CSS, garante apenas que usam a mesma var. */
 .sectionWrap::before,
 .sectionWrap::after {
@@ -21,10 +21,14 @@
     left: var(--section-inset);
     right: var(--section-inset);
     height: 2px;
-    background: var(--sl-gold-400);
     pointer-events: none;
-    /* posiciona onde precisares */
-    /* top: ...;  bottom: ...; */
+
+    /* linha em dourado-aurora, sem laranja */
+    background: linear-gradient(90deg,
+            color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 40%),
+            color-mix(in oklab, var(--sl-gold-400, #F3C970), transparent 10%),
+            color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 40%));
+    opacity: 0.9;
 }
 
 /* === PAINEL === */
@@ -35,9 +39,10 @@
     margin-inline: var(--section-inset);
 
     padding: clamp(.6rem, 2.2vw, 1rem);
-    border: 2px solid rgba(199, 134, 21, 0.9);
-    border-radius: 14px;
-    background-color: rgba(2, 10, 32, 1);
+
+   
+
+  
 }
 
 /* === GRID (3 em cima + 2 centrados) === */
@@ -45,6 +50,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: auto;
@@ -78,13 +84,23 @@
 /* Cards */
 .item {
     border-radius: 12px;
-    border: 2px solid rgba(199, 134, 21, 0.9);
-    transition: background-color 160ms ease, box-shadow 160ms ease;
+background: rgba(4, 8, 20, 0.98);
+
+    /* Borda dourado-aurora */
+    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #C78615), white 8%);
+    transition:
+        background-color 160ms ease,
+        box-shadow 160ms ease,
+        border-color 160ms ease;
 }
 
 .item:hover {
-    background: rgba(255, 162, 0, .12);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+    /* overlay ouro aurora suave */
+transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 /* Tamanho dos logótipos */

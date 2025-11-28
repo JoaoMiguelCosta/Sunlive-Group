@@ -1,5 +1,6 @@
 /* ======================================
    Partners — pills responsivos (match aos de cima)
+   Sunlive Group — dourado-aurora
 ======================================== */
 
 .grid {
@@ -36,9 +37,13 @@
     /* 🔓 Responsivo: igual em desktop, flexível no resto */
     min-height: var(--pill-h);
     padding: .5rem .9rem;
-    border: 3px solid var(--sl-gold-400);
+
+    /* Borda dourado-aurora */
+    border: 3px solid color-mix(in oklab, var(--sl-gold-500, #C78615), white 10%);
     border-radius: 1.35rem;
-    background: rgba(2, 10, 32, 1);
+
+    /* Noir alinhado ao theme Group */
+    background: rgba(4, 8, 20, 0.98);
     color: #eaf0ff;
     font-weight: 800;
     text-decoration: none;
@@ -47,18 +52,27 @@
         transform 120ms ease,
         box-shadow 120ms ease,
         background-color 120ms ease,
-        border-color 120ms ease;
+        border-color 120ms ease,
+        color 120ms ease;
     box-shadow: none;
 }
 
 .card:hover {
     transform: translateY(-1px);
-    background-color: rgba(255, 162, 0, .12);
+
+    /* hover em dourado-aurora suave */
+    background: color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 75%);
+    color: var(--sl-platinum-010, #f9fafb);
+
+    border-color: color-mix(in oklab, var(--sl-gold-500, #C78615), white 16%);
+    box-shadow:
+        0 0 0 1px color-mix(in oklab, var(--sl-gold-500, #C78615), black 45%),
+        0 8px 22px rgba(0, 0, 0, .4);
 }
 
 .card:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(199, 134, 21, .35);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--sl-gold-400, #F3C970), transparent 45%);
 }
 
 .label {
@@ -75,7 +89,7 @@
     /* direita → baixo */
     transform-origin: center;
     line-height: 1;
-    color: var(--sl-gold-400);
+    color: var(--sl-gold-400, #F3C970);
 }
 
 /* Breakpoints iguais aos RegionalOffices */
@@ -106,8 +120,6 @@
         grid-column: 9 / span 4;
     }
 
-    /* International Federations */
-
     /* 2ª linha */
     .card:nth-child(4) {
         grid-column: 3 / span 4;
@@ -117,8 +129,6 @@
     .card:nth-child(5) {
         grid-column: 7 / span 4;
     }
-
-    /* Associations */
 
     /* 3ª linha — centrado (Other Partners) */
     .card:last-child {

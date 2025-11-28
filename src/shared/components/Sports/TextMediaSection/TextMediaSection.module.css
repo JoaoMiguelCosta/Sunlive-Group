@@ -5,7 +5,7 @@
 
 .section {
     width: 100%;
- 
+
     margin-block: clamp(3rem, 6vw, 4rem);
 }
 
@@ -41,8 +41,10 @@
 .mediaPanel {
     position: relative;
     display: flex;
-    align-items: stretch;
-    justify-content: flex-end;
+    align-items: center;
+    /* centrar verticalmente */
+    justify-content: center;
+    /* ou flex-end, como preferires */
     background-color: red;
 }
 
@@ -80,7 +82,7 @@
 
 .eyebrowRow {
     margin: 0;
-  
+
 }
 
 .eyebrow {
@@ -127,14 +129,15 @@
 .mediaFigure,
 .mediaPlaceholder {
     position: relative;
-    inline-size: min(100%, 420px);
-    margin: 0 0 0 auto;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    margin: 0;
     border-radius: 1.5rem;
     overflow: clip;
 
-    /* 👇 ocupa toda a altura da coluna em desktop */
-    height: 100%;
-    block-size: 100%;
+    /* deixa a altura ser definida pela própria imagem */
+    height: auto;
+    block-size: auto;
 }
 
 .mediaFigure {

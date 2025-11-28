@@ -1,13 +1,17 @@
 /* Contacts section — usar apenas o tapete global da página */
 
 :root {
-    /* fallbacks */
-    --sl-navy-900: #0b1636;
-    --sl-navy-800: #0e1a3f;
-    --sl-platinum-100: #f0f4fa;
-    --sl-gold-300: #ffd78a;
-    --sl-gold-400: #c78615;
-    --sl-gold-500: #a16207;
+    /* fallbacks alinhados ao theme Group (Noir + Dourado Aurora) */
+    --sl-navy-900: #04060C;
+    --sl-navy-800: #070B16;
+    --sl-platinum-100: #F4F7FC;
+
+    /* Ouro Aurora */
+    --sl-gold-500: #C78615;
+    /* dourado-aurora principal */
+    --sl-gold-400: #F3C970;
+    /* ouro mais claro / halo */
+    --sl-gold-300: color-mix(in oklab, var(--sl-gold-400), white 14%);
 
     --sl-anchor-offset: 96px;
     --sl-container-lg: 90rem;
@@ -79,7 +83,8 @@
     inline-size: calc(100% - 2 * var(--line-inset));
     block-size: 2px;
 
-    background: rgba(199, 134, 21, 0.9);
+    /* linha em dourado-aurora, sem glows exagerados */
+    background: color-mix(in oklab, var(--sl-gold-500), transparent 10%);
     border-radius: 2px;
     opacity: .9;
     pointer-events: none;

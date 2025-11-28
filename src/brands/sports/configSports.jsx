@@ -33,7 +33,6 @@ const header = {
   socials: SPORTS_SOCIALS,
 };
 
-
 /* ===== Home — Gateway ===== */
 const gateway = [
   {
@@ -94,7 +93,6 @@ const gateway = [
     variant: "cta",
   },
 ];
-
 
 /* ===== Links Rápidos (chips a partir do gateway) ===== */
 const SPORTS_QUICK_LINKS = gateway.map(({ key, label, href }) => ({
@@ -1182,7 +1180,6 @@ const education = {
     },
   },
 };
-
 
 /* =========================================================
    Turismo Desportivo Lúdico — página dedicada
@@ -2381,8 +2378,7 @@ const contacts = {
   /* 2) Bloco de compromisso / jornada */
   journeyBlock: {
     headline: "Estamos ao teu lado, em cada etapa da jornada",
-    body:
-      "Desde a fase de planeamento até à concretização, podes contar com a dedicação, experiência e compromisso da nossa equipa.",
+    body: "Desde a fase de planeamento até à concretização, podes contar com a dedicação, experiência e compromisso da nossa equipa.",
     brandName: "Sunlive Sports",
     brandTagline: "Transformando vidas através do Desporto.",
   },

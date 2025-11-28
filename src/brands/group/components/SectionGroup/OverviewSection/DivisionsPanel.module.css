@@ -16,8 +16,15 @@
     left: var(--section-inset);
     right: var(--section-inset);
     height: 2px;
-  
     pointer-events: none;
+
+    /* linha ao estilo Sunlive Group — dourado-aurora */
+    background: linear-gradient(90deg,
+            color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 40%),
+            color-mix(in oklab, var(--sl-gold-400, #F3C970), transparent 10%),
+            color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 40%));
+    opacity: 0.9;
+    border-radius: 2px;
 }
 
 .sectionWrap::before {
@@ -43,9 +50,9 @@
     overflow: clip;
     min-width: 0;
 
-    border: 2px solid rgba(199, 134, 21, 0.9);
+  
     border-radius: 14px;
-    background-color: rgba(2, 10, 32, 1);
+
     box-sizing: border-box;
     /* inclui a borda no cálculo */
 }
@@ -82,15 +89,19 @@
 .card,
 .homeCard {
     --card-scale: 1.0;
-    --card-border: color-mix(in oklab, var(--accent), transparent 55%);
     position: relative;
     display: grid;
     place-items: center;
     width: 100%;
     aspect-ratio: 245 / 97;
     border-radius: calc(var(--sl-radius-sm) - 2px);
-    background-color: rgba(2, 10, 32, 1);
-    border: 2px solid rgba(199, 134, 21, 0.9);
+
+    /* Fundo noir */
+    /* 🔹 Mesmo mood de fundo que os outros cards do Group */
+background-color: rgba(4, 8, 20, 0.98);
+    /* Borda dourado-aurora */
+    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #C78615), white 8%);
+
     text-decoration: none;
     transition:
         transform var(--dur-2, 180ms) var(--ease-out, ease),
@@ -119,7 +130,9 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background-color: rgba(255, 162, 0, 0.12);
+
+    /* overlay em dourado-aurora suave, sem laranja */
+    background-color: color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 78%);
     opacity: 0;
     transition: opacity 180ms ease;
     pointer-events: none;
@@ -129,15 +142,11 @@
 
     .card:hover,
     .homeCard:hover {
-        --card-scale: 1.015;
-        border-color: color-mix(in oklab, var(--accent), transparent 10%);
-        box-shadow:
-            0 0 0 1px color-mix(in oklab, var(--accent), black 25%),
-            0 16px 48px rgba(0, 0, 0, .50);
-        background:
-            linear-gradient(180deg,
-                color-mix(in oklab, var(--gray-2), white 2%),
-                color-mix(in oklab, var(--gray-3), black 4%));
+transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
     }
 
     .card:hover::after,
@@ -162,9 +171,9 @@
 .homeCard:focus-visible {
     outline: 0;
     box-shadow:
-        0 0 0 2px color-mix(in oklab, var(--sl-navy-900), transparent 20%),
-        0 0 0 4px color-mix(in oklab, var(--accent), white 25%);
-    border-color: color-mix(in oklab, var(--accent), transparent 15%);
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900, #04060C), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--sl-gold-400, #F3C970), white 10%);
+    border-color: color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 15%);
 }
 
 .card:focus-visible::after,
@@ -177,7 +186,7 @@
     cursor: not-allowed;
     opacity: .75;
     filter: grayscale(.15) saturate(.9);
-    border-color: color-mix(in oklab, var(--accent), transparent 60%);
+    border-color: color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 60%);
 }
 
 .cardDisabled::after {
@@ -240,10 +249,12 @@
     text-transform: uppercase;
     font-size: clamp(.62rem, 1vw, .72rem);
     color: #121418;
+
+    /* badge em ouro aurora */
     background: linear-gradient(180deg,
-            color-mix(in oklab, var(--accent), white 24%),
-            color-mix(in oklab, var(--accent), black 6%));
-    border: 1px solid color-mix(in oklab, var(--accent), black 28%);
+            color-mix(in oklab, var(--sl-gold-400, #F3C970), white 18%),
+            color-mix(in oklab, var(--sl-gold-500, #C78615), black 8%));
+    border: 1px solid color-mix(in oklab, var(--sl-gold-500, #C78615), black 30%);
     border-radius: 999px;
     box-shadow:
         0 8px 18px rgba(0, 0, 0, .45),

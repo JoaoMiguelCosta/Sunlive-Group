@@ -20,6 +20,12 @@
     padding-inline: var(--section-inset);
 
     color: var(--sl-platinum-050, #e7ebf3);
+
+    /* Acentos Sports */
+    --chip-accent: var(--sl-sports-accent, #2EC27E);
+    /* verde-vital */
+    --chip-gold: var(--sl-gold-400, #C78615);
+    /* dourado */
 }
 
 .block {
@@ -33,7 +39,7 @@
     gap: .6rem;
     font-size: clamp(1rem, 1.3vw, 1.1rem);
     font-weight: 700;
-color: var(--sl-platinum-100);
+    color: var(--sl-platinum-100);
     letter-spacing: .2px;
     margin: 0;
 }
@@ -66,7 +72,6 @@ color: var(--sl-platinum-100);
     --pill-pad-y: .72rem;
     --pill-pad-x: 1.2rem;
     --pill-radius: 999px;
-    --gold: var(--sl-gold-400, #C78615);
 
     grid-column: auto / span 3;
     /* ~1/4 linha em desktop */
@@ -75,35 +80,53 @@ color: var(--sl-platinum-100);
     justify-content: center;
 
     padding: var(--pill-pad-y) var(--pill-pad-x);
-    border: 3px solid var(--gold);
+    border: 2px solid color-mix(in oklab, var(--chip-accent), black 16%);
     border-radius: var(--pill-radius);
 
     background:
-        linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
-        rgba(255, 255, 255, .02);
+        radial-gradient(140% 160% at 50% 0%,
+            color-mix(in oklab, var(--chip-accent) 22%, transparent),
+            transparent 60%),
+        rgba(4, 10, 24, 0.96);
+
     color: var(--sl-platinum-100, #f6f7fb);
     text-decoration: none;
     font-weight: 600;
     letter-spacing: .2px;
     white-space: nowrap;
+
     transition:
         transform .15s ease,
-        background-color .15s ease,
-        border-color .15s ease;
+        background .15s ease,
+        border-color .15s ease,
+        box-shadow .15s ease,
+        color .15s ease;
 }
 
 .chip:hover {
-    transform: translateY(-1px);
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, 0)),
-        rgba(255, 255, 255, .04);
-    border-color: var(--sl-gold-300, #DAA34F);
+transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
+.chip:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--chip-accent), transparent 55%);
+}
+
+/* Variante CTA — verde + halo dourado (sem azuis) */
 .chip[data-variant="cta"] {
     background:
-        radial-gradient(120% 140% at 50% 0%, rgba(255, 226, 167, .10), rgba(255, 255, 255, 0) 60%),
-        rgba(255, 255, 255, .03);
+        radial-gradient(170% 190% at 50% 0%,
+            color-mix(in oklab,
+                var(--chip-accent) 30%,
+                var(--chip-gold) 10%),
+            transparent 68%),
+        rgba(5, 14, 30, 0.98);
+
+    border-color: color-mix(in oklab, var(--chip-accent) 75%, var(--chip-gold) 25%);
 }
 
 /* responsivo dos chips */

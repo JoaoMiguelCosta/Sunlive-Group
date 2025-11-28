@@ -5,7 +5,6 @@
     display: grid;
     place-items: center;
     width: 100%;
-    
     overflow: clip;
     /* evita scroll lateral */
     min-width: 0;
@@ -21,7 +20,10 @@
     object-fit: contain;
     user-select: none;
     pointer-events: none;
-    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, .03)) drop-shadow(0 8px 18px rgba(0, 0, 0, .35));
+
+    /* Drop-shadow afinado ao dourado-aurora do Group */
+    filter:
+        drop-shadow(0 1px 0 color-mix(in oklab, var(--sl-gold-400, #F3C970), transparent 72%)) drop-shadow(0 8px 18px rgba(0, 0, 0, .38));
 }
 
 /* (remoção de .box/.figure/.title/.subtitle porque não são precisos) */

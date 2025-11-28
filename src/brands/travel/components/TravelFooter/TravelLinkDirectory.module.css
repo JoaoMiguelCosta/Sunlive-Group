@@ -11,7 +11,9 @@
     --ld-pill-pad-y: .45rem;
     --ld-pill-pad-x: 1rem;
     --ld-pill-radius: 1.35rem;
-    --ld-pill-border: 2px solid var(--sl-gold-400);
+
+    /* borda em “ouro” (pode ser ajustado por brand via var) */
+    --ld-pill-border: 2px solid var(--ld-gold, var(--sl-gold-400, #c78615));
 
     /* Slot consistente para bandeiras */
     --flag-h: clamp(16px, 1.6vw, 20px);
@@ -23,6 +25,12 @@
     position: relative;
     padding-block: clamp(1.1rem, 2.4vw, 1.8rem);
     color: var(--sl-platinum-100);
+
+    /* Paleta Travel: azul-atlântico + ouro */
+    --ld-accent: #2EA7E0;
+    /* azul-atlântico */
+    --ld-gold: var(--sl-gold-400, #c78615);
+    /* ouro “fio condutor” */
 }
 
 /* Limites (linhas amarelas) */
@@ -91,14 +99,20 @@
     box-sizing: border-box;
     min-width: 0;
     padding: var(--ld-pill-pad-y) var(--ld-pill-pad-x);
-    border: var(--ld-pill-border);
+    border: 2px solid #2EA7E0;
+    /* 👈 aqui */
     border-radius: var(--ld-pill-radius);
     text-decoration: none;
     color: var(--sl-platinum-100);
     font-weight: 700;
     letter-spacing: .2px;
     background: rgba(2, 10, 32, 1);
-    transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
+    transition:
+        transform 120ms ease,
+        background 120ms ease,
+        box-shadow 120ms ease,
+        border-color 120ms ease,
+        color 120ms ease;
 }
 
 /* Área interna — base */
@@ -137,14 +151,16 @@
 
 /* Hover/focus/disabled */
 .pill:hover {
-    transform: translateY(-1px);
-    background: rgba(255, 162, 0, .12);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 .pill:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(199, 134, 21, .35);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--ld-accent), transparent 55%);
 }
 
 .disabled {
@@ -154,10 +170,9 @@
 
 /* ==================== PARCEIROS (ALINHADOS ABAIXO DA 1ª E 2ª) ==================== */
 .partnersWrap {
-    border-top: 0.5px solid rgba(199, 134, 21, 0.9);
+    border-top: 0.5px solid #2EA7E0;
     padding-top: clamp(1.1rem, 2.4vw, 1.6rem);
 }
-
 .partnersWrap>.partnerBlock:nth-child(1) {
     grid-column: 1;
 }
