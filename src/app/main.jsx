@@ -13,6 +13,7 @@ import ThemeProvider from "./providers/ThemeProvider.jsx";
 import "../brands/group/theme.css";
 import "../brands/travel/theme.css";
 import "../brands/sports/theme.css";
+import "../brands/hotel/theme.css"
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>

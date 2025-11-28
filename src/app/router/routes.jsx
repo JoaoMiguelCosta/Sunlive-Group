@@ -86,7 +86,6 @@ export default function AppRoutes() {
         />
       </Route>
 
-      {/* Redirects legacy/temporários */}
       <Route
         path="/sunlive-group-logos"
         element={<Navigate to="/sunlive-group/logos" replace />}

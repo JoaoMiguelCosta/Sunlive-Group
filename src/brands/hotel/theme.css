@@ -1,0 +1,92 @@
+:root[data-brand="hotel"] {
+    /* Acentos Hotel — champanhe-quente */
+    --sl-accent-400: #EBD3A8;
+    /* ligeiramente mais claro */
+    --sl-accent-500: #E6C893;
+    /* champanhe-quente (principal) */
+    --sl-accent-600: #B8A075;
+    /* mais profundo para bordas/focus */
+
+    /* Halo / ornamentos (um pouco mais presente, sensação de calor) */
+    --sl-ornament-alpha: .14;
+
+    /* ===== Glow (fallbacks + color-mix) ===== */
+    /* Fallbacks imediatos (sem color-mix) */
+    --sl-glow-top: #C78615;
+    /* gold-400 */
+    --sl-glow-ring: #C78615;
+    /* gold-400 */
+    --sl-glow-bottom: #A16207;
+    /* gold-500 */
+
+    /* Versão melhorada (quando suportado) */
+    @supports (color: color-mix(in oklab, white, black)) {
+        /* Mistura o ouro com o champanhe para um brilho mais “hotel” */
+        --sl-glow-top: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 22%);
+        --sl-glow-ring: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 18%);
+        --sl-glow-bottom: color-mix(in oklab, var(--sl-gold-500), var(--sl-accent-500) 12%);
+    }
+}
+
+/* =============================
+   Utilitários/variantes Hotel
+   ============================= */
+
+/* Badge de destaque (ex: “Hospitalidade 24/7”) */
+:root[data-brand="hotel"] .u-badge-accent {
+    /* fundo champanhe escurecido – discreto mas sofisticado */
+    background: color-mix(in oklab, var(--sl-accent-500, #E6C893), black 70%);
+    color: var(--sl-platinum-010, #f9fafb);
+
+    border: 1px solid color-mix(in oklab, var(--sl-accent-600, #B8A075), white 18%);
+    border-radius: 999px;
+
+    padding: 0.26rem 0.85rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    transition:
+        transform 150ms ease-out,
+        background 150ms ease-out,
+        border-color 150ms ease-out;
+
+    cursor: pointer;
+}
+
+/* Hover + foco teclado com brilho champanhe/dourado */
+:root[data-brand="hotel"] .u-badge-accent:hover,
+:root[data-brand="hotel"] .u-badge-accent:focus-visible {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-accent-600, #B8A075), black 4%),
+            color-mix(in oklab, var(--sl-accent-400, #EBD3A8), black 10%));
+    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #C78615), black 8%);
+}
+
+/* Botão secundário Hotel (ex: “Ver quartos”, “Pedir proposta”) */
+:root[data-brand="hotel"] .button--secondary {
+    background: color-mix(in oklab, var(--sl-accent-500) 88%, black);
+    border: 1px solid var(--sl-accent-600);
+    color: white;
+}
+
+:root[data-brand="hotel"] .button--secondary:hover {
+    background: color-mix(in oklab, var(--sl-accent-400) 88%, black);
+    border-color: var(--sl-accent-500);
+}
+
+/* Links acentuados Hotel (reservas, contactos, etc.) */
+:root[data-brand="hotel"] .link-accent {
+    color: var(--sl-accent-500);
+}
+
+:root[data-brand="hotel"] .link-accent:hover {
+    color: var(--sl-accent-400);
+}
+
+/* Focus ring coerente com o champanhe (acessibilidade) */
+:root[data-brand="hotel"] :is(a, button, input, textarea):focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--sl-accent-500), white 14%);
+    outline-offset: 2px;
+}
