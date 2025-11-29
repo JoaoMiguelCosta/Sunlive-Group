@@ -44,6 +44,11 @@ import GoalIcon from "./Goal.jsx";
 import ChartFrameIcon from "./ChartFrame.jsx";
 import BikeIcon from "./Bike.jsx";
 import WorkflowIcon from "./WorkFlow.jsx";
+import FencingIcon from "./Fencing.jsx";
+import HandballIcon from "./Handball.jsx";
+import VolleyballIcon from "./Volleyball.jsx";
+import JudoIcon from "./Judo.jsx";
+import SurfIcon from "./Surf.jsx";
 
 
 // Novos ícones (Travel / Logística)
@@ -122,6 +127,11 @@ export {
   ChartFrameIcon,
   BikeIcon,
   WorkflowIcon,
+  JudoIcon,
+  FencingIcon,
+  HandballIcon,
+  VolleyballIcon,
+  SurfIcon,
 };
 
 // ===== Mapa conveniente para usar por chave (iconKey) =====
@@ -185,6 +195,11 @@ export const ICONS = {
   chart: ChartFrameIcon,
   bike: BikeIcon,
   work: WorkflowIcon,
+  surf: SurfIcon,
+  judo: JudoIcon,
+  fencing: FencingIcon,
+  handball: HandballIcon,
+  volleyball: VolleyballIcon,
   
 
 

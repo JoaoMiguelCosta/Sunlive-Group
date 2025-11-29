@@ -7,10 +7,10 @@
     width: 100%;
     display: grid;
     place-items: center;
-  
 
-           
-      
+
+
+
     /* Tokens */
     --line-inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
     --ub-touch: clamp(36px, 4.2vw, 44px);
@@ -35,8 +35,8 @@
     position: relative;
     overflow: visible;
     min-height: var(--ub-touch);
-        align-items: center;
-        padding-block: 2px;
+    align-items: center;
+    padding-block: 2px;
 }
 
 .utilityBar .inner {
@@ -73,7 +73,7 @@
     border-radius: 2px;
     pointer-events: none;
     z-index: 1;
-  
+
 }
 
 /* Clusters */
@@ -488,10 +488,11 @@
     .utilityBar[data-variant="sports-header"] .right {
         padding-inline: 6px;
     }
-         .utilityBar[data-variant="group-header"] .left,
-         .utilityBar[data-variant="group-header"] .right {
-             padding-inline: 6px;
-         }
+
+    .utilityBar[data-variant="group-header"] .left,
+    .utilityBar[data-variant="group-header"] .right {
+        padding-inline: 6px;
+    }
 
     .backText {
         max-inline-size: 50vw;

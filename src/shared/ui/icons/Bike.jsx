@@ -1,18 +1,23 @@
 // src/shared/ui/icons/BikeIcon.jsx
-export default function BikeIcon({ className = "", size = 24, ...props }) {
+export default function BikeIcon({
+  size = 26,
+  color = "currentColor", // por defeito herda do CSS
+  className = "",
+  ...props
+}) {
   return (
     <svg
       viewBox="0 0 24 24"
       width={size}
       height={size}
       aria-hidden="true"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
       fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
+      stroke={color} // usa a prop tal como o MedalIcon
+      strokeWidth="1.8"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <circle cx="18.5" cy="17.5" r="3.5" />

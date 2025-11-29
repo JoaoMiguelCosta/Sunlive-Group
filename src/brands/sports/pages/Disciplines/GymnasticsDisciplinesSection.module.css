@@ -89,37 +89,24 @@
     border-radius: 999px;
     padding: 4px;
 
-    /* mesmo “mood” dos cards: preto + verde sports */
-    background:
-        /* highlight topo esquerdo */
-        radial-gradient(circle at 30% 0,
-            color-mix(in oklab,
-                var(--sl-sports-accent-300, #86efac),
-                white 10%) 0,
-            transparent 55%),
-        /* glow verde profundo em baixo/direita */
+/* Esfera preto + verde, com highlight suave */
+    background: radial-gradient(circle at 30% 20%,
+            color-mix(in oklab, var(--sl-accent-500, #2EC27E), white 8%) 0,
+            transparent 65%),
         radial-gradient(circle at 70% 80%,
-            color-mix(in oklab,
-                #000000,
-                var(--sl-sports-accent-700, #15803d) 40%) 0,
+            color-mix(in oklab, var(--sl-gold-400, #C78615), black 18%) 0,
             transparent 70%),
-        /* base noir escura */
-        color-mix(in oklab,
-            #020617,
-            black 40%);
+        color-mix(in oklab, #050609 80%, black 20%);
 
     border: 1px solid color-mix(in oklab,
-            var(--sl-sports-accent-500, #22c55e),
-            black 45%);
+            var(--sl-accent-600, #1F8D5C),
+            var(--sl-gold-400, #C78615) 28%);
 
-    box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.9),
-        0 10px 24px rgba(0, 0, 0, 0.95);
-
-    /* cor herdada pelo SVG (stroke: currentColor) */
-    color: color-mix(in oklab,
-            var(--sl-sports-accent-200, #bbf7d0),
-            white 6%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6),
+            0 0 18px rgba(46, 194, 126, 0.5);
+    
+        /* stroke dourado no ícone */
+        color: rgb(228, 191, 7);
 }
 
 .headerTitle {
@@ -128,6 +115,7 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
 }
+
 
 /* Chevron do acordeão */
 

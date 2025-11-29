@@ -52,6 +52,11 @@ import {
   ChartFrameIcon,
   BikeIcon,
   WorkflowIcon,
+  JudoIcon,
+  FencingIcon,
+  HandballIcon,
+  VolleyballIcon,
+  SurfIcon,
   
 } from "../ui/icons/index.js";
 
@@ -123,7 +128,11 @@ export const ICONS = {
   ChartFrameIcon,
   BikeIcon,
   WorkflowIcon,
-
+  JudoIcon,
+  FencingIcon,
+  HandballIcon,
+  VolleyballIcon,
+  SurfIcon,
 };
 
 export const FLAGS = {
