@@ -3,6 +3,8 @@ import { Outlet } from "react-router-dom";
 import UtilityBar from "../../../shared/components/UtilityBar";
 
 import HotelFooter from "../components/FooterHotel";
+import HotelPrimaryNav from "./HotelPrimaryNav.jsx"; // 👈 NOVO
+import HotelMasthead from "./HotelMasthead.jsx";
 
 import hotelBrand from "../configHotel.jsx";
 import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
@@ -13,7 +15,6 @@ import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
 import styles from "./HotelShell.module.css";
 
 export default function HotelShell({ backLink }) {
-
   const footerRaw = hotelBrand.sections?.footer;
   const footerData = buildFooterData(footerRaw, groupFooter, "footer-hotel");
 
@@ -34,7 +35,11 @@ export default function HotelShell({ backLink }) {
         lang={lang}
       />
 
-    
+      {/* Navegação principal do hotel */}
+      <HotelPrimaryNav />
+
+      {/* Brand masthead da Estalagem */}
+      <HotelMasthead />
 
       <main
         className={styles.main}

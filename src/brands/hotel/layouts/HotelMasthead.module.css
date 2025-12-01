@@ -1,0 +1,141 @@
+/* HotelMasthead — Estalagem de Sangalhos
+   Estilo Performance Prestige: Noir + Ouro + Champanhe-quente */
+
+.masthead {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    color: var(--sl-platinum-010, #f9fafb);
+
+    /* mesma régua do resto do site, em rem */
+    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
+    background: transparent;
+}
+
+.inner {
+    /* mesmo content width da nav/utility/footer (85rem) */
+    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--line-inset));
+    margin-inline: auto;
+
+    padding-block: clamp(0.8rem, 2.2vw, 1.4rem);
+    padding-inline: clamp(1.6rem, 3vw, 2.4rem);
+
+    border-radius: 0 0 18px 18px;
+    border-bottom: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 15%);
+    background:
+        radial-gradient(circle at 12% 0%,
+            color-mix(in oklab, var(--sl-accent-400, #9be15d), transparent 60%)),
+        radial-gradient(circle at 88% 0%,
+            color-mix(in oklab, var(--sl-accent-500, #7cc84b), transparent 70%)),
+        linear-gradient(to bottom, #050b18 0%, #02040a 55%, #02040a 100%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.8rem, 1.8vw, 1.2rem);
+}
+
+/* Logo */
+
+.logoWrap {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    inline-size: clamp(150px, 19vw, 190px);
+    height: auto;
+    filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.65));
+}
+
+/* Bloco de texto + botão */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Tipografia do nome do hotel */
+
+.hotelNameBlock {
+    text-align: center;
+}
+
+.hotelNamePrimary {
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.hotelNameSecondary {
+    margin-top: 0.2rem;
+    font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.82;
+}
+
+.hotelStars {
+    margin-top: 0.5rem;
+    letter-spacing: 0.4em;
+    font-size: 0.95rem;
+}
+
+/* Botão Contactar — ouro + champanhe-quente */
+
+.contactButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+
+    padding: 0.65rem 1.9rem;
+    border-radius: 999px;
+    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 14%);
+
+    background:
+        radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.09), transparent 60%),
+        linear-gradient(135deg,
+            color-mix(in oklab, #0d1726, black 4%),
+            color-mix(in oklab, #192534, black 8%));
+
+    color: var(--sl-platinum-010, #f9fafb);
+    font-weight: 600;
+    font-size: 0.98rem;
+    letter-spacing: 0.06em;
+
+    cursor: pointer;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.4),
+        0 18px 30px rgba(0, 0, 0, 0.55);
+    transition:
+        background 0.22s ease,
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+}
+
+.contactButton:hover,
+.contactButton:focus-visible {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg,
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.65);
+}
+
+.contactIcon {
+    font-size: 1.1rem;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+    .inner {
+        border-radius: 0 0 14px 14px;
+    }
+}

@@ -4,10 +4,13 @@
    ========================================================= */
 
 :root {
-    --section-inset: clamp(12px, 4vw, 40px);
-    --sl-container-lg: 1200px;
-}
+    /* 12px → 0.75rem | 40px → 2.5rem (opcional, mas coerente) */
+    --section-inset: clamp(0.75rem, 4vw, 2.5rem);
 
+    /* 1360px / 16 = 85rem */
+    --sl-container-lg: 85rem;
+    /* 👈 max content width global */
+}
 .shell {
     position: relative;
     width: 100%;
