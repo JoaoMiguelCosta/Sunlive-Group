@@ -19,6 +19,7 @@
   --footer-base: #070f1e;
 }
 
+/* ===== Overrides de fundo por marca ===== */
 
 :global([data-brand="travel"]) .footerWrap .frame {
   background:
@@ -31,7 +32,6 @@
     inset 0 0 0 1px rgba(255, 255, 255, .04),
     0 10px 24px rgba(0, 0, 0, .38);
 }
-
 
 :global([data-brand="sports"]) .footerWrap .frame {
   background:
@@ -63,6 +63,15 @@
     0 12px 28px rgba(0, 0, 0, .8);
 }
 
+/* 🏨 Hotel — Performance Prestige Noir + Gold + Champanhe-quente */
+:global([data-brand="hotel"]) .footerWrap .frame {
+  background:
+      radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, .18), transparent 60%),
+      radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, .12), transparent 60%),
+      #26170b;
+}
+
+/* ===== Frame genérico (usa --footer-base + --footer-accent) ===== */
 
 .frame {
   inline-size: calc(min(var(--sl-container-lg, 90rem), 100%) - 2 * var(--section-inset));
@@ -118,7 +127,7 @@
   border-top: var(--rule-thickness) solid rgba(199, 134, 21, 0.35);
 }
 
-/* Fallback sem color-mix */
+/* ===== Fallback sem color-mix ===== */
 @supports not (background: color-mix(in oklab, white, black)) {
   .frame {
     background:
@@ -127,17 +136,25 @@
       var(--footer-base);
   }
 
-  :global([data-brand="travel"]) .frame {
+  :global([data-brand="travel"]) .footerWrap .frame {
     background:
       radial-gradient(1200px 420px at 50% -10%, rgba(46, 167, 224, .15), transparent 60%),
       radial-gradient(900px 380px at 70% 115%, rgba(46, 167, 224, .10), transparent 60%),
       var(--footer-base);
   }
 
-  :global([data-brand="sports"]) .frame {
+  :global([data-brand="sports"]) .footerWrap .frame {
     background:
       radial-gradient(1200px 420px at 50% -10%, rgba(46, 194, 126, .15), transparent 60%),
       radial-gradient(900px 380px at 70% 115%, rgba(46, 194, 126, .10), transparent 60%),
       var(--footer-base);
+  }
+
+  /* 🏨 Hotel — fallback sem color-mix (champanhe-quente) */
+  :global([data-brand="hotel"]) .footerWrap .frame {
+    background:
+      radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, .18), transparent 60%),
+      radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, .12), transparent 60%),
+      #26170b;
   }
 }

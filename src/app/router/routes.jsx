@@ -15,7 +15,6 @@ import SportsShellInner from "../../brands/sports/layouts/SportsShellInner.jsx";
 /* Sports — páginas */
 import HomePageSports from "../../brands/sports/pages/Home/index.jsx";
 import TrainingCampsPage from "../../brands/sports/pages/TrainingCamps/index.jsx";
-
 import AcademiesPage from "../../brands/sports/pages/Academies/index.jsx";
 import EventsPage from "../../brands/sports/pages/Events/index.jsx";
 import AthletesPage from "../../brands/sports/pages/Athletes/index.jsx";
@@ -28,11 +27,11 @@ import LogisticsPage from "../../brands/sports/pages/Logistics/index.jsx";
 import ConsultancyPage from "../../brands/sports/pages/Consultancy/index.jsx";
 import ContactsPage from "../../brands/sports/pages/Contacts/index.jsx";
 
-/*
+/* Hotel — layout + página Home */
+import HotelShellHome from "../../brands/hotel/layouts/HotelShellHome.jsx";
+import HomePageHotel from "../../brands/hotel/pages/Home/index.jsx";
 
 
-import Gallery from "../../brands/sports/pages/Gallery.jsx";
-*/
 
 export default function AppRoutes() {
   return (
@@ -73,12 +72,12 @@ export default function AppRoutes() {
         <Route path="infrastructures" element={<InfrastructuresPage />} />
         <Route path="logistics" element={<LogisticsPage />} />
         <Route path="consultancy" element={<ConsultancyPage />} />
-        <Route path="contacts" element={<ContactsPage />} /> {/* 👈 aqui */}
+        <Route path="contacts" element={<ContactsPage />} />
         {/*
 
 
-<Route path="gallery" element={<Gallery />} />
-*/}
+        <Route path="gallery" element={<Gallery />} />
+        */}
         {/* Qualquer sub-rota inválida dentro de /sports → home de Sports */}
         <Route
           path="*"
@@ -86,6 +85,14 @@ export default function AppRoutes() {
         />
       </Route>
 
+      {/* ===== Submarca — Hotel ===== */}
+
+      {/* Grupo único: HOME do Hotel (back → Sunlive Group) */}
+      <Route path="/sunlive-group/hotel" element={<HotelShellHome />}>
+        <Route index element={<HomePageHotel />} />
+      </Route>
+
+      {/* Redirecionamentos legacy */}
       <Route
         path="/sunlive-group-logos"
         element={<Navigate to="/sunlive-group/logos" replace />}

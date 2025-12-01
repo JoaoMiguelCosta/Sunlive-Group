@@ -549,3 +549,54 @@
     border-color:
         color-mix(in oklab, var(--accent), white 12%);
 }
+
+/* =======================================================
+   Variant: Hotel Header — Estalagem (champanhe-quente)
+   ======================================================= */
+
+.utilityBar[data-variant="hotel-header"] {
+    --accent: var(--sl-accent-500, #E6C893);
+    --sl-container-lg: 85rem;
+}
+
+/* Desativar régua interna, usamos a border-bottom deste header */
+.utilityBar[data-variant="hotel-header"] .inner::after {
+    content: none;
+}
+
+.utilityBar[data-variant="hotel-header"] .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
+    margin-inline: auto;
+    box-sizing: border-box;
+
+    /* linha inferior em champanhe-quente */
+    border-bottom: 2px solid rgba(255, 162, 0, .85);
+}
+
+/* Clusters left/right alinhados ao restante layout */
+.utilityBar[data-variant="hotel-header"] .left,
+.utilityBar[data-variant="hotel-header"] .right {
+    display: flex;
+    align-items: center;
+    gap: var(--ub-gap, .75rem);
+    min-width: 0;
+}
+
+/* Idiomas — item ativo + chevron aberto em champanhe */
+.utilityBar[data-variant="hotel-header"] .langItem[aria-current="true"] {
+    color: var(--accent);
+    background: color-mix(in oklab, var(--accent), transparent 82%);
+}
+
+.utilityBar[data-variant="hotel-header"] .langBtn[data-open="true"] .chevron {
+    color: var(--accent);
+}
+
+/* BackLink com moldura em champanhe-quente */
+.utilityBar[data-variant="hotel-header"] .backLink {
+    border-color: color-mix(in oklab, var(--accent), white 12%);
+}

@@ -146,7 +146,7 @@ export const overview = {
   homeCard: {
     renderAs: "image",
     imageSrc: homeImg,
-    href: "/",
+    href: "/sunlive-group/hotel",
     label: "Our Home",
     sub: "Sunlive",
   },

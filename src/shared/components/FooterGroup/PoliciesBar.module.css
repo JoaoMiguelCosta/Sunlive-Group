@@ -128,15 +128,23 @@
 
 :global([data-brand="travel"]) .sectionWrap {
     --policies-accent: #2EA7E0;
-    /* azul-atlântico */
 }
 
 :global([data-brand="sports"]) .sectionWrap {
     --policies-accent: #2EC27E;
-    /* verde-vital */
 }
 
-/* opcional, mas explícito — Group = ouro */
+/* Group = ouro */
 :global([data-brand="group"]) .sectionWrap {
     --policies-accent: var(--sl-gold-400, #c78615);
+}
+
+/* 🏨 Hotel — champanhe-quente + fundo Noir quente */
+:global([data-brand="hotel"]) .sectionWrap {
+    --policies-accent: var(--sl-accent-500, #E6C893);
+
+    background:
+            radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, .18), transparent 60%),
+            radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, .12), transparent 60%),
+            #26170b;
 }

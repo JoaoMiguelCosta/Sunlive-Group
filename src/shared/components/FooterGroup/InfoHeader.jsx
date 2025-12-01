@@ -59,6 +59,14 @@ export default function InfoHeader({ data }) {
       ? withBrandEmph(customIntro, brandName)
       : genericIntro;
 
+  // ========= Telefones (reciclável) =========
+  // Junta o telefone principal + quaisquer telefones extra num único array
+  const phoneItems = [];
+  if (contacts?.phone) phoneItems.push(contacts.phone);
+  if (Array.isArray(contacts?.phones)) {
+    phoneItems.push(...contacts.phones);
+  }
+
   return (
     <section className={styles.strip} aria-label="Footer — Company Info">
       <div className={styles.inner}>
@@ -133,6 +141,7 @@ export default function InfoHeader({ data }) {
           </h3>
 
           <div className={styles.contentLeadIcon}>
+            {/* Email */}
             <div className={styles.contactRow}>
               <span className={styles.cIcon}>
                 <MailIcon aria-hidden="true" />
@@ -146,18 +155,30 @@ export default function InfoHeader({ data }) {
               )}
             </div>
 
-            <div className={styles.contactRow}>
-              <span className={styles.cIcon}>
-                <PhoneIcon aria-hidden="true" />
-              </span>
-              {contacts?.phone?.href ? (
-                <a href={contacts.phone.href} className={styles.link}>
-                  {contacts.phone.label}
-                </a>
-              ) : (
+            {/* Telefones (1 ou vários) */}
+            {phoneItems.length > 0 ? (
+              phoneItems.map((phone, idx) => (
+                <div className={styles.contactRow} key={phone.key || idx}>
+                  <span className={styles.cIcon}>
+                    <PhoneIcon aria-hidden="true" />
+                  </span>
+                  {phone?.href ? (
+                    <a href={phone.href} className={styles.link}>
+                      {phone.label}
+                    </a>
+                  ) : (
+                    <span className={styles.textMuted}>—</span>
+                  )}
+                </div>
+              ))
+            ) : (
+              <div className={styles.contactRow}>
+                <span className={styles.cIcon}>
+                  <PhoneIcon aria-hidden="true" />
+                </span>
                 <span className={styles.textMuted}>—</span>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
 

@@ -304,9 +304,7 @@
 .socialBtn:hover {
     transform: translateY(-1px);
     background: var(--info-accent);
-    /* 👈 fundo na cor da marca */
     color: var(--sl-platinum-010);
-    /* texto/ícone bem claro */
     border-color: color-mix(in oklab, var(--info-accent), white 16%);
     box-shadow: 0 0 0 1px color-mix(in oklab, var(--info-accent), black 40%);
 }
@@ -385,20 +383,18 @@
 
 :global([data-brand="travel"]) .strip {
     --info-accent: #2EA7E0;
-    /* azul-atlântico */
 }
 
 :global([data-brand="sports"]) .strip {
     --info-accent: #2EC27E;
-    /* verde-vital */
 }
 
-/* opcional, mas explícito — Group = ouro */
+/* Group = ouro */
 :global([data-brand="group"]) .strip {
     --info-accent: var(--sl-gold-400, #c78615);
 }
 
-/* Overrides — SPORTS (spacing/layout) */
+/* SPORTS — ajuste de espaçamento */
 :global([data-brand="sports"]) .strip {
     padding-block: clamp(1rem, 2vw, 1.35rem);
 }
@@ -415,4 +411,32 @@
         --gap-x: 1rem;
         --gap-y: .8rem;
     }
+}
+
+/* 🏨 HOTEL — Noir quente + champanhe-quente (mais claro) */
+:global([data-brand="hotel"]) .strip {
+    --info-accent: var(--sl-accent-500, #E6C893);
+
+    background:
+            radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, .18), transparent 60%),
+            radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, .12), transparent 60%),
+            #26170b;
+}
+
+/* reforço do contraste no Hotel */
+:global([data-brand="hotel"]) .about p,
+:global([data-brand="hotel"]) .address,
+:global([data-brand="hotel"]) .link {
+    color: #fff5e5;
+}
+
+:global([data-brand="hotel"]) .title {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--title-gap);
+    font-size: clamp(1.05rem, 1.1rem + .3vw, 1.25rem);
+    font-weight: 800;
+    letter-spacing: .2px;
+    margin: 0 0 .6rem 0;
+    color: var(--sl-platinum-100);
 }

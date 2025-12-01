@@ -83,3 +83,8 @@
 :global([data-brand="group"]) .sectionWrap {
     --ack-accent: var(--sl-gold-400, #c78615);
 }
+
+:global([data-brand="hotel"]) .sectionWrap {
+    /* usa o accent do tema do hotel, com fallback */
+    --ack-accent: var(--sl-accent-500, #E6C893);
+}

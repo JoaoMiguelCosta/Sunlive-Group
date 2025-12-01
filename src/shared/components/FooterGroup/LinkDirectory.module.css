@@ -156,7 +156,7 @@
 }
 
 .pill:hover {
-transform: translateY(-1px);
+    transform: translateY(-1px);
     background: linear-gradient(135deg,
             color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
             color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
@@ -260,15 +260,18 @@ transform: translateY(-1px);
 
 :global([data-brand="travel"]) .sectionWrap {
     --ld-accent: #2EA7E0;
-    /* azul-atlântico */
 }
 
 :global([data-brand="sports"]) .sectionWrap {
     --ld-accent: #2EC27E;
-    /* verde-vital */
 }
 
-/* opcional mas explícito — Group = ouro */
+/* Group = ouro */
 :global([data-brand="group"]) .sectionWrap {
     --ld-accent: var(--sl-gold-400, #c78615);
+}
+
+/* 🏨 Hotel — champanhe-quente (hospitalidade) */
+:global([data-brand="hotel"]) .sectionWrap {
+    --ld-accent: var(--sl-accent-500, #E6C893);
 }
