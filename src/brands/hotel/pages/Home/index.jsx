@@ -1,6 +1,9 @@
+// src/brands/hotel/pages/Home/index.jsx
 // Estalagem de Sangalhos — HomePage (usa Home.module.css como layout)
 
 import styles from "./Home.module.css";
+import HotelHeroBanner from "../../components/Home/HotelHeroBanner/HotelHeroBanner.jsx";
+import HotelOverviewSection from "../../components/Home/HotelOverview/index.jsx";
 
 export default function HomePageHotel() {
   return (
@@ -10,7 +13,11 @@ export default function HomePageHotel() {
         role="region"
         aria-label="Estalagem de Sangalhos — Home"
       >
-        {/* 👇 Quando tiveres conteúdo real da Home, colocas aqui dentro */}
+        {/* Masthead da Home */}
+        <HotelHeroBanner />
+
+        {/* Sobre a Estalagem */}
+        <HotelOverviewSection />
       </main>
     </div>
   );

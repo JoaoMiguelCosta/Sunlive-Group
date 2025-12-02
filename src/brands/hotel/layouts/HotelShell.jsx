@@ -4,7 +4,7 @@ import UtilityBar from "../../../shared/components/UtilityBar";
 
 import HotelFooter from "../components/FooterHotel";
 import HotelPrimaryNav from "./HotelPrimaryNav.jsx"; // 👈 NOVO
-import HotelMasthead from "./HotelMasthead.jsx";
+
 
 import hotelBrand from "../configHotel.jsx";
 import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
@@ -38,8 +38,7 @@ export default function HotelShell({ backLink }) {
       {/* Navegação principal do hotel */}
       <HotelPrimaryNav />
 
-      {/* Brand masthead da Estalagem */}
-      <HotelMasthead />
+   
 
       <main
         className={styles.main}

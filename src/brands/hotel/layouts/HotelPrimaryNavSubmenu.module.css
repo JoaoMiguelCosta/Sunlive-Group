@@ -1,0 +1,289 @@
+/* =========================
+   Mega-submenu
+   ========================= */
+
+.submenuWrap {
+    position: absolute;
+    top: 100%;
+
+    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
+    inline-size: calc(min(var(--sl-container-lg, 1360px), 100%) - 2 * var(--line-inset));
+
+    left: 50%;
+    transform: translate(-50%, -8px);
+
+    padding-block: 0.4rem 1.6rem;
+
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s ease;
+}
+
+.submenuVisible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+
+.submenuInner {
+    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
+    --column-gap: 0.6rem;
+
+    inline-size: 100%;
+    margin-inline: 0;
+
+    display: flex;
+    gap: var(--column-gap);
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+/* 6 colunas (desktop base) */
+
+.columnCard {
+    flex: 0 0 calc((100% - 5 * var(--column-gap)) / 6);
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    padding: 1.05rem 1.25rem 1.25rem;
+    border-radius: 26px;
+
+    background:
+        radial-gradient(circle at 0 100%,
+            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 74%)),
+        radial-gradient(circle at 100% 0,
+            color-mix(in oklab, #020617, transparent 10%)),
+        linear-gradient(to bottom, #02030c 0%, #010109 52%, #010106 100%);
+
+    border: 1px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 48%);
+
+    box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.95),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+
+    opacity: 0.88;
+    transform: translateY(4px);
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+}
+
+.columnCardActive {
+    opacity: 1;
+    transform: translateY(0);
+    border-color: color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 22%);
+    box-shadow:
+        0 26px 70px rgba(0, 0, 0, 1),
+        0 0 0 1px color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 36%);
+}
+
+.linkList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.linkItem+.linkItem {
+    margin-top: 0.3rem;
+}
+
+.linkItem a {
+    position: relative;
+    display: inline-block;
+    padding-left: 1rem;
+
+    color: var(--sl-platinum-010, #f9fafb);
+    font-size: clamp(0.78rem, 0.74rem + 0.25vw, 0.85rem);
+    font-weight: 400;
+    text-decoration: none;
+    opacity: 0.85;
+    white-space: nowrap;
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease,
+        color 0.18s ease;
+}
+
+.linkItem a::before {
+    content: "";
+    position: absolute;
+    left: 0.1rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+
+    inline-size: 6px;
+    block-size: 6px;
+
+    border-right: 1.5px solid color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 15%);
+    border-bottom: 1.5px solid color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 15%);
+
+    opacity: 0.9;
+    pointer-events: none;
+    transition:
+        transform 0.18s ease,
+        opacity 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.linkItem a:hover,
+.linkItem a:focus-visible {
+    opacity: 1;
+    transform: translateX(2px);
+    color: color-mix(in oklab,
+            var(--sl-gold-300, #fde68a),
+            var(--sl-platinum-010, #f9fafb) 30%);
+
+    background:
+        radial-gradient(circle at 0 0,
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 74%)),
+        radial-gradient(circle at 100% 0,
+            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 78%)),
+        linear-gradient(90deg,
+            #02030c 0%,
+            #090310 35%,
+            #120706 70%,
+            #1a1207 100%);
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+
+    border-radius: 999px;
+    padding-block: 0.12rem;
+    padding-right: 0.5rem;
+}
+
+.linkItem a:hover::before,
+.linkItem a:focus-visible::before {
+    transform: translateY(-50%) translateX(2px) rotate(-45deg);
+    border-color: color-mix(in oklab, var(--sl-gold-300, #fde68a), black 10%);
+}
+
+/* =====================
+   Responsivo (submenu)
+   ===================== */
+
+/* < 1360px — 1 cartão ancorado ao botão */
+@media (max-width: 1360px) {
+    .submenuWrap {
+        padding-block: 0.35rem 1.2rem;
+    }
+
+    .submenuInner {
+        display: block;
+        position: relative;
+        min-height: 0;
+    }
+
+    .columnCard[aria-hidden="true"] {
+        display: none;
+    }
+
+    .columnCard {
+        position: absolute;
+        top: 0;
+
+        width: 320px;
+        max-width: 100%;
+        padding: 0.95rem 1.1rem 1.1rem;
+        border-radius: 24px;
+
+        left: clamp(0px,
+                calc(var(--submenu-anchor-x, 50%) - 160px),
+                calc(100% - 320px));
+
+        margin: 0;
+    }
+
+    .linkItem a {
+        font-size: 0.8rem;
+        white-space: normal;
+    }
+}
+
+/* ≤ 900px — submenu centrado/cartão único */
+@media (max-width: 900px) {
+
+    .submenuWrap {
+        inline-size: calc(min(var(--sl-container-lg, 1360px), 100%) - 2 * var(--line-inset));
+        left: 50%;
+        transform: translate(-50%, -4px);
+    }
+
+    .submenuVisible {
+        transform: translate(-50%, 0);
+    }
+
+    .submenuInner {
+        position: static;
+    }
+
+    .columnCard {
+        position: static;
+        width: 100%;
+        max-width: 560px;
+        margin-inline: auto;
+    }
+}
+
+/* < 640px — submenu compacto */
+@media (max-width: 640px) {
+    .submenuWrap {
+        inline-size: calc(min(var(--sl-container-lg, 1360px), 100%) - 2 * var(--line-inset));
+        padding-block: 0.3rem 0.9rem;
+    }
+
+    .columnCard {
+        max-width: 100%;
+        padding: 0.85rem 0.9rem 0.95rem;
+        border-radius: 22px;
+        margin-inline: 0;
+    }
+
+    .linkItem a {
+        font-size: 0.78rem;
+        padding-left: 0.85rem;
+    }
+}
+
+/* ≥ 1361px — usar layout de 1 cartão ancorado */
+@media (min-width: 1361px) {
+    .submenuInner {
+        display: block;
+        position: relative;
+        min-height: 0;
+    }
+
+    .columnCard[aria-hidden="true"] {
+        display: none;
+    }
+
+    .columnCard {
+        position: absolute;
+        top: 0;
+
+        width: 320px;
+        max-width: 100%;
+        padding: 0.95rem 1.1rem 1.1rem;
+        border-radius: 24px;
+
+        left: clamp(0px,
+                calc(var(--submenu-anchor-x, 50%) - 160px),
+                calc(100% - 320px));
+
+        margin: 0;
+        flex: 0 0 auto;
+    }
+
+    .linkItem a {
+        font-size: 0.8rem;
+        white-space: normal;
+    }
+}

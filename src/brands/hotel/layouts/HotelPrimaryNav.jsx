@@ -1,74 +1,38 @@
+// src/brands/hotel/layouts/HotelPrimaryNav.jsx
 import { useState, useRef, useEffect } from "react";
-import styles from "./HotelPrimaryNav.module.css";
+import navStyles from "./HotelPrimaryNav.module.css";
+import HotelPrimaryNavSubmenu from "./HotelPrimaryNavSubmenu.jsx";
+import { HOTEL_PRIMARY_NAV_ITEMS } from "../configHotel.jsx";
 
-const NAV_ITEMS = [
-  {
-    id: "sobre",
-    label: "Sobre",
-    links: [
-      { label: "Sobre a Estalagem", href: "#sobre-estalagem" },
-      { label: "A nossa História", href: "#sobre-historia" },
-      { label: "Compromisso com a Qualidade", href: "#sobre-qualidade" },
-      { label: "A Região da Bairrada", href: "#sobre-bairrada" },
-    ],
-  },
-  {
-    id: "estadia",
-    label: "Estadia",
-    links: [
-      { label: "Quartos e Suites", href: "#estadia-quartos" },
-      { label: "Comodidades Incluídas", href: "#estadia-comodidades" },
-      { label: "Políticas de Estadia", href: "#estadia-politicas" },
-      { label: "Para Quem", href: "#estadia-para-quem" },
-      { label: "Porquê Escolher a Estalagem", href: "#estadia-porque" },
-    ],
-  },
-  {
-    id: "restauracao",
-    label: "Restauração",
-    links: [
-      { label: "Restaurante panorâmico", href: "#restaurante-panoramico" },
-      { label: "Pequeno-almoço", href: "#restaurante-pequeno-almoco" },
-      { label: "Buffet de Domingo", href: "#restaurante-buffet" },
-      { label: "Bar & Lounge", href: "#restaurante-bar" },
-      { label: "Serviço de Catering", href: "#restaurante-catering" },
-    ],
-  },
-  {
-    id: "instalacoes",
-    label: "Instalações & Lazer",
-    links: [
-      { label: "Bem-estar e Lazer", href: "#lazer-bem-estar" },
-      { label: "Mobilidade", href: "#lazer-mobilidade" },
-      { label: "Serviços Complementares", href: "#lazer-servicos" },
-      { label: "Recepção & Apoio", href: "#lazer-recepcao" },
-    ],
-  },
-  {
-    id: "eventos",
-    label: "Eventos",
-    links: [
-      { label: "Tipos de Eventos", href: "#eventos-tipos" },
-      { label: "Orçamentos Personalizados", href: "#eventos-orcamentos" },
-    ],
-  },
-  {
-    id: "informacoes",
-    label: "Informações",
-    links: [
-      { label: "Testemunhos", href: "#info-testemunhos" },
-      { label: "Localização", href: "#info-localizacao" },
-    ],
-  },
-];
+// hooks partilhados
+import { useOutsideClick } from "../../../shared/hooks/useOutsideClick.js";
+import useSmartAnchorNav from "../../../shared/hooks/useSmartAnchorNav.js";
+
+const NAV_ITEMS = HOTEL_PRIMARY_NAV_ITEMS;
 
 export default function HotelPrimaryNavHamburger() {
   const [openId, setOpenId] = useState(null);
   const [submenuAnchorX, setSubmenuAnchorX] = useState(null);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
+  const navRootRef = useRef(null); // para outside-click
   const navInnerRef = useRef(null);
   const buttonRefs = useRef({});
+
+  const closeAll = () => {
+    setIsNavOpen(false);
+    setOpenId(null);
+  };
+
+  // fecha nav/submenu ao clicar fora
+  useOutsideClick(navRootRef, closeAll, isNavOpen || !!openId);
+
+  // navegação inteligente para anchors
+  const { handleSmartAnchorClick } = useSmartAnchorNav({
+    // quando tiveres header fixo, afina este offset
+    offset: 88,
+    closeOverlays: closeAll,
+  });
 
   const handleEnterItem = (id) => {
     setOpenId(id);
@@ -84,15 +48,9 @@ export default function HotelPrimaryNavHamburger() {
 
   const hasOpen = Boolean(openId);
 
-  // Calcula a posição horizontal do botão ativo para <1360px
+  // Calcula a posição horizontal do botão ativo (todas as larguras desktop)
   useEffect(() => {
     if (!openId || typeof window === "undefined") {
-      setSubmenuAnchorX(null);
-      return;
-    }
-
-    const isNarrow = window.innerWidth < 1360;
-    if (!isNarrow) {
       setSubmenuAnchorX(null);
       return;
     }
@@ -113,46 +71,47 @@ export default function HotelPrimaryNavHamburger() {
 
   return (
     <nav
-      className={styles.nav}
+      ref={navRootRef}
+      className={navStyles.nav}
       aria-label="Navegação principal da Estalagem"
       onMouseLeave={handleMouseLeave}
     >
-      <div className={styles.navInner} ref={navInnerRef}>
+      <div className={navStyles.navInner} ref={navInnerRef}>
         {/* Barra topo (só aparece em mobile) */}
-        <div className={styles.navTopRow}>
-          <span className={styles.navTitle}>Explorar Estalagem</span>
+        <div className={navStyles.navTopRow}>
+          <span className={navStyles.navTitle}>Explorar Estalagem</span>
           <button
             type="button"
-            className={`${styles.burgerButton} ${
-              isNavOpen ? styles.burgerButtonActive : ""
+            className={`${navStyles.burgerButton} ${
+              isNavOpen ? navStyles.burgerButtonActive : ""
             }`}
             aria-label="Alternar menu de navegação"
             aria-expanded={isNavOpen}
             onClick={() => setIsNavOpen((prev) => !prev)}
           >
-            <span className={styles.burgerBox}>
-              <span className={styles.burgerLine} />
+            <span className={navStyles.burgerBox}>
+              <span className={navStyles.burgerLine} />
             </span>
           </button>
         </div>
 
         <div
-          className={`${styles.navListWrap} ${
-            isNavOpen ? styles.navListWrapOpen : ""
+          className={`${navStyles.navListWrap} ${
+            isNavOpen ? navStyles.navListWrapOpen : ""
           }`}
         >
-          <ul className={styles.navList}>
+          <ul className={navStyles.navList}>
             {NAV_ITEMS.map((item) => (
               <li
                 key={item.id}
-                className={`${styles.navListItem} ${
-                  openId === item.id ? styles.navListItemActive : ""
+                className={`${navStyles.navListItem} ${
+                  openId === item.id ? navStyles.navListItemActive : ""
                 }`}
               >
                 <button
                   type="button"
-                  className={`${styles.navButton} ${
-                    openId === item.id ? styles.navButtonActive : ""
+                  className={`${navStyles.navButton} ${
+                    openId === item.id ? navStyles.navButtonActive : ""
                   }`}
                   onMouseEnter={() => handleEnterItem(item.id)}
                   onClick={() => handleToggleClick(item.id)}
@@ -161,7 +120,7 @@ export default function HotelPrimaryNavHamburger() {
                   }}
                 >
                   <span>{item.label}</span>
-                  <span className={styles.chevron} aria-hidden="true" />
+                  <span className={navStyles.chevron} aria-hidden="true" />
                 </button>
               </li>
             ))}
@@ -169,37 +128,14 @@ export default function HotelPrimaryNavHamburger() {
         </div>
       </div>
 
-      <div
-        className={`${styles.submenuWrap} ${
-          hasOpen ? styles.submenuVisible : ""
-        }`}
-        style={
-          submenuAnchorX != null
-            ? { "--submenu-anchor-x": `${submenuAnchorX}px` }
-            : undefined
-        }
-      >
-        <div className={styles.submenuInner}>
-          {NAV_ITEMS.map((group) => (
-            <section
-              key={group.id}
-              className={`${styles.columnCard} ${
-                openId === group.id ? styles.columnCardActive : ""
-              }`}
-              aria-label={group.label}
-              aria-hidden={openId !== group.id}
-            >
-              <ul className={styles.linkList}>
-                {group.links.map((link) => (
-                  <li key={link.href} className={styles.linkItem}>
-                    <a href={link.href}>{link.label}</a>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
-      </div>
+      {/* Submenu separado */}
+      <HotelPrimaryNavSubmenu
+        items={NAV_ITEMS}
+        openId={openId}
+        hasOpen={hasOpen}
+        submenuAnchorX={submenuAnchorX}
+        onAnchorClick={handleSmartAnchorClick}
+      />
     </nav>
   );
 }

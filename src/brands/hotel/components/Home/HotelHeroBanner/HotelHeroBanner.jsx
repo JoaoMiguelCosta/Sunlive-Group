@@ -1,6 +1,19 @@
 // src/brands/hotel/components/HotelMasthead/HotelMasthead.jsx
-import estalagemLogo from "..//assets/estalagem.png";
-import styles from "./HotelMasthead.module.css";
+import estalagemLogo from "../../../assets/estalagem.png";
+import styles from "./HotelHeroBanner.module.css";
+
+// ícones e contactos partilhados
+import {
+  ICONS,
+  BUSINESS_UNIT_CONTACTS_DEFAULT,
+} from "../../../../../shared/config/BrandDefault.jsx";
+
+const PhoneIcon = ICONS.PhoneIcon;
+const HOTEL_PHONE = BUSINESS_UNIT_CONTACTS_DEFAULT.hotel?.phone ?? "";
+
+function normalizePhone(phone) {
+  return phone ? phone.replace(/\s+/g, "") : "";
+}
 
 /**
  * HotelMasthead
@@ -10,10 +23,21 @@ import styles from "./HotelMasthead.module.css";
  *  - ctaLabel?: string          (texto do botão, default "Contactar")
  *  - onContactClick?: () => {}  (callback ao clicar no botão)
  */
-export default function HotelMasthead({
+export default function HotelHeroBanner({
   ctaLabel = "Contactar",
   onContactClick,
 }) {
+  const handleClick = () => {
+    if (onContactClick) {
+      onContactClick();
+      return;
+    }
+
+    if (HOTEL_PHONE) {
+      window.location.href = `tel:${normalizePhone(HOTEL_PHONE)}`;
+    }
+  };
+
   return (
     <header
       className={styles.masthead}
@@ -41,10 +65,15 @@ export default function HotelMasthead({
           <button
             type="button"
             className={styles.contactButton}
-            onClick={onContactClick}
+            onClick={handleClick}
+            aria-label={
+              HOTEL_PHONE
+                ? `Contactar por telefone ${HOTEL_PHONE}`
+                : "Contactar Estalagem de Sangalhos"
+            }
           >
             <span className={styles.contactIcon} aria-hidden="true">
-              📞
+              <PhoneIcon size={18} />
             </span>
             <span>{ctaLabel}</span>
           </button>
