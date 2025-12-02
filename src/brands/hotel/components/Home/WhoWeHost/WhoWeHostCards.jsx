@@ -1,0 +1,33 @@
+// src/brands/hotel/components/Home/WhoWeHost/WhoWeHostCards.jsx
+import { ICONS } from "../../../../../shared/config/BrandDefault.jsx";
+import HotelWhoWeHostCard from "../../../../../shared/components/Hotel/HotelWhoWeHostCard/HotelWhoWeHostCard.jsx"
+import styles from "./WhoWeHostCards.module.css";
+
+export default function WhoWeHostCards({ items = [] }) {
+  if (!items.length) return null;
+
+  const mappedItems = items.map((item) => {
+    const IconComponent = ICONS[item.iconKey];
+    return {
+      ...item,
+      icon: IconComponent ? <IconComponent /> : null,
+    };
+  });
+
+  return (
+    <div className={styles.wrap}>
+      <div className={styles.grid}>
+        {mappedItems.map((item) => (
+          <div key={item.id} className={styles.item}>
+            <HotelWhoWeHostCard
+              id={item.id}
+              icon={item.icon}
+              title={item.title}
+              description={item.description}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

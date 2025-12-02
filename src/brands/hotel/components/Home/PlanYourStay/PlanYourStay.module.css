@@ -1,0 +1,131 @@
+/* src/brands/hotel/components/Home/PlanYourStay/PlanYourStay.module.css */
+.section {
+    background: #020617;
+    /* azul-noite */
+    padding-block: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.inner {
+    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)));
+    margin-inline: auto;
+    box-sizing: border-box;
+}
+/* Caixa principal com borda dourada */
+
+.box {
+    border: 2px solid color-mix(in oklab,
+                var(--sl-accent-600, #b8860b),
+                black 5%);
+        padding: clamp(2rem, 4vw, 2.6rem) clamp(1.8rem, 4vw, 3rem);
+        text-align: center;
+
+    background:
+        radial-gradient(circle at 0 0, #020b28, #020617 70%),
+        linear-gradient(180deg, #020617 0%, #020617 100%);
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.95),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.title {
+    margin: 0 0 0.9rem;
+    font-size: clamp(1.4rem, 1.2vw + 1.1rem, 1.7rem);
+    font-weight: 700;
+    color: #f9fafb;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: clamp(0.95rem, 0.5vw + 0.85rem, 1.05rem);
+    color: #e5e7eb;
+}
+
+/* Botões */
+
+.actions {
+    margin-top: clamp(1.6rem, 3vw, 2rem);
+    display: flex;
+    justify-content: center;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+}
+
+.actionButton {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+
+    padding-inline: 1.8rem;
+    padding-block: 0.7rem;
+
+    border-radius: 999px;
+    border: 2px solid color-mix(in oklab,
+            var(--sl-accent-600, #b8860b),
+            black 5%);
+
+    background:
+        radial-gradient(circle at 0 0, #064e3b, #020617 55%),
+        linear-gradient(90deg, #020617 0%, #1f2933 50%, #92400e 100%);
+
+    color: #f9fafb;
+    font-size: 0.96rem;
+    font-weight: 500;
+    text-decoration: none;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
+
+    transition:
+        transform 140ms ease-out,
+        box-shadow 140ms ease-out,
+        background-position 160ms ease-out;
+    background-size: 140% 100%;
+    background-position: 0% 0%;
+}
+
+.actionButton:hover {
+    transform: translateY(-2px);
+    background-position: 100% 0%;
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.95),
+        0 0 0 1px color-mix(in oklab,
+            var(--sl-accent-500, #e6c893),
+            white 4%);
+}
+
+.actionButton:active {
+    transform: translateY(0);
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* Ícone dentro do botão */
+
+.iconWrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    inline-size: 1.1rem;
+    block-size: 1.1rem;
+}
+
+.label {
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    .actionButton {
+        inline-size: min(16rem, 100%);
+    }
+
+    .label {
+        white-space: normal;
+    }
+}

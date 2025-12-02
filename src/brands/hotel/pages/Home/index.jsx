@@ -4,6 +4,10 @@
 import styles from "./Home.module.css";
 import HotelHeroBanner from "../../components/Home/HotelHeroBanner/HotelHeroBanner.jsx";
 import HotelOverviewSection from "../../components/Home/HotelOverview/index.jsx";
+import WhoWeHostSection from "../../components/Home/WhoWeHost/index.jsx";
+import FeaturedExperiencesSection from "../../components/Home/FeaturedExperiences/index.jsx";
+import SustainabilityImpactSection from "../../components/Home/Sustainability&Impact/index.jsx";
+import PlanYourStaySection from "../../components/Home/PlanYourStay/index.jsx";
 
 export default function HomePageHotel() {
   return (
@@ -18,6 +22,18 @@ export default function HomePageHotel() {
 
         {/* Sobre a Estalagem */}
         <HotelOverviewSection />
+
+        {/* Para quem é? */}
+        <WhoWeHostSection />
+
+        {/* Experiências em Destaque */}
+        <FeaturedExperiencesSection />
+
+        {/* Sustainability & Impact */}
+        <SustainabilityImpactSection />
+
+        {/* Call-to-action final — Plan Your Stay */}
+        <PlanYourStaySection />
       </main>
     </div>
   );

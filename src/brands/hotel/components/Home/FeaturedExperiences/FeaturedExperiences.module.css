@@ -1,0 +1,15 @@
+.sectionWrap {
+    position: relative;
+    isolation: isolate;
+    
+    color: var(--sl-platinum-100, #f9fafb);
+
+
+   
+}
+
+.inner {
+    
+    margin-inline: auto;
+    box-sizing: border-box;
+}

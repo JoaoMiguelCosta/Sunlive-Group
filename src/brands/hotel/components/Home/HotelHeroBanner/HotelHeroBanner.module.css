@@ -7,22 +7,22 @@
     width: 100%;
     color: var(--sl-platinum-010, #f9fafb);
 
-    /* mesma régua do resto do site, em rem */
-    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
+  
     background: transparent;
-
 }
 
 .inner {
     /* mesmo content width da nav/utility/footer (85rem) */
     inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--line-inset));
-    margin-inline: auto;
-
-    padding-block: clamp(0.8rem, 2.2vw, 1.4rem);
-    padding-inline: clamp(1.6rem, 3vw, 2.4rem);
-
-    border-radius: 0 0 18px 18px;
-    border-bottom: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 15%);
+        margin-inline: auto;
+    
+        padding-block: clamp(0.8rem, 2.2vw, 1.4rem);
+        padding-inline: clamp(1.6rem, 3vw, 2.4rem);
+    
+        border-radius: 0 0 18px 18px;
+        border-bottom: 2px solid color-mix(in oklab,
+                var(--sl-gold-500, #c78615),
+                black 15%);
     background:
         radial-gradient(circle at 12% 0%,
             color-mix(in oklab, var(--sl-accent-400, #9be15d), transparent 60%)),

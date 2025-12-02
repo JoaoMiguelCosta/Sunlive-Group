@@ -1,8 +1,7 @@
-:root {
-    /* recuo lateral base p/ Hotel (igual ao Sports) */
-    --section-inset: clamp(12px, 4vw, 40px);
-    --sl-container-lg: 1200px;
-}
+/* =========================================================
+   HomePage Hotel — Layout interno da página
+   Alinhado com o HotelShell (UtilityBar/Nav/Footer)
+   ========================================================= */
 
 /* ===== Page wrapper geral ===== */
 .pageWrap {
@@ -14,31 +13,31 @@
     color: var(--sl-color-text, #f6f7fb);
 
     /* herda o alinhamento do header/footer */
-    --sl-line-inset: var(--section-inset);
+    --sl-line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
 }
 
-/* ===== Conteúdo principal (usa o mesmo container do header) ===== */
+/* ===== Conteúdo principal (usa o mesmo container do header/nav/footer) ===== */
 .inner {
     position: relative;
     z-index: 1;
 
-    width: 100%;
-    max-width: min(var(--sl-container-lg, 1200px), 100%);
+    /* mesma largura efetiva do masthead / primary-nav / footer */
+    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)));
     margin-inline: auto;
 
-    /* alinhar com header/footer */
-    padding-inline: var(--section-inset);
+    /* recuo interior em relação à borda do shell */
+    padding-inline: 0;
     padding-block: clamp(1.6rem, 4vw, 2.4rem);
 
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 /* ===== Secções da Home com moldura champanhe ===== */
 .sections {
     position: relative;
 
-    width: 100%;
-    max-width: calc(min(var(--sl-container-lg, 1200px), 100%) - 2 * var(--sl-line-inset, 0px));
+    inline-size: 100%;
+    max-inline-size: 100%;
     margin-inline: auto;
 
     /* espaço em relação ao hero e ao footer */
@@ -76,7 +75,7 @@
 /* ===== Responsivo ===== */
 @media (max-width: 767.98px) {
     .inner {
-        padding-inline: clamp(1rem, 4vw, 1.4rem);
+        inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)));
         padding-block: clamp(1.2rem, 3.4vw, 1.8rem);
     }
 

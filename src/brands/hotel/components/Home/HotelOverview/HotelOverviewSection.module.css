@@ -1,7 +1,8 @@
-/* src/brands/hotel/pages/HotelHome/sections/HotelOverview/HotelOverviewSection.module.css */
-
 .section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+
+    /* espaço só em cima, em baixo fica colado ao cartão */
+    padding-block-start: clamp(2.5rem, 6vw, 4.5rem);
+    padding-block-end: 0;
 }

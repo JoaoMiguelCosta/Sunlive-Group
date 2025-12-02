@@ -7,8 +7,7 @@
 
 /* Cartão principal — base Noir com halo champanhe */
 .inner {
-    inline-size: min(var(--sl-container-lg, 76rem),
-            100% - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)));
+   
     margin-inline: auto;
 
     padding-block: clamp(2.2rem, 4vw, 3.1rem);

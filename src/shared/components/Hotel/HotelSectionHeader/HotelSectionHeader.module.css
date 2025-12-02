@@ -8,9 +8,7 @@
     width: 100%;
     padding-block: 0.7rem;
 
-    /* largura alinhada ao container global */
-    max-inline-size: min(var(--sl-container-lg, 76rem),
-            100% - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)));
+  
     margin-inline: auto;
 
     /* faixa champanhe-dourado sobre base noir */

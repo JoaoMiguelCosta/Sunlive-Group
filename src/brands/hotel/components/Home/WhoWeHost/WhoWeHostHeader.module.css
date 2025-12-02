@@ -1,0 +1,4 @@
+/* src/brands/hotel/components/Home/WhoWeHost/WhoWeHostHeader.module.css */
+.wrap {
+    margin-block-end: clamp(1.8rem, 3vw, 2.4rem);
+}
