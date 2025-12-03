@@ -1,0 +1,64 @@
+/* src/shared/components/hotel/HotelSectionDescription.module.css */
+
+/* Bloco de descrição em estilo Performance Prestige:
+   base Noir + halo champanhe-quente */
+.wrap {
+    position: relative;
+    isolation: isolate;
+
+    margin-block: clamp(1.25rem, 3vw, 2rem);
+    padding-block: clamp(1.2rem, 2.2vw, 1.8rem);
+    padding-inline: clamp(1.75rem, 4vw, 3.5rem);
+
+    background:
+        radial-gradient(circle at 0 0,
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 78%)),
+        radial-gradient(circle at 100% 100%,
+            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 82%)),
+        linear-gradient(135deg,
+            color-mix(in oklab, #020617, black 4%) 0%,
+            color-mix(in oklab, #020617, black 10%) 35%,
+            color-mix(in oklab, #020617, black 14%) 100%);
+
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--sl-accent-500, #e6c893), black 32%);
+
+    box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+/* Texto da descrição */
+.text {
+    margin: 0;
+    max-inline-size: 70rem;
+    margin-inline: auto;
+
+    color: var(--sl-platinum-010, #f9fafb);
+    font-size: clamp(0.98rem, 1vw + 0.82rem, 1.25rem);
+    line-height: 1.55;
+    font-weight: 400;
+}
+
+/* Alinhamentos */
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+/* Mobile: ligeiramente mais compacto */
+@media (max-width: 640px) {
+    .wrap {
+        margin-block: 1rem;
+        padding-block: 0.9rem;
+        padding-inline: 1.2rem;
+        border-radius: 1.25rem;
+    }
+
+    .text {
+        font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+    }
+}

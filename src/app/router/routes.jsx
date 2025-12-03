@@ -27,11 +27,11 @@ import LogisticsPage from "../../brands/sports/pages/Logistics/index.jsx";
 import ConsultancyPage from "../../brands/sports/pages/Consultancy/index.jsx";
 import ContactsPage from "../../brands/sports/pages/Contacts/index.jsx";
 
-/* Hotel — layout + página Home */
+/* Hotel — layouts + páginas */
 import HotelShellHome from "../../brands/hotel/layouts/HotelShellHome.jsx";
 import HomePageHotel from "../../brands/hotel/pages/Home/index.jsx";
-
-
+import AboutPageHotel from "../../brands/hotel/pages/About/index.jsx";
+import AccommodationPageHotel from "../../brands/hotel/pages/Accommodation/index.jsx";
 
 export default function AppRoutes() {
   return (
@@ -73,11 +73,6 @@ export default function AppRoutes() {
         <Route path="logistics" element={<LogisticsPage />} />
         <Route path="consultancy" element={<ConsultancyPage />} />
         <Route path="contacts" element={<ContactsPage />} />
-        {/*
-
-
-        <Route path="gallery" element={<Gallery />} />
-        */}
         {/* Qualquer sub-rota inválida dentro de /sports → home de Sports */}
         <Route
           path="*"
@@ -87,9 +82,13 @@ export default function AppRoutes() {
 
       {/* ===== Submarca — Hotel ===== */}
 
-      {/* Grupo único: HOME do Hotel (back → Sunlive Group) */}
+      {/* Grupo único: todas as páginas do Hotel usam o mesmo layout
+          (UtilityBar + Nav + Footer) com back → Sunlive Group */}
       <Route path="/sunlive-group/hotel" element={<HotelShellHome />}>
         <Route index element={<HomePageHotel />} />
+        <Route path="about" element={<AboutPageHotel />} />
+        <Route path="accommodation" element={<AccommodationPageHotel />} />
+        {/* futuras: <Route path="location" element={<LocationPageHotel />} /> etc */}
       </Route>
 
       {/* Redirecionamentos legacy */}

@@ -1,0 +1,8 @@
+/* src/brands/hotel/components/About/AboutTheHotel/AboutTheHotelHeader.module.css */
+
+.wrap {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    margin-block-end: clamp(1.2rem, 2.4vw, 1.8rem);
+}

@@ -132,3 +132,89 @@
         font-size: 0.95rem;
     }
 }
+
+/* ===== VARIANTE: Região da Bairrada ===== */
+
+.regionCard {
+    /* reutiliza o mesmo card mas com outra “skin” */
+    padding: 0;
+    background: transparent;
+    border-radius: 18px;
+    overflow: hidden;
+
+    border: 2px solid color-mix(in oklab, var(--hotel-gold), black 25%);
+    box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+/* faixa de topo em dourado (título + ícone) */
+.regionHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    padding-block: 0.6rem;
+    padding-inline: clamp(1.25rem, 2vw, 1.75rem);
+
+    background:
+        linear-gradient(90deg,
+            color-mix(in oklab, var(--hotel-gold), black 8%) 0%,
+            color-mix(in oklab, var(--hotel-gold), black 22%) 100%);
+}
+
+/* círculo do ícone */
+.iconCircle {
+    inline-size: 2.3rem;
+    block-size: 2.3rem;
+    border-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at 30% 20%, #111827, #02030c 70%);
+    border: 2px solid color-mix(in oklab, var(--hotel-gold), black 35%);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.9);
+
+    color: #f9fafb;
+    flex-shrink: 0;
+}
+
+.regionTitle {
+    margin: 0;
+    font-size: clamp(1.05rem, 1.1vw + 0.6rem, 1.2rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #111827;
+}
+
+/* faixa inferior com descrição em gradiente teal -> noir */
+.regionBody {
+    padding-block: 0.85rem;
+    padding-inline: clamp(1.25rem, 2.2vw, 1.75rem);
+
+    background:
+        linear-gradient(90deg,
+            color-mix(in oklab, #0f766e, black 25%) 0%,
+            color-mix(in oklab, #020617, black 5%) 100%);
+}
+
+.regionDescription {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #e5e7eb;
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+    .regionHeader {
+        padding-inline: 1rem;
+    }
+
+    .regionBody {
+        padding-inline: 1rem;
+    }
+}

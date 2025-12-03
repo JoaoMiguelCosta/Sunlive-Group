@@ -1,0 +1,13 @@
+/* src/brands/hotel/pages/HotelAbout/sections/UniqueNaturalSetting/UniqueNaturalSetting.module.css */
+
+.section {
+    position: relative;
+    isolation: isolate;
+    padding-block: clamp(2.5rem, 5vw, 3.25rem);
+}
+
+.inner {
+    inline-size: calc(min(var(--sl-container-lg, 80rem), 100%) - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)));
+    margin-inline: auto;
+    box-sizing: border-box;
+}

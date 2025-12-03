@@ -1,0 +1,15 @@
+/* src/brands/hotel/components/About/OurStoryMilestones/OurStoryMilestones.module.css */
+
+/* Wrapper da secção, alinhado com o restante layout do Hotel */
+.section {
+    position: relative;
+    isolation: isolate;
+    margin-block: clamp(2.75rem, 5vw, 3.9rem);
+}
+
+/* Mesma largura efectiva usada no resto do site (header/footer/home) */
+.inner {
+    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)));
+    margin-inline: auto;
+    box-sizing: border-box;
+}

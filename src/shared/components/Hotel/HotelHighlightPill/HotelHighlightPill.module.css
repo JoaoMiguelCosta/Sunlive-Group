@@ -1,0 +1,53 @@
+/* src/shared/components/hotel/HotelHighlightPill.module.css */
+
+/* Wrapper para facilitar alinhamento ao centro ou full-width */
+.wrap {
+    position: relative;
+    isolation: isolate;
+    inline-size: 100%;
+    max-inline-size: 60rem;
+    margin-inline: auto;
+}
+
+/* Pill principal – base Noir + dourado + champanhe-quente */
+.card {
+    position: relative;
+    isolation: isolate;
+
+    padding-block: clamp(0.9rem, 2.4vw, 1.25rem);
+    padding-inline: clamp(1.75rem, 4vw, 3rem);
+
+    border-radius: 999px;
+
+    background:
+        radial-gradient(circle at 0 0,
+            color-mix(in oklab, var(--sl-accent-500, #0f768f), transparent 55%)),
+        radial-gradient(circle at 100% 100%,
+            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 80%)),
+        linear-gradient(90deg,
+            #02030c 0%,
+            #050816 45%,
+            #090310 100%);
+
+    border: 2px solid color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 18%);
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+
+    color: var(--sl-on-surface, #f9fafb);
+    text-align: center;
+    font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+    line-height: 1.5;
+}
+
+/* Pequenas melhorias tipográficas */
+.card strong {
+    color: color-mix(in oklab, var(--sl-gold-300, #facc6b), white 10%);
+    font-weight: 600;
+}
+
+.card em,
+.card q {
+    font-style: italic;
+}

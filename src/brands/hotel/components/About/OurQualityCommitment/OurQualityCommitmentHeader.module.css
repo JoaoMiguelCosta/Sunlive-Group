@@ -1,0 +1,5 @@
+/* src/brands/hotel/components/About/OurQualityCommitment/OurQualityCommitmentHeader.module.css */
+
+.headerWrap {
+    margin-block-end: clamp(1.75rem, 3vw, 2.25rem);
+}

@@ -1,4 +1,5 @@
-import HotelShell from "./HotelShell";
+// src/brands/hotel/layouts/HotelShellHome.jsx
+import HotelShell from "./HotelShell.jsx";
 
 export default function HotelShellHome() {
   return (

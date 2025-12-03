@@ -1,0 +1,7 @@
+/* src/brands/hotel/pages/HotelAbout/sections/TheBairradaRegion/HotelAboutRegionBairrada.module.css */
+
+.wrap {
+    max-inline-size: 56rem;
+    margin-inline: auto;
+    margin-block-end: clamp(2rem, 4.5vw, 2.75rem);
+}

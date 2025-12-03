@@ -1,0 +1,165 @@
+.wrap {
+    position: relative;
+    isolation: isolate;
+    margin-block: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+/* Cartão principal — base Noir com halo champanhe/dourado */
+.inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+
+    max-inline-size: min(78rem, 100%);
+    margin-inline: auto;
+
+    padding-block: clamp(1.75rem, 3vw, 2.25rem);
+    padding-inline: clamp(1.5rem, 3vw, 2.5rem);
+
+    border-radius: clamp(1.75rem, 4vw, 2.75rem);
+
+    background:
+        radial-gradient(circle at 0 100%,
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 74%)),
+        radial-gradient(circle at 100% 0,
+            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 78%)),
+        linear-gradient(120deg,
+            #02030c 0%,
+            #050716 35%,
+            #090c18 70%,
+            color-mix(in oklab, var(--sl-accent-500, #e6c893), #050716 72%) 100%);
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+
+    border: 3px solid color-mix(in oklab,
+            var(--sl-accent-500, #e6c893),
+            black 22%);
+
+    color: #f9fafb;
+}
+
+/* Área central da imagem */
+.media {
+    position: relative;
+    inline-size: 100%;
+    min-block-size: clamp(10rem, 40vw, 18rem);
+
+    border-radius: calc(clamp(1.75rem, 4vw, 2.75rem) - 0.5rem);
+    overflow: hidden;
+
+    background: radial-gradient(circle at 50% 0,
+            color-mix(in oklab, var(--sl-accent-500, #e6c893), transparent 40%),
+            transparent 75%),
+        #0b0f1f;
+}
+
+/* Imagem real */
+.image {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+}
+
+/* Pequena faixa com o nome da tipologia, se existir */
+.caption {
+    position: absolute;
+    inset-inline: clamp(1rem, 3vw, 1.5rem);
+    inset-block-end: clamp(0.85rem, 2vw, 1.1rem);
+
+    padding-block: 0.35rem;
+    padding-inline: 0.75rem;
+
+    border-radius: 999px;
+
+    background: linear-gradient(120deg,
+            color-mix(in oklab, black, var(--sl-accent-500, #e6c893) 24%),
+            color-mix(in oklab, #020617, var(--sl-gold-400, #fbbf24) 32%));
+    color: #f9fafb;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+}
+
+/* Placeholder enquanto não existem imagens */
+.placeholder {
+    inline-size: 100%;
+    block-size: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ef4444;
+    /* vermelho temporário, tal como tens agora */
+}
+
+.placeholderLabel {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 600;
+}
+
+/* Botões de navegação laterais */
+.navButton {
+    inline-size: 2.4rem;
+    block-size: 2.4rem;
+
+    border-radius: 999px;
+    border: 2px solid color-mix(in oklab,
+            var(--sl-accent-500, #e6c893),
+            black 30%);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: radial-gradient(circle at 30% 30%,
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 60%),
+            transparent 80%),
+        #020617;
+
+    color: color-mix(in oklab, var(--sl-accent-500, #e6c893), white 10%);
+    cursor: pointer;
+
+    transition:
+        transform 140ms ease-out,
+        box-shadow 140ms ease-out,
+        background 160ms ease-out;
+}
+
+.navButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 1px rgba(250, 250, 250, 0.1),
+        0 10px 22px rgba(0, 0, 0, 0.8);
+}
+
+.navButton:active {
+    transform: translateY(0);
+    box-shadow: 0 0 0 1px rgba(250, 250, 250, 0.06),
+        0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+.navIcon {
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .inner {
+        grid-template-columns: 1fr;
+        row-gap: 1rem;
+        padding-inline: 1.1rem;
+    }
+
+    .navButton {
+        inline-size: 2.1rem;
+        block-size: 2.1rem;
+    }
+
+    .media {
+        min-block-size: 11.5rem;
+    }
+}
