@@ -19,24 +19,24 @@
 
     border-radius: clamp(1.75rem, 4vw, 2.75rem);
 
+    /* Noir + champanhe-quente + dourado */
     background:
-        radial-gradient(circle at 0 100%,
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 74%)),
-        radial-gradient(circle at 100% 0,
-            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 78%)),
+        radial-gradient(circle at 10% 100%,
+            color-mix(in oklab, var(--sl-accent-500, #e6c893), transparent 78%)),
+        radial-gradient(circle at 90% 0%,
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 82%)),
         linear-gradient(120deg,
             #02030c 0%,
             #050716 35%,
             #090c18 70%,
-            color-mix(in oklab, var(--sl-accent-500, #e6c893), #050716 72%) 100%);
+            color-mix(in oklab, var(--sl-accent-500, #e6c893), #050716 74%) 100%);
 
     box-shadow:
         0 18px 50px rgba(0, 0, 0, 0.9),
-        0 0 0 1px rgba(255, 255, 255, 0.04);
+        0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 0 40px rgba(230, 200, 147, 0.08);
 
-    border: 3px solid color-mix(in oklab,
-            var(--sl-accent-500, #e6c893),
-            black 22%);
+    border: 3px solid color-mix(in oklab, var(--sl-accent-500, #e6c893), black 24%);
 
     color: #f9fafb;
 }
@@ -50,10 +50,14 @@
     border-radius: calc(clamp(1.75rem, 4vw, 2.75rem) - 0.5rem);
     overflow: hidden;
 
-    background: radial-gradient(circle at 50% 0,
-            color-mix(in oklab, var(--sl-accent-500, #e6c893), transparent 40%),
-            transparent 75%),
-        #0b0f1f;
+    background:
+        radial-gradient(circle at 50% 0,
+            color-mix(in oklab, var(--sl-accent-500, #e6c893), transparent 42%),
+            transparent 72%),
+        radial-gradient(circle at 0 100%,
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 86%),
+            transparent 64%),
+        linear-gradient(180deg, #0b0f1f 0%, #060a16 100%);
 }
 
 /* Imagem real */
@@ -70,35 +74,82 @@
     inset-inline: clamp(1rem, 3vw, 1.5rem);
     inset-block-end: clamp(0.85rem, 2vw, 1.1rem);
 
-    padding-block: 0.35rem;
-    padding-inline: 0.75rem;
+    padding-block: 0.4rem;
+    padding-inline: 0.85rem;
 
     border-radius: 999px;
 
     background: linear-gradient(120deg,
-            color-mix(in oklab, black, var(--sl-accent-500, #e6c893) 24%),
-            color-mix(in oklab, #020617, var(--sl-gold-400, #fbbf24) 32%));
-    color: #f9fafb;
+            color-mix(in oklab, #020617, var(--sl-accent-500, #e6c893) 22%),
+            color-mix(in oklab, #020617, var(--sl-gold-400, #fbbf24) 28%));
+
+    border: 1px solid rgba(230, 200, 147, 0.28);
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+
+    color: rgba(255, 255, 255, 0.92);
     font-size: 0.85rem;
     letter-spacing: 0.03em;
 }
 
-/* Placeholder enquanto não existem imagens */
+/* Placeholder enquanto não existem imagens (Performance Prestige) */
 .placeholder {
     inline-size: 100%;
     block-size: 100%;
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 3vw, 1.6rem);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background:
+        radial-gradient(circle at 70% 0%,
+            rgba(230, 200, 147, 0.18),
+            transparent 55%),
+        radial-gradient(circle at 18% 100%,
+            rgba(251, 191, 36, 0.10),
+            transparent 58%),
+        linear-gradient(180deg, #050716 0%, #02030c 100%);
+}
 
-    background: #ef4444;
-    /* vermelho temporário, tal como tens agora */
+.placeholder::before {
+    /* “frame” interno subtil */
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border-radius: calc(clamp(1.75rem, 4vw, 2.75rem) - 1.05rem);
+    border: 1px solid rgba(230, 200, 147, 0.22);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+    pointer-events: none;
+}
+
+.placeholder::after {
+    /* grain leve */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 3px 3px;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    pointer-events: none;
 }
 
 .placeholderLabel {
-    font-size: clamp(1.4rem, 3vw, 1.8rem);
-    font-weight: 600;
+    position: relative;
+    z-index: 1;
+
+    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.92),
+            rgba(230, 200, 147, 0.96));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
 }
 
 /* Botões de navegação laterais */
@@ -107,38 +158,45 @@
     block-size: 2.4rem;
 
     border-radius: 999px;
-    border: 2px solid color-mix(in oklab,
-            var(--sl-accent-500, #e6c893),
-            black 30%);
+    border: 2px solid color-mix(in oklab, var(--sl-accent-500, #e6c893), black 32%);
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    background: radial-gradient(circle at 30% 30%,
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 60%),
-            transparent 80%),
-        #020617;
+    background:
+        radial-gradient(circle at 30% 30%,
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 64%),
+            transparent 78%),
+        linear-gradient(180deg, rgba(5, 10, 25, 0.9), rgba(2, 6, 18, 0.92));
 
     color: color-mix(in oklab, var(--sl-accent-500, #e6c893), white 10%);
     cursor: pointer;
 
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+
     transition:
         transform 140ms ease-out,
         box-shadow 140ms ease-out,
-        background 160ms ease-out;
+        border-color 160ms ease-out;
 }
 
 .navButton:hover {
     transform: translateY(-1px);
-    box-shadow: 0 0 0 1px rgba(250, 250, 250, 0.1),
-        0 10px 22px rgba(0, 0, 0, 0.8);
+    border-color: rgba(230, 200, 147, 0.6);
+    box-shadow:
+        0 0 0 1px rgba(250, 250, 250, 0.10),
+        0 12px 26px rgba(0, 0, 0, 0.82),
+        0 0 18px rgba(230, 200, 147, 0.10);
 }
 
 .navButton:active {
     transform: translateY(0);
-    box-shadow: 0 0 0 1px rgba(250, 250, 250, 0.06),
-        0 4px 12px rgba(0, 0, 0, 0.7);
+    box-shadow:
+        0 0 0 1px rgba(250, 250, 250, 0.06),
+        0 6px 14px rgba(0, 0, 0, 0.7);
 }
 
 .navIcon {

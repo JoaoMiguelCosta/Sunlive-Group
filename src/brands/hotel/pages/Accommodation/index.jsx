@@ -3,6 +3,9 @@
 
 import styles from "../Home/Home.module.css";
 
+import Accommodations from "../../components/Acommodation/Accommodations/index.jsx";
+import Amenities from "../../components/Acommodation/Amenities/index.jsx"
+
 export default function AccommodationPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
@@ -11,10 +14,11 @@ export default function AccommodationPageHotel() {
         role="region"
         aria-label="Estalagem de Sangalhos — Alojamento"
       >
-        {/* Secções de Alojamento virão aqui:
-            - Tipologias de quartos
-            - Comodidades incluídas
-            - Serviços adicionais, etc. */}
+        {/* ✅ Secção: Accommodations */}
+        <Accommodations />
+
+        {/* ✅ Secção: Amenities */}
+        <Amenities />
       </main>
     </div>
   );

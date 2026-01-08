@@ -1,4 +1,4 @@
-// src/brands/hotel/pages/configHotel.jsx
+// src/brands/hotel/configHotel.jsx
 import {
   LANG_DEFAULT,
   makeBackLink,
@@ -40,11 +40,7 @@ export const HOTEL_QUICK_LINKS = [
   { key: "sobre", label: "Sobre", href: "#sobre" },
   { key: "estadia", label: "Estadia", href: "#estadia" },
   { key: "restauracao", label: "Restauração", href: "#restauracao" },
-  {
-    key: "instalacoes",
-    label: "Instalações & Lazer",
-    href: "#instalacoes",
-  },
+  { key: "instalacoes", label: "Instalações & Lazer", href: "#instalacoes" },
   { key: "eventos", label: "Eventos", href: "#eventos" },
   {
     key: "sustentabilidade",
@@ -61,6 +57,7 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
   {
     id: "sobre",
     label: "Sobre",
+    to: HOTEL_SECTION_PATHS.sobre,
     links: [
       {
         label: "Sobre a Estalagem",
@@ -83,6 +80,7 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
   {
     id: "estadia",
     label: "Estadia",
+    to: HOTEL_SECTION_PATHS.estadia,
     links: [
       {
         label: "Quartos e Suites",
@@ -109,6 +107,7 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
   {
     id: "restauracao",
     label: "Restauração",
+    to: HOTEL_SECTION_PATHS.restauracao,
     links: [
       {
         label: "Restaurante Panorâmico",
@@ -135,6 +134,7 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
   {
     id: "instalacoes",
     label: "Instalações & Lazer",
+    to: HOTEL_SECTION_PATHS.instalacoes,
     links: [
       {
         label: "Bem-estar e Lazer",
@@ -157,6 +157,7 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
   {
     id: "eventos",
     label: "Eventos",
+    to: HOTEL_SECTION_PATHS.eventos,
     links: [
       {
         label: "Tipos de Eventos",
@@ -171,6 +172,7 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
   {
     id: "informacoes",
     label: "Informações",
+    to: HOTEL_SECTION_PATHS.informacoes,
     links: [
       {
         label: "Testemunhos",
@@ -201,8 +203,8 @@ const hotelBrand = {
   }),
 
   /* ==========================
-   Páginas do Hotel
-   ========================== */
+     Páginas do Hotel
+     ========================== */
   pages: {
     home: {
       sections: {
@@ -221,7 +223,6 @@ const hotelBrand = {
           },
         },
 
-        /* ===== Para quem é? / Who We Host ===== */
         whoWeHost: {
           id: "hotel-who-we-host",
           headerLabel: "Para quem é?",
@@ -260,7 +261,6 @@ const hotelBrand = {
           ],
         },
 
-        /* ===== Experiências em Destaque ===== */
         featuredExperiences: {
           id: "hotel-featured-experiences",
           header: {
@@ -306,12 +306,9 @@ const hotelBrand = {
           ],
         },
 
-        /* ===== Sustainability & Impact ===== */
         sustainabilityImpact: {
           id: "hotel-sustainability-impact",
-          header: {
-            label: "Sustentabilidade",
-          },
+          header: { label: "Sustentabilidade" },
           intro: {
             title: "Comprometidos com um futuro mais verde",
             text: "Valorizamos práticas responsáveis que protegem o ambiente e a comunidade local.",
@@ -340,7 +337,6 @@ const hotelBrand = {
           ],
         },
 
-        /* ===== Plan Your Stay / Contacto Rápido ===== */
         planYourStay: {
           id: "hotel-plan-your-stay",
           boxTitle: "Tem dúvidas ou quer planear a sua estadia?",
@@ -363,12 +359,8 @@ const hotelBrand = {
       },
     },
 
-    /* ==========================
-       Página: Sobre a Estalagem
-       ========================== */
     sobre: {
       sections: {
-        /* 1ª secção — Sobre a Estalagem */
         aboutTheHotel: {
           id: "sobre-estalagem",
           headerLabel: "Sobre a Estalagem",
@@ -384,13 +376,12 @@ const hotelBrand = {
             },
           },
           media: {
-            imageSrc: null, // imagem a definir mais tarde
+            imageSrc: null,
             imageAlt:
               "Vista geral da Estalagem de Sangalhos – Sport & Nature Hotel.",
           },
         },
 
-        /* 2ª secção — A nossa História + milestones */
         ourStoryMilestones: {
           id: "sobre-historia",
           headerLabel: "A nossa História",
@@ -424,7 +415,6 @@ const hotelBrand = {
           ],
         },
 
-        /* 3ª secção — Compromisso com a Qualidade */
         ourQualityCommitment: {
           id: "sobre-qualidade",
           headerLabel: "Compromisso com a Qualidade",
@@ -439,10 +429,7 @@ const hotelBrand = {
             },
           },
           commitments: [
-            {
-              id: "spaces",
-              text: "Espaços limpos, funcionais e bem mantidos",
-            },
+            { id: "spaces", text: "Espaços limpos, funcionais e bem mantidos" },
             {
               id: "meals",
               text: "Refeições equilibradas, saborosas e adaptáveis",
@@ -458,7 +445,6 @@ const hotelBrand = {
           ],
         },
 
-        /* 4ª secção — A Região da Bairrada */
         bairradaRegion: {
           id: "sobre-bairrada",
           header: {
@@ -511,7 +497,6 @@ const hotelBrand = {
           },
         },
 
-        /* 5ª secção — Envolvente Natural Única (pill final) */
         uniqueNaturalSetting: {
           id: "sobre-envolvente-natural",
           highlightPill: {
@@ -520,12 +505,165 @@ const hotelBrand = {
         },
       },
     },
+
+    /* ==========================
+       Página: Estadia (ADD)
+       ========================== */
+    estadia: {
+      sections: {
+        accommodations: {
+          id: "estadia-accommodations",
+          headerLabel: "Alojamentos",
+          description:
+            "Quartos e suítes confortáveis, equipados para diferentes perfis de hóspedes — desde atletas e equipas desportivas a famílias, casais e viajantes em lazer ou trabalho.",
+
+          gallery: {
+            fallbackLabel: "Photos",
+            items: [
+              {
+                id: "acc-01",
+                src: null,
+                alt: "Alojamento — Foto 1",
+                label: "Quartos",
+              },
+              {
+                id: "acc-02",
+                src: null,
+                alt: "Alojamento — Foto 2",
+                label: "Suítes",
+              },
+              {
+                id: "acc-03",
+                src: null,
+                alt: "Alojamento — Foto 3",
+                label: "Detalhes",
+              },
+            ],
+          },
+
+          roomsAndSuites: {
+            id: "estadia-quartos",
+            headerLabel: "Quartos e Suites",
+            description:
+              "Dispomos de um conjunto de quartos e suites confortáveis e funcionais, pensados para responder a diferentes perfis de hóspedes — desde viajantes individuais e casais, até famílias, equipas desportivas ou grupos empresariais.",
+          },
+
+          roomProfilesFilter: {
+            label: "Filtrar por perfil",
+            options: [
+              { id: "all", label: "Todos" },
+              { id: "solo", label: "Viajante Individual" },
+              { id: "couple", label: "Casal" },
+              { id: "friends_athletes", label: "Amigos / Atletas" },
+              { id: "families_groups", label: "Famílias / Grupos" },
+              { id: "professional_coach", label: "Profissional / Treinador" },
+              { id: "premium", label: "Estadia Premium" },
+            ],
+          },
+
+          roomCards: [
+            {
+              id: "room-individual",
+              title: "Quarto Individual",
+              description:
+                "Ideal para viajantes a solo ou profissionais em deslocação que valorizam tranquilidade e funcionalidade.",
+              imageSrc: null,
+              imageAlt: "Quarto Individual",
+              profiles: ["solo", "professional_coach"],
+              features: [
+                "Secretária Incluída",
+                "Casa de Banho Privativa",
+                "Ar Condicionado",
+                "Vista para Jardim",
+                "Cama de casal ou 2 camas Individuais",
+              ],
+            },
+            {
+              id: "room-double",
+              title: "Quarto Duplo",
+              description:
+                "Perfeito para casais ou dois hóspedes que procuram conforto num ambiente acolhedor.",
+              imageSrc: null,
+              imageAlt: "Quarto Duplo",
+              profiles: ["couple", "professional_coach"],
+              features: [
+                "Secretária Incluída",
+                "Casa de Banho Privativa",
+                "Ar Condicionado",
+                "Vista para Jardim",
+                "Cama de Casal",
+              ],
+            },
+            {
+              id: "room-twin",
+              title: "Quarto Twin",
+              description:
+                "Indicado para colegas ou atletas que preferem camas separadas, com comodidade partilhada.",
+              imageSrc: null,
+              imageAlt: "Quarto Twin",
+              profiles: ["friends_athletes", "families_groups"],
+              features: [
+                "Secretária Incluída",
+                "Casa de Banho Privativa",
+                "Ar Condicionado",
+                "Vista para Jardim",
+                "2 camas Individuais",
+              ],
+            },
+            {
+              id: "room-triple",
+              title: "Quarto Triplo",
+              description:
+                "Solução prática para pequenos grupos ou equipas, com flexibilidade na configuração das camas.",
+              imageSrc: null,
+              imageAlt: "Quarto Triplo",
+              profiles: ["families_groups", "friends_athletes"],
+              features: [
+                "Secretária Incluída",
+                "Casa de Banho Privativa",
+                "Ar Condicionado",
+                "Vista para Jardim",
+                "3 camas Individuais ou 1 cama de casal com 2 camas individuais",
+              ],
+            },
+            {
+              id: "room-suite",
+              title: "Suite",
+              description:
+                "Ideal para casais, treinadores ou hóspedes que valorizam espaço extra, privacidade e conforto superior.",
+              imageSrc: null,
+              imageAlt: "Suite",
+              profiles: ["premium", "professional_coach", "couple"],
+              features: [
+                "Secretária Incluída",
+                "Casa de Banho Privativa",
+                "Ar Condicionado",
+                "Vista para Jardim",
+                "Mini Bar",
+                "Sala de estar separada",
+                "Cama de Casal",
+              ],
+            },
+          ],
+
+          infoNote: {
+            id: "estadia-varanda-nota",
+            text: "Algumas unidades incluem varanda privada. A disponibilidade depende da tipologia e deverá ser confirmada no momento da reserva.",
+          },
+        },
+
+        /* ✅ Amenities (CORRETO: dentro de pages.estadia.sections) */
+        amenities: {
+          id: "estadia-comodidades",
+          headerLabel: "Comodidades Incluídas",
+          description:
+            "Independentemente da tipologia escolhida, todos os quartos estão equipados com comodidades que asseguram uma experiência funcional e confortável — seja numa estadia de lazer, profissional ou desportiva.",
+        },
+      },
+    },
   },
 
   sections: {
-    /* ==========================
-       Footer (3 blocos das imagens)
-       ========================== */
     footer: {
       infoHeader: makeFooterInfoHeader("hotel", {
         brand: {
@@ -535,10 +673,7 @@ const hotelBrand = {
           about:
             "Proporcionamos conforto, bem-estar e experiências memoráveis numa localização privilegiada entre natureza, desporto e tradição.",
           aboutIntro: "Transformando estadias em experiências inesquecíveis.",
-          link: {
-            label: "Estalagem de Sangalhos",
-            href: HOTEL_BASE_PATH,
-          },
+          link: { label: "Estalagem de Sangalhos", href: HOTEL_BASE_PATH },
         },
         options: { keepOriginalAboutFirstLine: true },
         location: {
@@ -552,25 +687,11 @@ const hotelBrand = {
         },
         contacts: {
           title: "Contactos",
-          email: {
-            href: "mailto:hotel@sunlive.pt",
-            label: "hotel@sunlive.pt",
-          },
-          phone: {
-            href: "tel:+351933600337",
-            label: "+351 933 600 337",
-          },
-          phones: [
-            {
-              href: "tel:+351234745133",
-              label: "+351 234 745 133",
-            },
-          ],
+          email: { href: "mailto:hotel@sunlive.pt", label: "hotel@sunlive.pt" },
+          phone: { href: "tel:+351933600337", label: "+351 933 600 337" },
+          phones: [{ href: "tel:+351234745133", label: "+351 234 745 133" }],
         },
-        socials: {
-          title: "Redes Sociais",
-          items: HOTEL_SOCIALS,
-        },
+        socials: { title: "Redes Sociais", items: HOTEL_SOCIALS },
       }),
 
       linkDirectory: {

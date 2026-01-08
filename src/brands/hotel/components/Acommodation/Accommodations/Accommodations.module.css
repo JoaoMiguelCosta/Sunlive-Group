@@ -1,0 +1,18 @@
+/* src/brands/hotel/components/About/AboutTheHotel/AboutTheHotel.module.css */
+
+.section {
+    position: relative;
+    isolation: isolate;
+
+    padding-block: clamp(2.3rem, 5vw, 3.2rem);
+    background: transparent;
+    /* fundo noir vem do layout global */
+}
+
+.inner {
+    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
+
+    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--line-inset));
+    margin-inline: auto;
+    box-sizing: border-box;
+}

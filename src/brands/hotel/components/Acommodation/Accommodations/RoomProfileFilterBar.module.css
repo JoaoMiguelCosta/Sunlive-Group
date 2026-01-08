@@ -1,0 +1,81 @@
+.wrap {
+    position: relative;
+    margin-block: clamp(16px, 2.4vw, 22px);
+    border: 2px solid rgba(230, 200, 147, 0.35);
+    border-radius: 18px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(900px 220px at 80% 0%, rgba(230, 200, 147, 0.14), transparent 60%),
+        linear-gradient(180deg, rgba(5, 10, 25, 0.92), rgba(2, 6, 18, 0.92));
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 14px 16px;
+}
+
+.left {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 700;
+}
+
+.icon {
+    color: rgba(230, 200, 147, 0.95);
+    display: inline-flex;
+}
+
+.label {
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.chip {
+    border-radius: 999px;
+    padding: 8px 14px;
+
+    border: 2px solid rgba(230, 200, 147, 0.40);
+    background: rgba(2, 6, 18, 0.55);
+    color: rgba(255, 255, 255, 0.90);
+
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+
+    transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.chip:hover {
+    transform: translateY(-1px);
+    border-color: rgba(230, 200, 147, 0.62);
+    box-shadow: 0 0 0 3px rgba(230, 200, 147, 0.10);
+}
+
+.active {
+    background: linear-gradient(180deg,
+            color-mix(in oklab, #0a1022, var(--sl-accent-500, #e6c893) 40%),
+            rgba(2, 6, 18, 0.55));
+    border-color: rgba(230, 200, 147, 0.75);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+@media (max-width: 720px) {
+    .inner {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}

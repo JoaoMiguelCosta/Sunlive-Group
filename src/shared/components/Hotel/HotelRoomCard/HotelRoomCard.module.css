@@ -1,0 +1,190 @@
+.card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+
+    /* ✅ para alinhar alturas internamente */
+    display: flex;
+    flex-direction: column;
+
+    background:
+        radial-gradient(900px 380px at 80% 0%, rgba(230, 200, 147, 0.14), transparent 58%),
+        radial-gradient(720px 320px at 15% 100%, rgba(251, 191, 36, 0.08), transparent 60%),
+        linear-gradient(180deg, rgba(5, 10, 25, 1), rgba(2, 6, 18, 1));
+
+    border: 1px solid rgba(230, 200, 147, 0.22);
+
+    box-shadow:
+        0 16px 46px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+
+    color: rgba(255, 255, 255, 0.92);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(230, 200, 147, 0.36);
+    box-shadow:
+        0 22px 60px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        0 0 22px rgba(230, 200, 147, 0.10);
+}
+
+/* ===== Media ===== */
+.media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: #070b16;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: saturate(1.04) contrast(1.02);
+}
+
+.placeholder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+
+    background:
+        radial-gradient(900px 380px at 80% 0%, rgba(230, 200, 147, 0.18), transparent 58%),
+        radial-gradient(720px 320px at 15% 100%, rgba(251, 191, 36, 0.10), transparent 60%),
+        linear-gradient(180deg, rgba(5, 10, 25, 1), rgba(2, 6, 18, 1));
+}
+
+.placeholderText {
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(230, 200, 147, 0.98));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    text-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
+}
+
+/* Badge opcional */
+.badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 8px 12px;
+    border-radius: 999px;
+
+    background: rgba(5, 10, 25, 0.72);
+    border: 1px solid rgba(230, 200, 147, 0.25);
+    backdrop-filter: blur(10px);
+
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* ===== Header bar (dourado/champanhe) ===== */
+.header {
+    padding: 14px 16px;
+    background: linear-gradient(180deg,
+            color-mix(in oklab, #0a1022, var(--sl-accent-500, #e6c893) 34%),
+            color-mix(in oklab, #070b16, var(--sl-gold-500, #c78615) 18%));
+    border-top: 1px solid rgba(230, 200, 147, 0.20);
+    border-bottom: 1px solid rgba(230, 200, 147, 0.18);
+}
+
+.title {
+    margin: 0;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.96);
+}
+
+/* ===== Description ===== */
+.desc {
+    padding: 16px 16px 12px;
+    background:
+        radial-gradient(500px 200px at 50% 0%, rgba(230, 200, 147, 0.08), transparent 60%),
+        rgba(5, 10, 25, 0.55);
+    border-bottom: 1px solid rgba(230, 200, 147, 0.14);
+}
+
+.descText {
+    margin: 0;
+    text-align: center;
+    font-size: 0.98rem;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.88);
+
+    /* ✅ sempre 3 linhas, com altura reservada */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    min-height: calc(3 * 1.45em);
+}
+
+/* ===== Features list ===== */
+.features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+   
+}
+
+.featureItem {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(230, 200, 147, 0.12);
+
+    background: linear-gradient(180deg, rgba(2, 6, 18, 0.35), rgba(2, 6, 18, 0.12));
+}
+
+.featureItem:last-child {
+    border-bottom: none;
+}
+
+.check {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+
+    background: radial-gradient(circle at 30% 30%,
+            rgba(251, 191, 36, 0.28),
+            rgba(2, 6, 18, 0.2));
+
+    border: 1px solid rgba(230, 200, 147, 0.32);
+    color: rgba(230, 200, 147, 0.95);
+    font-weight: 900;
+    font-size: 0.95rem;
+}
+
+.featureText {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.90);
+}
+
+/* Responsivo */
+@media (max-width: 520px) {
+    .title {
+        font-size: 1.05rem;
+    }
+
+    .descText,
+    .featureText {
+        font-size: 0.97rem;
+    }
+}

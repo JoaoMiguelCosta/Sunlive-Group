@@ -1,5 +1,6 @@
 // src/brands/hotel/layouts/HotelPrimaryNav.jsx
 import { useState, useRef, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import navStyles from "./HotelPrimaryNav.module.css";
 import HotelPrimaryNavSubmenu from "./HotelPrimaryNavSubmenu.jsx";
 import { HOTEL_PRIMARY_NAV_ITEMS } from "../configHotel.jsx";
@@ -17,6 +18,8 @@ export default function HotelPrimaryNavHamburger() {
 
   const navRootRef = useRef(null); // para outside-click
   const navInnerRef = useRef(null);
+
+  // 👇 agora medimos o centro pelo toggle (chevron)
   const buttonRefs = useRef({});
 
   const closeAll = () => {
@@ -29,14 +32,11 @@ export default function HotelPrimaryNavHamburger() {
 
   // navegação inteligente para anchors
   const { handleSmartAnchorClick } = useSmartAnchorNav({
-    // quando tiveres header fixo, afina este offset
     offset: 88,
     closeOverlays: closeAll,
   });
 
-  const handleEnterItem = (id) => {
-    setOpenId(id);
-  };
+  const handleEnterItem = (id) => setOpenId(id);
 
   const handleToggleClick = (id) => {
     setOpenId((prev) => (prev === id ? null : id));
@@ -108,20 +108,44 @@ export default function HotelPrimaryNavHamburger() {
                   openId === item.id ? navStyles.navListItemActive : ""
                 }`}
               >
-                <button
-                  type="button"
-                  className={`${navStyles.navButton} ${
-                    openId === item.id ? navStyles.navButtonActive : ""
-                  }`}
-                  onMouseEnter={() => handleEnterItem(item.id)}
-                  onClick={() => handleToggleClick(item.id)}
-                  ref={(el) => {
-                    buttonRefs.current[item.id] = el;
-                  }}
-                >
-                  <span>{item.label}</span>
-                  <span className={navStyles.chevron} aria-hidden="true" />
-                </button>
+                {/* linha: Link (navega) + Toggle (abre submenu) */}
+                <div className={navStyles.navItemRow}>
+                  <NavLink
+                    to={item.to}
+                    className={({ isActive }) =>
+                      [
+                        navStyles.navButton, // reaproveita o teu look
+                        navStyles.navLink,
+                        isActive ? navStyles.navLinkActive : "",
+                        openId === item.id ? navStyles.navButtonActive : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")
+                    }
+                    onMouseEnter={() => handleEnterItem(item.id)}
+                    onFocus={() => handleEnterItem(item.id)}
+                    onClick={() => closeAll()} // fecha mobile
+                  >
+                    <span>{item.label}</span>
+                  </NavLink>
+
+                  <button
+                    type="button"
+                    className={`${navStyles.navToggle} ${
+                      openId === item.id ? navStyles.navToggleActive : ""
+                    }`}
+                    aria-label={`Abrir submenu ${item.label}`}
+                    aria-expanded={openId === item.id}
+                    onMouseEnter={() => handleEnterItem(item.id)}
+                    onFocus={() => handleEnterItem(item.id)}
+                    onClick={() => handleToggleClick(item.id)}
+                    ref={(el) => {
+                      buttonRefs.current[item.id] = el;
+                    }}
+                  >
+                    <span className={navStyles.chevron} aria-hidden="true" />
+                  </button>
+                </div>
               </li>
             ))}
           </ul>

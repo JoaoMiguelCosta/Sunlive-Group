@@ -1,0 +1,78 @@
+/* src/brands/hotel/components/Accommodation/Accommodations/InfoNoteBanner/InfoNoteBanner.module.css */
+
+.wrap {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 14px;
+    margin-top: clamp(12px, 2vw, 18px);
+
+    padding: 16px 18px;
+    border-radius: 16px;
+
+    /* frame */
+    border: 2px solid rgba(230, 200, 147, 0.48);
+
+    /* Noir + champanhe glow */
+    background:
+        radial-gradient(900px 200px at 70% 0%, rgba(230, 200, 147, 0.14), transparent 62%),
+        radial-gradient(700px 240px at 20% 100%, rgba(230, 200, 147, 0.10), transparent 58%),
+        linear-gradient(180deg, rgba(5, 10, 25, 0.92), rgba(2, 6, 18, 0.92));
+
+    box-shadow:
+        0 16px 44px rgba(0, 0, 0, 0.55),
+        0 0 24px rgba(230, 200, 147, 0.08);
+
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+
+    display: grid;
+    place-items: center;
+
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 1;
+
+    color: rgba(230, 200, 147, 0.98);
+    background:
+        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.22), transparent 62%),
+        rgba(2, 6, 18, 0.55);
+
+    border: 1px solid rgba(230, 200, 147, 0.45);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+.text {
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.45;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* variações (se quiseres) */
+.info {
+    /* default */
+}
+
+.warn {
+    border-color: rgba(251, 191, 36, 0.48);
+}
+
+@media (max-width: 640px) {
+    .wrap {
+        padding: 14px 14px;
+        gap: 12px;
+    }
+
+    .text {
+        font-size: 0.98rem;
+    }
+}

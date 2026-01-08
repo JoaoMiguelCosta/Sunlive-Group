@@ -569,12 +569,13 @@
     align-items: center;
     justify-content: space-between;
 
-    inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
+    inline-size: min(var(--sl-container-lg, 90rem),
+            calc(100% - 2 * var(--line-inset)));
     margin-inline: auto;
     box-sizing: border-box;
 
-    /* linha inferior em champanhe-quente */
-    border-bottom: 2px solid rgba(255, 162, 0, .85);
+    /* ✅ linha inferior em champanhe (menos laranja puro) */
+    border-bottom: 2px solid color-mix(in oklab, var(--accent), black 18%);
 }
 
 /* Clusters left/right alinhados ao restante layout */
@@ -582,7 +583,7 @@
 .utilityBar[data-variant="hotel-header"] .right {
     display: flex;
     align-items: center;
-    gap: var(--ub-gap, .75rem);
+    gap: var(--ub-gap, 0.75rem);
     min-width: 0;
 }
 
@@ -596,7 +597,77 @@
     color: var(--accent);
 }
 
-/* BackLink com moldura em champanhe-quente */
+/* BackLink com moldura em champanhe */
 .utilityBar[data-variant="hotel-header"] .backLink {
     border-color: color-mix(in oklab, var(--accent), white 12%);
+}
+
+/* =================
+   Botão Home Hotel (pílula) — Performance Prestige (Noir + champanhe)
+   ================= */
+
+.homeLink {
+    --pill-fs: var(--ub-fs);
+    --pill-pad-y: .5rem;
+    --pill-pad-x: .9rem;
+    --pill-radius: 999px;
+
+    display: inline-flex;
+    flex-direction: row;
+    /* ✅ garante lado a lado */
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+
+    padding: var(--pill-pad-y) var(--pill-pad-x);
+    border-radius: var(--pill-radius);
+    text-decoration: none;
+    /* ✅ remove sublinhado */
+    font-weight: 800;
+    font-size: var(--pill-fs);
+    line-height: 1.18;
+    color: rgba(255, 255, 255, .95);
+
+    min-height: var(--ub-touch, 0px);
+    white-space: nowrap;
+
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0)),
+        radial-gradient(120% 140% at 50% 0%, rgba(230, 200, 147, .10), rgba(255, 255, 255, 0) 60%),
+        rgba(2, 6, 18, .35);
+
+    border: 1.5px solid color-mix(in oklab, var(--accent, #E6C893), white 10%);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .06) inset,
+        0 10px 24px rgba(0, 0, 0, .35);
+
+    transition: transform .12s ease, opacity .12s ease, filter .12s ease,
+        color .12s ease, border-color .12s ease, box-shadow .12s ease;
+}
+
+.homeIcon {
+    inline-size: 1.15em;
+    block-size: 1.15em;
+    flex: 0 0 auto;
+}
+
+.homeText {
+    display: inline-block;
+    line-height: 1;
+}
+
+.homeLink:hover {
+    transform: translateY(-1px);
+    opacity: .98;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .25));
+    color: var(--accent, #E6C893);
+    border-color: color-mix(in oklab, var(--accent, #E6C893) 85%, white 15%);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.07) inset,
+        0 14px 34px rgba(0, 0, 0, 0.42),
+        0 0 18px rgba(230, 200, 147, 0.10);
+}
+
+.homeLink:active {
+    transform: translateY(0);
 }

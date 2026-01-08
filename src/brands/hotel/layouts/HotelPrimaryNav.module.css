@@ -39,7 +39,6 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     opacity: 0.86;
-
 }
 
 /* botão hambúrguer */
@@ -192,7 +191,6 @@
 .navListItemActive::before {
     content: "";
     position: absolute;
-
     inset: -0.15rem 0;
 
     background:
@@ -214,8 +212,16 @@
     pointer-events: none;
 }
 
-/* botão principal */
+/* linha: link + toggle */
+.navItemRow {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
 
+/* "botão" principal (agora aplicado também ao NavLink) */
 .navButton {
     position: relative;
     z-index: 1;
@@ -240,7 +246,6 @@
     transition:
         opacity 0.18s ease,
         transform 0.18s ease;
-
 }
 
 .navButton::after {
@@ -279,8 +284,41 @@
     opacity: 1;
 }
 
-/* chevron pequeno dourado */
+/* NavLink específico */
+.navLink {
+    text-decoration: none;
+    color: inherit;
+}
 
+/* se quiseres um estado ativo real por rota (opcional) */
+.navLinkActive {
+    opacity: 1;
+}
+
+/* toggle (zona clicável do chevron) */
+.navToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    padding: 0.25rem 0.35rem;
+    cursor: pointer;
+    opacity: 0.92;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.navToggle:hover,
+.navToggle:focus-visible {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.navToggleActive {
+    opacity: 1;
+}
+
+/* chevron pequeno dourado */
 .chevron {
     inline-size: 7px;
     block-size: 7px;
@@ -295,7 +333,6 @@
    ===================== */
 
 @media (max-width: 900px) {
-
     .navTopRow {
         display: flex;
     }
@@ -324,10 +361,19 @@
         justify-content: flex-start;
     }
 
-    .navButton {
+    .navItemRow {
+        width: 100%;
         justify-content: space-between;
+    }
+
+    .navButton {
+        justify-content: flex-start;
         width: 100%;
         text-align: left;
         padding-block: 0.4rem;
+    }
+
+    .navToggle {
+        padding: 0.4rem 0.5rem;
     }
 }

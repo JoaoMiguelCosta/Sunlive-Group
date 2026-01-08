@@ -1,4 +1,5 @@
 // src/shared/hooks/useSmartAnchorNav.js
+import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 /**
@@ -6,11 +7,9 @@ import { useLocation, useNavigate } from "react-router-dom";
  *
  * Opções extra:
  * - revealById?: (id: string) => void
- *      => callback para abrir o submenu/accordion/tab onde vive o #id
  * - onBeforeNavigate?: (info) => void
  * - onAfterNavigate?: (info) => void
  * - closeOverlays?: () => void
- *      => fechar mobile-menu/overlays antes do scroll final
  * - maxScrollRetries?: number (default 3)
  * - retryDelayMs?: number (default 60)
  */
@@ -18,10 +17,10 @@ export default function useSmartAnchorNav({
   targetPath,
   offset = 72,
   behavior = "smooth",
-  revealById, // <- NOVO
-  onBeforeNavigate, // <- NOVO
-  onAfterNavigate, // <- NOVO
-  closeOverlays, // <- NOVO (fechar mobile menu, etc.)
+  revealById,
+  onBeforeNavigate,
+  onAfterNavigate,
+  closeOverlays,
   maxScrollRetries = 3,
   retryDelayMs = 60,
 } = {}) {
@@ -61,10 +60,8 @@ export default function useSmartAnchorNav({
   };
 
   const revealIfNeeded = (id) => {
-    // 1) callback do app (abrir dropdown/tab/accordion onde vive o id)
     revealById?.(id);
 
-    // 2) heurísticas genéricas: abrir <details> ancestrais
     let el = document.getElementById(id);
     let parent = el?.parentElement;
     while (parent) {
@@ -72,8 +69,6 @@ export default function useSmartAnchorNav({
       parent = parent.parentElement;
     }
 
-    // 3) se houver um toggle declarativo
-    //    <button data-controls="secao-x"> abre </button>
     if (!el) el = document.getElementById(id);
     if (el && !isVisible(el)) {
       const btn = document.querySelector(`[data-controls="${id}"]`);
@@ -86,7 +81,6 @@ export default function useSmartAnchorNav({
     const top =
       el.getBoundingClientRect().top + window.scrollY - Math.max(0, offset);
     window.scrollTo({ top, behavior: prefersReduce ? "auto" : behavior });
-    // opcional: foco para a11y sem saltar a página
     if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
     el.focus({ preventScroll: true });
   };
@@ -96,14 +90,11 @@ export default function useSmartAnchorNav({
     const id = decodeURIComponent(hash.replace(/^#/, ""));
     let el = document.getElementById(id);
 
-    // Revela se estiver dentro de algo fechado
     if (!isVisible(el)) revealIfNeeded(id);
 
-    // re-mede depois de revelar
     el = document.getElementById(id);
 
     if (el && isVisible(el)) {
-      // Pequeno rAF para garantir layout estável (menus fechados, etc.)
       await new Promise((r) => requestAnimationFrame(() => r()));
       closeOverlays?.();
       await new Promise((r) => requestAnimationFrame(() => r()));
@@ -111,7 +102,6 @@ export default function useSmartAnchorNav({
       return;
     }
 
-    // Retry leve (conteúdo a montar/renderizar)
     if (tries < maxScrollRetries) {
       await new Promise((r) => setTimeout(r, retryDelayMs));
       return scrollToHash(hash, tries + 1);
@@ -121,7 +111,6 @@ export default function useSmartAnchorNav({
   const handleSmartAnchorClick = async (e, href, disabled) => {
     if (disabled || !href) return;
 
-    // cliques modificados -> comportamento nativo
     if (e?.metaKey || e?.ctrlKey || e?.shiftKey || e?.altKey || e?.button === 1)
       return;
 
@@ -138,22 +127,28 @@ export default function useSmartAnchorNav({
       return;
     }
 
-    // Outra página: navega; o efeito on-load fará o scroll
     navigate(`${path}${hash}`);
     onAfterNavigate?.({ path, hash });
   };
 
-  // Auto-ajuste ao carregar/alterar rota com hash (inclui deep-link /rota#id)
-  if (typeof window !== "undefined") {
-    queueMicrotask(() => {
-      const ok = targetPath ? normalizePath(targetPath) === curPath() : true;
-      if (ok && window.location.hash) {
-        // Em mobile: fecha overlays antes e depois do próximo frame
-        closeOverlays?.();
-        requestAnimationFrame(() => scrollToHash(window.location.hash));
-      }
+  // ✅ Só auto-scroll quando o URL (pathname/hash) muda
+  const lastHandledRef = useRef("");
+
+  useEffect(() => {
+    const ok = targetPath ? normalizePath(targetPath) === curPath() : true;
+    if (!ok) return;
+    if (!location.hash) return;
+
+    const key = `${location.pathname}${location.hash}`;
+    if (lastHandledRef.current === key) return;
+    lastHandledRef.current = key;
+
+    closeOverlays?.();
+    requestAnimationFrame(() => {
+      scrollToHash(location.hash);
     });
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname, location.hash, targetPath]);
 
   return { handleSmartAnchorClick, scrollToHash };
 }

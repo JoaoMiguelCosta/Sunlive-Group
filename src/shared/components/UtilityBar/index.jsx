@@ -4,7 +4,8 @@ import { useLangMenu } from "../../hooks/useLangMenu.js";
 
 export default function UtilityBar({
   variant,
-  backLink, // 👈 NOVO
+  backLink,
+  homeLink, // ✅ NOVO
   leftSlot = null,
   socials = [],
   lang = {
@@ -12,7 +13,6 @@ export default function UtilityBar({
     options: [{ label: "PT", name: "Português", code: "pt" }],
   },
   ariaLabel = "Utility bar",
- 
 }) {
   const { ref, isOpen, selected, options, toggle, choose, close } =
     useLangMenu(lang);
@@ -21,7 +21,7 @@ export default function UtilityBar({
     if (e.key === "Escape") close();
   }
 
-  const hasLeft = Boolean(backLink || leftSlot);
+  const hasLeft = Boolean(backLink || homeLink || leftSlot);
 
   return (
     <aside
@@ -35,7 +35,6 @@ export default function UtilityBar({
           <div className={styles.left}>
             {backLink && (
               <a href={backLink.href} className={styles.backLink}>
-                {/* Ícone default se não vier via prop */}
                 {backLink.Icon ? (
                   <backLink.Icon className={styles.backIcon} />
                 ) : (
@@ -57,6 +56,40 @@ export default function UtilityBar({
                 <span className={styles.backText}>{backLink.label}</span>
               </a>
             )}
+
+            {/* ✅ NOVO: Home Hotel (pílula) */}
+            {homeLink && (
+              <a href={homeLink.href} className={styles.homeLink}>
+                {homeLink.Icon ? (
+                  <homeLink.Icon className={styles.homeIcon} />
+                ) : (
+                  <svg
+                    className={styles.homeIcon}
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 10.5L12 3l9 7.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M6 10v10h12V10"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
+                <span className={styles.homeText}>{homeLink.label}</span>
+              </a>
+            )}
+
             {leftSlot}
           </div>
         )}

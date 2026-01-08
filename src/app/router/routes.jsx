@@ -86,11 +86,17 @@ export default function AppRoutes() {
           (UtilityBar + Nav + Footer) com back → Sunlive Group */}
       <Route path="/sunlive-group/hotel" element={<HotelShellHome />}>
         <Route index element={<HomePageHotel />} />
-        <Route path="about" element={<AboutPageHotel />} />
-        <Route path="accommodation" element={<AccommodationPageHotel />} />
-        {/* futuras: <Route path="location" element={<LocationPageHotel />} /> etc */}
-      </Route>
 
+        <Route path="sobre" element={<AboutPageHotel />} />
+        <Route path="estadia" element={<AccommodationPageHotel />} />
+
+        {/* redirects antigos */}
+        <Route path="about" element={<Navigate to="sobre" replace />} />
+        <Route
+          path="accommodation"
+          element={<Navigate to="estadia" replace />}
+        />
+      </Route>
       {/* Redirecionamentos legacy */}
       <Route
         path="/sunlive-group-logos"
