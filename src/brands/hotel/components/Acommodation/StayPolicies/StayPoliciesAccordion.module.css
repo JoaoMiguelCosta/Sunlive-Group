@@ -1,0 +1,144 @@
+.accordion {
+    margin-top: 18px;
+    display: grid;
+    gap: 14px;
+}
+
+.item {
+    border-radius: 22px;
+    border: 2px solid rgba(230, 200, 147, 0.55);
+    background: linear-gradient(135deg, rgba(22, 67, 82, 0.65), rgba(0, 0, 0, 0.25));
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35) inset;
+    overflow: hidden;
+}
+
+.itemOpen {
+    border-color: rgba(230, 200, 147, 0.85);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.35) inset,
+        0 14px 40px rgba(0, 0, 0, 0.35);
+}
+
+.trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 18px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+.left {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.iconSlot {
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0) 55%),
+        radial-gradient(circle at 70% 70%, rgba(230, 200, 147, 0.22), rgba(0, 0, 0, 0) 60%),
+        linear-gradient(180deg, rgba(8, 14, 28, 0.9), rgba(8, 14, 28, 0.55));
+    border: 1px solid rgba(230, 200, 147, 0.35);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+    flex: 0 0 auto;
+}
+
+.title {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    font-size: clamp(18px, 2.2vw, 28px);
+    color: rgba(255, 255, 255, 0.92);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chev {
+    color: rgba(230, 200, 147, 0.9);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(230, 200, 147, 0.35);
+    transition: transform 220ms ease, background 220ms ease, border-color 220ms ease;
+    flex: 0 0 auto;
+}
+
+.chevOpen {
+    transform: rotate(180deg);
+    background: rgba(230, 200, 147, 0.12);
+    border-color: rgba(230, 200, 147, 0.65);
+}
+
+/* Panel */
+.panel {
+    display: grid;
+    transition: grid-template-rows 260ms ease;
+}
+
+.panelInner {
+    overflow: hidden;
+    padding: 0 18px 16px 18px;
+}
+
+.panelClosed {
+    grid-template-rows: 0fr;
+}
+
+.panelOpen {
+    grid-template-rows: 1fr;
+}
+
+.body {
+    margin: 10px 0 0;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+/* ✅ Compact (Informação Importante) */
+.itemCompact {
+    border-radius: 26px;
+}
+
+.itemCompact .trigger {
+    cursor: default;
+    padding-bottom: 10px;
+}
+
+.itemCompact .trigger:disabled {
+    opacity: 1;
+    /* não “apaga” */
+}
+
+.panelCompact .panelInner {
+    padding-top: 0;
+}
+
+/* lista com bullet como no screenshot */
+.compactList {
+    margin: 10px 0 0;
+    padding-left: 20px;
+}
+
+.compactItem {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    line-height: 1.55;
+}
+
+.compactItem::marker {
+    color: rgba(230, 200, 147, 0.95);
+}

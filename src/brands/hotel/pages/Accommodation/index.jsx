@@ -5,6 +5,8 @@ import styles from "../Home/Home.module.css";
 
 import Accommodations from "../../components/Acommodation/Accommodations/index.jsx";
 import Amenities from "../../components/Acommodation/Amenities/index.jsx"
+import StayPolicies from "../../components/Acommodation/StayPolicies/index.jsx";
+import ForWhom from "../../components/Acommodation/ForWhom/index.jsx";
 
 export default function AccommodationPageHotel() {
   return (
@@ -19,6 +21,8 @@ export default function AccommodationPageHotel() {
 
         {/* ✅ Secção: Amenities */}
         <Amenities />
+        <StayPolicies />
+        <ForWhom />
       </main>
     </div>
   );

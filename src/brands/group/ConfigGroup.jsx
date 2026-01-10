@@ -361,7 +361,7 @@ export const footer = {
 
   policiesBar: makePoliciesBar({
     holder: "Sunlive Group. Todos os direitos reservados.",
-    year: 2025,
+    year: 2026,
     iconAriaLabel: "Protegido",
   }),
 };

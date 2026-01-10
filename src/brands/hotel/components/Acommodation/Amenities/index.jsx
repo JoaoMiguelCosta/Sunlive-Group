@@ -2,6 +2,7 @@ import styles from "./Amenities.module.css";
 
 import TitleAmenities from "./TitleAmenities.jsx";
 import DescriptionAmenities from "./DescriptionAmenities.jsx";
+import AmenitiesPills from "./AmenitiesPills.jsx";
 
 import hotelBrand from "../../../configHotel.jsx";
 
@@ -14,6 +15,7 @@ export default function Amenities() {
       <div className={styles.inner}>
         <TitleAmenities label={content.headerLabel} />
         <DescriptionAmenities>{content.description}</DescriptionAmenities>
+        <AmenitiesPills />
       </div>
     </section>
   );
