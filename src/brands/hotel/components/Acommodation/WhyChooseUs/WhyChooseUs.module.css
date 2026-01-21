@@ -5,7 +5,7 @@
     isolation: isolate;
 
     padding-block: clamp(2.3rem, 5vw, 3.2rem);
- 
+  
 }
 
 .inner {

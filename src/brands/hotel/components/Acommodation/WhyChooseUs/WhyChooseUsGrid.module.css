@@ -1,0 +1,21 @@
+.grid {
+    margin-top: clamp(1.2rem, 3vw, 2rem);
+    display: grid;
+    gap: clamp(1rem, 2.6vw, 1.6rem);
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+    align-items: stretch;
+}
+
+/* 2 col */
+@media (max-width: 1100px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+    }
+}
+
+/* 1 col */
+@media (max-width: 620px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

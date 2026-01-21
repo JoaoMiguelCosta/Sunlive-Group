@@ -4,9 +4,10 @@
 import styles from "../Home/Home.module.css";
 
 import Accommodations from "../../components/Acommodation/Accommodations/index.jsx";
-import Amenities from "../../components/Acommodation/Amenities/index.jsx"
+import Amenities from "../../components/Acommodation/Amenities/index.jsx";
 import StayPolicies from "../../components/Acommodation/StayPolicies/index.jsx";
 import ForWhom from "../../components/Acommodation/ForWhom/index.jsx";
+import WhyChooseUs from "../../components/Acommodation/WhyChooseUs/index.jsx"; // ✅ novo
 
 export default function AccommodationPageHotel() {
   return (
@@ -21,8 +22,15 @@ export default function AccommodationPageHotel() {
 
         {/* ✅ Secção: Amenities */}
         <Amenities />
+
+        {/* ✅ Secção: Stay Policies */}
         <StayPolicies />
+
+        {/* ✅ Secção: For Whom */}
         <ForWhom />
+
+        {/* ✅ Secção: Why Choose Us */}
+        <WhyChooseUs />
       </main>
     </div>
   );
