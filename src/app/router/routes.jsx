@@ -32,6 +32,10 @@ import HotelShellHome from "../../brands/hotel/layouts/HotelShellHome.jsx";
 import HomePageHotel from "../../brands/hotel/pages/Home/index.jsx";
 import AboutPageHotel from "../../brands/hotel/pages/About/index.jsx";
 import AccommodationPageHotel from "../../brands/hotel/pages/Accommodation/index.jsx";
+import RestaurantPageHotel from "../../brands/hotel/pages/Restoration/index.jsx";
+import FacilitiesLeisurePageHotel from "../../brands/hotel/pages/FacilitiesLeisure/index.jsx";
+import EventsPageHotel from "../../brands/hotel/pages/Events/index.jsx";
+import InformationPageHotel from "../../brands/hotel/pages/Information/index.jsx";
 
 export default function AppRoutes() {
   return (
@@ -82,22 +86,24 @@ export default function AppRoutes() {
 
       {/* ===== Submarca — Hotel ===== */}
 
-      {/* Grupo único: todas as páginas do Hotel usam o mesmo layout
-          (UtilityBar + Nav + Footer) com back → Sunlive Group */}
       <Route path="/sunlive-group/hotel" element={<HotelShellHome />}>
         <Route index element={<HomePageHotel />} />
 
         <Route path="sobre" element={<AboutPageHotel />} />
         <Route path="estadia" element={<AccommodationPageHotel />} />
+        <Route path="restauracao" element={<RestaurantPageHotel />} />
 
-        {/* redirects antigos */}
+        <Route path="instalacoes" element={<FacilitiesLeisurePageHotel />} />
+        <Route path="eventos" element={<EventsPageHotel />} />
+        <Route path="informacoes" element={<InformationPageHotel />} />
+
         <Route path="about" element={<Navigate to="sobre" replace />} />
         <Route
           path="accommodation"
           element={<Navigate to="estadia" replace />}
         />
       </Route>
-      {/* Redirecionamentos legacy */}
+
       <Route
         path="/sunlive-group-logos"
         element={<Navigate to="/sunlive-group/logos" replace />}
