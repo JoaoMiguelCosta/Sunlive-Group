@@ -1,10 +1,10 @@
 import styles from "./TravelPartnersCardsGrid.module.css";
-import DestinationCard from "../../../../shared/components/Travel/DestinationCard/index.jsx";
-import travelBrand from "../../ConfigTravel.jsx";
+import DestinationCard from "../../shared/ui/DestinationCard/index.jsx";
+import travelBrand from "../../brand";
 
 export default function TravelPartnersCardsGrid() {
-  const partners = travelBrand?.sections?.travelPartners?.partners || [];
-  if (!partners.length) return null;
+  const partners = travelBrand?.sections?.travelPartners?.partners ?? [];
+  if (!Array.isArray(partners) || partners.length === 0) return null;
 
   return (
     <section
@@ -13,8 +13,8 @@ export default function TravelPartnersCardsGrid() {
     >
       <div className={styles.grid} role="list">
         {partners.map((p) => {
-          const imageSrc = p.picture?.src;
-          const imageAlt = p.picture?.alt || p.name || "Parceiro";
+          const imageSrc = p?.picture?.src;
+          const imageAlt = p?.picture?.alt || p?.name || "Parceiro";
           if (!imageSrc) return null;
 
           return (

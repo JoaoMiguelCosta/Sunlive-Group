@@ -57,7 +57,6 @@ import {
   HandballIcon,
   VolleyballIcon,
   SurfIcon,
-  
 } from "../ui/icons/index.js";
 
 /* ===== Bandeiras partilhadas ===== */
@@ -202,7 +201,7 @@ export const BUSINESS_UNIT_CONTACTS_DEFAULT = {
 };
 
 export function makeBusinessUnits(
-  contactsByKey = BUSINESS_UNIT_CONTACTS_DEFAULT
+  contactsByKey = BUSINESS_UNIT_CONTACTS_DEFAULT,
 ) {
   return BUSINESS_UNITS_BASE.map((b) => ({ ...b, ...contactsByKey[b.key] }));
 }
@@ -212,7 +211,7 @@ export function makeFooterContacts(
   {
     group = DEFAULT_GROUP_CONTACTS,
     units = BUSINESS_UNIT_CONTACTS_DEFAULT,
-  } = {}
+  } = {},
 ) {
   const src = unitKey === "group" ? group : (units[unitKey] ?? group);
   const emailLabel = src.email ?? group.email;
@@ -325,7 +324,7 @@ export function makeAcknowledgements({
 export function unitsToFooterGeneric(
   units = [],
   basePath = "/sunlive-group",
-  slugMap = {}
+  slugMap = {},
 ) {
   return units.map((u) => {
     const href = slugMap[u.key] ?? `${basePath}/${u.key}`;
@@ -336,7 +335,7 @@ export function unitsToFooterGeneric(
 export function countriesToFooterGeneric(
   countries = [],
   basePath = "/sunlive-group",
-  sectionId = "presence"
+  sectionId = "presence",
 ) {
   return countries.map((c) => ({
     key: c.key,

@@ -1,6 +1,5 @@
-// src/brands/travel/components/TravelPartnersSection/TrustedCollaborationBanner.jsx
 import styles from "./TrustedCollaborationBanner.module.css";
-import travelBrand from "../../ConfigTravel.jsx";
+import travelBrand from "../../brand";
 
 export default function TrustedCollaborationBanner({
   title: titleProp = "Parceiros de Viagem Sunlive Travel",
@@ -12,12 +11,14 @@ export default function TrustedCollaborationBanner({
   const Title = cfg?.title ?? titleProp;
   const Lead = cfg?.lead ?? subtitleProp;
 
-  // Ícones obtidos da brand (evita imports diretos no componente)
-  const icons = travelBrand?.icons || {};
+  const icons = travelBrand?.icons ?? {};
   const fallbackIcon = icons.shield || icons.handshake || null;
+
   const Icon =
     (cfg?.iconKey && icons[cfg.iconKey]) ||
-    (cfg?.iconKey && icons[cfg.iconKey.toLowerCase?.()]) ||
+    (cfg?.iconKey &&
+      typeof cfg.iconKey === "string" &&
+      icons[cfg.iconKey.toLowerCase()]) ||
     fallbackIcon;
 
   return (

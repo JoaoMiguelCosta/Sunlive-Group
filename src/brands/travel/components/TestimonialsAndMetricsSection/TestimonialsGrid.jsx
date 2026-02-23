@@ -1,17 +1,18 @@
 import styles from "./TestimonialsGrid.module.css";
-import travelBrand from "../../ConfigTravel.jsx";
-import TestemonialCard from "../../../../shared/components/Travel/TestemonialCard/index.jsx";
+import travelBrand from "../../brand";
+import TestemonialCard from "../../shared/ui/TestemonialCard/index.jsx";
 import useSpotlightCycle from "../../../../shared/hooks/useSpotlightCycle.js";
 import { useCallback, useRef } from "react";
 
 export default function TestimonialsGrid() {
-  const items = travelBrand?.sections?.testimonialsAndMetrics?.testimonials;
-  if (!items?.length) return null;
+  const items =
+    travelBrand?.sections?.testimonialsAndMetrics?.testimonials ?? [];
+  if (!Array.isArray(items) || items.length === 0) return null;
 
   // autoplay: 2.5s
   const { index, setIndex, onMouseEnter, onMouseLeave } = useSpotlightCycle(
     items.length,
-    2500
+    2500,
   );
 
   const wrapRef = useRef(null);
@@ -19,6 +20,7 @@ export default function TestimonialsGrid() {
   const handleKeyDown = useCallback(
     (e) => {
       if (e.altKey || e.ctrlKey || e.metaKey) return;
+
       switch (e.key) {
         case "ArrowRight":
           e.preventDefault();
@@ -40,13 +42,12 @@ export default function TestimonialsGrid() {
           break;
       }
     },
-    [items.length, setIndex]
+    [items.length, setIndex],
   );
 
   const goPrev = () => setIndex((i) => (i - 1 + items.length) % items.length);
   const goNext = () => setIndex((i) => (i + 1) % items.length);
 
-  // resolve ícone por item (ex.: "star") com fallback para star global
   const resolveIcon = (key) =>
     (travelBrand?.icons && travelBrand.icons[key]) || travelBrand?.icons?.star;
 
@@ -61,7 +62,6 @@ export default function TestimonialsGrid() {
       role="region"
       aria-label="Testemunhos — usar setas esquerda/direita para navegar"
     >
-      {/* Controlo (setas + dots) */}
       <div className={styles.controls}>
         <button
           type="button"
@@ -69,6 +69,7 @@ export default function TestimonialsGrid() {
           aria-label="Testemunho anterior"
           onClick={goPrev}
         />
+
         <div className={styles.dots} role="tablist" aria-label="Testemunhos">
           {items.map((_, i) => {
             const active = i === index;
@@ -86,6 +87,7 @@ export default function TestimonialsGrid() {
             );
           })}
         </div>
+
         <button
           type="button"
           className={`${styles.arrowBtn} ${styles.next}`}
@@ -94,12 +96,12 @@ export default function TestimonialsGrid() {
         />
       </div>
 
-      {/* Cards */}
       <div className={styles.grid} role="list">
         {items.map((t, i) => {
           const active = i === index;
           const id = `tcard-${i}`;
           const Icon = resolveIcon(t.iconKey);
+
           return (
             <TestemonialCard
               key={t.key || t.quote}

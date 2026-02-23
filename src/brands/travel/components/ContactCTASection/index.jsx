@@ -1,6 +1,6 @@
 // src/brands/travel/components/ContactCTASection/index.jsx
 import styles from "./ContactCTASection.module.css";
-import travelBrand from "../../ConfigTravel.jsx";
+import travelBrand from "../../brand";
 
 import ContactCTAHeadline from "./ContactCTAHeadline.jsx";
 import QuoteRequestChecklist from "./QuoteRequestChecklist.jsx";
@@ -12,6 +12,7 @@ export default function ContactCTASection() {
 
   const hasChecklist =
     Array.isArray(sectionCfg.checklist) && sectionCfg.checklist.length > 0;
+
   const hasChannels =
     Array.isArray(sectionCfg.channels) && sectionCfg.channels.length > 0;
 
@@ -19,14 +20,13 @@ export default function ContactCTASection() {
 
   return (
     <section
-      id="contactar"
+      id={sectionCfg.id || "contactar"}
       className={styles.section}
       aria-labelledby="contactar-heading"
     >
       <div className={styles.container}>
         <ContactCTAHeadline />
 
-        {/* Checklist numa única coluna, centrada */}
         {hasChecklist && (
           <div className={styles.grid}>
             <div className={styles.col}>
@@ -35,7 +35,6 @@ export default function ContactCTASection() {
           </div>
         )}
 
-        {/* Callout de contacto centrado, por baixo */}
         {hasChannels && (
           <div className={styles.callout}>
             <ContactChannels />

@@ -5,8 +5,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import GroupPage from "../../brands/group/pages/GroupPage.jsx";
 import PartnersLogosPage from "../../brands/group/pages/PartnersLogosPage.jsx";
 
-/* Travel */
-import TravelPage from "../../brands/travel/page/TravelPage.jsx";
+/* Travel (modular) */
+import travelRoutes from "../../brands/travel/routes.jsx";
 
 /* Sports — layouts */
 import SportsShellHome from "../../brands/sports/layouts/SportsShellHome.jsx";
@@ -48,7 +48,7 @@ export default function AppRoutes() {
       <Route path="/sunlive-group/logos" element={<PartnersLogosPage />} />
 
       {/* Submarca — Travel */}
-      <Route path="/sunlive-group/travel" element={<TravelPage />} />
+      {travelRoutes()}
 
       {/* ===== Submarca — Sports ===== */}
 
@@ -77,6 +77,7 @@ export default function AppRoutes() {
         <Route path="logistics" element={<LogisticsPage />} />
         <Route path="consultancy" element={<ConsultancyPage />} />
         <Route path="contacts" element={<ContactsPage />} />
+
         {/* Qualquer sub-rota inválida dentro de /sports → home de Sports */}
         <Route
           path="*"
@@ -85,7 +86,6 @@ export default function AppRoutes() {
       </Route>
 
       {/* ===== Submarca — Hotel ===== */}
-
       <Route path="/sunlive-group/hotel" element={<HotelShellHome />}>
         <Route index element={<HomePageHotel />} />
 
@@ -97,6 +97,7 @@ export default function AppRoutes() {
         <Route path="eventos" element={<EventsPageHotel />} />
         <Route path="informacoes" element={<InformationPageHotel />} />
 
+        {/* Aliases EN → PT */}
         <Route path="about" element={<Navigate to="sobre" replace />} />
         <Route
           path="accommodation"
@@ -104,6 +105,7 @@ export default function AppRoutes() {
         />
       </Route>
 
+      {/* Aliases / legacy */}
       <Route
         path="/sunlive-group-logos"
         element={<Navigate to="/sunlive-group/logos" replace />}

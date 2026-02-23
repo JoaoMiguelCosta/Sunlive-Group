@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 import { useOutsideClick } from "../../../../shared/hooks/useOutsideClick.js";
 import useLocalSmoothAnchors from "../../../../shared/hooks/useLocalSmoothAnchors.js";
-import travelBrand from "../../ConfigTravel.jsx";
+import travelBrand from "../../brand";
 import styles from "./PrimaryNav.module.css";
 
 /** Submenu */
 function Submenu({ items = [], onSelect, onAnchorClick }) {
-  if (!items.length) return null;
+  if (!Array.isArray(items) || items.length === 0) return null;
 
   const handleSubClick = (e, href) => {
     onAnchorClick?.(e, href, onSelect); // se for hash local → smooth + fecha
@@ -61,6 +61,7 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
             </span>
           ))}
       </a>
+
       {hasSub && (
         <Submenu
           items={item.submenu}
@@ -77,16 +78,14 @@ export default function PrimaryNav({ items = [] }) {
   const [openKey, setOpenKey] = useState(null);
   const navRef = useRef(null);
 
-  // fecha dropdowns ao clicar fora
   useOutsideClick(navRef, () => setOpenKey(null), true);
 
   const { handleAnchorClick } = useLocalSmoothAnchors();
-  if (!items.length) return null;
+  if (!Array.isArray(items) || items.length === 0) return null;
 
   const toggleItem = (key) => setOpenKey((prev) => (prev === key ? null : key));
   const closeAll = () => setOpenKey(null);
 
-  // Ícone chevron vindo do config da brand
   const ChevIcon = travelBrand?.icons?.chevronDown || null;
 
   return (

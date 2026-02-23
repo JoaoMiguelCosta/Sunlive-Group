@@ -1,7 +1,6 @@
-// src/brands/travel/sections/LogisticsSolutionsSection/LogisticsSolutionsHeadline.jsx
 import styles from "./LogisticsSolutionsHeadline.module.css";
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import travelBrand from "../../ConfigTravel.jsx";
+import travelBrand from "../../brand";
 
 export default function LogisticsSolutionsHeadline() {
   const headline = travelBrand?.sections?.logisticsSolutions?.headline;

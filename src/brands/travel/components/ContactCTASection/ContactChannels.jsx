@@ -1,16 +1,20 @@
 // src/brands/travel/components/ContactCTASection/ContactChannels.jsx
 import styles from "./ContactChannels.module.css";
-import travelBrand from "../../ConfigTravel.jsx";
+import travelBrand from "../../brand";
 
 export default function ContactChannels() {
-  const channels = travelBrand?.sections?.contactCTA?.channels;
-  if (!channels?.length) return null;
+  const { sections, icons } = travelBrand;
+
+  const channels = sections?.contactCTA?.channels;
+  if (!Array.isArray(channels) || channels.length === 0) return null;
 
   return (
     <nav className={styles.wrap} aria-label="Canais de contacto">
       <ul className={styles.list} role="list">
         {channels.map(({ key, iconKey, label, href, ariaLabel }) => {
-          const Icon = travelBrand?.icons?.[iconKey] || null;
+          const Icon = iconKey ? icons?.[iconKey] : null;
+          const isExternal =
+            typeof href === "string" && /^https?:\/\//.test(href);
 
           return (
             <li key={key} className={styles.item}>
@@ -18,10 +22,8 @@ export default function ContactChannels() {
                 className={styles.link}
                 href={href}
                 aria-label={ariaLabel || label}
-                target={href?.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  href?.startsWith("http") ? "noopener noreferrer" : undefined
-                }
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
               >
                 {Icon ? (
                   <Icon className={styles.icon} width={20} height={20} />

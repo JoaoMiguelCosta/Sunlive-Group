@@ -1,13 +1,11 @@
-// src/brands/travel/components/InternationalDestinationsSection/DestinationsInternational.jsx
 import styles from "./DestinationsInternational.module.css";
-import DestinationCard from "../../../../shared/components/Travel/DestinationCard/index.jsx";
-import travelBrand from "../../ConfigTravel.jsx";
-// ❌ remove: import { FLAGS } from "../../../../shared/config/BrandDefault.jsx";
+import DestinationCard from "../../shared/ui/DestinationCard/index.jsx";
+import travelBrand from "../../brand";
 
 export default function DestinationsInternational() {
   const list =
-    travelBrand?.sections?.internationalDestinations?.destinations || [];
-  if (!list.length) return null;
+    travelBrand?.sections?.internationalDestinations?.destinations ?? [];
+  if (!Array.isArray(list) || list.length === 0) return null;
 
   return (
     <div className={styles.container}>
@@ -17,13 +15,13 @@ export default function DestinationsInternational() {
         aria-label="Destinos internacionais"
       >
         {list.map((d) => {
-          const imageSrc = d.picture?.src;
-          const imageAlt = d.picture?.alt || d.city || "Destino internacional";
+          const imageSrc = d?.picture?.src;
+          const imageAlt =
+            d?.picture?.alt || d?.city || "Destino internacional";
           if (!imageSrc) return null;
 
-          // 👉 Bandeiras agora via ConfigTravel
-          const FlagIcon = d.flagKey
-            ? travelBrand.flags?.[d.flagKey]
+          const FlagIcon = d?.flagKey
+            ? travelBrand?.flags?.[d.flagKey]
             : undefined;
 
           return (

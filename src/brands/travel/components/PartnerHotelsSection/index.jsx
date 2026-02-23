@@ -2,7 +2,7 @@ import styles from "./PartnerHotelsSection.module.css";
 import PartnerHotelsHeadline from "./PartnerHotelsHeadline.jsx";
 import PartnerHotelsCardsGrid from "./PartnerHotelsCardsGrid.jsx";
 import ContactCTA from "./ContactCTA.jsx";
-import travelBrand from "../../ConfigTravel.jsx";
+import travelBrand from "../../brand";
 
 export default function PartnerHotelsSection({ className = "" }) {
   const cfg = travelBrand?.sections?.partnerHotels;
@@ -12,7 +12,6 @@ export default function PartnerHotelsSection({ className = "" }) {
 
   return (
     <section
-    
       id={id}
       className={[styles.section, className].filter(Boolean).join(" ")}
       role="region"

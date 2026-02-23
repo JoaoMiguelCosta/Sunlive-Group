@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import styles from "./ServiceOfferingsGrid.module.css";
-import ServiceCard from "../../../../shared/components/Travel/ServiceCard/index.jsx";
-import travelBrand from "../../ConfigTravel.jsx";
+import ServiceCard from "../../shared/ui/ServiceCard/index.jsx";
+import travelBrand from "../../brand";
 import useAccordion from "../../../../shared/hooks/useAccordion";
 
 /**
@@ -14,21 +14,21 @@ export default function ServiceOfferingsGrid({
   icons: iconsOverride,
   allowMultiple = false,
 }) {
-  const servicesFromConfig =
-    travelBrand?.sections?.logisticsSolutions?.services || [];
-  const iconsFromConfig = travelBrand?.icons || {};
+  const servicesFromBrand =
+    travelBrand?.sections?.logisticsSolutions?.services ?? [];
+  const iconsFromBrand = travelBrand?.icons ?? {};
 
   const services = Array.isArray(servicesOverride)
     ? servicesOverride
-    : servicesFromConfig;
+    : servicesFromBrand;
 
-  const icons = iconsOverride || iconsFromConfig;
+  const icons = iconsOverride || iconsFromBrand;
+
   if (!Array.isArray(services) || services.length === 0) return null;
 
-  // lista com key estável
   const keyed = useMemo(
     () => services.map((s, i) => ({ ...s, key: s.key || `svc-${i}` })),
-    [services]
+    [services],
   );
 
   const { isOpen, toggle } = useAccordion(keyed, { allowMultiple });
@@ -43,6 +43,7 @@ export default function ServiceOfferingsGrid({
         {keyed.map((svc, idx) => {
           const Icon = svc.iconKey ? icons[svc.iconKey] : undefined;
           const open = isOpen(svc.key);
+
           return (
             <div
               key={svc.key}

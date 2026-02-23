@@ -1,12 +1,9 @@
-// src/brands/travel/components/TestimonialsAndMetricsSection/KeyMetricsBar.jsx
 import styles from "./KeyMetricsBar.module.css";
-import travelBrand from "../../ConfigTravel.jsx";
+import travelBrand from "../../brand";
 
 /**
  * KeyMetricsBar — Barra de KPIs para a secção de Testemunhos
  * - Consome travelBrand.sections.testimonialsAndMetrics.metrics
- * - Mostra value em destaque e label abaixo
- * - ⚠️ Ícones removidos (ex. star)
  */
 function MetricItem({ value, label, ariaLabel }) {
   return (
@@ -20,8 +17,8 @@ function MetricItem({ value, label, ariaLabel }) {
 }
 
 export default function KeyMetricsBar() {
-  const metrics = travelBrand?.sections?.testimonialsAndMetrics?.metrics || [];
-  if (!metrics.length) return null;
+  const metrics = travelBrand?.sections?.testimonialsAndMetrics?.metrics ?? [];
+  if (!Array.isArray(metrics) || metrics.length === 0) return null;
 
   return (
     <section
@@ -29,7 +26,6 @@ export default function KeyMetricsBar() {
       aria-labelledby="metrics-heading"
       role="region"
     >
-      {/* Heading apenas para A11y */}
       <h2 id="metrics-heading" className={styles.visuallyHidden}>
         Indicadores de desempenho
       </h2>

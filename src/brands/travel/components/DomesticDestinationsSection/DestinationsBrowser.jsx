@@ -1,6 +1,6 @@
 import styles from "./DestinationsBrowser.module.css";
-import DestinationCard from "../../../../shared/components/Travel/DestinationCard/index.jsx";
-import travelBrand from "../../ConfigTravel.jsx";
+import DestinationCard from "../../shared/ui/DestinationCard/index.jsx";
+import travelBrand from "../../brand";
 
 import { useTabsFilter } from "../../../../shared/hooks/useTabsFilter.js";
 import { normalizeDestinations } from "../../../../shared/utils/normalizeDestinations.js";
@@ -19,11 +19,11 @@ const CATS = [
 ];
 
 export default function DestinationsBrowser() {
-  const raw = travelBrand?.sections?.domesticDestinations?.destinations || [];
-  // Agora os src vêm do config; o normalizador deve respeitar d.picture?.src
-  const data = normalizeDestinations(raw);
+  const raw = travelBrand?.sections?.domesticDestinations?.destinations ?? [];
 
+  const data = normalizeDestinations(raw);
   const { tab, setTab, filtered } = useTabsFilter(data, CATS, "principais");
+
   if (!data.length) return null;
 
   return (
@@ -44,6 +44,7 @@ export default function DestinationsBrowser() {
                 .filter(Boolean)
                 .join(" ")}
               onClick={() => setTab(t.key)}
+              type="button"
             >
               {t.label}
             </button>

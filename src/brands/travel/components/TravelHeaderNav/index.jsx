@@ -1,9 +1,8 @@
-// src/brands/travel/components/TravelHeaderNav/index.jsx
 import styles from "./TravelHeaderNav.module.css";
 import UtilityBar from "../../../../shared/components/UtilityBar";
 import HeaderShell from "./HeaderShell.jsx";
 import LeftRow from "./LeftRow.jsx";
-import travelBrand from "../../ConfigTravel.jsx";
+import travelBrand from "../../brand";
 
 export default function TravelHeaderNav() {
   const { logo, nav = [], cta, socials, lang } = travelBrand;

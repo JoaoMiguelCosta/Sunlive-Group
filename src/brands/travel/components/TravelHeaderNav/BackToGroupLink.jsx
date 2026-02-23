@@ -1,5 +1,5 @@
 import BackButton from "../../../../shared/ui/BackButton.jsx";
-import travelBrand from "../../ConfigTravel.jsx";
+import travelBrand from "../../brand";
 
 /**
  * BackToGroupLink — “Voltar Sunlive Group”
@@ -10,9 +10,11 @@ export default function BackToGroupLink({ href, label, ...rest }) {
     href: "/sunlive-group",
     label: "Voltar Sunlive Group",
   };
+
   const finalHref = href ?? cfg.href;
   const finalLabel = label ?? cfg.label;
 
   if (!finalHref) return null;
+
   return <BackButton href={finalHref} label={finalLabel} {...rest} />;
 }

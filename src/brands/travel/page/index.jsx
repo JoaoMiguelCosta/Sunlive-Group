@@ -1,5 +1,4 @@
-// Sunlive Travel — Página principal (alinhada ao layout “Performance Prestige”)
-
+// src/brands/travel/page/index.jsx
 import styles from "./TravelPage.module.css";
 
 import TravelHeaderNav from "../components/TravelHeaderNav";
@@ -12,33 +11,29 @@ import TestimonialsAndMetricsSection from "../components/TestimonialsAndMetricsS
 import ContactCTASection from "../components/ContactCTASection";
 
 import TravelFooter from "../components/TravelFooter";
-import travelBrand from "../ConfigTravel.jsx";
+
+// ✅ melhor: resolve para ../brand/index.js automaticamente
+import travelBrand from "../brand";
+
+// ✅ mantém (ou migra depois)
 import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
 
-// Scroll suave quando a rota vem com #hash (ex.: #destinos-nacionais)
+// ✅ paths corretos para shared (a partir de src/brands/travel/page/)
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
-
-// Normalizador partilhado do footer
 import { buildFooterData } from "../../../shared/utils/normalizeFooter.js";
 
 export default function TravelPage() {
-  // Compensa header/linha fixa (ajusta se necessário)
   useScrollToHash(24);
 
-  // Base do footer (Travel)
   const rawFooter = travelBrand.sections?.footer ?? {};
-
-  // Normalização centralizada (helper reutilizável)
   const footerData = buildFooterData(rawFooter, groupFooter, "footer-travel");
 
   return (
     <div className={styles.pageWrap} data-brand="travel">
       <main className={styles.inner} aria-label="Sunlive Travel — Home">
         <div className={styles.sections}>
-          {/* Header utilitário / navegação */}
           <TravelHeaderNav />
 
-          {/* Secções principais */}
           <LogisticsSolutionsSection />
           <DomesticDestinationsSection />
           <InternationalDestinationsSection />
@@ -49,7 +44,6 @@ export default function TravelPage() {
         </div>
       </main>
 
-      {/* Footer colado ao bloco anterior */}
       <TravelFooter data={footerData} flushTop />
     </div>
   );
