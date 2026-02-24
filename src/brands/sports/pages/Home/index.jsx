@@ -1,7 +1,6 @@
-// Sunlive Sports — HomePage completa (usa Home.module.css como layout)
-
+// src/brands/sports/pages/Home/index.jsx
 import styles from "./Home.module.css";
-import GatewayGrid from "./GatewayGrid.jsx";
+import GatewayGrid from "./sections/GatewayGrid.jsx";
 
 export default function HomePageSports() {
   return (
@@ -12,10 +11,7 @@ export default function HomePageSports() {
         aria-label="Sunlive Sports — Home"
       >
         <div className={styles.sections}>
-         
           <GatewayGrid />
-
-
         </div>
       </main>
     </div>

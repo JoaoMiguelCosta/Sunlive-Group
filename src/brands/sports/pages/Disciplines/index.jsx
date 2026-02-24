@@ -1,20 +1,25 @@
 // src/brands/sports/pages/Disciplines/index.jsx
 import styles from "./Disciplines.module.css";
 
-import sportsBrand from "../../configSports.jsx";
+import sportsBrand from "../../brand/configSports.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import OverviewSection from "./OverviewSection.jsx";
-import DisciplinesClosingPanel from "./DisciplinesClosingPanel.jsx";
-import CyclingHighlightSection from "./CyclingHighlightSection.jsx";
-import CyclingDisciplinesSection from "./CyclingDisciplinesSection.jsx";
-import CyclingProjectsSection from "./CyclingProjectsSection.jsx";
-import GymnasticsDisciplinesSection from "./GymnasticsDisciplinesSection.jsx";
-import GymnasticsProjectsSection from "./GymnasticsProjectsSection.jsx";
-import FootballProjectsSection from "./FootballProjectsSection.jsx";
-import KarateProjectsSection from "./KarateProjectsSection.jsx";
-import BasketballProjectsSection from "./BasketballProjectsSection.jsx";
-import OtherDisciplinesSection from "./OtherDisciplinesSection.jsx";
+
+import OverviewSection from "./sections/OverviewSection.jsx";
+import DisciplinesClosingPanel from "./sections/DisciplinesClosingPanel.jsx";
+
+import CyclingHighlightSection from "./sections/CyclingHighlightSection.jsx";
+import CyclingDisciplinesSection from "./sections/CyclingDisciplinesSection.jsx";
+import CyclingProjectsSection from "./sections/CyclingProjectsSection.jsx";
+
+import GymnasticsDisciplinesSection from "./sections/GymnasticsDisciplinesSection.jsx";
+import GymnasticsProjectsSection from "./sections/GymnasticsProjectsSection.jsx";
+
+import FootballProjectsSection from "./sections/FootballProjectsSection.jsx";
+import KarateProjectsSection from "./sections/KarateProjectsSection.jsx";
+import BasketballProjectsSection from "./sections/BasketballProjectsSection.jsx";
+
+import OtherDisciplinesSection from "./sections/OtherDisciplinesSection.jsx";
 
 /**
  * Página Modalidades — Sunlive Sports
@@ -27,21 +32,18 @@ export default function DisciplinesPage() {
   return (
     <div className={styles.pageWrap} data-brand="sports">
       <main className={styles.inner} aria-label="Sunlive Sports — Modalidades">
-        {/* Hero / faixa inicial */}
         <header className={styles.heroSection}>
           <HeadlineBlock
             theme="sports"
             variant="banded"
             align="center"
             max="lg"
-            title={data.hero.title}
-            lead={data.hero.description}
+            title={data.hero?.title}
+            lead={data.hero?.description}
           />
         </header>
 
-        {/* Conteúdo principal */}
         <div className={styles.sections}>
-          {/* 1) Bloco texto + imagem */}
           <OverviewSection data={data} />
 
           {/* 2) Ciclismo */}
@@ -49,25 +51,20 @@ export default function DisciplinesPage() {
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.cyclingIntro.title}
+                aria-label={data.cyclingIntro?.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.cyclingIntro.title}
-                  lead={data.cyclingIntro.lead}
+                  title={data.cyclingIntro?.title}
+                  lead={data.cyclingIntro?.lead}
                 />
               </section>
 
-              {/* Card “Explore o Universo Ciclismo Sunlive” */}
               <CyclingHighlightSection data={data} />
-
-              {/* Grelha das disciplinas de Ciclismo (Estrada, BTT, BMX, Pista, Trial) */}
               <CyclingDisciplinesSection data={data} />
-
-              {/* Projetos de Ciclismo (ACA, Aero Edge, TFP) */}
               <CyclingProjectsSection data={data} />
             </>
           )}
@@ -77,23 +74,20 @@ export default function DisciplinesPage() {
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.gymnasticsIntro.title}
+                aria-label={data.gymnasticsIntro?.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.gymnasticsIntro.title}
-                  lead={data.gymnasticsIntro.lead}
+                  title={data.gymnasticsIntro?.title}
+                  lead={data.gymnasticsIntro?.lead}
                 />
               </section>
 
-              {/* Disciplinas de Ginástica (9 cards em grelha) */}
               <GymnasticsDisciplinesSection data={data} />
-
-              {/* Projetos de Ginástica (Academias ligadas à ginástica) */}
-              <GymnasticsProjectsSection />
+              <GymnasticsProjectsSection data={data} />
             </>
           )}
 
@@ -102,19 +96,18 @@ export default function DisciplinesPage() {
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.footballIntro.title}
+                aria-label={data.footballIntro?.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.footballIntro.title}
-                  lead={data.footballIntro.lead}
+                  title={data.footballIntro?.title}
+                  lead={data.footballIntro?.lead}
                 />
               </section>
 
-              {/* Projetos de Futebol (Pro Football Academy, etc.) */}
               <FootballProjectsSection />
             </>
           )}
@@ -124,19 +117,18 @@ export default function DisciplinesPage() {
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.karateIntro.title}
+                aria-label={data.karateIntro?.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.karateIntro.title}
-                  lead={data.karateIntro.lead}
+                  title={data.karateIntro?.title}
+                  lead={data.karateIntro?.lead}
                 />
               </section>
 
-              {/* Projetos de Karaté (Sunlive Karate Academy) */}
               <KarateProjectsSection />
             </>
           )}
@@ -146,19 +138,18 @@ export default function DisciplinesPage() {
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.basketballIntro.title}
+                aria-label={data.basketballIntro?.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.basketballIntro.title}
-                  lead={data.basketballIntro.lead}
+                  title={data.basketballIntro?.title}
+                  lead={data.basketballIntro?.lead}
                 />
               </section>
 
-              {/* Projetos de Basquetebol (Academia Basquetebol Sunlive) */}
               <BasketballProjectsSection />
             </>
           )}
@@ -168,15 +159,15 @@ export default function DisciplinesPage() {
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.otherDisciplinesIntro.title}
+                aria-label={data.otherDisciplinesIntro?.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.otherDisciplinesIntro.title}
-                  lead={data.otherDisciplinesIntro.lead}
+                  title={data.otherDisciplinesIntro?.title}
+                  lead={data.otherDisciplinesIntro?.lead}
                 />
               </section>
 
@@ -184,7 +175,6 @@ export default function DisciplinesPage() {
             </>
           )}
 
-          {/* 8) Painel de fecho / transição para Infraestruturas */}
           <DisciplinesClosingPanel data={data} />
         </div>
       </main>

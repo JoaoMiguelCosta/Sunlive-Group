@@ -61,7 +61,7 @@ export default function SportsLinkDirectory({ data }) {
                 <span key={it.key} className={styles.chip} role="link">
                   {it.label}
                 </span>
-              )
+              ),
             )}
           </div>
         </div>

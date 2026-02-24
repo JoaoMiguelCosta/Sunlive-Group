@@ -1,11 +1,11 @@
 // src/brands/sports/pages/Events/index.jsx
 import styles from "./Events.module.css";
 
-import sportsBrand from "../../configSports.jsx";
+import sportsBrand from "../../brand/configSports.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import OverviewSection from "./OverviewSection.jsx";
-import EventsClosingPanel from "./EventsClosingPanel.jsx";
+import OverviewSection from "./sections/OverviewSection.jsx";
+import EventsClosingPanel from "./sections/EventsClosingPanel.jsx";
 
 /**
  * Página Eventos — Sunlive Sports
@@ -18,24 +18,19 @@ export default function EventsPage() {
   return (
     <div className={styles.pageWrap} data-brand="sports">
       <main className={styles.inner} aria-label="Sunlive Sports — Eventos">
-        {/* Hero / faixa inicial */}
         <header className={styles.heroSection}>
           <HeadlineBlock
             theme="sports"
             variant="banded"
             align="center"
             max="lg"
-            title={data.hero.title}
-            lead={data.hero.description}
+            title={data.hero?.title}
+            lead={data.hero?.description}
           />
         </header>
 
-        {/* Conteúdo principal */}
         <div className={styles.sections}>
-          {/* 1) Bloco texto + imagem + pilares */}
           <OverviewSection data={data} />
-
-          {/* 2) Painel de fecho (3 CTAs: voltar / contactar / atletas) */}
           <EventsClosingPanel data={data} />
         </div>
       </main>

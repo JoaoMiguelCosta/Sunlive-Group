@@ -1,10 +1,10 @@
 // src/brands/sports/pages/Contacts/index.jsx
 import styles from "./Contacts.module.css";
 
-import sportsBrand from "../../configSports.jsx";
+import sportsBrand from "../../brand/configSports.js";
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import ContactsJourneySection from "./ContactsJourneySection.jsx";
-import ContactCardsSection from "./ContactCardsSection.jsx";
+import ContactsJourneySection from "./sections/ContactsJourneySection.jsx";
+import ContactCardsSection from "./sections/ContactCardsSection.jsx";
 
 export default function ContactsPage() {
   const data = sportsBrand.sections?.contacts;
@@ -19,8 +19,8 @@ export default function ContactsPage() {
             variant="banded"
             align="center"
             max="lg"
-            title={data.hero.title}
-            lead={data.hero.description}
+            title={data.hero?.title}
+            lead={data.hero?.description}
           />
         </header>
 

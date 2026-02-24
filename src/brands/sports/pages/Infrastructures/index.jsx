@@ -1,12 +1,12 @@
 // src/brands/sports/pages/Infrastructures/index.jsx
 import styles from "./Infrastructures.module.css";
 
-import sportsBrand from "../../configSports.jsx";
+import sportsBrand from "../../brand/configSports.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import OverviewSection from "./OverviewSection.jsx";
-import  FacilitiesSection from "./FacilitiesSection.jsx"
-import InfrastructuresClosingPanel from "./InfrastructuresClosingPanel.jsx";
+import OverviewSection from "./sections/OverviewSection.jsx";
+import FacilitiesSection from "./sections/FacilitiesSection.jsx";
+import InfrastructuresClosingPanel from "./sections/InfrastructuresClosingPanel.jsx";
 
 /**
  * Página Infraestruturas — Sunlive Sports

@@ -1,12 +1,12 @@
 // src/brands/sports/pages/Athletes/index.jsx
 import styles from "./Athletes.module.css";
 
-import sportsBrand from "../../configSports.jsx";
+import sportsBrand from "../../brand/configSports.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import OverviewSection from "./OverviewSection.jsx";
-import AthletesClosingPanel from "./AthletesClosingPanel.jsx";
-import ProfilesSection from "./ProfilesSection.jsx";
+import OverviewSection from "./sections/OverviewSection.jsx";
+import ProfilesSection from "./sections/ProfilesSection.jsx";
+import AthletesClosingPanel from "./sections/AthletesClosingPanel.jsx";
 
 /**
  * Página Atletas Sunlive — Sunlive Sports
@@ -29,8 +29,8 @@ export default function AthletesPage() {
             variant="banded"
             align="center"
             max="lg"
-            title={data.hero.title}
-            lead={data.hero.description}
+            title={data.hero?.title}
+            lead={data.hero?.description}
           />
         </header>
 
@@ -50,8 +50,8 @@ export default function AthletesPage() {
                 variant="banded"
                 align="center"
                 max="lg"
-                title={data.profilesIntro.title}
-                lead={data.profilesIntro.lead}
+                title={data.profilesIntro?.title}
+                lead={data.profilesIntro?.lead}
               />
             </section>
           )}
@@ -59,7 +59,7 @@ export default function AthletesPage() {
           {/* 3) Grid de perfis de atletas */}
           <ProfilesSection data={data} />
 
-          {/* 4) Painel de fecho (Voltar / Contactar / Serviços Especializados) */}
+          {/* 4) Painel de fecho */}
           <AthletesClosingPanel data={data} />
         </div>
       </main>

@@ -1,5 +1,6 @@
 // src/brands/sports/layouts/SportsShellInner.jsx
-import SportsShell from "./SportsShell";
+import SportsShell from "./SportsShell.jsx";
+
 export default function SportsShellInner() {
   return (
     <SportsShell

@@ -1,14 +1,15 @@
 // src/brands/sports/pages/LeisureSportsTourism/index.jsx
 import styles from "./LeisureSportsTourism.module.css";
 
-import sportsBrand from "../../configSports.jsx";
+import sportsBrand from "../../brand/configSports.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import OverviewSection from "./OverviewSection.jsx";
-import LeisureSportsTourismClosingPanel from "./LeisureSportsTourismClosingPanel.jsx";
-import LeisureExperiencesGrid from "./LeisureExperiencesGrid.jsx";
-import LeisureDestinationsGrid from "./LeisureDestinationsGrid.jsx";
-import LeisureBenefitsGrid from "./LeisureBenefitsGrid.jsx";
+
+import OverviewSection from "./sections/OverviewSection.jsx";
+import LeisureExperiencesGrid from "./sections/LeisureExperiencesGrid.jsx";
+import LeisureDestinationsGrid from "./sections/LeisureDestinationsGrid.jsx";
+import LeisureBenefitsGrid from "./sections/LeisureBenefitsGrid.jsx";
+import LeisureSportsTourismClosingPanel from "./sections/LeisureSportsTourismClosingPanel.jsx";
 
 /**
  * Página Turismo Desportivo Lúdico — Sunlive Sports
@@ -24,37 +25,34 @@ export default function LeisureSportsTourismPage() {
         className={styles.inner}
         aria-label="Sunlive Sports — Turismo Desportivo Lúdico"
       >
-        {/* Hero / faixa inicial */}
         <header className={styles.heroSection}>
           <HeadlineBlock
             theme="sports"
             variant="banded"
             align="center"
             max="lg"
-            title={data.hero.title}
-            lead={data.hero.description}
+            title={data.hero?.title}
+            lead={data.hero?.description}
           />
         </header>
 
-        {/* Conteúdo principal */}
         <div className={styles.sections}>
-          {/* 1) Bloco texto + foto + pills */}
           <OverviewSection data={data} />
 
-          {/* 2) Experiências Inesquecíveis + grelha de cartões */}
+          {/* 2) Experiências Inesquecíveis */}
           {data.experiencesIntro && (
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.experiencesIntro.title}
+                aria-label={data.experiencesIntro?.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.experiencesIntro.title}
-                  lead={data.experiencesIntro.lead}
+                  title={data.experiencesIntro?.title}
+                  lead={data.experiencesIntro?.lead}
                 />
               </section>
 
@@ -64,20 +62,20 @@ export default function LeisureSportsTourismPage() {
             </>
           )}
 
-          {/* 3) Destinos que Encantam + grelha de destinos */}
+          {/* 3) Destinos que Encantam */}
           {data.destinationsIntro && (
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.destinationsIntro.title}
+                aria-label={data.destinationsIntro?.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.destinationsIntro.title}
-                  lead={data.destinationsIntro.lead}
+                  title={data.destinationsIntro?.title}
+                  lead={data.destinationsIntro?.lead}
                 />
               </section>
 
@@ -91,17 +89,17 @@ export default function LeisureSportsTourismPage() {
           {data.benefitsIntro && (
             <>
               <section
-                id={data.benefitsIntro.id}
+                id={data.benefitsIntro?.id}
                 className={styles.heroSection}
-                aria-label={data.benefitsIntro.title}
+                aria-label={data.benefitsIntro?.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.benefitsIntro.title}
-                  lead={data.benefitsIntro.lead}
+                  title={data.benefitsIntro?.title}
+                  lead={data.benefitsIntro?.lead}
                 />
               </section>
 
@@ -112,7 +110,6 @@ export default function LeisureSportsTourismPage() {
             </>
           )}
 
-          {/* 5) Painel de fecho / próximo passo */}
           <LeisureSportsTourismClosingPanel data={data} />
         </div>
       </main>

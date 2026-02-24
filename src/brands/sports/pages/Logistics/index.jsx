@@ -1,12 +1,12 @@
 // src/brands/sports/pages/Logistics/index.jsx
 import styles from "./Logistics.module.css";
 
-import sportsBrand from "../../configSports.jsx";
+import sportsBrand from "../../brand/configSports.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import OverviewSection from "./OverviewSection.jsx";
-import LogisticsServicesSection from "./LogisticsServicesSection.jsx";
-import LogisticsClosingPanel from "./LogisticsClosingPanel.jsx";
+import OverviewSection from "./sections/OverviewSection.jsx";
+import LogisticsServicesSection from "./sections/LogisticsServicesSection.jsx";
+import LogisticsClosingPanel from "./sections/LogisticsClosingPanel.jsx";
 
 /**
  * Página Logística — Sunlive Sports
@@ -18,41 +18,37 @@ export default function LogisticsPage() {
   return (
     <div className={styles.pageWrap} data-brand="sports">
       <main className={styles.inner} aria-label="Sunlive Sports — Logística">
-        {/* Hero / faixa inicial */}
         <header className={styles.heroSection}>
           <HeadlineBlock
             theme="sports"
             variant="banded"
             align="center"
             max="lg"
-            title={data.hero.title}
-            lead={data.hero.description}
+            title={data.hero?.title}
+            lead={data.hero?.description}
           />
         </header>
 
-        {/* Conteúdo principal */}
         <div className={styles.sections}>
-          {/* 1) Bloco texto + imagem */}
           <OverviewSection data={data} />
 
-          {/* 2) Headline intermédio — Serviços Logísticos */}
           {data.servicesIntro && (
             <section
               className={styles.heroSection}
-              aria-label={data.servicesIntro.title}
+              aria-label={data.servicesIntro?.title}
             >
               <HeadlineBlock
                 theme="sports"
                 variant="banded"
                 align="center"
                 max="lg"
-                title={data.servicesIntro.title}
-                lead={data.servicesIntro.lead}
+                title={data.servicesIntro?.title}
+                lead={data.servicesIntro?.lead}
               />
             </section>
           )}
 
-          <LogisticsServicesSection data={data} />
+          <LogisticsServicesSection data={data} iconSet={sportsBrand.icons} />
           <LogisticsClosingPanel data={data} />
         </div>
       </main>

@@ -1,13 +1,13 @@
 // src/brands/sports/pages/Consultancy/index.jsx
 import styles from "./Consultancy.module.css";
 
-import sportsBrand from "../../configSports.jsx";
+import sportsBrand from "../../brand/configSports.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import OverviewSection from "./OverviewSection.jsx";
-import ConsultancyEntitiesSection from "./ConsultancyEntitiesSection.jsx";
-import ConsultancyAreasSection from "./ConsultancyAreasSection.jsx";
-import ConsultancyClosingPanel from "./ConsultancyClosingPanel.jsx";
+import OverviewSection from "./sections/OverviewSection.jsx";
+import ConsultancyEntitiesSection from "./sections/ConsultancyEntitiesSection.jsx";
+import ConsultancyAreasSection from "./sections/ConsultancyAreasSection.jsx";
+import ConsultancyClosingPanel from "./sections/ConsultancyClosingPanel.jsx";
 import useScrollToHash from "../../../../shared/hooks/useScrollToHash.js";
 
 /**
@@ -31,8 +31,8 @@ export default function ConsultancyPage() {
             variant="banded"
             align="center"
             max="lg"
-            title={data.hero.title}
-            lead={data.hero.description}
+            title={data.hero?.title}
+            lead={data.hero?.description}
           />
         </header>
 
@@ -48,15 +48,15 @@ export default function ConsultancyPage() {
           {data.areasIntro && (
             <section
               className={styles.heroSection}
-              aria-label={data.areasIntro.title}
+              aria-label={data.areasIntro?.title}
             >
               <HeadlineBlock
                 theme="sports"
                 variant="banded"
                 align="center"
                 max="lg"
-                title={data.areasIntro.title}
-                lead={data.areasIntro.lead}
+                title={data.areasIntro?.title}
+                lead={data.areasIntro?.lead}
               />
             </section>
           )}

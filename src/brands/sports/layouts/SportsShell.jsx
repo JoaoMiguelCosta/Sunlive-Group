@@ -2,10 +2,10 @@
 import { Outlet } from "react-router-dom";
 
 import UtilityBar from "../../../shared/components/UtilityBar";
-import BrandMasthead from "../../../shared/components/Sports/BrandMasthead";
+import BrandMasthead from "../shared/ui/BrandMasthead/index.jsx";
 import FooterSports from "../components/FooterSports";
 
-import sportsBrand from "../configSports.jsx";
+import sportsBrand from "../brand/configSports.js";
 import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
 import { buildFooterData } from "../../../shared/utils/normalizeFooter.js";
 

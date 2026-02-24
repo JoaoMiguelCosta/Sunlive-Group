@@ -1,13 +1,12 @@
 // src/brands/sports/pages/Academies/index.jsx
 import styles from "./Academies.module.css";
 
-import sportsBrand from "../../configSports.jsx";
+import sportsBrand from "../../brand/configSports.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import OverviewSection from "./OverviewSection.jsx";
-import AcademiesClosingPanel from "./AcademiesClosingPanel.jsx";
-import AcademiesCardsSection from "./AcademiesCardsSection.jsx";
-
+import OverviewSection from "./sections/OverviewSection.jsx";
+import AcademiesCardsSection from "./sections/AcademiesCardsSection.jsx";
+import AcademiesClosingPanel from "./sections/AcademiesClosingPanel.jsx";
 
 /**
  * Página Academias — Sunlive Sports
@@ -27,18 +26,15 @@ export default function AcademiesPage() {
             variant="banded"
             align="center"
             max="lg"
-            title={data.hero.title}
-            lead={data.hero.description}
+            title={data.hero?.title}
+            lead={data.hero?.description}
           />
         </header>
 
         {/* Conteúdo principal */}
         <div className={styles.sections}>
-          {/* 1) Bloco texto + imagem + pilares */}
           <OverviewSection data={data} />
           <AcademiesCardsSection data={data} />
-
-          {/* 2) Painel de fecho (3 CTAs: voltar / contactar / eventos) */}
           <AcademiesClosingPanel data={data} />
         </div>
       </main>
