@@ -5,8 +5,11 @@ import {
   withSocialIcons,
   makePoliciesBar,
   makeFooterInfoHeader,
+  makeAcknowledgements,
   ICONS,
 } from "../../shared/config/BrandDefault.jsx";
+
+import acknowledgementsImg from "../../shared/assets/acknowledgementsImg.png";
 
 /* ===== Base paths ===== */
 export const HOTEL_BASE_PATH = "/sunlive-group/hotel";
@@ -1124,7 +1127,11 @@ const hotelBrand = {
         partners: undefined,
       },
 
-      acknowledgements: undefined,
+      acknowledgements: makeAcknowledgements({
+        src: acknowledgementsImg,
+        alt: "PRR — República Portuguesa — Financiado pela União Europeia (NextGenerationEU)",
+        pdf: "books/acknowledgements.pdf",
+      }),
 
       policiesBar: makePoliciesBar({
         holder: "Sunlive Group. Todos os direitos reservados.",

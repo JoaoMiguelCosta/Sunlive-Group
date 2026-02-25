@@ -195,3 +195,7 @@ body::before {
     transform: translateY(-1px);
     transition: box-shadow .2s ease, transform .2s ease;
 }
+
+:global([data-brand="group"]) {
+    --footer-accent: var(--sl-gold-400, #c78615);
+}

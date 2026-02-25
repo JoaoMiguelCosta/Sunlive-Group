@@ -93,3 +93,7 @@
     outline: 2px solid color-mix(in oklab, var(--sl-accent-500), white 15%);
     outline-offset: 2px;
 }
+
+:global([data-brand="sports"]) {
+    --footer-accent: #2EC27E;
+}

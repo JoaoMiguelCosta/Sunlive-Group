@@ -90,3 +90,7 @@
     outline: 2px solid color-mix(in oklab, var(--sl-accent-500), white 14%);
     outline-offset: 2px;
 }
+
+:global([data-brand="hotel"]) {
+    --footer-accent: var(--sl-accent-500, #E6C893);
+}

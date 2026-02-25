@@ -61,3 +61,7 @@
 :root[data-brand="travel"] .link-accent:hover {
     color: var(--sl-accent-400);
 }
+
+:global([data-brand="travel"]) {
+    --footer-accent: #2EA7E0;
+}

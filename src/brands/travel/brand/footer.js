@@ -1,7 +1,9 @@
+// src/brands/travel/brand/footer.js
 import {
   makeFooterInfoHeader,
   makePoliciesBar,
   withSocialIcons,
+  FLAGS,
 } from "../../../shared/config/BrandDefault.jsx";
 
 import { travelIcons } from "./icons.js";
@@ -50,6 +52,15 @@ export const travelFooter = {
   }),
 
   linkDirectory: {
+    meta: {
+      anchors: {
+        targetPath: "/sunlive-group/travel",
+        offset: 72,
+      },
+      // ✅ flags disponíveis para o LinkDirectory (sem importar travelBrand)
+      flags: FLAGS,
+    },
+
     left: {
       columns: [
         {
@@ -202,3 +213,5 @@ export const travelFooter = {
     holder: "Sunlive Travel. Todos os direitos reservados.",
   }),
 };
+
+export default travelFooter;

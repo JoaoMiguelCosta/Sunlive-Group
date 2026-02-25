@@ -6,17 +6,15 @@ import BrandMasthead from "../shared/ui/BrandMasthead/index.jsx";
 import FooterSports from "../components/FooterSports";
 
 import sportsBrand from "../brand/configSports.js";
-import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
-import { buildFooterData } from "../../../shared/utils/normalizeFooter.js";
+import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
 
 import sportsLogo from "../assets/LogoSunliveSports/sports.png";
-import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
 
 import styles from "./SportsShell.module.css";
 
 export default function SportsShell({ backLink }) {
-  const footerRaw = sportsBrand.sections?.footer;
-  const footerData = buildFooterData(footerRaw, groupFooter, "footer-sports");
+  // ✅ Footer agora vem COMPLETO do próprio brand (sem merges)
+  const footerData = sportsBrand.sections?.footer;
 
   const socials = sportsBrand?.header?.socials ?? [];
   const lang = sportsBrand?.header?.lang ?? LANG_DEFAULT;

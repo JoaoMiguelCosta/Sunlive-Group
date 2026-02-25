@@ -1,6 +1,6 @@
 // src/brands/sports/brand/configSports.js
 import header from "./header.js";
-import makeSportsFooter from "./footer.js";
+import sportsFooter from "./footer.js";
 
 import {
   home,
@@ -37,7 +37,7 @@ const sportsBrand = {
     consultancy,
     contacts,
 
-    footer: makeSportsFooter(),
+    footer: sportsFooter,
   },
 };
 

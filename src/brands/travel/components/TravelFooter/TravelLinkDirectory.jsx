@@ -1,16 +1,21 @@
 import styles from "./TravelLinkDirectory.module.css";
-import PillLink from "../../../../shared/components/FooterGroup/PillLink.jsx";
+import PillLink from "../../../../shared/components/Footer/PillLink.jsx";
 import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
-import travelBrand from "../../brand";
 
 export default function TravelLinkDirectory({ data }) {
   if (!data) return null;
 
-  const { left, partners } = data;
+  const { left, partners, meta } = data;
+
+  const anchors = meta?.anchors || {};
+  const targetPath = anchors.targetPath || "/sunlive-group/travel";
+  const offset = typeof anchors.offset === "number" ? anchors.offset : 72;
+
+  const flags = meta?.flags || {};
 
   const { handleSmartAnchorClick: toTravel } = useSmartAnchorNav({
-    targetPath: "/sunlive-group/travel",
-    offset: 72,
+    targetPath,
+    offset,
   });
 
   const hashForCol = (colKey) => {
@@ -26,7 +31,10 @@ export default function TravelLinkDirectory({ data }) {
     }
   };
 
-  const resolveFlagIcon = (flagKey) => travelBrand?.flags?.[flagKey] || null;
+  const resolveFlagIcon = (flagKey) => {
+    if (!flagKey) return null;
+    return flags?.[flagKey] || null;
+  };
 
   return (
     <section
@@ -56,7 +64,7 @@ export default function TravelLinkDirectory({ data }) {
                       return (
                         <PillLink
                           key={key}
-                          href={`/sunlive-group/travel${colHash}`}
+                          href={`${targetPath}${colHash}`}
                           disabled={disabled}
                           onSmartClick={toTravel}
                           className={[
@@ -117,7 +125,7 @@ export default function TravelLinkDirectory({ data }) {
                   ({ key, label, disabled }) => (
                     <PillLink
                       key={key}
-                      href={`/sunlive-group/travel#parceiros-hoteis`}
+                      href={`${targetPath}#parceiros-hoteis`}
                       disabled={disabled}
                       onSmartClick={toTravel}
                       className={[
@@ -151,7 +159,7 @@ export default function TravelLinkDirectory({ data }) {
                   ({ key, label, disabled }) => (
                     <PillLink
                       key={key}
-                      href={`/sunlive-group/travel#parceiros-viagens`}
+                      href={`${targetPath}#parceiros-viagens`}
                       disabled={disabled}
                       onSmartClick={toTravel}
                       className={[

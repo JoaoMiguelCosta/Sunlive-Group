@@ -1,3 +1,4 @@
+// src/brands/hotel/layouts/HotelShell.jsx
 import { Outlet, useLocation } from "react-router-dom";
 
 import UtilityBar from "../../../shared/components/UtilityBar";
@@ -6,9 +7,6 @@ import HotelFooter from "../components/FooterHotel";
 import HotelPrimaryNav from "./HotelPrimaryNav.jsx";
 
 import hotelBrand, { HOTEL_BASE_PATH } from "../configHotel.jsx";
-import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
-import { buildFooterData } from "../../../shared/utils/normalizeFooter.js";
-
 import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
 
 import styles from "./HotelShell.module.css";
@@ -16,12 +14,12 @@ import styles from "./HotelShell.module.css";
 export default function HotelShell({ backLink }) {
   const location = useLocation();
 
-  const footerRaw = hotelBrand.sections?.footer;
-  const footerData = buildFooterData(footerRaw, groupFooter, "footer-hotel");
+  // ✅ Footer agora vem COMPLETO do próprio brand (sem merges)
+  const footerData = hotelBrand.sections?.footer;
 
   const socials =
     hotelBrand?.header?.socials ??
-    hotelBrand?.footer?.infoHeader?.socials?.items ??
+    hotelBrand?.sections?.footer?.infoHeader?.socials?.items ??
     [];
 
   const lang = hotelBrand?.header?.lang ?? hotelBrand?.lang ?? LANG_DEFAULT;

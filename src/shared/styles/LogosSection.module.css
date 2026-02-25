@@ -91,12 +91,3 @@
     padding-bottom: 0 !important;
     margin-bottom: 0 !important;
 }
-
-/* ============================================================================
-   NOTAS:
-   - As dimensões dos CARDS/LOGOS foram movidas para o módulo do componente
-     (LogoGridSection.module.css) e agora usam container queries (cqw)
-     para evitar desalinhamentos por sub-píxeis (vw).
-   - Se precisares de um inset diferente nesta página específica, podes
-     sobrepor com: style={{ "--section-inset": "clamp(16px, 3.5vw, 44px)" }}
-============================================================================ */

@@ -16,7 +16,7 @@ import TravelFooter from "../components/TravelFooter";
 import travelBrand from "../brand";
 
 // ✅ mantém (ou migra depois)
-import { footer as groupFooter } from "../../group/ConfigGroup.jsx";
+import { footer as groupFooter } from "../../group/config/ConfigGroup.jsx";
 
 // ✅ paths corretos para shared (a partir de src/brands/travel/page/)
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";

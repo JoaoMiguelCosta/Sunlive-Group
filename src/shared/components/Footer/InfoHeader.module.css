@@ -1,0 +1,378 @@
+/* ==========================================================================
+   InfoHeader.module.css — Desktop consistente (≥1100px) + mobile centrado
+   ========================================================================== */
+
+.inner {
+    --gap-x: clamp(1rem, 2.2vw, 1.75rem);
+    --gap-y: clamp(1.10rem, 2vw, 1.60rem);
+    --line-inset: clamp(12px, 4vw, 40px);
+    --edge-left: var(--line-inset);
+    --edge-right: var(--line-inset);
+    --title-icon: 28px;
+    --title-gap: 0.6rem;
+    --lead-icon-start: 0px;
+    --lead-text-start: calc(var(--title-icon) + var(--title-gap));
+}
+
+.strip {
+    position: relative;
+    background: transparent;
+    color: var(--sl-platinum-100);
+    padding-block: clamp(1.25rem, 2.5vw, 1.75rem);
+
+    /* ✅ Accent unificado */
+    --info-accent: var(--footer-accent, var(--sl-gold-400, #c78615));
+
+    border-bottom: 2px solid color-mix(in oklab, var(--info-accent), black 8%);
+    border-top: 2px solid color-mix(in oklab, var(--info-accent), black 8%);
+}
+
+.inner {
+    width: 100%;
+    max-width: none;
+    margin-inline: auto;
+    padding-left: var(--edge-left);
+    padding-right: var(--edge-right);
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    column-gap: var(--gap-x);
+    row-gap: var(--gap-y);
+}
+
+.col {
+    flex: 0 0 auto;
+    width: max-content;
+    min-width: 260px;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .25rem;
+}
+
+.colStart {
+    align-items: flex-start;
+}
+
+@media (min-width: 1100px) {
+    .inner {
+        flex-wrap: nowrap;
+    }
+
+    .col {
+        flex: 0 0 calc((100% - 3 * var(--gap-x)) / 4);
+        min-width: 0;
+        max-width: none;
+    }
+}
+
+@media (min-width: 1800px) {
+    .inner {
+        --gap-x: clamp(1rem, 2.2vw, 1rem);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 2);
+        --edge-right: var(--line-inset);
+        flex-wrap: nowrap;
+    }
+
+    .col {
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
+    }
+}
+
+@media (min-width: 1600px) and (max-width: 1799.98px) {
+    .inner {
+        --gap-x: clamp(1.8rem, 2.1vw, 2.4rem);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 2);
+        --edge-right: var(--line-inset);
+        flex-wrap: nowrap;
+    }
+
+    .col {
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
+    }
+}
+
+@media (min-width: 1440px) and (max-width: 1599.98px) {
+    .inner {
+        --gap-x: clamp(1.7rem, 2.0vw, 2.2rem);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 2);
+        --edge-right: var(--line-inset);
+        flex-wrap: nowrap;
+    }
+
+    .col {
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
+    }
+}
+
+@media (min-width: 1366px) and (max-width: 1439.98px) {
+    .inner {
+        --gap-x: clamp(1.6rem, 1.9vw, 2rem);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 2);
+        --edge-right: var(--line-inset);
+        flex-wrap: nowrap;
+    }
+
+    .col {
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
+    }
+}
+
+@media (min-width: 1280px) and (max-width: 1365.98px) {
+    .inner {
+        --gap-x: clamp(1.5rem, 1.8vw, 1.9rem);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 1);
+        --edge-right: var(--line-inset);
+        flex-wrap: nowrap;
+    }
+
+    .col {
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
+    }
+}
+
+@media (min-width: 1100px) and (max-width: 1279.98px) {
+    .inner {
+        --gap-x: clamp(1.4rem, 1.7vw, 1.8rem);
+        --edge-left: calc(var(--line-inset) + var(--gap-x) * 2);
+        --edge-right: var(--line-inset);
+        flex-wrap: nowrap;
+    }
+
+    .col {
+        flex-basis: calc((100% - 3 * var(--gap-x)) / 4);
+    }
+}
+
+@media (max-width: 1099.98px) {
+    .inner {
+        padding-left: var(--line-inset);
+        padding-right: var(--line-inset);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: var(--gap-x);
+        row-gap: var(--gap-y);
+    }
+
+    .col {
+        min-width: 0;
+        width: auto;
+        max-width: none;
+    }
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: var(--title-gap);
+    font-size: clamp(1.05rem, 1.1rem + .3vw, 1.25rem);
+    font-weight: 800;
+    letter-spacing: .2px;
+    margin: 0 0 .6rem 0;
+    color: var(--sl-platinum-100);
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--title-icon);
+    height: var(--title-icon);
+    border-radius: 999px;
+    color: var(--info-accent);
+    background: color-mix(in oklab, var(--info-accent) 16%, transparent);
+}
+
+.brandEmph {
+    color: var(--info-accent);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.contentLeadIcon {
+    padding-left: var(--lead-icon-start);
+}
+
+.contentLeadText {
+    padding-left: var(--lead-text-start);
+}
+
+.tagline {
+    margin: 0 0 .6rem 0;
+    font-weight: 800;
+    color: var(--info-accent);
+}
+
+.about {
+    line-height: 1.55;
+    max-width: 40ch;
+}
+
+.about p {
+    margin: 0;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+.about p+p {
+    margin-top: .65rem;
+}
+
+.address {
+    font-style: normal;
+    line-height: 1.55;
+    color: var(--sl-platinum-100);
+    margin-bottom: .35rem;
+}
+
+.subtleLink {
+    display: inline-block;
+    margin-top: .15rem;
+    color: var(--sl-platinum-100);
+    opacity: .7;
+    text-decoration: none;
+}
+
+.subtleLink:hover {
+    opacity: 1;
+    color: var(--info-accent);
+}
+
+.contactRow {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    align-items: center;
+    gap: .55rem;
+    margin: .35rem 0;
+}
+
+.cIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--info-accent);
+}
+
+.link {
+    color: var(--sl-platinum-100);
+    text-decoration: none;
+}
+
+.link:hover {
+    color: var(--info-accent);
+}
+
+.textMuted {
+    opacity: .6;
+}
+
+.socials {
+    display: flex;
+    gap: .55rem;
+    margin-top: .25rem;
+}
+
+.socialBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 2px solid var(--info-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sl-platinum-100);
+    text-decoration: none;
+    background: color-mix(in oklab, var(--info-accent) 16%, transparent);
+    transition:
+        transform 120ms ease,
+        background 120ms ease,
+        box-shadow 120ms ease,
+        border-color 120ms ease,
+        color 120ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .socialBtn {
+        transition: background 120ms ease;
+    }
+}
+
+.socialBtn:hover {
+    transform: translateY(-1px);
+    background: var(--info-accent);
+    color: var(--sl-platinum-010);
+    border-color: color-mix(in oklab, var(--info-accent), white 16%);
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--info-accent), black 40%);
+}
+
+.sIcon {
+    width: 18px;
+    height: 18px;
+}
+
+.sFallback {
+    font-weight: 800;
+}
+
+.inlineLink {
+    color: var(--sl-platinum-100);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+@media (max-width: 719.98px) {
+    .inner {
+        grid-template-columns: 1fr;
+    }
+
+    .col {
+        margin-inline: auto;
+        align-items: center;
+    }
+
+    .title,
+    .tagline {
+        text-align: center;
+    }
+
+    .contentLeadIcon,
+    .contentLeadText {
+        padding-left: 0;
+    }
+
+    .about {
+        max-width: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    .about p,
+    .address {
+        text-align: center;
+    }
+
+    .subtleLink {
+        display: inline-block;
+        text-align: center;
+    }
+
+    .contactRow {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: .45rem;
+    }
+
+    .socials {
+        justify-content: center;
+    }
+
+    .sectionTitle,
+    .title {
+        text-align: center;
+    }
+}

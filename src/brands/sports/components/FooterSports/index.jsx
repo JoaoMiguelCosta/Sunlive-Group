@@ -1,4 +1,4 @@
-import FooterGroup from "../../../../shared/components/FooterGroup";
+import Footer from "../../../../shared/components/Footer";
 import SportsLinkDirectory from "./SportsLinkDirectory.jsx";
 
 export default function SportsFooter({
@@ -10,12 +10,12 @@ export default function SportsFooter({
   if (!data) return null;
 
   return (
-    <FooterGroup
+    <Footer
       data={data}
       flushTop={flushTop}
       variant={variant}
-      footerAccent="#2EC27E" // acento Sports
-      components={{ LinkDirectory: SportsLinkDirectory }} // override do bloco do meio
+      ariaLabel="Footer — Sunlive Sports"
+      components={{ LinkDirectory: SportsLinkDirectory }}
       {...rest}
     />
   );

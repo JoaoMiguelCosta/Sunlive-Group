@@ -1,5 +1,4 @@
-// src/brands/travel/components/TravelFooter/index.jsx
-import FooterGroup from "../../../../shared/components/FooterGroup";
+import Footer from "../../../../shared/components/Footer";
 import TravelLinkDirectory from "./TravelLinkDirectory.jsx";
 
 export default function TravelFooter({
@@ -11,12 +10,12 @@ export default function TravelFooter({
   if (!data) return null;
 
   return (
-    <FooterGroup
+    <Footer
       data={data}
       flushTop={flushTop}
       variant={variant}
-      footerAccent="#2EA7E0" // 👈 acento Travel
-      components={{ LinkDirectory: TravelLinkDirectory }} // 👈 override
+      ariaLabel="Footer — Sunlive Travel"
+      components={{ LinkDirectory: TravelLinkDirectory }}
       {...rest}
     />
   );
