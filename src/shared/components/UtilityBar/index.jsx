@@ -1,11 +1,10 @@
-// shared/components/UtilityBar/index.jsx
 import styles from "./UtilityBar.module.css";
 import { useLangMenu } from "../../hooks/useLangMenu.js";
 
 export default function UtilityBar({
   variant,
   backLink,
-  homeLink, // ✅ NOVO
+  homeLink,
   leftSlot = null,
   socials = [],
   lang = {
@@ -57,7 +56,6 @@ export default function UtilityBar({
               </a>
             )}
 
-            {/* ✅ NOVO: Home Hotel (pílula) */}
             {homeLink && (
               <a href={homeLink.href} className={styles.homeLink}>
                 {homeLink.Icon ? (

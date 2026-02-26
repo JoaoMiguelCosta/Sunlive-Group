@@ -8,9 +8,6 @@
     display: grid;
     place-items: center;
 
-
-
-
     /* Tokens */
     --line-inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
     --ub-touch: clamp(36px, 4.2vw, 44px);
@@ -39,41 +36,39 @@
     padding-block: 2px;
 }
 
+/* ✅ Base: sem left -> right encostado à direita */
 .utilityBar .inner {
     inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
     margin-inline: auto;
     box-sizing: border-box;
-    
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    /* default sem conteúdo à esquerda */
+
     min-height: 2.875rem;
     position: relative;
     z-index: 2;
     overflow: visible;
 }
 
-/* Quando existe backLink/leftSlot, abre o espaço à esquerda */
+/* ✅ Com left -> espaço entre left e right */
 .hasLeft {
     justify-content: space-between !important;
 }
 
 /* ===== Régua dourada (alinhada ao container) ===== */
-/* ANTES: .utilityBar::after  — REMOVIDO */
 .utilityBar .inner::after {
     content: "";
     position: absolute;
     inset-block-end: 0;
     inset-inline: 0;
-    /* cola às bordas internas (respeita o padding) */
     block-size: clamp(1px, .15rem, 2px);
     background: rgba(199, 134, 21, .9);
     opacity: .9;
     border-radius: 2px;
     pointer-events: none;
     z-index: 1;
-
 }
 
 /* Clusters */
@@ -84,6 +79,8 @@
     gap: var(--ub-gap);
     position: relative;
     overflow: visible;
+    min-width: 0;
+    /* ✅ permite encolher/ellipsis */
 }
 
 .left {
@@ -104,7 +101,6 @@
 .backLink {
     --pill-fs: var(--ub-fs);
     --pill-pad-y: .5rem;
-    /* ↑ mais respiro vertical */
     --pill-pad-x: .9rem;
     --pill-radius: 999px;
 
@@ -118,10 +114,8 @@
     font-weight: 700;
     font-size: var(--pill-fs);
     line-height: 1.18;
-    /* ↑ evita cortar letras altas (P) */
     color: #fff;
 
-    /* altura mínima estável (se existir token do header) */
     min-height: var(--ub-touch, 0px);
 
     background:
@@ -146,7 +140,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     max-inline-size: 60vw;
-    /* segurança mobile */
 }
 
 .backLink:hover {
@@ -355,36 +348,46 @@
    Variant: Travel Header
    ======================================================= */
 
-/* Accent azul atlântico para Travel */
 .utilityBar[data-variant="travel-header"] {
     --accent: var(--sl-accent-500, #2EA7E0);
     --sl-container-lg: 85rem;
 }
 
-/* Desativar régua extra (usa o border-bottom desta variante) */
+/* o travel usa a linha de baixo do próprio header (não a régua do base) */
 .utilityBar[data-variant="travel-header"] .inner::after {
     content: none;
 }
 
+/* ✅ MOBILE: manter Voltar + ícones na MESMA linha */
 @media (max-width: 1025px) {
     .utilityBar[data-variant="travel-header"] .inner {
         display: grid;
-        grid-template-columns: 1fr;
-        justify-items: center;
+        grid-template-columns: 1fr auto;
+        /* left | right */
+        align-items: center;
+        justify-items: stretch;
+
         background: var(--sl-navy-900, #020a20);
         box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 18px 38px rgba(0, 0, 0, .32);
         border-bottom: 2px solid rgba(255, 162, 0, .85);
     }
 
     .utilityBar[data-variant="travel-header"] .left {
-        width: 100%;
-        justify-self: center;
-        padding-inline: clamp(8px, 1.2vw, 14px);
+        width: auto;
+        justify-self: start;
+        padding-inline-start: clamp(8px, 1.2vw, 14px);
+        min-width: 0;
     }
 
     .utilityBar[data-variant="travel-header"] .right {
-        justify-self: center;
-        padding-inline: clamp(8px, 1.2vw, 14px);
+        width: auto;
+        justify-self: end;
+        padding-inline-end: clamp(8px, 1.2vw, 14px);
+        min-width: 0;
+    }
+
+    .utilityBar[data-variant="travel-header"] .backText {
+        max-inline-size: 42vw;
     }
 }
 
@@ -393,8 +396,9 @@
         display: grid;
         grid-template-columns: 1fr auto;
         align-items: center;
-        background: var(--sl-navy-900, #020a20);
-        box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 18px 38px rgba(0, 0, 0, .32);
+
+       
+     
         border-bottom: 2px solid rgba(255, 162, 0, .85);
     }
 
@@ -409,12 +413,6 @@
         align-items: center;
         gap: var(--ub-gap, .75rem);
         padding-inline-end: clamp(8px, 1.2vw, 14px);
-    }
-
-    .utilityBar[data-variant="travel-header"] :where(.navList) {
-        justify-content: center;
-        flex-wrap: wrap;
-        overflow: visible;
     }
 }
 
@@ -434,73 +432,43 @@
 /* =======================================================
    Variant: Logos Header
    ======================================================= */
-.utilityBar[data-variant="logos-header"] .inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
-    margin-inline: auto;
-    box-sizing: border-box;
+
+.utilityBar[data-variant="logos-header"] {
     --sl-container-lg: 85rem;
 }
 
+/* desativar régua base; usamos border-bottom */
+.utilityBar[data-variant="logos-header"] .inner::after {
+    content: none;
+}
+
+.utilityBar[data-variant="logos-header"] .inner {
+    border-bottom: 2px solid rgba(246, 192, 92, .85);
+}
+
 /* =======================================================
-   Variant: Sports Header — igual ao logos-header
+   Variant: Sports Header
    ======================================================= */
+
 .utilityBar[data-variant="sports-header"] {
     --accent: var(--sl-accent-500, #2EC27E);
     --sl-container-lg: 85rem;
 }
 
-/* Desativar régua extra (usa o border-bottom desta variante) */
 .utilityBar[data-variant="sports-header"] .inner::after {
     content: none;
 }
 
 .utilityBar[data-variant="sports-header"] .inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
-    margin-inline: auto;
-    box-sizing: border-box;
     border-bottom: 2px solid #F6C05C;
-}
-
-.utilityBar[data-variant="sports-header"] .left,
-.utilityBar[data-variant="sports-header"] .right {
-    display: flex;
-    align-items: center;
-    gap: var(--ub-gap, .75rem);
-    min-width: 0;
 }
 
 .utilityBar[data-variant="sports-header"] .backLink {
     border-color: #F6C05C;
 }
 
-/* Micro-ajustes XS */
-@media (max-width: 400px) {
-
-    .utilityBar[data-variant="travel-header"] .left,
-    .utilityBar[data-variant="travel-header"] .right,
-    .utilityBar[data-variant="sports-header"] .left,
-    .utilityBar[data-variant="sports-header"] .right {
-        padding-inline: 6px;
-    }
-
-    .utilityBar[data-variant="group-header"] .left,
-    .utilityBar[data-variant="group-header"] .right {
-        padding-inline: 6px;
-    }
-
-    .backText {
-        max-inline-size: 50vw;
-    }
-}
-
 /* =======================================================
-   Variant: Group Header — Sunlive Group (dourado-aurora)
+   Variant: Group Header
    ======================================================= */
 
 .utilityBar[data-variant="group-header"] {
@@ -508,33 +476,14 @@
     --sl-container-lg: 90rem;
 }
 
-/* Desativar régua interna, usamos a border-bottom deste header */
 .utilityBar[data-variant="group-header"] .inner::after {
     content: none;
 }
 
 .utilityBar[data-variant="group-header"] .inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
-    margin-inline: auto;
-    box-sizing: border-box;
-
     border-bottom: 2px solid color-mix(in oklab, var(--accent), black 8%);
 }
 
-/* Clusters left/right alinhados ao restante layout */
-.utilityBar[data-variant="group-header"] .left,
-.utilityBar[data-variant="group-header"] .right {
-    display: flex;
-    align-items: center;
-    gap: var(--ub-gap, .75rem);
-    min-width: 0;
-}
-
-/* Idiomas — item ativo + chevron aberto em dourado-aurora */
 .utilityBar[data-variant="group-header"] .langItem[aria-current="true"] {
     color: var(--accent);
     background: color-mix(in oklab, var(--accent), transparent 82%);
@@ -544,14 +493,12 @@
     color: var(--accent);
 }
 
-/* BackLink com moldura em dourado-aurora */
 .utilityBar[data-variant="group-header"] .backLink {
-    border-color:
-        color-mix(in oklab, var(--accent), white 12%);
+    border-color: color-mix(in oklab, var(--accent), white 12%);
 }
 
 /* =======================================================
-   Variant: Hotel Header — Estalagem (champanhe-quente)
+   Variant: Hotel Header
    ======================================================= */
 
 .utilityBar[data-variant="hotel-header"] {
@@ -559,35 +506,14 @@
     --sl-container-lg: 85rem;
 }
 
-/* Desativar régua interna, usamos a border-bottom deste header */
 .utilityBar[data-variant="hotel-header"] .inner::after {
     content: none;
 }
 
 .utilityBar[data-variant="hotel-header"] .inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    inline-size: min(var(--sl-container-lg, 90rem),
-            calc(100% - 2 * var(--line-inset)));
-    margin-inline: auto;
-    box-sizing: border-box;
-
-    /* ✅ linha inferior em champanhe (menos laranja puro) */
     border-bottom: 2px solid color-mix(in oklab, var(--accent), black 18%);
 }
 
-/* Clusters left/right alinhados ao restante layout */
-.utilityBar[data-variant="hotel-header"] .left,
-.utilityBar[data-variant="hotel-header"] .right {
-    display: flex;
-    align-items: center;
-    gap: var(--ub-gap, 0.75rem);
-    min-width: 0;
-}
-
-/* Idiomas — item ativo + chevron aberto em champanhe */
 .utilityBar[data-variant="hotel-header"] .langItem[aria-current="true"] {
     color: var(--accent);
     background: color-mix(in oklab, var(--accent), transparent 82%);
@@ -597,13 +523,12 @@
     color: var(--accent);
 }
 
-/* BackLink com moldura em champanhe */
 .utilityBar[data-variant="hotel-header"] .backLink {
     border-color: color-mix(in oklab, var(--accent), white 12%);
 }
 
 /* =================
-   Botão Home Hotel (pílula) — Performance Prestige (Noir + champanhe)
+   Botão Home Hotel (pílula)
    ================= */
 
 .homeLink {
@@ -614,7 +539,6 @@
 
     display: inline-flex;
     flex-direction: row;
-    /* ✅ garante lado a lado */
     align-items: center;
     justify-content: center;
     gap: .55rem;
@@ -622,7 +546,6 @@
     padding: var(--pill-pad-y) var(--pill-pad-x);
     border-radius: var(--pill-radius);
     text-decoration: none;
-    /* ✅ remove sublinhado */
     font-weight: 800;
     font-size: var(--pill-fs);
     line-height: 1.18;
@@ -670,4 +593,20 @@
 
 .homeLink:active {
     transform: translateY(0);
+}
+
+/* Micro-ajustes XS */
+@media (max-width: 400px) {
+    .backText {
+        max-inline-size: 50vw;
+    }
+
+    .utilityBar[data-variant="travel-header"] .left,
+    .utilityBar[data-variant="travel-header"] .right,
+    .utilityBar[data-variant="sports-header"] .left,
+    .utilityBar[data-variant="sports-header"] .right,
+    .utilityBar[data-variant="group-header"] .left,
+    .utilityBar[data-variant="group-header"] .right {
+        padding-inline: 6px;
+    }
 }

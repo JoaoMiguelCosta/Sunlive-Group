@@ -1,9 +1,7 @@
-// src/brands/sports/routes.jsx
 import { Route, Navigate } from "react-router-dom";
 
-/* Sports — layouts */
-import SportsShellHome from "./layouts/SportsShellHome.jsx";
-import SportsShellInner from "./layouts/SportsShellInner.jsx";
+/* Sports — layout único */
+import SportsShell from "./layouts/SportsShell.jsx";
 
 /* Sports — páginas */
 import HomePageSports from "./pages/Home/index.jsx";
@@ -24,14 +22,11 @@ export default function sportsRoutes() {
   return (
     <>
       {/* ===== Submarca — Sports ===== */}
-
-      {/* Grupo 1: HOME (back → Sunlive Group) */}
-      <Route path="/sunlive-group/sports" element={<SportsShellHome />}>
+      <Route path="/sunlive-group/sports" element={<SportsShell />}>
+        {/* Home */}
         <Route index element={<HomePageSports />} />
-      </Route>
 
-      {/* Grupo 2: Restantes páginas (back → Menu Sports) */}
-      <Route path="/sunlive-group/sports" element={<SportsShellInner />}>
+        {/* Restantes páginas */}
         <Route path="training-camps" element={<TrainingCampsPage />} />
         <Route path="academies" element={<AcademiesPage />} />
         <Route path="events" element={<EventsPage />} />

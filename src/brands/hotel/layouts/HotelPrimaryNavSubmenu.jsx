@@ -1,4 +1,3 @@
-// src/brands/hotel/layouts/HotelPrimaryNavSubmenu.jsx
 import submenuStyles from "./HotelPrimaryNavSubmenu.module.css";
 
 export default function HotelPrimaryNavSubmenu({

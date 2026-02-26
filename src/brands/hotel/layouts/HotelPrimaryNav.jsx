@@ -1,4 +1,3 @@
-// src/brands/hotel/layouts/HotelPrimaryNav.jsx
 import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import navStyles from "./HotelPrimaryNav.module.css";
@@ -11,7 +10,7 @@ import useSmartAnchorNav from "../../../shared/hooks/useSmartAnchorNav.js";
 
 const NAV_ITEMS = HOTEL_PRIMARY_NAV_ITEMS;
 
-export default function HotelPrimaryNavHamburger() {
+export default function HotelPrimaryNav() {
   const [openId, setOpenId] = useState(null);
   const [submenuAnchorX, setSubmenuAnchorX] = useState(null);
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -114,7 +113,7 @@ export default function HotelPrimaryNavHamburger() {
                     to={item.to}
                     className={({ isActive }) =>
                       [
-                        navStyles.navButton, // reaproveita o teu look
+                        navStyles.navButton,
                         navStyles.navLink,
                         isActive ? navStyles.navLinkActive : "",
                         openId === item.id ? navStyles.navButtonActive : "",

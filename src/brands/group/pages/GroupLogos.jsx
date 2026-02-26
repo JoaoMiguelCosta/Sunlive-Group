@@ -1,7 +1,7 @@
-// src/brands/group/pages/PartnersLogosPage.jsx
 import styles from "./GroupPages.module.css";
 
-import HeaderUtilityBar from "../components/Sections/GroupLogos/HeaderUtilityBar/index.jsx";
+import LogosUtilityBar from "../layout/LogosUtilityBar.jsx";
+
 import Committees from "../components/Sections/GroupLogos/Committees/index.jsx";
 import PortugueseFederations from "../components/Sections/GroupLogos/PortugueseFederations/index.jsx";
 import InternationalFederations from "../components/Sections/GroupLogos/InternationalFederations/index.jsx";
@@ -20,9 +20,11 @@ export default function PartnersLogosPage() {
 
   return (
     <div className={styles.pageWrap}>
+      {/* ✅ Header consistente dos Logos (sem wrapper duplicado) */}
+      <LogosUtilityBar />
+
       <main className={styles.inner}>
         <div className={styles.sections}>
-          <HeaderUtilityBar />
           <Committees />
           <PortugueseFederations />
           <InternationalFederations />

@@ -1,17 +1,17 @@
-// src/brands/travel/components/TravelHeaderNav/HeaderShell.jsx
 import styles from "./HeaderShell.module.css";
 
-export default function HeaderShell({ className = "", children }) {
+export default function HeaderShell({ className = "", children, ...rest }) {
   const mergedClass = className ? `${styles.shell} ${className}` : styles.shell;
 
   return (
-    <div
+    <header
       className={mergedClass}
       data-theme="prestige-noir"
       data-brand="travel"
       role="banner"
+      {...rest}
     >
       {children}
-    </div>
+    </header>
   );
 }

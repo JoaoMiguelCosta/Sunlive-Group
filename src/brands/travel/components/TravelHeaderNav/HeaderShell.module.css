@@ -14,7 +14,6 @@
     position: relative;
     isolation: isolate;
     color: var(--sl-platinum-100, #f5f5f5);
-
 }
 
 /* >=861px: “modo 2ª imagem” para todo o desktop */
@@ -45,10 +44,8 @@
 /* MAIS ALTO <560px */
 @media (max-width: 560px) {
     .shell {
-        /* antes era ~28–48px; agora dá presença real em 375–420px */
         --header-logo-h: clamp(52px, 20vw, 84px);
         --header-gap: clamp(.42rem, 3vw, .8rem);
-        /* um pouco mais de ar */
         --header-pad-y: clamp(.5rem, 3vw, .9rem);
     }
 }

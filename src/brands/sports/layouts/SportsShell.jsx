@@ -1,32 +1,33 @@
-// src/brands/sports/layouts/SportsShell.jsx
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
-import UtilityBar from "../../../shared/components/UtilityBar";
+import SportsUtilityBar from "./SportsUtilityBar.jsx";
 import BrandMasthead from "../shared/ui/BrandMasthead/index.jsx";
 import FooterSports from "../components/FooterSports";
 
 import sportsBrand from "../brand/configSports.js";
-import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
-
 import sportsLogo from "../assets/LogoSunliveSports/sports.png";
 
 import styles from "./SportsShell.module.css";
 
-export default function SportsShell({ backLink }) {
-  // ✅ Footer agora vem COMPLETO do próprio brand (sem merges)
+const SPORTS_BASE_PATH = "/sunlive-group/sports";
+
+export default function SportsShell() {
+  const location = useLocation();
+
+  // ✅ Footer vem COMPLETO do próprio brand (sem merges)
   const footerData = sportsBrand.sections?.footer;
 
-  const socials = sportsBrand?.header?.socials ?? [];
-  const lang = sportsBrand?.header?.lang ?? LANG_DEFAULT;
+  const isSportsHome =
+    location.pathname === SPORTS_BASE_PATH ||
+    location.pathname === `${SPORTS_BASE_PATH}/`;
+
+  const backLink = isSportsHome
+    ? { href: "/sunlive-group", label: "Voltar Sunlive Group" }
+    : { href: SPORTS_BASE_PATH, label: "Voltar Menu Sunlive Sports" };
 
   return (
     <div className={styles.shell} data-brand="sports" data-shell="sports">
-      <UtilityBar
-        variant="sports-header"
-        backLink={backLink}
-        socials={socials}
-        lang={lang}
-      />
+      <SportsUtilityBar backLink={backLink} />
 
       <BrandMasthead
         src={sportsLogo}

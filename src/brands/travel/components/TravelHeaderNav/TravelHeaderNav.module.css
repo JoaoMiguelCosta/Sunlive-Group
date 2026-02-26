@@ -1,6 +1,3 @@
-/* TravelHeaderNav.module.css */
-
-/* Header “limpo”: sem padding lateral, sem borda; linha vem da UtilityBar */
 .wrap {
     position: relative;
     width: 100%;
@@ -8,14 +5,54 @@
     z-index: 10;
 }
 
-/* sem pseudo-linhas aqui, deixamos isso para a UtilityBar */
 .wrap::after {
     content: none;
 }
 
-/* Container com a MESMA largura das secções (e zero padding) */
 .container {
     inline-size: min(var(--sl-container-lg, 1200px), 100%);
     margin-inline: auto;
     padding-inline: 0;
+}
+
+/* opcional: um pouco menos de padding no masthead do travel */
+.masthead :global(.inner) {
+    padding-block: clamp(14px, 2.6vw, 32px);
+}
+
+/* Linha do menu (tipo nav do hotel) */
+.primaryRow {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background: var(--sl-navy-900, #020a20);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 18px 38px rgba(0, 0, 0, .32);
+    border-bottom: 2px solid rgba(255, 162, 0, .85);
+}
+
+.primaryInner {
+    inline-size: min(var(--sl-container-lg, 90rem),
+            calc(100% - 2 * var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)))));
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(.6rem, 1.4vw, 1.1rem);
+
+    padding-block: clamp(.55rem, 1.6vw, .85rem);
+}
+
+/* garante que a nav pode encolher antes de partir */
+.primaryInner> :first-child {
+    min-width: 0;
+}
+
+/* Mobile: empilha (nav em cima, CTA em baixo) */
+@media (max-width: 860px) {
+    .primaryInner {
+        flex-direction: column;
+        gap: clamp(.55rem, 2.2vw, .9rem);
+        padding-block: clamp(.65rem, 2.4vw, 1rem);
+    }
 }

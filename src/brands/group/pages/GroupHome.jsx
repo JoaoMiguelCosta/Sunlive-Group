@@ -1,5 +1,6 @@
-// src/brands/group/pages/GroupPage.jsx
 import styles from "./GroupPages.module.css";
+
+import GroupUtilityBar from "../layout/GroupUtilityBar.jsx";
 
 import OverviewSection from "../components/Sections/Group/OverviewSection/index.jsx";
 import PeopleSection from "../components/Sections/Group/PeopleSection/index.jsx";
@@ -18,6 +19,9 @@ export default function GroupPage() {
 
   return (
     <div className={styles.pageWrap}>
+      {/* ✅ Header consistente do Group */}
+      <GroupUtilityBar />
+
       <main className={styles.inner}>
         <div className={styles.sections}>
           <OverviewSection />

@@ -1,0 +1,37 @@
+.wrap {
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.inner {
+    inline-size: min(var(--sl-container-lg, 90rem),
+            calc(100% - 2 * var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)))));
+    margin-inline: auto;
+    box-sizing: border-box;
+    padding-block: clamp(18px, 3.2vw, 42px);
+}
+
+.logoBox {
+    aspect-ratio: var(--logo-ar, 2.6);
+    inline-size: min(clamp(14rem, 40vw, 37rem), 100%);
+    display: grid;
+    place-items: center;
+    margin-inline: auto;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.06));
+}
+
+/* em ecrãs baixos, evita o masthead ficar enorme */
+@media (max-height: 720px) {
+    .logoBox {
+        inline-size: min(clamp(12rem, 34vw, 30rem), 100%);
+    }
+}

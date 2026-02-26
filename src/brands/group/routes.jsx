@@ -1,5 +1,3 @@
-// src/brands/group/routes.jsx
-import React from "react";
 import { Route } from "react-router-dom";
 
 import GroupHome from "./pages/GroupHome.jsx";
