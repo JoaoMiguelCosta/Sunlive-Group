@@ -43,7 +43,7 @@
     inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
     margin-inline: auto;
     box-sizing: border-box;
-    padding-inline: var(--line-inset);
+    
     display: flex;
     align-items: center;
     justify-content: flex-end;
