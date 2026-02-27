@@ -1,10 +1,6 @@
 import { Route } from "react-router-dom";
-import TravelPage from "./page"; // ✅ apanha ./page/index.jsx
+import TravelPage from "./pages/index.jsx";
 
-export default function travelRoutes() {
-  return (
-    <>
-      <Route path="/sunlive-group/travel" element={<TravelPage />} />
-    </>
-  );
-}
+export const travelRoutes = [
+  <Route key="travel" path="/sunlive-group/travel" element={<TravelPage />} />,
+];

@@ -1,26 +1,26 @@
 // src/brands/travel/page/index.jsx
 import styles from "./TravelPage.module.css";
 
-import TravelHeaderNav from "../components/TravelHeaderNav";
-import LogisticsSolutionsSection from "../components/LogisticsSolutionsSection";
-import DomesticDestinationsSection from "../components/DomesticDestinationsSection";
-import InternationalDestinationsSection from "../components/InternationalDestinationsSection";
-import PartnerHotelsSection from "../components/PartnerHotelsSection";
-import TravelPartnersSection from "../components/TravelPartnersSection";
-import TestimonialsAndMetricsSection from "../components/TestimonialsAndMetricsSection";
-import ContactCTASection from "../components/ContactCTASection";
+import TravelHeaderNav from "../components/TravelHeaderNav/index.jsx";
+import LogisticsSolutionsSection from "../components/LogisticsSolutionsSection/index.jsx";
+import DomesticDestinationsSection from "../components/DomesticDestinationsSection/index.jsx";
+import InternationalDestinationsSection from "../components/InternationalDestinationsSection/index.jsx";
+import PartnerHotelsSection from "../components/PartnerHotelsSection/index.jsx";
+import TravelPartnersSection from "../components/TravelPartnersSection/index.jsx";
+import TestimonialsAndMetricsSection from "../components/TestimonialsAndMetricsSection/index.jsx";
+import ContactCTASection from "../components/ContactCTASection/index.jsx";
 
-import TravelFooter from "../components/TravelFooter";
+import TravelFooter from "../components/TravelFooter/index.jsx";
 
 // ✅ melhor: resolve para ../brand/index.js automaticamente
-import travelBrand from "../brand";
+import travelBrand from "../brand/index.js";
 
 // ✅ mantém (ou migra depois)
 import { footer as groupFooter } from "../../group/config/ConfigGroup.jsx";
 
 // ✅ paths corretos para shared (a partir de src/brands/travel/page/)
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
-import { buildFooterData } from "../../../shared/utils/normalizeFooter.js";
+import { buildFooterData } from "../../../shared/utils/buildFooterData.js";
 
 export default function TravelPage() {
   useScrollToHash(24);

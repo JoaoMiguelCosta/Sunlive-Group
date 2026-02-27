@@ -4,6 +4,4 @@ export default {
   sports: { name: "Sunlive Sports" },
   hotel: { name: "Sunlive Hotel" },
   travel: { name: "Sunlive Travel" },
-  business: { name: "Sunlive Business" },
-  international: { name: "Sunlive International" },
 };

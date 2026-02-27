@@ -1,5 +1,5 @@
 // src/brands/group/components/SectionLogos/Teams/index.jsx
-import styles from "../../../../../../shared/styles/LogosSection.module.css";
+import styles from "../_shared/LogosSection.module.css";
 import configGroupLogos from "../../../../config/ConfigGroupLogos.jsx";
 import LogoGridSection from "../_shared/LogoGridSection";
 
