@@ -3,11 +3,11 @@
 
 import styles from "../Home/Home.module.css";
 
-import Accommodations from "../../components/Acommodation/Accommodations/index.jsx";
-import Amenities from "../../components/Acommodation/Amenities/index.jsx";
-import StayPolicies from "../../components/Acommodation/StayPolicies/index.jsx";
-import ForWhom from "../../components/Acommodation/ForWhom/index.jsx";
-import WhyChooseUs from "../../components/Acommodation/WhyChooseUs/index.jsx"; // ✅ novo
+import Accommodations from "./sections/Accommodations/index.jsx";
+import Amenities from "./sections/Amenities/index.jsx";
+import StayPolicies from "./sections/StayPolicies/index.jsx";
+import ForWhom from "./sections/ForWhom/index.jsx";
+import WhyChooseUs from "./sections/WhyChooseUs/index.jsx";
 
 export default function AccommodationPageHotel() {
   return (

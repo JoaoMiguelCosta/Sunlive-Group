@@ -1,62 +1,79 @@
 /* ================================
-   PrimaryNav.module.css — atualizado
+   PrimaryNav.module.css
+   Regras:
+   - >=721px: menu horizontal (desktop)
+   - 722px–860px: botões centrados
+   - <=720px: menu vertical (mobile)
+   - submenu: overlay (absolute) para não empurrar layout
    ================================ */
 
-/* --- Estrutura --- */
 .nav {
-    display: contents;
+    display: block;
+    min-width: 0;
+    width: 100%;
 }
 
+/* ======================================================
+   ✅ DESKTOP/TABLET (>=721px): HORIZONTAL
+   ====================================================== */
 .navList {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: .9rem;
+    justify-content: flex-start;
+    align-items: center;
+    gap: clamp(.7rem, 1.45vw, 1.35rem);
+
     list-style: none;
     margin: 0;
     padding: 0;
+
     overflow: visible;
-    /* garante dropdown fora da lista */
+    min-width: 0;
+    width: 100%;
 }
 
 .navItem {
     position: relative;
     flex: 0 0 auto;
     z-index: 2;
-    /* acima da régua (z:1) */
 }
 
-/* Eleva MUITO o item quando aberto para sobrepor vizinhos */
 .navItem[data-open="true"] {
     z-index: 10010;
 }
 
-/* --- Pills: aro dourado + leve brilho (base) --- */
+/* --- Pills (menu) --- */
 .navLink {
     --gold: var(--sl-gold-400, #C78615);
-    --gold-2: var(--sl-gold-500, #A16207);
     --accent: var(--sl-accent-500, #2EA7E0);
-    --pill-fs: .98rem;
-    --pill-pad-y: .48rem;
-    --pill-pad-x: .80rem;
-    --pill-min: 40px;
-    --pill-gap: .60rem;
+
+    --pill-fs: clamp(.96rem, 1.0vw, 1.08rem);
+    --pill-pad-y: clamp(.52rem, .7vw, .72rem);
+    --pill-pad-x: clamp(1.05rem, 1.6vw, 1.45rem);
+    --pill-min-h: clamp(44px, 4.6vw, 52px);
+    --pill-gap: clamp(.45rem, .9vw, .65rem);
 
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--pill-gap);
 
-    min-height: var(--pill-min);
+    min-height: var(--pill-min-h);
     padding: var(--pill-pad-y) var(--pill-pad-x);
     border-radius: 999px;
     text-decoration: none;
 
     color: #fff;
-    font-weight: 700;
+    font-weight: 800;
     font-size: var(--pill-fs);
     letter-spacing: .02em;
     line-height: 1;
 
-    border: 2px solid rgba(255, 162, 0, 0.573);
+    /* ✅ ajustado para não rebentar perto dos 721px */
+    min-inline-size: clamp(112px, 9vw, 156px);
+
+    border: 2px solid rgba(255, 162, 0, 0.57);
     background:
         linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
         radial-gradient(120% 140% at 50% 0%, rgba(255, 226, 167, .10), rgba(255, 255, 255, 0) 60%);
@@ -81,7 +98,6 @@
         0 10px 28px rgba(0, 0, 0, .44);
     outline: none;
     background: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 22%, black);
-    background-color: #2EA7E0;
 }
 
 .navLink:active {
@@ -90,9 +106,10 @@
 
 /* Chevron */
 .chev {
-    width: 12px;
-    height: 6px;
+    width: clamp(12px, 1.1vw, 14px);
+    height: clamp(6px, .55vw, 7px);
     display: inline-block;
+    transition: transform .18s ease;
 }
 
 .chev svg {
@@ -107,261 +124,152 @@
     stroke-linejoin: round;
 }
 
-/* --- Submenu (responsivo / elástico) --- */
+/* ===== Submenu (desktop/tablet): absolute ===== */
 .navItem[data-has-submenu] .submenu {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 10px);
     left: 0;
 
-    /* Desktop/tablet: pelo menos 220px e nunca maior que a viewport */
     min-width: max(220px, calc(100% + 12px));
-    /* >= pill + 12px */
     width: max-content;
-    /* cresce só o necessário */
-    max-width: min(92vw, 520px);
-    /* não sai do ecrã */
+    max-width: min(92vw, 560px);
 
-    /* Altura segura + scroll interno */
     max-height: min(58vh, 440px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
-    padding: clamp(6px, 1.4vw, 10px);
+    padding: clamp(8px, 1.6vw, 12px);
     margin: 0;
     list-style: none;
-    border-radius: 12px;
+    border-radius: 14px;
 
-    /* === ALINHADO AO MENU DE IDIOMAS === */
     border: 1px solid rgba(255, 255, 255, .06);
     background: rgba(15, 20, 30, .92);
     backdrop-filter: blur(6px);
-    box-shadow: 0 8px 26px rgba(0, 0, 0, .42);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
 
     pointer-events: none;
     opacity: 0;
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     transition: opacity .18s ease, transform .18s ease;
 
     z-index: 10011;
-    /* acima do item aberto e do resto do header */
 }
 
-/* ← só mostra quando o JS mete data-open="true" */
 .navItem[data-open="true"] .submenu {
     pointer-events: auto;
     opacity: 1;
     transform: translateY(0);
 }
 
-/* seta roda só quando está aberto */
 .navItem[data-open="true"] .chev {
     transform: rotate(180deg);
 }
 
-/* Itens do submenu: toque confortável */
+/* Submenu items */
 .subLink {
     display: block;
-    padding: clamp(.55rem, 1.8vw, .7rem) clamp(.7rem, 2vw, .95rem);
-    border-radius: 10px;
+    padding: clamp(.68rem, 1.4vw, .82rem) clamp(.9rem, 2vw, 1.05rem);
+    border-radius: 12px;
     color: var(--sl-platinum-50, #e7e7e7);
     text-decoration: none;
     white-space: nowrap;
-    font-size: clamp(.94rem, 1.6vw, .98rem);
-    min-height: 44px;
-    /* alvo mínimo recomendado */
+    font-size: clamp(.98rem, 1.0vw, 1.05rem);
+    min-height: clamp(46px, 4.8vw, 54px);
 }
 
-/* === HOVER/FOCUS IGUAL AO “PT Português” === */
 .subLink:hover,
 .subLink:focus-visible {
     color: var(--sl-accent-500, #2EA7E0);
     background: rgba(255, 255, 255, .06);
     outline: none;
-    /* sem blur no item — o blur fica no painel */
 }
 
-/* --- Micro-ajuste quando o header quebra para 2 linhas --- */
-@media (max-width: 860px) {
+/* ======================================================
+   ✅ 722px–860px: centra os botões da 1ª linha
+   ====================================================== */
+@media (min-width: 722px) and (max-width: 860px) {
     .navList {
         justify-content: center;
     }
 }
 
-/* --- Breakpoints de TAMANHO --- */
-@media (min-width: 1368px) {
-    .navList {
-        gap: 1.1rem;
-    }
-
-    .navLink {
-        --pill-fs: 1.06rem;
-        --pill-pad-y: .62rem;
-        --pill-pad-x: 1.15rem;
-        --pill-min: 46px;
-        --pill-gap: .60rem;
-    }
-
-    .chev {
-        width: 13px;
-        height: 6.5px;
-    }
-}
-
-@media (min-width: 1178px) and (max-width: 1367px) {
-    .navList {
-        gap: 1rem;
-    }
-
-    .navLink {
-        --pill-fs: 1.02rem;
-        --pill-pad-y: .56rem;
-        --pill-pad-x: 1rem;
-        --pill-min: 44px;
-        --pill-gap: .60rem;
-    }
-
-    .chev {
-        width: 12.5px;
-        height: 6.25px;
-    }
-}
-
-/* >>> Desktop “médio”: agora só entre 1026–1177px */
-@media (min-width: 1026px) and (max-width: 1177px) {
-    .navList {
-        gap: .85rem;
-    }
-
-    .navLink {
-        --pill-fs: .98rem;
-        --pill-pad-y: .50rem;
-        --pill-pad-x: .9rem;
-        --pill-min: 42px;
-        --pill-gap: .56rem;
-    }
-
-    .chev {
-        width: 12px;
-        height: 6px;
-    }
-}
-
-/* >>> Tablet/grande-phone: estendido até 1025px */
-@media (min-width: 561px) and (max-width: 1025px) {
-    .navList {
-        gap: .7rem;
-    }
-
-    .navLink {
-        --pill-fs: .96rem;
-        --pill-pad-y: .48rem;
-        --pill-pad-x: .85rem;
-        --pill-min: 40px;
-        --pill-gap: .52rem;
-    }
-
-    .chev {
-        width: 11.5px;
-        height: 5.75px;
-    }
-}
-
-@media (max-width: 560px) {
-    .navList {
-        gap: .5rem;
-    }
-
-    .navLink {
-        --pill-fs: .94rem;
-        --pill-pad-y: .45rem;
-        --pill-pad-x: .80rem;
-        --pill-min: 36px;
-        --pill-gap: .5rem;
-    }
-
-    .chev {
-        width: 11px;
-        height: 5.5px;
-    }
-}
-
-/* --- Mobile: sem scroll horizontal; dropdown centrado sob o pill --- */
+/* ======================================================
+   ✅ MOBILE (<=720px): VERTICAL + espaçamento igual
+   - submenu em overlay (não empurra botões)
+   ====================================================== */
 @media (max-width: 720px) {
-    .navList {
-        overflow: visible !important;
+    .nav {
+        width: 100%;
     }
 
-    .navItem[data-has-submenu] .submenu {
-        left: 50%;
-        transform: translate(-70%, 0);
-        width: clamp(240px, calc(100% + 12px), calc(100vw - 2 * var(--line-inset, 16px)));
-        border-radius: 10px;
-    }
-}
-
-/* === Layout “bom” (grid 2x2) — agora só a partir de 1026px === */
-@media (min-width: 1026px) {
     .navList {
-        display: grid;
-        /* troca de flex → grid para controlar o arranjo */
-        grid-template-columns: repeat(2, max-content);
-        /* 2 colunas */
-        grid-auto-rows: max-content;
-        /* 2 linhas */
-        column-gap: 1.25rem;
-        /* espaço horiz. */
-        row-gap: .9rem;
-        /* espaço vert. */
-        justify-content: center;
-        /* centra pills */
-        align-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: clamp(.7rem, 3.2vw, 1rem);
+        width: 100%;
+        min-width: 0;
+
+        overflow: visible;
+        /* ✅ submenu pode sobrepor */
     }
 
     .navItem {
-        flex: initial;
+        width: 100%;
+        min-width: 0;
+        position: relative;
     }
 
-    /* reset do flex dos itens quando estamos em grid */
-}
-
-/* === Gap entre pills — contínuo (∈ [0.55rem, 1.15rem]) === */
-.navList {
-    gap: clamp(.55rem, 1vw, 1.15rem);
-}
-
-/* === Espaço entre texto e chevron dentro do pill (∈ [.42,.60]) === */
-.navLink {
-    --pill-gap: clamp(.42rem, 0.8vw, .60rem);
-}
-
-/* MOBILE LOCK — manter layout de ~381px para baixo */
-@media (max-width: 560px) {
-    .navList {
-        /* igual ao bloco 561–1025 */
-        justify-content: center;
-        gap: .7rem;
-        flex-wrap: wrap;
-        overflow: visible !important;
+    .navItem[data-open="true"] {
+        z-index: 10010;
     }
 
     .navLink {
-        --pill-fs: .96rem;
-        --pill-pad-y: .48rem;
-        --pill-pad-x: .85rem;
-        --pill-min: 40px;
-        --pill-gap: .52rem;
+        width: 100%;
+        min-inline-size: 0;
+        justify-content: center;
+
+        --pill-fs: clamp(.95rem, 3.4vw, 1.05rem);
+        --pill-pad-x: clamp(1rem, 4vw, 1.25rem);
     }
 
-    .chev {
-        width: 11.5px;
-        height: 5.75px;
-    }
-
-    /* dropdown centrado, sem desvio extra */
+    /* ✅ MOBILE: submenu overlay full-width */
     .navItem[data-has-submenu] .submenu {
-        left: 50%;
-        transform: translate(-50%, 0);
-        /* antes tinhas -70% */
-        width: clamp(240px, calc(100% + 12px), calc(100vw - 2 * var(--line-inset, 16px)));
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+
+        margin: 0;
+        padding: clamp(10px, 2.2vw, 14px);
+        border-radius: 14px;
+
+        border: 1px solid rgba(255, 255, 255, .06);
+        background: rgba(15, 20, 30, .92);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition: opacity .18s ease, transform .18s ease;
+
+        z-index: 10011;
+    }
+
+    .navItem[data-open="true"] .submenu {
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .subLink {
+        white-space: normal;
     }
 }

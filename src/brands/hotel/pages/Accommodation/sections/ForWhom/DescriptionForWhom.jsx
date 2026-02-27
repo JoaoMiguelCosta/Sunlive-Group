@@ -1,0 +1,7 @@
+import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
+
+export default function DescriptionForWhom({ children }) {
+  return (
+    <HotelSectionDescription align="center">{children}</HotelSectionDescription>
+  );
+}

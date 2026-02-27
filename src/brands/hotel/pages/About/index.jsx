@@ -3,11 +3,11 @@
 
 import styles from "../Home/Home.module.css";
 
-import AboutTheHotel from "../../components/About/AboutTheHotel";
-import OurStoryMilestonesSection from "../../components/About/OurStoryMilestones";
-import OurQualityCommitmentSection from "../../components/About/OurQualityCommitment";
-import TheBairradaRegion from "../../components/About/TheBairradaRegion";
-import UniqueNaturalSetting from "../../components/About/UniqueNaturalSetting";
+import AboutTheHotel from "./sections/AboutTheHotel";
+import OurStoryMilestonesSection from "./sections/OurStoryMilestones";
+import OurQualityCommitmentSection from "./sections/OurQualityCommitment";
+import TheBairradaRegion from "./sections/TheBairradaRegion";
+import UniqueNaturalSetting from "./sections/UniqueNaturalSetting";
 
 export default function AboutPageHotel() {
   return (

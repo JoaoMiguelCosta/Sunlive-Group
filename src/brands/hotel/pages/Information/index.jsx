@@ -1,5 +1,5 @@
-import TestimonialsSection from "../../components/Information/Testimonials";
-import LocationSection from "../../components/Information/Location";
+import TestimonialsSection from "./sections/Testimonials/index.jsx";
+import LocationSection from "./sections/Location/index.jsx";
 
 export default function InformationPageHotel() {
   return (

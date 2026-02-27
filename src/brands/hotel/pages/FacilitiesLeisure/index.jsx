@@ -1,8 +1,8 @@
-import WellBeingSection from "../../components/FacilitiesLeisure/WeelBeing";
-import MobilitySection from "../../components/FacilitiesLeisure/Mobility";
-import ComplementaryServicesSection from "../../components/FacilitiesLeisure/ComplementaryServices";
-import ReceptionSupportSection from "../../components/FacilitiesLeisure/ReceptionSupport";
-import FacilitiesLeisureSection from "../../components/FacilitiesLeisure/FacilitiesLeisure";
+import WellBeingSection from "./sections/WeelBeing/index.jsx";
+import MobilitySection from "./sections/Mobility/index.jsx";
+import ComplementaryServicesSection from "./sections/ComplementaryServices/index.jsx";
+import ReceptionSupportSection from "./sections/ReceptionSupport/index.jsx";
+import FacilitiesLeisureSection from "./sections/FacilitiesLeisure/index.jsx";
 
 export default function FacilitiesLeisurePageHotel() {
   return (

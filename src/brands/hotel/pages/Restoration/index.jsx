@@ -1,8 +1,8 @@
-import PanoramicRestaurantSection from "../../components/Restoration/PanoramicRestaurant";
-import BreakfastSection from "../../components/Restoration/Breakfast";
-import SundayBuffetSection from "../../components/Restoration/SundayBuffet";
-import BarLoungeSection from "../../components/Restoration/BarLounge";
-import CateringServiceSection from "../../components/Restoration/CateringService";
+import PanoramicRestaurantSection from "./sections/PanoramicRestaurant/index.jsx";
+import BreakfastSection from "./sections/Breakfast/index.jsx";
+import SundayBuffetSection from "./sections/SundayBuffet/index.jsx";
+import BarLoungeSection from "./sections/BarLounge/index.jsx";
+import CateringServiceSection from "./sections/CateringService/index.jsx";
 
 export default function RestaurantPageHotel() {
   return (

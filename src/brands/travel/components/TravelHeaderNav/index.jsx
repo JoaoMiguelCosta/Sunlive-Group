@@ -21,7 +21,6 @@ export default function TravelHeaderNav() {
           lang={lang}
         />
 
-        {/* ✅ Masthead shared logo grande (como Sports/Hotel) */}
         <BrandMasthead
           src={logo?.src}
           alt={logo?.alt ?? "Sunlive Travel"}
@@ -30,14 +29,18 @@ export default function TravelHeaderNav() {
           className={styles.masthead}
         />
 
-        {/* ✅ Menu/CTA em linha (tipo “HotelPrimaryNav”) */}
         <div
           className={styles.primaryRow}
           aria-label="Navegação — Sunlive Travel"
         >
           <div className={styles.primaryInner}>
-            <PrimaryNav items={nav} />
-            <CTAButton cta={cta} />
+            <div className={styles.navSlot}>
+              <PrimaryNav items={nav} />
+            </div>
+
+            <div className={styles.ctaSlot}>
+              <CTAButton cta={cta} />
+            </div>
           </div>
         </div>
       </div>

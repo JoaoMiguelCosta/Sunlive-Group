@@ -15,44 +15,60 @@
     padding-inline: 0;
 }
 
-/* opcional: um pouco menos de padding no masthead do travel */
+/* menos padding no masthead do travel */
 .masthead :global(.inner) {
     padding-block: clamp(14px, 2.6vw, 32px);
 }
 
-/* Linha do menu (tipo nav do hotel) */
+/* Linha do menu */
 .primaryRow {
     width: 100%;
     display: grid;
     place-items: center;
-    background: var(--sl-navy-900, #020a20);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 18px 38px rgba(0, 0, 0, .32);
-    border-bottom: 2px solid rgba(255, 162, 0, .85);
 }
 
+/* ✅ Desktop/Tablet: NAV (1fr) + CTA (auto) */
 .primaryInner {
     inline-size: min(var(--sl-container-lg, 90rem),
             calc(100% - 2 * var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)))));
     margin-inline: auto;
 
-    display: flex;
+    background: var(--sl-navy-900, #020a20);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 18px 38px rgba(0, 0, 0, 0.32);
+    border: 2px solid rgba(255, 162, 0, 0.85);
+
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
-    justify-content: center;
     gap: clamp(.6rem, 1.4vw, 1.1rem);
 
-    padding-block: clamp(.55rem, 1.6vw, .85rem);
+    padding-block: clamp(.55rem, 1.2vw, .8rem);
+    padding-inline: clamp(8px, 1.2vw, 14px);
 }
 
-/* garante que a nav pode encolher antes de partir */
-.primaryInner> :first-child {
+/* ✅ slots */
+.navSlot {
     min-width: 0;
+    width: 100%;
 }
 
-/* Mobile: empilha (nav em cima, CTA em baixo) */
+.ctaSlot {
+    display: grid;
+    place-items: center;
+}
+
+/* ✅ Mobile: empilha (nav em cima, CTA em baixo) */
 @media (max-width: 860px) {
     .primaryInner {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        justify-items: stretch;
+        /* ✅ CRÍTICO: nav estica, não encolhe */
         gap: clamp(.55rem, 2.2vw, .9rem);
         padding-block: clamp(.65rem, 2.4vw, 1rem);
+    }
+
+    .ctaSlot {
+        justify-self: center;
+        /* CTA centrado */
     }
 }

@@ -9,7 +9,7 @@ function Submenu({ items = [], onSelect, onAnchorClick }) {
   if (!Array.isArray(items) || items.length === 0) return null;
 
   const handleSubClick = (e, href) => {
-    onAnchorClick?.(e, href, onSelect); // se for hash local → smooth + fecha
+    onAnchorClick?.(e, href, onSelect);
   };
 
   return (
@@ -41,7 +41,7 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
       onToggle(item.key);
       return;
     }
-    onAnchorClick(e, href, onClose); // smooth se for hash local; fecha menus
+    onAnchorClick(e, href, onClose);
   };
 
   return (

@@ -1,5 +1,5 @@
-import EventsCelebrationsSection from "../../components/Events/EventsCelebrations";
-import CustomizedQuotesSection from "../../components/Events/CustomizedQuotes";
+import EventsCelebrationsSection from "./sections/EventsCelebrations/index.jsx";
+import CustomizedQuotesSection from "./sections/CustomizedQuotes/index.jsx";
 
 export default function EventsPageHotel() {
   return (
