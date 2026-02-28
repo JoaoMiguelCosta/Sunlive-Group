@@ -1,8 +1,7 @@
 // src/brands/sports/pages/Disciplines/sections/FootballProjectsSection.jsx
 import { useMemo } from "react";
 import styles from "./ProjectsSection.module.css";
-
-import sportsBrand from "../../../brand/configSports.js";
+import sportsBrand from "../../../config/index.js";
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 import { ICONS } from "../../../../../shared/config/BrandDefault.jsx";

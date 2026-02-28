@@ -1,0 +1,12 @@
+// src/brands/sports/config/sections/education/index.js
+export { default as hero } from "./hero.js";
+export { default as overview } from "./overview.js";
+export { default as levelsIntro } from "./levelsIntro.js";
+export { default as levels } from "./levels.js";
+export { default as bilingualIntro } from "./bilingualIntro.js";
+export { default as bilingual } from "./bilingual.js";
+export { default as bilingualCertification } from "./bilingualCertification.js";
+export { default as careersIntro } from "./careersIntro.js";
+export { default as careers } from "./careers.js";
+export { default as pillars } from "./pillars.js";
+export { default as closingPanel } from "./closingPanel.js";

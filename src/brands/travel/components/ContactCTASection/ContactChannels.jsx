@@ -1,6 +1,6 @@
 // src/brands/travel/components/ContactCTASection/ContactChannels.jsx
 import styles from "./ContactChannels.module.css";
-import travelBrand from "../../brand";
+import travelBrand from "../../config/index.js";
 
 export default function ContactChannels() {
   const { sections, icons } = travelBrand;

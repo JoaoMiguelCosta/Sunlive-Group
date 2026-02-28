@@ -1,7 +1,6 @@
 // src/brands/sports/pages/Events/index.jsx
 import styles from "./Events.module.css";
-
-import sportsBrand from "../../brand/configSports.js";
+import sportsBrand from "../../config/index.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";

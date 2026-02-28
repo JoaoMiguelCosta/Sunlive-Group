@@ -1,0 +1,35 @@
+// src/brands/sports/config/pages/disciplines.js
+import {
+  hero,
+  overview,
+  cyclingIntro,
+  cyclingHighlight,
+  cyclingDisciplines,
+  cyclingProjects,
+  gymnasticsIntro,
+  gymnasticsDisciplines,
+  footballIntro,
+  karateIntro,
+  basketballIntro,
+  otherDisciplinesIntro,
+  pillars,
+  closingPanel,
+} from "../sections/disciplines/index.js";
+
+export default {
+  id: "sports-disciplines",
+  hero,
+  overview,
+  cyclingIntro,
+  cyclingHighlight,
+  cyclingDisciplines,
+  cyclingProjects,
+  gymnasticsIntro,
+  gymnasticsDisciplines,
+  footballIntro,
+  karateIntro,
+  basketballIntro,
+  otherDisciplinesIntro,
+  pillars,
+  closingPanel,
+};

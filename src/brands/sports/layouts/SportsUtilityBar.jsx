@@ -1,5 +1,5 @@
 import UtilityBar from "../../../shared/components/UtilityBar";
-import sportsBrand from "../brand/configSports.js";
+import sportsBrand from "../config/index.js";
 import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
 
 export default function SportsUtilityBar({ backLink }) {

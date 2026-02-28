@@ -2,7 +2,7 @@ import styles from "./LogisticsSolutionsSection.module.css";
 import LogisticsSolutionsHeadline from "./LogisticsSolutionsHeadline.jsx";
 import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
 import ContactCTA from "./ContactCTA.jsx";
-import travelBrand from "../../brand";
+import travelBrand from "../../config/index.js";
 
 export default function LogisticsSolutionsSection() {
   const cfg = travelBrand?.sections?.logisticsSolutions;

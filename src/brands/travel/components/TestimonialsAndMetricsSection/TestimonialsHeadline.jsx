@@ -1,6 +1,6 @@
 import styles from "./TestimonialsHeadline.module.css";
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import travelBrand from "../../brand";
+import travelBrand from "../../config/index.js";
 
 export default function TestimonialsHeadline() {
   const headline = travelBrand?.sections?.testimonialsAndMetrics?.headline;

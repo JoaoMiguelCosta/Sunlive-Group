@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useOutsideClick } from "../../../../shared/hooks/useOutsideClick.js";
 import useLocalSmoothAnchors from "../../../../shared/hooks/useLocalSmoothAnchors.js";
-import travelBrand from "../../brand";
+import travelBrand from "../../config/index.js";
 import styles from "./PrimaryNav.module.css";
 
 /** Submenu */

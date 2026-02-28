@@ -1,6 +1,6 @@
 // src/brands/travel/components/ContactCTASection/QuoteRequestChecklist.jsx
 import styles from "./QuoteRequestChecklist.module.css";
-import travelBrand from "../../brand";
+import travelBrand from "../../config/index.js";
 
 export default function QuoteRequestChecklist() {
   const checklist = travelBrand?.sections?.contactCTA?.checklist;

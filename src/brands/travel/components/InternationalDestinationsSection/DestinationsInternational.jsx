@@ -1,6 +1,6 @@
 import styles from "./DestinationsInternational.module.css";
 import DestinationCard from "../../shared/ui/DestinationCard/index.jsx";
-import travelBrand from "../../brand";
+import travelBrand from "../../config/index.js";
 
 export default function DestinationsInternational() {
   const list =

@@ -1,5 +1,5 @@
 import styles from "./TestimonialsGrid.module.css";
-import travelBrand from "../../brand";
+import travelBrand from "../../config/index.js";
 import TestemonialCard from "../../shared/ui/TestemonialCard/index.jsx";
 import useSpotlightCycle from "../../../../shared/hooks/useSpotlightCycle.js";
 import { useCallback, useRef } from "react";

@@ -1,6 +1,6 @@
 // src/brands/travel/components/ContactCTASection/index.jsx
 import styles from "./ContactCTASection.module.css";
-import travelBrand from "../../brand";
+import travelBrand from "../../config/index.js";
 
 import ContactCTAHeadline from "./ContactCTAHeadline.jsx";
 import QuoteRequestChecklist from "./QuoteRequestChecklist.jsx";

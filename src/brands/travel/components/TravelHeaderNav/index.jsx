@@ -5,10 +5,11 @@ import HeaderShell from "./HeaderShell.jsx";
 
 import PrimaryNav from "./PrimaryNav.jsx";
 import CTAButton from "./CTAButton.jsx";
-import travelBrand from "../../brand";
+import travelBrand from "../../config/index.js";
 
 export default function TravelHeaderNav() {
-  const { logo, nav = [], cta, socials, lang } = travelBrand;
+  const header = travelBrand?.header || {};
+  const navItems = travelBrand?.nav?.primaryItems || [];
 
   return (
     <HeaderShell className={styles.wrap} aria-label="Header — Sunlive Travel">
@@ -16,14 +17,14 @@ export default function TravelHeaderNav() {
         <UtilityBar
           variant="travel-header"
           ariaLabel="Header — Sunlive Travel"
-          backLink={{ href: "/sunlive-group", label: "Voltar Sunlive Group" }}
-          socials={socials}
-          lang={lang}
+          backLink={header.backLink}
+          socials={header.socials}
+          lang={header.lang}
         />
 
         <BrandMasthead
-          src={logo?.src}
-          alt={logo?.alt ?? "Sunlive Travel"}
+          src={header.logo?.src}
+          alt={header.logo?.alt ?? "Sunlive Travel"}
           logoAr={2.6}
           loading="eager"
           className={styles.masthead}
@@ -35,12 +36,14 @@ export default function TravelHeaderNav() {
         >
           <div className={styles.primaryInner}>
             <div className={styles.navSlot}>
-              <PrimaryNav items={nav} />
+              <PrimaryNav items={navItems} />
             </div>
 
-            <div className={styles.ctaSlot}>
-              <CTAButton cta={cta} />
-            </div>
+            {header.cta && (
+              <div className={styles.ctaSlot}>
+                <CTAButton cta={header.cta} />
+              </div>
+            )}
           </div>
         </div>
       </div>

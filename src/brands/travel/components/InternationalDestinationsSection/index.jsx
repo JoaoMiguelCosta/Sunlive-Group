@@ -2,12 +2,10 @@ import styles from "./InternationalDestinationsSection.module.css";
 import DestinationsIntroBar from "./DestinationsIntroBar.jsx";
 import DestinationsInternational from "./DestinationsInternational.jsx";
 import ContactCTA from "./ContactCTA.jsx";
-import travelBrand from "../../brand";
+import travelBrand from "../../config/index.js";
 
 export default function InternationalDestinationsSection({ className = "" }) {
-  const cfg = travelBrand?.sections?.internationalDestinations;
-  if (!cfg) return null;
-
+  const cfg = travelBrand?.sections?.internationalDestinations || {};
   const { id = "destinos-internacionais" } = cfg;
 
   return (
