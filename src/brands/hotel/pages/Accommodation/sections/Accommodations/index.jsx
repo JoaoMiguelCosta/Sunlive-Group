@@ -12,7 +12,7 @@ import HotelPhotoCarousel from "../../../../shared/ui/HotelPhotoCarousel/HotelPh
 import InfoNoteBanner from "./InfoNoteBanner.jsx"
 import RoomCardsGrid from "./RoomCardsGrid.jsx";
 
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 
 export default function Accommodations() {
   const content = hotelBrand?.pages?.estadia?.sections?.accommodations ?? null;

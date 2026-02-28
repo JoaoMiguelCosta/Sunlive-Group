@@ -1,6 +1,6 @@
 // src/brands/hotel/components/About/OurStoryMilestones/OurStoryMilestonesContent.jsx
 
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import HotelMilestoneCard from "../../../../shared/ui/HotelMilestoneCard/HotelMilestoneCard.jsx";
 

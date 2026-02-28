@@ -2,8 +2,8 @@ import styles from "./ContactsGrid.module.css";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../../../shared/hooks/useOpenFromHash.js";
 
-// 👉 Ícones agora vêm do config (sem imports diretos de SVGs)
-import { contacts as groupContacts } from "../../../../config/ConfigGroup.jsx";
+// ✅ Novo: contacts vêm do novo config (pages/home.js)
+import { groupHomePage } from "../../../../config/pages/home.js";
 
 export default function BusinessUnits({ items = [] }) {
   // Ordem desejada (mantém só os existentes)
@@ -34,8 +34,8 @@ export default function BusinessUnits({ items = [] }) {
   });
 
   // Ícones do config
-  const Mail = groupContacts?.icons?.Mail || (() => null);
-  const Phone = groupContacts?.icons?.Phone || (() => null);
+  const Mail = groupHomePage?.contacts?.icons?.Mail || (() => null);
+  const Phone = groupHomePage?.contacts?.icons?.Phone || (() => null);
 
   return (
     <div className={styles.grid} role="list">

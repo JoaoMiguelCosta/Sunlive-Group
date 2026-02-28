@@ -1,6 +1,6 @@
 // src/brands/hotel/components/About/OurStoryMilestones/index.jsx
 
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 import OurStoryMilestonesHeader from "./OurStoryMilestonesHeader.jsx";
 import OurStoryMilestonesContent from "./OurStoryMilestonesContent.jsx";
 import styles from "./OurStoryMilestones.module.css";

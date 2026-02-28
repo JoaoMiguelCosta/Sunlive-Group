@@ -3,8 +3,8 @@ import OfficeItem from "./OfficeItem.jsx";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../../../shared/hooks/useOpenFromHash.js";
 
-// Ícones vindos do Config (mantém consistência com BusinessUnits/GroupHub)
-import { contacts as groupContacts } from "../../../../config/ConfigGroup.jsx";
+// ✅ Novo: Ícones vindos do novo config (pages/home.js)
+import { groupHomePage } from "../../../../config/pages/home.js";
 
 export default function RegionalOffices({ items = [] }) {
   const { isOpen, toggle } = useAccordion(items, { allowMultiple: true });
@@ -19,6 +19,8 @@ export default function RegionalOffices({ items = [] }) {
   });
 
   if (!items.length) return null;
+
+  const groupContacts = groupHomePage?.contacts;
 
   // Ícones do config (fallbacks seguros)
   const MailIcon = groupContacts?.icons?.Mail || (() => null);

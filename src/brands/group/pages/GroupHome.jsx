@@ -10,16 +10,17 @@ import PartnersSection from "../components/Sections/Group/PartnersSection/index.
 import BookSection from "../components/Sections/Group/BookSection/index.jsx";
 
 import GroupFooter from "../layout/GroupFooter/GroupFooter.jsx";
-import { footer as footerConfig } from "../config/ConfigGroup.jsx";
+import groupBrand from "../config/index.js";
 
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
 export default function GroupPage() {
   useScrollToHash(24);
 
+  const footerConfig = groupBrand.sections?.footer;
+
   return (
     <div className={styles.pageWrap}>
-      {/* ✅ Header consistente do Group */}
       <GroupUtilityBar />
 
       <main className={styles.inner}>

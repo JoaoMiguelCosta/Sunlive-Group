@@ -1,8 +1,10 @@
-// Overviewsection/HeadlineStrip.jsx
+// OverviewSection/HeadlineStrip.jsx
 import styles from "./HeadlineStrip.module.css";
-import { overview } from "../../../../config/ConfigGroup";
+import { groupHomePage } from "../../../../config/pages/home.js";
 
 export default function HeadlineStrip() {
+  const overview = groupHomePage?.overview;
+
   // apenas imagem (igual ao We Make It Happen)
   const img = overview?.headline?.imageSrc ?? null;
 

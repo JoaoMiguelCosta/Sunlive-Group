@@ -1,5 +1,5 @@
 import styles from "./ForWhomHero.module.css";
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 
 export default function ForWhomHero() {
   const content = hotelBrand?.pages?.estadia?.sections?.forAllProfiles ?? null;

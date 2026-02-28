@@ -2,10 +2,13 @@
 import styles from "./PartnersSection.module.css";
 import SectionLead from "./SectionLead.jsx";
 import PartnersGrid from "./PartnersGrid.jsx";
-import { partners as partnersConfig } from "../../../../config/ConfigGroup.jsx";
+
+import { groupHomePage } from "../../../../config/pages/home.js";
 
 export default function PartnersSection() {
+  const partnersConfig = groupHomePage?.partners;
   const { id, headline, categories } = partnersConfig ?? {};
+
   if (!categories?.length) return null;
 
   return (
@@ -14,7 +17,6 @@ export default function PartnersSection() {
       className={styles.sectionWrap}
       aria-labelledby={`${id}-title`}
     >
-      {/* Camada de brilho/gradiente global da secção */}
       <div className={styles.glow} aria-hidden="true" />
 
       <div className={styles.inner}>

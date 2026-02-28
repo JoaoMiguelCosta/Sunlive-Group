@@ -1,6 +1,6 @@
 // src/brands/hotel/components/Accommodation/Accommodations/DescriptionRoomsAndSuites.jsx
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 
 export default function DescriptionRoomsAndSuites() {
   const content =

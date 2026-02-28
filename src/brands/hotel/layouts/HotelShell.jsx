@@ -5,7 +5,7 @@ import UtilityBar from "../../../shared/components/UtilityBar";
 import HotelFooter from "../components/FooterHotel";
 import HotelPrimaryNav from "./HotelPrimaryNav.jsx";
 
-import hotelBrand, { HOTEL_BASE_PATH } from "../configHotel.jsx";
+import hotelBrand, { HOTEL_BASE_PATH } from "../config";
 import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
 
 import styles from "./HotelShell.module.css";
@@ -44,7 +44,6 @@ export default function HotelShell() {
         lang={lang}
       />
 
-      {/* ✅ Sem logo aqui — segue direto para o menu */}
       <HotelPrimaryNav />
 
       <main

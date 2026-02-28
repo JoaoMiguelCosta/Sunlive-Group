@@ -1,7 +1,7 @@
 export default function LocationSection() {
   return (
     <section
-      id="info-localizacao"
+      id="info-location"
       style={{
         padding: "24px 0",
         borderTop: "1px solid rgba(255,255,255,0.12)",

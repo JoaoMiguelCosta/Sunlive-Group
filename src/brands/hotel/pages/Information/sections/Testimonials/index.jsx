@@ -1,7 +1,7 @@
 export default function TestimonialsSection() {
   return (
     <section
-      id="info-testemunhos"
+      id="info-testimonials"
       style={{
         padding: "24px 0",
         borderTop: "1px solid rgba(255,255,255,0.12)",

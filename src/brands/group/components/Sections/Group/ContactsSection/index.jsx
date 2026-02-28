@@ -2,14 +2,16 @@ import styles from "./index.module.css";
 import GroupHub from "./GroupHub.jsx";
 import BusinessUnits from "./BusinessUnits.jsx";
 import RegionalOffices from "./RegionalOffices.jsx";
-import { contacts } from "../../../../config/ConfigGroup.jsx";
+
+import { groupHomePage } from "../../../../config/pages/home.js";
 
 /**
- * Contactssection — orquestra os 3 blocos
+ * ContactsSection — orquestra os 3 blocos
  * - Acessibilidade: aria-labelledby + id estável
  * - i18n-ready: usa contacts.title se existir
  */
 export default function ContactsSection() {
+  const contacts = groupHomePage?.contacts;
   if (!contacts) return null;
 
   const {

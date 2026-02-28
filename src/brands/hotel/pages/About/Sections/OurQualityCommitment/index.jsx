@@ -1,6 +1,6 @@
 // src/brands/hotel/components/About/OurQualityCommitment/index.jsx
 
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 import OurQualityCommitmentHeader from "./OurQualityCommitmentHeader.jsx";
 import OurQualityCommitmentContent from "./OurQualityCommitmentContent.jsx";
 import styles from "./OurQualityCommitment.module.css";

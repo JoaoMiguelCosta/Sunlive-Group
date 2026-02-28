@@ -13,23 +13,15 @@ export default function AccommodationPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
       <main
+        id="accommodation"
         className={styles.inner}
         role="region"
-        aria-label="Estalagem de Sangalhos — Alojamento"
+        aria-label="Estalagem de Sangalhos — Accommodation"
       >
-        {/* ✅ Secção: Accommodations */}
         <Accommodations />
-
-        {/* ✅ Secção: Amenities */}
         <Amenities />
-
-        {/* ✅ Secção: Stay Policies */}
         <StayPolicies />
-
-        {/* ✅ Secção: For Whom */}
         <ForWhom />
-
-        {/* ✅ Secção: Why Choose Us */}
         <WhyChooseUs />
       </main>
     </div>

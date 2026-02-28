@@ -1,6 +1,6 @@
 // src/brands/hotel/components/Accommodation/Accommodations/TitleRoomsAndSuites.jsx
 import HotelSectionHeader from "../../../../shared/ui//HotelSectionHeader/HotelSectionHeader.jsx";
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 
 export default function TitleRoomsAndSuites() {
   const content =

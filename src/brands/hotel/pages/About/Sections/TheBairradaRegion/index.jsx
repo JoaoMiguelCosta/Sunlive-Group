@@ -1,5 +1,5 @@
 // src/brands/hotel/pages/HotelAbout/sections/TheBairradaRegion/index.jsx
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 
 import TheBairradaRegionHeader from "./TheBairradaRegionHeader.jsx";
 import HotelAboutRegionBairrada from "./HotelAboutRegionBairrada.jsx";

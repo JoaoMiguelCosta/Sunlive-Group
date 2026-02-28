@@ -13,23 +13,15 @@ export default function AboutPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
       <main
+        id="about"
         className={styles.inner}
         role="region"
-        aria-label="Estalagem de Sangalhos — Sobre"
+        aria-label="Estalagem de Sangalhos — About"
       >
-        {/* Secção 1: Sobre a Estalagem */}
         <AboutTheHotel />
-
-        {/* Secção 2: A nossa História */}
         <OurStoryMilestonesSection />
-
-        {/* Secção 3: Compromisso com a Qualidade */}
         <OurQualityCommitmentSection />
-
-        {/* Secção 4: A Região da Bairrada */}
         <TheBairradaRegion />
-
-        {/* Secção 5: Envolvente Natural Única (pill final) */}
         <UniqueNaturalSetting />
       </main>
     </div>

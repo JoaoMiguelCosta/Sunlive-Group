@@ -1,5 +1,5 @@
 // src/brands/hotel/components/Restoration/PanoramicRestaurant/TitlePanoramicRestaurant.jsx
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui//HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitlePanoramicRestaurant() {

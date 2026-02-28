@@ -1,9 +1,15 @@
-// src/brands/group/components/SectionGroup/Peoplesection/PeopleStatement.jsx
+// src/brands/group/components/SectionGroup/PeopleSection/PeopleStatement.jsx
 import styles from "./PeopleStatement.module.css";
-import { people, IMG_COMMON } from "../../../../config/ConfigGroup";
+
+import { groupHomePage } from "../../../../config/pages/home.js";
+import { IMG_COMMON } from "../../../../config/footer.js";
 
 export default function PeopleStatement() {
-  const { src, alt } = people.statement;
+  const src = groupHomePage?.people?.statement?.src ?? null;
+  const alt = groupHomePage?.people?.statement?.alt ?? "People statement";
+
+  if (!src) return null;
+
   return (
     <div className={styles.wrap} aria-label={alt}>
       <img src={src} alt={alt} {...IMG_COMMON} className={styles.img} />

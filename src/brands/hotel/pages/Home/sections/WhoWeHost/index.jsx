@@ -1,7 +1,7 @@
 // src/brands/hotel/components/Home/WhoWeHost/index.jsx
 import styles from "./WhoWeHost.module.css";
 
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 import WhoWeHostHeader from "./WhoWeHostHeader.jsx";
 import WhoWeHostCards from "./WhoWeHostCards.jsx";
 

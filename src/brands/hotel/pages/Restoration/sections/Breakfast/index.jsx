@@ -1,7 +1,7 @@
 export default function BreakfastSection() {
   return (
     <section
-      id="restaurante-pequeno-almoco"
+      id="restaurant-breakfast"
       style={{
         padding: "24px 0",
         borderTop: "1px solid rgba(255,255,255,0.12)",

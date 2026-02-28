@@ -1,8 +1,9 @@
-// Overviewsection/DivisionsPanel.jsx
+// OverviewSection/DivisionsPanel.jsx
 import styles from "./DivisionsPanel.module.css";
-import { overview } from "../../../../config/ConfigGroup";
+import { groupHomePage } from "../../../../config/pages/home.js";
 
 export default function DivisionsPanel() {
+  const overview = groupHomePage?.overview;
   const divisions = overview?.divisions ?? [];
   const home = overview?.homeCard ?? { renderAs: "text", href: "/" };
 
@@ -24,7 +25,6 @@ export default function DivisionsPanel() {
                   aria-label={`${label} (desativado)`}
                   aria-disabled="true"
                 >
-                  {/* badge “Brevemente” */}
                   <span
                     className={styles.badge}
                     aria-hidden="true"
@@ -53,7 +53,6 @@ export default function DivisionsPanel() {
               );
             }
 
-            // normal (ativo)
             return (
               <a
                 key={d.key}

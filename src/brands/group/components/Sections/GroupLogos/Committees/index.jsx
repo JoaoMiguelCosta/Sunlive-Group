@@ -1,13 +1,10 @@
-// src/brands/group/components/SectionLogos/Committees/index.jsx
 import styles from "../_shared/LogosSection.module.css";
-import configGroupLogos from "../../../../config/ConfigGroupLogos.jsx";
 import LogoGridSection from "../_shared/LogoGridSection";
 
+import groupLogosPage from "../../../../config/pages/logos.js";
+
 export default function Committees() {
-  const data = configGroupLogos?.committees ?? {
-    title: "COMMITTEES",
-    items: [],
-  };
+  const data = groupLogosPage?.committees ?? { title: "COMMITTEES", items: [] };
 
   return (
     <section

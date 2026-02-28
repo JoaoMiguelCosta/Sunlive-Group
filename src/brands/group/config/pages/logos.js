@@ -1,86 +1,86 @@
-// src/brands/group/config/ConfigGroupLogos.jsx
-import { makeBackLink } from "../../../shared/config/BrandDefault.jsx";
+// src/brands/group/config/pages/logos.js
+import { makeBackLink } from "../../../../shared/config/BrandDefault.jsx";
 
 /* ===== Committees ===== */
-import uec from "../assets/group-logos/logos/committes/uec.png";
-import cob from "../assets/group-logos/logos/committes/cob.png";
-import cop from "../assets/group-logos/logos/committes/cop.png";
-import coa from "../assets/group-logos/logos/committes/coa.png";
+import uec from "../../assets/group-logos/logos/committes/uec.png";
+import cob from "../../assets/group-logos/logos/committes/cob.png";
+import cop from "../../assets/group-logos/logos/committes/cop.png";
+import coa from "../../assets/group-logos/logos/committes/coa.png";
 
 /* ===== Portuguese Federations ===== */
-import fpb from "../assets/group-logos/logos/portugueseFederations/fpb.png";
-import fpc from "../assets/group-logos/logos/portugueseFederations/fdc.png";
-import fpg from "../assets/group-logos/logos/portugueseFederations/fgp.png";
-import fpj from "../assets/group-logos/logos/portugueseFederations/fpj.png";
-import fnkp from "../assets/group-logos/logos/portugueseFederations/fpk.png";
-import fpe from "../assets/group-logos/logos/portugueseFederations/fpe.png";
-import fpa from "../assets/group-logos/logos/portugueseFederations/fap.png";
+import fpb from "../../assets/group-logos/logos/portugueseFederations/fpb.png";
+import fpc from "../../assets/group-logos/logos/portugueseFederations/fdc.png";
+import fpg from "../../assets/group-logos/logos/portugueseFederations/fgp.png";
+import fpj from "../../assets/group-logos/logos/portugueseFederations/fpj.png";
+import fnkp from "../../assets/group-logos/logos/portugueseFederations/fpk.png";
+import fpe from "../../assets/group-logos/logos/portugueseFederations/fpe.png";
+import fpa from "../../assets/group-logos/logos/portugueseFederations/fap.png";
 
 /* ===== International Federations ===== */
-import agn from "../assets/group-logos/logos/internationalFederations/agn.png";
-import bg from "../assets/group-logos/logos/internationalFederations/bg.png";
-import ca from "../assets/group-logos/logos/internationalFederations/ca.png";
-import catar from "../assets/group-logos/logos/internationalFederations/catar.png";
-import cbc from "../assets/group-logos/logos/internationalFederations/cbc.png";
-import cfg from "../assets/group-logos/logos/internationalFederations/cfg.png";
-import ci from "../assets/group-logos/logos/internationalFederations/ci.png";
-import fab from "../assets/group-logos/logos/internationalFederations/fab.png";
-import fag from "../assets/group-logos/logos/internationalFederations/fag.png";
-import fcc from "../assets/group-logos/logos/internationalFederations/fcc.png";
-import fec from "../assets/group-logos/logos/internationalFederations/fec.png";
-import ffc from "../assets/group-logos/logos/internationalFederations/ffc.png";
-import ftgym from "../assets/group-logos/logos/internationalFederations/ftgym.png";
-import icf from "../assets/group-logos/logos/internationalFederations/icf.png";
-import malta from "../assets/group-logos/logos/internationalFederations/malta.png";
-import pc from "../assets/group-logos/logos/internationalFederations/pc.png";
-import pi from "../assets/group-logos/logos/internationalFederations/pi.png";
-import saudi from "../assets/group-logos/logos/internationalFederations/saudi.png";
-import uggf from "../assets/group-logos/logos/internationalFederations/uggf.png";
+import agn from "../../assets/group-logos/logos/internationalFederations/agn.png";
+import bg from "../../assets/group-logos/logos/internationalFederations/bg.png";
+import ca from "../../assets/group-logos/logos/internationalFederations/ca.png";
+import catar from "../../assets/group-logos/logos/internationalFederations/catar.png";
+import cbc from "../../assets/group-logos/logos/internationalFederations/cbc.png";
+import cfg from "../../assets/group-logos/logos/internationalFederations/cfg.png";
+import ci from "../../assets/group-logos/logos/internationalFederations/ci.png";
+import fab from "../../assets/group-logos/logos/internationalFederations/fab.png";
+import fag from "../../assets/group-logos/logos/internationalFederations/fag.png";
+import fcc from "../../assets/group-logos/logos/internationalFederations/fcc.png";
+import fec from "../../assets/group-logos/logos/internationalFederations/fec.png";
+import ffc from "../../assets/group-logos/logos/internationalFederations/ffc.png";
+import ftgym from "../../assets/group-logos/logos/internationalFederations/ftgym.png";
+import icf from "../../assets/group-logos/logos/internationalFederations/icf.png";
+import malta from "../../assets/group-logos/logos/internationalFederations/malta.png";
+import pc from "../../assets/group-logos/logos/internationalFederations/pc.png";
+import pi from "../../assets/group-logos/logos/internationalFederations/pi.png";
+import saudi from "../../assets/group-logos/logos/internationalFederations/saudi.png";
+import uggf from "../../assets/group-logos/logos/internationalFederations/uggf.png";
 
 /* ===== Teams ===== */
-import ads from "../assets/group-logos/logos/teams/ads.png";
-import afc from "../assets/group-logos/logos/teams/afc.png";
-import agc from "../assets/group-logos/logos/teams/agc.png";
-import bette from "../assets/group-logos/logos/teams/bette.png";
-import bmx from "../assets/group-logos/logos/teams/bmx.png";
-import catarTeam from "../assets/group-logos/logos/teams/catar.png";
-import cgp from "../assets/group-logos/logos/teams/cgp.png";
-import eon from "../assets/group-logos/logos/teams/eon.png";
-import experience from "../assets/group-logos/logos/teams/experience.png";
-import flgym from "../assets/group-logos/logos/teams/flgym.png";
-import ga from "../assets/group-logos/logos/teams/ga.png";
-import gca from "../assets/group-logos/logos/teams/gca.png";
-import gcp from "../assets/group-logos/logos/teams/gcp.png";
-import gerpla from "../assets/group-logos/logos/teams/gerpla.png";
-import hunti from "../assets/group-logos/logos/teams/hunti.png";
-import ivanova from "../assets/group-logos/logos/teams/ivanova.png";
-import knwu from "../assets/group-logos/logos/teams/knwu.png";
-import kristiansand from "../assets/group-logos/logos/teams/kristiansand.png";
-import lux from "../assets/group-logos/logos/teams/lux.png";
-import nick from "../assets/group-logos/logos/teams/nick.png";
-import ose from "../assets/group-logos/logos/teams/ose.png";
-import oulun from "../assets/group-logos/logos/teams/oulun.png";
-import pegasus from "../assets/group-logos/logos/teams/pegasus.png";
-import racing from "../assets/group-logos/logos/teams/racing.png";
-import scp from "../assets/group-logos/logos/teams/scp.png";
-import south from "../assets/group-logos/logos/teams/south.png";
-import stars from "../assets/group-logos/logos/teams/stars.png";
-import stt from "../assets/group-logos/logos/teams/stt.png";
-import stv from "../assets/group-logos/logos/teams/stv.png";
-import swansea from "../assets/group-logos/logos/teams/swansea.png";
-import tg from "../assets/group-logos/logos/teams/tg.png";
-import thomas from "../assets/group-logos/logos/teams/thomas.png";
-import tv from "../assets/group-logos/logos/teams/tv.png";
-import utto from "../assets/group-logos/logos/teams/utto.png";
-import woking from "../assets/group-logos/logos/teams/woking.png";
+import ads from "../../assets/group-logos/logos/teams/ads.png";
+import afc from "../../assets/group-logos/logos/teams/afc.png";
+import agc from "../../assets/group-logos/logos/teams/agc.png";
+import bette from "../../assets/group-logos/logos/teams/bette.png";
+import bmx from "../../assets/group-logos/logos/teams/bmx.png";
+import catarTeam from "../../assets/group-logos/logos/teams/catar.png";
+import cgp from "../../assets/group-logos/logos/teams/cgp.png";
+import eon from "../../assets/group-logos/logos/teams/eon.png";
+import experience from "../../assets/group-logos/logos/teams/experience.png";
+import flgym from "../../assets/group-logos/logos/teams/flgym.png";
+import ga from "../../assets/group-logos/logos/teams/ga.png";
+import gca from "../../assets/group-logos/logos/teams/gca.png";
+import gcp from "../../assets/group-logos/logos/teams/gcp.png";
+import gerpla from "../../assets/group-logos/logos/teams/gerpla.png";
+import hunti from "../../assets/group-logos/logos/teams/hunti.png";
+import ivanova from "../../assets/group-logos/logos/teams/ivanova.png";
+import knwu from "../../assets/group-logos/logos/teams/knwu.png";
+import kristiansand from "../../assets/group-logos/logos/teams/kristiansand.png";
+import lux from "../../assets/group-logos/logos/teams/lux.png";
+import nick from "../../assets/group-logos/logos/teams/nick.png";
+import ose from "../../assets/group-logos/logos/teams/ose.png";
+import oulun from "../../assets/group-logos/logos/teams/oulun.png";
+import pegasus from "../../assets/group-logos/logos/teams/pegasus.png";
+import racing from "../../assets/group-logos/logos/teams/racing.png";
+import scp from "../../assets/group-logos/logos/teams/scp.png";
+import south from "../../assets/group-logos/logos/teams/south.png";
+import stars from "../../assets/group-logos/logos/teams/stars.png";
+import stt from "../../assets/group-logos/logos/teams/stt.png";
+import stv from "../../assets/group-logos/logos/teams/stv.png";
+import swansea from "../../assets/group-logos/logos/teams/swansea.png";
+import tg from "../../assets/group-logos/logos/teams/tg.png";
+import thomas from "../../assets/group-logos/logos/teams/thomas.png";
+import tv from "../../assets/group-logos/logos/teams/tv.png";
+import utto from "../../assets/group-logos/logos/teams/utto.png";
+import woking from "../../assets/group-logos/logos/teams/woking.png";
 
 /* ===== Associations ===== */
-import aca from "../assets/group-logos/logos/associations/aca.png";
-import aba from "../assets/group-logos/logos/associations/abv.png";
-import ace from "../assets/group-logos/logos/associations/ace.png";
-import afa from "../assets/group-logos/logos/associations/afa.png";
+import aca from "../../assets/group-logos/logos/associations/aca.png";
+import aba from "../../assets/group-logos/logos/associations/abv.png";
+import ace from "../../assets/group-logos/logos/associations/ace.png";
+import afa from "../../assets/group-logos/logos/associations/afa.png";
 
-const configGroupLogos = {
+export const groupLogosPage = {
   backLink: makeBackLink(),
 
   committees: {
@@ -415,4 +415,4 @@ const configGroupLogos = {
   },
 };
 
-export default configGroupLogos;
+export default groupLogosPage;

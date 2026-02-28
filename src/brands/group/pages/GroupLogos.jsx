@@ -9,7 +9,7 @@ import Teams from "../components/Sections/GroupLogos/Teams/index.jsx";
 import Associations from "../components/Sections/GroupLogos/Associations/index.jsx";
 
 import GroupFooter from "../layout/GroupFooter/GroupFooter.jsx";
-import { footer as footerConfig } from "../config/ConfigGroup.jsx";
+import groupBrand from "../config/index.js";
 
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
@@ -18,9 +18,10 @@ export default function PartnersLogosPage() {
 
   useScrollToHash(24);
 
+  const footerConfig = groupBrand.sections?.footer;
+
   return (
     <div className={styles.pageWrap}>
-      {/* ✅ Header consistente dos Logos (sem wrapper duplicado) */}
       <LogosUtilityBar />
 
       <main className={styles.inner}>

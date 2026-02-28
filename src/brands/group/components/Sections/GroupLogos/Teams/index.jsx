@@ -1,10 +1,10 @@
-// src/brands/group/components/SectionLogos/Teams/index.jsx
 import styles from "../_shared/LogosSection.module.css";
-import configGroupLogos from "../../../../config/ConfigGroupLogos.jsx";
 import LogoGridSection from "../_shared/LogoGridSection";
 
+import groupLogosPage from "../../../../config/pages/logos.js";
+
 export default function Teams() {
-  const data = configGroupLogos?.teams;
+  const data = groupLogosPage?.teams;
   if (!data) return null;
 
   return (

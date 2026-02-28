@@ -1,10 +1,10 @@
-// src/brands/group/components/SectionLogos/PortugueseFederations/index.jsx
 import styles from "../_shared/LogosSection.module.css";
-import configGroupLogos from "../../../../config/ConfigGroupLogos.jsx";
 import LogoGridSection from "../_shared/LogoGridSection";
 
+import groupLogosPage from "../../../../config/pages/logos.js";
+
 export default function PortugueseFederations() {
-  const data = configGroupLogos?.portugueseFederations;
+  const data = groupLogosPage?.portugueseFederations;
   if (!data) return null;
 
   return (

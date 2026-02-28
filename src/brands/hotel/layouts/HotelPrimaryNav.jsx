@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import navStyles from "./HotelPrimaryNav.module.css";
 import HotelPrimaryNavSubmenu from "./HotelPrimaryNavSubmenu.jsx";
-import { HOTEL_PRIMARY_NAV_ITEMS } from "../configHotel.jsx";
+
+import { HOTEL_PRIMARY_NAV_ITEMS } from "../config/nav.js";
 
 // hooks partilhados
 import { useOutsideClick } from "../../../shared/hooks/useOutsideClick.js";

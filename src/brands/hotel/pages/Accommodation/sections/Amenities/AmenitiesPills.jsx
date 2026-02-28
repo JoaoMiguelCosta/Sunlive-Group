@@ -1,7 +1,7 @@
 import styles from "./AmenitiesPills.module.css";
 
 import HotelIconPill from "../../../../shared/ui/HotelIconPill/HotelIconPill.jsx";
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 
 export default function AmenitiesPills() {
   const content = hotelBrand?.pages?.estadia?.sections?.amenities ?? null;

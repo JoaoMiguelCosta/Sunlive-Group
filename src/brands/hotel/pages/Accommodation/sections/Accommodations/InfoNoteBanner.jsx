@@ -1,6 +1,6 @@
 // src/brands/hotel/components/Accommodation/Accommodations/InfoNoteBanner/InfoNoteBanner.jsx
 import styles from "./InfoNoteBanner.module.css";
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 
 export default function InfoNoteBanner({ className = "" }) {
   const note =

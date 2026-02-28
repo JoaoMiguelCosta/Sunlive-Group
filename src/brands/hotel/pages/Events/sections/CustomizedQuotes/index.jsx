@@ -1,7 +1,7 @@
 export default function CustomizedQuotesSection() {
   return (
     <section
-      id="eventos-orcamentos"
+      id="events-quotes"
       style={{
         padding: "24px 0",
         borderTop: "1px solid rgba(255,255,255,0.12)",

@@ -7,13 +7,12 @@ import styles from "./PanoramicRestaurant.module.css";
 
 export default function PanoramicRestaurantSection() {
   return (
-    <section id="restaurante-panoramico" className={styles.section}>
+    <section id="restaurant-panoramic" className={styles.section}>
       <div className={styles.inner}>
         <TitlePanoramicRestaurant />
         <DescriptionPanoramicRestaurant />
         <PanoramicRestaurantPhotoCarousel />
         <PanoramicRestaurantDescriptionSection />
-     
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 import FeaturedExperienceCard from "../../../../shared/ui/FeaturedExperienceCard/FeaturedExperienceCard.jsx";
 import styles from "./HotelFeaturedExperiencesGrid.module.css";
 

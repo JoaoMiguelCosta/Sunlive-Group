@@ -1,10 +1,10 @@
-// src/brands/group/components/SectionLogos/Associations/index.jsx
-import styles from "../_shared/LogosSection.module.css"
-import configGroupLogos from "../../../../config/ConfigGroupLogos.jsx";
+import styles from "../_shared/LogosSection.module.css";
 import LogoGridSection from "../_shared/LogoGridSection";
 
+import groupLogosPage from "../../../../config/pages/logos.js";
+
 export default function Associations() {
-  const data = configGroupLogos?.associations;
+  const data = groupLogosPage?.associations;
   if (!data) return null;
 
   return (

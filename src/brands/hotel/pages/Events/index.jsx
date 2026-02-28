@@ -3,9 +3,16 @@ import CustomizedQuotesSection from "./sections/CustomizedQuotes/index.jsx";
 
 export default function EventsPageHotel() {
   return (
-    <main id="eventos" style={{ padding: 24, scrollMarginTop: "120px" }}>
-      <EventsCelebrationsSection />
-      <CustomizedQuotesSection />
-    </main>
+    <div className={styles.pageWrap} data-brand="hotel">
+      <main
+        id="events"
+        className={styles.inner}
+        role="region"
+        aria-label="Estalagem de Sangalhos — Events"
+      >
+        <EventsCelebrationsSection />
+        <CustomizedQuotesSection />
+      </main>
+    </div>
   );
 }

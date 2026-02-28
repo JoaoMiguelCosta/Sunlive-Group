@@ -1,5 +1,5 @@
 // src/brands/hotel/components/Home/FeaturedExperiences/FeaturedExperiencesHeader.jsx
-import hotelBrand from "../../../../configHotel.jsx";
+import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 import styles from "./FeaturedExperiencesHeader.module.css";
 

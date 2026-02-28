@@ -1,7 +1,7 @@
 export default function CateringServiceSection() {
   return (
     <section
-      id="restaurante-catering"
+      id="restaurant-catering"
       style={{
         padding: "24px 0",
         borderTop: "1px solid rgba(255,255,255,0.12)",
