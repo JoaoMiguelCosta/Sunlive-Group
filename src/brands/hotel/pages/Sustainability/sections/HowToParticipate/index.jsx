@@ -6,7 +6,7 @@ export default function HowToParticipateSection() {
     <section
       id="sustentabilidade-participar"
       className={styles.section}
-      aria-label="Como pode participar"
+      aria-label="Como podes participar"
     >
       <div className={styles.inner}>
         <h2 className={styles.title}>Como pode participar</h2>

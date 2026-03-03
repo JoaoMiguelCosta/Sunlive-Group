@@ -3,7 +3,7 @@ import styles from "./FacilitiesLeisure.module.css";
 export default function FacilitiesLeisureSection() {
   return (
     <section
-      id="facilities-overview"
+     
       className={styles.section}
       aria-label="Instalações e Lazer"
     >

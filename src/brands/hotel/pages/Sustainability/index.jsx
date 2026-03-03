@@ -3,6 +3,7 @@
 
 import styles from "../Home/Home.module.css";
 
+import SustainabilityCommitmentSection from "./sections/SustainabilityCommitment/index.jsx";
 import HowToParticipateSection from "./sections/HowToParticipate/index.jsx";
 import EnvironmentalImpactSection from "./sections/EnvironmentalImpact/index.jsx";
 import FutureGoalsSection from "./sections/FutureGoals/index.jsx";
@@ -16,6 +17,7 @@ export default function SustainabilityPageHotel() {
         role="region"
         aria-label="Estalagem de Sangalhos — Sustentabilidade"
       >
+        <SustainabilityCommitmentSection />
         <HowToParticipateSection />
         <EnvironmentalImpactSection />
         <FutureGoalsSection />

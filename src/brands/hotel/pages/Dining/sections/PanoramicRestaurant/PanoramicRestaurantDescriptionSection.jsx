@@ -8,7 +8,9 @@ const splitParagraphs = (text) =>
     .filter(Boolean);
 
 export default function PanoramicRestaurantDescriptionSection() {
-  const section = hotelBrand?.pages?.restauracao?.sections?.panoramicRestaurant;
+  const section =
+    hotelBrand?.pages?.dining?.sections?.panoramicRestaurant ?? null;
+
   const text = section?.descriptionSecondary;
 
   if (!text) return null;

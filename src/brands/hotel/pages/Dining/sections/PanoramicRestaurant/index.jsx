@@ -7,7 +7,7 @@ import styles from "./PanoramicRestaurant.module.css";
 
 export default function PanoramicRestaurantSection() {
   return (
-    <section id="restaurant-panoramic" className={styles.section}>
+    <section id="restaurante-panoramico" className={styles.section}>
       <div className={styles.inner}>
         <TitlePanoramicRestaurant />
         <DescriptionPanoramicRestaurant />

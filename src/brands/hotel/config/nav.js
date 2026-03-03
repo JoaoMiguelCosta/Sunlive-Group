@@ -37,14 +37,11 @@ export const HOTEL_QUICK_LINKS = [
     href: HOTEL_SECTION_PATHS.facilities,
   },
   { key: "events", label: "Eventos", href: HOTEL_SECTION_PATHS.events },
-
-  // ✅ agora é página do hotel (não fora)
   {
     key: "sustainability",
     label: "Sustentabilidade",
     href: HOTEL_SECTION_PATHS.sustainability,
   },
-
   {
     key: "information",
     label: "Informações",
@@ -59,10 +56,6 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
     label: "Sobre",
     to: HOTEL_SECTION_PATHS.about,
     links: [
-      {
-        label: "Sobre a Estalagem",
-        href: `${HOTEL_SECTION_PATHS.about}#sobre-estalagem`,
-      },
       {
         label: "A nossa História",
         href: `${HOTEL_SECTION_PATHS.about}#sobre-historia`,
@@ -136,10 +129,7 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
     label: "Instalações & Lazer",
     to: HOTEL_SECTION_PATHS.facilities,
     links: [
-      {
-        label: "Instalações e Lazer",
-        href: `${HOTEL_SECTION_PATHS.facilities}#facilities-overview`,
-      },
+      
       {
         label: "Bem-estar e Lazer",
         href: `${HOTEL_SECTION_PATHS.facilities}#facilities-wellbeing`,
@@ -177,15 +167,13 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
       },
     ],
   },
-
-  // ✅ NOVO — no sítio certo (Eventos → Sustentabilidade → Informações)
   {
     id: "sustainability",
     label: "Sustentabilidade",
     to: HOTEL_SECTION_PATHS.sustainability,
     links: [
       {
-        label: "Como pode participar",
+        label: "Como podes participar",
         href: `${HOTEL_SECTION_PATHS.sustainability}#sustentabilidade-participar`,
       },
       {
@@ -198,7 +186,6 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
       },
     ],
   },
-
   {
     id: "information",
     label: "Informações",

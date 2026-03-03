@@ -10,7 +10,8 @@ const clampIndex = (index, length) => {
 };
 
 export default function PanoramicRestaurantPhotoCarousel() {
-  const section = hotelBrand?.pages?.restauracao?.sections?.panoramicRestaurant;
+  const section =
+    hotelBrand?.pages?.dining?.sections?.panoramicRestaurant ?? null;
 
   const gallery = section?.gallery;
   const highlight = section?.highlightCard;
