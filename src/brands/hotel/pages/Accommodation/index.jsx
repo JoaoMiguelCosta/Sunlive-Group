@@ -13,7 +13,7 @@ export default function AccommodationPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
       <main
-        id="accommodation"
+        id="accommodation-page"
         className={styles.inner}
         role="region"
         aria-label="Estalagem de Sangalhos — Accommodation"

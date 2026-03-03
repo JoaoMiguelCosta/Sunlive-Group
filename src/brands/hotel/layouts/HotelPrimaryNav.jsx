@@ -16,10 +16,10 @@ export default function HotelPrimaryNav() {
   const [submenuAnchorX, setSubmenuAnchorX] = useState(null);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
-  const navRootRef = useRef(null); // para outside-click
+  const navRootRef = useRef(null);
   const navInnerRef = useRef(null);
 
-  // 👇 agora medimos o centro pelo toggle (chevron)
+  // Medimos o centro pelo toggle (chevron)
   const buttonRefs = useRef({});
 
   const closeAll = () => {
@@ -48,7 +48,7 @@ export default function HotelPrimaryNav() {
 
   const hasOpen = Boolean(openId);
 
-  // Calcula a posição horizontal do botão ativo (todas as larguras desktop)
+  // Calcula a posição horizontal do botão ativo (desktop)
   useEffect(() => {
     if (!openId || typeof window === "undefined") {
       setSubmenuAnchorX(null);
@@ -69,6 +69,17 @@ export default function HotelPrimaryNav() {
     setSubmenuAnchorX(centerInWrap);
   }, [openId]);
 
+  const handlePrimaryNavClick = (e, to) => {
+    // Se vier hash, delega para o smart anchor (offset + smooth + close)
+    if (typeof to === "string" && to.includes("#")) {
+      handleSmartAnchorClick?.(e, to);
+      return;
+    }
+
+    // Sem hash: navegação normal e fecha overlays (especialmente mobile)
+    closeAll();
+  };
+
   return (
     <nav
       ref={navRootRef}
@@ -80,6 +91,7 @@ export default function HotelPrimaryNav() {
         {/* Barra topo (só aparece em mobile) */}
         <div className={navStyles.navTopRow}>
           <span className={navStyles.navTitle}>Explorar Estalagem</span>
+
           <button
             type="button"
             className={`${navStyles.burgerButton} ${
@@ -124,7 +136,7 @@ export default function HotelPrimaryNav() {
                     }
                     onMouseEnter={() => handleEnterItem(item.id)}
                     onFocus={() => handleEnterItem(item.id)}
-                    onClick={() => closeAll()} // fecha mobile
+                    onClick={(e) => handlePrimaryNavClick(e, item.to)}
                   >
                     <span>{item.label}</span>
                   </NavLink>

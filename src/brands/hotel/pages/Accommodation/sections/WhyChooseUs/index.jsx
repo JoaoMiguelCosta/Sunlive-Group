@@ -7,7 +7,7 @@ import WhyChooseUsGrid from "./WhyChooseUsGrid.jsx";
 import hotelBrand from "../../../../config/index.js";
 
 export default function WhyChooseUs() {
-  const content = hotelBrand?.pages?.estadia?.sections?.whyChoose ?? null;
+  const content = hotelBrand?.pages?.accommodation?.sections?.whyChoose ?? null;
   if (!content) return null;
 
   const items = Array.isArray(content.items) ? content.items : [];

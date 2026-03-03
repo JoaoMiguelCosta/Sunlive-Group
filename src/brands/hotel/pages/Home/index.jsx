@@ -14,7 +14,7 @@ export default function HomePageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
       <main
-        id="home"
+        id="home-page"
         className={styles.inner}
         role="region"
         aria-label="Estalagem de Sangalhos — Home"

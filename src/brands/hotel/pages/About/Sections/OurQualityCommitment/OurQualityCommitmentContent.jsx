@@ -1,4 +1,3 @@
-// src/brands/hotel/components/About/OurQualityCommitment/OurQualityCommitmentContent.jsx
 import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import styles from "./OurQualityCommitmentContent.module.css";
@@ -11,7 +10,7 @@ import styles from "./OurQualityCommitmentContent.module.css";
  */
 export default function OurQualityCommitmentContent() {
   const section =
-    hotelBrand?.pages?.sobre?.sections?.ourQualityCommitment ?? null;
+    hotelBrand?.pages?.about?.sections?.ourQualityCommitment ?? null;
 
   if (!section) return null;
 

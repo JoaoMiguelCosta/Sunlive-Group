@@ -9,7 +9,7 @@ import styles from "./HotelFeaturedExperiencesGrid.module.css";
  */
 export default function HotelFeaturedExperiencesGrid() {
   const featuredSection =
-    hotelBrand?.pages?.home?.sections?.featuredExperiences;
+    hotelBrand?.pages?.home?.sections?.featuredExperiences ?? null;
 
   const items = featuredSection?.items ?? [];
   if (!items.length) return null;

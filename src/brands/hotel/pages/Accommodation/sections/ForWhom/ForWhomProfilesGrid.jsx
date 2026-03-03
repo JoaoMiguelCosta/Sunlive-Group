@@ -7,7 +7,8 @@ import HotelProfileCard from "../../../../shared/ui/HotelProfileCard/HotelProfil
 import HotelOfferPanel from "../../../../shared/ui/HotelOfferPanel/HotelOfferPanel.jsx";
 
 export default function ForWhomProfilesGrid() {
-  const content = hotelBrand?.pages?.estadia?.sections?.forWhomProfiles ?? null;
+  const content =
+    hotelBrand?.pages?.accommodation?.sections?.forWhomProfiles ?? null;
   const cards = content?.items ?? [];
   if (!Array.isArray(cards) || cards.length === 0) return null;
 

@@ -1,15 +1,21 @@
 // src/brands/hotel/components/About/AboutTheHotel/index.jsx
+import hotelBrand from "../../../../config/index.js";
 import AboutTheHotelHeader from "./AboutTheHotelHeader.jsx";
 import AboutTheHotelContent from "./AboutTheHotelContent.jsx";
 import styles from "./AboutTheHotel.module.css";
 
 /**
  * AboutTheHotel
- * Secção completa "Sobre a Estalagem" na página Sobre.
+ * Secção completa "Sobre a Estalagem" na página About.
  */
 export default function AboutTheHotel() {
+  const aboutSection =
+    hotelBrand?.pages?.about?.sections?.aboutTheHotel ?? null;
+
+  if (!aboutSection) return null;
+
   return (
-    <section className={styles.section}>
+    <section id={aboutSection.id} className={styles.section}>
       <div className={styles.inner}>
         <AboutTheHotelHeader />
         <AboutTheHotelContent />

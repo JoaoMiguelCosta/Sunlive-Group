@@ -1,4 +1,3 @@
-// src/brands/hotel/components/Home/FeaturedExperiences/FeaturedExperiencesHeader.jsx
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 import styles from "./FeaturedExperiencesHeader.module.css";
@@ -10,9 +9,9 @@ import styles from "./FeaturedExperiencesHeader.module.css";
  */
 export default function FeaturedExperiencesHeader() {
   const featuredSection =
-    hotelBrand?.pages?.home?.sections?.featuredExperiences;
+    hotelBrand?.pages?.home?.sections?.featuredExperiences ?? null;
 
-  const header = featuredSection?.header;
+  const header = featuredSection?.header ?? null;
   if (!header) return null;
 
   const { title, align = "center" } = header;
@@ -25,7 +24,6 @@ export default function FeaturedExperiencesHeader() {
       className={`${styles.header} ${alignClass}`.trim()}
       id={`${sectionId}-title`}
     >
-      {/* Só título principal na barra reutilizável */}
       <HotelSectionHeader label={title} as="h2" align={align} />
     </header>
   );

@@ -1,15 +1,18 @@
+// src/brands/hotel/pages/Information/sections/Testimonials/index.jsx
+
+import styles from "./Testimonials.module.css";
+
 export default function TestimonialsSection() {
   return (
     <section
       id="info-testimonials"
-      style={{
-        padding: "24px 0",
-        borderTop: "1px solid rgba(255,255,255,0.12)",
-        scrollMarginTop: "120px",
-      }}
+      className={styles.section}
+      aria-label="Testemunhos"
     >
-      <h2>Testemunhos</h2>
-      <p>Conteúdo em construção.</p>
+      <div className={styles.inner}>
+        <h2 className={styles.title}>Testemunhos</h2>
+        <p className={styles.text}>Conteúdo em construção.</p>
+      </div>
     </section>
   );
 }

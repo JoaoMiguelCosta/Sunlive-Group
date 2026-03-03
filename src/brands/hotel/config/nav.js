@@ -16,50 +16,39 @@ export const HOTEL_SOCIALS = withSocialIcons([
 ]);
 
 /**
- * Quick links (chips)
- * - Usados na HOME (anchors locais).
- * - Para páginas dedicadas, apontam para rota EN + anchor.
+ * Quick links (Footer)
+ * - ✅ Direcionam para PÁGINAS
+ * - ✅ Ordem final:
+ *   Sobre - Estadia - Restauração - Instalações & Lazer
+ *   Eventos - Sustentabilidade - Informações
  */
 export const HOTEL_QUICK_LINKS = [
-  // ✅ HOME anchors (tens de garantir que estas secções têm estes ids)
-  { key: "about", label: "Sobre", href: "#hotel-overview" },
-  {
-    key: "sustainability",
-    label: "Sustentabilidade",
-    href: "#hotel-sustainability-impact",
-  },
-  { key: "contacts", label: "Contactos", href: "#hotel-plan-your-stay" },
-
-  // ✅ Páginas (rota + anchor)
+  { key: "about", label: "Sobre", href: HOTEL_SECTION_PATHS.about },
   {
     key: "accommodation",
     label: "Estadia",
-    href: `${HOTEL_SECTION_PATHS.accommodation}#estadia-quartos`,
+    href: HOTEL_SECTION_PATHS.accommodation,
   },
-  {
-    key: "restoration",
-    label: "Restauração",
-    href: `${HOTEL_SECTION_PATHS.restoration}#restaurant-panoramic`,
-  },
+  { key: "dining", label: "Restauração", href: HOTEL_SECTION_PATHS.dining },
   {
     key: "facilities",
     label: "Instalações & Lazer",
-    href: `${HOTEL_SECTION_PATHS.facilities}#facilities-overview`,
+    href: HOTEL_SECTION_PATHS.facilities,
   },
+
+  { key: "events", label: "Eventos", href: HOTEL_SECTION_PATHS.events },
+
+  // página fora do hotel (vai existir)
   {
-    key: "events",
-    label: "Eventos",
-    href: `${HOTEL_SECTION_PATHS.events}#events-types`,
+    key: "sustainability",
+    label: "Sustentabilidade",
+    href: "/sunlive-group/sustainability",
   },
+
   {
-    key: "testimonials",
-    label: "Testemunhos",
-    href: `${HOTEL_SECTION_PATHS.information}#info-testimonials`,
-  },
-  {
-    key: "location",
-    label: "Localização",
-    href: `${HOTEL_SECTION_PATHS.information}#info-location`,
+    key: "information",
+    label: "Informações",
+    href: HOTEL_SECTION_PATHS.information,
   },
 ];
 
@@ -70,7 +59,6 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
     label: "Sobre",
     to: HOTEL_SECTION_PATHS.about,
     links: [
-      // ⚠️ Mantidos PT (só muda quando mudares os IDs nas secções About)
       {
         label: "Sobre a Estalagem",
         href: `${HOTEL_SECTION_PATHS.about}#sobre-estalagem`,
@@ -94,7 +82,6 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
     label: "Estadia",
     to: HOTEL_SECTION_PATHS.accommodation,
     links: [
-      // ⚠️ Mantidos PT (só muda quando mudares os IDs nas secções Accommodation)
       {
         label: "Quartos e Suites",
         href: `${HOTEL_SECTION_PATHS.accommodation}#estadia-quartos`,
@@ -118,29 +105,29 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
     ],
   },
   {
-    id: "restoration",
+    id: "dining",
     label: "Restauração",
-    to: HOTEL_SECTION_PATHS.restoration,
+    to: HOTEL_SECTION_PATHS.dining,
     links: [
       {
         label: "Restaurante Panorâmico",
-        href: `${HOTEL_SECTION_PATHS.restoration}#restaurant-panoramic`,
+        href: `${HOTEL_SECTION_PATHS.dining}#restaurante-panoramico`,
       },
       {
         label: "Pequeno-Almoço",
-        href: `${HOTEL_SECTION_PATHS.restoration}#restaurant-breakfast`,
+        href: `${HOTEL_SECTION_PATHS.dining}#restaurant-breakfast`,
       },
       {
         label: "Buffet de Domingo",
-        href: `${HOTEL_SECTION_PATHS.restoration}#restaurant-buffet`,
+        href: `${HOTEL_SECTION_PATHS.dining}#restaurant-buffet`,
       },
       {
         label: "Bar & Lounge",
-        href: `${HOTEL_SECTION_PATHS.restoration}#restaurant-bar`,
+        href: `${HOTEL_SECTION_PATHS.dining}#restaurant-bar`,
       },
       {
         label: "Serviço de Catering",
-        href: `${HOTEL_SECTION_PATHS.restoration}#restaurant-catering`,
+        href: `${HOTEL_SECTION_PATHS.dining}#restaurant-catering`,
       },
     ],
   },
@@ -149,7 +136,6 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
     label: "Instalações & Lazer",
     to: HOTEL_SECTION_PATHS.facilities,
     links: [
-      // ✅ Nota: assume que mudaste a secção principal para facilities-overview
       {
         label: "Instalações e Lazer",
         href: `${HOTEL_SECTION_PATHS.facilities}#facilities-overview`,

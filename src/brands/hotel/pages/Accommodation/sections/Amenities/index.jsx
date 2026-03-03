@@ -7,7 +7,7 @@ import AmenitiesPills from "./AmenitiesPills.jsx";
 import hotelBrand from "../../../../config/index.js";
 
 export default function Amenities() {
-  const content = hotelBrand?.pages?.estadia?.sections?.amenities ?? null;
+  const content = hotelBrand?.pages?.accommodation?.sections?.amenities ?? null;
   if (!content) return null;
 
   return (

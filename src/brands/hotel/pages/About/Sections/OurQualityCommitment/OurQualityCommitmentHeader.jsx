@@ -1,4 +1,3 @@
-// src/brands/hotel/components/About/OurQualityCommitment/OurQualityCommitmentHeader.jsx
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui//HotelSectionHeader/HotelSectionHeader.jsx";
 import styles from "./OurQualityCommitmentHeader.module.css";
@@ -9,15 +8,15 @@ import styles from "./OurQualityCommitmentHeader.module.css";
  */
 export default function OurQualityCommitmentHeader() {
   const section =
-    hotelBrand?.pages?.sobre?.sections?.ourQualityCommitment ?? null;
+    hotelBrand?.pages?.about?.sections?.ourQualityCommitment ?? null;
 
   if (!section) return null;
 
-  const { id, headerLabel } = section;
+  const { headerLabel } = section;
 
   return (
     <div className={styles.headerWrap}>
-      <HotelSectionHeader id={id} label={headerLabel} as="h2" />
+      <HotelSectionHeader label={headerLabel} as="h2" />
     </div>
   );
 }

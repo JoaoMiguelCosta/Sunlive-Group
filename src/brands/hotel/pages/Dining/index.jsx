@@ -9,11 +9,11 @@ import SundayBuffetSection from "./sections/SundayBuffet/index.jsx";
 import BarLoungeSection from "./sections/BarLounge/index.jsx";
 import CateringServiceSection from "./sections/CateringService/index.jsx";
 
-export default function RestorationPageHotel() {
+export default function DiningPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
       <main
-        id="restoration"
+        id="dining"
         className={styles.inner}
         role="region"
         aria-label="Estalagem de Sangalhos — Restoration"

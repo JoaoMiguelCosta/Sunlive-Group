@@ -1,4 +1,3 @@
-// src/brands/hotel/pages/HotelAbout/sections/TheBairradaRegion/index.jsx
 import hotelBrand from "../../../../config/index.js";
 
 import TheBairradaRegionHeader from "./TheBairradaRegionHeader.jsx";
@@ -8,7 +7,7 @@ import HotelRegionHighlightsGrid from "./HotelRegionHighlightsGrid.jsx";
 import styles from "./TheBairradaRegion.module.css";
 
 export default function TheBairradaRegion() {
-  const section = hotelBrand?.pages?.sobre?.sections?.bairradaRegion;
+  const section = hotelBrand?.pages?.about?.sections?.bairradaRegion ?? null;
 
   if (!section) return null;
 

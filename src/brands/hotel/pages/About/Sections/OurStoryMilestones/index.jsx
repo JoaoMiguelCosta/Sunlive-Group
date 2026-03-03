@@ -1,5 +1,3 @@
-// src/brands/hotel/components/About/OurStoryMilestones/index.jsx
-
 import hotelBrand from "../../../../config/index.js";
 import OurStoryMilestonesHeader from "./OurStoryMilestonesHeader.jsx";
 import OurStoryMilestonesContent from "./OurStoryMilestonesContent.jsx";
@@ -7,14 +5,14 @@ import styles from "./OurStoryMilestones.module.css";
 
 /**
  * OurStoryMilestonesSection
- * Wrapper da secção "A nossa História" na página Sobre.
+ * Wrapper da secção "A nossa História" na página About.
  *
  * - Garante alinhamento com o container global
  * - Usa header + content já criados
  */
 export default function OurStoryMilestonesSection() {
   const section =
-    hotelBrand?.pages?.sobre?.sections?.ourStoryMilestones ?? null;
+    hotelBrand?.pages?.about?.sections?.ourStoryMilestones ?? null;
 
   if (!section) return null;
 

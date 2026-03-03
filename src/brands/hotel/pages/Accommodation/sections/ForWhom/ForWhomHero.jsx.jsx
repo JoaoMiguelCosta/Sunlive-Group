@@ -1,28 +1,30 @@
-import styles from "./ForWhomHero.module.css";
+import styles from "./ForWhom.module.css";
+
+import TitleForWhom from "./TitleForWhom.jsx";
+import DescriptionForWhom from "./DescriptionForWhom.jsx";
+import ForWhomHero from "./ForWhomHero.jsx";
+import ForWhomProfilesGrid from "./ForWhomProfilesGrid.jsx";
+
 import hotelBrand from "../../../../config/index.js";
 
-export default function ForWhomHero() {
-  const content = hotelBrand?.pages?.estadia?.sections?.forAllProfiles ?? null;
+export default function ForWhom() {
+  const content = hotelBrand?.pages?.estadia?.sections?.forWhom ?? null;
   if (!content) return null;
 
-  const title = content.headerLabel || "Para Todos os Perfis";
-  const text = content.description || "";
-
   return (
-    <div className={styles.wrap} aria-label={title}>
-      <div className={styles.card}>
-        <div className={styles.titleRow}>
-          <span className={styles.star} aria-hidden="true">
-            ★
-          </span>
-          <h3 className={styles.title}>{title}</h3>
-          <span className={styles.star} aria-hidden="true">
-            ★
-          </span>
-        </div>
+    <section
+      id={content.id}
+      className={styles.section}
+      aria-label={content.headerLabel || "Para Quem"}
+    >
+      <div className={styles.inner}>
+        <TitleForWhom label={content.headerLabel} />
+        <DescriptionForWhom>{content.description}</DescriptionForWhom>
 
-        {text ? <p className={styles.text}>{text}</p> : null}
+        {/* ✅ “Hero” dentro da mesma secção */}
+        <ForWhomHero />
+        <ForWhomProfilesGrid />
       </div>
-    </div>
+    </section>
   );
 }

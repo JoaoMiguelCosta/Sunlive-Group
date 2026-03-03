@@ -30,7 +30,10 @@ export default function HotelPrimaryNavSubmenu({
           >
             <ul className={submenuStyles.linkList}>
               {group.links.map((link) => (
-                <li key={link.href} className={submenuStyles.linkItem}>
+                <li
+                  key={`${group.id}-${link.href}`}
+                  className={submenuStyles.linkItem}
+                >
                   <a
                     href={link.href}
                     onClick={(e) => onAnchorClick?.(e, link.href)}

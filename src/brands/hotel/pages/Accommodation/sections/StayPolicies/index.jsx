@@ -7,7 +7,8 @@ import StayPoliciesAccordion from "./StayPoliciesAccordion.jsx";
 import hotelBrand from "../../../../config/index.js";
 
 export default function StayPolicies() {
-  const content = hotelBrand?.pages?.estadia?.sections?.stayPolicies ?? null;
+  const content =
+    hotelBrand?.pages?.accommodation?.sections?.stayPolicies ?? null;
   if (!content) return null;
 
   const items = Array.isArray(content.items) ? content.items : [];

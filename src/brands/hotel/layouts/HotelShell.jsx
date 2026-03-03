@@ -4,6 +4,7 @@ import UtilityBar from "../../../shared/components/UtilityBar";
 
 import HotelFooter from "../components/FooterHotel";
 import HotelPrimaryNav from "./HotelPrimaryNav.jsx";
+import ScrollToTopOnRouteChange from "./ScrollToTopOnRouteChange.jsx";
 
 import hotelBrand, { HOTEL_BASE_PATH } from "../config";
 import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
@@ -36,6 +37,9 @@ export default function HotelShell() {
 
   return (
     <div className={styles.shell} data-brand="hotel" data-shell="hotel">
+      {/* ✅ ao mudar de página via footer/nav/etc, começa no topo */}
+      <ScrollToTopOnRouteChange />
+
       <UtilityBar
         variant="hotel-header"
         backLink={backLink}

@@ -11,7 +11,7 @@ const BRAND_NAME = "Estalagem de Sangalhos – Sport & Nature Hotel";
  */
 export default function AboutTheHotelContent() {
   const aboutSection =
-    hotelBrand?.pages?.sobre?.sections?.aboutTheHotel ?? null;
+    hotelBrand?.pages?.about?.sections?.aboutTheHotel ?? null;
 
   if (!aboutSection) return null;
 

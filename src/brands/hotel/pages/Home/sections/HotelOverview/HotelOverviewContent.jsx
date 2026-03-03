@@ -1,4 +1,3 @@
-// src/brands/hotel/pages/HotelHome/sections/HotelOverview/HotelOverviewContent.jsx
 import styles from "./HotelOverviewContent.module.css";
 
 export default function HotelOverviewContent({ section }) {

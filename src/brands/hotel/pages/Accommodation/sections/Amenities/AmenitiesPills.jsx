@@ -4,7 +4,7 @@ import HotelIconPill from "../../../../shared/ui/HotelIconPill/HotelIconPill.jsx
 import hotelBrand from "../../../../config/index.js";
 
 export default function AmenitiesPills() {
-  const content = hotelBrand?.pages?.estadia?.sections?.amenities ?? null;
+  const content = hotelBrand?.pages?.accommodation?.sections?.amenities ?? null;
   const items = content?.items ?? [];
 
   if (!items.length) return null;

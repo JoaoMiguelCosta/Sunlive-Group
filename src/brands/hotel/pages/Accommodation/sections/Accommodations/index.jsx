@@ -1,4 +1,3 @@
-// src/brands/hotel/components/Accommodation/Accommodations/index.jsx
 import styles from "./Accommodations.module.css";
 
 import TitleAccomodations from "./TitleAccomodations.jsx";
@@ -9,14 +8,17 @@ import DescriptionRoomsAndSuites from "./DescriptionRoomsAndSuites.jsx";
 
 import HotelPhotoCarousel from "../../../../shared/ui/HotelPhotoCarousel/HotelPhotoCarousel.jsx";
 
-import InfoNoteBanner from "./InfoNoteBanner.jsx"
+import InfoNoteBanner from "./InfoNoteBanner.jsx";
 import RoomCardsGrid from "./RoomCardsGrid.jsx";
 
 import hotelBrand from "../../../../config/index.js";
 
 export default function Accommodations() {
-  const content = hotelBrand?.pages?.estadia?.sections?.accommodations ?? null;
+  const content =
+    hotelBrand?.pages?.accommodation?.sections?.accommodations ?? null;
   if (!content) return null;
+
+  const roomsAndSuites = content.roomsAndSuites ?? null;
 
   return (
     <section
@@ -39,14 +41,21 @@ export default function Accommodations() {
           />
         </div>
 
-        {/* Subsecção: Quartos e Suites (mesmo estilo) */}
-        <TitleRoomsAndSuites />
-        <DescriptionRoomsAndSuites />
+        {/* Subsecção: Quartos e Suites (anchor fiável) */}
+        {roomsAndSuites ? (
+          <section
+            id={roomsAndSuites.id}
+            aria-label={roomsAndSuites.headerLabel}
+          >
+            <TitleRoomsAndSuites />
+            <DescriptionRoomsAndSuites />
+          </section>
+        ) : null}
 
-        {/* ✅ Nota informativa (consome content) */}
-
-        {/* ✅ Filtro + grelha com os 5 cards */}
+        {/* ✅ Filtro + grelha com os cards */}
         <RoomCardsGrid />
+
+        {/* ✅ Nota informativa */}
         <InfoNoteBanner />
       </div>
     </section>

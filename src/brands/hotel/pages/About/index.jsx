@@ -13,7 +13,7 @@ export default function AboutPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
       <main
-        id="about"
+        id="about-page"
         className={styles.inner}
         role="region"
         aria-label="Estalagem de Sangalhos — About"

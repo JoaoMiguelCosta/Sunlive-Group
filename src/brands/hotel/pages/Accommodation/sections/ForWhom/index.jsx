@@ -8,7 +8,7 @@ import ForWhomProfilesGrid from "./ForWhomProfilesGrid.jsx";
 import hotelBrand from "../../../../config/index.js";
 
 export default function ForWhom() {
-  const content = hotelBrand?.pages?.estadia?.sections?.forWhom ?? null;
+  const content = hotelBrand?.pages?.accommodation?.sections?.forWhom ?? null;
   if (!content) return null;
 
   return (

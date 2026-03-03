@@ -1,0 +1,18 @@
+.section {
+    padding: 24px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    scroll-margin-top: 120px;
+}
+
+.inner {
+    /* segue o container/spacing do layout */
+}
+
+.title {
+    margin: 0 0 8px;
+}
+
+.text {
+    margin: 0;
+    opacity: 0.9;
+}

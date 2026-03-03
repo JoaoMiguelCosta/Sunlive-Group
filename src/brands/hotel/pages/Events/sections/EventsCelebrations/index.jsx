@@ -1,15 +1,18 @@
+// src/brands/hotel/pages/Events/sections/EventsCelebrations/index.jsx
+
+import styles from "./EventsCelebrations.module.css";
+
 export default function EventsCelebrationsSection() {
   return (
     <section
       id="events-types"
-      style={{
-        padding: "24px 0",
-        borderTop: "1px solid rgba(255,255,255,0.12)",
-        scrollMarginTop: "120px",
-      }}
+      className={styles.section}
+      aria-label="Tipos de Eventos"
     >
-      <h2>Tipos de Eventos</h2>
-      <p>Conteúdo em construção.</p>
+      <div className={styles.inner}>
+        <h2 className={styles.title}>Tipos de Eventos</h2>
+        <p className={styles.text}>Conteúdo em construção.</p>
+      </div>
     </section>
   );
 }

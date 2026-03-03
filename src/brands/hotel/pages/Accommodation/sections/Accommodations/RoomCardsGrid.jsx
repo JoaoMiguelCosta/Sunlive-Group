@@ -8,7 +8,8 @@ import RoomProfileFilterBar from "./RoomProfileFilterBar.jsx";
 import styles from "./RoomCardsGrid.module.css";
 
 export default function RoomCardsGrid() {
-  const content = hotelBrand?.pages?.estadia?.sections?.accommodations ?? null;
+  const content =
+    hotelBrand?.pages?.accommodation?.sections?.accommodations ?? null;
   const filterCfg = content?.roomProfilesFilter ?? null;
   const cards = content?.roomCards ?? [];
 

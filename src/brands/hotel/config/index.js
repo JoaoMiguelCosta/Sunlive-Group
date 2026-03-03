@@ -9,15 +9,20 @@ import {
   HOTEL_QUICK_LINKS,
   HOTEL_PRIMARY_NAV_ITEMS,
 } from "./nav.js";
-
-import { hotelHomePage } from "./pages/home.js";
-import { hotelAboutPage } from "./pages/about.js";
-import { hotelAccommodationPage } from "./pages/accommodation.js";
-import { hotelRestorationPage } from "./pages/restoration.js";
-
+import { hotelHeader } from "./header.js";
 import { hotelFooterSection } from "./footer.js";
 
-/* ✅ Re-exports (para imports simples noutros ficheiros) */
+import {
+  hotelHomePage,
+  hotelAboutPage,
+  hotelAccommodationPage,
+  hotelDiningPage,
+  hotelFacilitiesPage,
+  hotelEventsPage,
+  hotelInformationPage,
+} from "./pages/index.js";
+
+/* ✅ Re-exports */
 export { HOTEL_BASE_PATH, HOTEL_SECTION_PATHS };
 
 const hotelBrand = {
@@ -31,8 +36,7 @@ const hotelBrand = {
   },
 
   header: {
-    lang: LANG_DEFAULT,
-    socials: HOTEL_SOCIALS,
+    ...hotelHeader,
   },
 
   backLink: makeBackLink({
@@ -49,11 +53,10 @@ const hotelBrand = {
     home: hotelHomePage,
     about: hotelAboutPage,
     accommodation: hotelAccommodationPage,
-    restoration: hotelRestorationPage,
-
-    facilities: { sections: {} },
-    events: { sections: {} },
-    information: { sections: {} },
+    dining: hotelDiningPage,
+    facilities: hotelFacilitiesPage,
+    events: hotelEventsPage,
+    information: hotelInformationPage,
   },
 
   sections: {

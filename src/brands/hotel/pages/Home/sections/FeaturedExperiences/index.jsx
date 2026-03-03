@@ -8,7 +8,7 @@ import styles from "./FeaturedExperiences.module.css";
  */
 export default function FeaturedExperiencesSection() {
   const featuredSection =
-    hotelBrand?.pages?.home?.sections?.featuredExperiences;
+    hotelBrand?.pages?.home?.sections?.featuredExperiences ?? null;
 
   if (!featuredSection) return null;
 

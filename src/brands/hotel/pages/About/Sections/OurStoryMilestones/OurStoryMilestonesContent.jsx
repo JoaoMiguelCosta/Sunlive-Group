@@ -1,5 +1,3 @@
-// src/brands/hotel/components/About/OurStoryMilestones/OurStoryMilestonesContent.jsx
-
 import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import HotelMilestoneCard from "../../../../shared/ui/HotelMilestoneCard/HotelMilestoneCard.jsx";
@@ -8,15 +6,13 @@ import styles from "./OurStoryMilestonesContent.module.css";
 
 /**
  * OurStoryMilestonesContent
- * Secção "A nossa História" da página Sobre a Estalagem.
- *
  * Layout:
  *  - Coluna esquerda: texto + pill de destaque
- *  - Coluna direita: linha vertical + 3 cards de marcos cronológicos
+ *  - Coluna direita: linha vertical + cards de marcos cronológicos
  */
 export default function OurStoryMilestonesContent() {
   const section =
-    hotelBrand?.pages?.sobre?.sections?.ourStoryMilestones ?? null;
+    hotelBrand?.pages?.about?.sections?.ourStoryMilestones ?? null;
 
   if (!section) return null;
 
@@ -25,7 +21,7 @@ export default function OurStoryMilestonesContent() {
   const milestones = section.milestones ?? [];
 
   return (
-    <section
+    <div
       className={styles.section}
       aria-labelledby={section.id || "sobre-historia"}
     >
@@ -45,7 +41,7 @@ export default function OurStoryMilestonesContent() {
           )}
         </div>
 
-        {/* Coluna direita — linha + marcos cronológicos */}
+        {/* Coluna direita — marcos cronológicos */}
         <div className={styles.timelineCol}>
           <div className={styles.timelineStack}>
             {milestones.map((item) => (
@@ -58,6 +54,6 @@ export default function OurStoryMilestonesContent() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
