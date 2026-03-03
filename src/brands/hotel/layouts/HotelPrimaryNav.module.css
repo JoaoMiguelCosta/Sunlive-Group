@@ -1,5 +1,6 @@
 /* ==============================
    HotelPrimaryNav — estrutura + botão hambúrguer + lista principal
+   (Opção A: Drawer até 1180px)
    ============================== */
 
 .nav {
@@ -14,8 +15,7 @@
     margin-inline: auto;
     box-sizing: border-box;
 
-    background:
-        radial-gradient(circle at 0 0,
+    background: radial-gradient(circle at 0 0,
             color-mix(in oklab, var(--sl-accent-500, #2ea7e0), transparent 75%)),
         radial-gradient(circle at 100% 0,
             color-mix(in oklab, var(--sl-accent-500, #2ea7e0), transparent 78%)),
@@ -23,7 +23,7 @@
     box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65);
 }
 
-/* ===== Top row (mobile ≤900) ===== */
+/* ===== Top row (drawer) ===== */
 
 .navTopRow {
     display: none;
@@ -50,16 +50,11 @@
     border-radius: 999px;
 
     border: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 24%);
-    background:
-        radial-gradient(circle at 0 0,
+    background: radial-gradient(circle at 0 0,
             color-mix(in oklab, #ffffff, transparent 70%)),
         radial-gradient(circle at 100% 0,
             color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 70%)),
-        linear-gradient(135deg,
-            #02030c 0%,
-            #090310 40%,
-            #120706 75%,
-            #1a1207 100%);
+        linear-gradient(135deg, #02030c 0%, #090310 40%, #120706 75%, #1a1207 100%);
 
     cursor: pointer;
     display: inline-flex;
@@ -67,38 +62,28 @@
     justify-content: center;
     padding: 0;
 
-    box-shadow:
-        0 16px 40px rgba(0, 0, 0, 0.9),
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9),
         0 0 0 1px rgba(255, 255, 255, 0.04);
 
-    transition:
-        border-color 0.18s ease,
-        box-shadow 0.18s ease,
-        transform 0.18s ease,
-        background 0.18s ease;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease,
+        transform 0.18s ease, background 0.18s ease;
 }
 
 .burgerButton:hover,
 .burgerButton:focus-visible {
     border-color: color-mix(in oklab, var(--sl-gold-300, #fde68a), black 14%);
-    box-shadow:
-        0 18px 50px rgba(0, 0, 0, 0.95),
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.95),
         0 0 25px rgba(251, 191, 36, 0.34);
     transform: translateY(-1px);
 }
 
 .burgerButtonActive {
     border-color: color-mix(in oklab, var(--sl-gold-300, #fde68a), black 10%);
-    background:
-        radial-gradient(circle at 0 0,
+    background: radial-gradient(circle at 0 0,
             color-mix(in oklab, #ffffff, transparent 60%)),
         radial-gradient(circle at 100% 0,
             color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 60%)),
-        linear-gradient(135deg,
-            #02030c 0%,
-            #090310 35%,
-            #120706 70%,
-            #1a1207 100%);
+        linear-gradient(135deg, #02030c 0%, #090310 35%, #120706 70%, #1a1207 100%);
 }
 
 .burgerBox {
@@ -117,9 +102,7 @@
     height: 2px;
     border-radius: 999px;
     background: color-mix(in oklab, var(--sl-platinum-010, #f9fafb), black 6%);
-    transition:
-        background 0.18s ease,
-        box-shadow 0.18s ease;
+    transition: background 0.18s ease, box-shadow 0.18s ease;
 }
 
 .burgerLine::before,
@@ -131,9 +114,7 @@
     height: 2px;
     border-radius: 999px;
     background: inherit;
-    transition:
-        transform 0.22s ease,
-        opacity 0.22s ease;
+    transition: transform 0.22s ease, opacity 0.22s ease;
 }
 
 .burgerLine::before {
@@ -156,7 +137,7 @@
     transform: translateY(0) rotate(-42deg);
 }
 
-/* ===== Lista principal ===== */
+/* ===== Lista principal (desktop >=1181px) ===== */
 
 .navListWrap {
     display: block;
@@ -180,9 +161,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 0;
 }
 
-/* Item ativo — pill Performance Prestige */
+/* Item ativo — pill */
 .navListItemActive {
     position: relative;
     z-index: 0;
@@ -193,19 +175,13 @@
     position: absolute;
     inset: -0.15rem 0;
 
-    background:
-        radial-gradient(circle at 0 0,
+    background: radial-gradient(circle at 0 0,
             color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 74%)),
         radial-gradient(circle at 100% 0,
             color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 78%)),
-        linear-gradient(90deg,
-            #02030c 0%,
-            #090310 35%,
-            #120706 70%,
-            #1a1207 100%);
+        linear-gradient(90deg, #02030c 0%, #090310 35%, #120706 70%, #1a1207 100%);
 
-    box-shadow:
-        0 18px 50px rgba(0, 0, 0, 0.9),
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.9),
         0 0 0 1px rgba(255, 255, 255, 0.04);
 
     opacity: 0.97;
@@ -218,18 +194,18 @@
     z-index: 1;
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.3rem;
+    min-width: 0;
 }
 
-/* "botão" principal (agora aplicado também ao NavLink) */
+/* link principal */
 .navButton {
     position: relative;
     z-index: 1;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
 
-    padding-inline: 0.1rem;
+    padding-inline: 0.15rem;
     padding-block: 0.2rem;
 
     border: none;
@@ -237,15 +213,14 @@
     cursor: pointer;
 
     color: var(--sl-platinum-010, #f9fafb);
-    font-size: clamp(0.85rem, 0.8rem + 0.3vw, 0.98rem);
+    font-size: clamp(0.82rem, 0.76rem + 0.24vw, 0.95rem);
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: none;
 
     opacity: 0.86;
-    transition:
-        opacity 0.18s ease,
-        transform 0.18s ease;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    min-width: 0;
 }
 
 .navButton::after {
@@ -260,9 +235,7 @@
     transform-origin: center;
     transform: scaleX(0);
     opacity: 0;
-    transition:
-        transform 0.18s ease,
-        opacity 0.18s ease;
+    transition: transform 0.18s ease, opacity 0.18s ease;
 }
 
 .navButton:hover,
@@ -284,25 +257,30 @@
     opacity: 1;
 }
 
-/* NavLink específico */
 .navLink {
     text-decoration: none;
     color: inherit;
 }
 
-/* se quiseres um estado ativo real por rota (opcional) */
 .navLinkActive {
     opacity: 1;
 }
 
-/* toggle (zona clicável do chevron) */
+/* ✅ desktop: não partir linha */
+.navButton span {
+    white-space: nowrap;
+    min-width: 0;
+}
+
+/* toggle do chevron */
 .navToggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     background: transparent;
     border: 0;
-    padding: 0.25rem 0.35rem;
+
+    padding: 0.25rem 0.3rem;
     cursor: pointer;
     opacity: 0.92;
     transition: opacity 0.18s ease, transform 0.18s ease;
@@ -318,21 +296,95 @@
     opacity: 1;
 }
 
-/* chevron pequeno dourado */
 .chevron {
     inline-size: 7px;
     block-size: 7px;
     border-right: 2px solid color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 10%);
     border-bottom: 2px solid color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 10%);
     transform: rotate(45deg) translateY(-1px);
-    margin-right: 5px;
+    margin-right: 4px;
+}
+
+/* =========================================================
+   ✅ FIX ESPECÍFICO (1299px → 1181px)
+   ========================================================= */
+
+@media (max-width: 1299px) and (min-width: 1181px) {
+    .navToggle {
+        inline-size: 28px;
+        block-size: 28px;
+        padding: 0;
+    }
+
+    .navButton,
+    .navItemRow {
+        min-width: 0;
+    }
+
+    .navButton span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+/* =========================
+   Drawer submenu (inline)
+   ========================= */
+
+.drawerSubmenu {
+    display: none;
+    width: 100%;
+    padding: 0.35rem 0 0.6rem;
+}
+
+.drawerSubmenuOpen {
+    display: block;
+}
+
+.drawerSubmenuList {
+    list-style: none;
+    margin: 0;
+    padding: 0.15rem 0 0;
+}
+
+.drawerSubmenuItem+.drawerSubmenuItem {
+    margin-top: 0.25rem;
+}
+
+.drawerSubmenuItem {
+    cursor: pointer;
+    /* ✅ faz o card parecer clicável */
+}
+
+.drawerSubmenuItem a {
+    display: block;
+    width: 100%;
+
+    padding: 0.42rem 0.7rem;
+    border-radius: 14px;
+
+    color: var(--sl-platinum-010, #f9fafb);
+    text-decoration: none;
+
+    font-size: 0.86rem;
+    opacity: 0.86;
+
+    background: linear-gradient(180deg,
+            rgba(2, 3, 12, 0.55),
+            rgba(1, 1, 6, 0.35));
+    border: 1px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 55%);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+
+    transition: opacity 0.18s ease, transform 0.18s ease, border-color 0.18s ease,
+        box-shadow 0.18s ease, background 0.18s ease;
 }
 
 /* =====================
-   Responsivo (parte NAV)
+   Drawer/Accordion até 1180px (Opção A)
    ===================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1180px) {
     .navTopRow {
         display: flex;
     }
@@ -346,19 +398,21 @@
 
     .navListWrapOpen {
         display: block;
-        max-height: 600px;
+        max-height: 900px;
     }
 
     .navList {
         flex-direction: column;
         align-items: stretch;
         padding-inline: 0.9rem;
-        padding-bottom: 0.6rem;
-        gap: 0.2rem;
+        padding-bottom: 0.7rem;
+        gap: 0.25rem;
     }
 
     .navListItem {
         justify-content: flex-start;
+        align-items: stretch;
+        flex-direction: column;
     }
 
     .navItemRow {
@@ -370,10 +424,84 @@
         justify-content: flex-start;
         width: 100%;
         text-align: left;
-        padding-block: 0.4rem;
+        padding-block: 0.45rem;
+        letter-spacing: 0.06em;
+        font-size: 0.92rem;
+    }
+
+    .navButton span {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
     }
 
     .navToggle {
-        padding: 0.4rem 0.5rem;
+        padding: 0.45rem 0.55rem;
+        inline-size: auto;
+        block-size: auto;
+    }
+
+    /* =========================
+     Hover — itens do menu (drawer)
+     ========================= */
+
+    .navItemRow:hover {
+        background: radial-gradient(circle at 0 0,
+                color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 78%)),
+            linear-gradient(90deg,
+                rgba(2, 3, 12, 0.65) 0%,
+                rgba(18, 7, 6, 0.35) 55%,
+                rgba(2, 3, 12, 0.15) 100%);
+        border-radius: 16px;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55),
+            0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .navItemRow:hover .navButton {
+        opacity: 1;
+        transform: translateX(2px);
+    }
+
+    .navItemRow:hover .chevron {
+        border-right-color: color-mix(in oklab, var(--sl-gold-300, #fde68a), black 5%);
+        border-bottom-color: color-mix(in oklab, var(--sl-gold-300, #fde68a), black 5%);
+    }
+
+    /* =========================
+     Hover — links do submenu (drawer)
+     - funciona mesmo passando o rato no LI
+     ========================= */
+
+    .drawerSubmenuItem:hover a,
+    .drawerSubmenuItem:focus-within a {
+        opacity: 1;
+        transform: translateX(4px);
+
+        background: radial-gradient(circle at 0 0,
+                color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 78%)),
+            radial-gradient(circle at 100% 0, rgba(255, 255, 255, 0.06), transparent 55%),
+            linear-gradient(90deg, #02030c 0%, #090310 35%, #120706 70%, #1a1207 100%);
+
+        border-color: color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 28%);
+
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65),
+            0 0 22px rgba(251, 191, 36, 0.18),
+            0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+}
+
+/* < 640px — drawer mais compacto */
+@media (max-width: 640px) {
+    .navTitle {
+        font-size: 0.86rem;
+    }
+
+    .navButton {
+        font-size: 0.9rem;
+    }
+
+    .drawerSubmenuItem a {
+        font-size: 0.84rem;
+        padding: 0.4rem 0.65rem;
     }
 }

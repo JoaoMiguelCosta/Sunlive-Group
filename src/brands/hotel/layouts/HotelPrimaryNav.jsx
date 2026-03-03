@@ -15,6 +15,7 @@ export default function HotelPrimaryNav() {
   const [openId, setOpenId] = useState(null);
   const [submenuAnchorX, setSubmenuAnchorX] = useState(null);
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isDrawer, setIsDrawer] = useState(false);
 
   const navRootRef = useRef(null);
   const navInnerRef = useRef(null);
@@ -36,6 +37,25 @@ export default function HotelPrimaryNav() {
     closeOverlays: closeAll,
   });
 
+  // ✅ detetar modo drawer (<=1180px)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const mq = window.matchMedia("(max-width: 1180px)");
+    const apply = () => setIsDrawer(Boolean(mq.matches));
+
+    apply();
+
+    // compat: addEventListener vs addListener
+    if (mq.addEventListener) mq.addEventListener("change", apply);
+    else mq.addListener(apply);
+
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", apply);
+      else mq.removeListener(apply);
+    };
+  }, []);
+
   const handleEnterItem = (id) => setOpenId(id);
 
   const handleToggleClick = (id) => {
@@ -43,6 +63,8 @@ export default function HotelPrimaryNav() {
   };
 
   const handleMouseLeave = () => {
+    // ✅ no drawer não faz sentido fechar ao sair com o rato
+    if (isDrawer) return;
     setOpenId(null);
   };
 
@@ -51,6 +73,12 @@ export default function HotelPrimaryNav() {
   // Calcula a posição horizontal do botão ativo (desktop)
   useEffect(() => {
     if (!openId || typeof window === "undefined") {
+      setSubmenuAnchorX(null);
+      return;
+    }
+
+    // ✅ no drawer não usamos submenu absoluto
+    if (isDrawer) {
       setSubmenuAnchorX(null);
       return;
     }
@@ -67,7 +95,7 @@ export default function HotelPrimaryNav() {
 
     const centerInWrap = btnRect.left - wrapRect.left + btnRect.width / 2;
     setSubmenuAnchorX(centerInWrap);
-  }, [openId]);
+  }, [openId, isDrawer]);
 
   const handlePrimaryNavClick = (e, to) => {
     // Se vier hash, delega para o smart anchor (offset + smooth + close)
@@ -80,6 +108,11 @@ export default function HotelPrimaryNav() {
     closeAll();
   };
 
+  const handleDrawerSubLinkClick = (e, href) => {
+    handleSmartAnchorClick?.(e, href);
+    // closeAll já é chamado pelo hook via closeOverlays
+  };
+
   return (
     <nav
       ref={navRootRef}
@@ -88,7 +121,7 @@ export default function HotelPrimaryNav() {
       onMouseLeave={handleMouseLeave}
     >
       <div className={navStyles.navInner} ref={navInnerRef}>
-        {/* Barra topo (só aparece em mobile) */}
+        {/* Barra topo (drawer) */}
         <div className={navStyles.navTopRow}>
           <span className={navStyles.navTitle}>Explorar Estalagem</span>
 
@@ -113,65 +146,99 @@ export default function HotelPrimaryNav() {
           }`}
         >
           <ul className={navStyles.navList}>
-            {NAV_ITEMS.map((item) => (
-              <li
-                key={item.id}
-                className={`${navStyles.navListItem} ${
-                  openId === item.id ? navStyles.navListItemActive : ""
-                }`}
-              >
-                {/* linha: Link (navega) + Toggle (abre submenu) */}
-                <div className={navStyles.navItemRow}>
-                  <NavLink
-                    to={item.to}
-                    className={({ isActive }) =>
-                      [
-                        navStyles.navButton,
-                        navStyles.navLink,
-                        isActive ? navStyles.navLinkActive : "",
-                        openId === item.id ? navStyles.navButtonActive : "",
-                      ]
-                        .filter(Boolean)
-                        .join(" ")
-                    }
-                    onMouseEnter={() => handleEnterItem(item.id)}
-                    onFocus={() => handleEnterItem(item.id)}
-                    onClick={(e) => handlePrimaryNavClick(e, item.to)}
-                  >
-                    <span>{item.label}</span>
-                  </NavLink>
+            {NAV_ITEMS.map((item) => {
+              const isOpen = openId === item.id;
 
-                  <button
-                    type="button"
-                    className={`${navStyles.navToggle} ${
-                      openId === item.id ? navStyles.navToggleActive : ""
-                    }`}
-                    aria-label={`Abrir submenu ${item.label}`}
-                    aria-expanded={openId === item.id}
-                    onMouseEnter={() => handleEnterItem(item.id)}
-                    onFocus={() => handleEnterItem(item.id)}
-                    onClick={() => handleToggleClick(item.id)}
-                    ref={(el) => {
-                      buttonRefs.current[item.id] = el;
-                    }}
-                  >
-                    <span className={navStyles.chevron} aria-hidden="true" />
-                  </button>
-                </div>
-              </li>
-            ))}
+              return (
+                <li
+                  key={item.id}
+                  className={`${navStyles.navListItem} ${
+                    isOpen ? navStyles.navListItemActive : ""
+                  }`}
+                >
+                  {/* linha: Link (navega) + Toggle (abre submenu) */}
+                  <div className={navStyles.navItemRow}>
+                    <NavLink
+                      to={item.to}
+                      className={({ isActive }) =>
+                        [
+                          navStyles.navButton,
+                          navStyles.navLink,
+                          isActive ? navStyles.navLinkActive : "",
+                          isOpen ? navStyles.navButtonActive : "",
+                        ]
+                          .filter(Boolean)
+                          .join(" ")
+                      }
+                      onMouseEnter={() => !isDrawer && handleEnterItem(item.id)}
+                      onFocus={() => handleEnterItem(item.id)}
+                      onClick={(e) => handlePrimaryNavClick(e, item.to)}
+                    >
+                      <span>{item.label}</span>
+                    </NavLink>
+
+                    <button
+                      type="button"
+                      className={`${navStyles.navToggle} ${
+                        isOpen ? navStyles.navToggleActive : ""
+                      }`}
+                      aria-label={`Abrir submenu ${item.label}`}
+                      aria-expanded={isOpen}
+                      onMouseEnter={() => !isDrawer && handleEnterItem(item.id)}
+                      onFocus={() => handleEnterItem(item.id)}
+                      onClick={() => handleToggleClick(item.id)}
+                      ref={(el) => {
+                        buttonRefs.current[item.id] = el;
+                      }}
+                    >
+                      <span className={navStyles.chevron} aria-hidden="true" />
+                    </button>
+                  </div>
+
+                  {/* ✅ Submenu inline (drawer) — abre logo por baixo do item */}
+                  {isDrawer && (
+                    <div
+                      className={`${navStyles.drawerSubmenu} ${
+                        isOpen ? navStyles.drawerSubmenuOpen : ""
+                      }`}
+                      aria-hidden={!isOpen}
+                    >
+                      <ul className={navStyles.drawerSubmenuList}>
+                        {item.links.map((link) => (
+                          <li
+                            key={`${item.id}-${link.href}`}
+                            className={navStyles.drawerSubmenuItem}
+                          >
+                            <a
+                              href={link.href}
+                              onClick={(e) =>
+                                handleDrawerSubLinkClick(e, link.href)
+                              }
+                            >
+                              {link.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
 
-      {/* Submenu separado */}
-      <HotelPrimaryNavSubmenu
-        items={NAV_ITEMS}
-        openId={openId}
-        hasOpen={hasOpen}
-        submenuAnchorX={submenuAnchorX}
-        onAnchorClick={handleSmartAnchorClick}
-      />
+      {/* ✅ Submenu absoluto só em desktop */}
+      {!isDrawer && (
+        <HotelPrimaryNavSubmenu
+          items={NAV_ITEMS}
+          openId={openId}
+          hasOpen={hasOpen}
+          submenuAnchorX={submenuAnchorX}
+          onAnchorClick={handleSmartAnchorClick}
+        />
+      )}
     </nav>
   );
 }

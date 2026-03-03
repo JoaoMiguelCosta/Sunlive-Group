@@ -8,4 +8,5 @@ export const HOTEL_SECTION_PATHS = {
   facilities: `${HOTEL_BASE_PATH}/facilities`,
   events: `${HOTEL_BASE_PATH}/events`,
   information: `${HOTEL_BASE_PATH}/information`,
+  sustainability: `${HOTEL_BASE_PATH}/sustainability`, // ✅ novo
 };

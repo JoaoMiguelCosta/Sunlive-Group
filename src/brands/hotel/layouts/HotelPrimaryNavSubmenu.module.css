@@ -1,5 +1,6 @@
 /* =========================
    Mega-submenu
+   (Opção A: modo drawer/centrado até 1180px)
    ========================= */
 
 .submenuWrap {
@@ -16,9 +17,7 @@
 
     opacity: 0;
     pointer-events: none;
-    transition:
-        opacity 0.22s ease,
-        transform 0.22s ease;
+    transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
 .submenuVisible {
@@ -40,8 +39,7 @@
     justify-content: flex-start;
 }
 
-/* 6 colunas (desktop base) */
-
+/* base */
 .columnCard {
     flex: 0 0 calc((100% - 5 * var(--column-gap)) / 6);
     min-width: 0;
@@ -53,25 +51,19 @@
     padding: 1.05rem 1.25rem 1.25rem;
     border-radius: 26px;
 
-    background:
-        radial-gradient(circle at 0 100%,
+    background: radial-gradient(circle at 0 100%,
             color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 74%)),
-        radial-gradient(circle at 100% 0,
-            color-mix(in oklab, #020617, transparent 10%)),
+        radial-gradient(circle at 100% 0, color-mix(in oklab, #020617, transparent 10%)),
         linear-gradient(to bottom, #02030c 0%, #010109 52%, #010106 100%);
 
     border: 1px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 48%);
 
-    box-shadow:
-        0 22px 55px rgba(0, 0, 0, 0.95),
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.95),
         0 0 0 1px rgba(255, 255, 255, 0.02);
 
     opacity: 0.88;
     transform: translateY(4px);
-    transition:
-        opacity 0.22s ease,
-        transform 0.22s ease,
-        box-shadow 0.22s ease,
+    transition: opacity 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease,
         border-color 0.22s ease;
 }
 
@@ -79,8 +71,7 @@
     opacity: 1;
     transform: translateY(0);
     border-color: color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 22%);
-    box-shadow:
-        0 26px 70px rgba(0, 0, 0, 1),
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 1),
         0 0 0 1px color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 36%);
 }
 
@@ -105,10 +96,8 @@
     text-decoration: none;
     opacity: 0.85;
     white-space: nowrap;
-    transition:
-        opacity 0.18s ease,
-        transform 0.18s ease,
-        color 0.18s ease;
+    transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease,
+        box-shadow 0.18s ease, background 0.18s ease;
 }
 
 .linkItem a::before {
@@ -126,10 +115,7 @@
 
     opacity: 0.9;
     pointer-events: none;
-    transition:
-        transform 0.18s ease,
-        opacity 0.18s ease,
-        border-color 0.18s ease;
+    transition: transform 0.18s ease, opacity 0.18s ease, border-color 0.18s ease;
 }
 
 .linkItem a:hover,
@@ -140,19 +126,13 @@
             var(--sl-gold-300, #fde68a),
             var(--sl-platinum-010, #f9fafb) 30%);
 
-    background:
-        radial-gradient(circle at 0 0,
+    background: radial-gradient(circle at 0 0,
             color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 74%)),
         radial-gradient(circle at 100% 0,
             color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 78%)),
-        linear-gradient(90deg,
-            #02030c 0%,
-            #090310 35%,
-            #120706 70%,
-            #1a1207 100%);
+        linear-gradient(90deg, #02030c 0%, #090310 35%, #120706 70%, #1a1207 100%);
 
-    box-shadow:
-        0 18px 50px rgba(0, 0, 0, 0.9),
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.9),
         0 0 0 1px rgba(255, 255, 255, 0.04);
 
     border-radius: 999px;
@@ -165,10 +145,6 @@
     transform: translateY(-50%) translateX(2px) rotate(-45deg);
     border-color: color-mix(in oklab, var(--sl-gold-300, #fde68a), black 10%);
 }
-
-/* =====================
-   Responsivo (submenu)
-   ===================== */
 
 /* < 1360px — 1 cartão ancorado ao botão */
 @media (max-width: 1360px) {
@@ -208,9 +184,8 @@
     }
 }
 
-/* ≤ 900px — submenu centrado/cartão único */
-@media (max-width: 900px) {
-
+/* ✅ Até 1180px — submenu centrado/cartão único (acompanha o drawer) */
+@media (max-width: 1180px) {
     .submenuWrap {
         inline-size: calc(min(var(--sl-container-lg, 1360px), 100%) - 2 * var(--line-inset));
         left: 50%;

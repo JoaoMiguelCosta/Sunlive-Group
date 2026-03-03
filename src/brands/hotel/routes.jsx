@@ -8,6 +8,7 @@ import AccommodationPageHotel from "./pages/Accommodation/index.jsx";
 import DiningPageHotel from "./pages/Dining/index.jsx";
 import FacilitiesLeisurePageHotel from "./pages/FacilitiesLeisure/index.jsx";
 import EventsPageHotel from "./pages/Events/index.jsx";
+import SustainabilityPageHotel from "./pages/Sustainability/index.jsx";
 import InformationPageHotel from "./pages/Information/index.jsx";
 
 export const hotelRoutes = [
@@ -20,6 +21,7 @@ export const hotelRoutes = [
     <Route path="dining" element={<DiningPageHotel />} />
     <Route path="facilities" element={<FacilitiesLeisurePageHotel />} />
     <Route path="events" element={<EventsPageHotel />} />
+    <Route path="sustainability" element={<SustainabilityPageHotel />} />
     <Route path="information" element={<InformationPageHotel />} />
 
     {/* Fallback */}

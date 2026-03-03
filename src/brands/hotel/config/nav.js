@@ -1,3 +1,4 @@
+// src/brands/hotel/config/nav.js
 import { withSocialIcons } from "../../../shared/config/BrandDefault.jsx";
 import { HOTEL_SECTION_PATHS } from "./paths.js";
 
@@ -35,14 +36,13 @@ export const HOTEL_QUICK_LINKS = [
     label: "Instalações & Lazer",
     href: HOTEL_SECTION_PATHS.facilities,
   },
-
   { key: "events", label: "Eventos", href: HOTEL_SECTION_PATHS.events },
 
-  // página fora do hotel (vai existir)
+  // ✅ agora é página do hotel (não fora)
   {
     key: "sustainability",
     label: "Sustentabilidade",
-    href: "/sunlive-group/sustainability",
+    href: HOTEL_SECTION_PATHS.sustainability,
   },
 
   {
@@ -177,6 +177,28 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
       },
     ],
   },
+
+  // ✅ NOVO — no sítio certo (Eventos → Sustentabilidade → Informações)
+  {
+    id: "sustainability",
+    label: "Sustentabilidade",
+    to: HOTEL_SECTION_PATHS.sustainability,
+    links: [
+      {
+        label: "Como pode participar",
+        href: `${HOTEL_SECTION_PATHS.sustainability}#sustentabilidade-participar`,
+      },
+      {
+        label: "O nosso impacto ambiental",
+        href: `${HOTEL_SECTION_PATHS.sustainability}#sustentabilidade-impacto`,
+      },
+      {
+        label: "Objetivos futuros",
+        href: `${HOTEL_SECTION_PATHS.sustainability}#sustentabilidade-objetivos`,
+      },
+    ],
+  },
+
   {
     id: "information",
     label: "Informações",
