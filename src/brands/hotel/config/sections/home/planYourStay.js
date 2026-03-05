@@ -1,4 +1,4 @@
-import { ICONS } from "../../../../../shared/config/BrandDefault.jsx";
+import { ICONS } from "../../../../../shared/config/BrandDefault.js";
 
 export const planYourStay = {
   id: "hotel-plan-your-stay",

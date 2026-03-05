@@ -2,7 +2,7 @@
 import styles from "./LeisureBenefitsGrid.module.css";
 
 import LeisureExperienceCard from "../../../shared/ui/LeisureExperienceCard/LeisureExperienceCard.jsx";
-import { ICONS } from "../../../../../shared/config/BrandDefault.jsx";
+import { ICONS } from "../../../../../shared/config/BrandDefault.js";
 
 const CARD_ICONS = {
   heart: ICONS.HeartIcon,

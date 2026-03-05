@@ -1,5 +1,5 @@
 // src/brands/travel/config/flags.js
-import { FLAGS } from "../../../shared/config/BrandDefault.jsx";
+import { FLAGS } from "../../../shared/config/BrandDefault.js";
 
 export const travelFlags = {
   malta: FLAGS.malta,

@@ -4,7 +4,7 @@ import {
   makePoliciesBar,
   unitsToFooterGeneric,
   countriesToFooterGeneric,
-} from "../../../shared/config/BrandDefault.jsx";
+} from "../../../shared/config/BrandDefault.js";
 
 import acknowledgementsImg from "../../../shared/assets/acknowledgementsImg.png";
 

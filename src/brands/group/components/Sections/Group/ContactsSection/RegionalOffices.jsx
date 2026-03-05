@@ -1,7 +1,7 @@
 import styles from "./ContactsGrid.module.css";
 import OfficeItem from "./OfficeItem.jsx";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
-import useOpenFromHash from "../../../../../../shared/hooks/useOpenFromHash.js";
+import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
 // ✅ Novo: Ícones vindos do novo config (pages/home.js)
 import { groupHomePage } from "../../../../config/pages/home.js";

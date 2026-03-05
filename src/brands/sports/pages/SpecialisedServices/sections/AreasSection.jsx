@@ -1,7 +1,7 @@
 // src/brands/sports/pages/SpecialisedServices/sections/AreasSection.jsx
 import styles from "./AreasSection.module.css";
 import SpecialistServiceCard from "../../../shared/ui/SpecialistServiceCard/SpecialistServiceCard.jsx";
-import { ICONS } from "../../../../../shared/config/BrandDefault.jsx";
+import { ICONS } from "../../../../../shared/config/BrandDefault.js";
 
 const CARD_ICONS = {
   apple: ICONS.AppleIcon,

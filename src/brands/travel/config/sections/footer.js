@@ -4,7 +4,7 @@ import {
   makePoliciesBar,
   withSocialIcons,
   FLAGS,
-} from "../../../../shared/config/BrandDefault.jsx";
+} from "../../../../shared/config/BrandDefault.js";
 
 import travelIcons from "../icons.js";
 

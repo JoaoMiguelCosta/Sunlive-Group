@@ -1,6 +1,6 @@
 import styles from "./GroupHub.module.css";
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
-import useOpenFromHash from "../../../../../../shared/hooks/useOpenFromHash.js";
+import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
 // ✅ Novo: contacts vêm do novo config (pages/home.js)
 import { groupHomePage } from "../../../../config/pages/home.js";

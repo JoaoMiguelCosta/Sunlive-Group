@@ -2,7 +2,7 @@ import styles from "./DestinationsBrowser.module.css";
 import DestinationCard from "../../shared/ui/DestinationCard/index.jsx";
 import travelBrand from "../../config/index.js";
 
-import { useTabsFilter } from "../../../../shared/hooks/useTabsFilter.js";
+import { useTabsFilter } from "../../shared/hooks/useTabsFilter.js";
 import { normalizeDestinations } from "../../../../shared/utils/normalizeDestinations.js";
 
 // Grupos fixos

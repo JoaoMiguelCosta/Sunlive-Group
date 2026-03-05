@@ -7,7 +7,7 @@ import HotelPrimaryNav from "./HotelPrimaryNav.jsx";
 import ScrollToTopOnRouteChange from "./ScrollToTopOnRouteChange.jsx";
 
 import hotelBrand, { HOTEL_BASE_PATH } from "../config";
-import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
+import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.js";
 
 import styles from "./HotelShell.module.css";
 

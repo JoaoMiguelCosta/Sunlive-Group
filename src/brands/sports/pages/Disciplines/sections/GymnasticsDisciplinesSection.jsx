@@ -3,7 +3,7 @@ import styles from "./GymnasticsDisciplinesSection.module.css";
 
 import SportsDisciplineCard from "../../../shared/ui/SportsDisciplineCard/SportsDisciplineCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
-import { ICONS } from "../../../../../shared/config/BrandDefault.jsx";
+import { ICONS } from "../../../../../shared/config/BrandDefault.js";
 
 // ícone por defeito do header (workflow)
 const HEADER_DEFAULT_ICON = ICONS.WorkflowIcon;
@@ -31,7 +31,7 @@ export default function GymnasticsDisciplinesSection({
   // Acordeão (um único painel)
   const accordionItems = useMemo(
     () => [{ key: "gymnastics-disciplines", defaultOpen: true }],
-    []
+    [],
   );
 
   const { isOpen, toggle } = useAccordion(accordionItems, {

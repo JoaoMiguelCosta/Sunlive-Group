@@ -4,7 +4,7 @@ import {
   makeFooterInfoHeader,
   makeAcknowledgements,
   ICONS,
-} from "../../../../../shared/config/BrandDefault.jsx";
+} from "../../../../../shared/config/BrandDefault.js";
 
 import { SPORTS_SOCIALS } from "../../header.js";
 import { SPORTS_QUICKLINKS, SPORTS_COLLABS } from "../../nav.js";

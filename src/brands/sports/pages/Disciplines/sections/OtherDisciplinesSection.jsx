@@ -1,6 +1,6 @@
 // src/brands/sports/pages/Disciplines/OtherDisciplinesSection.jsx
 import styles from "./OtherDisciplinesSection.module.css";
-import { ICONS } from "../../../../../shared/config/BrandDefault.jsx";
+import { ICONS } from "../../../../../shared/config/BrandDefault.js";
 
 /**
  * Outras Modalidades — bloco compacto em “escadinha”

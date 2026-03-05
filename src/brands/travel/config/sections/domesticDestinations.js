@@ -1,5 +1,5 @@
 // src/brands/travel/config/sections/domesticDestinations.js
-import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.jsx";
+import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
 
 import aveiroImg from "../../assets/DomesticDestinations/aveiro.png";
 import portoImg from "../../assets/DomesticDestinations/porto.png";

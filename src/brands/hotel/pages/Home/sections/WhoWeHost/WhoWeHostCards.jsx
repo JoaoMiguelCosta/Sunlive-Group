@@ -1,4 +1,4 @@
-import { ICONS } from "../../../../../../shared/config/BrandDefault.jsx";
+import { ICONS } from "../../../../../../shared/config/BrandDefault.js";
 import HotelWhoWeHostCard from "../../../../shared/ui/HotelWhoWeHostCard/HotelWhoWeHostCard.jsx";
 import styles from "./WhoWeHostCards.module.css";
 

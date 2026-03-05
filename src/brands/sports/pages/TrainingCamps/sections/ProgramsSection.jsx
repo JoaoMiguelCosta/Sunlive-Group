@@ -1,8 +1,7 @@
 // src/brands/sports/pages/TrainingCamps/sections/ProgramsSection.jsx
 import styles from "./ProgramsSection.module.css";
 import ProgramDetailSection from "../../../shared/ui/ProgramDetailSection/ProgramDetailSection.jsx";
-
-import { ICONS } from "../../../../../shared/config/BrandDefault.jsx";
+import { ICONS } from "../../../../../shared/config/BrandDefault.js";
 
 const PROGRAM_ICONS = {
   trophy: ICONS.MedalIcon,

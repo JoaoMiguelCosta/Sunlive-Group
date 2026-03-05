@@ -1,5 +1,5 @@
 // src/brands/travel/config/index.js
-import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
+import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.js";
 
 import travelHeader from "./header.js";
 import travelIcons from "./icons.js";

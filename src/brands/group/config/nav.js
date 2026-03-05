@@ -1,4 +1,4 @@
-import { withSocialIcons } from "../../../shared/config/BrandDefault.jsx";
+import { withSocialIcons } from "../../../shared/config/BrandDefault.js";
 import { GROUP_LOGOS_PATH } from "./paths.js";
 
 export const PARTNERS_TITLE = "Our Network of Partners";

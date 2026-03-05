@@ -2,7 +2,7 @@
 import styles from "./AcademiesCardsSection.module.css";
 
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
-import useStaggeredInView from "../../../../../shared/hooks/useStaggeredInView.js";
+import useStaggeredInView from "../../../shared/hooks/useStaggeredInView.js";
 
 export default function AcademiesCardsSection({ data }) {
   const cards = data?.cards ?? [];

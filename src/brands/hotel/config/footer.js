@@ -3,7 +3,7 @@ import {
   makePoliciesBar,
   makeAcknowledgements,
   ICONS,
-} from "../../../shared/config/BrandDefault.jsx";
+} from "../../../shared/config/BrandDefault.js";
 
 import { HOTEL_BASE_PATH } from "./paths.js";
 import { HOTEL_QUICK_LINKS, HOTEL_SOCIALS } from "./nav.js";

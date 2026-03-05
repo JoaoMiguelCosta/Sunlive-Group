@@ -1,5 +1,5 @@
 // src/brands/travel/config/sections/travelPartners.js
-import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.jsx";
+import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
 
 import portugalissimoImg from "../../assets/TravelPartners/portugalissimo.png";
 import vagoImg from "../../assets/TravelPartners/vago.png";

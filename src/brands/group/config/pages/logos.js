@@ -1,4 +1,4 @@
-import { makeBackLink } from "../../../../shared/config/BrandDefault.jsx";
+import { makeBackLink } from "../../../../shared/config/BrandDefault.js";
 
 import {
   committees,

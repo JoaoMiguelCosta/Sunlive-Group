@@ -1,7 +1,7 @@
 import {
   LANG_DEFAULT,
   makeBackLink,
-} from "../../../shared/config/BrandDefault.jsx";
+} from "../../../shared/config/BrandDefault.js";
 
 import { HOTEL_BASE_PATH, HOTEL_SECTION_PATHS } from "./paths.js";
 import {

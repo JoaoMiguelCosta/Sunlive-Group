@@ -2,7 +2,7 @@
 import styles from "./CyclingHighlightSection.module.css";
 
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
-import { ICONS } from "../../../../../shared/config/BrandDefault.jsx";
+import { ICONS } from "../../../../../shared/config/BrandDefault.js";
 
 // mapa de iconKeys para componentes
 const HIGHLIGHT_ICONS = {
@@ -39,7 +39,7 @@ export default function CyclingHighlightSection({ data }) {
       <div id={panelId} className={styles.panelBody}>
         <div className={styles.inner}>
           <SportsAcademyCard
-            icon={HighlightIcon}        
+            icon={HighlightIcon}
             title={title}
             description={description}
             instagramHref={instagramHref}

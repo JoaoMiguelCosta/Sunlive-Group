@@ -3,7 +3,7 @@ import styles from "./CyclingProjectsSection.module.css";
 
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
-import { ICONS } from "../../../../../shared/config/BrandDefault.jsx";
+import { ICONS } from "../../../../../shared/config/BrandDefault.js";
 
 const PANEL_ICONS = {
   "aero-edge": ICONS.ChartFrameIcon,
@@ -22,7 +22,7 @@ export default function CyclingProjectsSection({ data, icon = null }) {
   // acordeão de um só painel
   const accordionItems = useMemo(
     () => [{ key: "cycling-projects", defaultOpen: true }],
-    []
+    [],
   );
 
   const { isOpen, toggle } = useAccordion(accordionItems, {

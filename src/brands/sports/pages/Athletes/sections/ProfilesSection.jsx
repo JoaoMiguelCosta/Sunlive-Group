@@ -2,7 +2,7 @@
 import styles from "./ProfilesSection.module.css";
 
 import AthleteProfileCard from "../../../shared/ui/AthleteProfileCard/AthleteProfileCard.jsx";
-import useHoverLift from "../../../../../shared/hooks/useHoverLift.js";
+import useHoverLift from "../../../shared/hooks/useHoverLift.js";
 
 function ProfileItem({ athlete }) {
   const { ref, isHovered } = useHoverLift();

@@ -3,7 +3,7 @@ import {
   LANG_DEFAULT,
   makeBackLink,
   withSocialIcons,
-} from "../../../shared/config/BrandDefault.jsx";
+} from "../../../shared/config/BrandDefault.js";
 
 /* ===== Redes sociais (Sports) ===== */
 export const SPORTS_SOCIALS = withSocialIcons([

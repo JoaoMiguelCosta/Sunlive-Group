@@ -1,4 +1,4 @@
-import { LANG_DEFAULT } from "../../../../../shared/config/BrandDefault.jsx";
+import { LANG_DEFAULT } from "../../../../../shared/config/BrandDefault.js";
 import { GROUP_SOCIALS } from "../../nav.js";
 
 /* ---------- Assets Overview ---------- */

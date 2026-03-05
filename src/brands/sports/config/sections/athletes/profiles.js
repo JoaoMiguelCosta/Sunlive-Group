@@ -1,5 +1,5 @@
 // src/brands/sports/config/sections/athletes/profiles.js
-import { FLAGS } from "../../../../../shared/config/BrandDefault.jsx";
+import { FLAGS } from "../../../../../shared/config/BrandDefault.js";
 
 const { portugal: PortugalFlag } = FLAGS;
 

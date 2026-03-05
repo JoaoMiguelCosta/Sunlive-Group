@@ -3,7 +3,7 @@ import {
   FLAGS,
   makeBusinessUnits,
   DEFAULT_GROUP_CONTACTS,
-} from "../../../../../shared/config/BrandDefault.jsx";
+} from "../../../../../shared/config/BrandDefault.js";
 
 export const contacts = {
   id: "contacts",

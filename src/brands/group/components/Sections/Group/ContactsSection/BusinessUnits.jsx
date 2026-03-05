@@ -1,6 +1,6 @@
 import styles from "./ContactsGrid.module.css";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
-import useOpenFromHash from "../../../../../../shared/hooks/useOpenFromHash.js";
+import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
 // ✅ Novo: contacts vêm do novo config (pages/home.js)
 import { groupHomePage } from "../../../../config/pages/home.js";

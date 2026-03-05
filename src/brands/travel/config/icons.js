@@ -1,5 +1,5 @@
 // src/brands/travel/config/icons.js
-import { ICONS } from "../../../shared/config/BrandDefault.jsx";
+import { ICONS } from "../../../shared/config/BrandDefault.js";
 
 export const travelIcons = {
   plane: ICONS.PlaneIcon,

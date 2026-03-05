@@ -6,7 +6,7 @@ import styles from "./HotelHeroBanner.module.css";
 import {
   ICONS,
   BUSINESS_UNIT_CONTACTS_DEFAULT,
-} from "../../../../../../shared/config/BrandDefault.jsx";
+} from "../../../../../../shared/config/BrandDefault.js";
 
 const PhoneIcon = ICONS.PhoneIcon;
 const HOTEL_PHONE = BUSINESS_UNIT_CONTACTS_DEFAULT.hotel?.phone ?? "";

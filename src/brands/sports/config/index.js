@@ -1,5 +1,5 @@
 // src/brands/sports/config/index.js
-import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.jsx";
+import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.js";
 
 import header from "./header.js";
 import { SPORTS_BASE_PATH, SPORTS_PAGE_PATHS } from "./paths.js";

@@ -1,5 +1,5 @@
 // src/brands/hotel/config/nav.js
-import { withSocialIcons } from "../../../shared/config/BrandDefault.jsx";
+import { withSocialIcons } from "../../../shared/config/BrandDefault.js";
 import { HOTEL_SECTION_PATHS } from "./paths.js";
 
 /* ===== Socials (Hotel) ===== */
@@ -129,7 +129,6 @@ export const HOTEL_PRIMARY_NAV_ITEMS = [
     label: "Instalações & Lazer",
     to: HOTEL_SECTION_PATHS.facilities,
     links: [
-      
       {
         label: "Bem-estar e Lazer",
         href: `${HOTEL_SECTION_PATHS.facilities}#facilities-wellbeing`,

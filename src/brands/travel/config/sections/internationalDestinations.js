@@ -1,5 +1,5 @@
 // src/brands/travel/config/sections/internationalDestinations.js
-import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.jsx";
+import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
 
 import maltaImg from "../../assets/InternationalDestinations/malta.png";
 import qatarImg from "../../assets/InternationalDestinations/catar.png";

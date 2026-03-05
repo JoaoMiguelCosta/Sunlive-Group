@@ -1,5 +1,5 @@
 // src/brands/travel/config/sections/contactCTA.js
-import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.jsx";
+import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
 
 const BRAND_TITLE = "Sunlive Travel";
 

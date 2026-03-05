@@ -1,4 +1,4 @@
-import { makeBook } from "../../../../../shared/config/BrandDefault.jsx";
+import { makeBook } from "../../../../../shared/config/BrandDefault.js";
 
 export const book = makeBook({
   label: "Open Book Sunlive Group",

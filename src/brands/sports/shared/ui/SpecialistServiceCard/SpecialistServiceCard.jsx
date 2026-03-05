@@ -1,7 +1,7 @@
 // src/shared/components/Sports/SpecialistServiceCard/SpecialistServiceCard.jsx
 import { useMemo } from "react";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
-import useFlipOnToggle from "../../../../../shared/hooks/useFlipOnToggle.js";
+import useFlipOnToggle from "../../../shared/hooks/useFlipOnToggle.js";
 import styles from "./SpecialistServiceCard.module.css";
 
 export default function SpecialistServiceCard({
