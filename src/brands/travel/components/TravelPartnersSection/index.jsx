@@ -2,7 +2,7 @@ import styles from "./TavelPartnersSection.module.css";
 import TravelPartnersCardsGrid from "./TravelPartnersCardsGrid.jsx";
 import TrustedCollaborationBanner from "./TrustedCollaborationBanner.jsx";
 
-import travelBrand from "../../config/index.js";
+import travelBrand from "../../config/registry/index.js";
 
 export default function TravelPartnersSection({ className = "" }) {
   const cfg = travelBrand?.sections?.travelPartners;

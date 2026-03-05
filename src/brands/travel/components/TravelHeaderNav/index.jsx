@@ -5,7 +5,7 @@ import HeaderShell from "./HeaderShell.jsx";
 
 import PrimaryNav from "./PrimaryNav.jsx";
 import CTAButton from "./CTAButton.jsx";
-import travelBrand from "../../config/index.js";
+import travelBrand from "../../config/registry/index.js";
 
 export default function TravelHeaderNav() {
   const header = travelBrand?.header || {};

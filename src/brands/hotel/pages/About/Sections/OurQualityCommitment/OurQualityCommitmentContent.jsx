@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand from "../../../../config/registry/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import styles from "./OurQualityCommitmentContent.module.css";
 

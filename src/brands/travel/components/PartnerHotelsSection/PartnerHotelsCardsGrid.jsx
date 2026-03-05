@@ -1,6 +1,6 @@
 import styles from "./PartnerHotelsCardsGrid.module.css";
 import DestinationCard from "../../shared/ui/DestinationCard/index.jsx";
-import travelBrand from "../../config/index.js";
+import travelBrand from "../../config/registry/index.js";
 
 export default function PartnerHotelsCardsGrid() {
   const hotels = travelBrand?.sections?.partnerHotels?.hotels ?? [];

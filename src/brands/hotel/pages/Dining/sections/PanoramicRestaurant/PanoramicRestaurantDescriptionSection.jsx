@@ -1,5 +1,5 @@
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand from "../../../../config/registry/index.js";
 
 const splitParagraphs = (text) =>
   String(text)

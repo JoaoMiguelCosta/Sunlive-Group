@@ -1,5 +1,5 @@
 // src/brands/hotel/components/Home/PlanYourStay/index.jsx
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand from "../../../../config/registry/index.js";
 import styles from "./PlanYourStay.module.css";
 
 export default function PlanYourStaySection() {

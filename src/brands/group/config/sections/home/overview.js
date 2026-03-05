@@ -1,5 +1,5 @@
 import { LANG_DEFAULT } from "../../../../../shared/config/BrandDefault.js";
-import { GROUP_SOCIALS } from "../../nav.js";
+import { GROUP_SOCIALS } from "../../registry/nav.js";
 
 /* ---------- Assets Overview ---------- */
 import logoGroup from "../../../assets/group/logo/logo-group.png";

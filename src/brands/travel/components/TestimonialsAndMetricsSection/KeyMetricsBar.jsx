@@ -1,5 +1,5 @@
 import styles from "./KeyMetricsBar.module.css";
-import travelBrand from "../../config/index.js";
+import travelBrand from "../../config/registry/index.js";
 
 /**
  * KeyMetricsBar — Barra de KPIs para a secção de Testemunhos

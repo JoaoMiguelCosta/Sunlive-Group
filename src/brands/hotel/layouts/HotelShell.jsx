@@ -6,7 +6,7 @@ import HotelFooter from "../components/FooterHotel";
 import HotelPrimaryNav from "./HotelPrimaryNav.jsx";
 import ScrollToTopOnRouteChange from "./ScrollToTopOnRouteChange.jsx";
 
-import hotelBrand, { HOTEL_BASE_PATH } from "../config";
+import hotelBrand, { HOTEL_BASE_PATH } from "../config/registry/index.js";
 import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.js";
 
 import styles from "./HotelShell.module.css";

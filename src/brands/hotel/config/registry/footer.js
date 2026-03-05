@@ -3,12 +3,12 @@ import {
   makePoliciesBar,
   makeAcknowledgements,
   ICONS,
-} from "../../../shared/config/BrandDefault.js";
+} from "../../../../shared/config/BrandDefault.js";
 
 import { HOTEL_BASE_PATH } from "./paths.js";
 import { HOTEL_QUICK_LINKS, HOTEL_SOCIALS } from "./nav.js";
 
-import acknowledgementsImg from "../../../shared/assets/acknowledgementsImg.png";
+import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
 
 export const hotelFooterSection = {
   footer: {

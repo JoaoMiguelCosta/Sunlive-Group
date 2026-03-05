@@ -8,24 +8,24 @@ export {
   DEFAULT_GROUP_CONTACTS,
   BUSINESS_UNITS_BASE,
   BUSINESS_UNIT_CONTACTS_DEFAULT,
-} from "./brand/constants.js";
+} from "./core/constants.js";
 
-export { makeBusinessUnits, makeFooterContacts } from "./brand/contacts.js";
+export { makeBusinessUnits, makeFooterContacts } from "./core/contacts.js";
 export {
   SOCIAL_ICON_BY_KEY,
   SOCIALS_DEFAULT,
   SOCIALS,
   withSocialIcons,
-} from "./brand/socials.js";
+} from "./core/socials.js";
 export {
   makeFooterInfoHeader,
   makePoliciesBar,
   makeAcknowledgements,
-} from "./brand/footer.js";
+} from "./core/footer.js";
 export {
   unitsToFooterGeneric,
   countriesToFooterGeneric,
-} from "./brand/links.js";
+} from "./core/links.js";
 
 /* ===== Pequenos helpers independentes (podem ficar aqui) ===== */
 export function makeBackLink({

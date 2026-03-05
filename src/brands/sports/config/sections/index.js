@@ -1,4 +1,4 @@
-// src/brands/sports/config/sections/index.js
+// src/brands/sports/sections/index.js
 export * as academies from "./academies/index.js";
 export * as athletes from "./athletes/index.js";
 export * as consultancy from "./consultancy/index.js";
@@ -11,5 +11,3 @@ export * as leisureSportsTourism from "./leisureSportsTourism/index.js";
 export * as logistics from "./logistics/index.js";
 export * as specialisedServices from "./specialisedServices/index.js";
 export * as trainingCamps from "./trainingCamps/index.js";
-
-export { default as footer } from "./footer/footer.js";

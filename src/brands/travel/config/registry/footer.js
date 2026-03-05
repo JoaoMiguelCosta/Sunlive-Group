@@ -3,17 +3,27 @@ import {
   makeFooterInfoHeader,
   makePoliciesBar,
   withSocialIcons,
-  FLAGS,
+  makeAcknowledgements,
 } from "../../../../shared/config/BrandDefault.js";
 
-import travelIcons from "../icons.js";
+import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
+
+import { resolveIcons } from "../../../../shared/config/registry/icons/resolveIcons.js";
+import { BRAND_ICONS } from "../registry/icons.js";
+import { BRAND_FLAGS } from "../registry/flags.js";
+
+const { ICONS, FLAGS } = resolveIcons({
+  brand: "travel",
+  brandIcons: BRAND_ICONS,
+  brandFlags: BRAND_FLAGS,
+});
 
 const travelFooter = {
   id: "footer",
 
   infoHeader: makeFooterInfoHeader("travel", {
     brand: {
-      Icon: travelIcons.travel,
+      Icon: ICONS.TravelVector,
       title: "Sunlive Travel",
       tagline: "Transformando viagens em experiências memoráveis.",
       about:
@@ -158,7 +168,7 @@ const travelFooter = {
     partners: {
       trips: {
         title: "Viagens em colaboração",
-        iconKeys: ["plane", "bus"],
+        iconKeys: ["PlaneIcon", "BusIcon"],
         items: [
           {
             key: "portugalissimo",
@@ -205,7 +215,11 @@ const travelFooter = {
     },
   },
 
-  acknowledgements: undefined,
+  acknowledgements: makeAcknowledgements({
+    src: acknowledgementsImg,
+    alt: "PRR — República Portuguesa — Financiado pela União Europeia (NextGenerationEU)",
+    pdf: "/books/acknowledgements.pdf",
+  }),
 
   policiesBar: makePoliciesBar({
     holder: "Sunlive Travel. Todos os direitos reservados.",

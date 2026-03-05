@@ -1,4 +1,4 @@
-import { PARTNERS_TITLE, PARTNER_LINKS } from "../../nav.js";
+import { PARTNERS_TITLE, PARTNER_LINKS } from "../../registry/nav.js";
 
 export const partners = {
   id: "partners",

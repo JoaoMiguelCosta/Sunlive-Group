@@ -1,7 +1,7 @@
 // src/brands/sports/pages/Disciplines/sections/BasketballProjectsSection.jsx
 import { useMemo } from "react";
 import styles from "./ProjectsSection.module.css";
-import sportsBrand from "../../../config/index.js";
+import sportsBrand from "../../../config/registry/index.js";
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 import { ICONS } from "../../../../../shared/config/BrandDefault.js";

@@ -1,9 +1,9 @@
-// src/brands/sports/config/header.js
+// src/brands/sports/config/registry/header.js
 import {
   LANG_DEFAULT,
   makeBackLink,
   withSocialIcons,
-} from "../../../shared/config/BrandDefault.js";
+} from "../../../../shared/config/BrandDefault.js";
 
 /* ===== Redes sociais (Sports) ===== */
 export const SPORTS_SOCIALS = withSocialIcons([

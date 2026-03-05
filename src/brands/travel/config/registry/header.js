@@ -1,13 +1,13 @@
-// src/brands/travel/config/header.js
+// src/brands/travel/config/registry/header.js
 import {
   IMG_COMMON,
   LANG_DEFAULT,
   withSocialIcons,
   makeBackLink,
-} from "../../../shared/config/BrandDefault.js";
+} from "../../../../shared/config/BrandDefault.js";
 
 import { TRAVEL_BASE_PATH } from "./paths.js";
-import logoTravel from "../assets/LogoSunliveTravel/travel.png";
+import logoTravel from "../../assets/LogoSunliveTravel/travel.png";
 
 export const TRAVEL_SOCIALS = withSocialIcons([
   {

@@ -1,7 +1,7 @@
 // src/brands/sports/pages/Contacts/index.jsx
 import styles from "./Contacts.module.css";
 
-import sportsBrand from "../../config/index.js";
+import sportsBrand from "../../config/registry/index.js";
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import ContactsJourneySection from "./sections/ContactsJourneySection.jsx";
 import ContactCardsSection from "./sections/ContactCardsSection.jsx";

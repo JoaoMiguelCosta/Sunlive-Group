@@ -1,7 +1,7 @@
 // src/brands/sports/pages/Contacts/ContactsJourneySection.jsx
 import styles from "./ContactsJourneySection.module.css";
 
-import sportsBrand from "../../../config/index.js";
+import sportsBrand from "../../../config/registry/index.js";
 
 /**
  * Bloco de compromisso / jornada

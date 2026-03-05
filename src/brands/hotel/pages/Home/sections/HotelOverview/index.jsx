@@ -1,6 +1,6 @@
 import styles from "./HotelOverviewSection.module.css";
 
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand from "../../../../config/registry/index.js";
 import HotelOverviewHeader from "./HotelOverviewHeader.jsx";
 import HotelOverviewContent from "./HotelOverviewContent.jsx";
 

@@ -1,7 +1,7 @@
 // src/brands/sports/pages/Logistics/index.jsx
 import styles from "./Logistics.module.css";
 
-import sportsBrand from "../../config/index.js";
+import sportsBrand from "../../config/registry/index.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";

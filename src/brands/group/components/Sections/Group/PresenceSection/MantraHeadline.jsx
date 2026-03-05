@@ -2,7 +2,7 @@
 import styles from "./MantraHeadline.module.css";
 
 import { groupHomePage } from "../../../../config/pages/home.js";
-import { IMG_COMMON } from "../../../../config/footer.js";
+import { IMG_COMMON } from "../../../../config/registry/footer.js";
 
 export default function MantraHeadline() {
   const src = groupHomePage?.presence?.headlineBottom?.src ?? null;

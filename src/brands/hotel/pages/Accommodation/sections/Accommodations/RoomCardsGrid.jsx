@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand from "../../../../config/registry/index.js";
 
 import HotelRoomCard from "../../../../shared/ui/HotelRoomCard/HotelRoomCard.jsx";
 import RoomProfileFilterBar from "./RoomProfileFilterBar.jsx";

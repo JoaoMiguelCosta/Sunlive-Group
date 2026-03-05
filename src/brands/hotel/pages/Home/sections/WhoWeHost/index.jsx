@@ -1,6 +1,6 @@
 import styles from "./WhoWeHost.module.css";
 
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand from "../../../../config/registry/index.js";
 import WhoWeHostHeader from "./WhoWeHostHeader.jsx";
 import WhoWeHostCards from "./WhoWeHostCards.jsx";
 

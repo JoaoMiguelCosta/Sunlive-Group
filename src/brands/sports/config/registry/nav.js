@@ -1,4 +1,4 @@
-// src/brands/sports/config/nav.js
+// src/brands/sports/config/registry/nav.js
 
 /* ===== Home — Gateway ===== */
 export const SPORTS_GATEWAY = [

@@ -1,4 +1,4 @@
-import { HOTEL_SECTION_PATHS } from "../../paths.js";
+import { HOTEL_SECTION_PATHS } from "../../registry/paths.js";
 
 export const overview = {
   id: "hotel-overview",

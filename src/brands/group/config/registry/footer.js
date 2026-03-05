@@ -4,9 +4,9 @@ import {
   makePoliciesBar,
   unitsToFooterGeneric,
   countriesToFooterGeneric,
-} from "../../../shared/config/BrandDefault.js";
+} from "../../../../shared/config/BrandDefault.js";
 
-import acknowledgementsImg from "../../../shared/assets/acknowledgementsImg.png";
+import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
 
 import { GROUP_SOCIALS, PARTNERS_TITLE, PARTNER_LINKS } from "./nav.js";
 import {

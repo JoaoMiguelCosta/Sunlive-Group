@@ -1,6 +1,6 @@
 // src/brands/sports/pages/Contacts/ContactCardsSection.jsx
 import styles from "./ContactCardsSection.module.css";
-import sportsBrand from "../../../config/index.js";
+import sportsBrand from "../../../config/registry/index.js";
 import { ICONS } from "../../../../../shared/config/BrandDefault.js";
 
 const { MailIcon, PhoneIcon } = ICONS;

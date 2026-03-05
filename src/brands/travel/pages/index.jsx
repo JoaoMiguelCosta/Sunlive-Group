@@ -13,10 +13,10 @@ import ContactCTASection from "../components/ContactCTASection/index.jsx";
 import TravelFooter from "../components/TravelFooter/index.jsx";
 
 // ✅ melhor: resolve para ../brand/index.js automaticamente
-import travelBrand from "../config/index.js";
+import travelBrand from "../config/registry/index.js";
 
 // ✅ mantém (ou migra depois)
-import { footer as groupFooter } from "../config/sections/index.js";
+import { footer as groupFooter } from "../config/registry/index.js";
 
 // ✅ paths corretos para shared (a partir de src/brands/travel/page/)
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";

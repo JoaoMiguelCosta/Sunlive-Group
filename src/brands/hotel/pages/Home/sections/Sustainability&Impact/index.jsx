@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand from "../../../../config/registry/index.js";
 
 import HotelSustainabilityHeader from "./HotelSustainabilityHeader.jsx";
 import HotelSustainabilityStats from "./HotelSustainabilityStats.jsx";

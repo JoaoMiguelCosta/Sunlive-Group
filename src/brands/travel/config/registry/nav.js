@@ -1,4 +1,4 @@
-// src/brands/travel/config/nav.js
+// src/brands/travel/config/registry/nav.js
 export const TRAVEL_NAV = [
   { key: "logistica", label: "Logística", href: "#logistica" },
   {

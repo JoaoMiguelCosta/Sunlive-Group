@@ -1,5 +1,5 @@
-// src/brands/hotel/config/nav.js
-import { withSocialIcons } from "../../../shared/config/BrandDefault.js";
+// src/brands/hotel/config/registry/nav.js
+import { withSocialIcons } from "../../../../shared/config/BrandDefault.js";
 import { HOTEL_SECTION_PATHS } from "./paths.js";
 
 /* ===== Socials (Hotel) ===== */

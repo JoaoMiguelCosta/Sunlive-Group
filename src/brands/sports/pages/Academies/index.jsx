@@ -1,7 +1,7 @@
 // src/brands/sports/pages/Academies/index.jsx
 import styles from "./Academies.module.css";
 
-import sportsBrand from "../../config/index.js";
+import sportsBrand from "../../config/registry/index.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";

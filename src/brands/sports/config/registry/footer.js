@@ -1,15 +1,15 @@
-// src/brands/sports/config/sections/footer/footer.js
+// src/brands/sports/config/registry/footer.js
 import {
   makePoliciesBar,
   makeFooterInfoHeader,
   makeAcknowledgements,
   ICONS,
-} from "../../../../../shared/config/BrandDefault.js";
+} from "../../../../shared/config/BrandDefault.js";
 
-import { SPORTS_SOCIALS } from "../../header.js";
-import { SPORTS_QUICKLINKS, SPORTS_COLLABS } from "../../nav.js";
+import { SPORTS_SOCIALS } from "./header.js";
+import { SPORTS_QUICKLINKS, SPORTS_COLLABS } from "./nav.js";
 
-import acknowledgementsImg from "../../../../../shared/assets/acknowledgementsImg.png";
+import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
 
 const sportsFooter = {
   infoHeader: makeFooterInfoHeader("sports", {

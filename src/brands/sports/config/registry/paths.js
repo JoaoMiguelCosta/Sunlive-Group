@@ -1,4 +1,4 @@
-// src/brands/sports/config/paths.js
+// src/brands/sports/config/registry/paths.js
 export const SPORTS_BASE_PATH = "/sunlive-group/sports";
 
 export const SPORTS_PAGE_PATHS = {
