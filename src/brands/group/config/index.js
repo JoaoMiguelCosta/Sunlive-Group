@@ -1,6 +1,4 @@
-// src/brands/group/config/index.js
-import { groupHomePage } from "./pages/home.js";
-import { groupLogosPage } from "./pages/logos.js";
+import { groupHomePage, groupLogosPage } from "./pages/index.js";
 import { makeGroupFooter } from "./footer.js";
 
 export const groupBrand = {

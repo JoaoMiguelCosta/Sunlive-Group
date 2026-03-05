@@ -1,4 +1,3 @@
-// src/brands/group/config/paths.js
 export const GROUP_BASE_PATH = "/sunlive-group";
 export const GROUP_LOGOS_PATH = "/sunlive-group/logos";
 

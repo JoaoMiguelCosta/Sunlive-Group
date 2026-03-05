@@ -1,4 +1,3 @@
-// src/brands/group/config/footer.js
 import {
   IMG_COMMON,
   makeFooterInfoHeader,
@@ -86,7 +85,7 @@ export function makeGroupFooter({ contacts }) {
         ...IMG_COMMON,
       },
       link: {
-        href: "/books/acknowledgements.pdf", // ✅ corrigido
+        href: "/books/acknowledgements.pdf",
         target: "_blank",
         rel: "noopener",
         ariaLabel: "Abrir Acknowledgements (PDF)",

@@ -1,4 +1,3 @@
-// src/brands/group/config/nav.js
 import { withSocialIcons } from "../../../shared/config/BrandDefault.jsx";
 import { GROUP_LOGOS_PATH } from "./paths.js";
 
