@@ -1,5 +1,5 @@
 import UtilityBar from "../../../shared/components/UtilityBar/index.jsx";
-import BackButton from "../../../shared/ui/BackButton.jsx";
+import BackButton from "../../../shared/ui/BackButton/BackButton.jsx";
 
 import groupLogosPage from "../config/pages/logos.js";
 import { groupHomePage } from "../config/pages/home.js";
