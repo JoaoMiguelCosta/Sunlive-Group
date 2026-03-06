@@ -5,7 +5,7 @@ import {
   makeBackLink,
 } from "../../../../shared/config/BrandDefault.js";
 
-import { resolveIcons } from "../../../../shared/config/registry/icons/resolveIcons.js";
+import { resolveIcons } from "../../../../shared/config/icons/resolveIcons.js";
 
 import { BRAND_ICONS } from "./icons.js";
 import { BRAND_FLAGS } from "./flags.js";

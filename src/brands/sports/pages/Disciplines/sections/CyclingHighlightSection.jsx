@@ -2,11 +2,11 @@
 import styles from "./CyclingHighlightSection.module.css";
 
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+import { BRAND_ICONS } from "../../../config/icons.public.js";
 
 // mapa de iconKeys para componentes
 const HIGHLIGHT_ICONS = {
-  bike: ICONS.BikeIcon,
+  bike: BRAND_ICONS.BikeIcon,
 };
 
 /**

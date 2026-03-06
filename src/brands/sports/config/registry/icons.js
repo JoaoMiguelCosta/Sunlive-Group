@@ -18,13 +18,10 @@ import {
   ConsultingExperienceIcon,
   DreamIcon,
   EyeIcon,
-  FacebookIcon,
   FencingIcon,
-  GlobeIcon,
   GoalIcon,
   GraduationCapIcon,
   HandballIcon,
-  InstagramIcon,
   JudoIcon,
   LuggageIcon,
   MedalIcon,
@@ -46,6 +43,7 @@ import {
 
 /**
  * Exclusivos Sports (1 brand).
+ * NOTA: ícones globais (2+ brands) NÃO entram aqui.
  */
 export const BRAND_ICONS = Object.freeze({
   AppleIcon,
@@ -66,13 +64,10 @@ export const BRAND_ICONS = Object.freeze({
   ConsultingExperienceIcon,
   DreamIcon,
   EyeIcon,
-  FacebookIcon,
   FencingIcon,
-  GlobeIcon,
   GoalIcon,
   GraduationCapIcon,
   HandballIcon,
-  InstagramIcon,
   JudoIcon,
   LuggageIcon,
   MedalIcon,

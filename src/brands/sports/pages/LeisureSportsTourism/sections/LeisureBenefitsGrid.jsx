@@ -2,13 +2,15 @@
 import styles from "./LeisureBenefitsGrid.module.css";
 
 import LeisureExperienceCard from "../../../shared/ui/LeisureExperienceCard/LeisureExperienceCard.jsx";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+
+import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
+import { BRAND_ICONS } from "../../../config/icons.public.js";
 
 const CARD_ICONS = {
-  heart: ICONS.HeartIcon,
-  users: ICONS.UsersIcon,
-  star: ICONS.StarIcon,
-  smile: ICONS.SmileIcon,
+  heart: GLOBAL_ICONS.HeartIcon, // Global
+  users: GLOBAL_ICONS.UsersIcon, // Global
+  star: GLOBAL_ICONS.StarIcon, // Global
+  smile: BRAND_ICONS.SmileIcon, // Sports
 };
 
 export default function LeisureBenefitsGrid({ data, iconSet }) {

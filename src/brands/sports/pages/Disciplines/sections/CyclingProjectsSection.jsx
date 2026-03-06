@@ -3,15 +3,16 @@ import styles from "./CyclingProjectsSection.module.css";
 
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+
+import { BRAND_ICONS } from "../../../config/icons.public.js";
 
 const PANEL_ICONS = {
-  "aero-edge": ICONS.ChartFrameIcon,
-  "training-from-pro": ICONS.MonitorIcon,
+  "aero-edge": BRAND_ICONS.ChartFrameIcon,
+  "training-from-pro": BRAND_ICONS.MonitorIcon,
 };
 
 // ícone por defeito do header
-const HEADER_DEFAULT_ICON = ICONS.ChartIcon;
+const HEADER_DEFAULT_ICON = BRAND_ICONS.ChartIcon;
 
 export default function CyclingProjectsSection({ data, icon = null }) {
   const section = data?.cyclingProjects;
@@ -76,7 +77,9 @@ export default function CyclingProjectsSection({ data, icon = null }) {
             <div className={styles.grid}>
               {items.map((item) => {
                 const CardIcon =
-                  item.icon || (item.iconKey && PANEL_ICONS[item.iconKey]);
+                  item.icon ||
+                  (item.iconKey && PANEL_ICONS[item.iconKey]) ||
+                  null;
 
                 return (
                   <SportsAcademyCard

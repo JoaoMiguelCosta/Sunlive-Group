@@ -3,14 +3,17 @@ import styles from "./LogisticsServicesSection.module.css";
 
 import ServiceFeaturePanel from "../../../shared/ui/ServiceFeaturePanel/ServiceFeaturePanel.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+
+import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
+import { BRAND_ICONS } from "../../../config/icons.public.js";
 
 const PANEL_ICONS = {
-  transport: ICONS.TourBusIcon,
-  plane: ICONS.PlaneIcon,
-  soup: ICONS.SoupIcon,
-  bed: ICONS.BedIcon,
-  shirt: ICONS.ShirtIcon,
+  transport: GLOBAL_ICONS.TourBusIcon, // Global
+  plane: GLOBAL_ICONS.PlaneIcon, // Global
+
+  soup: BRAND_ICONS.SoupIcon, // Sports
+  bed: BRAND_ICONS.BedIcon, // Sports
+  shirt: BRAND_ICONS.ShirtIcon, // Sports
 };
 
 export default function LogisticsServicesSection({ data, iconSet }) {

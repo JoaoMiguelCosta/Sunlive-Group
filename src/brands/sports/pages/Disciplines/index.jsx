@@ -1,7 +1,7 @@
 // src/brands/sports/pages/Disciplines/index.jsx
 import styles from "./Disciplines.module.css";
 
-import sportsBrand from "../../config/registry/index.js";
+import sportsBrand from "../../config/index.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 
@@ -28,6 +28,9 @@ import OtherDisciplinesSection from "./sections/OtherDisciplinesSection.jsx";
 export default function DisciplinesPage() {
   const data = sportsBrand.sections?.disciplines;
   if (!data) return null;
+
+  // ✅ source única para projects (evita cada secção ir buscar ao brand)
+  const academiesData = sportsBrand.sections?.academies;
 
   return (
     <div className={styles.pageWrap} data-brand="sports">
@@ -87,7 +90,7 @@ export default function DisciplinesPage() {
               </section>
 
               <GymnasticsDisciplinesSection data={data} />
-              <GymnasticsProjectsSection data={data} />
+              <GymnasticsProjectsSection data={academiesData} />
             </>
           )}
 
@@ -108,7 +111,7 @@ export default function DisciplinesPage() {
                 />
               </section>
 
-              <FootballProjectsSection />
+              <FootballProjectsSection data={academiesData} />
             </>
           )}
 
@@ -129,7 +132,7 @@ export default function DisciplinesPage() {
                 />
               </section>
 
-              <KarateProjectsSection />
+              <KarateProjectsSection data={academiesData} />
             </>
           )}
 
@@ -150,7 +153,7 @@ export default function DisciplinesPage() {
                 />
               </section>
 
-              <BasketballProjectsSection />
+              <BasketballProjectsSection data={academiesData} />
             </>
           )}
 

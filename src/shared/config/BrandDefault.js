@@ -1,7 +1,5 @@
 // src/shared/config/BrandDefault.js
 export {
-  ICONS,
-  FLAGS,
   LANG_DEFAULT,
   IMG_COMMON,
   POLICIES_LINKS_DEFAULT,
@@ -27,7 +25,7 @@ export {
   countriesToFooterGeneric,
 } from "./core/links.js";
 
-/* ===== Pequenos helpers independentes (podem ficar aqui) ===== */
+/* helpers */
 export function makeBackLink({
   href = "/sunlive-group",
   label = "Voltar Sunlive Group",

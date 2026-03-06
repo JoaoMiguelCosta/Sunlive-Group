@@ -3,15 +3,15 @@ import {
   makePoliciesBar,
   makeFooterInfoHeader,
   makeAcknowledgements,
-  ICONS,
 } from "../../../../shared/config/BrandDefault.js";
 
+import { ICONS } from "./resolvedIcons.js";
 import { SPORTS_SOCIALS } from "./header.js";
 import { SPORTS_QUICKLINKS, SPORTS_COLLABS } from "./nav.js";
 
 import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
 
-const sportsFooter = {
+const footer = {
   infoHeader: makeFooterInfoHeader("sports", {
     brand: {
       Icon: ICONS.MedalIcon,
@@ -51,10 +51,7 @@ const sportsFooter = {
       ],
     },
     partners: {
-      collaborators: {
-        title: "Colaboramos com:",
-        items: SPORTS_COLLABS,
-      },
+      collaborators: { title: "Colaboramos com:", items: SPORTS_COLLABS },
     },
   },
 
@@ -69,4 +66,4 @@ const sportsFooter = {
   }),
 };
 
-export default sportsFooter;
+export default footer;

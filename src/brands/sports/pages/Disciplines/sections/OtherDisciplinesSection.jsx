@@ -1,12 +1,13 @@
 // src/brands/sports/pages/Disciplines/OtherDisciplinesSection.jsx
 import styles from "./OtherDisciplinesSection.module.css";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+
+import { BRAND_ICONS } from "../../../config/icons.public.js";
 
 /**
  * Outras Modalidades — bloco compacto em “escadinha”
  * Andebol, Judo, Esgrima, Voleibol, Surf.
  *
- * Agora com ícones vindos do mapa ICONS.
+ * Agora com ícones vindos do mapa BRAND_ICONS (Sports).
  */
 
 const OTHER_DISCIPLINES = [
@@ -22,7 +23,7 @@ export default function OtherDisciplinesSection() {
   const bottomRow = OTHER_DISCIPLINES.slice(3);
 
   const renderCard = (item) => {
-    const Icon = ICONS[item.iconKey];
+    const Icon = BRAND_ICONS[item.iconKey];
 
     return (
       <div key={item.key} className={styles.card} role="listitem">

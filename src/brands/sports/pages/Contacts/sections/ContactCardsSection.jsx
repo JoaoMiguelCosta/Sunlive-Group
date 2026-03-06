@@ -1,13 +1,12 @@
 // src/brands/sports/pages/Contacts/ContactCardsSection.jsx
 import styles from "./ContactCardsSection.module.css";
-import sportsBrand from "../../../config/registry/index.js";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
 
-const { MailIcon, PhoneIcon } = ICONS;
+import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
 
-export default function ContactCardsSection() {
-  const infoHeader = sportsBrand.sections?.footer?.infoHeader || {};
-  const contacts = infoHeader.contacts || {};
+const { MailIcon, PhoneIcon } = GLOBAL_ICONS;
+
+export default function ContactCardsSection({ data }) {
+  const contacts = data?.contacts || {};
 
   const email = contacts.email || {
     href: "mailto:lucas@sunlive.pt",

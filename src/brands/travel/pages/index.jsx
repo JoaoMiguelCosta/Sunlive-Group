@@ -23,7 +23,7 @@ import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 import { buildFooterData } from "../../../shared/utils/buildFooterData.js";
 
 export default function TravelPage() {
-  useScrollToHash(24);
+useScrollToHash(72);
 
   const rawFooter = travelBrand.sections?.footer ?? {};
   const footerData = buildFooterData(rawFooter, groupFooter, "footer-travel");

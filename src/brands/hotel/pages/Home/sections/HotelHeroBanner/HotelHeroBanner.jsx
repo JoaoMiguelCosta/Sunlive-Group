@@ -2,13 +2,10 @@
 import estalagemLogo from "../../../../assets/estalagem.png";
 import styles from "./HotelHeroBanner.module.css";
 
-// ícones e contactos partilhados
-import {
-  ICONS,
-  BUSINESS_UNIT_CONTACTS_DEFAULT,
-} from "../../../../../../shared/config/BrandDefault.js";
+import { GLOBAL_ICONS } from "../../../../../../shared/config/icons/global.icons.js";
+import { BUSINESS_UNIT_CONTACTS_DEFAULT } from "../../../../../../shared/config/BrandDefault.js";
 
-const PhoneIcon = ICONS.PhoneIcon;
+const PhoneIcon = GLOBAL_ICONS.PhoneIcon;
 const HOTEL_PHONE = BUSINESS_UNIT_CONTACTS_DEFAULT.hotel?.phone ?? "";
 
 function normalizePhone(phone) {

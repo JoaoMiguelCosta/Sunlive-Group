@@ -1,8 +1,9 @@
-import { ICONS } from "./constants.js";
+// src/shared/config/core/socials.js
+import { GLOBAL_ICONS } from "../icons/global.icons.js";
 
 export const SOCIAL_ICON_BY_KEY = Object.freeze({
-  fb: ICONS.FacebookIcon,
-  ig: ICONS.InstagramIcon,
+  fb: GLOBAL_ICONS.FacebookIcon,
+  ig: GLOBAL_ICONS.InstagramIcon,
 });
 
 export const SOCIALS_DEFAULT = Object.freeze([

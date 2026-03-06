@@ -1,7 +1,7 @@
 // src/brands/sports/config/registry/paths.js
 export const SPORTS_BASE_PATH = "/sunlive-group/sports";
 
-export const SPORTS_PAGE_PATHS = {
+export const SPORTS_PAGE_PATHS = Object.freeze({
   home: SPORTS_BASE_PATH,
   trainingCamps: `${SPORTS_BASE_PATH}/training-camps`,
   academies: `${SPORTS_BASE_PATH}/academies`,
@@ -15,6 +15,4 @@ export const SPORTS_PAGE_PATHS = {
   logistics: `${SPORTS_BASE_PATH}/logistics`,
   consultancy: `${SPORTS_BASE_PATH}/consultancy`,
   contacts: `${SPORTS_BASE_PATH}/contacts`,
-};
-
-export default SPORTS_PAGE_PATHS;
+});

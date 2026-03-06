@@ -1,9 +1,11 @@
+// src/brands/hotel/config/registry/footer.js
 import {
   makeFooterInfoHeader,
   makePoliciesBar,
   makeAcknowledgements,
-  ICONS,
 } from "../../../../shared/config/BrandDefault.js";
+
+import { GLOBAL_ICONS } from "../../../../shared/config/icons/global.icons.js";
 
 import { HOTEL_BASE_PATH } from "./paths.js";
 import { HOTEL_QUICK_LINKS, HOTEL_SOCIALS } from "./nav.js";
@@ -14,7 +16,7 @@ export const hotelFooterSection = {
   footer: {
     infoHeader: makeFooterInfoHeader("hotel", {
       brand: {
-        Icon: ICONS.Building2Icon,
+        Icon: GLOBAL_ICONS.Building2Icon,
         title: "Estalagem de Sangalhos - Sports & Nature Hotel",
         tagline: "Transformando estadias em experiências inesquecíveis.",
         about:

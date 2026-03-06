@@ -5,7 +5,6 @@ import {
   withSocialIcons,
 } from "../../../../shared/config/BrandDefault.js";
 
-/* ===== Redes sociais (Sports) ===== */
 export const SPORTS_SOCIALS = withSocialIcons([
   {
     key: "fb",
@@ -19,7 +18,6 @@ export const SPORTS_SOCIALS = withSocialIcons([
   },
 ]);
 
-/* ===== Header utilitário ===== */
 const header = {
   backLink: makeBackLink({
     href: "/sunlive-group",

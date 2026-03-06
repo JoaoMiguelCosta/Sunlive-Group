@@ -3,12 +3,14 @@ import styles from "./OverviewSection.module.css";
 
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+
+import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
+import { BRAND_ICONS } from "../../../config/icons.public.js";
 
 const PILL_ICONS = {
-  dream: ICONS.DreamIcon,
-  bolt: ICONS.BoltIcon,
-  flag: ICONS.FlagIcon,
+  dream: BRAND_ICONS.DreamIcon, // Sports
+  bolt: BRAND_ICONS.BoltIcon, // Sports
+  flag: GLOBAL_ICONS.FlagIcon, // Global
 };
 
 /**

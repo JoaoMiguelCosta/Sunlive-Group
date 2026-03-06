@@ -41,8 +41,7 @@ const travelHeader = {
   // ✅ CTA DO HEADER (define aqui)
   cta: {
     label: "Contactar",
-    href: `${TRAVEL_BASE_PATH}/contacto`,
-    // opcional: variant/target/etc se o teu CTAButton suportar
+    href: "#contactar",
   },
 };
 

@@ -3,10 +3,11 @@ import styles from "./GymnasticsDisciplinesSection.module.css";
 
 import SportsDisciplineCard from "../../../shared/ui/SportsDisciplineCard/SportsDisciplineCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+
+import { BRAND_ICONS } from "../../../config/icons.public.js";
 
 // ícone por defeito do header (workflow)
-const HEADER_DEFAULT_ICON = ICONS.WorkflowIcon;
+const HEADER_DEFAULT_ICON = BRAND_ICONS.WorkflowIcon;
 
 /**
  * GymnasticsDisciplinesSection

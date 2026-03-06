@@ -1,13 +1,15 @@
 // src/brands/sports/pages/TrainingCamps/sections/ProgramsSection.jsx
 import styles from "./ProgramsSection.module.css";
 import ProgramDetailSection from "../../../shared/ui/ProgramDetailSection/ProgramDetailSection.jsx";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+
+import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
+import { BRAND_ICONS } from "../../../config/icons.public.js"; // ✅ exclusivos Sports
 
 const PROGRAM_ICONS = {
-  trophy: ICONS.MedalIcon,
-  runner: ICONS.SpeedIcon,
-  sun: ICONS.SunIcon,
-  globe: ICONS.GlobeIcon,
+  trophy: BRAND_ICONS.MedalIcon, // Sports (exclusivo)
+  runner: BRAND_ICONS.SpeedIcon, // Sports (exclusivo)
+  sun: BRAND_ICONS.SunIcon, // Sports (exclusivo)
+  globe: GLOBAL_ICONS.GlobeIcon, // Global
 };
 
 export default function ProgramsSection({ data }) {

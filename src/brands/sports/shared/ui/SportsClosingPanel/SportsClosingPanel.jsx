@@ -1,6 +1,6 @@
 // src/shared/components/Sports/ClosingPanel/SportsClosingPanel.jsx
 import styles from "./SportsClosingPanel.module.css";
-import CTAButton2 from "../../../../../shared/ui/CTAButton2.jsx";
+import CTAButton from "../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 /**
  * Destaca 1+ palavras no body com o estilo dourado (.bodyAccent)
@@ -105,11 +105,14 @@ export default function SportsClosingPanel({
           )}
 
           {hasPrimary && (
-            <CTAButton2
+            <CTAButton
+              variant="sports"
               label={primaryCta.label}
               href={primaryCta.href}
               ariaLabel={primaryCta.ariaLabel}
               icon={primaryCta.icon}
+              compact={false}
+              blink={false}
             />
           )}
 

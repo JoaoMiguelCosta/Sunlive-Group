@@ -8,7 +8,7 @@ import {
 
 import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
 
-import { resolveIcons } from "../../../../shared/config/registry/icons/resolveIcons.js";
+import { resolveIcons } from "../../../../shared/config/icons/resolveIcons.js";
 import { BRAND_ICONS } from "../registry/icons.js";
 import { BRAND_FLAGS } from "../registry/flags.js";
 

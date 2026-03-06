@@ -9,8 +9,9 @@
     display: grid;
     place-items: center;
 
-    /* espaçamento base (podes alterar aqui) */
     --pad-top: clamp(16px, 3vw, 28px);
+    --pad-bot: clamp(18px, 3.2vw, 46px);
+    /* ✅ adicionar */
 
     padding-block: var(--pad-top) var(--pad-bot);
 }

@@ -1,7 +1,7 @@
 // src/brands/sports/config/sections/athletes/profiles.js
-import { FLAGS } from "../../../../../shared/config/BrandDefault.js";
+import { GLOBAL_FLAGS } from "../../../../../shared/config/icons/flags.icons.js";
 
-const { portugal: PortugalFlag } = FLAGS;
+const { portugal: PortugalFlag } = GLOBAL_FLAGS;
 
 export default {
   id: "athletes-profiles",
@@ -102,7 +102,5 @@ export default {
         "Cada trilho é uma oportunidade de me superar e de mostrar que os limites existem apenas na nossa mente.",
       instagramUrl: "https://instagram.com/",
     },
-
-    // ✅ Se tens mais atletas no teu ficheiro original, cola-os aqui (sem alterar estrutura).
   ],
 };

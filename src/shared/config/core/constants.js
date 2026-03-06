@@ -1,6 +1,4 @@
-import { ICONS, FLAGS } from "../BrandIcons.jsx";
-
-export { ICONS, FLAGS };
+// src/shared/config/core/constants.js
 
 export const LANG_DEFAULT = Object.freeze({
   current: "pt",

@@ -1,4 +1,4 @@
-import { ICONS } from "../../../../../../shared/config/BrandDefault.js";
+import { GLOBAL_ICONS } from "../../../../../../shared/config/icons/global.icons.js";
 import HotelWhoWeHostCard from "../../../../shared/ui/HotelWhoWeHostCard/HotelWhoWeHostCard.jsx";
 import styles from "./WhoWeHostCards.module.css";
 
@@ -6,7 +6,8 @@ export default function WhoWeHostCards({ items = [] }) {
   if (!items.length) return null;
 
   const mappedItems = items.map((item) => {
-    const IconComponent = ICONS[item.iconKey];
+    const IconComponent = item.iconKey ? GLOBAL_ICONS[item.iconKey] : null;
+
     return {
       ...item,
       icon: IconComponent ? <IconComponent /> : null,

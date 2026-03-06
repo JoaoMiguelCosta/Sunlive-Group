@@ -1,6 +1,6 @@
 // src/brands/travel/config/registry/index.js
 import { LANG_DEFAULT } from "../../../../shared/config/BrandDefault.js";
-import { resolveIcons } from "../../../../shared/config/registry/icons/resolveIcons.js";
+import { resolveIcons } from "../../../../shared/config/icons/resolveIcons.js";
 
 import paths from "./paths.js";
 import nav from "./nav.js";
@@ -22,6 +22,7 @@ export const { ICONS, FLAGS } = resolveIcons({
   brandFlags: BRAND_FLAGS,
 });
 
+/** @type {import("../../../../shared/config/types/brand.js").BrandConfig} */
 const travelBrand = {
   key: "travel",
   brandName: "Sunlive Travel",
@@ -29,7 +30,12 @@ const travelBrand = {
 
   paths,
   header,
-  nav,
+
+  // ✅ alinhar com o resto do projeto: nav.primaryItems
+  nav: {
+    primaryItems: nav,
+    // quickLinks: ... (se aplicável nesta brand)
+  },
 
   pages: {
     home,

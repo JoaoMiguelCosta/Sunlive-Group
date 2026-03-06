@@ -4,7 +4,7 @@ import BrandMasthead from "../../../../shared/components/BrandMasthead";
 import HeaderShell from "./HeaderShell.jsx";
 
 import PrimaryNav from "./PrimaryNav.jsx";
-import CTAButton from "./CTAButton.jsx";
+import CTAButton from "../../../../shared/ui/CTAButton/CTAButton.jsx";
 import travelBrand from "../../config/registry/index.js";
 
 export default function TravelHeaderNav() {

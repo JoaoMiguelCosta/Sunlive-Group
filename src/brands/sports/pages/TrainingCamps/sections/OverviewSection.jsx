@@ -3,12 +3,14 @@ import styles from "./OverviewSection.module.css";
 
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+
+import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
+import { BRAND_ICONS } from "../../../config/icons.public.js";
 
 const PILL_ICONS = {
-  users: ICONS.UsersIcon,
-  handshake: ICONS.HandshakeIcon,
-  brain: ICONS.BrainIcon,
+  users: GLOBAL_ICONS.UsersIcon, // Global
+  handshake: GLOBAL_ICONS.HandshakeIcon, // Global
+  brain: BRAND_ICONS.BrainIcon, // Sports (não é global)
 };
 
 export default function OverviewSection({ data }) {

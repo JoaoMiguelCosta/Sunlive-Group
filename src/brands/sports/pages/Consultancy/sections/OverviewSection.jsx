@@ -3,16 +3,17 @@ import styles from "./OverviewSection.module.css";
 
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+
+import { BRAND_ICONS } from "../../../config/icons.public.js";
 
 /**
  * Mapa de ícones para os pilares da Consultoria.
- * Se algum não existir em ICONS, o componente de pills ignora o ícone.
+ * Se algum não existir, o componente de pills ignora o ícone.
  */
 const PILL_ICONS = {
-  experience: ICONS.ConsultingExperienceIcon,
-  eye: ICONS.EyeIcon,
-  chart: ICONS.ChartIcon,
+  experience: BRAND_ICONS.ConsultingExperienceIcon,
+  eye: BRAND_ICONS.EyeIcon,
+  chart: BRAND_ICONS.ChartIcon,
 };
 
 /**

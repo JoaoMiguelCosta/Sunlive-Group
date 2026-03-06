@@ -8,7 +8,7 @@ import {
   BrazilFlag,
   SaudiArabiaFlag,
   PortugalFlag,
-} from "../../../ui/icons/flags/index.js";
+} from "../../ui/icons/flags/index.js";
 
 /**
  * Flags são conteúdo transversal. Por defeito ficam globais.

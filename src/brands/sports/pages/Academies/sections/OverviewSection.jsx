@@ -3,12 +3,13 @@ import styles from "./OverviewSection.module.css";
 
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+
+import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
 
 const PILL_ICONS = {
-  handshake: ICONS.HandshakeIcon,
-  heart: ICONS.HeartIcon,
-  globe: ICONS.GlobeIcon,
+  handshake: GLOBAL_ICONS.HandshakeIcon,
+  heart: GLOBAL_ICONS.HeartIcon,
+  globe: GLOBAL_ICONS.GlobeIcon,
 };
 
 /**

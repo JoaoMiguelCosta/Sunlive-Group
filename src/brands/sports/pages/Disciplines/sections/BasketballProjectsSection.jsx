@@ -1,15 +1,16 @@
 // src/brands/sports/pages/Disciplines/sections/BasketballProjectsSection.jsx
 import { useMemo } from "react";
 import styles from "./ProjectsSection.module.css";
-import sportsBrand from "../../../config/registry/index.js";
+
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
 
-const HEADER_DEFAULT_ICON = ICONS.ChartIcon;
+import { BRAND_ICONS } from "../../../config/icons.public.js";
 
-export default function BasketballProjectsSection({ icon = null }) {
-  const academies = sportsBrand.sections?.academies?.cards || [];
+const HEADER_DEFAULT_ICON = BRAND_ICONS.ChartIcon;
+
+export default function BasketballProjectsSection({ data, icon = null }) {
+  const academies = data?.cards || [];
   const items = academies.filter((card) => card.key === "basket-academy");
   if (!items.length) return null;
 

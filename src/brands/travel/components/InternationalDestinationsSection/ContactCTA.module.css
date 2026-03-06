@@ -1,3 +1,5 @@
+/* src/brands/travel/components/LogisticsSolutionsSection/ContactCTA.module.css */
+
 /* =======================================================
    ContactCTA.module.css — barra de CTA por baixo dos cards
    ======================================================= */
@@ -9,8 +11,10 @@
     display: grid;
     place-items: center;
 
-    /* espaçamento base (podes alterar aqui) */
+    /* espaçamento base */
     --pad-top: clamp(16px, 3vw, 28px);
+    --pad-bot: clamp(18px, 3.2vw, 46px);
+    /* ✅ faltava */
 
     padding-block: var(--pad-top) var(--pad-bot);
 }
@@ -31,7 +35,6 @@
     display: inline-grid;
     place-items: center;
     padding: clamp(2px, .6vw, 6px);
-    /* “acolchoamento” para o halo respirar */
     border-radius: 999px;
 }
 
@@ -61,19 +64,15 @@
 
 /* Aumenta o CTA só nesta secção (sem tocar nos restantes) */
 .ctaButton {
-    /* tamanhos maiores via CSS vars do botão shared */
     --pill-fs: clamp(1.06rem, 1.15vw, 1.18rem);
     --pill-pad-y: clamp(.60rem, .9vw, .74rem);
     --pill-pad-x: clamp(1.10rem, 1.5vw, 1.38rem);
     --pill-min: 50px;
     --pill-gap: clamp(.52rem, .9vw, .72rem);
     border-width: 2.5px;
-    /* aro um pouco mais espesso */
 }
 
-/* ===== Breakpoints (sem duplicações) ===== */
-
-/* ≥1333px: respira mais e CTA ligeiramente maior */
+/* ≥1333px */
 @media (min-width: 1333px) {
     .section {
         --pad-top: clamp(20px, 2.2vw, 36px);
@@ -86,7 +85,7 @@
     }
 }
 
-/* ≤560px: compacta a secção e o CTA */
+/* ≤560px */
 @media (max-width: 560px) {
     .section {
         --pad-top: 14px;

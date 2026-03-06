@@ -1,16 +1,18 @@
 // src/brands/sports/pages/SpecialisedServices/sections/AreasSection.jsx
 import styles from "./AreasSection.module.css";
+
 import SpecialistServiceCard from "../../../shared/ui/SpecialistServiceCard/SpecialistServiceCard.jsx";
-import { ICONS } from "../../../../../shared/config/BrandDefault.js";
+
+import { BRAND_ICONS } from "../../../config/icons.public.js";
 
 const CARD_ICONS = {
-  apple: ICONS.AppleIcon,
-  video: ICONS.VideoIcon,
-  search: ICONS.SearchIcon,
-  brain: ICONS.BrainIcon,
-  bicipe: ICONS.BicepsFlexedIcon,
-  chart: ICONS.ChartIcon,
-  physical: ICONS.PhysicalTherapyIcon,
+  apple: BRAND_ICONS.AppleIcon,
+  video: BRAND_ICONS.VideoIcon,
+  search: BRAND_ICONS.SearchIcon,
+  brain: BRAND_ICONS.BrainIcon,
+  bicipe: BRAND_ICONS.BicepsFlexedIcon,
+  chart: BRAND_ICONS.ChartIcon,
+  physical: BRAND_ICONS.PhysicalTherapyIcon,
 };
 
 export default function AreasSection({ data }) {

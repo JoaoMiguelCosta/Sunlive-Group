@@ -1,7 +1,7 @@
 // src/brands/sports/config/registry/nav.js
 
 /* ===== Home — Gateway ===== */
-export const SPORTS_GATEWAY = [
+export const SPORTS_GATEWAY = Object.freeze([
   {
     key: "training-camps",
     label: "Training Camps",
@@ -59,20 +59,18 @@ export const SPORTS_GATEWAY = [
     href: "/sunlive-group/sports/contacts",
     variant: "cta",
   },
-];
+]);
 
-/* ===== Links Rápidos (chips a partir do gateway) ===== */
-export const SPORTS_QUICKLINKS = SPORTS_GATEWAY.map(({ key, label, href }) => ({
-  key,
-  label,
-  href,
-}));
+/* ===== Links Rápidos ===== */
+export const SPORTS_QUICKLINKS = Object.freeze(
+  SPORTS_GATEWAY.map(({ key, label, href }) => ({ key, label, href })),
+);
 
 export const CONSULTANCY_ENTITIES_HREF =
   "/sunlive-group/sports/consultancy#consultancy-entities";
 
-/* ===== “Colaboramos com” (chips, sem ícones) ===== */
-export const SPORTS_COLLABS = [
+/* ===== “Colaboramos com” ===== */
+export const SPORTS_COLLABS = Object.freeze([
   {
     key: "orgs",
     label: "Organizações Internacionais",
@@ -89,7 +87,7 @@ export const SPORTS_COLLABS = [
     label: "Organizações de Turismo Ativo",
     href: CONSULTANCY_ENTITIES_HREF,
   },
-];
+]);
 
-/* Placeholder (se criares dropdowns no futuro) */
-export const SPORTS_PRIMARY_NAV_ITEMS = [];
+/* Placeholder (dropdowns futuros) */
+export const SPORTS_PRIMARY_NAV_ITEMS = Object.freeze([]);
