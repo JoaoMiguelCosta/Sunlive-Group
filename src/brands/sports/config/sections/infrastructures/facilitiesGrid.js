@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/infrastructures/facilitiesGrid.js
-export default {
+const infrastructuresFacilitiesGrid = {
   id: "infrastructures-facilities",
   cards: [
     {
@@ -134,3 +133,5 @@ export default {
     },
   ],
 };
+
+export default infrastructuresFacilitiesGrid;

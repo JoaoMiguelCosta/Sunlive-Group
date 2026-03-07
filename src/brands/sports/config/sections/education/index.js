@@ -1,4 +1,3 @@
-// src/brands/sports/config/sections/education/index.js
 export { default as hero } from "./hero.js";
 export { default as overview } from "./overview.js";
 export { default as levelsIntro } from "./levelsIntro.js";

@@ -14,7 +14,6 @@ export const panoramicRestaurant = {
       { id: "pr-02", src: null, alt: "Restaurante Panorâmico — Foto 2" },
       { id: "pr-03", src: null, alt: "Restaurante Panorâmico — Foto 3" },
     ],
-
     gallerySecondary: {
       fallbackLabel: "Fotos",
       items: [
@@ -43,3 +42,5 @@ export const panoramicRestaurant = {
     text: "Vista panorâmica para a paisagem verdejante da Bairrada, com cozinha que conjuga sabores tradicionais e propostas equilibradas",
   },
 };
+
+export default panoramicRestaurant;

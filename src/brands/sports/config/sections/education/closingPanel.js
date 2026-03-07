@@ -1,5 +1,6 @@
-// src/brands/sports/config/sections/education/closingPanel.js
-export default {
+import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
+
+const educationClosingPanel = {
   id: "education-closing-panel",
   chipLabel: "Próximo passo",
   title: "Fala connosco sobre programas educativos ligados ao desporto.",
@@ -9,20 +10,22 @@ export default {
   accentWords: ["lazer", "Turismo Desportivo Lúdico"],
   primaryCta: {
     label: "Contactar",
-    href: "/sunlive-group/sports/contacts",
+    href: SPORTS_PAGE_PATHS.contacts,
     ariaLabel: "Contactar Sunlive Sports sobre programas educativos",
     icon: "phone",
   },
   secondaryCta: {
     label: "Seguir para Turismo Desportivo Lúdico",
-    href: "/sunlive-group/sports/leisure-sports-tourism",
+    href: SPORTS_PAGE_PATHS.leisureSportsTourism,
     ariaLabel:
       "Seguir para a página de Turismo Desportivo Lúdico da Sunlive Sports",
   },
   backCta: {
     label: "Voltar para Serviços Especializados",
-    href: "/sunlive-group/sports/specialised-services",
+    href: SPORTS_PAGE_PATHS.specialisedServices,
     ariaLabel:
       "Voltar para a página de Serviços Especializados da Sunlive Sports",
   },
 };
+
+export default educationClosingPanel;

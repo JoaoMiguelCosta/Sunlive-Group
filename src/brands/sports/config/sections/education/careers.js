@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/education/careers.js
-export default {
+const educationCareers = {
   id: "education-careers",
   items: [
     {
@@ -31,3 +30,5 @@ export default {
     },
   ],
 };
+
+export default educationCareers;

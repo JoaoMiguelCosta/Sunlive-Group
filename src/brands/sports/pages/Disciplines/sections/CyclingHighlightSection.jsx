@@ -2,17 +2,12 @@
 import styles from "./CyclingHighlightSection.module.css";
 
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
-import { BRAND_ICONS } from "../../../config/icons.public.js";
+import { ICONS } from "../../../config/index.js";
 
-// mapa de iconKeys para componentes
 const HIGHLIGHT_ICONS = {
-  bike: BRAND_ICONS.BikeIcon,
+  bike: ICONS.BikeIcon,
 };
 
-/**
- * Secção highlight de Ciclismo na página de Modalidades.
- * Usa o bloco disciplines.cyclingHighlight do configSports.
- */
 export default function CyclingHighlightSection({ data }) {
   const section = data?.cyclingHighlight;
   if (!section) return null;

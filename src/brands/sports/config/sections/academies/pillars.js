@@ -1,12 +1,15 @@
-// src/brands/sports/config/sections/academies/pillars.js
-export default {
+const academiesPillars = {
   items: [
     {
       key: "inclusive-environment",
       label: "Ambiente Inclusivo",
       iconKey: "handshake",
     },
-    { key: "family-culture", label: "Cultura Familiar", iconKey: "heart" },
+    {
+      key: "family-culture",
+      label: "Cultura Familiar",
+      iconKey: "heart",
+    },
     {
       key: "international-perspective",
       label: "Perspetiva Internacional",
@@ -14,3 +17,5 @@ export default {
     },
   ],
 };
+
+export default academiesPillars;

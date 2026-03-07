@@ -1,5 +1,5 @@
 import styles from "./BookSection.module.css";
-import { groupHomePage } from "../../../../config/pages/home.js";
+import { groupHomePage } from "../../../../config/pages/index.js";
 
 /**
  * BookSection — CTA em formato “pill” que abre/descarrega o PDF do Book.
@@ -7,7 +7,7 @@ import { groupHomePage } from "../../../../config/pages/home.js";
  * Usa BASE_URL para funcionar em sub-paths (ex.: GitHub Pages).
  */
 export default function Booksection() {
-  const bookConfig = groupHomePage?.book;
+  const bookConfig = groupHomePage?.sections?.book;
 
   const cta = bookConfig?.cta ?? {
     label: "Open Book Sunlive Group",
@@ -46,3 +46,5 @@ export default function Booksection() {
     </section>
   );
 }
+
+

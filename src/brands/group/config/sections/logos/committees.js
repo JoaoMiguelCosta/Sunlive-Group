@@ -4,6 +4,7 @@ import cop from "../../../assets/group-logos/logos/committes/cop.png";
 import coa from "../../../assets/group-logos/logos/committes/coa.png";
 
 export const committees = {
+  id: "committees",
   title: "COMMITTEES",
   items: [
     {
@@ -39,3 +40,5 @@ export const committees = {
 };
 
 export default committees;
+
+

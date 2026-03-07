@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/infrastructures/overview.js
-export default {
+const infrastructuresOverview = {
   id: "infrastructures-overview",
   layout: "text-left",
   eyebrow: "A base do",
@@ -13,3 +12,5 @@ export default {
     alt: "Infraestruturas desportivas de alto rendimento da Sunlive Sports.",
   },
 };
+
+export default infrastructuresOverview;

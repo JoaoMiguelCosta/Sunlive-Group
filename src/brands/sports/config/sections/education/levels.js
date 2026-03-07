@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/education/levels.js
-export default {
+const educationLevels = {
   id: "education-levels",
   items: [
     {
@@ -52,3 +51,5 @@ export default {
     },
   ],
 };
+
+export default educationLevels;

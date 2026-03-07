@@ -1,4 +1,5 @@
 import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
+import { HOTEL_COMPANY } from "../../core/company.js";
 
 export const planYourStay = {
   id: "hotel-plan-your-stay",
@@ -8,14 +9,16 @@ export const planYourStay = {
     {
       id: "phone",
       label: "Contactar por Telefone",
-      href: "tel:+351933600337",
+      href: HOTEL_COMPANY.contacts.phone.href,
       Icon: GLOBAL_ICONS.PhoneIcon,
     },
     {
       id: "email",
       label: "Contactar por Email",
-      href: "mailto:hotel@sunlive.pt",
+      href: HOTEL_COMPANY.contacts.email.href,
       Icon: GLOBAL_ICONS.MailIcon,
     },
   ],
 };
+
+export default planYourStay;

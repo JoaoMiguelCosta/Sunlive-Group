@@ -4,7 +4,7 @@ import TitleWhyChooseUs from "./TitleWhyChooseUs.jsx";
 import DescriptionWhyChooseUs from "./DescriptionWhyChooseUs.jsx";
 import WhyChooseUsGrid from "./WhyChooseUsGrid.jsx";
 
-import hotelBrand from "../../../../config/registry/index.js";
+import hotelBrand from "../../../../config/index.js";
 
 export default function WhyChooseUs() {
   const content = hotelBrand?.pages?.accommodation?.sections?.whyChoose ?? null;

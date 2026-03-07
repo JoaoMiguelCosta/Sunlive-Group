@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/trainingCamps/pillars.js
-export default {
+const trainingCampsPillars = {
   items: [
     { key: "community", label: "Comunidade", iconKey: "users" },
     { key: "culture", label: "Imersão Cultura Única", iconKey: "handshake" },
@@ -10,3 +9,5 @@ export default {
     },
   ],
 };
+
+export default trainingCampsPillars;

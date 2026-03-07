@@ -1,4 +1,3 @@
-// src/brands/sports/config/pages/infrastructures.js
 import {
   hero,
   overview,
@@ -7,11 +6,15 @@ import {
   closingPanel,
 } from "../sections/infrastructures/index.js";
 
-export default {
+const infrastructures = {
   id: "infrastructures",
-  hero,
-  overview,
-  pillars,
-  facilitiesGrid,
-  closingPanel,
+  sections: {
+    hero,
+    overview,
+    pillars,
+    facilitiesGrid,
+    closingPanel,
+  },
 };
+
+export default infrastructures;

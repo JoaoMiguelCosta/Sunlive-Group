@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/consultancy/areasPanels.js
-export default {
+const consultancyAreasPanels = {
   id: "consultancy-areas-panels",
   items: [
     {
@@ -116,3 +115,5 @@ export default {
     },
   ],
 };
+
+export default consultancyAreasPanels;

@@ -1,4 +1,3 @@
-// src/brands/sports/config/pages/trainingCamps.js
 import {
   hero,
   overview,
@@ -7,11 +6,15 @@ import {
   closingPanel,
 } from "../sections/trainingCamps/index.js";
 
-export default {
+const trainingCamps = {
   id: "training-camps",
-  hero,
-  overview,
-  pillars,
-  programs,
-  closingPanel,
+  sections: {
+    hero,
+    overview,
+    pillars,
+    programs,
+    closingPanel,
+  },
 };
+
+export default trainingCamps;

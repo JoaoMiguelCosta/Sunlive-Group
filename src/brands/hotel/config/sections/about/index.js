@@ -1,23 +1,5 @@
-import { aboutTheHotel } from "./aboutTheHotel.js";
-import { storyMilestones } from "./storyMilestones.js";
-import { qualityCommitment } from "./qualityCommitment.js";
-import { bairradaRegion } from "./bairradaRegion.js";
-import { uniqueNaturalSetting } from "./uniqueNaturalSetting.js";
-
-export {
-  aboutTheHotel,
-  storyMilestones,
-  qualityCommitment,
-  bairradaRegion,
-  uniqueNaturalSetting,
-};
-
-const aboutSections = {
-  aboutTheHotel,
-  ourStoryMilestones: storyMilestones,
-  ourQualityCommitment: qualityCommitment,
-  bairradaRegion,
-  uniqueNaturalSetting,
-};
-
-export default aboutSections;
+export { default as aboutTheHotel } from "./aboutTheHotel.js";
+export { default as storyMilestones } from "./storyMilestones.js";
+export { default as qualityCommitment } from "./qualityCommitment.js";
+export { default as bairradaRegion } from "./bairradaRegion.js";
+export { default as uniqueNaturalSetting } from "./uniqueNaturalSetting.js";

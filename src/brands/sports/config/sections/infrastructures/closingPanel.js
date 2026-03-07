@@ -1,5 +1,6 @@
-// src/brands/sports/config/sections/infrastructures/closingPanel.js
-export default {
+import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
+
+const infrastructuresClosingPanel = {
   id: "infrastructures-closing-panel",
   chipLabel: "Próximo passo",
   title:
@@ -11,18 +12,20 @@ export default {
   accentWords: ["Infraestruturas", "Logística"],
   primaryCta: {
     label: "Contactar",
-    href: "/sunlive-group/sports/contacts",
+    href: SPORTS_PAGE_PATHS.contacts,
     ariaLabel: "Contactar Sunlive Sports sobre as Infraestruturas",
     icon: "phone",
   },
   secondaryCta: {
     label: "Seguir para Logística",
-    href: "/sunlive-group/sports/logistics",
+    href: SPORTS_PAGE_PATHS.logistics,
     ariaLabel: "Seguir para a página de Logística da Sunlive Sports",
   },
   backCta: {
     label: "Voltar para Modalidades",
-    href: "/sunlive-group/sports/sports-disciplines",
+    href: SPORTS_PAGE_PATHS.disciplines,
     ariaLabel: "Voltar para a página de Modalidades da Sunlive Sports",
   },
 };
+
+export default infrastructuresClosingPanel;

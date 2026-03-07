@@ -30,3 +30,5 @@ export const whyChoose = {
     },
   ],
 };
+
+export default whyChoose;

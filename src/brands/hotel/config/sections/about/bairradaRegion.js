@@ -49,3 +49,5 @@ export const bairradaRegion = {
     ],
   },
 };
+
+export default bairradaRegion;

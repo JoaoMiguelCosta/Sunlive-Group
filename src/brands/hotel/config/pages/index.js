@@ -1,7 +1,8 @@
-export { hotelHomePage } from "./home.js";
-export { hotelAboutPage } from "./about.js";
-export { hotelAccommodationPage } from "./accommodation.js";
-export { hotelDiningPage } from "./dining.js";
-export { hotelFacilitiesPage } from "./facilities.js";
-export { hotelEventsPage } from "./events.js";
-export { hotelInformationPage } from "./information.js";
+export { default as home } from "./home.js";
+export { default as about } from "./about.js";
+export { default as accommodation } from "./accommodation.js";
+export { default as dining } from "./dining.js";
+export { default as facilities } from "./facilities.js";
+export { default as events } from "./events.js";
+export { default as information } from "./information.js";
+export { default as sustainability } from "./sustainability.js";

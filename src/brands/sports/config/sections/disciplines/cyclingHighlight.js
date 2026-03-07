@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/disciplines/cyclingHighlight.js
-export default {
+const disciplinesCyclingHighlight = {
   id: "disciplines-cycling-highlight",
   title: "Explore o Universo Ciclismo Sunlive",
   description:
@@ -9,3 +8,5 @@ export default {
   bookLabel: "Abrir Book",
   iconKey: "bike",
 };
+
+export default disciplinesCyclingHighlight;

@@ -35,3 +35,5 @@ export default function PartnersGrid({ items = [] }) {
     </div>
   );
 }
+
+

@@ -1,13 +1,12 @@
-// src/brands/travel/config/sections/testimonialsAndMetrics.js
 import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
 
-const BRAND_TITLE = "Sunlive Travel";
+import { TRAVEL_COMPANY } from "../core/company.js";
 
 const testimonialsAndMetrics = {
   id: "testemunhos",
   headline: {
     title: "O que dizem os nossos Clientes",
-    lead: "Satisfação dos nossos clientes é a nossa maior conquista. Veja o que dizem sobre os nossos serviços.",
+    lead: "A satisfação dos nossos clientes é a nossa maior conquista. Veja o que dizem sobre os nossos serviços.",
   },
   testimonials: [
     {
@@ -64,14 +63,22 @@ const testimonialsAndMetrics = {
         "Motoristas profissionais e simpáticos. Excelente relação qualidade-preço.",
       rating: 5,
       iconKey: "star",
-      author: { name: "Rui Almeida", role: "Treinador – Sub19", avatar: "" },
+      author: {
+        name: "Rui Almeida",
+        role: "Treinador – Sub19",
+        avatar: "",
+      },
     },
     {
       key: "t6",
       quote: "Recomendo sem reservas. Organização e conforto acima da média.",
       rating: 5,
       iconKey: "star",
-      author: { name: "Sofia Marques", role: "Gestora de Eventos", avatar: "" },
+      author: {
+        name: "Sofia Marques",
+        role: "Gestora de Eventos",
+        avatar: "",
+      },
     },
   ],
   metrics: [
@@ -86,7 +93,7 @@ const testimonialsAndMetrics = {
       ariaLabel: "Avaliação média 4.8 em 5",
     },
   ],
-  cta: makeDefaultCTA(BRAND_TITLE),
+  cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
 };
 
 export default testimonialsAndMetrics;

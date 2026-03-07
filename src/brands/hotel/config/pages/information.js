@@ -1,7 +1,6 @@
-import informationSections from "../sections/information/index.js";
-
-export const hotelInformationPage = {
-  sections: {
-    ...informationSections,
-  },
+const information = {
+  id: "information",
+  sections: {},
 };
+
+export default information;

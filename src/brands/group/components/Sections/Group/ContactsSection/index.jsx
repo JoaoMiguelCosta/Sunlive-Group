@@ -3,7 +3,7 @@ import GroupHub from "./GroupHub.jsx";
 import BusinessUnits from "./BusinessUnits.jsx";
 import RegionalOffices from "./RegionalOffices.jsx";
 
-import { groupHomePage } from "../../../../config/pages/home.js";
+import { groupHomePage } from "../../../../config/pages/index.js";
 
 /**
  * ContactsSection — orquestra os 3 blocos
@@ -11,7 +11,7 @@ import { groupHomePage } from "../../../../config/pages/home.js";
  * - i18n-ready: usa contacts.title se existir
  */
 export default function ContactsSection() {
-  const contacts = groupHomePage?.contacts;
+  const contacts = groupHomePage?.sections?.contacts;
   if (!contacts) return null;
 
   const {
@@ -53,3 +53,5 @@ export default function ContactsSection() {
     </section>
   );
 }
+
+

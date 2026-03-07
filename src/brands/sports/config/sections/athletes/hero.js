@@ -1,5 +1,6 @@
-// src/brands/sports/config/sections/athletes/hero.js
-export default {
+const athletesHero = {
   title: "Atletas Sunlive",
   description: "Os nossos atletas são o reflexo dos valores que nos definem.",
 };
+
+export default athletesHero;

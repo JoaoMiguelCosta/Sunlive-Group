@@ -2,7 +2,7 @@ import styles from "./PartnerHotelsSection.module.css";
 import PartnerHotelsHeadline from "./PartnerHotelsHeadline.jsx";
 import PartnerHotelsCardsGrid from "./PartnerHotelsCardsGrid.jsx";
 import ContactCTA from "./ContactCTA.jsx";
-import travelBrand from "../../config/registry/index.js";
+import travelBrand from "../../config/index.js";
 
 export default function PartnerHotelsSection({ className = "" }) {
   const cfg = travelBrand?.sections?.partnerHotels;

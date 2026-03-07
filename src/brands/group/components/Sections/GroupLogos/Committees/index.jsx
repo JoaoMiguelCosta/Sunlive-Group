@@ -4,7 +4,7 @@ import LogoGridSection from "../_shared/LogoGridSection";
 import groupLogosPage from "../../../../config/pages/logos.js";
 
 export default function Committees() {
-  const data = groupLogosPage?.committees ?? { title: "COMMITTEES", items: [] };
+  const data = groupLogosPage?.sections?.committees ?? { title: "COMMITTEES", items: [] };
 
   return (
     <section
@@ -21,3 +21,5 @@ export default function Committees() {
     </section>
   );
 }
+
+

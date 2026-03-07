@@ -3,10 +3,10 @@ import styles from "./PartnersSection.module.css";
 import SectionLead from "./SectionLead.jsx";
 import PartnersGrid from "./PartnersGrid.jsx";
 
-import { groupHomePage } from "../../../../config/pages/home.js";
+import { groupHomePage } from "../../../../config/pages/index.js";
 
 export default function PartnersSection() {
-  const partnersConfig = groupHomePage?.partners;
+  const partnersConfig = groupHomePage?.sections?.partners;
   const { id, headline, categories } = partnersConfig ?? {};
 
   if (!categories?.length) return null;
@@ -31,3 +31,5 @@ export default function PartnersSection() {
     </section>
   );
 }
+
+

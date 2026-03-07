@@ -24,3 +24,5 @@ export const sustainabilityImpact = {
     },
   ],
 };
+
+export default sustainabilityImpact;

@@ -1,4 +1,3 @@
-// src/brands/travel/config/pages/home.js
 import {
   logisticsSolutions,
   domesticDestinations,

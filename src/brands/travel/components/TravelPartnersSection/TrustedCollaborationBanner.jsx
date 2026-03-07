@@ -1,5 +1,5 @@
 import styles from "./TrustedCollaborationBanner.module.css";
-import travelBrand from "../../config/registry/index.js";
+import travelBrand from "../../config/index.js";
 
 export default function TrustedCollaborationBanner({
   title: titleProp = "Parceiros de Viagem Sunlive Travel",

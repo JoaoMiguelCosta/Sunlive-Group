@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/specialisedServices/overview.js
-export default {
+const specialisedServicesOverview = {
   id: "specialised-services-overview",
   layout: "text-left",
   eyebrow: "O que faz a",
@@ -13,3 +12,5 @@ export default {
     alt: "Equipa técnica a apoiar atletas em contexto de alto rendimento.",
   },
 };
+
+export default specialisedServicesOverview;

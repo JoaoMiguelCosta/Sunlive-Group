@@ -1,5 +1,6 @@
-// src/brands/sports/config/sections/consultancy/closingPanel.js
-export default {
+import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
+
+const consultancyClosingPanel = {
   id: "consultancy-closing-panel",
   chipLabel: "Próximo passo",
   title:
@@ -11,13 +12,15 @@ export default {
   accentWords: ["caminho contigo", "planos", "ação"],
   primaryCta: {
     label: "Contactar",
-    href: "/sunlive-group/sports/contacts",
+    href: SPORTS_PAGE_PATHS.contacts,
     ariaLabel: "Contactar Sunlive Sports sobre Consultoria",
     icon: "phone",
   },
   backCta: {
     label: "Voltar para Logística",
-    href: "/sunlive-group/sports/logistics",
+    href: SPORTS_PAGE_PATHS.logistics,
     ariaLabel: "Voltar para a página de Logística da Sunlive Sports",
   },
 };
+
+export default consultancyClosingPanel;

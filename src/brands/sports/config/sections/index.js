@@ -1,4 +1,3 @@
-// src/brands/sports/sections/index.js
 export * as academies from "./academies/index.js";
 export * as athletes from "./athletes/index.js";
 export * as consultancy from "./consultancy/index.js";

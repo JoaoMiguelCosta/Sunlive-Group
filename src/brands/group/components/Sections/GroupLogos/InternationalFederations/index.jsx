@@ -4,7 +4,7 @@ import LogoGridSection from "../_shared/LogoGridSection";
 import groupLogosPage from "../../../../config/pages/logos.js";
 
 export default function InternationalFederations() {
-  const data = groupLogosPage?.internationalFederations;
+  const data = groupLogosPage?.sections?.internationalFederations;
   if (!data) return null;
 
   return (
@@ -22,3 +22,5 @@ export default function InternationalFederations() {
     </section>
   );
 }
+
+

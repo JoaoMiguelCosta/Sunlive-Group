@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/registry/index.js";
+import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui//HotelSectionHeader/HotelSectionHeader.jsx";
 import styles from "./OurStoryMilestonesHeader.module.css";
 

@@ -128,3 +128,5 @@ export const accommodations = {
     text: "Algumas unidades incluem varanda privada. A disponibilidade depende da tipologia e deverá ser confirmada no momento da reserva.",
   },
 };
+
+export default accommodations;

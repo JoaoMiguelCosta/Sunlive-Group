@@ -47,7 +47,6 @@ export const forWhomProfiles = {
         ctaHref: "#",
       },
     },
-
     {
       key: "families",
       title: "Famílias",
@@ -94,7 +93,6 @@ export const forWhomProfiles = {
         ctaHref: "#",
       },
     },
-
     {
       key: "couples",
       title: "Casais",
@@ -141,7 +139,6 @@ export const forWhomProfiles = {
         ctaHref: "#",
       },
     },
-
     {
       key: "groups",
       title: "Grupos",
@@ -188,7 +185,6 @@ export const forWhomProfiles = {
         ctaHref: "#",
       },
     },
-
     {
       key: "companies",
       title: "Empresas",
@@ -237,3 +233,5 @@ export const forWhomProfiles = {
     },
   ],
 };
+
+export default forWhomProfiles;

@@ -1,6 +1,6 @@
 import styles from "./TravelPartnersHeadline.module.css";
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import travelBrand from "../../config/registry/index.js";
+import travelBrand from "../../config/index.js";
 
 export default function TravelPartnersHeadline() {
   const hl = travelBrand?.sections?.travelPartners?.headline;

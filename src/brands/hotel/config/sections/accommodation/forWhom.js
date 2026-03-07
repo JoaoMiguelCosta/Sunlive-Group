@@ -4,3 +4,5 @@ export const forWhom = {
   description:
     "A Estalagem de Sangalhos acolhe todos os perfis, oferecendo experiências personalizadas para cada tipo de hóspede.",
 };
+
+export default forWhom;

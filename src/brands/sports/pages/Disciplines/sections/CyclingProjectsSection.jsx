@@ -4,15 +4,14 @@ import styles from "./CyclingProjectsSection.module.css";
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 
-import { BRAND_ICONS } from "../../../config/icons.public.js";
+import { ICONS } from "../../../config/index.js";
 
 const PANEL_ICONS = {
-  "aero-edge": BRAND_ICONS.ChartFrameIcon,
-  "training-from-pro": BRAND_ICONS.MonitorIcon,
+  "aero-edge": ICONS.ChartFrameIcon,
+  "training-from-pro": ICONS.MonitorIcon,
 };
 
-// ícone por defeito do header
-const HEADER_DEFAULT_ICON = BRAND_ICONS.ChartIcon;
+const HEADER_DEFAULT_ICON = ICONS.ChartIcon;
 
 export default function CyclingProjectsSection({ data, icon = null }) {
   const section = data?.cyclingProjects;
@@ -20,7 +19,6 @@ export default function CyclingProjectsSection({ data, icon = null }) {
 
   const { id, heading = "Projetos", items } = section;
 
-  // acordeão de um só painel
   const accordionItems = useMemo(
     () => [{ key: "cycling-projects", defaultOpen: true }],
     [],
@@ -35,7 +33,6 @@ export default function CyclingProjectsSection({ data, icon = null }) {
 
   const handleToggle = () => toggle(panelKey);
 
-  // ícone do header: prop `icon` > ChartIcon por defeito
   const HeaderIcon = icon || HEADER_DEFAULT_ICON;
 
   return (
@@ -45,7 +42,6 @@ export default function CyclingProjectsSection({ data, icon = null }) {
       aria-label="Projetos de Ciclismo Sunlive"
     >
       <div className={styles.inner}>
-        {/* Header com ícone + acordeão */}
         <header className={styles.header}>
           <button
             type="button"
@@ -71,7 +67,6 @@ export default function CyclingProjectsSection({ data, icon = null }) {
           </button>
         </header>
 
-        {/* Corpo: grelha de cards */}
         {open && (
           <div id={`${id}-panel`} className={styles.panelBody}>
             <div className={styles.grid}>

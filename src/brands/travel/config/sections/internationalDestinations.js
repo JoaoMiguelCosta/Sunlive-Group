@@ -1,4 +1,3 @@
-// src/brands/travel/config/sections/internationalDestinations.js
 import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
 
 import maltaImg from "../../assets/InternationalDestinations/malta.png";
@@ -7,7 +6,7 @@ import saudiImg from "../../assets/InternationalDestinations/arabia.png";
 import kuwaitImg from "../../assets/InternationalDestinations/kuwait.png";
 import brazilImg from "../../assets/InternationalDestinations/brasil.png";
 
-const BRAND_TITLE = "Sunlive Travel";
+import { TRAVEL_COMPANY } from "../core/company.js";
 
 const internationalDestinations = {
   id: "destinos-internacionais",
@@ -83,7 +82,7 @@ const internationalDestinations = {
       },
     },
   ],
-  cta: makeDefaultCTA(BRAND_TITLE),
+  cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
 };
 
 export default internationalDestinations;

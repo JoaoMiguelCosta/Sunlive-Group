@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/consultancy/overview.js
-export default {
+const consultancyOverview = {
   id: "consultancy-overview",
   layout: "text-left",
   eyebrow: "Consultoria que",
@@ -14,3 +13,5 @@ export default {
     alt: "Reunião de consultoria estratégica Sunlive Sports com parceiros do desporto.",
   },
 };
+
+export default consultancyOverview;

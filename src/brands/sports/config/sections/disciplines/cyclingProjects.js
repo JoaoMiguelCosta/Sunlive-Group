@@ -1,7 +1,6 @@
-// src/brands/sports/config/sections/disciplines/cyclingProjects.js
 import acaLogo from "../../../assets/Academies/aca.png";
 
-export default {
+const disciplinesCyclingProjects = {
   id: "disciplines-cycling-projects",
   heading: "Projetos",
   items: [
@@ -18,8 +17,8 @@ export default {
       bookLabel: "Abrir Book",
     },
     {
-      iconKey: "aero-edge",
       key: "aero-edge",
+      iconKey: "aero-edge",
       title: "Aero Edge",
       logoSrc: null,
       logoAlt: null,
@@ -31,8 +30,8 @@ export default {
       bookLabel: "Abrir Book",
     },
     {
-      iconKey: "training-from-pro",
       key: "training-from-pro",
+      iconKey: "training-from-pro",
       title: "Training From Pro (TFP)",
       logoSrc: null,
       logoAlt: null,
@@ -45,3 +44,5 @@ export default {
     },
   ],
 };
+
+export default disciplinesCyclingProjects;

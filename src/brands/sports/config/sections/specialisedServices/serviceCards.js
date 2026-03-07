@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/specialisedServices/serviceCards.js
-export default [
+const specialisedServicesCards = [
   {
     key: "apple",
     iconKey: "apple",
@@ -119,3 +118,5 @@ export default [
     ],
   },
 ];
+
+export default specialisedServicesCards;

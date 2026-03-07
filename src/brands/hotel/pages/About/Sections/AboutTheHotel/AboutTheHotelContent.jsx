@@ -1,5 +1,5 @@
 // src/brands/hotel/components/About/AboutTheHotel/AboutTheHotelContent.jsx
-import hotelBrand from "../../../../config/registry/index.js";
+import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import styles from "./AboutTheHotelContent.module.css";
 

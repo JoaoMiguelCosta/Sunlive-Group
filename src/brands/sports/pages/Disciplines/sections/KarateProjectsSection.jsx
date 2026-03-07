@@ -5,9 +5,9 @@ import styles from "./ProjectsSection.module.css";
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 
-import { BRAND_ICONS } from "../../../config/icons.public.js";
+import { ICONS } from "../../../config/index.js";
 
-const HEADER_DEFAULT_ICON = BRAND_ICONS.ChartIcon;
+const HEADER_DEFAULT_ICON = ICONS.ChartIcon;
 
 export default function KarateProjectsSection({ data, icon = null }) {
   const academies = data?.cards || [];

@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/logistics/servicesPanels.js
-export default {
+const logisticsServicesPanels = {
   id: "logistics-services-panels",
   items: [
     {
@@ -73,3 +72,5 @@ export default {
     },
   ],
 };
+
+export default logisticsServicesPanels;

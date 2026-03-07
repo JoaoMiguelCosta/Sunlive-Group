@@ -1,23 +1,5 @@
-import { overview } from "./overview.js";
-import { whoWeHost } from "./whoWeHost.js";
-import { featuredExperiences } from "./featuredExperiences.js";
-import { sustainabilityImpact } from "./sustainabilityImpact.js";
-import { planYourStay } from "./planYourStay.js";
-
-export {
-  overview,
-  whoWeHost,
-  featuredExperiences,
-  sustainabilityImpact,
-  planYourStay,
-};
-
-const homeSections = {
-  overview,
-  whoWeHost,
-  featuredExperiences,
-  sustainabilityImpact,
-  planYourStay,
-};
-
-export default homeSections;
+export { default as overview } from "./overview.js";
+export { default as whoWeHost } from "./whoWeHost.js";
+export { default as featuredExperiences } from "./featuredExperiences.js";
+export { default as sustainabilityImpact } from "./sustainabilityImpact.js";
+export { default as planYourStay } from "./planYourStay.js";

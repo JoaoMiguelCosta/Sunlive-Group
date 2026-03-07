@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/education/overview.js
-export default {
+const educationOverview = {
   id: "education-overview",
   layout: "text-left",
   eyebrow: "Educação + Desporto =",
@@ -13,3 +12,5 @@ export default {
     alt: "Estudantes-atletas em contexto de estudo e treino.",
   },
 };
+
+export default educationOverview;

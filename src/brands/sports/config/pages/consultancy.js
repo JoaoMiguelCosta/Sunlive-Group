@@ -1,4 +1,3 @@
-// src/brands/sports/config/pages/consultancy.js
 import {
   hero,
   overview,
@@ -9,13 +8,17 @@ import {
   closingPanel,
 } from "../sections/consultancy/index.js";
 
-export default {
+const consultancy = {
   id: "consultancy",
-  hero,
-  overview,
-  areasIntro,
-  areasPanels,
-  entities,
-  pillars,
-  closingPanel,
+  sections: {
+    hero,
+    overview,
+    areasIntro,
+    areasPanels,
+    entities,
+    pillars,
+    closingPanel,
+  },
 };
+
+export default consultancy;

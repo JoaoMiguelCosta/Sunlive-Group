@@ -1,6 +1,11 @@
 // src/brands/sports/config/pages/home.js
-import { SPORTS_GATEWAY } from "../registry/nav.js";
+import { SPORTS_GATEWAY } from "../core/nav.js";
 
-const home = { gateway: SPORTS_GATEWAY };
+const home = {
+  id: "home",
+  sections: {
+    gateway: SPORTS_GATEWAY,
+  },
+};
 
 export default home;

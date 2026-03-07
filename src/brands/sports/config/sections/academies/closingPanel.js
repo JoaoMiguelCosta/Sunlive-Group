@@ -1,5 +1,6 @@
-// src/brands/sports/config/sections/academies/closingPanel.js
-export default {
+import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
+
+const academiesClosingPanel = {
   id: "academies-closing-panel",
   chipLabel: "Próximo passo",
   title:
@@ -11,18 +12,20 @@ export default {
   accentWords: ["Atleta", "Eventos"],
   primaryCta: {
     label: "Contactar",
-    href: "/sunlive-group/sports/contacts",
+    href: SPORTS_PAGE_PATHS.contacts,
     ariaLabel: "Contactar Sunlive Sports sobre as Academias",
     icon: "phone",
   },
   secondaryCta: {
     label: "Seguir para Eventos",
-    href: "/sunlive-group/sports/events",
+    href: SPORTS_PAGE_PATHS.events,
     ariaLabel: "Seguir para a página de Eventos da Sunlive Sports",
   },
   backCta: {
     label: "Voltar para Training Camps",
-    href: "/sunlive-group/sports/training-camps",
+    href: SPORTS_PAGE_PATHS.trainingCamps,
     ariaLabel: "Voltar para a página de Training Camps da Sunlive Sports",
   },
 };
+
+export default academiesClosingPanel;

@@ -35,3 +35,5 @@ export const stayPolicies = {
     },
   ],
 };
+
+export default stayPolicies;

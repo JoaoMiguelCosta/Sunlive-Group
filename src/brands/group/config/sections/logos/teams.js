@@ -35,6 +35,7 @@ import utto from "../../../assets/group-logos/logos/teams/utto.png";
 import woking from "../../../assets/group-logos/logos/teams/woking.png";
 
 export const teams = {
+  id: "teams",
   title: "TEAMS",
   items: [
     { key: "ads", name: "ADS Team", caption: "ADS Team", src: ads },
@@ -56,11 +57,21 @@ export const teams = {
       caption: "Experience Team",
       src: experience,
     },
-    { key: "flgym", name: "FL Gym Team", caption: "FL Gym Team", src: flgym },
+    {
+      key: "flgym",
+      name: "FL Gym Team",
+      caption: "FL Gym Team",
+      src: flgym,
+    },
     { key: "ga", name: "GA Team", caption: "GA Team", src: ga },
     { key: "gca", name: "GCA Team", caption: "GCA Team", src: gca },
     { key: "gcp", name: "GCP Team", caption: "GCP Team", src: gcp },
-    { key: "gerpla", name: "Gerpla Team", caption: "Gerpla Team", src: gerpla },
+    {
+      key: "gerpla",
+      name: "Gerpla Team",
+      caption: "Gerpla Team",
+      src: gerpla,
+    },
     { key: "hunti", name: "Hunti Team", caption: "Hunti Team", src: hunti },
     {
       key: "ivanova",
@@ -85,7 +96,12 @@ export const teams = {
       caption: "Pegasus Team",
       src: pegasus,
     },
-    { key: "racing", name: "Racing Team", caption: "Racing Team", src: racing },
+    {
+      key: "racing",
+      name: "Racing Team",
+      caption: "Racing Team",
+      src: racing,
+    },
     { key: "scp", name: "SCP Team", caption: "SCP Team", src: scp },
     { key: "south", name: "South Team", caption: "South Team", src: south },
     { key: "stars", name: "Stars Team", caption: "Stars Team", src: stars },
@@ -98,11 +114,23 @@ export const teams = {
       src: swansea,
     },
     { key: "tg", name: "TG Team", caption: "TG Team", src: tg },
-    { key: "thomas", name: "Thomas Team", caption: "Thomas Team", src: thomas },
+    {
+      key: "thomas",
+      name: "Thomas Team",
+      caption: "Thomas Team",
+      src: thomas,
+    },
     { key: "tv", name: "TV Team", caption: "TV Team", src: tv },
     { key: "utto", name: "Utto Team", caption: "Utto Team", src: utto },
-    { key: "woking", name: "Woking Team", caption: "Woking Team", src: woking },
+    {
+      key: "woking",
+      name: "Woking Team",
+      caption: "Woking Team",
+      src: woking,
+    },
   ],
 };
 
 export default teams;
+
+

@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/events/pillars.js
-export default {
+const eventsPillars = {
   items: [
     {
       key: "organizational-excellence",
@@ -14,3 +13,5 @@ export default {
     },
   ],
 };
+
+export default eventsPillars;

@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/registry/index.js";
+import hotelBrand from "../../../../config/index.js";
 import OurQualityCommitmentHeader from "./OurQualityCommitmentHeader.jsx";
 import OurQualityCommitmentContent from "./OurQualityCommitmentContent.jsx";
 import styles from "./OurQualityCommitment.module.css";

@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/consultancy/entities.js
-export default {
+const consultancyEntities = {
   id: "consultancy-entities",
   title: "Entidades com quem colaboramos:",
   items: [
@@ -9,3 +8,5 @@ export default {
     "Federações Internacionais, Nacionais e Regionais",
   ],
 };
+
+export default consultancyEntities;

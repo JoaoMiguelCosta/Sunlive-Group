@@ -1,6 +1,21 @@
-// src/brands/sports/config/sections/disciplines/otherDisciplinesIntro.js
-export default {
-  id: "disciplines-other-intro",
-  title: "Outras Modalidades",
-  lead: "A Sunlive disponibiliza também condições para a prática de modalidades como andebol, voleibol, judo, surf e esgrima, com acesso a alojamento e apoio logístico para treinos e concentrações.",
+const disciplinesPillars = {
+  items: [
+    {
+      key: "athlete",
+      label: "Treino Especializado",
+      iconKey: "athlete",
+    },
+    {
+      key: "brush",
+      label: "Infraestruturas de Excelência",
+      iconKey: "brush",
+    },
+    {
+      key: "safety-wellbeing",
+      label: "Segurança e Bem-estar",
+      iconKey: "shield",
+    },
+  ],
 };
+
+export default disciplinesPillars;

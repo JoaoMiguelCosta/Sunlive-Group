@@ -22,3 +22,5 @@ export const storyMilestones = {
     { id: "milestone-today", label: "Hoje", description: "Referência Mundial" },
   ],
 };
+
+export default storyMilestones;

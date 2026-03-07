@@ -1,4 +1,3 @@
-// src/brands/group/config/sections/contacts.js  (ajusta o path se necessário)
 import {
   makeBusinessUnits,
   DEFAULT_GROUP_CONTACTS,
@@ -69,3 +68,5 @@ export const contacts = {
 };
 
 export default contacts;
+
+

@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/infrastructures/pillars.js
-export default {
+const infrastructuresPillars = {
   items: [
     {
       key: "strategic-location",
@@ -14,3 +13,5 @@ export default {
     },
   ],
 };
+
+export default infrastructuresPillars;

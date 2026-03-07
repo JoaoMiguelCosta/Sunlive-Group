@@ -4,12 +4,12 @@ import styles from "./OverviewSection.module.css";
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
 
-import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
+import { ICONS } from "../../../config/index.js";
 
 const PILL_ICONS = {
-  pin: GLOBAL_ICONS.PinIcon,
-  phone: GLOBAL_ICONS.PhoneIcon,
-  users: GLOBAL_ICONS.UsersIcon,
+  pin: ICONS.PinIcon,
+  phone: ICONS.PhoneIcon,
+  users: ICONS.UsersIcon,
 };
 
 export default function OverviewSection({ data }) {

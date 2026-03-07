@@ -9,14 +9,19 @@ import {
   others,
 } from "../sections/logos/index.js";
 
-export const groupLogosPage = {
+const logos = {
+  id: "logos",
   backLink: makeBackLink(),
-  committees,
-  portugueseFederations,
-  internationalFederations,
-  teams,
-  associations,
-  others,
+  sections: {
+    committees,
+    portugueseFederations,
+    internationalFederations,
+    teams,
+    associations,
+    others,
+  },
 };
 
-export default groupLogosPage;
+export default logos;
+
+

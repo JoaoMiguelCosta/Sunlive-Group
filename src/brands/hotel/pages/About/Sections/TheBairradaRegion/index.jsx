@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/registry/index.js";
+import hotelBrand from "../../../../config/index.js";
 
 import TheBairradaRegionHeader from "./TheBairradaRegionHeader.jsx";
 import HotelAboutRegionBairrada from "./HotelAboutRegionBairrada.jsx";

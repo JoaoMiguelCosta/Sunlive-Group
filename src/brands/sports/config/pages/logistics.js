@@ -1,4 +1,3 @@
-// src/brands/sports/config/pages/logistics.js
 import {
   hero,
   overview,
@@ -8,12 +7,16 @@ import {
   closingPanel,
 } from "../sections/logistics/index.js";
 
-export default {
+const logistics = {
   id: "logistics",
-  hero,
-  overview,
-  servicesIntro,
-  pillars,
-  servicesPanels,
-  closingPanel,
+  sections: {
+    hero,
+    overview,
+    servicesIntro,
+    pillars,
+    servicesPanels,
+    closingPanel,
+  },
 };
+
+export default logistics;

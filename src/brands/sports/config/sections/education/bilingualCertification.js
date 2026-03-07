@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/education/bilingualCertification.js
-export default {
+const educationBilingualCertification = {
   id: "education-bilingual-certification",
   title: "Certificação Dupla",
   description:
@@ -9,3 +8,5 @@ export default {
     "Acesso a universidades Internacionais",
   ],
 };
+
+export default educationBilingualCertification;

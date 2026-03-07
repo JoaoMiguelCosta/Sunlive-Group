@@ -3,7 +3,7 @@ import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
 // ✅ Novo: contacts vêm do novo config (pages/home.js)
-import { groupHomePage } from "../../../../config/pages/home.js";
+import { groupHomePage } from "../../../../config/pages/index.js";
 
 export default function BusinessUnits({ items = [] }) {
   // Ordem desejada (mantém só os existentes)
@@ -34,8 +34,8 @@ export default function BusinessUnits({ items = [] }) {
   });
 
   // Ícones do config
-  const Mail = groupHomePage?.contacts?.icons?.Mail || (() => null);
-  const Phone = groupHomePage?.contacts?.icons?.Phone || (() => null);
+  const Mail = groupHomePage?.sections?.contacts?.icons?.Mail || (() => null);
+  const Phone = groupHomePage?.sections?.contacts?.icons?.Phone || (() => null);
 
   return (
     <div className={styles.grid} role="list">
@@ -105,3 +105,5 @@ export default function BusinessUnits({ items = [] }) {
     </div>
   );
 }
+
+

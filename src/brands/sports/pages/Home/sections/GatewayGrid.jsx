@@ -2,10 +2,10 @@
 import { Link } from "react-router-dom";
 import styles from "./GatewayGrid.module.css";
 
-import sportsBrand from "../../../config/registry/index.js";
+import sportsBrand from "../../../config/index.js";
 
 export default function GatewayGrid() {
-  const items = sportsBrand?.pages?.home?.gateway ?? [];
+  const items = sportsBrand?.pages?.home?.sections?.gateway ?? [];
   if (!items.length) return null;
 
   return (

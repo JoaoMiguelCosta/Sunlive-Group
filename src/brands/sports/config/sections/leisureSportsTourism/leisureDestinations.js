@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/leisureSportsTourism/leisureDestinations.js
-export default {
+const leisureSportsTourismDestinations = {
   id: "leisure-sports-tourism-destinations-grid",
   items: [
     {
@@ -72,3 +71,5 @@ export default {
     },
   ],
 };
+
+export default leisureSportsTourismDestinations;

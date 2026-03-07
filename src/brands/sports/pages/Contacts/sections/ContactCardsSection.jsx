@@ -1,9 +1,9 @@
 // src/brands/sports/pages/Contacts/ContactCardsSection.jsx
 import styles from "./ContactCardsSection.module.css";
 
-import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
+import { ICONS } from "../../../config/index.js";
 
-const { MailIcon, PhoneIcon } = GLOBAL_ICONS;
+const { MailIcon, PhoneIcon } = ICONS;
 
 export default function ContactCardsSection({ data }) {
   const contacts = data?.contacts || {};

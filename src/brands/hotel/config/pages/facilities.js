@@ -1,7 +1,6 @@
-import facilitiesSections from "../sections/facilities/index.js";
-
-export const hotelFacilitiesPage = {
-  sections: {
-    ...facilitiesSections,
-  },
+const facilities = {
+  id: "facilities",
+  sections: {},
 };
+
+export default facilities;

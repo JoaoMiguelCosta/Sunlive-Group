@@ -1,25 +1,24 @@
-// src/brands/travel/config/sections/travelPartners.js
 import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
 
 import portugalissimoImg from "../../assets/TravelPartners/portugalissimo.png";
 import vagoImg from "../../assets/TravelPartners/vago.png";
 
-const BRAND_TITLE = "Sunlive Travel";
+import { TRAVEL_COMPANY } from "../core/company.js";
 
 const travelPartners = {
   id: "parceiros-viagens",
   headline: {
     title: "Parceiros de Viagem Sunlive Travel",
-    lead: "Para garantir uma experiência de viagem completa e de alta qualidade, trabalhamos em parceria com operadores certificados e experientes:",
+    lead: "Para garantir uma experiência de viagem completa e de alta qualidade, trabalhamos em parceria com operadores certificados e experientes.",
   },
   partners: [
     {
       key: "portugalissimo",
-      name: "Portugalissimo",
+      name: "Portugalíssimo",
       summary:
         "Especialistas em turismo e imobiliário focados no estilo de vida português.",
       href: "https://www.portugalissimmo.com/",
-      picture: { src: portugalissimoImg, alt: "Logótipo Portugalissimo" },
+      picture: { src: portugalissimoImg, alt: "Logótipo Portugalíssimo" },
     },
     {
       key: "vago",
@@ -35,7 +34,7 @@ const travelPartners = {
     title: "Colaboração de Confiança",
     lead: "Estas parcerias estratégicas permitem-nos alargar a nossa oferta com soluções integradas e ajustadas, aliando a excelência da nossa operação logística desportiva ao conhecimento local e à competência técnica dos nossos parceiros certificados.",
   },
-  cta: makeDefaultCTA(BRAND_TITLE),
+  cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
 };
 
 export default travelPartners;

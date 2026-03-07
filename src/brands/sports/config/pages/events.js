@@ -1,4 +1,3 @@
-// src/brands/sports/config/pages/events.js
 import {
   hero,
   overview,
@@ -6,10 +5,14 @@ import {
   closingPanel,
 } from "../sections/events/index.js";
 
-export default {
+const events = {
   id: "events",
-  hero,
-  overview,
-  pillars,
-  closingPanel,
+  sections: {
+    hero,
+    overview,
+    pillars,
+    closingPanel,
+  },
 };
+
+export default events;

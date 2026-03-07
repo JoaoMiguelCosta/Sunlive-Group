@@ -1,4 +1,4 @@
-import { HOTEL_SECTION_PATHS } from "../../registry/paths.js";
+import { HOTEL_PAGE_PATHS } from "../../core/paths.js";
 
 export const overview = {
   id: "hotel-overview",
@@ -11,6 +11,8 @@ export const overview = {
     "Aliamos a hospitalidade tradicional à funcionalidade moderna, oferecendo uma estadia confortável, adaptada a diferentes perfis — desde famílias e casais a equipas desportivas e grupos empresariais.",
   cta: {
     label: "Saber mais sobre a Estalagem",
-    href: `${HOTEL_SECTION_PATHS.about}#sobre-estalagem`,
+    href: `${HOTEL_PAGE_PATHS.about}#sobre-estalagem`,
   },
 };
+
+export default overview;

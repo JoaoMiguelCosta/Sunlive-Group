@@ -1,9 +1,9 @@
 // OverviewSection/DivisionsPanel.jsx
 import styles from "./DivisionsPanel.module.css";
-import { groupHomePage } from "../../../../config/pages/home.js";
+import { groupHomePage } from "../../../../config/pages/index.js";
 
 export default function DivisionsPanel() {
-  const overview = groupHomePage?.overview;
+  const overview = groupHomePage?.sections?.overview;
   const divisions = overview?.divisions ?? [];
   const home = overview?.homeCard ?? { renderAs: "text", href: "/" };
 
@@ -109,3 +109,5 @@ export default function DivisionsPanel() {
     </section>
   );
 }
+
+

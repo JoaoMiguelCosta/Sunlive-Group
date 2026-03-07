@@ -14,3 +14,5 @@ export const amenities = {
     { id: "amenity-linen", label: "Roupa de cama e toalhas", iconKey: null },
   ],
 };
+
+export default amenities;

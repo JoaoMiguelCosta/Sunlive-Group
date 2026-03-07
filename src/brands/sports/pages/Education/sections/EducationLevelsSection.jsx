@@ -1,34 +1,48 @@
-// src/brands/sports/pages/Education/sections/EducationLevelsSection.jsx
-import styles from "./EducationLevelsSection.module.css";
+// src/brands/sports/pages/Education/sections/OverviewSection.jsx
+import styles from "./OverviewSection.module.css";
 
-import SportsEducationCard from "../../../shared/ui/SportsEducationCard/SportsEducationCard.jsx";
+import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
+import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
 
-export default function EducationLevelsSection({ data }) {
+import { ICONS } from "../../../config/index.js";
+
+const PILL_ICONS = {
+  GraduationCapIcon: ICONS.GraduationCapIcon,
+  values: ICONS.HeartIcon,
+  compass: ICONS.CompassIcon,
+};
+
+export default function OverviewSection({ data }) {
   if (!data) return null;
 
-  const { levels } = data;
-  const items = levels?.items || [];
-  if (!items.length) return null;
+  const { overview, pillars } = data;
 
-  const { id = "education-levels" } = levels;
+  const pillItems =
+    pillars?.items?.map((item) => ({
+      key: item.key,
+      label: item.label,
+      Icon: item.iconKey ? (PILL_ICONS[item.iconKey] ?? null) : null,
+    })) ?? [];
 
   return (
-    <section id={id} className={styles.section}>
-      <div className={styles.inner}>
-        <div className={styles.grid}>
-          {items.map((level, index) => (
-            <SportsEducationCard
-              key={level.id || index}
-              title={level.title}
-              ageRange={level.ageRange}
-              subtitle={level.subtitle}
-              description={level.description}
-              features={level.features}
-              bookCta={level.book}
-            />
-          ))}
+    <section
+      className={styles.wrap}
+      aria-label="Educação + Desporto — Sunlive Sports"
+    >
+      <TextMediaSection
+        id={overview?.id}
+        eyebrow={overview?.eyebrow}
+        title={overview?.title}
+        paragraphs={overview?.paragraphs}
+        imageSide="right"
+        image={overview?.image}
+      />
+
+      {pillItems.length > 0 && (
+        <div className={styles.pillsRow}>
+          <ValuePillsBar items={pillItems} align="center" />
         </div>
-      </div>
+      )}
     </section>
   );
 }

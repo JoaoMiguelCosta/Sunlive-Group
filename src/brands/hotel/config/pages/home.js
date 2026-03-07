@@ -1,7 +1,20 @@
-import homeSections from "../sections/home/index.js";
+import {
+  overview,
+  whoWeHost,
+  featuredExperiences,
+  sustainabilityImpact,
+  planYourStay,
+} from "../sections/home/index.js";
 
-export const hotelHomePage = {
+const home = {
+  id: "home",
   sections: {
-    ...homeSections,
+    overview,
+    whoWeHost,
+    featuredExperiences,
+    sustainabilityImpact,
+    planYourStay,
   },
 };
+
+export default home;

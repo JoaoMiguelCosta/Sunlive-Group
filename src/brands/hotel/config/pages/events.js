@@ -1,7 +1,6 @@
-import eventsSections from "../sections/events/index.js";
-
-export const hotelEventsPage = {
-  sections: {
-    ...eventsSections,
-  },
+const events = {
+  id: "events",
+  sections: {},
 };
+
+export default events;

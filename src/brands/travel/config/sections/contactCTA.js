@@ -1,7 +1,6 @@
-// src/brands/travel/config/sections/contactCTA.js
 import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
 
-const BRAND_TITLE = "Sunlive Travel";
+import { TRAVEL_COMPANY, TRAVEL_CONTACT_CHANNELS } from "../core/company.js";
 
 const contactCTA = {
   id: "contactar",
@@ -17,23 +16,8 @@ const contactCTA = {
     { key: "service-type", label: "Tipo de Serviços" },
     { key: "special-needs", label: "Necessidades Especiais" },
   ],
-  channels: [
-    {
-      key: "phone",
-      iconKey: "phone",
-      label: "+351 935 630 798",
-      href: "tel:+351935630798",
-      ariaLabel: "Ligar para a Sunlive Travel",
-    },
-    {
-      key: "mail",
-      iconKey: "mail",
-      label: "travel@sunlive.pt",
-      href: "mailto:travel@sunlive.pt",
-      ariaLabel: "Enviar email para a Sunlive Travel",
-    },
-  ],
-  cta: makeDefaultCTA(BRAND_TITLE),
+  channels: TRAVEL_CONTACT_CHANNELS,
+  cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
 };
 
 export default contactCTA;

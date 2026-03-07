@@ -1,10 +1,9 @@
-// src/brands/sports/config/sections/academies/cards.js
 import acaLogo from "../../../assets/Academies/aca.png";
 import basketLogo from "../../../assets/Academies/basket.png";
 import footLogo from "../../../assets/Academies/foot.png";
 import karateLogo from "../../../assets/Academies/karate.png";
 
-export default [
+const academiesCards = [
   {
     key: "cycling-academy",
     title: "Anadia Cycling Academy (ACA)",
@@ -55,3 +54,5 @@ export default [
     book: { label: "Abrir Book", href: "/books/football-academie.pdf" },
   },
 ];
+
+export default academiesCards;

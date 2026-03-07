@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/academies/overview.js
-export default {
+const academiesOverview = {
   id: "academies-overview",
   layout: "text-left",
   eyebrow: "Mais do que um treino.",
@@ -13,3 +12,5 @@ export default {
     alt: "Jovens atletas em contexto de treino nas Academias Sunlive.",
   },
 };
+
+export default academiesOverview;

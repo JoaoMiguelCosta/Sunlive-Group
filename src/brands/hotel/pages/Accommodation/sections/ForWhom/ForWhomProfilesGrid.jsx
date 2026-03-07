@@ -1,5 +1,5 @@
 import styles from "./ForWhomProfilesGrid.module.css";
-import hotelBrand from "../../../../config/registry/index.js";
+import hotelBrand from "../../../../config/index.js";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 

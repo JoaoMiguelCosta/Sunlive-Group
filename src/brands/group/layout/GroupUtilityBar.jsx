@@ -1,8 +1,8 @@
 import UtilityBar from "../../../shared/components/UtilityBar/index.jsx";
-import { groupHomePage } from "../config/pages/home.js";
+import { groupHomePage } from "../config/pages/index.js";
 
 export default function GroupUtilityBar({ leftSlot = null }) {
-  const overview = groupHomePage?.overview;
+  const overview = groupHomePage?.sections?.overview;
 
   const socials = overview?.socials ?? [];
   const lang = overview?.lang ?? {
@@ -20,3 +20,5 @@ export default function GroupUtilityBar({ leftSlot = null }) {
     />
   );
 }
+
+

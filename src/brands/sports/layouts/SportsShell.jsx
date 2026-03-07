@@ -4,7 +4,7 @@ import SportsUtilityBar from "./SportsUtilityBar.jsx";
 import BrandMasthead from "../shared/ui/BrandMasthead/index.jsx";
 import FooterSports from "../components/FooterSports";
 
-import sportsBrand from "../config/registry/index.js";
+import sportsBrand from "../config/index.js";
 import sportsLogo from "../assets/LogoSunliveSports/sports.png";
 
 import styles from "./SportsShell.module.css";
@@ -14,7 +14,6 @@ const SPORTS_BASE_PATH = "/sunlive-group/sports";
 export default function SportsShell() {
   const location = useLocation();
 
-  // ✅ Footer vem COMPLETO do próprio brand (sem merges)
   const footerData = sportsBrand.sections?.footer;
 
   const isSportsHome =

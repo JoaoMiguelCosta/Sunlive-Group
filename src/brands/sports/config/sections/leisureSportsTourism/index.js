@@ -1,4 +1,3 @@
-// src/brands/sports/config/sections/leisureSportsTourism/index.js
 export { default as hero } from "./hero.js";
 export { default as overview } from "./overview.js";
 export { default as experiencesIntro } from "./experiencesIntro.js";

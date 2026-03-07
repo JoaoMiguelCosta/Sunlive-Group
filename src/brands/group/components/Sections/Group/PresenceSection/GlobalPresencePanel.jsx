@@ -1,11 +1,11 @@
 // src/brands/group/components/SectionGroup/PresenceSection/GlobalPresencePanel.jsx
 import styles from "./GlobalPresencePanel.module.css";
 
-import { groupHomePage } from "../../../../config/pages/home.js";
-import { IMG_COMMON } from "../../../../config/registry/footer.js";
+import { groupHomePage } from "../../../../config/pages/index.js";
+import { IMG_COMMON } from "../../../../config/core/footer.js";
 
 export default function GlobalPresencePanel() {
-  const countries = groupHomePage?.presence?.countries ?? [];
+  const countries = groupHomePage?.sections?.presence?.countries ?? [];
   if (!countries.length) return null;
 
   return (
@@ -20,3 +20,5 @@ export default function GlobalPresencePanel() {
     </div>
   );
 }
+
+

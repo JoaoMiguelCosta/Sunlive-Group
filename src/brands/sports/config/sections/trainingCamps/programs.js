@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/trainingCamps/programs.js
-export default [
+const trainingCampsPrograms = [
   {
     key: "sports-camps",
     imageSide: "right",
@@ -83,3 +82,5 @@ export default [
     },
   },
 ];
+
+export default trainingCampsPrograms;

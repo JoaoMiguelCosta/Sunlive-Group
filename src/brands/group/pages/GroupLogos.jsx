@@ -9,7 +9,7 @@ import Teams from "../components/Sections/GroupLogos/Teams/index.jsx";
 import Associations from "../components/Sections/GroupLogos/Associations/index.jsx";
 
 import GroupFooter from "../layout/GroupFooter/GroupFooter.jsx";
-import groupBrand from "../config/registry/index.js";
+import groupBrand from "../config/index.js";
 
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
@@ -42,3 +42,5 @@ export default function PartnersLogosPage() {
     </div>
   );
 }
+
+

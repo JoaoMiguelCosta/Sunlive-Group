@@ -1,7 +1,20 @@
-import aboutSections from "../sections/about/index.js";
+import {
+  aboutTheHotel,
+  storyMilestones,
+  qualityCommitment,
+  bairradaRegion,
+  uniqueNaturalSetting,
+} from "../sections/about/index.js";
 
-export const hotelAboutPage = {
+const about = {
+  id: "about",
   sections: {
-    ...aboutSections,
+    aboutTheHotel,
+    storyMilestones,
+    qualityCommitment,
+    bairradaRegion,
+    uniqueNaturalSetting,
   },
 };
+
+export default about;

@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/registry/index.js";
+import hotelBrand from "../../../../config/index.js";
 import OurStoryMilestonesHeader from "./OurStoryMilestonesHeader.jsx";
 import OurStoryMilestonesContent from "./OurStoryMilestonesContent.jsx";
 import styles from "./OurStoryMilestones.module.css";

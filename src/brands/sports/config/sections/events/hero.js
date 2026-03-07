@@ -1,6 +1,7 @@
-// src/brands/sports/config/sections/events/hero.js
-export default {
+const eventsHero = {
   title: "Eventos",
   description:
     "Criamos experiências desportivas inesquecíveis através de eventos de classe mundial.",
 };
+
+export default eventsHero;

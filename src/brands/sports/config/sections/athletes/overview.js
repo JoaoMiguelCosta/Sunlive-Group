@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/athletes/overview.js
-export default {
+const athletesOverview = {
   id: "athletes-overview",
   layout: "text-only",
   eyebrow: "Valores que nos movem.",
@@ -11,3 +10,5 @@ export default {
   ],
   image: null,
 };
+
+export default athletesOverview;

@@ -1,9 +1,8 @@
-// src/brands/sports/config/sections/athletes/profiles.js
 import { GLOBAL_FLAGS } from "../../../../../shared/config/icons/flags.icons.js";
 
 const { portugal: PortugalFlag } = GLOBAL_FLAGS;
 
-export default {
+const athletesProfiles = {
   id: "athletes-profiles",
   items: [
     {
@@ -104,3 +103,5 @@ export default {
     },
   ],
 };
+
+export default athletesProfiles;

@@ -4,22 +4,10 @@ import styles from "./CyclingDisciplinesSection.module.css";
 import SportsDisciplineCard from "../../../shared/ui/SportsDisciplineCard/SportsDisciplineCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 
-import { BRAND_ICONS } from "../../../config/icons.public.js";
+import { ICONS } from "../../../config/index.js";
 
-// ícone por defeito do header (workflow)
-const HEADER_DEFAULT_ICON = BRAND_ICONS.WorkflowIcon;
+const HEADER_DEFAULT_ICON = ICONS.WorkflowIcon;
 
-/**
- * CyclingDisciplinesSection
- * Bloco com header + acordeão + grelha de disciplinas de ciclismo
- *
- * Espera receber em `data` o bloco `disciplines` do configSports,
- * com a chave `cyclingDisciplines`.
- *
- * Props extra:
- *  - icon?: ReactComponent   (ícone no header)
- *  - heading?: string        (texto do header, default "Disciplinas")
- */
 export default function CyclingDisciplinesSection({
   data,
   icon = null,
@@ -30,7 +18,6 @@ export default function CyclingDisciplinesSection({
 
   const { id, items } = section;
 
-  // Acordeão (um único painel)
   const accordionItems = useMemo(
     () => [{ key: "cycling-disciplines", defaultOpen: true }],
     [],
@@ -42,10 +29,8 @@ export default function CyclingDisciplinesSection({
 
   const panelKey = "cycling-disciplines";
   const open = isOpen(panelKey);
-
   const handleToggle = () => toggle(panelKey);
 
-  // ícone do header: prop `icon` > WorkflowIcon por defeito
   const HeaderIcon = icon || HEADER_DEFAULT_ICON;
 
   return (
@@ -55,7 +40,6 @@ export default function CyclingDisciplinesSection({
       aria-label="Disciplinas de Ciclismo Sunlive"
     >
       <div className={styles.inner}>
-        {/* Header Performance Prestige + botão de acordeão */}
         <header className={styles.header}>
           <button
             type="button"
@@ -81,7 +65,6 @@ export default function CyclingDisciplinesSection({
           </button>
         </header>
 
-        {/* Corpo: grelha de disciplinas */}
         {open && (
           <div id={`${id}-panel`} className={styles.panelBody}>
             <div className={styles.grid}>

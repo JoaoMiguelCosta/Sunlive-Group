@@ -21,3 +21,5 @@ export const qualityCommitment = {
     },
   ],
 };
+
+export default qualityCommitment;

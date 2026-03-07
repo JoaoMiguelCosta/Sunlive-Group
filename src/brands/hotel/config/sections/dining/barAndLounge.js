@@ -3,3 +3,5 @@ export const barAndLounge = {
   headerLabel: "Bar & Lounge",
   description: "Conteúdo a definir.",
 };
+
+export default barAndLounge;

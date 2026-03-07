@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/leisureSportsTourism/benefitsIntro.js
-export default {
+const leisureSportsTourismBenefitsIntro = {
   id: "leisure-sports-tourism-benefits-intro",
   title: "Benefícios para os Atletas",
   lead: "Cada experiência é cuidadosamente desenhada para complementar o treino intensivo, proporcionando benefícios tangíveis para a performance e bem-estar dos atletas.",
@@ -34,3 +33,5 @@ export default {
     },
   ],
 };
+
+export default leisureSportsTourismBenefitsIntro;

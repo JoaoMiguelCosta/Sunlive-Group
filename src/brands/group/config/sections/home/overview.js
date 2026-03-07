@@ -1,5 +1,6 @@
 import { LANG_DEFAULT } from "../../../../../shared/config/BrandDefault.js";
-import { GROUP_SOCIALS } from "../../registry/nav.js";
+import { GROUP_SOCIALS } from "../../core/socials.js";
+import { GROUP_BASE_PATH } from "../../core/paths.js";
 
 /* ---------- Assets Overview ---------- */
 import logoGroup from "../../../assets/group/logo/logo-group.png";
@@ -12,7 +13,13 @@ import internationalImg from "../../../assets/group/brands/international.png";
 import homeImg from "../../../assets/group/brands/our-home.png";
 
 export const overview = {
-  brandHero: { renderAs: "image", imageSrc: logoGroup, alt: "Sunlive Group" },
+  id: "overview",
+
+  brandHero: {
+    renderAs: "image",
+    imageSrc: logoGroup,
+    alt: "Sunlive Group",
+  },
 
   headline: {
     renderAs: "svg",
@@ -26,7 +33,7 @@ export const overview = {
       key: "travel",
       label: "Travel",
       sub: "Sunlive",
-      href: "/sunlive-group/travel",
+      href: `${GROUP_BASE_PATH}/travel`,
       renderAs: "image",
       imageSrc: travelImg,
     },
@@ -43,7 +50,7 @@ export const overview = {
       key: "sports",
       label: "Sports",
       sub: "Sunlive",
-      href: "/sunlive-group/sports",
+      href: `${GROUP_BASE_PATH}/sports`,
       renderAs: "image",
       imageSrc: sportsImg,
     },
@@ -61,7 +68,7 @@ export const overview = {
   homeCard: {
     renderAs: "image",
     imageSrc: homeImg,
-    href: "/sunlive-group/hotel",
+    href: `${GROUP_BASE_PATH}/hotel`,
     label: "Our Home",
     sub: "Sunlive",
   },
@@ -71,3 +78,5 @@ export const overview = {
 };
 
 export default overview;
+
+

@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/logistics/overview.js
-export default {
+const logisticsOverview = {
   id: "logistics-overview",
   layout: "text-left",
   eyebrow: "Logística que",
@@ -13,3 +12,5 @@ export default {
     alt: "Equipa em viagem desportiva com apoio logístico Sunlive.",
   },
 };
+
+export default logisticsOverview;

@@ -4,18 +4,14 @@ import styles from "./OverviewSection.module.css";
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
 
-import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
-import { BRAND_ICONS } from "../../../config/icons.public.js";
+import { ICONS } from "../../../config/index.js";
 
 const PILL_ICONS = {
-  athlete: BRAND_ICONS.AthleteBarbellIcon, // Sports
-  brush: BRAND_ICONS.BrushCleaningIcon, // Sports
-  shield: GLOBAL_ICONS.ShieldIcon, // Global
+  athlete: ICONS.AthleteBarbellIcon,
+  brush: ICONS.BrushCleaningIcon,
+  shield: ICONS.ShieldIcon,
 };
 
-/**
- * Secção "Mais do que modalidades" + barra de pilares.
- */
 export default function OverviewSection({ data }) {
   if (!data) return null;
 

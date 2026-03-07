@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/education/bilingual.js
-export default {
+const educationBilingual = {
   id: "education-bilingual",
   items: [
     {
@@ -30,3 +29,5 @@ export default {
     },
   ],
 };
+
+export default educationBilingual;

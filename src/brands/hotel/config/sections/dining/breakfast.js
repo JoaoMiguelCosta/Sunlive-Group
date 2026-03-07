@@ -3,3 +3,5 @@ export const breakfast = {
   headerLabel: "Pequeno-Almoço",
   description: "Conteúdo a definir.",
 };
+
+export default breakfast;

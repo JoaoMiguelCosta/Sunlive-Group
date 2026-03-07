@@ -3,3 +3,5 @@ export const catering = {
   headerLabel: "Serviço de Catering",
   description: "Conteúdo a definir.",
 };
+
+export default catering;

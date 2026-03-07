@@ -1,6 +1,6 @@
 import styles from "./DestinationsIntroBar.module.css";
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
-import travelBrand from "../../config/registry/index.js";
+import travelBrand from "../../config/index.js";
 
 export default function DestinationsIntroBar() {
   const headline = travelBrand?.sections?.internationalDestinations?.headline;

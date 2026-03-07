@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/education/pillars.js
-export default {
+const educationPillars = {
   items: [
     {
       key: "GraduationCapIcon",
@@ -10,3 +9,5 @@ export default {
     { key: "compass", label: "Orientação", iconKey: "compass" },
   ],
 };
+
+export default educationPillars;

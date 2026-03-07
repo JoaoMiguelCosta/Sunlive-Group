@@ -1,4 +1,3 @@
-// src/brands/sports/config/pages/specialisedServices.js
 import {
   hero,
   overview,
@@ -8,12 +7,16 @@ import {
   closingPanel,
 } from "../sections/specialisedServices/index.js";
 
-export default {
+const specialisedServices = {
   id: "specialised-services",
-  hero,
-  overview,
-  areasIntro,
-  pillars,
-  serviceCards,
-  closingPanel,
+  sections: {
+    hero,
+    overview,
+    areasIntro,
+    pillars,
+    serviceCards,
+    closingPanel,
+  },
 };
+
+export default specialisedServices;

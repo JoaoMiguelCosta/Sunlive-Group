@@ -2,14 +2,13 @@
 import styles from "./ProgramsSection.module.css";
 import ProgramDetailSection from "../../../shared/ui/ProgramDetailSection/ProgramDetailSection.jsx";
 
-import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
-import { BRAND_ICONS } from "../../../config/icons.public.js"; // ✅ exclusivos Sports
+import { ICONS } from "../../../config/index.js";
 
 const PROGRAM_ICONS = {
-  trophy: BRAND_ICONS.MedalIcon, // Sports (exclusivo)
-  runner: BRAND_ICONS.SpeedIcon, // Sports (exclusivo)
-  sun: BRAND_ICONS.SunIcon, // Sports (exclusivo)
-  globe: GLOBAL_ICONS.GlobeIcon, // Global
+  trophy: ICONS.MedalIcon,
+  runner: ICONS.SpeedIcon,
+  sun: ICONS.SunIcon,
+  globe: ICONS.GlobeIcon,
 };
 
 export default function ProgramsSection({ data }) {

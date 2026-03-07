@@ -1,13 +1,13 @@
 // src/brands/group/components/SectionGroup/PeopleSection/TeamCollage.jsx
 import styles from "./TeamCollage.module.css";
 
-import { groupHomePage } from "../../../../config/pages/home.js";
-import { IMG_COMMON } from "../../../../config/registry/footer.js";
+import { groupHomePage } from "../../../../config/pages/index.js";
+import { IMG_COMMON } from "../../../../config/core/footer.js";
 
 export default function TeamCollage() {
-  const src = groupHomePage?.people?.collage?.src ?? null;
-  const alt = groupHomePage?.people?.collage?.alt ?? "Team collage";
-  const caption = groupHomePage?.people?.collage?.caption ?? null;
+  const src = groupHomePage?.sections?.people?.collage?.src ?? null;
+  const alt = groupHomePage?.sections?.people?.collage?.alt ?? "Team collage";
+  const caption = groupHomePage?.sections?.people?.collage?.caption ?? null;
 
   if (!src) return null;
 
@@ -20,3 +20,5 @@ export default function TeamCollage() {
     </figure>
   );
 }
+
+

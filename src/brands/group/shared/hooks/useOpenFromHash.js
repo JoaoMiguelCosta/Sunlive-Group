@@ -43,3 +43,5 @@ export default function useOpenFromHash({
     // deps estáveis: reagir apenas a hash/rota/itens/config
   }, [hash, pathname, items, routePath, regex]);
 }
+
+

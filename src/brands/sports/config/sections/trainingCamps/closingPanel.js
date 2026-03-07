@@ -1,5 +1,6 @@
-// src/brands/sports/config/sections/trainingCamps/closingPanel.js
-export default {
+import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
+
+const trainingCampsClosingPanel = {
   id: "training-camps-closing-panel",
   chipLabel: "Próximo passo",
   title:
@@ -11,13 +12,15 @@ export default {
   accentWords: ["Academias", "atitude", "resiliência", "caminho"],
   primaryCta: {
     label: "Contactar",
-    href: "/sunlive-group/sports/contacts",
+    href: SPORTS_PAGE_PATHS.contacts,
     ariaLabel: "Contactar Sunlive Sports sobre Training Camps",
     icon: "phone",
   },
   secondaryCta: {
     label: "Seguir para Academias",
-    href: "/sunlive-group/sports/academies",
+    href: SPORTS_PAGE_PATHS.academies,
     ariaLabel: "Seguir para a página de Academias da Sunlive Sports",
   },
 };
+
+export default trainingCampsClosingPanel;

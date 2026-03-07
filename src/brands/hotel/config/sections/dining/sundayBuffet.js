@@ -3,3 +3,5 @@ export const sundayBuffet = {
   headerLabel: "Buffet de Domingo",
   description: "Conteúdo a definir.",
 };
+
+export default sundayBuffet;

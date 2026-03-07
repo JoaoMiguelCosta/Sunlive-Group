@@ -1,4 +1,3 @@
-// src/brands/sports/config/pages/athletes.js
 import {
   hero,
   overview,
@@ -8,12 +7,16 @@ import {
   closingPanel,
 } from "../sections/athletes/index.js";
 
-export default {
+const athletes = {
   id: "sunlive-athletes",
-  hero,
-  overview,
-  pillars,
-  profilesIntro,
-  profiles,
-  closingPanel,
+  sections: {
+    hero,
+    overview,
+    pillars,
+    profilesIntro,
+    profiles,
+    closingPanel,
+  },
 };
+
+export default athletes;

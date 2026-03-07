@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/events/overview.js
-export default {
+const eventsOverview = {
   id: "events-overview",
   layout: "text-left",
   eyebrow: "Eventos que",
@@ -13,3 +12,5 @@ export default {
     alt: "Evento desportivo organizado pela Sunlive Sports.",
   },
 };
+
+export default eventsOverview;

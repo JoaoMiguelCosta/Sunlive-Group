@@ -4,7 +4,7 @@ import LogoGridSection from "../_shared/LogoGridSection";
 import groupLogosPage from "../../../../config/pages/logos.js";
 
 export default function Associations() {
-  const data = groupLogosPage?.associations;
+  const data = groupLogosPage?.sections?.associations;
   if (!data) return null;
 
   return (
@@ -22,3 +22,5 @@ export default function Associations() {
     </section>
   );
 }
+
+

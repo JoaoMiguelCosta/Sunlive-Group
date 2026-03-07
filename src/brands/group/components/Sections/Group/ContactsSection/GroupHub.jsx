@@ -3,7 +3,7 @@ import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
 // ✅ Novo: contacts vêm do novo config (pages/home.js)
-import { groupHomePage } from "../../../../config/pages/home.js";
+import { groupHomePage } from "../../../../config/pages/index.js";
 
 export default function GroupHub({ data }) {
   if (!data) return null;
@@ -24,8 +24,8 @@ export default function GroupHub({ data }) {
   });
 
   // Ícones do config (fallbacks seguros para não quebrar a UI)
-  const Mail = groupHomePage?.contacts?.icons?.Mail || (() => null);
-  const Phone = groupHomePage?.contacts?.icons?.Phone || (() => null);
+  const Mail = groupHomePage?.sections?.contacts?.icons?.Mail || (() => null);
+  const Phone = groupHomePage?.sections?.contacts?.icons?.Phone || (() => null);
 
   return (
     <div className={styles.wrap} id="unit-group">
@@ -73,3 +73,5 @@ export default function GroupHub({ data }) {
     </div>
   );
 }
+
+

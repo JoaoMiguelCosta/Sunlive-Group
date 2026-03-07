@@ -4,23 +4,22 @@ import styles from "./ConsultancyAreasSection.module.css";
 import ServiceFeaturePanel from "../../../shared/ui/ServiceFeaturePanel/ServiceFeaturePanel.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 
-import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
-import { BRAND_ICONS } from "../../../config/icons.public.js";
+import { ICONS } from "../../../config/index.js";
 
 /**
  * Mapa local de iconKey → componente
  * Ajusta as keys para alinharem com o configSports.consultancy.areasPanels.items
  */
 const PANEL_ICONS = {
-  global: GLOBAL_ICONS.GlobeIcon, // Global
-  build2: GLOBAL_ICONS.Building2Icon, // Global
+  global: ICONS.GlobeIcon,
+  build2: ICONS.Building2Icon,
 
-  luggage: BRAND_ICONS.LuggageIcon, // Sports
-  trendup: BRAND_ICONS.TrendUpIcon, // Sports
-  cog: BRAND_ICONS.CogIcon, // Sports
-  medal: BRAND_ICONS.MedalIcon, // Sports
-  circus: BRAND_ICONS.CircusTentIcon, // Sports
-  goal: BRAND_ICONS.GoalIcon, // Sports
+  luggage: ICONS.LuggageIcon,
+  trendup: ICONS.TrendUpIcon,
+  cog: ICONS.CogIcon,
+  medal: ICONS.MedalIcon,
+  circus: ICONS.CircusTentIcon,
+  goal: ICONS.GoalIcon,
 };
 
 /**

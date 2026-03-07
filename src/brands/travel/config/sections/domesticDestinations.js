@@ -1,4 +1,3 @@
-// src/brands/travel/config/sections/domesticDestinations.js
 import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
 
 import aveiroImg from "../../assets/DomesticDestinations/aveiro.png";
@@ -8,7 +7,7 @@ import coimbraImg from "../../assets/DomesticDestinations/coimbra.png";
 import sintraImg from "../../assets/DomesticDestinations/sintra.png";
 import obidosImg from "../../assets/DomesticDestinations/obidos.png";
 
-const BRAND_TITLE = "Sunlive Travel";
+import { TRAVEL_COMPANY } from "../core/company.js";
 
 const domesticDestinations = {
   id: "destinos-nacionais",
@@ -97,7 +96,7 @@ const domesticDestinations = {
       picture: { src: obidosImg, alt: "Muralhas e vistas de Óbidos" },
     },
   ],
-  cta: makeDefaultCTA(BRAND_TITLE),
+  cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
 };
 
 export default domesticDestinations;

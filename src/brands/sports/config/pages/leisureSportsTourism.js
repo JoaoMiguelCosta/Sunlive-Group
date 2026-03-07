@@ -1,4 +1,3 @@
-// src/brands/sports/config/pages/leisureSportsTourism.js
 import {
   hero,
   overview,
@@ -11,15 +10,19 @@ import {
   closingPanel,
 } from "../sections/leisureSportsTourism/index.js";
 
-export default {
+const leisureSportsTourism = {
   id: "leisure-sports-tourism",
-  hero,
-  overview,
-  experiencesIntro,
-  leisureExperiences,
-  destinationsIntro,
-  leisureDestinations,
-  benefitsIntro,
-  pillars,
-  closingPanel,
+  sections: {
+    hero,
+    overview,
+    experiencesIntro,
+    leisureExperiences,
+    destinationsIntro,
+    leisureDestinations,
+    benefitsIntro,
+    pillars,
+    closingPanel,
+  },
 };
+
+export default leisureSportsTourism;

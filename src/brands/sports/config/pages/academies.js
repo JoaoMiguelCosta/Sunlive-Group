@@ -1,4 +1,3 @@
-// src/brands/sports/config/pages/academies.js
 import {
   hero,
   overview,
@@ -7,11 +6,15 @@ import {
   closingPanel,
 } from "../sections/academies/index.js";
 
-export default {
+const academies = {
   id: "academies",
-  hero,
-  overview,
-  pillars,
-  cards,
-  closingPanel,
+  sections: {
+    hero,
+    overview,
+    pillars,
+    cards,
+    closingPanel,
+  },
 };
+
+export default academies;

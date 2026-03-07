@@ -4,7 +4,7 @@ import TitleAmenities from "./TitleAmenities.jsx";
 import DescriptionAmenities from "./DescriptionAmenities.jsx";
 import AmenitiesPills from "./AmenitiesPills.jsx";
 
-import hotelBrand from "../../../../config/registry/index.js";
+import hotelBrand from "../../../../config/index.js";
 
 export default function Amenities() {
   const content = hotelBrand?.pages?.accommodation?.sections?.amenities ?? null;

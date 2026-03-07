@@ -5,7 +5,7 @@ import DescriptionForWhom from "./DescriptionForWhom.jsx";
 import ForWhomHero from "./ForWhomHero.jsx";
 import ForWhomProfilesGrid from "./ForWhomProfilesGrid.jsx";
 
-import hotelBrand from "../../../../config/registry/index.js";
+import hotelBrand from "../../../../config/index.js";
 
 export default function ForWhom() {
   const content = hotelBrand?.pages?.accommodation?.sections?.forWhom ?? null;

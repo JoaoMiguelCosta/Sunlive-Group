@@ -1,7 +1,24 @@
-import accommodationSections from "../sections/accommodation/index.js";
+import {
+  accommodations,
+  amenities,
+  stayPolicies,
+  forWhom,
+  forAllProfiles,
+  forWhomProfiles,
+  whyChoose,
+} from "../sections/accommodation/index.js";
 
-export const hotelAccommodationPage = {
+const accommodation = {
+  id: "accommodation",
   sections: {
-    ...accommodationSections,
+    accommodations,
+    amenities,
+    stayPolicies,
+    forWhom,
+    forAllProfiles,
+    forWhomProfiles,
+    whyChoose,
   },
 };
+
+export default accommodation;

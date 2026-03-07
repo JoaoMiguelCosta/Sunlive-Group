@@ -2,7 +2,7 @@ import styles from "./DomesticDestinationsSection.module.css";
 import DestinationsIntroBar from "./DestinationsIntroBar.jsx";
 import DestinationsBrowser from "./DestinationsBrowser.jsx";
 import ContactCTA from "./ContactCTA.jsx";
-import travelBrand from "../../config/registry/index.js";
+import travelBrand from "../../config/index.js";
 
 export default function DomesticDestinationsSection({ className = "" }) {
   const cfg = travelBrand?.sections?.domesticDestinations;

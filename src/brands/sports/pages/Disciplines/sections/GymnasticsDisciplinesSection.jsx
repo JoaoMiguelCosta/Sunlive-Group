@@ -4,21 +4,10 @@ import styles from "./GymnasticsDisciplinesSection.module.css";
 import SportsDisciplineCard from "../../../shared/ui/SportsDisciplineCard/SportsDisciplineCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 
-import { BRAND_ICONS } from "../../../config/icons.public.js";
+import { ICONS } from "../../../config/index.js";
 
-// ícone por defeito do header (workflow)
-const HEADER_DEFAULT_ICON = BRAND_ICONS.WorkflowIcon;
+const HEADER_DEFAULT_ICON = ICONS.WorkflowIcon;
 
-/**
- * GymnasticsDisciplinesSection
- * Bloco com header + acordeão + grelha de disciplinas de Ginástica
- *
- * Lê de data.sections.disciplines.gymnasticsDisciplines
- *
- * Props extra:
- *  - icon?: ReactNode   (ícone no header)
- *  - heading?: string   (texto do header, default "Disciplinas")
- */
 export default function GymnasticsDisciplinesSection({
   data,
   icon = null,
@@ -29,7 +18,6 @@ export default function GymnasticsDisciplinesSection({
 
   const { id, items } = section;
 
-  // Acordeão (um único painel)
   const accordionItems = useMemo(
     () => [{ key: "gymnastics-disciplines", defaultOpen: true }],
     [],
@@ -44,7 +32,6 @@ export default function GymnasticsDisciplinesSection({
 
   const handleToggle = () => toggle(panelKey);
 
-  // ícone do header: prop `icon` > WorkflowIcon por defeito
   const HeaderIcon = icon || HEADER_DEFAULT_ICON;
 
   return (
@@ -54,7 +41,6 @@ export default function GymnasticsDisciplinesSection({
       aria-label="Disciplinas de Ginástica Sunlive"
     >
       <div className={styles.inner}>
-        {/* Header Performance Prestige + botão de acordeão */}
         <header className={styles.header}>
           <button
             type="button"
@@ -80,7 +66,6 @@ export default function GymnasticsDisciplinesSection({
           </button>
         </header>
 
-        {/* Corpo: grelha 3x3 (ou responsivo) de disciplinas */}
         {open && (
           <div id={`${id}-panel`} className={styles.panelBody}>
             <div className={styles.grid}>

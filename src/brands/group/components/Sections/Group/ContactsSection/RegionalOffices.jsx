@@ -4,7 +4,7 @@ import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
 // ✅ Novo: Ícones vindos do novo config (pages/home.js)
-import { groupHomePage } from "../../../../config/pages/home.js";
+import { groupHomePage } from "../../../../config/pages/index.js";
 
 export default function RegionalOffices({ items = [] }) {
   const { isOpen, toggle } = useAccordion(items, { allowMultiple: true });
@@ -20,7 +20,7 @@ export default function RegionalOffices({ items = [] }) {
 
   if (!items.length) return null;
 
-  const groupContacts = groupHomePage?.contacts;
+  const groupContacts = groupHomePage?.sections?.contacts;
 
   // Ícones do config (fallbacks seguros)
   const MailIcon = groupContacts?.icons?.Mail || (() => null);
@@ -41,3 +41,5 @@ export default function RegionalOffices({ items = [] }) {
     </div>
   );
 }
+
+

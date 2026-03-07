@@ -1,11 +1,10 @@
 import UtilityBar from "../../../shared/components/UtilityBar/index.jsx";
 import BackButton from "../../../shared/ui/BackButton/BackButton.jsx";
 
-import groupLogosPage from "../config/pages/logos.js";
-import { groupHomePage } from "../config/pages/home.js";
+import { groupLogosPage, groupHomePage } from "../config/pages/index.js";
 
 export default function LogosUtilityBar() {
-  const overview = groupHomePage?.overview;
+  const overview = groupHomePage?.sections?.overview;
 
   const socials = overview?.socials ?? [];
   const lang = overview?.lang ?? {
@@ -23,3 +22,5 @@ export default function LogosUtilityBar() {
     />
   );
 }
+
+

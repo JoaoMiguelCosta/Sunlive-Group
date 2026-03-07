@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/disciplines/overview.js
-export default {
+const disciplinesOverview = {
   id: "disciplines-overview",
   layout: "text-left",
   eyebrow: "Mais do que modalidades.",
@@ -13,3 +12,5 @@ export default {
     alt: "Atletas em diferentes modalidades desportivas Sunlive.",
   },
 };
+
+export default disciplinesOverview;

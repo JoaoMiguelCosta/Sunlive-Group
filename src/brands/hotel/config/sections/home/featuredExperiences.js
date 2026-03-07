@@ -41,3 +41,5 @@ export const featuredExperiences = {
     },
   ],
 };
+
+export default featuredExperiences;

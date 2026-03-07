@@ -10,7 +10,7 @@ import PartnersSection from "../components/Sections/Group/PartnersSection/index.
 import BookSection from "../components/Sections/Group/BookSection/index.jsx";
 
 import GroupFooter from "../layout/GroupFooter/GroupFooter.jsx";
-import groupBrand from "../config/registry/index.js";
+import groupBrand from "../config/index.js";
 
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
@@ -38,3 +38,5 @@ export default function GroupPage() {
     </div>
   );
 }
+
+

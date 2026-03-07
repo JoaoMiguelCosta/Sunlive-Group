@@ -1,29 +1,7 @@
-import { accommodations } from "./accommodations.js";
-import { amenities } from "./amenities.js";
-import { stayPolicies } from "./stayPolicies.js";
-import { forWhom } from "./forWhom.js";
-import { forAllProfiles } from "./forAllProfiles.js";
-import { forWhomProfiles } from "./forWhomProfiles.js";
-import { whyChoose } from "./whyChoose.js";
-
-export {
-  accommodations,
-  amenities,
-  stayPolicies,
-  forWhom,
-  forAllProfiles,
-  forWhomProfiles,
-  whyChoose,
-};
-
-const accommodationSections = {
-  accommodations,
-  amenities,
-  stayPolicies,
-  forWhom,
-  forAllProfiles,
-  forWhomProfiles,
-  whyChoose,
-};
-
-export default accommodationSections;
+export { default as accommodations } from "./accommodations.js";
+export { default as amenities } from "./amenities.js";
+export { default as stayPolicies } from "./stayPolicies.js";
+export { default as forWhom } from "./forWhom.js";
+export { default as forAllProfiles } from "./forAllProfiles.js";
+export { default as forWhomProfiles } from "./forWhomProfiles.js";
+export { default as whyChoose } from "./whyChoose.js";

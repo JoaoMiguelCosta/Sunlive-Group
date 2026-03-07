@@ -4,13 +4,12 @@ import styles from "./OverviewSection.module.css";
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
 
-import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
-import { BRAND_ICONS } from "../../../config/icons.public.js";
+import { ICONS } from "../../../config/index.js";
 
 const PILL_ICONS = {
-  GraduationCapIcon: BRAND_ICONS.GraduationCapIcon, // Sports
-  values: GLOBAL_ICONS.HeartIcon, // Global
-  compass: BRAND_ICONS.CompassIcon, // Sports
+  GraduationCapIcon: ICONS.GraduationCapIcon,
+  values: ICONS.HeartIcon,
+  compass: ICONS.CompassIcon,
 };
 
 export default function OverviewSection({ data }) {

@@ -1,4 +1,3 @@
-// src/brands/sports/config/pages/education.js
 import {
   hero,
   overview,
@@ -13,17 +12,21 @@ import {
   closingPanel,
 } from "../sections/education/index.js";
 
-export default {
+const education = {
   id: "education",
-  hero,
-  overview,
-  levelsIntro,
-  levels,
-  bilingualIntro,
-  bilingual,
-  bilingualCertification,
-  careersIntro,
-  careers,
-  pillars,
-  closingPanel,
+  sections: {
+    hero,
+    overview,
+    levelsIntro,
+    levels,
+    bilingualIntro,
+    bilingual,
+    bilingualCertification,
+    careersIntro,
+    careers,
+    pillars,
+    closingPanel,
+  },
 };
+
+export default education;

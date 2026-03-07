@@ -1,17 +1,5 @@
-import { panoramicRestaurant } from "./panoramicRestaurant.js";
-import { breakfast } from "./breakfast.js";
-import { sundayBuffet } from "./sundayBuffet.js";
-import { barAndLounge } from "./barAndLounge.js";
-import { catering } from "./catering.js";
-
-export { panoramicRestaurant, breakfast, sundayBuffet, barAndLounge, catering };
-
-const diningSections = {
-  panoramicRestaurant,
-  breakfast,
-  sundayBuffet,
-  barAndLounge,
-  catering,
-};
-
-export default diningSections;
+export { default as panoramicRestaurant } from "./panoramicRestaurant.js";
+export { default as breakfast } from "./breakfast.js";
+export { default as sundayBuffet } from "./sundayBuffet.js";
+export { default as barAndLounge } from "./barAndLounge.js";
+export { default as catering } from "./catering.js";

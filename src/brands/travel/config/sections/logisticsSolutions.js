@@ -1,4 +1,3 @@
-// src/brands/travel/config/sections/logisticsSolutions.js
 const logisticsSolutions = {
   id: "logistica",
   headline: {
@@ -18,7 +17,7 @@ const logisticsSolutions = {
       items: [
         "Motoristas Profissionais",
         "Monitorização de voos",
-        "Veículos Premium/Standart",
+        "Veículos Premium/Standard",
         "Serviço 24/7",
       ],
     },

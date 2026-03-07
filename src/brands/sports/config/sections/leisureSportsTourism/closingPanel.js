@@ -1,5 +1,6 @@
-// src/brands/sports/config/sections/leisureSportsTourism/closingPanel.js
-export default {
+import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
+
+const leisureSportsTourismClosingPanel = {
   id: "leisure-sports-tourism-closing-panel",
   chipLabel: "Próximo Passo",
   title:
@@ -8,18 +9,20 @@ export default {
   accentWords: ["lazer", "prática", "Modalidades"],
   primaryCta: {
     label: "Contactar",
-    href: "/sunlive-group/sports/contacts",
+    href: SPORTS_PAGE_PATHS.contacts,
     ariaLabel: "Contactar a Sunlive Sports sobre Turismo Desportivo Lúdico",
     icon: "phone",
   },
   backCta: {
     label: "Voltar para Educação",
-    href: "/sunlive-group/sports/education",
+    href: SPORTS_PAGE_PATHS.education,
     ariaLabel: "Voltar para a página de Educação da Sunlive Sports",
   },
   secondaryCta: {
     label: "Seguir para Modalidades",
-    href: "/sunlive-group/sports/sports-disciplines",
+    href: SPORTS_PAGE_PATHS.disciplines,
     ariaLabel: "Seguir para a página de Modalidades da Sunlive Sports",
   },
 };
+
+export default leisureSportsTourismClosingPanel;

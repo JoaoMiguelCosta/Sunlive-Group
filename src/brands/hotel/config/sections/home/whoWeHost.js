@@ -34,3 +34,5 @@ export const whoWeHost = {
     },
   ],
 };
+
+export default whoWeHost;

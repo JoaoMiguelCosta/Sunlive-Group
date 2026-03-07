@@ -1,14 +1,7 @@
 // src/brands/sports/pages/Disciplines/OtherDisciplinesSection.jsx
 import styles from "./OtherDisciplinesSection.module.css";
 
-import { BRAND_ICONS } from "../../../config/icons.public.js";
-
-/**
- * Outras Modalidades — bloco compacto em “escadinha”
- * Andebol, Judo, Esgrima, Voleibol, Surf.
- *
- * Agora com ícones vindos do mapa BRAND_ICONS (Sports).
- */
+import { ICONS } from "../../../config/index.js";
 
 const OTHER_DISCIPLINES = [
   { key: "handball", label: "Andebol", iconKey: "HandballIcon" },
@@ -23,7 +16,7 @@ export default function OtherDisciplinesSection() {
   const bottomRow = OTHER_DISCIPLINES.slice(3);
 
   const renderCard = (item) => {
-    const Icon = BRAND_ICONS[item.iconKey];
+    const Icon = ICONS[item.iconKey];
 
     return (
       <div key={item.key} className={styles.card} role="listitem">
@@ -46,12 +39,10 @@ export default function OtherDisciplinesSection() {
     >
       <div className={styles.inner}>
         <div className={styles.cluster} role="list">
-          {/* Linha de cima: 3 cartões */}
           <div className={`${styles.row} ${styles.rowTop}`}>
             {topRow.map(renderCard)}
           </div>
 
-          {/* Linha de baixo: 2 cartões, centrados e “encaixados” */}
           <div className={`${styles.row} ${styles.rowBottom}`}>
             {bottomRow.map(renderCard)}
           </div>

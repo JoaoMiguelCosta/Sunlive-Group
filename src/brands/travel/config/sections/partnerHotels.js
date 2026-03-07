@@ -1,4 +1,3 @@
-// src/brands/travel/config/sections/partnerHotels.js
 import curiaImg from "../../assets/PartnerHotels/curia.png";
 import pateiraImg from "../../assets/PartnerHotels/pateira.png";
 import estanciaImg from "../../assets/PartnerHotels/estancia.png";

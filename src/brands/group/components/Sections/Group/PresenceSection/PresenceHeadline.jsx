@@ -1,12 +1,12 @@
 // src/brands/group/components/SectionGroup/PresenceSection/PresenceHeadline.jsx
 import styles from "./PresenceHeadline.module.css";
 
-import { groupHomePage } from "../../../../config/pages/home.js";
-import { IMG_COMMON } from "../../../../config/registry/footer.js";
+import { groupHomePage } from "../../../../config/pages/index.js";
+import { IMG_COMMON } from "../../../../config/core/footer.js";
 
 export default function PresenceHeadline() {
-  const src = groupHomePage?.presence?.headlineTop?.src ?? null;
-  const alt = groupHomePage?.presence?.headlineTop?.alt ?? "Presence";
+  const src = groupHomePage?.sections?.presence?.headlineTop?.src ?? null;
+  const alt = groupHomePage?.sections?.presence?.headlineTop?.alt ?? "Presence";
 
   if (!src) return null;
 
@@ -16,3 +16,5 @@ export default function PresenceHeadline() {
     </div>
   );
 }
+
+

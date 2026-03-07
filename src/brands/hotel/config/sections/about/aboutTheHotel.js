@@ -17,3 +17,5 @@ export const aboutTheHotel = {
     imageAlt: "Vista geral da Estalagem de Sangalhos – Sport & Nature Hotel.",
   },
 };
+
+export default aboutTheHotel;

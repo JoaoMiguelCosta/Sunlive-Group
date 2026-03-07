@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/trainingCamps/overview.js
-export default {
+const trainingCampsOverview = {
   id: "solutions",
   layout: "text-left",
   eyebrow: "Soluções",
@@ -10,3 +9,5 @@ export default {
   ],
   image: { src: null, alt: "Atletas em treino num campo desportivo." },
 };
+
+export default trainingCampsOverview;

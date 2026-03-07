@@ -1,7 +1,20 @@
-import diningSections from "../sections/dining/index.js";
+import {
+  panoramicRestaurant,
+  breakfast,
+  sundayBuffet,
+  barAndLounge,
+  catering,
+} from "../sections/dining/index.js";
 
-export const hotelDiningPage = {
+const dining = {
+  id: "dining",
   sections: {
-    ...diningSections,
+    panoramicRestaurant,
+    breakfast,
+    sundayBuffet,
+    barAndLounge,
+    catering,
   },
 };
+
+export default dining;

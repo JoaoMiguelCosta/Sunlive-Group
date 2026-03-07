@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/leisureSportsTourism/overview.js
-export default {
+const leisureSportsTourismOverview = {
   id: "leisure-sports-tourism-overview",
   layout: "text-left",
   eyebrow: "Mais do que Treino,",
@@ -13,3 +12,5 @@ export default {
     alt: "Atletas a viver experiências de turismo desportivo em Portugal.",
   },
 };
+
+export default leisureSportsTourismOverview;

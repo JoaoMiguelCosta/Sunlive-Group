@@ -1,5 +1,6 @@
-// src/brands/sports/config/sections/athletes/closingPanel.js
-export default {
+import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
+
+const athletesClosingPanel = {
   id: "athletes-closing-panel",
   chipLabel: "Próximo passo",
   title:
@@ -19,19 +20,21 @@ export default {
   ],
   primaryCta: {
     label: "Contactar",
-    href: "/sunlive-group/sports/contacts",
+    href: SPORTS_PAGE_PATHS.contacts,
     ariaLabel: "Contactar Sunlive Sports sobre os Atletas Sunlive",
     icon: "phone",
   },
   secondaryCta: {
     label: "Seguir para Serviços Especializados",
-    href: "/sunlive-group/sports/specialised-services",
+    href: SPORTS_PAGE_PATHS.specialisedServices,
     ariaLabel:
       "Seguir para a página de Serviços Especializados da Sunlive Sports",
   },
   backCta: {
     label: "Voltar para Eventos",
-    href: "/sunlive-group/sports/events",
+    href: SPORTS_PAGE_PATHS.events,
     ariaLabel: "Voltar para a página de Eventos da Sunlive Sports",
   },
 };
+
+export default athletesClosingPanel;

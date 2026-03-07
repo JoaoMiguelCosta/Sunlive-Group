@@ -1,7 +1,7 @@
 // src/brands/sports/pages/TrainingCamps/index.jsx
 import styles from "./TrainingCamps.module.css";
 
-import sportsBrand from "../../config/registry/index.js";
+import sportsBrand from "../../config/index.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";

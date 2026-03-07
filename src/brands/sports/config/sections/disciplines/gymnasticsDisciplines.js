@@ -1,5 +1,4 @@
-// src/brands/sports/config/sections/disciplines/gymnasticsDisciplines.js
-export default {
+const disciplinesGymnasticsDisciplines = {
   id: "disciplines-gymnastics-disciplines",
   items: [
     {
@@ -58,3 +57,5 @@ export default {
     },
   ],
 };
+
+export default disciplinesGymnasticsDisciplines;

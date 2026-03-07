@@ -4,13 +4,12 @@ import styles from "./OverviewSection.module.css";
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
 
-import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
-import { BRAND_ICONS } from "../../../config/icons.public.js";
+import { ICONS } from "../../../config/index.js";
 
 const PILL_ICONS = {
-  dream: BRAND_ICONS.DreamIcon, // Sports
-  bolt: BRAND_ICONS.BoltIcon, // Sports
-  flag: GLOBAL_ICONS.FlagIcon, // Global
+  dream: ICONS.DreamIcon,
+  bolt: ICONS.BoltIcon,
+  flag: ICONS.FlagIcon,
 };
 
 /**
