@@ -32,10 +32,6 @@ import {
   WorkflowIcon,
 } from "../../shared/ui/icons/index.js";
 
-/**
- * Exclusivos Sports (1 brand).
- * Ícones globais (2+ brands) devem ficar no shared.
- */
 export const BRAND_ICONS = Object.freeze({
   AppleIcon,
   AthleteBarbellIcon,

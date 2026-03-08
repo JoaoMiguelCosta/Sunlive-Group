@@ -3,11 +3,9 @@ const BRAND_ICON_KEY_MAP = Object.freeze({
   water: "WaterIcon",
   recycling: "RecycleIcon",
   "local-products": "FruitBasketIcon",
-
-  bolt: "BoltIcon",
-  recycle: "RecycleIcon",
-  basket: "FruitBasketIcon",
-  fruit: "FruitBasketIcon",
+  celebration: "CelebrationIcon",
+  trophy: "TrophyIcon",
+  business: "BusinessPersonIcon",
 });
 
 export function resolveHotelIconName(iconKey) {

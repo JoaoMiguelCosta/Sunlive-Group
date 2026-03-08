@@ -1,5 +1,5 @@
 import {
-  BusIcon,
+
   PackageIcon,
   TravelVector,
 } from "../../shared/ui/icons/index.js";
@@ -9,7 +9,7 @@ import {
  * Ícones globais (2+ brands) devem ficar no shared.
  */
 export const BRAND_ICONS = Object.freeze({
-  BusIcon,
+ 
   PackageIcon,
   TravelVector,
 });

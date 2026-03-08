@@ -17,6 +17,7 @@ import ShieldIcon from "./Shield.jsx";
 import StarIcon from "./Star.jsx";
 import TourBusIcon from "./TourBus.jsx";
 import UsersIcon from "./Users.jsx";
+import BusIcon from "./Bus.jsx";
 
 export {
   BoltIcon,
@@ -38,4 +39,5 @@ export {
   StarIcon,
   TourBusIcon,
   UsersIcon,
+  BusIcon,
 };
