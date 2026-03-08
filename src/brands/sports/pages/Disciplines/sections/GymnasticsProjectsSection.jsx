@@ -1,22 +1,28 @@
-// src/brands/sports/pages/Disciplines/sections/GymnasticsProjectsSection.jsx
 import { useMemo } from "react";
 import styles from "./ProjectsSection.module.css";
 
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 
-import { ICONS } from "../../../config/index.js";
+import { ICONS, resolveSportsIcon } from "../../../config/index.js";
 
 const HEADER_DEFAULT_ICON = ICONS.ChartIcon;
 
-export default function GymnasticsProjectsSection({ data, icon = null }) {
-  const academies = data?.cards || [];
+export default function GymnasticsProjectsSection({
+  cardsData,
+  sectionData,
+  icon = null,
+}) {
+  const academies = cardsData?.cards || [];
   const items = academies.filter((card) => card.key === "gymnastics-academy");
-
   if (!items.length) return null;
 
-  const id = "disciplines-gymnastics-projects";
-  const heading = "Projetos";
+  const sectionMeta = sectionData?.projectsSection ?? {};
+  const id = sectionMeta.id || "disciplines-gymnastics-projects";
+  const heading = sectionMeta.heading || "Projetos";
+
+  const resolvedHeaderIcon =
+    resolveSportsIcon(ICONS, sectionMeta.headingIconKey) || HEADER_DEFAULT_ICON;
 
   const accordionItems = useMemo(
     () => [{ key: "gymnastics-projects", defaultOpen: true }],
@@ -31,7 +37,7 @@ export default function GymnasticsProjectsSection({ data, icon = null }) {
   const open = isOpen(panelKey);
   const handleToggle = () => toggle(panelKey);
 
-  const HeaderIcon = icon || HEADER_DEFAULT_ICON;
+  const HeaderIcon = icon || resolvedHeaderIcon;
 
   return (
     <section
@@ -49,11 +55,12 @@ export default function GymnasticsProjectsSection({ data, icon = null }) {
             aria-controls={`${id}-panel`}
           >
             <div className={styles.headerLeft}>
-              {HeaderIcon && (
+              {HeaderIcon ? (
                 <span className={styles.headerIconWrap} aria-hidden="true">
                   <HeaderIcon className={styles.headerIcon} size={20} />
                 </span>
-              )}
+              ) : null}
+
               <span className={styles.headerTitle}>{heading}</span>
             </div>
 
@@ -64,7 +71,7 @@ export default function GymnasticsProjectsSection({ data, icon = null }) {
           </button>
         </header>
 
-        {open && (
+        {open ? (
           <div id={`${id}-panel`} className={styles.panelBody}>
             <div className={styles.grid}>
               {items.map((item) => (
@@ -84,7 +91,7 @@ export default function GymnasticsProjectsSection({ data, icon = null }) {
               ))}
             </div>
           </div>
-        )}
+        ) : null}
       </div>
     </section>
   );

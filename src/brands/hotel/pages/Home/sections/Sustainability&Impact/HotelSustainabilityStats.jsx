@@ -1,39 +1,34 @@
 import HotelWhoWeHostCard from "../../../../shared/ui/HotelWhoWeHostCard/HotelWhoWeHostCard.jsx";
-import styles from "./Sustainability&Impact.module.css";
+import styles from "./HotelSustainabilityStats.module.css";
 
-function getIconForStat(id) {
-  switch (id) {
-    case "energy":
-      return "⚡";
-    case "water":
-      return "💧";
-    case "recycling":
-      return "♻️";
-    case "local-products":
-      return "🧺";
-    default:
-      return null;
-  }
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+
+function resolveStatIcon(iconKey) {
+  if (!iconKey) return null;
+
+  const icons = hotelBrand?.icons ?? {};
+  const Icon = resolveHotelIcon(icons, iconKey);
+
+  return Icon ? <Icon className={styles.statIcon} aria-hidden="true" /> : null;
 }
 
 /**
  * HotelSustainabilityStats
- * Wrapper que usa o card reutilizável para mostrar as 4 métricas.
+ * Wrapper que usa o card reutilizável para mostrar as métricas.
  *
  * Props:
- *  - stats: Array<{ id, value, description }>
+ *  - stats: Array<{ id, value, description, iconKey? }>
  */
 export default function HotelSustainabilityStats({ stats = [] }) {
   if (!stats.length) return null;
 
   return (
-    <div className={styles.statsGrid}>
+    <div className={styles.grid}>
       {stats.map((item) => (
         <HotelWhoWeHostCard
           key={item.id}
           id={item.id}
-          icon={getIconForStat(item.id)}
-          title="" // escondido na variante metric
+          icon={resolveStatIcon(item.iconKey)}
           description={item.description}
           statValue={item.value}
           variant="metric"

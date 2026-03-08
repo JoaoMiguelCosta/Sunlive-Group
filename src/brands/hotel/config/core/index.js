@@ -12,6 +12,11 @@ import { HOTEL_QUICK_LINKS, HOTEL_PRIMARY_NAV_ITEMS } from "./nav.js";
 import { BRAND_ICONS } from "./icons.js";
 import { BRAND_FLAGS } from "./flags.js";
 import { ICONS, FLAGS } from "./resolvedVisuals.js";
+import {
+  BRAND_ICON_KEY_MAP,
+  resolveHotelIcon,
+  resolveHotelIconName,
+} from "./iconKeyMap.js";
 
 import * as pages from "../pages/index.js";
 
@@ -57,4 +62,7 @@ export {
   BRAND_FLAGS,
   ICONS,
   FLAGS,
+  BRAND_ICON_KEY_MAP,
+  resolveHotelIcon,
+  resolveHotelIconName,
 };

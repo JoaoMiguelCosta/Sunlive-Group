@@ -1,4 +1,3 @@
-// src/brands/sports/pages/Disciplines/DisciplinesClosingPanel.jsx
 import SportsClosingPanel from "../../../shared/ui/SportsClosingPanel/SportsClosingPanel.jsx";
 
 /**

@@ -1,4 +1,3 @@
-// src/brands/sports/pages/Disciplines/index.jsx
 import styles from "./Disciplines.module.css";
 
 import sportsBrand from "../../config/index.js";
@@ -19,8 +18,6 @@ import FootballProjectsSection from "./sections/FootballProjectsSection.jsx";
 import KarateProjectsSection from "./sections/KarateProjectsSection.jsx";
 import BasketballProjectsSection from "./sections/BasketballProjectsSection.jsx";
 
-import OtherDisciplinesSection from "./sections/OtherDisciplinesSection.jsx";
-
 /**
  * Página Modalidades — Sunlive Sports
  * Mesmo layout base das outras páginas Sports.
@@ -29,7 +26,6 @@ export default function DisciplinesPage() {
   const data = sportsBrand.sections?.disciplines;
   if (!data) return null;
 
-  // ✅ source única para projects (evita cada secção ir buscar ao brand)
   const academiesData = sportsBrand.sections?.academies;
 
   return (
@@ -49,132 +45,118 @@ export default function DisciplinesPage() {
         <div className={styles.sections}>
           <OverviewSection data={data} />
 
-          {/* 2) Ciclismo */}
           {data.cyclingIntro && (
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.cyclingIntro?.title}
+                aria-label={data.cyclingIntro.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.cyclingIntro?.title}
-                  lead={data.cyclingIntro?.lead}
+                  title={data.cyclingIntro.title}
+                  lead={data.cyclingIntro.lead}
                 />
               </section>
 
-              <CyclingHighlightSection data={data} />
-              <CyclingDisciplinesSection data={data} />
-              <CyclingProjectsSection data={data} />
+              <CyclingHighlightSection data={data.cyclingHighlight} />
+              <CyclingDisciplinesSection data={data.cyclingDisciplines} />
+              <CyclingProjectsSection data={data.cyclingProjects} />
             </>
           )}
 
-          {/* 3) Ginástica */}
           {data.gymnasticsIntro && (
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.gymnasticsIntro?.title}
+                aria-label={data.gymnasticsIntro.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.gymnasticsIntro?.title}
-                  lead={data.gymnasticsIntro?.lead}
+                  title={data.gymnasticsIntro.title}
+                  lead={data.gymnasticsIntro.lead}
                 />
               </section>
 
-              <GymnasticsDisciplinesSection data={data} />
-              <GymnasticsProjectsSection data={academiesData} />
+              <GymnasticsDisciplinesSection data={data.gymnasticsDisciplines} />
+              <GymnasticsProjectsSection
+                cardsData={academiesData}
+                sectionData={data.gymnasticsIntro}
+              />
             </>
           )}
 
-          {/* 4) Futebol */}
           {data.footballIntro && (
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.footballIntro?.title}
+                aria-label={data.footballIntro.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.footballIntro?.title}
-                  lead={data.footballIntro?.lead}
+                  title={data.footballIntro.title}
+                  lead={data.footballIntro.lead}
                 />
               </section>
 
-              <FootballProjectsSection data={academiesData} />
+              <FootballProjectsSection
+                cardsData={academiesData}
+                sectionData={data.footballIntro}
+              />
             </>
           )}
 
-          {/* 5) Karaté */}
           {data.karateIntro && (
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.karateIntro?.title}
+                aria-label={data.karateIntro.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.karateIntro?.title}
-                  lead={data.karateIntro?.lead}
+                  title={data.karateIntro.title}
+                  lead={data.karateIntro.lead}
                 />
               </section>
 
-              <KarateProjectsSection data={academiesData} />
+              <KarateProjectsSection
+                cardsData={academiesData}
+                sectionData={data.karateIntro}
+              />
             </>
           )}
 
-          {/* 6) Basquetebol */}
           {data.basketballIntro && (
             <>
               <section
                 className={styles.heroSection}
-                aria-label={data.basketballIntro?.title}
+                aria-label={data.basketballIntro.title}
               >
                 <HeadlineBlock
                   theme="sports"
                   variant="banded"
                   align="center"
                   max="lg"
-                  title={data.basketballIntro?.title}
-                  lead={data.basketballIntro?.lead}
+                  title={data.basketballIntro.title}
+                  lead={data.basketballIntro.lead}
                 />
               </section>
 
-              <BasketballProjectsSection data={academiesData} />
-            </>
-          )}
-
-          {/* 7) Outras Modalidades */}
-          {data.otherDisciplinesIntro && (
-            <>
-              <section
-                className={styles.heroSection}
-                aria-label={data.otherDisciplinesIntro?.title}
-              >
-                <HeadlineBlock
-                  theme="sports"
-                  variant="banded"
-                  align="center"
-                  max="lg"
-                  title={data.otherDisciplinesIntro?.title}
-                  lead={data.otherDisciplinesIntro?.lead}
-                />
-              </section>
-
-              <OtherDisciplinesSection />
+              <BasketballProjectsSection
+                cardsData={academiesData}
+                sectionData={data.basketballIntro}
+              />
             </>
           )}
 

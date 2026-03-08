@@ -1,11 +1,11 @@
 const educationPillars = {
   items: [
     {
-      key: "GraduationCapIcon",
+      key: "graduation",
       label: "Educação",
-      iconKey: "GraduationCapIcon",
+      iconKey: "graduation",
     },
-    { key: "values", label: "Valores", iconKey: "values" },
+    { key: "values", label: "Valores", iconKey: "heart" },
     { key: "compass", label: "Orientação", iconKey: "compass" },
   ],
 };

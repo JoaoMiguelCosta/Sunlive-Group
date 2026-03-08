@@ -1,5 +1,5 @@
 import styles from "./TrustedCollaborationBanner.module.css";
-import travelBrand from "../../config/index.js";
+import travelBrand, { resolveTravelIcon } from "../../config/index.js";
 
 export default function TrustedCollaborationBanner({
   title: titleProp = "Parceiros de Viagem Sunlive Travel",
@@ -12,14 +12,8 @@ export default function TrustedCollaborationBanner({
   const Lead = cfg?.lead ?? subtitleProp;
 
   const icons = travelBrand?.icons ?? {};
-  const fallbackIcon = icons.shield || icons.handshake || null;
-
   const Icon =
-    (cfg?.iconKey && icons[cfg.iconKey]) ||
-    (cfg?.iconKey &&
-      typeof cfg.iconKey === "string" &&
-      icons[cfg.iconKey.toLowerCase()]) ||
-    fallbackIcon;
+    resolveTravelIcon(icons, cfg?.iconKey) || icons.HandshakeIcon || null;
 
   return (
     <section className={[styles.wrapper, className].filter(Boolean).join(" ")}>

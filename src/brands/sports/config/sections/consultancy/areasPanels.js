@@ -44,8 +44,8 @@ const consultancyAreasPanels = {
       ],
     },
     {
-      key: "build2",
-      iconKey: "build2",
+      key: "building",
+      iconKey: "building",
       title: "Planeamento de Infraestruturas",
       summary:
         "Conceção e desenvolvimento de instalações desportivas modernas e funcionais.",

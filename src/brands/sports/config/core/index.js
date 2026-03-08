@@ -9,6 +9,11 @@ import { SPORTS_QUICKLINKS, SPORTS_PRIMARY_NAV_ITEMS } from "./nav.js";
 import { BRAND_ICONS } from "./icons.js";
 import { BRAND_FLAGS } from "./flags.js";
 import { ICONS, FLAGS } from "./resolvedVisuals.js";
+import {
+  BRAND_ICON_KEY_MAP,
+  resolveSportsIcon,
+  resolveSportsIconName,
+} from "./iconKeyMap.js";
 
 import * as pages from "../pages/index.js";
 import * as sections from "../sections/index.js";
@@ -47,3 +52,4 @@ export default sportsBrand;
 export { SPORTS_BASE_PATH, SPORTS_PAGE_PATHS };
 export { BRAND_ICONS, BRAND_FLAGS };
 export { ICONS, FLAGS };
+export { BRAND_ICON_KEY_MAP, resolveSportsIcon, resolveSportsIconName };

@@ -1,7 +1,3 @@
-/* src/shared/components/Hotel/HotelWhoWeHostGrid/HotelWhoWeHostGrid.module.css */
-
-/* ===== Card único ===== */
-
 .card {
     position: relative;
     isolation: isolate;
@@ -20,10 +16,8 @@
         0 0 0 1px rgba(255, 255, 255, 0.03);
 
     background-color: #020617;
-    /* base noir */
 }
 
-/* Faixa de topo — champanhe-quente / dourado */
 .cardTop {
     position: relative;
     padding-block: clamp(1.7rem, 3vw, 2.1rem);
@@ -41,7 +35,6 @@
     align-items: flex-end;
 }
 
-/* Círculo do ícone */
 .iconCircle {
     inline-size: 3.4rem;
     block-size: 3.4rem;
@@ -63,7 +56,6 @@
         0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
-/* Faixa intermédia do título */
 .titleBand {
     padding-block: 0.85rem;
     padding-inline: 1.2rem;
@@ -95,7 +87,6 @@
             white 10%);
 }
 
-/* Corpo da card */
 .body {
     padding-block: 1.1rem;
     padding-inline: 1.4rem;
@@ -121,7 +112,7 @@
     color: var(--sl-platinum-010, #f9fafb);
 }
 
-/* ====== VARIANTE METRIC (SUSTAINABILITY) ====== */
+/* ===== Variante metric ===== */
 
 .metric {
     border-radius: 0.4rem;
@@ -132,8 +123,6 @@
     background:
         radial-gradient(circle at 0 0, #020617, #020617);
 }
-
-/* topo: ícone + percentagem */
 
 .metric .cardTop {
     padding-block: 1.3rem;
@@ -148,7 +137,6 @@
     gap: 0.45rem;
 }
 
-/* ícone simples (sem círculo de fundo) */
 .metric .iconCircle {
     inline-size: auto;
     block-size: auto;
@@ -158,10 +146,7 @@
     color: color-mix(in oklab,
             var(--sl-accent-500, #e6c893),
             black 5%);
-    font-size: 1.8rem;
 }
-
-/* valor em % */
 
 .statValue {
     font-size: 1.05rem;
@@ -172,13 +157,9 @@
             white 8%);
 }
 
-/* não precisamos da faixa intermédia de título nos cards de métricas */
-
 .metric .titleBand {
     display: none;
 }
-
-/* banda inferior com o texto */
 
 .metric .body {
     padding-block: 0.8rem;

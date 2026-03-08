@@ -1,27 +1,21 @@
-// src/brands/sports/pages/Infrastructures/sections/OverviewSection.jsx
 import styles from "./OverviewSection.module.css";
 
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
 
-import { ICONS } from "../../../config/index.js";
-
-const PILL_ICONS = {
-  pin: ICONS.PinIcon,
-  phone: ICONS.PhoneIcon,
-  users: ICONS.UsersIcon,
-};
+import sportsBrand, { resolveSportsIcon } from "../../../config/index.js";
 
 export default function OverviewSection({ data }) {
   if (!data) return null;
 
   const { overview, pillars } = data;
+  const icons = sportsBrand.icons;
 
   const pillItems =
     pillars?.items?.map((item) => ({
       key: item.key,
       label: item.label,
-      Icon: item.iconKey ? PILL_ICONS[item.iconKey] : null,
+      Icon: resolveSportsIcon(icons, item.iconKey),
     })) ?? [];
 
   return (

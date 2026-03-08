@@ -1,25 +1,31 @@
 import { useMemo } from "react";
-import styles from "./CyclingDisciplinesSection.module.css";
+import styles from "./ProjectsSection.module.css";
 
-import SportsDisciplineCard from "../../../shared/ui/SportsDisciplineCard/SportsDisciplineCard.jsx";
+import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 
-import { ICONS } from "../../../config/index.js";
+import sportsBrand, {
+  ICONS,
+  resolveSportsIcon,
+} from "../../../config/index.js";
 
-const HEADER_DEFAULT_ICON = ICONS.WorkflowIcon;
+const HEADER_DEFAULT_ICON = ICONS.ChartIcon;
 
-export default function CyclingDisciplinesSection({
-  data,
-  icon = null,
-  heading = "Disciplinas",
-}) {
-  const section = data?.cyclingDisciplines;
-  if (!section?.items?.length) return null;
+export default function BasketballProjectsSection({ data, icon = null }) {
+  const academies = data?.cards || [];
+  const items = academies.filter((card) => card.key === "basket-academy");
+  if (!items.length) return null;
 
-  const { id, items } = section;
+  const sectionMeta = data?.basketballIntro?.projectsSection ?? {};
+  const id = sectionMeta.id || "disciplines-basketball-projects";
+  const heading = sectionMeta.heading || "Projetos";
+
+  const icons = sportsBrand.icons;
+  const resolvedHeaderIcon =
+    resolveSportsIcon(icons, sectionMeta.headingIconKey) || HEADER_DEFAULT_ICON;
 
   const accordionItems = useMemo(
-    () => [{ key: "cycling-disciplines", defaultOpen: true }],
+    () => [{ key: "basketball-projects", defaultOpen: true }],
     [],
   );
 
@@ -27,17 +33,17 @@ export default function CyclingDisciplinesSection({
     allowMultiple: true,
   });
 
-  const panelKey = "cycling-disciplines";
+  const panelKey = "basketball-projects";
   const open = isOpen(panelKey);
   const handleToggle = () => toggle(panelKey);
 
-  const HeaderIcon = icon || HEADER_DEFAULT_ICON;
+  const HeaderIcon = icon || resolvedHeaderIcon;
 
   return (
     <section
       id={id}
       className={styles.section}
-      aria-label="Disciplinas de Ciclismo Sunlive"
+      aria-label="Projetos de Basquetebol Sunlive"
     >
       <div className={styles.inner}>
         <header className={styles.header}>
@@ -49,11 +55,11 @@ export default function CyclingDisciplinesSection({
             aria-controls={`${id}-panel`}
           >
             <div className={styles.headerLeft}>
-              {HeaderIcon && (
+              {HeaderIcon ? (
                 <span className={styles.headerIconWrap} aria-hidden="true">
                   <HeaderIcon className={styles.headerIcon} size={20} />
                 </span>
-              )}
+              ) : null}
 
               <span className={styles.headerTitle}>{heading}</span>
             </div>
@@ -65,19 +71,27 @@ export default function CyclingDisciplinesSection({
           </button>
         </header>
 
-        {open && (
+        {open ? (
           <div id={`${id}-panel`} className={styles.panelBody}>
             <div className={styles.grid}>
               {items.map((item) => (
-                <SportsDisciplineCard
-                  key={item.key || item.title}
+                <SportsAcademyCard
+                  key={item.key}
+                  logoSrc={item.logo?.src}
+                  logoAlt={item.logo?.alt}
                   title={item.title}
                   description={item.description}
+                  instagramHref={item.instagram?.href}
+                  facebookHref={item.facebook?.href}
+                  moreHref={item.more?.href}
+                  moreLabel={item.more?.label}
+                  bookHref={item.book?.href}
+                  bookLabel={item.book?.label}
                 />
               ))}
             </div>
           </div>
-        )}
+        ) : null}
       </div>
     </section>
   );

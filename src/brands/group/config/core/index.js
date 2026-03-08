@@ -7,6 +7,13 @@ import {
   GROUP_LOGOS_PATH,
   GROUP_PAGE_PATHS,
 } from "./paths.js";
+import {
+  BRAND_ICON_KEY_MAP,
+  resolveGroupIcon,
+  resolveGroupIconName,
+} from "./iconKeyMap.js";
+import { BRAND_ICONS } from "./icons.js";
+import { BRAND_FLAGS } from "./flags.js";
 
 const groupBrand = {
   key: "group",
@@ -34,6 +41,15 @@ const groupBrand = {
 
 export default groupBrand;
 
-export { GROUP_BASE_PATH, GROUP_LOGOS_PATH, GROUP_PAGE_PATHS };
-
-
+export {
+  GROUP_BASE_PATH,
+  GROUP_LOGOS_PATH,
+  GROUP_PAGE_PATHS,
+  BRAND_ICONS,
+  BRAND_FLAGS,
+  ICONS,
+  FLAGS,
+  BRAND_ICON_KEY_MAP,
+  resolveGroupIcon,
+  resolveGroupIconName,
+};

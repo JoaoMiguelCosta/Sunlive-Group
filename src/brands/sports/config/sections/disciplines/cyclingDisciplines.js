@@ -1,5 +1,7 @@
 const disciplinesCyclingDisciplines = {
   id: "disciplines-cycling-disciplines",
+  heading: "Disciplinas",
+  headingIconKey: "workflow",
   items: [
     {
       key: "road",

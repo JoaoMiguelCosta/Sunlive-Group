@@ -1,26 +1,9 @@
-// src/brands/sports/pages/Consultancy/sections/ConsultancyAreasSection.jsx
 import styles from "./ConsultancyAreasSection.module.css";
 
 import ServiceFeaturePanel from "../../../shared/ui/ServiceFeaturePanel/ServiceFeaturePanel.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 
-import { ICONS } from "../../../config/index.js";
-
-/**
- * Mapa local de iconKey → componente
- * Ajusta as keys para alinharem com o configSports.consultancy.areasPanels.items
- */
-const PANEL_ICONS = {
-  global: ICONS.GlobeIcon,
-  build2: ICONS.Building2Icon,
-
-  luggage: ICONS.LuggageIcon,
-  trendup: ICONS.TrendUpIcon,
-  cog: ICONS.CogIcon,
-  medal: ICONS.MedalIcon,
-  circus: ICONS.CircusTentIcon,
-  goal: ICONS.GoalIcon,
-};
+import sportsBrand, { resolveSportsIcon } from "../../../config/index.js";
 
 /**
  * Secção de Áreas de Consultoria (cards em acordeão)
@@ -35,6 +18,7 @@ export default function ConsultancyAreasSection({ data, iconSet }) {
   const { areasIntro, areasPanels } = data;
   if (!areasPanels?.items?.length) return null;
 
+  const icons = iconSet || sportsBrand.icons;
   const panels = areasPanels.items;
 
   const { isOpen, toggle } = useAccordion(panels, {
@@ -49,10 +33,7 @@ export default function ConsultancyAreasSection({ data, iconSet }) {
       <div className={styles.inner}>
         <div className={styles.grid}>
           {panels.map((panel) => {
-            const IconComponent =
-              (iconSet && panel.iconKey && iconSet[panel.iconKey]) ||
-              PANEL_ICONS[panel.iconKey] ||
-              null;
+            const IconComponent = resolveSportsIcon(icons, panel.iconKey);
 
             return (
               <ServiceFeaturePanel

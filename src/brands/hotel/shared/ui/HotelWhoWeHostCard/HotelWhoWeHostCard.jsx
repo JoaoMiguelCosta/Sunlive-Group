@@ -1,22 +1,21 @@
-// src/shared/components/Hotel/HotelWhoWeHostGrid/HotelWhoWeHostGrid.jsx
 import styles from "./HotelWhoWeHostCard.module.css";
 
 /**
  * HotelWhoWeHostCard
- * Card único de segmento de hóspede para o Hotel.
+ * Card único para conteúdo visual do Hotel.
  *
  * Props:
  *  - id?: string
  *  - icon?: ReactNode
- *  - title: string
+ *  - title?: string
  *  - description: string
- *  - statValue?: string   // opcional (para cards de métricas)
+ *  - statValue?: string
  *  - variant?: "default" | "metric"
  */
-export default function HotelWhoWeHostGrid({
+export default function HotelWhoWeHostCard({
   id,
   icon = null,
-  title,
+  title = "",
   description,
   statValue = null,
   variant = "default",
@@ -26,16 +25,15 @@ export default function HotelWhoWeHostGrid({
   return (
     <article id={id} className={`${styles.card} ${variantClass}`}>
       <div className={styles.cardTop}>
-        {icon && <div className={styles.iconCircle}>{icon}</div>}
+        {icon ? <div className={styles.iconCircle}>{icon}</div> : null}
 
-        {variant === "metric" && statValue && (
+        {variant === "metric" && statValue ? (
           <div className={styles.statValue}>{statValue}</div>
-        )}
+        ) : null}
       </div>
 
       <div className={styles.titleBand}>
-        {/* para variant="metric" vamos esconder isto em CSS */}
-        {title && <h3 className={styles.title}>{title}</h3>}
+        {title ? <h3 className={styles.title}>{title}</h3> : null}
       </div>
 
       <div className={styles.body}>

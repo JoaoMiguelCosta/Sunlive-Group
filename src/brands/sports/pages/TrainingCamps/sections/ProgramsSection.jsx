@@ -1,21 +1,15 @@
-// src/brands/sports/pages/TrainingCamps/sections/ProgramsSection.jsx
 import styles from "./ProgramsSection.module.css";
 import ProgramDetailSection from "../../../shared/ui/ProgramDetailSection/ProgramDetailSection.jsx";
 
-import { ICONS } from "../../../config/index.js";
-
-const PROGRAM_ICONS = {
-  trophy: ICONS.MedalIcon,
-  runner: ICONS.SpeedIcon,
-  sun: ICONS.SunIcon,
-  globe: ICONS.GlobeIcon,
-};
+import sportsBrand, { resolveSportsIcon } from "../../../config/index.js";
 
 export default function ProgramsSection({ data }) {
   if (!data) return null;
 
   const programs = data.programs ?? [];
   if (!programs.length) return null;
+
+  const icons = sportsBrand.icons;
 
   return (
     <section
@@ -24,7 +18,7 @@ export default function ProgramsSection({ data }) {
     >
       <div className={styles.grid}>
         {programs.map((prog, index) => {
-          const Icon = prog.iconKey ? PROGRAM_ICONS[prog.iconKey] : null;
+          const Icon = resolveSportsIcon(icons, prog.iconKey);
           const revealSide = index % 2 === 0 ? "left" : "right";
 
           return (

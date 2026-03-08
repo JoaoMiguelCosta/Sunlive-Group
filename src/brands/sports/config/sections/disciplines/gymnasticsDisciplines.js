@@ -1,5 +1,7 @@
 const disciplinesGymnasticsDisciplines = {
   id: "disciplines-gymnastics-disciplines",
+  heading: "Disciplinas",
+  headingIconKey: "workflow",
   items: [
     {
       key: "artistic-men",

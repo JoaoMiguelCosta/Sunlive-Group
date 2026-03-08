@@ -1,20 +1,9 @@
-// src/brands/sports/pages/Consultancy/sections/OverviewSection.jsx
 import styles from "./OverviewSection.module.css";
 
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
 
-import { ICONS } from "../../../config/index.js";
-
-/**
- * Mapa de ícones para os pilares da Consultoria.
- * Se algum não existir, o componente de pills ignora o ícone.
- */
-const PILL_ICONS = {
-  experience: ICONS.ConsultingExperienceIcon,
-  eye: ICONS.EyeIcon,
-  chart: ICONS.ChartIcon,
-};
+import sportsBrand, { resolveSportsIcon } from "../../../config/index.js";
 
 /**
  * Secção "Consultoria que faz a diferença" + barra de pilares
@@ -23,12 +12,13 @@ export default function OverviewSection({ data }) {
   if (!data) return null;
 
   const { overview, pillars } = data;
+  const icons = sportsBrand.icons;
 
   const pillItems =
     pillars?.items?.map((item) => ({
       key: item.key,
       label: item.label,
-      Icon: item.iconKey ? PILL_ICONS[item.iconKey] || null : null,
+      Icon: resolveSportsIcon(icons, item.iconKey),
     })) ?? [];
 
   return (

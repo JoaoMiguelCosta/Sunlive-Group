@@ -13,17 +13,13 @@ import {
   StarIcon,
   TourBusIcon,
   UsersIcon,
-
-  // ✅ agora globais
   FacebookIcon,
   InstagramIcon,
   GlobeIcon,
+  BoltIcon,
+  RecycleIcon,
 } from "../../ui/icons/index.js";
 
-/**
- * Ícones globais = usados em 2+ brands.
- * Regra: não meter exclusivos aqui.
- */
 export const GLOBAL_ICONS = Object.freeze({
   Building2Icon,
   ChevronDownIcon,
@@ -38,9 +34,9 @@ export const GLOBAL_ICONS = Object.freeze({
   StarIcon,
   TourBusIcon,
   UsersIcon,
-
-  // ✅ agora globais
   FacebookIcon,
   InstagramIcon,
   GlobeIcon,
+  BoltIcon,
+  RecycleIcon,
 });

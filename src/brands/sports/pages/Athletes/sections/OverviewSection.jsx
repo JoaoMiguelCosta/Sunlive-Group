@@ -1,16 +1,9 @@
-// src/brands/sports/pages/Athletes/sections/OverviewSection.jsx
 import styles from "./OverviewSection.module.css";
 
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
 
-import { ICONS } from "../../../config/index.js";
-
-const PILL_ICONS = {
-  dream: ICONS.DreamIcon,
-  bolt: ICONS.BoltIcon,
-  flag: ICONS.FlagIcon,
-};
+import sportsBrand, { resolveSportsIcon } from "../../../config/index.js";
 
 /**
  * Secção "Atletas Sunlive" — texto de valores + barra Sonhar / Ousar / Realizar
@@ -19,12 +12,13 @@ export default function OverviewSection({ data }) {
   if (!data) return null;
 
   const { overview, pillars } = data;
+  const icons = sportsBrand.icons;
 
   const pillItems =
     pillars?.items?.map((item) => ({
       key: item.key,
       label: item.label,
-      Icon: item.iconKey ? PILL_ICONS[item.iconKey] : null,
+      Icon: resolveSportsIcon(icons, item.iconKey),
     })) ?? [];
 
   return (

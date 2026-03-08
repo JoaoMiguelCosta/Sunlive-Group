@@ -1,7 +1,12 @@
 const disciplinesGymnasticsIntro = {
   id: "disciplines-gymnastics-intro",
   title: "Ginástica",
-  lead: "Modalidade de referência da Sunlive, com uma oferta abrangente, ambiente técnico de alto nível e realização frequente de eventos e estágios especializados.",
+  lead: "Programas dedicados à Ginástica com foco na evolução técnica, formação integral e acesso a infraestruturas especializadas para treino e desenvolvimento desportivo.",
+  projectsSection: {
+    id: "disciplines-gymnastics-projects",
+    heading: "Projetos",
+    headingIconKey: "chart",
+  },
 };
 
 export default disciplinesGymnasticsIntro;

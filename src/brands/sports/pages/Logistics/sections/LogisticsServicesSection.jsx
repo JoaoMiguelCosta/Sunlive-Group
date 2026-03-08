@@ -1,18 +1,9 @@
-// src/brands/sports/pages/Logistics/sections/LogisticsServicesSection.jsx
 import styles from "./LogisticsServicesSection.module.css";
 
 import ServiceFeaturePanel from "../../../shared/ui/ServiceFeaturePanel/ServiceFeaturePanel.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 
-import { ICONS } from "../../../config/index.js";
-
-const PANEL_ICONS = {
-  transport: ICONS.TourBusIcon,
-  plane: ICONS.PlaneIcon,
-  soup: ICONS.SoupIcon,
-  bed: ICONS.BedIcon,
-  shirt: ICONS.ShirtIcon,
-};
+import sportsBrand, { resolveSportsIcon } from "../../../config/index.js";
 
 export default function LogisticsServicesSection({ data, iconSet }) {
   if (!data) return null;
@@ -20,6 +11,7 @@ export default function LogisticsServicesSection({ data, iconSet }) {
   const { servicesIntro, servicesPanels } = data;
   if (!servicesPanels?.items?.length) return null;
 
+  const icons = iconSet || sportsBrand.icons;
   const panels = servicesPanels.items;
 
   const { isOpen, toggle } = useAccordion(panels, {
@@ -34,10 +26,7 @@ export default function LogisticsServicesSection({ data, iconSet }) {
       <div className={styles.inner}>
         <div className={styles.grid}>
           {panels.map((panel) => {
-            const IconComponent =
-              (iconSet && panel.iconKey && iconSet[panel.iconKey]) ||
-              PANEL_ICONS[panel.iconKey] ||
-              null;
+            const IconComponent = resolveSportsIcon(icons, panel.iconKey);
 
             return (
               <ServiceFeaturePanel

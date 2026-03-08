@@ -9,7 +9,7 @@ const eventsPillars = {
     {
       key: "memorable-experiences",
       label: "Experiências Memoráveis",
-      iconKey: "sparkles",
+      iconKey: "star",
     },
   ],
 };

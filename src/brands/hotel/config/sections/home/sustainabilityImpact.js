@@ -1,3 +1,4 @@
+// src/brands/hotel/config/sections/sustainabilityImpact.js
 export const sustainabilityImpact = {
   id: "hotel-sustainability-impact",
   header: { label: "Sustentabilidade" },
@@ -8,17 +9,25 @@ export const sustainabilityImpact = {
   stats: [
     {
       id: "energy",
+      iconKey: "energy",
       value: "30%",
       description: "de redução no consumo energético",
     },
     {
       id: "water",
+      iconKey: "water",
       value: "25%",
       description: "de poupança no consumo de água",
     },
-    { id: "recycling", value: "80%", description: "de taxa de reciclagem" },
+    {
+      id: "recycling",
+      iconKey: "recycling",
+      value: "80%",
+      description: "de taxa de reciclagem",
+    },
     {
       id: "local-products",
+      iconKey: "local-products",
       value: "70%",
       description: "dos produtos são de origem local",
     },

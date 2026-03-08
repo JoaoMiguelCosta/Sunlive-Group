@@ -4,7 +4,7 @@ const logisticsServicesPanels = {
     {
       key: "transport",
       title: "Transporte Local",
-      iconKey: "transport",
+      iconKey: "bus",
       summary:
         "Mobilidade completa durante a estadia, com veículos adequados a cada necessidade.",
       items: [

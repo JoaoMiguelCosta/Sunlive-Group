@@ -2,7 +2,7 @@ const trainingCampsPrograms = [
   {
     key: "sports-camps",
     imageSide: "right",
-    iconKey: "trophy",
+    iconKey: "medal",
     title: "Estágios Desportivos",
     description:
       "Programas personalizados para equipas profissionais e semi-profissionais que procuram excelência, com foco em performance, recuperação e preparação estratégica.",
@@ -21,7 +21,7 @@ const trainingCampsPrograms = [
   {
     key: "pre-season-camps",
     imageSide: "left",
-    iconKey: "runner",
+    iconKey: "speed",
     title: "Estágios de Pré-Época",
     description:
       "Preparação intensiva para o arranque competitivo da temporada, com foco em desempenho físico, entrosamento coletivo e afinação tática.",

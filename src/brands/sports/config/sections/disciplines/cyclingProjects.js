@@ -3,6 +3,7 @@ import acaLogo from "../../../assets/Academies/aca.png";
 const disciplinesCyclingProjects = {
   id: "disciplines-cycling-projects",
   heading: "Projetos",
+  headingIconKey: "chart",
   items: [
     {
       key: "cycling-academy",
@@ -18,7 +19,7 @@ const disciplinesCyclingProjects = {
     },
     {
       key: "aero-edge",
-      iconKey: "aero-edge",
+      iconKey: "chart-frame",
       title: "Aero Edge",
       logoSrc: null,
       logoAlt: null,
@@ -31,7 +32,7 @@ const disciplinesCyclingProjects = {
     },
     {
       key: "training-from-pro",
-      iconKey: "training-from-pro",
+      iconKey: "athlete",
       title: "Training From Pro (TFP)",
       logoSrc: null,
       logoAlt: null,

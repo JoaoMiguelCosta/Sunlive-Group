@@ -1,19 +1,8 @@
-// src/brands/sports/pages/SpecialisedServices/sections/AreasSection.jsx
 import styles from "./AreasSection.module.css";
 
 import SpecialistServiceCard from "../../../shared/ui/SpecialistServiceCard/SpecialistServiceCard.jsx";
 
-import { ICONS } from "../../../config/index.js";
-
-const CARD_ICONS = {
-  apple: ICONS.AppleIcon,
-  video: ICONS.VideoIcon,
-  search: ICONS.SearchIcon,
-  brain: ICONS.BrainIcon,
-  bicipe: ICONS.BicepsFlexedIcon,
-  chart: ICONS.ChartIcon,
-  physical: ICONS.PhysicalTherapyIcon,
-};
+import sportsBrand, { resolveSportsIcon } from "../../../config/index.js";
 
 export default function AreasSection({ data }) {
   if (!data) return null;
@@ -21,6 +10,7 @@ export default function AreasSection({ data }) {
   const cards = data.serviceCards ?? [];
   if (!cards.length) return null;
 
+  const icons = sportsBrand.icons;
   const sectionId = data.areasIntro?.id || "specialised-services-areas-intro";
 
   return (
@@ -32,9 +22,7 @@ export default function AreasSection({ data }) {
       <div className={styles.inner}>
         <div className={styles.grid}>
           {cards.map((card) => {
-            const IconComponent = card.iconKey
-              ? CARD_ICONS[card.iconKey]
-              : null;
+            const IconComponent = resolveSportsIcon(icons, card.iconKey);
 
             return (
               <SpecialistServiceCard

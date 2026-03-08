@@ -1,6 +1,5 @@
-// src/brands/travel/components/ContactCTASection/ContactChannels.jsx
 import styles from "./ContactChannels.module.css";
-import travelBrand from "../../config/index.js";
+import travelBrand, { resolveTravelIcon } from "../../config/index.js";
 
 export default function ContactChannels() {
   const { sections, icons } = travelBrand;
@@ -12,7 +11,7 @@ export default function ContactChannels() {
     <nav className={styles.wrap} aria-label="Canais de contacto">
       <ul className={styles.list} role="list">
         {channels.map(({ key, iconKey, label, href, ariaLabel }) => {
-          const Icon = iconKey ? icons?.[iconKey] : null;
+          const Icon = resolveTravelIcon(icons, iconKey);
           const isExternal =
             typeof href === "string" && /^https?:\/\//.test(href);
 

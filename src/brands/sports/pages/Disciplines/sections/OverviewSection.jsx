@@ -1,16 +1,9 @@
-// src/brands/sports/pages/Disciplines/OverviewSection.jsx
 import styles from "./OverviewSection.module.css";
 
 import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
 import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
 
-import { ICONS } from "../../../config/index.js";
-
-const PILL_ICONS = {
-  athlete: ICONS.AthleteBarbellIcon,
-  brush: ICONS.BrushCleaningIcon,
-  shield: ICONS.ShieldIcon,
-};
+import { ICONS, resolveSportsIcon } from "../../../config/index.js";
 
 export default function OverviewSection({ data }) {
   if (!data) return null;
@@ -21,10 +14,7 @@ export default function OverviewSection({ data }) {
     pillars?.items?.map((item) => ({
       key: item.key,
       label: item.label,
-      Icon:
-        item.iconKey && PILL_ICONS[item.iconKey]
-          ? PILL_ICONS[item.iconKey]
-          : null,
+      Icon: resolveSportsIcon(ICONS, item.iconKey),
     })) ?? [];
 
   return (

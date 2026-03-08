@@ -1,14 +1,9 @@
 import { useMemo } from "react";
 import styles from "./ServiceOfferingsGrid.module.css";
 import ServiceCard from "../../shared/ui/ServiceCard/index.jsx";
-import travelBrand from "../../config/index.js";
+import travelBrand, { resolveTravelIcon } from "../../config/index.js";
 import useAccordion from "../../../../shared/hooks/useAccordion";
 
-/**
- * ServiceOfferingsGrid — lista de serviços (cards interativos)
- * - 1 → 2 → (desktop) 3 por linha; 2.ª linha centrada quando houver 5
- * - Click/Enter/Space abre/fecha a área "Inclui"
- */
 export default function ServiceOfferingsGrid({
   services: servicesOverride,
   icons: iconsOverride,
@@ -27,7 +22,11 @@ export default function ServiceOfferingsGrid({
   if (!Array.isArray(services) || services.length === 0) return null;
 
   const keyed = useMemo(
-    () => services.map((s, i) => ({ ...s, key: s.key || `svc-${i}` })),
+    () =>
+      services.map((service, index) => ({
+        ...service,
+        key: service.key || `svc-${index}`,
+      })),
     [services],
   );
 
@@ -40,28 +39,28 @@ export default function ServiceOfferingsGrid({
         role="list"
         aria-label="Serviços de Logística"
       >
-        {keyed.map((svc, idx) => {
-          const Icon = svc.iconKey ? icons[svc.iconKey] : undefined;
-          const open = isOpen(svc.key);
+        {keyed.map((service, index) => {
+          const Icon = resolveTravelIcon(icons, service.iconKey);
+          const open = isOpen(service.key);
 
           return (
             <div
-              key={svc.key}
+              key={service.key}
               role="listitem"
               className={styles.cell}
-              data-key={svc.key}
-              data-idx={idx}
+              data-key={service.key}
+              data-idx={index}
             >
               <ServiceCard
-                id={svc.key}
+                id={service.key}
                 interactive
                 isOpen={open}
-                onToggle={() => toggle(svc.key)}
+                onToggle={() => toggle(service.key)}
                 icon={Icon}
-                title={svc.title}
-                summary={svc.summary}
-                items={svc.items}
-                includesLabel={svc.includesLabel || "Inclui:"}
+                title={service.title}
+                summary={service.summary}
+                items={service.items}
+                includesLabel={service.includesLabel || "Inclui:"}
               />
             </div>
           );

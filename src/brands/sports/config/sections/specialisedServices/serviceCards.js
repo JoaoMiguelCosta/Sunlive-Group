@@ -35,7 +35,7 @@ const specialisedServicesCards = [
   },
   {
     key: "physical",
-    iconKey: "physical",
+    iconKey: "physio",
     title: "Fisioterapia Desportiva",
     badge: "Fisioterapeutas certificados",
     description:
@@ -85,8 +85,8 @@ const specialisedServicesCards = [
     ],
   },
   {
-    key: "bicipe",
-    iconKey: "bicipe",
+    key: "biceps",
+    iconKey: "biceps",
     title: "Preparação Física",
     badge: "Preparadores Físicos Especializados",
     description:

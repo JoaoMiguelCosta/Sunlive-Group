@@ -1,16 +1,8 @@
-// src/brands/sports/pages/LeisureSportsTourism/sections/LeisureBenefitsGrid.jsx
 import styles from "./LeisureBenefitsGrid.module.css";
 
 import LeisureExperienceCard from "../../../shared/ui/LeisureExperienceCard/LeisureExperienceCard.jsx";
 
-import { ICONS } from "../../../config/index.js";
-
-const CARD_ICONS = {
-  heart: ICONS.HeartIcon,
-  users: ICONS.UsersIcon,
-  star: ICONS.StarIcon,
-  smile: ICONS.SmileIcon,
-};
+import sportsBrand, { resolveSportsIcon } from "../../../config/index.js";
 
 export default function LeisureBenefitsGrid({ data, iconSet }) {
   if (!data) return null;
@@ -18,15 +10,14 @@ export default function LeisureBenefitsGrid({ data, iconSet }) {
   const items = data.items;
   if (!items?.length) return null;
 
+  const icons = iconSet || sportsBrand.icons;
+
   return (
     <section className={styles.section} aria-label={data.title}>
       <div className={styles.inner}>
         <div className={styles.grid}>
           {items.map((item) => {
-            const Icon =
-              (iconSet && item.iconKey && iconSet[item.iconKey]) ||
-              CARD_ICONS[item.iconKey] ||
-              null;
+            const Icon = resolveSportsIcon(icons, item.iconKey);
 
             return (
               <LeisureExperienceCard

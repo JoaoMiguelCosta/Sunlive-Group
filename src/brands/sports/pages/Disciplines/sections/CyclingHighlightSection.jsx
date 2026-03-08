@@ -1,15 +1,10 @@
-// src/brands/sports/pages/Disciplines/CyclingHighlightSection.jsx
 import styles from "./CyclingHighlightSection.module.css";
 
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
-import { ICONS } from "../../../config/index.js";
-
-const HIGHLIGHT_ICONS = {
-  bike: ICONS.BikeIcon,
-};
+import { ICONS, resolveSportsIcon } from "../../../config/index.js";
 
 export default function CyclingHighlightSection({ data }) {
-  const section = data?.cyclingHighlight;
+  const section = data;
   if (!section) return null;
 
   const {
@@ -23,7 +18,7 @@ export default function CyclingHighlightSection({ data }) {
   } = section;
 
   const panelId = `${id}-panel`;
-  const HighlightIcon = iconKey ? HIGHLIGHT_ICONS[iconKey] : null;
+  const HighlightIcon = resolveSportsIcon(ICONS, iconKey);
 
   return (
     <section

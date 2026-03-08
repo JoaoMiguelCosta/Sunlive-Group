@@ -3,9 +3,6 @@ import { BRAND_ICONS } from "./icons.js";
 import { BRAND_FLAGS } from "./flags.js";
 
 export const { ICONS, FLAGS } = resolveIcons({
-  brand: "group",
   brandIcons: BRAND_ICONS,
   brandFlags: BRAND_FLAGS,
 });
-
-
