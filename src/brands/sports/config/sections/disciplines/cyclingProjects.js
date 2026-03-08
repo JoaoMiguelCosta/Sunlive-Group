@@ -14,7 +14,7 @@ const disciplinesCyclingProjects = {
         "Academia contínua de ciclismo para jovens atletas com treinos técnicos e alojamento.",
       instagramHref: null,
       facebookHref: null,
-      bookHref: "/books/cycling-academie.pdf",
+      bookKey: "cyclingAcademy",
       bookLabel: "Abrir Book",
     },
     {
@@ -27,7 +27,7 @@ const disciplinesCyclingProjects = {
         "Testes de aerodinâmica de nível avançado com túnel de vento e análise de dados. Programas especializados como “Hour Record” e “Outdoor Aero Testing” para otimização da performance.",
       instagramHref: null,
       facebookHref: null,
-      bookHref: "/books/AeroEdge.pdf",
+      bookKey: "aeroEdge",
       bookLabel: "Abrir Book",
     },
     {
@@ -40,7 +40,7 @@ const disciplinesCyclingProjects = {
         "Campos de treino de alto rendimento com base científica, incluindo treinos em estrada, pista e ginásio, além de palestras sobre nutrição, biomecânica e sono.",
       instagramHref: null,
       facebookHref: null,
-      bookHref: "/books/Training-from-pro.pdf",
+      bookKey: "trainingFromPro",
       bookLabel: "Abrir Book",
     },
   ],

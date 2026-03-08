@@ -3,6 +3,7 @@ import styles from "./AcademiesCardsSection.module.css";
 
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
 import useStaggeredInView from "../../../shared/hooks/useStaggeredInView.js";
+import sportsBrand from "../../../config/index.js";
 
 export default function AcademiesCardsSection({ data }) {
   const cards = data?.cards ?? [];
@@ -27,27 +28,33 @@ export default function AcademiesCardsSection({ data }) {
     >
       <div className={styles.cardsInner}>
         <div className={styles.cardsGrid}>
-          {cards.map((card, index) => (
-            <div
-              key={card.key}
-              className={styles.cardWrap}
-              data-visible={isActive ? "true" : "false"}
-              style={{ transitionDelay: getItemDelay(index) }}
-            >
-              <SportsAcademyCard
-                logoSrc={card.logo?.src}
-                logoAlt={card.logo?.alt}
-                title={card.title}
-                description={card.description}
-                instagramHref={card.instagram?.href}
-                facebookHref={card.facebook?.href}
-                moreHref={card.more?.href}
-                moreLabel={card.more?.label}
-                bookHref={card.book?.href}
-                bookLabel={card.book?.label}
-              />
-            </div>
-          ))}
+          {cards.map((card, index) => {
+            const resolvedBook = card.book?.bookKey
+              ? sportsBrand.books?.[card.book.bookKey]
+              : null;
+
+            return (
+              <div
+                key={card.key}
+                className={styles.cardWrap}
+                data-visible={isActive ? "true" : "false"}
+                style={{ transitionDelay: getItemDelay(index) }}
+              >
+                <SportsAcademyCard
+                  logoSrc={card.logo?.src}
+                  logoAlt={card.logo?.alt}
+                  title={card.title}
+                  description={card.description}
+                  instagramHref={card.instagram?.href}
+                  facebookHref={card.facebook?.href}
+                  moreHref={card.more?.href}
+                  moreLabel={card.more?.label}
+                  bookHref={resolvedBook?.href}
+                  bookLabel={card.book?.label}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

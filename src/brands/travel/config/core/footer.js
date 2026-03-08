@@ -1,4 +1,5 @@
 import {
+  SHARED_BOOKS,
   makeAcknowledgements,
   makeFooterInfoHeader,
   makePoliciesBar,
@@ -197,7 +198,7 @@ const travelFooter = {
   acknowledgements: makeAcknowledgements({
     src: acknowledgementsImg,
     alt: "PRR — República Portuguesa — Financiado pela União Europeia (NextGenerationEU)",
-    pdf: "/books/acknowledgements.pdf",
+    pdf: SHARED_BOOKS.acknowledgements.href,
   }),
 
   policiesBar: makePoliciesBar({

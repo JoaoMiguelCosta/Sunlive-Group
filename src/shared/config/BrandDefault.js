@@ -24,6 +24,7 @@ export {
   unitsToFooterGeneric,
   countriesToFooterGeneric,
 } from "./core/links.js";
+export { SHARED_BOOKS } from "./core/books.js";
 
 /* helpers */
 export function makeBackLink({

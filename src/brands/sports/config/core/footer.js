@@ -1,4 +1,5 @@
 import {
+  SHARED_BOOKS,
   makePoliciesBar,
   makeFooterInfoHeader,
   makeAcknowledgements,
@@ -46,7 +47,7 @@ const footer = {
   acknowledgements: makeAcknowledgements({
     src: acknowledgementsImg,
     alt: "PRR — República Portuguesa — Financiado pela União Europeia (NextGenerationEU)",
-    pdf: "/books/acknowledgements.pdf",
+    pdf: SHARED_BOOKS.acknowledgements.href,
   }),
 
   policiesBar: makePoliciesBar({

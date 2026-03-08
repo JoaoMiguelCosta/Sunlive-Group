@@ -2,6 +2,7 @@ import { LANG_DEFAULT } from "../../../../shared/config/BrandDefault.js";
 
 import header from "./header.js";
 import footer from "./footer.js";
+import { SPORTS_BOOKS } from "./books.js";
 
 import { SPORTS_BASE_PATH, SPORTS_PAGE_PATHS } from "./paths.js";
 import { SPORTS_QUICKLINKS, SPORTS_PRIMARY_NAV_ITEMS } from "./nav.js";
@@ -45,11 +46,13 @@ const sportsBrand = {
 
   icons: ICONS,
   flags: FLAGS,
+  books: SPORTS_BOOKS,
 };
 
 export default sportsBrand;
 
 export { SPORTS_BASE_PATH, SPORTS_PAGE_PATHS };
+export { SPORTS_BOOKS };
 export { BRAND_ICONS, BRAND_FLAGS };
 export { ICONS, FLAGS };
 export { BRAND_ICON_KEY_MAP, resolveSportsIcon, resolveSportsIconName };

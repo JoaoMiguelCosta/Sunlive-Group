@@ -1,42 +1,54 @@
-import styles from "./OverviewSection.module.css";
+import styles from "./EducationLevelsSection.module.css";
 
-import TextMediaSection from "../../../shared/ui/TextMediaSection/TextMediaSection.jsx";
-import ValuePillsBar from "../../../shared/ui/ValuePillsBar/ValuePillsBar.jsx";
+import SportsEducationCard from "../../../shared/ui/SportsEducationCard/SportsEducationCard.jsx";
+import sportsBrand from "../../../config/index.js";
 
-import sportsBrand, { resolveSportsIcon } from "../../../config/index.js";
-
-export default function OverviewSection({ data }) {
+/**
+ * Secção "Níveis de Ensino" — apenas os cards
+ *
+ * Uso:
+ *   <EducationLevelsSection data={education} />
+ */
+export default function EducationLevelsSection({ data }) {
   if (!data) return null;
 
-  const { overview, pillars } = data;
-  const icons = sportsBrand.icons;
+  const { levels } = data;
+  const items = levels?.items || [];
 
-  const pillItems =
-    pillars?.items?.map((item) => ({
-      key: item.key,
-      label: item.label,
-      Icon: resolveSportsIcon(icons, item.iconKey),
-    })) ?? [];
+  if (!items.length) return null;
+
+  const { id = "education-levels" } = levels;
 
   return (
-    <section
-      className={styles.wrap}
-      aria-label="Educação + Desporto — Sunlive Sports"
-    >
-      <TextMediaSection
-        id={overview?.id}
-        eyebrow={overview?.eyebrow}
-        title={overview?.title}
-        paragraphs={overview?.paragraphs}
-        imageSide="right"
-        image={overview?.image}
-      />
+    <section id={id} className={styles.section}>
+      <div className={styles.inner}>
+        <div className={styles.grid}>
+          {items.map((level, index) => {
+            const resolvedBook = level.book?.bookKey
+              ? sportsBrand.books?.[level.book.bookKey]
+              : null;
 
-      {pillItems.length > 0 && (
-        <div className={styles.pillsRow}>
-          <ValuePillsBar items={pillItems} align="center" />
+            const bookCta = resolvedBook
+              ? {
+                  label: level.book?.label ?? resolvedBook.label,
+                  href: resolvedBook.href,
+                }
+              : null;
+
+            return (
+              <SportsEducationCard
+                key={level.id || index}
+                title={level.title}
+                ageRange={level.ageRange}
+                subtitle={level.subtitle}
+                description={level.description}
+                features={level.features}
+                bookCta={bookCta}
+              />
+            );
+          })}
         </div>
-      )}
+      </div>
     </section>
   );
 }

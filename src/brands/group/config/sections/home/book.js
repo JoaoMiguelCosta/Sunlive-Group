@@ -1,15 +1,18 @@
 import { makeBook } from "../../../../../shared/config/BrandDefault.js";
+import { GROUP_BOOKS } from "../../core/books.js";
+
+const groupBook = GROUP_BOOKS.company;
 
 export const book = {
   id: "book",
   ...makeBook({
+    id: groupBook.id,
     label: "Open Book Sunlive Group",
-    href: "/books/sunlive-group-book.pdf",
+    href: groupBook.href,
     filename: "Sunlive-Group-Book.pdf",
     ariaLabel: "Download Sunlive Group Book (PDF)",
+    meta: { filetype: groupBook.type },
   }),
 };
 
 export default book;
-
-

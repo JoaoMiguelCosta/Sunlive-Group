@@ -1,5 +1,6 @@
 import {
   IMG_COMMON,
+  SHARED_BOOKS,
   makeFooterInfoHeader,
   makePoliciesBar,
   unitsToFooterGeneric,
@@ -82,9 +83,9 @@ export function makeGroupFooter({ contacts }) {
         ...IMG_COMMON,
       },
       link: {
-        href: "/books/acknowledgements.pdf",
+        href: SHARED_BOOKS.acknowledgements.href,
         target: "_blank",
-        rel: "noopener",
+        rel: "noopener noreferrer",
         ariaLabel: "Abrir Acknowledgements (PDF)",
       },
     },
@@ -98,5 +99,3 @@ export function makeGroupFooter({ contacts }) {
 }
 
 export { IMG_COMMON };
-
-

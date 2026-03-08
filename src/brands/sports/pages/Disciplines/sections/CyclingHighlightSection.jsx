@@ -1,24 +1,21 @@
 import styles from "./CyclingHighlightSection.module.css";
 
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
-import { ICONS, resolveSportsIcon } from "../../../config/index.js";
+import sportsBrand, {
+  ICONS,
+  resolveSportsIcon,
+} from "../../../config/index.js";
 
 export default function CyclingHighlightSection({ data }) {
   const section = data;
   if (!section) return null;
 
-  const {
-    id,
-    title,
-    description,
-    instagramHref,
-    bookHref,
-    bookLabel,
-    iconKey,
-  } = section;
+  const { id, title, description, instagramHref, bookKey, bookLabel, iconKey } =
+    section;
 
   const panelId = `${id}-panel`;
   const HighlightIcon = resolveSportsIcon(ICONS, iconKey);
+  const resolvedBook = bookKey ? sportsBrand.books?.[bookKey] : null;
 
   return (
     <section
@@ -33,7 +30,7 @@ export default function CyclingHighlightSection({ data }) {
             title={title}
             description={description}
             instagramHref={instagramHref}
-            bookHref={bookHref}
+            bookHref={resolvedBook?.href}
             bookLabel={bookLabel}
           />
         </div>

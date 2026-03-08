@@ -15,7 +15,10 @@ const educationLevels = {
         "Desenvolvimento de competências sociais",
         "Acompanhamento pedagógico especializado",
       ],
-      book: { label: "Abrir Book", href: "/books/MiddleSchool.pdf" },
+      book: {
+        label: "Abrir Book",
+        bookKey: "middleSchool",
+      },
     },
     {
       id: "secondary-education",
@@ -31,7 +34,10 @@ const educationLevels = {
         "Disciplinas de especialização desportiva",
         "Orientação vocacional",
       ],
-      book: { label: "Abrir Book", href: "/books/HighSchool.pdf" },
+      book: {
+        label: "Abrir Book",
+        bookKey: "highSchool",
+      },
     },
     {
       id: "higher-education",
@@ -47,7 +53,10 @@ const educationLevels = {
         "Fisioterapia Desportiva",
         "Parcerias universitárias internacionais",
       ],
-      book: { label: "Abrir Book", href: "/books/University.pdf" },
+      book: {
+        label: "Abrir Book",
+        bookKey: "university",
+      },
     },
   ],
 };

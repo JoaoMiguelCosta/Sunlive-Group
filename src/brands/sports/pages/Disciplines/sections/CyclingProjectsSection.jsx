@@ -4,7 +4,10 @@ import styles from "./CyclingProjectsSection.module.css";
 import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 
-import { ICONS, resolveSportsIcon } from "../../../config/index.js";
+import sportsBrand, {
+  ICONS,
+  resolveSportsIcon,
+} from "../../../config/index.js";
 
 const HEADER_DEFAULT_ICON = ICONS.ChartIcon;
 
@@ -69,6 +72,9 @@ export default function CyclingProjectsSection({ data, icon = null }) {
             <div className={styles.grid}>
               {items.map((item) => {
                 const CardIcon = resolveSportsIcon(ICONS, item.iconKey);
+                const resolvedBook = item.bookKey
+                  ? sportsBrand.books?.[item.bookKey]
+                  : null;
 
                 return (
                   <SportsAcademyCard
@@ -80,7 +86,7 @@ export default function CyclingProjectsSection({ data, icon = null }) {
                     description={item.description}
                     instagramHref={item.instagramHref}
                     facebookHref={item.facebookHref}
-                    bookHref={item.bookHref}
+                    bookHref={resolvedBook?.href}
                     bookLabel={item.bookLabel}
                   />
                 );

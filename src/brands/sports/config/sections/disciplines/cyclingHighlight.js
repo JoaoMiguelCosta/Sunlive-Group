@@ -4,7 +4,7 @@ const disciplinesCyclingHighlight = {
   description:
     "O universo do ciclismo na Sunlive — estágios, velódromo, programas de treino, instalações, infraestruturas e muito mais.",
   instagramHref: "https://www.instagram.com/sunlivecycling/",
-  bookHref: "/books/cycling.pdf",
+  bookKey: "cycling",
   bookLabel: "Abrir Book",
   iconKey: "bike",
 };

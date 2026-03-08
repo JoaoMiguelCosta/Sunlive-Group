@@ -1,6 +1,7 @@
 import * as pages from "../pages/index.js";
 
 import { makeGroupFooter } from "./footer.js";
+import { GROUP_BOOKS } from "./books.js";
 import { ICONS, FLAGS } from "./resolvedVisuals.js";
 import {
   GROUP_BASE_PATH,
@@ -21,6 +22,7 @@ const groupBrand = {
 
   icons: ICONS,
   flags: FLAGS,
+  books: GROUP_BOOKS,
 
   paths: {
     base: GROUP_BASE_PATH,
@@ -45,6 +47,7 @@ export {
   GROUP_BASE_PATH,
   GROUP_LOGOS_PATH,
   GROUP_PAGE_PATHS,
+  GROUP_BOOKS,
   BRAND_ICONS,
   BRAND_FLAGS,
   ICONS,

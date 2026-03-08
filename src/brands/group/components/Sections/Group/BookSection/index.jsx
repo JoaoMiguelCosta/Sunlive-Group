@@ -1,26 +1,17 @@
 import styles from "./BookSection.module.css";
 import { groupHomePage } from "../../../../config/pages/index.js";
 
-/**
- * BookSection — CTA em formato “pill” que abre/descarrega o PDF do Book.
- * O PDF deve estar em /public/books/... e a URL vem de config/pages/home.js (groupHomePage.book).
- * Usa BASE_URL para funcionar em sub-paths (ex.: GitHub Pages).
- */
-export default function Booksection() {
+export default function BookSection() {
   const bookConfig = groupHomePage?.sections?.book;
 
   const cta = bookConfig?.cta ?? {
     label: "Open Book Sunlive Group",
-    href: "/books/sunlive-group-book.pdf",
+    href: "",
     filename: "Sunlive-Group-Book.pdf",
     ariaLabel: "Download Sunlive Group Book (PDF)",
   };
 
-  // Gera URL final respeitando o BASE_URL do Vite (p. ex., "/sunlive-group/")
-  const rawHref = cta.href || "/books/sunlive-group-book.pdf";
-  const finalHref = rawHref.startsWith("http")
-    ? rawHref
-    : `${import.meta.env.BASE_URL}${rawHref}`.replace(/\/\/+/g, "/");
+  if (!cta.href) return null;
 
   return (
     <section
@@ -31,11 +22,11 @@ export default function Booksection() {
       <div className={styles.inner}>
         <a
           className={styles.button}
-          href={finalHref}
+          href={cta.href}
           download={cta.filename}
           aria-label={cta.ariaLabel || cta.label}
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           <span className={styles.label}>{cta.label}</span>
           <span className={styles.arrow} aria-hidden="true">
@@ -46,5 +37,3 @@ export default function Booksection() {
     </section>
   );
 }
-
-

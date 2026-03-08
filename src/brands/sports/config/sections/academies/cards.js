@@ -13,7 +13,10 @@ const academiesCards = [
     instagram: null,
     facebook: null,
     more: null,
-    book: { label: "Abrir Book", href: "/books/cycling-academie.pdf" },
+    book: {
+      label: "Abrir Book",
+      bookKey: "cyclingAcademy",
+    },
   },
   {
     key: "karate-academy",
@@ -51,7 +54,10 @@ const academiesCards = [
       label: "Ver mais",
       href: "https://www.pro-footballacademyportugal.com/our-academy",
     },
-    book: { label: "Abrir Book", href: "/books/football-academie.pdf" },
+    book: {
+      label: "Abrir Book",
+      bookKey: "footballAcademy",
+    },
   },
 ];
 
