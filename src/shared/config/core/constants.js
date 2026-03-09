@@ -1,5 +1,3 @@
-// src/shared/config/core/constants.js
-
 export const LANG_DEFAULT = Object.freeze({
   current: "pt",
   options: [
@@ -9,7 +7,10 @@ export const LANG_DEFAULT = Object.freeze({
   ],
 });
 
-export const IMG_COMMON = Object.freeze({ loading: "lazy", decoding: "async" });
+export const IMG_COMMON = Object.freeze({
+  loading: "lazy",
+  decoding: "async",
+});
 
 export const POLICIES_LINKS_DEFAULT = Object.freeze([
   { key: "privacy", label: "Política e Privacidade", href: "/privacy" },
@@ -33,10 +34,28 @@ export const BUSINESS_UNITS_BASE = Object.freeze([
 ]);
 
 export const BUSINESS_UNIT_CONTACTS_DEFAULT = Object.freeze({
-  travel: { email: "travel@sunlive.pt", phone: "+351 933 600 362" },
-  business: { email: "lucas@sunlive.pt", phone: "+351 933 600 362" },
-  sports: { email: null, phone: "+351 916 626 270" },
-  international: { email: "j.guilherme@sunlive.pt", phone: "+351 935 630 798" },
-  hotel: { email: "hotel@sunlive.pt", phone: "+351 933 600 337" },
-  commercial: { email: "org@sunlive.pt", phone: "+351 913 093 702" },
+  travel: {
+    email: "travel@sunlive.pt",
+    phone: "+351 935 630 798",
+  },
+  business: {
+    email: "lucas@sunlive.pt",
+    phone: "+351 933 600 362",
+  },
+  sports: {
+    email: "lucas@sunlive.pt",
+    phone: "+351 933 600 362",
+  },
+  international: {
+    email: "j.guilherme@sunlive.pt",
+    phone: "+351 935 630 798",
+  },
+  hotel: {
+    email: "hotel@sunlive.pt",
+    phone: "+351 933 600 337",
+  },
+  commercial: {
+    email: "org@sunlive.pt",
+    phone: "+351 913 093 702",
+  },
 });

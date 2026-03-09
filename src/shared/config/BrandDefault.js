@@ -1,4 +1,3 @@
-// src/shared/config/BrandDefault.js
 export {
   LANG_DEFAULT,
   IMG_COMMON,
@@ -8,47 +7,34 @@ export {
   BUSINESS_UNIT_CONTACTS_DEFAULT,
 } from "./core/constants.js";
 
+export {
+  SUNLIVE_HQ_LOCATION,
+  CONTACTS_SECTION_TITLE,
+  LOCATION_SECTION_TITLE,
+  SOCIALS_SECTION_TITLE,
+  EMPTY_CONTACTS,
+} from "./core/companyPresets.js";
+
 export { makeBusinessUnits, makeFooterContacts } from "./core/contacts.js";
+
 export {
   SOCIAL_ICON_BY_KEY,
   SOCIALS_DEFAULT,
   SOCIALS,
   withSocialIcons,
 } from "./core/socials.js";
+
 export {
   makeFooterInfoHeader,
   makePoliciesBar,
   makeAcknowledgements,
 } from "./core/footer.js";
+
 export {
   unitsToFooterGeneric,
   countriesToFooterGeneric,
 } from "./core/links.js";
+
 export { SHARED_BOOKS } from "./core/books.js";
 
-/* helpers */
-export function makeBackLink({
-  href = "/sunlive-group",
-  label = "Voltar Sunlive Group",
-} = {}) {
-  return { href, label };
-}
-
-export function makeBook({
-  id = "book",
-  label = "Open Book",
-  href = "",
-  filename = "",
-  ariaLabel = "Download Book (PDF)",
-  meta = { filetype: "pdf" },
-} = {}) {
-  return { id, cta: { label, href, filename, ariaLabel }, meta };
-}
-
-export function makeDefaultCTA(brandTitle = "Sunlive") {
-  return {
-    label: "Contactar",
-    href: "#contactar",
-    ariaLabel: `Contactar ${brandTitle}`,
-  };
-}
+export { makeBackLink, makeBook, makeDefaultCTA } from "./factories/brand.js";

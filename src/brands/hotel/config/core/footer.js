@@ -23,12 +23,20 @@ const footer = {
       tagline: HOTEL_COMPANY.tagline,
       about: HOTEL_COMPANY.about,
       aboutIntro: HOTEL_COMPANY.aboutIntro,
-      link: { label: HOTEL_COMPANY.shortName, href: HOTEL_BASE_PATH },
+      link: {
+        label: HOTEL_COMPANY.shortName,
+        href: HOTEL_BASE_PATH,
+      },
     },
-    options: { keepOriginalAboutFirstLine: true },
+    options: {
+      keepOriginalAboutFirstLine: true,
+    },
     location: HOTEL_COMPANY.location,
     contacts: HOTEL_COMPANY.contacts,
-    socials: { title: "Redes Sociais", items: HOTEL_SOCIALS },
+    socials: {
+      title: "Redes Sociais",
+      items: HOTEL_SOCIALS,
+    },
   }),
 
   linkDirectory: {

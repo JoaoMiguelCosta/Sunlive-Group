@@ -2,6 +2,7 @@ import {
   IMG_COMMON,
   LANG_DEFAULT,
   makeBackLink,
+  makeDefaultCTA,
 } from "../../../../shared/config/BrandDefault.js";
 
 import logoTravel from "../../assets/LogoSunliveTravel/travel.png";
@@ -9,7 +10,7 @@ import logoTravel from "../../assets/LogoSunliveTravel/travel.png";
 import { TRAVEL_BASE_PATH } from "./paths.js";
 import { TRAVEL_SOCIALS } from "./socials.js";
 
-const travelHeader = {
+const header = {
   backLink: makeBackLink({
     href: "/sunlive-group",
     label: "Voltar Sunlive Group",
@@ -25,10 +26,7 @@ const travelHeader = {
   lang: LANG_DEFAULT,
   socials: TRAVEL_SOCIALS,
 
-  cta: {
-    label: "Contactar",
-    href: "#contactar",
-  },
+  cta: makeDefaultCTA("Sunlive Travel"),
 };
 
-export default travelHeader;
+export default header;

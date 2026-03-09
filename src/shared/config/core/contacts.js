@@ -3,18 +3,38 @@ import {
   BUSINESS_UNIT_CONTACTS_DEFAULT,
   DEFAULT_GROUP_CONTACTS,
 } from "./constants.js";
+import { CONTACTS_SECTION_TITLE } from "./companyPresets.js";
 
 function toTelHref(phone) {
   if (!phone) return undefined;
   return `tel:${String(phone).replace(/\s+/g, "")}`;
 }
 
+function toMailtoHref(email) {
+  if (!email) return undefined;
+  return `mailto:${email}`;
+}
+
+function makeEmailContact(email) {
+  return {
+    label: email ?? null,
+    href: toMailtoHref(email),
+  };
+}
+
+function makePhoneContact(phone) {
+  return {
+    label: phone ?? null,
+    href: toTelHref(phone),
+  };
+}
+
 export function makeBusinessUnits(
   contactsByKey = BUSINESS_UNIT_CONTACTS_DEFAULT,
 ) {
-  return BUSINESS_UNITS_BASE.map((b) => ({
-    ...b,
-    ...(contactsByKey?.[b.key] || {}),
+  return BUSINESS_UNITS_BASE.map((unit) => ({
+    ...unit,
+    ...(contactsByKey?.[unit.key] || {}),
   }));
 }
 
@@ -25,18 +45,17 @@ export function makeFooterContacts(
     units = BUSINESS_UNIT_CONTACTS_DEFAULT,
   } = {},
 ) {
-  const src = unitKey === "group" ? group : (units?.[unitKey] ?? group);
-  const emailLabel = src.email ?? group.email;
-  const phoneLabel = src.phone ?? group.phone;
+  const source = unitKey === "group" ? group : (units?.[unitKey] ?? group);
+
+  const emailValue = source.email ?? group.email ?? null;
+  const phoneValue = source.phone ?? group.phone ?? null;
 
   return {
-    email: {
-      label: emailLabel,
-      href: emailLabel ? `mailto:${emailLabel}` : undefined,
-    },
-    phone: {
-      label: phoneLabel,
-      href: toTelHref(phoneLabel),
-    },
+    title: CONTACTS_SECTION_TITLE,
+    email: makeEmailContact(emailValue),
+    phone: makePhoneContact(phoneValue),
+    extraPhones: [],
   };
 }
+
+export { toTelHref, toMailtoHref };

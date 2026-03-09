@@ -1,6 +1,10 @@
 import { IMG_COMMON, POLICIES_LINKS_DEFAULT } from "./constants.js";
 import { makeFooterContacts } from "./contacts.js";
 import { SOCIALS } from "./socials.js";
+import {
+  LOCATION_SECTION_TITLE,
+  SOCIALS_SECTION_TITLE,
+} from "./companyPresets.js";
 
 export function makeFooterInfoHeader(unitKey = "group", overrides = {}) {
   const base = {
@@ -12,20 +16,44 @@ export function makeFooterInfoHeader(unitKey = "group", overrides = {}) {
       aboutIntro: undefined,
       link: { label: "Sunlive Group", href: "/" },
     },
-    location: { title: "Localização", addressLines: [], mapHref: "" },
+    location: {
+      title: LOCATION_SECTION_TITLE,
+      addressLines: [],
+      mapHref: "",
+    },
     contacts: makeFooterContacts(unitKey),
-    socials: { title: "Redes Sociais", items: SOCIALS },
-    options: { keepOriginalAboutFirstLine: false },
+    socials: {
+      title: SOCIALS_SECTION_TITLE,
+      items: SOCIALS,
+    },
+    options: {
+      keepOriginalAboutFirstLine: false,
+    },
   };
 
   return {
     ...base,
     ...overrides,
-    brand: { ...base.brand, ...(overrides.brand || {}) },
-    location: { ...base.location, ...(overrides.location || {}) },
-    contacts: { ...base.contacts, ...(overrides.contacts || {}) },
-    socials: { ...base.socials, ...(overrides.socials || {}) },
-    options: { ...base.options, ...(overrides.options || {}) },
+    brand: {
+      ...base.brand,
+      ...(overrides.brand || {}),
+    },
+    location: {
+      ...base.location,
+      ...(overrides.location || {}),
+    },
+    contacts: {
+      ...base.contacts,
+      ...(overrides.contacts || {}),
+    },
+    socials: {
+      ...base.socials,
+      ...(overrides.socials || {}),
+    },
+    options: {
+      ...base.options,
+      ...(overrides.options || {}),
+    },
   };
 }
 
@@ -35,10 +63,22 @@ export function makePoliciesBar({
   iconAriaLabel,
   links = POLICIES_LINKS_DEFAULT,
 } = {}) {
-  const base = { links, copyright: { holder } };
-  if (typeof year === "number") base.copyright.year = year;
-  if (iconAriaLabel) base.icon = { ariaLabel: iconAriaLabel };
-  return base;
+  const copyright = { holder };
+
+  if (typeof year === "number") {
+    copyright.year = year;
+  }
+
+  const result = {
+    links,
+    copyright,
+  };
+
+  if (iconAriaLabel) {
+    result.icon = { ariaLabel: iconAriaLabel };
+  }
+
+  return result;
 }
 
 export function makeAcknowledgements({
@@ -49,9 +89,18 @@ export function makeAcknowledgements({
   if (!src) return undefined;
 
   return {
-    image: { src, alt, ...IMG_COMMON },
+    image: {
+      src,
+      alt,
+      ...IMG_COMMON,
+    },
     link: pdf
-      ? { href: pdf, target: "_blank", rel: "noopener", ariaLabel: "Abrir PDF" }
+      ? {
+          href: pdf,
+          target: "_blank",
+          rel: "noopener",
+          ariaLabel: "Abrir PDF",
+        }
       : undefined,
   };
 }

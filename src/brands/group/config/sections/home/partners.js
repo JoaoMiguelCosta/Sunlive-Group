@@ -1,4 +1,4 @@
-import { PARTNERS_TITLE, PARTNER_LINKS } from "../../core/socials.js";
+import { PARTNERS_TITLE, PARTNER_LINKS } from "../../core/partners.js";
 
 export const partners = {
   id: "partners",
@@ -10,5 +10,3 @@ export const partners = {
 };
 
 export default partners;
-
-

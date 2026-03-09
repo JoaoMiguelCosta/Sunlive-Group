@@ -1,12 +1,13 @@
-import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
+import { makeDefaultCTA } from "/src/shared/config/BrandDefault.js";
 
-import { TRAVEL_COMPANY, TRAVEL_CONTACT_CHANNELS } from "../core/company.js";
+import { TRAVEL_COMPANY } from "/src/brands/travel/config/core/company.js";
+import { TRAVEL_CONTACT_CHANNELS } from "/src/brands/travel/config/core/contactChannels.js";
 
 const contactCTA = {
   id: "contactar",
   headline: {
     title: "Pronto para a sua próxima Viagem?",
-    lead: "Contacte-nos diretamente e sem compromisso. Estamos disponíveis para responder o mais rapidamente possível às suas questões.",
+    lead: "Contacte-nos diretamente e sem compromisso. Estamos disponíveis para responder o mais rapidamente possível.",
   },
   checklist: [
     { key: "date-time", label: "Data e Hora da Viagem" },

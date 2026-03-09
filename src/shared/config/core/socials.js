@@ -1,4 +1,3 @@
-// src/shared/config/core/socials.js
 import { GLOBAL_ICONS } from "../icons/global.icons.js";
 
 export const SOCIAL_ICON_BY_KEY = Object.freeze({
@@ -7,7 +6,11 @@ export const SOCIAL_ICON_BY_KEY = Object.freeze({
 });
 
 export const SOCIALS_DEFAULT = Object.freeze([
-  { key: "fb", label: "Facebook", href: "https://facebook.com/sunlive.group" },
+  {
+    key: "fb",
+    label: "Facebook",
+    href: "https://facebook.com/sunlive.group",
+  },
   {
     key: "ig",
     label: "Instagram",
@@ -16,7 +19,10 @@ export const SOCIALS_DEFAULT = Object.freeze([
 ]);
 
 export function withSocialIcons(list = []) {
-  return list.map((s) => ({ ...s, Icon: s.Icon ?? SOCIAL_ICON_BY_KEY[s.key] }));
+  return list.map((item) => ({
+    ...item,
+    Icon: item.Icon ?? SOCIAL_ICON_BY_KEY[item.key],
+  }));
 }
 
-export const SOCIALS = withSocialIcons(SOCIALS_DEFAULT);
+export const SOCIALS = Object.freeze(withSocialIcons(SOCIALS_DEFAULT));

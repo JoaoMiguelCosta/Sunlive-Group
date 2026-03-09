@@ -1,7 +1,7 @@
 import {
   aboutTheHotel,
   storyMilestones,
-  qualityCommitment,
+  ourQualityCommitment,
   bairradaRegion,
   uniqueNaturalSetting,
 } from "../sections/about/index.js";
@@ -11,10 +11,11 @@ const about = {
   sections: {
     aboutTheHotel,
     storyMilestones,
-    qualityCommitment,
+    ourQualityCommitment,
     bairradaRegion,
     uniqueNaturalSetting,
   },
 };
 
 export default about;
+export { about as hotelAboutPage };

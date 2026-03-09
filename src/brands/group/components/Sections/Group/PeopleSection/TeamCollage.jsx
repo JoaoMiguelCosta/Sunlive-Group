@@ -2,8 +2,7 @@
 import styles from "./TeamCollage.module.css";
 
 import { groupHomePage } from "../../../../config/pages/index.js";
-import { IMG_COMMON } from "../../../../config/core/footer.js";
-
+import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
 export default function TeamCollage() {
   const src = groupHomePage?.sections?.people?.collage?.src ?? null;
   const alt = groupHomePage?.sections?.people?.collage?.alt ?? "Team collage";

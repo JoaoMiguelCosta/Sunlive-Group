@@ -1,5 +1,4 @@
-// src/brands/sports/config/pages/home.js
-import { SPORTS_GATEWAY } from "../core/nav.js";
+import { SPORTS_GATEWAY } from "../core/gateway.js";
 
 const home = {
   id: "home",

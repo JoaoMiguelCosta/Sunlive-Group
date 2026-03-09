@@ -9,8 +9,9 @@ import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.p
 
 import { ICONS } from "./resolvedVisuals.js";
 import { SPORTS_SOCIALS } from "./socials.js";
-import { SPORTS_QUICKLINKS, SPORTS_COLLABS } from "./nav.js";
+import { SPORTS_QUICK_LINKS, SPORTS_COLLABS } from "./footerLinks.js";
 import { SPORTS_COMPANY } from "./company.js";
+import { SPORTS_BASE_PATH } from "./paths.js";
 
 const footer = {
   id: "footer",
@@ -22,11 +23,20 @@ const footer = {
       tagline: SPORTS_COMPANY.tagline,
       about: SPORTS_COMPANY.about,
       aboutIntro: SPORTS_COMPANY.aboutIntro,
+      link: {
+        label: SPORTS_COMPANY.brandName,
+        href: SPORTS_BASE_PATH,
+      },
     },
-    options: { keepOriginalAboutFirstLine: true },
+    options: {
+      keepOriginalAboutFirstLine: true,
+    },
     location: SPORTS_COMPANY.location,
     contacts: SPORTS_COMPANY.contacts,
-    socials: { title: "Redes Sociais", items: SPORTS_SOCIALS },
+    socials: {
+      title: "Redes Sociais",
+      items: SPORTS_SOCIALS,
+    },
   }),
 
   linkDirectory: {
@@ -35,12 +45,15 @@ const footer = {
         {
           key: "quick-links",
           title: "Links Rápidos",
-          items: SPORTS_QUICKLINKS,
+          items: SPORTS_QUICK_LINKS,
         },
       ],
     },
     partners: {
-      collaborators: { title: "Colaboramos com:", items: SPORTS_COLLABS },
+      collaborators: {
+        title: "Colaboramos com:",
+        items: SPORTS_COLLABS,
+      },
     },
   },
 

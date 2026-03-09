@@ -3,10 +3,11 @@ export function unitsToFooterGeneric(
   basePath = "/sunlive-group",
   slugMap = {},
 ) {
-  return units.map((u) => {
-    const href = slugMap?.[u.key] ?? `${basePath}/${u.key}`;
-    return { key: u.key, label: u.label ?? u.key, href };
-  });
+  return units.map((unit) => ({
+    key: unit.key,
+    label: unit.label ?? unit.key,
+    href: slugMap?.[unit.key] ?? `${basePath}/${unit.key}`,
+  }));
 }
 
 export function countriesToFooterGeneric(
@@ -14,9 +15,9 @@ export function countriesToFooterGeneric(
   basePath = "/sunlive-group",
   sectionId = "presence",
 ) {
-  return countries.map((c) => ({
-    key: c.key,
-    label: c.label ?? c.key,
-    href: `${basePath}#${sectionId}-${c.key}`,
+  return countries.map((country) => ({
+    key: country.key,
+    label: country.label ?? country.key,
+    href: `${basePath}#${sectionId}-${country.key}`,
   }));
 }

@@ -12,7 +12,7 @@ import { TRAVEL_SOCIALS } from "./socials.js";
 import { TRAVEL_BASE_PATH } from "./paths.js";
 import { ICONS, FLAGS } from "./resolvedVisuals.js";
 
-const travelFooter = {
+const footer = {
   id: "footer",
 
   infoHeader: makeFooterInfoHeader("travel", {
@@ -22,17 +22,13 @@ const travelFooter = {
       tagline: TRAVEL_COMPANY.tagline,
       about: TRAVEL_COMPANY.about,
       aboutIntro: TRAVEL_COMPANY.aboutIntro,
+      link: {
+        label: TRAVEL_COMPANY.brandName,
+        href: TRAVEL_BASE_PATH,
+      },
     },
-    location: {
-      title: TRAVEL_COMPANY.location.title,
-      addressLines: TRAVEL_COMPANY.location.addressLines,
-      mapHref: TRAVEL_COMPANY.location.mapHref,
-    },
-    contacts: {
-      title: TRAVEL_COMPANY.contacts.title,
-      email: TRAVEL_COMPANY.contacts.email,
-      phone: TRAVEL_COMPANY.contacts.phone,
-    },
+    location: TRAVEL_COMPANY.location,
+    contacts: TRAVEL_COMPANY.contacts,
     socials: {
       title: "Redes Sociais",
       items: TRAVEL_SOCIALS,
@@ -61,8 +57,16 @@ const travelFooter = {
               label: "Transporte para Equipas",
               href: "#svc-team-transport",
             },
-            { key: "tours", label: "Tours Turísticos", href: "#svc-tours" },
-            { key: "lodging", label: "Alojamentos", href: "#svc-lodging" },
+            {
+              key: "tours",
+              label: "Tours Turísticos",
+              href: "#svc-tours",
+            },
+            {
+              key: "lodging",
+              label: "Alojamentos",
+              href: "#svc-lodging",
+            },
             {
               key: "full-packages",
               label: "Pacotes Completos",
@@ -187,7 +191,7 @@ const travelFooter = {
           },
           {
             key: "grand",
-            label: "Grand Hotel de Luso",
+            label: "Grande Hotel de Luso",
             href: "https://www.hoteluso.com/pt/",
           },
         ],
@@ -206,4 +210,4 @@ const travelFooter = {
   }),
 };
 
-export default travelFooter;
+export default footer;

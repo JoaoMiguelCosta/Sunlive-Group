@@ -3,15 +3,15 @@ import {
   makeBackLink,
 } from "../../../../shared/config/BrandDefault.js";
 
-import { HOTEL_SOCIALS } from "./socials.js";
+import { GROUP_SOCIALS } from "./socials.js";
 
 const header = {
   backLink: makeBackLink({
-    href: "/sunlive-group",
-    label: "Voltar Sunlive Group",
+    href: "/",
+    label: "Voltar",
   }),
   lang: LANG_DEFAULT,
-  socials: HOTEL_SOCIALS,
+  socials: GROUP_SOCIALS,
 };
 
 export default header;

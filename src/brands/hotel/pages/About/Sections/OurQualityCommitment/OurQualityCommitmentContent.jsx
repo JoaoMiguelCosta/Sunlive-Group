@@ -20,7 +20,6 @@ export default function OurQualityCommitmentContent() {
 
   return (
     <div className={styles.content}>
-      {/* Coluna de texto + pill */}
       <div className={styles.textCol}>
         <div className={styles.paragraphs}>
           {paragraphs.map((paragraph, index) => (
@@ -37,7 +36,6 @@ export default function OurQualityCommitmentContent() {
         )}
       </div>
 
-      {/* Coluna de compromissos */}
       <aside
         className={styles.commitmentsCol}
         aria-label="Comprometemo-nos com"

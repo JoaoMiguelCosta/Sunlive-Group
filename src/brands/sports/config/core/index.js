@@ -5,7 +5,9 @@ import footer from "./footer.js";
 import { SPORTS_BOOKS } from "./books.js";
 
 import { SPORTS_BASE_PATH, SPORTS_PAGE_PATHS } from "./paths.js";
-import { SPORTS_QUICKLINKS, SPORTS_PRIMARY_NAV_ITEMS } from "./nav.js";
+import { SPORTS_PRIMARY_NAV_ITEMS } from "./nav.js";
+import { SPORTS_QUICK_LINKS, SPORTS_COLLABS } from "./footerLinks.js";
+import { SPORTS_GATEWAY } from "./gateway.js";
 
 import { BRAND_ICONS } from "./icons.js";
 import { BRAND_FLAGS } from "./flags.js";
@@ -33,11 +35,16 @@ const sportsBrand = {
   header,
 
   nav: {
-    quickLinks: SPORTS_QUICKLINKS,
     primaryItems: SPORTS_PRIMARY_NAV_ITEMS,
   },
 
-  pages: { ...pages },
+  quickLinks: SPORTS_QUICK_LINKS,
+  gateway: SPORTS_GATEWAY,
+  collaborators: SPORTS_COLLABS,
+
+  pages: {
+    ...pages,
+  },
 
   sections: {
     ...sections,
@@ -53,6 +60,8 @@ export default sportsBrand;
 
 export { SPORTS_BASE_PATH, SPORTS_PAGE_PATHS };
 export { SPORTS_BOOKS };
+export { SPORTS_GATEWAY };
+export { SPORTS_QUICK_LINKS, SPORTS_COLLABS };
 export { BRAND_ICONS, BRAND_FLAGS };
 export { ICONS, FLAGS };
 export { BRAND_ICON_KEY_MAP, resolveSportsIcon, resolveSportsIconName };

@@ -1,3 +1,8 @@
+import {
+  CONTACTS_SECTION_TITLE,
+  SUNLIVE_HQ_LOCATION,
+} from "../../../../shared/config/BrandDefault.js";
+
 export const SPORTS_COMPANY = Object.freeze({
   key: "sports",
   brandName: "Sunlive Sports",
@@ -6,25 +11,20 @@ export const SPORTS_COMPANY = Object.freeze({
     "Na Sunlive Sports, acreditamos no desporto como motor de desenvolvimento pessoal, educativo e profissional — providenciamos programas integrados que elevam a performance, promovem o bem-estar e criam experiências memoráveis.",
   aboutIntro:
     "Na Sunlive Sports, acreditamos no desporto como motor de desenvolvimento pessoal, educativo e profissional.",
-  location: {
-    title: "Localização",
-    addressLines: [
-      "Rua Narciso da Marça, 3780-101",
-      "Sangalhos, Anadia – Aveiro",
-    ],
-    mapHref:
-      "https://www.google.com/maps/search/?api=1&query=Rua%20Narciso%20da%20Mar%C3%A7a%203780-101%20Sangalhos",
-  },
+  location: SUNLIVE_HQ_LOCATION,
   contacts: {
-    title: "Contactos",
+    title: CONTACTS_SECTION_TITLE,
     email: {
       href: "mailto:lucas@sunlive.pt",
       label: "lucas@sunlive.pt",
+      ariaLabel: "Enviar email para a Sunlive Sports",
     },
     phone: {
       href: "tel:+351933600362",
       label: "+351 933 600 362",
+      ariaLabel: "Ligar para a Sunlive Sports",
     },
+    extraPhones: [],
   },
 });
 

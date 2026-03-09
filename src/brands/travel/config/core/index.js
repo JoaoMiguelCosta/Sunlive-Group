@@ -2,6 +2,7 @@ import { LANG_DEFAULT } from "../../../../shared/config/BrandDefault.js";
 
 import header from "./header.js";
 import footer from "./footer.js";
+import { TRAVEL_BOOKS } from "./books.js";
 
 import { TRAVEL_BASE_PATH, TRAVEL_PAGE_PATHS } from "./paths.js";
 import { TRAVEL_NAV } from "./nav.js";
@@ -14,6 +15,7 @@ import {
   resolveTravelIcon,
   resolveTravelIconName,
 } from "./iconKeyMap.js";
+import { TRAVEL_CONTACT_CHANNELS } from "./contactChannels.js";
 
 import * as pages from "../pages/index.js";
 import * as sections from "../sections/index.js";
@@ -35,7 +37,9 @@ const travelBrand = {
     primaryItems: TRAVEL_NAV,
   },
 
-  pages: { ...pages },
+  pages: {
+    ...pages,
+  },
 
   sections: {
     ...sections,
@@ -44,11 +48,16 @@ const travelBrand = {
 
   icons: ICONS,
   flags: FLAGS,
+  books: TRAVEL_BOOKS,
+
+  contactChannels: TRAVEL_CONTACT_CHANNELS,
 };
 
 export default travelBrand;
 
 export { TRAVEL_BASE_PATH, TRAVEL_PAGE_PATHS };
+export { TRAVEL_BOOKS };
 export { BRAND_ICONS, BRAND_FLAGS };
 export { ICONS, FLAGS };
 export { BRAND_ICON_KEY_MAP, resolveTravelIcon, resolveTravelIconName };
+export { TRAVEL_CONTACT_CHANNELS };
