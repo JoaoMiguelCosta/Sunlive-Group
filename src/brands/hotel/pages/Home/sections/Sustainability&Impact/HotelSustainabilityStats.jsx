@@ -1,3 +1,4 @@
+// src/brands/hotel/pages/home/sections/Sustainability&Impact/HotelSustainabilityStats.jsx
 import HotelWhoWeHostCard from "../../../../shared/ui/HotelWhoWeHostCard/HotelWhoWeHostCard.jsx";
 import styles from "./HotelSustainabilityStats.module.css";
 

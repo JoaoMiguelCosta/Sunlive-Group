@@ -1,11 +1,14 @@
+/* src/brands/hotel/components/Home/FeaturedExperiences/HotelFeaturedExperiencesGrid.module.css */
+
 .gridWrap {
-    margin-block-start: clamp(1.5rem, 4vw, 2.5rem);
+    position: relative;
+    isolation: isolate;
+    margin-block-start: clamp(1.25rem, 2.8vw, 1.85rem);
 }
 
-/* 4 cards em linha no desktop, responsivo abaixo */
 .grid {
     display: grid;
-    gap: clamp(1rem, 3vw, 1.5rem);
+    gap: clamp(0.9rem, 2.2vw, 1.25rem);
     grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 

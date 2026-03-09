@@ -1,3 +1,4 @@
+// src/brands/hotel/pages/HotelAbout/sections/TheBairradaRegion/TheBairradaRegion.jsx
 import hotelBrand from "../../../../config/index.js";
 
 import TheBairradaRegionHeader from "./TheBairradaRegionHeader.jsx";
@@ -13,27 +14,31 @@ export default function TheBairradaRegion() {
 
   const header = section.header ?? null;
   const description = section.description ?? null;
-  const highlightItems = section.highlights?.items ?? [];
+  const highlightItems = Array.isArray(section.highlights?.items)
+    ? section.highlights.items
+    : [];
+
+  const sectionId = section.id ?? "sobre-bairrada";
+  const titleId = section.id ? `${section.id}-title` : undefined;
 
   return (
     <section
-      id={section.id ?? "sobre-bairrada"}
+      id={sectionId}
       className={styles.section}
-      aria-labelledby={section.id ? `${section.id}-title` : undefined}
+      aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        {header && (
-          <TheBairradaRegionHeader
-            header={header}
-            titleId={section.id ? `${section.id}-title` : undefined}
-          />
-        )}
+        {header ? (
+          <TheBairradaRegionHeader header={header} titleId={titleId} />
+        ) : null}
 
-        {description && <HotelAboutRegionBairrada description={description} />}
+        {description ? (
+          <HotelAboutRegionBairrada description={description} />
+        ) : null}
 
-        {highlightItems.length > 0 && (
+        {highlightItems.length > 0 ? (
           <HotelRegionHighlightsGrid items={highlightItems} />
-        )}
+        ) : null}
       </div>
     </section>
   );

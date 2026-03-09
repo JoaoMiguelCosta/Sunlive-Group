@@ -3,11 +3,30 @@
 .section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(2.5rem, 5vw, 3.25rem);
+
+    padding-block: clamp(2.4rem, 5vw, 3.4rem);
+    background: transparent;
 }
 
 .inner {
-    inline-size: calc(min(var(--sl-container-lg, 80rem), 100%) - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)));
+    
+    --section-max: var(--sl-container-lg, 85rem);
+
+    position: relative;
+    inline-size: min(var(--section-max), calc(100% - (2 * var(--section-x))));
     margin-inline: auto;
     box-sizing: border-box;
+
+    display: grid;
+    gap: clamp(1.2rem, 2vw, 1.6rem);
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding-block: 2rem;
+    }
+
+    .inner {
+        gap: 1rem;
+    }
 }

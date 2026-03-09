@@ -1,3 +1,4 @@
+// src/brands/hotel/components/Home/WhoWeHost/index.jsx
 import styles from "./WhoWeHost.module.css";
 
 import hotelBrand from "../../../../config/index.js";

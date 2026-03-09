@@ -10,7 +10,10 @@ export default function WhyChooseCard({
   const label = ariaLabel || title || "card";
 
   return (
-    <article className={`${styles.card} ${className}`} aria-label={label}>
+    <article
+      className={[styles.card, className].filter(Boolean).join(" ")}
+      aria-label={label}
+    >
       <div className={styles.topBar}>
         <div className={styles.iconWrap} aria-hidden="true">
           {icon ? <span className={styles.icon}>{icon}</span> : null}

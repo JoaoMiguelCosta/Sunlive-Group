@@ -1,18 +1,13 @@
-// src/shared/components/hotel/HotelSectionDescription.jsx
+// src/shared/ui/HotelSectionDescription/HotelSectionDescription.jsx
 import styles from "./HotelSectionDescription.module.css";
 
 /**
  * HotelSectionDescription
  * Bloco reutilizável para a descrição logo abaixo de um título de secção.
  *
- * Uso:
- *  <HotelSectionDescription>
- *    Quartos e suítes confortáveis, equipados para diferentes perfis de hóspedes...
- *  </HotelSectionDescription>
- *
  * Props:
- *  - as?: "p" | "div" | "span"   (por defeito "p")
- *  - align?: "center" | "left"   (por defeito "center")
+ *  - as?: "p" | "div" | "span"
+ *  - align?: "center" | "left"
  *  - className?: string
  */
 export default function HotelSectionDescription({

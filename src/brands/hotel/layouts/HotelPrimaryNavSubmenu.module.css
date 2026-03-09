@@ -6,12 +6,11 @@
 .submenuWrap {
     position: absolute;
     top: 100%;
+    left: 50%;
+    transform: translate(-50%, -8px);
 
     --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
     inline-size: calc(min(var(--sl-container-lg, 1360px), 100%) - 2 * var(--line-inset));
-
-    left: 50%;
-    transform: translate(-50%, -8px);
 
     padding-block: 0.4rem 1.6rem;
 
@@ -51,28 +50,36 @@
     padding: 1.05rem 1.25rem 1.25rem;
     border-radius: 26px;
 
-    background: radial-gradient(circle at 0 100%,
-            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 74%)),
-        radial-gradient(circle at 100% 0, color-mix(in oklab, #020617, transparent 10%)),
-        linear-gradient(to bottom, #02030c 0%, #010109 52%, #010106 100%);
+    background:
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
+        #26170b;
 
-    border: 1px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 48%);
+    border: 1px solid rgba(230, 200, 147, 0.34);
 
-    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.95),
-        0 0 0 1px rgba(255, 255, 255, 0.02);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 18px 44px rgba(0, 0, 0, 0.30),
+        0 0 0 1px rgba(255, 255, 255, 0.015);
 
     opacity: 0.88;
     transform: translateY(4px);
-    transition: opacity 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease,
-        border-color 0.22s ease;
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
 }
 
 .columnCardActive {
     opacity: 1;
     transform: translateY(0);
-    border-color: color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 22%);
-    box-shadow: 0 26px 70px rgba(0, 0, 0, 1),
-        0 0 0 1px color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 36%);
+    border-color: rgba(230, 200, 147, 0.56);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 22px 54px rgba(0, 0, 0, 0.34),
+        0 0 18px rgba(230, 200, 147, 0.08);
 }
 
 .linkList {
@@ -90,14 +97,19 @@
     display: inline-block;
     padding-left: 1rem;
 
-    color: var(--sl-platinum-010, #f9fafb);
+    color: rgba(255, 248, 240, 0.92);
     font-size: clamp(0.78rem, 0.74rem + 0.25vw, 0.85rem);
     font-weight: 400;
     text-decoration: none;
     opacity: 0.85;
     white-space: nowrap;
-    transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease,
-        box-shadow 0.18s ease, background 0.18s ease;
+
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
 }
 
 .linkItem a::before {
@@ -110,8 +122,8 @@
     inline-size: 6px;
     block-size: 6px;
 
-    border-right: 1.5px solid color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 15%);
-    border-bottom: 1.5px solid color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 15%);
+    border-right: 1.5px solid rgba(255, 223, 160, 0.96);
+    border-bottom: 1.5px solid rgba(255, 223, 160, 0.96);
 
     opacity: 0.9;
     pointer-events: none;
@@ -122,18 +134,16 @@
 .linkItem a:focus-visible {
     opacity: 1;
     transform: translateX(2px);
-    color: color-mix(in oklab,
-            var(--sl-gold-300, #fde68a),
-            var(--sl-platinum-010, #f9fafb) 30%);
+    color: rgba(255, 250, 244, 0.98);
 
-    background: radial-gradient(circle at 0 0,
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 74%)),
-        radial-gradient(circle at 100% 0,
-            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 78%)),
-        linear-gradient(90deg, #02030c 0%, #090310 35%, #120706 70%, #1a1207 100%);
+    background:
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
+        linear-gradient(180deg, rgba(108, 67, 32, 0.78), rgba(49, 30, 15, 0.92));
 
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.9),
-        0 0 0 1px rgba(255, 255, 255, 0.04);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 10px 22px rgba(0, 0, 0, 0.22),
+        0 0 16px rgba(230, 200, 147, 0.08);
 
     border-radius: 999px;
     padding-block: 0.12rem;
@@ -143,7 +153,7 @@
 .linkItem a:hover::before,
 .linkItem a:focus-visible::before {
     transform: translateY(-50%) translateX(2px) rotate(-45deg);
-    border-color: color-mix(in oklab, var(--sl-gold-300, #fde68a), black 10%);
+    border-color: rgba(255, 232, 196, 0.98);
 }
 
 /* < 1360px — 1 cartão ancorado ao botão */
@@ -165,17 +175,15 @@
     .columnCard {
         position: absolute;
         top: 0;
-
-        width: 320px;
-        max-width: 100%;
-        padding: 0.95rem 1.1rem 1.1rem;
-        border-radius: 24px;
-
         left: clamp(0px,
                 calc(var(--submenu-anchor-x, 50%) - 160px),
                 calc(100% - 320px));
 
+        width: 320px;
+        max-width: 100%;
         margin: 0;
+        padding: 0.95rem 1.1rem 1.1rem;
+        border-radius: 24px;
     }
 
     .linkItem a {
@@ -184,7 +192,7 @@
     }
 }
 
-/* ✅ Até 1180px — submenu centrado/cartão único (acompanha o drawer) */
+/* Até 1180px — submenu centrado/cartão único */
 @media (max-width: 1180px) {
     .submenuWrap {
         inline-size: calc(min(var(--sl-container-lg, 1360px), 100%) - 2 * var(--line-inset));
@@ -217,9 +225,9 @@
 
     .columnCard {
         max-width: 100%;
+        margin-inline: 0;
         padding: 0.85rem 0.9rem 0.95rem;
         border-radius: 22px;
-        margin-inline: 0;
     }
 
     .linkItem a {
@@ -243,17 +251,15 @@
     .columnCard {
         position: absolute;
         top: 0;
-
-        width: 320px;
-        max-width: 100%;
-        padding: 0.95rem 1.1rem 1.1rem;
-        border-radius: 24px;
-
         left: clamp(0px,
                 calc(var(--submenu-anchor-x, 50%) - 160px),
                 calc(100% - 320px));
 
+        width: 320px;
+        max-width: 100%;
         margin: 0;
+        padding: 0.95rem 1.1rem 1.1rem;
+        border-radius: 24px;
         flex: 0 0 auto;
     }
 

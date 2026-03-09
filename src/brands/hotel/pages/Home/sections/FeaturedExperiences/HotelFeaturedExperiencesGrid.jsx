@@ -1,3 +1,4 @@
+// src/brands/hotel/components/Home/FeaturedExperiences/HotelFeaturedExperiencesGrid.jsx
 import hotelBrand from "../../../../config/index.js";
 import FeaturedExperienceCard from "../../../../shared/ui/FeaturedExperienceCard/FeaturedExperienceCard.jsx";
 import styles from "./HotelFeaturedExperiencesGrid.module.css";
@@ -11,7 +12,10 @@ export default function HotelFeaturedExperiencesGrid() {
   const featuredSection =
     hotelBrand?.pages?.home?.sections?.featuredExperiences ?? null;
 
-  const items = featuredSection?.items ?? [];
+  const items = Array.isArray(featuredSection?.items)
+    ? featuredSection.items
+    : [];
+
   if (!items.length) return null;
 
   return (

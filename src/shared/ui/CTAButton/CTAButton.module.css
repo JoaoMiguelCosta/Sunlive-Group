@@ -1,5 +1,7 @@
+/* src/shared/ui/CTAButton/CTAButton.module.css */
+
 /* ===========================================
-   CTAButton — base + variantes (hero/sports)
+   CTAButton — base + variantes (hero/sports/hotel)
    - Blink controlado por hook (overlay)
    - Sheen separado (span.sheen) para não conflituar com ::after
    =========================================== */
@@ -73,7 +75,6 @@
     z-index: 1;
     border-radius: inherit;
     transition: none;
-    /* blink seco */
 }
 
 .button--blink[data-on="true"]::after {
@@ -84,12 +85,11 @@
     opacity: 0;
 }
 
-/* Sheen (reflexo) — elemento separado para evitar conflito com ::after */
+/* Sheen */
 .sheen {
     position: absolute;
     inset: 0;
     z-index: 3;
-    /* acima do texto (efeito), mas discreto */
     pointer-events: none;
     opacity: 0;
     transform: translateX(-140%) rotate(0.001deg);
@@ -115,7 +115,6 @@
     outline: none;
 }
 
-/* Hover força ON (mesmo com blink) */
 .button:hover::after,
 .button:focus-visible::after {
     opacity: 1;
@@ -151,7 +150,7 @@
     }
 }
 
-/* ===== Modo compacto (auto/true/false) ===== */
+/* ===== Modo compacto ===== */
 @media (max-width: 720px) {
     .button[data-compact="auto"] {
         --pill-fs: .96rem;
@@ -168,7 +167,7 @@
     --pill-min: 36px;
 }
 
-/* ===== Breakpoints — iguais aos pills ===== */
+/* ===== Breakpoints ===== */
 @media (min-width: 1368px) {
     .button {
         --pill-fs: 1.06rem;
@@ -215,10 +214,7 @@
 }
 
 /* =======================================================
-   VARIANTE HERO — máximo destaque (Travel)
-   - Fill dourado contínuo
-   - Halo pulsante (usa data-on do hook)
-   - Backplate com blur para separar do fundo
+   VARIANTE HERO
    ======================================================= */
 .button--hero {
     --halo-color: rgba(255, 162, 0, .24);
@@ -242,7 +238,6 @@
     transform: translateZ(0);
 }
 
-/* Backplate (hero) */
 .button--hero::before {
     content: "";
     position: absolute;
@@ -257,7 +252,6 @@
     pointer-events: none;
 }
 
-/* Pulso no halo quando data-on="true" */
 .button--hero[data-on="true"] {
     animation: heroPulse 1.8s ease-in-out infinite;
 }
@@ -303,7 +297,7 @@
 }
 
 /* =========================================================
-   VARIANTE SPORTS — baseado no CTAButton2 (Noir + Gold + Green)
+   VARIANTE SPORTS
    ========================================================= */
 .button--sports {
     --sports-gold-a: color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%);
@@ -364,5 +358,128 @@
     .button--sports {
         font-size: 0.96rem;
         padding: 0.8rem 2rem;
+    }
+}
+
+/* =========================================================
+   VARIANTE HOTEL
+   - Alinhada com o footer / shell do hotel
+   - Base castanho escuro quente + dourado champanhe
+   ========================================================= */
+.button--hotel {
+    --hotel-border: rgba(230, 200, 147, 0.42);
+    --hotel-text: #fff3da;
+    --hotel-halo-min: 4px;
+    --hotel-halo-max: clamp(7px, 1vw, 14px);
+    --hotel-halo-hover: clamp(7px, 1vw, 14px);
+    --hotel-halo-soft: rgba(230, 200, 147, 0.14);
+    --hotel-halo-strong: rgba(199, 134, 21, 0.22);
+
+    color: var(--hotel-text);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-shadow:
+        0 1px 0 rgba(255, 248, 235, 0.08),
+        0 8px 18px rgba(0, 0, 0, 0.18);
+
+    border: 1px solid var(--hotel-border);
+
+    background:
+        radial-gradient(120% 180% at 0% 0%, rgba(230, 200, 147, 0.16), transparent 42%),
+        radial-gradient(120% 180% at 100% 100%, rgba(199, 134, 21, 0.14), transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.05) 0%,
+            rgba(255, 248, 235, 0.018) 18%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(90deg,
+            #2a160a 0%,
+            #341a0b 32%,
+            #241208 68%,
+            #1a0d06 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 0 0 var(--hotel-halo-min) var(--hotel-halo-soft),
+        0 14px 30px rgba(0, 0, 0, 0.26),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+
+    transform: translateZ(0);
+}
+
+.button--hotel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.09) 0%,
+            rgba(255, 248, 235, 0.03) 14%,
+            rgba(255, 255, 255, 0) 36%),
+        radial-gradient(55% 120% at 0% 50%, rgba(199, 134, 21, 0.08), transparent 72%),
+        radial-gradient(45% 100% at 100% 50%, rgba(230, 200, 147, 0.07), transparent 70%);
+    opacity: 0.95;
+}
+
+.button--hotel::after {
+    background:
+        linear-gradient(180deg,
+            rgba(230, 200, 147, 0.22) 0%,
+            rgba(199, 134, 21, 0.26) 100%);
+}
+
+.button--hotel[data-on="true"] {
+    animation: hotelPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes hotelPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            inset 0 1px 0 rgba(255, 248, 235, 0.08),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+            0 0 0 var(--hotel-halo-min) var(--hotel-halo-soft),
+            0 14px 30px rgba(0, 0, 0, 0.26),
+            0 0 0 1px rgba(255, 255, 255, 0.02);
+    }
+
+    50% {
+        box-shadow:
+            inset 0 1px 0 rgba(255, 248, 235, 0.08),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+            0 0 0 var(--hotel-halo-max) var(--hotel-halo-strong),
+            0 16px 34px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.025);
+    }
+}
+
+.button--hotel:hover,
+.button--hotel:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgba(230, 200, 147, 0.56);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 0 0 var(--hotel-halo-hover) var(--hotel-halo-strong),
+        0 18px 36px rgba(0, 0, 0, 0.32),
+        0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.button--hotel:active {
+    transform: translateY(0);
+}
+
+.button--hotel:focus-visible {
+    outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button--hotel {
+        animation: none !important;
     }
 }

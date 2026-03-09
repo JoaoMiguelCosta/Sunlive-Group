@@ -38,21 +38,20 @@ export default function HotelOfferPanel({
       {Array.isArray(items) && items.length ? (
         <div className={styles.box}>
           <ul className={styles.items}>
-            {items.map((it) => (
-              <li key={it.id} className={styles.item}>
+            {items.map((item) => (
+              <li key={item.id} className={styles.item}>
                 <span className={styles.itemIcon} aria-hidden="true">
-                  {/* ✅ ícone opcional (preparado para depois) */}
-                  {it.Icon ? (
-                    <it.Icon className={styles.iconSvg} />
+                  {item.Icon ? (
+                    <item.Icon className={styles.iconSvg} />
                   ) : (
                     <span className={styles.iconPlaceholder} />
                   )}
                 </span>
 
                 <div className={styles.itemText}>
-                  <div className={styles.itemTitle}>{it.title}</div>
-                  {it.description ? (
-                    <div className={styles.itemDesc}>{it.description}</div>
+                  <div className={styles.itemTitle}>{item.title}</div>
+                  {item.description ? (
+                    <div className={styles.itemDesc}>{item.description}</div>
                   ) : null}
                 </div>
               </li>
@@ -68,12 +67,12 @@ export default function HotelOfferPanel({
       {Array.isArray(highlights) && highlights.length ? (
         <div className={styles.box}>
           <ul className={styles.highlights}>
-            {highlights.map((h) => (
-              <li key={h.id} className={styles.highlightItem}>
+            {highlights.map((highlight) => (
+              <li key={highlight.id} className={styles.highlightItem}>
                 <span className={styles.check} aria-hidden="true">
                   ✓
                 </span>
-                <span className={styles.highlightText}>{h.text}</span>
+                <span className={styles.highlightText}>{highlight.text}</span>
               </li>
             ))}
           </ul>

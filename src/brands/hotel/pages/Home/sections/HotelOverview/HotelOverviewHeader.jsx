@@ -1,3 +1,4 @@
+// src/brands/hotel/pages/HotelHome/sections/HotelOverview/HotelOverviewHeader.jsx
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 import styles from "./HotelOverviewHeader.module.css";
 
@@ -6,7 +7,7 @@ export default function HotelOverviewHeader({ label, titleId }) {
 
   return (
     <div className={styles.wrap} id={titleId}>
-      <HotelSectionHeader label={label} />
+      <HotelSectionHeader label={label} as="h2" align="center" />
     </div>
   );
 }

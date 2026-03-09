@@ -1,32 +1,59 @@
 /* src/brands/hotel/pages/HotelAbout/sections/TheBairradaRegion/HotelRegionHighlightsGrid.module.css */
 
 .wrap {
-    margin-block-start: clamp(1.75rem, 4vw, 2.4rem);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
 
-    border-radius: 0.9rem;
-    border: 1px solid color-mix(in oklab,
-            var(--sl-accent-600, #b8860b),
-            black 18%);
+    margin-block-start: clamp(1.4rem, 3vw, 2rem);
+    padding: clamp(0.85rem, 2vw, 1.2rem);
 
-    padding: clamp(0.9rem, 2vw, 1.2rem);
+    border-radius: 28px;
+    border: 1px solid rgba(230, 200, 147, 0.32);
 
     background:
-        radial-gradient(circle at 0 0,
-            color-mix(in oklab, #020617, black 8%)),
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.16), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.1), transparent 60%),
         linear-gradient(180deg,
-            #020617 0%,
-            #020617 100%);
+            rgba(255, 248, 235, 0.03) 0%,
+            rgba(255, 248, 235, 0.01) 18%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(90deg,
+            #2a160a 0%,
+            #341a0b 32%,
+            #241208 68%,
+            #1a0d06 100%);
 
     box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.9),
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+        0 18px 46px rgba(0, 0, 0, 0.24),
         0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
-/* 3 cards em cima + 3 em baixo (como no mock) */
+.wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.06) 0%,
+            rgba(255, 248, 235, 0.02) 10%,
+            rgba(255, 255, 255, 0) 28%),
+        radial-gradient(60% 65% at 0% 50%, rgba(199, 134, 21, 0.08), transparent 72%),
+        radial-gradient(50% 55% at 100% 50%, rgba(230, 200, 147, 0.07), transparent 70%);
+    opacity: 0.95;
+}
+
 .grid {
+    position: relative;
+    z-index: 1;
+
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.9rem, 2.4vw, 1.3rem);
+    gap: clamp(0.9rem, 2vw, 1.2rem);
 }
 
 @media (max-width: 1024px) {
@@ -37,10 +64,12 @@
 
 @media (max-width: 640px) {
     .wrap {
-        padding: 0.75rem;
+        padding: 0.8rem;
+        border-radius: 22px;
     }
 
     .grid {
         grid-template-columns: minmax(0, 1fr);
+        gap: 0.8rem;
     }
 }

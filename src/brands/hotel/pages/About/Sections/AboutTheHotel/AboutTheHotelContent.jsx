@@ -4,6 +4,35 @@ import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHi
 import styles from "./AboutTheHotelContent.module.css";
 
 const BRAND_NAME = "Estalagem de Sangalhos – Sport & Nature Hotel";
+const HIGHLIGHT_KEY = "Sport & Nature";
+
+function renderHighlightedBrand(text) {
+  if (!text || !text.includes(BRAND_NAME)) return text;
+
+  const [before, after] = text.split(BRAND_NAME);
+
+  return (
+    <>
+      {before}
+      <span className={styles.brandName}>{BRAND_NAME}</span>
+      {after}
+    </>
+  );
+}
+
+function renderHighlightedPillText(text) {
+  if (!text || !text.includes(HIGHLIGHT_KEY)) return text;
+
+  const [before, after] = text.split(HIGHLIGHT_KEY);
+
+  return (
+    <>
+      {before}
+      <strong>{HIGHLIGHT_KEY}</strong>
+      {after}
+    </>
+  );
+}
 
 /**
  * AboutTheHotelContent
@@ -26,53 +55,28 @@ export default function AboutTheHotelContent() {
 
   return (
     <div className={styles.content}>
-      {/* COLUNA TEXTO */}
       <div className={styles.textCol}>
         {firstParagraph && (
           <p className={styles.paragraph}>
-            {firstParagraph.includes(BRAND_NAME)
-              ? (() => {
-                  const [before, after] = firstParagraph.split(BRAND_NAME);
-                  return (
-                    <>
-                      {before}
-                      <span className={styles.brandName}>{BRAND_NAME}</span>
-                      {after}
-                    </>
-                  );
-                })()
-              : firstParagraph}
+            {renderHighlightedBrand(firstParagraph)}
           </p>
         )}
 
-        {otherParagraphs.map((p, idx) => (
-          <p key={idx} className={styles.paragraph}>
-            {p}
+        {otherParagraphs.map((paragraph, index) => (
+          <p key={`${paragraph}-${index}`} className={styles.paragraph}>
+            {paragraph}
           </p>
         ))}
 
         {highlightText && (
           <div className={styles.highlightWrap}>
             <HotelHighlightPill>
-              {highlightText.includes("Sport & Nature")
-                ? (() => {
-                    const key = "Sport & Nature";
-                    const [before, after] = highlightText.split(key);
-                    return (
-                      <>
-                        {before}
-                        <strong>{key}</strong>
-                        {after}
-                      </>
-                    );
-                  })()
-                : highlightText}
+              {renderHighlightedPillText(highlightText)}
             </HotelHighlightPill>
           </div>
         )}
       </div>
 
-      {/* COLUNA MEDIA / FOTO */}
       <div className={styles.mediaCol}>
         <div className={styles.mediaFrame}>
           {imageSrc ? (

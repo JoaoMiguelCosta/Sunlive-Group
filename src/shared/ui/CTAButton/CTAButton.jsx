@@ -1,3 +1,4 @@
+// src/shared/ui/CTAButton/CTAButton.jsx
 import styles from "./CTAButton.module.css";
 
 /* Hooks (rota certa a partir de shared/ui/CTAButton) */
@@ -17,14 +18,14 @@ import { PhoneIcon } from "../icons";
  *  - href, label, ariaLabel
  *
  * Extras:
- *  - as: "a" | "button"               // default: "a"
+ *  - as: "a" | "button"                      // default: "a"
  *  - type: button type (se as="button")
  *  - Icon: React.FC (preferível)
- *  - icon: string (ex: "phone")       // alternativa rápida
- *  - blink?: boolean                  // default: true
- *  - compact?: "auto" | true | false  // default: "auto"
- *  - scrollOffset?: number            // default: 72
- *  - variant?: "default" | "hero" | "sports" // default: "hero"
+ *  - icon: string (ex: "phone")              // alternativa rápida
+ *  - blink?: boolean                         // default: true
+ *  - compact?: "auto" | true | false         // default: "auto"
+ *  - scrollOffset?: number                   // default: 72
+ *  - variant?: "default" | "hero" | "sports" | "hotel"
  */
 const ICON_MAP = {
   phone: PhoneIcon,
@@ -45,13 +46,13 @@ export default function CTAButton({
 
   // ícone
   Icon,
-  icon, // string key, ex: "phone"
+  icon,
 
   // navegação / scroll
   scrollOffset = 72,
 
   // render
-  as = "a", // "a" | "button"
+  as = "a",
   type = "button",
 
   // visual
@@ -70,17 +71,14 @@ export default function CTAButton({
 
   const ariaLabel = ariaLabelProp || cta?.ariaLabel || label || "Contactar";
 
-  // Ícone: preferir Icon (componente). Se não vier, tentar icon string.
   const IconComp =
     Icon ||
     (typeof icon === "string" && ICON_MAP[icon] ? ICON_MAP[icon] : null);
 
   const isExternal = typeof href === "string" && /^https?:\/\//i.test(href);
 
-  // Blink: 1.8s por ciclo
   const { on, bind } = useBlink({ cycleMs: 1800, disabled: !blink });
 
-  // Smooth anchors (mesma página)
   const { isSamePageHash } = useLocalSmoothAnchors();
 
   const prefersReduce =
@@ -103,7 +101,9 @@ export default function CTAButton({
 
     try {
       window.history.pushState({}, "", `#${id}`);
-    } catch (_) {}
+    } catch (_) {
+      // noop
+    }
 
     window.scrollTo({
       top: targetY,
@@ -111,20 +111,15 @@ export default function CTAButton({
     });
   };
 
-  const handleClick = (e) => {
-    // callback do utilizador (se existir)
-    if (typeof onClickProp === "function") onClickProp(e);
-    if (e.defaultPrevented) return;
+  const handleClick = (event) => {
+    if (typeof onClickProp === "function") onClickProp(event);
+    if (event.defaultPrevented) return;
 
-    // se for button, não há navegação por defeito
     if (as === "button") return;
-
-    // deixa links externos navegarem normalmente
     if (isExternal) return;
 
-    // mesma página com hash -> scroll suave com offset
     if (typeof href === "string" && isSamePageHash(href)) {
-      e.preventDefault();
+      event.preventDefault();
       const url = new URL(href, window.location.href);
       scrollToHashWithOffset(url.hash || href);
     }
@@ -135,6 +130,7 @@ export default function CTAButton({
   if (blink) classes.push(styles["button--blink"]);
   if (variant === "hero") classes.push(styles["button--hero"]);
   if (variant === "sports") classes.push(styles["button--sports"]);
+  if (variant === "hotel") classes.push(styles["button--hotel"]);
   if (className) classes.push(className);
 
   const commonProps = {
@@ -149,12 +145,12 @@ export default function CTAButton({
 
   const content = (
     <>
-      {/* sheen (só visual) */}
       <span className={styles.sheen} aria-hidden="true" />
 
       {IconComp ? (
         <IconComp className={styles.icon} aria-hidden="true" />
       ) : null}
+
       <span className={styles.label}>{label}</span>
     </>
   );

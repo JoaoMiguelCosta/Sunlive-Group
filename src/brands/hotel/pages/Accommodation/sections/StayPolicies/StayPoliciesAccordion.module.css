@@ -5,18 +5,32 @@
 }
 
 .item {
-    border-radius: 22px;
-    border: 2px solid rgba(230, 200, 147, 0.55);
-    background: linear-gradient(135deg, rgba(22, 67, 82, 0.65), rgba(0, 0, 0, 0.25));
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35) inset;
     overflow: hidden;
+    border-radius: 22px;
+
+    border: 1px solid rgba(230, 200, 147, 0.42);
+    background:
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
+        #26170b;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 10px 24px rgba(0, 0, 0, 0.20),
+        0 0 0 1px rgba(255, 255, 255, 0.015);
+
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
 }
 
 .itemOpen {
-    border-color: rgba(230, 200, 147, 0.85);
+    border-color: rgba(230, 200, 147, 0.60);
     box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.35) inset,
-        0 14px 40px rgba(0, 0, 0, 0.35);
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 14px 34px rgba(0, 0, 0, 0.24),
+        0 0 18px rgba(230, 200, 147, 0.08);
 }
 
 .trigger {
@@ -25,9 +39,10 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 18px 18px;
-    background: transparent;
+
+    padding: 18px;
     border: 0;
+    background: transparent;
     cursor: pointer;
     text-align: left;
 }
@@ -42,44 +57,66 @@
 .iconSlot {
     width: 48px;
     height: 48px;
-    border-radius: 999px;
-    background:
-        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0) 55%),
-        radial-gradient(circle at 70% 70%, rgba(230, 200, 147, 0.22), rgba(0, 0, 0, 0) 60%),
-        linear-gradient(180deg, rgba(8, 14, 28, 0.9), rgba(8, 14, 28, 0.55));
-    border: 1px solid rgba(230, 200, 147, 0.35);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
     flex: 0 0 auto;
+    border-radius: 999px;
+
+    background:
+        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.18), transparent 58%),
+        linear-gradient(180deg, rgba(88, 54, 26, 0.96), rgba(38, 23, 11, 0.98));
+
+    border: 1px solid rgba(230, 200, 147, 0.34);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 8px 18px rgba(0, 0, 0, 0.16);
 }
 
 .title {
-    font-weight: 700;
-    letter-spacing: 0.2px;
-    font-size: clamp(18px, 2.2vw, 28px);
-    color: rgba(255, 255, 255, 0.92);
-    white-space: nowrap;
+    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: clamp(18px, 2.2vw, 28px);
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: rgba(255, 248, 240, 0.94);
 }
 
 .chev {
-    color: rgba(230, 200, 147, 0.9);
+    width: 44px;
+    height: 44px;
+    flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+
     border-radius: 999px;
-    background: rgba(0, 0, 0, 0.18);
-    border: 1px solid rgba(230, 200, 147, 0.35);
-    transition: transform 220ms ease, background 220ms ease, border-color 220ms ease;
-    flex: 0 0 auto;
+    border: 1px solid rgba(230, 200, 147, 0.34);
+    background:
+        linear-gradient(180deg, rgba(88, 54, 26, 0.72), rgba(38, 23, 11, 0.88));
+    color: rgba(255, 223, 160, 0.98);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 6px 14px rgba(0, 0, 0, 0.16);
+
+    transition:
+        transform 220ms ease,
+        background 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
 }
 
 .chevOpen {
     transform: rotate(180deg);
-    background: rgba(230, 200, 147, 0.12);
-    border-color: rgba(230, 200, 147, 0.65);
+    border-color: rgba(230, 200, 147, 0.56);
+    background:
+        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.18), transparent 62%),
+        linear-gradient(180deg, rgba(108, 67, 32, 0.82), rgba(49, 30, 15, 0.92));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 8px 18px rgba(0, 0, 0, 0.18),
+        0 0 14px rgba(230, 200, 147, 0.08);
 }
 
 /* Panel */
@@ -103,12 +140,12 @@
 
 .body {
     margin: 10px 0 0;
-    color: rgba(255, 255, 255, 0.86);
+    color: rgba(255, 246, 235, 0.88);
     font-size: 16px;
     line-height: 1.55;
 }
 
-/* ✅ Compact (Informação Importante) */
+/* Compact */
 .itemCompact {
     border-radius: 26px;
 }
@@ -120,25 +157,52 @@
 
 .itemCompact .trigger:disabled {
     opacity: 1;
-    /* não “apaga” */
 }
 
 .panelCompact .panelInner {
     padding-top: 0;
 }
 
-/* lista com bullet como no screenshot */
 .compactList {
     margin: 10px 0 0;
     padding-left: 20px;
 }
 
 .compactItem {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 248, 240, 0.92);
     font-size: 18px;
     line-height: 1.55;
 }
 
 .compactItem::marker {
-    color: rgba(230, 200, 147, 0.95);
+    color: rgba(230, 200, 147, 0.96);
+}
+
+@media (max-width: 640px) {
+    .trigger {
+        padding: 16px 14px;
+        gap: 12px;
+    }
+
+    .panelInner {
+        padding: 0 14px 14px 14px;
+    }
+
+    .iconSlot {
+        width: 42px;
+        height: 42px;
+    }
+
+    .chev {
+        width: 40px;
+        height: 40px;
+    }
+
+    .body {
+        font-size: 15px;
+    }
+
+    .compactItem {
+        font-size: 16px;
+    }
 }

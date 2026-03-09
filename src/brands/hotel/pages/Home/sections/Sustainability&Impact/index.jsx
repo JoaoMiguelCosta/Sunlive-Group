@@ -1,3 +1,4 @@
+// src/brands/hotel/pages/home/sections/Sustainability&Impact/index.jsx
 import hotelBrand from "../../../../config/index.js";
 
 import HotelSustainabilityHeader from "./HotelSustainabilityHeader.jsx";
@@ -22,21 +23,21 @@ export default function SustainabilityAndImpactSection() {
       className={styles.section}
       aria-labelledby={titleId}
     >
-      {/* Barra “Sustentabilidade” */}
-      <HotelSustainabilityHeader label={header?.label} titleId={titleId} />
-
       <div className={styles.inner}>
-        {/* Caixa central */}
-        <div className={styles.introBox}>
-          {intro?.title ? (
-            <h3 className={styles.introTitle}>{intro.title}</h3>
-          ) : null}
-          {intro?.text ? (
-            <p className={styles.introText}>{intro.text}</p>
-          ) : null}
-        </div>
+        <HotelSustainabilityHeader label={header?.label} titleId={titleId} />
 
-        {/* Grelha de métricas */}
+        {intro?.title || intro?.text ? (
+          <div className={styles.introBox}>
+            {intro?.title ? (
+              <h3 className={styles.introTitle}>{intro.title}</h3>
+            ) : null}
+
+            {intro?.text ? (
+              <p className={styles.introText}>{intro.text}</p>
+            ) : null}
+          </div>
+        ) : null}
+
         <HotelSustainabilityStats stats={stats ?? []} />
       </div>
     </section>

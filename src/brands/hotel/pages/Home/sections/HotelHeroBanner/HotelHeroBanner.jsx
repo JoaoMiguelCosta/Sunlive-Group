@@ -1,3 +1,4 @@
+// src/brands/hotel/components/Home/HotelHeroBanner/HotelHeroBanner.jsx
 import hotelBrand from "../../../../config/index.js";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 import styles from "./HotelHeroBanner.module.css";
@@ -32,7 +33,7 @@ export default function HotelHeroBanner({ onContactClick }) {
           <CTAButton
             cta={cta}
             icon={cta.iconKey ?? "phone"}
-            variant="hero"
+            variant="hotel"
             className={styles.cta}
             onClick={handleClick}
           />

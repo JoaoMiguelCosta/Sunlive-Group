@@ -9,7 +9,7 @@ import styles from "./HotelRoomCard.module.css";
  *  - features?: Array<string>
  *  - imageSrc?: string | null
  *  - imageAlt?: string
- *  - badge?: string (opcional)
+ *  - badge?: string
  *  - className?: string
  */
 export default function HotelRoomCard({
@@ -25,7 +25,6 @@ export default function HotelRoomCard({
 
   return (
     <article className={[styles.card, className].filter(Boolean).join(" ")}>
-      {/* Media */}
       <div className={styles.media} aria-label={imageAlt || title}>
         {hasImage ? (
           <img
@@ -42,23 +41,20 @@ export default function HotelRoomCard({
         {badge ? <div className={styles.badge}>{badge}</div> : null}
       </div>
 
-      {/* Header bar */}
       <header className={styles.header}>
         <h3 className={styles.title}>{title}</h3>
       </header>
 
-      {/* Description */}
       {description ? (
         <div className={styles.desc}>
           <p className={styles.descText}>{description}</p>
         </div>
       ) : null}
 
-      {/* Features */}
       {features?.length ? (
         <ul className={styles.features} aria-label="Room features">
-          {features.map((text, i) => (
-            <li key={`${text}-${i}`} className={styles.featureItem}>
+          {features.map((text, index) => (
+            <li key={`${text}-${index}`} className={styles.featureItem}>
               <span className={styles.check} aria-hidden="true">
                 ✓
               </span>

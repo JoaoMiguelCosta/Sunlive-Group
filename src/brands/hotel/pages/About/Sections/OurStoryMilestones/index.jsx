@@ -1,3 +1,4 @@
+// src/brands/hotel/components/About/OurStoryMilestones/index.jsx
 import hotelBrand from "../../../../config/index.js";
 import OurStoryMilestonesHeader from "./OurStoryMilestonesHeader.jsx";
 import OurStoryMilestonesContent from "./OurStoryMilestonesContent.jsx";
@@ -17,9 +18,14 @@ export default function OurStoryMilestonesSection() {
   if (!section) return null;
 
   const { id, headerLabel } = section;
+  const sectionProps = id ? { id } : {};
 
   return (
-    <section id={id} className={styles.section} aria-label={headerLabel}>
+    <section
+      {...sectionProps}
+      className={styles.section}
+      aria-label={headerLabel}
+    >
       <div className={styles.inner}>
         <OurStoryMilestonesHeader />
         <OurStoryMilestonesContent />

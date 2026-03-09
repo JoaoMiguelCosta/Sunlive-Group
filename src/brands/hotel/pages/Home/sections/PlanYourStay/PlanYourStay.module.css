@@ -1,131 +1,129 @@
 /* src/brands/hotel/components/Home/PlanYourStay/PlanYourStay.module.css */
+
 .section {
-    background: #020617;
-    /* azul-noite */
-    padding-block: clamp(2.5rem, 4vw, 3.5rem);
+    position: relative;
+    isolation: isolate;
+    background: transparent;
+    padding-block: clamp(2.4rem, 5vw, 3.4rem);
 }
 
 .inner {
-    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)));
+    --section-x: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
+    --section-max: var(--sl-container-lg, 85rem);
+
+    inline-size: min(var(--section-max), calc(100% - (2 * var(--section-x))));
     margin-inline: auto;
     box-sizing: border-box;
 }
-/* Caixa principal com borda dourada */
 
 .box {
-    border: 2px solid color-mix(in oklab,
-                var(--sl-accent-600, #b8860b),
-                black 5%);
-        padding: clamp(2rem, 4vw, 2.6rem) clamp(1.8rem, 4vw, 3rem);
-        text-align: center;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    padding: clamp(1.35rem, 3vw, 2.2rem);
+    border-radius: 28px;
+    border: 1px solid rgba(230, 200, 147, 0.34);
+    text-align: center;
 
     background:
-        radial-gradient(circle at 0 0, #020b28, #020617 70%),
-        linear-gradient(180deg, #020617 0%, #020617 100%);
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.03) 0%,
+            rgba(255, 248, 235, 0.01) 18%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(90deg,
+            #2a160a 0%,
+            #341a0b 32%,
+            #241208 68%,
+            #1a0d06 100%);
+
     box-shadow:
-        0 20px 45px rgba(0, 0, 0, 0.95),
-        0 0 0 1px rgba(255, 255, 255, 0.04);
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+        0 22px 60px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.06) 0%,
+            rgba(255, 248, 235, 0.02) 10%,
+            rgba(255, 255, 255, 0) 28%),
+        radial-gradient(60% 65% at 0% 50%, rgba(199, 134, 21, 0.08), transparent 72%),
+        radial-gradient(50% 55% at 100% 50%, rgba(230, 200, 147, 0.07), transparent 70%);
+    opacity: 0.95;
+}
+
+.title,
+.subtitle,
+.actions {
+    position: relative;
+    z-index: 1;
 }
 
 .title {
-    margin: 0 0 0.9rem;
-    font-size: clamp(1.4rem, 1.2vw + 1.1rem, 1.7rem);
+    margin: 0 0 0.85rem;
+    font-size: clamp(1.32rem, 1.15vw + 1.02rem, 1.65rem);
     font-weight: 700;
-    color: #f9fafb;
+    line-height: 1.2;
+    color: rgba(255, 248, 235, 0.96);
+    text-wrap: balance;
 }
 
 .subtitle {
     margin: 0;
-    font-size: clamp(0.95rem, 0.5vw + 0.85rem, 1.05rem);
-    color: #e5e7eb;
+    font-size: clamp(0.95rem, 0.45vw + 0.88rem, 1.04rem);
+    line-height: 1.65;
+    color: rgba(255, 248, 235, 0.88);
+    text-wrap: pretty;
 }
 
-/* Botões */
-
 .actions {
-    margin-top: clamp(1.6rem, 3vw, 2rem);
+    margin-top: clamp(1.35rem, 2.8vw, 1.9rem);
     display: flex;
     justify-content: center;
-    gap: 1.4rem;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
 .actionButton {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-
-    padding-inline: 1.8rem;
-    padding-block: 0.7rem;
-
-    border-radius: 999px;
-    border: 2px solid color-mix(in oklab,
-            var(--sl-accent-600, #b8860b),
-            black 5%);
-
-    background:
-        radial-gradient(circle at 0 0, #064e3b, #020617 55%),
-        linear-gradient(90deg, #020617 0%, #1f2933 50%, #92400e 100%);
-
-    color: #f9fafb;
-    font-size: 0.96rem;
-    font-weight: 500;
-    text-decoration: none;
-
-    box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.9),
-        0 0 0 1px rgba(255, 255, 255, 0.06);
-
-    transition:
-        transform 140ms ease-out,
-        box-shadow 140ms ease-out,
-        background-position 160ms ease-out;
-    background-size: 140% 100%;
-    background-position: 0% 0%;
-}
-
-.actionButton:hover {
-    transform: translateY(-2px);
-    background-position: 100% 0%;
-    box-shadow:
-        0 16px 40px rgba(0, 0, 0, 0.95),
-        0 0 0 1px color-mix(in oklab,
-            var(--sl-accent-500, #e6c893),
-            white 4%);
-}
-
-.actionButton:active {
-    transform: translateY(0);
-    box-shadow:
-        0 10px 24px rgba(0, 0, 0, 0.9),
-        0 0 0 1px rgba(255, 255, 255, 0.04);
-}
-
-/* Ícone dentro do botão */
-
-.iconWrap {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.icon {
-    inline-size: 1.1rem;
-    block-size: 1.1rem;
-}
-
-.label {
-    white-space: nowrap;
+    min-inline-size: clamp(12.5rem, 20vw, 15rem);
 }
 
 @media (max-width: 640px) {
-    .actionButton {
-        inline-size: min(16rem, 100%);
+    .section {
+        padding-block: 2rem;
     }
 
-    .label {
-        white-space: normal;
+    .box {
+        padding: 1rem;
+        border-radius: 22px;
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+        line-height: 1.58;
+    }
+
+    .actions {
+        gap: 0.8rem;
+        margin-top: 1.15rem;
+    }
+
+    .actionButton {
+        inline-size: min(16rem, 100%);
+        min-inline-size: 0;
     }
 }

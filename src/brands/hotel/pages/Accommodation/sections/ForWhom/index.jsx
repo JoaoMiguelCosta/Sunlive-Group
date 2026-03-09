@@ -21,9 +21,13 @@ export default function ForWhom() {
         <TitleForWhom label={content.headerLabel} />
         <DescriptionForWhom>{content.description}</DescriptionForWhom>
 
-        {/* ✅ “Hero” dentro da mesma secção */}
-        <ForWhomHero />
-        <ForWhomProfilesGrid />
+        <div className={styles.heroWrap}>
+          <ForWhomHero />
+        </div>
+
+        <div className={styles.gridWrap}>
+          <ForWhomProfilesGrid />
+        </div>
       </div>
     </section>
   );

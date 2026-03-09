@@ -1,41 +1,43 @@
 .card {
     position: relative;
     overflow: hidden;
-    border-radius: 22px;
-
-    /* ✅ para alinhar alturas internamente */
     display: flex;
     flex-direction: column;
+    border-radius: 22px;
 
     background:
-        radial-gradient(900px 380px at 80% 0%, rgba(230, 200, 147, 0.14), transparent 58%),
-        radial-gradient(720px 320px at 15% 100%, rgba(251, 191, 36, 0.08), transparent 60%),
-        linear-gradient(180deg, rgba(5, 10, 25, 1), rgba(2, 6, 18, 1));
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
+        #26170b;
 
-    border: 1px solid rgba(230, 200, 147, 0.22);
+    border: 1px solid rgba(230, 200, 147, 0.24);
 
     box-shadow:
-        0 16px 46px rgba(0, 0, 0, 0.65),
-        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 18px 44px rgba(0, 0, 0, 0.30),
+        0 0 0 1px rgba(255, 255, 255, 0.015);
 
-    color: rgba(255, 255, 255, 0.92);
-    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    color: rgba(255, 248, 240, 0.94);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
 }
 
 .card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(230, 200, 147, 0.36);
+    transform: translateY(-3px);
+    border-color: rgba(230, 200, 147, 0.38);
     box-shadow:
-        0 22px 60px rgba(0, 0, 0, 0.7),
-        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-        0 0 22px rgba(230, 200, 147, 0.10);
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 24px 56px rgba(0, 0, 0, 0.34),
+        0 0 20px rgba(230, 200, 147, 0.10);
 }
 
 /* ===== Media ===== */
 .media {
     position: relative;
     aspect-ratio: 16 / 10;
-    background: #070b16;
+    background: #1f1208;
 }
 
 .image {
@@ -43,7 +45,7 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    filter: saturate(1.04) contrast(1.02);
+    filter: saturate(1.03) contrast(1.02);
 }
 
 .placeholder {
@@ -53,25 +55,20 @@
     place-items: center;
 
     background:
-        radial-gradient(900px 380px at 80% 0%, rgba(230, 200, 147, 0.18), transparent 58%),
-        radial-gradient(720px 320px at 15% 100%, rgba(251, 191, 36, 0.10), transparent 60%),
-        linear-gradient(180deg, rgba(5, 10, 25, 1), rgba(2, 6, 18, 1));
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.16), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.10), transparent 60%),
+        #26170b;
 }
 
 .placeholderText {
     font-size: clamp(1.35rem, 2.4vw, 1.8rem);
     font-weight: 800;
     letter-spacing: 0.02em;
-
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(230, 200, 147, 0.98));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-
-    text-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
+    color: rgba(255, 232, 196, 0.96);
+    text-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
 }
 
-/* Badge opcional */
+/* ===== Badge ===== */
 .badge {
     position: absolute;
     top: 14px;
@@ -79,22 +76,27 @@
     padding: 8px 12px;
     border-radius: 999px;
 
-    background: rgba(5, 10, 25, 0.72);
-    border: 1px solid rgba(230, 200, 147, 0.25);
+    background:
+        linear-gradient(180deg, rgba(90, 55, 26, 0.92), rgba(38, 23, 11, 0.96));
+    border: 1px solid rgba(230, 200, 147, 0.28);
     backdrop-filter: blur(10px);
 
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.92);
+    font-weight: 700;
+    color: rgba(255, 245, 228, 0.94);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-/* ===== Header bar (dourado/champanhe) ===== */
+/* ===== Header ===== */
 .header {
     padding: 14px 16px;
-    background: linear-gradient(180deg,
-            color-mix(in oklab, #0a1022, var(--sl-accent-500, #e6c893) 34%),
-            color-mix(in oklab, #070b16, var(--sl-gold-500, #c78615) 18%));
-    border-top: 1px solid rgba(230, 200, 147, 0.20);
-    border-bottom: 1px solid rgba(230, 200, 147, 0.18);
+    background:
+        linear-gradient(180deg, rgba(104, 63, 30, 0.94), rgba(63, 37, 17, 0.96));
+    border-top: 1px solid rgba(230, 200, 147, 0.18);
+    border-bottom: 1px solid rgba(230, 200, 147, 0.16);
 }
 
 .title {
@@ -103,40 +105,37 @@
     font-size: 1.1rem;
     font-weight: 800;
     letter-spacing: 0.02em;
-    color: rgba(255, 255, 255, 0.96);
+    color: rgba(255, 248, 240, 0.97);
 }
 
 /* ===== Description ===== */
 .desc {
     padding: 16px 16px 12px;
     background:
-        radial-gradient(500px 200px at 50% 0%, rgba(230, 200, 147, 0.08), transparent 60%),
-        rgba(5, 10, 25, 0.55);
-    border-bottom: 1px solid rgba(230, 200, 147, 0.14);
+        radial-gradient(680px 220px at 50% 0%, rgba(230, 200, 147, 0.08), transparent 60%),
+        rgba(56, 34, 17, 0.40);
+    border-bottom: 1px solid rgba(230, 200, 147, 0.12);
 }
 
 .descText {
     margin: 0;
     text-align: center;
     font-size: 0.98rem;
-    line-height: 1.45;
-    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.5;
+    color: rgba(255, 244, 231, 0.88);
 
-    /* ✅ sempre 3 linhas, com altura reservada */
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
-    min-height: calc(3 * 1.45em);
+    min-height: calc(3 * 1.5em);
 }
 
-/* ===== Features list ===== */
+/* ===== Features ===== */
 .features {
     list-style: none;
     margin: 0;
     padding: 0;
-
-   
 }
 
 .featureItem {
@@ -146,9 +145,10 @@
     gap: 10px;
 
     padding: 14px 16px;
-    border-bottom: 1px solid rgba(230, 200, 147, 0.12);
+    border-bottom: 1px solid rgba(230, 200, 147, 0.10);
 
-    background: linear-gradient(180deg, rgba(2, 6, 18, 0.35), rgba(2, 6, 18, 0.12));
+    background:
+        linear-gradient(180deg, rgba(63, 37, 17, 0.30), rgba(38, 23, 11, 0.18));
 }
 
 .featureItem:last-child {
@@ -162,22 +162,24 @@
     display: grid;
     place-items: center;
 
-    background: radial-gradient(circle at 30% 30%,
-            rgba(251, 191, 36, 0.28),
-            rgba(2, 6, 18, 0.2));
+    background:
+        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.26), rgba(74, 44, 19, 0.55));
 
-    border: 1px solid rgba(230, 200, 147, 0.32);
-    color: rgba(230, 200, 147, 0.95);
+    border: 1px solid rgba(230, 200, 147, 0.28);
+    color: rgba(255, 223, 160, 0.98);
     font-weight: 900;
     font-size: 0.95rem;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 4px 10px rgba(0, 0, 0, 0.14);
 }
 
 .featureText {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.90);
+    color: rgba(255, 246, 235, 0.90);
 }
 
-/* Responsivo */
 @media (max-width: 520px) {
     .title {
         font-size: 1.05rem;

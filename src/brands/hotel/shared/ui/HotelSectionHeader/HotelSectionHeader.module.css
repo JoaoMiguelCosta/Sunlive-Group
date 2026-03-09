@@ -1,71 +1,94 @@
 /* src/shared/components/hotel/HotelSectionHeader.module.css */
 
-/* Barra de título — alinhada com o layout global */
 .wrap {
     position: relative;
     isolation: isolate;
+    overflow: hidden;
 
-    width: 100%;
-    padding-block: 0.7rem;
-
-  
+    inline-size: 100%;
     margin-inline: auto;
-
-    /* faixa champanhe-dourado sobre base noir */
-    background:
-        radial-gradient(circle at 0 0,
-            color-mix(in oklab, var(--sl-glow-top, #c78615), black 25%)),
-        radial-gradient(circle at 100% 100%,
-            color-mix(in oklab, var(--sl-glow-bottom, #a16207), black 35%)),
-        linear-gradient(90deg,
-            color-mix(in oklab, #020617, black 5%) 0%,
-            color-mix(in oklab, var(--sl-accent-600, #b8a075), black 35%) 48%,
-            color-mix(in oklab, var(--sl-accent-500, #e6c893), black 22%) 100%);
+    padding-block: clamp(0.72rem, 1.4vw, 0.92rem);
+    padding-inline: clamp(1.2rem, 2.5vw, 1.8rem);
 
     border-radius: 999px;
-    border: 1px solid color-mix(in oklab,
-            var(--sl-accent-600, #b8a075),
-            black 25%);
+    border: 1px solid rgba(230, 200, 147, 0.42);
+
+    background:
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.05) 0%,
+            rgba(255, 248, 235, 0.015) 18%,
+            rgba(0, 0, 0, 0.06) 100%),
+        linear-gradient(90deg,
+            #2a160a 0%,
+            #341a0b 32%,
+            #241208 68%,
+            #1a0d06 100%);
 
     box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.9),
-        0 0 0 1px rgba(255, 255, 255, 0.03);
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 16px 40px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
 
     color: var(--sl-platinum-010, #f9fafb);
 }
 
-/* Título */
+.wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.08) 0%,
+            rgba(255, 248, 235, 0.03) 12%,
+            rgba(255, 255, 255, 0) 34%),
+        radial-gradient(55% 120% at 0% 50%, rgba(199, 134, 21, 0.08), transparent 72%),
+        radial-gradient(45% 100% at 100% 50%, rgba(230, 200, 147, 0.07), transparent 70%);
+    opacity: 0.95;
+}
+
 .title {
+    position: relative;
+    z-index: 1;
     margin: 0;
+
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-
-    font-size: clamp(0.95rem, 1vw + 0.75rem, 1.25rem);
+    font-size: clamp(0.95rem, 1vw + 0.75rem, 1.22rem);
     line-height: 1.2;
 
+    color: rgba(255, 248, 235, 0.96);
     text-shadow:
-        0 0 10px rgba(0, 0, 0, 0.9),
-        0 0 22px rgba(0, 0, 0, 1);
+        0 1px 0 rgba(255, 248, 235, 0.06),
+        0 10px 24px rgba(0, 0, 0, 0.32);
 }
 
-/* Variantes de alinhamento */
 .center {
     text-align: center;
 }
 
 .left {
     text-align: left;
-    padding-inline-start: clamp(1.75rem, 4vw, 2.5rem);
+    padding-inline-start: clamp(1.35rem, 3vw, 2.2rem);
 }
 
-/* Mobile: barra ligeiramente mais compacta */
 @media (max-width: 640px) {
     .wrap {
-        padding-block: 0.6rem;
+        padding-block: 0.62rem;
+        padding-inline: 1rem;
     }
 
     .title {
         letter-spacing: 0.1em;
+        font-size: 0.98rem;
+    }
+
+    .left {
+        padding-inline-start: 1rem;
     }
 }

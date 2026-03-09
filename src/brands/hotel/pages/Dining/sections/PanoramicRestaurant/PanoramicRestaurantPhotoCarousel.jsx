@@ -38,35 +38,33 @@ export default function PanoramicRestaurantPhotoCarousel() {
   }, [hasItems, items.length]);
 
   return (
-    <section
-      className={styles.section}
+    <div
+      className={styles.frame}
       id={section?.id ?? "restaurante-panoramico"}
       aria-label={section?.headerLabel ?? "Galeria"}
     >
-      <div className={styles.frame}>
-        <div className={styles.card}>
-          <HotelPhotoCarouselBase
-            items={items}
-            activeIndex={activeIndex}
-            onPrev={goPrev}
-            onNext={goNext}
-            fallbackLabel={fallbackLabel}
-          />
+      <div className={styles.card}>
+        <HotelPhotoCarouselBase
+          items={items}
+          activeIndex={activeIndex}
+          onPrev={goPrev}
+          onNext={goNext}
+          fallbackLabel={fallbackLabel}
+        />
 
-          {highlight?.title || highlight?.text ? (
-            <div className={styles.highlight} aria-label="Destaque">
-              <div className={styles.highlightHeader}>
-                <span className={styles.highlightIconSlot} aria-hidden="true" />
-                <h3 className={styles.highlightTitle}>{highlight.title}</h3>
-              </div>
-
-              {highlight?.text ? (
-                <p className={styles.highlightBody}>{highlight.text}</p>
-              ) : null}
+        {highlight?.title || highlight?.text ? (
+          <div className={styles.highlight} aria-label="Destaque">
+            <div className={styles.highlightHeader}>
+              <span className={styles.highlightIconSlot} aria-hidden="true" />
+              <h3 className={styles.highlightTitle}>{highlight.title}</h3>
             </div>
-          ) : null}
-        </div>
+
+            {highlight?.text ? (
+              <p className={styles.highlightBody}>{highlight.text}</p>
+            ) : null}
+          </div>
+        ) : null}
       </div>
-    </section>
+    </div>
   );
 }

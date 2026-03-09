@@ -1,5 +1,6 @@
 // src/brands/hotel/components/Home/PlanYourStay/index.jsx
 import hotelBrand from "../../../../config/index.js";
+import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 import styles from "./PlanYourStay.module.css";
 
 export default function PlanYourStaySection() {
@@ -10,6 +11,7 @@ export default function PlanYourStaySection() {
 
   const sectionId = id ?? "hotel-plan-your-stay";
   const titleId = `${sectionId}-title`;
+  const actionItems = Array.isArray(actions) ? actions : [];
 
   return (
     <section
@@ -27,27 +29,21 @@ export default function PlanYourStaySection() {
             <p className={styles.subtitle}>{boxSubtitle}</p>
           ) : null}
 
-          <div className={styles.actions}>
-            {(actions ?? []).map((action) => {
-              const Icon = action.Icon;
-
-              return (
-                <a
+          {actionItems.length > 0 ? (
+            <div className={styles.actions}>
+              {actionItems.map((action) => (
+                <CTAButton
                   key={action.id}
                   href={action.href}
+                  label={action.label}
+                  ariaLabel={action.ariaLabel ?? action.label}
+                  Icon={action.Icon}
+                  variant="hotel"
                   className={styles.actionButton}
-                >
-                  {Icon ? (
-                    <span className={styles.iconWrap}>
-                      <Icon className={styles.icon} aria-hidden="true" />
-                    </span>
-                  ) : null}
-
-                  <span className={styles.label}>{action.label}</span>
-                </a>
-              );
-            })}
-          </div>
+                />
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     </section>

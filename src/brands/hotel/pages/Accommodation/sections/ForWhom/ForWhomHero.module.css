@@ -1,98 +1,27 @@
 .section {
     position: relative;
-    padding: clamp(28px, 5vw, 56px) 0;
+    isolation: isolate;
 
-    /* Noir + halos suaves (Performance Prestige) */
+    padding-block: clamp(2.5rem, 5vw, 3.6rem);
+
     background:
-        radial-gradient(900px 420px at 18% 40%, rgba(46, 167, 224, 0.14), rgba(0, 0, 0, 0)),
-        radial-gradient(700px 360px at 82% 38%, rgba(230, 200, 147, 0.16), rgba(0, 0, 0, 0)),
-        linear-gradient(180deg, rgba(6, 11, 22, 0.96), rgba(6, 11, 22, 0.92));
-}
-
-/* linha champanhe inferior */
-.section::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 3px;
-    background: linear-gradient(90deg,
-            rgba(230, 200, 147, 0.25),
-            rgba(230, 200, 147, 0.9),
-            rgba(230, 200, 147, 0.25));
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.10), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.07), transparent 60%),
+        transparent;
 }
 
 .inner {
-    width: min(var(--sl-container-lg, 1200px),
-            calc(100% - 2 * var(--sl-gutter, 24px)));
-    margin: 0 auto;
-}
+    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
 
-/* Card central */
-.card {
-    border-radius: 24px;
-    padding: clamp(22px, 4vw, 36px);
-    text-align: center;
-
-    border: 2px solid rgba(230, 200, 147, 0.58);
-
-    background:
-        radial-gradient(520px 260px at 20% 30%,
-            rgba(230, 200, 147, 0.18),
-            rgba(0, 0, 0, 0) 60%),
-        linear-gradient(135deg,
-            rgba(14, 42, 56, 0.74),
-            rgba(0, 0, 0, 0.35));
-
-    box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.45) inset,
-        0 18px 48px rgba(0, 0, 0, 0.45);
-}
-
-/* Linha do título */
-.titleRow {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 14px;
-}
-
-/* Placeholder estrela */
-.star {
-    color: rgba(230, 200, 147, 0.95);
-    font-size: 26px;
-    line-height: 1;
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
-}
-
-/* Título */
-.title {
-    font-size: clamp(22px, 3vw, 32px);
-    font-weight: 850;
-    letter-spacing: 0.3px;
-    color: rgba(255, 255, 255, 0.95);
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
-}
-
-/* Texto */
-.text {
-    margin: 0;
-    font-size: clamp(16px, 2.2vw, 20px);
-    line-height: 1.55;
-    color: rgba(255, 255, 255, 0.88);
-    max-width: 900px;
+    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--line-inset));
     margin-inline: auto;
+    box-sizing: border-box;
 }
 
-/* Responsivo */
-@media (max-width: 520px) {
-    .titleRow {
-        gap: 12px;
-    }
+.heroWrap {
+    margin-top: clamp(1.4rem, 3vw, 2rem);
+}
 
-    .star {
-        font-size: 22px;
-    }
+.gridWrap {
+    margin-top: clamp(1.5rem, 3vw, 2.2rem);
 }

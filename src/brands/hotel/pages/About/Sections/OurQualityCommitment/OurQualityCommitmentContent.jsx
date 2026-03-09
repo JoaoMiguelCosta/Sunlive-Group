@@ -1,3 +1,4 @@
+// src/brands/hotel/components/About/OurQualityCommitment/OurQualityCommitmentContent.jsx
 import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import styles from "./OurQualityCommitmentContent.module.css";
@@ -17,13 +18,14 @@ export default function OurQualityCommitmentContent() {
   const { text, commitments } = section;
   const paragraphs = text?.paragraphs ?? [];
   const pillText = text?.highlightPill?.text ?? "";
+  const commitmentItems = Array.isArray(commitments) ? commitments : [];
 
   return (
     <div className={styles.content}>
       <div className={styles.textCol}>
         <div className={styles.paragraphs}>
           {paragraphs.map((paragraph, index) => (
-            <p key={index} className={styles.paragraph}>
+            <p key={`${paragraph}-${index}`} className={styles.paragraph}>
               {paragraph}
             </p>
           ))}
@@ -43,7 +45,7 @@ export default function OurQualityCommitmentContent() {
         <h3 className={styles.commitmentsTitle}>Comprometemo-nos com:</h3>
 
         <ul className={styles.commitmentsList}>
-          {commitments?.map((item) => (
+          {commitmentItems.map((item) => (
             <li key={item.id} className={styles.commitmentItem}>
               <span className={styles.checkMark} aria-hidden="true">
                 ✓

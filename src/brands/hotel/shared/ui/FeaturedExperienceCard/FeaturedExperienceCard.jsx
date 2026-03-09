@@ -1,4 +1,4 @@
-// src/shared/components/Hotel/FeaturedExperienceCard/FeaturedExperienceCard.jsx
+// src/shared/ui/FeaturedExperienceCard/FeaturedExperienceCard.jsx
 import styles from "./FeaturedExperienceCard.module.css";
 
 /**
@@ -9,8 +9,8 @@ import styles from "./FeaturedExperienceCard.module.css";
  *  - description?: string
  *  - imageSrc?: string | null
  *  - imageAlt?: string | null
- *  - icon?: ReactNode           // ⬅ NOVO (para cards da região)
- *  - variant?: "default" | "region"  // ⬅ NOVO
+ *  - icon?: ReactNode
+ *  - variant?: "default" | "region"
  */
 export default function FeaturedExperienceCard({
   title,
@@ -22,25 +22,23 @@ export default function FeaturedExperienceCard({
 }) {
   if (!title) return null;
 
-  // === NOVO LAYOUT: cards da Região da Bairrada ===
   if (variant === "region") {
     return (
-      <article className={`${styles.card} ${styles.regionCard}`}>
+      <article className={[styles.card, styles.regionCard].join(" ")}>
         <div className={styles.regionHeader}>
-          {icon && <div className={styles.iconCircle}>{icon}</div>}
+          {icon ? <div className={styles.iconCircle}>{icon}</div> : null}
           <h3 className={styles.regionTitle}>{title}</h3>
         </div>
 
-        {description && (
+        {description ? (
           <div className={styles.regionBody}>
             <p className={styles.regionDescription}>{description}</p>
           </div>
-        )}
+        ) : null}
       </article>
     );
   }
 
-  // === LAYOUT ANTIGO (mantido como estava) ===
   return (
     <article className={styles.card}>
       <div className={styles.imageWrap}>
@@ -63,7 +61,9 @@ export default function FeaturedExperienceCard({
           <h3 className={styles.title}>{title}</h3>
         </div>
 
-        {description && <p className={styles.description}>{description}</p>}
+        {description ? (
+          <p className={styles.description}>{description}</p>
+        ) : null}
       </div>
     </article>
   );

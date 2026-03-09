@@ -35,15 +35,13 @@ export default function StayPoliciesAccordion({
 
   return (
     <div className={styles.accordion}>
-      {safeItems.map((it) => {
-        const compact = it.variant === "compact";
-
-        // ✅ compact fica sempre aberto (como no screenshot)
-        const open = compact ? true : isOpen(it.key);
+      {safeItems.map((item) => {
+        const compact = item.variant === "compact";
+        const open = compact ? true : isOpen(item.key);
 
         return (
           <div
-            key={it.key}
+            key={item.key}
             className={[
               styles.item,
               open ? styles.itemOpen : "",
@@ -53,38 +51,36 @@ export default function StayPoliciesAccordion({
             <button
               type="button"
               className={styles.trigger}
-              onClick={compact ? undefined : () => toggle(it.key)}
+              onClick={compact ? undefined : () => toggle(item.key)}
               aria-expanded={open}
-              aria-controls={`${it.key}-panel`}
+              aria-controls={`${item.key}-panel`}
               disabled={compact}
             >
               <span className={styles.left}>
                 <span className={styles.iconSlot} aria-hidden="true" />
-                <span className={styles.title}>{it.title}</span>
+                <span className={styles.title}>{item.title}</span>
               </span>
 
-              {/* ✅ no compact escondemos a seta */}
               {compact ? null : <Chevron open={open} />}
             </button>
 
             <div
-              id={`${it.key}-panel`}
+              id={`${item.key}-panel`}
               className={[
                 styles.panel,
                 open ? styles.panelOpen : styles.panelClosed,
                 compact ? styles.panelCompact : "",
               ].join(" ")}
               role="region"
-              aria-label={it.title}
+              aria-label={item.title}
             >
               <div className={styles.panelInner}>
-                {/* ✅ compact com bullet */}
                 {compact ? (
                   <ul className={styles.compactList}>
-                    <li className={styles.compactItem}>{it.body}</li>
+                    <li className={styles.compactItem}>{item.body}</li>
                   </ul>
                 ) : (
-                  <p className={styles.body}>{it.body}</p>
+                  <p className={styles.body}>{item.body}</p>
                 )}
               </div>
             </div>

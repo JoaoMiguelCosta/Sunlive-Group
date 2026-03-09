@@ -3,5 +3,16 @@
 .wrap {
     position: relative;
     isolation: isolate;
-    margin-block-end: clamp(1.5rem, 3vw, 2rem);
+    inline-size: 100%;
+
+    padding-block-start: clamp(2.5rem, 6vw, 4.5rem);
+    padding-block-end: 0;
+    margin-block-end: clamp(1.25rem, 2.4vw, 1.85rem);
+}
+
+@media (max-width: 640px) {
+    .wrap {
+        padding-block-start: 2rem;
+        margin-block-end: 1rem;
+    }
 }

@@ -1,5 +1,6 @@
+// src/brands/hotel/components/About/OurQualityCommitment/OurQualityCommitmentHeader.jsx
 import hotelBrand from "../../../../config/index.js";
-import HotelSectionHeader from "../../../../shared/ui//HotelSectionHeader/HotelSectionHeader.jsx";
+import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 import styles from "./OurQualityCommitmentHeader.module.css";
 
 /**
@@ -16,7 +17,7 @@ export default function OurQualityCommitmentHeader() {
 
   return (
     <div className={styles.headerWrap}>
-      <HotelSectionHeader label={headerLabel} as="h2" />
+      <HotelSectionHeader label={headerLabel} as="h2" align="center" />
     </div>
   );
 }

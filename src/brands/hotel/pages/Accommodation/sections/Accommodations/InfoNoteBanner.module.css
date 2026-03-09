@@ -11,20 +11,19 @@
     padding: 16px 18px;
     border-radius: 16px;
 
-    /* frame */
-    border: 2px solid rgba(230, 200, 147, 0.48);
+    border: 1px solid rgba(230, 200, 147, 0.42);
 
-    /* Noir + champanhe glow */
     background:
-        radial-gradient(900px 200px at 70% 0%, rgba(230, 200, 147, 0.14), transparent 62%),
-        radial-gradient(700px 240px at 20% 100%, rgba(230, 200, 147, 0.10), transparent 58%),
-        linear-gradient(180deg, rgba(5, 10, 25, 0.92), rgba(2, 6, 18, 0.92));
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
+        #26170b;
 
     box-shadow:
-        0 16px 44px rgba(0, 0, 0, 0.55),
-        0 0 24px rgba(230, 200, 147, 0.08);
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 14px 34px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(255, 255, 255, 0.015);
 
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 248, 240, 0.92);
 }
 
 .icon {
@@ -34,36 +33,41 @@
 
     display: grid;
     place-items: center;
+    flex-shrink: 0;
 
-    font-weight: 900;
+    font-weight: 800;
     font-size: 18px;
     line-height: 1;
 
-    color: rgba(230, 200, 147, 0.98);
-    background:
-        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.22), transparent 62%),
-        rgba(2, 6, 18, 0.55);
+    color: rgba(255, 214, 140, 0.98);
 
-    border: 1px solid rgba(230, 200, 147, 0.45);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+    border: 1px solid rgba(230, 200, 147, 0.42);
+
+    background:
+        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.20), transparent 62%),
+        linear-gradient(180deg, rgba(74, 44, 19, 0.92), rgba(38, 23, 11, 0.96));
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        0 6px 16px rgba(0, 0, 0, 0.22);
 }
 
 .text {
     margin: 0;
     font-size: 1.02rem;
-    line-height: 1.45;
-    font-weight: 700;
+    line-height: 1.5;
+    font-weight: 600;
     letter-spacing: 0.01em;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 248, 240, 0.92);
 }
 
-/* variações (se quiseres) */
+/* variações */
 .info {
     /* default */
 }
 
 .warn {
-    border-color: rgba(251, 191, 36, 0.48);
+    border-color: rgba(255, 196, 92, 0.48);
 }
 
 @media (max-width: 640px) {
@@ -72,7 +76,14 @@
         gap: 12px;
     }
 
+    .icon {
+        width: 34px;
+        height: 34px;
+        font-size: 17px;
+    }
+
     .text {
         font-size: 0.98rem;
+        line-height: 1.45;
     }
 }

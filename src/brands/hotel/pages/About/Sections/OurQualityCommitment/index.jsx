@@ -1,3 +1,4 @@
+// src/brands/hotel/components/About/OurQualityCommitment/index.jsx
 import hotelBrand from "../../../../config/index.js";
 import OurQualityCommitmentHeader from "./OurQualityCommitmentHeader.jsx";
 import OurQualityCommitmentContent from "./OurQualityCommitmentContent.jsx";
@@ -14,9 +15,14 @@ export default function OurQualityCommitmentSection() {
   if (!section) return null;
 
   const { id, headerLabel } = section;
+  const sectionProps = id ? { id } : {};
 
   return (
-    <section id={id} className={styles.section} aria-label={headerLabel}>
+    <section
+      {...sectionProps}
+      className={styles.section}
+      aria-label={headerLabel}
+    >
       <div className={styles.inner}>
         <OurQualityCommitmentHeader />
         <OurQualityCommitmentContent />

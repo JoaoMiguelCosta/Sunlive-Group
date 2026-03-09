@@ -23,17 +23,15 @@ export default function PartnersGrid({ items = [] }) {
             onClick={disabled ? undefined : (e) => toLogos(e, it.href, false)}
           >
             <span className={styles.label}>{it.label}</span>
+
             {!disabled && (
               <span className={styles.arrow} aria-hidden="true">
                 ➜
               </span>
             )}
-            {disabled}
           </a>
         );
       })}
     </div>
   );
 }
-
-

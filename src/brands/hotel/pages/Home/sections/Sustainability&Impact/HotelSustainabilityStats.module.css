@@ -1,7 +1,9 @@
+/* src/brands/hotel/pages/home/sections/Sustainability&Impact/HotelSustainabilityStats.module.css */
+
 .grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.25rem;
+    gap: clamp(0.9rem, 2vw, 1.2rem);
 }
 
 .statIcon {
@@ -20,5 +22,6 @@
 @media (max-width: 640px) {
     .grid {
         grid-template-columns: minmax(0, 1fr);
+        gap: 0.8rem;
     }
 }

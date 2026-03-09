@@ -8,13 +8,14 @@ export default function WhyChooseUsGrid({ items }) {
 
   return (
     <div className={styles.grid} role="list" aria-label="Vantagens">
-      {safeItems.map((it) => (
-        <div key={it.id} role="listitem">
+      {safeItems.map((item) => (
+        <div key={item.id} role="listitem" className={styles.item}>
           <WhyChooseCard
-            title={it.title}
-            description={it.description}
-            icon={null} // iconKey ligas depois
-            ariaLabel={it.title}
+            title={item.title}
+            description={item.description}
+            icon={null}
+            ariaLabel={item.title}
+            className={styles.card}
           />
         </div>
       ))}

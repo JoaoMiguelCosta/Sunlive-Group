@@ -10,7 +10,7 @@ const about = {
   id: "about",
   sections: {
     aboutTheHotel,
-    storyMilestones,
+    ourStoryMilestones: storyMilestones,
     ourQualityCommitment,
     bairradaRegion,
     uniqueNaturalSetting,

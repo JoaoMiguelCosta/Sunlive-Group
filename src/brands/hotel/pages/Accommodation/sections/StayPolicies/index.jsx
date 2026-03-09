@@ -23,7 +23,9 @@ export default function StayPolicies() {
         <TitleStayPolicies label={content.headerLabel} />
         <DescriptionStayPolicies>{content.description}</DescriptionStayPolicies>
 
-        <StayPoliciesAccordion items={items} allowMultiple={false} />
+        <div className={styles.accordionWrap}>
+          <StayPoliciesAccordion items={items} allowMultiple={false} />
+        </div>
       </div>
     </section>
   );

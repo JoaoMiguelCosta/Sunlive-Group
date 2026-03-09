@@ -3,86 +3,126 @@
 .section {
     position: relative;
     isolation: isolate;
-    margin-block: clamp(2.5rem, 5vw, 3.75rem);
 }
 
-/* Painel principal — Noir + dourado + champanhe-quente */
 .content {
     position: relative;
     isolation: isolate;
+    overflow: hidden;
 
     display: grid;
-    grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.1fr);
-    gap: clamp(2rem, 4vw, 3.25rem);
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.92fr);
+    gap: clamp(1.75rem, 4vw, 3rem);
     align-items: stretch;
 
-    padding-block: clamp(2rem, 3.4vw, 2.6rem);
-    padding-inline: clamp(1.9rem, 3.6vw, 2.7rem);
+    padding-block: clamp(1.35rem, 3vw, 2.2rem);
+    padding-inline: clamp(1.2rem, 3vw, 2.2rem);
 
-    border-radius: 26px;
-
-    --hotel-gold: var(--sl-hotel-gold, #E6C893);
+    border-radius: 28px;
 
     background:
-        radial-gradient(circle at 0 0,
-            color-mix(in oklab, var(--hotel-gold), transparent 82%)),
-        radial-gradient(circle at 100% 100%,
-            color-mix(in oklab, var(--hotel-gold), transparent 88%)),
-        linear-gradient(135deg,
-            #02030c 0%,
-            #050816 45%,
-            #020617 100%);
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.16), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.1), transparent 60%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.03) 0%,
+            rgba(255, 248, 235, 0.01) 18%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(90deg,
+            #2a160a 0%,
+            #341a0b 32%,
+            #241208 68%,
+            #1a0d06 100%);
+
+    border: 1px solid rgba(230, 200, 147, 0.34);
 
     box-shadow:
-        0 24px 70px rgba(0, 0, 0, 0.95),
-        0 0 0 1px rgba(255, 255, 255, 0.04);
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+        0 22px 60px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
 
     color: var(--sl-platinum-010, #f9fafb);
+}
+
+.content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.06) 0%,
+            rgba(255, 248, 235, 0.02) 10%,
+            rgba(255, 255, 255, 0) 28%),
+        radial-gradient(60% 65% at 0% 50%, rgba(199, 134, 21, 0.08), transparent 72%),
+        radial-gradient(50% 55% at 100% 50%, rgba(230, 200, 147, 0.07), transparent 70%);
+    opacity: 0.95;
 }
 
 /* ===== Coluna de texto ===== */
 
 .textCol {
-    max-inline-size: 42rem;
+    position: relative;
+    z-index: 1;
+    max-inline-size: 43rem;
 }
 
 .paragraph {
-    margin: 0 0 0.9rem;
-    font-size: clamp(0.95rem, 1.02vw, 1.05rem);
-    line-height: 1.6;
-    color: var(--sl-platinum-020, #e5e7eb);
+    margin: 0 0 1rem;
+    font-size: clamp(0.98rem, 1.02vw, 1.05rem);
+    line-height: 1.72;
+    color: rgba(255, 248, 235, 0.92);
+    text-wrap: pretty;
 }
 
 .paragraph:last-of-type {
-    margin-block-end: clamp(1.4rem, 2.4vw, 1.9rem);
+    margin-block-end: clamp(1.45rem, 2.4vw, 1.9rem);
 }
 
 .highlightWrap {
-    max-inline-size: 36rem;
+    max-inline-size: 38rem;
 }
 
 /* ===== Coluna de marcos ===== */
 
 .timelineCol {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 1;
 
-    padding-inline-start: clamp(1.7rem, 2.4vw, 2rem);
-    border-left: 2px solid color-mix(in oklab,
-            var(--hotel-gold),
-            black 30%);
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+    min-inline-size: 0;
+}
+
+.timelineRail {
+    position: relative;
+    inline-size: 2px;
+    block-size: 100%;
+    border-radius: 999px;
+
+    background:
+        linear-gradient(180deg,
+            rgba(230, 200, 147, 0.18) 0%,
+            rgba(230, 200, 147, 0.55) 18%,
+            rgba(199, 134, 21, 0.58) 50%,
+            rgba(230, 200, 147, 0.32) 82%,
+            rgba(230, 200, 147, 0.12) 100%);
+
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.015),
+        0 0 18px rgba(199, 134, 21, 0.18);
 }
 
 .timelineStack {
     display: flex;
     flex-direction: column;
-    gap: clamp(1rem, 2.2vw, 1.5rem);
-    width: min(100%, 18rem);
+    gap: clamp(0.9rem, 2vw, 1.25rem);
+    inline-size: 100%;
+    max-inline-size: 19rem;
 }
-
-/* ===== Responsivo ===== */
 
 @media (max-width: 960px) {
     .content {
@@ -90,24 +130,42 @@
     }
 
     .timelineCol {
-        margin-block-start: clamp(1.5rem, 3vw, 2rem);
-        border-left: none;
-        border-top: 2px solid color-mix(in oklab,
-                var(--hotel-gold),
-                black 30%);
-        padding-inline-start: 0;
-        padding-block-start: clamp(1.3rem, 2.4vw, 1.7rem);
-        justify-content: flex-start;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+        margin-block-start: 0.25rem;
+    }
+
+    .timelineRail {
+        inline-size: 100%;
+        block-size: 2px;
+
+        background:
+            linear-gradient(90deg,
+                rgba(230, 200, 147, 0.18) 0%,
+                rgba(230, 200, 147, 0.55) 18%,
+                rgba(199, 134, 21, 0.58) 50%,
+                rgba(230, 200, 147, 0.32) 82%,
+                rgba(230, 200, 147, 0.12) 100%);
     }
 
     .timelineStack {
-        width: 100%;
-        max-inline-size: 22rem;
+        max-inline-size: 100%;
+    }
+
+    .highlightWrap {
+        max-inline-size: 100%;
     }
 }
 
 @media (max-width: 640px) {
+    .content {
+        padding-block: 1rem;
+        padding-inline: 1rem;
+        border-radius: 22px;
+    }
+
     .paragraph {
         font-size: 0.95rem;
+        line-height: 1.68;
     }
 }

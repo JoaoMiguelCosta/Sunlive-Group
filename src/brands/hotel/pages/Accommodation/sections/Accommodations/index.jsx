@@ -27,13 +27,12 @@ export default function Accommodations() {
       aria-label="Accommodations"
     >
       <div className={styles.inner}>
-        {/* Secção principal */}
         <TitleAccomodations label={content.headerLabel} />
+
         <DescriptionAccomodations>
           {content.description}
         </DescriptionAccomodations>
 
-        {/* Galeria */}
         <div className={styles.galleryWrap}>
           <HotelPhotoCarousel
             items={content.gallery?.items ?? []}
@@ -41,10 +40,10 @@ export default function Accommodations() {
           />
         </div>
 
-        {/* Subsecção: Quartos e Suites (anchor fiável) */}
         {roomsAndSuites ? (
           <section
             id={roomsAndSuites.id}
+            className={styles.roomsSection}
             aria-label={roomsAndSuites.headerLabel}
           >
             <TitleRoomsAndSuites />
@@ -52,10 +51,8 @@ export default function Accommodations() {
           </section>
         ) : null}
 
-        {/* ✅ Filtro + grelha com os cards */}
         <RoomCardsGrid />
 
-        {/* ✅ Nota informativa */}
         <InfoNoteBanner />
       </div>
     </section>

@@ -1,3 +1,5 @@
+// src/brands/hotel/pages/HotelHome/sections/HotelOverview/HotelOverviewContent.jsx
+import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 import styles from "./HotelOverviewContent.module.css";
 
 export default function HotelOverviewContent({ section }) {
@@ -16,13 +18,16 @@ export default function HotelOverviewContent({ section }) {
 
         <p className={styles.body}>{bodyText}</p>
 
-        {cta?.href && (
+        {cta?.href ? (
           <div className={styles.ctaWrap}>
-            <a href={cta.href} className={styles.ctaButton}>
-              {cta.label}
-            </a>
+            <CTAButton
+              cta={cta}
+              icon={cta.iconKey ?? "phone"}
+              variant="hotel"
+              className={styles.ctaButton}
+            />
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );

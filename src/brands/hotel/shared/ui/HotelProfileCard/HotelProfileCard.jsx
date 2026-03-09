@@ -1,4 +1,3 @@
-// src/shared/components/Hotel/HotelProfileCard/HotelProfileCard.jsx
 import styles from "./HotelProfileCard.module.css";
 import { Link } from "react-router-dom";
 
@@ -34,7 +33,6 @@ export default function HotelProfileCard({
 
   return (
     <div className={[styles.card, className].filter(Boolean).join(" ")}>
-      {/* Top band + medalhão */}
       <div className={styles.topBand}>
         <div className={styles.medallion} aria-hidden="true">
           {Icon ? (
@@ -45,20 +43,17 @@ export default function HotelProfileCard({
         </div>
       </div>
 
-      {/* Header area (champanhe) */}
       <div className={styles.header}>
         <h3 className={styles.title}>{title}</h3>
         {subtitle ? <p className={styles.subtitle}>{subtitle}</p> : null}
       </div>
 
-      {/* Body area (noir/teal) */}
       {description ? (
         <div className={styles.body}>
           <p className={styles.description}>{description}</p>
         </div>
       ) : null}
 
-      {/* CTA */}
       <div className={styles.footer}>
         <CardTag className={styles.cta} {...cardProps} aria-label={ctaLabel}>
           <span className={styles.ctaLabel}>{ctaLabel}</span>

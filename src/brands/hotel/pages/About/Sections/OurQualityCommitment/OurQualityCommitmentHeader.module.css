@@ -1,5 +1,14 @@
 /* src/brands/hotel/components/About/OurQualityCommitment/OurQualityCommitmentHeader.module.css */
 
 .headerWrap {
-    margin-block-end: clamp(1.75rem, 3vw, 2.25rem);
+    position: relative;
+    isolation: isolate;
+    inline-size: 100%;
+    margin-block-end: clamp(1.25rem, 2.4vw, 1.85rem);
+}
+
+@media (max-width: 640px) {
+    .headerWrap {
+        margin-block-end: 1rem;
+    }
 }

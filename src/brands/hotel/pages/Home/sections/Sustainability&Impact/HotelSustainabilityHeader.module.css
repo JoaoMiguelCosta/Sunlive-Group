@@ -1,9 +1,15 @@
 /* src/brands/hotel/pages/home/sections/Sustainability&Impact/HotelSustainabilityHeader.module.css */
 
 .headerWrap {
-    /* Mantém o header alinhado ao content da secção */
+    position: relative;
+    isolation: isolate;
     inline-size: 100%;
     display: block;
-    /* pequeno espaçamento em baixo */
-    margin-block-end: clamp(0.75rem, 2vw, 1.25rem);
+    margin-block-end: clamp(1.25rem, 2.4vw, 1.85rem);
+}
+
+@media (max-width: 640px) {
+    .headerWrap {
+        margin-block-end: 1rem;
+    }
 }

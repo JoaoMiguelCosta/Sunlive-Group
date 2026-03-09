@@ -21,7 +21,9 @@ export default function WhyChooseUs() {
       <div className={styles.inner}>
         <TitleWhyChooseUs label={content.headerLabel} />
         <DescriptionWhyChooseUs>{content.subtitle}</DescriptionWhyChooseUs>
-        <WhyChooseUsGrid items={items} />
+        <div className={styles.gridWrap}>
+          <WhyChooseUsGrid items={items} />
+        </div>
       </div>
     </section>
   );

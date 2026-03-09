@@ -1,3 +1,4 @@
+// src/brands/hotel/components/About/OurStoryMilestones/OurStoryMilestonesContent.jsx
 import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import HotelMilestoneCard from "../../../../shared/ui/HotelMilestoneCard/HotelMilestoneCard.jsx";
@@ -18,7 +19,9 @@ export default function OurStoryMilestonesContent() {
 
   const paragraphs = section.text?.paragraphs ?? [];
   const highlightText = section.text?.highlightPill?.text ?? "";
-  const milestones = section.milestones ?? [];
+  const milestones = Array.isArray(section.milestones)
+    ? section.milestones
+    : [];
 
   return (
     <div
@@ -26,10 +29,9 @@ export default function OurStoryMilestonesContent() {
       aria-labelledby={section.id || "sobre-historia"}
     >
       <div className={styles.content}>
-        {/* Coluna esquerda — texto da história */}
         <div className={styles.textCol}>
-          {paragraphs.map((paragraph, idx) => (
-            <p key={idx} className={styles.paragraph}>
+          {paragraphs.map((paragraph, index) => (
+            <p key={`${paragraph}-${index}`} className={styles.paragraph}>
               {paragraph}
             </p>
           ))}
@@ -41,8 +43,8 @@ export default function OurStoryMilestonesContent() {
           )}
         </div>
 
-        {/* Coluna direita — marcos cronológicos */}
         <div className={styles.timelineCol}>
+          <div className={styles.timelineRail} aria-hidden="true" />
           <div className={styles.timelineStack}>
             {milestones.map((item) => (
               <HotelMilestoneCard

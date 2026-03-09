@@ -10,12 +10,12 @@ export default function ForWhomProfilesGrid() {
   const content =
     hotelBrand?.pages?.accommodation?.sections?.forWhomProfiles ?? null;
   const cards = content?.items ?? [];
+
   if (!Array.isArray(cards) || cards.length === 0) return null;
 
-  // useAccordion precisa de {key, defaultOpen?}
-  const accordionItems = cards.map((c) => ({
-    key: c.key,
-    defaultOpen: c?.defaultOpen ?? false,
+  const accordionItems = cards.map((card) => ({
+    key: card.key,
+    defaultOpen: card?.defaultOpen ?? false,
   }));
 
   const { isOpen, toggle } = useAccordion(accordionItems, {
@@ -25,35 +25,33 @@ export default function ForWhomProfilesGrid() {
   return (
     <div className={styles.wrap}>
       <div className={styles.grid}>
-        {cards.map((c) => {
-          const open = isOpen(c.key);
+        {cards.map((card) => {
+          const open = isOpen(card.key);
 
           return (
-            <div key={c.key} className={styles.cardWrap}>
+            <div key={card.key} className={styles.cardWrap}>
               <HotelProfileCard
-                title={c.title}
-                subtitle={c.subtitle}
-                description={c.description}
-                ctaLabel={c.ctaLabel || "Ver Detalhes"}
-                onClick={() => toggle(c.key)} // ✅ botão “Ver Detalhes”
-                detailsOpen={open} // ✅ para seta rodar (vamos preparar já)
-                /* Icon={ICON_MAP[c.iconKey]} */ // ✅ depois
+                title={card.title}
+                subtitle={card.subtitle}
+                description={card.description}
+                ctaLabel={card.ctaLabel || "Ver Detalhes"}
+                onClick={() => toggle(card.key)}
+                detailsOpen={open}
               />
 
-              {open && c.details ? (
+              {open && card.details ? (
                 <div className={styles.details}>
                   <HotelOfferPanel
-                    title={c.details.title}
-                    items={(c.details.items || []).map((it) => ({
-                      id: it.id,
-                      title: it.title,
-                      description: it.description,
-                      // Icon: ICON_MAP[it.iconKey]  // ✅ depois
+                    title={card.details.title}
+                    items={(card.details.items || []).map((item) => ({
+                      id: item.id,
+                      title: item.title,
+                      description: item.description,
                     }))}
-                    highlightsTitle={c.details.highlightsTitle}
-                    highlights={c.details.highlights}
-                    ctaLabel={c.details.ctaLabel}
-                    ctaHref={c.details.ctaHref}
+                    highlightsTitle={card.details.highlightsTitle}
+                    highlights={card.details.highlights}
+                    ctaLabel={card.details.ctaLabel}
+                    ctaHref={card.details.ctaHref}
                   />
                 </div>
               ) : null}

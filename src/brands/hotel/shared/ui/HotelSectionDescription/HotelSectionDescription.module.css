@@ -1,46 +1,67 @@
-/* src/shared/components/hotel/HotelSectionDescription.module.css */
+/* src/shared/ui/HotelSectionDescription/HotelSectionDescription.module.css */
 
-/* Bloco de descrição em estilo Performance Prestige:
-   base Noir + halo champanhe-quente */
 .wrap {
     position: relative;
     isolation: isolate;
+    overflow: hidden;
 
-    margin-block: clamp(1.25rem, 3vw, 2rem);
-    padding-block: clamp(1.2rem, 2.2vw, 1.8rem);
-    padding-inline: clamp(1.75rem, 4vw, 3.5rem);
-
-    background:
-        radial-gradient(circle at 0 0,
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), transparent 78%)),
-        radial-gradient(circle at 100% 100%,
-            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 82%)),
-        linear-gradient(135deg,
-            color-mix(in oklab, #020617, black 4%) 0%,
-            color-mix(in oklab, #020617, black 10%) 35%,
-            color-mix(in oklab, #020617, black 14%) 100%);
+    margin-block: clamp(1rem, 2.5vw, 1.6rem);
+    padding-block: clamp(0.95rem, 2vw, 1.25rem);
+    padding-inline: clamp(1.2rem, 3vw, 2rem);
 
     border-radius: 999px;
-    border: 1px solid color-mix(in oklab, var(--sl-accent-500, #e6c893), black 32%);
+    border: 1px solid rgba(230, 200, 147, 0.38);
+
+    background:
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.04) 0%,
+            rgba(255, 248, 235, 0.015) 18%,
+            rgba(0, 0, 0, 0.06) 100%),
+        linear-gradient(90deg,
+            #2a160a 0%,
+            #341a0b 32%,
+            #241208 68%,
+            #1a0d06 100%);
 
     box-shadow:
-        0 22px 55px rgba(0, 0, 0, 0.9),
-        0 0 0 1px rgba(255, 255, 255, 0.03);
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 16px 40px rgba(0, 0, 0, 0.24),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
-/* Texto da descrição */
+.wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.08) 0%,
+            rgba(255, 248, 235, 0.03) 12%,
+            rgba(255, 255, 255, 0) 34%),
+        radial-gradient(55% 120% at 0% 50%, rgba(199, 134, 21, 0.08), transparent 72%),
+        radial-gradient(45% 100% at 100% 50%, rgba(230, 200, 147, 0.07), transparent 70%);
+    opacity: 0.95;
+}
+
 .text {
+    position: relative;
+    z-index: 1;
     margin: 0;
-    max-inline-size: 70rem;
+    max-inline-size: 68rem;
     margin-inline: auto;
 
-    color: var(--sl-platinum-010, #f9fafb);
-    font-size: clamp(0.98rem, 1vw + 0.82rem, 1.25rem);
-    line-height: 1.55;
+    color: rgba(255, 248, 235, 0.94);
+    font-size: clamp(0.98rem, 1vw + 0.82rem, 1.16rem);
+    line-height: 1.6;
     font-weight: 400;
+    text-wrap: pretty;
 }
 
-/* Alinhamentos */
 .center {
     text-align: center;
 }
@@ -49,16 +70,16 @@
     text-align: left;
 }
 
-/* Mobile: ligeiramente mais compacto */
 @media (max-width: 640px) {
     .wrap {
-        margin-block: 1rem;
-        padding-block: 0.9rem;
-        padding-inline: 1.2rem;
-        border-radius: 1.25rem;
+        margin-block: 0.9rem;
+        padding-block: 0.85rem;
+        padding-inline: 1rem;
+        border-radius: 1.1rem;
     }
 
     .text {
-        font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+        font-size: 0.95rem;
+        line-height: 1.58;
     }
 }

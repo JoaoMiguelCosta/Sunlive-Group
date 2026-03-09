@@ -37,7 +37,6 @@ export default function HotelPhotoCarousel({
   return (
     <section className={styles.wrap} aria-label="Accommodation photo gallery">
       <div className={styles.inner}>
-        {/* Botão anterior */}
         <button
           type="button"
           className={styles.navButton}
@@ -49,7 +48,6 @@ export default function HotelPhotoCarousel({
           </span>
         </button>
 
-        {/* Área principal da imagem / placeholder */}
         <div className={styles.media}>
           {hasItems ? (
             <>
@@ -69,7 +67,6 @@ export default function HotelPhotoCarousel({
           )}
         </div>
 
-        {/* Botão seguinte */}
         <button
           type="button"
           className={styles.navButton}

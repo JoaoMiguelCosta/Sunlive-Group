@@ -18,7 +18,7 @@ export default function RoomCardsGrid() {
   const visibleCards = useMemo(() => {
     if (!cards?.length) return [];
     if (active === "all") return cards;
-    return cards.filter((c) => (c.profiles ?? []).includes(active));
+    return cards.filter((card) => (card.profiles ?? []).includes(active));
   }, [cards, active]);
 
   if (!content) return null;

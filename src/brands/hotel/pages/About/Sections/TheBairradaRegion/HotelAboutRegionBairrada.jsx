@@ -16,8 +16,6 @@ export default function HotelAboutRegionBairrada({ description }) {
   if (!description) return null;
 
   const { align = "center", text, paragraphs = [] } = description;
-
-  // Se vier `text` usa-se diretamente, caso contrário junta os parágrafos.
   const content = text ?? paragraphs.join(" ");
 
   if (!content) return null;

@@ -1,69 +1,110 @@
 /* src/brands/hotel/pages/home/sections/Sustainability&Impact/Sustainability&Impact.module.css */
 
 .section {
-    padding-block: clamp(2.5rem, 5vw, 3.5rem);
+    position: relative;
+    isolation: isolate;
+    padding-block: clamp(2.4rem, 5vw, 3.4rem);
+    background: transparent;
 }
 
 .inner {
-    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)));
+    --section-x: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
+    --section-max: var(--sl-container-lg, 85rem);
+
+    inline-size: min(var(--section-max), calc(100% - (2 * var(--section-x))));
     margin-inline: auto;
     box-sizing: border-box;
 }
-/* caixa central (3ª imagem) */
+
+/* caixa central */
 
 .introBox {
-margin-block-start: clamp(1.5rem, 4vw, 2rem);
-    margin-block-end: clamp(2rem, 4vw, 2.6rem);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
 
-    padding: 1.75rem 1.5rem;
-    border: 2px solid color-mix(in oklab,
-            var(--sl-accent-600, #b8860b),
-            black 5%);
+    margin-block-start: clamp(1.25rem, 2.8vw, 1.85rem);
+    margin-block-end: clamp(1.35rem, 3vw, 2rem);
+
+    padding: clamp(1.2rem, 2.6vw, 1.75rem);
+    border-radius: 24px;
+    border: 1px solid rgba(230, 200, 147, 0.3);
 
     background:
-        radial-gradient(circle at 0 0,
-            rgba(15, 23, 42, 0.95),
-            rgba(2, 6, 23, 0.98)),
-        linear-gradient(180deg, #020617 0%, #02051a 100%);
+        radial-gradient(110% 140% at 0% 0%, rgba(230, 200, 147, 0.12), transparent 44%),
+        radial-gradient(120% 150% at 100% 100%, rgba(199, 134, 21, 0.1), transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.035) 0%,
+            rgba(255, 248, 235, 0.012) 18%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(135deg,
+            #2b170b 0%,
+            #33190b 42%,
+            #1d0f08 100%);
+
     box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.9),
-        0 0 0 1px rgba(255, 255, 255, 0.04);
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 18px 44px rgba(0, 0, 0, 0.24),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
 
     text-align: center;
 }
 
+.introBox::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.07) 0%,
+            rgba(255, 248, 235, 0.025) 14%,
+            rgba(255, 255, 255, 0) 36%);
+}
+
 .introTitle {
-    margin: 0 0 0.75rem;
-    font-size: clamp(1.15rem, 1.2vw + 0.9rem, 1.35rem);
-    font-weight: 600;
-    color: color-mix(in oklab,
-            var(--sl-accent-500, #e6c893),
-            white 10%);
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 0.7rem;
+    font-size: clamp(1.1rem, 1vw + 0.88rem, 1.28rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: #f1cd84;
+    text-wrap: balance;
 }
 
 .introText {
+    position: relative;
+    z-index: 1;
+
     margin: 0;
-    font-size: clamp(0.95rem, 0.5vw + 0.8rem, 1.05rem);
-    line-height: 1.6;
-    color: #e5e7eb;
-}
-
-/* grelha de métricas (4ª imagem) */
-
-.statsGrid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1.25rem;
-}
-
-@media (max-width: 960px) {
-    .statsGrid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    font-size: clamp(0.95rem, 0.45vw + 0.84rem, 1.02rem);
+    line-height: 1.65;
+    color: rgba(255, 248, 235, 0.9);
+    text-wrap: pretty;
 }
 
 @media (max-width: 640px) {
-    .statsGrid {
-        grid-template-columns: minmax(0, 1fr);
+    .section {
+        padding-block: 2rem;
+    }
+
+    .introBox {
+        margin-block-start: 1rem;
+        margin-block-end: 1rem;
+        padding: 1rem;
+        border-radius: 20px;
+    }
+
+    .introTitle {
+        font-size: 1.02rem;
+    }
+
+    .introText {
+        font-size: 0.95rem;
+        line-height: 1.58;
     }
 }

@@ -1,5 +1,5 @@
 // src/brands/hotel/pages/HotelAbout/sections/TheBairradaRegion/TheBairradaRegionHeader.jsx
-import HotelSectionHeader from "../../../../shared/ui//HotelSectionHeader/HotelSectionHeader.jsx";
+import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 import styles from "./TheBairradaRegionHeader.module.css";
 
 /**
@@ -18,8 +18,7 @@ import styles from "./TheBairradaRegionHeader.module.css";
 export default function TheBairradaRegionHeader({ header, titleId }) {
   if (!header) return null;
 
-  const { title, label, headerLabel, align = "center", as } = header;
-
+  const { title, label, headerLabel, align = "center", as = "h2" } = header;
   const resolvedLabel = label ?? title ?? headerLabel ?? "";
 
   if (!resolvedLabel) return null;

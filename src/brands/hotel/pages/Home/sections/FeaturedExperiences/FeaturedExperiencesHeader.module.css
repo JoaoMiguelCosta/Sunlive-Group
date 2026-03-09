@@ -1,14 +1,22 @@
 /* src/brands/hotel/components/Home/FeaturedExperiences/FeaturedExperiencesHeader.module.css */
 
 .header {
-    margin-block-end: clamp(1.5rem, 3vw, 2.5rem);
+    position: relative;
+    isolation: isolate;
+    inline-size: 100%;
+    margin-block-end: clamp(1.25rem, 2.4vw, 1.85rem);
 }
 
-/* alinhamento do conteúdo do header */
 .center {
     text-align: center;
 }
 
 .left {
     text-align: left;
+}
+
+@media (max-width: 640px) {
+    .header {
+        margin-block-end: 1rem;
+    }
 }

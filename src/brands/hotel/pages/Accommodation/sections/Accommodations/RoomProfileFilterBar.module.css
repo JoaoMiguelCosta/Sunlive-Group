@@ -1,14 +1,19 @@
 .wrap {
     position: relative;
     margin-block: clamp(16px, 2.4vw, 22px);
-    border: 2px solid rgba(230, 200, 147, 0.35);
-    border-radius: 18px;
     overflow: hidden;
+    border-radius: 18px;
 
+    border: 1px solid rgba(230, 200, 147, 0.42);
     background:
-        radial-gradient(900px 220px at 80% 0%, rgba(230, 200, 147, 0.14), transparent 60%),
-        linear-gradient(180deg, rgba(5, 10, 25, 0.92), rgba(2, 6, 18, 0.92));
-    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
+        #26170b;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 16px 40px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(255, 255, 255, 0.015);
 }
 
 .inner {
@@ -23,13 +28,13 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 248, 240, 0.92);
     font-weight: 700;
 }
 
 .icon {
-    color: rgba(230, 200, 147, 0.95);
     display: inline-flex;
+    color: rgba(255, 223, 160, 0.98);
 }
 
 .label {
@@ -45,32 +50,59 @@
 }
 
 .chip {
-    border-radius: 999px;
     padding: 8px 14px;
+    border-radius: 999px;
 
-    border: 2px solid rgba(230, 200, 147, 0.40);
-    background: rgba(2, 6, 18, 0.55);
-    color: rgba(255, 255, 255, 0.90);
+    border: 1px solid rgba(230, 200, 147, 0.38);
+    background:
+        linear-gradient(180deg, rgba(88, 54, 26, 0.70), rgba(38, 23, 11, 0.90));
+    color: rgba(255, 248, 240, 0.90);
 
     font-weight: 700;
     letter-spacing: 0.01em;
     cursor: pointer;
 
-    transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 6px 14px rgba(0, 0, 0, 0.16);
+
+    transition:
+        transform 140ms ease,
+        border-color 140ms ease,
+        box-shadow 140ms ease,
+        background 140ms ease,
+        color 140ms ease;
 }
 
 .chip:hover {
     transform: translateY(-1px);
-    border-color: rgba(230, 200, 147, 0.62);
-    box-shadow: 0 0 0 3px rgba(230, 200, 147, 0.10);
+    border-color: rgba(230, 200, 147, 0.58);
+    background:
+        linear-gradient(180deg, rgba(108, 67, 32, 0.78), rgba(49, 30, 15, 0.92));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 8px 18px rgba(0, 0, 0, 0.20),
+        0 0 16px rgba(230, 200, 147, 0.08);
+}
+
+.chip:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 3px rgba(230, 200, 147, 0.16),
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 8px 18px rgba(0, 0, 0, 0.20);
 }
 
 .active {
-    background: linear-gradient(180deg,
-            color-mix(in oklab, #0a1022, var(--sl-accent-500, #e6c893) 40%),
-            rgba(2, 6, 18, 0.55));
-    border-color: rgba(230, 200, 147, 0.75);
-    color: rgba(255, 255, 255, 0.95);
+    background:
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.22), transparent 60%),
+        linear-gradient(180deg, rgba(128, 80, 38, 0.82), rgba(63, 37, 17, 0.96));
+    border-color: rgba(230, 200, 147, 0.64);
+    color: rgba(255, 250, 244, 0.98);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 10px 22px rgba(0, 0, 0, 0.22),
+        0 0 18px rgba(230, 200, 147, 0.10);
 }
 
 @media (max-width: 720px) {

@@ -12,14 +12,13 @@ export default function AmenitiesPills() {
   return (
     <div className={styles.wrap} aria-label="Amenities list">
       <div className={styles.grid}>
-        {items.map((it) => {
-          // ✅ preparado: quando tiveres iconKey, mapeias para ICONS[iconKey]
+        {items.map((item) => {
           const Icon = null;
 
           return (
             <HotelIconPill
-              key={it.id}
-              label={it.label}
+              key={item.id}
+              label={item.label}
               Icon={Icon}
               size="md"
               className={styles.pill}
