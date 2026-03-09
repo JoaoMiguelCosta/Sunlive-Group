@@ -2,11 +2,12 @@ import styles from "./ContactsGrid.module.css";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
-// ✅ Novo: contacts vêm do novo config (pages/home.js)
-import { groupHomePage } from "../../../../config/pages/index.js";
+import { GROUP_CONTACTS } from "../../../../config/index.js";
+
+const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
+const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
 
 export default function BusinessUnits({ items = [] }) {
-  // Ordem desejada (mantém só os existentes)
   const desiredOrder = [
     "travel",
     "sports",
@@ -17,14 +18,13 @@ export default function BusinessUnits({ items = [] }) {
   ];
 
   const orderedItems = desiredOrder
-    .map((key) => items.find((i) => i?.key === key))
+    .map((key) => items.find((item) => item?.key === key))
     .filter(Boolean);
 
   const { isOpen, toggle } = useAccordion(orderedItems, {
     allowMultiple: true,
   });
 
-  // Auto-abrir pelo hash #unit-<key> (e permitir fechar depois)
   useOpenFromHash({
     routePath: "/sunlive-group",
     regex: /^#unit-(.+)$/,
@@ -33,31 +33,27 @@ export default function BusinessUnits({ items = [] }) {
     toggle,
   });
 
-  // Ícones do config
-  const Mail = groupHomePage?.sections?.contacts?.icons?.Mail || (() => null);
-  const Phone = groupHomePage?.sections?.contacts?.icons?.Phone || (() => null);
-
   return (
     <div className={styles.grid} role="list">
-      {orderedItems.map((it) => {
-        const open = isOpen(it.key);
-        const telHref = (it.phone || "").replace(/\s+/g, "");
+      {orderedItems.map((item) => {
+        const open = isOpen(item.key);
+        const telHref = (item.phone || "").replace(/\s+/g, "");
 
         return (
           <div
-            key={it.key}
+            key={item.key}
             role="listitem"
             className={styles.item}
-            id={`unit-${it.key}`}
+            id={`unit-${item.key}`}
           >
             <button
               type="button"
               className={styles.pill}
-              onClick={() => toggle(it.key)}
+              onClick={() => toggle(item.key)}
               aria-expanded={open}
-              aria-controls={`bu-${it.key}`}
+              aria-controls={`bu-${item.key}`}
             >
-              <span className={styles.pillText}>{it.label}</span>
+              <span className={styles.pillText}>{item.label}</span>
               <span className={styles.caret} aria-hidden="true">
                 ➜
               </span>
@@ -65,36 +61,36 @@ export default function BusinessUnits({ items = [] }) {
 
             {open && (
               <div
-                id={`bu-${it.key}`}
+                id={`bu-${item.key}`}
                 className={styles.card}
                 role="region"
-                aria-label={`${it.label} contacts`}
+                aria-label={`${item.label} contacts`}
               >
                 <a
-                  href={it.email ? `mailto:${it.email}` : undefined}
+                  href={item.email ? `mailto:${item.email}` : undefined}
                   className={styles.row}
                   aria-label={
-                    it.email ? `Email ${it.email}` : "Email not available"
+                    item.email ? `Email ${item.email}` : "Email not available"
                   }
                   tabIndex={0}
                 >
-                  <Mail className={styles.icon} />
-                  <span className={it.email ? "" : styles.muted}>
-                    {it.email || "—"}
+                  <MailIcon className={styles.icon} width={20} height={20} />
+                  <span className={item.email ? "" : styles.muted}>
+                    {item.email || "—"}
                   </span>
                 </a>
 
                 <a
-                  href={it.phone ? `tel:${telHref}` : undefined}
+                  href={item.phone ? `tel:${telHref}` : undefined}
                   className={styles.row}
                   aria-label={
-                    it.phone ? `Call ${it.phone}` : "Phone not available"
+                    item.phone ? `Call ${item.phone}` : "Phone not available"
                   }
                   tabIndex={0}
                 >
-                  <Phone className={styles.icon} />
-                  <span className={it.phone ? "" : styles.muted}>
-                    {it.phone || "—"}
+                  <PhoneIcon className={styles.icon} width={20} height={20} />
+                  <span className={item.phone ? "" : styles.muted}>
+                    {item.phone || "—"}
                   </span>
                 </a>
               </div>
@@ -105,5 +101,3 @@ export default function BusinessUnits({ items = [] }) {
     </div>
   );
 }
-
-

@@ -5,7 +5,7 @@ import coa from "../../../assets/group-logos/logos/committes/coa.png";
 
 export const committees = {
   id: "committees",
-  title: "COMMITTEES",
+  title: "COMITÉS",
   items: [
     {
       key: "uec",

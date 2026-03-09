@@ -1,7 +1,4 @@
-import {
-  LANG_DEFAULT,
-  makeBackLink,
-} from "../../../../shared/config/BrandDefault.js";
+import { LANG_DEFAULT, makeBackLink } from "../../../../shared/config/index.js";
 
 import { HOTEL_SOCIALS } from "./socials.js";
 

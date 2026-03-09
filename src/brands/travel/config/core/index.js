@@ -1,63 +1,15 @@
-import { LANG_DEFAULT } from "../../../../shared/config/BrandDefault.js";
+export { default as TRAVEL_BOOKS } from "./books.js";
+export { default as TRAVEL_COMPANY } from "./company.js";
+export { default as TRAVEL_CONTACT_CHANNELS } from "./contactChannels.js";
+export { default as BRAND_FLAGS } from "./flags.js";
+export { default as footer } from "./footer.js";
+export { default as header } from "./header.js";
+export { default as BRAND_ICON_KEY_MAP } from "./iconKeyMap.js";
+export { default as BRAND_ICONS } from "./icons.js";
+export { default as TRAVEL_NAV } from "./nav.js";
+export { default as TRAVEL_PAGE_PATHS } from "./paths.js";
+export { default as TRAVEL_SOCIALS } from "./socials.js";
 
-import header from "./header.js";
-import footer from "./footer.js";
-import { TRAVEL_BOOKS } from "./books.js";
-
-import { TRAVEL_BASE_PATH, TRAVEL_PAGE_PATHS } from "./paths.js";
-import { TRAVEL_NAV } from "./nav.js";
-
-import { BRAND_ICONS } from "./icons.js";
-import { BRAND_FLAGS } from "./flags.js";
-import { ICONS, FLAGS } from "./resolvedVisuals.js";
-import {
-  BRAND_ICON_KEY_MAP,
-  resolveTravelIcon,
-  resolveTravelIconName,
-} from "./iconKeyMap.js";
-import { TRAVEL_CONTACT_CHANNELS } from "./contactChannels.js";
-
-import * as pages from "../pages/index.js";
-import * as sections from "../sections/index.js";
-
-/** @type {import("../../../../shared/config/types/brand.js").BrandConfig} */
-const travelBrand = {
-  key: "travel",
-  brandName: "Sunlive Travel",
-  lang: LANG_DEFAULT,
-
-  paths: {
-    base: TRAVEL_BASE_PATH,
-    pages: TRAVEL_PAGE_PATHS,
-  },
-
-  header,
-
-  nav: {
-    primaryItems: TRAVEL_NAV,
-  },
-
-  pages: {
-    ...pages,
-  },
-
-  sections: {
-    ...sections,
-    footer,
-  },
-
-  icons: ICONS,
-  flags: FLAGS,
-  books: TRAVEL_BOOKS,
-
-  contactChannels: TRAVEL_CONTACT_CHANNELS,
-};
-
-export default travelBrand;
-
-export { TRAVEL_BASE_PATH, TRAVEL_PAGE_PATHS };
-export { TRAVEL_BOOKS };
-export { BRAND_ICONS, BRAND_FLAGS };
-export { ICONS, FLAGS };
-export { BRAND_ICON_KEY_MAP, resolveTravelIcon, resolveTravelIconName };
-export { TRAVEL_CONTACT_CHANNELS };
+export { TRAVEL_BASE_PATH } from "./paths.js";
+export { ICONS, FLAGS } from "./resolvedVisuals.js";
+export { resolveTravelIcon, resolveTravelIconName } from "./iconKeyMap.js";

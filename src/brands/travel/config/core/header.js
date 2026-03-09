@@ -3,7 +3,7 @@ import {
   LANG_DEFAULT,
   makeBackLink,
   makeDefaultCTA,
-} from "../../../../shared/config/BrandDefault.js";
+} from "../../../../shared/config/index.js";
 
 import logoTravel from "../../assets/LogoSunliveTravel/travel.png";
 

@@ -1,4 +1,5 @@
 import {
+  heroBanner,
   overview,
   whoWeHost,
   featuredExperiences,
@@ -9,6 +10,7 @@ import {
 const home = {
   id: "home",
   sections: {
+    heroBanner,
     overview,
     whoWeHost,
     featuredExperiences,

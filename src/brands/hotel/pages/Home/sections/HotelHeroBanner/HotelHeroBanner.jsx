@@ -1,81 +1,43 @@
-// src/brands/hotel/components/HotelMasthead/HotelMasthead.jsx
-import estalagemLogo from "../../../../assets/estalagem.png";
+import hotelBrand from "../../../../config/index.js";
+import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 import styles from "./HotelHeroBanner.module.css";
 
-import { GLOBAL_ICONS } from "../../../../../../shared/config/icons/global.icons.js";
-import { BUSINESS_UNIT_CONTACTS_DEFAULT } from "../../../../../../shared/config/BrandDefault.js";
+export default function HotelHeroBanner({ onContactClick }) {
+  const section = hotelBrand?.pages?.home?.sections?.heroBanner ?? null;
+  if (!section) return null;
 
-const PhoneIcon = GLOBAL_ICONS.PhoneIcon;
-const HOTEL_PHONE = BUSINESS_UNIT_CONTACTS_DEFAULT.hotel?.phone ?? "";
+  const logoSrc = section.logo?.src ?? "";
+  const logoAlt = section.logo?.alt ?? "Estalagem de Sangalhos";
+  const cta = section.cta ?? null;
 
-function normalizePhone(phone) {
-  return phone ? phone.replace(/\s+/g, "") : "";
-}
+  if (!cta?.href) return null;
 
-/**
- * HotelMasthead
- * Header visual da Estalagem de Sangalhos
- *
- * Props opcionais:
- *  - ctaLabel?: string          (texto do botão, default "Contactar")
- *  - onContactClick?: () => {}  (callback ao clicar no botão)
- */
-export default function HotelHeroBanner({
-  ctaLabel = "Contactar",
-  onContactClick,
-}) {
-  const handleClick = () => {
-    if (onContactClick) {
-      onContactClick();
-      return;
-    }
+  const handleClick = (event) => {
+    if (!onContactClick) return;
 
-    if (HOTEL_PHONE) {
-      window.location.href = `tel:${normalizePhone(HOTEL_PHONE)}`;
-    }
+    event.preventDefault();
+    onContactClick();
   };
 
   return (
-    <header
-      className={styles.masthead}
-      data-variant="hotel-masthead"
-      aria-label="Estalagem de Sangalhos — Cabeçalho"
-    >
+    <section className={styles.masthead}>
       <div className={styles.inner}>
         <div className={styles.logoWrap}>
-          <img
-            src={estalagemLogo}
-            alt="Estalagem de Sangalhos — Sport & Nature Hotel"
-            className={styles.logo}
-          />
+          {logoSrc ? (
+            <img src={logoSrc} alt={logoAlt} className={styles.logo} />
+          ) : null}
         </div>
 
         <div className={styles.content}>
-          <div className={styles.hotelNameBlock}>
-            <p className={styles.hotelNamePrimary}>ESTALAGEM DE SANGALHOS</p>
-            <p className={styles.hotelNameSecondary}>
-              SPORT &amp; NATURE HOTEL
-            </p>
-            <p className={styles.hotelStars}>★★★</p>
-          </div>
-
-          <button
-            type="button"
-            className={styles.contactButton}
+          <CTAButton
+            cta={cta}
+            icon={cta.iconKey ?? "phone"}
+            variant="hero"
+            className={styles.cta}
             onClick={handleClick}
-            aria-label={
-              HOTEL_PHONE
-                ? `Contactar por telefone ${HOTEL_PHONE}`
-                : "Contactar Estalagem de Sangalhos"
-            }
-          >
-            <span className={styles.contactIcon} aria-hidden="true">
-              <PhoneIcon size={18} />
-            </span>
-            <span>{ctaLabel}</span>
-          </button>
+          />
         </div>
       </div>
-    </header>
+    </section>
   );
 }

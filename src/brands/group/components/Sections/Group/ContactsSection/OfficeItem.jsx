@@ -1,4 +1,3 @@
-// src/brands/group/components/SectionGroup/ContactsSection/OfficeItem.jsx
 import styles from "./ContactsGrid.module.css";
 import OfficeCard from "./OfficeCard.jsx";
 
@@ -42,5 +41,3 @@ export default function OfficeItem({
     </div>
   );
 }
-
-

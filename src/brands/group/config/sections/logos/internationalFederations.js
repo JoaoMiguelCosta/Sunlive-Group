@@ -20,7 +20,7 @@ import uggf from "../../../assets/group-logos/logos/internationalFederations/ugg
 
 export const internationalFederations = {
   id: "federations-intl",
-  title: "INTERNATIONAL FEDERATIONS",
+  title: "FEDERAÇÔES INTERNACIONAIS",
   items: [
     {
       key: "fag",

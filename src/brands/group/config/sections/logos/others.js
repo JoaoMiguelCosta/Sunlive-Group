@@ -1,6 +1,6 @@
 export const others = {
   id: "others",
-  title: "OTHER PARTNERS",
+  title: "OUTROS PARCEIROS",
   items: [],
   disabled: true,
 };

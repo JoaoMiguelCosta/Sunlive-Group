@@ -1,4 +1,3 @@
-// src/shared/config/icons/global.icons.js
 import {
   Building2Icon,
   ChevronDownIcon,

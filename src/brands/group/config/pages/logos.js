@@ -1,4 +1,4 @@
-import { makeBackLink } from "../../../../shared/config/BrandDefault.js";
+import { makeBackLink } from "../../../../shared/config/index.js";
 
 import {
   committees,
@@ -23,5 +23,3 @@ const logos = {
 };
 
 export default logos;
-
-

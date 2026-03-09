@@ -1,4 +1,4 @@
-import { resolveIcons } from "../../../../shared/config/icons/resolveIcons.js";
+import { resolveIcons } from "../../../../shared/config/index.js";
 import { BRAND_ICONS } from "./icons.js";
 import { BRAND_FLAGS } from "./flags.js";
 

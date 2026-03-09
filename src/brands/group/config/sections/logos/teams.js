@@ -36,7 +36,7 @@ import woking from "../../../assets/group-logos/logos/teams/woking.png";
 
 export const teams = {
   id: "teams",
-  title: "TEAMS",
+  title: "EQUIPAS",
   items: [
     { key: "ads", name: "ADS Team", caption: "ADS Team", src: ads },
     { key: "afc", name: "AFC Team", caption: "AFC Team", src: afc },

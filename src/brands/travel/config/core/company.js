@@ -1,7 +1,7 @@
 import {
   CONTACTS_SECTION_TITLE,
   SUNLIVE_HQ_LOCATION,
-} from "../../../../shared/config/BrandDefault.js";
+} from "../../../../shared/config/index.js";
 
 export const TRAVEL_COMPANY = Object.freeze({
   key: "travel",

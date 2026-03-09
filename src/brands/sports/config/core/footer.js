@@ -3,7 +3,7 @@ import {
   makePoliciesBar,
   makeFooterInfoHeader,
   makeAcknowledgements,
-} from "../../../../shared/config/BrandDefault.js";
+} from "../../../../shared/config/index.js";
 
 import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
 
@@ -16,7 +16,7 @@ import { SPORTS_BASE_PATH } from "./paths.js";
 const footer = {
   id: "footer",
 
-  infoHeader: makeFooterInfoHeader("sports", {
+  infoHeader: makeFooterInfoHeader({
     brand: {
       Icon: ICONS.MedalIcon,
       title: SPORTS_COMPANY.brandName,

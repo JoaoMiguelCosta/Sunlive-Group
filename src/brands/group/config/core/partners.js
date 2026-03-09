@@ -4,34 +4,34 @@ export const PARTNERS_TITLE = "A Nossa Rede de Parceiros";
 
 export const PARTNER_LINKS = Object.freeze([
   {
-    key: "committees",
+    key: "comites",
     label: "Comités",
-    href: `${GROUP_LOGOS_PATH}#committees`,
+    href: `${GROUP_LOGOS_PATH}#comites`,
   },
   {
-    key: "federations-pt",
+    key: "federacoes-portuguesas",
     label: "Federações Portuguesas",
-    href: `${GROUP_LOGOS_PATH}#federations-pt`,
+    href: `${GROUP_LOGOS_PATH}#federacoes-portuguesas`,
   },
   {
-    key: "federations-intl",
+    key: "federacoes-internacionais",
     label: "Federações Internacionais",
-    href: `${GROUP_LOGOS_PATH}#federations-intl`,
+    href: `${GROUP_LOGOS_PATH}#federacoes-internacionais`,
   },
   {
-    key: "teams",
+    key: "equipas",
     label: "Equipas",
-    href: `${GROUP_LOGOS_PATH}#teams`,
+    href: `${GROUP_LOGOS_PATH}#equipas`,
   },
   {
-    key: "associations",
+    key: "associacoes",
     label: "Associações",
-    href: `${GROUP_LOGOS_PATH}#associations`,
+    href: `${GROUP_LOGOS_PATH}#associacoes`,
   },
   {
-    key: "others",
+    key: "outros-parceiros",
     label: "Outros Parceiros",
-    href: `${GROUP_LOGOS_PATH}#others`,
+    href: `${GROUP_LOGOS_PATH}#outros-parceiros`,
     disabled: true,
   },
 ]);

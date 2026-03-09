@@ -5,7 +5,7 @@ import {
   makeAcknowledgements,
   unitsToFooterGeneric,
   countriesToFooterGeneric,
-} from "../../../../shared/config/BrandDefault.js";
+} from "../../../../shared/config/index.js";
 
 import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
 
@@ -23,7 +23,7 @@ export function makeGroupFooter({ contacts = GROUP_CONTACTS } = {}) {
   return {
     id: "footer",
 
-    infoHeader: makeFooterInfoHeader("group", {
+    infoHeader: makeFooterInfoHeader({
       brand: {
         title: GROUP_COMPANY.brandName,
         tagline: GROUP_COMPANY.tagline,
@@ -31,6 +31,7 @@ export function makeGroupFooter({ contacts = GROUP_CONTACTS } = {}) {
         link: GROUP_COMPANY.footerLink,
       },
       location: GROUP_COMPANY.location,
+      contacts: GROUP_COMPANY.contacts,
       socials: {
         title: "Redes Sociais",
         items: GROUP_SOCIALS,

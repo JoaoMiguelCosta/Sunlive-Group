@@ -3,16 +3,17 @@ import OfficeItem from "./OfficeItem.jsx";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
-// ✅ Novo: Ícones vindos do novo config (pages/home.js)
-import { groupHomePage } from "../../../../config/pages/index.js";
+import { GROUP_CONTACTS } from "../../../../config/index.js";
+
+const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
+const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
 
 export default function RegionalOffices({ items = [] }) {
   const { isOpen, toggle } = useAccordion(items, { allowMultiple: true });
 
-  // Abre automaticamente o país do hash (só 1x por hash)
   useOpenFromHash({
     routePath: "/sunlive-group",
-    regex: /^#country-(.+)$/, // "#country-malta" → key="malta"
+    regex: /^#country-(.+)$/,
     items,
     isOpen,
     toggle,
@@ -20,20 +21,14 @@ export default function RegionalOffices({ items = [] }) {
 
   if (!items.length) return null;
 
-  const groupContacts = groupHomePage?.sections?.contacts;
-
-  // Ícones do config (fallbacks seguros)
-  const MailIcon = groupContacts?.icons?.Mail || (() => null);
-  const PhoneIcon = groupContacts?.icons?.Phone || (() => null);
-
   return (
     <div className={styles.grid} role="list" data-count={items.length}>
-      {items.map((it) => (
+      {items.map((item) => (
         <OfficeItem
-          key={it.key}
-          item={it}
-          isOpen={isOpen(it.key)}
-          toggle={() => toggle(it.key)}
+          key={item.key}
+          item={item}
+          isOpen={isOpen(item.key)}
+          toggle={() => toggle(item.key)}
           MailIcon={MailIcon}
           PhoneIcon={PhoneIcon}
         />
@@ -41,5 +36,3 @@ export default function RegionalOffices({ items = [] }) {
     </div>
   );
 }
-
-

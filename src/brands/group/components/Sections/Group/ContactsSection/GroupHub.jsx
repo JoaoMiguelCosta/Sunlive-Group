@@ -2,8 +2,10 @@ import styles from "./GroupHub.module.css";
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
-// ✅ Novo: contacts vêm do novo config (pages/home.js)
-import { groupHomePage } from "../../../../config/pages/index.js";
+import { GROUP_CONTACTS } from "../../../../config/index.js";
+
+const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
+const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
 
 export default function GroupHub({ data }) {
   if (!data) return null;
@@ -12,20 +14,15 @@ export default function GroupHub({ data }) {
   const { isOpen, toggle } = useDisclosure(defaultOpen);
   const telHref = (phone || "").replace(/\s+/g, "");
 
-  // Abre automaticamente quando o hash for #unit-<key> (ex.: #unit-group)
   useOpenFromHash({
     routePath: "/sunlive-group",
-    regex: /^#unit-(.+)$/, // "#unit-group" → key="group"
+    regex: /^#unit-(.+)$/,
     items: [{ key: "group" }],
     isOpen: (key) => key === "group" && isOpen,
     toggle: (key) => {
       if (key === "group" && !isOpen) toggle();
     },
   });
-
-  // Ícones do config (fallbacks seguros para não quebrar a UI)
-  const Mail = groupHomePage?.sections?.contacts?.icons?.Mail || (() => null);
-  const Phone = groupHomePage?.sections?.contacts?.icons?.Phone || (() => null);
 
   return (
     <div className={styles.wrap} id="unit-group">
@@ -55,7 +52,7 @@ export default function GroupHub({ data }) {
             aria-label={email ? `Email ${email}` : "Email not available"}
             tabIndex={0}
           >
-            <Mail className={styles.icon} width={20} height={20} />
+            <MailIcon className={styles.icon} width={20} height={20} />
             <span className={email ? "" : styles.muted}>{email || "—"}</span>
           </a>
 
@@ -65,7 +62,7 @@ export default function GroupHub({ data }) {
             aria-label={phone ? `Call ${phone}` : "Phone not available"}
             tabIndex={0}
           >
-            <Phone className={styles.icon} width={20} height={20} />
+            <PhoneIcon className={styles.icon} width={20} height={20} />
             <span className={phone ? "" : styles.muted}>{phone || "—"}</span>
           </a>
         </div>
@@ -73,5 +70,3 @@ export default function GroupHub({ data }) {
     </div>
   );
 }
-
-

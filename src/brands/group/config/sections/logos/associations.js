@@ -5,7 +5,7 @@ import afa from "../../../assets/group-logos/logos/associations/afa.png";
 
 export const associations = {
   id: "associations",
-  title: "ASSOCIATIONS",
+  title: "ASSOCIAÇÕES",
   items: [
     {
       key: "aca",

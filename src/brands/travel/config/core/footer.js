@@ -3,7 +3,7 @@ import {
   makeAcknowledgements,
   makeFooterInfoHeader,
   makePoliciesBar,
-} from "../../../../shared/config/BrandDefault.js";
+} from "../../../../shared/config/index.js";
 
 import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
 
@@ -15,7 +15,7 @@ import { ICONS, FLAGS } from "./resolvedVisuals.js";
 const footer = {
   id: "footer",
 
-  infoHeader: makeFooterInfoHeader("travel", {
+  infoHeader: makeFooterInfoHeader({
     brand: {
       Icon: ICONS.TravelVector,
       title: TRAVEL_COMPANY.brandName,

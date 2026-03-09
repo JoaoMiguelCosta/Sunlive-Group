@@ -1,12 +1,8 @@
-import { withSocialIcons } from "../../../../shared/config/BrandDefault.js";
+import { withSocialIcons } from "../../../../shared/config/index.js";
 
 export const GROUP_SOCIALS = Object.freeze(
   withSocialIcons([
-    {
-      key: "fb",
-      label: "Facebook",
-      href: "https://facebook.com/sunlive07",
-    },
+    { key: "fb", label: "Facebook", href: "https://facebook.com/sunlive07" },
     {
       key: "ig",
       label: "Instagram",

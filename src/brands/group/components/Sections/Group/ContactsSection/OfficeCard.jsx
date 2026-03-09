@@ -22,7 +22,7 @@ export default function OfficeCard({
         aria-label={email ? `Email ${email}` : "Email not available"}
         tabIndex={0}
       >
-        <MailIcon className={styles.icon} />
+        <MailIcon className={styles.icon} width={20} height={20} />
         <span className={email ? "" : styles.muted}>{email || "—"}</span>
       </a>
 
@@ -32,11 +32,9 @@ export default function OfficeCard({
         aria-label={phone ? `Call ${phone}` : "Phone not available"}
         tabIndex={0}
       >
-        <PhoneIcon className={styles.icon} />
+        <PhoneIcon className={styles.icon} width={20} height={20} />
         <span className={phone ? "" : styles.muted}>{phone || "—"}</span>
       </a>
     </div>
   );
 }
-
-

@@ -1,61 +1,40 @@
-import {
-  BUSINESS_UNITS_BASE,
-  BUSINESS_UNIT_CONTACTS_DEFAULT,
-  DEFAULT_GROUP_CONTACTS,
-} from "./constants.js";
-import { CONTACTS_SECTION_TITLE } from "./companyPresets.js";
+import { CONTACTS_SECTION_TITLE, EMPTY_CONTACTS } from "./companyPresets.js";
 
-function toTelHref(phone) {
-  if (!phone) return undefined;
-  return `tel:${String(phone).replace(/\s+/g, "")}`;
-}
-
-function toMailtoHref(email) {
-  if (!email) return undefined;
-  return `mailto:${email}`;
-}
-
-function makeEmailContact(email) {
-  return {
-    label: email ?? null,
-    href: toMailtoHref(email),
-  };
-}
-
-function makePhoneContact(phone) {
-  return {
-    label: phone ?? null,
-    href: toTelHref(phone),
-  };
-}
-
-export function makeBusinessUnits(
-  contactsByKey = BUSINESS_UNIT_CONTACTS_DEFAULT,
-) {
-  return BUSINESS_UNITS_BASE.map((unit) => ({
+export function makeBusinessUnits(units = []) {
+  return units.map((unit) => ({
     ...unit,
-    ...(contactsByKey?.[unit.key] || {}),
+    key: unit.key,
+    label: unit.label ?? unit.key,
+    email: unit.email ?? null,
+    phone: unit.phone ?? null,
+    defaultOpen: Boolean(unit.defaultOpen),
   }));
 }
 
-export function makeFooterContacts(
-  unitKey = "group",
-  {
-    group = DEFAULT_GROUP_CONTACTS,
-    units = BUSINESS_UNIT_CONTACTS_DEFAULT,
-  } = {},
-) {
-  const source = unitKey === "group" ? group : (units?.[unitKey] ?? group);
-
-  const emailValue = source.email ?? group.email ?? null;
-  const phoneValue = source.phone ?? group.phone ?? null;
+export function makeFooterContacts(contacts = {}) {
+  const emailValue = contacts.email ?? null;
+  const phoneValue = contacts.phone ?? null;
+  const extraPhones = Array.isArray(contacts.extraPhones)
+    ? contacts.extraPhones
+    : [];
 
   return {
-    title: CONTACTS_SECTION_TITLE,
-    email: makeEmailContact(emailValue),
-    phone: makePhoneContact(phoneValue),
-    extraPhones: [],
+    ...EMPTY_CONTACTS,
+    title: contacts.title ?? CONTACTS_SECTION_TITLE,
+    email: emailValue
+      ? {
+          label: emailValue,
+          href: `mailto:${emailValue}`,
+          ariaLabel: `Enviar email para ${emailValue}`,
+        }
+      : EMPTY_CONTACTS.email,
+    phone: phoneValue
+      ? {
+          label: phoneValue,
+          href: `tel:${String(phoneValue).replace(/\s+/g, "")}`,
+          ariaLabel: `Ligar para ${phoneValue}`,
+        }
+      : EMPTY_CONTACTS.phone,
+    extraPhones,
   };
 }
-
-export { toTelHref, toMailtoHref };

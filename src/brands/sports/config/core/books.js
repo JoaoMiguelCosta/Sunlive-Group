@@ -1,4 +1,4 @@
-import { makeBook } from "../../../../shared/config/BrandDefault.js";
+import { makeBook } from "../../../../shared/config/index.js";
 
 import aeroEdgePdf from "../../assets/books/aero-edge.pdf";
 import cyclingAcademyPdf from "../../assets/books/cycling-academy.pdf";

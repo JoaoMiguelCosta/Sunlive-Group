@@ -3,7 +3,7 @@ import {
   makeFooterInfoHeader,
   makePoliciesBar,
   makeAcknowledgements,
-} from "../../../../shared/config/BrandDefault.js";
+} from "../../../../shared/config/index.js";
 
 import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
 
@@ -16,7 +16,7 @@ import { HOTEL_COMPANY } from "./company.js";
 const footer = {
   id: "footer",
 
-  infoHeader: makeFooterInfoHeader("hotel", {
+  infoHeader: makeFooterInfoHeader({
     brand: {
       Icon: ICONS.Building2Icon,
       title: HOTEL_COMPANY.brandName,

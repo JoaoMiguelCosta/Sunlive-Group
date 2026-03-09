@@ -8,3 +8,5 @@ export const GROUP_BOOKS = Object.freeze({
     type: "pdf",
   },
 });
+
+export default GROUP_BOOKS;

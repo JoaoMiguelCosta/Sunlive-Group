@@ -1,30 +1,29 @@
 import { IMG_COMMON, POLICIES_LINKS_DEFAULT } from "./constants.js";
-import { makeFooterContacts } from "./contacts.js";
-import { SOCIALS } from "./socials.js";
 import {
+  EMPTY_CONTACTS,
   LOCATION_SECTION_TITLE,
   SOCIALS_SECTION_TITLE,
 } from "./companyPresets.js";
 
-export function makeFooterInfoHeader(unitKey = "group", overrides = {}) {
+export function makeFooterInfoHeader(overrides = {}) {
   const base = {
     brand: {
       Icon: undefined,
-      title: "Sunlive Group",
+      title: "",
       tagline: "",
       about: "",
       aboutIntro: undefined,
-      link: { label: "Sunlive Group", href: "/" },
+      link: { label: "", href: "/" },
     },
     location: {
       title: LOCATION_SECTION_TITLE,
       addressLines: [],
       mapHref: "",
     },
-    contacts: makeFooterContacts(unitKey),
+    contacts: EMPTY_CONTACTS,
     socials: {
       title: SOCIALS_SECTION_TITLE,
-      items: SOCIALS,
+      items: [],
     },
     options: {
       keepOriginalAboutFirstLine: false,
