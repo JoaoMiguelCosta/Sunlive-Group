@@ -14,6 +14,7 @@ export const panoramicRestaurant = {
       { id: "pr-02", src: null, alt: "Restaurante Panorâmico — Foto 2" },
       { id: "pr-03", src: null, alt: "Restaurante Panorâmico — Foto 3" },
     ],
+
     gallerySecondary: {
       fallbackLabel: "Fotos",
       items: [
@@ -33,6 +34,13 @@ export const panoramicRestaurant = {
           alt: "Restaurante Panorâmico — Galeria 2 — Foto 3",
         },
       ],
+      cta: {
+        label: "Contactar para mais informações",
+        href: "/hotel/contactos",
+        ariaLabel: "Ir para a página de contactos para mais informações",
+        external: false,
+        iconKey: null,
+      },
     },
   },
 

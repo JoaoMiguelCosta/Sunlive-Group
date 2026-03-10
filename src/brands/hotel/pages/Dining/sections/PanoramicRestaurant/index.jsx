@@ -2,6 +2,7 @@ import TitlePanoramicRestaurant from "./TitlePanoramicRestaurant";
 import DescriptionPanoramicRestaurant from "./DescriptionPanoramicRestaurant";
 import PanoramicRestaurantPhotoCarousel from "./PanoramicRestaurantPhotoCarousel";
 import PanoramicRestaurantDescriptionSection from "./PanoramicRestaurantDescriptionSection";
+import PanoramicRestaurantSecondaryGallery from "./PanoramicRestaurantSecondaryGallery";
 
 import styles from "./PanoramicRestaurant.module.css";
 
@@ -13,6 +14,7 @@ export default function PanoramicRestaurantSection() {
         <DescriptionPanoramicRestaurant />
         <PanoramicRestaurantPhotoCarousel />
         <PanoramicRestaurantDescriptionSection />
+        <PanoramicRestaurantSecondaryGallery />
       </div>
     </section>
   );

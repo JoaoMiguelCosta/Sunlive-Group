@@ -1,6 +1,11 @@
+import { facilitiesLeisure, wellBeing } from "../sections/facilities/index.js";
+
 const facilities = {
   id: "facilities",
-  sections: {},
+  sections: {
+    facilitiesLeisure,
+    wellBeing,
+  },
 };
 
 export default facilities;
