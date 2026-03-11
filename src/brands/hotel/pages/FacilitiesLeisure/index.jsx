@@ -6,7 +6,7 @@ import styles from "../Home/Home.module.css";
 import FacilitiesLeisureSection from "./sections/FacilitiesLeisure/index.jsx";
 import WellBeingSection from "./sections/WeelBeing/index.jsx";
 import MobilitySection from "./sections/Mobility/index.jsx";
-import AccessibilitySection from "./sections/Accessibility/index.jsx";
+import AccessibilitySection from "./sections/accessibility/index.jsx";
 import ComplementaryServicesSection from "./sections/ComplementaryServices/index.jsx";
 import ReceptionSupportSection from "./sections/ReceptionSupport/index.jsx";
 

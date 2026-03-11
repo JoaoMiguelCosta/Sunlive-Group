@@ -1,15 +1,23 @@
+import TitleMobility from "./TitleMobility.jsx";
+import DescriptionMobility from "./DescriptionMobility.jsx";
+import MobilityBikesIntro from "./MobilityBikesIntro.jsx";
+import MobilityBikesHighlights from "./MobilityBikesHighlights.jsx";
+import MobilityParkingIntro from "./MobilityParkingIntro.jsx";
+import MobilityParkingHighlights from "./MobilityParkingHighlights.jsx";
+
+import styles from "./Mobility.module.css";
+
 export default function MobilitySection() {
   return (
-    <section
-      id="facilities-mobility"
-      style={{
-        padding: "24px 0",
-        borderTop: "1px solid rgba(255,255,255,0.12)",
-        scrollMarginTop: "120px",
-      }}
-    >
-      <h2>Mobilidade</h2>
-      <p>Conteúdo em construção.</p>
+    <section id="facilities-mobility" className={styles.section}>
+      <TitleMobility />
+      <DescriptionMobility />
+
+      <MobilityBikesIntro />
+      <MobilityBikesHighlights />
+
+      <MobilityParkingIntro />
+      <MobilityParkingHighlights />
     </section>
   );
 }

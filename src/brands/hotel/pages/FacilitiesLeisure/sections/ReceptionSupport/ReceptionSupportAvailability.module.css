@@ -1,0 +1,82 @@
+.block {
+    width: min(100% - 2rem, 1560px);
+    margin-inline: auto;
+    margin-top: clamp(1.5rem, 2.8vw, 2.2rem);
+}
+
+.card {
+    overflow: hidden;
+    border: 1px solid rgba(199, 134, 21, 0.95);
+    border-radius: 2.4rem;
+    background: #02102a;
+}
+
+.media {
+    display: flex;
+    align-items: stretch;
+}
+
+.image,
+.imagePlaceholder {
+    width: 100%;
+    min-height: 320px;
+}
+
+.image {
+    display: block;
+    object-fit: cover;
+}
+
+.imagePlaceholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f71410;
+    color: #ffffff;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 500;
+}
+
+.captionBar {
+    display: flex;
+    align-items: center;
+    min-height: 74px;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(199, 134, 21, 0.95);
+    background:
+        linear-gradient(90deg,
+            rgba(17, 83, 105, 0.82),
+            rgba(11, 22, 35, 0.96) 78%);
+}
+
+.caption {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.96);
+    font-size: clamp(1.1rem, 1.45vw, 1.25rem);
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+@media (max-width: 640px) {
+    .block {
+        width: min(100% - 1rem, 1560px);
+    }
+
+    .card {
+        border-radius: 2rem;
+    }
+
+    .image,
+    .imagePlaceholder {
+        min-height: 240px;
+    }
+
+    .captionBar {
+        min-height: 64px;
+        padding: 0.9rem 1rem;
+    }
+
+    .caption {
+        font-size: 1rem;
+    }
+}

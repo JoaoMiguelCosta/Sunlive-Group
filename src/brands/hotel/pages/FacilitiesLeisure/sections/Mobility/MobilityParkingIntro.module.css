@@ -1,0 +1,89 @@
+.block {
+    width: min(100% - 2rem, 1560px);
+    margin-inline: auto;
+    margin-top: clamp(1.5rem, 2.8vw, 2.2rem);
+}
+
+.row,
+.descriptionRow {
+    border-left: 1px solid rgba(199, 134, 21, 0.95);
+    border-right: 1px solid rgba(199, 134, 21, 0.95);
+    border-bottom: 1px solid rgba(199, 134, 21, 0.95);
+    background: #02102a;
+}
+
+.row {
+    padding: 0.75rem 1rem;
+}
+
+.descriptionRow {
+    padding: 0.85rem 1rem;
+}
+
+.line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.96);
+    font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+    line-height: 1.35;
+    text-align: center;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0.15rem 0.8rem;
+    border-radius: 999px;
+    background: #b37205;
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.separator {
+    color: #c78615;
+    font-weight: 700;
+}
+
+.textStrong {
+    font-weight: 700;
+}
+
+.description {
+    max-width: 78ch;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.96);
+    font-size: clamp(1.05rem, 1.65vw, 1.15rem);
+    line-height: 1.35;
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+    .block {
+        width: min(100% - 1rem, 1560px);
+    }
+
+    .row {
+        padding: 0.85rem 0.85rem;
+    }
+
+    .descriptionRow {
+        padding: 1rem 0.85rem;
+    }
+
+    .line,
+    .description {
+        font-size: 1rem;
+    }
+
+    .badge {
+        min-height: 32px;
+        padding-inline: 0.7rem;
+    }
+}

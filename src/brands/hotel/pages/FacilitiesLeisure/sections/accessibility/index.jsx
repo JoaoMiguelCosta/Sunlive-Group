@@ -1,16 +1,15 @@
+import TitleAccessibility from "./TitleAccessibility.jsx";
+import DescriptionAccessibility from "./DescriptionAccessibility.jsx";
+import AccessibilitySupport from "./AccessibilitySupport.jsx";
+
 import styles from "./Accessibility.module.css";
 
 export default function AccessibilitySection() {
   return (
-    <section
-      id="facilities-accessibility"
-      className={styles.section}
-      aria-label="Acessibilidade"
-    >
-      <div className={styles.inner}>
-        <h2 className={styles.title}>Acessibilidade</h2>
-        <p className={styles.text}>Conteúdo em construção.</p>
-      </div>
+    <section id="facilities-accessibility" className={styles.section}>
+      <TitleAccessibility />
+      <DescriptionAccessibility />
+      <AccessibilitySupport />
     </section>
   );
 }

@@ -1,0 +1,131 @@
+.card {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    min-height: 106px;
+    border: 1px solid rgba(199, 134, 21, 0.95);
+    background: #02102a;
+    overflow: hidden;
+}
+
+.iconColumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 0.5rem;
+    background: #b37205;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.iconSlot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgba(255, 255, 255, 0.16),
+            rgba(255, 255, 255, 0) 55%),
+        rgba(20, 24, 33, 0.92);
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.iconSlot :global(svg) {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+.iconPlaceholder {
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.topRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 52px;
+    padding: 0.8rem 0.9rem;
+    background: #b37205;
+}
+
+.title {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.25rem, 1.65vw, 1.75rem);
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+    padding: 0.15rem 0.7rem;
+    border-radius: 999px;
+    background:
+        linear-gradient(90deg, rgba(17, 83, 105, 0.88), rgba(11, 22, 35, 0.96));
+    color: rgba(255, 255, 255, 0.96);
+    font-size: 0.9rem;
+    line-height: 1;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.bottomRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 0.9rem;
+    border-top: 1px solid rgba(199, 134, 21, 0.95);
+    background:
+        linear-gradient(90deg,
+            rgba(17, 83, 105, 0.82),
+            rgba(11, 22, 35, 0.96) 78%);
+}
+
+.description {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.96);
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    line-height: 1.25;
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+    .card {
+        grid-template-columns: 66px 1fr;
+        min-height: 98px;
+    }
+
+    .iconSlot {
+        width: 42px;
+        height: 42px;
+    }
+
+    .title {
+        font-size: 1.15rem;
+    }
+
+    .badge {
+        min-height: 30px;
+        font-size: 0.85rem;
+    }
+
+    .description {
+        font-size: 0.98rem;
+    }
+}
