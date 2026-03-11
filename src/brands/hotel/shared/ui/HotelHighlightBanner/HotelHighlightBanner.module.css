@@ -1,0 +1,92 @@
+.banner {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    overflow: hidden;
+    border: 3px solid var(--sl-gold-400, #b87900);
+    background:
+        linear-gradient(90deg,
+            rgba(7, 80, 102, 0.96) 0%,
+            rgba(10, 61, 80, 0.96) 35%,
+            rgba(13, 38, 53, 0.96) 68%,
+            rgba(10, 16, 24, 0.98) 100%);
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at center,
+            rgba(54, 170, 214, 0.16) 0%,
+            rgba(54, 170, 214, 0.08) 28%,
+            rgba(54, 170, 214, 0.02) 48%,
+            transparent 70%);
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+    width: min(100%, var(--sl-container-xl, 1280px));
+    margin-inline: auto;
+    padding-block: clamp(1.5rem, 3vw, 2.3rem);
+    padding-inline: clamp(1rem, 3vw, 2rem);
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    color: #f3f4f6;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.description {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #f3f4f6;
+    text-align: center;
+    font-size: clamp(1.1rem, 2vw, 1.8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    color: var(--sl-gold-400, #b87900);
+}
+
+.centered .description {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        border-width: 2px;
+    }
+
+    .inner {
+        padding-block: 1.35rem;
+        padding-inline: 1rem;
+    }
+
+    .description {
+        line-height: 1.25;
+    }
+}

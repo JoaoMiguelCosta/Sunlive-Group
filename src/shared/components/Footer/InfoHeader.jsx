@@ -19,6 +19,7 @@ function withBrandEmph(text, brandName) {
   const rx = new RegExp(`(${escapeRegExp(brandName)})`);
   const parts = String(text).split(rx);
   let highlighted = false;
+
   return parts.map((seg, i) => {
     if (!highlighted && seg === brandName) {
       highlighted = true;
@@ -28,6 +29,7 @@ function withBrandEmph(text, brandName) {
         </span>
       );
     }
+
     return <span key={i}>{seg}</span>;
   });
 }
@@ -59,12 +61,15 @@ export default function InfoHeader({ data }) {
       ? withBrandEmph(customIntro, brandName)
       : genericIntro;
 
-  // ========= Telefones (reciclável) =========
-  // Junta o telefone principal + quaisquer telefones extra num único array
+  // Telefones: principal + extras opcionais
   const phoneItems = [];
-  if (contacts?.phone) phoneItems.push(contacts.phone);
-  if (Array.isArray(contacts?.phones)) {
-    phoneItems.push(...contacts.phones);
+
+  if (contacts?.phone?.label || contacts?.phone?.href) {
+    phoneItems.push(contacts.phone);
+  }
+
+  if (Array.isArray(contacts?.extraPhones)) {
+    phoneItems.push(...contacts.extraPhones);
   }
 
   return (
@@ -147,7 +152,11 @@ export default function InfoHeader({ data }) {
                 <MailIcon aria-hidden="true" />
               </span>
               {contacts?.email?.href ? (
-                <a href={contacts.email.href} className={styles.link}>
+                <a
+                  href={contacts.email.href}
+                  className={styles.link}
+                  aria-label={contacts.email.ariaLabel}
+                >
                   {contacts.email.label}
                 </a>
               ) : (
@@ -155,15 +164,19 @@ export default function InfoHeader({ data }) {
               )}
             </div>
 
-            {/* Telefones (1 ou vários) */}
+            {/* Telefones */}
             {phoneItems.length > 0 ? (
               phoneItems.map((phone, idx) => (
-                <div className={styles.contactRow} key={phone.key || idx}>
+                <div className={styles.contactRow} key={phone?.href || idx}>
                   <span className={styles.cIcon}>
                     <PhoneIcon aria-hidden="true" />
                   </span>
                   {phone?.href ? (
-                    <a href={phone.href} className={styles.link}>
+                    <a
+                      href={phone.href}
+                      className={styles.link}
+                      aria-label={phone.ariaLabel}
+                    >
                       {phone.label}
                     </a>
                   ) : (

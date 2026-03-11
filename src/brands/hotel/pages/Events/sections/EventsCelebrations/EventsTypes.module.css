@@ -1,0 +1,33 @@
+.block {
+    width: 100%;
+    display: grid;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+    align-items: start;
+}
+
+.offerPanelWrap {
+    width: min(100%, 1120px);
+ 
+}
+
+.cardActive {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1200px) {
+    .cardsGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .cardsGrid {
+        grid-template-columns: 1fr;
+    }
+}

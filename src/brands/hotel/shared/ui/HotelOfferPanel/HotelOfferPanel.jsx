@@ -1,4 +1,3 @@
-// src/shared/components/Hotel/HotelOfferPanel/HotelOfferPanel.jsx
 import styles from "./HotelOfferPanel.module.css";
 
 /**
@@ -32,7 +31,7 @@ export default function HotelOfferPanel({
     : { type: "button", onClick: onCtaClick, disabled: !onCtaClick };
 
   return (
-    <section className={wrapClass} aria-label={title || "Oferta"}>
+    <div className={wrapClass} aria-label={title || "Oferta"}>
       {title ? <h3 className={styles.hTitle}>{title}</h3> : null}
 
       {Array.isArray(items) && items.length ? (
@@ -86,6 +85,6 @@ export default function HotelOfferPanel({
           </CtaTag>
         </div>
       ) : null}
-    </section>
+    </div>
   );
 }
