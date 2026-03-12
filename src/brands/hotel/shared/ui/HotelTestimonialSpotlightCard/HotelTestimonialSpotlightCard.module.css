@@ -1,0 +1,211 @@
+.card {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 100%;
+    background: var(--sl-accent-950, #02102a);
+    border: 4px solid var(--sl-gold-400, #c78615);
+    overflow: hidden;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 118px 1fr;
+    align-items: center;
+    gap: 0.95rem;
+    min-height: 122px;
+    padding: 0.35rem 1rem 0.35rem 0.7rem;
+    background: var(--sl-gold-500, #a16207);
+}
+
+.iconWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconCircle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12), transparent 55%),
+        rgba(28, 23, 28, 0.72);
+    color: var(--sl-neutral-0, #ffffff);
+    font-size: 2.3rem;
+    line-height: 1;
+}
+
+.headerContent {
+    min-width: 0;
+}
+
+.organisation {
+    margin: 0;
+    font-size: clamp(1.3rem, 1.55vw, 2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    color: var(--sl-neutral-0, #ffffff);
+}
+
+.context {
+    margin: 0.32rem 0 0;
+    font-size: clamp(1rem, 1.2vw, 1.55rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--sl-neutral-0, #ffffff);
+}
+
+.categoryRow {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.42rem;
+}
+
+.inlineIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--sl-neutral-0, #ffffff);
+}
+
+.category {
+    font-size: clamp(0.98rem, 1.12vw, 1.35rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--sl-neutral-0, #ffffff);
+}
+
+.ratingBand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 62px;
+    gap: 1rem;
+    padding: 0.55rem 0.8rem;
+    border-top: 3px solid var(--sl-gold-400, #c78615);
+    border-bottom: 3px solid var(--sl-gold-400, #c78615);
+    background: var(--sl-accent-950, #02102a);
+}
+
+.quoteIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.9rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--sl-neutral-0, #ffffff);
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.28rem;
+    flex-wrap: wrap;
+}
+
+.star,
+.starEmpty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.8rem, 1.95vw, 2.6rem);
+    line-height: 1;
+}
+
+.star {
+    color: var(--sl-gold-300, #f4cf63);
+}
+
+.starEmpty {
+    color: rgba(244, 207, 99, 0.28);
+}
+
+.quoteArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    padding: 0.9rem 1rem;
+    border-bottom: 3px solid var(--sl-gold-400, #c78615);
+    background: var(--sl-accent-950, #02102a);
+}
+
+.quote {
+    margin: 0;
+    max-width: 24ch;
+    text-align: center;
+    font-size: clamp(1.12rem, 1.42vw, 1.8rem);
+    font-weight: 500;
+    line-height: 1.12;
+    color: var(--sl-neutral-0, #ffffff);
+    text-wrap: balance;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    padding: 0.35rem 0.4rem;
+    background: var(--sl-accent-950, #02102a);
+}
+
+.footerBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 38px;
+    padding: 0.18rem 0.7rem;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.dateLabel {
+    font-size: clamp(0.98rem, 1.08vw, 1.28rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--sl-neutral-0, #ffffff);
+}
+
+@media (max-width: 1280px) {
+    .header {
+        grid-template-columns: 98px 1fr;
+    }
+
+    .iconCircle {
+        width: 66px;
+        height: 66px;
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 860px) {
+    .header {
+        grid-template-columns: 84px 1fr;
+        min-height: 108px;
+        padding-inline: 0.7rem;
+    }
+
+    .iconCircle {
+        width: 58px;
+        height: 58px;
+        font-size: 1.8rem;
+    }
+
+    .ratingBand {
+        min-height: 56px;
+    }
+
+    .quoteIcon {
+        font-size: 2.4rem;
+    }
+
+    .quoteArea {
+        min-height: 122px;
+    }
+}

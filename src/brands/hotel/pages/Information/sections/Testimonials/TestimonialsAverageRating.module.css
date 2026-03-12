@@ -1,0 +1,70 @@
+.card {
+    width: min(100%, 1120px);
+    margin: clamp(1.25rem, 3vw, 2rem) auto 0;
+    padding:
+        clamp(1.25rem, 2.8vw, 1.8rem) clamp(1rem, 3vw, 2rem);
+    border: 4px solid var(--sl-gold-400, #c78615);
+    background: var(--sl-accent-950, #02102a);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.75rem, 1.8vw, 1.2rem);
+    text-align: center;
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.45rem, 1vw, 0.9rem);
+    flex-wrap: wrap;
+}
+
+.star,
+.starEmpty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1;
+}
+
+.star {
+    color: var(--sl-gold-300, #f4cf63);
+}
+
+.starEmpty {
+    color: rgba(244, 207, 99, 0.28);
+}
+
+.rating {
+    margin: 0;
+    font-size: clamp(1.7rem, 3.2vw, 2.35rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--sl-gold-400, #c78615);
+}
+
+.supportingText {
+    margin: 0;
+    max-width: 26ch;
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--sl-neutral-0, #ffffff);
+}
+
+@media (max-width: 640px) {
+    .card {
+        border-width: 3px;
+    }
+
+    .rating {
+        max-width: 12ch;
+    }
+
+    .supportingText {
+        max-width: 20ch;
+    }
+}
