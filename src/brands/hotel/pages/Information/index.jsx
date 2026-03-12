@@ -5,6 +5,7 @@ import styles from "../Home/Home.module.css";
 
 import TestimonialsSection from "./sections/Testimonials/index.jsx";
 import LocationSection from "./sections/Location/index.jsx";
+import ContactsSection from "./sections/Contacts/index.jsx";
 
 export default function InformationPageHotel() {
   return (
@@ -17,6 +18,7 @@ export default function InformationPageHotel() {
       >
         <TestimonialsSection />
         <LocationSection />
+        <ContactsSection />
       </main>
     </div>
   );

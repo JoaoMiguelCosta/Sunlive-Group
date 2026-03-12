@@ -1,16 +1,24 @@
-// src/brands/hotel/pages/Sustainability/sections/SustainabilityCommitment/index.jsx
+import SustainabilityTitle from "./SustainabilityTitle.jsx";
+import SustainabilityDescription from "./SustainabilityDescription.jsx";
+import SustainabilityHighlightBanner from "./SustainabilityHighlightBanner.jsx";
+import SustainabilityPracticesGrid from "./SustainabilityPracticesGrid.jsx";
+
 import styles from "./SustainabilityCommitment.module.css";
 
 export default function SustainabilityCommitmentSection() {
+  const titleId = "sustainability-commitment-title";
+
   return (
     <section
+      id="sustainability-commitment"
       className={styles.section}
-      aria-label="Compromisso com a Sustentabilidade"
+      aria-labelledby={titleId}
     >
-      <div className={styles.inner}>
-        <h2 className={styles.title}>Compromisso com a Sustentabilidade</h2>
-        <p className={styles.text}>Conteúdo em construção.</p>
-      </div>
+      <SustainabilityTitle titleId={titleId} />
+      <SustainabilityDescription />
+      <SustainabilityHighlightBanner />
+
+      <SustainabilityPracticesGrid />
     </section>
   );
 }

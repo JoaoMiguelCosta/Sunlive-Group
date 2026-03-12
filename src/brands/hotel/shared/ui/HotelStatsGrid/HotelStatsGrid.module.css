@@ -1,5 +1,3 @@
-/* src/brands/hotel/pages/home/sections/Sustainability&Impact/HotelSustainabilityStats.module.css */
-
 .grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));

@@ -1,17 +1,21 @@
-// src/brands/hotel/pages/Sustainability/sections/EnvironmentalImpact/index.jsx
+import EnvironmentalImpactTitle from "./EnvironmentalImpactTitle.jsx";
+import EnvironmentalImpactDescription from "./EnvironmentalImpactDescription.jsx";
+import EnvironmentalImpactStats from "./EnvironmentalImpactStats.jsx";
+
 import styles from "./EnvironmentalImpact.module.css";
 
 export default function EnvironmentalImpactSection() {
+  const titleId = "sustentabilidade-impacto-title";
+
   return (
     <section
       id="sustentabilidade-impacto"
       className={styles.section}
-      aria-label="O nosso impacto ambiental"
+      aria-labelledby={titleId}
     >
-      <div className={styles.inner}>
-        <h2 className={styles.title}>O nosso impacto ambiental</h2>
-        <p className={styles.text}>Conteúdo em construção.</p>
-      </div>
+      <EnvironmentalImpactTitle titleId={titleId} />
+      <EnvironmentalImpactDescription />
+      <EnvironmentalImpactStats />
     </section>
   );
 }

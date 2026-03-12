@@ -1,17 +1,21 @@
-// src/brands/hotel/pages/Sustainability/sections/FutureGoals/index.jsx
+import FutureGoalsTitle from "./FutureGoalsTitle.jsx";
+import FutureGoalsDescription from "./FutureGoalsDescription.jsx";
+import FutureGoalsCards from "./FutureGoalsCards.jsx";
+
 import styles from "./FutureGoals.module.css";
 
 export default function FutureGoalsSection() {
+  const titleId = "sustentabilidade-objetivos";
+
   return (
     <section
-      id="sustentabilidade-objetivos"
+      id="sustentabilidade-objetivos-futuros"
       className={styles.section}
-      aria-label="Objetivos futuros"
+      aria-labelledby={titleId}
     >
-      <div className={styles.inner}>
-        <h2 className={styles.title}>Objetivos futuros</h2>
-        <p className={styles.text}>Conteúdo em construção.</p>
-      </div>
+      <FutureGoalsTitle titleId={titleId} />
+      <FutureGoalsDescription />
+      <FutureGoalsCards />
     </section>
   );
 }

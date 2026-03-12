@@ -1,6 +1,18 @@
+import {
+  sustainabilityCommitment,
+  howToParticipate,
+  environmentalImpact,
+  futureGoals,
+} from "../sections/sustainability/index.js";
+
 const sustainability = {
   id: "sustainability",
-  sections: {},
+  sections: {
+    sustainabilityCommitment,
+    howToParticipate,
+    environmentalImpact,
+    futureGoals,
+  },
 };
 
 export default sustainability;

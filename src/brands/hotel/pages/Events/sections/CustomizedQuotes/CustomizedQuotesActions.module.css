@@ -6,20 +6,22 @@
 .includesPanel {
     width: 100%;
     padding: clamp(1.5rem, 3vw, 2.5rem);
-    border: 2px solid var(--sl-gold-400, #b87900);
+    border: 1px solid rgba(199, 134, 21, 0.76);
     background:
-        radial-gradient(900px 320px at 20% 50%,
-            rgba(37, 142, 170, 0.28),
-            transparent 58%),
+        radial-gradient(900px 320px at 20% 50%, rgba(230, 200, 147, 0.14), transparent 58%),
+        radial-gradient(700px 220px at 80% 0%, rgba(230, 200, 147, 0.08), transparent 60%),
         linear-gradient(90deg,
-            rgba(8, 68, 84, 0.96) 0%,
-            rgba(7, 24, 48, 0.96) 55%,
-            rgba(19, 19, 19, 0.96) 100%);
+            rgba(70, 40, 14, 0.98) 0%,
+            rgba(52, 28, 10, 0.98) 55%,
+            rgba(38, 23, 11, 1) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 18px 40px rgba(0, 0, 0, 0.22);
 }
 
 .includesTitle {
     margin: 0 0 clamp(1.5rem, 3vw, 2rem);
-    color: var(--sl-gold-400, #b87900);
+    color: #d7a94b;
     text-align: center;
     font-size: clamp(1.5rem, 2.4vw, 2.25rem);
     font-weight: 700;
@@ -38,16 +40,17 @@
     align-items: center;
     gap: 0.9rem;
     padding: 0.8rem 1.1rem;
-    border: 2px solid var(--sl-gold-400, #b87900);
+    border: 1px solid rgba(199, 134, 21, 0.72);
     border-radius: 999px;
     background:
-        radial-gradient(500px 120px at 10% 50%,
-            rgba(37, 142, 170, 0.22),
-            transparent 55%),
+        radial-gradient(500px 120px at 10% 50%, rgba(230, 200, 147, 0.1), transparent 55%),
         linear-gradient(90deg,
-            rgba(7, 62, 80, 0.95) 0%,
-            rgba(7, 18, 42, 0.96) 55%,
-            rgba(18, 18, 18, 0.96) 100%);
+            rgba(86, 57, 23, 0.96) 0%,
+            rgba(52, 30, 10, 0.98) 55%,
+            rgba(38, 23, 11, 1) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.03),
+        0 8px 18px rgba(0, 0, 0, 0.14);
 }
 
 .includeIcon {
@@ -55,7 +58,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--sl-gold-400, #b87900);
+    color: #d7a94b;
 }
 
 .iconPlaceholder {
@@ -68,7 +71,7 @@
 
 .includeLabel {
     min-width: 0;
-    color: #f5f7fa;
+    color: #f5ede3;
     font-size: clamp(1rem, 1.5vw, 1.2rem);
     font-weight: 500;
     line-height: 1.2;
@@ -77,23 +80,25 @@
 .callout {
     width: 100%;
     padding: clamp(1.3rem, 2.5vw, 2rem);
-    border: 2px solid var(--sl-gold-400, #b87900);
+    border: 1px solid rgba(199, 134, 21, 0.76);
     background:
-        radial-gradient(900px 220px at 20% 50%,
-            rgba(37, 142, 170, 0.28),
-            transparent 58%),
+        radial-gradient(900px 220px at 20% 50%, rgba(230, 200, 147, 0.14), transparent 58%),
         linear-gradient(90deg,
-            rgba(8, 68, 84, 0.96) 0%,
-            rgba(7, 24, 48, 0.96) 55%,
-            rgba(19, 19, 19, 0.96) 100%);
+            rgba(70, 40, 14, 0.98) 0%,
+            rgba(52, 28, 10, 0.98) 55%,
+            rgba(38, 23, 11, 1) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 14px 30px rgba(0, 0, 0, 0.18);
 }
 
 .calloutText {
     margin: 0;
-    color: #f5f7fa;
+    color: #f5ede3;
     text-align: center;
     font-size: clamp(1.15rem, 2vw, 1.8rem);
     line-height: 1.25;
+    text-wrap: balance;
 }
 
 .actions {
@@ -110,18 +115,18 @@
     gap: 0.85rem;
     min-height: 76px;
     padding: 0.9rem 1.5rem;
-    border: 3px solid var(--sl-gold-400, #b87900);
+    border: 1px solid rgba(199, 134, 21, 0.78);
     border-radius: 999px;
     text-decoration: none;
     background:
-        radial-gradient(500px 140px at 15% 50%,
-            rgba(37, 142, 170, 0.24),
-            transparent 58%),
+        radial-gradient(500px 140px at 15% 50%, rgba(230, 200, 147, 0.12), transparent 58%),
         linear-gradient(90deg,
-            rgba(8, 68, 84, 0.96) 0%,
-            rgba(7, 24, 48, 0.96) 55%,
-            rgba(19, 19, 19, 0.96) 100%);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+            rgba(92, 58, 20, 0.96) 0%,
+            rgba(58, 33, 12, 0.98) 55%,
+            rgba(38, 23, 11, 1) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 12px 28px rgba(0, 0, 0, 0.22);
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -130,7 +135,10 @@
 
 .actionButton:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.26);
+    border-color: rgba(215, 169, 75, 0.92);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 16px 34px rgba(0, 0, 0, 0.26);
 }
 
 .actionIcon {
@@ -138,7 +146,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #f5f7fa;
+    color: #f5ede3;
 }
 
 .actionIconPlaceholder {
@@ -150,7 +158,7 @@
 }
 
 .actionLabel {
-    color: #f5f7fa;
+    color: #f5ede3;
     font-size: clamp(1.25rem, 2vw, 1.85rem);
     font-weight: 600;
     line-height: 1.1;

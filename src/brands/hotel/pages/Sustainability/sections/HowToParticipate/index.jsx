@@ -1,17 +1,23 @@
-// src/brands/hotel/pages/Sustainability/sections/HowToParticipate/index.jsx
+import HowToParticipateTitle from "./HowToParticipateTitle.jsx";
+import HowToParticipateDescription from "./HowToParticipateDescription.jsx";
+import HowToParticipateCards from "./HowToParticipateCards.jsx";
+import HowToParticipateClosingQuote from "./HowToParticipateClosingQuote.jsx";
+
 import styles from "./HowToParticipate.module.css";
 
 export default function HowToParticipateSection() {
+  const titleId = "sustentabilidade-participar-title";
+
   return (
     <section
       id="sustentabilidade-participar"
       className={styles.section}
-      aria-label="Como podes participar"
+      aria-labelledby={titleId}
     >
-      <div className={styles.inner}>
-        <h2 className={styles.title}>Como pode participar</h2>
-        <p className={styles.text}>Conteúdo em construção.</p>
-      </div>
+      <HowToParticipateTitle titleId={titleId} />
+      <HowToParticipateDescription />
+      <HowToParticipateCards />
+      <HowToParticipateClosingQuote />
     </section>
   );
 }

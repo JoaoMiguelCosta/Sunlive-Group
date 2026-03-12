@@ -174,6 +174,10 @@ export const HOTEL_PRIMARY_NAV_ITEMS = Object.freeze([
         label: "Localização",
         href: `${HOTEL_PAGE_PATHS.information}#info-location`,
       },
+      {
+        label: "Contactos",
+        href: `${HOTEL_PAGE_PATHS.information}#info-contacts`,
+      },
     ],
   },
 ]);
