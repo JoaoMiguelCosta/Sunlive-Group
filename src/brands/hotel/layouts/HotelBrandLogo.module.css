@@ -1,0 +1,23 @@
+.logoLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.logoImage {
+    display: block;
+    height: clamp(76px, 5.55vw, 94px);
+    width: auto;
+    max-width: 490px;
+    object-fit: contain;
+}
+
+@media (max-width: 980px) {
+    .logoImage {
+        height: clamp(60px, 9.6vw, 76px);
+        max-width: 400px;
+    }
+}

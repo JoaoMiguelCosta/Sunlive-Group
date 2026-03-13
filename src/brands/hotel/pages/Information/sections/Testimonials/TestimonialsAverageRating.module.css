@@ -1,16 +1,23 @@
 .card {
     width: min(100%, 1120px);
     margin: clamp(1.25rem, 3vw, 2rem) auto 0;
-    padding:
-        clamp(1.25rem, 2.8vw, 1.8rem) clamp(1rem, 3vw, 2rem);
-    border: 4px solid var(--sl-gold-400, #c78615);
-    background: var(--sl-accent-950, #02102a);
+    padding: clamp(1.25rem, 2.8vw, 1.8rem) clamp(1rem, 3vw, 2rem);
+    border: 1px solid rgba(214, 170, 78, 0.46);
+    border-radius: 28px;
+    background:
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
+        linear-gradient(180deg, rgba(255, 248, 230, 0.03), rgba(255, 248, 230, 0)),
+        #26170b;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: clamp(0.75rem, 1.8vw, 1.2rem);
     text-align: center;
+    box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 248, 230, 0.05);
 }
 
 .stars {
@@ -31,11 +38,12 @@
 }
 
 .star {
-    color: var(--sl-gold-300, #f4cf63);
+    color: #f4cf63;
+    text-shadow: 0 0 18px rgba(244, 207, 99, 0.18);
 }
 
 .starEmpty {
-    color: rgba(244, 207, 99, 0.28);
+    color: rgba(244, 207, 99, 0.24);
 }
 
 .rating {
@@ -43,7 +51,7 @@
     font-size: clamp(1.7rem, 3.2vw, 2.35rem);
     font-weight: 800;
     line-height: 1.15;
-    color: var(--sl-gold-400, #c78615);
+    color: #e0b85d;
 }
 
 .supportingText {
@@ -52,12 +60,12 @@
     font-size: clamp(1.1rem, 2vw, 1.6rem);
     font-weight: 500;
     line-height: 1.3;
-    color: var(--sl-neutral-0, #ffffff);
+    color: #f8f1e4;
 }
 
 @media (max-width: 640px) {
     .card {
-        border-width: 3px;
+        border-radius: 22px;
     }
 
     .rating {

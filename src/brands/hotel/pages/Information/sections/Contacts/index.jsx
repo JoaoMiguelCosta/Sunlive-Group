@@ -1,5 +1,9 @@
 import styles from "./Contacts.module.css";
 
+import TitleContacts from "./TitleContacts.jsx";
+import DescriptionContacts from "./DescriptionContacts.jsx";
+import ContactDetails from "./ContactDetails.jsx";
+
 export default function ContactsSection() {
   return (
     <section
@@ -8,8 +12,9 @@ export default function ContactsSection() {
       aria-label="Contactos"
     >
       <div className={styles.inner}>
-        <h2 className={styles.title}>Contactos</h2>
-        <p className={styles.text}>Conteúdo em construção.</p>
+        <TitleContacts />
+        <DescriptionContacts />
+        <ContactDetails />
       </div>
     </section>
   );

@@ -1,11 +1,15 @@
-import { testimonials } from "../sections/information/testimonials.js";
-import { location } from "../sections/information/location.js";
+import {
+  testimonials,
+  location,
+  contacts,
+} from "../sections/information/index.js";
 
 const information = {
   id: "information",
   sections: {
     testimonials,
     location,
+    contacts,
   },
 };
 

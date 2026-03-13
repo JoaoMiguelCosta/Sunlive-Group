@@ -1,28 +1,37 @@
 /* =========================================================
    HotelShell — Layout base da brand Hotel
-   (UtilityBar + PrimaryNav + main (Outlet) + Footer)
    ========================================================= */
 
 :root {
-    /* recuo lateral coerente em rem (12px → 0.75rem | 40px → 2.5rem) */
     --section-inset: clamp(0.75rem, 4vw, 2.5rem);
-
-    /* 1360px / 16 = 85rem — max content width global */
     --sl-container-lg: 85rem;
 }
 
 .shell {
     position: relative;
-    width: 100%;
+    inline-size: 100%;
     background: transparent;
     color: var(--sl-platinum-050, #e7ebf3);
 }
 
-/* main é o wrapper do <Outlet /> */
-.main {
-    width: 100%;
+.navWrap {
+    position: relative;
+    z-index: 40;
+    padding-block-start: 0.35rem;
+}
 
-    /* garante que o conteúdo do Outlet está centrado
-       e respeita o mesmo content width da Home / restantes páginas */
+.main {
+    inline-size: 100%;
     display: block;
+    padding-block-start: clamp(0.6rem, 1.4vw, 1rem);
+}
+
+@media (max-width: 768px) {
+    .navWrap {
+        padding-block-start: 0.2rem;
+    }
+
+    .main {
+        padding-block-start: 0.45rem;
+    }
 }

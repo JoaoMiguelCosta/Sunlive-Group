@@ -1,4 +1,3 @@
-// src/brands/hotel/components/Home/PlanYourStay/index.jsx
 import hotelBrand from "../../../../config/index.js";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 import styles from "./PlanYourStay.module.css";

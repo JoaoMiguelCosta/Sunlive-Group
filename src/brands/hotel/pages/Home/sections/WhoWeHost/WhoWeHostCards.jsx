@@ -1,4 +1,3 @@
-// src/brands/hotel/components/Home/WhoWeHost/WhoWeHostCards.jsx
 import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import HotelWhoWeHostCard from "../../../../shared/ui/HotelWhoWeHostCard/HotelWhoWeHostCard.jsx";
 import styles from "./WhoWeHostCards.module.css";

@@ -1,4 +1,3 @@
-// src/shared/components/FooterGroup/InfoHeader.jsx
 import styles from "./InfoHeader.module.css";
 import {
   GlobeIcon,
@@ -8,12 +7,10 @@ import {
   PhoneIcon,
 } from "../../ui/icons/";
 
-/** Escapa texto para regex */
 function escapeRegExp(s = "") {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-/** Realça a PRIMEIRA ocorrência de brandName dentro de `text` */
 function withBrandEmph(text, brandName) {
   if (!text || !brandName) return text;
   const rx = new RegExp(`(${escapeRegExp(brandName)})`);
@@ -61,7 +58,6 @@ export default function InfoHeader({ data }) {
       ? withBrandEmph(customIntro, brandName)
       : genericIntro;
 
-  // Telefones: principal + extras opcionais
   const phoneItems = [];
 
   if (contacts?.phone?.label || contacts?.phone?.href) {
@@ -75,7 +71,6 @@ export default function InfoHeader({ data }) {
   return (
     <section className={styles.strip} aria-label="Footer — Company Info">
       <div className={styles.inner}>
-        {/* 1) Brand/About */}
         <div className={styles.col}>
           <h3 className={styles.title}>
             <span className={styles.icon}>
@@ -103,10 +98,7 @@ export default function InfoHeader({ data }) {
           </div>
         </div>
 
-        {/* 2) Localização */}
-        <div
-          className={`${styles.col} ${styles.colStart} ${styles.colIconLead}`}
-        >
+        <div className={`${styles.col} ${styles.colStart}`}>
           <h3 className={styles.title}>
             <span className={styles.icon}>
               <PinIcon aria-hidden="true" />
@@ -114,7 +106,7 @@ export default function InfoHeader({ data }) {
             <span>{location?.title || "Localização"}</span>
           </h3>
 
-          <div className={styles.contentLeadIcon}>
+          <div className={styles.contentBlock}>
             <address className={styles.address}>
               {(location?.addressLines || []).map((line, i) => (
                 <div key={i}>{line}</div>
@@ -134,10 +126,7 @@ export default function InfoHeader({ data }) {
           </div>
         </div>
 
-        {/* 3) Contactos */}
-        <div
-          className={`${styles.col} ${styles.colStart} ${styles.colIconLead}`}
-        >
+        <div className={`${styles.col} ${styles.colStart}`}>
           <h3 className={styles.title}>
             <span className={styles.icon}>
               <CardIcon aria-hidden="true" />
@@ -145,8 +134,7 @@ export default function InfoHeader({ data }) {
             <span>{contacts?.title || "Contactos"}</span>
           </h3>
 
-          <div className={styles.contentLeadIcon}>
-            {/* Email */}
+          <div className={styles.contentBlock}>
             <div className={styles.contactRow}>
               <span className={styles.cIcon}>
                 <MailIcon aria-hidden="true" />
@@ -164,7 +152,6 @@ export default function InfoHeader({ data }) {
               )}
             </div>
 
-            {/* Telefones */}
             {phoneItems.length > 0 ? (
               phoneItems.map((phone, idx) => (
                 <div className={styles.contactRow} key={phone?.href || idx}>
@@ -195,7 +182,6 @@ export default function InfoHeader({ data }) {
           </div>
         </div>
 
-        {/* 4) Redes */}
         <div className={styles.col}>
           <h3 className={styles.title}>
             <span className={styles.icon}>

@@ -22,7 +22,6 @@ export default function LinkDirectory({ data }) {
   return (
     <section className={styles.sectionWrap} aria-label="Footer — Quick Links">
       <div className={styles.inner}>
-        {/* ------ Bloco Esquerdo ------ */}
         <div className={styles.block}>
           {left?.title && (
             <h3 className={`${styles.sectionTitle} ${styles.sectionTitleLeft}`}>
@@ -48,7 +47,9 @@ export default function LinkDirectory({ data }) {
                       key={key}
                       href={href}
                       disabled={disabled}
-                      className={`${styles.pill} ${mod} ${disabled ? styles.disabled : ""}`}
+                      className={`${styles.pill} ${mod} ${
+                        disabled ? styles.disabled : ""
+                      }`}
                       onSmartClick={onSmartClick}
                     >
                       <span className={styles.pillContent}>
@@ -67,7 +68,6 @@ export default function LinkDirectory({ data }) {
           </div>
         </div>
 
-        {/* ------ Bloco Direito ------ */}
         <div className={styles.block}>
           {right?.title && (
             <h3

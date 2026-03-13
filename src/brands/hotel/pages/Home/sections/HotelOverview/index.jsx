@@ -1,4 +1,3 @@
-// src/brands/hotel/pages/HotelHome/sections/HotelOverview/HotelOverviewSection.jsx
 import styles from "./HotelOverviewSection.module.css";
 
 import hotelBrand from "../../../../config/index.js";

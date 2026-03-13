@@ -1,4 +1,3 @@
-// src/shared/ui/FeaturedExperienceCard/FeaturedExperienceCard.jsx
 import styles from "./FeaturedExperienceCard.module.css";
 
 /**
@@ -57,9 +56,7 @@ export default function FeaturedExperienceCard({
       </div>
 
       <div className={styles.content}>
-        <div className={styles.titleBar}>
-          <h3 className={styles.title}>{title}</h3>
-        </div>
+        <h3 className={styles.title}>{title}</h3>
 
         {description ? (
           <p className={styles.description}>{description}</p>

@@ -1,4 +1,3 @@
-// src/brands/hotel/pages/home/sections/Sustainability&Impact/index.jsx
 import hotelBrand from "../../../../config/index.js";
 
 import HotelSustainabilityHeader from "./HotelSustainabilityHeader.jsx";

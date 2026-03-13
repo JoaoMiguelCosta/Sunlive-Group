@@ -1,16 +1,15 @@
-/* Prestige Noir + Liquid Gold — Policies Bar (responsivo) */
+/* Policies Bar — shared, mais discreta e mais limpa */
 
 .sectionWrap {
     position: relative;
     background: transparent;
     color: var(--sl-platinum-100);
-    padding-block: clamp(0.6rem, 1.3vw, 1rem);
-    padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(0.6rem, 1.3vw, 1rem));
+    padding-block: clamp(0.6rem, 1.3vw, 0.95rem);
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(0.6rem, 1.3vw, 0.95rem));
 
-    /* ✅ Accent unificado */
     --policies-accent: var(--footer-accent, var(--sl-gold-400, #c78615));
 
-    border-top: 1px solid color-mix(in oklab, var(--policies-accent), transparent 65%);
+    border-top: 1px solid color-mix(in oklab, var(--policies-accent), transparent 72%);
 }
 
 .inner {
@@ -40,7 +39,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 0.35rem 0.85rem;
+    gap: 0.3rem 0.8rem;
 }
 
 @media (min-width: 900px) {
@@ -50,11 +49,11 @@
 }
 
 .link {
-    color: var(--sl-platinum-100);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     font-weight: 600;
     white-space: nowrap;
-    font-size: clamp(0.9rem, 0.4vw + 0.85rem, 1rem);
+    font-size: clamp(0.9rem, 0.4vw + 0.85rem, 0.98rem);
     line-height: 1.2;
 }
 
@@ -63,15 +62,15 @@
 }
 
 .divider {
-    margin: 0 0.35rem 0 0.7rem;
-    opacity: 0.35;
+    margin: 0 0.3rem 0 0.65rem;
+    opacity: 0.28;
 }
 
 .copyWrap {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.55rem;
+    gap: 0.5rem;
     flex-wrap: wrap;
 }
 
@@ -87,23 +86,23 @@
     justify-content: center;
     inline-size: clamp(18px, 1.6vw, 22px);
     block-size: clamp(18px, 1.6vw, 22px);
-    border: 2px solid var(--policies-accent);
+    border: 1px solid color-mix(in oklab, var(--policies-accent), transparent 36%);
     border-radius: 999px;
     color: var(--policies-accent);
-    background: color-mix(in oklab, var(--policies-accent) 16%, transparent);
+    background: color-mix(in oklab, var(--policies-accent) 10%, transparent);
     flex: 0 0 auto;
 }
 
 .copyText {
     font-weight: 600;
-    opacity: 0.95;
-    font-size: clamp(0.88rem, 0.35vw + 0.82rem, 0.98rem);
+    opacity: 0.92;
+    font-size: clamp(0.88rem, 0.35vw + 0.82rem, 0.96rem);
     white-space: nowrap;
 }
 
 .link:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--policies-accent), transparent 60%);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--policies-accent), transparent 62%);
     border-radius: 6px;
     padding-inline: 0.15rem;
 }

@@ -2,8 +2,9 @@
 
 /* ===========================================
    CTAButton — base + variantes (hero/sports/hotel)
-   - Blink controlado por hook (overlay)
-   - Sheen separado (span.sheen) para não conflituar com ::after
+   - Base neutra e segura para uso global
+   - Hero e Sports preservadas
+   - Hotel refinada para um look mais premium
    =========================================== */
 
 .button {
@@ -11,18 +12,17 @@
     --gold-2: var(--sl-gold-500, #A16207);
     --accent: var(--sl-accent-500, #2EA7E0);
 
-    /* tamanhos base; refinados por breakpoints */
     --pill-fs: .98rem;
-    --pill-pad-y: .48rem;
-    --pill-pad-x: .80rem;
-    --pill-min: 40px;
+    --pill-pad-y: .56rem;
+    --pill-pad-x: .92rem;
+    --pill-min: 42px;
     --pill-gap: clamp(.42rem, 0.8vw, .60rem);
 
-    /* fundos OFF/ON (blink overlay) */
     --cta-bg-off:
-        linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
-        radial-gradient(120% 140% at 50% 0%, rgba(255, 226, 167, .10), rgba(255, 255, 255, 0) 60%);
-    --cta-bg-on: rgba(255, 162, 0, 0.85);
+        linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0)),
+        radial-gradient(120% 140% at 50% 0%, rgba(255, 226, 167, .08), rgba(255, 255, 255, 0) 60%);
+    --cta-bg-on:
+        linear-gradient(180deg, rgba(255, 184, 67, .22), rgba(199, 134, 21, .28));
 
     position: relative;
     isolation: isolate;
@@ -44,18 +44,19 @@
     letter-spacing: .02em;
     line-height: 1;
 
-    border: 2px solid rgba(255, 162, 0, 0.85);
+    border: 1px solid rgba(255, 193, 82, 0.48);
     background: var(--cta-bg-off);
 
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .06),
-        0 8px 20px rgba(0, 0, 0, .35);
+        inset 0 1px 0 rgba(255, 255, 255, .05),
+        0 8px 20px rgba(0, 0, 0, .28);
 
     transition:
         transform .16s ease,
         box-shadow .16s ease,
         border-color .16s ease,
-        color .16s ease;
+        color .16s ease,
+        background .16s ease;
 }
 
 /* Conteúdo acima dos overlays */
@@ -64,7 +65,7 @@
     z-index: 2;
 }
 
-/* Overlay dourado (blink) — só fundo pisca */
+/* Overlay dourado (blink) */
 .button::after {
     content: "";
     position: absolute;
@@ -74,7 +75,7 @@
     pointer-events: none;
     z-index: 1;
     border-radius: inherit;
-    transition: none;
+    transition: opacity .18s ease;
 }
 
 .button--blink[data-on="true"]::after {
@@ -96,14 +97,14 @@
     background:
         linear-gradient(100deg,
             rgba(255, 255, 255, 0) 20%,
-            rgba(255, 255, 255, .35) 48%,
+            rgba(255, 255, 255, .28) 48%,
             rgba(255, 255, 255, 0) 76%);
     transition: transform .85s ease, opacity .2s ease;
 }
 
 .button:hover .sheen,
 .button:focus-visible .sheen {
-    opacity: .35;
+    opacity: .32;
     transform: translateX(140%);
 }
 
@@ -111,7 +112,7 @@
 .button:hover,
 .button:focus-visible {
     transform: translateY(-1px);
-    border-color: color-mix(in oklab, var(--gold), var(--accent) 22%);
+    border-color: color-mix(in oklab, var(--gold), var(--accent) 18%);
     outline: none;
 }
 
@@ -153,15 +154,15 @@
 /* ===== Modo compacto ===== */
 @media (max-width: 720px) {
     .button[data-compact="auto"] {
-        --pill-fs: .96rem;
-        --pill-pad-y: .46rem;
-        --pill-pad-x: .78rem;
-        --pill-min: 38px;
+        --pill-fs: .95rem;
+        --pill-pad-y: .5rem;
+        --pill-pad-x: .82rem;
+        --pill-min: 39px;
     }
 }
 
 .button[data-compact="true"] {
-    --pill-fs: .94rem;
+    --pill-fs: .93rem;
     --pill-pad-y: .44rem;
     --pill-pad-x: .72rem;
     --pill-min: 36px;
@@ -170,17 +171,17 @@
 /* ===== Breakpoints ===== */
 @media (min-width: 1368px) {
     .button {
-        --pill-fs: 1.06rem;
+        --pill-fs: 1.04rem;
         --pill-pad-y: .62rem;
-        --pill-pad-x: 1.15rem;
+        --pill-pad-x: 1.12rem;
         --pill-min: 46px;
     }
 }
 
 @media (min-width: 1178px) and (max-width: 1367px) {
     .button {
-        --pill-fs: 1.02rem;
-        --pill-pad-y: .56rem;
+        --pill-fs: 1rem;
+        --pill-pad-y: .58rem;
         --pill-pad-x: 1rem;
         --pill-min: 44px;
     }
@@ -189,8 +190,8 @@
 @media (min-width: 910px) and (max-width: 1177px) {
     .button {
         --pill-fs: .98rem;
-        --pill-pad-y: .50rem;
-        --pill-pad-x: .9rem;
+        --pill-pad-y: .54rem;
+        --pill-pad-x: .92rem;
         --pill-min: 42px;
     }
 }
@@ -198,8 +199,8 @@
 @media (min-width: 561px) and (max-width: 909px) {
     .button {
         --pill-fs: .96rem;
-        --pill-pad-y: .48rem;
-        --pill-pad-x: .85rem;
+        --pill-pad-y: .5rem;
+        --pill-pad-x: .86rem;
         --pill-min: 40px;
     }
 }
@@ -207,9 +208,9 @@
 @media (max-width: 560px) {
     .button {
         --pill-fs: .94rem;
-        --pill-pad-y: .45rem;
-        --pill-pad-x: .80rem;
-        --pill-min: 36px;
+        --pill-pad-y: .48rem;
+        --pill-pad-x: .8rem;
+        --pill-min: 38px;
     }
 }
 
@@ -363,46 +364,44 @@
 
 /* =========================================================
    VARIANTE HOTEL
-   - Alinhada com o footer / shell do hotel
-   - Base castanho escuro quente + dourado champanhe
+   - Mais refinada e menos pesada
+   - Mantém identidade quente/dourada
+   - Reduz halo e excesso de chrome visual
    ========================================================= */
 .button--hotel {
-    --hotel-border: rgba(230, 200, 147, 0.42);
+    --hotel-border: rgba(230, 200, 147, 0.28);
+    --hotel-border-hover: rgba(230, 200, 147, 0.42);
     --hotel-text: #fff3da;
-    --hotel-halo-min: 4px;
-    --hotel-halo-max: clamp(7px, 1vw, 14px);
-    --hotel-halo-hover: clamp(7px, 1vw, 14px);
-    --hotel-halo-soft: rgba(230, 200, 147, 0.14);
-    --hotel-halo-strong: rgba(199, 134, 21, 0.22);
+
+    --hotel-halo-min: 0px;
+    --hotel-halo-max: clamp(4px, .8vw, 10px);
+    --hotel-halo-hover: clamp(4px, .8vw, 10px);
+    --hotel-halo-soft: rgba(230, 200, 147, 0.08);
+    --hotel-halo-strong: rgba(199, 134, 21, 0.12);
 
     color: var(--hotel-text);
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
     text-shadow:
-        0 1px 0 rgba(255, 248, 235, 0.08),
-        0 8px 18px rgba(0, 0, 0, 0.18);
+        0 1px 0 rgba(255, 248, 235, 0.06),
+        0 6px 14px rgba(0, 0, 0, 0.16);
 
     border: 1px solid var(--hotel-border);
 
     background:
-        radial-gradient(120% 180% at 0% 0%, rgba(230, 200, 147, 0.16), transparent 42%),
-        radial-gradient(120% 180% at 100% 100%, rgba(199, 134, 21, 0.14), transparent 46%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.05) 0%,
-            rgba(255, 248, 235, 0.018) 18%,
-            rgba(0, 0, 0, 0.08) 100%),
-        linear-gradient(90deg,
-            #2a160a 0%,
-            #341a0b 32%,
-            #241208 68%,
-            #1a0d06 100%);
+            rgba(255, 248, 235, 0.045) 0%,
+            rgba(255, 248, 235, 0.016) 22%,
+            rgba(0, 0, 0, 0.1) 100%),
+        linear-gradient(135deg,
+            rgba(52, 28, 13, 0.96) 0%,
+            rgba(29, 16, 9, 0.98) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.08),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
         0 0 0 var(--hotel-halo-min) var(--hotel-halo-soft),
-        0 14px 30px rgba(0, 0, 0, 0.26),
-        0 0 0 1px rgba(255, 255, 255, 0.02);
+        0 10px 24px rgba(0, 0, 0, 0.22);
 
     transform: translateZ(0);
 }
@@ -414,22 +413,21 @@
     z-index: 0;
     pointer-events: none;
     border-radius: inherit;
-
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.09) 0%,
-            rgba(255, 248, 235, 0.03) 14%,
-            rgba(255, 255, 255, 0) 36%),
-        radial-gradient(55% 120% at 0% 50%, rgba(199, 134, 21, 0.08), transparent 72%),
-        radial-gradient(45% 100% at 100% 50%, rgba(230, 200, 147, 0.07), transparent 70%);
-    opacity: 0.95;
+            rgba(255, 248, 235, 0.08) 0%,
+            rgba(255, 248, 235, 0.02) 18%,
+            rgba(255, 255, 255, 0) 42%),
+        radial-gradient(60% 120% at 0% 50%, rgba(199, 134, 21, 0.05), transparent 72%),
+        radial-gradient(45% 100% at 100% 50%, rgba(230, 200, 147, 0.05), transparent 70%);
+    opacity: 0.92;
 }
 
 .button--hotel::after {
     background:
         linear-gradient(180deg,
-            rgba(230, 200, 147, 0.22) 0%,
-            rgba(199, 134, 21, 0.26) 100%);
+            rgba(230, 200, 147, 0.12) 0%,
+            rgba(199, 134, 21, 0.16) 100%);
 }
 
 .button--hotel[data-on="true"] {
@@ -441,33 +439,30 @@
     0%,
     100% {
         box-shadow:
-            inset 0 1px 0 rgba(255, 248, 235, 0.08),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+            inset 0 1px 0 rgba(255, 248, 235, 0.06),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.14),
             0 0 0 var(--hotel-halo-min) var(--hotel-halo-soft),
-            0 14px 30px rgba(0, 0, 0, 0.26),
-            0 0 0 1px rgba(255, 255, 255, 0.02);
+            0 10px 24px rgba(0, 0, 0, 0.22);
     }
 
     50% {
         box-shadow:
-            inset 0 1px 0 rgba(255, 248, 235, 0.08),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+            inset 0 1px 0 rgba(255, 248, 235, 0.06),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.14),
             0 0 0 var(--hotel-halo-max) var(--hotel-halo-strong),
-            0 16px 34px rgba(0, 0, 0, 0.3),
-            0 0 0 1px rgba(255, 255, 255, 0.025);
+            0 12px 28px rgba(0, 0, 0, 0.24);
     }
 }
 
 .button--hotel:hover,
 .button--hotel:focus-visible {
     transform: translateY(-1px);
-    border-color: rgba(230, 200, 147, 0.56);
+    border-color: var(--hotel-border-hover);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.1),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
         0 0 0 var(--hotel-halo-hover) var(--hotel-halo-strong),
-        0 18px 36px rgba(0, 0, 0, 0.32),
-        0 0 0 1px rgba(255, 255, 255, 0.03);
+        0 14px 30px rgba(0, 0, 0, 0.26);
 }
 
 .button--hotel:active {

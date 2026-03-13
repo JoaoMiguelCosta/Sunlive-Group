@@ -1,10 +1,8 @@
-/* src/brands/hotel/components/Home/PlanYourStay/PlanYourStay.module.css */
-
 .section {
     position: relative;
     isolation: isolate;
     background: transparent;
-    padding-block: clamp(2.4rem, 5vw, 3.4rem);
+    padding-block: clamp(3.2rem, 6vw, 5rem);
 }
 
 .inner {
@@ -21,29 +19,25 @@
     isolation: isolate;
     overflow: hidden;
 
-    padding: clamp(1.35rem, 3vw, 2.2rem);
+    max-inline-size: 980px;
+    margin-inline: auto;
+    padding: clamp(1.5rem, 3.2vw, 2.35rem);
     border-radius: 28px;
-    border: 1px solid rgba(230, 200, 147, 0.34);
+    border: 1px solid rgba(230, 200, 147, 0.2);
     text-align: center;
 
     background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.03) 0%,
-            rgba(255, 248, 235, 0.01) 18%,
-            rgba(0, 0, 0, 0.08) 100%),
-        linear-gradient(90deg,
-            #2a160a 0%,
-            #341a0b 32%,
-            #241208 68%,
-            #1a0d06 100%);
+            rgba(255, 248, 235, 0.04) 0%,
+            rgba(255, 248, 235, 0.015) 24%,
+            rgba(0, 0, 0, 0.12) 100%),
+        linear-gradient(135deg,
+            rgba(51, 28, 13, 0.96) 0%,
+            rgba(26, 14, 8, 0.98) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.22),
-        0 22px 60px rgba(0, 0, 0, 0.28),
-        0 0 0 1px rgba(255, 255, 255, 0.02);
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 16px 42px rgba(0, 0, 0, 0.2);
 }
 
 .box::before {
@@ -53,13 +47,8 @@
     pointer-events: none;
 
     background:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.06) 0%,
-            rgba(255, 248, 235, 0.02) 10%,
-            rgba(255, 255, 255, 0) 28%),
-        radial-gradient(60% 65% at 0% 50%, rgba(199, 134, 21, 0.08), transparent 72%),
-        radial-gradient(50% 55% at 100% 50%, rgba(230, 200, 147, 0.07), transparent 70%);
-    opacity: 0.95;
+        radial-gradient(70% 90% at 50% 0%, rgba(255, 236, 199, 0.06), transparent 58%),
+        radial-gradient(60% 65% at 0% 100%, rgba(199, 134, 21, 0.05), transparent 70%);
 }
 
 .title,
@@ -70,24 +59,25 @@
 }
 
 .title {
-    margin: 0 0 0.85rem;
-    font-size: clamp(1.32rem, 1.15vw + 1.02rem, 1.65rem);
+    margin: 0 0 0.8rem;
+    font-size: clamp(1.45rem, 1.2vw + 1.02rem, 1.95rem);
     font-weight: 700;
-    line-height: 1.2;
-    color: rgba(255, 248, 235, 0.96);
+    line-height: 1.15;
+    color: rgba(255, 248, 235, 0.97);
     text-wrap: balance;
 }
 
 .subtitle {
-    margin: 0;
-    font-size: clamp(0.95rem, 0.45vw + 0.88rem, 1.04rem);
-    line-height: 1.65;
-    color: rgba(255, 248, 235, 0.88);
+    margin: 0 auto;
+    max-inline-size: 52rem;
+    font-size: clamp(0.98rem, 0.45vw + 0.9rem, 1.08rem);
+    line-height: 1.7;
+    color: rgba(255, 248, 235, 0.86);
     text-wrap: pretty;
 }
 
 .actions {
-    margin-top: clamp(1.35rem, 2.8vw, 1.9rem);
+    margin-top: clamp(1.35rem, 2.8vw, 1.95rem);
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -100,21 +90,21 @@
 
 @media (max-width: 640px) {
     .section {
-        padding-block: 2rem;
+        padding-block: 2.4rem 2.8rem;
     }
 
     .box {
-        padding: 1rem;
+        padding: 1.2rem 1rem 1.15rem;
         border-radius: 22px;
     }
 
     .title {
-        font-size: 1.2rem;
+        font-size: 1.28rem;
     }
 
     .subtitle {
         font-size: 0.95rem;
-        line-height: 1.58;
+        line-height: 1.6;
     }
 
     .actions {

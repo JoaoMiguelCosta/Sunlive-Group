@@ -1,9 +1,8 @@
-// src/shared/components/hotel/HotelSectionHeader.jsx
 import styles from "./HotelSectionHeader.module.css";
 
 /**
  * HotelSectionHeader
- * Barra de título reutilizável para secções da Estalagem.
+ * Título reutilizável para secções da Estalagem.
  *
  * Props:
  *  - id?: string

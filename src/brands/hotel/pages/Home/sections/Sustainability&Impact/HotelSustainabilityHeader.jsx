@@ -1,4 +1,3 @@
-// src/brands/hotel/pages/home/sections/Sustainability&Impact/HotelSustainabilityHeader.jsx
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 import styles from "./HotelSustainabilityHeader.module.css";
 

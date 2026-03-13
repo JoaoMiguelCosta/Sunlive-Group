@@ -6,6 +6,7 @@ export default function UtilityBar({
   backLink,
   homeLink,
   leftSlot = null,
+  centerSlot = null,
   socials = [],
   lang = {
     current: "pt",
@@ -21,6 +22,7 @@ export default function UtilityBar({
   }
 
   const hasLeft = Boolean(backLink || homeLink || leftSlot);
+  const hasCenter = Boolean(centerSlot);
 
   return (
     <aside
@@ -29,7 +31,15 @@ export default function UtilityBar({
       aria-label={ariaLabel}
       onKeyDown={onKeyDown}
     >
-      <div className={`${styles.inner} ${hasLeft ? styles.hasLeft : ""}`}>
+      <div
+        className={[
+          styles.inner,
+          hasLeft ? styles.hasLeft : "",
+          hasCenter ? styles.hasCenter : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
         {hasLeft && (
           <div className={styles.left}>
             {backLink && (
@@ -91,6 +101,8 @@ export default function UtilityBar({
             {leftSlot}
           </div>
         )}
+
+        {hasCenter && <div className={styles.center}>{centerSlot}</div>}
 
         <div className={styles.right}>
           {!!socials.length && (

@@ -1,22 +1,24 @@
 /* =========================
    Mega-submenu
-   (Opção A: modo drawer/centrado até 1180px)
+   - menos pesado
+   - melhor leitura
+   - um cartão contextual por item
    ========================= */
 
 .submenuWrap {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translate(-50%, -8px);
+    transform: translate(-50%, -6px);
 
     --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
     inline-size: calc(min(var(--sl-container-lg, 1360px), 100%) - 2 * var(--line-inset));
 
-    padding-block: 0.4rem 1.6rem;
+    padding-block: 0.32rem 1rem;
 
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.22s ease, transform 0.22s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .submenuVisible {
@@ -26,60 +28,59 @@
 }
 
 .submenuInner {
-    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
-    --column-gap: 0.6rem;
-
-    inline-size: 100%;
-    margin-inline: 0;
-
-    display: flex;
-    gap: var(--column-gap);
-    align-items: stretch;
-    justify-content: flex-start;
+    display: block;
+    position: relative;
+    min-height: 0;
 }
 
-/* base */
+.columnCard[aria-hidden="true"] {
+    display: none;
+}
+
 .columnCard {
-    flex: 0 0 calc((100% - 5 * var(--column-gap)) / 6);
-    min-width: 0;
+    position: absolute;
+    top: 0;
+    left: clamp(0px,
+            calc(var(--submenu-anchor-x, 50%) - 170px),
+            calc(100% - 340px));
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-
-    padding: 1.05rem 1.25rem 1.25rem;
-    border-radius: 26px;
+    inline-size: 340px;
+    max-inline-size: 100%;
+    margin: 0;
+    padding: 0.95rem 1rem 1rem;
+    border-radius: 20px;
 
     background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
-        #26170b;
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.035) 0%,
+            rgba(255, 248, 235, 0.01) 18%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(135deg,
+            rgba(44, 24, 11, 0.96) 0%,
+            rgba(25, 14, 8, 0.98) 100%);
 
-    border: 1px solid rgba(230, 200, 147, 0.34);
+    border: 1px solid rgba(230, 200, 147, 0.18);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 44px rgba(0, 0, 0, 0.30),
-        0 0 0 1px rgba(255, 255, 255, 0.015);
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 16px 28px rgba(0, 0, 0, 0.18);
 
-    opacity: 0.88;
+    opacity: 0.92;
     transform: translateY(4px);
     transition:
-        opacity 0.22s ease,
-        transform 0.22s ease,
-        box-shadow 0.22s ease,
-        border-color 0.22s ease,
-        background 0.22s ease;
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .columnCardActive {
     opacity: 1;
     transform: translateY(0);
-    border-color: rgba(230, 200, 147, 0.56);
+    border-color: rgba(230, 200, 147, 0.3);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 22px 54px rgba(0, 0, 0, 0.34),
-        0 0 18px rgba(230, 200, 147, 0.08);
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 18px 34px rgba(0, 0, 0, 0.22);
 }
 
 .linkList {
@@ -89,45 +90,44 @@
 }
 
 .linkItem+.linkItem {
-    margin-top: 0.3rem;
+    margin-top: 0.28rem;
 }
 
 .linkItem a {
     position: relative;
-    display: inline-block;
-    padding-left: 1rem;
+    display: block;
+    padding: 0.42rem 0.55rem 0.42rem 1rem;
+    border-radius: 12px;
 
-    color: rgba(255, 248, 240, 0.92);
-    font-size: clamp(0.78rem, 0.74rem + 0.25vw, 0.85rem);
+    color: rgba(255, 248, 240, 0.9);
+    font-size: 0.84rem;
     font-weight: 400;
     text-decoration: none;
-    opacity: 0.85;
-    white-space: nowrap;
+    opacity: 0.86;
 
     transition:
         opacity 0.18s ease,
         transform 0.18s ease,
         color 0.18s ease,
-        box-shadow 0.18s ease,
         background 0.18s ease;
 }
 
 .linkItem a::before {
     content: "";
     position: absolute;
-    left: 0.1rem;
+    left: 0.24rem;
     top: 50%;
     transform: translateY(-50%) rotate(-45deg);
 
     inline-size: 6px;
     block-size: 6px;
 
-    border-right: 1.5px solid rgba(255, 223, 160, 0.96);
-    border-bottom: 1.5px solid rgba(255, 223, 160, 0.96);
+    border-right: 1.5px solid rgba(255, 223, 160, 0.92);
+    border-bottom: 1.5px solid rgba(255, 223, 160, 0.92);
 
     opacity: 0.9;
     pointer-events: none;
-    transition: transform 0.18s ease, opacity 0.18s ease, border-color 0.18s ease;
+    transition: transform 0.18s ease, border-color 0.18s ease;
 }
 
 .linkItem a:hover,
@@ -137,17 +137,7 @@
     color: rgba(255, 250, 244, 0.98);
 
     background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
-        linear-gradient(180deg, rgba(108, 67, 32, 0.78), rgba(49, 30, 15, 0.92));
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 10px 22px rgba(0, 0, 0, 0.22),
-        0 0 16px rgba(230, 200, 147, 0.08);
-
-    border-radius: 999px;
-    padding-block: 0.12rem;
-    padding-right: 0.5rem;
+        linear-gradient(180deg, rgba(96, 59, 29, 0.34), rgba(50, 30, 16, 0.48));
 }
 
 .linkItem a:hover::before,
@@ -156,43 +146,6 @@
     border-color: rgba(255, 232, 196, 0.98);
 }
 
-/* < 1360px — 1 cartão ancorado ao botão */
-@media (max-width: 1360px) {
-    .submenuWrap {
-        padding-block: 0.35rem 1.2rem;
-    }
-
-    .submenuInner {
-        display: block;
-        position: relative;
-        min-height: 0;
-    }
-
-    .columnCard[aria-hidden="true"] {
-        display: none;
-    }
-
-    .columnCard {
-        position: absolute;
-        top: 0;
-        left: clamp(0px,
-                calc(var(--submenu-anchor-x, 50%) - 160px),
-                calc(100% - 320px));
-
-        width: 320px;
-        max-width: 100%;
-        margin: 0;
-        padding: 0.95rem 1.1rem 1.1rem;
-        border-radius: 24px;
-    }
-
-    .linkItem a {
-        font-size: 0.8rem;
-        white-space: normal;
-    }
-}
-
-/* Até 1180px — submenu centrado/cartão único */
 @media (max-width: 1180px) {
     .submenuWrap {
         inline-size: calc(min(var(--sl-container-lg, 1360px), 100%) - 2 * var(--line-inset));
@@ -210,61 +163,26 @@
 
     .columnCard {
         position: static;
-        width: 100%;
-        max-width: 560px;
+        inline-size: 100%;
+        max-inline-size: 560px;
         margin-inline: auto;
     }
 }
 
-/* < 640px — submenu compacto */
 @media (max-width: 640px) {
     .submenuWrap {
-        inline-size: calc(min(var(--sl-container-lg, 1360px), 100%) - 2 * var(--line-inset));
-        padding-block: 0.3rem 0.9rem;
+        padding-block: 0.25rem 0.8rem;
     }
 
     .columnCard {
-        max-width: 100%;
+        max-inline-size: 100%;
         margin-inline: 0;
-        padding: 0.85rem 0.9rem 0.95rem;
-        border-radius: 22px;
-    }
-
-    .linkItem a {
-        font-size: 0.78rem;
-        padding-left: 0.85rem;
-    }
-}
-
-/* ≥ 1361px — usar layout de 1 cartão ancorado */
-@media (min-width: 1361px) {
-    .submenuInner {
-        display: block;
-        position: relative;
-        min-height: 0;
-    }
-
-    .columnCard[aria-hidden="true"] {
-        display: none;
-    }
-
-    .columnCard {
-        position: absolute;
-        top: 0;
-        left: clamp(0px,
-                calc(var(--submenu-anchor-x, 50%) - 160px),
-                calc(100% - 320px));
-
-        width: 320px;
-        max-width: 100%;
-        margin: 0;
-        padding: 0.95rem 1.1rem 1.1rem;
-        border-radius: 24px;
-        flex: 0 0 auto;
+        padding: 0.85rem 0.9rem 0.92rem;
+        border-radius: 18px;
     }
 
     .linkItem a {
         font-size: 0.8rem;
-        white-space: normal;
+        padding-left: 0.92rem;
     }
 }

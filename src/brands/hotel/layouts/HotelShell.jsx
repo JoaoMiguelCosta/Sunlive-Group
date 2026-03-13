@@ -4,6 +4,7 @@ import UtilityBar from "../../../shared/components/UtilityBar";
 
 import HotelFooter from "../components/FooterHotel";
 import HotelPrimaryNav from "./HotelPrimaryNav.jsx";
+import HotelBrandLogo from "./HotelBrandLogo.jsx";
 import ScrollToTopOnRouteChange from "./ScrollToTopOnRouteChange.jsx";
 
 import hotelBrand, { HOTEL_BASE_PATH } from "../config/index.js";
@@ -43,11 +44,14 @@ export default function HotelShell() {
         variant="hotel-header"
         backLink={backLink}
         homeLink={homeLink}
+        leftSlot={<HotelBrandLogo />}
         socials={socials}
         lang={lang}
       />
 
-      <HotelPrimaryNav />
+      <div className={styles.navWrap}>
+        <HotelPrimaryNav />
+      </div>
 
       <main
         className={styles.main}

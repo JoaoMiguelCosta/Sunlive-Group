@@ -5,7 +5,6 @@ import HotelPrimaryNavSubmenu from "./HotelPrimaryNavSubmenu.jsx";
 
 import { HOTEL_PRIMARY_NAV_ITEMS } from "../config/core/nav.js";
 
-// hooks partilhados
 import { useOutsideClick } from "../../../shared/hooks/useOutsideClick.js";
 import useSmartAnchorNav from "../../../shared/hooks/useSmartAnchorNav.js";
 
@@ -20,7 +19,6 @@ export default function HotelPrimaryNav() {
   const navRootRef = useRef(null);
   const navInnerRef = useRef(null);
 
-  // Medimos o centro pelo toggle (chevron)
   const buttonRefs = useRef({});
 
   const closeAll = () => {
@@ -28,16 +26,13 @@ export default function HotelPrimaryNav() {
     setOpenId(null);
   };
 
-  // fecha nav/submenu ao clicar fora
   useOutsideClick(navRootRef, closeAll, isNavOpen || !!openId);
 
-  // navegação inteligente para anchors
   const { handleSmartAnchorClick } = useSmartAnchorNav({
     offset: 88,
     closeOverlays: closeAll,
   });
 
-  // ✅ detetar modo drawer (<=1180px)
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -46,7 +41,6 @@ export default function HotelPrimaryNav() {
 
     apply();
 
-    // compat: addEventListener vs addListener
     if (mq.addEventListener) mq.addEventListener("change", apply);
     else mq.addListener(apply);
 
@@ -63,21 +57,18 @@ export default function HotelPrimaryNav() {
   };
 
   const handleMouseLeave = () => {
-    // ✅ no drawer não faz sentido fechar ao sair com o rato
     if (isDrawer) return;
     setOpenId(null);
   };
 
   const hasOpen = Boolean(openId);
 
-  // Calcula a posição horizontal do botão ativo (desktop)
   useEffect(() => {
     if (!openId || typeof window === "undefined") {
       setSubmenuAnchorX(null);
       return;
     }
 
-    // ✅ no drawer não usamos submenu absoluto
     if (isDrawer) {
       setSubmenuAnchorX(null);
       return;
@@ -98,19 +89,16 @@ export default function HotelPrimaryNav() {
   }, [openId, isDrawer]);
 
   const handlePrimaryNavClick = (e, to) => {
-    // Se vier hash, delega para o smart anchor (offset + smooth + close)
     if (typeof to === "string" && to.includes("#")) {
       handleSmartAnchorClick?.(e, to);
       return;
     }
 
-    // Sem hash: navegação normal e fecha overlays (especialmente mobile)
     closeAll();
   };
 
   const handleDrawerSubLinkClick = (e, href) => {
     handleSmartAnchorClick?.(e, href);
-    // closeAll já é chamado pelo hook via closeOverlays
   };
 
   return (
@@ -121,7 +109,6 @@ export default function HotelPrimaryNav() {
       onMouseLeave={handleMouseLeave}
     >
       <div className={navStyles.navInner} ref={navInnerRef}>
-        {/* Barra topo (drawer) */}
         <div className={navStyles.navTopRow}>
           <span className={navStyles.navTitle}>Explorar Estalagem</span>
 
@@ -156,7 +143,6 @@ export default function HotelPrimaryNav() {
                     isOpen ? navStyles.navListItemActive : ""
                   }`}
                 >
-                  {/* linha: Link (navega) + Toggle (abre submenu) */}
                   <div className={navStyles.navItemRow}>
                     <NavLink
                       to={item.to}
@@ -195,7 +181,6 @@ export default function HotelPrimaryNav() {
                     </button>
                   </div>
 
-                  {/* ✅ Submenu inline (drawer) — abre logo por baixo do item */}
                   {isDrawer && (
                     <div
                       className={`${navStyles.drawerSubmenu} ${
@@ -229,7 +214,6 @@ export default function HotelPrimaryNav() {
         </div>
       </div>
 
-      {/* ✅ Submenu absoluto só em desktop */}
       {!isDrawer && (
         <HotelPrimaryNavSubmenu
           items={NAV_ITEMS}

@@ -1,5 +1,3 @@
-/* src/shared/ui/HotelWhoWeHostCard/HotelWhoWeHostCard.module.css */
-
 .card {
     position: relative;
     isolation: isolate;
@@ -9,39 +7,21 @@
     flex-direction: column;
     min-block-size: 100%;
 
-    border-radius: 24px;
-    border: 1px solid rgba(230, 200, 147, 0.3);
+    border-radius: 20px;
+    border: 1px solid rgba(230, 200, 147, 0.18);
 
     background:
-        radial-gradient(110% 140% at 0% 0%, rgba(230, 200, 147, 0.12), transparent 44%),
-        radial-gradient(120% 150% at 100% 100%, rgba(199, 134, 21, 0.1), transparent 46%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.035) 0%,
-            rgba(255, 248, 235, 0.012) 18%,
-            rgba(0, 0, 0, 0.08) 100%),
+            rgba(255, 248, 235, 0.03) 0%,
+            rgba(255, 248, 235, 0.01) 18%,
+            rgba(0, 0, 0, 0.12) 100%),
         linear-gradient(135deg,
-            #2b170b 0%,
-            #33190b 42%,
-            #1d0f08 100%);
+            rgba(43, 23, 11, 0.96) 0%,
+            rgba(26, 14, 8, 0.98) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-        0 16px 38px rgba(0, 0, 0, 0.22),
-        0 0 0 1px rgba(255, 255, 255, 0.02);
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-
-    background:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.07) 0%,
-            rgba(255, 248, 235, 0.025) 14%,
-            rgba(255, 255, 255, 0) 36%);
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
 .cardTop {
@@ -50,75 +30,50 @@
 
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
 
-    min-block-size: 6.25rem;
-    padding-block: clamp(1.35rem, 2.6vw, 1.8rem);
-    padding-inline: 1rem;
-
-    background:
-        radial-gradient(90% 110% at 50% 0%, rgba(230, 200, 147, 0.18), transparent 58%),
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.06) 0%,
-            rgba(255, 248, 235, 0.015) 24%,
-            rgba(0, 0, 0, 0.08) 100%),
-        linear-gradient(135deg,
-            #6c4718 0%,
-            #8e6230 42%,
-            #5d3b16 100%);
+    min-block-size: 5.6rem;
+    padding: 1.1rem 1rem 0.9rem;
 }
 
 .iconCircle {
-    inline-size: 3.5rem;
-    block-size: 3.5rem;
+    inline-size: 3.1rem;
+    block-size: 3.1rem;
     border-radius: 999px;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(255, 248, 235, 0.18);
-
+    border: 1px solid rgba(255, 248, 235, 0.12);
     background:
-        radial-gradient(circle at 30% 0%, rgba(255, 248, 235, 0.16), transparent 62%),
-        linear-gradient(135deg, rgba(80, 44, 16, 0.95) 0%, rgba(40, 22, 10, 0.98) 100%);
-
+        linear-gradient(135deg, rgba(92, 54, 21, 0.92) 0%, rgba(45, 24, 11, 0.98) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.1),
-        0 10px 24px rgba(0, 0, 0, 0.24);
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        0 8px 18px rgba(0, 0, 0, 0.18);
 
     color: rgba(255, 248, 235, 0.96);
 }
 
 .iconCircle :global(svg) {
-    inline-size: 1.55rem;
-    block-size: 1.55rem;
+    inline-size: 1.4rem;
+    block-size: 1.4rem;
 }
 
 .titleBand {
     position: relative;
     z-index: 1;
 
-    padding-block: 0.9rem;
-    padding-inline: 1.1rem;
-
-    border-top: 1px solid rgba(255, 248, 235, 0.06);
-    border-bottom: 1px solid rgba(230, 200, 147, 0.16);
-
-    background:
-        linear-gradient(180deg,
-            rgba(44, 24, 11, 0.92) 0%,
-            rgba(30, 16, 8, 0.96) 100%);
-
+    padding: 0 1rem 0.2rem;
     text-align: center;
 }
 
 .title {
     margin: 0;
-    font-size: 0.98rem;
+    font-size: 1rem;
     font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: 0.08em;
+    line-height: 1.28;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #f1cd84;
     text-wrap: balance;
@@ -132,37 +87,29 @@
     flex: 1;
     flex-direction: column;
     justify-content: center;
-    gap: 0.55rem;
+    gap: 0.5rem;
 
-    padding-block: 1.15rem;
-    padding-inline: 1.2rem;
-
-    background:
-        linear-gradient(180deg,
-            rgba(30, 16, 8, 0.55) 0%,
-            rgba(22, 12, 6, 0.72) 100%);
+    padding: 0.7rem 1.1rem 1.2rem;
 }
 
 .description {
     margin: 0;
     text-align: center;
-    font-size: 0.96rem;
-    line-height: 1.62;
-    color: rgba(255, 248, 235, 0.9);
+    font-size: 0.95rem;
+    line-height: 1.64;
+    color: rgba(255, 248, 235, 0.86);
     text-wrap: pretty;
 }
 
 .metric {
-    border-radius: 22px;
+    border-radius: 18px;
 }
 
 .metric .cardTop {
     min-block-size: auto;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.55rem;
-    padding-block: 1.2rem;
+    gap: 0.5rem;
+    padding: 1rem 1rem 0.5rem;
 }
 
 .metric .iconCircle {
@@ -177,28 +124,27 @@
 }
 
 .metric .iconCircle :global(svg) {
-    inline-size: 1.4rem;
-    block-size: 1.4rem;
+    inline-size: 1.3rem;
+    block-size: 1.3rem;
 }
 
 .statValue {
-    font-size: clamp(1.05rem, 1.1vw, 1.15rem);
+    font-size: clamp(1.08rem, 1.1vw, 1.2rem);
     font-weight: 700;
     line-height: 1.1;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
     color: #fff3da;
     text-align: center;
 }
 
 .metric .body {
     align-items: center;
-    padding-block: 0.95rem 1.1rem;
-    padding-inline: 1rem;
+    padding: 0.45rem 1rem 1rem;
 }
 
 .metricTitle {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: 0.05em;
@@ -208,37 +154,31 @@
 }
 
 .metric .description {
-    font-size: 0.9rem;
+    font-size: 0.89rem;
     line-height: 1.52;
 }
 
 @media (max-width: 640px) {
     .card {
-        border-radius: 20px;
+        border-radius: 18px;
     }
 
     .cardTop {
-        min-block-size: 5.6rem;
-        padding-block: 1.15rem;
+        min-block-size: 5rem;
+        padding: 1rem 1rem 0.8rem;
     }
 
     .iconCircle {
-        inline-size: 3.15rem;
-        block-size: 3.15rem;
-    }
-
-    .titleBand {
-        padding-block: 0.8rem;
-        padding-inline: 1rem;
+        inline-size: 2.95rem;
+        block-size: 2.95rem;
     }
 
     .title {
-        font-size: 0.92rem;
+        font-size: 0.94rem;
     }
 
     .body {
-        padding-block: 1rem;
-        padding-inline: 1rem;
+        padding: 0.6rem 1rem 1rem;
     }
 
     .description {

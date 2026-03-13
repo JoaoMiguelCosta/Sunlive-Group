@@ -1,6 +1,3 @@
-// src/brands/hotel/pages/Home/index.jsx
-// Estalagem de Sangalhos — HomePage (usa Home.module.css como layout)
-
 import styles from "./Home.module.css";
 
 import HotelHeroBanner from "./sections/HotelHeroBanner/HotelHeroBanner.jsx";
@@ -20,11 +17,14 @@ export default function HomePageHotel() {
         aria-label="Estalagem de Sangalhos — Home"
       >
         <HotelHeroBanner />
-        <HotelOverviewSection />
-        <WhoWeHostSection />
-        <FeaturedExperiencesSection />
-        <SustainabilityImpactSection />
-        <PlanYourStaySection />
+
+        <div className={styles.contentFlow}>
+          <HotelOverviewSection />
+          <WhoWeHostSection />
+          <FeaturedExperiencesSection />
+          <SustainabilityImpactSection />
+          <PlanYourStaySection />
+        </div>
       </main>
     </div>
   );

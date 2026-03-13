@@ -2,9 +2,17 @@
     display: grid;
     grid-template-rows: auto auto 1fr auto;
     min-height: 100%;
-    background: var(--sl-accent-950, #02102a);
-    border: 4px solid var(--sl-gold-400, #c78615);
+    border: 1px solid rgba(214, 170, 78, 0.42);
+    border-radius: 24px;
     overflow: hidden;
+    background:
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.12), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.08), transparent 60%),
+        linear-gradient(180deg, rgba(255, 248, 230, 0.02), rgba(255, 248, 230, 0)),
+        #26170b;
+    box-shadow:
+        0 22px 44px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 248, 230, 0.04);
 }
 
 .header {
@@ -14,7 +22,10 @@
     gap: 0.95rem;
     min-height: 122px;
     padding: 0.35rem 1rem 0.35rem 0.7rem;
-    background: var(--sl-gold-500, #a16207);
+    background:
+        linear-gradient(180deg, rgba(214, 170, 78, 0.22), rgba(214, 170, 78, 0.08)),
+        rgba(92, 54, 19, 0.92);
+    border-bottom: 1px solid rgba(214, 170, 78, 0.18);
 }
 
 .iconWrap {
@@ -31,11 +42,14 @@
     height: 76px;
     border-radius: 999px;
     background:
-        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12), transparent 55%),
-        rgba(28, 23, 28, 0.72);
-    color: var(--sl-neutral-0, #ffffff);
+        radial-gradient(circle at 30% 30%, rgba(255, 248, 230, 0.14), transparent 55%),
+        rgba(46, 26, 11, 0.72);
+    color: #f8f1e4;
     font-size: 2.3rem;
     line-height: 1;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 230, 0.1),
+        0 10px 22px rgba(0, 0, 0, 0.24);
 }
 
 .headerContent {
@@ -47,7 +61,7 @@
     font-size: clamp(1.3rem, 1.55vw, 2rem);
     font-weight: 800;
     line-height: 1.05;
-    color: var(--sl-neutral-0, #ffffff);
+    color: #f8f1e4;
 }
 
 .context {
@@ -55,7 +69,7 @@
     font-size: clamp(1rem, 1.2vw, 1.55rem);
     font-weight: 500;
     line-height: 1.15;
-    color: var(--sl-neutral-0, #ffffff);
+    color: rgba(248, 241, 228, 0.92);
 }
 
 .categoryRow {
@@ -71,14 +85,14 @@
     justify-content: center;
     font-size: 1rem;
     line-height: 1;
-    color: var(--sl-neutral-0, #ffffff);
+    color: #e0b85d;
 }
 
 .category {
     font-size: clamp(0.98rem, 1.12vw, 1.35rem);
     font-weight: 500;
     line-height: 1.2;
-    color: var(--sl-neutral-0, #ffffff);
+    color: rgba(248, 241, 228, 0.88);
 }
 
 .ratingBand {
@@ -88,9 +102,11 @@
     min-height: 62px;
     gap: 1rem;
     padding: 0.55rem 0.8rem;
-    border-top: 3px solid var(--sl-gold-400, #c78615);
-    border-bottom: 3px solid var(--sl-gold-400, #c78615);
-    background: var(--sl-accent-950, #02102a);
+    border-top: 1px solid rgba(214, 170, 78, 0.28);
+    border-bottom: 1px solid rgba(214, 170, 78, 0.28);
+    background:
+        linear-gradient(180deg, rgba(255, 248, 230, 0.015), rgba(255, 248, 230, 0)),
+        rgba(43, 24, 10, 0.92);
 }
 
 .quoteIcon {
@@ -100,7 +116,8 @@
     font-size: 2.9rem;
     font-weight: 800;
     line-height: 1;
-    color: var(--sl-neutral-0, #ffffff);
+    color: #f8f1e4;
+    opacity: 0.92;
 }
 
 .stars {
@@ -121,11 +138,12 @@
 }
 
 .star {
-    color: var(--sl-gold-300, #f4cf63);
+    color: #f4cf63;
+    text-shadow: 0 0 16px rgba(244, 207, 99, 0.16);
 }
 
 .starEmpty {
-    color: rgba(244, 207, 99, 0.28);
+    color: rgba(244, 207, 99, 0.24);
 }
 
 .quoteArea {
@@ -134,8 +152,10 @@
     justify-content: center;
     min-height: 140px;
     padding: 0.9rem 1rem;
-    border-bottom: 3px solid var(--sl-gold-400, #c78615);
-    background: var(--sl-accent-950, #02102a);
+    border-bottom: 1px solid rgba(214, 170, 78, 0.28);
+    background:
+        linear-gradient(180deg, rgba(255, 248, 230, 0.012), rgba(255, 248, 230, 0)),
+        rgba(38, 23, 11, 0.94);
 }
 
 .quote {
@@ -145,15 +165,17 @@
     font-size: clamp(1.12rem, 1.42vw, 1.8rem);
     font-weight: 500;
     line-height: 1.12;
-    color: var(--sl-neutral-0, #ffffff);
+    color: #f8f1e4;
     text-wrap: balance;
 }
 
 .footer {
     display: flex;
     align-items: center;
-    padding: 0.35rem 0.4rem;
-    background: var(--sl-accent-950, #02102a);
+    padding: 0.5rem 0.55rem;
+    background:
+        linear-gradient(180deg, rgba(255, 248, 230, 0.012), rgba(255, 248, 230, 0)),
+        rgba(43, 24, 10, 0.92);
 }
 
 .footerBadge {
@@ -161,15 +183,22 @@
     align-items: center;
     gap: 0.55rem;
     min-height: 38px;
-    padding: 0.18rem 0.7rem;
-    background: rgba(255, 255, 255, 0.08);
+    padding: 0.28rem 0.78rem;
+    border: 1px solid rgba(214, 170, 78, 0.22);
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg, rgba(255, 248, 230, 0.08), rgba(255, 248, 230, 0)),
+        rgba(82, 46, 18, 0.74);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 230, 0.08),
+        0 8px 18px rgba(0, 0, 0, 0.2);
 }
 
 .dateLabel {
     font-size: clamp(0.98rem, 1.08vw, 1.28rem);
     font-weight: 500;
     line-height: 1.1;
-    color: var(--sl-neutral-0, #ffffff);
+    color: #f8f1e4;
 }
 
 @media (max-width: 1280px) {

@@ -1,4 +1,3 @@
-// src/shared/ui/HotelSectionDescription/HotelSectionDescription.jsx
 import styles from "./HotelSectionDescription.module.css";
 
 /**

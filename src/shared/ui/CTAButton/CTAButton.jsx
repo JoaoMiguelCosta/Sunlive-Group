@@ -1,11 +1,10 @@
-// src/shared/ui/CTAButton/CTAButton.jsx
 import styles from "./CTAButton.module.css";
 
 /* Hooks (rota certa a partir de shared/ui/CTAButton) */
 import { useBlink } from "../../hooks/useBlink.js";
 import useLocalSmoothAnchors from "../../hooks/useLocalSmoothAnchors.js";
 
-/* Ícones (ajusta se o teu index/export for diferente) */
+/* Ícones */
 import { PhoneIcon } from "../icons";
 
 /**
@@ -29,6 +28,13 @@ import { PhoneIcon } from "../icons";
  */
 const ICON_MAP = {
   phone: PhoneIcon,
+};
+
+const VARIANT_CLASS_MAP = {
+  default: "",
+  hero: "button--hero",
+  sports: "button--sports",
+  hotel: "button--hotel",
 };
 
 export default function CTAButton({
@@ -78,7 +84,6 @@ export default function CTAButton({
   const isExternal = typeof href === "string" && /^https?:\/\//i.test(href);
 
   const { on, bind } = useBlink({ cycleMs: 1800, disabled: !blink });
-
   const { isSamePageHash } = useLocalSmoothAnchors();
 
   const prefersReduce =
@@ -125,12 +130,11 @@ export default function CTAButton({
     }
   };
 
+  const variantClassKey = VARIANT_CLASS_MAP[variant] ?? "";
   const classes = [styles.button];
 
   if (blink) classes.push(styles["button--blink"]);
-  if (variant === "hero") classes.push(styles["button--hero"]);
-  if (variant === "sports") classes.push(styles["button--sports"]);
-  if (variant === "hotel") classes.push(styles["button--hotel"]);
+  if (variantClassKey) classes.push(styles[variantClassKey]);
   if (className) classes.push(className);
 
   const commonProps = {
@@ -138,6 +142,7 @@ export default function CTAButton({
     className: classes.join(" "),
     "data-compact": compact,
     "data-on": on ? "true" : "false",
+    "data-variant": variant,
     onClick: handleClick,
     ...bind,
     ...rest,

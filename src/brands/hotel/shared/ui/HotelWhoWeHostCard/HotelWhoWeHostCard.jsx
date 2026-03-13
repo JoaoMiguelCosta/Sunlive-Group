@@ -1,4 +1,3 @@
-// src/shared/ui/HotelWhoWeHostCard/HotelWhoWeHostCard.jsx
 import styles from "./HotelWhoWeHostCard.module.css";
 
 /**

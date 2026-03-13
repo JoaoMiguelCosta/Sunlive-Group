@@ -22,10 +22,7 @@ export default function Footer({
   } = data;
 
   const InfoHeader = components.InfoHeader || DefaultInfoHeader;
-
-  // LinkDirectory é “slot”
   const LinkDirectory = components.LinkDirectory || null;
-
   const Acknowledgements =
     components.Acknowledgements || DefaultAcknowledgements;
   const PoliciesBar = components.PoliciesBar || DefaultPoliciesBar;
