@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import hotelBrand from "../../../../config/index.js";
 
@@ -10,21 +10,37 @@ import styles from "./RoomCardsGrid.module.css";
 export default function RoomCardsGrid() {
   const content =
     hotelBrand?.pages?.accommodation?.sections?.accommodations ?? null;
-  const filterCfg = content?.roomProfilesFilter ?? null;
-  const cards = content?.roomCards ?? [];
-
-  const [active, setActive] = useState("all");
-
-  const visibleCards = useMemo(() => {
-    if (!cards?.length) return [];
-    if (active === "all") return cards;
-    return cards.filter((card) => (card.profiles ?? []).includes(active));
-  }, [cards, active]);
 
   if (!content) return null;
 
+  const filterCfg = content.roomProfilesFilter ?? null;
+  const cards = Array.isArray(content.roomCards) ? content.roomCards : [];
+
+  const defaultActive = filterCfg?.options?.[0]?.id ?? "all";
+  const [active, setActive] = useState(defaultActive);
+  const [openRoomId, setOpenRoomId] = useState(null);
+
+  const visibleCards = useMemo(() => {
+    if (!cards.length) return [];
+    if (active === "all") return cards;
+
+    return cards.filter((card) => (card.profiles ?? []).includes(active));
+  }, [cards, active]);
+
+  useEffect(() => {
+    const stillVisible = visibleCards.some((card) => card.id === openRoomId);
+
+    if (!stillVisible) {
+      setOpenRoomId(null);
+    }
+  }, [visibleCards, openRoomId]);
+
+  function handleToggle(roomId) {
+    setOpenRoomId((prev) => (prev === roomId ? null : roomId));
+  }
+
   return (
-    <section className={styles.wrap} aria-label="Rooms list">
+    <div className={styles.wrap}>
       <RoomProfileFilterBar
         label={filterCfg?.label ?? "Filtrar por perfil"}
         options={filterCfg?.options ?? []}
@@ -32,18 +48,25 @@ export default function RoomCardsGrid() {
         onChange={setActive}
       />
 
-      <div className={styles.grid}>
-        {visibleCards.map((room) => (
-          <HotelRoomCard
-            key={room.id}
-            title={room.title}
-            description={room.description}
-            features={room.features}
-            imageSrc={room.imageSrc}
-            imageAlt={room.imageAlt}
-          />
-        ))}
+      <div className={styles.grid} aria-label="Lista de quartos">
+        {visibleCards.map((room) => {
+          const open = openRoomId === room.id;
+
+          return (
+            <HotelRoomCard
+              key={room.id}
+              title={room.title}
+              description={room.description}
+              features={room.features}
+              imageSrc={room.imageSrc}
+              imageAlt={room.imageAlt}
+              badge={room.badge}
+              detailsOpen={open}
+              onToggle={() => handleToggle(room.id)}
+            />
+          );
+        })}
       </div>
-    </section>
+    </div>
   );
 }

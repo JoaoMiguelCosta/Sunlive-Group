@@ -1,14 +1,33 @@
-/* src/brands/hotel/components/About/AboutTheHotel/AboutTheHotelHeader.module.css */
-
 .wrap {
     position: relative;
     isolation: isolate;
     inline-size: 100%;
-    margin-block-end: clamp(1.25rem, 2.4vw, 1.85rem);
+    margin-block-end: clamp(1.4rem, 2.8vw, 2.1rem);
+}
+
+.wrap::before {
+    content: "";
+    position: absolute;
+    inset: auto 50% -0.35rem 50%;
+    translate: -50% 0;
+    inline-size: clamp(180px, 24vw, 300px);
+    block-size: 48px;
+    pointer-events: none;
+    background: radial-gradient(circle,
+            rgba(241, 205, 132, 0.16) 0%,
+            rgba(241, 205, 132, 0.06) 38%,
+            rgba(241, 205, 132, 0) 72%);
+    filter: blur(22px);
+    opacity: 0.9;
 }
 
 @media (max-width: 640px) {
     .wrap {
         margin-block-end: 1rem;
+    }
+
+    .wrap::before {
+        inline-size: 170px;
+        block-size: 38px;
     }
 }

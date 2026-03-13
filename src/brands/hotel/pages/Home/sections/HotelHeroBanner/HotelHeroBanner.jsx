@@ -57,6 +57,7 @@ export default function HotelHeroBanner({ onContactClick }) {
               cta={cta}
               icon={cta.iconKey ?? "phone"}
               variant="hotel"
+              tone={cta.tone ?? "strong"}
               className={styles.cta}
               onClick={handleClick}
             />

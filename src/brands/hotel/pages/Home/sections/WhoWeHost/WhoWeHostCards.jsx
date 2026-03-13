@@ -21,8 +21,12 @@ export default function WhoWeHostCards({ items = [] }) {
   return (
     <div className={styles.wrap}>
       <div className={styles.grid}>
-        {mappedItems.map((item) => (
-          <div key={item.id} className={styles.item}>
+        {mappedItems.map((item, index) => (
+          <div
+            key={item.id}
+            className={styles.item}
+            style={{ "--who-card-delay": `${index * 40}ms` }}
+          >
             <HotelWhoWeHostCard
               id={item.id}
               icon={item.icon}

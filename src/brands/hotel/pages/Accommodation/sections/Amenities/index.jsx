@@ -8,14 +8,25 @@ import hotelBrand from "../../../../config/index.js";
 
 export default function Amenities() {
   const content = hotelBrand?.pages?.accommodation?.sections?.amenities ?? null;
+
   if (!content) return null;
 
+  const sectionId = content.id ?? "accommodation-amenities";
+  const titleId = `${sectionId}-title`;
+
   return (
-    <section id={content.id} className={styles.section} aria-label="Amenities">
+    <section
+      id={sectionId}
+      className={styles.section}
+      aria-labelledby={titleId}
+    >
       <div className={styles.inner}>
-        <TitleAmenities label={content.headerLabel} />
+        <TitleAmenities id={titleId} label={content.headerLabel} />
         <DescriptionAmenities>{content.description}</DescriptionAmenities>
-        <AmenitiesPills />
+
+        <div className={styles.pillsWrap}>
+          <AmenitiesPills />
+        </div>
       </div>
     </section>
   );

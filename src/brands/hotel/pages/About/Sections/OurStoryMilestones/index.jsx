@@ -1,4 +1,3 @@
-// src/brands/hotel/components/About/OurStoryMilestones/index.jsx
 import hotelBrand from "../../../../config/index.js";
 import OurStoryMilestonesHeader from "./OurStoryMilestonesHeader.jsx";
 import OurStoryMilestonesContent from "./OurStoryMilestonesContent.jsx";
@@ -6,10 +5,7 @@ import styles from "./OurStoryMilestones.module.css";
 
 /**
  * OurStoryMilestonesSection
- * Wrapper da secção "A nossa História" na página About.
- *
- * - Garante alinhamento com o container global
- * - Usa header + content já criados
+ * Secção "A Nossa História" da página About.
  */
 export default function OurStoryMilestonesSection() {
   const section =
@@ -17,17 +13,17 @@ export default function OurStoryMilestonesSection() {
 
   if (!section) return null;
 
-  const { id, headerLabel } = section;
-  const sectionProps = id ? { id } : {};
+  const sectionId = section?.id ?? "our-story-milestones";
+  const titleId = `${sectionId}-title`;
 
   return (
     <section
-      {...sectionProps}
+      id={sectionId}
       className={styles.section}
-      aria-label={headerLabel}
+      aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <OurStoryMilestonesHeader />
+        <OurStoryMilestonesHeader titleId={titleId} />
         <OurStoryMilestonesContent />
       </div>
     </section>

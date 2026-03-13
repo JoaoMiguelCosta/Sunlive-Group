@@ -1,3 +1,5 @@
+const CONTACTS_HREF = "/sunlive-group/hotel/information#info-contacts";
+
 export const forWhomProfiles = {
   id: "estadia-perfis",
   items: [
@@ -44,7 +46,7 @@ export const forWhomProfiles = {
           { id: "h3", text: "Apoio nutricional" },
         ],
         ctaLabel: "Solicitar proposta para Atletas",
-        ctaHref: "#",
+        ctaHref: CONTACTS_HREF,
       },
     },
     {
@@ -90,7 +92,7 @@ export const forWhomProfiles = {
           { id: "h3", text: "Estacionamento gratuito" },
         ],
         ctaLabel: "Pedir informações Familiar",
-        ctaHref: "#",
+        ctaHref: CONTACTS_HREF,
       },
     },
     {
@@ -136,7 +138,7 @@ export const forWhomProfiles = {
           { id: "h3", text: "Tranquilidade garantida" },
         ],
         ctaLabel: "Solicitar experiência a dois",
-        ctaHref: "#",
+        ctaHref: CONTACTS_HREF,
       },
     },
     {
@@ -182,7 +184,7 @@ export const forWhomProfiles = {
           { id: "h3", text: "Flexibilidade de horários" },
         ],
         ctaLabel: "Pedir Orçamento para Grupo",
-        ctaHref: "#",
+        ctaHref: CONTACTS_HREF,
       },
     },
     {
@@ -228,7 +230,7 @@ export const forWhomProfiles = {
           { id: "h3", text: "Ambiente inspirador" },
         ],
         ctaLabel: "Solicitar proposta para Empresa",
-        ctaHref: "#",
+        ctaHref: CONTACTS_HREF,
       },
     },
   ],

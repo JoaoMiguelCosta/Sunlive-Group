@@ -9,15 +9,17 @@
 .wrap::after {
     content: "";
     display: block;
-    inline-size: clamp(72px, 10vw, 116px);
+    inline-size: clamp(76px, 10vw, 124px);
     block-size: 2px;
     margin-block-start: 0.8rem;
 
     background: linear-gradient(90deg,
-            rgba(241, 205, 132, 0.1) 0%,
-            rgba(241, 205, 132, 0.92) 50%,
-            rgba(241, 205, 132, 0.1) 100%);
+            rgba(241, 205, 132, 0.08) 0%,
+            rgba(241, 205, 132, 0.96) 50%,
+            rgba(241, 205, 132, 0.08) 100%);
     border-radius: 999px;
+
+    box-shadow: 0 0 18px rgba(241, 205, 132, 0.18);
 }
 
 .title {
@@ -25,7 +27,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    font-size: clamp(1.05rem, 1vw + 0.82rem, 1.38rem);
+    font-size: clamp(1.08rem, 1vw + 0.82rem, 1.42rem);
     line-height: 1.18;
     color: rgba(255, 248, 235, 0.97);
     text-wrap: balance;
@@ -54,7 +56,7 @@
 
     .wrap::after {
         margin-block-start: 0.7rem;
-        inline-size: 76px;
+        inline-size: 78px;
     }
 
     .title {

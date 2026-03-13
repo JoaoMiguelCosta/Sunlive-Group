@@ -1,5 +1,4 @@
 import { GLOBAL_ICONS } from "../../../../../shared/config/icons/global.icons.js";
-import { HOTEL_COMPANY } from "../../core/company.js";
 
 export const planYourStay = {
   id: "hotel-plan-your-stay",
@@ -9,14 +8,18 @@ export const planYourStay = {
     {
       id: "phone",
       label: "Contactar por Telefone",
-      href: HOTEL_COMPANY.contacts.phone.href,
+      href: "/sunlive-group/hotel/information#info-contacts",
       Icon: GLOBAL_ICONS.PhoneIcon,
+      ariaLabel: "Ir para a secção de contactos da página Information",
+      tone: "strong",
     },
     {
       id: "email",
       label: "Contactar por Email",
-      href: HOTEL_COMPANY.contacts.email.href,
+      href: "/sunlive-group/hotel/information#info-contacts",
       Icon: GLOBAL_ICONS.MailIcon,
+      ariaLabel: "Ir para a secção de contactos da página Information",
+      tone: "soft",
     },
   ],
 };

@@ -1,22 +1,28 @@
-// src/shared/components/hotel/HotelHighlightPill.jsx
 import styles from "./HotelHighlightPill.module.css";
 
 /**
  * HotelHighlightPill
- * Card em forma de "pill" para frases de destaque
- * (Sport & Nature, citações, etc.)
+ * Bloco premium reutilizável para frases de destaque.
  *
- * Uso:
- *  <HotelHighlightPill>
- *    O seu conceito <strong>"Sport & Nature"</strong> traduz o equilíbrio...
- *  </HotelHighlightPill>
+ * Props:
+ * - children: conteúdo interno
+ * - className?: classes extra
+ * - as?: tag HTML opcional
  */
-export default function HotelHighlightPill({ children, className = "" }) {
+export default function HotelHighlightPill({
+  children,
+  className = "",
+  as: Tag = "div",
+}) {
   if (!children) return null;
 
+  const classNames = [styles.wrap, className].filter(Boolean).join(" ");
+
   return (
-    <div className={`${styles.wrap} ${className}`}>
-      <div className={styles.card}>{children}</div>
-    </div>
+    <Tag className={classNames}>
+      <div className={styles.card}>
+        <div className={styles.inner}>{children}</div>
+      </div>
+    </Tag>
   );
 }

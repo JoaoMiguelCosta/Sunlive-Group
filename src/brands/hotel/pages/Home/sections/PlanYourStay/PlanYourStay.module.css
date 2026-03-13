@@ -2,14 +2,14 @@
     position: relative;
     isolation: isolate;
     background: transparent;
-    padding-block: clamp(3.2rem, 6vw, 5rem);
+    padding-block: 0;
 }
 
 .inner {
-    --section-x: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
-    --section-max: var(--sl-container-lg, 85rem);
+    --section-x: 0px;
+    --section-max: 100%;
 
-    inline-size: min(var(--section-max), calc(100% - (2 * var(--section-x))));
+    inline-size: 100%;
     margin-inline: auto;
     box-sizing: border-box;
 }
@@ -89,10 +89,6 @@
 }
 
 @media (max-width: 640px) {
-    .section {
-        padding-block: 2.4rem 2.8rem;
-    }
-
     .box {
         padding: 1.2rem 1rem 1.15rem;
         border-radius: 22px;

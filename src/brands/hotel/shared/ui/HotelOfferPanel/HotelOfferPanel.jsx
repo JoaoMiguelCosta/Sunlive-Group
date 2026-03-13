@@ -4,9 +4,9 @@ import styles from "./HotelOfferPanel.module.css";
  * HotelOfferPanel
  *
  * Props:
- * - title: string (ex: "O que disponibilizamos:")
+ * - title: string
  * - items?: Array<{ id: string, title: string, description?: string, Icon?: ReactComponent }>
- * - highlightsTitle?: string (ex: "Destaques:")
+ * - highlightsTitle?: string
  * - highlights?: Array<{ id: string, text: string }>
  * - ctaLabel?: string
  * - onCtaClick?: () => void
@@ -16,7 +16,7 @@ import styles from "./HotelOfferPanel.module.css";
 export default function HotelOfferPanel({
   title,
   items = [],
-  highlightsTitle = "Destaques:",
+  highlightsTitle = "Destaques",
   highlights = [],
   ctaLabel,
   onCtaClick,
@@ -34,57 +34,65 @@ export default function HotelOfferPanel({
     <div className={wrapClass} aria-label={title || "Oferta"}>
       {title ? <h3 className={styles.hTitle}>{title}</h3> : null}
 
-      {Array.isArray(items) && items.length ? (
-        <div className={styles.box}>
-          <ul className={styles.items}>
-            {items.map((item) => (
-              <li key={item.id} className={styles.item}>
-                <span className={styles.itemIcon} aria-hidden="true">
-                  {item.Icon ? (
-                    <item.Icon className={styles.iconSvg} />
-                  ) : (
-                    <span className={styles.iconPlaceholder} />
-                  )}
-                </span>
+      <div className={styles.contentGrid}>
+        {Array.isArray(items) && items.length ? (
+          <div className={styles.box}>
+            <ul className={styles.items}>
+              {items.map((item) => (
+                <li key={item.id} className={styles.item}>
+                  <span className={styles.itemIcon} aria-hidden="true">
+                    {item.Icon ? (
+                      <item.Icon className={styles.iconSvg} />
+                    ) : (
+                      <span className={styles.iconPlaceholder} />
+                    )}
+                  </span>
 
-                <div className={styles.itemText}>
-                  <div className={styles.itemTitle}>{item.title}</div>
-                  {item.description ? (
-                    <div className={styles.itemDesc}>{item.description}</div>
-                  ) : null}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
+                  <div className={styles.itemText}>
+                    <div className={styles.itemTitle}>{item.title}</div>
+                    {item.description ? (
+                      <div className={styles.itemDesc}>{item.description}</div>
+                    ) : null}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
 
-      {highlightsTitle ? (
-        <h4 className={styles.hSubTitle}>{highlightsTitle}</h4>
-      ) : null}
+        {highlightsTitle || (Array.isArray(highlights) && highlights.length) ? (
+          <div className={styles.sideColumn}>
+            {highlightsTitle ? (
+              <h4 className={styles.hSubTitle}>{highlightsTitle}</h4>
+            ) : null}
 
-      {Array.isArray(highlights) && highlights.length ? (
-        <div className={styles.box}>
-          <ul className={styles.highlights}>
-            {highlights.map((highlight) => (
-              <li key={highlight.id} className={styles.highlightItem}>
-                <span className={styles.check} aria-hidden="true">
-                  ✓
-                </span>
-                <span className={styles.highlightText}>{highlight.text}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
+            {Array.isArray(highlights) && highlights.length ? (
+              <div className={styles.box}>
+                <ul className={styles.highlights}>
+                  {highlights.map((highlight) => (
+                    <li key={highlight.id} className={styles.highlightItem}>
+                      <span className={styles.check} aria-hidden="true">
+                        ✓
+                      </span>
+                      <span className={styles.highlightText}>
+                        {highlight.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
 
-      {ctaLabel ? (
-        <div className={styles.ctaWrap}>
-          <CtaTag className={styles.cta} {...ctaProps}>
-            {ctaLabel}
-          </CtaTag>
-        </div>
-      ) : null}
+            {ctaLabel ? (
+              <div className={styles.ctaWrap}>
+                <CtaTag className={styles.cta} {...ctaProps}>
+                  {ctaLabel}
+                </CtaTag>
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

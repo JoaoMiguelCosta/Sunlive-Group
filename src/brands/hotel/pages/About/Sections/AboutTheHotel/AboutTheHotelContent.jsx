@@ -1,4 +1,3 @@
-// src/brands/hotel/components/About/AboutTheHotel/AboutTheHotelContent.jsx
 import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import styles from "./AboutTheHotelContent.module.css";
@@ -6,7 +5,7 @@ import styles from "./AboutTheHotelContent.module.css";
 const BRAND_NAME = "Estalagem de Sangalhos – Sport & Nature Hotel";
 const HIGHLIGHT_KEY = "Sport & Nature";
 
-function renderHighlightedBrand(text) {
+function highlightBrandName(text) {
   if (!text || !text.includes(BRAND_NAME)) return text;
 
   const [before, after] = text.split(BRAND_NAME);
@@ -20,7 +19,7 @@ function renderHighlightedBrand(text) {
   );
 }
 
-function renderHighlightedPillText(text) {
+function highlightPillText(text) {
   if (!text || !text.includes(HIGHLIGHT_KEY)) return text;
 
   const [before, after] = text.split(HIGHLIGHT_KEY);
@@ -34,10 +33,6 @@ function renderHighlightedPillText(text) {
   );
 }
 
-/**
- * AboutTheHotelContent
- * Coluna de texto + coluna de imagem + pill "Sport & Nature".
- */
 export default function AboutTheHotelContent() {
   const aboutSection =
     hotelBrand?.pages?.about?.sections?.aboutTheHotel ?? null;
@@ -45,52 +40,58 @@ export default function AboutTheHotelContent() {
   if (!aboutSection) return null;
 
   const { text, media } = aboutSection;
-  const paragraphs = text?.paragraphs ?? [];
+
+  const paragraphs = Array.isArray(text?.paragraphs) ? text.paragraphs : [];
   const highlightText = text?.highlightPill?.text ?? "";
   const imageSrc = media?.imageSrc ?? null;
-  const imageAlt = media?.imageAlt ?? "";
+  const imageAlt = media?.imageAlt ?? "Imagem da Estalagem de Sangalhos";
 
-  const firstParagraph = paragraphs[0] ?? null;
-  const otherParagraphs = paragraphs.slice(1);
+  const [firstParagraph, ...otherParagraphs] = paragraphs;
 
   return (
     <div className={styles.content}>
       <div className={styles.textCol}>
-        {firstParagraph && (
-          <p className={styles.paragraph}>
-            {renderHighlightedBrand(firstParagraph)}
-          </p>
-        )}
+        <div className={styles.copy}>
+          {firstParagraph ? (
+            <p className={`${styles.paragraph} ${styles.lead}`}>
+              {highlightBrandName(firstParagraph)}
+            </p>
+          ) : null}
 
-        {otherParagraphs.map((paragraph, index) => (
-          <p key={`${paragraph}-${index}`} className={styles.paragraph}>
-            {paragraph}
-          </p>
-        ))}
+          {otherParagraphs.map((paragraph, index) => (
+            <p key={`${index}-${paragraph}`} className={styles.paragraph}>
+              {paragraph}
+            </p>
+          ))}
+        </div>
 
-        {highlightText && (
+        {highlightText ? (
           <div className={styles.highlightWrap}>
-            <HotelHighlightPill>
-              {renderHighlightedPillText(highlightText)}
+            <HotelHighlightPill className={styles.highlightPill}>
+              {highlightPillText(highlightText)}
             </HotelHighlightPill>
           </div>
-        )}
+        ) : null}
       </div>
 
       <div className={styles.mediaCol}>
-        <div className={styles.mediaFrame}>
-          {imageSrc ? (
-            <img
-              src={imageSrc}
-              alt={imageAlt}
-              className={styles.mediaImage}
-              loading="lazy"
-            />
-          ) : (
-            <div className={styles.mediaPlaceholder}>
-              <span className={styles.mediaLabel}>Imagem brevemente</span>
-            </div>
-          )}
+        <div className={styles.mediaShell}>
+          <div className={styles.mediaFrame}>
+            {imageSrc ? (
+              <img
+                src={imageSrc}
+                alt={imageAlt}
+                className={styles.mediaImage}
+                loading="lazy"
+              />
+            ) : (
+              <div className={styles.mediaPlaceholder}>
+                <span className={styles.mediaLabel}>Imagem brevemente</span>
+              </div>
+            )}
+
+            <div className={styles.mediaOverlay} aria-hidden="true" />
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import styles from "./Home.module.css";
+import styles from "../../layouts/HotelPageLayout.module.css";
 
 import HotelHeroBanner from "./sections/HotelHeroBanner/HotelHeroBanner.jsx";
 import HotelOverviewSection from "./sections/HotelOverview/index.jsx";

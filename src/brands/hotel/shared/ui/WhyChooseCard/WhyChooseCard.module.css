@@ -1,43 +1,77 @@
 .card {
+    position: relative;
+    isolation: isolate;
     width: 100%;
-    max-width: 22rem;
+    max-width: none;
+    min-height: 100%;
 
     display: grid;
     grid-template-rows: auto 1fr;
 
     overflow: hidden;
-    border-radius: 18px;
-
-    border: 1px solid rgba(230, 200, 147, 0.42);
+    border-radius: 24px;
+    border: 1px solid rgba(230, 200, 147, 0.28);
 
     background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
-        #26170b;
+        radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 44%),
+        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.10), transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.04) 0%,
+            rgba(255, 248, 235, 0.014) 18%,
+            rgba(0, 0, 0, 0.10) 100%),
+        linear-gradient(135deg,
+            rgba(44, 23, 11, 0.96) 0%,
+            rgba(28, 14, 8, 0.98) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 42px rgba(0, 0, 0, 0.28),
-        0 0 0 1px rgba(255, 255, 255, 0.015);
+        inset 0 1px 0 rgba(255, 248, 235, 0.045),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
+        0 16px 38px rgba(0, 0, 0, 0.20);
+
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
 }
 
-/* ───────── Top bar ───────── */
-.topBar {
-    padding: 1rem 1rem 0.9rem;
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.07) 0%,
+            rgba(255, 248, 235, 0.02) 15%,
+            rgba(255, 255, 255, 0) 38%);
+    opacity: 0.92;
+}
 
+.card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(230, 200, 147, 0.42);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+        0 22px 48px rgba(0, 0, 0, 0.24);
+}
+
+.topBar {
+    position: relative;
+    padding: 1rem 1rem 0.95rem;
     display: flex;
     justify-content: center;
     align-items: center;
 
     background:
-        linear-gradient(180deg, rgba(128, 80, 38, 0.92), rgba(90, 55, 26, 0.96));
+        linear-gradient(180deg, rgba(128, 80, 38, 0.90), rgba(90, 55, 26, 0.96));
 
     border-bottom: 1px solid rgba(255, 248, 235, 0.08);
 }
 
 .iconWrap {
-    width: 4.15rem;
-    height: 4.15rem;
+    width: 4.05rem;
+    height: 4.05rem;
     border-radius: 999px;
 
     display: grid;
@@ -47,76 +81,101 @@
         radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.20), transparent 58%),
         linear-gradient(180deg, rgba(88, 54, 26, 0.96), rgba(38, 23, 11, 0.98));
 
-    border: 1px solid rgba(230, 200, 147, 0.46);
+    border: 1px solid rgba(230, 200, 147, 0.34);
 
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.08),
-        0 10px 22px rgba(0, 0, 0, 0.20);
+        0 10px 22px rgba(0, 0, 0, 0.18);
 }
 
 .icon {
     display: grid;
     place-items: center;
-
-    width: 2.1rem;
-    height: 2.1rem;
-
+    width: 2rem;
+    height: 2rem;
     color: rgba(255, 236, 208, 0.96);
 }
 
-/* ───────── Content ───────── */
+.iconPlaceholder {
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 8px;
+    background: rgba(255, 248, 235, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(255, 248, 235, 0.08);
+}
+
 .content {
     display: grid;
-    gap: 0.8rem;
+    grid-template-rows: minmax(112px, auto) minmax(92px, 1fr);
+    align-content: start;
+    gap: 0;
 
-    padding: 1rem 1.05rem 1.15rem;
+    padding: 1.1rem 1.1rem 1.25rem;
     text-align: center;
 
     background:
         radial-gradient(680px 220px at 50% 0%, rgba(230, 200, 147, 0.08), transparent 60%),
-        linear-gradient(180deg, rgba(70, 43, 21, 0.36), rgba(38, 23, 11, 0.18));
+        linear-gradient(180deg, rgba(70, 43, 21, 0.34), rgba(38, 23, 11, 0.18));
 }
 
 .title {
     margin: 0;
-    padding: 0.65rem 0.6rem;
+    padding: 0.8rem 0.65rem;
 
-    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-wrap: balance;
+
+    font-size: clamp(1.1rem, 0.35vw + 1.04rem, 1.28rem);
     font-weight: 900;
     letter-spacing: -0.01em;
+    line-height: 1.3;
     color: rgba(255, 232, 196, 0.96);
 
-    border-top: 1px solid rgba(230, 200, 147, 0.26);
-    border-bottom: 1px solid rgba(230, 200, 147, 0.22);
+    min-height: 112px;
+
+    border-top: 1px solid rgba(230, 200, 147, 0.18);
+    border-bottom: 1px solid rgba(230, 200, 147, 0.16);
 
     background:
-        linear-gradient(180deg, rgba(88, 54, 26, 0.26), rgba(38, 23, 11, 0.12));
-}
-
-.divider {
-    width: 100%;
-    height: 1px;
-    background: rgba(230, 200, 147, 0.16);
+        linear-gradient(180deg, rgba(88, 54, 26, 0.22), rgba(38, 23, 11, 0.10));
 }
 
 .desc {
     margin: 0;
+    padding-top: 1rem;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
 
     color: rgba(255, 248, 240, 0.90);
-    font-size: 1rem;
-    line-height: 1.45;
+    font-size: clamp(0.96rem, 0.25vw + 0.93rem, 1.02rem);
+    line-height: 1.58;
+    text-wrap: pretty;
+
+    min-height: 92px;
 }
 
 @media (max-width: 520px) {
     .card {
-        max-width: 100%;
+        border-radius: 20px;
+    }
+
+    .content {
+        grid-template-rows: minmax(96px, auto) minmax(84px, 1fr);
     }
 
     .title {
-        font-size: 1.1rem;
+        font-size: 1.06rem;
+        min-height: 96px;
     }
 
     .desc {
-        font-size: 0.97rem;
+        min-height: 84px;
+        font-size: 0.95rem;
     }
 }

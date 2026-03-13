@@ -1,7 +1,7 @@
 import styles from "./HotelRoomCard.module.css";
 
 /**
- * HotelRoomCard (reutilizável)
+ * HotelRoomCard
  *
  * Props:
  *  - title: string
@@ -10,6 +10,8 @@ import styles from "./HotelRoomCard.module.css";
  *  - imageSrc?: string | null
  *  - imageAlt?: string
  *  - badge?: string
+ *  - detailsOpen?: boolean
+ *  - onToggle?: () => void
  *  - className?: string
  */
 export default function HotelRoomCard({
@@ -19,9 +21,21 @@ export default function HotelRoomCard({
   imageSrc = null,
   imageAlt = "",
   badge,
+  detailsOpen = false,
+  onToggle,
   className = "",
 }) {
   const hasImage = Boolean(imageSrc);
+  const hasFeatures = Array.isArray(features) && features.length > 0;
+
+  const safeSlug = String(title || "room")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  const panelId = `room-details-${safeSlug}`;
 
   return (
     <article className={[styles.card, className].filter(Boolean).join(" ")}>
@@ -34,7 +48,9 @@ export default function HotelRoomCard({
           />
         ) : (
           <div className={styles.placeholder}>
-            <span className={styles.placeholderText}>Foto</span>
+            <span className={styles.placeholderText}>
+              Imagem disponível em breve
+            </span>
           </div>
         )}
 
@@ -51,17 +67,67 @@ export default function HotelRoomCard({
         </div>
       ) : null}
 
-      {features?.length ? (
-        <ul className={styles.features} aria-label="Room features">
-          {features.map((text, index) => (
-            <li key={`${text}-${index}`} className={styles.featureItem}>
-              <span className={styles.check} aria-hidden="true">
-                ✓
+      {hasFeatures ? (
+        <>
+          <div className={styles.toggleWrap}>
+            <button
+              type="button"
+              className={styles.toggleButton}
+              onClick={onToggle}
+              aria-expanded={detailsOpen}
+              aria-controls={panelId}
+            >
+              <span>{detailsOpen ? "Ocultar detalhes" : "Ver detalhes"}</span>
+
+              <span
+                className={[
+                  styles.chevron,
+                  detailsOpen ? styles.chevronOpen : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                aria-hidden="true"
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path
+                    d="M6 9l6 6 6-6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </span>
-              <span className={styles.featureText}>{text}</span>
-            </li>
-          ))}
-        </ul>
+            </button>
+          </div>
+
+          <div
+            id={panelId}
+            className={[
+              styles.detailsPanel,
+              detailsOpen ? styles.detailsPanelOpen : styles.detailsPanelClosed,
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            <div className={styles.detailsInner}>
+              <ul
+                className={styles.features}
+                aria-label="Características do quarto"
+              >
+                {features.map((text, index) => (
+                  <li key={`${text}-${index}`} className={styles.featureItem}>
+                    <span className={styles.check} aria-hidden="true">
+                      ✓
+                    </span>
+                    <span className={styles.featureText}>{text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </>
       ) : null}
     </article>
   );

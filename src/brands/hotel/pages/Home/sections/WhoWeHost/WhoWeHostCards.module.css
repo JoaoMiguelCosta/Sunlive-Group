@@ -15,6 +15,20 @@
 .item {
     grid-column: auto;
     min-inline-size: 0;
+    animation: whoCardFadeUp 480ms ease both;
+    animation-delay: var(--who-card-delay, 0ms);
+}
+
+@keyframes whoCardFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (min-width: 640px) {
@@ -30,6 +44,8 @@
 @media (min-width: 900px) {
     .grid {
         grid-template-columns: repeat(6, minmax(0, 1fr));
+        column-gap: clamp(1.1rem, 2.2vw, 1.5rem);
+        row-gap: clamp(1.1rem, 2.2vw, 1.5rem);
     }
 
     .item {
@@ -54,5 +70,11 @@
 
     .item:nth-child(5) {
         grid-column: 4 / span 2;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .item {
+        animation: none;
     }
 }

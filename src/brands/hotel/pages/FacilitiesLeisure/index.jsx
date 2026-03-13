@@ -1,7 +1,7 @@
 // src/brands/hotel/pages/FacilitiesLeisure/index.jsx
 // Estalagem de Sangalhos — Facilities & Leisure (reutiliza Home.module.css como layout)
 
-import styles from "../Home/Home.module.css";
+import styles from "../../layouts/HotelPageLayout.module.css";
 
 import FacilitiesLeisureSection from "./sections/FacilitiesLeisure/index.jsx";
 import WellBeingSection from "./sections/WeelBeing/index.jsx";

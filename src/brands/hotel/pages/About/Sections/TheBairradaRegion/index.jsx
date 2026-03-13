@@ -1,4 +1,3 @@
-// src/brands/hotel/pages/HotelAbout/sections/TheBairradaRegion/TheBairradaRegion.jsx
 import hotelBrand from "../../../../config/index.js";
 
 import TheBairradaRegionHeader from "./TheBairradaRegionHeader.jsx";
@@ -19,7 +18,7 @@ export default function TheBairradaRegion() {
     : [];
 
   const sectionId = section.id ?? "sobre-bairrada";
-  const titleId = section.id ? `${section.id}-title` : undefined;
+  const titleId = `${sectionId}-title`;
 
   return (
     <section

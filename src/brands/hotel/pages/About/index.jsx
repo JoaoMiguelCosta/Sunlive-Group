@@ -1,7 +1,7 @@
 // src/brands/hotel/pages/About/index.jsx
 // Estalagem de Sangalhos — AboutPage (reutiliza Home.module.css como layout)
 
-import styles from "../Home/Home.module.css";
+import styles from "../../layouts/HotelPageLayout.module.css";
 
 import AboutTheHotel from "./Sections/AboutTheHotel";
 import OurStoryMilestonesSection from "./Sections/OurStoryMilestones";

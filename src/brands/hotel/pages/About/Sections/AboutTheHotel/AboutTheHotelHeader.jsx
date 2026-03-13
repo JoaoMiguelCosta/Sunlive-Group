@@ -1,23 +1,25 @@
-// src/brands/hotel/components/About/AboutTheHotel/AboutTheHotelHeader.jsx
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 import styles from "./AboutTheHotelHeader.module.css";
 
 /**
  * AboutTheHotelHeader
- * Barra de título "Sobre a Estalagem".
+ * Cabeçalho da secção "Sobre a Estalagem".
  */
-export default function AboutTheHotelHeader() {
+export default function AboutTheHotelHeader({ titleId }) {
   const aboutSection =
     hotelBrand?.pages?.about?.sections?.aboutTheHotel ?? null;
 
-  if (!aboutSection) return null;
-
-  const { headerLabel } = aboutSection;
+  if (!aboutSection?.headerLabel) return null;
 
   return (
     <div className={styles.wrap}>
-      <HotelSectionHeader label={headerLabel} as="h2" align="center" />
+      <HotelSectionHeader
+        id={titleId}
+        label={aboutSection.headerLabel}
+        as="h2"
+        align="center"
+      />
     </div>
   );
 }

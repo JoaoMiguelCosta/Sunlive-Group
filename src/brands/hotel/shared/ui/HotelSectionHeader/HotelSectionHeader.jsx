@@ -2,14 +2,14 @@ import styles from "./HotelSectionHeader.module.css";
 
 /**
  * HotelSectionHeader
- * Título reutilizável para secções da Estalagem.
+ * Título reutilizável para secções da brand Hotel.
  *
  * Props:
- *  - id?: string
- *  - label: string
- *  - as?: "h2" | "h3" | "h4"
- *  - align?: "center" | "left"
- *  - className?: string
+ * - id?: string
+ * - label: string
+ * - as?: "h2" | "h3" | "h4"
+ * - align?: "center" | "left"
+ * - className?: string
  */
 export default function HotelSectionHeader({
   id,
@@ -18,14 +18,18 @@ export default function HotelSectionHeader({
   align = "center",
   className = "",
 }) {
-  const alignClass = styles[align] ?? "";
-  const wrapClassName = [styles.wrap, alignClass, className]
+  if (!label) return null;
+
+  const alignClass = styles[align] ?? styles.center;
+  const classNames = [styles.wrap, alignClass, className]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <div id={id} className={wrapClassName}>
-      <Tag className={styles.title}>{label}</Tag>
+    <div className={classNames}>
+      <Tag id={id} className={styles.title}>
+        {label}
+      </Tag>
     </div>
   );
 }

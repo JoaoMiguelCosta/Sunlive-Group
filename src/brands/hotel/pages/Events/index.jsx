@@ -1,6 +1,6 @@
 // src/brands/hotel/pages/Events/index.jsx
 
-import styles from "../Home/Home.module.css";
+import styles from "../../layouts/HotelPageLayout.module.css";
 
 import EventsCelebrationsSection from "./sections/EventsCelebrations/index.jsx";
 import CustomizedQuotesSection from "./sections/CustomizedQuotes/index.jsx";

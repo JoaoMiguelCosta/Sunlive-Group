@@ -8,6 +8,7 @@ export default function WhyChooseCard({
   ariaLabel,
 }) {
   const label = ariaLabel || title || "card";
+  const hasIcon = Boolean(icon);
 
   return (
     <article
@@ -16,15 +17,16 @@ export default function WhyChooseCard({
     >
       <div className={styles.topBar}>
         <div className={styles.iconWrap} aria-hidden="true">
-          {icon ? <span className={styles.icon}>{icon}</span> : null}
+          {hasIcon ? (
+            <span className={styles.icon}>{icon}</span>
+          ) : (
+            <span className={styles.iconPlaceholder} />
+          )}
         </div>
       </div>
 
       <div className={styles.content}>
         {title ? <h3 className={styles.title}>{title}</h3> : null}
-        {title && description ? (
-          <div className={styles.divider} aria-hidden="true" />
-        ) : null}
         {description ? <p className={styles.desc}>{description}</p> : null}
       </div>
     </article>

@@ -5,26 +5,24 @@ import hotelBrand from "../../../../config/index.js";
 
 export default function AmenitiesPills() {
   const content = hotelBrand?.pages?.accommodation?.sections?.amenities ?? null;
-  const items = content?.items ?? [];
+  const items = Array.isArray(content?.items) ? content.items : [];
 
   if (!items.length) return null;
 
   return (
-    <div className={styles.wrap} aria-label="Amenities list">
-      <div className={styles.grid}>
-        {items.map((item) => {
-          const Icon = null;
-
-          return (
+    <div className={styles.wrap}>
+      <div className={styles.grid} aria-label="Lista de comodidades">
+        {items.map((item) => (
+          <div key={item.id} className={styles.item}>
             <HotelIconPill
-              key={item.id}
               label={item.label}
-              Icon={Icon}
+              Icon={null}
               size="md"
               className={styles.pill}
+              ariaLabel={item.label}
             />
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );

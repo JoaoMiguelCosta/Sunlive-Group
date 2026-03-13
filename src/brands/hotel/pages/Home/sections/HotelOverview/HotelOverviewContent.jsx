@@ -1,4 +1,4 @@
-import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
+import HotelInlineActionButton from "../../../../shared/ui/HotelInlineActionButton//HotelInlineActionButton.jsx";
 import styles from "./HotelOverviewContent.module.css";
 
 export default function HotelOverviewContent({ section }) {
@@ -19,10 +19,10 @@ export default function HotelOverviewContent({ section }) {
 
         {cta?.href ? (
           <div className={styles.ctaWrap}>
-            <CTAButton
-              cta={cta}
-              icon={cta.iconKey ?? "phone"}
-              variant="hotel"
+            <HotelInlineActionButton
+              href={cta.href}
+              label={cta.label}
+              ariaLabel={cta.ariaLabel ?? cta.label}
               className={styles.ctaButton}
             />
           </div>

@@ -4,7 +4,8 @@
    CTAButton — base + variantes (hero/sports/hotel)
    - Base neutra e segura para uso global
    - Hero e Sports preservadas
-   - Hotel refinada para um look mais premium
+   - Hotel refinada para look premium
+   - Tone opcional para hierarquia visual
    =========================================== */
 
 .button {
@@ -56,7 +57,8 @@
         box-shadow .16s ease,
         border-color .16s ease,
         color .16s ease,
-        background .16s ease;
+        background .16s ease,
+        opacity .16s ease;
 }
 
 /* Conteúdo acima dos overlays */
@@ -364,9 +366,8 @@
 
 /* =========================================================
    VARIANTE HOTEL
-   - Mais refinada e menos pesada
+   - Refinada e menos pesada
    - Mantém identidade quente/dourada
-   - Reduz halo e excesso de chrome visual
    ========================================================= */
 .button--hotel {
     --hotel-border: rgba(230, 200, 147, 0.28);
@@ -471,6 +472,94 @@
 
 .button--hotel:focus-visible {
     outline: none;
+}
+
+/* =========================================================
+   HOTEL TONES
+   - Só afeta variant="hotel"
+   - Permite CTA principal/secundária sem impactar outras brands
+   ========================================================= */
+
+.button--hotel[data-tone="strong"] {
+    --hotel-border: rgba(230, 200, 147, 0.42);
+    --hotel-border-hover: rgba(241, 205, 132, 0.62);
+    --hotel-halo-soft: rgba(230, 200, 147, 0.12);
+    --hotel-halo-strong: rgba(199, 134, 21, 0.18);
+
+    color: #fff7ea;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.08) 0%,
+            rgba(255, 248, 235, 0.024) 22%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(135deg,
+            rgba(82, 48, 20, 0.98) 0%,
+            rgba(46, 25, 12, 0.99) 52%,
+            rgba(26, 14, 8, 1) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
+        0 0 0 2px rgba(230, 200, 147, 0.08),
+        0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+.button--hotel[data-tone="strong"]::after {
+    background:
+        linear-gradient(180deg,
+            rgba(241, 205, 132, 0.18) 0%,
+            rgba(199, 134, 21, 0.22) 100%);
+}
+
+.button--hotel[data-tone="strong"]:hover,
+.button--hotel[data-tone="strong"]:focus-visible {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.12),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
+        0 0 0 2px rgba(230, 200, 147, 0.12),
+        0 18px 38px rgba(0, 0, 0, 0.32);
+}
+
+.button--hotel[data-tone="soft"] {
+    --hotel-border: rgba(230, 200, 147, 0.2);
+    --hotel-border-hover: rgba(230, 200, 147, 0.34);
+    --hotel-halo-soft: rgba(230, 200, 147, 0.04);
+    --hotel-halo-strong: rgba(199, 134, 21, 0.08);
+
+    color: rgba(255, 243, 218, 0.94);
+    font-weight: 700;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.03) 0%,
+            rgba(255, 248, 235, 0.01) 22%,
+            rgba(0, 0, 0, 0.12) 100%),
+        linear-gradient(135deg,
+            rgba(42, 22, 10, 0.94) 0%,
+            rgba(24, 13, 8, 0.98) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
+        0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.button--hotel[data-tone="soft"]::after {
+    background:
+        linear-gradient(180deg,
+            rgba(230, 200, 147, 0.08) 0%,
+            rgba(199, 134, 21, 0.1) 100%);
+}
+
+.button--hotel[data-tone="soft"]:hover,
+.button--hotel[data-tone="soft"]:focus-visible {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
+        0 10px 22px rgba(0, 0, 0, 0.2);
 }
 
 @media (prefers-reduced-motion: reduce) {

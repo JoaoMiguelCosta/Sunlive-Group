@@ -17,8 +17,10 @@ export default function WhoWeHostSection() {
       className={styles.section}
       aria-labelledby={titleId}
     >
-      <WhoWeHostHeader label={section.headerLabel} titleId={titleId} />
-      <WhoWeHostCards items={section.items ?? []} />
+      <div className={styles.inner}>
+        <WhoWeHostHeader label={section.headerLabel} titleId={titleId} />
+        <WhoWeHostCards items={section.items ?? []} />
+      </div>
     </section>
   );
 }

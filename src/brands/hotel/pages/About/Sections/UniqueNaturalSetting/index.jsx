@@ -1,4 +1,3 @@
-// src/brands/hotel/pages/HotelAbout/sections/UniqueNaturalSetting/UniqueNaturalSetting.jsx
 import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import styles from "./UniqueNaturalSetting.module.css";
@@ -6,6 +5,7 @@ import styles from "./UniqueNaturalSetting.module.css";
 export default function UniqueNaturalSetting() {
   const section =
     hotelBrand?.pages?.about?.sections?.uniqueNaturalSetting ?? null;
+
   const pillText = section?.highlightPill?.text ?? "";
 
   if (!section || !pillText) return null;
@@ -19,7 +19,9 @@ export default function UniqueNaturalSetting() {
       aria-label="Envolvente natural da Estalagem"
     >
       <div className={styles.inner}>
-        <HotelHighlightPill>{pillText}</HotelHighlightPill>
+        <HotelHighlightPill className={styles.closingPill}>
+          {pillText}
+        </HotelHighlightPill>
       </div>
     </section>
   );

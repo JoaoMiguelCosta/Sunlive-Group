@@ -1,48 +1,50 @@
-/* src/brands/hotel/components/Accommodation/ForWhomProfiles/ForWhomProfilesGrid.module.css */
-
 .wrap {
     position: relative;
-    margin-top: clamp(1.5rem, 3vw, 2rem);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: clamp(1rem, 2vw, 1.4rem);
     align-items: start;
 }
 
-.cardWrap {
-    display: grid;
-    gap: 12px;
-    align-content: start;
+.cardCell {
+    min-width: 0;
+    grid-column: span 2;
 }
 
-/*
-  Garante que o card reutilizável ocupa a largura da coluna.
-  Sem isto, como ele tem max-width: 420px, pode parecer “encolhido”.
-*/
-.cardWrap> :first-child {
-    max-width: none;
-    width: 100%;
+.bottomCardLeft {
+    grid-column: 2 / span 2;
 }
 
-.details {
+.bottomCardRight {
+    grid-column: 4 / span 2;
+}
+
+.detailsRow {
+    grid-column: 1 / -1;
+    min-width: 0;
     overflow: hidden;
-    border-radius: 18px;
+    animation: detailsReveal 240ms ease;
+}
 
-    background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.10), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.07), transparent 60%),
-        transparent;
+.topDetails {
+    margin-top: -0.1rem;
+}
 
-    animation: detailsReveal 220ms ease;
+.bottomDetails {
+    margin-top: -0.15rem;
+}
+
+.offerPanel {
+    width: 100%;
 }
 
 @keyframes detailsReveal {
     from {
         opacity: 0;
-        transform: translateY(-6px);
+        transform: translateY(-8px);
     }
 
     to {
@@ -55,10 +57,24 @@
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .cardCell,
+    .bottomCardLeft,
+    .bottomCardRight {
+        grid-column: auto;
+    }
+
+    .detailsRow {
+        grid-column: 1 / -1;
+    }
 }
 
 @media (max-width: 680px) {
     .grid {
         grid-template-columns: 1fr;
+    }
+
+    .detailsRow {
+        grid-column: 1;
     }
 }

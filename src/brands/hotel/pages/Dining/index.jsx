@@ -1,7 +1,7 @@
 // src/brands/hotel/pages/Restoration/index.jsx
 // Estalagem de Sangalhos — RestorationPage (reutiliza Home.module.css como layout)
 
-import styles from "../Home/Home.module.css";
+import styles from "../../layouts/HotelPageLayout.module.css";
 
 import PanoramicRestaurantSection from "./sections/PanoramicRestaurant/index.jsx";
 import BreakfastSection from "./sections/Breakfast/index.jsx";

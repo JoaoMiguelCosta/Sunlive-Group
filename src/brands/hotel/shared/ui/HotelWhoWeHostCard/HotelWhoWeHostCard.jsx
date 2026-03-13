@@ -2,23 +2,24 @@ import styles from "./HotelWhoWeHostCard.module.css";
 
 /**
  * HotelWhoWeHostCard
- * Card único para conteúdo visual do Hotel.
  *
  * Props:
  *  - id?: string
  *  - icon?: ReactNode
  *  - title?: string
- *  - description: string
+ *  - description?: string
  *  - statValue?: string
  *  - variant?: "default" | "metric"
+ *  - className?: string
  */
 export default function HotelWhoWeHostCard({
   id,
   icon = null,
   title = "",
-  description,
+  description = "",
   statValue = null,
   variant = "default",
+  className = "",
 }) {
   if (!description && !title && !statValue) return null;
 
@@ -27,7 +28,9 @@ export default function HotelWhoWeHostCard({
   return (
     <article
       id={id}
-      className={[styles.card, variantClass].filter(Boolean).join(" ")}
+      className={[styles.card, variantClass, className]
+        .filter(Boolean)
+        .join(" ")}
     >
       <div className={styles.cardTop}>
         {icon ? <div className={styles.iconCircle}>{icon}</div> : null}

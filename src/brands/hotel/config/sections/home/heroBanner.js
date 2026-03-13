@@ -1,5 +1,4 @@
 import estalagemLogo from "../../../assets/estalagem.png";
-import { HOTEL_COMPANY } from "../../core/index.js";
 
 export const heroBanner = {
   id: "hotel-hero-banner",
@@ -9,8 +8,10 @@ export const heroBanner = {
   },
   cta: {
     label: "Contactar",
-    href: HOTEL_COMPANY.contacts?.phone?.href ?? "",
+    href: "/sunlive-group/hotel/information#info-contacts",
     iconKey: "phone",
+    ariaLabel: "Ir para a secção de contactos da página Information",
+    tone: "strong",
   },
 };
 

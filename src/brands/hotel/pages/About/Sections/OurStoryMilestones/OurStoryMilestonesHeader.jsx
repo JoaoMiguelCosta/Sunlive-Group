@@ -1,23 +1,25 @@
-// src/brands/hotel/components/About/OurStoryMilestones/OurStoryMilestonesHeader.jsx
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 import styles from "./OurStoryMilestonesHeader.module.css";
 
 /**
  * OurStoryMilestonesHeader
- * Header da secção "A nossa História" na página About.
+ * Header da secção "A Nossa História".
  */
-export default function OurStoryMilestonesHeader() {
+export default function OurStoryMilestonesHeader({ titleId }) {
   const section =
     hotelBrand?.pages?.about?.sections?.ourStoryMilestones ?? null;
 
-  if (!section) return null;
-
-  const { headerLabel } = section;
+  if (!section?.headerLabel) return null;
 
   return (
     <div className={styles.wrap}>
-      <HotelSectionHeader label={headerLabel} as="h2" align="center" />
+      <HotelSectionHeader
+        id={titleId}
+        label={section.headerLabel}
+        as="h2"
+        align="center"
+      />
     </div>
   );
 }

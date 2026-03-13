@@ -1,7 +1,7 @@
 // src/brands/hotel/pages/Accommodation/index.jsx
 // Estalagem de Sangalhos — AccommodationPage (reutiliza Home.module.css como layout)
 
-import styles from "../Home/Home.module.css";
+import styles from "../../layouts/HotelPageLayout.module.css";
 
 import Accommodations from "./sections/Accommodations/index.jsx";
 import Amenities from "./sections/Amenities/index.jsx";

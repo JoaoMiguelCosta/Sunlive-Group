@@ -8,19 +8,23 @@ import hotelBrand from "../../../../config/index.js";
 
 export default function WhyChooseUs() {
   const content = hotelBrand?.pages?.accommodation?.sections?.whyChoose ?? null;
+
   if (!content) return null;
 
   const items = Array.isArray(content.items) ? content.items : [];
+  const sectionId = content.id ?? "accommodation-why-choose-us";
+  const titleId = `${sectionId}-title`;
 
   return (
     <section
-      id={content.id}
+      id={sectionId}
       className={styles.section}
-      aria-label={content.headerLabel || "Porquê escolher"}
+      aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <TitleWhyChooseUs label={content.headerLabel} />
+        <TitleWhyChooseUs id={titleId} label={content.headerLabel} />
         <DescriptionWhyChooseUs>{content.subtitle}</DescriptionWhyChooseUs>
+
         <div className={styles.gridWrap}>
           <WhyChooseUsGrid items={items} />
         </div>

@@ -1,14 +1,13 @@
-// src/shared/ui/HotelMilestoneCard/HotelMilestoneCard.jsx
 import styles from "./HotelMilestoneCard.module.css";
 
 /**
  * HotelMilestoneCard
- * Card em forma de "pill" para marcos cronológicos (2007, 2009, Hoje, etc.)
+ * Card para marcos cronológicos.
  *
  * Props:
- *  - title: string (obrigatório)
- *  - subtitle?: string
- *  - className?: string
+ * - title: string
+ * - subtitle?: string
+ * - className?: string
  */
 export default function HotelMilestoneCard({
   title,
@@ -17,11 +16,15 @@ export default function HotelMilestoneCard({
 }) {
   if (!title) return null;
 
+  const classNames = [styles.wrap, className].filter(Boolean).join(" ");
+
   return (
-    <div className={[styles.wrap, className].filter(Boolean).join(" ")}>
+    <div className={classNames}>
       <article className={styles.card}>
-        <div className={styles.title}>{title}</div>
-        {subtitle ? <div className={styles.subtitle}>{subtitle}</div> : null}
+        <div className={styles.inner}>
+          <h3 className={styles.title}>{title}</h3>
+          {subtitle ? <p className={styles.subtitle}>{subtitle}</p> : null}
+        </div>
       </article>
     </div>
   );

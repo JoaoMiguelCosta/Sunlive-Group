@@ -7,6 +7,8 @@ export default function RoomProfileFilterBar({
   onChange,
   className = "",
 }) {
+  if (!options.length) return null;
+
   return (
     <div className={[styles.wrap, className].filter(Boolean).join(" ")}>
       <div className={styles.inner}>
@@ -22,7 +24,7 @@ export default function RoomProfileFilterBar({
             </svg>
           </span>
 
-          <span className={styles.label}>{label} :</span>
+          <span className={styles.label}>{label}:</span>
         </div>
 
         <div className={styles.chips} role="tablist" aria-label={label}>
@@ -33,9 +35,9 @@ export default function RoomProfileFilterBar({
               <button
                 key={opt.id}
                 type="button"
-                className={[styles.chip, isActive ? styles.active : ""].join(
-                  " ",
-                )}
+                className={[styles.chip, isActive ? styles.active : ""]
+                  .filter(Boolean)
+                  .join(" ")}
                 onClick={() => onChange?.(opt.id)}
                 role="tab"
                 aria-selected={isActive}

@@ -1,19 +1,20 @@
-/* src/brands/hotel/components/Accommodation/Accommodations/RoomCardsGrid.module.css */
-
 .wrap {
-    margin-top: clamp(18px, 3vw, 28px);
+    margin-top: clamp(20px, 3vw, 30px);
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: clamp(14px, 2.2vw, 22px);
+    gap: clamp(16px, 2vw, 22px);
+    align-items: start;
 }
 
 .grid>* {
+    min-width: 0;
     grid-column: span 2;
 }
 
+/* linha 2 centrada quando existem 5 cards */
 .grid> :nth-child(4) {
     grid-column: 2 / span 2;
 }
@@ -24,25 +25,21 @@
 
 @media (max-width: 980px) {
     .grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .grid>* {
-        grid-column: span 2;
+        grid-column: auto;
     }
 
     .grid> :nth-child(4),
     .grid> :nth-child(5) {
-        grid-column: span 2;
+        grid-column: auto;
     }
 }
 
 @media (max-width: 620px) {
     .grid {
         grid-template-columns: 1fr;
-    }
-
-    .grid>* {
-        grid-column: auto;
     }
 }

@@ -1,6 +1,6 @@
 export const accommodations = {
   id: "estadia-accommodations",
-  headerLabel: "Alojamentos",
+  headerLabel: "Alojamento",
   description:
     "Quartos e suítes confortáveis, equipados para diferentes perfis de hóspedes — desde atletas e equipas desportivas a famílias, casais e viajantes em lazer ou trabalho.",
 
@@ -20,7 +20,7 @@ export const accommodations = {
 
   roomsAndSuites: {
     id: "estadia-quartos",
-    headerLabel: "Quartos e Suites",
+    headerLabel: "Quartos e Suítes",
     description:
       "Dispomos de um conjunto de quartos e suites confortáveis e funcionais, pensados para responder a diferentes perfis de hóspedes — desde viajantes individuais e casais, até famílias, equipas desportivas ou grupos empresariais.",
   },
@@ -105,11 +105,11 @@ export const accommodations = {
     },
     {
       id: "room-suite",
-      title: "Suite",
+      title: "Suíte",
       description:
         "Ideal para casais, treinadores ou hóspedes que valorizam espaço extra, privacidade e conforto superior.",
       imageSrc: null,
-      imageAlt: "Suite",
+      imageAlt: "Suíte",
       profiles: ["premium", "professional_coach", "couple"],
       features: [
         "Secretária incluída",

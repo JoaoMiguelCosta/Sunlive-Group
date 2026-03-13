@@ -3,19 +3,16 @@ import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
 function Chevron({ open }) {
   return (
-    <span className={[styles.chev, open ? styles.chevOpen : ""].join(" ")}>
-      <svg
-        viewBox="0 0 24 24"
-        width="22"
-        height="22"
-        aria-hidden="true"
-        focusable="false"
-      >
+    <span
+      className={[styles.chevron, open ? styles.chevronOpen : ""].join(" ")}
+      aria-hidden="true"
+    >
+      <svg viewBox="0 0 24 24" width="18" height="18" focusable="false">
         <path
-          d="M6 9l6 6 6-6"
+          d="M7 10l5 5 5-5"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2.6"
+          strokeWidth="2.2"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
@@ -29,59 +26,57 @@ export default function StayPoliciesAccordion({
   allowMultiple = false,
 }) {
   const safeItems = Array.isArray(items) ? items : [];
-  const { isOpen, toggle } = useAccordion(safeItems, { allowMultiple });
 
-  if (safeItems.length === 0) return null;
+  const accordionItems = safeItems.map((item) => ({
+    key: item.key,
+    defaultOpen: item?.defaultOpen ?? false,
+  }));
+
+  const { isOpen, toggle } = useAccordion(accordionItems, { allowMultiple });
+
+  if (!safeItems.length) return null;
 
   return (
     <div className={styles.accordion}>
       {safeItems.map((item) => {
-        const compact = item.variant === "compact";
-        const open = compact ? true : isOpen(item.key);
+        const open = isOpen(item.key);
+        const panelId = `${item.key}-panel`;
+        const triggerId = `${item.key}-trigger`;
 
         return (
           <div
             key={item.key}
-            className={[
-              styles.item,
-              open ? styles.itemOpen : "",
-              compact ? styles.itemCompact : "",
-            ].join(" ")}
+            className={[styles.item, open ? styles.itemOpen : ""]
+              .filter(Boolean)
+              .join(" ")}
           >
             <button
+              id={triggerId}
               type="button"
               className={styles.trigger}
-              onClick={compact ? undefined : () => toggle(item.key)}
+              onClick={() => toggle(item.key)}
               aria-expanded={open}
-              aria-controls={`${item.key}-panel`}
-              disabled={compact}
+              aria-controls={panelId}
             >
-              <span className={styles.left}>
+              <span className={styles.triggerLeft}>
                 <span className={styles.iconSlot} aria-hidden="true" />
                 <span className={styles.title}>{item.title}</span>
               </span>
 
-              {compact ? null : <Chevron open={open} />}
+              <Chevron open={open} />
             </button>
 
             <div
-              id={`${item.key}-panel`}
+              id={panelId}
               className={[
                 styles.panel,
                 open ? styles.panelOpen : styles.panelClosed,
-                compact ? styles.panelCompact : "",
               ].join(" ")}
               role="region"
-              aria-label={item.title}
+              aria-labelledby={triggerId}
             >
               <div className={styles.panelInner}>
-                {compact ? (
-                  <ul className={styles.compactList}>
-                    <li className={styles.compactItem}>{item.body}</li>
-                  </ul>
-                ) : (
-                  <p className={styles.body}>{item.body}</p>
-                )}
+                <p className={styles.body}>{item.body}</p>
               </div>
             </div>
           </div>

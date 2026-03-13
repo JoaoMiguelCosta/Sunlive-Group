@@ -1,7 +1,7 @@
 // src/brands/hotel/pages/Sustainability/index.jsx
 // Estalagem de Sangalhos — SustainabilityPage (reutiliza Home.module.css como layout)
 
-import styles from "../Home/Home.module.css";
+import styles from "../../layouts/HotelPageLayout.module.css";
 
 import SustainabilityCommitmentSection from "./sections/SustainabilityCommitment/index.jsx";
 import HowToParticipateSection from "./sections/HowToParticipate/index.jsx";

@@ -1,4 +1,3 @@
-// src/brands/hotel/components/About/AboutTheHotel/index.jsx
 import hotelBrand from "../../../../config/index.js";
 import AboutTheHotelHeader from "./AboutTheHotelHeader.jsx";
 import AboutTheHotelContent from "./AboutTheHotelContent.jsx";
@@ -10,12 +9,17 @@ export default function AboutTheHotel() {
 
   if (!aboutSection) return null;
 
-  const sectionProps = aboutSection?.id ? { id: aboutSection.id } : {};
+  const sectionId = aboutSection?.id ?? "about-the-hotel";
+  const titleId = `${sectionId}-title`;
 
   return (
-    <section {...sectionProps} className={styles.section}>
+    <section
+      id={sectionId}
+      className={styles.section}
+      aria-labelledby={titleId}
+    >
       <div className={styles.inner}>
-        <AboutTheHotelHeader />
+        <AboutTheHotelHeader titleId={titleId} />
         <AboutTheHotelContent />
       </div>
     </section>

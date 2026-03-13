@@ -1,7 +1,7 @@
 import styles from "./Accommodations.module.css";
 
-import TitleAccomodations from "./TitleAccomodations.jsx";
-import DescriptionAccomodations from "./DescriptionAccomodations.jsx";
+import TitleAccommodations from "./TitleAccommodations.jsx";
+import DescriptionAccommodations from "./DescriptionAccommodations.jsx";
 
 import TitleRoomsAndSuites from "./TitleRoomsAndSuites.jsx";
 import DescriptionRoomsAndSuites from "./DescriptionRoomsAndSuites.jsx";
@@ -16,35 +16,40 @@ import hotelBrand from "../../../../config/index.js";
 export default function Accommodations() {
   const content =
     hotelBrand?.pages?.accommodation?.sections?.accommodations ?? null;
+
   if (!content) return null;
 
   const roomsAndSuites = content.roomsAndSuites ?? null;
+  const sectionId = content.id ?? "accommodation-accommodations";
+  const titleId = `${sectionId}-title`;
 
   return (
     <section
-      id={content.id}
+      id={sectionId}
       className={styles.section}
-      aria-label="Accommodations"
+      aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <TitleAccomodations label={content.headerLabel} />
+        <TitleAccommodations id={titleId} label={content.headerLabel} />
 
-        <DescriptionAccomodations>
+        <DescriptionAccommodations>
           {content.description}
-        </DescriptionAccomodations>
+        </DescriptionAccommodations>
 
         <div className={styles.galleryWrap}>
           <HotelPhotoCarousel
             items={content.gallery?.items ?? []}
-            fallbackLabel={content.gallery?.fallbackLabel ?? "Fotos"}
+            fallbackLabel={
+              content.gallery?.fallbackLabel ?? "Galeria de alojamento"
+            }
           />
         </div>
 
         {roomsAndSuites ? (
           <section
-            id={roomsAndSuites.id}
+            id={roomsAndSuites.id ?? "accommodation-rooms-and-suites"}
             className={styles.roomsSection}
-            aria-label={roomsAndSuites.headerLabel}
+            aria-label={roomsAndSuites.headerLabel || "Quartos e Suites"}
           >
             <TitleRoomsAndSuites />
             <DescriptionRoomsAndSuites />
@@ -52,7 +57,6 @@ export default function Accommodations() {
         ) : null}
 
         <RoomCardsGrid />
-
         <InfoNoteBanner />
       </div>
     </section>

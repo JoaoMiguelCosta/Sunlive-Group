@@ -1,15 +1,13 @@
-// src/brands/hotel/components/About/OurStoryMilestones/OurStoryMilestonesContent.jsx
 import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import HotelMilestoneCard from "../../../../shared/ui/HotelMilestoneCard/HotelMilestoneCard.jsx";
-
 import styles from "./OurStoryMilestonesContent.module.css";
 
 /**
  * OurStoryMilestonesContent
  * Layout:
- *  - Coluna esquerda: texto + pill de destaque
- *  - Coluna direita: linha vertical + cards de marcos cronológicos
+ * - coluna esquerda: texto editorial + pill
+ * - coluna direita: timeline premium com milestones
  */
 export default function OurStoryMilestonesContent() {
   const section =
@@ -17,41 +15,52 @@ export default function OurStoryMilestonesContent() {
 
   if (!section) return null;
 
-  const paragraphs = section.text?.paragraphs ?? [];
-  const highlightText = section.text?.highlightPill?.text ?? "";
-  const milestones = Array.isArray(section.milestones)
+  const paragraphs = Array.isArray(section?.text?.paragraphs)
+    ? section.text.paragraphs
+    : [];
+
+  const highlightText = section?.text?.highlightPill?.text ?? "";
+
+  const milestones = Array.isArray(section?.milestones)
     ? section.milestones
     : [];
 
   return (
-    <div
-      className={styles.section}
-      aria-labelledby={section.id || "sobre-historia"}
-    >
-      <div className={styles.content}>
-        <div className={styles.textCol}>
+    <div className={styles.content}>
+      <div className={styles.textCol}>
+        <div className={styles.copy}>
           {paragraphs.map((paragraph, index) => (
-            <p key={`${paragraph}-${index}`} className={styles.paragraph}>
+            <p key={`${index}-${paragraph}`} className={styles.paragraph}>
               {paragraph}
             </p>
           ))}
-
-          {highlightText && (
-            <HotelHighlightPill className={styles.highlightWrap}>
-              {highlightText}
-            </HotelHighlightPill>
-          )}
         </div>
 
-        <div className={styles.timelineCol}>
+        {highlightText ? (
+          <div className={styles.highlightWrap}>
+            <HotelHighlightPill className={styles.highlightPill}>
+              {highlightText}
+            </HotelHighlightPill>
+          </div>
+        ) : null}
+      </div>
+
+      <div className={styles.timelineCol}>
+        <div className={styles.timelinePanel}>
           <div className={styles.timelineRail} aria-hidden="true" />
+
           <div className={styles.timelineStack}>
-            {milestones.map((item) => (
-              <HotelMilestoneCard
-                key={item.id}
-                title={item.label}
-                subtitle={item.description}
-              />
+            {milestones.map((item, index) => (
+              <div
+                key={item.id ?? `${item.label}-${index}`}
+                className={styles.timelineItem}
+              >
+                <span className={styles.timelineDot} aria-hidden="true" />
+                <HotelMilestoneCard
+                  title={item.label}
+                  subtitle={item.description}
+                />
+              </div>
             ))}
           </div>
         </div>

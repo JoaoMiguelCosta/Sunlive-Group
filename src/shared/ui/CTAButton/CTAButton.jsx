@@ -25,6 +25,7 @@ import { PhoneIcon } from "../icons";
  *  - compact?: "auto" | true | false         // default: "auto"
  *  - scrollOffset?: number                   // default: 72
  *  - variant?: "default" | "hero" | "sports" | "hotel"
+ *  - tone?: "default" | "strong" | "soft"    // útil sobretudo para hotel
  */
 const ICON_MAP = {
   phone: PhoneIcon,
@@ -36,6 +37,8 @@ const VARIANT_CLASS_MAP = {
   sports: "button--sports",
   hotel: "button--hotel",
 };
+
+const VALID_TONES = new Set(["default", "strong", "soft"]);
 
 export default function CTAButton({
   // modo antigo
@@ -63,6 +66,7 @@ export default function CTAButton({
 
   // visual
   variant = "hero",
+  tone = "default",
 
   // resto
   onClick: onClickProp,
@@ -90,6 +94,8 @@ export default function CTAButton({
     typeof window !== "undefined" &&
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const resolvedTone = VALID_TONES.has(tone) ? tone : "default";
 
   const scrollToHashWithOffset = (hash) => {
     if (typeof window === "undefined" || !hash) return;
@@ -143,6 +149,7 @@ export default function CTAButton({
     "data-compact": compact,
     "data-on": on ? "true" : "false",
     "data-variant": variant,
+    "data-tone": resolvedTone,
     onClick: handleClick,
     ...bind,
     ...rest,

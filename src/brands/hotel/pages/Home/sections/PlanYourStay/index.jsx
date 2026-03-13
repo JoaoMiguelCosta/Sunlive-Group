@@ -30,7 +30,7 @@ export default function PlanYourStaySection() {
 
           {actionItems.length > 0 ? (
             <div className={styles.actions}>
-              {actionItems.map((action) => (
+              {actionItems.map((action, index) => (
                 <CTAButton
                   key={action.id}
                   href={action.href}
@@ -38,6 +38,7 @@ export default function PlanYourStaySection() {
                   ariaLabel={action.ariaLabel ?? action.label}
                   Icon={action.Icon}
                   variant="hotel"
+                  tone={action.tone ?? (index === 0 ? "strong" : "soft")}
                   className={styles.actionButton}
                 />
               ))}

@@ -9,16 +9,20 @@ import hotelBrand from "../../../../config/index.js";
 
 export default function ForWhom() {
   const content = hotelBrand?.pages?.accommodation?.sections?.forWhom ?? null;
+
   if (!content) return null;
+
+  const sectionId = content.id ?? "accommodation-for-whom";
+  const titleId = `${sectionId}-title`;
 
   return (
     <section
-      id={content.id}
+      id={sectionId}
       className={styles.section}
-      aria-label={content.headerLabel || "Para Quem"}
+      aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <TitleForWhom label={content.headerLabel} />
+        <TitleForWhom id={titleId} label={content.headerLabel} />
         <DescriptionForWhom>{content.description}</DescriptionForWhom>
 
         <div className={styles.heroWrap}>

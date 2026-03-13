@@ -1,10 +1,14 @@
-// src/brands/hotel/config/sections/sustainabilityImpact.js
 export const sustainabilityImpact = {
   id: "hotel-sustainability-impact",
   header: { label: "Sustentabilidade" },
   intro: {
     title: "Comprometidos com um futuro mais verde",
     text: "Valorizamos práticas responsáveis que protegem o ambiente e a comunidade local.",
+  },
+  cta: {
+    label: "Saber mais sobre Sustentabilidade",
+    href: "/sunlive-group/hotel/sustainability",
+    ariaLabel: "Ir para a página de sustentabilidade do hotel",
   },
   stats: [
     {

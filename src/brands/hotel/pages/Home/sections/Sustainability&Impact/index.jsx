@@ -1,5 +1,6 @@
 import hotelBrand from "../../../../config/index.js";
 
+import HotelInlineActionButton from "../../../../shared/ui/HotelInlineActionButton//HotelInlineActionButton.jsx";
 import HotelSustainabilityHeader from "./HotelSustainabilityHeader.jsx";
 import HotelSustainabilityStats from "./HotelSustainabilityStats.jsx";
 
@@ -11,7 +12,7 @@ export default function SustainabilityAndImpactSection() {
 
   if (!section) return null;
 
-  const { id, header, intro, stats } = section;
+  const { id, header, intro, cta, stats } = section;
 
   const sectionId = id ?? "hotel-sustainability-impact";
   const titleId = `${sectionId}-title`;
@@ -25,7 +26,7 @@ export default function SustainabilityAndImpactSection() {
       <div className={styles.inner}>
         <HotelSustainabilityHeader label={header?.label} titleId={titleId} />
 
-        {intro?.title || intro?.text ? (
+        {intro?.title || intro?.text || cta?.href ? (
           <div className={styles.introBox}>
             {intro?.title ? (
               <h3 className={styles.introTitle}>{intro.title}</h3>
@@ -33,6 +34,17 @@ export default function SustainabilityAndImpactSection() {
 
             {intro?.text ? (
               <p className={styles.introText}>{intro.text}</p>
+            ) : null}
+
+            {cta?.href ? (
+              <div className={styles.ctaWrap}>
+                <HotelInlineActionButton
+                  href={cta.href}
+                  label={cta.label}
+                  ariaLabel={cta.ariaLabel ?? cta.label}
+                  className={styles.ctaButton}
+                />
+              </div>
             ) : null}
           </div>
         ) : null}

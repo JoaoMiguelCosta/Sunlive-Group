@@ -9,18 +9,21 @@ import hotelBrand from "../../../../config/index.js";
 export default function StayPolicies() {
   const content =
     hotelBrand?.pages?.accommodation?.sections?.stayPolicies ?? null;
+
   if (!content) return null;
 
   const items = Array.isArray(content.items) ? content.items : [];
+  const sectionId = content.id ?? "accommodation-stay-policies";
+  const titleId = `${sectionId}-title`;
 
   return (
     <section
-      id={content.id}
+      id={sectionId}
       className={styles.section}
-      aria-label={content.headerLabel || "Política de Estadia"}
+      aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <TitleStayPolicies label={content.headerLabel} />
+        <TitleStayPolicies id={titleId} label={content.headerLabel} />
         <DescriptionStayPolicies>{content.description}</DescriptionStayPolicies>
 
         <div className={styles.accordionWrap}>

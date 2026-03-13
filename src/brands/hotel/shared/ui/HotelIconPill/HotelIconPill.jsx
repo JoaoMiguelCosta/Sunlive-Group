@@ -1,16 +1,16 @@
 import styles from "./HotelIconPill.module.css";
 
 /**
- * HotelIconPill (Performance Prestige)
+ * HotelIconPill
  *
  * Props:
- * - label: string (texto do pill)
- * - Icon?: React component (ex: ICONS.BathIcon)
- * - as?: "div" | "button" | "a"  (default "div")
- * - href?: string (apenas quando as="a")
- * - onClick?: fn (apenas quando as="button")
+ * - label: string
+ * - Icon?: React component
+ * - as?: "div" | "button" | "a"
+ * - href?: string
+ * - onClick?: fn
  * - active?: boolean
- * - size?: "sm" | "md" (default "md")
+ * - size?: "sm" | "md"
  * - className?: string
  * - ariaLabel?: string
  */
@@ -38,11 +38,23 @@ export default function HotelIconPill({
     "aria-label": ariaLabel || label,
   };
 
+  const iconContent = (
+    <span className={styles.iconSlot} aria-hidden="true">
+      {Icon ? (
+        <Icon className={styles.icon} />
+      ) : (
+        <span className={styles.iconPlaceholder} />
+      )}
+    </span>
+  );
+
+  const textContent = <span className={styles.text}>{label}</span>;
+
   if (Tag === "a") {
     return (
       <a {...commonProps} href={href || "#"}>
-        {Icon ? <Icon className={styles.icon} aria-hidden="true" /> : null}
-        <span className={styles.text}>{label}</span>
+        {iconContent}
+        {textContent}
       </a>
     );
   }
@@ -50,16 +62,16 @@ export default function HotelIconPill({
   if (Tag === "button") {
     return (
       <button {...commonProps} type="button" onClick={onClick}>
-        {Icon ? <Icon className={styles.icon} aria-hidden="true" /> : null}
-        <span className={styles.text}>{label}</span>
+        {iconContent}
+        {textContent}
       </button>
     );
   }
 
   return (
     <div {...commonProps}>
-      {Icon ? <Icon className={styles.icon} aria-hidden="true" /> : null}
-      <span className={styles.text}>{label}</span>
+      {iconContent}
+      {textContent}
     </div>
   );
 }
