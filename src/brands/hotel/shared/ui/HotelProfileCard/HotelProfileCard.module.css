@@ -1,32 +1,35 @@
 .card {
     --text-main: rgba(255, 248, 240, 0.95);
+    --text-soft: rgba(255, 241, 224, 0.84);
+    --gold-line: rgba(230, 200, 147, 0.26);
 
     position: relative;
     isolation: isolate;
     width: 100%;
-    max-width: none;
+    min-width: 0;
     overflow: hidden;
-    border-radius: 22px;
+    border-radius: 1.5rem;
 
     display: flex;
     flex-direction: column;
 
-    border: 1px solid rgba(230, 200, 147, 0.30);
+    border: 1px solid var(--gold-line);
     background:
-        radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 44%),
-        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.10), transparent 46%),
+        radial-gradient(120% 120% at 0% 0%, rgba(241, 205, 132, 0.08), transparent 42%),
+        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.10), transparent 48%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.04) 0%,
-            rgba(255, 248, 235, 0.014) 18%,
+            rgba(255, 248, 235, 0.035) 0%,
+            rgba(255, 248, 235, 0.012) 18%,
             rgba(0, 0, 0, 0.10) 100%),
         linear-gradient(135deg,
-            rgba(44, 23, 11, 0.96) 0%,
-            rgba(28, 14, 8, 0.98) 100%);
+            rgba(46, 25, 12, 0.97) 0%,
+            rgba(30, 16, 9, 0.985) 55%,
+            rgba(22, 12, 8, 1) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.045),
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
         inset 0 -1px 0 rgba(0, 0, 0, 0.16),
-        0 16px 38px rgba(0, 0, 0, 0.20);
+        0 14px 30px rgba(0, 0, 0, 0.16);
 
     color: var(--text-main);
 
@@ -43,36 +46,51 @@
     pointer-events: none;
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.07) 0%,
-            rgba(255, 248, 235, 0.02) 15%,
+            rgba(255, 248, 235, 0.06) 0%,
+            rgba(255, 248, 235, 0.018) 16%,
             rgba(255, 255, 255, 0) 38%);
-    opacity: 0.92;
+    opacity: 0.95;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    border-color: rgba(230, 200, 147, 0.40);
+    border-color: rgba(230, 200, 147, 0.42);
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.15),
-        0 22px 48px rgba(0, 0, 0, 0.24);
+        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
+        0 18px 34px rgba(0, 0, 0, 0.20);
 }
 
 .cardOpen {
-    border-color: rgba(230, 200, 147, 0.48);
+    border-color: rgba(230, 200, 147, 0.50);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
         inset 0 -1px 0 rgba(0, 0, 0, 0.14),
-        0 22px 52px rgba(0, 0, 0, 0.28),
-        0 0 16px rgba(230, 200, 147, 0.08);
+        0 18px 38px rgba(0, 0, 0, 0.22),
+        0 0 16px rgba(230, 200, 147, 0.06);
 }
 
 .topBand {
     position: relative;
-    height: 46px;
+    height: clamp(2.8rem, 3vw, 3.05rem);
     background:
-        linear-gradient(180deg, rgba(130, 84, 42, 0.90), rgba(88, 54, 26, 0.96));
-    border-bottom: 1px solid rgba(255, 248, 235, 0.08);
+        linear-gradient(180deg,
+            rgba(134, 84, 40, 0.92) 0%,
+            rgba(100, 61, 29, 0.96) 55%,
+            rgba(82, 49, 24, 0.98) 100%);
+    border-bottom: 1px solid rgba(255, 248, 235, 0.07);
+}
+
+.topGlow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(230, 200, 147, 0.10) 50%,
+            transparent 100%);
+    opacity: 0.7;
 }
 
 .medallion {
@@ -81,120 +99,151 @@
     top: 100%;
     transform: translate(-50%, -50%);
 
-    width: 62px;
-    height: 62px;
+    width: clamp(3.5rem, 4vw, 3.9rem);
+    height: clamp(3.5rem, 4vw, 3.9rem);
     border-radius: 999px;
 
     display: grid;
     place-items: center;
 
     background:
-        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.20), transparent 58%),
-        linear-gradient(180deg, rgba(88, 54, 26, 0.96), rgba(38, 23, 11, 0.98));
+        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.18), transparent 56%),
+        linear-gradient(180deg, rgba(90, 56, 27, 0.96), rgba(40, 24, 12, 0.985));
 
-    border: 1px solid rgba(230, 200, 147, 0.42);
+    border: 1px solid rgba(230, 200, 147, 0.34);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.08),
-        0 12px 26px rgba(0, 0, 0, 0.20);
+        inset 0 1px 0 rgba(255, 248, 235, 0.07),
+        0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 .icon {
-    width: 30px;
-    height: 30px;
-    color: rgba(255, 232, 196, 0.96);
+    width: 1.45rem;
+    height: 1.45rem;
+    color: rgba(255, 232, 196, 0.95);
 }
 
 .iconPlaceholder {
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 0.4rem;
     background: rgba(255, 248, 235, 0.14);
     box-shadow: inset 0 0 0 1px rgba(255, 248, 235, 0.08);
 }
 
 .header {
-    padding: 38px 18px 14px;
+    display: grid;
+    align-content: start;
+    justify-items: center;
+    min-height: clamp(7.8rem, 10vw, 8.5rem);
+    padding: clamp(2rem, 2.4vw, 2.2rem) 1rem 0.75rem;
     background:
-        linear-gradient(180deg, rgba(128, 80, 38, 0.90), rgba(90, 55, 26, 0.96));
-    color: rgba(255, 248, 240, 0.96);
-    border-bottom: 1px solid rgba(230, 200, 147, 0.18);
+        linear-gradient(180deg,
+            rgba(126, 77, 36, 0.90) 0%,
+            rgba(96, 58, 28, 0.95) 52%,
+            rgba(82, 49, 24, 0.97) 100%);
+    border-bottom: 1px solid rgba(230, 200, 147, 0.14);
+    text-align: center;
 }
 
 .title {
     margin: 0;
-    font-size: clamp(1.22rem, 0.7vw + 1rem, 1.48rem);
-    font-weight: 900;
-    letter-spacing: 0.2px;
-    line-height: 1.2;
-    min-height: calc(1.28rem * 1.2 * 2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    max-width: 11ch;
+    font-size: clamp(1.05rem, 0.7vw + 0.9rem, 1.32rem);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+
+    min-height: calc(1.32rem * 1.12 * 2);
 }
 
 .subtitle {
-    margin: 0.45rem 0 0;
-    font-size: 1rem;
-    line-height: 1.35;
-    min-height: calc(1rem * 1.35 * 2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: rgba(255, 241, 224, 0.84);
+    margin: 0.38rem 0 0;
+    max-width: 22ch;
+    color: var(--text-soft);
+    font-size: clamp(0.88rem, 0.22vw + 0.84rem, 0.96rem);
+    line-height: 1.28;
+    text-wrap: balance;
+
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+
+    min-height: calc(0.96rem * 1.28 * 2);
 }
 
 .body {
-    padding: 16px 18px 14px;
+    flex: 1 1 auto;
+    padding: 0.85rem 1rem 0.8rem;
     background:
-        radial-gradient(680px 220px at 50% 0%, rgba(230, 200, 147, 0.08), transparent 60%),
-        linear-gradient(180deg, rgba(70, 43, 21, 0.40), rgba(38, 23, 11, 0.22));
-    border-bottom: 1px solid rgba(230, 200, 147, 0.12);
+        radial-gradient(680px 220px at 50% 0%, rgba(230, 200, 147, 0.07), transparent 58%),
+        linear-gradient(180deg, rgba(70, 43, 21, 0.34), rgba(38, 23, 11, 0.16));
+    border-bottom: 1px solid rgba(230, 200, 147, 0.10);
 }
 
 .description {
     margin: 0;
     color: rgba(255, 248, 240, 0.90);
-    font-size: 0.98rem;
-    line-height: 1.58;
+    font-size: clamp(0.9rem, 0.18vw + 0.88rem, 0.95rem);
+    line-height: 1.45;
     text-align: center;
+    text-wrap: pretty;
 
     display: -webkit-box;
+    display: box;
     -webkit-box-orient: vertical;
+    box-orient: vertical;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     overflow: hidden;
 
-    min-height: calc(1.58em * 3);
+    min-height: calc(0.95rem * 1.45 * 3);
     word-break: break-word;
 }
 
 .footer {
-    padding: 12px 18px 16px;
+    padding: 0.75rem 1rem 0.95rem;
     background:
-        linear-gradient(180deg, rgba(49, 30, 15, 0.82), rgba(38, 23, 11, 0.96));
+        linear-gradient(180deg, rgba(47, 29, 15, 0.80), rgba(35, 21, 11, 0.96));
     display: flex;
     justify-content: center;
 }
 
 .cta {
+    appearance: none;
+    border: 1px solid rgba(230, 200, 147, 0.32);
+    outline: none;
+
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 0.5rem;
 
-    padding: 10px 18px;
+    min-height: 2.55rem;
+    padding: 0.62rem 1.05rem;
     border-radius: 999px;
 
-    border: 1px solid rgba(230, 200, 147, 0.34);
     background:
-        linear-gradient(180deg, rgba(88, 54, 26, 0.72), rgba(38, 23, 11, 0.88));
-    color: rgba(255, 248, 240, 0.94);
+        linear-gradient(180deg, rgba(92, 57, 28, 0.70), rgba(42, 25, 13, 0.90));
+    color: rgba(255, 248, 240, 0.95);
     text-decoration: none;
     cursor: pointer;
 
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 8px 18px rgba(0, 0, 0, 0.18);
+        0 7px 16px rgba(0, 0, 0, 0.16);
 
     transition:
         transform 180ms ease,
@@ -205,25 +254,33 @@
 
 .cta:hover {
     transform: translateY(-1px);
-    border-color: rgba(230, 200, 147, 0.56);
+    border-color: rgba(230, 200, 147, 0.52);
     background:
-        linear-gradient(180deg, rgba(108, 67, 32, 0.80), rgba(49, 30, 15, 0.92));
+        linear-gradient(180deg, rgba(112, 69, 34, 0.80), rgba(50, 30, 15, 0.94));
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 10px 22px rgba(0, 0, 0, 0.22),
-        0 0 18px rgba(230, 200, 147, 0.08);
+        0 9px 18px rgba(0, 0, 0, 0.20),
+        0 0 12px rgba(230, 200, 147, 0.05);
+}
+
+.cta:focus-visible {
+    border-color: rgba(255, 223, 160, 0.82);
+    box-shadow:
+        0 0 0 3px rgba(230, 200, 147, 0.16),
+        0 9px 18px rgba(0, 0, 0, 0.20);
 }
 
 .cta:disabled {
-    opacity: 0.55;
+    opacity: 0.56;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
 
 .ctaLabel {
+    font-size: clamp(0.92rem, 0.15vw + 0.9rem, 0.98rem);
     font-weight: 800;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.01em;
 }
 
 .ctaChevron {
@@ -237,16 +294,51 @@
     transform: rotate(180deg);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1100px) {
+    .header {
+        min-height: auto;
+    }
+
+    .title,
+    .subtitle,
+    .description {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 700px) {
+    .card {
+        border-radius: 1.3rem;
+    }
+
+    .header {
+        padding: 2rem 0.95rem 0.8rem;
+    }
+
+    .body {
+        padding: 0.85rem 0.95rem 0.8rem;
+    }
+
+    .footer {
+        padding: 0.75rem 0.95rem 0.95rem;
+    }
+
     .title {
+        max-width: 100%;
         font-size: 1.12rem;
     }
 
     .subtitle {
-        font-size: 0.96rem;
+        font-size: 0.92rem;
     }
 
-    .description {
-        font-size: 0.95rem;
+ .description {
+     font-size: 0.92rem;
+     -webkit-line-clamp: 4;
+     line-clamp: 4;
+ }
+
+    .cta {
+        width: 100%;
     }
 }

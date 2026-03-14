@@ -6,6 +6,16 @@
     align-items: stretch;
 }
 
+.item {
+    display: flex;
+    min-width: 0;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+}
+
 @media (max-width: 960px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));

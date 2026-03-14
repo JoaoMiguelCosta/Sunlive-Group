@@ -1,4 +1,3 @@
-import HotelWhoWeHostCard from "../HotelWhoWeHostCard/HotelWhoWeHostCard.jsx";
 import styles from "./HotelStatsGrid.module.css";
 
 import hotelBrand, { resolveHotelIcon } from "../../../config/index.js";
@@ -20,22 +19,36 @@ function resolveStatIcon(iconKey) {
  * - className?: string
  */
 export default function HotelStatsGrid({ items = [], className = "" }) {
-  if (!items.length) return null;
+  const safeItems = Array.isArray(items) ? items : [];
+
+  if (!safeItems.length) return null;
 
   const classNames = [styles.grid, className].filter(Boolean).join(" ");
 
   return (
-    <div className={classNames}>
-      {items.map((item) => (
-        <HotelWhoWeHostCard
-          key={item.id}
-          id={item.id}
-          icon={resolveStatIcon(item.iconKey)}
-          description={item.description}
-          statValue={item.value}
-          variant="metric"
-        />
-      ))}
+    <div
+      className={classNames}
+      role="list"
+      aria-label="Indicadores de sustentabilidade"
+    >
+      {safeItems.map((item) => {
+        const icon = resolveStatIcon(item.iconKey);
+
+        return (
+          <article
+            key={item.id}
+            className={styles.card}
+            role="listitem"
+            aria-label={`${item.value} ${item.description}`}
+          >
+            <div className={styles.iconWrap}>{icon}</div>
+
+            <p className={styles.value}>{item.value}</p>
+
+            <p className={styles.description}>{item.description}</p>
+          </article>
+        );
+      })}
     </div>
   );
 }

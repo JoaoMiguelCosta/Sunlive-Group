@@ -30,43 +30,51 @@ export default function HotelOfferPanel({
     ? { href: ctaHref }
     : { type: "button", onClick: onCtaClick, disabled: !onCtaClick };
 
+  const hasItems = Array.isArray(items) && items.length > 0;
+  const hasHighlights = Array.isArray(highlights) && highlights.length > 0;
+
   return (
-    <div className={wrapClass} aria-label={title || "Oferta"}>
+    <section className={wrapClass} aria-label={title || "Oferta"}>
       {title ? <h3 className={styles.hTitle}>{title}</h3> : null}
 
       <div className={styles.contentGrid}>
-        {Array.isArray(items) && items.length ? (
-          <div className={styles.box}>
-            <ul className={styles.items}>
-              {items.map((item) => (
-                <li key={item.id} className={styles.item}>
-                  <span className={styles.itemIcon} aria-hidden="true">
-                    {item.Icon ? (
-                      <item.Icon className={styles.iconSvg} />
-                    ) : (
-                      <span className={styles.iconPlaceholder} />
-                    )}
-                  </span>
+        {hasItems ? (
+          <div className={styles.mainColumn}>
+            <div className={styles.box}>
+              <ul className={styles.items}>
+                {items.map((item) => (
+                  <li key={item.id} className={styles.item}>
+                    <span className={styles.itemIcon} aria-hidden="true">
+                      {item.Icon ? (
+                        <item.Icon className={styles.iconSvg} />
+                      ) : (
+                        <span className={styles.iconPlaceholder} />
+                      )}
+                    </span>
 
-                  <div className={styles.itemText}>
-                    <div className={styles.itemTitle}>{item.title}</div>
-                    {item.description ? (
-                      <div className={styles.itemDesc}>{item.description}</div>
-                    ) : null}
-                  </div>
-                </li>
-              ))}
-            </ul>
+                    <div className={styles.itemText}>
+                      <div className={styles.itemTitle}>{item.title}</div>
+
+                      {item.description ? (
+                        <div className={styles.itemDesc}>
+                          {item.description}
+                        </div>
+                      ) : null}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         ) : null}
 
-        {highlightsTitle || (Array.isArray(highlights) && highlights.length) ? (
-          <div className={styles.sideColumn}>
+        {highlightsTitle || hasHighlights || ctaLabel ? (
+          <aside className={styles.sideColumn}>
             {highlightsTitle ? (
               <h4 className={styles.hSubTitle}>{highlightsTitle}</h4>
             ) : null}
 
-            {Array.isArray(highlights) && highlights.length ? (
+            {hasHighlights ? (
               <div className={styles.box}>
                 <ul className={styles.highlights}>
                   {highlights.map((highlight) => (
@@ -90,9 +98,9 @@ export default function HotelOfferPanel({
                 </CtaTag>
               </div>
             ) : null}
-          </div>
+          </aside>
         ) : null}
       </div>
-    </div>
+    </section>
   );
 }

@@ -20,7 +20,7 @@ export default function BreakfastShowcase() {
   const gallery = section?.gallery ?? null;
 
   const items = useMemo(() => gallery?.items ?? [], [gallery?.items]);
-  const fallbackLabel = gallery?.fallbackLabel ?? "Fotos";
+  const fallbackLabel = gallery?.fallbackLabel ?? "Pequeno-almoço";
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -47,26 +47,25 @@ export default function BreakfastShowcase() {
   //   ? resolveHotelIcon(hotelBrand?.icons, highlightCard.iconKey)
   //   : null;
 
+  const showcaseId = `${section?.id ?? "restaurant-breakfast"}-showcase-title`;
+
   return (
-    <div
-      className={styles.block}
-      aria-labelledby={`${section?.id}-showcase-title`}
-    >
+    <div className={styles.block} aria-labelledby={showcaseId}>
       <div className={styles.grid}>
-        <div className={styles.contentPanel}>
+        <article className={styles.contentPanel}>
           {intro?.title ? (
-            <div className={styles.header}>
-              <h3 id={`${section?.id}-showcase-title`} className={styles.title}>
+            <header className={styles.header}>
+              <h3 id={showcaseId} className={styles.title}>
                 {intro.title}
               </h3>
-            </div>
+            </header>
           ) : null}
 
           {intro?.paragraphs?.length ? (
             <div className={styles.body}>
               {intro.paragraphs.map((paragraph, index) => (
                 <p
-                  key={`${section?.id}-intro-${index}`}
+                  key={`${section?.id ?? "restaurant-breakfast"}-intro-${index}`}
                   className={styles.paragraph}
                 >
                   {paragraph}
@@ -87,7 +86,11 @@ export default function BreakfastShowcase() {
                   */}
                 </span>
 
-                <h4 className={styles.highlightTitle}>{highlightCard.title}</h4>
+                {highlightCard?.title ? (
+                  <h4 className={styles.highlightTitle}>
+                    {highlightCard.title}
+                  </h4>
+                ) : null}
               </div>
 
               {highlightCard?.text ? (
@@ -95,7 +98,7 @@ export default function BreakfastShowcase() {
               ) : null}
             </div>
           ) : null}
-        </div>
+        </article>
 
         <div className={styles.carouselPanel}>
           <div className={styles.carouselCard}>

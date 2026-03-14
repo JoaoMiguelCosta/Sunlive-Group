@@ -1,13 +1,12 @@
 .block {
     position: relative;
     isolation: isolate;
-    padding-top: clamp(1.75rem, 3.2vw, 2.75rem);
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: clamp(1rem, 2vw, 1.6rem);
+    gap: clamp(1rem, 2vw, 1.35rem);
     align-items: stretch;
 }
 

@@ -30,7 +30,9 @@ export default function HotelFacilitySummaryCard({
     <article className={styles.card}>
       <div className={styles.header}>
         <IconSlot icon={icon} iconLabel={iconLabel} />
-        <h3 className={styles.title}>{title}</h3>
+        <div className={styles.titleWrap}>
+          <h3 className={styles.title}>{title}</h3>
+        </div>
       </div>
 
       <div className={styles.body}>

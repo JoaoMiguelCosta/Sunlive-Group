@@ -11,27 +11,35 @@ export default function HotelPhotoCarouselBase({
   onPrev,
   onNext,
   fallbackLabel = "Fotos",
-  className,
+  className = "",
 }) {
   const hasItems = Array.isArray(items) && items.length > 0;
 
   const activeItem = hasItems
     ? items[clampIndex(activeIndex, items.length)]
     : null;
+
   const activeSrc = activeItem?.src ?? null;
+  const activeAlt = activeItem?.alt ?? fallbackLabel;
 
   return (
-    <div className={`${styles.stage} ${className ?? ""}`}>
+    <div className={`${styles.stage} ${className}`.trim()}>
       {activeSrc ? (
-        <img
-          className={styles.image}
-          src={activeSrc}
-          alt={activeItem?.alt ?? fallbackLabel}
-          loading="lazy"
-        />
+        <>
+          <img
+            className={styles.image}
+            src={activeSrc}
+            alt={activeAlt}
+            loading="lazy"
+          />
+          <div className={styles.imageOverlay} aria-hidden="true" />
+        </>
       ) : (
         <div className={styles.fallback} role="img" aria-label={fallbackLabel}>
-          <span className={styles.fallbackTitle}>{fallbackLabel}</span>
+          <div className={styles.fallbackInner}>
+            <span className={styles.fallbackEyebrow}>Galeria</span>
+            <span className={styles.fallbackTitle}>{fallbackLabel}</span>
+          </div>
         </div>
       )}
 

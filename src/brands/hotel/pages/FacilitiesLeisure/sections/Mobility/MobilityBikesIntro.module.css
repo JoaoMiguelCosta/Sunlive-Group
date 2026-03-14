@@ -1,0 +1,15 @@
+.block {
+    display: grid;
+    gap: clamp(0.9rem, 1.8vw, 1.25rem);
+    justify-items: center;
+}
+
+.descriptionWrap {
+    width: 100%;
+    max-width: min(1180px, 100%);
+    margin-inline: auto;
+}
+
+.descriptionWrap :global(*) {
+    margin-bottom: 0;
+}

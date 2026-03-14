@@ -3,8 +3,9 @@ import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSe
 
 export default function TitleBarLounge() {
   const content = hotelBrand?.pages?.dining?.sections?.barAndLounge ?? null;
+  const label = content?.headerLabel?.trim();
 
-  if (!content) return null;
+  if (!label) return null;
 
-  return <HotelSectionHeader label={content.headerLabel} />;
+  return <HotelSectionHeader id="restaurant-bar-lounge-title" label={label} />;
 }

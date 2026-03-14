@@ -1,5 +1,5 @@
 import hotelBrand from "../../../../config/index.js";
-import WhyChooseCard from "../../../../shared/ui/WhyChooseCard/WhyChooseCard.jsx";
+import SustainabilityActionCard from "../../../../shared/ui/SustainabilityActionCard/SustainabilityActionCard.jsx";
 import styles from "./HowToParticipateCards.module.css";
 
 export default function HowToParticipateCards() {
@@ -11,9 +11,9 @@ export default function HowToParticipateCards() {
   if (!items.length) return null;
 
   return (
-    <div className={styles.grid}>
+    <div className={styles.grid} aria-label="Formas de participar">
       {items.map((item) => (
-        <WhyChooseCard
+        <SustainabilityActionCard
           key={item.id}
           title={item.title}
           description={item.description}

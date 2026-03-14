@@ -25,7 +25,7 @@ export default function BreakfastFeatureGrid() {
   if (!items.length) return null;
 
   return (
-    <div className={styles.block}>
+    <div className={styles.block} aria-label="Destaques do pequeno-almoço">
       <div className={styles.grid}>
         {items.map((item, index) => {
           const placementClass = getCardPlacementClass(index, items.length);

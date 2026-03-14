@@ -2,17 +2,23 @@ import hotelBrand from "../../../../config/index.js";
 
 import styles from "./ReceptionSupportServices.module.css";
 
-function IconSlot({ icon = null, iconLabel = "" }) {
+function IconSlot({ icon = null, iconLabel = "", variant = "feature" }) {
+  const variantClass =
+    variant === "contact" ? styles.iconSlotContact : styles.iconSlotFeature;
+
   if (icon) {
     return (
-      <span className={styles.iconSlot} aria-label={iconLabel}>
+      <span
+        className={`${styles.iconSlot} ${variantClass}`}
+        aria-label={iconLabel}
+      >
         {icon}
       </span>
     );
   }
 
   return (
-    <span className={styles.iconSlot} aria-hidden="true">
+    <span className={`${styles.iconSlot} ${variantClass}`} aria-hidden="true">
       <span className={styles.iconPlaceholder} />
     </span>
   );
@@ -58,10 +64,14 @@ export default function ReceptionSupportServices() {
                   className={styles.contactButton}
                   aria-label={contact.ariaLabel}
                 >
-                  <IconSlot
-                    icon={contact.icon?.component ?? null}
-                    iconLabel={contact.icon?.ariaLabel ?? contact.label}
-                  />
+                  <span className={styles.contactIconWrap}>
+                    <IconSlot
+                      icon={contact.icon?.component ?? null}
+                      iconLabel={contact.icon?.ariaLabel ?? contact.label}
+                      variant="contact"
+                    />
+                  </span>
+
                   <span className={styles.contactLabel}>{contact.label}</span>
                 </a>
               ))}
@@ -81,7 +91,9 @@ export default function ReceptionSupportServices() {
                   <IconSlot
                     icon={feature.icon?.component ?? null}
                     iconLabel={feature.icon?.ariaLabel ?? feature.label}
+                    variant="feature"
                   />
+
                   <span className={styles.featureLabel}>{feature.label}</span>
                 </li>
               ))}

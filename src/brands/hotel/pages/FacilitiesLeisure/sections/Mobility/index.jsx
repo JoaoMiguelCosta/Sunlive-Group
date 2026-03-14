@@ -9,15 +9,29 @@ import styles from "./Mobility.module.css";
 
 export default function MobilitySection() {
   return (
-    <section id="facilities-mobility" className={styles.section}>
-      <TitleMobility />
-      <DescriptionMobility />
+    <section
+      id="facilities-mobility"
+      className={styles.section}
+      aria-label="Mobilidade"
+    >
+      <div className={styles.inner}>
+        <div className={styles.introBlock}>
+          <TitleMobility />
+          <div className={styles.descriptionWrap}>
+            <DescriptionMobility />
+          </div>
+        </div>
 
-      <MobilityBikesIntro />
-      <MobilityBikesHighlights />
+        <div className={styles.subsection}>
+          <MobilityBikesIntro />
+          <MobilityBikesHighlights />
+        </div>
 
-      <MobilityParkingIntro />
-      <MobilityParkingHighlights />
+        <div className={styles.subsection}>
+          <MobilityParkingIntro />
+          <MobilityParkingHighlights />
+        </div>
+      </div>
     </section>
   );
 }

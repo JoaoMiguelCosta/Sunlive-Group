@@ -1,5 +1,4 @@
 import hotelBrand from "../../../../config/index.js";
-
 import HotelFeatureListWithMedia from "../../../../shared/ui/HotelFeatureListWithMedia/HotelFeatureListWithMedia.jsx";
 
 import styles from "./MobilityParkingHighlights.module.css";
@@ -17,7 +16,7 @@ export default function MobilityParkingHighlights() {
         items={highlights.items}
         image={highlights.image ?? null}
         imageAlt={highlights.imageAlt ?? ""}
-        mediaPosition={highlights.mediaPosition ?? "right"}
+        mediaPosition={highlights.mediaPosition ?? "left"}
       />
     </div>
   );

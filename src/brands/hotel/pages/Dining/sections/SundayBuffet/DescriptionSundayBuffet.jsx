@@ -15,7 +15,7 @@ export default function DescriptionSundayBuffet() {
   const paragraphs = splitParagraphs(content.description);
 
   return (
-    <HotelSectionDescription as="div">
+    <HotelSectionDescription as="div" align="center">
       {paragraphs.map((paragraph, index) => (
         <p key={index}>{paragraph}</p>
       ))}

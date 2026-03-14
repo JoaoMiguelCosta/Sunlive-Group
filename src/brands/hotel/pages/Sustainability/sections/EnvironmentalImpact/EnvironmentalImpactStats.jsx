@@ -6,7 +6,7 @@ export default function EnvironmentalImpactStats() {
   const section =
     hotelBrand?.pages?.sustainability?.sections?.environmentalImpact ?? null;
 
-  const items = section?.stats?.items ?? [];
+  const items = Array.isArray(section?.stats?.items) ? section.stats.items : [];
 
   if (!items.length) return null;
 

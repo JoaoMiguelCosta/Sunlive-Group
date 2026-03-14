@@ -1,33 +1,59 @@
 .block {
     width: 100%;
     display: grid;
-    gap: clamp(1.25rem, 2.5vw, 2rem);
+    gap: clamp(1rem, 1.8vw, 1.5rem);
+    align-items: start;
 }
 
 .cardsGrid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(1rem, 2vw, 1.5rem);
-    align-items: start;
+    gap: clamp(0.85rem, 1.3vw, 1.1rem);
+    align-items: stretch;
 }
 
 .offerPanelWrap {
-    width: min(100%, 1120px);
- 
+    width: 100%;
+    max-width: 100%;
 }
 
 .cardActive {
     transform: translateY(-2px);
+    filter: drop-shadow(0 14px 26px rgba(0, 0, 0, 0.18));
 }
 
-@media (max-width: 1200px) {
+@media (prefers-reduced-motion: no-preference) {
+    .cardActive {
+        transition:
+            transform 180ms ease,
+            filter 180ms ease;
+    }
+}
+
+@media (max-width: 1280px) {
+    .cardsGrid {
+        gap: 0.9rem;
+    }
+}
+
+@media (max-width: 1100px) {
     .cardsGrid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 700px) {
+    .block {
+        gap: 1rem;
+    }
+
     .cardsGrid {
         grid-template-columns: 1fr;
+        gap: 0.9rem;
+    }
+
+    .cardActive {
+        transform: none;
+        filter: none;
     }
 }

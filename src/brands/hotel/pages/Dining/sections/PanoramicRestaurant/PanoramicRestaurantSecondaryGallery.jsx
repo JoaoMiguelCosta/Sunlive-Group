@@ -23,7 +23,8 @@ export default function PanoramicRestaurantSecondaryGallery() {
     [gallerySecondary?.items],
   );
 
-  const fallbackLabel = gallerySecondary?.fallbackLabel ?? "Fotos";
+  const fallbackLabel =
+    gallerySecondary?.fallbackLabel ?? "Ambiente e detalhes do restaurante";
   const cta = gallerySecondary?.cta ?? null;
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -64,6 +65,7 @@ export default function PanoramicRestaurantSecondaryGallery() {
             onPrev={goPrev}
             onNext={goNext}
             fallbackLabel={fallbackLabel}
+            className={styles.carouselStage}
           />
         </div>
 
@@ -76,13 +78,11 @@ export default function PanoramicRestaurantSecondaryGallery() {
               rel={cta.external ? "noreferrer noopener" : undefined}
               aria-label={cta.ariaLabel ?? cta.label}
             >
-              {/* Quando adicionares o sistema de ícones:
-              {Icon ? (
+              {/* {Icon ? (
                 <span className={styles.ctaIcon} aria-hidden="true">
                   <Icon className={styles.ctaIconSvg} />
                 </span>
-              ) : null}
-              */}
+              ) : null} */}
 
               <span>{cta.label}</span>
             </a>

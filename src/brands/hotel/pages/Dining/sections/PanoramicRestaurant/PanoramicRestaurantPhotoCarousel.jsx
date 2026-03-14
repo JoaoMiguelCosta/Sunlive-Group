@@ -13,11 +13,11 @@ export default function PanoramicRestaurantPhotoCarousel() {
   const section =
     hotelBrand?.pages?.dining?.sections?.panoramicRestaurant ?? null;
 
-  const gallery = section?.gallery;
-  const highlight = section?.highlightCard;
+  const gallery = section?.gallery ?? null;
+  const highlight = section?.highlightCard ?? null;
 
   const items = useMemo(() => gallery?.items ?? [], [gallery?.items]);
-  const fallbackLabel = gallery?.fallbackLabel ?? "Fotos";
+  const fallbackLabel = gallery?.fallbackLabel ?? "Restaurante Panorâmico";
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -41,7 +41,7 @@ export default function PanoramicRestaurantPhotoCarousel() {
     <div
       className={styles.frame}
       id={section?.id ?? "restaurante-panoramico"}
-      aria-label={section?.headerLabel ?? "Galeria"}
+      aria-label={section?.headerLabel ?? "Galeria principal do restaurante"}
     >
       <div className={styles.card}>
         <HotelPhotoCarouselBase
@@ -50,20 +50,26 @@ export default function PanoramicRestaurantPhotoCarousel() {
           onPrev={goPrev}
           onNext={goNext}
           fallbackLabel={fallbackLabel}
+          className={styles.carouselStage}
         />
 
-        {highlight?.title || highlight?.text ? (
-          <div className={styles.highlight} aria-label="Destaque">
+        {(highlight?.title || highlight?.text) && (
+          <div
+            className={styles.highlight}
+            aria-label="Destaque do restaurante"
+          >
             <div className={styles.highlightHeader}>
               <span className={styles.highlightIconSlot} aria-hidden="true" />
-              <h3 className={styles.highlightTitle}>{highlight.title}</h3>
+              {highlight?.title ? (
+                <h3 className={styles.highlightTitle}>{highlight.title}</h3>
+              ) : null}
             </div>
 
             {highlight?.text ? (
               <p className={styles.highlightBody}>{highlight.text}</p>
             ) : null}
           </div>
-        ) : null}
+        )}
       </div>
     </div>
   );

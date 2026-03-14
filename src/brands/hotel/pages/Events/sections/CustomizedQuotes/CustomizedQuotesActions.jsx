@@ -18,7 +18,10 @@ export default function CustomizedQuotesActions() {
   return (
     <div className={styles.block}>
       {includedInQuote ? (
-        <div className={styles.includesPanel}>
+        <section
+          className={styles.includesPanel}
+          aria-label={includedInQuote.title || "O que incluímos no orçamento"}
+        >
           {includedInQuote.title ? (
             <h3 className={styles.includesTitle}>{includedInQuote.title}</h3>
           ) : null}
@@ -40,7 +43,7 @@ export default function CustomizedQuotesActions() {
               ))}
             </div>
           ) : null}
-        </div>
+        </section>
       ) : null}
 
       {quoteCallout?.text ? (
@@ -54,8 +57,10 @@ export default function CustomizedQuotesActions() {
           {actions.map((action) => (
             <a
               key={action.id}
-              href={action.href}
+              href={action.href ?? "#"}
               className={styles.actionButton}
+              target={action.external ? "_blank" : undefined}
+              rel={action.external ? "noreferrer noopener" : undefined}
               aria-label={action.ariaLabel || action.label}
             >
               <span className={styles.actionIcon} aria-hidden="true">

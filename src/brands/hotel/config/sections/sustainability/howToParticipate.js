@@ -9,32 +9,32 @@ const howToParticipate = {
       {
         id: "reuse-towels",
         title: "Reutilizar Toalhas",
-        description: "Mantenha as toalhas no toalheiro para reutilização",
+        description: "Mantenha as toalhas no toalheiro para reutilização.",
         iconKey: null,
       },
       {
         id: "separate-waste",
         title: "Separar Resíduos",
-        description: "Use os contentores de reciclagem disponíveis",
+        description: "Use os contentores de reciclagem disponíveis.",
         iconKey: null,
       },
       {
         id: "use-bicycle",
         title: "Usar Bicicleta",
-        description: "Explore a região com as nossas bicicletas gratuitas",
+        description: "Explore a região com as nossas bicicletas gratuitas.",
         iconKey: null,
       },
       {
         id: "save-energy",
         title: "Poupar Energia",
-        description: "Desligue luzes e equipamentos ao sair do quarto",
+        description: "Desligue luzes e equipamentos ao sair do quarto.",
         iconKey: null,
       },
     ],
   },
 
   closingQuote: {
-    text: '"Sustentabilidade é uma missão partilhada entre todos nós"',
+    text: "Sustentabilidade é uma missão partilhada entre todos nós.",
   },
 };
 

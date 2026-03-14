@@ -1,5 +1,3 @@
-// src/brands/hotel/config/sections/sustainability/sustainabilityCommitment.js
-
 const sustainabilityCommitment = {
   id: "sustainability-commitment",
   headerLabel: "Sustentabilidade",
@@ -23,7 +21,7 @@ const sustainabilityCommitment = {
         title: "Eficiência Energética",
         subtitle: "Tecnologia ao serviço do ambiente",
         description:
-          "Uso de sistemas de climatização eficientes e iluminação LED. Reduzir impacto sem comprometer o conforto.",
+          "Uso de sistemas de climatização eficientes e iluminação LED, reduzindo o impacto ambiental sem comprometer o conforto.",
         topIconKey: null,
 
         features: [
@@ -64,7 +62,7 @@ const sustainabilityCommitment = {
         title: "Gestão Responsável da Água",
         subtitle: "Preservar um recurso essencial",
         description:
-          "Preservar um recurso essencial com práticas simples e eficazes.",
+          "Preservar um recurso essencial através de práticas simples, conscientes e eficazes.",
         topIconKey: null,
 
         features: [
@@ -88,7 +86,7 @@ const sustainabilityCommitment = {
           },
           {
             id: "awareness",
-            title: "Conciencialização",
+            title: "Consciencialização",
             description: "Informação nos quartos",
             iconKey: null,
           },
@@ -129,7 +127,7 @@ const sustainabilityCommitment = {
           },
           {
             id: "guest-awareness",
-            title: "Sensibilização Hóspedes",
+            title: "Sensibilização dos Hóspedes",
             description: "Informação e incentivos",
             iconKey: null,
           },
@@ -200,13 +198,13 @@ const sustainabilityCommitment = {
           {
             id: "natural-preservation",
             title: "Preservação Natural",
-            description: "Manutenção da envolvente",
+            description: "Manutenção cuidada da envolvente",
             iconKey: null,
           },
           {
             id: "biodiversity",
             title: "Biodiversidade",
-            description: "Apoio aos produtores da Bairrada",
+            description: "Respeito pelos ecossistemas locais",
             iconKey: null,
           },
           {
@@ -218,7 +216,7 @@ const sustainabilityCommitment = {
         ],
 
         metric: {
-          text: "100% dos espaços verdes sustentáveis",
+          text: "100% dos espaços verdes com gestão sustentável",
           iconKey: null,
         },
       },

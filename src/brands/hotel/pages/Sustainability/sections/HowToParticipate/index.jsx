@@ -14,10 +14,12 @@ export default function HowToParticipateSection() {
       className={styles.section}
       aria-labelledby={titleId}
     >
-      <HowToParticipateTitle titleId={titleId} />
-      <HowToParticipateDescription />
-      <HowToParticipateCards />
-      <HowToParticipateClosingQuote />
+      <div className={styles.inner}>
+        <HowToParticipateTitle titleId={titleId} />
+        <HowToParticipateDescription />
+        <HowToParticipateCards />
+        <HowToParticipateClosingQuote />
+      </div>
     </section>
   );
 }

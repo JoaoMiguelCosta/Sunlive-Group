@@ -1,25 +1,38 @@
 .quoteBlock {
-    margin-top: clamp(1.5rem, 3vw, 2.25rem);
-    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2rem);
-    border: 1px solid rgba(199, 134, 21, 0.72);
+    margin-top: clamp(1.4rem, 2.8vw, 2rem);
+    padding: clamp(1.3rem, 2.6vw, 2rem) clamp(1rem, 3vw, 1.8rem);
+    border: 1px solid rgba(199, 134, 21, 0.66);
+    border-radius: clamp(1rem, 1.4vw, 1.4rem);
     background:
-        radial-gradient(900px 260px at 50% -15%, rgba(230, 200, 147, 0.16), transparent 60%),
-        radial-gradient(700px 220px at 75% 115%, rgba(230, 200, 147, 0.1), transparent 60%),
+        radial-gradient(900px 260px at 50% -15%, rgba(230, 200, 147, 0.14), transparent 60%),
+        radial-gradient(700px 220px at 75% 115%, rgba(230, 200, 147, 0.08), transparent 60%),
         linear-gradient(90deg,
             rgba(70, 40, 14, 0.96) 0%,
             rgba(52, 28, 10, 0.97) 42%,
             rgba(38, 23, 11, 0.99) 100%);
     box-shadow:
         0 0 0 1px rgba(255, 220, 160, 0.05) inset,
-        0 18px 36px rgba(0, 0, 0, 0.22);
+        0 18px 36px rgba(0, 0, 0, 0.2);
 }
 
 .quote {
     margin: 0;
     color: #f7efe3;
     text-align: center;
-    font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+    font-size: clamp(1.2rem, 2vw, 2rem);
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
     text-wrap: balance;
+}
+
+@media (max-width: 768px) {
+    .quoteBlock {
+        margin-top: 1.2rem;
+        padding: 1.15rem 0.95rem;
+    }
+
+    .quote {
+        font-size: clamp(1.05rem, 5vw, 1.4rem);
+    }
 }

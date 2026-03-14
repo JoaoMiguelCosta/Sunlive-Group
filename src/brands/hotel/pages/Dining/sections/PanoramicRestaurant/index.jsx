@@ -8,13 +8,22 @@ import styles from "./PanoramicRestaurant.module.css";
 
 export default function PanoramicRestaurantSection() {
   return (
-    <section id="restaurante-panoramico" className={styles.section}>
+    <section
+      id="restaurante-panoramico"
+      className={styles.section}
+      aria-labelledby="restaurante-panoramico-title"
+    >
       <div className={styles.inner}>
-        <TitlePanoramicRestaurant />
-        <DescriptionPanoramicRestaurant />
-        <PanoramicRestaurantPhotoCarousel />
-        <PanoramicRestaurantDescriptionSection />
-        <PanoramicRestaurantSecondaryGallery />
+        <div className={styles.headerBlock}>
+          <TitlePanoramicRestaurant />
+          <DescriptionPanoramicRestaurant />
+        </div>
+
+        <div className={styles.contentStack}>
+          <PanoramicRestaurantPhotoCarousel />
+          <PanoramicRestaurantDescriptionSection />
+          <PanoramicRestaurantSecondaryGallery />
+        </div>
       </div>
     </section>
   );

@@ -1,9 +1,7 @@
 .section {
     position: relative;
     isolation: isolate;
-
-    padding-block: clamp(2.5rem, 5vw, 3.6rem);
-
+    padding-block: clamp(3rem, 6vw, 5rem);
     background:
         radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.10), transparent 60%),
         radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.07), transparent 60%),
@@ -16,4 +14,30 @@
     inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--line-inset));
     margin-inline: auto;
     box-sizing: border-box;
+}
+
+.headerBlock {
+    display: grid;
+    gap: clamp(1.1rem, 2vw, 1.6rem);
+    justify-items: center;
+}
+
+.descriptionWrap {
+    width: 100%;
+    max-width: min(1150px, 100%);
+    margin-inline: auto;
+}
+
+.descriptionWrap :global(*) {
+    margin-bottom: 0;
+}
+
+@media (max-width: 720px) {
+    .section {
+        padding-block: clamp(2.4rem, 8vw, 3.2rem);
+    }
+
+    .headerBlock {
+        gap: 1rem;
+    }
 }

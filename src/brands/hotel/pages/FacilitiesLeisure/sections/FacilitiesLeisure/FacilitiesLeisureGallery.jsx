@@ -15,7 +15,6 @@ export default function FacilitiesLeisureGallery() {
     hotelBrand?.pages?.facilities?.sections?.facilitiesLeisure ?? null;
 
   const gallery = section?.gallery ?? null;
-
   const items = useMemo(() => gallery?.items ?? [], [gallery?.items]);
   const fallbackLabel = gallery?.fallbackLabel ?? "Fotos";
 

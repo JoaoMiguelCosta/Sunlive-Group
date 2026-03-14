@@ -4,7 +4,7 @@ import hotelBrand from "../../../../config/index.js";
 const splitParagraphs = (text) =>
   String(text)
     .split(/\n\s*\n/g)
-    .map((p) => p.trim())
+    .map((paragraph) => paragraph.trim())
     .filter(Boolean);
 
 export default function PanoramicRestaurantDescriptionSection() {
@@ -18,10 +18,12 @@ export default function PanoramicRestaurantDescriptionSection() {
   const paragraphs = splitParagraphs(text);
 
   return (
-    <HotelSectionDescription as="div" align="center">
-      {paragraphs.map((p, idx) => (
-        <p key={idx}>{p}</p>
-      ))}
-    </HotelSectionDescription>
+    <div aria-label="Descrição complementar do restaurante">
+      <HotelSectionDescription as="div" align="center">
+        {paragraphs.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
+        ))}
+      </HotelSectionDescription>
+    </div>
   );
 }

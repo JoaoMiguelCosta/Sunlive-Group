@@ -12,28 +12,28 @@ export const sustainabilityImpact = {
   },
   stats: [
     {
-      id: "energy",
-      iconKey: "energy",
-      value: "30%",
-      description: "de redução no consumo energético",
-    },
-    {
-      id: "water",
-      iconKey: "water",
-      value: "25%",
-      description: "de poupança no consumo de água",
-    },
-    {
-      id: "recycling",
-      iconKey: "recycling",
+      id: "waste-recycled",
       value: "80%",
-      description: "de taxa de reciclagem",
+      description: "dos resíduos são reciclados",
+      iconKey: "recycling",
     },
     {
       id: "local-products",
-      iconKey: "local-products",
       value: "70%",
       description: "dos produtos são de origem local",
+      iconKey: "local-products",
+    },
+    {
+      id: "water-saving",
+      value: "25%",
+      description: "de poupança no consumo de água",
+      iconKey: "water",
+    },
+    {
+      id: "energy-reduction",
+      value: "30%",
+      description: "de redução no consumo energético",
+      iconKey: "energy",
     },
   ],
 };

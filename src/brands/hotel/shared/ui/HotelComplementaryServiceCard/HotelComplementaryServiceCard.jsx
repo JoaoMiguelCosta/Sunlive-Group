@@ -34,7 +34,6 @@ export default function HotelComplementaryServiceCard({
       <div className={styles.content}>
         <div className={styles.topRow}>
           <h3 className={styles.title}>{title}</h3>
-
           {badge ? <span className={styles.badge}>{badge}</span> : null}
         </div>
 

@@ -1,25 +1,29 @@
 import hotelBrand from "../../../../config/index.js";
-import WhyChooseCard from "../../../../shared/ui/WhyChooseCard/WhyChooseCard.jsx";
+import SustainabilityActionCard from "../../../../shared/ui/SustainabilityActionCard/SustainabilityActionCard.jsx";
 import styles from "./FutureGoalsCards.module.css";
 
 export default function FutureGoalsCards() {
   const section =
     hotelBrand?.pages?.sustainability?.sections?.futureGoals ?? null;
 
-  const items = section?.goalCards?.items ?? [];
+  const items = Array.isArray(section?.goalCards?.items)
+    ? section.goalCards.items
+    : [];
 
   if (!items.length) return null;
 
   return (
-    <div className={styles.grid}>
+    <div className={styles.grid} role="list" aria-label="Objetivos futuros">
       {items.map((item) => (
-        <WhyChooseCard
-          key={item.id}
-          title={item.title}
-          description={item.description}
-          icon={null}
-          ariaLabel={item.title}
-        />
+        <div key={item.id} role="listitem" className={styles.item}>
+          <SustainabilityActionCard
+            title={item.title}
+            description={item.description}
+            icon={null}
+            ariaLabel={item.title}
+            className={styles.card}
+          />
+        </div>
       ))}
     </div>
   );

@@ -45,15 +45,27 @@ export const barAndLounge = {
   highlightCard: {
     iconKey: null,
     title: "Serviço de Verão",
-    text: "Durante a época alta, oferecemos serviço exterior junto à piscina",
+    text: "Durante a época alta, oferecemos serviço exterior junto à piscina.",
   },
 
   gallery: {
-    fallbackLabel: "Foto",
+    fallbackLabel: "Bar & Lounge",
     items: [
-      { id: "bl-01", src: null, alt: "Bar & Lounge — Foto 1" },
-      { id: "bl-02", src: null, alt: "Bar & Lounge — Foto 2" },
-      { id: "bl-03", src: null, alt: "Bar & Lounge — Foto 3" },
+      {
+        id: "bl-01",
+        src: null,
+        alt: "Bar & Lounge — vista geral do espaço",
+      },
+      {
+        id: "bl-02",
+        src: null,
+        alt: "Bar & Lounge — zona de convívio",
+      },
+      {
+        id: "bl-03",
+        src: null,
+        alt: "Bar & Lounge — ambiente interior",
+      },
     ],
   },
 };

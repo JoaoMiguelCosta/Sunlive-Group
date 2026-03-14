@@ -79,18 +79,11 @@ const customizedQuotes = {
 
   actions: [
     {
-      id: "contact",
-      label: "Contactar",
-      href: "#",
-      icon: null,
-      ariaLabel: "Contactar para informações sobre eventos",
-    },
-    {
       id: "request-quote",
-      label: "Pedir Orçamento",
-      href: "#",
+      label: "Pedir Orçamento Personalizado",
+      href: "/sunlive-group/hotel/information#info-contacts",
       icon: null,
-      ariaLabel: "Pedir orçamento personalizado",
+      ariaLabel: "Pedir Orçamento Personalizado",
     },
   ],
 };

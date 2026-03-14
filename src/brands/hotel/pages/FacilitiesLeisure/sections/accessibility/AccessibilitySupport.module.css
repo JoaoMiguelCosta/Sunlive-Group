@@ -1,40 +1,53 @@
 .block {
-    width: min(100% - 2rem, 1560px);
-    margin-inline: auto;
-    margin-top: clamp(1.5rem, 2.8vw, 2.2rem);
+    width: 100%;
+    margin-top: clamp(1.75rem, 3vw, 2.4rem);
 }
 
 .grid {
     display: grid;
     grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
-    gap: 0;
+    gap: clamp(1rem, 2vw, 1.5rem);
     align-items: stretch;
+}
+
+.leftColumn,
+.featuresCard {
+    min-height: 100%;
 }
 
 .leftColumn {
     display: grid;
     grid-template-rows: auto 1fr;
+    border: 1px solid rgba(199, 134, 21, 0.78);
+    border-radius: clamp(22px, 2.8vw, 34px);
+    overflow: hidden;
+    background:
+        radial-gradient(900px 220px at 50% -12%, rgba(230, 200, 147, 0.10), transparent 60%),
+        linear-gradient(180deg, rgba(52, 28, 10, 0.98) 0%, rgba(38, 23, 11, 1) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 16px 34px rgba(0, 0, 0, 0.18);
 }
 
 .highlightBanner {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 88px;
-    padding: 1rem 1.25rem;
-    border: 1px solid rgba(199, 134, 21, 0.78);
+    min-height: 96px;
+    padding: 1.2rem 1.4rem;
     background:
-        radial-gradient(700px 180px at 50% -10%, rgba(230, 200, 147, 0.14), transparent 60%),
+        radial-gradient(700px 180px at 20% 10%, rgba(230, 200, 147, 0.12), transparent 60%),
         linear-gradient(90deg,
-            rgba(92, 58, 20, 0.95) 0%,
-            rgba(58, 33, 12, 0.97) 62%,
-            rgba(38, 23, 11, 0.99) 100%);
+            rgba(92, 58, 20, 0.96) 0%,
+            rgba(58, 33, 12, 0.98) 62%,
+            rgba(38, 23, 11, 1) 100%);
+    border-bottom: 1px solid rgba(199, 134, 21, 0.74);
 }
 
 .highlightText {
     margin: 0;
     color: rgba(255, 248, 236, 0.98);
-    font-size: clamp(1.35rem, 2vw, 1.55rem);
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
     line-height: 1.2;
     font-weight: 700;
     text-align: center;
@@ -42,12 +55,9 @@
 }
 
 .supportCard {
-    border-left: 1px solid rgba(199, 134, 21, 0.78);
-    border-right: 1px solid rgba(199, 134, 21, 0.78);
-    border-bottom: 1px solid rgba(199, 134, 21, 0.78);
-    background:
-        radial-gradient(900px 220px at 50% -12%, rgba(230, 200, 147, 0.1), transparent 60%),
-        linear-gradient(180deg, rgba(52, 28, 10, 0.98) 0%, rgba(38, 23, 11, 1) 100%);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 100%;
 }
 
 .supportHeader {
@@ -55,8 +65,8 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    min-height: 84px;
-    padding: 1rem 1.25rem;
+    min-height: 98px;
+    padding: 1.1rem 1.4rem;
     background:
         linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
     border-bottom: 1px solid rgba(255, 231, 184, 0.24);
@@ -65,45 +75,51 @@
 .supportTitle {
     margin: 0;
     color: #ffffff;
-    font-size: clamp(1.4rem, 1.9vw, 1.9rem);
-    line-height: 1.15;
+    font-size: clamp(1.6rem, 2.1vw, 2.2rem);
+    line-height: 1.12;
     font-weight: 700;
     text-align: center;
+    text-wrap: balance;
 }
 
 .supportBody {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 140px;
-    padding: 1.5rem 1.25rem;
+    min-height: 190px;
+    padding: 1.75rem 1.4rem;
     background:
         radial-gradient(circle at 50% 50%, rgba(120, 84, 32, 0.16), rgba(38, 23, 11, 0) 55%),
         linear-gradient(180deg, rgba(52, 28, 10, 0.92), rgba(38, 23, 11, 0.98));
 }
 
 .supportDescription {
-    max-width: 36ch;
+    max-width: 34ch;
     margin: 0;
     color: rgba(245, 237, 227, 0.96);
-    font-size: clamp(1rem, 1.45vw, 1.1rem);
-    line-height: 1.25;
+    font-size: clamp(1.04rem, 1.45vw, 1.16rem);
+    line-height: 1.38;
     text-align: center;
 }
 
 .featuresCard {
     border: 1px solid rgba(199, 134, 21, 0.78);
+    border-radius: clamp(22px, 2.8vw, 34px);
+    overflow: hidden;
     background:
-        radial-gradient(900px 220px at 50% -12%, rgba(230, 200, 147, 0.1), transparent 60%),
+        radial-gradient(900px 220px at 50% -12%, rgba(230, 200, 147, 0.10), transparent 60%),
         linear-gradient(180deg, rgba(52, 28, 10, 0.98) 0%, rgba(38, 23, 11, 1) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 16px 34px rgba(0, 0, 0, 0.18);
 }
 
 .featuresHeader {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 88px;
-    padding: 1rem 1.25rem;
+    min-height: 96px;
+    padding: 1.2rem 1.4rem;
     background:
         linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
     border-bottom: 1px solid rgba(255, 231, 184, 0.24);
@@ -112,17 +128,18 @@
 .featuresTitle {
     margin: 0;
     color: #ffffff;
-    font-size: clamp(1.35rem, 1.9vw, 1.8rem);
-    line-height: 1.15;
+    font-size: clamp(1.45rem, 2vw, 2rem);
+    line-height: 1.12;
     font-weight: 700;
     text-align: center;
+    text-wrap: balance;
 }
 
 .featuresList {
     display: grid;
     gap: 0;
     margin: 0;
-    padding: 0.5rem 0;
+    padding: 0.7rem 0;
     list-style: none;
 }
 
@@ -131,15 +148,15 @@
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 1rem;
-    min-height: 46px;
-    padding: 0.45rem 1rem;
+    min-height: 62px;
+    padding: 0.7rem 1.2rem;
 }
 
 .featureLabel {
     color: rgba(245, 237, 227, 0.96);
-    font-size: clamp(1rem, 1.45vw, 1.08rem);
-    line-height: 1.25;
-    font-weight: 500;
+    font-size: clamp(1.02rem, 1.4vw, 1.16rem);
+    line-height: 1.3;
+    font-weight: 600;
 }
 
 .iconSlot {
@@ -151,13 +168,13 @@
 }
 
 .iconSlotMd {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
 }
 
 .iconSlotSm {
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
 }
 
 .iconSlotDefault {
@@ -175,6 +192,9 @@
         linear-gradient(180deg, rgba(215, 169, 75, 1) 0%, rgba(199, 134, 21, 1) 100%);
     color: #3b220d;
     border: 1px solid rgba(255, 231, 184, 0.22);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        0 6px 16px rgba(0, 0, 0, 0.14);
 }
 
 .iconSlot :global(svg) {
@@ -204,34 +224,34 @@
 @media (max-width: 980px) {
     .grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
     }
 
-    .supportCard {
-        border-top: 0;
+    .supportBody {
+        min-height: 150px;
     }
 }
 
 @media (max-width: 640px) {
     .block {
-        width: min(100% - 1rem, 1560px);
+        margin-top: 1.5rem;
     }
 
     .highlightBanner,
     .featuresHeader,
     .supportHeader {
-        min-height: 76px;
-        padding: 0.9rem 1rem;
+        min-height: 78px;
+        padding: 0.95rem 1rem;
     }
 
     .supportBody {
-        min-height: 120px;
+        min-height: 130px;
         padding: 1.25rem 1rem;
     }
 
     .featureItem {
+        min-height: 56px;
         gap: 0.85rem;
-        padding-inline: 0.85rem;
+        padding: 0.65rem 1rem;
     }
 
     .highlightText {
@@ -246,5 +266,15 @@
     .supportDescription,
     .featureLabel {
         font-size: 1rem;
+    }
+
+    .iconSlotMd {
+        width: 48px;
+        height: 48px;
+    }
+
+    .iconSlotSm {
+        width: 30px;
+        height: 30px;
     }
 }

@@ -14,7 +14,6 @@ export default function CateringInfoLists() {
 
   if (!items.length && !cta?.label) return null;
 
-  // Preparado para futuro:
   // const Icon = cta?.iconKey
   //   ? resolveHotelIcon(hotelBrand?.icons, cta.iconKey)
   //   : null;
@@ -43,9 +42,7 @@ export default function CateringInfoLists() {
             aria-label={cta.ariaLabel ?? cta.label}
           >
             <span className={styles.ctaIconSlot} aria-hidden="true">
-              {/* Quando ativares os ícones:
-              {Icon ? <Icon className={styles.ctaIcon} /> : null}
-              */}
+              {/* {Icon ? <Icon className={styles.ctaIcon} /> : null} */}
             </span>
 
             <span>{cta.label}</span>

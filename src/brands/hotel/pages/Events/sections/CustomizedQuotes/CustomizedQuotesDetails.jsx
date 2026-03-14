@@ -1,5 +1,5 @@
 import hotelBrand from "../../../../config/index.js";
-import WhyChooseCard from "../../../../shared/ui/WhyChooseCard/WhyChooseCard.jsx";
+import SustainabilityActionCard from "../../../../shared/ui/SustainabilityActionCard/SustainabilityActionCard.jsx";
 
 import styles from "./CustomizedQuotesDetails.module.css";
 
@@ -10,14 +10,17 @@ export default function CustomizedQuotesDetails() {
   if (!cards.length) return null;
 
   return (
-    <div className={styles.grid}>
+    <div
+      className={styles.grid}
+      aria-label="Detalhes de orçamentos personalizados"
+    >
       {cards.map((card) => (
-        <WhyChooseCard
+        <SustainabilityActionCard
           key={card.id}
           title={card.title}
           description={card.description}
-          icon={card.icon}
-          ariaLabel={card.ariaLabel}
+          icon={card.icon ?? null}
+          ariaLabel={card.ariaLabel ?? card.title}
         />
       ))}
     </div>

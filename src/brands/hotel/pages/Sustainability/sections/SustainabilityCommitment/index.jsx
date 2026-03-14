@@ -14,11 +14,12 @@ export default function SustainabilityCommitmentSection() {
       className={styles.section}
       aria-labelledby={titleId}
     >
-      <SustainabilityTitle titleId={titleId} />
-      <SustainabilityDescription />
-      <SustainabilityHighlightBanner />
-
-      <SustainabilityPracticesGrid />
+      <div className={styles.inner}>
+        <SustainabilityTitle titleId={titleId} />
+        <SustainabilityDescription />
+        <SustainabilityHighlightBanner />
+        <SustainabilityPracticesGrid />
+      </div>
     </section>
   );
 }

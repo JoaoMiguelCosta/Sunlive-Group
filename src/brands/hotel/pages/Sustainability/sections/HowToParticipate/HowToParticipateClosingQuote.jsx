@@ -11,7 +11,7 @@ export default function HowToParticipateClosingQuote() {
 
   return (
     <div className={styles.quoteBlock}>
-      <p className={styles.quote}>{quote}</p>
+      <p className={styles.quote}>“{quote.replace(/^["“]|["”]$/g, "")}”</p>
     </div>
   );
 }

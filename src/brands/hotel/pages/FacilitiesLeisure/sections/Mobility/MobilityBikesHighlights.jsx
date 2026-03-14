@@ -1,5 +1,4 @@
 import hotelBrand from "../../../../config/index.js";
-
 import HotelFeatureListWithMedia from "../../../../shared/ui/HotelFeatureListWithMedia/HotelFeatureListWithMedia.jsx";
 
 import styles from "./MobilityBikesHighlights.module.css";

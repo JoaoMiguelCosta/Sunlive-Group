@@ -10,7 +10,7 @@ function FeatureItem({ title, description, icon = null }) {
           {icon}
         </span>
 
-        <h4 className={styles.featureTitle}>{title}</h4>
+        {title ? <h4 className={styles.featureTitle}>{title}</h4> : null}
       </div>
 
       {description ? (
@@ -35,7 +35,7 @@ export default function SustainabilityPracticeCard({
   if (!title) return null;
 
   return (
-    <article className={classNames}>
+    <article className={classNames} aria-label={title}>
       <header className={styles.header}>
         <div className={styles.topIconWrap} aria-hidden="true">
           {topIcon}

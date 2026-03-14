@@ -1,30 +1,43 @@
 export const breakfast = {
   id: "restaurant-breakfast",
   headerLabel: "Pequeno-Almoço",
+
   description:
-    "O pequeno-almoço é servido diariamente em formato buffet, com uma oferta variada, saudável e adaptável a diferentes dietas.\n\nEm caso de grupos ou atletas, o horário e conteúdo podem ser ajustados mediante pedido.",
+    "O pequeno-almoço é servido diariamente em formato buffet, com uma seleção variada, equilibrada e adaptável a diferentes preferências alimentares.\n\nPara grupos e atletas, o horário e a composição da oferta podem ser ajustados mediante pedido.",
 
   intro: {
-    title: "Comece o seu dia com um bom Pequeno-almoço",
+    title: "Comece o dia com um pequeno-almoço completo",
     paragraphs: [
-      "Oferecemos muitas opções saudáveis e igualmente deliciosas.",
-      "Garantimos grande variedade e frescura:",
-      "cereais, pão, frutas, queijo, presunto, ovos, bacon, feijão, iogurtes, entre outros.",
+      "A oferta combina opções saudáveis, saborosas e pensadas para diferentes rotinas e necessidades alimentares.",
+      "Privilegiamos variedade, frescura e equilíbrio em cada serviço.",
+      "Inclui cereais, pão, fruta fresca, queijo, presunto, ovos, bacon, feijão, iogurtes e outras opções complementares.",
     ],
   },
 
   highlightCard: {
     iconKey: null,
     title: "Horário: 7h00 - 10h00",
-    text: "Horários flexíveis para grupos mediante pedido.",
+    text: "Disponibilidade de horários flexíveis para grupos, mediante pedido prévio.",
   },
 
   gallery: {
-    fallbackLabel: "Fotos",
+    fallbackLabel: "Pequeno-Almoço",
     items: [
-      { id: "bf-01", src: null, alt: "Pequeno-almoço — Foto 1" },
-      { id: "bf-02", src: null, alt: "Pequeno-almoço — Foto 2" },
-      { id: "bf-03", src: null, alt: "Pequeno-almoço — Foto 3" },
+      {
+        id: "bf-01",
+        src: null,
+        alt: "Pequeno-almoço buffet — vista geral",
+      },
+      {
+        id: "bf-02",
+        src: null,
+        alt: "Pequeno-almoço buffet — seleção de produtos",
+      },
+      {
+        id: "bf-03",
+        src: null,
+        alt: "Pequeno-almoço buffet — ambiente da sala",
+      },
     ],
   },
 
@@ -39,19 +52,19 @@ export const breakfast = {
       {
         id: "breakfast-bread-pastry",
         title: "Pão e Pastelaria",
-        description: "Frescos e variados",
+        description: "Seleção fresca e variada",
         iconKey: null,
       },
       {
         id: "breakfast-cereals-yogurts",
         title: "Cereais e Iogurtes",
-        description: "Opções saudáveis",
+        description: "Opções leves e equilibradas",
         iconKey: null,
       },
       {
         id: "breakfast-eggs-bacon-beans",
         title: "Ovos, Bacon e Feijão",
-        description: "Sob consulta",
+        description: "Disponível mediante pedido",
         iconKey: null,
       },
       {
@@ -63,19 +76,19 @@ export const breakfast = {
       {
         id: "breakfast-natural-juices",
         title: "Sumos Naturais",
-        description: "100% naturais",
+        description: "Preparados com fruta selecionada",
         iconKey: null,
       },
       {
         id: "breakfast-fresh-fruit",
         title: "Frutas Frescas",
-        description: "Da época e regionais",
+        description: "Da época e de origem regional",
         iconKey: null,
       },
       {
         id: "breakfast-spreads",
         title: "Sabores para Barrar",
-        description: "Mel, compotas, manteiga de amendoim e doces variados",
+        description: "Mel, compotas, manteigas e doces variados",
         iconKey: null,
       },
     ],

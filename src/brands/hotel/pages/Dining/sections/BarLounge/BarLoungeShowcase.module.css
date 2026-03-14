@@ -1,62 +1,62 @@
 .block {
     position: relative;
     isolation: isolate;
-    padding-top: clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(340px, 1.2fr);
+    grid-template-columns: minmax(0, 0.96fr) minmax(340px, 1.14fr);
     gap: 0;
-    border: 1px solid rgba(199, 134, 21, 0.82);
     overflow: hidden;
+    border-radius: 34px;
+    border: 1px solid rgba(214, 166, 74, 0.48);
 
     background:
+        linear-gradient(180deg, rgba(52, 29, 12, 0.72), rgba(30, 18, 10, 0.88)),
         radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.10), transparent 60%),
         radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.08), transparent 60%),
         #26170b;
 
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 44px rgba(0, 0, 0, 0.24);
+        0 20px 48px rgba(0, 0, 0, 0.24);
 }
 
 .leftPanel {
     display: flex;
     flex-direction: column;
     min-width: 0;
-    border-right: 1px solid rgba(199, 134, 21, 0.82);
+    border-right: 1px solid rgba(214, 166, 74, 0.40);
 }
 
 .descriptionWrap {
-    padding: clamp(1.6rem, 2.8vw, 2.3rem) clamp(1.2rem, 2vw, 2rem);
-    border-bottom: 1px solid rgba(199, 134, 21, 0.82);
+    padding: clamp(1.7rem, 2.8vw, 2.35rem) clamp(1.2rem, 2vw, 2rem);
+    border-bottom: 1px solid rgba(214, 166, 74, 0.34);
 }
 
 .description {
     margin: 0;
     color: rgba(255, 248, 240, 0.96);
-    font-size: clamp(1.5rem, 2vw, 2.25rem);
-    font-weight: 500;
-    line-height: 1.15;
-    text-align: center;
+    font-size: clamp(1.45rem, 2vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.18;
+    text-align: left;
     text-wrap: balance;
 }
 
 .pillsGrid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(1rem, 1.8vw, 1.5rem);
+    gap: clamp(0.9rem, 1.6vw, 1.25rem);
     padding: clamp(1rem, 2vw, 1.5rem);
-    border-bottom: 1px solid rgba(199, 134, 21, 0.82);
+    border-bottom: 1px solid rgba(214, 166, 74, 0.34);
 }
 
 .featurePill {
     width: 100%;
     justify-content: flex-start;
-    min-height: 52px;
+    min-height: 54px;
     padding-inline: 1rem 1.2rem;
-    border-width: 2px;
 }
 
 .highlightCard {
@@ -69,18 +69,18 @@
     align-items: center;
     justify-content: center;
     gap: 0.9rem;
-    min-height: 72px;
+    min-height: 78px;
     padding: 1rem 1.25rem;
-    border-bottom: 1px solid rgba(199, 134, 21, 0.72);
+    border-bottom: 1px solid rgba(214, 166, 74, 0.40);
 
     background:
-        linear-gradient(180deg, rgba(188, 123, 10, 0.94), rgba(166, 106, 8, 0.96));
+        linear-gradient(180deg, rgba(182, 119, 18, 0.94), rgba(145, 92, 10, 0.96));
 }
 
 .highlightIconSlot {
-    width: 46px;
-    height: 46px;
-    flex: 0 0 46px;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -88,7 +88,7 @@
 
     background:
         radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12), transparent 58%),
-        linear-gradient(180deg, rgba(41, 38, 51, 0.96), rgba(31, 24, 14, 0.98));
+        linear-gradient(180deg, rgba(52, 42, 49, 0.96), rgba(19, 15, 12, 0.98));
 
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
@@ -105,39 +105,42 @@
 .highlightTitle {
     margin: 0;
     color: rgba(255, 248, 240, 0.98);
-    font-size: clamp(1.35rem, 1.8vw, 1.75rem);
+    font-size: clamp(1.25rem, 1.7vw, 1.65rem);
     font-weight: 900;
     line-height: 1.15;
     text-align: center;
+    text-wrap: balance;
 }
 
 .highlightText {
     margin: 0;
-    padding: 1.2rem 1.5rem 1.35rem;
-    color: rgba(255, 246, 235, 0.94);
-    font-size: clamp(1rem, 1.25vw, 1.15rem);
-    line-height: 1.3;
+    padding: 1.15rem 1.4rem 1.25rem;
+    color: rgba(255, 246, 235, 0.92);
+    font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+    line-height: 1.5;
     text-align: center;
 
     background:
-        linear-gradient(90deg, rgba(15, 93, 108, 0.90) 0%, rgba(29, 36, 41, 0.92) 100%);
+        radial-gradient(680px 220px at 50% 0%, rgba(230, 200, 147, 0.08), transparent 60%),
+        linear-gradient(180deg, rgba(78, 48, 23, 0.58), rgba(38, 23, 11, 0.32));
 }
 
 .rightPanel {
     min-width: 0;
     display: flex;
-    padding: clamp(1rem, 1.8vw, 1.3rem);
+    padding: clamp(1rem, 1.8vw, 1.25rem);
 }
 
 .galleryCard {
     width: 100%;
     overflow: hidden;
-    border-radius: 58px;
-    border: 1px solid rgba(199, 134, 21, 0.82);
+    border-radius: 46px;
+    border: 1px solid rgba(214, 166, 74, 0.44);
 
     background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
+        linear-gradient(180deg, rgba(52, 29, 12, 0.68), rgba(30, 18, 10, 0.84)),
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.16), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.10), transparent 60%),
         #26170b;
 
     box-shadow:
@@ -146,21 +149,22 @@
 }
 
 .galleryStage {
-    height: clamp(340px, 40vw, 620px);
+    height: clamp(340px, 38vw, 600px);
 }
 
 @media (max-width: 1080px) {
     .grid {
         grid-template-columns: 1fr;
+        border-radius: 28px;
     }
 
     .leftPanel {
         border-right: 0;
-        border-bottom: 1px solid rgba(199, 134, 21, 0.82);
+        border-bottom: 1px solid rgba(214, 166, 74, 0.34);
     }
 
     .galleryCard {
-        border-radius: 34px;
+        border-radius: 32px;
     }
 
     .galleryStage {
@@ -170,11 +174,12 @@
 
 @media (max-width: 720px) {
     .descriptionWrap {
-        padding: 1.25rem 1rem;
+        padding: 1.2rem 1rem;
     }
 
     .description {
-        font-size: 1.45rem;
+        font-size: 1.35rem;
+        text-align: center;
     }
 
     .pillsGrid {
@@ -184,11 +189,11 @@
     }
 
     .featurePill {
-        min-height: 48px;
+        min-height: 50px;
     }
 
     .highlightHeader {
-        min-height: 66px;
+        min-height: 68px;
         padding: 0.9rem 1rem;
     }
 
@@ -207,6 +212,6 @@
     }
 
     .galleryCard {
-        border-radius: 26px;
+        border-radius: 24px;
     }
 }

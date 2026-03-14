@@ -1,8 +1,9 @@
 export const catering = {
   id: "restaurant-catering",
   headerLabel: "Serviço de Catering",
+
   description:
-    "A Estalagem fornece serviço de catering para eventos internos e externos, com ementas personalizadas e apoio logístico completo.",
+    "A Estalagem disponibiliza serviço de catering para eventos internos e externos, com ementas personalizadas, organização cuidada e apoio logístico completo.",
 
   processSteps: {
     items: [
@@ -10,21 +11,23 @@ export const catering = {
         id: "catering-step-1",
         stepNumber: "1",
         title: "Pedido",
-        description: "Contacte-nos com os detalhes do evento",
+        description: "Partilhe connosco os detalhes e necessidades do evento.",
         iconKey: null,
       },
       {
         id: "catering-step-2",
         stepNumber: "2",
         title: "Planeamento",
-        description: "Criamos uma proposta personalizada",
+        description:
+          "Desenvolvemos uma proposta personalizada e ajustada ao contexto.",
         iconKey: null,
       },
       {
         id: "catering-step-3",
         stepNumber: "3",
         title: "Execução",
-        description: "Entregamos com qualidade e pontualidade",
+        description:
+          "Asseguramos a entrega com qualidade, rigor e pontualidade.",
         iconKey: null,
       },
     ],
@@ -34,7 +37,7 @@ export const catering = {
     items: [
       {
         id: "catering-included-services",
-        title: "Serviços Incluídos:",
+        title: "Serviços Incluídos",
         entries: [
           "Ementas personalizadas",
           "Serviço presencial",
@@ -44,7 +47,7 @@ export const catering = {
       },
       {
         id: "catering-event-types",
-        title: "Tipos de Eventos:",
+        title: "Tipos de Eventos",
         entries: [
           "Coffee breaks",
           "Cocktails",
@@ -56,9 +59,9 @@ export const catering = {
 
     cta: {
       label: "Pedir Orçamento para Catering",
-      href: "/hotel/contactos",
+      href: "/sunlive-group/hotel/information#info-contacts",
       ariaLabel:
-        "Ir para a página de contactos para pedir orçamento de catering",
+        "Ir para a secção de contactos para pedir orçamento de catering",
       external: false,
       iconKey: null,
     },

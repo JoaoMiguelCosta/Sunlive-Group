@@ -8,6 +8,8 @@ export default function DescriptionPanoramicRestaurant() {
   if (!content?.description) return null;
 
   return (
-    <HotelSectionDescription>{content.description}</HotelSectionDescription>
+    <HotelSectionDescription align="center">
+      {content.description}
+    </HotelSectionDescription>
   );
 }

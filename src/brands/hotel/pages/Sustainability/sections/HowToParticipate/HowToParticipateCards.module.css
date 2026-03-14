@@ -1,9 +1,13 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(1rem, 2vw, 1.5rem);
-    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+    gap: clamp(1rem, 1.8vw, 1.4rem);
+    margin-top: clamp(1.35rem, 2.8vw, 2rem);
     align-items: stretch;
+}
+
+.grid>* {
+    min-width: 0;
 }
 
 @media (max-width: 1180px) {
@@ -15,5 +19,6 @@
 @media (max-width: 768px) {
     .grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 }

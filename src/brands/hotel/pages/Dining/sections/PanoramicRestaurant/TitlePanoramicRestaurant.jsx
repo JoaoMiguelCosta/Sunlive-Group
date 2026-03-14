@@ -5,7 +5,9 @@ export default function TitlePanoramicRestaurant() {
   const content =
     hotelBrand?.pages?.dining?.sections?.panoramicRestaurant ?? null;
 
-  if (!content) return null;
+  const label = content?.headerLabel?.trim();
 
-  return <HotelSectionHeader label={content.headerLabel} />;
+  if (!label) return null;
+
+  return <HotelSectionHeader id="restaurante-panoramico-title" label={label} />;
 }

@@ -7,11 +7,17 @@ import styles from "./CustomizedQuotes.module.css";
 
 export default function CustomizedQuotesSection() {
   return (
-    <section id="events-quotes" className={styles.section}>
-      <TitleCustomizedQuotes />
-      <DescriptionCustomizedQuotes />
-      <CustomizedQuotesDetails />
-      <CustomizedQuotesActions />
+    <section
+      id="events-quotes"
+      className={styles.section}
+      aria-labelledby="customized-quotes-title"
+    >
+      <div className={styles.inner}>
+        <TitleCustomizedQuotes titleId="customized-quotes-title" />
+        <DescriptionCustomizedQuotes />
+        <CustomizedQuotesDetails />
+        <CustomizedQuotesActions />
+      </div>
     </section>
   );
 }

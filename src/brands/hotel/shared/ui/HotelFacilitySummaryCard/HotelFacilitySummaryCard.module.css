@@ -17,11 +17,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 96px;
-    padding: 2.15rem 1rem 0.95rem;
+    min-height: 110px;
+    padding: 2.2rem 1rem 1rem;
     background:
         linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
     border-bottom: 1px solid rgba(255, 231, 184, 0.22);
+}
+
+.titleWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.2em;
+    width: 100%;
+    max-width: 14ch;
 }
 
 .iconSlot {
@@ -65,6 +74,7 @@
     font-weight: 700;
     line-height: 1.15;
     text-align: center;
+    text-wrap: balance;
 }
 
 .body {
@@ -153,8 +163,13 @@
 
 @media (max-width: 640px) {
     .header {
-        min-height: 88px;
+        min-height: 96px;
         padding: 2rem 0.85rem 0.85rem;
+    }
+
+    .titleWrap {
+        min-height: 2.9em;
+        max-width: 13ch;
     }
 
     .title {

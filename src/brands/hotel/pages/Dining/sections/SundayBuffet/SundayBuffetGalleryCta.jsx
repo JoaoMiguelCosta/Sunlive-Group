@@ -19,7 +19,7 @@ export default function SundayBuffetGalleryCta() {
   const cta = section?.cta ?? null;
 
   const items = useMemo(() => gallery?.items ?? [], [gallery?.items]);
-  const fallbackLabel = gallery?.fallbackLabel ?? "Fotos";
+  const fallbackLabel = gallery?.fallbackLabel ?? "Buffet de Domingo";
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -56,6 +56,7 @@ export default function SundayBuffetGalleryCta() {
             onPrev={goPrev}
             onNext={goNext}
             fallbackLabel={fallbackLabel}
+            className={styles.carouselStage}
           />
         </div>
 

@@ -1,6 +1,6 @@
 import styles from "./WhyChooseUsGrid.module.css";
 
-import WhyChooseCard from "../../../../shared/ui/WhyChooseCard/WhyChooseCard.jsx";
+import SustainabilityActionCard from "../../../../shared/ui/SustainabilityActionCard/SustainabilityActionCard.jsx";
 
 export default function WhyChooseUsGrid({ items = [] }) {
   const safeItems = Array.isArray(items) ? items : [];
@@ -11,7 +11,7 @@ export default function WhyChooseUsGrid({ items = [] }) {
     <div className={styles.grid} role="list" aria-label="Vantagens da estadia">
       {safeItems.map((item) => (
         <div key={item.id} role="listitem" className={styles.item}>
-          <WhyChooseCard
+          <SustainabilityActionCard
             title={item.title}
             description={item.description}
             icon={null}

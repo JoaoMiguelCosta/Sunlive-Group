@@ -1,11 +1,13 @@
-/* src/brands/hotel/pages/Sustainability/sections/SustainabilityCommitment/SustainabilityPracticesGrid.module.css */
-
 .grid {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: clamp(1rem, 1.8vw, 1.6rem);
-    margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+    gap: clamp(1rem, 1.8vw, 1.55rem);
+    margin-top: clamp(1.4rem, 2.8vw, 2.4rem);
     align-items: stretch;
+}
+
+.grid>* {
+    min-width: 0;
 }
 
 .grid>*:nth-child(1),
@@ -39,5 +41,7 @@
 @media (max-width: 768px) {
     .grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1.25rem;
     }
 }

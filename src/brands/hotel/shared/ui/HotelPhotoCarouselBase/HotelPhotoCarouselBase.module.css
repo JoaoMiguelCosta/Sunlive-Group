@@ -2,41 +2,65 @@
     position: relative;
     width: 100%;
     height: 100%;
+    min-height: inherit;
 }
 
 .image,
 .fallback {
     position: relative;
     z-index: 1;
+    width: 100%;
+    height: 100%;
 }
 
 .image {
-    width: 100%;
-    height: 100%;
     display: block;
     object-fit: cover;
-    filter: saturate(1.03) contrast(1.02);
+    filter: saturate(1.04) contrast(1.03);
+}
+
+.imageOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(15, 10, 6, 0.08) 0%, rgba(15, 10, 6, 0.18) 100%),
+        radial-gradient(circle at center, transparent 35%, rgba(18, 10, 5, 0.16) 100%);
 }
 
 .fallback {
-    width: 100%;
-    height: 100%;
     display: grid;
     place-items: center;
-    padding: 24px;
+    padding: 1.5rem;
     text-align: center;
-
     background:
+        linear-gradient(180deg, rgba(55, 31, 12, 0.78), rgba(30, 18, 10, 0.92)),
         radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
         radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
         #26170b;
 }
 
+.fallbackInner {
+    display: grid;
+    gap: 0.45rem;
+    max-width: 28rem;
+}
+
+.fallbackEyebrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 225, 170, 0.82);
+}
+
 .fallbackTitle {
-    font-size: clamp(36px, 4vw, 56px);
+    font-size: clamp(2rem, 3.6vw, 3.8rem);
     font-weight: 900;
-    letter-spacing: 0.6px;
-    color: rgba(255, 245, 230, 0.96);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: rgba(255, 245, 230, 0.97);
     text-shadow:
         0 10px 30px rgba(0, 0, 0, 0.32),
         0 0 18px rgba(230, 200, 147, 0.14);
@@ -46,27 +70,21 @@
     position: absolute;
     top: 50%;
     z-index: 5;
-
-    width: 40px;
-    height: 40px;
+    width: 3rem;
+    height: 3rem;
     display: grid;
     place-items: center;
-
     transform: translateY(-50%);
     border-radius: 999px;
     border: 1px solid rgba(230, 200, 147, 0.42);
     cursor: pointer;
-
     background:
         radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.14), transparent 62%),
         linear-gradient(180deg, rgba(88, 54, 26, 0.82), rgba(38, 23, 11, 0.90));
-
     color: rgba(255, 220, 150, 0.98);
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.06),
         0 10px 24px rgba(0, 0, 0, 0.22);
-
     backdrop-filter: blur(6px);
     transition:
         transform 180ms ease,
@@ -87,16 +105,21 @@
         0 0 18px rgba(230, 200, 147, 0.10);
 }
 
+.navButton:focus-visible {
+    outline: 2px solid rgba(255, 233, 184, 0.92);
+    outline-offset: 4px;
+}
+
 .navLeft {
-    left: 16px;
+    left: 1rem;
 }
 
 .navRight {
-    right: 16px;
+    right: 1rem;
 }
 
 .navGlyph {
-    font-size: 24px;
+    font-size: 1.6rem;
     line-height: 1;
     font-weight: 900;
     transform: translateY(-1px);
@@ -104,19 +127,23 @@
 
 @media (max-width: 640px) {
     .navButton {
-        width: 36px;
-        height: 36px;
+        width: 2.5rem;
+        height: 2.5rem;
     }
 
     .navLeft {
-        left: 12px;
+        left: 0.75rem;
     }
 
     .navRight {
-        right: 12px;
+        right: 0.75rem;
     }
 
     .navGlyph {
-        font-size: 22px;
+        font-size: 1.35rem;
+    }
+
+    .fallbackTitle {
+        font-size: clamp(1.6rem, 8vw, 2.4rem);
     }
 }

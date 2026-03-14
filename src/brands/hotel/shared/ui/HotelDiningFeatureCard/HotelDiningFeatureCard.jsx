@@ -20,11 +20,13 @@ export default function HotelDiningFeatureCard({
           {hasIcon ? <span className={styles.iconInner}>{icon}</span> : null}
         </span>
 
-        <h3 className={styles.title}>{title}</h3>
+        {title ? <h3 className={styles.title}>{title}</h3> : null}
       </div>
 
       <div className={styles.body}>
-        <p className={styles.description}>{description}</p>
+        {description ? (
+          <p className={styles.description}>{description}</p>
+        ) : null}
       </div>
     </article>
   );

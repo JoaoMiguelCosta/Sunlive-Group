@@ -12,10 +12,9 @@ export default function CateringProcessSteps() {
   if (!items.length) return null;
 
   return (
-    <div className={styles.block}>
+    <div className={styles.block} aria-label="Etapas do serviço de catering">
       <div className={styles.grid}>
         {items.map((item) => {
-          // Preparado para futuro:
           // const Icon = item?.iconKey
           //   ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
           //   : null;

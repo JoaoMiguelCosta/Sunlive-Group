@@ -8,7 +8,7 @@ export default function EventsCelebrationsBanner() {
     hotelBrand?.pages?.events?.sections?.eventsCelebrations?.customizedBanner ??
     null;
 
-  if (!banner) return null;
+  if (!banner?.title && !banner?.description) return null;
 
   return (
     <div className={styles.wrapper}>
@@ -19,6 +19,7 @@ export default function EventsCelebrationsBanner() {
         leftIcon={banner.icons?.left}
         rightIcon={banner.icons?.right}
         iconsEnabled={banner.icons?.enabled ?? false}
+        className={styles.banner}
       />
     </div>
   );

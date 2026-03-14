@@ -22,7 +22,7 @@ export default function BarLoungeShowcase() {
   const gallery = section?.gallery ?? null;
 
   const items = useMemo(() => gallery?.items ?? [], [gallery?.items]);
-  const fallbackLabel = gallery?.fallbackLabel ?? "Foto";
+  const fallbackLabel = gallery?.fallbackLabel ?? "Bar & Lounge";
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -84,7 +84,11 @@ export default function BarLoungeShowcase() {
                   */}
                 </span>
 
-                <h3 className={styles.highlightTitle}>{highlightCard.title}</h3>
+                {highlightCard?.title ? (
+                  <h3 className={styles.highlightTitle}>
+                    {highlightCard.title}
+                  </h3>
+                ) : null}
               </div>
 
               {highlightCard?.text ? (

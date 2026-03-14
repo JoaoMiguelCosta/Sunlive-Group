@@ -12,7 +12,7 @@ export default function EventsTypes() {
   const eventTypes =
     hotelBrand?.pages?.events?.sections?.eventsCelebrations?.eventTypes ?? null;
 
-  const items = eventTypes?.items ?? [];
+  const items = Array.isArray(eventTypes?.items) ? eventTypes.items : [];
 
   const accordionItems = useMemo(
     () =>
@@ -30,7 +30,6 @@ export default function EventsTypes() {
   const activeItem =
     items.find((item) => isOpen(item.key)) ??
     items.find((item) => item.defaultOpen) ??
-    items[0] ??
     null;
 
   if (!items.length) return null;
@@ -49,6 +48,7 @@ export default function EventsTypes() {
               description={item.description}
               ctaLabel={item.ctaLabel ?? "Ver Detalhes"}
               onClick={() => toggle(item.key)}
+              detailsOpen={open}
               Icon={null}
               className={open ? styles.cardActive : ""}
             />

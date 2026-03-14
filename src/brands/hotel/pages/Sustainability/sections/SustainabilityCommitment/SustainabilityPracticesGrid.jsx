@@ -12,7 +12,7 @@ export default function SustainabilityPracticesGrid() {
   if (!items.length) return null;
 
   return (
-    <div className={styles.grid}>
+    <div className={styles.grid} aria-label="Práticas de sustentabilidade">
       {items.map((item) => (
         <SustainabilityPracticeCard
           key={item.id}

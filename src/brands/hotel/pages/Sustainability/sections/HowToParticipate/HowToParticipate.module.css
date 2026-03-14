@@ -1,19 +1,46 @@
 .section {
     position: relative;
     isolation: isolate;
-
-    padding-block: clamp(2.5rem, 5vw, 3.6rem);
-
+    padding-block: clamp(3rem, 6vw, 5rem);
+    overflow: clip;
     background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.10), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.07), transparent 60%),
-        transparent;
+        radial-gradient(1200px 420px at 12% 0%, rgba(230, 200, 147, 0.12), transparent 62%),
+        radial-gradient(980px 460px at 88% 100%, rgba(230, 200, 147, 0.08), transparent 64%),
+        linear-gradient(180deg, rgba(7, 12, 20, 0) 0%, rgba(7, 12, 20, 0.08) 100%);
+}
+
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            rgba(212, 163, 74, 0.08) 0%,
+            rgba(212, 163, 74, 0.03) 18%,
+            rgba(212, 163, 74, 0) 50%,
+            rgba(212, 163, 74, 0.03) 82%,
+            rgba(212, 163, 74, 0.08) 100%);
+    opacity: 0.72;
 }
 
 .inner {
-    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
+    --section-inline: var(--section-inset, clamp(0.9rem, 4vw, 2.5rem));
 
-    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--line-inset));
+    position: relative;
+    z-index: 1;
+    width: min(var(--sl-container-xl, 1360px), calc(100% - (var(--section-inline) * 2)));
     margin-inline: auto;
-    box-sizing: border-box;
+    display: grid;
+    gap: clamp(1.15rem, 2vw, 1.65rem);
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding-block: clamp(2.5rem, 8vw, 3.5rem);
+    }
+
+    .inner {
+        gap: 1rem;
+    }
 }
