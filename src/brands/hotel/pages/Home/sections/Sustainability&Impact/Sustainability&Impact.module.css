@@ -84,6 +84,18 @@
     text-wrap: pretty;
 }
 
+.ctaWrap {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(1rem, 2vw, 1.35rem);
+}
+
+.ctaButton {
+    flex: 0 0 auto;
+}
+
 @media (max-width: 640px) {
     .introBox {
         margin-block-start: 1rem;
@@ -99,5 +111,9 @@
     .introText {
         font-size: 0.95rem;
         line-height: 1.58;
+    }
+
+    .ctaWrap {
+        margin-top: 0.9rem;
     }
 }
