@@ -28,7 +28,6 @@ export default function TestimonialsAverageRating() {
   if (!content) return null;
 
   const { id, ratingValue, ratingLabel, supportingText, stars = {} } = content;
-
   const title = [ratingValue, ratingLabel].filter(Boolean).join(" ");
 
   return (
@@ -38,17 +37,20 @@ export default function TestimonialsAverageRating() {
       role="group"
       aria-label={title || "Classificação média"}
     >
-      <RatingStars
-        total={stars.total}
-        filled={stars.filled}
-        icon={stars.icon}
-      />
+      <div className={styles.inner}>
+        <RatingStars
+          total={stars.total}
+          filled={stars.filled}
+          icon={stars.icon}
+        />
 
-      {title ? <p className={styles.rating}>{title}</p> : null}
-
-      {supportingText ? (
-        <p className={styles.supportingText}>{supportingText}</p>
-      ) : null}
+        <div className={styles.textBlock}>
+          {title ? <p className={styles.rating}>{title}</p> : null}
+          {supportingText ? (
+            <p className={styles.supportingText}>{supportingText}</p>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 }

@@ -30,7 +30,6 @@ export default function TestimonialsSpotlight() {
   } = content;
 
   const slides = chunkItems(items, cardsPerSlide);
-
   const { index, setIndex } = useSpotlightCycle(slides.length, autoplayMs);
 
   const activeSlide = slides[index] ?? [];

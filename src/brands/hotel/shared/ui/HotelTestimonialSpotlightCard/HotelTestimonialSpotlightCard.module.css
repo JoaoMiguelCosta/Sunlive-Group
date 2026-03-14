@@ -1,31 +1,56 @@
 .card {
+    position: relative;
+    isolation: isolate;
+
     display: grid;
     grid-template-rows: auto auto 1fr auto;
-    min-height: 100%;
-    border: 1px solid rgba(214, 170, 78, 0.42);
+    min-height: clamp(340px, 28vw, 420px);
+    border: 1px solid rgba(230, 200, 147, 0.30);
     border-radius: 24px;
     overflow: hidden;
+
     background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.12), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.08), transparent 60%),
-        linear-gradient(180deg, rgba(255, 248, 230, 0.02), rgba(255, 248, 230, 0)),
-        #26170b;
+        radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 44%),
+        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.10), transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 248, 230, 0.04) 0%,
+            rgba(255, 248, 230, 0.014) 18%,
+            rgba(0, 0, 0, 0.10) 100%),
+        linear-gradient(135deg,
+            rgba(44, 23, 11, 0.96) 0%,
+            rgba(28, 14, 8, 0.98) 100%);
+
     box-shadow:
-        0 22px 44px rgba(0, 0, 0, 0.28),
-        inset 0 1px 0 rgba(255, 248, 230, 0.04);
+        inset 0 1px 0 rgba(255, 248, 230, 0.05),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
+        0 18px 36px rgba(0, 0, 0, 0.20);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 230, 0.08) 0%,
+            rgba(255, 248, 230, 0.02) 15%,
+            rgba(255, 255, 255, 0) 38%);
+    opacity: 0.94;
 }
 
 .header {
     display: grid;
-    grid-template-columns: 118px 1fr;
+    grid-template-columns: 72px 1fr;
     align-items: center;
-    gap: 0.95rem;
-    min-height: 122px;
-    padding: 0.35rem 1rem 0.35rem 0.7rem;
+    gap: 0.85rem;
+    min-height: 96px;
+    padding: 0.75rem 0.9rem 0.65rem 0.85rem;
+
     background:
-        linear-gradient(180deg, rgba(214, 170, 78, 0.22), rgba(214, 170, 78, 0.08)),
-        rgba(92, 54, 19, 0.92);
-    border-bottom: 1px solid rgba(214, 170, 78, 0.18);
+        linear-gradient(180deg, rgba(128, 80, 38, 0.92), rgba(90, 55, 26, 0.97));
+
+    border-bottom: 1px solid rgba(230, 200, 147, 0.16);
 }
 
 .iconWrap {
@@ -38,18 +63,21 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 76px;
-    height: 76px;
+    width: 54px;
+    height: 54px;
     border-radius: 999px;
+
     background:
         radial-gradient(circle at 30% 30%, rgba(255, 248, 230, 0.14), transparent 55%),
         rgba(46, 26, 11, 0.72);
+
     color: #f8f1e4;
-    font-size: 2.3rem;
+    font-size: 1.55rem;
     line-height: 1;
+
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 230, 0.1),
-        0 10px 22px rgba(0, 0, 0, 0.24);
+        0 10px 22px rgba(0, 0, 0, 0.22);
 }
 
 .headerContent {
@@ -58,38 +86,40 @@
 
 .organisation {
     margin: 0;
-    font-size: clamp(1.3rem, 1.55vw, 2rem);
+    font-size: clamp(1.08rem, 0.55vw + 0.98rem, 1.5rem);
     font-weight: 800;
-    line-height: 1.05;
+    line-height: 1.03;
     color: #f8f1e4;
+    text-wrap: balance;
 }
 
 .context {
-    margin: 0.32rem 0 0;
-    font-size: clamp(1rem, 1.2vw, 1.55rem);
-    font-weight: 500;
-    line-height: 1.15;
+    margin: 0.24rem 0 0;
+    font-size: clamp(0.9rem, 0.35vw + 0.86rem, 1.08rem);
+    font-weight: 600;
+    line-height: 1.12;
     color: rgba(248, 241, 228, 0.92);
+    text-wrap: balance;
 }
 
 .categoryRow {
     display: flex;
     align-items: center;
-    gap: 0.55rem;
-    margin-top: 0.42rem;
+    gap: 0.45rem;
+    margin-top: 0.35rem;
 }
 
 .inlineIcon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 0.92rem;
     line-height: 1;
     color: #e0b85d;
 }
 
 .category {
-    font-size: clamp(0.98rem, 1.12vw, 1.35rem);
+    font-size: clamp(0.84rem, 0.22vw + 0.82rem, 0.95rem);
     font-weight: 500;
     line-height: 1.2;
     color: rgba(248, 241, 228, 0.88);
@@ -99,11 +129,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 62px;
-    gap: 1rem;
-    padding: 0.55rem 0.8rem;
-    border-top: 1px solid rgba(214, 170, 78, 0.28);
-    border-bottom: 1px solid rgba(214, 170, 78, 0.28);
+    min-height: 50px;
+    gap: 0.75rem;
+    padding: 0.45rem 0.85rem;
+    border-top: 1px solid rgba(230, 200, 147, 0.16);
+    border-bottom: 1px solid rgba(230, 200, 147, 0.16);
+
     background:
         linear-gradient(180deg, rgba(255, 248, 230, 0.015), rgba(255, 248, 230, 0)),
         rgba(43, 24, 10, 0.92);
@@ -113,7 +144,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.9rem;
+    font-size: 2rem;
     font-weight: 800;
     line-height: 1;
     color: #f8f1e4;
@@ -124,7 +155,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 0.28rem;
+    gap: 0.12rem;
     flex-wrap: wrap;
 }
 
@@ -133,13 +164,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(1.8rem, 1.95vw, 2.6rem);
+    font-size: clamp(1.15rem, 0.4vw + 1.02rem, 1.45rem);
     line-height: 1;
 }
 
 .star {
     color: #f4cf63;
-    text-shadow: 0 0 16px rgba(244, 207, 99, 0.16);
+    text-shadow: 0 0 12px rgba(244, 207, 99, 0.14);
 }
 
 .starEmpty {
@@ -150,9 +181,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 140px;
-    padding: 0.9rem 1rem;
-    border-bottom: 1px solid rgba(214, 170, 78, 0.28);
+    min-height: 150px;
+    padding: 1rem 0.95rem;
+    border-bottom: 1px solid rgba(230, 200, 147, 0.16);
+
     background:
         linear-gradient(180deg, rgba(255, 248, 230, 0.012), rgba(255, 248, 230, 0)),
         rgba(38, 23, 11, 0.94);
@@ -160,11 +192,11 @@
 
 .quote {
     margin: 0;
-    max-width: 24ch;
+    max-width: 18ch;
     text-align: center;
-    font-size: clamp(1.12rem, 1.42vw, 1.8rem);
-    font-weight: 500;
-    line-height: 1.12;
+    font-size: clamp(1rem, 0.45vw + 0.92rem, 1.28rem);
+    font-weight: 600;
+    line-height: 1.16;
     color: #f8f1e4;
     text-wrap: balance;
 }
@@ -172,7 +204,8 @@
 .footer {
     display: flex;
     align-items: center;
-    padding: 0.5rem 0.55rem;
+    padding: 0.6rem 0.75rem;
+
     background:
         linear-gradient(180deg, rgba(255, 248, 230, 0.012), rgba(255, 248, 230, 0)),
         rgba(43, 24, 10, 0.92);
@@ -181,60 +214,66 @@
 .footerBadge {
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
-    min-height: 38px;
-    padding: 0.28rem 0.78rem;
-    border: 1px solid rgba(214, 170, 78, 0.22);
+    gap: 0.45rem;
+    min-height: 34px;
+    padding: 0.32rem 0.75rem;
+    border: 1px solid rgba(230, 200, 147, 0.20);
     border-radius: 999px;
+
     background:
         linear-gradient(180deg, rgba(255, 248, 230, 0.08), rgba(255, 248, 230, 0)),
         rgba(82, 46, 18, 0.74);
+
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 230, 0.08),
-        0 8px 18px rgba(0, 0, 0, 0.2);
+        0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 .dateLabel {
-    font-size: clamp(0.98rem, 1.08vw, 1.28rem);
-    font-weight: 500;
+    font-size: clamp(0.82rem, 0.2vw + 0.8rem, 0.94rem);
+    font-weight: 600;
     line-height: 1.1;
     color: #f8f1e4;
 }
 
 @media (max-width: 1280px) {
     .header {
-        grid-template-columns: 98px 1fr;
+        grid-template-columns: 64px 1fr;
     }
 
     .iconCircle {
-        width: 66px;
-        height: 66px;
-        font-size: 2rem;
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
     }
 }
 
 @media (max-width: 860px) {
+    .card {
+        min-height: auto;
+    }
+
     .header {
-        grid-template-columns: 84px 1fr;
-        min-height: 108px;
-        padding-inline: 0.7rem;
+        grid-template-columns: 58px 1fr;
+        min-height: 88px;
+        padding-inline: 0.75rem;
     }
 
     .iconCircle {
-        width: 58px;
-        height: 58px;
-        font-size: 1.8rem;
+        width: 44px;
+        height: 44px;
+        font-size: 1.25rem;
     }
 
     .ratingBand {
-        min-height: 56px;
+        min-height: 46px;
     }
 
     .quoteIcon {
-        font-size: 2.4rem;
+        font-size: 1.7rem;
     }
 
     .quoteArea {
-        min-height: 122px;
+        min-height: 128px;
     }
 }

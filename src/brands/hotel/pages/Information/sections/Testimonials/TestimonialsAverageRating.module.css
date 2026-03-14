@@ -1,30 +1,63 @@
 .card {
-    width: min(100%, 1120px);
-    margin: clamp(1.25rem, 3vw, 2rem) auto 0;
-    padding: clamp(1.25rem, 2.8vw, 1.8rem) clamp(1rem, 3vw, 2rem);
-    border: 1px solid rgba(214, 170, 78, 0.46);
-    border-radius: 28px;
+    position: relative;
+    isolation: isolate;
+
+    width: min(100%, 1080px);
+    margin: clamp(1.2rem, 2.6vw, 1.9rem) auto 0;
+    border: 1px solid rgba(230, 200, 147, 0.30);
+    border-radius: 30px;
+    overflow: hidden;
+
     background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
-        linear-gradient(180deg, rgba(255, 248, 230, 0.03), rgba(255, 248, 230, 0)),
-        #26170b;
+        radial-gradient(72% 120% at 12% 18%, rgba(241, 205, 132, 0.12), transparent 56%),
+        radial-gradient(78% 120% at 88% 100%, rgba(199, 134, 21, 0.10), transparent 58%),
+        linear-gradient(180deg,
+            rgba(255, 248, 230, 0.05) 0%,
+            rgba(255, 248, 230, 0.014) 18%,
+            rgba(0, 0, 0, 0.10) 100%),
+        linear-gradient(135deg,
+            rgba(58, 31, 15, 0.96) 0%,
+            rgba(33, 17, 8, 1) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 230, 0.06),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 230, 0.08) 0%,
+            rgba(255, 248, 230, 0.02) 15%,
+            rgba(255, 255, 255, 0) 38%);
+    opacity: 0.94;
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+    min-height: clamp(150px, 14vw, 190px);
+    padding: clamp(1.2rem, 2.2vw, 1.8rem) clamp(1rem, 3vw, 2rem);
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: clamp(0.75rem, 1.8vw, 1.2rem);
+    gap: clamp(0.65rem, 1.2vw, 0.9rem);
+
     text-align: center;
-    box-shadow:
-        0 22px 48px rgba(0, 0, 0, 0.28),
-        inset 0 1px 0 rgba(255, 248, 230, 0.05);
 }
 
 .stars {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(0.45rem, 1vw, 0.9rem);
+    gap: clamp(0.35rem, 0.7vw, 0.6rem);
     flex-wrap: wrap;
 }
 
@@ -33,46 +66,63 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(2rem, 3vw, 3rem);
+    font-size: clamp(1.5rem, 1.8vw, 2.1rem);
     line-height: 1;
 }
 
 .star {
     color: #f4cf63;
-    text-shadow: 0 0 18px rgba(244, 207, 99, 0.18);
+    text-shadow:
+        0 0 14px rgba(244, 207, 99, 0.16),
+        0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
 .starEmpty {
     color: rgba(244, 207, 99, 0.24);
 }
 
+.textBlock {
+    display: grid;
+    gap: 0.45rem;
+    justify-items: center;
+}
+
 .rating {
     margin: 0;
-    font-size: clamp(1.7rem, 3.2vw, 2.35rem);
+    font-size: clamp(1.85rem, 2.1vw, 2.6rem);
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.08;
     color: #e0b85d;
+    text-wrap: balance;
 }
 
 .supportingText {
     margin: 0;
-    max-width: 26ch;
-    font-size: clamp(1.1rem, 2vw, 1.6rem);
-    font-weight: 500;
-    line-height: 1.3;
+    max-width: 18ch;
+    font-size: clamp(1rem, 0.9vw, 1.28rem);
+    font-weight: 600;
+    line-height: 1.28;
     color: #f8f1e4;
+    text-wrap: balance;
 }
 
 @media (max-width: 640px) {
     .card {
-        border-radius: 22px;
+        border-radius: 24px;
+    }
+
+    .inner {
+        min-height: auto;
+        padding: 1.15rem 1rem;
     }
 
     .rating {
         max-width: 12ch;
+        font-size: 1.7rem;
     }
 
     .supportingText {
-        max-width: 20ch;
+        max-width: 18ch;
+        font-size: 0.98rem;
     }
 }

@@ -5,14 +5,17 @@ import DescriptionLocation from "./DescriptionLocation.jsx";
 import LocationDetails from "./LocationDetails.jsx";
 
 export default function LocationSection() {
+  const sectionId = "info-location";
+  const titleId = `${sectionId}-title`;
+
   return (
     <section
-      id="info-location"
+      id={sectionId}
       className={styles.section}
-      aria-label="Localização"
+      aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <TitleLocation />
+        <TitleLocation id={titleId} />
         <DescriptionLocation />
         <LocationDetails />
       </div>

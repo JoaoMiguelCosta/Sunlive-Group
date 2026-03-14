@@ -79,7 +79,7 @@ export default function LocationDetails() {
 
           <div className={styles.actionsRow}>
             <a
-              className={styles.actionButton}
+              className={`${styles.actionButton} ${styles.actionPrimary}`}
               href={contact?.href}
               aria-label={contact?.ariaLabel || contact?.label}
             >
@@ -93,7 +93,7 @@ export default function LocationDetails() {
             </a>
 
             <a
-              className={styles.actionButton}
+              className={`${styles.actionButton} ${styles.actionSecondary}`}
               href={map?.href}
               target="_blank"
               rel="noreferrer"

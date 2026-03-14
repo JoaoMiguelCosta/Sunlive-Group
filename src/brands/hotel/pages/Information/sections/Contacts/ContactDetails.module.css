@@ -1,125 +1,188 @@
 .wrapper {
-    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+    margin-top: clamp(1.35rem, 2vw, 2rem);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.25fr) minmax(280px, 0.8fr) minmax(240px, 0.7fr);
-    gap: 0.75rem;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1.12fr) minmax(250px, 0.9fr) minmax(220px, 0.82fr);
+    gap: clamp(0.75rem, 1vw, 1rem);
     align-items: stretch;
 }
 
 .card {
+    position: relative;
     min-height: 100%;
-    border: 1px solid rgba(214, 170, 78, 0.42);
+    overflow: hidden;
+    border: 1px solid rgba(214, 170, 78, 0.24);
     border-radius: 24px;
     background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.14), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.08), transparent 60%),
-        linear-gradient(180deg, rgba(255, 248, 230, 0.02), rgba(255, 248, 230, 0)),
-        #26170b;
+        radial-gradient(140% 90% at 0% 0%, rgba(255, 221, 153, 0.10), transparent 48%),
+        radial-gradient(120% 100% at 100% 100%, rgba(198, 139, 44, 0.08), transparent 52%),
+        linear-gradient(180deg, rgba(255, 248, 230, 0.025), rgba(255, 248, 230, 0)),
+        linear-gradient(180deg, rgba(48, 27, 10, 0.95), rgba(28, 15, 6, 0.98));
     box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.24),
-        inset 0 1px 0 rgba(255, 248, 230, 0.04);
+        0 16px 34px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 248, 230, 0.05);
+    transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 34%),
+        linear-gradient(180deg, rgba(214, 170, 78, 0.05), transparent 26%);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(214, 170, 78, 0.34);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.26),
+        0 0 0 1px rgba(214, 170, 78, 0.04),
+        inset 0 1px 0 rgba(255, 248, 230, 0.06);
 }
 
 .cardHeader {
     padding: 0;
-    border-bottom: 1px solid rgba(214, 170, 78, 0.16);
+    border-bottom: 1px solid rgba(214, 170, 78, 0.14);
     background:
-        linear-gradient(180deg, rgba(214, 170, 78, 0.12), rgba(214, 170, 78, 0.03)),
-        rgba(255, 248, 230, 0.01);
+        linear-gradient(180deg, rgba(214, 170, 78, 0.10), rgba(214, 170, 78, 0.02)),
+        linear-gradient(90deg, rgba(255, 248, 230, 0.02), transparent 70%);
 }
 
 .titleRow {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
-    padding: 0.9rem 1rem 0.7rem;
+    gap: 0.8rem;
+    padding: 0.9rem 0.95rem 0.78rem;
 }
 
 .titleIcon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
-    flex: 0 0 34px;
-    color: #d6aa4e;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    border: 1px solid rgba(214, 170, 78, 0.22);
+    border-radius: 12px;
+    color: #e0b85d;
+    background:
+        linear-gradient(180deg, rgba(214, 170, 78, 0.10), rgba(214, 170, 78, 0.02)),
+        rgba(255, 248, 230, 0.015);
+}
+
+.titleGroup {
+    display: grid;
+    gap: 0.12rem;
+    min-width: 0;
+}
+
+.eyebrow {
+    color: rgba(240, 207, 135, 0.72);
+    font-size: 0.69rem;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    line-height: 1.2;
 }
 
 .cardTitle {
     margin: 0;
-    color: #e0b85d;
-    font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+    color: #f0c86b;
+    font-size: clamp(1.02rem, 1.2vw, 1.28rem);
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1.12;
+}
+
+.cardBody {
+    position: relative;
+    z-index: 1;
 }
 
 .contactList {
     display: grid;
-    gap: 1.55rem;
-    padding: 0.75rem 1rem 1rem;
+    gap: 1.1rem;
+    padding: 0.95rem 0.95rem 1rem;
 }
 
 .contactItem {
     display: grid;
-    gap: 0.35rem;
+    gap: 0.32rem;
 }
 
 .contactItemTop {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.62rem;
 }
 
 .itemIcon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    flex: 0 0 32px;
-    color: #d6aa4e;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    border-radius: 10px;
+    color: #d9ad52;
+    background: rgba(214, 170, 78, 0.07);
 }
 
 .itemLabel {
     color: #d6aa4e;
-    font-size: 0.98rem;
-    font-weight: 500;
+    font-size: 0.88rem;
+    font-weight: 600;
     line-height: 1.2;
 }
 
 .itemValueLink {
     display: inline-block;
-    color: #f8f1e4;
-    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    color: #fcf6ea;
+    font-size: clamp(0.98rem, 1.15vw, 1.12rem);
     font-weight: 700;
-    line-height: 1.35;
+    line-height: 1.28;
     text-decoration: none;
     word-break: break-word;
+    transition:
+        color 160ms ease,
+        text-decoration-color 160ms ease;
 }
 
 .itemValueLink:hover {
+    color: #ffffff;
     text-decoration: underline;
-    text-decoration-color: rgba(214, 170, 78, 0.7);
+    text-decoration-color: rgba(214, 170, 78, 0.68);
+    text-underline-offset: 0.16em;
 }
 
 .receptionTop {
-    padding: 0.9rem 1rem 1rem;
+    padding: 0.95rem 0.95rem 1rem;
 }
 
 .receptionMainValue {
-    margin: 0.85rem 0 0;
-    color: #f8f1e4;
-    font-size: clamp(1.5rem, 2vw, 1.9rem);
-    font-weight: 700;
-    line-height: 1.2;
+    margin: 0.58rem 0 0;
+    color: #fff7ea;
+    font-size: clamp(1.45rem, 1.9vw, 1.85rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
 }
 
 .divider {
     height: 1px;
-    background: rgba(214, 170, 78, 0.24);
+    background:
+        linear-gradient(90deg,
+            rgba(214, 170, 78, 0),
+            rgba(214, 170, 78, 0.22) 16%,
+            rgba(214, 170, 78, 0.22) 84%,
+            rgba(214, 170, 78, 0));
 }
 
 .checkGrid {
@@ -129,58 +192,62 @@
 
 .checkBlock {
     display: grid;
-    gap: 0.75rem;
-    padding: 1.25rem 1rem 1.15rem;
+    gap: 0.58rem;
+    padding: 0.95rem 0.95rem 1rem;
+}
+
+.checkBlock:first-child {
+    border-right: 1px solid rgba(214, 170, 78, 0.10);
 }
 
 .checkValue {
     margin: 0;
-    color: #f8f1e4;
-    font-size: clamp(1.15rem, 1.65vw, 1.4rem);
+    color: #fcf6ea;
+    font-size: clamp(1rem, 1.18vw, 1.2rem);
     font-weight: 700;
-    line-height: 1.3;
+    line-height: 1.24;
 }
 
 .addressContent {
     display: grid;
-    gap: 2rem;
-    padding: 0.9rem 1rem 1rem;
+    gap: 1.35rem;
+    padding: 0.95rem 0.95rem 1rem;
 }
 
 .addressLines {
     display: grid;
-    gap: 0.15rem;
+    gap: 0.2rem;
 }
 
 .addressLine {
     margin: 0;
-    color: #f8f1e4;
-    font-size: clamp(1.1rem, 1.45vw, 1.25rem);
+    color: #fcf6ea;
+    font-size: clamp(0.98rem, 1.08vw, 1.1rem);
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1.28;
 }
 
 .mapButton {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.55rem;
-    min-height: 42px;
+    gap: 0.5rem;
+    min-height: 44px;
     width: fit-content;
-    padding: 0.76rem 1.02rem;
-    border: 1px solid rgba(214, 170, 78, 0.46);
+    padding: 0.75rem 0.95rem;
+    border: 1px solid rgba(214, 170, 78, 0.34);
     border-radius: 999px;
     background:
-        linear-gradient(180deg, rgba(214, 170, 78, 0.2), rgba(214, 170, 78, 0.08)),
-        rgba(92, 54, 19, 0.92);
-    color: #f8f1e4;
-    font-size: 0.98rem;
+        linear-gradient(180deg, rgba(214, 170, 78, 0.18), rgba(214, 170, 78, 0.06)),
+        rgba(107, 62, 23, 0.88);
+    color: #fff8ed;
+    font-size: 0.92rem;
     font-weight: 700;
     line-height: 1;
     text-decoration: none;
     box-shadow:
-        0 12px 24px rgba(0, 0, 0, 0.22),
-        inset 0 1px 0 rgba(255, 248, 230, 0.08);
+        0 10px 22px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 248, 230, 0.06);
     transition:
         transform 160ms ease,
         border-color 160ms ease,
@@ -189,12 +256,11 @@
 }
 
 .mapButton:hover {
-    transform: translateY(-1px);
-    border-color: rgba(214, 170, 78, 0.62);
+    transform: translateY(-2px);
+    border-color: rgba(214, 170, 78, 0.54);
     box-shadow:
-        0 16px 28px rgba(0, 0, 0, 0.26),
-        0 0 0 1px rgba(214, 170, 78, 0.08),
-        inset 0 1px 0 rgba(255, 248, 230, 0.1);
+        0 14px 28px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 248, 230, 0.08);
     filter: brightness(1.03);
 }
 
@@ -205,28 +271,27 @@
 }
 
 .socialList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.85rem;
-    padding: 0.95rem 1rem 1rem;
+    display: grid;
+    gap: 0.72rem;
+    padding: 0.95rem 0.95rem 1rem;
 }
 
 .socialLink {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    min-width: 52px;
-    min-height: 52px;
-    border: 1px solid rgba(214, 170, 78, 0.22);
-    border-radius: 999px;
+    gap: 0.65rem;
+    min-height: 46px;
+    padding: 0.62rem 0.72rem;
+    border: 1px solid rgba(214, 170, 78, 0.17);
+    border-radius: 16px;
     color: #f8f1e4;
     text-decoration: none;
     background:
-        linear-gradient(180deg, rgba(255, 248, 230, 0.05), rgba(255, 248, 230, 0)),
-        rgba(82, 46, 18, 0.4);
+        linear-gradient(180deg, rgba(255, 248, 230, 0.04), rgba(255, 248, 230, 0)),
+        rgba(82, 46, 18, 0.26);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 230, 0.06),
-        0 8px 18px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgba(255, 248, 230, 0.05),
+        0 8px 16px rgba(0, 0, 0, 0.14);
     transition:
         transform 160ms ease,
         border-color 160ms ease,
@@ -235,32 +300,57 @@
 }
 
 .socialLink:hover {
-    transform: translateY(-1px);
-    border-color: rgba(214, 170, 78, 0.48);
+    transform: translateY(-2px);
+    border-color: rgba(214, 170, 78, 0.38);
     background:
-        linear-gradient(180deg, rgba(255, 248, 230, 0.07), rgba(255, 248, 230, 0)),
-        rgba(96, 54, 21, 0.48);
+        linear-gradient(180deg, rgba(255, 248, 230, 0.06), rgba(255, 248, 230, 0)),
+        rgba(96, 54, 21, 0.38);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 230, 0.08),
-        0 12px 22px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 248, 230, 0.07),
+        0 12px 20px rgba(0, 0, 0, 0.18);
 }
 
 .socialIcon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    border-radius: 10px;
+    color: #e0b85d;
+    background:
+        linear-gradient(180deg, rgba(214, 170, 78, 0.12), rgba(214, 170, 78, 0.03)),
+        rgba(255, 248, 230, 0.02);
 }
 
-.socialFallback {
-    padding-inline: 0.9rem;
-    color: #f8f1e4;
-    font-size: 0.92rem;
+.socialText {
+    color: #fcf6ea;
+    font-size: 0.9rem;
     font-weight: 700;
-    line-height: 1;
+    line-height: 1.2;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1380px) {
     .grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(240px, 0.85fr) minmax(210px, 0.78fr);
+    }
+
+    .cardTitle {
+        font-size: 1.14rem;
+    }
+
+    .receptionMainValue {
+        font-size: 1.68rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .checkGrid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
@@ -274,8 +364,19 @@
         grid-template-columns: 1fr;
     }
 
+    .checkBlock:first-child {
+        border-right: 0;
+        border-bottom: 1px solid rgba(214, 170, 78, 0.10);
+    }
+
+    .mapButton {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
     .titleRow {
-        padding: 0.9rem 0.9rem 0.7rem;
+        padding: 0.9rem 0.85rem 0.75rem;
     }
 
     .contactList,
@@ -283,11 +384,11 @@
     .checkBlock,
     .addressContent,
     .socialList {
-        padding-left: 0.9rem;
-        padding-right: 0.9rem;
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
     }
 
-    .addressContent {
-        gap: 1.4rem;
+    .receptionMainValue {
+        font-size: clamp(1.38rem, 6.5vw, 1.75rem);
     }
 }
