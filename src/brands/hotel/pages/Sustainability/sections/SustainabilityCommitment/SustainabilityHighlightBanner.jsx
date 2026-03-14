@@ -18,7 +18,6 @@ export default function SustainabilityHighlightBanner() {
       iconsEnabled={banner.iconsEnabled ?? false}
       leftIcon={null}
       rightIcon={null}
-      className=""
     />
   );
 }

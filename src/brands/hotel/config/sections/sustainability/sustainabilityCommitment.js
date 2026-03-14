@@ -1,5 +1,5 @@
 const sustainabilityCommitment = {
-  id: "sustainability-commitment",
+  id: "sustentabilidade-compromisso",
   headerLabel: "Sustentabilidade",
   description:
     "O nosso compromisso com práticas responsáveis e ambientalmente conscientes para um futuro mais sustentável.",
@@ -23,7 +23,6 @@ const sustainabilityCommitment = {
         description:
           "Uso de sistemas de climatização eficientes e iluminação LED, reduzindo o impacto ambiental sem comprometer o conforto.",
         topIconKey: null,
-
         features: [
           {
             id: "efficient-climate",
@@ -50,13 +49,11 @@ const sustainabilityCommitment = {
             iconKey: null,
           },
         ],
-
         metric: {
           text: "Redução de 30% no consumo energético",
           iconKey: null,
         },
       },
-
       {
         id: "water-management",
         title: "Gestão Responsável da Água",
@@ -64,7 +61,6 @@ const sustainabilityCommitment = {
         description:
           "Preservar um recurso essencial através de práticas simples, conscientes e eficazes.",
         topIconKey: null,
-
         features: [
           {
             id: "flow-reducers",
@@ -91,13 +87,11 @@ const sustainabilityCommitment = {
             iconKey: null,
           },
         ],
-
         metric: {
           text: "Poupança de 25% no consumo de água",
           iconKey: null,
         },
       },
-
       {
         id: "waste-management",
         title: "Gestão de Resíduos",
@@ -105,7 +99,6 @@ const sustainabilityCommitment = {
         description:
           "Compromisso com um ambiente limpo e circular através de práticas responsáveis.",
         topIconKey: null,
-
         features: [
           {
             id: "selective-separation",
@@ -132,13 +125,11 @@ const sustainabilityCommitment = {
             iconKey: null,
           },
         ],
-
         metric: {
           text: "80% dos resíduos são reciclados",
           iconKey: null,
         },
       },
-
       {
         id: "local-products",
         title: "Produtos Locais",
@@ -146,7 +137,6 @@ const sustainabilityCommitment = {
         description:
           "Promover uma gastronomia autêntica e sustentável com produtos da região.",
         topIconKey: null,
-
         features: [
           {
             id: "local-suppliers",
@@ -173,13 +163,11 @@ const sustainabilityCommitment = {
             iconKey: null,
           },
         ],
-
         metric: {
           text: "70% dos produtos são de origem local",
           iconKey: null,
         },
       },
-
       {
         id: "nature-integration",
         title: "Integração com a Natureza",
@@ -187,7 +175,6 @@ const sustainabilityCommitment = {
         description:
           "Um hotel conectado à terra, naturalmente, respeitando a biodiversidade local.",
         topIconKey: null,
-
         features: [
           {
             id: "native-species",
@@ -214,7 +201,6 @@ const sustainabilityCommitment = {
             iconKey: null,
           },
         ],
-
         metric: {
           text: "100% dos espaços verdes com gestão sustentável",
           iconKey: null,

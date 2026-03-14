@@ -148,6 +148,10 @@ export const HOTEL_PRIMARY_NAV_ITEMS = Object.freeze([
     to: HOTEL_PAGE_PATHS.sustainability,
     links: [
       {
+        label: "Compromisso com a sustentabilidade",
+        href: `${HOTEL_PAGE_PATHS.sustainability}#sustentabilidade-compromisso`,
+      },
+      {
         label: "Como podes participar",
         href: `${HOTEL_PAGE_PATHS.sustainability}#sustentabilidade-participar`,
       },
