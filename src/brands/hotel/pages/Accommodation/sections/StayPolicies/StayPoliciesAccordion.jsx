@@ -1,5 +1,6 @@
 import styles from "./StayPoliciesAccordion.module.css";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
+import { ICONS, resolveHotelIcon } from "../../../../config/index.js";
 
 function Chevron({ open }) {
   return (
@@ -42,6 +43,7 @@ export default function StayPoliciesAccordion({
         const open = isOpen(item.key);
         const panelId = `${item.key}-panel`;
         const triggerId = `${item.key}-trigger`;
+        const Icon = resolveHotelIcon(ICONS, item.iconKey);
 
         return (
           <div
@@ -59,7 +61,12 @@ export default function StayPoliciesAccordion({
               aria-controls={panelId}
             >
               <span className={styles.triggerLeft}>
-                <span className={styles.iconSlot} aria-hidden="true" />
+                {Icon ? (
+                  <span className={styles.iconCircle} aria-hidden="true">
+                    <Icon className={styles.icon} />
+                  </span>
+                ) : null}
+
                 <span className={styles.title}>{item.title}</span>
               </span>
 

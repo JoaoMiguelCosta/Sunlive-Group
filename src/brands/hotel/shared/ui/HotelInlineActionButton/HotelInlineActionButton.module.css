@@ -6,6 +6,8 @@
     justify-content: center;
     gap: 0.55rem;
 
+    width: fit-content;
+    max-width: 100%;
     min-height: 44px;
     padding: 0.72rem 1.1rem;
     border-radius: 999px;
@@ -103,7 +105,8 @@
 @media (max-width: 640px) {
     .button {
         min-height: 42px;
-        width: 100%;
+        width: fit-content;
+        max-width: 100%;
         padding: 0.7rem 1rem;
         font-size: 0.94rem;
     }

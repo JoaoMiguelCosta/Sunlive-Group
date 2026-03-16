@@ -18,25 +18,25 @@ export const forWhomProfiles = {
             id: "grp-stay",
             title: "Alojamentos em Grupo",
             description: "Quartos múltiplos e coordenação logística",
-            iconKey: "users",
+            iconKey: "business",
           },
           {
             id: "food",
             title: "Alimentação Equilibrada",
             description: "Menus adaptados às necessidades nutricionais",
-            iconKey: "utensils",
+            iconKey: "cutlery",
           },
           {
             id: "infra",
             title: "Infraestruturas Desportivas",
             description: "Ginásio, sauna e outros serviços",
-            iconKey: "dumbbell",
+            iconKey: "thermal",
           },
           {
             id: "car",
             title: "Proximidade CAR Anadia",
             description: "Acesso direto a velódromos e pavilhões",
-            iconKey: "pin",
+            iconKey: "bus",
           },
         ],
         highlightsTitle: "Destaques:",
@@ -56,7 +56,7 @@ export const forWhomProfiles = {
       description:
         "Ambiente seguro, confortável e tranquilo para criar memórias inesquecíveis com os seus.",
       ctaLabel: "Ver Detalhes",
-      iconKey: "family",
+      iconKey: "celebration",
       details: {
         title: "O que disponibilizamos:",
         items: [
@@ -64,25 +64,25 @@ export const forWhomProfiles = {
             id: "rooms",
             title: "Quartos Familiares",
             description: "Espaços amplos para toda a família",
-            iconKey: "bed",
+            iconKey: "bed-linen-towels",
           },
           {
             id: "breakfast",
             title: "Pequeno-almoço Completo",
             description: "Buffet variado para todos os gostos",
-            iconKey: "coffee",
+            iconKey: "cutlery",
           },
           {
             id: "bikes",
             title: "Bicicletas Gratuitas",
             description: "Exploração familiar da região",
-            iconKey: "bike",
+            iconKey: "trail",
           },
           {
             id: "pool",
             title: "Piscina e Zonas Verdes",
             description: "Diversão e relaxamento ao ar livre",
-            iconKey: "waves",
+            iconKey: "water",
           },
         ],
         highlightsTitle: "Destaques:",
@@ -102,7 +102,7 @@ export const forWhomProfiles = {
       description:
         "Ideal para escapadinhas românticas ou fins de semana tranquilos na natureza da Bairrada.",
       ctaLabel: "Ver Detalhes",
-      iconKey: "heart",
+      iconKey: "wine",
       details: {
         title: "O que disponibilizamos:",
         items: [
@@ -110,19 +110,19 @@ export const forWhomProfiles = {
             id: "rooms",
             title: "Quartos Confortáveis",
             description: "Ambiente íntimo e acolhedor",
-            iconKey: "bed",
+            iconKey: "bed-linen-towels",
           },
           {
             id: "restaurant",
             title: "Restaurante Panorâmico",
             description: "Jantares com vista para a paisagem",
-            iconKey: "utensils",
+            iconKey: "cutlery",
           },
           {
             id: "pool",
             title: "Acesso à Piscina Exterior",
             description: "Piscina tranquila para momento a dois",
-            iconKey: "waves",
+            iconKey: "water",
           },
           {
             id: "packs",
@@ -148,7 +148,7 @@ export const forWhomProfiles = {
       description:
         "Alojamento e apoio para grupos turísticos, escolares e culturais com logística completa.",
       ctaLabel: "Ver Detalhes",
-      iconKey: "group",
+      iconKey: "bus",
       details: {
         title: "O que disponibilizamos:",
         items: [
@@ -156,19 +156,19 @@ export const forWhomProfiles = {
             id: "multi",
             title: "Quartos Múltiplos",
             description: "Acomodação flexível para grupos",
-            iconKey: "bed",
+            iconKey: "bed-linen-towels",
           },
           {
             id: "menus",
             title: "Menus para Grupos",
             description: "Refeições organizadas e económicas",
-            iconKey: "utensils",
+            iconKey: "cutlery",
           },
           {
             id: "spaces",
             title: "Salas de Convívio",
             description: "Espaços para reuniões e atividades",
-            iconKey: "users",
+            iconKey: "business",
           },
           {
             id: "bus",
@@ -194,7 +194,7 @@ export const forWhomProfiles = {
       description:
         "Estrutura adaptada a eventos corporativos e team building num ambiente inspirador.",
       ctaLabel: "Ver Detalhes",
-      iconKey: "briefcase",
+      iconKey: "business",
       details: {
         title: "O que disponibilizamos:",
         items: [
@@ -202,13 +202,13 @@ export const forWhomProfiles = {
             id: "rooms",
             title: "Salas Equipadas",
             description: "Tecnologia e conforto para reuniões",
-            iconKey: "screen",
+            iconKey: "desk",
           },
           {
             id: "coffee",
             title: "Coffee Breaks",
             description: "Pausas e refeições organizadas",
-            iconKey: "coffee",
+            iconKey: "cutlery",
           },
           {
             id: "wifi",

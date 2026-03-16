@@ -41,34 +41,20 @@ const VARIANT_CLASS_MAP = {
 const VALID_TONES = new Set(["default", "strong", "soft"]);
 
 export default function CTAButton({
-  // modo antigo
   cta,
-
-  // modo novo (opcional)
   href: hrefProp,
   label: labelProp,
   ariaLabel: ariaLabelProp,
-
   className = "",
   blink = true,
   compact = "auto",
-
-  // ícone
   Icon,
   icon,
-
-  // navegação / scroll
   scrollOffset = 72,
-
-  // render
   as = "a",
   type = "button",
-
-  // visual
   variant = "hero",
   tone = "default",
-
-  // resto
   onClick: onClickProp,
   children,
   ...rest

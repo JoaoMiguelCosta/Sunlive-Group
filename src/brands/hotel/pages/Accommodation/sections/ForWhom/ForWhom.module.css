@@ -32,14 +32,17 @@
     inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - (2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem))));
     margin-inline: auto;
     box-sizing: border-box;
+
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.4rem);
 }
 
 .heroWrap {
-    margin-top: clamp(1.4rem, 3vw, 2rem);
+    margin-top: clamp(0.2rem, 0.6vw, 0.45rem);
 }
 
 .gridWrap {
-    margin-top: clamp(1.65rem, 3vw, 2.35rem);
+    margin-top: clamp(0.35rem, 0.9vw, 0.7rem);
 }
 
 @media (max-width: 640px) {
@@ -53,11 +56,15 @@
         inset-block-start: 4%;
     }
 
+    .inner {
+        gap: 1rem;
+    }
+
     .heroWrap {
-        margin-top: 1.15rem;
+        margin-top: 0.15rem;
     }
 
     .gridWrap {
-        margin-top: 1.35rem;
+        margin-top: 0.25rem;
     }
 }

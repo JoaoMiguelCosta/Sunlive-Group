@@ -1,13 +1,27 @@
 // src/shared/ui/icons/FruitBasket.jsx
-export default function FruitBasketIcon(props) {
+export default function FruitBasketIcon({
+  size = 26,
+  className = "",
+  ...props
+}) {
   return (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
+      width={size}
+      height={size}
       fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
+      stroke="#e4bf07"
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className={[
+        "lucide",
+        "lucide-fruit-basket-icon",
+        "lucide-fruit-basket",
+        className,
+      ].join(" ")}
+      aria-hidden="true"
       {...props}
     >
       <path d="M8 9a4 4 0 0 1 8 0" />

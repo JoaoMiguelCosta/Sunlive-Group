@@ -45,12 +45,15 @@
 }
 
 .navTitle {
-    color: rgba(255, 248, 240, 0.88);
-    font-size: 0.84rem;
-    letter-spacing: 0.14em;
+    color: rgba(255, 244, 228, 0.96);
+    font-size: clamp(0.82rem, 0.3vw + 0.76rem, 0.92rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    text-wrap: balance;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.18);
 }
-
 /* botão hambúrguer */
 
 .burgerButton {
@@ -183,7 +186,7 @@
     content: "";
     position: absolute;
     inset: 0.12rem 0.08rem;
-    border-radius: 999px;
+
 
     background:
         linear-gradient(180deg,

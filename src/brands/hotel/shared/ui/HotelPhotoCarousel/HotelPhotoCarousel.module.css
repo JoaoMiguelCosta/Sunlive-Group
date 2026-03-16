@@ -35,7 +35,7 @@
 .media {
     position: relative;
     inline-size: 100%;
-    min-block-size: clamp(10rem, 40vw, 18rem);
+    min-block-size: clamp(12rem, 44vw, 20rem);
 
     overflow: hidden;
     border-radius: calc(clamp(1.75rem, 4vw, 2.75rem) - 0.5rem);
@@ -59,11 +59,15 @@
 
 .caption {
     position: absolute;
-    inset-inline: clamp(1rem, 3vw, 1.5rem);
-    inset-block-end: clamp(0.85rem, 2vw, 1.1rem);
+    inset-inline-start: clamp(0.85rem, 2vw, 1.1rem);
+    inset-inline-end: auto;
+    inset-block-end: clamp(0.7rem, 1.5vw, 0.9rem);
 
-    padding-block: 0.45rem;
-    padding-inline: 0.9rem;
+    inline-size: fit-content;
+    max-inline-size: max-content;
+
+    padding-block: 0.28rem;
+    padding-inline: 0.7rem;
     border-radius: 999px;
 
     background:
@@ -72,14 +76,15 @@
 
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 10px 22px rgba(0, 0, 0, 0.22);
+        0 8px 18px rgba(0, 0, 0, 0.22);
 
     color: rgba(255, 248, 240, 0.94);
-    font-size: 0.85rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    white-space: nowrap;
 }
-
 .placeholder {
     position: relative;
     inline-size: 100%;
@@ -197,6 +202,12 @@
     }
 
     .media {
-        min-block-size: 11.5rem;
+        min-block-size: 13rem;
+    }
+
+    .caption {
+        font-size: 0.68rem;
+        padding-block: 0.24rem;
+        padding-inline: 0.62rem;
     }
 }

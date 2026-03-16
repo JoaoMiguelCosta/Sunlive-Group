@@ -169,6 +169,19 @@
         0 0 16px rgba(241, 205, 132, 0.18);
 }
 
+@media (min-width: 1081px) {
+    .timelineCol {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .timelinePanel {
+        inline-size: min(100%, 36rem);
+        min-height: auto;
+        margin-inline: auto;
+    }
+}
+
 @media (max-width: 1080px) {
     .content {
         grid-template-columns: minmax(0, 1fr);

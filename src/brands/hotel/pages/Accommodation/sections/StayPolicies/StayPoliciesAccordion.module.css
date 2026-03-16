@@ -79,18 +79,39 @@
     min-width: 0;
 }
 
-.iconSlot {
-    width: 12px;
-    height: 12px;
-    flex: 0 0 auto;
+.iconCircle {
+    position: relative;
+    z-index: 1;
+
+    inline-size: clamp(2.55rem, 3.5vw, 3rem);
+    block-size: clamp(2.55rem, 3.5vw, 3rem);
     border-radius: 999px;
+    flex-shrink: 0;
 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(241, 205, 132, 0.2);
     background:
-        linear-gradient(180deg, #d9b36a, #b7873f);
-
+        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.16), transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.08), transparent 72%),
+        linear-gradient(180deg,
+            rgba(78, 42, 18, 0.92) 0%,
+            rgba(42, 21, 10, 0.96) 100%);
     box-shadow:
-        0 0 0 5px rgba(217, 179, 106, 0.08),
-        0 0 14px rgba(217, 179, 106, 0.10);
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        0 8px 20px rgba(0, 0, 0, 0.16);
+
+    color: rgba(241, 205, 132, 0.98);
+}
+
+.icon {
+    inline-size: clamp(1.02rem, 1.45vw, 1.2rem);
+    block-size: clamp(1.02rem, 1.45vw, 1.2rem);
+    color: currentColor;
+    stroke: currentColor;
+    filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.16));
 }
 
 .title {
@@ -238,11 +259,13 @@
         height: 34px;
     }
 
-    .iconSlot {
-        width: 10px;
-        height: 10px;
-        box-shadow:
-            0 0 0 4px rgba(217, 179, 106, 0.08),
-            0 0 12px rgba(217, 179, 106, 0.08);
+    .iconCircle {
+        inline-size: 1.95rem;
+        block-size: 1.95rem;
+    }
+
+    .icon {
+        inline-size: 0.88rem;
+        block-size: 0.88rem;
     }
 }

@@ -1,5 +1,5 @@
-// src/shared/ui/icons/Water.jsx
-export default function WaterIcon({ size = 26, className = "", ...props }) {
+// src/brands/hotel/shared/ui/icons/CircleOff.jsx
+export default function CircleOffIcon({ size = 26, className = "", ...props }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7,20 +7,22 @@ export default function WaterIcon({ size = 26, className = "", ...props }) {
       width={size}
       height={size}
       fill="none"
-      stroke="#e4bf07"
+      stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
       className={[
         "lucide",
-        "lucide-droplet-icon",
-        "lucide-droplet",
+        "lucide-circle-off-icon",
+        "lucide-circle-off",
         className,
       ].join(" ")}
       aria-hidden="true"
       {...props}
     >
-      <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z" />
+      <path d="m2 2 20 20" />
+      <path d="M8.35 2.69A10 10 0 0 1 21.3 15.65" />
+      <path d="M19.08 19.08A10 10 0 1 1 4.92 4.92" />
     </svg>
   );
 }

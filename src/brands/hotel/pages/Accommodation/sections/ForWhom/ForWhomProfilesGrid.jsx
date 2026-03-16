@@ -1,7 +1,10 @@
 import { useMemo, useState } from "react";
 
 import styles from "./ForWhomProfilesGrid.module.css";
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand, {
+  ICONS,
+  resolveHotelIcon,
+} from "../../../../config/index.js";
 
 import HotelProfileCard from "../../../../shared/ui/HotelProfileCard/HotelProfileCard.jsx";
 import HotelOfferPanel from "../../../../shared/ui/HotelOfferPanel/HotelOfferPanel.jsx";
@@ -33,7 +36,25 @@ export default function ForWhomProfilesGrid() {
   const content =
     hotelBrand?.pages?.accommodation?.sections?.forWhomProfiles ?? null;
 
-  const cards = Array.isArray(content?.items) ? content.items : [];
+  const cards = useMemo(() => {
+    const rawCards = Array.isArray(content?.items) ? content.items : [];
+
+    return rawCards.map((card) => ({
+      ...card,
+      Icon: resolveHotelIcon(ICONS, card.iconKey),
+      details: card.details
+        ? {
+            ...card.details,
+            items: Array.isArray(card.details.items)
+              ? card.details.items.map((item) => ({
+                  ...item,
+                  Icon: resolveHotelIcon(ICONS, item.iconKey),
+                }))
+              : [],
+          }
+        : null,
+    }));
+  }, [content]);
 
   const [openKey, setOpenKey] = useState(
     cards.find((card) => card?.defaultOpen)?.key ?? null,
@@ -81,6 +102,7 @@ export default function ForWhomProfilesGrid() {
                 ctaLabel={card.ctaLabel || "Ver detalhes"}
                 onClick={() => handleToggle(card.key)}
                 detailsOpen={isOpen}
+                Icon={card.Icon}
               />
             </div>
           );
@@ -111,6 +133,7 @@ export default function ForWhomProfilesGrid() {
                 ctaLabel={card.ctaLabel || "Ver detalhes"}
                 onClick={() => handleToggle(card.key)}
                 detailsOpen={isOpen}
+                Icon={card.Icon}
               />
             </div>
           );
@@ -135,6 +158,7 @@ export default function ForWhomProfilesGrid() {
                 ctaLabel={card.ctaLabel || "Ver detalhes"}
                 onClick={() => handleToggle(card.key)}
                 detailsOpen={isOpen}
+                Icon={card.Icon}
               />
             </div>
           );

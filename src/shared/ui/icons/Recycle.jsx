@@ -1,13 +1,23 @@
 // src/shared/ui/icons/Recycle.jsx
-export default function RecycleIcon(props) {
+export default function RecycleIcon({ size = 26, className = "", ...props }) {
   return (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
+      width={size}
+      height={size}
       fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
+      stroke="#e4bf07"
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className={[
+        "lucide",
+        "lucide-recycle-icon",
+        "lucide-recycle",
+        className,
+      ].join(" ")}
+      aria-hidden="true"
       {...props}
     >
       <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5" />

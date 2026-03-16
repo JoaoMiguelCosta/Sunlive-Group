@@ -1,12 +1,14 @@
 .wrap {
     position: relative;
     isolation: isolate;
+    box-sizing: border-box;
 
-    max-inline-size: 920px;
+    inline-size: min(100%, 920px);
     margin-inline: auto;
-    margin-block: clamp(1rem, 2.2vw, 1.5rem) 0;
 
-    padding: clamp(1.15rem, 2vw, 1.65rem) clamp(1rem, 2.2vw, 1.85rem);
+    padding-block: clamp(1.1rem, 1.8vw, 1.65rem);
+    padding-inline: clamp(1rem, 2.2vw, 1.85rem);
+
     border-radius: 24px;
     border: 1px solid rgba(230, 200, 147, 0.16);
 
@@ -42,12 +44,19 @@
 .text {
     position: relative;
     z-index: 1;
-    margin: 0;
+
+    margin: 0 auto;
+    inline-size: min(100%, 68ch);
+
     color: rgba(255, 248, 235, 0.9);
-    font-size: clamp(1rem, 1vw + 0.82rem, 1.14rem);
-    line-height: 1.82;
+    font-size: clamp(1rem, 0.96rem + 0.35vw, 1.14rem);
+    line-height: 1.8;
     font-weight: 400;
+
     text-wrap: pretty;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
 }
 
 .center {
@@ -58,15 +67,91 @@
     text-align: left;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 1280px) {
     .wrap {
+        inline-size: min(100%, 960px);
+    }
+
+    .text {
+        inline-size: min(100%, 70ch);
+        line-height: 1.84;
+    }
+}
+
+@media (min-width: 1600px) {
+    .wrap {
+        inline-size: min(100%, 980px);
+    }
+
+    .text {
+        inline-size: min(100%, 72ch);
+    }
+}
+
+@media (max-width: 1024px) {
+    .wrap {
+        inline-size: min(100%, 860px);
+        padding-block: 1.1rem 1.3rem;
+        padding-inline: 1rem 1.35rem;
+        border-radius: 22px;
+    }
+
+    .text {
+        inline-size: min(100%, 66ch);
+        font-size: 1rem;
+        line-height: 1.76;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrap {
+        inline-size: 100%;
         margin-block-start: 0.95rem;
-        padding: 1rem 0.95rem;
+        padding-block: 1rem 1.15rem;
+        padding-inline: 0.95rem 1rem;
         border-radius: 20px;
     }
 
     .text {
-        font-size: 0.97rem;
+        inline-size: 100%;
+        font-size: 0.98rem;
         line-height: 1.7;
+    }
+}
+
+@media (max-width: 640px) {
+    .wrap {
+        margin-block-start: 0.9rem;
+        padding: 1rem 0.95rem;
+        border-radius: 18px;
+    }
+
+    .text {
+        font-size: 0.97rem;
+        line-height: 1.68;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrap {
+        padding: 0.95rem 0.85rem;
+        border-radius: 16px;
+    }
+
+    .text {
+        font-size: 0.95rem;
+        line-height: 1.64;
+    }
+}
+
+@media (max-width: 380px) {
+    .wrap {
+        padding: 0.9rem 0.78rem;
+        border-radius: 15px;
+    }
+
+    .text {
+        font-size: 0.93rem;
+        line-height: 1.58;
     }
 }

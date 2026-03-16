@@ -21,7 +21,9 @@ export default function HotelHighlightPill({
   return (
     <Tag className={classNames}>
       <div className={styles.card}>
-        <div className={styles.inner}>{children}</div>
+        <div className={styles.inner}>
+          <p className={styles.text}>{children}</p>
+        </div>
       </div>
     </Tag>
   );

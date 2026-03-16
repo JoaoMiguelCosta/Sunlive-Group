@@ -1,54 +1,141 @@
 .section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(2.2rem, 4.6vw, 3.2rem);
+    padding-block: clamp(1.5rem, 3.5vw, 3rem);
     background: transparent;
+    overflow: clip;
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 12% auto auto 50%;
+    inset: clamp(4%, 8vw, 12%) auto auto 50%;
     translate: -50% 0;
-    inline-size: min(70vw, 820px);
-    block-size: clamp(120px, 16vw, 180px);
+    inline-size: min(72vw, 820px);
+    block-size: clamp(110px, 14vw, 180px);
     pointer-events: none;
     background:
         radial-gradient(circle,
             rgba(241, 205, 132, 0.12) 0%,
             rgba(241, 205, 132, 0.04) 38%,
             rgba(241, 205, 132, 0) 74%);
-    filter: blur(28px);
+    filter: blur(clamp(18px, 3vw, 28px));
     opacity: 0.72;
 }
 
 .inner {
     position: relative;
     z-index: 1;
-    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - (2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem))));
+    inline-size: min(var(--sl-container-lg, 85rem),
+            calc(100% - (2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)))));
     margin-inline: auto;
     box-sizing: border-box;
 
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
+/*
+  Regra principal:
+  - não deixar o pill ocupar largura excessiva em desktop largo
+  - ainda permitir crescer bem em tablet/mobile
+*/
 .closingPill {
-    max-inline-size: 76rem;
+    inline-size: min(100%, clamp(20rem, 64vw, 56rem));
+}
+
+/* Desktop grande */
+@media (max-width: 1200px) {
+    .closingPill {
+        inline-size: min(100%, clamp(20rem, 72vw, 52rem));
+    }
+}
+
+@media (max-width: 1024px) {
+    .section {
+        padding-block: clamp(1.4rem, 4vw, 2.4rem);
+    }
+
+    .section::before {
+        inline-size: min(82vw, 720px);
+        block-size: clamp(110px, 18vw, 160px);
+    }
+
+    .closingPill {
+        inline-size: min(100%, clamp(20rem, 84vw, 48rem));
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding-block: 1.4rem 1.75rem;
+    }
+
+    .section::before {
+        inset-block-start: 7%;
+        inline-size: min(92vw, 640px);
+        block-size: 140px;
+        filter: blur(22px);
+    }
+
+    .inner {
+        inline-size: min(100%,
+                calc(100% - (2 * var(--section-inset, clamp(0.75rem, 4vw, 2rem)))));
+    }
+
+    .closingPill {
+        inline-size: min(100%, 100%);
+    }
 }
 
 @media (max-width: 640px) {
     .section {
-        padding-block: 1.8rem 2rem;
+        padding-block: 1.25rem 1.6rem;
     }
 
     .section::before {
-        inline-size: 100%;
-        block-size: 150px;
         inset-block-start: 6%;
+        inline-size: 100%;
+        block-size: 130px;
+        filter: blur(18px);
+        opacity: 0.66;
+    }
+
+    .inner {
+        inline-size: calc(100% - (2 * var(--section-inset, clamp(0.75rem, 4vw, 1rem))));
     }
 
     .closingPill {
-        max-inline-size: 100%;
+        inline-size: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .section {
+        padding-block: 1.1rem 1.4rem;
+    }
+
+    .section::before {
+        block-size: 115px;
+        inset-block-start: 5%;
+        filter: blur(14px);
+        opacity: 0.58;
+    }
+
+    .inner {
+        inline-size: calc(100% - 1rem);
+    }
+}
+
+@media (min-width: 1600px) {
+    .closingPill {
+        inline-size: min(100%, 54rem);
+    }
+}
+
+@media (min-width: 1920px) {
+    .closingPill {
+        inline-size: min(100%, 52rem);
     }
 }

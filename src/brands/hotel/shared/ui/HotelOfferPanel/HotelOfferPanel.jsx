@@ -34,7 +34,7 @@ export default function HotelOfferPanel({
   const hasHighlights = Array.isArray(highlights) && highlights.length > 0;
 
   return (
-    <section className={wrapClass} aria-label={title || "Oferta"}>
+    <div className={wrapClass} role="region" aria-label={title || "Oferta"}>
       {title ? <h3 className={styles.hTitle}>{title}</h3> : null}
 
       <div className={styles.contentGrid}>
@@ -44,13 +44,11 @@ export default function HotelOfferPanel({
               <ul className={styles.items}>
                 {items.map((item) => (
                   <li key={item.id} className={styles.item}>
-                    <span className={styles.itemIcon} aria-hidden="true">
-                      {item.Icon ? (
+                    {item.Icon ? (
+                      <span className={styles.itemIcon} aria-hidden="true">
                         <item.Icon className={styles.iconSvg} />
-                      ) : (
-                        <span className={styles.iconPlaceholder} />
-                      )}
-                    </span>
+                      </span>
+                    ) : null}
 
                     <div className={styles.itemText}>
                       <div className={styles.itemTitle}>{item.title}</div>
@@ -101,6 +99,6 @@ export default function HotelOfferPanel({
           </aside>
         ) : null}
       </div>
-    </section>
+    </div>
   );
 }

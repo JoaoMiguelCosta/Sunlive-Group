@@ -2,7 +2,6 @@ import styles from "./HotelRegionHighlightCard.module.css";
 
 /**
  * HotelRegionHighlightCard
- * Card compacto para destaques da secção "A Região da Bairrada".
  *
  * Props:
  * - id?: string
@@ -20,15 +19,25 @@ export default function HotelRegionHighlightCard({
 
   return (
     <article id={id} className={styles.card}>
-      {icon ? (
-        <div className={styles.iconWrap} aria-hidden="true">
-          <div className={styles.iconCircle}>{icon}</div>
+      <div className={styles.cardTop}>
+        {icon ? (
+          <div className={styles.iconCircle} aria-hidden="true">
+            {icon}
+          </div>
+        ) : null}
+      </div>
+
+      {title ? (
+        <div className={styles.titleBand}>
+          <h3 className={styles.title}>{title}</h3>
         </div>
       ) : null}
 
-      {title ? <h3 className={styles.title}>{title}</h3> : null}
-
-      {description ? <p className={styles.description}>{description}</p> : null}
+      {description ? (
+        <div className={styles.body}>
+          <p className={styles.description}>{description}</p>
+        </div>
+      ) : null}
     </article>
   );
 }

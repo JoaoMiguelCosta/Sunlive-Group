@@ -38,15 +38,11 @@ export default function HotelIconPill({
     "aria-label": ariaLabel || label,
   };
 
-  const iconContent = (
-    <span className={styles.iconSlot} aria-hidden="true">
-      {Icon ? (
-        <Icon className={styles.icon} />
-      ) : (
-        <span className={styles.iconPlaceholder} />
-      )}
+  const iconContent = Icon ? (
+    <span className={styles.iconCircle} aria-hidden="true">
+      <Icon className={styles.icon} />
     </span>
-  );
+  ) : null;
 
   const textContent = <span className={styles.text}>{label}</span>;
 

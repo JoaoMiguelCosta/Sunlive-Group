@@ -2,13 +2,17 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
-    max-inline-size: 60rem;
+    max-inline-size: 100%;
+    min-inline-size: 0;
 }
 
 .card {
     position: relative;
     isolation: isolate;
     overflow: hidden;
+
+    inline-size: 100%;
+    min-inline-size: 0;
 
     border-radius: 999px;
     border: 1px solid rgba(230, 200, 147, 0.34);
@@ -65,26 +69,58 @@
 .inner {
     position: relative;
     z-index: 1;
-
-    padding-block: clamp(1rem, 2.2vw, 1.28rem);
-    padding-inline: clamp(1.4rem, 3vw, 2.8rem);
-
-    color: var(--sl-on-surface, #f9fafb);
+    padding-block: clamp(0.95rem, 2vw, 1.22rem);
+    padding-inline: clamp(1.2rem, 2.6vw, 2.6rem);
     text-align: center;
-    font-size: clamp(0.98rem, 1.05vw, 1.08rem);
-    line-height: 1.58;
-    font-weight: 500;
-    text-wrap: pretty;
+    color: var(--sl-on-surface, #f9fafb);
 }
 
-.inner strong {
+.text {
+    margin: 0 auto;
+    inline-size: 100%;
+    max-inline-size: clamp(28ch, 46vw, 60ch);
+
+    font-size: clamp(0.96rem, 0.95rem + 0.18vw, 1.06rem);
+    line-height: 1.6;
+    font-weight: 500;
+
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+}
+
+.text strong {
     color: #f1cd84;
     font-weight: 700;
 }
 
-.inner em,
-.inner q {
+.text em,
+.text q {
     font-style: italic;
+}
+
+/* Desktop largo: apertar mais o texto para não ficar em 1-2 linhas absurdas */
+@media (min-width: 1280px) {
+    .text {
+        max-inline-size: 54ch;
+    }
+}
+
+@media (min-width: 1600px) {
+    .text {
+        max-inline-size: 50ch;
+    }
+}
+
+@media (max-width: 900px) {
+    .card {
+        border-radius: 32px;
+    }
+
+    .text {
+        max-inline-size: 58ch;
+    }
 }
 
 @media (max-width: 640px) {
@@ -99,7 +135,22 @@
     .inner {
         padding-block: 0.95rem;
         padding-inline: 1.1rem;
+    }
+
+    .text {
+        max-inline-size: 100%;
         font-size: 0.95rem;
         line-height: 1.5;
+    }
+}
+
+@media (max-width: 380px) {
+    .inner {
+        padding-inline: 0.95rem;
+    }
+
+    .text {
+        font-size: 0.92rem;
+        line-height: 1.45;
     }
 }

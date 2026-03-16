@@ -1,5 +1,8 @@
 import styles from "./ForWhomHero.module.css";
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand, {
+  ICONS,
+  resolveHotelIcon,
+} from "../../../../config/index.js";
 
 export default function ForWhomHero() {
   const content =
@@ -9,20 +12,25 @@ export default function ForWhomHero() {
 
   const title = content.headerLabel || "Para Todos os Perfis";
   const text = content.description || "";
+  const Icon = resolveHotelIcon(ICONS, content.iconKey);
 
   return (
     <div className={styles.card} aria-label={title}>
       <div className={styles.inner}>
         <div className={styles.titleRow}>
-          <span className={styles.star} aria-hidden="true">
-            ✦
-          </span>
+          {Icon ? (
+            <span className={styles.iconCircle} aria-hidden="true">
+              <Icon className={styles.icon} />
+            </span>
+          ) : null}
 
           <h3 className={styles.title}>{title}</h3>
 
-          <span className={styles.star} aria-hidden="true">
-            ✦
-          </span>
+          {Icon ? (
+            <span className={styles.iconCircle} aria-hidden="true">
+              <Icon className={styles.icon} />
+            </span>
+          ) : null}
         </div>
 
         {text ? <p className={styles.text}>{text}</p> : null}

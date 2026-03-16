@@ -31,10 +31,13 @@
     inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - (2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem))));
     margin-inline: auto;
     box-sizing: border-box;
+
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.4rem);
 }
 
 .pillsWrap {
-    margin-top: clamp(1.4rem, 3vw, 2rem);
+    margin-top: clamp(0.2rem, 0.6vw, 0.45rem);
 }
 
 @media (max-width: 640px) {
@@ -48,7 +51,11 @@
         inset-block-start: 4%;
     }
 
+    .inner {
+        gap: 1rem;
+    }
+
     .pillsWrap {
-        margin-top: 1.15rem;
+        margin-top: 0.15rem;
     }
 }

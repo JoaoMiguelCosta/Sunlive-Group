@@ -1,11 +1,31 @@
 const BRAND_ICON_KEY_MAP = Object.freeze({
-  energy: "BoltIcon",
   water: "WaterIcon",
-  recycling: "RecycleIcon",
   "local-products": "FruitBasketIcon",
   celebration: "CelebrationIcon",
   trophy: "TrophyIcon",
   business: "BusinessPersonIcon",
+  trail: "MountainIcon",
+  wine: "WineIcon",
+  cutlery: "UtensilsIcon",
+  thermal: "ThermalIcon",
+  energy: "BoltIcon",
+  recycling: "RecycleIcon",
+  star: "StarIcon",
+  bus: "BusIcon",
+
+  bath: "BathIcon",
+  "air-conditioning": "AirVentIcon",
+  tv: "TvIcon",
+  wardrobe: "WardrobeIcon",
+  desk: "DeskIcon",
+  wifi: "WifiIcon",
+  "daily-cleaning": "BrushCleaningIcon",
+  "bed-linen-towels": "TowelRackIcon",
+
+  clock: "ClockIcon",
+  card: "CardIcon",
+  "cigarette-off": "CigaretteOffIcon",
+  "circle-off": "CircleOffIcon",
 });
 
 export function resolveHotelIconName(iconKey) {

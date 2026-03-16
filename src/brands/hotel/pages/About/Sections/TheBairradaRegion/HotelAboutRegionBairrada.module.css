@@ -1,26 +1,4 @@
 .wrap {
-    max-inline-size: 72rem;
+    inline-size: min(100%, 920px);
     margin-inline: auto;
-    margin-block-end: clamp(1.55rem, 3vw, 2.25rem);
-}
-
-.descriptionCard {
-    max-inline-size: 100%;
-}
-
-.descriptionCard :global(p) {
-    font-size: clamp(1.08rem, 1.1vw + 0.8rem, 1.34rem);
-    line-height: 1.9;
-}
-
-@media (max-width: 640px) {
-    .wrap {
-        max-inline-size: 100%;
-        margin-block-end: 1rem;
-    }
-
-    .descriptionCard :global(p) {
-        font-size: 1rem;
-        line-height: 1.78;
-    }
 }

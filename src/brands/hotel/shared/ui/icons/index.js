@@ -1,6 +1,21 @@
-// src/brands/hotel/shared/ui/icons/index.js
+export { default as AirVentIcon } from "./AirVent.jsx";
+export { default as BathIcon } from "./Bath.jsx";
+export { default as BrushCleaningIcon } from "./BrushCleaning.jsx";
 export { default as BusinessPersonIcon } from "./BusinessPerson.jsx";
+export { default as CardIcon } from "./Card.jsx";
 export { default as CelebrationIcon } from "./Celebration.jsx";
+export { default as CigaretteOffIcon } from "./CigaretteOff.jsx";
+export { default as CircleOffIcon } from "./CircleOff.jsx";
+export { default as ClockIcon } from "./Clock.jsx";
+export { default as DeskIcon } from "./Desk.jsx";
 export { default as FruitBasketIcon } from "./FruitBasket.jsx";
+export { default as MountainIcon } from "./Montain.jsx";
+export { default as ThermalIcon } from "./Thermal.jsx";
+export { default as TowelRackIcon } from "./TowelRack.jsx";
 export { default as TrophyIcon } from "./Trophy.jsx";
+export { default as TvIcon } from "./Tv.jsx";
+export { default as UtensilsIcon } from "./Utensils.jsx";
+export { default as WardrobeIcon } from "./Wardrobe.jsx";
 export { default as WaterIcon } from "./Water.jsx";
+export { default as WifiIcon } from "./Wifi.jsx";
+export { default as WineIcon } from "./Wine.jsx";

@@ -1,9 +1,9 @@
 .wrap {
     position: relative;
+    isolation: isolate;
     inline-size: 100%;
     max-inline-size: 920px;
     margin-inline: auto;
-    padding-block-end: 0.35rem;
 }
 
 .wrap::after {
@@ -50,10 +50,6 @@
 }
 
 @media (max-width: 640px) {
-    .wrap {
-        padding-block-end: 0.2rem;
-    }
-
     .wrap::after {
         margin-block-start: 0.7rem;
         inline-size: 78px;
