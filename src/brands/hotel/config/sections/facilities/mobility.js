@@ -29,7 +29,7 @@ export const mobility = {
           key: "suggested-routes",
           label: "Percursos sugeridos na receção",
           icon: {
-            key: "pin",
+            key: "location",
             ariaLabel: "Ícone de percurso sugerido",
             component: null,
           },
@@ -47,7 +47,7 @@ export const mobility = {
           key: "workshop-service",
           label: "Serviço de Oficina",
           icon: {
-            key: "tools",
+            key: "wrench",
             ariaLabel: "Ícone de serviço de oficina",
             component: null,
           },
@@ -64,6 +64,7 @@ export const mobility = {
       ],
     },
   },
+
 
   parking: {
     id: "mobility-parking",

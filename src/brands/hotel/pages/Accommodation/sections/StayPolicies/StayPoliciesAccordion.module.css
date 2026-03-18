@@ -1,14 +1,16 @@
 .accordion {
     display: grid;
-    gap: 12px;
+    gap: clamp(0.65rem, 1vw, 0.9rem);
+    width: 100%;
 }
 
 .item {
     position: relative;
     isolation: isolate;
     overflow: hidden;
+    min-width: 0;
 
-    border-radius: 22px;
+    border-radius: clamp(16px, 2vw, 22px);
     border: 1px solid rgba(230, 200, 147, 0.24);
 
     background:
@@ -60,12 +62,14 @@
     z-index: 1;
 
     width: 100%;
+    min-width: 0;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
+    gap: clamp(0.65rem, 1vw, 0.9rem);
 
-    padding: 18px 20px;
+    padding: clamp(0.85rem, 1.4vw, 1.15rem) clamp(0.9rem, 1.8vw, 1.25rem);
     border: 0;
     background: transparent;
     cursor: pointer;
@@ -75,16 +79,17 @@
 .triggerLeft {
     display: inline-flex;
     align-items: center;
-    gap: 14px;
+    gap: clamp(0.65rem, 1vw, 0.9rem);
     min-width: 0;
+    flex: 1 1 auto;
 }
 
 .iconCircle {
     position: relative;
     z-index: 1;
 
-    inline-size: clamp(2.55rem, 3.5vw, 3rem);
-    block-size: clamp(2.55rem, 3.5vw, 3rem);
+    inline-size: clamp(2.1rem, 2.4vw, 3rem);
+    block-size: clamp(2.1rem, 2.4vw, 3rem);
     border-radius: 999px;
     flex-shrink: 0;
 
@@ -107,8 +112,8 @@
 }
 
 .icon {
-    inline-size: clamp(1.02rem, 1.45vw, 1.2rem);
-    block-size: clamp(1.02rem, 1.45vw, 1.2rem);
+    inline-size: clamp(0.9rem, 1.1vw, 1.2rem);
+    block-size: clamp(0.9rem, 1.1vw, 1.2rem);
     color: currentColor;
     stroke: currentColor;
     filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.16));
@@ -116,20 +121,23 @@
 
 .title {
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display: block;
 
-    font-size: clamp(1.02rem, 0.55vw + 0.96rem, 1.22rem);
+    font-size: clamp(0.96rem, 0.45vw + 0.9rem, 1.18rem);
     font-weight: 700;
-    line-height: 1.24;
+    line-height: 1.3;
     letter-spacing: 0.01em;
     color: rgba(255, 248, 240, 0.96);
+
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    text-wrap: balance;
 }
 
 .chevron {
-    width: 38px;
-    height: 38px;
+    inline-size: clamp(2.1rem, 2.4vw, 2.4rem);
+    block-size: clamp(2.1rem, 2.4vw, 2.4rem);
     flex: 0 0 auto;
 
     display: inline-flex;
@@ -172,6 +180,7 @@
 
 .panel {
     display: grid;
+    grid-template-rows: 0fr;
     min-height: 0;
     transition: grid-template-rows 240ms ease;
 }
@@ -187,24 +196,26 @@
 .panelInner {
     min-height: 0;
     overflow: hidden;
-    padding: 0 20px 18px;
-}
-
-.panelClosed .panelInner {
+    padding-inline: clamp(0.9rem, 1.8vw, 1.25rem);
+    padding-top: 0;
     padding-bottom: 0;
 }
 
 .panelOpen .panelInner {
-    padding-bottom: 18px;
+    padding-bottom: clamp(0.9rem, 1.6vw, 1.15rem);
 }
 
 .body {
     margin: 0;
     color: rgba(255, 244, 230, 0.82);
-    font-size: 0.98rem;
+    font-size: clamp(0.92rem, 0.25vw + 0.88rem, 1rem);
     line-height: 1.68;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    text-wrap: pretty;
 }
 
+/* hover apenas para dispositivos com hover real */
 @media (hover: hover) {
     .item:hover {
         border-color: rgba(230, 200, 147, 0.30);
@@ -223,49 +234,154 @@
     }
 }
 
-@media (max-width: 640px) {
+/* focus acessível */
+.trigger:focus-visible {
+    outline: none;
+}
+
+.trigger:focus-visible .chevron {
+    border-color: rgba(255, 223, 160, 0.82);
+    box-shadow:
+        0 0 0 3px rgba(230, 200, 147, 0.14),
+        0 10px 22px rgba(0, 0, 0, 0.16);
+}
+
+.trigger:focus-visible .title {
+    color: rgba(255, 252, 246, 0.99);
+}
+
+/* tablets grandes */
+@media (max-width: 1024px) {
     .accordion {
-        gap: 9px;
+        gap: 0.7rem;
     }
 
     .trigger {
-        padding: 15px 14px;
-        gap: 10px;
-    }
-
-    .triggerLeft {
-        gap: 10px;
+        padding: 0.95rem 1rem;
     }
 
     .panelInner {
-        padding: 0 14px 14px;
+        padding-inline: 1rem;
+    }
+}
+
+/* tablets */
+@media (max-width: 768px) {
+    .item {
+        border-radius: 18px;
     }
 
-    .panelOpen .panelInner {
-        padding-bottom: 14px;
+    .trigger {
+        align-items: flex-start;
+        padding: 0.9rem 0.95rem;
+    }
+
+    .triggerLeft {
+        gap: 0.75rem;
     }
 
     .title {
         font-size: 1rem;
+        line-height: 1.32;
     }
 
     .body {
-        font-size: 0.93rem;
-        line-height: 1.6;
+        font-size: 0.94rem;
+        line-height: 1.62;
     }
 
-    .chevron {
-        width: 34px;
-        height: 34px;
+    .panelOpen .panelInner {
+        padding-bottom: 0.95rem;
+    }
+}
+
+/* telemóveis */
+@media (max-width: 560px) {
+    .accordion {
+        gap: 0.6rem;
+    }
+
+    .item {
+        border-radius: 16px;
+    }
+
+    .trigger {
+        gap: 0.7rem;
+        padding: 0.82rem 0.82rem;
+    }
+
+    .triggerLeft {
+        gap: 0.7rem;
     }
 
     .iconCircle {
-        inline-size: 1.95rem;
-        block-size: 1.95rem;
+        inline-size: 2rem;
+        block-size: 2rem;
     }
 
     .icon {
-        inline-size: 0.88rem;
-        block-size: 0.88rem;
+        inline-size: 0.86rem;
+        block-size: 0.86rem;
+    }
+
+    .chevron {
+        inline-size: 2rem;
+        block-size: 2rem;
+    }
+
+    .title {
+        font-size: 0.96rem;
+    }
+
+    .panelInner {
+        padding-inline: 0.82rem;
+    }
+
+    .panelOpen .panelInner {
+        padding-bottom: 0.82rem;
+    }
+
+    .body {
+        font-size: 0.91rem;
+        line-height: 1.58;
+    }
+}
+
+/* telemóveis muito pequenos */
+@media (max-width: 380px) {
+    .trigger {
+        padding: 0.76rem 0.76rem;
+    }
+
+    .triggerLeft {
+        gap: 0.6rem;
+    }
+
+    .iconCircle {
+        inline-size: 1.88rem;
+        block-size: 1.88rem;
+    }
+
+    .chevron {
+        inline-size: 1.92rem;
+        block-size: 1.92rem;
+    }
+
+    .title {
+        font-size: 0.93rem;
+    }
+
+    .body {
+        font-size: 0.89rem;
+    }
+}
+
+/* reduzir animações se o utilizador preferir */
+@media (prefers-reduced-motion: reduce) {
+
+    .item,
+    .chevron,
+    .panel {
+        transition: none;
     }
 }

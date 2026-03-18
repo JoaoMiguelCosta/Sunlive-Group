@@ -1,7 +1,7 @@
-import hotelBrand from "../../../../config/index.js";
 import HotelDiningFeatureCard from "../../../../shared/ui/HotelDiningFeatureCard/HotelDiningFeatureCard.jsx";
-// Ativar mais tarde quando ligares ícones:
-// import { resolveHotelIcon } from "../../../../config/index.js";
+import hotelBrand, {
+  resolveHotelIcon,
+} from "../../../../config/index.js";
 
 import styles from "./BreakfastFeatureGrid.module.css";
 
@@ -20,7 +20,10 @@ function getCardPlacementClass(index, total) {
 
 export default function BreakfastFeatureGrid() {
   const section = hotelBrand?.pages?.dining?.sections?.breakfast ?? null;
-  const items = section?.featureCards?.items ?? [];
+
+  const items = Array.isArray(section?.featureCards?.items)
+    ? section.featureCards.items
+    : [];
 
   if (!items.length) return null;
 
@@ -30,17 +33,16 @@ export default function BreakfastFeatureGrid() {
         {items.map((item, index) => {
           const placementClass = getCardPlacementClass(index, items.length);
 
-          // Preparado para futuro:
-          // const Icon = item?.iconKey
-          //   ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
-          //   : null;
+          const Icon = item?.iconKey
+            ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+            : null;
 
           return (
             <HotelDiningFeatureCard
               key={item.id}
               title={item.title}
               description={item.description}
-              icon={null}
+              icon={Icon ? <Icon /> : null}
               iconKey={item.iconKey}
               className={placementClass}
             />

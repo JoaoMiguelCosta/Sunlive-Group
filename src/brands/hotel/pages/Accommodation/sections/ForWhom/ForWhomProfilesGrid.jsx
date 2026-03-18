@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 
 import styles from "./ForWhomProfilesGrid.module.css";
 import hotelBrand, {
@@ -9,11 +9,38 @@ import hotelBrand, {
 import HotelProfileCard from "../../../../shared/ui/HotelProfileCard/HotelProfileCard.jsx";
 import HotelOfferPanel from "../../../../shared/ui/HotelOfferPanel/HotelOfferPanel.jsx";
 
-function DetailsPanel({ card, className = "" }) {
+function getLayoutMode() {
+  if (typeof window === "undefined") return "desktop";
+
+  if (window.innerWidth <= 680) return "mobile";
+  if (window.innerWidth <= 1100) return "tablet";
+  return "desktop";
+}
+
+function getColumnsByLayout(layoutMode) {
+  if (layoutMode === "mobile") return 1;
+  if (layoutMode === "tablet") return 2;
+  return 3;
+}
+
+function chunkArray(items, size) {
+  const chunks = [];
+
+  for (let index = 0; index < items.length; index += size) {
+    chunks.push(items.slice(index, index + size));
+  }
+
+  return chunks;
+}
+
+function DetailsPanel({ card, className = "", panelRef = null }) {
   if (!card?.details) return null;
 
   return (
-    <div className={[styles.detailsRow, className].filter(Boolean).join(" ")}>
+    <div
+      ref={panelRef}
+      className={[styles.detailsRow, className].filter(Boolean).join(" ")}
+    >
       <HotelOfferPanel
         title={card.details.title}
         items={(card.details.items || []).map((item) => ({
@@ -56,30 +83,43 @@ export default function ForWhomProfilesGrid() {
     }));
   }, [content]);
 
+  const [layoutMode, setLayoutMode] = useState(getLayoutMode);
   const [openKey, setOpenKey] = useState(
     cards.find((card) => card?.defaultOpen)?.key ?? null,
   );
 
-  const firstRow = useMemo(() => cards.slice(0, 3), [cards]);
-  const secondRow = useMemo(() => cards.slice(3, 5), [cards]);
-  const remaining = useMemo(() => cards.slice(5), [cards]);
+  const detailRefs = useRef({});
 
-  const firstRowKeys = useMemo(
-    () => firstRow.map((card) => card.key),
-    [firstRow],
+  useEffect(() => {
+    function handleResize() {
+      setLayoutMode(getLayoutMode());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const columns = useMemo(
+    () => getColumnsByLayout(layoutMode),
+    [layoutMode],
   );
-  const secondRowKeys = useMemo(
-    () => secondRow.map((card) => card.key),
-    [secondRow],
-  );
 
-  const openCard = cards.find((card) => card.key === openKey) ?? null;
+  const rows = useMemo(() => chunkArray(cards, columns), [cards, columns]);
 
-  const topRowOpenCard =
-    openCard && firstRowKeys.includes(openCard.key) ? openCard : null;
+  useEffect(() => {
+    if (!openKey) return;
+    if (layoutMode === "desktop") return;
 
-  const bottomRowOpenCard =
-    openCard && secondRowKeys.includes(openCard.key) ? openCard : null;
+    const element = detailRefs.current[openKey];
+    if (!element) return;
+
+    window.requestAnimationFrame(() => {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    });
+  }, [openKey, layoutMode]);
 
   function handleToggle(cardKey) {
     setOpenKey((prev) => (prev === cardKey ? null : cardKey));
@@ -89,81 +129,61 @@ export default function ForWhomProfilesGrid() {
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.grid}>
-        {firstRow.map((card) => {
-          const isOpen = openKey === card.key;
+      {rows.map((row, rowIndex) => {
+        const openCardInRow = row.find((card) => card.key === openKey) ?? null;
 
-          return (
-            <div key={card.key} className={styles.cardCell}>
-              <HotelProfileCard
-                title={card.title}
-                subtitle={card.subtitle}
-                description={card.description}
-                ctaLabel={card.ctaLabel || "Ver detalhes"}
-                onClick={() => handleToggle(card.key)}
-                detailsOpen={isOpen}
-                Icon={card.Icon}
-              />
+        const rowClassName = [
+          styles.row,
+          row.length === 1 ? styles.rowSingle : "",
+          row.length === 2 ? styles.rowTwo : "",
+          row.length === 3 ? styles.rowThree : "",
+          layoutMode === "desktop" && row.length === 2
+            ? styles.rowDesktopTwo
+            : "",
+          layoutMode === "desktop" && row.length === 1
+            ? styles.rowDesktopSingle
+            : "",
+          layoutMode === "tablet" && row.length === 1
+            ? styles.rowTabletSingle
+            : "",
+        ]
+          .filter(Boolean)
+          .join(" ");
+
+        return (
+          <Fragment key={`for-whom-row-${rowIndex}`}>
+            <div className={rowClassName}>
+              {row.map((card) => {
+                const isOpen = openKey === card.key;
+
+                return (
+                  <div key={card.key} className={styles.cardCell}>
+                    <HotelProfileCard
+                      title={card.title}
+                      subtitle={card.subtitle}
+                      description={card.description}
+                      ctaLabel={card.ctaLabel || "Ver detalhes"}
+                      onClick={() => handleToggle(card.key)}
+                      detailsOpen={isOpen}
+                      Icon={card.Icon}
+                    />
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
 
-        {topRowOpenCard ? (
-          <DetailsPanel card={topRowOpenCard} className={styles.topDetails} />
-        ) : null}
-
-        {secondRow.map((card, index) => {
-          const isOpen = openKey === card.key;
-
-          return (
-            <div
-              key={card.key}
-              className={[
-                styles.cardCell,
-                styles.bottomCard,
-                index === 0 ? styles.bottomCardLeft : styles.bottomCardRight,
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              <HotelProfileCard
-                title={card.title}
-                subtitle={card.subtitle}
-                description={card.description}
-                ctaLabel={card.ctaLabel || "Ver detalhes"}
-                onClick={() => handleToggle(card.key)}
-                detailsOpen={isOpen}
-                Icon={card.Icon}
+            {openCardInRow ? (
+              <DetailsPanel
+                card={openCardInRow}
+                className={styles.rowDetails}
+                panelRef={(element) => {
+                  detailRefs.current[openCardInRow.key] = element;
+                }}
               />
-            </div>
-          );
-        })}
-
-        {bottomRowOpenCard ? (
-          <DetailsPanel
-            card={bottomRowOpenCard}
-            className={styles.bottomDetails}
-          />
-        ) : null}
-
-        {remaining.map((card) => {
-          const isOpen = openKey === card.key;
-
-          return (
-            <div key={card.key} className={styles.cardCell}>
-              <HotelProfileCard
-                title={card.title}
-                subtitle={card.subtitle}
-                description={card.description}
-                ctaLabel={card.ctaLabel || "Ver detalhes"}
-                onClick={() => handleToggle(card.key)}
-                detailsOpen={isOpen}
-                Icon={card.Icon}
-              />
-            </div>
-          );
-        })}
-      </div>
+            ) : null}
+          </Fragment>
+        );
+      })}
     </div>
   );
 }

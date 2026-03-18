@@ -1,4 +1,4 @@
-// src/shared/ui/icons/SoupIcon.jsx
+// src/shared/ui/icons/Soup.jsx
 export default function SoupIcon({
   className = "",
   size = 24,

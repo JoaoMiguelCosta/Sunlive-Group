@@ -12,7 +12,7 @@ export const catering = {
         stepNumber: "1",
         title: "Pedido",
         description: "Partilhe connosco os detalhes e necessidades do evento.",
-        iconKey: null,
+        iconKey: "calendar",
       },
       {
         id: "catering-step-2",
@@ -20,7 +20,7 @@ export const catering = {
         title: "Planeamento",
         description:
           "Desenvolvemos uma proposta personalizada e ajustada ao contexto.",
-        iconKey: null,
+        iconKey: "chef",
       },
       {
         id: "catering-step-3",
@@ -28,7 +28,7 @@ export const catering = {
         title: "Execução",
         description:
           "Asseguramos a entrega com qualidade, rigor e pontualidade.",
-        iconKey: null,
+        iconKey: "bus",
       },
     ],
   },
@@ -57,14 +57,12 @@ export const catering = {
       },
     ],
 
-    cta: {
-      label: "Pedir Orçamento para Catering",
-      href: "/sunlive-group/hotel/information#info-contacts",
-      ariaLabel:
-        "Ir para a secção de contactos para pedir orçamento de catering",
-      external: false,
-      iconKey: null,
-    },
+  cta: {
+  label: "Contactar para pedir orçamento",
+  href: "tel:+351234745133",
+  ariaLabel: "Ligar para o número +351 234 745 133 para mais informações",
+  external: false,
+},
   },
 };
 

@@ -1,7 +1,5 @@
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import HotelCateringStepCard from "../../../../shared/ui/HotelCateringStepCard/HotelCateringStepCard.jsx";
-// Ativar mais tarde quando ligares os ícones:
-// import { resolveHotelIcon } from "../../../../config/index.js";
 
 import styles from "./CateringProcessSteps.module.css";
 
@@ -15,9 +13,9 @@ export default function CateringProcessSteps() {
     <div className={styles.block} aria-label="Etapas do serviço de catering">
       <div className={styles.grid}>
         {items.map((item) => {
-          // const Icon = item?.iconKey
-          //   ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
-          //   : null;
+          const Icon = item?.iconKey
+            ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+            : null;
 
           return (
             <HotelCateringStepCard
@@ -25,7 +23,7 @@ export default function CateringProcessSteps() {
               stepNumber={item.stepNumber}
               title={item.title}
               description={item.description}
-              icon={null}
+              icon={Icon ? <Icon size={28} /> : null}
               iconKey={item.iconKey}
             />
           );

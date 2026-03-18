@@ -1,9 +1,5 @@
 import AppleIcon from "./Apple.jsx";
 import AthleteBarbellIcon from "./AthleteBarbell.jsx";
-import BedIcon from "./Bed.jsx";
-import BicepsFlexedIcon from "./BicepsFlexed.jsx";
-import BikeIcon from "./Bike.jsx";
-
 import BrainIcon from "./Brain.jsx";
 import BrushCleaningIcon from "./BrushCleaning.jsx";
 import ChartIcon from "./Chart.jsx";
@@ -11,7 +7,7 @@ import ChartFrameIcon from "./ChartFrame.jsx";
 import CircusTentIcon from "./Circus.jsx";
 import ClockIcon from "./Clock.jsx";
 import CogIcon from "./Cog.jsx";
-import CompassIcon from "./Compassion.jsx";
+import CompassIcon from "./Compass.jsx";
 import DreamIcon from "./Dream.jsx";
 import ConsultingExperienceIcon from "./Experience.jsx";
 import EyeIcon from "./Eye.jsx";
@@ -21,7 +17,6 @@ import LuggageIcon from "./Luggage.jsx";
 import MedalIcon from "./Medal.jsx";
 import MonitorIcon from "./Monitor.jsx";
 import PhysicalTherapyIcon from "./PhysicalTherapy.jsx";
-
 import SearchIcon from "./Search.jsx";
 import ShirtIcon from "./Shirt.jsx";
 import SmileIcon from "./SmileIcon.jsx";
@@ -35,9 +30,6 @@ import WorkflowIcon from "./WorkFlow.jsx";
 export {
   AppleIcon,
   AthleteBarbellIcon,
-  BedIcon,
-  BicepsFlexedIcon,
-  BikeIcon,
   BrainIcon,
   BrushCleaningIcon,
   ChartIcon,

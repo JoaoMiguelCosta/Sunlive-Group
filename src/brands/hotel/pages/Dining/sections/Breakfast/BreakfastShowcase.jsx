@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand, {
+  resolveHotelIcon,
+} from "../../../../config/index.js";
 import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
-// Ativar quando ligares os ícones:
-// import { resolveHotelIcon } from "../../../../config/index.js";
 
 import styles from "./BreakfastShowcase.module.css";
 
@@ -19,7 +19,10 @@ export default function BreakfastShowcase() {
   const highlightCard = section?.highlightCard ?? null;
   const gallery = section?.gallery ?? null;
 
-  const items = useMemo(() => gallery?.items ?? [], [gallery?.items]);
+  const items = useMemo(() => {
+    return Array.isArray(gallery?.items) ? gallery.items : [];
+  }, [gallery?.items]);
+
   const fallbackLabel = gallery?.fallbackLabel ?? "Pequeno-almoço";
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -42,10 +45,9 @@ export default function BreakfastShowcase() {
 
   if (!intro && !gallery && !highlightCard) return null;
 
-  // Preparado para futuro:
-  // const Icon = highlightCard?.iconKey
-  //   ? resolveHotelIcon(hotelBrand?.icons, highlightCard.iconKey)
-  //   : null;
+  const HighlightIcon = highlightCard?.iconKey
+    ? resolveHotelIcon(hotelBrand?.icons, highlightCard.iconKey)
+    : null;
 
   const showcaseId = `${section?.id ?? "restaurant-breakfast"}-showcase-title`;
 
@@ -61,43 +63,47 @@ export default function BreakfastShowcase() {
             </header>
           ) : null}
 
-          {intro?.paragraphs?.length ? (
-            <div className={styles.body}>
-              {intro.paragraphs.map((paragraph, index) => (
-                <p
-                  key={`${section?.id ?? "restaurant-breakfast"}-intro-${index}`}
-                  className={styles.paragraph}
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          ) : null}
+          <div className={styles.body}>
+            {intro?.paragraphs?.length ? (
+              <div className={styles.paragraphGroup}>
+                {intro.paragraphs.map((paragraph, index) => (
+                  <p
+                    key={`${section?.id ?? "restaurant-breakfast"}-intro-${index}`}
+                    className={styles.paragraph}
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            ) : null}
 
-          {highlightCard?.title || highlightCard?.text ? (
-            <div
-              className={styles.highlightCard}
-              aria-label="Informação de horário"
-            >
-              <div className={styles.highlightTop}>
-                <span className={styles.highlightIconSlot} aria-hidden="true">
-                  {/* Quando ativares os ícones:
-                  {Icon ? <Icon className={styles.highlightIcon} /> : null}
-                  */}
-                </span>
+            {highlightCard?.title || highlightCard?.text ? (
+              <div
+                className={styles.highlightCard}
+                aria-label="Informação de horário"
+              >
+                <div className={styles.highlightTop}>
+                  {(HighlightIcon || highlightCard?.iconKey) && (
+                    <span className={styles.highlightIconSlot} aria-hidden="true">
+                      {HighlightIcon ? (
+                        <HighlightIcon className={styles.highlightIcon} />
+                      ) : null}
+                    </span>
+                  )}
 
-                {highlightCard?.title ? (
-                  <h4 className={styles.highlightTitle}>
-                    {highlightCard.title}
-                  </h4>
+                  {highlightCard?.title ? (
+                    <h4 className={styles.highlightTitle}>
+                      {highlightCard.title}
+                    </h4>
+                  ) : null}
+                </div>
+
+                {highlightCard?.text ? (
+                  <p className={styles.highlightText}>{highlightCard.text}</p>
                 ) : null}
               </div>
-
-              {highlightCard?.text ? (
-                <p className={styles.highlightText}>{highlightCard.text}</p>
-              ) : null}
-            </div>
-          ) : null}
+            ) : null}
+          </div>
         </article>
 
         <div className={styles.carouselPanel}>

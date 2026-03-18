@@ -12,38 +12,38 @@ export const barAndLounge = {
       {
         id: "bar-cafeteria",
         label: "Cafetaria completa",
-        iconKey: null,
+        iconKey: "star",
       },
       {
         id: "bar-cocktails",
         label: "Cocktails",
-        iconKey: null,
+        iconKey: "star",
       },
       {
         id: "bar-wines",
         label: "Vinhos regionais",
-        iconKey: null,
+        iconKey: "star",
       },
       {
         id: "bar-snacks",
         label: "Snacks",
-        iconKey: null,
+        iconKey: "star",
       },
       {
         id: "bar-outdoor-service",
         label: "Serviço exterior",
-        iconKey: null,
+        iconKey: "star",
       },
       {
         id: "bar-relaxing-atmosphere",
         label: "Ambiente relaxante",
-        iconKey: null,
+        iconKey: "star",
       },
     ],
   },
 
   highlightCard: {
-    iconKey: null,
+    iconKey: "sun",
     title: "Serviço de Verão",
     text: "Durante a época alta, oferecemos serviço exterior junto à piscina.",
   },

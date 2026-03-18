@@ -1,7 +1,10 @@
 import { useMemo, useState, useCallback, useEffect } from "react";
 import styles from "./PanoramicRestaurantPhotoCarousel.module.css";
 
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand, {
+  ICONS,
+  resolveHotelIcon,
+} from "../../../../config/index.js";
 import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
 
 const clampIndex = (index, length) => {
@@ -37,6 +40,10 @@ export default function PanoramicRestaurantPhotoCarousel() {
     setActiveIndex((prev) => clampIndex(prev + 1, items.length));
   }, [hasItems, items.length]);
 
+  const HighlightIcon = highlight?.iconKey
+    ? resolveHotelIcon(ICONS, highlight.iconKey)
+    : null;
+
   return (
     <div
       className={styles.frame}
@@ -59,7 +66,10 @@ export default function PanoramicRestaurantPhotoCarousel() {
             aria-label="Destaque do restaurante"
           >
             <div className={styles.highlightHeader}>
-              <span className={styles.highlightIconSlot} aria-hidden="true" />
+              <span className={styles.highlightIconSlot} aria-hidden="true">
+                {HighlightIcon ? <HighlightIcon size={18} /> : null}
+              </span>
+
               {highlight?.title ? (
                 <h3 className={styles.highlightTitle}>{highlight.title}</h3>
               ) : null}

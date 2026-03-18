@@ -27,11 +27,10 @@ export const sundayBuffet = {
   },
 
   cta: {
-    label: "Contactar para Marcação",
-    href: "/sunlive-group/hotel/information#info-contacts",
-    ariaLabel: "Ir para a secção de contactos para efetuar marcação",
+    label: "Contactar para mais informações",
+    href: "tel:+351234745133",
+    ariaLabel: "Ligar para o número +351 234 745 133 para mais informações",
     external: false,
-    iconKey: null,
   },
 };
 

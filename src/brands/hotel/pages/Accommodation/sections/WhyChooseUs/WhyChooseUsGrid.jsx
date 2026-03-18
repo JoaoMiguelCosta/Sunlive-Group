@@ -1,5 +1,6 @@
 import styles from "./WhyChooseUsGrid.module.css";
 
+import { ICONS, resolveHotelIcon } from "../../../../config/index.js";
 import SustainabilityActionCard from "../../../../shared/ui/SustainabilityActionCard/SustainabilityActionCard.jsx";
 
 export default function WhyChooseUsGrid({ items = [] }) {
@@ -8,18 +9,28 @@ export default function WhyChooseUsGrid({ items = [] }) {
   if (!safeItems.length) return null;
 
   return (
-    <div className={styles.grid} role="list" aria-label="Vantagens da estadia">
-      {safeItems.map((item) => (
-        <div key={item.id} role="listitem" className={styles.item}>
-          <SustainabilityActionCard
-            title={item.title}
-            description={item.description}
-            icon={null}
-            ariaLabel={item.title}
-            className={styles.card}
-          />
-        </div>
-      ))}
+    <div className={styles.wrap}>
+      <div
+        className={styles.grid}
+        role="list"
+        aria-label="Vantagens da estadia"
+      >
+        {safeItems.map((item) => {
+          const IconComponent = resolveHotelIcon(ICONS, item.iconKey);
+
+          return (
+            <div key={item.id} role="listitem" className={styles.item}>
+              <SustainabilityActionCard
+                title={item.title}
+                description={item.description}
+                icon={IconComponent ? <IconComponent size={18} /> : null}
+                ariaLabel={item.title}
+                className={styles.card}
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

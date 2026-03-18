@@ -2,8 +2,7 @@ import { useMemo, useState, useCallback, useEffect } from "react";
 
 import hotelBrand from "../../../../config/index.js";
 import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
-// importar mais tarde quando ligares os ícones:
-// import { resolveHotelIcon } from "../../../../config/index.js";
+import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 import styles from "./PanoramicRestaurantSecondaryGallery.module.css";
 
@@ -25,6 +24,7 @@ export default function PanoramicRestaurantSecondaryGallery() {
 
   const fallbackLabel =
     gallerySecondary?.fallbackLabel ?? "Ambiente e detalhes do restaurante";
+
   const cta = gallerySecondary?.cta ?? null;
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -47,11 +47,6 @@ export default function PanoramicRestaurantSecondaryGallery() {
 
   if (!gallerySecondary) return null;
 
-  // Preparado para futuro:
-  // const Icon = cta?.iconKey
-  //   ? resolveHotelIcon(hotelBrand?.icons, cta.iconKey)
-  //   : null;
-
   return (
     <div
       className={styles.block}
@@ -71,21 +66,17 @@ export default function PanoramicRestaurantSecondaryGallery() {
 
         {cta?.label ? (
           <div className={styles.ctaWrap}>
-            <a
+            <CTAButton
+              href={cta.href}
+              label={cta.label}
+              ariaLabel={cta.ariaLabel ?? cta.label}
+              icon="phone"
+              blink={false}
+              compact={false}
+              variant="hotel"
+              tone="strong"
               className={styles.ctaButton}
-              href={cta.href ?? "#"}
-              target={cta.external ? "_blank" : undefined}
-              rel={cta.external ? "noreferrer noopener" : undefined}
-              aria-label={cta.ariaLabel ?? cta.label}
-            >
-              {/* {Icon ? (
-                <span className={styles.ctaIcon} aria-hidden="true">
-                  <Icon className={styles.ctaIconSvg} />
-                </span>
-              ) : null} */}
-
-              <span>{cta.label}</span>
-            </a>
+            />
           </div>
         ) : null}
       </div>

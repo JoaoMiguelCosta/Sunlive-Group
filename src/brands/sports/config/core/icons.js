@@ -1,9 +1,6 @@
 import {
   AppleIcon,
   AthleteBarbellIcon,
-  BedIcon,
-  BicepsFlexedIcon,
-  BikeIcon,
   BrainIcon,
   BrushCleaningIcon,
   ChartFrameIcon,
@@ -35,9 +32,6 @@ import {
 export const BRAND_ICONS = Object.freeze({
   AppleIcon,
   AthleteBarbellIcon,
-  BedIcon,
-  BicepsFlexedIcon,
-  BikeIcon,
   BrainIcon,
   BrushCleaningIcon,
   ChartFrameIcon,

@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import HotelIconPill from "../../../../shared/ui/HotelIconPill/HotelIconPill.jsx";
 import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
-// Ativar mais tarde quando ligares os ícones:
-// import { resolveHotelIcon } from "../../../../config/index.js";
 
 import styles from "./BarLoungeShowcase.module.css";
 
@@ -17,12 +15,18 @@ export default function BarLoungeShowcase() {
   const section = hotelBrand?.pages?.dining?.sections?.barAndLounge ?? null;
 
   const intro = section?.intro ?? null;
-  const features = section?.features?.items ?? [];
+  const features = Array.isArray(section?.features?.items)
+    ? section.features.items
+    : [];
   const highlightCard = section?.highlightCard ?? null;
   const gallery = section?.gallery ?? null;
 
   const items = useMemo(() => gallery?.items ?? [], [gallery?.items]);
   const fallbackLabel = gallery?.fallbackLabel ?? "Bar & Lounge";
+
+  const HighlightIcon = highlightCard?.iconKey
+    ? resolveHotelIcon(hotelBrand?.icons, highlightCard.iconKey)
+    : null;
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -57,18 +61,19 @@ export default function BarLoungeShowcase() {
           {features.length ? (
             <div className={styles.pillsGrid}>
               {features.map((item) => {
-                // Preparado para futuro:
-                // const Icon = item?.iconKey
-                //   ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
-                //   : null;
+                const Icon = item?.iconKey
+                  ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+                  : null;
 
                 return (
                   <HotelIconPill
                     key={item.id}
                     label={item.label}
-                    Icon={null}
+                    Icon={Icon}
                     size="md"
                     className={styles.featurePill}
+                    iconClassName={styles.featureIcon}
+                    iconCircleClassName={styles.featureIconCircle}
                   />
                 );
               })}
@@ -77,23 +82,27 @@ export default function BarLoungeShowcase() {
 
           {highlightCard?.title || highlightCard?.text ? (
             <div className={styles.highlightCard}>
-              <div className={styles.highlightHeader}>
-                <span className={styles.highlightIconSlot} aria-hidden="true">
-                  {/* Quando ativares os ícones:
-                  {Icon ? <Icon className={styles.highlightIcon} /> : null}
-                  */}
-                </span>
+              <div className={styles.highlightCardInner}>
+                <div className={styles.highlightHeader}>
+                  {HighlightIcon ? (
+                    <span className={styles.highlightIconSlot} aria-hidden="true">
+                      <span className={styles.highlightIconCircle}>
+                        <HighlightIcon className={styles.highlightIcon} />
+                      </span>
+                    </span>
+                  ) : null}
 
-                {highlightCard?.title ? (
-                  <h3 className={styles.highlightTitle}>
-                    {highlightCard.title}
-                  </h3>
+                  {highlightCard?.title ? (
+                    <h3 className={styles.highlightTitle}>
+                      {highlightCard.title}
+                    </h3>
+                  ) : null}
+                </div>
+
+                {highlightCard?.text ? (
+                  <p className={styles.highlightText}>{highlightCard.text}</p>
                 ) : null}
               </div>
-
-              {highlightCard?.text ? (
-                <p className={styles.highlightText}>{highlightCard.text}</p>
-              ) : null}
             </div>
           ) : null}
         </div>

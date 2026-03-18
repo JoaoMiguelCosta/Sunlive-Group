@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import hotelBrand from "../../../../config/index.js";
+import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
-// Ativar mais tarde quando ligares os ícones:
-// import { resolveHotelIcon } from "../../../../config/index.js";
 
 import styles from "./SundayBuffetGalleryCta.module.css";
 
@@ -41,11 +40,6 @@ export default function SundayBuffetGalleryCta() {
 
   if (!gallery && !cta) return null;
 
-  // Preparado para futuro:
-  // const Icon = cta?.iconKey
-  //   ? resolveHotelIcon(hotelBrand?.icons, cta.iconKey)
-  //   : null;
-
   return (
     <div className={styles.block}>
       <div className={styles.inner}>
@@ -62,21 +56,17 @@ export default function SundayBuffetGalleryCta() {
 
         {cta?.label ? (
           <div className={styles.ctaWrap}>
-            <a
+            <CTAButton
+              href={cta.href}
+              label={cta.label}
+              ariaLabel={cta.ariaLabel ?? cta.label}
+              icon="phone"
+              blink={false}
+              compact={false}
+              variant="hotel"
+              tone="strong"
               className={styles.ctaButton}
-              href={cta.href ?? "#"}
-              target={cta.external ? "_blank" : undefined}
-              rel={cta.external ? "noreferrer noopener" : undefined}
-              aria-label={cta.ariaLabel ?? cta.label}
-            >
-              <span className={styles.ctaIconSlot} aria-hidden="true">
-                {/* Quando ativares os ícones:
-                {Icon ? <Icon className={styles.ctaIcon} /> : null}
-                */}
-              </span>
-
-              <span>{cta.label}</span>
-            </a>
+            />
           </div>
         ) : null}
       </div>

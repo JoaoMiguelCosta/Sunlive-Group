@@ -15,10 +15,10 @@ export const forWhomProfiles = {
         title: "O que disponibilizamos:",
         items: [
           {
-            id: "grp-stay",
+            id: "families",
             title: "Alojamentos em Grupo",
             description: "Quartos múltiplos e coordenação logística",
-            iconKey: "business",
+            iconKey: "families",
           },
           {
             id: "food",
@@ -27,16 +27,16 @@ export const forWhomProfiles = {
             iconKey: "cutlery",
           },
           {
-            id: "infra",
+            id: "athletes",
             title: "Infraestruturas Desportivas",
             description: "Ginásio, sauna e outros serviços",
-            iconKey: "thermal",
+            iconKey: "athletes",
           },
           {
-            id: "car",
+            id: "location",
             title: "Proximidade CAR Anadia",
             description: "Acesso direto a velódromos e pavilhões",
-            iconKey: "bus",
+            iconKey: "location",
           },
         ],
         highlightsTitle: "Destaques:",
@@ -50,21 +50,21 @@ export const forWhomProfiles = {
       },
     },
     {
-      key: "families",
-      title: "Famílias",
-      subtitle: "Momentos especiais em família",
-      description:
-        "Ambiente seguro, confortável e tranquilo para criar memórias inesquecíveis com os seus.",
-      ctaLabel: "Ver Detalhes",
-      iconKey: "celebration",
+    key: "families",
+title: "Famílias",
+subtitle: "Momentos especiais em família",
+description:
+  "Ambiente seguro, confortável e tranquilo para criar memórias inesquecíveis com os seus.",
+ctaLabel: "Ver Detalhes",
+iconKey: "families",
       details: {
         title: "O que disponibilizamos:",
         items: [
           {
-            id: "rooms",
+            id: "beds",
             title: "Quartos Familiares",
             description: "Espaços amplos para toda a família",
-            iconKey: "bed-linen-towels",
+            iconKey: "beds",
           },
           {
             id: "breakfast",
@@ -73,16 +73,16 @@ export const forWhomProfiles = {
             iconKey: "cutlery",
           },
           {
-            id: "bikes",
+            id: "bike",
             title: "Bicicletas Gratuitas",
             description: "Exploração familiar da região",
-            iconKey: "trail",
+            iconKey: "bike",
           },
           {
-            id: "pool",
+            id: "waves",
             title: "Piscina e Zonas Verdes",
             description: "Diversão e relaxamento ao ar livre",
-            iconKey: "water",
+            iconKey: "waves",
           },
         ],
         highlightsTitle: "Destaques:",
@@ -107,10 +107,10 @@ export const forWhomProfiles = {
         title: "O que disponibilizamos:",
         items: [
           {
-            id: "rooms",
+            id: "beds",
             title: "Quartos Confortáveis",
             description: "Ambiente íntimo e acolhedor",
-            iconKey: "bed-linen-towels",
+            iconKey: "beds",
           },
           {
             id: "restaurant",
@@ -119,10 +119,10 @@ export const forWhomProfiles = {
             iconKey: "cutlery",
           },
           {
-            id: "pool",
+            id: "waves",
             title: "Acesso à Piscina Exterior",
             description: "Piscina tranquila para momento a dois",
-            iconKey: "water",
+            iconKey: "waves",
           },
           {
             id: "packs",
@@ -142,21 +142,21 @@ export const forWhomProfiles = {
       },
     },
     {
-      key: "groups",
-      title: "Grupos",
-      subtitle: "Experiências coletivas memoráveis",
-      description:
-        "Alojamento e apoio para grupos turísticos, escolares e culturais com logística completa.",
-      ctaLabel: "Ver Detalhes",
-      iconKey: "bus",
+   key: "groups",
+title: "Grupos",
+subtitle: "Experiências coletivas memoráveis",
+description:
+  "Alojamento e apoio para grupos turísticos, escolares e culturais com logística completa.",
+ctaLabel: "Ver Detalhes",
+iconKey: "groups",
       details: {
         title: "O que disponibilizamos:",
         items: [
           {
-            id: "multi",
+            id: "beds",
             title: "Quartos Múltiplos",
             description: "Acomodação flexível para grupos",
-            iconKey: "bed-linen-towels",
+            iconKey: "beds",
           },
           {
             id: "menus",
@@ -208,7 +208,7 @@ export const forWhomProfiles = {
             id: "coffee",
             title: "Coffee Breaks",
             description: "Pausas e refeições organizadas",
-            iconKey: "cutlery",
+            iconKey: "coffee",
           },
           {
             id: "wifi",

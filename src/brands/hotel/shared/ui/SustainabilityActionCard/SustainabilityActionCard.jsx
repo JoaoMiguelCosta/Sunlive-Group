@@ -15,9 +15,11 @@ export default function SustainabilityActionCard({
   return (
     <article className={classNames} aria-label={cardLabel}>
       <header className={styles.header}>
-        <div className={styles.iconWrap} aria-hidden="true">
-          <span className={styles.icon}>{icon}</span>
-        </div>
+        {icon ? (
+          <div className={styles.iconCircle} aria-hidden="true">
+            {icon}
+          </div>
+        ) : null}
       </header>
 
       <div className={styles.body}>

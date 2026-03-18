@@ -13,6 +13,8 @@ import styles from "./HotelIconPill.module.css";
  * - size?: "sm" | "md"
  * - className?: string
  * - ariaLabel?: string
+ * - iconClassName?: string
+ * - iconCircleClassName?: string
  */
 export default function HotelIconPill({
   label,
@@ -24,6 +26,8 @@ export default function HotelIconPill({
   size = "md",
   className = "",
   ariaLabel,
+  iconClassName = "",
+  iconCircleClassName = "",
 }) {
   if (!label) return null;
 
@@ -33,14 +37,20 @@ export default function HotelIconPill({
     .filter(Boolean)
     .join(" ");
 
+  const iconCircleCls = [styles.iconCircle, iconCircleClassName]
+    .filter(Boolean)
+    .join(" ");
+
+  const iconCls = [styles.icon, iconClassName].filter(Boolean).join(" ");
+
   const commonProps = {
     className: cls,
     "aria-label": ariaLabel || label,
   };
 
   const iconContent = Icon ? (
-    <span className={styles.iconCircle} aria-hidden="true">
-      <Icon className={styles.icon} />
+    <span className={iconCircleCls} aria-hidden="true">
+      <Icon className={iconCls} />
     </span>
   ) : null;
 

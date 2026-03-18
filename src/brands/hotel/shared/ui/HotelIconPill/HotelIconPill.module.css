@@ -4,34 +4,33 @@
 
     display: inline-flex;
     align-items: center;
-    gap: clamp(0.65rem, 1vw, 0.78rem);
+    gap: clamp(0.52rem, 0.7vw, 0.64rem);
 
     min-width: 0;
-    max-width: 100%;
-    padding: clamp(0.72rem, 1.1vw, 0.84rem) clamp(0.95rem, 1.5vw, 1.12rem);
+    width: 100%;
+    padding: clamp(0.58rem, 0.8vw, 0.68rem) clamp(0.8rem, 1vw, 0.95rem);
     border-radius: 999px;
 
     text-decoration: none;
     user-select: none;
 
     color: rgba(255, 248, 240, 0.94);
-
-    border: 1px solid rgba(230, 200, 147, 0.26);
+    border: 1px solid rgba(230, 200, 147, 0.24);
 
     background:
-        radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.08), transparent 44%),
-        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.08), transparent 46%),
+        radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.07), transparent 44%),
+        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.07), transparent 46%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.035) 0%,
-            rgba(255, 248, 235, 0.012) 18%,
-            rgba(0, 0, 0, 0.10) 100%),
+            rgba(255, 248, 235, 0.03) 0%,
+            rgba(255, 248, 235, 0.01) 18%,
+            rgba(0, 0, 0, 0.09) 100%),
         linear-gradient(135deg,
-            rgba(43, 23, 11, 0.96) 0%,
+            rgba(43, 23, 11, 0.95) 0%,
             rgba(26, 14, 8, 0.98) 100%);
 
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 12px 30px rgba(0, 0, 0, 0.18);
+        0 8px 18px rgba(0, 0, 0, 0.14);
 
     transition:
         transform 180ms ease-out,
@@ -48,25 +47,25 @@
     border-radius: inherit;
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.06) 0%,
+            rgba(255, 248, 235, 0.055) 0%,
             rgba(255, 255, 255, 0) 36%);
     opacity: 0.9;
 }
 
 .sm {
-    padding: 0.66rem 0.9rem;
+    padding: 0.52rem 0.74rem;
 }
 
 .md {
-    padding: clamp(0.72rem, 1.1vw, 0.84rem) clamp(0.95rem, 1.5vw, 1.12rem);
+    padding: clamp(0.58rem, 0.8vw, 0.68rem) clamp(0.8rem, 1vw, 0.95rem);
 }
 
 .iconCircle {
     position: relative;
     z-index: 1;
 
-    inline-size: clamp(2.55rem, 3.5vw, 3rem);
-    block-size: clamp(2.55rem, 3.5vw, 3rem);
+    inline-size: clamp(1.9rem, 2.2vw, 2.1rem);
+    block-size: clamp(1.9rem, 2.2vw, 2.1rem);
     border-radius: 999px;
     flex-shrink: 0;
 
@@ -74,26 +73,26 @@
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(241, 205, 132, 0.2);
+    border: 1px solid rgba(241, 205, 132, 0.18);
     background:
-        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.16), transparent 55%),
-        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.08), transparent 72%),
+        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.14), transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.07), transparent 72%),
         linear-gradient(180deg,
-            rgba(78, 42, 18, 0.92) 0%,
+            rgba(78, 42, 18, 0.91) 0%,
             rgba(42, 21, 10, 0.96) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.08),
-        0 8px 20px rgba(0, 0, 0, 0.16);
+        0 6px 14px rgba(0, 0, 0, 0.14);
 
     color: rgba(241, 205, 132, 0.98);
 }
 
 .icon {
-    inline-size: clamp(1.02rem, 1.45vw, 1.2rem);
-    block-size: clamp(1.02rem, 1.45vw, 1.2rem);
+    inline-size: clamp(0.82rem, 0.95vw, 0.9rem);
+    block-size: clamp(0.82rem, 0.95vw, 0.9rem);
     color: currentColor;
     stroke: currentColor;
-    filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.16));
+    filter: drop-shadow(0 0 6px rgba(241, 205, 132, 0.12));
 }
 
 .text {
@@ -101,9 +100,9 @@
     z-index: 1;
 
     min-width: 0;
-    font-size: clamp(0.96rem, 0.8rem + 0.28vw, 1.02rem);
+    font-size: clamp(0.84rem, 0.7rem + 0.2vw, 0.92rem);
     font-weight: 700;
-    line-height: 1.28;
+    line-height: 1.18;
     color: #fff3da;
 
     white-space: nowrap;
@@ -112,11 +111,11 @@
 }
 
 .pill:hover {
-    transform: translateY(-3px);
-    border-color: rgba(230, 200, 147, 0.34);
+    transform: translateY(-2px);
+    border-color: rgba(230, 200, 147, 0.32);
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 38px rgba(0, 0, 0, 0.22);
+        0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
 .pill:active {
@@ -126,16 +125,16 @@
 .pill:focus-visible {
     outline: none;
     box-shadow:
-        0 0 0 3px rgba(230, 200, 147, 0.16),
+        0 0 0 3px rgba(230, 200, 147, 0.15),
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 38px rgba(0, 0, 0, 0.22);
+        0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
 .active {
-    border-color: rgba(230, 200, 147, 0.34);
+    border-color: rgba(230, 200, 147, 0.32);
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 38px rgba(0, 0, 0, 0.22);
+        0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
 .pill[disabled],
@@ -144,44 +143,65 @@
     pointer-events: none;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 920px) {
     .pill {
-        gap: 0.62rem;
-        padding: 0.72rem 0.9rem;
+        gap: 0.5rem;
+        padding: 0.54rem 0.74rem;
     }
 
     .iconCircle {
-        inline-size: 2.35rem;
-        block-size: 2.35rem;
+        inline-size: 1.82rem;
+        block-size: 1.82rem;
     }
 
     .icon {
-        inline-size: 0.96rem;
-        block-size: 0.96rem;
+        inline-size: 0.78rem;
+        block-size: 0.78rem;
     }
 
     .text {
-        font-size: 0.95rem;
+        font-size: 0.84rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .pill {
+        gap: 0.48rem;
+        padding: 0.52rem 0.7rem;
+    }
+
+    .iconCircle {
+        inline-size: 1.72rem;
+        block-size: 1.72rem;
+    }
+
+    .icon {
+        inline-size: 0.74rem;
+        block-size: 0.74rem;
+    }
+
+    .text {
+        font-size: 0.82rem;
     }
 }
 
 @media (max-width: 380px) {
     .pill {
-        padding: 0.68rem 0.82rem;
+        padding: 0.48rem 0.64rem;
     }
 
     .iconCircle {
-        inline-size: 2.2rem;
-        block-size: 2.2rem;
+        inline-size: 1.64rem;
+        block-size: 1.64rem;
     }
 
     .icon {
-        inline-size: 0.9rem;
-        block-size: 0.9rem;
+        inline-size: 0.7rem;
+        block-size: 0.7rem;
     }
 
     .text {
-        font-size: 0.9rem;
+        font-size: 0.78rem;
     }
 }
 

@@ -5,7 +5,9 @@ import { ICONS, resolveHotelIcon } from "../../../../config/index.js";
 function Chevron({ open }) {
   return (
     <span
-      className={[styles.chevron, open ? styles.chevronOpen : ""].join(" ")}
+      className={[styles.chevron, open ? styles.chevronOpen : ""]
+        .filter(Boolean)
+        .join(" ")}
       aria-hidden="true"
     >
       <svg viewBox="0 0 24 24" width="18" height="18" focusable="false">
@@ -78,7 +80,9 @@ export default function StayPoliciesAccordion({
               className={[
                 styles.panel,
                 open ? styles.panelOpen : styles.panelClosed,
-              ].join(" ")}
+              ]
+                .filter(Boolean)
+                .join(" ")}
               role="region"
               aria-labelledby={triggerId}
             >

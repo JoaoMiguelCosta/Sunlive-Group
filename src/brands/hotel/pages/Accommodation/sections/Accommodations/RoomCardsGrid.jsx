@@ -53,17 +53,18 @@ export default function RoomCardsGrid() {
           const open = openRoomId === room.id;
 
           return (
-            <HotelRoomCard
-              key={room.id}
-              title={room.title}
-              description={room.description}
-              features={room.features}
-              imageSrc={room.imageSrc}
-              imageAlt={room.imageAlt}
-              badge={room.badge}
-              detailsOpen={open}
-              onToggle={() => handleToggle(room.id)}
-            />
+            <div key={room.id} className={styles.cardCell}>
+              <HotelRoomCard
+                title={room.title}
+                description={room.description}
+                features={room.features}
+                imageSrc={room.imageSrc}
+                imageAlt={room.imageAlt}
+                badge={room.badge}
+                detailsOpen={open}
+                onToggle={() => handleToggle(room.id)}
+              />
+            </div>
           );
         })}
       </div>

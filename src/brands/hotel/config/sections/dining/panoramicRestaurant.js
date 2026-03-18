@@ -49,18 +49,19 @@ export const panoramicRestaurant = {
       ],
       cta: {
         label: "Contactar para mais informações",
-        href: "/sunlive-group/hotel/information#info-contacts",
-        ariaLabel: "Ir para a secção de contactos para obter mais informações",
+        href: "tel:+351234745133",
+        ariaLabel: "Ligar para o número +351 234 745 133 para mais informações",
         external: false,
-        iconKey: null,
+        iconKey: "phone",
       },
     },
   },
 
   highlightCard: {
-    icon: null,
+    icon: "cutlery",
     title: "Restaurante Panorâmico",
     text: "Vista panorâmica sobre a Bairrada, num ambiente acolhedor onde a cozinha combina sabores tradicionais, equilíbrio nutricional e atenção ao detalhe.",
+    iconKey: "cutlery",
   },
 };
 

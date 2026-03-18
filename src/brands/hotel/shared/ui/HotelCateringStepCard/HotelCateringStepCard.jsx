@@ -22,7 +22,7 @@ export default function HotelCateringStepCard({
 
       <div className={styles.main}>
         <span
-          className={styles.iconSlot}
+          className={styles.iconCircle}
           aria-hidden="true"
           data-icon-key={iconKey ?? ""}
         >

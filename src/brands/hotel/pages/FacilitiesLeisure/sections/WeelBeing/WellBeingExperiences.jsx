@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
 import HotelFacilitySummaryCard from "../../../../shared/ui/HotelFacilitySummaryCard/HotelFacilitySummaryCard.jsx";
@@ -10,7 +10,21 @@ import styles from "./WellBeingExperiences.module.css";
 
 export default function WellBeingExperiences() {
   const content = hotelBrand?.pages?.facilities?.sections?.wellBeing ?? null;
-  const items = Array.isArray(content?.items) ? content.items : [];
+  const rawItems = Array.isArray(content?.items) ? content.items : [];
+
+  const items = useMemo(
+    () =>
+      rawItems.map((item) => ({
+        ...item,
+        icon: {
+          ...item.icon,
+          component: item.icon?.key
+            ? resolveHotelIcon(hotelBrand?.icons, item.icon.key)
+            : null,
+        },
+      })),
+    [rawItems],
+  );
 
   if (!items.length) return null;
 

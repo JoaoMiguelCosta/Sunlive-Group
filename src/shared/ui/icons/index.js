@@ -18,6 +18,9 @@ import StarIcon from "./Star.jsx";
 import TourBusIcon from "./TourBus.jsx";
 import UsersIcon from "./Users.jsx";
 import BusIcon from "./Bus.jsx";
+import BicepsFlexedIcon from "./BicepsFlexed.jsx";
+import BikeIcon from "./Bike.jsx"
+import BedIcon from "./Bed.jsx"
 
 export {
   BoltIcon,
@@ -40,4 +43,7 @@ export {
   TourBusIcon,
   UsersIcon,
   BusIcon,
+  BicepsFlexedIcon,
+  BikeIcon,
+  BedIcon,
 };

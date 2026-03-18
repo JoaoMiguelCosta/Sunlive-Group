@@ -1,16 +1,16 @@
 import styles from "./HotelFacilitySummaryCard.module.css";
 
-function IconSlot({ icon = null, iconLabel = "" }) {
-  if (icon) {
+function IconSlot({ icon: Icon = null, iconLabel = "" }) {
+  if (Icon) {
     return (
-      <span className={styles.iconSlot} aria-label={iconLabel}>
-        {icon}
+      <span className={styles.iconCircle} aria-label={iconLabel}>
+        <Icon />
       </span>
     );
   }
 
   return (
-    <span className={styles.iconSlot} aria-hidden="true">
+    <span className={styles.iconCircle} aria-hidden="true">
       <span className={styles.iconPlaceholder} />
     </span>
   );
@@ -30,6 +30,7 @@ export default function HotelFacilitySummaryCard({
     <article className={styles.card}>
       <div className={styles.header}>
         <IconSlot icon={icon} iconLabel={iconLabel} />
+
         <div className={styles.titleWrap}>
           <h3 className={styles.title}>{title}</h3>
         </div>

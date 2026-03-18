@@ -28,35 +28,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 8rem;
-    padding: 1rem 1rem 0.9rem;
-    background:
-        linear-gradient(180deg, rgba(168, 112, 39, 0.96) 0%, rgba(128, 79, 23, 0.96) 100%);
-    border-bottom: 1px solid rgba(255, 231, 184, 0.18);
+    min-height: 7rem;
+    padding: 0.85rem 1rem 0.55rem;
+    background: transparent;
+    border-bottom: 0;
 }
 
-.iconWrap {
-    display: grid;
-    place-items: center;
-    width: 5rem;
-    height: 5rem;
+.iconCircle {
+    inline-size: clamp(3.15rem, 5vw, 4.5rem);
+    block-size: clamp(3.15rem, 5vw, 4.5rem);
     border-radius: 999px;
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(241, 205, 132, 0.2);
     background:
-        radial-gradient(circle at 30% 30%, rgba(126, 82, 25, 0.95), rgba(61, 33, 11, 0.98));
-    color: #fff4df;
-    border: 1px solid rgba(255, 220, 160, 0.16);
+        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.16), transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.08), transparent 72%),
+        linear-gradient(135deg, rgba(78, 42, 18, 0.92) 0%, rgba(42, 21, 10, 0.96) 100%);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-        0 10px 22px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        0 10px 24px rgba(0, 0, 0, 0.2);
+
+    color: #e4bf67;
 }
 
-.icon {
-    display: grid;
-    place-items: center;
-    width: 1.35rem;
-    height: 1.35rem;
-    border-radius: 999px;
-    background: rgba(255, 244, 223, 0.18);
+.iconCircle :global(svg) {
+    inline-size: clamp(1.35rem, 2.3vw, 1.95rem);
+    block-size: clamp(1.35rem, 2.3vw, 1.95rem);
+    stroke: currentColor;
+    filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.12));
 }
 
 .body {
@@ -64,7 +68,7 @@
     align-content: start;
     justify-items: center;
     gap: 0.9rem;
-    padding: 1.2rem 1.2rem 1.35rem;
+    padding: 0.35rem 1.2rem 1.35rem;
     flex: 1;
     text-align: center;
 }
@@ -100,12 +104,18 @@
 
 @media (max-width: 980px) {
     .header {
-        min-height: 7.3rem;
+        min-height: 6.4rem;
+        padding: 0.8rem 0.9rem 0.45rem;
     }
 
-    .iconWrap {
-        width: 4.45rem;
-        height: 4.45rem;
+    .iconCircle {
+        inline-size: clamp(2.9rem, 6vw, 3.8rem);
+        block-size: clamp(2.9rem, 6vw, 3.8rem);
+    }
+
+    .iconCircle :global(svg) {
+        inline-size: clamp(1.2rem, 2vw, 1.55rem);
+        block-size: clamp(1.2rem, 2vw, 1.55rem);
     }
 
     .title {
@@ -115,18 +125,23 @@
 
 @media (max-width: 768px) {
     .header {
-        min-height: 6.7rem;
-        padding: 0.9rem 0.9rem 0.8rem;
+        min-height: 5.9rem;
+        padding: 0.75rem 0.85rem 0.35rem;
     }
 
-    .iconWrap {
-        width: 4rem;
-        height: 4rem;
+    .iconCircle {
+        inline-size: 3.2rem;
+        block-size: 3.2rem;
+    }
+
+    .iconCircle :global(svg) {
+        inline-size: 1.2rem;
+        block-size: 1.2rem;
     }
 
     .body {
         gap: 0.75rem;
-        padding: 1rem;
+        padding: 0.2rem 1rem 1rem;
     }
 
     .description {

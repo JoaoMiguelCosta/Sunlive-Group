@@ -1,44 +1,58 @@
 .wrap {
+    --grid-gap: clamp(1rem, 2vw, 1.4rem);
+
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid-gap);
 }
 
-.grid {
+.row {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: clamp(1rem, 2vw, 1.4rem);
+    gap: var(--grid-gap);
     align-items: start;
+    width: 100%;
+}
+
+.rowThree {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.rowTwo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.rowSingle {
+    grid-template-columns: 1fr;
 }
 
 .cardCell {
     min-width: 0;
-    grid-column: span 2;
-}
-
-.bottomCardLeft {
-    grid-column: 2 / span 2;
-}
-
-.bottomCardRight {
-    grid-column: 4 / span 2;
 }
 
 .detailsRow {
-    grid-column: 1 / -1;
+    width: 100%;
     min-width: 0;
     overflow: hidden;
     animation: detailsReveal 240ms ease;
 }
 
-.topDetails {
-    margin-top: -0.1rem;
-}
-
-.bottomDetails {
-    margin-top: -0.15rem;
+.rowDetails {
+    margin-top: calc(var(--grid-gap) * -0.15);
 }
 
 .offerPanel {
     width: 100%;
+}
+
+.rowDesktopTwo {
+    width: calc(66.666% - (var(--grid-gap) / 3));
+    margin-inline: auto;
+}
+
+.rowDesktopSingle {
+    width: calc(33.333% - ((var(--grid-gap) * 2) / 3));
+    margin-inline: auto;
 }
 
 @keyframes detailsReveal {
@@ -54,27 +68,33 @@
 }
 
 @media (max-width: 1100px) {
-    .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .rowDetails {
+        margin-top: calc(var(--grid-gap) * -0.08);
     }
 
-    .cardCell,
-    .bottomCardLeft,
-    .bottomCardRight {
-        grid-column: auto;
-    }
-
-    .detailsRow {
-        grid-column: 1 / -1;
+    .rowTabletSingle {
+        width: calc(50% - (var(--grid-gap) / 2));
+        margin-inline: auto;
     }
 }
 
 @media (max-width: 680px) {
-    .grid {
+    .wrap {
+        gap: 1rem;
+    }
+
+    .row {
         grid-template-columns: 1fr;
     }
 
-    .detailsRow {
-        grid-column: 1;
+    .rowDesktopTwo,
+    .rowDesktopSingle,
+    .rowTabletSingle {
+        width: 100%;
+        margin-inline: 0;
+    }
+
+    .rowDetails {
+        margin-top: -0.1rem;
     }
 }

@@ -4,12 +4,13 @@
     overflow: hidden;
 
     display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-    gap: clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+    gap: clamp(1.4rem, 3vw, 3.5rem);
     align-items: stretch;
 
-    padding: clamp(1.5rem, 2vw, 1.75rem);
-    border-radius: 32px;
+    width: 100%;
+    padding: clamp(1rem, 2vw, 1.75rem);
+    border-radius: clamp(22px, 2.4vw, 32px);
 
     background:
         radial-gradient(70% 120% at 0% 0%, rgba(241, 205, 132, 0.12), transparent 52%),
@@ -61,25 +62,28 @@
     display: grid;
     align-content: center;
     min-width: 0;
+
     padding:
-        clamp(1rem, 1.6vw, 1.35rem) clamp(0.85rem, 1.3vw, 1.15rem) clamp(1rem, 1.6vw, 1.2rem) clamp(0.95rem, 1.5vw, 1.35rem);
+        clamp(0.55rem, 1.2vw, 1.35rem) clamp(0.4rem, 1vw, 1.15rem) clamp(0.65rem, 1.2vw, 1.2rem) clamp(0.45rem, 1.1vw, 1.35rem);
 }
 
 .paragraphs {
     display: grid;
-    gap: clamp(1rem, 1.5vw, 1.3rem);
+    gap: clamp(0.9rem, 1.4vw, 1.3rem);
 }
 
 .paragraph {
     margin: 0;
-    font-size: clamp(1rem, 1vw + 0.78rem, 1.14rem);
-    line-height: 1.82;
+    font-size: clamp(0.96rem, 0.42vw + 0.9rem, 1.14rem);
+    line-height: clamp(1.62, 1.72, 1.82);
     color: rgba(255, 248, 235, 0.9);
     text-wrap: pretty;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .pillWrap {
-    margin-block-start: clamp(1.45rem, 2vw, 1.85rem);
+    margin-block-start: clamp(1rem, 1.8vw, 1.85rem);
     max-inline-size: 42rem;
 }
 
@@ -103,8 +107,8 @@
     overflow: hidden;
     inline-size: 100%;
 
-    padding: clamp(1.3rem, 2vw, 1.6rem) clamp(1.2rem, 2vw, 1.55rem);
-    border-radius: 28px;
+    padding: clamp(1rem, 1.8vw, 1.6rem) clamp(0.95rem, 1.8vw, 1.55rem);
+    border-radius: clamp(20px, 2vw, 28px);
 
     background:
         radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.1), transparent 44%),
@@ -143,9 +147,9 @@
 .commitmentsTitle {
     position: relative;
     z-index: 1;
-    margin: 0 0 1.35rem;
+    margin: 0 0 clamp(0.9rem, 1.5vw, 1.35rem);
 
-    font-size: clamp(1.2rem, 1.2vw, 1.5rem);
+    font-size: clamp(1.08rem, 0.7vw + 0.98rem, 1.5rem);
     font-weight: 700;
     line-height: 1.18;
     color: rgba(255, 248, 235, 0.98);
@@ -161,7 +165,7 @@
     padding: 0;
 
     display: grid;
-    gap: 0.95rem;
+    gap: clamp(0.72rem, 1vw, 0.95rem);
 }
 
 .commitmentItem {
@@ -170,7 +174,7 @@
     gap: 0.8rem;
     align-items: start;
 
-    padding-block: 0.2rem;
+    padding-block: 0.15rem;
     color: rgba(255, 248, 235, 0.9);
 }
 
@@ -179,8 +183,8 @@
     align-items: center;
     justify-content: center;
 
-    inline-size: 1.5rem;
-    block-size: 1.5rem;
+    inline-size: clamp(1.3rem, 1.5vw, 1.5rem);
+    block-size: clamp(1.3rem, 1.5vw, 1.5rem);
     margin-block-start: 0.08rem;
     border-radius: 999px;
 
@@ -195,29 +199,38 @@
         0 8px 18px rgba(0, 0, 0, 0.18);
 
     color: #fff0d0;
-    font-size: 0.82rem;
+    font-size: clamp(0.74rem, 0.15vw + 0.72rem, 0.82rem);
     font-weight: 700;
     line-height: 1;
+    flex-shrink: 0;
 }
 
 .commitmentText {
     min-width: 0;
-    font-size: clamp(0.98rem, 0.5vw + 0.9rem, 1.06rem);
+    font-size: clamp(0.94rem, 0.24vw + 0.9rem, 1.06rem);
     line-height: 1.62;
     color: rgba(255, 248, 235, 0.9);
     text-wrap: pretty;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 /* ===== responsivo ===== */
 
+@media (max-width: 1180px) {
+    .content {
+        gap: 1.8rem;
+    }
+}
+
 @media (max-width: 1080px) {
     .content {
         grid-template-columns: minmax(0, 1fr);
-        gap: 1.6rem;
+        gap: 1.4rem;
     }
 
     .textCol {
-        padding: 0.5rem 0.35rem 0;
+        padding: 0.2rem 0.15rem 0;
     }
 
     .pillWrap {
@@ -225,15 +238,19 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .content {
-        padding: 1rem;
+        padding: 0.95rem;
+        gap: 1.15rem;
         border-radius: 24px;
-        gap: 1.2rem;
     }
 
     .textCol {
-        padding: 0.2rem;
+        padding: 0;
+    }
+
+    .paragraphs {
+        gap: 0.95rem;
     }
 
     .paragraph {
@@ -242,31 +259,92 @@
     }
 
     .pillWrap {
-        margin-block-start: 1.1rem;
+        margin-block-start: 0.95rem;
     }
 
     .commitmentsInner {
-        padding: 1rem;
-        border-radius: 22px;
+        padding: 0.95rem;
+        border-radius: 20px;
     }
 
     .commitmentsTitle {
-        margin-block-end: 1rem;
-        font-size: 1.1rem;
+        margin-block-end: 0.95rem;
+        font-size: 1.08rem;
     }
 
     .commitmentItem {
-        gap: 0.7rem;
-    }
-
-    .checkMark {
-        inline-size: 1.4rem;
-        block-size: 1.4rem;
-        font-size: 0.78rem;
+        gap: 0.72rem;
     }
 
     .commitmentText {
         font-size: 0.95rem;
-        line-height: 1.56;
+        line-height: 1.58;
+    }
+}
+
+@media (max-width: 560px) {
+    .content {
+        padding: 0.82rem;
+        gap: 1rem;
+        border-radius: 20px;
+    }
+
+    .paragraph {
+        font-size: 0.95rem;
+        line-height: 1.66;
+    }
+
+    .pillWrap {
+        margin-block-start: 0.85rem;
+    }
+
+    .commitmentsInner {
+        padding: 0.82rem;
+        border-radius: 18px;
+    }
+
+    .commitmentsTitle {
+        font-size: 1rem;
+        margin-block-end: 0.85rem;
+    }
+
+    .commitmentItem {
+        gap: 0.65rem;
+    }
+
+    .checkMark {
+        inline-size: 1.24rem;
+        block-size: 1.24rem;
+        font-size: 0.72rem;
+    }
+
+    .commitmentText {
+        font-size: 0.92rem;
+        line-height: 1.54;
+    }
+}
+
+@media (max-width: 380px) {
+    .content {
+        padding: 0.75rem;
+        gap: 0.9rem;
+    }
+
+    .paragraph {
+        font-size: 0.92rem;
+        line-height: 1.62;
+    }
+
+    .commitmentsInner {
+        padding: 0.76rem;
+        border-radius: 16px;
+    }
+
+    .commitmentsTitle {
+        font-size: 0.96rem;
+    }
+
+    .commitmentText {
+        font-size: 0.89rem;
     }
 }

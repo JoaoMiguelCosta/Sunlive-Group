@@ -1,16 +1,16 @@
 import styles from "./HotelFacilityDetailPanel.module.css";
 
-function IconSlot({ icon = null, iconLabel = "" }) {
-  if (icon) {
+function IconSlot({ icon: Icon = null, iconLabel = "" }) {
+  if (Icon) {
     return (
-      <span className={styles.iconSlot} aria-label={iconLabel}>
-        {icon}
+      <span className={styles.iconCircle} aria-label={iconLabel}>
+        <Icon />
       </span>
     );
   }
 
   return (
-    <span className={styles.iconSlot} aria-hidden="true">
+    <span className={styles.iconCircle} aria-hidden="true">
       <span className={styles.iconPlaceholder} />
     </span>
   );

@@ -21,6 +21,8 @@ export default function HotelDiningFeatureCard({
         </span>
 
         {title ? <h3 className={styles.title}>{title}</h3> : null}
+
+        <span className={styles.headerSpacer} aria-hidden="true" />
       </div>
 
       <div className={styles.body}>

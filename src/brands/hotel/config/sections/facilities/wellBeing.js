@@ -9,12 +9,13 @@ export const wellBeing = {
       key: "outdoor-pool",
       title: "Piscina Exterior",
       icon: {
-        key: "pool",
+        key: "waves",
         name: null,
         ariaLabel: "Ícone de piscina exterior",
         component: null,
       },
-      summary: "Piscina sazonal com espreguiçadeiras e vista para a paisagem.",
+      summary:
+        "Piscina sazonal com espreguiçadeiras e vista para a paisagem.",
       details: {
         title: "Piscina Exterior",
         features: [
@@ -32,7 +33,7 @@ export const wellBeing = {
       key: "equipped-gym",
       title: "Ginásios Equipados",
       icon: {
-        key: "gym",
+        key: "athletes",
         name: null,
         ariaLabel: "Ícone de ginásio equipado",
         component: null,
@@ -53,7 +54,7 @@ export const wellBeing = {
       key: "sauna",
       title: "Sauna",
       icon: {
-        key: "sauna",
+        key: "thermometer",
         name: null,
         ariaLabel: "Ícone de sauna",
         component: null,
@@ -75,7 +76,7 @@ export const wellBeing = {
       key: "games-entertainment",
       title: "Jogos e Entretenimento",
       icon: {
-        key: "games",
+        key: "ball",
         name: null,
         ariaLabel: "Ícone de jogos e entretenimento",
         component: null,

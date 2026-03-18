@@ -42,7 +42,7 @@ export default function RoomProfileFilterBar({
                 role="tab"
                 aria-selected={isActive}
               >
-                {opt.label}
+                <span className={styles.chipLabel}>{opt.label}</span>
               </button>
             );
           })}

@@ -1,42 +1,53 @@
 .block {
     position: relative;
     isolation: isolate;
+    width: 100%;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: clamp(1rem, 2vw, 1.35rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 1.8vw, 1.35rem);
     align-items: stretch;
+    width: 100%;
 }
 
 .grid>* {
-    grid-column: span 2;
     min-width: 0;
+    width: 100%;
 }
 
+/* 
+   Quando existem 2 cards na última linha em desktop:
+   - o penúltimo vai para a coluna 1
+   - o último vai para a coluna 2
+   Assim a composição fica visualmente equilibrada dentro de uma grelha premium de 3 colunas.
+*/
 .lastRowLeft {
-    grid-column: 2 / span 2;
+    grid-column: 1;
 }
 
 .lastRowRight {
-    grid-column: 4 / span 2;
+    grid-column: 2;
 }
 
+/* Tablet */
 @media (max-width: 1080px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(0.95rem, 2vw, 1.2rem);
     }
 
-    .grid>*,
     .lastRowLeft,
     .lastRowRight {
         grid-column: auto;
     }
 }
 
+/* Mobile */
 @media (max-width: 640px) {
     .grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 }
