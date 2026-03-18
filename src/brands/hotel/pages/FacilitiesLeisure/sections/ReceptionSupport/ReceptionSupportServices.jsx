@@ -1,25 +1,23 @@
-import hotelBrand from "../../../../config/index.js";
+import { useMemo } from "react";
+
+import hotelBrand, { BRAND_FLAGS } from "../../../../config/index.js";
+
+import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 import styles from "./ReceptionSupportServices.module.css";
 
-function IconSlot({ icon = null, iconLabel = "", variant = "feature" }) {
-  const variantClass =
-    variant === "contact" ? styles.iconSlotContact : styles.iconSlotFeature;
-
-  if (icon) {
+function FlagSlot({ flag = null, flagLabel = "" }) {
+  if (flag) {
     return (
-      <span
-        className={`${styles.iconSlot} ${variantClass}`}
-        aria-label={iconLabel}
-      >
-        {icon}
+      <span className={styles.flagSlot} aria-label={flagLabel}>
+        {flag}
       </span>
     );
   }
 
   return (
-    <span className={`${styles.iconSlot} ${variantClass}`} aria-hidden="true">
-      <span className={styles.iconPlaceholder} />
+    <span className={styles.flagSlot} aria-hidden="true">
+      <span className={styles.flagPlaceholder} />
     </span>
   );
 }
@@ -28,18 +26,51 @@ export default function ReceptionSupportServices() {
   const content =
     hotelBrand?.pages?.facilities?.sections?.receptionSupport?.services ?? null;
 
-  if (!content) return null;
+  const resolvedContent = useMemo(() => {
+    if (!content) return null;
 
-  const languages = Array.isArray(content.languages) ? content.languages : [];
-  const contacts = Array.isArray(content.contacts) ? content.contacts : [];
-  const features = Array.isArray(content.features) ? content.features : [];
+    const languages = Array.isArray(content.languages)
+      ? content.languages.map((language) => {
+          const Flag = BRAND_FLAGS?.[language.flagKey] ?? null;
+
+          return {
+            ...language,
+            flagComponent: Flag ? <Flag /> : null,
+          };
+        })
+      : [];
+
+    const contacts = Array.isArray(content.contacts) ? content.contacts : [];
+    const features = Array.isArray(content.features) ? content.features : [];
+
+    return {
+      ...content,
+      languages,
+      contacts,
+      features,
+    };
+  }, [content]);
+
+  if (!resolvedContent) return null;
+
+  const languages = Array.isArray(resolvedContent.languages)
+    ? resolvedContent.languages
+    : [];
+  const contacts = Array.isArray(resolvedContent.contacts)
+    ? resolvedContent.contacts
+    : [];
+  const features = Array.isArray(resolvedContent.features)
+    ? resolvedContent.features
+    : [];
 
   return (
-    <div id={content.id} className={styles.block}>
+    <div id={resolvedContent.id} className={styles.block}>
       <div className={styles.grid}>
         <div className={styles.leftCard}>
-          {content.multilingualTitle ? (
-            <h3 className={styles.cardTitle}>{content.multilingualTitle}</h3>
+          {resolvedContent.multilingualTitle ? (
+            <h3 className={styles.cardTitle}>
+              {resolvedContent.multilingualTitle}
+            </h3>
           ) : null}
 
           {languages.length ? (
@@ -47,9 +78,13 @@ export default function ReceptionSupportServices() {
               {languages.map((language) => (
                 <div key={language.key} className={styles.languageCard}>
                   <span className={styles.languageLabel}>{language.label}</span>
-                  <span className={styles.languageFlag} aria-hidden="true">
-                    {language.flag}
-                  </span>
+
+                  <FlagSlot
+                    flag={language.flagComponent ?? null}
+                    flagLabel={
+                      language.ariaLabel ?? `Bandeira do idioma ${language.label}`
+                    }
+                  />
                 </div>
               ))}
             </div>
@@ -58,41 +93,35 @@ export default function ReceptionSupportServices() {
           {contacts.length ? (
             <div className={styles.contactsRow}>
               {contacts.map((contact) => (
-                <a
+                <CTAButton
                   key={contact.key}
                   href={contact.href}
-                  className={styles.contactButton}
-                  aria-label={contact.ariaLabel}
-                >
-                  <span className={styles.contactIconWrap}>
-                    <IconSlot
-                      icon={contact.icon?.component ?? null}
-                      iconLabel={contact.icon?.ariaLabel ?? contact.label}
-                      variant="contact"
-                    />
-                  </span>
-
-                  <span className={styles.contactLabel}>{contact.label}</span>
-                </a>
+                  label={contact.label}
+                  ariaLabel={contact.ariaLabel ?? contact.label}
+                  icon={contact.icon?.key ?? undefined}
+                  blink={false}
+                  compact={false}
+                  variant="hotel"
+                  tone="strong"
+                  className={styles.ctaButton}
+                />
               ))}
             </div>
           ) : null}
         </div>
 
         <div className={styles.rightCard}>
-          {content.featuresTitle ? (
-            <h3 className={styles.cardTitle}>{content.featuresTitle}</h3>
+          {resolvedContent.featuresTitle ? (
+            <h3 className={styles.cardTitle}>{resolvedContent.featuresTitle}</h3>
           ) : null}
 
           {features.length ? (
             <ul className={styles.featuresList}>
               {features.map((feature) => (
                 <li key={feature.key} className={styles.featureItem}>
-                  <IconSlot
-                    icon={feature.icon?.component ?? null}
-                    iconLabel={feature.icon?.ariaLabel ?? feature.label}
-                    variant="feature"
-                  />
+                  <span className={styles.check} aria-hidden="true">
+                    ✓
+                  </span>
 
                   <span className={styles.featureLabel}>{feature.label}</span>
                 </li>

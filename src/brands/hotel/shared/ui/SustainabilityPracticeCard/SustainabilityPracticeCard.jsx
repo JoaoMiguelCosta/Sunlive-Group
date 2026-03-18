@@ -1,13 +1,13 @@
 import styles from "./SustainabilityPracticeCard.module.css";
 
-function FeatureItem({ title, description, icon = null }) {
+function FeatureItem({ title, description }) {
   if (!title && !description) return null;
 
   return (
     <li className={styles.featureItem}>
       <div className={styles.featureHeading}>
-        <span className={styles.featureIcon} aria-hidden="true">
-          {icon}
+        <span className={styles.check} aria-hidden="true">
+          ✓
         </span>
 
         {title ? <h4 className={styles.featureTitle}>{title}</h4> : null}
@@ -27,7 +27,6 @@ export default function SustainabilityPracticeCard({
   topIcon = null,
   features = [],
   metricText,
-  metricIcon = null,
   className = "",
 }) {
   const classNames = [styles.card, className].filter(Boolean).join(" ");
@@ -60,7 +59,6 @@ export default function SustainabilityPracticeCard({
               key={feature.id}
               title={feature.title}
               description={feature.description}
-              icon={feature.icon ?? null}
             />
           ))}
         </ul>
@@ -68,8 +66,8 @@ export default function SustainabilityPracticeCard({
 
       {metricText ? (
         <div className={styles.metric}>
-          <span className={styles.metricIcon} aria-hidden="true">
-            {metricIcon}
+          <span className={styles.check} aria-hidden="true">
+            ✓
           </span>
           <span className={styles.metricText}>{metricText}</span>
         </div>

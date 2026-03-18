@@ -131,6 +131,7 @@
     inline-size: 1.05em;
     block-size: 1.05em;
     flex-shrink: 0;
+    display: block;
 }
 
 .label {
@@ -366,42 +367,57 @@
 
 /* =========================================================
    VARIANTE HOTEL
-   - Refinada e menos pesada
-   - Mantém identidade quente/dourada
+   - Refinada e premium
+   - Melhor equilíbrio icon + label
+   - Responsiva em todas as larguras
    ========================================================= */
 
-   
 .button--hotel {
-    --hotel-border: rgba(230, 200, 147, 0.28);
-    --hotel-border-hover: rgba(230, 200, 147, 0.42);
+    --hotel-border: rgba(230, 200, 147, 0.26);
+    --hotel-border-hover: rgba(241, 205, 132, 0.46);
     --hotel-text: #fff3da;
 
     --hotel-halo-min: 0px;
-    --hotel-halo-max: clamp(4px, .8vw, 10px);
-    --hotel-halo-hover: clamp(4px, .8vw, 10px);
+    --hotel-halo-max: clamp(4px, 0.7vw, 10px);
+    --hotel-halo-hover: clamp(4px, 0.7vw, 10px);
     --hotel-halo-soft: rgba(230, 200, 147, 0.08);
-    --hotel-halo-strong: rgba(199, 134, 21, 0.12);
+    --hotel-halo-strong: rgba(199, 134, 21, 0.13);
+
+    --hotel-pill-fs: clamp(1rem, 1vw, 1.14rem);
+    --hotel-pill-min: clamp(3.55rem, 4.25vw, 4.25rem);
+    --hotel-pad-y: clamp(0.8rem, 0.95vw, 0.94rem);
+    --hotel-pad-x: clamp(1.18rem, 1.65vw, 1.7rem);
+    --hotel-gap: clamp(0.68rem, 0.95vw, 0.92rem);
+    --hotel-icon-size: clamp(1.02rem, 1.05vw, 1.2rem);
+
+    min-height: var(--hotel-pill-min);
+    padding: var(--hotel-pad-y) var(--hotel-pad-x);
+    gap: var(--hotel-gap);
 
     color: var(--hotel-text);
+    font-size: var(--hotel-pill-fs);
     font-weight: 700;
-    letter-spacing: 0.03em;
-    text-shadow:
-        0 1px 0 rgba(255, 248, 235, 0.06),
-        0 6px 14px rgba(0, 0, 0, 0.16);
+    letter-spacing: 0.015em;
+    line-height: 1;
 
     border: 1px solid var(--hotel-border);
 
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.045) 0%,
-            rgba(255, 248, 235, 0.016) 22%,
+            rgba(255, 248, 235, 0.05) 0%,
+            rgba(255, 248, 235, 0.015) 24%,
             rgba(0, 0, 0, 0.1) 100%),
         linear-gradient(135deg,
-            rgba(52, 28, 13, 0.96) 0%,
-            rgba(29, 16, 9, 0.98) 100%);
+            rgba(66, 38, 17, 0.97) 0%,
+            rgba(37, 20, 10, 0.985) 52%,
+            rgba(24, 13, 8, 1) 100%);
+
+    text-shadow:
+        0 1px 0 rgba(255, 248, 235, 0.05),
+        0 6px 14px rgba(0, 0, 0, 0.16);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
         inset 0 -1px 0 rgba(0, 0, 0, 0.14),
         0 0 0 var(--hotel-halo-min) var(--hotel-halo-soft),
         0 10px 24px rgba(0, 0, 0, 0.22);
@@ -418,22 +434,47 @@
     border-radius: inherit;
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.08) 0%,
-            rgba(255, 248, 235, 0.02) 18%,
+            rgba(255, 248, 235, 0.1) 0%,
+            rgba(255, 248, 235, 0.022) 16%,
             rgba(255, 255, 255, 0) 42%),
-        radial-gradient(60% 120% at 0% 50%, rgba(199, 134, 21, 0.05), transparent 72%),
-        radial-gradient(45% 100% at 100% 50%, rgba(230, 200, 147, 0.05), transparent 70%);
-    opacity: 0.92;
+        radial-gradient(58% 120% at 0% 50%, rgba(199, 134, 21, 0.055), transparent 72%),
+        radial-gradient(44% 100% at 100% 50%, rgba(230, 200, 147, 0.055), transparent 70%);
+    opacity: 0.96;
 }
 
 .button--hotel::after {
     background:
         linear-gradient(180deg,
-            rgba(230, 200, 147, 0.12) 0%,
-            rgba(199, 134, 21, 0.16) 100%);
+            rgba(241, 205, 132, 0.13) 0%,
+            rgba(199, 134, 21, 0.17) 100%);
 }
 
+.button--hotel .sheen {
+    background:
+        linear-gradient(115deg,
+            transparent 0%,
+            rgba(255, 248, 235, 0.025) 24%,
+            rgba(255, 248, 235, 0.075) 42%,
+            rgba(255, 248, 235, 0.02) 60%,
+            transparent 78%);
+    mix-blend-mode: screen;
+}
 
+.button--hotel .icon {
+    inline-size: var(--hotel-icon-size);
+    block-size: var(--hotel-icon-size);
+    color: currentColor;
+    filter: drop-shadow(0 0 7px rgba(241, 205, 132, 0.11));
+}
+
+.button--hotel .label {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+    font-size: inherit;
+    line-height: 1;
+    white-space: nowrap;
+}
 
 .button--hotel[data-on="true"] {
     animation: hotelPulse 1.8s ease-in-out infinite;
@@ -444,7 +485,7 @@
     0%,
     100% {
         box-shadow:
-            inset 0 1px 0 rgba(255, 248, 235, 0.06),
+            inset 0 1px 0 rgba(255, 248, 235, 0.08),
             inset 0 -1px 0 rgba(0, 0, 0, 0.14),
             0 0 0 var(--hotel-halo-min) var(--hotel-halo-soft),
             0 10px 24px rgba(0, 0, 0, 0.22);
@@ -452,7 +493,7 @@
 
     50% {
         box-shadow:
-            inset 0 1px 0 rgba(255, 248, 235, 0.06),
+            inset 0 1px 0 rgba(255, 248, 235, 0.08),
             inset 0 -1px 0 rgba(0, 0, 0, 0.14),
             0 0 0 var(--hotel-halo-max) var(--hotel-halo-strong),
             0 12px 28px rgba(0, 0, 0, 0.24);
@@ -464,10 +505,16 @@
     transform: translateY(-1px);
     border-color: var(--hotel-border-hover);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        inset 0 1px 0 rgba(255, 248, 235, 0.1),
         inset 0 -1px 0 rgba(0, 0, 0, 0.14),
         0 0 0 var(--hotel-halo-hover) var(--hotel-halo-strong),
         0 14px 30px rgba(0, 0, 0, 0.26);
+        
+}
+
+.button--hotel:hover::after,
+.button--hotel:focus-visible::after {
+    opacity: 1;
 }
 
 .button--hotel:active {
@@ -480,32 +527,34 @@
 
 /* =========================================================
    HOTEL TONES
-   - Só afeta variant="hotel"
-   - Permite CTA principal/secundária sem impactar outras brands
    ========================================================= */
 
+.button--hotel[data-tone="default"] {
+    color: #fff3da;
+}
+
 .button--hotel[data-tone="strong"] {
-    --hotel-border: rgba(230, 200, 147, 0.42);
+    --hotel-border: rgba(230, 200, 147, 0.4);
     --hotel-border-hover: rgba(241, 205, 132, 0.62);
-    --hotel-halo-soft: rgba(230, 200, 147, 0.12);
+    --hotel-halo-soft: rgba(230, 200, 147, 0.11);
     --hotel-halo-strong: rgba(199, 134, 21, 0.18);
 
     color: #fff7ea;
     font-weight: 800;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
 
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.08) 0%,
-            rgba(255, 248, 235, 0.024) 22%,
+            rgba(255, 248, 235, 0.085) 0%,
+            rgba(255, 248, 235, 0.024) 24%,
             rgba(0, 0, 0, 0.08) 100%),
         linear-gradient(135deg,
-            rgba(82, 48, 20, 0.98) 0%,
-            rgba(46, 25, 12, 0.99) 52%,
-            rgba(26, 14, 8, 1) 100%);
+            rgba(88, 52, 22, 0.985) 0%,
+            rgba(49, 28, 13, 0.99) 52%,
+            rgba(27, 15, 8, 1) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.1),
+        inset 0 1px 0 rgba(255, 248, 235, 0.11),
         inset 0 -1px 0 rgba(0, 0, 0, 0.14),
         0 0 0 2px rgba(230, 200, 147, 0.08),
         0 16px 34px rgba(0, 0, 0, 0.28);
@@ -515,21 +564,22 @@
     background:
         linear-gradient(180deg,
             rgba(241, 205, 132, 0.18) 0%,
-            rgba(199, 134, 21, 0.22) 100%);
+            rgba(199, 134, 21, 0.23) 100%);
 }
 
 .button--hotel[data-tone="strong"]:hover,
 .button--hotel[data-tone="strong"]:focus-visible {
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.12),
+        inset 0 1px 0 rgba(255, 248, 235, 0.13),
         inset 0 -1px 0 rgba(0, 0, 0, 0.14),
         0 0 0 2px rgba(230, 200, 147, 0.12),
         0 18px 38px rgba(0, 0, 0, 0.32);
+        background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 .button--hotel[data-tone="soft"] {
-    --hotel-border: rgba(230, 200, 147, 0.2);
-    --hotel-border-hover: rgba(230, 200, 147, 0.34);
+    --hotel-border: rgba(230, 200, 147, 0.18);
+    --hotel-border-hover: rgba(230, 200, 147, 0.32);
     --hotel-halo-soft: rgba(230, 200, 147, 0.04);
     --hotel-halo-strong: rgba(199, 134, 21, 0.08);
 
@@ -539,11 +589,11 @@
     background:
         linear-gradient(180deg,
             rgba(255, 248, 235, 0.03) 0%,
-            rgba(255, 248, 235, 0.01) 22%,
+            rgba(255, 248, 235, 0.01) 24%,
             rgba(0, 0, 0, 0.12) 100%),
         linear-gradient(135deg,
-            rgba(42, 22, 10, 0.94) 0%,
-            rgba(24, 13, 8, 0.98) 100%);
+            rgba(42, 22, 10, 0.95) 0%,
+            rgba(24, 13, 8, 0.985) 100%);
 
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.04),
@@ -564,10 +614,112 @@
         inset 0 1px 0 rgba(255, 248, 235, 0.06),
         inset 0 -1px 0 rgba(0, 0, 0, 0.14),
         0 10px 22px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
+}
+
+/* =========================================================
+   HOTEL RESPONSIVE
+   ========================================================= */
+
+.button--hotel[data-compact="true"] {
+    --hotel-pill-fs: clamp(0.95rem, 0.94vw, 1.02rem);
+    --hotel-pill-min: clamp(3.05rem, 3.7vw, 3.45rem);
+    --hotel-pad-y: clamp(0.68rem, 0.8vw, 0.78rem);
+    --hotel-pad-x: clamp(0.98rem, 1.25vw, 1.18rem);
+    --hotel-gap: clamp(0.56rem, 0.8vw, 0.72rem);
+    --hotel-icon-size: clamp(0.95rem, 0.92vw, 1.02rem);
+}
+
+@media (min-width: 1440px) {
+    .button--hotel {
+        --hotel-pill-fs: 1.12rem;
+        --hotel-pill-min: 4.25rem;
+        --hotel-pad-y: 0.94rem;
+        --hotel-pad-x: 1.7rem;
+        --hotel-gap: 0.92rem;
+        --hotel-icon-size: 1.18rem;
+    }
+}
+
+@media (min-width: 1180px) and (max-width: 1439px) {
+    .button--hotel {
+        --hotel-pill-fs: 1.06rem;
+        --hotel-pill-min: 4rem;
+        --hotel-pad-y: 0.88rem;
+        --hotel-pad-x: 1.48rem;
+        --hotel-gap: 0.84rem;
+        --hotel-icon-size: 1.12rem;
+    }
+}
+
+@media (min-width: 910px) and (max-width: 1179px) {
+    .button--hotel {
+        --hotel-pill-fs: 1rem;
+        --hotel-pill-min: 3.75rem;
+        --hotel-pad-y: 0.82rem;
+        --hotel-pad-x: 1.28rem;
+        --hotel-gap: 0.76rem;
+        --hotel-icon-size: 1.06rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 909px) {
+    .button--hotel {
+        --hotel-pill-fs: 0.98rem;
+        --hotel-pill-min: 3.55rem;
+        --hotel-pad-y: 0.76rem;
+        --hotel-pad-x: 1.08rem;
+        --hotel-gap: 0.7rem;
+        --hotel-icon-size: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .button--hotel {
+        --hotel-pill-fs: 0.96rem;
+        --hotel-pill-min: 3.35rem;
+        --hotel-pad-y: 0.7rem;
+        --hotel-pad-x: 1rem;
+        --hotel-gap: 0.64rem;
+        --hotel-icon-size: 0.98rem;
+
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .button--hotel .label {
+        text-align: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .button--hotel {
+        --hotel-pill-fs: 0.94rem;
+        --hotel-pill-min: 3.2rem;
+        --hotel-pad-y: 0.66rem;
+        --hotel-pad-x: 0.92rem;
+        --hotel-gap: 0.58rem;
+        --hotel-icon-size: 0.94rem;
+    }
+
+    .button--hotel[data-compact="true"] {
+        --hotel-pill-fs: 0.9rem;
+        --hotel-pill-min: 3rem;
+        --hotel-pad-y: 0.6rem;
+        --hotel-pad-x: 0.82rem;
+        --hotel-gap: 0.52rem;
+        --hotel-icon-size: 0.88rem;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .button--hotel {
         animation: none !important;
+    }
+
+    .button--hotel:hover,
+    .button--hotel:focus-visible,
+    .button--hotel:active {
+        transform: none;
     }
 }

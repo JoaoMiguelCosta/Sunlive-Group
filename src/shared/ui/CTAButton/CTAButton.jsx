@@ -5,7 +5,7 @@ import { useBlink } from "../../hooks/useBlink.js";
 import useLocalSmoothAnchors from "../../hooks/useLocalSmoothAnchors.js";
 
 /* Ícones */
-import { PhoneIcon } from "../icons";
+import { PhoneIcon, MailIcon } from "../icons";
 
 /**
  * CTAButton (shared)
@@ -20,7 +20,7 @@ import { PhoneIcon } from "../icons";
  *  - as: "a" | "button"                      // default: "a"
  *  - type: button type (se as="button")
  *  - Icon: React.FC (preferível)
- *  - icon: string (ex: "phone")              // alternativa rápida
+ *  - icon: string (ex: "phone", "mail", "email")
  *  - blink?: boolean                         // default: true
  *  - compact?: "auto" | true | false         // default: "auto"
  *  - scrollOffset?: number                   // default: 72
@@ -29,6 +29,8 @@ import { PhoneIcon } from "../icons";
  */
 const ICON_MAP = {
   phone: PhoneIcon,
+  mail: MailIcon,
+  email: MailIcon,
 };
 
 const VARIANT_CLASS_MAP = {

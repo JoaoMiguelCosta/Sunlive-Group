@@ -21,6 +21,8 @@ import {
   BicepsFlexedIcon,
   BedIcon,
   BikeIcon,
+  LuggageIcon,
+  MedalIcon,
 } from "../../ui/icons/index.js";
 
 export const GLOBAL_ICONS = Object.freeze({
@@ -46,4 +48,6 @@ export const GLOBAL_ICONS = Object.freeze({
   BicepsFlexedIcon,
   BedIcon,
   BikeIcon,
+  LuggageIcon,
+  MedalIcon,
 });

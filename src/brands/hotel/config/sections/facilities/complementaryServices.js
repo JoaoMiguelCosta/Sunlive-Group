@@ -24,7 +24,7 @@ export const complementaryServices = {
         description: "Toalhas adicionais para piscina",
         badge: "Disponível",
         icon: {
-          key: "towel",
+          key: "bed-linen-towels",
           ariaLabel: "Ícone de toalhas extra",
           component: null,
         },
@@ -35,7 +35,7 @@ export const complementaryServices = {
         description: "Chamadas personalizadas",
         badge: "Disponível",
         icon: {
-          key: "alarm",
+          key: "clock",
           ariaLabel: "Ícone de serviço de despertar",
           component: null,
         },

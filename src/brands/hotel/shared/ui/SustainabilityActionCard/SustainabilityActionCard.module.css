@@ -30,7 +30,7 @@
     align-items: center;
     min-height: 7rem;
     padding: 0.85rem 1rem 0.55rem;
-    background: transparent;
+    background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
     border-bottom: 0;
 }
 

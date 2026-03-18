@@ -64,8 +64,7 @@
     padding:
         clamp(0.78rem, 1.2vw, 0.95rem) clamp(0.95rem, 1.6vw, 1.25rem) clamp(0.78rem, 1.2vw, 0.95rem) clamp(3.95rem, 5vw, 4.7rem);
 
-    background:
-        linear-gradient(180deg, rgba(142, 92, 46, 0.88), rgba(96, 58, 27, 0.95));
+background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 
     border-bottom: 1px solid rgba(255, 248, 235, 0.08);
 }

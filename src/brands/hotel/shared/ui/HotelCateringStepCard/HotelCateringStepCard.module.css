@@ -44,9 +44,7 @@
 
     border-radius: 999px;
 
-    background:
-        linear-gradient(180deg, rgba(188, 123, 10, 0.96), rgba(166, 106, 8, 0.98));
-
+background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
     color: rgba(255, 248, 240, 0.98);
     font-size: 1.8rem;
     font-weight: 900;
@@ -69,8 +67,7 @@
     min-height: 190px;
     padding: 1.45rem 1.25rem 1rem;
 
-    background:
-        linear-gradient(180deg, rgba(182, 119, 18, 0.94), rgba(145, 92, 10, 0.96));
+background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 .iconCircle {

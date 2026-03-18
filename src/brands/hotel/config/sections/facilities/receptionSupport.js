@@ -4,51 +4,54 @@ export const receptionSupport = {
   description:
     "Equipa de receção disponível em horário alargado, representando um dos pilares da experiência Sunlive: próxima, profissional e disponível.",
 
-  services: {
-    id: "reception-support-services",
-    multilingualTitle: "Atendimento Multilingue:",
-    languages: [
-      {
-        key: "pt",
-        label: "PT",
-        flag: "🇵🇹",
-      },
-      {
-        key: "en",
-        label: "EN",
-        flag: "🇬🇧",
-      },
-      {
-        key: "es",
-        label: "ES",
-        flag: "🇪🇸",
-      },
-    ],
+ services: {
+  id: "reception-support-services",
+  multilingualTitle: "Atendimento Multilingue:",
+  languages: [
+    {
+      key: "pt",
+      label: "PT",
+      flagKey: "portugal",
+      ariaLabel: "Bandeira de Portugal",
+    },
+    {
+      key: "en",
+      label: "EN",
+      flagKey: "uk",
+      ariaLabel: "Bandeira do Reino Unido",
+    },
+    {
+      key: "es",
+      label: "ES",
+      flagKey: "spain",
+      ariaLabel: "Bandeira de Espanha",
+    },
+  ],
 
-    contacts: [
-      {
-        key: "phone",
-        label: "Contactar",
-        href: "tel:+351933600337",
-        ariaLabel: "Ligar para +351 933 600 337",
-        icon: {
-          key: "phone",
-          ariaLabel: "Ícone de telefone",
-          component: null,
-        },
-      },
-      {
-        key: "email",
-        label: "Email",
-        href: "mailto:hotel@sunlive.pt",
-        ariaLabel: "Enviar email para hotel@sunlive.pt",
-        icon: {
-          key: "mail",
-          ariaLabel: "Ícone de email",
-          component: null,
-        },
-      },
-    ],
+   contacts: [
+  {
+    key: "phone",
+    label: "Contactar",
+    href: "tel:+351933600337",
+    ariaLabel: "Ligar para +351 933 600 337",
+    icon: {
+      key: "phone",
+      ariaLabel: "Ícone de telefone",
+      component: null,
+    },
+  },
+  {
+    key: "email",
+    label: "Email",
+    href: "mailto:hotel@sunlive.pt",
+    ariaLabel: "Enviar email para hotel@sunlive.pt",
+    icon: {
+      key: "mail",
+      ariaLabel: "Ícone de email",
+      component: null,
+    },
+  },
+],
 
     featuresTitle: "Serviços de Receção:",
     features: [

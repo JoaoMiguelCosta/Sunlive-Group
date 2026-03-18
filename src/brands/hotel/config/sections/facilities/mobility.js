@@ -66,65 +66,65 @@ export const mobility = {
   },
 
 
-  parking: {
-    id: "mobility-parking",
-    headerLabel: "Estacionamento Gratuito",
-    badge: "Incluído",
-    badgeSuffix: "Estacionamento Privado",
-    meta: "Sem necessidade de reserva",
-    metaHighlight: "Disponível 24 horas",
-    description:
-      "Perfeito para grupos, famílias ou atletas com viatura própria. Estacionamento seguro e conveniente junto à entrada principal.",
+parking: {
+  id: "mobility-parking",
+  headerLabel: "Estacionamento Gratuito",
+  badge: "Incluído",
+  badgeSuffix: "Estacionamento Privado",
+  meta: "Sem necessidade de reserva",
+  metaHighlight: "Disponível 24 horas",
+  description:
+    "Perfeito para grupos, famílias ou atletas com viatura própria. Estacionamento seguro e conveniente junto à entrada principal.",
 
-    highlights: {
-      id: "mobility-parking-highlights",
-      mediaPosition: "left",
-      image: null,
-      imageAlt: "Zona de estacionamento do hotel",
-      items: [
-        {
-          key: "buses",
-          title: "Autocarros",
-          description: "Espaço dedicado para grupos",
-          icon: {
-            key: "bus",
-            ariaLabel: "Ícone de autocarro",
-            component: null,
-          },
+  highlights: {
+    id: "mobility-parking-highlights",
+    mediaPosition: "left",
+    image: null,
+    imageAlt: "Zona de estacionamento do hotel",
+    items: [
+      {
+        key: "buses",
+        title: "Autocarros",
+        description: "Espaço dedicado para grupos",
+        icon: {
+          key: "bus",
+          ariaLabel: "Ícone de autocarro",
+          component: null,
         },
-        {
-          key: "night-lighting",
-          title: "Iluminação Nocturna",
-          description: "Segurança 24 horas",
-          icon: {
-            key: "light",
-            ariaLabel: "Ícone de iluminação nocturna",
-            component: null,
-          },
+      },
+      {
+        key: "night-lighting",
+        title: "Iluminação Nocturna",
+        description: "Segurança 24 horas",
+        icon: {
+          key: "light",
+          ariaLabel: "Ícone de iluminação nocturna",
+          component: null,
         },
-        {
+      },
+      {
+        key: "location",
+        title: "Localização",
+        description: "Acesso direto ao hotel",
+        icon: {
           key: "location",
-          title: "Localização",
-          description: "Acesso direto ao hotel",
-          icon: {
-            key: "pin",
-            ariaLabel: "Ícone de localização",
-            component: null,
-          },
+          ariaLabel: "Ícone de localização",
+          component: null,
         },
-        {
-          key: "cars",
-          title: "Carros Ligeiros",
-          description: "Lugares junto à entrada",
-          icon: {
-            key: "car",
-            ariaLabel: "Ícone de carro ligeiro",
-            component: null,
-          },
+      },
+      {
+        key: "cars",
+        title: "Carros Ligeiros",
+        description: "Lugares junto à entrada",
+        icon: {
+          key: "tour",
+          ariaLabel: "Ícone de carro ligeiro",
+          component: null,
         },
-      ],
-    },
+      },
+    ],
   },
+},
 };
 
 export default mobility;

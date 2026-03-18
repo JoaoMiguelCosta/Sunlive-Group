@@ -64,6 +64,7 @@
         inset 0 1px 0 rgba(255, 248, 235, 0.06),
         0 12px 26px rgba(0, 0, 0, 0.2);
     outline: none;
+    background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 .button:active {

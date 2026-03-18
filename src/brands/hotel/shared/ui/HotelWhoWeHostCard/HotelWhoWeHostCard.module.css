@@ -66,12 +66,7 @@
     min-block-size: clamp(5.2rem, 8vw, 6.8rem);
     padding: clamp(1rem, 1.8vw, 1.4rem) clamp(0.9rem, 1.4vw, 1rem) clamp(0.75rem, 1.2vw, 1rem);
 
-    background:
-        radial-gradient(90% 110% at 50% 0%, rgba(241, 205, 132, 0.14), transparent 58%),
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.04) 0%,
-            rgba(255, 248, 235, 0.015) 24%,
-            rgba(0, 0, 0, 0.03) 100%);
+    background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 .iconCircle {
@@ -111,20 +106,39 @@
 .titleBand {
     position: relative;
     z-index: 1;
-    padding: clamp(0rem, 0.2vw, 0.1rem) clamp(0.9rem, 1.5vw, 1.15rem) clamp(0.35rem, 1vw, 0.6rem);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-block-size: clamp(2.9rem, 3.6vw, 3.35rem);
+    padding:
+        clamp(0.18rem, 0.3vw, 0.28rem) clamp(0.9rem, 1.5vw, 1.15rem) clamp(0.4rem, 0.9vw, 0.65rem);
+
     text-align: center;
 }
 
 .title {
     margin: 0;
+
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+
     font-size: clamp(0.98rem, 0.9rem + 0.55vw, 1.28rem);
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.14;
     letter-spacing: 0.045em;
     text-transform: uppercase;
     color: #f1cd84;
     text-wrap: balance;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-inline-size: 100%;
 }
 
 .body {
@@ -134,10 +148,12 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
     gap: clamp(0.4rem, 0.8vw, 0.55rem);
 
-    padding: clamp(0.55rem, 1vw, 0.7rem) clamp(1rem, 1.8vw, 1.35rem) clamp(1rem, 1.8vw, 1.5rem);
+    min-block-size: clamp(8.5rem, 10vw, 10.2rem);
+    padding: clamp(0.9rem, 1.3vw, 1.05rem) clamp(1rem, 1.8vw, 1.35rem) clamp(1rem, 1.8vw, 1.5rem);
 
     background:
         linear-gradient(180deg,
@@ -151,7 +167,7 @@
 
     text-align: center;
     font-size: clamp(0.92rem, 0.45vw + 0.86rem, 1.08rem);
-    line-height: clamp(1.5, 1.2vw, 1.72);
+    line-height: 1.58;
     color: rgba(255, 248, 235, 0.9);
     text-wrap: pretty;
     overflow-wrap: break-word;
@@ -195,6 +211,8 @@
 
 .metric .body {
     align-items: center;
+    justify-content: center;
+    min-block-size: auto;
     padding: clamp(0.45rem, 0.8vw, 0.55rem) 1rem clamp(0.9rem, 1.4vw, 1.1rem);
 }
 
@@ -221,8 +239,14 @@
         min-block-size: 5.7rem;
     }
 
+    .titleBand {
+        min-block-size: 2.75rem;
+        padding: 0.16rem 1rem 0.36rem;
+    }
+
     .body {
-        padding: 0.6rem 1rem 1.2rem;
+        min-block-size: 8rem;
+        padding: 0.85rem 1rem 1.2rem;
     }
 
     .description {
@@ -251,23 +275,25 @@
     }
 
     .titleBand {
-        padding: 0 0.95rem 0.35rem;
+        min-block-size: 2.6rem;
+        padding: 0.14rem 0.95rem 0.34rem;
     }
 
     .title {
         font-size: 0.98rem;
-        line-height: 1.18;
+        line-height: 1.14;
     }
 
     .body {
-        padding: 0.55rem 0.95rem 1rem;
+        min-block-size: auto;
+        padding: 0.8rem 0.95rem 1rem;
         gap: 0.45rem;
     }
 
     .description {
         max-inline-size: 100%;
         font-size: 0.93rem;
-        line-height: 1.58;
+        line-height: 1.54;
     }
 
     .metric .cardTop {
@@ -310,7 +336,8 @@
     }
 
     .titleBand {
-        padding: 0 0.8rem 0.3rem;
+        min-block-size: 2.45rem;
+        padding: 0.12rem 0.8rem 0.28rem;
     }
 
     .title {
@@ -318,12 +345,12 @@
     }
 
     .body {
-        padding: 0.5rem 0.8rem 0.9rem;
+        padding: 0.72rem 0.8rem 0.9rem;
     }
 
     .description {
         font-size: 0.88rem;
-        line-height: 1.5;
+        line-height: 1.48;
     }
 
     .statValue {

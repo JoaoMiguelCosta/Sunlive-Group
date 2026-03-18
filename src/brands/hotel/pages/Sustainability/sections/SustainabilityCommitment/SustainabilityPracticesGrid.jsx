@@ -1,4 +1,6 @@
-import hotelBrand from "../../../../config/index.js";
+import { useMemo } from "react";
+
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import SustainabilityPracticeCard from "../../../../shared/ui/SustainabilityPracticeCard/SustainabilityPracticeCard.jsx";
 import styles from "./SustainabilityPracticesGrid.module.css";
 
@@ -7,7 +9,20 @@ export default function SustainabilityPracticesGrid() {
     hotelBrand?.pages?.sustainability?.sections?.sustainabilityCommitment ??
     null;
 
-  const items = section?.practices?.items ?? [];
+  const rawItems = section?.practices?.items ?? [];
+
+  const items = useMemo(() => {
+    return rawItems.map((item) => {
+      const TopIcon = item?.topIconKey
+        ? resolveHotelIcon(hotelBrand?.icons, item.topIconKey)
+        : null;
+
+      return {
+        ...item,
+        resolvedTopIcon: TopIcon ? <TopIcon /> : null,
+      };
+    });
+  }, [rawItems]);
 
   if (!items.length) return null;
 
@@ -19,13 +34,9 @@ export default function SustainabilityPracticesGrid() {
           title={item.title}
           subtitle={item.subtitle}
           description={item.description}
-          topIcon={null}
-          features={(item.features ?? []).map((feature) => ({
-            ...feature,
-            icon: null,
-          }))}
+          topIcon={item.resolvedTopIcon}
+          features={item.features ?? []}
           metricText={item.metric?.text}
-          metricIcon={null}
         />
       ))}
     </div>

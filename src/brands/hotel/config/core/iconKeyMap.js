@@ -28,6 +28,13 @@ const BRAND_ICON_KEY_MAP = Object.freeze({
   wrench: "WrenchIcon",
   garage: "GarageIcon",
   helmet: "HelmetIcon",
+  tour: "TourBusIcon",
+  light: "LightIcon",
+  count: "CountIcon",
+  ring: "RingIcon",
+  tree: "TreeIcon",
+  trash: "TrashIcon",
+  medal: "MedalIcon",
 
   bath: "BathIcon",
   "air-conditioning": "AirVentIcon",
@@ -46,6 +53,8 @@ const BRAND_ICON_KEY_MAP = Object.freeze({
   grape: "GrapeIcon",
   honey: "HoneyIcon",
   sun: "SunIcon",
+  laundry: "LaundryIcon",
+  luggage: "LuggageIcon",
   
   clock: "ClockIcon",
   card: "CardIcon",

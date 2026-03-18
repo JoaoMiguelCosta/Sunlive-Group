@@ -21,6 +21,8 @@ import BusIcon from "./Bus.jsx";
 import BicepsFlexedIcon from "./BicepsFlexed.jsx";
 import BikeIcon from "./Bike.jsx"
 import BedIcon from "./Bed.jsx"
+import LuggageIcon from "./Luggage.jsx";
+import MedalIcon from "./Medal.jsx";
 
 export {
   BoltIcon,
@@ -46,4 +48,7 @@ export {
   BicepsFlexedIcon,
   BikeIcon,
   BedIcon,
+  LuggageIcon,
+  MedalIcon,
+
 };

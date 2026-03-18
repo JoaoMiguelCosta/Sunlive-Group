@@ -43,8 +43,7 @@
 
     border-bottom: 1px solid rgba(214, 166, 74, 0.34);
 
-    background:
-        linear-gradient(180deg, rgba(182, 119, 18, 0.88), rgba(145, 92, 10, 0.90));
+background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 .header::after {

@@ -9,12 +9,18 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: clamp(0.85rem, 1.3vw, 1.1rem);
-    align-items: stretch;
+    align-items: start;
+}
+
+.cardCell {
+    min-width: 0;
+    display: contents;
 }
 
 .offerPanelWrap {
     width: 100%;
     max-width: 100%;
+    grid-column: 1 / -1;
 }
 
 .cardActive {

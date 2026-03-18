@@ -3,10 +3,11 @@
     isolation: isolate;
 
     width: min(100%, 1080px);
-    margin: clamp(1.2rem, 2.6vw, 1.9rem) auto 0;
-    border: 1px solid rgba(230, 200, 147, 0.30);
-    border-radius: 30px;
+    margin: clamp(1.2rem, 2.4vw, 1.8rem) auto 0;
     overflow: hidden;
+
+    border: 1px solid rgba(230, 200, 147, 0.30);
+    border-radius: clamp(1.4rem, 2.2vw, 2rem);
 
     background:
         radial-gradient(72% 120% at 12% 18%, rgba(241, 205, 132, 0.12), transparent 56%),
@@ -41,14 +42,14 @@
 .inner {
     position: relative;
     z-index: 1;
-    min-height: clamp(150px, 14vw, 190px);
-    padding: clamp(1.2rem, 2.2vw, 1.8rem) clamp(1rem, 3vw, 2rem);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(0.65rem, 1.2vw, 0.9rem);
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: clamp(0.55rem, 1vw, 0.85rem);
+
+    min-height: clamp(136px, 12vw, 172px);
+    padding: clamp(1.1rem, 2vw, 1.55rem) clamp(1rem, 3vw, 2rem);
 
     text-align: center;
 }
@@ -57,8 +58,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(0.35rem, 0.7vw, 0.6rem);
-    flex-wrap: wrap;
+    gap: clamp(0.22rem, 0.45vw, 0.42rem);
+    flex-wrap: nowrap;
+    line-height: 1;
 }
 
 .star,
@@ -66,7 +68,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(1.5rem, 1.8vw, 2.1rem);
+    font-size: clamp(1.3rem, 1.45vw, 1.75rem);
     line-height: 1;
 }
 
@@ -83,46 +85,104 @@
 
 .textBlock {
     display: grid;
-    gap: 0.45rem;
+    gap: clamp(0.35rem, 0.7vw, 0.55rem);
     justify-items: center;
+    width: 100%;
+    max-width: 52rem;
 }
 
 .rating {
     margin: 0;
-    font-size: clamp(1.85rem, 2.1vw, 2.6rem);
-    font-weight: 800;
-    line-height: 1.08;
     color: #e0b85d;
+    font-size: clamp(2rem, 2.7vw, 3.05rem);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
     text-wrap: balance;
 }
 
 .supportingText {
     margin: 0;
-    max-width: 18ch;
-    font-size: clamp(1rem, 0.9vw, 1.28rem);
-    font-weight: 600;
-    line-height: 1.28;
+    max-width: 40rem;
     color: #f8f1e4;
+    font-size: clamp(1rem, 1.2vw, 1.35rem);
+    font-weight: 500;
+    line-height: 1.25;
     text-wrap: balance;
+}
+
+@media (max-width: 900px) {
+    .inner {
+        min-height: clamp(128px, 16vw, 160px);
+        padding: 1.1rem 1rem 1.2rem;
+    }
+
+    .rating {
+        font-size: clamp(1.75rem, 4.2vw, 2.45rem);
+    }
+
+    .supportingText {
+        max-width: 30rem;
+        font-size: clamp(0.98rem, 1.9vw, 1.12rem);
+    }
 }
 
 @media (max-width: 640px) {
     .card {
-        border-radius: 24px;
+        border-radius: 1.4rem;
     }
 
     .inner {
         min-height: auto;
-        padding: 1.15rem 1rem;
+        gap: 0.55rem;
+        padding: 1rem 0.9rem 1.05rem;
+    }
+
+    .stars {
+        gap: 0.18rem;
+        flex-wrap: wrap;
+    }
+
+    .star,
+    .starEmpty {
+        font-size: 1.2rem;
+    }
+
+    .textBlock {
+        max-width: 100%;
+        gap: 0.38rem;
     }
 
     .rating {
         max-width: 12ch;
-        font-size: 1.7rem;
+        font-size: clamp(1.55rem, 6vw, 2rem);
+        line-height: 1.08;
     }
 
     .supportingText {
-        max-width: 18ch;
+        max-width: 24ch;
         font-size: 0.98rem;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 420px) {
+    .inner {
+        padding: 0.95rem 0.8rem 1rem;
+    }
+
+    .star,
+    .starEmpty {
+        font-size: 1.1rem;
+    }
+
+    .rating {
+        max-width: 11ch;
+        font-size: 1.42rem;
+    }
+
+    .supportingText {
+        max-width: 22ch;
+        font-size: 0.94rem;
     }
 }

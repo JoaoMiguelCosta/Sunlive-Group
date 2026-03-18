@@ -39,6 +39,12 @@ import {
   WrenchIcon,
   GarageIcon,
   HelmetIcon,
+  LightIcon,
+  LaundryIcon,
+  CountIcon,
+  RingIcon,
+  TreeIcon,
+  TrashIcon,
 
 } from "../../shared/ui/icons/index.js";
 
@@ -83,6 +89,12 @@ export const BRAND_ICONS = Object.freeze({
   WrenchIcon,
   GarageIcon,
   HelmetIcon,
+  LightIcon,
+  LaundryIcon,
+  CountIcon,
+  RingIcon,
+  TreeIcon,
+  TrashIcon,
 
 });
 

@@ -1,14 +1,30 @@
-import hotelBrand from "../../../../config/index.js";
+import { useMemo } from "react";
+
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import SustainabilityActionCard from "../../../../shared/ui/SustainabilityActionCard/SustainabilityActionCard.jsx";
+
 import styles from "./FutureGoalsCards.module.css";
 
 export default function FutureGoalsCards() {
   const section =
     hotelBrand?.pages?.sustainability?.sections?.futureGoals ?? null;
 
-  const items = Array.isArray(section?.goalCards?.items)
+  const rawItems = Array.isArray(section?.goalCards?.items)
     ? section.goalCards.items
     : [];
+
+  const items = useMemo(() => {
+    return rawItems.map((item) => {
+      const IconComponent = item?.iconKey
+        ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+        : null;
+
+      return {
+        ...item,
+        resolvedIcon: IconComponent ? <IconComponent /> : null,
+      };
+    });
+  }, [rawItems]);
 
   if (!items.length) return null;
 
@@ -19,7 +35,7 @@ export default function FutureGoalsCards() {
           <SustainabilityActionCard
             title={item.title}
             description={item.description}
-            icon={null}
+            icon={item.resolvedIcon}
             ariaLabel={item.title}
             className={styles.card}
           />

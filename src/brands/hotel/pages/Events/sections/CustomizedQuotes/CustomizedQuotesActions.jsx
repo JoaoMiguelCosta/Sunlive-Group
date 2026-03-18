@@ -1,4 +1,5 @@
 import hotelBrand from "../../../../config/index.js";
+import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 import styles from "./CustomizedQuotesActions.module.css";
 
@@ -30,12 +31,8 @@ export default function CustomizedQuotesActions() {
             <div className={styles.includesGrid}>
               {includedInQuote.items.map((item) => (
                 <div key={item.id} className={styles.includeItem}>
-                  <span className={styles.includeIcon} aria-hidden="true">
-                    {item.icon ? (
-                      item.icon
-                    ) : (
-                      <span className={styles.iconPlaceholder} />
-                    )}
+                  <span className={styles.check} aria-hidden="true">
+                    ✓
                   </span>
 
                   <span className={styles.includeLabel}>{item.label}</span>
@@ -55,24 +52,17 @@ export default function CustomizedQuotesActions() {
       {actions.length ? (
         <div className={styles.actions}>
           {actions.map((action) => (
-            <a
+            <CTAButton
               key={action.id}
-              href={action.href ?? "#"}
-              className={styles.actionButton}
-              target={action.external ? "_blank" : undefined}
-              rel={action.external ? "noreferrer noopener" : undefined}
-              aria-label={action.ariaLabel || action.label}
-            >
-              <span className={styles.actionIcon} aria-hidden="true">
-                {action.icon ? (
-                  action.icon
-                ) : (
-                  <span className={styles.actionIconPlaceholder} />
-                )}
-              </span>
-
-              <span className={styles.actionLabel}>{action.label}</span>
-            </a>
+              href={action.href}
+              label={action.label}
+              ariaLabel={action.ariaLabel || action.label}
+              icon={action.icon?.key === "phone" ? "phone" : undefined}
+              variant="hotel"
+              tone="strong"
+              blink={false}
+              className={styles.ctaButton}
+            />
           ))}
         </div>
       ) : null}

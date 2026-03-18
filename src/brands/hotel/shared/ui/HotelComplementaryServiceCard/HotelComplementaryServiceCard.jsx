@@ -3,14 +3,14 @@ import styles from "./HotelComplementaryServiceCard.module.css";
 function IconSlot({ icon = null, iconLabel = "" }) {
   if (icon) {
     return (
-      <span className={styles.iconSlot} aria-label={iconLabel}>
+      <span className={styles.iconCircle} aria-label={iconLabel}>
         {icon}
       </span>
     );
   }
 
   return (
-    <span className={styles.iconSlot} aria-hidden="true">
+    <span className={styles.iconCircle} aria-hidden="true">
       <span className={styles.iconPlaceholder} />
     </span>
   );

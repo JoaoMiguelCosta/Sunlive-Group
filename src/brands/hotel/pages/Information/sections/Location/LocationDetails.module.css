@@ -56,8 +56,7 @@
     position: relative;
     z-index: 1;
     border-bottom: 1px solid rgba(230, 200, 147, 0.16);
-    background:
-        linear-gradient(180deg, rgba(128, 80, 38, 0.90), rgba(90, 55, 26, 0.96));
+background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 .cardHeaderInner {
@@ -198,6 +197,7 @@
 
 .actionButton:hover {
     transform: translateY(-2px);
+    background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 .actionPrimary:hover {
@@ -206,6 +206,7 @@
         0 22px 42px rgba(0, 0, 0, 0.28),
         0 0 0 1px rgba(230, 200, 147, 0.08),
         inset 0 1px 0 rgba(255, 248, 230, 0.1);
+        
 }
 
 .actionSecondary:hover {
@@ -358,6 +359,7 @@
 
 .mapCard:hover .mapContent {
     border-color: rgba(230, 200, 147, 0.34);
+    background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 @media (max-width: 1080px) {

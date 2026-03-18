@@ -1,4 +1,6 @@
-import hotelBrand from "../../../../config/index.js";
+import { useMemo } from "react";
+
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import HotelHighlightBanner from "../../../../shared/ui/HotelHighlightBanner/HotelHighlightBanner.jsx";
 
 import styles from "./EventsCelebrationsBanner.module.css";
@@ -8,17 +10,41 @@ export default function EventsCelebrationsBanner() {
     hotelBrand?.pages?.events?.sections?.eventsCelebrations?.customizedBanner ??
     null;
 
-  if (!banner?.title && !banner?.description) return null;
+  const resolvedBanner = useMemo(() => {
+    if (!banner) return null;
+
+    const leftIconKey = banner?.icons?.left?.key ?? null;
+    const rightIconKey = banner?.icons?.right?.key ?? null;
+
+    const LeftIcon = leftIconKey
+      ? resolveHotelIcon(hotelBrand?.icons, leftIconKey)
+      : null;
+
+    const RightIcon = rightIconKey
+      ? resolveHotelIcon(hotelBrand?.icons, rightIconKey)
+      : null;
+
+    return {
+      ...banner,
+      icons: {
+        ...banner.icons,
+        left: LeftIcon ? <LeftIcon /> : null,
+        right: RightIcon ? <RightIcon /> : null,
+      },
+    };
+  }, [banner]);
+
+  if (!resolvedBanner?.title && !resolvedBanner?.description) return null;
 
   return (
     <div className={styles.wrapper}>
       <HotelHighlightBanner
-        title={banner.title}
-        description={banner.description}
+        title={resolvedBanner.title}
+        description={resolvedBanner.description}
         variant="centered"
-        leftIcon={banner.icons?.left}
-        rightIcon={banner.icons?.right}
-        iconsEnabled={banner.icons?.enabled ?? false}
+        leftIcon={resolvedBanner.icons?.left ?? null}
+        rightIcon={resolvedBanner.icons?.right ?? null}
+        iconsEnabled={resolvedBanner.icons?.enabled ?? false}
         className={styles.banner}
       />
     </div>

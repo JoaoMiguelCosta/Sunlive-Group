@@ -13,8 +13,7 @@ import ConsultingExperienceIcon from "./Experience.jsx";
 import EyeIcon from "./Eye.jsx";
 import GoalIcon from "./Goal.jsx";
 import GraduationCapIcon from "./GraduationCap.jsx";
-import LuggageIcon from "./Luggage.jsx";
-import MedalIcon from "./Medal.jsx";
+
 import MonitorIcon from "./Monitor.jsx";
 import PhysicalTherapyIcon from "./PhysicalTherapy.jsx";
 import SearchIcon from "./Search.jsx";
@@ -43,8 +42,7 @@ export {
   EyeIcon,
   GoalIcon,
   GraduationCapIcon,
-  LuggageIcon,
-  MedalIcon,
+
   MonitorIcon,
   PhysicalTherapyIcon,
   SearchIcon,

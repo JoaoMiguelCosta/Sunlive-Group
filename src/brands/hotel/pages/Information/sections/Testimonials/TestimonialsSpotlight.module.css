@@ -3,9 +3,9 @@
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    gap: clamp(0.9rem, 1.4vw, 1.25rem);
+    gap: clamp(0.85rem, 1.3vw, 1.2rem);
     width: min(100%, 1560px);
-    margin: clamp(1.35rem, 2.6vw, 2rem) auto 0;
+    margin: clamp(1.25rem, 2.4vw, 1.95rem) auto 0;
 }
 
 .viewport {
@@ -15,7 +15,7 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.95rem, 1.15vw, 1.2rem);
+    gap: clamp(0.95rem, 1.2vw, 1.25rem);
     align-items: stretch;
 }
 
@@ -25,8 +25,8 @@
     justify-content: center;
     align-self: center;
 
-    width: 58px;
-    height: 58px;
+    inline-size: clamp(3rem, 4vw, 3.6rem);
+    block-size: clamp(3rem, 4vw, 3.6rem);
     border: 1px solid rgba(230, 200, 147, 0.32);
     border-radius: 999px;
 
@@ -36,7 +36,7 @@
         #26170b;
 
     color: #d6aa4e;
-    font-size: 2rem;
+    font-size: clamp(1.4rem, 2vw, 2rem);
     line-height: 1;
     cursor: pointer;
 
@@ -76,13 +76,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    margin-top: 1rem;
+    gap: 0.7rem;
+    margin-top: clamp(0.9rem, 1.6vw, 1.1rem);
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    inline-size: 12px;
+    block-size: 12px;
     border: 1px solid rgba(214, 170, 78, 0.3);
     border-radius: 999px;
     background: rgba(255, 248, 230, 0.72);
@@ -105,16 +105,30 @@
     box-shadow: 0 0 14px rgba(214, 170, 78, 0.24);
 }
 
+@media (max-width: 1320px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 1180px) {
     .wrapper {
         grid-template-columns: 1fr;
+        gap: 0.85rem;
     }
 
     .navButton {
         display: none;
     }
+}
 
+@media (max-width: 760px) {
     .grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .dots {
+        margin-top: 0.9rem;
     }
 }

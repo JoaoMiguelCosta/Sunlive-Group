@@ -1,4 +1,6 @@
-import hotelBrand from "../../../../config/index.js";
+import { useMemo } from "react";
+
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 
 import HotelComplementaryServiceCard from "../../../../shared/ui/HotelComplementaryServiceCard/HotelComplementaryServiceCard.jsx";
 
@@ -9,12 +11,29 @@ export default function ComplementaryServicesGrid() {
     hotelBrand?.pages?.facilities?.sections?.complementaryServices?.services ??
     null;
 
-  const items = Array.isArray(services?.items) ? services.items : [];
+  const items = useMemo(() => {
+    const sourceItems = Array.isArray(services?.items) ? services.items : [];
+
+    return sourceItems.map((item) => {
+      const iconKey = item?.icon?.key ?? null;
+      const Icon = iconKey
+        ? resolveHotelIcon(hotelBrand?.icons, iconKey)
+        : null;
+
+      return {
+        ...item,
+        icon: {
+          ...item.icon,
+          component: Icon ? <Icon /> : null,
+        },
+      };
+    });
+  }, [services]);
 
   if (!items.length) return null;
 
   return (
-    <div id={services.id} className={styles.block}>
+    <div id={services?.id} className={styles.block}>
       <div className={styles.grid}>
         {items.map((item) => (
           <HotelComplementaryServiceCard

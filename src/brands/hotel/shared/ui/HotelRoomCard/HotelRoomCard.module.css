@@ -117,8 +117,7 @@
     z-index: 1;
     padding: 12px 14px;
 
-    background:
-        linear-gradient(180deg, rgba(104, 63, 30, 0.92), rgba(63, 37, 17, 0.96));
+background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
     border-top: 1px solid rgba(230, 200, 147, 0.16);
     border-bottom: 1px solid rgba(230, 200, 147, 0.14);
 }

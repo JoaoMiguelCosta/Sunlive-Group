@@ -81,14 +81,14 @@
         clamp(0.95rem, 1.45vw, 1.25rem) clamp(1rem, 1.5vw, 1.35rem) clamp(0.85rem, 1.2vw, 1.05rem);
     border-bottom: 1px solid rgba(255, 224, 166, 0.13);
 
-    background: linear-gradient(180deg, rgba(186, 124, 24, 0.9), rgba(145, 92, 10, 0.94));
+background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 .descriptionWrap::before {
     content: "BAR & LOUNGE";
     display: block;
     margin-bottom: clamp(0.42rem, 0.65vw, 0.55rem);
-    color: rgba(255, 225, 170, 0.76);
+    color: var(--text-main);
     font-size: clamp(0.66rem, 0.76vw, 0.78rem);
     font-weight: 700;
     letter-spacing: 0.22em;
@@ -191,7 +191,7 @@
     padding: clamp(0.7rem, 0.95vw, 0.82rem) clamp(0.9rem, 1.2vw, 1rem);
     border-bottom: 1px solid rgba(255, 224, 166, 0.14);
 
-background: linear-gradient(180deg, rgba(186, 124, 24, 0.9), rgba(145, 92, 10, 0.94));
+background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 .highlightIconSlot {

@@ -12,8 +12,15 @@
     align-items: start;
 }
 
+.cardCell {
+    min-width: 0;
+    display: contents;
+}
+
 .detailsArea {
-    margin-top: clamp(1.4rem, 2.8vw, 2.2rem);
+    width: 100%;
+    grid-column: 1 / -1;
+    margin-top: clamp(1.1rem, 2.2vw, 1.6rem);
 }
 
 @media (max-width: 1200px) {
@@ -29,5 +36,9 @@
 
     .cardsGrid {
         grid-template-columns: 1fr;
+    }
+
+    .detailsArea {
+        margin-top: 0.9rem;
     }
 }

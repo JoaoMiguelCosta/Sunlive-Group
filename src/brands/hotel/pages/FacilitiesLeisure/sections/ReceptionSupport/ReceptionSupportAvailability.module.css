@@ -49,13 +49,8 @@
     min-height: 82px;
     padding: 1.1rem 1.6rem;
     border-top: 1px solid rgba(199, 134, 21, 0.76);
-    background:
-        radial-gradient(700px 180px at 50% -10%, rgba(230, 200, 147, 0.12), transparent 60%),
-        linear-gradient(90deg,
-            rgba(92, 58, 20, 0.95) 0%,
-            rgba(58, 33, 12, 0.97) 62%,
-            rgba(38, 23, 11, 0.99) 100%);
-}
+background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
+    }
 
 .caption {
     margin: 0;
@@ -64,7 +59,11 @@
     line-height: 1.2;
     font-weight: 600;
     text-wrap: balance;
+    
+    
 }
+
+
 
 @media (max-width: 640px) {
     .card {

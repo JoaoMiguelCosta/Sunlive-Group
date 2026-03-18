@@ -41,9 +41,7 @@
     align-items: center;
     padding: clamp(0.85rem, 1.15vw, 1rem) clamp(1.15rem, 1.8vw, 1.45rem);
     border-bottom: 1px solid rgba(214, 166, 74, 0.32);
-
-    background:
-        linear-gradient(180deg, rgba(186, 124, 24, 0.9), rgba(145, 92, 10, 0.94));
+background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 .header::after {
