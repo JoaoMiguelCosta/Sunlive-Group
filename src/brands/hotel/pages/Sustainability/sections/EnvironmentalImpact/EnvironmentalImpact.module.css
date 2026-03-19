@@ -30,10 +30,38 @@
     inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--line-inset));
     margin-inline: auto;
     box-sizing: border-box;
+
+    display: grid;
+    gap: clamp(1.25rem, 2.2vw, 1.8rem);
+}
+
+.introBlock {
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.45rem);
+    justify-items: center;
+}
+
+.descriptionWrap {
+    width: 100%;
+    max-width: min(1180px, 100%);
+    margin-inline: auto;
+}
+
+.descriptionWrap :global(*) {
+    margin-bottom: 0;
+}
+
+.contentBlock {
+    display: grid;
+    gap: clamp(1rem, 1.8vw, 1.35rem);
 }
 
 @media (max-width: 640px) {
     .section {
         padding-block: 2.6rem;
+    }
+
+    .inner {
+        gap: 1rem;
     }
 }

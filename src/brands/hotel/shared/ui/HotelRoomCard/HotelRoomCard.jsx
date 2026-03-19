@@ -4,6 +4,7 @@ import styles from "./HotelRoomCard.module.css";
  * HotelRoomCard
  *
  * Props:
+ *  - roomId?: string
  *  - title: string
  *  - description?: string
  *  - features?: Array<string>
@@ -15,6 +16,7 @@ import styles from "./HotelRoomCard.module.css";
  *  - className?: string
  */
 export default function HotelRoomCard({
+  roomId = "room",
   title,
   description,
   features = [],
@@ -27,15 +29,7 @@ export default function HotelRoomCard({
 }) {
   const hasImage = Boolean(imageSrc);
   const hasFeatures = Array.isArray(features) && features.length > 0;
-
-  const safeSlug = String(title || "room")
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-
-  const panelId = `room-details-${safeSlug}`;
+  const panelId = `room-details-${roomId}`;
 
   return (
     <article className={[styles.card, className].filter(Boolean).join(" ")}>
@@ -77,7 +71,9 @@ export default function HotelRoomCard({
               aria-expanded={detailsOpen}
               aria-controls={panelId}
             >
-              <span>{detailsOpen ? "Ocultar detalhes" : "Ver detalhes"}</span>
+              <span className={styles.toggleLabel}>
+                {detailsOpen ? "Ocultar detalhes" : "Ver detalhes"}
+              </span>
 
               <span
                 className={[
@@ -117,7 +113,10 @@ export default function HotelRoomCard({
                 aria-label="Características do quarto"
               >
                 {features.map((text, index) => (
-                  <li key={`${text}-${index}`} className={styles.featureItem}>
+                  <li
+                    key={`${roomId}-${text}-${index}`}
+                    className={styles.featureItem}
+                  >
                     <span className={styles.check} aria-hidden="true">
                       ✓
                     </span>

@@ -1,7 +1,7 @@
 import hotelBrand from "../../../../config/index.js";
 import styles from "./TestimonialsAverageRating.module.css";
 
-function RatingStars({ total = 5, filled = 5, icon = null }) {
+function RatingStars({ total = 5, filled = 5 }) {
   return (
     <div className={styles.stars} aria-hidden="true">
       {Array.from({ length: total }).map((_, index) => {
@@ -9,10 +9,10 @@ function RatingStars({ total = 5, filled = 5, icon = null }) {
 
         return (
           <span
-            key={`star-${index}`}
+            key={`rating-star-${index}`}
             className={isFilled ? styles.star : styles.starEmpty}
           >
-            {icon ?? "★"}
+            ★
           </span>
         );
       })}
@@ -27,27 +27,18 @@ export default function TestimonialsAverageRating() {
 
   if (!content) return null;
 
-  const { id, ratingValue, ratingLabel, supportingText, stars = {} } = content;
-  const title = [ratingValue, ratingLabel].filter(Boolean).join(" ");
-
   return (
-    <div
-      id={id}
-      className={styles.card}
-      role="group"
-      aria-label={title || "Classificação média"}
-    >
+    <div className={styles.card}>
       <div className={styles.inner}>
-        <RatingStars
-          total={stars.total}
-          filled={stars.filled}
-          icon={stars.icon}
-        />
+        <RatingStars total={5} filled={content.rating ?? 5} />
 
         <div className={styles.textBlock}>
-          {title ? <p className={styles.rating}>{title}</p> : null}
-          {supportingText ? (
-            <p className={styles.supportingText}>{supportingText}</p>
+          {content.ratingLabel ? (
+            <p className={styles.rating}>{content.ratingLabel}</p>
+          ) : null}
+
+          {content.supportingText ? (
+            <p className={styles.supportingText}>{content.supportingText}</p>
           ) : null}
         </div>
       </div>

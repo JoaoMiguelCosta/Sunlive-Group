@@ -7,6 +7,16 @@ import RoomProfileFilterBar from "./RoomProfileFilterBar.jsx";
 
 import styles from "./RoomCardsGrid.module.css";
 
+function normalizeId(value) {
+  return String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export default function RoomCardsGrid() {
   const content =
     hotelBrand?.pages?.accommodation?.sections?.accommodations ?? null;
@@ -14,7 +24,21 @@ export default function RoomCardsGrid() {
   if (!content) return null;
 
   const filterCfg = content.roomProfilesFilter ?? null;
-  const cards = Array.isArray(content.roomCards) ? content.roomCards : [];
+  const rawCards = Array.isArray(content.roomCards) ? content.roomCards : [];
+
+  const cards = useMemo(() => {
+    return rawCards.map((card, index) => {
+      const baseId =
+        normalizeId(card?.id) ||
+        normalizeId(card?.title) ||
+        `room-${index + 1}`;
+
+      return {
+        ...card,
+        _uiId: `${baseId}-${index}`,
+      };
+    });
+  }, [rawCards]);
 
   const defaultActive = filterCfg?.options?.[0]?.id ?? "all";
   const [active, setActive] = useState(defaultActive);
@@ -28,15 +52,15 @@ export default function RoomCardsGrid() {
   }, [cards, active]);
 
   useEffect(() => {
-    const stillVisible = visibleCards.some((card) => card.id === openRoomId);
+    const stillVisible = visibleCards.some((card) => card._uiId === openRoomId);
 
     if (!stillVisible) {
       setOpenRoomId(null);
     }
   }, [visibleCards, openRoomId]);
 
-  function handleToggle(roomId) {
-    setOpenRoomId((prev) => (prev === roomId ? null : roomId));
+  function handleToggle(roomUiId) {
+    setOpenRoomId((prev) => (prev === roomUiId ? null : roomUiId));
   }
 
   return (
@@ -50,11 +74,12 @@ export default function RoomCardsGrid() {
 
       <div className={styles.grid} aria-label="Lista de quartos">
         {visibleCards.map((room) => {
-          const open = openRoomId === room.id;
+          const open = openRoomId === room._uiId;
 
           return (
-            <div key={room.id} className={styles.cardCell}>
+            <div key={room._uiId} className={styles.cardCell}>
               <HotelRoomCard
+                roomId={room._uiId}
                 title={room.title}
                 description={room.description}
                 features={room.features}
@@ -62,7 +87,7 @@ export default function RoomCardsGrid() {
                 imageAlt={room.imageAlt}
                 badge={room.badge}
                 detailsOpen={open}
-                onToggle={() => handleToggle(room.id)}
+                onToggle={() => handleToggle(room._uiId)}
               />
             </div>
           );

@@ -1,14 +1,14 @@
 .content {
-    width: min(100% - 2rem, 1440px);
+    width: 100%;
     margin-inline: auto;
-    margin-top: clamp(1.75rem, 3vw, 2.5rem);
+    margin-top: clamp(1.35rem, 2.4vw, 1.9rem);
 }
 
 .cardsGrid {
     display: grid;
     grid-template-columns: repeat(4, minmax(220px, 1fr));
-    gap: clamp(1rem, 1.8vw, 1.5rem);
-    padding-top: 1rem;
+    gap: clamp(0.9rem, 1.5vw, 1.15rem);
+    padding-top: 0.6rem;
     align-items: start;
 }
 
@@ -20,25 +20,27 @@
 .detailsArea {
     width: 100%;
     grid-column: 1 / -1;
-    margin-top: clamp(1.1rem, 2.2vw, 1.6rem);
+    margin-top: clamp(0.9rem, 1.8vw, 1.2rem);
 }
 
 @media (max-width: 1200px) {
     .cardsGrid {
-        grid-template-columns: repeat(2, minmax(260px, 1fr));
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
     }
 }
 
 @media (max-width: 640px) {
     .content {
-        width: min(100% - 1rem, 1440px);
+        width: 100%;
     }
 
     .cardsGrid {
         grid-template-columns: 1fr;
+        gap: 0.88rem;
+        padding-top: 0.5rem;
     }
 
     .detailsArea {
-        margin-top: 0.9rem;
+        margin-top: 0.8rem;
     }
 }

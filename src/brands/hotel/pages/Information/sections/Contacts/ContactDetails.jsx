@@ -1,4 +1,7 @@
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand, {
+  ICONS,
+  resolveHotelIcon,
+} from "../../../../config/index.js";
 import styles from "./ContactDetails.module.css";
 
 export default function ContactDetails() {
@@ -8,6 +11,10 @@ export default function ContactDetails() {
   if (!details) return null;
 
   const { contactInfo, receptionHours, address, social } = details;
+
+  const SocialTitleIcon = social?.iconKey
+    ? resolveHotelIcon(ICONS, social.iconKey)
+    : null;
 
   return (
     <div className={styles.wrapper}>
@@ -168,9 +175,9 @@ export default function ContactDetails() {
         >
           <header className={styles.cardHeader}>
             <div className={styles.titleRow}>
-              {social?.icon ? (
+              {SocialTitleIcon ? (
                 <span className={styles.titleIcon} aria-hidden="true">
-                  {social.icon}
+                  <SocialTitleIcon />
                 </span>
               ) : null}
 
@@ -183,25 +190,36 @@ export default function ContactDetails() {
 
           <div className={styles.cardBody}>
             <div className={styles.socialList}>
-              {social?.items?.map((item) => (
-                <a
-                  key={item.id}
-                  className={styles.socialLink}
-                  href={item?.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={item?.ariaLabel || item?.label}
-                  title={item?.label}
-                >
-                  {item?.icon ? (
-                    <span className={styles.socialIcon} aria-hidden="true">
-                      {item.icon}
-                    </span>
-                  ) : null}
+              {social?.items?.map((item) => {
+                const SocialIcon = item?.iconKey
+                  ? resolveHotelIcon(ICONS, item.iconKey)
+                  : null;
 
-                  <span className={styles.socialText}>{item?.label}</span>
-                </a>
-              ))}
+                return (
+                  <a
+                    key={item.id}
+                    className={styles.socialLink}
+                    href={item?.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item?.ariaLabel || item?.label}
+                    title={item?.label}
+                  >
+                    {SocialIcon ? (
+                      <span
+                        className={[styles.socialIcon, styles.iconCircle].join(
+                          " ",
+                        )}
+                        aria-hidden="true"
+                      >
+                        <SocialIcon />
+                      </span>
+                    ) : null}
+
+                    <span className={styles.socialText}>{item?.label}</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </article>

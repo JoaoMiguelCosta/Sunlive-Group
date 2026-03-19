@@ -1,24 +1,23 @@
 .block {
     position: relative;
     isolation: isolate;
-    padding-top: clamp(1.4rem, 2.8vw, 2.25rem);
+    padding-top: clamp(1.2rem, 2.2vw, 1.7rem);
 }
 
 .inner {
-    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
-    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--line-inset));
+    inline-size: 100%;
     margin-inline: auto;
     box-sizing: border-box;
 }
 
 .card {
     position: relative;
-    width: min(1180px, 100%);
-    min-height: clamp(260px, 34vw, 390px);
+    width: min(1140px, 100%);
+    min-height: clamp(240px, 30vw, 340px);
     margin-inline: auto;
     overflow: hidden;
-    border-radius: 38px;
-    border: 1px solid rgba(230, 200, 147, 0.42);
+    border-radius: 30px;
+    border: 1px solid rgba(230, 200, 147, 0.38);
     background:
         linear-gradient(180deg, rgba(52, 29, 12, 0.68), rgba(30, 18, 10, 0.84)),
         radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.16), transparent 60%),
@@ -26,7 +25,7 @@
         #26170b;
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 22px 56px rgba(0, 0, 0, 0.30),
+        0 20px 50px rgba(0, 0, 0, 0.28),
         0 0 0 1px rgba(255, 255, 255, 0.015);
 }
 
@@ -37,42 +36,38 @@
 .ctaWrap {
     display: flex;
     justify-content: center;
-    margin-top: clamp(1.1rem, 2.5vw, 1.9rem);
+    margin-top: clamp(0.95rem, 2vw, 1.35rem);
     width: 100%;
 }
 
 .ctaButton {
-    width: min(100%, 520px);
+    width: min(100%, 500px);
     max-width: 100%;
 }
 
 @media (max-width: 1024px) {
     .card {
-        min-height: clamp(240px, 40vw, 340px);
-        border-radius: 32px;
+        min-height: clamp(230px, 40vw, 320px);
+        border-radius: 26px;
     }
 
     .ctaButton {
-        width: min(100%, 480px);
+        width: min(100%, 460px);
     }
 }
 
 @media (max-width: 720px) {
     .block {
-        padding-top: clamp(1rem, 4vw, 1.4rem);
-    }
-
-    .inner {
-        inline-size: calc(100% - 2 * var(--line-inset));
+        padding-top: 1rem;
     }
 
     .card {
-        min-height: clamp(220px, 50vw, 300px);
-        border-radius: 28px;
+        min-height: clamp(210px, 52vw, 280px);
+        border-radius: 22px;
     }
 
     .ctaWrap {
-        margin-top: 1rem;
+        margin-top: 0.95rem;
     }
 
     .ctaButton {
@@ -82,21 +77,11 @@
 
 @media (max-width: 480px) {
     .card {
-        min-height: clamp(200px, 56vw, 260px);
-        border-radius: 22px;
+        min-height: clamp(190px, 58vw, 240px);
+        border-radius: 18px;
     }
 
     .ctaWrap {
-        margin-top: 0.9rem;
-    }
-}
-
-@media (max-width: 360px) {
-    .inner {
-        --line-inset: clamp(0.65rem, 3vw, 0.9rem);
-    }
-
-    .card {
-        border-radius: 20px;
+        margin-top: 0.85rem;
     }
 }

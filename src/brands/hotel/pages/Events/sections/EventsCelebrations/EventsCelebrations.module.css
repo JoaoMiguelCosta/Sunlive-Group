@@ -38,6 +38,27 @@
     gap: clamp(1.35rem, 2.5vw, 2rem);
 }
 
+.introBlock {
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    justify-items: center;
+}
+
+.descriptionWrap {
+    width: 100%;
+    max-width: min(1180px, 100%);
+    margin-inline: auto;
+}
+
+.descriptionWrap :global(*) {
+    margin-bottom: 0;
+}
+
+.contentStack {
+    display: grid;
+    gap: clamp(1.2rem, 2.2vw, 1.8rem);
+}
+
 @media (max-width: 768px) {
     .section {
         padding-block: clamp(2.35rem, 7vw, 3.1rem);
@@ -45,5 +66,13 @@
 
     .inner {
         gap: 1.15rem;
+    }
+
+    .introBlock {
+        gap: 0.95rem;
+    }
+
+    .contentStack {
+        gap: 1rem;
     }
 }

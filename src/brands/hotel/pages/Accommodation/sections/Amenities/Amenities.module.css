@@ -1,7 +1,7 @@
 .section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(2.75rem, 5vw, 4rem);
+    padding-block: clamp(2.35rem, 4.4vw, 3.5rem);
     background:
         radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.10), transparent 60%),
         radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.07), transparent 60%),
@@ -11,18 +11,18 @@
 .section::before {
     content: "";
     position: absolute;
-    inset: 8% auto auto 50%;
+    inset: 7% auto auto 50%;
     translate: -50% 0;
-    inline-size: min(88vw, 1160px);
-    block-size: clamp(180px, 24vw, 300px);
+    inline-size: min(88vw, 1140px);
+    block-size: clamp(170px, 22vw, 280px);
     pointer-events: none;
     background:
         radial-gradient(circle,
             rgba(241, 205, 132, 0.13) 0%,
             rgba(241, 205, 132, 0.04) 36%,
             rgba(241, 205, 132, 0) 74%);
-    filter: blur(34px);
-    opacity: 0.78;
+    filter: blur(32px);
+    opacity: 0.74;
 }
 
 .inner {
@@ -33,16 +33,16 @@
     box-sizing: border-box;
 
     display: grid;
-    gap: clamp(1rem, 2vw, 1.4rem);
+    gap: clamp(0.95rem, 1.8vw, 1.25rem);
 }
 
 .pillsWrap {
-    margin-top: clamp(0.2rem, 0.6vw, 0.45rem);
+    margin-top: clamp(0.1rem, 0.4vw, 0.3rem);
 }
 
 @media (max-width: 640px) {
     .section {
-        padding-block: 2rem;
+        padding-block: 1.9rem;
     }
 
     .section::before {
@@ -52,10 +52,10 @@
     }
 
     .inner {
-        gap: 1rem;
+        gap: 0.95rem;
     }
 
     .pillsWrap {
-        margin-top: 0.15rem;
+        margin-top: 0.1rem;
     }
 }

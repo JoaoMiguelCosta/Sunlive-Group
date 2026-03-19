@@ -23,6 +23,7 @@ import {
   BikeIcon,
   LuggageIcon,
   MedalIcon,
+  
 } from "../../ui/icons/index.js";
 
 export const GLOBAL_ICONS = Object.freeze({

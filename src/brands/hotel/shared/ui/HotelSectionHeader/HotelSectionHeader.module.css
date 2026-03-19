@@ -9,16 +9,15 @@
 .wrap::after {
     content: "";
     display: block;
-    inline-size: clamp(76px, 10vw, 124px);
+    inline-size: clamp(76px, 9vw, 116px);
     block-size: 2px;
-    margin-block-start: 0.8rem;
+    margin-block-start: clamp(0.68rem, 1vw, 0.82rem);
 
     background: linear-gradient(90deg,
             rgba(241, 205, 132, 0.08) 0%,
             rgba(241, 205, 132, 0.96) 50%,
             rgba(241, 205, 132, 0.08) 100%);
     border-radius: 999px;
-
     box-shadow: 0 0 18px rgba(241, 205, 132, 0.18);
 }
 
@@ -27,7 +26,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    font-size: clamp(1.08rem, 1vw + 0.82rem, 1.42rem);
+    font-size: clamp(1.04rem, 0.9rem + 0.42vw, 1.34rem);
     line-height: 1.18;
     color: rgba(255, 248, 235, 0.97);
     text-wrap: balance;
@@ -49,14 +48,21 @@
     margin-inline: 0;
 }
 
+@media (min-width: 1440px) {
+    .title {
+        font-size: clamp(1.08rem, 0.88rem + 0.36vw, 1.38rem);
+    }
+}
+
 @media (max-width: 640px) {
     .wrap::after {
-        margin-block-start: 0.7rem;
-        inline-size: 78px;
+        margin-block-start: 0.66rem;
+        inline-size: 74px;
     }
 
     .title {
         letter-spacing: 0.12em;
-        font-size: 1rem;
+        font-size: 0.98rem;
+        line-height: 1.16;
     }
 }

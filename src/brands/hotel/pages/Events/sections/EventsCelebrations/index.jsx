@@ -13,10 +13,18 @@ export default function EventsCelebrationsSection() {
       aria-labelledby="events-celebrations-title"
     >
       <div className={styles.inner}>
-        <TitleEventsCelebrations titleId="events-celebrations-title" />
-        <DescriptionEventsCelebrations />
-        <EventsCelebrationsBanner />
-        <EventsTypes />
+        <div className={styles.introBlock}>
+          <TitleEventsCelebrations titleId="events-celebrations-title" />
+
+          <div className={styles.descriptionWrap}>
+            <DescriptionEventsCelebrations />
+          </div>
+        </div>
+
+        <div className={styles.contentStack}>
+          <EventsCelebrationsBanner />
+          <EventsTypes />
+        </div>
       </div>
     </section>
   );

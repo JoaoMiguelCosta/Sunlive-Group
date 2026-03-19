@@ -3,6 +3,7 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: clamp(0.95rem, 1.8vw, 1.35rem);
     align-items: stretch;
+    width: 100%;
 }
 
 .grid>* {

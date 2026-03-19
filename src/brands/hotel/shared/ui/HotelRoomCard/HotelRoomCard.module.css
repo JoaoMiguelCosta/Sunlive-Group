@@ -6,7 +6,7 @@
     flex-direction: column;
     align-self: start;
     min-height: 0;
-    border-radius: 24px;
+    border-radius: 22px;
 
     background:
         radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 44%),
@@ -57,25 +57,24 @@
 
 .media {
     position: relative;
-    aspect-ratio: 16 / 8.6;
+    aspect-ratio: 16 / 8.8;
     background: #1f1208;
 }
 
 .image {
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     display: block;
     object-fit: cover;
     filter: saturate(1.03) contrast(1.02);
 }
 
 .placeholder {
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     display: grid;
     place-items: center;
     padding: 1rem;
-
     background:
         radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.16), transparent 60%),
         radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.10), transparent 60%),
@@ -84,7 +83,7 @@
 
 .placeholderText {
     text-align: center;
-    font-size: clamp(0.94rem, 1.2vw, 1.02rem);
+    font-size: clamp(0.92rem, 1vw, 1rem);
     font-weight: 800;
     letter-spacing: 0.02em;
     color: rgba(255, 232, 196, 0.96);
@@ -93,9 +92,9 @@
 
 .badge {
     position: absolute;
-    top: 14px;
-    right: 14px;
-    padding: 8px 12px;
+    top: 12px;
+    right: 12px;
+    padding: 7px 11px;
     border-radius: 999px;
 
     background:
@@ -103,7 +102,7 @@
     border: 1px solid rgba(230, 200, 147, 0.28);
     backdrop-filter: blur(10px);
 
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     color: rgba(255, 245, 228, 0.94);
 
@@ -115,9 +114,8 @@
 .header {
     position: relative;
     z-index: 1;
-    padding: 12px 14px;
-
-background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
+    padding: 11px 14px;
+    background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
     border-top: 1px solid rgba(230, 200, 147, 0.16);
     border-bottom: 1px solid rgba(230, 200, 147, 0.14);
 }
@@ -125,19 +123,20 @@ background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 1
 .title {
     margin: 0;
     text-align: center;
-    font-size: clamp(1.04rem, 0.45vw + 0.96rem, 1.14rem);
+    font-size: clamp(1rem, 0.3vw + 0.96rem, 1.1rem);
     font-weight: 800;
-    line-height: 1.28;
-    letter-spacing: 0.02em;
+    line-height: 1.24;
+    letter-spacing: 0.01em;
     color: rgba(255, 248, 240, 0.97);
-    min-height: calc(1.14rem * 1.28 * 2);
+    min-height: calc(1.1rem * 1.24 * 2);
     display: flex;
     align-items: center;
     justify-content: center;
+    text-wrap: balance;
 }
 
 .desc {
-    padding: 15px 15px 13px;
+    padding: 14px 14px 12px;
     background:
         radial-gradient(680px 220px at 50% 0%, rgba(230, 200, 147, 0.08), transparent 60%),
         rgba(56, 34, 17, 0.34);
@@ -147,42 +146,55 @@ background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 1
 .descText {
     margin: 0;
     text-align: center;
-    font-size: 0.95rem;
-    line-height: 1.56;
+    font-size: 0.94rem;
+    line-height: 1.52;
     color: rgba(255, 244, 231, 0.88);
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
-    min-height: calc(3 * 1.56em);
+    min-height: calc(3 * 1.52em);
 }
 
 .toggleWrap {
-    padding: 11px 14px 13px;
+    padding: 10px 14px 13px;
+    display: flex;
+    justify-content: center;
     background:
         linear-gradient(180deg, rgba(49, 30, 15, 0.78), rgba(38, 23, 11, 0.94));
+    border-top: 1px solid rgba(230, 200, 147, 0.08);
 }
 
 .toggleButton {
-    width: 100%;
+    position: relative;
+    inline-size: 166px;
+    min-inline-size: 166px;
+    max-inline-size: 166px;
+    block-size: 42px;
+    min-block-size: 42px;
+
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    justify-content: center;
+    gap: 8px;
 
-    padding: 10px 13px;
-    border: 1px solid rgba(230, 200, 147, 0.30);
+    padding: 0 14px;
+    margin-inline: auto;
+
+    border: 1px solid rgba(214, 153, 56, 0.58);
     border-radius: 999px;
+
     background:
-        linear-gradient(180deg, rgba(88, 54, 26, 0.70), rgba(38, 23, 11, 0.88));
-    color: rgba(255, 248, 240, 0.94);
+        radial-gradient(circle at 50% 0%, rgba(255, 214, 140, 0.08), transparent 58%),
+        linear-gradient(180deg, rgba(107, 67, 30, 0.84) 0%, rgba(63, 35, 15, 0.92) 100%);
+
+    color: rgba(255, 248, 240, 0.96);
     cursor: pointer;
-    font-weight: 800;
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 8px 18px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        0 6px 16px rgba(0, 0, 0, 0.16);
 
     transition:
         transform 180ms ease,
@@ -193,20 +205,46 @@ background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 1
 
 .toggleButton:hover {
     transform: translateY(-1px);
-    border-color: rgba(230, 200, 147, 0.50);
+    border-color: rgba(230, 200, 147, 0.76);
     background:
-        linear-gradient(180deg, rgba(108, 67, 32, 0.78), rgba(49, 30, 15, 0.92));
+        radial-gradient(circle at 50% 0%, rgba(255, 223, 160, 0.12), transparent 58%),
+        linear-gradient(180deg, rgba(122, 77, 35, 0.88) 0%, rgba(70, 39, 17, 0.95) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 10px 22px rgba(0, 0, 0, 0.22),
-        0 0 18px rgba(230, 200, 147, 0.08);
+        inset 0 1px 0 rgba(255, 248, 235, 0.10),
+        0 8px 20px rgba(0, 0, 0, 0.20),
+        0 0 16px rgba(230, 200, 147, 0.06);
+}
+
+.toggleButton:focus-visible {
+    outline: none;
+    border-color: rgba(246, 214, 153, 0.96);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.10),
+        0 0 0 3px rgba(230, 200, 147, 0.14),
+        0 8px 20px rgba(0, 0, 0, 0.20);
+}
+
+.toggleLabel {
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
 }
 
 .chevron {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    inline-size: 16px;
+    block-size: 16px;
+    color: rgba(255, 248, 240, 0.96);
     transition: transform 180ms ease;
+}
+
+.chevron svg {
+    inline-size: 14px;
+    block-size: 14px;
 }
 
 .chevronOpen {
@@ -238,20 +276,18 @@ background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 1
 
 .featureItem {
     display: grid;
-    grid-template-columns: 30px 1fr;
+    grid-template-columns: 28px 1fr;
     align-items: center;
     gap: 8px;
-
-    padding: 10px 14px;
+    padding: 13px 15px;
     border-top: 1px solid rgba(230, 200, 147, 0.10);
-
     background:
         linear-gradient(180deg, rgba(63, 37, 17, 0.26), rgba(38, 23, 11, 0.14));
 }
 
 .check {
-    width: 18px;
-    height: 18px;
+    inline-size: 18px;
+    block-size: 18px;
     border-radius: 999px;
     display: grid;
     place-items: center;
@@ -270,22 +306,59 @@ background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 1
 }
 
 .featureText {
-    font-size: 0.92rem;
-    line-height: 1.38;
+    font-size: 0.91rem;
+    line-height: 1.36;
     color: rgba(255, 246, 235, 0.90);
+}
+
+@media (max-width: 620px) {
+    .toggleWrap {
+        padding: 10px 13px 13px;
+    }
+
+    .toggleButton {
+        inline-size: 160px;
+        min-inline-size: 160px;
+        max-inline-size: 160px;
+        block-size: 40px;
+        min-block-size: 40px;
+        padding: 0 13px;
+    }
+
+    .toggleLabel {
+        font-size: 0.88rem;
+    }
 }
 
 @media (max-width: 520px) {
     .title {
-        font-size: 0.98rem;
+        font-size: 0.97rem;
     }
 
     .descText,
     .featureText {
-        font-size: 0.92rem;
+        font-size: 0.91rem;
     }
 
     .toggleButton {
-        font-size: 0.93rem;
+        inline-size: 154px;
+        min-inline-size: 154px;
+        max-inline-size: 154px;
+        block-size: 39px;
+        min-block-size: 39px;
+    }
+
+    .toggleLabel {
+        font-size: 0.86rem;
+    }
+
+    .chevron {
+        inline-size: 15px;
+        block-size: 15px;
+    }
+
+    .chevron svg {
+        inline-size: 13px;
+        block-size: 13px;
     }
 }

@@ -3,8 +3,8 @@
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
-    border-radius: 22px;
-    border: 1px solid rgba(214, 166, 74, 0.48);
+    border-radius: 18px;
+    border: 1px solid rgba(214, 166, 74, 0.42);
 
     background:
         linear-gradient(180deg, rgba(64, 36, 14, 0.72), rgba(31, 18, 10, 0.90)),
@@ -24,11 +24,11 @@
 
 .card:hover {
     transform: translateY(-2px);
-    border-color: rgba(230, 200, 147, 0.76);
+    border-color: rgba(230, 200, 147, 0.62);
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 36px rgba(0, 0, 0, 0.22),
-        0 0 16px rgba(214, 166, 74, 0.07);
+        0 18px 34px rgba(0, 0, 0, 0.22),
+        0 0 14px rgba(214, 166, 74, 0.06);
 }
 
 .header {
@@ -36,14 +36,13 @@
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    column-gap: 0.75rem;
+    column-gap: 0.68rem;
 
-    min-height: 72px;
-    padding: 0.8rem 1rem 0.78rem;
+    min-height: 64px;
+    padding: 0.72rem 0.9rem;
 
-    border-bottom: 1px solid rgba(214, 166, 74, 0.34);
-
-background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
+    border-bottom: 1px solid rgba(214, 166, 74, 0.3);
+    background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
 .header::after {
@@ -61,8 +60,8 @@ background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 1
 
 .iconSlot,
 .headerSpacer {
-    inline-size: clamp(2.7rem, 3.2vw, 3.2rem);
-    block-size: clamp(2.7rem, 3.2vw, 3.2rem);
+    inline-size: 2.4rem;
+    block-size: 2.4rem;
     flex: 0 0 auto;
     border-radius: 999px;
 }
@@ -90,8 +89,8 @@ background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 1
 }
 
 .iconInner {
-    inline-size: clamp(1.1rem, 1.35vw, 1.28rem);
-    block-size: clamp(1.1rem, 1.35vw, 1.28rem);
+    inline-size: 0.96rem;
+    block-size: 0.96rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -110,9 +109,9 @@ background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 1
     margin: 0;
     min-width: 0;
     color: rgba(255, 248, 240, 0.98);
-    font-size: clamp(1rem, 1.05vw, 1.16rem);
+    font-size: clamp(0.94rem, 0.7vw, 1.04rem);
     font-weight: 850;
-    line-height: 1.12;
+    line-height: 1.14;
     letter-spacing: -0.01em;
     text-align: left;
     text-wrap: balance;
@@ -123,8 +122,8 @@ background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 1
     align-items: center;
     justify-content: center;
 
-    min-height: 74px;
-    padding: 0.9rem 1rem 0.95rem;
+    min-height: 66px;
+    padding: 0.82rem 0.9rem 0.88rem;
 
     background:
         radial-gradient(680px 220px at 50% 0%, rgba(230, 200, 147, 0.06), transparent 60%),
@@ -134,47 +133,47 @@ background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 1
 .description {
     margin: 0;
     color: rgba(255, 246, 235, 0.92);
-    font-size: clamp(0.9rem, 0.95vw, 0.98rem);
+    font-size: clamp(0.88rem, 0.72vw, 0.94rem);
     font-weight: 500;
-    line-height: 1.42;
+    line-height: 1.4;
     text-align: center;
     text-wrap: balance;
 }
 
 @media (max-width: 720px) {
     .card {
-        border-radius: 18px;
+        border-radius: 16px;
     }
 
     .header {
-        min-height: 66px;
-        padding: 0.75rem 0.9rem;
-        column-gap: 0.65rem;
+        min-height: 60px;
+        padding: 0.68rem 0.82rem;
+        column-gap: 0.6rem;
     }
 
     .iconSlot,
     .headerSpacer {
-        inline-size: 2.5rem;
-        block-size: 2.5rem;
+        inline-size: 2.2rem;
+        block-size: 2.2rem;
     }
 
     .iconInner {
-        inline-size: 1rem;
-        block-size: 1rem;
+        inline-size: 0.9rem;
+        block-size: 0.9rem;
     }
 
     .title {
-        font-size: 0.96rem;
-        line-height: 1.1;
+        font-size: 0.92rem;
+        line-height: 1.12;
     }
 
     .body {
-        min-height: 68px;
-        padding: 0.85rem 0.9rem 0.9rem;
+        min-height: 62px;
+        padding: 0.78rem 0.82rem 0.84rem;
     }
 
     .description {
-        font-size: 0.9rem;
-        line-height: 1.38;
+        font-size: 0.88rem;
+        line-height: 1.36;
     }
 }

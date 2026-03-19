@@ -5,10 +5,10 @@
 
     position: relative;
     isolation: isolate;
-    width: 100%;
+    inline-size: 100%;
     min-width: 0;
     overflow: hidden;
-    border-radius: 1.5rem;
+    border-radius: 1.35rem;
 
     display: flex;
     flex-direction: column;
@@ -72,7 +72,7 @@
 
 .topBand {
     position: relative;
-    height: clamp(2.8rem, 3vw, 3.05rem);
+    block-size: clamp(2.45rem, 2.5vw, 2.7rem);
     background:
         linear-gradient(180deg,
             rgba(134, 84, 40, 0.92) 0%,
@@ -95,12 +95,12 @@
 
 .medallion {
     position: absolute;
-    left: 50%;
-    top: 100%;
+    inset-inline-start: 50%;
+    inset-block-start: 100%;
     transform: translate(-50%, -50%);
 
-    inline-size: clamp(3.5rem, 4vw, 3.9rem);
-    block-size: clamp(3.5rem, 4vw, 3.9rem);
+    inline-size: clamp(3.05rem, 3.2vw, 3.4rem);
+    block-size: clamp(3.05rem, 3.2vw, 3.4rem);
     border-radius: 999px;
 
     display: inline-flex;
@@ -122,16 +122,16 @@
 }
 
 .icon {
-    inline-size: clamp(1.2rem, 1.6vw, 1.45rem);
-    block-size: clamp(1.2rem, 1.6vw, 1.45rem);
+    inline-size: clamp(1.02rem, 1.12vw, 1.18rem);
+    block-size: clamp(1.02rem, 1.12vw, 1.18rem);
     color: currentColor;
     stroke: currentColor;
     filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.14));
 }
 
 .iconPlaceholder {
-    inline-size: 1.2rem;
-    block-size: 1.2rem;
+    inline-size: 1.02rem;
+    block-size: 1.02rem;
     border-radius: 0.4rem;
     background: rgba(255, 248, 235, 0.14);
     box-shadow: inset 0 0 0 1px rgba(255, 248, 235, 0.08);
@@ -141,8 +141,8 @@
     display: grid;
     align-content: start;
     justify-items: center;
-    min-height: clamp(7.8rem, 10vw, 8.5rem);
-    padding: clamp(2rem, 2.4vw, 2.2rem) 1rem 0.75rem;
+    min-block-size: clamp(6.7rem, 7.6vw, 7.3rem);
+    padding: clamp(1.72rem, 1.9vw, 1.9rem) 0.92rem 0.68rem;
     background:
         linear-gradient(180deg,
             rgba(126, 77, 36, 0.90) 0%,
@@ -154,8 +154,8 @@
 
 .title {
     margin: 0;
-    max-width: 11ch;
-    font-size: clamp(1.05rem, 0.7vw + 0.9rem, 1.32rem);
+    max-inline-size: 11ch;
+    font-size: clamp(0.98rem, 0.34vw + 0.9rem, 1.12rem);
     font-weight: 800;
     line-height: 1.12;
     letter-spacing: -0.02em;
@@ -169,15 +169,15 @@
     line-clamp: 2;
     overflow: hidden;
 
-    min-height: calc(1.32rem * 1.12 * 2);
+    min-block-size: calc(1.12rem * 1.12 * 2);
 }
 
 .subtitle {
-    margin: 0.38rem 0 0;
-    max-width: 22ch;
+    margin: 0.32rem 0 0;
+    max-inline-size: 22ch;
     color: var(--text-soft);
-    font-size: clamp(0.88rem, 0.22vw + 0.84rem, 0.96rem);
-    line-height: 1.28;
+    font-size: clamp(0.84rem, 0.12vw + 0.83rem, 0.9rem);
+    line-height: 1.24;
     text-wrap: balance;
 
     display: -webkit-box;
@@ -188,12 +188,12 @@
     line-clamp: 2;
     overflow: hidden;
 
-    min-height: calc(0.96rem * 1.28 * 2);
+    min-block-size: calc(0.9rem * 1.24 * 2);
 }
 
 .body {
     flex: 1 1 auto;
-    padding: 0.85rem 1rem 0.8rem;
+    padding: 0.76rem 0.92rem 0.72rem;
     background:
         radial-gradient(680px 220px at 50% 0%, rgba(230, 200, 147, 0.07), transparent 58%),
         linear-gradient(180deg, rgba(70, 43, 21, 0.34), rgba(38, 23, 11, 0.16));
@@ -203,8 +203,8 @@
 .description {
     margin: 0;
     color: rgba(255, 248, 240, 0.90);
-    font-size: clamp(0.9rem, 0.18vw + 0.88rem, 0.95rem);
-    line-height: 1.45;
+    font-size: clamp(0.88rem, 0.1vw + 0.87rem, 0.93rem);
+    line-height: 1.4;
     text-align: center;
     text-wrap: pretty;
 
@@ -216,12 +216,12 @@
     line-clamp: 3;
     overflow: hidden;
 
-    min-height: calc(0.95rem * 1.45 * 3);
+    min-block-size: calc(0.93rem * 1.4 * 3);
     word-break: break-word;
 }
 
 .footer {
-    padding: 0.75rem 1rem 0.95rem;
+    padding: 0.68rem 0.92rem 0.86rem;
     background:
         linear-gradient(180deg, rgba(47, 29, 15, 0.80), rgba(35, 21, 11, 0.96));
     display: flex;
@@ -236,10 +236,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.44rem;
 
-    min-height: 2.55rem;
-    padding: 0.62rem 1.05rem;
+    min-block-size: 2.32rem;
+    padding: 0.56rem 0.92rem;
     border-radius: 999px;
 
     background:
@@ -285,7 +285,7 @@
 }
 
 .ctaLabel {
-    font-size: clamp(0.92rem, 0.15vw + 0.9rem, 0.98rem);
+    font-size: clamp(0.88rem, 0.1vw + 0.87rem, 0.93rem);
     font-weight: 800;
     letter-spacing: 0.01em;
 }
@@ -303,59 +303,59 @@
 
 @media (max-width: 1100px) {
     .header {
-        min-height: auto;
+        min-block-size: auto;
     }
 
     .title,
     .subtitle,
     .description {
-        min-height: auto;
+        min-block-size: auto;
     }
 }
 
 @media (max-width: 700px) {
     .card {
-        border-radius: 1.3rem;
+        border-radius: 1.2rem;
     }
 
     .header {
-        padding: 2rem 0.95rem 0.8rem;
+        padding: 1.78rem 0.88rem 0.72rem;
     }
 
     .body {
-        padding: 0.85rem 0.95rem 0.8rem;
+        padding: 0.78rem 0.88rem 0.74rem;
     }
 
     .footer {
-        padding: 0.75rem 0.95rem 0.95rem;
+        padding: 0.7rem 0.88rem 0.86rem;
     }
 
     .title {
-        max-width: 100%;
-        font-size: 1.12rem;
+        max-inline-size: 100%;
+        font-size: 1.04rem;
     }
 
     .subtitle {
-        font-size: 0.92rem;
+        font-size: 0.88rem;
     }
 
     .description {
-        font-size: 0.92rem;
+        font-size: 0.9rem;
         -webkit-line-clamp: 4;
         line-clamp: 4;
     }
 
     .cta {
-        width: 100%;
+        inline-size: 100%;
     }
 
     .medallion {
-        inline-size: 3.25rem;
-        block-size: 3.25rem;
+        inline-size: 3rem;
+        block-size: 3rem;
     }
 
     .icon {
-        inline-size: 1.1rem;
-        block-size: 1.1rem;
+        inline-size: 1rem;
+        block-size: 1rem;
     }
 }

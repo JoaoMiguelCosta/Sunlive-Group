@@ -10,8 +10,11 @@
 .inner {
     position: relative;
     inline-size: 100%;
+    max-inline-size: 100%;
     margin-inline: auto;
     box-sizing: border-box;
+
     display: grid;
-    gap: 0;
+    gap: clamp(1.1rem, 2.4vw, 1.45rem);
+    align-content: start;
 }

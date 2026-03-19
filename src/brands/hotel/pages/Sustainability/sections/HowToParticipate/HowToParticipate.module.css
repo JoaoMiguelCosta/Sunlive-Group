@@ -1,7 +1,7 @@
 .section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(3rem, 6vw, 5rem);
+    padding-block: clamp(3.25rem, 6vw, 5.5rem);
     overflow: clip;
     background:
         radial-gradient(1200px 420px at 12% 0%, rgba(230, 200, 147, 0.12), transparent 62%),
@@ -21,7 +21,7 @@
             rgba(212, 163, 74, 0) 50%,
             rgba(212, 163, 74, 0.03) 82%,
             rgba(212, 163, 74, 0.08) 100%);
-    opacity: 0.72;
+    opacity: 0.75;
 }
 
 .inner {
@@ -32,12 +32,39 @@
     width: min(var(--sl-container-xl, 1360px), calc(100% - (var(--section-inline) * 2)));
     margin-inline: auto;
     display: grid;
-    gap: clamp(1.15rem, 2vw, 1.65rem);
+    gap: clamp(1.25rem, 2vw, 1.8rem);
+    box-sizing: border-box;
+}
+
+.introBlock {
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.45rem);
+    justify-items: center;
+}
+
+.descriptionWrap {
+    width: 100%;
+    max-width: min(1180px, 100%);
+    margin-inline: auto;
+}
+
+.descriptionWrap :global(*) {
+    margin-bottom: 0;
+}
+
+.cardsWrap {
+    display: grid;
+    gap: clamp(1rem, 1.8vw, 1.35rem);
+}
+
+.quoteWrap {
+    display: grid;
+    gap: clamp(0.8rem, 1.4vw, 1rem);
 }
 
 @media (max-width: 768px) {
     .section {
-        padding-block: clamp(2.5rem, 8vw, 3.5rem);
+        padding-block: clamp(2.6rem, 8vw, 3.6rem);
     }
 
     .inner {

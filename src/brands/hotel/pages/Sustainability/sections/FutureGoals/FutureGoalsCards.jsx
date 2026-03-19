@@ -28,8 +28,15 @@ export default function FutureGoalsCards() {
 
   if (!items.length) return null;
 
+  const desktopColumns = Math.min(items.length, 4);
+
   return (
-    <div className={styles.grid} role="list" aria-label="Objetivos futuros">
+    <div
+      className={styles.grid}
+      role="list"
+      aria-label="Objetivos futuros"
+      style={{ "--future-goals-columns": desktopColumns }}
+    >
       {items.map((item) => (
         <div key={item.id} role="listitem" className={styles.item}>
           <SustainabilityActionCard

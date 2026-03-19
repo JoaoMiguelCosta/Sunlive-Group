@@ -10,6 +10,7 @@
     grid-template-columns: minmax(0, 1fr);
     column-gap: clamp(1rem, 2vw, 1.3rem);
     row-gap: clamp(1rem, 2vw, 1.3rem);
+    align-items: stretch;
 }
 
 .item {
@@ -41,11 +42,11 @@
     }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
     .grid {
         grid-template-columns: repeat(6, minmax(0, 1fr));
-        column-gap: clamp(1.1rem, 2.2vw, 1.5rem);
-        row-gap: clamp(1.1rem, 2.2vw, 1.5rem);
+        column-gap: clamp(1.1rem, 2vw, 1.45rem);
+        row-gap: clamp(1.1rem, 2vw, 1.45rem);
     }
 
     .item {
@@ -70,6 +71,13 @@
 
     .item:nth-child(5) {
         grid-column: 4 / span 2;
+    }
+}
+
+@media (min-width: 1440px) {
+    .grid {
+        column-gap: 1.35rem;
+        row-gap: 1.35rem;
     }
 }
 

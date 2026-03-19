@@ -3,7 +3,7 @@
     isolation: isolate;
     overflow: hidden;
 
-    border-radius: 28px;
+    border-radius: 24px;
     border: 1px solid rgba(230, 200, 147, 0.32);
 
     background:
@@ -64,7 +64,7 @@
 .inner {
     position: relative;
     z-index: 1;
-    padding: clamp(1.65rem, 3.2vw, 2.45rem) clamp(1.4rem, 3vw, 2.5rem);
+    padding: clamp(1.35rem, 2.5vw, 1.9rem) clamp(1.2rem, 2.2vw, 2rem);
     text-align: center;
 }
 
@@ -72,14 +72,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
-    margin-bottom: 0.95rem;
+    gap: 12px;
+    margin-bottom: 0.82rem;
     flex-wrap: wrap;
 }
 
 .iconCircle {
-    inline-size: clamp(2.3rem, 3vw, 2.75rem);
-    block-size: clamp(2.3rem, 3vw, 2.75rem);
+    inline-size: clamp(2.15rem, 2.7vw, 2.5rem);
+    block-size: clamp(2.15rem, 2.7vw, 2.5rem);
     border-radius: 999px;
     flex: 0 0 auto;
 
@@ -102,8 +102,8 @@
 }
 
 .icon {
-    inline-size: clamp(1rem, 1.4vw, 1.15rem);
-    block-size: clamp(1rem, 1.4vw, 1.15rem);
+    inline-size: clamp(0.94rem, 1.2vw, 1.05rem);
+    block-size: clamp(0.94rem, 1.2vw, 1.05rem);
     color: currentColor;
     stroke: currentColor;
     filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.14));
@@ -111,21 +111,21 @@
 
 .title {
     margin: 0;
-    font-size: clamp(1.4rem, 1vw + 1.1rem, 1.95rem);
+    font-size: clamp(1.28rem, 0.72vw + 1.08rem, 1.72rem);
     font-weight: 800;
     letter-spacing: 0.01em;
-    line-height: 1.15;
+    line-height: 1.14;
     color: rgba(255, 248, 240, 0.97);
     text-wrap: balance;
 }
 
 .text {
     margin: 0;
-    max-width: 54rem;
+    max-inline-size: 50rem;
     margin-inline: auto;
 
-    font-size: clamp(1rem, 0.45vw + 0.94rem, 1.12rem);
-    line-height: 1.68;
+    font-size: clamp(0.98rem, 0.24vw + 0.95rem, 1.05rem);
+    line-height: 1.62;
     color: rgba(255, 248, 240, 0.86);
     text-wrap: pretty;
 }
@@ -136,30 +136,30 @@
     }
 
     .inner {
-        padding: 1.3rem 1rem;
+        padding: 1.22rem 0.95rem;
     }
 
     .titleRow {
         gap: 10px;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.76rem;
     }
 
     .iconCircle {
-        inline-size: 2.1rem;
-        block-size: 2.1rem;
+        inline-size: 2rem;
+        block-size: 2rem;
     }
 
     .icon {
-        inline-size: 0.92rem;
-        block-size: 0.92rem;
+        inline-size: 0.88rem;
+        block-size: 0.88rem;
     }
 
     .title {
-        font-size: 1.2rem;
+        font-size: 1.14rem;
     }
 
     .text {
-        font-size: 0.96rem;
-        line-height: 1.6;
+        font-size: 0.95rem;
+        line-height: 1.56;
     }
 }

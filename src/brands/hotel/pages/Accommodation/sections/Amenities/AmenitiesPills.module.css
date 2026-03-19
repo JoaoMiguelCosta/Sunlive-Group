@@ -1,15 +1,17 @@
 .wrap {
     position: relative;
-    width: 100%;
-    margin-top: clamp(14px, 2.4vw, 20px);
+    inline-size: 100%;
+    max-inline-size: 1220px;
+    margin-inline: auto;
+    margin-top: clamp(12px, 1.8vw, 16px);
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(10px, 1.4vw, 16px);
+    gap: clamp(10px, 1.2vw, 14px);
     align-items: stretch;
-    width: 100%;
+    inline-size: 100%;
 }
 
 .item {
@@ -20,59 +22,42 @@
 .pill {
     inline-size: 100%;
     min-width: 0;
-    min-height: clamp(58px, 5vw, 64px);
+    min-height: clamp(56px, 4.6vw, 62px);
 
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
 
-    padding-inline: clamp(14px, 1.4vw, 18px);
-    border-radius: clamp(16px, 1.6vw, 20px);
+    padding-inline: clamp(13px, 1.2vw, 16px);
+    border-radius: clamp(15px, 1.4vw, 18px);
 }
 
-/* desktop médio / laptops mais pequenos */
-@media (max-width: 1200px) {
+@media (max-width: 1180px) {
     .grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 14px;
-    }
-}
-
-/* tablet horizontal / pequeno desktop */
-@media (max-width: 1024px) {
-    .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
     }
-
-    .pill {
-        min-height: 60px;
-        border-radius: 18px;
-    }
 }
 
-/* tablet vertical e phablets */
-@media (max-width: 768px) {
-    .wrap {
-        margin-top: 16px;
-    }
-
+@media (max-width: 900px) {
     .grid {
-        gap: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px;
     }
 
     .pill {
         min-height: 58px;
-        padding-inline: 15px;
         border-radius: 17px;
     }
 }
 
-/* telemóveis */
-@media (max-width: 560px) {
+@media (max-width: 768px) {
+    .wrap {
+        margin-top: 14px;
+    }
+
     .grid {
-        grid-template-columns: 1fr;
-        gap: 9px;
+        gap: 10px;
     }
 
     .pill {
@@ -82,15 +67,27 @@
     }
 }
 
-/* telemóveis pequenos */
+@media (max-width: 560px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .pill {
+        min-height: 54px;
+        padding-inline: 13px;
+        border-radius: 15px;
+    }
+}
+
 @media (max-width: 380px) {
     .grid {
         gap: 8px;
     }
 
     .pill {
-        min-height: 54px;
+        min-height: 52px;
         padding-inline: 12px;
-        border-radius: 15px;
+        border-radius: 14px;
     }
 }

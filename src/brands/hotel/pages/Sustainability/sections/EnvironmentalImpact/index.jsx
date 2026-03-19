@@ -14,9 +14,17 @@ export default function EnvironmentalImpactSection() {
       aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <EnvironmentalImpactTitle titleId={titleId} />
-        <EnvironmentalImpactDescription />
-        <EnvironmentalImpactStats />
+        <div className={styles.introBlock}>
+          <EnvironmentalImpactTitle titleId={titleId} />
+
+          <div className={styles.descriptionWrap}>
+            <EnvironmentalImpactDescription />
+          </div>
+        </div>
+
+        <div className={styles.contentBlock}>
+          <EnvironmentalImpactStats />
+        </div>
       </div>
     </section>
   );

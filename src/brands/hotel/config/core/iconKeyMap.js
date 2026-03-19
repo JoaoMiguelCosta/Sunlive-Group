@@ -35,6 +35,8 @@ const BRAND_ICON_KEY_MAP = Object.freeze({
   tree: "TreeIcon",
   trash: "TrashIcon",
   medal: "MedalIcon",
+  facebook: "FacebookIcon",
+  instagram: "InstagramIcon",
 
   bath: "BathIcon",
   "air-conditioning": "AirVentIcon",

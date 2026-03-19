@@ -14,9 +14,17 @@ export default function FutureGoalsSection() {
       aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <FutureGoalsTitle titleId={titleId} />
-        <FutureGoalsDescription />
-        <FutureGoalsCards />
+        <div className={styles.introBlock}>
+          <FutureGoalsTitle titleId={titleId} />
+
+          <div className={styles.descriptionWrap}>
+            <FutureGoalsDescription />
+          </div>
+        </div>
+
+        <div className={styles.cardsWrap}>
+          <FutureGoalsCards />
+        </div>
       </div>
     </section>
   );
