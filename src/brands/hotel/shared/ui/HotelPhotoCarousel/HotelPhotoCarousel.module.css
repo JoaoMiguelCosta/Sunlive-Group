@@ -1,53 +1,93 @@
 .wrap {
-    position: relative;
-    isolation: isolate;
-    margin-block: clamp(1.35rem, 2.8vw, 2rem);
+    inline-size: 100%;
 }
 
-.inner {
-    position: relative;
+.shell {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    column-gap: clamp(0.9rem, 1.6vw, 1.2rem);
+    gap: clamp(0.72rem, 1.1vw, 0.92rem);
+}
 
-    max-inline-size: min(74rem, 100%);
-    margin-inline: auto;
-
-    padding-block: clamp(1.25rem, 2.2vw, 1.7rem);
-    padding-inline: clamp(1rem, 2.2vw, 1.8rem);
-
-    border-radius: clamp(1.5rem, 3vw, 2.2rem);
-
-    background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.16), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.1), transparent 60%),
-        #26170b;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 44px rgba(0, 0, 0, 0.28),
-        0 0 0 1px rgba(255, 255, 255, 0.015);
-
-    border: 1px solid rgba(230, 200, 147, 0.36);
-    color: rgba(255, 248, 240, 0.95);
+.stage {
+    position: relative;
+    inline-size: 100%;
 }
 
 .media {
     position: relative;
-    inline-size: 100%;
-    min-block-size: clamp(12.5rem, 36vw, 18rem);
 
+    aspect-ratio: 16 / 9.15;
     overflow: hidden;
-    border-radius: calc(clamp(1.5rem, 3vw, 2.2rem) - 0.4rem);
+    padding: clamp(0.7rem, 1vw, 0.95rem);
+    border-radius: clamp(1.1rem, 1.9vw, 1.45rem);
 
     background:
-        radial-gradient(900px 260px at 50% 0%, rgba(230, 200, 147, 0.12), transparent 62%),
-        linear-gradient(180deg, rgba(75, 46, 22, 0.7), rgba(38, 23, 11, 0.92));
+        radial-gradient(130% 140% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 40%),
+        radial-gradient(120% 140% at 100% 100%, rgba(199, 134, 21, 0.11), transparent 48%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.03) 0%,
+            rgba(255, 248, 235, 0.008) 18%,
+            rgba(0, 0, 0, 0.12) 100%),
+        linear-gradient(145deg,
+            rgba(44, 23, 11, 0.975) 0%,
+            rgba(24, 12, 7, 0.992) 100%);
+
+    border: 1px solid rgba(230, 200, 147, 0.22);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 0 0 1px rgba(255, 255, 255, 0.02);
+        inset 0 1px 0 rgba(255, 248, 235, 0.045),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 22px 52px rgba(0, 0, 0, 0.24),
+        0 0 0 1px rgba(255, 248, 235, 0.02);
+
+    transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
+}
+
+.media::before {
+    content: "";
+    position: absolute;
+    inset: clamp(0.42rem, 0.7vw, 0.58rem);
+    border-radius: calc(clamp(1.1rem, 1.9vw, 1.45rem) - 0.32rem);
+    border: 1px solid rgba(255, 248, 235, 0.05);
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+.media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(80% 70% at 50% 50%, transparent 62%, rgba(0, 0, 0, 0.08) 100%);
+}
+
+.imageFrame {
+    position: relative;
+    inline-size: 100%;
+    block-size: 100%;
+    overflow: hidden;
+    border-radius: clamp(0.88rem, 1.5vw, 1.15rem);
+    background: rgba(8, 10, 12, 0.26);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.035),
+        0 0 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.imageFrame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.03) 0%,
+            transparent 18%,
+            transparent 76%,
+            rgba(0, 0, 0, 0.10) 100%);
 }
 
 .image {
@@ -55,33 +95,47 @@
     inline-size: 100%;
     block-size: 100%;
     object-fit: cover;
-    filter: saturate(1.03) contrast(1.02);
+    object-position: center;
+    filter: saturate(1.02) contrast(1.01);
 }
 
 .caption {
     position: absolute;
-    inset-inline-start: clamp(0.8rem, 1.6vw, 1rem);
-    inset-block-end: clamp(0.65rem, 1.2vw, 0.82rem);
+    z-index: 3;
+    inset-inline-start: clamp(1rem, 1.6vw, 1.2rem);
+    inset-block-end: clamp(1rem, 1.6vw, 1.2rem);
 
-    inline-size: fit-content;
-    max-inline-size: calc(100% - 1.6rem);
+    display: inline-flex;
+    align-items: center;
+    max-inline-size: calc(100% - 2rem);
+    min-block-size: 1.95rem;
+    padding-inline: 0.8rem;
+    padding-block: 0.32rem;
 
-    padding-block: 0.28rem;
-    padding-inline: 0.68rem;
     border-radius: 999px;
+    border: 1px solid rgba(230, 200, 147, 0.22);
 
     background:
-        linear-gradient(180deg, rgba(108, 67, 32, 0.86), rgba(49, 30, 15, 0.92));
-    border: 1px solid rgba(230, 200, 147, 0.3);
+        radial-gradient(130% 140% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 40%),
+        radial-gradient(120% 140% at 100% 100%, rgba(199, 134, 21, 0.11), transparent 48%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.03) 0%,
+            rgba(255, 248, 235, 0.008) 18%,
+            rgba(0, 0, 0, 0.12) 100%),
+        linear-gradient(145deg,
+            rgba(44, 23, 11, 0.94) 0%,
+            rgba(24, 12, 7, 0.97) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 8px 18px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgba(255, 248, 235, 0.045),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 8px 18px rgba(0, 0, 0, 0.16),
+        0 0 0 1px rgba(255, 248, 235, 0.02);
 
-    color: rgba(255, 248, 240, 0.94);
-    font-size: 0.7rem;
+    color: rgba(255, 248, 240, 0.95);
+    font-size: 0.76rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
     line-height: 1.1;
     white-space: nowrap;
     overflow: hidden;
@@ -91,147 +145,284 @@
 .placeholder {
     position: relative;
     inline-size: 100%;
-    block-size: 100%;
+    aspect-ratio: 16 / 9.15;
     display: grid;
     place-items: center;
-    padding: clamp(1rem, 2.6vw, 1.45rem);
+    padding: clamp(0.7rem, 1vw, 0.95rem);
+    overflow: hidden;
+    border-radius: clamp(1.1rem, 1.9vw, 1.45rem);
 
     background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.12), transparent 60%),
-        #26170b;
+        radial-gradient(130% 140% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 40%),
+        radial-gradient(120% 140% at 100% 100%, rgba(199, 134, 21, 0.11), transparent 48%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.03) 0%,
+            rgba(255, 248, 235, 0.008) 18%,
+            rgba(0, 0, 0, 0.12) 100%),
+        linear-gradient(145deg,
+            rgba(44, 23, 11, 0.975) 0%,
+            rgba(24, 12, 7, 0.992) 100%);
+
+    border: 1px solid rgba(230, 200, 147, 0.22);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.045),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 22px 52px rgba(0, 0, 0, 0.24),
+        0 0 0 1px rgba(255, 248, 235, 0.02);
 }
 
 .placeholder::before {
     content: "";
     position: absolute;
-    inset: 12px;
-    border-radius: calc(clamp(1.5rem, 3vw, 2.2rem) - 0.95rem);
-    border: 1px solid rgba(230, 200, 147, 0.2);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    inset: clamp(0.42rem, 0.7vw, 0.58rem);
+    border-radius: calc(clamp(1.1rem, 1.9vw, 1.45rem) - 0.32rem);
+    border: 1px solid rgba(255, 248, 235, 0.05);
     pointer-events: none;
-}
-
-.placeholder::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 3px 3px;
-    opacity: 0.05;
-    mix-blend-mode: overlay;
-    pointer-events: none;
+    opacity: 0.9;
 }
 
 .placeholderLabel {
     position: relative;
     z-index: 1;
-
-    font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+    padding-inline: 1rem;
+    text-align: center;
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
     font-weight: 700;
     letter-spacing: 0.02em;
-    color: rgba(255, 236, 208, 0.96);
-
-    text-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.28),
-        0 0 14px rgba(230, 200, 147, 0.1);
+    color: rgba(255, 240, 220, 0.94);
 }
 
 .navButton {
-    inline-size: 2.35rem;
-    block-size: 2.35rem;
+    position: absolute;
+    inset-block-start: 50%;
+    translate: 0 -50%;
+    z-index: 4;
+
+    inline-size: 43px;
+    block-size: 43px;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     border-radius: 999px;
-    border: 1px solid rgba(230, 200, 147, 0.38);
+    border: 1px solid rgba(230, 200, 147, 0.32);
 
     background:
         radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.14), transparent 62%),
-        linear-gradient(180deg, rgba(88, 54, 26, 0.82), rgba(38, 23, 11, 0.9));
-
-    color: rgba(255, 220, 150, 0.98);
-    cursor: pointer;
+        linear-gradient(180deg, rgba(108, 67, 32, 0.88), rgba(49, 30, 15, 0.94));
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 10px 22px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgba(255, 248, 235, 0.07),
+        0 12px 26px rgba(0, 0, 0, 0.24),
+        0 0 16px rgba(230, 200, 147, 0.08);
+
+    color: rgba(255, 233, 193, 0.96);
+    cursor: pointer;
 
     transition:
-        transform 140ms ease-out,
-        box-shadow 140ms ease-out,
-        border-color 160ms ease-out,
-        background 160ms ease-out;
+        border-color 220ms ease,
+        background 220ms ease,
+        box-shadow 220ms ease,
+        opacity 220ms ease;
 }
 
-.navButton:hover {
-    transform: translateY(-1px);
+.navButtonPrev {
+    inset-inline-start: clamp(0.8rem, 1.2vw, 1rem);
+}
+
+.navButtonNext {
+    inset-inline-end: clamp(0.8rem, 1.2vw, 1rem);
+}
+
+.navButton:hover:not(:disabled) {
     border-color: rgba(230, 200, 147, 0.56);
     background:
         radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.18), transparent 62%),
         linear-gradient(180deg, rgba(108, 67, 32, 0.88), rgba(49, 30, 15, 0.94));
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 12px 24px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 248, 235, 0.07),
+        0 12px 26px rgba(0, 0, 0, 0.24),
         0 0 16px rgba(230, 200, 147, 0.08);
 }
 
-.navButton:active {
-    transform: translateY(0);
+.navButton:active:not(:disabled) {
+    border-color: rgba(230, 200, 147, 0.46);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 6px 14px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 8px 18px rgba(0, 0, 0, 0.2),
+        0 0 12px rgba(230, 200, 147, 0.06);
+}
+
+.navButton:disabled {
+    opacity: 0.45;
+    cursor: default;
 }
 
 .navIcon {
-    font-size: 1.3rem;
+    font-size: 1.28rem;
     line-height: 1;
-    font-weight: 900;
+    font-weight: 800;
+}
+
+.pagination {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0.38rem;
+    min-block-size: 1rem;
+
+    inline-size: fit-content;
+    margin-inline: auto;
+    padding: 0.42rem 0.7rem;
+
+    border-radius: 999px;
+    border: 1px solid rgba(230, 200, 147, 0.22);
+
+    background:
+        radial-gradient(130% 140% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 40%),
+        radial-gradient(120% 140% at 100% 100%, rgba(199, 134, 21, 0.11), transparent 48%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.03) 0%,
+            rgba(255, 248, 235, 0.008) 18%,
+            rgba(0, 0, 0, 0.12) 100%),
+        linear-gradient(145deg,
+            rgba(44, 23, 11, 0.94) 0%,
+            rgba(24, 12, 7, 0.97) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.045),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 8px 18px rgba(0, 0, 0, 0.16),
+        0 0 0 1px rgba(255, 248, 235, 0.02);
+}
+
+.dot {
+    inline-size: 0.48rem;
+    block-size: 0.48rem;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.24);
+    cursor: pointer;
+    transition:
+        background-color 160ms ease,
+        box-shadow 160ms ease,
+        inline-size 160ms ease;
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.34);
+}
+
+.dotActive {
+    inline-size: 1.35rem;
+    background: linear-gradient(90deg,
+            rgba(214, 166, 74, 0.95),
+            rgba(244, 214, 156, 1));
+    box-shadow: 0 0 12px rgba(214, 166, 74, 0.14);
+}
+
+@media (max-width: 1024px) {
+
+    .media,
+    .placeholder {
+        aspect-ratio: 16 / 9.4;
+    }
 }
 
 @media (max-width: 768px) {
-    .inner {
-        grid-template-columns: 1fr;
-        row-gap: 0.9rem;
-        padding-inline: 1rem;
-        padding-block: 1rem 1.15rem;
+
+    .media,
+    .placeholder {
+        aspect-ratio: 4 / 3;
+        padding: 0.72rem;
+        border-radius: 1.05rem;
     }
 
-    .navButton {
-        inline-size: 2.1rem;
-        block-size: 2.1rem;
-        justify-self: center;
-    }
-
-    .media {
-        min-block-size: 13rem;
+    .imageFrame {
+        border-radius: 0.9rem;
     }
 
     .caption {
-        font-size: 0.67rem;
-        padding-block: 0.24rem;
-        padding-inline: 0.6rem;
+        inset-inline-start: 0.85rem;
+        inset-block-end: 0.85rem;
+        max-inline-size: calc(100% - 1.7rem);
+        min-block-size: 1.8rem;
+        padding-inline: 0.72rem;
+        font-size: 0.72rem;
+    }
+
+    .navButton {
+        inline-size: 40px;
+        block-size: 40px;
+    }
+
+    .navButtonPrev {
+        inset-inline-start: 0.65rem;
+    }
+
+    .navButtonNext {
+        inset-inline-end: 0.65rem;
     }
 }
 
 @media (max-width: 560px) {
-    .wrap {
-        margin-block: 1.1rem 1.4rem;
+
+    .media,
+    .placeholder {
+        aspect-ratio: 1 / 1;
+        padding: 0.62rem;
+        border-radius: 0.95rem;
     }
 
-    .inner {
-        border-radius: 1.4rem;
-        padding-inline: 0.88rem;
+    .imageFrame {
+        border-radius: 0.8rem;
     }
 
-    .media {
-        min-block-size: 12rem;
-        border-radius: 1.05rem;
+    .caption {
+        inset-inline-start: 0.72rem;
+        inset-block-end: 0.72rem;
+        max-inline-size: calc(100% - 1.44rem);
+        min-block-size: 1.68rem;
+        padding-inline: 0.62rem;
+        padding-block: 0.26rem;
+        font-size: 0.69rem;
     }
 
-    .placeholderLabel {
-        font-size: 1.18rem;
+    .navButton {
+        inline-size: 36px;
+        block-size: 36px;
+    }
+
+    .navIcon {
+        font-size: 1.12rem;
+    }
+
+    .dot {
+        inline-size: 0.44rem;
+        block-size: 0.44rem;
+    }
+
+    .dotActive {
+        inline-size: 1.18rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .caption {
+        font-size: 0.66rem;
+    }
+
+    .navButton {
+        inline-size: 34px;
+        block-size: 34px;
+    }
+
+    .navIcon {
+        font-size: 1.04rem;
     }
 }

@@ -1,3 +1,7 @@
+import barLounge1 from "../../../assets/bar-lounge1.webp";
+import barLounge2 from "../../../assets/bar-lounge2.webp";
+import barLounge3 from "../../../assets/bar-lounge3.webp";
+
 export const barAndLounge = {
   id: "restaurant-bar-lounge",
   headerLabel: "Bar & Lounge",
@@ -53,18 +57,18 @@ export const barAndLounge = {
     items: [
       {
         id: "bl-01",
-        src: null,
-        alt: "Bar & Lounge — vista geral do espaço",
+        src: barLounge1,
+        alt: "Bar & Lounge — vista geral do balcão e garrafeira",
       },
       {
         id: "bl-02",
-        src: null,
-        alt: "Bar & Lounge — zona de convívio",
+        src: barLounge2,
+        alt: "Bar & Lounge — ambiente interior do espaço",
       },
       {
         id: "bl-03",
-        src: null,
-        alt: "Bar & Lounge — ambiente interior",
+        src: barLounge3,
+        alt: "Bar & Lounge — zona de convívio e serviço",
       },
     ],
   },

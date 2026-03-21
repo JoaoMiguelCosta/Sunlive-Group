@@ -52,31 +52,39 @@ export default function BarLoungeShowcase() {
     <div className={styles.block}>
       <div className={styles.grid}>
         <div className={styles.leftPanel}>
-          {intro?.description ? (
+          {(intro?.description || section?.headerLabel) && (
             <div className={styles.descriptionWrap}>
-              <p className={styles.description}>{intro.description}</p>
+              {section?.headerLabel ? (
+                <span className={styles.eyebrow}>{section.headerLabel}</span>
+              ) : null}
+
+              {intro?.description ? (
+                <p className={styles.description}>{intro.description}</p>
+              ) : null}
             </div>
-          ) : null}
+          )}
 
           {features.length ? (
-            <div className={styles.pillsGrid}>
-              {features.map((item) => {
-                const Icon = item?.iconKey
-                  ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
-                  : null;
+            <div className={styles.pillsSection}>
+              <div className={styles.pillsGrid}>
+                {features.map((item) => {
+                  const Icon = item?.iconKey
+                    ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+                    : null;
 
-                return (
-                  <HotelIconPill
-                    key={item.id}
-                    label={item.label}
-                    Icon={Icon}
-                    size="md"
-                    className={styles.featurePill}
-                    iconClassName={styles.featureIcon}
-                    iconCircleClassName={styles.featureIconCircle}
-                  />
-                );
-              })}
+                  return (
+                    <HotelIconPill
+                      key={item.id}
+                      label={item.label}
+                      Icon={Icon}
+                      size="md"
+                      className={styles.featurePill}
+                      iconClassName={styles.featureIcon}
+                      iconCircleClassName={styles.featureIconCircle}
+                    />
+                  );
+                })}
+              </div>
             </div>
           ) : null}
 
@@ -85,7 +93,10 @@ export default function BarLoungeShowcase() {
               <div className={styles.highlightCardInner}>
                 <div className={styles.highlightHeader}>
                   {HighlightIcon ? (
-                    <span className={styles.highlightIconSlot} aria-hidden="true">
+                    <span
+                      className={styles.highlightIconSlot}
+                      aria-hidden="true"
+                    >
                       <span className={styles.highlightIconCircle}>
                         <HighlightIcon className={styles.highlightIcon} />
                       </span>
@@ -108,15 +119,17 @@ export default function BarLoungeShowcase() {
         </div>
 
         <div className={styles.rightPanel}>
-          <div className={styles.galleryCard}>
-            <HotelPhotoCarouselBase
-              items={items}
-              activeIndex={activeIndex}
-              onPrev={goPrev}
-              onNext={goNext}
-              fallbackLabel={fallbackLabel}
-              className={styles.galleryStage}
-            />
+          <div className={styles.galleryShell}>
+            <div className={styles.galleryCard}>
+              <HotelPhotoCarouselBase
+                items={items}
+                activeIndex={activeIndex}
+                onPrev={goPrev}
+                onNext={goNext}
+                fallbackLabel={fallbackLabel}
+                className={styles.galleryStage}
+              />
+            </div>
           </div>
         </div>
       </div>

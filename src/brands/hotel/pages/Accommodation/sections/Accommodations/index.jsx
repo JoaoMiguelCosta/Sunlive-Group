@@ -22,6 +22,9 @@ export default function Accommodations() {
   const roomsAndSuites = content.roomsAndSuites ?? null;
   const sectionId = content.id ?? "accommodation-accommodations";
   const titleId = `${sectionId}-title`;
+  const galleryItems = content.gallery?.items ?? [];
+  const galleryFallbackLabel =
+    content.gallery?.fallbackLabel ?? "Galeria de alojamento";
 
   return (
     <section
@@ -38,10 +41,8 @@ export default function Accommodations() {
 
         <div className={styles.galleryWrap}>
           <HotelPhotoCarousel
-            items={content.gallery?.items ?? []}
-            fallbackLabel={
-              content.gallery?.fallbackLabel ?? "Galeria de alojamento"
-            }
+            items={galleryItems}
+            fallbackLabel={galleryFallbackLabel}
           />
         </div>
 

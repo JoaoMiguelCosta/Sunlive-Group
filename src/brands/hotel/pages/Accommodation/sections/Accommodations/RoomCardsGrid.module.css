@@ -1,14 +1,14 @@
 .wrap {
     inline-size: 100%;
-    max-inline-size: 1220px;
+    max-inline-size: 1280px;
     margin-inline: auto;
-    margin-top: clamp(18px, 2.4vw, 24px);
+    margin-top: clamp(18px, 2.4vw, 26px);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(14px, 1.6vw, 18px);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: clamp(18px, 1.9vw, 24px);
     align-items: start;
     inline-size: 100%;
 }
@@ -16,6 +16,7 @@
 .cardCell {
     display: flex;
     min-width: 0;
+    grid-column: span 2;
 }
 
 .cardCell>* {
@@ -23,10 +24,46 @@
     min-width: 0;
 }
 
-@media (max-width: 1120px) {
+/* Desktop com 5 cards:
+   1ª linha = 3 cards
+   2ª linha = 2 cards centrados */
+.cardCell:nth-child(4):nth-last-child(2) {
+    grid-column: 2 / span 2;
+}
+
+.cardCell:nth-child(5):nth-last-child(1) {
+    grid-column: 4 / span 2;
+}
+
+@media (max-width: 1080px) {
+    .wrap {
+        max-inline-size: 1160px;
+    }
+
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
+        gap: 18px;
+    }
+
+    .cardCell {
+        grid-column: auto;
+    }
+
+    .cardCell:nth-child(4):nth-last-child(2) {
+        grid-column: auto;
+    }
+
+    /* Quando existem 5 cards entre 621px e 1080px:
+       1ª linha = 2
+       2ª linha = 2
+       3ª linha = 1 centrado */
+    .cardCell:nth-child(5):nth-last-child(1) {
+        grid-column: 1 / -1;
+        justify-content: center;
+    }
+
+    .cardCell:nth-child(5):nth-last-child(1)>* {
+        inline-size: min(100%, calc((100% - 18px) / 2));
     }
 }
 
@@ -36,19 +73,37 @@
     }
 
     .grid {
-        gap: 14px;
+        gap: 16px;
+    }
+
+    .cardCell:nth-child(5):nth-last-child(1)>* {
+        inline-size: min(100%, calc((100% - 16px) / 2));
     }
 }
 
 @media (max-width: 620px) {
     .grid {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 14px;
+    }
+
+    .cardCell {
+        grid-column: auto;
+        justify-content: stretch;
+    }
+
+    .cardCell:nth-child(4):nth-last-child(2),
+    .cardCell:nth-child(5):nth-last-child(1) {
+        grid-column: auto;
+    }
+
+    .cardCell:nth-child(5):nth-last-child(1)>* {
+        inline-size: 100%;
     }
 }
 
 @media (max-width: 380px) {
     .grid {
-        gap: 10px;
+        gap: 12px;
     }
 }

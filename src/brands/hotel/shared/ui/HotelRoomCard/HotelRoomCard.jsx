@@ -35,16 +35,25 @@ export default function HotelRoomCard({
     <article className={[styles.card, className].filter(Boolean).join(" ")}>
       <div className={styles.media} aria-label={imageAlt || title}>
         {hasImage ? (
-          <img
-            className={styles.image}
-            src={imageSrc}
-            alt={imageAlt || title}
-          />
+          <>
+            <img
+              className={styles.image}
+              src={imageSrc}
+              alt={imageAlt || title}
+              loading="lazy"
+            />
+            <div className={styles.mediaOverlay} aria-hidden="true" />
+            <div className={styles.mediaHighlight} aria-hidden="true" />
+            <div className={styles.mediaGlow} aria-hidden="true" />
+            <div className={styles.mediaFrame} aria-hidden="true" />
+          </>
         ) : (
           <div className={styles.placeholder}>
-            <span className={styles.placeholderText}>
-              Imagem disponível em breve
-            </span>
+            <div className={styles.placeholderInner}>
+              <span className={styles.placeholderText}>
+                Imagem disponível em breve
+              </span>
+            </div>
           </div>
         )}
 
@@ -89,7 +98,7 @@ export default function HotelRoomCard({
                     d="M6 9l6 6 6-6"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2.4"
+                    strokeWidth="2.2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />

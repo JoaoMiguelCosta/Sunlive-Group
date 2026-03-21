@@ -1,3 +1,14 @@
+import suiteImage from "../../../assets/suíte.webp";
+import singleImage from "../../../assets/single-room.webp";
+import twoRoomImage from "../../../assets/two-room.webp";
+import twinRoomImage from "../../../assets/twin-room.webp";
+import tripleRoomImage from "../../../assets/triple-room.webp";
+
+import accommodation1 from "../../../assets/accommodation1.webp";
+import accommodation2 from "../../../assets/accommodation2.webp";
+import accommodation3 from "../../../assets/accommodation3.webp";
+import accommodation4 from "../../../assets/accommodation4.webp";
+
 export const accommodations = {
   id: "estadia-accommodations",
   headerLabel: "Alojamento",
@@ -5,14 +16,36 @@ export const accommodations = {
     "Quartos e suítes confortáveis, equipados para diferentes perfis de hóspedes — desde atletas e equipas desportivas a famílias, casais e viajantes em lazer ou trabalho.",
 
   gallery: {
-    fallbackLabel: "Fotos",
+    fallbackLabel: "Galeria de alojamento",
     items: [
-      { id: "acc-01", src: null, alt: "Alojamento — Foto 1", label: "Quartos" },
-      { id: "acc-02", src: null, alt: "Alojamento — Foto 2", label: "Suítes" },
       {
         id: "acc-03",
-        src: null,
-        alt: "Alojamento — Foto 3",
+        src: accommodation2,
+        alt: "Alojamento — Foto panorâmica 2",
+        label: "Fachada Principal",
+      },
+      {
+        id: "acc-01",
+        src: suiteImage,
+        alt: "Alojamento — Suíte",
+        label: "Suíte",
+      },
+      {
+        id: "acc-02",
+        src: accommodation1,
+        alt: "Alojamento — Foto panorâmica 1",
+        label: "Quarto com Varanda",
+      },
+      {
+        id: "acc-04",
+        src: accommodation3,
+        alt: "Alojamento — Foto panorâmica 3",
+        label: "Exterior",
+      },
+      {
+        id: "acc-05",
+        src: accommodation4,
+        alt: "Alojamento — Foto panorâmica 4",
         label: "Detalhes",
       },
     ],
@@ -44,7 +77,7 @@ export const accommodations = {
       title: "Quarto Individual",
       description:
         "Ideal para viajantes a solo ou profissionais em deslocação que valorizam tranquilidade e funcionalidade.",
-      imageSrc: null,
+      imageSrc: singleImage,
       imageAlt: "Quarto Individual",
       profiles: ["solo", "professional_coach"],
       features: [
@@ -52,7 +85,7 @@ export const accommodations = {
         "Casa de banho privativa",
         "Ar condicionado",
         "Vista para jardim",
-        "Cama de casal ou 2 camas individuais",
+        "Cama individual",
       ],
     },
     {
@@ -60,7 +93,7 @@ export const accommodations = {
       title: "Quarto Duplo",
       description:
         "Perfeito para casais ou dois hóspedes que procuram conforto num ambiente acolhedor.",
-      imageSrc: null,
+      imageSrc: twoRoomImage,
       imageAlt: "Quarto Duplo",
       profiles: ["couple", "professional_coach"],
       features: [
@@ -76,7 +109,7 @@ export const accommodations = {
       title: "Quarto Twin",
       description:
         "Indicado para colegas ou atletas que preferem camas separadas, com comodidade partilhada.",
-      imageSrc: null,
+      imageSrc: twinRoomImage,
       imageAlt: "Quarto Twin",
       profiles: ["friends_athletes", "families_groups"],
       features: [
@@ -92,7 +125,7 @@ export const accommodations = {
       title: "Quarto Triplo",
       description:
         "Solução prática para pequenos grupos ou equipas, com flexibilidade na configuração das camas.",
-      imageSrc: null,
+      imageSrc: tripleRoomImage,
       imageAlt: "Quarto Triplo",
       profiles: ["families_groups", "friends_athletes"],
       features: [
@@ -100,7 +133,7 @@ export const accommodations = {
         "Casa de banho privativa",
         "Ar condicionado",
         "Vista para jardim",
-        "3 camas individuais ou 1 cama de casal + 2 camas individuais",
+        "3 camas individuais ou 1 cama de casal + 1 cama individual",
       ],
     },
     {
@@ -108,7 +141,7 @@ export const accommodations = {
       title: "Suíte",
       description:
         "Ideal para casais, treinadores ou hóspedes que valorizam espaço extra, privacidade e conforto superior.",
-      imageSrc: null,
+      imageSrc: suiteImage,
       imageAlt: "Suíte",
       profiles: ["premium", "professional_coach", "couple"],
       features: [

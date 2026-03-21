@@ -1,21 +1,19 @@
 .section {
     position: relative;
     isolation: isolate;
-padding-block: clamp(3rem, 6vw, 5rem);
-  
+    padding-block: clamp(3rem, 6vw, 5rem);
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 7% auto auto 50%;
-    translate: -50% 0;
-    inline-size: min(88vw, 1140px);
-    block-size: clamp(170px, 22vw, 280px);
+    inset: 0;
     pointer-events: none;
-    
-    
-    opacity: 0.74;
+    background:
+        radial-gradient(820px 300px at 50% 0%, rgba(214, 166, 74, 0.05), transparent 64%),
+        radial-gradient(540px 220px at 8% 28%, rgba(214, 166, 74, 0.03), transparent 70%),
+        radial-gradient(540px 220px at 92% 34%, rgba(214, 166, 74, 0.03), transparent 70%);
+    opacity: 0.8;
 }
 
 .inner {
@@ -26,44 +24,59 @@ padding-block: clamp(3rem, 6vw, 5rem);
     box-sizing: border-box;
 
     display: grid;
-    gap: clamp(0.95rem, 1.8vw, 1.25rem);
+    gap: clamp(1rem, 1.8vw, 1.3rem);
 }
 
 .galleryWrap {
-    inline-size: 100%;
-    max-inline-size: 940px;
-    min-block-size: clamp(240px, 28vw, 320px);
+    inline-size: min(100%, 960px);
     margin-inline: auto;
+    margin-top: clamp(0.35rem, 0.8vw, 0.55rem);
 }
 
 .roomsSection {
     display: grid;
     gap: clamp(0.82rem, 1.4vw, 1.05rem);
-    margin-top: clamp(0.25rem, 0.7vw, 0.45rem);
+    margin-top: clamp(0.45rem, 0.9vw, 0.7rem);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .section {
-        padding-block: 1.9rem;
-    }
-
-    .section::before {
-        inline-size: 100%;
-        block-size: 180px;
-        inset-block-start: 4%;
+        padding-block: clamp(2.3rem, 7vw, 3rem);
     }
 
     .inner {
-        gap: 0.95rem;
+        gap: 1rem;
+    }
+
+    .roomsSection {
+        margin-top: 0.35rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .section {
+        padding-block: 2rem;
+    }
+
+    .section::before {
+        background:
+            radial-gradient(520px 220px at 50% 0%, rgba(214, 166, 74, 0.045), transparent 62%),
+            radial-gradient(340px 170px at 12% 24%, rgba(214, 166, 74, 0.02), transparent 68%),
+            radial-gradient(340px 170px at 88% 28%, rgba(214, 166, 74, 0.02), transparent 68%);
     }
 
     .galleryWrap {
-        max-inline-size: 100%;
-        min-block-size: clamp(220px, 56vw, 290px);
+        inline-size: 100%;
     }
 
     .roomsSection {
         gap: 0.8rem;
-        margin-top: 0.2rem;
+        margin-top: 0.25rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .inner {
+        gap: 0.95rem;
     }
 }

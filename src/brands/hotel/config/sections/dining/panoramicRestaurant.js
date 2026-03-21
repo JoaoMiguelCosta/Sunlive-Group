@@ -21,11 +21,7 @@ export const panoramicRestaurant = {
         src: null,
         alt: "Restaurante Panorâmico — zona de buffet",
       },
-      {
-        id: "pr-03",
-        src: null,
-        alt: "Restaurante Panorâmico — ambiente e mesas",
-      },
+      
     ],
 
     gallerySecondary: {
