@@ -8,9 +8,10 @@ export const heroBanner = {
   },
   cta: {
     label: "Contactar",
-    href: "/sunlive-group/hotel/information#info-contacts",
+    href: "tel:+351234745133",
     iconKey: "phone",
-    ariaLabel: "Ir para a secção de contactos da página Information",
+    ariaLabel:
+      "Ligar para a Estalagem de Sangalhos através do número +351 234 745 133",
     tone: "strong",
   },
 };

@@ -1,17 +1,13 @@
 .section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(3rem, 6vw, 5rem);
-    background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.10), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.07), transparent 60%),
-        transparent;
+    inline-size: 100%;
+   
+   
 }
 
 .inner {
-    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
-    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--line-inset));
-    margin-inline: auto;
+    inline-size: 100%;
     box-sizing: border-box;
 }
 

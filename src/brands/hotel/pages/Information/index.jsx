@@ -1,5 +1,5 @@
 // src/brands/hotel/pages/Information/index.jsx
-// Estalagem de Sangalhos — InformationPage (reutiliza Home.module.css como layout)
+// Estalagem de Sangalhos — InformationPage
 
 import styles from "../../layouts/HotelPageLayout.module.css";
 
@@ -16,9 +16,11 @@ export default function InformationPageHotel() {
         role="region"
         aria-label="Estalagem de Sangalhos — Information"
       >
-        <TestimonialsSection />
-        <LocationSection />
-        <ContactsSection />
+        <div className={styles.contentFlow}>
+          <TestimonialsSection />
+          <LocationSection />
+          <ContactsSection />
+        </div>
       </main>
     </div>
   );

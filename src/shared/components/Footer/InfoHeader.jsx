@@ -79,7 +79,9 @@ export default function InfoHeader({ data }) {
             <span>{brandName}</span>
           </h3>
 
-          {brand?.tagline && <p className={styles.tagline}>{brand.tagline}</p>}
+          {brand?.tagline ? (
+            <p className={styles.tagline}>{brand.tagline}</p>
+          ) : null}
 
           <div className={styles.about}>
             {aboutParts.length === 0 ? (
@@ -113,7 +115,7 @@ export default function InfoHeader({ data }) {
               ))}
             </address>
 
-            {location?.mapHref && (
+            {location?.mapHref ? (
               <a
                 className={styles.subtleLink}
                 href={location.mapHref}
@@ -122,7 +124,7 @@ export default function InfoHeader({ data }) {
               >
                 Open on Maps →
               </a>
-            )}
+            ) : null}
           </div>
         </div>
 

@@ -1,7 +1,16 @@
 .section {
     position: relative;
     isolation: isolate;
+    inline-size: 100%;
     padding-block: 0;
     background: transparent;
 }
 
+.inner {
+    inline-size: 100%;
+    box-sizing: border-box;
+
+    display: grid;
+    gap: clamp(1.1rem, 2.4vw, 1.5rem);
+    align-content: start;
+}

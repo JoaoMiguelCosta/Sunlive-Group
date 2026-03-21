@@ -14,8 +14,10 @@ export default function EventsPageHotel() {
         role="region"
         aria-label="Estalagem de Sangalhos — Events"
       >
-        <EventsCelebrationsSection />
-        <CustomizedQuotesSection />
+        <div className={styles.contentFlow}>
+          <EventsCelebrationsSection />
+          <CustomizedQuotesSection />
+        </div>
       </main>
     </div>
   );

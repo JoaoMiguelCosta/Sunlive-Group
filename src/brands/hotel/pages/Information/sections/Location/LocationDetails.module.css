@@ -1,17 +1,17 @@
 .wrapper {
-    margin-top: clamp(1.55rem, 3vw, 2.3rem);
+    margin-top: clamp(1.4rem, 2.2vw, 1.9rem);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
-    gap: clamp(1rem, 2vw, 1.4rem);
+    grid-template-columns: minmax(320px, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(1rem, 1.4vw, 1.2rem);
     align-items: stretch;
 }
 
 .leftColumn {
     display: grid;
-    gap: clamp(0.9rem, 1.6vw, 1.1rem);
+    gap: clamp(0.9rem, 1.25vw, 1rem);
     align-content: start;
 }
 
@@ -21,7 +21,6 @@
     overflow: hidden;
     border: 1px solid rgba(230, 200, 147, 0.28);
     border-radius: 24px;
-
     background:
         radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 44%),
         radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.10), transparent 46%),
@@ -32,7 +31,6 @@
         linear-gradient(135deg,
             rgba(44, 23, 11, 0.96) 0%,
             rgba(28, 14, 8, 0.98) 100%);
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 230, 0.045),
         inset 0 -1px 0 rgba(0, 0, 0, 0.16),
@@ -63,7 +61,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    min-height: 70px;
+    min-height: 72px;
     padding: 0.95rem 1.1rem;
 }
 
@@ -75,13 +73,10 @@
     height: 42px;
     flex: 0 0 42px;
     border-radius: 999px;
-
     background:
         radial-gradient(circle at 30% 30%, rgba(255, 248, 230, 0.16), transparent 58%),
         rgba(46, 26, 11, 0.68);
-
     color: var(--sl-gold-400, #d6aa4e);
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 230, 0.12),
         0 10px 24px rgba(0, 0, 0, 0.24);
@@ -90,10 +85,11 @@
 .cardTitle {
     margin: 0;
     color: #f8f1e4;
-    font-size: clamp(1rem, 0.45vw + 0.96rem, 1.14rem);
+    font-size: clamp(1rem, 0.42vw + 0.96rem, 1.12rem);
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0.01em;
+    text-wrap: balance;
 }
 
 .cardBody {
@@ -104,29 +100,29 @@
 
 .addressBox {
     display: grid;
-    gap: 0.3rem;
+    gap: 0.28rem;
 }
 
 .addressLine {
     margin: 0;
     color: rgba(248, 241, 228, 0.9);
-    font-size: 0.98rem;
-    line-height: 1.65;
+    font-size: clamp(0.97rem, 0.95vw, 1.05rem);
+    line-height: 1.55;
+    text-wrap: balance;
 }
 
 .coordinatesGrid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.85rem;
+    gap: 0.8rem;
 }
 
 .coordinateCard {
     display: grid;
-    gap: 0.38rem;
-    padding: 0.95rem 1rem;
+    gap: 0.4rem;
+    padding: 0.92rem 1rem;
     border: 1px solid rgba(230, 200, 147, 0.20);
     border-radius: 18px;
-
     background:
         linear-gradient(180deg, rgba(255, 248, 230, 0.04), rgba(255, 248, 230, 0)),
         rgba(255, 255, 255, 0.02);
@@ -152,6 +148,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.85rem;
+    align-items: center;
 }
 
 .actionButton {
@@ -159,8 +156,8 @@
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    min-height: 52px;
-    padding: 0.9rem 1.15rem;
+    min-height: 50px;
+    padding: 0.85rem 1.15rem;
     border-radius: 999px;
     text-decoration: none;
     font-size: 0.94rem;
@@ -238,11 +235,10 @@
     position: relative;
     isolation: isolate;
     display: block;
-    min-height: clamp(520px, 42vw, 660px);
+    min-height: clamp(440px, 32vw, 540px);
     overflow: hidden;
     border: 1px solid rgba(230, 200, 147, 0.30);
     border-radius: 30px;
-
     background:
         radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 44%),
         radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.10), transparent 46%),
@@ -253,7 +249,6 @@
         linear-gradient(135deg,
             rgba(44, 23, 11, 0.96) 0%,
             rgba(28, 14, 8, 0.98) 100%);
-
     text-decoration: none;
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 230, 0.045),
@@ -297,17 +292,14 @@
     padding: 0.55rem 0.85rem;
     border: 1px solid rgba(230, 200, 147, 0.24);
     border-radius: 999px;
-
     background:
         linear-gradient(180deg, rgba(255, 248, 230, 0.10), rgba(255, 248, 230, 0)),
         rgba(56, 31, 14, 0.78);
-
     backdrop-filter: blur(10px);
     color: #f8f1e4;
     font-size: 0.84rem;
     font-weight: 700;
     line-height: 1;
-
     box-shadow:
         0 12px 28px rgba(0, 0, 0, 0.24),
         inset 0 1px 0 rgba(255, 248, 230, 0.08);
@@ -331,11 +323,9 @@
     padding: 1rem 1rem 1.05rem;
     border: 1px solid rgba(230, 200, 147, 0.20);
     border-radius: 20px;
-
     background:
         linear-gradient(180deg, rgba(255, 248, 230, 0.08), rgba(255, 248, 230, 0)),
         rgba(52, 28, 12, 0.76);
-
     backdrop-filter: blur(14px);
     box-shadow:
         0 14px 34px rgba(0, 0, 0, 0.24),
@@ -361,13 +351,13 @@
     background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1180px) {
     .grid {
         grid-template-columns: 1fr;
     }
 
     .mapCard {
-        min-height: 440px;
+        min-height: 420px;
     }
 }
 
@@ -394,7 +384,7 @@
     }
 
     .mapCard {
-        min-height: 360px;
+        min-height: 340px;
         border-radius: 24px;
     }
 
@@ -413,7 +403,7 @@
 
 @media (max-width: 560px) {
     .wrapper {
-        margin-top: 1.25rem;
+        margin-top: 1.2rem;
     }
 
     .infoCard {
@@ -432,7 +422,7 @@
     }
 
     .mapCard {
-        min-height: 320px;
+        min-height: 300px;
         border-radius: 20px;
     }
 

@@ -1,8 +1,9 @@
 import hotelBrand from "../../../../config/index.js";
+import HotelSectionShell from "../../../../shared/ui/HotelSectionShell/HotelSectionShell.jsx";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 import styles from "./HotelHeroBanner.module.css";
 
-export default function HotelHeroBanner({ onContactClick }) {
+export default function HotelHeroBanner() {
   const section = hotelBrand?.pages?.home?.sections?.heroBanner ?? null;
   if (!section) return null;
 
@@ -13,18 +14,11 @@ export default function HotelHeroBanner({ onContactClick }) {
   const videoSrc = section.video?.src ?? "";
   const videoPoster = section.video?.poster ?? "";
 
-  if (!cta?.href) return null;
-
-  const handleClick = (event) => {
-    if (!onContactClick) return;
-
-    event.preventDefault();
-    onContactClick();
-  };
+  if (!cta?.href || !cta?.label) return null;
 
   return (
     <section className={styles.masthead} aria-label="Banner principal do hotel">
-      <div className={styles.inner}>
+      <HotelSectionShell contentClassName={styles.inner}>
         <div className={styles.mediaLayer} aria-hidden="true">
           {videoSrc ? (
             <video
@@ -54,16 +48,19 @@ export default function HotelHeroBanner({ onContactClick }) {
 
           <div className={styles.content}>
             <CTAButton
-              cta={cta}
-              icon={cta.iconKey ?? "phone"}
+              href={cta.href}
+              label={cta.label}
+              ariaLabel={cta.ariaLabel ?? cta.label}
+              icon="phone"
+              blink={false}
+              compact={false}
               variant="hotel"
-              tone={cta.tone ?? "strong"}
-              className={styles.cta}
-              onClick={handleClick}
+              tone="strong"
+              className={styles.ctaButton}
             />
           </div>
         </div>
-      </div>
+      </HotelSectionShell>
     </section>
   );
 }

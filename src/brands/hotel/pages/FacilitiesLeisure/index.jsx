@@ -1,5 +1,5 @@
 // src/brands/hotel/pages/FacilitiesLeisure/index.jsx
-// Estalagem de Sangalhos — Facilities & Leisure (reutiliza Home.module.css como layout)
+// Estalagem de Sangalhos — Facilities & Leisure
 
 import styles from "../../layouts/HotelPageLayout.module.css";
 
@@ -19,12 +19,14 @@ export default function FacilitiesLeisurePageHotel() {
         role="region"
         aria-label="Estalagem de Sangalhos — Facilities & Leisure"
       >
-        <FacilitiesLeisureSection />
-        <WellBeingSection />
-        <MobilitySection />
-        <AccessibilitySection />
-        <ComplementaryServicesSection />
-        <ReceptionSupportSection />
+        <div className={styles.contentFlow}>
+          <FacilitiesLeisureSection />
+          <WellBeingSection />
+          <MobilitySection />
+          <AccessibilitySection />
+          <ComplementaryServicesSection />
+          <ReceptionSupportSection />
+        </div>
       </main>
     </div>
   );

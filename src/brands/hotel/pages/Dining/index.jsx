@@ -1,5 +1,5 @@
 // src/brands/hotel/pages/Restoration/index.jsx
-// Estalagem de Sangalhos — RestorationPage (reutiliza Home.module.css como layout)
+// Estalagem de Sangalhos — RestorationPage
 
 import styles from "../../layouts/HotelPageLayout.module.css";
 
@@ -18,11 +18,13 @@ export default function DiningPageHotel() {
         role="region"
         aria-label="Estalagem de Sangalhos — Restoration"
       >
-        <PanoramicRestaurantSection />
-        <BreakfastSection />
-        <SundayBuffetSection />
-        <BarLoungeSection />
-        <CateringServiceSection />
+        <div className={styles.contentFlow}>
+          <PanoramicRestaurantSection />
+          <BreakfastSection />
+          <SundayBuffetSection />
+          <BarLoungeSection />
+          <CateringServiceSection />
+        </div>
       </main>
     </div>
   );

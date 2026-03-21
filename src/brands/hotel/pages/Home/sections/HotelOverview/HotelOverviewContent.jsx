@@ -1,4 +1,4 @@
-import HotelInlineActionButton from "../../../../shared/ui/HotelInlineActionButton//HotelInlineActionButton.jsx";
+import HotelInlineActionButton from "../../../../shared/ui/HotelInlineActionButton/HotelInlineActionButton.jsx";
 import styles from "./HotelOverviewContent.module.css";
 
 export default function HotelOverviewContent({ section }) {

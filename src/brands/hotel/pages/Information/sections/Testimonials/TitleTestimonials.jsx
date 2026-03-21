@@ -1,7 +1,7 @@
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
-export default function TitleTestimonials({ id }) {
+export default function TitleTestimonials({ titleId }) {
   const content =
     hotelBrand?.pages?.information?.sections?.testimonials ?? null;
 
@@ -9,7 +9,7 @@ export default function TitleTestimonials({ id }) {
 
   return (
     <HotelSectionHeader
-      id={id}
+      id={titleId}
       label={content.headerLabel}
       align="center"
       as="h2"

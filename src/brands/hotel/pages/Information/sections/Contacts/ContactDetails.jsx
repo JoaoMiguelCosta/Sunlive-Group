@@ -85,37 +85,39 @@ export default function ContactDetails() {
           </header>
 
           <div className={styles.cardBody}>
-            <div className={styles.receptionTop}>
-              <span className={styles.itemLabel}>
-                {receptionHours?.scheduleLabel}
-              </span>
-
-              <p className={styles.receptionMainValue}>
-                {receptionHours?.scheduleValue}
-              </p>
-            </div>
-
-            <div className={styles.divider} aria-hidden="true" />
-
-            <div className={styles.checkGrid}>
-              <div className={styles.checkBlock}>
+            <div className={styles.hoursContent}>
+              <div className={styles.receptionTop}>
                 <span className={styles.itemLabel}>
-                  {receptionHours?.checkInLabel}
+                  {receptionHours?.scheduleLabel}
                 </span>
 
-                <p className={styles.checkValue}>
-                  {receptionHours?.checkInValue}
+                <p className={styles.receptionMainValue}>
+                  {receptionHours?.scheduleValue}
                 </p>
               </div>
 
-              <div className={styles.checkBlock}>
-                <span className={styles.itemLabel}>
-                  {receptionHours?.checkOutLabel}
-                </span>
+              <div className={styles.divider} aria-hidden="true" />
 
-                <p className={styles.checkValue}>
-                  {receptionHours?.checkOutValue}
-                </p>
+              <div className={styles.checkGrid}>
+                <div className={styles.checkBlock}>
+                  <span className={styles.itemLabel}>
+                    {receptionHours?.checkInLabel}
+                  </span>
+
+                  <p className={styles.checkValue}>
+                    {receptionHours?.checkInValue}
+                  </p>
+                </div>
+
+                <div className={styles.checkBlock}>
+                  <span className={styles.itemLabel}>
+                    {receptionHours?.checkOutLabel}
+                  </span>
+
+                  <p className={styles.checkValue}>
+                    {receptionHours?.checkOutValue}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

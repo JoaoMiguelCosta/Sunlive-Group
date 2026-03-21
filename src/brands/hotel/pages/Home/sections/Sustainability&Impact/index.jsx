@@ -1,9 +1,7 @@
 import hotelBrand from "../../../../config/index.js";
-
-import HotelInlineActionButton from "../../../../shared/ui/HotelInlineActionButton//HotelInlineActionButton.jsx";
+import HotelInlineActionButton from "../../../../shared/ui/HotelInlineActionButton/HotelInlineActionButton.jsx";
 import HotelSustainabilityHeader from "./HotelSustainabilityHeader.jsx";
 import HotelSustainabilityStats from "./HotelSustainabilityStats.jsx";
-
 import styles from "./Sustainability&Impact.module.css";
 
 export default function SustainabilityAndImpactSection() {

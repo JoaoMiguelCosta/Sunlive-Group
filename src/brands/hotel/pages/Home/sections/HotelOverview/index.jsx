@@ -17,8 +17,10 @@ export default function HotelOverviewSection() {
       className={styles.section}
       aria-labelledby={titleId}
     >
-      <HotelOverviewHeader label={section.headerLabel} titleId={titleId} />
-      <HotelOverviewContent section={section} />
+      <div className={styles.inner}>
+        <HotelOverviewHeader label={section.headerLabel} titleId={titleId} />
+        <HotelOverviewContent section={section} />
+      </div>
     </section>
   );
 }

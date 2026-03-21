@@ -1,16 +1,19 @@
 .wrapper {
-    margin-top: clamp(1.35rem, 2vw, 2rem);
+    margin-top: clamp(1.35rem, 2vw, 1.9rem);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1.12fr) minmax(250px, 0.9fr) minmax(220px, 0.82fr);
-    gap: clamp(0.75rem, 1vw, 1rem);
+    grid-template-columns:
+        minmax(0, 1.06fr) minmax(0, 1.12fr) minmax(0, 0.9fr) minmax(0, 0.72fr);
+    gap: clamp(0.9rem, 1.15vw, 1.1rem);
     align-items: stretch;
 }
 
 .card {
     position: relative;
+    display: flex;
+    flex-direction: column;
     min-height: 100%;
     overflow: hidden;
     border: 1px solid rgba(214, 170, 78, 0.24);
@@ -58,7 +61,8 @@
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    padding: 0.9rem 0.95rem 0.78rem;
+    min-height: 82px;
+    padding: 0.95rem 1rem 0.82rem;
 }
 
 .titleIcon {
@@ -78,7 +82,7 @@
 
 .titleGroup {
     display: grid;
-    gap: 0.12rem;
+    gap: 0.14rem;
     min-width: 0;
 }
 
@@ -94,25 +98,36 @@
 .cardTitle {
     margin: 0;
     color: #fcf6ea;
-    font-size: clamp(1.02rem, 1.2vw, 1.28rem);
+    font-size: clamp(1.04rem, 1.12vw, 1.22rem);
     font-weight: 700;
     line-height: 1.12;
+    text-wrap: balance;
 }
 
 .cardBody {
     position: relative;
     z-index: 1;
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+.cardContact .cardBody,
+.cardAddress .cardBody,
+.cardSocial .cardBody {
+    align-items: stretch;
 }
 
 .contactList {
     display: grid;
-    gap: 1.1rem;
-    padding: 0.95rem 0.95rem 1rem;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 1rem 1.05rem;
 }
 
 .contactItem {
     display: grid;
-    gap: 0.32rem;
+    gap: 0.34rem;
 }
 
 .contactItemTop {
@@ -138,12 +153,13 @@
     font-size: 0.88rem;
     font-weight: 600;
     line-height: 1.2;
+    text-wrap: balance;
 }
 
 .itemValueLink {
     display: inline-block;
     color: #fcf6ea;
-    font-size: clamp(0.98rem, 1.15vw, 1.12rem);
+    font-size: clamp(0.96rem, 1vw, 1.08rem);
     font-weight: 700;
     line-height: 1.28;
     text-decoration: none;
@@ -160,17 +176,26 @@
     text-underline-offset: 0.16em;
 }
 
+.hoursContent {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    width: 100%;
+    min-height: 100%;
+}
+
 .receptionTop {
-    padding: 0.95rem 0.95rem 1rem;
+    width: 100%;
+    padding: 1rem 1rem 1.05rem;
 }
 
 .receptionMainValue {
     margin: 0.58rem 0 0;
     color: #fff7ea;
-    font-size: clamp(1.45rem, 1.9vw, 1.85rem);
+    font-size: clamp(1.6rem, 1.8vw, 1.92rem);
     font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
 }
 
 .divider {
@@ -186,12 +211,14 @@
 .checkGrid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
 }
 
 .checkBlock {
     display: grid;
+    align-content: start;
     gap: 0.58rem;
-    padding: 0.95rem 0.95rem 1rem;
+    padding: 1rem 1rem 1.05rem;
 }
 
 .checkBlock:first-child {
@@ -201,28 +228,32 @@
 .checkValue {
     margin: 0;
     color: #fcf6ea;
-    font-size: clamp(1rem, 1.18vw, 1.2rem);
+    font-size: clamp(0.98rem, 1.02vw, 1.12rem);
     font-weight: 700;
-    line-height: 1.24;
+    line-height: 1.28;
+    text-wrap: balance;
 }
 
 .addressContent {
     display: grid;
-    gap: 1.35rem;
-    padding: 0.95rem 0.95rem 1rem;
+    align-content: space-between;
+    gap: 1.2rem;
+    width: 100%;
+    padding: 1rem 1rem 1.05rem;
 }
 
 .addressLines {
     display: grid;
-    gap: 0.2rem;
+    gap: 0.24rem;
 }
 
 .addressLine {
     margin: 0;
     color: #fcf6ea;
-    font-size: clamp(0.98rem, 1.08vw, 1.1rem);
+    font-size: clamp(0.96rem, 0.95vw, 1.06rem);
     font-weight: 700;
-    line-height: 1.28;
+    line-height: 1.3;
+    text-wrap: balance;
 }
 
 .mapButton {
@@ -232,7 +263,8 @@
     gap: 0.5rem;
     min-height: 44px;
     width: fit-content;
-    padding: 0.75rem 0.95rem;
+    max-width: 100%;
+    padding: 0.75rem 1rem;
     border: 1px solid rgba(214, 170, 78, 0.34);
     border-radius: 999px;
     background:
@@ -271,16 +303,18 @@
 
 .socialList {
     display: grid;
+    align-content: start;
     gap: 0.72rem;
-    padding: 0.95rem 0.95rem 1rem;
+    width: 100%;
+    padding: 1rem 1rem 1.05rem;
 }
 
 .socialLink {
     display: flex;
     align-items: center;
     gap: 0.65rem;
-    min-height: 46px;
-    padding: 0.62rem 0.72rem;
+    min-height: 50px;
+    padding: 0.7rem 0.8rem;
     border: 1px solid rgba(214, 170, 78, 0.17);
     border-radius: 16px;
     color: #f8f1e4;
@@ -323,32 +357,29 @@
 
 .socialText {
     color: #fcf6ea;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 700;
     line-height: 1.2;
+    text-wrap: balance;
 }
 
-@media (max-width: 1380px) {
+@media (max-width: 1340px) {
     .grid {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(240px, 0.85fr) minmax(210px, 0.78fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .cardTitle {
-        font-size: 1.14rem;
+    .cardSocial {
+        order: 4;
     }
+}
 
+@media (max-width: 900px) {
     .receptionMainValue {
-        font-size: 1.68rem;
-    }
-}
-
-@media (max-width: 1200px) {
-    .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        font-size: clamp(1.48rem, 3vw, 1.8rem);
     }
 
-    .checkGrid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .checkValue {
+        font-size: 1rem;
     }
 }
 
@@ -373,7 +404,8 @@
 
 @media (max-width: 640px) {
     .titleRow {
-        padding: 0.9rem 0.85rem 0.75rem;
+        min-height: 76px;
+        padding: 0.9rem 0.85rem 0.78rem;
     }
 
     .contactList,
@@ -386,6 +418,13 @@
     }
 
     .receptionMainValue {
-        font-size: clamp(1.38rem, 6.5vw, 1.75rem);
+        font-size: clamp(1.34rem, 6vw, 1.7rem);
+    }
+
+    .socialText,
+    .addressLine,
+    .itemValueLink,
+    .checkValue {
+        font-size: 0.95rem;
     }
 }

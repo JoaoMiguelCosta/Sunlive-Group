@@ -1,7 +1,8 @@
 .section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(1.35rem, 2.8vw, 2.3rem) clamp(1.7rem, 3.4vw, 2.8rem);
+    inline-size: 100%;
+
     background: transparent;
     overflow: clip;
 }
@@ -14,21 +15,14 @@
     inline-size: min(70vw, 760px);
     block-size: clamp(100px, 13vw, 160px);
     pointer-events: none;
-    background:
-        radial-gradient(circle,
-            rgba(241, 205, 132, 0.12) 0%,
-            rgba(241, 205, 132, 0.04) 38%,
-            rgba(241, 205, 132, 0) 74%);
-    filter: blur(clamp(18px, 3vw, 26px));
+    
     opacity: 0.68;
 }
 
 .inner {
     position: relative;
     z-index: 1;
-    inline-size: min(var(--sl-container-lg, 85rem),
-            calc(100% - (2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)))));
-    margin-inline: auto;
+    inline-size: 100%;
     box-sizing: border-box;
 
     display: flex;
@@ -48,12 +42,7 @@
 
 @media (max-width: 1024px) {
     .section {
-        padding-block: 1.35rem 2.1rem;
-    }
-
-    .section::before {
-        inline-size: min(80vw, 700px);
-        block-size: clamp(100px, 16vw, 150px);
+        
     }
 
     .closingPill {
@@ -63,7 +52,7 @@
 
 @media (max-width: 768px) {
     .section {
-        padding-block: 1.25rem 1.8rem;
+        
     }
 
     .section::before {
@@ -73,11 +62,6 @@
         filter: blur(22px);
     }
 
-    .inner {
-        inline-size: min(100%,
-                calc(100% - (2 * var(--section-inset, clamp(0.75rem, 4vw, 2rem)))));
-    }
-
     .closingPill {
         inline-size: 100%;
     }
@@ -85,7 +69,7 @@
 
 @media (max-width: 640px) {
     .section {
-        padding-block: 1.15rem 1.55rem;
+        
     }
 
     .section::before {
@@ -96,10 +80,6 @@
         opacity: 0.62;
     }
 
-    .inner {
-        inline-size: calc(100% - (2 * var(--section-inset, clamp(0.75rem, 4vw, 1rem))));
-    }
-
     .closingPill {
         inline-size: 100%;
     }
@@ -107,7 +87,7 @@
 
 @media (max-width: 380px) {
     .section {
-        padding-block: 1rem 1.35rem;
+        
     }
 
     .section::before {
@@ -117,8 +97,8 @@
         opacity: 0.56;
     }
 
-    .inner {
-        inline-size: calc(100% - 1rem);
+    .closingPill {
+        inline-size: 100%;
     }
 }
 

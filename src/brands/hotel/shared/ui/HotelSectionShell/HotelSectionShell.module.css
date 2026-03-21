@@ -1,0 +1,12 @@
+.shell {
+    inline-size: 100%;
+    box-sizing: border-box;
+}
+
+.inner {
+    inline-size: min(calc(100% - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem))),
+            1360px);
+    max-inline-size: 1360px;
+    margin-inline: auto;
+    box-sizing: border-box;
+}

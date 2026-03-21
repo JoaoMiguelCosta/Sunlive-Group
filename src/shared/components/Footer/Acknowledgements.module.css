@@ -1,22 +1,23 @@
-/* Acknowledgements — shared, mais leve e mais premium */
+/* Acknowledgements — shared, afinado para o footer hotel */
 
 .sectionWrap {
     position: relative;
     background: transparent;
     color: var(--sl-platinum-100);
-    padding-block: clamp(0.55rem, 1.2vw, 0.95rem);
+    padding-block: clamp(0.65rem, 1vw, 0.95rem);
 
     --ack-accent: var(--footer-accent, var(--sl-gold-400, #c78615));
 
-    border-top: 1px solid color-mix(in oklab, var(--ack-accent), transparent 56%);
-    border-bottom: 1px solid color-mix(in oklab, var(--ack-accent), transparent 56%);
+    border-top: 1px solid color-mix(in oklab, var(--ack-accent), transparent 58%);
+    border-bottom: 1px solid color-mix(in oklab, var(--ack-accent), transparent 58%);
 }
 
 .inner {
-    inline-size: 100%;
+    width: 100%;
     margin-inline: auto;
-    padding-inline: clamp(0.5rem, 4vw, 1rem);
+    padding-inline: var(--footer-inner-pad, clamp(16px, 2.2vw, 32px));
     box-sizing: border-box;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,14 +34,14 @@
         filter 120ms ease,
         background 120ms ease,
         box-shadow 120ms ease;
-    padding: clamp(0rem, 0.5vw, 0.22rem);
+    padding: clamp(0rem, 0.4vw, 0.2rem);
 }
 
 .click:hover {
     transform: translateY(-1px);
     filter: brightness(1.01);
     background: color-mix(in oklab, var(--ack-accent) 10%, transparent);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, .14);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -51,20 +52,26 @@
 
 .img {
     display: block;
-    max-inline-size: min(100%, 1240px);
-    inline-size: 100%;
-    block-size: auto;
-    max-height: clamp(42px, 8vw, 84px);
+    width: 100%;
+    max-width: min(100%, 1180px);
+    height: auto;
+    max-height: clamp(48px, 5vw, 82px);
     object-fit: contain;
     image-rendering: auto;
 }
 
+@media (max-width: 640px) {
+    .img {
+        max-height: clamp(42px, 10vw, 68px);
+    }
+}
+
 @media (max-width: 360px) {
     .sectionWrap {
-        padding-block: 0.42rem;
+        padding-block: 0.5rem;
     }
 
     .img {
-        max-height: clamp(36px, 9vw, 70px);
+        max-height: clamp(36px, 11vw, 60px);
     }
 }

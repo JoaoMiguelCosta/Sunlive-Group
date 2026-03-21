@@ -1,5 +1,5 @@
 // src/brands/hotel/pages/Sustainability/index.jsx
-// Estalagem de Sangalhos — SustainabilityPage (reutiliza Home.module.css como layout)
+// Estalagem de Sangalhos — SustainabilityPage
 
 import styles from "../../layouts/HotelPageLayout.module.css";
 
@@ -17,10 +17,12 @@ export default function SustainabilityPageHotel() {
         role="region"
         aria-label="Estalagem de Sangalhos — Sustentabilidade"
       >
-        <SustainabilityCommitmentSection />
-        <HowToParticipateSection />
-        <EnvironmentalImpactSection />
-        <FutureGoalsSection />
+        <div className={styles.contentFlow}>
+          <SustainabilityCommitmentSection />
+          <HowToParticipateSection />
+          <EnvironmentalImpactSection />
+          <FutureGoalsSection />
+        </div>
       </main>
     </div>
   );

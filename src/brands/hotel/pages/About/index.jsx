@@ -1,6 +1,3 @@
-// src/brands/hotel/pages/About/index.jsx
-// Estalagem de Sangalhos — AboutPage (reutiliza Home.module.css como layout)
-
 import styles from "../../layouts/HotelPageLayout.module.css";
 
 import AboutTheHotel from "./Sections/AboutTheHotel";
@@ -18,11 +15,13 @@ export default function AboutPageHotel() {
         role="region"
         aria-label="Estalagem de Sangalhos — About"
       >
-        <AboutTheHotel />
-        <OurStoryMilestonesSection />
-        <OurQualityCommitmentSection />
-        <TheBairradaRegion />
-        <UniqueNaturalSetting />
+        <div className={styles.contentFlow}>
+          <AboutTheHotel />
+          <OurStoryMilestonesSection />
+          <OurQualityCommitmentSection />
+          <TheBairradaRegion />
+          <UniqueNaturalSetting />
+        </div>
       </main>
     </div>
   );

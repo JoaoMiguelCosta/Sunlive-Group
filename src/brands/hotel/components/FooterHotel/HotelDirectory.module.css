@@ -1,82 +1,56 @@
 /* =========================================================
    HotelDirectory — “Links Rápidos” Estalagem de Sangalhos
-   Champanhe-quente #E6C893 (hospitalidade)
+   Ajustado para footer hotel premium
    ========================================================= */
 
 .wrap {
     position: relative;
     width: 100%;
     display: grid;
-
-    /* espaçamento consistente */
-    --block-gap: clamp(16px, 2vw, 20px);
-
-    row-gap: var(--block-gap);
-    margin-block: var(--block-gap);
-
-    /* alinhar com as colunas internas do frame/footer */
-    padding-inline: var(--section-inset);
-
+    row-gap: clamp(1rem, 1.6vw, 1.25rem);
+    margin-block: 0;
+    padding-inline: var(--footer-inner-pad, clamp(16px, 2.4vw, 32px));
+    padding-block: clamp(1rem, 1.8vw, 1.35rem);
     color: var(--sl-platinum-050, #e7ebf3);
 
-    /* Acentos Hotel (ligados ao tema) */
     --chip-accent: var(--sl-accent-500, #E6C893);
-    /* champanhe-quente */
     --chip-accent-soft: var(--sl-accent-400, #EBD3A8);
-    /* mais claro */
     --chip-gold: var(--sl-gold-400, #C78615);
-    --info-accent: var(--sl-accent-500, #E6C893);
-  
-
-
 }
 
 .block {
     display: grid;
-    gap: clamp(10px, 1.2vw, 14px);
+    gap: clamp(0.8rem, 1.2vw, 1rem);
+    min-width: 0;
 }
 
 .blockTitle {
-    font-size: clamp(1rem, 1.3vw, 1.1rem);
-    font-weight: 700;
-    color: var(--sl-platinum-100);
-    letter-spacing: .2px;
     margin: 0;
+    font-size: clamp(0.98rem, 0.3vw + 0.95rem, 1.08rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    color: var(--sl-platinum-100);
 }
 
-/* Grelha de chips */
+/* Grelha mais controlada e proporcional */
 .chipsGrid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: clamp(.6rem, 1.4vw, .9rem);
-}
-
-/* breakpoints da grelha */
-@media (max-width: 1280px) {
-    .chipsGrid {
-        grid-template-columns: repeat(10, 1fr);
-    }
-}
-
-@media (max-width: 980px) {
-    .chipsGrid {
-        grid-template-columns: repeat(6, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .chipsGrid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(0.7rem, 1.2vw, 0.9rem);
+    align-items: stretch;
 }
 
 /* ===== Chip base ===== */
 .chip {
-    --pill-pad-y: .72rem;
-    --pill-pad-x: 1.2rem;
+    --pill-pad-y: clamp(0.72rem, 0.5vw + 0.64rem, 0.88rem);
+    --pill-pad-x: clamp(0.95rem, 0.9vw, 1.2rem);
     --pill-radius: 999px;
 
-    grid-column: auto / span 3;
+    grid-column: span 3;
+    min-width: 0;
+    min-height: clamp(44px, 3vw, 50px);
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -84,84 +58,120 @@
     padding: var(--pill-pad-y) var(--pill-pad-x);
     border-radius: var(--pill-radius);
 
-    /* moldura champanhe, ligeiramente escurecida */
-    border: 2px solid color-mix(in oklab,
-            var(--chip-accent-soft, #EBD3A8) 70%,
-            black 30%);
+    border: 1px solid color-mix(in oklab,
+            var(--chip-accent-soft, #EBD3A8) 68%,
+            black 32%);
 
-    /* fundo: topo com brilho champanhe, base noir-castanho */
     background:
-        radial-gradient(150% 190% at 50% 0,
-            color-mix(in oklab,
-                var(--chip-accent, #E6C893) 42%,
-                #2a1a0b 58%) 0,
-            transparent 60%),
+        radial-gradient(140% 180% at 50% 0%,
+            color-mix(in oklab, var(--chip-accent, #E6C893) 24%, transparent) 0%,
+            transparent 62%),
         linear-gradient(180deg,
-            color-mix(in oklab, #241308 70%, black 30%) 0%,
-            color-mix(in oklab, #140a04 85%, black 15%) 100%);
+            rgba(255, 248, 235, 0.045) 0%,
+            rgba(255, 248, 235, 0.012) 20%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(135deg, #2a180d 0%, #160d07 100%);
 
     color: #fff7ea;
-    /* branco quente, “hotel” */
     text-decoration: none;
-    font-weight: 600;
-    letter-spacing: .2px;
+    font-weight: 700;
+    font-size: clamp(0.92rem, 0.18vw + 0.9rem, 0.98rem);
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    text-align: center;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 8px 18px rgba(0, 0, 0, 0.16);
 
     transition:
-        transform .15s ease,
-        background .15s ease,
-        border-color .15s ease,
-        box-shadow .15s ease,
-        color .15s ease;
+        transform 140ms ease,
+        background 140ms ease,
+        border-color 140ms ease,
+        box-shadow 140ms ease,
+        color 140ms ease;
 }
 
-/* Hover — champanhe + dourado suave */
 .chip:hover {
-transform: translateY(-1px);
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
-    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
+    transform: translateY(-1px);
+    background:
+        radial-gradient(140% 180% at 50% 0%,
+            color-mix(in oklab, var(--chip-gold) 30%, transparent) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.06) 0%,
+            rgba(255, 248, 235, 0.018) 24%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(135deg, #3a2312 0%, #1a0f08 100%);
+    border-color: color-mix(in oklab, var(--chip-gold) 74%, black 26%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .chip:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--chip-accent), transparent 55%);
+    box-shadow:
+        0 0 0 3px color-mix(in oklab, var(--chip-accent), transparent 58%),
+        0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Variante CTA — para 1–2 links mais importantes (ex: Reservas) */
 .chip[data-variant="cta"] {
     background:
-        radial-gradient(170% 190% at 50% 0%,
-            color-mix(in oklab,
-                var(--chip-accent) 40%,
-                var(--chip-gold) 15%),
-            transparent 68%),
-        rgba(5, 14, 30, 0.98);
-
+        radial-gradient(150% 190% at 50% 0%,
+            color-mix(in oklab, var(--chip-accent) 34%, transparent) 0%,
+            transparent 66%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.06) 0%,
+            rgba(255, 248, 235, 0.018) 20%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(135deg, #3b2413 0%, #1a0f08 100%);
     border-color: color-mix(in oklab, var(--chip-accent) 70%, var(--chip-gold) 30%);
 }
 
-/* ===== Responsivo dos chips ===== */
+/* ===== Responsividade ===== */
+
 @media (max-width: 1180px) {
+    .chipsGrid {
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+
     .chip {
-        grid-column: auto / span 4;
+        grid-column: span 4;
     }
 }
 
-@media (max-width: 820px) {
+@media (max-width: 760px) {
+    .wrap {
+        padding-inline: clamp(14px, 4vw, 20px);
+        padding-block: 1rem;
+    }
+
+    .chipsGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
     .chip {
-        grid-column: auto / span 6;
+        grid-column: span 1;
+        white-space: normal;
+        min-height: 46px;
     }
 }
 
 @media (max-width: 520px) {
+    .chipsGrid {
+        grid-template-columns: 1fr;
+    }
+
     .chip {
-        grid-column: auto / span 12;
+        grid-column: auto;
     }
 }
 
-/* Motion reduce */
 @media (prefers-reduced-motion: reduce) {
     .chip {
         transition: none;

@@ -46,14 +46,14 @@ export default function Footer({
       <div
         className={`${styles.frame} ${infoHeaderData ? styles.noTopRule : ""}`}
       >
-        {infoHeaderData && <InfoHeader data={infoHeaderData} />}
+        {infoHeaderData ? <InfoHeader data={infoHeaderData} /> : null}
 
         {linkDirectory && LinkDirectory ? (
           <LinkDirectory data={linkDirectory} />
         ) : null}
 
-        {acknowledgements && <Acknowledgements data={acknowledgements} />}
-        {policiesBar && <PoliciesBar data={policiesBar} />}
+        {acknowledgements ? <Acknowledgements data={acknowledgements} /> : null}
+        {policiesBar ? <PoliciesBar data={policiesBar} /> : null}
       </div>
     </footer>
   );

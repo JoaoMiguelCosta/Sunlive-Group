@@ -1,12 +1,10 @@
 .section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(3rem, 6vw, 5rem);
+    inline-size: 100%;
+   
     overflow: clip;
-    background:
-        radial-gradient(1200px 420px at 18% 18%, rgba(230, 200, 147, 0.16), transparent 60%),
-        radial-gradient(900px 420px at 82% 78%, rgba(230, 200, 147, 0.12), transparent 60%),
-        linear-gradient(180deg, rgba(7, 11, 18, 0.18), rgba(7, 11, 18, 0.02));
+    
 }
 
 .section::before {
@@ -14,21 +12,14 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-        linear-gradient(120deg,
-            rgba(255, 255, 255, 0) 38%,
-            rgba(255, 224, 160, 0.08) 49%,
-            rgba(255, 255, 255, 0) 58%);
+ 
     opacity: 0.8;
 }
 
 .inner {
-    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
-
     position: relative;
     z-index: 1;
-    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--line-inset));
-    margin-inline: auto;
+    inline-size: 100%;
     box-sizing: border-box;
 
     display: grid;

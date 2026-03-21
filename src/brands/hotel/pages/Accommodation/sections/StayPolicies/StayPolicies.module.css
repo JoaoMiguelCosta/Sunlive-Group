@@ -3,10 +3,7 @@
     isolation: isolate;
     padding-block: clamp(2.35rem, 4.4vw, 3.5rem);
 
-    background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.10), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.07), transparent 60%),
-        transparent;
+   
 }
 
 .section::before {
@@ -17,12 +14,8 @@
     inline-size: min(88vw, 1140px);
     block-size: clamp(170px, 22vw, 280px);
     pointer-events: none;
-    background:
-        radial-gradient(circle,
-            rgba(241, 205, 132, 0.13) 0%,
-            rgba(241, 205, 132, 0.04) 36%,
-            rgba(241, 205, 132, 0) 74%);
-    filter: blur(32px);
+  
+  
     opacity: 0.74;
 }
 

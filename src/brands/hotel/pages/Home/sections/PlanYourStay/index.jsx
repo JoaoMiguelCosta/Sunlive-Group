@@ -32,11 +32,13 @@ export default function PlanYourStaySection() {
             <div className={styles.actions}>
               {actionItems.map((action, index) => (
                 <CTAButton
-                  key={action.id}
+                  key={action.id ?? `${action.label}-${index}`}
                   href={action.href}
                   label={action.label}
                   ariaLabel={action.ariaLabel ?? action.label}
-                  Icon={action.Icon}
+                  icon={action.iconKey ?? "phone"}
+                  blink={false}
+                  compact="auto"
                   variant="hotel"
                   tone={action.tone ?? (index === 0 ? "strong" : "soft")}
                   className={styles.actionButton}

@@ -44,7 +44,9 @@ export default function HotelDirectory({ data }) {
     >
       {leftCols.map((col) => (
         <div key={col.key} className={styles.block}>
-          {col.title && <h3 className={styles.blockTitle}>{col.title}</h3>}
+          {col.title ? (
+            <h3 className={styles.blockTitle}>{col.title}</h3>
+          ) : null}
 
           <div className={styles.chipsGrid}>
             {(col.items ?? []).map((item) => {
@@ -52,12 +54,10 @@ export default function HotelDirectory({ data }) {
               const hasHash = href.includes("#");
               const external = isExternalHref(href);
 
-              // compara só o path (sem hash)
               const hrefPath = normalizePath(href.split("#")[0]);
               const isSamePage =
                 !external && !hasHash && hrefPath === currentPath;
 
-              // ✅ Externos: mantém <a>
               if (external) {
                 return (
                   <a
@@ -71,7 +71,6 @@ export default function HotelDirectory({ data }) {
                 );
               }
 
-              // ✅ Hash: deixa o teu hook tratar (smooth + offset)
               if (hasHash) {
                 return (
                   <a
@@ -86,7 +85,6 @@ export default function HotelDirectory({ data }) {
                 );
               }
 
-              // ✅ Internos sem hash: usa Link (SPA) + “same page scroll to top”
               return (
                 <Link
                   key={item.key}

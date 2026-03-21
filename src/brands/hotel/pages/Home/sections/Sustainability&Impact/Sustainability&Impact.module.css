@@ -1,13 +1,13 @@
 .section {
     position: relative;
     isolation: isolate;
+    inline-size: 100%;
     padding-block: 0;
     background: transparent;
 }
 
 .inner {
     inline-size: 100%;
-    margin-inline: auto;
     box-sizing: border-box;
 }
 

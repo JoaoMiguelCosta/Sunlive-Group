@@ -541,17 +541,15 @@
 
 /* =======================================================
    Hotel
-   ======================================================= */
-
-/* =======================================================
-   Hotel
+   - alterado só aqui
+   - largura máxima mantém 1360px
    ======================================================= */
 
 .utilityBar[data-variant="hotel-header"] {
     --accent: #E6C893;
-    --sl-container-lg: 85rem;
-    --ub-touch: clamp(40px, 4.2vw, 50px);
-    --ub-gap: clamp(0.4rem, 0.9vw, 0.7rem);
+    --sl-container-lg: 1360px;
+    --ub-touch: clamp(38px, 3.2vw, 46px);
+    --ub-gap: clamp(0.45rem, 0.8vw, 0.7rem);
 }
 
 .utilityBar[data-variant="hotel-header"] .inner::after {
@@ -564,10 +562,10 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    column-gap: clamp(0.9rem, 1.8vw, 1.5rem);
+    column-gap: clamp(1rem, 1.8vw, 1.6rem);
 
-    min-height: clamp(68px, 6.2vw, 88px);
-    padding-block: 0.35rem 0.2rem;
+    min-height: clamp(76px, 5.6vw, 96px);
+    padding-block: clamp(0.45rem, 0.7vw, 0.65rem) clamp(0.2rem, 0.35vw, 0.3rem);
     border-bottom: 1px solid rgba(230, 200, 147, 0.3);
 }
 
@@ -575,7 +573,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: clamp(0.55rem, 1vw, 0.9rem);
+    gap: clamp(0.6rem, 0.95vw, 0.95rem);
     min-width: 0;
     width: 100%;
     z-index: 2;
@@ -585,7 +583,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: clamp(0.4rem, 0.8vw, 0.7rem);
+    gap: clamp(0.3rem, 0.7vw, 0.6rem);
     min-width: 0;
     width: auto;
     z-index: 2;
@@ -595,20 +593,20 @@
     display: none;
 }
 
-/* logo dentro da zona esquerda, ao lado dos botões */
+/* logo dentro da zona esquerda */
 .utilityBar[data-variant="hotel-header"] .logoLink {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex: 0 0 auto;
-    margin-inline-start: clamp(0.5rem, 1vw, 1rem);
+    margin-inline-start: clamp(0.4rem, 0.8vw, 0.9rem);
 }
 
 .utilityBar[data-variant="hotel-header"] .logoImage {
     display: block;
     width: auto;
-    height: clamp(58px, 4.8vw, 78px);
-    max-width: min(14vw, 120px);
+    height: clamp(72px, 5vw, 96px);
+    max-width: 132px;
     object-fit: contain;
 }
 
@@ -625,13 +623,13 @@
 /* botões hotel */
 .utilityBar[data-variant="hotel-header"] .backLink,
 .utilityBar[data-variant="hotel-header"] .homeLink {
-    min-height: clamp(38px, 4vw, 44px);
-    padding: 0.46rem 0.78rem;
+    min-height: clamp(42px, 3.2vw, 48px);
+    padding: 0.5rem 0.92rem;
 
-    color: rgba(255, 243, 218, 0.92);
+    color: rgba(255, 243, 218, 0.94);
     font-weight: 700;
-    font-size: clamp(0.84rem, 0.88vw, 0.94rem);
-    letter-spacing: 0.02em;
+    font-size: clamp(0.86rem, 0.32vw + 0.82rem, 0.98rem);
+    letter-spacing: 0.015em;
 
     border: 1px solid rgba(230, 200, 147, 0.24);
     background:
@@ -657,11 +655,25 @@
         0 10px 20px rgba(0, 0, 0, 0.16);
 }
 
+.utilityBar[data-variant="hotel-header"] .backText,
+.utilityBar[data-variant="hotel-header"] .homeText {
+    max-inline-size: none;
+}
+
 /* socials hotel */
+.utilityBar[data-variant="hotel-header"] .socials {
+    gap: clamp(0.15rem, 0.35vw, 0.3rem);
+}
+
 .utilityBar[data-variant="hotel-header"] .socialLink {
-    inline-size: clamp(34px, 3.6vw, 40px);
-    block-size: clamp(34px, 3.6vw, 40px);
+    inline-size: clamp(36px, 2.7vw, 42px);
+    block-size: clamp(36px, 2.7vw, 42px);
     color: rgba(255, 243, 218, 0.88);
+}
+
+.utilityBar[data-variant="hotel-header"] .socialIcon {
+    inline-size: clamp(18px, 1.4vw, 22px);
+    block-size: clamp(18px, 1.4vw, 22px);
 }
 
 .utilityBar[data-variant="hotel-header"] .socialLink:hover {
@@ -672,8 +684,8 @@
 /* lang hotel */
 .utilityBar[data-variant="hotel-header"] .langBtn {
     min-width: auto;
-    height: clamp(34px, 3.6vw, 40px);
-    padding-inline: 0.65rem;
+    height: clamp(36px, 2.7vw, 42px);
+    padding-inline: 0.7rem;
     border-radius: 999px;
 }
 
@@ -683,7 +695,7 @@
 
 .utilityBar[data-variant="hotel-header"] .langText {
     color: rgba(255, 243, 218, 0.92);
-    font-size: clamp(0.84rem, 0.88vw, 0.93rem);
+    font-size: clamp(0.84rem, 0.2vw + 0.82rem, 0.94rem);
     letter-spacing: 0.08em;
 }
 
@@ -691,57 +703,104 @@
     color: rgba(230, 200, 147, 0.82);
 }
 
-/* ===== laptops médios ===== */
+/* ===== desktop intermédio ===== */
 @media (max-width: 1180px) {
 
     .utilityBar[data-variant="hotel-header"] .inner,
     .utilityBar[data-variant="hotel-header"] .inner.hasLeft {
         column-gap: 0.8rem;
+        min-height: clamp(70px, 6vw, 86px);
+    }
+
+    .utilityBar[data-variant="hotel-header"] .left {
+        gap: 0.55rem;
+    }
+
+    .utilityBar[data-variant="hotel-header"] .right {
+        gap: 0.3rem;
     }
 
     .utilityBar[data-variant="hotel-header"] .backLink,
     .utilityBar[data-variant="hotel-header"] .homeLink {
-        padding: 0.42rem 0.72rem;
+        min-height: 40px;
+        padding: 0.46rem 0.78rem;
         font-size: 0.88rem;
     }
 
     .utilityBar[data-variant="hotel-header"] .logoImage {
-        height: clamp(52px, 5vw, 70px);
-        max-width: 104px;
+        height: clamp(64px, 5.4vw, 82px);
+        max-width: 118px;
+    }
+
+    .utilityBar[data-variant="hotel-header"] .socialLink,
+    .utilityBar[data-variant="hotel-header"] .langBtn {
+        inline-size: 36px;
+        block-size: 36px;
+    }
+
+    .utilityBar[data-variant="hotel-header"] .langBtn {
+        padding-inline: 0.62rem;
+        width: auto;
     }
 }
 
-/* ===== mobile ===== */
-@media (max-width: 640px) {
+/* ===== tablet ===== */
+@media (max-width: 900px) {
 
     .utilityBar[data-variant="hotel-header"] .inner,
     .utilityBar[data-variant="hotel-header"] .inner.hasLeft {
         grid-template-columns: 1fr;
-        justify-items: center;
-        row-gap: 0.5rem;
+        row-gap: 0.55rem;
         min-height: auto;
-        padding-block: 0.5rem 0.35rem;
+        padding-block: 0.55rem 0.35rem;
     }
 
     .utilityBar[data-variant="hotel-header"] .left,
     .utilityBar[data-variant="hotel-header"] .right {
         width: 100%;
-        justify-content: center;
     }
 
     .utilityBar[data-variant="hotel-header"] .left {
+        justify-content: center;
         flex-wrap: wrap;
     }
 
+    .utilityBar[data-variant="hotel-header"] .right {
+        justify-content: center;
+    }
+
     .utilityBar[data-variant="hotel-header"] .logoLink {
-        width: 100%;
         margin-inline-start: 0;
+        order: -1;
+        width: 100%;
     }
 
     .utilityBar[data-variant="hotel-header"] .logoImage {
-        height: clamp(48px, 10vw, 60px);
-        max-width: min(40vw, 180px);
+        height: clamp(58px, 8vw, 74px);
+        max-width: 112px;
         margin-inline: auto;
+    }
+}
+
+/* ===== mobile ===== */
+@media (max-width: 640px) {
+    .utilityBar[data-variant="hotel-header"] {
+        --line-inset: clamp(12px, 4vw, 18px);
+    }
+
+    .utilityBar[data-variant="hotel-header"] .inner,
+    .utilityBar[data-variant="hotel-header"] .inner.hasLeft {
+        row-gap: 0.5rem;
+        padding-block: 0.5rem 0.3rem;
+    }
+
+    .utilityBar[data-variant="hotel-header"] .left {
+        gap: 0.45rem;
+    }
+
+    .utilityBar[data-variant="hotel-header"] .logoImage {
+        height: clamp(54px, 12vw, 66px);
+        max-width: 100px;
     }
 
     .utilityBar[data-variant="hotel-header"] .backLink,
@@ -758,7 +817,7 @@
 
     .utilityBar[data-variant="hotel-header"] .langBtn {
         height: 34px;
-        padding-inline: 0.58rem;
+        padding-inline: 0.56rem;
     }
 
     .utilityBar[data-variant="hotel-header"] .langText {
@@ -770,28 +829,40 @@
 /* ===== extra small ===== */
 @media (max-width: 420px) {
     .utilityBar[data-variant="hotel-header"] .left {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        justify-items: center;
-        gap: 0.45rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
         width: 100%;
         max-width: 320px;
         margin-inline: auto;
     }
 
-    .utilityBar[data-variant="hotel-header"] .logoLink {
-        grid-column: 1 / -1;
-        width: 100%;
-        justify-content: center;
-    }
-
     .utilityBar[data-variant="hotel-header"] .backLink,
     .utilityBar[data-variant="hotel-header"] .homeLink {
-        inline-size: 100%;
+        width: 100%;
         min-height: 34px;
-        padding: 0.4rem 0.55rem;
-        font-size: 0.78rem;
-        gap: 0.4rem;
+        justify-content: center;
+        padding: 0.42rem 0.7rem;
+        font-size: 0.8rem;
+        gap: 0.42rem;
+    }
+
+    .utilityBar[data-variant="hotel-header"] .logoLink {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        margin: 0;
+        order: 3;
+    }
+
+    .utilityBar[data-variant="hotel-header"] .logoImage {
+        display: block;
+        height: clamp(44px, 11vw, 56px);
+        max-width: 86px;
+        margin-inline: auto;
     }
 
     .utilityBar[data-variant="hotel-header"] .backText,
@@ -827,3 +898,4 @@
         font-size: 0.82rem;
     }
 }
+

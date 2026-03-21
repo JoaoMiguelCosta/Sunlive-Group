@@ -5,19 +5,27 @@
     align-self: center;
     text-decoration: none;
     line-height: 1;
+    flex: 0 0 auto;
 }
 
 .logoImage {
     display: block;
-    height: clamp(76px, 5.55vw, 94px);
+    height: clamp(76px, 5.1vw, 92px);
     width: auto;
-    max-width: 490px;
+    max-width: 220px;
     object-fit: contain;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1180px) {
     .logoImage {
-        height: clamp(60px, 9.6vw, 76px);
-        max-width: 400px;
+        height: clamp(60px, 7vw, 76px);
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 640px) {
+    .logoImage {
+        height: clamp(48px, 10vw, 60px);
+        max-width: min(42vw, 170px);
     }
 }

@@ -12,9 +12,6 @@
     isolation: isolate;
     overflow: hidden;
 
-    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem)));
-    margin-inline: auto;
-
     min-block-size: clamp(360px, 46vw, 540px);
     border-radius: 0 0 28px 28px;
     border: 1px solid rgba(230, 200, 147, 0.2);
@@ -79,7 +76,6 @@
 
     min-block-size: inherit;
     padding-block: clamp(2.6rem, 6vw, 4.4rem);
-    padding-inline: clamp(1.25rem, 3vw, 2.4rem);
 
     display: flex;
     flex-direction: column;
@@ -106,10 +102,27 @@
     flex-direction: column;
     align-items: center;
     gap: 0.8rem;
+    width: 100%;
 }
 
-.cta {
+.ctaButton {
+    width: auto;
+    max-width: min(100%, 26rem);
     margin-top: 0.25rem;
+}
+
+@media (max-width: 1024px) {
+    .inner {
+        min-block-size: clamp(340px, 52vw, 500px);
+    }
+
+    .logo {
+        inline-size: clamp(146px, 20vw, 190px);
+    }
+
+    .ctaButton {
+        max-width: min(100%, 24rem);
+    }
 }
 
 @media (max-width: 768px) {
@@ -124,10 +137,47 @@
 
     .contentShell {
         padding-block: clamp(2rem, 8vw, 3rem);
-        padding-inline: 1rem;
     }
 
     .logo {
         inline-size: clamp(136px, 38vw, 182px);
+    }
+
+    .ctaButton {
+        max-width: min(100%, 21rem);
+    }
+}
+
+@media (max-width: 560px) {
+    .contentShell {
+        gap: 0.9rem;
+    }
+
+    .logo {
+        inline-size: clamp(122px, 36vw, 156px);
+    }
+
+    .ctaButton {
+        width: 100%;
+        max-width: 19rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .inner {
+        min-block-size: clamp(300px, 88vw, 390px);
+    }
+
+    .contentShell {
+        padding-block: 1.8rem 2rem;
+    }
+
+    .logo {
+        inline-size: clamp(110px, 33vw, 138px);
+    }
+
+    .ctaButton {
+        width: 100%;
+        max-width: 100%;
     }
 }

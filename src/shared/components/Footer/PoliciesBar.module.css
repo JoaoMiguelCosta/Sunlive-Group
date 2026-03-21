@@ -1,11 +1,11 @@
-/* Policies Bar — shared, mais discreta e mais limpa */
+/* Policies Bar — shared, ajustado para encaixar melhor no footer hotel */
 
 .sectionWrap {
     position: relative;
     background: transparent;
     color: var(--sl-platinum-100);
-    padding-block: clamp(0.6rem, 1.3vw, 0.95rem);
-    padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(0.6rem, 1.3vw, 0.95rem));
+    padding-block: clamp(0.62rem, 1vw, 0.9rem);
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(0.62rem, 1vw, 0.9rem));
 
     --policies-accent: var(--footer-accent, var(--sl-gold-400, #c78615));
 
@@ -13,9 +13,9 @@
 }
 
 .inner {
-    width: min(var(--sl-container-lg), 100%);
+    width: 100%;
     margin-inline: auto;
-    padding-inline: clamp(0.75rem, 4vw, 1rem);
+    padding-inline: var(--footer-inner-pad, clamp(16px, 2.2vw, 32px));
     box-sizing: border-box;
 
     display: grid;
@@ -53,7 +53,7 @@
     text-decoration: none;
     font-weight: 600;
     white-space: nowrap;
-    font-size: clamp(0.9rem, 0.4vw + 0.85rem, 0.98rem);
+    font-size: clamp(0.88rem, 0.22vw + 0.86rem, 0.96rem);
     line-height: 1.2;
 }
 
@@ -84,8 +84,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    inline-size: clamp(18px, 1.6vw, 22px);
-    block-size: clamp(18px, 1.6vw, 22px);
+    inline-size: clamp(18px, 1.4vw, 22px);
+    block-size: clamp(18px, 1.4vw, 22px);
     border: 1px solid color-mix(in oklab, var(--policies-accent), transparent 36%);
     border-radius: 999px;
     color: var(--policies-accent);
@@ -96,7 +96,7 @@
 .copyText {
     font-weight: 600;
     opacity: 0.92;
-    font-size: clamp(0.88rem, 0.35vw + 0.82rem, 0.96rem);
+    font-size: clamp(0.86rem, 0.18vw + 0.84rem, 0.94rem);
     white-space: nowrap;
 }
 
@@ -120,5 +120,9 @@
 
     .divider {
         margin: 0 0.25rem 0 0.5rem;
+    }
+
+    .copyText {
+        white-space: normal;
     }
 }

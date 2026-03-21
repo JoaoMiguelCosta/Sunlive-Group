@@ -1,12 +1,10 @@
 .section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(3.25rem, 6vw, 5.5rem);
+    inline-size: 100%;
+  
     overflow: clip;
-    background:
-        radial-gradient(1200px 420px at 12% 0%, rgba(230, 200, 147, 0.12), transparent 62%),
-        radial-gradient(980px 460px at 88% 100%, rgba(230, 200, 147, 0.08), transparent 64%),
-        linear-gradient(180deg, rgba(7, 12, 20, 0) 0%, rgba(7, 12, 20, 0.08) 100%);
+    
 }
 
 .section::before {
@@ -14,26 +12,18 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-        linear-gradient(90deg,
-            rgba(212, 163, 74, 0.08) 0%,
-            rgba(212, 163, 74, 0.03) 18%,
-            rgba(212, 163, 74, 0) 50%,
-            rgba(212, 163, 74, 0.03) 82%,
-            rgba(212, 163, 74, 0.08) 100%);
+ 
     opacity: 0.75;
 }
 
 .inner {
-    --section-inline: var(--section-inset, clamp(0.9rem, 4vw, 2.5rem));
-
     position: relative;
     z-index: 1;
-    width: min(var(--sl-container-xl, 1360px), calc(100% - (var(--section-inline) * 2)));
-    margin-inline: auto;
+    inline-size: 100%;
+    box-sizing: border-box;
+
     display: grid;
     gap: clamp(1.25rem, 2vw, 1.8rem);
-    box-sizing: border-box;
 }
 
 .introBlock {

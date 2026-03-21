@@ -1,51 +1,36 @@
 .section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(2.5rem, 5vw, 3.8rem);
-
-    background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.10), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.07), transparent 60%),
-        transparent;
+    inline-size: 100%;
+    padding-block: clamp(3.25rem, 6vw, 5.5rem);
+    overflow: clip;
+    
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 7% auto auto 50%;
-    translate: -50% 0;
-    inline-size: min(88vw, 1160px);
-    block-size: clamp(180px, 22vw, 280px);
+    inset: 0;
     pointer-events: none;
-
-    background:
-        radial-gradient(circle,
-            rgba(241, 205, 132, 0.13) 0%,
-            rgba(241, 205, 132, 0.04) 36%,
-            rgba(241, 205, 132, 0) 74%);
-    filter: blur(34px);
-    opacity: 0.78;
+  
+    opacity: 0.75;
 }
 
 .inner {
     position: relative;
     z-index: 1;
-    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - (2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem))));
-    margin-inline: auto;
+    inline-size: 100%;
     box-sizing: border-box;
-
     display: grid;
-    gap: 0;
+    gap: clamp(1.25rem, 2vw, 1.8rem);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .section {
-        padding-block: 2rem;
+        padding-block: clamp(2.6rem, 8vw, 3.6rem);
     }
 
-    .section::before {
-        inline-size: 100%;
-        block-size: 160px;
-        inset-block-start: 4%;
+    .inner {
+        gap: 1rem;
     }
 }
