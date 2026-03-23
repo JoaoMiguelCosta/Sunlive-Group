@@ -17,7 +17,7 @@ export default function PanoramicRestaurantPhotoCarousel() {
     hotelBrand?.pages?.dining?.sections?.panoramicRestaurant ?? null;
 
   const gallery = section?.gallery ?? null;
-  const highlight = section?.highlightCard ?? null;
+  const highlightCard = section?.highlightCard ?? null;
 
   const items = useMemo(() => gallery?.items ?? [], [gallery?.items]);
   const fallbackLabel = gallery?.fallbackLabel ?? "Restaurante Panorâmico";
@@ -40,46 +40,64 @@ export default function PanoramicRestaurantPhotoCarousel() {
     setActiveIndex((prev) => clampIndex(prev + 1, items.length));
   }, [hasItems, items.length]);
 
-  const HighlightIcon = highlight?.iconKey
-    ? resolveHotelIcon(ICONS, highlight.iconKey)
+  const handleSelectIndex = useCallback(
+    (index) => {
+      if (!hasItems) return;
+      setActiveIndex(clampIndex(index, items.length));
+    },
+    [hasItems, items.length],
+  );
+
+  const HighlightIcon = highlightCard?.iconKey
+    ? resolveHotelIcon(ICONS, highlightCard.iconKey)
     : null;
+
+  const showHighlight = Boolean(
+    highlightCard?.title || highlightCard?.text || HighlightIcon,
+  );
 
   return (
     <div
       className={styles.frame}
       id={section?.id ?? "restaurante-panoramico"}
-      aria-label={section?.headerLabel ?? "Galeria principal do restaurante"}
+      aria-label={section?.headerLabel ?? "Galeria do restaurante panorâmico"}
     >
-      <div className={styles.card}>
-        <HotelPhotoCarouselBase
-          items={items}
-          activeIndex={activeIndex}
-          onPrev={goPrev}
-          onNext={goNext}
-          fallbackLabel={fallbackLabel}
-          className={styles.carouselStage}
-        />
+      <div className={styles.shell}>
+        <div className={styles.card}>
+          <HotelPhotoCarouselBase
+            items={items}
+            activeIndex={activeIndex}
+            onPrev={goPrev}
+            onNext={goNext}
+            onSelectIndex={handleSelectIndex}
+            fallbackLabel={fallbackLabel}
+            className={styles.carouselStage}
+            showIndicators
+          />
 
-        {(highlight?.title || highlight?.text) && (
-          <div
-            className={styles.highlight}
-            aria-label="Destaque do restaurante"
-          >
-            <div className={styles.highlightHeader}>
-              <span className={styles.highlightIconSlot} aria-hidden="true">
-                {HighlightIcon ? <HighlightIcon size={18} /> : null}
-              </span>
+          {showHighlight ? (
+            <div
+              className={styles.highlightCard}
+              aria-label={highlightCard?.title ?? "Destaque"}
+            >
+              <div className={styles.highlightHeader}>
+                <span className={styles.highlightIcon} aria-hidden="true">
+                  {HighlightIcon ? <HighlightIcon size={18} /> : null}
+                </span>
 
-              {highlight?.title ? (
-                <h3 className={styles.highlightTitle}>{highlight.title}</h3>
+                {highlightCard?.title ? (
+                  <h3 className={styles.highlightTitle}>
+                    {highlightCard.title}
+                  </h3>
+                ) : null}
+              </div>
+
+              {highlightCard?.text ? (
+                <p className={styles.highlightText}>{highlightCard.text}</p>
               ) : null}
             </div>
-
-            {highlight?.text ? (
-              <p className={styles.highlightBody}>{highlight.text}</p>
-            ) : null}
-          </div>
-        )}
+          ) : null}
+        </div>
       </div>
     </div>
   );

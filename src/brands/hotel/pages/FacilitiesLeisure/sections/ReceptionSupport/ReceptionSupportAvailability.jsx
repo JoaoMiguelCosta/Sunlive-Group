@@ -2,12 +2,27 @@ import hotelBrand from "../../../../config/index.js";
 
 import styles from "./ReceptionSupportAvailability.module.css";
 
-function PlaceholderImage() {
+function PlaceholderImage({ label = "Foto" }) {
   return (
     <div className={styles.imagePlaceholder} aria-hidden="true">
-      Foto
+      <span className={styles.placeholderLabel}>{label}</span>
     </div>
   );
+}
+
+function MediaSlot({ image, fallbackLabel }) {
+  if (image?.src) {
+    return (
+      <img
+        className={styles.image}
+        src={image.src}
+        alt={image.alt ?? ""}
+        loading="lazy"
+      />
+    );
+  }
+
+  return <PlaceholderImage label={fallbackLabel} />;
 }
 
 export default function ReceptionSupportAvailability() {
@@ -17,20 +32,24 @@ export default function ReceptionSupportAvailability() {
 
   if (!availability) return null;
 
+  const images = Array.isArray(availability.images)
+    ? availability.images.slice(0, 2)
+    : [];
+
+  const firstImage = images[0] ?? null;
+  const secondImage = images[1] ?? null;
+
   return (
     <div id={availability.id} className={styles.block}>
       <div className={styles.card}>
-        <div className={styles.media}>
-          {availability.image ? (
-            <img
-              className={styles.image}
-              src={availability.image}
-              alt={availability.imageAlt ?? ""}
-              loading="lazy"
-            />
-          ) : (
-            <PlaceholderImage />
-          )}
+        <div className={styles.mediaGrid}>
+          <div className={styles.mediaItem}>
+            <MediaSlot image={firstImage} fallbackLabel="Foto 1" />
+          </div>
+
+          <div className={styles.mediaItem}>
+            <MediaSlot image={secondImage} fallbackLabel="Foto 2" />
+          </div>
         </div>
 
         {availability.caption ? (

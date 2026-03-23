@@ -2,7 +2,14 @@
     display: grid;
     grid-template-columns: minmax(300px, 0.98fr) minmax(300px, 1.02fr);
     gap: clamp(0.9rem, 1.6vw, 1.3rem);
+}
+
+.wrapperStretch {
     align-items: stretch;
+}
+
+.wrapperCompact {
+    align-items: start;
 }
 
 .mediaRight {
@@ -15,15 +22,24 @@
 
 .listCard {
     grid-area: list;
+    position: relative;
+    overflow: hidden;
     border: 1px solid rgba(199, 134, 21, 0.62);
     border-radius: clamp(18px, 2.2vw, 24px);
     background:
         radial-gradient(900px 220px at 20% 10%, rgba(230, 200, 147, 0.10), transparent 60%),
         linear-gradient(90deg, rgba(70, 40, 14, 0.96), rgba(38, 23, 11, 0.99) 72%);
-    overflow: hidden;
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.04),
         0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.listCardStretch {
+    align-self: stretch;
+}
+
+.listCardCompact {
+    align-self: start;
 }
 
 .list {
@@ -115,19 +131,53 @@
     grid-area: media;
     display: flex;
     align-items: stretch;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: clamp(18px, 2.2vw, 24px);
+}
+
+.mediaStretch {
+    align-self: stretch;
+}
+
+.mediaCompact {
+    align-self: start;
 }
 
 .image,
 .imagePlaceholder {
     width: 100%;
-    min-height: 280px;
     border: 1px solid rgba(199, 134, 21, 0.62);
     border-radius: clamp(18px, 2.2vw, 24px);
+}
+
+.wrapperStretch .image,
+.wrapperStretch .imagePlaceholder {
+    min-height: 280px;
+    height: 100%;
+}
+
+.wrapperCompact .image,
+.wrapperCompact .imagePlaceholder {
+    height: var(--feature-media-height, auto);
+    min-height: 0;
 }
 
 .image {
     display: block;
     object-fit: cover;
+    background: #1f130a;
+    transform: scale(1.01);
+    filter: saturate(1.02) contrast(1.01);
+    transition:
+        transform 320ms ease,
+        filter 320ms ease;
+    will-change: transform;
+}
+
+.wrapper:hover .image {
+    transform: scale(1.055);
+    filter: saturate(1.06) contrast(1.03);
 }
 
 .imagePlaceholder {
@@ -138,11 +188,28 @@
         radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.08), rgba(255, 255, 255, 0) 55%),
         linear-gradient(180deg, rgba(70, 40, 14, 0.96), rgba(38, 23, 11, 1));
     color: rgba(255, 248, 236, 0.92);
-    font-size: clamp(1.8rem, 3vw, 2.7rem);
-    font-weight: 500;
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.04),
         0 14px 30px rgba(0, 0, 0, 0.16);
+}
+
+.placeholderLabel {
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    font-weight: 500;
+}
+
+@media (hover: none) {
+    .image {
+        transform: scale(1.01);
+        transition:
+            transform 220ms ease,
+            filter 220ms ease;
+    }
+
+    .wrapper:hover .image {
+        transform: scale(1.01);
+        filter: saturate(1.02) contrast(1.01);
+    }
 }
 
 @media (max-width: 960px) {
@@ -154,11 +221,22 @@
         grid-template-areas:
             "list"
             "media";
+        align-items: start;
     }
 
-    .image,
-    .imagePlaceholder {
+    .listCardStretch,
+    .listCardCompact,
+    .mediaStretch,
+    .mediaCompact {
+        align-self: start;
+    }
+
+    .wrapperStretch .image,
+    .wrapperStretch .imagePlaceholder,
+    .wrapperCompact .image,
+    .wrapperCompact .imagePlaceholder {
         min-height: 240px;
+        height: auto;
     }
 }
 
@@ -187,9 +265,20 @@
         font-size: 0.88rem;
     }
 
-    .image,
-    .imagePlaceholder {
+    .wrapperStretch .image,
+    .wrapperStretch .imagePlaceholder,
+    .wrapperCompact .image,
+    .wrapperCompact .imagePlaceholder {
         min-height: 210px;
+        height: auto;
         border-radius: 18px;
+    }
+
+    .media {
+        border-radius: 18px;
+    }
+
+    .wrapper:hover .image {
+        transform: scale(1.035);
     }
 }

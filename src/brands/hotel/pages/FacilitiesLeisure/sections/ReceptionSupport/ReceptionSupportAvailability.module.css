@@ -4,43 +4,92 @@
 }
 
 .card {
+    position: relative;
     overflow: hidden;
-    border: 1px solid rgba(199, 134, 21, 0.62);
+    border: 1px solid rgba(199, 134, 21, 0.58);
     border-radius: clamp(20px, 2.4vw, 28px);
     background:
-        radial-gradient(900px 220px at 50% -12%, rgba(230, 200, 147, 0.08), transparent 60%),
+        radial-gradient(1000px 260px at 50% -10%, rgba(230, 200, 147, 0.10), transparent 60%),
         linear-gradient(180deg, rgba(52, 28, 10, 0.98) 0%, rgba(38, 23, 11, 1) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 16px 34px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 18px 42px rgba(0, 0, 0, 0.24);
 }
 
-.media {
-    display: flex;
-    align-items: stretch;
+.mediaGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(0.55rem, 1vw, 0.8rem);
+    padding: clamp(0.7rem, 1vw, 0.9rem);
+}
+
+.mediaItem {
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+    border-radius: clamp(14px, 1.6vw, 20px);
+    border: 1px solid rgba(230, 200, 147, 0.18);
+    background:
+        linear-gradient(180deg, rgba(255, 248, 235, 0.04) 0%, rgba(255, 248, 235, 0.015) 100%),
+        rgba(24, 15, 8, 0.88);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.mediaItem::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 24%),
+        radial-gradient(circle at 50% 50%, transparent 52%, rgba(15, 9, 5, 0.08) 100%);
+    z-index: 2;
 }
 
 .image,
 .imagePlaceholder {
+    display: block;
     width: 100%;
-    min-height: clamp(240px, 30vw, 340px);
+    aspect-ratio: 16 / 9;
+    min-height: clamp(220px, 26vw, 340px);
 }
 
 .image {
-    display: block;
+    position: relative;
+    z-index: 1;
     object-fit: cover;
+    object-position: center;
+    transform: scale(1.01);
+    transition:
+        transform 260ms ease,
+        filter 260ms ease;
+    filter: saturate(1.02) contrast(1.02);
+}
+
+.card:hover .image {
+    transform: scale(1.03);
+    filter: saturate(1.05) contrast(1.03);
 }
 
 .imagePlaceholder {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     background:
-        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.08), rgba(255, 255, 255, 0) 55%),
+        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.10), rgba(255, 255, 255, 0) 55%),
         linear-gradient(180deg, rgba(70, 40, 14, 0.96), rgba(38, 23, 11, 1));
-    color: rgba(255, 248, 236, 0.92);
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 600;
+}
+
+.placeholderLabel {
+    color: rgba(255, 248, 236, 0.9);
+    font-size: clamp(1.1rem, 2vw, 1.65rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 .captionBar {
@@ -48,8 +97,11 @@
     align-items: center;
     min-height: 64px;
     padding: 0.9rem 1.15rem;
-    border-top: 1px solid rgba(199, 134, 21, 0.58);
-    background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
+    border-top: 1px solid rgba(199, 134, 21, 0.52);
+    background:
+        linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.14);
 }
 
 .caption {
@@ -61,14 +113,37 @@
     text-wrap: balance;
 }
 
-@media (max-width: 640px) {
-    .card {
-        border-radius: 18px;
+@media (max-width: 900px) {
+    .mediaGrid {
+        gap: 0.65rem;
+        padding: 0.65rem;
     }
 
     .image,
     .imagePlaceholder {
         min-height: 200px;
+    }
+}
+
+@media (max-width: 640px) {
+    .card {
+        border-radius: 18px;
+    }
+
+    .mediaGrid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+        padding: 0.7rem;
+    }
+
+    .mediaItem {
+        border-radius: 16px;
+    }
+
+    .image,
+    .imagePlaceholder {
+        min-height: 190px;
+        aspect-ratio: 16 / 10;
     }
 
     .captionBar {
@@ -78,5 +153,17 @@
 
     .caption {
         font-size: 0.92rem;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .image,
+    .imagePlaceholder {
+        min-height: 170px;
+    }
+
+    .placeholderLabel {
+        font-size: 1rem;
     }
 }

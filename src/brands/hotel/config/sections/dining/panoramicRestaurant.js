@@ -1,3 +1,7 @@
+import panoramicRestaurantImage1 from "../../../assets/panoramic-restaurant1.webp";
+import panoramicRestaurantImage2 from "../../../assets/panoramic-restaurant2.webp";
+import panoramicRestaurantImage3 from "../../../assets/panoramic-restaurant3.webp";
+
 export const panoramicRestaurant = {
   id: "restaurante-panoramico",
   headerLabel: "Restaurante Panorâmico",
@@ -13,51 +17,54 @@ export const panoramicRestaurant = {
     items: [
       {
         id: "pr-01",
-        src: null,
+        src: panoramicRestaurantImage1,
         alt: "Restaurante Panorâmico — vista geral da sala",
       },
       {
         id: "pr-02",
-        src: null,
-        alt: "Restaurante Panorâmico — zona de buffet",
+        src: panoramicRestaurantImage2,
+        alt: "Restaurante Panorâmico — zona de refeição e buffet",
       },
-      
+      {
+        id: "pr-03",
+        src: panoramicRestaurantImage3,
+        alt: "Restaurante Panorâmico — ambiente interior panorâmico",
+      },
     ],
+  },
 
-    gallerySecondary: {
-      fallbackLabel: "Ambiente e Detalhes",
-      items: [
-        {
-          id: "pr-b-01",
-          src: null,
-          alt: "Restaurante Panorâmico — detalhe do espaço interior",
-        },
-        {
-          id: "pr-b-02",
-          src: null,
-          alt: "Restaurante Panorâmico — detalhe da zona de refeição",
-        },
-        {
-          id: "pr-b-03",
-          src: null,
-          alt: "Restaurante Panorâmico — detalhe do ambiente do restaurante",
-        },
-      ],
-      cta: {
-        label: "Contactar para mais informações",
-        href: "tel:+351234745133",
-        ariaLabel: "Ligar para o número +351 234 745 133 para mais informações",
-        external: false,
-        iconKey: "phone",
+  gallerySecondary: {
+    fallbackLabel: "Ambiente e Detalhes",
+    items: [
+      {
+        id: "pr-b-01",
+        src: null,
+        alt: "Restaurante Panorâmico — detalhe do espaço interior",
       },
+      {
+        id: "pr-b-02",
+        src: null,
+        alt: "Restaurante Panorâmico — detalhe da zona de refeição",
+      },
+      {
+        id: "pr-b-03",
+        src: null,
+        alt: "Restaurante Panorâmico — detalhe do ambiente do restaurante",
+      },
+    ],
+    cta: {
+      label: "Contactar para mais informações",
+      href: "tel:+351234745133",
+      ariaLabel: "Ligar para o número +351 234 745 133 para mais informações",
+      external: false,
+      iconKey: "phone",
     },
   },
 
   highlightCard: {
-    icon: "cutlery",
+    iconKey: "cutlery",
     title: "Restaurante Panorâmico",
     text: "Vista panorâmica sobre a Bairrada, num ambiente acolhedor onde a cozinha combina sabores tradicionais, equilíbrio nutricional e atenção ao detalhe.",
-    iconKey: "cutlery",
   },
 };
 

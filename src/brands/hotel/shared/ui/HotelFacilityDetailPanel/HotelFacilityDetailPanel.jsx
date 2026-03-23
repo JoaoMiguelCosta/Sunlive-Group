@@ -33,6 +33,7 @@ export default function HotelFacilityDetailPanel({
   features = [],
   image = null,
   imageAlt = "",
+  imagePosition = "center center",
 }) {
   return (
     <div
@@ -41,7 +42,7 @@ export default function HotelFacilityDetailPanel({
       role="region"
       aria-labelledby={labelledBy}
     >
-      <div className={styles.infoCard}>
+      <article className={styles.infoCard}>
         <header className={styles.header}>
           <IconSlot icon={icon} iconLabel={iconLabel} />
           <h3 className={styles.title}>{title}</h3>
@@ -57,7 +58,7 @@ export default function HotelFacilityDetailPanel({
             </li>
           ))}
         </ul>
-      </div>
+      </article>
 
       <div className={styles.media}>
         {image ? (
@@ -66,6 +67,7 @@ export default function HotelFacilityDetailPanel({
             src={image}
             alt={imageAlt}
             loading="lazy"
+            style={{ objectPosition: imagePosition }}
           />
         ) : (
           <PlaceholderImage />

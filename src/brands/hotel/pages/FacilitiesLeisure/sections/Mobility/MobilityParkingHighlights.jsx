@@ -37,7 +37,9 @@ export default function MobilityParkingHighlights() {
         items={items}
         image={highlights?.image ?? null}
         imageAlt={highlights?.imageAlt ?? ""}
+        imageObjectPosition={highlights?.imageObjectPosition ?? "center center"}
         mediaPosition={highlights?.mediaPosition ?? "left"}
+        layoutMode="compact"
       />
     </div>
   );

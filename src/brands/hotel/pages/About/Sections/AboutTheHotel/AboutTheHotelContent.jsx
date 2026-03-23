@@ -39,17 +39,20 @@ export default function AboutTheHotelContent() {
 
   if (!aboutSection) return null;
 
-  const { text, media } = aboutSection;
+  const paragraphs = Array.isArray(aboutSection?.text?.paragraphs)
+    ? aboutSection.text.paragraphs
+    : [];
 
-  const paragraphs = Array.isArray(text?.paragraphs) ? text.paragraphs : [];
-  const highlightText = text?.highlightPill?.text ?? "";
-  const imageSrc = media?.imageSrc ?? null;
-  const imageAlt = media?.imageAlt ?? "Imagem da Estalagem de Sangalhos";
+  const highlightText = aboutSection?.text?.highlightPill?.text ?? "";
+  const imageSrc = aboutSection?.media?.imageSrc ?? null;
+  const imageAlt =
+    aboutSection?.media?.imageAlt ??
+    "Imagem da Estalagem de Sangalhos – Sport & Nature Hotel";
 
   const [firstParagraph, ...otherParagraphs] = paragraphs;
 
   return (
-    <div className={styles.content}>
+    <section className={styles.content} aria-label={aboutSection?.headerLabel}>
       <div className={styles.textCol}>
         <div className={styles.copy}>
           {firstParagraph ? (
@@ -75,7 +78,7 @@ export default function AboutTheHotelContent() {
       </div>
 
       <div className={styles.mediaCol}>
-        <div className={styles.mediaShell}>
+        <figure className={styles.mediaShell}>
           <div className={styles.mediaFrame}>
             {imageSrc ? (
               <img
@@ -83,6 +86,7 @@ export default function AboutTheHotelContent() {
                 alt={imageAlt}
                 className={styles.mediaImage}
                 loading="lazy"
+                decoding="async"
               />
             ) : (
               <div className={styles.mediaPlaceholder}>
@@ -91,9 +95,10 @@ export default function AboutTheHotelContent() {
             )}
 
             <div className={styles.mediaOverlay} aria-hidden="true" />
+            <div className={styles.mediaGlow} aria-hidden="true" />
           </div>
-        </div>
+        </figure>
       </div>
-    </div>
+    </section>
   );
 }

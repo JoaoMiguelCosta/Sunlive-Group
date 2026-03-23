@@ -1,3 +1,7 @@
+import wellBeing1 from "../../../assets/well-being1.webp";
+import wellBeing2 from "../../../assets/well-being2.webp";
+import wellBeing3 from "../../../assets/well-being3.webp";
+
 export const wellBeing = {
   id: "well-being",
   headerLabel: "Bem-estar e Lazer",
@@ -14,8 +18,7 @@ export const wellBeing = {
         ariaLabel: "Ícone de piscina exterior",
         component: null,
       },
-      summary:
-        "Piscina sazonal com espreguiçadeiras e vista para a paisagem.",
+      summary: "Piscina sazonal com espreguiçadeiras e vista para a paisagem.",
       details: {
         title: "Piscina Exterior",
         features: [
@@ -25,8 +28,9 @@ export const wellBeing = {
           "Vista panorâmica",
           "Zona de sombra disponível",
         ],
-        image: null,
+        image: wellBeing1,
         imageAlt: "Piscina exterior da Estalagem de Sangalhos",
+        imagePosition: "center 58%",
       },
     },
     {
@@ -40,14 +44,15 @@ export const wellBeing = {
       },
       summary: "Equipamentos de cardio, pesos livres e zona funcional.",
       details: {
-        title: "Ginásio Equipado",
+        title: "Ginásios Equipados",
         features: [
           "Equipamentos de cardio e musculação",
           "Zona de treino funcional",
           "Ginásio interior e exterior",
         ],
-        image: null,
+        image: wellBeing2,
         imageAlt: "Ginásio equipado da Estalagem de Sangalhos",
+        imagePosition: "center 42%",
       },
     },
     {
@@ -70,6 +75,7 @@ export const wellBeing = {
         ],
         image: null,
         imageAlt: "Sauna da Estalagem de Sangalhos",
+        imagePosition: "center center",
       },
     },
     {
@@ -91,8 +97,9 @@ export const wellBeing = {
           "Matraquilhos com necessidade de moedas",
           "Solicitar na receção",
         ],
-        image: null,
+        image: wellBeing3,
         imageAlt: "Zona de jogos e entretenimento da Estalagem de Sangalhos",
+        imagePosition: "center center",
       },
     },
   ],

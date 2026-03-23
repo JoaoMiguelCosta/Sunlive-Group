@@ -4,8 +4,7 @@
    CTAButton — base + variantes (hero/sports/hotel)
    - Base neutra e segura para uso global
    - Hero e Sports preservadas
-   - Hotel refinada para look premium
-   - Tone opcional para hierarquia visual
+   - Hotel alinhada com as dimensões do botão "Aproximar"
    =========================================== */
 
 .button {
@@ -367,8 +366,7 @@
 
 /* =========================================================
    VARIANTE HOTEL
-   - Atualizada para todas as telas
-   - Apenas esta secção foi ajustada
+   - Dimensões alinhadas com o botão "Aproximar"
    ========================================================= */
 
 .button--hotel {
@@ -382,24 +380,26 @@
     --hotel-halo-soft: rgba(230, 200, 147, 0.08);
     --hotel-halo-strong: rgba(199, 134, 21, 0.13);
 
-    --hotel-pill-fs: clamp(0.98rem, 0.4vw + 0.94rem, 1.08rem);
-    --hotel-pill-min: clamp(3.2rem, 4vw, 4rem);
-    --hotel-pad-y: clamp(0.7rem, 0.8vw, 0.9rem);
-    --hotel-pad-x: clamp(1rem, 1.4vw, 1.55rem);
-    --hotel-gap: clamp(0.58rem, 0.9vw, 0.84rem);
-    --hotel-icon-size: clamp(0.96rem, 0.9vw, 1.1rem);
+    /* mesmas dimensões base do botão "Aproximar" */
+    --hotel-pill-fs: 0.95rem;
+    --hotel-pill-min: 3.25rem;
+    --hotel-pad-y: 0.95rem;
+    --hotel-pad-x: 1.35rem;
+    --hotel-gap: clamp(0.42rem, 0.8vw, 0.6rem);
+    --hotel-icon-size: 1.05em;
 
+    min-inline-size: 166px;
     min-height: var(--hotel-pill-min);
     width: auto;
-    max-width: min(100%, 28rem);
+    max-width: min(100%, 24rem);
     padding: var(--hotel-pad-y) var(--hotel-pad-x);
     gap: var(--hotel-gap);
 
     color: var(--hotel-text);
     font-size: var(--hotel-pill-fs);
     font-weight: 700;
-    letter-spacing: 0.015em;
-    line-height: 1.1;
+    letter-spacing: 0.01em;
+    line-height: 1;
 
     border: 1px solid var(--hotel-border);
 
@@ -474,7 +474,7 @@
     justify-content: center;
     min-width: 0;
     font-size: inherit;
-    line-height: 1.15;
+    line-height: 1;
     white-space: nowrap;
     text-align: center;
 }
@@ -623,70 +623,81 @@
 
 /* =========================================================
    HOTEL RESPONSIVE
+   - alinhado com o botão "Aproximar"
    ========================================================= */
 
 .button--hotel[data-compact="true"] {
-    --hotel-pill-fs: clamp(0.92rem, 0.85vw, 1rem);
-    --hotel-pill-min: clamp(3rem, 3.5vw, 3.4rem);
-    --hotel-pad-y: clamp(0.62rem, 0.72vw, 0.74rem);
-    --hotel-pad-x: clamp(0.9rem, 1.1vw, 1.1rem);
-    --hotel-gap: clamp(0.48rem, 0.7vw, 0.64rem);
-    --hotel-icon-size: clamp(0.9rem, 0.82vw, 0.98rem);
+    --hotel-pill-fs: 0.93rem;
+    --hotel-pill-min: 36px;
+    --hotel-pad-y: 0.44rem;
+    --hotel-pad-x: 0.72rem;
+    --hotel-gap: clamp(0.42rem, 0.7vw, 0.56rem);
+    --hotel-icon-size: 0.98em;
+
+    min-inline-size: 150px;
 }
 
-@media (min-width: 1440px) {
-    .button--hotel {
-        --hotel-pill-fs: 1.1rem;
-        --hotel-pill-min: 4rem;
-        --hotel-pad-y: 0.9rem;
-        --hotel-pad-x: 1.55rem;
-        --hotel-gap: 0.84rem;
-        --hotel-icon-size: 1.08rem;
-    }
-}
-
-@media (min-width: 1180px) and (max-width: 1439px) {
+@media (min-width: 1368px) {
     .button--hotel {
         --hotel-pill-fs: 1.04rem;
-        --hotel-pill-min: 3.8rem;
-        --hotel-pad-y: 0.84rem;
-        --hotel-pad-x: 1.34rem;
-        --hotel-gap: 0.76rem;
-        --hotel-icon-size: 1.04rem;
+        --hotel-pill-min: 46px;
+        --hotel-pad-y: 0.62rem;
+        --hotel-pad-x: 1.12rem;
+        --hotel-icon-size: 1.05em;
     }
 }
 
-@media (min-width: 910px) and (max-width: 1179px) {
+@media (min-width: 1178px) and (max-width: 1367px) {
     .button--hotel {
         --hotel-pill-fs: 1rem;
-        --hotel-pill-min: 3.6rem;
-        --hotel-pad-y: 0.78rem;
-        --hotel-pad-x: 1.18rem;
-        --hotel-gap: 0.7rem;
-        --hotel-icon-size: 1rem;
+        --hotel-pill-min: 44px;
+        --hotel-pad-y: 0.58rem;
+        --hotel-pad-x: 1rem;
+        --hotel-icon-size: 1.05em;
     }
 }
 
-@media (min-width: 641px) and (max-width: 909px) {
+@media (min-width: 910px) and (max-width: 1177px) {
     .button--hotel {
-        --hotel-pill-fs: 0.97rem;
-        --hotel-pill-min: 3.4rem;
-        --hotel-pad-y: 0.72rem;
-        --hotel-pad-x: 1.04rem;
-        --hotel-gap: 0.62rem;
-        --hotel-icon-size: 0.97rem;
-        max-width: 22rem;
+        --hotel-pill-fs: 0.98rem;
+        --hotel-pill-min: 42px;
+        --hotel-pad-y: 0.54rem;
+        --hotel-pad-x: 0.92rem;
+        --hotel-icon-size: 1.05em;
     }
 }
 
-@media (max-width: 640px) {
+@media (min-width: 769px) and (max-width: 909px) {
+    .button--hotel {
+        --hotel-pill-fs: 0.96rem;
+        --hotel-pill-min: 40px;
+        --hotel-pad-y: 0.5rem;
+        --hotel-pad-x: 0.86rem;
+        --hotel-icon-size: 1.02em;
+    }
+}
+
+@media (max-width: 768px) {
     .button--hotel {
         --hotel-pill-fs: 0.95rem;
-        --hotel-pill-min: 3.2rem;
-        --hotel-pad-y: 0.68rem;
-        --hotel-pad-x: 0.96rem;
-        --hotel-gap: 0.58rem;
-        --hotel-icon-size: 0.94rem;
+        --hotel-pill-min: 3.25rem;
+        --hotel-pad-y: 0.95rem;
+        --hotel-pad-x: 1.35rem;
+        --hotel-icon-size: 1.05em;
+
+        width: 100%;
+        max-width: 22rem;
+        min-inline-size: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .button--hotel {
+        --hotel-pill-fs: 0.94rem;
+        --hotel-pill-min: 3rem;
+        --hotel-pad-y: 0.9rem;
+        --hotel-pad-x: 1.05rem;
+        --hotel-icon-size: 1em;
 
         width: 100%;
         max-width: 100%;
@@ -701,11 +712,11 @@
 @media (max-width: 420px) {
     .button--hotel {
         --hotel-pill-fs: 0.92rem;
-        --hotel-pill-min: 3.05rem;
-        --hotel-pad-y: 0.64rem;
-        --hotel-pad-x: 0.88rem;
-        --hotel-gap: 0.52rem;
-        --hotel-icon-size: 0.9rem;
+        --hotel-pill-min: 2.95rem;
+        --hotel-pad-y: 0.82rem;
+        --hotel-pad-x: 0.94rem;
+        --hotel-gap: 0.5rem;
+        --hotel-icon-size: 0.96em;
         letter-spacing: 0.008em;
     }
 
@@ -719,22 +730,22 @@
 
     .button--hotel[data-compact="true"] {
         --hotel-pill-fs: 0.88rem;
-        --hotel-pill-min: 2.9rem;
+        --hotel-pill-min: 2.85rem;
         --hotel-pad-y: 0.56rem;
         --hotel-pad-x: 0.78rem;
         --hotel-gap: 0.46rem;
-        --hotel-icon-size: 0.84rem;
+        --hotel-icon-size: 0.9em;
     }
 }
 
 @media (max-width: 360px) {
     .button--hotel {
         --hotel-pill-fs: 0.9rem;
-        --hotel-pill-min: 2.95rem;
-        --hotel-pad-y: 0.58rem;
-        --hotel-pad-x: 0.76rem;
-        --hotel-gap: 0.44rem;
-        --hotel-icon-size: 0.86rem;
+        --hotel-pill-min: 2.8rem;
+        --hotel-pad-y: 0.54rem;
+        --hotel-pad-x: 0.74rem;
+        --hotel-gap: 0.42rem;
+        --hotel-icon-size: 0.88em;
     }
 }
 

@@ -1,3 +1,5 @@
+import aboutImage from "../../../assets/about.webp";
+
 export const aboutTheHotel = {
   id: "sobre-estalagem",
   headerLabel: "Sobre a Estalagem",
@@ -13,7 +15,7 @@ export const aboutTheHotel = {
     },
   },
   media: {
-    imageSrc: null,
+    imageSrc: aboutImage,
     imageAlt: "Vista geral da Estalagem de Sangalhos – Sport & Nature Hotel.",
   },
 };

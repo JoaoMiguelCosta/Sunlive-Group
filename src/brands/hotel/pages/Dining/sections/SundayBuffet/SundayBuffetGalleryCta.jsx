@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import hotelBrand from "../../../../config/index.js";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
@@ -6,37 +6,18 @@ import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase
 
 import styles from "./SundayBuffetGalleryCta.module.css";
 
-const clampIndex = (index, length) => {
-  if (length <= 0) return 0;
-  return ((index % length) + length) % length;
-};
-
 export default function SundayBuffetGalleryCta() {
   const section = hotelBrand?.pages?.dining?.sections?.sundayBuffet ?? null;
 
   const gallery = section?.gallery ?? null;
   const cta = section?.cta ?? null;
 
-  const items = useMemo(() => gallery?.items ?? [], [gallery?.items]);
+  const items = useMemo(
+    () => (Array.isArray(gallery?.items) ? gallery.items : []),
+    [gallery?.items],
+  );
+
   const fallbackLabel = gallery?.fallbackLabel ?? "Buffet de Domingo";
-
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    setActiveIndex((prev) => clampIndex(prev, items.length));
-  }, [items.length]);
-
-  const hasItems = items.length > 0;
-
-  const goPrev = useCallback(() => {
-    if (!hasItems) return;
-    setActiveIndex((prev) => clampIndex(prev - 1, items.length));
-  }, [hasItems, items.length]);
-
-  const goNext = useCallback(() => {
-    if (!hasItems) return;
-    setActiveIndex((prev) => clampIndex(prev + 1, items.length));
-  }, [hasItems, items.length]);
 
   if (!gallery && !cta) return null;
 
@@ -46,11 +27,18 @@ export default function SundayBuffetGalleryCta() {
         <div className={styles.card}>
           <HotelPhotoCarouselBase
             items={items}
-            activeIndex={activeIndex}
-            onPrev={goPrev}
-            onNext={goNext}
             fallbackLabel={fallbackLabel}
             className={styles.carouselStage}
+            showIndicators={true}
+            showCaption={false}
+            initialIndex={0}
+            fitMode="contain"
+            imagePosition="center center"
+            imageBackground="#120b06"
+            showImageBackdrop={true}
+            backdropBlur="16px"
+            backdropScale={1.12}
+            backdropOpacity={0.6}
           />
         </div>
 

@@ -7,9 +7,13 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: clamp(1rem, 2vw, 1.3rem);
     align-items: stretch;
+}
+
+.grid>* {
+    min-inline-size: 0;
 }
 
 @media (min-width: 768px) {

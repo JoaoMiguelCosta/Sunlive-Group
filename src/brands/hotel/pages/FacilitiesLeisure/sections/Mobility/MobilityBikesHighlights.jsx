@@ -37,7 +37,9 @@ export default function MobilityBikesHighlights() {
         items={items}
         image={highlights?.image ?? null}
         imageAlt={highlights?.imageAlt ?? ""}
+        imageObjectPosition={highlights?.imageObjectPosition ?? "center center"}
         mediaPosition={highlights?.mediaPosition ?? "right"}
+        layoutMode="compact"
       />
     </div>
   );

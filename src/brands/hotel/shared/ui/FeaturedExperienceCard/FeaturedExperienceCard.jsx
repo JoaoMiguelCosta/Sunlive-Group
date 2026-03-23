@@ -4,10 +4,11 @@ import styles from "./FeaturedExperienceCard.module.css";
  * FeaturedExperienceCard (Hotel)
  *
  * Props:
- *  - title: string (obrigatório)
+ *  - title: string
  *  - description?: string
  *  - imageSrc?: string | null
  *  - imageAlt?: string | null
+ *  - imagePosition?: string
  *  - icon?: ReactNode
  *  - variant?: "default" | "region"
  */
@@ -16,6 +17,7 @@ export default function FeaturedExperienceCard({
   description = "",
   imageSrc = null,
   imageAlt = null,
+  imagePosition = "center center",
   icon = null,
   variant = "default",
 }) {
@@ -46,6 +48,7 @@ export default function FeaturedExperienceCard({
             src={imageSrc}
             alt={imageAlt || title}
             className={styles.image}
+            style={{ objectPosition: imagePosition }}
             loading="lazy"
           />
         ) : (

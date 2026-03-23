@@ -1,3 +1,6 @@
+import mobility1 from "../../../assets/mobility1.webp";
+import mobility2 from "../../../assets/mobility2.webp";
+
 export const mobility = {
   id: "mobility",
   headerLabel: "Mobilidade",
@@ -13,8 +16,10 @@ export const mobility = {
     highlights: {
       id: "mobility-bikes-highlights",
       mediaPosition: "right",
-      image: null,
-      imageAlt: "Bicicletas do hotel disponíveis para hóspedes",
+      image: mobility2,
+      imageAlt:
+        "Bicicletas do hotel junto à entrada principal da Estalagem de Sangalhos",
+      imageObjectPosition: "94% 80%",
       items: [
         {
           key: "urban-bikes",
@@ -65,66 +70,66 @@ export const mobility = {
     },
   },
 
+  parking: {
+    id: "mobility-parking",
+    headerLabel: "Estacionamento Gratuito",
+    badge: "Incluído",
+    badgeSuffix: "Estacionamento Privado",
+    meta: "Sem necessidade de reserva",
+    metaHighlight: "Disponível 24 horas",
+    description:
+      "Perfeito para grupos, famílias ou atletas com viatura própria. Estacionamento seguro e conveniente junto à entrada principal.",
 
-parking: {
-  id: "mobility-parking",
-  headerLabel: "Estacionamento Gratuito",
-  badge: "Incluído",
-  badgeSuffix: "Estacionamento Privado",
-  meta: "Sem necessidade de reserva",
-  metaHighlight: "Disponível 24 horas",
-  description:
-    "Perfeito para grupos, famílias ou atletas com viatura própria. Estacionamento seguro e conveniente junto à entrada principal.",
-
-  highlights: {
-    id: "mobility-parking-highlights",
-    mediaPosition: "left",
-    image: null,
-    imageAlt: "Zona de estacionamento do hotel",
-    items: [
-      {
-        key: "buses",
-        title: "Autocarros",
-        description: "Espaço dedicado para grupos",
-        icon: {
-          key: "bus",
-          ariaLabel: "Ícone de autocarro",
-          component: null,
+    highlights: {
+      id: "mobility-parking-highlights",
+      mediaPosition: "left",
+      image: mobility1,
+      imageAlt: "Zona de estacionamento do hotel junto à entrada principal",
+      imageObjectPosition: "center center",
+      items: [
+        {
+          key: "buses",
+          title: "Autocarros",
+          description: "Espaço dedicado para grupos",
+          icon: {
+            key: "bus",
+            ariaLabel: "Ícone de autocarro",
+            component: null,
+          },
         },
-      },
-      {
-        key: "night-lighting",
-        title: "Iluminação Nocturna",
-        description: "Segurança 24 horas",
-        icon: {
-          key: "light",
-          ariaLabel: "Ícone de iluminação nocturna",
-          component: null,
+        {
+          key: "night-lighting",
+          title: "Iluminação Nocturna",
+          description: "Segurança 24 horas",
+          icon: {
+            key: "light",
+            ariaLabel: "Ícone de iluminação nocturna",
+            component: null,
+          },
         },
-      },
-      {
-        key: "location",
-        title: "Localização",
-        description: "Acesso direto ao hotel",
-        icon: {
+        {
           key: "location",
-          ariaLabel: "Ícone de localização",
-          component: null,
+          title: "Localização",
+          description: "Acesso direto ao hotel",
+          icon: {
+            key: "location",
+            ariaLabel: "Ícone de localização",
+            component: null,
+          },
         },
-      },
-      {
-        key: "cars",
-        title: "Carros Ligeiros",
-        description: "Lugares junto à entrada",
-        icon: {
-          key: "tour",
-          ariaLabel: "Ícone de carro ligeiro",
-          component: null,
+        {
+          key: "cars",
+          title: "Carros Ligeiros",
+          description: "Lugares junto à entrada",
+          icon: {
+            key: "tour",
+            ariaLabel: "Ícone de carro ligeiro",
+            component: null,
+          },
         },
-      },
-    ],
+      ],
+    },
   },
-},
 };
 
 export default mobility;

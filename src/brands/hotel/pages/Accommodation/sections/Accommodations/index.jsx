@@ -6,7 +6,7 @@ import DescriptionAccommodations from "./DescriptionAccommodations.jsx";
 import TitleRoomsAndSuites from "./TitleRoomsAndSuites.jsx";
 import DescriptionRoomsAndSuites from "./DescriptionRoomsAndSuites.jsx";
 
-import HotelPhotoCarousel from "../../../../shared/ui/HotelPhotoCarousel/HotelPhotoCarousel.jsx";
+import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
 
 import InfoNoteBanner from "./InfoNoteBanner.jsx";
 import RoomCardsGrid from "./RoomCardsGrid.jsx";
@@ -40,9 +40,12 @@ export default function Accommodations() {
         </DescriptionAccommodations>
 
         <div className={styles.galleryWrap}>
-          <HotelPhotoCarousel
+          <HotelPhotoCarouselBase
             items={galleryItems}
             fallbackLabel={galleryFallbackLabel}
+            showIndicators
+            showCaption
+            className={styles.carouselStage}
           />
         </div>
 

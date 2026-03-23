@@ -51,6 +51,7 @@
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 1;
     pointer-events: none;
     background:
         linear-gradient(180deg,
@@ -61,8 +62,9 @@
 .image {
     inline-size: 100%;
     block-size: 100%;
-    object-fit: cover;
     display: block;
+    object-fit: cover;
+    object-position: center center;
     transform: scale(1.01);
     transition: transform 220ms ease-out, filter 220ms ease-out;
 }
