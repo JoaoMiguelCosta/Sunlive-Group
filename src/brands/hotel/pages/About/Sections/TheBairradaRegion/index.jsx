@@ -20,11 +20,20 @@ export default function TheBairradaRegion() {
   const sectionId = section.id ?? "sobre-bairrada";
   const titleId = `${sectionId}-title`;
 
+  const backgroundImage = section?.backgroundMedia?.imageSrc ?? null;
+
+  const sectionStyle = backgroundImage
+    ? {
+        "--bairrada-region-bg-image": `url("${backgroundImage}")`,
+      }
+    : undefined;
+
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
+      style={sectionStyle}
     >
       <div className={styles.inner}>
         {header ? (

@@ -24,12 +24,31 @@ export default function OurQualityCommitmentContent() {
     ? section.commitments
     : [];
 
+  const commitmentsPanel = section?.commitmentsPanel ?? null;
+
+  const panelAriaLabel = commitmentsPanel?.ariaLabel ?? "";
+  const panelKicker = commitmentsPanel?.kicker ?? "";
+  const panelTitle = commitmentsPanel?.title ?? "";
+
+  const [leadParagraph, ...otherParagraphs] = paragraphs;
+
   return (
     <div className={styles.content}>
       <div className={styles.textCol}>
         <div className={styles.paragraphs}>
-          {paragraphs.map((paragraph, index) => (
-            <p key={`${index}-${paragraph}`} className={styles.paragraph}>
+          {leadParagraph ? (
+            <p className={`${styles.paragraph} ${styles.lead}`}>
+              {leadParagraph}
+            </p>
+          ) : null}
+
+          {otherParagraphs.map((paragraph, index) => (
+            <p
+              key={`${index}-${paragraph}`}
+              className={`${styles.paragraph} ${
+                index === 0 ? styles.paragraphSecondary : ""
+              }`}
+            >
               {paragraph}
             </p>
           ))}
@@ -46,10 +65,22 @@ export default function OurQualityCommitmentContent() {
 
       <aside
         className={styles.commitmentsCol}
-        aria-label="Comprometemo-nos com"
+        aria-label={panelAriaLabel || undefined}
       >
         <div className={styles.commitmentsInner}>
-          <h3 className={styles.commitmentsTitle}>Comprometemo-nos com:</h3>
+          <div className={styles.panelGlow} aria-hidden="true" />
+
+          {(panelKicker || panelTitle) && (
+            <header className={styles.commitmentsHeader}>
+              {panelKicker ? (
+                <span className={styles.kicker}>{panelKicker}</span>
+              ) : null}
+
+              {panelTitle ? (
+                <h3 className={styles.commitmentsTitle}>{panelTitle}</h3>
+              ) : null}
+            </header>
+          )}
 
           <ul className={styles.commitmentsList}>
             {commitmentItems.map((item, index) => (

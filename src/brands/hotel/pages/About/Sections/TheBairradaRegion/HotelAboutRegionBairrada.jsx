@@ -16,7 +16,12 @@ export default function HotelAboutRegionBairrada({ description }) {
 
   return (
     <div className={styles.wrap}>
-      <HotelSectionDescription align={align}>{content}</HotelSectionDescription>
+      <HotelSectionDescription
+        align={align}
+        className={styles.regionDescription}
+      >
+        {content}
+      </HotelSectionDescription>
     </div>
   );
 }

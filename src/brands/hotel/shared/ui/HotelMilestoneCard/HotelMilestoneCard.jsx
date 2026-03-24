@@ -7,16 +7,20 @@ import styles from "./HotelMilestoneCard.module.css";
  * Props:
  * - title: string
  * - subtitle?: string
+ * - featured?: boolean
  * - className?: string
  */
 export default function HotelMilestoneCard({
   title,
   subtitle,
+  featured = false,
   className = "",
 }) {
   if (!title) return null;
 
-  const classNames = [styles.wrap, className].filter(Boolean).join(" ");
+  const classNames = [styles.wrap, featured ? styles.featured : "", className]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <div className={classNames}>

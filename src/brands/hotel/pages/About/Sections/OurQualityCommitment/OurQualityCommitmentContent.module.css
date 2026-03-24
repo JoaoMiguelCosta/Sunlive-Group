@@ -4,35 +4,35 @@
     overflow: hidden;
 
     display: grid;
-    grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
-    gap: clamp(1.35rem, 2.4vw, 2.5rem);
+    grid-template-columns: minmax(0, 1.03fr) minmax(320px, 0.97fr);
+    gap: clamp(1.2rem, 2.2vw, 2.3rem);
     align-items: stretch;
 
     inline-size: 100%;
     max-inline-size: 1220px;
     margin-inline: auto;
-    padding: clamp(1rem, 1.8vw, 1.45rem);
-    border-radius: clamp(22px, 2.2vw, 30px);
+    padding: clamp(1rem, 1.7vw, 1.4rem);
+    border-radius: clamp(24px, 2.2vw, 32px);
 
     background:
-        radial-gradient(70% 120% at 0% 0%, rgba(241, 205, 132, 0.12), transparent 52%),
-        radial-gradient(80% 120% at 100% 100%, rgba(199, 134, 21, 0.12), transparent 50%),
+        radial-gradient(76% 125% at 0% 0%, rgba(241, 205, 132, 0.14), transparent 52%),
+        radial-gradient(85% 125% at 100% 100%, rgba(199, 134, 21, 0.12), transparent 50%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.045) 0%,
-            rgba(255, 248, 235, 0.012) 16%,
+            rgba(255, 248, 235, 0.048) 0%,
+            rgba(255, 248, 235, 0.014) 16%,
             rgba(0, 0, 0, 0.12) 100%),
         linear-gradient(90deg,
             #2a160a 0%,
-            #341a0b 30%,
-            #251308 66%,
+            #34190b 32%,
+            #241208 66%,
             #180c06 100%);
 
     border: 1px solid rgba(230, 200, 147, 0.28);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        inset 0 1px 0 rgba(255, 248, 235, 0.065),
         inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-        0 22px 54px rgba(0, 0, 0, 0.24);
+        0 24px 56px rgba(0, 0, 0, 0.24);
 
     color: #f9fafb;
 }
@@ -44,15 +44,30 @@
     pointer-events: none;
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.07) 0%,
-            rgba(255, 248, 235, 0.025) 10%,
-            rgba(255, 255, 255, 0) 26%),
+            rgba(255, 248, 235, 0.075) 0%,
+            rgba(255, 248, 235, 0.024) 10%,
+            rgba(255, 255, 255, 0) 28%),
         linear-gradient(90deg,
-            rgba(255, 255, 255, 0.025) 0%,
+            rgba(255, 255, 255, 0.024) 0%,
             rgba(255, 255, 255, 0) 18%,
             rgba(255, 255, 255, 0) 82%,
-            rgba(255, 255, 255, 0.02) 100%);
-    opacity: 0.9;
+            rgba(255, 255, 255, 0.018) 100%);
+    opacity: 0.92;
+}
+
+.content::after {
+    content: "";
+    position: absolute;
+    inset: auto auto -14% 10%;
+    inline-size: clamp(220px, 26vw, 400px);
+    block-size: clamp(90px, 11vw, 150px);
+    pointer-events: none;
+    background: radial-gradient(circle,
+            rgba(199, 134, 21, 0.16) 0%,
+            rgba(199, 134, 21, 0.08) 44%,
+            rgba(199, 134, 21, 0) 76%);
+    filter: blur(28px);
+    opacity: 0.68;
 }
 
 .textCol {
@@ -64,18 +79,18 @@
     min-width: 0;
 
     padding:
-        clamp(0.45rem, 0.9vw, 1rem) clamp(0.3rem, 0.7vw, 0.8rem) clamp(0.5rem, 0.9vw, 0.95rem) clamp(0.35rem, 0.8vw, 0.95rem);
+        clamp(0.34rem, 0.72vw, 0.78rem) clamp(0.18rem, 0.48vw, 0.52rem) clamp(0.42rem, 0.78vw, 0.82rem) clamp(0.2rem, 0.54vw, 0.56rem);
 }
 
 .paragraphs {
     display: grid;
-    gap: clamp(0.88rem, 1.2vw, 1.2rem);
-    max-inline-size: 62ch;
+    gap: clamp(0.94rem, 1.18vw, 1.16rem);
+    max-inline-size: 58ch;
 }
 
 .paragraph {
     margin: 0;
-    font-size: clamp(0.96rem, 0.24vw + 0.92rem, 1.06rem);
+    font-size: clamp(0.97rem, 0.24vw + 0.93rem, 1.05rem);
     line-height: 1.7;
     color: rgba(255, 248, 235, 0.9);
     text-wrap: pretty;
@@ -83,20 +98,66 @@
     word-break: break-word;
 }
 
+.lead {
+    position: relative;
+    padding-block-start: clamp(0.78rem, 0.86vw, 0.92rem);
+    color: rgba(255, 248, 235, 0.98);
+    font-size: clamp(1rem, 0.3vw + 0.96rem, 1.12rem);
+    line-height: 1.62;
+}
+
+.lead::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    inline-size: clamp(74px, 7vw, 104px);
+    block-size: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg,
+            rgba(241, 205, 132, 0.96) 0%,
+            rgba(241, 205, 132, 0.34) 74%,
+            rgba(241, 205, 132, 0) 100%);
+    box-shadow: 0 0 14px rgba(241, 205, 132, 0.16);
+}
+
+.paragraphSecondary {
+    margin-block-start: 0.02rem;
+}
+
 .pillWrap {
-    margin-block-start: clamp(0.95rem, 1.5vw, 1.45rem);
-    max-inline-size: 42rem;
+    margin-block-start: clamp(0.96rem, 1.35vw, 1.28rem);
+    max-inline-size: 35rem;
 }
 
 .pill {
     max-inline-size: 100%;
 }
 
+.pill :global(.card) {
+    border-radius: clamp(24px, 2vw, 34px);
+    border-color: rgba(230, 200, 147, 0.26);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 16px 34px rgba(0, 0, 0, 0.22);
+}
+
+.pill :global(.inner) {
+    padding-block: clamp(0.84rem, 1vw, 0.94rem);
+    padding-inline: clamp(1rem, 1.6vw, 1.4rem);
+}
+
+.pill :global(.text) {
+    max-inline-size: 38ch;
+    font-size: clamp(0.92rem, 0.14vw + 0.9rem, 0.98rem);
+    line-height: 1.48;
+    font-weight: 600;
+}
+
 .commitmentsCol {
     position: relative;
     z-index: 1;
-    display: flex;
-    align-items: stretch;
+    display: grid;
     min-width: 0;
 }
 
@@ -105,27 +166,29 @@
     isolation: isolate;
     overflow: hidden;
     inline-size: 100%;
+    align-self: stretch;
 
-    padding: clamp(1rem, 1.5vw, 1.35rem) clamp(0.95rem, 1.5vw, 1.3rem);
-    border-radius: clamp(20px, 1.9vw, 26px);
+    padding:
+        clamp(1.06rem, 1.45vw, 1.32rem) clamp(1rem, 1.45vw, 1.28rem);
+    border-radius: clamp(22px, 2vw, 28px);
 
     background:
-        radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.1), transparent 44%),
+        radial-gradient(95% 125% at 0% 0%, rgba(241, 205, 132, 0.1), transparent 44%),
         radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.1), transparent 46%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.04) 0%,
+            rgba(255, 248, 235, 0.042) 0%,
             rgba(255, 248, 235, 0.014) 18%,
             rgba(0, 0, 0, 0.1) 100%),
         linear-gradient(135deg,
-            rgba(44, 23, 11, 0.96) 0%,
-            rgba(28, 14, 8, 0.98) 100%);
+            rgba(44, 23, 11, 0.965) 0%,
+            rgba(28, 14, 8, 0.985) 100%);
 
     border: 1px solid rgba(230, 200, 147, 0.2);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.045),
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
         inset 0 -1px 0 rgba(0, 0, 0, 0.16),
-        0 16px 38px rgba(0, 0, 0, 0.2);
+        0 18px 40px rgba(0, 0, 0, 0.2);
 }
 
 .commitmentsInner::before {
@@ -134,23 +197,71 @@
     inset: 0;
     pointer-events: none;
     border-radius: inherit;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.075) 0%,
+            rgba(255, 248, 235, 0.022) 16%,
+            rgba(255, 255, 255, 0) 40%);
+    opacity: 0.92;
+}
 
+.panelGlow {
+    position: absolute;
+    inset: auto auto 8% -4%;
+    inline-size: clamp(120px, 14vw, 180px);
+    block-size: clamp(100px, 11vw, 150px);
+    pointer-events: none;
+    background: radial-gradient(circle,
+            rgba(241, 205, 132, 0.12) 0%,
+            rgba(241, 205, 132, 0.04) 48%,
+            rgba(241, 205, 132, 0) 78%);
+    filter: blur(24px);
+    opacity: 0.68;
+}
+
+.commitmentsHeader {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.34rem;
+    margin-block-end: clamp(0.9rem, 1.18vw, 1.08rem);
+}
+
+.kicker {
+    display: inline-flex;
+    align-items: center;
+    inline-size: fit-content;
+
+    min-block-size: 1.75rem;
+    padding-inline: 0.72rem;
+    border-radius: 999px;
+
+    border: 1px solid rgba(230, 200, 147, 0.24);
     background:
         linear-gradient(180deg,
             rgba(255, 248, 235, 0.07) 0%,
-            rgba(255, 248, 235, 0.02) 15%,
-            rgba(255, 255, 255, 0) 38%);
-    opacity: 0.9;
+            rgba(255, 248, 235, 0.02) 100%),
+        rgba(25, 14, 8, 0.34);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        0 10px 22px rgba(0, 0, 0, 0.16);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(241, 205, 132, 0.92);
 }
 
 .commitmentsTitle {
     position: relative;
     z-index: 1;
-    margin: 0 0 clamp(0.82rem, 1.2vw, 1.1rem);
+    margin: 0;
 
-    font-size: clamp(1.04rem, 0.38vw + 1rem, 1.24rem);
-    font-weight: 700;
-    line-height: 1.18;
+    font-size: clamp(1.12rem, 0.56vw + 1rem, 1.42rem);
+    font-weight: 800;
+    line-height: 1.14;
     color: rgba(255, 248, 235, 0.98);
     text-wrap: balance;
 }
@@ -164,17 +275,21 @@
     padding: 0;
 
     display: grid;
-    gap: clamp(0.68rem, 0.9vw, 0.88rem);
+    gap: clamp(0.16rem, 0.34vw, 0.28rem);
 }
 
 .commitmentItem {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 0.72rem;
+    gap: 0.82rem;
     align-items: start;
 
-    padding-block: 0.08rem;
-    color: rgba(255, 248, 235, 0.9);
+    padding-block: clamp(0.7rem, 0.84vw, 0.86rem);
+    color: rgba(255, 248, 235, 0.92);
+}
+
+.commitmentItem+.commitmentItem {
+    border-block-start: 1px solid rgba(230, 200, 147, 0.1);
 }
 
 .checkMark {
@@ -182,8 +297,8 @@
     align-items: center;
     justify-content: center;
 
-    inline-size: clamp(1.24rem, 1.4vw, 1.42rem);
-    block-size: clamp(1.24rem, 1.4vw, 1.42rem);
+    inline-size: clamp(1.28rem, 1.38vw, 1.48rem);
+    block-size: clamp(1.28rem, 1.38vw, 1.48rem);
     margin-block-start: 0.08rem;
     border-radius: 999px;
 
@@ -191,14 +306,14 @@
 
     background:
         radial-gradient(circle at 30% 30%, rgba(255, 248, 235, 0.18), transparent 55%),
-        linear-gradient(135deg, #7a4d15 0%, #3b2410 100%);
+        linear-gradient(135deg, #8b5a1b 0%, #3d2510 100%);
 
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.12),
-        0 8px 18px rgba(0, 0, 0, 0.18);
+        0 10px 22px rgba(0, 0, 0, 0.18);
 
     color: #fff0d0;
-    font-size: clamp(0.72rem, 0.14vw + 0.7rem, 0.8rem);
+    font-size: clamp(0.72rem, 0.14vw + 0.7rem, 0.82rem);
     font-weight: 700;
     line-height: 1;
     flex-shrink: 0;
@@ -206,43 +321,112 @@
 
 .commitmentText {
     min-width: 0;
-    font-size: clamp(0.93rem, 0.16vw + 0.9rem, 1rem);
-    line-height: 1.56;
+    font-size: clamp(0.95rem, 0.16vw + 0.92rem, 1.02rem);
+    line-height: 1.58;
     color: rgba(255, 248, 235, 0.9);
     text-wrap: pretty;
     overflow-wrap: anywhere;
     word-break: break-word;
 }
 
+@media (min-width: 1081px) {
+    .content {
+        grid-template-columns: minmax(0, 1.01fr) minmax(0, 0.99fr);
+        gap: clamp(1.45rem, 2vw, 2.25rem);
+        padding:
+            clamp(1.12rem, 1.6vw, 1.42rem) clamp(1.2rem, 1.8vw, 1.6rem);
+    }
+
+    .textCol {
+        padding:
+            clamp(0.3rem, 0.54vw, 0.48rem) clamp(0.14rem, 0.26vw, 0.26rem) clamp(0.36rem, 0.6vw, 0.54rem) clamp(0.1rem, 0.2vw, 0.2rem);
+    }
+
+    .paragraphs {
+        max-inline-size: 56ch;
+        gap: clamp(0.98rem, 1.1vw, 1.14rem);
+    }
+
+    .paragraph {
+        font-size: clamp(1rem, 0.22vw + 0.95rem, 1.08rem);
+        line-height: 1.72;
+    }
+
+    .lead {
+        font-size: clamp(1.04rem, 0.32vw + 0.98rem, 1.16rem);
+        line-height: 1.64;
+    }
+
+    .pillWrap {
+        max-inline-size: 33rem;
+        margin-block-start: clamp(1rem, 1.2vw, 1.24rem);
+    }
+
+    .pill :global(.inner) {
+        padding-block: clamp(0.86rem, 0.98vw, 0.96rem);
+        padding-inline: clamp(1rem, 1.5vw, 1.28rem);
+    }
+
+    .pill :global(.text) {
+        max-inline-size: 36ch;
+    }
+
+    .commitmentsCol {
+        align-items: center;
+    }
+
+    .commitmentsInner {
+        padding:
+            clamp(1.18rem, 1.5vw, 1.42rem) clamp(1.08rem, 1.45vw, 1.36rem);
+        border-radius: clamp(24px, 2vw, 30px);
+    }
+
+    .commitmentsHeader {
+        margin-block-end: clamp(0.98rem, 1.15vw, 1.16rem);
+    }
+
+    .commitmentsList {
+        gap: 0;
+    }
+
+    .commitmentItem {
+        gap: 0.9rem;
+        padding-block: clamp(0.78rem, 0.88vw, 0.94rem);
+    }
+}
+
 @media (max-width: 1180px) {
     .content {
-        gap: 1.6rem;
+        gap: 1.5rem;
     }
 }
 
 @media (max-width: 1080px) {
     .content {
         grid-template-columns: minmax(0, 1fr);
-        gap: 1.3rem;
+        gap: 1.18rem;
+        max-inline-size: 100%;
     }
 
     .textCol {
-        padding: 0.1rem 0.1rem 0;
+        align-content: start;
+        padding: 0.08rem 0.08rem 0;
     }
 
-    .paragraphs {
-        max-inline-size: 100%;
-    }
-
+    .paragraphs,
     .pillWrap {
         max-inline-size: 100%;
+    }
+
+    .commitmentsCol {
+        align-items: stretch;
     }
 }
 
 @media (max-width: 768px) {
     .content {
-        padding: 0.95rem;
-        gap: 1.1rem;
+        padding: 0.94rem;
+        gap: 1rem;
         border-radius: 24px;
     }
 
@@ -251,30 +435,58 @@
     }
 
     .paragraphs {
-        gap: 0.92rem;
+        gap: 0.9rem;
     }
 
     .paragraph {
         font-size: 0.98rem;
-        line-height: 1.68;
+        line-height: 1.66;
+    }
+
+    .lead {
+        font-size: 1rem;
+        line-height: 1.58;
+        padding-block-start: 0.76rem;
     }
 
     .pillWrap {
         margin-block-start: 0.9rem;
     }
 
+    .pill :global(.inner) {
+        padding-block: 0.82rem;
+        padding-inline: 0.96rem;
+    }
+
+    .pill :global(.text) {
+        max-inline-size: 100%;
+        font-size: 0.93rem;
+        line-height: 1.44;
+    }
+
     .commitmentsInner {
-        padding: 0.95rem;
+        padding: 0.96rem;
         border-radius: 20px;
     }
 
-    .commitmentsTitle {
+    .commitmentsHeader {
+        gap: 0.3rem;
         margin-block-end: 0.9rem;
-        font-size: 1.05rem;
+    }
+
+    .kicker {
+        min-block-size: 1.68rem;
+        padding-inline: 0.66rem;
+        font-size: 0.72rem;
+    }
+
+    .commitmentsTitle {
+        font-size: 1.08rem;
     }
 
     .commitmentItem {
-        gap: 0.7rem;
+        gap: 0.72rem;
+        padding-block: 0.76rem;
     }
 
     .commitmentText {
@@ -286,13 +498,22 @@
 @media (max-width: 560px) {
     .content {
         padding: 0.82rem;
-        gap: 0.95rem;
+        gap: 0.9rem;
         border-radius: 20px;
     }
 
     .paragraph {
         font-size: 0.95rem;
-        line-height: 1.62;
+        line-height: 1.6;
+    }
+
+    .lead {
+        font-size: 0.97rem;
+        line-height: 1.54;
+    }
+
+    .lead::before {
+        inline-size: 64px;
     }
 
     .pillWrap {
@@ -304,13 +525,20 @@
         border-radius: 18px;
     }
 
+    .kicker {
+        min-block-size: 1.62rem;
+        padding-inline: 0.62rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+    }
+
     .commitmentsTitle {
-        font-size: 0.98rem;
-        margin-block-end: 0.82rem;
+        font-size: 1rem;
     }
 
     .commitmentItem {
-        gap: 0.62rem;
+        gap: 0.64rem;
+        padding-block: 0.72rem;
     }
 
     .checkMark {
@@ -328,12 +556,17 @@
 @media (max-width: 380px) {
     .content {
         padding: 0.75rem;
-        gap: 0.88rem;
+        gap: 0.84rem;
     }
 
     .paragraph {
         font-size: 0.92rem;
-        line-height: 1.58;
+        line-height: 1.56;
+    }
+
+    .lead {
+        font-size: 0.94rem;
+        line-height: 1.5;
     }
 
     .commitmentsInner {

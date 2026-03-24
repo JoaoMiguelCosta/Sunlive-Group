@@ -25,12 +25,25 @@ export default function OurStoryMilestonesContent() {
     ? section.milestones
     : [];
 
+  const [firstParagraph, ...otherParagraphs] = paragraphs;
+
   return (
     <div className={styles.content}>
       <div className={styles.textCol}>
         <div className={styles.copy}>
-          {paragraphs.map((paragraph, index) => (
-            <p key={`${index}-${paragraph}`} className={styles.paragraph}>
+          {firstParagraph ? (
+            <p className={`${styles.paragraph} ${styles.lead}`}>
+              {firstParagraph}
+            </p>
+          ) : null}
+
+          {otherParagraphs.map((paragraph, index) => (
+            <p
+              key={`${index}-${paragraph}`}
+              className={`${styles.paragraph} ${
+                index === 0 ? styles.paragraphSecondary : ""
+              }`}
+            >
               {paragraph}
             </p>
           ))}
@@ -47,21 +60,34 @@ export default function OurStoryMilestonesContent() {
 
       <div className={styles.timelineCol}>
         <div className={styles.timelinePanel}>
+          <div className={styles.timelineGlow} aria-hidden="true" />
           <div className={styles.timelineRail} aria-hidden="true" />
 
           <div className={styles.timelineStack}>
-            {milestones.map((item, index) => (
-              <div
-                key={item.id ?? `${item.label}-${index}`}
-                className={styles.timelineItem}
-              >
-                <span className={styles.timelineDot} aria-hidden="true" />
-                <HotelMilestoneCard
-                  title={item.label}
-                  subtitle={item.description}
-                />
-              </div>
-            ))}
+            {milestones.map((item, index) => {
+              const isFeatured = index === milestones.length - 1;
+
+              return (
+                <div
+                  key={item.id ?? `${item.label}-${index}`}
+                  className={[
+                    styles.timelineItem,
+                    isFeatured ? styles.timelineItemFeatured : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  <span className={styles.timelineDot} aria-hidden="true" />
+
+                  <HotelMilestoneCard
+                    title={item.label}
+                    subtitle={item.description}
+                    featured={isFeatured}
+                    className={isFeatured ? styles.milestoneFeatured : ""}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

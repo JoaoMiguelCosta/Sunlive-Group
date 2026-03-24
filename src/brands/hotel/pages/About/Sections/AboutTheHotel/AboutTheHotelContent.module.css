@@ -3,36 +3,36 @@
     isolation: isolate;
 
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 1.02fr);
-    gap: clamp(1.2rem, 2.4vw, 2.4rem);
+    grid-template-columns: minmax(0, 0.94fr) minmax(420px, 1.08fr);
+    gap: clamp(1.25rem, 2.3vw, 2.55rem);
     align-items: stretch;
 
     inline-size: 100%;
-    max-inline-size: 1220px;
+    max-inline-size: 1240px;
     margin-inline: auto;
-    padding: clamp(0.95rem, 1.5vw, 1.35rem);
-    border-radius: clamp(22px, 2vw, 30px);
+    padding: clamp(1rem, 1.65vw, 1.45rem);
+    border-radius: clamp(24px, 2vw, 32px);
     overflow: hidden;
 
     border: 1px solid rgba(230, 200, 147, 0.24);
 
     background:
-        radial-gradient(80% 120% at 0% 0%, rgba(241, 205, 132, 0.12), transparent 52%),
-        radial-gradient(90% 120% at 100% 100%, rgba(199, 134, 21, 0.11), transparent 52%),
+        radial-gradient(72% 120% at 0% 0%, rgba(241, 205, 132, 0.13), transparent 52%),
+        radial-gradient(88% 120% at 100% 100%, rgba(199, 134, 21, 0.12), transparent 54%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.045) 0%,
-            rgba(255, 248, 235, 0.015) 14%,
-            rgba(0, 0, 0, 0.12) 100%),
+            rgba(255, 248, 235, 0.05) 0%,
+            rgba(255, 248, 235, 0.018) 14%,
+            rgba(0, 0, 0, 0.14) 100%),
         linear-gradient(135deg,
             #2a160a 0%,
-            #331a0b 28%,
-            #241208 68%,
-            #170b05 100%);
+            #33190b 30%,
+            #231107 70%,
+            #160a05 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
-        0 22px 56px rgba(0, 0, 0, 0.24);
+        inset 0 1px 0 rgba(255, 248, 235, 0.07),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 24px 58px rgba(0, 0, 0, 0.26);
 }
 
 .content::before {
@@ -42,14 +42,29 @@
     pointer-events: none;
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.06) 0%,
-            rgba(255, 248, 235, 0.025) 10%,
+            rgba(255, 248, 235, 0.065) 0%,
+            rgba(255, 248, 235, 0.02) 10%,
             rgba(255, 255, 255, 0) 24%),
         linear-gradient(90deg,
             rgba(255, 255, 255, 0.025) 0%,
-            rgba(255, 255, 255, 0) 18%,
-            rgba(255, 255, 255, 0) 82%,
-            rgba(255, 255, 255, 0.02) 100%);
+            rgba(255, 255, 255, 0) 16%,
+            rgba(255, 255, 255, 0) 84%,
+            rgba(255, 255, 255, 0.018) 100%);
+}
+
+.content::after {
+    content: "";
+    position: absolute;
+    inset: auto auto -12% 8%;
+    inline-size: clamp(220px, 28vw, 420px);
+    block-size: clamp(80px, 10vw, 140px);
+    pointer-events: none;
+    background: radial-gradient(circle,
+            rgba(199, 134, 21, 0.16) 0%,
+            rgba(199, 134, 21, 0.08) 42%,
+            rgba(199, 134, 21, 0) 76%);
+    filter: blur(28px);
+    opacity: 0.72;
 }
 
 .textCol {
@@ -59,26 +74,45 @@
     display: grid;
     align-content: center;
     min-width: 0;
-    padding: clamp(0.2rem, 0.6vw, 0.45rem);
+    padding:
+        clamp(0.35rem, 0.9vw, 0.75rem) clamp(0.2rem, 0.5vw, 0.45rem) clamp(0.35rem, 0.7vw, 0.6rem);
 }
 
 .copy {
     display: grid;
-    gap: clamp(0.85rem, 1.2vw, 1.15rem);
-    max-inline-size: 62ch;
+    gap: clamp(0.95rem, 1.35vw, 1.2rem);
+    max-inline-size: 56ch;
 }
 
 .paragraph {
     margin: 0;
-    font-size: clamp(0.96rem, 0.3vw + 0.91rem, 1.07rem);
-    line-height: 1.72;
-    color: rgba(255, 248, 235, 0.9);
+    font-size: clamp(0.98rem, 0.28vw + 0.93rem, 1.08rem);
+    line-height: 1.74;
+    color: rgba(255, 248, 235, 0.88);
     text-wrap: pretty;
     overflow-wrap: anywhere;
 }
 
 .lead {
-    color: rgba(255, 248, 235, 0.97);
+    position: relative;
+    padding-block-start: clamp(0.9rem, 1vw, 1rem);
+    color: rgba(255, 248, 235, 0.98);
+    font-size: clamp(1.02rem, 0.34vw + 0.98rem, 1.18rem);
+    line-height: 1.7;
+}
+
+.lead::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    inline-size: clamp(72px, 7vw, 102px);
+    block-size: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg,
+            rgba(241, 205, 132, 0.95) 0%,
+            rgba(241, 205, 132, 0.34) 72%,
+            rgba(241, 205, 132, 0) 100%);
+    box-shadow: 0 0 14px rgba(241, 205, 132, 0.18);
 }
 
 .brandName {
@@ -88,12 +122,33 @@
 }
 
 .highlightWrap {
-    margin-block-start: clamp(0.95rem, 1.4vw, 1.35rem);
-    max-inline-size: 44rem;
+    margin-block-start: clamp(1.05rem, 1.5vw, 1.4rem);
+    max-inline-size: 42rem;
 }
 
 .highlightPill {
     max-inline-size: 100%;
+}
+
+.highlightPill :global(.card) {
+    border-radius: clamp(24px, 2vw, 34px);
+    border-color: rgba(230, 200, 147, 0.28);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.07),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+        0 16px 34px rgba(0, 0, 0, 0.22);
+}
+
+.highlightPill :global(.inner) {
+    padding-block: clamp(0.85rem, 1.25vw, 1rem);
+    padding-inline: clamp(1.05rem, 2vw, 1.9rem);
+}
+
+.highlightPill :global(.text) {
+    max-inline-size: 46ch;
+    font-size: clamp(0.94rem, 0.2vw + 0.92rem, 1rem);
+    line-height: 1.5;
+    font-weight: 600;
 }
 
 .mediaCol {
@@ -119,19 +174,31 @@
 
     inline-size: 100%;
     block-size: 100%;
-    min-block-size: clamp(320px, 34vw, 500px);
-    border-radius: clamp(18px, 1.8vw, 24px);
+    min-block-size: clamp(360px, 36vw, 560px);
+    border-radius: clamp(20px, 1.8vw, 28px);
 
-    border: 1px solid rgba(230, 200, 147, 0.2);
+    border: 1px solid rgba(230, 200, 147, 0.22);
 
     background:
         radial-gradient(100% 100% at 20% 0%, rgba(230, 200, 147, 0.08), transparent 50%),
         linear-gradient(135deg, #361b0c 0%, #241208 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
-        0 18px 44px rgba(0, 0, 0, 0.28);
+        inset 0 1px 0 rgba(255, 248, 235, 0.055),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 20px 48px rgba(0, 0, 0, 0.3);
+}
+
+.mediaFrame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 248, 235, 0.03),
+        inset 0 18px 34px rgba(255, 248, 235, 0.028);
 }
 
 .mediaImage {
@@ -144,10 +211,10 @@
     object-fit: cover;
     object-position: center;
 
-    transform: scale(1.01);
+    transform: scale(1.015);
     transition:
-        transform 260ms ease,
-        filter 260ms ease;
+        transform 320ms ease,
+        filter 320ms ease;
 }
 
 .mediaOverlay {
@@ -158,32 +225,84 @@
 
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.05) 0%,
-            rgba(255, 248, 235, 0.015) 12%,
-            rgba(255, 255, 255, 0) 26%),
+            rgba(255, 248, 235, 0.08) 0%,
+            rgba(255, 248, 235, 0.02) 12%,
+            rgba(255, 255, 255, 0) 28%),
+        linear-gradient(90deg,
+            rgba(10, 7, 5, 0.18) 0%,
+            rgba(10, 7, 5, 0.04) 18%,
+            rgba(10, 7, 5, 0) 34%,
+            rgba(10, 7, 5, 0) 66%,
+            rgba(10, 7, 5, 0.08) 100%),
         linear-gradient(0deg,
-            rgba(8, 6, 4, 0.14) 0%,
+            rgba(8, 6, 4, 0.16) 0%,
             rgba(8, 6, 4, 0.04) 24%,
             rgba(8, 6, 4, 0) 44%),
-        radial-gradient(80% 70% at 50% 50%,
+        radial-gradient(78% 70% at 50% 50%,
             rgba(0, 0, 0, 0) 58%,
             rgba(0, 0, 0, 0.08) 100%);
 }
 
 .mediaGlow {
     position: absolute;
-    inset: auto 8% -20px 8%;
+    inset: auto 8% -22px 8%;
     z-index: 0;
-    block-size: 36px;
+    block-size: 38px;
     pointer-events: none;
 
     background: radial-gradient(circle,
-            rgba(199, 134, 21, 0.2) 0%,
+            rgba(199, 134, 21, 0.22) 0%,
             rgba(199, 134, 21, 0.08) 48%,
             rgba(199, 134, 21, 0) 76%);
 
-    filter: blur(20px);
+    filter: blur(22px);
     opacity: 0.9;
+}
+
+.mediaCaption {
+    position: absolute;
+    inset: auto auto clamp(0.72rem, 1.2vw, 1rem) clamp(0.72rem, 1.2vw, 1rem);
+    z-index: 4;
+    max-inline-size: calc(100% - 1.44rem);
+    pointer-events: none;
+}
+
+.mediaCaptionText {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: clamp(30px, 3vw, 38px);
+    max-inline-size: 100%;
+    padding-inline: clamp(0.7rem, 1.4vw, 0.96rem);
+    border-radius: 999px;
+    border: 1px solid rgba(241, 205, 132, 0.34);
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.16) 0%,
+            rgba(255, 248, 235, 0.04) 18%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(135deg,
+            rgba(78, 47, 21, 0.92) 0%,
+            rgba(42, 22, 10, 0.94) 52%,
+            rgba(26, 13, 6, 0.96) 100%);
+
+    color: rgba(255, 248, 235, 0.96);
+    font-size: clamp(0.66rem, 0.18vw + 0.64rem, 0.78rem);
+    font-weight: 800;
+    letter-spacing: clamp(0.05em, 0.08vw, 0.08em);
+    text-transform: uppercase;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.2;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.1),
+        0 8px 18px rgba(0, 0, 0, 0.24),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .mediaPlaceholder {
@@ -212,7 +331,7 @@
 @media (max-width: 1120px) {
     .content {
         grid-template-columns: minmax(0, 1fr);
-        gap: 1.25rem;
+        gap: 1.2rem;
     }
 
     .textCol {
@@ -225,13 +344,13 @@
     }
 
     .mediaFrame {
-        min-block-size: clamp(300px, 48vw, 460px);
+        min-block-size: clamp(320px, 52vw, 500px);
     }
 }
 
 @media (max-width: 768px) {
     .content {
-        padding: 0.9rem;
+        padding: 0.92rem;
         gap: 1rem;
         border-radius: 24px;
     }
@@ -245,24 +364,53 @@
         line-height: 1.68;
     }
 
+    .lead {
+        font-size: 1.02rem;
+        line-height: 1.64;
+        padding-block-start: 0.8rem;
+    }
+
     .highlightWrap {
-        margin-block-start: 0.9rem;
+        margin-block-start: 0.92rem;
+    }
+
+    .highlightPill :global(.inner) {
+        padding-block: 0.86rem;
+        padding-inline: 1rem;
+    }
+
+    .highlightPill :global(.text) {
+        max-inline-size: 100%;
+        font-size: 0.94rem;
+        line-height: 1.46;
     }
 
     .mediaFrame {
-        min-block-size: clamp(240px, 58vw, 360px);
+        min-block-size: clamp(250px, 60vw, 380px);
         border-radius: 20px;
+    }
+
+    .mediaCaption {
+        inset: auto auto 0.82rem 0.82rem;
+        max-inline-size: calc(100% - 1.64rem);
+    }
+
+    .mediaCaptionText {
+        min-block-size: 34px;
+        padding-inline: 0.8rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.07em;
     }
 
     .mediaGlow {
         inset: auto 6% -18px 6%;
-        block-size: 28px;
+        block-size: 30px;
     }
 }
 
 @media (max-width: 560px) {
     .content {
-        padding: 0.8rem;
+        padding: 0.82rem;
         gap: 0.92rem;
         border-radius: 20px;
     }
@@ -270,6 +418,15 @@
     .paragraph {
         font-size: 0.95rem;
         line-height: 1.62;
+    }
+
+    .lead {
+        font-size: 0.98rem;
+        line-height: 1.58;
+    }
+
+    .lead::before {
+        inline-size: 64px;
     }
 
     .mediaFrame {
@@ -280,13 +437,25 @@
     .mediaOverlay {
         background:
             linear-gradient(180deg,
-                rgba(255, 248, 235, 0.04) 0%,
-                rgba(255, 248, 235, 0.01) 10%,
+                rgba(255, 248, 235, 0.05) 0%,
+                rgba(255, 248, 235, 0.014) 10%,
                 rgba(255, 255, 255, 0) 22%),
             linear-gradient(0deg,
                 rgba(8, 6, 4, 0.12) 0%,
                 rgba(8, 6, 4, 0.03) 20%,
                 rgba(8, 6, 4, 0) 40%);
+    }
+
+    .mediaCaption {
+        inset: auto auto 0.72rem 0.72rem;
+        max-inline-size: calc(100% - 1.44rem);
+    }
+
+    .mediaCaptionText {
+        min-block-size: 32px;
+        padding-inline: 0.72rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.06em;
     }
 
     .mediaLabel {
@@ -306,9 +475,26 @@
         line-height: 1.58;
     }
 
+    .lead {
+        font-size: 0.95rem;
+        line-height: 1.54;
+    }
+
     .mediaFrame {
         min-block-size: 210px;
         border-radius: 16px;
+    }
+
+    .mediaCaption {
+        inset: auto auto 0.62rem 0.62rem;
+        max-inline-size: calc(100% - 1.24rem);
+    }
+
+    .mediaCaptionText {
+        min-block-size: 30px;
+        padding-inline: 0.64rem;
+        font-size: 0.64rem;
+        letter-spacing: 0.05em;
     }
 
     .mediaLabel {
@@ -319,8 +505,8 @@
 
 @media (hover: hover) {
     .mediaFrame:hover .mediaImage {
-        transform: scale(1.035);
-        filter: brightness(1.03);
+        transform: scale(1.04);
+        filter: brightness(1.035) saturate(1.03);
     }
 }
 

@@ -52,7 +52,7 @@ export default function AboutTheHotelContent() {
   const [firstParagraph, ...otherParagraphs] = paragraphs;
 
   return (
-    <section className={styles.content} aria-label={aboutSection?.headerLabel}>
+    <div className={styles.content}>
       <div className={styles.textCol}>
         <div className={styles.copy}>
           {firstParagraph ? (
@@ -96,9 +96,15 @@ export default function AboutTheHotelContent() {
 
             <div className={styles.mediaOverlay} aria-hidden="true" />
             <div className={styles.mediaGlow} aria-hidden="true" />
+
+            <figcaption className={styles.mediaCaption}>
+              <span className={styles.mediaCaptionText}>
+                Sport & Nature Hotel
+              </span>
+            </figcaption>
           </div>
         </figure>
       </div>
-    </section>
+    </div>
   );
 }

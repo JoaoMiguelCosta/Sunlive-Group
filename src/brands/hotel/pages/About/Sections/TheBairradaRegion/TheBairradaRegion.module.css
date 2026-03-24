@@ -1,21 +1,69 @@
 .section {
+    --section-radius: clamp(1.25rem, 2vw, 1.85rem);
+    --section-inset: clamp(0.9rem, 2.2vw, 1.35rem);
+
     position: relative;
     isolation: isolate;
     inline-size: 100%;
-   
-    
+    overflow: hidden;
+    border-radius: var(--section-radius);
+
+    background:
+        radial-gradient(1200px 460px at 50% -10%, rgba(236, 208, 154, 0.18), transparent 60%),
+        radial-gradient(1000px 420px at 50% 112%, rgba(199, 134, 21, 0.12), transparent 60%),
+        linear-gradient(180deg, rgba(32, 18, 10, 0.62) 0%, rgba(18, 10, 6, 0.74) 100%),
+        #231409;
+
+    border: 1px solid rgba(230, 200, 147, 0.18);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 28px 72px rgba(0, 0, 0, 0.24);
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 7% auto auto 50%;
-    translate: -50% 0;
-    inline-size: min(90vw, 1160px);
-    block-size: clamp(170px, 22vw, 290px);
+    inset: 0;
+    z-index: 0;
     pointer-events: none;
- 
+
+    background-image: var(--bairrada-region-bg-image);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 58%;
+
     opacity: 0.76;
+    filter: saturate(1.04) contrast(1.08) brightness(0.9);
+    transform: scale(1.04);
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 50% 44%,
+            rgba(255, 244, 223, 0.03) 0%,
+            rgba(255, 244, 223, 0.03) 16%,
+            rgba(29, 17, 10, 0.12) 36%,
+            rgba(18, 10, 6, 0.3) 64%,
+            rgba(14, 8, 5, 0.54) 100%),
+        linear-gradient(180deg,
+            rgba(18, 10, 6, 0.1) 0%,
+            rgba(18, 10, 6, 0.04) 14%,
+            rgba(18, 10, 6, 0.1) 28%,
+            rgba(18, 10, 6, 0.2) 52%,
+            rgba(16, 9, 5, 0.42) 100%),
+        linear-gradient(90deg,
+            rgba(14, 8, 5, 0.4) 0%,
+            rgba(14, 8, 5, 0.08) 18%,
+            rgba(14, 8, 5, 0.04) 50%,
+            rgba(14, 8, 5, 0.08) 82%,
+            rgba(14, 8, 5, 0.4) 100%);
 }
 
 .inner {
@@ -25,21 +73,139 @@
     box-sizing: border-box;
 
     display: grid;
-    gap: clamp(1.15rem, 2vw, 1.65rem);
+    gap: clamp(0.88rem, 1.4vw, 1.2rem);
+
+    padding:
+        clamp(0.95rem, 1.6vw, 1.35rem) var(--section-inset) clamp(1.05rem, 1.9vw, 1.5rem);
 }
 
-@media (max-width: 640px) {
+@media (min-width: 1600px) {
     .section {
-        
+        --section-radius: 1.9rem;
+        --section-inset: 1.45rem;
+    }
+
+    .inner {
+        gap: 1.1rem;
+        padding:
+            1rem var(--section-inset) 1.35rem;
+    }
+}
+
+@media (max-width: 1280px) {
+    .inner {
+        gap: 1rem;
+        padding:
+            0.92rem clamp(0.88rem, 2.2vw, 1.1rem) 1.32rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .section {
+        --section-radius: 1.2rem;
+        --section-inset: 0.95rem;
     }
 
     .section::before {
-        inline-size: 100%;
-        block-size: 190px;
-        inset-block-start: 4%;
+        background-position: center 56%;
+        opacity: 0.7;
+    }
+
+    .section::after {
+        background:
+            radial-gradient(circle at 50% 42%,
+                rgba(255, 244, 223, 0.02) 0%,
+                rgba(29, 17, 10, 0.16) 34%,
+                rgba(18, 10, 6, 0.36) 66%,
+                rgba(14, 8, 5, 0.58) 100%),
+            linear-gradient(180deg,
+                rgba(18, 10, 6, 0.12) 0%,
+                rgba(18, 10, 6, 0.06) 18%,
+                rgba(18, 10, 6, 0.14) 38%,
+                rgba(16, 9, 5, 0.46) 100%),
+            linear-gradient(90deg,
+                rgba(14, 8, 5, 0.42) 0%,
+                rgba(14, 8, 5, 0.1) 16%,
+                rgba(14, 8, 5, 0.04) 50%,
+                rgba(14, 8, 5, 0.1) 84%,
+                rgba(14, 8, 5, 0.42) 100%);
     }
 
     .inner {
         gap: 0.95rem;
+        padding:
+            0.9rem var(--section-inset) 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        --section-radius: 1.12rem;
+        --section-inset: 0.86rem;
+    }
+
+    .inner {
+        gap: 0.88rem;
+        padding:
+            0.84rem var(--section-inset) 1.08rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .section {
+        --section-radius: 1.05rem;
+        --section-inset: 0.78rem;
+    }
+
+    .section::before {
+        background-position: center 54%;
+        opacity: 0.64;
+        filter: saturate(1.02) contrast(1.06) brightness(0.84);
+        transform: scale(1.025);
+    }
+
+    .section::after {
+        background:
+            radial-gradient(circle at 50% 36%,
+                rgba(29, 17, 10, 0.1) 0%,
+                rgba(18, 10, 6, 0.28) 42%,
+                rgba(14, 8, 5, 0.56) 100%),
+            linear-gradient(180deg,
+                rgba(18, 10, 6, 0.1) 0%,
+                rgba(18, 10, 6, 0.08) 16%,
+                rgba(18, 10, 6, 0.22) 42%,
+                rgba(16, 9, 5, 0.54) 100%);
+    }
+
+    .inner {
+        gap: 0.82rem;
+        padding:
+            0.78rem var(--section-inset) 0.98rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        --section-radius: 1rem;
+        --section-inset: 0.72rem;
+    }
+
+    .inner {
+        gap: 0.76rem;
+        padding:
+            0.72rem var(--section-inset) 0.9rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .section {
+        --section-radius: 0.96rem;
+        --section-inset: 0.66rem;
+    }
+
+    .inner {
+        gap: 0.7rem;
+        padding:
+            0.68rem var(--section-inset) 0.84rem;
     }
 }

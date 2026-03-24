@@ -11,6 +11,11 @@ export const qualityCommitment = {
       text: '"Este compromisso traduz-se num ambiente acolhedor, onde cada hóspede sente que está em casa, longe de casa."',
     },
   },
+  commitmentsPanel: {
+    ariaLabel: "Comprometemo-nos com",
+    kicker: "Padrão de serviço",
+    title: "Comprometemo-nos com:",
+  },
   commitments: [
     { id: "spaces", text: "Espaços limpos, funcionais e bem mantidos" },
     { id: "meals", text: "Refeições equilibradas, saborosas e adaptáveis" },

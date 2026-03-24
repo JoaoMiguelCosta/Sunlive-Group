@@ -1,3 +1,5 @@
+import bairradaRegionImage from "../../../assets/bairrada-region.webp";
+
 export const bairradaRegion = {
   id: "sobre-bairrada",
   header: {
@@ -12,6 +14,10 @@ export const bairradaRegion = {
       "Famosa pelos seus vinhos espumantes, pelo leitão assado, pelas paisagens vinícolas e pelo património termal, é o local ideal para quem procura tranquilidade, autenticidade e descoberta.",
     ],
     highlightWord: "Bairrada",
+  },
+  backgroundMedia: {
+    imageSrc: bairradaRegionImage,
+    imageAlt: "Paisagem vínica da região da Bairrada",
   },
   highlights: {
     items: [
