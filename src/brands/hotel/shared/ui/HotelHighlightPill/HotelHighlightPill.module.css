@@ -10,6 +10,7 @@
     position: relative;
     isolation: isolate;
     overflow: hidden;
+  
 
     inline-size: 100%;
     min-inline-size: 0;

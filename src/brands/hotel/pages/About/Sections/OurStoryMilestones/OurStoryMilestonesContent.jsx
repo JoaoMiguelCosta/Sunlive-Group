@@ -6,8 +6,9 @@ import styles from "./OurStoryMilestonesContent.module.css";
 /**
  * OurStoryMilestonesContent
  * Layout:
- * - coluna esquerda: texto editorial + pill
- * - coluna direita: timeline premium com milestones
+ * - bloco editorial superior mais limpo
+ * - timeline principal em grelha premium
+ * - destaque final mais forte no último marco
  */
 export default function OurStoryMilestonesContent() {
   const section =
@@ -29,7 +30,7 @@ export default function OurStoryMilestonesContent() {
 
   return (
     <div className={styles.content}>
-      <div className={styles.textCol}>
+      <div className={styles.intro}>
         <div className={styles.copy}>
           {firstParagraph ? (
             <p className={`${styles.paragraph} ${styles.lead}`}>
@@ -58,12 +59,11 @@ export default function OurStoryMilestonesContent() {
         ) : null}
       </div>
 
-      <div className={styles.timelineCol}>
-        <div className={styles.timelinePanel}>
-          <div className={styles.timelineGlow} aria-hidden="true" />
-          <div className={styles.timelineRail} aria-hidden="true" />
+      {milestones.length ? (
+        <div className={styles.timelineStage}>
+          <div className={styles.timelineTrack} aria-hidden="true" />
 
-          <div className={styles.timelineStack}>
+          <div className={styles.timelineGrid}>
             {milestones.map((item, index) => {
               const isFeatured = index === milestones.length - 1;
 
@@ -83,14 +83,19 @@ export default function OurStoryMilestonesContent() {
                     title={item.label}
                     subtitle={item.description}
                     featured={isFeatured}
-                    className={isFeatured ? styles.milestoneFeatured : ""}
+                    className={[
+                      styles.milestoneCard,
+                      isFeatured ? styles.milestoneCardFeatured : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
                   />
                 </div>
               );
             })}
           </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }

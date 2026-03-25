@@ -2,125 +2,108 @@
     position: relative;
     isolation: isolate;
     overflow: hidden;
-
     display: flex;
     flex-direction: column;
     min-block-size: 100%;
-
-    border-radius: clamp(1.1rem, 2vw, 1.75rem);
-    border: 1px solid rgba(230, 200, 147, 0.24);
-
+    min-inline-size: 0;
+    border-radius: clamp(1rem, 1.8vw, 1.55rem);
+    border: 1px solid rgba(236, 208, 154, 0.18);
     background:
-        radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.1), transparent 44%),
-        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.1), transparent 46%),
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.04) 0%,
-            rgba(255, 248, 235, 0.014) 18%,
-            rgba(0, 0, 0, 0.1) 100%),
-        linear-gradient(135deg,
-            rgba(44, 23, 11, 0.96) 0%,
-            rgba(28, 14, 8, 0.98) 100%);
-
+        linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 18%, rgba(255, 255, 255, 0.02) 100%),
+        linear-gradient(135deg, rgba(28, 15, 8, 0.34) 0%, rgba(15, 8, 5, 0.46) 100%);
+    backdrop-filter: blur(12px) saturate(1.08);
+    -webkit-backdrop-filter: blur(12px) saturate(1.08);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.045),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
-        0 16px 38px rgba(0, 0, 0, 0.2);
-
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+        0 14px 34px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 221, 155, 0.018);
     transition:
         transform 180ms ease,
         border-color 180ms ease,
-        box-shadow 180ms ease;
+        box-shadow 180ms ease,
+        background 180ms ease;
 }
 
 .card::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     pointer-events: none;
-
     background:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.07) 0%,
-            rgba(255, 248, 235, 0.02) 15%,
-            rgba(255, 255, 255, 0) 38%);
-    opacity: 0.92;
+        linear-gradient(180deg, rgba(255, 248, 235, 0.12) 0%, rgba(255, 248, 235, 0.03) 16%, rgba(255, 255, 255, 0) 38%),
+        radial-gradient(circle at 16% 0%, rgba(241, 205, 132, 0.08), transparent 34%),
+        radial-gradient(circle at 100% 100%, rgba(199, 134, 21, 0.08), transparent 38%);
+    opacity: 0.95;
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(230, 200, 147, 0.34);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.15),
-        0 22px 50px rgba(0, 0, 0, 0.26);
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(10, 6, 4, 0) 0%, rgba(10, 6, 4, 0.05) 48%, rgba(10, 6, 4, 0.14) 100%);
+}
+
+.cardTop,
+.titleBand,
+.body {
+    position: relative;
+    z-index: 1;
 }
 
 .cardTop {
-    position: relative;
-    z-index: 1;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    min-block-size: clamp(5rem, 7vw, 6.2rem);
-    padding: clamp(0.95rem, 1.6vw, 1.25rem) clamp(0.9rem, 1.4vw, 1rem) clamp(0.7rem, 1vw, 0.9rem);
-
-    background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
+    min-block-size: clamp(2.8rem, 3.2vw, 3.3rem);
+    padding: clamp(0.28rem, 0.48vw, 0.4rem) clamp(0.72rem, 0.94vw, 0.86rem) clamp(0.12rem, 0.2vw, 0.2rem);
+    background: linear-gradient(180deg, rgba(213, 160, 67, 0.42) 0%, rgba(166, 108, 27, 0.32) 100%);
+    border-bottom: 1px solid rgba(255, 227, 163, 0.08);
 }
 
 .iconCircle {
-    inline-size: clamp(3rem, 4.6vw, 4.1rem);
-    block-size: clamp(3rem, 4.6vw, 4.1rem);
-    border-radius: 999px;
-
+    inline-size: clamp(1.92rem, 2.2vw, 2.28rem);
+    block-size: clamp(1.92rem, 2.2vw, 2.28rem);
+    flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    border: 1px solid rgba(241, 205, 132, 0.2);
-
+    border-radius: 999px;
+    border: 1px solid rgba(255, 227, 163, 0.2);
     background:
-        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.16), transparent 55%),
-        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.08), transparent 72%),
-        linear-gradient(180deg,
-            rgba(78, 42, 18, 0.92) 0%,
-            rgba(42, 21, 10, 0.96) 100%);
-
+        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.2), transparent 54%),
+        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.12), transparent 72%),
+        linear-gradient(180deg, rgba(102, 55, 24, 0.66) 0%, rgba(50, 26, 12, 0.74) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.12),
-        0 10px 24px rgba(0, 0, 0, 0.22),
-        0 0 0 1px rgba(255, 220, 140, 0.04),
-        0 0 22px rgba(230, 200, 147, 0.08);
-
-    color: #f1cd84;
+        inset 0 1px 0 rgba(255, 248, 235, 0.14),
+        0 8px 20px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(255, 220, 140, 0.03),
+        0 0 18px rgba(241, 205, 132, 0.12);
+    color: #f6d38f;
 }
 
 .iconCircle :global(svg) {
-    inline-size: clamp(1.3rem, 2vw, 1.75rem);
-    block-size: clamp(1.3rem, 2vw, 1.75rem);
+    inline-size: clamp(0.76rem, 0.84vw, 0.92rem);
+    block-size: clamp(0.76rem, 0.84vw, 0.92rem);
     stroke: currentColor;
     filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.12));
 }
 
 .titleBand {
-    position: relative;
-    z-index: 1;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    min-block-size: clamp(2.8rem, 3.4vw, 3.2rem);
-    padding:
-        clamp(0.16rem, 0.24vw, 0.24rem) clamp(0.95rem, 1.4vw, 1.1rem) clamp(0.42rem, 0.8vw, 0.6rem);
-
+    min-block-size: clamp(1.78rem, 1.9vw, 1.96rem);
+    padding: 0 clamp(0.68rem, 0.84vw, 0.82rem) clamp(0.06rem, 0.12vw, 0.1rem);
     text-align: center;
+    background: linear-gradient(180deg, rgba(36, 19, 10, 0.06) 0%, rgba(24, 13, 7, 0.03) 100%);
 }
 
 .title {
     margin: 0;
-
     display: -webkit-box;
     display: box;
     -webkit-box-orient: vertical;
@@ -128,125 +111,123 @@
     -webkit-line-clamp: 2;
     line-clamp: 2;
     overflow: hidden;
-
-    font-size: clamp(0.96rem, 0.86rem + 0.42vw, 1.16rem);
+    max-inline-size: 100%;
+    font-size: clamp(0.86rem, 0.08vw + 0.84rem, 0.94rem);
     font-weight: 800;
-    line-height: 1.14;
-    letter-spacing: 0.045em;
+    line-height: 1.08;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #f1cd84;
+    color: #f4cf88;
     text-wrap: balance;
     overflow-wrap: anywhere;
     word-break: break-word;
-    max-inline-size: 100%;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.16);
 }
 
 .body {
-    position: relative;
-    z-index: 1;
-
     display: flex;
-    flex: 1;
+    flex: 1 1 auto;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    gap: clamp(0.38rem, 0.7vw, 0.52rem);
-
-    min-block-size: clamp(7.8rem, 9vw, 9.2rem);
-    padding: clamp(0.88rem, 1.2vw, 1rem) clamp(1rem, 1.7vw, 1.2rem) clamp(1rem, 1.6vw, 1.3rem);
-
-    background:
-        linear-gradient(180deg,
-            rgba(30, 16, 8, 0.26) 0%,
-            rgba(22, 12, 6, 0.5) 100%);
+    gap: 0.12rem;
+    min-block-size: clamp(4.9rem, 5.2vw, 5.6rem);
+    padding: clamp(0.52rem, 0.64vw, 0.64rem) clamp(0.82rem, 0.96vw, 0.94rem) clamp(0.64rem, 0.78vw, 0.74rem);
+    background: linear-gradient(180deg, rgba(18, 10, 6, 0.03) 0%, rgba(18, 10, 6, 0.1) 100%);
 }
 
 .description {
     margin: 0 auto;
     max-inline-size: min(24ch, 100%);
-
     text-align: center;
-    font-size: clamp(0.9rem, 0.42vw + 0.84rem, 1rem);
-    line-height: 1.56;
-    color: rgba(255, 248, 235, 0.9);
+    font-size: clamp(0.83rem, 0.05vw + 0.82rem, 0.88rem);
+    line-height: 1.4;
+    color: rgba(255, 248, 235, 0.98);
     text-wrap: pretty;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.18);
 }
 
-.metric {
-    border-radius: clamp(1rem, 1.8vw, 1.5rem);
-}
-
+/* Metric */
 .metric .cardTop {
     min-block-size: auto;
     flex-direction: column;
-    gap: clamp(0.4rem, 0.8vw, 0.55rem);
-    padding: clamp(0.9rem, 1.5vw, 1.15rem) 1rem clamp(0.5rem, 0.8vw, 0.65rem);
+    gap: 0.42rem;
+    padding: 0.52rem 0.8rem 0.32rem;
+}
+
+.metric .titleBand {
+    display: none;
 }
 
 .metric .iconCircle {
-    inline-size: auto;
-    block-size: auto;
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: none;
-    box-shadow: none;
-    color: #f1cd84;
+    inline-size: clamp(1.9rem, 2.16vw, 2.2rem);
+    block-size: clamp(1.9rem, 2.16vw, 2.2rem);
 }
 
 .metric .iconCircle :global(svg) {
-    inline-size: clamp(1.1rem, 1.8vw, 1.35rem);
-    block-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    inline-size: clamp(0.74rem, 0.82vw, 0.88rem);
+    block-size: clamp(0.74rem, 0.82vw, 0.88rem);
 }
 
 .statValue {
-    font-size: clamp(1rem, 0.85rem + 0.45vw, 1.2rem);
+    margin: 0;
+    font-size: clamp(0.96rem, 0.1vw + 0.94rem, 1.08rem);
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.04;
     letter-spacing: 0.02em;
-    color: #fff3da;
     text-align: center;
+    color: #fff3da;
 }
 
 .metric .body {
-    align-items: center;
     justify-content: center;
     min-block-size: auto;
-    padding: clamp(0.45rem, 0.8vw, 0.55rem) 1rem clamp(0.9rem, 1.4vw, 1.1rem);
+    padding: 0.34rem 0.8rem 0.76rem;
+    gap: 0.22rem;
 }
 
 .metricTitle {
     margin: 0;
-    font-size: clamp(0.86rem, 0.78rem + 0.2vw, 0.94rem);
+    max-inline-size: 100%;
+    font-size: clamp(0.8rem, 0.05vw + 0.79rem, 0.86rem);
     font-weight: 800;
-    line-height: 1.3;
-    letter-spacing: 0.05em;
+    line-height: 1.16;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     text-align: center;
-    color: #f1cd84;
-    overflow-wrap: break-word;
+    color: #f4cf88;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .metric .description {
-    font-size: clamp(0.84rem, 0.75rem + 0.25vw, 0.9rem);
-    line-height: 1.5;
-    max-inline-size: min(22ch, 100%);
+    max-inline-size: min(20ch, 100%);
+    font-size: clamp(0.8rem, 0.04vw + 0.79rem, 0.86rem);
+    line-height: 1.34;
 }
 
-@media (max-width: 900px) {
-    .cardTop {
-        min-block-size: 5.4rem;
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(241, 205, 132, 0.28);
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.055) 18%, rgba(255, 255, 255, 0.025) 100%),
+            linear-gradient(135deg, rgba(34, 18, 9, 0.38) 0%, rgba(16, 9, 5, 0.48) 100%);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 248, 235, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.14),
+            0 20px 46px rgba(0, 0, 0, 0.24),
+            0 0 0 1px rgba(255, 221, 155, 0.025);
     }
+}
 
-    .titleBand {
-        min-block-size: 2.7rem;
-        padding: 0.16rem 1rem 0.34rem;
-    }
-
+@media (max-width: 1200px) {
     .body {
-        min-block-size: 7.6rem;
-        padding: 0.84rem 1rem 1.12rem;
+        min-block-size: 4.8rem;
+        padding: 0.52rem 0.76rem 0.7rem;
     }
 
     .description {
@@ -254,115 +235,218 @@
     }
 }
 
-@media (max-width: 640px) {
-    .card {
-        border-radius: 1.2rem;
-    }
-
+@media (max-width: 1024px) {
     .cardTop {
-        min-block-size: 5rem;
-        padding: 0.92rem 0.9rem 0.66rem;
+        min-block-size: 2.72rem;
+        padding: 0.3rem 0.7rem 0.2rem;
     }
 
     .iconCircle {
-        inline-size: 3rem;
-        block-size: 3rem;
+        inline-size: 1.88rem;
+        block-size: 1.88rem;
     }
 
     .iconCircle :global(svg) {
-        inline-size: 1.26rem;
-        block-size: 1.26rem;
+        inline-size: 0.72rem;
+        block-size: 0.72rem;
     }
 
     .titleBand {
-        min-block-size: 2.5rem;
-        padding: 0.14rem 0.95rem 0.32rem;
+        min-block-size: 1.74rem;
+        padding: 0 0.7rem 0.1rem;
     }
 
     .title {
-        font-size: 0.96rem;
-        line-height: 1.14;
+        font-size: 0.86rem;
     }
 
     .body {
         min-block-size: auto;
-        padding: 0.78rem 0.95rem 0.98rem;
-        gap: 0.42rem;
+        padding: 0.54rem 0.74rem 0.72rem;
+    }
+
+    .description {
+        font-size: 0.83rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        border-radius: 1.12rem;
+        backdrop-filter: blur(10px) saturate(1.04);
+        -webkit-backdrop-filter: blur(10px) saturate(1.04);
+    }
+
+    .cardTop {
+        min-block-size: 2.64rem;
+        padding: 0.28rem 0.68rem 0.18rem;
+    }
+
+    .iconCircle {
+        inline-size: 1.84rem;
+        block-size: 1.84rem;
+    }
+
+    .iconCircle :global(svg) {
+        inline-size: 0.7rem;
+        block-size: 0.7rem;
+    }
+
+    .titleBand {
+        min-block-size: 1.68rem;
+    }
+
+    .title {
+        font-size: 0.84rem;
+    }
+
+    .body {
+        padding: 0.52rem 0.7rem 0.68rem;
     }
 
     .description {
         max-inline-size: 100%;
-        font-size: 0.92rem;
-        line-height: 1.52;
-    }
-
-    .metric .cardTop {
-        padding: 0.85rem 0.9rem 0.55rem;
-    }
-
-    .metric .body {
-        padding: 0.45rem 0.9rem 0.95rem;
-    }
-
-    .metricTitle {
-        font-size: 0.84rem;
-    }
-
-    .metric .description {
-        font-size: 0.84rem;
-        line-height: 1.45;
-        max-inline-size: 100%;
+        font-size: 0.82rem;
+        line-height: 1.34;
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 640px) {
+    .card {
+        border-radius: 1.06rem;
+    }
+
+    .cardTop {
+        min-block-size: 2.56rem;
+        padding: 0.26rem 0.64rem 0.16rem;
+    }
+
+    .iconCircle {
+        inline-size: 1.76rem;
+        block-size: 1.76rem;
+    }
+
+    .iconCircle :global(svg) {
+        inline-size: 0.66rem;
+        block-size: 0.66rem;
+    }
+
+    .titleBand {
+        min-block-size: 1.6rem;
+        padding: 0 0.64rem 0.08rem;
+    }
+
+    .title {
+        font-size: 0.82rem;
+    }
+
+    .body {
+        padding: 0.48rem 0.66rem 0.64rem;
+    }
+
+    .description {
+        font-size: 0.8rem;
+        line-height: 1.32;
+    }
+}
+
+@media (max-width: 420px) {
     .card {
         border-radius: 1rem;
     }
 
     .cardTop {
-        min-block-size: 4.75rem;
-        padding: 0.82rem 0.8rem 0.62rem;
+        min-block-size: 2.48rem;
+        padding: 0.24rem 0.6rem 0.16rem;
     }
 
     .iconCircle {
-        inline-size: 2.75rem;
-        block-size: 2.75rem;
+        inline-size: 1.68rem;
+        block-size: 1.68rem;
     }
 
     .iconCircle :global(svg) {
-        inline-size: 1.1rem;
-        block-size: 1.1rem;
+        inline-size: 0.62rem;
+        block-size: 0.62rem;
     }
 
     .titleBand {
-        min-block-size: 2.35rem;
-        padding: 0.12rem 0.8rem 0.26rem;
+        min-block-size: 1.54rem;
+        padding: 0 0.6rem 0.08rem;
     }
 
     .title {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.035em;
     }
 
     .body {
-        padding: 0.7rem 0.8rem 0.88rem;
+        padding: 0.46rem 0.6rem 0.6rem;
     }
 
     .description {
-        font-size: 0.87rem;
-        line-height: 1.46;
-    }
-
-    .statValue {
-        font-size: 0.95rem;
+        font-size: 0.78rem;
+        line-height: 1.3;
     }
 
     .metricTitle {
-        font-size: 0.8rem;
+        font-size: 0.76rem;
     }
 
     .metric .description {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
+        line-height: 1.28;
+    }
+
+    .statValue {
+        font-size: 0.92rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .cardTop {
+        min-block-size: 2.4rem;
+        padding: 0.22rem 0.56rem 0.14rem;
+    }
+
+    .iconCircle {
+        inline-size: 1.62rem;
+        block-size: 1.62rem;
+    }
+
+    .iconCircle :global(svg) {
+        inline-size: 0.6rem;
+        block-size: 0.6rem;
+    }
+
+    .titleBand {
+        min-block-size: 1.48rem;
+    }
+
+    .title {
+        font-size: 0.78rem;
+    }
+
+    .body {
+        padding: 0.44rem 0.56rem 0.56rem;
+    }
+
+    .description {
+        font-size: 0.76rem;
+        line-height: 1.28;
+    }
+
+    .metricTitle {
+        font-size: 0.74rem;
+    }
+
+    .metric .description {
+        font-size: 0.76rem;
+        line-height: 1.26;
+    }
+
+    .statValue {
+        font-size: 0.88rem;
     }
 }
 
