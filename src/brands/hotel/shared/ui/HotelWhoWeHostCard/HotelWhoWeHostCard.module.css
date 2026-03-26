@@ -2,22 +2,19 @@
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    min-block-size: 100%;
     min-inline-size: 0;
-    border-radius: clamp(1rem, 1.8vw, 1.55rem);
-    border: 1px solid rgba(236, 208, 154, 0.18);
+    min-block-size: 100%;
+    border-radius: clamp(1rem, 1.45vw, 1.28rem);
+    border: 1px solid rgba(236, 208, 154, 0.16);
     background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 18%, rgba(255, 255, 255, 0.02) 100%),
-        linear-gradient(135deg, rgba(28, 15, 8, 0.34) 0%, rgba(15, 8, 5, 0.46) 100%);
-    backdrop-filter: blur(12px) saturate(1.08);
-    -webkit-backdrop-filter: blur(12px) saturate(1.08);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.035) 100%),
+        linear-gradient(135deg, rgba(30, 16, 9, 0.72) 0%, rgba(14, 8, 5, 0.78) 100%);
+    backdrop-filter: blur(10px) saturate(1.04);
+    -webkit-backdrop-filter: blur(10px) saturate(1.04);
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.08),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.12),
-        0 14px 34px rgba(0, 0, 0, 0.2),
-        0 0 0 1px rgba(255, 221, 155, 0.018);
+        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
+        0 16px 38px rgba(0, 0, 0, 0.2);
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -32,321 +29,237 @@
     z-index: 0;
     pointer-events: none;
     background:
-        linear-gradient(180deg, rgba(255, 248, 235, 0.12) 0%, rgba(255, 248, 235, 0.03) 16%, rgba(255, 255, 255, 0) 38%),
-        radial-gradient(circle at 16% 0%, rgba(241, 205, 132, 0.08), transparent 34%),
-        radial-gradient(circle at 100% 100%, rgba(199, 134, 21, 0.08), transparent 38%);
+        linear-gradient(180deg, rgba(255, 248, 235, 0.1) 0%, rgba(255, 248, 235, 0.02) 24%, transparent 48%),
+        radial-gradient(circle at 0% 0%, rgba(241, 205, 132, 0.1), transparent 30%),
+        radial-gradient(circle at 100% 100%, rgba(199, 134, 21, 0.08), transparent 34%);
     opacity: 0.95;
 }
 
 .card::after {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: auto 8% 0 8%;
+    block-size: 42%;
     z-index: 0;
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(10, 6, 4, 0) 0%, rgba(10, 6, 4, 0.05) 48%, rgba(10, 6, 4, 0.14) 100%);
+    background: linear-gradient(180deg, rgba(8, 5, 3, 0) 0%, rgba(8, 5, 3, 0.14) 100%);
+    opacity: 0.9;
 }
 
-.cardTop,
-.titleBand,
-.body {
+.inner {
     position: relative;
     z-index: 1;
+    display: grid;
+    align-content: start;
+    gap: clamp(0.42rem, 0.58vw, 0.56rem);
+    min-block-size: 100%;
+    padding: clamp(0.64rem, 0.82vw, 0.74rem);
 }
 
-.cardTop {
+.topRow {
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-block-size: clamp(2.8rem, 3.2vw, 3.3rem);
-    padding: clamp(0.28rem, 0.48vw, 0.4rem) clamp(0.72rem, 0.94vw, 0.86rem) clamp(0.12rem, 0.2vw, 0.2rem);
-    background: linear-gradient(180deg, rgba(213, 160, 67, 0.42) 0%, rgba(166, 108, 27, 0.32) 100%);
-    border-bottom: 1px solid rgba(255, 227, 163, 0.08);
+    gap: 0.54rem;
+    min-inline-size: 0;
 }
 
-.iconCircle {
-    inline-size: clamp(1.92rem, 2.2vw, 2.28rem);
-    block-size: clamp(1.92rem, 2.2vw, 2.28rem);
+.iconWrap {
+    inline-size: clamp(1.72rem, 1.78vw, 1.9rem);
+    block-size: clamp(1.72rem, 1.78vw, 1.9rem);
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    border: 1px solid rgba(255, 227, 163, 0.2);
+    border: 1px solid rgba(255, 227, 163, 0.18);
     background:
-        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.2), transparent 54%),
-        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.12), transparent 72%),
-        linear-gradient(180deg, rgba(102, 55, 24, 0.66) 0%, rgba(50, 26, 12, 0.74) 100%);
+        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.18), transparent 54%),
+        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.1), transparent 72%),
+        linear-gradient(180deg, rgba(101, 55, 24, 0.62) 0%, rgba(49, 26, 12, 0.72) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.14),
-        0 8px 20px rgba(0, 0, 0, 0.18),
-        0 0 0 1px rgba(255, 220, 140, 0.03),
-        0 0 18px rgba(241, 205, 132, 0.12);
-    color: #f6d38f;
+        inset 0 1px 0 rgba(255, 248, 235, 0.12),
+        0 8px 20px rgba(0, 0, 0, 0.16),
+        0 0 18px rgba(241, 205, 132, 0.08);
+    color: #f4cf88;
 }
 
-.iconCircle :global(svg) {
-    inline-size: clamp(0.76rem, 0.84vw, 0.92rem);
-    block-size: clamp(0.76rem, 0.84vw, 0.92rem);
+.iconWrap :global(svg) {
+    inline-size: clamp(0.72rem, 0.76vw, 0.8rem);
+    block-size: clamp(0.72rem, 0.76vw, 0.8rem);
     stroke: currentColor;
-    filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.12));
 }
 
-.titleBand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-block-size: clamp(1.78rem, 1.9vw, 1.96rem);
-    padding: 0 clamp(0.68rem, 0.84vw, 0.82rem) clamp(0.06rem, 0.12vw, 0.1rem);
-    text-align: center;
-    background: linear-gradient(180deg, rgba(36, 19, 10, 0.06) 0%, rgba(24, 13, 7, 0.03) 100%);
+.eyebrow {
+    margin: 0;
+    min-inline-size: 0;
+    font-size: clamp(0.62rem, 0.06vw + 0.61rem, 0.68rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #f1cd84;
 }
 
 .title {
     margin: 0;
-    display: -webkit-box;
-    display: box;
-    -webkit-box-orient: vertical;
-    box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    overflow: hidden;
-    max-inline-size: 100%;
-    font-size: clamp(0.86rem, 0.08vw + 0.84rem, 0.94rem);
+    max-inline-size: 18ch;
+    font-size: clamp(0.9rem, 0.16vw + 0.88rem, 1.04rem);
     font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #f4cf88;
+    line-height: 1.02;
+    letter-spacing: -0.024em;
+    color: #fff8eb;
     text-wrap: balance;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.16);
-}
-
-.body {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.12rem;
-    min-block-size: clamp(4.9rem, 5.2vw, 5.6rem);
-    padding: clamp(0.52rem, 0.64vw, 0.64rem) clamp(0.82rem, 0.96vw, 0.94rem) clamp(0.64rem, 0.78vw, 0.74rem);
-    background: linear-gradient(180deg, rgba(18, 10, 6, 0.03) 0%, rgba(18, 10, 6, 0.1) 100%);
 }
 
 .description {
-    margin: 0 auto;
-    max-inline-size: min(24ch, 100%);
-    text-align: center;
-    font-size: clamp(0.83rem, 0.05vw + 0.82rem, 0.88rem);
-    line-height: 1.4;
-    color: rgba(255, 248, 235, 0.98);
-    text-wrap: pretty;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.18);
-}
-
-/* Metric */
-.metric .cardTop {
-    min-block-size: auto;
-    flex-direction: column;
-    gap: 0.42rem;
-    padding: 0.52rem 0.8rem 0.32rem;
-}
-
-.metric .titleBand {
-    display: none;
-}
-
-.metric .iconCircle {
-    inline-size: clamp(1.9rem, 2.16vw, 2.2rem);
-    block-size: clamp(1.9rem, 2.16vw, 2.2rem);
-}
-
-.metric .iconCircle :global(svg) {
-    inline-size: clamp(0.74rem, 0.82vw, 0.88rem);
-    block-size: clamp(0.74rem, 0.82vw, 0.88rem);
-}
-
-.statValue {
     margin: 0;
-    font-size: clamp(0.96rem, 0.1vw + 0.94rem, 1.08rem);
-    font-weight: 800;
-    line-height: 1.04;
-    letter-spacing: 0.02em;
-    text-align: center;
-    color: #fff3da;
-}
-
-.metric .body {
-    justify-content: center;
-    min-block-size: auto;
-    padding: 0.34rem 0.8rem 0.76rem;
-    gap: 0.22rem;
-}
-
-.metricTitle {
-    margin: 0;
-    max-inline-size: 100%;
-    font-size: clamp(0.8rem, 0.05vw + 0.79rem, 0.86rem);
-    font-weight: 800;
-    line-height: 1.16;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-align: center;
-    color: #f4cf88;
-    text-wrap: balance;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-}
-
-.metric .description {
-    max-inline-size: min(20ch, 100%);
-    font-size: clamp(0.8rem, 0.04vw + 0.79rem, 0.86rem);
+    max-inline-size: 36ch;
+    font-size: clamp(0.76rem, 0.06vw + 0.75rem, 0.82rem);
     line-height: 1.34;
+    color: rgba(255, 243, 224, 0.84);
+    text-wrap: pretty;
+}
+
+/* Featured */
+.featured {
+    border-color: rgba(241, 205, 132, 0.22);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.045) 100%),
+        linear-gradient(135deg, rgba(48, 27, 14, 0.78) 0%, rgba(18, 10, 6, 0.84) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.09),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+        0 24px 56px rgba(0, 0, 0, 0.24),
+        0 0 0 1px rgba(255, 224, 158, 0.025);
+}
+
+.featured::before {
+    background:
+        linear-gradient(180deg, rgba(255, 248, 235, 0.12) 0%, rgba(255, 248, 235, 0.03) 22%, transparent 48%),
+        radial-gradient(circle at 0% 0%, rgba(241, 205, 132, 0.14), transparent 34%),
+        radial-gradient(circle at 100% 100%, rgba(199, 134, 21, 0.1), transparent 38%);
+}
+
+.featured .inner {
+    gap: clamp(0.48rem, 0.62vw, 0.56rem);
+    padding: clamp(0.7rem, 0.88vw, 0.8rem);
+}
+
+.featured .iconWrap {
+    inline-size: clamp(1.84rem, 1.96vw, 2rem);
+    block-size: clamp(1.84rem, 1.96vw, 2rem);
+}
+
+.featured .iconWrap :global(svg) {
+    inline-size: clamp(0.76rem, 0.82vw, 0.84rem);
+    block-size: clamp(0.76rem, 0.82vw, 0.84rem);
+}
+
+.featured .eyebrow {
+    font-size: clamp(0.64rem, 0.06vw + 0.63rem, 0.7rem);
+}
+
+.featured .title {
+    max-inline-size: 14ch;
+    font-size: clamp(1.08rem, 0.22vw + 1.03rem, 1.26rem);
+    line-height: 1.01;
+}
+
+.featured .description {
+    max-inline-size: 38ch;
+    font-size: clamp(0.8rem, 0.06vw + 0.79rem, 0.86rem);
+    line-height: 1.36;
 }
 
 @media (hover: hover) {
     .card:hover {
         transform: translateY(-4px);
-        border-color: rgba(241, 205, 132, 0.28);
-        background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.055) 18%, rgba(255, 255, 255, 0.025) 100%),
-            linear-gradient(135deg, rgba(34, 18, 9, 0.38) 0%, rgba(16, 9, 5, 0.48) 100%);
+        border-color: rgba(241, 205, 132, 0.24);
         box-shadow:
             inset 0 1px 0 rgba(255, 248, 235, 0.1),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.14),
-            0 20px 46px rgba(0, 0, 0, 0.24),
-            0 0 0 1px rgba(255, 221, 155, 0.025);
-    }
-}
-
-@media (max-width: 1200px) {
-    .body {
-        min-block-size: 4.8rem;
-        padding: 0.52rem 0.76rem 0.7rem;
+            inset 0 -1px 0 rgba(0, 0, 0, 0.16),
+            0 22px 48px rgba(0, 0, 0, 0.24);
     }
 
-    .description {
-        max-inline-size: 22ch;
+    .featured:hover {
+        border-color: rgba(241, 205, 132, 0.3);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 248, 235, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+            0 28px 60px rgba(0, 0, 0, 0.28),
+            0 0 0 1px rgba(255, 224, 158, 0.03);
     }
 }
 
 @media (max-width: 1024px) {
-    .cardTop {
-        min-block-size: 2.72rem;
-        padding: 0.3rem 0.7rem 0.2rem;
+    .inner {
+        padding: 0.95rem;
+        gap: 0.72rem;
     }
 
-    .iconCircle {
-        inline-size: 1.88rem;
-        block-size: 1.88rem;
-    }
-
-    .iconCircle :global(svg) {
-        inline-size: 0.72rem;
-        block-size: 0.72rem;
-    }
-
-    .titleBand {
-        min-block-size: 1.74rem;
-        padding: 0 0.7rem 0.1rem;
+    .featured .inner {
+        padding: 1rem;
+        gap: 0.78rem;
     }
 
     .title {
+        max-inline-size: 100%;
+    }
+
+    .featured .title {
+        max-inline-size: 15ch;
+    }
+
+    .description,
+    .featured .description {
+        max-inline-size: 100%;
         font-size: 0.86rem;
-    }
-
-    .body {
-        min-block-size: auto;
-        padding: 0.54rem 0.74rem 0.72rem;
-    }
-
-    .description {
-        font-size: 0.83rem;
+        line-height: 1.46;
     }
 }
 
 @media (max-width: 768px) {
     .card {
-        border-radius: 1.12rem;
-        backdrop-filter: blur(10px) saturate(1.04);
-        -webkit-backdrop-filter: blur(10px) saturate(1.04);
+        border-radius: 1.08rem;
     }
 
-    .cardTop {
-        min-block-size: 2.64rem;
-        padding: 0.28rem 0.68rem 0.18rem;
+    .inner {
+        gap: 0.72rem;
+        padding: 0.9rem 0.86rem;
     }
 
-    .iconCircle {
-        inline-size: 1.84rem;
-        block-size: 1.84rem;
+    .featured .inner {
+        padding: 0.96rem 0.9rem;
     }
 
-    .iconCircle :global(svg) {
-        inline-size: 0.7rem;
-        block-size: 0.7rem;
+    .topRow {
+        gap: 0.7rem;
     }
 
-    .titleBand {
-        min-block-size: 1.68rem;
+    .iconWrap {
+        inline-size: 2.02rem;
+        block-size: 2.02rem;
     }
 
-    .title {
-        font-size: 0.84rem;
+    .iconWrap :global(svg) {
+        inline-size: 0.84rem;
+        block-size: 0.84rem;
     }
 
-    .body {
-        padding: 0.52rem 0.7rem 0.68rem;
+    .featured .iconWrap {
+        inline-size: 2.18rem;
+        block-size: 2.18rem;
     }
 
-    .description {
-        max-inline-size: 100%;
+    .featured .iconWrap :global(svg) {
+        inline-size: 0.9rem;
+        block-size: 0.9rem;
+    }
+
+    .description,
+    .featured .description {
         font-size: 0.82rem;
-        line-height: 1.34;
-    }
-}
-
-@media (max-width: 640px) {
-    .card {
-        border-radius: 1.06rem;
-    }
-
-    .cardTop {
-        min-block-size: 2.56rem;
-        padding: 0.26rem 0.64rem 0.16rem;
-    }
-
-    .iconCircle {
-        inline-size: 1.76rem;
-        block-size: 1.76rem;
-    }
-
-    .iconCircle :global(svg) {
-        inline-size: 0.66rem;
-        block-size: 0.66rem;
-    }
-
-    .titleBand {
-        min-block-size: 1.6rem;
-        padding: 0 0.64rem 0.08rem;
-    }
-
-    .title {
-        font-size: 0.82rem;
-    }
-
-    .body {
-        padding: 0.48rem 0.66rem 0.64rem;
-    }
-
-    .description {
-        font-size: 0.8rem;
-        line-height: 1.32;
+        line-height: 1.44;
     }
 }
 
@@ -355,98 +268,33 @@
         border-radius: 1rem;
     }
 
-    .cardTop {
-        min-block-size: 2.48rem;
-        padding: 0.24rem 0.6rem 0.16rem;
+    .inner {
+        padding: 0.84rem 0.8rem;
     }
 
-    .iconCircle {
-        inline-size: 1.68rem;
-        block-size: 1.68rem;
+    .featured .inner {
+        padding: 0.88rem 0.82rem;
     }
 
-    .iconCircle :global(svg) {
-        inline-size: 0.62rem;
-        block-size: 0.62rem;
-    }
-
-    .titleBand {
-        min-block-size: 1.54rem;
-        padding: 0 0.6rem 0.08rem;
+    .eyebrow,
+    .featured .eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
     }
 
     .title {
-        font-size: 0.8rem;
-        letter-spacing: 0.035em;
+        font-size: clamp(1rem, 5vw, 1.18rem);
     }
 
-    .body {
-        padding: 0.46rem 0.6rem 0.6rem;
+    .featured .title {
+        font-size: clamp(1.2rem, 6vw, 1.44rem);
+        max-inline-size: 100%;
     }
 
-    .description {
-        font-size: 0.78rem;
-        line-height: 1.3;
-    }
-
-    .metricTitle {
-        font-size: 0.76rem;
-    }
-
-    .metric .description {
-        font-size: 0.78rem;
-        line-height: 1.28;
-    }
-
-    .statValue {
-        font-size: 0.92rem;
-    }
-}
-
-@media (max-width: 380px) {
-    .cardTop {
-        min-block-size: 2.4rem;
-        padding: 0.22rem 0.56rem 0.14rem;
-    }
-
-    .iconCircle {
-        inline-size: 1.62rem;
-        block-size: 1.62rem;
-    }
-
-    .iconCircle :global(svg) {
-        inline-size: 0.6rem;
-        block-size: 0.6rem;
-    }
-
-    .titleBand {
-        min-block-size: 1.48rem;
-    }
-
-    .title {
-        font-size: 0.78rem;
-    }
-
-    .body {
-        padding: 0.44rem 0.56rem 0.56rem;
-    }
-
-    .description {
-        font-size: 0.76rem;
-        line-height: 1.28;
-    }
-
-    .metricTitle {
-        font-size: 0.74rem;
-    }
-
-    .metric .description {
-        font-size: 0.76rem;
-        line-height: 1.26;
-    }
-
-    .statValue {
+    .description,
+    .featured .description {
         font-size: 0.88rem;
+        line-height: 1.5;
     }
 }
 

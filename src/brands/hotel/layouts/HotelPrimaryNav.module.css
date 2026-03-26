@@ -410,9 +410,7 @@
 /* ===== Drawer / accordion ===== */
 
 @media (max-width: 1180px) {
-    .nav {
-        --nav-side-gap: clamp(12px, 4vw, 20px);
-    }
+
 
     .navInner {
         border-radius: 18px;

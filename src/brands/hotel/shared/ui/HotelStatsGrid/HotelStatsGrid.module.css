@@ -1,37 +1,38 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(0.9rem, 1.8vw, 1.3rem);
+    gap: clamp(0.85rem, 1.45vw, 1.15rem);
     align-items: stretch;
 }
 
 .card {
     position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: flex-start;
 
     min-width: 0;
-    min-height: clamp(10.2rem, 14vw, 12.8rem);
+    min-height: clamp(9.25rem, 11.5vw, 11.5rem);
     padding:
-        clamp(1rem, 1.8vw, 1.35rem) clamp(0.9rem, 1.5vw, 1.15rem) clamp(1rem, 1.8vw, 1.35rem);
+        clamp(0.9rem, 1.2vw, 1.05rem) clamp(0.9rem, 1.15vw, 1.05rem) clamp(0.92rem, 1.2vw, 1.08rem);
 
     text-align: center;
     border: 1px solid rgba(230, 200, 147, 0.18);
-    border-radius: clamp(1.1rem, 1.8vw, 1.75rem);
+    border-radius: clamp(1rem, 1.35vw, 1.35rem);
 
     background:
-        linear-gradient(180deg, rgba(58, 25, 10, 0.82), rgba(21, 10, 7, 0.94));
+        radial-gradient(120% 120% at 0% 0%, rgba(255, 214, 145, 0.08), transparent 42%),
+        linear-gradient(180deg, rgba(58, 25, 10, 0.82), rgba(21, 10, 7, 0.95));
 
     box-shadow:
-        0 18px 42px rgba(0, 0, 0, 0.24),
+        0 14px 32px rgba(0, 0, 0, 0.22),
         inset 0 1px 0 rgba(255, 243, 220, 0.08);
 
     backdrop-filter: blur(10px);
-    overflow: hidden;
-    isolation: isolate;
-
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -43,17 +44,30 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-        radial-gradient(circle at 50% 0%, rgba(255, 225, 165, 0.16), transparent 48%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 28%);
     z-index: 0;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 28%),
+        radial-gradient(circle at 100% 100%, rgba(230, 200, 147, 0.08), transparent 38%);
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    block-size: 1px;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            rgba(230, 200, 147, 0) 0%,
+            rgba(230, 200, 147, 0.34) 50%,
+            rgba(230, 200, 147, 0) 100%);
 }
 
 .card:hover {
     transform: translateY(-4px);
     border-color: rgba(230, 200, 147, 0.3);
     box-shadow:
-        0 22px 48px rgba(0, 0, 0, 0.28),
+        0 18px 38px rgba(0, 0, 0, 0.26),
         inset 0 1px 0 rgba(255, 243, 220, 0.1);
 }
 
@@ -62,15 +76,21 @@
     z-index: 1;
 }
 
+.cardTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.58rem, 0.8vw, 0.72rem);
+}
+
 .iconWrap {
-    inline-size: clamp(3.1rem, 4.2vw, 4rem);
-    block-size: clamp(3.1rem, 4.2vw, 4rem);
+    inline-size: clamp(2.55rem, 3vw, 3.15rem);
+    block-size: clamp(2.55rem, 3vw, 3.15rem);
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    margin-bottom: clamp(0.7rem, 1.2vw, 1rem);
     border-radius: 999px;
     border: 1px solid rgba(241, 205, 132, 0.22);
 
@@ -83,143 +103,182 @@
 
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.12),
-        0 10px 24px rgba(0, 0, 0, 0.22),
+        0 8px 18px rgba(0, 0, 0, 0.2),
         0 0 0 1px rgba(255, 220, 140, 0.04),
-        0 0 22px rgba(230, 200, 147, 0.08);
+        0 0 18px rgba(230, 200, 147, 0.08);
 
     color: #f1cd84;
 }
 
 .statIcon {
-    inline-size: clamp(1.35rem, 2vw, 1.8rem);
-    block-size: clamp(1.35rem, 2vw, 1.8rem);
+    inline-size: clamp(1.08rem, 1.25vw, 1.35rem);
+    block-size: clamp(1.08rem, 1.25vw, 1.35rem);
     display: block;
     flex: 0 0 auto;
     stroke: currentColor;
     filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.12));
 }
 
+.label {
+    margin: 0;
+    font-size: clamp(0.66rem, 0.1vw + 0.64rem, 0.74rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(230, 200, 147, 0.92);
+    text-align: center;
+}
+
+.metricBlock {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.28rem, 0.45vw, 0.42rem);
+    margin-top: clamp(0.62rem, 0.9vw, 0.8rem);
+    align-items: center;
+}
+
 .value {
     margin: 0;
-    font-size: clamp(1.55rem, 2.1vw, 2.1rem);
-    line-height: 1;
+    font-size: clamp(1.65rem, 1.8vw, 2.15rem);
+    line-height: 0.95;
     font-weight: 800;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     color: #fff7ea;
     text-shadow: 0 2px 14px rgba(0, 0, 0, 0.25);
 }
 
 .description {
-    margin: clamp(0.68rem, 1vw, 0.92rem) 0 0;
-    max-width: min(22ch, 100%);
-    font-size: clamp(0.9rem, 0.24vw + 0.88rem, 1rem);
-    line-height: 1.42;
+    margin: 0;
+    max-width: 100%;
+        text-align: center;
+    font-size: clamp(0.84rem, 0.12vw + 0.82rem, 0.9rem);
+    line-height: 1.34;
     font-weight: 500;
     color: rgba(255, 245, 232, 0.9);
-
     text-wrap: balance;
     overflow-wrap: break-word;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1180px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .card {
-        min-height: clamp(10rem, 20vw, 12rem);
+        min-height: clamp(8.9rem, 15vw, 10.4rem);
     }
 }
 
 @media (max-width: 768px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.9rem;
+        gap: 0.82rem;
     }
 
     .card {
-        min-height: 10.4rem;
-        padding: 1rem 0.9rem 1rem;
-        border-radius: 1.2rem;
+        min-height: 8.8rem;
+        padding: 0.86rem 0.84rem 0.9rem;
+        border-radius: 1.08rem;
     }
 
     .iconWrap {
-        margin-bottom: 0.8rem;
+        inline-size: 2.45rem;
+        block-size: 2.45rem;
+    }
+
+    .statIcon {
+        inline-size: 1.02rem;
+        block-size: 1.02rem;
+    }
+
+    .cardTop {
+        gap: 0.52rem;
+    }
+
+    .metricBlock {
+        gap: 0.26rem;
+        margin-top: 0.58rem;
+    }
+
+    .label {
+        font-size: 0.62rem;
     }
 
     .value {
-        font-size: clamp(1.5rem, 4.8vw, 1.9rem);
+        font-size: clamp(1.45rem, 4.2vw, 1.82rem);
     }
 
     .description {
-        max-width: 18ch;
-        font-size: 0.93rem;
-        line-height: 1.38;
+        max-width: 17ch;
+        font-size: 0.8rem;
+        line-height: 1.3;
     }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 480px) {
     .grid {
         grid-template-columns: minmax(0, 1fr);
-        gap: 0.85rem;
+        gap: 0.78rem;
     }
 
     .card {
         min-height: auto;
-        padding: 1rem 0.95rem 1.05rem;
+        padding: 0.88rem 0.84rem 0.92rem;
     }
 
     .iconWrap {
-        inline-size: 3.05rem;
-        block-size: 3.05rem;
-        margin-bottom: 0.75rem;
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
     }
 
     .statIcon {
-        inline-size: 1.36rem;
-        block-size: 1.36rem;
+        inline-size: 1.05rem;
+        block-size: 1.05rem;
     }
 
     .value {
-        font-size: clamp(1.5rem, 6vw, 1.86rem);
+        font-size: clamp(1.52rem, 5vw, 1.9rem);
     }
 
     .description {
         max-width: 20ch;
-        font-size: 0.94rem;
-        line-height: 1.4;
+        font-size: 0.84rem;
+        line-height: 1.32;
     }
 }
 
 @media (max-width: 380px) {
     .grid {
-        gap: 0.75rem;
+        gap: 0.72rem;
     }
 
     .card {
-        padding: 0.9rem 0.8rem 0.95rem;
-        border-radius: 1rem;
+        padding: 0.82rem 0.78rem 0.88rem;
+        border-radius: 0.96rem;
     }
 
     .iconWrap {
-        inline-size: 2.85rem;
-        block-size: 2.85rem;
-        margin-bottom: 0.7rem;
+        inline-size: 2.32rem;
+        block-size: 2.32rem;
     }
 
     .statIcon {
-        inline-size: 1.2rem;
-        block-size: 1.2rem;
+        inline-size: 0.96rem;
+        block-size: 0.96rem;
+    }
+
+    .label {
+        font-size: 0.6rem;
     }
 
     .value {
-        font-size: 1.42rem;
+        font-size: 1.4rem;
     }
 
     .description {
-        max-width: 22ch;
-        font-size: 0.89rem;
-        line-height: 1.34;
+        font-size: 0.8rem;
+        line-height: 1.28;
     }
 }
 

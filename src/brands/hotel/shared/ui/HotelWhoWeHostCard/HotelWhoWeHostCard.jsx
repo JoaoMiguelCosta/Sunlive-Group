@@ -4,24 +4,24 @@ import styles from "./HotelWhoWeHostCard.module.css";
  * HotelWhoWeHostCard
  *
  * Props:
- *  - id?: string
- *  - icon?: ReactNode
- *  - title?: string
- *  - description?: string
- *  - statValue?: string
- *  - variant?: "default" | "metric"
- *  - className?: string
+ * - id?: string
+ * - icon?: ReactNode
+ * - eyebrow?: string
+ * - title?: string
+ * - description?: string
+ * - variant?: "default" | "featured"
+ * - className?: string
  */
 export default function HotelWhoWeHostCard({
   id,
   icon = null,
+  eyebrow = "",
   title = "",
   description = "",
-  statValue = null,
   variant = "default",
   className = "",
 }) {
-  if (!description && !title && !statValue) return null;
+  if (!title && !description) return null;
 
   const variantClass = styles[variant] ?? "";
 
@@ -32,24 +32,14 @@ export default function HotelWhoWeHostCard({
         .filter(Boolean)
         .join(" ")}
     >
-      <div className={styles.cardTop}>
-        {icon ? <div className={styles.iconCircle}>{icon}</div> : null}
+      <div className={styles.inner}>
+        <div className={styles.topRow}>
+          {icon ? <div className={styles.iconWrap}>{icon}</div> : null}
 
-        {variant === "metric" && statValue ? (
-          <div className={styles.statValue}>{statValue}</div>
-        ) : null}
-      </div>
-
-      {variant !== "metric" ? (
-        <div className={styles.titleBand}>
-          {title ? <h3 className={styles.title}>{title}</h3> : null}
+          {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
         </div>
-      ) : null}
 
-      <div className={styles.body}>
-        {variant === "metric" && title ? (
-          <h3 className={styles.metricTitle}>{title}</h3>
-        ) : null}
+        {title ? <h3 className={styles.title}>{title}</h3> : null}
 
         {description ? (
           <p className={styles.description}>{description}</p>

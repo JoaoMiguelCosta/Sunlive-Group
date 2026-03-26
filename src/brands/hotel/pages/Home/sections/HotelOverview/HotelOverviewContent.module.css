@@ -6,13 +6,14 @@
 .outer::before {
     content: "";
     position: absolute;
-    inset: clamp(-1rem, -2vw, -1.6rem) 7% auto;
-    block-size: clamp(7rem, 14vw, 10rem);
+    inset: clamp(-1rem, -1.6vw, -1.4rem) 8% auto;
+    block-size: clamp(6rem, 11vw, 8.5rem);
     border-radius: 999px;
-    background: radial-gradient(circle,
-            rgba(241, 205, 132, 0.14) 0%,
-            rgba(241, 205, 132, 0.06) 38%,
-            transparent 74%);
+    background:
+        radial-gradient(circle,
+            rgba(241, 205, 132, 0.15) 0%,
+            rgba(241, 205, 132, 0.06) 42%,
+            transparent 76%);
     filter: blur(18px);
     pointer-events: none;
     z-index: 0;
@@ -20,48 +21,37 @@
 
 .inner {
     --overview-border: rgba(230, 200, 147, 0.18);
-    --overview-text-strong: rgba(255, 248, 235, 0.98);
-    --overview-text-soft: rgba(255, 248, 235, 0.9);
+    --overview-border-soft: rgba(230, 200, 147, 0.12);
     --overview-gold: #f1cd84;
+    --overview-text-strong: rgba(255, 248, 235, 0.985);
+    --overview-text-soft: rgba(255, 248, 235, 0.86);
 
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: minmax(18.5rem, 22rem) minmax(0, 1fr);
-    gap: clamp(1.4rem, 2.4vw, 2.5rem);
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    gap: clamp(0.95rem, 1.6vw, 1.2rem);
 
-    max-inline-size: 1180px;
+    max-inline-size: 1360px;
     margin-inline: auto;
-    padding: clamp(1.35rem, 2.2vw, 1.7rem);
-    border-radius: clamp(1.5rem, 2vw, 2rem);
+    padding: clamp(1rem, 1.6vw, 1.3rem);
+    border-radius: clamp(1.3rem, 1.8vw, 1.9rem);
     border: 1px solid var(--overview-border);
     overflow: hidden;
 
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.018) 0%,
-            rgba(255, 248, 235, 0.008) 18%,
-            rgba(0, 0, 0, 0.04) 100%);
-
+            rgba(255, 248, 235, 0.022) 0%,
+            rgba(255, 248, 235, 0.008) 20%,
+            rgba(0, 0, 0, 0.05) 100%),
+        linear-gradient(135deg,
+            rgba(29, 16, 9, 0.62) 0%,
+            rgba(14, 8, 5, 0.74) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 44px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 24px 56px rgba(0, 0, 0, 0.22);
     color: var(--sl-platinum-010, #f9fafb);
-}
-
-.inner::before {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 clamp(19rem, 24vw, 23rem);
-    inline-size: 1px;
-    background: linear-gradient(180deg,
-            transparent 0%,
-            rgba(230, 200, 147, 0.16) 12%,
-            rgba(230, 200, 147, 0.08) 50%,
-            rgba(230, 200, 147, 0.16) 88%,
-            transparent 100%);
-    pointer-events: none;
-    z-index: 2;
 }
 
 .mediaLayer {
@@ -74,14 +64,14 @@
 
 .backgroundImage {
     position: absolute;
-    inset: -4%;
-    inline-size: 108%;
-    block-size: 108%;
+    inset: -3%;
+    inline-size: 106%;
+    block-size: 106%;
     object-fit: cover;
-    object-position: 62% 28%;
-    filter: blur(1px) saturate(1.06) contrast(1.01) brightness(0.94);
-    opacity: 0.92;
-    transform: scale(1.04);
+    object-position: 62% 34%;
+    filter: blur(0.8px) saturate(1.08) contrast(1.03) brightness(0.94);
+    opacity: 0.94;
+    transform: scale(1.03);
 }
 
 .overlayLayer {
@@ -91,12 +81,27 @@
     pointer-events: none;
     background:
         linear-gradient(90deg,
-            rgba(18, 9, 5, 0.44) 0%,
-            rgba(22, 11, 7, 0.3) 20%,
-            rgba(23, 12, 7, 0.1) 38%,
-            rgba(20, 10, 6, 0.05) 62%,
-            rgba(17, 9, 5, 0.16) 100%),
-        radial-gradient(circle at 16% 18%, rgba(241, 205, 132, 0.08), transparent 24%);
+            rgba(14, 8, 5, 0.68) 0%,
+            rgba(15, 8, 5, 0.52) 18%,
+            rgba(15, 8, 5, 0.26) 42%,
+            rgba(15, 8, 5, 0.16) 68%,
+            rgba(14, 8, 5, 0.28) 100%),
+        linear-gradient(180deg,
+            rgba(12, 7, 4, 0.18) 0%,
+            rgba(12, 7, 4, 0.04) 26%,
+            rgba(12, 7, 4, 0.04) 74%,
+            rgba(12, 7, 4, 0.18) 100%),
+        radial-gradient(circle at 16% 16%, rgba(241, 205, 132, 0.1), transparent 24%);
+}
+
+.glowLayer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 16% 24%, rgba(241, 205, 132, 0.08), transparent 20%),
+        radial-gradient(circle at 76% 52%, rgba(255, 248, 235, 0.03), transparent 22%);
 }
 
 .side,
@@ -106,41 +111,68 @@
     min-inline-size: 0;
 }
 
-.side::before,
-.content::before {
-    content: "";
-    position: absolute;
-    inset: -0.45rem;
-    border-radius: clamp(1.1rem, 1.5vw, 1.45rem);
-    pointer-events: none;
-    z-index: -1;
-}
-
-.side::before {
-    background:
-        linear-gradient(180deg,
-            rgba(22, 11, 6, 0.34) 0%,
-            rgba(22, 11, 6, 0.22) 100%);
-    backdrop-filter: blur(4px);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.03),
-        0 10px 22px rgba(0, 0, 0, 0.08);
-}
-
-.content::before {
-    background:
-        linear-gradient(180deg,
-            rgba(18, 9, 5, 0.18) 0%,
-            rgba(18, 9, 5, 0.08) 100%);
-    backdrop-filter: blur(2px);
-}
-
 .side {
+    display: block;
+}
+
+.sideInner {
+    position: relative;
+    inline-size: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: clamp(0.95rem, 1.8vw, 1.2rem);
-    padding: clamp(0.55rem, 1vw, 0.8rem);
+    align-items: center;
+    gap: clamp(0.82rem, 1.2vw, 1rem);
+    padding: clamp(0.95rem, 1.4vw, 1.12rem);
+    border-radius: clamp(1.05rem, 1.3vw, 1.3rem);
+    overflow: hidden;
+    text-align: center;
+}
+
+.sideInner::before,
+.sideInner::after,
+.contentInner::before,
+.contentInner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.sideInner::before {
+    z-index: 0;
+    border: 1px solid rgba(230, 200, 147, 0.12);
+    background:
+        linear-gradient(180deg,
+            rgba(22, 11, 6, 0.62) 0%,
+            rgba(18, 9, 5, 0.42) 100%);
+    backdrop-filter: blur(8px) saturate(1.02);
+    -webkit-backdrop-filter: blur(8px) saturate(1.02);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.sideInner::after {
+    z-index: 1;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.03) 0%,
+            transparent 28%,
+            transparent 100%);
+}
+
+.identity,
+.panelEyebrow,
+.panelTitle,
+.panelDescription,
+.panelNote,
+.tagList,
+.ctaWrap,
+.contentEyebrow,
+.copyBlock {
+    position: relative;
+    z-index: 2;
 }
 
 .identity {
@@ -148,83 +180,182 @@
     align-items: center;
     inline-size: fit-content;
     max-inline-size: 100%;
-    min-block-size: 2.35rem;
-    padding: 0.64rem 1rem;
+    min-block-size: 2.2rem;
+    padding: 0.62rem 0.92rem;
     border-radius: 999px;
-    border: 1px solid rgba(230, 200, 147, 0.24);
+    border: 1px solid rgba(230, 200, 147, 0.26);
     background:
-        linear-gradient(180deg, rgba(255, 248, 235, 0.08), rgba(255, 248, 235, 0.016)),
-        linear-gradient(135deg, rgba(70, 40, 18, 0.64), rgba(34, 18, 10, 0.72));
+        linear-gradient(180deg, rgba(255, 248, 235, 0.09), rgba(255, 248, 235, 0.018)),
+        linear-gradient(135deg, rgba(70, 40, 18, 0.66), rgba(34, 18, 10, 0.76));
     color: rgba(255, 243, 218, 0.98);
-    font-size: 0.8rem;
+    font-size: 0.74rem;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        inset 0 1px 0 rgba(255, 248, 235, 0.07),
         0 8px 20px rgba(0, 0, 0, 0.14);
 }
 
-.support {
+.panelEyebrow {
     margin: 0;
-    max-inline-size: 24ch;
-    font-size: clamp(1rem, 0.5vw + 0.88rem, 1.04rem);
-    line-height: 1.78;
+    font-size: 0.74rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--overview-gold);
+}
+
+.panelTitle {
+    margin: 0;
+    max-inline-size: 17ch;
+    font-size: clamp(1.18rem, 0.5vw + 1.02rem, 1.52rem);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    color: var(--overview-text-strong);
+    text-wrap: balance;
+}
+
+.panelDescription {
+    margin: 0;
+    max-inline-size: 42ch;
+    font-size: clamp(0.9rem, 0.12vw + 0.88rem, 0.96rem);
+    line-height: 1.64;
     color: var(--overview-text-soft);
     text-wrap: pretty;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
 }
 
+.panelNote {
+    inline-size: min(100%, 42rem);
+    padding: 0.78rem 0.88rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(230, 200, 147, 0.16);
+    background:
+        linear-gradient(180deg, rgba(255, 248, 235, 0.05), rgba(255, 248, 235, 0.015)),
+        rgba(27, 15, 9, 0.34);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04);
+}
+
+.panelNote p {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.54;
+    color: rgba(255, 248, 235, 0.92);
+    text-wrap: pretty;
+}
+
 .tagList {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.55rem;
+    justify-content: center;
+    gap: 0.46rem;
     margin: 0;
     padding: 0;
     list-style: none;
+    max-inline-size: 40rem;
 }
 
 .tagItem {
     display: inline-flex;
     align-items: center;
-    min-block-size: 2.05rem;
-    padding: 0.46rem 0.74rem;
+    min-block-size: 1.92rem;
+    padding: 0.4rem 0.66rem;
     border-radius: 999px;
-    border: 1px solid rgba(230, 200, 147, 0.18);
+    border: 1px solid rgba(230, 200, 147, 0.16);
     background:
-        linear-gradient(180deg, rgba(255, 248, 235, 0.06), rgba(255, 248, 235, 0.016)),
-        rgba(28, 15, 9, 0.22);
+        linear-gradient(180deg, rgba(255, 248, 235, 0.06), rgba(255, 248, 235, 0.015)),
+        rgba(28, 15, 9, 0.2);
     color: rgba(255, 243, 218, 0.92);
-    font-size: 0.82rem;
+    font-size: 0.76rem;
     font-weight: 600;
     line-height: 1;
     letter-spacing: 0.02em;
     box-shadow: inset 0 1px 0 rgba(255, 248, 235, 0.04);
 }
 
-.content {
+.ctaWrap {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    gap: clamp(1.1rem, 1.9vw, 1.4rem);
-    padding: clamp(0.55rem, 1vw, 0.8rem);
+    inline-size: 100%;
+}
+
+.ctaButton {
+    min-inline-size: clamp(14.5rem, 18vw, 17rem);
+}
+
+.content {
+    display: block;
+}
+
+.contentInner {
+    position: relative;
+    inline-size: 100%;
+    display: flex;
+    align-items: center;
+    min-block-size: 100%;
+    padding: clamp(0.95rem, 1.4vw, 1.12rem);
+    border-radius: clamp(1.08rem, 1.3vw, 1.3rem);
+    overflow: hidden;
+}
+
+.contentInner::before {
+    z-index: 0;
+    border: 1px solid rgba(230, 200, 147, 0.08);
+    background:
+        linear-gradient(180deg,
+            rgba(18, 9, 5, 0.26) 0%,
+            rgba(18, 9, 5, 0.12) 100%);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.03);
+}
+
+.contentInner::after {
+    z-index: 1;
+    background:
+        linear-gradient(135deg,
+            rgba(255, 248, 235, 0.022) 0%,
+            transparent 26%,
+            transparent 74%,
+            rgba(255, 248, 235, 0.018) 100%);
+}
+
+.contentEyebrow {
+    margin: 0 0 0.36rem;
+    font-size: 0.76rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--overview-gold);
+}
+
+.copyBlock {
+    inline-size: 100%;
+    display: grid;
+    gap: clamp(0.82rem, 1.1vw, 1rem);
 }
 
 .lead,
 .body,
-.ctaWrap {
+.contentHighlight {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .lead {
     margin: 0;
-    max-inline-size: 27ch;
-    font-size: clamp(1.16rem, 0.95vw + 0.98rem, 1.46rem);
-    line-height: 1.72;
+    max-inline-size: 31ch;
+    font-size: clamp(1.08rem, 0.72vw + 0.92rem, 1.44rem);
+    font-weight: 500;
+    line-height: 1.52;
     color: var(--overview-text-strong);
-    text-align: left;
     text-wrap: pretty;
     text-shadow:
         0 2px 14px rgba(0, 0, 0, 0.34),
@@ -240,97 +371,57 @@
 .body {
     margin: 0;
     max-inline-size: 58ch;
-    font-size: clamp(1.01rem, 0.45vw + 0.92rem, 1.09rem);
-    line-height: 1.84;
-    color: rgba(255, 248, 235, 0.92);
-    text-align: left;
+    font-size: clamp(0.92rem, 0.14vw + 0.9rem, 0.98rem);
+    line-height: 1.68;
+    color: rgba(255, 248, 235, 0.93);
     text-wrap: pretty;
     text-shadow:
         0 2px 12px rgba(0, 0, 0, 0.3),
         0 1px 2px rgba(0, 0, 0, 0.22);
 }
 
-.ctaWrap {
-    margin-top: 0.15rem;
-    display: flex;
-    justify-content: flex-start;
+.contentHighlight {
+    inline-size: min(100%, 42rem);
+    padding: 0.78rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(230, 200, 147, 0.18);
+    background:
+        linear-gradient(180deg, rgba(255, 248, 235, 0.06), rgba(255, 248, 235, 0.018)),
+        linear-gradient(135deg, rgba(78, 42, 17, 0.52), rgba(34, 18, 10, 0.62));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 10px 24px rgba(0, 0, 0, 0.14);
 }
 
-.ctaButton {
-    min-inline-size: clamp(15.5rem, 20vw, 18.5rem);
+.contentHighlight p {
+    margin: 0;
+    font-size: clamp(0.86rem, 0.12vw + 0.84rem, 0.92rem);
+    font-weight: 700;
+    line-height: 1.5;
+    color: rgba(255, 248, 235, 0.96);
+    text-wrap: pretty;
 }
-@media (min-width: 1121px) {
-    .content {
-        align-items: flex-start;
-    }
 
-    .lead {
-       
-        max-inline-size: 44ch;
-    }
-
-    .body {
-        align-self: flex-start;
-    }
-}
-@media (max-width: 1120px) {
-    .inner {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-        max-inline-size: 960px;
-        padding: clamp(1.15rem, 2.4vw, 1.45rem);
-    }
-
-    .inner::before {
-        display: none;
-    }
-
-    .backgroundImage {
-        object-position: 60% 24%;
-        filter: blur(2px) saturate(1.04) contrast(1.01) brightness(0.9);
-        opacity: 0.84;
-    }
-
-    .overlayLayer {
-        background:
-            linear-gradient(180deg,
-                rgba(18, 9, 5, 0.54) 0%,
-                rgba(21, 10, 6, 0.4) 24%,
-                rgba(20, 10, 6, 0.24) 52%,
-                rgba(18, 9, 5, 0.52) 100%),
-            radial-gradient(circle at 50% 12%, rgba(241, 205, 132, 0.08), transparent 20%);
-    }
-
-    .side::before,
-    .content::before {
-        inset: -0.3rem;
-    }
-
-    .side {
+/* até 1239px tudo centrado e empilhado */
+@media (max-width: 1239px) {
+    .contentInner {
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        text-align: center;
-        padding-bottom: 0;
-        gap: 0.95rem;
-    }
-
-    .support {
-        max-inline-size: 40ch;
-    }
-
-    .tagList {
         justify-content: center;
-        max-inline-size: 40rem;
-    }
-
-    .ctaWrap {
-        justify-content: center;
-    }
-
-    .content {
-        align-items: center;
         text-align: center;
-        padding-top: 0;
-        gap: 0.95rem;
+    }
+
+    .contentEyebrow {
+        inline-size: 100%;
+        text-align: center;
+        margin: 0 0 0.42rem;
+    }
+
+    .copyBlock {
+        inline-size: 100%;
+        justify-items: center;
+        text-align: center;
     }
 
     .lead,
@@ -338,90 +429,259 @@
         text-align: center;
     }
 
+    .contentHighlight {
+        margin-inline: auto;
+    }
+}
+
+/* tablet largo */
+@media (min-width: 900px) {
+    .sideInner {
+        padding: 1rem;
+    }
+
+    .contentInner {
+        padding: 1rem;
+    }
+
+    .lead {
+        max-inline-size: 43ch;
+    }
+}
+
+/* desktop médio */
+@media (min-width: 1240px) {
+    .inner {
+        grid-template-columns: minmax(16.5rem, 0.78fr) minmax(0, 1.22fr);
+        gap: clamp(0.95rem, 1.4vw, 1.3rem);
+        padding: clamp(1.05rem, 1.5vw, 1.28rem);
+    }
+
+    .side {
+        display: flex;
+    }
+
+    .content {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .sideInner {
+        align-items: flex-start;
+        text-align: left;
+        padding: clamp(0.92rem, 1.2vw, 1.06rem);
+        gap: clamp(0.78rem, 1vw, 0.92rem);
+    }
+
+    .panelTitle,
+    .panelDescription,
+    .panelNote {
+        max-inline-size: 100%;
+    }
+
+    .panelTitle {
+        max-inline-size: 14ch;
+        font-size: clamp(1.14rem, 0.44vw + 1rem, 1.46rem);
+    }
+
+    .panelDescription {
+        max-inline-size: 32ch;
+        font-size: clamp(0.88rem, 0.08vw + 0.87rem, 0.94rem);
+        line-height: 1.58;
+    }
+
+    .panelNote {
+        inline-size: 100%;
+        padding: 0.72rem 0.84rem;
+    }
+
+    .panelNote p {
+        font-size: 0.84rem;
+        line-height: 1.46;
+    }
+
+    .tagList {
+        justify-content: flex-start;
+        max-inline-size: 100%;
+        gap: 0.42rem;
+    }
+
+    .tagItem {
+        min-block-size: 1.88rem;
+        padding: 0.38rem 0.6rem;
+        font-size: 0.74rem;
+    }
+
+    .ctaWrap {
+        justify-content: flex-start;
+    }
+
+    .ctaButton {
+        min-inline-size: clamp(13.8rem, 16vw, 16rem);
+    }
+
+    .contentInner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        padding: clamp(1.05rem, 1.5vw, 1.35rem);
+    }
+
+    .contentEyebrow {
+        text-align: left;
+    }
+
+    .copyBlock {
+        inline-size: min(100%, 56rem);
+        justify-items: start;
+        text-align: left;
+        gap: clamp(0.88rem, 1.1vw, 1.02rem);
+    }
+
+    .lead,
+    .body {
+        text-align: left;
+    }
+
     .lead {
         max-inline-size: 34ch;
+        font-size: clamp(1.14rem, 0.6vw + 0.98rem, 1.58rem);
+        line-height: 1.5;
     }
 
     .body {
-        max-inline-size: 62ch;
+        max-inline-size: 56ch;
+        font-size: clamp(0.92rem, 0.1vw + 0.9rem, 1rem);
+        line-height: 1.7;
+    }
+
+    .contentHighlight {
+        inline-size: fit-content;
+        max-inline-size: min(100%, 40rem);
+        padding: 0.82rem 0.94rem;
+        margin-inline: 0;
+    }
+
+    .contentHighlight p {
+        font-size: 0.88rem;
+        line-height: 1.48;
+    }
+}
+
+/* desktop largo */
+@media (min-width: 1440px) {
+    .inner {
+        grid-template-columns: minmax(17.5rem, 0.76fr) minmax(0, 1.24fr);
+        gap: clamp(1rem, 1.5vw, 1.45rem);
+    }
+
+    .sideInner {
+        padding: 1.08rem;
+    }
+
+    .contentInner {
+        padding: clamp(1.18rem, 1.7vw, 1.55rem);
+    }
+
+    .copyBlock {
+        inline-size: min(100%, 60rem);
+    }
+
+    .lead {
+        max-inline-size: 35ch;
     }
 }
 
 @media (max-width: 640px) {
     .outer::before {
         inset: -0.8rem 0 auto;
-        block-size: 6.2rem;
+        block-size: 6rem;
         filter: blur(14px);
     }
 
     .inner {
-        gap: 1rem;
-        padding: 1rem 0.95rem 1.1rem;
-        border-radius: 1.3rem;
+        gap: 0.9rem;
+        padding: 0.92rem 0.88rem 0.98rem;
+        border-radius: 1.2rem;
     }
 
     .backgroundImage {
         inset: -5%;
         inline-size: 110%;
         block-size: 110%;
-        object-position: 60% 22%;
-        filter: blur(3px) saturate(1.02) contrast(1) brightness(0.86);
-        opacity: 0.78;
+        object-position: 60% 24%;
+        filter: blur(2.2px) saturate(1.03) contrast(1) brightness(0.86);
+        opacity: 0.8;
     }
 
     .overlayLayer {
         background:
             linear-gradient(180deg,
-                rgba(18, 9, 5, 0.62) 0%,
-                rgba(20, 10, 6, 0.46) 24%,
-                rgba(20, 10, 6, 0.28) 55%,
-                rgba(18, 9, 5, 0.62) 100%);
+                rgba(18, 9, 5, 0.68) 0%,
+                rgba(20, 10, 6, 0.48) 24%,
+                rgba(20, 10, 6, 0.3) 55%,
+                rgba(18, 9, 5, 0.66) 100%);
     }
 
-    .side::before {
-        background:
-            linear-gradient(180deg,
-                rgba(22, 11, 6, 0.42) 0%,
-                rgba(22, 11, 6, 0.26) 100%);
-    }
-
-    .content::before {
-        background:
-            linear-gradient(180deg,
-                rgba(18, 9, 5, 0.24) 0%,
-                rgba(18, 9, 5, 0.12) 100%);
+    .sideInner,
+    .contentInner {
+        padding: 0.88rem;
+        border-radius: 1.05rem;
     }
 
     .identity {
-        min-block-size: 2.05rem;
-        padding: 0.55rem 0.8rem;
-        font-size: 0.72rem;
+        min-block-size: 2.02rem;
+        padding: 0.54rem 0.78rem;
+        font-size: 0.7rem;
         letter-spacing: 0.14em;
     }
 
-    .support {
-        font-size: 0.93rem;
-        line-height: 1.66;
+    .panelEyebrow,
+    .contentEyebrow {
+        font-size: 0.72rem;
+    }
+
+    .panelTitle {
+        font-size: clamp(1.08rem, 4.8vw, 1.32rem);
+    }
+
+    .panelDescription,
+    .panelNote p {
+        font-size: 0.9rem;
+        line-height: 1.56;
     }
 
     .tagList {
-        gap: 0.45rem;
+        gap: 0.42rem;
     }
 
     .tagItem {
-        min-block-size: 1.92rem;
-        padding: 0.42rem 0.64rem;
-        font-size: 0.76rem;
+        min-block-size: 1.9rem;
+        padding: 0.4rem 0.62rem;
+        font-size: 0.75rem;
     }
 
     .lead {
         font-size: 1rem;
-        line-height: 1.66;
+        line-height: 1.62;
     }
 
     .body {
-        font-size: 0.94rem;
-        line-height: 1.68;
+        font-size: 0.92rem;
+        line-height: 1.66;
+    }
+
+    .contentHighlight {
+        inline-size: 100%;
+        max-inline-size: 100%;
+        padding: 0.78rem 0.84rem;
+        border-radius: 1rem;
+    }
+
+    .contentHighlight p {
+        font-size: 0.88rem;
+        line-height: 1.48;
     }
 
     .ctaWrap {
@@ -436,19 +696,17 @@
 
 @media (max-width: 420px) {
     .inner {
-        padding-inline: 0.85rem;
+        padding-inline: 0.78rem;
     }
 
-    .support {
-        font-size: 0.9rem;
+    .panelDescription,
+    .panelNote p,
+    .body {
+        font-size: 0.88rem;
     }
 
     .lead {
-        font-size: 0.98rem;
-    }
-
-    .body {
-        font-size: 0.92rem;
+        font-size: 0.96rem;
     }
 }
 

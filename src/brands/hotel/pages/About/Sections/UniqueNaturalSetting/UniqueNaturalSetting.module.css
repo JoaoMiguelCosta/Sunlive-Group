@@ -48,7 +48,7 @@
     z-index: 1;
     inline-size: min(100%, 1360px);
     margin-inline: auto;
-    padding-inline: clamp(1rem, 3.3vw, 2.4rem);
+    
     box-sizing: border-box;
 }
 

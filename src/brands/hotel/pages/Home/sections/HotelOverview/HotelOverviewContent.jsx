@@ -1,22 +1,49 @@
 import HotelInlineActionButton from "../../../../shared/ui/HotelInlineActionButton/HotelInlineActionButton.jsx";
 import styles from "./HotelOverviewContent.module.css";
 
+function buildFallbackContent(section) {
+  const paragraphs = [];
+
+  if (section?.bodyText) {
+    paragraphs.push(section.bodyText);
+  }
+
+  return {
+    eyebrow: "",
+    introPrefix: section?.introPrefix ?? "",
+    introHighlight: section?.introHighlight ?? "",
+    introSuffix: section?.introSuffix ?? "",
+    paragraphs,
+    highlightPill: "",
+  };
+}
+
+function buildFallbackPanel(section) {
+  return {
+    eyebrow: "",
+    title: section?.supportText ?? "",
+    description: "",
+    featureNote: "",
+  };
+}
+
 export default function HotelOverviewContent({ section }) {
   if (!section) return null;
 
-  const {
-    identityLabel,
-    introPrefix,
-    introHighlight,
-    introSuffix,
-    bodyText,
-    supportText,
-    audienceTags,
-    backgroundMedia,
-    cta,
-  } = section;
+  const identityLabel = section?.identityLabel ?? "";
+  const panel = section?.panel ?? buildFallbackPanel(section);
+  const content = section?.content ?? buildFallbackContent(section);
+  const cta = section?.cta ?? null;
+  const backgroundMedia = section?.backgroundMedia ?? null;
 
-  const tags = Array.isArray(audienceTags) ? audienceTags.filter(Boolean) : [];
+  const tags = Array.isArray(section?.audienceTags)
+    ? section.audienceTags.filter(Boolean)
+    : [];
+
+  const paragraphs = Array.isArray(content?.paragraphs)
+    ? content.paragraphs.filter(Boolean)
+    : [];
+
   const backgroundImageSrc = backgroundMedia?.imageSrc ?? null;
   const backgroundImageAlt = backgroundMedia?.imageAlt ?? "";
 
@@ -34,44 +61,91 @@ export default function HotelOverviewContent({ section }) {
         ) : null}
 
         <div className={styles.overlayLayer} aria-hidden="true" />
+        <div className={styles.glowLayer} aria-hidden="true" />
 
         <aside className={styles.side}>
-          {identityLabel ? (
-            <span className={styles.identity}>{identityLabel}</span>
-          ) : null}
+          <div className={styles.sideInner}>
+            {identityLabel ? (
+              <span className={styles.identity}>{identityLabel}</span>
+            ) : null}
 
-          {supportText ? <p className={styles.support}>{supportText}</p> : null}
+            {panel?.eyebrow ? (
+              <p className={styles.panelEyebrow}>{panel.eyebrow}</p>
+            ) : null}
 
-          {tags.length ? (
-            <ul className={styles.tagList} aria-label="Perfis de hóspedes">
-              {tags.map((tag) => (
-                <li key={tag} className={styles.tagItem}>
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          ) : null}
+            {panel?.title ? (
+              <h3 className={styles.panelTitle}>{panel.title}</h3>
+            ) : null}
 
-          {cta?.href ? (
-            <div className={styles.ctaWrap}>
-              <HotelInlineActionButton
-                href={cta.href}
-                label={cta.label}
-                ariaLabel={cta.ariaLabel ?? cta.label}
-                className={styles.ctaButton}
-              />
-            </div>
-          ) : null}
+            {panel?.description ? (
+              <p className={styles.panelDescription}>{panel.description}</p>
+            ) : null}
+
+            {panel?.featureNote ? (
+              <div className={styles.panelNote}>
+                <p>{panel.featureNote}</p>
+              </div>
+            ) : null}
+
+            {tags.length ? (
+              <ul className={styles.tagList} aria-label="Perfis de hóspedes">
+                {tags.map((tag) => (
+                  <li key={tag} className={styles.tagItem}>
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+
+            {cta?.href ? (
+              <div className={styles.ctaWrap}>
+                <HotelInlineActionButton
+                  href={cta.href}
+                  label={cta.label}
+                  ariaLabel={cta.ariaLabel ?? cta.label}
+                  className={styles.ctaButton}
+                />
+              </div>
+            ) : null}
+          </div>
         </aside>
 
         <div className={styles.content}>
-          <p className={styles.lead}>
-            {introPrefix}
-            <span className={styles.highlight}>{introHighlight}</span>
-            {introSuffix}
-          </p>
+          <div className={styles.contentInner}>
+            {content?.eyebrow ? (
+              <p className={styles.contentEyebrow}>{content.eyebrow}</p>
+            ) : null}
 
-          <p className={styles.body}>{bodyText}</p>
+            <div className={styles.copyBlock}>
+              {(content?.introPrefix ||
+                content?.introHighlight ||
+                content?.introSuffix) && (
+                <p className={styles.lead}>
+                  {content?.introPrefix}
+                  {content?.introHighlight ? (
+                    <span className={styles.highlight}>
+                      {content.introHighlight}
+                    </span>
+                  ) : null}
+                  {content?.introSuffix}
+                </p>
+              )}
+
+              {paragraphs.length
+                ? paragraphs.map((paragraph) => (
+                    <p key={paragraph} className={styles.body}>
+                      {paragraph}
+                    </p>
+                  ))
+                : null}
+
+              {content?.highlightPill ? (
+                <div className={styles.contentHighlight}>
+                  <p>{content.highlightPill}</p>
+                </div>
+              ) : null}
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -6,11 +6,25 @@ export default function PlanYourStaySection() {
   const section = hotelBrand?.pages?.home?.sections?.planYourStay ?? null;
   if (!section) return null;
 
-  const { id, boxTitle, boxSubtitle, actions } = section;
+  const {
+    id,
+    eyebrow,
+    boxTitle,
+    boxSubtitle,
+    availability,
+    supportNote,
+    actions,
+  } = section;
 
   const sectionId = id ?? "hotel-plan-your-stay";
   const titleId = `${sectionId}-title`;
   const actionItems = Array.isArray(actions) ? actions : [];
+
+  const hasMeta =
+    availability?.label ||
+    availability?.value ||
+    supportNote ||
+    actionItems.length;
 
   return (
     <section
@@ -20,32 +34,60 @@ export default function PlanYourStaySection() {
     >
       <div className={styles.inner}>
         <div className={styles.box}>
-          <h2 id={titleId} className={styles.title}>
-            {boxTitle}
-          </h2>
+          <div className={styles.contentColumn}>
+            {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
 
-          {boxSubtitle ? (
-            <p className={styles.subtitle}>{boxSubtitle}</p>
-          ) : null}
+            <h2 id={titleId} className={styles.title}>
+              {boxTitle}
+            </h2>
 
-          {actionItems.length > 0 ? (
-            <div className={styles.actions}>
-              {actionItems.map((action, index) => (
-                <CTAButton
-                  key={action.id ?? `${action.label}-${index}`}
-                  href={action.href}
-                  label={action.label}
-                  ariaLabel={action.ariaLabel ?? action.label}
-                  icon={action.iconKey ?? "phone"}
-                  blink={false}
-                  compact="auto"
-                  variant="hotel"
-                  tone={action.tone ?? (index === 0 ? "strong" : "soft")}
-                  className={styles.actionButton}
-                />
-              ))}
+            {boxSubtitle ? (
+              <p className={styles.subtitle}>{boxSubtitle}</p>
+            ) : null}
+
+            <div className={styles.highlightLine} aria-hidden="true" />
+          </div>
+
+          {hasMeta ? (
+            <div className={styles.contactPanel}>
+              {availability?.label || availability?.value ? (
+                <div className={styles.metaCard}>
+                  {availability?.label ? (
+                    <p className={styles.metaLabel}>{availability.label}</p>
+                  ) : null}
+
+                  {availability?.value ? (
+                    <p className={styles.metaValue}>{availability.value}</p>
+                  ) : null}
+                </div>
+              ) : null}
+
+              {supportNote ? (
+                <p className={styles.supportNote}>{supportNote}</p>
+              ) : null}
+
+              {actionItems.length > 0 ? (
+                <div className={styles.actions}>
+                  {actionItems.map((action, index) => (
+                    <CTAButton
+                      key={action.id ?? `${action.label}-${index}`}
+                      href={action.href}
+                      label={action.label}
+                      ariaLabel={action.ariaLabel ?? action.label}
+                      icon={action.iconKey ?? "phone"}
+                      blink={false}
+                      compact="auto"
+                      variant="hotel"
+                      tone={action.tone ?? (index === 0 ? "strong" : "soft")}
+                      className={styles.actionButton}
+                    />
+                  ))}
+                </div>
+              ) : null}
             </div>
           ) : null}
+
+          <div className={styles.glowOrb} aria-hidden="true" />
         </div>
       </div>
     </section>

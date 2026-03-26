@@ -3,95 +3,171 @@
     isolation: isolate;
     overflow: hidden;
 
-    display: flex;
-    flex-direction: column;
-    min-block-size: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
 
-    border-radius: clamp(1rem, 1.6vw, 1.25rem);
+    border-radius: clamp(1.05rem, 1.45vw, 1.4rem);
     border: 1px solid rgba(230, 200, 147, 0.18);
 
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.03) 0%,
-            rgba(255, 248, 235, 0.01) 18%,
-            rgba(0, 0, 0, 0.12) 100%),
+            rgba(255, 248, 235, 0.032) 0%,
+            rgba(255, 248, 235, 0.012) 18%,
+            rgba(0, 0, 0, 0.16) 100%),
         linear-gradient(135deg,
-            rgba(43, 23, 11, 0.96) 0%,
-            rgba(26, 14, 8, 0.98) 100%);
+            rgba(41, 22, 11, 0.985) 0%,
+            rgba(22, 12, 7, 0.995) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 12px 30px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 16px 36px rgba(0, 0, 0, 0.2);
 
     color: #f9fafb;
     transition:
-        transform 180ms ease-out,
-        box-shadow 180ms ease-out,
-        border-color 180ms ease-out;
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        linear-gradient(180deg, rgba(255, 248, 235, 0.045), transparent 22%),
+        radial-gradient(circle at 18% 0%, rgba(230, 200, 147, 0.08), transparent 28%);
+    opacity: 0.9;
 }
 
 .card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     border-color: rgba(230, 200, 147, 0.28);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 38px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 20px 44px rgba(0, 0, 0, 0.24);
 }
 
-.imageWrap {
+.media {
     position: relative;
-    aspect-ratio: 4 / 3;
     overflow: hidden;
     background:
-        radial-gradient(90% 90% at 50% 0%, rgba(230, 200, 147, 0.1), transparent 55%),
+        radial-gradient(90% 90% at 50% 0%, rgba(230, 200, 147, 0.12), transparent 55%),
         linear-gradient(135deg, #3b1d0c 0%, #241208 100%);
+    aspect-ratio: 16 / 9.1;
 }
 
-.imageWrap::after {
+.media::after {
     content: "";
+    position: absolute;
+    inset: auto 0 0;
+    block-size: 1px;
+    background: linear-gradient(90deg,
+            rgba(230, 200, 147, 0),
+            rgba(230, 200, 147, 0.2),
+            rgba(230, 200, 147, 0));
+    z-index: 2;
+}
+
+.image,
+.imagePlaceholder {
+    inline-size: 100%;
+    block-size: 100%;
+}
+
+.image {
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+    transform: scale(1.02);
+    transition:
+        transform 260ms ease,
+        filter 260ms ease;
+}
+
+.card:hover .image {
+    transform: scale(1.05);
+    filter: brightness(1.03) saturate(1.03);
+}
+
+.imagePlaceholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(100% 100% at 50% 0%, rgba(230, 200, 147, 0.12), transparent 58%),
+        linear-gradient(135deg, #49230f 0%, #241208 100%);
+}
+
+.placeholderLabel {
+    padding-inline: 1rem;
+    font-size: clamp(0.68rem, 0.2vw + 0.66rem, 0.76rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255, 248, 235, 0.7);
+    text-align: center;
+}
+
+.mediaOverlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.06) 0%,
-            rgba(255, 255, 255, 0) 36%);
+            rgba(10, 6, 3, 0.02) 0%,
+            rgba(10, 6, 3, 0.08) 34%,
+            rgba(10, 6, 3, 0.18) 100%),
+        linear-gradient(0deg,
+            rgba(255, 255, 255, 0.02) 0%,
+            rgba(255, 255, 255, 0) 34%);
 }
 
-.image {
-    inline-size: 100%;
-    block-size: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center center;
-    transform: scale(1.01);
-    transition: transform 220ms ease-out, filter 220ms ease-out;
+.mediaGlow {
+    position: absolute;
+    inset: auto auto -18% -12%;
+    z-index: 1;
+    inline-size: clamp(7rem, 16vw, 12rem);
+    aspect-ratio: 1;
+    border-radius: 999px;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(230, 200, 147, 0.15), transparent 68%);
+    filter: blur(18px);
+    opacity: 0.88;
 }
 
-.card:hover .image {
-    transform: scale(1.04);
-    filter: brightness(1.03);
-}
+.badge {
+    position: absolute;
+    inset: clamp(0.72rem, 1.1vw, 0.9rem) auto auto clamp(0.72rem, 1.1vw, 0.9rem);
+    z-index: 3;
 
-.imagePlaceholder {
-    inline-size: 100%;
-    block-size: 100%;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    background:
-        radial-gradient(100% 100% at 50% 0%, rgba(230, 200, 147, 0.1), transparent 58%),
-        linear-gradient(135deg, #3b1d0c 0%, #241208 100%);
-}
 
-.placeholderLabel {
-    font-size: clamp(0.7rem, 0.2vw + 0.66rem, 0.76rem);
+    min-block-size: 1.9rem;
+    padding: 0.34rem 0.74rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 243, 218, 0.14);
+
+    background:
+        linear-gradient(180deg, rgba(255, 248, 235, 0.08), rgba(255, 248, 235, 0.02)),
+        rgba(26, 14, 8, 0.56);
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        0 10px 24px rgba(0, 0, 0, 0.18);
+
+    font-size: clamp(0.6rem, 0.12vw + 0.58rem, 0.68rem);
     font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: rgba(255, 248, 235, 0.72);
-    text-align: center;
+    color: rgba(255, 236, 193, 0.94);
+    white-space: nowrap;
 }
 
 .content {
@@ -101,16 +177,25 @@
     flex: 1;
     flex-direction: column;
     justify-content: flex-start;
-    gap: clamp(0.56rem, 0.9vw, 0.72rem);
-    padding: clamp(0.95rem, 1.3vw, 1.05rem) clamp(0.95rem, 1.3vw, 1.05rem) clamp(1.02rem, 1.7vw, 1.18rem);
+    gap: clamp(0.44rem, 0.7vw, 0.6rem);
+    padding:
+        clamp(0.84rem, 1vw, 0.96rem) clamp(0.88rem, 1vw, 1rem) clamp(0.92rem, 1.1vw, 1.06rem);
+}
+
+.eyebrow {
+    margin: 0;
+    font-size: clamp(0.66rem, 0.14vw + 0.64rem, 0.72rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(230, 200, 147, 0.94);
 }
 
 .title {
     margin: 0;
-    font-size: clamp(0.98rem, 0.82rem + 0.36vw, 1.08rem);
+    font-size: clamp(0.96rem, 0.84rem + 0.26vw, 1.08rem);
     font-weight: 700;
-    line-height: 1.28;
-    text-align: center;
+    line-height: 1.2;
     color: #fff3da;
     text-wrap: balance;
     overflow-wrap: break-word;
@@ -119,9 +204,8 @@
 .description {
     margin: 0;
     flex: 1;
-    font-size: clamp(0.9rem, 0.84rem + 0.18vw, 0.95rem);
-    line-height: 1.58;
-    text-align: center;
+    font-size: clamp(0.86rem, 0.82rem + 0.12vw, 0.93rem);
+    line-height: 1.52;
     color: rgba(255, 248, 235, 0.86);
     text-wrap: pretty;
     overflow-wrap: break-word;
@@ -136,11 +220,9 @@
 .regionHeader {
     position: relative;
     z-index: 1;
-
     display: flex;
     align-items: center;
     gap: clamp(0.6rem, 1vw, 0.75rem);
-
     padding: clamp(0.85rem, 1.4vw, 0.98rem) clamp(0.95rem, 1.35vw, 1rem) clamp(0.76rem, 1vw, 0.84rem);
     border-bottom: 1px solid rgba(230, 200, 147, 0.12);
 }
@@ -150,18 +232,15 @@
     block-size: clamp(2rem, 3vw, 2.35rem);
     border-radius: 999px;
     flex-shrink: 0;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     border: 1px solid rgba(255, 248, 235, 0.12);
     background:
         linear-gradient(135deg, rgba(80, 44, 16, 0.95) 0%, rgba(40, 22, 10, 0.98) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.08),
         0 8px 20px rgba(0, 0, 0, 0.16);
-
     color: rgba(255, 248, 235, 0.96);
 }
 
@@ -196,15 +275,71 @@
     overflow-wrap: break-word;
 }
 
-@media (max-width: 1100px) {
-    .imageWrap {
-        aspect-ratio: 16 / 11;
+/* Escala fina por largura */
+
+@media (min-width: 1500px) {
+    .media {
+        aspect-ratio: 16 / 9.4;
+    }
+
+    .content {
+        padding: 0.92rem 0.96rem 1rem;
+    }
+
+    .title {
+        font-size: 1.1rem;
+    }
+
+    .description {
+        font-size: 0.94rem;
+    }
+}
+
+@media (max-width: 1279px) {
+    .media {
+        aspect-ratio: 16 / 9;
+    }
+}
+
+@media (max-width: 1024px) {
+    .media {
+        aspect-ratio: 16 / 8.8;
+    }
+
+    .content {
+        gap: 0.42rem;
+        padding: 0.82rem 0.86rem 0.92rem;
+    }
+
+    .title {
+        font-size: 0.94rem;
+        line-height: 1.18;
+    }
+
+    .description {
+        font-size: 0.84rem;
+        line-height: 1.46;
+    }
+
+    .eyebrow {
+        font-size: 0.64rem;
     }
 }
 
 @media (max-width: 900px) {
+    .media {
+        aspect-ratio: 16 / 8.9;
+    }
+
     .content {
-        padding: 0.92rem 0.92rem 1rem;
+        padding: 0.84rem 0.84rem 0.92rem;
+    }
+
+    .badge {
+        inset: 0.7rem auto auto 0.7rem;
+        min-block-size: 1.82rem;
+        padding: 0.32rem 0.66rem;
+        font-size: 0.58rem;
     }
 
     .regionHeader {
@@ -216,30 +351,57 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
+    .media {
+        aspect-ratio: 16 / 9.2;
+    }
+
+    .content {
+        gap: 0.44rem;
+        padding: 0.88rem 0.88rem 0.96rem;
+    }
+
+    .title {
+        font-size: 0.96rem;
+    }
+
+    .description {
+        font-size: 0.88rem;
+        line-height: 1.48;
+    }
+}
+
+@media (max-width: 560px) {
 
     .card,
     .regionCard {
         border-radius: 1rem;
     }
 
-    .imageWrap {
-        aspect-ratio: 16 / 10;
+    .media {
+        aspect-ratio: 16 / 9.35;
+    }
+
+    .badge {
+        min-block-size: 1.78rem;
+        padding: 0.32rem 0.64rem;
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
     }
 
     .content {
-        gap: 0.5rem;
-        padding: 0.85rem 0.85rem 0.95rem;
+        gap: 0.42rem;
+        padding: 0.82rem 0.82rem 0.9rem;
     }
 
     .title {
-        font-size: 0.95rem;
-        line-height: 1.24;
+        font-size: 0.94rem;
+        line-height: 1.2;
     }
 
     .description {
-        font-size: 0.9rem;
-        line-height: 1.5;
+        font-size: 0.86rem;
+        line-height: 1.46;
     }
 
     .regionHeader {
@@ -271,6 +433,25 @@
     }
 }
 
+@media (max-width: 420px) {
+    .media {
+        aspect-ratio: 16 / 9.55;
+    }
+
+    .content {
+        padding: 0.8rem 0.8rem 0.88rem;
+    }
+
+    .title {
+        font-size: 0.92rem;
+    }
+
+    .description {
+        font-size: 0.84rem;
+        line-height: 1.44;
+    }
+}
+
 @media (max-width: 380px) {
 
     .card,
@@ -278,12 +459,19 @@
         border-radius: 0.9rem;
     }
 
-    .imageWrap {
-        aspect-ratio: 3 / 2;
+    .media {
+        aspect-ratio: 16 / 9.8;
     }
 
     .content {
-        padding: 0.8rem 0.8rem 0.9rem;
+        padding: 0.76rem 0.76rem 0.84rem;
+    }
+
+    .badge {
+        inset: 0.64rem auto auto 0.64rem;
+        min-block-size: 1.72rem;
+        padding: 0.3rem 0.58rem;
+        font-size: 0.56rem;
     }
 
     .title {
@@ -291,12 +479,12 @@
     }
 
     .description {
-        font-size: 0.86rem;
-        line-height: 1.46;
+        font-size: 0.82rem;
+        line-height: 1.42;
     }
 
     .placeholderLabel {
-        font-size: 0.66rem;
+        font-size: 0.64rem;
     }
 
     .regionHeader {
@@ -324,20 +512,6 @@
     .regionDescription {
         font-size: 0.86rem;
         line-height: 1.44;
-    }
-}
-
-@media (min-width: 1600px) {
-    .content {
-        padding: 1.05rem 1.05rem 1.2rem;
-    }
-
-    .regionHeader {
-        padding: 1rem 1rem 0.88rem;
-    }
-
-    .regionBody {
-        padding: 1rem;
     }
 }
 

@@ -9,6 +9,6 @@
 .inner {
     inline-size: 100%;
     display: grid;
-    gap: clamp(1.1rem, 2.1vw, 1.45rem);
+    gap: clamp(0.95rem, 1.6vw, 1.2rem);
     align-content: start;
 }

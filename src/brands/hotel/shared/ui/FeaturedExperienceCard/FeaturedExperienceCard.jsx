@@ -1,23 +1,29 @@
 import styles from "./FeaturedExperienceCard.module.css";
 
 /**
- * FeaturedExperienceCard (Hotel)
+ * FeaturedExperienceCard
  *
  * Props:
  *  - title: string
+ *  - eyebrow?: string
+ *  - badge?: string
  *  - description?: string
  *  - imageSrc?: string | null
  *  - imageAlt?: string | null
  *  - imagePosition?: string
+ *  - placeholderLabel?: string
  *  - icon?: ReactNode
  *  - variant?: "default" | "region"
  */
 export default function FeaturedExperienceCard({
   title,
+  eyebrow = "",
+  badge = "",
   description = "",
   imageSrc = null,
   imageAlt = null,
   imagePosition = "center center",
+  placeholderLabel = "Imagem brevemente",
   icon = null,
   variant = "default",
 }) {
@@ -42,7 +48,7 @@ export default function FeaturedExperienceCard({
 
   return (
     <article className={styles.card}>
-      <div className={styles.imageWrap}>
+      <div className={styles.media}>
         {imageSrc ? (
           <img
             src={imageSrc}
@@ -53,12 +59,19 @@ export default function FeaturedExperienceCard({
           />
         ) : (
           <div className={styles.imagePlaceholder}>
-            <span className={styles.placeholderLabel}>Imagem brevemente</span>
+            <span className={styles.placeholderLabel}>{placeholderLabel}</span>
           </div>
         )}
+
+        <div className={styles.mediaOverlay} aria-hidden="true" />
+        <div className={styles.mediaGlow} aria-hidden="true" />
+
+        {badge ? <span className={styles.badge}>{badge}</span> : null}
       </div>
 
       <div className={styles.content}>
+        {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+
         <h3 className={styles.title}>{title}</h3>
 
         {description ? (

@@ -1,7 +1,15 @@
 export const planYourStay = {
   id: "hotel-plan-your-stay",
+  eyebrow: "Planeie com confiança",
   boxTitle: "Tem dúvidas ou quer planear a sua estadia?",
-  boxSubtitle: "Estamos disponíveis todos os dias, das 07h00 às 24h00.",
+  boxSubtitle:
+    "Estamos disponíveis para esclarecer questões, apoiar reservas e ajudar a encontrar a solução mais adequada para a sua visita.",
+  availability: {
+    label: "Disponibilidade",
+    value: "Todos os dias · 07h00 às 24h00",
+  },
+  supportNote:
+    "Acompanhamento próximo para reservas, pedidos especiais e informações úteis antes da chegada.",
   actions: [
     {
       id: "phone",

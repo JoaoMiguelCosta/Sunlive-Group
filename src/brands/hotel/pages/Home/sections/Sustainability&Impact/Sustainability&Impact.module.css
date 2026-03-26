@@ -6,7 +6,26 @@
     background: transparent;
 }
 
+.section::before {
+    content: "";
+    position: absolute;
+    inset: clamp(1rem, 2vw, 1.5rem) 50% auto;
+    translate: -50% 0;
+    inline-size: min(100%, 1320px);
+    block-size: clamp(260px, 28vw, 380px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.72;
+    filter: blur(30px);
+    background:
+        radial-gradient(circle at 18% 32%, rgba(244, 197, 99, 0.18), transparent 32%),
+        radial-gradient(circle at 82% 62%, rgba(120, 58, 18, 0.16), transparent 36%),
+        radial-gradient(circle at 50% 100%, rgba(230, 200, 147, 0.1), transparent 48%);
+}
+
 .inner {
+    position: relative;
+    z-index: 1;
     inline-size: 100%;
     box-sizing: border-box;
 }
@@ -16,35 +35,37 @@
     isolation: isolate;
     overflow: hidden;
 
-    inline-size: 100%;
-    max-inline-size: 920px;
-    margin-inline: auto;
-    margin-block-start: clamp(1.15rem, 2.4vw, 1.65rem);
-    margin-block-end: clamp(1.35rem, 2.8vw, 1.9rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1.22fr) minmax(15rem, 0.78fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
 
-    padding: clamp(1.18rem, 2.4vw, 1.65rem);
-    border-radius: 24px;
-    border: 1px solid rgba(230, 200, 147, 0.3);
+    inline-size: 100%;
+    max-inline-size: 980px;
+    margin-inline: auto;
+    margin-block-start: clamp(1.15rem, 2.4vw, 1.7rem);
+    margin-block-end: clamp(1.35rem, 2.8vw, 2rem);
+
+    padding: clamp(1.2rem, 2.3vw, 1.75rem);
+    border-radius: clamp(1.2rem, 2vw, 1.7rem);
+    border: 1px solid rgba(230, 200, 147, 0.22);
 
     background:
-        radial-gradient(110% 140% at 0% 0%, rgba(230, 200, 147, 0.12), transparent 44%),
-        radial-gradient(120% 150% at 100% 100%, rgba(199, 134, 21, 0.1), transparent 46%),
+        radial-gradient(120% 150% at 0% 0%, rgba(230, 200, 147, 0.12), transparent 44%),
+        radial-gradient(140% 170% at 100% 100%, rgba(199, 134, 21, 0.09), transparent 48%),
         linear-gradient(180deg,
             rgba(255, 248, 235, 0.035) 0%,
             rgba(255, 248, 235, 0.012) 18%,
-            rgba(0, 0, 0, 0.08) 100%),
+            rgba(0, 0, 0, 0.09) 100%),
         linear-gradient(135deg,
-            #2b170b 0%,
-            #33190b 42%,
-            #1d0f08 100%);
+            rgba(43, 23, 11, 0.96) 0%,
+            rgba(51, 25, 11, 0.94) 42%,
+            rgba(29, 15, 8, 0.98) 100%);
 
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-        0 18px 44px rgba(0, 0, 0, 0.24),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+        0 20px 48px rgba(0, 0, 0, 0.24),
         0 0 0 1px rgba(255, 255, 255, 0.02);
-
-    text-align: center;
 }
 
 .introBox::before {
@@ -52,7 +73,6 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-
     background:
         linear-gradient(180deg,
             rgba(255, 248, 235, 0.07) 0%,
@@ -60,41 +80,167 @@
             rgba(255, 255, 255, 0) 36%);
 }
 
-.introTitle {
+.introMain,
+.noteBox {
     position: relative;
     z-index: 1;
+}
 
-    max-inline-size: 720px;
-    margin: 0 auto 0.68rem;
-    font-size: clamp(1.08rem, 0.9rem + 0.34vw, 1.22rem);
+.introMain {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.introEyebrow {
+    margin: 0 0 0.72rem;
+    font-size: clamp(0.72rem, 0.18vw + 0.68rem, 0.8rem);
     font-weight: 700;
-    line-height: 1.24;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(230, 200, 147, 0.95);
+}
+
+.introTitle {
+    max-inline-size: 18ch;
+    margin: 0;
+    font-size: clamp(1.22rem, 1rem + 0.8vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.08;
     color: #f1cd84;
     text-wrap: balance;
 }
 
 .introText {
-    position: relative;
-    z-index: 1;
-
-    max-inline-size: 720px;
-    margin: 0 auto;
-    font-size: clamp(0.94rem, 0.26vw + 0.9rem, 1rem);
-    line-height: 1.62;
+    max-inline-size: 56ch;
+    margin: clamp(0.78rem, 1.2vw, 0.95rem) 0 0;
+    font-size: clamp(0.95rem, 0.24vw + 0.91rem, 1.02rem);
+    line-height: 1.68;
     color: rgba(255, 248, 235, 0.9);
     text-wrap: pretty;
 }
 
 .ctaWrap {
-    position: relative;
-    z-index: 1;
     display: flex;
-    justify-content: center;
-    margin-top: clamp(0.95rem, 1.8vw, 1.22rem);
+    justify-content: flex-start;
+    margin-top: clamp(1rem, 1.8vw, 1.28rem);
 }
 
 .ctaButton {
     flex: 0 0 auto;
+}
+
+.noteBox {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.62rem;
+    min-inline-size: 0;
+    max-inline-size: 20rem;
+    padding:
+        clamp(0.95rem, 1.6vw, 1.15rem) clamp(0.95rem, 1.6vw, 1.15rem) clamp(1rem, 1.6vw, 1.15rem);
+    border-radius: clamp(1rem, 1.6vw, 1.3rem);
+    border: 1px solid rgba(230, 200, 147, 0.16);
+    background:
+        linear-gradient(180deg, rgba(255, 248, 235, 0.05), rgba(255, 248, 235, 0.015)),
+        rgba(24, 13, 7, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 12px 28px rgba(0, 0, 0, 0.18);
+    justify-self: end;
+}
+
+.noteTitle {
+    margin: 0;
+    font-size: clamp(0.76rem, 0.16vw + 0.72rem, 0.82rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(230, 200, 147, 0.9);
+}
+
+.noteText {
+    margin: 0;
+    font-size: clamp(0.9rem, 0.2vw + 0.88rem, 0.96rem);
+    line-height: 1.56;
+    color: rgba(255, 248, 235, 0.84);
+    text-wrap: pretty;
+}
+
+.introGlow {
+    position: absolute;
+    inset: auto auto -20% -10%;
+    inline-size: clamp(10rem, 20vw, 16rem);
+    aspect-ratio: 1;
+    border-radius: 999px;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(230, 200, 147, 0.15), transparent 68%);
+    filter: blur(22px);
+    opacity: 0.9;
+}
+
+.introHighlightLine {
+    position: absolute;
+    inset: auto 0 0;
+    block-size: 1px;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            rgba(230, 200, 147, 0) 0%,
+            rgba(230, 200, 147, 0.54) 22%,
+            rgba(230, 200, 147, 0.16) 58%,
+            rgba(230, 200, 147, 0) 100%);
+}
+
+@media (min-width: 1200px) {
+    .introBox {
+        max-inline-size: 1040px;
+        grid-template-columns: minmax(0, 1.26fr) minmax(16rem, 0.72fr);
+    }
+
+    .noteBox {
+        max-inline-size: 19.5rem;
+    }
+}
+
+@media (min-width: 1360px) {
+    .introBox {
+        max-inline-size: 1080px;
+        grid-template-columns: minmax(0, 1.32fr) minmax(16.5rem, 0.68fr);
+        gap: 1.35rem;
+    }
+
+    .noteBox {
+        max-inline-size: 19rem;
+    }
+}
+
+@media (min-width: 1520px) {
+    .introBox {
+        max-inline-size: 1000px;
+        grid-template-columns: minmax(0, 1.38fr) minmax(17rem, 0.64fr);
+    }
+
+    .noteBox {
+        max-inline-size: 18.75rem;
+    }
+}
+
+@media (max-width: 1080px) {
+    .introBox {
+        grid-template-columns: minmax(0, 1fr);
+        max-inline-size: 920px;
+    }
+
+    .noteBox {
+        justify-content: flex-start;
+        justify-self: stretch;
+        max-inline-size: none;
+    }
 }
 
 @media (max-width: 640px) {
@@ -102,19 +248,52 @@
         margin-block-start: 1rem;
         margin-block-end: 1rem;
         padding: 1rem;
-        border-radius: 20px;
+        border-radius: 1.2rem;
+    }
+
+    .introTitle {
+        font-size: 1.08rem;
+        line-height: 1.14;
+    }
+
+    .introText {
+        font-size: 0.94rem;
+        line-height: 1.58;
+    }
+
+    .ctaWrap {
+        margin-top: 0.95rem;
+    }
+
+    .noteBox {
+        padding: 0.9rem;
+        border-radius: 1rem;
+    }
+
+    .noteText {
+        font-size: 0.9rem;
+        line-height: 1.52;
+    }
+}
+
+@media (max-width: 380px) {
+    .introBox {
+        padding: 0.92rem;
+        border-radius: 1rem;
     }
 
     .introTitle {
         font-size: 1rem;
     }
 
-    .introText {
-        font-size: 0.94rem;
-        line-height: 1.56;
+    .introText,
+    .noteText {
+        font-size: 0.89rem;
+        line-height: 1.5;
     }
 
-    .ctaWrap {
-        margin-top: 0.9rem;
+    .noteBox {
+        padding: 0.82rem;
+        border-radius: 0.92rem;
     }
 }

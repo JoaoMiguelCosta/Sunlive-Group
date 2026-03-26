@@ -2,27 +2,34 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
+    min-inline-size: 0;
 }
 
-.grid {
-    margin-inline: auto;
-    inline-size: min(100%, 1520px);
+.layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: clamp(0.9rem, 1.9vw, 1.2rem);
-    align-items: stretch;
+    gap: clamp(0.82rem, 1.2vw, 1.05rem);
+    min-inline-size: 0;
 }
 
-.item {
+.featuredSlot,
+.secondaryItem {
     min-inline-size: 0;
-    animation: whoCardFadeUp 480ms ease both;
+    animation: whoCardFadeUp 520ms ease both;
     animation-delay: var(--who-card-delay, 0ms);
+}
+
+.secondaryGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(0.76rem, 1vw, 0.95rem);
+    min-inline-size: 0;
 }
 
 @keyframes whoCardFadeUp {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(12px);
     }
 
     to {
@@ -31,52 +38,57 @@
     }
 }
 
-@media (min-width: 640px) {
-    .grid {
+@media (min-width: 680px) {
+    .secondaryGrid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
+/* tablet e desktop médio:
+   featured em cima, grelha 2x2 por baixo */
 @media (min-width: 1024px) {
-    .grid {
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        gap: clamp(1rem, 1.6vw, 1.25rem);
+    .layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: clamp(0.9rem, 1.25vw, 1.1rem);
     }
 
-    .item {
-        grid-column: span 4;
-    }
-
-    .item:nth-child(1) {
-        grid-column: 1 / span 4;
-    }
-
-    .item:nth-child(2) {
-        grid-column: 5 / span 4;
-    }
-
-    .item:nth-child(3) {
-        grid-column: 9 / span 4;
-    }
-
-    .item:nth-child(4) {
-        grid-column: 2 / span 5;
-    }
-
-    .item:nth-child(5) {
-        grid-column: 7 / span 5;
+    .secondaryGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(0.8rem, 1vw, 0.95rem);
     }
 }
 
-@media (min-width: 1440px) {
-    .grid {
-        inline-size: min(100%, 1560px);
-        gap: 1.25rem;
+/* só em ecrãs bem largos é que vale a pena abrir mais */
+@media (min-width: 1760px) {
+    .secondaryGrid {
+        grid-template-columns: repeat(2, minmax(15rem, 1fr));
+    }
+}
+@media (max-width: 768px) {
+    .layout {
+        gap: 0.76rem;
+    }
+
+    .secondaryGrid {
+        gap: 0.72rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .layout {
+        gap: 0.68rem;
+    }
+
+    .secondaryGrid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.64rem;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .item {
+
+    .featuredSlot,
+    .secondaryItem {
         animation: none;
     }
 }

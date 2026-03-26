@@ -15,10 +15,15 @@ function resolveStatIcon(iconKey) {
  * HotelStatsGrid
  *
  * Props:
- * - items: Array<{ id, value, description, iconKey? }>
+ * - items: Array<{ id, label?, value, description, iconKey? }>
  * - className?: string
+ * - ariaLabel?: string
  */
-export default function HotelStatsGrid({ items = [], className = "" }) {
+export default function HotelStatsGrid({
+  items = [],
+  className = "",
+  ariaLabel = "Indicadores",
+}) {
   const safeItems = Array.isArray(items) ? items : [];
 
   if (!safeItems.length) return null;
@@ -26,26 +31,30 @@ export default function HotelStatsGrid({ items = [], className = "" }) {
   const classNames = [styles.grid, className].filter(Boolean).join(" ");
 
   return (
-    <div
-      className={classNames}
-      role="list"
-      aria-label="Indicadores de sustentabilidade"
-    >
+    <div className={classNames} role="list" aria-label={ariaLabel}>
       {safeItems.map((item) => {
         const icon = resolveStatIcon(item.iconKey);
+        const itemAria = [item.label, item.value, item.description]
+          .filter(Boolean)
+          .join(" ");
 
         return (
           <article
             key={item.id}
             className={styles.card}
             role="listitem"
-            aria-label={`${item.value} ${item.description}`}
+            aria-label={itemAria}
           >
-            <div className={styles.iconWrap}>{icon}</div>
+            <div className={styles.cardTop}>
+              <div className={styles.iconWrap}>{icon}</div>
 
-            <p className={styles.value}>{item.value}</p>
+              {item.label ? <p className={styles.label}>{item.label}</p> : null}
+            </div>
 
-            <p className={styles.description}>{item.description}</p>
+            <div className={styles.metricBlock}>
+              <p className={styles.value}>{item.value}</p>
+              <p className={styles.description}>{item.description}</p>
+            </div>
           </article>
         );
       })}
