@@ -1,3 +1,5 @@
+import sustainabilityImage from "../../../assets/sustainability.webp";
+
 const sustainabilityCommitment = {
   id: "sustentabilidade-compromisso",
   headerLabel: "Sustentabilidade",
@@ -18,11 +20,20 @@ const sustainabilityCommitment = {
     items: [
       {
         id: "energy-efficiency",
+        featured: true,
         title: "Eficiência Energética",
         subtitle: "Tecnologia ao serviço do ambiente",
         description:
-          "Uso de sistemas de climatização eficientes e iluminação LED, reduzindo o impacto ambiental sem comprometer o conforto.",
+          "Uso de sistemas de climatização eficientes, iluminação LED e soluções energéticas responsáveis, reduzindo o impacto ambiental sem comprometer o conforto da experiência.",
         topIconKey: "energy",
+        media: {
+          imageSrc: sustainabilityImage,
+          imageAlt:
+            "Painéis solares instalados na Estalagem de Sangalhos com vista sobre a envolvente natural e piscina exterior",
+          eyebrow: "Infraestrutura Sustentável",
+          caption:
+            "Painéis solares instalados no hotel para uma operação mais eficiente e responsável.",
+        },
         features: [
           {
             id: "efficient-climate",

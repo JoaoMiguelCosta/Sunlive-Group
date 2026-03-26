@@ -29,15 +29,26 @@ export default function SustainabilityPracticesGrid() {
   return (
     <div className={styles.grid} aria-label="Práticas de sustentabilidade">
       {items.map((item) => (
-        <SustainabilityPracticeCard
+        <div
           key={item.id}
-          title={item.title}
-          subtitle={item.subtitle}
-          description={item.description}
-          topIcon={item.resolvedTopIcon}
-          features={item.features ?? []}
-          metricText={item.metric?.text}
-        />
+          className={[
+            styles.item,
+            item.featured ? styles.featured : styles.standard,
+          ]
+            .filter(Boolean)
+            .join(" ")}
+        >
+          <SustainabilityPracticeCard
+            title={item.title}
+            subtitle={item.subtitle}
+            description={item.description}
+            topIcon={item.resolvedTopIcon}
+            features={item.features ?? []}
+            metricText={item.metric?.text}
+            featured={item.featured ?? false}
+            media={item.media ?? null}
+          />
+        </div>
       ))}
     </div>
   );

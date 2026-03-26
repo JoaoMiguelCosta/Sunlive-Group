@@ -3,6 +3,8 @@ import { useMemo } from "react";
 import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import HotelHighlightBanner from "../../../../shared/ui/HotelHighlightBanner/HotelHighlightBanner.jsx";
 
+import styles from "./SustainabilityHighlightBanner.module.css";
+
 export default function SustainabilityHighlightBanner() {
   const section =
     hotelBrand?.pages?.sustainability?.sections?.sustainabilityCommitment ??
@@ -38,6 +40,7 @@ export default function SustainabilityHighlightBanner() {
       iconsEnabled={resolvedBanner.iconsEnabled ?? false}
       leftIcon={resolvedBanner.leftIcon}
       rightIcon={resolvedBanner.rightIcon}
+      className={styles.banner}
     />
   );
 }

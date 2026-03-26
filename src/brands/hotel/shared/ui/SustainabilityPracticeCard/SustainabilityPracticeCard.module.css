@@ -4,7 +4,7 @@
     flex-direction: column;
     min-height: 100%;
     border: 1px solid rgba(194, 132, 29, 0.62);
-    border-radius: clamp(1.05rem, 1.4vw, 1.45rem);
+    border-radius: clamp(1rem, 1.35vw, 1.4rem);
     overflow: hidden;
     background:
         radial-gradient(120% 90% at 15% 0%, rgba(214, 166, 84, 0.1), transparent 42%),
@@ -25,50 +25,71 @@
     opacity: 0.9;
 }
 
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+    border: 1px solid rgba(255, 231, 184, 0.06);
+}
+
+.featured {
+    background:
+        radial-gradient(120% 120% at 0% 0%, rgba(214, 166, 84, 0.14), transparent 44%),
+        radial-gradient(120% 120% at 100% 100%, rgba(214, 166, 84, 0.1), transparent 44%),
+        linear-gradient(135deg, rgba(82, 44, 15, 0.98) 0%, rgba(38, 17, 8, 0.99) 70%, rgba(18, 10, 6, 1) 100%);
+    box-shadow:
+        0 0 0 1px rgba(255, 226, 180, 0.06) inset,
+        0 24px 44px rgba(0, 0, 0, 0.24),
+        0 0 30px rgba(230, 200, 147, 0.08);
+}
+
 .header {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(0.45rem, 0.9vw, 0.65rem);
-    padding: clamp(0.95rem, 1.2vw, 1.15rem) clamp(0.95rem, 1.1vw, 1.1rem) clamp(0.85rem, 1vw, 0.95rem);
+    gap: clamp(0.32rem, 0.55vw, 0.5rem);
+    padding:
+        clamp(0.7rem, 0.9vw, 0.9rem) clamp(0.9rem, 1vw, 1rem) clamp(0.65rem, 0.85vw, 0.8rem);
     background:
-        linear-gradient(180deg, rgba(188, 137, 52, 0.96) 0%, rgba(151, 98, 24, 0.96) 100%);
+        linear-gradient(180deg, rgba(188, 137, 52, 0.97) 0%, rgba(151, 98, 24, 0.97) 100%);
     border-bottom: 1px solid rgba(255, 231, 184, 0.22);
     text-align: center;
 }
 
+.featured .header {
+    padding:
+        clamp(0.78rem, 1vw, 0.98rem) clamp(0.95rem, 1.15vw, 1.08rem) clamp(0.72rem, 0.9vw, 0.85rem);
+}
+
 .topIconWrap {
-    inline-size: clamp(3.2rem, 3.45vw, 3.95rem);
-    block-size: clamp(3.2rem, 3.45vw, 3.95rem);
+    inline-size: clamp(2.8rem, 2.8vw, 3.2rem);
+    block-size: clamp(2.8rem, 2.8vw, 3.2rem);
     border-radius: 999px;
     flex-shrink: 0;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     border: 1px solid rgba(241, 205, 132, 0.2);
-
     background:
         radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.16), transparent 55%),
         radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.08), transparent 72%),
         linear-gradient(180deg,
             rgba(78, 42, 18, 0.92) 0%,
             rgba(42, 21, 10, 0.96) 100%);
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.12),
         0 10px 24px rgba(0, 0, 0, 0.22),
         0 0 0 1px rgba(255, 220, 140, 0.04),
         0 0 22px rgba(230, 200, 147, 0.08);
-
     color: #f1cd84;
 }
 
 .topIconWrap :global(svg) {
-    inline-size: clamp(1.38rem, 1.62vw, 1.78rem);
-    block-size: clamp(1.38rem, 1.62vw, 1.78rem);
+    inline-size: clamp(1.15rem, 1.2vw, 1.35rem);
+    block-size: clamp(1.15rem, 1.2vw, 1.35rem);
     display: block;
     stroke: currentColor;
     filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.12));
@@ -76,47 +97,83 @@
 
 .headerText {
     display: grid;
-    gap: 0.14rem;
-    max-width: 26rem;
+    gap: 0.08rem;
+    max-width: 28rem;
 }
 
 .title {
     margin: 0;
     color: #fffaf2;
-    font-size: clamp(1.08rem, 1.2vw, 1.45rem);
+    font-size: clamp(1rem, 1vw, 1.24rem);
     font-weight: 800;
-    line-height: 1.08;
+    line-height: 1.06;
     letter-spacing: -0.02em;
     text-wrap: balance;
+}
+
+.featured .title {
+    font-size: clamp(1.18rem, 1.35vw, 1.48rem);
 }
 
 .subtitle {
     margin: 0;
     color: rgba(255, 248, 236, 0.94);
-    font-size: clamp(0.88rem, 0.82vw, 0.98rem);
-    line-height: 1.18;
+    font-size: clamp(0.8rem, 0.72vw, 0.9rem);
+    line-height: 1.14;
     text-wrap: balance;
+}
+
+.featured .subtitle {
+    font-size: clamp(0.84rem, 0.8vw, 0.92rem);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.featuredContent {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    flex: 1;
+}
+
+.hasMedia.featuredContent {
+    grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.92fr);
+}
+
+.contentMain {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
 }
 
 .descriptionBlock {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 4.25rem;
-    padding: 0.8rem 0.95rem;
+    min-height: 3.65rem;
+    padding: 0.68rem 0.82rem;
     border-bottom: 1px solid rgba(199, 134, 21, 0.28);
     background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.featured .descriptionBlock {
+    justify-content: flex-start;
+    min-height: auto;
+    padding: 0.78rem 0.92rem 0.76rem;
 }
 
 .description {
     margin: 0;
     color: rgba(249, 240, 228, 0.95);
     text-align: center;
-    font-size: clamp(0.88rem, 0.86vw, 0.96rem);
+    font-size: clamp(0.84rem, 0.76vw, 0.92rem);
     line-height: 1.34;
     text-wrap: balance;
-
     display: -webkit-box;
     display: box;
     -webkit-line-clamp: 2;
@@ -126,38 +183,55 @@
     overflow: hidden;
 }
 
+.featured .description {
+    text-align: left;
+    font-size: clamp(0.88rem, 0.84vw, 0.96rem);
+    line-height: 1.42;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    display: block;
+}
+
 .featuresList {
     display: grid;
-    gap: 0.7rem;
+    gap: 0.58rem;
     margin: 0;
-    padding: 0.9rem 0.95rem;
+    padding: 0.78rem 0.82rem;
     list-style: none;
     flex: 1;
 }
 
+.featured .featuresList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0.8rem;
+    row-gap: 0.7rem;
+    padding: 0.82rem 0.92rem;
+}
+
 .featureItem {
     display: grid;
-    gap: 0.24rem;
+    gap: 0.16rem;
+    min-width: 0;
 }
 
 .featureHeading {
     display: flex;
-    align-items: center;
-    gap: 0.6rem;
+    align-items: flex-start;
+    gap: 0.52rem;
 }
 
 .check {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     flex-shrink: 0;
     border-radius: 999px;
     background:
         linear-gradient(180deg, rgba(215, 169, 75, 1) 0%, rgba(199, 134, 21, 1) 100%);
     color: #3b220d;
-    font-size: 1rem;
+    font-size: 0.88rem;
     line-height: 1;
     font-weight: 800;
     border: 1px solid rgba(255, 231, 184, 0.18);
@@ -169,26 +243,26 @@
 .featureTitle {
     margin: 0;
     color: #d8a341;
-    font-size: clamp(0.96rem, 0.92vw, 1.08rem);
+    font-size: clamp(0.88rem, 0.82vw, 1rem);
     font-weight: 800;
-    line-height: 1.14;
+    line-height: 1.1;
     letter-spacing: -0.01em;
 }
 
 .featureDescription {
     margin: 0;
-    padding-left: calc(30px + 0.6rem);
+    padding-left: calc(26px + 0.52rem);
     color: rgba(245, 237, 227, 0.96);
-    font-size: clamp(0.86rem, 0.84vw, 0.93rem);
-    line-height: 1.3;
+    font-size: clamp(0.8rem, 0.76vw, 0.88rem);
+    line-height: 1.24;
 }
 
 .metric {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
-    margin: 0 0.9rem 0.9rem;
-    padding: 0.38rem 0.72rem;
+    gap: 0.56rem;
+    margin: 0 0.82rem 0.82rem;
+    padding: 0.34rem 0.62rem;
     border: 1px solid rgba(199, 134, 21, 0.72);
     border-radius: 999px;
     background:
@@ -197,57 +271,211 @@
         0 0 0 1px rgba(255, 215, 160, 0.04) inset;
 }
 
+.featured .metric {
+    margin: 0 0.92rem 0.92rem;
+}
+
 .metricText {
     color: #fffdf8;
-    font-size: clamp(0.9rem, 0.88vw, 0.98rem);
+    font-size: clamp(0.84rem, 0.8vw, 0.92rem);
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.16;
     letter-spacing: -0.01em;
+}
+
+.mediaColumn {
+    position: relative;
+    min-width: 0;
+    padding: 0.82rem 0.88rem 0.88rem 0;
+    display: flex;
+}
+
+.mediaFrame {
+    position: relative;
+    inline-size: 100%;
+    min-block-size: 100%;
+    overflow: hidden;
+    border-radius: clamp(0.9rem, 1.1vw, 1.08rem);
+    border: 1px solid rgba(255, 226, 180, 0.14);
+    background:
+        radial-gradient(120% 120% at 50% 0%, rgba(214, 166, 84, 0.08), transparent 60%),
+        linear-gradient(135deg, rgba(42, 21, 10, 0.92), rgba(22, 12, 7, 0.98));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        0 14px 28px rgba(0, 0, 0, 0.22);
+}
+
+.mediaImage {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    display: block;
+    transform: scale(1.01);
+    transition:
+        transform 260ms ease,
+        filter 260ms ease;
+    filter: saturate(1.03) contrast(1.01);
+}
+
+.card:hover .mediaImage {
+    transform: scale(1.04);
+}
+
+.mediaOverlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(14, 8, 5, 0.1) 0%, rgba(14, 8, 5, 0.05) 20%, rgba(14, 8, 5, 0.58) 100%),
+        radial-gradient(circle at 50% 16%, rgba(255, 230, 180, 0.08), transparent 34%);
+}
+
+.mediaEyebrow {
+    position: absolute;
+    inset: 0.82rem auto auto 0.82rem;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.8rem;
+    padding-inline: 0.72rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 226, 180, 0.18);
+    background:
+        linear-gradient(180deg, rgba(52, 29, 14, 0.84), rgba(26, 14, 9, 0.92));
+    color: #f2d18d;
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.mediaCaption {
+    position: absolute;
+    inset: auto 0.82rem 0.82rem 0.82rem;
+    z-index: 1;
+    margin: 0;
+    max-inline-size: min(86%, 17rem);
+    padding: 0.62rem 0.72rem;
+    border-radius: 0.88rem;
+    border: 1px solid rgba(255, 226, 180, 0.14);
+    background:
+        linear-gradient(180deg, rgba(33, 18, 9, 0.78), rgba(18, 10, 6, 0.9));
+    color: rgba(249, 240, 228, 0.94);
+    font-size: 0.78rem;
+    line-height: 1.28;
+    text-wrap: balance;
+    backdrop-filter: blur(10px);
+}
+
+@media (max-width: 1280px) {
+    .hasMedia.featuredContent {
+        grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.88fr);
+    }
+
+    .featured .featuresList {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 1180px) {
+    .hasMedia.featuredContent {
+        grid-template-columns: 1fr;
+    }
+
+    .mediaColumn {
+        padding: 0 0.92rem 0.92rem;
+    }
+
+    .mediaFrame {
+        min-block-size: clamp(14rem, 42vw, 20rem);
+    }
+
+    .mediaImage {
+        object-position: center;
+    }
+
+    .mediaCaption {
+        max-inline-size: min(82%, 18rem);
+    }
 }
 
 @media (max-width: 980px) {
     .title {
-        font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+        font-size: clamp(0.98rem, 2.15vw, 1.16rem);
+    }
+
+    .featured .title {
+        font-size: clamp(1.1rem, 2.7vw, 1.34rem);
     }
 
     .subtitle {
-        font-size: 0.92rem;
+        font-size: 0.82rem;
+    }
+
+    .featured .subtitle {
+        font-size: 0.84rem;
     }
 
     .topIconWrap {
-        inline-size: 3.35rem;
-        block-size: 3.35rem;
+        inline-size: 2.7rem;
+        block-size: 2.7rem;
     }
 
     .topIconWrap :global(svg) {
-        inline-size: 1.42rem;
-        block-size: 1.42rem;
+        inline-size: 1.08rem;
+        block-size: 1.08rem;
+    }
+
+    .featured .featuresList {
+        grid-template-columns: 1fr;
+    }
+
+    .mediaCaption {
+        font-size: 0.76rem;
+        line-height: 1.24;
     }
 }
 
 @media (max-width: 768px) {
     .header {
-        padding: 0.85rem 0.85rem 0.75rem;
+        padding: 0.72rem 0.78rem 0.64rem;
+    }
+
+    .featured .header {
+        padding: 0.78rem 0.82rem 0.68rem;
     }
 
     .topIconWrap {
-        inline-size: 3.15rem;
-        block-size: 3.15rem;
+        inline-size: 2.55rem;
+        block-size: 2.55rem;
     }
 
     .topIconWrap :global(svg) {
-        inline-size: 1.32rem;
-        block-size: 1.32rem;
+        inline-size: 1rem;
+        block-size: 1rem;
     }
 
     .descriptionBlock {
         min-height: auto;
-        padding: 0.8rem 0.85rem;
+        padding: 0.72rem 0.78rem;
+    }
+
+    .featured .descriptionBlock {
+        padding: 0.76rem 0.82rem 0.72rem;
     }
 
     .featuresList {
-        padding: 0.85rem;
-        gap: 0.7rem;
+        padding: 0.76rem 0.78rem;
+        gap: 0.62rem;
+    }
+
+    .featured .featuresList {
+        grid-template-columns: 1fr;
+        padding: 0.78rem 0.82rem;
+        gap: 0.68rem;
     }
 
     .featureDescription {
@@ -255,12 +483,84 @@
     }
 
     .metric {
-        margin: 0 0.85rem 0.85rem;
+        margin: 0 0.78rem 0.78rem;
+        padding: 0.34rem 0.58rem;
+    }
+
+    .featured .metric {
+        margin: 0 0.82rem 0.82rem;
     }
 
     .check {
-        width: 28px;
-        height: 28px;
-        font-size: 0.95rem;
+        width: 24px;
+        height: 24px;
+        font-size: 0.82rem;
+    }
+
+    .mediaColumn {
+        padding: 0 0.82rem 0.82rem;
+    }
+
+    .mediaFrame {
+        min-block-size: 13rem;
+    }
+
+    .mediaEyebrow {
+        inset: 0.72rem auto auto 0.72rem;
+        padding-inline: 0.65rem;
+        font-size: 0.6rem;
+        min-height: 1.65rem;
+    }
+
+    .mediaCaption {
+        inset: auto 0.72rem 0.72rem 0.72rem;
+        max-inline-size: min(84%, 15rem);
+        padding: 0.56rem 0.64rem;
+        font-size: 0.72rem;
+        line-height: 1.22;
+        border-radius: 0.8rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .title {
+        font-size: 0.96rem;
+    }
+
+    .featured .title {
+        font-size: 1.04rem;
+    }
+
+    .subtitle,
+    .featured .subtitle {
+        font-size: 0.78rem;
+    }
+
+    .description,
+    .featured .description {
+        font-size: 0.82rem;
+    }
+
+    .featureTitle {
+        font-size: 0.84rem;
+    }
+
+    .featureDescription {
+        font-size: 0.78rem;
+        line-height: 1.2;
+    }
+
+    .metricText {
+        font-size: 0.8rem;
+    }
+
+    .mediaFrame {
+        min-block-size: 11.5rem;
+    }
+
+    .mediaCaption {
+        max-inline-size: min(88%, 13.5rem);
+        font-size: 0.68rem;
+        line-height: 1.18;
     }
 }

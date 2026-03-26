@@ -2,13 +2,15 @@ import styles from "./HotelStatsGrid.module.css";
 
 import hotelBrand, { resolveHotelIcon } from "../../../config/index.js";
 
-function resolveStatIcon(iconKey) {
+function resolveStatIcon(iconKey, iconClassName = "") {
   if (!iconKey) return null;
 
   const icons = hotelBrand?.icons ?? {};
   const Icon = resolveHotelIcon(icons, iconKey);
 
-  return Icon ? <Icon className={styles.statIcon} aria-hidden="true" /> : null;
+  const classNames = [styles.statIcon, iconClassName].filter(Boolean).join(" ");
+
+  return Icon ? <Icon className={classNames} aria-hidden="true" /> : null;
 }
 
 /**
@@ -17,18 +19,30 @@ function resolveStatIcon(iconKey) {
  * Props:
  * - items: Array<{ id, label?, value, description, iconKey? }>
  * - className?: string
+ * - itemClassName?: string
  * - ariaLabel?: string
+ * - variant?: "default" | "compactBalanced"
  */
 export default function HotelStatsGrid({
   items = [],
   className = "",
+  itemClassName = "",
   ariaLabel = "Indicadores",
+  variant = "default",
 }) {
   const safeItems = Array.isArray(items) ? items : [];
 
   if (!safeItems.length) return null;
 
-  const classNames = [styles.grid, className].filter(Boolean).join(" ");
+  const gridVariantClass =
+    variant !== "default" ? styles[`${variant}Grid`] : "";
+
+  const cardVariantClass =
+    variant !== "default" ? styles[`${variant}Card`] : "";
+
+  const classNames = [styles.grid, gridVariantClass, className]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <div className={classNames} role="list" aria-label={ariaLabel}>
@@ -38,10 +52,14 @@ export default function HotelStatsGrid({
           .filter(Boolean)
           .join(" ");
 
+        const cardClassNames = [styles.card, cardVariantClass, itemClassName]
+          .filter(Boolean)
+          .join(" ");
+
         return (
           <article
             key={item.id}
-            className={styles.card}
+            className={cardClassNames}
             role="listitem"
             aria-label={itemAria}
           >

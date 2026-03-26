@@ -13,6 +13,10 @@
     box-shadow:
         0 0 0 1px rgba(255, 226, 180, 0.04) inset,
         0 18px 36px rgba(0, 0, 0, 0.22);
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease;
 }
 
 .card::before {
@@ -24,26 +28,85 @@
         linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 24%);
 }
 
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-block-size: 6.2rem;
-    padding: 0.78rem 0.95rem 0.42rem;
-    background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
-    border-bottom: 0;
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+    border: 1px solid rgba(255, 231, 184, 0.04);
 }
 
-.iconCircle {
-    inline-size: clamp(2.95rem, 4.2vw, 3.8rem);
-    block-size: clamp(2.95rem, 4.2vw, 3.8rem);
-    border-radius: 999px;
-    flex-shrink: 0;
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(214, 166, 84, 0.62);
+    box-shadow:
+        0 0 0 1px rgba(255, 226, 180, 0.05) inset,
+        0 22px 42px rgba(0, 0, 0, 0.24);
+}
 
+.header {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 0.8rem;
+    min-block-size: 7.2rem;
+    padding: 0.8rem 1rem 0.45rem;
+    background:
+        radial-gradient(110% 140% at 50% -10%, rgba(255, 240, 205, 0.12), transparent 52%),
+        linear-gradient(180deg, rgba(184, 132, 49, 0.97) 0%, rgba(135, 88, 18, 0.97) 100%);
+    border-bottom: 1px solid rgba(255, 231, 184, 0.18);
+}
+
+.headerTop {
+    inline-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 1.8rem;
+    padding-inline: 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 231, 184, 0.18);
+    background:
+        linear-gradient(180deg, rgba(71, 37, 15, 0.82), rgba(31, 17, 9, 0.9));
+    color: #f1cd84;
+    font-size: clamp(0.64rem, 0.58vw, 0.72rem);
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.step {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-inline-size: 2rem;
+    min-block-size: 2rem;
+    padding-inline: 0.55rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 231, 184, 0.16);
+    background:
+        linear-gradient(180deg, rgba(71, 37, 15, 0.82), rgba(31, 17, 9, 0.9));
+    color: rgba(255, 246, 232, 0.92);
+    font-size: clamp(0.72rem, 0.62vw, 0.8rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
 
+.iconCircle {
+    inline-size: clamp(3rem, 4vw, 3.7rem);
+    block-size: clamp(3rem, 4vw, 3.7rem);
+    border-radius: 999px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid rgba(241, 205, 132, 0.2);
     background:
         radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.16), transparent 55%),
@@ -52,13 +115,12 @@
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.08),
         0 10px 24px rgba(0, 0, 0, 0.2);
-
     color: #e4bf67;
 }
 
 .iconCircle :global(svg) {
-    inline-size: clamp(1.18rem, 1.8vw, 1.48rem);
-    block-size: clamp(1.18rem, 1.8vw, 1.48rem);
+    inline-size: clamp(1.16rem, 1.7vw, 1.44rem);
+    block-size: clamp(1.16rem, 1.7vw, 1.44rem);
     stroke: currentColor;
     filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.12));
 }
@@ -68,7 +130,7 @@
     align-content: start;
     justify-items: center;
     gap: 0.72rem;
-    padding: 0.2rem 1.05rem 1.1rem;
+    padding: 0.85rem 1.05rem 1.1rem;
     flex: 1;
     text-align: center;
 }
@@ -76,7 +138,7 @@
 .title {
     margin: 0;
     color: #fff7ec;
-    font-size: clamp(1.06rem, 0.7vw, 1.28rem);
+    font-size: clamp(1.08rem, 0.95vw, 1.28rem);
     font-weight: 800;
     line-height: 1.08;
     letter-spacing: -0.02em;
@@ -97,54 +159,192 @@
     margin: 0;
     max-inline-size: 18rem;
     color: rgba(245, 237, 227, 0.95);
-    font-size: clamp(0.92rem, 0.42vw, 0.98rem);
-    line-height: 1.38;
+    font-size: clamp(0.92rem, 0.7vw, 0.98rem);
+    line-height: 1.42;
     text-wrap: balance;
+}
+
+/* Variant exclusiva para Future Goals */
+.cardFutureGoals {
+    border-color: rgba(214, 166, 84, 0.44);
+    background:
+        radial-gradient(120% 110% at 50% 0%, rgba(241, 205, 132, 0.14), transparent 46%),
+        radial-gradient(120% 120% at 100% 100%, rgba(214, 166, 84, 0.08), transparent 48%),
+        linear-gradient(135deg, rgba(86, 48, 16, 0.98) 0%, rgba(40, 20, 10, 0.99) 70%, rgba(22, 12, 8, 1) 100%);
+    box-shadow:
+        0 0 0 1px rgba(255, 226, 180, 0.05) inset,
+        0 20px 40px rgba(0, 0, 0, 0.22);
+}
+
+.headerFutureGoals {
+    min-block-size: 7.5rem;
+    padding: 0.82rem 1rem 0.52rem;
+    background:
+        radial-gradient(110% 140% at 50% -10%, rgba(255, 240, 205, 0.14), transparent 52%),
+        linear-gradient(180deg, rgba(188, 137, 52, 0.98) 0%, rgba(151, 98, 24, 0.98) 100%);
+}
+
+.bodyFutureGoals {
+    gap: 0.8rem;
+    padding: 0.95rem 1.08rem 1.15rem;
+}
+
+.titleFutureGoals {
+    font-size: clamp(1.14rem, 1vw, 1.36rem);
+}
+
+.descriptionFutureGoals {
+    max-inline-size: 19rem;
+    font-size: clamp(0.94rem, 0.78vw, 1rem);
+    line-height: 1.4;
 }
 
 @media (max-width: 980px) {
     .header {
-        min-block-size: 5.8rem;
-        padding: 0.72rem 0.88rem 0.34rem;
+        min-block-size: 6.6rem;
+        padding: 0.72rem 0.9rem 0.4rem;
+        gap: 0.72rem;
+    }
+
+    .eyebrow {
+        min-block-size: 1.7rem;
+        padding-inline: 0.7rem;
+        font-size: 0.64rem;
+    }
+
+    .step {
+        min-inline-size: 1.85rem;
+        min-block-size: 1.85rem;
+        font-size: 0.72rem;
     }
 
     .iconCircle {
-        inline-size: clamp(2.8rem, 6vw, 3.5rem);
-        block-size: clamp(2.8rem, 6vw, 3.5rem);
+        inline-size: clamp(2.85rem, 6vw, 3.4rem);
+        block-size: clamp(2.85rem, 6vw, 3.4rem);
     }
 
     .iconCircle :global(svg) {
-        inline-size: clamp(1.08rem, 1.8vw, 1.34rem);
-        block-size: clamp(1.08rem, 1.8vw, 1.34rem);
+        inline-size: clamp(1.06rem, 1.8vw, 1.3rem);
+        block-size: clamp(1.06rem, 1.8vw, 1.3rem);
     }
 
     .title {
-        font-size: clamp(1rem, 2.2vw, 1.18rem);
+        font-size: clamp(1rem, 2.2vw, 1.16rem);
+    }
+
+    .headerFutureGoals {
+        min-block-size: 6.9rem;
+        padding: 0.76rem 0.92rem 0.44rem;
+    }
+
+    .titleFutureGoals {
+        font-size: clamp(1.04rem, 2.2vw, 1.18rem);
+    }
+
+    .descriptionFutureGoals {
+        font-size: 0.92rem;
     }
 }
 
 @media (max-width: 768px) {
+    .card:hover {
+        transform: none;
+    }
+
     .header {
-        min-block-size: 5.4rem;
-        padding: 0.68rem 0.82rem 0.28rem;
+        min-block-size: 6.2rem;
+        padding: 0.68rem 0.82rem 0.34rem;
+        gap: 0.64rem;
+    }
+
+    .headerTop {
+        gap: 0.5rem;
+    }
+
+    .eyebrow {
+        min-block-size: 1.62rem;
+        padding-inline: 0.62rem;
+        font-size: 0.6rem;
+    }
+
+    .step {
+        min-inline-size: 1.75rem;
+        min-block-size: 1.75rem;
+        font-size: 0.68rem;
     }
 
     .iconCircle {
-        inline-size: 3rem;
-        block-size: 3rem;
+        inline-size: 2.95rem;
+        block-size: 2.95rem;
     }
 
     .iconCircle :global(svg) {
-        inline-size: 1.1rem;
-        block-size: 1.1rem;
+        inline-size: 1.08rem;
+        block-size: 1.08rem;
     }
 
     .body {
-        gap: 0.64rem;
-        padding: 0.15rem 0.95rem 0.95rem;
+        gap: 0.62rem;
+        padding: 0.78rem 0.92rem 0.95rem;
     }
 
     .description {
-        font-size: 0.92rem;
+        font-size: 0.9rem;
+    }
+
+    .headerFutureGoals {
+        min-block-size: 6.35rem;
+        padding: 0.7rem 0.84rem 0.38rem;
+    }
+
+    .bodyFutureGoals {
+        gap: 0.66rem;
+        padding: 0.82rem 0.95rem 0.98rem;
+    }
+
+    .titleFutureGoals {
+        font-size: 1rem;
+    }
+
+    .descriptionFutureGoals {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .header {
+        min-block-size: 5.95rem;
+    }
+
+    .eyebrow {
+        font-size: 0.58rem;
+    }
+
+    .step {
+        min-inline-size: 1.68rem;
+        min-block-size: 1.68rem;
+        font-size: 0.66rem;
+    }
+
+    .title {
+        font-size: 0.98rem;
+    }
+
+    .description {
+        font-size: 0.88rem;
+        line-height: 1.36;
+    }
+
+    .headerFutureGoals {
+        min-block-size: 6.1rem;
+    }
+
+    .titleFutureGoals {
+        font-size: 0.96rem;
+    }
+
+    .descriptionFutureGoals {
+        font-size: 0.86rem;
+        line-height: 1.34;
     }
 }

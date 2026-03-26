@@ -5,13 +5,17 @@ export default function HowToParticipateClosingQuote() {
   const section =
     hotelBrand?.pages?.sustainability?.sections?.howToParticipate ?? null;
 
-  const quote = section?.closingQuote?.text ?? null;
+  const quoteBlock = section?.closingQuote ?? null;
+  const quoteText = quoteBlock?.text ?? null;
+  const eyebrow = quoteBlock?.eyebrow ?? null;
 
-  if (!quote) return null;
+  if (!quoteText) return null;
 
   return (
     <div className={styles.quoteBlock}>
-      <p className={styles.quote}>“{quote.replace(/^["“]|["”]$/g, "")}”</p>
+      {eyebrow ? <span className={styles.eyebrow}>{eyebrow}</span> : null}
+
+      <p className={styles.quote}>“{quoteText.replace(/^["“]|["”]$/g, "")}”</p>
     </div>
   );
 }

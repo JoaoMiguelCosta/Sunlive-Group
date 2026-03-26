@@ -14,13 +14,14 @@ export default function FutureGoalsCards() {
     : [];
 
   const items = useMemo(() => {
-    return rawItems.map((item) => {
+    return rawItems.map((item, index) => {
       const IconComponent = item?.iconKey
         ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
         : null;
 
       return {
         ...item,
+        step: item?.step ?? String(index + 1).padStart(2, "0"),
         resolvedIcon: IconComponent ? <IconComponent /> : null,
       };
     });
@@ -28,7 +29,7 @@ export default function FutureGoalsCards() {
 
   if (!items.length) return null;
 
-  const desktopColumns = Math.min(items.length, 4);
+  const desktopColumns = Math.min(items.length, 3);
 
   return (
     <div
@@ -44,6 +45,9 @@ export default function FutureGoalsCards() {
             description={item.description}
             icon={item.resolvedIcon}
             ariaLabel={item.title}
+            eyebrow={item.eyebrow}
+            step={item.step}
+            variant="futureGoals"
             className={styles.card}
           />
         </div>

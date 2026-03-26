@@ -10,5 +10,13 @@ export default function EnvironmentalImpactStats() {
 
   if (!items.length) return null;
 
-  return <HotelStatsGrid items={items} className={styles.grid} />;
+  return (
+    <HotelStatsGrid
+      items={items}
+      className={styles.grid}
+      itemClassName={styles.card}
+      ariaLabel="Indicadores de impacto ambiental"
+      variant="compactBalanced"
+    />
+  );
 }

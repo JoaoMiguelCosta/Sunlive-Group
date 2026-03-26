@@ -27,11 +27,17 @@ export default function SustainabilityPracticeCard({
   topIcon = null,
   features = [],
   metricText,
+  featured = false,
+  media = null,
   className = "",
 }) {
-  const classNames = [styles.card, className].filter(Boolean).join(" ");
+  const classNames = [styles.card, featured ? styles.featured : "", className]
+    .filter(Boolean)
+    .join(" ");
 
   if (!title) return null;
+
+  const hasMedia = Boolean(media?.imageSrc);
 
   return (
     <article className={classNames} aria-label={title}>
@@ -46,32 +52,66 @@ export default function SustainabilityPracticeCard({
         </div>
       </header>
 
-      {description ? (
-        <div className={styles.descriptionBlock}>
-          <p className={styles.description}>{description}</p>
-        </div>
-      ) : null}
+      <div
+        className={[
+          styles.content,
+          featured ? styles.featuredContent : "",
+          hasMedia ? styles.hasMedia : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        <div className={styles.contentMain}>
+          {description ? (
+            <div className={styles.descriptionBlock}>
+              <p className={styles.description}>{description}</p>
+            </div>
+          ) : null}
 
-      {features.length > 0 ? (
-        <ul className={styles.featuresList}>
-          {features.map((feature) => (
-            <FeatureItem
-              key={feature.id}
-              title={feature.title}
-              description={feature.description}
-            />
-          ))}
-        </ul>
-      ) : null}
+          {features.length > 0 ? (
+            <ul className={styles.featuresList}>
+              {features.map((feature) => (
+                <FeatureItem
+                  key={feature.id}
+                  title={feature.title}
+                  description={feature.description}
+                />
+              ))}
+            </ul>
+          ) : null}
 
-      {metricText ? (
-        <div className={styles.metric}>
-          <span className={styles.check} aria-hidden="true">
-            ✓
-          </span>
-          <span className={styles.metricText}>{metricText}</span>
+          {metricText ? (
+            <div className={styles.metric}>
+              <span className={styles.check} aria-hidden="true">
+                ✓
+              </span>
+              <span className={styles.metricText}>{metricText}</span>
+            </div>
+          ) : null}
         </div>
-      ) : null}
+
+        {featured && hasMedia ? (
+          <div className={styles.mediaColumn}>
+            <div className={styles.mediaFrame}>
+              <img
+                src={media.imageSrc}
+                alt={media.imageAlt ?? ""}
+                className={styles.mediaImage}
+              />
+
+              <div className={styles.mediaOverlay} aria-hidden="true" />
+
+              {media.eyebrow ? (
+                <span className={styles.mediaEyebrow}>{media.eyebrow}</span>
+              ) : null}
+
+              {media.caption ? (
+                <p className={styles.mediaCaption}>{media.caption}</p>
+              ) : null}
+            </div>
+          </div>
+        ) : null}
+      </div>
     </article>
   );
 }

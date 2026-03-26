@@ -12,13 +12,14 @@ export default function HowToParticipateCards() {
   const rawItems = section?.participationCards?.items ?? [];
 
   const items = useMemo(() => {
-    return rawItems.map((item) => {
+    return rawItems.map((item, index) => {
       const IconComponent = item?.iconKey
         ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
         : null;
 
       return {
         ...item,
+        step: String(index + 1).padStart(2, "0"),
         resolvedIcon: IconComponent ? <IconComponent /> : null,
       };
     });
@@ -29,13 +30,17 @@ export default function HowToParticipateCards() {
   return (
     <div className={styles.grid} aria-label="Formas de participar">
       {items.map((item) => (
-        <SustainabilityActionCard
-          key={item.id}
-          title={item.title}
-          description={item.description}
-          icon={item.resolvedIcon}
-          ariaLabel={item.title}
-        />
+        <div key={item.id} className={styles.item}>
+          <SustainabilityActionCard
+            title={item.title}
+            description={item.description}
+            icon={item.resolvedIcon}
+            ariaLabel={item.title}
+            eyebrow={item.eyebrow}
+            step={item.step}
+            className={styles.card}
+          />
+        </div>
       ))}
     </div>
   );

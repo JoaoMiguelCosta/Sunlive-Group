@@ -24,10 +24,20 @@ export default function SustainabilityCommitmentSection() {
       aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <SustainabilityTitle titleId={titleId} />
-        <SustainabilityDescription />
-        <SustainabilityHighlightBanner />
-        <SustainabilityPracticesGrid />
+        <div className={styles.headingStack}>
+          <SustainabilityTitle titleId={titleId} />
+          <div className={styles.descriptionWrap}>
+            <SustainabilityDescription />
+          </div>
+        </div>
+
+        <div className={styles.bannerWrap}>
+          <SustainabilityHighlightBanner />
+        </div>
+
+        <div className={styles.gridWrap}>
+          <SustainabilityPracticesGrid />
+        </div>
       </div>
     </section>
   );
