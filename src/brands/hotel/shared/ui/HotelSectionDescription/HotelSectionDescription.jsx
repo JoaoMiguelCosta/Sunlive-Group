@@ -25,7 +25,9 @@ export default function HotelSectionDescription({
 
   return (
     <div className={classNames}>
-      <Tag className={styles.text}>{children}</Tag>
+      <div className={styles.inner}>
+        <Tag className={styles.text}>{children}</Tag>
+      </div>
     </div>
   );
 }

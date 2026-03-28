@@ -480,7 +480,7 @@
     }
 
     .panelTitle {
-        max-inline-size: 14ch;
+        max-inline-size: 23ch;
         font-size: clamp(1.14rem, 0.44vw + 1rem, 1.46rem);
     }
 

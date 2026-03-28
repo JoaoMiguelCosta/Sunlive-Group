@@ -33,14 +33,16 @@ export default function SustainabilityHighlightBanner() {
   if (!resolvedBanner?.title && !resolvedBanner?.description) return null;
 
   return (
-    <HotelHighlightBanner
-      title={resolvedBanner.title}
-      description={resolvedBanner.description}
-      variant={resolvedBanner.variant ?? "centered"}
-      iconsEnabled={resolvedBanner.iconsEnabled ?? false}
-      leftIcon={resolvedBanner.leftIcon}
-      rightIcon={resolvedBanner.rightIcon}
-      className={styles.banner}
-    />
+    <div className={styles.wrapper}>
+      <HotelHighlightBanner
+        title={resolvedBanner.title}
+        description={resolvedBanner.description}
+        variant={resolvedBanner.variant ?? "centered"}
+        iconsEnabled={resolvedBanner.iconsEnabled ?? false}
+        leftIcon={resolvedBanner.leftIcon}
+        rightIcon={resolvedBanner.rightIcon}
+        className={styles.banner}
+      />
+    </div>
   );
 }

@@ -14,58 +14,74 @@ export default function CustomizedQuotesActions() {
   const actions =
     hotelBrand?.pages?.events?.sections?.customizedQuotes?.actions ?? [];
 
-  if (!includedInQuote && !quoteCallout && !actions.length) return null;
+  const includedItems = Array.isArray(includedInQuote?.items)
+    ? includedInQuote.items
+    : [];
+
+  const hasIncluded = Boolean(includedInQuote?.title || includedItems.length);
+  const hasCallout = Boolean(quoteCallout?.text);
+  const hasActions = actions.length > 0;
+
+  if (!hasIncluded && !hasCallout && !hasActions) return null;
 
   return (
     <div className={styles.block}>
-      {includedInQuote ? (
-        <section
+      {hasIncluded ? (
+        <div
           className={styles.includesPanel}
-          aria-label={includedInQuote.title || "O que incluímos no orçamento"}
+          aria-label={includedInQuote?.title || "O que incluímos no orçamento"}
         >
-          {includedInQuote.title ? (
-            <h3 className={styles.includesTitle}>{includedInQuote.title}</h3>
+          {includedInQuote?.title ? (
+            <div className={styles.includesHeader}>
+              <h3 className={styles.includesTitle}>{includedInQuote.title}</h3>
+            </div>
           ) : null}
 
-          {includedInQuote.items?.length ? (
-            <div className={styles.includesGrid}>
-              {includedInQuote.items.map((item) => (
-                <div key={item.id} className={styles.includeItem}>
-                  <span className={styles.check} aria-hidden="true">
-                    ✓
-                  </span>
+          {includedItems.length ? (
+            <div className={styles.includesBody}>
+              <div className={styles.includesGrid}>
+                {includedItems.map((item) => (
+                  <div key={item.id} className={styles.includeItem}>
+                    <span className={styles.check} aria-hidden="true">
+                      ✓
+                    </span>
 
-                  <span className={styles.includeLabel}>{item.label}</span>
-                </div>
+                    <span className={styles.includeLabel}>{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      {(hasCallout || hasActions) && (
+        <div className={styles.bottomPanel}>
+          {hasCallout ? (
+            <div className={styles.callout}>
+              <p className={styles.calloutText}>{quoteCallout.text}</p>
+            </div>
+          ) : null}
+
+          {hasActions ? (
+            <div className={styles.actions}>
+              {actions.map((action) => (
+                <CTAButton
+                  key={action.id}
+                  href={action.href}
+                  label={action.label}
+                  ariaLabel={action.ariaLabel || action.label}
+                  icon={action.icon?.key === "phone" ? "phone" : undefined}
+                  variant="hotel"
+                  tone="strong"
+                  blink={false}
+                  className={styles.ctaButton}
+                />
               ))}
             </div>
           ) : null}
-        </section>
-      ) : null}
-
-      {quoteCallout?.text ? (
-        <div className={styles.callout}>
-          <p className={styles.calloutText}>{quoteCallout.text}</p>
         </div>
-      ) : null}
-
-      {actions.length ? (
-        <div className={styles.actions}>
-          {actions.map((action) => (
-            <CTAButton
-              key={action.id}
-              href={action.href}
-              label={action.label}
-              ariaLabel={action.ariaLabel || action.label}
-              icon={action.icon?.key === "phone" ? "phone" : undefined}
-              variant="hotel"
-              tone="strong"
-              blink={false}
-              className={styles.ctaButton}
-            />
-          ))}
-        </div>
-      ) : null}
+      )}
     </div>
   );
 }

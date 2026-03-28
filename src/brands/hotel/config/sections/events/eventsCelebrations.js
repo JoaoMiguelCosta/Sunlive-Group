@@ -4,8 +4,14 @@ const eventsCelebrations = {
   description:
     "Momentos especiais merecem um cenário único. A Estalagem de Sangalhos é o local ideal para celebrar os seus eventos mais importantes.",
 
+  backgroundMedia: {
+    imageSrc: null,
+    imageAlt: "Ambiente elegante para eventos na Estalagem",
+  },
+
   customizedBanner: {
     id: "customized-events-banner",
+    eyebrow: "Experiências à medida",
     title: "Eventos Personalizados",
     description:
       "Desde casamentos intimistas a eventos corporativos, criamos experiências únicas adaptadas às suas necessidades.",
@@ -30,7 +36,7 @@ const eventsCelebrations = {
       {
         id: "weddings",
         key: "weddings",
-        defaultOpen: false,
+        defaultOpen: true,
         title: "Casamentos",
         subtitle: "Celebrações com charme e intimidade",
         description:
@@ -136,7 +142,7 @@ const eventsCelebrations = {
         title: "Passagens de Ano",
         subtitle: "Celebre com qualidade e boa energia",
         description:
-          "Programas especiais de Fim de Ano com festa incluída - uma forma tranquila de celebrar com qualidade e boa energia.",
+          "Programas especiais de Fim de Ano com festa incluída, uma forma tranquila de celebrar com qualidade e boa energia.",
         ctaLabel: "Ver Detalhes",
         href: "/sunlive-group/hotel/information#info-contacts",
         iconKey: "calendar",

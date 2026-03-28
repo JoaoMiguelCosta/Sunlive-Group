@@ -36,6 +36,7 @@ export default function CustomizedQuotesDetails() {
           description={card.description}
           icon={card.resolvedIcon}
           ariaLabel={card.ariaLabel ?? card.title}
+          className={styles.detailCard}
         />
       ))}
     </div>

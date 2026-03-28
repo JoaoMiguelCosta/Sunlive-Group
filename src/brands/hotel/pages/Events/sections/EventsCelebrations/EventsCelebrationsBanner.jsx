@@ -39,9 +39,11 @@ export default function EventsCelebrationsBanner() {
   return (
     <div className={styles.wrapper}>
       <HotelHighlightBanner
+        eyebrow={resolvedBanner.eyebrow}
         title={resolvedBanner.title}
         description={resolvedBanner.description}
         variant="centered"
+        theme="sectionFeatured"
         leftIcon={resolvedBanner.icons?.left ?? null}
         rightIcon={resolvedBanner.icons?.right ?? null}
         iconsEnabled={resolvedBanner.icons?.enabled ?? false}

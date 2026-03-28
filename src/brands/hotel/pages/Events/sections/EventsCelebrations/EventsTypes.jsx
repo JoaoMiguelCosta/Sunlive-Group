@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
@@ -10,8 +10,8 @@ import styles from "./EventsTypes.module.css";
 
 const getColumnsFromViewport = () => {
   if (typeof window === "undefined") return 4;
-  if (window.innerWidth <= 700) return 1;
-  if (window.innerWidth <= 1100) return 2;
+  if (window.innerWidth <= 760) return 1;
+  if (window.innerWidth <= 1180) return 2;
   return 4;
 };
 
@@ -53,6 +53,8 @@ export default function EventsTypes() {
 
       return {
         ...item,
+        panelId: `${eventTypes?.id ?? "events-types"}-${item.key}-panel`,
+        triggerId: `${eventTypes?.id ?? "events-types"}-${item.key}-trigger`,
         ResolvedIcon: CardIcon ?? null,
         offerPanel: item?.offerPanel
           ? {
@@ -73,7 +75,7 @@ export default function EventsTypes() {
           : null,
       };
     });
-  }, [items]);
+  }, [eventTypes?.id, items]);
 
   const { isOpen, toggle } = useAccordion(accordionItems, {
     allowMultiple: false,
@@ -108,20 +110,30 @@ export default function EventsTypes() {
             activeItem?.offerPanel && panelRowEndIndex === index;
 
           return (
-            <div key={item.id} className={styles.cardCell}>
-              <HotelProfileCard
-                title={item.title}
-                subtitle={item.subtitle}
-                description={item.description}
-                ctaLabel={item.ctaLabel ?? "Ver Detalhes"}
-                onClick={() => toggle(item.key)}
-                detailsOpen={open}
-                Icon={item.ResolvedIcon}
-                className={open ? styles.cardActive : ""}
-              />
+            <Fragment key={item.id}>
+              <div className={styles.cardCell}>
+                <HotelProfileCard
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  description={item.description}
+                  ctaLabel={item.ctaLabel ?? "Ver Detalhes"}
+                  onClick={() => toggle(item.key)}
+                  detailsOpen={open}
+                  controlsId={item.panelId}
+                  buttonId={item.triggerId}
+                  Icon={item.ResolvedIcon}
+                  theme="events"
+                  className={open ? styles.cardActive : ""}
+                />
+              </div>
 
               {shouldRenderPanelHere ? (
-                <div className={styles.offerPanelWrap}>
+                <div
+                  id={activeItem.panelId}
+                  className={styles.offerPanelWrap}
+                  role="region"
+                  aria-labelledby={activeItem.triggerId}
+                >
                   <HotelOfferPanel
                     title={activeItem.offerPanel.title}
                     items={activeItem.offerPanel.items}
@@ -132,7 +144,7 @@ export default function EventsTypes() {
                   />
                 </div>
               ) : null}
-            </div>
+            </Fragment>
           );
         })}
       </div>

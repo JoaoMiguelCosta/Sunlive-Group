@@ -32,15 +32,28 @@ export default function HotelOfferPanel({
 
   const hasItems = Array.isArray(items) && items.length > 0;
   const hasHighlights = Array.isArray(highlights) && highlights.length > 0;
+  const hasSideColumn = Boolean(highlightsTitle || hasHighlights || ctaLabel);
 
   return (
     <div className={wrapClass} role="region" aria-label={title || "Oferta"}>
-      {title ? <h3 className={styles.hTitle}>{title}</h3> : null}
+      {title ? (
+        <div className={styles.panelHeader}>
+          <h3 className={styles.hTitle}>{title}</h3>
+        </div>
+      ) : null}
 
-      <div className={styles.contentGrid}>
+      <div
+        className={[
+          styles.contentGrid,
+          !hasItems ? styles.contentGridOnlySide : "",
+          !hasSideColumn ? styles.contentGridOnlyMain : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
         {hasItems ? (
           <div className={styles.mainColumn}>
-            <div className={styles.box}>
+            <div className={styles.mainInner}>
               <ul className={styles.items}>
                 {items.map((item) => (
                   <li key={item.id} className={styles.item}>
@@ -51,7 +64,9 @@ export default function HotelOfferPanel({
                     ) : null}
 
                     <div className={styles.itemText}>
-                      <div className={styles.itemTitle}>{item.title}</div>
+                      {item.title ? (
+                        <div className={styles.itemTitle}>{item.title}</div>
+                      ) : null}
 
                       {item.description ? (
                         <div className={styles.itemDesc}>
@@ -66,14 +81,16 @@ export default function HotelOfferPanel({
           </div>
         ) : null}
 
-        {highlightsTitle || hasHighlights || ctaLabel ? (
+        {hasSideColumn ? (
           <aside className={styles.sideColumn}>
             {highlightsTitle ? (
-              <h4 className={styles.hSubTitle}>{highlightsTitle}</h4>
+              <div className={styles.sideHeader}>
+                <h4 className={styles.hSubTitle}>{highlightsTitle}</h4>
+              </div>
             ) : null}
 
             {hasHighlights ? (
-              <div className={styles.box}>
+              <div className={styles.sideBody}>
                 <ul className={styles.highlights}>
                   {highlights.map((highlight) => (
                     <li key={highlight.id} className={styles.highlightItem}>

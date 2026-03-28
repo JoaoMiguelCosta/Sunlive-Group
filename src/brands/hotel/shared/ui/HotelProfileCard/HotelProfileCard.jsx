@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import styles from "./HotelProfileCard.module.css";
 
+function resolveThemeClass(theme) {
+  if (!theme) return "";
+
+  const normalizedTheme =
+    theme.charAt(0).toUpperCase() + theme.slice(1).toLowerCase();
+
+  return styles[`theme${normalizedTheme}`] ?? "";
+}
+
 /**
  * HotelProfileCard
  *
@@ -12,7 +21,10 @@ import styles from "./HotelProfileCard.module.css";
  * - href?: string
  * - onClick?: () => void
  * - detailsOpen?: boolean
+ * - controlsId?: string
+ * - buttonId?: string
  * - Icon?: React.ComponentType<{ className?: string }>
+ * - theme?: "default" | "events"
  * - className?: string
  */
 export default function HotelProfileCard({
@@ -23,7 +35,10 @@ export default function HotelProfileCard({
   href,
   onClick,
   detailsOpen = false,
+  controlsId,
+  buttonId,
   Icon,
+  theme = "default",
   className = "",
 }) {
   const isLink = Boolean(href);
@@ -32,15 +47,22 @@ export default function HotelProfileCard({
   const cardProps = isLink
     ? { to: href }
     : {
+        id: buttonId,
         type: "button",
         onClick,
         disabled: !onClick,
         "aria-expanded": detailsOpen,
+        "aria-controls": controlsId,
       };
 
   return (
     <article
-      className={[styles.card, detailsOpen ? styles.cardOpen : "", className]
+      className={[
+        styles.card,
+        resolveThemeClass(theme),
+        detailsOpen ? styles.cardOpen : "",
+        className,
+      ]
         .filter(Boolean)
         .join(" ")}
     >

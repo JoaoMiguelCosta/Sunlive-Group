@@ -1,3 +1,5 @@
+import hotelBrand from "../../../../config/index.js";
+
 import TitleEventsCelebrations from "./TitleEventsCelebrations.jsx";
 import DescriptionEventsCelebrations from "./DescriptionEventsCelebrations.jsx";
 import EventsCelebrationsBanner from "./EventsCelebrationsBanner.jsx";
@@ -6,19 +8,39 @@ import EventsTypes from "./EventsTypes.jsx";
 import styles from "./EventsCelebrations.module.css";
 
 export default function EventsCelebrationsSection() {
+  const section =
+    hotelBrand?.pages?.events?.sections?.eventsCelebrations ?? null;
+
+  const sectionId = section?.id ?? "events-celebrations";
+  const titleId = `${sectionId}-title`;
+
+  const backgroundImageSrc = section?.backgroundMedia?.imageSrc ?? null;
+  const backgroundImageAlt = section?.backgroundMedia?.imageAlt ?? "";
+
   return (
     <section
-      id="events-types"
+      id={sectionId}
       className={styles.section}
-      aria-labelledby="events-celebrations-title"
+      aria-labelledby={titleId}
     >
+      {backgroundImageSrc ? (
+        <div className={styles.mediaLayer} aria-hidden="true">
+          <img
+            src={backgroundImageSrc}
+            alt={backgroundImageAlt}
+            className={styles.backgroundImage}
+          />
+        </div>
+      ) : null}
+
+      <div className={styles.ambientGlow} aria-hidden="true" />
+
       <div className={styles.inner}>
         <div className={styles.introBlock}>
-          <TitleEventsCelebrations titleId="events-celebrations-title" />
+          <TitleEventsCelebrations titleId={titleId} />
 
-          <div className={styles.descriptionWrap}>
             <DescriptionEventsCelebrations />
-          </div>
+         
         </div>
 
         <div className={styles.contentStack}>

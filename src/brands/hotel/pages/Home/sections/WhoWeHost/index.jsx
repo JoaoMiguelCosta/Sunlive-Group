@@ -1,6 +1,7 @@
 import styles from "./WhoWeHost.module.css";
 
 import hotelBrand from "../../../../config/index.js";
+import WhoWeHostHeader from "./WhoWeHostHeader.jsx";
 import WhoWeHostCards from "./WhoWeHostCards.jsx";
 
 export default function WhoWeHostSection() {
@@ -27,64 +28,66 @@ export default function WhoWeHostSection() {
       aria-labelledby={titleId}
       aria-describedby={headerDescription ? descriptionId : undefined}
     >
-      {backgroundImageSrc ? (
-        <div className={styles.mediaLayer} aria-hidden="true">
-          <img
-            src={backgroundImageSrc}
-            alt={backgroundImageAlt}
-            className={styles.backgroundImage}
-          />
-        </div>
-      ) : null}
+      <div className={styles.shell}>
+        <WhoWeHostHeader label={headerLabel} titleId={titleId} />
 
-      <div className={styles.overlayLayer} aria-hidden="true" />
-      <div className={styles.frameGlow} aria-hidden="true" />
-
-      <div className={styles.inner}>
-        <header className={styles.sectionHeader}>
-          {headerLabel ? (
-            <p className={styles.sectionLabel}>{headerLabel}</p>
+        <div className={styles.visualBlock}>
+          {backgroundImageSrc ? (
+            <div className={styles.mediaLayer} aria-hidden="true">
+              <img
+                src={backgroundImageSrc}
+                alt={backgroundImageAlt}
+                className={styles.backgroundImage}
+              />
+            </div>
           ) : null}
 
-          {headerTitle ? (
-            <h2 id={titleId} className={styles.sectionTitle}>
-              {headerTitle}
-            </h2>
-          ) : null}
+          <div className={styles.overlayLayer} aria-hidden="true" />
+          <div className={styles.frameGlow} aria-hidden="true" />
 
-          {headerDescription ? (
-            <p id={descriptionId} className={styles.sectionDescription}>
-              {headerDescription}
-            </p>
-          ) : null}
-        </header>
-
-        <div className={styles.contentGrid}>
-          {introPanel ? (
-            <aside className={styles.introPanel}>
-              {introPanel.eyebrow ? (
-                <p className={styles.introEyebrow}>{introPanel.eyebrow}</p>
+          <div className={styles.inner}>
+            <header className={styles.sectionHeader}>
+              {headerTitle ? (
+                <h3 id={titleId} className={styles.sectionTitle}>
+                  {headerTitle}
+                </h3>
               ) : null}
 
-              {introPanel.title ? (
-                <h3 className={styles.introTitle}>{introPanel.title}</h3>
-              ) : null}
-
-              {introPanel.description ? (
-                <p className={styles.introDescription}>
-                  {introPanel.description}
+              {headerDescription ? (
+                <p id={descriptionId} className={styles.sectionDescription}>
+                  {headerDescription}
                 </p>
               ) : null}
+            </header>
 
-              {introPanel.highlight ? (
-                <div className={styles.introHighlight}>
-                  <p>{introPanel.highlight}</p>
-                </div>
+            <div className={styles.contentGrid}>
+              {introPanel ? (
+                <aside className={styles.introPanel}>
+                  {introPanel.eyebrow ? (
+                    <p className={styles.introEyebrow}>{introPanel.eyebrow}</p>
+                  ) : null}
+
+                  {introPanel.title ? (
+                    <h4 className={styles.introTitle}>{introPanel.title}</h4>
+                  ) : null}
+
+                  {introPanel.description ? (
+                    <p className={styles.introDescription}>
+                      {introPanel.description}
+                    </p>
+                  ) : null}
+
+                  {introPanel.highlight ? (
+                    <div className={styles.introHighlight}>
+                      <p>{introPanel.highlight}</p>
+                    </div>
+                  ) : null}
+                </aside>
               ) : null}
-            </aside>
-          ) : null}
 
-          <WhoWeHostCards items={section.items ?? []} />
+              <WhoWeHostCards items={section.items ?? []} />
+            </div>
+          </div>
         </div>
       </div>
     </section>

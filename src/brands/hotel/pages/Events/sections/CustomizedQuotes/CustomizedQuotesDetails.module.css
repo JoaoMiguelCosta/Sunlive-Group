@@ -1,13 +1,33 @@
 .grid {
+    inline-size: min(100%, 1360px);
+    margin-inline: auto;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: clamp(0.95rem, 1.8vw, 1.35rem);
     align-items: stretch;
-    width: 100%;
 }
 
 .grid>* {
     min-width: 0;
+}
+
+.detailCard {
+    position: relative;
+}
+
+.detailCard::after {
+    content: "";
+    position: absolute;
+    inset: auto 10% -0.7rem 10%;
+    block-size: 1.35rem;
+    pointer-events: none;
+    background:
+        radial-gradient(circle,
+            rgba(230, 200, 147, 0.18) 0%,
+            rgba(230, 200, 147, 0.06) 42%,
+            rgba(230, 200, 147, 0) 78%);
+    filter: blur(12px);
+    opacity: 0.92;
 }
 
 @media (max-width: 1200px) {

@@ -2,6 +2,18 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
+}
+.shell {
+    inline-size: min(100%, 1360px);
+    margin-inline: auto;
+    display: grid;
+    gap: clamp(1rem, 1.9vw, 1.45rem);
+}
+
+.visualBlock {
+    position: relative;
+    isolation: isolate;
+    inline-size: 100%;
     overflow: hidden;
     border-radius: clamp(1.35rem, 2vw, 2rem);
     background:
@@ -69,7 +81,7 @@
     opacity: 0.9;
 }
 
-.section::after {
+.visualBlock::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -87,45 +99,22 @@
     inline-size: min(100%, 1360px);
     margin-inline: auto;
     padding:
-        clamp(0.78rem, 1.2vw, 1.12rem) clamp(0.82rem, 1.35vw, 1.08rem) clamp(0.72rem, 1.05vw, 0.9rem);
+        clamp(0.9rem, 1.35vw, 1.2rem) clamp(0.88rem, 1.45vw, 1.12rem) clamp(0.78rem, 1.1vw, 0.94rem);
     box-sizing: border-box;
     display: grid;
-    gap: clamp(0.72rem, 1vw, 0.88rem);
+    gap: clamp(0.82rem, 1.1vw, 0.96rem);
 }
 
 .sectionHeader {
     display: grid;
     justify-items: center;
-    gap: clamp(0.28rem, 0.45vw, 0.42rem);
+    gap: clamp(0.34rem, 0.5vw, 0.46rem);
     text-align: center;
-}
-
-.sectionLabel {
-    margin: 0;
-    font-size: clamp(0.72rem, 0.08vw + 0.71rem, 0.82rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255, 247, 233, 0.96);
-}
-
-.sectionLabel::after {
-    content: "";
-    display: block;
-    inline-size: clamp(3.2rem, 5vw, 4.4rem);
-    block-size: 1px;
-    margin: 0.42rem auto 0;
-    background: linear-gradient(90deg,
-            transparent 0%,
-            rgba(241, 205, 132, 0.92) 50%,
-            transparent 100%);
-    opacity: 0.92;
 }
 
 .sectionTitle {
     margin: 0;
-   
+    max-inline-size: 28ch;
     font-size: clamp(1.18rem, 0.95vw + 0.86rem, 1.84rem);
     font-weight: 800;
     line-height: 1.01;
@@ -283,13 +272,14 @@
                 rgba(12, 7, 4, 0.24) 78%,
                 rgba(12, 7, 4, 0.5) 100%);
     }
-         .introTitle {
-             max-inline-size: 42ch;
-         }
+
+    .introTitle {
+        max-inline-size: 42ch;
+    }
 }
 
 @media (max-width: 768px) {
-    .section {
+    .visualBlock {
         border-radius: 1.2rem;
     }
 
@@ -330,7 +320,7 @@
 }
 
 @media (max-width: 640px) {
-    .section {
+    .visualBlock {
         border-radius: 1.05rem;
     }
 
@@ -344,7 +334,7 @@
     }
 
     .sectionTitle {
-        max-inline-size: 14ch;
+        max-inline-size: 24ch;
     }
 
     .sectionDescription {
@@ -383,13 +373,11 @@
         padding: 0.78rem 0.58rem 0.58rem;
     }
 
-    .sectionLabel {
-        font-size: 0.8rem;
-        letter-spacing: 0.18em;
-    }
-
     .sectionTitle {
         font-size: clamp(1.22rem, 7vw, 1.5rem);
+          
+                    max-inline-size: 25ch;
+           
     }
 
     .sectionDescription {
