@@ -4,11 +4,21 @@ export const testimonials = {
   description:
     "Ao longo dos anos, temos acolhido atletas, famílias, casais, empresas e grupos com um serviço centrado na confiança, atenção ao detalhe e conforto.",
 
+  backgroundMedia: {
+    imageSrc: null,
+    imageAlt: "",
+  },
+
   averageRating: {
     id: "info-testimonials-average-rating",
     ratingValue: "4.9/5",
     ratingLabel: "Classificação Média",
     supportingText: "Baseado em mais de 200 avaliações verificadas",
+    trustItems: [
+      { id: "athletes", label: "Atletas e equipas" },
+      { id: "families", label: "Famílias e casais" },
+      { id: "groups", label: "Empresas e grupos" },
+    ],
 
     stars: {
       total: 5,
@@ -22,7 +32,20 @@ export const testimonials = {
   spotlight: {
     id: "info-testimonials-spotlight",
     autoplayMs: 4500,
-    cardsPerSlide: 3,
+
+    cardsPerView: {
+      desktop: 3,
+      tablet: 2,
+      mobile: 1,
+    },
+
+    labels: {
+      stageEyebrow: "Prova social",
+      stageTitle: "Experiências reais, serviço consistente",
+      stageDescription:
+        "Uma seleção de testemunhos representativos de diferentes perfis e contextos de estadia.",
+      verifiedLabel: "Avaliação verificada",
+    },
 
     navigation: {
       previousIcon: null,
@@ -51,6 +74,8 @@ export const testimonials = {
         quote:
           "Excelente acolhimento para a nossa equipa de ginástica. Alimentação equilibrada, staff disponível e logística impecável.",
         dateLabel: "Março 2024",
+        imageSrc: null,
+        imageAlt: "",
       },
       {
         id: "testimonial-federacao-ginastica-2",
@@ -61,6 +86,8 @@ export const testimonials = {
         quote:
           "Instalações muito bem preparadas para estágios desportivos. Equipa sempre disponível e ambiente muito profissional.",
         dateLabel: "Abril 2024",
+        imageSrc: null,
+        imageAlt: "",
       },
       {
         id: "testimonial-federacao-ginastica-3",
@@ -71,6 +98,8 @@ export const testimonials = {
         quote:
           "A logística foi exemplar do início ao fim. A alimentação e o conforto durante a estadia estiveram num nível muito alto.",
         dateLabel: "Maio 2024",
+        imageSrc: null,
+        imageAlt: "",
       },
       {
         id: "testimonial-federacao-ginastica-4",
@@ -81,6 +110,8 @@ export const testimonials = {
         quote:
           "Espaço muito bem enquadrado, staff simpático e resposta rápida a todas as necessidades do grupo.",
         dateLabel: "Junho 2024",
+        imageSrc: null,
+        imageAlt: "",
       },
       {
         id: "testimonial-federacao-ginastica-5",
@@ -91,6 +122,8 @@ export const testimonials = {
         quote:
           "Encontrámos o equilíbrio certo entre descanso, organização e apoio diário. Experiência muito positiva para toda a equipa.",
         dateLabel: "Julho 2024",
+        imageSrc: null,
+        imageAlt: "",
       },
       {
         id: "testimonial-federacao-ginastica-6",
@@ -101,6 +134,8 @@ export const testimonials = {
         quote:
           "Excelente capacidade de adaptação a grupos grandes. O acompanhamento foi consistente e muito competente.",
         dateLabel: "Agosto 2024",
+        imageSrc: null,
+        imageAlt: "",
       },
       {
         id: "testimonial-federacao-ginastica-7",
@@ -111,6 +146,8 @@ export const testimonials = {
         quote:
           "Boa qualidade de alojamento, refeições adequadas ao contexto competitivo e ótimo suporte operacional.",
         dateLabel: "Setembro 2024",
+        imageSrc: null,
+        imageAlt: "",
       },
       {
         id: "testimonial-federacao-ginastica-8",
@@ -121,6 +158,8 @@ export const testimonials = {
         quote:
           "A equipa demonstrou atenção ao detalhe e grande profissionalismo. Foi uma base muito sólida para o nosso estágio.",
         dateLabel: "Outubro 2024",
+        imageSrc: null,
+        imageAlt: "",
       },
       {
         id: "testimonial-federacao-ginastica-9",
@@ -131,6 +170,8 @@ export const testimonials = {
         quote:
           "Condições muito consistentes, comunicação clara e excelente apoio durante toda a permanência do grupo.",
         dateLabel: "Novembro 2024",
+        imageSrc: null,
+        imageAlt: "",
       },
     ],
   },

@@ -19,6 +19,15 @@ function RatingStars({ total = 5, filled = 5, icon = null }) {
   );
 }
 
+function getInitials(value = "") {
+  return value
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
 export default function HotelTestimonialSpotlightCard({
   organisation,
   context,
@@ -26,41 +35,65 @@ export default function HotelTestimonialSpotlightCard({
   rating = 5,
   quote,
   dateLabel,
+  imageSrc = null,
+  imageAlt = "",
+  verifiedLabel = "",
   profileIcon = null,
   quoteIcon = null,
   locationIcon = null,
   dateIcon = null,
   starIcon = null,
 }) {
+  const initials = getInitials(organisation);
+  const avatarFallbackContent = profileIcon ?? initials ?? "ES";
+
   return (
     <article className={styles.card}>
       <header className={styles.header}>
-        <div className={styles.iconWrap} aria-hidden="true">
-          <span className={styles.iconCircle}>{profileIcon ?? "◔"}</span>
-        </div>
-
-        <div className={styles.headerContent}>
-          {organisation ? (
-            <h3 className={styles.organisation}>{organisation}</h3>
-          ) : null}
-
-          {context ? <p className={styles.context}>{context}</p> : null}
-
-          {category ? (
-            <div className={styles.categoryRow}>
-              <span className={styles.inlineIcon} aria-hidden="true">
-                {locationIcon ?? "⌖"}
+        <div className={styles.identityBlock}>
+          <div className={styles.avatarWrap} aria-hidden="true">
+            {imageSrc ? (
+              <img
+                src={imageSrc}
+                alt={imageAlt}
+                className={styles.avatarImage}
+              />
+            ) : (
+              <span className={styles.avatarFallback}>
+                {avatarFallbackContent}
               </span>
-              <span className={styles.category}>{category}</span>
-            </div>
-          ) : null}
+            )}
+          </div>
+
+          <div className={styles.headerContent}>
+            {organisation ? (
+              <h3 className={styles.organisation}>{organisation}</h3>
+            ) : null}
+
+            {context ? <p className={styles.context}>{context}</p> : null}
+          </div>
         </div>
+
+        {category ? (
+          <div className={styles.categoryRow}>
+            <span className={styles.inlineIcon} aria-hidden="true">
+              {locationIcon ?? "⌖"}
+            </span>
+            <span className={styles.category}>{category}</span>
+          </div>
+        ) : null}
       </header>
 
       <div className={styles.ratingBand}>
-        <span className={styles.quoteIcon} aria-hidden="true">
-          {quoteIcon ?? "❞"}
-        </span>
+        <div className={styles.verifiedRow}>
+          <span className={styles.quoteIcon} aria-hidden="true">
+            {quoteIcon ?? "❞"}
+          </span>
+
+          {verifiedLabel ? (
+            <span className={styles.verifiedBadge}>{verifiedLabel}</span>
+          ) : null}
+        </div>
 
         <RatingStars total={5} filled={rating} icon={starIcon} />
       </div>

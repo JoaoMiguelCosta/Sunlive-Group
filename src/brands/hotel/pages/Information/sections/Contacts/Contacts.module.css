@@ -2,18 +2,55 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
- 
     overflow: clip;
-    
+  
+}
+
+.mediaLayer,
+.overlayLayer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.mediaLayer {
+    z-index: 0;
+}
+
+.backgroundImage {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(0.92) brightness(0.44) blur(2px);
+    transform: scale(1.04);
+}
+
+.overlayLayer {
+    z-index: 0;
+    background:
+        radial-gradient(60% 52% at 18% 50%, rgba(241, 205, 132, 0.14), transparent 72%),
+        radial-gradient(42% 48% at 78% 24%, rgba(199, 134, 21, 0.12), transparent 72%),
+        linear-gradient(90deg,
+            rgba(18, 11, 6, 0.14) 0%,
+            rgba(18, 11, 6, 0.04) 18%,
+            rgba(18, 11, 6, 0.04) 82%,
+            rgba(18, 11, 6, 0.14) 100%);
+    opacity: 0.94;
 }
 
 .section::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     pointer-events: none;
-
-    opacity: 0.75;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 230, 0.04) 0%,
+            rgba(255, 248, 230, 0.012) 14%,
+            rgba(0, 0, 0, 0.03) 100%);
+    opacity: 0.8;
 }
 
 .inner {
@@ -22,12 +59,12 @@
     inline-size: 100%;
     box-sizing: border-box;
     display: grid;
-    gap: clamp(1.25rem, 2vw, 1.8rem);
+    gap: clamp(1.3rem, 2vw, 1.85rem);
 }
 
 @media (max-width: 768px) {
     .section {
-        padding-block: clamp(2.6rem, 8vw, 3.6rem);
+        padding-block: clamp(2.8rem, 8vw, 4rem);
     }
 
     .inner {

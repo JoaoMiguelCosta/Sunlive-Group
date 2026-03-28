@@ -10,6 +10,10 @@ export default function ContactDetails() {
 
   if (!details) return null;
 
+  const quickAccessPills = Array.isArray(details?.quickAccessPills)
+    ? details.quickAccessPills
+    : [];
+
   const { contactInfo, receptionHours, address, social } = details;
 
   const SocialTitleIcon = social?.iconKey
@@ -18,6 +22,19 @@ export default function ContactDetails() {
 
   return (
     <div className={styles.wrapper}>
+      {quickAccessPills.length ? (
+        <div
+          className={styles.quickAccessRow}
+          aria-label="Destaques de contacto"
+        >
+          {quickAccessPills.map((item) => (
+            <span key={item.id} className={styles.quickAccessPill}>
+              {item.label}
+            </span>
+          ))}
+        </div>
+      ) : null}
+
       <div className={styles.grid}>
         <article
           className={[styles.card, styles.cardContact].join(" ")}
@@ -32,7 +49,9 @@ export default function ContactDetails() {
               ) : null}
 
               <div className={styles.titleGroup}>
-                <span className={styles.eyebrow}>Assistência e reservas</span>
+                {contactInfo?.eyebrow ? (
+                  <span className={styles.eyebrow}>{contactInfo.eyebrow}</span>
+                ) : null}
                 <h3 className={styles.cardTitle}>{contactInfo?.title}</h3>
               </div>
             </div>
@@ -78,7 +97,11 @@ export default function ContactDetails() {
               ) : null}
 
               <div className={styles.titleGroup}>
-                <span className={styles.eyebrow}>Disponibilidade diária</span>
+                {receptionHours?.eyebrow ? (
+                  <span className={styles.eyebrow}>
+                    {receptionHours.eyebrow}
+                  </span>
+                ) : null}
                 <h3 className={styles.cardTitle}>{receptionHours?.title}</h3>
               </div>
             </div>
@@ -136,7 +159,9 @@ export default function ContactDetails() {
               ) : null}
 
               <div className={styles.titleGroup}>
-                <span className={styles.eyebrow}>Localização privilegiada</span>
+                {address?.eyebrow ? (
+                  <span className={styles.eyebrow}>{address.eyebrow}</span>
+                ) : null}
                 <h3 className={styles.cardTitle}>{address?.title}</h3>
               </div>
             </div>
@@ -184,44 +209,49 @@ export default function ContactDetails() {
               ) : null}
 
               <div className={styles.titleGroup}>
-                <span className={styles.eyebrow}>Acompanhe-nos online</span>
+                {social?.eyebrow ? (
+                  <span className={styles.eyebrow}>{social.eyebrow}</span>
+                ) : null}
                 <h3 className={styles.cardTitle}>{social?.title}</h3>
               </div>
             </div>
           </header>
 
           <div className={styles.cardBody}>
-            <div className={styles.socialList}>
-              {social?.items?.map((item) => {
-                const SocialIcon = item?.iconKey
-                  ? resolveHotelIcon(ICONS, item.iconKey)
-                  : null;
+            <div className={styles.socialContent}>
+              {social?.supportingText ? (
+                <p className={styles.socialSupportingText}>
+                  {social.supportingText}
+                </p>
+              ) : null}
 
-                return (
-                  <a
-                    key={item.id}
-                    className={styles.socialLink}
-                    href={item?.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={item?.ariaLabel || item?.label}
-                    title={item?.label}
-                  >
-                    {SocialIcon ? (
-                      <span
-                        className={[styles.socialIcon, styles.iconCircle].join(
-                          " ",
-                        )}
-                        aria-hidden="true"
-                      >
-                        <SocialIcon />
-                      </span>
-                    ) : null}
+              <div className={styles.socialList}>
+                {social?.items?.map((item) => {
+                  const SocialIcon = item?.iconKey
+                    ? resolveHotelIcon(ICONS, item.iconKey)
+                    : null;
 
-                    <span className={styles.socialText}>{item?.label}</span>
-                  </a>
-                );
-              })}
+                  return (
+                    <a
+                      key={item.id}
+                      className={styles.socialLink}
+                      href={item?.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={item?.ariaLabel || item?.label}
+                      title={item?.label}
+                    >
+                      {SocialIcon ? (
+                        <span className={styles.socialIcon} aria-hidden="true">
+                          <SocialIcon />
+                        </span>
+                      ) : null}
+
+                      <span className={styles.socialText}>{item?.label}</span>
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </article>

@@ -16,12 +16,27 @@ export default function TestimonialsSection() {
   const sectionId = section.id ?? "info-testimonials";
   const titleId = `${sectionId}-title`;
 
+  const backgroundImageSrc = section?.backgroundMedia?.imageSrc ?? null;
+  const backgroundImageAlt = section?.backgroundMedia?.imageAlt ?? "";
+
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
     >
+      {backgroundImageSrc ? (
+        <div className={styles.mediaLayer} aria-hidden="true">
+          <img
+            src={backgroundImageSrc}
+            alt={backgroundImageAlt}
+            className={styles.backgroundImage}
+          />
+        </div>
+      ) : null}
+
+      <div className={styles.overlayLayer} aria-hidden="true" />
+
       <div className={styles.inner}>
         <TitleTestimonials titleId={titleId} />
         <DescriptionTestimonials />

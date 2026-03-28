@@ -4,9 +4,21 @@ export const contacts = {
   description:
     "Estamos disponíveis para esclarecer dúvidas, ajudar no planeamento da sua estadia ou fornecer informações adicionais.",
 
+  backgroundMedia: {
+    imageSrc: null,
+    imageAlt: "",
+  },
+
   details: {
+    quickAccessPills: [
+      { id: "reservations", label: "Reservas" },
+      { id: "daily-support", label: "Apoio diário" },
+      { id: "fast-response", label: "Resposta rápida" },
+    ],
+
     contactInfo: {
       title: "Informação de Contactos",
+      eyebrow: "Assistência e reservas",
       icon: null,
       items: [
         {
@@ -38,6 +50,7 @@ export const contacts = {
 
     receptionHours: {
       title: "Horários de Receção",
+      eyebrow: "Disponibilidade diária",
       icon: null,
       scheduleLabel: "Todos os dias",
       scheduleValue: "07h00 – 24h00",
@@ -49,6 +62,7 @@ export const contacts = {
 
     address: {
       title: "Morada",
+      eyebrow: "Localização privilegiada",
       icon: null,
       lines: [
         "Rua da Estalagem, n.º 23",
@@ -63,7 +77,10 @@ export const contacts = {
 
     social: {
       title: "Redes Sociais",
+      eyebrow: "Acompanhe-nos online",
       icon: null,
+      supportingText:
+        "Siga a Estalagem para descobrir novidades, ambiente e momentos da experiência.",
       items: [
         {
           id: "facebook",

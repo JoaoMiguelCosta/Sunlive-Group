@@ -2,18 +2,56 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
-    padding-block: clamp(3.25rem, 6vw, 5.5rem);
+    padding-block: clamp(3.5rem, 6vw, 6rem);
     overflow: clip;
-    
+}
+
+.mediaLayer,
+.overlayLayer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.mediaLayer {
+    z-index: 0;
+}
+
+.backgroundImage {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(0.9) brightness(0.48) blur(2px);
+    transform: scale(1.04);
+}
+
+.overlayLayer {
+    z-index: 0;
+    background:
+        radial-gradient(62% 52% at 50% 44%, rgba(241, 205, 132, 0.16), transparent 60%),
+        radial-gradient(46% 54% at 12% 30%, rgba(241, 205, 132, 0.11), transparent 70%),
+        radial-gradient(44% 52% at 88% 76%, rgba(199, 134, 21, 0.12), transparent 72%),
+        linear-gradient(90deg,
+            rgba(18, 11, 6, 0.22) 0%,
+            rgba(18, 11, 6, 0.04) 18%,
+            rgba(18, 11, 6, 0.04) 82%,
+            rgba(18, 11, 6, 0.22) 100%);
+    opacity: 0.94;
 }
 
 .section::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     pointer-events: none;
-  
-    opacity: 0.75;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 230, 0.04) 0%,
+            rgba(255, 248, 230, 0.012) 14%,
+            rgba(0, 0, 0, 0.02) 100%);
+    opacity: 0.8;
 }
 
 .inner {
@@ -22,15 +60,15 @@
     inline-size: 100%;
     box-sizing: border-box;
     display: grid;
-    gap: clamp(1.25rem, 2vw, 1.8rem);
+    gap: clamp(1.4rem, 2.3vw, 2rem);
 }
 
 @media (max-width: 768px) {
     .section {
-        padding-block: clamp(2.6rem, 8vw, 3.6rem);
+        padding-block: clamp(2.8rem, 8vw, 4rem);
     }
 
     .inner {
-        gap: 1rem;
+        gap: 1.1rem;
     }
 }

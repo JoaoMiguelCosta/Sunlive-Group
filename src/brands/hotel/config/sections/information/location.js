@@ -4,9 +4,21 @@ export const location = {
   description:
     "A Estalagem de Sangalhos – Sport & Nature Hotel está situada no coração da Bairrada, em zona tranquila e com fácil acesso rodoviário.",
 
+  backgroundMedia: {
+    imageSrc: null,
+    imageAlt: "",
+  },
+
   details: {
+    quickAccessPills: [
+      { id: "bairrada", label: "Coração da Bairrada" },
+      { id: "quiet-area", label: "Zona tranquila" },
+      { id: "road-access", label: "Fácil acesso rodoviário" },
+    ],
+
     addressCard: {
       title: "Morada Completa",
+      eyebrow: "Referência local",
       icon: null,
       lines: [
         "Rua da Estalagem, n.º 23",
@@ -17,6 +29,7 @@ export const location = {
 
     gpsCard: {
       title: "Coordenadas GPS",
+      eyebrow: "Navegação direta",
       icon: null,
       latitudeLabel: "Latitude",
       latitude: "40.4668 N",
@@ -34,8 +47,10 @@ export const location = {
     map: {
       badge: "Estalagem",
       badgeIcon: null,
-      title: "Mapa",
-      ctaLabel: "Clique para abrir mapa interativo",
+      title: "Mapa Interativo",
+      supportingText:
+        "Consulte a localização exata e abra direções imediatas no Google Maps.",
+      ctaLabel: "Abrir no Google Maps",
       ctaIcon: null,
       href: "https://maps.app.goo.gl/pvkGhuMEs4Gwaeif9",
       embedSrc:

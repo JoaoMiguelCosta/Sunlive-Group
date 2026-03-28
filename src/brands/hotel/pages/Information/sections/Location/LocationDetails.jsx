@@ -7,23 +7,46 @@ export default function LocationDetails() {
 
   if (!details) return null;
 
+  const quickAccessPills = Array.isArray(details?.quickAccessPills)
+    ? details.quickAccessPills
+    : [];
+
   const { addressCard, gpsCard, contact, map } = details;
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.grid}>
         <div className={styles.leftColumn}>
+          {quickAccessPills.length ? (
+            <div
+              className={styles.quickAccessRow}
+              aria-label="Destaques da localização"
+            >
+              {quickAccessPills.map((item) => (
+                <span key={item.id} className={styles.quickAccessPill}>
+                  {item.label}
+                </span>
+              ))}
+            </div>
+          ) : null}
+
           <article className={styles.infoCard} aria-label={addressCard?.title}>
             <header className={styles.cardHeader}>
               <div className={styles.cardHeaderInner}>
+                <div className={styles.cardHeaderText}>
+                  {addressCard?.eyebrow ? (
+                    <p className={styles.cardEyebrow}>{addressCard.eyebrow}</p>
+                  ) : null}
+
+                  {addressCard?.title ? (
+                    <h3 className={styles.cardTitle}>{addressCard.title}</h3>
+                  ) : null}
+                </div>
+
                 {addressCard?.icon ? (
                   <span className={styles.headerIcon} aria-hidden="true">
                     {addressCard.icon}
                   </span>
-                ) : null}
-
-                {addressCard?.title ? (
-                  <h3 className={styles.cardTitle}>{addressCard.title}</h3>
                 ) : null}
               </div>
             </header>
@@ -42,14 +65,20 @@ export default function LocationDetails() {
           <article className={styles.infoCard} aria-label={gpsCard?.title}>
             <header className={styles.cardHeader}>
               <div className={styles.cardHeaderInner}>
+                <div className={styles.cardHeaderText}>
+                  {gpsCard?.eyebrow ? (
+                    <p className={styles.cardEyebrow}>{gpsCard.eyebrow}</p>
+                  ) : null}
+
+                  {gpsCard?.title ? (
+                    <h3 className={styles.cardTitle}>{gpsCard.title}</h3>
+                  ) : null}
+                </div>
+
                 {gpsCard?.icon ? (
                   <span className={styles.headerIcon} aria-hidden="true">
                     {gpsCard.icon}
                   </span>
-                ) : null}
-
-                {gpsCard?.title ? (
-                  <h3 className={styles.cardTitle}>{gpsCard.title}</h3>
                 ) : null}
               </div>
             </header>
@@ -110,13 +139,7 @@ export default function LocationDetails() {
           </div>
         </div>
 
-        <a
-          className={styles.mapCard}
-          href={map?.href}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={map?.ariaLabel || map?.title}
-        >
+        <article className={styles.mapCard} aria-label={map?.title}>
           <div className={styles.mapFrameWrap}>
             <iframe
               className={styles.mapFrame}
@@ -138,10 +161,25 @@ export default function LocationDetails() {
           </span>
 
           <div className={styles.mapContent}>
-            <h3 className={styles.mapTitle}>{map?.title}</h3>
-            <span className={styles.mapCta}>{map?.ctaLabel}</span>
+            {map?.title ? (
+              <h3 className={styles.mapTitle}>{map.title}</h3>
+            ) : null}
+
+            {map?.supportingText ? (
+              <p className={styles.mapSupportingText}>{map.supportingText}</p>
+            ) : null}
+
+            <a
+              className={styles.mapAction}
+              href={map?.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={map?.ariaLabel || map?.title}
+            >
+              {map?.ctaLabel}
+            </a>
           </div>
-        </a>
+        </article>
       </div>
     </div>
   );

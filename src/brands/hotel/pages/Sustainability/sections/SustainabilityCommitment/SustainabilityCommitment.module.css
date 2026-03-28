@@ -2,7 +2,7 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
-padding-top: clamp(3.4rem, 6vw, 5.8rem);
+    padding-top: clamp(3.4rem, 6vw, 5.8rem);
     overflow: clip;
 }
 
