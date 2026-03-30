@@ -1,4 +1,4 @@
-import styles from "./ForWhomHero.module.css";
+import HotelHighlightBanner from "../../../../shared/ui/HotelHighlightBanner/HotelHighlightBanner.jsx";
 import hotelBrand, {
   ICONS,
   resolveHotelIcon,
@@ -11,30 +11,23 @@ export default function ForWhomHero() {
   if (!content) return null;
 
   const title = content.headerLabel || "Para Todos os Perfis";
-  const text = content.description || "";
+  const description = content.description || "";
+  const eyebrow = content.eyebrow || "";
   const Icon = resolveHotelIcon(ICONS, content.iconKey);
 
+  const leftIcon = Icon ? <Icon /> : null;
+  const rightIcon = Icon ? <Icon /> : null;
+
   return (
-    <div className={styles.card} aria-label={title}>
-      <div className={styles.inner}>
-        <div className={styles.titleRow}>
-          {Icon ? (
-            <span className={styles.iconCircle} aria-hidden="true">
-              <Icon className={styles.icon} />
-            </span>
-          ) : null}
-
-          <h3 className={styles.title}>{title}</h3>
-
-          {Icon ? (
-            <span className={styles.iconCircle} aria-hidden="true">
-              <Icon className={styles.icon} />
-            </span>
-          ) : null}
-        </div>
-
-        {text ? <p className={styles.text}>{text}</p> : null}
-      </div>
-    </div>
+    <HotelHighlightBanner
+      eyebrow={eyebrow}
+      title={title}
+      description={description}
+      variant="centered"
+      theme="sectionFeatured"
+      leftIcon={leftIcon}
+      rightIcon={rightIcon}
+      iconsEnabled={Boolean(Icon)}
+    />
   );
 }

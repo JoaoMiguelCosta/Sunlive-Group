@@ -1,19 +1,19 @@
 .wrap {
-    --grid-gap: clamp(0.95rem, 1.7vw, 1.2rem);
+    --grid-gap: clamp(1rem, 1.8vw, 1.3rem);
 
     position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--grid-gap);
     inline-size: 100%;
-    max-inline-size: 1220px;
+    max-inline-size: 1240px;
     margin-inline: auto;
 }
 
 .row {
     display: grid;
     gap: var(--grid-gap);
-    align-items: start;
+    align-items: stretch;
     inline-size: 100%;
 }
 
@@ -31,17 +31,23 @@
 
 .cardCell {
     min-width: 0;
+    display: flex;
+}
+
+.cardCell>* {
+    inline-size: 100%;
+    block-size: 100%;
 }
 
 .detailsRow {
     inline-size: 100%;
     min-width: 0;
     overflow: hidden;
-    animation: detailsReveal 240ms ease;
+    animation: detailsReveal 260ms ease;
 }
 
 .rowDetails {
-    margin-top: calc(var(--grid-gap) * -0.08);
+    margin-top: calc(var(--grid-gap) * -0.06);
 }
 
 .offerPanel {
@@ -61,7 +67,7 @@
 @keyframes detailsReveal {
     from {
         opacity: 0;
-        transform: translateY(-8px);
+        transform: translateY(-10px);
     }
 
     to {
@@ -72,7 +78,7 @@
 
 @media (max-width: 1100px) {
     .rowDetails {
-        margin-top: calc(var(--grid-gap) * -0.04);
+        margin-top: calc(var(--grid-gap) * -0.02);
     }
 
     .rowTabletSingle {
@@ -81,7 +87,22 @@
     }
 }
 
-@media (max-width: 680px) {
+/* Range intermédio onde queres os cards todos perfeitamente nivelados */
+@media (min-width: 681px) and (max-width: 980px) {
+    .row {
+        align-items: stretch;
+    }
+
+    .cardCell {
+        align-self: stretch;
+    }
+
+    .cardCell>* {
+        block-size: 100%;
+    }
+}
+
+@media (max-width: 700px) {
     .wrap {
         gap: 0.95rem;
     }
@@ -98,6 +119,6 @@
     }
 
     .rowDetails {
-        margin-top: -0.05rem;
+        margin-top: -0.02rem;
     }
 }

@@ -1,42 +1,54 @@
 .block {
     display: grid;
-    gap: clamp(0.9rem, 1.6vw, 1.15rem);
+    gap: clamp(0.95rem, 1.7vw, 1.2rem);
     justify-items: center;
-    margin-top: clamp(1.5rem, 2.4vw, 2rem);
+    margin-top: clamp(0.2rem, 1vw, 0.5rem);
 }
 
 .infoCard {
-    width: 100%;
-    max-width: min(1240px, 100%);
+    position: relative;
+    inline-size: 100%;
+    max-inline-size: min(1560px, 100%);
     overflow: hidden;
-    border: 1px solid rgba(199, 134, 21, 0.62);
-    border-radius: clamp(18px, 2.2vw, 24px);
+    border: 1px solid rgba(199, 134, 21, 0.52);
+    border-radius: clamp(22px, 2.4vw, 30px);
     background:
-        radial-gradient(900px 220px at 50% -12%, rgba(230, 200, 147, 0.09), transparent 60%),
-        linear-gradient(180deg, rgba(52, 28, 10, 0.98) 0%, rgba(38, 23, 11, 1) 100%);
+        radial-gradient(120% 180% at 50% -20%, rgba(241, 205, 132, 0.11), transparent 42%),
+        linear-gradient(90deg, rgba(66, 34, 12, 0.97) 0%, rgba(40, 21, 10, 0.99) 56%, rgba(28, 16, 8, 0.98) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 14px 30px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 16px 34px rgba(0, 0, 0, 0.18);
+}
+
+.infoCard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(255, 248, 235, 0.035) 0%, rgba(255, 248, 235, 0) 22%);
+    pointer-events: none;
 }
 
 .topRow,
 .middleRow,
 .bottomRow {
-    padding-inline: clamp(0.92rem, 1.8vw, 1.25rem);
+    position: relative;
+    z-index: 1;
+    padding-inline: clamp(1rem, 2vw, 1.5rem);
 }
 
 .topRow,
 .middleRow {
-    padding-block: 0.82rem;
+    padding-block: clamp(0.88rem, 1vw, 1rem);
 }
 
 .bottomRow {
-    padding-block: 0.92rem 1rem;
+    padding-block: clamp(1rem, 1.2vw, 1.15rem) clamp(1.05rem, 1.4vw, 1.2rem);
 }
 
 .middleRow,
 .bottomRow {
-    border-top: 1px solid rgba(199, 134, 21, 0.52);
+    border-top: 1px solid rgba(199, 134, 21, 0.38);
 }
 
 .line {
@@ -44,11 +56,11 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.42rem;
+    gap: 0.45rem;
     margin: 0;
     color: rgba(245, 237, 227, 0.96);
-    font-size: clamp(0.94rem, 0.85vw, 1rem);
-    line-height: 1.32;
+    font-size: clamp(0.95rem, 0.86vw, 1.04rem);
+    line-height: 1.35;
     text-align: center;
 }
 
@@ -56,53 +68,58 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 32px;
-    padding: 0.18rem 0.78rem;
+    min-height: 38px;
+    padding: 0.18rem 0.98rem;
     border-radius: 999px;
     background:
-        linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
-    color: #ffffff;
-    font-weight: 700;
+        linear-gradient(180deg, rgba(206, 155, 66, 0.98) 0%, rgba(156, 102, 26, 0.98) 100%);
+    color: #fff;
+    font-weight: 800;
     line-height: 1;
-    border: 1px solid rgba(255, 231, 184, 0.2);
+    border: 1px solid rgba(255, 236, 194, 0.22);
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.08),
-        0 6px 14px rgba(0, 0, 0, 0.12);
+        inset 0 1px 0 rgba(255, 248, 235, 0.1),
+        0 8px 18px rgba(0, 0, 0, 0.14);
 }
 
 .separator {
-    color: #d7a94b;
+    color: #d8ab52;
     font-weight: 700;
 }
 
 .textStrong {
     font-weight: 700;
+    color: rgba(255, 248, 236, 0.98);
 }
 
 .description {
-    max-width: 72ch;
+    max-inline-size: 90ch;
     margin: 0 auto;
-    color: rgba(245, 237, 227, 0.95);
-    font-size: clamp(0.92rem, 0.8vw, 0.98rem);
-    line-height: 1.42;
+    color: rgba(245, 237, 227, 0.94);
+    font-size: clamp(0.94rem, 0.82vw, 1rem);
+    line-height: 1.5;
     text-align: center;
+    text-wrap: balance;
 }
 
 @media (max-width: 640px) {
+    .infoCard {
+        border-radius: 22px;
+    }
 
     .topRow,
     .middleRow,
     .bottomRow {
-        padding-inline: 0.9rem;
+        padding-inline: 0.95rem;
     }
 
     .topRow,
     .middleRow {
-        padding-block: 0.76rem;
+        padding-block: 0.82rem;
     }
 
     .bottomRow {
-        padding-block: 0.86rem 0.92rem;
+        padding-block: 0.92rem 1rem;
     }
 
     .line,
@@ -111,7 +128,7 @@
     }
 
     .badge {
-        min-height: 30px;
-        padding-inline: 0.72rem;
+        min-height: 34px;
+        padding-inline: 0.86rem;
     }
 }

@@ -21,8 +21,10 @@ export default function Amenities() {
       aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <TitleAmenities id={titleId} label={content.headerLabel} />
-        <DescriptionAmenities>{content.description}</DescriptionAmenities>
+        <div className={styles.headerBlock}>
+          <TitleAmenities id={titleId} label={content.headerLabel} />
+          <DescriptionAmenities>{content.description}</DescriptionAmenities>
+        </div>
 
         <div className={styles.pillsWrap}>
           <AmenitiesPills />

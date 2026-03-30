@@ -22,9 +22,8 @@ export default function Accommodations() {
   const roomsAndSuites = content.roomsAndSuites ?? null;
   const sectionId = content.id ?? "accommodation-accommodations";
   const titleId = `${sectionId}-title`;
-  const galleryItems = content.gallery?.items ?? [];
-  const galleryFallbackLabel =
-    content.gallery?.fallbackLabel ?? "Galeria de alojamento";
+  const gallery = content.gallery ?? {};
+  const galleryItems = gallery.items ?? [];
 
   return (
     <section
@@ -33,18 +32,35 @@ export default function Accommodations() {
       aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <TitleAccommodations id={titleId} label={content.headerLabel} />
+        <div className={styles.headerBlock}>
+          <TitleAccommodations
+            id={titleId}
+            label={content.headerLabel}
+            className={styles.titleWrap}
+          />
 
-        <DescriptionAccommodations>
-          {content.description}
-        </DescriptionAccommodations>
+          <DescriptionAccommodations className={styles.introPanel}>
+            {content.description}
+          </DescriptionAccommodations>
+        </div>
 
         <div className={styles.galleryWrap}>
           <HotelPhotoCarouselBase
             items={galleryItems}
-            fallbackLabel={galleryFallbackLabel}
+            fallbackLabel={gallery.fallbackLabel ?? "Galeria de alojamento"}
+            fallbackEyebrow={gallery.fallbackEyebrow ?? "Alojamento"}
+            fallbackTitle={gallery.fallbackTitle ?? "Galeria de alojamento"}
+            previousLabel={gallery.previousLabel ?? "Imagem anterior"}
+            nextLabel={gallery.nextLabel ?? "Imagem seguinte"}
+            indicatorsLabel={
+              gallery.indicatorsLabel ?? "Navegação da galeria de alojamento"
+            }
             showIndicators
             showCaption
+            showImageBackdrop
+            backdropBlur="20px"
+            backdropScale={1.16}
+            backdropOpacity={0.52}
             className={styles.carouselStage}
           />
         </div>
@@ -53,10 +69,17 @@ export default function Accommodations() {
           <section
             id={roomsAndSuites.id ?? "accommodation-rooms-and-suites"}
             className={styles.roomsSection}
-            aria-label={roomsAndSuites.headerLabel || "Quartos e Suites"}
+            aria-labelledby={`${sectionId}-rooms-title`}
           >
-            <TitleRoomsAndSuites />
-            <DescriptionRoomsAndSuites />
+            <TitleRoomsAndSuites
+              id={`${sectionId}-rooms-title`}
+              label={roomsAndSuites.headerLabel}
+              className={styles.titleWrap}
+            />
+
+            <DescriptionRoomsAndSuites className={styles.roomsIntroPanel}>
+              {roomsAndSuites.description}
+            </DescriptionRoomsAndSuites>
           </section>
         ) : null}
 

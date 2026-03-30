@@ -15,6 +15,7 @@ import styles from "./HotelIconPill.module.css";
  * - ariaLabel?: string
  * - iconClassName?: string
  * - iconCircleClassName?: string
+ * - ...restProps
  */
 export default function HotelIconPill({
   label,
@@ -28,6 +29,7 @@ export default function HotelIconPill({
   ariaLabel,
   iconClassName = "",
   iconCircleClassName = "",
+  ...restProps
 }) {
   if (!label) return null;
 
@@ -46,6 +48,7 @@ export default function HotelIconPill({
   const commonProps = {
     className: cls,
     "aria-label": ariaLabel || label,
+    ...restProps,
   };
 
   const iconContent = Icon ? (

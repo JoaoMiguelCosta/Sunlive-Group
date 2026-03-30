@@ -2,24 +2,45 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
+
+    overflow: clip;
+}
+
+.backgroundGlow,
+.backgroundGlowSecondary {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.backgroundGlow {
    
-    
+    opacity: 0.95;
+}
+
+.backgroundGlowSecondary {
+   
 }
 
 .inner {
-    inline-size: 100%;
+    position: relative;
+    z-index: 1;
+    inline-size: min(100%, 1680px);
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 2.2vw, 2rem);
     box-sizing: border-box;
 }
 
 .introBlock {
     display: grid;
-    gap: clamp(1rem, 2vw, 1.5rem);
+    gap: clamp(1rem, 2vw, 1.6rem);
     justify-items: center;
 }
 
 .descriptionWrap {
-    width: 100%;
-    max-width: min(1180px, 100%);
+    inline-size: 100%;
+    max-inline-size: min(1450px, 100%);
     margin-inline: auto;
 }
 
@@ -27,16 +48,14 @@
     margin-bottom: 0;
 }
 
+.contentStack {
+    display: grid;
+    gap: clamp(2.5rem, 4vw, 3.8rem);
+    margin-top: clamp(2.5rem, 4vw, 3.4rem);
+}
+
 .subsection {
-    margin-top: clamp(2.25rem, 4vw, 3.4rem);
+    display: grid;
+   
 }
 
-@media (max-width: 720px) {
-    .section {
-        padding-block: clamp(2.4rem, 8vw, 3.3rem);
-    }
-
-    .subsection {
-        margin-top: 2rem;
-    }
-}

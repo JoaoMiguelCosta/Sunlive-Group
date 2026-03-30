@@ -9,6 +9,11 @@ const clampIndex = (index, length) => {
 export default function HotelPhotoCarouselBase({
   items = [],
   fallbackLabel = "Fotos",
+  fallbackEyebrow = "Galeria",
+  fallbackTitle = "Fotos",
+  previousLabel = "Foto anterior",
+  nextLabel = "Foto seguinte",
+  indicatorsLabel = "Indicadores da galeria",
   className = "",
   showIndicators = true,
   showCaption = false,
@@ -107,7 +112,7 @@ export default function HotelPhotoCarouselBase({
             className={imageClassName}
             src={activeSrc}
             alt={activeAlt}
-            loading="lazy"
+            loading={safeIndex === 0 ? "eager" : "lazy"}
             style={{ objectPosition: resolvedImagePosition }}
           />
 
@@ -116,8 +121,8 @@ export default function HotelPhotoCarouselBase({
       ) : (
         <div className={styles.fallback} role="img" aria-label={fallbackLabel}>
           <div className={styles.fallbackInner}>
-            <span className={styles.fallbackEyebrow}>Galeria</span>
-            <span className={styles.fallbackTitle}>{fallbackLabel}</span>
+            <span className={styles.fallbackEyebrow}>{fallbackEyebrow}</span>
+            <span className={styles.fallbackTitle}>{fallbackTitle}</span>
           </div>
         </div>
       )}
@@ -134,7 +139,7 @@ export default function HotelPhotoCarouselBase({
             type="button"
             className={`${styles.navButton} ${styles.navLeft}`}
             onClick={goPrev}
-            aria-label="Foto anterior"
+            aria-label={previousLabel}
           >
             <span className={styles.navGlyph} aria-hidden="true">
               ‹
@@ -145,7 +150,7 @@ export default function HotelPhotoCarouselBase({
             type="button"
             className={`${styles.navButton} ${styles.navRight}`}
             onClick={goNext}
-            aria-label="Foto seguinte"
+            aria-label={nextLabel}
           >
             <span className={styles.navGlyph} aria-hidden="true">
               ›
@@ -155,10 +160,7 @@ export default function HotelPhotoCarouselBase({
       ) : null}
 
       {showIndicators && hasItems && normalizedItems.length > 1 ? (
-        <div
-          className={styles.indicatorDock}
-          aria-label="Indicadores da galeria"
-        >
+        <div className={styles.indicatorDock} aria-label={indicatorsLabel}>
           <div className={styles.indicatorRail}>
             {normalizedItems.map((item, index) => {
               const isActive = index === safeIndex;
@@ -171,7 +173,7 @@ export default function HotelPhotoCarouselBase({
                     isActive ? styles.indicatorDotActive : ""
                   }`}
                   onClick={() => handleSelectIndex(index)}
-                  aria-label={`Ver foto ${index + 1}`}
+                  aria-label={`Ver imagem ${index + 1}`}
                   aria-pressed={isActive}
                 />
               );

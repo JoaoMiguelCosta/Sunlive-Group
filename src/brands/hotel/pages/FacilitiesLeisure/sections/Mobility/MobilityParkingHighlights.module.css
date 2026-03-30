@@ -1,4 +1,4 @@
 .block {
-    width: 100%;
-    margin-top: clamp(1.35rem, 2.7vw, 2rem);
+    inline-size: 100%;
+    margin-top: clamp(1.2rem, 2.6vw, 2rem);
 }

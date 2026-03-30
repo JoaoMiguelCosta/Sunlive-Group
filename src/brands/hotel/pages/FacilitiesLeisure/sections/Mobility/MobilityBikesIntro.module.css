@@ -5,11 +5,12 @@
 }
 
 .descriptionWrap {
-    width: 100%;
-    max-width: min(1180px, 100%);
+    inline-size: 100%;
+    max-inline-size: min(1260px, 100%);
     margin-inline: auto;
 }
 
 .descriptionWrap :global(*) {
     margin-bottom: 0;
+    text-align: center;
 }

@@ -3,7 +3,7 @@ import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSe
 
 import styles from "./MobilityParkingIntro.module.css";
 
-export default function MobilityParkingIntro() {
+export default function MobilityParkingIntro({ titleId }) {
   const parking =
     hotelBrand?.pages?.facilities?.sections?.mobility?.parking ?? null;
 
@@ -11,7 +11,12 @@ export default function MobilityParkingIntro() {
 
   return (
     <div className={styles.block}>
-      <HotelSectionHeader label={parking.headerLabel} />
+      <HotelSectionHeader
+        id={titleId}
+        label={parking.headerLabel}
+        as="h3"
+        align="center"
+      />
 
       <div className={styles.infoCard}>
         <div className={styles.topRow}>

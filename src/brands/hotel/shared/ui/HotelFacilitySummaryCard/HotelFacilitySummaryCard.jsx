@@ -18,6 +18,7 @@ function IconSlot({ icon: Icon = null, iconLabel = "" }) {
 
 export default function HotelFacilitySummaryCard({
   title,
+  shortTitle,
   summary,
   icon = null,
   iconLabel = "",
@@ -25,14 +26,21 @@ export default function HotelFacilitySummaryCard({
   onToggle,
   controlsId,
   buttonId,
+  openLabel = "Ver detalhes",
+  closeLabel = "Ocultar detalhes",
 }) {
   return (
-    <article className={styles.card}>
+    <article className={`${styles.card} ${isOpen ? styles.cardOpen : ""}`}>
       <div className={styles.header}>
         <IconSlot icon={icon} iconLabel={iconLabel} />
 
         <div className={styles.titleWrap}>
           <h3 className={styles.title}>{title}</h3>
+          {shortTitle ? (
+            <span className={styles.kicker} aria-hidden="true">
+              {shortTitle}
+            </span>
+          ) : null}
         </div>
       </div>
 
@@ -50,7 +58,7 @@ export default function HotelFacilitySummaryCard({
           aria-controls={controlsId}
         >
           <span className={styles.buttonLabel}>
-            {isOpen ? "Ocultar Detalhes" : "Ver Detalhes"}
+            {isOpen ? closeLabel : openLabel}
           </span>
 
           <span

@@ -23,6 +23,9 @@ export default function WhyChooseUsGrid({ items = [] }) {
               <SustainabilityActionCard
                 title={item.title}
                 description={item.description}
+                eyebrow={item.eyebrow}
+                step={item.step}
+                variant="whyChoose"
                 icon={IconComponent ? <IconComponent size={18} /> : null}
                 ariaLabel={item.title}
                 className={styles.card}

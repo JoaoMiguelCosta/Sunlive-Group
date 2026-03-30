@@ -4,7 +4,9 @@ import styles from "./HotelOfferPanel.module.css";
  * HotelOfferPanel
  *
  * Props:
+ * - eyebrow?: string
  * - title: string
+ * - intro?: string
  * - items?: Array<{ id: string, title: string, description?: string, Icon?: ReactComponent }>
  * - highlightsTitle?: string
  * - highlights?: Array<{ id: string, text: string }>
@@ -14,7 +16,9 @@ import styles from "./HotelOfferPanel.module.css";
  * - className?: string
  */
 export default function HotelOfferPanel({
+  eyebrow,
   title,
+  intro,
   items = [],
   highlightsTitle = "Destaques",
   highlights = [],
@@ -36,9 +40,13 @@ export default function HotelOfferPanel({
 
   return (
     <div className={wrapClass} role="region" aria-label={title || "Oferta"}>
-      {title ? (
-        <div className={styles.panelHeader}>
-          <h3 className={styles.hTitle}>{title}</h3>
+      {eyebrow || title || intro ? (
+        <div className={styles.heroHeader}>
+          <div className={styles.heroHeaderInner}>
+            {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+            {title ? <h3 className={styles.hTitle}>{title}</h3> : null}
+            {intro ? <p className={styles.intro}>{intro}</p> : null}
+          </div>
         </div>
       ) : null}
 

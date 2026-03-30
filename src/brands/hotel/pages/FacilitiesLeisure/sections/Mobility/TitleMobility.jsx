@@ -1,10 +1,21 @@
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
-export default function TitleMobility() {
-  const content = hotelBrand?.pages?.facilities?.sections?.mobility ?? null;
+import styles from "./TitleMobility.module.css";
 
-  if (!content) return null;
+export default function TitleMobility({ titleId }) {
+  const mobility = hotelBrand?.pages?.facilities?.sections?.mobility ?? null;
 
-  return <HotelSectionHeader label={content.headerLabel} />;
+  if (!mobility?.headerLabel) return null;
+
+  return (
+    <div className={styles.wrap}>
+      <HotelSectionHeader
+        id={titleId}
+        label={mobility.headerLabel}
+        as="h2"
+        align="center"
+      />
+    </div>
+  );
 }

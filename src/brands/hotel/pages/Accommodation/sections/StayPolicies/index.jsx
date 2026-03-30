@@ -23,11 +23,19 @@ export default function StayPolicies() {
       aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <TitleStayPolicies id={titleId} label={content.headerLabel} />
-        <DescriptionStayPolicies>{content.description}</DescriptionStayPolicies>
+        <div className={styles.headerBlock}>
+          <TitleStayPolicies id={titleId} label={content.headerLabel} />
+          <DescriptionStayPolicies>
+            {content.description}
+          </DescriptionStayPolicies>
+        </div>
 
         <div className={styles.accordionWrap}>
-          <StayPoliciesAccordion items={items} allowMultiple={false} />
+          <StayPoliciesAccordion
+            items={items}
+            allowMultiple={false}
+            ui={content.ui ?? {}}
+          />
         </div>
       </div>
     </section>

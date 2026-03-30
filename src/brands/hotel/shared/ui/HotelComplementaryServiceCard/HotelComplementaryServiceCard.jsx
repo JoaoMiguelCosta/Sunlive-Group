@@ -22,27 +22,40 @@ export default function HotelComplementaryServiceCard({
   badge,
   icon = null,
   iconLabel = "",
+  isActive = false,
+  onClick,
+  ariaControls = "",
 }) {
   if (!title) return null;
 
   return (
-    <article className={styles.card}>
-      <div className={styles.iconColumn}>
-        <IconSlot icon={icon} iconLabel={iconLabel} />
-      </div>
-
-      <div className={styles.content}>
-        <div className={styles.topRow}>
-          <h3 className={styles.title}>{title}</h3>
-          {badge ? <span className={styles.badge}>{badge}</span> : null}
+    <article
+      className={`${styles.card} ${isActive ? styles.cardActive : ""}`}
+    >
+      <button
+        type="button"
+        className={styles.trigger}
+        onClick={onClick}
+        aria-pressed={isActive}
+        aria-controls={ariaControls || undefined}
+      >
+        <div className={styles.iconColumn}>
+          <IconSlot icon={icon} iconLabel={iconLabel} />
         </div>
 
-        {description ? (
-          <div className={styles.bottomRow}>
-            <p className={styles.description}>{description}</p>
+        <div className={styles.content}>
+          <div className={styles.topRow}>
+            <h3 className={styles.title}>{title}</h3>
+            {badge ? <span className={styles.badge}>{badge}</span> : null}
           </div>
-        ) : null}
-      </div>
+
+          {description ? (
+            <div className={styles.bottomRow}>
+              <p className={styles.description}>{description}</p>
+            </div>
+          ) : null}
+        </div>
+      </button>
     </article>
   );
 }

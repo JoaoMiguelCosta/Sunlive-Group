@@ -13,10 +13,10 @@ export default function InfoNoteBanner({ className = "" }) {
       id={note.id}
       className={[styles.wrap, className].filter(Boolean).join(" ")}
       role="note"
-      aria-label="Nota importante"
+      aria-label={note.ariaLabel ?? "Nota importante"}
     >
       <span className={styles.icon} aria-hidden="true">
-        i
+        {note.iconText ?? "i"}
       </span>
 
       <p className={styles.text}>{note.text}</p>

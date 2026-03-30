@@ -15,15 +15,33 @@ export default function WhyChooseUs() {
   const sectionId = content.id ?? "accommodation-why-choose-us";
   const titleId = `${sectionId}-title`;
 
+  const backgroundImageSrc = content?.backgroundMedia?.imageSrc ?? null;
+  const backgroundImageAlt = content?.backgroundMedia?.imageAlt ?? "";
+
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
     >
+      {backgroundImageSrc ? (
+        <div className={styles.mediaLayer} aria-hidden="true">
+          <img
+            src={backgroundImageSrc}
+            alt={backgroundImageAlt}
+            className={styles.backgroundImage}
+          />
+        </div>
+      ) : null}
+
+      <div className={styles.overlayLayer} aria-hidden="true" />
+
       <div className={styles.inner}>
         <TitleWhyChooseUs id={titleId} label={content.headerLabel} />
-        <DescriptionWhyChooseUs>{content.subtitle}</DescriptionWhyChooseUs>
+
+        <DescriptionWhyChooseUs eyebrow={content.introEyebrow}>
+          {content.subtitle}
+        </DescriptionWhyChooseUs>
 
         <div className={styles.gridWrap}>
           <WhyChooseUsGrid items={items} />

@@ -1,16 +1,15 @@
 import { useMemo } from "react";
 
 import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
 import styles from "./AccessibilitySupport.module.css";
 
-function IconSlot({ icon = null, iconLabel = "", size = "md" }) {
-  const sizeClass = size === "sm" ? styles.iconSlotSm : styles.iconSlotMd;
-
+function SupportIconSlot({ icon = null, iconLabel = "" }) {
   if (icon) {
     return (
       <span
-        className={`${styles.iconSlot} ${sizeClass} ${styles.iconSlotDefault}`}
+        className={`${styles.supportIcon} ${styles.supportIconDefault}`}
         aria-label={iconLabel}
       >
         {icon}
@@ -20,7 +19,7 @@ function IconSlot({ icon = null, iconLabel = "", size = "md" }) {
 
   return (
     <span
-      className={`${styles.iconSlot} ${sizeClass} ${styles.iconSlotDefault}`}
+      className={`${styles.supportIcon} ${styles.supportIconDefault}`}
       aria-hidden="true"
     >
       <span className={styles.iconPlaceholder} />
@@ -52,16 +51,16 @@ export default function AccessibilitySupport() {
     };
   }, [support]);
 
-  if (!resolvedSupport) return null;
+  const features = resolvedSupport?.features ?? [];
 
-  const features = Array.isArray(resolvedSupport.features)
-    ? resolvedSupport.features
-    : [];
+  const { isOpen, toggle } = useAccordion(features, { allowMultiple: false });
+
+  if (!resolvedSupport) return null;
 
   return (
     <div id={resolvedSupport.id} className={styles.block}>
       <div className={styles.grid}>
-        <div className={styles.leftColumn}>
+        <article className={styles.leftColumn}>
           {resolvedSupport.highlightText ? (
             <div className={styles.highlightBanner}>
               <p className={styles.highlightText}>
@@ -72,34 +71,50 @@ export default function AccessibilitySupport() {
 
           <div className={styles.supportCard}>
             <header className={styles.supportHeader}>
-              <IconSlot
-                icon={resolvedSupport.icon?.component ?? null}
-                iconLabel={
-                  resolvedSupport.icon?.ariaLabel ??
-                  resolvedSupport.title ??
-                  ""
-                }
-                size="md"
-              />
+              <div className={styles.supportHeaderInner}>
+                <SupportIconSlot
+                  icon={resolvedSupport.icon?.component ?? null}
+                  iconLabel={
+                    resolvedSupport.icon?.ariaLabel ??
+                    resolvedSupport.title ??
+                    ""
+                  }
+                />
 
-              {resolvedSupport.title ? (
-                <h3 className={styles.supportTitle}>
-                  {resolvedSupport.title}
-                </h3>
-              ) : null}
+                {resolvedSupport.title ? (
+                  <h3 className={styles.supportTitle}>
+                    {resolvedSupport.title}
+                  </h3>
+                ) : null}
+              </div>
             </header>
 
-            {resolvedSupport.description ? (
-              <div className={styles.supportBody}>
-                <p className={styles.supportDescription}>
-                  {resolvedSupport.description}
-                </p>
-              </div>
-            ) : null}
-          </div>
-        </div>
+            <div className={styles.supportBody}>
+              {resolvedSupport.description ? (
+                <div className={styles.supportBodyInner}>
+                  <p className={styles.supportDescription}>
+                    {resolvedSupport.description}
+                  </p>
 
-        <div className={styles.featuresCard}>
+                  {resolvedSupport?.cta?.label && resolvedSupport?.cta?.href ? (
+                    <a
+                      className={styles.supportCta}
+                      href={resolvedSupport.cta.href}
+                      aria-label={
+                        resolvedSupport.cta.ariaLabel ??
+                        resolvedSupport.cta.label
+                      }
+                    >
+                      {resolvedSupport.cta.label}
+                    </a>
+                  ) : null}
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </article>
+
+        <article className={styles.featuresCard}>
           {resolvedSupport.featuresTitle ? (
             <header className={styles.featuresHeader}>
               <h3 className={styles.featuresTitle}>
@@ -110,18 +125,64 @@ export default function AccessibilitySupport() {
 
           {features.length ? (
             <ul className={styles.featuresList}>
-              {features.map((feature) => (
-                <li key={feature.key} className={styles.featureItem}>
-                  <span className={styles.check} aria-hidden="true">
-                    ✓
-                  </span>
+              {features.map((feature) => {
+                const open = isOpen(feature.key);
+                const buttonId = `${resolvedSupport.id}-${feature.key}-button`;
+                const panelId = `${resolvedSupport.id}-${feature.key}-panel`;
 
-                  <span className={styles.featureLabel}>{feature.label}</span>
-                </li>
-              ))}
+                return (
+                  <li
+                    key={feature.key}
+                    className={`${styles.featureItem} ${
+                      open ? styles.featureItemOpen : ""
+                    }`}
+                  >
+                    <button
+                      type="button"
+                      id={buttonId}
+                      className={styles.featureTrigger}
+                      onClick={() => toggle(feature.key)}
+                      aria-expanded={open}
+                      aria-controls={panelId}
+                    >
+                      <span className={styles.check} aria-hidden="true">
+                        ✓
+                      </span>
+
+                      <span className={styles.featureMain}>
+                        <span className={styles.featureLabel}>
+                          {feature.label}
+                        </span>
+
+                        <span
+                          className={`${styles.chevron} ${
+                            open ? styles.chevronOpen : ""
+                          }`}
+                          aria-hidden="true"
+                        >
+                          ▾
+                        </span>
+                      </span>
+                    </button>
+
+                    <div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={buttonId}
+                      className={`${styles.featurePanel} ${
+                        open ? styles.featurePanelOpen : ""
+                      }`}
+                    >
+                      <div className={styles.featurePanelInner}>
+                        <p className={styles.featureDetail}>{feature.detail}</p>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           ) : null}
-        </div>
+        </article>
       </div>
     </div>
   );

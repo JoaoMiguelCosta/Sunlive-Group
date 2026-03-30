@@ -13,13 +13,13 @@
 .leftCard,
 .rightCard {
     min-height: 100%;
-    border: 1px solid rgba(199, 134, 21, 0.62);
-    border-radius: clamp(18px, 2.2vw, 26px);
+    border: 1px solid rgba(199, 134, 21, 0.56);
+    border-radius: clamp(20px, 2.2vw, 28px);
     overflow: hidden;
     background:
         radial-gradient(900px 220px at 50% -12%, rgba(230, 200, 147, 0.08), transparent 60%),
         linear-gradient(180deg, rgba(52, 28, 10, 0.98) 0%, rgba(38, 23, 11, 1) 100%);
-    padding: clamp(0.95rem, 1.6vw, 1.2rem);
+    padding: clamp(1rem, 1.7vw, 1.3rem);
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.04),
         0 14px 30px rgba(0, 0, 0, 0.18);
@@ -28,9 +28,9 @@
 .cardTitle {
     margin: 0 0 1rem;
     color: #d7a94b;
-    font-size: clamp(1.08rem, 1.05vw, 1.28rem);
+    font-size: clamp(1.1rem, 1.05vw, 1.32rem);
     line-height: 1.12;
-    font-weight: 700;
+    font-weight: 800;
     text-wrap: balance;
 }
 
@@ -39,7 +39,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.72rem;
-    margin-bottom: 1.15rem;
+    margin-bottom: 1rem;
 }
 
 .languageCard {
@@ -47,21 +47,41 @@
     justify-items: center;
     align-content: center;
     gap: 0.46rem;
-    min-width: 82px;
-    min-height: 72px;
-    padding: 0.68rem 0.82rem;
-    border-radius: 0.95rem;
+    min-width: 86px;
+    min-height: 92px;
+    padding: 0.72rem 0.9rem;
+    border-radius: 1rem;
     background:
-        linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
+        linear-gradient(180deg, rgba(184, 132, 49, 0.94) 0%, rgba(135, 88, 18, 0.96) 100%);
     border: 1px solid rgba(255, 231, 184, 0.16);
     box-shadow:
         0 8px 16px rgba(0, 0, 0, 0.14),
         inset 0 1px 0 rgba(255, 248, 235, 0.08);
+    cursor: pointer;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+}
+
+.languageCard:hover {
+    transform: translateY(-2px);
+}
+
+.languageCardActive {
+    border-color: rgba(241, 205, 132, 0.38);
+    background:
+        linear-gradient(180deg, rgba(194, 140, 54, 0.98) 0%, rgba(145, 95, 22, 0.98) 100%);
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.16),
+        inset 0 1px 0 rgba(255, 248, 235, 0.1),
+        0 0 0 1px rgba(241, 205, 132, 0.12);
 }
 
 .languageLabel {
     color: #ffffff;
-    font-size: 0.96rem;
+    font-size: 0.98rem;
     line-height: 1;
     font-weight: 800;
 }
@@ -70,14 +90,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    inline-size: 1.75rem;
-    block-size: 1.75rem;
+    inline-size: 1.8rem;
+    block-size: 1.8rem;
     flex-shrink: 0;
 }
 
 .flagSlot :global(svg) {
-    inline-size: 1.75rem;
-    block-size: 1.75rem;
+    inline-size: 1.8rem;
+    block-size: 1.8rem;
     display: block;
     border-radius: 0.35rem;
     overflow: hidden;
@@ -89,6 +109,33 @@
     block-size: 0.88rem;
     border-radius: 999px;
     background: rgba(255, 248, 236, 0.88);
+}
+
+.languageSpotlight {
+    display: grid;
+    gap: 0.45rem;
+    margin-bottom: 1rem;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(199, 134, 21, 0.18);
+    border-radius: 16px;
+    background:
+        radial-gradient(120% 180% at 50% -20%, rgba(241, 205, 132, 0.05), transparent 45%),
+        linear-gradient(180deg, rgba(255, 248, 235, 0.018), rgba(255, 248, 235, 0.008));
+}
+
+.languageSpotlightTitle {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(0.98rem, 0.92vw, 1.08rem);
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.languageSpotlightDescription {
+    margin: 0;
+    color: rgba(245, 237, 227, 0.92);
+    font-size: clamp(0.92rem, 0.8vw, 0.98rem);
+    line-height: 1.5;
 }
 
 .contactsRow {
@@ -106,17 +153,44 @@
 
 .featuresList {
     display: grid;
-    gap: 0.82rem;
+    gap: 0;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 .featureItem {
+    border-bottom: 1px solid rgba(199, 134, 21, 0.18);
+}
+
+.featureItem:last-child {
+    border-bottom: 0;
+}
+
+.featureItemOpen {
+    background: rgba(255, 248, 235, 0.018);
+}
+
+.featureTrigger {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 0.82rem;
+    inline-size: 100%;
+    min-height: 58px;
+    padding: 0.72rem 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+.featureMain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    min-width: 0;
 }
 
 .check {
@@ -141,9 +215,53 @@
 
 .featureLabel {
     color: rgba(245, 237, 227, 0.96);
-    font-size: clamp(0.94rem, 0.8vw, 1rem);
-    line-height: 1.32;
-    font-weight: 600;
+    font-size: clamp(0.95rem, 0.82vw, 1rem);
+    line-height: 1.34;
+    font-weight: 700;
+    text-wrap: balance;
+}
+
+.chevron {
+    color: #d7a94b;
+    font-size: 0.92rem;
+    line-height: 1;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition: transform 220ms ease, color 220ms ease;
+}
+
+.chevronOpen {
+    transform: rotate(180deg);
+    color: #f1cd84;
+}
+
+.featurePanel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 240ms ease;
+}
+
+.featurePanelOpen {
+    grid-template-rows: 1fr;
+}
+
+.featurePanelInner {
+    overflow: hidden;
+    padding-inline-start: calc(26px + 0.82rem);
+}
+
+.featureDetail {
+    margin: 0 0 0.8rem;
+    padding: 0.82rem 0.9rem;
+    border: 1px solid rgba(199, 134, 21, 0.18);
+    border-radius: 14px;
+    background:
+        radial-gradient(120% 180% at 50% -20%, rgba(241, 205, 132, 0.05), transparent 45%),
+        linear-gradient(180deg, rgba(255, 248, 235, 0.018), rgba(255, 248, 235, 0.008));
+    color: rgba(245, 237, 227, 0.9);
+    font-size: clamp(0.92rem, 0.78vw, 0.96rem);
+    line-height: 1.5;
+    text-wrap: balance;
 }
 
 @media (max-width: 980px) {
@@ -170,12 +288,12 @@
 
     .languagesGrid {
         gap: 0.66rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.9rem;
     }
 
     .languageCard {
-        min-width: 74px;
-        min-height: 68px;
+        min-width: 78px;
+        min-height: 82px;
         padding: 0.62rem 0.72rem;
     }
 
@@ -185,8 +303,13 @@
 
     .flagSlot,
     .flagSlot :global(svg) {
-        inline-size: 1.5rem;
-        block-size: 1.5rem;
+        inline-size: 1.55rem;
+        block-size: 1.55rem;
+    }
+
+    .languageSpotlight {
+        margin-bottom: 0.9rem;
+        padding: 0.86rem 0.9rem;
     }
 
     .contactsRow {
@@ -199,13 +322,24 @@
         flex-basis: 160px;
     }
 
+    .featureTrigger {
+        min-height: 54px;
+        padding: 0.66rem 0;
+    }
+
     .check {
         width: 24px;
         height: 24px;
         font-size: 0.82rem;
     }
 
-    .featureLabel {
+    .featureLabel,
+    .languageSpotlightDescription,
+    .featureDetail {
         font-size: 0.92rem;
+    }
+
+    .featurePanelInner {
+        padding-inline-start: 0;
     }
 }

@@ -14,6 +14,10 @@ import styles from "./HotelRoomCard.module.css";
  *  - detailsOpen?: boolean
  *  - onToggle?: () => void
  *  - className?: string
+ *  - openDetailsLabel?: string
+ *  - closeDetailsLabel?: string
+ *  - featuresAriaLabel?: string
+ *  - imageComingSoonLabel?: string
  */
 export default function HotelRoomCard({
   roomId = "room",
@@ -26,6 +30,10 @@ export default function HotelRoomCard({
   detailsOpen = false,
   onToggle,
   className = "",
+  openDetailsLabel = "Ver detalhes",
+  closeDetailsLabel = "Ocultar detalhes",
+  featuresAriaLabel = "Características do quarto",
+  imageComingSoonLabel = "Imagem disponível em breve",
 }) {
   const hasImage = Boolean(imageSrc);
   const hasFeatures = Array.isArray(features) && features.length > 0;
@@ -51,7 +59,7 @@ export default function HotelRoomCard({
           <div className={styles.placeholder}>
             <div className={styles.placeholderInner}>
               <span className={styles.placeholderText}>
-                Imagem disponível em breve
+                {imageComingSoonLabel}
               </span>
             </div>
           </div>
@@ -81,7 +89,7 @@ export default function HotelRoomCard({
               aria-controls={panelId}
             >
               <span className={styles.toggleLabel}>
-                {detailsOpen ? "Ocultar detalhes" : "Ver detalhes"}
+                {detailsOpen ? closeDetailsLabel : openDetailsLabel}
               </span>
 
               <span
@@ -117,10 +125,7 @@ export default function HotelRoomCard({
               .join(" ")}
           >
             <div className={styles.detailsInner}>
-              <ul
-                className={styles.features}
-                aria-label="Características do quarto"
-              >
+              <ul className={styles.features} aria-label={featuresAriaLabel}>
                 {features.map((text, index) => (
                   <li
                     key={`${roomId}-${text}-${index}`}

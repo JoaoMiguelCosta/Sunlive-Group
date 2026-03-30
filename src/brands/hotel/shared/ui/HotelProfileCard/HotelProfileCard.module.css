@@ -1,108 +1,91 @@
 .card {
-    --card-radius: 1.35rem;
+    --card-radius: clamp(1.35rem, 1.7vw, 1.7rem);
 
-    --text-main: rgba(255, 248, 240, 0.95);
-    --text-soft: rgba(255, 241, 224, 0.84);
+    --text-main: rgba(255, 248, 240, 0.96);
+    --text-soft: rgba(255, 241, 224, 0.82);
 
-    --gold-line: rgba(230, 200, 147, 0.26);
+    --gold-line: rgba(230, 200, 147, 0.24);
 
     --card-background:
         radial-gradient(120% 120% at 0% 0%, rgba(241, 205, 132, 0.08), transparent 42%),
-        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.10), transparent 48%),
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.035) 0%,
-            rgba(255, 248, 235, 0.012) 18%,
-            rgba(0, 0, 0, 0.10) 100%),
-        linear-gradient(135deg,
-            rgba(46, 25, 12, 0.97) 0%,
-            rgba(30, 16, 9, 0.985) 55%,
-            rgba(22, 12, 8, 1) 100%);
+        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.09), transparent 48%),
+        linear-gradient(180deg, rgba(255, 248, 235, 0.03) 0%, rgba(255, 248, 235, 0.01) 18%, rgba(0, 0, 0, 0.1) 100%),
+        linear-gradient(135deg, rgba(50, 27, 13, 0.97) 0%, rgba(30, 16, 9, 0.985) 55%, rgba(22, 12, 8, 1) 100%);
 
     --card-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
-        0 14px 30px rgba(0, 0, 0, 0.16);
+        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
+        0 14px 28px rgba(0, 0, 0, 0.14);
 
     --card-hover-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
         inset 0 -1px 0 rgba(0, 0, 0, 0.14),
-        0 18px 34px rgba(0, 0, 0, 0.20);
+        0 18px 34px rgba(0, 0, 0, 0.18);
 
     --card-open-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
         inset 0 -1px 0 rgba(0, 0, 0, 0.14),
-        0 18px 38px rgba(0, 0, 0, 0.22),
+        0 20px 40px rgba(0, 0, 0, 0.2),
         0 0 16px rgba(230, 200, 147, 0.06);
 
-    --top-band-height: clamp(2.45rem, 2.5vw, 2.7rem);
+    --top-band-height: clamp(2.7rem, 2.7vw, 3rem);
     --top-band-background:
-        linear-gradient(180deg,
-            rgba(134, 84, 40, 0.92) 0%,
-            rgba(100, 61, 29, 0.96) 55%,
-            rgba(82, 49, 24, 0.98) 100%);
+        linear-gradient(180deg, rgba(139, 87, 42, 0.92) 0%, rgba(100, 61, 29, 0.96) 55%, rgba(79, 47, 23, 0.98) 100%);
 
-    --medallion-size: clamp(3.05rem, 3.2vw, 3.4rem);
+    --medallion-size: clamp(3.15rem, 3.2vw, 3.4rem);
     --medallion-background:
         radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.16), transparent 55%),
         radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.08), transparent 72%),
-        linear-gradient(180deg,
-            rgba(78, 42, 18, 0.92) 0%,
-            rgba(42, 21, 10, 0.96) 100%);
+        linear-gradient(180deg, rgba(78, 42, 18, 0.92) 0%, rgba(42, 21, 10, 0.96) 100%);
 
-    --header-min-height: clamp(6.7rem, 7.6vw, 7.3rem);
-    --header-padding: clamp(1.72rem, 1.9vw, 1.9rem) 0.92rem 0.68rem;
+    --header-min-height: clamp(7.2rem, 8vw, 7.9rem);
+    --header-padding: clamp(1.9rem, 2vw, 2rem) 1rem 0.82rem;
     --header-background:
-        linear-gradient(180deg,
-            rgba(126, 77, 36, 0.90) 0%,
-            rgba(96, 58, 28, 0.95) 52%,
-            rgba(82, 49, 24, 0.97) 100%);
+        linear-gradient(180deg, rgba(135, 82, 38, 0.92) 0%, rgba(98, 58, 28, 0.96) 52%, rgba(79, 47, 23, 0.98) 100%);
 
-    --title-max-width: 11ch;
-    --title-size: clamp(0.98rem, 0.34vw + 0.9rem, 1.12rem);
+    --title-max-width: 14ch;
+    --title-size: clamp(1.12rem, 0.42vw + 1rem, 1.32rem);
     --title-weight: 800;
-    --title-min-height: calc(1.12rem * 1.12 * 2);
+    --title-min-height: calc(1.32rem * 1.12 * 2);
 
-    --subtitle-max-width: 22ch;
-    --subtitle-size: clamp(0.84rem, 0.12vw + 0.83rem, 0.9rem);
-    --subtitle-min-height: calc(0.9rem * 1.24 * 2);
+    --subtitle-max-width: 24ch;
+    --subtitle-size: clamp(0.9rem, 0.16vw + 0.87rem, 0.97rem);
+    --subtitle-min-height: calc(0.97rem * 1.26 * 2);
 
-    --body-padding: 0.76rem 0.92rem 0.72rem;
+    --body-padding: 0.98rem 1rem 0.92rem;
     --body-background:
-        radial-gradient(680px 220px at 50% 0%, rgba(230, 200, 147, 0.07), transparent 58%),
-        linear-gradient(180deg, rgba(70, 43, 21, 0.34), rgba(38, 23, 11, 0.16));
+        radial-gradient(680px 220px at 50% 0%, rgba(230, 200, 147, 0.06), transparent 58%),
+        linear-gradient(180deg, rgba(70, 43, 21, 0.3), rgba(38, 23, 11, 0.14));
 
-    --description-size: clamp(0.88rem, 0.1vw + 0.87rem, 0.93rem);
+    --description-size: clamp(0.92rem, 0.1vw + 0.9rem, 0.98rem);
     --description-line-clamp: 3;
-    --description-min-height: calc(0.93rem * 1.4 * 3);
+    --description-min-height: calc(0.98rem * 1.48 * 3);
 
-    --footer-padding: 0.68rem 0.92rem 0.86rem;
+    --footer-padding: 0.86rem 1rem 1rem;
     --footer-background:
-        linear-gradient(180deg, rgba(47, 29, 15, 0.80), rgba(35, 21, 11, 0.96));
+        linear-gradient(180deg, rgba(47, 29, 15, 0.76), rgba(35, 21, 11, 0.96));
 
-    --cta-min-height: 2.32rem;
-    --cta-padding: 0.56rem 0.92rem;
-    --cta-border: 1px solid rgba(230, 200, 147, 0.32);
+    --cta-min-height: 2.55rem;
+    --cta-padding: 0.62rem 1rem;
+    --cta-border: 1px solid rgba(230, 200, 147, 0.3);
     --cta-background:
-        linear-gradient(180deg, rgba(92, 57, 28, 0.70), rgba(42, 25, 13, 0.90));
+        linear-gradient(180deg, rgba(92, 57, 28, 0.68), rgba(42, 25, 13, 0.9));
     --cta-hover-background:
-        linear-gradient(180deg, rgba(112, 69, 34, 0.80), rgba(50, 30, 15, 0.94));
+        linear-gradient(180deg, rgba(112, 69, 34, 0.8), rgba(50, 30, 15, 0.94));
 
     position: relative;
     isolation: isolate;
     inline-size: 100%;
     min-width: 0;
+    block-size: 100%;
     overflow: hidden;
     border-radius: var(--card-radius);
-
     display: flex;
     flex-direction: column;
-
     border: 1px solid var(--gold-line);
     background: var(--card-background);
     box-shadow: var(--card-shadow);
-
     color: var(--text-main);
-
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -115,16 +98,13 @@
     inset: 0;
     pointer-events: none;
     background:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.06) 0%,
-            rgba(255, 248, 235, 0.018) 16%,
-            rgba(255, 255, 255, 0) 38%);
+        linear-gradient(180deg, rgba(255, 248, 235, 0.06) 0%, rgba(255, 248, 235, 0.016) 16%, rgba(255, 255, 255, 0) 38%);
     opacity: 0.95;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    border-color: rgba(230, 200, 147, 0.42);
+    border-color: rgba(230, 200, 147, 0.4);
     box-shadow: var(--card-hover-shadow);
 }
 
@@ -145,10 +125,7 @@
     inset: 0;
     pointer-events: none;
     background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgba(230, 200, 147, 0.10) 50%,
-            transparent 100%);
+        linear-gradient(90deg, transparent 0%, rgba(230, 200, 147, 0.1) 50%, transparent 100%);
     opacity: 0.7;
 }
 
@@ -157,27 +134,23 @@
     inset-inline-start: 50%;
     inset-block-start: 100%;
     transform: translate(-50%, -50%);
-
     inline-size: var(--medallion-size);
     block-size: var(--medallion-size);
     border-radius: 999px;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     border: 1px solid rgba(241, 205, 132, 0.22);
     background: var(--medallion-background);
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.08),
         0 8px 20px rgba(0, 0, 0, 0.18);
-
     color: rgba(241, 205, 132, 0.98);
 }
 
 .icon {
-    inline-size: clamp(1.02rem, 1.12vw, 1.18rem);
-    block-size: clamp(1.02rem, 1.12vw, 1.18rem);
+    inline-size: clamp(1.04rem, 1.12vw, 1.18rem);
+    block-size: clamp(1.04rem, 1.12vw, 1.18rem);
     color: currentColor;
     stroke: currentColor;
     filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.14));
@@ -210,7 +183,6 @@
     line-height: 1.12;
     letter-spacing: -0.02em;
     text-wrap: balance;
-
     display: -webkit-box;
     display: box;
     -webkit-box-orient: vertical;
@@ -218,18 +190,16 @@
     -webkit-line-clamp: 2;
     line-clamp: 2;
     overflow: hidden;
-
     min-block-size: var(--title-min-height);
 }
 
 .subtitle {
-    margin: 0.32rem 0 0;
+    margin: 0.42rem 0 0;
     max-inline-size: var(--subtitle-max-width);
     color: var(--text-soft);
     font-size: var(--subtitle-size);
-    line-height: 1.24;
+    line-height: 1.26;
     text-wrap: balance;
-
     display: -webkit-box;
     display: box;
     -webkit-box-orient: vertical;
@@ -237,25 +207,26 @@
     -webkit-line-clamp: 2;
     line-clamp: 2;
     overflow: hidden;
-
     min-block-size: var(--subtitle-min-height);
 }
 
 .body {
     flex: 1 1 auto;
+    display: flex;
+    align-items: flex-start;
     padding: var(--body-padding);
     background: var(--body-background);
-    border-bottom: 1px solid rgba(230, 200, 147, 0.1);
+    border-bottom: 1px solid rgba(230, 200, 147, 0.08);
 }
 
 .description {
     margin: 0;
+    inline-size: 100%;
     color: rgba(255, 248, 240, 0.9);
     font-size: var(--description-size);
-    line-height: 1.4;
+    line-height: 1.48;
     text-align: center;
     text-wrap: pretty;
-
     display: -webkit-box;
     display: box;
     -webkit-box-orient: vertical;
@@ -263,7 +234,6 @@
     -webkit-line-clamp: var(--description-line-clamp);
     line-clamp: var(--description-line-clamp);
     overflow: hidden;
-
     min-block-size: var(--description-min-height);
     word-break: break-word;
 }
@@ -279,25 +249,20 @@
     appearance: none;
     border: var(--cta-border);
     outline: none;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.44rem;
-
     min-block-size: var(--cta-min-height);
     padding: var(--cta-padding);
     border-radius: 999px;
-
     background: var(--cta-background);
     color: rgba(255, 248, 240, 0.95);
     text-decoration: none;
     cursor: pointer;
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
         0 7px 16px rgba(0, 0, 0, 0.16);
-
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -307,7 +272,7 @@
 
 .cta:hover {
     transform: translateY(-1px);
-    border-color: rgba(230, 200, 147, 0.52);
+    border-color: rgba(230, 200, 147, 0.5);
     background: var(--cta-hover-background);
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.06),
@@ -330,7 +295,7 @@
 }
 
 .ctaLabel {
-    font-size: clamp(0.88rem, 0.1vw + 0.87rem, 0.93rem);
+    font-size: clamp(0.92rem, 0.1vw + 0.9rem, 0.98rem);
     font-weight: 800;
     letter-spacing: 0.01em;
 }
@@ -346,86 +311,17 @@
     transform: rotate(180deg);
 }
 
-/* Tema específico para a secção de eventos */
 .themeEvents {
     --card-radius: clamp(1.45rem, 1.75vw, 1.8rem);
+}
 
-    --gold-line: rgba(199, 134, 21, 0.5);
-
-    --card-background:
-        radial-gradient(120% 120% at 0% 0%, rgba(241, 205, 132, 0.11), transparent 42%),
-        radial-gradient(120% 140% at 100% 100%, rgba(199, 134, 21, 0.12), transparent 50%),
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.028) 0%,
-            rgba(255, 248, 235, 0.008) 18%,
-            rgba(0, 0, 0, 0.12) 100%),
-        linear-gradient(135deg,
-            rgba(74, 43, 18, 0.96) 0%,
-            rgba(44, 23, 11, 0.985) 58%,
-            rgba(22, 12, 8, 1) 100%);
-
-    --card-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
-        0 18px 32px rgba(0, 0, 0, 0.18);
-
-    --card-hover-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
-        0 22px 38px rgba(0, 0, 0, 0.22),
-        0 0 18px rgba(230, 200, 147, 0.05);
-
-    --card-open-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
-        0 24px 42px rgba(0, 0, 0, 0.24),
-        0 0 22px rgba(230, 200, 147, 0.07);
-
-    --top-band-height: clamp(3rem, 3vw, 3.35rem);
-    --top-band-background:
-        linear-gradient(180deg,
-            rgba(151, 96, 44, 0.95) 0%,
-            rgba(110, 66, 29, 0.97) 55%,
-            rgba(86, 50, 23, 0.98) 100%);
-
-    --medallion-size: clamp(3.15rem, 3.4vw, 3.6rem);
-
-    --header-min-height: clamp(7.75rem, 8.8vw, 8.7rem);
-    --header-padding: clamp(1.95rem, 2vw, 2.1rem) 1rem 0.9rem;
-    --header-background:
-        linear-gradient(180deg,
-            rgba(146, 94, 45, 0.93) 0%,
-            rgba(102, 60, 28, 0.96) 52%,
-            rgba(75, 43, 20, 0.98) 100%);
-
-    --title-max-width: 12ch;
-    --title-size: clamp(1.12rem, 0.6vw + 0.96rem, 1.42rem);
-    --title-min-height: calc(1.42rem * 1.12 * 2);
-
-    --subtitle-max-width: 24ch;
-    --subtitle-size: clamp(0.9rem, 0.2vw + 0.86rem, 1rem);
-    --subtitle-min-height: calc(1rem * 1.24 * 2);
-
-    --body-padding: 1rem 1rem 0.9rem;
-    --body-background:
-        radial-gradient(760px 260px at 50% 0%, rgba(230, 200, 147, 0.09), transparent 58%),
-        linear-gradient(180deg, rgba(68, 41, 19, 0.3), rgba(34, 20, 10, 0.18));
-
-    --description-size: clamp(0.94rem, 0.22vw + 0.88rem, 1rem);
-    --description-line-clamp: 4;
-    --description-min-height: calc(1rem * 1.45 * 4);
-
-    --footer-padding: 0.86rem 1rem 1rem;
-    --footer-background:
-        linear-gradient(180deg, rgba(48, 29, 15, 0.8), rgba(29, 17, 10, 0.97));
-
-    --cta-min-height: 2.75rem;
-    --cta-padding: 0.7rem 1.15rem;
-    --cta-border: 1px solid rgba(230, 200, 147, 0.38);
-    --cta-background:
-        linear-gradient(180deg, rgba(96, 59, 28, 0.76), rgba(44, 25, 13, 0.94));
-    --cta-hover-background:
-        linear-gradient(180deg, rgba(118, 72, 35, 0.82), rgba(50, 28, 14, 0.96));
+@media (min-width: 681px) and (max-width: 980px) {
+    .card {
+        --header-min-height: 7.7rem;
+        --title-min-height: calc(1.32rem * 1.12 * 2);
+        --subtitle-min-height: calc(0.97rem * 1.26 * 2);
+        --description-min-height: calc(0.98rem * 1.48 * 3);
+    }
 }
 
 @media (max-width: 1100px) {
@@ -438,7 +334,7 @@
     }
 
     .subtitle {
-        min-block-size: calc(var(--subtitle-size) * 1.24 * 2);
+        min-block-size: calc(var(--subtitle-size) * 1.26 * 2);
     }
 
     .description {
@@ -452,20 +348,20 @@
     }
 
     .header {
-        padding: 1.78rem 0.88rem 0.72rem;
+        padding: 1.78rem 0.9rem 0.76rem;
     }
 
     .body {
-        padding: 0.78rem 0.88rem 0.74rem;
+        padding: 0.82rem 0.9rem 0.78rem;
     }
 
     .footer {
-        padding: 0.7rem 0.88rem 0.86rem;
+        padding: 0.76rem 0.9rem 0.92rem;
     }
 
     .title {
         max-inline-size: 100%;
-        font-size: 1.04rem;
+        font-size: 1.06rem;
     }
 
     .subtitle {
@@ -473,7 +369,7 @@
     }
 
     .description {
-        font-size: 0.9rem;
+        font-size: 0.92rem;
         -webkit-line-clamp: 4;
         line-clamp: 4;
     }
@@ -490,12 +386,5 @@
     .icon {
         inline-size: 1rem;
         block-size: 1rem;
-    }
-
-    .themeEvents {
-        --top-band-height: 2.9rem;
-        --header-padding: 1.9rem 0.92rem 0.78rem;
-        --body-padding: 0.92rem 0.92rem 0.84rem;
-        --footer-padding: 0.78rem 0.92rem 0.94rem;
     }
 }

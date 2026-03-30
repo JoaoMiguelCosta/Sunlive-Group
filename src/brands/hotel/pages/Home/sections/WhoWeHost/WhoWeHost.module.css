@@ -3,6 +3,7 @@
     isolation: isolate;
     inline-size: 100%;
 }
+
 .shell {
     inline-size: min(100%, 1360px);
     margin-inline: auto;
@@ -375,9 +376,9 @@
 
     .sectionTitle {
         font-size: clamp(1.22rem, 7vw, 1.5rem);
-          
-                    max-inline-size: 25ch;
-           
+
+        max-inline-size: 25ch;
+
     }
 
     .sectionDescription {

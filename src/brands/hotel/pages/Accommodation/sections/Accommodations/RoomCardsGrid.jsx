@@ -24,6 +24,7 @@ export default function RoomCardsGrid() {
   if (!content) return null;
 
   const filterCfg = content.roomProfilesFilter ?? null;
+  const uiText = content.roomCardsUi ?? {};
   const rawCards = Array.isArray(content.roomCards) ? content.roomCards : [];
 
   const cards = useMemo(() => {
@@ -67,32 +68,52 @@ export default function RoomCardsGrid() {
     <div className={styles.wrap}>
       <RoomProfileFilterBar
         label={filterCfg?.label ?? "Filtrar por perfil"}
+        ariaLabel={filterCfg?.ariaLabel ?? "Filtro por perfil de hóspede"}
         options={filterCfg?.options ?? []}
         active={active}
         onChange={setActive}
       />
 
-      <div className={styles.grid} aria-label="Lista de quartos">
-        {visibleCards.map((room) => {
-          const open = openRoomId === room._uiId;
+      {visibleCards.length ? (
+        <div
+          className={styles.grid}
+          aria-label={uiText.roomListAriaLabel ?? "Lista de quartos"}
+        >
+          {visibleCards.map((room) => {
+            const open = openRoomId === room._uiId;
 
-          return (
-            <div key={room._uiId} className={styles.cardCell}>
-              <HotelRoomCard
-                roomId={room._uiId}
-                title={room.title}
-                description={room.description}
-                features={room.features}
-                imageSrc={room.imageSrc}
-                imageAlt={room.imageAlt}
-                badge={room.badge}
-                detailsOpen={open}
-                onToggle={() => handleToggle(room._uiId)}
-              />
-            </div>
-          );
-        })}
-      </div>
+            return (
+              <div key={room._uiId} className={styles.cardCell}>
+                <HotelRoomCard
+                  roomId={room._uiId}
+                  title={room.title}
+                  description={room.description}
+                  features={room.features}
+                  imageSrc={room.imageSrc}
+                  imageAlt={room.imageAlt}
+                  badge={room.badge}
+                  detailsOpen={open}
+                  onToggle={() => handleToggle(room._uiId)}
+                  openDetailsLabel={uiText.openDetailsLabel}
+                  closeDetailsLabel={uiText.closeDetailsLabel}
+                  featuresAriaLabel={uiText.featuresAriaLabel}
+                  imageComingSoonLabel={uiText.imageComingSoonLabel}
+                />
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className={styles.emptyState} role="status" aria-live="polite">
+          <h3 className={styles.emptyTitle}>
+            {uiText.emptyStateTitle ?? "Nenhuma tipologia encontrada"}
+          </h3>
+          <p className={styles.emptyText}>
+            {uiText.emptyStateDescription ??
+              "Tente selecionar outro perfil para ver mais opções disponíveis."}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

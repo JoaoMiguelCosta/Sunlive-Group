@@ -17,36 +17,46 @@ export const accommodations = {
 
   gallery: {
     fallbackLabel: "Galeria de alojamento",
+    previousLabel: "Imagem anterior",
+    nextLabel: "Imagem seguinte",
+    indicatorsLabel: "Navegação da galeria de alojamento",
+    fallbackEyebrow: "Alojamento",
+    fallbackTitle: "Galeria de alojamento",
     items: [
       {
         id: "acc-03",
         src: accommodation2,
-        alt: "Alojamento — Foto panorâmica 2",
+        alt: "Alojamento — fachada principal",
         label: "Fachada Principal",
+        imagePosition: "center center",
       },
       {
         id: "acc-01",
         src: suiteImage,
-        alt: "Alojamento — Suíte",
+        alt: "Alojamento — suíte",
         label: "Suíte",
+        imagePosition: "center 54%",
       },
       {
         id: "acc-02",
         src: accommodation1,
-        alt: "Alojamento — Foto panorâmica 1",
+        alt: "Alojamento — quarto com varanda",
         label: "Quarto com Varanda",
+        imagePosition: "center center",
       },
       {
         id: "acc-04",
         src: accommodation3,
-        alt: "Alojamento — Foto panorâmica 3",
+        alt: "Alojamento — vista exterior",
         label: "Exterior",
+        imagePosition: "center center",
       },
       {
         id: "acc-05",
         src: accommodation4,
-        alt: "Alojamento — Foto panorâmica 4",
+        alt: "Alojamento — detalhes da unidade",
         label: "Detalhes",
+        imagePosition: "center center",
       },
     ],
   },
@@ -55,11 +65,12 @@ export const accommodations = {
     id: "estadia-quartos",
     headerLabel: "Quartos e Suítes",
     description:
-      "Dispomos de um conjunto de quartos e suites confortáveis e funcionais, pensados para responder a diferentes perfis de hóspedes — desde viajantes individuais e casais, até famílias, equipas desportivas ou grupos empresariais.",
+      "Dispomos de um conjunto de quartos e suítes confortáveis e funcionais, pensados para responder a diferentes perfis de hóspedes — desde viajantes individuais e casais, até famílias, equipas desportivas ou grupos empresariais.",
   },
 
   roomProfilesFilter: {
     label: "Filtrar por perfil",
+    ariaLabel: "Filtro por perfil de hóspede",
     options: [
       { id: "all", label: "Todos" },
       { id: "solo", label: "Viajante Individual" },
@@ -71,9 +82,21 @@ export const accommodations = {
     ],
   },
 
+  roomCardsUi: {
+    roomListAriaLabel: "Lista de quartos e suítes",
+    openDetailsLabel: "Ver detalhes",
+    closeDetailsLabel: "Ocultar detalhes",
+    featuresAriaLabel: "Características do quarto",
+    imageComingSoonLabel: "Imagem disponível em breve",
+    emptyStateTitle: "Nenhuma tipologia encontrada",
+    emptyStateDescription:
+      "Tente selecionar outro perfil para ver mais opções disponíveis.",
+  },
+
   roomCards: [
     {
       id: "room-individual",
+      badge: "Solo",
       title: "Quarto Individual",
       description:
         "Ideal para viajantes a solo ou profissionais em deslocação que valorizam tranquilidade e funcionalidade.",
@@ -90,6 +113,7 @@ export const accommodations = {
     },
     {
       id: "room-double",
+      badge: "Casal",
       title: "Quarto Duplo",
       description:
         "Perfeito para casais ou dois hóspedes que procuram conforto num ambiente acolhedor.",
@@ -106,6 +130,7 @@ export const accommodations = {
     },
     {
       id: "room-twin",
+      badge: "Atletas",
       title: "Quarto Twin",
       description:
         "Indicado para colegas ou atletas que preferem camas separadas, com comodidade partilhada.",
@@ -122,6 +147,7 @@ export const accommodations = {
     },
     {
       id: "room-triple",
+      badge: "Grupos",
       title: "Quarto Triplo",
       description:
         "Solução prática para pequenos grupos ou equipas, com flexibilidade na configuração das camas.",
@@ -138,6 +164,7 @@ export const accommodations = {
     },
     {
       id: "room-suite",
+      badge: "Premium",
       title: "Suíte",
       description:
         "Ideal para casais, treinadores ou hóspedes que valorizam espaço extra, privacidade e conforto superior.",
@@ -158,6 +185,8 @@ export const accommodations = {
 
   infoNote: {
     id: "estadia-varanda-nota",
+    ariaLabel: "Nota importante sobre varandas",
+    iconText: "i",
     text: "Algumas unidades incluem varanda privada. A disponibilidade depende da tipologia e deverá ser confirmada no momento da reserva.",
   },
 };

@@ -1,3 +1,5 @@
+import hotelBrand from "../../../../config/index.js";
+
 import TitleReceptionSupport from "./TitleReceptionSupport.jsx";
 import DescriptionReceptionSupport from "./DescriptionReceptionSupport.jsx";
 import ReceptionSupportServices from "./ReceptionSupportServices.jsx";
@@ -6,19 +8,30 @@ import ReceptionSupportAvailability from "./ReceptionSupportAvailability.jsx";
 import styles from "./ReceptionSupport.module.css";
 
 export default function ReceptionSupportSection() {
+  const section =
+    hotelBrand?.pages?.facilities?.sections?.receptionSupport ?? null;
+
+  if (!section) return null;
+
+  const sectionId = section.id ?? "receptionSupport";
+  const titleId = `${sectionId}-title`;
+
   return (
     <section
-      id="facilities-reception"
+      id={sectionId}
       className={styles.section}
-      aria-label="Receção e Apoio"
+      aria-labelledby={titleId}
     >
+      <div className={styles.backgroundGlow} aria-hidden="true" />
+      <div className={styles.backgroundGlowSecondary} aria-hidden="true" />
+
       <div className={styles.inner}>
-        <div className={styles.introBlock}>
-          <TitleReceptionSupport />
+        <header className={styles.introBlock}>
+          <TitleReceptionSupport titleId={titleId} />
           <div className={styles.descriptionWrap}>
             <DescriptionReceptionSupport />
           </div>
-        </div>
+        </header>
 
         <ReceptionSupportServices />
         <ReceptionSupportAvailability />

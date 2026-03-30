@@ -1,17 +1,343 @@
 .block {
-    width: 100%;
-    margin-top: clamp(1.75rem, 3vw, 2.4rem);
+    inline-size: 100%;
+    margin-top: clamp(1.5rem, 2.6vw, 2.1rem);
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(320px, 1fr));
-    gap: clamp(1rem, 2vw, 1.6rem);
+    gap: clamp(0.95rem, 1.8vw, 1.35rem);
     align-items: stretch;
 }
 
-@media (max-width: 980px) {
+.detailPanel {
+    position: relative;
+    margin-top: clamp(1rem, 1.8vw, 1.4rem);
+    animation: detailPanelReveal 260ms ease;
+}
+
+.detailShell {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(199, 134, 21, 0.48);
+    border-radius: clamp(22px, 2.2vw, 28px);
+    background:
+        radial-gradient(120% 180% at 12% 0%, rgba(241, 205, 132, 0.1), transparent 42%),
+        radial-gradient(110% 160% at 90% 100%, rgba(199, 134, 21, 0.08), transparent 48%),
+        linear-gradient(90deg, rgba(73, 39, 14, 0.97) 0%, rgba(41, 22, 10, 0.985) 62%, rgba(27, 15, 8, 0.99) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 16px 34px rgba(0, 0, 0, 0.18);
+}
+
+.detailShell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(255, 248, 235, 0.03) 0%, rgba(255, 248, 235, 0) 24%);
+    pointer-events: none;
+}
+
+.detailHero {
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid rgba(199, 134, 21, 0.18);
+    background:
+        radial-gradient(900px 220px at 18% 6%, rgba(241, 205, 132, 0.08), transparent 48%),
+        linear-gradient(90deg, rgba(86, 49, 18, 0.96) 0%, rgba(52, 28, 10, 0.98) 58%, rgba(37, 22, 11, 0.99) 100%);
+}
+
+.detailHeroInner {
+    padding: clamp(1rem, 1.8vw, 1.35rem);
+}
+
+.detailHeroLeft {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: clamp(0.9rem, 1.4vw, 1.1rem);
+}
+
+.detailHeroContent {
+    display: grid;
+    gap: 0.58rem;
+    min-width: 0;
+}
+
+.detailTop {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.detailBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 34px;
+    padding: 0.2rem 0.86rem;
+    border-radius: 999px;
+    background:
+        radial-gradient(400px 100px at 20% 50%, rgba(230, 200, 147, 0.12), transparent 60%),
+        linear-gradient(90deg, rgba(92, 58, 20, 0.95), rgba(38, 23, 11, 0.98));
+    color: rgba(255, 248, 236, 0.96);
+    font-size: 0.82rem;
+    line-height: 1;
+    font-weight: 700;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 220, 160, 0.14);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.detailTitle {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.22rem, 1.24vw, 1.56rem);
+    line-height: 1.12;
+    font-weight: 800;
+    text-wrap: balance;
+}
+
+.detailBody {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(300px, 1.05fr) minmax(280px, 0.95fr);
+    gap: clamp(1rem, 1.8vw, 1.4rem);
+    padding: clamp(1rem, 1.8vw, 1.35rem);
+}
+
+.detailMain,
+.detailHighlights {
+    position: relative;
+    z-index: 1;
+}
+
+.detailMain {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+    animation: detailContentFade 300ms ease;
+}
+
+.detailDescription {
+   
+    margin: 0;
+    color: rgba(245, 237, 227, 0.94);
+    font-size: clamp(0.96rem, 0.86vw, 1rem);
+    line-height: 1.6;
+}
+
+.detailNoteCard {
+    display: grid;
+    gap: 0.45rem;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(199, 134, 21, 0.2);
+    border-radius: 16px;
+    background:
+        radial-gradient(120% 180% at 50% -20%, rgba(241, 205, 132, 0.05), transparent 45%),
+        linear-gradient(180deg, rgba(255, 248, 235, 0.018), rgba(255, 248, 235, 0.008));
+}
+
+.detailNoteLabel {
+    color: #d7a94b;
+    font-size: 0.78rem;
+    line-height: 1;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.detailNote {
+    margin: 0;
+    color: rgba(245, 237, 227, 0.92);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.detailHighlights {
+    padding: clamp(0.95rem, 1.4vw, 1.15rem);
+    border: 1px solid rgba(199, 134, 21, 0.22);
+    border-radius: clamp(18px, 2vw, 22px);
+    background:
+        radial-gradient(120% 180% at 50% -20%, rgba(241, 205, 132, 0.06), transparent 45%),
+        linear-gradient(180deg, rgba(255, 248, 235, 0.02), rgba(255, 248, 235, 0.008));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 10px 24px rgba(0, 0, 0, 0.14);
+    animation: detailContentFade 320ms ease;
+}
+
+.highlightsTitle {
+    margin: 0 0 0.9rem;
+    color: #ffffff;
+    font-size: clamp(1rem, 0.95vw, 1.12rem);
+    line-height: 1.14;
+    font-weight: 800;
+}
+
+.highlightsList {
+    display: grid;
+    gap: 0.78rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.highlightItem {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.72rem;
+}
+
+.highlightDot {
+    inline-size: 10px;
+    block-size: 10px;
+    border-radius: 999px;
+    margin-top: 0.38rem;
+    background:
+        linear-gradient(180deg, rgba(230, 179, 75, 1) 0%, rgba(204, 142, 28, 1) 100%);
+    box-shadow: 0 0 10px rgba(241, 205, 132, 0.18);
+}
+
+.highlightText {
+    color: rgba(245, 237, 227, 0.94);
+    font-size: clamp(0.92rem, 0.8vw, 0.98rem);
+    line-height: 1.5;
+    font-weight: 600;
+    text-wrap: balance;
+}
+
+.detailIconCircle {
+    inline-size: clamp(3rem, 2.8vw, 3.25rem);
+    block-size: clamp(3rem, 2.8vw, 3.25rem);
+    border-radius: 999px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(241, 205, 132, 0.2);
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.16), transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.08), transparent 72%),
+        linear-gradient(180deg, rgba(78, 42, 18, 0.92) 0%, rgba(42, 21, 10, 0.96) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.12),
+        0 8px 18px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(255, 220, 140, 0.04);
+    color: #f1cd84;
+}
+
+.detailIconCircle :global(svg) {
+    inline-size: clamp(1rem, 1.02vw, 1.16rem);
+    block-size: clamp(1rem, 1.02vw, 1.16rem);
+    display: block;
+    stroke: currentColor;
+    filter: drop-shadow(0 0 6px rgba(241, 205, 132, 0.1));
+}
+
+.detailIconPlaceholder {
+    inline-size: 0.82rem;
+    block-size: 0.82rem;
+    border-radius: 999px;
+    background: rgba(255, 248, 236, 0.88);
+    box-shadow: 0 0 10px rgba(241, 205, 132, 0.1);
+}
+
+@keyframes detailPanelReveal {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes detailContentFade {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1100px) {
     .grid {
         grid-template-columns: 1fr;
+    }
+
+    .detailBody {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .block {
+        margin-top: 1.25rem;
+    }
+
+    .detailShell {
+        border-radius: 20px;
+    }
+
+    .detailHeroInner,
+    .detailBody {
+        padding: 0.95rem;
+    }
+
+    .detailHeroLeft {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    .detailHeroContent {
+        justify-items: center;
+    }
+
+    .detailHighlights {
+        padding: 0.9rem;
+        border-radius: 16px;
+    }
+
+    .detailTitle {
+        font-size: 1.08rem;
+        text-align: center;
+    }
+
+    .detailDescription,
+    .highlightText {
+        font-size: 0.9rem;
+    }
+
+    .detailNote {
+        font-size: 0.84rem;
+    }
+
+    .highlightsTitle {
+        font-size: 0.98rem;
+    }
+
+    .detailIconCircle {
+        inline-size: 2.6rem;
+        block-size: 2.6rem;
+    }
+
+    .detailIconCircle :global(svg) {
+        inline-size: 0.96rem;
+        block-size: 0.96rem;
     }
 }

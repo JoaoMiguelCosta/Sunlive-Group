@@ -30,16 +30,16 @@
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at center, rgba(255, 220, 160, 0.06), transparent 56%),
+        radial-gradient(circle at center, rgba(255, 220, 160, 0.07), transparent 56%),
         linear-gradient(90deg,
-            rgba(18, 11, 6, 0.38) 0%,
+            rgba(18, 11, 6, 0.42) 0%,
             rgba(18, 11, 6, 0.10) 18%,
             rgba(18, 11, 6, 0.10) 82%,
-            rgba(18, 11, 6, 0.38) 100%),
+            rgba(18, 11, 6, 0.42) 100%),
         linear-gradient(180deg,
             rgba(18, 11, 6, 0.24) 0%,
-            rgba(18, 11, 6, 0.10) 50%,
-            rgba(18, 11, 6, 0.28) 100%);
+            rgba(18, 11, 6, 0.08) 50%,
+            rgba(18, 11, 6, 0.30) 100%);
 }
 
 .image,
@@ -52,7 +52,7 @@
     position: relative;
     z-index: 1;
     display: block;
-    filter: saturate(1.02) contrast(1.01);
+    filter: saturate(1.03) contrast(1.02);
     transition:
         transform 260ms ease,
         filter 260ms ease,
@@ -79,8 +79,8 @@
     z-index: 2;
     pointer-events: none;
     background:
-        linear-gradient(180deg, rgba(16, 9, 5, 0.02) 0%, rgba(16, 9, 5, 0.06) 100%),
-        radial-gradient(circle at center, transparent 54%, rgba(15, 9, 5, 0.08) 100%);
+        linear-gradient(180deg, rgba(16, 9, 5, 0.02) 0%, rgba(16, 9, 5, 0.08) 100%),
+        radial-gradient(circle at center, transparent 52%, rgba(15, 9, 5, 0.10) 100%);
 }
 
 .fallback {
@@ -128,9 +128,9 @@
     bottom: clamp(0.72rem, 1vw, 0.95rem);
     z-index: 6;
     max-inline-size: min(72%, 22rem);
-    padding: 0.62rem 1rem;
+    padding: 0.66rem 1rem;
     border-radius: 999px;
-    border: 1px solid rgba(214, 166, 74, 0.22);
+    border: 1px solid rgba(214, 166, 74, 0.24);
     background:
         radial-gradient(circle at 50% 0%, rgba(255, 234, 191, 0.08), transparent 58%),
         linear-gradient(180deg, rgba(72, 36, 15, 0.92), rgba(28, 13, 7, 0.96));
@@ -278,7 +278,7 @@
     }
 
     .stage:hover .backdropImage {
-        transform: scale(1.16);
+        transform: scale(1.18);
     }
 }
 

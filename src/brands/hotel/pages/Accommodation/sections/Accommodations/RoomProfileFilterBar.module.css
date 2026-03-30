@@ -2,12 +2,10 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
-    margin-block: clamp(16px, 2vw, 20px);
+    margin-block: clamp(16px, 2vw, 22px);
     overflow: hidden;
-
-    border-radius: clamp(16px, 1.8vw, 20px);
+    border-radius: clamp(18px, 1.8vw, 22px);
     border: 1px solid rgba(230, 200, 147, 0.26);
-
     background:
         radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 44%),
         radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.10), transparent 46%),
@@ -18,7 +16,6 @@
         linear-gradient(135deg,
             rgba(44, 23, 11, 0.96) 0%,
             rgba(28, 14, 8, 0.98) 100%);
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.045),
         inset 0 -1px 0 rgba(0, 0, 0, 0.16),
@@ -42,13 +39,11 @@
 .inner {
     position: relative;
     z-index: 1;
-
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: clamp(0.7rem, 1vw, 0.9rem);
-    align-items: start;
-
-    padding: clamp(0.8rem, 1.3vw, 0.95rem) clamp(0.88rem, 1.4vw, 0.98rem);
+    gap: clamp(0.8rem, 1vw, 0.95rem);
+    align-items: center;
+    padding: clamp(0.85rem, 1.3vw, 1rem) clamp(0.9rem, 1.5vw, 1.05rem);
 }
 
 .left {
@@ -56,9 +51,8 @@
     align-items: center;
     gap: 0.6rem;
     min-width: 0;
-
     color: rgba(255, 248, 240, 0.92);
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .icon {
@@ -75,6 +69,10 @@
     line-height: 1.2;
 }
 
+.chipsScroller {
+    min-width: 0;
+}
+
 .chips {
     display: flex;
     flex-wrap: wrap;
@@ -88,28 +86,22 @@
     appearance: none;
     border: 1px solid rgba(230, 200, 147, 0.34);
     outline: none;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 2.35rem;
+    min-height: 2.42rem;
     max-width: 100%;
-
-    padding: 0.5rem 0.88rem;
+    padding: 0.54rem 0.94rem;
     border-radius: 999px;
-
     background:
         linear-gradient(180deg, rgba(88, 54, 26, 0.68), rgba(38, 23, 11, 0.88));
     color: rgba(255, 248, 240, 0.90);
-
     font-weight: 700;
     letter-spacing: 0.01em;
     cursor: pointer;
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.04),
         0 6px 14px rgba(0, 0, 0, 0.16);
-
     transition:
         transform 140ms ease,
         border-color 140ms ease,
@@ -130,8 +122,8 @@
 }
 
 .active {
-    background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
-    border-color: rgba(230, 200, 147, 0.58);
+    background: linear-gradient(180deg, rgba(184, 132, 49, 0.98) 0%, rgba(135, 88, 18, 0.98) 100%);
+    border-color: rgba(230, 200, 147, 0.6);
     color: rgba(255, 250, 244, 0.98);
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.06),
@@ -158,15 +150,26 @@
         0 8px 18px rgba(0, 0, 0, 0.20);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
     .inner {
         grid-template-columns: 1fr;
-        gap: 0.72rem;
         align-items: stretch;
     }
 
-    .left {
-        align-items: center;
+    .chipsScroller {
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: none;
+    }
+
+    .chipsScroller::-webkit-scrollbar {
+        display: none;
+    }
+
+    .chips {
+        flex-wrap: nowrap;
+        inline-size: max-content;
+        min-inline-size: 100%;
     }
 }
 
@@ -177,10 +180,6 @@
 
     .inner {
         padding: 0.88rem 0.88rem;
-    }
-
-    .chips {
-        gap: 0.52rem;
     }
 
     .chip {
@@ -202,46 +201,18 @@
         padding: 0.8rem 0.8rem;
     }
 
-    .left {
-        gap: 0.52rem;
-    }
-
-    .icon {
-        transform: scale(0.95);
-        transform-origin: left center;
-    }
-
     .label {
         font-size: 0.93rem;
         white-space: normal;
     }
 
-    .chips {
-        gap: 0.48rem;
-    }
-
     .chip {
-        min-height: 2.16rem;
-        padding: 0.46rem 0.74rem;
+        min-height: 2.14rem;
+        padding: 0.44rem 0.74rem;
     }
 
     .chipLabel {
         font-size: 0.88rem;
-    }
-}
-
-@media (max-width: 380px) {
-    .inner {
-        padding: 0.74rem 0.74rem;
-    }
-
-    .chip {
-        inline-size: 100%;
-        justify-content: center;
-    }
-
-    .chipLabel {
-        font-size: 0.87rem;
     }
 }
 

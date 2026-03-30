@@ -1,0 +1,7 @@
+.wrap {
+    position: relative;
+    inline-size: 100%;
+    display: flex;
+    justify-content: center;
+    margin-block-end: clamp(0.2rem, 0.6vw, 0.4rem);
+}

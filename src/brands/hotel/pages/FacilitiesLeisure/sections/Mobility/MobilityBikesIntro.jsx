@@ -4,7 +4,7 @@ import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescripti
 
 import styles from "./MobilityBikesIntro.module.css";
 
-export default function MobilityBikesIntro() {
+export default function MobilityBikesIntro({ titleId }) {
   const bikes =
     hotelBrand?.pages?.facilities?.sections?.mobility?.bikes ?? null;
 
@@ -12,7 +12,12 @@ export default function MobilityBikesIntro() {
 
   return (
     <div className={styles.block}>
-      <HotelSectionHeader label={bikes.headerLabel} />
+      <HotelSectionHeader
+        id={titleId}
+        label={bikes.headerLabel}
+        as="h3"
+        align="center"
+      />
 
       {bikes.description ? (
         <div className={styles.descriptionWrap}>

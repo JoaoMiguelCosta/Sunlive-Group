@@ -2,6 +2,7 @@ import styles from "./RoomProfileFilterBar.module.css";
 
 export default function RoomProfileFilterBar({
   label = "Filtrar por perfil",
+  ariaLabel = "Filtro por perfil",
   options = [],
   active = "all",
   onChange,
@@ -27,25 +28,27 @@ export default function RoomProfileFilterBar({
           <span className={styles.label}>{label}:</span>
         </div>
 
-        <div className={styles.chips} role="tablist" aria-label={label}>
-          {options.map((opt) => {
-            const isActive = opt.id === active;
+        <div className={styles.chipsScroller}>
+          <div className={styles.chips} role="tablist" aria-label={ariaLabel}>
+            {options.map((opt) => {
+              const isActive = opt.id === active;
 
-            return (
-              <button
-                key={opt.id}
-                type="button"
-                className={[styles.chip, isActive ? styles.active : ""]
-                  .filter(Boolean)
-                  .join(" ")}
-                onClick={() => onChange?.(opt.id)}
-                role="tab"
-                aria-selected={isActive}
-              >
-                <span className={styles.chipLabel}>{opt.label}</span>
-              </button>
-            );
-          })}
+              return (
+                <button
+                  key={opt.id}
+                  type="button"
+                  className={[styles.chip, isActive ? styles.active : ""]
+                    .filter(Boolean)
+                    .join(" ")}
+                  onClick={() => onChange?.(opt.id)}
+                  role="tab"
+                  aria-selected={isActive}
+                >
+                  <span className={styles.chipLabel}>{opt.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

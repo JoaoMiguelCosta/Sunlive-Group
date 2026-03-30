@@ -1,3 +1,5 @@
+import hotelBrand from "../../../../config/index.js";
+
 import TitleMobility from "./TitleMobility.jsx";
 import DescriptionMobility from "./DescriptionMobility.jsx";
 import MobilityBikesIntro from "./MobilityBikesIntro.jsx";
@@ -8,28 +10,47 @@ import MobilityParkingHighlights from "./MobilityParkingHighlights.jsx";
 import styles from "./Mobility.module.css";
 
 export default function MobilitySection() {
+  const mobility = hotelBrand?.pages?.facilities?.sections?.mobility ?? null;
+
+  if (!mobility) return null;
+
+  const sectionId = mobility.id ?? "mobility";
+  const titleId = `${sectionId}-title`;
+
   return (
     <section
-      id="facilities-mobility"
+      id={sectionId}
       className={styles.section}
-      aria-label="Mobilidade"
+      aria-labelledby={titleId}
     >
+      <div className={styles.backgroundGlow} aria-hidden="true" />
+      <div className={styles.backgroundGlowSecondary} aria-hidden="true" />
+
       <div className={styles.inner}>
-        <div className={styles.introBlock}>
-          <TitleMobility />
+        <header className={styles.introBlock}>
+          <TitleMobility titleId={titleId} />
+
           <div className={styles.descriptionWrap}>
             <DescriptionMobility />
           </div>
-        </div>
+        </header>
 
-        <div className={styles.subsection}>
-          <MobilityBikesIntro />
-          <MobilityBikesHighlights />
-        </div>
+        <div className={styles.contentStack}>
+          <section
+            className={styles.subsection}
+            aria-labelledby={`${sectionId}-bikes-title`}
+          >
+            <MobilityBikesIntro titleId={`${sectionId}-bikes-title`} />
+            <MobilityBikesHighlights />
+          </section>
 
-        <div className={styles.subsection}>
-          <MobilityParkingIntro />
-          <MobilityParkingHighlights />
+          <section
+            className={styles.subsection}
+            aria-labelledby={`${sectionId}-parking-title`}
+          >
+            <MobilityParkingIntro titleId={`${sectionId}-parking-title`} />
+            <MobilityParkingHighlights />
+          </section>
         </div>
       </div>
     </section>

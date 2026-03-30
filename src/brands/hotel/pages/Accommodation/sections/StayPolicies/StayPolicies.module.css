@@ -1,48 +1,58 @@
 .section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(2.35rem, 4.4vw, 3.5rem);
-
-   
+    padding-block: clamp(2.7rem, 5.2vw, 4.2rem);
+    overflow: clip;
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 7% auto auto 50%;
-    translate: -50% 0;
-    inline-size: min(88vw, 1140px);
-    block-size: clamp(170px, 22vw, 280px);
+    inset: 0;
     pointer-events: none;
-  
-  
-    opacity: 0.74;
+    background:
+        radial-gradient(920px 340px at 50% 0%, rgba(214, 166, 74, 0.10), transparent 64%),
+        radial-gradient(620px 240px at 12% 36%, rgba(214, 166, 74, 0.04), transparent 72%),
+        radial-gradient(620px 240px at 88% 38%, rgba(214, 166, 74, 0.04), transparent 72%);
+    opacity: 0.9;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    inset: auto 50% 8% auto;
+    translate: 50% 0;
+    inline-size: min(92vw, 1120px);
+    block-size: clamp(220px, 26vw, 340px);
+    pointer-events: none;
+    background:
+        radial-gradient(60% 100% at 50% 50%, rgba(214, 166, 74, 0.10), transparent 72%);
+    filter: blur(46px);
+    opacity: 0.78;
 }
 
 .inner {
     position: relative;
     z-index: 1;
-    inline-size: calc(min(var(--sl-container-lg, 85rem), 100%) - (2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem))));
+    inline-size: calc(min(var(--sl-container-lg, 86rem), 100%) - (2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem))));
     margin-inline: auto;
     box-sizing: border-box;
-
     display: grid;
-    gap: clamp(0.95rem, 1.8vw, 1.25rem);
+    gap: clamp(1rem, 1.8vw, 1.35rem);
+}
+
+.headerBlock {
+    display: grid;
+    gap: clamp(0.9rem, 1.4vw, 1.1rem);
 }
 
 .accordionWrap {
-    margin-top: clamp(0.08rem, 0.3vw, 0.2rem);
+    margin-top: clamp(0.15rem, 0.5vw, 0.35rem);
 }
 
 @media (max-width: 640px) {
     .section {
-        padding-block: 1.9rem;
-    }
-
-    .section::before {
-        inline-size: 100%;
-        block-size: 180px;
-        inset-block-start: 4%;
+        padding-block: 2.1rem;
     }
 
     .inner {
@@ -50,6 +60,6 @@
     }
 
     .accordionWrap {
-        margin-top: 0.08rem;
+        margin-top: 0.1rem;
     }
 }

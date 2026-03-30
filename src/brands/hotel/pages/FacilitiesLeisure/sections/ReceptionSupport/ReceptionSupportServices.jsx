@@ -1,6 +1,7 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 import hotelBrand, { BRAND_FLAGS } from "../../../../config/index.js";
+import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
@@ -51,6 +52,18 @@ export default function ReceptionSupportServices() {
     };
   }, [content]);
 
+  const initialLanguageKey =
+    resolvedContent?.languages?.find((language) => language.defaultSelected)
+      ?.key ??
+    resolvedContent?.languages?.[0]?.key ??
+    null;
+
+  const [activeLanguageKey, setActiveLanguageKey] =
+    useState(initialLanguageKey);
+
+  const features = resolvedContent?.features ?? [];
+  const { isOpen, toggle } = useAccordion(features, { allowMultiple: false });
+
   if (!resolvedContent) return null;
 
   const languages = Array.isArray(resolvedContent.languages)
@@ -59,14 +72,16 @@ export default function ReceptionSupportServices() {
   const contacts = Array.isArray(resolvedContent.contacts)
     ? resolvedContent.contacts
     : [];
-  const features = Array.isArray(resolvedContent.features)
-    ? resolvedContent.features
-    : [];
+
+  const activeLanguage =
+    languages.find((language) => language.key === activeLanguageKey) ??
+    languages[0] ??
+    null;
 
   return (
     <div id={resolvedContent.id} className={styles.block}>
       <div className={styles.grid}>
-        <div className={styles.leftCard}>
+        <article className={styles.leftCard}>
           {resolvedContent.multilingualTitle ? (
             <h3 className={styles.cardTitle}>
               {resolvedContent.multilingualTitle}
@@ -74,19 +89,49 @@ export default function ReceptionSupportServices() {
           ) : null}
 
           {languages.length ? (
-            <div className={styles.languagesGrid}>
-              {languages.map((language) => (
-                <div key={language.key} className={styles.languageCard}>
-                  <span className={styles.languageLabel}>{language.label}</span>
+            <div
+              className={styles.languagesGrid}
+              role="tablist"
+              aria-label="Idiomas de atendimento disponíveis"
+            >
+              {languages.map((language) => {
+                const isActive = activeLanguage?.key === language.key;
 
-                  <FlagSlot
-                    flag={language.flagComponent ?? null}
-                    flagLabel={
-                      language.ariaLabel ?? `Bandeira do idioma ${language.label}`
-                    }
-                  />
-                </div>
-              ))}
+                return (
+                  <button
+                    key={language.key}
+                    type="button"
+                    className={`${styles.languageCard} ${
+                      isActive ? styles.languageCardActive : ""
+                    }`}
+                    onClick={() => setActiveLanguageKey(language.key)}
+                    aria-pressed={isActive}
+                  >
+                    <span className={styles.languageLabel}>
+                      {language.label}
+                    </span>
+
+                    <FlagSlot
+                      flag={language.flagComponent ?? null}
+                      flagLabel={
+                        language.ariaLabel ??
+                        `Bandeira do idioma ${language.label}`
+                      }
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
+
+          {activeLanguage ? (
+            <div className={styles.languageSpotlight}>
+              <h4 className={styles.languageSpotlightTitle}>
+                {activeLanguage.title}
+              </h4>
+              <p className={styles.languageSpotlightDescription}>
+                {activeLanguage.description}
+              </p>
             </div>
           ) : null}
 
@@ -108,27 +153,74 @@ export default function ReceptionSupportServices() {
               ))}
             </div>
           ) : null}
-        </div>
+        </article>
 
-        <div className={styles.rightCard}>
+        <article className={styles.rightCard}>
           {resolvedContent.featuresTitle ? (
-            <h3 className={styles.cardTitle}>{resolvedContent.featuresTitle}</h3>
+            <h3 className={styles.cardTitle}>
+              {resolvedContent.featuresTitle}
+            </h3>
           ) : null}
 
           {features.length ? (
             <ul className={styles.featuresList}>
-              {features.map((feature) => (
-                <li key={feature.key} className={styles.featureItem}>
-                  <span className={styles.check} aria-hidden="true">
-                    ✓
-                  </span>
+              {features.map((feature) => {
+                const open = isOpen(feature.key);
+                const buttonId = `${resolvedContent.id}-${feature.key}-button`;
+                const panelId = `${resolvedContent.id}-${feature.key}-panel`;
 
-                  <span className={styles.featureLabel}>{feature.label}</span>
-                </li>
-              ))}
+                return (
+                  <li
+                    key={feature.key}
+                    className={`${styles.featureItem} ${
+                      open ? styles.featureItemOpen : ""
+                    }`}
+                  >
+                    <button
+                      type="button"
+                      id={buttonId}
+                      className={styles.featureTrigger}
+                      onClick={() => toggle(feature.key)}
+                      aria-expanded={open}
+                      aria-controls={panelId}
+                    >
+                      <span className={styles.check} aria-hidden="true">
+                        ✓
+                      </span>
+
+                      <span className={styles.featureMain}>
+                        <span className={styles.featureLabel}>
+                          {feature.label}
+                        </span>
+                        <span
+                          className={`${styles.chevron} ${
+                            open ? styles.chevronOpen : ""
+                          }`}
+                          aria-hidden="true"
+                        >
+                          ▾
+                        </span>
+                      </span>
+                    </button>
+
+                    <div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={buttonId}
+                      className={`${styles.featurePanel} ${
+                        open ? styles.featurePanelOpen : ""
+                      }`}
+                    >
+                      <div className={styles.featurePanelInner}>
+                        <p className={styles.featureDetail}>{feature.detail}</p>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           ) : null}
-        </div>
+        </article>
       </div>
     </div>
   );

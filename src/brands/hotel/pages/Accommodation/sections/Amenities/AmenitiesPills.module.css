@@ -3,7 +3,9 @@
     inline-size: 100%;
     max-inline-size: 1220px;
     margin-inline: auto;
-    margin-top: clamp(12px, 1.8vw, 16px);
+    margin-top: clamp(12px, 1.8vw, 18px);
+    display: grid;
+    gap: clamp(1rem, 1.8vw, 1.35rem);
 }
 
 .grid {
@@ -22,14 +24,166 @@
 .pill {
     inline-size: 100%;
     min-width: 0;
-    min-height: clamp(56px, 4.6vw, 62px);
-
+    min-height: clamp(60px, 4.8vw, 66px);
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
-
     padding-inline: clamp(13px, 1.2vw, 16px);
-    border-radius: clamp(15px, 1.4vw, 18px);
+    border-radius: clamp(16px, 1.4vw, 19px);
+    cursor: pointer;
+}
+
+.pillActive {
+    transform: translateY(-2px);
+    border-color: rgba(230, 200, 147, 0.42);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 14px 28px rgba(0, 0, 0, 0.22),
+        0 0 18px rgba(230, 200, 147, 0.08);
+}
+
+.iconCircle {
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.iconCircleActive {
+    border-color: rgba(241, 205, 132, 0.34);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.1),
+        0 8px 18px rgba(0, 0, 0, 0.16),
+        0 0 16px rgba(241, 205, 132, 0.08);
+    transform: scale(1.03);
+}
+
+.icon {
+    filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.16));
+}
+
+.spotlight {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+    gap: clamp(0.95rem, 1.4vw, 1.15rem);
+    padding: clamp(1.2rem, 2vw, 1.75rem);
+    border-radius: clamp(1.35rem, 1.8vw, 1.8rem);
+    border: 1px solid rgba(230, 200, 147, 0.24);
+    background:
+        radial-gradient(110% 130% at 0% 0%, rgba(241, 205, 132, 0.12), transparent 42%),
+        radial-gradient(120% 140% at 100% 100%, rgba(199, 134, 21, 0.10), transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.04) 0%,
+            rgba(255, 248, 235, 0.014) 18%,
+            rgba(0, 0, 0, 0.10) 100%),
+        linear-gradient(135deg,
+            rgba(44, 23, 11, 0.97) 0%,
+            rgba(28, 14, 8, 0.985) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.045),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
+        0 18px 42px rgba(0, 0, 0, 0.20);
+}
+
+.spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.07) 0%,
+            rgba(255, 248, 235, 0.02) 15%,
+            rgba(255, 255, 255, 0) 38%);
+    opacity: 0.94;
+}
+
+.spotlightTop,
+.spotlightDescription,
+.metaGrid {
+    position: relative;
+    z-index: 1;
+}
+
+.spotlightTop {
+    display: grid;
+    gap: 0.55rem;
+}
+
+.spotlightTag {
+    display: inline-flex;
+    justify-self: start;
+    align-items: center;
+    padding: 0.48rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(230, 200, 147, 0.26);
+    background:
+        linear-gradient(180deg, rgba(88, 54, 26, 0.64), rgba(38, 23, 11, 0.84));
+    color: rgba(255, 232, 196, 0.96);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.spotlightTitle {
+    margin: 0;
+    font-size: clamp(1.28rem, 0.9vw + 1.08rem, 1.8rem);
+    line-height: 1.08;
+    font-weight: 900;
+    color: rgba(255, 248, 240, 0.98);
+    text-wrap: balance;
+}
+
+.spotlightDescription {
+    margin: 0;
+    font-size: clamp(0.98rem, 0.3vw + 0.94rem, 1.06rem);
+    line-height: 1.68;
+    color: rgba(255, 244, 231, 0.9);
+    max-inline-size: 70ch;
+    text-wrap: pretty;
+}
+
+.metaGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.8rem, 1.2vw, 1rem);
+}
+
+.metaCard {
+    position: relative;
+    overflow: hidden;
+    padding: 0.95rem 1rem;
+    border-radius: 1.1rem;
+    border: 1px solid rgba(230, 200, 147, 0.16);
+    background:
+        radial-gradient(110% 120% at 0% 0%, rgba(241, 205, 132, 0.08), transparent 42%),
+        linear-gradient(180deg, rgba(255, 248, 235, 0.02), rgba(255, 248, 235, 0.006)),
+        linear-gradient(135deg, rgba(56, 31, 15, 0.82), rgba(30, 16, 9, 0.9));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        0 10px 22px rgba(0, 0, 0, 0.14);
+}
+
+.metaLabel {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 216, 146, 0.94);
+}
+
+.metaText {
+    margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.56;
+    color: rgba(255, 247, 236, 0.92);
+    text-wrap: pretty;
 }
 
 @media (max-width: 1180px) {
@@ -49,6 +203,10 @@
         min-height: 58px;
         border-radius: 17px;
     }
+
+    .metaGrid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
@@ -65,6 +223,20 @@
         padding-inline: 14px;
         border-radius: 16px;
     }
+
+    .spotlight {
+        padding: 1rem;
+        border-radius: 1.2rem;
+    }
+
+    .spotlightDescription {
+        font-size: 0.95rem;
+        line-height: 1.58;
+    }
+
+    .metaText {
+        font-size: 0.92rem;
+    }
 }
 
 @media (max-width: 560px) {
@@ -77,6 +249,15 @@
         min-height: 54px;
         padding-inline: 13px;
         border-radius: 15px;
+    }
+
+    .spotlightTitle {
+        font-size: 1.24rem;
+    }
+
+    .spotlightTag {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
     }
 }
 

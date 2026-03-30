@@ -12,7 +12,7 @@ import HotelOfferPanel from "../../../../shared/ui/HotelOfferPanel/HotelOfferPan
 function getLayoutMode() {
   if (typeof window === "undefined") return "desktop";
 
-  if (window.innerWidth <= 680) return "mobile";
+  if (window.innerWidth <= 700) return "mobile";
   if (window.innerWidth <= 1100) return "tablet";
   return "desktop";
 }
@@ -33,16 +33,19 @@ function chunkArray(items, size) {
   return chunks;
 }
 
-function DetailsPanel({ card, className = "", panelRef = null }) {
+function DetailsPanel({ card, className = "", panelRef = null, panelId }) {
   if (!card?.details) return null;
 
   return (
     <div
+      id={panelId}
       ref={panelRef}
       className={[styles.detailsRow, className].filter(Boolean).join(" ")}
     >
       <HotelOfferPanel
+        eyebrow={card.title}
         title={card.details.title}
+        intro={card.details.intro}
         items={(card.details.items || []).map((item) => ({
           id: item.id,
           title: item.title,
@@ -99,10 +102,7 @@ export default function ForWhomProfilesGrid() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const columns = useMemo(
-    () => getColumnsByLayout(layoutMode),
-    [layoutMode],
-  );
+  const columns = useMemo(() => getColumnsByLayout(layoutMode), [layoutMode]);
 
   const rows = useMemo(() => chunkArray(cards, columns), [cards, columns]);
 
@@ -155,6 +155,8 @@ export default function ForWhomProfilesGrid() {
             <div className={rowClassName}>
               {row.map((card) => {
                 const isOpen = openKey === card.key;
+                const panelId = `${content?.id || "for-whom"}-${card.key}-panel`;
+                const buttonId = `${content?.id || "for-whom"}-${card.key}-button`;
 
                 return (
                   <div key={card.key} className={styles.cardCell}>
@@ -165,6 +167,8 @@ export default function ForWhomProfilesGrid() {
                       ctaLabel={card.ctaLabel || "Ver detalhes"}
                       onClick={() => handleToggle(card.key)}
                       detailsOpen={isOpen}
+                      controlsId={panelId}
+                      buttonId={buttonId}
                       Icon={card.Icon}
                     />
                   </div>
@@ -175,6 +179,7 @@ export default function ForWhomProfilesGrid() {
             {openCardInRow ? (
               <DetailsPanel
                 card={openCardInRow}
+                panelId={`${content?.id || "for-whom"}-${openCardInRow.key}-panel`}
                 className={styles.rowDetails}
                 panelRef={(element) => {
                   detailRefs.current[openCardInRow.key] = element;

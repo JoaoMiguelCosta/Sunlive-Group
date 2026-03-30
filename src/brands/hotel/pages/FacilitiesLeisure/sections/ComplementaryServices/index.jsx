@@ -1,3 +1,5 @@
+import hotelBrand from "../../../../config/index.js";
+
 import TitleComplementaryServices from "./TitleComplementaryServices.jsx";
 import DescriptionComplementaryServices from "./DescriptionComplementaryServices.jsx";
 import ComplementaryServicesGrid from "./ComplementaryServicesGrid.jsx";
@@ -5,19 +7,30 @@ import ComplementaryServicesGrid from "./ComplementaryServicesGrid.jsx";
 import styles from "./ComplementaryServices.module.css";
 
 export default function ComplementaryServicesSection() {
+  const section =
+    hotelBrand?.pages?.facilities?.sections?.complementaryServices ?? null;
+
+  if (!section) return null;
+
+  const sectionId = section.id ?? "facilities-services";
+  const titleId = `${sectionId}-title`;
+
   return (
     <section
-      id="facilities-services"
+      id={sectionId}
       className={styles.section}
-      aria-label="Serviços Complementares"
+      aria-labelledby={titleId}
     >
+      <div className={styles.backgroundGlow} aria-hidden="true" />
+      <div className={styles.backgroundGlowSecondary} aria-hidden="true" />
+
       <div className={styles.inner}>
-        <div className={styles.introBlock}>
-          <TitleComplementaryServices />
+        <header className={styles.introBlock}>
+          <TitleComplementaryServices titleId={titleId} />
           <div className={styles.descriptionWrap}>
             <DescriptionComplementaryServices />
           </div>
-        </div>
+        </header>
 
         <ComplementaryServicesGrid />
       </div>

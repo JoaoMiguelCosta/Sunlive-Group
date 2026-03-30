@@ -1,12 +1,20 @@
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
-export default function DescriptionMobility() {
-  const content = hotelBrand?.pages?.facilities?.sections?.mobility ?? null;
+import styles from "./DescriptionMobility.module.css";
 
-  if (!content?.description) return null;
+export default function DescriptionMobility() {
+  const mobility = hotelBrand?.pages?.facilities?.sections?.mobility ?? null;
+
+  if (!mobility?.description) return null;
 
   return (
-    <HotelSectionDescription>{content.description}</HotelSectionDescription>
+    <div className={styles.card}>
+      <div className={styles.inner}>
+        <HotelSectionDescription>
+          {mobility.description}
+        </HotelSectionDescription>
+      </div>
+    </div>
   );
 }

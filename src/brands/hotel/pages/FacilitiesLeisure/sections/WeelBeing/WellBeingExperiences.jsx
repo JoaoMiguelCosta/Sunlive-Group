@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
@@ -10,7 +10,7 @@ import styles from "./WellBeingExperiences.module.css";
 
 function getColumnsFromViewport() {
   if (typeof window === "undefined") return 4;
-  if (window.innerWidth <= 640) return 1;
+  if (window.innerWidth <= 720) return 1;
   if (window.innerWidth <= 1200) return 2;
   return 4;
 }
@@ -47,8 +47,11 @@ export default function WellBeingExperiences() {
   const content = hotelBrand?.pages?.facilities?.sections?.wellBeing ?? null;
   const rawItems = Array.isArray(content?.items) ? content.items : [];
   const sectionId = content?.id ?? "well-being";
+  const ui = content?.ui ?? {};
 
   const [columns, setColumns] = useState(getColumnsFromViewport);
+  const detailsRef = useRef(null);
+  const shouldRevealPanelRef = useRef(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -87,11 +90,33 @@ export default function WellBeingExperiences() {
     [activeIndex, columns, items.length],
   );
 
+  useEffect(() => {
+    if (!shouldRevealPanelRef.current) return;
+    if (!activeItem) return;
+    if (typeof window === "undefined") return;
+
+    const breakpoint = ui?.scrollRevealBreakpoint ?? 1200;
+    if (window.innerWidth > breakpoint) {
+      shouldRevealPanelRef.current = false;
+      return;
+    }
+
+    detailsRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+    });
+
+    shouldRevealPanelRef.current = false;
+  }, [activeItem, ui?.scrollRevealBreakpoint]);
+
   if (!items.length) return null;
 
   return (
     <div className={styles.content}>
-      <div className={styles.cardsGrid}>
+      <div
+        className={styles.cardsGrid}
+        aria-label={ui.summaryGridAriaLabel ?? "Lista de experiências"}
+      >
         {items.map((item, index) => {
           const panelId = `${sectionId}-panel-${item.key}`;
           const buttonId = `${sectionId}-button-${item.key}`;
@@ -103,21 +128,32 @@ export default function WellBeingExperiences() {
             <div key={item.key} className={styles.cardCell}>
               <HotelFacilitySummaryCard
                 title={item.title}
+                shortTitle={item.shortTitle ?? item.title}
                 summary={item.summary}
                 icon={item.icon?.component ?? null}
                 iconLabel={item.icon?.ariaLabel ?? item.title}
                 isOpen={open}
-                onToggle={() => toggle(item.key)}
+                onToggle={() => {
+                  shouldRevealPanelRef.current = true;
+                  toggle(item.key);
+                }}
                 controlsId={panelId}
                 buttonId={buttonId}
+                openLabel={ui.openLabel ?? "Ver detalhes"}
+                closeLabel={ui.closeLabel ?? "Ocultar detalhes"}
               />
 
               {shouldRenderPanelHere ? (
-                <div className={styles.detailsArea}>
+                <div ref={detailsRef} className={styles.detailsArea}>
                   <HotelFacilityDetailPanel
                     id={`${sectionId}-panel-${activeItem.key}`}
                     labelledBy={`${sectionId}-button-${activeItem.key}`}
+                    badge={ui.detailBadge ?? "Experiência em Destaque"}
+                    eyebrow={
+                      activeItem.details?.eyebrow ?? activeItem.shortTitle ?? ""
+                    }
                     title={activeItem.details?.title ?? activeItem.title}
+                    description={activeItem.details?.description ?? ""}
                     icon={activeItem.icon?.component ?? null}
                     iconLabel={activeItem.icon?.ariaLabel ?? activeItem.title}
                     features={activeItem.details?.features ?? []}
@@ -125,6 +161,10 @@ export default function WellBeingExperiences() {
                     imageAlt={activeItem.details?.imageAlt ?? activeItem.title}
                     imagePosition={
                       activeItem.details?.imagePosition ?? "center center"
+                    }
+                    fallbackLabel={
+                      ui.detailFallbackLabel ??
+                      "Imagem ilustrativa indisponível"
                     }
                   />
                 </div>

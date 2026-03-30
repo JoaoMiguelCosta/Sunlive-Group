@@ -1,8 +1,6 @@
 .card {
-    display: grid;
-    grid-template-columns: 74px 1fr;
-    min-height: 116px;
-    border: 1px solid rgba(199, 134, 21, 0.62);
+    position: relative;
+    border: 1px solid rgba(199, 134, 21, 0.5);
     border-radius: clamp(18px, 2vw, 24px);
     background:
         radial-gradient(900px 220px at 50% -12%, rgba(230, 200, 147, 0.08), transparent 60%),
@@ -10,7 +8,59 @@
     overflow: hidden;
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 14px 30px rgba(0, 0, 0, 0.18);
+        0 14px 30px rgba(0, 0, 0, 0.16);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(255, 248, 235, 0.03) 0%, rgba(255, 248, 235, 0) 24%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 180ms ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(215, 169, 75, 0.66);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 18px 34px rgba(0, 0, 0, 0.18);
+}
+
+.card:hover::after,
+.cardActive::after {
+    opacity: 1;
+}
+
+.cardActive {
+    border-color: rgba(230, 179, 75, 0.82);
+    background:
+        radial-gradient(900px 240px at 50% -8%, rgba(241, 205, 132, 0.1), transparent 58%),
+        linear-gradient(180deg, rgba(56, 30, 11, 0.99), rgba(38, 23, 11, 1));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 18px 36px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(230, 179, 75, 0.16);
+}
+
+.trigger {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    inline-size: 100%;
+    min-height: 116px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
 }
 
 .iconColumn {
@@ -22,6 +72,13 @@
         radial-gradient(900px 220px at 50% -12%, rgba(230, 200, 147, 0.08), transparent 60%),
         linear-gradient(180deg, rgba(52, 28, 10, 0.98), rgba(38, 23, 11, 1));
     border-right: 1px solid rgba(255, 231, 184, 0.16);
+    transition: background 180ms ease;
+}
+
+.cardActive .iconColumn {
+    background:
+        radial-gradient(900px 220px at 50% -12%, rgba(241, 205, 132, 0.1), transparent 60%),
+        linear-gradient(180deg, rgba(56, 30, 11, 0.99), rgba(38, 23, 11, 1));
 }
 
 .iconCircle {
@@ -42,6 +99,17 @@
         0 8px 18px rgba(0, 0, 0, 0.18),
         0 0 0 1px rgba(255, 220, 140, 0.04);
     color: #f1cd84;
+    transition: transform 180ms ease, box-shadow 180ms ease, color 180ms ease;
+}
+
+.card:hover .iconCircle,
+.cardActive .iconCircle {
+    transform: translateY(-1px);
+    color: #f7d792;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.12),
+        0 10px 22px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(255, 220, 140, 0.08);
 }
 
 .iconCircle :global(svg) {
@@ -75,6 +143,11 @@
     padding: 0.82rem 0.95rem;
     background: linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
     border-bottom: 1px solid rgba(255, 231, 184, 0.16);
+    transition: background 180ms ease;
+}
+
+.cardActive .topRow {
+    background: linear-gradient(180deg, rgba(196, 143, 56, 0.98) 0%, rgba(148, 96, 22, 0.98) 100%);
 }
 
 .title {
@@ -105,6 +178,14 @@
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
         0 6px 14px rgba(0, 0, 0, 0.1);
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.cardActive .badge {
+    border-color: rgba(255, 220, 160, 0.24);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
 .bottomRow {
@@ -129,9 +210,12 @@
 }
 
 @media (max-width: 640px) {
-    .card {
+    .trigger {
         grid-template-columns: 66px 1fr;
         min-height: 108px;
+    }
+
+    .card {
         border-radius: 18px;
     }
 
@@ -172,5 +256,9 @@
 
     .description {
         font-size: 0.9rem;
+    }
+
+    .card:hover {
+        transform: none;
     }
 }
