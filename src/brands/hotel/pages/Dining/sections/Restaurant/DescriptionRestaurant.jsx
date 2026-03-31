@@ -1,10 +1,8 @@
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
-export default function DescriptionPanoramicRestaurant() {
-  const content =
-    hotelBrand?.pages?.dining?.sections?.panoramicRestaurant
-      ?.panoramicContent ?? null;
+export default function DescriptionRestaurant() {
+  const content = hotelBrand?.pages?.dining?.sections?.restaurant ?? null;
 
   if (!content?.description) return null;
 

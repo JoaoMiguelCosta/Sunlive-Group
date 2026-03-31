@@ -1,8 +1,6 @@
-import TitlePanoramicRestaurant from "./TitlePanoramicRestaurant";
-import DescriptionPanoramicRestaurant from "./DescriptionPanoramicRestaurant";
-import PanoramicRestaurantPhotoCarousel from "./PanoramicRestaurantPhotoCarousel";
-import PanoramicRestaurantDescriptionSection from "./PanoramicRestaurantDescriptionSection";
-import PanoramicRestaurantSecondaryGallery from "./PanoramicRestaurantSecondaryGallery";
+import TitlePanoramicRestaurant from "./TitlePanoramicRestaurant.jsx";
+import DescriptionPanoramicRestaurant from "./DescriptionPanoramicRestaurant.jsx";
+import PanoramicRestaurantPhotoCarousel from "./PanoramicRestaurantPhotoCarousel.jsx";
 
 import styles from "./PanoramicRestaurant.module.css";
 
@@ -19,10 +17,8 @@ export default function PanoramicRestaurantSection() {
           <DescriptionPanoramicRestaurant />
         </div>
 
-        <div className={styles.contentStack}>
+        <div className={styles.galleryBlock}>
           <PanoramicRestaurantPhotoCarousel />
-          <PanoramicRestaurantDescriptionSection />
-          <PanoramicRestaurantSecondaryGallery />
         </div>
       </div>
     </section>

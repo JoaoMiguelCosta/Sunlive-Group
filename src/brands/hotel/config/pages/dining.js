@@ -1,4 +1,5 @@
 import {
+  restaurant,
   panoramicRestaurant,
   breakfast,
   sundayBuffet,
@@ -9,6 +10,7 @@ import {
 const dining = {
   id: "dining",
   sections: {
+    restaurant,
     panoramicRestaurant,
     breakfast,
     sundayBuffet,

@@ -1,3 +1,4 @@
+export { default as restaurant } from "./restaurant.js";
 export { default as panoramicRestaurant } from "./panoramicRestaurant.js";
 export { default as breakfast } from "./breakfast.js";
 export { default as sundayBuffet } from "./sundayBuffet.js";

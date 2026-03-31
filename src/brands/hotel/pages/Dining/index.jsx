@@ -3,6 +3,7 @@
 
 import styles from "../../layouts/HotelPageLayout.module.css";
 
+import RestaurantSection from "./sections/Restaurant/index.jsx";
 import PanoramicRestaurantSection from "./sections/PanoramicRestaurant/index.jsx";
 import BreakfastSection from "./sections/Breakfast/index.jsx";
 import SundayBuffetSection from "./sections/SundayBuffet/index.jsx";
@@ -19,6 +20,7 @@ export default function DiningPageHotel() {
         aria-label="Estalagem de Sangalhos — Restoration"
       >
         <div className={styles.contentFlow}>
+          <RestaurantSection />
           <PanoramicRestaurantSection />
           <BreakfastSection />
           <SundayBuffetSection />

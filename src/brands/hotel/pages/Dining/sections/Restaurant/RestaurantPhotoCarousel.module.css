@@ -28,18 +28,18 @@
 
 .carouselStage {
     inline-size: 100%;
-    aspect-ratio: 16 / 8.1;
+    aspect-ratio: 16 / 8;
 }
 
 @media (max-width: 1180px) {
     .carouselStage {
-        aspect-ratio: 16 / 8.9;
+        aspect-ratio: 16 / 8.8;
     }
 }
 
 @media (max-width: 900px) {
     .carouselStage {
-        aspect-ratio: 16 / 10.2;
+        aspect-ratio: 16 / 10;
     }
 }
 
