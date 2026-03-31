@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import hotelBrand from "../../../../config/index.js";
 
@@ -44,53 +44,63 @@ export default function ReceptionSupportAvailability() {
 
   const [activeKey, setActiveKey] = useState(initialActiveKey);
 
+  useEffect(() => {
+    setActiveKey(initialActiveKey);
+  }, [initialActiveKey]);
+
   if (!availability || !images.length) return null;
 
   const activeImage =
     images.find((image) => image.key === activeKey) ?? images[0] ?? null;
 
+  const activePanelId = `${availability.id}-panel`;
+  const activeTabId = `${availability.id}-tab-${activeImage?.key ?? "default"}`;
+
   return (
     <div id={availability.id} className={styles.block}>
       <div className={styles.card}>
-        <div className={styles.header}>
-          <div className={styles.headerContent}>
-            {availability.headerLabel ? (
-              <h3 className={styles.title}>{availability.headerLabel}</h3>
-            ) : null}
+        <div className={styles.topShell}>
+          <div className={styles.header}>
+            <div className={styles.headerContent}>
+              {availability.headerLabel ? (
+                <h3 className={styles.title}>{availability.headerLabel}</h3>
+              ) : null}
 
-            {availability.description ? (
-              <p className={styles.description}>{availability.description}</p>
-            ) : null}
-          </div>
+              {availability.description ? (
+                <p className={styles.description}>{availability.description}</p>
+              ) : null}
+            </div>
 
-          <div
-            className={styles.segmentedControl}
-            role="tablist"
-            aria-label="Selecionar vista da receção"
-          >
-            {images.map((image) => {
-              const isActive = image.key === activeKey;
+            <div
+              className={styles.segmentedControl}
+              role="tablist"
+              aria-label={
+                availability.tabsAriaLabel ?? "Selecionar vista da receção"
+              }
+            >
+              {images.map((image) => {
+                const isActive = image.key === activeKey;
+                const tabId = `${availability.id}-tab-${image.key}`;
 
-              return (
-                <button
-                  key={image.id}
-                  type="button"
-                  className={`${styles.segmentButton} ${
-                    isActive ? styles.segmentButtonActive : ""
-                  }`}
-                  onClick={() => setActiveKey(image.key)}
-                  aria-pressed={isActive}
-                >
-                  {image.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className={styles.mediaShell}>
-          <div className={styles.mediaMain}>
-            <MediaSlot image={activeImage} fallbackLabel="Receção" />
+                return (
+                  <button
+                    key={image.id}
+                    type="button"
+                    id={tabId}
+                    role="tab"
+                    className={`${styles.segmentButton} ${
+                      isActive ? styles.segmentButtonActive : ""
+                    }`}
+                    onClick={() => setActiveKey(image.key)}
+                    aria-selected={isActive}
+                    aria-controls={activePanelId}
+                    tabIndex={isActive ? 0 : -1}
+                  >
+                    {image.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <aside className={styles.infoCard}>
@@ -108,6 +118,17 @@ export default function ReceptionSupportAvailability() {
               </p>
             ) : null}
           </aside>
+        </div>
+
+        <div
+          id={activePanelId}
+          role="tabpanel"
+          aria-labelledby={activeTabId}
+          className={styles.mediaShell}
+        >
+          <div className={styles.mediaMain}>
+            <MediaSlot image={activeImage} fallbackLabel="Receção" />
+          </div>
         </div>
       </div>
     </div>

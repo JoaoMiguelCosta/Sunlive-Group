@@ -10,6 +10,10 @@ export const receptionSupport = {
   services: {
     id: "reception-support-services",
     multilingualTitle: "Atendimento Multilingue",
+    languagesAriaLabel: "Idiomas de atendimento disponíveis",
+    contactsAriaLabel: "Formas de contacto da receção",
+    featuresTitle: "Serviços de Receção",
+
     languages: [
       {
         key: "pt",
@@ -66,7 +70,6 @@ export const receptionSupport = {
       },
     ],
 
-    featuresTitle: "Serviços de Receção",
     features: [
       {
         key: "checkin-checkout",
@@ -143,6 +146,8 @@ export const receptionSupport = {
     headerLabel: "Disponibilidade & Espaço",
     description:
       "Um ambiente de receção pensado para acolher, orientar e dar resposta em diferentes momentos da estadia.",
+    tabsAriaLabel: "Selecionar vista da receção",
+    caption: "Receção disponível 24 horas",
     images: [
       {
         id: "reception-support-availability-01",
@@ -166,7 +171,6 @@ export const receptionSupport = {
         alt: "Receção do hotel disponível 24 horas — imagem 2",
       },
     ],
-    caption: "Receção disponível 24 horas",
   },
 };
 

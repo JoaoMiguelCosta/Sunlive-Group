@@ -41,14 +41,11 @@ export default function ReceptionSupportServices() {
         })
       : [];
 
-    const contacts = Array.isArray(content.contacts) ? content.contacts : [];
-    const features = Array.isArray(content.features) ? content.features : [];
-
     return {
       ...content,
       languages,
-      contacts,
-      features,
+      contacts: Array.isArray(content.contacts) ? content.contacts : [],
+      features: Array.isArray(content.features) ? content.features : [],
     };
   }, [content]);
 
@@ -66,17 +63,15 @@ export default function ReceptionSupportServices() {
 
   if (!resolvedContent) return null;
 
-  const languages = Array.isArray(resolvedContent.languages)
-    ? resolvedContent.languages
-    : [];
-  const contacts = Array.isArray(resolvedContent.contacts)
-    ? resolvedContent.contacts
-    : [];
+  const languages = resolvedContent.languages ?? [];
+  const contacts = resolvedContent.contacts ?? [];
 
   const activeLanguage =
     languages.find((language) => language.key === activeLanguageKey) ??
     languages[0] ??
     null;
+
+  const languagePanelId = `${resolvedContent.id}-language-panel`;
 
   return (
     <div id={resolvedContent.id} className={styles.block}>
@@ -92,20 +87,28 @@ export default function ReceptionSupportServices() {
             <div
               className={styles.languagesGrid}
               role="tablist"
-              aria-label="Idiomas de atendimento disponíveis"
+              aria-label={
+                resolvedContent.languagesAriaLabel ??
+                "Idiomas de atendimento disponíveis"
+              }
             >
               {languages.map((language) => {
                 const isActive = activeLanguage?.key === language.key;
+                const tabId = `${resolvedContent.id}-language-tab-${language.key}`;
 
                 return (
                   <button
                     key={language.key}
                     type="button"
+                    id={tabId}
+                    role="tab"
                     className={`${styles.languageCard} ${
                       isActive ? styles.languageCardActive : ""
                     }`}
                     onClick={() => setActiveLanguageKey(language.key)}
-                    aria-pressed={isActive}
+                    aria-selected={isActive}
+                    aria-controls={languagePanelId}
+                    tabIndex={isActive ? 0 : -1}
                   >
                     <span className={styles.languageLabel}>
                       {language.label}
@@ -125,10 +128,16 @@ export default function ReceptionSupportServices() {
           ) : null}
 
           {activeLanguage ? (
-            <div className={styles.languageSpotlight}>
+            <div
+              id={languagePanelId}
+              role="tabpanel"
+              aria-labelledby={`${resolvedContent.id}-language-tab-${activeLanguage.key}`}
+              className={styles.languageSpotlight}
+            >
               <h4 className={styles.languageSpotlightTitle}>
                 {activeLanguage.title}
               </h4>
+
               <p className={styles.languageSpotlightDescription}>
                 {activeLanguage.description}
               </p>
@@ -136,7 +145,13 @@ export default function ReceptionSupportServices() {
           ) : null}
 
           {contacts.length ? (
-            <div className={styles.contactsRow}>
+            <div
+              className={styles.contactsRow}
+              aria-label={
+                resolvedContent.contactsAriaLabel ??
+                "Formas de contacto da receção"
+              }
+            >
               {contacts.map((contact) => (
                 <CTAButton
                   key={contact.key}
@@ -192,6 +207,7 @@ export default function ReceptionSupportServices() {
                         <span className={styles.featureLabel}>
                           {feature.label}
                         </span>
+
                         <span
                           className={`${styles.chevron} ${
                             open ? styles.chevronOpen : ""

@@ -33,8 +33,10 @@ export default function ReceptionSupportSection() {
           </div>
         </header>
 
-        <ReceptionSupportServices />
-        <ReceptionSupportAvailability />
+        <div className={styles.contentStack}>
+          <ReceptionSupportServices />
+          <ReceptionSupportAvailability />
+        </div>
       </div>
     </section>
   );
