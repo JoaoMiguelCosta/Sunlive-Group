@@ -10,6 +10,8 @@ export default function PanoramicRestaurantPhotoCarousel() {
   const gallery = section?.gallery ?? null;
   const items = Array.isArray(gallery?.items) ? gallery.items : [];
   const fallbackLabel = gallery?.fallbackLabel ?? "Restaurante Panorâmico";
+  const fallbackEyebrow = gallery?.ui?.fallbackEyebrow ?? "Panorâmica";
+  const fallbackTitle = gallery?.ui?.fallbackTitle ?? "Experiência com vista";
 
   return (
     <div className={styles.frame} aria-label={fallbackLabel}>
@@ -18,12 +20,21 @@ export default function PanoramicRestaurantPhotoCarousel() {
           <HotelPhotoCarouselBase
             items={items}
             fallbackLabel={fallbackLabel}
+            fallbackEyebrow={fallbackEyebrow}
+            fallbackTitle={fallbackTitle}
             className={styles.carouselStage}
+            captionClassName={styles.panoramicCaption}
+            indicatorDockClassName={styles.panoramicIndicatorDock}
+            indicatorRailClassName={styles.panoramicIndicatorRail}
             showIndicators
             showCaption
             fitMode="cover"
             imagePosition="center center"
-            imageBackground="#170d07"
+            imageBackground="#160d08"
+            showImageBackdrop
+            backdropBlur="18px"
+            backdropScale={1.14}
+            backdropOpacity={0.5}
           />
         </div>
       </div>

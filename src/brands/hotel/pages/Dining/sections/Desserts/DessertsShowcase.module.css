@@ -1,0 +1,252 @@
+.block {
+    --desserts-showcase-height: clamp(23.94rem, 37.62vw, 35.91rem);
+    --desserts-thumb-media-height: 7.36rem;
+
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    gap: clamp(1rem, 1.8vw, 1.35rem);
+}
+
+.filterBar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.72rem;
+}
+
+.filterButton {
+    min-block-size: 2.8rem;
+    padding: 0.72rem 1rem;
+    border: 1px solid rgba(214, 166, 74, 0.22);
+    border-radius: 999px;
+    cursor: pointer;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 234, 191, 0.08), transparent 58%),
+        linear-gradient(180deg, rgba(72, 36, 15, 0.86), rgba(28, 13, 7, 0.92));
+    color: rgba(255, 243, 228, 0.92);
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.2;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 246, 225, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.12);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+}
+
+.filterButton:hover {
+    transform: translateY(-1px);
+    border-color: rgba(233, 192, 109, 0.34);
+}
+
+.filterButton:focus-visible {
+    outline: 2px solid rgba(255, 233, 184, 0.92);
+    outline-offset: 4px;
+}
+
+.filterButtonActive {
+    border-color: rgba(233, 192, 109, 0.42);
+    background:
+        linear-gradient(180deg, rgba(194, 143, 54, 0.98) 0%, rgba(145, 95, 23, 0.98) 100%);
+    color: rgba(255, 248, 240, 0.98);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 245, 222, 0.16),
+        0 12px 24px rgba(0, 0, 0, 0.16);
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.06fr) minmax(320px, 0.94fr);
+    gap: clamp(1rem, 1.8vw, 1.4rem);
+    align-items: stretch;
+}
+
+.spotlight {
+    position: relative;
+    min-inline-size: 0;
+    min-block-size: 0;
+    block-size: 100%;
+    display: grid;
+    overflow: hidden;
+    border-radius: clamp(1.3rem, 1.9vw, 1.9rem);
+    border: 1px solid rgba(214, 166, 74, 0.28);
+    background:
+        linear-gradient(180deg, rgba(58, 32, 12, 0.74), rgba(26, 15, 10, 0.92)),
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.12), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.08), transparent 60%),
+        #26170b;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 20px 46px rgba(0, 0, 0, 0.2);
+}
+
+.spotlightMedia {
+    position: relative;
+    block-size: 100%;
+    min-block-size: var(--desserts-showcase-height);
+    overflow: hidden;
+}
+
+.spotlightImage {
+    inline-size: 100%;
+    block-size: 100%;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.02);
+    filter: saturate(1.03) contrast(1.02);
+    transition: transform 260ms ease, filter 260ms ease;
+}
+
+.spotlightOverlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(16, 9, 5, 0.05) 0%, rgba(16, 9, 5, 0.18) 100%),
+        linear-gradient(0deg, rgba(18, 10, 6, 0.76) 0%, rgba(18, 10, 6, 0.12) 42%, rgba(18, 10, 6, 0.02) 72%);
+}
+
+.spotlightContent {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 1;
+    display: grid;
+    gap: 0.72rem;
+    padding: clamp(1rem, 1.5vw, 1.35rem);
+}
+
+.spotlightBadge {
+    inline-size: fit-content;
+    max-inline-size: 100%;
+    min-block-size: 1.95rem;
+    padding: 0.46rem 0.76rem;
+    border-radius: 999px;
+    border: 1px solid rgba(226, 185, 103, 0.18);
+    background:
+        linear-gradient(180deg, rgba(80, 44, 18, 0.82), rgba(34, 18, 10, 0.9));
+    color: rgba(255, 234, 191, 0.92);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+}
+
+.spotlightTitle {
+    margin: 0;
+    color: rgba(255, 248, 240, 0.98);
+    font-size: clamp(1.3rem, 1.1rem + 0.5vw, 1.8rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    text-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+}
+
+.spotlightText {
+    margin: 0;
+    max-inline-size: 58ch;
+    color: rgba(255, 243, 228, 0.9);
+    font-size: 1rem;
+    line-height: 1.58;
+    text-wrap: pretty;
+}
+
+@media (hover: hover) {
+    .spotlight:hover .spotlightImage {
+        transform: scale(1.04);
+        filter: saturate(1.05) brightness(1.02);
+    }
+}
+
+@media (max-width: 1180px) {
+    .block {
+        --desserts-showcase-height: clamp(20.52rem, 35.91vw, 29.07rem);
+        --desserts-thumb-media-height: 6.75rem;
+    }
+
+    .layout {
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 0.92fr);
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 980px) {
+    .block {
+        --desserts-showcase-height: clamp(18.81rem, 63.18vw, 25.65rem);
+        --desserts-thumb-media-height: 6.56rem;
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .spotlight {
+        block-size: auto;
+    }
+
+    .spotlightMedia {
+        block-size: var(--desserts-showcase-height);
+        min-block-size: 0;
+    }
+}
+
+@media (max-width: 720px) {
+    .block {
+        --desserts-showcase-height: clamp(15.39rem, 66.5vw, 20.52rem);
+        --desserts-thumb-media-height: 6.08rem;
+        gap: 0.9rem;
+    }
+
+    .filterBar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.58rem;
+    }
+
+    .filterButton {
+        inline-size: 100%;
+        min-block-size: 2.65rem;
+        font-size: 0.88rem;
+    }
+
+    .spotlight {
+        border-radius: 1.08rem;
+    }
+
+    .spotlightContent {
+        padding: 0.9rem;
+        gap: 0.62rem;
+    }
+
+    .spotlightTitle {
+        font-size: clamp(1.14rem, 4.6vw, 1.42rem);
+    }
+
+    .spotlightText {
+        font-size: 0.92rem;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 420px) {
+    .block {
+        --desserts-showcase-height: clamp(13.87rem, 72.2vw, 17.1rem);
+        --desserts-thumb-media-height: 5.7rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .filterButton,
+    .spotlightImage {
+        transition: none;
+    }
+}

@@ -1,16 +1,25 @@
+import breakfastImage1 from "../../../assets/breakfast1.webp";
+import breakfastImage2 from "../../../assets/breakfast2.webp";
+import breakfastImage3 from "../../../assets/breakfast3.webp";
+import breakfastImage4 from "../../../assets/breakfast4.webp";
+
 export const breakfast = {
   id: "restaurant-breakfast",
   headerLabel: "Pequeno-Almoço",
 
-  description:
-    "O pequeno-almoço é servido diariamente em formato buffet, com uma seleção variada, equilibrada e adaptável a diferentes preferências alimentares.\n\nPara grupos e atletas, o horário e a composição da oferta podem ser ajustados mediante pedido.",
-
   intro: {
-    title: "Comece o dia com um pequeno-almoço completo",
+    eyebrow: "Morning Ritual",
+    title: "Comece o dia com um Pequeno-Almoço completo",
     paragraphs: [
       "A oferta combina opções saudáveis, saborosas e pensadas para diferentes rotinas e necessidades alimentares.",
       "Privilegiamos variedade, frescura e equilíbrio em cada serviço.",
       "Inclui cereais, pão, fruta fresca, queijo, presunto, ovos, bacon, feijão, iogurtes e outras opções complementares.",
+    ],
+    highlightsAriaLabel: "Destaques do pequeno-almoço",
+    highlights: [
+      "Buffet diário",
+      "Opções equilibradas",
+      "Flexível para grupos",
     ],
   },
 
@@ -18,87 +27,44 @@ export const breakfast = {
     iconKey: "clock",
     title: "Horário: 7h00 - 10h00",
     text: "Disponibilidade de horários flexíveis para grupos, mediante pedido prévio.",
-    icon: "clock",
   },
 
   gallery: {
     fallbackLabel: "Pequeno-Almoço",
+    fallbackEyebrow: "Galeria",
+    fallbackTitle: "Pequeno-Almoço",
     items: [
       {
         id: "bf-01",
-        src: null,
-        alt: "Pequeno-almoço buffet — vista geral",
+        src: breakfastImage2,
+        alt: "Pequeno-almoço buffet — seleção de pães, bolos e pastelaria",
+        label: "Pastelaria e Padaria fresca",
+        imagePosition: "center center",
+        fitMode: "cover",
       },
       {
         id: "bf-02",
-        src: null,
-        alt: "Pequeno-almoço buffet — seleção de produtos",
+        src: breakfastImage3,
+        alt: "Pequeno-almoço buffet — cereais, fruta e estação complementar",
+        label: "Opções leves e equilibradas",
+        imagePosition: "center center",
+        fitMode: "cover",
       },
       {
         id: "bf-03",
-        src: null,
-        alt: "Pequeno-almoço buffet — ambiente da sala",
-      },
-    ],
-  },
-
-  featureCards: {
-    items: [
-      {
-        id: "breakfast-coffee-tea",
-        title: "Café e Chá",
-        description: "Variedade de bebidas quentes",
-        iconKey: "coffee",
-        icon: "coffee"
+        src: breakfastImage4,
+        alt: "Pequeno-almoço buffet — queijos, fiambre, iogurtes e acompanhamentos",
+        label: "Frios e Complementos selecionados",
+        imagePosition: "center center",
+        fitMode: "cover",
       },
       {
-        id: "breakfast-bread-pastry",
-        title: "Pão e Pastelaria",
-        description: "Seleção fresca e variada",
-        iconKey: "croissant",
-        icon: "croissant",
-      },
-      {
-        id: "breakfast-cereals-yogurts",
-        title: "Cereais e Iogurtes",
-        description: "Opções leves e equilibradas",
-        iconKey: "cereals",
-        icon: "cereals",
-      },
-      {
-        id: "breakfast-eggs-bacon-beans",
-        title: "Ovos, Bacon e Feijão",
-        description: "Disponível mediante pedido",
-        iconKey: "egg",
-        icon: "egg",
-      },
-      {
-        id: "breakfast-cold-cuts",
-        title: "Frios",
-        description: "Fiambre, queijo e leite fresco",
-        iconKey: "milk",
-        icon: "milk",
-      },
-      {
-        id: "breakfast-natural-juices",
-        title: "Sumos Naturais",
-        description: "Preparados com fruta selecionada",
-        iconKey: "glass",
-        icon: "glass",
-      },
-      {
-        id: "breakfast-fresh-fruit",
-        title: "Frutas Frescas",
-        description: "Da época e de origem regional",
-        iconKey: "grape",
-        icon: "grape",
-      },
-      {
-        id: "breakfast-spreads",
-        title: "Sabores para Barrar",
-        description: "Mel, compotas, manteigas e doces variados",
-        iconKey: "honey",
-        Icon: "honey",
+        id: "bf-04",
+        src: breakfastImage1,
+        alt: "Pequeno-almoço buffet — vista geral da estação com variedade de produtos",
+        label: "Experiência Buffet completa",
+        imagePosition: "center center",
+        fitMode: "cover",
       },
     ],
   },

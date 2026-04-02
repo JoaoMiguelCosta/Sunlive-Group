@@ -1,26 +1,31 @@
+import hotelBrand from "../../../../config/index.js";
 import TitleBreakfast from "./TitleBreakfast.jsx";
-import DescriptionBreakfast from "./DescriptionBreakfast.jsx";
+
 import BreakfastShowcase from "./BreakfastShowcase.jsx";
-import BreakfastFeatureGrid from "./BreakfastFeatureGrid.jsx";
 
 import styles from "./Breakfast.module.css";
 
 export default function BreakfastSection() {
+  const section = hotelBrand?.pages?.dining?.sections?.breakfast ?? null;
+  if (!section) return null;
+
+  const sectionId = section?.id ?? "restaurant-breakfast";
+  const titleId = `${sectionId}-title`;
+
   return (
     <section
-      id="restaurant-breakfast"
+      id={sectionId}
       className={styles.section}
-      aria-labelledby="restaurant-breakfast-title"
+      aria-labelledby={titleId}
     >
       <div className={styles.inner}>
         <div className={styles.headerBlock}>
-          <TitleBreakfast />
-          <DescriptionBreakfast />
+          <TitleBreakfast titleId={titleId} />
+      
         </div>
 
         <div className={styles.contentStack}>
           <BreakfastShowcase />
-          <BreakfastFeatureGrid />
         </div>
       </div>
     </section>

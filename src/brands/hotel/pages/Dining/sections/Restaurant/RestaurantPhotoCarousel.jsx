@@ -5,10 +5,12 @@ import styles from "./RestaurantPhotoCarousel.module.css";
 
 export default function RestaurantPhotoCarousel() {
   const section = hotelBrand?.pages?.dining?.sections?.restaurant ?? null;
-
   const gallery = section?.gallery ?? null;
   const items = Array.isArray(gallery?.items) ? gallery.items : [];
+
   const fallbackLabel = gallery?.fallbackLabel ?? "Estações de Buffet";
+  const fallbackEyebrow = gallery?.ui?.fallbackEyebrow ?? "Galeria";
+  const fallbackTitle = gallery?.ui?.fallbackTitle ?? "Estações de Buffet";
 
   return (
     <div className={styles.frame} aria-label={fallbackLabel}>
@@ -17,18 +19,21 @@ export default function RestaurantPhotoCarousel() {
           <HotelPhotoCarouselBase
             items={items}
             fallbackLabel={fallbackLabel}
-            fallbackEyebrow="Galeria"
-            fallbackTitle="Estações de Buffet"
+            fallbackEyebrow={fallbackEyebrow}
+            fallbackTitle={fallbackTitle}
             className={styles.carouselStage}
+            captionClassName={styles.restaurantCaption}
+            indicatorDockClassName={styles.restaurantIndicatorDock}
+            indicatorRailClassName={styles.restaurantIndicatorRail}
             showIndicators
             showCaption
             fitMode="cover"
             imagePosition="center center"
             imageBackground="#170d07"
             showImageBackdrop
-            backdropBlur="22px"
-            backdropScale={1.14}
-            backdropOpacity={0.72}
+            backdropBlur="20px"
+            backdropScale={1.16}
+            backdropOpacity={0.56}
           />
         </div>
       </div>

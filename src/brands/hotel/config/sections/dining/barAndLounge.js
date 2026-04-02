@@ -7,8 +7,10 @@ export const barAndLounge = {
   headerLabel: "Bar & Lounge",
 
   intro: {
+    eyebrow: "Convívio & Relaxamento",
+    title: "Um espaço pensado para desacelerar",
     description:
-      "O bar & lounge da Estalagem é ideal para relaxar, conviver ou reunir informalmente.",
+      "O bar & lounge da Estalagem é ideal para relaxar, conviver ou reunir informalmente, num ambiente confortável e acolhedor.",
   },
 
   features: {
@@ -46,6 +48,12 @@ export const barAndLounge = {
     ],
   },
 
+  atmosphereCard: {
+    eyebrow: "Lounge Mood",
+    title: "Entre a pausa e o convívio",
+    text: "Ideal para um café tranquilo, um cocktail ao final do dia ou um encontro informal num ambiente sereno.",
+  },
+
   highlightCard: {
     iconKey: "sun",
     title: "Serviço de Verão",
@@ -54,21 +62,34 @@ export const barAndLounge = {
 
   gallery: {
     fallbackLabel: "Bar & Lounge",
+    ui: {
+      fallbackEyebrow: "Lounge",
+      fallbackTitle: "Ambiente interior",
+    },
     items: [
       {
         id: "bl-01",
         src: barLounge1,
         alt: "Bar & Lounge — vista geral do balcão e garrafeira",
+        label: "Balcão e Garrafeira",
+        imagePosition: "center center",
+        fitMode: "cover",
       },
       {
         id: "bl-02",
         src: barLounge2,
         alt: "Bar & Lounge — ambiente interior do espaço",
+        label: "Ambiente interior",
+        imagePosition: "center center",
+        fitMode: "cover",
       },
       {
         id: "bl-03",
         src: barLounge3,
         alt: "Bar & Lounge — zona de convívio e serviço",
+        label: "Zona de Convívio",
+        imagePosition: "center center",
+        fitMode: "cover",
       },
     ],
   },

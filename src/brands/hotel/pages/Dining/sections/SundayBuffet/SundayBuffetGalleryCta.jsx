@@ -1,45 +1,90 @@
-import { useMemo } from "react";
-
 import hotelBrand from "../../../../config/index.js";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
-import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
 
 import styles from "./SundayBuffetGalleryCta.module.css";
 
 export default function SundayBuffetGalleryCta() {
   const section = hotelBrand?.pages?.dining?.sections?.sundayBuffet ?? null;
+  if (!section) return null;
 
   const gallery = section?.gallery ?? null;
   const cta = section?.cta ?? null;
+  const detailsCard = section?.detailsCard ?? null;
 
-  const items = useMemo(
-    () => (Array.isArray(gallery?.items) ? gallery.items : []),
-    [gallery?.items],
-  );
+  const featuredImage = gallery?.featuredImage ?? null;
+  const secondaryImage = gallery?.secondaryImage ?? null;
+  const galleryAriaLabel = gallery?.ariaLabel ?? "Galeria do buffet de domingo";
 
-  const fallbackLabel = gallery?.fallbackLabel ?? "Buffet de Domingo";
+  const hasFeaturedImage = Boolean(featuredImage?.src);
+  const hasSecondaryImage = Boolean(secondaryImage?.src);
 
-  if (!gallery && !cta) return null;
+  if (!hasFeaturedImage && !hasSecondaryImage && !cta?.label) return null;
 
   return (
     <div className={styles.block}>
-      <div className={styles.inner}>
-        <div className={styles.card}>
-          <HotelPhotoCarouselBase
-            items={items}
-            fallbackLabel={fallbackLabel}
-            className={styles.carouselStage}
-            showIndicators={true}
-            showCaption={false}
-            initialIndex={0}
-            fitMode="contain"
-            imagePosition="center center"
-            imageBackground="#120b06"
-            showImageBackdrop={true}
-            backdropBlur="16px"
-            backdropScale={1.12}
-            backdropOpacity={0.6}
-          />
+      <div className={styles.layout} aria-label={galleryAriaLabel}>
+        <div className={styles.visualStage}>
+          {hasFeaturedImage ? (
+            <figure className={styles.featuredCard}>
+              <img
+                src={featuredImage.src}
+                alt={featuredImage.alt ?? "Buffet de Domingo"}
+                className={styles.featuredImage}
+                loading="eager"
+                style={{
+                  objectPosition:
+                    featuredImage.imagePosition ?? "center center",
+                }}
+              />
+
+              {featuredImage.label ? (
+                <figcaption className={styles.featuredCaption}>
+                  <span>{featuredImage.label}</span>
+                </figcaption>
+              ) : null}
+            </figure>
+          ) : null}
+
+          <div className={styles.asideColumn}>
+            {hasSecondaryImage ? (
+              <figure className={styles.secondaryCard}>
+                <img
+                  src={secondaryImage.src}
+                  alt={secondaryImage.alt ?? "Buffet de Domingo"}
+                  className={styles.secondaryImage}
+                  loading="lazy"
+                  style={{
+                    objectPosition:
+                      secondaryImage.imagePosition ?? "center center",
+                  }}
+                />
+
+                {secondaryImage.label ? (
+                  <figcaption className={styles.secondaryCaption}>
+                    <span>{secondaryImage.label}</span>
+                  </figcaption>
+                ) : null}
+              </figure>
+            ) : null}
+
+            {detailsCard?.title || detailsCard?.text ? (
+              <article className={styles.detailsCard}>
+                {detailsCard?.eyebrow ? (
+                  <span className={styles.detailsEyebrow}>
+                    {detailsCard.eyebrow}
+                  </span>
+                ) : null}
+
+                {detailsCard?.title ? (
+                  <h3 className={styles.detailsTitle}>{detailsCard.title}</h3>
+                ) : null}
+
+                {detailsCard?.text ? (
+                  <p className={styles.detailsText}>{detailsCard.text}</p>
+                ) : null}
+              </article>
+            ) : null}
+          </div>
         </div>
 
         {cta?.label ? (

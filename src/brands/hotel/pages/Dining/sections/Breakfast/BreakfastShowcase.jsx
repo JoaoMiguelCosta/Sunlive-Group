@@ -1,55 +1,35 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-
-import hotelBrand, {
-  resolveHotelIcon,
-} from "../../../../config/index.js";
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
 
 import styles from "./BreakfastShowcase.module.css";
 
-const clampIndex = (index, length) => {
-  if (length <= 0) return 0;
-  return ((index % length) + length) % length;
-};
+function normalizeStringArray(items = []) {
+  if (!Array.isArray(items)) return [];
+
+  return items.map((item) => String(item ?? "").trim()).filter(Boolean);
+}
 
 export default function BreakfastShowcase() {
   const section = hotelBrand?.pages?.dining?.sections?.breakfast ?? null;
+  if (!section) return null;
 
   const intro = section?.intro ?? null;
   const highlightCard = section?.highlightCard ?? null;
   const gallery = section?.gallery ?? null;
 
-  const items = useMemo(() => {
-    return Array.isArray(gallery?.items) ? gallery.items : [];
-  }, [gallery?.items]);
-
+  const items = Array.isArray(gallery?.items) ? gallery.items : [];
   const fallbackLabel = gallery?.fallbackLabel ?? "Pequeno-almoço";
-
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    setActiveIndex((prev) => clampIndex(prev, items.length));
-  }, [items.length]);
-
-  const hasItems = items.length > 0;
-
-  const goPrev = useCallback(() => {
-    if (!hasItems) return;
-    setActiveIndex((prev) => clampIndex(prev - 1, items.length));
-  }, [hasItems, items.length]);
-
-  const goNext = useCallback(() => {
-    if (!hasItems) return;
-    setActiveIndex((prev) => clampIndex(prev + 1, items.length));
-  }, [hasItems, items.length]);
-
-  if (!intro && !gallery && !highlightCard) return null;
+  const fallbackEyebrow = gallery?.fallbackEyebrow ?? "Galeria";
+  const fallbackTitle = gallery?.fallbackTitle ?? "Pequeno-Almoço";
 
   const HighlightIcon = highlightCard?.iconKey
     ? resolveHotelIcon(hotelBrand?.icons, highlightCard.iconKey)
     : null;
 
   const showcaseId = `${section?.id ?? "restaurant-breakfast"}-showcase-title`;
+  const introHighlights = normalizeStringArray(intro?.highlights);
+  const highlightsAriaLabel =
+    intro?.highlightsAriaLabel ?? "Destaques do pequeno-almoço";
 
   return (
     <div className={styles.block} aria-labelledby={showcaseId}>
@@ -57,14 +37,20 @@ export default function BreakfastShowcase() {
         <article className={styles.contentPanel}>
           {intro?.title ? (
             <header className={styles.header}>
-              <h3 id={showcaseId} className={styles.title}>
-                {intro.title}
-              </h3>
+              <div className={styles.headerText}>
+                {intro?.eyebrow ? (
+                  <span className={styles.headerEyebrow}>{intro.eyebrow}</span>
+                ) : null}
+
+                <h3 id={showcaseId} className={styles.title}>
+                  {intro.title}
+                </h3>
+              </div>
             </header>
           ) : null}
 
           <div className={styles.body}>
-            {intro?.paragraphs?.length ? (
+            {Array.isArray(intro?.paragraphs) && intro.paragraphs.length ? (
               <div className={styles.paragraphGroup}>
                 {intro.paragraphs.map((paragraph, index) => (
                   <p
@@ -77,19 +63,36 @@ export default function BreakfastShowcase() {
               </div>
             ) : null}
 
+            {introHighlights.length ? (
+              <div
+                className={styles.pillGroup}
+                aria-label={highlightsAriaLabel}
+              >
+                {introHighlights.map((item, index) => (
+                  <span
+                    key={`${section?.id ?? "restaurant-breakfast"}-highlight-${index}`}
+                    className={styles.pill}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+
             {highlightCard?.title || highlightCard?.text ? (
               <div
                 className={styles.highlightCard}
-                aria-label="Informação de horário"
+                aria-label="Informação de horário do pequeno-almoço"
               >
                 <div className={styles.highlightTop}>
-                  {(HighlightIcon || highlightCard?.iconKey) && (
-                    <span className={styles.highlightIconSlot} aria-hidden="true">
-                      {HighlightIcon ? (
-                        <HighlightIcon className={styles.highlightIcon} />
-                      ) : null}
+                  {HighlightIcon ? (
+                    <span
+                      className={styles.highlightIconSlot}
+                      aria-hidden="true"
+                    >
+                      <HighlightIcon className={styles.highlightIcon} />
                     </span>
-                  )}
+                  ) : null}
 
                   {highlightCard?.title ? (
                     <h4 className={styles.highlightTitle}>
@@ -110,11 +113,19 @@ export default function BreakfastShowcase() {
           <div className={styles.carouselCard}>
             <HotelPhotoCarouselBase
               items={items}
-              activeIndex={activeIndex}
-              onPrev={goPrev}
-              onNext={goNext}
               fallbackLabel={fallbackLabel}
+              fallbackEyebrow={fallbackEyebrow}
+              fallbackTitle={fallbackTitle}
               className={styles.carouselStage}
+              showCaption
+              showIndicators
+              showImageBackdrop
+              backdropBlur="22px"
+              backdropScale={1.15}
+              backdropOpacity={0.64}
+              fitMode="cover"
+              imagePosition="center center"
+              imageBackground="#120b06"
             />
           </div>
         </div>

@@ -24,30 +24,28 @@
     --panel-radius: clamp(22px, 2.2vw, 30px);
     --panel-border: rgba(214, 166, 74, 0.22);
     --text-main: rgba(255, 247, 238, 0.97);
-    --text-soft: rgba(255, 238, 220, 0.80);
+    --text-soft: rgba(255, 238, 220, 0.8);
     --gold-line: rgba(255, 224, 166, 0.12);
 
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: minmax(340px, 0.88fr) minmax(420px, 1.12fr);
+    grid-template-columns: minmax(340px, 0.9fr) minmax(420px, 1.1fr);
     gap: 0;
     min-inline-size: 0;
     overflow: hidden;
     border-radius: var(--panel-radius);
     border: 1px solid var(--panel-border);
-
     background:
         linear-gradient(180deg, rgba(43, 25, 13, 0.76), rgba(16, 10, 8, 0.96)),
         radial-gradient(1200px 460px at 16% 0%, rgba(230, 200, 147, 0.08), transparent 58%),
         radial-gradient(1000px 460px at 100% 100%, rgba(230, 200, 147, 0.06), transparent 60%),
         #1b100b;
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
         inset 0 -1px 0 rgba(255, 255, 255, 0.02),
         0 18px 40px rgba(0, 0, 0, 0.24),
-        0 4px 18px rgba(0, 0, 0, 0.10);
+        0 4px 18px rgba(0, 0, 0, 0.1);
 }
 
 .leftPanel {
@@ -71,32 +69,57 @@
     opacity: 0.8;
 }
 
-.descriptionWrap {
+.introCard {
     position: relative;
     z-index: 1;
-    padding: clamp(1rem, 1.3vw, 1.18rem) clamp(1rem, 1.35vw, 1.16rem) clamp(0.9rem, 1.15vw, 1rem);
     border-block-end: 1px solid rgba(255, 224, 166, 0.13);
     background:
         linear-gradient(180deg, rgba(187, 133, 44, 0.98) 0%, rgba(136, 88, 18, 0.98) 100%);
 }
 
+.introInner {
+    display: grid;
+    gap: 0.52rem;
+    padding: clamp(1rem, 1.35vw, 1.22rem);
+}
+
 .eyebrow {
-    display: block;
-    margin-block-end: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    inline-size: fit-content;
+    min-block-size: 1.45rem;
+    padding: 0.18rem 0.54rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 243, 214, 0.24);
+    background: rgba(96, 54, 18, 0.14);
     color: rgba(255, 248, 240, 0.98);
-    font-size: clamp(0.66rem, 0.72vw, 0.78rem);
+    font-size: clamp(0.64rem, 0.72vw, 0.76rem);
     font-weight: 800;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
+    line-height: 1;
+}
+
+.title {
+    margin: 0;
+    color: var(--text-main);
+    font-size: clamp(1.08rem, 0.96rem + 0.34vw, 1.34rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.024em;
+    text-align: start;
+    text-wrap: balance;
+    text-shadow:
+        0 1px 0 rgba(88, 46, 14, 0.18),
+        0 10px 24px rgba(80, 45, 12, 0.12);
 }
 
 .description {
     margin: 0;
-    color: var(--text-main);
-    font-size: clamp(1.02rem, 0.95vw, 1.2rem);
-    font-weight: 700;
-    line-height: 1.18;
-    letter-spacing: -0.02em;
+    color: rgba(255, 247, 238, 0.92);
+    font-size: clamp(0.94rem, 0.9rem + 0.14vw, 1rem);
+    font-weight: 500;
+    line-height: 1.56;
     text-align: start;
     text-wrap: pretty;
 }
@@ -104,36 +127,34 @@
 .pillsSection {
     position: relative;
     z-index: 1;
-    padding: 0.78rem 0.8rem 0.86rem;
+    padding: 0.82rem 0.82rem 0.9rem;
 }
 
 .pillsGrid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.68rem;
+    gap: 0.7rem;
     align-content: start;
 }
 
 .featurePill {
     inline-size: 100%;
     min-inline-size: 0;
-    min-block-size: 44px;
+    min-block-size: 46px;
     justify-content: flex-start;
-    padding-inline: 0.78rem 0.9rem;
+    padding-inline: 0.8rem 0.92rem;
     border-color: rgba(214, 166, 74, 0.18);
-
     background:
-        linear-gradient(180deg, rgba(255, 248, 235, 0.032), rgba(255, 248, 235, 0.01)),
+        linear-gradient(180deg, rgba(255, 248, 235, 0.03), rgba(255, 248, 235, 0.01)),
         linear-gradient(180deg, rgba(56, 32, 16, 0.76), rgba(29, 18, 11, 0.92));
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.035),
         0 4px 10px rgba(0, 0, 0, 0.09);
 }
 
 .featureIconCircle {
-    inline-size: 1.84rem;
-    block-size: 1.84rem;
+    inline-size: 1.9rem;
+    block-size: 1.9rem;
     border-radius: 999px;
     flex-shrink: 0;
     display: inline-flex;
@@ -149,32 +170,112 @@
 }
 
 .featureIcon {
-    inline-size: 0.78rem;
-    block-size: 0.78rem;
+    inline-size: 0.8rem;
+    block-size: 0.8rem;
     color: currentColor;
     stroke: currentColor;
     filter: none;
 }
 
-.highlightCard {
-    position: relative;
-    z-index: 1;
-    margin-block-start: auto;
-    padding: 0 0.8rem 0.8rem;
+.bottomCards {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: auto;
+    padding: 0 0.82rem 0.82rem;
 }
 
+.atmosphereCard,
 .highlightCardInner {
     overflow: hidden;
     border: 1px solid rgba(214, 166, 74, 0.16);
     border-radius: clamp(16px, 1.5vw, 20px);
-
     background:
         linear-gradient(180deg, rgba(255, 244, 224, 0.055), rgba(255, 244, 224, 0.015)),
         linear-gradient(180deg, rgba(74, 45, 22, 0.52), rgba(34, 22, 13, 0.42));
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.045),
         0 10px 20px rgba(0, 0, 0, 0.11);
+}
+
+.atmosphereCard {
+    position: relative;
+    z-index: 1;
+    padding: 0.92rem;
+    display: grid;
+    gap: 0.6rem;
+}
+
+.atmosphereEyebrow {
+    inline-size: fit-content;
+    max-inline-size: 100%;
+    padding: 0.4rem 0.68rem;
+    border-radius: 999px;
+    border: 1px solid rgba(226, 185, 103, 0.18);
+    background:
+        linear-gradient(180deg, rgba(80, 44, 18, 0.78), rgba(34, 18, 10, 0.88));
+    color: rgba(255, 234, 191, 0.92);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.atmosphereHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.62rem;
+    min-inline-size: 0;
+}
+
+.atmosphereIconSlot {
+    inline-size: 1.9rem;
+    block-size: 1.9rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(241, 205, 132, 0.18);
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.18), transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.08), transparent 72%),
+        linear-gradient(180deg, rgba(92, 52, 22, 0.94) 0%, rgba(45, 24, 11, 0.98) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.08),
+        0 7px 16px rgba(0, 0, 0, 0.14);
+    color: rgba(241, 205, 132, 0.98);
+    flex-shrink: 0;
+}
+
+.atmosphereIcon {
+    inline-size: 0.8rem;
+    block-size: 0.8rem;
+    display: block;
+    color: currentColor;
+    stroke: currentColor;
+}
+
+.atmosphereTitle {
+    margin: 0;
+    color: rgba(255, 248, 240, 0.98);
+    font-size: 0.96rem;
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+}
+
+.atmosphereText {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 0.84rem;
+    line-height: 1.5;
+    text-wrap: pretty;
+}
+
+.highlightCard {
+    position: relative;
+    z-index: 1;
 }
 
 .highlightHeader {
@@ -195,13 +296,13 @@
 }
 
 .highlightIconCircle {
-    inline-size: 1.8rem;
-    block-size: 1.8rem;
+    inline-size: 1.82rem;
+    block-size: 1.82rem;
     border-radius: 999px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(241, 205, 132, 0.20);
+    border: 1px solid rgba(241, 205, 132, 0.2);
     background:
         radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.18), transparent 55%),
         radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.09), transparent 72%),
@@ -223,7 +324,7 @@
 .highlightTitle {
     margin: 0;
     color: rgba(255, 248, 240, 0.98);
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     font-weight: 800;
     line-height: 1.08;
     letter-spacing: -0.01em;
@@ -233,10 +334,10 @@
 
 .highlightText {
     margin: 0;
-    padding: 0.68rem 0.82rem 0.78rem;
+    padding: 0.7rem 0.82rem 0.78rem;
     color: var(--text-soft);
-    font-size: 0.82rem;
-    line-height: 1.44;
+    font-size: 0.83rem;
+    line-height: 1.46;
     text-align: start;
     text-wrap: pretty;
 }
@@ -255,22 +356,22 @@
     inline-size: 100%;
     min-inline-size: 0;
     display: flex;
+    min-block-size: 100%;
 }
 
 .galleryCard {
     position: relative;
     inline-size: 100%;
     min-inline-size: 0;
+    min-block-size: 100%;
     overflow: hidden;
     border-radius: clamp(20px, 2vw, 28px);
     border: 1px solid rgba(214, 166, 74, 0.22);
-
     background:
         linear-gradient(180deg, rgba(56, 31, 13, 0.74), rgba(24, 15, 9, 0.94)),
-        radial-gradient(1000px 360px at 50% -10%, rgba(230, 200, 147, 0.10), transparent 60%),
+        radial-gradient(1000px 360px at 50% -10%, rgba(230, 200, 147, 0.1), transparent 60%),
         radial-gradient(720px 320px at 100% 110%, rgba(230, 200, 147, 0.07), transparent 60%),
         #22140b;
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
         inset 0 0 0 1px rgba(255, 255, 255, 0.01),
@@ -291,16 +392,52 @@
 .galleryStage {
     position: relative;
     z-index: 0;
-    block-size: clamp(320px, 29vw, 430px);
+    inline-size: 100%;
+    block-size: 100%;
+    min-block-size: 100%;
 }
 
-@media (max-width: 1280px) {
-    .grid {
-        grid-template-columns: minmax(320px, 0.94fr) minmax(380px, 1.06fr);
-    }
+.galleryCaption {
+    left: clamp(0.72rem, 1vw, 0.96rem);
+    right: auto;
 
+    inline-size: fit-content;
+    max-inline-size: min(68%, 22rem);
+    padding: 0.62rem 0.88rem;
+    border-radius: 999px;
+}
+
+.galleryCaption>span {
+    display: block;
+    font-size: clamp(0.8rem, 0.16vw + 0.82rem, 0.96rem);
+    font-weight: 800;
+    line-height: 1.28;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+}
+
+.galleryIndicatorDock {
+    bottom: clamp(0.66rem, 0.95vw, 0.92rem);
+}
+
+.galleryIndicatorRail {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.06),
+        0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+
+@media (min-width: 1081px) {
+
+    .rightPanel,
+    .galleryShell,
+    .galleryCard,
     .galleryStage {
-        block-size: clamp(300px, 31vw, 410px);
+        block-size: 100%;
+        min-block-size: 100%;
     }
 }
 
@@ -315,8 +452,9 @@
         border-block-end: 1px solid var(--gold-line);
     }
 
-    .highlightCard {
-        padding-block-end: 0.92rem;
+    .bottomCards {
+        margin-top: 0;
+        padding-bottom: 0.92rem;
     }
 
     .rightPanel {
@@ -328,25 +466,21 @@
     }
 
     .galleryStage {
-        block-size: clamp(280px, 50vw, 420px);
+        block-size: clamp(280px, 52vw, 420px);
+        min-block-size: clamp(280px, 52vw, 420px);
     }
 }
 
 @media (max-width: 920px) {
-    .description {
-        font-size: clamp(0.98rem, 2.8vw, 1.14rem);
-        line-height: 1.18;
-    }
-
     .pillsSection {
-        padding: 0.82rem 0.88rem 0.92rem;
+        padding: 0.84rem 0.88rem 0.92rem;
     }
 
     .pillsGrid {
         gap: 0.72rem;
     }
 
-    .highlightCard {
+    .bottomCards {
         padding: 0 0.88rem 0.88rem;
     }
 
@@ -355,7 +489,8 @@
     }
 
     .galleryStage {
-        block-size: clamp(250px, 56vw, 360px);
+        block-size: clamp(250px, 58vw, 360px);
+        min-block-size: clamp(250px, 58vw, 360px);
     }
 }
 
@@ -364,18 +499,24 @@
         border-radius: 20px;
     }
 
-    .descriptionWrap {
-        padding: 0.92rem 0.88rem 0.82rem;
+    .introInner {
+        padding: 0.92rem 0.88rem 0.86rem;
     }
 
     .eyebrow {
+        margin-inline: auto;
         text-align: center;
-        letter-spacing: 0.17em;
+    }
+
+    .title {
+        font-size: clamp(1rem, 4.6vw, 1.18rem);
+        line-height: 1.12;
+        text-align: center;
     }
 
     .description {
-        font-size: clamp(0.94rem, 4.4vw, 1.08rem);
-        line-height: 1.22;
+        font-size: 0.9rem;
+        line-height: 1.5;
         text-align: center;
     }
 
@@ -388,8 +529,12 @@
         gap: 0.62rem;
     }
 
-    .highlightCard {
+    .bottomCards {
         padding: 0 0.82rem 0.82rem;
+    }
+
+    .atmosphereCard {
+        padding: 0.84rem;
     }
 
     .highlightHeader {
@@ -416,7 +561,23 @@
     }
 
     .galleryStage {
-        block-size: clamp(220px, 66vw, 300px);
+        block-size: clamp(220px, 68vw, 300px);
+        min-block-size: clamp(220px, 68vw, 300px);
+    }
+
+    .galleryCaption {
+        left: 0.66rem;
+        right: 0.66rem;
+      
+     
+        max-inline-size: none;
+        padding: 0.58rem 0.8rem;
+        border-radius: 1rem;
+    }
+
+    .galleryCaption>span {
+        font-size: 0.84rem;
+        line-height: 1.3;
     }
 }
 
@@ -425,15 +586,26 @@
         border-radius: 16px;
     }
 
-    .description {
-        font-size: 0.9rem;
-    }
-
     .galleryCard {
         border-radius: 16px;
     }
 
     .galleryStage {
-        block-size: clamp(200px, 74vw, 270px);
+        block-size: clamp(200px, 76vw, 270px);
+        min-block-size: clamp(200px, 76vw, 270px);
+    }
+
+    .galleryCaption {
+        left: 0.5rem;
+        right: 0.5rem;
+        bottom: calc(0.58rem + 2.15rem + 0.5rem);
+        
+   
+        padding: 0.5rem 0.68rem;
+    }
+
+    .galleryCaption>span {
+        font-size: 0.76rem;
+        line-height: 1.24;
     }
 }

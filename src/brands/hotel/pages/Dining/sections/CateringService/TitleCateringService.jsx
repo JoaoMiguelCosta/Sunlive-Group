@@ -1,11 +1,21 @@
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
-export default function TitleCateringService() {
+import styles from "./CateringService.module.css";
+
+export default function TitleCateringService({
+  titleId = "restaurant-catering-title",
+}) {
   const content = hotelBrand?.pages?.dining?.sections?.catering ?? null;
-  const label = content?.headerLabel?.trim();
+  const label = String(content?.headerLabel ?? "").trim();
 
   if (!label) return null;
 
-  return <HotelSectionHeader id="restaurant-catering-title" label={label} />;
+  return (
+    <HotelSectionHeader
+      id={titleId}
+      label={label}
+      className={styles.sectionTitle}
+    />
+  );
 }

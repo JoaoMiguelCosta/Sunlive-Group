@@ -5,6 +5,7 @@ import {
   sundayBuffet,
   barAndLounge,
   catering,
+  desserts,
 } from "../sections/dining/index.js";
 
 const dining = {
@@ -16,6 +17,7 @@ const dining = {
     sundayBuffet,
     barAndLounge,
     catering,
+    desserts
   },
 };
 

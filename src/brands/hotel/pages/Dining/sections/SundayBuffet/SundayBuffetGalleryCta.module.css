@@ -4,105 +4,266 @@
     inline-size: 100%;
 }
 
-.inner {
+.layout {
     inline-size: 100%;
-    margin-inline: auto;
-    box-sizing: border-box;
 }
 
-.card {
+.visualStage {
+    display: grid;
+    grid-template-columns: minmax(0, 1.32fr) minmax(320px, 0.68fr);
+    gap: clamp(1rem, 1.8vw, 1.45rem);
+    align-items: stretch;
+}
+
+.featuredCard,
+.secondaryCard,
+.detailsCard {
     position: relative;
-    inline-size: 100%;
-    margin-inline: auto;
     overflow: hidden;
-    border-radius: clamp(1.2rem, 1.8vw, 1.7rem);
-
-    aspect-ratio: 16 / 10;
-    min-block-size: clamp(17rem, 38vw, 29rem);
-    max-block-size: min(32rem, calc(100svh - 10rem));
-
+    border-radius: clamp(1.3rem, 1.9vw, 1.9rem);
+    border: 1px solid rgba(230, 200, 147, 0.28);
     background:
-        linear-gradient(180deg, rgba(54, 31, 13, 0.94), rgba(25, 15, 9, 0.97)),
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.16), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.08), transparent 60%),
+        linear-gradient(180deg, rgba(54, 31, 13, 0.9), rgba(25, 15, 9, 0.95)),
+        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.14), transparent 60%),
+        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.06), transparent 60%),
         #26170b;
-
-    border: 1px solid rgba(230, 200, 147, 0.3);
-
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 44px rgba(0, 0, 0, 0.24),
+        0 20px 48px rgba(0, 0, 0, 0.24),
         0 0 0 1px rgba(255, 255, 255, 0.012);
 }
 
-.card::before {
+.featuredCard::before,
+.secondaryCard::before,
+.detailsCard::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 2;
     pointer-events: none;
+    border-radius: inherit;
     background:
-        linear-gradient(180deg, rgba(255, 245, 225, 0.035) 0%, rgba(255, 245, 225, 0) 16%),
-        radial-gradient(circle at center, rgba(255, 235, 190, 0.025), transparent 62%);
+        linear-gradient(180deg, rgba(255, 245, 225, 0.03) 0%, rgba(255, 245, 225, 0) 16%),
+        radial-gradient(circle at center, rgba(255, 235, 190, 0.02), transparent 62%);
 }
 
-.card::after {
+.featuredCard::after,
+.secondaryCard::after,
+.detailsCard::after {
     content: "";
     position: absolute;
-    inset: 0;
-    z-index: 1;
+    inset: 1px;
+    z-index: 2;
     pointer-events: none;
-    box-shadow: inset 0 0 0 1px rgba(255, 240, 214, 0.035);
+    border-radius: inherit;
+    border: 1px solid rgba(255, 240, 214, 0.03);
 }
 
-.carouselStage {
-    position: relative;
-    z-index: 0;
+.featuredCard {
+    min-block-size: clamp(28rem, 46vw, 42rem);
+}
+
+.featuredImage,
+.secondaryImage {
+    display: block;
+    inline-size: 100%;
     block-size: 100%;
-    min-block-size: 100%;
+    object-fit: cover;
+    filter: saturate(1.02) contrast(1.02);
+}
+
+.featuredImage {
+    min-block-size: inherit;
+}
+
+.featuredCard::before {
+    background:
+        linear-gradient(180deg,
+            rgba(255, 245, 225, 0.025) 0%,
+            rgba(255, 245, 225, 0) 16%),
+        linear-gradient(180deg,
+            rgba(16, 9, 5, 0.02) 0%,
+            rgba(16, 9, 5, 0.1) 100%),
+        radial-gradient(circle at center, transparent 52%, rgba(15, 9, 5, 0.08) 100%);
+}
+
+.featuredCaption,
+.secondaryCaption {
+    position: absolute;
+    left: clamp(0.78rem, 1vw, 1rem);
+    bottom: clamp(0.78rem, 1vw, 1rem);
+    z-index: 3;
+    max-inline-size: min(76%, 24rem);
+    padding: 0.66rem 0.94rem;
+    border-radius: 999px;
+    border: 1px solid rgba(214, 166, 74, 0.24);
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 234, 191, 0.08), transparent 58%),
+        linear-gradient(180deg, rgba(72, 36, 15, 0.9), rgba(26, 13, 8, 0.95));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 246, 225, 0.08),
+        0 12px 28px rgba(0, 0, 0, 0.24);
+}
+
+.featuredCaption>span,
+.secondaryCaption>span {
+    display: block;
+    color: rgba(255, 246, 232, 0.98);
+    font-size: clamp(0.82rem, 0.16vw + 0.84rem, 0.98rem);
+    font-weight: 800;
+    line-height: 1.28;
+    text-wrap: balance;
+}
+
+.asideColumn {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: clamp(1rem, 1.6vw, 1.25rem);
+    min-inline-size: 0;
+}
+
+.secondaryCard {
+    min-block-size: clamp(15rem, 20vw, 20rem);
+}
+
+.detailsCard {
+    padding: clamp(1rem, 1.4vw, 1.2rem);
+    display: grid;
+    gap: 0.72rem;
+    align-content: start;
+}
+
+.detailsEyebrow {
+    inline-size: fit-content;
+    max-inline-size: 100%;
+    padding: 0.42rem 0.72rem;
+    border-radius: 999px;
+    border: 1px solid rgba(226, 185, 103, 0.2);
+    background:
+        linear-gradient(180deg, rgba(80, 44, 18, 0.82), rgba(34, 18, 10, 0.9));
+    color: rgba(255, 234, 191, 0.92);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.detailsTitle {
+    margin: 0;
+    color: rgba(255, 248, 240, 0.98);
+    font-size: clamp(1.06rem, 0.96rem + 0.26vw, 1.28rem);
+    font-weight: 850;
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+.detailsText {
+    margin: 0;
+    color: rgba(255, 243, 228, 0.86);
+    font-size: 0.94rem;
+    line-height: 1.62;
+    text-wrap: pretty;
 }
 
 .ctaWrap {
     display: flex;
     justify-content: center;
-    margin-top: clamp(0.95rem, 2vw, 1.25rem);
+    margin-top: clamp(1rem, 2vw, 1.32rem);
 }
 
 .ctaButton {
-    inline-size: min(100%, 28rem);
+    inline-size: min(100%, 30rem);
 }
 
-@media (max-width: 1200px) {
-    .card {
-        aspect-ratio: 16 / 10.6;
-        min-block-size: clamp(16rem, 42vw, 26rem);
-        max-block-size: min(29rem, calc(100svh - 10.5rem));
+@media (min-width: 1440px) {
+    .featuredCard {
+        min-block-size: clamp(30rem, 44vw, 44rem);
+    }
+
+    .secondaryCard {
+        min-block-size: 21rem;
+    }
+}
+
+@media (max-width: 1180px) {
+    .visualStage {
+        grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+    }
+
+    .featuredCard {
+        min-block-size: clamp(24rem, 48vw, 34rem);
+    }
+
+    .secondaryCard {
+        min-block-size: clamp(14rem, 24vw, 18rem);
     }
 }
 
 @media (max-width: 960px) {
-    .card {
-        aspect-ratio: 4 / 3.25;
-        min-block-size: clamp(15rem, 55vw, 23rem);
-        max-block-size: min(24rem, calc(100svh - 11rem));
-        border-radius: clamp(1.1rem, 2vw, 1.45rem);
+    .visualStage {
+        grid-template-columns: 1fr;
     }
 
-    .ctaButton {
-        inline-size: min(100%, 25rem);
+    .asideColumn {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .featuredCard,
+    .secondaryCard,
+    .detailsCard {
+        border-radius: 1.22rem;
+    }
+
+    .featuredCard {
+        min-block-size: clamp(20rem, 62vw, 30rem);
+    }
+
+    .secondaryCard {
+        min-block-size: clamp(13rem, 34vw, 18rem);
     }
 }
 
 @media (max-width: 720px) {
-    .card {
-        aspect-ratio: 4 / 4.15;
-        min-block-size: clamp(15rem, 84vw, 24rem);
-        max-block-size: min(27rem, calc(100svh - 11.5rem));
-        border-radius: 1.1rem;
+
+    .featuredCard,
+    .secondaryCard,
+    .detailsCard {
+        border-radius: 1.06rem;
+    }
+
+    .featuredCard {
+        min-block-size: clamp(18rem, 82vw, 24rem);
+    }
+
+    .asideColumn {
+        grid-template-columns: 1fr;
+    }
+
+    .secondaryCard {
+        min-block-size: clamp(14rem, 68vw, 18rem);
+    }
+
+    .featuredCaption,
+    .secondaryCaption {
+        left: 0.66rem;
+        right: 0.66rem;
+        bottom: 0.66rem;
+        max-inline-size: none;
+        border-radius: 1rem;
+        padding: 0.58rem 0.8rem;
+    }
+
+    .featuredCaption>span,
+    .secondaryCaption>span {
+        font-size: 0.84rem;
+        line-height: 1.3;
     }
 
     .ctaWrap {
-        margin-top: 0.9rem;
+        margin-top: 0.92rem;
     }
 
     .ctaButton {
@@ -111,30 +272,70 @@
 }
 
 @media (max-width: 560px) {
-    .card {
-        aspect-ratio: 4 / 4.55;
-        min-block-size: clamp(15.5rem, 92vw, 26rem);
-        max-block-size: min(30rem, calc(100svh - 12rem));
-        border-radius: 1rem;
+
+    .featuredCard,
+    .secondaryCard,
+    .detailsCard {
+        border-radius: 0.98rem;
     }
 
-    .ctaWrap {
-        margin-top: 0.82rem;
+    .featuredCard {
+        min-block-size: clamp(17rem, 92vw, 23rem);
+    }
+
+    .secondaryCard {
+        min-block-size: clamp(13rem, 78vw, 17rem);
+    }
+
+    .featuredCaption,
+    .secondaryCaption {
+        left: 0.56rem;
+        right: 0.56rem;
+        bottom: 0.56rem;
+        padding: 0.54rem 0.74rem;
+        border-radius: 0.92rem;
+    }
+
+    .featuredCaption>span,
+    .secondaryCaption>span {
+        font-size: 0.8rem;
+        line-height: 1.28;
+    }
+
+    .detailsCard {
+        padding: 0.92rem;
+    }
+
+    .detailsTitle {
+        font-size: 1rem;
+    }
+
+    .detailsText {
+        font-size: 0.9rem;
+        line-height: 1.56;
     }
 }
 
 @media (max-width: 420px) {
-    .card {
-        aspect-ratio: 4 / 4.7;
-        min-block-size: clamp(16rem, 96vw, 27rem);
-        max-block-size: min(31rem, calc(100svh - 12.5rem));
+    .featuredCard {
+        min-block-size: clamp(16.5rem, 98vw, 22rem);
     }
-}
 
-@media (max-height: 620px) and (orientation: landscape) {
-    .card {
-        aspect-ratio: 16 / 7.8;
-        min-block-size: 13rem;
-        max-block-size: min(17rem, calc(100svh - 8rem));
+    .secondaryCard {
+        min-block-size: clamp(12.5rem, 84vw, 16rem);
+    }
+
+    .featuredCaption,
+    .secondaryCaption {
+        left: 0.5rem;
+        right: 0.5rem;
+        bottom: 0.5rem;
+        padding: 0.5rem 0.68rem;
+    }
+
+    .featuredCaption>span,
+    .secondaryCaption>span {
+        font-size: 0.76rem;
+        line-height: 1.24;
     }
 }

@@ -18,6 +18,10 @@ export default function HotelPhotoCarouselBase({
   showIndicators = true,
   showCaption = false,
   initialIndex = 0,
+  activeIndex: controlledActiveIndex,
+  onPrev,
+  onNext,
+  onSelectIndex,
   fitMode = "cover",
   imagePosition = "center",
   imageBackground = "#120b06",
@@ -32,20 +36,25 @@ export default function HotelPhotoCarouselBase({
   );
 
   const hasItems = normalizedItems.length > 0;
+  const isControlled = typeof controlledActiveIndex === "number";
 
-  const [activeIndex, setActiveIndex] = useState(() =>
+  const [internalActiveIndex, setInternalActiveIndex] = useState(() =>
     clampIndex(initialIndex, normalizedItems.length),
   );
 
   useEffect(() => {
-    setActiveIndex((prev) => clampIndex(prev, normalizedItems.length));
-  }, [normalizedItems.length]);
+    if (!isControlled) {
+      setInternalActiveIndex((prev) =>
+        clampIndex(prev, normalizedItems.length),
+      );
+    }
+  }, [isControlled, normalizedItems.length]);
 
-  const safeIndex = hasItems
-    ? clampIndex(activeIndex, normalizedItems.length)
-    : 0;
+  const resolvedIndex = isControlled
+    ? clampIndex(controlledActiveIndex, normalizedItems.length)
+    : clampIndex(internalActiveIndex, normalizedItems.length);
 
-  const activeItem = hasItems ? normalizedItems[safeIndex] : null;
+  const activeItem = hasItems ? normalizedItems[resolvedIndex] : null;
   const activeSrc = activeItem?.src ?? null;
   const activeAlt = activeItem?.alt ?? fallbackLabel;
   const activeLabel = activeItem?.label ?? fallbackLabel;
@@ -60,23 +69,42 @@ export default function HotelPhotoCarouselBase({
       ? `${styles.image} ${styles.imageContain}`
       : `${styles.image} ${styles.imageCover}`;
 
+  const setIndex = useCallback(
+    (index) => {
+      const safeIndex = clampIndex(index, normalizedItems.length);
+
+      if (!hasItems) return;
+
+      if (!isControlled) {
+        setInternalActiveIndex(safeIndex);
+      }
+
+      onSelectIndex?.(safeIndex);
+    },
+    [hasItems, isControlled, normalizedItems.length, onSelectIndex],
+  );
+
   const goPrev = useCallback(() => {
     if (!hasItems) return;
-    setActiveIndex((prev) => clampIndex(prev - 1, normalizedItems.length));
-  }, [hasItems, normalizedItems.length]);
+
+    if (onPrev) {
+      onPrev();
+      return;
+    }
+
+    setIndex(resolvedIndex - 1);
+  }, [hasItems, onPrev, resolvedIndex, setIndex]);
 
   const goNext = useCallback(() => {
     if (!hasItems) return;
-    setActiveIndex((prev) => clampIndex(prev + 1, normalizedItems.length));
-  }, [hasItems, normalizedItems.length]);
 
-  const handleSelectIndex = useCallback(
-    (index) => {
-      if (!hasItems) return;
-      setActiveIndex(clampIndex(index, normalizedItems.length));
-    },
-    [hasItems, normalizedItems.length],
-  );
+    if (onNext) {
+      onNext();
+      return;
+    }
+
+    setIndex(resolvedIndex + 1);
+  }, [hasItems, onNext, resolvedIndex, setIndex]);
 
   const shouldShowCaption = showCaption && Boolean(activeItem?.label);
 
@@ -112,7 +140,7 @@ export default function HotelPhotoCarouselBase({
             className={imageClassName}
             src={activeSrc}
             alt={activeAlt}
-            loading={safeIndex === 0 ? "eager" : "lazy"}
+            loading={resolvedIndex === 0 ? "eager" : "lazy"}
             style={{ objectPosition: resolvedImagePosition }}
           />
 
@@ -163,7 +191,7 @@ export default function HotelPhotoCarouselBase({
         <div className={styles.indicatorDock} aria-label={indicatorsLabel}>
           <div className={styles.indicatorRail}>
             {normalizedItems.map((item, index) => {
-              const isActive = index === safeIndex;
+              const isActive = index === resolvedIndex;
 
               return (
                 <button
@@ -172,7 +200,7 @@ export default function HotelPhotoCarouselBase({
                   className={`${styles.indicatorDot} ${
                     isActive ? styles.indicatorDotActive : ""
                   }`}
-                  onClick={() => handleSelectIndex(index)}
+                  onClick={() => setIndex(index)}
                   aria-label={`Ver imagem ${index + 1}`}
                   aria-pressed={isActive}
                 />

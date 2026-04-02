@@ -7,11 +7,20 @@ export default function HotelCateringStepCard({
   icon = null,
   iconKey = null,
   className = "",
+  isActive = false,
+  onClick,
 }) {
   if (!title || !description) return null;
 
+  const Tag = typeof onClick === "function" ? "button" : "article";
+
   return (
-    <article className={`${styles.card} ${className}`.trim()}>
+    <Tag
+      className={`${styles.card} ${isActive ? styles.active : ""} ${className}`.trim()}
+      onClick={onClick}
+      type={Tag === "button" ? "button" : undefined}
+      aria-pressed={Tag === "button" ? isActive : undefined}
+    >
       <div className={styles.topBar}>
         {stepNumber ? (
           <span className={styles.stepBadge} aria-label={`Passo ${stepNumber}`}>
@@ -35,6 +44,6 @@ export default function HotelCateringStepCard({
       <div className={styles.footer}>
         <p className={styles.description}>{description}</p>
       </div>
-    </article>
+    </Tag>
   );
 }

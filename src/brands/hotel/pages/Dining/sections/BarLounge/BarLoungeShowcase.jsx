@@ -13,16 +13,28 @@ const clampIndex = (index, length) => {
 
 export default function BarLoungeShowcase() {
   const section = hotelBrand?.pages?.dining?.sections?.barAndLounge ?? null;
+  if (!section) return null;
 
   const intro = section?.intro ?? null;
   const features = Array.isArray(section?.features?.items)
     ? section.features.items
     : [];
+  const atmosphereCard = section?.atmosphereCard ?? null;
   const highlightCard = section?.highlightCard ?? null;
   const gallery = section?.gallery ?? null;
 
-  const items = useMemo(() => gallery?.items ?? [], [gallery?.items]);
+  const items = useMemo(
+    () => (Array.isArray(gallery?.items) ? gallery.items : []),
+    [gallery?.items],
+  );
+
   const fallbackLabel = gallery?.fallbackLabel ?? "Bar & Lounge";
+  const fallbackEyebrow = gallery?.ui?.fallbackEyebrow ?? "Lounge";
+  const fallbackTitle = gallery?.ui?.fallbackTitle ?? "Ambiente interior";
+
+  const AtmosphereIcon = atmosphereCard?.iconKey
+    ? resolveHotelIcon(hotelBrand?.icons, atmosphereCard.iconKey)
+    : null;
 
   const HighlightIcon = highlightCard?.iconKey
     ? resolveHotelIcon(hotelBrand?.icons, highlightCard.iconKey)
@@ -52,15 +64,21 @@ export default function BarLoungeShowcase() {
     <div className={styles.block}>
       <div className={styles.grid}>
         <div className={styles.leftPanel}>
-          {(intro?.description || section?.headerLabel) && (
-            <div className={styles.descriptionWrap}>
-              {section?.headerLabel ? (
-                <span className={styles.eyebrow}>{section.headerLabel}</span>
-              ) : null}
+          {(intro?.eyebrow || intro?.title || intro?.description) && (
+            <div className={styles.introCard}>
+              <div className={styles.introInner}>
+                {intro?.eyebrow ? (
+                  <span className={styles.eyebrow}>{intro.eyebrow}</span>
+                ) : null}
 
-              {intro?.description ? (
-                <p className={styles.description}>{intro.description}</p>
-              ) : null}
+                {intro?.title ? (
+                  <h3 className={styles.title}>{intro.title}</h3>
+                ) : null}
+
+                {intro?.description ? (
+                  <p className={styles.description}>{intro.description}</p>
+                ) : null}
+              </div>
             </div>
           )}
 
@@ -88,34 +106,67 @@ export default function BarLoungeShowcase() {
             </div>
           ) : null}
 
-          {highlightCard?.title || highlightCard?.text ? (
-            <div className={styles.highlightCard}>
-              <div className={styles.highlightCardInner}>
-                <div className={styles.highlightHeader}>
-                  {HighlightIcon ? (
+          <div className={styles.bottomCards}>
+            {atmosphereCard?.title || atmosphereCard?.text ? (
+              <article className={styles.atmosphereCard}>
+                {atmosphereCard?.eyebrow ? (
+                  <span className={styles.atmosphereEyebrow}>
+                    {atmosphereCard.eyebrow}
+                  </span>
+                ) : null}
+
+                <div className={styles.atmosphereHeader}>
+                  {AtmosphereIcon ? (
                     <span
-                      className={styles.highlightIconSlot}
+                      className={styles.atmosphereIconSlot}
                       aria-hidden="true"
                     >
-                      <span className={styles.highlightIconCircle}>
-                        <HighlightIcon className={styles.highlightIcon} />
-                      </span>
+                      <AtmosphereIcon className={styles.atmosphereIcon} />
                     </span>
                   ) : null}
 
-                  {highlightCard?.title ? (
-                    <h3 className={styles.highlightTitle}>
-                      {highlightCard.title}
-                    </h3>
+                  {atmosphereCard?.title ? (
+                    <h4 className={styles.atmosphereTitle}>
+                      {atmosphereCard.title}
+                    </h4>
                   ) : null}
                 </div>
 
-                {highlightCard?.text ? (
-                  <p className={styles.highlightText}>{highlightCard.text}</p>
+                {atmosphereCard?.text ? (
+                  <p className={styles.atmosphereText}>{atmosphereCard.text}</p>
                 ) : null}
+              </article>
+            ) : null}
+
+            {highlightCard?.title || highlightCard?.text ? (
+              <div className={styles.highlightCard}>
+                <div className={styles.highlightCardInner}>
+                  <div className={styles.highlightHeader}>
+                    {HighlightIcon ? (
+                      <span
+                        className={styles.highlightIconSlot}
+                        aria-hidden="true"
+                      >
+                        <span className={styles.highlightIconCircle}>
+                          <HighlightIcon className={styles.highlightIcon} />
+                        </span>
+                      </span>
+                    ) : null}
+
+                    {highlightCard?.title ? (
+                      <h4 className={styles.highlightTitle}>
+                        {highlightCard.title}
+                      </h4>
+                    ) : null}
+                  </div>
+
+                  {highlightCard?.text ? (
+                    <p className={styles.highlightText}>{highlightCard.text}</p>
+                  ) : null}
+                </div>
               </div>
-            </div>
-          ) : null}
+            ) : null}
+          </div>
         </div>
 
         <div className={styles.rightPanel}>
@@ -127,7 +178,21 @@ export default function BarLoungeShowcase() {
                 onPrev={goPrev}
                 onNext={goNext}
                 fallbackLabel={fallbackLabel}
+                fallbackEyebrow={fallbackEyebrow}
+                fallbackTitle={fallbackTitle}
                 className={styles.galleryStage}
+                showCaption
+                showIndicators
+                fitMode="cover"
+                imagePosition="center center"
+                imageBackground="#120b06"
+                showImageBackdrop
+                backdropBlur="18px"
+                backdropScale={1.12}
+                backdropOpacity={0.48}
+                captionClassName={styles.galleryCaption}
+                indicatorDockClassName={styles.galleryIndicatorDock}
+                indicatorRailClassName={styles.galleryIndicatorRail}
               />
             </div>
           </div>

@@ -5,13 +5,37 @@ import panoramicRestaurantImage3 from "../../../assets/panoramic-restaurant3.web
 export const panoramicRestaurant = {
   id: "restaurante-panoramico",
 
-  headerLabel: "Restauração Panorâmica",
+  headerLabel: "Restaurante Panorâmico",
+
+  introEyebrow: "Vista sobre a Bairrada",
 
   description:
     "O Restaurante Panorâmico oferece um ambiente elegante e luminoso, com vista privilegiada sobre a Bairrada e uma experiência tranquila à mesa.",
 
+  highlights: {
+    ariaLabel: "Destaques do restaurante panorâmico",
+    items: [
+      {
+        id: "panoramic-highlight-01",
+        label: "Ambiente luminoso",
+      },
+      {
+        id: "panoramic-highlight-02",
+        label: "Vista privilegiada",
+      },
+      {
+        id: "panoramic-highlight-03",
+        label: "Experiência tranquila",
+      },
+    ],
+  },
+
   gallery: {
     fallbackLabel: "Restaurante Panorâmico",
+    ui: {
+      fallbackEyebrow: "Panorâmica",
+      fallbackTitle: "Experiência com vista",
+    },
     items: [
       {
         id: "pr-01",
