@@ -22,6 +22,14 @@ function preloadGalleryImages(items) {
   });
 }
 
+function getImageFitMode(item) {
+  return item?.fitMode ?? "cover";
+}
+
+function getImagePosition(item) {
+  return item?.imagePosition ?? "center";
+}
+
 const FADE_DURATION_MS = 560;
 const STACKED_BREAKPOINT = 1180;
 
@@ -249,7 +257,8 @@ export default function FacilitiesLeisureGallery() {
                     alt=""
                     loading="lazy"
                     style={{
-                      objectPosition: previousItem.imagePosition ?? "center",
+                      objectPosition: getImagePosition(previousItem),
+                      objectFit: "cover",
                     }}
                   />
                 </div>
@@ -267,7 +276,8 @@ export default function FacilitiesLeisureGallery() {
                   alt=""
                   loading="lazy"
                   style={{
-                    objectPosition: displayItem.imagePosition ?? "center",
+                    objectPosition: getImagePosition(displayItem),
+                    objectFit: "cover",
                   }}
                 />
               </div>
@@ -282,7 +292,8 @@ export default function FacilitiesLeisureGallery() {
                   aria-hidden="true"
                   loading="lazy"
                   style={{
-                    objectPosition: previousItem.imagePosition ?? "center",
+                    objectPosition: getImagePosition(previousItem),
+                    objectFit: getImageFitMode(previousItem),
                   }}
                 />
               ) : null}
@@ -295,7 +306,8 @@ export default function FacilitiesLeisureGallery() {
                 alt={displayItem.alt}
                 loading="eager"
                 style={{
-                  objectPosition: displayItem.imagePosition ?? "center",
+                  objectPosition: getImagePosition(displayItem),
+                  objectFit: getImageFitMode(displayItem),
                 }}
               />
 
@@ -334,7 +346,8 @@ export default function FacilitiesLeisureGallery() {
                       alt={item.thumbAlt ?? item.alt ?? item.label}
                       loading="lazy"
                       style={{
-                        objectPosition: item.imagePosition ?? "center",
+                        objectPosition: getImagePosition(item),
+                        objectFit: "cover",
                       }}
                     />
                   </span>

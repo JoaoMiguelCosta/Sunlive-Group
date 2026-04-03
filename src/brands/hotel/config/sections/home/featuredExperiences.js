@@ -1,6 +1,7 @@
 import featuredExperiences1 from "../../../assets/featured-experiences1.webp";
 import featuredExperiences2 from "../../../assets/featured-experiences2.webp";
 import twoRoom from "../../../assets/two-room.webp";
+import panoramicRestaurant1 from "../../../assets/panoramic-restaurant1.webp";
 
 export const featuredExperiences = {
   id: "hotel-featured-experiences",
@@ -18,11 +19,11 @@ export const featuredExperiences = {
       eyebrow: "Comece o dia",
       badge: "Gastronomia",
       description:
-        "Comece o dia com uma vista deslumbrante e variedade de sabores.",
-      imageSrc: null,
-      imageAlt: null,
+        "Pequeno-almoço com vista panorâmica, num ambiente tranquilo e luminoso.",
+      imageSrc: panoramicRestaurant1,
+      imageAlt:
+        "Espaço panorâmico do hotel com vista exterior e zona de refeições",
       imagePosition: "center center",
-      placeholderLabel: "Imagem brevemente",
       featured: true,
     },
     {

@@ -1,6 +1,7 @@
 import wellBeing1 from "../../../assets/well-being1.webp";
 import wellBeing2 from "../../../assets/well-being2.webp";
 import wellBeing3 from "../../../assets/well-being3.webp";
+import wellBeing4 from "../../../assets/well-being4.webp";
 
 export const wellBeing = {
   id: "well-being",
@@ -96,7 +97,7 @@ export const wellBeing = {
           "Sessões de 45 minutos",
           "Capacidade: 6 pessoas",
         ],
-        image: null,
+        image: wellBeing4,
         imageAlt: "Sauna da Estalagem de Sangalhos",
         imagePosition: "center center",
       },

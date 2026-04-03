@@ -10,7 +10,7 @@ import styles from "./CustomizedQuotes.module.css";
 export default function CustomizedQuotesSection() {
   const section = hotelBrand?.pages?.events?.sections?.customizedQuotes ?? null;
 
-  const sectionId = section?.id ?? "customized-quotes";
+  const sectionId = "events-quotes";
   const titleId = `${sectionId}-title`;
 
   const backgroundImageSrc = section?.backgroundMedia?.imageSrc ?? null;
@@ -37,9 +37,7 @@ export default function CustomizedQuotesSection() {
       <div className={styles.inner}>
         <div className={styles.introBlock}>
           <TitleCustomizedQuotes titleId={titleId} />
-          
-            <DescriptionCustomizedQuotes />
-        
+          <DescriptionCustomizedQuotes />
         </div>
 
         <div className={styles.contentStack}>

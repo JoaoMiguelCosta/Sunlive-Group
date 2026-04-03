@@ -1,8 +1,8 @@
 import styles from "./RoomProfileFilterBar.module.css";
 
 export default function RoomProfileFilterBar({
-  label = "Filtrar por perfil",
-  ariaLabel = "Filtro por perfil",
+  label = "Filtrar por quarto",
+  ariaLabel = "Filtro por tipologia de quarto",
   options = [],
   active = "all",
   onChange,

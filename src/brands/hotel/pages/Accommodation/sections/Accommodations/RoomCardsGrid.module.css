@@ -2,43 +2,44 @@
     inline-size: 100%;
     max-inline-size: 1360px;
     margin-inline: auto;
-    margin-top: clamp(18px, 2.4vw, 28px);
+    margin-top: clamp(18px, 2.2vw, 28px);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: clamp(18px, 1.9vw, 24px);
-    align-items: start;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(14px, 1.6vw, 22px);
+    align-items: stretch;
     inline-size: 100%;
 }
 
-.cardCell {
-    display: flex;
+.cardItem {
     min-width: 0;
-    grid-column: span 2;
+    block-size: 100%;
 }
 
-.cardCell>* {
-    inline-size: 100%;
-    min-width: 0;
+.count1 {
+    grid-template-columns: minmax(280px, 560px);
+    justify-content: center;
 }
 
-.cardCell:nth-child(4):nth-last-child(2) {
-    grid-column: 2 / span 2;
+.count2 {
+    grid-template-columns: repeat(2, minmax(280px, 560px));
+    justify-content: center;
 }
 
-.cardCell:nth-child(5):nth-last-child(1) {
-    grid-column: 4 / span 2;
+.count4 {
+    grid-template-columns: repeat(2, minmax(280px, 560px));
+    justify-content: center;
 }
 
 .emptyState {
     inline-size: min(100%, 820px);
     margin-inline: auto;
     margin-top: 16px;
-    padding: 1.25rem 1.1rem;
+    padding: 1.1rem 1rem;
     text-align: center;
-    border-radius: 24px;
+    border-radius: 22px;
     border: 1px solid rgba(230, 200, 147, 0.24);
     background:
         radial-gradient(120% 120% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 42%),
@@ -69,31 +70,48 @@
     color: rgba(255, 244, 231, 0.88);
 }
 
+@media (min-width: 1081px) {
+    .count5 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .count5> :nth-child(4) {
+        grid-column: 1;
+        transform: translateX(50%);
+    }
+
+    .count5> :nth-child(5) {
+        grid-column: 2;
+        transform: translateX(50%);
+    }
+}
+
 @media (max-width: 1080px) {
     .wrap {
         max-inline-size: 1180px;
     }
 
-    .grid {
+    .grid,
+    .count2,
+    .count4,
+    .count5 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
+        justify-content: stretch;
     }
 
-    .cardCell {
-        grid-column: auto;
+    .count1 {
+        grid-template-columns: minmax(280px, 620px);
     }
 
-    .cardCell:nth-child(4):nth-last-child(2) {
-        grid-column: auto;
+    .count5> :nth-child(4),
+    .count5> :nth-child(5) {
+        transform: none;
     }
 
-    .cardCell:nth-child(5):nth-last-child(1) {
+    .count5> :last-child {
         grid-column: 1 / -1;
-        justify-content: center;
-    }
-
-    .cardCell:nth-child(5):nth-last-child(1)>* {
-        inline-size: min(100%, calc((100% - 18px) / 2));
+        inline-size: min(100%, calc((100% - clamp(14px, 1.6vw, 22px)) / 2));
+        justify-self: center;
     }
 }
 
@@ -103,32 +121,29 @@
     }
 
     .grid {
-        gap: 16px;
+        gap: 14px;
     }
 
-    .cardCell:nth-child(5):nth-last-child(1)>* {
-        inline-size: min(100%, calc((100% - 16px) / 2));
+    .count5> :last-child {
+        inline-size: min(100%, calc((100% - 14px) / 2));
     }
 }
 
 @media (max-width: 620px) {
-    .grid {
+
+    .grid,
+    .count1,
+    .count2,
+    .count4,
+    .count5 {
         grid-template-columns: 1fr;
         gap: 14px;
     }
 
-    .cardCell {
+    .count5> :last-child {
         grid-column: auto;
-        justify-content: stretch;
-    }
-
-    .cardCell:nth-child(4):nth-last-child(2),
-    .cardCell:nth-child(5):nth-last-child(1) {
-        grid-column: auto;
-    }
-
-    .cardCell:nth-child(5):nth-last-child(1)>* {
         inline-size: 100%;
+        justify-self: stretch;
     }
 
     .emptyState {

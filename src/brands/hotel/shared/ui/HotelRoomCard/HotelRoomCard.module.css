@@ -1,573 +1,201 @@
 .card {
+    --card-radius: clamp(22px, 2vw, 28px);
+    --card-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.04),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
+        0 16px 34px rgba(0, 0, 0, 0.2);
+    --card-title-padding-y: clamp(0.74rem, 0.95vw, 0.9rem);
+    --card-title-padding-x: clamp(0.82rem, 1vw, 0.95rem);
+    --card-desc-padding-y: clamp(0.88rem, 1.1vw, 1.02rem);
+    --card-desc-padding-x: clamp(0.88rem, 1.1vw, 0.98rem);
+    --card-title-size: clamp(1.12rem, 0.28vw + 1rem, 1.44rem);
+    --card-desc-size: clamp(0.9rem, 0.12vw + 0.88rem, 0.98rem);
+    --card-image-ratio: 16 / 8.8;
+    --card-badge-top: 14px;
+    --card-badge-left: 14px;
+    --card-badge-height: 2rem;
+    --card-badge-padding-y: 0.38rem;
+    --card-badge-padding-x: 0.82rem;
+    --card-badge-size: 0.9rem;
+
     position: relative;
-        isolation: isolate;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-self: start;
-        min-height: 0;
-        border-radius: 28px;
-    background:
-        radial-gradient(130% 140% at 0% 0%, rgba(241, 205, 132, 0.10), transparent 40%),
-        radial-gradient(120% 140% at 100% 100%, rgba(199, 134, 21, 0.11), transparent 48%),
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.03) 0%,
-            rgba(255, 248, 235, 0.008) 18%,
-            rgba(0, 0, 0, 0.12) 100%),
-        linear-gradient(145deg,
-            rgba(44, 23, 11, 0.975) 0%,
-            rgba(24, 12, 7, 0.992) 100%);
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    block-size: 100%;
+    overflow: hidden;
+    border-radius: var(--card-radius);
     border: 1px solid rgba(230, 200, 147, 0.22);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.045),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.18),
-        0 22px 52px rgba(0, 0, 0, 0.24),
-        0 0 0 1px rgba(255, 248, 235, 0.02);
-    color: rgba(255, 248, 240, 0.95);
-    transition:
-        transform 220ms ease,
-        border-color 220ms ease,
-        box-shadow 220ms ease;
+    background:
+        radial-gradient(120% 120% at 0% 0%, rgba(241, 205, 132, 0.08), transparent 42%),
+        radial-gradient(130% 140% at 100% 100%, rgba(199, 134, 21, 0.08), transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.035) 0%,
+            rgba(255, 248, 235, 0.012) 18%,
+            rgba(0, 0, 0, 0.10) 100%),
+        linear-gradient(135deg,
+            rgba(44, 23, 11, 0.98) 0%,
+            rgba(28, 14, 8, 1) 100%);
+    box-shadow: var(--card-shadow);
 }
 
 .card::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.06) 0%,
+            rgba(255, 248, 235, 0.02) 12%,
+            rgba(255, 255, 255, 0) 34%);
+    opacity: 0.9;
+}
+
+.mediaWrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: var(--card-image-ratio);
+    border-radius: inherit inherit 0 0;
+    background: rgba(22, 11, 6, 0.8);
+}
+
+.mediaWrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
     pointer-events: none;
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.075) 0%,
-            rgba(255, 248, 235, 0.014) 12%,
-            rgba(255, 255, 255, 0) 30%);
-    opacity: 0.95;
-}
-
-.card::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    border: 1px solid rgba(255, 248, 235, 0.03);
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(230, 200, 147, 0.34);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.055),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
-        0 28px 64px rgba(0, 0, 0, 0.30),
-        0 0 24px rgba(214, 153, 56, 0.05);
-}
-
-.media {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 16 / 11.3;
-    background:
-        radial-gradient(900px 240px at 50% -10%, rgba(255, 232, 196, 0.08), transparent 60%),
-        #1f1208;
-    border-bottom: 1px solid rgba(230, 200, 147, 0.12);
+            rgba(17, 8, 4, 0.05) 0%,
+            rgba(17, 8, 4, 0) 36%,
+            rgba(17, 8, 4, 0.08) 100%);
 }
 
 .image {
-    inline-size: 100%;
-    block-size: 100%;
     display: block;
-    object-fit: cover;
-    object-position: center 56%;
-    transform: scale(1.02);
-    filter: saturate(1.04) contrast(1.04) brightness(0.99);
-    transition:
-        transform 700ms ease,
-        filter 320ms ease;
-}
-
-.card:hover .image {
-    transform: scale(1.07);
-    filter: saturate(1.08) contrast(1.06) brightness(0.97);
-}
-
-.mediaOverlay {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background:
-        linear-gradient(180deg,
-            rgba(16, 8, 5, 0.02) 0%,
-            rgba(16, 8, 5, 0.00) 30%,
-            rgba(16, 8, 5, 0.05) 62%,
-            rgba(16, 8, 5, 0.18) 100%),
-        radial-gradient(110% 80% at 50% 0%, rgba(255, 244, 222, 0.11), transparent 54%);
-}
-
-.mediaHighlight {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    background:
-        radial-gradient(85% 58% at 50% 8%, rgba(255, 248, 235, 0.09), transparent 55%),
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.015) 0%,
-            rgba(255, 248, 235, 0.00) 100%);
-    mix-blend-mode: screen;
-}
-
-.mediaGlow {
-    position: absolute;
-    inset-inline: 0;
-    bottom: 0;
-    height: 28%;
-    z-index: 2;
-    pointer-events: none;
-    background:
-        linear-gradient(180deg,
-            rgba(20, 10, 6, 0) 0%,
-            rgba(20, 10, 6, 0.08) 38%,
-            rgba(20, 10, 6, 0.22) 100%);
-}
-
-.mediaFrame {
-    position: absolute;
-    inset: 12px;
-    z-index: 3;
-    border-radius: 21px;
-    pointer-events: none;
-    border: 1px solid rgba(255, 244, 226, 0.12);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.10),
-        inset 0 0 0 1px rgba(0, 0, 0, 0.08);
-}
-
-.placeholder {
     inline-size: 100%;
     block-size: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.imageFallback {
     display: grid;
     place-items: center;
+    inline-size: 100%;
+    block-size: 100%;
     padding: 1rem;
-    background:
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.18), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.10), transparent 60%),
-        linear-gradient(180deg, rgba(50, 29, 14, 0.96), rgba(30, 17, 9, 0.98));
-}
-
-.placeholderInner {
-    inline-size: calc(100% - 24px);
-    block-size: calc(100% - 24px);
-    display: grid;
-    place-items: center;
-    border-radius: 21px;
-    border: 1px solid rgba(255, 244, 226, 0.12);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.10),
-        inset 0 0 0 1px rgba(0, 0, 0, 0.08);
-    background:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.02),
-            rgba(255, 248, 235, 0));
-}
-
-.placeholderText {
     text-align: center;
-    font-size: clamp(0.88rem, 0.12vw + 0.86rem, 1rem);
-    font-weight: 800;
-    line-height: 1.28;
-    letter-spacing: 0.01em;
-    color: rgba(255, 232, 196, 0.96);
-    text-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
-    text-wrap: balance;
+    color: rgba(255, 244, 231, 0.82);
+    background:
+        linear-gradient(180deg, rgba(71, 42, 18, 0.72), rgba(30, 17, 9, 0.92));
 }
 
 .badge {
     position: absolute;
-    top: 16px;
-    left: 16px;
-    z-index: 4;
-    padding: 8px 12px;
+    top: var(--card-badge-top);
+    left: var(--card-badge-left);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--card-badge-height);
+    padding: var(--card-badge-padding-y) var(--card-badge-padding-x);
     border-radius: 999px;
-    background:
-        linear-gradient(180deg, rgba(102, 64, 30, 0.82), rgba(45, 26, 13, 0.92));
     border: 1px solid rgba(230, 200, 147, 0.34);
-    backdrop-filter: blur(12px);
-    font-size: clamp(0.72rem, 0.08vw + 0.7rem, 0.78rem);
+    color: rgba(255, 250, 244, 0.98);
+    font-size: var(--card-badge-size);
     font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: 0.015em;
-    color: rgba(255, 247, 232, 0.97);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.14), transparent 62%),
+        linear-gradient(180deg, rgba(74, 44, 19, 0.92), rgba(38, 23, 11, 0.96));
     box-shadow:
         inset 0 1px 0 rgba(255, 248, 235, 0.08),
         0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-.header {
+.titleBand {
     position: relative;
     z-index: 1;
-    padding: 12px 18px 11px;
-    background:
-        linear-gradient(180deg, rgba(188, 132, 39, 0.98) 0%, rgba(145, 92, 20, 0.98) 100%);
-    border-top: 1px solid rgba(255, 236, 196, 0.08);
+    padding: var(--card-title-padding-y) var(--card-title-padding-x);
+    text-align: center;
+    border-top: 1px solid rgba(230, 200, 147, 0.16);
     border-bottom: 1px solid rgba(230, 200, 147, 0.14);
+    background:
+        linear-gradient(180deg, rgba(184, 132, 49, 0.96) 0%, rgba(135, 88, 18, 0.96) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 244, 220, 0.10),
-        inset 0 -1px 0 rgba(72, 42, 11, 0.15);
+        inset 0 1px 0 rgba(255, 248, 235, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.12);
 }
 
 .title {
     margin: 0;
-    text-align: center;
-    font-size: clamp(1rem, 0.22vw + 0.94rem, 1.12rem);
-    font-weight: 800;
-    line-height: 1.14;
-    letter-spacing: 0.01em;
-    color: rgba(255, 249, 241, 0.985);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-wrap: balance;
-    overflow-wrap: anywhere;
-    text-shadow: 0 1px 0 rgba(88, 51, 16, 0.22);
-}
-
-.desc {
-    position: relative;
-    padding: 16px 18px 14px;
-    background:
-        radial-gradient(760px 210px at 50% 0%, rgba(230, 200, 147, 0.07), transparent 56%),
-        linear-gradient(180deg, rgba(52, 31, 16, 0.24), rgba(30, 18, 10, 0.12));
-    border-bottom: 1px solid rgba(230, 200, 147, 0.08);
-    flex: 1 0 auto;
-}
-
-.descText {
-    margin: 0;
-    text-align: center;
-    font-size: clamp(0.86rem, 0.18vw + 0.82rem, 0.96rem);
-    line-height: 1.5;
-    color: rgba(255, 244, 231, 0.90);
-    overflow-wrap: anywhere;
-    text-wrap: pretty;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-    min-height: calc(3 * 1.5em);
-}
-
-.toggleWrap {
-    padding: 10px 14px 12px;
-    display: flex;
-    justify-content: center;
-    background:
-        linear-gradient(180deg, rgba(49, 30, 15, 0.78), rgba(38, 23, 11, 0.94));
-    border-top: 1px solid rgba(230, 200, 147, 0.08);
-}
-
-.toggleButton {
-    position: relative;
-    inline-size: clamp(150px, 34%, 168px);
-    min-inline-size: 150px;
-    max-inline-size: 168px;
-    block-size: 38px;
-    min-block-size: 38px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 0 12px;
-    margin-inline: auto;
-    border: 1px solid rgba(214, 153, 56, 0.54);
-    border-radius: 999px;
-    background:
-        radial-gradient(circle at 50% 0%, rgba(255, 214, 140, 0.08), transparent 58%),
-        linear-gradient(180deg, rgba(107, 67, 30, 0.84) 0%, rgba(63, 35, 15, 0.92) 100%);
-    color: rgba(255, 248, 240, 0.96);
-    cursor: pointer;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.08),
-        0 5px 12px rgba(0, 0, 0, 0.16);
-    transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        background 180ms ease;
-}
-
-.toggleButton:hover {
-    transform: translateY(-1px);
-    border-color: rgba(230, 200, 147, 0.76);
-    background:
-        radial-gradient(circle at 50% 0%, rgba(255, 223, 160, 0.14), transparent 58%),
-        linear-gradient(180deg, rgba(121, 77, 36, 0.88) 0%, rgba(66, 37, 17, 0.97) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.10),
-        0 9px 22px rgba(0, 0, 0, 0.22),
-        0 0 18px rgba(230, 200, 147, 0.06);
-}
-
-.toggleButton:focus-visible {
-    outline: none;
-    border-color: rgba(246, 214, 153, 0.96);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.10),
-        0 0 0 3px rgba(230, 200, 147, 0.14),
-        0 8px 20px rgba(0, 0, 0, 0.20);
-}
-
-.toggleLabel {
-    font-size: clamp(0.8rem, 0.08vw + 0.78rem, 0.86rem);
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: 0.01em;
-    white-space: nowrap;
-}
-
-.chevron {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    inline-size: 14px;
-    block-size: 14px;
-    color: rgba(255, 248, 240, 0.96);
-    transition: transform 180ms ease;
-    flex: 0 0 auto;
-}
-
-.chevron svg {
-    inline-size: 12px;
-    block-size: 12px;
-}
-
-.chevronOpen {
-    transform: rotate(180deg);
-}
-
-.detailsPanel {
-    display: grid;
-    transition: grid-template-rows 260ms ease;
-}
-
-.detailsPanelClosed {
-    grid-template-rows: 0fr;
-}
-
-.detailsPanelOpen {
-    grid-template-rows: 1fr;
-}
-
-.detailsInner {
-    overflow: hidden;
-}
-
-.features {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.featureItem {
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    align-items: center;
-    gap: 9px;
-    padding: 14px 18px;
-    border-top: 1px solid rgba(230, 200, 147, 0.10);
-    background:
-        linear-gradient(180deg, rgba(58, 34, 16, 0.26), rgba(30, 18, 10, 0.14));
-}
-
-.check {
-    inline-size: 18px;
-    block-size: 18px;
-    border-radius: 999px;
-    display: grid;
-    place-items: center;
-    background:
-        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.26), rgba(74, 44, 19, 0.56));
-    border: 1px solid rgba(230, 200, 147, 0.24);
-    color: rgba(255, 223, 160, 0.98);
+    color: rgba(255, 248, 240, 0.98);
+    font-size: var(--card-title-size);
+    line-height: 1.08;
     font-weight: 900;
-    font-size: 0.82rem;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 3px 8px rgba(0, 0, 0, 0.12);
+    letter-spacing: 0.01em;
+    text-wrap: balance;
 }
 
-.featureText {
-    font-size: clamp(0.84rem, 0.16vw + 0.8rem, 0.93rem);
-    line-height: 1.38;
-    color: rgba(255, 246, 235, 0.90);
-    overflow-wrap: anywhere;
+.description {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: var(--card-desc-padding-y) var(--card-desc-padding-x);
+    text-align: center;
+    color: rgba(255, 244, 231, 0.92);
+    font-size: var(--card-desc-size);
+    line-height: 1.48;
     text-wrap: pretty;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1080px) {
     .card {
-        border-radius: 26px;
-    }
-
-    .media {
-        aspect-ratio: 16 / 11;
-    }
-
-    .header {
-        padding: 11px 16px 10px;
-    }
-
-    .desc {
-        padding: 15px 16px 13px;
-    }
-
-    .featureItem {
-        padding: 13px 16px;
+        --card-image-ratio: 16 / 9.1;
     }
 }
 
-@media (max-width: 900px) {
-    .media {
-        aspect-ratio: 16 / 10.6;
-    }
-
-    .mediaFrame {
-        inset: 11px;
-        border-radius: 19px;
-    }
-
-    .title {
-        font-size: 1rem;
-    }
-
-    .descText {
-        font-size: 0.9rem;
-        line-height: 1.46;
-        min-height: calc(3 * 1.46em);
-    }
-
-    .toggleButton {
-        inline-size: 156px;
-        min-inline-size: 156px;
-        max-inline-size: 156px;
-    }
-
-    .featureText {
-        font-size: 0.89rem;
+@media (max-width: 720px) {
+    .card {
+        --card-image-ratio: 16 / 9.5;
+        --card-title-padding-y: 0.72rem;
+        --card-title-padding-x: 0.82rem;
+        --card-desc-padding-y: 0.9rem;
+        --card-desc-padding-x: 0.86rem;
+        --card-title-size: 1.22rem;
+        --card-desc-size: 0.94rem;
+        --card-badge-top: 12px;
+        --card-badge-left: 12px;
+        --card-badge-height: 1.9rem;
+        --card-badge-padding-y: 0.34rem;
+        --card-badge-padding-x: 0.74rem;
+        --card-badge-size: 0.86rem;
     }
 }
 
-@media (max-width: 620px) {
+@media (max-width: 480px) {
     .card {
-        border-radius: 24px;
-    }
-
-    .media {
-        aspect-ratio: 16 / 10.2;
-    }
-
-    .mediaFrame {
-        inset: 10px;
-        border-radius: 18px;
-    }
-
-    .badge {
-        top: 14px;
-        left: 14px;
-        padding: 7px 11px;
-        font-size: 0.72rem;
-    }
-
-    .header {
-        padding: 10px 15px 9px;
-    }
-
-    .title {
-        font-size: 0.98rem;
-    }
-
-    .desc {
-        padding: 13px 15px 12px;
-    }
-
-    .descText {
-        font-size: 0.88rem;
-        line-height: 1.44;
-        min-height: calc(3 * 1.44em);
-    }
-
-    .toggleWrap {
-        padding: 8px 12px 10px;
-    }
-
-    .toggleButton {
-        inline-size: 148px;
-        min-inline-size: 148px;
-        max-inline-size: 148px;
-        block-size: 35px;
-        min-block-size: 35px;
-    }
-
-    .featureItem {
-        padding: 13px 15px;
-    }
-
-    .featureText {
-        font-size: 0.87rem;
+        --card-image-ratio: 16 / 10;
+        --card-title-size: 1.14rem;
+        --card-desc-size: 0.92rem;
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 380px) {
     .card {
-        border-radius: 22px;
-    }
-
-    .media {
-        aspect-ratio: 16 / 9.9;
-    }
-
-    .mediaFrame {
-        inset: 9px;
-        border-radius: 16px;
-    }
-
-    .title {
-        font-size: 0.92rem;
-    }
-
-    .descText {
-        font-size: 0.84rem;
-        line-height: 1.4;
-        min-height: calc(3 * 1.4em);
-    }
-
-    .toggleButton {
-        inline-size: 140px;
-        min-inline-size: 140px;
-        max-inline-size: 140px;
-        block-size: 33px;
-        min-block-size: 33px;
-    }
-
-    .toggleLabel {
-        font-size: 0.78rem;
-    }
-
-    .featureItem {
-        grid-template-columns: 24px 1fr;
-        gap: 8px;
-        padding: 12px 12px;
-    }
-
-    .check {
-        inline-size: 16px;
-        block-size: 16px;
-        font-size: 0.74rem;
-    }
-
-    .featureText {
-        font-size: 0.83rem;
+        --card-image-ratio: 16 / 10.35;
+        --card-desc-padding-y: 0.86rem;
+        --card-desc-padding-x: 0.8rem;
+        --card-badge-size: 0.82rem;
     }
 }

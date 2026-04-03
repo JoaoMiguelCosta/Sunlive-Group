@@ -91,8 +91,12 @@ export const HOTEL_PRIMARY_NAV_ITEMS = Object.freeze([
         href: `${HOTEL_PAGE_PATHS.dining}#restaurant-buffet`,
       },
       {
+        label: "Sobremesas",
+        href: `${HOTEL_PAGE_PATHS.dining}#restaurant-desserts`,
+      },
+      {
         label: "Bar & Lounge",
-        href: `${HOTEL_PAGE_PATHS.dining}#restaurant-bar`,
+        href: `${HOTEL_PAGE_PATHS.dining}#restaurant-bar-lounge`,
       },
       {
         label: "Serviço de Catering",
@@ -134,7 +138,7 @@ export const HOTEL_PRIMARY_NAV_ITEMS = Object.freeze([
     links: [
       {
         label: "Tipos de Eventos",
-        href: `${HOTEL_PAGE_PATHS.events}#events-types`,
+        href: `${HOTEL_PAGE_PATHS.events}#events-celebrations`,
       },
       {
         label: "Orçamentos Personalizados",
@@ -161,7 +165,7 @@ export const HOTEL_PRIMARY_NAV_ITEMS = Object.freeze([
       },
       {
         label: "Objetivos futuros",
-        href: `${HOTEL_PAGE_PATHS.sustainability}#sustentabilidade-objetivos`,
+        href: `${HOTEL_PAGE_PATHS.sustainability}#sustentabilidade-objetivos-futuros`,
       },
     ],
   },

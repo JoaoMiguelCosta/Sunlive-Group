@@ -12,7 +12,7 @@ export default function AccessibilitySection() {
 
   if (!accessibility) return null;
 
-  const sectionId = accessibility.id ?? "accessibility";
+  const sectionId = "facilities-accessibility";
   const titleId = `${sectionId}-title`;
 
   return (
