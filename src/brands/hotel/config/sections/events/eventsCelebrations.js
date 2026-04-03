@@ -1,5 +1,3 @@
-import eventsImage from "../../../assets/events.webp";
-
 const eventsCelebrations = {
   id: "events-celebrations",
   headerLabel: "Eventos e Celebrações",
@@ -7,8 +5,8 @@ const eventsCelebrations = {
     "Momentos especiais merecem um cenário único. A Estalagem de Sangalhos é o local ideal para celebrar os seus eventos mais importantes.",
 
   backgroundMedia: {
-    imageSrc: eventsImage,
-    imageAlt: "Ambiente elegante de celebração na Estalagem",
+    imageSrc: null,
+    imageAlt: "Ambiente elegante para eventos na Estalagem",
   },
 
   customizedBanner: {
