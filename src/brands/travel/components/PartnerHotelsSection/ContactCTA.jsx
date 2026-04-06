@@ -1,4 +1,3 @@
-// src/brands/travel/components/PartnerHotelsSection/ContactCTA.jsx
 import CTAButton from "../../../../shared/ui/CTAButton/CTAButton.jsx";
 import styles from "./ContactCTA.module.css";
 
@@ -11,7 +10,6 @@ export default function ContactCTA({ cta }) {
         <div className={styles.ctaWrap}>
           <span className={styles.halo} aria-hidden="true" />
 
-          {/* 👇 classe local só para este botão */}
           <CTAButton
             cta={cta}
             className={styles.ctaButton}

@@ -8,15 +8,15 @@ export default function TrustedCollaborationBanner({
   className = "",
 }) {
   const cfg = travelBrand?.sections?.travelPartners?.trustedBanner ?? {};
-  const Title = cfg?.title ?? titleProp;
-  const Lead = cfg?.lead ?? subtitleProp;
+  const title = cfg?.title ?? titleProp;
+  const lead = cfg?.lead ?? subtitleProp;
 
   const icons = travelBrand?.icons ?? {};
   const Icon =
-    resolveTravelIcon(icons, cfg?.iconKey) || icons.HandshakeIcon || null;
+    resolveTravelIcon(icons, cfg?.iconKey) ?? icons.HandshakeIcon ?? null;
 
   return (
-    <section className={[styles.wrapper, className].filter(Boolean).join(" ")}>
+    <div className={[styles.wrapper, className].filter(Boolean).join(" ")}>
       <div className={styles.inner}>
         <div className={styles.iconWrap} aria-hidden="true">
           {Icon ? <Icon className={styles.icon} /> : null}
@@ -24,10 +24,10 @@ export default function TrustedCollaborationBanner({
         </div>
 
         <div className={styles.textBlock}>
-          <h3 className={styles.title}>{Title}</h3>
-          {Lead ? <p className={styles.subtitle}>{Lead}</p> : null}
+          <h3 className={styles.title}>{title}</h3>
+          {lead ? <p className={styles.subtitle}>{lead}</p> : null}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

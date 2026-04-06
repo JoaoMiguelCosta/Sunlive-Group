@@ -1,22 +1,22 @@
-import styles from "./TavelPartnersSection.module.css";
+import styles from "./TravelPartnersSection.module.css";
 import TravelPartnersCardsGrid from "./TravelPartnersCardsGrid.jsx";
 import TrustedCollaborationBanner from "./TrustedCollaborationBanner.jsx";
 
 import travelBrand from "../../config/index.js";
 
 export default function TravelPartnersSection({ className = "" }) {
-  const cfg = travelBrand?.sections?.travelPartners;
+  const cfg = travelBrand?.sections?.travelPartners ?? null;
   if (!cfg) return null;
 
   const { id = "parceiros-viagens" } = cfg;
 
   const title =
-    cfg?.headline?.title || cfg?.title || "Parceiros de Viagem Sunlive Travel";
+    cfg?.headline?.title ?? cfg?.title ?? "Parceiros de Viagem Sunlive Travel";
 
   const subtitle =
-    cfg?.headline?.lead ||
-    cfg?.headline?.subtitle ||
-    cfg?.subtitle ||
+    cfg?.headline?.lead ??
+    cfg?.headline?.subtitle ??
+    cfg?.subtitle ??
     "Para garantir uma experiência de viagem completa e de alta qualidade, trabalhamos em parceria com operadores certificados e experientes.";
 
   return (
@@ -27,8 +27,10 @@ export default function TravelPartnersSection({ className = "" }) {
       aria-label="Parceiros de Viagem"
       data-theme="prestige-noir"
     >
-      <TrustedCollaborationBanner title={title} subtitle={subtitle} />
-      <TravelPartnersCardsGrid />
+      <div className={styles.inner}>
+        <TrustedCollaborationBanner title={title} subtitle={subtitle} />
+        <TravelPartnersCardsGrid />
+      </div>
     </section>
   );
 }

@@ -5,7 +5,7 @@ import ContactCTA from "./ContactCTA.jsx";
 import travelBrand from "../../config/index.js";
 
 export default function PartnerHotelsSection({ className = "" }) {
-  const cfg = travelBrand?.sections?.partnerHotels;
+  const cfg = travelBrand?.sections?.partnerHotels ?? null;
   if (!cfg) return null;
 
   const { id = "parceiros-hoteis", cta } = cfg;

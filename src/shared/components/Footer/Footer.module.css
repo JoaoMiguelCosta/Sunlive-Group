@@ -1,8 +1,3 @@
-/* =============================================================================
-   Footer — shared
-   Ajustado para melhor controlo de proporção no Hotel
-============================================================================= */
-
 .footerWrap {
   position: relative;
   isolation: isolate;
@@ -17,12 +12,9 @@
   --footer-accent: var(--footer-accent, var(--sl-gold-400, #c78615));
   --footer-base: #070f1e;
 
-  /* Novo: controlo interno consistente */
   --footer-inner-pad: clamp(16px, 2.2vw, 32px);
   --footer-max-width: 1360px;
 }
-
-/* ===== Overrides de fundo por brand ===== */
 
 :global([data-brand="travel"]) .footerWrap .frame {
   background:
@@ -58,7 +50,6 @@
     0 12px 24px rgba(0, 0, 0, 0.28);
 }
 
-/* 🏨 Hotel */
 :global([data-brand="hotel"]) .footerWrap .frame {
   background:
     radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.12), transparent 60%),
@@ -74,11 +65,8 @@
     0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
-/* ===== Frame genérico ===== */
-
 .frame {
-  width: min(calc(100% - (2 * var(--section-inset))),
-      var(--footer-max-width));
+  width: min(calc(100% - (2 * var(--section-inset))), var(--footer-max-width));
   max-width: var(--footer-max-width);
   margin-inline: auto;
   box-sizing: border-box;
@@ -102,7 +90,6 @@
     0 12px 24px rgba(0, 0, 0, 0.22);
 }
 
-/* Linha superior subtil */
 .frame::before {
   content: "";
   position: absolute;
@@ -113,12 +100,10 @@
   pointer-events: none;
 }
 
-/* Colar ao bloco anterior */
 .flushTop .frame {
   margin-top: calc(-1 * var(--rule-thickness));
 }
 
-/* Evitar linha dupla quando InfoHeader já a traz */
 .noTopRule {
   --rule-thickness: 0px;
 }
@@ -131,18 +116,14 @@
   margin-top: 0;
 }
 
-/* Strip auxiliar */
 .strip {
-  width: min(calc(100% - (2 * var(--section-inset))),
-      var(--footer-max-width));
+  width: min(calc(100% - (2 * var(--section-inset))), var(--footer-max-width));
   max-width: var(--footer-max-width);
   margin-inline: auto;
   box-sizing: border-box;
   border-top: var(--rule-thickness) solid color-mix(in oklab, var(--footer-accent), transparent 76%);
 }
 
-/* ===== Responsivo ===== */
-
 @media (max-width: 767.98px) {
   .footerWrap {
     --section-inset: clamp(12px, 4vw, 18px);
@@ -150,78 +131,11 @@
   }
 
   .frame {
-    width: min(calc(100% - (2 * var(--section-inset))),
-        var(--footer-max-width));
+    width: min(calc(100% - (2 * var(--section-inset))), var(--footer-max-width));
     border-radius: 18px 18px 0 0;
   }
 }
 
-/* ===== Fallback sem color-mix ===== */
-@supports not (background: color-mix(in oklab, white, black)) {
-  .frame {
-    background:
-      radial-gradient(1200px 420px at 50% -10%, rgba(255, 255, 255, 0.03), transparent 60%),
-      radial-gradient(900px 380px at 70% 115%, rgba(255, 255, 255, 0.02), transparent 60%),
-      var(--footer-base);
-
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.03),
-      0 12px 24px rgba(0, 0, 0, 0.22);
-  }
-
-  :global([data-brand="travel"]) .footerWrap .frame {
-    background:
-      radial-gradient(1200px 420px at 50% -10%, rgba(46, 167, 224, 0.12), transparent 60%),
-      radial-gradient(900px 380px at 70% 115%, rgba(46, 167, 224, 0.08), transparent 60%),
-      linear-gradient(180deg, #0b142b 0%, #060e22 100%);
-  }
-
-  :global([data-brand="sports"]) .footerWrap .frame {
-    background:
-      radial-gradient(1200px 420px at 50% -10%, rgba(46, 194, 126, 0.12), transparent 60%),
-      radial-gradient(900px 380px at 70% 115%, rgba(46, 194, 126, 0.08), transparent 60%),
-      #050609;
-  }
-
-  :global([data-brand="group"]) .footerWrap .frame {
-    background:
-      radial-gradient(1200px 420px at 50% -10%, rgba(199, 134, 21, 0.12), transparent 60%),
-      radial-gradient(900px 380px at 70% 115%, rgba(248, 189, 64, 0.08), transparent 60%),
-      linear-gradient(180deg, #070b16 0%, #04060c 100%);
-  }
-
-  :global([data-brand="hotel"]) .footerWrap .frame {
-    background:
-      radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.12), transparent 60%),
-      radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.08), transparent 60%),
-      linear-gradient(135deg, #26170b 0%, #1a0f08 100%);
-  }
-
-  .frame::before {
-    background: rgba(199, 134, 21, 0.22);
-  }
-
-  .strip {
-    border-top: var(--rule-thickness) solid rgba(199, 134, 21, 0.22);
-  }
-}
-
-/* ===== Responsivo ===== */
-
-@media (max-width: 767.98px) {
-  .footerWrap {
-    --section-inset: clamp(12px, 4vw, 18px);
-    --footer-inner-pad: clamp(14px, 4vw, 20px);
-  }
-
-  .frame {
-    width: min(calc(100% - (2 * var(--section-inset))),
-        var(--footer-max-width));
-    border-radius: 18px 18px 0 0;
-  }
-}
-
-/* ===== Fallback sem color-mix ===== */
 @supports not (background: color-mix(in oklab, white, black)) {
   .frame {
     background:

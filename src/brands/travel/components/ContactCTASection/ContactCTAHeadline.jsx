@@ -1,10 +1,9 @@
-// src/brands/travel/components/ContactCTASection/ContactCTAHeadline.jsx
 import styles from "./ContactCTAHeadline.module.css";
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
 import travelBrand from "../../config/index.js";
 
 export default function ContactCTAHeadline() {
-  const headline = travelBrand?.sections?.contactCTA?.headline;
+  const headline = travelBrand?.sections?.contactCTA?.headline ?? null;
   if (!headline) return null;
 
   return (
@@ -17,6 +16,7 @@ export default function ContactCTAHeadline() {
         variant="banded"
         as="h2"
         max="lg"
+        theme="travel"
       />
     </div>
   );

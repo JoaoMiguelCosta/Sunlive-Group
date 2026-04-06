@@ -1,23 +1,11 @@
-/* DestinationsIntroBar.module.css */
-
-/* Wrapper da headline — herda largura da section e NÃO redefine diferente */
 .wrap {
   position: relative;
-  width: 100%;
   isolation: isolate;
+  inline-size: 100%;
+  margin-block-end: clamp(12px, 1.6vw, 16px);
 
-  /* 👇 LARGURA IGUAL À DAS SECÇÕES (sem subtrair inset) */
-  --content-w-effective: min(var(--sl-container-lg, 1152px), 100%);
-
-  /* Mapas esperados pelo HeadlineBlock/band */
-  --content-w: var(--content-w-effective);
-  --band-w: var(--content-w-effective);
-
-  /* Margens compactas do header */
+  --hb-consume-inset: 0;
+  --hb-line-inset: 0;
   --headline-mt: clamp(6px, 0.8vw, 10px);
   --headline-mb: clamp(6px, 1vw, 10px);
-
-  /* === NOVO: gap consistente para os cards (igual aos Hotéis) === */
-  --cards-gap-top: clamp(12px, 1.6vw, 16px);
-  margin-block-end: var(--cards-gap-top);
 }

@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+
 import styles from "./ServiceOfferingsGrid.module.css";
 import ServiceCard from "../../shared/ui/ServiceCard/index.jsx";
 import travelBrand, { resolveTravelIcon } from "../../config/index.js";
@@ -9,9 +10,11 @@ export default function ServiceOfferingsGrid({
   icons: iconsOverride,
   allowMultiple = false,
 }) {
-  const servicesFromBrand =
-    travelBrand?.sections?.logisticsSolutions?.services ?? [];
+  const section = travelBrand?.sections?.logisticsSolutions ?? null;
+  const servicesFromBrand = section?.services ?? [];
   const iconsFromBrand = travelBrand?.icons ?? {};
+  const servicesAriaLabel =
+    section?.ui?.servicesAriaLabel ?? "Serviços de Logística";
 
   const services = Array.isArray(servicesOverride)
     ? servicesOverride
@@ -19,27 +22,25 @@ export default function ServiceOfferingsGrid({
 
   const icons = iconsOverride || iconsFromBrand;
 
-  if (!Array.isArray(services) || services.length === 0) return null;
+  const keyedServices = useMemo(() => {
+    if (!Array.isArray(services)) return [];
 
-  const keyed = useMemo(
-    () =>
-      services.map((service, index) => ({
+    return services
+      .filter((service) => service?.title)
+      .map((service, index) => ({
         ...service,
         key: service.key || `svc-${index}`,
-      })),
-    [services],
-  );
+      }));
+  }, [services]);
 
-  const { isOpen, toggle } = useAccordion(keyed, { allowMultiple });
+  const { isOpen, toggle } = useAccordion(keyedServices, { allowMultiple });
+
+  if (keyedServices.length === 0) return null;
 
   return (
     <div className={styles.wrap}>
-      <div
-        className={styles.grid}
-        role="list"
-        aria-label="Serviços de Logística"
-      >
-        {keyed.map((service, index) => {
+      <div className={styles.grid} role="list" aria-label={servicesAriaLabel}>
+        {keyedServices.map((service, index) => {
           const Icon = resolveTravelIcon(icons, service.iconKey);
           const open = isOpen(service.key);
 

@@ -1,52 +1,69 @@
+import { useCallback, useRef } from "react";
 import styles from "./TestimonialsGrid.module.css";
 import travelBrand from "../../config/index.js";
-import TestemonialCard from "../../shared/ui/TestemonialCard/index.jsx";
+import TestimonialCard from "../../shared/ui/TestemonialCard/index.jsx";
 import useSpotlightCycle from "../../../../shared/hooks/useSpotlightCycle.js";
-import { useCallback, useRef } from "react";
 
 export default function TestimonialsGrid() {
   const items =
     travelBrand?.sections?.testimonialsAndMetrics?.testimonials ?? [];
+
   if (!Array.isArray(items) || items.length === 0) return null;
 
-  // autoplay: 2.5s
+  const validItems = items.filter((item) => item?.quote && item?.author);
+
+  if (validItems.length === 0) return null;
+
   const { index, setIndex, onMouseEnter, onMouseLeave } = useSpotlightCycle(
-    items.length,
+    validItems.length,
     2500,
   );
 
   const wrapRef = useRef(null);
 
   const handleKeyDown = useCallback(
-    (e) => {
-      if (e.altKey || e.ctrlKey || e.metaKey) return;
+    (event) => {
+      if (event.altKey || event.ctrlKey || event.metaKey) return;
 
-      switch (e.key) {
+      switch (event.key) {
         case "ArrowRight":
-          e.preventDefault();
-          setIndex((i) => (i + 1) % items.length);
+          event.preventDefault();
+          setIndex((currentIndex) => (currentIndex + 1) % validItems.length);
           break;
+
         case "ArrowLeft":
-          e.preventDefault();
-          setIndex((i) => (i - 1 + items.length) % items.length);
+          event.preventDefault();
+          setIndex(
+            (currentIndex) =>
+              (currentIndex - 1 + validItems.length) % validItems.length,
+          );
           break;
+
         case "Home":
-          e.preventDefault();
+          event.preventDefault();
           setIndex(0);
           break;
+
         case "End":
-          e.preventDefault();
-          setIndex(items.length - 1);
+          event.preventDefault();
+          setIndex(validItems.length - 1);
           break;
+
         default:
           break;
       }
     },
-    [items.length, setIndex],
+    [setIndex, validItems.length],
   );
 
-  const goPrev = () => setIndex((i) => (i - 1 + items.length) % items.length);
-  const goNext = () => setIndex((i) => (i + 1) % items.length);
+  const goPrev = () =>
+    setIndex(
+      (currentIndex) =>
+        (currentIndex - 1 + validItems.length) % validItems.length,
+    );
+
+  const goNext = () =>
+    setIndex((currentIndex) => (currentIndex + 1) % validItems.length);
 
   const resolveIcon = (key) =>
     (travelBrand?.icons && travelBrand.icons[key]) || travelBrand?.icons?.star;
@@ -60,7 +77,7 @@ export default function TestimonialsGrid() {
       onKeyDown={handleKeyDown}
       tabIndex={0}
       role="region"
-      aria-label="Testemunhos — usar setas esquerda/direita para navegar"
+      aria-label="Testemunhos — usar setas esquerda e direita para navegar"
     >
       <div className={styles.controls}>
         <button
@@ -71,18 +88,20 @@ export default function TestimonialsGrid() {
         />
 
         <div className={styles.dots} role="tablist" aria-label="Testemunhos">
-          {items.map((_, i) => {
-            const active = i === index;
+          {validItems.map((_, itemIndex) => {
+            const isActive = itemIndex === index;
+
             return (
               <button
-                key={i}
+                key={itemIndex}
                 type="button"
                 className={styles.dot}
-                data-active={active}
-                aria-label={`Ver testemunho ${i + 1}`}
-                aria-controls={`tcard-${i}`}
-                aria-current={active ? "true" : undefined}
-                onClick={() => setIndex(i)}
+                data-active={isActive || undefined}
+                aria-label={`Ver testemunho ${itemIndex + 1}`}
+                aria-controls={`tcard-${itemIndex}`}
+                aria-selected={isActive}
+                role="tab"
+                onClick={() => setIndex(itemIndex)}
               />
             );
           })}
@@ -97,21 +116,21 @@ export default function TestimonialsGrid() {
       </div>
 
       <div className={styles.grid} role="list">
-        {items.map((t, i) => {
-          const active = i === index;
-          const id = `tcard-${i}`;
-          const Icon = resolveIcon(t.iconKey);
+        {validItems.map((testimonial, itemIndex) => {
+          const isActive = itemIndex === index;
+          const id = `tcard-${itemIndex}`;
+          const Icon = resolveIcon(testimonial.iconKey);
 
           return (
-            <TestemonialCard
-              key={t.key || t.quote}
-              quote={t.quote}
-              rating={t.rating}
-              author={t.author}
+            <TestimonialCard
+              key={testimonial.key || `${testimonial.author}-${itemIndex}`}
+              quote={testimonial.quote}
+              rating={testimonial.rating}
+              author={testimonial.author}
               Icon={Icon}
               className={styles.item}
-              data-active={active}
-              aria-current={active ? "true" : undefined}
+              data-active={isActive || undefined}
+              aria-current={isActive ? "true" : undefined}
               id={id}
             />
           );

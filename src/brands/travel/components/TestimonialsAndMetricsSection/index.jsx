@@ -4,11 +4,6 @@ import TestimonialsHeadline from "./TestimonialsHeadline.jsx";
 import TestimonialsGrid from "./TestimonialsGrid.jsx";
 import KeyMetricsBar from "./KeyMetricsBar.jsx";
 
-/**
- * TestimonialsAndMetricsSection
- * - Wrapper da secção com espaçamentos consistentes (Prestige Noir + Liquid Gold)
- * - Ordem: Headline → Grid → KeyMetricsBar
- */
 export default function TestimonialsAndMetricsSection() {
   return (
     <section

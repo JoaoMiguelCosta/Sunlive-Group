@@ -1,26 +1,16 @@
-/* ===== Tokens locais ===== */
-:root {
-    --gold-400: var(--sl-gold-400, #C78615);
-    --gold-500: var(--sl-gold-500, #A16207);
-    --accent-500: var(--sl-accent-500, #2EA7E0);
-    --navy-900: var(--sl-navy-900, #0A1322);
-}
-
-/* Wrapper (herda largura da secção/pai) */
 .wrap {
     box-sizing: border-box;
-    width: 100%;
+    inline-size: 100%;
     margin-inline: auto;
     outline: none;
 }
 
 .wrap:focus-visible {
-    outline: 2px solid color-mix(in oklab, var(--gold-400) 70%, #000 0%);
+    outline: 2px solid color-mix(in oklab, var(--sl-gold-400, #c78615) 70%, #000 0%);
     outline-offset: 4px;
     border-radius: 10px;
 }
 
-/* ===== Controlo (setas + dots) ===== */
 .controls {
     display: flex;
     align-items: center;
@@ -29,89 +19,89 @@
     margin-bottom: clamp(10px, 1.6vw, 14px);
 }
 
-/* ===== Setas — fundo dourado/laranja + chevron branco ===== */
 .arrowBtn {
     -webkit-tap-highlight-color: transparent;
     appearance: none;
     cursor: pointer;
-
-    width: clamp(34px, 3.2vw, 38px);
-    height: clamp(34px, 3.2vw, 38px);
-    border-radius: 999px;
-    border: 1.5px solid color-mix(in oklab, var(--gold-400) 78%, #000 22%);
-    background:
-        radial-gradient(140% 160% at 50% 10%, rgba(255, 255, 255, .10), transparent 60%),
-        linear-gradient(180deg,
-            color-mix(in oklab, var(--gold-500) 78%, #000 22%),
-            color-mix(in oklab, var(--gold-500) 62%, #000 38%));
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .08),
-        0 8px 18px rgba(0, 0, 0, .30);
-
     position: relative;
     display: grid;
     place-items: center;
-    transition: transform .12s ease, box-shadow .18s ease, filter .18s ease;
+
+    inline-size: clamp(34px, 3.2vw, 38px);
+    block-size: clamp(34px, 3.2vw, 38px);
+    border-radius: 999px;
+    border: 1.5px solid color-mix(in oklab, var(--sl-gold-400, #c78615) 78%, #000 22%);
+
+    background:
+        radial-gradient(140% 160% at 50% 10%, rgba(255, 255, 255, 0.1), transparent 60%),
+        linear-gradient(180deg,
+            color-mix(in oklab, var(--sl-gold-500, #a16207) 78%, #000 22%),
+            color-mix(in oklab, var(--sl-gold-500, #a16207) 62%, #000 38%));
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 8px 18px rgba(0, 0, 0, 0.3);
+
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.18s ease,
+        filter 0.18s ease;
 }
 
-/* Chevron (branco) */
 .arrowBtn::before {
     content: "";
-    width: 11px;
-    height: 11px;
+    inline-size: 11px;
+    block-size: 11px;
+    display: block;
     border-right: 2.25px solid #fff;
     border-bottom: 2.25px solid #fff;
-    display: block;
     transform: rotate(-45deg);
-    /* next (→) */
 }
 
 .prev::before {
     transform: rotate(135deg);
 }
 
-/* prev (←) */
-
 .arrowBtn:hover {
     transform: translateY(-1px);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .10),
-        0 12px 24px rgba(0, 0, 0, .34);
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 12px 24px rgba(0, 0, 0, 0.34);
 }
 
 .arrowBtn:focus-visible {
-    outline: 2px solid color-mix(in oklab, var(--gold-400) 70%, #fff 30%);
+    outline: 2px solid color-mix(in oklab, var(--sl-gold-400, #c78615) 70%, #fff 30%);
     outline-offset: 2px;
 }
 
-/* ===== Dots ===== */
 .dots {
     display: flex;
     justify-content: center;
     gap: clamp(8px, 1vw, 12px);
 }
 
-/* Inativos — azul Travel reforçado (como a barra do título) */
 .dot {
     -webkit-tap-highlight-color: transparent;
     appearance: none;
     border: none;
     cursor: pointer;
 
-    /* + ligeiramente maiores */
-    width: clamp(10px, 1.2vw, 12px);
-    height: clamp(10px, 1.2vw, 12px);
+    inline-size: clamp(10px, 1.2vw, 12px);
+    block-size: clamp(10px, 1.2vw, 12px);
     border-radius: 999px;
 
+    background: var(--sl-navy-900, #1b316d);
+    opacity: 0.77;
+
     box-shadow:
-            0 1px 0 rgba(255, 255, 255, .04) inset,
-            0 18px 38px rgba(0, 0, 0, .32);
-        background: var(--sl-navy-900, #1b316d);
-    opacity: .77;
+        0 1px 0 rgba(255, 255, 255, 0.04) inset,
+        0 18px 38px rgba(0, 0, 0, 0.32);
 
-   
-
-    transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 .dot:hover {
@@ -124,31 +114,53 @@
 
 .dot:focus-visible {
     box-shadow:
-        0 0 0 3px color-mix(in oklab, var(--accent-500) 55%, transparent),
-        0 0 14px color-mix(in oklab, var(--accent-500) 55%, transparent);
+        0 0 0 3px color-mix(in oklab, var(--sl-accent-500, #2ea7e0) 55%, transparent),
+        0 0 14px color-mix(in oklab, var(--sl-accent-500, #2ea7e0) 55%, transparent);
     transform: scale(1.12);
 }
 
-/* Ativo — ouro mais intenso + glow maior */
 .dot[data-active="true"] {
     transform: scale(1.22);
     background:
         radial-gradient(circle at 30% 30%,
-            color-mix(in oklab, var(--gold-400) 88%, #000 12%) 0%,
-            color-mix(in oklab, var(--gold-500) 78%, #000 22%) 100%);
+            color-mix(in oklab, var(--sl-gold-400, #c78615) 88%, #000 12%) 0%,
+            color-mix(in oklab, var(--sl-gold-500, #a16207) 78%, #000 22%) 100%);
+
     box-shadow:
-        0 0 0 1px rgba(0, 0, 0, .35),
-        0 0 22px color-mix(in oklab, var(--gold-400) 60%, transparent),
-        inset 0 0 0 1px rgba(255, 255, 255, .18);
+        0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 0 22px color-mix(in oklab, var(--sl-gold-400, #c78615) 60%, transparent),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
-/* ===== Grid + spotlight ===== */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(8px, 1vw, 12px);
+    gap: clamp(0.8rem, 1vw, 1rem);
     align-items: stretch;
     grid-auto-rows: 1fr;
+}
+
+.item {
+    opacity: 0.5;
+    filter: saturate(0.9);
+    transform: translateY(0) scale(1);
+    transition:
+        opacity 0.28s ease,
+        filter 0.28s ease,
+        transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+        box-shadow 0.35s ease;
+}
+
+.item[data-active="true"] {
+    z-index: 1;
+    opacity: 1;
+    filter: saturate(1);
+    transform: translateY(-2px) scale(1.012);
+
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 0 40px color-mix(in oklab, var(--sl-gold-400, #c78615) 26%, transparent);
 }
 
 @media (max-width: 1024px) {
@@ -158,31 +170,24 @@
 }
 
 @media (max-width: 640px) {
+    .controls {
+        gap: 0.65rem;
+    }
+
     .grid {
         grid-template-columns: 1fr;
     }
+
+    .item {
+        opacity: 1;
+        filter: saturate(1);
+    }
+
+    .item[data-active="true"] {
+        transform: translateY(-1px) scale(1.004);
+    }
 }
 
-.item {
-    opacity: 0.5;
-    filter: saturate(.9);
-    transform: translateY(0) scale(1);
-    transition: opacity .28s ease, filter .28s ease,
-        transform .35s cubic-bezier(.22, .61, .36, 1), box-shadow .35s ease;
-}
-
-.item[data-active="true"] {
-    opacity: 1;
-    filter: saturate(1);
-    transform: translateY(-2px) scale(1.012);
-    z-index: 1;
-    box-shadow:
-        0 10px 24px rgba(0, 0, 0, .35),
-        0 0 0 1px rgba(255, 255, 255, .06),
-        0 0 40px color-mix(in oklab, var(--gold-400) 26%, transparent);
-}
-
-/* Acessibilidade: reduzir animações */
 @media (prefers-reduced-motion: reduce) {
 
     .dot,

@@ -6,29 +6,38 @@ export default function TravelPartnersCardsGrid() {
   const partners = travelBrand?.sections?.travelPartners?.partners ?? [];
   if (!Array.isArray(partners) || partners.length === 0) return null;
 
+  const validPartners = partners.filter((partner) => partner?.picture?.src);
+
+  if (validPartners.length === 0) return null;
+
   return (
-    <section
+    <div
       className={styles.container}
       aria-label="Parceiros de Viagem Sunlive Travel"
     >
       <div className={styles.grid} role="list">
-        {partners.map((p) => {
-          const imageSrc = p?.picture?.src;
-          const imageAlt = p?.picture?.alt || p?.name || "Parceiro";
-          if (!imageSrc) return null;
+        {validPartners.map((partner, index) => {
+          const imageSrc = partner.picture.src;
+          const imageAlt = partner?.picture?.alt ?? partner?.name ?? "Parceiro";
+          const itemKey =
+            partner?.key ?? `${partner?.name ?? "partner"}-${index}`;
 
           return (
-            <div role="listitem" key={p.key} className={styles.item}>
+            <div role="listitem" key={itemKey} className={styles.item}>
               <DestinationCard
                 variant="partner"
-                city={p.name}
-                badge={p.badge}
+                city={partner?.name}
+                badge={partner?.badge}
                 imageSrc={imageSrc}
                 imageAlt={imageAlt}
-                summary={p.summary}
+                summary={partner?.summary}
                 cta={
-                  p.href
-                    ? { label: "Saiba Mais", href: p.href, external: true }
+                  partner?.href
+                    ? {
+                        label: "Saiba Mais",
+                        href: partner.href,
+                        external: true,
+                      }
                     : undefined
                 }
               />
@@ -36,6 +45,6 @@ export default function TravelPartnersCardsGrid() {
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }

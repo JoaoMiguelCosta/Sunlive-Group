@@ -1,107 +1,103 @@
-:root {
-    --gold-400: var(--sl-gold-400, #C78615);
-    --gold-500: var(--sl-gold-500, #A16207);
-    --accent-500: var(--sl-accent-500, #2EA7E0);
-    --panel: var(--sl-navy-900, #081426);
-    --panel-2: var(--sl-navy-800, #0b172d);
-    --text-strong: var(--sl-platinum-100, #eef3fb);
-    --text: var(--sl-platinum-200, #e1e8f5);
-    --shadow: rgba(0, 0, 0, .35);
-}
-
-/* wrapper da secção da barra */
 .section {
-    width: 100%;
+    inline-size: 100%;
     display: grid;
     place-items: center;
-    padding-block: clamp(12px, 2.6vw, 22px);
+    padding-block: clamp(0.75rem, 2vw, 1.25rem);
 }
 
-/* NOTA: o recuo e a largura efetiva são aplicados no .metricsBlock (na secção).
-   Aqui a .bar ocupa 100% desse bloco para não somar gutters. */
 .bar {
     box-sizing: border-box;
-    width: 100%;
+    inline-size: 100%;
     margin-inline: auto;
 
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(8px, 1.6vw, 16px);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.55rem, 1.4vw, 1rem);
 
-    padding: clamp(12px, 2.2vw, 18px);
+    padding: clamp(0.9rem, 2vw, 1.15rem);
     border-radius: 14px;
 
-    border: 2px solid color-mix(in srgb, var(--gold-500) 92%, #000 8%);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset,
-        0 18px 38px rgba(0, 0, 0, .32);
+    border: 2px solid color-mix(in srgb, var(--sl-gold-500, #a16207) 92%, #000 8%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 18px 38px rgba(0, 0, 0, 0.32);
+
     background: var(--sl-navy-900, #020a20);
 }
 
 .item {
     position: relative;
     display: grid;
-    gap: clamp(4px, .8vw, 6px);
+    gap: clamp(0.25rem, 0.8vw, 0.4rem);
     align-content: center;
     justify-items: center;
-    text-align: center;
-    padding: clamp(8px, 1.2vw, 12px);
+    min-inline-size: 0;
+    padding: clamp(0.55rem, 1vw, 0.8rem);
     border-radius: 10px;
-    transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+    text-align: center;
+
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
 }
 
-/* separador vertical (desktop) */
 .item:not(:last-child) {
-    border-right: 1px solid rgba(255, 255, 255, .08);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .valueWrap {
     display: inline-flex;
     align-items: baseline;
-    gap: clamp(6px, 1vw, 10px);
+    gap: clamp(0.35rem, 1vw, 0.6rem);
     line-height: 1;
 }
 
 .value {
+    font-size: clamp(1.45rem, 3.2vw, 2.2rem);
     font-weight: 800;
-    letter-spacing: .02em;
-    color: color-mix(in srgb, var(--gold-400) 92%, #fff 8%);
-    text-shadow: 0 1px 0 rgba(0, 0, 0, .45);
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-}
-
-.icon {
-    inline-size: clamp(18px, 2.2vw, 24px);
-    block-size: clamp(18px, 2.2vw, 24px);
-    color: color-mix(in srgb, var(--gold-400) 88%, #fff 12%);
-    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .5));
-    transform: translateY(2px);
+    letter-spacing: 0.02em;
+    color: color-mix(in srgb, var(--sl-gold-400, #c78615) 92%, #fff 8%);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
 }
 
 .label {
-    color: var(--text-strong);
-    font-size: clamp(.92rem, 1.2vw, 1rem);
-    opacity: .95;
+    color: var(--sl-platinum-100, #eef3fb);
+    font-size: clamp(0.9rem, 1.1vw, 1rem);
+    line-height: 1.3;
+    opacity: 0.95;
+    text-wrap: balance;
 }
 
-/* Responsivo */
 @media (max-width: 1024px) {
     .bar {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .item:nth-child(2) {
-        border-right: none;
-    }
-}
-
-@media (max-width: 640px) {
-    .bar {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .item {
         border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .item:not(:nth-last-child(-n + 2)) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: clamp(0.8rem, 1.4vw, 1rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding-block: 0.5rem;
+    }
+
+    .bar {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 0.85rem;
+    }
+
+    .item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-block: 0.9rem;
     }
 
     .item:last-child {
@@ -109,7 +105,6 @@
     }
 }
 
-/* A11y */
 .visuallyHidden {
     position: absolute !important;
     inline-size: 1px;
@@ -119,15 +114,18 @@
     white-space: nowrap;
 }
 
-/* Hover/Focus */
 .item:hover,
 .item:focus-visible {
     background:
-        radial-gradient(120% 120% at 15% 10%, color-mix(in srgb, var(--accent-500) 16%, transparent) 0%, transparent 62%),
-        linear-gradient(180deg, color-mix(in srgb, var(--gold-500) 24%, transparent) 0%, transparent 100%);
+        radial-gradient(120% 120% at 15% 10%,
+            color-mix(in srgb, var(--sl-accent-500, #2ea7e0) 16%, transparent) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            color-mix(in srgb, var(--sl-gold-500, #a16207) 24%, transparent) 0%,
+            transparent 100%);
     box-shadow:
-        0 0 0 1px color-mix(in srgb, var(--gold-500) 40%, transparent),
-        0 8px 22px rgba(0, 0, 0, .28);
+        0 0 0 1px color-mix(in srgb, var(--sl-gold-500, #a16207) 40%, transparent),
+        0 8px 22px rgba(0, 0, 0, 0.28);
 }
 
 .item:hover {
@@ -135,8 +133,8 @@
 }
 
 .item:hover .value {
-    color: color-mix(in srgb, var(--gold-400) 96%, #fff 4%);
-    text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+    color: color-mix(in srgb, var(--sl-gold-400, #c78615) 96%, #fff 4%);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
 }
 
 .item:hover .label {
@@ -145,7 +143,9 @@
 
 @media (prefers-reduced-motion: reduce) {
     .item {
-        transition: background .01s linear, box-shadow .01s linear;
+        transition:
+            background 0.01s linear,
+            box-shadow 0.01s linear;
     }
 
     .item:hover {

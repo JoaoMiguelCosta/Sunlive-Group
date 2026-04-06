@@ -1,22 +1,13 @@
-/* src/brands/travel/components/ContactCTASection/ContactCTAHeadline.module.css */
-
-/* Wrapper da headline — usa a largura global e não recalcula insets */
 .wrap {
     position: relative;
     isolation: isolate;
-
     margin-inline: auto;
-
+    padding-inline: 0;
 
     --hb-consume-inset: 0;
-    /* Headline NÃO deve subtrair gutter internamente */
-
     --hb-line-inset: 0;
-
-    padding-inline: 0;
 }
 
-/* opcional: afinar margens do header do HeadlineBlock */
 .wrap :global(.headline__header) {
     margin-top: var(--headline-mt, 0);
     margin-bottom: var(--headline-mb, 0);

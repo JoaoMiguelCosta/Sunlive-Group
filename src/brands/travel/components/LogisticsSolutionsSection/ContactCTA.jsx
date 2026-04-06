@@ -1,4 +1,3 @@
-// src/brands/travel/components/LogisticsSolutionsSection/ContactCTA.jsx
 import CTAButton from "../../../../shared/ui/CTAButton/CTAButton.jsx";
 import styles from "./ContactCTA.module.css";
 
@@ -7,19 +6,22 @@ export default function ContactCTA({ cta }) {
 
   return (
     <section className={styles.section} aria-label="Contactar">
-      <div className={styles.inner}>
-        <div className={styles.ctaWrap}>
-          <span className={styles.halo} aria-hidden="true" />
+      <div className={styles.panel}>
+        <div className={styles.inner}>
+          <p className={styles.kicker}>Planeamento personalizado</p>
 
-          {/* ✅ CTA shared (novo) + classe local */}
-          <CTAButton
-            cta={cta}
-            className={styles.ctaButton}
-            variant="hero"
-            blink
-            compact="auto"
-            scrollOffset={72}
-          />
+          <div className={styles.ctaWrap}>
+            <span className={styles.halo} aria-hidden="true" />
+
+            <CTAButton
+              cta={cta}
+              className={styles.ctaButton}
+              variant="hero"
+              blink
+              compact="auto"
+              scrollOffset={72}
+            />
+          </div>
         </div>
       </div>
     </section>

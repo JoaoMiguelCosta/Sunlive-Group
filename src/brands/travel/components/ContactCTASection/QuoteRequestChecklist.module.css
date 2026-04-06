@@ -1,95 +1,72 @@
-/* ===== Tokens base (Prestige Noir + Liquid Gold + Travel) ===== */
-:root {
-    --gold-400: var(--sl-gold-400, #C78615);
-    --gold-500: var(--sl-gold-500, #A16207);
-    --accent-500: var(--sl-accent-500, #2EA7E0);
-    --text-strong: #eef3fb;
-    --text: #e1e8f5;
-    --panel: #081426;
-}
-
-/* ===== Wrapper ===== */
 .wrap {
     box-sizing: border-box;
-    width: 100%;
+    inline-size: 100%;
     margin-inline: auto;
     padding-inline: 0;
 }
 
-/* ===== Lista ===== */
 .list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(.6rem, 1.4vw, .95rem);
+    gap: clamp(0.6rem, 1.4vw, 0.95rem);
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-@media (max-width: 720px) {
-    .list {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ===== Item ===== */
 .item {
     position: relative;
-    /* overlay */
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    /* ⬅ bullet + texto alinhados ao meio */
-    gap: clamp(.5rem, 1vw, .7rem);
-    background: linear-gradient(180deg, rgba(8, 20, 38, .88), rgba(5, 12, 24, .96));
-    border: 1px solid rgba(255, 255, 255, .06);
+    gap: clamp(0.5rem, 1vw, 0.7rem);
+    padding: clamp(0.65rem, 1.2vw, 0.85rem) clamp(0.75rem, 1.4vw, 1rem);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
-    padding: clamp(.65rem, 1.2vw, .85rem) clamp(.75rem, 1.4vw, 1rem);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+
+    background: linear-gradient(180deg, rgba(8, 20, 38, 0.88), rgba(5, 12, 24, 0.96));
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+
     transition:
-        transform .18s ease,
-        box-shadow .18s ease,
-        border-color .18s ease,
-        background .18s ease;
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease;
     will-change: transform, box-shadow;
 }
 
-/* Overlay dourado (INTENSO) */
 .item::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
     opacity: 0;
-    transition: opacity .18s ease;
+    transition: opacity 0.18s ease;
     background:
         radial-gradient(160% 150% at 12% 0%,
-            color-mix(in oklab, var(--gold-400) 42%, transparent) 0%,
+            color-mix(in oklab, var(--sl-gold-400, #c78615) 42%, transparent) 0%,
             transparent 60%),
         linear-gradient(180deg,
-            color-mix(in oklab, var(--gold-500) 26%, transparent) 0%,
+            color-mix(in oklab, var(--sl-gold-500, #a16207) 26%, transparent) 0%,
             transparent 40%);
 }
 
-/* ===== Hover/focus — GOLD+ legível ===== */
 .item:hover,
 .item:focus-visible {
     transform: translateY(-1px);
-    /* base mais escura para dar contraste ao ouro */
     background:
         linear-gradient(180deg,
             color-mix(in oklab, #0a1322 85%, black 15%) 0%,
             color-mix(in oklab, #071226 90%, black 10%) 100%),
-        /* glaze com ouro mais presente */
         linear-gradient(180deg,
-            color-mix(in oklab, var(--gold-500) 46%, #0a1322 54%) 0%,
-            color-mix(in oklab, var(--gold-500) 22%, #0a1322 78%) 65%,
+            color-mix(in oklab, var(--sl-gold-500, #a16207) 46%, #0a1322 54%) 0%,
+            color-mix(in oklab, var(--sl-gold-500, #a16207) 22%, #0a1322 78%) 65%,
             transparent 100%);
-    border-color: color-mix(in oklab, var(--gold-500) 58%, #000 42%);
+    border-color: color-mix(in oklab, var(--sl-gold-500, #a16207) 58%, #000 42%);
     box-shadow:
-        0 0 0 3px color-mix(in oklab, var(--gold-400) 64%, transparent),
-        0 12px 26px rgba(0, 0, 0, .42),
-        inset 0 1px 0 rgba(255, 255, 255, .06);
+        0 0 0 3px color-mix(in oklab, var(--sl-gold-400, #c78615) 64%, transparent),
+        0 12px 26px rgba(0, 0, 0, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
     outline: none;
 }
 
@@ -98,71 +75,67 @@
     opacity: 1;
 }
 
-/* ===== Fallback (sem color-mix) ===== */
 @supports not (color: color-mix(in oklab, white, black)) {
 
     .item:hover,
     .item:focus-visible {
         background:
             linear-gradient(180deg, #0a1322 0%, #071226 100%),
-            linear-gradient(180deg, rgba(161, 98, 7, .46) 0%, rgba(161, 98, 7, .22) 65%, transparent 100%);
-        border-color: rgba(161, 98, 7, .68);
+            linear-gradient(180deg,
+                rgba(161, 98, 7, 0.46) 0%,
+                rgba(161, 98, 7, 0.22) 65%,
+                transparent 100%);
+        border-color: rgba(161, 98, 7, 0.68);
         box-shadow:
-            0 0 0 3px rgba(199, 134, 21, .64),
-            0 12px 26px rgba(0, 0, 0, .42),
-            inset 0 1px 0 rgba(255, 255, 255, .06);
+            0 0 0 3px rgba(199, 134, 21, 0.64),
+            0 12px 26px rgba(0, 0, 0, 0.42),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
     }
 
     .item::after {
         background:
-            radial-gradient(160% 150% at 12% 0%, rgba(199, 134, 21, .42), transparent 60%),
-            linear-gradient(180deg, rgba(161, 98, 7, .26) 0%, transparent 40%);
+            radial-gradient(160% 150% at 12% 0%, rgba(199, 134, 21, 0.42), transparent 60%),
+            linear-gradient(180deg, rgba(161, 98, 7, 0.26) 0%, transparent 40%);
     }
 }
 
-/* ===== Bullet ===== */
-/* ===== Bullet ===== */
 .bullet {
-    width: .66rem;
-    height: .66rem;
-    border-radius: 999px;
-    background: #2EA7E0;
-    /* azul Travel */
-    box-shadow:
-        0 0 0 2px rgba(46, 167, 224, .25),
-        0 0 22px rgba(46, 167, 224, .55);
+    inline-size: 0.66rem;
+    block-size: 0.66rem;
     margin-top: 0;
     align-self: center;
-    transition: box-shadow .18s ease, transform .18s ease, filter .18s ease;
+    border-radius: 999px;
+    background: #2ea7e0;
+    box-shadow:
+        0 0 0 2px rgba(46, 167, 224, 0.25),
+        0 0 22px rgba(46, 167, 224, 0.55);
+    transition:
+        box-shadow 0.18s ease,
+        transform 0.18s ease,
+        filter 0.18s ease;
 }
 
-/* bullet reage ao hover */
 .item:hover .bullet,
 .item:focus-visible .bullet {
     box-shadow:
-        0 0 0 2px rgba(46, 167, 224, .35),
-        0 0 32px rgba(46, 167, 224, .80);
+        0 0 0 2px rgba(46, 167, 224, 0.35),
+        0 0 32px rgba(46, 167, 224, 0.8);
     transform: scale(1.06);
     filter: brightness(1.08);
 }
 
-/* bullet reage ao hover */
-.item:hover .bullet,
-.item:focus-visible .bullet {
-    box-shadow:
-        0 0 0 2px rgba(199, 134, 21, .26),
-        0 0 32px rgba(199, 134, 21, .65);
-    transform: scale(1.06);
-}
-
-/* ===== Label ===== */
 .label {
-    color: var(--text, #e1e8f5);
-    font-size: clamp(.96rem, 1.05vw, 1.02rem);
+    color: var(--sl-platinum-200, #e1e8f5);
+    font-size: clamp(0.96rem, 1.05vw, 1.02rem);
     line-height: 1.35;
 }
 
-/* ===== Reduce Motion ===== */
+@media (max-width: 720px) {
+    .list {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     .item,

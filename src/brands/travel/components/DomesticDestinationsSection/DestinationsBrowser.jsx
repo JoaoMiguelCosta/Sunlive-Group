@@ -5,67 +5,86 @@ import travelBrand from "../../config/index.js";
 import { useTabsFilter } from "../../shared/hooks/useTabsFilter.js";
 import { normalizeDestinations } from "../../../../shared/utils/normalizeDestinations.js";
 
-// Grupos fixos
 const MAIN_KEYS = new Set(["aveiro", "porto", "lisboa"]);
 const OTHER_KEYS = new Set(["coimbra", "sintra", "obidos"]);
-const CATS = [
+
+const CATEGORIES = [
   {
     key: "principais",
     label: "Principais",
-    predicate: (d) => MAIN_KEYS.has(d.key),
+    predicate: (destination) => MAIN_KEYS.has(destination.key),
   },
-  { key: "outros", label: "Outros", predicate: (d) => OTHER_KEYS.has(d.key) },
-  { key: "todos", label: "Todos", predicate: () => true },
+  {
+    key: "outros",
+    label: "Outros",
+    predicate: (destination) => OTHER_KEYS.has(destination.key),
+  },
+  {
+    key: "todos",
+    label: "Todos",
+    predicate: () => true,
+  },
 ];
 
 export default function DestinationsBrowser() {
-  const raw = travelBrand?.sections?.domesticDestinations?.destinations ?? [];
+  const rawDestinations =
+    travelBrand?.sections?.domesticDestinations?.destinations ?? [];
 
-  const data = normalizeDestinations(raw);
-  const { tab, setTab, filtered } = useTabsFilter(data, CATS, "principais");
+  const data = normalizeDestinations(rawDestinations);
+  const { tab, setTab, filtered } = useTabsFilter(
+    data,
+    CATEGORIES,
+    "principais",
+  );
 
-  if (!data.length) return null;
+  if (!Array.isArray(data) || data.length === 0) return null;
 
   return (
     <section className={styles.wrapper} aria-label="Explorar destinos">
-      {/* Pills: Principais | Outros | Todos */}
       <div className={styles.controls}>
         <div
           className={styles.filters}
           role="tablist"
           aria-label="Filtrar por grupo"
         >
-          {CATS.map((t) => (
-            <button
-              key={t.key}
-              role="tab"
-              aria-selected={tab === t.key}
-              className={[styles.pill, tab === t.key ? styles.pillActive : ""]
-                .filter(Boolean)
-                .join(" ")}
-              onClick={() => setTab(t.key)}
-              type="button"
-            >
-              {t.label}
-            </button>
-          ))}
+          {CATEGORIES.map((category) => {
+            const isActive = tab === category.key;
+
+            return (
+              <button
+                key={category.key}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                className={[styles.pill, isActive ? styles.pillActive : ""]
+                  .filter(Boolean)
+                  .join(" ")}
+                onClick={() => setTab(category.key)}
+              >
+                {category.label}
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Grelha */}
       <div className={styles.grid} role="list">
-        {filtered.map((d) => (
-          <div role="listitem" key={d.key} className={styles.item}>
+        {filtered.map((destination, index) => (
+          <div
+            role="listitem"
+            key={destination.key || `${destination.city}-${index}`}
+            className={styles.item}
+          >
             <DestinationCard
               variant="domestic"
-              city={d.city}
-              badge={d.badge}
-              imageSrc={d.imageSrc}
-              imageAlt={d.imageAlt}
-              summary={d.summary}
-              duration={d.duration}
-              highlights={d.highlights}
-              includes={d.includes}
+              city={destination.city}
+              badge={destination.badge}
+              imageSrc={destination.imageSrc}
+              imageAlt={destination.imageAlt}
+              summary={destination.summary}
+              duration={destination.duration}
+              highlights={destination.highlights}
+              includes={destination.includes}
             />
           </div>
         ))}

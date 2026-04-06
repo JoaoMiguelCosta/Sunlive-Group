@@ -1,51 +1,26 @@
-/* ===== Container: EXACTAMENTE igual ao Headline/Band ===== */
-/* ===== Container: EXACTAMENTE igual ao Headline/Band ===== */
 .container {
-
-    margin-inline: auto;
-    padding-inline: 0;
-
-    /* Recomenda-se ratio 4/3 nos internacionais.
-     O DestinationCard lê esta var para a imagem. */
+    inline-size: 100%;
     --card-img-ratio: 4 / 3;
 }
 
-/* ===== Grelha (base) ===== */
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.9rem, 1.8vw, 1.1rem);
+    grid-template-columns: 1fr;
+    gap: clamp(0.85rem, 1.8vw, 1.1rem);
     align-content: start;
 }
 
 .gridItem {
-    min-width: 0;
+    min-inline-size: 0;
+    inline-size: 100%;
 }
 
-/* ===== Mobile ≤680px: 1 coluna ===== */
-@media (max-width: 680px) {
-    .grid {
-        grid-template-columns: 1fr;
-        gap: clamp(0.6rem, 3vw, 0.9rem);
-    }
-}
-
-/* ===== Tablet 681–1100px: 2 colunas ===== */
 @media (min-width: 681px) and (max-width: 1100px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
-    .gridItem:nth-child(1),
-    .gridItem:nth-child(2),
-    .gridItem:nth-child(3),
-    .gridItem:nth-child(4),
-    .gridItem:nth-child(5) {
-        grid-column: auto;
-    }
 }
 
-/* ===== Desktop ≥1101px: layout 3-2 centrado ===== */
 @media (min-width: 1101px) {
     .grid {
         grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -70,9 +45,18 @@
     .gridItem:nth-child(5) {
         grid-column: 4 / span 2;
     }
+
+    .gridItem:nth-child(n + 6) {
+        grid-column: span 2;
+    }
 }
 
-/* ≥1536px: aumenta espaço entre cartões */
+@media (max-width: 680px) {
+    .grid {
+        gap: clamp(0.7rem, 3vw, 0.95rem);
+    }
+}
+
 @media (min-width: 1536px) {
     .grid {
         gap: clamp(1rem, 1.4vw, 1.25rem);

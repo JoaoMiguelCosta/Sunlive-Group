@@ -3,7 +3,7 @@ import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx
 import travelBrand from "../../config/index.js";
 
 export default function TravelPartnersHeadline() {
-  const hl = travelBrand?.sections?.travelPartners?.headline;
+  const hl = travelBrand?.sections?.travelPartners?.headline ?? null;
   if (!hl) return null;
 
   return (
@@ -16,6 +16,7 @@ export default function TravelPartnersHeadline() {
         variant="banded"
         as="h2"
         max="lg"
+        theme="travel"
       />
     </div>
   );

@@ -1,5 +1,3 @@
-/* Acknowledgements — shared, afinado para o footer hotel */
-
 .sectionWrap {
     position: relative;
     background: transparent;
@@ -27,14 +25,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
+    padding: clamp(0rem, 0.4vw, 0.2rem);
     border-radius: 16px;
+    text-decoration: none;
     transition:
         transform 120ms ease,
         filter 120ms ease,
         background 120ms ease,
         box-shadow 120ms ease;
-    padding: clamp(0rem, 0.4vw, 0.2rem);
 }
 
 .click:hover {
@@ -53,8 +51,8 @@
 .img {
     display: block;
     width: 100%;
-    max-width: min(100%, 1180px);
     height: auto;
+    max-width: min(100%, 1180px);
     max-height: clamp(48px, 5vw, 82px);
     object-fit: contain;
     image-rendering: auto;

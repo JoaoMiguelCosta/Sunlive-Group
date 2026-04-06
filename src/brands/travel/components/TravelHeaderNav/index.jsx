@@ -8,8 +8,8 @@ import CTAButton from "../../../../shared/ui/CTAButton/CTAButton.jsx";
 import travelBrand from "../../config/index.js";
 
 export default function TravelHeaderNav() {
-  const header = travelBrand?.header || {};
-  const navItems = travelBrand?.nav?.primaryItems || [];
+  const header = travelBrand?.header ?? {};
+  const navItems = travelBrand?.nav?.primaryItems ?? [];
 
   return (
     <HeaderShell className={styles.wrap} aria-label="Header — Sunlive Travel">
@@ -39,11 +39,15 @@ export default function TravelHeaderNav() {
               <PrimaryNav items={navItems} />
             </div>
 
-            {header.cta && (
+            {header.cta ? (
               <div className={styles.ctaSlot}>
-                <CTAButton cta={header.cta} />
+                <CTAButton
+                  cta={header.cta}
+                  variant="hero"
+                  className={styles.primaryCta}
+                />
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

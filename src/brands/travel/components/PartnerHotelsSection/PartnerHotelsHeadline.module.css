@@ -1,16 +1,6 @@
-/* PartnerHotelsHeadline.module.css */
 .wrap {
     position: relative;
-    width: 100%;
-    inline-size: min(var(--sl-container-lg, 1152px), 100%);
+    inline-size: 100%;
     margin-inline: auto;
-
-    /* controla a aproximação ao grid seguinte (mantém valores) */
-    --band-overlap: clamp(12px, 1.6vw, 16px);
-
-    /* === NOVO: alinhar nome da var com Internacionais === */
-    --cards-gap-top: var(--band-overlap);
-
-    /* usar a mesma variável para o espaçamento final */
-    margin-block-end: var(--cards-gap-top);
+    margin-block-end: clamp(12px, 1.6vw, 16px);
 }

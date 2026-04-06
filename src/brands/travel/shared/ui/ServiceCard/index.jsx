@@ -1,4 +1,3 @@
-// shared/ui/ServiceCard/ServiceCard.jsx
 import { useCallback } from "react";
 import styles from "./ServiceCard.module.css";
 import { slugify } from "../../utils/slugify.js";
@@ -17,14 +16,20 @@ export default function ServiceCard({
 }) {
   if (!title) return null;
 
+  const safeItems = Array.isArray(items)
+    ? items.map((item) => String(item).trim()).filter(Boolean)
+    : [];
+
+  const hasDetails = safeItems.length > 0;
   const cardId = id || `svc-${slugify(title)}`;
   const detailsId = `${cardId}-details`;
 
   const handleKey = useCallback(
-    (e) => {
+    (event) => {
       if (!interactive) return;
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
         onToggle?.();
       }
     },
@@ -48,10 +53,10 @@ export default function ServiceCard({
         className={styles.clickArea}
         role={interactive ? "button" : undefined}
         tabIndex={interactive ? 0 : undefined}
-        aria-expanded={interactive ? isOpen : undefined}
-        aria-controls={interactive ? detailsId : undefined}
+        aria-expanded={interactive && hasDetails ? isOpen : undefined}
+        aria-controls={interactive && hasDetails ? detailsId : undefined}
         aria-label={
-          interactive
+          interactive && hasDetails
             ? isOpen
               ? `Fechar detalhes de ${title}`
               : `Abrir detalhes de ${title}`
@@ -61,11 +66,11 @@ export default function ServiceCard({
         onKeyDown={interactive ? handleKey : undefined}
       >
         <div className={styles.topBand} aria-hidden="true">
-          {Icon && (
+          {Icon ? (
             <span className={styles.iconWrap}>
               <Icon className={styles.icon} />
             </span>
-          )}
+          ) : null}
         </div>
 
         <header className={styles.titleBand}>
@@ -74,14 +79,14 @@ export default function ServiceCard({
           </h3>
         </header>
 
-        {summary && (
+        {summary ? (
           <div className={styles.summaryBlock}>
             <p className={styles.summary}>{summary}</p>
           </div>
-        )}
+        ) : null}
       </div>
 
-      {interactive && items?.length > 0 && (
+      {interactive && hasDetails ? (
         <div className={styles.toggleWrap}>
           <button
             type="button"
@@ -93,30 +98,34 @@ export default function ServiceCard({
             aria-label={isOpen ? "Recolher" : "Expandir"}
             onClick={onToggle}
           >
+            <span className={styles.toggleText}>
+              {isOpen ? "Recolher" : "Ver detalhes"}
+            </span>
             <span className={styles.toggleIcon} aria-hidden="true" />
           </button>
         </div>
-      )}
+      ) : null}
 
-      {items?.length > 0 && (
+      {hasDetails ? (
         <div
           id={detailsId}
           className={styles.details}
-          aria-hidden={interactive ? (!isOpen).toString() : "false"}
+          aria-hidden={interactive ? !isOpen : false}
         >
           <div className={styles.includesBlock}>
             <p className={styles.includesLabel}>{includesLabel}</p>
+
             <ul className={styles.list}>
-              {items.map((txt, i) => (
-                <li key={i} className={styles.listItem}>
+              {safeItems.map((text, index) => (
+                <li key={`${cardId}-item-${index}`} className={styles.listItem}>
                   <span className={styles.bullet} aria-hidden="true" />
-                  <span>{txt}</span>
+                  <span>{text}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
-      )}
+      ) : null}
     </article>
   );
 }

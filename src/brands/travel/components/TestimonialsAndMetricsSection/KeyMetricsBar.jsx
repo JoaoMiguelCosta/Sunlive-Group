@@ -1,16 +1,15 @@
 import styles from "./KeyMetricsBar.module.css";
 import travelBrand from "../../config/index.js";
 
-/**
- * KeyMetricsBar — Barra de KPIs para a secção de Testemunhos
- * - Consome travelBrand.sections.testimonialsAndMetrics.metrics
- */
 function MetricItem({ value, label, ariaLabel }) {
+  if (!value || !label) return null;
+
   return (
     <div className={styles.item} role="listitem">
       <div className={styles.valueWrap} aria-label={ariaLabel || label}>
         <span className={styles.value}>{value}</span>
       </div>
+
       <div className={styles.label}>{label}</div>
     </div>
   );
@@ -19,6 +18,12 @@ function MetricItem({ value, label, ariaLabel }) {
 export default function KeyMetricsBar() {
   const metrics = travelBrand?.sections?.testimonialsAndMetrics?.metrics ?? [];
   if (!Array.isArray(metrics) || metrics.length === 0) return null;
+
+  const validMetrics = metrics.filter(
+    (metric) => metric?.value && metric?.label,
+  );
+
+  if (validMetrics.length === 0) return null;
 
   return (
     <section
@@ -31,12 +36,12 @@ export default function KeyMetricsBar() {
       </h2>
 
       <div className={styles.bar} role="list">
-        {metrics.map((m) => (
+        {validMetrics.map((metric, index) => (
           <MetricItem
-            key={m.key || m.label}
-            value={m.value}
-            label={m.label}
-            ariaLabel={m.ariaLabel}
+            key={metric.key || `${metric.label}-${index}`}
+            value={metric.value}
+            label={metric.label}
+            ariaLabel={metric.ariaLabel}
           />
         ))}
       </div>

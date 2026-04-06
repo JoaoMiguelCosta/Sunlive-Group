@@ -1,94 +1,63 @@
-/* ================================================
-   ServiceOfferingsGrid — uniform cards (strict align)
-   (não esticar os irmãos quando 1 abre)
-   ================================================ */
 .wrap {
     position: relative;
     isolation: isolate;
-    width: 100%;
+    inline-size: 100%;
     color: var(--sl-platinum-100, #f6f7fb);
-    padding-block: clamp(0.8rem, 2.6vw, 1.4rem);
-    --line-inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
+    padding-block: clamp(0.25rem, 1.2vw, 0.8rem);
 
-    /* Alturas base (ajustadas por breakpoints) */
-    --top-h: 86px;
-    --title-h: 56px;
-    --summary-fixed: 7.4rem;
-    /* base mobile */
-    --includes-min: 11.6rem;
-    /* base mobile */
-
-    /* Altura mínima do card (estado fechado) */
-    --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
+    --top-h: 110px;
+    --title-h: 74px;
+    --summary-fixed: 9.25rem;
+    --includes-min: 12rem;
+    --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 18px);
 }
 
 .grid {
-    margin-inline: auto;
-    inline-size: min(var(--sl-container-lg, 1200px), 100%);
-    padding-inline: var(--line-inset);
-
+    inline-size: 100%;
     display: grid;
-    /* >>> não esticar os itens para a altura da linha */
-    align-items: start;
-    gap: clamp(10px, 1.6vw, 18px);
     grid-template-columns: 1fr;
-    /* mobile */
+    align-items: start;
+    gap: clamp(14px, 1.8vw, 24px);
 }
 
-/* cada célula já não força o filho a ocupar 100% da altura da linha */
 .cell {
-    min-width: 0;
+    min-inline-size: 0;
     display: block;
 }
 
 .cell>* {
-    width: 100%;
+    inline-size: 100%;
 }
 
-/* sem height:100% aqui */
-
-/* ======= Compactações por faixa ======= */
-@media (min-width: 423px) and (max-width: 767px) {
-    .wrap {
-        --summary-fixed: 6.2rem;
-        --includes-min: 12.8rem;
-        --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
-    }
-}
-
-/* ≥768px → 2 colunas (tablet) */
-@media (min-width: 768px) {
+@media (min-width: 700px) and (max-width: 1099px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .wrap {
-        --summary-fixed: 7rem;
-        --includes-min: 12.4rem;
-        --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
+        --top-h: 102px;
+        --title-h: 68px;
+        --summary-fixed: 8.6rem;
+        --includes-min: 12rem;
+    }
+
+    .grid>.cell:last-child {
+        grid-column: 1 / -1;
+        max-inline-size: min(100%, 420px);
+        justify-self: center;
     }
 }
 
-/* 850–1099px */
-@media (min-width: 850px) and (max-width: 1099px) {
-    .wrap {
-        --summary-fixed: 6.5rem;
-        --includes-min: 13.8rem;
-        --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 14px);
-    }
-}
-
-/* ≥1100px → 6 colunas (cada card ocupa 2) */
 @media (min-width: 1100px) {
     .grid {
         grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: clamp(18px, 1.7vw, 24px);
     }
 
     .cell {
         grid-column: span 2;
     }
 
-    /* Centrar 4.º e 5.º quando houver 5 cards */
     .grid>.cell:nth-child(4) {
         grid-column: 2 / span 2;
     }
@@ -98,140 +67,88 @@
     }
 
     .wrap {
-        --summary-fixed: 8.5rem;
-        --includes-min: 13.6rem;
-        --card-min-h: clamp(480px, 48vw, 560px);
+        --top-h: 112px;
+        --title-h: 76px;
+        --summary-fixed: 9.5rem;
+        --includes-min: 12.5rem;
+        --card-min-h: clamp(470px, 38vw, 560px);
     }
 }
 
-/* ≥1440px */
 @media (min-width: 1440px) {
     .wrap {
-        --summary-fixed: 7rem;
-        --includes-min: 14.8rem;
-        --card-min-h: clamp(540px, 42vw, 620px);
+        --summary-fixed: 8.4rem;
+        --includes-min: 13rem;
+        --card-min-h: clamp(500px, 34vw, 590px);
     }
 }
 
-/* ===== Normalizações internas do cartão ===== */
-.grid :global(article[class^="_card_"],
-    article[class^="ServiceCard_card__"],
-    article[class*=" card"],
-    article[class*="card_"]) {
-    --card-radius: 12px;
-    --card-stroke: rgba(199, 134, 21, .9);
-
+/* Normalizações do ServiceCard */
+.grid :global(.card) {
+    --card-radius: 18px;
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
-
-    /* >>> não forçar altura total da linha */
-    height: auto !important;
-
+    inline-size: 100%;
     min-block-size: var(--card-min-h) !important;
-    /* altura mínima fechada */
-
-    border: 0 !important;
     border-radius: var(--card-radius) !important;
-    padding: 0 !important;
-    box-sizing: border-box;
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .06),
-        0 8px 20px rgba(0, 0, 0, .35),
-        0 0 0 1.8px var(--card-stroke) !important;
-
-    overflow: visible !important;
-    contain: paint;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    font-size: 0.94em;
+    overflow: hidden !important;
 }
 
-/* Top band e título — alturas FIXAS */
 .grid :global(.topBand) {
-    flex: 0 0 var(--top-h);
     block-size: var(--top-h);
-    display: grid;
-    place-items: center;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: 0 !important;
-    box-sizing: border-box;
-}
-
-.grid :global(.iconWrap) {
-    inline-size: 54px;
-    block-size: 54px;
 }
 
 .grid :global(.titleBand) {
-    flex: 0 0 var(--title-h);
-    block-size: var(--title-h);
-    display: grid;
-    place-items: center;
-    padding: 0 !important;
-    margin: 0 !important;
-    border-top-left-radius: var(--card-radius);
-    border-top-right-radius: var(--card-radius);
-    border-bottom: 1px solid color-mix(in oklab, var(--sl-gold-500, #A16207), #000 30%);
+    min-block-size: var(--title-h);
+}
+
+.grid :global(.summaryBlock) {
+    block-size: var(--summary-fixed);
+}
+
+.grid :global(.includesBlock) {
+    min-block-size: var(--includes-min);
 }
 
 .grid :global(.title) {
-    font-size: clamp(1rem, 1.28vw, 1.12rem);
-    line-height: 1;
-    margin: 0 !important;
+    font-size: clamp(1.08rem, 1.25vw, 1.34rem);
 }
 
-/* Summary — altura fixa + clamp */
-.grid :global(.summaryBlock) {
-    flex: 0 0 auto;
-    block-size: var(--summary-fixed);
-    padding: .8rem .9rem !important;
-    margin: 0 !important;
-    border: 0 !important;
-    box-sizing: border-box;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
-    line-clamp: 6;
-    overflow: hidden;
-}
-
-/* "Inclui" ocupa o resto quando aberto (cada card cresce sozinho) */
-.grid :global(.includesBlock) {
-    flex: 1 1 auto;
-    min-height: var(--includes-min);
-    display: flex;
-    flex-direction: column;
-    padding: .7rem .9rem .9rem !important;
-    margin: 0 !important;
-    border: 0 !important;
-    border-bottom-left-radius: var(--card-radius);
-    border-bottom-right-radius: var(--card-radius);
-    box-sizing: border-box;
-}
-
-/* Resets */
-.grid :global(.includesBlock p),
-.grid :global(.includesBlock ul) {
-    margin: 0;
-}
-
-.grid :global(.includesLabel) {
-    line-height: 1.1;
-    margin: 0 0 .42rem 0 !important;
-}
-
-.grid :global(.list) {
-    gap: .42rem;
+.grid :global(.summary) {
+    font-size: clamp(0.98rem, 1.05vw, 1.08rem);
 }
 
 .grid :global(.listItem) {
-    padding-block: .06rem;
+    font-size: clamp(0.94rem, 0.98vw, 1.04rem);
 }
 
-.grid :global(.bullet) {
-    inline-size: .5rem;
-    block-size: .5rem;
+@media (max-width: 699px) {
+    .wrap {
+        --top-h: 94px;
+        --title-h: 64px;
+        --summary-fixed: auto;
+        --includes-min: 10.8rem;
+        --card-min-h: auto;
+    }
+
+    .grid {
+        gap: 16px;
+    }
+
+    .grid :global(.card) {
+        min-block-size: 0 !important;
+    }
+
+    .grid :global(.summaryBlock) {
+        block-size: auto;
+    }
+}
+
+@media (max-width: 420px) {
+    .wrap {
+        --top-h: 88px;
+        --title-h: 60px;
+        --includes-min: 10.2rem;
+    }
 }

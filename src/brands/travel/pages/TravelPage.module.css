@@ -1,123 +1,55 @@
-/* Sunlive Travel — Performance Prestige (Prestige Noir + Liquid Gold)
-   Layout base idêntico ao Group para alinhamento e consistência visual
-*/
-
-/* ========= CAMADA 1 — FUNDO GLOBAL DA PÁGINA ========= */
 .pageWrap {
     position: relative;
-    min-height: 100svh;
-    /* mobile moderno */
-    min-height: 100dvh;
-    /* fallback */
-    width: 100%;
+    inline-size: 100%;
     overflow: clip;
-
-    /* Transparente: gradiente/glow vêm do body::before (controlado por brand) */
     background: transparent;
-    color: var(--sl-color-text);
-    isolation: isolate;
+    color: var(--sl-color-text, #f6f7fb);
 
-    /* Tokens globais de alinhamento */
-    --section-inset: clamp(16px, 3.5vw, 44px);
-    --sl-line-inset: clamp(12px, 4vw, 40px);
-
-    /* largura máxima comum de conteúdo */
-    --content-w: min(var(--sl-container-lg, 1200px), 100%);
-    /* largura útil entre “linhas douradas” */
-    --content-w-effective: calc(var(--content-w) - 2 * var(--section-inset));
-
-    /* gap vertical comum entre secções */
-    --section-gap-y: clamp(1.8rem, 3.4vw, 2.6rem);
+    --section-inset: clamp(0.75rem, 4vw, 2.5rem);
 }
 
-/* ========= CAMADA 2 — CONTEÚDO CENTRADO ========= */
 .inner {
     position: relative;
+    z-index: 1;
+    inline-size: 100%;
+    padding-block: 0 clamp(2.4rem, 5vw, 4rem);
+    box-sizing: border-box;
+}
 
-    /* acima do glow global */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: var(--content-w);
+.contentFlow {
+    inline-size: min(calc(100% - 2 * var(--section-inset)),
+            1360px);
+    max-inline-size: 1360px;
     margin-inline: auto;
-
-    /* linha suave no topo da área de conteúdo */
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-/* Grid de secções internas */
-.sections {
     display: grid;
-    width: 100%;
-    row-gap: var(--section-gap-y);
-    /* espaçamento vertical uniforme */
-    margin-bottom: var(--section-gap-y);
-    /* espaço antes do footer */
+    row-gap: clamp(3rem, 6vw, 4.8rem);
 }
 
-/* garantir que nenhuma secção adiciona margem extra */
-.sections>* {
+.contentFlow>* {
     margin-block: 0;
 }
 
-/* remover qualquer “gap” antes do footer (defesa extra) */
-.sections>*:last-child {
-    margin-bottom: 0 !important;
-}
-
-/* Secção base (se usares este wrapper na página Travel) */
-.section {
-    width: 100%;
-    scroll-margin-top: var(--header-offset, 84px);
-    /* âncoras suaves com header fixo */
-    padding-inline: var(--section-inset);
-    /* mesma margem lateral em todas */
-}
-
-/* Variante de superfície alternada (cartão amplo) */
-.sectionAlt {
-    width: 100%;
-    background: linear-gradient(180deg,
-            color-mix(in oklab, var(--sl-platinum-100), transparent 20%),
-            color-mix(in oklab, var(--sl-platinum-300), transparent 35%));
-    border-radius: var(--sl-radius-sm, 12px);
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, .35),
-        0 8px 24px rgba(0, 0, 0, .30);
-    padding: clamp(1rem, 3vw, 2rem);
-}
-
-/* Fallback para browsers sem color-mix */
-@supports not (background: color-mix(in oklab, white, black)) {
-    .sectionAlt {
-        background: linear-gradient(180deg, #e6e6e6, #d9d9d9);
+@media (max-width: 980px) {
+    .contentFlow {
+        margin-block-start: clamp(2.6rem, 6vw, 3.4rem);
+        row-gap: clamp(2.6rem, 6vw, 3.6rem);
     }
 }
 
-/* Separador premium */
-.divider {
-    height: 1px;
-    width: 100%;
-    border: 0;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(199, 134, 21, .45),
-            transparent);
-    margin-block: clamp(0.75rem, 2vw, 1.5rem);
+@media (max-width: 767.98px) {
+    .inner {
+        padding-block-end: 2.2rem;
+    }
+
+    .contentFlow {
+        margin-block-start: clamp(2.2rem, 7vw, 3rem);
+        row-gap: clamp(2.2rem, 7vw, 3rem);
+    }
 }
 
-/* Linha de CTAs */
-.ctaRow {
-    display: flex;
-    flex-wrap: wrap;
-    gap: clamp(0.6rem, 1.2vw, 1rem);
-    align-items: center;
-    justify-content: flex-start;
-}
-
-@media (max-width: 480px) {
-    .ctaRow {
-        justify-content: center;
+@media (max-width: 420px) {
+    .contentFlow {
+        margin-block-start: 2rem;
+        row-gap: 2rem;
     }
 }

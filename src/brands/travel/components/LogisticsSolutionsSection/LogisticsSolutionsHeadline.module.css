@@ -1,10 +1,43 @@
-/* Wrapper da headline — apenas espaçamentos e herança de variáveis */
 .wrap {
     position: relative;
-    width: 100%;
-   
+    inline-size: 100%;
+}
 
-  
+.headline {
+    --content-w: min(100%, 1120px);
+    --line-inset: 0px;
+}
 
-    
+.headline :global(.inner) {
+    padding-inline: clamp(1.1rem, 2.6vw, 2.2rem);
+    padding-block: clamp(1.35rem, 2.8vw, 2.2rem);
+}
+
+.headline :global(.title) {
+    max-inline-size: 22ch;
+    margin-inline: auto;
+    text-wrap: balance;
+}
+
+.headline :global(.lead) {
+    max-inline-size: 72ch;
+    margin-inline: auto;
+    text-wrap: pretty;
+}
+
+@media (max-width: 768px) {
+    .headline :global(.title) {
+        max-inline-size: 15ch;
+    }
+
+    .headline :global(.lead) {
+        max-inline-size: 58ch;
+    }
+}
+
+@media (max-width: 480px) {
+    .headline :global(.inner) {
+        padding-inline: 1rem;
+        padding-block: 1.1rem 1.2rem;
+    }
 }

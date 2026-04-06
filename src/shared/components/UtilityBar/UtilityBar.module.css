@@ -398,65 +398,44 @@
 
 .utilityBar[data-variant="travel-header"] {
     --accent: var(--sl-accent-500, #2EA7E0);
-    --sl-container-lg: 85rem;
+--sl-container-lg: 1360px;
 }
 
 .utilityBar[data-variant="travel-header"] .inner::after {
     content: none;
 }
 
-@media (max-width: 1025px) {
-    .utilityBar[data-variant="travel-header"] .inner {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        justify-items: stretch;
-        background: var(--sl-navy-900, #020a20);
-        box-shadow:
-            0 1px 0 rgba(255, 255, 255, 0.04) inset,
-            0 18px 38px rgba(0, 0, 0, 0.28);
-        border-bottom: 2px solid rgba(255, 162, 0, 0.85);
-    }
+.utilityBar[data-variant="travel-header"] .inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: clamp(1rem, 1.8vw, 1.6rem);
+    width: 100%;
 
-    .utilityBar[data-variant="travel-header"] .left {
-        width: auto;
-        min-width: 0;
-        justify-self: start;
-        padding-inline-start: clamp(8px, 1.2vw, 14px);
-    }
-
-    .utilityBar[data-variant="travel-header"] .right {
-        width: auto;
-        min-width: 0;
-        justify-self: end;
-        padding-inline-end: clamp(8px, 1.2vw, 14px);
-    }
-
-    .utilityBar[data-variant="travel-header"] .backText {
-        max-inline-size: 42vw;
-    }
+    min-height: clamp(64px, 4.6vw, 76px);
+    padding-block: clamp(0.38rem, 0.7vw, 0.56rem);
+    border-bottom: 2px solid rgba(255, 162, 0, 0.85);
 }
 
-@media (min-width: 1026px) {
-    .utilityBar[data-variant="travel-header"] .inner {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        border-bottom: 2px solid rgba(255, 162, 0, 0.85);
-    }
+.utilityBar[data-variant="travel-header"] .left {
+    width: 100%;
+    min-width: 0;
+    justify-content: flex-start;
+    padding-inline-start: clamp(8px, 1.2vw, 14px);
+}
 
-    .utilityBar[data-variant="travel-header"] .left {
-        width: 100%;
-        padding-inline-start: clamp(8px, 1.2vw, 14px);
-    }
+.utilityBar[data-variant="travel-header"] .right {
+    display: inline-flex;
+    align-items: center;
+    justify-self: end;
+    gap: var(--ub-gap, 0.75rem);
+   
+}
 
-    .utilityBar[data-variant="travel-header"] .right {
-        display: inline-flex;
-        align-items: center;
-        justify-self: end;
-        gap: var(--ub-gap, 0.75rem);
-        padding-inline-end: clamp(8px, 1.2vw, 14px);
-    }
+.utilityBar[data-variant="travel-header"] .backLink {
+    min-height: clamp(42px, 3vw, 48px);
+    padding: 0.52rem 1rem;
+    border-color: rgba(255, 162, 0, 0.72);
 }
 
 .utilityBar[data-variant="travel-header"] .langItem[aria-current="true"] {
@@ -468,8 +447,66 @@
     color: var(--accent);
 }
 
-.utilityBar[data-variant="travel-header"] .backLink {
-    border-color: rgba(255, 162, 0, 0.72);
+@media (max-width: 900px) {
+    .utilityBar[data-variant="travel-header"] .inner {
+        min-height: 60px;
+        column-gap: 0.75rem;
+    }
+
+    .utilityBar[data-variant="travel-header"] .backText {
+        max-inline-size: 42vw;
+    }
+}
+
+@media (max-width: 640px) {
+    .utilityBar[data-variant="travel-header"] {
+        --line-inset: clamp(12px, 4vw, 18px);
+        --ub-gap: 0.45rem;
+    }
+
+    .utilityBar[data-variant="travel-header"] .inner {
+        min-height: 56px;
+        padding-block: 0.3rem;
+    }
+
+    .utilityBar[data-variant="travel-header"] .left {
+        padding-inline-start: 6px;
+    }
+
+    .utilityBar[data-variant="travel-header"] .right {
+        padding-inline-end: 6px;
+    }
+
+    .utilityBar[data-variant="travel-header"] .backLink {
+        min-height: 38px;
+        padding: 0.46rem 0.82rem;
+        font-size: 0.88rem;
+    }
+
+    .utilityBar[data-variant="travel-header"] .socialLink,
+    .utilityBar[data-variant="travel-header"] .langBtn {
+        inline-size: 36px;
+        block-size: 36px;
+    }
+
+    .utilityBar[data-variant="travel-header"] .langText {
+        font-size: 0.88rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .utilityBar[data-variant="travel-header"] .backText {
+        max-inline-size: 46vw;
+    }
+
+    .utilityBar[data-variant="travel-header"] .right {
+        gap: 0.25rem;
+    }
+
+    .utilityBar[data-variant="travel-header"] .backLink {
+        padding-inline: 0.7rem;
+        font-size: 0.82rem;
+    }
 }
 
 /* =======================================================
@@ -541,8 +578,6 @@
 
 /* =======================================================
    Hotel
-   - alterado só aqui
-   - largura máxima mantém 1360px
    ======================================================= */
 
 .utilityBar[data-variant="hotel-header"] {
@@ -593,7 +628,6 @@
     display: none;
 }
 
-/* logo dentro da zona esquerda */
 .utilityBar[data-variant="hotel-header"] .logoLink {
     display: inline-flex;
     align-items: center;
@@ -610,7 +644,6 @@
     object-fit: contain;
 }
 
-/* estado ativo da língua */
 .utilityBar[data-variant="hotel-header"] .langItem[aria-current="true"] {
     color: var(--accent);
     background: color-mix(in oklab, var(--accent), transparent 84%);
@@ -620,7 +653,6 @@
     color: var(--accent);
 }
 
-/* botões hotel */
 .utilityBar[data-variant="hotel-header"] .backLink,
 .utilityBar[data-variant="hotel-header"] .homeLink {
     min-height: clamp(42px, 3.2vw, 48px);
@@ -660,7 +692,6 @@
     max-inline-size: none;
 }
 
-/* socials hotel */
 .utilityBar[data-variant="hotel-header"] .socials {
     gap: clamp(0.15rem, 0.35vw, 0.3rem);
 }
@@ -681,7 +712,6 @@
     background: rgba(255, 248, 235, 0.03);
 }
 
-/* lang hotel */
 .utilityBar[data-variant="hotel-header"] .langBtn {
     min-width: auto;
     height: clamp(36px, 2.7vw, 42px);
@@ -703,7 +733,6 @@
     color: rgba(230, 200, 147, 0.82);
 }
 
-/* ===== desktop intermédio ===== */
 @media (max-width: 1180px) {
 
     .utilityBar[data-variant="hotel-header"] .inner,
@@ -744,7 +773,6 @@
     }
 }
 
-/* ===== tablet ===== */
 @media (max-width: 900px) {
 
     .utilityBar[data-variant="hotel-header"] .inner,
@@ -782,7 +810,6 @@
     }
 }
 
-/* ===== mobile ===== */
 @media (max-width: 640px) {
     .utilityBar[data-variant="hotel-header"] {
         --line-inset: clamp(12px, 4vw, 18px);
@@ -826,7 +853,6 @@
     }
 }
 
-/* ===== extra small ===== */
 @media (max-width: 420px) {
     .utilityBar[data-variant="hotel-header"] .left {
         display: flex;
@@ -898,4 +924,3 @@
         font-size: 0.82rem;
     }
 }
-

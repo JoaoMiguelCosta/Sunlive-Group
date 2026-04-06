@@ -200,3 +200,53 @@ background: radial-gradient(circle at top right,
         0 0 0 1px rgba(0, 0, 0, 0.7),
         0 0 22px rgba(46, 194, 126, 0.6);
 }
+
+.wrap[data-variant="travel"].variant-banded .inner {
+    background:
+        radial-gradient(circle at top right,
+            color-mix(in oklab, var(--sl-accent-500, #2ea7e0), transparent 42%) 0,
+            transparent 60%),
+        color-mix(in oklab, #050609 88%, black 12%);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.05) inset,
+        0 22px 46px rgba(0, 0, 0, 0.48);
+}
+
+.wrap[data-variant="travel"] .title {
+    color: color-mix(in oklab,
+            var(--sl-gold-400, #c78615) 62%,
+            var(--sl-accent-500, #2ea7e0) 38%);
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(46, 167, 224, 0.35);
+}
+
+.wrap[data-variant="travel"] .eyebrow {
+    color: color-mix(in oklab,
+            var(--sl-accent-400, #79ccef) 66%,
+            var(--sl-platinum-120, #dde3f0) 34%);
+}
+
+.wrap[data-variant="travel"] .lead {
+    color: color-mix(in oklab,
+            var(--sl-platinum-100, #f6f7fb) 82%,
+            var(--sl-accent-500, #2ea7e0) 18%);
+}
+
+.wrap[data-variant="travel"] .icon {
+    background:
+        radial-gradient(circle at 30% 20%,
+            color-mix(in oklab, var(--sl-accent-400, #79ccef), white 10%) 0,
+            transparent 55%),
+        radial-gradient(circle at 80% 80%,
+            color-mix(in oklab, var(--sl-gold-400, #c78615), black 20%) 0,
+            transparent 70%),
+        color-mix(in oklab, #050609 80%, black 20%);
+    border-color: color-mix(in oklab,
+            var(--sl-accent-500, #2ea7e0),
+            var(--sl-gold-400, #c78615) 28%);
+    color: var(--sl-platinum-050, #e7ebf3);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.7),
+        0 0 22px rgba(46, 167, 224, 0.45);
+}

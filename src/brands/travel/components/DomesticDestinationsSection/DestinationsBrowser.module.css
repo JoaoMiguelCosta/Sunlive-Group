@@ -1,16 +1,9 @@
 .wrapper {
-    inline-size: var(--content-w-effective);
-    /* 👈 mesma largura que o resto da página */
-    margin-inline: auto;
-    padding-inline: 0;
+    inline-size: 100%;
     display: grid;
-    gap: clamp(.7rem, 2.2vw, 1.4rem);
-
-    /* fallback local se não vier da page */
-    --content-w-effective: calc(var(--content-w, min(var(--sl-container-lg, 1200px), 100%)) - 2 * var(--line-inset, 0px));
+    gap: clamp(0.7rem, 2.2vw, 1.4rem);
 }
 
-/* ===== Controlo superior ===== */
 .controls {
     display: flex;
     align-items: center;
@@ -21,127 +14,107 @@
 .filters {
     display: flex;
     flex-wrap: wrap;
-    gap: .5rem .6rem;
+    gap: 0.5rem 0.6rem;
 }
 
-/* ===== Pills — Performance Prestige (Noir + Gold + Atlantic Blue) ===== */
-
-/* INATIVO — navy + aro dourado + vidro suave */
 .pill {
-    --gold: var(--sl-gold-400, #C78615);
-    --gold2: var(--sl-gold-500, #A16207);
-    --accent: var(--sl-accent-500, #2EA7E0);
+    --gold: var(--sl-gold-400, #c78615);
+    --gold-strong: var(--sl-gold-500, #a16207);
+    --accent: var(--sl-accent-500, #2ea7e0);
 
-    padding: .44rem .96rem;
+    cursor: pointer;
+    padding: 0.44rem 0.96rem;
     border-radius: 999px;
-    font-weight: 700;
-    font-size: .92rem;
-    letter-spacing: .02em;
-    text-decoration: none;
-    color: #fdfaf3;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, .45);
 
-    border: 1.5px solid color-mix(in oklab, var(--gold2) 82%, #000 18%);
+    color: #fdfaf3;
+    font-weight: 700;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+
+    border: 1.5px solid color-mix(in oklab, var(--gold-strong) 82%, #000 18%);
     background:
-        /* glow azul muito leve */
         radial-gradient(140% 160% at 18% -20%,
             color-mix(in oklab, var(--accent) 18%, transparent) 0%,
             transparent 60%),
-        /* película dourada muito subtil */
         linear-gradient(180deg,
-            color-mix(in oklab, var(--gold2) 18%, transparent) 0%,
+            color-mix(in oklab, var(--gold-strong) 18%, transparent) 0%,
             transparent 35%),
-        /* base noir */
         linear-gradient(180deg, #0b1324 0%, #050915 100%);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .06),
-        0 8px 20px rgba(0, 0, 0, .36);
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 8px 20px rgba(0, 0, 0, 0.36);
 
     transition:
-        transform .08s ease,
-        box-shadow .18s ease,
-        background .18s ease,
-        border-color .18s ease,
-        color .18s ease,
-        text-shadow .18s ease;
-    cursor: pointer;
+        transform 0.08s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        text-shadow 0.18s ease;
 }
 
-/* HOVER/Foco apenas para INATIVOS — aquece o ouro e reforça o azul */
-.pill:not([aria-current="true"]):hover,
-.pill:not([aria-current="true"]):focus-visible,
-.pill:not([data-active="true"]):hover,
-.pill:not([data-active="true"]):focus-visible {
-    border-color: color-mix(in oklab, var(--gold2) 68%, #000 32%);
+.pill:hover,
+.pill:focus-visible {
+    border-color: color-mix(in oklab, var(--gold-strong) 68%, #000 32%);
     background:
         radial-gradient(150% 170% at 18% -20%,
             color-mix(in oklab, var(--accent) 26%, transparent) 0%,
             transparent 60%),
         linear-gradient(180deg,
-            color-mix(in oklab, var(--gold2) 32%, transparent) 0%,
+            color-mix(in oklab, var(--gold-strong) 32%, transparent) 0%,
             transparent 40%),
         linear-gradient(180deg, #0b1428 0%, #040814 100%);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .08),
-        0 10px 24px rgba(0, 0, 0, .44),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 10px 24px rgba(0, 0, 0, 0.44),
         0 0 0 2px color-mix(in oklab, var(--gold) 32%, transparent);
     transform: translateY(-1px);
     outline: none;
 }
 
-/* Foco visível mais explícito (teclado) */
 .pill:focus-visible {
     outline: 2px solid color-mix(in oklab, var(--accent) 70%, transparent);
     outline-offset: 2px;
 }
 
-/* ATIVO — fundo azul Atlântico sólido */
-.pillActive,
-.pill[aria-current="true"],
-.pill[data-active="true"] {
-    --gold: var(--sl-gold-400, #C78615);
-    --gold2: var(--sl-gold-500, #A16207);
-
+.pill[aria-selected="true"],
+.pillActive {
     color: #fff;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, .55);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
 
-    border-color: color-mix(in oklab, var(--gold2) 90%, #000 10%);
-    background: #2EA7E0;
-    /* 👈 fundo azul do botão selecionado */
+    border-color: color-mix(in oklab, var(--gold-strong) 90%, #000 10%);
+    background: #2ea7e0;
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .10),
-        0 12px 26px rgba(0, 0, 0, .48),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 12px 26px rgba(0, 0, 0, 0.48),
         0 0 0 2px color-mix(in oklab, var(--gold) 42%, transparent);
 }
 
-/* ATIVO + HOVER — mantém o mesmo fundo azul */
-.pillActive:hover,
-.pill[aria-current="true"]:hover,
-.pill[data-active="true"]:hover {
-    background: #2EA7E0;
-    /* 👈 não muda ao passar o rato */
+.pill[aria-selected="true"]:hover,
+.pillActive:hover {
+    background: #2ea7e0;
     color: #fff;
 }
-/* ===== Grelha ===== */
+
 .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(.9rem, 1.8vw, 1.1rem);
+    gap: clamp(0.9rem, 1.8vw, 1.1rem);
+    align-items: stretch;
 }
 
 .item {
-    min-width: 0;
+    min-inline-size: 0;
     display: flex;
 }
 
-
-
 .item>* {
     flex: 1 1 auto;
-    min-width: 0;
+    min-inline-size: 0;
 }
 
-/* Responsivo */
 @media (max-width: 900px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -149,7 +122,12 @@
 }
 
 @media (max-width: 680px) {
+    .controls {
+        margin-top: 0.75rem;
+    }
+
     .grid {
         grid-template-columns: 1fr;
+        gap: clamp(0.7rem, 3vw, 0.95rem);
     }
 }

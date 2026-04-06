@@ -27,6 +27,12 @@
     gap: clamp(1.15rem, 2vw, 1.65rem);
 }
 
+@media (min-width: 1280px) {
+    .inner {
+        gap: clamp(1.15rem, 1.8vw, 1.65rem);
+    }
+}
+
 @media (max-width: 640px) {
     .section {
         padding-block: 1.9rem;

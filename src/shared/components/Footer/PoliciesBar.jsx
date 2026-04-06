@@ -1,27 +1,28 @@
 import styles from "./PoliciesBar.module.css";
 import { ShieldIcon } from "../../ui/icons";
 
-/**
- * PoliciesBar — barra inferior com links de políticas e copyright.
- */
 export default function PoliciesBar({ data }) {
   if (!data) return null;
 
   const year = data?.copyright?.year || new Date().getFullYear();
+  const links = Array.isArray(data.links) ? data.links : [];
 
   return (
     <section className={styles.sectionWrap} aria-label="Policies and legal">
       <div className={styles.inner}>
         <nav className={styles.links} aria-label="Legal links">
-          {(data.links || []).map((l, idx) => (
-            <a key={l.key || idx} className={styles.link} href={l.href}>
-              {l.label}
-              {idx < (data.links?.length || 0) - 1 && (
+          {links.map((linkItem, index) => (
+            <span key={linkItem.key || index} className={styles.linkItem}>
+              <a className={styles.link} href={linkItem.href}>
+                {linkItem.label}
+              </a>
+
+              {index < links.length - 1 ? (
                 <span className={styles.divider} aria-hidden="true">
                   |
                 </span>
-              )}
-            </a>
+              ) : null}
+            </span>
           ))}
         </nav>
 
@@ -29,6 +30,7 @@ export default function PoliciesBar({ data }) {
           <span className={styles.shield} aria-hidden="true">
             {typeof ShieldIcon === "function" ? <ShieldIcon /> : "🛡️"}
           </span>
+
           <span className={styles.copyText}>
             © {year} {data?.copyright?.holder || "Sunlive Group"}
           </span>

@@ -1,67 +1,57 @@
-/* ===== Tokens locais com fallback ao tema Travel ===== */
-:root {
-    --gold-400: var(--sl-gold-400, #C78615);
-    --gold-500: var(--sl-gold-500, #A16207);
-    --accent-500: var(--sl-accent-500, #2EA7E0);
-    --panel: var(--sl-navy-900, #081426);
-    --panel-2: var(--sl-navy-800, #0b172d);
-    --text-strong: var(--sl-platinum-100, #eef3fb);
-    --text: var(--sl-platinum-200, #e1e8f5);
-    --shadow: rgba(0, 0, 0, .35);
-}
-
-/* ===== Wrapper da secção ===== */
 .section {
     position: relative;
-    width: 100%;
-    background: transparent;
-
-    /* desktop: sem padding lateral → bate na mesma régua das outras secções */
-    padding-inline: 0;
-
-    /* navegação suave + linha superior */
-    scroll-margin-top: var(--header-offset, 84px);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
-}
-
-/* ===== Content stack (apenas spacing vertical) ===== */
-.inner {
+    isolation: isolate;
     inline-size: 100%;
-    margin-inline: 0;
-    display: grid;
-    gap: clamp(10px, 2vw, 16px);
-    padding-block: clamp(14px, 3.5vw, 28px);
+
+    background: transparent;
+    scroll-margin-top: var(--header-offset, 84px);
 }
 
-/* ===== Largura útil comum (igual ao banner/hotéis) ===== */
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 7% auto auto 50%;
+    translate: -50% 0;
+    inline-size: min(90vw, 1160px);
+    block-size: clamp(170px, 22vw, 290px);
+    pointer-events: none;
+    opacity: 0.76;
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+    inline-size: 100%;
+    box-sizing: border-box;
+    display: grid;
+    gap: clamp(1.15rem, 2vw, 1.65rem);
+}
+
 .headerRow,
 .gridBlock,
 .metricsBlock {
-    inline-size: min(100%, var(--content-w-effective));
-    margin-inline: auto;
-    /* sem padding-inline aqui para não desalinhar a régua */
+    inline-size: 100%;
+    min-inline-size: 0;
 }
 
-/* ===== Responsivo ===== */
 @media (max-width: 640px) {
-
-    /* segurança extra no mobile */
     .section {
-        padding-inline: clamp(10px, 4vw, 22px);
+        padding-block: 1.9rem;
+    }
+
+    .section::before {
+        inline-size: 100%;
+        block-size: 190px;
+        inset-block-start: 3%;
     }
 
     .inner {
-        padding-block: clamp(18px, 6vw, 36px);
-        gap: clamp(14px, 5vw, 28px);
+        gap: 0.95rem;
     }
 }
 
-.section:focus {
-    outline: 0;
-}
-
-/* por segurança */
+.section:focus,
 .section:focus-visible {
-    box-shadow: none !important;
     outline: 0 !important;
+    box-shadow: none !important;
 }

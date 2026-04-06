@@ -1,92 +1,105 @@
-/* src/shared/components/TestimonialCard.module.css */
-
 :root {
     --tc-panel: var(--sl-navy-900, #081426);
     --tc-panel-2: var(--sl-navy-800, #0b172d);
-    --tc-gold: var(--sl-gold-500, #A16207);
-    --tc-gold-2: var(--sl-gold-400, #C78615);
+    --tc-gold: var(--sl-gold-500, #a16207);
+    --tc-gold-2: var(--sl-gold-400, #c78615);
+    --tc-accent: var(--sl-accent-500, #2ea7e0);
     --tc-text-strong: var(--sl-platinum-100, #eef3fb);
     --tc-text: var(--sl-platinum-200, #e1e8f5);
-    --tc-shadow: rgba(0, 0, 0, .35);
+    --tc-shadow: rgba(0, 0, 0, 0.35);
 }
 
-/* ===== Card ===== */
 .card {
+    position: relative;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    /* topBar | body expande | footer */
-    height: 100%;
-    /* ocupa toda a célula do grid pai */
-    background: linear-gradient(180deg, rgba(8, 20, 38, .88), rgba(5, 12, 24, .96));
-    border: 1px solid rgba(255, 255, 255, .06);
+    inline-size: 100%;
+    block-size: 100%;
+    min-inline-size: 0;
+
+    background:
+        radial-gradient(140% 120% at 50% -10%,
+            rgba(46, 167, 224, 0.1),
+            transparent 58%),
+        linear-gradient(180deg, rgba(8, 20, 38, 0.88), rgba(5, 12, 24, 0.96));
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 18px var(--tc-shadow);
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
 }
 
-/* ===== Top bar (aspas + estrelas) ===== */
 .topBar {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: clamp(.4rem, 1.1vw, .7rem);
-    padding: clamp(.35rem, 1.1vw, .6rem) clamp(.6rem, 1.6vw, 1rem);
+    gap: clamp(0.4rem, 1.1vw, 0.7rem);
+    padding: clamp(0.45rem, 1vw, 0.65rem) clamp(0.75rem, 1.6vw, 1rem);
+
     background:
-        linear-gradient(120deg, rgba(46, 167, 224, .18), rgba(8, 20, 38, 0) 70%),
-        linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, 0));
-    border-bottom: 1px solid rgba(255, 255, 255, .06);
+        linear-gradient(120deg, rgba(46, 167, 224, 0.18), rgba(8, 20, 38, 0) 70%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .quoteMark {
-    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    line-height: 1;
     color: var(--tc-text-strong);
-    opacity: .75;
-    letter-spacing: .04em;
+    opacity: 0.75;
+    letter-spacing: 0.04em;
 }
 
 .stars {
     display: inline-flex;
-    gap: clamp(4px, .6vw, 6px);
+    align-items: center;
+    gap: clamp(4px, 0.6vw, 6px);
 }
 
 .starIcon {
     inline-size: 16px;
     block-size: 16px;
     color: var(--tc-gold-2);
-    /* usa a cor do tema */
-    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .35));
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.35));
 }
 
-/* ===== Corpo (quote) — ocupa o espaço livre ===== */
 .body {
-    margin: 0;
-    padding: clamp(.9rem, 2vw, 1.1rem) clamp(1rem, 2.4vw, 1.4rem);
-    color: var(--tc-text);
-    font-size: clamp(.94rem, 1.05vw, 1rem);
-    line-height: 1.6;
-
-    /* faz o body expandir e empurrar o footer para o fundo */
     display: flex;
     align-items: flex-start;
+    min-inline-size: 0;
+    margin: 0;
+    padding: clamp(1rem, 2vw, 1.15rem) clamp(1rem, 2.4vw, 1.4rem);
+
+    color: var(--tc-text);
+    font-size: clamp(0.94rem, 1.05vw, 1rem);
+    line-height: 1.62;
 }
 
 .body :where(p) {
     margin: 0;
-    /* remove margens do parágrafo dentro do blockquote */
+    text-wrap: pretty;
 }
 
-/* ===== Footer (autor) — fica sempre alinhado entre cards ===== */
 .footer {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: clamp(.6rem, 1.4vw, .9rem);
-    padding: clamp(.65rem, 1.6vw, .9rem) clamp(1rem, 2.4vw, 1.4rem);
+    gap: clamp(0.6rem, 1.4vw, 0.9rem);
+    min-inline-size: 0;
+    padding: clamp(0.7rem, 1.6vw, 0.95rem) clamp(1rem, 2.4vw, 1.4rem);
+
     background:
         linear-gradient(180deg,
             color-mix(in srgb, var(--tc-gold) 78%, #000 0%) 0%,
             color-mix(in srgb, var(--tc-gold-2) 75%, #000 0%) 100%);
-    border-top: 1px solid rgba(0, 0, 0, .25);
+
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .avatarWrap {
@@ -94,37 +107,113 @@
     block-size: clamp(46px, 5.4vw, 64px);
     border-radius: 50%;
     overflow: hidden;
-    background: radial-gradient(circle at 35% 35%, #ff4a38 0%, #c40000 62%, #660000 100%);
-    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .25);
+    flex: 0 0 auto;
+
+    background:
+        radial-gradient(circle at 35% 35%, #ffb25b 0%, #c78615 62%, #6a3f08 100%);
+    box-shadow:
+        inset 0 0 0 2px rgba(0, 0, 0, 0.25),
+        0 2px 10px rgba(0, 0, 0, 0.18);
 }
 
 .avatarImg {
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     object-fit: cover;
     display: block;
 }
 
 .avatarFallback {
-    display: block;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.avatarInitial {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    font-weight: 800;
+    line-height: 1;
 }
 
 .meta {
     display: grid;
     gap: 2px;
+    min-inline-size: 0;
 }
 
 .name {
     color: var(--tc-text-strong);
     font-weight: 700;
-    font-size: clamp(.95rem, 1.05vw, 1rem);
+    font-size: clamp(0.95rem, 1.05vw, 1rem);
+    line-height: 1.25;
+    text-wrap: balance;
 }
 
 .role {
     color: color-mix(in srgb, var(--tc-text) 92%, #000 8%);
-    font-size: clamp(.82rem, .95vw, .92rem);
-    opacity: .95;
+    font-size: clamp(0.82rem, 0.95vw, 0.92rem);
+    line-height: 1.35;
+    opacity: 0.95;
+    text-wrap: balance;
 }
 
+@media (hover: hover) {
+
+    .card:hover,
+    .card:focus-within {
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow:
+            0 10px 24px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .card:hover .quoteMark,
+    .card:focus-within .quoteMark {
+        opacity: 0.92;
+    }
+
+    .card:hover .starIcon,
+    .card:focus-within .starIcon {
+        color: color-mix(in srgb, var(--tc-gold-2) 92%, #fff 8%);
+    }
+}
+
+@media (max-width: 640px) {
+    .topBar {
+        padding-inline: 0.8rem;
+    }
+
+    .body {
+        padding: 0.95rem 0.95rem 1rem;
+    }
+
+    .footer {
+        padding: 0.8rem 0.95rem;
+        gap: 0.7rem;
+    }
+
+    .quoteMark {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .footer {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .meta {
+        justify-items: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
+}

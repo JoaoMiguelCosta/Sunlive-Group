@@ -1,111 +1,122 @@
-/* src/brands/travel/components/DomesticDestinationsSection/ContactCTA.module.css */
-
-/* =======================================================
-   ContactCTA — barra de CTA por baixo dos cards (ultra compacta)
-   ======================================================= */
-
-/* Wrapper da secção */
 .section {
     position: relative;
-    width: 100%;
-    display: grid;
-    place-items: center;
-
-    /* espaçamento BASE — ainda mais reduzido */
-    --pad-top: clamp(8px, 1vw, 12px);
-    --pad-bot: clamp(4px, 0.8vw, 8px);
-
-    padding-block: var(--pad-top) var(--pad-bot);
-}
-
-/* Content container (futuro texto auxiliar) */
-.inner {
-    display: grid;
-    place-items: center;
-    gap: clamp(.32rem, 1vw, .7rem);
-    max-inline-size: var(--sl-container-md, 1100px);
     inline-size: 100%;
-    padding-inline: var(--section-inset, clamp(16px, 3.5vw, 44px));
-    
+    display: grid;
+    place-items: center;
+    padding-block: clamp(0.35rem, 1vw, 0.7rem);
 }
 
-/* Envelope do botão: posiciona halo sem afetar o anchor */
+.panel {
+    inline-size: min(100%, 560px);
+    border-radius: 999px;
+    padding: 1px;
+    background:
+        linear-gradient(135deg,
+            rgba(199, 134, 21, 0.8),
+            rgba(46, 167, 224, 0.26),
+            rgba(199, 134, 21, 0.72));
+    box-shadow:
+        0 20px 46px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.inner {
+    inline-size: 100%;
+    min-block-size: 88px;
+    border-radius: inherit;
+    padding: clamp(0.9rem, 2vw, 1.2rem) clamp(1rem, 2.5vw, 1.4rem);
+    display: grid;
+    justify-items: center;
+    gap: 0.72rem;
+    background:
+        radial-gradient(120% 140% at 0% 50%,
+            rgba(46, 167, 224, 0.12) 0%,
+            transparent 55%),
+        radial-gradient(120% 140% at 100% 50%,
+            rgba(199, 134, 21, 0.14) 0%,
+            transparent 58%),
+        linear-gradient(180deg, rgba(3, 8, 19, 0.94), rgba(2, 10, 32, 0.96));
+}
+
+.kicker {
+    margin: 0;
+    color: color-mix(in oklab,
+            var(--sl-platinum-100, #f6f7fb) 70%,
+            var(--sl-accent-400, #79ccef) 30%);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
 .ctaWrap {
     position: relative;
     display: inline-grid;
     place-items: center;
-    padding: clamp(1px, .4vw, 4px);
-    /* acolchoamento mínimo */
+    padding: clamp(2px, 0.6vw, 6px);
     border-radius: 999px;
 }
 
-/* Halo suave atrás do botão */
 .halo {
     position: absolute;
-    inset: -14% -18%;
+    inset: -18% -22%;
+    z-index: 0;
     border-radius: 999px;
     pointer-events: none;
-    z-index: 0;
-    filter: blur(9px);
-    opacity: .32;
+    opacity: 0.35;
+    filter: blur(10px);
     background:
         radial-gradient(120% 160% at 60% 40%,
-            color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 24%, transparent) 0%,
+            color-mix(in oklab, var(--sl-accent-500, #2ea7e0) 26%, transparent) 0%,
             transparent 62%),
         radial-gradient(120% 140% at 40% 60%,
-            color-mix(in oklab, var(--sl-gold-400, #C78615) 20%, transparent) 0%,
+            color-mix(in oklab, var(--sl-gold-400, #c78615) 22%, transparent) 0%,
             transparent 70%);
 }
 
-/* Botão acima do halo */
 .ctaWrap> :global(a) {
     position: relative;
     z-index: 1;
 }
 
-/* CTA um pouco reforçado (mas sem aumentar muito) */
 .ctaButton {
-    --pill-fs: clamp(1.02rem, 1vw, 1.12rem);
-    --pill-pad-y: clamp(.54rem, .8vw, .68rem);
-    --pill-pad-x: clamp(1.0rem, 1.3vw, 1.24rem);
-    --pill-min: 46px;
-    --pill-gap: clamp(.48rem, .8vw, .64rem);
-    border-width: 2.2px;
+    --pill-fs: clamp(1.02rem, 1.1vw, 1.16rem);
+    --pill-pad-y: clamp(0.58rem, 0.9vw, 0.72rem);
+    --pill-pad-x: clamp(1.18rem, 1.6vw, 1.5rem);
+    --pill-min: 50px;
+    --pill-gap: clamp(0.52rem, 0.9vw, 0.72rem);
+
+    border-width: 2.5px;
 }
 
-/* ===== Breakpoints ===== */
-
-/* ≥1333px: manter compacto mesmo em desktop largo */
-@media (min-width: 1333px) {
-    .section {
-        --pad-top: clamp(6px, .8vw, 10px);
-        --pad-bot: clamp(2px, .6vw, 6px);
-    }
-
-    .ctaButton {
-        --pill-fs: 1.1rem;
-        --pill-min: 48px;
-    }
-}
-
-/* ≤560px: ultra compacto em mobile */
 @media (max-width: 560px) {
-    .section {
-        --pad-top: 6px;
-        --pad-bot: 6px;
+    .panel {
+        inline-size: 100%;
+        border-radius: 24px;
+    }
+
+    .inner {
+        min-block-size: 0;
+        border-radius: 23px;
+        padding: 1rem 0.9rem;
+    }
+
+    .kicker {
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
     }
 
     .ctaButton {
         --pill-fs: 1rem;
-        --pill-pad-y: .5rem;
-        --pill-pad-x: 1rem;
-        --pill-min: 44px;
+        --pill-pad-y: 0.56rem;
+        --pill-pad-x: 1.08rem;
+        --pill-min: 46px;
     }
 }
 
-/* Acessibilidade */
 @media (prefers-reduced-motion: reduce) {
     .halo {
-        filter: blur(7px);
+        filter: blur(8px);
     }
 }

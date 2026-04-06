@@ -1,111 +1,111 @@
-/* ============================================================================
-   TravelLinkDirectory.module.css — 3↑ / 2↓ alinhadas e cards com MESMAS dimensões
-============================================================================ */
-
-/* ===== Variáveis ===== */
 :root {
-    --ld-row-max: clamp(1100px, 82vw, 1280px);
-    --ld-col-w: clamp(14rem, 20vw, 18rem);
     --ld-pill-h: clamp(42px, 3.2vw, 54px);
-    --ld-gap-x: 1.35rem;
-    --ld-pill-pad-y: .45rem;
+    --ld-gap-x: clamp(1rem, 1.6vw, 1.35rem);
+    --ld-gap-y: clamp(1rem, 2vw, 1.4rem);
+    --ld-pill-pad-y: 0.45rem;
     --ld-pill-pad-x: 1rem;
     --ld-pill-radius: 1.35rem;
+    --ld-col-max: 18rem;
 
-    /* borda em “ouro” (pode ser ajustado por brand via var) */
-    --ld-pill-border: 2px solid var(--ld-gold, var(--sl-gold-400, #c78615));
-
-    /* Slot consistente para bandeiras */
     --flag-h: clamp(16px, 1.6vw, 20px);
     --flag-w: clamp(24px, 2.2vw, 30px);
 }
 
-/* ===== section wrapper ===== */
 .sectionWrap {
     position: relative;
     padding-block: clamp(1.1rem, 2.4vw, 1.8rem);
     color: var(--sl-platinum-100);
 
-    /* Paleta Travel: azul-atlântico + ouro */
-    --ld-accent: #2EA7E0;
-    /* azul-atlântico */
+    --ld-accent: #2ea7e0;
     --ld-gold: var(--sl-gold-400, #c78615);
-    /* ouro “fio condutor” */
 }
 
-/* Limites (linhas amarelas) */
 .inner {
-    max-width: var(--ld-row-max);
-    width: 100%;
-    margin-inline: auto;
-    padding-inline: clamp(.5rem, 2vw, 1rem);
+    inline-size: 100%;
     box-sizing: border-box;
     display: grid;
     gap: clamp(1rem, 2vw, 1.6rem);
 }
 
-/* ==================== MALHA PARTILHADA (TOPO + PARCEIROS) ==================== */
-.columns,
-.partnersWrap {
+.columns {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: var(--ld-gap-x);
+    row-gap: var(--ld-gap-y);
     align-items: start;
-    row-gap: 1.25rem;
 }
 
-/* ==================== COLUNAS DO TOPO ==================== */
-.col {
-    width: 100%;
+.partnersWrap {
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--ld-gap-x);
+    row-gap: var(--ld-gap-y);
+    align-items: start;
+    border-top: 0.5px solid #2ea7e0;
+    padding-top: clamp(1.1rem, 2.4vw, 1.6rem);
+}
+
+.col,
+.partnerBlock {
+    inline-size: 100%;
+    display: grid;
     align-content: start;
     justify-items: stretch;
+    min-inline-size: 0;
 }
 
-/* Conteúdo interno: mesma largura e a ESTICAR os filhos */
-.colList {
+.col {
+    grid-template-rows: auto 1fr;
+}
+
+.partnerBlock {
+    gap: 0.9rem;
+}
+
+.colList,
+.partnerPills {
     display: grid;
     gap: 1.1rem;
-    max-width: var(--ld-col-w);
-    width: 100%;
+    inline-size: min(100%, var(--ld-col-max));
     margin-inline: auto;
     justify-items: stretch;
 }
 
-.colList>* {
-    width: 100%;
+.colList>*,
+.partnerPills>* {
+    inline-size: 100%;
 }
 
-/* Título */
-.sectionTitle {
-    margin: 0 0 clamp(.8rem, 1.2vw, 1rem) 0;
+.sectionTitle,
+.partnerTitle {
+    margin: 0 0 clamp(0.8rem, 1.2vw, 1rem) 0;
+    text-align: center;
     font-weight: 800;
     color: var(--sl-platinum-100);
-    letter-spacing: .2px;
+    letter-spacing: 0.2px;
     line-height: 1.1;
-    font-size: clamp(1.05rem, 1.1rem + .3vw, 1.25rem);
-    text-align: center;
+    font-size: clamp(1.05rem, 1.1rem + 0.3vw, 1.25rem);
 }
 
-/* ==================== PILLS (CARDS) — dimensões comuns ==================== */
+.partnerTitleText {
+    display: inline-block;
+}
+
 .pill {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* centrado por defeito */
-    min-height: var(--ld-pill-h);
-    width: 100%;
+    min-block-size: var(--ld-pill-h);
+    inline-size: 100%;
+    min-inline-size: 0;
     box-sizing: border-box;
-    min-width: 0;
     padding: var(--ld-pill-pad-y) var(--ld-pill-pad-x);
-    border: 2px solid #2EA7E0;
-    /* 👈 aqui */
+    border: 2px solid #2ea7e0;
     border-radius: var(--ld-pill-radius);
     text-decoration: none;
     color: var(--sl-platinum-100);
     font-weight: 700;
-    letter-spacing: .2px;
+    letter-spacing: 0.2px;
     background: rgba(2, 10, 32, 1);
     transition:
         transform 120ms ease,
@@ -115,47 +115,12 @@
         color 120ms ease;
 }
 
-/* Área interna — base */
-.pillContent {
-    position: relative;
-    /* para posicionar a bandeira */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* default: centra o texto */
-    width: 100%;
-    line-height: 1;
-    white-space: nowrap;
-    /* sem quebras */
-    padding-inline: calc(var(--flag-w) + .7rem);
-    /* zona de segurança se houver flag */
-    gap: 0;
-}
-
-/* NOVO: só nas pills de "Destinos Internacionais"
-   — alinha o NOME no MESMO X, à esquerda */
-.intl {
-    justify-content: flex-start;
-    /* texto encostado à esquerda */
-    text-align: left;
-    padding-left: calc(var(--ld-pill-pad-x) + var(--flag-w) + .7rem);
-    padding-right: var(--ld-pill-pad-x);
-}
-
-/* Texto */
-.pillLabel {
-    font-size: clamp(.95rem, .4vw + .9rem, 1.05rem);
-    line-height: 1;
-    white-space: nowrap;
-}
-
-/* Hover/focus/disabled */
 .pill:hover {
-transform: translateY(-1px);
+    transform: translateY(-1px);
     background: linear-gradient(135deg,
             color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
             color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
-    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
+    border-color: color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 .pill:focus-visible {
@@ -163,103 +128,95 @@ transform: translateY(-1px);
     box-shadow: 0 0 0 3px color-mix(in oklab, var(--ld-accent), transparent 55%);
 }
 
-.disabled {
-    opacity: .55;
-    pointer-events: none;
+.pillContent {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 100%;
+    min-inline-size: 0;
+    line-height: 1;
+    white-space: nowrap;
+    padding-inline: calc(var(--flag-w) + 0.7rem);
+    gap: 0;
 }
 
-/* ==================== PARCEIROS (ALINHADOS ABAIXO DA 1ª E 2ª) ==================== */
-.partnersWrap {
-    border-top: 0.5px solid #2EA7E0;
-    padding-top: clamp(1.1rem, 2.4vw, 1.6rem);
-}
-.partnersWrap>.partnerBlock:nth-child(1) {
-    grid-column: 1;
+.intl {
+    justify-content: flex-start;
+    text-align: left;
+    padding-left: calc(var(--ld-pill-pad-x) + var(--flag-w) + 0.7rem);
+    padding-right: var(--ld-pill-pad-x);
 }
 
-.partnersWrap>.partnerBlock:nth-child(2) {
-    grid-column: 2;
+.pillLabel {
+    font-size: clamp(0.95rem, 0.4vw + 0.9rem, 1.05rem);
+    line-height: 1;
+    white-space: nowrap;
 }
 
-.partnerBlock {
-    width: 100%;
-    display: grid;
-    grid-auto-rows: auto;
-    align-content: start;
-    justify-items: center;
-    gap: .9rem;
-    margin: 0;
-    padding: 0;
-}
-
-.partnerPills {
-    display: grid;
-    gap: 1.1rem;
-    max-width: var(--ld-col-w);
-    width: 100%;
-    margin-inline: auto;
-    justify-items: stretch;
-}
-
-.partnerPills>* {
-    width: 100%;
-}
-
-.partnerPill {
-    min-height: var(--ld-pill-h);
-}
-
-.partnerTitle {
-    margin: 0 0 clamp(.8rem, 1.2vw, 1rem) 0;
-    font-weight: 800;
-    letter-spacing: .2px;
-    line-height: 1.1;
-    font-size: clamp(1.05rem, 1.1rem + .3vw, 1.25rem);
-    color: var(--sl-platinum-100);
-    text-align: center;
-}
-
-.partnerTitleText {
-    display: inline-block;
-}
-
-/* ==================== RESPONSIVO ==================== */
-@media (max-width: 1099px) {
-    :root {
-        --ld-col-w: clamp(14rem, 70vw, 22rem);
-    }
-
-    .columns,
-    .partnersWrap {
-        grid-template-columns: minmax(0, 1fr);
-        /* 1 coluna */
-        column-gap: 0;
-    }
-
-    .partnersWrap>.partnerBlock:nth-child(1),
-    .partnersWrap>.partnerBlock:nth-child(2) {
-        grid-column: auto;
-        /* empilha em mobile */
-    }
-}
-
-/* ==================== BANDEIRAS (fixas à esquerda) ==================== */
 .flagWrap {
     position: absolute;
     left: var(--ld-pill-pad-x);
-    /* mesmo X em todos os cards */
     top: 50%;
     transform: translateY(-50%);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: var(--flag-h);
-    width: var(--flag-w);
+    inline-size: var(--flag-w);
+    block-size: var(--flag-h);
     flex: 0 0 var(--flag-w);
 }
 
 .flagSvg {
     display: block;
-    height: 100%;
-    width: auto;
+    inline-size: auto;
+    block-size: 100%;
+}
+
+.partnerPill {
+    min-block-size: var(--ld-pill-h);
+}
+
+.disabled {
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+@media (max-width: 1099px) {
+    .columns {
+        grid-template-columns: 1fr;
+    }
+
+    .partnersWrap {
+        grid-template-columns: 1fr;
+    }
+
+    .colList,
+    .partnerPills {
+        inline-size: min(100%, 22rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .sectionWrap {
+        padding-block: 1rem;
+    }
+
+    .inner {
+        gap: 1.1rem;
+    }
+
+    .colList,
+    .partnerPills {
+        gap: 0.9rem;
+    }
+
+    .pillContent,
+    .pillLabel {
+        white-space: normal;
+    }
+
+    .pill {
+        min-block-size: 46px;
+    }
 }

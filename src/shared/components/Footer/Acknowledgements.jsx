@@ -1,15 +1,11 @@
 import styles from "./Acknowledgements.module.css";
 
-/**
- * Acknowledgements — faixa com logomarcas (PRR, República Portuguesa, UE).
- * Props: { data: { image:{src,alt,...}, link?:{href,target,rel,ariaLabel} } }
- */
 export default function Acknowledgements({ data }) {
   if (!data?.image?.src) return null;
 
   const { image, link } = data;
 
-  const Img = (
+  const imageNode = (
     <img
       className={styles.img}
       src={image.src}
@@ -27,13 +23,13 @@ export default function Acknowledgements({ data }) {
             className={styles.click}
             href={link.href}
             target={link.target || "_blank"}
-            rel={link.rel || "noopener"}
-            aria-label={link.ariaLabel || "Abrir PDF"}
+            rel={link.rel || "noopener noreferrer"}
+            aria-label={link.ariaLabel || "Abrir documento"}
           >
-            {Img}
+            {imageNode}
           </a>
         ) : (
-          Img
+          imageNode
         )}
       </div>
     </section>

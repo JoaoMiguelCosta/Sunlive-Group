@@ -3,10 +3,12 @@ import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx
 import travelBrand from "../../config/index.js";
 
 export default function PartnerHotelsHeadline() {
-  const hl = travelBrand?.sections?.partnerHotels?.headline;
+  const hl = travelBrand?.sections?.partnerHotels?.headline ?? null;
   if (!hl) return null;
 
-  const mainTitle = (hl.eyebrow || "").replace(/\s*Travel\s*$/i, "").trim();
+  const mainTitle = (hl.title || hl.eyebrow || "")
+    .replace(/\s*Travel\s*$/i, "")
+    .trim();
 
   return (
     <div className={styles.wrap}>
@@ -17,6 +19,7 @@ export default function PartnerHotelsHeadline() {
         variant="banded"
         as="h2"
         max="lg"
+        theme="travel"
       />
     </div>
   );

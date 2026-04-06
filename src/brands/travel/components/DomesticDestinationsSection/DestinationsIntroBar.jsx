@@ -3,7 +3,7 @@ import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx
 import travelBrand from "../../config/index.js";
 
 export default function DestinationsIntroBar() {
-  const headline = travelBrand?.sections?.domesticDestinations?.headline;
+  const headline = travelBrand?.sections?.internationalDestinations?.headline;
   if (!headline) return null;
 
   return (
@@ -15,6 +15,7 @@ export default function DestinationsIntroBar() {
         variant="banded"
         as="h2"
         max="lg"
+        theme="travel"
       />
     </div>
   );

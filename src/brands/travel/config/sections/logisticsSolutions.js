@@ -1,23 +1,40 @@
 const logisticsSolutions = {
   id: "logistica",
+
   headline: {
+    eyebrow: "Logística Premium",
     title: "Soluções Integradas de Logística para o Turismo",
     lead:
       "Prestamos soluções completas de logística e transporte para turismo desportivo, cultural e de saúde, incluindo transportes, transfers, alojamentos e refeições. " +
       "Asseguramos conforto, segurança e pontualidade, adaptando o serviço às necessidades de cada cliente para uma experiência única e sem preocupações.",
   },
+
+  backgroundMedia: {
+    imageSrc: null,
+    imageAlt: "",
+  },
+
+  ui: {
+    sectionAriaLabel: "Soluções Integradas de Logística",
+    servicesAriaLabel: "Serviços de logística e apoio à viagem",
+    openDetailsLabel: "Abrir detalhes de",
+    closeDetailsLabel: "Fechar detalhes de",
+    expandLabel: "Expandir",
+    collapseLabel: "Recolher",
+  },
+
   services: [
     {
       key: "transfers-airport",
       iconKey: "plane",
       title: "Transfers Aeroporto",
       summary:
-        "Serviço de transporte direto de/para aeroportos com monitorização de voos e pontualidade garantida.",
+        "Serviço direto de e para aeroportos com monitorização de voos, planeamento antecipado e pontualidade assegurada.",
       includesLabel: "Inclui:",
       items: [
-        "Motoristas Profissionais",
+        "Motoristas profissionais",
         "Monitorização de voos",
-        "Veículos Premium/Standard",
+        "Veículos premium ou standard",
         "Serviço 24/7",
       ],
     },
@@ -26,7 +43,7 @@ const logisticsSolutions = {
       iconKey: "bus",
       title: "Transporte para Equipas",
       summary:
-        "Viaturas especializadas para equipas desportivas com espaço para equipamentos e conforto máximo.",
+        "Viaturas preparadas para equipas desportivas, com espaço para equipamentos, conforto elevado e gestão logística eficiente.",
       includesLabel: "Inclui:",
       items: [
         "Autocarros modernos",
@@ -40,13 +57,13 @@ const logisticsSolutions = {
       iconKey: "pin",
       title: "Alojamentos",
       summary:
-        "Opções de estadia cuidadosamente selecionadas para garantir conforto, localização e uma experiência completa.",
+        "Opções de estadia cuidadosamente selecionadas para garantir conforto, localização estratégica e uma experiência completa.",
       includesLabel: "Inclui:",
       items: [
         "Hotéis parceiros selecionados",
-        "Localizações centrais/tranquilas",
+        "Localizações centrais ou tranquilas",
         "Spa, piscina e vistas únicas",
-        "Para grupos, famílias ou individuais",
+        "Soluções para grupos, famílias ou individuais",
       ],
     },
     {
@@ -54,13 +71,13 @@ const logisticsSolutions = {
       iconKey: "tour-bus",
       title: "Tours Turísticos",
       summary:
-        "Experiências culturais e turísticas personalizadas com guias especializados e roteiros únicos.",
+        "Experiências culturais e turísticas personalizadas com guias especializados, roteiros flexíveis e acompanhamento dedicado.",
       includesLabel: "Inclui:",
       items: [
-        "Guias",
-        "Roteiros Personalizados",
-        "Grupos",
-        "Experiências Autênticas",
+        "Guias especializados",
+        "Roteiros personalizados",
+        "Opções para grupos",
+        "Experiências autênticas",
       ],
     },
     {
@@ -68,7 +85,7 @@ const logisticsSolutions = {
       iconKey: "package",
       title: "Pacotes Completos",
       summary:
-        "Soluções integradas para atletas e acompanhantes incluindo transporte, alojamento e atividades.",
+        "Soluções integradas para atletas e acompanhantes que combinam transporte, alojamento e atividades numa única operação.",
       includesLabel: "Inclui:",
       items: [
         "Tudo incluído",
@@ -78,6 +95,7 @@ const logisticsSolutions = {
       ],
     },
   ],
+
   cta: {
     label: "Contactar",
     href: "#contactar",

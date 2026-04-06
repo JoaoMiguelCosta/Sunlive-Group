@@ -5,7 +5,7 @@ import ContactCTA from "./ContactCTA.jsx";
 import travelBrand from "../../config/index.js";
 
 export default function DomesticDestinationsSection({ className = "" }) {
-  const cfg = travelBrand?.sections?.domesticDestinations;
+  const cfg = travelBrand?.sections?.domesticDestinations ?? null;
   if (!cfg) return null;
 
   const { id = "destinos-nacionais" } = cfg;

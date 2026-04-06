@@ -7,27 +7,28 @@ import {
   PhoneIcon,
 } from "../../ui/icons/";
 
-function escapeRegExp(s = "") {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+function escapeRegExp(value = "") {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function withBrandEmph(text, brandName) {
   if (!text || !brandName) return text;
-  const rx = new RegExp(`(${escapeRegExp(brandName)})`);
-  const parts = String(text).split(rx);
+
+  const regex = new RegExp(`(${escapeRegExp(brandName)})`);
+  const parts = String(text).split(regex);
   let highlighted = false;
 
-  return parts.map((seg, i) => {
-    if (!highlighted && seg === brandName) {
+  return parts.map((segment, index) => {
+    if (!highlighted && segment === brandName) {
       highlighted = true;
       return (
-        <span key={`b-${i}`} className={styles.brandEmph}>
-          {seg}
+        <span key={`brand-${index}`} className={styles.brandEmph}>
+          {segment}
         </span>
       );
     }
 
-    return <span key={i}>{seg}</span>;
+    return <span key={index}>{segment}</span>;
   });
 }
 
@@ -35,13 +36,19 @@ export default function InfoHeader({ data }) {
   if (!data) return null;
 
   const { brand, location, contacts, socials, options } = data;
+
   const brandName = brand?.title || "Sunlive Group";
   const BrandIcon = brand?.Icon || GlobeIcon;
 
-  const aboutParts = (brand?.about || "").split("\n").filter(Boolean);
+  const aboutParts = String(brand?.about || "")
+    .split("\n")
+    .map((part) => part.trim())
+    .filter(Boolean);
+
   const keepRawFirst = options?.keepOriginalAboutFirstLine === true;
+
   const customIntro =
-    typeof brand?.aboutIntro === "string" && brand.aboutIntro.trim().length
+    typeof brand?.aboutIntro === "string" && brand.aboutIntro.trim().length > 0
       ? brand.aboutIntro.trim()
       : null;
 
@@ -68,6 +75,11 @@ export default function InfoHeader({ data }) {
     phoneItems.push(...contacts.extraPhones);
   }
 
+  const socialItems = Array.isArray(socials?.items) ? socials.items : [];
+  const addressLines = Array.isArray(location?.addressLines)
+    ? location.addressLines
+    : [];
+
   return (
     <section className={styles.strip} aria-label="Footer — Company Info">
       <div className={styles.inner}>
@@ -87,13 +99,13 @@ export default function InfoHeader({ data }) {
             {aboutParts.length === 0 ? (
               <p>{firstNode}</p>
             ) : (
-              aboutParts.map((p, i) => (
-                <p key={i}>
-                  {i === 0
+              aboutParts.map((paragraph, index) => (
+                <p key={index}>
+                  {index === 0
                     ? keepRawFirst
-                      ? withBrandEmph(p, brandName)
+                      ? withBrandEmph(paragraph, brandName)
                       : firstNode
-                    : p}
+                    : paragraph}
                 </p>
               ))
             )}
@@ -110,8 +122,8 @@ export default function InfoHeader({ data }) {
 
           <div className={styles.contentBlock}>
             <address className={styles.address}>
-              {(location?.addressLines || []).map((line, i) => (
-                <div key={i}>{line}</div>
+              {addressLines.map((line, index) => (
+                <div key={index}>{line}</div>
               ))}
             </address>
 
@@ -120,9 +132,9 @@ export default function InfoHeader({ data }) {
                 className={styles.subtleLink}
                 href={location.mapHref}
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
               >
-                Open on Maps →
+                Ver no mapa →
               </a>
             ) : null}
           </div>
@@ -141,6 +153,7 @@ export default function InfoHeader({ data }) {
               <span className={styles.cIcon}>
                 <MailIcon aria-hidden="true" />
               </span>
+
               {contacts?.email?.href ? (
                 <a
                   href={contacts.email.href}
@@ -155,11 +168,12 @@ export default function InfoHeader({ data }) {
             </div>
 
             {phoneItems.length > 0 ? (
-              phoneItems.map((phone, idx) => (
-                <div className={styles.contactRow} key={phone?.href || idx}>
+              phoneItems.map((phone, index) => (
+                <div className={styles.contactRow} key={phone?.href || index}>
                   <span className={styles.cIcon}>
                     <PhoneIcon aria-hidden="true" />
                   </span>
+
                   {phone?.href ? (
                     <a
                       href={phone.href}
@@ -193,14 +207,14 @@ export default function InfoHeader({ data }) {
           </h3>
 
           <div className={styles.socials}>
-            {(socials?.items || []).map(({ key, label, href, Icon }, i) => (
+            {socialItems.map(({ key, label, href, Icon }, index) => (
               <a
-                key={key || i}
+                key={key || index}
                 href={href}
                 className={styles.socialBtn}
                 aria-label={label}
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
               >
                 {Icon ? (
                   <Icon className={styles.sIcon} />

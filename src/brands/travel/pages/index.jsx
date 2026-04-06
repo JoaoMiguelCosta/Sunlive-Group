@@ -24,7 +24,7 @@ export default function TravelPage() {
   return (
     <div className={styles.pageWrap} data-brand="travel">
       <main className={styles.inner} aria-label="Sunlive Travel — Home">
-        <div className={styles.sections}>
+        <div className={styles.contentFlow}>
           <TravelHeaderNav />
           <LogisticsSolutionsSection />
           <DomesticDestinationsSection />

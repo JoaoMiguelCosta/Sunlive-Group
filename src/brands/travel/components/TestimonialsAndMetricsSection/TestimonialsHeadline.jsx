@@ -15,6 +15,7 @@ export default function TestimonialsHeadline() {
         variant="banded"
         as="h2"
         max="lg"
+        theme="travel"
       />
     </div>
   );

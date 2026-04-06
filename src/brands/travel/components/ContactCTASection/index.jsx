@@ -1,4 +1,3 @@
-// src/brands/travel/components/ContactCTASection/index.jsx
 import styles from "./ContactCTASection.module.css";
 import travelBrand from "../../config/index.js";
 
@@ -7,7 +6,7 @@ import QuoteRequestChecklist from "./QuoteRequestChecklist.jsx";
 import ContactChannels from "./ContactChannels.jsx";
 
 export default function ContactCTASection() {
-  const sectionCfg = travelBrand?.sections?.contactCTA;
+  const sectionCfg = travelBrand?.sections?.contactCTA ?? null;
   if (!sectionCfg) return null;
 
   const hasChecklist =
@@ -24,22 +23,22 @@ export default function ContactCTASection() {
       className={styles.section}
       aria-labelledby="contactar-heading"
     >
-      <div className={styles.container}>
+      <div className={styles.inner}>
         <ContactCTAHeadline />
 
-        {hasChecklist && (
+        {hasChecklist ? (
           <div className={styles.grid}>
             <div className={styles.col}>
               <QuoteRequestChecklist />
             </div>
           </div>
-        )}
+        ) : null}
 
-        {hasChannels && (
+        {hasChannels ? (
           <div className={styles.callout}>
             <ContactChannels />
           </div>
-        )}
+        ) : null}
       </div>
     </section>
   );

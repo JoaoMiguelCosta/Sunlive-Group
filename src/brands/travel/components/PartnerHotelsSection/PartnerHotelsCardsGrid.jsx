@@ -6,29 +6,38 @@ export default function PartnerHotelsCardsGrid() {
   const hotels = travelBrand?.sections?.partnerHotels?.hotels ?? [];
   if (!Array.isArray(hotels) || hotels.length === 0) return null;
 
+  const validHotels = hotels.filter((hotel) => hotel?.picture?.src);
+
+  if (validHotels.length === 0) return null;
+
   return (
-    <section
+    <div
       className={styles.container}
       aria-label="Hotéis Parceiros Sunlive Travel"
     >
       <div className={styles.grid} role="list">
-        {hotels.map((h) => {
-          const imageSrc = h?.picture?.src;
-          const imageAlt = h?.picture?.alt || h?.name || "Hotel parceiro";
-          if (!imageSrc) return null;
+        {validHotels.map((hotel, index) => {
+          const imageSrc = hotel.picture.src;
+          const imageAlt =
+            hotel?.picture?.alt ?? hotel?.name ?? "Hotel parceiro";
+          const itemKey = hotel?.key ?? `${hotel?.name ?? "hotel"}-${index}`;
 
           return (
-            <div role="listitem" key={h.key} className={styles.item}>
+            <div role="listitem" key={itemKey} className={styles.item}>
               <DestinationCard
                 variant="hotel"
-                city={h.name}
-                badge={h.badge}
+                city={hotel?.name}
+                badge={hotel?.badge}
                 imageSrc={imageSrc}
                 imageAlt={imageAlt}
-                summary={h.summary}
+                summary={hotel?.summary}
                 cta={
-                  h.href
-                    ? { label: "Saiba Mais", href: h.href, external: true }
+                  hotel?.href
+                    ? {
+                        label: "Saiba Mais",
+                        href: hotel.href,
+                        external: true,
+                      }
                     : undefined
                 }
               />
@@ -36,6 +45,6 @@ export default function PartnerHotelsCardsGrid() {
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }

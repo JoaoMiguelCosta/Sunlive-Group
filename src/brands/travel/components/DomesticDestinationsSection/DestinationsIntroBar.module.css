@@ -1,14 +1,11 @@
 .wrap {
   position: relative;
-  width: 100%;
   isolation: isolate;
+  inline-size: 100%;
+  margin-block-end: clamp(12px, 1.6vw, 16px);
 
-  /* usa exatamente a mesma largura da página */
-  --content-w-effective: var(--content-w-effective);
-  /* herda tal-qual */
-  --content-w: var(--content-w-effective);
-  --band-w: var(--content-w-effective);
-
-  --headline-mt: clamp(6px, .8vw, 10px);
+  --hb-consume-inset: 0;
+  --hb-line-inset: 0;
+  --headline-mt: clamp(6px, 0.8vw, 10px);
   --headline-mb: clamp(6px, 1vw, 10px);
 }
