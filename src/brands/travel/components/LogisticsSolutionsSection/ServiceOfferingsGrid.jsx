@@ -1,26 +1,22 @@
 import { useMemo } from "react";
 
 import styles from "./ServiceOfferingsGrid.module.css";
-import ServiceCard from "../../shared/ui/ServiceCard/index.jsx";
-import travelBrand, { resolveTravelIcon } from "../../config/index.js";
-import useAccordion from "../../../../shared/hooks/useAccordion";
+import LogisticsServiceCard from "./LogisticsServiceCard.jsx";
+import { resolveTravelIcon } from "../../config/index.js";
+import useAccordion from "../../../../shared/hooks/useAccordion.js";
 
 export default function ServiceOfferingsGrid({
-  services: servicesOverride,
-  icons: iconsOverride,
+  services = [],
+  icons = {},
+  ui = {},
   allowMultiple = false,
 }) {
-  const section = travelBrand?.sections?.logisticsSolutions ?? null;
-  const servicesFromBrand = section?.services ?? [];
-  const iconsFromBrand = travelBrand?.icons ?? {};
   const servicesAriaLabel =
-    section?.ui?.servicesAriaLabel ?? "Serviços de Logística";
-
-  const services = Array.isArray(servicesOverride)
-    ? servicesOverride
-    : servicesFromBrand;
-
-  const icons = iconsOverride || iconsFromBrand;
+    ui?.servicesAriaLabel ?? "Serviços de logística e apoio à viagem";
+  const openLabel = ui?.expandLabel ?? "Ver detalhes";
+  const closeLabel = ui?.collapseLabel ?? "Recolher";
+  const openDetailsLabel = ui?.openDetailsLabel ?? "Abrir detalhes de";
+  const closeDetailsLabel = ui?.closeDetailsLabel ?? "Fechar detalhes de";
 
   const keyedServices = useMemo(() => {
     if (!Array.isArray(services)) return [];
@@ -52,16 +48,21 @@ export default function ServiceOfferingsGrid({
               data-key={service.key}
               data-idx={index}
             >
-              <ServiceCard
+              <LogisticsServiceCard
                 id={service.key}
-                interactive
-                isOpen={open}
-                onToggle={() => toggle(service.key)}
                 icon={Icon}
+                tag={service.tag}
                 title={service.title}
                 summary={service.summary}
                 items={service.items}
                 includesLabel={service.includesLabel || "Inclui:"}
+                interactive
+                isOpen={open}
+                onToggle={() => toggle(service.key)}
+                openLabel={openLabel}
+                closeLabel={closeLabel}
+                openDetailsLabel={openDetailsLabel}
+                closeDetailsLabel={closeDetailsLabel}
               />
             </div>
           );

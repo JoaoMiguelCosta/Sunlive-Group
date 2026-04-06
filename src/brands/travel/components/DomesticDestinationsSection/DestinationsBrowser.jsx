@@ -1,94 +1,112 @@
+import { useMemo, useState } from "react";
 import styles from "./DestinationsBrowser.module.css";
 import DestinationCard from "../../shared/ui/DestinationCard/index.jsx";
-import travelBrand from "../../config/index.js";
 
-import { useTabsFilter } from "../../shared/hooks/useTabsFilter.js";
-import { normalizeDestinations } from "../../../../shared/utils/normalizeDestinations.js";
+function normalizeTabs(tabs = []) {
+  if (!Array.isArray(tabs)) return [];
 
-const MAIN_KEYS = new Set(["aveiro", "porto", "lisboa"]);
-const OTHER_KEYS = new Set(["coimbra", "sintra", "obidos"]);
+  return tabs
+    .filter((tab) => tab?.key && tab?.label)
+    .map((tab) => ({
+      key: String(tab.key),
+      label: String(tab.label),
+    }));
+}
 
-const CATEGORIES = [
-  {
-    key: "principais",
-    label: "Principais",
-    predicate: (destination) => MAIN_KEYS.has(destination.key),
-  },
-  {
-    key: "outros",
-    label: "Outros",
-    predicate: (destination) => OTHER_KEYS.has(destination.key),
-  },
-  {
-    key: "todos",
-    label: "Todos",
-    predicate: () => true,
-  },
-];
+function normalizeDestinations(destinations = []) {
+  if (!Array.isArray(destinations)) return [];
 
-export default function DestinationsBrowser() {
-  const rawDestinations =
-    travelBrand?.sections?.domesticDestinations?.destinations ?? [];
+  return destinations
+    .filter((item) => item?.city)
+    .map((item, index) => ({
+      ...item,
+      key: item?.key || `destination-${index}`,
+    }));
+}
 
-  const data = normalizeDestinations(rawDestinations);
-  const { tab, setTab, filtered } = useTabsFilter(
-    data,
-    CATEGORIES,
-    "principais",
+function resolveVisibleDestinations(destinations, activeTab) {
+  if (activeTab === "todos") return destinations;
+  if (activeTab === "principais") return destinations.slice(0, 3);
+  if (activeTab === "outros") return destinations.slice(3);
+  return destinations;
+}
+
+export default function DestinationsBrowser({
+  browser = {},
+  destinations = [],
+}) {
+  const tabs = useMemo(() => normalizeTabs(browser?.tabs), [browser?.tabs]);
+  const safeDestinations = useMemo(
+    () => normalizeDestinations(destinations),
+    [destinations],
   );
 
-  if (!Array.isArray(data) || data.length === 0) return null;
+  const defaultTab = tabs[0]?.key ?? "todos";
+  const [activeTab, setActiveTab] = useState(defaultTab);
+
+  const visibleDestinations = useMemo(
+    () => resolveVisibleDestinations(safeDestinations, activeTab),
+    [safeDestinations, activeTab],
+  );
+
+  if (safeDestinations.length === 0) return null;
+
+  const browserAriaLabel = browser?.ariaLabel ?? "Explorar destinos nacionais";
+  const filtersAriaLabel =
+    browser?.filtersAriaLabel ?? "Filtrar destinos por grupo";
+  const resultsLabel = browser?.resultsLabel ?? "destinos disponíveis";
+  const kicker = browser?.kicker ?? "Exploração de destinos";
+  const title =
+    browser?.title ?? "Selecione um grupo para filtrar os destinos disponíveis";
 
   return (
-    <section className={styles.wrapper} aria-label="Explorar destinos">
-      <div className={styles.controls}>
-        <div
-          className={styles.filters}
-          role="tablist"
-          aria-label="Filtrar por grupo"
-        >
-          {CATEGORIES.map((category) => {
-            const isActive = tab === category.key;
+    <div className={styles.wrapper} role="region" aria-label={browserAriaLabel}>
+      <div className={styles.topbar}>
+        <div className={styles.topbarInner}>
+          <div className={styles.topbarCopy}>
+            <p className={styles.kicker}>{kicker}</p>
+            <p className={styles.topbarTitle}>{title}</p>
+          </div>
 
-            return (
-              <button
-                key={category.key}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                className={[styles.pill, isActive ? styles.pillActive : ""]
-                  .filter(Boolean)
-                  .join(" ")}
-                onClick={() => setTab(category.key)}
-              >
-                {category.label}
-              </button>
-            );
-          })}
+          <p className={styles.resultsBadge}>
+            <strong>{visibleDestinations.length}</strong>
+            <span>{resultsLabel}</span>
+          </p>
         </div>
+
+        {tabs.length > 0 ? (
+          <div
+            className={styles.filters}
+            role="tablist"
+            aria-label={filtersAriaLabel}
+          >
+            {tabs.map((tab) => {
+              const isActive = tab.key === activeTab;
+
+              return (
+                <button
+                  key={tab.key}
+                  type="button"
+                  role="tab"
+                  className={`${styles.pill} ${isActive ? styles.pillActive : ""}`}
+                  aria-selected={isActive}
+                  onClick={() => setActiveTab(tab.key)}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        ) : null}
       </div>
 
-      <div className={styles.grid} role="list">
-        {filtered.map((destination, index) => (
-          <div
-            role="listitem"
-            key={destination.key || `${destination.city}-${index}`}
-            className={styles.item}
-          >
-            <DestinationCard
-              variant="domestic"
-              city={destination.city}
-              badge={destination.badge}
-              imageSrc={destination.imageSrc}
-              imageAlt={destination.imageAlt}
-              summary={destination.summary}
-              duration={destination.duration}
-              highlights={destination.highlights}
-              includes={destination.includes}
-            />
+      <div className={styles.grid} role="list" aria-label={browserAriaLabel}>
+        {visibleDestinations.map((destination) => (
+          <div key={destination.key} role="listitem" className={styles.item}>
+            <DestinationCard destination={destination} variant="domestic" />
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

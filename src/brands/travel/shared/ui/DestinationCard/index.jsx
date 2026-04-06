@@ -1,127 +1,86 @@
 import styles from "./DestinationCard.module.css";
 
-function normalizeList(items) {
-  if (!Array.isArray(items)) return [];
-  return items.map((item) => String(item).trim()).filter(Boolean);
+function createDestinationId(destination) {
+  if (destination?.key) return String(destination.key);
+
+  const city = String(destination?.city ?? "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+
+  return city || "destination";
 }
 
-/**
- * DestinationCard
- * - variant?: "international" | "domestic" | "hotel" | "partner"
- * - flagIcon?: React.FC
- * - cta?: { label: string; href: string; external?: boolean }
- */
-export default function DestinationCard({
-  city,
-  badge,
-  imageSrc,
-  imageAlt,
-  summary,
-  duration,
-  highlights = [],
-  includes = [],
-  flagIcon: FlagIcon,
-  variant,
-  cta,
-}) {
-  if (!city || !imageSrc || !imageAlt) return null;
+export default function DestinationCard({ destination, variant = "default" }) {
+  if (!destination?.city) return null;
 
-  const safeHighlights = normalizeList(highlights);
-  const safeIncludes = normalizeList(includes);
+  const destinationId = createDestinationId(destination);
 
-  const hasSummary = Boolean(summary);
-  const hasDuration = Boolean(duration);
-  const hasIncludes = safeIncludes.length > 0;
-  const hasHighlights = safeHighlights.length > 0;
-  const hasCta = Boolean(cta?.href);
+  const highlights = Array.isArray(destination?.highlights)
+    ? destination.highlights.filter(Boolean)
+    : [];
 
-  const ariaLabel =
-    variant === "partner" ? `Parceiro: ${city}` : `Destino: ${city}`;
+  const pictureSrc = destination?.picture?.src ?? null;
+  const pictureAlt = destination?.picture?.alt ?? destination.city;
 
   return (
     <article
       className={styles.card}
-      aria-label={ariaLabel}
       data-variant={variant}
-      data-has-cta={hasCta || undefined}
+      aria-labelledby={`${destinationId}-title`}
     >
-      <div className={styles.imageWrap}>
-        <img
-          className={styles.image}
-          src={imageSrc}
-          alt={imageAlt}
-          loading="lazy"
-        />
+      {pictureSrc ? (
+        <div className={styles.imageWrap}>
+          <img
+            src={pictureSrc}
+            alt={pictureAlt}
+            className={styles.image}
+            loading="lazy"
+          />
 
-        {badge ? <span className={styles.badge}>{badge}</span> : null}
+          <div className={styles.imageOverlay} aria-hidden="true" />
+
+          {destination?.badge ? (
+            <span className={styles.badge}>{destination.badge}</span>
+          ) : null}
+        </div>
+      ) : null}
+
+      <div className={styles.titleBar}>
+        <h3 id={`${destinationId}-title`} className={styles.title}>
+          {destination.city}
+        </h3>
       </div>
 
-      <div className={styles.titleBar} role="heading" aria-level={3}>
-        {FlagIcon ? (
-          <FlagIcon className={styles.flag} aria-hidden="true" />
+      <div className={styles.content}>
+        {destination?.summary ? (
+          <p className={styles.summary}>{destination.summary}</p>
         ) : null}
 
-        <span className={styles.title}>{city}</span>
-      </div>
-
-      <div className={styles.body}>
-        {hasSummary ? <p className={styles.summary}>{summary}</p> : null}
-
-        {hasDuration ? (
-          <div className={styles.durationRow} aria-label="Duração">
-            <span className={styles.durationIcon} aria-hidden="true" />
-            <span className={styles.durationText}>{duration}</span>
+        {destination?.duration ? (
+          <div className={styles.metaRow}>
+            <span className={styles.metaIcon} aria-hidden="true" />
+            <p className={styles.duration}>{destination.duration}</p>
           </div>
         ) : null}
 
-        {hasIncludes ? (
-          <div className={styles.hlBlock} aria-label="Inclui">
-            <div className={styles.hlHeader}>Inclui:</div>
+        {highlights.length > 0 ? (
+          <div className={styles.highlightsBlock}>
+            <p className={styles.highlightsLabel}>Destaques:</p>
 
-            <ul className={styles.pillList} role="list">
-              {safeIncludes.map((item, index) => (
-                <li
-                  key={`include-${index}`}
-                  className={styles.hlPill}
-                  role="listitem"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-
-        {hasHighlights ? (
-          <div className={styles.hlBlock} aria-label="Destaques">
-            <div className={styles.hlHeader}>Destaques:</div>
-
-            <ul className={styles.pillList} role="list">
-              {safeHighlights.map((item, index) => (
-                <li
-                  key={`highlight-${index}`}
-                  className={styles.hlPill}
-                  role="listitem"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-
-        {hasCta ? (
-          <div className={styles.ctaRow}>
-            <a
-              className={styles.ctaButton}
-              href={cta.href}
-              target={cta.external !== false ? "_blank" : "_self"}
-              rel={cta.external !== false ? "noopener noreferrer" : undefined}
-              aria-label={`${cta.label} – ${city}`}
+            <ul
+              className={styles.highlights}
+              aria-label={`Destaques de ${destination.city}`}
             >
-              {cta.label}
-              <span aria-hidden="true" className={styles.ctaIcon} />
-            </a>
+              {highlights.map((item) => (
+                <li key={item} className={styles.highlight}>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         ) : null}
       </div>

@@ -1,10 +1,7 @@
 /* src/shared/ui/CTAButton/CTAButton.module.css */
 
 /* ===========================================
-   CTAButton — base + variantes (hero/sports/hotel)
-   - Base neutra e segura para uso global
-   - Hero e Sports preservadas
-   - Hotel alinhada com as dimensões do botão "Aproximar"
+   CTAButton — base + variantes
    =========================================== */
 
 .button {
@@ -26,12 +23,10 @@
 
     position: relative;
     isolation: isolate;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--pill-gap);
-
     min-height: var(--pill-min);
     padding: var(--pill-pad-y) var(--pill-pad-x);
     border-radius: 999px;
@@ -60,13 +55,11 @@
         opacity .16s ease;
 }
 
-/* Conteúdo acima dos overlays */
 .button>* {
     position: relative;
     z-index: 2;
 }
 
-/* Overlay dourado (blink) */
 .button::after {
     content: "";
     position: absolute;
@@ -87,7 +80,6 @@
     opacity: 0;
 }
 
-/* Sheen */
 .sheen {
     position: absolute;
     inset: 0;
@@ -109,7 +101,6 @@
     transform: translateX(140%);
 }
 
-/* Hover/focus */
 .button:hover,
 .button:focus-visible {
     transform: translateY(-1px);
@@ -366,7 +357,6 @@
 
 /* =========================================================
    VARIANTE HOTEL
-   - Dimensões alinhadas com o botão "Aproximar"
    ========================================================= */
 
 .button--hotel {
@@ -380,7 +370,6 @@
     --hotel-halo-soft: rgba(230, 200, 147, 0.08);
     --hotel-halo-strong: rgba(199, 134, 21, 0.13);
 
-    /* mesmas dimensões base do botão "Aproximar" */
     --hotel-pill-fs: 0.95rem;
     --hotel-pill-min: 3.25rem;
     --hotel-pad-y: 0.95rem;
@@ -527,10 +516,6 @@
     outline: none;
 }
 
-/* =========================================================
-   HOTEL TONES
-   ========================================================= */
-
 .button--hotel[data-tone="default"] {
     color: #fff3da;
 }
@@ -622,8 +607,219 @@
 }
 
 /* =========================================================
+   VARIANTE TRAVEL
+   ========================================================= */
+
+.button--travel {
+    --travel-border: rgba(198, 152, 56, 0.54);
+    --travel-border-hover: rgba(218, 176, 89, 0.78);
+    --travel-text: #fff6df;
+
+    --travel-halo-min: 0px;
+    --travel-halo-max: clamp(5px, 0.85vw, 12px);
+    --travel-halo-hover: clamp(6px, 0.9vw, 14px);
+    --travel-halo-soft: rgba(199, 134, 21, 0.1);
+    --travel-halo-strong: rgba(46, 167, 224, 0.16);
+
+    --travel-pill-fs: 0.98rem;
+    --travel-pill-min: 3.2rem;
+    --travel-pad-y: 0.82rem;
+    --travel-pad-x: 1.24rem;
+    --travel-gap: clamp(0.48rem, 0.9vw, 0.7rem);
+    --travel-icon-size: 1.02em;
+
+    min-inline-size: 164px;
+    min-height: var(--travel-pill-min);
+    width: auto;
+    max-width: min(100%, 24rem);
+    padding: var(--travel-pad-y) var(--travel-pad-x);
+    gap: var(--travel-gap);
+
+    color: var(--travel-text);
+    font-size: var(--travel-pill-fs);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1;
+
+    border: 1px solid var(--travel-border);
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0.02) 22%,
+            rgba(0, 0, 0, 0.06) 100%),
+        linear-gradient(135deg,
+            rgba(231, 166, 39, 0.98) 0%,
+            rgba(199, 134, 21, 0.98) 52%,
+            rgba(151, 98, 11, 1) 100%);
+
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.16),
+        0 8px 16px rgba(0, 0, 0, 0.22);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.22),
+        inset 0 -1px 0 rgba(104, 66, 8, 0.22),
+        0 0 0 var(--travel-halo-min) var(--travel-halo-soft),
+        0 14px 30px rgba(0, 0, 0, 0.28);
+
+    transform: translateZ(0);
+}
+
+.button--travel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.18) 0%,
+            rgba(255, 248, 235, 0.04) 20%,
+            rgba(255, 255, 255, 0) 52%),
+        radial-gradient(70% 120% at 0% 50%, rgba(46, 167, 224, 0.08), transparent 72%),
+        radial-gradient(44% 100% at 100% 50%, rgba(255, 214, 143, 0.1), transparent 72%);
+    opacity: 1;
+}
+
+.button--travel::after {
+    background:
+        linear-gradient(180deg,
+            rgba(255, 223, 150, 0.18) 0%,
+            rgba(46, 167, 224, 0.12) 100%);
+}
+
+.button--travel .sheen {
+    background:
+        linear-gradient(115deg,
+            transparent 0%,
+            rgba(255, 248, 235, 0.04) 22%,
+            rgba(255, 248, 235, 0.18) 42%,
+            rgba(255, 248, 235, 0.04) 60%,
+            transparent 80%);
+    mix-blend-mode: screen;
+}
+
+.button--travel .icon {
+    inline-size: var(--travel-icon-size);
+    block-size: var(--travel-icon-size);
+    color: currentColor;
+    filter: drop-shadow(0 0 7px rgba(46, 167, 224, 0.14));
+}
+
+.button--travel .label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    font-size: inherit;
+    line-height: 1;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.button--travel[data-on="true"] {
+    animation: travelPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes travelPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            inset 0 1px 0 rgba(255, 248, 235, 0.22),
+            inset 0 -1px 0 rgba(104, 66, 8, 0.22),
+            0 0 0 var(--travel-halo-min) var(--travel-halo-soft),
+            0 14px 30px rgba(0, 0, 0, 0.28);
+    }
+
+    50% {
+        box-shadow:
+            inset 0 1px 0 rgba(255, 248, 235, 0.22),
+            inset 0 -1px 0 rgba(104, 66, 8, 0.22),
+            0 0 0 var(--travel-halo-max) var(--travel-halo-strong),
+            0 16px 34px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.button--travel:hover,
+.button--travel:focus-visible {
+    transform: translateY(-1px);
+    border-color: var(--travel-border-hover);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.24),
+        inset 0 -1px 0 rgba(104, 66, 8, 0.22),
+        0 0 0 var(--travel-halo-hover) var(--travel-halo-strong),
+        0 18px 36px rgba(0, 0, 0, 0.32);
+}
+
+.button--travel:hover::after,
+.button--travel:focus-visible::after {
+    opacity: 1;
+}
+
+.button--travel:active {
+    transform: translateY(0);
+}
+
+.button--travel:focus-visible {
+    outline: none;
+}
+
+.button--travel[data-tone="default"] {
+    color: #fff6df;
+}
+
+.button--travel[data-tone="strong"] {
+    --travel-border: rgba(227, 186, 97, 0.72);
+    --travel-border-hover: rgba(240, 205, 132, 0.9);
+    --travel-halo-soft: rgba(199, 134, 21, 0.14);
+    --travel-halo-strong: rgba(46, 167, 224, 0.2);
+
+    color: #fffaf0;
+    font-weight: 800;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.14) 0%,
+            rgba(255, 248, 235, 0.04) 24%,
+            rgba(0, 0, 0, 0.04) 100%),
+        linear-gradient(135deg,
+            rgba(245, 180, 50, 1) 0%,
+            rgba(215, 144, 20, 1) 50%,
+            rgba(163, 104, 8, 1) 100%);
+}
+
+.button--travel[data-tone="soft"] {
+    --travel-border: rgba(198, 152, 56, 0.34);
+    --travel-border-hover: rgba(218, 176, 89, 0.54);
+    --travel-halo-soft: rgba(199, 134, 21, 0.06);
+    --travel-halo-strong: rgba(46, 167, 224, 0.1);
+
+    color: #fff2d2;
+    font-weight: 700;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.06) 0%,
+            rgba(255, 248, 235, 0.02) 22%,
+            rgba(0, 0, 0, 0.08) 100%),
+        linear-gradient(135deg,
+            rgba(196, 131, 19, 0.96) 0%,
+            rgba(154, 99, 12, 0.98) 100%);
+}
+
+.button--travel[data-tone="soft"]:hover,
+.button--travel[data-tone="soft"]:focus-visible {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.18),
+        inset 0 -1px 0 rgba(104, 66, 8, 0.18),
+        0 12px 26px rgba(0, 0, 0, 0.24);
+}
+
+/* =========================================================
    HOTEL RESPONSIVE
-   - alinhado com o botão "Aproximar"
    ========================================================= */
 
 .button--hotel[data-compact="true"] {
@@ -637,6 +833,21 @@
     min-inline-size: 150px;
 }
 
+/* =========================================================
+   TRAVEL RESPONSIVE
+   ========================================================= */
+
+.button--travel[data-compact="true"] {
+    --travel-pill-fs: 0.93rem;
+    --travel-pill-min: 36px;
+    --travel-pad-y: 0.5rem;
+    --travel-pad-x: 0.86rem;
+    --travel-gap: 0.5rem;
+    --travel-icon-size: 0.96em;
+
+    min-inline-size: 148px;
+}
+
 @media (min-width: 1368px) {
     .button--hotel {
         --hotel-pill-fs: 1.04rem;
@@ -644,6 +855,14 @@
         --hotel-pad-y: 0.62rem;
         --hotel-pad-x: 1.12rem;
         --hotel-icon-size: 1.05em;
+    }
+
+    .button--travel {
+        --travel-pill-fs: 1.04rem;
+        --travel-pill-min: 46px;
+        --travel-pad-y: 0.72rem;
+        --travel-pad-x: 1.18rem;
+        --travel-icon-size: 1.05em;
     }
 }
 
@@ -655,6 +874,14 @@
         --hotel-pad-x: 1rem;
         --hotel-icon-size: 1.05em;
     }
+
+    .button--travel {
+        --travel-pill-fs: 1rem;
+        --travel-pill-min: 44px;
+        --travel-pad-y: 0.68rem;
+        --travel-pad-x: 1.08rem;
+        --travel-icon-size: 1.03em;
+    }
 }
 
 @media (min-width: 910px) and (max-width: 1177px) {
@@ -664,6 +891,14 @@
         --hotel-pad-y: 0.54rem;
         --hotel-pad-x: 0.92rem;
         --hotel-icon-size: 1.05em;
+    }
+
+    .button--travel {
+        --travel-pill-fs: 0.98rem;
+        --travel-pill-min: 42px;
+        --travel-pad-y: 0.64rem;
+        --travel-pad-x: 1rem;
+        --travel-icon-size: 1.02em;
     }
 }
 
@@ -675,6 +910,14 @@
         --hotel-pad-x: 0.86rem;
         --hotel-icon-size: 1.02em;
     }
+
+    .button--travel {
+        --travel-pill-fs: 0.96rem;
+        --travel-pill-min: 40px;
+        --travel-pad-y: 0.6rem;
+        --travel-pad-x: 0.94rem;
+        --travel-icon-size: 1em;
+    }
 }
 
 @media (max-width: 768px) {
@@ -684,6 +927,18 @@
         --hotel-pad-y: 0.95rem;
         --hotel-pad-x: 1.35rem;
         --hotel-icon-size: 1.05em;
+
+        width: 100%;
+        max-width: 22rem;
+        min-inline-size: 0;
+    }
+
+    .button--travel {
+        --travel-pill-fs: 0.95rem;
+        --travel-pill-min: 3.15rem;
+        --travel-pad-y: 0.82rem;
+        --travel-pad-x: 1.1rem;
+        --travel-icon-size: 1em;
 
         width: 100%;
         max-width: 22rem;
@@ -703,7 +958,19 @@
         max-width: 100%;
     }
 
-    .button--hotel .label {
+    .button--travel {
+        --travel-pill-fs: 0.94rem;
+        --travel-pill-min: 3rem;
+        --travel-pad-y: 0.78rem;
+        --travel-pad-x: 1rem;
+        --travel-icon-size: 0.98em;
+
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .button--hotel .label,
+    .button--travel .label {
         white-space: normal;
         text-wrap: balance;
     }
@@ -717,6 +984,16 @@
         --hotel-pad-x: 0.94rem;
         --hotel-gap: 0.5rem;
         --hotel-icon-size: 0.96em;
+        letter-spacing: 0.008em;
+    }
+
+    .button--travel {
+        --travel-pill-fs: 0.92rem;
+        --travel-pill-min: 2.9rem;
+        --travel-pad-y: 0.72rem;
+        --travel-pad-x: 0.9rem;
+        --travel-gap: 0.48rem;
+        --travel-icon-size: 0.94em;
         letter-spacing: 0.008em;
     }
 
@@ -736,6 +1013,15 @@
         --hotel-gap: 0.46rem;
         --hotel-icon-size: 0.9em;
     }
+
+    .button--travel[data-compact="true"] {
+        --travel-pill-fs: 0.88rem;
+        --travel-pill-min: 2.8rem;
+        --travel-pad-y: 0.54rem;
+        --travel-pad-x: 0.78rem;
+        --travel-gap: 0.44rem;
+        --travel-icon-size: 0.88em;
+    }
 }
 
 @media (max-width: 360px) {
@@ -747,16 +1033,30 @@
         --hotel-gap: 0.42rem;
         --hotel-icon-size: 0.88em;
     }
+
+    .button--travel {
+        --travel-pill-fs: 0.9rem;
+        --travel-pill-min: 2.75rem;
+        --travel-pad-y: 0.5rem;
+        --travel-pad-x: 0.72rem;
+        --travel-gap: 0.42rem;
+        --travel-icon-size: 0.86em;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .button--hotel {
+
+    .button--hotel,
+    .button--travel {
         animation: none !important;
     }
 
     .button--hotel:hover,
     .button--hotel:focus-visible,
-    .button--hotel:active {
+    .button--hotel:active,
+    .button--travel:hover,
+    .button--travel:focus-visible,
+    .button--travel:active {
         transform: none;
     }
 }

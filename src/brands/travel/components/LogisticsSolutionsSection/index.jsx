@@ -1,8 +1,9 @@
 import styles from "./LogisticsSolutionsSection.module.css";
-import LogisticsSolutionsHeadline from "./LogisticsSolutionsHeadline.jsx";
-import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
-import ContactCTA from "./ContactCTA.jsx";
+
 import travelBrand from "../../config/index.js";
+import TravelIntroPanel from "../../shared/ui/TravelIntroPanel/TravelIntroPanel.jsx";
+import TravelCTABox from "../../shared/ui/TravelCTABox/TravelCTABox.jsx";
+import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
 
 export default function LogisticsSolutionsSection() {
   const cfg = travelBrand?.sections?.logisticsSolutions ?? null;
@@ -12,8 +13,10 @@ export default function LogisticsSolutionsSection() {
   const sectionLabel =
     cfg?.ui?.sectionAriaLabel ?? "Soluções Integradas de Logística";
 
-  const backgroundImageSrc = cfg?.backgroundMedia?.imageSrc ?? null;
-  const backgroundImageAlt = cfg?.backgroundMedia?.imageAlt ?? "";
+  const headline = cfg?.headline ?? {};
+  const services = Array.isArray(cfg?.services) ? cfg.services : [];
+  const icons = travelBrand?.icons ?? {};
+  const cta = cfg?.cta ?? null;
 
   return (
     <section
@@ -22,20 +25,27 @@ export default function LogisticsSolutionsSection() {
       data-section="logistics-solutions"
       aria-label={sectionLabel}
     >
-      {backgroundImageSrc ? (
-        <div className={styles.mediaLayer} aria-hidden="true">
-          <img
-            src={backgroundImageSrc}
-            alt={backgroundImageAlt}
-            className={styles.backgroundImage}
-          />
-        </div>
-      ) : null}
-
       <div className={styles.inner}>
-        <LogisticsSolutionsHeadline />
-        <ServiceOfferingsGrid />
-        <ContactCTA cta={cfg.cta} />
+        <TravelIntroPanel
+          eyebrow={headline.eyebrow}
+          title={headline.title}
+          lead={headline.lead}
+          supportingText={headline.supportingText}
+          pills={headline.pills}
+          stats={headline.stats}
+          pillsAriaLabel="Pontos-chave"
+          statsAriaLabel="Destaques operacionais"
+          as="header"
+        />
+
+        <ServiceOfferingsGrid
+          services={services}
+          icons={icons}
+          ui={cfg?.ui}
+          allowMultiple={false}
+        />
+
+        <TravelCTABox cta={cta} />
       </div>
     </section>
   );

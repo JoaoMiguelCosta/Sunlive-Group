@@ -24,8 +24,8 @@ import { PhoneIcon, MailIcon } from "../icons";
  *  - blink?: boolean                         // default: true
  *  - compact?: "auto" | true | false         // default: "auto"
  *  - scrollOffset?: number                   // default: 72
- *  - variant?: "default" | "hero" | "sports" | "hotel"
- *  - tone?: "default" | "strong" | "soft"    // útil sobretudo para hotel
+ *  - variant?: "default" | "hero" | "sports" | "hotel" | "travel"
+ *  - tone?: "default" | "strong" | "soft"
  */
 const ICON_MAP = {
   phone: PhoneIcon,
@@ -38,6 +38,7 @@ const VARIANT_CLASS_MAP = {
   hero: "button--hero",
   sports: "button--sports",
   hotel: "button--hotel",
+  travel: "button--travel",
 };
 
 const VALID_TONES = new Set(["default", "strong", "soft"]);

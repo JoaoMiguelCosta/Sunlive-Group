@@ -3,21 +3,14 @@
     isolation: isolate;
     inline-size: 100%;
     color: var(--sl-platinum-100, #f6f7fb);
-    padding-block: clamp(0.25rem, 1.2vw, 0.8rem);
-
-    --top-h: 110px;
-    --title-h: 74px;
-    --summary-fixed: 9.25rem;
-    --includes-min: 12rem;
-    --card-min-h: calc(var(--top-h) + var(--title-h) + var(--summary-fixed) + var(--includes-min) + 18px);
 }
 
 .grid {
     inline-size: 100%;
     display: grid;
     grid-template-columns: 1fr;
+    gap: clamp(12px, 1.5vw, 18px);
     align-items: start;
-    gap: clamp(14px, 1.8vw, 24px);
 }
 
 .cell {
@@ -29,29 +22,22 @@
     inline-size: 100%;
 }
 
-@media (min-width: 700px) and (max-width: 1099px) {
+@media (min-width: 700px) and (max-width: 1023px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .wrap {
-        --top-h: 102px;
-        --title-h: 68px;
-        --summary-fixed: 8.6rem;
-        --includes-min: 12rem;
-    }
-
     .grid>.cell:last-child {
         grid-column: 1 / -1;
-        max-inline-size: min(100%, 420px);
+        max-inline-size: min(100%, 500px);
         justify-self: center;
     }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1024px) {
     .grid {
         grid-template-columns: repeat(6, minmax(0, 1fr));
-        gap: clamp(18px, 1.7vw, 24px);
+        gap: clamp(16px, 1.35vw, 20px);
     }
 
     .cell {
@@ -65,90 +51,10 @@
     .grid>.cell:nth-child(5) {
         grid-column: 4 / span 2;
     }
-
-    .wrap {
-        --top-h: 112px;
-        --title-h: 76px;
-        --summary-fixed: 9.5rem;
-        --includes-min: 12.5rem;
-        --card-min-h: clamp(470px, 38vw, 560px);
-    }
-}
-
-@media (min-width: 1440px) {
-    .wrap {
-        --summary-fixed: 8.4rem;
-        --includes-min: 13rem;
-        --card-min-h: clamp(500px, 34vw, 590px);
-    }
-}
-
-/* Normalizações do ServiceCard */
-.grid :global(.card) {
-    --card-radius: 18px;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    inline-size: 100%;
-    min-block-size: var(--card-min-h) !important;
-    border-radius: var(--card-radius) !important;
-    overflow: hidden !important;
-}
-
-.grid :global(.topBand) {
-    block-size: var(--top-h);
-}
-
-.grid :global(.titleBand) {
-    min-block-size: var(--title-h);
-}
-
-.grid :global(.summaryBlock) {
-    block-size: var(--summary-fixed);
-}
-
-.grid :global(.includesBlock) {
-    min-block-size: var(--includes-min);
-}
-
-.grid :global(.title) {
-    font-size: clamp(1.08rem, 1.25vw, 1.34rem);
-}
-
-.grid :global(.summary) {
-    font-size: clamp(0.98rem, 1.05vw, 1.08rem);
-}
-
-.grid :global(.listItem) {
-    font-size: clamp(0.94rem, 0.98vw, 1.04rem);
 }
 
 @media (max-width: 699px) {
-    .wrap {
-        --top-h: 94px;
-        --title-h: 64px;
-        --summary-fixed: auto;
-        --includes-min: 10.8rem;
-        --card-min-h: auto;
-    }
-
     .grid {
-        gap: 16px;
-    }
-
-    .grid :global(.card) {
-        min-block-size: 0 !important;
-    }
-
-    .grid :global(.summaryBlock) {
-        block-size: auto;
-    }
-}
-
-@media (max-width: 420px) {
-    .wrap {
-        --top-h: 88px;
-        --title-h: 60px;
-        --includes-min: 10.2rem;
+        gap: 14px;
     }
 }
