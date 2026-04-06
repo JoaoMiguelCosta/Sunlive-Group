@@ -435,7 +435,10 @@
 .utilityBar[data-variant="travel-header"] .backLink {
     min-height: clamp(42px, 3vw, 48px);
     padding: 0.52rem 1rem;
-    border-color: rgba(255, 162, 0, 0.72);
+    
+background: linear-gradient(180deg,
+            rgba(24, 39, 65, 0.9),
+            rgba(10, 18, 34, 0.95));
 }
 
 .utilityBar[data-variant="travel-header"] .langItem[aria-current="true"] {
@@ -481,6 +484,7 @@
         min-height: 38px;
         padding: 0.46rem 0.82rem;
         font-size: 0.88rem;
+      
     }
 
     .utilityBar[data-variant="travel-header"] .socialLink,
@@ -523,6 +527,7 @@
 
 .utilityBar[data-variant="logos-header"] .inner {
     border-bottom: 2px solid rgba(246, 192, 92, 0.82);
+    background: color-mix(in oklab, #020a20 82%, var(--ld-accent) 18%);
 }
 
 /* =======================================================
@@ -544,6 +549,7 @@
 
 .utilityBar[data-variant="sports-header"] .backLink {
     border-color: #F6C05C;
+    background: color-mix(in oklab, var(--sl-accent-500, #2EC27E), black 70%);
 }
 
 /* =======================================================

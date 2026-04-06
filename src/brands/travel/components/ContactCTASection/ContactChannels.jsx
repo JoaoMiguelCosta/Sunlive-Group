@@ -5,6 +5,10 @@ export default function ContactChannels() {
   const { sections, icons } = travelBrand;
 
   const channels = sections?.contactCTA?.channels ?? [];
+  const ariaLabel =
+    sections?.contactCTA?.ui?.channelsAriaLabel ??
+    "Canais de contacto Sunlive Travel";
+
   if (!Array.isArray(channels) || channels.length === 0) return null;
 
   const validChannels = channels.filter(
@@ -14,10 +18,13 @@ export default function ContactChannels() {
   if (validChannels.length === 0) return null;
 
   return (
-    <nav className={styles.wrap} aria-label="Canais de contacto">
+    <nav className={styles.wrap} aria-label={ariaLabel}>
       <ul className={styles.list} role="list">
         {validChannels.map(
-          ({ key, iconKey, label, href, ariaLabel }, index) => {
+          (
+            { key, iconKey, label, href, ariaLabel: channelAriaLabel },
+            index,
+          ) => {
             const Icon = resolveTravelIcon(icons, iconKey);
             const isExternal =
               typeof href === "string" && /^https?:\/\//.test(href);
@@ -27,7 +34,7 @@ export default function ContactChannels() {
                 <a
                   className={styles.link}
                   href={href}
-                  aria-label={ariaLabel || label}
+                  aria-label={channelAriaLabel || label}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener noreferrer" : undefined}
                 >

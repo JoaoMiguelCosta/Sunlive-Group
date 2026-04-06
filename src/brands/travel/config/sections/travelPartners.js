@@ -7,33 +7,92 @@ import { TRAVEL_COMPANY } from "../core/company.js";
 
 const travelPartners = {
   id: "parceiros-viagens",
+
   headline: {
-    title: "Parceiros de Viagem Sunlive Travel",
-    lead: "Para garantir uma experiência de viagem completa e de alta qualidade, trabalhamos em parceria com operadores certificados e experientes.",
+    eyebrow: "Parcerias estratégicas",
+    title:
+      "Parceiros de viagem que reforçam a qualidade, alcance e confiança da operação",
+    lead: "Trabalhamos com parceiros selecionados para complementar a nossa oferta com conhecimento local, capacidade técnica e soluções ajustadas a diferentes perfis de viagem.",
+    description:
+      "Estas colaborações permitem-nos construir programas mais completos e consistentes, combinando operação, experiência no destino e uma rede de apoio credível para grupos, equipas e viagens personalizadas.",
+    featuredPills: [
+      "Parcerias certificadas",
+      "Conhecimento local",
+      "Soluções integradas de viagem",
+    ],
+    stats: [
+      {
+        value: "2",
+        label: "parceiros estratégicos",
+      },
+      {
+        value: "Premium",
+        label: "rede de confiança",
+      },
+      {
+        value: "Integrado",
+        label: "apoio complementar",
+      },
+    ],
+    ui: {
+      pillsAriaLabel: "Pontos-chave",
+      statsAriaLabel: "Destaques da secção",
+    },
   },
+
+
+
+  browser: {
+    ariaLabel: "Explorar parceiros de viagem",
+    kicker: "Rede de parceiros",
+    title:
+      "Marcas selecionadas para ampliar a proposta de valor de cada programa",
+    description:
+      "Parceiros alinhados com a visão Sunlive Travel, escolhidos pela credibilidade, complementaridade da oferta e capacidade de acrescentar valor real à experiência final.",
+    resultsLabel: "parceiros disponíveis",
+  },
+
   partners: [
     {
       key: "portugalissimo",
-      name: "Portugalíssimo",
+      city: "Portugalíssimo",
+      badge: "Parceiro local",
       summary:
-        "Especialistas em turismo e imobiliário focados no estilo de vida português.",
+        "Especialistas em turismo e imobiliário, com foco no estilo de vida português e em experiências ligadas ao território.",
       href: "https://www.portugalissimmo.com/",
-      picture: { src: portugalissimoImg, alt: "Logótipo Portugalíssimo" },
+      ctaLabel: "Saiba Mais",
+      picture: {
+        src: portugalissimoImg,
+        alt: "Logótipo Portugalíssimo",
+      },
+      imageFit: "contain",
+      imagePosition: "center",
     },
     {
       key: "vago",
-      name: "Vago Viagens",
+      city: "Vago Viagens",
+      badge: "Agência licenciada",
       summary:
-        "Agência de viagens licenciada especializada em viagens autênticas e personalizadas.",
+        "Agência de viagens especializada em propostas autênticas e personalizadas, com abordagem próxima e conhecimento prático do setor.",
       href: "https://vagoviagens.pt/",
-      picture: { src: vagoImg, alt: "Logótipo Vago Viagens" },
+      ctaLabel: "Saiba Mais",
+      picture: {
+        src: vagoImg,
+        alt: "Logótipo Vago Viagens",
+      },
+      imageFit: "contain",
+      imagePosition: "center",
     },
   ],
-  trustedBanner: {
-    iconKey: "handshake",
-    title: "Colaboração de Confiança",
-    lead: "Estas parcerias estratégicas permitem-nos alargar a nossa oferta com soluções integradas e ajustadas, aliando a excelência da nossa operação logística desportiva ao conhecimento local e à competência técnica dos nossos parceiros certificados.",
+
+  contactPanel: {
+    eyebrow: "Planeamento personalizado",
+    title:
+      "Fale connosco para integrar os parceiros certos no seu programa de viagem",
+    description:
+      "Combinamos operação, alojamento, experiência e rede parceira numa solução coerente, ajustada ao perfil e aos objetivos do grupo.",
   },
+
   cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
 };
 

@@ -1,24 +1,46 @@
-import { makeDefaultCTA } from "/src/shared/config/BrandDefault.js";
-
-import { TRAVEL_COMPANY } from "/src/brands/travel/config/core/company.js";
 import { TRAVEL_CONTACT_CHANNELS } from "/src/brands/travel/config/core/contactChannels.js";
 
 const contactCTA = {
   id: "contactar",
+
   headline: {
-    title: "Pronto para a sua próxima Viagem?",
-    lead: "Contacte-nos diretamente e sem compromisso. Estamos disponíveis para responder o mais rapidamente possível.",
+    eyebrow: "Contacto direto",
+    title: "Fale connosco para desenhar uma viagem à medida do seu grupo",
+    lead: "Partilhe o contexto da viagem e receba uma proposta pensada com critério, rapidez e acompanhamento próximo.",
+    description:
+      "A Sunlive Travel prepara soluções ajustadas ao perfil do grupo, ao itinerário e ao nível de serviço pretendido, com foco em conforto, organização e execução sem falhas.",
   },
+
+  checklistPanel: {
+    eyebrow: "Informação útil",
+    title: "O que nos ajuda a preparar uma proposta mais precisa",
+    description:
+      "Com alguns detalhes essenciais, conseguimos responder com maior rapidez e desenhar uma solução mais ajustada às necessidades da viagem.",
+  },
+
+  channelsPanel: {
+    eyebrow: "Canais disponíveis",
+    title: "Escolha a forma mais conveniente para entrar em contacto",
+    description:
+      "Estamos disponíveis para esclarecer dúvidas, enquadrar o pedido e orientar a melhor solução para o seu grupo.",
+  },
+
   checklist: [
-    { key: "date-time", label: "Data e Hora da Viagem" },
-    { key: "route", label: "Local de Partida e Destino" },
-    { key: "duration", label: "Duração Estimada" },
-    { key: "passengers", label: "Nº de Passageiros" },
-    { key: "service-type", label: "Tipo de Serviços" },
-    { key: "special-needs", label: "Necessidades Especiais" },
+    { key: "date-time", label: "Data e hora da viagem" },
+    { key: "route", label: "Local de partida e destino" },
+    { key: "duration", label: "Duração estimada" },
+    { key: "passengers", label: "Número de passageiros" },
+    { key: "service-type", label: "Tipo de serviço pretendido" },
+    { key: "special-needs", label: "Necessidades especiais" },
   ],
+
   channels: TRAVEL_CONTACT_CHANNELS,
-  cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
+
+  ui: {
+    sectionAriaLabel: "Secção de contacto Sunlive Travel",
+    checklistAriaLabel: "Informação necessária para pedir proposta",
+    channelsAriaLabel: "Canais de contacto Sunlive Travel",
+  },
 };
 
 export default contactCTA;

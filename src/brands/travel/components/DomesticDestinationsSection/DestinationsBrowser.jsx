@@ -58,54 +58,66 @@ export default function DestinationsBrowser({
   const kicker = browser?.kicker ?? "Exploração de destinos";
   const title =
     browser?.title ?? "Selecione um grupo para filtrar os destinos disponíveis";
+  const description =
+    browser?.description ??
+    "Descubra destinos organizados por prioridade para encontrar mais rapidamente as opções mais relevantes para o perfil da viagem.";
 
   return (
     <div className={styles.wrapper} role="region" aria-label={browserAriaLabel}>
-      <div className={styles.topbar}>
-        <div className={styles.topbarInner}>
-          <div className={styles.topbarCopy}>
-            <p className={styles.kicker}>{kicker}</p>
-            <p className={styles.topbarTitle}>{title}</p>
+      <div className={styles.browserShell}>
+        <div className={styles.topbar}>
+          <div className={styles.topbarInner}>
+            <div className={styles.topbarCopy}>
+              <p className={styles.kicker}>{kicker}</p>
+              <p className={styles.topbarTitle}>{title}</p>
+
+              {description ? (
+                <p className={styles.topbarDescription}>{description}</p>
+              ) : null}
+            </div>
+
+            <p className={styles.resultsBadge}>
+              <strong>{visibleDestinations.length}</strong>
+              <span>{resultsLabel}</span>
+            </p>
           </div>
 
-          <p className={styles.resultsBadge}>
-            <strong>{visibleDestinations.length}</strong>
-            <span>{resultsLabel}</span>
-          </p>
+          {tabs.length > 0 ? (
+            <div
+              className={styles.filters}
+              role="tablist"
+              aria-label={filtersAriaLabel}
+            >
+              {tabs.map((tab) => {
+                const isActive = tab.key === activeTab;
+
+                return (
+                  <button
+                    key={tab.key}
+                    type="button"
+                    role="tab"
+                    className={`${styles.pill} ${isActive ? styles.pillActive : ""}`}
+                    aria-selected={isActive}
+                    onClick={() => setActiveTab(tab.key)}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
         </div>
 
-        {tabs.length > 0 ? (
-          <div
-            className={styles.filters}
-            role="tablist"
-            aria-label={filtersAriaLabel}
-          >
-            {tabs.map((tab) => {
-              const isActive = tab.key === activeTab;
-
-              return (
-                <button
-                  key={tab.key}
-                  type="button"
-                  role="tab"
-                  className={`${styles.pill} ${isActive ? styles.pillActive : ""}`}
-                  aria-selected={isActive}
-                  onClick={() => setActiveTab(tab.key)}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
-        ) : null}
-      </div>
-
-      <div className={styles.grid} role="list" aria-label={browserAriaLabel}>
-        {visibleDestinations.map((destination) => (
-          <div key={destination.key} role="listitem" className={styles.item}>
-            <DestinationCard destination={destination} variant="domestic" />
-          </div>
-        ))}
+        <div className={styles.grid} role="list" aria-label={browserAriaLabel}>
+          {visibleDestinations.map((destination) => (
+            <div key={destination.key} role="listitem" className={styles.item}>
+              <DestinationCard
+                destination={destination}
+                variant="international"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

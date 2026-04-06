@@ -13,7 +13,7 @@ const domesticDestinations = {
   id: "destinos-nacionais",
 
   headline: {
-    eyebrow: "Portugal selecionado",
+    eyebrow: "Seleção nacional",
     title: "Destinos Nacionais com curadoria premium e execução consistente",
     lead: "Descubra alguns dos locais mais emblemáticos de Portugal com programas desenhados à medida, ritmo equilibrado e uma experiência cuidada do início ao fim.",
     description:
@@ -47,8 +47,11 @@ const domesticDestinations = {
     ariaLabel: "Explorar destinos nacionais",
     filtersAriaLabel: "Filtrar destinos por grupo",
     resultsLabel: "destinos disponíveis",
-    kicker: "Exploração de destinos",
-    title: "Selecione um grupo para filtrar os destinos disponíveis",
+    kicker: "Exploração de destinos Nacionais",
+    title:
+      "Destinos selecionados para programas com identidade, valor e execução cuidada",
+    description:
+      "Descubra destinos organizados por prioridade para encontrar mais rapidamente as opções mais relevantes para o perfil da viagem.",
     tabs: [
       { key: "todos", label: "Todos" },
       { key: "principais", label: "Principais" },

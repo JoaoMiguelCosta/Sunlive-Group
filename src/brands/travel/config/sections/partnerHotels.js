@@ -1,77 +1,140 @@
+import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
+
 import curiaImg from "../../assets/PartnerHotels/curia.png";
 import pateiraImg from "../../assets/PartnerHotels/pateira.png";
 import estanciaImg from "../../assets/PartnerHotels/estancia.png";
 import goldImg from "../../assets/PartnerHotels/gold.png";
 import grandImg from "../../assets/PartnerHotels/grand.png";
 
+import { TRAVEL_COMPANY } from "../core/company.js";
+
 const partnerHotels = {
   id: "parceiros-hoteis",
+
   headline: {
-    eyebrow: "Hotéis Parceiros Sunlive Travel",
-    title: "Fique com Conforto",
-    lead:
-      "Em parceria com hotéis selecionados, dispomos de experiências de viagem completas incluindo alojamento de alta qualidade, conforto e excelentes localizações.\n\n" +
-      "Combine transporte, tours e alojamento num único pacote personalizado com a Sunlive Travel.",
+    eyebrow: "Alojamento selecionado",
+    title:
+      "Hotéis parceiros com conforto, localização e consistência de serviço",
+    lead: "Trabalhamos com unidades selecionadas para integrar alojamento de qualidade em programas de viagem completos, com maior comodidade e melhor coordenação operacional.",
+    description:
+      "Cada parceiro é escolhido pela localização, capacidade de resposta, conforto e enquadramento com o perfil do grupo, permitindo combinar transporte, estadia e experiência num único plano bem estruturado.",
+    featuredPills: [
+      "Hotéis selecionados",
+      "Conforto com boa localização",
+      "Alojamento integrado na operação",
+    ],
+    stats: [
+      {
+        value: "5",
+        label: "hotéis parceiros",
+      },
+      {
+        value: "Premium",
+        label: "curadoria e conforto",
+      },
+      {
+        value: "Flexível",
+        label: "ajustado ao grupo",
+      },
+    ],
+    ui: {
+      pillsAriaLabel: "Pontos-chave",
+      statsAriaLabel: "Destaques da secção",
+    },
   },
+
+  browser: {
+    ariaLabel: "Explorar hotéis parceiros",
+    kicker: "Seleção de alojamento",
+    title:
+      "Unidades escolhidas para estadias com conforto, contexto e boa execução",
+    description:
+      "Uma seleção pensada para apoiar programas turísticos, grupos e operações com necessidade de alojamento fiável, bem localizado e alinhado com o nível de serviço pretendido.",
+    resultsLabel: "hotéis disponíveis",
+  },
+
+  contactPanel: {
+    eyebrow: "Planeamento personalizado",
+    title:
+      "Fale connosco para integrar o alojamento certo no programa do seu grupo",
+    description:
+      "Ajudamos a combinar hotel, transporte e experiência de viagem numa proposta coesa, ajustada ao número de participantes e ao nível de conforto pretendido.",
+  },
+
   hotels: [
     {
       key: "curia",
-      name: "Hotel Termas da Curia",
+      city: "Hotel Termas da Curia",
       badge: "Curia",
       summary:
-        "Rodeado por natureza: spa, jardins, lago e experiências termais num ambiente relaxante.",
+        "Rodeado por natureza, jardins e ambiente termal, ideal para estadias tranquilas com conforto e enquadramento relaxante.",
       href: "https://www.termasdacuria.com/",
-      picture: { src: curiaImg, alt: "Fachada do Hotel Termas da Curia" },
+      ctaLabel: "Saiba Mais",
+      picture: {
+        src: curiaImg,
+        alt: "Fachada do Hotel Termas da Curia",
+      },
+      imagePosition: "center",
     },
     {
       key: "pateira",
-      name: "Estalagem da Pateira",
+      city: "Estalagem da Pateira",
       badge: "Fermentelos",
       summary:
-        "Junto à Lagoa da Pateira: belas vistas e uma estadia calma em contacto com a natureza.",
+        "Junto à Lagoa da Pateira, oferece vistas amplas e uma estadia calma em contacto direto com a natureza envolvente.",
       href: "https://pateira.com/",
+      ctaLabel: "Saiba Mais",
       picture: {
         src: pateiraImg,
         alt: "Vista para a lagoa e Estalagem da Pateira",
       },
+      imagePosition: "center",
     },
     {
       key: "estancia",
-      name: "Residencial Estância",
+      city: "Residencial Estância",
       badge: "Oliveira do Bairro",
       summary:
-        "Ambiente familiar e tranquilo — simplicidade, conforto e boa localização.",
+        "Uma opção de ambiente familiar e tranquilo, indicada para quem valoriza simplicidade, conforto e boa localização.",
       href: "https://www.facebook.com/residencial.estancia/?locale=pt_PT",
+      ctaLabel: "Saiba Mais",
       picture: {
         src: estanciaImg,
         alt: "Residencial Estância em Oliveira do Bairro",
       },
+      imagePosition: "center",
     },
     {
       key: "gold",
-      name: "In Gold Hotel & Spa",
+      city: "In Gold Hotel & Spa",
       badge: "Águeda",
       summary:
-        "Hotel moderno com spa, piscina e restaurante — ideal para lazer ou negócios.",
+        "Hotel contemporâneo com spa, piscina e restaurante, adequado para estadias de lazer ou contexto profissional.",
       href: "https://www.ingoldhotel.pt/pt/Menu/Home.aspx",
-      picture: { src: goldImg, alt: "In Gold Hotel & Spa em Águeda" },
+      ctaLabel: "Saiba Mais",
+      picture: {
+        src: goldImg,
+        alt: "In Gold Hotel & Spa em Águeda",
+      },
+      imagePosition: "center",
     },
     {
       key: "grand",
-      name: "Grand Hotel de Luso",
+      city: "Grand Hotel de Luso",
       badge: "Luso",
       summary:
-        "Conforto e tradição junto às Termas do Luso, com spa, piscina olímpica e acesso direto às termas.",
+        "Uma unidade de referência junto às Termas do Luso, com tradição, spa e acesso privilegiado a uma experiência de bem-estar.",
       href: "https://www.hoteluso.com/pt/",
-      picture: { src: grandImg, alt: "Grand Hotel de Luso à noite" },
+      ctaLabel: "Saiba Mais",
+      picture: {
+        src: grandImg,
+        alt: "Grand Hotel de Luso à noite",
+      },
+      imagePosition: "center",
     },
   ],
-  cta: {
-    label: "Contactar",
-    href: "#contactar",
-    ariaLabel: "Contactar Sunlive Travel",
-    iconKey: "phone",
-  },
+
+  cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
 };
 
 export default partnerHotels;

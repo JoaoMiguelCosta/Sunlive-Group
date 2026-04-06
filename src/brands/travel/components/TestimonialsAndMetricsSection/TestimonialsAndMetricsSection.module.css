@@ -2,56 +2,74 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
-
-    background: transparent;
     scroll-margin-top: var(--header-offset, 84px);
+    overflow: clip;
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 7% auto auto 50%;
+    inset: 2rem 50% auto;
     translate: -50% 0;
-    inline-size: min(90vw, 1160px);
-    block-size: clamp(170px, 22vw, 290px);
+    inline-size: min(94vw, 1320px);
+    block-size: clamp(240px, 34vw, 460px);
     pointer-events: none;
-    opacity: 0.76;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 20% 28%,
+            color-mix(in oklab, var(--gold-400, #d9a441) 18%, transparent) 0%,
+            transparent 34%),
+        radial-gradient(circle at 82% 30%,
+            color-mix(in oklab, var(--accent-500, #4eb8ff) 16%, transparent) 0%,
+            transparent 30%),
+        radial-gradient(circle at 50% 100%,
+            rgba(255, 191, 71, 0.1) 0%,
+            transparent 56%);
+    filter: blur(48px);
+    opacity: 0.9;
+    z-index: 0;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.015) 0%,
+            rgba(255, 255, 255, 0) 18%,
+            rgba(0, 0, 0, 0) 72%,
+            rgba(0, 0, 0, 0.05) 100%);
 }
 
 .inner {
     position: relative;
     z-index: 1;
-    inline-size: 100%;
-    box-sizing: border-box;
+    inline-size: min(100%, 1360px);
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 2.5vw, 1.6rem);
     display: grid;
-    gap: clamp(1.15rem, 2vw, 1.65rem);
+    gap: clamp(1.25rem, 2.2vw, 1.9rem);
 }
 
-.headerRow,
 .gridBlock,
 .metricsBlock {
     inline-size: 100%;
     min-inline-size: 0;
 }
 
-@media (max-width: 640px) {
-    .section {
-        padding-block: 1.9rem;
-    }
-
+@media (max-width: 768px) {
     .section::before {
         inline-size: 100%;
-        block-size: 190px;
-        inset-block-start: 3%;
+        block-size: 320px;
+        inset-block-start: 1rem;
+        filter: blur(40px);
     }
 
     .inner {
-        gap: 0.95rem;
+        gap: 1.05rem;
+        padding-inline: 0.9rem;
     }
-}
-
-.section:focus,
-.section:focus-visible {
-    outline: 0 !important;
-    box-shadow: none !important;
 }

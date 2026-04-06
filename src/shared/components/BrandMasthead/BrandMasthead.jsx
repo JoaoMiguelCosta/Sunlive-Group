@@ -10,9 +10,9 @@ export default function BrandMasthead({
   if (!src) return null;
 
   return (
-    <section
-      className={`${styles.wrap} ${className}`}
-      aria-label={alt ? `${alt} — Masthead` : "Brand masthead"}
+    <div
+      className={`${styles.wrap} ${className}`.trim()}
+      aria-label={alt ? `${alt} masthead` : "Brand masthead"}
     >
       <div className={styles.inner}>
         <div className={styles.logoBox} style={{ "--logo-ar": logoAr }}>
@@ -25,6 +25,6 @@ export default function BrandMasthead({
           />
         </div>
       </div>
-    </section>
+    </div>
   );
 }

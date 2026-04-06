@@ -1,35 +1,51 @@
 import styles from "./TravelPartnersSection.module.css";
-import TravelPartnersCardsGrid from "./TravelPartnersCardsGrid.jsx";
-import TrustedCollaborationBanner from "./TrustedCollaborationBanner.jsx";
 
 import travelBrand from "../../config/index.js";
+import TravelIntroPanel from "../../shared/ui/TravelIntroPanel/TravelIntroPanel.jsx";
+import TravelCTABox from "../../shared/ui/TravelCTABox/TravelCTABox.jsx";
 
-export default function TravelPartnersSection({ className = "" }) {
+import TravelPartnersCardsGrid from "./TravelPartnersCardsGrid.jsx";
+
+export default function TravelPartnersSection() {
   const cfg = travelBrand?.sections?.travelPartners ?? null;
   if (!cfg) return null;
 
-  const { id = "parceiros-viagens" } = cfg;
+  const sectionId = cfg?.id ?? "parceiros-viagens";
+  const sectionLabel =
+    cfg?.browser?.ariaLabel ?? "Explorar parceiros de viagem";
 
-  const title =
-    cfg?.headline?.title ?? cfg?.title ?? "Parceiros de Viagem Sunlive Travel";
+  const headline = cfg?.headline ?? {};
+  const contactPanel = cfg?.contactPanel ?? null;
+  const cta = cfg?.cta ?? null;
 
-  const subtitle =
-    cfg?.headline?.lead ??
-    cfg?.headline?.subtitle ??
-    cfg?.subtitle ??
-    "Para garantir uma experiência de viagem completa e de alta qualidade, trabalhamos em parceria com operadores certificados e experientes.";
+  const pillsAriaLabel = headline?.ui?.pillsAriaLabel ?? "Pontos-chave";
+  const statsAriaLabel = headline?.ui?.statsAriaLabel ?? "Destaques da secção";
 
   return (
     <section
-      id={id}
-      className={[styles.section, className].filter(Boolean).join(" ")}
-      role="region"
-      aria-label="Parceiros de Viagem"
-      data-theme="prestige-noir"
+      id={sectionId}
+      className={styles.section}
+      data-section="travel-partners"
+      aria-label={sectionLabel}
     >
       <div className={styles.inner}>
-        <TrustedCollaborationBanner title={title} subtitle={subtitle} />
+        <TravelIntroPanel
+          eyebrow={headline.eyebrow}
+          title={headline.title}
+          lead={headline.lead}
+          supportingText={headline.description}
+          pills={headline.featuredPills}
+          stats={headline.stats}
+          pillsAriaLabel={pillsAriaLabel}
+          statsAriaLabel={statsAriaLabel}
+          as="header"
+        />
+
+    
+
         <TravelPartnersCardsGrid />
+
+        <TravelCTABox cta={cta} panel={contactPanel} />
       </div>
     </section>
   );

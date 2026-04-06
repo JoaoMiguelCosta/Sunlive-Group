@@ -1,27 +1,50 @@
 import styles from "./InternationalDestinationsSection.module.css";
-import DestinationsIntroBar from "./DestinationsIntroBar.jsx";
-import DestinationsInternational from "./DestinationsInternational.jsx";
-import ContactCTA from "./ContactCTA.jsx";
-import travelBrand from "../../config/index.js";
 
-export default function InternationalDestinationsSection({ className = "" }) {
+import travelBrand from "../../config/index.js";
+import TravelIntroPanel from "../../shared/ui/TravelIntroPanel/TravelIntroPanel.jsx";
+import TravelCTABox from "../../shared/ui/TravelCTABox/TravelCTABox.jsx";
+import DestinationsInternational from "./DestinationsInternational.jsx";
+
+export default function InternationalDestinationsSection() {
   const cfg = travelBrand?.sections?.internationalDestinations ?? null;
   if (!cfg) return null;
 
-  const { id = "destinos-internacionais" } = cfg;
+  const sectionId = cfg?.id ?? "destinos-internacionais";
+  const sectionLabel =
+    cfg?.grid?.ariaLabel ?? "Explorar destinos internacionais";
+
+  const headline = cfg?.headline ?? {};
+  const grid = cfg?.grid ?? {};
+  const destinations = Array.isArray(cfg?.destinations) ? cfg.destinations : [];
+  const contactPanel = cfg?.contactPanel ?? null;
+  const cta = cfg?.cta ?? null;
+
+  const pillsAriaLabel = headline?.ui?.pillsAriaLabel ?? "Pontos-chave";
+  const statsAriaLabel = headline?.ui?.statsAriaLabel ?? "Destaques da secção";
 
   return (
     <section
-      id={id}
-      className={[styles.section, className].filter(Boolean).join(" ")}
-      role="region"
-      aria-label="Destinos internacionais"
-      data-theme="prestige-noir"
+      id={sectionId}
+      className={styles.section}
+      data-section="international-destinations"
+      aria-label={sectionLabel}
     >
       <div className={styles.inner}>
-        <DestinationsIntroBar />
-        <DestinationsInternational />
-        <ContactCTA cta={cfg.cta} />
+        <TravelIntroPanel
+          eyebrow={headline.eyebrow}
+          title={headline.title}
+          lead={headline.lead}
+          supportingText={headline.description}
+          pills={headline.featuredPills}
+          stats={headline.stats}
+          pillsAriaLabel={pillsAriaLabel}
+          statsAriaLabel={statsAriaLabel}
+          as="header"
+        />
+
+        <DestinationsInternational grid={grid} destinations={destinations} />
+
+        <TravelCTABox cta={cta} panel={contactPanel} />
       </div>
     </section>
   );

@@ -26,11 +26,7 @@ export default function KeyMetricsBar() {
   if (validMetrics.length === 0) return null;
 
   return (
-    <section
-      className={styles.section}
-      aria-labelledby="metrics-heading"
-      role="region"
-    >
+    <div className={styles.root} aria-labelledby="metrics-heading">
       <h2 id="metrics-heading" className={styles.visuallyHidden}>
         Indicadores de desempenho
       </h2>
@@ -45,6 +41,6 @@ export default function KeyMetricsBar() {
           />
         ))}
       </div>
-    </section>
+    </div>
   );
 }

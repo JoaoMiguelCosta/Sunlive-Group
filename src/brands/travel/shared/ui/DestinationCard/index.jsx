@@ -14,7 +14,11 @@ function createDestinationId(destination) {
   return city || "destination";
 }
 
-export default function DestinationCard({ destination, variant = "default" }) {
+export default function DestinationCard({
+  destination,
+  variant = "default",
+  flagIcon: FlagIcon = null,
+}) {
   if (!destination?.city) return null;
 
   const destinationId = createDestinationId(destination);
@@ -25,6 +29,14 @@ export default function DestinationCard({ destination, variant = "default" }) {
 
   const pictureSrc = destination?.picture?.src ?? null;
   const pictureAlt = destination?.picture?.alt ?? destination.city;
+  const imagePosition = destination?.imagePosition ?? "center";
+  const imageFit = destination?.imageFit ?? "cover";
+
+  const ctaLabel = destination?.ctaLabel ?? "Saiba Mais";
+  const ctaHref = destination?.href ?? null;
+  const isExternal =
+    typeof ctaHref === "string" &&
+    (ctaHref.startsWith("http://") || ctaHref.startsWith("https://"));
 
   return (
     <article
@@ -38,6 +50,10 @@ export default function DestinationCard({ destination, variant = "default" }) {
             src={pictureSrc}
             alt={pictureAlt}
             className={styles.image}
+            style={{
+              objectPosition: imagePosition,
+              objectFit: imageFit,
+            }}
             loading="lazy"
           />
 
@@ -50,9 +66,17 @@ export default function DestinationCard({ destination, variant = "default" }) {
       ) : null}
 
       <div className={styles.titleBar}>
-        <h3 id={`${destinationId}-title`} className={styles.title}>
-          {destination.city}
-        </h3>
+        <div className={styles.titleInner}>
+          {FlagIcon && variant !== "hotel" && variant !== "partner" ? (
+            <span className={styles.flagWrap} aria-hidden="true">
+              <FlagIcon className={styles.flagIcon} />
+            </span>
+          ) : null}
+
+          <h3 id={`${destinationId}-title`} className={styles.title}>
+            {destination.city}
+          </h3>
+        </div>
       </div>
 
       <div className={styles.content}>
@@ -60,14 +84,18 @@ export default function DestinationCard({ destination, variant = "default" }) {
           <p className={styles.summary}>{destination.summary}</p>
         ) : null}
 
-        {destination?.duration ? (
+        {variant !== "hotel" &&
+        variant !== "partner" &&
+        destination?.duration ? (
           <div className={styles.metaRow}>
             <span className={styles.metaIcon} aria-hidden="true" />
             <p className={styles.duration}>{destination.duration}</p>
           </div>
         ) : null}
 
-        {highlights.length > 0 ? (
+        {variant !== "hotel" &&
+        variant !== "partner" &&
+        highlights.length > 0 ? (
           <div className={styles.highlightsBlock}>
             <p className={styles.highlightsLabel}>Destaques:</p>
 
@@ -81,6 +109,21 @@ export default function DestinationCard({ destination, variant = "default" }) {
                 </li>
               ))}
             </ul>
+          </div>
+        ) : null}
+
+        {(variant === "hotel" || variant === "partner") && ctaHref ? (
+          <div className={styles.hotelActionRow}>
+            <a
+              href={ctaHref}
+              className={styles.hotelLink}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noreferrer noopener" : undefined}
+              aria-label={`${ctaLabel} sobre ${destination.city}`}
+            >
+              <span>{ctaLabel}</span>
+              <span className={styles.hotelLinkIcon} aria-hidden="true" />
+            </a>
           </div>
         ) : null}
       </div>

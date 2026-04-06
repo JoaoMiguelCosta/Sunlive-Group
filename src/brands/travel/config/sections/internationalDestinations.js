@@ -10,78 +10,138 @@ import { TRAVEL_COMPANY } from "../core/company.js";
 
 const internationalDestinations = {
   id: "destinos-internacionais",
+
   headline: {
-    title: "Destinos Internacionais",
-    lead: "Descubra novas experiências além-fronteiras com os nossos serviços personalizados de transporte e logística.",
+    eyebrow: "Seleção internacional",
+    title:
+      "Destinos Internacionais com curadoria premium e operação personalizada",
+    lead: "Expandimos o programa da sua viagem com destinos internacionais escolhidos pela relevância, impacto visual e adequação ao perfil do grupo.",
+    description:
+      "Cada proposta é desenhada com foco em conforto, contexto cultural, fluidez logística e experiências bem estruturadas, para que a viagem internacional mantenha o mesmo nível de execução premium do início ao fim.",
+    featuredPills: [
+      "Destinos além-fronteiras",
+      "Logística ajustada ao grupo",
+      "Experiência premium no destino",
+    ],
+    stats: [
+      {
+        value: "5",
+        label: "destinos internacionais",
+      },
+      {
+        value: "Premium",
+        label: "curadoria e execução",
+      },
+      {
+        value: "Tailor-made",
+        label: "programas ajustados",
+      },
+    ],
+    ui: {
+      pillsAriaLabel: "Pontos-chave da secção",
+      statsAriaLabel: "Destaques da secção internacional",
+    },
   },
+
+  grid: {
+    ariaLabel: "Lista de destinos internacionais",
+    kicker: "Exploração de Destinos Internacionais",
+    title:
+      "Destinos pensados para grupos que procuram escala, diferenciação e experiências memoráveis",
+    description:
+      "Selecionámos opções com forte valor turístico, cultural e visual, adequadas a programas personalizados com acompanhamento e logística dedicada.",
+  },
+
+  contactPanel: {
+    eyebrow: "Planeamento personalizado",
+    title:
+      "Fale connosco para desenhar a experiência internacional certa para o seu grupo",
+    description:
+      "Ajustamos destino, duração, ritmo da viagem e apoio logístico a cada perfil, com acompanhamento próximo e proposta feita à medida.",
+  },
+
   destinations: [
     {
       key: "malta",
-      variant: "international",
       city: "Malta",
       badge: "Malta",
-      badgeIcon: "pin",
-      ratio: "4/3",
-      flagKey: "malta",
       summary:
-        "Uma ilha encantadora no Mediterrâneo, com praias deslumbrantes, vilas históricas e clima agradável o ano todo.",
-      picture: { src: maltaImg, alt: "Vista de Valeta, Malta" },
+        "Uma ilha encantadora no Mediterrâneo, com praias deslumbrantes, vilas históricas e clima agradável ao longo do ano.",
+      duration: "Programa flexível",
+      highlights: ["Valeta", "Costa mediterrânica", "Centros históricos"],
+      picture: {
+        src: maltaImg,
+        alt: "Vista de Valeta, Malta",
+      },
+      flagKey: "malta",
+      imagePosition: "center",
     },
     {
       key: "qatar",
-      variant: "international",
       city: "Catar",
       badge: "Catar",
-      badgeIcon: "pin",
-      ratio: "4/3",
-      flagKey: "qatar",
       summary:
-        "Combina modernidade e tradição no coração do Golfo. Ideal para quem busca cultura e experiências únicas no deserto.",
-      picture: { src: qatarImg, alt: "Skyline de Doha, Catar" },
+        "Combina modernidade e tradição no coração do Golfo, ideal para grupos que procuram cultura, arquitetura e experiências distintas.",
+      duration: "Programa flexível",
+      highlights: ["Doha", "Skyline", "Cultura do Golfo"],
+      picture: {
+        src: qatarImg,
+        alt: "Skyline de Doha, Catar",
+      },
+      flagKey: "qatar",
+      imagePosition: "center",
     },
     {
       key: "saudi-arabia",
-      variant: "international",
       city: "Arábia Saudita",
       badge: "Arábia Saudita",
-      badgeIcon: "pin",
-      ratio: "4/3",
-      flagKey: "saudiArabia",
       summary:
-        "Tradição e modernidade no berço do Islão, com paisagens desérticas, cidades futuristas e rica herança cultural.",
+        "Um destino de grande escala que cruza tradição e modernidade com cidades icónicas, património e paisagens desérticas.",
+      duration: "Programa flexível",
+      highlights: [
+        "Arquitetura marcante",
+        "Herança cultural",
+        "Experiência diferenciadora",
+      ],
       picture: {
         src: saudiImg,
         alt: "Arquitetura e arranha-céus na Arábia Saudita",
       },
+      flagKey: "saudiArabia",
+      imagePosition: "center",
     },
     {
       key: "kuwait",
-      variant: "international",
       city: "Kuwait",
       badge: "Kuwait",
-      badgeIcon: "pin",
-      ratio: "4/3",
-      flagKey: "kuwait",
       summary:
-        "Forte identidade cultural, museus, mercados tradicionais e vistas para o Golfo Pérsico.",
-      picture: { src: kuwaitImg, alt: "Skyline noturno de Kuwait City" },
+        "Destino com forte identidade regional, mercados tradicionais, zonas urbanas modernas e proximidade ao Golfo Pérsico.",
+      duration: "Programa flexível",
+      highlights: ["Museus", "Mercados tradicionais", "Vista urbana"],
+      picture: {
+        src: kuwaitImg,
+        alt: "Skyline noturno de Kuwait City",
+      },
+      flagKey: "kuwait",
+      imagePosition: "center",
     },
     {
       key: "brazil",
-      variant: "international",
       city: "Brasil",
       badge: "Brasil",
-      badgeIcon: "pin",
-      ratio: "4/3",
-      flagKey: "brazil",
       summary:
-        "Diversidade em estado puro: praias tropicais, florestas, cidades vibrantes e uma cultura acolhedora e festiva.",
+        "Diversidade em estado puro, combinando praias, natureza, ritmo urbano e uma energia cultural muito própria.",
+      duration: "Programa flexível",
+      highlights: ["Rio de Janeiro", "Paisagem natural", "Cultura vibrante"],
       picture: {
         src: brazilImg,
         alt: "Pão de Açúcar e Baía de Guanabara, Rio de Janeiro",
       },
+      flagKey: "brazil",
+      imagePosition: "center",
     },
   ],
+
   cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
 };
 

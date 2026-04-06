@@ -16,18 +16,15 @@
     inline-size: 100%;
     block-size: 100%;
     min-inline-size: 0;
-
+    border-radius: 1.3rem;
+    overflow: hidden;
     background:
         radial-gradient(140% 120% at 50% -10%,
             rgba(46, 167, 224, 0.1),
             transparent 58%),
-        linear-gradient(180deg, rgba(8, 20, 38, 0.88), rgba(5, 12, 24, 0.96));
-
+        linear-gradient(180deg, rgba(8, 20, 38, 0.9), rgba(5, 12, 24, 0.98));
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 18px var(--tc-shadow);
-
+    box-shadow: 0 10px 26px var(--tc-shadow);
     transition:
         transform 0.22s ease,
         box-shadow 0.22s ease,
@@ -38,28 +35,26 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: clamp(0.4rem, 1.1vw, 0.7rem);
-    padding: clamp(0.45rem, 1vw, 0.65rem) clamp(0.75rem, 1.6vw, 1rem);
-
+    gap: 0.65rem;
+    padding: 0.8rem 1rem;
     background:
         linear-gradient(120deg, rgba(46, 167, 224, 0.18), rgba(8, 20, 38, 0) 70%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
-
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .quoteMark {
-    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    font-size: clamp(1.25rem, 2vw, 1.65rem);
     line-height: 1;
     color: var(--tc-text-strong);
-    opacity: 0.75;
+    opacity: 0.78;
     letter-spacing: 0.04em;
 }
 
 .stars {
     display: inline-flex;
     align-items: center;
-    gap: clamp(4px, 0.6vw, 6px);
+    gap: 0.35rem;
 }
 
 .starIcon {
@@ -74,11 +69,10 @@
     align-items: flex-start;
     min-inline-size: 0;
     margin: 0;
-    padding: clamp(1rem, 2vw, 1.15rem) clamp(1rem, 2.4vw, 1.4rem);
-
+    padding: 1.05rem 1.15rem 1.15rem;
     color: var(--tc-text);
-    font-size: clamp(0.94rem, 1.05vw, 1rem);
-    line-height: 1.62;
+    font-size: clamp(0.95rem, 1.02vw, 1rem);
+    line-height: 1.64;
 }
 
 .body :where(p) {
@@ -90,25 +84,22 @@
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: clamp(0.6rem, 1.4vw, 0.9rem);
+    gap: 0.8rem;
     min-inline-size: 0;
-    padding: clamp(0.7rem, 1.6vw, 0.95rem) clamp(1rem, 2.4vw, 1.4rem);
-
+    padding: 0.85rem 1.15rem;
     background:
         linear-gradient(180deg,
             color-mix(in srgb, var(--tc-gold) 78%, #000 0%) 0%,
             color-mix(in srgb, var(--tc-gold-2) 75%, #000 0%) 100%);
-
     border-top: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 .avatarWrap {
-    inline-size: clamp(46px, 5.4vw, 64px);
-    block-size: clamp(46px, 5.4vw, 64px);
+    inline-size: clamp(46px, 5.4vw, 60px);
+    block-size: clamp(46px, 5.4vw, 60px);
     border-radius: 50%;
     overflow: hidden;
     flex: 0 0 auto;
-
     background:
         radial-gradient(circle at 35% 35%, #ffb25b 0%, #c78615 62%, #6a3f08 100%);
     box-shadow:
@@ -132,7 +123,7 @@
 
 .avatarInitial {
     color: rgba(255, 255, 255, 0.92);
-    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
     font-weight: 800;
     line-height: 1;
 }
@@ -146,14 +137,14 @@
 .name {
     color: var(--tc-text-strong);
     font-weight: 700;
-    font-size: clamp(0.95rem, 1.05vw, 1rem);
+    font-size: clamp(0.95rem, 1vw, 1rem);
     line-height: 1.25;
     text-wrap: balance;
 }
 
 .role {
     color: color-mix(in srgb, var(--tc-text) 92%, #000 8%);
-    font-size: clamp(0.82rem, 0.95vw, 0.92rem);
+    font-size: clamp(0.82rem, 0.92vw, 0.9rem);
     line-height: 1.35;
     opacity: 0.95;
     text-wrap: balance;
@@ -166,7 +157,7 @@
         transform: translateY(-2px);
         border-color: rgba(255, 255, 255, 0.1);
         box-shadow:
-            0 10px 24px rgba(0, 0, 0, 0.3),
+            0 12px 28px rgba(0, 0, 0, 0.3),
             0 0 0 1px rgba(255, 255, 255, 0.04);
     }
 
@@ -183,7 +174,7 @@
 
 @media (max-width: 640px) {
     .topBar {
-        padding-inline: 0.8rem;
+        padding: 0.8rem 0.9rem;
     }
 
     .body {

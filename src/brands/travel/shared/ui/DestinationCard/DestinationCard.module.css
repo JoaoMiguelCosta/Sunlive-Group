@@ -4,29 +4,31 @@
     display: grid;
     grid-template-rows: auto auto 1fr;
     min-inline-size: 0;
-    min-block-size: clamp(400px, 42vw, 510px);
-    border-radius: 24px;
+    inline-size: 100%;
+    block-size: 100%;
+    min-block-size: clamp(430px, 36vw, 535px);
+    border-radius: 28px;
     background:
         radial-gradient(120% 120% at 0% 0%,
-            color-mix(in oklab, var(--gold-400, #d5a63f) 10%, transparent) 0%,
-            transparent 58%),
+            rgba(225, 174, 73, 0.12) 0%,
+            transparent 44%),
         radial-gradient(120% 100% at 100% 0%,
-            color-mix(in oklab, var(--accent-500, #5ca8ff) 8%, transparent) 0%,
-            transparent 58%),
+            rgba(88, 178, 255, 0.13) 0%,
+            transparent 42%),
         linear-gradient(180deg,
-            rgba(7, 18, 36, 0.96),
-            rgba(4, 10, 22, 0.98));
-    border: 1px solid rgba(194, 149, 72, 0.26);
+            rgba(8, 20, 38, 0.95) 0%,
+            rgba(4, 10, 21, 0.985) 100%);
+    border: 1px solid rgba(205, 159, 74, 0.24);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-        0 20px 42px rgba(0, 0, 0, 0.28),
-        0 8px 18px rgba(2, 8, 20, 0.18);
+        inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+        0 24px 54px rgba(0, 0, 0, 0.26),
+        0 8px 18px rgba(1, 8, 18, 0.18);
 }
 
 .imageWrap {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 3;
     background: rgba(6, 18, 36, 0.92);
 }
 
@@ -61,9 +63,9 @@
     pointer-events: none;
     background:
         linear-gradient(180deg,
-            rgba(3, 10, 22, 0.04) 0%,
-            rgba(3, 10, 22, 0.1) 44%,
-            rgba(3, 10, 22, 0.24) 100%);
+            rgba(3, 10, 22, 0.02) 0%,
+            rgba(3, 10, 22, 0.08) 50%,
+            rgba(3, 10, 22, 0.18) 100%);
 }
 
 .badge {
@@ -72,17 +74,17 @@
     z-index: 2;
     display: inline-flex;
     align-items: center;
-    min-block-size: 30px;
-    padding: 0.38rem 0.72rem;
+    min-block-size: 28px;
+    padding: 0.34rem 0.66rem;
     border-radius: 999px;
     color: #f7fbff;
-    font-size: 0.74rem;
+    font-size: 0.7rem;
     font-weight: 800;
     letter-spacing: 0.02em;
     background:
         linear-gradient(180deg,
-            rgba(239, 185, 74, 0.98),
-            rgba(184, 124, 22, 0.98));
+            rgba(225, 169, 54, 0.96),
+            rgba(171, 113, 18, 0.96));
     box-shadow:
         0 10px 18px rgba(0, 0, 0, 0.18),
         inset 0 1px 0 rgba(255, 255, 255, 0.18);
@@ -92,8 +94,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-block-size: 50px;
-    padding: 0.72rem 1rem;
+    min-block-size: 56px;
+    padding: 0.8rem 1rem;
     text-align: center;
     background:
         linear-gradient(180deg,
@@ -103,10 +105,33 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.24);
 }
 
+.titleInner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-inline-size: 0;
+}
+
+.flagWrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 1.2rem;
+    block-size: 1.2rem;
+    flex: 0 0 1.2rem;
+}
+
+.flagIcon {
+    inline-size: 100%;
+    block-size: 100%;
+    display: block;
+}
+
 .title {
     margin: 0;
     color: #ffffff;
-    font-size: clamp(1.05rem, 1vw, 1.2rem);
+    font-size: clamp(1.02rem, 1vw, 1.16rem);
     line-height: 1.1;
     font-weight: 800;
     letter-spacing: -0.02em;
@@ -116,8 +141,8 @@
 .content {
     display: grid;
     align-content: start;
-    gap: 1rem;
-    padding: 1rem 1rem 1.05rem;
+    gap: 0.95rem;
+    padding: 1rem 1rem 1.1rem;
     background:
         linear-gradient(180deg,
             rgba(2, 8, 18, 0.96) 0%,
@@ -127,8 +152,8 @@
 .summary {
     margin: 0;
     color: rgba(233, 239, 247, 0.92);
-    font-size: 0.96rem;
-    line-height: 1.52;
+    font-size: 0.94rem;
+    line-height: 1.55;
     text-wrap: pretty;
 }
 
@@ -226,8 +251,151 @@
     line-height: 1.2;
 }
 
-.card[data-variant="domestic"] {
-    border-radius: 24px;
+.hotelActionRow {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+    padding-top: 0.35rem;
+}
+
+.hotelLink {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-block-size: 2.3rem;
+    padding: 0.52rem 0.92rem;
+    border-radius: 999px;
+    border: 1px solid rgba(217, 167, 63, 0.52);
+    background:
+        linear-gradient(180deg,
+            rgba(13, 23, 41, 0.92),
+            rgba(7, 13, 25, 0.98));
+    color: #f7fbff;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 10px 18px rgba(0, 0, 0, 0.22);
+    transition:
+        transform 0.16s ease,
+        border-color 0.16s ease,
+        box-shadow 0.16s ease,
+        background 0.16s ease;
+}
+
+.hotelLink:hover,
+.hotelLink:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgba(227, 180, 79, 0.72);
+    background:
+        linear-gradient(180deg,
+            rgba(16, 28, 49, 0.96),
+            rgba(7, 13, 25, 1));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 12px 22px rgba(0, 0, 0, 0.26),
+        0 0 0 2px rgba(220, 171, 71, 0.16);
+    outline: none;
+}
+
+.hotelLinkIcon {
+    position: relative;
+    inline-size: 0.78rem;
+    block-size: 0.78rem;
+    flex: 0 0 0.78rem;
+}
+
+.hotelLinkIcon::before,
+.hotelLinkIcon::after {
+    content: "";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    background: currentColor;
+    border-radius: 999px;
+    transform-origin: center;
+}
+
+.hotelLinkIcon::before {
+    inline-size: 0.64rem;
+    block-size: 1.5px;
+    transform: translate(-50%, -50%);
+}
+
+.hotelLinkIcon::after {
+    inline-size: 0.42rem;
+    block-size: 1.5px;
+    transform: translate(-10%, -50%) rotate(45deg);
+    transform-origin: right center;
+}
+
+.card[data-variant="hotel"] {
+    min-block-size: clamp(410px, 34vw, 500px);
+}
+
+.card[data-variant="hotel"] .imageWrap {
+    aspect-ratio: 16 / 10;
+}
+
+.card[data-variant="hotel"] .titleBar {
+    min-block-size: 54px;
+}
+
+.card[data-variant="hotel"] .content {
+    gap: 0.9rem;
+}
+
+.card[data-variant="partner"] {
+    min-block-size: clamp(360px, 30vw, 440px);
+}
+
+.card[data-variant="partner"] .imageWrap {
+    aspect-ratio: 16 / 9;
+    padding: clamp(1.4rem, 2.6vw, 2rem);
+    background:
+        radial-gradient(120% 120% at 50% 0%,
+            rgba(46, 167, 224, 0.1) 0%,
+            transparent 52%),
+        linear-gradient(180deg,
+            rgba(5, 13, 27, 0.96),
+            rgba(3, 8, 18, 0.98));
+}
+
+.card[data-variant="partner"] .image {
+    transform: none;
+    object-fit: contain;
+    max-inline-size: 100%;
+    max-block-size: 100%;
+}
+
+.card[data-variant="partner"] .imageOverlay {
+    background:
+        linear-gradient(180deg,
+            rgba(3, 10, 22, 0.02) 0%,
+            rgba(3, 10, 22, 0.04) 100%);
+}
+
+.card[data-variant="partner"] .badge {
+    display: none;
+}
+
+.card[data-variant="partner"] .titleBar {
+    min-block-size: 52px;
+}
+
+.card[data-variant="partner"] .content {
+    gap: 0.85rem;
+}
+
+.card[data-variant="partner"] .summary {
+    font-size: 0.92rem;
+    line-height: 1.58;
+}
+
+.card[data-variant="partner"] .hotelActionRow {
+    padding-top: 0.5rem;
 }
 
 @media (max-width: 1024px) {
@@ -237,8 +405,12 @@
 }
 
 @media (max-width: 640px) {
+    .card {
+        border-radius: 24px;
+    }
+
     .titleBar {
-        min-block-size: 46px;
+        min-block-size: 50px;
         padding-inline: 0.9rem;
     }
 
@@ -269,10 +441,22 @@
         min-block-size: 30px;
         font-size: 0.76rem;
     }
+
+    .hotelLink {
+        min-block-size: 2.2rem;
+        font-size: 0.78rem;
+    }
+
+    .card[data-variant="partner"] .imageWrap {
+        padding: 1.2rem;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .image {
+
+    .image,
+    .hotelLink {
         transform: none;
+        transition: none;
     }
 }

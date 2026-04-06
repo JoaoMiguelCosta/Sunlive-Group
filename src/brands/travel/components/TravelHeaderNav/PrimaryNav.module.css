@@ -1,26 +1,41 @@
+/* ================================
+   PrimaryNav.module.css
+   Regras:
+   - >=721px: menu horizontal (desktop)
+   - 722px–860px: botões centrados
+   - <=720px: menu vertical (mobile)
+   - submenu: overlay (absolute) para não empurrar layout
+   ================================ */
+
 .nav {
     display: block;
-    inline-size: 100%;
-    min-inline-size: 0;
+    min-width: 0;
+    width: 100%;
 }
 
+/* ======================================================
+   ✅ DESKTOP/TABLET (>=721px): HORIZONTAL
+   ====================================================== */
 .navList {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: flex-start;
-    gap: clamp(0.7rem, 1.15vw, 1rem);
-    inline-size: 100%;
-    min-inline-size: 0;
+    align-items: center;
+    gap: clamp(.7rem, 1.45vw, 1.35rem);
+
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
+
+    overflow: visible;
+    min-width: 0;
+    width: 100%;
 }
 
 .navItem {
     position: relative;
-    flex: 0 1 auto;
-    min-inline-size: 0;
+    flex: 0 0 auto;
     z-index: 2;
 }
 
@@ -28,82 +43,78 @@
     z-index: 10010;
 }
 
-.navLink,
-.navButton {
-    --gold: var(--sl-gold-400, #c78615);
-    --accent: var(--sl-accent-500, #2ea7e0);
+/* --- Pills (menu) --- */
+.navLink {
+    --gold: var(--sl-gold-400, #C78615);
+    --accent: var(--sl-accent-500, #2EA7E0);
+
+    --pill-fs: clamp(.96rem, 1.0vw, 1.08rem);
+    --pill-pad-y: clamp(.52rem, .7vw, .72rem);
+    --pill-pad-x: clamp(1.05rem, 1.6vw, 1.45rem);
+    --pill-min-h: clamp(44px, 4.6vw, 52px);
+    --pill-gap: clamp(.45rem, .9vw, .65rem);
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(0.42rem, 0.8vw, 0.62rem);
+    gap: var(--pill-gap);
 
-    min-block-size: clamp(48px, 3.2vw, 54px);
-    min-inline-size: clamp(138px, 9.8vw, 180px);
-    padding: clamp(0.62rem, 0.8vw, 0.8rem) clamp(1rem, 1.3vw, 1.35rem);
+    min-height: var(--pill-min-h);
+    padding: var(--pill-pad-y) var(--pill-pad-x);
     border-radius: 999px;
-
     text-decoration: none;
-    white-space: nowrap;
+
     color: #fff;
     font-weight: 800;
-    font-size: clamp(0.98rem, 0.82vw, 1.06rem);
-    letter-spacing: 0.01em;
+    font-size: var(--pill-fs);
+    letter-spacing: .02em;
     line-height: 1;
+
+    /* ✅ ajustado para não rebentar perto dos 721px */
+    min-inline-size: clamp(112px, 9vw, 156px);
 
     border: 2px solid rgba(255, 162, 0, 0.57);
     background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0)),
-        radial-gradient(120% 140% at 50% 0%,
-            rgba(255, 226, 167, 0.1),
-            rgba(255, 255, 255, 0) 60%);
+        linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),
+        radial-gradient(120% 140% at 50% 0%, rgba(255, 226, 167, .10), rgba(255, 255, 255, 0) 60%);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-        0 8px 20px rgba(0, 0, 0, 0.35);
+        inset 0 0 0 1px rgba(255, 255, 255, .06),
+        0 8px 20px rgba(0, 0, 0, .35);
 
     transition:
-        transform 0.16s ease,
-        box-shadow 0.16s ease,
-        border-color 0.16s ease,
-        background-color 0.16s ease,
-        color 0.16s ease;
-}
-
-.navButton {
-    appearance: none;
-    cursor: pointer;
-    font: inherit;
+        transform .16s ease,
+        box-shadow .16s ease,
+        border-color .16s ease,
+        background-color .16s ease,
+        color .16s ease;
 }
 
 .navLink:hover,
-.navLink:focus-visible,
-.navButton:hover,
-.navButton:focus-visible,
-.navItem[data-open="true"] .navButton {
+.navLink:focus-visible {
     transform: translateY(-1px);
     border-color: color-mix(in oklab, var(--gold), var(--accent) 90%);
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-        0 10px 28px rgba(0, 0, 0, 0.44);
+        inset 0 0 0 1px rgba(255, 255, 255, .08),
+        0 10px 28px rgba(0, 0, 0, .44);
     outline: none;
-    background: color-mix(in oklab, var(--sl-accent-500, #2ea7e0) 22%, black);
+    background: color-mix(in oklab, var(--sl-accent-500, #2EA7E0) 22%, black);
 }
 
-.navLink:active,
-.navButton:active {
+.navLink:active {
     transform: translateY(0);
 }
 
+/* Chevron */
 .chev {
-    inline-size: clamp(12px, 1vw, 14px);
-    block-size: clamp(6px, 0.52vw, 7px);
+    width: clamp(12px, 1.1vw, 14px);
+    height: clamp(6px, .55vw, 7px);
     display: inline-block;
-    transition: transform 0.18s ease;
+    transition: transform .18s ease;
 }
 
 .chev svg {
-    inline-size: 100%;
-    block-size: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .chev path {
@@ -113,35 +124,34 @@
     stroke-linejoin: round;
 }
 
-.navItem[data-open="true"] .chev {
-    transform: rotate(180deg);
-}
-
+/* ===== Submenu (desktop/tablet): absolute ===== */
 .navItem[data-has-submenu] .submenu {
     position: absolute;
-    inset-block-start: calc(100% + 10px);
-    inset-inline-start: 0;
+    top: calc(100% + 10px);
+    left: 0;
 
-    min-inline-size: max(240px, calc(100% + 10px));
-    inline-size: max-content;
-    max-inline-size: min(92vw, 560px);
-    max-block-size: min(58vh, 440px);
+    min-width: max(220px, calc(100% + 12px));
+    width: max-content;
+    max-width: min(92vw, 560px);
 
+    max-height: min(58vh, 440px);
     overflow-y: auto;
-    margin: 0;
-    padding: clamp(8px, 1.2vw, 12px);
-    list-style: none;
+    -webkit-overflow-scrolling: touch;
 
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background: rgba(15, 20, 30, 0.94);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    padding: clamp(8px, 1.6vw, 12px);
+    margin: 0;
+    list-style: none;
+    border-radius: 14px;
+
+    border: 1px solid rgba(255, 255, 255, .06);
+    background: rgba(15, 20, 30, .92);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
 
     pointer-events: none;
     opacity: 0;
     transform: translateY(-6px);
-    transition: opacity 0.18s ease, transform 0.18s ease;
+    transition: opacity .18s ease, transform .18s ease;
 
     z-index: 10011;
 }
@@ -152,89 +162,111 @@
     transform: translateY(0);
 }
 
+.navItem[data-open="true"] .chev {
+    transform: rotate(180deg);
+}
+
+/* Submenu items */
 .subLink {
     display: block;
-    min-block-size: 48px;
-    padding: clamp(0.72rem, 1.1vw, 0.86rem) clamp(0.92rem, 1.5vw, 1.05rem);
+    padding: clamp(.68rem, 1.4vw, .82rem) clamp(.9rem, 2vw, 1.05rem);
     border-radius: 12px;
-
     color: var(--sl-platinum-50, #e7e7e7);
     text-decoration: none;
     white-space: nowrap;
-    font-size: clamp(0.96rem, 0.86vw, 1.02rem);
+    font-size: clamp(.98rem, 1.0vw, 1.05rem);
+    min-height: clamp(46px, 4.8vw, 54px);
 }
 
 .subLink:hover,
 .subLink:focus-visible {
-    color: var(--sl-accent-500, #2ea7e0);
-    background: rgba(255, 255, 255, 0.06);
+    color: var(--sl-accent-500, #2EA7E0);
+    background: rgba(255, 255, 255, .06);
     outline: none;
 }
 
-@media (min-width: 861px) and (max-width: 1160px) {
-    .navList {
-        gap: 0.65rem;
-    }
-
-    .navLink,
-    .navButton {
-        min-inline-size: clamp(128px, 9.2vw, 160px);
-        min-block-size: 46px;
-        padding-inline: clamp(0.92rem, 1.05vw, 1.08rem);
-        font-size: clamp(0.94rem, 0.8vw, 1rem);
-    }
-}
-
-@media (max-width: 860px) {
+/* ======================================================
+   ✅ 722px–860px: centra os botões da 1ª linha
+   ====================================================== */
+@media (min-width: 722px) and (max-width: 860px) {
     .navList {
         justify-content: center;
     }
-
-    .navLink,
-    .navButton {
-        min-inline-size: clamp(140px, 22vw, 182px);
-    }
 }
 
+/* ======================================================
+   ✅ MOBILE (<=720px): VERTICAL + espaçamento igual
+   - submenu em overlay (não empurra botões)
+   ====================================================== */
 @media (max-width: 720px) {
     .nav {
-        inline-size: 100%;
+        width: 100%;
     }
 
     .navList {
+        display: flex;
         flex-direction: column;
         align-items: stretch;
-        justify-content: flex-start;
-        gap: clamp(0.7rem, 3vw, 0.95rem);
+
+        gap: clamp(.7rem, 3.2vw, 1rem);
+        width: 100%;
+        min-width: 0;
+
+        overflow: visible;
+        /* ✅ submenu pode sobrepor */
     }
 
     .navItem {
-        inline-size: 100%;
+        width: 100%;
+        min-width: 0;
+        position: relative;
     }
 
-    .navLink,
-    .navButton {
-        inline-size: 100%;
+    .navItem[data-open="true"] {
+        z-index: 10010;
+    }
+
+    .navLink {
+        width: 100%;
         min-inline-size: 0;
         justify-content: center;
-        min-block-size: 50px;
-        font-size: clamp(0.96rem, 3.5vw, 1.04rem);
-        padding-inline: clamp(1rem, 4vw, 1.2rem);
+
+        --pill-fs: clamp(.95rem, 3.4vw, 1.05rem);
+        --pill-pad-x: clamp(1rem, 4vw, 1.25rem);
     }
 
+    /* ✅ MOBILE: submenu overlay full-width */
     .navItem[data-has-submenu] .submenu {
-        position: static;
-        inline-size: 100%;
-        min-inline-size: 0;
-        max-inline-size: 100%;
-        max-block-size: none;
-        margin-block-start: 0.65rem;
-        transform: none;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+
+        margin: 0;
+        padding: clamp(10px, 2.2vw, 14px);
+        border-radius: 14px;
+
+        border: 1px solid rgba(255, 255, 255, .06);
+        background: rgba(15, 20, 30, .92);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition: opacity .18s ease, transform .18s ease;
+
+        z-index: 10011;
     }
 
-    .navItem:not([data-open="true"]) .submenu {
-        display: none;
+    .navItem[data-open="true"] .submenu {
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .subLink {
