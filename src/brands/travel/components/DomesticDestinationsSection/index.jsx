@@ -1,25 +1,23 @@
 import styles from "./DomesticDestinationsSection.module.css";
 
 import travelBrand from "../../config/index.js";
-import TravelIntroPanel from "../../shared/ui/TravelIntroPanel/TravelIntroPanel.jsx";
-import TravelCTABox from "../../shared/ui/TravelCTABox/TravelCTABox.jsx";
-import DestinationsBrowser from "./DestinationsBrowser.jsx";
+import DomesticEditorialHero from "./DomesticEditorialHero.jsx";
+import DomesticDestinationsShowcase from "./DomesticDestinationsShowcase.jsx";
+import DomesticJourneyPlanner from "./DomesticJourneyPlanner.jsx";
 
 export default function DomesticDestinationsSection() {
   const cfg = travelBrand?.sections?.domesticDestinations ?? null;
   if (!cfg) return null;
 
-  const sectionId = cfg.id ?? "destinos-nacionais";
-  const sectionLabel = cfg?.browser?.ariaLabel ?? "Explorar destinos nacionais";
+  const sectionId = cfg?.id ?? "destinos-nacionais";
+  const sectionLabel =
+    cfg?.showcase?.ariaLabel ?? "Explorar destinos nacionais";
 
-  const headline = cfg?.headline ?? {};
-  const browser = cfg?.browser ?? {};
+  const editorialHero = cfg?.editorialHero ?? {};
+  const showcase = cfg?.showcase ?? {};
   const destinations = Array.isArray(cfg?.destinations) ? cfg.destinations : [];
-  const contactPanel = cfg?.contactPanel ?? null;
+  const planningPanel = cfg?.planningPanel ?? null;
   const cta = cfg?.cta ?? null;
-
-  const pillsAriaLabel = headline?.ui?.pillsAriaLabel ?? "Pontos-chave";
-  const statsAriaLabel = headline?.ui?.statsAriaLabel ?? "Destaques da secção";
 
   return (
     <section
@@ -28,22 +26,17 @@ export default function DomesticDestinationsSection() {
       data-section="domestic-destinations"
       aria-label={sectionLabel}
     >
-      <div className={styles.inner}>
-        <TravelIntroPanel
-          eyebrow={headline.eyebrow}
-          title={headline.title}
-          lead={headline.lead}
-          supportingText={headline.description}
-          pills={headline.featuredPills}
-          stats={headline.stats}
-          pillsAriaLabel={pillsAriaLabel}
-          statsAriaLabel={statsAriaLabel}
-          as="header"
-        />
+      <div className={styles.sectionFrame}>
+        <div className={styles.inner}>
+          <DomesticEditorialHero hero={editorialHero} />
 
-        <DestinationsBrowser browser={browser} destinations={destinations} />
+          <DomesticDestinationsShowcase
+            showcase={showcase}
+            destinations={destinations}
+          />
 
-        <TravelCTABox cta={cta} panel={contactPanel} />
+          <DomesticJourneyPlanner panel={planningPanel} cta={cta} />
+        </div>
       </div>
     </section>
   );

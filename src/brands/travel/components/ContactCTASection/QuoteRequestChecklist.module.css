@@ -20,9 +20,9 @@
     align-items: center;
     gap: clamp(0.55rem, 1vw, 0.72rem);
     min-inline-size: 0;
-    padding: clamp(0.78rem, 1.2vw, 0.95rem) clamp(0.85rem, 1.4vw, 1rem);
+    padding: clamp(0.82rem, 1.2vw, 0.95rem) clamp(0.9rem, 1.4vw, 1rem);
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 0.95rem;
+    border-radius: 1rem;
     background:
         linear-gradient(180deg, rgba(8, 20, 38, 0.88), rgba(5, 12, 24, 0.96));
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);

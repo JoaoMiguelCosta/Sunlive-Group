@@ -1,10 +1,9 @@
 import styles from "./TravelPartnersSection.module.css";
 
 import travelBrand from "../../config/index.js";
-import TravelIntroPanel from "../../shared/ui/TravelIntroPanel/TravelIntroPanel.jsx";
-import TravelCTABox from "../../shared/ui/TravelCTABox/TravelCTABox.jsx";
-
-import TravelPartnersCardsGrid from "./TravelPartnersCardsGrid.jsx";
+import TravelPartnersTrustHero from "./TravelPartnersTrustHero.jsx";
+import TravelPartnersNetworkPanel from "./TravelPartnersNetworkPanel.jsx";
+import TravelPartnersActionPanel from "./TravelPartnersActionPanel.jsx";
 
 export default function TravelPartnersSection() {
   const cfg = travelBrand?.sections?.travelPartners ?? null;
@@ -12,14 +11,13 @@ export default function TravelPartnersSection() {
 
   const sectionId = cfg?.id ?? "parceiros-viagens";
   const sectionLabel =
-    cfg?.browser?.ariaLabel ?? "Explorar parceiros de viagem";
+    cfg?.network?.ariaLabel ?? "Explorar parceiros de viagem";
 
-  const headline = cfg?.headline ?? {};
-  const contactPanel = cfg?.contactPanel ?? null;
+  const trustHero = cfg?.trustHero ?? {};
+  const network = cfg?.network ?? {};
+  const partners = Array.isArray(cfg?.partners) ? cfg.partners : [];
+  const actionPanel = cfg?.actionPanel ?? null;
   const cta = cfg?.cta ?? null;
-
-  const pillsAriaLabel = headline?.ui?.pillsAriaLabel ?? "Pontos-chave";
-  const statsAriaLabel = headline?.ui?.statsAriaLabel ?? "Destaques da secção";
 
   return (
     <section
@@ -29,23 +27,11 @@ export default function TravelPartnersSection() {
       aria-label={sectionLabel}
     >
       <div className={styles.inner}>
-        <TravelIntroPanel
-          eyebrow={headline.eyebrow}
-          title={headline.title}
-          lead={headline.lead}
-          supportingText={headline.description}
-          pills={headline.featuredPills}
-          stats={headline.stats}
-          pillsAriaLabel={pillsAriaLabel}
-          statsAriaLabel={statsAriaLabel}
-          as="header"
-        />
+        <TravelPartnersTrustHero hero={trustHero} />
 
-    
+        <TravelPartnersNetworkPanel network={network} partners={partners} />
 
-        <TravelPartnersCardsGrid />
-
-        <TravelCTABox cta={cta} panel={contactPanel} />
+        <TravelPartnersActionPanel panel={actionPanel} cta={cta} />
       </div>
     </section>
   );

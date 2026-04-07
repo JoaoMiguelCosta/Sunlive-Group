@@ -11,19 +11,20 @@ import { TRAVEL_COMPANY } from "../core/company.js";
 const internationalDestinations = {
   id: "destinos-internacionais",
 
-  headline: {
+  immersiveHero: {
     eyebrow: "Seleção internacional",
     title:
       "Destinos Internacionais com curadoria premium e operação personalizada",
     lead: "Expandimos o programa da sua viagem com destinos internacionais escolhidos pela relevância, impacto visual e adequação ao perfil do grupo.",
-    description:
+    supportingText:
       "Cada proposta é desenhada com foco em conforto, contexto cultural, fluidez logística e experiências bem estruturadas, para que a viagem internacional mantenha o mesmo nível de execução premium do início ao fim.",
-    featuredPills: [
+    flightLabel: "Escala internacional",
+    flightStops: [
       "Destinos além-fronteiras",
-      "Logística ajustada ao grupo",
-      "Experiência premium no destino",
+      "Programas tailor-made",
+      "Execução premium no destino",
     ],
-    stats: [
+    metrics: [
       {
         value: "5",
         label: "destinos internacionais",
@@ -37,27 +38,53 @@ const internationalDestinations = {
         label: "programas ajustados",
       },
     ],
+    focusPoints: [
+      {
+        key: "scale",
+        title: "Escala e diferenciação",
+        description:
+          "Selecionamos destinos com forte valor visual, cultural e estratégico para grupos que procuram experiências fora do circuito habitual.",
+      },
+      {
+        key: "control",
+        title: "Operação internacional fluida",
+        description:
+          "A proposta é construída com atenção ao ritmo, ao enquadramento logístico e à consistência da experiência em cada fase do percurso.",
+      },
+    ],
     ui: {
-      pillsAriaLabel: "Pontos-chave da secção",
-      statsAriaLabel: "Destaques da secção internacional",
+      flightAriaLabel: "Percurso internacional da secção",
+      metricsAriaLabel: "Indicadores da secção internacional",
+      focusPointsAriaLabel: "Princípios da curadoria internacional",
     },
   },
 
-  grid: {
-    ariaLabel: "Lista de destinos internacionais",
-    kicker: "Exploração de Destinos Internacionais",
+  showcase: {
+    ariaLabel: "Explorar destinos internacionais",
+    railAriaLabel: "Selecionar destino internacional em destaque",
+    kicker: "Exploração internacional",
     title:
       "Destinos pensados para grupos que procuram escala, diferenciação e experiências memoráveis",
     description:
-      "Selecionámos opções com forte valor turístico, cultural e visual, adequadas a programas personalizados com acompanhamento e logística dedicada.",
+      "Escolha um destino para explorar o seu enquadramento, pontos de interesse e posicionamento dentro de uma proposta internacional pensada com curadoria e apoio logístico dedicado.",
+    spotlightLabel: "Destino em destaque",
+    highlightsLabel: "Pontos de interesse",
+    durationLabel: "Formato do programa",
+    railLabel: "Seleção internacional",
+    initialKey: "malta",
   },
 
-  contactPanel: {
+  actionPanel: {
     eyebrow: "Planeamento personalizado",
     title:
       "Fale connosco para desenhar a experiência internacional certa para o seu grupo",
     description:
       "Ajustamos destino, duração, ritmo da viagem e apoio logístico a cada perfil, com acompanhamento próximo e proposta feita à medida.",
+    proofPoints: [
+      "Destino ajustado ao perfil",
+      "Proposta internacional à medida",
+      "Acompanhamento próximo",
+    ],
   },
 
   destinations: [

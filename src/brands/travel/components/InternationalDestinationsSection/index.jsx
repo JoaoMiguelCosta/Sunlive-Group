@@ -1,9 +1,9 @@
 import styles from "./InternationalDestinationsSection.module.css";
 
 import travelBrand from "../../config/index.js";
-import TravelIntroPanel from "../../shared/ui/TravelIntroPanel/TravelIntroPanel.jsx";
-import TravelCTABox from "../../shared/ui/TravelCTABox/TravelCTABox.jsx";
-import DestinationsInternational from "./DestinationsInternational.jsx";
+import InternationalImmersiveHero from "./InternationalImmersiveHero.jsx";
+import InternationalDestinationsShowcase from "./InternationalDestinationsShowcase.jsx";
+import InternationalExperiencePlanner from "./InternationalExperiencePlanner.jsx";
 
 export default function InternationalDestinationsSection() {
   const cfg = travelBrand?.sections?.internationalDestinations ?? null;
@@ -11,16 +11,14 @@ export default function InternationalDestinationsSection() {
 
   const sectionId = cfg?.id ?? "destinos-internacionais";
   const sectionLabel =
-    cfg?.grid?.ariaLabel ?? "Explorar destinos internacionais";
+    cfg?.showcase?.ariaLabel ?? "Explorar destinos internacionais";
 
-  const headline = cfg?.headline ?? {};
-  const grid = cfg?.grid ?? {};
+  const immersiveHero = cfg?.immersiveHero ?? {};
+  const showcase = cfg?.showcase ?? {};
   const destinations = Array.isArray(cfg?.destinations) ? cfg.destinations : [];
-  const contactPanel = cfg?.contactPanel ?? null;
+  const actionPanel = cfg?.actionPanel ?? null;
   const cta = cfg?.cta ?? null;
-
-  const pillsAriaLabel = headline?.ui?.pillsAriaLabel ?? "Pontos-chave";
-  const statsAriaLabel = headline?.ui?.statsAriaLabel ?? "Destaques da secção";
+  const flags = travelBrand?.flags ?? {};
 
   return (
     <section
@@ -30,21 +28,15 @@ export default function InternationalDestinationsSection() {
       aria-label={sectionLabel}
     >
       <div className={styles.inner}>
-        <TravelIntroPanel
-          eyebrow={headline.eyebrow}
-          title={headline.title}
-          lead={headline.lead}
-          supportingText={headline.description}
-          pills={headline.featuredPills}
-          stats={headline.stats}
-          pillsAriaLabel={pillsAriaLabel}
-          statsAriaLabel={statsAriaLabel}
-          as="header"
+        <InternationalImmersiveHero hero={immersiveHero} />
+
+        <InternationalDestinationsShowcase
+          showcase={showcase}
+          destinations={destinations}
+          flags={flags}
         />
 
-        <DestinationsInternational grid={grid} destinations={destinations} />
-
-        <TravelCTABox cta={cta} panel={contactPanel} />
+        <InternationalExperiencePlanner panel={actionPanel} cta={cta} />
       </div>
     </section>
   );

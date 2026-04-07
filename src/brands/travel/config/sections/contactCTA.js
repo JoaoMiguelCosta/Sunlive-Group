@@ -3,12 +3,35 @@ import { TRAVEL_CONTACT_CHANNELS } from "/src/brands/travel/config/core/contactC
 const contactCTA = {
   id: "contactar",
 
-  headline: {
+  conversionHero: {
     eyebrow: "Contacto direto",
     title: "Fale connosco para desenhar uma viagem à medida do seu grupo",
     lead: "Partilhe o contexto da viagem e receba uma proposta pensada com critério, rapidez e acompanhamento próximo.",
-    description:
+    supportingText:
       "A Sunlive Travel prepara soluções ajustadas ao perfil do grupo, ao itinerário e ao nível de serviço pretendido, com foco em conforto, organização e execução sem falhas.",
+    trustPoints: [
+      "Resposta rápida",
+      "Proposta personalizada",
+      "Acompanhamento próximo",
+    ],
+    stats: [
+      {
+        value: "Rápido",
+        label: "primeiro enquadramento",
+      },
+      {
+        value: "Tailor-made",
+        label: "proposta ajustada",
+      },
+      {
+        value: "Direto",
+        label: "contacto sem fricção",
+      },
+    ],
+    ui: {
+      trustPointsAriaLabel: "Vantagens do contacto",
+      statsAriaLabel: "Destaques do contacto",
+    },
   },
 
   checklistPanel: {

@@ -40,11 +40,8 @@
     gap: 0.3rem 0.8rem;
 }
 
-@media (min-width: 900px) {
-    .links {
-        justify-content: flex-start;
-    }
-}
+
+
 
 .linkItem {
     display: inline-flex;

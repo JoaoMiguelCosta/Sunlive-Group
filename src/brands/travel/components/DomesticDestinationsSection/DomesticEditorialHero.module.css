@@ -1,0 +1,542 @@
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1.06fr) minmax(340px, 0.94fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+    inline-size: 100%;
+    align-items: stretch;
+    padding: clamp(1.15rem, 2vw, 1.55rem);
+    border-radius: clamp(28px, 2.4vw, 34px);
+    border: 1px solid rgba(201, 153, 66, 0.22);
+    background:
+        radial-gradient(120% 140% at 0% 0%,
+            rgba(215, 165, 67, 0.15) 0%,
+            transparent 42%),
+        radial-gradient(82% 110% at 100% 100%,
+            rgba(46, 167, 224, 0.08) 0%,
+            transparent 54%),
+        linear-gradient(180deg,
+            rgba(8, 20, 38, 0.97) 0%,
+            rgba(4, 10, 21, 0.995) 100%);
+    box-shadow:
+        0 24px 50px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.018);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    block-size: 4px;
+    background: linear-gradient(90deg,
+            rgba(199, 134, 21, 0.9),
+            rgba(46, 167, 224, 0.62));
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(255, 255, 255, 0) 28%);
+    opacity: 0.85;
+}
+
+.heroGlow {
+    position: absolute;
+    inset: auto -8% -16% auto;
+    inline-size: min(26rem, 42%);
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background: radial-gradient(circle,
+            rgba(46, 167, 224, 0.14) 0%,
+            rgba(46, 167, 224, 0.06) 34%,
+            rgba(46, 167, 224, 0) 72%);
+    filter: blur(10px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.copyColumn {
+    position: relative;
+    z-index: 1;
+    min-inline-size: 0;
+    display: grid;
+    align-content: start;
+    gap: clamp(0.78rem, 1.2vw, 0.95rem);
+    padding: clamp(0.12rem, 0.25vw, 0.2rem);
+}
+
+.eyebrow {
+    margin: 0;
+    color: color-mix(in oklab,
+            var(--sl-platinum-100, #f6f7fb) 74%,
+            var(--sl-accent-400, #79ccef) 26%);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.title {
+    margin: 0;
+   
+    color: #f7f8fc;
+    font-size: clamp(2rem, 4vw, 4.15rem);
+    line-height: 0.93;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
+    text-shadow: 0 18px 32px rgba(0, 0, 0, 0.2);
+}
+
+.lead {
+    margin: 0;
+    max-inline-size: 56ch;
+    color: rgba(238, 243, 249, 0.95);
+    font-size: clamp(1rem, 1.12vw, 1.16rem);
+    line-height: 1.66;
+    font-weight: 500;
+    text-wrap: pretty;
+}
+
+.supportingText {
+    margin: 0;
+    max-inline-size: 60ch;
+    color: rgba(223, 231, 242, 0.82);
+    font-size: clamp(0.93rem, 0.98vw, 1.02rem);
+    line-height: 1.7;
+    text-wrap: pretty;
+}
+
+.sideColumn {
+    position: relative;
+    z-index: 1;
+    min-inline-size: 0;
+    display: grid;
+    align-content: start;
+    gap: clamp(0.95rem, 1.8vw, 1.15rem);
+    grid-template-rows: auto auto auto;
+}
+
+.metricsPanel {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(0.9rem, 1.4vw, 1rem);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background:
+        radial-gradient(110% 145% at 0% 0%,
+            rgba(46, 167, 224, 0.12) 0%,
+            transparent 42%),
+        radial-gradient(70% 90% at 100% 100%,
+            rgba(199, 134, 21, 0.08) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.065),
+            rgba(255, 255, 255, 0.015)),
+        rgba(6, 16, 31, 0.84);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.015),
+        0 16px 30px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.metricsPanel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.055) 0%,
+            rgba(255, 255, 255, 0) 32%);
+    opacity: 0.84;
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.76rem;
+}
+
+.metricCard {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    gap: 0.38rem;
+    align-content: center;
+    min-block-size: 8.5rem;
+    padding: 1rem 0.96rem;
+    border-radius: 22px;
+    border: 1px solid rgba(201, 153, 66, 0.16);
+    background:
+        radial-gradient(110% 140% at 0% 0%,
+            rgba(46, 167, 224, 0.1) 0%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.065),
+            rgba(255, 255, 255, 0.018)),
+        rgba(6, 16, 31, 0.86);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+        0 12px 24px rgba(0, 0, 0, 0.15);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 220ms ease,
+        background 220ms ease;
+}
+
+.metricCard::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    block-size: 2px;
+    background: linear-gradient(90deg,
+            rgba(201, 153, 66, 0.84),
+            rgba(46, 167, 224, 0.56));
+}
+
+.metricValue {
+    color: #ffffff;
+    font-size: clamp(1.45rem, 2vw, 2rem);
+    font-weight: 800;
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+}
+
+.metricLabel {
+    color: rgba(224, 232, 244, 0.86);
+    font-size: 0.9rem;
+    line-height: 1.42;
+    font-weight: 500;
+    text-wrap: pretty;
+}
+
+.insightsPanel {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.82rem;
+}
+
+.insightCard {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    gap: 0.52rem;
+    min-block-size: 100%;
+    padding: 1rem 1rem 1.04rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background:
+        radial-gradient(120% 140% at 100% 0%,
+            rgba(46, 167, 224, 0.1) 0%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(7, 18, 34, 0.95) 0%,
+            rgba(4, 10, 21, 0.985) 100%);
+    box-shadow:
+        0 14px 28px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.012);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 220ms ease,
+        background 220ms ease;
+}
+
+.insightCard::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    inline-size: 3px;
+    block-size: 100%;
+    background: linear-gradient(180deg,
+            rgba(201, 153, 66, 0.88),
+            rgba(46, 167, 224, 0.56));
+    opacity: 0.9;
+}
+
+.insightCard::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0) 34%);
+    opacity: 0.8;
+}
+
+.insightTitle {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.18;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.insightDescription {
+    margin: 0;
+    color: rgba(224, 232, 244, 0.82);
+    font-size: 0.9rem;
+    line-height: 1.58;
+    text-wrap: pretty;
+}
+
+.routePanel {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    gap: 0.72rem;
+    padding: clamp(0.95rem, 1.6vw, 1.15rem);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background:
+        radial-gradient(120% 150% at 0% 0%,
+            rgba(46, 167, 224, 0.1) 0%,
+            transparent 42%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.015)),
+        rgba(7, 18, 34, 0.72);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+        0 14px 26px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.routePanel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.045) 0%,
+            rgba(255, 255, 255, 0) 36%);
+    opacity: 0.8;
+}
+
+.routeLabel {
+    margin: 0;
+    color: rgba(235, 191, 94, 0.94);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.routeStops {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.62rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.routeStop {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.58rem;
+    min-block-size: 2.55rem;
+    padding: 0.58rem 0.84rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+        radial-gradient(120% 160% at 0% 0%,
+            rgba(46, 167, 224, 0.1) 0%,
+            transparent 42%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.02)),
+        rgba(7, 18, 34, 0.68);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+        0 10px 18px rgba(0, 0, 0, 0.12);
+    color: rgba(244, 247, 252, 0.96);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 220ms ease,
+        background 220ms ease;
+}
+
+.routeStopDot {
+    inline-size: 0.46rem;
+    block-size: 0.46rem;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(107, 196, 231, 0.95) 42%,
+            rgba(107, 196, 231, 0) 100%);
+    box-shadow:
+        0 0 12px rgba(76, 166, 200, 0.28),
+        0 0 22px rgba(199, 134, 21, 0.12);
+}
+
+.routeStopLabel {
+    font-size: 0.84rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-wrap: balance;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .metricCard:hover {
+        transform: translateY(-2px);
+        border-color: rgba(201, 153, 66, 0.22);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.05),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.015),
+            0 16px 28px rgba(0, 0, 0, 0.18),
+            0 0 18px rgba(46, 167, 224, 0.04);
+    }
+
+    .insightCard:hover {
+        transform: translateY(-2px);
+        border-color: rgba(201, 153, 66, 0.16);
+        box-shadow:
+            0 18px 32px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04),
+            0 0 18px rgba(46, 167, 224, 0.04);
+    }
+
+    .routeStop:hover {
+        border-color: rgba(201, 153, 66, 0.2);
+        background:
+            radial-gradient(120% 160% at 0% 0%,
+                rgba(46, 167, 224, 0.12) 0%,
+                transparent 42%),
+            linear-gradient(180deg,
+                rgba(255, 255, 255, 0.095),
+                rgba(255, 255, 255, 0.025)),
+            rgba(7, 18, 34, 0.74);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.06),
+            0 14px 24px rgba(0, 0, 0, 0.14),
+            0 0 16px rgba(46, 167, 224, 0.05);
+        transform: translateY(-1px);
+    }
+
+    .routeStop:active,
+    .metricCard:active,
+    .insightCard:active {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1180px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .title,
+    .lead,
+    .supportingText {
+        max-inline-size: none;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .metrics,
+    .insightsPanel {
+        grid-template-columns: 1fr;
+    }
+
+    .metricCard {
+        min-block-size: 7rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero {
+        padding: 0.98rem;
+        border-radius: 26px;
+    }
+
+    .routePanel {
+        padding: 0.92rem;
+        border-radius: 22px;
+    }
+
+    .title {
+      
+        font-size: clamp(1.6rem, 7vw, 2.45rem);
+    }
+
+    .lead {
+        font-size: 0.95rem;
+        line-height: 1.58;
+    }
+
+    .supportingText,
+    .metricLabel,
+    .insightDescription {
+        font-size: 0.88rem;
+    }
+
+    .routeStop {
+        inline-size: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .routeStopLabel {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.15em;
+    }
+
+    .metricCard,
+    .insightCard {
+        padding: 0.88rem;
+    }
+
+    .metricValue {
+        font-size: 1.28rem;
+    }
+
+    .insightTitle {
+        font-size: 0.96rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .metricCard,
+    .insightCard,
+    .routeStop {
+        transition: none;
+    }
+}

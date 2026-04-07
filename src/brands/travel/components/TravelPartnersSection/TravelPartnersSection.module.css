@@ -10,24 +10,24 @@
 .section::before {
     content: "";
     position: absolute;
-    inset: 2rem 50% auto;
+    inset: 1.5rem 50% auto;
     translate: -50% 0;
-    inline-size: min(94vw, 1320px);
+    inline-size: min(94vw, 1360px);
     block-size: clamp(240px, 34vw, 460px);
     pointer-events: none;
     border-radius: 999px;
     background:
         radial-gradient(circle at 20% 28%,
-            color-mix(in oklab, var(--gold-400, #d9a441) 18%, transparent) 0%,
+            rgba(217, 164, 65, 0.16) 0%,
             transparent 34%),
         radial-gradient(circle at 82% 30%,
-            color-mix(in oklab, var(--accent-500, #4eb8ff) 16%, transparent) 0%,
+            rgba(78, 184, 255, 0.12) 0%,
             transparent 30%),
         radial-gradient(circle at 50% 100%,
             rgba(255, 191, 71, 0.10) 0%,
             transparent 56%);
     filter: blur(48px);
-    opacity: 0.9;
+    opacity: 0.92;
     z-index: 0;
 }
 

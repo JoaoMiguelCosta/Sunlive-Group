@@ -39,7 +39,7 @@ export default function TravelLinkDirectory({ data }) {
   const leftColumns = Array.isArray(left?.columns) ? left.columns : [];
 
   return (
-    <section
+    <div
       className={styles.sectionWrap}
       aria-label="Footer — Quick Links (Travel)"
     >
@@ -76,14 +76,7 @@ export default function TravelLinkDirectory({ data }) {
                             .filter(Boolean)
                             .join(" ")}
                         >
-                          <span
-                            className={[
-                              styles.pillContent,
-                              isInternational ? styles.intl : "",
-                            ]
-                              .filter(Boolean)
-                              .join(" ")}
-                          >
+                          <span className={styles.pillContent}>
                             {FlagIcon ? (
                               <span
                                 className={styles.flagWrap}
@@ -184,6 +177,6 @@ export default function TravelLinkDirectory({ data }) {
           </div>
         ) : null}
       </div>
-    </section>
+    </div>
   );
 }

@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import styles from "./LogisticsServiceCard.module.css";
 import { slugify } from "../../shared/utils/slugify.js";
 
@@ -28,18 +27,6 @@ export default function LogisticsServiceCard({
   const cardId = id || `logistics-card-${slugify(title)}`;
   const detailsId = `${cardId}-details`;
 
-  const handleKey = useCallback(
-    (event) => {
-      if (!interactive || !hasDetails) return;
-
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        onToggle?.();
-      }
-    },
-    [interactive, hasDetails, onToggle],
-  );
-
   return (
     <article
       className={[
@@ -52,37 +39,23 @@ export default function LogisticsServiceCard({
       aria-labelledby={`${cardId}-title`}
       data-open={isOpen ? "true" : "false"}
     >
-      <div
-        className={styles.shell}
-        role={interactive && hasDetails ? "button" : undefined}
-        tabIndex={interactive && hasDetails ? 0 : undefined}
-        aria-expanded={interactive && hasDetails ? isOpen : undefined}
-        aria-controls={interactive && hasDetails ? detailsId : undefined}
-        aria-label={
-          interactive && hasDetails
-            ? isOpen
-              ? `${closeDetailsLabel} ${title}`
-              : `${openDetailsLabel} ${title}`
-            : undefined
-        }
-        onClick={interactive && hasDetails ? onToggle : undefined}
-        onKeyDown={interactive && hasDetails ? handleKey : undefined}
-      >
+      <div className={styles.shell}>
         <div className={styles.topRow}>
-          {tag ? <span className={styles.tag}>{tag}</span> : <span />}
+          <div className={styles.identity}>
+            {tag ? <span className={styles.tag}>{tag}</span> : null}
+
+            <h3 id={`${cardId}-title`} className={styles.title}>
+              {title}
+            </h3>
+          </div>
 
           {Icon ? (
             <span className={styles.iconWrap} aria-hidden="true">
+              <span className={styles.iconAura} aria-hidden="true" />
               <Icon className={styles.icon} />
             </span>
           ) : null}
         </div>
-
-        <header className={styles.header}>
-          <h3 id={`${cardId}-title`} className={styles.title}>
-            {title}
-          </h3>
-        </header>
 
         {summary ? <p className={styles.summary}>{summary}</p> : null}
       </div>
@@ -94,10 +67,17 @@ export default function LogisticsServiceCard({
             className={styles.toggleBtn}
             aria-expanded={isOpen}
             aria-controls={detailsId}
-            aria-label={isOpen ? closeLabel : openLabel}
+            aria-label={
+              isOpen
+                ? `${closeDetailsLabel} ${title}`
+                : `${openDetailsLabel} ${title}`
+            }
             onClick={onToggle}
           >
-            <span>{isOpen ? closeLabel : openLabel}</span>
+            <span className={styles.toggleBtnLabel}>
+              {isOpen ? closeLabel : openLabel}
+            </span>
+
             <span
               className={[styles.chevron, isOpen ? styles.chevronOpen : ""]
                 .filter(Boolean)
@@ -121,7 +101,7 @@ export default function LogisticsServiceCard({
               {safeItems.map((text, index) => (
                 <li key={`${cardId}-item-${index}`} className={styles.listItem}>
                   <span className={styles.bullet} aria-hidden="true" />
-                  <span>{text}</span>
+                  <span className={styles.listText}>{text}</span>
                 </li>
               ))}
             </ul>

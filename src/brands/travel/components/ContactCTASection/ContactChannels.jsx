@@ -1,54 +1,57 @@
 import styles from "./ContactChannels.module.css";
-import travelBrand, { resolveTravelIcon } from "../../config/index.js";
+import travelBrand from "../../config/index.js";
 
 export default function ContactChannels() {
-  const { sections, icons } = travelBrand;
-
-  const channels = sections?.contactCTA?.channels ?? [];
+  const sectionCfg = travelBrand?.sections?.contactCTA ?? null;
+  const channels = sectionCfg?.channels ?? [];
   const ariaLabel =
-    sections?.contactCTA?.ui?.channelsAriaLabel ??
-    "Canais de contacto Sunlive Travel";
+    sectionCfg?.ui?.channelsAriaLabel ?? "Canais de contacto Sunlive Travel";
 
   if (!Array.isArray(channels) || channels.length === 0) return null;
 
-  const validChannels = channels.filter(
-    (channel) => channel?.href && channel?.label,
-  );
-
-  if (validChannels.length === 0) return null;
+  const validItems = channels.filter((item) => item?.label && item?.href);
+  if (validItems.length === 0) return null;
 
   return (
-    <nav className={styles.wrap} aria-label={ariaLabel}>
-      <ul className={styles.list} role="list">
-        {validChannels.map(
-          (
-            { key, iconKey, label, href, ariaLabel: channelAriaLabel },
-            index,
-          ) => {
-            const Icon = resolveTravelIcon(icons, iconKey);
-            const isExternal =
-              typeof href === "string" && /^https?:\/\//.test(href);
+    <div className={styles.wrap}>
+      <ul className={styles.list} role="list" aria-label={ariaLabel}>
+        {validItems.map((channel, index) => {
+          const Icon = channel?.Icon ?? channel?.icon ?? null;
+          const href = channel.href;
+          const isExternal =
+            typeof href === "string" &&
+            (href.startsWith("http://") || href.startsWith("https://"));
 
-            return (
-              <li key={key || `${label}-${index}`} className={styles.item}>
-                <a
-                  className={styles.link}
-                  href={href}
-                  aria-label={channelAriaLabel || label}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
-                >
-                  {Icon ? (
-                    <Icon className={styles.icon} width={20} height={20} />
+          return (
+            <li
+              key={channel.key || `${channel.label}-${index}`}
+              className={styles.item}
+            >
+              <a
+                href={href}
+                className={styles.link}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noreferrer noopener" : undefined}
+                aria-label={channel?.ariaLabel || channel.label}
+              >
+                {Icon ? (
+                  <Icon className={styles.icon} aria-hidden="true" />
+                ) : null}
+
+                <span className={styles.content}>
+                  <span className={styles.label}>{channel.label}</span>
+
+                  {channel?.description ? (
+                    <span className={styles.helper}>{channel.description}</span>
                   ) : null}
+                </span>
 
-                  <span className={styles.label}>{label}</span>
-                </a>
-              </li>
-            );
-          },
-        )}
+                <span className={styles.chevron} aria-hidden="true" />
+              </a>
+            </li>
+          );
+        })}
       </ul>
-    </nav>
+    </div>
   );
 }

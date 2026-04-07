@@ -12,9 +12,17 @@ export default function ContactCTASection() {
   const sectionLabel =
     sectionCfg?.ui?.sectionAriaLabel ?? "Secção de contacto Sunlive Travel";
 
-  const headline = sectionCfg?.headline ?? {};
+  const hero = sectionCfg?.conversionHero ?? {};
   const checklistPanel = sectionCfg?.checklistPanel ?? {};
   const channelsPanel = sectionCfg?.channelsPanel ?? {};
+
+  const trustPoints = Array.isArray(hero?.trustPoints)
+    ? hero.trustPoints.filter(Boolean)
+    : [];
+
+  const stats = Array.isArray(hero?.stats)
+    ? hero.stats.filter((item) => item?.value && item?.label)
+    : [];
 
   const hasChecklist =
     Array.isArray(sectionCfg?.checklist) && sectionCfg.checklist.length > 0;
@@ -23,6 +31,11 @@ export default function ContactCTASection() {
     Array.isArray(sectionCfg?.channels) && sectionCfg.channels.length > 0;
 
   if (!hasChecklist && !hasChannels) return null;
+
+  const trustPointsAriaLabel =
+    hero?.ui?.trustPointsAriaLabel ?? "Vantagens do contacto";
+
+  const statsAriaLabel = hero?.ui?.statsAriaLabel ?? "Destaques do contacto";
 
   return (
     <section
@@ -33,23 +46,50 @@ export default function ContactCTASection() {
     >
       <div className={styles.inner}>
         <header className={styles.hero}>
-          <div className={styles.heroCopy}>
-            {headline?.eyebrow ? (
-              <p className={styles.eyebrow}>{headline.eyebrow}</p>
-            ) : null}
+          <div className={styles.heroMain}>
+            <div className={styles.heroCopy}>
+              {hero?.eyebrow ? (
+                <p className={styles.eyebrow}>{hero.eyebrow}</p>
+              ) : null}
 
-            {headline?.title ? (
-              <h2 className={styles.title}>{headline.title}</h2>
-            ) : null}
+              {hero?.title ? (
+                <h2 className={styles.title}>{hero.title}</h2>
+              ) : null}
 
-            {headline?.lead ? (
-              <p className={styles.lead}>{headline.lead}</p>
-            ) : null}
+              {hero?.lead ? <p className={styles.lead}>{hero.lead}</p> : null}
 
-            {headline?.description ? (
-              <p className={styles.description}>{headline.description}</p>
+              {hero?.supportingText ? (
+                <p className={styles.description}>{hero.supportingText}</p>
+              ) : null}
+            </div>
+
+            {trustPoints.length > 0 ? (
+              <ul
+                className={styles.trustPoints}
+                aria-label={trustPointsAriaLabel}
+              >
+                {trustPoints.map((point) => (
+                  <li key={point} className={styles.trustPoint}>
+                    {point}
+                  </li>
+                ))}
+              </ul>
             ) : null}
           </div>
+
+          {stats.length > 0 ? (
+            <div className={styles.heroStats} aria-label={statsAriaLabel}>
+              {stats.map((stat) => (
+                <article
+                  key={`${stat.value}-${stat.label}`}
+                  className={styles.statCard}
+                >
+                  <strong className={styles.statValue}>{stat.value}</strong>
+                  <span className={styles.statLabel}>{stat.label}</span>
+                </article>
+              ))}
+            </div>
+          ) : null}
         </header>
 
         <div className={styles.contentGrid}>
@@ -87,7 +127,7 @@ export default function ContactCTASection() {
 
           {hasChannels ? (
             <section
-              className={styles.panel}
+              className={`${styles.panel} ${styles.channelsPanel}`}
               aria-labelledby="contact-channels-title"
             >
               <div className={styles.panelHeader}>

@@ -1,0 +1,276 @@
+.hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+    gap: clamp(1rem, 2vw, 1.35rem);
+    inline-size: 100%;
+}
+
+.copyPanel {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    gap: 0.82rem;
+    min-inline-size: 0;
+    padding: clamp(1rem, 2vw, 1.3rem);
+    border-radius: 32px;
+    border: 1px solid rgba(201, 153, 66, 0.24);
+    background:
+        radial-gradient(120% 140% at 0% 0%,
+            rgba(219, 169, 68, 0.14) 0%,
+            transparent 42%),
+        linear-gradient(180deg,
+            rgba(8, 20, 38, 0.96) 0%,
+            rgba(4, 10, 21, 0.99) 100%);
+    box-shadow:
+        0 24px 50px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.copyPanel::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    block-size: 4px;
+    background: linear-gradient(90deg,
+            rgba(199, 134, 21, 0.88),
+            rgba(46, 167, 224, 0.58));
+    pointer-events: none;
+}
+
+.eyebrow {
+    margin: 0;
+    color: color-mix(in oklab,
+            var(--sl-platinum-100, #f6f7fb) 72%,
+            var(--sl-accent-400, #79ccef) 28%);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.title {
+    margin: 0;
+    max-inline-size: 18ch;
+    color: #f7f8fc;
+    font-size: clamp(1.7rem, 3vw, 2.85rem);
+    line-height: 1.02;
+    font-weight: 800;
+    text-wrap: balance;
+}
+
+.lead {
+    margin: 0;
+    max-inline-size: 58ch;
+    color: rgba(238, 243, 249, 0.94);
+    font-size: clamp(0.97rem, 1.05vw, 1.08rem);
+    line-height: 1.58;
+    text-wrap: pretty;
+}
+
+.supportingText {
+    margin: 0;
+    max-inline-size: 64ch;
+    color: rgba(223, 231, 242, 0.82);
+    font-size: clamp(0.92rem, 0.98vw, 1rem);
+    line-height: 1.62;
+    text-wrap: pretty;
+}
+
+.collectionBlock {
+    display: grid;
+    gap: 0.64rem;
+    padding-top: 0.35rem;
+}
+
+.collectionLabel {
+    margin: 0;
+    color: rgba(235, 191, 94, 0.92);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.collectionChips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.58rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.collectionChip {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 34px;
+    padding: 0.48rem 0.72rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(244, 247, 252, 0.94);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.015)),
+        rgba(7, 18, 34, 0.68);
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.sidePanel {
+    display: grid;
+    gap: clamp(0.9rem, 1.8vw, 1.1rem);
+    align-content: start;
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.72rem;
+}
+
+.metricCard {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    gap: 0.28rem;
+    align-content: center;
+    min-block-size: 110px;
+    padding: 0.85rem 0.9rem;
+    border-radius: 22px;
+    border: 1px solid rgba(201, 153, 66, 0.18);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.02)),
+        rgba(6, 16, 31, 0.88);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 12px 24px rgba(0, 0, 0, 0.16);
+}
+
+.metricCard::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    block-size: 2px;
+    background: linear-gradient(90deg,
+            rgba(201, 153, 66, 0.82),
+            rgba(46, 167, 224, 0.48));
+}
+
+.metricValue {
+    color: #ffffff;
+    font-size: clamp(1.08rem, 1.4vw, 1.34rem);
+    font-weight: 800;
+    line-height: 1;
+}
+
+.metricLabel {
+    color: rgba(224, 232, 244, 0.84);
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.collectionNotes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.78rem;
+}
+
+.noteCard {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    gap: 0.46rem;
+    min-block-size: 100%;
+    padding: 0.95rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background:
+        radial-gradient(120% 140% at 100% 0%,
+            rgba(46, 167, 224, 0.08) 0%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(7, 18, 34, 0.94) 0%,
+            rgba(4, 10, 21, 0.98) 100%);
+    box-shadow:
+        0 14px 28px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.noteTitle {
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.98rem;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.noteDescription {
+    margin: 0;
+    color: rgba(224, 232, 244, 0.82);
+    font-size: 0.88rem;
+    line-height: 1.52;
+    text-wrap: pretty;
+}
+
+@media (max-width: 1120px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .metrics,
+    .collectionNotes {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    .copyPanel {
+        padding: 0.95rem;
+        border-radius: 26px;
+    }
+
+    .title {
+        font-size: clamp(1.42rem, 6vw, 2rem);
+    }
+
+    .lead {
+        font-size: 0.94rem;
+        line-height: 1.54;
+    }
+
+    .supportingText {
+        font-size: 0.88rem;
+        line-height: 1.56;
+    }
+
+    .collectionChip {
+        inline-size: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .eyebrow {
+        font-size: 0.71rem;
+        letter-spacing: 0.14em;
+    }
+
+    .metricCard,
+    .noteCard {
+        padding: 0.84rem;
+    }
+
+    .metricLabel,
+    .noteDescription {
+        font-size: 0.82rem;
+    }
+}

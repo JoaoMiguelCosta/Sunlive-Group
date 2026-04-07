@@ -5,51 +5,106 @@ import LogisticsServiceCard from "./LogisticsServiceCard.jsx";
 import { resolveTravelIcon } from "../../config/index.js";
 import useAccordion from "../../../../shared/hooks/useAccordion.js";
 
+const DEFAULT_UI = {
+  servicesAriaLabel: "Serviços de logística e apoio à viagem",
+  expandLabel: "Ver detalhes",
+  collapseLabel: "Recolher",
+  openDetailsLabel: "Abrir detalhes de",
+  closeDetailsLabel: "Fechar detalhes de",
+};
+
+const DEFAULT_INTRO = {
+  eyebrow: "Módulos operacionais",
+  title: "Serviços desenhados para uma execução fluida e coordenada",
+  description:
+    "Cada módulo cobre uma necessidade crítica da viagem e pode ser articulado numa operação única, com acompanhamento próximo e resposta ajustada ao grupo.",
+};
+
+function buildServiceId(service, index) {
+  return service?.id || service?.key || `svc-${index}-${service.title}`;
+}
+
 export default function ServiceOfferingsGrid({
   services = [],
+  intro = null,
   icons = {},
   ui = {},
   allowMultiple = false,
 }) {
-  const servicesAriaLabel =
-    ui?.servicesAriaLabel ?? "Serviços de logística e apoio à viagem";
-  const openLabel = ui?.expandLabel ?? "Ver detalhes";
-  const closeLabel = ui?.collapseLabel ?? "Recolher";
-  const openDetailsLabel = ui?.openDetailsLabel ?? "Abrir detalhes de";
-  const closeDetailsLabel = ui?.closeDetailsLabel ?? "Fechar detalhes de";
+  const mergedUi = { ...DEFAULT_UI, ...ui };
+  const mergedIntro = { ...DEFAULT_INTRO, ...(intro ?? {}) };
 
-  const keyedServices = useMemo(() => {
+  const normalizedServices = useMemo(() => {
     if (!Array.isArray(services)) return [];
 
     return services
       .filter((service) => service?.title)
-      .map((service, index) => ({
-        ...service,
-        key: service.key || `svc-${index}`,
-      }));
+      .map((service, index) => {
+        const id = buildServiceId(service, index);
+
+        return {
+          ...service,
+          id,
+          key: id,
+        };
+      });
   }, [services]);
 
-  const { isOpen, toggle } = useAccordion(keyedServices, { allowMultiple });
+  const { isOpen, toggle } = useAccordion(normalizedServices, {
+    allowMultiple,
+  });
 
-  if (keyedServices.length === 0) return null;
+  if (normalizedServices.length === 0) return null;
+
+  const hasIntro = Boolean(
+    mergedIntro.eyebrow || mergedIntro.title || mergedIntro.description,
+  );
 
   return (
-    <div className={styles.wrap}>
-      <div className={styles.grid} role="list" aria-label={servicesAriaLabel}>
-        {keyedServices.map((service, index) => {
+    <div
+      className={styles.block}
+      role="group"
+      aria-label={mergedUi.servicesAriaLabel}
+    >
+      {hasIntro && (
+        <header className={styles.sectionHead}>
+          <div className={styles.headGlow} aria-hidden="true" />
+
+          <div className={styles.headContent}>
+            {mergedIntro.eyebrow && (
+              <p className={styles.sectionKicker}>{mergedIntro.eyebrow}</p>
+            )}
+
+            {mergedIntro.title && (
+              <h3 className={styles.sectionTitle}>{mergedIntro.title}</h3>
+            )}
+
+            {mergedIntro.description && (
+              <p className={styles.sectionDescription}>
+                {mergedIntro.description}
+              </p>
+            )}
+          </div>
+        </header>
+      )}
+
+      <div
+        className={styles.grid}
+        role="list"
+        aria-label={mergedUi.servicesAriaLabel}
+      >
+        {normalizedServices.map((service, index) => {
           const Icon = resolveTravelIcon(icons, service.iconKey);
-          const open = isOpen(service.key);
 
           return (
             <div
-              key={service.key}
+              key={service.id}
               role="listitem"
               className={styles.cell}
-              data-key={service.key}
-              data-idx={index}
+              data-index={index + 1}
             >
               <LogisticsServiceCard
-                id={service.key}
+                id={service.id}
                 icon={Icon}
                 tag={service.tag}
                 title={service.title}
@@ -57,12 +112,12 @@ export default function ServiceOfferingsGrid({
                 items={service.items}
                 includesLabel={service.includesLabel || "Inclui:"}
                 interactive
-                isOpen={open}
-                onToggle={() => toggle(service.key)}
-                openLabel={openLabel}
-                closeLabel={closeLabel}
-                openDetailsLabel={openDetailsLabel}
-                closeDetailsLabel={closeDetailsLabel}
+                isOpen={isOpen(service.id)}
+                onToggle={() => toggle(service.id)}
+                openLabel={mergedUi.expandLabel}
+                closeLabel={mergedUi.collapseLabel}
+                openDetailsLabel={mergedUi.openDetailsLabel}
+                closeDetailsLabel={mergedUi.closeDetailsLabel}
               />
             </div>
           );

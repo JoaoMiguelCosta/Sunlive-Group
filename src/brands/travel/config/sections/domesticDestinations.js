@@ -12,18 +12,19 @@ import { TRAVEL_COMPANY } from "../core/company.js";
 const domesticDestinations = {
   id: "destinos-nacionais",
 
-  headline: {
+  editorialHero: {
     eyebrow: "Seleção nacional",
     title: "Destinos Nacionais com curadoria premium e execução consistente",
     lead: "Descubra alguns dos locais mais emblemáticos de Portugal com programas desenhados à medida, ritmo equilibrado e uma experiência cuidada do início ao fim.",
-    description:
+    supportingText:
       "Cada destino é pensado para entregar valor real ao grupo, combinando património, cultura, autenticidade local e uma operação organizada com elevado nível de conforto.",
-    featuredPills: [
-      "Tours personalizados",
-      "Roteiros bem estruturados",
-      "Experiência cultural e local",
+    routeLabel: "Curadoria nacional",
+    routeStops: [
+      "Património e identidade",
+      "Ritmo equilibrado",
+      "Operação cuidada",
     ],
-    stats: [
+    metrics: [
       {
         value: "6",
         label: "destinos selecionados",
@@ -37,33 +38,52 @@ const domesticDestinations = {
         label: "planeamento e serviço",
       },
     ],
+    insights: [
+      {
+        key: "programas",
+        title: "Programas com critério",
+        description:
+          "Cada proposta é desenhada com atenção ao ritmo, à logística e ao valor real de cada paragem.",
+      },
+      {
+        key: "experiencia",
+        title: "Experiência contextualizada",
+        description:
+          "Os percursos privilegiam autenticidade local, enquadramento cultural e leitura clara do destino.",
+      },
+    ],
     ui: {
-      pillsAriaLabel: "Pontos-chave",
-      statsAriaLabel: "Destaques da secção",
+      routeAriaLabel: "Percurso editorial da secção",
+      metricsAriaLabel: "Indicadores da secção de destinos nacionais",
+      insightsAriaLabel: "Princípios da curadoria nacional",
     },
   },
 
-  browser: {
+  showcase: {
     ariaLabel: "Explorar destinos nacionais",
-    filtersAriaLabel: "Filtrar destinos por grupo",
-    resultsLabel: "destinos disponíveis",
-    kicker: "Exploração de destinos Nacionais",
+    railAriaLabel: "Selecionar destino em destaque",
+    kicker: "Curadoria editorial",
     title:
       "Destinos selecionados para programas com identidade, valor e execução cuidada",
     description:
-      "Descubra destinos organizados por prioridade para encontrar mais rapidamente as opções mais relevantes para o perfil da viagem.",
-    tabs: [
-      { key: "todos", label: "Todos" },
-      { key: "principais", label: "Principais" },
-      { key: "outros", label: "Outros" },
-    ],
+      "Escolha um destino para explorar o seu enquadramento, duração ideal e principais pontos de interesse. A apresentação privilegia leitura, contexto e diferenciação entre opções.",
+    spotlightLabel: "Destino em destaque",
+    detailsLabel: "Duração ideal",
+    highlightsLabel: "Pontos de interesse",
+    railLabel: "Destinos disponíveis",
+    initialKey: "aveiro",
   },
 
-  contactPanel: {
+  planningPanel: {
     eyebrow: "Planeamento personalizado",
     title: "Fale connosco para criar o programa certo para o seu grupo",
     description:
       "Ajustamos destino, duração e logística ao perfil da viagem, com acompanhamento dedicado e solução à medida.",
+    proofPoints: [
+      "Programa ajustado ao grupo",
+      "Ritmo bem definido",
+      "Acompanhamento dedicado",
+    ],
   },
 
   destinations: [
@@ -84,6 +104,7 @@ const domesticDestinations = {
         src: aveiroImg,
         alt: "Canais de Aveiro com moliceiros",
       },
+      imagePosition: "center",
     },
     {
       key: "porto",
@@ -97,6 +118,7 @@ const domesticDestinations = {
         src: portoImg,
         alt: "Vista do Rio Douro e Ribeira do Porto",
       },
+      imagePosition: "center",
     },
     {
       key: "lisboa",
@@ -115,6 +137,7 @@ const domesticDestinations = {
         src: lisboaImg,
         alt: "Elétrico amarelo a passar em Lisboa",
       },
+      imagePosition: "center",
     },
     {
       key: "coimbra",
@@ -133,6 +156,7 @@ const domesticDestinations = {
         src: coimbraImg,
         alt: "Pátio da Universidade de Coimbra",
       },
+      imagePosition: "center",
     },
     {
       key: "sintra",
@@ -151,6 +175,7 @@ const domesticDestinations = {
         src: sintraImg,
         alt: "Palácio da Pena em Sintra",
       },
+      imagePosition: "center",
     },
     {
       key: "obidos",
@@ -169,6 +194,7 @@ const domesticDestinations = {
         src: obidosImg,
         alt: "Muralhas e vistas de Óbidos",
       },
+      imagePosition: "center",
     },
   ],
 

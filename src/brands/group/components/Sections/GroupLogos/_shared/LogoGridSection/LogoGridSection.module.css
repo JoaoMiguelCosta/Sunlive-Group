@@ -44,7 +44,7 @@
     margin-inline: var(--section-inset);
     padding-inline: clamp(.6rem, 1.6vw, .9rem);
     padding-block: var(--zone-pad-y);
-background: color-mix(in oklab, #020a20 82%, var(--ld-accent) 18%);
+    background: color-mix(in oklab, #020a20 82%, var(--ld-accent) 18%);
     /* Prestige Noir */
     justify-items: center;
     box-sizing: border-box;

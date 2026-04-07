@@ -11,19 +11,20 @@ import { TRAVEL_COMPANY } from "../core/company.js";
 const partnerHotels = {
   id: "parceiros-hoteis",
 
-  headline: {
+  collectionHero: {
     eyebrow: "Alojamento selecionado",
     title:
       "Hotéis parceiros com conforto, localização e consistência de serviço",
     lead: "Trabalhamos com unidades selecionadas para integrar alojamento de qualidade em programas de viagem completos, com maior comodidade e melhor coordenação operacional.",
-    description:
+    supportingText:
       "Cada parceiro é escolhido pela localização, capacidade de resposta, conforto e enquadramento com o perfil do grupo, permitindo combinar transporte, estadia e experiência num único plano bem estruturado.",
-    featuredPills: [
+    collectionLabel: "Seleção de alojamento",
+    collectionChips: [
       "Hotéis selecionados",
       "Conforto com boa localização",
       "Alojamento integrado na operação",
     ],
-    stats: [
+    metrics: [
       {
         value: "5",
         label: "hotéis parceiros",
@@ -37,28 +38,53 @@ const partnerHotels = {
         label: "ajustado ao grupo",
       },
     ],
+    collectionNotes: [
+      {
+        key: "context",
+        title: "Contexto certo",
+        description:
+          "Cada unidade é escolhida pelo enquadramento, localização e capacidade de servir bem o perfil da viagem.",
+      },
+      {
+        key: "comfort",
+        title: "Conforto consistente",
+        description:
+          "A seleção privilegia estadias confortáveis, fiáveis e coerentes com o nível de serviço esperado.",
+      },
+    ],
     ui: {
-      pillsAriaLabel: "Pontos-chave",
-      statsAriaLabel: "Destaques da secção",
+      collectionChipsAriaLabel: "Critérios da seleção de alojamento",
+      metricsAriaLabel: "Indicadores da secção de hotéis parceiros",
+      collectionNotesAriaLabel: "Princípios da curadoria de hotéis",
     },
   },
 
-  browser: {
+  collection: {
     ariaLabel: "Explorar hotéis parceiros",
-    kicker: "Seleção de alojamento",
+    selectorAriaLabel: "Selecionar hotel em destaque",
+    kicker: "Coleção curada",
     title:
       "Unidades escolhidas para estadias com conforto, contexto e boa execução",
     description:
       "Uma seleção pensada para apoiar programas turísticos, grupos e operações com necessidade de alojamento fiável, bem localizado e alinhado com o nível de serviço pretendido.",
-    resultsLabel: "hotéis disponíveis",
+    spotlightLabel: "Seleção principal",
+    locationLabel: "Localização",
+    ctaLabel: "Saiba Mais",
+    selectorLabel: "Hotéis disponíveis",
+    initialKey: "curia",
   },
 
-  contactPanel: {
+  planningPanel: {
     eyebrow: "Planeamento personalizado",
     title:
       "Fale connosco para integrar o alojamento certo no programa do seu grupo",
     description:
       "Ajudamos a combinar hotel, transporte e experiência de viagem numa proposta coesa, ajustada ao número de participantes e ao nível de conforto pretendido.",
+    proofPoints: [
+      "Hotel ajustado ao grupo",
+      "Estadia integrada na operação",
+      "Proposta coesa e personalizada",
+    ],
   },
 
   hotels: [
