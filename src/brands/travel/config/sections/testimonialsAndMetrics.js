@@ -149,13 +149,6 @@ const testimonialsAndMetrics = {
     },
   ],
 
-  contactPanel: {
-    eyebrow: "Planeamento personalizado",
-    title:
-      "Fale connosco para desenhar uma viagem com a mesma confiança e qualidade",
-    description:
-      "Criamos soluções ajustadas ao perfil do grupo, ao contexto da viagem e ao nível de serviço pretendido, com acompanhamento próximo em toda a operação.",
-  },
 
   cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
 };

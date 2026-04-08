@@ -42,8 +42,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-        linear-gradient(135deg,
+    background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.06) 0%,
             rgba(255, 255, 255, 0) 28%);
     opacity: 0.85;
@@ -88,7 +87,6 @@
 
 .title {
     margin: 0;
-   
     color: #f7f8fc;
     font-size: clamp(2rem, 4vw, 4.15rem);
     line-height: 0.93;
@@ -157,8 +155,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-        linear-gradient(135deg,
+    background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.055) 0%,
             rgba(255, 255, 255, 0) 32%);
     opacity: 0.84;
@@ -275,8 +272,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-        linear-gradient(135deg,
+    background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.05) 0%,
             rgba(255, 255, 255, 0) 34%);
     opacity: 0.8;
@@ -299,7 +295,7 @@
     text-wrap: pretty;
 }
 
-.routePanel {
+.highlightsPanel {
     position: relative;
     overflow: hidden;
     display: grid;
@@ -323,19 +319,18 @@
     -webkit-backdrop-filter: blur(10px);
 }
 
-.routePanel::after {
+.highlightsPanel::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-        linear-gradient(135deg,
+    background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.045) 0%,
             rgba(255, 255, 255, 0) 36%);
     opacity: 0.8;
 }
 
-.routeLabel {
+.highlightsLabel {
     margin: 0;
     color: rgba(235, 191, 94, 0.94);
     font-size: 0.82rem;
@@ -345,7 +340,7 @@
     text-transform: uppercase;
 }
 
-.routeStops {
+.highlightPills {
     display: flex;
     flex-wrap: wrap;
     gap: 0.62rem;
@@ -354,7 +349,7 @@
     padding: 0;
 }
 
-.routeStop {
+.highlightPill {
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -385,7 +380,7 @@
         background 220ms ease;
 }
 
-.routeStopDot {
+.highlightPillDot {
     inline-size: 0.46rem;
     block-size: 0.46rem;
     flex: 0 0 auto;
@@ -399,7 +394,7 @@
         0 0 22px rgba(199, 134, 21, 0.12);
 }
 
-.routeStopLabel {
+.highlightPillLabel {
     font-size: 0.84rem;
     font-weight: 700;
     line-height: 1.2;
@@ -426,7 +421,7 @@
             0 0 18px rgba(46, 167, 224, 0.04);
     }
 
-    .routeStop:hover {
+    .highlightPill:hover {
         border-color: rgba(201, 153, 66, 0.2);
         background:
             radial-gradient(120% 160% at 0% 0%,
@@ -443,7 +438,7 @@
         transform: translateY(-1px);
     }
 
-    .routeStop:active,
+    .highlightPill:active,
     .metricCard:active,
     .insightCard:active {
         transform: translateY(0);
@@ -480,13 +475,12 @@
         border-radius: 26px;
     }
 
-    .routePanel {
+    .highlightsPanel {
         padding: 0.92rem;
         border-radius: 22px;
     }
 
     .title {
-      
         font-size: clamp(1.6rem, 7vw, 2.45rem);
     }
 
@@ -501,13 +495,13 @@
         font-size: 0.88rem;
     }
 
-    .routeStop {
+    .highlightPill {
         inline-size: 100%;
         justify-content: center;
         text-align: center;
     }
 
-    .routeStopLabel {
+    .highlightPillLabel {
         text-align: center;
     }
 }
@@ -536,7 +530,7 @@
 
     .metricCard,
     .insightCard,
-    .routeStop {
+    .highlightPill {
         transition: none;
     }
 }

@@ -11,15 +11,15 @@ import { TRAVEL_COMPANY } from "../core/company.js";
 const partnerHotels = {
   id: "parceiros-hoteis",
 
-  collectionHero: {
+  showcaseHero: {
     eyebrow: "Alojamento selecionado",
     title:
       "Hotéis parceiros com conforto, localização e consistência de serviço",
     lead: "Trabalhamos com unidades selecionadas para integrar alojamento de qualidade em programas de viagem completos, com maior comodidade e melhor coordenação operacional.",
     supportingText:
       "Cada parceiro é escolhido pela localização, capacidade de resposta, conforto e enquadramento com o perfil do grupo, permitindo combinar transporte, estadia e experiência num único plano bem estruturado.",
-    collectionLabel: "Seleção de alojamento",
-    collectionChips: [
+    highlightsLabel: "Seleção de alojamento",
+    highlightPills: [
       "Hotéis selecionados",
       "Conforto com boa localização",
       "Alojamento integrado na operação",
@@ -38,7 +38,7 @@ const partnerHotels = {
         label: "ajustado ao grupo",
       },
     ],
-    collectionNotes: [
+    insights: [
       {
         key: "context",
         title: "Contexto certo",
@@ -53,24 +53,27 @@ const partnerHotels = {
       },
     ],
     ui: {
-      collectionChipsAriaLabel: "Critérios da seleção de alojamento",
+      highlightsAriaLabel: "Critérios da seleção de alojamento",
       metricsAriaLabel: "Indicadores da secção de hotéis parceiros",
-      collectionNotesAriaLabel: "Princípios da curadoria de hotéis",
+      insightsAriaLabel: "Princípios da curadoria de hotéis",
     },
   },
 
   collection: {
     ariaLabel: "Explorar hotéis parceiros",
-    selectorAriaLabel: "Selecionar hotel em destaque",
+    railAriaLabel: "Selecionar hotel em destaque",
     kicker: "Coleção curada",
     title:
       "Unidades escolhidas para estadias com conforto, contexto e boa execução",
     description:
       "Uma seleção pensada para apoiar programas turísticos, grupos e operações com necessidade de alojamento fiável, bem localizado e alinhado com o nível de serviço pretendido.",
     spotlightLabel: "Seleção principal",
-    locationLabel: "Localização",
+    summaryLabel: "Visão da unidade",
+    primaryMetaLabel: "Localização",
+    highlightsLabel: "Destaques",
+    railLabel: "Hotéis disponíveis",
+    railCountSuffix: "hotéis selecionados",
     ctaLabel: "Saiba Mais",
-    selectorLabel: "Hotéis disponíveis",
     initialKey: "curia",
   },
 
@@ -92,6 +95,7 @@ const partnerHotels = {
       key: "curia",
       city: "Hotel Termas da Curia",
       badge: "Curia",
+      location: "Curia",
       summary:
         "Rodeado por natureza, jardins e ambiente termal, ideal para estadias tranquilas com conforto e enquadramento relaxante.",
       href: "https://www.termasdacuria.com/",
@@ -106,6 +110,7 @@ const partnerHotels = {
       key: "pateira",
       city: "Estalagem da Pateira",
       badge: "Fermentelos",
+      location: "Fermentelos",
       summary:
         "Junto à Lagoa da Pateira, oferece vistas amplas e uma estadia calma em contacto direto com a natureza envolvente.",
       href: "https://pateira.com/",
@@ -120,6 +125,7 @@ const partnerHotels = {
       key: "estancia",
       city: "Residencial Estância",
       badge: "Oliveira do Bairro",
+      location: "Oliveira do Bairro",
       summary:
         "Uma opção de ambiente familiar e tranquilo, indicada para quem valoriza simplicidade, conforto e boa localização.",
       href: "https://www.facebook.com/residencial.estancia/?locale=pt_PT",
@@ -134,6 +140,7 @@ const partnerHotels = {
       key: "gold",
       city: "In Gold Hotel & Spa",
       badge: "Águeda",
+      location: "Águeda",
       summary:
         "Hotel contemporâneo com spa, piscina e restaurante, adequado para estadias de lazer ou contexto profissional.",
       href: "https://www.ingoldhotel.pt/pt/Menu/Home.aspx",
@@ -148,6 +155,7 @@ const partnerHotels = {
       key: "grand",
       city: "Grand Hotel de Luso",
       badge: "Luso",
+      location: "Luso",
       summary:
         "Uma unidade de referência junto às Termas do Luso, com tradição, spa e acesso privilegiado a uma experiência de bem-estar.",
       href: "https://www.hoteluso.com/pt/",

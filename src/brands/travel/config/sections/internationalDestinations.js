@@ -11,15 +11,15 @@ import { TRAVEL_COMPANY } from "../core/company.js";
 const internationalDestinations = {
   id: "destinos-internacionais",
 
-  immersiveHero: {
+  showcaseHero: {
     eyebrow: "Seleção internacional",
     title:
       "Destinos Internacionais com curadoria premium e operação personalizada",
     lead: "Expandimos o programa da sua viagem com destinos internacionais escolhidos pela relevância, impacto visual e adequação ao perfil do grupo.",
     supportingText:
       "Cada proposta é desenhada com foco em conforto, contexto cultural, fluidez logística e experiências bem estruturadas, para que a viagem internacional mantenha o mesmo nível de execução premium do início ao fim.",
-    flightLabel: "Escala internacional",
-    flightStops: [
+    highlightsLabel: "Escala internacional",
+    highlightPills: [
       "Destinos além-fronteiras",
       "Programas tailor-made",
       "Execução premium no destino",
@@ -38,7 +38,7 @@ const internationalDestinations = {
         label: "programas ajustados",
       },
     ],
-    focusPoints: [
+    insights: [
       {
         key: "scale",
         title: "Escala e diferenciação",
@@ -53,9 +53,9 @@ const internationalDestinations = {
       },
     ],
     ui: {
-      flightAriaLabel: "Percurso internacional da secção",
+      highlightsAriaLabel: "Destaques da curadoria internacional",
       metricsAriaLabel: "Indicadores da secção internacional",
-      focusPointsAriaLabel: "Princípios da curadoria internacional",
+      insightsAriaLabel: "Princípios da curadoria internacional",
     },
   },
 
@@ -68,9 +68,11 @@ const internationalDestinations = {
     description:
       "Escolha um destino para explorar o seu enquadramento, pontos de interesse e posicionamento dentro de uma proposta internacional pensada com curadoria e apoio logístico dedicado.",
     spotlightLabel: "Destino em destaque",
+    summaryLabel: "Visão do destino",
+    primaryMetaLabel: "Formato do programa",
     highlightsLabel: "Pontos de interesse",
-    durationLabel: "Formato do programa",
     railLabel: "Seleção internacional",
+    railCountSuffix: "destinos selecionados",
     initialKey: "malta",
   },
 

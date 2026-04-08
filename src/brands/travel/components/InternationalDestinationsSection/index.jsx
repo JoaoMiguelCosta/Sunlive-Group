@@ -1,7 +1,7 @@
 import styles from "./InternationalDestinationsSection.module.css";
 
 import travelBrand from "../../config/index.js";
-import InternationalImmersiveHero from "./InternationalImmersiveHero.jsx";
+import InternationalEditorialHero from "./InternationalEditorialHero.jsx";
 import InternationalDestinationsShowcase from "./InternationalDestinationsShowcase.jsx";
 import InternationalExperiencePlanner from "./InternationalExperiencePlanner.jsx";
 
@@ -13,7 +13,7 @@ export default function InternationalDestinationsSection() {
   const sectionLabel =
     cfg?.showcase?.ariaLabel ?? "Explorar destinos internacionais";
 
-  const immersiveHero = cfg?.immersiveHero ?? {};
+  const hero = cfg?.showcaseHero ?? {};
   const showcase = cfg?.showcase ?? {};
   const destinations = Array.isArray(cfg?.destinations) ? cfg.destinations : [];
   const actionPanel = cfg?.actionPanel ?? null;
@@ -28,7 +28,7 @@ export default function InternationalDestinationsSection() {
       aria-label={sectionLabel}
     >
       <div className={styles.inner}>
-        <InternationalImmersiveHero hero={immersiveHero} />
+        <InternationalEditorialHero hero={hero} />
 
         <InternationalDestinationsShowcase
           showcase={showcase}

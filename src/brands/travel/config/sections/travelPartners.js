@@ -8,20 +8,20 @@ import { TRAVEL_COMPANY } from "../core/company.js";
 const travelPartners = {
   id: "parceiros-viagens",
 
-  trustHero: {
+  showcaseHero: {
     eyebrow: "Parcerias estratégicas",
     title:
       "Parceiros de viagem que reforçam a qualidade, alcance e confiança da operação",
     lead: "Trabalhamos com parceiros selecionados para complementar a nossa oferta com conhecimento local, capacidade técnica e soluções ajustadas a diferentes perfis de viagem.",
     supportingText:
       "Estas colaborações permitem-nos construir programas mais completos e consistentes, combinando operação, experiência no destino e uma rede de apoio credível para grupos, equipas e viagens personalizadas.",
-    trustLabel: "Rede parceira validada",
-    trustChips: [
+    highlightsLabel: "Rede parceira validada",
+    highlightPills: [
       "Parcerias certificadas",
       "Conhecimento local",
       "Soluções integradas de viagem",
     ],
-    stats: [
+    metrics: [
       {
         value: "2",
         label: "parceiros estratégicos",
@@ -35,7 +35,7 @@ const travelPartners = {
         label: "apoio complementar",
       },
     ],
-    trustNotes: [
+    insights: [
       {
         key: "credibility",
         title: "Credibilidade complementar",
@@ -50,9 +50,9 @@ const travelPartners = {
       },
     ],
     ui: {
-      trustChipsAriaLabel: "Critérios da rede parceira",
-      statsAriaLabel: "Destaques da secção de parceiros",
-      trustNotesAriaLabel: "Princípios da rede de parceiros",
+      highlightsAriaLabel: "Critérios da rede parceira",
+      metricsAriaLabel: "Destaques da secção de parceiros",
+      insightsAriaLabel: "Princípios da rede de parceiros",
     },
   },
 
@@ -88,6 +88,7 @@ const travelPartners = {
       key: "portugalissimo",
       city: "Portugalíssimo",
       badge: "Parceiro local",
+      role: "Parceiro local",
       summary:
         "Especialistas em turismo e imobiliário, com foco no estilo de vida português e em experiências ligadas ao território.",
       href: "https://www.portugalissimmo.com/",
@@ -103,6 +104,7 @@ const travelPartners = {
       key: "vago",
       city: "Vago Viagens",
       badge: "Agência licenciada",
+      role: "Agência licenciada",
       summary:
         "Agência de viagens especializada em propostas autênticas e personalizadas, com abordagem próxima e conhecimento prático do setor.",
       href: "https://vagoviagens.pt/",

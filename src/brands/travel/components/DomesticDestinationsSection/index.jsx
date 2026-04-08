@@ -13,7 +13,7 @@ export default function DomesticDestinationsSection() {
   const sectionLabel =
     cfg?.showcase?.ariaLabel ?? "Explorar destinos nacionais";
 
-  const editorialHero = cfg?.editorialHero ?? {};
+  const hero = cfg?.showcaseHero ?? {};
   const showcase = cfg?.showcase ?? {};
   const destinations = Array.isArray(cfg?.destinations) ? cfg.destinations : [];
   const planningPanel = cfg?.planningPanel ?? null;
@@ -26,17 +26,15 @@ export default function DomesticDestinationsSection() {
       data-section="domestic-destinations"
       aria-label={sectionLabel}
     >
-      <div className={styles.sectionFrame}>
-        <div className={styles.inner}>
-          <DomesticEditorialHero hero={editorialHero} />
+      <div className={styles.inner}>
+        <DomesticEditorialHero hero={hero} />
 
-          <DomesticDestinationsShowcase
-            showcase={showcase}
-            destinations={destinations}
-          />
+        <DomesticDestinationsShowcase
+          showcase={showcase}
+          destinations={destinations}
+        />
 
-          <DomesticJourneyPlanner panel={planningPanel} cta={cta} />
-        </div>
+        <DomesticJourneyPlanner panel={planningPanel} cta={cta} />
       </div>
     </section>
   );

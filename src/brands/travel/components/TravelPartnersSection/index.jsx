@@ -1,7 +1,7 @@
 import styles from "./TravelPartnersSection.module.css";
 
 import travelBrand from "../../config/index.js";
-import TravelPartnersTrustHero from "./TravelPartnersTrustHero.jsx";
+import TravelPartnersHero from "./TravelPartnersHero.jsx";
 import TravelPartnersNetworkPanel from "./TravelPartnersNetworkPanel.jsx";
 import TravelPartnersActionPanel from "./TravelPartnersActionPanel.jsx";
 
@@ -13,7 +13,7 @@ export default function TravelPartnersSection() {
   const sectionLabel =
     cfg?.network?.ariaLabel ?? "Explorar parceiros de viagem";
 
-  const trustHero = cfg?.trustHero ?? {};
+  const hero = cfg?.showcaseHero ?? {};
   const network = cfg?.network ?? {};
   const partners = Array.isArray(cfg?.partners) ? cfg.partners : [];
   const actionPanel = cfg?.actionPanel ?? null;
@@ -27,7 +27,7 @@ export default function TravelPartnersSection() {
       aria-label={sectionLabel}
     >
       <div className={styles.inner}>
-        <TravelPartnersTrustHero hero={trustHero} />
+        <TravelPartnersHero hero={hero} />
 
         <TravelPartnersNetworkPanel network={network} partners={partners} />
 

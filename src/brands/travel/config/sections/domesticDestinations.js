@@ -12,14 +12,14 @@ import { TRAVEL_COMPANY } from "../core/company.js";
 const domesticDestinations = {
   id: "destinos-nacionais",
 
-  editorialHero: {
+  showcaseHero: {
     eyebrow: "Seleção nacional",
     title: "Destinos Nacionais com curadoria premium e execução consistente",
     lead: "Descubra alguns dos locais mais emblemáticos de Portugal com programas desenhados à medida, ritmo equilibrado e uma experiência cuidada do início ao fim.",
     supportingText:
       "Cada destino é pensado para entregar valor real ao grupo, combinando património, cultura, autenticidade local e uma operação organizada com elevado nível de conforto.",
-    routeLabel: "Curadoria nacional",
-    routeStops: [
+    highlightsLabel: "Curadoria nacional",
+    highlightPills: [
       "Património e identidade",
       "Ritmo equilibrado",
       "Operação cuidada",
@@ -53,7 +53,7 @@ const domesticDestinations = {
       },
     ],
     ui: {
-      routeAriaLabel: "Percurso editorial da secção",
+      highlightsAriaLabel: "Destaques da curadoria nacional",
       metricsAriaLabel: "Indicadores da secção de destinos nacionais",
       insightsAriaLabel: "Princípios da curadoria nacional",
     },
@@ -68,9 +68,11 @@ const domesticDestinations = {
     description:
       "Escolha um destino para explorar o seu enquadramento, duração ideal e principais pontos de interesse. A apresentação privilegia leitura, contexto e diferenciação entre opções.",
     spotlightLabel: "Destino em destaque",
-    detailsLabel: "Duração ideal",
+    summaryLabel: "Visão do destino",
+    primaryMetaLabel: "Duração ideal",
     highlightsLabel: "Pontos de interesse",
     railLabel: "Destinos disponíveis",
+    railCountSuffix: "destinos selecionados",
     initialKey: "aveiro",
   },
 

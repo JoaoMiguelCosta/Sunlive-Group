@@ -1,7 +1,7 @@
 import styles from "./PartnerHotelsSection.module.css";
 
 import travelBrand from "../../config/index.js";
-import PartnerHotelsCollectionHero from "./PartnerHotelsCollectionHero.jsx";
+import PartnerHotelsHero from "./PartnerHotelsHero.jsx";
 import PartnerHotelsCuratedCollection from "./PartnerHotelsCuratedCollection.jsx";
 import PartnerHotelsPlanningPanel from "./PartnerHotelsPlanningPanel.jsx";
 
@@ -13,7 +13,7 @@ export default function PartnerHotelsSection() {
   const sectionLabel =
     cfg?.collection?.ariaLabel ?? "Explorar hotéis parceiros";
 
-  const collectionHero = cfg?.collectionHero ?? {};
+  const hero = cfg?.showcaseHero ?? {};
   const collection = cfg?.collection ?? {};
   const hotels = Array.isArray(cfg?.hotels) ? cfg.hotels : [];
   const planningPanel = cfg?.planningPanel ?? null;
@@ -27,7 +27,7 @@ export default function PartnerHotelsSection() {
       aria-label={sectionLabel}
     >
       <div className={styles.inner}>
-        <PartnerHotelsCollectionHero hero={collectionHero} />
+        <PartnerHotelsHero hero={hero} />
 
         <PartnerHotelsCuratedCollection
           collection={collection}
