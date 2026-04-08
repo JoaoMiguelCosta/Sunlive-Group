@@ -60,7 +60,6 @@
 
 .title {
     margin: 0;
-    max-inline-size: 24ch;
     color: #f7f8fc;
     font-size: clamp(1.7rem, 3vw, 2.8rem);
     line-height: 1.02;

@@ -3,7 +3,6 @@ import styles from "./InternationalDestinationsSection.module.css";
 import travelBrand from "../../config/index.js";
 import InternationalEditorialHero from "./InternationalEditorialHero.jsx";
 import InternationalDestinationsShowcase from "./InternationalDestinationsShowcase.jsx";
-import InternationalExperiencePlanner from "./InternationalExperiencePlanner.jsx";
 
 export default function InternationalDestinationsSection() {
   const cfg = travelBrand?.sections?.internationalDestinations ?? null;
@@ -16,8 +15,6 @@ export default function InternationalDestinationsSection() {
   const hero = cfg?.showcaseHero ?? {};
   const showcase = cfg?.showcase ?? {};
   const destinations = Array.isArray(cfg?.destinations) ? cfg.destinations : [];
-  const actionPanel = cfg?.actionPanel ?? null;
-  const cta = cfg?.cta ?? null;
   const flags = travelBrand?.flags ?? {};
 
   return (
@@ -35,8 +32,6 @@ export default function InternationalDestinationsSection() {
           destinations={destinations}
           flags={flags}
         />
-
-        <InternationalExperiencePlanner panel={actionPanel} cta={cta} />
       </div>
     </section>
   );

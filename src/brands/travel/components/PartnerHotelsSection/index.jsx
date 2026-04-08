@@ -34,7 +34,7 @@ export default function PartnerHotelsSection() {
           hotels={hotels}
         />
 
-        <PartnerHotelsPlanningPanel panel={planningPanel} cta={cta} />
+        {/* <PartnerHotelsPlanningPanel panel={planningPanel} cta={cta} /> */}
       </div>
     </section>
   );

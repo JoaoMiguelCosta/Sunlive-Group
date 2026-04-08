@@ -1,9 +1,5 @@
-import { makeDefaultCTA } from "../../../../shared/config/BrandDefault.js";
-
 import portugalissimoImg from "../../assets/TravelPartners/portugalissimo.png";
 import vagoImg from "../../assets/TravelPartners/vago.png";
-
-import { TRAVEL_COMPANY } from "../core/company.js";
 
 const travelPartners = {
   id: "parceiros-viagens",
@@ -70,19 +66,6 @@ const travelPartners = {
     initialKey: "portugalissimo",
   },
 
-  actionPanel: {
-    eyebrow: "Planeamento personalizado",
-    title:
-      "Fale connosco para integrar os parceiros certos no seu programa de viagem",
-    description:
-      "Combinamos operação, alojamento, experiência e rede parceira numa solução coerente, ajustada ao perfil e aos objetivos do grupo.",
-    proofPoints: [
-      "Rede parceira relevante",
-      "Complementaridade real",
-      "Solução ajustada ao programa",
-    ],
-  },
-
   partners: [
     {
       key: "portugalissimo",
@@ -117,8 +100,6 @@ const travelPartners = {
       imagePosition: "center",
     },
   ],
-
-  cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
 };
 
 export default travelPartners;

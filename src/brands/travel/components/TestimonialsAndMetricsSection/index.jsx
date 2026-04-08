@@ -7,16 +7,20 @@ import TestimonialsGrid from "./TestimonialsGrid.jsx";
 import KeyMetricsBar from "./KeyMetricsBar.jsx";
 
 export default function TestimonialsAndMetricsSection() {
-  const section = travelBrand?.sections?.testimonialsAndMetrics;
+  const section = travelBrand?.sections?.testimonialsAndMetrics ?? null;
   if (!section) return null;
+
+  const sectionId = section?.id ?? "testemunhos";
+  const sectionLabel =
+    section?.spotlight?.regionLabel ?? "Testemunhos e métricas";
 
   const headline = section?.headline ?? {};
 
   return (
     <section
-      id={section?.id ?? "testemunhos"}
+      id={sectionId}
       className={styles.section}
-      aria-label={section?.spotlight?.regionLabel ?? "Testemunhos e métricas"}
+      aria-label={sectionLabel}
       data-section="testimonials-and-metrics"
     >
       <div className={styles.inner}>

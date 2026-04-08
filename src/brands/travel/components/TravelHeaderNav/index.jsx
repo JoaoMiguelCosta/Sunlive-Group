@@ -39,11 +39,11 @@ export default function TravelHeaderNav() {
               <PrimaryNav items={navItems} />
             </div>
 
-            {header.cta && (
+            {header.cta ? (
               <div className={styles.ctaSlot}>
                 <CTAButton cta={header.cta} />
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

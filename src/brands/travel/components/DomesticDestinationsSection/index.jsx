@@ -3,7 +3,6 @@ import styles from "./DomesticDestinationsSection.module.css";
 import travelBrand from "../../config/index.js";
 import DomesticEditorialHero from "./DomesticEditorialHero.jsx";
 import DomesticDestinationsShowcase from "./DomesticDestinationsShowcase.jsx";
-import DomesticJourneyPlanner from "./DomesticJourneyPlanner.jsx";
 
 export default function DomesticDestinationsSection() {
   const cfg = travelBrand?.sections?.domesticDestinations ?? null;
@@ -16,8 +15,6 @@ export default function DomesticDestinationsSection() {
   const hero = cfg?.showcaseHero ?? {};
   const showcase = cfg?.showcase ?? {};
   const destinations = Array.isArray(cfg?.destinations) ? cfg.destinations : [];
-  const planningPanel = cfg?.planningPanel ?? null;
-  const cta = cfg?.cta ?? null;
 
   return (
     <section
@@ -33,8 +30,6 @@ export default function DomesticDestinationsSection() {
           showcase={showcase}
           destinations={destinations}
         />
-
-        <DomesticJourneyPlanner panel={planningPanel} cta={cta} />
       </div>
     </section>
   );

@@ -3,32 +3,25 @@
     isolation: isolate;
     inline-size: 100%;
     color: var(--sl-platinum-100, #f6f7fb);
-    scroll-margin-top: var(--header-offset, 84px);
     overflow: clip;
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 1.5rem 50% auto;
+    inset: 7% auto auto 50%;
     translate: -50% 0;
-    inline-size: min(94vw, 1360px);
-    block-size: clamp(240px, 34vw, 460px);
+    inline-size: min(90vw, 1160px);
+    block-size: clamp(170px, 22vw, 290px);
     pointer-events: none;
-    border-radius: 999px;
+    opacity: 0.76;
     background:
-        radial-gradient(circle at 20% 28%,
-            rgba(217, 164, 65, 0.16) 0%,
-            transparent 34%),
-        radial-gradient(circle at 82% 30%,
-            rgba(78, 184, 255, 0.12) 0%,
-            transparent 30%),
-        radial-gradient(circle at 50% 100%,
-            rgba(255, 191, 71, 0.10) 0%,
-            transparent 56%);
-    filter: blur(48px);
-    opacity: 0.92;
-    z-index: 0;
+        radial-gradient(60% 100% at 50% 50%,
+            rgba(255, 228, 168, 0.16) 0%,
+            rgba(194, 136, 33, 0.08) 34%,
+            rgba(74, 172, 215, 0.08) 62%,
+            rgba(74, 172, 215, 0) 100%);
+    filter: blur(26px);
 }
 
 .section::after {
@@ -36,13 +29,18 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 0;
     background:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.015) 0%,
-            rgba(255, 255, 255, 0) 18%,
-            rgba(0, 0, 0, 0) 72%,
-            rgba(0, 0, 0, 0.05) 100%);
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.012) 0%,
+            rgba(255, 255, 255, 0) 16%,
+            rgba(255, 255, 255, 0) 84%,
+            rgba(255, 255, 255, 0.012) 100%);
+    opacity: 0.8;
+}
+
+.sectionFrame {
+    position: relative;
+    z-index: 1;
 }
 
 .inner {
@@ -50,21 +48,44 @@
     z-index: 1;
     inline-size: min(100%, 1360px);
     margin-inline: auto;
-    padding-inline: clamp(1rem, 2.5vw, 1.6rem);
+    box-sizing: border-box;
     display: grid;
-    gap: clamp(1.2rem, 2.2vw, 1.85rem);
+    gap: clamp(1.15rem, 2vw, 1.65rem);
 }
 
-@media (max-width: 768px) {
-    .section::before {
-        inline-size: 100%;
-        block-size: 320px;
-        inset-block-start: 1rem;
-        filter: blur(40px);
+.inner>* {
+    min-inline-size: 0;
+}
+
+.section:focus,
+.section:focus-visible {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+@media (max-width: 1024px) {
+    .section {
+        padding-block: clamp(2.35rem, 5vw, 3.2rem);
     }
 
     .inner {
-        gap: 1.05rem;
-        padding-inline: 0.9rem;
+        padding-inline: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding-block: 1.9rem;
+    }
+
+    .section::before {
+        inline-size: 100%;
+        block-size: 190px;
+        inset-block-start: 3%;
+    }
+
+    .inner {
+        gap: 0.95rem;
+        padding-inline: 0.92rem;
     }
 }

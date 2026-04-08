@@ -2,7 +2,6 @@ import styles from "./LogisticsSolutionsSection.module.css";
 
 import travelBrand from "../../config/index.js";
 import LogisticsOperationalHero from "./LogisticsOperationalHero.jsx";
-import LogisticsActionPanel from "./LogisticsActionPanel.jsx";
 import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
 
 export default function LogisticsSolutionsSection() {
@@ -17,8 +16,6 @@ export default function LogisticsSolutionsSection() {
   const servicesIntro = cfg?.servicesIntro ?? null;
   const services = Array.isArray(cfg?.services) ? cfg.services : [];
   const icons = travelBrand?.icons ?? {};
-  const actionPanel = cfg?.actionPanel ?? null;
-  const cta = cfg?.cta ?? null;
 
   return (
     <section
@@ -38,8 +35,6 @@ export default function LogisticsSolutionsSection() {
             ui={cfg?.ui}
             allowMultiple={false}
           />
-
-          <LogisticsActionPanel panel={actionPanel} cta={cta} />
         </div>
       </div>
     </section>

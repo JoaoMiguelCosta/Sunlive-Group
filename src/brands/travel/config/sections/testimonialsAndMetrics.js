@@ -149,7 +149,6 @@ const testimonialsAndMetrics = {
     },
   ],
 
-
   cta: makeDefaultCTA(TRAVEL_COMPANY.brandName),
 };
 

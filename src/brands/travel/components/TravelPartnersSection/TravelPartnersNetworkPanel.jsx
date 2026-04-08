@@ -1,20 +1,29 @@
-import TravelCuratedShowcase from "../../shared/ui/TravelCuratedShowcase/TravelCuratedShowcase.jsx";
+import CuratedSpotlightCollection from "../../shared/ui/CuratedSpotlightCollection.jsx/CuratedSpotlightCollection.jsx";
 
 export default function TravelPartnersNetworkPanel({
   network = {},
   partners = [],
 }) {
   return (
-    <TravelCuratedShowcase
-      showcase={{
+    <CuratedSpotlightCollection
+      collection={{
         ...network,
-        railAriaLabel:
-          network?.railAriaLabel ??
-          network?.selectorAriaLabel ??
-          "Selecionar parceiro em destaque",
+        overviewLabel: network?.overviewLabel ?? "Visão do item",
+        primaryMetaLabel: network?.roleLabel ?? "Posicionamento",
+        ctaFallbackLabel: network?.ctaFallbackLabel ?? "Saiba mais",
+        selectorCountSuffix:
+          network?.selectorCountSuffix ?? "itens selecionados",
+        selectorCountSingularSuffix:
+          network?.selectorCountSingularSuffix ?? "item selecionado",
       }}
       items={partners}
       sectionKey="travel-partners-network"
+      scrollOffset={92}
+      getItemTitle={(item) => item?.city ?? ""}
+      getItemSummary={(item) => item?.summary ?? ""}
+      getItemPrimaryMeta={(item) => item?.role ?? ""}
+      getItemBadge={(item) => item?.badge ?? ""}
+      getItemImage={(item) => item?.picture ?? null}
     />
   );
 }
