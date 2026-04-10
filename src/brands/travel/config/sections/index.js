@@ -1,7 +1,5 @@
-export { default as logisticsSolutions } from "./logisticsSolutions.js";
-export { default as domesticDestinations } from "./domesticDestinations.js";
-export { default as internationalDestinations } from "./internationalDestinations.js";
-export { default as partnerHotels } from "./partnerHotels.js";
-export { default as travelPartners } from "./travelPartners.js";
-export { default as testimonialsAndMetrics } from "./testimonialsAndMetrics.js";
-export { default as contactCTA } from "./contactCTA.js";
+export * as contacts from "./contacts/index.js";
+export * as destinations from "./destinations/index.js";
+export * as logistics from "./logistics/index.js";
+export * as partners from "./partners/index.js";
+export * as testimonials from "./testimonials/index.js";

@@ -2,22 +2,15 @@ import styles from "./TravelLinkDirectory.module.css";
 import PillLink from "../../../../shared/components/Footer/PillLink.jsx";
 import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
 
-function getColumnHash(columnKey) {
-  switch (columnKey) {
-    case "logistics":
-      return "#logistica";
-    case "domestic":
-      return "#destinos-nacionais";
-    case "international":
-      return "#destinos-internacionais";
-    default:
-      return "#";
-  }
-}
-
 function resolveFlagIcon(flags, flagKey) {
   if (!flagKey) return null;
   return flags?.[flagKey] ?? null;
+}
+
+function resolveHref(itemHref, targetPath) {
+  if (!itemHref || typeof itemHref !== "string") return "#";
+  if (itemHref.startsWith("#")) return `${targetPath}${itemHref}`;
+  return itemHref;
 }
 
 export default function TravelLinkDirectory({ data }) {
@@ -32,7 +25,6 @@ export default function TravelLinkDirectory({ data }) {
   const offset = typeof anchors.offset === "number" ? anchors.offset : 72;
 
   const { handleSmartAnchorClick: toTravel } = useSmartAnchorNav({
-    targetPath,
     offset,
   });
 
@@ -47,7 +39,6 @@ export default function TravelLinkDirectory({ data }) {
         {leftColumns.length > 0 ? (
           <div className={styles.columns}>
             {leftColumns.map((column) => {
-              const columnHash = getColumnHash(column.key);
               const isInternational = column.key === "international";
               const items = Array.isArray(column.items) ? column.items : [];
 
@@ -58,7 +49,8 @@ export default function TravelLinkDirectory({ data }) {
                   ) : null}
 
                   <div className={styles.colList}>
-                    {items.map(({ key, label, disabled, flagKey }) => {
+                    {items.map(({ key, label, href, disabled, flagKey }) => {
+                      const finalHref = resolveHref(href, targetPath);
                       const FlagIcon = isInternational
                         ? resolveFlagIcon(flags, flagKey ?? key)
                         : null;
@@ -66,7 +58,7 @@ export default function TravelLinkDirectory({ data }) {
                       return (
                         <PillLink
                           key={key}
-                          href={`${targetPath}${columnHash}`}
+                          href={finalHref}
                           disabled={disabled}
                           onSmartClick={toTravel}
                           className={[
@@ -117,25 +109,29 @@ export default function TravelLinkDirectory({ data }) {
 
                 <div className={styles.partnerPills}>
                   {(partners.hotels.items || []).map(
-                    ({ key, label, disabled }) => (
-                      <PillLink
-                        key={key}
-                        href={`${targetPath}#parceiros-hoteis`}
-                        disabled={disabled}
-                        onSmartClick={toTravel}
-                        className={[
-                          styles.pill,
-                          styles.partnerPill,
-                          disabled ? styles.disabled : "",
-                        ]
-                          .filter(Boolean)
-                          .join(" ")}
-                      >
-                        <span className={styles.pillContent}>
-                          <span className={styles.pillLabel}>{label}</span>
-                        </span>
-                      </PillLink>
-                    ),
+                    ({ key, label, href, disabled }) => {
+                      const finalHref = resolveHref(href, targetPath);
+
+                      return (
+                        <PillLink
+                          key={key}
+                          href={finalHref}
+                          disabled={disabled}
+                          onSmartClick={toTravel}
+                          className={[
+                            styles.pill,
+                            styles.partnerPill,
+                            disabled ? styles.disabled : "",
+                          ]
+                            .filter(Boolean)
+                            .join(" ")}
+                        >
+                          <span className={styles.pillContent}>
+                            <span className={styles.pillLabel}>{label}</span>
+                          </span>
+                        </PillLink>
+                      );
+                    },
                   )}
                 </div>
               </div>
@@ -151,25 +147,29 @@ export default function TravelLinkDirectory({ data }) {
 
                 <div className={styles.partnerPills}>
                   {(partners.trips.items || []).map(
-                    ({ key, label, disabled }) => (
-                      <PillLink
-                        key={key}
-                        href={`${targetPath}#parceiros-viagens`}
-                        disabled={disabled}
-                        onSmartClick={toTravel}
-                        className={[
-                          styles.pill,
-                          styles.partnerPill,
-                          disabled ? styles.disabled : "",
-                        ]
-                          .filter(Boolean)
-                          .join(" ")}
-                      >
-                        <span className={styles.pillContent}>
-                          <span className={styles.pillLabel}>{label}</span>
-                        </span>
-                      </PillLink>
-                    ),
+                    ({ key, label, href, disabled }) => {
+                      const finalHref = resolveHref(href, targetPath);
+
+                      return (
+                        <PillLink
+                          key={key}
+                          href={finalHref}
+                          disabled={disabled}
+                          onSmartClick={toTravel}
+                          className={[
+                            styles.pill,
+                            styles.partnerPill,
+                            disabled ? styles.disabled : "",
+                          ]
+                            .filter(Boolean)
+                            .join(" ")}
+                        >
+                          <span className={styles.pillContent}>
+                            <span className={styles.pillLabel}>{label}</span>
+                          </span>
+                        </PillLink>
+                      );
+                    },
                   )}
                 </div>
               </div>

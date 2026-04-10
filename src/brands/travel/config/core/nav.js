@@ -1,30 +1,70 @@
-export const TRAVEL_NAV = Object.freeze([
-  { key: "logistica", label: "Logística", href: "#logistica" },
+import { TRAVEL_PAGE_PATHS } from "./paths.js";
+
+export const TRAVEL_QUICK_LINKS = Object.freeze([
+  { key: "logistics", label: "Logística", href: TRAVEL_PAGE_PATHS.logistics },
   {
-    key: "destinos",
+    key: "destinations",
     label: "Destinos",
+    href: TRAVEL_PAGE_PATHS.destinations,
+  },
+  { key: "partners", label: "Parceiros", href: TRAVEL_PAGE_PATHS.partners },
+  {
+    key: "testimonials",
+    label: "Testemunhos",
+    href: TRAVEL_PAGE_PATHS.testimonials,
+  },
+  {
+    key: "contacts",
+    label: "Contactar",
+    href: TRAVEL_PAGE_PATHS.contacts,
+  },
+]);
+
+export const TRAVEL_NAV = Object.freeze([
+  {
+    key: "logistics",
+    label: "Logística",
+    href: TRAVEL_PAGE_PATHS.logistics,
+  },
+  {
+    key: "destinations",
+    label: "Destinos",
+    href: TRAVEL_PAGE_PATHS.destinations,
     submenu: [
       {
-        key: "destinos-nacionais",
+        key: "destinations-domestic",
         label: "Nacionais",
-        href: "#destinos-nacionais",
+        href: TRAVEL_PAGE_PATHS.destinationsDomestic,
       },
       {
-        key: "destinos-internacionais",
+        key: "destinations-international",
         label: "Internacionais",
-        href: "#destinos-internacionais",
+        href: TRAVEL_PAGE_PATHS.destinationsInternational,
       },
     ],
   },
   {
-    key: "parceiros",
+    key: "partners",
     label: "Parceiros",
+    href: TRAVEL_PAGE_PATHS.partners,
     submenu: [
-      { key: "hoteis", label: "Hotéis", href: "#parceiros-hoteis" },
-      { key: "viagens", label: "Viagens", href: "#parceiros-viagens" },
+      {
+        key: "partners-hotels",
+        label: "Hotéis",
+        href: TRAVEL_PAGE_PATHS.partnersHotels,
+      },
+      {
+        key: "partners-travel",
+        label: "Viagens",
+        href: TRAVEL_PAGE_PATHS.partnersTravel,
+      },
     ],
   },
-  { key: "testemunhos", label: "Testemunhos", href: "#testemunhos" },
+  {
+    key: "testimonials",
+    label: "Testemunhos",
+    href: TRAVEL_PAGE_PATHS.testimonials,
+  },
 ]);
 
 export default TRAVEL_NAV;

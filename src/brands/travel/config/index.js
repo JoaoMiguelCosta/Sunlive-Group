@@ -32,6 +32,7 @@ const travelBrand = {
   },
 
   header,
+  footer,
 
   nav: {
     primaryItems: TRAVEL_NAV,
@@ -43,7 +44,6 @@ const travelBrand = {
 
   sections: {
     ...sections,
-    footer,
   },
 
   icons: ICONS,

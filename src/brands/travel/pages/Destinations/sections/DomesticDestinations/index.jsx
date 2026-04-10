@@ -1,0 +1,45 @@
+import travelBrand from "../../../../config/index.js";
+
+import styles from "./DomesticDestinationsSection.module.css";
+import DomesticEditorialHero from "./DomesticEditorialHero.jsx";
+import DomesticDestinationsShowcase from "./DomesticDestinationsShowcase.jsx";
+import DomesticJourneyPlanner from "./DomesticJourneyPlanner.jsx";
+
+export default function DomesticDestinationsSection() {
+  const section =
+    travelBrand?.pages?.destinations?.sections?.domesticDestinations ?? null;
+
+  if (!section) return null;
+
+  const sectionId = section?.id ?? "destinos-nacionais";
+  const sectionLabel =
+    section?.showcase?.ariaLabel ?? "Explorar destinos nacionais";
+
+  const hero = section?.showcaseHero ?? {};
+  const showcase = section?.showcase ?? {};
+  const destinations = Array.isArray(section?.destinations)
+    ? section.destinations
+    : [];
+  const planningPanel = section?.planningPanel ?? null;
+  const cta = section?.cta ?? null;
+
+  return (
+    <section
+      id={sectionId}
+      className={styles.section}
+      data-section="domestic-destinations"
+      aria-label={sectionLabel}
+    >
+      <div className={styles.inner}>
+        <DomesticEditorialHero hero={hero} />
+
+        <DomesticDestinationsShowcase
+          showcase={showcase}
+          destinations={destinations}
+        />
+
+        <DomesticJourneyPlanner panel={planningPanel} cta={cta} />
+      </div>
+    </section>
+  );
+}

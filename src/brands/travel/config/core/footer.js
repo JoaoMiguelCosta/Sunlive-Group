@@ -9,7 +9,7 @@ import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.p
 
 import { TRAVEL_COMPANY } from "./company.js";
 import { TRAVEL_SOCIALS } from "./socials.js";
-import { TRAVEL_BASE_PATH } from "./paths.js";
+import { TRAVEL_BASE_PATH, TRAVEL_PAGE_PATHS } from "./paths.js";
 import { ICONS, FLAGS } from "./resolvedVisuals.js";
 
 const footer = {
@@ -37,7 +37,10 @@ const footer = {
 
   linkDirectory: {
     meta: {
-      anchors: { targetPath: TRAVEL_BASE_PATH, offset: 72 },
+      anchors: {
+        targetPath: TRAVEL_BASE_PATH,
+        offset: 72,
+      },
       flags: FLAGS,
     },
 
@@ -48,29 +51,29 @@ const footer = {
           title: "Logística",
           items: [
             {
-              key: "transfers-airport",
+              key: "transfers-aeroporto",
               label: "Transfers Aeroporto",
-              href: "#svc-transfers-airport",
+              href: `${TRAVEL_PAGE_PATHS.logistics}#transfers-aeroporto`,
             },
             {
-              key: "team-transport",
+              key: "transporte-equipas",
               label: "Transporte para Equipas",
-              href: "#svc-team-transport",
+              href: `${TRAVEL_PAGE_PATHS.logistics}#transporte-equipas`,
             },
             {
               key: "tours",
               label: "Tours Turísticos",
-              href: "#svc-tours",
+              href: `${TRAVEL_PAGE_PATHS.logistics}#tours-turisticos`,
             },
             {
               key: "lodging",
               label: "Alojamentos",
-              href: "#svc-lodging",
+              href: `${TRAVEL_PAGE_PATHS.logistics}#alojamentos`,
             },
             {
               key: "full-packages",
               label: "Pacotes Completos",
-              href: "#svc-full-packages",
+              href: `${TRAVEL_PAGE_PATHS.logistics}#pacotes-completos`,
             },
           ],
         },
@@ -81,32 +84,32 @@ const footer = {
             {
               key: "aveiro",
               label: "Aveiro",
-              href: "#destinos-nacionais-aveiro",
+              href: `${TRAVEL_PAGE_PATHS.destinations}#destinos-nacionais-aveiro`,
             },
             {
               key: "coimbra",
               label: "Coimbra",
-              href: "#destinos-nacionais-coimbra",
+              href: `${TRAVEL_PAGE_PATHS.destinations}#destinos-nacionais-coimbra`,
             },
             {
               key: "porto",
               label: "Porto",
-              href: "#destinos-nacionais-porto",
+              href: `${TRAVEL_PAGE_PATHS.destinations}#destinos-nacionais-porto`,
             },
             {
               key: "lisboa",
               label: "Lisboa",
-              href: "#destinos-nacionais-lisboa",
+              href: `${TRAVEL_PAGE_PATHS.destinations}#destinos-nacionais-lisboa`,
             },
             {
               key: "sintra",
               label: "Sintra",
-              href: "#destinos-nacionais-sintra",
+              href: `${TRAVEL_PAGE_PATHS.destinations}#destinos-nacionais-sintra`,
             },
             {
               key: "obidos",
               label: "Óbidos",
-              href: "#destinos-nacionais-obidos",
+              href: `${TRAVEL_PAGE_PATHS.destinations}#destinos-nacionais-obidos`,
             },
           ],
         },
@@ -117,31 +120,31 @@ const footer = {
             {
               key: "malta",
               label: "Malta",
-              href: "#destinos-internacionais-malta",
+              href: `${TRAVEL_PAGE_PATHS.destinations}#destinos-internacionais-malta`,
               flagKey: "malta",
             },
             {
               key: "qatar",
               label: "Catar",
-              href: "#destinos-internacionais-qatar",
+              href: `${TRAVEL_PAGE_PATHS.destinations}#destinos-internacionais-qatar`,
               flagKey: "qatar",
             },
             {
               key: "saudi-arabia",
               label: "Arábia Saudita",
-              href: "#destinos-internacionais-saudi-arabia",
+              href: `${TRAVEL_PAGE_PATHS.destinations}#destinos-internacionais-saudi-arabia`,
               flagKey: "saudiArabia",
             },
             {
               key: "kuwait",
               label: "Kuwait",
-              href: "#destinos-internacionais-kuwait",
+              href: `${TRAVEL_PAGE_PATHS.destinations}#destinos-internacionais-kuwait`,
               flagKey: "kuwait",
             },
             {
               key: "brazil",
               label: "Brasil",
-              href: "#destinos-internacionais-brazil",
+              href: `${TRAVEL_PAGE_PATHS.destinations}#destinos-internacionais-brazil`,
               flagKey: "brazil",
             },
           ],
@@ -157,12 +160,12 @@ const footer = {
           {
             key: "portugalissimo",
             label: "Portugalíssimo",
-            href: "https://www.portugalissimmo.com/",
+            href: `${TRAVEL_PAGE_PATHS.partners}#parceiros-viagens-portugalissimo`,
           },
           {
             key: "vago",
             label: "Vago Viagens",
-            href: "https://vagoviagens.pt/",
+            href: `${TRAVEL_PAGE_PATHS.partners}#parceiros-viagens-vago`,
           },
         ],
       },
@@ -172,27 +175,27 @@ const footer = {
           {
             key: "curia",
             label: "Hotel Termas da Curia",
-            href: "https://www.termasdacuria.com/",
+            href: `${TRAVEL_PAGE_PATHS.partners}#parceiros-hoteis-curia`,
           },
           {
             key: "estancia",
             label: "Residencial Estância",
-            href: "https://www.facebook.com/residencial.estancia/?locale=pt_PT",
+            href: `${TRAVEL_PAGE_PATHS.partners}#parceiros-hoteis-estancia`,
           },
           {
             key: "pateira",
             label: "Estalagem da Pateira",
-            href: "https://pateira.com/",
+            href: `${TRAVEL_PAGE_PATHS.partners}#parceiros-hoteis-pateira`,
           },
           {
             key: "gold",
             label: "In Gold Hotel & Spa",
-            href: "https://www.ingoldhotel.pt/pt/Menu/Home.aspx",
+            href: `${TRAVEL_PAGE_PATHS.partners}#parceiros-hoteis-gold`,
           },
           {
             key: "grand",
             label: "Grande Hotel de Luso",
-            href: "https://www.hoteluso.com/pt/",
+            href: `${TRAVEL_PAGE_PATHS.partners}#parceiros-hoteis-grand`,
           },
         ],
       },

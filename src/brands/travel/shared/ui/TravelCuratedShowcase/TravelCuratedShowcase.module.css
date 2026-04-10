@@ -53,8 +53,6 @@
 
 .spotlightCard {
     position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
     overflow: hidden;
     min-inline-size: 0;
     border-radius: 32px;
@@ -75,6 +73,7 @@
         0 14px 34px rgba(0, 0, 0, 0.17),
         0 1px 0 rgba(255, 255, 255, 0.04),
         inset 0 1px 0 rgba(255, 255, 255, 0.055);
+    scroll-margin-top: 88px;
 }
 
 .spotlightCard::before {
@@ -102,6 +101,15 @@
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     opacity: 0.75;
+}
+
+.spotlightPanelInner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+    min-inline-size: 0;
+    min-block-size: 100%;
 }
 
 .spotlightMediaColumn {
@@ -701,7 +709,7 @@
 }
 
 @media (max-width: 1180px) {
-    .spotlightCard {
+    .spotlightPanelInner {
         grid-template-columns: 1fr;
     }
 

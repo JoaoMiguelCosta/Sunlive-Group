@@ -1,4 +1,5 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import styles from "./TravelCuratedShowcase.module.css";
 
 function normalizeItems(items = []) {
@@ -9,6 +10,8 @@ function normalizeItems(items = []) {
     .map((item, index) => ({
       ...item,
       key: item?.key || `showcase-item-${index}`,
+      anchorId:
+        item?.anchorId || item?.id || item?.key || `showcase-anchor-${index}`,
     }));
 }
 
@@ -64,6 +67,7 @@ export default function TravelCuratedShowcase({
   className = "",
   sectionKey = "travel-curated-showcase",
 }) {
+  const { hash } = useLocation();
   const instanceId = useId();
   const spotlightRef = useRef(null);
 
@@ -80,8 +84,38 @@ export default function TravelCuratedShowcase({
     setActiveKey(initialKey);
   }, [initialKey]);
 
+  useEffect(() => {
+    if (!hash || safeItems.length === 0) return;
+
+    const decodedHash = decodeURIComponent(hash.replace(/^#/, ""));
+    const matchedItem = safeItems.find((item) => item.anchorId === decodedHash);
+
+    if (!matchedItem) return;
+    if (matchedItem.key === activeKey) return;
+
+    setActiveKey(matchedItem.key);
+  }, [hash, safeItems, activeKey]);
+
   const activeItem =
     safeItems.find((item) => item.key === activeKey) ?? safeItems[0] ?? null;
+
+  useEffect(() => {
+    if (!activeItem || !hash) return;
+
+    const decodedHash = decodeURIComponent(hash.replace(/^#/, ""));
+    if (decodedHash !== activeItem.anchorId) return;
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        const spotlightElement = spotlightRef.current;
+        if (!spotlightElement) return;
+
+        if (!isElementSufficientlyVisible(spotlightElement)) {
+          scrollSpotlightIntoView(spotlightElement);
+        }
+      });
+    });
+  }, [activeItem, hash]);
 
   if (!activeItem) return null;
 
@@ -196,99 +230,112 @@ export default function TravelCuratedShowcase({
 
           <div
             ref={spotlightRef}
+            id={activeItem.anchorId}
             className={styles.spotlightCard}
-            id={spotlightPanelId}
             role="tabpanel"
             aria-labelledby={`${instanceId}-tab-${activeItem.key}`}
+            data-anchor-id={activeItem.anchorId}
           >
-            <div className={styles.spotlightMediaColumn}>
-              <div className={styles.mediaWrap}>
-                {activeItem?.picture?.src ? (
-                  <img
-                    src={activeItem.picture.src}
-                    alt={activeItem?.picture?.alt ?? itemTitle}
-                    className={styles.media}
-                    style={{
-                      objectPosition: activeItem?.imagePosition ?? "center",
-                      objectFit: activeItem?.imageFit ?? "cover",
-                    }}
-                    loading="lazy"
-                  />
-                ) : null}
+            <div id={spotlightPanelId} className={styles.spotlightPanelInner}>
+              <div className={styles.spotlightMediaColumn}>
+                <div className={styles.mediaWrap}>
+                  {activeItem?.picture?.src ? (
+                    <img
+                      src={activeItem.picture.src}
+                      alt={activeItem?.picture?.alt ?? itemTitle}
+                      className={styles.media}
+                      style={{
+                        objectPosition: activeItem?.imagePosition ?? "center",
+                        objectFit: activeItem?.imageFit ?? "cover",
+                      }}
+                      loading="lazy"
+                    />
+                  ) : null}
 
-                <div className={styles.mediaOverlay} aria-hidden="true" />
-                <div className={styles.mediaGlow} aria-hidden="true" />
+                  <div className={styles.mediaOverlay} aria-hidden="true" />
+                  <div className={styles.mediaGlow} aria-hidden="true" />
 
-                <div className={styles.mediaMeta}>
-                  <span className={styles.spotlightBadge}>
-                    {spotlightLabel}
-                  </span>
+                  <div className={styles.mediaMeta}>
+                    <span className={styles.spotlightBadge}>
+                      {spotlightLabel}
+                    </span>
 
-                  <div className={styles.mediaTitleGroup}>
-                    <h3 className={styles.destinationTitle}>{itemTitle}</h3>
+                    <div className={styles.mediaTitleGroup}>
+                      <h3 className={styles.destinationTitle}>{itemTitle}</h3>
 
-                    {primaryMetaValue ? (
-                      <p className={styles.mediaDuration}>{primaryMetaValue}</p>
-                    ) : null}
+                      {primaryMetaValue ? (
+                        <p className={styles.mediaDuration}>
+                          {primaryMetaValue}
+                        </p>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className={styles.spotlightContentColumn}>
-              <div className={styles.editorialPanel}>
-                <div className={styles.editorialHead}>
-                  {showcase?.kicker ? (
-                    <p className={styles.kicker}>{showcase.kicker}</p>
-                  ) : null}
+              <div className={styles.spotlightContentColumn}>
+                <div className={styles.editorialPanel}>
+                  <div className={styles.editorialHead}>
+                    {showcase?.kicker ? (
+                      <p className={styles.kicker}>{showcase.kicker}</p>
+                    ) : null}
 
-                  {showcase?.title ? (
-                    <h3 className={styles.editorialTitle}>{showcase.title}</h3>
-                  ) : null}
+                    {showcase?.title ? (
+                      <h3 className={styles.editorialTitle}>
+                        {showcase.title}
+                      </h3>
+                    ) : null}
 
-                  {showcase?.description ? (
-                    <p className={styles.editorialDescription}>
-                      {showcase.description}
-                    </p>
-                  ) : null}
-                </div>
+                    {showcase?.description ? (
+                      <p className={styles.editorialDescription}>
+                        {showcase.description}
+                      </p>
+                    ) : null}
+                  </div>
 
-                <div className={styles.destinationDetails}>
-                  {activeItem?.summary ? (
-                    <div className={styles.infoBlock}>
-                      <p className={styles.infoEyebrow}>{summaryLabel}</p>
-                      <p className={styles.summary}>{activeItem.summary}</p>
+                  <div className={styles.destinationDetails}>
+                    {activeItem?.summary ? (
+                      <div className={styles.infoBlock}>
+                        <p className={styles.infoEyebrow}>{summaryLabel}</p>
+                        <p className={styles.summary}>{activeItem.summary}</p>
+                      </div>
+                    ) : null}
+
+                    <div className={styles.detailsGrid}>
+                      {primaryMetaValue ? (
+                        <div className={styles.detailCard}>
+                          <p className={styles.detailLabel}>
+                            {primaryMetaLabel}
+                          </p>
+                          <p className={styles.detailValue}>
+                            {primaryMetaValue}
+                          </p>
+                        </div>
+                      ) : null}
+
+                      {highlightItems.length > 0 ? (
+                        <div className={styles.detailCard}>
+                          <p className={styles.detailLabel}>
+                            {highlightsLabel}
+                          </p>
+
+                          <ul
+                            className={styles.highlights}
+                            aria-label={`Destaques de ${itemTitle}`}
+                          >
+                            {highlightItems.map((item) => (
+                              <li key={item} className={styles.highlight}>
+                                <span
+                                  className={styles.highlightDot}
+                                  aria-hidden="true"
+                                />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
                     </div>
-                  ) : null}
-
-                  <div className={styles.detailsGrid}>
-                    {primaryMetaValue ? (
-                      <div className={styles.detailCard}>
-                        <p className={styles.detailLabel}>{primaryMetaLabel}</p>
-                        <p className={styles.detailValue}>{primaryMetaValue}</p>
-                      </div>
-                    ) : null}
-
-                    {highlightItems.length > 0 ? (
-                      <div className={styles.detailCard}>
-                        <p className={styles.detailLabel}>{highlightsLabel}</p>
-
-                        <ul
-                          className={styles.highlights}
-                          aria-label={`Destaques de ${itemTitle}`}
-                        >
-                          {highlightItems.map((item) => (
-                            <li key={item} className={styles.highlight}>
-                              <span
-                                className={styles.highlightDot}
-                                aria-hidden="true"
-                              />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
                   </div>
                 </div>
               </div>

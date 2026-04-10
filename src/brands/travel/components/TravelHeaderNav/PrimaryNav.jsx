@@ -1,16 +1,13 @@
 import { useRef, useState } from "react";
+import { NavLink } from "react-router-dom";
+
 import { useOutsideClick } from "../../../../shared/hooks/useOutsideClick.js";
-import useLocalSmoothAnchors from "../../../../shared/hooks/useLocalSmoothAnchors.js";
+import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
 import travelBrand from "../../config/index.js";
 import styles from "./PrimaryNav.module.css";
 
-/** Submenu */
-function Submenu({ items = [], onSelect, onAnchorClick }) {
+function Submenu({ items = [], onAnchorClick, onClose }) {
   if (!Array.isArray(items) || items.length === 0) return null;
-
-  const handleSubClick = (e, href) => {
-    onAnchorClick?.(e, href, onSelect);
-  };
 
   return (
     <ul className={styles.submenu} role="menu">
@@ -20,7 +17,7 @@ function Submenu({ items = [], onSelect, onAnchorClick }) {
             role="menuitem"
             href={sub.href}
             className={styles.subLink}
-            onClick={(e) => handleSubClick(e, sub.href)}
+            onClick={(event) => onAnchorClick?.(event, sub.href, onClose)}
           >
             {sub.label}
           </a>
@@ -30,19 +27,9 @@ function Submenu({ items = [], onSelect, onAnchorClick }) {
   );
 }
 
-/** Item */
 function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
   const hasSub = Array.isArray(item.submenu) && item.submenu.length > 0;
   const href = item.href || "#";
-
-  const handleClick = (e) => {
-    if (hasSub) {
-      e.preventDefault();
-      onToggle(item.key);
-      return;
-    }
-    onAnchorClick(e, href, onClose);
-  };
 
   return (
     <li
@@ -50,52 +37,91 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
       data-has-submenu={hasSub || undefined}
       data-open={isOpen || undefined}
     >
-      <a href={href} className={styles.navLink} onClick={handleClick}>
-        <span>{item.label}</span>
-        {hasSub &&
-          (ChevIcon ? (
-            <ChevIcon className={styles.chev} aria-hidden="true" />
-          ) : (
-            <span className={styles.chev} aria-hidden="true">
-              ▾
-            </span>
-          ))}
-      </a>
+      <div className={styles.navItemRow}>
+        <NavLink
+          to={href}
+          end={!hasSub}
+          className={({ isActive }) =>
+            [
+              styles.navLink,
+              hasSub ? styles.navLinkWithToggle : "",
+              isActive ? styles.navLinkActive : "",
+              isOpen ? styles.navLinkOpen : "",
+            ]
+              .filter(Boolean)
+              .join(" ")
+          }
+          onClick={(event) => onAnchorClick?.(event, href, onClose)}
+        >
+          <span>{item.label}</span>
+        </NavLink>
 
-      {hasSub && (
+        {hasSub ? (
+          <button
+            type="button"
+            className={`${styles.navToggle} ${
+              isOpen ? styles.navToggleActive : ""
+            }`}
+            aria-label={`Abrir submenu ${item.label}`}
+            aria-expanded={isOpen}
+            onClick={() => onToggle(item.key)}
+          >
+            {ChevIcon ? (
+              <ChevIcon className={styles.chev} aria-hidden="true" />
+            ) : (
+              <span className={styles.chev} aria-hidden="true">
+                ▾
+              </span>
+            )}
+          </button>
+        ) : null}
+      </div>
+
+      {hasSub ? (
         <Submenu
           items={item.submenu}
-          onSelect={onClose}
           onAnchorClick={onAnchorClick}
+          onClose={onClose}
         />
-      )}
+      ) : null}
     </li>
   );
 }
 
-/** PrimaryNav */
 export default function PrimaryNav({ items = [] }) {
   const [openKey, setOpenKey] = useState(null);
   const navRef = useRef(null);
 
-  useOutsideClick(navRef, () => setOpenKey(null), true);
+  const closeAll = () => setOpenKey(null);
 
-  const { handleAnchorClick } = useLocalSmoothAnchors();
+  useOutsideClick(navRef, closeAll, true);
+
+  const { handleSmartAnchorClick } = useSmartAnchorNav({
+    offset: 72,
+    closeOverlays: closeAll,
+  });
+
   if (!Array.isArray(items) || items.length === 0) return null;
 
-  const toggleItem = (key) => setOpenKey((prev) => (prev === key ? null : key));
-  const closeAll = () => setOpenKey(null);
+  const toggleItem = (key) => {
+    setOpenKey((prev) => (prev === key ? null : key));
+  };
+
+  const handleAnchorClick = (event, href, onDone) => {
+    handleSmartAnchorClick?.(event, href);
+    onDone?.();
+  };
 
   const ChevIcon = travelBrand?.icons?.chevronDown || null;
 
   return (
     <nav ref={navRef} className={styles.nav} aria-label="Navegação principal">
       <ul className={styles.navList}>
-        {items.map((it) => (
+        {items.map((item) => (
           <NavItem
-            key={it.key}
-            item={it}
-            isOpen={openKey === it.key}
+            key={item.key}
+            item={item}
+            isOpen={openKey === item.key}
             onToggle={toggleItem}
             onClose={closeAll}
             onAnchorClick={handleAnchorClick}

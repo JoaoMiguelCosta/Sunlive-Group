@@ -14,16 +14,13 @@
     inline-size: min(100%, var(--travel-shell-max-width, 1360px));
     width: min(100%, var(--travel-shell-max-width, 1360px));
     margin-inline: auto;
-
     box-sizing: border-box;
 }
 
-/* menos padding no masthead do travel */
 .masthead :global(.inner) {
     padding-block: clamp(14px, 2.6vw, 32px);
 }
 
-/* Linha do menu */
 .primaryRow {
     inline-size: 100%;
     width: 100%;
