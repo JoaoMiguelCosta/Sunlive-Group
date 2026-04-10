@@ -30,6 +30,23 @@ function Submenu({ items = [], onAnchorClick, onClose }) {
 function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
   const hasSub = Array.isArray(item.submenu) && item.submenu.length > 0;
   const href = item.href || "#";
+  const submenuId = hasSub ? `submenu-${item.key}` : undefined;
+
+  const handleMainClick = (event) => {
+    if (hasSub) {
+      event.preventDefault();
+      onToggle(item.key);
+      return;
+    }
+
+    onAnchorClick?.(event, href, onClose);
+  };
+
+  const handleToggleClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    onToggle(item.key);
+  };
 
   return (
     <li
@@ -41,6 +58,9 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
         <NavLink
           to={href}
           end={!hasSub}
+          aria-expanded={hasSub ? isOpen : undefined}
+          aria-haspopup={hasSub ? "menu" : undefined}
+          aria-controls={hasSub ? submenuId : undefined}
           className={({ isActive }) =>
             [
               styles.navLink,
@@ -51,7 +71,7 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
               .filter(Boolean)
               .join(" ")
           }
-          onClick={(event) => onAnchorClick?.(event, href, onClose)}
+          onClick={handleMainClick}
         >
           <span>{item.label}</span>
         </NavLink>
@@ -62,9 +82,10 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
             className={`${styles.navToggle} ${
               isOpen ? styles.navToggleActive : ""
             }`}
-            aria-label={`Abrir submenu ${item.label}`}
+            aria-label={`${isOpen ? "Fechar" : "Abrir"} submenu ${item.label}`}
             aria-expanded={isOpen}
-            onClick={() => onToggle(item.key)}
+            aria-controls={submenuId}
+            onClick={handleToggleClick}
           >
             {ChevIcon ? (
               <ChevIcon className={styles.chev} aria-hidden="true" />
@@ -78,11 +99,13 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
       </div>
 
       {hasSub ? (
-        <Submenu
-          items={item.submenu}
-          onAnchorClick={onAnchorClick}
-          onClose={onClose}
-        />
+        <div id={submenuId}>
+          <Submenu
+            items={item.submenu}
+            onAnchorClick={onAnchorClick}
+            onClose={onClose}
+          />
+        </div>
       ) : null}
     </li>
   );

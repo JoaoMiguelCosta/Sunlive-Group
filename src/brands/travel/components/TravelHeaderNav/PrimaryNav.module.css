@@ -63,6 +63,7 @@
     font-size: var(--pill-fs);
     letter-spacing: .02em;
     line-height: 1;
+    cursor: pointer;
 
     background:
         linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0)),

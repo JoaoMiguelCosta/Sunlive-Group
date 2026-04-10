@@ -1,29 +1,24 @@
-/* ==========================================================================
-   InfoHeader — shared
-   Ajustado para melhor proporção dentro do footer hotel
-   ========================================================================== */
-
 .strip {
     position: relative;
     background: transparent;
     color: var(--sl-platinum-100);
-    padding-block: clamp(1.15rem, 2vw, 1.6rem);
+    padding-block: clamp(0.78rem, 1.1vw, 1rem);
 
     --info-accent: var(--footer-accent, var(--sl-gold-400, #c78615));
 
-    border-top: 1px solid color-mix(in oklab, var(--info-accent), transparent 54%);
-    border-bottom: 1px solid color-mix(in oklab, var(--info-accent), transparent 54%);
+    border-top: 1px solid color-mix(in oklab, var(--info-accent), transparent 60%);
+    border-bottom: 1px solid color-mix(in oklab, var(--info-accent), transparent 60%);
 }
 
 .inner {
     width: 100%;
     margin-inline: auto;
-    padding-inline: var(--footer-inner-pad, clamp(16px, 2.2vw, 32px));
+    padding-inline: var(--footer-inner-pad, clamp(14px, 1.8vw, 26px));
     box-sizing: border-box;
 
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.95fr) minmax(0, 0.95fr) minmax(0, 0.75fr);
-    gap: clamp(1rem, 1.8vw, 1.5rem);
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr) minmax(0, 0.88fr) minmax(0, 0.7fr);
+    gap: clamp(0.82rem, 1.1vw, 1rem);
     align-items: start;
 }
 
@@ -32,7 +27,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.25rem;
+    gap: 0.14rem;
 }
 
 .colStart {
@@ -42,13 +37,13 @@
 .title {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
-    margin: 0 0 0.7rem 0;
+    gap: 0.48rem;
+    margin: 0 0 0.42rem 0;
 
-    font-size: clamp(1rem, 0.35vw + 0.97rem, 1.14rem);
+    font-size: clamp(0.92rem, 0.22vw + 0.88rem, 1rem);
     font-weight: 800;
     letter-spacing: 0.01em;
-    line-height: 1.15;
+    line-height: 1.08;
     color: var(--sl-platinum-100);
 }
 
@@ -56,11 +51,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    inline-size: 28px;
-    block-size: 28px;
+    inline-size: 22px;
+    block-size: 22px;
     border-radius: 999px;
     color: var(--info-accent);
-    background: color-mix(in oklab, var(--info-accent) 12%, transparent);
+    background: color-mix(in oklab, var(--info-accent) 11%, transparent);
     flex: 0 0 auto;
 }
 
@@ -71,43 +66,46 @@
 }
 
 .tagline {
-    margin: 0 0 0.65rem 0;
+    margin: 0 0 0.4rem 0;
     font-weight: 800;
     color: var(--info-accent);
-    line-height: 1.35;
+    line-height: 1.24;
+    font-size: clamp(0.86rem, 0.14vw + 0.84rem, 0.94rem);
 }
 
 .about {
-    max-width: 42ch;
-    line-height: 1.58;
+    max-width: 37ch;
+    line-height: 1.36;
+    font-size: clamp(0.82rem, 0.12vw + 0.8rem, 0.9rem);
 }
 
 .about p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.88);
+    color: rgba(255, 255, 255, 0.85);
     text-align: left;
     text-wrap: pretty;
 }
 
 .about p+p {
-    margin-top: 0.7rem;
+    margin-top: 0.38rem;
 }
 
 .contentBlock {
     inline-size: 100%;
+    font-size: clamp(0.82rem, 0.12vw + 0.8rem, 0.9rem);
 }
 
 .address {
     font-style: normal;
-    line-height: 1.58;
-    color: rgba(255, 255, 255, 0.88);
-    margin: 0 0 0.45rem;
+    line-height: 1.36;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 0.24rem;
     text-wrap: pretty;
 }
 
 .subtleLink {
     display: inline-block;
-    margin-top: 0.15rem;
+    margin-top: 0.02rem;
     color: rgba(255, 255, 255, 0.72);
     text-decoration: none;
     transition: color 120ms ease, opacity 120ms ease;
@@ -120,10 +118,10 @@
 
 .contactRow {
     display: grid;
-    grid-template-columns: 18px 1fr;
+    grid-template-columns: 15px 1fr;
     align-items: start;
-    gap: 0.6rem;
-    margin: 0.38rem 0;
+    gap: 0.42rem;
+    margin: 0.18rem 0;
 }
 
 .cIcon {
@@ -131,7 +129,7 @@
     align-items: center;
     justify-content: center;
     color: var(--info-accent);
-    transform: translateY(2px);
+    transform: translateY(1px);
 }
 
 .link {
@@ -150,22 +148,22 @@
 
 .socials {
     display: flex;
-    gap: 0.55rem;
-    margin-top: 0.2rem;
+    gap: 0.38rem;
+    margin-top: 0.02rem;
     flex-wrap: wrap;
 }
 
 .socialBtn {
-    inline-size: 36px;
-    block-size: 36px;
+    inline-size: 32px;
+    block-size: 32px;
     border-radius: 999px;
-    border: 1px solid color-mix(in oklab, var(--info-accent), transparent 36%);
+    border: 1px solid color-mix(in oklab, var(--info-accent), transparent 40%);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: var(--sl-platinum-100);
     text-decoration: none;
-    background: color-mix(in oklab, var(--info-accent) 10%, transparent);
+    background: color-mix(in oklab, var(--info-accent) 8%, transparent);
     transition:
         transform 120ms ease,
         background 120ms ease,
@@ -182,15 +180,15 @@
 
 .socialBtn:hover {
     transform: translateY(-1px);
-    background: color-mix(in oklab, var(--info-accent) 18%, transparent);
+    background: color-mix(in oklab, var(--info-accent) 15%, transparent);
     color: #fff;
-    border-color: color-mix(in oklab, var(--info-accent), white 12%);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+    border-color: color-mix(in oklab, var(--info-accent), white 10%);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
 }
 
 .sIcon {
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
 }
 
 .sFallback {
@@ -215,12 +213,12 @@
 
 @media (max-width: 719.98px) {
     .strip {
-        padding-block: 1rem;
+        padding-block: 0.72rem;
     }
 
     .inner {
         grid-template-columns: 1fr;
-        gap: 1.2rem;
+        gap: 0.88rem;
     }
 
     .col {
@@ -252,7 +250,8 @@
         grid-template-columns: 1fr;
         justify-items: center;
         text-align: center;
-        gap: 0.4rem;
+        gap: 0.22rem;
+        margin: 0.14rem 0;
     }
 
     .cIcon {

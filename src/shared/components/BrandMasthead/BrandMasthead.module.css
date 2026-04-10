@@ -3,15 +3,20 @@
     inline-size: 100%;
     display: grid;
     place-items: center;
+
+    --travel-shell-max-width: 1360px;
+    --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)));
 }
 
 .inner {
     position: relative;
-    inline-size: min(var(--header-max-width, 1360px),
-            calc(100% - 2 * var(--header-line-inset, clamp(14px, 3.2vw, 42px))));
+    inline-size: min(calc(100% - (2 * var(--travel-shell-inset))),
+            var(--travel-shell-max-width));
+    width: min(calc(100% - (2 * var(--travel-shell-inset))),
+            var(--travel-shell-max-width));
     margin-inline: auto;
     box-sizing: border-box;
-    padding-block: clamp(1.5rem, 3.6vw, 2.85rem);
+    padding-block: clamp(1.25rem, 2.9vw, 2.2rem);
 }
 
 .inner::before {
@@ -29,7 +34,7 @@
 .logoBox {
     position: relative;
     aspect-ratio: var(--logo-ar, 2.6);
-    inline-size: min(clamp(19rem, 40vw, 44rem), 100%);
+    inline-size: min(clamp(16.75rem, 34vw, 38rem), 100%);
     display: grid;
     place-items: center;
     margin-inline: auto;
@@ -46,26 +51,34 @@
 
 @media (max-width: 1180px) {
     .logoBox {
-        inline-size: min(clamp(17rem, 44vw, 37rem), 100%);
+        inline-size: min(clamp(15.4rem, 38vw, 32.5rem), 100%);
     }
 }
 
 @media (max-width: 860px) {
+    .wrap {
+        --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(14px, 4vw, 24px)));
+    }
+
     .inner {
-        padding-block: clamp(1.15rem, 4vw, 2rem);
+        padding-block: clamp(0.98rem, 3.2vw, 1.55rem);
     }
 
     .logoBox {
-        inline-size: min(clamp(15rem, 58vw, 30rem), 100%);
+        inline-size: min(clamp(13.75rem, 49vw, 25.5rem), 100%);
     }
 }
 
 @media (max-width: 560px) {
+    .wrap {
+        --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(12px, 4.4vw, 18px)));
+    }
+
     .inner {
-        padding-block: clamp(0.95rem, 5vw, 1.4rem);
+        padding-block: clamp(0.76rem, 4vw, 1.08rem);
     }
 
     .logoBox {
-        inline-size: min(clamp(12.75rem, 78vw, 22rem), 100%);
+        inline-size: min(clamp(11.5rem, 69vw, 18.25rem), 100%);
     }
 }

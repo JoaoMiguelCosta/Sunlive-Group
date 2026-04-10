@@ -1,29 +1,27 @@
-:root {
-    --ld-pill-h: clamp(40px, 3vw, 54px);
-    --ld-gap-x: clamp(0.9rem, 1.5vw, 1.35rem);
-    --ld-gap-y: clamp(0.9rem, 1.8vw, 1.4rem);
-    --ld-pill-pad-y: 0.42rem;
-    --ld-pill-pad-x: 0.95rem;
-    --ld-pill-radius: 1.35rem;
-    --ld-col-max: 18rem;
-
-    --ld-title-size: clamp(1rem, 0.95rem + 0.35vw, 1.25rem);
-    --ld-pill-text-size: clamp(0.92rem, 0.82rem + 0.28vw, 1.05rem);
-
-    --flag-h: clamp(15px, 1.45vw, 20px);
-    --flag-w: clamp(22px, 2vw, 30px);
-}
-
 .sectionWrap {
     position: relative;
     box-sizing: border-box;
     inline-size: 100%;
-    padding-block: clamp(1rem, 2.2vw, 1.8rem);
-border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transparent 54%);
+    padding-block: clamp(0.65rem, 1.05vw, 0.95rem);
+    border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transparent 60%);
     color: var(--sl-platinum-100);
 
     --ld-accent: #2ea7e0;
     --ld-gold: var(--sl-gold-400, #c78615);
+
+    --ld-pill-h: clamp(34px, 1.95vw, 42px);
+    --ld-gap-x: clamp(0.7rem, 1.05vw, 0.95rem);
+    --ld-gap-y: clamp(0.58rem, 0.9vw, 0.82rem);
+    --ld-pill-pad-y: 0.2rem;
+    --ld-pill-pad-x: 0.75rem;
+    --ld-pill-radius: 1rem;
+    --ld-col-max: 15.75rem;
+
+    --ld-title-size: clamp(0.94rem, 0.9rem + 0.16vw, 1.04rem);
+    --ld-pill-text-size: clamp(0.8rem, 0.76rem + 0.14vw, 0.91rem);
+
+    --flag-h: clamp(13px, 1vw, 16px);
+    --flag-w: clamp(18px, 1.5vw, 24px);
 }
 
 .inner {
@@ -31,7 +29,7 @@ border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transpare
     min-inline-size: 0;
     box-sizing: border-box;
     display: grid;
-    gap: clamp(0.95rem, 1.8vw, 1.6rem);
+    gap: clamp(0.72rem, 1.05vw, 0.95rem);
 }
 
 .columns {
@@ -48,8 +46,8 @@ border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transpare
     column-gap: var(--ld-gap-x);
     row-gap: var(--ld-gap-y);
     align-items: start;
-border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transparent 54%);
-    padding-top: clamp(1rem, 2vw, 1.6rem);
+    border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transparent 60%);
+    padding-top: clamp(0.7rem, 1.05vw, 0.95rem);
 }
 
 .col,
@@ -67,13 +65,13 @@ border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transpare
 }
 
 .partnerBlock {
-    gap: 0.85rem;
+    gap: 0.45rem;
 }
 
 .colList,
 .partnerPills {
     display: grid;
-    gap: 1rem;
+    gap: 0.52rem;
     inline-size: 100%;
     max-inline-size: var(--ld-col-max);
     margin-inline: auto;
@@ -89,12 +87,12 @@ border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transpare
 
 .sectionTitle,
 .partnerTitle {
-    margin: 0 0 clamp(0.7rem, 1vw, 1rem) 0;
+    margin: 0 0 0.45rem 0;
     text-align: center;
     font-weight: 800;
     color: var(--sl-platinum-100);
-    letter-spacing: 0.2px;
-    line-height: 1.1;
+    letter-spacing: 0.12px;
+    line-height: 1.05;
     font-size: var(--ld-title-size);
 }
 
@@ -111,13 +109,13 @@ border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transpare
     min-inline-size: 0;
     box-sizing: border-box;
     padding: var(--ld-pill-pad-y) var(--ld-pill-pad-x);
-    border: 2px solid #2ea7e0;
+    border: 1.5px solid #2ea7e0;
     border-radius: var(--ld-pill-radius);
     text-decoration: none;
     color: var(--sl-platinum-100);
     font-weight: 700;
-    letter-spacing: 0.15px;
-    background: rgba(2, 10, 32, 1);
+    letter-spacing: 0.1px;
+    background: rgba(2, 10, 32, 0.92);
     transition:
         transform 120ms ease,
         background 120ms ease,
@@ -129,30 +127,31 @@ border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transpare
 .pill:hover {
     transform: translateY(-1px);
     background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
-    border-color: color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
+            color-mix(in oklab, var(--sl-gold-600, #a16207), black 8%),
+            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 10%));
+    border-color: color-mix(in oklab, var(--sl-gold-700, #92400e), black 12%);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
 }
 
 .pill:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--ld-accent), transparent 55%);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--ld-accent), transparent 60%);
 }
 
 .pillContent {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.55rem;
+    gap: 0.38rem;
     inline-size: 100%;
     min-inline-size: 0;
     text-align: center;
-    line-height: 1.1;
+    line-height: 1.05;
 }
 
 .pillLabel {
     font-size: var(--ld-pill-text-size);
-    line-height: 1.1;
+    line-height: 1.05;
     white-space: nowrap;
 }
 
@@ -181,38 +180,36 @@ border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transpare
     pointer-events: none;
 }
 
-/* Desktop médio / portátil */
 @media (max-width: 1180px) {
-    :root {
-        --ld-pill-h: 48px;
-        --ld-pill-pad-y: 0.38rem;
-        --ld-pill-pad-x: 0.85rem;
-        --ld-pill-radius: 1.2rem;
-        --ld-col-max: 17rem;
-        --ld-title-size: 1.12rem;
-        --ld-pill-text-size: 0.96rem;
-        --flag-h: 18px;
-        --flag-w: 28px;
+    .sectionWrap {
+        --ld-pill-h: 40px;
+        --ld-pill-pad-y: 0.18rem;
+        --ld-pill-pad-x: 0.7rem;
+        --ld-pill-radius: 0.94rem;
+        --ld-col-max: 15rem;
+        --ld-title-size: 1rem;
+        --ld-pill-text-size: 0.88rem;
+        --flag-h: 15px;
+        --flag-w: 23px;
     }
 
     .colList,
     .partnerPills {
-        gap: 0.9rem;
+        gap: 0.48rem;
     }
 }
 
-/* Tablet horizontal / portátil estreito */
 @media (max-width: 980px) {
-    :root {
-        --ld-pill-h: 45px;
-        --ld-pill-pad-y: 0.34rem;
-        --ld-pill-pad-x: 0.8rem;
-        --ld-pill-radius: 1.05rem;
-        --ld-col-max: 15.5rem;
-        --ld-title-size: 1.04rem;
-        --ld-pill-text-size: 0.91rem;
-        --flag-h: 17px;
-        --flag-w: 26px;
+    .sectionWrap {
+        --ld-pill-h: 38px;
+        --ld-pill-pad-y: 0.16rem;
+        --ld-pill-pad-x: 0.66rem;
+        --ld-pill-radius: 0.88rem;
+        --ld-col-max: 14.5rem;
+        --ld-title-size: 0.96rem;
+        --ld-pill-text-size: 0.85rem;
+        --flag-h: 14px;
+        --flag-w: 22px;
     }
 
     .columns {
@@ -223,60 +220,47 @@ border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transpare
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .colList,
-    .partnerPills {
-        gap: 0.8rem;
-    }
-
     .pillContent {
-        gap: 0.45rem;
+        gap: 0.34rem;
     }
 }
 
-/* Tablet vertical */
 @media (max-width: 768px) {
-    :root {
-        --ld-pill-h: 42px;
-        --ld-pill-pad-y: 0.32rem;
-        --ld-pill-pad-x: 0.72rem;
-        --ld-pill-radius: 0.95rem;
-        --ld-col-max: 14.5rem;
-        --ld-title-size: 0.98rem;
-        --ld-pill-text-size: 0.87rem;
-        --flag-h: 16px;
-        --flag-w: 24px;
+    .sectionWrap {
+        --ld-pill-h: 37px;
+        --ld-pill-pad-y: 0.15rem;
+        --ld-pill-pad-x: 0.62rem;
+        --ld-pill-radius: 0.82rem;
+        --ld-col-max: 16.5rem;
+        --ld-title-size: 0.92rem;
+        --ld-pill-text-size: 0.82rem;
+        --flag-h: 13px;
+        --flag-w: 20px;
     }
 
     .inner {
-        gap: 1rem;
+        gap: 0.82rem;
     }
 
     .colList,
     .partnerPills {
-        gap: 0.72rem;
+        gap: 0.46rem;
     }
 }
 
-/* Mobile */
 @media (max-width: 640px) {
-    :root {
-        --ld-pill-h: 40px;
-        --ld-pill-pad-y: 0.3rem;
-        --ld-pill-pad-x: 0.7rem;
-        --ld-pill-radius: 0.88rem;
-        --ld-col-max: 21rem;
-        --ld-title-size: 0.96rem;
-        --ld-pill-text-size: 0.85rem;
-        --flag-h: 15px;
-        --flag-w: 22px;
-    }
-
     .sectionWrap {
-        padding-block: 0.95rem;
-    }
+        --ld-pill-h: 36px;
+        --ld-pill-pad-y: 0.14rem;
+        --ld-pill-pad-x: 0.58rem;
+        --ld-pill-radius: 0.76rem;
+        --ld-col-max: 19rem;
+        --ld-title-size: 0.9rem;
+        --ld-pill-text-size: 0.8rem;
+        --flag-h: 13px;
+        --flag-w: 19px;
 
-    .inner {
-        gap: 1rem;
+        padding-block: 0.68rem;
     }
 
     .columns,
@@ -287,12 +271,8 @@ border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transpare
     .colList,
     .partnerPills {
         inline-size: 100%;
-        max-inline-size: 21rem;
-        gap: 0.68rem;
-    }
-
-    .pillContent {
-        gap: 0.42rem;
+        max-inline-size: 19rem;
+        gap: 0.44rem;
     }
 
     .pillLabel {
@@ -300,62 +280,57 @@ border-top: 1px solid color-mix(in oklab, var(--info-accent, #f3c970), transpare
     }
 }
 
-/* Mobile pequeno */
 @media (max-width: 450px) {
-    :root {
-        --ld-pill-h: 38px;
-        --ld-pill-pad-y: 0.28rem;
-        --ld-pill-pad-x: 0.62rem;
-        --ld-pill-radius: 0.8rem;
-        --ld-title-size: 0.92rem;
-        --ld-pill-text-size: 0.8rem;
-        --flag-h: 14px;
-        --flag-w: 20px;
-    }
-
-    .col,
-    .partnerBlock {
-        padding-inline: 0.7rem;
-    }
-
-    .colList,
-    .partnerPills {
-        inline-size: 100%;
-        max-inline-size: none;
-        gap: 0.62rem;
-    }
-
-    .pillContent {
-        gap: 0.36rem;
-    }
-}
-
-/* Mobile muito pequeno */
-@media (max-width: 380px) {
-    :root {
-        --ld-pill-h: 36px;
-        --ld-pill-pad-y: 0.25rem;
-        --ld-pill-pad-x: 0.56rem;
-        --ld-pill-radius: 0.72rem;
-        --ld-title-size: 0.88rem;
-        --ld-pill-text-size: 0.76rem;
-        --flag-h: 13px;
+    .sectionWrap {
+        --ld-pill-h: 35px;
+        --ld-pill-pad-y: 0.12rem;
+        --ld-pill-pad-x: 0.54rem;
+        --ld-pill-radius: 0.7rem;
+        --ld-title-size: 0.86rem;
+        --ld-pill-text-size: 0.77rem;
+        --flag-h: 12px;
         --flag-w: 18px;
     }
 
     .col,
     .partnerBlock {
-        padding-inline: 0.6rem;
+        padding-inline: 0.35rem;
     }
 
     .colList,
     .partnerPills {
-        inline-size: 100%;
         max-inline-size: none;
-        gap: 0.56rem;
+        gap: 0.42rem;
     }
 
     .pillContent {
-        gap: 0.32rem;
+        gap: 0.28rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .sectionWrap {
+        --ld-pill-h: 34px;
+        --ld-pill-pad-y: 0.1rem;
+        --ld-pill-pad-x: 0.5rem;
+        --ld-pill-radius: 0.66rem;
+        --ld-title-size: 0.82rem;
+        --ld-pill-text-size: 0.74rem;
+        --flag-h: 11px;
+        --flag-w: 17px;
+    }
+
+    .col,
+    .partnerBlock {
+        padding-inline: 0.28rem;
+    }
+
+    .colList,
+    .partnerPills {
+        gap: 0.38rem;
+    }
+
+    .pillContent {
+        gap: 0.24rem;
     }
 }

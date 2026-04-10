@@ -11,8 +11,14 @@
 }
 
 .container {
-    inline-size: min(100%, var(--travel-shell-max-width, 1360px));
-    width: min(100%, var(--travel-shell-max-width, 1360px));
+    --travel-shell-max-width: 1360px;
+    --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)));
+
+    inline-size: min(calc(100% - (2 * var(--travel-shell-inset))),
+            var(--travel-shell-max-width));
+    width: min(calc(100% - (2 * var(--travel-shell-inset))),
+            var(--travel-shell-max-width));
+
     margin-inline: auto;
     box-sizing: border-box;
 }
@@ -77,6 +83,10 @@
 }
 
 @media (max-width: 860px) {
+    .container {
+        --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(14px, 4vw, 24px)));
+    }
+
     .primaryInner {
         grid-template-columns: 1fr;
         justify-items: stretch;
@@ -86,5 +96,16 @@
 
     .ctaSlot {
         justify-self: center;
+    }
+}
+
+@media (max-width: 560px) {
+    .container {
+        --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(12px, 4.4vw, 18px)));
+    }
+
+    .primaryInner {
+        padding-inline: clamp(0.72rem, 3.8vw, 0.95rem);
+        border-radius: clamp(18px, 5vw, 22px);
     }
 }
