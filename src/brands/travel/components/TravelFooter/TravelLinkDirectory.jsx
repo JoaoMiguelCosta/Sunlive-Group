@@ -13,6 +13,48 @@ function resolveHref(itemHref, targetPath) {
   return itemHref;
 }
 
+function renderPillItems({
+  items,
+  targetPath,
+  toTravel,
+  flags,
+  showFlags = false,
+  extraClassName = "",
+}) {
+  if (!Array.isArray(items) || items.length === 0) return null;
+
+  return items.map(({ key, label, href, disabled, flagKey }) => {
+    const finalHref = resolveHref(href, targetPath);
+    const FlagIcon = showFlags ? resolveFlagIcon(flags, flagKey ?? key) : null;
+
+    return (
+      <PillLink
+        key={key}
+        href={finalHref}
+        disabled={disabled}
+        onSmartClick={toTravel}
+        className={[
+          styles.pill,
+          extraClassName,
+          disabled ? styles.disabled : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        <span className={styles.pillContent}>
+          {FlagIcon ? (
+            <span className={styles.flagWrap} aria-hidden="true">
+              <FlagIcon className={styles.flagSvg} focusable="false" />
+            </span>
+          ) : null}
+
+          <span className={styles.pillLabel}>{label}</span>
+        </span>
+      </PillLink>
+    );
+  });
+}
+
 export default function TravelLinkDirectory({ data }) {
   if (!data) return null;
 
@@ -29,11 +71,12 @@ export default function TravelLinkDirectory({ data }) {
   });
 
   const leftColumns = Array.isArray(left?.columns) ? left.columns : [];
+  const hasPartners = Boolean(partners?.hotels || partners?.trips);
 
   return (
     <div
       className={styles.sectionWrap}
-      aria-label="Footer — Quick Links (Travel)"
+      aria-label={meta?.ariaLabel ?? "Footer — Quick Links (Travel)"}
     >
       <div className={styles.inner}>
         {leftColumns.length > 0 ? (
@@ -43,136 +86,70 @@ export default function TravelLinkDirectory({ data }) {
               const items = Array.isArray(column.items) ? column.items : [];
 
               return (
-                <div key={column.key} className={styles.col}>
+                <section key={column.key} className={styles.col}>
                   {column.title ? (
                     <h3 className={styles.sectionTitle}>{column.title}</h3>
                   ) : null}
 
                   <div className={styles.colList}>
-                    {items.map(({ key, label, href, disabled, flagKey }) => {
-                      const finalHref = resolveHref(href, targetPath);
-                      const FlagIcon = isInternational
-                        ? resolveFlagIcon(flags, flagKey ?? key)
-                        : null;
-
-                      return (
-                        <PillLink
-                          key={key}
-                          href={finalHref}
-                          disabled={disabled}
-                          onSmartClick={toTravel}
-                          className={[
-                            styles.pill,
-                            disabled ? styles.disabled : "",
-                          ]
-                            .filter(Boolean)
-                            .join(" ")}
-                        >
-                          <span className={styles.pillContent}>
-                            {FlagIcon ? (
-                              <span
-                                className={styles.flagWrap}
-                                aria-hidden="true"
-                              >
-                                <FlagIcon
-                                  className={styles.flagSvg}
-                                  focusable="false"
-                                />
-                              </span>
-                            ) : null}
-
-                            <span className={styles.pillLabel}>{label}</span>
-                          </span>
-                        </PillLink>
-                      );
+                    {renderPillItems({
+                      items,
+                      targetPath,
+                      toTravel,
+                      flags,
+                      showFlags: isInternational,
                     })}
                   </div>
-                </div>
+                </section>
               );
             })}
           </div>
         ) : null}
 
-        {partners?.hotels || partners?.trips ? (
+        {hasPartners ? (
           <div
             className={styles.partnersWrap}
             role="group"
-            aria-label="Parceiros"
+            aria-label={partners?.ariaLabel ?? "Parceiros"}
           >
             {partners?.hotels ? (
-              <div className={styles.partnerBlock}>
+              <section className={styles.partnerBlock}>
                 <h3 className={styles.partnerTitle}>
                   <span className={styles.partnerTitleText}>
-                    {partners.hotels.title || "Alojamentos em colaboração com:"}
+                    {partners.hotels.title || "Alojamentos em colaboração"}
                   </span>
                 </h3>
 
                 <div className={styles.partnerPills}>
-                  {(partners.hotels.items || []).map(
-                    ({ key, label, href, disabled }) => {
-                      const finalHref = resolveHref(href, targetPath);
-
-                      return (
-                        <PillLink
-                          key={key}
-                          href={finalHref}
-                          disabled={disabled}
-                          onSmartClick={toTravel}
-                          className={[
-                            styles.pill,
-                            styles.partnerPill,
-                            disabled ? styles.disabled : "",
-                          ]
-                            .filter(Boolean)
-                            .join(" ")}
-                        >
-                          <span className={styles.pillContent}>
-                            <span className={styles.pillLabel}>{label}</span>
-                          </span>
-                        </PillLink>
-                      );
-                    },
-                  )}
+                  {renderPillItems({
+                    items: partners.hotels.items || [],
+                    targetPath,
+                    toTravel,
+                    flags,
+                    extraClassName: styles.partnerPill,
+                  })}
                 </div>
-              </div>
+              </section>
             ) : null}
 
             {partners?.trips ? (
-              <div className={styles.partnerBlock}>
+              <section className={styles.partnerBlock}>
                 <h3 className={styles.partnerTitle}>
                   <span className={styles.partnerTitleText}>
-                    {partners.trips.title || "Viagens em colaboração com:"}
+                    {partners.trips.title || "Viagens em colaboração"}
                   </span>
                 </h3>
 
                 <div className={styles.partnerPills}>
-                  {(partners.trips.items || []).map(
-                    ({ key, label, href, disabled }) => {
-                      const finalHref = resolveHref(href, targetPath);
-
-                      return (
-                        <PillLink
-                          key={key}
-                          href={finalHref}
-                          disabled={disabled}
-                          onSmartClick={toTravel}
-                          className={[
-                            styles.pill,
-                            styles.partnerPill,
-                            disabled ? styles.disabled : "",
-                          ]
-                            .filter(Boolean)
-                            .join(" ")}
-                        >
-                          <span className={styles.pillContent}>
-                            <span className={styles.pillLabel}>{label}</span>
-                          </span>
-                        </PillLink>
-                      );
-                    },
-                  )}
+                  {renderPillItems({
+                    items: partners.trips.items || [],
+                    targetPath,
+                    toTravel,
+                    flags,
+                    extraClassName: styles.partnerPill,
+                  })}
                 </div>
-              </div>
+              </section>
             ) : null}
           </div>
         ) : null}

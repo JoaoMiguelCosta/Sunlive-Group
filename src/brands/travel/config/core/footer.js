@@ -57,7 +57,7 @@ const footer = {
             },
             {
               key: "transporte-equipas",
-              label: "Transporte para Equipas",
+              label: "Transporte Equipas",
               href: `${TRAVEL_PAGE_PATHS.logistics}#transporte-equipas`,
             },
             {

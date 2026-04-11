@@ -101,7 +101,7 @@ const logisticsSolutions = {
       anchorId: "transporte-equipas",
       iconKey: "bus",
       tag: "Mobilidade de Grupo",
-      title: "Transporte para Equipas",
+      title: "Transporte Equipas",
       summary:
         "Viaturas preparadas para equipas desportivas, com espaço para equipamentos, conforto elevado e gestão logística eficiente.",
       includesLabel: "Inclui:",
