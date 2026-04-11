@@ -1,9 +1,10 @@
-import { Navigate, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import { TRAVEL_BASE_PATH } from "./config/index.js";
 import TravelPageLayout from "./layouts/TravelPageLayout.jsx";
 
 import {
+  HomePage,
   LogisticsPage,
   DestinationsPage,
   PartnersPage,
@@ -13,7 +14,7 @@ import {
 
 export const travelRoutes = (
   <Route path={TRAVEL_BASE_PATH} element={<TravelPageLayout />}>
-    <Route index element={<Navigate to="logistica" replace />} />
+    <Route index element={<HomePage />} />
     <Route path="logistica" element={<LogisticsPage />} />
     <Route path="destinos" element={<DestinationsPage />} />
     <Route path="parceiros" element={<PartnersPage />} />

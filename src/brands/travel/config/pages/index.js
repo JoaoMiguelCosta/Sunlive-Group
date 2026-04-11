@@ -1,3 +1,4 @@
+export { default as home } from "./home.js";
 export { default as logistics } from "./logistics.js";
 export { default as destinations } from "./destinations.js";
 export { default as partners } from "./partners.js";

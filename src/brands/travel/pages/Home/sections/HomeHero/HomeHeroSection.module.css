@@ -1,0 +1,952 @@
+.section {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    inline-size: 100%;
+    border: 1px solid rgba(223, 178, 74, 0.22);
+    border-radius: clamp(1.45rem, 2.2vw, 2.3rem);
+    background:
+        radial-gradient(110% 135% at 0% 0%, rgba(32, 77, 139, 0.34) 0%, transparent 34%),
+        radial-gradient(72% 88% at 100% 100%, rgba(38, 103, 190, 0.3) 0%, transparent 42%),
+        radial-gradient(42% 44% at 67% 20%, rgba(219, 171, 64, 0.12) 0%, transparent 68%),
+        radial-gradient(30% 36% at 18% 78%, rgba(97, 177, 255, 0.12) 0%, transparent 74%),
+        linear-gradient(125deg, #122b4c 0%, #041425 33%, #02111f 58%, #0a2a4c 100%);
+    box-shadow:
+        0 26px 72px rgba(0, 0, 0, 0.3),
+        0 12px 26px rgba(2, 12, 24, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(85, 153, 221, 0.08);
+}
+
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, transparent 20%, transparent 78%, rgba(119, 186, 255, 0.04) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, transparent 22%, transparent 78%, rgba(255, 255, 255, 0.03) 100%);
+    pointer-events: none;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgba(224, 180, 76, 0.68) 0%,
+            rgba(98, 189, 255, 0.58) 52%,
+            rgba(255, 255, 255, 0.08) 100%);
+    pointer-events: none;
+}
+
+.backdropGlow,
+.backdropOrbPrimary,
+.backdropOrbSecondary {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.backdropGlow {
+    inset: auto auto -14% -6%;
+    inline-size: clamp(13rem, 26vw, 26rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, rgba(67, 144, 255, 0.18) 0%, rgba(67, 144, 255, 0.07) 32%, transparent 72%);
+    filter: blur(40px);
+    opacity: 0.88;
+}
+
+.backdropOrbPrimary {
+    inset: 8% 9% auto auto;
+    inline-size: clamp(7rem, 11vw, 11rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, rgba(236, 191, 88, 0.14) 0%, rgba(236, 191, 88, 0.04) 42%, transparent 76%);
+    filter: blur(22px);
+    opacity: 0.68;
+}
+
+.backdropOrbSecondary {
+    inset: auto 14% 8% auto;
+    inline-size: clamp(9rem, 14vw, 14rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, rgba(94, 173, 255, 0.16) 0%, rgba(94, 173, 255, 0.05) 44%, transparent 78%);
+    filter: blur(28px);
+    opacity: 0.8;
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(19rem, 0.88fr);
+    gap: clamp(0.9rem, 1.5vw, 1.3rem);
+    align-items: start;
+    padding: clamp(0.85rem, 1.4vw, 1.1rem);
+}
+
+.copyColumn,
+.sideColumn {
+    min-width: 0;
+}
+
+.copyPanel,
+.sidePanel {
+    position: relative;
+    border-radius: clamp(1.1rem, 1.6vw, 1.7rem);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background:
+        linear-gradient(180deg, rgba(12, 28, 48, 0.82) 0%, rgba(5, 16, 31, 0.9) 100%);
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.18),
+        0 1px 0 rgba(255, 255, 255, 0.02),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        inset 0 -1px 0 rgba(82, 146, 213, 0.05);
+    backdrop-filter: blur(12px);
+}
+
+.copyPanel::before,
+.sidePanel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, transparent 28%, transparent 72%, rgba(94, 182, 255, 0.06) 100%);
+    pointer-events: none;
+}
+
+.copyPanel::after,
+.sidePanel::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.025);
+    pointer-events: none;
+}
+
+.copyPanel {
+    display: grid;
+    gap: clamp(0.78rem, 1.1vw, 1rem);
+    padding: clamp(0.92rem, 1.55vw, 1.2rem);
+}
+
+.copyShell {
+    position: relative;
+    display: grid;
+    gap: clamp(0.68rem, 0.92vw, 0.9rem);
+    min-width: 0;
+}
+
+.copyShell::before {
+    content: "";
+    position: absolute;
+    inset: -0.35rem auto auto -0.3rem;
+    inline-size: min(100%, 14rem);
+    block-size: 6.2rem;
+    border-radius: 1.6rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 75%);
+    filter: blur(17px);
+    opacity: 0.58;
+    pointer-events: none;
+}
+
+.eyebrow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin: 0;
+    padding: 0.38rem 0.62rem 0.36rem;
+    border-radius: 999px;
+    border: 1px solid rgba(226, 186, 88, 0.2);
+    background:
+        linear-gradient(180deg, rgba(225, 177, 63, 0.14) 0%, rgba(225, 177, 63, 0.06) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.09),
+        inset 0 -1px 0 rgba(225, 177, 63, 0.04),
+        0 6px 16px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(4px);
+    font-size: 0.66rem;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(244, 204, 105, 0.98);
+}
+
+.brandHighlight {
+    color: rgba(244, 204, 105, 0.98);
+    font-weight: 760;
+    text-shadow: 0 6px 16px rgba(2, 10, 20, 0.12);
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(2.05rem, 4vw, 3.85rem);
+    line-height: 0.92;
+    letter-spacing: -0.065em;
+    font-weight: 900;
+    color: #f8fbff;
+    text-wrap: balance;
+    text-shadow: 0 10px 26px rgba(1, 8, 18, 0.18);
+}
+
+.bodyCopy {
+    display: grid;
+    gap: 0.62rem;
+}
+
+.lead,
+.supportingText {
+    margin: 0;
+}
+
+.lead {
+    font-size: clamp(0.98rem, 1.08vw, 1.08rem);
+    line-height: 1.5;
+    font-weight: 760;
+    letter-spacing: -0.012em;
+    color: rgba(240, 244, 249, 0.94);
+}
+
+.supportingText {
+    font-size: clamp(0.9rem, 0.94vw, 0.95rem);
+    line-height: 1.62;
+    font-weight: 460;
+    letter-spacing: -0.006em;
+    color: rgba(206, 217, 232, 0.82);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.68rem;
+    margin-top: 0.05rem;
+}
+
+.primaryAction,
+.secondaryAction,
+.quickLink {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.85rem;
+    padding-inline: 1rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease,
+        color 180ms ease,
+        filter 180ms ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.primaryAction::before,
+.secondaryAction::before,
+.quickLink::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 62%);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.primaryAction::after,
+.secondaryAction::after,
+.quickLink::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 180ms ease;
+}
+
+.actionLabel {
+    position: relative;
+    z-index: 1;
+    font-size: 0.95rem;
+    line-height: 1;
+    font-weight: 820;
+    letter-spacing: -0.015em;
+}
+
+.primaryAction {
+    color: #fff9ed;
+    font-weight: 860;
+    border: 1px solid rgba(232, 185, 78, 0.5);
+    background:
+        linear-gradient(180deg, rgba(242, 196, 89, 1) 0%, rgba(196, 129, 18, 1) 100%);
+    box-shadow:
+        0 14px 26px rgba(171, 109, 10, 0.22),
+        0 0 0 1px rgba(255, 220, 146, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.primaryAction::after {
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 245, 214, 0.24) 0%, transparent 62%);
+}
+
+.primaryAction:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 18px 30px rgba(171, 109, 10, 0.26),
+        0 0 0 1px rgba(255, 220, 146, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    filter: saturate(1.02) brightness(1.02);
+}
+
+.primaryAction:hover::after {
+    opacity: 1;
+}
+
+.primaryAction:active {
+    transform: translateY(0);
+    box-shadow:
+        0 10px 18px rgba(171, 109, 10, 0.22),
+        0 0 0 1px rgba(255, 220, 146, 0.09),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.secondaryAction {
+    color: #f4f8fc;
+    font-weight: 760;
+    border: 1px solid rgba(214, 169, 78, 0.24);
+    background:
+        linear-gradient(180deg, rgba(20, 43, 74, 0.82) 0%, rgba(7, 18, 34, 0.96) 100%);
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.secondaryAction::after,
+.quickLink::after {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 48%),
+        radial-gradient(circle at 50% 100%, rgba(92, 186, 255, 0.08) 0%, transparent 60%);
+}
+
+.secondaryAction:hover,
+.quickLink:hover {
+    transform: translateY(-2px);
+    border-color: rgba(232, 185, 78, 0.44);
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(255, 245, 214, 0.16) 0%,
+            rgba(255, 245, 214, 0.05) 30%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgba(242, 196, 89, 0.98) 0%,
+            rgba(196, 129, 18, 0.98) 100%);
+    box-shadow:
+        0 16px 28px rgba(171, 109, 10, 0.22),
+        0 0 0 1px rgba(255, 220, 146, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    color: #fff9ed;
+    filter: saturate(1.02) brightness(1.02);
+}
+
+.secondaryAction:hover::after,
+.quickLink:hover::after {
+    opacity: 1;
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(255, 245, 214, 0.24) 0%,
+            transparent 62%);
+}
+
+.secondaryAction:active,
+.quickLink:active {
+    transform: translateY(0);
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible,
+.quickLink:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 2px rgba(245, 204, 106, 0.92),
+        0 0 0 5px rgba(90, 180, 255, 0.16),
+        0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.supportRail {
+    display: grid;
+    gap: 0.78rem;
+    padding-top: 0.05rem;
+}
+
+.trustPills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.56rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.trustPill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.26rem;
+    padding-inline: 0.82rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background:
+        linear-gradient(180deg, rgba(18, 40, 69, 0.62) 0%, rgba(8, 19, 35, 0.82) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.015);
+    cursor: default;
+    transition:
+        border-color 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.trustPill::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, transparent 58%);
+    pointer-events: none;
+}
+
+.trustPill:hover {
+    transform: none;
+    border-color: rgba(232, 185, 78, 0.12);
+    background:
+        linear-gradient(180deg, rgba(21, 45, 76, 0.66) 0%, rgba(9, 21, 39, 0.84) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.018);
+}
+
+.trustPill::before {
+    content: "";
+    inline-size: 0.38rem;
+    block-size: 0.38rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 35%,
+            rgba(255, 244, 214, 0.92) 0%,
+            rgba(244, 208, 117, 0.88) 22%,
+            rgba(227, 180, 69, 0.96) 48%,
+            rgba(155, 97, 10, 1) 100%);
+    box-shadow:
+        0 0 0 4px rgba(223, 173, 60, 0.06),
+        0 0 12px rgba(223, 173, 60, 0.12);
+    flex: 0 0 auto;
+}
+
+.trustPillText {
+    color: rgba(236, 242, 248, 0.92);
+    font-size: 0.85rem;
+    line-height: 1.18;
+    font-weight: 740;
+    letter-spacing: -0.008em;
+}
+
+.quickLinksWrap {
+    display: grid;
+    gap: 0.64rem;
+}
+
+.quickLinksLabel {
+    margin: 0;
+    font-size: 0.72rem;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    color: rgba(219, 227, 238, 0.68);
+}
+
+.quickLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.56rem;
+}
+
+.quickLink {
+    min-height: 2.35rem;
+    padding-inline: 0.84rem;
+    color: #eef4fb;
+    font-size: 0.84rem;
+    line-height: 1;
+    font-weight: 760;
+    letter-spacing: -0.01em;
+    border: 1px solid rgba(214, 169, 78, 0.22);
+    background:
+        linear-gradient(180deg, rgba(17, 39, 67, 0.82) 0%, rgba(7, 17, 32, 0.96) 100%);
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.sideColumn {
+    display: grid;
+}
+
+.sidePanel {
+    display: grid;
+    gap: clamp(0.72rem, 1vw, 0.9rem);
+    padding: clamp(0.82rem, 1.2vw, 0.92rem);
+}
+
+.metricsWrap {
+    position: relative;
+    min-width: 0;
+}
+
+.metricsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    align-items: stretch;
+    gap: 0.64rem;
+}
+
+.metricCard,
+.insightCard {
+    position: relative;
+    overflow: clip;
+    border-radius: 1.16rem;
+    border: 1px solid rgba(225, 179, 72, 0.16);
+    background:
+        linear-gradient(155deg, rgba(21, 43, 74, 0.9) 0%, rgba(6, 16, 31, 0.96) 100%);
+    box-shadow:
+        0 14px 24px rgba(0, 0, 0, 0.16),
+        0 0 0 1px rgba(255, 255, 255, 0.02),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.metricCard::before,
+.insightCard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.09), transparent 42%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 28%);
+    pointer-events: none;
+}
+
+.metricCard::after,
+.insightCard::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    block-size: 2px;
+    background:
+        linear-gradient(90deg,
+            rgba(223, 178, 74, 0.88) 0%,
+            rgba(93, 193, 255, 0.72) 100%);
+    pointer-events: none;
+}
+
+.metricCard:hover,
+.insightCard:hover {
+    transform: translateY(-1px);
+    border-color: rgba(225, 179, 72, 0.22);
+    box-shadow:
+        0 16px 28px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(95, 178, 242, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.metricCard {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    align-content: start;
+    gap: 0.32rem;
+    min-height: clamp(5.4rem, 9vw, 6rem);
+    height: 100%;
+    padding: 0.82rem 0.84rem 0.86rem;
+}
+
+.metricValue {
+    display: block;
+    font-size: clamp(1.34rem, 1.7vw, 1.74rem);
+    line-height: 1;
+    font-weight: 900;
+    color: #f0d58f;
+    letter-spacing: -0.045em;
+    text-shadow: 0 6px 16px rgba(2, 10, 20, 0.14);
+}
+
+.metricLabel {
+    display: block;
+    align-self: end;
+    font-size: 0.82rem;
+    line-height: 1.24;
+    font-weight: 720;
+    letter-spacing: -0.01em;
+    color: #d6eaff;
+    text-wrap: balance;
+}
+
+.insightsPanel {
+    display: grid;
+    gap: 0.64rem;
+}
+
+.insightCard {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.74rem;
+    align-items: start;
+    padding: 0.86rem 0.84rem 0.88rem;
+}
+
+.insightAccent {
+    inline-size: 0.3rem;
+    block-size: 100%;
+    min-block-size: 2.45rem;
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg, rgba(232, 185, 78, 0.98) 0%, rgba(93, 193, 255, 0.92) 100%);
+    box-shadow:
+        0 0 12px rgba(93, 193, 255, 0.16),
+        0 0 10px rgba(232, 185, 78, 0.14);
+    opacity: 0.92;
+}
+
+.insightContent {
+    min-width: 0;
+}
+
+.insightTitle {
+    margin: 0 0 0.28rem;
+    font-size: 0.96rem;
+    line-height: 1.18;
+    font-weight: 840;
+    letter-spacing: -0.012em;
+    color: #f0d58f;
+    text-wrap: balance;
+}
+
+.insightDescription {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.52;
+    font-weight: 460;
+    letter-spacing: -0.006em;
+    color: rgba(209, 219, 233, 0.84);
+}
+
+@media (min-width: 1201px) {
+    .inner {
+        grid-template-columns: minmax(0, 1.04fr) minmax(25rem, 0.86fr);
+        gap: clamp(1rem, 1.5vw, 1.4rem);
+        align-items: stretch;
+    }
+
+    .copyColumn,
+    .sideColumn {
+        display: grid;
+    }
+
+    .copyPanel,
+    .sidePanel {
+        height: 100%;
+    }
+
+    .sidePanel {
+        grid-template-rows: auto 1fr;
+        align-content: stretch;
+    }
+
+    .metricsGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: 1fr;
+    }
+
+    .insightsPanel {
+        height: 100%;
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+        align-content: stretch;
+    }
+
+    .insightCard {
+        height: 100%;
+        align-items: start;
+    }
+}
+
+@media (min-width: 1440px) {
+    .inner {
+        grid-template-columns: minmax(0, 1fr) minmax(26rem, 0.84fr);
+        gap: 1.2rem;
+        padding: 1rem;
+    }
+
+    .copyPanel {
+        padding: 1rem 1.05rem;
+    }
+
+    .sidePanel {
+        padding: 0.86rem;
+    }
+
+    .title {
+        font-size: clamp(2rem, 3.3vw, 3.45rem);
+    }
+
+    .metricCard {
+        min-height: 5.9rem;
+    }
+
+    .metricsGrid>.metricCard:first-child .metricLabel {
+        max-inline-size: 11ch;
+    }
+}
+
+@media (max-width: 1200px) {
+    .inner {
+        grid-template-columns: 1fr;
+    }
+
+    .copyPanel,
+    .sidePanel {
+        padding: clamp(0.9rem, 1.6vw, 1.08rem);
+    }
+
+    .metricsGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: 1fr;
+    }
+}
+
+@media (max-width: 920px) {
+    .section {
+        border-radius: 1.5rem;
+    }
+
+    .inner {
+        gap: 0.82rem;
+        padding: 0.82rem;
+    }
+
+    .copyPanel,
+    .sidePanel {
+        border-radius: 1.24rem;
+    }
+
+    .copyPanel {
+        gap: 0.78rem;
+    }
+
+    .title {
+        font-size: clamp(1.95rem, 6vw, 3.05rem);
+    }
+
+    .lead {
+        font-size: 0.95rem;
+        line-height: 1.48;
+    }
+
+    .supportingText {
+        font-size: 0.92rem;
+        line-height: 1.6;
+    }
+
+    .metricsGrid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 1fr;
+    }
+
+    .metricCard {
+        min-height: 5.2rem;
+        padding: 0.8rem 0.82rem 0.84rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .section {
+        border-radius: 1.28rem;
+    }
+
+    .backdropGlow {
+        inset: auto auto -18% -12%;
+        inline-size: 14rem;
+    }
+
+    .inner {
+        padding: 0.72rem;
+        gap: 0.72rem;
+    }
+
+    .copyPanel,
+    .sidePanel {
+        padding: 0.82rem;
+        border-radius: 1.08rem;
+    }
+
+    .copyShell {
+        gap: 0.72rem;
+    }
+
+    .title {
+        font-size: clamp(1.82rem, 9vw, 2.75rem);
+        line-height: 0.93;
+    }
+
+    .bodyCopy {
+        gap: 0.58rem;
+    }
+
+    .actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.62rem;
+    }
+
+    .primaryAction,
+    .secondaryAction,
+    .quickLink {
+        inline-size: 100%;
+    }
+
+    .trustPills,
+    .quickLinks {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .trustPill {
+        justify-content: center;
+        text-align: center;
+        min-height: 2.5rem;
+    }
+
+    .trustPill::before {
+        margin-right: 0.46rem;
+    }
+
+    .quickLinksWrap {
+        gap: 0.62rem;
+    }
+
+    .quickLinksLabel {
+        font-size: 0.7rem;
+    }
+
+    .metricCard {
+        min-height: 5rem;
+    }
+
+    .insightCard {
+        grid-template-columns: 1fr;
+        gap: 0.58rem;
+    }
+
+    .insightAccent {
+        inline-size: 100%;
+        block-size: 0.28rem;
+        min-block-size: 0.28rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .section {
+        border-radius: 1.14rem;
+    }
+
+    .inner {
+        padding: 0.64rem;
+    }
+
+    .copyPanel,
+    .sidePanel {
+        padding: 0.74rem;
+        border-radius: 1rem;
+    }
+
+    .eyebrow {
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+    }
+
+    .title {
+        font-size: clamp(1.7rem, 10vw, 2.32rem);
+    }
+
+    .lead {
+        font-size: 0.91rem;
+        line-height: 1.46;
+    }
+
+    .supportingText {
+        font-size: 0.88rem;
+        line-height: 1.56;
+    }
+
+    .metricCard {
+        min-height: 4.85rem;
+        padding: 0.74rem 0.76rem 0.78rem;
+    }
+
+    .metricValue {
+        font-size: 1.24rem;
+    }
+
+    .metricLabel {
+        font-size: 0.78rem;
+    }
+
+    .insightCard {
+        padding: 0.8rem 0.78rem 0.82rem;
+    }
+
+    .insightTitle {
+        font-size: 0.91rem;
+    }
+
+    .insightDescription {
+        font-size: 0.86rem;
+        line-height: 1.44;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .primaryAction,
+    .secondaryAction,
+    .quickLink,
+    .trustPill,
+    .metricCard,
+    .insightCard {
+        transition: none;
+    }
+}

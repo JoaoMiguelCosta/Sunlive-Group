@@ -6,11 +6,11 @@ import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
 import travelBrand from "../../config/index.js";
 import styles from "./PrimaryNav.module.css";
 
-function Submenu({ items = [], onAnchorClick, onClose }) {
+function Submenu({ items = [], onAnchorClick, onClose, id, isOpen = false }) {
   if (!Array.isArray(items) || items.length === 0) return null;
 
   return (
-    <ul className={styles.submenu} role="menu">
+    <ul id={id} className={styles.submenu} role="menu" aria-hidden={!isOpen}>
       {items.map((sub) => (
         <li key={sub.key} role="none">
           <a
@@ -19,7 +19,7 @@ function Submenu({ items = [], onAnchorClick, onClose }) {
             className={styles.subLink}
             onClick={(event) => onAnchorClick?.(event, sub.href, onClose)}
           >
-            {sub.label}
+            <span className={styles.subLinkLabel}>{sub.label}</span>
           </a>
         </li>
       ))}
@@ -73,7 +73,7 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
           }
           onClick={handleMainClick}
         >
-          <span>{item.label}</span>
+          <span className={styles.navLinkLabel}>{item.label}</span>
         </NavLink>
 
         {hasSub ? (
@@ -99,8 +99,10 @@ function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick, ChevIcon }) {
       </div>
 
       {hasSub ? (
-        <div id={submenuId}>
+        <div className={styles.submenuWrap}>
           <Submenu
+            id={submenuId}
+            isOpen={isOpen}
             items={item.submenu}
             onAnchorClick={onAnchorClick}
             onClose={onClose}

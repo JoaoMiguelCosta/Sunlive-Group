@@ -15,6 +15,11 @@ const header = {
     label: "Voltar Sunlive Group",
   }),
 
+  homeLink: {
+    href: TRAVEL_PAGE_PATHS.home,
+    label: "Início Travel",
+  },
+
   logo: {
     src: logoTravel,
     alt: "Sunlive Travel",

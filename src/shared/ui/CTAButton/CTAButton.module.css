@@ -621,32 +621,32 @@
     --travel-halo-soft: rgba(199, 134, 21, 0.1);
     --travel-halo-strong: rgba(46, 167, 224, 0.16);
 
-    --travel-pill-fs: 0.98rem;
-    --travel-pill-min: 3.2rem;
-    --travel-pad-y: 0.82rem;
-    --travel-pad-x: 1.24rem;
-    --travel-gap: clamp(0.48rem, 0.9vw, 0.7rem);
-    --travel-icon-size: 1.02em;
+    --travel-pill-fs: clamp(0.94rem, 0.9vw, 1rem);
+    --travel-pill-min: clamp(2.9rem, 4vw, 3.2rem);
+    --travel-pad-y: clamp(0.74rem, 0.9vw, 0.82rem);
+    --travel-pad-x: clamp(1rem, 1.3vw, 1.24rem);
+    --travel-gap: clamp(0.44rem, 0.75vw, 0.64rem);
+    --travel-icon-size: 1em;
 
-    min-inline-size: 164px;
+    min-inline-size: clamp(9.5rem, 16vw, 10.5rem);
     min-height: var(--travel-pill-min);
     width: auto;
-    max-width: min(100%, 24rem);
+    max-width: min(100%, 22rem);
     padding: var(--travel-pad-y) var(--travel-pad-x);
     gap: var(--travel-gap);
 
     color: var(--travel-text);
     font-size: var(--travel-pill-fs);
-    font-weight: 700;
-    letter-spacing: 0.01em;
+    font-weight: 800;
+    letter-spacing: -0.01em;
     line-height: 1;
 
     border: 1px solid var(--travel-border);
 
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.08) 0%,
-            rgba(255, 255, 255, 0.02) 22%,
+            rgba(255, 248, 235, 0.08) 0%,
+            rgba(255, 248, 235, 0.02) 22%,
             rgba(0, 0, 0, 0.06) 100%),
         linear-gradient(135deg,
             rgba(231, 166, 39, 0.98) 0%,
@@ -816,6 +816,94 @@
         inset 0 1px 0 rgba(255, 248, 235, 0.18),
         inset 0 -1px 0 rgba(104, 66, 8, 0.18),
         0 12px 26px rgba(0, 0, 0, 0.24);
+}
+
+.button--travel[data-compact="true"] {
+    --travel-pill-fs: 0.9rem;
+    --travel-pill-min: 2.8rem;
+    --travel-pad-y: 0.58rem;
+    --travel-pad-x: 0.84rem;
+    --travel-gap: 0.46rem;
+    --travel-icon-size: 0.92em;
+
+    min-inline-size: 8.75rem;
+}
+
+@media (max-width: 768px) {
+    .button--travel {
+        --travel-pill-fs: 0.95rem;
+        --travel-pill-min: 3.05rem;
+        --travel-pad-y: 0.8rem;
+        --travel-pad-x: 1.05rem;
+        --travel-icon-size: 0.98em;
+
+        width: 100%;
+        max-width: 22rem;
+        min-inline-size: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .button--travel {
+        --travel-pill-fs: 0.93rem;
+        --travel-pill-min: 2.95rem;
+        --travel-pad-y: 0.76rem;
+        --travel-pad-x: 0.96rem;
+        --travel-icon-size: 0.96em;
+
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .button--travel .label {
+        white-space: normal;
+        text-wrap: balance;
+    }
+}
+
+@media (max-width: 420px) {
+    .button--travel {
+        --travel-pill-fs: 0.9rem;
+        --travel-pill-min: 2.85rem;
+        --travel-pad-y: 0.68rem;
+        --travel-pad-x: 0.88rem;
+        --travel-gap: 0.44rem;
+        --travel-icon-size: 0.92em;
+
+        letter-spacing: 0.008em;
+    }
+
+    .button--travel[data-compact="true"] {
+        --travel-pill-fs: 0.86rem;
+        --travel-pill-min: 2.68rem;
+        --travel-pad-y: 0.5rem;
+        --travel-pad-x: 0.74rem;
+        --travel-gap: 0.4rem;
+        --travel-icon-size: 0.86em;
+    }
+}
+
+@media (max-width: 360px) {
+    .button--travel {
+        --travel-pill-fs: 0.88rem;
+        --travel-pill-min: 2.6rem;
+        --travel-pad-y: 0.46rem;
+        --travel-pad-x: 0.68rem;
+        --travel-gap: 0.38rem;
+        --travel-icon-size: 0.82em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button--travel {
+        animation: none !important;
+    }
+
+    .button--travel:hover,
+    .button--travel:focus-visible,
+    .button--travel:active {
+        transform: none;
+    }
 }
 
 /* =========================================================

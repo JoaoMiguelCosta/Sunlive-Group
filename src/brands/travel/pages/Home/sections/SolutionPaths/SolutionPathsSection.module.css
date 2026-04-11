@@ -1,0 +1,723 @@
+.section {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    border: 1px solid rgba(223, 178, 74, 0.22);
+    border-radius: clamp(1.45rem, 2.2vw, 2.3rem);
+    background:
+        radial-gradient(110% 135% at 0% 0%, rgba(32, 77, 139, 0.34) 0%, transparent 34%),
+        radial-gradient(72% 88% at 100% 100%, rgba(38, 103, 190, 0.3) 0%, transparent 42%),
+        radial-gradient(42% 44% at 67% 20%, rgba(219, 171, 64, 0.12) 0%, transparent 68%),
+        radial-gradient(30% 36% at 18% 78%, rgba(97, 177, 255, 0.12) 0%, transparent 74%),
+        linear-gradient(125deg, #122b4c 0%, #041425 33%, #02111f 58%, #0a2a4c 100%);
+    box-shadow:
+        0 26px 72px rgba(0, 0, 0, 0.3),
+        0 12px 26px rgba(2, 12, 24, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(85, 153, 221, 0.08);
+}
+
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, transparent 20%, transparent 78%, rgba(119, 186, 255, 0.04) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, transparent 22%, transparent 78%, rgba(255, 255, 255, 0.03) 100%);
+    pointer-events: none;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgba(224, 180, 76, 0.68) 0%,
+            rgba(98, 189, 255, 0.58) 52%,
+            rgba(255, 255, 255, 0.08) 100%);
+    pointer-events: none;
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+    padding: clamp(0.68rem, 0.95vw, 0.82rem);
+}
+
+.surface {
+    position: relative;
+    display: grid;
+    gap: clamp(0.72rem, 0.95vw, 0.88rem);
+    padding: clamp(0.72rem, 1.08vw, 0.94rem);
+    border-radius: calc(clamp(1.45rem, 1.9vw, 2.1rem) - 0.38rem);
+    background:
+        linear-gradient(180deg, rgba(12, 28, 48, 0.78) 0%, rgba(5, 16, 31, 0.88) 100%);
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.18),
+        0 1px 0 rgba(255, 255, 255, 0.02),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        inset 0 -1px 0 rgba(82, 146, 213, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, transparent 28%, transparent 72%, rgba(94, 182, 255, 0.06) 100%);
+    pointer-events: none;
+}
+
+.surface::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.025);
+    pointer-events: none;
+}
+
+.introPanel {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 0.58rem;
+    min-width: 0;
+    padding:
+        clamp(0.02rem, 0.08vw, 0.08rem) clamp(0.06rem, 0.16vw, 0.14rem) clamp(0.1rem, 0.2vw, 0.16rem);
+}
+
+.header {
+    position: relative;
+    display: grid;
+    gap: clamp(0.48rem, 0.65vw, 0.62rem);
+    inline-size: min(100%, 38rem);
+    min-width: 0;
+}
+
+.eyebrow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin: 0;
+    padding: 0.38rem 0.62rem 0.36rem;
+    border-radius: 999px;
+    border: 1px solid rgba(226, 186, 88, 0.2);
+    background:
+        linear-gradient(180deg, rgba(225, 177, 63, 0.14) 0%, rgba(225, 177, 63, 0.06) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.09),
+        inset 0 -1px 0 rgba(225, 177, 63, 0.04),
+        0 6px 16px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    font-size: 0.66rem;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(244, 204, 105, 0.98);
+}
+
+.title {
+    margin: 0;
+    min-width: 0;
+    font-size: clamp(1.78rem, 3vw, 2.95rem);
+    line-height: 0.94;
+    letter-spacing: -0.055em;
+    font-weight: 900;
+    color: #f8fbff;
+    text-wrap: balance;
+    text-shadow: 0 10px 26px rgba(1, 8, 18, 0.18);
+}
+
+.description {
+    margin: 0;
+    inline-size: min(100%, 38rem);
+    min-width: 0;
+    font-size: clamp(0.9rem, 0.86vw, 0.95rem);
+    line-height: 1.56;
+    font-weight: 450;
+    letter-spacing: -0.01em;
+    color: rgba(206, 217, 232, 0.82);
+}
+
+.gridShell {
+    position: relative;
+    min-width: 0;
+    padding: clamp(0.1rem, 0.2vw, 0.18rem);
+    border-radius: clamp(1rem, 1.2vw, 1.2rem);
+    background:
+        linear-gradient(180deg, rgba(8, 22, 39, 0.28) 0%, rgba(8, 22, 39, 0.12) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.gridShell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        linear-gradient(90deg, rgba(209, 170, 75, 0.075) 0%, transparent 18%, transparent 82%, rgba(82, 184, 236, 0.075) 100%);
+    pointer-events: none;
+}
+
+.gridShell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.022);
+    pointer-events: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(0.58rem, 0.78vw, 0.72rem);
+}
+
+.card {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    grid-column: span 4;
+    display: grid;
+    gap: 0.72rem;
+    min-height: clamp(11.4rem, 13vw, 12.7rem);
+    min-width: 0;
+    padding: clamp(0.78rem, 0.88vw, 0.94rem);
+    border-radius: clamp(1rem, 1vw, 1.16rem);
+    border: 1px solid rgba(225, 179, 72, 0.16);
+    background:
+        radial-gradient(130% 96% at 100% 0%,
+            rgba(96, 196, 255, 0.12) 0%,
+            rgba(96, 196, 255, 0.05) 18%,
+            transparent 36%),
+        radial-gradient(74% 78% at 0% 100%,
+            rgba(212, 171, 75, 0.08) 0%,
+            rgba(212, 171, 75, 0.035) 24%,
+            transparent 46%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 22%),
+        linear-gradient(155deg, rgba(21, 43, 74, 0.9) 0%, rgba(6, 16, 31, 0.96) 100%);
+    box-shadow:
+        0 14px 24px rgba(0, 0, 0, 0.16),
+        0 0 0 1px rgba(255, 255, 255, 0.02),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition:
+        transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        background 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.09), transparent 42%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 28%);
+    pointer-events: none;
+    opacity: 0.95;
+    transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    left: clamp(0.78rem, 0.88vw, 0.94rem);
+    right: clamp(0.78rem, 0.88vw, 0.94rem);
+    bottom: 0;
+    height: 1px;
+    background:
+        linear-gradient(90deg,
+            rgba(223, 178, 74, 0.88) 0%,
+            rgba(93, 193, 255, 0.72) 55%,
+            rgba(255, 255, 255, 0.14) 100%);
+    opacity: 0.82;
+    pointer-events: none;
+    transition:
+        opacity 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cardGlow {
+    position: absolute;
+    inset: auto auto -1.7rem -1.55rem;
+    width: clamp(3.8rem, 6vw, 5.2rem);
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgba(219, 176, 77, 0.18) 0%,
+            rgba(219, 176, 77, 0.08) 34%,
+            rgba(219, 176, 77, 0.03) 54%,
+            transparent 74%);
+    filter: blur(12px);
+    opacity: 0.58;
+    pointer-events: none;
+    transition:
+        opacity 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover,
+.card:focus-within {
+    transform: translateY(-4px);
+    border-color: rgba(225, 179, 72, 0.22);
+    background:
+        radial-gradient(130% 96% at 100% 0%,
+            rgba(111, 208, 255, 0.16) 0%,
+            rgba(111, 208, 255, 0.06) 18%,
+            transparent 36%),
+        radial-gradient(76% 80% at 0% 100%,
+            rgba(226, 185, 82, 0.1) 0%,
+            rgba(226, 185, 82, 0.04) 24%,
+            transparent 48%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.042) 0%, transparent 22%),
+        linear-gradient(155deg, rgba(24, 49, 82, 0.92) 0%, rgba(7, 18, 35, 0.97) 100%);
+    box-shadow:
+        0 16px 28px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(95, 178, 242, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    filter: saturate(1.03);
+}
+
+.card:hover::before,
+.card:focus-within::before {
+    opacity: 1;
+}
+
+.card:hover::after,
+.card:focus-within::after {
+    opacity: 1;
+    transform: scaleX(1.015);
+}
+
+.card:hover .cardGlow,
+.card:focus-within .cardGlow {
+    opacity: 0.8;
+    transform: scale(1.08) translate(2px, -2px);
+    filter: blur(14px);
+}
+
+.card:active {
+    transform: translateY(-2px) scale(0.992);
+}
+
+.cardTop {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.56rem;
+    align-content: start;
+    min-width: 0;
+}
+
+.cardEyebrow {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin: 0;
+    padding: 0.3rem 0.56rem 0.28rem;
+    border-radius: 999px;
+    border: 1px solid rgba(214, 172, 74, 0.2);
+    background:
+        linear-gradient(180deg, rgba(225, 177, 63, 0.14) 0%, rgba(225, 177, 63, 0.06) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 240, 200, 0.12),
+        0 4px 10px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    font-size: 0.58rem;
+    line-height: 1;
+    font-weight: 850;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245, 205, 104, 0.95);
+}
+
+.cardTitle {
+    margin: 0;
+    inline-size: 100%;
+    min-width: 0;
+    font-size: clamp(1.06rem, 1.08vw, 1.24rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    font-weight: 860;
+    color: #f0d58f;
+    text-wrap: balance;
+}
+
+.cardDescription {
+    margin: 0;
+    inline-size: 100%;
+    min-width: 0;
+    font-size: 0.85rem;
+    line-height: 1.54;
+    font-weight: 450;
+    letter-spacing: -0.01em;
+    color: rgba(209, 219, 233, 0.84);
+}
+
+.cardLink {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.56rem;
+    min-height: 2.58rem;
+    padding-inline: 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(214, 169, 78, 0.22);
+    background:
+        linear-gradient(180deg, rgba(17, 39, 67, 0.82) 0%, rgba(7, 17, 32, 0.96) 100%);
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    color: #eef4fb;
+    text-decoration: none;
+    transition:
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        background 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 260ms cubic-bezier(0.22, 1, 0.36, 1);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.cardLink::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 48%),
+        radial-gradient(circle at 50% 100%, rgba(92, 186, 255, 0.08) 0%, transparent 60%);
+    opacity: 0.92;
+    pointer-events: none;
+    transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cardLink::after {
+    content: "";
+    width: 0.58rem;
+    height: 0.58rem;
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    transform: rotate(45deg) translateY(-1px);
+    opacity: 0.78;
+    transition:
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cardLink:hover {
+    transform: translateY(-2px);
+    border-color: rgba(232, 185, 78, 0.44);
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(255, 245, 214, 0.16) 0%,
+            rgba(255, 245, 214, 0.05) 30%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgba(242, 196, 89, 0.98) 0%,
+            rgba(196, 129, 18, 0.98) 100%);
+    box-shadow:
+        0 16px 28px rgba(171, 109, 10, 0.22),
+        0 0 0 1px rgba(255, 220, 146, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    color: #fff9ed;
+    filter: saturate(1.02) brightness(1.02);
+}
+
+.cardLink:hover::before {
+    opacity: 1;
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(255, 245, 214, 0.24) 0%,
+            transparent 62%);
+}
+
+.cardLink:hover::after {
+    transform: rotate(45deg) translate(2px, -1px);
+    opacity: 1;
+}
+
+.cardLink:active {
+    transform: translateY(0) scale(0.992);
+}
+
+.cardLink:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 2px rgba(245, 204, 106, 0.92),
+        0 0 0 5px rgba(90, 180, 255, 0.16),
+        0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.cardLinkLabel {
+    position: relative;
+    z-index: 1;
+    font-size: 0.83rem;
+    line-height: 1;
+    font-weight: 820;
+    letter-spacing: -0.01em;
+}
+
+@media (max-width: 1180px) {
+    .inner {
+        padding: 0.62rem;
+    }
+
+    .surface {
+        gap: 0.68rem;
+        padding: 0.7rem;
+    }
+
+    .header {
+        inline-size: min(100%, 34rem);
+    }
+
+    .title {
+        font-size: clamp(1.64rem, 4.3vw, 2.5rem);
+        line-height: 0.95;
+    }
+
+    .description {
+        inline-size: min(100%, 34rem);
+        font-size: 0.87rem;
+        line-height: 1.52;
+    }
+
+    .grid {
+        gap: 0.56rem;
+    }
+
+    .card {
+        grid-column: span 6;
+        min-height: 10.9rem;
+        padding: 0.72rem;
+    }
+
+    .cardTitle {
+        font-size: clamp(1rem, 1.55vw, 1.16rem);
+        line-height: 1.14;
+    }
+
+    .cardDescription {
+        font-size: 0.81rem;
+        line-height: 1.48;
+    }
+
+    .cardLink {
+        min-height: 2.34rem;
+    }
+
+    .cardLinkLabel {
+        font-size: 0.79rem;
+    }
+}
+
+@media (max-width: 920px) {
+    .section {
+        border-radius: 1.26rem;
+    }
+
+    .inner {
+        padding: 0.56rem;
+    }
+
+    .surface {
+        gap: 0.7rem;
+        padding: 0.66rem;
+        border-radius: 0.96rem;
+    }
+
+    .header {
+        inline-size: 100%;
+    }
+
+    .title {
+        font-size: clamp(1.56rem, 6.2vw, 2.2rem);
+        line-height: 0.96;
+    }
+
+    .description {
+        inline-size: 100%;
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .grid {
+        gap: 0.56rem;
+    }
+
+    .card {
+        min-height: 10.25rem;
+        padding: 0.68rem;
+    }
+
+    .cardTitle {
+        font-size: 1rem;
+        line-height: 1.14;
+    }
+
+    .cardDescription {
+        font-size: 0.79rem;
+        line-height: 1.48;
+    }
+
+    .cardLink {
+        min-height: 2.28rem;
+    }
+}
+
+@media (max-width: 760px) {
+    .section {
+        border-radius: 1.14rem;
+    }
+
+    .inner {
+        padding: 0.48rem;
+    }
+
+    .surface {
+        gap: 0.72rem;
+        padding: 0.62rem;
+        border-radius: 0.88rem;
+    }
+
+    .eyebrow {
+        padding: 0.36rem 0.58rem 0.34rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+    }
+
+    .title {
+        font-size: clamp(1.48rem, 8vw, 2.1rem);
+        line-height: 0.97;
+    }
+
+    .description {
+        font-size: 0.83rem;
+        line-height: 1.48;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 0.54rem;
+    }
+
+    .card {
+        grid-column: auto;
+        min-height: auto;
+        padding: 0.72rem;
+    }
+
+    .cardEyebrow {
+        font-size: 0.56rem;
+    }
+
+    .cardTitle {
+        font-size: 0.98rem;
+    }
+
+    .cardDescription {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .cardLink {
+        width: 100%;
+        min-height: 2.3rem;
+    }
+
+    .cardLinkLabel {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        border-radius: 1.04rem;
+    }
+
+    .inner {
+        padding: 0.42rem;
+    }
+
+    .surface {
+        padding: 0.58rem;
+    }
+
+    .header {
+        gap: 0.52rem;
+    }
+
+    .title {
+        inline-size: 100%;
+        font-size: clamp(1.4rem, 9.4vw, 1.95rem);
+        line-height: 0.98;
+    }
+
+    .description {
+        font-size: 0.81rem;
+        line-height: 1.46;
+    }
+
+    .card {
+        gap: 0.68rem;
+        border-radius: 0.92rem;
+        padding: 0.68rem;
+    }
+
+    .cardEyebrow {
+        font-size: 0.56rem;
+        letter-spacing: 0.14em;
+    }
+
+    .cardTitle {
+        font-size: 0.95rem;
+        line-height: 1.16;
+    }
+
+    .cardDescription {
+        font-size: 0.78rem;
+        line-height: 1.46;
+    }
+
+    .cardLink {
+        min-height: 2.22rem;
+    }
+
+    .cardLinkLabel {
+        font-size: 0.79rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .card,
+    .cardGlow,
+    .cardLink {
+        transition: none;
+    }
+}
