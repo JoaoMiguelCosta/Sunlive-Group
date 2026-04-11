@@ -16,15 +16,18 @@ export default function TravelHeaderNav() {
   const header = travelBrand?.header ?? {};
   const navItems = travelBrand?.nav?.primaryItems ?? [];
 
-  const isTravelHome = location.pathname === TRAVEL_BASE_PATH;
+  const isTravelHome =
+    location.pathname === TRAVEL_BASE_PATH ||
+    location.pathname === `${TRAVEL_BASE_PATH}/`;
 
   return (
     <HeaderShell className={styles.wrap} aria-label="Header — Sunlive Travel">
       <div className={styles.container}>
         <UtilityBar
           variant="travel-header"
+          data-page={isTravelHome ? "travel-home" : "travel-inner"}
           ariaLabel="Header — Sunlive Travel"
-          backLink={header.backLink}
+          backLink={isTravelHome ? header.backLink : null}
           homeLink={!isTravelHome ? header.homeLink : null}
           socials={header.socials}
           lang={header.lang}

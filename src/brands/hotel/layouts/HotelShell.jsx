@@ -30,10 +30,10 @@ export default function HotelShell() {
 
   const backLink = isHotelHome
     ? { href: "/sunlive-group", label: "Voltar Sunlive Group" }
-    : { href: HOTEL_BASE_PATH, label: "Voltar Menu Hotel" };
+    : null;
 
   const homeLink = !isHotelHome
-    ? { label: "Home Hotel", href: HOTEL_BASE_PATH }
+    ? { label: "Início Hotel", href: HOTEL_BASE_PATH }
     : undefined;
 
   return (
@@ -42,6 +42,7 @@ export default function HotelShell() {
 
       <UtilityBar
         variant="hotel-header"
+        data-page={isHotelHome ? "hotel-home" : "hotel-inner"}
         backLink={backLink}
         homeLink={homeLink}
         leftSlot={<HotelBrandLogo />}

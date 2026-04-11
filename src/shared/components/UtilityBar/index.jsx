@@ -13,6 +13,7 @@ export default function UtilityBar({
     options: [{ label: "PT", name: "Português", code: "pt" }],
   },
   ariaLabel = "Utility bar",
+  ...rest
 }) {
   const { ref, isOpen, selected, options, toggle, choose, close } =
     useLangMenu(lang);
@@ -30,6 +31,7 @@ export default function UtilityBar({
       data-variant={variant || undefined}
       aria-label={ariaLabel}
       onKeyDown={onKeyDown}
+      {...rest}
     >
       <div
         className={[

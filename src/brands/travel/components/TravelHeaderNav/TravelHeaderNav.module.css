@@ -9,16 +9,19 @@
 .wrap::after {
     content: none;
 }
-
 .container {
     --travel-shell-max-width: 1360px;
     --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)));
+    --travel-header-stack-gap: clamp(0.7rem, 1.4vw, 1.25rem);
 
     inline-size: min(calc(100% - (2 * var(--travel-shell-inset))), var(--travel-shell-max-width));
     width: min(calc(100% - (2 * var(--travel-shell-inset))), var(--travel-shell-max-width));
 
     margin-inline: auto;
     box-sizing: border-box;
+
+    display: grid;
+    row-gap: var(--travel-header-stack-gap);
 }
 
 .masthead :global(.inner) {
