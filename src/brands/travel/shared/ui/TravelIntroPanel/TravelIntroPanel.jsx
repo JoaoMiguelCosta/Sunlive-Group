@@ -1,5 +1,15 @@
 import styles from "./TravelIntroPanel.module.css";
 
+function getValidPills(pills) {
+  return Array.isArray(pills) ? pills.filter(Boolean) : [];
+}
+
+function getValidStats(stats) {
+  return Array.isArray(stats)
+    ? stats.filter((item) => item?.value && item?.label)
+    : [];
+}
+
 export default function TravelIntroPanel({
   eyebrow,
   title,
@@ -11,10 +21,8 @@ export default function TravelIntroPanel({
   statsAriaLabel = "Destaques da secção",
   as: Tag = "header",
 }) {
-  const safePills = Array.isArray(pills) ? pills.filter(Boolean) : [];
-  const safeStats = Array.isArray(stats)
-    ? stats.filter((item) => item?.value && item?.label)
-    : [];
+  const safePills = getValidPills(pills);
+  const safeStats = getValidStats(stats);
 
   const hasContent =
     eyebrow ||
@@ -41,9 +49,13 @@ export default function TravelIntroPanel({
           ) : null}
 
           {safePills.length > 0 ? (
-            <ul className={styles.pills} aria-label={pillsAriaLabel}>
-              {safePills.map((pill) => (
-                <li key={pill} className={styles.pill}>
+            <ul
+              className={styles.pills}
+              role="list"
+              aria-label={pillsAriaLabel}
+            >
+              {safePills.map((pill, index) => (
+                <li key={`${pill}-${index}`} className={styles.pill}>
                   {pill}
                 </li>
               ))}
@@ -53,9 +65,9 @@ export default function TravelIntroPanel({
 
         {safeStats.length > 0 ? (
           <div className={styles.stats} aria-label={statsAriaLabel}>
-            {safeStats.map((stat) => (
+            {safeStats.map((stat, index) => (
               <article
-                key={`${stat.value}-${stat.label}`}
+                key={`${stat.value}-${stat.label}-${index}`}
                 className={styles.statCard}
               >
                 <strong className={styles.statValue}>{stat.value}</strong>

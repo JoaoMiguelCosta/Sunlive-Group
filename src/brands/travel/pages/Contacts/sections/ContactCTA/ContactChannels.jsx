@@ -1,5 +1,12 @@
 import styles from "./ContactChannels.module.css";
 
+function isExternalUrl(href) {
+  return (
+    typeof href === "string" &&
+    (href.startsWith("http://") || href.startsWith("https://"))
+  );
+}
+
 export default function ContactChannels({
   channels = [],
   ariaLabel = "Canais de contacto Sunlive Travel",
@@ -15,9 +22,7 @@ export default function ContactChannels({
         {validItems.map((channel, index) => {
           const Icon = channel?.Icon ?? channel?.icon ?? null;
           const href = channel.href;
-          const isExternal =
-            typeof href === "string" &&
-            (href.startsWith("http://") || href.startsWith("https://"));
+          const isExternal = isExternalUrl(href);
 
           return (
             <li
@@ -32,7 +37,9 @@ export default function ContactChannels({
                 aria-label={channel?.ariaLabel || channel.label}
               >
                 {Icon ? (
-                  <Icon className={styles.icon} aria-hidden="true" />
+                  <span className={styles.iconWrap} aria-hidden="true">
+                    <Icon className={styles.icon} />
+                  </span>
                 ) : null}
 
                 <span className={styles.content}>

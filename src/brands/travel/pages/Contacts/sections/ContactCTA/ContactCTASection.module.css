@@ -2,26 +2,26 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
-    color: var(--sl-platinum-100, #f6f7fb);
     overflow: clip;
+    color: var(--sl-platinum-100, #f6f7fb);
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 7% auto auto 50%;
+    inset: 6% auto auto 50%;
     translate: -50% 0;
-    inline-size: min(90vw, 1160px);
-    block-size: clamp(170px, 22vw, 290px);
+    inline-size: min(90vw, 1180px);
+    block-size: clamp(180px, 22vw, 300px);
     pointer-events: none;
-    opacity: 0.76;
+    opacity: 0.72;
     background:
-        radial-gradient(60% 100% at 50% 50%,
-            rgba(255, 228, 168, 0.16) 0%,
+        radial-gradient(58% 100% at 50% 50%,
+            rgba(255, 228, 168, 0.15) 0%,
             rgba(194, 136, 33, 0.08) 34%,
             rgba(74, 172, 215, 0.08) 62%,
             rgba(74, 172, 215, 0) 100%);
-    filter: blur(26px);
+    filter: blur(28px);
 }
 
 .section::after {
@@ -29,18 +29,13 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
+    opacity: 0.78;
     background:
         linear-gradient(90deg,
             rgba(255, 255, 255, 0.012) 0%,
             rgba(255, 255, 255, 0) 16%,
             rgba(255, 255, 255, 0) 84%,
             rgba(255, 255, 255, 0.012) 100%);
-    opacity: 0.8;
-}
-
-.sectionFrame {
-    position: relative;
-    z-index: 1;
 }
 
 .inner {
@@ -57,260 +52,71 @@
     min-inline-size: 0;
 }
 
-.hero {
-    position: relative;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
-    gap: clamp(1rem, 2vw, 1.25rem);
-    padding: clamp(1.1rem, 2vw, 1.35rem);
-    border-radius: clamp(1.5rem, 2vw, 2rem);
-    border: 1px solid rgba(201, 153, 66, 0.22);
-    background:
-        radial-gradient(120% 120% at 0% 0%,
-            rgba(219, 169, 68, 0.12) 0%,
-            transparent 42%),
-        radial-gradient(100% 120% at 100% 0%,
-            rgba(82, 169, 255, 0.11) 0%,
-            transparent 38%),
-        linear-gradient(180deg,
-            rgba(7, 18, 35, 0.94) 0%,
-            rgba(4, 10, 20, 0.98) 100%);
-    box-shadow:
-        0 24px 52px rgba(0, 0, 0, 0.24),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto 0;
-    block-size: 3px;
-    background: linear-gradient(90deg,
-            rgba(199, 134, 21, 0.84),
-            rgba(46, 167, 224, 0.62));
-    pointer-events: none;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(135deg,
-            rgba(255, 255, 255, 0.04) 0%,
-            rgba(255, 255, 255, 0) 26%,
-            rgba(255, 255, 255, 0) 72%,
-            rgba(255, 255, 255, 0.02) 100%);
-}
-
-.heroMain {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    gap: 0.95rem;
-    min-inline-size: 0;
-}
-
-.heroCopy {
-    display: grid;
-    gap: 0.55rem;
-}
-
-.eyebrow {
-    margin: 0;
-    color: #dce8f7;
-    font-size: 0.76rem;
-    font-weight: 800;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    opacity: 0.94;
-}
-
-.title {
-    margin: 0;
-    color: #f6f8fc;
-    font-size: clamp(1.7rem, 3vw, 3rem);
-    line-height: 1.02;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    text-wrap: balance;
-   
-}
-
-.lead {
-    margin: 0;
-    color: rgba(233, 239, 247, 0.96);
-    font-size: clamp(1rem, 1.12vw, 1.08rem);
-    line-height: 1.5;
-    max-inline-size: 62ch;
-    text-wrap: pretty;
-}
-
-.description {
-    margin: 0;
-    color: rgba(215, 224, 236, 0.86);
-    font-size: clamp(0.94rem, 1vw, 0.98rem);
-    line-height: 1.6;
-    max-inline-size: 66ch;
-    text-wrap: pretty;
-}
-
-.trustPoints {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.58rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.trustPoint {
-    display: inline-flex;
-    align-items: center;
-    min-block-size: 34px;
-    padding: 0.48rem 0.72rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: rgba(244, 247, 252, 0.94);
-    background:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.06),
-            rgba(255, 255, 255, 0.015)),
-        rgba(7, 18, 34, 0.68);
-    font-size: 0.82rem;
-    font-weight: 600;
-    line-height: 1.2;
-}
-
-.heroStats {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.72rem;
-    align-content: start;
-}
-
-.statCard {
-    position: relative;
-    overflow: hidden;
-    display: grid;
-    gap: 0.28rem;
-    align-content: center;
-    min-block-size: 92px;
-    padding: 0.85rem 0.9rem;
-    border-radius: 20px;
-    border: 1px solid rgba(201, 153, 66, 0.18);
-    background:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.05),
-            rgba(255, 255, 255, 0.02)),
-        rgba(6, 16, 31, 0.88);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 12px 24px rgba(0, 0, 0, 0.16);
-}
-
-.statCard::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0;
-    block-size: 2px;
-    background: linear-gradient(90deg,
-            rgba(201, 153, 66, 0.82),
-            rgba(46, 167, 224, 0.48));
-}
-
-.statValue {
-    color: #ffffff;
-    font-size: clamp(1.06rem, 1.3vw, 1.3rem);
-    font-weight: 800;
-    line-height: 1;
-}
-
-.statLabel {
-    color: rgba(224, 232, 244, 0.84);
-    font-size: 0.82rem;
-    line-height: 1.35;
-}
-
 .contentGrid {
     display: grid;
-    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(1rem, 2vw, 1.3rem);
-    align-items: start;
+    align-items: stretch;
 }
 
 .panel {
     position: relative;
-    overflow: hidden;
     display: grid;
-    gap: 1rem;
-    padding: clamp(1rem, 1.8vw, 1.2rem);
+    gap: clamp(0.95rem, 1.5vw, 1.1rem);
+    align-content: start;
+    block-size: 100%;
+    min-inline-size: 0;
+    overflow: hidden;
+    padding: clamp(1rem, 1.8vw, 1.25rem);
     border-radius: clamp(1.25rem, 2vw, 1.6rem);
-    border: 1px solid rgba(201, 153, 66, 0.2);
-    background:
-        radial-gradient(120% 120% at 0% 0%,
-            rgba(219, 169, 68, 0.08) 0%,
-            transparent 40%),
-        radial-gradient(90% 120% at 100% 0%,
-            rgba(82, 169, 255, 0.08) 0%,
-            transparent 36%),
-        linear-gradient(180deg,
-            rgba(8, 20, 38, 0.95) 0%,
-            rgba(4, 10, 21, 0.985) 100%);
-    box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+background: radial-gradient(110% 135% at 0% 0%,
+            rgba(32, 77, 139, 0.34) 0%,
+            transparent 34%),
+        radial-gradient(72% 88% at 100% 100%,
+            rgba(38, 103, 190, 0.28) 0%,
+            transparent 42%),
+        radial-gradient(42% 44% at 67% 20%,
+            rgba(219, 171, 64, 0.11) 0%,
+            transparent 68%),
+        radial-gradient(30% 36% at 18% 78%,
+            rgba(97, 177, 255, 0.11) 0%,
+            transparent 74%),
+        linear-gradient(125deg,
+            #122b4c 0%,
+            #041425 33%,
+            #02111f 58%,
+            #0a2a4c 100%);
+box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28),
+        0 12px 26px rgba(2, 12, 24, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(85, 153, 221, 0.08);
 }
+
+
 
 .channelsPanel {
-    background:
-        radial-gradient(110% 120% at 100% 0%,
-            rgba(82, 169, 255, 0.12) 0%,
-            transparent 38%),
-        radial-gradient(100% 100% at 0% 0%,
-            rgba(219, 169, 68, 0.08) 0%,
+background: radial-gradient(110% 135% at 0% 0%,
+            rgba(32, 77, 139, 0.34) 0%,
+            transparent 34%),
+        radial-gradient(72% 88% at 100% 100%,
+            rgba(38, 103, 190, 0.28) 0%,
             transparent 42%),
-        linear-gradient(180deg,
-            rgba(7, 18, 35, 0.96) 0%,
-            rgba(4, 10, 21, 0.99) 100%);
-}
-
-.panelHeader {
-    display: grid;
-    gap: 0.35rem;
-}
-
-.panelEyebrow {
-    margin: 0;
-    color: #dce8f7;
-    font-size: 0.74rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    opacity: 0.92;
-}
-
-.panelTitle {
-    margin: 0;
-    color: #f6f8fc;
-    font-size: clamp(1.05rem, 1.35vw, 1.22rem);
-    line-height: 1.15;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-}
-
-.panelDescription {
-    margin: 0;
-    color: rgba(224, 232, 243, 0.84);
-    font-size: clamp(0.92rem, 1vw, 0.96rem);
-    line-height: 1.55;
-    text-wrap: pretty;
-    max-inline-size: 62ch;
+        radial-gradient(42% 44% at 67% 20%,
+            rgba(219, 171, 64, 0.11) 0%,
+            transparent 68%),
+        radial-gradient(30% 36% at 18% 78%,
+            rgba(97, 177, 255, 0.11) 0%,
+            transparent 74%),
+        linear-gradient(125deg,
+            #122b4c 0%,
+            #041425 33%,
+            #02111f 58%,
+            #0a2a4c 100%);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28),
+        0 12px 26px rgba(2, 12, 24, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(85, 153, 221, 0.08);
 }
 
 .section:focus,
@@ -319,21 +125,7 @@
     box-shadow: none !important;
 }
 
-@media (max-width: 1040px) {
-    .hero {
-        grid-template-columns: 1fr;
-    }
-
-    .heroStats {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
 @media (max-width: 1024px) {
-    .section {
-        padding-block: clamp(2.35rem, 5vw, 3.2rem);
-    }
-
     .inner {
         padding-inline: 1rem;
     }
@@ -343,13 +135,13 @@
     .contentGrid {
         grid-template-columns: 1fr;
     }
+
+    .panel {
+        block-size: auto;
+    }
 }
 
 @media (max-width: 640px) {
-    .section {
-        padding-block: 1.9rem;
-    }
-
     .section::before {
         inline-size: 100%;
         block-size: 190px;
@@ -361,39 +153,14 @@
         padding-inline: 0.92rem;
     }
 
-    .title {
-        max-inline-size: 14ch;
-    }
-
-    .heroStats {
-        grid-template-columns: 1fr;
+    .panel {
+        padding: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-
-    .hero,
     .panel {
         padding: 0.95rem;
-    }
-
-    .title {
-        font-size: clamp(1.6rem, 10vw, 2.2rem);
-    }
-
-    .lead,
-    .description,
-    .panelDescription {
-        font-size: 0.92rem;
-    }
-
-    .panelTitle {
-        font-size: 1rem;
-    }
-
-    .trustPoint {
-        inline-size: 100%;
-        justify-content: center;
-        text-align: center;
+        border-radius: 1.1rem;
     }
 }

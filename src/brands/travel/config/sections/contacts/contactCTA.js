@@ -5,13 +5,13 @@ const contactCTA = {
 
   conversionHero: {
     eyebrow: "Contacto direto",
-    title: "Fale connosco para desenhar uma viagem à medida do seu grupo",
-    lead: "Partilhe o contexto da viagem e receba uma proposta pensada com critério, rapidez e acompanhamento próximo.",
+    title: "Fale connosco para desenhar uma proposta ajustada ao seu grupo",
+    lead: "Partilhe o contexto da viagem e receba um enquadramento claro, uma resposta rápida e uma proposta pensada com critério.",
     supportingText:
-      "A Sunlive Travel prepara soluções ajustadas ao perfil do grupo, ao itinerário e ao nível de serviço pretendido, com foco em conforto, organização e execução sem falhas.",
+      "A Sunlive Travel estrutura soluções ajustadas ao perfil do grupo, ao destino, ao formato da deslocação e ao nível de serviço pretendido, com foco em organização, conforto e execução consistente do início ao fim.",
     trustPoints: [
-      "Resposta rápida",
-      "Proposta personalizada",
+      "Resposta com rapidez",
+      "Proposta ajustada ao grupo",
       "Acompanhamento próximo",
     ],
     stats: [
@@ -20,7 +20,7 @@ const contactCTA = {
         label: "primeiro enquadramento",
       },
       {
-        value: "Tailor-made",
+        value: "Personalizada",
         label: "proposta ajustada",
       },
       {
@@ -38,30 +38,33 @@ const contactCTA = {
     eyebrow: "Informação útil",
     title: "O que nos ajuda a preparar uma proposta mais precisa",
     description:
-      "Com alguns detalhes essenciais, conseguimos responder com maior rapidez e desenhar uma solução mais ajustada às necessidades da viagem.",
+      "Com alguns dados essenciais, conseguimos responder com maior clareza, enquadrar melhor a operação e desenhar uma solução mais ajustada ao perfil da viagem.",
   },
 
   channelsPanel: {
     eyebrow: "Canais disponíveis",
     title: "Escolha a forma mais conveniente para entrar em contacto",
     description:
-      "Estamos disponíveis para esclarecer dúvidas, enquadrar o pedido e orientar a melhor solução para o seu grupo.",
+      "Estamos disponíveis para esclarecer dúvidas, enquadrar o pedido e orientar a solução mais adequada para o seu grupo, destino e formato de viagem.",
   },
 
   checklist: [
-    { key: "date-time", label: "Data e hora da viagem" },
-    { key: "route", label: "Local de partida e destino" },
-    { key: "duration", label: "Duração estimada" },
-    { key: "passengers", label: "Número de passageiros" },
-    { key: "service-type", label: "Tipo de serviço pretendido" },
-    { key: "special-needs", label: "Necessidades especiais" },
+    { key: "group-profile", label: "Perfil do grupo / Tipo de viagem" },
+    { key: "origin-destination", label: "Origem, destino e percurso previsto" },
+    { key: "dates-duration", label: "Datas e duração estimada" },
+    { key: "participants", label: "Número de participantes" },
+    { key: "services-needed", label: "Serviços pretendidos" },
+    {
+      key: "service-level",
+      label: "Nível de conforto / Enquadramento desejado",
+    },
   ],
 
   channels: TRAVEL_CONTACT_CHANNELS,
 
   ui: {
     sectionAriaLabel: "Secção de contacto Sunlive Travel",
-    checklistAriaLabel: "Informação necessária para pedir proposta",
+    checklistAriaLabel: "Informação necessária para preparar uma proposta",
     channelsAriaLabel: "Canais de contacto Sunlive Travel",
   },
 };

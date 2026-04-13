@@ -8,7 +8,7 @@ export const SPORTS_COMPANY = Object.freeze({
   brandName: "Sunlive Sports",
   tagline: "Transformando vidas através do Desporto.",
   about:
-    "Na Sunlive Sports, acreditamos no desporto como motor de desenvolvimento pessoal, educativo e profissional — providenciamos programas integrados que elevam a performance, promovem o bem-estar e criam experiências memoráveis.",
+    "Na Sunlive Sports, acreditamos no desporto como motor de desenvolvimento pessoal, educativo e profissional.\nProvidenciamos programas integrados que elevam a performance, promovem o bem-estar e criam experiências memoráveis.",
   aboutIntro:
     "Na Sunlive Sports, acreditamos no desporto como motor de desenvolvimento pessoal, educativo e profissional.",
   location: SUNLIVE_HQ_LOCATION,

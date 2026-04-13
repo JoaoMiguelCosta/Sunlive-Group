@@ -2,7 +2,7 @@ export const amenities = {
   id: "estadia-comodidades",
   headerLabel: "Comodidades Incluídas",
   description:
-    "Independentemente da tipologia escolhida, todos os quartos estão equipados com comodidades que asseguram uma experiência funcional e confortável — seja numa estadia de lazer, profissional ou desportiva.",
+    "Independentemente da tipologia escolhida, todos os quartos estão equipados com comodidades que asseguram uma experiência funcional e confortável. Seja numa estadia de lazer, profissional ou desportiva.",
 
   ui: {
     pillsAriaLabel: "Seleção de comodidades incluídas",
@@ -21,7 +21,7 @@ export const amenities = {
       description:
         "Cada unidade dispõe de casa de banho privativa, garantindo conforto, autonomia e maior privacidade ao longo da estadia.",
       benefit: "Privacidade e conveniência desde o primeiro momento.",
-      idealFor: "casais, famílias, profissionais e estadias prolongadas",
+      idealFor: "Casais, famílias, profissionais e estadias prolongadas",
     },
     {
       id: "amenity-ac",
@@ -31,7 +31,7 @@ export const amenities = {
       description:
         "Climatização pensada para manter uma temperatura estável e confortável em qualquer época do ano.",
       benefit: "Mais conforto térmico, descanso e recuperação.",
-      idealFor: "atletas, hóspedes em trabalho e estadias de verão",
+      idealFor: "Atletas, hóspedes em trabalho e estadias de verão",
     },
     {
       id: "amenity-tv",
@@ -41,7 +41,7 @@ export const amenities = {
       description:
         "Cada quarto inclui televisão para momentos de pausa, entretenimento e rotina mais descontraída ao final do dia.",
       benefit: "Um extra simples que melhora o conforto da permanência.",
-      idealFor: "lazer, estadias curtas e momentos de descanso",
+      idealFor: "Lazer, estadias curtas e momentos de descanso",
     },
     {
       id: "amenity-wardrobe",
@@ -51,7 +51,7 @@ export const amenities = {
       description:
         "Espaço de arrumação funcional para organizar roupa, equipamento ou bagagem com mais praticidade.",
       benefit: "Mais ordem visual e melhor aproveitamento do espaço.",
-      idealFor: "famílias, atletas e estadias de média duração",
+      idealFor: "Famílias, atletas e estadias de média duração",
     },
     {
       id: "amenity-desk",
@@ -61,7 +61,7 @@ export const amenities = {
       description:
         "Área útil para trabalhar, planear o dia, utilizar portátil ou apoiar objetos pessoais com conforto.",
       benefit: "Funcionalidade extra para trabalho e organização.",
-      idealFor: "profissionais, treinadores e viajantes individuais",
+      idealFor: "Profissionais, treinadores e viajantes individuais",
     },
     {
       id: "amenity-wifi",
@@ -71,7 +71,7 @@ export const amenities = {
       description:
         "Ligação Wi-Fi disponível para comunicação, trabalho remoto, pesquisa de informação e utilização diária sem complicações.",
       benefit: "Conectividade estável para lazer e produtividade.",
-      idealFor: "trabalho remoto, reservas, comunicação e uso diário",
+      idealFor: "Trabalho remoto, reservas, comunicação e uso diário",
     },
     {
       id: "amenity-cleaning",
@@ -81,7 +81,7 @@ export const amenities = {
       description:
         "Serviço regular de limpeza para manter o quarto cuidado, funcional e preparado para uma experiência sempre consistente.",
       benefit: "Sensação contínua de cuidado, frescura e conforto.",
-      idealFor: "estadias prolongadas, famílias e hóspedes em ritmo intenso",
+      idealFor: "Estadias prolongadas, famílias e hóspedes em ritmo intenso",
     },
     {
       id: "amenity-linen",
@@ -91,7 +91,7 @@ export const amenities = {
       description:
         "Todos os quartos incluem roupa de cama e toalhas, assegurando praticidade e conforto desde a chegada.",
       benefit: "Menos preocupações logísticas e mais comodidade.",
-      idealFor: "todos os perfis de hóspedes",
+      idealFor: "Todos os perfis de hóspedes",
     },
   ],
 };

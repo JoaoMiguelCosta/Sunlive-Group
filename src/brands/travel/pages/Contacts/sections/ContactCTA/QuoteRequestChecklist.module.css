@@ -1,125 +1,134 @@
 .wrap {
     box-sizing: border-box;
     inline-size: 100%;
-    margin-inline: auto;
+    min-inline-size: 0;
 }
 
 .list {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(0.65rem, 1.2vw, 0.85rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.62rem, 1vw, 0.82rem);
     margin: 0;
     padding: 0;
     list-style: none;
+    align-items: stretch;
 }
 
 .item {
     position: relative;
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: inline-flex;
     align-items: center;
-    gap: clamp(0.55rem, 1vw, 0.72rem);
     min-inline-size: 0;
-    padding: clamp(0.82rem, 1.2vw, 0.95rem) clamp(0.9rem, 1.4vw, 1rem);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 1rem;
+    inline-size: 100%;
+    min-block-size: clamp(2.9rem, 3.3vw, 3.25rem);
+    padding: clamp(0.66rem, 0.95vw, 0.8rem) clamp(0.82rem, 1.2vw, 0.96rem);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--sl-platinum-200, #e1e8f5);
     background:
-        linear-gradient(180deg, rgba(8, 20, 38, 0.88), rgba(5, 12, 24, 0.96));
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-    transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease,
-        border-color 0.18s ease,
-        background 0.18s ease;
-    will-change: transform, box-shadow;
-}
-
-.item::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.18s ease;
-    background:
-        radial-gradient(160% 150% at 12% 0%,
-            color-mix(in oklab, var(--sl-gold-400, #c78615) 42%, transparent) 0%,
-            transparent 60%),
         linear-gradient(180deg,
-            color-mix(in oklab, var(--sl-gold-500, #a16207) 26%, transparent) 0%,
-            transparent 40%);
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(255, 255, 255, 0.02) 100%),
+        rgba(5, 16, 34, 0.58);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 10px 20px rgba(0, 0, 0, 0.16);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease,
+        filter 180ms ease;
 }
 
 .item:hover,
 .item:focus-visible {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    border-color: rgba(232, 191, 92, 0.2);
     background:
         linear-gradient(180deg,
-            color-mix(in oklab, #0a1322 85%, black 15%) 0%,
-            color-mix(in oklab, #071226 90%, black 10%) 100%),
-        linear-gradient(180deg,
-            color-mix(in oklab, var(--sl-gold-500, #a16207) 46%, #0a1322 54%) 0%,
-            color-mix(in oklab, var(--sl-gold-500, #a16207) 22%, #0a1322 78%) 65%,
-            transparent 100%);
-    border-color: color-mix(in oklab, var(--sl-gold-500, #a16207) 58%, #000 42%);
+            rgba(255, 255, 255, 0.075) 0%,
+            rgba(255, 255, 255, 0.028) 100%),
+        rgba(7, 21, 43, 0.7);
     box-shadow:
-        0 0 0 3px color-mix(in oklab, var(--sl-gold-400, #c78615) 22%, transparent),
-        0 12px 26px rgba(0, 0, 0, 0.42),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 14px 26px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(232, 191, 92, 0.04);
+    filter: brightness(1.02);
     outline: none;
 }
 
-.item:hover::after,
-.item:focus-visible::after {
-    opacity: 1;
-}
-
 .bullet {
-    inline-size: 0.68rem;
-    block-size: 0.68rem;
+    inline-size: 7px;
+    block-size: 7px;
+    margin-right: 0.56rem;
     border-radius: 999px;
-    background: #2ea7e0;
+    background:
+        radial-gradient(circle,
+            rgba(255, 221, 128, 1) 0%,
+            rgba(212, 160, 52, 0.92) 68%,
+            rgba(212, 160, 52, 0) 100%);
     box-shadow:
-        0 0 0 2px rgba(46, 167, 224, 0.25),
-        0 0 22px rgba(46, 167, 224, 0.55);
+        0 0 0 4px rgba(212, 160, 52, 0.08),
+        0 0 10px rgba(212, 160, 52, 0.28);
+    flex-shrink: 0;
     transition:
-        box-shadow 0.18s ease,
-        transform 0.18s ease,
-        filter 0.18s ease;
+        box-shadow 180ms ease,
+        transform 180ms ease,
+        filter 180ms ease;
 }
 
 .item:hover .bullet,
 .item:focus-visible .bullet {
+    transform: scale(1.08);
     box-shadow:
-        0 0 0 2px rgba(46, 167, 224, 0.35),
-        0 0 32px rgba(46, 167, 224, 0.8);
-    transform: scale(1.06);
-    filter: brightness(1.08);
+        0 0 0 5px rgba(212, 160, 52, 0.1),
+        0 0 14px rgba(212, 160, 52, 0.34);
+    filter: brightness(1.06);
 }
 
 .label {
     min-inline-size: 0;
+    max-inline-size: 100%;
     color: var(--sl-platinum-200, #e1e8f5);
-    font-size: clamp(0.96rem, 1vw, 1rem);
-    line-height: 1.35;
+    font-size: clamp(0.82rem, 0.88vw, 0.92rem);
+    font-weight: 600;
+    line-height: 1.22;
     text-wrap: pretty;
+    overflow-wrap: anywhere;
 }
 
-@supports not (color: color-mix(in oklab, white, black)) {
+@media (max-width: 767px) {
+    .list {
+        grid-template-columns: 1fr;
+        gap: 0.62rem;
+    }
 
-    .item:hover,
-    .item:focus-visible {
-        background:
-            linear-gradient(180deg, #0a1322 0%, #071226 100%),
-            linear-gradient(180deg,
-                rgba(161, 98, 7, 0.46) 0%,
-                rgba(161, 98, 7, 0.22) 65%,
-                transparent 100%);
-        border-color: rgba(161, 98, 7, 0.68);
-        box-shadow:
-            0 0 0 3px rgba(199, 134, 21, 0.22),
-            0 12px 26px rgba(0, 0, 0, 0.42),
-            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    .item {
+        min-block-size: 2.95rem;
+        padding: 0.68rem 0.82rem;
+    }
+
+    .label {
+        font-size: 0.88rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .item {
+        min-block-size: 2.82rem;
+        padding: 0.64rem 0.76rem;
+    }
+
+    .bullet {
+        inline-size: 6px;
+        block-size: 6px;
+        margin-right: 0.48rem;
+    }
+
+    .label {
+        font-size: 0.84rem;
+        line-height: 1.24;
     }
 }
 
@@ -132,6 +141,11 @@
 
     .item:hover,
     .item:focus-visible {
+        transform: none;
+    }
+
+    .item:hover .bullet,
+    .item:focus-visible .bullet {
         transform: none;
     }
 }

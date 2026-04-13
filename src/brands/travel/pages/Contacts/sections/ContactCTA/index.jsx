@@ -1,8 +1,29 @@
 import styles from "./ContactCTASection.module.css";
 import travelBrand from "../../../../config/index.js";
 
+import ContactIntroPanel from "./ContactIntroPanel.jsx";
+import ContactPanelIntro from "./ContactPanelIntro.jsx";
 import QuoteRequestChecklist from "./QuoteRequestChecklist.jsx";
 import ContactChannels from "./ContactChannels.jsx";
+
+function getValidArray(value) {
+  return Array.isArray(value) ? value.filter(Boolean) : [];
+}
+
+function hasHeroContent(hero) {
+  return Boolean(
+    hero?.eyebrow ||
+      hero?.title ||
+      hero?.lead ||
+      hero?.supportingText ||
+      (Array.isArray(hero?.trustPoints) && hero.trustPoints.length > 0) ||
+      (Array.isArray(hero?.stats) && hero.stats.length > 0),
+  );
+}
+
+function hasPanelIntro(panel) {
+  return Boolean(panel?.eyebrow || panel?.title || panel?.description);
+}
 
 export default function ContactCTASection() {
   const section = travelBrand?.pages?.contacts?.sections?.contactCTA ?? null;
@@ -16,26 +37,22 @@ export default function ContactCTASection() {
   const checklistPanel = section?.checklistPanel ?? {};
   const channelsPanel = section?.channelsPanel ?? {};
 
-  const trustPoints = Array.isArray(hero?.trustPoints)
-    ? hero.trustPoints.filter(Boolean)
-    : [];
+  const checklist = getValidArray(section?.checklist).filter(
+    (item) => item?.label,
+  );
 
-  const stats = Array.isArray(hero?.stats)
-    ? hero.stats.filter((item) => item?.value && item?.label)
-    : [];
+  const channels = getValidArray(section?.channels).filter(
+    (item) => item?.label && item?.href,
+  );
 
-  const checklist = Array.isArray(section?.checklist) ? section.checklist : [];
-  const channels = Array.isArray(section?.channels) ? section.channels : [];
-
+  const hasHero = hasHeroContent(hero);
   const hasChecklist = checklist.length > 0;
   const hasChannels = channels.length > 0;
 
-  if (!hasChecklist && !hasChannels) return null;
+  if (!hasHero && !hasChecklist && !hasChannels) return null;
 
-  const trustPointsAriaLabel =
-    hero?.ui?.trustPointsAriaLabel ?? "Vantagens do contacto";
-
-  const statsAriaLabel = hero?.ui?.statsAriaLabel ?? "Destaques do contacto";
+  const checklistTitleId = `${sectionId}-checklist-title`;
+  const channelsTitleId = `${sectionId}-channels-title`;
 
   return (
     <section
@@ -45,125 +62,59 @@ export default function ContactCTASection() {
       data-section="contact-cta"
     >
       <div className={styles.inner}>
-        <header className={styles.hero}>
-          <div className={styles.heroMain}>
-            <div className={styles.heroCopy}>
-              {hero?.eyebrow ? (
-                <p className={styles.eyebrow}>{hero.eyebrow}</p>
-              ) : null}
+        {hasHero ? <ContactIntroPanel hero={hero} /> : null}
 
-              {hero?.title ? (
-                <h2 className={styles.title}>{hero.title}</h2>
-              ) : null}
-
-              {hero?.lead ? <p className={styles.lead}>{hero.lead}</p> : null}
-
-              {hero?.supportingText ? (
-                <p className={styles.description}>{hero.supportingText}</p>
-              ) : null}
-            </div>
-
-            {trustPoints.length > 0 ? (
-              <ul
-                className={styles.trustPoints}
-                aria-label={trustPointsAriaLabel}
+        {hasChecklist || hasChannels ? (
+          <div className={styles.contentGrid}>
+            {hasChecklist ? (
+              <section
+                className={styles.panel}
+                aria-labelledby={checklistTitleId}
               >
-                {trustPoints.map((point) => (
-                  <li key={point} className={styles.trustPoint}>
-                    {point}
-                  </li>
-                ))}
-              </ul>
+                {hasPanelIntro(checklistPanel) ? (
+                  <ContactPanelIntro
+                    id={checklistTitleId}
+                    eyebrow={checklistPanel?.eyebrow}
+                    title={checklistPanel?.title}
+                    description={checklistPanel?.description}
+                  />
+                ) : null}
+
+                <QuoteRequestChecklist
+                  checklist={checklist}
+                  ariaLabel={
+                    section?.ui?.checklistAriaLabel ??
+                    "Informação necessária para preparar uma proposta"
+                  }
+                />
+              </section>
+            ) : null}
+
+            {hasChannels ? (
+              <section
+                className={`${styles.panel} ${styles.channelsPanel}`}
+                aria-labelledby={channelsTitleId}
+              >
+                {hasPanelIntro(channelsPanel) ? (
+                  <ContactPanelIntro
+                    id={channelsTitleId}
+                    eyebrow={channelsPanel?.eyebrow}
+                    title={channelsPanel?.title}
+                    description={channelsPanel?.description}
+                  />
+                ) : null}
+
+                <ContactChannels
+                  channels={channels}
+                  ariaLabel={
+                    section?.ui?.channelsAriaLabel ??
+                    "Canais de contacto Sunlive Travel"
+                  }
+                />
+              </section>
             ) : null}
           </div>
-
-          {stats.length > 0 ? (
-            <div className={styles.heroStats} aria-label={statsAriaLabel}>
-              {stats.map((stat) => (
-                <article
-                  key={`${stat.value}-${stat.label}`}
-                  className={styles.statCard}
-                >
-                  <strong className={styles.statValue}>{stat.value}</strong>
-                  <span className={styles.statLabel}>{stat.label}</span>
-                </article>
-              ))}
-            </div>
-          ) : null}
-        </header>
-
-        <div className={styles.contentGrid}>
-          {hasChecklist ? (
-            <section
-              className={styles.panel}
-              aria-labelledby="contact-checklist-title"
-            >
-              <div className={styles.panelHeader}>
-                {checklistPanel?.eyebrow ? (
-                  <p className={styles.panelEyebrow}>
-                    {checklistPanel.eyebrow}
-                  </p>
-                ) : null}
-
-                {checklistPanel?.title ? (
-                  <h3
-                    id="contact-checklist-title"
-                    className={styles.panelTitle}
-                  >
-                    {checklistPanel.title}
-                  </h3>
-                ) : null}
-
-                {checklistPanel?.description ? (
-                  <p className={styles.panelDescription}>
-                    {checklistPanel.description}
-                  </p>
-                ) : null}
-              </div>
-
-              <QuoteRequestChecklist
-                checklist={checklist}
-                ariaLabel={
-                  section?.ui?.checklistAriaLabel ??
-                  "Informação necessária para pedir proposta"
-                }
-              />
-            </section>
-          ) : null}
-
-          {hasChannels ? (
-            <section
-              className={`${styles.panel} ${styles.channelsPanel}`}
-              aria-labelledby="contact-channels-title"
-            >
-              <div className={styles.panelHeader}>
-                {channelsPanel?.eyebrow ? (
-                  <p className={styles.panelEyebrow}>{channelsPanel.eyebrow}</p>
-                ) : null}
-
-                {channelsPanel?.title ? (
-                  <h3 id="contact-channels-title" className={styles.panelTitle}>
-                    {channelsPanel.title}
-                  </h3>
-                ) : null}
-
-                {channelsPanel?.description ? (
-                  <p className={styles.panelDescription}>
-                    {channelsPanel.description}
-                  </p>
-                ) : null}
-              </div>
-
-              <ContactChannels
-                channels={channels}
-                ariaLabel={
-                  section?.ui?.channelsAriaLabel ??
-                  "Canais de contacto Sunlive Travel"
-                }
-              />
-            </section>
-          ) : null}
-        </div>
+        ) : null}
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import styles from "./QuoteRequestChecklist.module.css";
 
 export default function QuoteRequestChecklist({
   checklist = [],
-  ariaLabel = "Informação necessária para pedir proposta",
+  ariaLabel = "Informação necessária para preparar uma proposta",
 }) {
   if (!Array.isArray(checklist) || checklist.length === 0) return null;
 

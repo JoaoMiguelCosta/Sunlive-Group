@@ -16,7 +16,7 @@ export const accommodations = {
   id: "estadia-accommodations",
   headerLabel: "Alojamento",
   description:
-    "Quartos e suítes confortáveis, equipados para diferentes tipologias de estadia — desde viajantes individuais e casais até grupos, atletas ou hóspedes que procuram mais espaço e conforto.",
+    "Quartos e suítes confortáveis, equipados para diferentes tipologias de estadia. Desde viajantes individuais e casais até grupos, atletas ou hóspedes que procuram mais espaço e conforto.",
 
   gallery: {
     fallbackLabel: "Galeria de alojamento",
@@ -89,7 +89,7 @@ export const accommodations = {
     id: "estadia-quartos",
     headerLabel: "Quartos e Suítes",
     description:
-      "Dispomos de um conjunto de quartos e suítes confortáveis e funcionais, pensados para diferentes necessidades de estadia — desde opções individuais até soluções para casais, grupos e estadias premium.",
+      "Dispomos de um conjunto de quartos e suítes confortáveis e funcionais, pensados para diferentes necessidades de estadia. Desde opções individuais até soluções para casais, grupos e estadias premium.",
   },
 
   roomProfilesFilter: {
