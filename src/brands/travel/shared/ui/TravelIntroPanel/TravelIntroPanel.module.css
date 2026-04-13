@@ -11,21 +11,45 @@
     gap: clamp(0.85rem, 1.7vw, 1.2rem);
     padding: clamp(1rem, 2.1vw, 1.55rem);
     border-radius: 26px;
-    border: 1px solid rgba(199, 134, 21, 0.34);
+    border: 1px solid rgba(201, 155, 66, 0.22);
     background:
-        radial-gradient(120% 140% at 0% 0%,
-            rgba(46, 167, 224, 0.16) 0%,
-            transparent 52%),
-        radial-gradient(120% 160% at 100% 100%,
-            rgba(199, 134, 21, 0.18) 0%,
-            transparent 56%),
-        linear-gradient(135deg,
-            rgba(4, 10, 24, 0.96) 0%,
-            rgba(4, 10, 24, 0.98) 42%,
-            rgba(8, 36, 56, 0.96) 100%);
+        radial-gradient(110% 135% at 0% 0%,
+            rgba(32, 77, 139, 0.34) 0%,
+            transparent 34%),
+        radial-gradient(72% 88% at 100% 100%,
+            rgba(38, 103, 190, 0.3) 0%,
+            transparent 42%),
+        radial-gradient(42% 44% at 67% 20%,
+            rgba(219, 171, 64, 0.12) 0%,
+            transparent 68%),
+        radial-gradient(30% 36% at 18% 78%,
+            rgba(97, 177, 255, 0.12) 0%,
+            transparent 74%),
+        linear-gradient(125deg,
+            #122b4c 0%,
+            #041425 33%,
+            #02111f 58%,
+            #0a2a4c 100%);
     box-shadow:
-        0 22px 48px rgba(0, 0, 0, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        0 26px 72px rgba(0, 0, 0, 0.3),
+        0 12px 26px rgba(2, 12, 24, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(85, 153, 221, 0.08);
+    isolation: isolate;
+    transition:
+        border-color 220ms ease,
+        box-shadow 220ms ease,
+        filter 220ms ease;
+}
+
+.panel:hover {
+    border-color: rgba(218, 171, 76, 0.3);
+    box-shadow:
+        0 30px 82px rgba(0, 0, 0, 0.34),
+        0 14px 30px rgba(2, 12, 24, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.09),
+        inset 0 -1px 0 rgba(96, 176, 242, 0.12);
+    filter: brightness(1.015);
 }
 
 .panel::before {
@@ -33,14 +57,38 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(90deg,
-            rgba(199, 134, 21, 0.8) 0%,
-            rgba(199, 134, 21, 0.2) 20%,
-            rgba(46, 167, 224, 0.16) 100%);
-    block-size: 4px;
+    background:
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.02) 0%,
+            rgba(255, 255, 255, 0) 14%,
+            rgba(255, 255, 255, 0) 86%,
+            rgba(255, 255, 255, 0.02) 100%);
+    opacity: 0.9;
+}
+
+.panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    opacity: 1;
+    transition:
+        box-shadow 220ms ease,
+        opacity 220ms ease;
+}
+
+.panel:hover::after {
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+        inset 0 0 28px rgba(86, 154, 228, 0.08);
 }
 
 .copy {
+    position: relative;
+    z-index: 1;
     display: grid;
     align-content: start;
     gap: 0.72rem;
@@ -48,13 +96,24 @@
 }
 
 .eyebrow {
+    justify-self: start;
     margin: 0;
-    color: color-mix(in oklab,
-            var(--sl-platinum-100, #f6f7fb) 74%,
-            var(--sl-accent-400, #79ccef) 26%);
+    padding: 0.42rem 0.82rem;
+    border: 1px solid rgba(232, 191, 92, 0.22);
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.015) 100%),
+        rgba(20, 45, 78, 0.42);
+    color: #f1c765;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 10px 22px rgba(0, 0, 0, 0.14);
     font-size: 0.76rem;
     font-weight: 800;
     letter-spacing: 0.17em;
+    line-height: 1;
     text-transform: uppercase;
 }
 
@@ -62,8 +121,9 @@
     margin: 0;
     color: #f7f8fc;
     font-size: clamp(1.7rem, 3vw, 2.8rem);
-    line-height: 1.02;
     font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
     text-wrap: balance;
 }
 
@@ -72,6 +132,7 @@
     max-inline-size: 58ch;
     color: rgba(246, 247, 251, 0.94);
     font-size: clamp(0.96rem, 1.08vw, 1.08rem);
+    font-weight: 700;
     line-height: 1.55;
     text-wrap: pretty;
 }
@@ -79,9 +140,9 @@
 .supportingText {
     margin: 0;
     max-inline-size: 64ch;
-    color: rgba(219, 225, 238, 0.82);
+    color: rgba(219, 225, 238, 0.78);
     font-size: clamp(0.9rem, 0.98vw, 0.98rem);
-    line-height: 1.58;
+    line-height: 1.62;
     text-wrap: pretty;
 }
 
@@ -90,78 +151,178 @@
     flex-wrap: wrap;
     gap: 0.55rem;
     list-style: none;
-    margin: 0.1rem 0 0;
+    margin: 0.14rem 0 0;
     padding: 0;
 }
 
 .pill {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    min-block-size: 34px;
-    padding: 0.5rem 0.74rem;
+    min-block-size: 36px;
+    padding: 0.52rem 0.82rem;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: #eff3fb;
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.06),
-            rgba(255, 255, 255, 0.02)),
-        rgba(5, 16, 34, 0.62);
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(255, 255, 255, 0.02) 100%),
+        rgba(5, 16, 34, 0.58);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
         0 10px 20px rgba(0, 0, 0, 0.16);
     font-size: 0.84rem;
     font-weight: 600;
     line-height: 1.2;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease,
+        filter 180ms ease;
+}
+
+.pill:hover {
+    transform: translateY(-2px);
+    border-color: rgba(232, 191, 92, 0.2);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.075) 0%,
+            rgba(255, 255, 255, 0.028) 100%),
+        rgba(7, 21, 43, 0.7);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 14px 26px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(232, 191, 92, 0.04);
+    filter: brightness(1.02);
+}
+
+.pill::before {
+    content: "";
+    inline-size: 7px;
+    block-size: 7px;
+    margin-right: 0.58rem;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgba(255, 221, 128, 1) 0%,
+            rgba(212, 160, 52, 0.92) 68%,
+            rgba(212, 160, 52, 0) 100%);
+    box-shadow:
+        0 0 0 4px rgba(212, 160, 52, 0.08),
+        0 0 10px rgba(212, 160, 52, 0.28);
+    flex-shrink: 0;
+    transition:
+        box-shadow 180ms ease,
+        transform 180ms ease,
+        filter 180ms ease;
+}
+
+.pill:hover::before {
+    transform: scale(1.08);
+    box-shadow:
+        0 0 0 5px rgba(212, 160, 52, 0.1),
+        0 0 14px rgba(212, 160, 52, 0.34);
+    filter: brightness(1.06);
 }
 
 .stats {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.72rem;
     align-content: stretch;
+    min-inline-size: 0;
 }
 
 .statCard {
     position: relative;
     overflow: hidden;
     display: grid;
-    gap: 0.25rem;
+    gap: 0.28rem;
     align-content: center;
     min-block-size: 80px;
-    padding: 0.82rem 0.9rem 0.86rem 0.95rem;
+    padding: 0.9rem 1rem 0.92rem;
     border-radius: 20px;
-    border: 1px solid rgba(199, 134, 21, 0.18);
+    border: 1px solid rgba(201, 155, 66, 0.18);
     background:
+        radial-gradient(120% 120% at 0% 0%,
+            rgba(32, 77, 139, 0.16) 0%,
+            transparent 34%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.05),
-            rgba(255, 255, 255, 0.02)),
-        rgba(3, 12, 27, 0.72);
+            rgba(10, 28, 52, 0.74) 0%,
+            rgba(4, 14, 29, 0.88) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 12px 24px rgba(0, 0, 0, 0.18);
+        0 14px 30px rgba(0, 0, 0, 0.16);
+    transition:
+        transform 200ms ease,
+        border-color 200ms ease,
+        box-shadow 200ms ease,
+        filter 200ms ease,
+        background 200ms ease;
+}
+
+.statCard:hover {
+    transform: translateY(-2px);
+    border-color: rgba(218, 171, 76, 0.26);
+    background:
+        radial-gradient(120% 120% at 0% 0%,
+            rgba(45, 96, 164, 0.22) 0%,
+            transparent 34%),
+        linear-gradient(180deg,
+            rgba(12, 31, 58, 0.8) 0%,
+            rgba(5, 17, 34, 0.92) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 18px 34px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(218, 171, 76, 0.04);
+    filter: brightness(1.02);
 }
 
 .statCard::before {
     content: "";
     position: absolute;
-    inset: auto auto 0 0;
-    inline-size: 100%;
+    inset: auto 0 0 0;
     block-size: 2px;
-    background: linear-gradient(90deg,
-            rgba(199, 134, 21, 0.76),
-            rgba(46, 167, 224, 0.5));
+    background:
+        linear-gradient(90deg,
+            rgba(201, 155, 66, 0.9) 0%,
+            rgba(61, 171, 226, 0.72) 100%);
+    opacity: 0.95;
+}
+
+.statCard::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.035) 0%,
+            rgba(255, 255, 255, 0) 40%,
+            rgba(89, 171, 237, 0.06) 100%);
+    opacity: 0;
+    transition: opacity 200ms ease;
+}
+
+.statCard:hover::after {
+    opacity: 1;
 }
 
 .statValue {
-    color: #ffffff;
+    color: #f0d58f;
     font-size: clamp(1.08rem, 1.45vw, 1.42rem);
     font-weight: 800;
     line-height: 1;
+    letter-spacing: -0.03em;
 }
 
 .statLabel {
-    color: rgba(226, 232, 244, 0.84);
+color: #d6eaff;
     font-size: 0.84rem;
     line-height: 1.35;
 }
@@ -174,19 +335,18 @@
     }
 
     .title {
-        max-inline-size: 30ch;
         font-size: clamp(1.58rem, 3vw, 2.45rem);
     }
 
     .pill {
-        min-block-size: 32px;
-        padding: 0.46rem 0.68rem;
+        min-block-size: 34px;
+        padding: 0.48rem 0.74rem;
         font-size: 0.8rem;
     }
 
     .statCard {
         min-block-size: 74px;
-        padding: 0.76rem 0.82rem;
+        padding: 0.8rem 0.86rem;
     }
 }
 
@@ -201,7 +361,6 @@
     }
 
     .title {
-        max-inline-size: 30ch;
         font-size: clamp(1.5rem, 4.4vw, 2.2rem);
     }
 
@@ -232,7 +391,6 @@
     }
 
     .title {
-        max-inline-size: 30ch;
         font-size: clamp(1.42rem, 6vw, 1.95rem);
     }
 
@@ -250,9 +408,13 @@
         inline-size: 100%;
         justify-content: center;
         text-align: center;
-        min-block-size: 32px;
-        padding: 0.48rem 0.7rem;
+        min-block-size: 34px;
+        padding: 0.5rem 0.74rem;
         font-size: 0.8rem;
+    }
+
+    .pill::before {
+        margin-right: 0.5rem;
     }
 
     .statCard {

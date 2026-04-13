@@ -9,42 +9,42 @@ const travelPartners = {
   showcaseHero: {
     eyebrow: "Parcerias estratégicas",
     title:
-      "Parceiros de viagem que reforçam a qualidade, alcance e confiança da operação",
+      "Parceiros de viagem que reforçam a consistência, alcance e confiança da operação",
     lead: "Trabalhamos com parceiros selecionados para complementar a nossa oferta com conhecimento local, capacidade técnica e soluções ajustadas a diferentes perfis de viagem.",
     supportingText:
-      "Estas colaborações permitem-nos construir programas mais completos e consistentes, combinando operação, experiência no destino e uma rede de apoio credível para grupos, equipas e viagens personalizadas.",
+      "Estas colaborações permitem-nos estruturar programas mais completos e consistentes, combinando operação, experiência no destino e uma rede de apoio credível para grupos, equipas e viagens personalizadas.",
     highlightsLabel: "Rede parceira validada",
     highlightPills: [
-      "Parcerias certificadas",
+      "Parcerias qualificadas",
       "Conhecimento local",
       "Soluções integradas de viagem",
     ],
     metrics: [
       {
         value: "2",
-        label: "parceiros estratégicos",
+        label: "Parceiros estratégicos",
       },
       {
-        value: "Premium",
-        label: "rede de confiança",
+        value: "Qualificada",
+        label: "Rede de confiança",
       },
       {
         value: "Integrado",
-        label: "apoio complementar",
+        label: "Apoio complementar",
       },
     ],
     insights: [
       {
         key: "credibility",
-        title: "Credibilidade complementar",
+        title: "Especialização complementar",
         description:
-          "Cada parceiro acrescenta especialização real à proposta, sem ruído nem redundância operacional.",
+          "Cada parceiro acrescenta conhecimento e capacidade real à proposta, reforçando a resposta da operação sem criar redundância.",
       },
       {
         key: "coverage",
         title: "Cobertura mais robusta",
         description:
-          "A rede permite ampliar contexto local, capacidade de resposta e consistência na experiência final.",
+          "A rede permite ampliar contexto local, capacidade de resposta e consistência na experiência final em diferentes formatos de viagem.",
       },
     ],
     ui: {
@@ -57,11 +57,11 @@ const travelPartners = {
   network: {
     ariaLabel: "Explorar parceiros de viagem",
     selectorAriaLabel: "Selecionar parceiro em destaque",
-    kicker: "Rede de parceiros",
+    kicker: "Parceiros selecionados",
     title:
-      "Marcas selecionadas para ampliar a proposta de valor de cada programa",
+      "Parceiros escolhidos para ampliar a proposta de valor de cada programa",
     description:
-      "Parceiros alinhados com a visão Sunlive Travel, escolhidos pela credibilidade, complementaridade da oferta e capacidade de acrescentar valor real à experiência final.",
+      "Parceiros alinhados com a visão da Sunlive Travel, escolhidos pela credibilidade, complementaridade da oferta e capacidade de acrescentar valor real à experiência e à operação.",
     spotlightLabel: "Parceiro em destaque",
     roleLabel: "Posicionamento",
     selectorLabel: "Parceiros disponíveis",
@@ -108,7 +108,7 @@ const travelPartners = {
   cta: {
     label: "Contactar",
     href: TRAVEL_PAGE_PATHS.contacts,
-    ariaLabel: "Contactar Sunlive Travel",
+    ariaLabel: "Contactar a Sunlive Travel sobre parceiros de viagem",
     iconKey: "phone",
   },
 };

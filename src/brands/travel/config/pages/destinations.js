@@ -1,15 +1,15 @@
 import {
   domesticDestinations,
   internationalDestinations,
+  destinationsActionPanel,
 } from "../sections/destinations/index.js";
 
-const destinations = {
-  id: "destinations",
+const destinationsPage = {
   sections: {
     domesticDestinations,
     internationalDestinations,
+    actionPanel: destinationsActionPanel,
   },
 };
 
-export default destinations;
-export { destinations as travelDestinationsPage };
+export default destinationsPage;

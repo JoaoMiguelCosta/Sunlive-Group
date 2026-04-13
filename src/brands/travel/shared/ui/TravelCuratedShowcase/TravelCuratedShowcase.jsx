@@ -323,13 +323,9 @@ export default function TravelCuratedShowcase({
                             className={styles.highlights}
                             aria-label={`Destaques de ${itemTitle}`}
                           >
-                            {highlightItems.map((item) => (
-                              <li key={item} className={styles.highlight}>
-                                <span
-                                  className={styles.highlightDot}
-                                  aria-hidden="true"
-                                />
-                                <span>{item}</span>
+                            {highlightItems.map((highlight) => (
+                              <li key={highlight} className={styles.highlight}>
+                                <span>{highlight}</span>
                               </li>
                             ))}
                           </ul>

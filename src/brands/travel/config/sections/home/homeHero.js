@@ -52,15 +52,15 @@ const homeHero = {
     metrics: [
       {
         value: "360º",
-        label: "coordenação integrada",
+        label: "Coordenação integrada",
       },
       {
         value: "Ajustada",
-        label: "solução alinhada com o grupo",
+        label: "Solução alinhada com o grupo",
       },
       {
         value: "Conforto",
-        label: "serviço pensado com critério",
+        label: "Serviço pensado com critério",
       },
     ],
     insights: [

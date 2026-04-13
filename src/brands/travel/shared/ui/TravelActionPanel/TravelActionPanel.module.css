@@ -8,18 +8,21 @@
     isolation: isolate;
     overflow: hidden;
     display: grid;
-    grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+    grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
     gap: clamp(1rem, 2vw, 1.5rem);
     padding: clamp(1.15rem, 2vw, 1.6rem);
     border-radius: clamp(26px, 2.2vw, 34px);
-    border: 1px solid rgba(201, 151, 65, 0.22);
+    border: 1px solid rgba(58, 123, 197, 0.32);
     background:
-        radial-gradient(88% 120% at 0% 0%,
-            rgba(72, 174, 218, 0.18) 0%,
-            transparent 42%),
-        radial-gradient(54% 80% at 100% 100%,
+        radial-gradient(92% 128% at 0% 0%,
+            rgba(32, 86, 162, 0.24) 0%,
+            transparent 36%),
+        radial-gradient(56% 84% at 100% 100%,
             rgba(201, 151, 65, 0.1) 0%,
             transparent 56%),
+        radial-gradient(42% 58% at 84% 18%,
+            rgba(87, 187, 232, 0.12) 0%,
+            transparent 62%),
         linear-gradient(135deg,
             rgba(8, 24, 46, 0.98) 0%,
             rgba(4, 15, 31, 0.99) 42%,
@@ -38,9 +41,9 @@
     pointer-events: none;
     background:
         linear-gradient(90deg,
-            rgba(214, 166, 77, 0.84) 0%,
-            rgba(87, 187, 232, 0.58) 34%,
-            rgba(255, 255, 255, 0) 76%) bottom / 100% 3px no-repeat,
+            rgba(214, 166, 77, 0.34) 0%,
+            rgba(255, 255, 255, 0.05) 14%,
+            rgba(255, 255, 255, 0) 34%) top / 100% 1px no-repeat,
         linear-gradient(135deg,
             rgba(255, 255, 255, 0.06) 0%,
             rgba(255, 255, 255, 0) 28%) center / 100% 100% no-repeat;
@@ -50,13 +53,14 @@
 .panel::after {
     content: "";
     position: absolute;
-    inset: 0 auto 0 0;
-    inline-size: 3px;
-    block-size: 100%;
-    background: linear-gradient(180deg,
-            rgba(203, 150, 58, 0.92),
-            rgba(72, 174, 218, 0.64));
-    opacity: 0.95;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 92% 78%,
+            rgba(72, 174, 218, 0.14) 0%,
+            rgba(72, 174, 218, 0.06) 22%,
+            rgba(72, 174, 218, 0) 52%);
 }
 
 .panelGlow {
@@ -85,20 +89,37 @@
 }
 
 .eyebrow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
     margin: 0;
-    color: rgba(206, 220, 236, 0.9);
-    font-size: 0.79rem;
-    font-weight: 800;
-    letter-spacing: 0.18em;
-    line-height: 1.1;
+    padding: 0.38rem 0.62rem 0.36rem;
+    border-radius: 999px;
+    border: 1px solid rgba(226, 186, 88, 0.2);
+    background:
+        linear-gradient(180deg,
+            rgba(225, 177, 63, 0.14) 0%,
+            rgba(225, 177, 63, 0.06) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.09),
+        inset 0 -1px 0 rgba(225, 177, 63, 0.04),
+        0 6px 16px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: rgba(244, 204, 105, 0.98);
+    font-size: 0.66rem;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    line-height: 1;
     text-transform: uppercase;
 }
 
 .title {
     margin: 0;
     color: #ffffff;
-    font-size: clamp(2rem, 3.4vw, 3.6rem);
-    line-height: 0.94;
+    font-size: clamp(1.86rem, 3.05vw, 3.2rem);
+    line-height: 0.95;
     font-weight: 800;
     letter-spacing: -0.05em;
     text-wrap: balance;
@@ -107,7 +128,6 @@
 
 .description {
     margin: 0;
-    max-inline-size: 34ch;
     color: rgba(239, 243, 249, 0.94);
     font-size: clamp(1rem, 1.12vw, 1.18rem);
     line-height: 1.62;
@@ -117,7 +137,6 @@
 
 .supportingText {
     margin: 0;
-    max-inline-size: 58ch;
     color: rgba(214, 224, 238, 0.8);
     font-size: clamp(0.92rem, 0.98vw, 1rem);
     line-height: 1.68;
@@ -134,37 +153,29 @@
 }
 
 .proofList {
-    display: grid;
-    gap: 0.72rem;
-    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.56rem;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 .proofItem {
     position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.82rem;
-    min-block-size: 3.25rem;
-    padding: 0.82rem 1rem;
-    border-radius: 18px;
+    min-height: 2.26rem;
+    padding-inline: 0.82rem;
+    border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.07);
     background:
-        radial-gradient(120% 160% at 0% 0%,
-            rgba(72, 174, 218, 0.1) 0%,
-            transparent 42%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.07),
-            rgba(255, 255, 255, 0.02)),
-        rgba(6, 19, 41, 0.62);
+            rgba(18, 40, 69, 0.62) 0%,
+            rgba(8, 19, 35, 0.82) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        0 12px 22px rgba(0, 0, 0, 0.14);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+        inset 0 -1px 0 rgba(255, 255, 255, 0.015);
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -175,42 +186,44 @@
 .proofItem::after {
     content: "";
     position: absolute;
-    inset: 0;
-    z-index: -1;
-    background:
-        linear-gradient(120deg,
-            rgba(255, 255, 255, 0.1) 0%,
-            rgba(255, 255, 255, 0.02) 28%,
-            rgba(255, 255, 255, 0) 58%);
-    opacity: 0.88;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.045) 0%,
+            transparent 58%);
     pointer-events: none;
 }
 
 .proofDot {
-    inline-size: 0.62rem;
-    block-size: 0.62rem;
+    inline-size: 0.38rem;
+    block-size: 0.38rem;
+    margin-right: 0.5rem;
     flex: 0 0 auto;
-    border-radius: 999px;
-    background: linear-gradient(180deg,
-            rgba(107, 196, 231, 0.98),
-            rgba(68, 147, 178, 0.94));
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 35%,
+            rgba(255, 244, 214, 0.92) 0%,
+            rgba(244, 208, 117, 0.88) 22%,
+            rgba(227, 180, 69, 0.96) 48%,
+            rgba(155, 97, 10, 1) 100%);
     box-shadow:
-        0 0 0 2px rgba(4, 12, 28, 0.94) inset,
-        0 0 12px rgba(76, 166, 200, 0.28);
+        0 0 0 4px rgba(223, 173, 60, 0.06),
+        0 0 12px rgba(223, 173, 60, 0.12);
 }
 
 .proofLabel {
     min-inline-size: 0;
-    color: rgba(244, 247, 252, 0.96);
-    font-size: clamp(0.94rem, 1vw, 1.02rem);
-    font-weight: 700;
-    line-height: 1.35;
+    color: rgba(236, 242, 248, 0.92);
+    font-size: 0.85rem;
+    font-weight: 740;
+    letter-spacing: -0.008em;
+    line-height: 1.18;
     text-wrap: pretty;
 }
 
 .actionArea {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     padding-top: 0.1rem;
 }
@@ -220,22 +233,92 @@
     min-inline-size: clamp(12rem, 18vw, 15rem);
 }
 
+/* Desktop largo */
+@media (min-width: 1081px) {
+    .panel {
+        grid-template-columns: minmax(0, 0.92fr) minmax(460px, 1.08fr);
+        gap: clamp(1.4rem, 2.4vw, 2.2rem);
+        padding: clamp(1.3rem, 2.1vw, 1.8rem);
+    }
+
+    .copyColumn {
+        gap: clamp(0.78rem, 1vw, 1rem);
+    }
+
+    .actionColumn {
+        gap: clamp(1rem, 1.4vw, 1.25rem);
+        align-content: center;
+        justify-items: stretch;
+    }
+
+    .proofList {
+        gap: 0.72rem;
+    }
+
+    .proofItem {
+        min-height: 2.9rem;
+        padding-inline: 1rem;
+    }
+
+    .proofLabel {
+        font-size: 0.98rem;
+        line-height: 1.22;
+    }
+
+    .actionArea {
+        padding-top: 0.2rem;
+    }
+
+    .ctaButton {
+        min-inline-size: clamp(14rem, 20vw, 18rem);
+    }
+}
+
+/* Desktop intermédio */
+@media (min-width: 1081px) and (max-width: 1320px) {
+    .proofList {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+    }
+
+    .proofItem:last-child {
+        grid-column: 1 / -1;
+        inline-size: fit-content;
+    }
+}
+
+/* Desktop muito largo */
+@media (min-width: 1321px) {
+    .proofList {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+    }
+
+    .proofItem {
+        min-height: 3rem;
+    }
+
+
+
+    .ctaButton {
+        min-inline-size: clamp(15rem, 18vw, 18.5rem);
+    }
+}
+
 @media (hover: hover) and (pointer: fine) {
     .proofItem:hover {
         transform: translateY(-2px);
-        border-color: rgba(201, 151, 65, 0.2);
+        border-color: rgba(201, 151, 65, 0.18);
         background:
-            radial-gradient(120% 160% at 0% 0%,
-                rgba(72, 174, 218, 0.13) 0%,
-                transparent 42%),
             linear-gradient(180deg,
-                rgba(255, 255, 255, 0.085),
-                rgba(255, 255, 255, 0.025)),
-            rgba(7, 22, 45, 0.7);
+                rgba(20, 46, 79, 0.7) 0%,
+                rgba(9, 22, 40, 0.86) 100%);
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.05),
-            0 16px 28px rgba(0, 0, 0, 0.18),
-            0 0 20px rgba(72, 174, 218, 0.06);
+            inset 0 -1px 0 rgba(255, 255, 255, 0.015),
+            0 14px 24px rgba(0, 0, 0, 0.16);
     }
 }
 
@@ -249,11 +332,24 @@
     .actionColumn {
         align-content: start;
     }
+}
 
-    .title,
-    .description,
-    .supportingText {
-        max-inline-size: none;
+@media (min-width: 769px) and (max-width: 1080px) {
+    .proofList {
+        gap: 0.62rem;
+    }
+
+    .proofItem {
+        min-height: 2.42rem;
+        padding-inline: 0.9rem;
+    }
+
+    .proofLabel {
+        font-size: 0.9rem;
+    }
+
+    .ctaButton {
+        min-inline-size: clamp(13rem, 30vw, 16rem);
     }
 }
 
@@ -264,7 +360,6 @@
     }
 
     .title {
-        max-inline-size: 12ch;
         font-size: clamp(1.65rem, 8vw, 2.45rem);
         line-height: 0.96;
     }
@@ -279,31 +374,53 @@
         line-height: 1.62;
     }
 
-    .proofItem {
-        min-block-size: 3rem;
-        padding: 0.78rem 0.9rem;
-        border-radius: 16px;
+    .proofList {
+        gap: 0.58rem;
     }
 
+    .proofItem {
+        min-height: 2.3rem;
+        padding-inline: 0.82rem;
+    }
+
+    .proofLabel {
+        font-size: 0.86rem;
+    }
+
+.ctaButton {
+    inline-size: auto;
+    min-inline-size: clamp(10.5rem, 58vw, 14rem);
+}
+}
+
+@media (max-width: 600px) {
     .ctaButton {
-        inline-size: 100%;
-        min-inline-size: 0;
+        min-inline-size: clamp(9.5rem, 62vw, 12.5rem);
     }
 }
 
 @media (max-width: 420px) {
     .eyebrow {
-        font-size: 0.72rem;
-        letter-spacing: 0.16em;
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
     }
 
     .panel {
         padding: 0.92rem;
     }
 
-    .proofLabel {
-        font-size: 0.9rem;
+    .proofItem {
+        min-height: 2.18rem;
+        padding-inline: 0.76rem;
     }
+
+    .proofLabel {
+        font-size: 0.82rem;
+    }
+
+        .ctaButton {
+            min-inline-size: clamp(8.75rem, 66vw, 11rem);
+        }
 }
 
 @media (prefers-reduced-motion: reduce) {

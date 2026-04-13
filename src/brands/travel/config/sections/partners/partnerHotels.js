@@ -13,41 +13,41 @@ const partnerHotels = {
     eyebrow: "Alojamento selecionado",
     title:
       "Hotéis parceiros com conforto, localização e consistência de serviço",
-    lead: "Trabalhamos com unidades selecionadas para integrar alojamento de qualidade em programas de viagem completos, com maior comodidade e melhor coordenação operacional.",
+    lead: "Trabalhamos com unidades selecionadas para integrar alojamento adequado em programas de viagem para grupos, equipas e deslocações organizadas, com maior comodidade e melhor articulação operacional.",
     supportingText:
-      "Cada parceiro é escolhido pela localização, capacidade de resposta, conforto e enquadramento com o perfil do grupo, permitindo combinar transporte, estadia e experiência num único plano bem estruturado.",
+      "Cada parceiro é escolhido pela localização, capacidade de resposta, conforto e enquadramento com o perfil do grupo, permitindo combinar alojamento, mobilidade e experiência numa solução mais coesa e bem estruturada.",
     highlightsLabel: "Seleção de alojamento",
     highlightPills: [
-      "Hotéis selecionados",
-      "Conforto com boa localização",
+      "Hotéis criteriosamente selecionados",
+      "Conforto e boa localização",
       "Alojamento integrado na operação",
     ],
     metrics: [
       {
         value: "5",
-        label: "hotéis parceiros",
+        label: "Hotéis parceiros",
       },
       {
-        value: "Premium",
-        label: "curadoria e conforto",
+        value: "Criteriosa",
+        label: "Seleção e conforto",
       },
       {
         value: "Flexível",
-        label: "ajustado ao grupo",
+        label: "Ajustada ao grupo",
       },
     ],
     insights: [
       {
         key: "context",
-        title: "Contexto certo",
+        title: "Enquadramento certo",
         description:
-          "Cada unidade é escolhida pelo enquadramento, localização e capacidade de servir bem o perfil da viagem.",
+          "Cada unidade é escolhida pela localização, contexto e capacidade de responder bem ao perfil da viagem e do grupo.",
       },
       {
         key: "comfort",
         title: "Conforto consistente",
         description:
-          "A seleção privilegia estadias confortáveis, fiáveis e coerentes com o nível de serviço esperado.",
+          "A seleção privilegia estadias confortáveis, fiáveis e alinhadas com o nível de serviço pretendido para a operação.",
       },
     ],
     ui: {
@@ -60,11 +60,11 @@ const partnerHotels = {
   collection: {
     ariaLabel: "Explorar hotéis parceiros",
     railAriaLabel: "Selecionar hotel em destaque",
-    kicker: "Coleção curada",
+    kicker: "Seleção hoteleira",
     title:
       "Unidades escolhidas para estadias com conforto, contexto e boa execução",
     description:
-      "Uma seleção pensada para apoiar programas turísticos, grupos e operações com necessidade de alojamento fiável, bem localizado e alinhado com o nível de serviço pretendido.",
+      "Uma seleção pensada para apoiar programas turísticos, grupos e operações com necessidade de alojamento fiável, bem localizado e coerente com o nível de serviço e o formato da viagem.",
     spotlightLabel: "Seleção principal",
     summaryLabel: "Visão da unidade",
     primaryMetaLabel: "Localização",
@@ -80,11 +80,11 @@ const partnerHotels = {
     title:
       "Fale connosco para integrar o alojamento certo no programa do seu grupo",
     description:
-      "Ajudamos a combinar hotel, transporte e experiência de viagem numa proposta coesa, ajustada ao número de participantes e ao nível de conforto pretendido.",
+      "Ajudamos a articular hotel, mobilidade e enquadramento da estadia numa proposta ajustada ao número de participantes, ao objetivo da viagem e ao nível de conforto pretendido.",
     proofPoints: [
-      "Hotel ajustado ao grupo",
+      "Alojamento ajustado ao perfil do grupo",
       "Estadia integrada na operação",
-      "Proposta coesa e personalizada",
+      "Proposta coordenada e personalizada",
     ],
   },
 
@@ -174,7 +174,7 @@ const partnerHotels = {
   cta: {
     label: "Contactar",
     href: TRAVEL_PAGE_PATHS.contacts,
-    ariaLabel: "Contactar Sunlive Travel",
+    ariaLabel: "Contactar a Sunlive Travel sobre hotéis parceiros",
     iconKey: "phone",
   },
 };

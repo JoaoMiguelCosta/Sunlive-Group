@@ -86,7 +86,7 @@ export default function TestimonialsGrid({
     spotlight?.title ?? "O que dizem sobre a experiência Sunlive Travel";
   const description =
     spotlight?.description ??
-    "Uma seleção de opiniões que destaca conforto, organização, segurança e capacidade de resposta em diferentes contextos de viagem.";
+    "Uma seleção de opiniões que destaca organização, conforto, capacidade de resposta e consistência operacional em diferentes contextos de viagem.";
   const resultsLabel = spotlight?.resultsLabel ?? "testemunhos disponíveis";
   const previousLabel = spotlight?.previousLabel ?? "Testemunho anterior";
   const nextLabel = spotlight?.nextLabel ?? "Próximo testemunho";
@@ -109,8 +109,8 @@ export default function TestimonialsGrid({
         <div className={styles.topbar}>
           <div className={styles.topbarInner}>
             <div className={styles.topbarCopy}>
-              <p className={styles.kicker}>{kicker}</p>
-              <p className={styles.title}>{title}</p>
+              {kicker ? <p className={styles.kicker}>{kicker}</p> : null}
+              {title ? <p className={styles.title}>{title}</p> : null}
               {description ? (
                 <p className={styles.description}>{description}</p>
               ) : null}

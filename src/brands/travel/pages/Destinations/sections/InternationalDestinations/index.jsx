@@ -3,7 +3,6 @@ import travelBrand from "../../../../config/index.js";
 import styles from "./InternationalDestinationsSection.module.css";
 import InternationalEditorialHero from "./InternationalEditorialHero.jsx";
 import InternationalDestinationsShowcase from "./InternationalDestinationsShowcase.jsx";
-import InternationalExperiencePlanner from "./InternationalExperiencePlanner.jsx";
 
 export default function InternationalDestinationsSection() {
   const section =
@@ -21,8 +20,6 @@ export default function InternationalDestinationsSection() {
   const destinations = Array.isArray(section?.destinations)
     ? section.destinations
     : [];
-  const actionPanel = section?.actionPanel ?? null;
-  const cta = section?.cta ?? null;
   const flags = travelBrand?.flags ?? {};
 
   return (
@@ -40,8 +37,6 @@ export default function InternationalDestinationsSection() {
           destinations={destinations}
           flags={flags}
         />
-
-        <InternationalExperiencePlanner panel={actionPanel} cta={cta} />
       </div>
     </section>
   );

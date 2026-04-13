@@ -184,7 +184,7 @@ export default function CuratedSpotlightCollection({
     collection?.railCountSuffix ??
     "itens selecionados";
 
-  const kicker = collection?.kicker ?? "Coleção curada";
+  const kicker = collection?.kicker ?? "Seleção Hoteleira";
 
   const title =
     collection?.title ?? "Seleção curada para reforçar a proposta de valor";

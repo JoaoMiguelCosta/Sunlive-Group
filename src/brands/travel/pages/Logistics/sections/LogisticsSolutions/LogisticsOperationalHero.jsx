@@ -1,5 +1,11 @@
 import styles from "./LogisticsOperationalHero.module.css";
 
+function getMetricCardClassName(index) {
+  return [styles.metricCard, index === 0 ? styles.metricCardActive : ""]
+    .filter(Boolean)
+    .join(" ");
+}
+
 export default function LogisticsOperationalHero({ hero = {} }) {
   const metrics = Array.isArray(hero?.metrics)
     ? hero.metrics.filter((item) => item?.value && item?.label)
@@ -22,8 +28,7 @@ export default function LogisticsOperationalHero({ hero = {} }) {
       hero?.supportingText ||
       hero?.statusBadge ||
       trustChips.length > 0 ||
-      metrics.length > 0 ||
-      assurances.length > 0,
+      hasAside,
   );
 
   if (!hasContent) return null;
@@ -84,7 +89,7 @@ export default function LogisticsOperationalHero({ hero = {} }) {
                 >
                   {trustChips.map((chip) => (
                     <li key={chip} className={styles.trustChip}>
-                      {chip}
+                      <span className={styles.trustChipText}>{chip}</span>
                     </li>
                   ))}
                 </ul>
@@ -100,10 +105,10 @@ export default function LogisticsOperationalHero({ hero = {} }) {
                 className={styles.metricsPanel}
                 aria-label={metricsAriaLabel}
               >
-                {metrics.map((metric) => (
+                {metrics.map((metric, index) => (
                   <article
                     key={`${metric.value}-${metric.label}`}
-                    className={styles.metricCard}
+                    className={getMetricCardClassName(index)}
                   >
                     <strong className={styles.metricValue}>
                       {metric.value}
@@ -124,10 +129,16 @@ export default function LogisticsOperationalHero({ hero = {} }) {
                     key={item?.key ?? item.title}
                     className={styles.assuranceCard}
                   >
-                    <h3 className={styles.assuranceTitle}>{item.title}</h3>
-                    <p className={styles.assuranceDescription}>
-                      {item.description}
-                    </p>
+                    <span
+                      className={styles.assuranceAccent}
+                      aria-hidden="true"
+                    />
+                    <div className={styles.assuranceContent}>
+                      <h3 className={styles.assuranceTitle}>{item.title}</h3>
+                      <p className={styles.assuranceDescription}>
+                        {item.description}
+                      </p>
+                    </div>
                   </article>
                 ))}
               </div>

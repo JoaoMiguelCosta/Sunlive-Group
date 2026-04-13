@@ -4,15 +4,15 @@ const testimonialsAndMetrics = {
   id: "testemunhos",
 
   headline: {
-    eyebrow: "Prova social",
+    eyebrow: "Prova de confiança",
     title: "A confiança dos nossos clientes reflete a consistência da operação",
-    lead: "Trabalhamos para entregar viagens bem coordenadas, confortáveis e fiáveis. O reconhecimento dos clientes confirma a qualidade da experiência que construímos em cada programa.",
+    lead: "Desenhamos programas de viagem com coordenação, conforto e acompanhamento próximo. O reconhecimento dos clientes confirma a solidez da experiência que entregamos em cada operação.",
     description:
-      "Da pontualidade à atenção ao detalhe, os testemunhos mostram como a Sunlive Travel transforma logística, transporte e acompanhamento numa operação tranquila e profissional.",
+      "Da organização logística à articulação entre transporte, estadia, parceiros e ritmo da viagem, os testemunhos mostram como a Sunlive Travel transforma necessidades complexas em programas mais fluidos, fiáveis e bem acompanhados.",
     featuredPills: [
-      "Serviço fiável",
-      "Pontualidade e conforto",
-      "Experiência bem coordenada",
+      "Operação bem coordenada",
+      "Conforto e fiabilidade",
+      "Acompanhamento próximo",
     ],
     stats: [
       {
@@ -21,11 +21,11 @@ const testimonialsAndMetrics = {
       },
       {
         value: "1000+",
-        label: "clientes satisfeitos",
+        label: "clientes acompanhados",
       },
       {
         value: "2000+",
-        label: "viagens realizadas",
+        label: "operações realizadas",
       },
     ],
     ui: {
@@ -38,20 +38,20 @@ const testimonialsAndMetrics = {
     kicker: "Testemunhos verificados",
     title: "O que dizem sobre a experiência Sunlive Travel",
     description:
-      "Uma seleção de opiniões que destaca conforto, organização, segurança e capacidade de resposta em diferentes contextos de viagem.",
-    resultsLabel: "testemunhos disponíveis",
+      "Uma seleção de opiniões que destaca organização, conforto, capacidade de resposta e consistência operacional em diferentes contextos de viagem.",
+    resultsLabel: "Testemunhos disponíveis",
     previousLabel: "Testemunho anterior",
     nextLabel: "Próximo testemunho",
     dotsLabel: "Selecionar testemunho",
     regionLabel: "Testemunhos — usar setas esquerda e direita para navegar",
-    autoplayMs: 3200,
+    autoplayMs: 3000,
   },
 
   testimonials: [
     {
       key: "t1",
       quote:
-        "Excelente serviço. A Sunlive Travel transportou a nossa equipa com total profissionalismo. Pontualidade impecável e veículos muito confortáveis. Recomendo vivamente.",
+        "Excelente serviço. A Sunlive Travel coordenou a nossa deslocação com profissionalismo, pontualidade e grande atenção ao detalhe. Toda a operação decorreu com conforto e sem complicações.",
       rating: 5,
       iconKey: "star",
       author: {
@@ -63,7 +63,7 @@ const testimonialsAndMetrics = {
     {
       key: "t2",
       quote:
-        "Serviço exemplar do início ao fim. Equipa atenta aos detalhes, muito disponível e sempre pronta a ajustar o que fosse necessário.",
+        "Serviço muito consistente do início ao fim. Houve sempre acompanhamento, comunicação clara e capacidade de ajustar o programa ao que o grupo precisava.",
       rating: 5,
       iconKey: "star",
       author: {
@@ -75,7 +75,7 @@ const testimonialsAndMetrics = {
     {
       key: "t3",
       quote:
-        "Transporte seguro, cómodo e sempre a horas. A operação decorreu de forma muito fluida e voltaremos a contratar.",
+        "A operação foi fluida, bem organizada e muito confortável. Sentimos que tudo estava articulado com critério, o que tornou a viagem muito mais simples para a equipa.",
       rating: 5,
       iconKey: "star",
       author: {
@@ -87,7 +87,7 @@ const testimonialsAndMetrics = {
     {
       key: "t4",
       quote:
-        "Comunicação simples, equipa próxima e soluções à medida. Tornaram a nossa viagem muito mais fácil de organizar.",
+        "Destaco a facilidade de comunicação, a proximidade no acompanhamento e a forma como conseguiram estruturar uma solução ajustada ao nosso grupo.",
       rating: 5,
       iconKey: "star",
       author: {
@@ -99,7 +99,7 @@ const testimonialsAndMetrics = {
     {
       key: "t5",
       quote:
-        "Motoristas profissionais e simpáticos. Excelente relação qualidade-preço e um serviço muito acima do esperado.",
+        "Encontrámos uma equipa profissional, disponível e muito orientada para a boa execução. O programa foi bem organizado e a experiência correspondeu ao que procurávamos.",
       rating: 5,
       iconKey: "star",
       author: {
@@ -111,7 +111,7 @@ const testimonialsAndMetrics = {
     {
       key: "t6",
       quote:
-        "Recomendo sem reservas. Organização, conforto e acompanhamento acima da média durante toda a operação.",
+        "Recomendo sem reservas. Houve coordenação, conforto e acompanhamento próximo em todas as fases, o que fez diferença na tranquilidade com que vivemos a viagem.",
       rating: 5,
       iconKey: "star",
       author: {
@@ -126,17 +126,17 @@ const testimonialsAndMetrics = {
     {
       key: "clients",
       value: "1000+",
-      label: "Clientes satisfeitos",
+      label: "Clientes acompanhados",
     },
     {
-      key: "trips",
+      key: "operations",
       value: "2000+",
-      label: "Viagens realizadas",
+      label: "Operações realizadas",
     },
     {
-      key: "teams",
+      key: "groups",
       value: "1000+",
-      label: "Equipas transportadas",
+      label: "Grupos e equipas apoiados",
     },
     {
       key: "rating",
@@ -150,7 +150,7 @@ const testimonialsAndMetrics = {
   cta: {
     label: "Contactar",
     href: TRAVEL_PAGE_PATHS.contacts,
-    ariaLabel: "Contactar Sunlive Travel",
+    ariaLabel: "Contactar a Sunlive Travel",
     iconKey: "phone",
   },
 };

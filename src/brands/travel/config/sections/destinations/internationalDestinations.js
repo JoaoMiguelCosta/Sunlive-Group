@@ -1,5 +1,3 @@
-import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
-
 import maltaImg from "../../../assets/InternationalDestinations/malta.png";
 import qatarImg from "../../../assets/InternationalDestinations/catar.png";
 import saudiImg from "../../../assets/InternationalDestinations/arabia.png";
@@ -12,28 +10,28 @@ const internationalDestinations = {
   showcaseHero: {
     eyebrow: "Seleção internacional",
     title:
-      "Destinos Internacionais com curadoria premium e operação personalizada",
+      "Destinos Internacionais com seleção criteriosa e operação personalizada",
     lead: "Expandimos o programa da sua viagem com destinos internacionais escolhidos pela relevância, impacto visual e adequação ao perfil do grupo.",
     supportingText:
-      "Cada proposta é desenhada com foco em conforto, contexto cultural, fluidez logística e experiências bem estruturadas, para que a viagem internacional mantenha o mesmo nível de execução premium do início ao fim.",
+      "Cada proposta é desenhada com foco em conforto, contexto cultural, fluidez logística e experiências bem estruturadas, para que a viagem internacional mantenha o mesmo nível de execução cuidada do início ao fim.",
     highlightsLabel: "Escala internacional",
     highlightPills: [
       "Destinos além-fronteiras",
-      "Programas tailor-made",
-      "Execução premium no destino",
+      "Programas personalizados",
+      "Execução cuidada no destino",
     ],
     metrics: [
       {
         value: "5",
-        label: "destinos internacionais",
+        label: "Destinos internacionais",
       },
       {
-        value: "Premium",
-        label: "curadoria e execução",
+        value: "Ajustada",
+        label: "Seleção e execução",
       },
       {
-        value: "Tailor-made",
-        label: "programas ajustados",
+        value: "Flexível",
+        label: "Programas ajustados",
       },
     ],
     insights: [
@@ -51,9 +49,9 @@ const internationalDestinations = {
       },
     ],
     ui: {
-      highlightsAriaLabel: "Destaques da curadoria internacional",
+      highlightsAriaLabel: "Destaques da seleção internacional",
       metricsAriaLabel: "Indicadores da secção internacional",
-      insightsAriaLabel: "Princípios da curadoria internacional",
+      insightsAriaLabel: "Princípios da seleção internacional",
     },
   },
 
@@ -64,7 +62,7 @@ const internationalDestinations = {
     title:
       "Destinos pensados para grupos que procuram escala, diferenciação e experiências memoráveis",
     description:
-      "Escolha um destino para explorar o seu enquadramento, pontos de interesse e posicionamento dentro de uma proposta internacional pensada com curadoria e apoio logístico dedicado.",
+      "Escolha um destino para explorar o seu enquadramento, pontos de interesse e posicionamento dentro de uma proposta internacional pensada com seleção criteriosa e apoio logístico dedicado.",
     spotlightLabel: "Destino em destaque",
     summaryLabel: "Visão do destino",
     primaryMetaLabel: "Formato do programa",
@@ -72,19 +70,6 @@ const internationalDestinations = {
     railLabel: "Seleção internacional",
     railCountSuffix: "destinos selecionados",
     initialKey: "malta",
-  },
-
-  actionPanel: {
-    eyebrow: "Planeamento personalizado",
-    title:
-      "Fale connosco para desenhar a experiência internacional certa para o seu grupo",
-    description:
-      "Ajustamos destino, duração, ritmo da viagem e apoio logístico a cada perfil, com acompanhamento próximo e proposta feita à medida.",
-    proofPoints: [
-      "Destino ajustado ao perfil",
-      "Proposta internacional à medida",
-      "Acompanhamento próximo",
-    ],
   },
 
   destinations: [
@@ -173,14 +158,6 @@ const internationalDestinations = {
       imagePosition: "center",
     },
   ],
-
-  cta: {
-    label: "Contactar",
-    href: TRAVEL_PAGE_PATHS.contacts,
-    ariaLabel: "Contactar Sunlive Travel",
-    iconKey: "phone",
-  },
 };
 
 export default internationalDestinations;
-export { internationalDestinations };

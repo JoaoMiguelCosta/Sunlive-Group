@@ -1,5 +1,3 @@
-import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
-
 import aveiroImg from "../../../assets/DomesticDestinations/aveiro.png";
 import portoImg from "../../../assets/DomesticDestinations/porto.png";
 import lisboaImg from "../../../assets/DomesticDestinations/lisboa.png";
@@ -12,11 +10,11 @@ const domesticDestinations = {
 
   showcaseHero: {
     eyebrow: "Seleção nacional",
-    title: "Destinos Nacionais com curadoria premium e execução consistente",
+    title: "Destinos Nacionais com seleção criteriosa e execução consistente",
     lead: "Descubra alguns dos locais mais emblemáticos de Portugal com programas desenhados à medida, ritmo equilibrado e uma experiência cuidada do início ao fim.",
     supportingText:
       "Cada destino é pensado para entregar valor real ao grupo, combinando património, cultura, autenticidade local e uma operação organizada com elevado nível de conforto.",
-    highlightsLabel: "Curadoria nacional",
+    highlightsLabel: "Seleção nacional",
     highlightPills: [
       "Património e identidade",
       "Ritmo equilibrado",
@@ -25,15 +23,15 @@ const domesticDestinations = {
     metrics: [
       {
         value: "6",
-        label: "destinos selecionados",
+        label: "Destinos selecionados",
       },
       {
         value: "1/2 dia",
-        label: "até dia completo",
+        label: "Até dia completo",
       },
       {
-        value: "Premium",
-        label: "planeamento e serviço",
+        value: "Ajustado",
+        label: "Planeamento e serviço",
       },
     ],
     insights: [
@@ -51,16 +49,16 @@ const domesticDestinations = {
       },
     ],
     ui: {
-      highlightsAriaLabel: "Destaques da curadoria nacional",
+      highlightsAriaLabel: "Destaques da seleção nacional",
       metricsAriaLabel: "Indicadores da secção de destinos nacionais",
-      insightsAriaLabel: "Princípios da curadoria nacional",
+      insightsAriaLabel: "Princípios da seleção nacional",
     },
   },
 
   showcase: {
     ariaLabel: "Explorar destinos nacionais",
     railAriaLabel: "Selecionar destino em destaque",
-    kicker: "Curadoria editorial",
+    kicker: "Seleção editorial",
     title:
       "Destinos selecionados para programas com identidade, valor e execução cuidada",
     description:
@@ -72,18 +70,6 @@ const domesticDestinations = {
     railLabel: "Destinos disponíveis",
     railCountSuffix: "destinos selecionados",
     initialKey: "aveiro",
-  },
-
-  planningPanel: {
-    eyebrow: "Planeamento personalizado",
-    title: "Fale connosco para criar o programa certo para o seu grupo",
-    description:
-      "Ajustamos destino, duração e logística ao perfil da viagem, com acompanhamento dedicado e solução à medida.",
-    proofPoints: [
-      "Programa ajustado ao grupo",
-      "Ritmo bem definido",
-      "Acompanhamento dedicado",
-    ],
   },
 
   destinations: [
@@ -168,7 +154,7 @@ const domesticDestinations = {
       city: "Sintra",
       badge: "Sintra",
       summary:
-        "Destino distintivo com paisagens únicas, palácios emblemáticos e uma atmosfera que eleva qualquer programa turístico.",
+        "Destino distintivo com paisagens únicas, palácios emblemáticos e uma atmosfera que valoriza qualquer programa turístico.",
       duration: "Dia completo",
       highlights: [
         "Palácio da Pena",
@@ -203,14 +189,6 @@ const domesticDestinations = {
       imagePosition: "center",
     },
   ],
-
-  cta: {
-    label: "Contactar",
-    href: TRAVEL_PAGE_PATHS.contacts,
-    ariaLabel: "Contactar Sunlive Travel",
-    iconKey: "phone",
-  },
 };
 
 export default domesticDestinations;
-export { domesticDestinations };

@@ -4,6 +4,32 @@ import LogisticsActionPanel from "./LogisticsActionPanel.jsx";
 import LogisticsOperationalHero from "./LogisticsOperationalHero.jsx";
 import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
 
+function hasOperationalHeroContent(hero = {}) {
+  return Boolean(
+    hero?.eyebrow ||
+      hero?.title ||
+      hero?.lead ||
+      hero?.supportingText ||
+      hero?.statusBadge ||
+      (Array.isArray(hero?.metrics) && hero.metrics.length > 0) ||
+      (Array.isArray(hero?.trustChips) && hero.trustChips.length > 0) ||
+      (Array.isArray(hero?.assurances) && hero.assurances.length > 0),
+  );
+}
+
+function hasActionPanelContent(panel = {}, cta = null) {
+  return Boolean(
+    panel?.eyebrow ||
+      panel?.title ||
+      panel?.description ||
+      panel?.lead ||
+      panel?.supportingText ||
+      (Array.isArray(panel?.proofPoints) && panel.proofPoints.length > 0) ||
+      (Array.isArray(panel?.trustPoints) && panel.trustPoints.length > 0) ||
+      cta?.href,
+  );
+}
+
 export default function LogisticsSolutionsSection({
   section = null,
   icons = {},
@@ -20,33 +46,9 @@ export default function LogisticsSolutionsSection({
   const actionPanel = section?.actionPanel ?? null;
   const cta = section?.cta ?? null;
 
-  const hasHero = Boolean(
-    operationalHero?.eyebrow ||
-      operationalHero?.title ||
-      operationalHero?.lead ||
-      operationalHero?.supportingText ||
-      operationalHero?.statusBadge ||
-      (Array.isArray(operationalHero?.metrics) &&
-        operationalHero.metrics.length > 0) ||
-      (Array.isArray(operationalHero?.trustChips) &&
-        operationalHero.trustChips.length > 0) ||
-      (Array.isArray(operationalHero?.assurances) &&
-        operationalHero.assurances.length > 0),
-  );
-
+  const hasHero = hasOperationalHeroContent(operationalHero);
   const hasServices = services.length > 0;
-  const hasActionPanel = Boolean(
-    actionPanel?.eyebrow ||
-      actionPanel?.title ||
-      actionPanel?.description ||
-      actionPanel?.lead ||
-      actionPanel?.supportingText ||
-      (Array.isArray(actionPanel?.proofPoints) &&
-        actionPanel.proofPoints.length > 0) ||
-      (Array.isArray(actionPanel?.trustPoints) &&
-        actionPanel.trustPoints.length > 0) ||
-      cta?.href,
-  );
+  const hasActionPanel = hasActionPanelContent(actionPanel, cta);
 
   if (!hasHero && !hasServices && !hasActionPanel) return null;
 

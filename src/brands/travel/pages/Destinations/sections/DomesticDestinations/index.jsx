@@ -3,7 +3,6 @@ import travelBrand from "../../../../config/index.js";
 import styles from "./DomesticDestinationsSection.module.css";
 import DomesticEditorialHero from "./DomesticEditorialHero.jsx";
 import DomesticDestinationsShowcase from "./DomesticDestinationsShowcase.jsx";
-import DomesticJourneyPlanner from "./DomesticJourneyPlanner.jsx";
 
 export default function DomesticDestinationsSection() {
   const section =
@@ -20,8 +19,6 @@ export default function DomesticDestinationsSection() {
   const destinations = Array.isArray(section?.destinations)
     ? section.destinations
     : [];
-  const planningPanel = section?.planningPanel ?? null;
-  const cta = section?.cta ?? null;
 
   return (
     <section
@@ -37,8 +34,6 @@ export default function DomesticDestinationsSection() {
           showcase={showcase}
           destinations={destinations}
         />
-
-        <DomesticJourneyPlanner panel={planningPanel} cta={cta} />
       </div>
     </section>
   );

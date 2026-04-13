@@ -6,21 +6,6 @@ import { resolveTravelIcon } from "../../../../config/index.js";
 import LogisticsServiceCard from "./LogisticsServiceCard.jsx";
 import styles from "./ServiceOfferingsGrid.module.css";
 
-const DEFAULT_UI = {
-  servicesAriaLabel: "Serviços de logística e apoio à viagem",
-  expandLabel: "Ver detalhes",
-  collapseLabel: "Recolher",
-  openDetailsLabel: "Abrir detalhes de",
-  closeDetailsLabel: "Fechar detalhes de",
-};
-
-const DEFAULT_INTRO = {
-  eyebrow: "Módulos operacionais",
-  title: "Serviços desenhados para uma execução fluida e coordenada",
-  description:
-    "Cada módulo cobre uma necessidade crítica da viagem e pode ser articulado numa operação única, com acompanhamento próximo e resposta ajustada ao grupo.",
-};
-
 function buildServiceId(service, index) {
   if (service?.anchorId) return service.anchorId;
   if (service?.id) return service.id;
@@ -35,9 +20,6 @@ export default function ServiceOfferingsGrid({
   ui = {},
   allowMultiple = false,
 }) {
-  const mergedUi = { ...DEFAULT_UI, ...ui };
-  const mergedIntro = { ...DEFAULT_INTRO, ...(intro ?? {}) };
-
   const normalizedServices = useMemo(() => {
     if (!Array.isArray(services)) return [];
 
@@ -61,32 +43,30 @@ export default function ServiceOfferingsGrid({
   if (normalizedServices.length === 0) return null;
 
   const hasIntro = Boolean(
-    mergedIntro?.eyebrow || mergedIntro?.title || mergedIntro?.description,
+    intro?.eyebrow || intro?.title || intro?.description,
   );
 
   return (
     <div
       className={styles.block}
       role="group"
-      aria-label={mergedUi.servicesAriaLabel}
+      aria-label={ui?.servicesAriaLabel}
     >
       {hasIntro ? (
         <header className={styles.sectionHead}>
           <div className={styles.headGlow} aria-hidden="true" />
 
           <div className={styles.headContent}>
-            {mergedIntro.eyebrow ? (
-              <p className={styles.sectionKicker}>{mergedIntro.eyebrow}</p>
+            {intro?.eyebrow ? (
+              <p className={styles.sectionKicker}>{intro.eyebrow}</p>
             ) : null}
 
-            {mergedIntro.title ? (
-              <h3 className={styles.sectionTitle}>{mergedIntro.title}</h3>
+            {intro?.title ? (
+              <h3 className={styles.sectionTitle}>{intro.title}</h3>
             ) : null}
 
-            {mergedIntro.description ? (
-              <p className={styles.sectionDescription}>
-                {mergedIntro.description}
-              </p>
+            {intro?.description ? (
+              <p className={styles.sectionDescription}>{intro.description}</p>
             ) : null}
           </div>
         </header>
@@ -95,7 +75,7 @@ export default function ServiceOfferingsGrid({
       <div
         className={styles.grid}
         role="list"
-        aria-label={mergedUi.servicesAriaLabel}
+        aria-label={ui?.servicesAriaLabel}
       >
         {normalizedServices.map((service, index) => {
           const Icon = resolveTravelIcon(icons, service.iconKey);
@@ -115,14 +95,15 @@ export default function ServiceOfferingsGrid({
                 title={service.title}
                 summary={service.summary}
                 items={service.items}
-                includesLabel={service.includesLabel || "Inclui:"}
+                includesLabel={service.includesLabel ?? ui?.includesLabel}
                 interactive
                 isOpen={isOpen(service.id)}
                 onToggle={() => toggle(service.id)}
-                openLabel={mergedUi.expandLabel}
-                closeLabel={mergedUi.collapseLabel}
-                openDetailsLabel={mergedUi.openDetailsLabel}
-                closeDetailsLabel={mergedUi.closeDetailsLabel}
+                openLabel={ui?.expandLabel}
+                closeLabel={ui?.collapseLabel}
+                openDetailsLabel={ui?.openDetailsLabel}
+                closeDetailsLabel={ui?.closeDetailsLabel}
+                surfaceTone={service.surfaceTone}
               />
             </div>
           );

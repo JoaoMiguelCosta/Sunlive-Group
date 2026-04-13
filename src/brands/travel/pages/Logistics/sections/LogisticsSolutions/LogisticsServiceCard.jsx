@@ -7,15 +7,15 @@ export default function LogisticsServiceCard({
   title,
   summary,
   items = [],
-  includesLabel = "Inclui:",
+  includesLabel,
   interactive = false,
   isOpen = false,
   onToggle,
   id,
-  openLabel = "Ver detalhes",
-  closeLabel = "Recolher",
-  openDetailsLabel = "Abrir detalhes de",
-  closeDetailsLabel = "Fechar detalhes de",
+  openLabel,
+  closeLabel,
+  openDetailsLabel,
+  closeDetailsLabel,
 }) {
   if (!title) return null;
 
@@ -95,7 +95,9 @@ export default function LogisticsServiceCard({
           aria-hidden={interactive ? !isOpen : false}
         >
           <div className={styles.detailsInner}>
-            <p className={styles.includesLabel}>{includesLabel}</p>
+            {includesLabel ? (
+              <p className={styles.includesLabel}>{includesLabel}</p>
+            ) : null}
 
             <ul className={styles.list}>
               {safeItems.map((text, index) => (
