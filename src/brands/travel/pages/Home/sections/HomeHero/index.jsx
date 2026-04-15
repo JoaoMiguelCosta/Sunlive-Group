@@ -65,12 +65,17 @@ export default function HomeHeroSection() {
   const quickLinksAriaLabel =
     cfg?.ui?.quickLinksAriaLabel ?? "Atalhos rápidos da página";
 
+  const sectionStyle = cfg?.backgroundImage
+    ? { "--hero-bg-image": `url(${cfg.backgroundImage})` }
+    : undefined;
+
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-label={cfg?.title ?? "Sunlive Travel"}
       data-section="home-hero"
+      style={sectionStyle}
     >
       <div className={styles.backdropGlow} aria-hidden="true" />
       <div className={styles.backdropOrbPrimary} aria-hidden="true" />

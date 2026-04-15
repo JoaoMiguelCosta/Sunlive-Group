@@ -38,6 +38,28 @@ function defaultGetItemImage(item) {
   return item?.picture ?? null;
 }
 
+function defaultGetItemGallery(item) {
+  if (!Array.isArray(item?.gallery)) return [];
+
+  return item.gallery
+    .filter((image) => image?.src)
+    .map((image, index) => ({
+      key: image?.key || `${item?.key || "gallery"}-${index + 1}`,
+      src: image.src,
+      alt: image.alt || "",
+      imageFit: image?.imageFit,
+      imagePosition: image?.imagePosition,
+    }));
+}
+
+function defaultGetItemSpotlightTitle(item) {
+  return item?.spotlightTitle ?? "";
+}
+
+function defaultGetItemSpotlightDescription(item) {
+  return item?.spotlightDescription ?? "";
+}
+
 function isElementSufficientlyVisible(element, visibilityRatio = 0.68) {
   if (!element || typeof window === "undefined") return true;
 
@@ -88,6 +110,42 @@ function scrollElementIntoView(element, offset = 92) {
   });
 }
 
+function buildGalleryItems({
+  item,
+  getItemImage,
+  getItemGallery,
+  fallbackAlt,
+  fallbackFit,
+  fallbackPosition,
+}) {
+  const primaryImage = getItemImage(item);
+  const galleryImages = getItemGallery(item);
+
+  if (galleryImages.length > 0) {
+    return galleryImages.map((image, index) => ({
+      key: image.key || `${item?.key || "item"}-gallery-${index + 1}`,
+      src: image.src,
+      alt: image.alt || fallbackAlt,
+      imageFit: image.imageFit || fallbackFit,
+      imagePosition: image.imagePosition || fallbackPosition,
+    }));
+  }
+
+  if (primaryImage?.src) {
+    return [
+      {
+        key: `${item?.key || "item"}-primary-image`,
+        src: primaryImage.src,
+        alt: primaryImage.alt || fallbackAlt,
+        imageFit: fallbackFit,
+        imagePosition: fallbackPosition,
+      },
+    ];
+  }
+
+  return [];
+}
+
 export default function CuratedSpotlightCollection({
   collection = {},
   items = [],
@@ -99,6 +157,9 @@ export default function CuratedSpotlightCollection({
   getItemPrimaryMeta = defaultGetItemPrimaryMeta,
   getItemBadge = defaultGetItemBadge,
   getItemImage = defaultGetItemImage,
+  getItemGallery = defaultGetItemGallery,
+  getItemSpotlightTitle = defaultGetItemSpotlightTitle,
+  getItemSpotlightDescription = defaultGetItemSpotlightDescription,
 }) {
   const { hash } = useLocation();
 
@@ -115,6 +176,7 @@ export default function CuratedSpotlightCollection({
   const rootRef = useRef(null);
   const spotlightRef = useRef(null);
   const hasMountedRef = useRef(false);
+  const initialRenderRef = useRef(true);
 
   useEffect(() => {
     if (!normalizedItems.length) return;
@@ -132,8 +194,7 @@ export default function CuratedSpotlightCollection({
       (item) => item.anchorId === decodedHash,
     );
 
-    if (!matchedItem) return;
-    if (matchedItem.key === activeKey) return;
+    if (!matchedItem || matchedItem.key === activeKey) return;
 
     setActiveKey(matchedItem.key);
   }, [hash, normalizedItems, activeKey]);
@@ -142,6 +203,56 @@ export default function CuratedSpotlightCollection({
     normalizedItems.find((item) => item.key === activeKey) ??
     normalizedItems[0] ??
     null;
+
+  const activeTitle = getItemTitle(activeItem);
+  const activeSummary = getItemSummary(activeItem);
+  const activePrimaryMeta = getItemPrimaryMeta(activeItem);
+  const activeBadge = getItemBadge(activeItem);
+  const activeSpotlightTitle = getItemSpotlightTitle(activeItem);
+  const activeSpotlightDescription = getItemSpotlightDescription(activeItem);
+
+  const brandImage = getItemImage(activeItem);
+  const defaultImageFit = activeItem?.imageFit ?? "contain";
+  const defaultImagePosition = activeItem?.imagePosition ?? "center";
+
+  const activeGallery = useMemo(
+    () =>
+      buildGalleryItems({
+        item: activeItem,
+        getItemImage,
+        getItemGallery,
+        fallbackAlt: activeTitle,
+        fallbackFit: defaultImageFit,
+        fallbackPosition: defaultImagePosition,
+      }),
+    [
+      activeItem,
+      activeTitle,
+      defaultImageFit,
+      defaultImagePosition,
+      getItemGallery,
+      getItemImage,
+    ],
+  );
+
+  const [activeMediaKey, setActiveMediaKey] = useState(
+    activeGallery[0]?.key ?? null,
+  );
+
+  useEffect(() => {
+    if (!activeGallery.length) {
+      setActiveMediaKey(null);
+      return;
+    }
+
+    const hasCurrentKey = activeGallery.some(
+      (image) => image.key === activeMediaKey,
+    );
+
+    if (!hasCurrentKey) {
+      setActiveMediaKey(activeGallery[0].key);
+    }
+  }, [activeGallery, activeMediaKey]);
 
   useEffect(() => {
     if (!activeItem) return;
@@ -161,7 +272,21 @@ export default function CuratedSpotlightCollection({
     }
   }, [activeItem, scrollOffset]);
 
+  useEffect(() => {
+    if (initialRenderRef.current) {
+      initialRenderRef.current = false;
+    }
+  }, []);
+
   if (!activeItem) return null;
+
+  const activeMedia =
+    activeGallery.find((image) => image.key === activeMediaKey) ??
+    activeGallery[0] ??
+    null;
+
+  const hasGallery = activeGallery.length > 1;
+  const hasBrandOverlay = Boolean(hasGallery && brandImage?.src);
 
   const rootClassName = [styles.root, className].filter(Boolean).join(" ");
 
@@ -186,12 +311,15 @@ export default function CuratedSpotlightCollection({
 
   const kicker = collection?.kicker ?? "Seleção Hoteleira";
 
-  const title =
+  const fallbackTitle =
     collection?.title ?? "Seleção curada para reforçar a proposta de valor";
 
-  const description =
+  const fallbackDescription =
     collection?.description ??
     "Itens escolhidos pela relevância, coerência e qualidade da proposta.";
+
+  const title = activeSpotlightTitle || fallbackTitle;
+  const description = activeSpotlightDescription || fallbackDescription;
 
   const spotlightLabel = collection?.spotlightLabel ?? "Seleção principal";
 
@@ -203,14 +331,11 @@ export default function CuratedSpotlightCollection({
   const ctaFallbackLabel =
     collection?.ctaFallbackLabel ?? collection?.ctaLabel ?? "Saiba mais";
 
-  const activeTitle = getItemTitle(activeItem);
-  const activeSummary = getItemSummary(activeItem);
-  const activePrimaryMeta = getItemPrimaryMeta(activeItem);
-  const activeBadge = getItemBadge(activeItem);
-  const activeImage = getItemImage(activeItem);
-
-  const imageFit = activeItem?.imageFit ?? "contain";
-  const imagePosition = activeItem?.imagePosition ?? "center";
+  const galleryLabel = collection?.galleryLabel ?? "Galeria";
+  const galleryCountLabel = collection?.galleryCountLabel ?? "Imagens";
+  const galleryAriaLabel =
+    collection?.galleryAriaLabel ?? "Selecionar imagem da galeria";
+  const brandBadgeLabel = collection?.brandBadgeLabel ?? "Marca do parceiro";
 
   function handleKeyDown(event, currentIndex) {
     if (!normalizedItems.length) return;
@@ -230,6 +355,27 @@ export default function CuratedSpotlightCollection({
 
     if (nextIndex !== currentIndex) {
       setActiveKey(normalizedItems[nextIndex].key);
+    }
+  }
+
+  function handleGalleryKeyDown(event, currentIndex) {
+    if (!hasGallery) return;
+
+    const lastIndex = activeGallery.length - 1;
+    let nextIndex = currentIndex;
+
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      event.preventDefault();
+      nextIndex = currentIndex >= lastIndex ? 0 : currentIndex + 1;
+    }
+
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      event.preventDefault();
+      nextIndex = currentIndex <= 0 ? lastIndex : currentIndex - 1;
+    }
+
+    if (nextIndex !== currentIndex) {
+      setActiveMediaKey(activeGallery[nextIndex].key);
     }
   }
 
@@ -310,22 +456,91 @@ export default function CuratedSpotlightCollection({
           <div className={styles.mediaStage}>
             <div className={styles.mediaGlow} aria-hidden="true" />
 
-            {activeImage?.src ? (
+            {activeMedia?.src ? (
               <img
+                key={activeMedia.key}
                 className={styles.mediaImage}
-                src={activeImage.src}
-                alt={activeImage?.alt || activeTitle}
+                src={activeMedia.src}
+                alt={activeMedia.alt || activeTitle}
                 style={{
-                  objectFit: imageFit,
-                  objectPosition: imagePosition,
+                  objectFit: activeMedia.imageFit || defaultImageFit,
+                  objectPosition:
+                    activeMedia.imagePosition || defaultImagePosition,
                 }}
+                loading="eager"
+                decoding="async"
+                fetchPriority={initialRenderRef.current ? "high" : "auto"}
               />
             ) : (
               <div className={styles.mediaFallback} aria-hidden="true">
                 {activeTitle}
               </div>
             )}
+
+            {hasBrandOverlay ? (
+              <div className={styles.brandOverlay} aria-label={brandBadgeLabel}>
+                <img
+                  className={styles.brandOverlayImage}
+                  src={brandImage.src}
+                  alt={brandImage.alt || activeTitle}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ) : null}
           </div>
+
+          {hasGallery ? (
+            <div className={styles.galleryRail}>
+              <div className={styles.galleryRailHeader}>
+                <p className={styles.galleryRailLabel}>{galleryLabel}</p>
+                <p className={styles.galleryRailCount}>
+                  {activeGallery.length} {galleryCountLabel}
+                </p>
+              </div>
+
+              <div
+                className={styles.galleryGrid}
+                role="tablist"
+                aria-label={galleryAriaLabel}
+              >
+                {activeGallery.map((image, index) => {
+                  const isActive = image.key === activeMedia?.key;
+                  const tabId = `${sectionKey}-gallery-tab-${activeItem.key}-${image.key}`;
+                  const panelId = `${sectionKey}-panel-${activeItem.key}`;
+
+                  return (
+                    <button
+                      key={image.key}
+                      type="button"
+                      role="tab"
+                      id={tabId}
+                      aria-selected={isActive}
+                      aria-controls={panelId}
+                      tabIndex={isActive ? 0 : -1}
+                      className={styles.galleryThumb}
+                      data-active={isActive ? "true" : "false"}
+                      onClick={() => setActiveMediaKey(image.key)}
+                      onKeyDown={(event) => handleGalleryKeyDown(event, index)}
+                    >
+                      <img
+                        className={styles.galleryThumbImage}
+                        src={image.src}
+                        alt={image.alt || activeTitle}
+                        style={{
+                          objectFit: image.imageFit || defaultImageFit,
+                          objectPosition:
+                            image.imagePosition || defaultImagePosition,
+                        }}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
 
           <div className={styles.mediaCaption}>
             {spotlightLabel ? (

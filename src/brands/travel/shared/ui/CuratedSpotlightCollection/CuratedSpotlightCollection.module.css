@@ -59,8 +59,7 @@
     z-index: 1;
     display: grid;
     gap: 0.2rem;
-    padding:
-        clamp(0.9rem, 1.6vw, 1.05rem) clamp(1rem, 1.8vw, 1.2rem) 0;
+    padding: clamp(0.9rem, 1.6vw, 1.05rem) clamp(1rem, 1.8vw, 1.2rem) 0;
 }
 
 .topRailEyebrow {
@@ -101,12 +100,13 @@
     cursor: pointer;
     border: 1px solid rgba(112, 149, 207, 0.18);
     border-radius: 1.15rem;
-background: linear-gradient(180deg, rgba(12, 28, 48, 0.82) 0%, rgba(5, 16, 31, 0.9) 100%);
-    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18),
-            0 1px 0 rgba(255, 255, 255, 0.02),
-            inset 0 1px 0 rgba(255, 255, 255, 0.06),
-            inset 0 -1px 0 rgba(82, 146, 213, 0.05);
-            backdrop-filter: blur(8px);
+    background: linear-gradient(180deg, rgba(12, 28, 48, 0.82) 0%, rgba(5, 16, 31, 0.9) 100%);
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.18),
+        0 1px 0 rgba(255, 255, 255, 0.02),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        inset 0 -1px 0 rgba(82, 146, 213, 0.05);
+    backdrop-filter: blur(8px);
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -207,7 +207,7 @@ background: linear-gradient(180deg, rgba(12, 28, 48, 0.82) 0%, rgba(5, 16, 31, 0
 
 .selectorSummary {
     margin: 0;
-    max-inline-size: 62ch;
+    max-inline-size: 73ch;
     font-size: 0.86rem;
     line-height: 1.6;
     color: rgba(230, 236, 244, 0.8);
@@ -267,12 +267,14 @@ background: linear-gradient(180deg, rgba(12, 28, 48, 0.82) 0%, rgba(5, 16, 31, 0
     position: relative;
     z-index: 1;
     display: grid;
+    align-content: start;
     min-inline-size: 0;
     min-block-size: 100%;
     padding: clamp(1rem, 1.9vw, 1.2rem);
     border-inline-end: 1px solid rgba(112, 149, 207, 0.12);
     background: rgba(3, 11, 22, 0.18);
 }
+
 .mediaStage {
     position: relative;
     overflow: hidden;
@@ -280,7 +282,7 @@ background: linear-gradient(180deg, rgba(12, 28, 48, 0.82) 0%, rgba(5, 16, 31, 0
     min-block-size: clamp(300px, 36vw, 430px);
     display: grid;
     place-items: center;
-    padding: clamp(1.1rem, 2.5vw, 1.8rem);
+    padding: clamp(0.7rem, 1.4vw, 0.95rem);
     border: 1px solid rgba(112, 149, 207, 0.14);
     border-radius: 1.45rem;
     background:
@@ -317,11 +319,11 @@ background: linear-gradient(180deg, rgba(12, 28, 48, 0.82) 0%, rgba(5, 16, 31, 0
     position: relative;
     z-index: 1;
     inline-size: 100%;
-    max-inline-size: min(100%, 760px);
-    block-size: clamp(220px, 28vw, 340px);
+    block-size: clamp(250px, 30vw, 360px);
     display: block;
+    border-radius: 1rem;
     filter:
-        drop-shadow(0 18px 34px rgba(0, 0, 0, 0.22)) contrast(1.04) saturate(1.02);
+        drop-shadow(0 18px 34px rgba(0, 0, 0, 0.22)) contrast(1.03) saturate(1.02);
 }
 
 .mediaFallback {
@@ -332,6 +334,147 @@ background: linear-gradient(180deg, rgba(12, 28, 48, 0.82) 0%, rgba(5, 16, 31, 0
     font-size: 1.15rem;
     font-weight: 800;
     color: #f8fbff;
+}
+
+.brandOverlay {
+    position: absolute;
+    z-index: 2;
+    inset: 1rem 1rem auto auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: clamp(122px, 13vw, 164px);
+    min-block-size: clamp(68px, 7vw, 86px);
+    padding: 0.7rem 0.85rem;
+    border: 1px solid rgba(201, 155, 66, 0.24);
+    border-radius: 1rem;
+    background:
+        linear-gradient(180deg,
+            rgba(7, 22, 42, 0.9) 0%,
+            rgba(4, 13, 26, 0.94) 100%);
+    box-shadow:
+        0 16px 32px rgba(0, 0, 0, 0.24),
+        0 1px 0 rgba(255, 255, 255, 0.08) inset,
+        inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+}
+
+.brandOverlayImage {
+    inline-size: 100%;
+    max-inline-size: 100%;
+    block-size: auto;
+    max-block-size: 46px;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+.galleryRail {
+    display: grid;
+    gap: 0.72rem;
+    padding-top: 0.85rem;
+}
+
+.galleryRailHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding-inline: 0.08rem;
+}
+
+.galleryRailLabel,
+.galleryRailCount {
+    margin: 0;
+}
+
+.galleryRailLabel {
+    font-size: 0.7rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #f0bf58;
+}
+
+.galleryRailCount {
+    font-size: 0.76rem;
+    line-height: 1.4;
+    color: rgba(230, 236, 244, 0.72);
+}
+
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.72rem;
+}
+
+.galleryThumb {
+    position: relative;
+    overflow: hidden;
+    inline-size: 100%;
+    block-size: clamp(92px, 9vw, 118px);
+    padding: 0;
+    cursor: pointer;
+    border: 1px solid rgba(112, 149, 207, 0.18);
+    border-radius: 1rem;
+    background:
+        linear-gradient(180deg,
+            rgba(10, 25, 47, 0.78) 0%,
+            rgba(5, 16, 31, 0.92) 100%);
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        filter 180ms ease;
+}
+
+.galleryThumb:hover {
+    transform: translateY(-2px);
+    border-color: rgba(212, 168, 82, 0.34);
+    box-shadow:
+        0 14px 26px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    filter: brightness(1.02);
+}
+
+.galleryThumb[data-active="true"] {
+    border-color: rgba(212, 168, 82, 0.5);
+    box-shadow:
+        0 0 0 1px rgba(212, 168, 82, 0.08),
+        0 16px 30px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.galleryThumb[data-active="true"]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px rgba(244, 195, 92, 0.18);
+    background:
+        linear-gradient(135deg,
+            rgba(244, 195, 92, 0.08) 0%,
+            rgba(244, 195, 92, 0) 42%,
+            rgba(100, 171, 255, 0.07) 100%);
+}
+
+.galleryThumb:focus-visible {
+    outline: none;
+    border-color: rgba(245, 194, 91, 0.62);
+    box-shadow:
+        0 0 0 3px rgba(245, 194, 91, 0.14),
+        0 16px 28px rgba(0, 0, 0, 0.24);
+}
+
+.galleryThumbImage {
+    inline-size: 100%;
+    block-size: 100%;
+    display: block;
 }
 
 .mediaCaption {
@@ -374,7 +517,7 @@ background: linear-gradient(180deg, rgba(12, 28, 48, 0.82) 0%, rgba(5, 16, 31, 0
 }
 
 .mediaCaptionMeta {
-margin: 0.38rem 0 0;
+    margin: 0.38rem 0 0;
     font-size: 0.84rem;
     font-weight: 700;
     line-height: 1.4;
@@ -385,7 +528,6 @@ margin: 0.38rem 0 0;
     position: relative;
     z-index: 1;
     display: grid;
-    align-content: start;
     gap: 1.2rem;
     min-inline-size: 0;
     padding: clamp(1.15rem, 2vw, 1.35rem);
@@ -409,7 +551,7 @@ margin: 0.38rem 0 0;
 
 .title {
     margin: 0;
-    max-inline-size: 16ch;
+
     font-size: clamp(1.75rem, 3.4vw, 2.35rem);
     font-weight: 900;
     line-height: 1.02;
@@ -420,7 +562,7 @@ margin: 0.38rem 0 0;
 
 .description {
     margin: 0;
-    max-inline-size: 56ch;
+   
     font-size: 0.96rem;
     line-height: 1.65;
     color: rgba(230, 236, 244, 0.8);
@@ -529,6 +671,50 @@ margin: 0.38rem 0 0;
     line-height: 1;
 }
 
+/* Ajuste exclusivo para Vago Viagens */
+.spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaCard {
+    padding: clamp(0.88rem, 1.65vw, 1.02rem);
+}
+
+.spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaStage {
+    min-block-size: clamp(270px, 32vw, 388px);
+    padding: clamp(0.62rem, 1.2vw, 0.82rem);
+}
+
+.spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaImage {
+    block-size: clamp(226px, 27.2vw, 324px);
+}
+
+.spotlight[data-anchor-id="parceiros-viagens-vago"] .galleryRail {
+    gap: 0.62rem;
+    padding-top: 0.72rem;
+}
+
+.spotlight[data-anchor-id="parceiros-viagens-vago"] .galleryThumb {
+    block-size: clamp(82px, 8vw, 104px);
+}
+
+.spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaCaption {
+    padding-top: 0.82rem;
+}
+
+.spotlight[data-anchor-id="parceiros-viagens-vago"] .contentCard {
+    gap: 1rem;
+    padding: clamp(1rem, 1.8vw, 1.18rem);
+}
+
+.spotlight[data-anchor-id="parceiros-viagens-vago"] .contentIntro {
+    gap: 0.5rem;
+}
+
+.spotlight[data-anchor-id="parceiros-viagens-vago"] .infoStack {
+    gap: 0.72rem;
+}
+
+.spotlight[data-anchor-id="parceiros-viagens-vago"] .infoPanel {
+    padding: 0.9rem 0.96rem;
+}
+
 @media (min-width: 1441px) {
     .spotlight {
         grid-template-columns: minmax(0, 1.14fr) minmax(390px, 0.86fr);
@@ -539,7 +725,27 @@ margin: 0.38rem 0 0;
     }
 
     .mediaImage {
-        block-size: 350px;
+        block-size: 380px;
+    }
+
+    .galleryThumb {
+        block-size: 122px;
+    }
+
+    .brandOverlay {
+        inset: 1.1rem 1.1rem auto auto;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaStage {
+        min-block-size: 408px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaImage {
+        block-size: 342px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .galleryThumb {
+        block-size: 110px;
     }
 }
 
@@ -557,8 +763,17 @@ margin: 0.38rem 0 0;
         gap: 1rem;
     }
 
-    .title {
-        max-inline-size: 20ch;
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaStage {
+        min-block-size: 250px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaImage {
+        block-size: clamp(210px, 41vw, 286px);
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .galleryThumb {
+        block-size: 94px;
     }
 }
 
@@ -584,7 +799,40 @@ margin: 0.38rem 0 0;
     }
 
     .mediaImage {
-        block-size: clamp(190px, 42vw, 290px);
+        block-size: clamp(220px, 46vw, 320px);
+    }
+
+    .galleryThumb {
+        block-size: 106px;
+    }
+
+    .brandOverlay {
+        inline-size: 138px;
+        min-block-size: 76px;
+    }
+
+    .brandOverlayImage {
+        max-block-size: 42px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaCard {
+        padding: 0.9rem;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaStage {
+        min-block-size: 258px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaImage {
+        block-size: clamp(204px, 42vw, 292px);
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .galleryThumb {
+        block-size: 96px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .contentCard {
+        padding: 1rem;
     }
 }
 
@@ -611,6 +859,33 @@ margin: 0.38rem 0 0;
     .description {
         max-inline-size: none;
     }
+
+    .brandOverlay {
+        inset: 0.85rem 0.85rem auto auto;
+        inline-size: 128px;
+        min-block-size: 70px;
+        padding: 0.62rem 0.75rem;
+    }
+
+    .brandOverlayImage {
+        max-block-size: 38px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaStage {
+        min-block-size: 236px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaImage {
+        block-size: clamp(194px, 40vw, 266px);
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .galleryThumb {
+        block-size: 88px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaCaption {
+        padding-top: 0.76rem;
+    }
 }
 
 @media (max-width: 640px) {
@@ -622,13 +897,13 @@ margin: 0.38rem 0 0;
 
     .selectorCard,
     .mediaStage,
-    .infoPanel {
+    .infoPanel,
+    .galleryThumb {
         border-radius: 1rem;
     }
 
     .topRailHeader {
-        padding:
-            0.9rem 0.95rem 0;
+        padding: 0.9rem 0.95rem 0;
     }
 
     .selectorGrid {
@@ -658,12 +933,28 @@ margin: 0.38rem 0 0;
     }
 
     .mediaStage {
-        padding: 1rem;
+        padding: 0.7rem;
         min-block-size: 220px;
     }
 
     .mediaImage {
-        block-size: clamp(160px, 44vw, 230px);
+        block-size: clamp(190px, 52vw, 260px);
+    }
+
+    .galleryRail {
+        padding-top: 0.8rem;
+    }
+
+    .galleryRailHeader {
+        gap: 0.55rem;
+    }
+
+    .galleryGrid {
+        gap: 0.62rem;
+    }
+
+    .galleryThumb {
+        block-size: 92px;
     }
 
     .mediaCaption {
@@ -682,20 +973,60 @@ margin: 0.38rem 0 0;
         justify-content: center;
         inline-size: 100%;
     }
+
+    .brandOverlay {
+        inset: 0.72rem 0.72rem auto auto;
+        inline-size: 116px;
+        min-block-size: 62px;
+        padding: 0.55rem 0.68rem;
+        border-radius: 0.92rem;
+    }
+
+    .brandOverlayImage {
+        max-block-size: 32px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaCard,
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .contentCard {
+        padding: 0.88rem;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaStage {
+        min-block-size: 208px;
+        padding: 0.62rem;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaImage {
+        block-size: clamp(178px, 48vw, 238px);
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .galleryRail {
+        padding-top: 0.72rem;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .galleryThumb {
+        block-size: 84px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .contentCard {
+        gap: 0.92rem;
+    }
 }
 
 @media (max-width: 480px) {
 
     .topRailEyebrow,
     .kicker,
-    .infoLabel {
+    .infoLabel,
+    .galleryRailLabel {
         font-size: 0.68rem;
     }
 
     .topRailCount,
     .selectorSummary,
     .description,
-    .infoValue {
+    .infoValue,
+    .galleryRailCount {
         line-height: 1.55;
     }
 
@@ -716,10 +1047,41 @@ margin: 0.38rem 0 0;
     }
 
     .mediaImage {
-        block-size: clamp(145px, 42vw, 200px);
+        block-size: clamp(170px, 50vw, 220px);
+    }
+
+    .galleryThumb {
+        block-size: 82px;
     }
 
     .infoPanel {
         padding: 0.92rem;
+    }
+
+    .brandOverlay {
+        inset: 0.62rem 0.62rem auto auto;
+        inline-size: 104px;
+        min-block-size: 56px;
+        padding: 0.5rem 0.62rem;
+    }
+
+    .brandOverlayImage {
+        max-block-size: 28px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaStage {
+        min-block-size: 194px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .mediaImage {
+        block-size: clamp(164px, 46vw, 212px);
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .galleryThumb {
+        block-size: 76px;
+    }
+
+    .spotlight[data-anchor-id="parceiros-viagens-vago"] .infoPanel {
+        padding: 0.86rem;
     }
 }

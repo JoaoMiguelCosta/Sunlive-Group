@@ -1,3 +1,4 @@
+import homeTravelImage from "../../../assets/HomeTravel/home-travel.webp";
 import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
 
 const homeHero = {
@@ -5,10 +6,12 @@ const homeHero = {
 
   editorialHero: {
     eyebrow: "Operação premium para grupos",
-    title: "Soluções integradas de viagem para grupos com logística coordenada e execução consistente",
+    title:
+      "Soluções integradas de viagem para grupos com logística coordenada e execução consistente",
     lead: "Coordenamos transporte, destinos, alojamento e parceiros numa proposta integrada, pensada para grupos, equipas e operações que exigem conforto, critério e consistência.",
     supportingText:
       "A Sunlive Travel combina planeamento, coordenação próxima e resposta ajustada para desenvolver programas com maior fluidez operacional e uma experiência mais consistente para cada grupo.",
+    backgroundImage: homeTravelImage,
     primaryAction: {
       label: "Pedir proposta",
       href: TRAVEL_PAGE_PATHS.contacts,

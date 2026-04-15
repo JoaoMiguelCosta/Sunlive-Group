@@ -28,24 +28,7 @@ export default function TravelPartnersNetworkPanel({
 
   return (
     <CuratedSpotlightCollection
-      collection={{
-        ...network,
-        selectorLabel:
-          network?.selectorLabel ??
-          network?.railLabel ??
-          "Parceiros disponíveis",
-        selectorAriaLabel:
-          network?.selectorAriaLabel ?? "Selecionar parceiro em destaque",
-        overviewLabel: network?.overviewLabel ?? "Visão do item",
-        primaryMetaLabel:
-          network?.primaryMetaLabel ?? network?.roleLabel ?? "Posicionamento",
-        ctaFallbackLabel:
-          network?.ctaFallbackLabel ?? network?.ctaLabel ?? "Saiba mais",
-        selectorCountSuffix:
-          network?.selectorCountSuffix ?? "itens selecionados",
-        selectorCountSingularSuffix:
-          network?.selectorCountSingularSuffix ?? "item selecionado",
-      }}
+      collection={network}
       items={normalizedPartners}
       sectionKey="travel-partners-network"
       scrollOffset={92}
@@ -54,6 +37,9 @@ export default function TravelPartnersNetworkPanel({
       getItemPrimaryMeta={(item) => item?.role ?? ""}
       getItemBadge={(item) => item?.badge ?? ""}
       getItemImage={(item) => item?.picture ?? null}
+      getItemGallery={(item) => item?.gallery ?? []}
+      getItemSpotlightTitle={(item) => item?.spotlightTitle ?? ""}
+      getItemSpotlightDescription={(item) => item?.spotlightDescription ?? ""}
     />
   );
 }

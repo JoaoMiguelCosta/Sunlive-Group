@@ -9,12 +9,17 @@ export default function SolutionPathsSection() {
   const paths = Array.isArray(section?.paths) ? section.paths : [];
   const sectionId = section?.id ?? "travel-home-solution-paths";
 
+  const sectionStyle = showcase?.backgroundImage
+    ? { "--solution-paths-bg-image": `url(${showcase.backgroundImage})` }
+    : undefined;
+
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-label={showcase?.title ?? "Soluções disponíveis"}
       data-section="solution-paths"
+      style={sectionStyle}
     >
       <div className={styles.inner}>
         <div className={styles.surface}>

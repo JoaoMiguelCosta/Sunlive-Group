@@ -2,6 +2,8 @@ import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
 
 import portugalissimoImg from "../../../assets/TravelPartners/portugalissimo.png";
 import vagoImg from "../../../assets/TravelPartners/vago.png";
+import vagoBus01Img from "../../../assets/TravelPartners/vago-bus-01.webp";
+import vagoBus02Img from "../../../assets/TravelPartners/vago-bus-02.webp";
 
 const travelPartners = {
   id: "parceiros-viagens",
@@ -9,15 +11,15 @@ const travelPartners = {
   showcaseHero: {
     eyebrow: "Parcerias estratégicas",
     title:
-      "Parceiros de viagem que reforçam a consistência, alcance e confiança da operação",
-    lead: "Trabalhamos com parceiros selecionados para complementar a nossa oferta com conhecimento local, capacidade técnica e soluções ajustadas a diferentes perfis de viagem.",
+      "Parceiros que reforçam a capacidade operacional e a proposta de valor da Sunlive Travel",
+    lead: "A Sunlive Travel trabalha com parceiros selecionados para alargar a capacidade de resposta da operação, reforçar a confiança na execução e acrescentar valor real aos programas desenvolvidos para cada cliente.",
     supportingText:
-      "Estas colaborações permitem-nos estruturar programas mais completos e consistentes, combinando operação, experiência no destino e uma rede de apoio credível para grupos, equipas e viagens personalizadas.",
+      "Esta rede parceira permite complementar a proposta da Sunlive Travel com mobilidade dedicada, conhecimento de contexto e apoio especializado, contribuindo para uma operação mais sólida, consistente e ajustada a diferentes perfis de viagem.",
     highlightsLabel: "Rede parceira validada",
     highlightPills: [
-      "Parcerias qualificadas",
-      "Conhecimento local",
-      "Soluções integradas de viagem",
+      "Capacidade complementar",
+      "Apoio especializado",
+      "Valor real para a operação",
     ],
     metrics: [
       {
@@ -25,26 +27,26 @@ const travelPartners = {
         label: "Parceiros estratégicos",
       },
       {
-        value: "Qualificada",
-        label: "Rede de confiança",
+        value: "Complementar",
+        label: "valor acrescentado",
       },
       {
-        value: "Integrado",
-        label: "Apoio complementar",
+        value: "Mais sólida",
+        label: "capacidade operacional",
       },
     ],
     insights: [
       {
-        key: "credibility",
-        title: "Especialização complementar",
+        key: "execution",
+        title: "Mais robustez na execução",
         description:
-          "Cada parceiro acrescenta conhecimento e capacidade real à proposta, reforçando a resposta da operação sem criar redundância.",
+          "Os parceiros certos permitem à Sunlive Travel operar com maior consistência, previsibilidade e capacidade de resposta em diferentes tipos de programa.",
       },
       {
-        key: "coverage",
-        title: "Cobertura mais robusta",
+        key: "value",
+        title: "Mais valor na proposta",
         description:
-          "A rede permite ampliar contexto local, capacidade de resposta e consistência na experiência final em diferentes formatos de viagem.",
+          "Cada parceria foi pensada para acrescentar competências complementares ao negócio da Sunlive Travel e reforçar a qualidade global da solução apresentada ao cliente.",
       },
     ],
     ui: {
@@ -58,47 +60,70 @@ const travelPartners = {
     ariaLabel: "Explorar parceiros de viagem",
     selectorAriaLabel: "Selecionar parceiro em destaque",
     kicker: "Parceiros selecionados",
-    title:
-      "Parceiros escolhidos para ampliar a proposta de valor de cada programa",
-    description:
-      "Parceiros alinhados com a visão da Sunlive Travel, escolhidos pela credibilidade, complementaridade da oferta e capacidade de acrescentar valor real à experiência e à operação.",
     spotlightLabel: "Parceiro em destaque",
-    roleLabel: "Posicionamento",
     selectorLabel: "Parceiros disponíveis",
-    initialKey: "portugalissimo",
+    overviewLabel: "Contributo para a proposta",
+    primaryMetaLabel: "Posicionamento",
+    ctaFallbackLabel: "Saiba Mais",
+    galleryLabel: "Galeria do parceiro",
+    galleryAriaLabel: "Selecionar imagem da galeria do parceiro",
+    galleryCountLabel: "Galeria visual",
+    selectorCountSuffix: "itens selecionados",
+    selectorCountSingularSuffix: "item selecionado",
+    initialKey: "vago",
   },
 
   partners: [
     {
-      key: "portugalissimo",
-      anchorId: "parceiros-viagens-portugalissimo",
-      city: "Portugalíssimo",
-      badge: "Parceiro local",
-      role: "Parceiro local",
-      summary:
-        "Especialistas em turismo e imobiliário, com foco no estilo de vida português e em experiências ligadas ao território.",
-      href: "https://www.portugalissimmo.com/",
-      ctaLabel: "Saiba Mais",
-      picture: {
-        src: portugalissimoImg,
-        alt: "Logótipo Portugalíssimo",
-      },
-      imageFit: "contain",
-      imagePosition: "center",
-    },
-    {
       key: "vago",
       anchorId: "parceiros-viagens-vago",
       city: "Vago Viagens",
-      badge: "Agência licenciada",
-      role: "Agência licenciada",
+      badge: "Parceiro de mobilidade",
+      role: "Operador de Transporte Turístico",
       summary:
-        "Agência de viagens especializada em propostas autênticas e personalizadas, com abordagem próxima e conhecimento prático do setor.",
+        "Parceiro orientado para transporte turístico e aluguer de autocarros, reforçando a capacidade da Sunlive Travel em operações que exigem mobilidade coordenada, conforto e fiabilidade.",
+      spotlightTitle:
+        "Mobilidade dedicada para reforçar a fluidez e a fiabilidade da operação",
+      spotlightDescription:
+        "A Vago Viagens reforça a componente de mobilidade da proposta Sunlive Travel, acrescentando capacidade dedicada para deslocações de grupos, serviços ocasionais e operações com exigência logística em contexto nacional e internacional.",
       href: "https://vagoviagens.pt/",
       ctaLabel: "Saiba Mais",
       picture: {
         src: vagoImg,
         alt: "Logótipo Vago Viagens",
+      },
+      gallery: [
+        {
+          key: "vago-bus-01",
+          src: vagoBus01Img,
+          alt: "Autocarro da Vago Viagens com branding Sunlive Travel em vista frontal lateral.",
+        },
+        {
+          key: "vago-bus-02",
+          src: vagoBus02Img,
+          alt: "Autocarro da Vago Viagens com branding Sunlive Travel em vista lateral.",
+        },
+      ],
+      imageFit: "cover",
+      imagePosition: "center center",
+    },
+    {
+      key: "portugalissimo",
+      anchorId: "parceiros-viagens-portugalissimo",
+      city: "Portugalíssimo",
+      badge: "Parceiro local",
+      role: "Contexto Local e Leitura do Território",
+      summary:
+        "Parceiro com ligação ao território e leitura local, útil para acrescentar enquadramento, autenticidade e proximidade à proposta da Sunlive Travel em programas que valorizam contexto e experiência.",
+      spotlightTitle:
+        "Conhecimento local para enriquecer a proposta e reforçar a diferenciação",
+      spotlightDescription:
+        "A Portugalíssimo reforça a componente de contexto local da proposta Sunlive Travel, contribuindo para programas com maior leitura do território, proximidade e diferenciação.",
+      href: "https://www.portugalissimmo.com/",
+      ctaLabel: "Saiba Mais",
+      picture: {
+        src: portugalissimoImg,
+        alt: "Logótipo Portugalíssimo",
       },
       imageFit: "contain",
       imagePosition: "center",
