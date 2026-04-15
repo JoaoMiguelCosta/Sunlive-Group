@@ -78,7 +78,7 @@ const travelPartners = {
       key: "vago",
       anchorId: "parceiros-viagens-vago",
       city: "Vago Viagens",
-      badge: "Parceiro de mobilidade",
+      badge: "Parceiro de Mobilidade",
       role: "Operador de Transporte Turístico",
       summary:
         "Parceiro orientado para transporte turístico e aluguer de autocarros, reforçando a capacidade da Sunlive Travel em operações que exigem mobilidade coordenada, conforto e fiabilidade.",
@@ -111,7 +111,7 @@ const travelPartners = {
       key: "portugalissimo",
       anchorId: "parceiros-viagens-portugalissimo",
       city: "Portugalíssimo",
-      badge: "Parceiro local",
+      badge: "Parceiro Local",
       role: "Contexto Local e Leitura do Território",
       summary:
         "Parceiro com ligação ao território e leitura local, útil para acrescentar enquadramento, autenticidade e proximidade à proposta da Sunlive Travel em programas que valorizam contexto e experiência.",

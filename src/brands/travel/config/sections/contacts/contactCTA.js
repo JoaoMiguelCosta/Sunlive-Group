@@ -56,7 +56,7 @@ const contactCTA = {
     { key: "services-needed", label: "Serviços pretendidos" },
     {
       key: "service-level",
-      label: "Nível de conforto / Enquadramento desejado",
+      label: "Nível de conforto",
     },
   ],
 

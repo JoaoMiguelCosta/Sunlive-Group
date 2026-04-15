@@ -28,7 +28,7 @@ const solutionPaths = {
       eyebrow: "Portugal",
       title: "Destinos Nacionais",
       description:
-        "Programas com identidade local, curadoria cuidada e execução consistente em destinos selecionados.",
+        "Programas com identidade local, seleção cuidada e execução consistente em destinos selecionados.",
       href: TRAVEL_PAGE_PATHS.destinationsDomestic,
       ctaLabel: "Descobrir Destinos",
     },
