@@ -20,6 +20,14 @@ export default function TravelHeaderNav() {
     location.pathname === TRAVEL_BASE_PATH ||
     location.pathname === `${TRAVEL_BASE_PATH}/`;
 
+  const utilityBarProps = isTravelHome
+    ? {
+        backLink: header.backLink,
+      }
+    : {
+        homeLink: header.homeLink,
+      };
+
   return (
     <HeaderShell className={styles.wrap} aria-label="Header — Sunlive Travel">
       <div className={styles.container}>
@@ -27,10 +35,9 @@ export default function TravelHeaderNav() {
           variant="travel-header"
           data-page={isTravelHome ? "travel-home" : "travel-inner"}
           ariaLabel="Header — Sunlive Travel"
-          backLink={isTravelHome ? header.backLink : null}
-          homeLink={!isTravelHome ? header.homeLink : null}
           socials={header.socials}
           lang={header.lang}
+          {...utilityBarProps}
         />
 
         {isTravelHome ? (

@@ -8,9 +8,7 @@
     position: relative;
     z-index: 40;
     inline-size: 100%;
-
-    --nav-max-width: 1360px;
-    --nav-side-gap: clamp(16px, 3.2vw, 44px);
+--nav-side-gap: clamp(16px, 3.2vw, 44px);
 }
 
 .navInner {

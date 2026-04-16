@@ -4,7 +4,6 @@ import UtilityBar from "../../../shared/components/UtilityBar";
 
 import HotelFooter from "../components/FooterHotel";
 import HotelPrimaryNav from "./HotelPrimaryNav.jsx";
-import HotelBrandLogo from "./HotelBrandLogo.jsx";
 import ScrollToTopOnRouteChange from "./ScrollToTopOnRouteChange.jsx";
 
 import hotelBrand, { HOTEL_BASE_PATH } from "../config/index.js";
@@ -28,30 +27,37 @@ export default function HotelShell() {
     location.pathname === HOTEL_BASE_PATH ||
     location.pathname === `${HOTEL_BASE_PATH}/`;
 
-  const backLink = isHotelHome
-    ? { href: "/sunlive-group", label: "Voltar Sunlive Group" }
-    : null;
-
-  const homeLink = !isHotelHome
-    ? { label: "Início Hotel", href: HOTEL_BASE_PATH }
-    : undefined;
+  const utilityBarProps = isHotelHome
+    ? {
+        backLink: {
+          href: "/sunlive-group",
+          label: "Voltar Sunlive Group",
+        },
+      }
+    : {
+        homeLink: {
+          href: HOTEL_BASE_PATH,
+          label: "Início Hotel",
+        },
+      };
 
   return (
     <div className={styles.shell} data-brand="hotel" data-shell="hotel">
       <ScrollToTopOnRouteChange />
 
-      <UtilityBar
-        variant="hotel-header"
-        data-page={isHotelHome ? "hotel-home" : "hotel-inner"}
-        backLink={backLink}
-        homeLink={homeLink}
-        leftSlot={<HotelBrandLogo />}
-        socials={socials}
-        lang={lang}
-      />
+      <div className={styles.headerContainer}>
+        <UtilityBar
+          variant="hotel-header"
+          data-page={isHotelHome ? "hotel-home" : "hotel-inner"}
+          socials={socials}
+          lang={lang}
+          ariaLabel="Utility bar — Hotel"
+          {...utilityBarProps}
+        />
 
-      <div className={styles.navWrap}>
-        <HotelPrimaryNav />
+        <div className={styles.navWrap}>
+          <HotelPrimaryNav />
+        </div>
       </div>
 
       <main

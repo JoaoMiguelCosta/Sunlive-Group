@@ -21,7 +21,9 @@ export default function GroupPage() {
 
   return (
     <div className={styles.pageWrap}>
-      <GroupUtilityBar />
+      <div className={styles.headerContainer}>
+        <GroupUtilityBar />
+      </div>
 
       <main className={styles.inner}>
         <div className={styles.sections}>
@@ -38,5 +40,3 @@ export default function GroupPage() {
     </div>
   );
 }
-
-

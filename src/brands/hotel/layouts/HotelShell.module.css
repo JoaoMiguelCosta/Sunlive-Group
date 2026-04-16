@@ -14,22 +14,29 @@
     color: var(--sl-platinum-050, #e7ebf3);
 }
 
+.headerContainer {
+    --hotel-shell-max-width: 1360px;
+    --hotel-shell-inset: clamp(12px, 4vw, 40px);
+
+    inline-size: min(calc(100% - (2 * var(--hotel-shell-inset))),
+            var(--hotel-shell-max-width));
+    margin-inline: auto;
+}
+
 .navWrap {
     position: relative;
     z-index: 40;
+    inline-size: 100%;
     padding-block-start: 0.35rem;
 }
 
 .main {
     inline-size: 100%;
     display: block;
-   
 }
 
 @media (max-width: 768px) {
     .navWrap {
         padding-block-start: 0.2rem;
     }
-
-
 }

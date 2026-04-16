@@ -20,20 +20,32 @@ export default function SportsShell() {
     location.pathname === SPORTS_BASE_PATH ||
     location.pathname === `${SPORTS_BASE_PATH}/`;
 
-  const backLink = isSportsHome
-    ? { href: "/sunlive-group", label: "Voltar Sunlive Group" }
-    : { href: SPORTS_BASE_PATH, label: "Voltar Menu Sunlive Sports" };
+  const utilityBarProps = isSportsHome
+    ? {
+        backLink: {
+          href: "/sunlive-group",
+          label: "Voltar Sunlive Group",
+        },
+      }
+    : {
+        homeLink: {
+          href: SPORTS_BASE_PATH,
+          label: "Início Sports",
+        },
+      };
 
   return (
     <div className={styles.shell} data-brand="sports" data-shell="sports">
-      <SportsUtilityBar backLink={backLink} />
+      <div className={styles.headerContainer}>
+        <SportsUtilityBar isHome={isSportsHome} {...utilityBarProps} />
 
-      <BrandMasthead
-        src={sportsLogo}
-        alt="Sunlive Sports"
-        logoAr={2.375}
-        loading="eager"
-      />
+        <BrandMasthead
+          src={sportsLogo}
+          alt="Sunlive Sports"
+          logoAr={2.375}
+          loading="eager"
+        />
+      </div>
 
       <main className={styles.main} aria-label="Sunlive Sports — Conteúdo">
         <Outlet />

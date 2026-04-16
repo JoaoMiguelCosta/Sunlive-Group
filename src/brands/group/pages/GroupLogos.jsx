@@ -22,7 +22,9 @@ export default function PartnersLogosPage() {
 
   return (
     <div className={styles.pageWrap}>
-      <LogosUtilityBar />
+      <div className={styles.headerContainer}>
+        <LogosUtilityBar />
+      </div>
 
       <main className={styles.inner}>
         <div className={styles.sections}>
@@ -42,5 +44,3 @@ export default function PartnersLogosPage() {
     </div>
   );
 }
-
-

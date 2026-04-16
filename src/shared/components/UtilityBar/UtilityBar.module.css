@@ -1,175 +1,107 @@
 /* =======================================================
-   UtilityBar — shared
-   - base neutra
-   - variantes isoladas por brand
-   - hotel refinado sem partir travel/sports/group
+   UtilityBar — base
    ======================================================= */
 
 .utilityBar {
+    --accent: var(--sl-gold-400, #C78615);
+    --line-inset: clamp(12px, 2vw, 20px);
+    --ub-gap: clamp(0.45rem, 0.8vw, 0.75rem);
+    --sl-container-lg: 1360px;
+
+    position: relative;
+    inline-size: min(100%, var(--sl-container-lg));
+    margin-inline: auto;
+    display: grid;
+    place-items: center;
+    z-index: 60;
+}
+
+.inner,
+.inner.hasLeft,
+.inner.hasCenter {
     position: relative;
     inline-size: 100%;
     display: grid;
-    place-items: center;
-
-    --line-inset: var(--section-inset, clamp(16px, 3.5vw, 44px));
-    --ub-touch: clamp(36px, 4.2vw, 44px);
-    --ub-icon: clamp(18px, 1.8vw, 24px);
-    --ub-gap: clamp(0.35rem, 0.8vw, 0.6rem);
-    --ub-fs: clamp(0.9rem, 1.1vw, 1rem);
-    --ub-chev: clamp(0.66rem, 0.9vw, 0.8rem);
-    --ub-menu-w: clamp(160px, 26vw, 260px);
-    --ub-menu-pad: clamp(6px, 1vw, 8px);
-    --ub-item-pad: clamp(0.55rem, 1.3vw, 0.7rem) clamp(0.6rem, 1.4vw, 0.8rem);
-    --ub-radius: clamp(10px, 1.2vw, 12px);
-    --ub-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
-
-    z-index: 10000;
-    overflow: visible;
-    isolation: isolate;
-}
-
-.utilityBar .inner,
-.left,
-.right {
-    position: relative;
-    min-height: var(--ub-touch);
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    padding-block: 2px;
-    overflow: visible;
+    min-height: 56px;
+    padding-block: 0.35rem 0.25rem;
 }
 
-.utilityBar .inner {
-    inline-size: min(var(--sl-container-lg, 90rem), calc(100% - 2 * var(--line-inset)));
-    margin-inline: auto;
-    box-sizing: border-box;
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    min-height: 2.875rem;
-    z-index: 2;
-}
-
-.hasLeft,
-.hasCenter {
-    justify-content: space-between !important;
-}
-
-.utilityBar .inner::after {
+.inner::after {
     content: "";
     position: absolute;
+    inset-inline: var(--line-inset);
     inset-block-end: 0;
-    inset-inline: 0;
     block-size: 1px;
-    background: rgba(199, 134, 21, 0.7);
-    opacity: 0.9;
-    border-radius: 2px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.14) 12%,
+            rgba(255, 255, 255, 0.18) 50%,
+            rgba(255, 255, 255, 0.14) 88%,
+            transparent 100%);
     pointer-events: none;
-    z-index: 1;
 }
 
 .left,
+.center,
 .right {
-    display: flex;
-    align-items: center;
-    gap: var(--ub-gap);
     min-width: 0;
 }
 
 .left {
-    z-index: 4000;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
 }
 
 .center {
-    display: none;
+    display: flex;
+    justify-content: center;
 }
 
 .right {
-    z-index: 3000;
-}
-
-.label {
-    display: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--ub-gap);
+    min-width: 0;
 }
 
 /* =======================================================
-   Back / Home links — base partilhada
+   Links base
    ======================================================= */
 
 .backLink,
 .homeLink {
-    --pill-fs: var(--ub-fs);
-    --pill-pad-y: 0.48rem;
-    --pill-pad-x: 0.82rem;
-    --pill-radius: 999px;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.52rem;
-
-    min-height: var(--ub-touch, 0px);
-    padding: var(--pill-pad-y) var(--pill-pad-x);
-    border-radius: var(--pill-radius);
-
+    gap: 0.5rem;
+    min-height: 40px;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.92);
     text-decoration: none;
-    white-space: nowrap;
-
     font-weight: 700;
-    font-size: var(--pill-fs);
-    line-height: 1.18;
-    color: rgba(255, 255, 255, 0.94);
-
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)),
-        rgba(255, 255, 255, 0.015);
-
-    border: 1px solid rgba(246, 192, 92, 0.42);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 8px 18px rgba(0, 0, 0, 0.18);
-
-    transition:
-        transform 0.12s ease,
-        opacity 0.12s ease,
-        filter 0.12s ease,
-        color 0.12s ease,
-        border-color 0.12s ease,
-        box-shadow 0.12s ease,
-        background 0.12s ease;
-}
-
-.backIcon,
-.homeIcon {
-    inline-size: 1.08em;
-    block-size: 1.08em;
-    flex: 0 0 auto;
-}
-
-.backText,
-.homeText {
-    display: inline-block;
+    font-size: clamp(0.84rem, 0.25vw + 0.82rem, 0.96rem);
     line-height: 1;
-}
-
-.backText {
+    letter-spacing: 0.015em;
     white-space: nowrap;
-
-    text-overflow: ellipsis;
-    max-inline-size: 60vw;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease,
+        box-shadow 180ms ease,
+        color 180ms ease;
 }
 
 .backLink:hover,
 .homeLink:hover {
     transform: translateY(-1px);
-    opacity: 0.98;
-    color: var(--accent, #F6C05C);
-    border-color: color-mix(in oklab, var(--accent, #F6C05C) 82%, white 18%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 12px 24px rgba(0, 0, 0, 0.22);
 }
 
 .backLink:active,
@@ -178,9 +110,29 @@
 }
 
 .backLink:focus-visible,
-.homeLink:focus-visible {
+.homeLink:focus-visible,
+.socialLink:focus-visible,
+.langBtn:focus-visible,
+.langItem:focus-visible {
     outline: none;
-    box-shadow: none;
+    box-shadow:
+        0 0 0 3px color-mix(in oklab, var(--accent), transparent 72%),
+        0 0 0 6px color-mix(in oklab, white, transparent 88%);
+}
+
+.backIcon,
+.homeIcon {
+    inline-size: 1rem;
+    block-size: 1rem;
+    flex: 0 0 auto;
+}
+
+.backText,
+.homeText {
+    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-inline-size: 100%;
 }
 
 /* =======================================================
@@ -188,56 +140,50 @@
    ======================================================= */
 
 .socials {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.1rem;
+    justify-content: flex-end;
+    gap: clamp(0.2rem, 0.5vw, 0.4rem);
+    min-width: 0;
+    flex-wrap: nowrap;
 }
 
 .socialLink {
-    display: inline-grid;
-    place-items: center;
-    inline-size: var(--ub-touch);
-    block-size: var(--ub-touch);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    inline-size: clamp(34px, 2.8vw, 40px);
+    block-size: clamp(34px, 2.8vw, 40px);
     border-radius: 999px;
-    color: rgba(255, 255, 255, 0.92);
-    background: transparent;
-    border: 0;
+    color: rgba(255, 255, 255, 0.84);
+    text-decoration: none;
     transition:
-        transform 0.12s ease,
-        opacity 0.12s ease,
-        filter 0.12s ease,
-        color 0.12s ease,
-        background 0.12s ease;
-}
-
-.socialIcon {
-    inline-size: var(--ub-icon);
-    block-size: var(--ub-icon);
+        transform 180ms ease,
+        background-color 180ms ease,
+        color 180ms ease,
+        box-shadow 180ms ease;
 }
 
 .socialLink:hover {
     transform: translateY(-1px);
-    opacity: 0.96;
-    color: var(--accent);
-    background: rgba(255, 255, 255, 0.03);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.socialLink:active {
-    transform: translateY(0);
-}
-
-.socialLink:focus-visible {
-    outline: none;
-    box-shadow: none;
+.socialIcon {
+    inline-size: clamp(17px, 1.4vw, 20px);
+    block-size: clamp(17px, 1.4vw, 20px);
 }
 
 /* =======================================================
-   Language switcher
+   Language menu
    ======================================================= */
 
 .langWrap {
     position: relative;
-    z-index: 10012;
+    min-width: 0;
+    z-index: 61;
 }
 
 .langBtn {
@@ -245,134 +191,109 @@
     align-items: center;
     justify-content: center;
     gap: 0.45rem;
-    min-width: var(--ub-touch);
-    height: var(--ub-touch);
-    padding: 0 clamp(0.5rem, 1.4vw, 0.8rem);
-    background: transparent;
-    border: 0;
+    min-width: 0;
+    min-height: clamp(36px, 2.8vw, 40px);
+    padding-inline: 0.72rem;
+    border: 1px solid transparent;
     border-radius: 999px;
-    touch-action: manipulation;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
     transition:
-        transform 0.12s ease,
-        opacity 0.12s ease,
-        filter 0.12s ease,
-        background 0.12s ease;
-}
-
-.langText {
-    color: rgba(255, 255, 255, 0.94);
-    font-family: var(--sl-ff-ui, var(--font-sans));
-    font-weight: 700;
-    font-size: var(--ub-fs);
-    line-height: 1;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.chevron {
-    display: inline-block;
-    width: var(--ub-chev);
-    height: calc(var(--ub-chev) / 2);
-    vertical-align: middle;
-    color: rgba(255, 162, 0, 0.82);
-    transition:
-        transform 0.18s ease,
-        color 0.12s ease,
-        filter 0.12s ease;
-}
-
-.chevron path {
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+        transform 180ms ease,
+        background-color 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease,
+        box-shadow 180ms ease;
 }
 
 .langBtn:hover {
-    transform: translateY(-1px);
-    opacity: 0.96;
-    background: rgba(255, 255, 255, 0.025);
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.langBtn:hover .langText,
-.langBtn:hover .chevron {
-    color: var(--accent);
+.langText {
+    font-size: clamp(0.86rem, 0.2vw + 0.84rem, 0.94rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.chevron {
+    inline-size: 0.72rem;
+    block-size: 0.42rem;
+    color: currentColor;
+    transition:
+        transform 180ms ease,
+        color 180ms ease;
 }
 
 .langBtn[data-open="true"] .chevron {
     transform: rotate(180deg);
 }
 
-.langBtn:active {
-    transform: translateY(0);
-}
-
-.langBtn:focus-visible {
-    outline: none;
-    box-shadow: none;
-}
-
 .langMenu {
     position: absolute;
-    top: calc(100% + 6px);
-    right: 0;
-    min-width: var(--ub-menu-w);
-    max-width: min(92vw, 320px);
-    max-height: min(50vh, 360px);
-    overflow-y: auto;
+    inset-inline-end: 0;
+    inset-block-start: calc(100% + 0.45rem);
+    z-index: 70;
+    inline-size: min(18rem, calc(100vw - 24px));
+    min-inline-size: 0;
+    max-inline-size: calc(100vw - 24px);
     margin: 0;
-    padding: var(--ub-menu-pad);
-
+    padding: 0.35rem;
     list-style: none;
-    border-radius: var(--ub-radius);
-    background: linear-gradient(180deg, rgba(19, 24, 34, 0.96), rgba(12, 16, 24, 0.98));
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    box-shadow: var(--ub-shadow);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(180deg,
+            rgba(18, 22, 30, 0.96) 0%,
+            rgba(8, 12, 18, 0.98) 100%);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
 
-    z-index: 10013;
-    -webkit-overflow-scrolling: touch;
+.langMenu[hidden] {
+    display: none;
 }
 
 .langItem {
-    display: flex;
-    align-items: baseline;
-    gap: 0.55rem;
-
-    width: 100%;
-    min-height: var(--ub-touch);
-    padding: var(--ub-item-pad);
-
-    background: transparent;
-    border: 0;
-    border-radius: calc(var(--ub-radius) - 2px);
-    cursor: pointer;
-
+    inline-size: 100%;
+    display: grid;
+    gap: 0.15rem;
     text-align: left;
-    direction: ltr;
-    color: #fff;
-    font-family: var(--sl-ff-ui, var(--font-sans));
-
+    padding: 0.65rem 0.75rem;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.92);
+    cursor: pointer;
     transition:
-        background 0.12s ease,
-        color 0.12s ease;
+        background-color 160ms ease,
+        color 160ms ease;
 }
 
 .langItem:hover {
-    color: var(--accent);
     background: rgba(255, 255, 255, 0.05);
 }
 
 .langItemLabel {
+    display: block;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    line-height: 1.15;
+    white-space: nowrap;
 }
 
 .langItemName {
+    display: block;
     opacity: 0.9;
     font-size: clamp(0.9rem, 1vw, 0.95rem);
     line-height: 1.2;
     white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .langItemName[dir="rtl"] {
@@ -381,60 +302,70 @@
     text-align: left;
 }
 
-@media (prefers-reduced-motion: reduce) {
-
-    .socialLink,
-    .langBtn,
-    .chevron,
-    .backLink,
-    .homeLink {
-        transition: none;
-    }
-}
-
 /* =======================================================
-   Travel
+   Base comum — brands com nav à esquerda
+   Logos / Travel / Sports / Hotel
    ======================================================= */
 
-.utilityBar[data-variant="travel-header"] {
-    --accent: var(--sl-accent-500, #2EA7E0);
-    --sl-container-lg: 1360px;
+.utilityBar[data-variant="logos-header"],
+.utilityBar[data-variant="travel-header"],
+.utilityBar[data-variant="sports-header"],
+.utilityBar[data-variant="hotel-header"] {
+    --header-divider-inner: rgba(206, 212, 219, 0.28);
+    --header-divider-home: rgba(255, 162, 0, 0.85);
+    --header-link-color: rgba(255, 248, 232, 0.94);
+    --header-link-hover-color: #fff3da;
+    --header-back-bg-top: rgba(24, 39, 65, 0.9);
+    --header-back-bg-bottom: rgba(10, 18, 34, 0.95);
+    --header-back-border: rgba(236, 184, 77, 0.34);
+    --header-back-border-hover: rgba(244, 197, 93, 0.52);
+    --header-home-bg-top: rgba(27, 44, 72, 0.72);
+    --header-home-bg-bottom: rgba(9, 18, 34, 0.9);
+    --header-home-border: rgba(236, 184, 77, 0.42);
+    --header-home-border-hover: rgba(244, 197, 93, 0.62);
 }
 
-.utilityBar[data-variant="travel-header"] .inner::after {
+.utilityBar[data-variant="logos-header"] .inner::after,
+.utilityBar[data-variant="travel-header"] .inner::after,
+.utilityBar[data-variant="sports-header"] .inner::after,
+.utilityBar[data-variant="hotel-header"] .inner::after {
     content: none;
 }
 
+.utilityBar[data-variant="logos-header"] .inner,
+.utilityBar[data-variant="logos-header"] .inner.hasLeft,
 .utilityBar[data-variant="travel-header"] .inner,
-.utilityBar[data-variant="travel-header"] .inner.hasLeft {
+.utilityBar[data-variant="travel-header"] .inner.hasLeft,
+.utilityBar[data-variant="sports-header"] .inner,
+.utilityBar[data-variant="sports-header"] .inner.hasLeft,
+.utilityBar[data-variant="hotel-header"] .inner,
+.utilityBar[data-variant="hotel-header"] .inner.hasLeft {
     position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     column-gap: clamp(1rem, 1.8vw, 1.6rem);
-    width: 100%;
-
     min-height: clamp(76px, 5.6vw, 96px);
     padding-block: clamp(0.45rem, 0.7vw, 0.65rem) clamp(0.2rem, 0.35vw, 0.3rem);
-    border-bottom: 1px solid rgba(230, 200, 147, 0.3);
+    border-bottom: 1px solid var(--header-divider-inner);
 }
 
-.utilityBar[data-variant="travel-header"][data-page="travel-home"] .inner,
-.utilityBar[data-variant="travel-header"][data-page="travel-home"] .inner.hasLeft {
-    border-bottom: 2px solid rgba(255, 162, 0, 0.85);
-}
-
-.utilityBar[data-variant="travel-header"] .left {
+.utilityBar[data-variant="logos-header"] .left,
+.utilityBar[data-variant="travel-header"] .left,
+.utilityBar[data-variant="sports-header"] .left,
+.utilityBar[data-variant="hotel-header"] .left {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
     min-width: 0;
     gap: clamp(0.6rem, 1vw, 0.9rem);
-    padding-inline-start: clamp(8px, 1.2vw, 14px);
 }
 
-.utilityBar[data-variant="travel-header"] .right {
+.utilityBar[data-variant="logos-header"] .right,
+.utilityBar[data-variant="travel-header"] .right,
+.utilityBar[data-variant="sports-header"] .right,
+.utilityBar[data-variant="hotel-header"] .right {
     display: inline-flex;
     align-items: center;
     justify-self: end;
@@ -442,312 +373,141 @@
     min-width: 0;
 }
 
+.utilityBar[data-variant="logos-header"] .backLink,
+.utilityBar[data-variant="logos-header"] .homeLink,
 .utilityBar[data-variant="travel-header"] .backLink,
-.utilityBar[data-variant="travel-header"] .homeLink {
+.utilityBar[data-variant="travel-header"] .homeLink,
+.utilityBar[data-variant="sports-header"] .backLink,
+.utilityBar[data-variant="sports-header"] .homeLink,
+.utilityBar[data-variant="hotel-header"] .backLink,
+.utilityBar[data-variant="hotel-header"] .homeLink {
     min-height: clamp(42px, 3vw, 48px);
     padding: 0.52rem 1rem;
     border-radius: 999px;
-    color: rgba(255, 248, 232, 0.94);
+    color: var(--header-link-color);
     font-weight: 700;
 }
 
-.utilityBar[data-variant="travel-header"] .backLink {
+.utilityBar[data-variant="logos-header"] .backLink,
+.utilityBar[data-variant="travel-header"] .backLink,
+.utilityBar[data-variant="sports-header"] .backLink,
+.utilityBar[data-variant="hotel-header"] .backLink {
     background: linear-gradient(180deg,
-            rgba(24, 39, 65, 0.9),
-            rgba(10, 18, 34, 0.95));
-    border: 1px solid rgba(236, 184, 77, 0.34);
+            var(--header-back-bg-top),
+            var(--header-back-bg-bottom));
+    border: 1px solid var(--header-back-border);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
         0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-.utilityBar[data-variant="travel-header"] .homeLink {
+.utilityBar[data-variant="logos-header"] .homeLink,
+.utilityBar[data-variant="travel-header"] .homeLink,
+.utilityBar[data-variant="sports-header"] .homeLink,
+.utilityBar[data-variant="hotel-header"] .homeLink {
     background: linear-gradient(180deg,
-            rgba(27, 44, 72, 0.72),
-            rgba(9, 18, 34, 0.9));
-    border: 1px solid rgba(236, 184, 77, 0.42);
+            var(--header-home-bg-top),
+            var(--header-home-bg-bottom));
+    border: 1px solid var(--header-home-border);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.06),
         0 8px 18px rgba(0, 0, 0, 0.16);
 }
 
+.utilityBar[data-variant="logos-header"] .backLink:hover,
+.utilityBar[data-variant="logos-header"] .homeLink:hover,
 .utilityBar[data-variant="travel-header"] .backLink:hover,
-.utilityBar[data-variant="travel-header"] .homeLink:hover {
+.utilityBar[data-variant="travel-header"] .homeLink:hover,
+.utilityBar[data-variant="sports-header"] .backLink:hover,
+.utilityBar[data-variant="sports-header"] .homeLink:hover,
+.utilityBar[data-variant="hotel-header"] .backLink:hover,
+.utilityBar[data-variant="hotel-header"] .homeLink:hover {
     transform: translateY(-1px);
-    color: #fff3da;
+    color: var(--header-link-hover-color);
 }
 
-.utilityBar[data-variant="travel-header"] .backLink:hover {
-    border-color: rgba(244, 197, 93, 0.52);
+.utilityBar[data-variant="logos-header"] .backLink:hover,
+.utilityBar[data-variant="travel-header"] .backLink:hover,
+.utilityBar[data-variant="sports-header"] .backLink:hover,
+.utilityBar[data-variant="hotel-header"] .backLink:hover {
+    border-color: var(--header-back-border-hover);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.07),
         0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-.utilityBar[data-variant="travel-header"] .homeLink:hover {
-    border-color: rgba(244, 197, 93, 0.62);
+.utilityBar[data-variant="logos-header"] .homeLink:hover,
+.utilityBar[data-variant="travel-header"] .homeLink:hover,
+.utilityBar[data-variant="sports-header"] .homeLink:hover,
+.utilityBar[data-variant="hotel-header"] .homeLink:hover {
+    border-color: var(--header-home-border-hover);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.08),
         0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-.utilityBar[data-variant="travel-header"] .backLink:active,
-.utilityBar[data-variant="travel-header"] .homeLink:active {
-    transform: translateY(0);
-}
-
-.utilityBar[data-variant="travel-header"] .homeIcon {
+.utilityBar[data-variant="logos-header"] .homeIcon,
+.utilityBar[data-variant="travel-header"] .homeIcon,
+.utilityBar[data-variant="sports-header"] .homeIcon,
+.utilityBar[data-variant="hotel-header"] .homeIcon {
     inline-size: 0.98em;
     block-size: 0.98em;
     opacity: 0.92;
 }
 
-.utilityBar[data-variant="travel-header"] .homeText {
+.utilityBar[data-variant="logos-header"] .homeText,
+.utilityBar[data-variant="travel-header"] .homeText,
+.utilityBar[data-variant="sports-header"] .homeText,
+.utilityBar[data-variant="hotel-header"] .homeText {
     line-height: 1;
     white-space: nowrap;
 }
 
-.utilityBar[data-variant="travel-header"] .langItem[aria-current="true"] {
-    color: var(--accent);
-    background: rgba(46, 167, 224, 0.12);
-}
-
-.utilityBar[data-variant="travel-header"] .langBtn[data-open="true"] .chevron {
+.utilityBar[data-variant="logos-header"] .langBtn[data-open="true"] .chevron,
+.utilityBar[data-variant="travel-header"] .langBtn[data-open="true"] .chevron,
+.utilityBar[data-variant="sports-header"] .langBtn[data-open="true"] .chevron,
+.utilityBar[data-variant="hotel-header"] .langBtn[data-open="true"] .chevron {
     color: var(--accent);
 }
 
-@media (max-width: 900px) {
-
-    .utilityBar[data-variant="travel-header"] .inner,
-    .utilityBar[data-variant="travel-header"] .inner.hasLeft {
-        min-height: 60px;
-        column-gap: 0.75rem;
-        padding-block: 0.4rem 0.28rem;
-    }
-
-    .utilityBar[data-variant="travel-header"] .backText,
-    .utilityBar[data-variant="travel-header"] .homeText {
-        max-inline-size: 42vw;
-    }
-}
-
-@media (max-width: 640px) {
-    .utilityBar[data-variant="travel-header"] {
-        --line-inset: clamp(12px, 4vw, 18px);
-        --ub-gap: 0.45rem;
-    }
-
-    .utilityBar[data-variant="travel-header"] .inner,
-    .utilityBar[data-variant="travel-header"] .inner.hasLeft {
-        min-height: 56px;
-        padding-block: 0.3rem 0.22rem;
-    }
-
-    .utilityBar[data-variant="travel-header"] .left {
-        gap: 0.45rem;
-        padding-inline-start: 6px;
-    }
-
-    .utilityBar[data-variant="travel-header"] .right {
-        padding-inline-end: 6px;
-    }
-
-    .utilityBar[data-variant="travel-header"] .backLink,
-    .utilityBar[data-variant="travel-header"] .homeLink {
-        min-height: 38px;
-        padding: 0.46rem 0.82rem;
-        font-size: 0.88rem;
-    }
-
-    .utilityBar[data-variant="travel-header"] .socialLink,
-    .utilityBar[data-variant="travel-header"] .langBtn {
-        block-size: 36px;
-    }
-
-    .utilityBar[data-variant="travel-header"] .langText {
-        font-size: 0.88rem;
-    }
-}
-
-@media (max-width: 500px) {
-
-    .utilityBar[data-variant="travel-header"] .inner,
-    .utilityBar[data-variant="travel-header"] .inner.hasLeft {
-        grid-template-columns: 1fr;
-        row-gap: 0.55rem;
-        min-height: auto;
-        padding-block: 0.5rem 0.3rem;
-    }
-
-    .utilityBar[data-variant="travel-header"] .left,
-    .utilityBar[data-variant="travel-header"] .right {
-        width: 100%;
-    }
-
-    .utilityBar[data-variant="travel-header"] .left {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        max-width: 320px;
-        margin-inline: auto;
-        padding-inline-start: 0;
-    }
-
-    .utilityBar[data-variant="travel-header"] .backLink,
-    .utilityBar[data-variant="travel-header"] .homeLink {
-        width: 100%;
-        min-height: 36px;
-        justify-content: center;
-        padding: 0.42rem 0.7rem;
-        font-size: 0.82rem;
-        gap: 0.42rem;
-    }
-
-    .utilityBar[data-variant="travel-header"] .backText,
-    .utilityBar[data-variant="travel-header"] .homeText {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        max-inline-size: 100%;
-    }
-
-    .utilityBar[data-variant="travel-header"] .right {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.4rem;
-        padding-inline-end: 0;
-    }
-
-    .utilityBar[data-variant="travel-header"] .socialLink,
-    .utilityBar[data-variant="travel-header"] .langBtn {
-        block-size: 34px;
-    }
-
-    .utilityBar[data-variant="travel-header"] .langBtn {
-        padding-inline: 0.56rem;
-    }
-
-    .utilityBar[data-variant="travel-header"] .langText {
-        letter-spacing: 0.06em;
-    }
-}
-
-@media (max-width: 500px) {
-    .utilityBar[data-variant="travel-header"] .inner {
-        grid-template-columns: 1fr;
-        row-gap: 0.55rem;
-        min-height: auto;
-        padding-block: 0.5rem 0.3rem;
-    }
-
-    .utilityBar[data-variant="travel-header"] .left,
-    .utilityBar[data-variant="travel-header"] .right {
-        width: 100%;
-    }
-
-    .utilityBar[data-variant="travel-header"] .left {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        width: 100%;
-        max-width: 320px;
-        margin-inline: auto;
-        padding-inline-start: 0;
-    }
-
-    .utilityBar[data-variant="travel-header"] .backLink,
-    .utilityBar[data-variant="travel-header"] .homeLink {
-        width: 100%;
-        min-height: 36px;
-        justify-content: center;
-        padding: 0.42rem 0.7rem;
-        font-size: 0.82rem;
-        gap: 0.42rem;
-    }
-
-    .utilityBar[data-variant="travel-header"] .backText,
-    .utilityBar[data-variant="travel-header"] .homeText {
-       
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        max-inline-size: 100%;
-    }
-
-    .utilityBar[data-variant="travel-header"] .right {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.4rem;
-        padding-inline-end: 0;
-    }
-
-    .utilityBar[data-variant="travel-header"] .socialLink,
-    .utilityBar[data-variant="travel-header"] .langBtn {
-        
-        block-size: 34px;
-    }
-
-    .utilityBar[data-variant="travel-header"] .langBtn {
-        padding-inline: 0.56rem;
-    }
-
-    .utilityBar[data-variant="travel-header"] .langText {
-      
-        letter-spacing: 0.06em;
-    }
+.utilityBar[data-variant="logos-header"] .langItem[aria-current="true"],
+.utilityBar[data-variant="travel-header"] .langItem[aria-current="true"],
+.utilityBar[data-variant="sports-header"] .langItem[aria-current="true"],
+.utilityBar[data-variant="hotel-header"] .langItem[aria-current="true"] {
+    color: var(--accent);
 }
 
 /* =======================================================
-   Logos
+   Border-bottom states
    ======================================================= */
 
-.utilityBar[data-variant="logos-header"] {
-    --sl-container-lg: 85rem;
+.utilityBar[data-variant="logos-header"] .inner,
+.utilityBar[data-variant="logos-header"] .inner.hasLeft {
+    border-bottom: 2px solid var(--header-divider-home);
 }
 
-.utilityBar[data-variant="logos-header"] .inner::after {
-    content: none;
+.utilityBar[data-variant="travel-header"][data-page="travel-home"] .inner,
+.utilityBar[data-variant="travel-header"][data-page="travel-home"] .inner.hasLeft {
+    border-bottom: 2px solid var(--header-divider-home);
 }
 
-.utilityBar[data-variant="logos-header"] .inner {
-    border-bottom: 2px solid rgba(246, 192, 92, 0.82);
-    background: color-mix(in oklab, #020a20 82%, var(--ld-accent) 18%);
+.utilityBar[data-variant="sports-header"][data-page="sports-home"] .inner,
+.utilityBar[data-variant="sports-header"][data-page="sports-home"] .inner.hasLeft {
+    border-bottom: 2px solid var(--header-divider-home);
 }
 
-/* =======================================================
-   Sports
-   ======================================================= */
-
-.utilityBar[data-variant="sports-header"] {
-    --accent: var(--sl-accent-500, #2EC27E);
-    --sl-container-lg: 85rem;
-}
-
-.utilityBar[data-variant="sports-header"] .inner::after {
-    content: none;
-}
-
-.utilityBar[data-variant="sports-header"] .inner {
-    border-bottom: 2px solid #F6C05C;
-}
-
-.utilityBar[data-variant="sports-header"] .backLink {
-    border-color: #F6C05C;
-    background: color-mix(in oklab, var(--sl-accent-500, #2EC27E), black 70%);
+.utilityBar[data-variant="hotel-header"] .inner,
+.utilityBar[data-variant="hotel-header"] .inner.hasLeft {
+    border-bottom: 1px solid var(--header-divider-inner);
 }
 
 /* =======================================================
-   Group
+   Group — right only
    ======================================================= */
 
 .utilityBar[data-variant="group-header"] {
     --accent: var(--sl-gold-400, #C78615);
-    --sl-container-lg: 90rem;
+    --group-divider: rgba(255, 162, 0, 0.85);
 }
 
 .utilityBar[data-variant="group-header"] .inner::after {
@@ -755,7 +515,18 @@
 }
 
 .utilityBar[data-variant="group-header"] .inner {
-    border-bottom: 2px solid color-mix(in oklab, var(--accent), black 8%);
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: clamp(64px, 5vw, 82px);
+    border-bottom: 2px solid var(--group-divider);
+}
+
+.utilityBar[data-variant="group-header"] .left,
+.utilityBar[data-variant="group-header"] .center {
+    display: none;
+}
+
+.utilityBar[data-variant="group-header"] .right {
+    width: auto;
 }
 
 .utilityBar[data-variant="group-header"] .langItem[aria-current="true"] {
@@ -767,335 +538,363 @@
     color: var(--accent);
 }
 
-.utilityBar[data-variant="group-header"] .backLink {
-    border-color: color-mix(in oklab, var(--accent), white 12%);
+/* =======================================================
+   Colors por brand
+   ======================================================= */
+
+.utilityBar[data-variant="logos-header"] {
+    --accent: #F6C05C;
+    --header-link-color: rgba(255, 248, 232, 0.96);
+    --header-back-bg-top: rgba(58, 48, 27, 0.82);
+    --header-back-bg-bottom: rgba(29, 24, 14, 0.92);
+    --header-back-border: rgba(246, 192, 92, 0.62);
+    --header-back-border-hover: rgba(246, 192, 92, 0.82);
+    --header-home-bg-top: rgba(58, 48, 27, 0.78);
+    --header-home-bg-bottom: rgba(29, 24, 14, 0.9);
+    --header-home-border: rgba(246, 192, 92, 0.56);
+    --header-home-border-hover: rgba(246, 192, 92, 0.78);
 }
 
-/* =======================================================
-   Hotel
-   ======================================================= */
+.utilityBar[data-variant="logos-header"] .langItem[aria-current="true"] {
+    background: rgba(246, 192, 92, 0.14);
+}
+
+.utilityBar[data-variant="travel-header"] {
+    --accent: var(--sl-accent-500, #2EA7E0);
+}
+
+.utilityBar[data-variant="travel-header"] .langItem[aria-current="true"] {
+    background: rgba(46, 167, 224, 0.12);
+}
+
+.utilityBar[data-variant="sports-header"] {
+    --accent: var(--sl-accent-500, #2EC27E);
+    --header-link-color: rgba(248, 251, 246, 0.94);
+    --header-link-hover-color: #ffffff;
+    --header-back-bg-top: rgba(16, 50, 39, 0.92);
+    --header-back-bg-bottom: rgba(7, 21, 18, 0.96);
+    --header-back-border: rgba(246, 192, 92, 0.34);
+    --header-back-border-hover: rgba(246, 192, 92, 0.54);
+    --header-home-bg-top: rgba(18, 56, 45, 0.74);
+    --header-home-bg-bottom: rgba(8, 22, 18, 0.92);
+    --header-home-border: rgba(184, 192, 201, 0.36);
+    --header-home-border-hover: rgba(198, 206, 214, 0.52);
+}
+
+.utilityBar[data-variant="sports-header"] .langItem[aria-current="true"] {
+    background: rgba(46, 194, 126, 0.12);
+}
 
 .utilityBar[data-variant="hotel-header"] {
     --accent: #E6C893;
-    --sl-container-lg: 1360px;
-    --ub-touch: clamp(38px, 3.2vw, 46px);
-    --ub-gap: clamp(0.45rem, 0.8vw, 0.7rem);
-}
-
-.utilityBar[data-variant="hotel-header"] .inner::after {
-    content: none;
-}
-
-.utilityBar[data-variant="hotel-header"] .inner,
-.utilityBar[data-variant="hotel-header"] .inner.hasLeft {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    column-gap: clamp(1rem, 1.8vw, 1.6rem);
-
-    min-height: clamp(76px, 5.6vw, 96px);
-    padding-block: clamp(0.45rem, 0.7vw, 0.65rem) clamp(0.2rem, 0.35vw, 0.3rem);
-    border-bottom: 2px solid rgba(230, 200, 147, 0.3);
-}
-
-.utilityBar[data-variant="hotel-header"] .left {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: clamp(0.6rem, 0.95vw, 0.95rem);
-    min-width: 0;
-    width: 100%;
-    z-index: 2;
-}
-
-.utilityBar[data-variant="hotel-header"] .right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: clamp(0.3rem, 0.7vw, 0.6rem);
-    min-width: 0;
-    width: auto;
-    z-index: 2;
-}
-
-.utilityBar[data-variant="hotel-header"] .center {
-    display: none;
-}
-
-.utilityBar[data-variant="hotel-header"] .logoLink {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-    margin-inline-start: clamp(0.4rem, 0.8vw, 0.9rem);
-}
-
-.utilityBar[data-variant="hotel-header"] .logoImage {
-    display: block;
-    width: auto;
-    height: clamp(72px, 5vw, 96px);
-    max-width: 132px;
-    object-fit: contain;
+    --header-link-color: rgba(255, 243, 218, 0.94);
+    --header-back-bg-top: rgba(40, 21, 10, 0.76);
+    --header-back-bg-bottom: rgba(24, 13, 8, 0.82);
+    --header-back-border: rgba(230, 200, 147, 0.34);
+    --header-back-border-hover: rgba(230, 200, 147, 0.48);
+    --header-home-bg-top: rgba(58, 35, 20, 0.74);
+    --header-home-bg-bottom: rgba(24, 13, 8, 0.84);
+    --header-home-border: rgba(230, 200, 147, 0.38);
+    --header-home-border-hover: rgba(230, 200, 147, 0.56);
 }
 
 .utilityBar[data-variant="hotel-header"] .langItem[aria-current="true"] {
-    color: var(--accent);
     background: color-mix(in oklab, var(--accent), transparent 84%);
 }
 
-.utilityBar[data-variant="hotel-header"] .langBtn[data-open="true"] .chevron {
-    color: var(--accent);
-}
+/* =======================================================
+   Responsive
+   ======================================================= */
 
-.utilityBar[data-variant="hotel-header"] .backLink,
-.utilityBar[data-variant="hotel-header"] .homeLink {
-    min-height: clamp(42px, 3.2vw, 48px);
-    padding: 0.5rem 0.92rem;
+@media (max-width: 900px) {
 
-    color: rgba(255, 243, 218, 0.94);
-    font-weight: 700;
-    font-size: clamp(0.86rem, 0.32vw + 0.82rem, 0.98rem);
-    letter-spacing: 0.015em;
-
-    border: 1px solid rgba(230, 200, 147, 0.24);
-    background:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.03) 0%,
-            rgba(255, 248, 235, 0.01) 18%,
-            rgba(0, 0, 0, 0.04) 100%),
-        linear-gradient(135deg,
-            rgba(40, 21, 10, 0.76) 0%,
-            rgba(24, 13, 8, 0.82) 100%);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.03),
-        0 8px 16px rgba(0, 0, 0, 0.12);
-}
-
-.utilityBar[data-variant="hotel-header"] .backLink:hover,
-.utilityBar[data-variant="hotel-header"] .homeLink:hover {
-    color: #fff3da;
-    border-color: rgba(230, 200, 147, 0.38);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 10px 20px rgba(0, 0, 0, 0.16);
-}
-
-.utilityBar[data-variant="hotel-header"] .backText,
-.utilityBar[data-variant="hotel-header"] .homeText {
-    max-inline-size: none;
-}
-
-.utilityBar[data-variant="hotel-header"] .socials {
-    gap: clamp(0.15rem, 0.35vw, 0.3rem);
-}
-
-.utilityBar[data-variant="hotel-header"] .socialLink {
-    inline-size: clamp(36px, 2.7vw, 42px);
-    block-size: clamp(36px, 2.7vw, 42px);
-    color: rgba(255, 243, 218, 0.88);
-}
-
-.utilityBar[data-variant="hotel-header"] .socialIcon {
-    inline-size: clamp(18px, 1.4vw, 22px);
-    block-size: clamp(18px, 1.4vw, 22px);
-}
-
-.utilityBar[data-variant="hotel-header"] .socialLink:hover {
-    color: #fff3da;
-    background: rgba(255, 248, 235, 0.03);
-}
-
-.utilityBar[data-variant="hotel-header"] .langBtn {
-    min-width: auto;
-    height: clamp(36px, 2.7vw, 42px);
-    padding-inline: 0.7rem;
-    border-radius: 999px;
-}
-
-.utilityBar[data-variant="hotel-header"] .langBtn:hover {
-    background: rgba(255, 248, 235, 0.03);
-}
-
-.utilityBar[data-variant="hotel-header"] .langText {
-    color: rgba(255, 243, 218, 0.92);
-    font-size: clamp(0.84rem, 0.2vw + 0.82rem, 0.94rem);
-    letter-spacing: 0.08em;
-}
-
-.utilityBar[data-variant="hotel-header"] .chevron {
-    color: rgba(230, 200, 147, 0.82);
-}
-
-@media (max-width: 1180px) {
-
+    .utilityBar[data-variant="logos-header"] .inner,
+    .utilityBar[data-variant="logos-header"] .inner.hasLeft,
+    .utilityBar[data-variant="travel-header"] .inner,
+    .utilityBar[data-variant="travel-header"] .inner.hasLeft,
+    .utilityBar[data-variant="sports-header"] .inner,
+    .utilityBar[data-variant="sports-header"] .inner.hasLeft,
     .utilityBar[data-variant="hotel-header"] .inner,
     .utilityBar[data-variant="hotel-header"] .inner.hasLeft {
-        column-gap: 0.8rem;
-        min-height: clamp(70px, 6vw, 86px);
+        min-height: 60px;
+        column-gap: 0.75rem;
+        padding-block: 0.4rem 0.28rem;
     }
 
+    .utilityBar[data-variant="logos-header"] .backText,
+    .utilityBar[data-variant="logos-header"] .homeText,
+    .utilityBar[data-variant="travel-header"] .backText,
+    .utilityBar[data-variant="travel-header"] .homeText,
+    .utilityBar[data-variant="sports-header"] .backText,
+    .utilityBar[data-variant="sports-header"] .homeText,
+    .utilityBar[data-variant="hotel-header"] .backText,
+    .utilityBar[data-variant="hotel-header"] .homeText {
+        max-inline-size: 42vw;
+    }
+}
+
+@media (max-width: 640px) {
+
+    .utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"] {
+        --line-inset: clamp(12px, 4vw, 18px);
+        --ub-gap: 0.45rem;
+    }
+
+    .utilityBar[data-variant="logos-header"] .inner,
+    .utilityBar[data-variant="logos-header"] .inner.hasLeft,
+    .utilityBar[data-variant="travel-header"] .inner,
+    .utilityBar[data-variant="travel-header"] .inner.hasLeft,
+    .utilityBar[data-variant="sports-header"] .inner,
+    .utilityBar[data-variant="sports-header"] .inner.hasLeft,
+    .utilityBar[data-variant="hotel-header"] .inner,
+    .utilityBar[data-variant="hotel-header"] .inner.hasLeft,
+    .utilityBar[data-variant="group-header"] .inner {
+        min-height: 56px;
+        padding-block: 0.3rem 0.22rem;
+    }
+
+    .utilityBar[data-variant="logos-header"] .left,
+    .utilityBar[data-variant="travel-header"] .left,
+    .utilityBar[data-variant="sports-header"] .left,
     .utilityBar[data-variant="hotel-header"] .left {
-        gap: 0.55rem;
+        gap: 0.45rem;
+        padding-inline-start: 6px;
     }
 
-    .utilityBar[data-variant="hotel-header"] .right {
-        gap: 0.3rem;
-    }
-
+    .utilityBar[data-variant="logos-header"] .backLink,
+    .utilityBar[data-variant="logos-header"] .homeLink,
+    .utilityBar[data-variant="travel-header"] .backLink,
+    .utilityBar[data-variant="travel-header"] .homeLink,
+    .utilityBar[data-variant="sports-header"] .backLink,
+    .utilityBar[data-variant="sports-header"] .homeLink,
     .utilityBar[data-variant="hotel-header"] .backLink,
     .utilityBar[data-variant="hotel-header"] .homeLink {
-        min-height: 40px;
-        padding: 0.46rem 0.78rem;
+        min-height: 38px;
+        padding: 0.46rem 0.82rem;
         font-size: 0.88rem;
     }
 
-    .utilityBar[data-variant="hotel-header"] .logoImage {
-        height: clamp(64px, 5.4vw, 82px);
-        max-width: 118px;
+    .utilityBar[data-variant="logos-header"] .socials,
+    .utilityBar[data-variant="travel-header"] .socials,
+    .utilityBar[data-variant="sports-header"] .socials,
+    .utilityBar[data-variant="hotel-header"] .socials,
+    .utilityBar[data-variant="group-header"] .socials {
+        gap: 0.28rem;
     }
 
+    .utilityBar[data-variant="logos-header"] .socialLink,
+    .utilityBar[data-variant="travel-header"] .socialLink,
+    .utilityBar[data-variant="sports-header"] .socialLink,
     .utilityBar[data-variant="hotel-header"] .socialLink,
-    .utilityBar[data-variant="hotel-header"] .langBtn {
+    .utilityBar[data-variant="group-header"] .socialLink,
+    .utilityBar[data-variant="logos-header"] .langBtn,
+    .utilityBar[data-variant="travel-header"] .langBtn,
+    .utilityBar[data-variant="sports-header"] .langBtn,
+    .utilityBar[data-variant="hotel-header"] .langBtn,
+    .utilityBar[data-variant="group-header"] .langBtn {
         inline-size: 36px;
         block-size: 36px;
     }
 
-    .utilityBar[data-variant="hotel-header"] .langBtn {
-        padding-inline: 0.62rem;
-        width: auto;
+    .utilityBar[data-variant="logos-header"] .langBtn,
+    .utilityBar[data-variant="travel-header"] .langBtn,
+    .utilityBar[data-variant="sports-header"] .langBtn,
+    .utilityBar[data-variant="hotel-header"] .langBtn,
+    .utilityBar[data-variant="group-header"] .langBtn {
+        inline-size: auto;
+    }
+
+    .utilityBar[data-variant="logos-header"] .socialIcon,
+    .utilityBar[data-variant="travel-header"] .socialIcon,
+    .utilityBar[data-variant="sports-header"] .socialIcon,
+    .utilityBar[data-variant="hotel-header"] .socialIcon,
+    .utilityBar[data-variant="group-header"] .socialIcon {
+        inline-size: 18px;
+        block-size: 18px;
+    }
+
+    .utilityBar[data-variant="logos-header"] .langText,
+    .utilityBar[data-variant="travel-header"] .langText,
+    .utilityBar[data-variant="sports-header"] .langText,
+    .utilityBar[data-variant="hotel-header"] .langText,
+    .utilityBar[data-variant="group-header"] .langText {
+        font-size: 0.88rem;
+    }
+
+    .utilityBar[data-variant="group-header"] .right {
+        padding-inline-end: 6px;
+    }
+
+    .langMenu {
+        inline-size: min(16rem, calc(100vw - 20px));
+        max-inline-size: calc(100vw - 20px);
+        inset-block-start: calc(100% + 0.4rem);
+        padding: 0.3rem;
+        border-radius: 14px;
+    }
+
+    .langItem {
+        padding: 0.58rem 0.68rem;
+        border-radius: 10px;
+    }
+
+    .langItemLabel {
+        font-size: 0.82rem;
+    }
+
+    .langItemName {
+        font-size: 0.88rem;
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 500px) {
 
+    .utilityBar[data-variant="logos-header"] .inner,
+    .utilityBar[data-variant="logos-header"] .inner.hasLeft,
+    .utilityBar[data-variant="travel-header"] .inner,
+    .utilityBar[data-variant="travel-header"] .inner.hasLeft,
+    .utilityBar[data-variant="sports-header"] .inner,
+    .utilityBar[data-variant="sports-header"] .inner.hasLeft,
     .utilityBar[data-variant="hotel-header"] .inner,
-    .utilityBar[data-variant="hotel-header"] .inner.hasLeft {
+    .utilityBar[data-variant="hotel-header"] .inner.hasLeft,
+    .utilityBar[data-variant="group-header"] .inner {
         grid-template-columns: 1fr;
-        row-gap: 0.55rem;
         min-height: auto;
-        padding-block: 0.55rem 0.35rem;
+        row-gap: 0.5rem;
+        padding-block: 0.5rem 0.3rem;
     }
 
+    .utilityBar[data-variant="logos-header"] .left,
+    .utilityBar[data-variant="logos-header"] .right,
+    .utilityBar[data-variant="travel-header"] .left,
+    .utilityBar[data-variant="travel-header"] .right,
+    .utilityBar[data-variant="sports-header"] .left,
+    .utilityBar[data-variant="sports-header"] .right,
     .utilityBar[data-variant="hotel-header"] .left,
     .utilityBar[data-variant="hotel-header"] .right {
         width: 100%;
     }
 
-    .utilityBar[data-variant="hotel-header"] .left {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .right {
-        justify-content: center;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .logoLink {
-        margin-inline-start: 0;
-        order: -1;
-        width: 100%;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .logoImage {
-        height: clamp(58px, 8vw, 74px);
-        max-width: 112px;
-        margin-inline: auto;
-    }
-}
-
-@media (max-width: 640px) {
-    .utilityBar[data-variant="hotel-header"] {
-        --line-inset: clamp(12px, 4vw, 18px);
-    }
-
-    .utilityBar[data-variant="hotel-header"] .inner,
-    .utilityBar[data-variant="hotel-header"] .inner.hasLeft {
-        row-gap: 0.5rem;
-        padding-block: 0.5rem 0.3rem;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .left {
-        gap: 0.45rem;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .logoImage {
-        height: clamp(54px, 12vw, 66px);
-        max-width: 100px;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .backLink,
-    .utilityBar[data-variant="hotel-header"] .homeLink {
-        min-height: 36px;
-        padding: 0.42rem 0.68rem;
-        font-size: 0.82rem;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .socialLink {
-        inline-size: 34px;
-        block-size: 34px;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .langBtn {
-        height: 34px;
-        padding-inline: 0.56rem;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .langText {
-        font-size: 0.82rem;
-        letter-spacing: 0.06em;
-    }
-}
-
-@media (max-width: 420px) {
+    .utilityBar[data-variant="logos-header"] .left,
+    .utilityBar[data-variant="travel-header"] .left,
+    .utilityBar[data-variant="sports-header"] .left,
     .utilityBar[data-variant="hotel-header"] .left {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
-        width: 100%;
         max-width: 320px;
         margin-inline: auto;
+        padding-inline-start: 0;
     }
 
+    .utilityBar[data-variant="logos-header"] .backLink,
+    .utilityBar[data-variant="logos-header"] .homeLink,
+    .utilityBar[data-variant="travel-header"] .backLink,
+    .utilityBar[data-variant="travel-header"] .homeLink,
+    .utilityBar[data-variant="sports-header"] .backLink,
+    .utilityBar[data-variant="sports-header"] .homeLink,
     .utilityBar[data-variant="hotel-header"] .backLink,
     .utilityBar[data-variant="hotel-header"] .homeLink {
         width: 100%;
-        min-height: 34px;
+        min-height: 36px;
         justify-content: center;
         padding: 0.42rem 0.7rem;
-        font-size: 0.8rem;
+        font-size: 0.82rem;
         gap: 0.42rem;
     }
 
-    .utilityBar[data-variant="hotel-header"] .logoLink {
-        display: inline-flex;
+    .utilityBar[data-variant="logos-header"] .right,
+    .utilityBar[data-variant="travel-header"] .right,
+    .utilityBar[data-variant="sports-header"] .right,
+    .utilityBar[data-variant="hotel-header"] .right,
+    .utilityBar[data-variant="group-header"] .right {
+        display: flex;
         align-items: center;
         justify-content: center;
-        width: auto;
-        margin: 0;
-        order: 3;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .logoImage {
-        display: block;
-        height: clamp(44px, 11vw, 56px);
-        max-width: 86px;
-        margin-inline: auto;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .backText,
-    .utilityBar[data-variant="hotel-header"] .homeText {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        max-inline-size: 100%;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .right {
         gap: 0.4rem;
+        padding-inline-end: 0;
+        width: 100%;
+    }
+
+    .utilityBar[data-variant="logos-header"] .socials,
+    .utilityBar[data-variant="travel-header"] .socials,
+    .utilityBar[data-variant="sports-header"] .socials,
+    .utilityBar[data-variant="hotel-header"] .socials,
+    .utilityBar[data-variant="group-header"] .socials {
+        gap: 0.22rem;
+    }
+
+    .utilityBar[data-variant="logos-header"] .socialLink,
+    .utilityBar[data-variant="travel-header"] .socialLink,
+    .utilityBar[data-variant="sports-header"] .socialLink,
+    .utilityBar[data-variant="hotel-header"] .socialLink,
+    .utilityBar[data-variant="group-header"] .socialLink,
+    .utilityBar[data-variant="logos-header"] .langBtn,
+    .utilityBar[data-variant="travel-header"] .langBtn,
+    .utilityBar[data-variant="sports-header"] .langBtn,
+    .utilityBar[data-variant="hotel-header"] .langBtn,
+    .utilityBar[data-variant="group-header"] .langBtn {
+        block-size: 34px;
+    }
+
+    .utilityBar[data-variant="logos-header"] .socialLink,
+    .utilityBar[data-variant="travel-header"] .socialLink,
+    .utilityBar[data-variant="sports-header"] .socialLink,
+    .utilityBar[data-variant="hotel-header"] .socialLink,
+    .utilityBar[data-variant="group-header"] .socialLink {
+        inline-size: 34px;
+    }
+
+    .utilityBar[data-variant="logos-header"] .socialIcon,
+    .utilityBar[data-variant="travel-header"] .socialIcon,
+    .utilityBar[data-variant="sports-header"] .socialIcon,
+    .utilityBar[data-variant="hotel-header"] .socialIcon,
+    .utilityBar[data-variant="group-header"] .socialIcon {
+        inline-size: 17px;
+        block-size: 17px;
+    }
+
+    .utilityBar[data-variant="logos-header"] .langBtn,
+    .utilityBar[data-variant="travel-header"] .langBtn,
+    .utilityBar[data-variant="sports-header"] .langBtn,
+    .utilityBar[data-variant="hotel-header"] .langBtn,
+    .utilityBar[data-variant="group-header"] .langBtn {
+        padding-inline: 0.56rem;
+    }
+
+    .utilityBar[data-variant="logos-header"] .langText,
+    .utilityBar[data-variant="travel-header"] .langText,
+    .utilityBar[data-variant="sports-header"] .langText,
+    .utilityBar[data-variant="hotel-header"] .langText,
+    .utilityBar[data-variant="group-header"] .langText {
+        letter-spacing: 0.06em;
+    }
+}
+
+@media (max-width: 480px) {
+    .langMenu {
+        inline-size: min(14.5rem, calc(100vw - 16px));
+        max-inline-size: calc(100vw - 16px);
+        inset-inline-end: 0;
+    }
+
+    .langItem {
+        padding: 0.54rem 0.62rem;
+    }
+
+    .langItemLabel {
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+    }
+
+    .langItemName {
+        font-size: 0.84rem;
+        line-height: 1.15;
     }
 }
 
@@ -1104,18 +903,39 @@
         max-inline-size: 50vw;
     }
 
+    .utilityBar[data-variant="logos-header"] .left,
+    .utilityBar[data-variant="logos-header"] .right,
     .utilityBar[data-variant="travel-header"] .left,
     .utilityBar[data-variant="travel-header"] .right,
     .utilityBar[data-variant="sports-header"] .left,
     .utilityBar[data-variant="sports-header"] .right,
-    .utilityBar[data-variant="group-header"] .left,
+    .utilityBar[data-variant="hotel-header"] .left,
+    .utilityBar[data-variant="hotel-header"] .right,
     .utilityBar[data-variant="group-header"] .right {
         padding-inline: 6px;
     }
 
+    .utilityBar[data-variant="logos-header"] .backLink,
+    .utilityBar[data-variant="logos-header"] .homeLink,
+    .utilityBar[data-variant="travel-header"] .backLink,
+    .utilityBar[data-variant="travel-header"] .homeLink,
+    .utilityBar[data-variant="sports-header"] .backLink,
+    .utilityBar[data-variant="sports-header"] .homeLink,
     .utilityBar[data-variant="hotel-header"] .backLink,
     .utilityBar[data-variant="hotel-header"] .homeLink {
         padding-inline: 0.68rem;
         font-size: 0.82rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .socialLink,
+    .langBtn,
+    .chevron,
+    .backLink,
+    .homeLink,
+    .langItem {
+        transition: none;
     }
 }

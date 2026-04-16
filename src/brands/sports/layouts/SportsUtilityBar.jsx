@@ -2,7 +2,11 @@ import UtilityBar from "../../../shared/components/UtilityBar";
 import sportsBrand from "../config/index.js";
 import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.js";
 
-export default function SportsUtilityBar({ backLink }) {
+export default function SportsUtilityBar({
+  backLink,
+  homeLink,
+  isHome = false,
+}) {
   const socials = sportsBrand?.header?.socials ?? [];
   const lang = sportsBrand?.header?.lang ?? LANG_DEFAULT;
 
@@ -10,9 +14,11 @@ export default function SportsUtilityBar({ backLink }) {
     <UtilityBar
       variant="sports-header"
       backLink={backLink}
+      homeLink={homeLink}
       socials={socials}
       lang={lang}
       ariaLabel="Utility bar — Sports"
+      data-page={isHome ? "sports-home" : "sports-inner"}
     />
   );
 }
