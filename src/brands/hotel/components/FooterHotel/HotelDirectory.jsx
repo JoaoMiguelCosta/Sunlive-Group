@@ -23,11 +23,73 @@ function scrollTopSmooth() {
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 }
 
-/**
- * Espera:
- * data.left.columns: [{ key, title, items:[{key,label,href,variant?}] }]
- * (para já não usamos partners no Hotel)
- */
+function isValidHref(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function renderChip({ item, currentPath, handleAnchorClick }) {
+  if (!item?.key || !item?.label) return null;
+
+  const href = String(item.href ?? "");
+  const variant = item.variant || "default";
+  const external = isExternalHref(href);
+  const hasHash = href.includes("#");
+  const hrefPath = normalizePath(href.split("#")[0]);
+  const isSamePage =
+    isValidHref(href) && !external && !hasHash && hrefPath === currentPath;
+
+  const content = (
+    <>
+      <span className={styles.chipLabel}>{item.label}</span>
+      <span className={styles.energyLine} aria-hidden="true" />
+    </>
+  );
+
+  if (external) {
+    return (
+      <a
+        key={item.key}
+        href={href}
+        className={styles.chip}
+        data-variant={variant}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  if (hasHash) {
+    return (
+      <a
+        key={item.key}
+        href={href}
+        className={styles.chip}
+        data-variant={variant}
+        onClick={(event) => handleAnchorClick(event, href)}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      key={item.key}
+      to={href}
+      className={styles.chip}
+      data-variant={variant}
+      onClick={(event) => {
+        if (isSamePage) {
+          event.preventDefault();
+          scrollTopSmooth();
+        }
+      }}
+    >
+      {content}
+    </Link>
+  );
+}
+
 export default function HotelDirectory({ data }) {
   if (!data) return null;
 
@@ -37,74 +99,43 @@ export default function HotelDirectory({ data }) {
 
   const currentPath = normalizePath(location.pathname);
 
+  const hasColumns = leftCols.some(
+    (column) =>
+      column?.title ||
+      (Array.isArray(column?.items) && column.items.length > 0),
+  );
+
+  if (!hasColumns) return null;
+
   return (
-    <section
-      className={styles.wrap}
+    <div
+      className={styles.directory}
       aria-label="Links Rápidos — Estalagem de Sangalhos"
     >
-      {leftCols.map((col) => (
-        <div key={col.key} className={styles.block}>
-          {col.title ? (
-            <h3 className={styles.blockTitle}>{col.title}</h3>
-          ) : null}
+      {leftCols.map((col) => {
+        const items = Array.isArray(col?.items) ? col.items : [];
+        if (!col?.title && items.length === 0) return null;
 
-          <div className={styles.chipsGrid}>
-            {(col.items ?? []).map((item) => {
-              const href = String(item.href ?? "");
-              const hasHash = href.includes("#");
-              const external = isExternalHref(href);
+        return (
+          <div key={col.key || col.title} className={styles.block}>
+            {col.title ? (
+              <h3 className={styles.blockTitle}>{col.title}</h3>
+            ) : null}
 
-              const hrefPath = normalizePath(href.split("#")[0]);
-              const isSamePage =
-                !external && !hasHash && hrefPath === currentPath;
-
-              if (external) {
-                return (
-                  <a
-                    key={item.key}
-                    href={href}
-                    className={styles.chip}
-                    data-variant={item.variant || "default"}
-                  >
-                    {item.label}
-                  </a>
-                );
-              }
-
-              if (hasHash) {
-                return (
-                  <a
-                    key={item.key}
-                    href={href}
-                    className={styles.chip}
-                    data-variant={item.variant || "default"}
-                    onClick={(e) => handleAnchorClick(e, href)}
-                  >
-                    {item.label}
-                  </a>
-                );
-              }
-
-              return (
-                <Link
-                  key={item.key}
-                  to={href}
-                  className={styles.chip}
-                  data-variant={item.variant || "default"}
-                  onClick={(e) => {
-                    if (isSamePage) {
-                      e.preventDefault();
-                      scrollTopSmooth();
-                    }
-                  }}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+            {items.length > 0 ? (
+              <div className={styles.chipsGrid}>
+                {items.map((item) =>
+                  renderChip({
+                    item,
+                    currentPath,
+                    handleAnchorClick,
+                  }),
+                )}
+              </div>
+            ) : null}
           </div>
-        </div>
-      ))}
-    </section>
+        );
+      })}
+    </div>
   );
 }

@@ -17,7 +17,7 @@ const header = {
 
   homeLink: {
     href: TRAVEL_PAGE_PATHS.home,
-    label: "Início Travel",
+    label: "Início Sunlive Travel",
   },
 
   logo: {

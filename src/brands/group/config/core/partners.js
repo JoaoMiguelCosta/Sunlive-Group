@@ -1,6 +1,6 @@
 import { GROUP_LOGOS_PATH } from "./paths.js";
 
-export const PARTNERS_TITLE = "A Nossa Rede de Parceiros";
+export const PARTNERS_TITLE = "Parceiros";
 
 export const PARTNER_LINKS = Object.freeze([
   {

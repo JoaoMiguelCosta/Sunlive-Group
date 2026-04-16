@@ -28,7 +28,7 @@ export default function SportsShell() {
     : {
         homeLink: {
           href: SPORTS_BASE_PATH,
-          label: "Início Sports",
+          label: "Início Sunlive Sports",
         },
       };
 

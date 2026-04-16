@@ -49,7 +49,7 @@ export function makeGroupFooter({ contacts = GROUP_CONTACTS } = {}) {
       },
 
       left: {
-        title: "Contactos do Sunlive Group",
+        title: "Contactos",
         columns: [
           {
             key: "units",

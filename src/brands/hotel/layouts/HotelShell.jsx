@@ -37,7 +37,7 @@ export default function HotelShell() {
     : {
         homeLink: {
           href: HOTEL_BASE_PATH,
-          label: "Início Hotel",
+          label: "Início Estalagem",
         },
       };
 
