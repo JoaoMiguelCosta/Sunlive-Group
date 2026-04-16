@@ -1,4 +1,4 @@
-import styles from "./Disciplines.module.css";
+import styles from "../../layouts/SportsPageLayout.module.css";
 
 import sportsBrand from "../../config/index.js";
 
@@ -18,10 +18,6 @@ import FootballProjectsSection from "./sections/FootballProjectsSection.jsx";
 import KarateProjectsSection from "./sections/KarateProjectsSection.jsx";
 import BasketballProjectsSection from "./sections/BasketballProjectsSection.jsx";
 
-/**
- * Página Modalidades — Sunlive Sports
- * Mesmo layout base das outras páginas Sports.
- */
 export default function DisciplinesPage() {
   const data = sportsBrand.sections?.disciplines;
   if (!data) return null;
@@ -30,137 +26,146 @@ export default function DisciplinesPage() {
 
   return (
     <div className={styles.pageWrap} data-brand="sports">
-      <main className={styles.inner} aria-label="Sunlive Sports — Modalidades">
-        <header className={styles.heroSection}>
-          <HeadlineBlock
-            theme="sports"
-            variant="banded"
-            align="center"
-            max="lg"
-            title={data.hero?.title}
-            lead={data.hero?.description}
-          />
-        </header>
+      <main
+        id="sports-disciplines"
+        className={styles.inner}
+        role="region"
+        aria-label="Sunlive Sports — Modalidades"
+      >
+        <div className={styles.contentFlow}>
+          <header className={styles.heroSection}>
+            <HeadlineBlock
+              theme="sports"
+              variant="banded"
+              align="center"
+              max="lg"
+              title={data.hero?.title}
+              lead={data.hero?.description}
+            />
+          </header>
 
-        <div className={styles.sections}>
-          <OverviewSection data={data} />
+          <div className={styles.sections}>
+            <OverviewSection data={data} />
 
-          {data.cyclingIntro && (
-            <>
-              <section
-                className={styles.heroSection}
-                aria-label={data.cyclingIntro.title}
-              >
-                <HeadlineBlock
-                  theme="sports"
-                  variant="banded"
-                  align="center"
-                  max="lg"
-                  title={data.cyclingIntro.title}
-                  lead={data.cyclingIntro.lead}
+            {data.cyclingIntro ? (
+              <>
+                <section
+                  className={styles.heroSection}
+                  aria-label={data.cyclingIntro.title}
+                >
+                  <HeadlineBlock
+                    theme="sports"
+                    variant="banded"
+                    align="center"
+                    max="lg"
+                    title={data.cyclingIntro.title}
+                    lead={data.cyclingIntro.lead}
+                  />
+                </section>
+
+                <CyclingHighlightSection data={data.cyclingHighlight} />
+                <CyclingDisciplinesSection data={data.cyclingDisciplines} />
+                <CyclingProjectsSection data={data.cyclingProjects} />
+              </>
+            ) : null}
+
+            {data.gymnasticsIntro ? (
+              <>
+                <section
+                  className={styles.heroSection}
+                  aria-label={data.gymnasticsIntro.title}
+                >
+                  <HeadlineBlock
+                    theme="sports"
+                    variant="banded"
+                    align="center"
+                    max="lg"
+                    title={data.gymnasticsIntro.title}
+                    lead={data.gymnasticsIntro.lead}
+                  />
+                </section>
+
+                <GymnasticsDisciplinesSection
+                  data={data.gymnasticsDisciplines}
                 />
-              </section>
-
-              <CyclingHighlightSection data={data.cyclingHighlight} />
-              <CyclingDisciplinesSection data={data.cyclingDisciplines} />
-              <CyclingProjectsSection data={data.cyclingProjects} />
-            </>
-          )}
-
-          {data.gymnasticsIntro && (
-            <>
-              <section
-                className={styles.heroSection}
-                aria-label={data.gymnasticsIntro.title}
-              >
-                <HeadlineBlock
-                  theme="sports"
-                  variant="banded"
-                  align="center"
-                  max="lg"
-                  title={data.gymnasticsIntro.title}
-                  lead={data.gymnasticsIntro.lead}
+                <GymnasticsProjectsSection
+                  cardsData={academiesData}
+                  sectionData={data.gymnasticsIntro}
                 />
-              </section>
+              </>
+            ) : null}
 
-              <GymnasticsDisciplinesSection data={data.gymnasticsDisciplines} />
-              <GymnasticsProjectsSection
-                cardsData={academiesData}
-                sectionData={data.gymnasticsIntro}
-              />
-            </>
-          )}
+            {data.footballIntro ? (
+              <>
+                <section
+                  className={styles.heroSection}
+                  aria-label={data.footballIntro.title}
+                >
+                  <HeadlineBlock
+                    theme="sports"
+                    variant="banded"
+                    align="center"
+                    max="lg"
+                    title={data.footballIntro.title}
+                    lead={data.footballIntro.lead}
+                  />
+                </section>
 
-          {data.footballIntro && (
-            <>
-              <section
-                className={styles.heroSection}
-                aria-label={data.footballIntro.title}
-              >
-                <HeadlineBlock
-                  theme="sports"
-                  variant="banded"
-                  align="center"
-                  max="lg"
-                  title={data.footballIntro.title}
-                  lead={data.footballIntro.lead}
+                <FootballProjectsSection
+                  cardsData={academiesData}
+                  sectionData={data.footballIntro}
                 />
-              </section>
+              </>
+            ) : null}
 
-              <FootballProjectsSection
-                cardsData={academiesData}
-                sectionData={data.footballIntro}
-              />
-            </>
-          )}
+            {data.karateIntro ? (
+              <>
+                <section
+                  className={styles.heroSection}
+                  aria-label={data.karateIntro.title}
+                >
+                  <HeadlineBlock
+                    theme="sports"
+                    variant="banded"
+                    align="center"
+                    max="lg"
+                    title={data.karateIntro.title}
+                    lead={data.karateIntro.lead}
+                  />
+                </section>
 
-          {data.karateIntro && (
-            <>
-              <section
-                className={styles.heroSection}
-                aria-label={data.karateIntro.title}
-              >
-                <HeadlineBlock
-                  theme="sports"
-                  variant="banded"
-                  align="center"
-                  max="lg"
-                  title={data.karateIntro.title}
-                  lead={data.karateIntro.lead}
+                <KarateProjectsSection
+                  cardsData={academiesData}
+                  sectionData={data.karateIntro}
                 />
-              </section>
+              </>
+            ) : null}
 
-              <KarateProjectsSection
-                cardsData={academiesData}
-                sectionData={data.karateIntro}
-              />
-            </>
-          )}
+            {data.basketballIntro ? (
+              <>
+                <section
+                  className={styles.heroSection}
+                  aria-label={data.basketballIntro.title}
+                >
+                  <HeadlineBlock
+                    theme="sports"
+                    variant="banded"
+                    align="center"
+                    max="lg"
+                    title={data.basketballIntro.title}
+                    lead={data.basketballIntro.lead}
+                  />
+                </section>
 
-          {data.basketballIntro && (
-            <>
-              <section
-                className={styles.heroSection}
-                aria-label={data.basketballIntro.title}
-              >
-                <HeadlineBlock
-                  theme="sports"
-                  variant="banded"
-                  align="center"
-                  max="lg"
-                  title={data.basketballIntro.title}
-                  lead={data.basketballIntro.lead}
+                <BasketballProjectsSection
+                  cardsData={academiesData}
+                  sectionData={data.basketballIntro}
                 />
-              </section>
+              </>
+            ) : null}
 
-              <BasketballProjectsSection
-                cardsData={academiesData}
-                sectionData={data.basketballIntro}
-              />
-            </>
-          )}
-
-          <DisciplinesClosingPanel data={data} />
+            <DisciplinesClosingPanel data={data} />
+          </div>
         </div>
       </main>
     </div>

@@ -1,5 +1,4 @@
-// src/brands/sports/pages/Consultancy/index.jsx
-import styles from "./Consultancy.module.css";
+import styles from "../../layouts/SportsPageLayout.module.css";
 
 import sportsBrand from "../../config/index.js";
 
@@ -10,12 +9,7 @@ import ConsultancyAreasSection from "./sections/ConsultancyAreasSection.jsx";
 import ConsultancyClosingPanel from "./sections/ConsultancyClosingPanel.jsx";
 import useScrollToHash from "../../../../shared/hooks/useScrollToHash.js";
 
-/**
- * Página Consultoria — Sunlive Sports
- * Usa o mesmo layout base das restantes páginas Sports.
- */
 export default function ConsultancyPage() {
-  // Scroll suave para âncoras, compensando o header fixo (~96px)
   useScrollToHash(96);
 
   const data = sportsBrand.sections?.consultancy;
@@ -23,49 +17,48 @@ export default function ConsultancyPage() {
 
   return (
     <div className={styles.pageWrap} data-brand="sports">
-      <main className={styles.inner} aria-label="Sunlive Sports — Consultoria">
-        {/* Hero / faixa inicial */}
-        <header className={styles.heroSection}>
-          <HeadlineBlock
-            theme="sports"
-            variant="banded"
-            align="center"
-            max="lg"
-            title={data.hero?.title}
-            lead={data.hero?.description}
-          />
-        </header>
+      <main
+        id="sports-consultancy"
+        className={styles.inner}
+        role="region"
+        aria-label="Sunlive Sports — Consultoria"
+      >
+        <div className={styles.contentFlow}>
+          <header className={styles.heroSection}>
+            <HeadlineBlock
+              theme="sports"
+              variant="banded"
+              align="center"
+              max="lg"
+              title={data.hero?.title}
+              lead={data.hero?.description}
+            />
+          </header>
 
-        {/* Conteúdo principal */}
-        <div className={styles.sections}>
-          {/* 1) Bloco texto + imagem */}
-          <OverviewSection data={data} />
+          <div className={styles.sections}>
+            <OverviewSection data={data} />
 
-          {/* 1.x) Entidades com quem colaboramos */}
-          {data.entities && <ConsultancyEntitiesSection data={data} />}
+            {data.entities ? <ConsultancyEntitiesSection data={data} /> : null}
 
-          {/* 2) Headline intermédio — Áreas de Consultoria */}
-          {data.areasIntro && (
-            <section
-              className={styles.heroSection}
-              aria-label={data.areasIntro?.title}
-            >
-              <HeadlineBlock
-                theme="sports"
-                variant="banded"
-                align="center"
-                max="lg"
-                title={data.areasIntro?.title}
-                lead={data.areasIntro?.lead}
-              />
-            </section>
-          )}
+            {data.areasIntro ? (
+              <section
+                className={styles.heroSection}
+                aria-label={data.areasIntro?.title}
+              >
+                <HeadlineBlock
+                  theme="sports"
+                  variant="banded"
+                  align="center"
+                  max="lg"
+                  title={data.areasIntro?.title}
+                  lead={data.areasIntro?.lead}
+                />
+              </section>
+            ) : null}
 
-          {/* 3) Áreas de Consultoria (acordeão) */}
-          <ConsultancyAreasSection data={data} />
-
-          {/* 4) Painel de fecho */}
-          <ConsultancyClosingPanel data={data} />
+            <ConsultancyAreasSection data={data} />
+            <ConsultancyClosingPanel data={data} />
+          </div>
         </div>
       </main>
     </div>

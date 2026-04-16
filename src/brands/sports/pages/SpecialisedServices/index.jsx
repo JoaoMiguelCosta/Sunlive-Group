@@ -1,5 +1,4 @@
-// src/brands/sports/pages/SpecialisedServices/index.jsx
-import styles from "./SpecialisedServices.module.css";
+import styles from "../../layouts/SportsPageLayout.module.css";
 
 import sportsBrand from "../../config/index.js";
 
@@ -8,9 +7,6 @@ import OverviewSection from "./sections/OverviewSection.jsx";
 import AreasSection from "./sections/AreasSection.jsx";
 import SpecialisedServicesClosingPanel from "./sections/SpecialisedServicesClosingPanel.jsx";
 
-/**
- * Página Serviços Especializados — Sunlive Sports
- */
 export default function SpecialisedServicesPage() {
   const data = sportsBrand.sections?.specialisedServices;
   if (!data) return null;
@@ -18,41 +14,45 @@ export default function SpecialisedServicesPage() {
   return (
     <div className={styles.pageWrap} data-brand="sports">
       <main
+        id="sports-specialised-services"
         className={styles.inner}
+        role="region"
         aria-label="Sunlive Sports — Serviços Especializados"
       >
-        <header className={styles.heroSection}>
-          <HeadlineBlock
-            theme="sports"
-            variant="banded"
-            align="center"
-            max="lg"
-            title={data.hero?.title}
-            lead={data.hero?.description}
-          />
-        </header>
+        <div className={styles.contentFlow}>
+          <header className={styles.heroSection}>
+            <HeadlineBlock
+              theme="sports"
+              variant="banded"
+              align="center"
+              max="lg"
+              title={data.hero?.title}
+              lead={data.hero?.description}
+            />
+          </header>
 
-        <div className={styles.sections}>
-          <OverviewSection data={data} />
+          <div className={styles.sections}>
+            <OverviewSection data={data} />
 
-          {data.areasIntro && (
-            <section
-              className={styles.heroSection}
-              aria-label={data.areasIntro?.title || "Áreas de Especialização"}
-            >
-              <HeadlineBlock
-                theme="sports"
-                variant="banded"
-                align="center"
-                max="lg"
-                title={data.areasIntro?.title}
-                lead={data.areasIntro?.lead}
-              />
-            </section>
-          )}
+            {data.areasIntro ? (
+              <section
+                className={styles.heroSection}
+                aria-label={data.areasIntro?.title || "Áreas de Especialização"}
+              >
+                <HeadlineBlock
+                  theme="sports"
+                  variant="banded"
+                  align="center"
+                  max="lg"
+                  title={data.areasIntro?.title}
+                  lead={data.areasIntro?.lead}
+                />
+              </section>
+            ) : null}
 
-          <AreasSection data={data} />
-          <SpecialisedServicesClosingPanel data={data} />
+            <AreasSection data={data} />
+            <SpecialisedServicesClosingPanel data={data} />
+          </div>
         </div>
       </main>
     </div>

@@ -1,5 +1,4 @@
-// src/brands/sports/pages/Athletes/index.jsx
-import styles from "./Athletes.module.css";
+import styles from "../../layouts/SportsPageLayout.module.css";
 import sportsBrand from "../../config/index.js";
 
 import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
@@ -7,10 +6,6 @@ import OverviewSection from "./sections/OverviewSection.jsx";
 import ProfilesSection from "./sections/ProfilesSection.jsx";
 import AthletesClosingPanel from "./sections/AthletesClosingPanel.jsx";
 
-/**
- * Página Atletas Sunlive — Sunlive Sports
- * Layout alinhado ao sistema Prestige Noir + Liquid Gold + Sports verde-vital.
- */
 export default function AthletesPage() {
   const data = sportsBrand.sections?.athletes;
   if (!data) return null;
@@ -18,48 +13,45 @@ export default function AthletesPage() {
   return (
     <div className={styles.pageWrap} data-brand="sports">
       <main
+        id="sports-athletes"
         className={styles.inner}
+        role="region"
         aria-label="Sunlive Sports — Atletas Sunlive"
       >
-        {/* Hero / faixa inicial */}
-        <header className={styles.heroSection}>
-          <HeadlineBlock
-            theme="sports"
-            variant="banded"
-            align="center"
-            max="lg"
-            title={data.hero?.title}
-            lead={data.hero?.description}
-          />
-        </header>
+        <div className={styles.contentFlow}>
+          <header className={styles.heroSection}>
+            <HeadlineBlock
+              theme="sports"
+              variant="banded"
+              align="center"
+              max="lg"
+              title={data.hero?.title}
+              lead={data.hero?.description}
+            />
+          </header>
 
-        {/* Conteúdo principal */}
-        <div className={styles.sections}>
-          {/* 1) Bloco de valores / texto longo + pilares Sonhar/Ousar/Realizar */}
-          <OverviewSection data={data} />
+          <div className={styles.sections}>
+            <OverviewSection data={data} />
 
-          {/* 2) Headline intermédio — Conhece os Nossos Atletas */}
-          {data.profilesIntro && (
-            <section
-              className={styles.heroSection}
-              aria-label="Conhece os Nossos Atletas"
-            >
-              <HeadlineBlock
-                theme="sports"
-                variant="banded"
-                align="center"
-                max="lg"
-                title={data.profilesIntro?.title}
-                lead={data.profilesIntro?.lead}
-              />
-            </section>
-          )}
+            {data.profilesIntro ? (
+              <section
+                className={styles.heroSection}
+                aria-label="Conhece os Nossos Atletas"
+              >
+                <HeadlineBlock
+                  theme="sports"
+                  variant="banded"
+                  align="center"
+                  max="lg"
+                  title={data.profilesIntro?.title}
+                  lead={data.profilesIntro?.lead}
+                />
+              </section>
+            ) : null}
 
-          {/* 3) Grid de perfis de atletas */}
-          <ProfilesSection data={data} />
-
-          {/* 4) Painel de fecho */}
-          <AthletesClosingPanel data={data} />
+            <ProfilesSection data={data} />
+            <AthletesClosingPanel data={data} />
+          </div>
         </div>
       </main>
     </div>
