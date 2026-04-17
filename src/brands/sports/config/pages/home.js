@@ -1,9 +1,9 @@
-import { SPORTS_GATEWAY } from "../core/gateway.js";
+import { home as homeSections } from "../sections/index.js";
 
 const home = {
   id: "home",
   sections: {
-    gateway: SPORTS_GATEWAY,
+    menu: homeSections.menu,
   },
 };
 

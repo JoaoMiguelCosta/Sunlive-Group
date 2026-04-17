@@ -106,7 +106,7 @@
 
 .title {
     margin: 0;
-    max-inline-size: 16ch;
+
     font-size: clamp(1.55rem, 1.1rem + 1vw, 2.3rem);
     font-weight: 700;
     line-height: 1.08;

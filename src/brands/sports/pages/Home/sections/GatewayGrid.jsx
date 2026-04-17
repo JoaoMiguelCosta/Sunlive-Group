@@ -1,74 +1,54 @@
-import { Link } from "react-router-dom";
 import styles from "./GatewayGrid.module.css";
 
-import sportsBrand from "../../../config/index.js";
+import HomeGatewayCard from "../../../shared/ui/HomeGatewayCard/HomeGatewayCard.jsx";
 
-function resolveLinkType(href) {
-  if (typeof href !== "string" || !href) return "fallback";
-  if (/^https?:\/\//i.test(href)) return "external";
-  if (href.startsWith("#")) return "hash";
-  return "internal";
-}
+export default function GatewayGrid({ data }) {
+  const sectionId = data?.id || "sports-home-menu";
+  const ariaLabel = data?.ariaLabel || "Entradas principais Sunlive Sports";
+  const items = Array.isArray(data?.items) ? data.items : [];
+  const backgroundImage = data?.backgroundImage;
 
-export default function GatewayGrid() {
-  const items = sportsBrand?.pages?.home?.sections?.gateway ?? [];
+  if (!items.length) return null;
 
-  if (!Array.isArray(items) || items.length === 0) return null;
+  const surfaceStyle = backgroundImage?.src
+    ? {
+        "--gateway-bg-image": `url(${backgroundImage.src})`,
+      }
+    : undefined;
 
   return (
-    <section
-      className={styles.section}
-      aria-label="Entradas principais Sunlive Sports"
-    >
-      <div className={styles.surface}>
+    <section id={sectionId} className={styles.section} aria-label={ariaLabel}>
+      <div className={styles.surface} style={surfaceStyle}>
+        {backgroundImage?.src ? (
+          <span
+            className={styles.backgroundImage}
+            role="img"
+            aria-label={backgroundImage.alt || ""}
+            aria-hidden={backgroundImage.alt ? undefined : "true"}
+          />
+        ) : null}
+
         <div className={styles.grid}>
           {items.map((item, index) => {
-            const href = item?.href ?? "#";
-            const linkType = resolveLinkType(href);
-            const label = item?.label ?? `Entrada ${index + 1}`;
+            const isCta = item?.variant === "cta";
 
-            const itemClassName = [
-              styles.item,
-              item?.variant === "cta" ? styles.cta : "",
+            const gridItemClassName = [
+              styles.gridItem,
+              isCta ? styles.gridItemCta : "",
             ]
               .filter(Boolean)
               .join(" ");
 
-            const content = (
-              <>
-                <span className={styles.label}>{label}</span>
-                <span className={styles.energyLine} aria-hidden="true" />
-              </>
-            );
-
             return (
               <div
-                key={item?.key || `${label}-${index}`}
-                className={itemClassName}
+                key={item?.key || `sports-home-menu-${index + 1}`}
+                className={gridItemClassName}
               >
-                {linkType === "external" ? (
-                  <a
-                    href={href}
-                    className={styles.click}
-                    aria-label={label}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {content}
-                  </a>
-                ) : linkType === "hash" ? (
-                  <a href={href} className={styles.click} aria-label={label}>
-                    {content}
-                  </a>
-                ) : linkType === "internal" ? (
-                  <Link to={href} className={styles.click} aria-label={label}>
-                    {content}
-                  </Link>
-                ) : (
-                  <span className={styles.click} aria-label={label}>
-                    {content}
-                  </span>
-                )}
+                <HomeGatewayCard
+                  item={item}
+                  index={index}
+                  softenVisual={index === 4}
+                />
               </div>
             );
           })}

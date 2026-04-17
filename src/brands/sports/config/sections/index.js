@@ -5,6 +5,7 @@ export * as contacts from "./contacts/index.js";
 export * as disciplines from "./disciplines/index.js";
 export * as education from "./education/index.js";
 export * as events from "./events/index.js";
+export * as home from "./home/index.js";
 export * as infrastructures from "./infrastructures/index.js";
 export * as leisureSportsTourism from "./leisureSportsTourism/index.js";
 export * as logistics from "./logistics/index.js";

@@ -1,7 +1,10 @@
-import styles from "../../layouts/SportsPageLayout.module.css"
+import styles from "../../layouts/SportsPageLayout.module.css";
 import GatewayGrid from "./sections/GatewayGrid.jsx";
+import sportsBrand from "../../config/index.js";
 
 export default function HomePageSports() {
+  const menuSection = sportsBrand.pages?.home?.sections?.menu;
+
   return (
     <div className={styles.pageWrap} data-brand="sports">
       <main
@@ -11,7 +14,7 @@ export default function HomePageSports() {
         aria-label="Sunlive Sports — Página Inicial"
       >
         <div className={styles.contentFlow}>
-          <GatewayGrid />
+          <GatewayGrid data={menuSection} />
         </div>
       </main>
     </div>
