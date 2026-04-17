@@ -2,7 +2,7 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 
 import sportsBrand from "../../config/index.js";
 
-import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
+import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";
 import LogisticsServicesSection from "./sections/LogisticsServicesSection.jsx";
 import LogisticsClosingPanel from "./sections/LogisticsClosingPanel.jsx";

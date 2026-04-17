@@ -1,7 +1,7 @@
 import styles from "../../layouts/SportsPageLayout.module.css";
 
 import sportsBrand from "../../config/index.js";
-import HeadlineBlock from "../../../../shared/components/HeadlineBlock/index.jsx";
+import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
 import ContactsJourneySection from "./sections/ContactsJourneySection.jsx";
 import ContactCardsSection from "./sections/ContactCardsSection.jsx";
 
