@@ -5,9 +5,6 @@ import sportsBrand from "../../config/index.js";
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
 
-import OverviewSection from "./sections/OverviewSection.jsx";
-
-
 import CyclingHighlightSection from "./sections/CyclingHighlightSection.jsx";
 import CyclingDisciplinesSection from "./sections/CyclingDisciplinesSection.jsx";
 import CyclingProjectsSection from "./sections/CyclingProjectsSection.jsx";
@@ -49,7 +46,7 @@ export default function DisciplinesPage() {
           </header>
 
           <div className={styles.sections}>
-            <OverviewSection data={data} />
+           
 
             {data.cyclingIntro ? (
               <>

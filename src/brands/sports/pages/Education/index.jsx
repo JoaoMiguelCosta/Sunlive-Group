@@ -5,7 +5,7 @@ import sportsBrand from "../../config/index.js";
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
 
-import OverviewSection from "./sections/OverviewSection.jsx";
+
 import EducationLevelsSection from "./sections/EducationLevelsSection.jsx";
 import EducationBilingualSection from "./sections/EducationBilingualSection.jsx";
 import EducationBilingualCertification from "./sections/EducationBilingualCertification.jsx";
@@ -40,7 +40,7 @@ export default function EducationPage() {
           </header>
 
           <div className={styles.sections}>
-            <OverviewSection data={data} />
+          
 
             {data.levelsIntro ? (
               <>

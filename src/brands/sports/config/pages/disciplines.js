@@ -1,7 +1,7 @@
 import {
   hero,
-  overview,
-  pillars,
+
+  
 
   cyclingIntro,
   cyclingHighlight,
@@ -17,8 +17,8 @@ import {
 const disciplines = {
   id: "sports-disciplines",
   hero,
-  overview,
-  pillars,
+
+
 
   cyclingIntro,
   cyclingHighlight,

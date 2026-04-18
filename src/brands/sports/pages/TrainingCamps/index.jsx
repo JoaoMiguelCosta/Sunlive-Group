@@ -3,7 +3,7 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
-import OverviewSection from "./sections/OverviewSection.jsx";
+
 import ProgramsSection from "./sections/ProgramsSection.jsx";
 
 
@@ -35,7 +35,7 @@ export default function TrainingCampsPage() {
           </header>
 
           <div className={styles.sections}>
-            <OverviewSection data={data} />
+           
             <ProgramsSection data={data} />
            
           </div>

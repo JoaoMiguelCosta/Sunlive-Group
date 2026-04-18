@@ -2,7 +2,7 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
-import OverviewSection from "./sections/OverviewSection.jsx";
+
 
 
 export default function EventsPage() {
@@ -33,7 +33,7 @@ export default function EventsPage() {
           </header>
 
           <div className={styles.sections}>
-            <OverviewSection data={data} />
+          
            
           </div>
         </div>

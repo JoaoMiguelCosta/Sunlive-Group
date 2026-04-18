@@ -1,7 +1,7 @@
 import {
   hero,
-  overview,
-  pillars,
+
+
   profilesIntro,
   profiles,
 
@@ -11,8 +11,8 @@ const athletes = {
   id: "sunlive-athletes",
   sections: {
     hero,
-    overview,
-    pillars,
+  
+
     profilesIntro,
     profiles,
    

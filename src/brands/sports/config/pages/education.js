@@ -1,6 +1,6 @@
 import {
   hero,
-  overview,
+ 
   levelsIntro,
   levels,
   bilingualIntro,
@@ -8,7 +8,7 @@ import {
   bilingualCertification,
   careersIntro,
   careers,
-  pillars,
+  
 
 } from "../sections/education/index.js";
 
@@ -16,7 +16,7 @@ const education = {
   id: "education",
   sections: {
     hero,
-    overview,
+   
     levelsIntro,
     levels,
     bilingualIntro,
@@ -24,7 +24,7 @@ const education = {
     bilingualCertification,
     careersIntro,
     careers,
-    pillars,
+    
    
   },
 };

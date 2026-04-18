@@ -4,7 +4,7 @@ import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
-import OverviewSection from "./sections/OverviewSection.jsx";
+
 import AreasSection from "./sections/AreasSection.jsx";
 
 
@@ -36,7 +36,7 @@ export default function SpecialisedServicesPage() {
           </header>
 
           <div className={styles.sections}>
-            <OverviewSection data={data} />
+       
 
             {data.areasIntro ? (
               <section

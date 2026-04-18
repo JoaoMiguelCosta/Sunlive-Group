@@ -3,7 +3,7 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
-import OverviewSection from "./sections/OverviewSection.jsx";
+
 import FacilitiesSection from "./sections/FacilitiesSection.jsx";
 
 
@@ -35,7 +35,7 @@ export default function InfrastructuresPage() {
           </header>
 
           <div className={styles.sections}>
-            <OverviewSection data={data} />
+           
             <FacilitiesSection data={data} />
           
           </div>
