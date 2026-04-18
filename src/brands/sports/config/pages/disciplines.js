@@ -2,7 +2,7 @@ import {
   hero,
   overview,
   pillars,
-  closingPanel,
+
   cyclingIntro,
   cyclingHighlight,
   cyclingDisciplines,
@@ -19,7 +19,7 @@ const disciplines = {
   hero,
   overview,
   pillars,
-  closingPanel,
+
   cyclingIntro,
   cyclingHighlight,
   cyclingDisciplines,

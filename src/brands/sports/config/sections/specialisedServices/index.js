@@ -3,4 +3,3 @@ export { default as overview } from "./overview.js";
 export { default as areasIntro } from "./areasIntro.js";
 export { default as pillars } from "./pillars.js";
 export { default as serviceCards } from "./serviceCards.js";
-export { default as closingPanel } from "./closingPanel.js";

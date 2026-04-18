@@ -6,7 +6,7 @@ import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
 
 import OverviewSection from "./sections/OverviewSection.jsx";
-import DisciplinesClosingPanel from "./sections/DisciplinesClosingPanel.jsx";
+
 
 import CyclingHighlightSection from "./sections/CyclingHighlightSection.jsx";
 import CyclingDisciplinesSection from "./sections/CyclingDisciplinesSection.jsx";
@@ -168,7 +168,7 @@ export default function DisciplinesPage() {
               </>
             ) : null}
 
-            <DisciplinesClosingPanel data={data} />
+           
           </div>
         </div>
       </main>

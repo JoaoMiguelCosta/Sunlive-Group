@@ -2,7 +2,7 @@ import {
   hero,
   overview,
   pillars,
-  closingPanel,
+ 
 } from "../sections/events/index.js";
 
 const events = {
@@ -11,7 +11,7 @@ const events = {
     hero,
     overview,
     pillars,
-    closingPanel,
+   
   },
 };
 

@@ -4,7 +4,7 @@ import {
   areasIntro,
   pillars,
   serviceCards,
-  closingPanel,
+  
 } from "../sections/specialisedServices/index.js";
 
 const specialisedServices = {
@@ -15,7 +15,7 @@ const specialisedServices = {
     areasIntro,
     pillars,
     serviceCards,
-    closingPanel,
+   
   },
 };
 

@@ -5,7 +5,7 @@ import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";
 import ProfilesSection from "./sections/ProfilesSection.jsx";
-import AthletesClosingPanel from "./sections/AthletesClosingPanel.jsx";
+
 
 export default function AthletesPage() {
   const data = sportsBrand.sections?.athletes;
@@ -54,7 +54,7 @@ export default function AthletesPage() {
             ) : null}
 
             <ProfilesSection data={data} />
-            <AthletesClosingPanel data={data} />
+            
           </div>
         </div>
       </main>

@@ -6,7 +6,7 @@ import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";
 import AreasSection from "./sections/AreasSection.jsx";
-import SpecialisedServicesClosingPanel from "./sections/SpecialisedServicesClosingPanel.jsx";
+
 
 export default function SpecialisedServicesPage() {
   const data = sportsBrand.sections?.specialisedServices;
@@ -55,7 +55,7 @@ export default function SpecialisedServicesPage() {
             ) : null}
 
             <AreasSection data={data} />
-            <SpecialisedServicesClosingPanel data={data} />
+    
           </div>
         </div>
       </main>

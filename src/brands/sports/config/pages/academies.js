@@ -3,7 +3,7 @@ import {
   overview,
   pillars,
   cards,
-  closingPanel,
+  
 } from "../sections/academies/index.js";
 
 const academies = {
@@ -13,7 +13,7 @@ const academies = {
     overview,
     pillars,
     cards,
-    closingPanel,
+    
   },
 };
 

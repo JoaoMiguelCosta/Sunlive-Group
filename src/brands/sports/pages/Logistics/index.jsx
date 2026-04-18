@@ -2,10 +2,11 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 
 import sportsBrand from "../../config/index.js";
 
+import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";
 import LogisticsServicesSection from "./sections/LogisticsServicesSection.jsx";
-import LogisticsClosingPanel from "./sections/LogisticsClosingPanel.jsx";
+
 
 export default function LogisticsPage() {
   const data = sportsBrand.sections?.logistics;
@@ -21,13 +22,16 @@ export default function LogisticsPage() {
       >
         <div className={styles.contentFlow}>
           <header className={styles.heroSection}>
-            <HeadlineBlock
-              theme="sports"
-              variant="banded"
-              align="center"
-              max="lg"
+            <SportsHeroIntro
+              id="logistics-hero"
+              eyebrow={data.hero?.eyebrow}
+              secondaryLine={data.hero?.secondaryLine}
               title={data.hero?.title}
-              lead={data.hero?.description}
+              description={data.hero?.description}
+              supportingText={data.hero?.supportingText}
+              proofPoints={data.hero?.proofPoints}
+              stats={data.hero?.stats}
+              ui={data.hero?.ui}
             />
           </header>
 
@@ -51,7 +55,7 @@ export default function LogisticsPage() {
             ) : null}
 
             <LogisticsServicesSection data={data} iconSet={sportsBrand.icons} />
-            <LogisticsClosingPanel data={data} />
+            
           </div>
         </div>
       </main>

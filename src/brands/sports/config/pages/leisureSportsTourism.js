@@ -7,7 +7,7 @@ import {
   leisureDestinations,
   benefitsIntro,
   pillars,
-  closingPanel,
+ 
 } from "../sections/leisureSportsTourism/index.js";
 
 const leisureSportsTourism = {
@@ -21,7 +21,7 @@ const leisureSportsTourism = {
     leisureDestinations,
     benefitsIntro,
     pillars,
-    closingPanel,
+   
   },
 };
 

@@ -3,7 +3,7 @@ import {
   overview,
   pillars,
   facilitiesGrid,
-  closingPanel,
+ 
 } from "../sections/infrastructures/index.js";
 
 const infrastructures = {
@@ -13,7 +13,7 @@ const infrastructures = {
     overview,
     pillars,
     facilitiesGrid,
-    closingPanel,
+    
   },
 };
 

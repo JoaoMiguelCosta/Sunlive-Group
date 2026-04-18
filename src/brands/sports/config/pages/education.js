@@ -9,7 +9,7 @@ import {
   careersIntro,
   careers,
   pillars,
-  closingPanel,
+
 } from "../sections/education/index.js";
 
 const education = {
@@ -25,7 +25,7 @@ const education = {
     careersIntro,
     careers,
     pillars,
-    closingPanel,
+   
   },
 };
 

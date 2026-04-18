@@ -5,7 +5,7 @@ import sportsBrand from "../../config/index.js";
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";
 import ProgramsSection from "./sections/ProgramsSection.jsx";
-import TrainingCampsClosingPanel from "./sections/TrainingCampsClosingPanel.jsx";
+
 
 export default function TrainingCampsPage() {
   const data = sportsBrand.sections?.trainingCamps;
@@ -37,7 +37,7 @@ export default function TrainingCampsPage() {
           <div className={styles.sections}>
             <OverviewSection data={data} />
             <ProgramsSection data={data} />
-            <TrainingCampsClosingPanel data={data} />
+           
           </div>
         </div>
       </main>

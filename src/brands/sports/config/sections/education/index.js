@@ -8,4 +8,4 @@ export { default as bilingualCertification } from "./bilingualCertification.js";
 export { default as careersIntro } from "./careersIntro.js";
 export { default as careers } from "./careers.js";
 export { default as pillars } from "./pillars.js";
-export { default as closingPanel } from "./closingPanel.js";
+

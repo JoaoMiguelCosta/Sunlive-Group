@@ -3,7 +3,7 @@ import {
   overview,
   pillars,
   programs,
-  closingPanel,
+ 
 } from "../sections/trainingCamps/index.js";
 
 const trainingCamps = {
@@ -13,7 +13,7 @@ const trainingCamps = {
     overview,
     pillars,
     programs,
-    closingPanel,
+    
   },
 };
 

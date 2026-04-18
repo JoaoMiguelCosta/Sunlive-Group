@@ -9,7 +9,7 @@ import OverviewSection from "./sections/OverviewSection.jsx";
 import LeisureExperiencesGrid from "./sections/LeisureExperiencesGrid.jsx";
 import LeisureDestinationsGrid from "./sections/LeisureDestinationsGrid.jsx";
 import LeisureBenefitsGrid from "./sections/LeisureBenefitsGrid.jsx";
-import LeisureSportsTourismClosingPanel from "./sections/LeisureSportsTourismClosingPanel.jsx";
+
 
 export default function LeisureSportsTourismPage() {
   const data = sportsBrand.sections?.leisureSportsTourism;
@@ -109,7 +109,7 @@ export default function LeisureSportsTourismPage() {
               </>
             ) : null}
 
-            <LeisureSportsTourismClosingPanel data={data} />
+          
           </div>
         </div>
       </main>

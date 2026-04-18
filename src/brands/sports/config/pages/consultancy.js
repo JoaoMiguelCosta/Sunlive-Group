@@ -5,7 +5,7 @@ import {
   areasPanels,
   entities,
   pillars,
-  closingPanel,
+ 
 } from "../sections/consultancy/index.js";
 
 const consultancy = {
@@ -17,7 +17,7 @@ const consultancy = {
     areasPanels,
     entities,
     pillars,
-    closingPanel,
+  
   },
 };
 

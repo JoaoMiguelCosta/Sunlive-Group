@@ -10,7 +10,7 @@ import EducationLevelsSection from "./sections/EducationLevelsSection.jsx";
 import EducationBilingualSection from "./sections/EducationBilingualSection.jsx";
 import EducationBilingualCertification from "./sections/EducationBilingualCertification.jsx";
 import EducationCareersSection from "./sections/EducationCareersSection.jsx";
-import EducationClosingPanel from "./sections/EducationClosingPanel.jsx";
+
 
 export default function EducationPage() {
   const data = sportsBrand.sections?.education;
@@ -103,7 +103,7 @@ export default function EducationPage() {
               </>
             ) : null}
 
-            <EducationClosingPanel data={data} />
+           
           </div>
         </div>
       </main>

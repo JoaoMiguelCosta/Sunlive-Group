@@ -3,7 +3,7 @@ import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";
-import EventsClosingPanel from "./sections/EventsClosingPanel.jsx";
+
 
 export default function EventsPage() {
   const data = sportsBrand.sections?.events;
@@ -34,7 +34,7 @@ export default function EventsPage() {
 
           <div className={styles.sections}>
             <OverviewSection data={data} />
-            <EventsClosingPanel data={data} />
+           
           </div>
         </div>
       </main>

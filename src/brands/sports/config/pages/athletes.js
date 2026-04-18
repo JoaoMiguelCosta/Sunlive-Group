@@ -4,7 +4,7 @@ import {
   pillars,
   profilesIntro,
   profiles,
-  closingPanel,
+
 } from "../sections/athletes/index.js";
 
 const athletes = {
@@ -15,7 +15,7 @@ const athletes = {
     pillars,
     profilesIntro,
     profiles,
-    closingPanel,
+   
   },
 };
 

@@ -2,10 +2,10 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 
 import sportsBrand from "../../config/index.js";
 
-import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
+import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";
 import FacilitiesSection from "./sections/FacilitiesSection.jsx";
-import InfrastructuresClosingPanel from "./sections/InfrastructuresClosingPanel.jsx";
+
 
 export default function InfrastructuresPage() {
   const data = sportsBrand.sections?.infrastructures;
@@ -21,20 +21,23 @@ export default function InfrastructuresPage() {
       >
         <div className={styles.contentFlow}>
           <header className={styles.heroSection}>
-            <HeadlineBlock
-              theme="sports"
-              variant="banded"
-              align="center"
-              max="lg"
+            <SportsHeroIntro
+              id="infrastructures-hero"
+              eyebrow={data.hero?.eyebrow}
+              secondaryLine={data.hero?.secondaryLine}
               title={data.hero?.title}
-              lead={data.hero?.description}
+              description={data.hero?.description}
+              supportingText={data.hero?.supportingText}
+              proofPoints={data.hero?.proofPoints}
+              stats={data.hero?.stats}
+              ui={data.hero?.ui}
             />
           </header>
 
           <div className={styles.sections}>
             <OverviewSection data={data} />
             <FacilitiesSection data={data} />
-            <InfrastructuresClosingPanel data={data} />
+          
           </div>
         </div>
       </main>

@@ -4,7 +4,7 @@ import {
   servicesIntro,
   pillars,
   servicesPanels,
-  closingPanel,
+ 
 } from "../sections/logistics/index.js";
 
 const logistics = {
@@ -15,7 +15,7 @@ const logistics = {
     servicesIntro,
     pillars,
     servicesPanels,
-    closingPanel,
+    
   },
 };
 

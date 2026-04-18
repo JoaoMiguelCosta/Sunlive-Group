@@ -5,7 +5,7 @@ import sportsBrand from "../../config/index.js";
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import OverviewSection from "./sections/OverviewSection.jsx";
 import AcademiesCardsSection from "./sections/AcademiesCardsSection.jsx";
-import AcademiesClosingPanel from "./sections/AcademiesClosingPanel.jsx";
+
 
 export default function AcademiesPage() {
   const data = sportsBrand.sections?.academies;
@@ -37,7 +37,7 @@ export default function AcademiesPage() {
           <div className={styles.sections}>
             <OverviewSection data={data} />
             <AcademiesCardsSection data={data} />
-            <AcademiesClosingPanel data={data} />
+            
           </div>
         </div>
       </main>
