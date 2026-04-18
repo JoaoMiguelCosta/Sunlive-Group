@@ -1,86 +1,188 @@
-const trainingCampsPrograms = [
-  {
-    key: "sports-camps",
-    imageSide: "right",
-    iconKey: "medal",
-    title: "Estágios Desportivos",
+const trainingCampsPrograms = {
+  sectionIntro: {
+    eyebrow: "Programas por modalidade",
+    title: "Training Camps ajustados à realidade de cada modalidade",
     description:
-      "Programas personalizados para equipas profissionais e semi-profissionais que procuram excelência, com foco em performance, recuperação e preparação estratégica.",
-    idealForTitle: "Ideal para:",
-    idealFor:
-      "Clubes de alto rendimento, seleções e equipas técnicas que exigem um ambiente controlado, infraestrutura de topo e suporte técnico de nível internacional.",
-    activitiesTitle: "Atividades-chave:",
-    activities: [
-      "Staff Técnico Especializado – presença de treinadores, preparadores físicos, fisioterapeutas e analistas com experiência em desporto de elite.",
-      "Análise de Performance – avaliação detalhada de dados físicos, técnicos e táticos para maximizar a eficiência individual e coletiva.",
-      "Recuperação Avançada – acesso a sauna, piscina, protocolos de crioterapia, fisioterapia e programas de reabilitação personalizados.",
-      "Logística Completa – transporte, alojamento, alimentação, equipamentos e assistência total durante toda a estadia.",
-    ],
-    image: { src: null, alt: "Equipas em estágio desportivo Sunlive Sports." },
+      "A Sunlive Sports estrutura programas de estágio que articulam preparação desportiva, enquadramento técnico, estadia e suporte logístico, criando contextos de trabalho mais organizados, exigentes e ajustados à realidade competitiva de atletas, equipas, clubes e federações.",
   },
-  {
-    key: "pre-season-camps",
-    imageSide: "left",
-    iconKey: "speed",
-    title: "Estágios de Pré-Época",
-    description:
-      "Preparação intensiva para o arranque competitivo da temporada, com foco em desempenho físico, entrosamento coletivo e afinação tática.",
-    idealForTitle: "Ideal para:",
-    idealFor:
-      "Clubes, equipas técnicas e atletas que procuram um ambiente estruturado para acelerar a sua performance e alinhar objetivos desportivos.",
-    activitiesTitle: "Atividades-chave:",
-    activities: [
-      "Preparação Física Intensiva – treinos de resistência, força, agilidade e recuperação ativa, com foco na condição atlética ideal.",
-      "Trabalho Tático – sessões específicas para sistemas de jogo, posicionamentos, transições e estratégias de equipa.",
-      "Jogos-Treino – simulações competitivas para aplicação prática dos conceitos e avaliação em tempo real.",
-      "Análise de Vídeo – feedback técnico individual e coletivo com apoio audiovisual e orientação especializada.",
-    ],
-    image: { src: null, alt: "Treino de pré-época em contexto de estágio." },
-  },
-  {
-    key: "summer-camps",
-    imageSide: "right",
-    iconKey: "sun",
-    title: "Campos de Verão",
-    description:
-      "Programas completos que combinam treino desportivo de alta qualidade com experiências culturais e de lazer inesquecíveis.",
-    idealForTitle: "Ideal para:",
-    idealFor:
-      "Jovens atletas, clubes de formação e famílias que procuram uma experiência enriquecedora durante as férias, unindo desporto, convivência e diversão.",
-    activitiesTitle: "Atividades-chave:",
-    activities: [
-      "Treino Diário Especializado – sessões orientadas por técnicos experientes, com foco em desenvolvimento técnico, físico e tático.",
-      "Atividades Culturais – visitas guiadas, experiências gastronómicas e eventos temáticos que promovem a descoberta da cultura portuguesa.",
-      "Torneios Internos – jogos amigáveis e desafios entre participantes, incentivando o espírito competitivo e o trabalho em equipa.",
-      "Certificados de Participação – entrega de diploma oficial ao final do programa, reconhecendo o esforço e o progresso dos atletas.",
-    ],
-    image: {
-      src: null,
-      alt: "Campo de verão com jovens atletas em atividade.",
+
+  items: [
+    {
+      key: "cycling",
+      sport: "Ciclismo",
+      iconKey: "speed",
+      mediaAlign: "right",
+      theme: "endurance",
+      summary:
+        "Programas estruturados para atletas, equipas, clubes e federações de ciclismo que procuram condições consistentes de preparação, trabalho específico por disciplina e uma operação de estágio articulada entre treino, recuperação, estadia e logística.",
+      focusLabel: "Disciplinas em foco",
+      focusItems: [
+        "Estrada",
+        "Pista",
+        "Mountain Bike / BTT",
+        "XCO / Cross-country olímpico",
+        "BMX Racing",
+        "BMX Freestyle",
+        "Cyclo-cross / Ciclocrosse",
+        "Para Cycling",
+      ],
+      expandAction: {
+        collapsedCount: 5,
+        moreLabel: "Ver mais disciplinas",
+        lessLabel: "Ver menos disciplinas",
+      },
+      audienceLabel: "Ideal para",
+      audience:
+        "Atletas individuais, equipas, clubes e federações que necessitam de um contexto controlado, infraestruturas adequadas e apoio técnico-operacional para preparar competição, consolidar rotinas de treino e trabalhar diferentes exigências da modalidade com critério e consistência.",
+      pillarsLabel: "Âmbitos de trabalho",
+      pillars: [
+        "Preparação física, técnica e específica por disciplina",
+        "Planeamento e acompanhamento do treino em contexto real",
+        "Recuperação, monitorização e suporte ao rendimento",
+        "Estadia, logística e operação ajustadas ao grupo",
+      ],
+      image: {
+        src: null,
+        alt: "Training camp de ciclismo em contexto de preparação desportiva.",
+      },
     },
-  },
-  {
-    key: "exchange-programs",
-    imageSide: "left",
-    iconKey: "globe",
-    title: "Intercâmbios",
-    description:
-      "Experiências internacionais imersivas que combinam desporto, cultura e formação, com integração total em clubes portugueses.",
-    idealForTitle: "Ideal para:",
-    idealFor:
-      "Jovens talentos estrangeiros que pretendem viver uma experiência transformadora em Portugal, unindo treino desportivo de qualidade com desenvolvimento pessoal e cultural.",
-    activitiesTitle: "Atividades-chave:",
-    activities: [
-      "Integração em Clubes Locais – participação em treinos regulares com equipas portuguesas.",
-      "Mentoria com Atletas Locais – trocas inspiradoras com atletas portugueses.",
-      "Imersão Linguística e Cultural – aulas básicas de português e experiências culturais.",
-      "Desafios Interculturais – dinâmicas em grupo que promovem a colaboração entre atletas de diferentes origens.",
-    ],
-    image: {
-      src: null,
-      alt: "Atletas internacionais em intercâmbio desportivo em Portugal.",
+    {
+      key: "gymnastics",
+      sport: "Ginástica",
+      iconKey: "athlete",
+      mediaAlign: "left",
+      theme: "precision",
+      summary:
+        "Estágios estruturados para ginastas, clubes e equipas técnicas que procuram desenvolver qualidade técnica, consistência de execução e preparação específica em ambientes exigentes, organizados e ajustados ao trabalho de cada disciplina.",
+      focusLabel: "Disciplinas em foco",
+      focusItems: [
+        "Ginástica Artística Masculina",
+        "Ginástica Artística Feminina",
+        "Ginástica Rítmica",
+        "Trampolins",
+        "Ginástica Acrobática",
+        "Ginástica Aeróbica",
+        "Parkour",
+        "Ginástica para Todos",
+      ],
+      expandAction: {
+        collapsedCount: 6,
+        moreLabel: "Ver mais disciplinas",
+        lessLabel: "Ver menos disciplinas",
+      },
+      audienceLabel: "Ideal para",
+      audience:
+        "Clubes, escolas de formação, equipas técnicas e ginastas que procuram um contexto estruturado para aperfeiçoar elementos, reforçar rotinas, preparar momentos competitivos ou de exibição e evoluir tecnicamente com acompanhamento próximo.",
+      pillarsLabel: "Âmbitos de trabalho",
+      pillars: [
+        "Treino técnico orientado por objetivos e níveis de progressão",
+        "Consolidação de execução, coordenação e controlo corporal",
+        "Preparação específica por disciplina e contexto competitivo",
+        "Enquadramento diário com apoio logístico e organizacional",
+      ],
+      image: {
+        src: null,
+        alt: "Training camp de ginástica com trabalho técnico especializado.",
+      },
     },
+    {
+      key: "football",
+      sport: "Futebol",
+      iconKey: "goal",
+      mediaAlign: "right",
+      theme: "collective",
+      summary:
+        "Soluções de estágio que podem ser estruturadas para equipas, atletas e equipas técnicas que pretendem trabalhar preparação competitiva, rotinas de treino e dinâmica coletiva num contexto funcional, organizado e adaptado aos objetivos do grupo.",
+      focusLabel: "Áreas de trabalho possíveis",
+      focusItems: [
+        "Preparação de pré-época",
+        "Treino técnico e tático",
+        "Desenvolvimento físico",
+        "Treino específico por posição",
+        "Integração de grupo e dinâmicas coletivas",
+        "Análise de jogo e vídeo",
+        "Recuperação e prevenção",
+        "Organização competitiva",
+      ],
+      audienceLabel: "Ideal para",
+      audience:
+        "Clubes, academias, equipas técnicas e grupos de jogadores que necessitam de um estágio organizado para acelerar preparação, alinhar objetivos desportivos e trabalhar componentes coletivas e individuais com enquadramento técnico e suporte operacional.",
+      pillarsLabel: "Âmbitos de trabalho",
+      pillars: [
+        "Sessões ajustadas ao modelo de jogo e ao momento da época",
+        "Preparação física e técnica integrada com objetivos da equipa",
+        "Apoio à organização do estágio e rotina diária de trabalho",
+        "Estadia, alimentação, logística e operação coordenadas",
+      ],
+      image: {
+        src: null,
+        alt: "Training camp de futebol com preparação técnica e tática.",
+      },
+    },
+    {
+      key: "basketball",
+      sport: "Basquetebol",
+      iconKey: "users",
+      mediaAlign: "left",
+      theme: "intensity",
+      summary:
+        "Estágios orientados para equipas, atletas e estruturas técnicas que procuram desenvolver intensidade competitiva, qualidade de execução, rotinas de jogo e preparação global num enquadramento exigente, organizado e ajustado ao trabalho coletivo.",
+      focusLabel: "Áreas de trabalho",
+      focusItems: [
+        "Preparação de pré-época",
+        "Desenvolvimento técnico individual",
+        "Trabalho tático coletivo",
+        "Lançamento e tomada de decisão",
+        "Conditioning e preparação física",
+        "Treino por posições",
+        "Vídeo e leitura de jogo",
+        "Jogos-treino e organização competitiva",
+      ],
+      audienceLabel: "Ideal para",
+      audience:
+        "Clubes, equipas de formação, estruturas de rendimento e grupos de atletas que pretendem trabalhar componentes técnicas, físicas e táticas de forma integrada, num contexto favorável à evolução, à exigência e à consistência competitiva.",
+      pillarsLabel: "Âmbitos de trabalho",
+      pillars: [
+        "Treino técnico e tático ajustado ao nível e objetivos da equipa",
+        "Desenvolvimento físico e gestão das cargas de trabalho",
+        "Possibilidade de articular estágio, rotina diária e jogos-treino",
+        "Acompanhamento operacional, logístico e organizacional do grupo",
+      ],
+      image: {
+        src: null,
+        alt: "Training camp de basquetebol em contexto de preparação competitiva.",
+      },
+    },
+  ],
+
+  otherSports: {
+    eyebrow: "Outras modalidades",
+    title: "Outros enquadramentos possíveis, avaliados caso a caso",
+    description:
+      "Para além das modalidades com presença pública mais consolidada, a Sunlive Sports pode avaliar e estruturar training camps para outros contextos desportivos, ajustando programa, operação e suporte técnico às necessidades concretas de cada projeto.",
+    categories: [
+      {
+        key: "combat-precision",
+        label: "Desportos de combate e precisão",
+        items: ["Karate", "Esgrima", "Judo", "Taekwondo"],
+      },
+      {
+        key: "team-sports",
+        label: "Desportos coletivos",
+        items: ["Andebol", "Voleibol", "Rugby"],
+      },
+      {
+        key: "racket-sports",
+        label: "Desportos de raquete",
+        items: ["Padel", "Ténis", "Badminton"],
+      },
+      {
+        key: "endurance-performance",
+        label: "Desportos de resistência e performance",
+        items: ["Triatlo", "Atletismo", "Natação"],
+      },
+    ],
   },
-];
+};
 
 export default trainingCampsPrograms;

@@ -1,43 +1,76 @@
 import styles from "./ProgramsSection.module.css";
-import ProgramDetailSection from "../../../shared/ui/ProgramDetailSection/ProgramDetailSection.jsx";
-
-import sportsBrand, { resolveSportsIcon } from "../../../config/index.js";
+import ProgramSportCard from "./ProgramSportCard.jsx";
+import OtherSportsPanel from "./OtherSportsPanel.jsx";
+import useInView from "../../../shared/hooks/useInView.js";
 
 export default function ProgramsSection({ data }) {
   if (!data) return null;
 
-  const programs = data.programs ?? [];
-  if (!programs.length) return null;
+  const intro = data.sectionIntro ?? null;
+  const items = Array.isArray(data.items) ? data.items : [];
+  const otherSports = data.otherSports ?? null;
 
-  const icons = sportsBrand.icons;
+  const { ref: headerRef, inView: headerInView } = useInView({
+    threshold: 0.18,
+    once: true,
+  });
+
+  const { ref: otherSportsRef, inView: otherSportsInView } = useInView({
+    threshold: 0.12,
+    once: true,
+  });
+
+  if (!items.length) return null;
 
   return (
     <section
-      className={styles.wrap}
-      aria-label="Programas Training Camps — Sunlive Sports"
+      className={styles.section}
+      aria-labelledby="training-camps-programs-title"
     >
-      <div className={styles.grid}>
-        {programs.map((prog, index) => {
-          const Icon = resolveSportsIcon(icons, prog.iconKey);
-          const revealSide = index % 2 === 0 ? "left" : "right";
+      <div className={styles.inner}>
+        {intro ? (
+          <header
+            ref={headerRef}
+            className={`${styles.sectionHeader} ${styles.reveal} ${
+              headerInView ? styles.isVisible : ""
+            }`}
+          >
+            {intro.eyebrow ? (
+              <p className={styles.eyebrow}>{intro.eyebrow}</p>
+            ) : null}
 
-          return (
-            <ProgramDetailSection
-              key={prog.key}
-              id={prog.key}
-              title={prog.title}
-              Icon={Icon}
-              description={prog.description}
-              idealForTitle={prog.idealForTitle}
-              idealFor={prog.idealFor}
-              activitiesTitle={prog.activitiesTitle}
-              activities={prog.activities}
-              imageSide={prog.imageSide}
-              image={prog.image}
-              revealSide={revealSide}
+            {intro.title ? (
+              <h2 id="training-camps-programs-title" className={styles.title}>
+                {intro.title}
+              </h2>
+            ) : null}
+
+            {intro.description ? (
+              <p className={styles.description}>{intro.description}</p>
+            ) : null}
+          </header>
+        ) : null}
+
+        <div className={styles.cards}>
+          {items.map((item, index) => (
+            <ProgramSportCard
+              key={item.key || `${item.sport}-${index}`}
+              item={item}
+              index={index}
             />
-          );
-        })}
+          ))}
+        </div>
+
+        {otherSports ? (
+          <div
+            ref={otherSportsRef}
+            className={`${styles.otherSportsWrap} ${styles.reveal} ${
+              otherSportsInView ? styles.isVisible : ""
+            }`}
+          >
+            <OtherSportsPanel data={otherSports} />
+          </div>
+        ) : null}
       </div>
     </section>
   );

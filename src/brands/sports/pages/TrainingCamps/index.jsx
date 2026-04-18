@@ -3,9 +3,8 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
-
+import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 import ProgramsSection from "./sections/ProgramsSection.jsx";
-
 
 export default function TrainingCampsPage() {
   const data = sportsBrand.sections?.trainingCamps;
@@ -35,9 +34,8 @@ export default function TrainingCampsPage() {
           </header>
 
           <div className={styles.sections}>
-           
-            <ProgramsSection data={data} />
-           
+            <ProgramsSection data={data.programs} />
+            <SportsClosingCTA data={data.cta} />
           </div>
         </div>
       </main>

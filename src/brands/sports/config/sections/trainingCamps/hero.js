@@ -1,29 +1,29 @@
 const trainingCampsHero = {
   eyebrow: "Sunlive Sports",
   secondaryLine:
-    "Preparação, rendimento e coesão em contexto real de estágio desportivo.",
+    "Preparação, rendimento e organização em contexto real de estágio desportivo.",
   title: "Training Camps",
   description:
-    "Programas de estágio desportivo pensados para atletas, equipas, clubes e federações que procuram elevar o rendimento, consolidar rotinas de treino e reforçar a dinâmica coletiva num ambiente estruturado, exigente e orientado para objetivos concretos.",
+    "Programas de estágio desportivo pensados para atletas, equipas, clubes e federações que procuram trabalhar rendimento, consolidar rotinas de treino e preparar momentos competitivos num contexto estruturado, exigente e operacionalmente coordenado.",
   supportingText:
-    "Na Sunlive Sports, os Training Camps integram infraestruturas adequadas, logística coordenada, acompanhamento próximo e condições de estadia ajustadas à realidade de cada grupo, criando contextos de preparação que combinam performance, disciplina, organização e experiência desportiva.",
+    "Na Sunlive Sports, os Training Camps articulam infraestruturas, estadia, logística e acompanhamento no terreno para criar programas ajustados à realidade de cada grupo, combinando preparação desportiva, organização diária e suporte operacional num mesmo enquadramento.",
   proofPoints: [
-    "Preparação técnica, física e coletiva",
-    "Infraestruturas, logística e operação coordenadas",
-    "Programas ajustados a cada grupo",
+    "Treino, estadia e operação articulados",
+    "Programas ajustados à modalidade e ao grupo",
+    "Contexto preparado para rendimento e organização",
   ],
   stats: [
     {
-      value: "Estrutura",
-      label: "Treino, estadia e operação integrada",
-    },
-    {
-      value: "Rendimento",
-      label: "Preparação focada e orientada por objetivos",
+      value: "Integração",
+      label: "Treino, estadia e logística pensados em conjunto",
     },
     {
       value: "Adaptação",
-      label: "Soluções ajustadas ao perfil de cada equipa",
+      label: "Programas ajustados ao objetivo e perfil do grupo",
+    },
+    {
+      value: "Operação",
+      label: "Estrutura preparada para apoiar o estágio no terreno",
     },
   ],
   ui: {
