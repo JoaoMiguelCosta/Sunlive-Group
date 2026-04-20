@@ -1,0 +1,549 @@
+.section {
+    position: relative;
+    inline-size: 100%;
+    min-inline-size: 0;
+}
+
+.surface {
+    position: relative;
+    inline-size: 100%;
+    min-inline-size: 0;
+    display: grid;
+    overflow: hidden;
+    isolation: isolate;
+    padding:
+        clamp(1.16rem, 2.1vw, 1.68rem) clamp(1rem, 2vw, 1.48rem) clamp(1.18rem, 2.15vw, 1.72rem);
+    border-radius: clamp(1.42rem, 1.9vw, 1.9rem);
+    border: 1px solid rgba(199, 134, 21, 0.135);
+    background:
+        radial-gradient(136% 174% at 0% 0%,
+            rgba(46, 194, 126, 0.112) 0%,
+            transparent 43%),
+        radial-gradient(114% 146% at 100% 4%,
+            rgba(199, 134, 21, 0.098) 0%,
+            transparent 38%),
+        radial-gradient(120% 142% at 50% 100%,
+            rgba(7, 35, 30, 0.16) 0%,
+            transparent 52%),
+        linear-gradient(180deg,
+            rgba(4, 10, 14, 0.974) 0%,
+            rgba(3, 7, 11, 0.994) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+        0 24px 56px rgba(0, 0, 0, 0.28);
+}
+
+.surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+        linear-gradient(90deg,
+            rgba(199, 134, 21, 0.32) 0%,
+            rgba(46, 194, 126, 0.135) 42%,
+            rgba(255, 255, 255, 0.026) 100%);
+    opacity: 0.13;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent 25%);
+}
+
+.surface::after {
+    content: "";
+    position: absolute;
+    inset: 0.5px;
+    pointer-events: none;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    opacity: 0.56;
+}
+
+.ambientGlow,
+.ambientGlowSecondary {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(24px);
+}
+
+.ambientGlow {
+    inset: -18% auto auto -11%;
+    inline-size: clamp(11rem, 27vw, 20rem);
+    block-size: clamp(11rem, 27vw, 20rem);
+    background:
+        radial-gradient(circle,
+            rgba(46, 194, 126, 0.165) 0%,
+            rgba(46, 194, 126, 0.052) 34%,
+            transparent 72%);
+    opacity: 0.86;
+}
+
+.ambientGlowSecondary {
+    inset: 14% -9% auto auto;
+    inline-size: clamp(8.5rem, 19vw, 13rem);
+    block-size: clamp(8.5rem, 19vw, 13rem);
+    background:
+        radial-gradient(circle,
+            rgba(199, 134, 21, 0.14) 0%,
+            rgba(199, 134, 21, 0.042) 38%,
+            transparent 74%);
+    opacity: 0.76;
+}
+
+.topLayout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.2rem, 2.2vw, 1.9rem);
+    align-items: start;
+}
+
+.editorialColumn {
+    display: grid;
+    gap: clamp(0.76rem, 1.18vw, 0.94rem);
+    align-content: start;
+    min-inline-size: 0;
+}
+
+.eyebrow {
+    margin: 0;
+    font-size: 0.77rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(199, 134, 21, 0.95);
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(1.44rem, 2.08vw, 2.12rem);
+    line-height: 0.99;
+    letter-spacing: -0.044em;
+    color: rgba(255, 255, 255, 0.992);
+    text-wrap: balance;
+}
+
+.description {
+    margin: 0;
+    max-inline-size: 100%;
+    font-size: clamp(0.965rem, 1vw, 1.02rem);
+    line-height: 1.68;
+    color: rgba(255, 255, 255, 0.735);
+}
+
+.editorialPanel {
+    position: relative;
+    display: grid;
+    gap: 0.8rem;
+    max-inline-size: 100%;
+    margin-top: clamp(0.14rem, 0.35vw, 0.24rem);
+    padding:
+        clamp(1.04rem, 1.56vw, 1.18rem) clamp(0.98rem, 1.42vw, 1.12rem) clamp(1.04rem, 1.58vw, 1.18rem);
+    border: 1px solid rgba(199, 134, 21, 0.105);
+    border-radius: clamp(1.02rem, 1.5vw, 1.22rem);
+    background:
+        radial-gradient(126% 156% at 0% 100%,
+            rgba(46, 194, 126, 0.076) 0%,
+            transparent 42%),
+        radial-gradient(118% 142% at 100% 0%,
+            rgba(199, 134, 21, 0.068) 0%,
+            transparent 38%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.038) 0%,
+            rgba(255, 255, 255, 0.012) 100%),
+        linear-gradient(145deg,
+            rgba(7, 15, 20, 0.932) 0%,
+            rgba(4, 10, 14, 0.983) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.026),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.01),
+        0 20px 42px rgba(0, 0, 0, 0.185);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.editorialPanel::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    block-size: 1px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    background:
+        linear-gradient(90deg,
+            rgba(199, 134, 21, 0.8) 0%,
+            rgba(46, 194, 126, 0.28) 62%,
+            rgba(255, 255, 255, 0) 100%);
+    opacity: 0.74;
+}
+
+.editorialPanel::after {
+    content: "";
+    position: absolute;
+    inset: 0.5px;
+    pointer-events: none;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.024);
+    opacity: 0.52;
+}
+
+.editorialLead {
+    margin: 0;
+    max-inline-size: 100%;
+    font-size: clamp(0.99rem, 1.04vw, 1.08rem);
+    line-height: 1.46;
+    font-weight: 620;
+    color: rgba(255, 255, 255, 0.922);
+}
+
+.editorialBody {
+    display: grid;
+    gap: 0.68rem;
+}
+
+.editorialBody p {
+    margin: 0;
+    max-inline-size: 100%;
+    font-size: 0.95rem;
+    line-height: 1.64;
+    color: rgba(255, 255, 255, 0.685);
+}
+
+.sideColumn {
+    position: relative;
+    display: grid;
+    gap: 0.84rem;
+    align-content: start;
+    min-inline-size: 0;
+    padding: clamp(0.78rem, 1.12vw, 0.96rem);
+    border-radius: clamp(1.06rem, 1.48vw, 1.26rem);
+    border: 1px solid rgba(255, 255, 255, 0.046);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.02) 0%,
+            rgba(255, 255, 255, 0.006) 100%),
+        linear-gradient(155deg,
+            rgba(6, 14, 18, 0.85) 0%,
+            rgba(4, 10, 14, 0.945) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.016),
+        0 16px 36px rgba(0, 0, 0, 0.14);
+}
+
+.sideColumn::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    block-size: 1px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    background:
+        linear-gradient(90deg,
+            rgba(46, 194, 126, 0.17) 0%,
+            rgba(199, 134, 21, 0.17) 100%);
+    opacity: 0.66;
+}
+
+.capabilityColumn {
+    position: relative;
+    min-inline-size: 0;
+    display: grid;
+}
+
+.capabilityStack {
+    display: grid;
+    gap: 0.76rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.capabilityCard {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.82rem;
+    align-items: start;
+    min-inline-size: 0;
+    min-block-size: clamp(6.95rem, 7.5vw, 7.6rem);
+    padding:
+        clamp(0.98rem, 1.24vw, 1.08rem) clamp(0.96rem, 1.22vw, 1.08rem);
+    border-radius: clamp(0.98rem, 1.34vw, 1.14rem);
+    border: 1px solid rgba(255, 255, 255, 0.074);
+    overflow: hidden;
+    background:
+        radial-gradient(145% 162% at 100% 0%,
+            rgba(255, 255, 255, 0.028) 0%,
+            transparent 42%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.012) 100%),
+        linear-gradient(145deg,
+            rgba(7, 16, 21, 0.958) 0%,
+            rgba(4, 10, 14, 0.991) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.024),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.01),
+        0 13px 28px rgba(0, 0, 0, 0.16);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.capabilityCard::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    block-size: 1px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    background:
+        linear-gradient(90deg,
+            rgba(199, 134, 21, 0.78) 0%,
+            rgba(46, 194, 126, 0.34) 58%,
+            rgba(255, 255, 255, 0) 100%);
+    opacity: 0.74;
+}
+
+.capabilityCard::after {
+    content: "";
+    position: absolute;
+    inset: 0.5px;
+    pointer-events: none;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.022);
+    opacity: 0.54;
+}
+
+.capabilityCardPrimary {
+    border-color: rgba(199, 134, 21, 0.155);
+    background:
+        radial-gradient(124% 148% at 0% 0%,
+            rgba(46, 194, 126, 0.088) 0%,
+            transparent 42%),
+        radial-gradient(132% 148% at 100% 0%,
+            rgba(199, 134, 21, 0.078) 0%,
+            transparent 36%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.046) 0%,
+            rgba(255, 255, 255, 0.014) 100%),
+        linear-gradient(145deg,
+            rgba(8, 18, 23, 0.968) 0%,
+            rgba(4, 10, 14, 0.991) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+        0 16px 32px rgba(0, 0, 0, 0.18);
+}
+
+.capabilityIndex {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 2.02rem;
+    block-size: 2.02rem;
+    border-radius: 999px;
+    border: 1px solid rgba(199, 134, 21, 0.158);
+    background:
+        linear-gradient(180deg,
+            rgba(199, 134, 21, 0.148) 0%,
+            rgba(46, 194, 126, 0.05) 100%);
+    font-size: 0.7rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: rgba(199, 134, 21, 0.95);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.036),
+        0 8px 16px rgba(0, 0, 0, 0.14);
+}
+
+.capabilityContent {
+    display: grid;
+    gap: 0.42rem;
+    min-inline-size: 0;
+    align-content: start;
+}
+
+.capabilityTitle {
+    margin: 0;
+    font-size: clamp(0.99rem, 1.01vw, 1.08rem);
+    line-height: 1.14;
+    letter-spacing: -0.026em;
+    color: rgba(255, 255, 255, 0.952);
+}
+
+.capabilityDescription {
+    margin: 0;
+    font-size: 0.91rem;
+    line-height: 1.54;
+    color: rgba(255, 255, 255, 0.68);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .capabilityCard:hover {
+        transform: translateY(-2px);
+        border-color: rgba(199, 134, 21, 0.195);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.028),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+            0 16px 34px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media (min-width: 1181px) {
+    .topLayout {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: clamp(1.28rem, 2.25vw, 1.95rem);
+        align-items: stretch;
+    }
+
+    .editorialColumn,
+    .sideColumn {
+        align-self: stretch;
+    }
+
+    .editorialPanel {
+        min-block-size: 100%;
+    }
+}
+
+@media (max-width: 1180px) {
+    .topLayout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .title,
+    .description,
+    .editorialPanel {
+        max-inline-size: 100%;
+    }
+
+    .sideColumn {
+        gap: 0.82rem;
+    }
+
+    .capabilityStack {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 980px) {
+    .capabilityStack {
+        grid-template-columns: 1fr;
+    }
+
+    .capabilityCard {
+        min-block-size: auto;
+    }
+}
+
+@media (max-width: 860px) {
+    .surface {
+        padding: 0.98rem 0.9rem 1.08rem;
+        border-radius: 1.28rem;
+    }
+
+    .topLayout {
+        gap: 0.9rem;
+    }
+
+    .title {
+        max-inline-size: 100%;
+        font-size: clamp(1.46rem, 5.6vw, 2.06rem);
+        line-height: 0.98;
+    }
+
+    .description {
+        font-size: 0.95rem;
+        line-height: 1.66;
+    }
+
+    .editorialPanel {
+        max-inline-size: 100%;
+        padding: 0.96rem 0.92rem 1rem;
+    }
+
+    .editorialLead {
+        font-size: 0.99rem;
+        line-height: 1.48;
+    }
+
+    .editorialBody p {
+        font-size: 0.91rem;
+        line-height: 1.6;
+    }
+
+    .sideColumn {
+        padding: 0.7rem;
+        border-radius: 1.06rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .surface {
+        border-radius: 1.18rem;
+    }
+
+    .ambientGlow {
+        inline-size: 8.8rem;
+        block-size: 8.8rem;
+    }
+
+    .ambientGlowSecondary {
+        inline-size: 7rem;
+        block-size: 7rem;
+    }
+
+    .eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.17em;
+    }
+
+    .title {
+        font-size: clamp(1.38rem, 8.8vw, 1.8rem);
+    }
+
+    .description {
+        font-size: 0.92rem;
+        line-height: 1.58;
+    }
+
+    .editorialPanel {
+        gap: 0.72rem;
+        border-radius: 1rem;
+    }
+
+    .capabilityCard {
+        gap: 0.72rem;
+        padding: 0.9rem 0.88rem;
+        border-radius: 0.98rem;
+    }
+
+    .capabilityIndex {
+        inline-size: 1.92rem;
+        block-size: 1.92rem;
+        font-size: 0.67rem;
+    }
+
+    .capabilityTitle {
+        font-size: 0.95rem;
+    }
+
+    .capabilityDescription {
+        font-size: 0.88rem;
+        line-height: 1.5;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .capabilityCard {
+        transition: none;
+    }
+}

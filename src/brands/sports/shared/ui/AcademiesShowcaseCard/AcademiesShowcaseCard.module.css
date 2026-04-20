@@ -1,0 +1,874 @@
+.card {
+    --card-radius: clamp(1.22rem, 1.8vw, 1.55rem);
+    --card-border: rgba(199, 134, 21, 0.2);
+    --card-border-strong: rgba(199, 134, 21, 0.32);
+    --card-surface-top: rgba(8, 17, 23, 0.965);
+    --card-surface-bottom: rgba(4, 10, 15, 0.985);
+    --card-copy: rgba(226, 233, 238, 0.88);
+    --card-copy-muted: rgba(185, 197, 205, 0.74);
+    --card-heading: rgba(244, 247, 249, 0.98);
+    --card-chip-border: rgba(199, 134, 21, 0.18);
+    --card-chip-copy: rgba(235, 241, 245, 0.9);
+    --card-accent: rgba(46, 194, 126, 0.82);
+    --card-gold: rgba(199, 134, 21, 0.92);
+    --card-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.22),
+        0 8px 20px rgba(0, 0, 0, 0.15);
+
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-block-size: 100%;
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--card-shadow);
+    background:
+        radial-gradient(120% 160% at 0% 0%,
+            color-mix(in srgb, var(--card-accent) 15%, transparent) 0%,
+            transparent 42%),
+        radial-gradient(120% 140% at 100% 100%,
+            color-mix(in srgb, var(--card-gold) 12%, transparent) 0%,
+            transparent 44%),
+        linear-gradient(180deg,
+            var(--card-surface-top) 0%,
+            var(--card-surface-bottom) 100%);
+    transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background:
+        linear-gradient(135deg,
+            rgba(199, 134, 21, 0.28) 0%,
+            rgba(199, 134, 21, 0.06) 28%,
+            rgba(46, 194, 126, 0.06) 72%,
+            rgba(46, 194, 126, 0.22) 100%);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.92;
+    z-index: 0;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--card-border-strong);
+    box-shadow:
+        0 24px 56px rgba(0, 0, 0, 0.26),
+        0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.card:focus-within {
+    transform: translateY(-2px);
+    border-color: rgba(199, 134, 21, 0.4);
+    box-shadow:
+        0 0 0 1px rgba(199, 134, 21, 0.3),
+        0 0 0 7px rgba(199, 134, 21, 0.08),
+        0 20px 44px rgba(0, 0, 0, 0.24);
+}
+
+.glow {
+    position: absolute;
+    inset: auto auto -20% -10%;
+    inline-size: clamp(9rem, 18vw, 13rem);
+    block-size: clamp(9rem, 18vw, 13rem);
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            color-mix(in srgb, var(--card-accent) 16%, transparent) 0%,
+            transparent 70%);
+    filter: blur(24px);
+    opacity: 0.68;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.noise {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.014) 0%,
+            rgba(255, 255, 255, 0.004) 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.header,
+.body,
+.footer {
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    display: grid;
+    gap: 0.78rem;
+    padding:
+        clamp(0.92rem, 1.7vw, 1.12rem) clamp(0.98rem, 1.8vw, 1.22rem) clamp(0.78rem, 1.5vw, 0.95rem);
+    border-bottom: 1px solid rgba(199, 134, 21, 0.11);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.022) 0%,
+            rgba(255, 255, 255, 0.008) 100%);
+}
+
+.headerTop {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.9rem;
+}
+
+.identityBlock {
+    display: flex;
+    align-items: center;
+    gap: 0.86rem;
+    min-inline-size: 0;
+}
+
+.logoWrap {
+    position: relative;
+    flex: 0 0 auto;
+    inline-size: clamp(4.6rem, 6.8vw, 5.5rem);
+    block-size: clamp(4.6rem, 6.8vw, 5.5rem);
+    display: grid;
+    place-items: center;
+    border-radius: 1.08rem;
+    overflow: hidden;
+    border: 1px solid rgba(199, 134, 21, 0.24);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 -10px 18px rgba(0, 0, 0, 0.16),
+        0 8px 18px rgba(0, 0, 0, 0.16);
+}
+
+.logoWrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.logoWrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+        inset 0 -1px 0 rgba(199, 134, 21, 0.08);
+    pointer-events: none;
+}
+
+.logoThemeDefault {
+    background:
+        radial-gradient(120% 120% at 34% 24%,
+            rgba(255, 255, 255, 0.13) 0%,
+            rgba(255, 255, 255, 0.045) 22%,
+            rgba(12, 20, 27, 0.95) 56%,
+            rgba(4, 10, 15, 0.99) 100%);
+}
+
+.logoThemeDefault::before {
+    background:
+        radial-gradient(72% 72% at 50% 45%,
+            rgba(255, 255, 255, 0.07) 0%,
+            transparent 62%),
+        linear-gradient(135deg,
+            rgba(46, 194, 126, 0.06) 0%,
+            transparent 42%),
+        radial-gradient(70% 70% at 78% 82%,
+            rgba(199, 134, 21, 0.07) 0%,
+            transparent 100%);
+}
+
+.logoThemeCycling {
+    background:
+        radial-gradient(122% 122% at 38% 30%,
+            rgba(171, 205, 255, 0.22) 0%,
+            rgba(112, 156, 230, 0.1) 18%,
+            rgba(18, 30, 46, 0.9) 50%,
+            rgba(5, 11, 18, 0.99) 100%);
+}
+
+.logoThemeCycling::before {
+    background:
+        radial-gradient(74% 74% at 50% 46%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 62%),
+        linear-gradient(135deg,
+            rgba(46, 194, 126, 0.035) 0%,
+            transparent 42%),
+        radial-gradient(70% 70% at 80% 84%,
+            rgba(199, 134, 21, 0.04) 0%,
+            transparent 100%);
+}
+
+.logoThemeKarate {
+    background:
+        radial-gradient(118% 118% at 34% 24%,
+            rgba(255, 255, 255, 0.18) 0%,
+            rgba(255, 92, 92, 0.11) 22%,
+            rgba(28, 18, 20, 0.92) 54%,
+            rgba(5, 11, 18, 0.99) 100%);
+}
+
+.logoThemeKarate::before {
+    background:
+        radial-gradient(70% 70% at 48% 42%,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 60%),
+        linear-gradient(135deg,
+            rgba(46, 194, 126, 0.035) 0%,
+            transparent 42%),
+        radial-gradient(70% 70% at 80% 84%,
+            rgba(199, 134, 21, 0.06) 0%,
+            transparent 100%);
+}
+
+.logoThemeBasketball {
+    background:
+        radial-gradient(118% 118% at 34% 24%,
+            rgba(255, 219, 146, 0.28) 0%,
+            rgba(255, 176, 69, 0.13) 22%,
+            rgba(30, 22, 12, 0.92) 54%,
+            rgba(5, 11, 18, 0.99) 100%);
+}
+
+.logoThemeBasketball::before {
+    background:
+        radial-gradient(70% 70% at 48% 42%,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 60%),
+        linear-gradient(135deg,
+            rgba(46, 194, 126, 0.03) 0%,
+            transparent 42%),
+        radial-gradient(72% 72% at 80% 84%,
+            rgba(199, 134, 21, 0.1) 0%,
+            transparent 100%);
+}
+
+.logoThemeFootball {
+    background:
+        radial-gradient(125% 125% at 38% 30%,
+            rgba(255, 248, 226, 0.34) 0%,
+            rgba(233, 204, 132, 0.16) 18%,
+            rgba(44, 52, 44, 0.88) 50%,
+            rgba(7, 13, 16, 0.99) 100%);
+    border-color: rgba(212, 170, 78, 0.32);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -10px 18px rgba(0, 0, 0, 0.12),
+        0 8px 18px rgba(0, 0, 0, 0.16),
+        0 0 0 1px rgba(255, 240, 205, 0.06);
+}
+
+.logoThemeFootball::before {
+    background:
+        radial-gradient(78% 78% at 50% 45%,
+            rgba(255, 255, 255, 0.18) 0%,
+            transparent 62%),
+        linear-gradient(135deg,
+            rgba(46, 194, 126, 0.025) 0%,
+            transparent 40%),
+        radial-gradient(74% 74% at 80% 84%,
+            rgba(199, 134, 21, 0.08) 0%,
+            transparent 100%);
+}
+
+.logo {
+    position: relative;
+    z-index: 1;
+    max-inline-size: 91%;
+    max-block-size: 91%;
+    object-fit: contain;
+    display: block;
+    filter:
+        drop-shadow(0 2px 5px rgba(0, 0, 0, 0.18)) contrast(1.04) brightness(1.02);
+}
+
+.logoThemeCycling .logo {
+    max-inline-size: 93%;
+    max-block-size: 93%;
+}
+
+.logoThemeKarate .logo {
+    max-inline-size: 91%;
+    max-block-size: 91%;
+}
+
+.logoThemeBasketball .logo {
+    max-inline-size: 95%;
+    max-block-size: 95%;
+}
+
+.logoThemeFootball .logo {
+    max-inline-size: 98%;
+    max-block-size: 98%;
+    filter:
+        drop-shadow(0 2px 6px rgba(0, 0, 0, 0.14)) contrast(1.08) brightness(1.08);
+}
+
+.headingGroup {
+    display: grid;
+    gap: 0.28rem;
+    min-inline-size: 0;
+}
+
+.eyebrow {
+    margin: 0;
+    font-size: 0.72rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--card-gold);
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(1.06rem, 1.75vw, 1.32rem);
+    line-height: 1.14;
+    font-weight: 800;
+    color: var(--card-heading);
+    text-wrap: balance;
+}
+
+.summary {
+    margin: 0;
+    max-inline-size: 58ch;
+    font-size: clamp(0.91rem, 1.24vw, 0.98rem);
+    line-height: 1.48;
+    font-weight: 600;
+    color: rgba(233, 239, 243, 0.93);
+}
+
+.body {
+    display: grid;
+    gap: 0.84rem;
+    padding:
+        clamp(0.88rem, 1.7vw, 1.06rem) clamp(0.98rem, 1.8vw, 1.22rem) clamp(0.94rem, 1.8vw, 1.08rem);
+}
+
+.copyBlock {
+    display: grid;
+}
+
+.description {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.58;
+    color: var(--card-copy);
+}
+
+.descriptionAccent {
+    color: rgba(199, 134, 21, 0.96);
+    font-weight: 700;
+}
+
+.positioningBlock {
+    display: grid;
+    gap: 0.28rem;
+    padding: 0.68rem 0.8rem;
+    border-radius: 0.92rem;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.024) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(199, 134, 21, 0.1);
+}
+
+.positioningLabel {
+    margin: 0;
+    font-size: 0.68rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(199, 134, 21, 0.84);
+}
+
+.positioningText {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.48;
+    color: var(--card-copy-muted);
+}
+
+.highlightsList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.52rem, 0.8vw, 0.58rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.highlightItem {
+    position: relative;
+    min-inline-size: 0;
+    min-block-size: clamp(2.45rem, 3.1vw, 2.7rem);
+    display: inline-flex;
+    align-items: center;
+    padding:
+        clamp(0.66rem, 1vw, 0.72rem) clamp(0.9rem, 1.2vw, 1rem) clamp(0.66rem, 1vw, 0.72rem) clamp(1.9rem, 2.3vw, 2.1rem);
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.045) 0%,
+            rgba(255, 255, 255, 0.016) 100%);
+    border: 1px solid rgba(199, 134, 21, 0.18);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 6px 14px rgba(0, 0, 0, 0.12);
+    font-size: clamp(0.79rem, 0.92vw, 0.86rem);
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--card-chip-copy);
+}
+
+.highlightItem::before {
+    content: "";
+    position: absolute;
+    left: clamp(0.82rem, 1vw, 0.95rem);
+    top: 50%;
+    inline-size: clamp(0.36rem, 0.45vw, 0.42rem);
+    block-size: clamp(0.36rem, 0.45vw, 0.42rem);
+    border-radius: 999px;
+    transform: translateY(-50%);
+    background:
+        radial-gradient(circle,
+            rgba(255, 221, 126, 1) 0%,
+            rgba(199, 134, 21, 0.96) 62%,
+            rgba(199, 134, 21, 0.18) 100%);
+    box-shadow:
+        0 0 0 3px rgba(199, 134, 21, 0.08),
+        0 0 12px rgba(199, 134, 21, 0.24);
+}
+
+.ctaNote {
+    margin: 0;
+    font-size: 0.86rem;
+    line-height: 1.48;
+    color: rgba(199, 134, 21, 0.9);
+}
+
+.footer {
+    display: grid;
+    gap: 0.72rem;
+    padding:
+        0.88rem clamp(0.98rem, 1.8vw, 1.22rem) clamp(0.98rem, 1.8vw, 1.16rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.016) 0%,
+            rgba(255, 255, 255, 0.006) 100%);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.68rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.socialLink {
+    order: 2;
+    inline-size: 2.65rem;
+    block-size: 2.65rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: rgba(244, 248, 250, 0.96);
+    background:
+        radial-gradient(100% 100% at 30% 20%,
+            rgba(255, 255, 255, 0.14) 0%,
+            rgba(18, 38, 41, 0.96) 100%);
+    border: 1px solid rgba(46, 194, 126, 0.34);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 8px 18px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(46, 194, 126, 0.08);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.ctaButton+.socialLink {
+    margin-left: auto;
+}
+
+.socialLink:hover {
+    transform: translateY(-1px);
+    color: #ffffff;
+    border-color: rgba(46, 194, 126, 0.56);
+    background:
+        radial-gradient(100% 100% at 30% 20%,
+            rgba(255, 255, 255, 0.16) 0%,
+            rgba(28, 70, 60, 0.98) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 10px 22px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(46, 194, 126, 0.12);
+}
+
+.socialLink:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 1px rgba(46, 194, 126, 0.44),
+        0 0 0 6px rgba(46, 194, 126, 0.1);
+}
+
+.socialIcon {
+    inline-size: 1.04rem;
+    block-size: 1.04rem;
+}
+
+.ctaButton {
+    order: 1;
+    position: relative;
+    isolation: isolate;
+    min-block-size: clamp(2.72rem, 3.1vw, 2.85rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: clamp(0.72rem, 1vw, 0.76rem) clamp(0.98rem, 1.35vw, 1.1rem);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: clamp(0.84rem, 0.96vw, 0.9rem);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background 220ms ease,
+        color 180ms ease,
+        box-shadow 220ms ease,
+        filter 220ms ease;
+}
+
+.ctaButton::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.14) 0%,
+            rgba(255, 255, 255, 0.03) 38%,
+            transparent 100%);
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ctaButton::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background:
+        radial-gradient(120% 140% at 20% 0%,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 42%);
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ctaButton>span,
+.ctaButton>svg {
+    position: relative;
+    z-index: 1;
+}
+
+.ctaButton:hover {
+    transform: translateY(-2px);
+    filter: saturate(1.04);
+}
+
+.ctaButton:active {
+    transform: translateY(0);
+}
+
+.ctaButton:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 1px rgba(199, 134, 21, 0.42),
+        0 0 0 6px rgba(199, 134, 21, 0.1);
+}
+
+.ctaPrimary {
+    color: rgba(12, 18, 16, 0.98);
+    background:
+        linear-gradient(135deg,
+            rgba(196, 141, 35, 0.98) 0%,
+            rgba(224, 176, 74, 0.99) 42%,
+            rgba(245, 215, 140, 0.98) 100%);
+    border: 1px solid rgba(237, 206, 128, 0.7);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.34),
+        inset 0 -8px 14px rgba(177, 113, 12, 0.12),
+        0 10px 22px rgba(199, 134, 21, 0.24),
+        0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.ctaPrimary:hover {
+    color: rgba(10, 15, 13, 1);
+    border-color: rgba(245, 218, 150, 0.82);
+    background:
+        linear-gradient(135deg,
+            rgba(205, 151, 42, 1) 0%,
+            rgba(233, 187, 84, 1) 42%,
+            rgba(248, 221, 149, 1) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.38),
+        inset 0 -8px 14px rgba(177, 113, 12, 0.16),
+        0 14px 28px rgba(199, 134, 21, 0.28),
+        0 6px 14px rgba(0, 0, 0, 0.14);
+}
+
+.ctaSecondary {
+    color: rgba(243, 247, 249, 0.96);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.075) 0%,
+            rgba(255, 255, 255, 0.028) 52%,
+            rgba(255, 255, 255, 0.014) 100%);
+    border: 1px solid rgba(199, 134, 21, 0.24);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -10px 18px rgba(0, 0, 0, 0.1),
+        0 8px 18px rgba(0, 0, 0, 0.14);
+    backdrop-filter: blur(8px);
+}
+
+.ctaSecondary:hover {
+    color: #ffffff;
+    border-color: rgba(199, 134, 21, 0.42);
+    background:
+        linear-gradient(180deg,
+            rgba(199, 134, 21, 0.18) 0%,
+            rgba(255, 255, 255, 0.05) 52%,
+            rgba(255, 255, 255, 0.02) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -10px 18px rgba(0, 0, 0, 0.12),
+        0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.ctaIcon {
+    inline-size: 0.98rem;
+    block-size: 0.98rem;
+    flex: 0 0 auto;
+    opacity: 0.92;
+    transform: translateX(0);
+    transition:
+        transform 180ms ease,
+        opacity 180ms ease;
+}
+
+.ctaButton:hover .ctaIcon {
+    opacity: 1;
+    transform: translateX(1px);
+}
+
+.themeAcademy {
+    --card-accent: rgba(46, 194, 126, 0.82);
+}
+
+@media (max-width: 1120px) {
+    .highlightsList {
+        grid-template-columns: 1fr;
+    }
+
+    .highlightItem {
+        min-block-size: 2.55rem;
+        font-size: 0.83rem;
+    }
+
+    .ctaButton {
+        min-block-size: 2.8rem;
+        font-size: 0.87rem;
+    }
+}
+
+@media (max-width: 860px) {
+    .actions {
+        gap: 0.6rem;
+    }
+
+    .highlightItem {
+        padding: 0.68rem 0.92rem 0.68rem 1.95rem;
+        font-size: 0.82rem;
+    }
+
+    .highlightItem::before {
+        left: 0.86rem;
+    }
+
+    .ctaButton {
+        padding: 0.76rem 1rem;
+        font-size: 0.86rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .card {
+        --card-radius: 1.18rem;
+    }
+
+    .header {
+        padding:
+            0.88rem 0.92rem 0.76rem;
+    }
+
+    .body {
+        padding:
+            0.82rem 0.92rem 0.92rem;
+    }
+
+    .footer {
+        padding:
+            0.84rem 0.92rem 0.96rem;
+    }
+
+    .identityBlock {
+        gap: 0.68rem;
+        align-items: flex-start;
+    }
+
+    .logoWrap {
+        inline-size: 4.2rem;
+        block-size: 4.2rem;
+        border-radius: 0.98rem;
+    }
+
+    .logo {
+        max-inline-size: 93%;
+        max-block-size: 93%;
+    }
+
+    .logoThemeCycling .logo {
+        max-inline-size: 94%;
+        max-block-size: 94%;
+    }
+
+    .logoThemeKarate .logo {
+        max-inline-size: 93%;
+        max-block-size: 93%;
+    }
+
+    .logoThemeBasketball .logo {
+        max-inline-size: 95%;
+        max-block-size: 95%;
+    }
+
+    .logoThemeFootball .logo {
+        max-inline-size: 97%;
+        max-block-size: 97%;
+    }
+
+    .title {
+        font-size: 1.02rem;
+    }
+
+    .summary,
+    .description,
+    .positioningText,
+    .ctaNote {
+        font-size: 0.89rem;
+    }
+
+    .highlightsList {
+        grid-template-columns: 1fr;
+    }
+
+    .highlightItem {
+        min-block-size: 2.5rem;
+        padding: 0.68rem 0.9rem 0.68rem 1.9rem;
+        border-radius: 0.92rem;
+        font-size: 0.81rem;
+    }
+
+    .highlightItem::before {
+        left: 0.82rem;
+        inline-size: 0.38rem;
+        block-size: 0.38rem;
+    }
+
+    .actions {
+        align-items: stretch;
+        justify-content: center;
+        gap: 0.58rem;
+    }
+
+    .ctaButton+.socialLink {
+        margin-left: 0;
+    }
+
+    .ctaButton {
+        inline-size: 100%;
+        min-block-size: 2.95rem;
+        padding: 0.82rem 1rem;
+        font-size: 0.89rem;
+    }
+
+    .socialLink {
+        inline-size: 2.55rem;
+        block-size: 2.55rem;
+    }
+
+    .socialIcon {
+        inline-size: 1.02rem;
+        block-size: 1.02rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .highlightItem {
+        min-block-size: 2.42rem;
+        padding: 0.64rem 0.82rem 0.64rem 1.78rem;
+        font-size: 0.79rem;
+        line-height: 1.24;
+    }
+
+    .highlightItem::before {
+        left: 0.76rem;
+        inline-size: 0.34rem;
+        block-size: 0.34rem;
+    }
+
+    .ctaButton {
+        min-block-size: 2.85rem;
+        padding: 0.78rem 0.92rem;
+        font-size: 0.85rem;
+        gap: 0.42rem;
+    }
+
+    .ctaIcon {
+        inline-size: 0.92rem;
+        block-size: 0.92rem;
+    }
+}

@@ -1,52 +1,46 @@
-// src/brands/sports/pages/Academies/sections/AcademiesCardsSection.jsx
 import styles from "./AcademiesCardsSection.module.css";
 
-import SportsAcademyCard from "../../../shared/ui/SportsAcademyCard/SportsAcademyCard.jsx";
-import useStaggeredInView from "../../../shared/hooks/useStaggeredInView.js";
 import sportsBrand from "../../../config/index.js";
+import AcademiesShowcaseCard from "../../../shared/ui/AcademiesShowcaseCard/index.jsx";
 
 export default function AcademiesCardsSection({ data }) {
-  const cards = data?.cards ?? [];
+  const cards = Array.isArray(data?.cards) ? data.cards : [];
   if (!cards.length) return null;
 
   const sectionId = data?.id ? `${data.id}-cards` : "academies-cards";
 
-  const { sectionRef, isActive, getItemDelay } = useStaggeredInView({
-    itemCount: cards.length,
-    baseDelay: 80,
-    threshold: 0.25,
-    rootMargin: "0px 0px -20% 0px",
-    once: false,
-  });
-
   return (
     <section
       id={sectionId}
-      ref={sectionRef}
       aria-label="Academias Sunlive — lista de academias"
       className={styles.cardsSection}
     >
       <div className={styles.cardsInner}>
         <div className={styles.cardsGrid}>
-          {cards.map((card, index) => {
+          {cards.map((card) => {
             const resolvedBook = card.book?.bookKey
               ? sportsBrand.books?.[card.book.bookKey]
               : null;
 
             return (
-              <div
-                key={card.key}
-                className={styles.cardWrap}
-                data-visible={isActive ? "true" : "false"}
-                style={{ transitionDelay: getItemDelay(index) }}
-              >
-                <SportsAcademyCard
+              <div key={card.key} className={styles.cardWrap}>
+                <AcademiesShowcaseCard
+                  eyebrow={card.eyebrow}
+                  modelType={card.modelType}
+                  logoTheme={card.logoTheme}
+                  title={card.title}
                   logoSrc={card.logo?.src}
                   logoAlt={card.logo?.alt}
-                  title={card.title}
+                  summary={card.summary}
                   description={card.description}
+                  descriptionAccent={card.descriptionAccent}
+                  positioning={card.positioning}
+                  highlights={card.highlights}
+                  ctaNote={card.ctaNote}
                   instagramHref={card.instagram?.href}
+                  instagramLabel={card.instagram?.label}
                   facebookHref={card.facebook?.href}
+                  facebookLabel={card.facebook?.label}
                   moreHref={card.more?.href}
                   moreLabel={card.more?.label}
                   bookHref={resolvedBook?.href}

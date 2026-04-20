@@ -2,8 +2,10 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
-
-
+import EventsOverviewSection from "./sections/EventsOverviewSection.jsx";
+import EventsModalitiesSection from "./sections/EventsModalitiesSection.jsx";
+import EventsOperatingModelSection from "./sections/EventsOperatingModelSection.jsx";
+import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 
 export default function EventsPage() {
   const data = sportsBrand.sections?.events;
@@ -33,8 +35,10 @@ export default function EventsPage() {
           </header>
 
           <div className={styles.sections}>
-          
-           
+            <EventsOverviewSection data={data.operationalOverview} />
+            <EventsModalitiesSection data={data.featuredModalities} />
+            <EventsOperatingModelSection data={data.operatingModel} />
+            <SportsClosingCTA data={data.cta} />
           </div>
         </div>
       </main>

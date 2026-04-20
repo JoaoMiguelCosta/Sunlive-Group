@@ -1,17 +1,17 @@
 import {
   hero,
-
- 
+  operationalOverview,
+  featuredModalities,
+  operatingModel,
+  cta,
 } from "../sections/events/index.js";
 
 const events = {
-  id: "events",
-  sections: {
-    hero,
- 
-    
-   
-  },
+  hero,
+  operationalOverview,
+  featuredModalities,
+  operatingModel,
+  cta,
 };
 
 export default events;

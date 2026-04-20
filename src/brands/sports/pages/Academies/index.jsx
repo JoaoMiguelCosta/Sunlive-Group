@@ -4,6 +4,7 @@ import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import AcademiesCardsSection from "./sections/AcademiesCardsSection.jsx";
+import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 
 
 export default function AcademiesPage() {
@@ -36,6 +37,7 @@ export default function AcademiesPage() {
           <div className={styles.sections}>
            
             <AcademiesCardsSection data={data} />
+            <SportsClosingCTA data={data.cta} />
             
           </div>
         </div>
