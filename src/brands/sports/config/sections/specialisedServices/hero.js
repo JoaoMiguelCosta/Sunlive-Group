@@ -4,13 +4,13 @@ const specialisedServicesHero = {
     "Conhecimento, acompanhamento e intervenção especializada ao serviço do rendimento.",
   title: "Serviços Especializados",
   description:
-    "Uma estrutura multidisciplinar pensada para apoiar atletas, equipas e projetos desportivos através de serviços técnicos e científicos que reforçam a performance, aceleram a recuperação, previnem risco e sustentam a evolução de forma integrada.",
+    "Uma estrutura multidisciplinar pensada para apoiar atletas, equipas e projetos desportivos através de serviços técnicos, analíticos e especializados que reforçam o rendimento, apoiam os processos de recuperação, ajudam a prevenir risco e sustentam a evolução de forma integrada.",
   supportingText:
-    "Na Sunlive Sports, os Serviços Especializados combinam profissionais qualificados, metodologias específicas e acompanhamento ajustado à realidade de cada contexto desportivo. Da preparação física à psicologia, da análise ao suporte clínico e estratégico, cada área contribui para um trabalho mais consistente, mais seguro e mais orientado para objetivos concretos.",
+    "Na Sunlive Sports, os Serviços Especializados articulam acompanhamento qualificado, metodologias ajustadas e intervenção orientada para a realidade de cada contexto desportivo. Da preparação física à psicologia, da análise de vídeo à fisioterapia e à consultoria, cada área contribui para um trabalho mais consistente, mais ajustado ao contexto e mais orientado para objetivos concretos.",
   proofPoints: [
-    "Apoio técnico, científico e multidisciplinar",
+    "Acompanhamento técnico, analítico e multidisciplinar",
     "Intervenção ajustada ao atleta, à equipa e à modalidade",
-    "Serviços orientados para prevenção, rendimento e recuperação",
+    "Serviços orientados para rendimento, prevenção e recuperação",
   ],
   stats: [
     {
@@ -19,11 +19,12 @@ const specialisedServicesHero = {
     },
     {
       value: "Especialização",
-      label: "Profissionais qualificados em contexto de alto rendimento",
+      label: "Intervenção qualificada ajustada ao contexto competitivo",
     },
     {
       value: "Evolução",
-      label: "Soluções ajustadas a objetivos concretos de performance",
+      label:
+        "Soluções alinhadas com objetivos concretos de desenvolvimento e rendimento",
     },
   ],
   ui: {

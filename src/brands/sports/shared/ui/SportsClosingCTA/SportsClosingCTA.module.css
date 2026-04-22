@@ -1,6 +1,6 @@
 .section {
     width: 100%;
-    margin-block: clamp(2.8rem, 5vw, 4.25rem) clamp(0.75rem, 1.4vw, 1.25rem);
+  
 }
 
 .reveal {
@@ -407,10 +407,7 @@
 }
 
 @media (max-width: 719.98px) {
-    .section {
-        margin-block: 2.4rem 0.75rem;
-    }
-
+ 
     .content {
         padding: 1rem;
     }

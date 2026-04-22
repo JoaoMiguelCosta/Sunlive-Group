@@ -28,6 +28,9 @@ export default function EventsOverviewSection({ data }) {
     Boolean(editorialBlock.lead) ||
     editorialBody.length > 0;
 
+  const hasEditorialPanel =
+    Boolean(editorialBlock.lead) || editorialBody.length > 0;
+
   const hasCapabilities = capabilityItems.length > 0;
 
   if (!hasIntro && !hasCapabilities) {
@@ -47,21 +50,29 @@ export default function EventsOverviewSection({ data }) {
         <div className={styles.topLayout}>
           {hasIntro ? (
             <header className={styles.editorialColumn}>
-              {sectionIntro.eyebrow ? (
-                <p className={styles.eyebrow}>{sectionIntro.eyebrow}</p>
-              ) : null}
+              {(sectionIntro.eyebrow ||
+                sectionIntro.title ||
+                sectionIntro.description) && (
+                <div className={styles.editorialIntro}>
+                  {sectionIntro.eyebrow ? (
+                    <p className={styles.eyebrow}>{sectionIntro.eyebrow}</p>
+                  ) : null}
 
-              {sectionIntro.title ? (
-                <h2 id={titleId} className={styles.title}>
-                  {sectionIntro.title}
-                </h2>
-              ) : null}
+                  {sectionIntro.title ? (
+                    <h2 id={titleId} className={styles.title}>
+                      {sectionIntro.title}
+                    </h2>
+                  ) : null}
 
-              {sectionIntro.description ? (
-                <p className={styles.description}>{sectionIntro.description}</p>
-              ) : null}
+                  {sectionIntro.description ? (
+                    <p className={styles.description}>
+                      {sectionIntro.description}
+                    </p>
+                  ) : null}
+                </div>
+              )}
 
-              {(editorialBlock.lead || editorialBody.length > 0) && (
+              {hasEditorialPanel ? (
                 <div className={styles.editorialPanel}>
                   {editorialBlock.lead ? (
                     <p className={styles.editorialLead}>
@@ -79,7 +90,7 @@ export default function EventsOverviewSection({ data }) {
                     </div>
                   ) : null}
                 </div>
-              )}
+              ) : null}
             </header>
           ) : null}
 

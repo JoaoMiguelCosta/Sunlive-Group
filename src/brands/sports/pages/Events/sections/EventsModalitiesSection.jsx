@@ -16,7 +16,6 @@ export default function EventsModalitiesSection({ data }) {
   const sectionId = data.id || "events-featured-modalities";
   const titleId = data.title ? `${sectionId}-title` : undefined;
   const items = hasItems(data.items) ? data.items : [];
-
   const hasHeading = data.eyebrow || data.title || data.description;
 
   if (!hasHeading && items.length === 0) {
@@ -32,6 +31,7 @@ export default function EventsModalitiesSection({ data }) {
       <div className={styles.surface}>
         <div className={styles.ambientGlow} aria-hidden="true" />
         <div className={styles.ambientGlowSecondary} aria-hidden="true" />
+        <div className={styles.surfaceNoise} aria-hidden="true" />
 
         {hasHeading ? (
           <header className={styles.header}>
@@ -52,7 +52,12 @@ export default function EventsModalitiesSection({ data }) {
         ) : null}
 
         {items.length > 0 ? (
-          <div className={styles.grid} aria-label={data.ariaLabel}>
+          <div
+            className={styles.grid}
+            aria-label={
+              data.ariaLabel || data.title || "Modalidades em destaque"
+            }
+          >
             {items.map((item, index) => {
               const disciplines = hasItems(item.disciplines)
                 ? item.disciplines
@@ -63,7 +68,7 @@ export default function EventsModalitiesSection({ data }) {
 
               return (
                 <article
-                  key={item.key}
+                  key={item.key || `${sectionId}-card-${index}`}
                   className={`${styles.card} ${getCardClassName(index)}`}
                 >
                   <div className={styles.cardTop}>
@@ -85,7 +90,12 @@ export default function EventsModalitiesSection({ data }) {
 
                     {item.emphasis ? (
                       <p className={styles.cardEmphasis}>{item.emphasis}</p>
-                    ) : null}
+                    ) : (
+                      <span
+                        className={styles.cardEmphasisPlaceholder}
+                        aria-hidden="true"
+                      />
+                    )}
                   </div>
 
                   {(disciplines.length > 0 || eventExamples.length > 0) && (
@@ -101,7 +111,7 @@ export default function EventsModalitiesSection({ data }) {
                           <ul className={styles.metaList}>
                             {disciplines.map((entry, entryIndex) => (
                               <li
-                                key={`${item.key}-discipline-${entryIndex}`}
+                                key={`${item.key || index}-discipline-${entryIndex}`}
                                 className={styles.metaItem}
                               >
                                 <span
@@ -126,7 +136,7 @@ export default function EventsModalitiesSection({ data }) {
                           <ul className={styles.metaList}>
                             {eventExamples.map((entry, entryIndex) => (
                               <li
-                                key={`${item.key}-event-${entryIndex}`}
+                                key={`${item.key || index}-event-${entryIndex}`}
                                 className={styles.metaItem}
                               >
                                 <span

@@ -42,7 +42,7 @@ const featuredModalities = {
         "No ciclismo, a proposta assenta num contexto técnico forte, associado a Anadia, ao velódromo e a ambientes de preparação e competição exigentes.",
       emphasis:
         "A operação combina camps técnicos, momentos de performance especializada e eventos competitivos com enquadramento oficial.",
-      disciplinesLabel: "Disciplinas e contextos",
+      disciplinesLabel: "Disciplinas em foco",
       disciplines: ["Pista", "BMX", "XCO", "Estrada"],
       eventExamplesLabel: "Formatos e eventos",
       eventExamples: [
@@ -68,7 +68,7 @@ const featuredModalities = {
         "Parceria institucional",
         "Acolhimento de equipas",
       ],
-      eventExamplesLabel: "Exemplos",
+      eventExamplesLabel: "Formatos e Eventos",
       eventExamples: ["Sunlive International Tournament"],
     },
   ],

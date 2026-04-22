@@ -1,0 +1,502 @@
+.selector {
+    position: relative;
+    top: auto;
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: start;
+    gap: 1.08rem;
+    min-inline-size: 0;
+    block-size: auto;
+    padding:
+        clamp(1rem, 1.52vw, 1.16rem) clamp(0.98rem, 1.48vw, 1.1rem) clamp(1.06rem, 1.56vw, 1.18rem);
+    border-radius: clamp(1.34rem, 1.9vw, 1.66rem);
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(255, 255, 255, 0.055);
+    background:
+        radial-gradient(132% 165% at 0% 0%,
+            rgba(46, 194, 126, 0.105) 0%,
+            transparent 42%),
+        radial-gradient(120% 150% at 100% 100%,
+            rgba(199, 134, 21, 0.08) 0%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(6, 12, 17, 0.965) 0%,
+            rgba(4, 8, 12, 0.988) 100%);
+    backdrop-filter: blur(14px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.025),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.26),
+        0 18px 38px rgba(0, 0, 0, 0.16);
+}
+
+.selector::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgba(46, 194, 126, 0.14) 0%,
+            rgba(199, 134, 21, 0.28) 100%);
+    opacity: 0.84;
+}
+
+.selector::after {
+    content: "";
+    position: absolute;
+    inset: auto -18% -22% auto;
+    inline-size: clamp(10rem, 24vw, 16rem);
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgba(46, 194, 126, 0.11) 0%,
+            rgba(46, 194, 126, 0.03) 42%,
+            transparent 72%);
+    opacity: 0.72;
+    filter: blur(14px);
+    pointer-events: none;
+}
+
+.selectorHeader {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.34rem;
+    padding-bottom: 0.1rem;
+}
+
+.kicker {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--sl-gold-400, #C78615) 80%, white 20%);
+}
+
+.heading {
+    margin: 0;
+    font-size: clamp(1.06rem, 1.2vw, 1.2rem);
+    line-height: 1.2;
+    font-weight: 700;
+    color: rgba(248, 250, 252, 0.97);
+}
+
+.list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-auto-rows: min-content;
+    align-content: start;
+    gap: 0.72rem;
+    min-inline-size: 0;
+    min-block-size: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.item {
+    min-inline-size: 0;
+}
+
+.trigger {
+    position: relative;
+    overflow: hidden;
+    inline-size: 100%;
+    min-inline-size: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.8rem;
+    align-items: center;
+    padding: 0.9rem 0.94rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.1rem;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.022) 0%,
+            rgba(255, 255, 255, 0.008) 100%),
+        linear-gradient(145deg,
+            rgba(8, 22, 19, 0.34) 0%,
+            rgba(10, 14, 20, 0.22) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.018),
+        0 8px 20px rgba(0, 0, 0, 0.12);
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease,
+        filter 180ms ease;
+}
+
+.trigger::before {
+    content: "";
+    position: absolute;
+    inset: 12% auto 12% 0;
+    inline-size: 3px;
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg,
+            rgba(199, 134, 21, 0) 0%,
+            rgba(199, 134, 21, 0.96) 50%,
+            rgba(255, 222, 138, 0.82) 72%,
+            rgba(199, 134, 21, 0) 100%);
+    opacity: 0;
+    transform: scaleY(0.42);
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+}
+
+.trigger::after {
+    content: "";
+    position: absolute;
+    inset: auto auto -42% -8%;
+    inline-size: 9rem;
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgba(199, 134, 21, 0.22) 0%,
+            rgba(199, 134, 21, 0.08) 42%,
+            transparent 74%);
+    opacity: 0;
+    filter: blur(16px);
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+    pointer-events: none;
+}
+
+.trigger:hover {
+    transform: translateY(-1px);
+    border-color: rgba(199, 134, 21, 0.22);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.034) 0%,
+            rgba(255, 255, 255, 0.014) 100%),
+        linear-gradient(145deg,
+            rgba(22, 18, 10, 0.42) 0%,
+            rgba(15, 14, 18, 0.3) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.trigger:hover::before {
+    opacity: 0.56;
+    transform: scaleY(0.78);
+}
+
+.trigger:hover::after {
+    opacity: 0.72;
+    transform: scale(1.03);
+}
+
+.trigger[data-active="true"] {
+    border-color: rgba(199, 134, 21, 0.34);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.016) 100%),
+        linear-gradient(140deg,
+            rgba(36, 24, 9, 0.72) 0%,
+            rgba(18, 16, 20, 0.42) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.038),
+        0 0 0 1px rgba(199, 134, 21, 0.12),
+        0 16px 34px rgba(0, 0, 0, 0.2),
+        0 0 22px rgba(199, 134, 21, 0.08);
+}
+
+.trigger[data-active="true"]::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.trigger[data-active="true"]::after {
+    opacity: 0.96;
+    transform: scale(1.05);
+}
+
+.trigger[data-active="true"]:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 222, 138, 0.42);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.058) 0%,
+            rgba(255, 255, 255, 0.02) 100%),
+        linear-gradient(140deg,
+            rgba(42, 28, 11, 0.8) 0%,
+            rgba(20, 17, 22, 0.46) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.042),
+        0 0 0 1px rgba(199, 134, 21, 0.16),
+        0 18px 36px rgba(0, 0, 0, 0.22),
+        0 0 26px rgba(199, 134, 21, 0.11);
+}
+
+.trigger:focus-visible {
+    outline: none;
+    border-color: rgba(255, 216, 122, 0.36);
+    box-shadow:
+        0 0 0 3px rgba(199, 134, 21, 0.16),
+        0 0 0 6px rgba(199, 134, 21, 0.08);
+}
+
+.triggerInner {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.8rem;
+    align-items: center;
+    min-inline-size: 0;
+}
+
+.iconWrap {
+    position: relative;
+    display: grid;
+    place-items: center;
+    inline-size: 2.46rem;
+    block-size: 2.46rem;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    border: 1px solid rgba(199, 134, 21, 0.2);
+    background:
+        radial-gradient(120% 120% at 30% 25%,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.012) 56%),
+        linear-gradient(145deg,
+            rgba(26, 20, 10, 0.62) 0%,
+            rgba(14, 16, 22, 0.44) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        0 8px 18px rgba(0, 0, 0, 0.14);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+}
+
+.trigger:hover .iconWrap {
+    border-color: rgba(199, 134, 21, 0.28);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.032),
+        0 10px 22px rgba(0, 0, 0, 0.16),
+        0 0 14px rgba(199, 134, 21, 0.05);
+}
+
+.trigger[data-active="true"] .iconWrap {
+    border-color: rgba(255, 222, 138, 0.42);
+    background:
+        radial-gradient(120% 120% at 30% 25%,
+            rgba(255, 255, 255, 0.07) 0%,
+            rgba(255, 255, 255, 0.016) 56%),
+        linear-gradient(145deg,
+            rgba(42, 28, 10, 0.82) 0%,
+            rgba(17, 17, 22, 0.5) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.042),
+        0 0 0 1px rgba(199, 134, 21, 0.14),
+        0 12px 24px rgba(0, 0, 0, 0.18),
+        0 0 18px rgba(199, 134, 21, 0.1);
+    transform: translateY(-1px);
+}
+
+.textWrap {
+    display: grid;
+    gap: 0.24rem;
+    min-inline-size: 0;
+}
+
+.title {
+    font-size: 1rem;
+    line-height: 1.26;
+    font-weight: 700;
+    color: rgba(248, 250, 252, 0.965);
+    transition: color 180ms ease, text-shadow 180ms ease;
+}
+
+.eyebrow {
+    font-size: 0.78rem;
+    line-height: 1.36;
+    color: rgba(226, 232, 240, 0.68);
+    transition: color 180ms ease, opacity 180ms ease;
+}
+
+.trigger:hover .title {
+    color: rgba(248, 250, 252, 0.985);
+}
+
+.trigger:hover .eyebrow {
+    color: rgba(226, 232, 240, 0.76);
+}
+
+.trigger[data-active="true"] .title {
+    color: rgba(255, 250, 239, 0.995);
+    text-shadow: 0 0 12px rgba(199, 134, 21, 0.08);
+}
+
+.trigger[data-active="true"] .eyebrow {
+    color: rgba(255, 216, 122, 0.92);
+}
+
+.statusDot {
+    inline-size: 0.56rem;
+    block-size: 0.56rem;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.24);
+    transition:
+        background 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease,
+        opacity 180ms ease;
+}
+
+.trigger:hover .statusDot {
+    background: rgba(199, 134, 21, 0.42);
+}
+
+.trigger[data-active="true"] .statusDot {
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgba(255, 247, 214, 1) 0%,
+            rgba(255, 210, 92, 0.98) 30%,
+            rgba(199, 134, 21, 0.96) 58%,
+            rgba(144, 96, 11, 0.9) 100%);
+    box-shadow:
+        0 0 0 4px rgba(199, 134, 21, 0.12),
+        0 0 16px rgba(199, 134, 21, 0.22);
+    transform: scale(1.12);
+}
+
+@media (min-width: 1181px) and (max-width: 1449px) {
+    .selector {
+        gap: 0.88rem;
+        padding: 0.88rem 0.82rem 0.92rem;
+        border-radius: 1.22rem;
+    }
+
+    .selectorHeader {
+        gap: 0.28rem;
+        padding-bottom: 0.06rem;
+    }
+
+    .heading {
+        font-size: 1.02rem;
+    }
+
+    .list {
+        gap: 0.58rem;
+    }
+
+    .trigger {
+        padding: 0.74rem 0.78rem;
+        border-radius: 0.98rem;
+    }
+
+    .triggerInner {
+        gap: 0.66rem;
+    }
+
+    .iconWrap {
+        inline-size: 2.18rem;
+        block-size: 2.18rem;
+    }
+
+    .title {
+        font-size: 0.95rem;
+        line-height: 1.22;
+    }
+
+    .eyebrow {
+        font-size: 0.72rem;
+        line-height: 1.28;
+    }
+
+    .statusDot {
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
+    }
+}
+
+@media (min-width: 1181px) and (max-width: 1449px) and (max-height: 760px) {
+    .selector {
+        gap: 0.78rem;
+        padding: 0.8rem 0.76rem 0.84rem;
+    }
+
+    .selectorHeader {
+        gap: 0.24rem;
+    }
+
+    .heading {
+        font-size: 0.98rem;
+    }
+
+    .list {
+        gap: 0.5rem;
+    }
+
+    .trigger {
+        padding: 0.66rem 0.72rem;
+    }
+
+    .triggerInner {
+        gap: 0.58rem;
+    }
+
+    .iconWrap {
+        inline-size: 2.02rem;
+        block-size: 2.02rem;
+    }
+
+    .title {
+        font-size: 0.9rem;
+        line-height: 1.18;
+    }
+
+    .eyebrow {
+        font-size: 0.69rem;
+        line-height: 1.2;
+    }
+}
+
+@media (max-width: 1180px) {
+    .selector {
+        gap: 0.92rem;
+        padding: 0.92rem 0.86rem 0.98rem;
+        border-radius: 1.22rem;
+    }
+
+    .trigger {
+        padding: 0.8rem 0.82rem;
+        border-radius: 1rem;
+    }
+
+    .iconWrap {
+        inline-size: 2.24rem;
+        block-size: 2.24rem;
+    }
+
+    .title {
+        font-size: 0.96rem;
+    }
+
+    .eyebrow {
+        font-size: 0.74rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .triggerInner {
+        gap: 0.64rem;
+    }
+}

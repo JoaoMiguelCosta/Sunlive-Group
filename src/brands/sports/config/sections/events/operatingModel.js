@@ -9,25 +9,25 @@ const operatingModel = {
     points: [
       {
         key: "sport-operation",
-        title: "Desporto + operação",
+        title: "Desporto + Operação",
         description:
           "Competição, treino, logística e execução operacional articulados num mesmo fluxo.",
       },
       {
         key: "hospitality-support",
-        title: "Hospitalidade + suporte",
+        title: "Hospitalidade + Suporte",
         description:
           "Estadia, alimentação, acolhimento e apoio local integrados na experiência.",
       },
       {
         key: "technical-context",
-        title: "Contexto técnico + credibilidade",
+        title: "Contexto técnico + Credibilidade",
         description:
           "Parceiros, especialistas e infraestruturas reforçam a solidez do projeto.",
       },
       {
         key: "format-adaptation",
-        title: "Adaptação ao formato",
+        title: "Adaptação ao Formato",
         description:
           "Cada evento pode responder a objetivos competitivos, formativos ou técnicos.",
       },

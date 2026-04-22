@@ -1,12 +1,8 @@
 import styles from "../../layouts/SportsPageLayout.module.css";
-
 import sportsBrand from "../../config/index.js";
-
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
-import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
-
 import AreasSection from "./sections/AreasSection.jsx";
-
+import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 
 export default function SpecialisedServicesPage() {
   const data = sportsBrand.sections?.specialisedServices;
@@ -36,26 +32,8 @@ export default function SpecialisedServicesPage() {
           </header>
 
           <div className={styles.sections}>
-       
-
-            {data.areasIntro ? (
-              <section
-                className={styles.heroSection}
-                aria-label={data.areasIntro?.title || "Áreas de Especialização"}
-              >
-                <HeadlineBlock
-                  theme="sports"
-                  variant="banded"
-                  align="center"
-                  max="lg"
-                  title={data.areasIntro?.title}
-                  lead={data.areasIntro?.lead}
-                />
-              </section>
-            ) : null}
-
             <AreasSection data={data} />
-    
+            <SportsClosingCTA data={data.cta} />
           </div>
         </div>
       </main>
