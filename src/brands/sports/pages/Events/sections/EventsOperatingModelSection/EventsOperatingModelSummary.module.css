@@ -1,0 +1,85 @@
+.summaryPanelInner {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 0.86rem;
+    min-inline-size: 0;
+    min-block-size: 100%;
+    padding: var(--top-align-inset);
+    border-radius: clamp(1.04rem, 1.45vw, 1.18rem);
+    border: 1px solid rgba(199, 134, 21, 0.18);
+    background:
+        radial-gradient(120% 160% at 100% 0%,
+            rgba(199, 134, 21, 0.15) 0%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.016) 100%),
+        linear-gradient(145deg,
+            rgba(9, 17, 21, 0.962) 0%,
+            rgba(5, 10, 14, 0.99) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.034),
+        0 18px 34px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.summaryPanelInner::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgba(199, 134, 21, 0.88) 0%,
+            rgba(46, 194, 126, 0.4) 68%,
+            rgba(255, 255, 255, 0) 100%);
+    opacity: 0.84;
+}
+
+.summaryPanelInner::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    inline-size: 1.2rem;
+    block-size: 1.2rem;
+    border-top-left-radius: inherit;
+    border-top: 1px solid rgba(199, 134, 21, 0.88);
+    border-left: 1px solid rgba(199, 134, 21, 0.52);
+    opacity: 0.84;
+    pointer-events: none;
+}
+
+.summaryEyebrow {
+    margin: 0;
+    font-size: 0.76rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(199, 134, 21, 0.94);
+}
+
+.summaryLead {
+    margin: 0;
+    font-size: clamp(1.16rem, 1.65vw, 1.46rem);
+    line-height: 1.14;
+    letter-spacing: -0.028em;
+    color: rgba(255, 255, 255, 0.975);
+    text-wrap: balance;
+}
+
+.summaryConclusion,
+.summaryNote {
+    margin: 0;
+    font-size: 0.93rem;
+    line-height: 1.66;
+}
+
+.summaryConclusion {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.summaryNote {
+    color: rgba(255, 255, 255, 0.6);
+}

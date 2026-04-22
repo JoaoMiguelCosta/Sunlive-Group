@@ -1,0 +1,179 @@
+.mediaPanel {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    min-width: 0;
+}
+
+.figure,
+.placeholder {
+    position: relative;
+    inline-size: 100%;
+    block-size: 100%;
+    min-block-size: 100%;
+    border-radius: clamp(1.15rem, 1.8vw, 1.5rem);
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(255, 255, 255, 0.055);
+    transition:
+        transform 0.32s ease,
+        border-color 0.32s ease,
+        box-shadow 0.32s ease,
+        filter 0.32s ease;
+}
+
+.mediaPanel:hover .figure,
+.mediaPanel:hover .placeholder,
+.mediaPanel:focus-within .figure,
+.mediaPanel:focus-within .placeholder {
+    transform: scale(1.006);
+    border-color: rgba(214, 166, 64, 0.18);
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.14);
+    filter: saturate(1.03);
+}
+
+.figure {
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+}
+
+.image {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+}
+
+.mediaOverlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg,
+            rgba(4, 10, 18, 0.16) 0%,
+            rgba(4, 10, 18, 0.4) 100%);
+    pointer-events: none;
+}
+
+.mediaBadge {
+    position: absolute;
+    inset: auto auto 0.95rem 0.95rem;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2rem;
+    padding: 0.48rem 0.82rem;
+    border-radius: 999px;
+    background: rgba(7, 13, 21, 0.68);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(199, 134, 21, 0.18);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(240, 243, 247, 0.92);
+}
+
+.placeholder {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 1.4rem;
+    aspect-ratio: 16 / 11;
+    background:
+        radial-gradient(115% 120% at 0% 0%,
+            color-mix(in oklab, var(--program-accent), transparent 84%) 0%,
+            transparent 46%),
+        radial-gradient(110% 120% at 100% 100%,
+            color-mix(in oklab, var(--program-gold), transparent 86%) 0%,
+            transparent 48%),
+        linear-gradient(135deg,
+            rgba(7, 15, 27, 0.985) 0%,
+            rgba(4, 9, 16, 1) 100%);
+}
+
+.placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03) 0,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px,
+            transparent 9px);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.placeholderGlow {
+    position: absolute;
+    inset: auto auto -18% -8%;
+    inline-size: 11rem;
+    block-size: 11rem;
+    border-radius: 999px;
+    background: radial-gradient(circle,
+            color-mix(in oklab, var(--program-gold), transparent 62%) 0%,
+            transparent 68%);
+    filter: blur(22px);
+    opacity: 0.58;
+    pointer-events: none;
+}
+
+.placeholderSport,
+.placeholderMeta {
+    position: relative;
+    z-index: 1;
+}
+
+.placeholderSport {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: rgba(240, 243, 247, 0.96);
+}
+
+.placeholderMeta {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(221, 228, 237, 0.65);
+}
+
+@media (min-width: 980px) {
+
+    .figure,
+    .placeholder {
+        aspect-ratio: auto;
+    }
+}
+
+@media (max-width: 979.98px) {
+
+    .figure,
+    .placeholder {
+        min-block-size: 0;
+        aspect-ratio: 16 / 10;
+    }
+}
+
+@media (max-width: 720px) {
+
+    .figure,
+    .placeholder {
+        aspect-ratio: 16 / 11;
+    }
+}
+
+@media (max-width: 560px) {
+
+    .figure,
+    .placeholder {
+        aspect-ratio: 5 / 4;
+    }
+}

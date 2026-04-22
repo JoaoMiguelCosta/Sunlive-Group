@@ -2,9 +2,9 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
-import EventsOverviewSection from "./sections/EventsOverviewSection.jsx";
-import EventsModalitiesSection from "./sections/EventsModalitiesSection.jsx";
-import EventsOperatingModelSection from "./sections/EventsOperatingModelSection.jsx";
+import EventsOverviewSection from "./sections/EventsOverviewSection/index.jsx";
+import EventsModalitiesSection from "./sections/EventsModalitiesSection/index.jsx";
+import EventsOperatingModelSection from "./sections/EventsOperatingModelSection/index.jsx";
 import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 
 export default function EventsPage() {

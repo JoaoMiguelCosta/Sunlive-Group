@@ -1,29 +1,29 @@
 const educationHero = {
   eyebrow: "Sunlive Sports",
   secondaryLine:
-    "Educação, desenvolvimento e orientação num percurso preparado para o futuro.",
+    "Uma proposta educativa integrada no universo Sunlive Group, com destaque para a Pro Football Academy Portugal.",
   title: "Educação",
   description:
-    "Uma proposta educativa pensada para estudantes-atletas que procuram conciliar exigência académica, desenvolvimento desportivo e preparação pessoal num percurso estruturado, flexível e orientado para oportunidades reais em Portugal e no contexto internacional.",
+    "Na Sunlive Sports, a Educação afirma-se através de um percurso pensado para estudantes-atletas que precisam de conciliar treino diário, exigência escolar e preparação para oportunidades futuras em Portugal e no contexto internacional.",
   supportingText:
-    "Na Sunlive Sports, a Educação integra níveis de ensino, certificações e percursos profissionais ligados ao desporto, articulando formação académica, acompanhamento pedagógico e enquadramento ajustado à rotina de treino. Do básico ao superior, criamos condições para formar pessoas mais preparadas, mais autónomas e mais capazes de transformar talento em futuro.",
+    "Com a Pro Football Academy Portugal como referência mais visível deste modelo, a Sunlive Sports articula formação académica, rotina de academia e acompanhamento contínuo para criar um percurso mais equilibrado, mais flexível e mais preparado para o futuro. Do 7.º ano ao ensino superior e à formação técnica, o objetivo é claro: evoluir no futebol sem desligar da escola, da progressão académica e da construção de um caminho profissional sólido.",
   proofPoints: [
-    "Percurso educativo articulado com a realidade do treino",
-    "Formação com abertura nacional e internacional",
-    "Ensino, orientação e progressão ligados ao universo do desporto",
+    "Sunlive Sports com proposta educativa integrada no universo Sunlive Group",
+    "Pro Football Academy Portugal com percursos académicos certificados e flexíveis",
+    "Modelo pensado para articular estudo, treino e rotina de academia",
   ],
   stats: [
     {
-      value: "Equilíbrio",
-      label: "Educação e treino integrados num mesmo percurso",
+      value: "13+",
+      label: "Academia residencial para atletas a partir dos 13 anos",
     },
     {
-      value: "Projeção",
-      label: "Certificações e caminhos com alcance nacional e internacional",
+      value: "7.º–12.º",
+      label: "Progressão escolar do 3.º ciclo ao ensino secundário",
     },
     {
-      value: "Futuro",
-      label: "Formação orientada para continuidade académica e profissional",
+      value: "18+",
+      label: "Continuidade com ensino superior, Gap Year e cursos UEFA",
     },
   ],
   ui: {

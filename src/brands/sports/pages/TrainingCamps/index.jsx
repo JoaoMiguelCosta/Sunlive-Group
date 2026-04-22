@@ -4,7 +4,7 @@ import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
-import ProgramsSection from "./sections/ProgramsSection.jsx";
+import ProgramsSection from "./sections/ProgramsSection/index.jsx";
 
 export default function TrainingCampsPage() {
   const data = sportsBrand.sections?.trainingCamps;

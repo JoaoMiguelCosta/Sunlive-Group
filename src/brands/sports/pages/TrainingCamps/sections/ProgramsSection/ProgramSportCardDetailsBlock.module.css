@@ -1,0 +1,69 @@
+.stack {
+    display: grid;
+    gap: 0.82rem;
+}
+
+.block {
+    display: grid;
+    align-content: start;
+    gap: 0.65rem;
+}
+
+.blockTitle {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in oklab,
+            rgb(229, 189, 80),
+            rgb(61, 209, 135) 28%);
+}
+
+.audience {
+    margin: 0;
+    max-width: 46rem;
+    font-size: 0.94rem;
+    line-height: 1.72;
+    color: rgba(218, 225, 235, 0.84);
+}
+
+.pillarsList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.55rem;
+}
+
+.pillarItem {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgba(226, 232, 239, 0.86);
+}
+
+.pillarItem::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.58em;
+    inline-size: 0.42rem;
+    block-size: 0.42rem;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgb(61, 209, 135) 0%,
+            rgb(229, 189, 80) 68%,
+            transparent 100%);
+    box-shadow: 0 0 10px rgba(61, 209, 135, 0.24);
+}
+
+@media (max-width: 720px) {
+
+    .audience,
+    .pillarItem {
+        font-size: 0.9rem;
+    }
+}

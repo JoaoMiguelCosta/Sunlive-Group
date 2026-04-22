@@ -1,0 +1,211 @@
+.block {
+    display: grid;
+    align-content: start;
+    gap: 0.65rem;
+}
+
+.blockTitle {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in oklab,
+            rgb(229, 189, 80),
+            rgb(61, 209, 135) 28%);
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.chip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.56rem;
+    min-block-size: 2.3rem;
+    padding: 0.56rem 0.95rem 0.56rem 0.82rem;
+    border-radius: 999px;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(120% 160% at 0% 50%,
+            rgba(199, 134, 21, 0.05) 0%,
+            rgba(199, 134, 21, 0.018) 18%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(10, 20, 28, 0.78) 0%,
+            rgba(6, 14, 21, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    font-size: 0.83rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: rgba(235, 239, 245, 0.9);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        inset 0 0 0 1px rgba(255, 191, 73, 0.018),
+        0 6px 14px rgba(0, 0, 0, 0.12);
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease,
+        box-shadow 0.22s ease,
+        color 0.22s ease;
+    outline: none;
+}
+
+.chip::before {
+    content: "";
+    inline-size: 0.42rem;
+    block-size: 0.42rem;
+    flex: 0 0 0.42rem;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 35%,
+            rgba(255, 244, 204, 0.98) 0%,
+            rgba(244, 198, 88, 0.96) 34%,
+            rgba(199, 134, 21, 0.94) 68%,
+            rgba(140, 92, 14, 0.98) 100%);
+    box-shadow:
+        0 0 0 1px rgba(255, 214, 122, 0.12),
+        0 0 8px rgba(214, 166, 64, 0.22);
+}
+
+.chip::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            transparent 38%,
+            transparent 72%,
+            rgba(0, 0, 0, 0.06) 100%);
+    opacity: 0.9;
+}
+
+.chip:hover,
+.chip:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgba(199, 134, 21, 0.22);
+    background:
+        radial-gradient(120% 160% at 0% 50%,
+            rgba(199, 134, 21, 0.07) 0%,
+            rgba(199, 134, 21, 0.024) 18%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(12, 24, 33, 0.86) 0%,
+            rgba(7, 16, 24, 0.94) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.038),
+        inset 0 0 0 1px rgba(255, 191, 73, 0.028),
+        0 10px 20px rgba(0, 0, 0, 0.16),
+        0 0 14px rgba(199, 134, 21, 0.06);
+    color: rgba(244, 247, 251, 0.97);
+}
+
+.chip:focus-visible {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.038),
+        inset 0 0 0 1px rgba(255, 191, 73, 0.028),
+        0 10px 20px rgba(0, 0, 0, 0.16),
+        0 0 14px rgba(199, 134, 21, 0.06),
+        0 0 0 3px rgba(199, 134, 21, 0.14);
+}
+
+.moreButton {
+    position: relative;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-block-size: 2.35rem;
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    overflow: hidden;
+    isolation: isolate;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid rgba(199, 134, 21, 0.24);
+    background:
+        radial-gradient(120% 170% at 0% 50%,
+            rgba(199, 134, 21, 0.08) 0%,
+            rgba(199, 134, 21, 0.03) 18%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(10, 21, 29, 0.84) 0%,
+            rgba(6, 14, 21, 0.94) 100%);
+    color: rgba(241, 244, 248, 0.94);
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        inset 0 0 0 1px rgba(255, 191, 73, 0.025),
+        0 6px 16px rgba(0, 0, 0, 0.16);
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease,
+        box-shadow 0.22s ease,
+        color 0.22s ease;
+}
+
+.moreButton::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.032) 0%,
+            transparent 38%,
+            transparent 72%,
+            rgba(0, 0, 0, 0.08) 100%);
+    opacity: 0.92;
+}
+
+.moreButton:hover,
+.moreButton:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgba(214, 166, 64, 0.34);
+    background:
+        radial-gradient(120% 170% at 0% 50%,
+            rgba(199, 134, 21, 0.11) 0%,
+            rgba(199, 134, 21, 0.04) 18%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(12, 25, 34, 0.9) 0%,
+            rgba(7, 16, 24, 0.98) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        inset 0 0 0 1px rgba(255, 191, 73, 0.04),
+        0 10px 22px rgba(0, 0, 0, 0.2),
+        0 0 16px rgba(199, 134, 21, 0.08);
+    color: rgba(248, 250, 252, 0.98);
+}
+
+.moreButton:focus-visible {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        inset 0 0 0 1px rgba(255, 191, 73, 0.04),
+        0 10px 22px rgba(0, 0, 0, 0.2),
+        0 0 16px rgba(199, 134, 21, 0.08),
+        0 0 0 3px rgba(199, 134, 21, 0.16);
+}
+
+@media (max-width: 720px) {
+    .chip {
+        font-size: 0.79rem;
+    }
+}

@@ -1,0 +1,157 @@
+.section {
+    position: relative;
+    inline-size: 100%;
+    min-inline-size: 0;
+}
+
+.surface {
+    --surface-radius: clamp(1.35rem, 1.8vw, 2rem);
+    --surface-border: rgba(199, 134, 21, 0.17);
+    --surface-border-soft: rgba(255, 255, 255, 0.05);
+    --surface-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.26),
+        0 8px 20px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    --card-radius: clamp(1.08rem, 1.4vw, 1.34rem);
+    --card-border: rgba(199, 134, 21, 0.12);
+    --card-border-hover: rgba(199, 134, 21, 0.22);
+    --card-bg-top: rgba(255, 255, 255, 0.026);
+    --card-bg-bottom: rgba(255, 255, 255, 0.013);
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    inline-size: 100%;
+    min-inline-size: 0;
+    padding:
+        clamp(0.95rem, 1.35vw, 1.25rem) clamp(0.95rem, 1.4vw, 1.25rem) clamp(0.95rem, 1.35vw, 1.2rem);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--surface-radius);
+    box-shadow: var(--surface-shadow);
+    background:
+        radial-gradient(130% 150% at 0% 0%,
+            rgba(46, 194, 126, 0.115) 0%,
+            transparent 40%),
+        radial-gradient(120% 140% at 100% 0%,
+            rgba(199, 134, 21, 0.11) 0%,
+            transparent 42%),
+        radial-gradient(120% 150% at 100% 100%,
+            rgba(199, 134, 21, 0.04) 0%,
+            transparent 52%),
+        linear-gradient(180deg,
+            rgba(12, 14, 19, 0.96) 0%,
+            rgba(8, 10, 14, 0.985) 100%);
+}
+
+.surface::before,
+.surface::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    pointer-events: none;
+}
+
+.surface::before {
+    inset-block-start: 0;
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgba(46, 194, 126, 0.16) 0%,
+            rgba(199, 134, 21, 0.4) 28%,
+            rgba(255, 255, 255, 0.07) 52%,
+            rgba(199, 134, 21, 0.28) 76%,
+            rgba(46, 194, 126, 0.11) 100%);
+    opacity: 0.92;
+}
+
+.surface::after {
+    inset: 1px;
+    border-radius: calc(var(--surface-radius) - 1px);
+    border: 1px solid var(--surface-border-soft);
+    opacity: 0.38;
+}
+
+.ambientGlow,
+.ambientGlowSecondary,
+.surfaceNoise {
+    position: absolute;
+    inset: auto;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.ambientGlow {
+    inset-block-start: -18%;
+    inset-inline-start: -8%;
+    inline-size: clamp(12rem, 24vw, 20rem);
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgba(46, 194, 126, 0.17) 0%,
+            rgba(46, 194, 126, 0.08) 30%,
+            transparent 70%);
+    filter: blur(16px);
+    opacity: 0.62;
+}
+
+.ambientGlowSecondary {
+    inset-block-start: -14%;
+    inset-inline-end: -10%;
+    inline-size: clamp(13rem, 25vw, 22rem);
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgba(199, 134, 21, 0.145) 0%,
+            rgba(199, 134, 21, 0.07) 34%,
+            transparent 72%);
+    filter: blur(20px);
+    opacity: 0.6;
+}
+
+.surfaceNoise {
+    inset: 0;
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.01) 0%,
+            transparent 22%,
+            transparent 78%,
+            rgba(255, 255, 255, 0.008) 100%);
+    opacity: 0.42;
+}
+
+@media (min-width: 921px) and (max-width: 1180px) {
+    .surface {
+        padding:
+            clamp(0.95rem, 1.6vw, 1.15rem) clamp(0.9rem, 1.5vw, 1.1rem) clamp(0.95rem, 1.6vw, 1.1rem);
+    }
+}
+
+@media (min-width: 761px) and (max-width: 920px) {
+    .surface {
+        padding: 0.95rem 0.88rem 0.95rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .surface {
+        --surface-radius: 1.25rem;
+        --card-radius: 1rem;
+        padding: 0.9rem 0.8rem 0.9rem;
+    }
+
+    .ambientGlow {
+        inset-block-start: -20%;
+        inset-inline-start: -20%;
+        inline-size: 12.5rem;
+        opacity: 0.56;
+    }
+
+    .ambientGlowSecondary {
+        inset-block-start: -12%;
+        inset-inline-end: -22%;
+        inline-size: 13rem;
+        opacity: 0.54;
+    }
+}

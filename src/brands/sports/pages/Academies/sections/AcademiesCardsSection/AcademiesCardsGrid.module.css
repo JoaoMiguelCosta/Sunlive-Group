@@ -1,0 +1,29 @@
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: clamp(1.15rem, 1.9vw, 1.7rem);
+}
+
+.cardsGrid>* {
+    min-inline-size: 0;
+    block-size: 100%;
+}
+
+.cardWrap {
+    position: relative;
+    min-inline-size: 0;
+}
+
+@media (max-width: 1120px) {
+    .cardsGrid {
+        gap: clamp(1rem, 1.8vw, 1.35rem);
+    }
+}
+
+@media (max-width: 960px) {
+    .cardsGrid {
+        grid-template-columns: 1fr;
+        gap: clamp(1rem, 3vw, 1.3rem);
+    }
+}

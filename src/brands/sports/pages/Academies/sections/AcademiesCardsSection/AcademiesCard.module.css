@@ -1,0 +1,117 @@
+.card {
+    --card-radius: clamp(1.22rem, 1.8vw, 1.55rem);
+    --card-border: rgba(199, 134, 21, 0.2);
+    --card-border-strong: rgba(199, 134, 21, 0.32);
+    --card-surface-top: rgba(8, 17, 23, 0.965);
+    --card-surface-bottom: rgba(4, 10, 15, 0.985);
+    --card-copy: rgba(226, 233, 238, 0.88);
+    --card-copy-muted: rgba(185, 197, 205, 0.74);
+    --card-heading: rgba(244, 247, 249, 0.98);
+    --card-chip-border: rgba(199, 134, 21, 0.18);
+    --card-chip-copy: rgba(235, 241, 245, 0.9);
+    --card-accent: rgba(46, 194, 126, 0.82);
+    --card-gold: rgba(199, 134, 21, 0.92);
+    --card-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.22),
+        0 8px 20px rgba(0, 0, 0, 0.15);
+
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-block-size: 100%;
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: var(--card-shadow);
+    background:
+        radial-gradient(120% 160% at 0% 0%,
+            color-mix(in srgb, var(--card-accent) 15%, transparent) 0%,
+            transparent 42%),
+        radial-gradient(120% 140% at 100% 100%,
+            color-mix(in srgb, var(--card-gold) 12%, transparent) 0%,
+            transparent 44%),
+        linear-gradient(180deg,
+            var(--card-surface-top) 0%,
+            var(--card-surface-bottom) 100%);
+    transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background:
+        linear-gradient(135deg,
+            rgba(199, 134, 21, 0.28) 0%,
+            rgba(199, 134, 21, 0.06) 28%,
+            rgba(46, 194, 126, 0.06) 72%,
+            rgba(46, 194, 126, 0.22) 100%);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.92;
+    z-index: 0;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--card-border-strong);
+    box-shadow:
+        0 24px 56px rgba(0, 0, 0, 0.26),
+        0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.card:focus-within {
+    transform: translateY(-2px);
+    border-color: rgba(199, 134, 21, 0.4);
+    box-shadow:
+        0 0 0 1px rgba(199, 134, 21, 0.3),
+        0 0 0 7px rgba(199, 134, 21, 0.08),
+        0 20px 44px rgba(0, 0, 0, 0.24);
+}
+
+.glow {
+    position: absolute;
+    inset: auto auto -20% -10%;
+    inline-size: clamp(9rem, 18vw, 13rem);
+    block-size: clamp(9rem, 18vw, 13rem);
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            color-mix(in srgb, var(--card-accent) 16%, transparent) 0%,
+            transparent 70%);
+    filter: blur(24px);
+    opacity: 0.68;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.noise {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.014) 0%,
+            rgba(255, 255, 255, 0.004) 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.themeAcademy {
+    --card-accent: rgba(46, 194, 126, 0.82);
+}
+
+@media (max-width: 640px) {
+    .card {
+        --card-radius: 1.18rem;
+    }
+}

@@ -1,0 +1,232 @@
+.capabilityStack {
+    display: grid;
+    gap: 0.78rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.capabilityCard {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.84rem;
+    align-items: start;
+    min-inline-size: 0;
+    min-block-size: clamp(7.05rem, 7.55vw, 7.72rem);
+    padding:
+        clamp(1rem, 1.22vw, 1.1rem) clamp(0.98rem, 1.22vw, 1.1rem);
+    border-radius: clamp(1rem, 1.32vw, 1.14rem);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    background:
+        radial-gradient(130% 142% at 100% 0%,
+            rgba(199, 134, 21, 0.03) 0%,
+            transparent 38%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.018) 0%,
+            rgba(255, 255, 255, 0.006) 100%),
+        linear-gradient(155deg,
+            rgba(7, 15, 20, 0.875) 0%,
+            rgba(4, 10, 14, 0.952) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.018),
+        0 14px 30px rgba(0, 0, 0, 0.13);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+}
+
+.capabilityCard::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    block-size: 1px;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            rgba(46, 194, 126, 0.16) 0%,
+            rgba(199, 134, 21, 0.16) 100%);
+    opacity: 0.62;
+}
+
+.capabilityCard::after {
+    content: "";
+    position: absolute;
+    inset: 0.5px;
+    pointer-events: none;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    opacity: 0.44;
+}
+
+.capabilityCardPrimary {
+    border-color: rgba(199, 134, 21, 0.16);
+    background:
+        radial-gradient(124% 146% at 0% 0%,
+            rgba(46, 194, 126, 0.074) 0%,
+            transparent 42%),
+        radial-gradient(130% 146% at 100% 0%,
+            rgba(199, 134, 21, 0.068) 0%,
+            transparent 34%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.042) 0%,
+            rgba(255, 255, 255, 0.012) 100%),
+        linear-gradient(145deg,
+            rgba(8, 18, 23, 0.972) 0%,
+            rgba(4, 10, 14, 0.992) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+        0 14px 28px rgba(0, 0, 0, 0.17);
+}
+
+.capabilityIndex {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 2.02rem;
+    block-size: 2.02rem;
+    border-radius: 999px;
+    border: 1px solid rgba(199, 134, 21, 0.16);
+    background:
+        linear-gradient(180deg,
+            rgba(199, 134, 21, 0.13) 0%,
+            rgba(46, 194, 126, 0.04) 100%);
+    font-size: 0.7rem;
+    line-height: 1;
+    font-weight: 760;
+    letter-spacing: 0.12em;
+    color: rgba(199, 134, 21, 0.96);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.038),
+        0 6px 14px rgba(0, 0, 0, 0.13);
+}
+
+.capabilityContent {
+    display: grid;
+    gap: 0.44rem;
+    min-inline-size: 0;
+    align-content: start;
+}
+
+.capabilityTitle {
+    margin: 0;
+    font-size: clamp(1rem, 1.02vw, 1.09rem);
+    line-height: 1.12;
+    letter-spacing: -0.028em;
+    font-weight: 680;
+    color: rgba(255, 255, 255, 0.958);
+}
+
+.capabilityDescription {
+    margin: 0;
+    font-size: 0.915rem;
+    line-height: 1.56;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.capabilityCard:focus-within {
+    border-color: rgba(199, 134, 21, 0.22);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+        0 0 0 1px rgba(199, 134, 21, 0.14),
+        0 14px 30px rgba(0, 0, 0, 0.19);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .capabilityCard:hover {
+        transform: translateY(-2px);
+        border-color: rgba(199, 134, 21, 0.2);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.028),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+            0 16px 30px rgba(0, 0, 0, 0.19);
+    }
+
+    .capabilityCard:hover .capabilityTitle {
+        color: rgba(255, 255, 255, 0.985);
+    }
+}
+
+.capabilityCard:active {
+    transform: translateY(-1px);
+}
+
+@media (min-width: 1181px) {
+    .capabilityStack {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        min-block-size: 0;
+        block-size: 100%;
+        align-content: stretch;
+    }
+
+    .capabilityCard {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-rows: 1fr;
+        align-items: start;
+        min-block-size: 0;
+        height: 100%;
+    }
+
+    .capabilityContent {
+        display: grid;
+        align-content: start;
+        min-block-size: 100%;
+    }
+
+    .capabilityDescription {
+        max-inline-size: 42ch;
+    }
+}
+
+@media (max-width: 1180px) {
+    .capabilityStack {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 980px) {
+    .capabilityStack {
+        grid-template-columns: 1fr;
+    }
+
+    .capabilityCard {
+        min-block-size: auto;
+    }
+}
+
+@media (max-width: 560px) {
+    .capabilityCard {
+        gap: 0.74rem;
+        padding: 0.92rem 0.9rem;
+        border-radius: 1rem;
+    }
+
+    .capabilityIndex {
+        inline-size: 1.92rem;
+        block-size: 1.92rem;
+        font-size: 0.67rem;
+    }
+
+    .capabilityTitle {
+        font-size: 0.95rem;
+    }
+
+    .capabilityDescription {
+        font-size: 0.88rem;
+        line-height: 1.5;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .capabilityCard {
+        transition: none;
+    }
+}

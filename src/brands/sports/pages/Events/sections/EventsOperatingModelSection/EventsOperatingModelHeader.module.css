@@ -1,0 +1,36 @@
+.header {
+    display: grid;
+    gap: 0.64rem;
+    padding-top: var(--top-align-inset);
+}
+
+.eyebrow {
+    margin: 0;
+    font-size: 0.76rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(199, 134, 21, 0.94);
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(1.14rem, 1.62vw, 1.46rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    color: rgba(255, 255, 255, 0.98);
+    text-wrap: balance;
+}
+
+@media (max-width: 1080px) {
+    .header {
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 860px) {
+    .title {
+        max-inline-size: 100%;
+    }
+}

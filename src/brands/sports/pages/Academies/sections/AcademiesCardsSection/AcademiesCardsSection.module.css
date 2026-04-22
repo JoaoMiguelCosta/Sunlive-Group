@@ -1,0 +1,42 @@
+.cardsSection {
+    position: relative;
+    inline-size: 100%;
+    display: block;
+    isolation: isolate;
+}
+
+.cardsSection::before {
+    content: "";
+    position: absolute;
+    inset: clamp(0.75rem, 2vw, 1.25rem) 0 auto;
+    block-size: clamp(16rem, 30vw, 24rem);
+    background:
+        radial-gradient(40% 60% at 20% 50%,
+            rgba(46, 194, 126, 0.1) 0%,
+            transparent 100%),
+        radial-gradient(42% 62% at 80% 48%,
+            rgba(199, 134, 21, 0.1) 0%,
+            transparent 100%);
+    filter: blur(42px);
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cardsInner {
+    position: relative;
+    z-index: 1;
+    inline-size: 100%;
+    max-width: var(--sl-container-lg, 1360px);
+    margin-inline: auto;
+    box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+    .cardsSection::before {
+        inset: 0 0 auto;
+        block-size: 14rem;
+        filter: blur(32px);
+        opacity: 0.68;
+    }
+}

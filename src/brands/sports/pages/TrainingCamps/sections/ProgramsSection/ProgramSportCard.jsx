@@ -1,0 +1,96 @@
+import { useMemo, useState } from "react";
+
+import styles from "./ProgramSportCard.module.css";
+import sportsBrand, { resolveSportsIcon } from "../../../../config/index.js";
+import useInView from "../../../../shared/hooks/useInView.js";
+
+import ProgramSportCardHeader from "./ProgramSportCardHeader.jsx";
+import ProgramSportCardFocusBlock from "./ProgramSportCardFocusBlock.jsx";
+import ProgramSportCardDetailsBlock from "./ProgramSportCardDetailsBlock.jsx";
+import ProgramSportCardMedia from "./ProgramSportCardMedia.jsx";
+
+import {
+  getCollapsedCount,
+  getInitial,
+  getThemeClass,
+  shouldEnableExpansion,
+} from "./programSportCard.helpers.js";
+
+export default function ProgramSportCard({ item, index = 0 }) {
+  if (!item) return null;
+
+  const itemKey = item.key || `training-camp-program-${index}`;
+  const Icon = resolveSportsIcon(sportsBrand.icons, item.iconKey);
+
+  const focusItems = Array.isArray(item.focusItems) ? item.focusItems : [];
+  const pillars = Array.isArray(item.pillars) ? item.pillars : [];
+
+  const expandable = shouldEnableExpansion(item);
+  const collapsedCount = getCollapsedCount(item, 6);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const visibleFocusItems = useMemo(() => {
+    if (!expandable || isExpanded) return focusItems;
+    return focusItems.slice(0, collapsedCount);
+  }, [collapsedCount, expandable, focusItems, isExpanded]);
+
+  const hiddenItemsCount = Math.max(focusItems.length - collapsedCount, 0);
+
+  const { ref, inView } = useInView({
+    threshold: 0.18,
+    once: true,
+  });
+
+  const cardClasses = [
+    styles.card,
+    item.mediaAlign === "left" ? styles.mediaLeft : styles.mediaRight,
+    getThemeClass(item.theme, styles),
+    styles.reveal,
+    inView ? styles.isVisible : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return (
+    <article
+      ref={ref}
+      className={cardClasses}
+      aria-labelledby={`${itemKey}-title`}
+      tabIndex={0}
+      style={{ "--card-delay": `${index * 70}ms` }}
+    >
+      <div className={styles.content}>
+        <ProgramSportCardHeader
+          item={item}
+          itemKey={itemKey}
+          index={index}
+          Icon={Icon}
+          initial={getInitial(item.sport)}
+        />
+
+        {item.summary ? <p className={styles.summary}>{item.summary}</p> : null}
+
+        <ProgramSportCardFocusBlock
+          itemKey={itemKey}
+          focusLabel={item.focusLabel}
+          focusItems={visibleFocusItems}
+          expandable={expandable}
+          hiddenItemsCount={hiddenItemsCount}
+          isExpanded={isExpanded}
+          expandAction={item.expandAction}
+          onToggleExpand={() => setIsExpanded((prev) => !prev)}
+        />
+
+        <ProgramSportCardDetailsBlock
+          audienceLabel={item.audienceLabel}
+          audience={item.audience}
+          pillarsLabel={item.pillarsLabel}
+          pillars={pillars}
+        />
+      </div>
+
+      <ProgramSportCardMedia item={item} className={styles.mediaPanelSlot} />
+    </article>
+  );
+}

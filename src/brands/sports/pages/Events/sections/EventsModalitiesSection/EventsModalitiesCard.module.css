@@ -1,0 +1,469 @@
+.card {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: clamp(0.72rem, 0.86vw, 0.88rem);
+    min-inline-size: 0;
+    block-size: 100%;
+    min-block-size: clamp(26.5rem, 29vw, 30rem);
+    padding: clamp(0.82rem, 0.92vw, 0.94rem);
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    isolation: isolate;
+    align-self: stretch;
+    background:
+        linear-gradient(180deg,
+            var(--card-bg-top) 0%,
+            var(--card-bg-bottom) 100%),
+        radial-gradient(140% 170% at 0% 0%,
+            rgba(255, 255, 255, 0.022) 0%,
+            transparent 48%),
+        linear-gradient(180deg,
+            rgba(17, 20, 27, 0.92) 0%,
+            rgba(10, 12, 18, 0.96) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 10px 20px rgba(0, 0, 0, 0.14);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+}
+
+.card::before,
+.card::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+}
+
+.card::before {
+    inset: 0;
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.016) 0%,
+            transparent 28%,
+            transparent 72%,
+            rgba(255, 255, 255, 0.009) 100%);
+    opacity: 0.85;
+}
+
+.card::after {
+    inset: 0 auto auto 0;
+    inline-size: 100%;
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgba(46, 194, 126, 0.16) 0%,
+            rgba(199, 134, 21, 0.2) 58%,
+            transparent 100%);
+    opacity: 0.5;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: var(--card-border-hover);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 14px 26px rgba(0, 0, 0, 0.18);
+}
+
+.card:focus-within {
+    border-color: rgba(199, 134, 21, 0.28);
+    box-shadow:
+        0 0 0 1px rgba(199, 134, 21, 0.18),
+        0 14px 26px rgba(0, 0, 0, 0.18);
+}
+
+.cardPrimary,
+.cardSecondary,
+.cardTertiary {
+    grid-column: span 1;
+}
+
+.cardPrimary::after {
+    background:
+        linear-gradient(90deg,
+            rgba(46, 194, 126, 0.24) 0%,
+            rgba(199, 134, 21, 0.18) 62%,
+            transparent 100%);
+}
+
+.cardSecondary::after,
+.cardTertiary::after {
+    background:
+        linear-gradient(90deg,
+            rgba(46, 194, 126, 0.18) 0%,
+            rgba(199, 134, 21, 0.14) 56%,
+            transparent 100%);
+}
+
+.cardTop {
+    display: grid;
+    grid-template-rows: auto minmax(4.9rem, auto) minmax(4.7rem, auto);
+    gap: clamp(0.5rem, 0.72vw, 0.64rem);
+    min-inline-size: 0;
+    align-content: start;
+}
+
+.cardHeader {
+    display: grid;
+    gap: 0.5rem;
+    min-inline-size: 0;
+    align-content: start;
+}
+
+.cardEyebrow {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(199, 134, 21, 0.9);
+}
+
+.cardTitle {
+    inline-size: 100%;
+    min-block-size: 3.5rem;
+    margin: 0;
+    font-size: clamp(1rem, 1.1vw, 1.14rem);
+    font-weight: 800;
+    line-height: 1.14;
+    letter-spacing: -0.024em;
+    color: rgba(255, 255, 255, 0.96);
+    text-wrap: balance;
+}
+
+.cardDescription,
+.cardEmphasis {
+    margin: 0;
+    font-size: clamp(0.9rem, 0.9vw, 0.94rem);
+    line-height: 1.52;
+    color: rgba(226, 230, 236, 0.74);
+}
+
+.cardDescription {
+    min-block-size: 4.9rem;
+}
+
+.cardEmphasis {
+    position: relative;
+    min-block-size: 4.7rem;
+    padding-inline-start: 0.4rem;
+    color: rgba(236, 239, 244, 0.82);
+}
+
+.cardEmphasis::before {
+    content: "";
+    position: absolute;
+    inset-block: 0.08rem 0.08rem;
+    inset-inline-start: 0;
+    inline-size: 1px;
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg,
+            rgba(199, 134, 21, 0.34) 0%,
+            rgba(255, 255, 255, 0.05) 100%);
+}
+
+.cardEmphasisPlaceholder {
+    display: block;
+    min-block-size: 4.7rem;
+}
+
+.cardBottom {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.68rem, 0.8vw, 0.82rem);
+    align-content: start;
+    min-inline-size: 0;
+    padding-block-start: 0.1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.metaBlock {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    align-content: start;
+    gap: 0.4rem;
+    min-inline-size: 0;
+}
+
+.metaLabel {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(199, 134, 21, 0.9);
+}
+
+.metaList {
+    display: grid;
+    align-content: start;
+    gap: 0.3rem;
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.metaItem {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.42rem;
+    align-items: start;
+    min-inline-size: 0;
+    font-size: clamp(0.86rem, 0.88vw, 0.92rem);
+    line-height: 1.38;
+    color: rgba(229, 233, 239, 0.82);
+}
+
+.metaDot {
+    inline-size: 0.3rem;
+    block-size: 0.3rem;
+    margin-top: 0.4rem;
+    border-radius: 999px;
+    flex: 0 0 auto;
+    background:
+        radial-gradient(circle at 50% 50%,
+            rgba(231, 183, 72, 0.98) 0%,
+            rgba(199, 134, 21, 0.86) 58%,
+            rgba(199, 134, 21, 0.2) 100%);
+    box-shadow:
+        0 0 0 3px rgba(199, 134, 21, 0.07),
+        0 0 8px rgba(199, 134, 21, 0.1);
+}
+
+@media (min-width: 921px) and (max-width: 1180px) {
+    .card {
+        min-block-size: 22.8rem;
+        padding: 0.82rem;
+        gap: 0.62rem;
+    }
+
+    .cardPrimary,
+    .cardSecondary {
+        grid-column: span 1;
+    }
+
+    .cardTertiary {
+        grid-column: 1 / -1;
+        min-block-size: 17.4rem;
+    }
+
+    .cardTop {
+        grid-template-rows: auto auto auto;
+        gap: 0.48rem;
+    }
+
+    .cardHeader {
+        gap: 0.34rem;
+    }
+
+    .cardTitle {
+        min-block-size: 0;
+        font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+        line-height: 1.14;
+    }
+
+    .cardDescription {
+        min-block-size: 0;
+        font-size: 0.88rem;
+        line-height: 1.5;
+    }
+
+    .cardEmphasis,
+    .cardEmphasisPlaceholder {
+        min-block-size: 0;
+    }
+
+    .cardEmphasis {
+        font-size: 0.87rem;
+        line-height: 1.5;
+        padding-inline-start: 0.38rem;
+    }
+
+    .cardBottom {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.72rem;
+        padding-block-start: 0.22rem;
+    }
+
+    .cardTertiary .cardBottom {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .metaBlock {
+        gap: 0.34rem;
+    }
+
+    .metaLabel {
+        font-size: 0.68rem;
+    }
+
+    .metaList {
+        gap: 0.24rem;
+    }
+
+    .metaItem {
+        font-size: 0.84rem;
+        line-height: 1.34;
+        gap: 0.38rem;
+    }
+
+    .metaDot {
+        margin-top: 0.36rem;
+    }
+}
+
+@media (min-width: 761px) and (max-width: 920px) {
+    .card {
+        min-block-size: 21.9rem;
+        gap: 0.6rem;
+        padding: 0.8rem;
+    }
+
+    .cardPrimary,
+    .cardSecondary {
+        grid-column: span 1;
+    }
+
+    .cardTertiary {
+        grid-column: 1 / -1;
+        min-block-size: 16.8rem;
+    }
+
+    .cardTop {
+        grid-template-rows: auto auto auto;
+        gap: 0.46rem;
+    }
+
+    .cardHeader {
+        gap: 0.34rem;
+    }
+
+    .cardTitle {
+        min-block-size: 0;
+        font-size: 0.96rem;
+        line-height: 1.15;
+    }
+
+    .cardDescription,
+    .cardEmphasis,
+    .metaItem {
+        font-size: 0.85rem;
+    }
+
+    .cardDescription {
+        min-block-size: 0;
+        line-height: 1.46;
+    }
+
+    .cardEmphasis,
+    .cardEmphasisPlaceholder {
+        min-block-size: 0;
+        line-height: 1.46;
+    }
+
+    .cardBottom {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.68rem;
+        padding-block-start: 0.2rem;
+    }
+
+    .cardTertiary .cardBottom {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.92rem;
+    }
+
+    .metaBlock {
+        gap: 0.34rem;
+    }
+
+    .metaLabel {
+        font-size: 0.67rem;
+    }
+
+    .metaList {
+        gap: 0.24rem;
+    }
+
+    .metaDot {
+        margin-top: 0.36rem;
+    }
+}
+
+@media (max-width: 760px) {
+
+    .cardPrimary,
+    .cardSecondary,
+    .cardTertiary {
+        grid-column: auto;
+    }
+
+    .card {
+        min-block-size: auto;
+    }
+
+    .cardTop {
+        grid-template-rows: auto;
+        gap: 0.56rem;
+    }
+
+    .cardTitle,
+    .cardDescription,
+    .cardEmphasis,
+    .cardEmphasisPlaceholder {
+        min-block-size: 0;
+    }
+
+    .cardBottom,
+    .cardTertiary .cardBottom {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.72rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .card {
+        padding: 0.78rem;
+        gap: 0.72rem;
+    }
+
+    .cardHeader {
+        gap: 0.28rem;
+    }
+
+    .cardEyebrow,
+    .metaLabel {
+        font-size: 0.66rem;
+    }
+
+    .cardTitle {
+        font-size: 0.94rem;
+        line-height: 1.18;
+    }
+
+    .cardDescription,
+    .cardEmphasis,
+    .metaItem {
+        font-size: 0.84rem;
+        line-height: 1.4;
+    }
+
+    .metaList {
+        gap: 0.26rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
+}

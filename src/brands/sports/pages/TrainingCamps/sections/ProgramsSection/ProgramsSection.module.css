@@ -1,0 +1,20 @@
+.section {
+    width: 100%;
+}
+
+.inner {
+    width: min(100%, var(--sl-container-lg, 1360px));
+    margin-inline: auto;
+    display: grid;
+    gap: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.otherSportsWrap {
+    margin-top: clamp(0.25rem, 0.8vw, 0.5rem);
+}
+
+@media (max-width: 720px) {
+    .section {
+        margin-block: 2.5rem 3.25rem;
+    }
+}

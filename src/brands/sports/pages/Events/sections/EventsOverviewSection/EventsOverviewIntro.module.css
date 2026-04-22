@@ -1,0 +1,71 @@
+.editorialIntro {
+    display: grid;
+    gap: clamp(0.8rem, 1.15vw, 0.98rem);
+    min-inline-size: 0;
+    align-content: start;
+}
+
+.eyebrow {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1;
+    font-weight: 750;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(199, 134, 21, 0.96);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.22);
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.14vw, 2.2rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    font-weight: 760;
+    color: rgba(255, 255, 255, 0.992);
+    text-wrap: balance;
+}
+
+.description {
+    margin: 0;
+    font-size: clamp(0.975rem, 1vw, 1.03rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.76);
+}
+
+@media (max-width: 1180px) {
+
+    .title,
+    .description {
+        max-inline-size: 100%;
+    }
+}
+
+@media (max-width: 860px) {
+    .title {
+        max-inline-size: 100%;
+        font-size: clamp(1.48rem, 5.6vw, 2.06rem);
+        line-height: 0.97;
+    }
+
+    .description {
+        font-size: 0.95rem;
+        line-height: 1.66;
+    }
+}
+
+@media (max-width: 560px) {
+    .eyebrow {
+        font-size: 0.71rem;
+        letter-spacing: 0.18em;
+    }
+
+    .title {
+        font-size: clamp(1.4rem, 8.8vw, 1.84rem);
+    }
+
+    .description {
+        font-size: 0.92rem;
+        line-height: 1.58;
+    }
+}

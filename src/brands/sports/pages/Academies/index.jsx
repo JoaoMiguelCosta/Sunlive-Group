@@ -3,9 +3,8 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
-import AcademiesCardsSection from "./sections/AcademiesCardsSection.jsx";
+import AcademiesCardsSection from "./sections/AcademiesCardsSection/index.jsx";
 import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
-
 
 export default function AcademiesPage() {
   const data = sportsBrand.sections?.academies;
@@ -35,10 +34,8 @@ export default function AcademiesPage() {
           </header>
 
           <div className={styles.sections}>
-           
-            <AcademiesCardsSection data={data} />
+            <AcademiesCardsSection data={data.cards} />
             <SportsClosingCTA data={data.cta} />
-            
           </div>
         </div>
       </main>

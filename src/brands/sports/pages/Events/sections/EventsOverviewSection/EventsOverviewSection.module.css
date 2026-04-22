@@ -1,0 +1,237 @@
+.section {
+    position: relative;
+    inline-size: 100%;
+    min-inline-size: 0;
+}
+
+.surface {
+    position: relative;
+    inline-size: 100%;
+    min-inline-size: 0;
+    display: grid;
+    overflow: hidden;
+    isolation: isolate;
+    padding:
+        clamp(1.18rem, 2.05vw, 1.72rem) clamp(1.04rem, 2.04vw, 1.56rem) clamp(1.22rem, 2.14vw, 1.78rem);
+    border-radius: clamp(1.44rem, 1.9vw, 1.96rem);
+    border: 1px solid rgba(199, 134, 21, 0.14);
+    background:
+        radial-gradient(132% 168% at 0% 0%,
+            rgba(46, 194, 126, 0.1) 0%,
+            transparent 42%),
+        radial-gradient(112% 140% at 100% 2%,
+            rgba(199, 134, 21, 0.088) 0%,
+            transparent 36%),
+        radial-gradient(118% 140% at 50% 100%,
+            rgba(8, 34, 29, 0.14) 0%,
+            transparent 50%),
+        linear-gradient(180deg,
+            rgba(5, 11, 15, 0.978) 0%,
+            rgba(3, 7, 11, 0.995) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+        0 22px 52px rgba(0, 0, 0, 0.26);
+}
+
+.surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+        linear-gradient(90deg,
+            rgba(199, 134, 21, 0.26) 0%,
+            rgba(46, 194, 126, 0.12) 42%,
+            rgba(255, 255, 255, 0.018) 100%);
+    opacity: 0.12;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent 24%);
+}
+
+.surface::after {
+    content: "";
+    position: absolute;
+    inset: 0.5px;
+    pointer-events: none;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.032);
+    opacity: 0.58;
+}
+
+.ambientGlow,
+.ambientGlowSecondary {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(26px);
+}
+
+.ambientGlow {
+    inset: -18% auto auto -11%;
+    inline-size: clamp(11rem, 27vw, 20rem);
+    block-size: clamp(11rem, 27vw, 20rem);
+    background:
+        radial-gradient(circle,
+            rgba(46, 194, 126, 0.14) 0%,
+            rgba(46, 194, 126, 0.045) 34%,
+            transparent 72%);
+    opacity: 0.8;
+}
+
+.ambientGlowSecondary {
+    inset: 13% -9% auto auto;
+    inline-size: clamp(8.4rem, 19vw, 13rem);
+    block-size: clamp(8.4rem, 19vw, 13rem);
+    background:
+        radial-gradient(circle,
+            rgba(199, 134, 21, 0.118) 0%,
+            rgba(199, 134, 21, 0.036) 38%,
+            transparent 74%);
+    opacity: 0.72;
+}
+
+.topLayout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.2rem, 2.16vw, 1.92rem);
+    align-items: start;
+}
+
+.editorialColumn {
+    display: grid;
+    gap: clamp(0.86rem, 1.24vw, 1.04rem);
+    align-content: start;
+    min-inline-size: 0;
+}
+
+.sideColumn {
+    position: relative;
+    display: grid;
+    gap: 0.88rem;
+    align-content: start;
+    min-inline-size: 0;
+    padding: clamp(0.8rem, 1.12vw, 0.98rem);
+    border-radius: clamp(1.08rem, 1.48vw, 1.28rem);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    background:
+        radial-gradient(130% 142% at 100% 0%,
+            rgba(199, 134, 21, 0.03) 0%,
+            transparent 38%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.018) 0%,
+            rgba(255, 255, 255, 0.006) 100%),
+        linear-gradient(155deg,
+            rgba(7, 15, 20, 0.875) 0%,
+            rgba(4, 10, 14, 0.952) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.018),
+        0 14px 30px rgba(0, 0, 0, 0.13);
+}
+
+.sideColumn::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    block-size: 1px;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            rgba(46, 194, 126, 0.16) 0%,
+            rgba(199, 134, 21, 0.16) 100%);
+    opacity: 0.62;
+}
+
+.sideColumn::after {
+    content: "";
+    position: absolute;
+    inset: 0.5px;
+    pointer-events: none;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    opacity: 0.44;
+}
+
+.capabilityColumn {
+    position: relative;
+    min-inline-size: 0;
+    display: grid;
+    align-content: start;
+}
+
+@media (min-width: 1181px) {
+    .topLayout {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: clamp(1.3rem, 2.22vw, 1.98rem);
+        align-items: stretch;
+    }
+
+    .editorialColumn {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: clamp(0.92rem, 1.28vw, 1.08rem);
+        min-inline-size: 0;
+        align-self: stretch;
+    }
+
+    .sideColumn {
+        display: grid;
+        align-self: stretch;
+        grid-template-rows: 1fr;
+        min-block-size: 0;
+        margin-top: 0;
+    }
+
+    .capabilityColumn {
+        display: grid;
+        grid-template-rows: 1fr;
+        min-block-size: 0;
+    }
+}
+
+@media (max-width: 1180px) {
+    .topLayout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .sideColumn {
+        gap: 0.84rem;
+    }
+}
+
+@media (max-width: 860px) {
+    .surface {
+        padding: 1rem 0.92rem 1.1rem;
+        border-radius: 1.3rem;
+    }
+
+    .topLayout {
+        gap: 0.94rem;
+    }
+
+    .sideColumn {
+        padding: 0.72rem;
+        border-radius: 1.08rem;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .surface {
+        border-radius: 1.18rem;
+    }
+
+    .ambientGlow {
+        inline-size: 8.8rem;
+        block-size: 8.8rem;
+    }
+
+    .ambientGlowSecondary {
+        inline-size: 7rem;
+        block-size: 7rem;
+    }
+}

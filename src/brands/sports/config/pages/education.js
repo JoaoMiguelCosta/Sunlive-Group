@@ -1,32 +1,18 @@
 import {
   hero,
- 
-  levelsIntro,
-  levels,
-  bilingualIntro,
-  bilingual,
-  bilingualCertification,
-  careersIntro,
-  careers,
-  
-
+  levelsSection,
+  bilingualSection,
+  careersSection,
+  cta,
 } from "../sections/education/index.js";
 
 const education = {
   id: "education",
-  sections: {
-    hero,
-   
-    levelsIntro,
-    levels,
-    bilingualIntro,
-    bilingual,
-    bilingualCertification,
-    careersIntro,
-    careers,
-    
-   
-  },
+  hero,
+  levelsSection,
+  bilingualSection,
+  careersSection,
+  cta,
 };
 
 export default education;

@@ -1,20 +1,26 @@
 import styles from "../../layouts/SportsPageLayout.module.css";
-
-import sportsBrand from "../../config/index.js";
+import sportsBrand, { SPORTS_BOOKS } from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
-import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
-
-
-import EducationLevelsSection from "./sections/EducationLevelsSection.jsx";
-import EducationBilingualSection from "./sections/EducationBilingualSection.jsx";
-import EducationBilingualCertification from "./sections/EducationBilingualCertification.jsx";
-import EducationCareersSection from "./sections/EducationCareersSection.jsx";
-
+import EducationLevelsSection from "./sections/EducationLevelsSection/index.jsx";
+import EducationBilingualSection from "./sections/EducationBilingualSection/index.jsx";
+import EducationCareersSection from "./sections/EducationCareersSection/index.jsx";
+import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 
 export default function EducationPage() {
   const data = sportsBrand.sections?.education;
   if (!data) return null;
+
+  function handleOpenEducationBook(bookKey) {
+    const book = SPORTS_BOOKS?.[bookKey];
+
+    if (!book?.href) {
+      console.error(`Book não encontrado para a key: ${bookKey}`);
+      return;
+    }
+
+    window.open(book.href, "_blank", "noopener,noreferrer");
+  }
 
   return (
     <div className={styles.pageWrap} data-brand="sports">
@@ -27,7 +33,7 @@ export default function EducationPage() {
         <div className={styles.contentFlow}>
           <header className={styles.heroSection}>
             <SportsHeroIntro
-              id="education-hero"
+              id={data.hero?.id || "education-hero"}
               eyebrow={data.hero?.eyebrow}
               secondaryLine={data.hero?.secondaryLine}
               title={data.hero?.title}
@@ -40,70 +46,13 @@ export default function EducationPage() {
           </header>
 
           <div className={styles.sections}>
-          
-
-            {data.levelsIntro ? (
-              <>
-                <section
-                  className={styles.heroSection}
-                  aria-label={data.levelsIntro?.title}
-                >
-                  <HeadlineBlock
-                    theme="sports"
-                    variant="banded"
-                    align="center"
-                    max="lg"
-                    title={data.levelsIntro?.title}
-                    lead={data.levelsIntro?.lead}
-                  />
-                </section>
-
-                <EducationLevelsSection data={data} />
-              </>
-            ) : null}
-
-            {data.bilingualIntro ? (
-              <>
-                <section
-                  className={styles.heroSection}
-                  aria-label={data.bilingualIntro?.title}
-                >
-                  <HeadlineBlock
-                    theme="sports"
-                    variant="banded"
-                    align="center"
-                    max="lg"
-                    title={data.bilingualIntro?.title}
-                    lead={data.bilingualIntro?.lead}
-                  />
-                </section>
-
-                <EducationBilingualSection data={data} />
-                <EducationBilingualCertification data={data} />
-              </>
-            ) : null}
-
-            {data.careersIntro ? (
-              <>
-                <section
-                  className={styles.heroSection}
-                  aria-label={data.careersIntro?.title}
-                >
-                  <HeadlineBlock
-                    theme="sports"
-                    variant="banded"
-                    align="center"
-                    max="lg"
-                    title={data.careersIntro?.title}
-                    lead={data.careersIntro?.lead}
-                  />
-                </section>
-
-                <EducationCareersSection data={data} />
-              </>
-            ) : null}
-
-           
+            <EducationLevelsSection
+              data={data.levelsSection}
+              onOpenBook={handleOpenEducationBook}
+            />
+            <EducationBilingualSection data={data.bilingualSection} />
+            <EducationCareersSection data={data.careersSection} />
+            <SportsClosingCTA data={data.cta} />
           </div>
         </div>
       </main>

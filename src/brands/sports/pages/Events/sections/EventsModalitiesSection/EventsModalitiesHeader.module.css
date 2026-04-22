@@ -1,0 +1,116 @@
+.header {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: clamp(0.55rem, 0.95vw, 0.8rem);
+    inline-size: 100%;
+    margin-block-end: clamp(0.68rem, 0.96vw, 0.86rem);
+}
+
+.eyebrow {
+    margin: 0;
+    font-size: clamp(0.68rem, 0.72vw, 0.74rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(199, 134, 21, 0.9);
+}
+
+.title {
+    inline-size: 100%;
+    max-inline-size: 41ch;
+    margin: 0;
+    font-size: clamp(1.72rem, 2.45vw, 3.1rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    color: rgba(255, 255, 255, 0.965);
+    text-wrap: balance;
+}
+
+.description {
+    inline-size: 100%;
+    max-inline-size: 68ch;
+    margin: 0;
+    font-size: clamp(1.08rem, 1.16vw, 1.22rem);
+    line-height: 1.6;
+    color: rgba(230, 233, 238, 0.78);
+}
+
+@media (max-width: 1360px) {
+    .title {
+        font-size: clamp(1.9rem, 3vw, 3.2rem);
+    }
+
+    .description {
+        font-size: clamp(0.96rem, 1vw, 1.02rem);
+    }
+}
+
+@media (min-width: 921px) and (max-width: 1180px) {
+    .title {
+        font-size: clamp(1.75rem, 4.1vw, 2.65rem);
+        line-height: 1;
+    }
+
+    .description {
+        font-size: 0.96rem;
+        line-height: 1.58;
+    }
+}
+
+@media (min-width: 761px) and (max-width: 920px) {
+    .header {
+        gap: 0.6rem;
+        margin-block-end: 0.95rem;
+    }
+
+    .eyebrow {
+        font-size: 0.67rem;
+    }
+
+    .title {
+        font-size: clamp(1.52rem, 5vw, 2.05rem);
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+    }
+
+    .description {
+        font-size: 0.93rem;
+        line-height: 1.56;
+    }
+}
+
+@media (max-width: 760px) {
+    .title {
+        font-size: clamp(1.38rem, 6vw, 1.8rem);
+    }
+
+    .description {
+        font-size: 0.91rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .header {
+        gap: 0.56rem;
+        margin-block-end: 0.88rem;
+    }
+
+    .eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+    }
+
+    .title {
+        font-size: clamp(1.26rem, 7vw, 1.62rem);
+        line-height: 1.03;
+        letter-spacing: -0.028em;
+    }
+
+    .description {
+        font-size: 0.89rem;
+        line-height: 1.54;
+    }
+}

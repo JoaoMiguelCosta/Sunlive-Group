@@ -1,0 +1,9 @@
+.cards {
+    display: grid;
+    gap: clamp(1.3rem, 2vw, 1.75rem);
+    align-items: stretch;
+}
+
+.cards>* {
+    min-width: 0;
+}
