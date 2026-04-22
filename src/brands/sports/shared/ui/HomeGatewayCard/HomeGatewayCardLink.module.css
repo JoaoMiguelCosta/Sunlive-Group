@@ -1,0 +1,40 @@
+.click {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    inline-size: 100%;
+    min-inline-size: 0;
+    block-size: 100%;
+    padding: clamp(0.92rem, 1.12vw, 1.16rem);
+    text-decoration: none;
+    color: var(--sl-platinum-050, #e7ebf3);
+    box-sizing: border-box;
+}
+
+.click:focus-visible {
+    outline: none;
+}
+
+@media (min-width: 1280px) {
+    .click {
+        padding: clamp(0.96rem, 0.88vw, 1.14rem);
+    }
+}
+
+@media (max-width: 639.98px) {
+    .click {
+        padding: 0.78rem 0.82rem;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .click {
+        padding: 0.72rem 0.76rem;
+    }
+}
+
+@media (max-width: 389.98px) {
+    .click {
+        padding: 0.68rem 0.7rem;
+    }
+}

@@ -1,6 +1,6 @@
 import styles from "./GatewayGrid.module.css";
 
-import HomeGatewayCard from "../../../shared/ui/HomeGatewayCard/HomeGatewayCard.jsx";
+import HomeGatewayCard from "../../../shared/ui/HomeGatewayCard/index.jsx";
 
 export default function GatewayGrid({ data }) {
   const sectionId = data?.id || "sports-home-menu";

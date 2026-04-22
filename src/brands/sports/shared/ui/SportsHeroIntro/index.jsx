@@ -1,16 +1,10 @@
 import styles from "./SportsHeroIntro.module.css";
 
-function buildKey(value, index) {
-  if (typeof value === "string" && value.trim()) {
-    return `${value}-${index}`;
-  }
+import { getValidProofPoints, getValidStats } from "./sportsHeroIntro.utils.js";
 
-  return `hero-item-${index}`;
-}
-
-function isValidStat(stat) {
-  return stat && typeof stat === "object" && (stat.value || stat.label);
-}
+import SportsHeroIntroHeader from "./SportsHeroIntroHeader.jsx";
+import SportsHeroIntroProofList from "./SportsHeroIntroProofList.jsx";
+import SportsHeroIntroStatsGrid from "./SportsHeroIntroStatsGrid.jsx";
 
 export default function SportsHeroIntro({
   id,
@@ -23,11 +17,8 @@ export default function SportsHeroIntro({
   stats = [],
   ui = {},
 }) {
-  const validProofPoints = Array.isArray(proofPoints)
-    ? proofPoints.filter((item) => typeof item === "string" && item.trim())
-    : [];
-
-  const validStats = Array.isArray(stats) ? stats.filter(isValidStat) : [];
+  const validProofPoints = getValidProofPoints(proofPoints);
+  const validStats = getValidStats(stats);
 
   if (!title && !description) return null;
 
@@ -45,60 +36,23 @@ export default function SportsHeroIntro({
         <div className={styles.noise} aria-hidden="true" />
 
         <div className={styles.inner}>
-          {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+          <SportsHeroIntroHeader
+            eyebrow={eyebrow}
+            secondaryLine={secondaryLine}
+            title={title}
+            description={description}
+            supportingText={supportingText}
+          />
 
-          {secondaryLine ? (
-            <p className={styles.secondaryLine}>{secondaryLine}</p>
-          ) : null}
+          <SportsHeroIntroProofList
+            items={validProofPoints}
+            ariaLabel={ui?.proofListAriaLabel || "Pontos-chave"}
+          />
 
-          {title ? <h1 className={styles.title}>{title}</h1> : null}
-
-          {description ? (
-            <p className={styles.description}>{description}</p>
-          ) : null}
-
-          {supportingText ? (
-            <p className={styles.supportingText}>{supportingText}</p>
-          ) : null}
-
-          {validProofPoints.length > 0 ? (
-            <ul
-              className={styles.proofList}
-              role="list"
-              aria-label={ui?.proofListAriaLabel || "Pontos-chave"}
-            >
-              {validProofPoints.map((item, index) => (
-                <li key={buildKey(item, index)} className={styles.proofItem}>
-                  <span className={styles.proofDot} aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-
-          {validStats.length > 0 ? (
-            <div
-              className={styles.statsGrid}
-              role="list"
-              aria-label={ui?.statsAriaLabel || "Destaques da secção"}
-            >
-              {validStats.map((stat, index) => (
-                <article
-                  key={buildKey(`${stat.value}-${stat.label}`, index)}
-                  className={styles.statCard}
-                  role="listitem"
-                >
-                  {stat.value ? (
-                    <strong className={styles.statValue}>{stat.value}</strong>
-                  ) : null}
-
-                  {stat.label ? (
-                    <span className={styles.statLabel}>{stat.label}</span>
-                  ) : null}
-                </article>
-              ))}
-            </div>
-          ) : null}
+          <SportsHeroIntroStatsGrid
+            items={validStats}
+            ariaLabel={ui?.statsAriaLabel || "Destaques da secção"}
+          />
         </div>
       </div>
     </section>
