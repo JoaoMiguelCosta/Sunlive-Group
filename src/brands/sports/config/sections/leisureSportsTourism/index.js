@@ -1,9 +1,4 @@
 export { default as hero } from "./hero.js";
-
-export { default as experiencesIntro } from "./experiencesIntro.js";
-export { default as leisureExperiences } from "./leisureExperiences.js";
-export { default as destinationsIntro } from "./destinationsIntro.js";
-export { default as leisureDestinations } from "./leisureDestinations.js";
-export { default as benefitsIntro } from "./benefitsIntro.js";
-
-
+export { default as experiences } from "./experiences.js";
+export { default as destinations } from "./destinations.js";
+export { default as benefits } from "./benefits.js";

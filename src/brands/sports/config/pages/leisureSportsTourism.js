@@ -1,28 +1,16 @@
 import {
   hero,
-
-  experiencesIntro,
-  leisureExperiences,
-  destinationsIntro,
-  leisureDestinations,
-  benefitsIntro,
-
- 
+  experiences,
+  destinations,
+  benefits,
 } from "../sections/leisureSportsTourism/index.js";
 
 const leisureSportsTourism = {
   id: "leisure-sports-tourism",
-  sections: {
-    hero,
-
-    experiencesIntro,
-    leisureExperiences,
-    destinationsIntro,
-    leisureDestinations,
-    benefitsIntro,
-   
-   
-  },
+  hero,
+  experiences,
+  destinations,
+  benefits,
 };
 
 export default leisureSportsTourism;

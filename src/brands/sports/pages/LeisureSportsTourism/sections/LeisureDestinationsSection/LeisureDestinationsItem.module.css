@@ -1,0 +1,234 @@
+.card {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 0.64rem;
+    inline-size: 100%;
+    min-inline-size: 0;
+    block-size: 100%;
+    padding: 0.76rem;
+    border-radius: clamp(0.94rem, 1.02vw, 1.08rem);
+    border: 1px solid rgba(255, 255, 255, 0.055);
+    background:
+        radial-gradient(circle at top right,
+            rgba(31, 166, 106, 0.15) 0%,
+            rgba(31, 166, 106, 0) 38%),
+        linear-gradient(160deg,
+            rgba(8, 15, 14, 0.982) 0%,
+            rgba(8, 18, 16, 0.968) 52%,
+            rgba(9, 20, 17, 0.952) 100%);
+    box-shadow:
+        0 16px 38px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+        transform 200ms ease,
+        border-color 200ms ease,
+        box-shadow 200ms ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.022) 0%,
+            rgba(255, 255, 255, 0) 18%);
+    pointer-events: none;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(31, 166, 106, 0.18);
+    box-shadow:
+        0 22px 46px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(212, 163, 63, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.055);
+}
+
+.trigger {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: inherit;
+    background: transparent;
+    cursor: pointer;
+    appearance: none;
+}
+
+.trigger:focus-visible {
+    outline: 2px solid rgba(212, 163, 63, 0.72);
+    outline-offset: -2px;
+}
+
+.topRow {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.64rem;
+    min-inline-size: 0;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: fit-content;
+    min-block-size: 1.52rem;
+    padding-inline: 0.56rem;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 163, 63, 0.2);
+    background:
+        linear-gradient(180deg,
+            rgba(10, 16, 15, 0.8) 0%,
+            rgba(8, 12, 12, 0.66) 100%);
+    color: #efcf88;
+    font-size: 0.57rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-inline-size: 2.06rem;
+    min-block-size: 2.06rem;
+    padding-inline: 0.46rem;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 163, 63, 0.18);
+    background:
+        linear-gradient(180deg,
+            rgba(18, 26, 28, 0.86) 0%,
+            rgba(10, 16, 18, 0.72) 100%);
+    color: rgba(244, 247, 238, 0.84);
+    font-size: 0.84rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.head {
+    display: grid;
+    gap: 0.42rem;
+    min-inline-size: 0;
+}
+
+.title {
+    margin: 0;
+    color: #f3f6ee;
+    font-size: clamp(0.96rem, 0.96vw, 1.06rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+
+.description {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    color: rgba(228, 234, 227, 0.78);
+    font-size: 0.84rem;
+    font-weight: 500;
+    line-height: 1.48;
+    text-wrap: pretty;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+
+.list {
+    display: grid;
+    gap: 0.42rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-inline-size: 0;
+}
+
+.listItem {
+    position: relative;
+    padding: 0.62rem 0.68rem 0.62rem 1.64rem;
+    border-radius: 0.76rem;
+    border: 1px solid rgba(255, 255, 255, 0.045);
+    background:
+        linear-gradient(180deg,
+            rgba(14, 24, 24, 0.76) 0%,
+            rgba(10, 17, 18, 0.68) 100%);
+    color: rgba(240, 243, 238, 0.84);
+    font-size: 0.76rem;
+    font-weight: 600;
+    line-height: 1.34;
+    text-wrap: pretty;
+}
+
+.listItem::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0.8rem;
+    inset-inline-start: 0.68rem;
+    inline-size: 0.32rem;
+    block-size: 0.32rem;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at center,
+            rgba(74, 224, 151, 1) 0%,
+            rgba(31, 166, 106, 0.95) 66%,
+            rgba(31, 166, 106, 0.2) 100%);
+    box-shadow: 0 0 10px rgba(31, 166, 106, 0.42);
+}
+
+@media (max-width: 760px) {
+    .card {
+        gap: 0.62rem;
+        padding: 0.72rem;
+    }
+
+    .title {
+        font-size: 0.94rem;
+    }
+
+    .description {
+        font-size: 0.83rem;
+    }
+
+    .listItem {
+        font-size: 0.76rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .card {
+        padding: 0.68rem;
+        border-radius: 0.92rem;
+    }
+
+    .badge {
+        min-block-size: 1.46rem;
+        padding-inline: 0.52rem;
+        font-size: 0.56rem;
+    }
+
+    .counter {
+        min-inline-size: 1.96rem;
+        min-block-size: 1.96rem;
+        font-size: 0.82rem;
+    }
+}

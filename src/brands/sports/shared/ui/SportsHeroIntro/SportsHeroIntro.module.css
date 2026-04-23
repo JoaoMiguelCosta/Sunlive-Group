@@ -4,33 +4,37 @@
 
 .surface {
     --hero-radius: clamp(1.35rem, 2vw, 2.5rem);
-    --hero-padding-inline: clamp(1rem, 2.3vw, 2.35rem);
-    --hero-padding-block-start: clamp(1.3rem, 2.9vw, 2.4rem);
-    --hero-padding-block-end: clamp(1.2rem, 2.6vw, 2.15rem);
-    --hero-title-max: 14ch;
-    --hero-copy-max: 85rem;
-    --hero-support-max: 70rem;
+    --hero-padding-inline: clamp(1rem, 2.25vw, 2.35rem);
+    --hero-padding-block-start: clamp(1.24rem, 2.55vw, 2.16rem);
+    --hero-padding-block-end: clamp(1.12rem, 2.3vw, 1.92rem);
+
+    --hero-shell-max: 92rem;
+    --hero-block-gap: clamp(1.08rem, 1.75vw, 1.48rem);
+
+    --hero-title-max: 15.4ch;
+    --hero-copy-max: 70rem;
+    --hero-support-max: 64rem;
     --hero-proof-max: 78rem;
-    --hero-stats-max: 72rem;
+    --hero-stats-max: 74rem;
 
     --hero-eyebrow-border: rgba(199, 134, 21, 0.22);
     --hero-eyebrow-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
         0 8px 18px rgba(0, 0, 0, 0.16);
     --hero-eyebrow-color: rgba(245, 233, 194, 0.96);
 
-    --hero-secondary-color: rgba(212, 150, 33, 0.96);
+    --hero-secondary-color: rgba(214, 154, 39, 0.97);
     --hero-secondary-shadow:
-        0 1px 0 rgba(0, 0, 0, 0.16),
+        0 1px 0 rgba(0, 0, 0, 0.18),
         0 0 14px rgba(199, 134, 21, 0.08);
 
-    --hero-title-color: #b8e07c;
+    --hero-title-color: #b9e07d;
     --hero-title-shadow:
         0 0 18px rgba(131, 212, 108, 0.18),
-        0 0 30px rgba(92, 184, 101, 0.08),
-        0 8px 22px rgba(0, 0, 0, 0.26);
+        0 0 34px rgba(92, 184, 101, 0.1),
+        0 8px 24px rgba(0, 0, 0, 0.28);
 
-    --hero-description-color: rgba(242, 245, 241, 0.96);
+    --hero-description-color: rgba(242, 245, 241, 0.97);
     --hero-support-color: rgba(214, 224, 216, 0.86);
 
     position: relative;
@@ -42,26 +46,38 @@
     border: 1px solid rgba(199, 134, 21, 0.2);
     border-radius: var(--hero-radius);
     background:
-        radial-gradient(120% 145% at 0% 0%,
-            rgba(18, 108, 69, 0.16) 0%,
-            transparent 38%),
-        radial-gradient(105% 135% at 100% 100%,
-            rgba(199, 134, 21, 0.12) 0%,
+        radial-gradient(66% 84% at 50% 23%,
+            rgba(164, 226, 110, 0.15) 0%,
+            rgba(82, 177, 97, 0.1) 30%,
+            rgba(22, 54, 38, 0.03) 50%,
+            transparent 68%),
+        radial-gradient(74% 116% at 100% 52%,
+            rgba(24, 136, 84, 0.25) 0%,
+            rgba(15, 111, 70, 0.16) 34%,
+            rgba(8, 34, 26, 0.04) 62%,
+            transparent 82%),
+        radial-gradient(80% 118% at 0% 0%,
+            rgba(18, 99, 67, 0.14) 0%,
             transparent 42%),
-        linear-gradient(90deg,
-            rgba(3, 7, 11, 0.992) 0%,
-            rgba(3, 7, 11, 0.988) 28%,
-            rgba(3, 16, 14, 0.985) 54%,
-            rgba(17, 104, 66, 0.952) 100%);
+        radial-gradient(56% 84% at 100% 100%,
+            rgba(199, 134, 21, 0.075) 0%,
+            transparent 52%),
+        linear-gradient(102deg,
+            rgba(2, 7, 11, 0.995) 0%,
+            rgba(3, 9, 13, 0.992) 24%,
+            rgba(3, 14, 14, 0.988) 48%,
+            rgba(7, 27, 22, 0.978) 72%,
+            rgba(16, 101, 64, 0.946) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
         inset 0 -1px 0 rgba(0, 0, 0, 0.28),
-        0 24px 52px rgba(0, 0, 0, 0.25),
-        0 10px 24px rgba(199, 134, 21, 0.08);
+        0 22px 48px rgba(0, 0, 0, 0.26),
+        0 10px 24px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(199, 134, 21, 0.02);
     transition:
         border-color 220ms ease,
         box-shadow 280ms ease,
-        transform 280ms ease;
+        background 280ms ease;
 }
 
 .surface::before {
@@ -71,10 +87,10 @@
     background:
         linear-gradient(135deg,
             rgba(255, 255, 255, 0.042) 0%,
-            rgba(255, 255, 255, 0.012) 14%,
+            rgba(255, 255, 255, 0.014) 14%,
             rgba(255, 255, 255, 0) 34%,
             rgba(255, 255, 255, 0) 100%);
-    opacity: 0.72;
+    opacity: 0.7;
     pointer-events: none;
     z-index: 0;
     transition: opacity 240ms ease;
@@ -84,60 +100,61 @@
     content: "";
     position: absolute;
     inset: auto 0 0 0;
-    block-size: 40%;
+    block-size: 43%;
     background:
         linear-gradient(180deg,
             rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 0.08) 42%,
-            rgba(0, 0, 0, 0.22) 100%);
+            rgba(0, 0, 0, 0.085) 38%,
+            rgba(0, 0, 0, 0.235) 100%);
     pointer-events: none;
     z-index: 0;
 }
 
-.surface:hover {
+.surface:is(:hover, :focus-within) {
     --hero-eyebrow-border: rgba(199, 134, 21, 0.28);
     --hero-eyebrow-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 10px 20px rgba(0, 0, 0, 0.17),
-        0 0 16px rgba(199, 134, 21, 0.05);
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 10px 22px rgba(0, 0, 0, 0.18),
+        0 0 18px rgba(199, 134, 21, 0.06);
     --hero-eyebrow-color: rgba(248, 237, 202, 0.98);
 
-    --hero-secondary-color: rgba(219, 158, 41, 0.98);
+    --hero-secondary-color: rgba(222, 164, 50, 0.98);
     --hero-secondary-shadow:
         0 1px 0 rgba(0, 0, 0, 0.16),
         0 0 16px rgba(199, 134, 21, 0.12);
 
-    --hero-title-color: #c0e487;
+    --hero-title-color: #c2e789;
     --hero-title-shadow:
-        0 0 22px rgba(131, 212, 108, 0.22),
-        0 0 34px rgba(92, 184, 101, 0.1),
-        0 8px 22px rgba(0, 0, 0, 0.26);
+        0 0 24px rgba(131, 212, 108, 0.22),
+        0 0 40px rgba(92, 184, 101, 0.12),
+        0 8px 24px rgba(0, 0, 0, 0.28);
 
-    --hero-description-color: rgba(245, 247, 243, 0.98);
-    --hero-support-color: rgba(219, 228, 221, 0.9);
+    --hero-description-color: rgba(246, 248, 244, 0.98);
+    --hero-support-color: rgba(219, 228, 221, 0.91);
 
     border-color: rgba(199, 134, 21, 0.28);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
         inset 0 -1px 0 rgba(0, 0, 0, 0.28),
-        0 28px 60px rgba(0, 0, 0, 0.28),
-        0 12px 30px rgba(199, 134, 21, 0.11);
+        0 26px 56px rgba(0, 0, 0, 0.3),
+        0 12px 28px rgba(0, 0, 0, 0.17),
+        0 0 0 1px rgba(199, 134, 21, 0.04);
 }
 
-.surface:hover::before {
-    opacity: 0.82;
+.surface:is(:hover, :focus-within)::before {
+    opacity: 0.83;
 }
 
 .topRule {
     position: absolute;
     inset: 0 0 auto 0;
-    block-size: clamp(0.28rem, 0.38vw, 0.42rem);
+    block-size: clamp(0.27rem, 0.36vw, 0.4rem);
     background:
         linear-gradient(90deg,
-            rgba(176, 118, 18, 0.94) 0%,
-            rgba(216, 164, 54, 0.98) 38%,
-            rgba(197, 134, 22, 0.92) 72%,
-            rgba(135, 92, 18, 0.9) 100%);
+            rgba(161, 109, 18, 0.94) 0%,
+            rgba(219, 168, 57, 0.98) 34%,
+            rgba(197, 134, 22, 0.93) 68%,
+            rgba(132, 90, 18, 0.9) 100%);
     box-shadow:
         0 1px 0 rgba(255, 239, 192, 0.16),
         0 6px 16px rgba(199, 134, 21, 0.1);
@@ -146,19 +163,19 @@
 
 .glowOrb {
     position: absolute;
-    inset: 11% auto auto 50%;
+    inset: 10.4% auto auto 50%;
     transform: translateX(-50%);
-    inline-size: clamp(11rem, 19vw, 18rem);
+    inline-size: clamp(11.8rem, 18.2vw, 17.4rem);
     aspect-ratio: 1;
     border-radius: 50%;
     background:
         radial-gradient(circle,
-            rgba(174, 226, 119, 0.2) 0%,
-            rgba(74, 179, 101, 0.12) 35%,
+            rgba(176, 228, 120, 0.21) 0%,
+            rgba(79, 183, 103, 0.12) 34%,
             rgba(18, 49, 35, 0.04) 56%,
-            rgba(18, 49, 35, 0) 75%);
-    filter: blur(28px);
-    opacity: 0.94;
+            rgba(18, 49, 35, 0) 76%);
+    filter: blur(30px);
+    opacity: 0.88;
     pointer-events: none;
     z-index: 0;
     transition:
@@ -167,25 +184,25 @@
         filter 280ms ease;
 }
 
-.surface:hover .glowOrb {
-    opacity: 1;
-    transform: translateX(-50%) scale(1.03);
-    filter: blur(30px);
+.surface:is(:hover, :focus-within) .glowOrb {
+    opacity: 0.98;
+    transform: translateX(-50%) scale(1.025);
+    filter: blur(32px);
 }
 
 .glowBeam {
     position: absolute;
-    inset: 0 16% 0 auto;
-    inline-size: min(28vw, 28rem);
+    inset: 0 14% 0 auto;
+    inline-size: min(25vw, 24rem);
     background:
         linear-gradient(180deg,
             rgba(13, 114, 69, 0) 0%,
-            rgba(15, 126, 76, 0.08) 18%,
-            rgba(8, 136, 82, 0.18) 48%,
-            rgba(16, 124, 77, 0.08) 78%,
+            rgba(15, 126, 76, 0.075) 18%,
+            rgba(8, 136, 82, 0.16) 48%,
+            rgba(16, 124, 77, 0.075) 78%,
             rgba(13, 114, 69, 0) 100%);
-    filter: blur(26px);
-    opacity: 0.88;
+    filter: blur(27px);
+    opacity: 0.8;
     pointer-events: none;
     z-index: 0;
     transition:
@@ -193,9 +210,9 @@
         filter 280ms ease;
 }
 
-.surface:hover .glowBeam {
-    opacity: 0.96;
-    filter: blur(28px);
+.surface:is(:hover, :focus-within) .glowBeam {
+    opacity: 0.92;
+    filter: blur(29px);
 }
 
 .noise {
@@ -205,7 +222,7 @@
         linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
     background-size: 16px 16px;
-    opacity: 0.05;
+    opacity: 0.038;
     mix-blend-mode: soft-light;
     pointer-events: none;
     z-index: 0;
@@ -217,103 +234,137 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: var(--hero-block-gap);
     padding:
         var(--hero-padding-block-start) var(--hero-padding-inline) var(--hero-padding-block-end);
     text-align: center;
 }
 
+.headerBlock,
+.proofBlock,
+.statsBlock {
+    inline-size: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.headerBlock {
+    max-inline-size: var(--hero-shell-max);
+}
+
+.proofBlock {
+    max-inline-size: var(--hero-proof-max);
+}
+
+.statsBlock {
+    max-inline-size: var(--hero-stats-max);
+    padding-top: clamp(0.08rem, 0.2vw, 0.16rem);
+}
+
 @media (min-width: 1440px) {
     .surface {
-        --hero-padding-inline: clamp(1.6rem, 2vw, 2.6rem);
-        --hero-padding-block-start: clamp(1.65rem, 3vw, 2.55rem);
-        --hero-padding-block-end: clamp(1.5rem, 2.8vw, 2.3rem);
-        --hero-copy-max: 64rem;
-        --hero-support-max: 72rem;
+        --hero-padding-inline: clamp(1.45rem, 1.95vw, 2.45rem);
+        --hero-padding-block-start: clamp(1.3rem, 2.08vw, 2.2rem);
+        --hero-padding-block-end: clamp(1.18rem, 2vw, 1.96rem);
+        --hero-shell-max: 94rem;
+        --hero-copy-max: 72rem;
+        --hero-support-max: 66rem;
         --hero-proof-max: 80rem;
-        --hero-stats-max: 74rem;
+        --hero-stats-max: 76rem;
+        --hero-block-gap: clamp(1.1rem, 1.45vw, 1.36rem);
     }
 }
 
 @media (max-width: 1200px) {
     .surface {
-        --hero-title-max: 15ch;
-        --hero-copy-max: 56rem;
-        --hero-support-max: 60rem;
-        --hero-proof-max: 70rem;
-        --hero-stats-max: 66rem;
+        --hero-title-max: 14.8ch;
+        --hero-copy-max: 58rem;
+        --hero-support-max: 54rem;
+        --hero-proof-max: 68rem;
+        --hero-stats-max: 68rem;
     }
 
     .glowBeam {
         inset: 0 12% 0 auto;
-        inline-size: min(30vw, 23rem);
+        inline-size: min(28vw, 22rem);
     }
 }
 
 @media (max-width: 980px) {
     .surface {
-        --hero-padding-inline: clamp(0.95rem, 2.5vw, 1.35rem);
-        --hero-padding-block-start: clamp(1.3rem, 3vw, 1.85rem);
-        --hero-padding-block-end: clamp(1.2rem, 2.8vw, 1.7rem);
-        --hero-title-max: 16ch;
-        --hero-copy-max: 44rem;
-        --hero-support-max: 48rem;
+        --hero-padding-inline: clamp(0.95rem, 2.5vw, 1.38rem);
+        --hero-padding-block-start: clamp(1.12rem, 2.75vw, 1.68rem);
+        --hero-padding-block-end: clamp(1rem, 2.45vw, 1.5rem);
+        --hero-block-gap: clamp(0.98rem, 2.05vw, 1.24rem);
+        --hero-title-max: 14.2ch;
+        --hero-copy-max: 46rem;
+        --hero-support-max: 43rem;
         --hero-proof-max: 48rem;
         --hero-stats-max: 48rem;
         border-radius: clamp(1.25rem, 2vw, 1.8rem);
     }
 
     .glowOrb {
-        inset: 12% auto auto 50%;
-        inline-size: 13rem;
+        inset: 10.9% auto auto 50%;
+        inline-size: 12.3rem;
     }
 }
 
 @media (max-width: 840px) {
     .surface {
         --hero-padding-inline: 0.95rem;
-        --hero-padding-block-start: 1.28rem;
-        --hero-padding-block-end: 1.18rem;
-        --hero-title-max: 13ch;
+        --hero-padding-block-start: 1.08rem;
+        --hero-padding-block-end: 1rem;
+        --hero-block-gap: 0.94rem;
+        --hero-title-max: 12.9ch;
         --hero-copy-max: 38rem;
-        --hero-support-max: 40rem;
+        --hero-support-max: 37rem;
         --hero-proof-max: 38rem;
         --hero-stats-max: 38rem;
     }
 
     .glowOrb {
-        inset: 13% auto auto 50%;
-        inline-size: 11.75rem;
+        inset: 12.5% auto auto 50%;
+        inline-size: 10.9rem;
     }
 
     .glowBeam {
         inset: auto 0 0 0;
         inline-size: 100%;
-        block-size: 42%;
+        block-size: 40%;
         filter: blur(22px);
     }
 }
 
 @media (max-width: 767px) {
     .surface {
-        --hero-title-max: 11ch;
+        --hero-title-max: 11.45ch;
         --hero-copy-max: 31rem;
-        --hero-support-max: 34rem;
+        --hero-support-max: 33rem;
         --hero-proof-max: 32rem;
         --hero-stats-max: 32rem;
         background:
-            radial-gradient(120% 135% at 50% 100%,
-                rgba(199, 134, 21, 0.12) 0%,
-                transparent 40%),
+            radial-gradient(72% 76% at 50% 18%,
+                rgba(164, 224, 108, 0.135) 0%,
+                rgba(82, 178, 98, 0.078) 34%,
+                transparent 66%),
+            radial-gradient(120% 115% at 50% 100%,
+                rgba(199, 134, 21, 0.096) 0%,
+                transparent 38%),
             linear-gradient(180deg,
-                rgba(3, 7, 11, 0.992) 0%,
-                rgba(3, 14, 13, 0.986) 50%,
-                rgba(18, 108, 69, 0.94) 100%);
+                rgba(3, 7, 11, 0.995) 0%,
+                rgba(3, 12, 13, 0.988) 46%,
+                rgba(10, 60, 42, 0.968) 100%);
+    }
+
+    .statsBlock {
+        padding-top: 0;
     }
 }
 
 @media (max-width: 560px) {
     .surface {
-        --hero-title-max: 10ch;
+        --hero-title-max: 10.25ch;
         --hero-copy-max: 100%;
         --hero-support-max: 100%;
         --hero-proof-max: 100%;
@@ -321,20 +372,21 @@
     }
 
     .topRule {
-        block-size: 0.26rem;
+        block-size: 0.25rem;
     }
 
     .glowOrb {
-        inline-size: 9.4rem;
-        opacity: 0.88;
+        inline-size: 8.9rem;
+        opacity: 0.86;
     }
 }
 
 @media (max-width: 420px) {
     .surface {
         --hero-padding-inline: 0.85rem;
-        --hero-padding-block-start: 1.12rem;
-        --hero-padding-block-end: 1.02rem;
+        --hero-padding-block-start: 1rem;
+        --hero-padding-block-end: 0.94rem;
+        --hero-block-gap: 0.86rem;
         border-radius: 1.15rem;
     }
 }
@@ -348,11 +400,7 @@
         transition: none;
     }
 
-    .surface:hover {
-        transform: none;
-    }
-
-    .surface:hover .glowOrb {
+    .surface:is(:hover, :focus-within) .glowOrb {
         transform: translateX(-50%);
     }
 }

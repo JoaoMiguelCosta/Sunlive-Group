@@ -1,36 +1,48 @@
 .card {
     position: relative;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     min-inline-size: 0;
-    padding: clamp(0.86rem, 1.18vw, 1rem);
-    border-radius: clamp(1.15rem, 1.45vw, 1.38rem);
-    border: 1px solid rgba(255, 255, 255, 0.065);
+    flex: 1;
+    padding: clamp(0.82rem, 0.98vw, 0.94rem);
+    border-radius: clamp(1.08rem, 1.35vw, 1.28rem);
+    border: 1px solid rgba(255, 255, 255, 0.07);
     background:
-        radial-gradient(120% 150% at 100% 0%,
-            rgba(199, 134, 21, 0.09) 0%,
-            transparent 40%),
-        radial-gradient(120% 150% at 0% 100%,
-            rgba(46, 194, 126, 0.06) 0%,
-            transparent 44%),
+        radial-gradient(135% 175% at 100% 0%,
+            rgba(199, 134, 21, 0.11) 0%,
+            transparent 42%),
+        radial-gradient(135% 175% at 0% 100%,
+            rgba(46, 194, 126, 0.09) 0%,
+            transparent 46%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0.034) 0%,
             rgba(255, 255, 255, 0.012) 100%),
         linear-gradient(145deg,
-            rgba(13, 21, 28, 0.95) 0%,
-            rgba(8, 14, 18, 0.96) 100%);
+            rgba(10, 18, 24, 0.97) 0%,
+            rgba(6, 12, 17, 0.99) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        0 12px 28px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.018),
+        0 14px 30px rgba(0, 0, 0, 0.22);
     overflow: hidden;
     isolation: isolate;
     transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        filter 180ms ease,
-        background 180ms ease;
+        transform 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease,
+        filter 220ms ease,
+        background 220ms ease;
+
+    --education-card-header-min-h: 4.2rem;
+    --education-card-description-min-h: 5.85rem;
+    --education-card-group-min-h: 9.7rem;
+    --education-card-outcome-min-h: 4.8rem;
+}
+
+@supports (backdrop-filter: blur(12px)) {
+    .card {
+        backdrop-filter: blur(12px);
+    }
 }
 
 .card::before {
@@ -40,24 +52,25 @@
     block-size: 1px;
     background:
         linear-gradient(90deg,
-            rgba(46, 194, 126, 0.16) 0%,
-            rgba(199, 134, 21, 0.34) 55%,
-            rgba(255, 255, 255, 0.08) 100%);
-    opacity: 0.9;
+            rgba(46, 194, 126, 0.14) 0%,
+            rgba(199, 134, 21, 0.4) 55%,
+            rgba(255, 255, 255, 0.07) 100%);
+    opacity: 0.96;
 }
 
 .card::after {
     content: "";
     position: absolute;
-    inset: auto -14% -18% auto;
+    inset: auto -12% -18% auto;
     inline-size: 8rem;
     block-size: 8rem;
     border-radius: 999px;
     background:
         radial-gradient(circle,
-            rgba(46, 194, 126, 0.075) 0%,
+            rgba(46, 194, 126, 0.11) 0%,
             transparent 70%);
     pointer-events: none;
+    opacity: 0.86;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -65,9 +78,36 @@
         transform: translateY(-3px);
         border-color: rgba(199, 134, 21, 0.26);
         box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.055),
-            0 16px 34px rgba(0, 0, 0, 0.26);
-        filter: saturate(1.03);
+            inset 0 1px 0 rgba(255, 255, 255, 0.06),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.024),
+            0 18px 36px rgba(0, 0, 0, 0.28);
+        filter: saturate(1.04);
+    }
+
+    .card:hover .cardTitle {
+        color: rgba(251, 252, 253, 0.995);
+    }
+
+    .card:hover .stepBadge {
+        border-color: rgba(199, 134, 21, 0.34);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.07),
+            0 7px 14px rgba(0, 0, 0, 0.14),
+            0 0 0.86rem rgba(199, 134, 21, 0.08);
+    }
+
+    .card:hover .agePill {
+        border-color: rgba(46, 194, 126, 0.26);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.045),
+            0 0 0.86rem rgba(46, 194, 126, 0.08);
+    }
+
+    .card:hover .outcomeBox {
+        border-color: rgba(199, 134, 21, 0.18);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.035),
+            0 8px 16px rgba(0, 0, 0, 0.1);
     }
 }
 
@@ -75,114 +115,139 @@
     transform: translateY(-2px);
     border-color: rgba(199, 134, 21, 0.28);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.055),
-        0 16px 34px rgba(0, 0, 0, 0.24);
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.024),
+        0 18px 36px rgba(0, 0, 0, 0.26);
 }
 
 .cardTop {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.7rem;
-    margin-block-end: 0.82rem;
+    gap: 0.62rem;
+    margin-block-end: 0.72rem;
 }
 
 .stepBadge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-inline-size: 2.35rem;
-    min-block-size: 2.35rem;
-    padding-inline: 0.66rem;
+    min-inline-size: 2.14rem;
+    min-block-size: 2.14rem;
+    padding-inline: 0.62rem;
     border-radius: 999px;
-    border: 1px solid rgba(199, 134, 21, 0.26);
+    border: 1px solid rgba(199, 134, 21, 0.28);
     background:
         linear-gradient(180deg,
-            rgba(199, 134, 21, 0.19) 0%,
+            rgba(199, 134, 21, 0.2) 0%,
             rgba(199, 134, 21, 0.08) 100%);
-    color: rgba(255, 236, 198, 0.97);
-    font-size: 0.78rem;
+    color: rgba(255, 236, 198, 0.98);
+    font-size: 0.72rem;
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.14em;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        0 6px 14px rgba(0, 0, 0, 0.12);
+        0 5px 12px rgba(0, 0, 0, 0.12);
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
 }
 
 .agePill {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.42rem 0.7rem;
+    min-block-size: 1.78rem;
+    padding: 0.34rem 0.64rem;
     border-radius: 999px;
-    border: 1px solid rgba(46, 194, 126, 0.18);
+    border: 1px solid rgba(46, 194, 126, 0.2);
     background:
         linear-gradient(180deg,
-            rgba(46, 194, 126, 0.12) 0%,
-            rgba(46, 194, 126, 0.06) 100%);
-    color: rgba(220, 255, 234, 0.92);
-    font-size: 0.77rem;
+            rgba(46, 194, 126, 0.13) 0%,
+            rgba(46, 194, 126, 0.055) 100%);
+    color: rgba(223, 255, 235, 0.94);
+    font-size: 0.72rem;
     font-weight: 700;
     line-height: 1;
     white-space: nowrap;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.14);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
 }
 
 .cardBody {
     display: grid;
-    gap: 0.78rem;
-    flex: 1;
+    grid-template-rows:
+        minmax(var(--education-card-header-min-h), auto) minmax(var(--education-card-description-min-h), auto) minmax(var(--education-card-group-min-h), auto) minmax(var(--education-card-outcome-min-h), auto);
+    gap: 0.7rem;
     min-block-size: 0;
+    align-content: start;
 }
 
 .cardHeader {
     display: grid;
+    align-content: start;
     gap: 0.22rem;
+    min-block-size: var(--education-card-header-min-h);
 }
 
 .cardTitle {
     margin: 0;
-    color: rgba(246, 248, 252, 0.98);
-    font-size: clamp(1rem, 1.08vw, 1.14rem);
-    line-height: 1.15;
-    letter-spacing: -0.024em;
+    color: rgba(246, 248, 252, 0.985);
+    font-size: clamp(0.98rem, 0.96vw, 1.08rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
     text-wrap: balance;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.015);
+    transition: color 180ms ease;
 }
 
 .cardSubtitle {
     margin: 0;
-    color: rgba(219, 169, 57, 0.92);
-    font-size: 0.84rem;
+    color: rgba(223, 173, 61, 0.96);
+    font-size: 0.8rem;
     font-weight: 700;
     line-height: 1.34;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.16);
 }
 
 .cardDescription {
     margin: 0;
-    color: rgba(216, 224, 232, 0.78);
-    font-size: 0.91rem;
-    line-height: 1.58;
+    min-block-size: var(--education-card-description-min-h);
+    color: rgba(219, 226, 233, 0.82);
+    font-size: 0.87rem;
+    line-height: 1.48;
+    text-wrap: pretty;
 }
 
 .group {
     display: grid;
-    gap: 0.58rem;
+    align-content: start;
+    grid-template-rows: auto 1fr;
+    gap: 0.5rem;
+    min-block-size: var(--education-card-group-min-h);
 }
 
 .groupLabel {
     margin: 0;
-    color: rgba(247, 250, 252, 0.9);
-    font-size: 0.8rem;
+    color: rgba(247, 250, 252, 0.93);
+    font-size: 0.75rem;
     font-weight: 800;
-    line-height: 1.28;
-    letter-spacing: 0.05em;
+    line-height: 1.2;
+    letter-spacing: 0.085em;
     text-transform: uppercase;
 }
 
 .featureList {
     display: grid;
-    gap: 0.48rem;
+    align-content: start;
+    gap: 0.44rem;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -190,94 +255,104 @@
 
 .featureItem {
     position: relative;
-    padding-inline-start: 0.94rem;
-    color: rgba(224, 232, 239, 0.84);
-    font-size: 0.9rem;
-    line-height: 1.44;
+    padding-inline-start: 0.9rem;
+    color: rgba(225, 232, 239, 0.87);
+    font-size: 0.86rem;
+    line-height: 1.4;
 }
 
 .featureItem::before {
     content: "";
     position: absolute;
-    inset-block-start: 0.48rem;
+    inset-block-start: 0.42rem;
     inset-inline-start: 0;
-    inline-size: 0.38rem;
-    block-size: 0.38rem;
+    inline-size: 0.34rem;
+    block-size: 0.34rem;
     border-radius: 999px;
     background:
         linear-gradient(135deg,
-            rgba(46, 194, 126, 0.96) 0%,
-            rgba(199, 134, 21, 0.94) 100%);
+            rgba(46, 194, 126, 0.98) 0%,
+            rgba(199, 134, 21, 0.95) 100%);
     box-shadow:
-        0 0 0 0.2rem rgba(46, 194, 126, 0.08),
-        0 0 0.65rem rgba(46, 194, 126, 0.1);
+        0 0 0 0.18rem rgba(46, 194, 126, 0.08),
+        0 0 0.6rem rgba(46, 194, 126, 0.12);
 }
 
 .outcomeBox {
     display: grid;
+    align-content: start;
     gap: 0.28rem;
+    min-block-size: var(--education-card-outcome-min-h);
     margin-top: auto;
-    padding: 0.72rem 0.82rem;
-    border-radius: 0.94rem;
-    border: 1px solid rgba(199, 134, 21, 0.13);
+    padding: 0.64rem 0.72rem;
+    border-radius: 0.88rem;
+    border: 1px solid rgba(199, 134, 21, 0.14);
     background:
         linear-gradient(180deg,
-            rgba(199, 134, 21, 0.075) 0%,
+            rgba(199, 134, 21, 0.08) 0%,
             rgba(199, 134, 21, 0.028) 100%),
         linear-gradient(145deg,
-            rgba(20, 20, 16, 0.42) 0%,
-            rgba(20, 16, 10, 0.24) 100%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            rgba(23, 20, 14, 0.5) 0%,
+            rgba(18, 16, 12, 0.28) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 7px 14px rgba(0, 0, 0, 0.08);
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease;
 }
 
 .outcomeLabel {
-    color: rgba(255, 231, 186, 0.88);
-    font-size: 0.68rem;
+    color: rgba(255, 232, 188, 0.92);
+    font-size: 0.64rem;
     font-weight: 800;
     line-height: 1;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
 }
 
 .outcomeText {
     margin: 0;
-    color: rgba(245, 247, 250, 0.89);
-    font-size: 0.88rem;
-    line-height: 1.46;
+    color: rgba(246, 248, 251, 0.9);
+    font-size: 0.84rem;
+    line-height: 1.4;
 }
 
 .cardFooter {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 0.82rem;
-    padding-top: 0.76rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 0.72rem;
+    padding-top: 0.64rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.055);
 }
 
 .bookButton {
+    position: relative;
     appearance: none;
-    border: 1px solid rgba(199, 134, 21, 0.22);
+    border: 1px solid rgba(199, 134, 21, 0.24);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.48rem;
-    min-block-size: 2.5rem;
-    padding: 0.68rem 0.94rem;
+    gap: 0.44rem;
+    min-block-size: 2.34rem;
+    padding: 0.62rem 0.9rem;
     border-radius: 999px;
+    overflow: hidden;
+    isolation: isolate;
     background:
         linear-gradient(135deg,
-            rgba(199, 134, 21, 0.98) 0%,
-            rgba(164, 108, 12, 0.98) 100%);
-    color: rgba(15, 17, 19, 0.97);
-    font-size: 0.84rem;
+            rgba(219, 157, 33, 0.99) 0%,
+            rgba(177, 118, 15, 0.99) 100%);
+    color: rgba(15, 17, 19, 0.98);
+    font-size: 0.8rem;
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.02em;
     box-shadow:
-        0 9px 20px rgba(199, 134, 21, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.24);
+        0 9px 20px rgba(199, 134, 21, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
     transition:
         transform 180ms ease,
         box-shadow 180ms ease,
@@ -285,9 +360,27 @@
         border-color 180ms ease;
 }
 
+.bookButton>* {
+    position: relative;
+    z-index: 1;
+}
+
+.bookButton::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.22) 0%,
+            rgba(255, 255, 255, 0) 48%);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
 .buttonArrow {
     display: inline-block;
-    font-size: 0.94rem;
+    font-size: 0.88rem;
     line-height: 1;
     transform: translateX(0);
     transition: transform 180ms ease;
@@ -297,9 +390,10 @@
     .bookButton:hover {
         transform: translateY(-1px);
         box-shadow:
-            0 12px 24px rgba(199, 134, 21, 0.24),
-            inset 0 1px 0 rgba(255, 255, 255, 0.26);
-        filter: saturate(1.04);
+            0 12px 24px rgba(199, 134, 21, 0.26),
+            0 0 0.9rem rgba(199, 134, 21, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        filter: saturate(1.05) brightness(1.01);
     }
 
     .bookButton:hover .buttonArrow {
@@ -307,51 +401,131 @@
     }
 }
 
+.bookButton:active {
+    transform: translateY(0);
+    box-shadow:
+        0 7px 14px rgba(199, 134, 21, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
 .bookButton:focus-visible {
-    outline: 2px solid rgba(199, 134, 21, 0.7);
+    outline: 2px solid rgba(199, 134, 21, 0.72);
     outline-offset: 3px;
 }
 
 @media (min-width: 1181px) and (max-height: 860px) {
     .card {
-        padding: 0.82rem;
+        padding: 0.76rem;
+        --education-card-header-min-h: 3.9rem;
+        --education-card-description-min-h: 5.3rem;
+        --education-card-group-min-h: 8.9rem;
+        --education-card-outcome-min-h: 4.4rem;
     }
 
     .cardTop {
-        margin-block-end: 0.72rem;
+        margin-block-end: 0.62rem;
     }
 
     .stepBadge {
-        min-inline-size: 2.22rem;
-        min-block-size: 2.22rem;
-        font-size: 0.75rem;
+        min-inline-size: 2.02rem;
+        min-block-size: 2.02rem;
+        font-size: 0.7rem;
     }
 
     .agePill {
-        padding: 0.38rem 0.66rem;
-        font-size: 0.74rem;
+        min-block-size: 1.7rem;
+        padding: 0.32rem 0.58rem;
+        font-size: 0.7rem;
     }
 
     .cardBody {
-        gap: 0.68rem;
+        gap: 0.62rem;
     }
 
     .cardTitle {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .cardSubtitle {
-        font-size: 0.81rem;
+        font-size: 0.77rem;
     }
 
     .cardDescription,
-    .featureItem {
-        font-size: 0.88rem;
-        line-height: 1.38;
+    .featureItem,
+    .outcomeText {
+        font-size: 0.83rem;
+        line-height: 1.36;
     }
 
-    .group {
-        gap: 0.5rem;
+    .outcomeBox {
+        padding: 0.58rem 0.66rem;
+    }
+
+    .cardFooter {
+        margin-top: 0.64rem;
+        padding-top: 0.58rem;
+    }
+
+    .bookButton {
+        min-block-size: 2.2rem;
+        padding: 0.56rem 0.82rem;
+        font-size: 0.76rem;
+    }
+}
+
+/* Breakpoint dedicado para o intervalo problemático */
+@media (min-width: 1121px) and (max-width: 1247px) {
+    .card {
+        padding: 0.78rem;
+        --education-card-header-min-h: 5rem;
+        --education-card-description-min-h: 7rem;
+        --education-card-group-min-h: 11.2rem;
+        --education-card-outcome-min-h: 5.25rem;
+    }
+
+    .cardTop {
+        margin-block-end: 0.64rem;
+    }
+
+    .stepBadge {
+        min-inline-size: 2.06rem;
+        min-block-size: 2.06rem;
+        font-size: 0.7rem;
+    }
+
+    .agePill {
+        min-block-size: 1.72rem;
+        padding: 0.32rem 0.58rem;
+        font-size: 0.69rem;
+    }
+
+    .cardBody {
+        gap: 0.64rem;
+    }
+
+    .cardHeader {
+        gap: 0.2rem;
+    }
+
+    .cardTitle {
+        font-size: 0.95rem;
+        line-height: 1.12;
+    }
+
+    .cardSubtitle {
+        font-size: 0.78rem;
+        line-height: 1.32;
+    }
+
+    .cardDescription,
+    .featureItem,
+    .outcomeText {
+        font-size: 0.84rem;
+        line-height: 1.4;
+    }
+
+    .groupLabel {
+        font-size: 0.73rem;
     }
 
     .featureList {
@@ -359,50 +533,78 @@
     }
 
     .outcomeBox {
-        padding: 0.66rem 0.76rem;
-    }
-
-    .outcomeText {
-        font-size: 0.84rem;
-        line-height: 1.4;
+        padding: 0.6rem 0.68rem;
     }
 
     .cardFooter {
-        margin-top: 0.7rem;
-        padding-top: 0.68rem;
+        margin-top: 0.66rem;
+        padding-top: 0.58rem;
     }
 
     .bookButton {
-        min-block-size: 2.36rem;
-        padding: 0.62rem 0.88rem;
-        font-size: 0.81rem;
+        min-block-size: 2.22rem;
+        padding: 0.56rem 0.84rem;
+        font-size: 0.76rem;
     }
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1120px) {
     .card {
-        padding: 0.84rem;
+        padding: 0.8rem;
+        --education-card-header-min-h: 4.3rem;
+        --education-card-description-min-h: 6rem;
+        --education-card-group-min-h: 10rem;
+        --education-card-outcome-min-h: 4.9rem;
+    }
+
+    .cardBody {
+        gap: 0.66rem;
     }
 }
 
 @media (max-width: 760px) {
     .card {
-        padding: 0.86rem;
-        border-radius: 1.08rem;
+        padding: 0.8rem;
+        border-radius: 1rem;
+        --education-card-header-min-h: auto;
+        --education-card-description-min-h: auto;
+        --education-card-group-min-h: auto;
+        --education-card-outcome-min-h: auto;
     }
 
     .cardTop {
-        margin-block-end: 0.74rem;
+        margin-block-end: 0.66rem;
     }
 
     .cardBody {
-        gap: 0.72rem;
+        grid-template-rows: auto;
+        gap: 0.66rem;
+    }
+
+    .cardDescription,
+    .group,
+    .cardHeader,
+    .outcomeBox {
+        min-block-size: 0;
+    }
+
+    .cardTitle {
+        font-size: 0.98rem;
+    }
+
+    .cardSubtitle {
+        font-size: 0.79rem;
     }
 
     .cardDescription,
     .featureItem,
     .outcomeText {
-        font-size: 0.88rem;
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .groupLabel {
+        font-size: 0.73rem;
     }
 }
 
@@ -413,19 +615,20 @@
     }
 
     .stepBadge {
-        min-inline-size: 2.24rem;
-        min-block-size: 2.24rem;
-        font-size: 0.75rem;
+        min-inline-size: 2.04rem;
+        min-block-size: 2.04rem;
+        font-size: 0.7rem;
     }
 
     .agePill {
-        padding: 0.38rem 0.64rem;
-        font-size: 0.73rem;
+        min-block-size: 1.7rem;
+        padding: 0.32rem 0.58rem;
+        font-size: 0.69rem;
     }
 
     .cardFooter {
-        margin-top: 0.72rem;
-        padding-top: 0.68rem;
+        margin-top: 0.68rem;
+        padding-top: 0.6rem;
     }
 
     .bookButton {
@@ -436,6 +639,10 @@
 @media (prefers-reduced-motion: reduce) {
 
     .card,
+    .cardTitle,
+    .stepBadge,
+    .agePill,
+    .outcomeBox,
     .bookButton,
     .buttonArrow {
         transition: none;

@@ -2,16 +2,28 @@
     position: relative;
     z-index: 1;
     display: grid;
-    gap: clamp(0.72rem, 1vw, 0.92rem);
+    gap: clamp(0.74rem, 0.9vw, 0.92rem);
     align-content: start;
+    align-self: stretch;
     min-inline-size: 0;
-    padding: clamp(0.95rem, 1.6vw, 1.2rem);
-    border-radius: clamp(1rem, 1.6vw, 1.2rem);
+    padding: clamp(0.96rem, 1.48vw, 1.18rem);
+    border-radius: clamp(1.08rem, 1.55vw, 1.28rem);
+    overflow: hidden;
+    isolation: isolate;
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.032) 0%,
-            rgba(255, 255, 255, 0.014) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+            rgba(255, 255, 255, 0.038) 0%,
+            rgba(255, 255, 255, 0.014) 100%),
+        linear-gradient(160deg,
+            rgba(9, 20, 31, 0.74) 0%,
+            rgba(5, 12, 19, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.046),
+        inset 0 0 0 1px rgba(255, 210, 120, 0.018),
+        0 12px 28px rgba(0, 0, 0, 0.17);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     transition:
         transform 0.24s ease,
         border-color 0.24s ease,
@@ -19,30 +31,64 @@
         background 0.24s ease;
 }
 
+.supportPanel::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    inline-size: 100%;
+    block-size: 1px;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.085) 0%,
+            rgba(255, 255, 255, 0.022) 40%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+.supportPanel::after {
+    content: "";
+    position: absolute;
+    inset: auto -14% -18% auto;
+    inline-size: clamp(7rem, 12vw, 10rem);
+    block-size: clamp(7rem, 12vw, 10rem);
+    border-radius: 999px;
+    background: radial-gradient(circle,
+            rgba(199, 134, 21, 0.07) 0%,
+            transparent 72%);
+    filter: blur(26px);
+    opacity: 0.44;
+    pointer-events: none;
+}
+
 .supportPanel:hover,
 .supportPanel:focus-within {
     transform: translateY(-1px);
     border-color: rgba(214, 166, 64, 0.17);
-    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.12);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.052),
+        inset 0 0 0 1px rgba(255, 210, 120, 0.024),
+        0 16px 30px rgba(0, 0, 0, 0.2);
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.038) 0%,
-            rgba(255, 255, 255, 0.016) 100%);
+            rgba(255, 255, 255, 0.042) 0%,
+            rgba(255, 255, 255, 0.015) 100%),
+        linear-gradient(160deg,
+            rgba(10, 22, 34, 0.76) 0%,
+            rgba(5, 12, 19, 0.92) 100%);
 }
 
 .supportEyebrow {
     margin: 0;
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.165em;
     text-transform: uppercase;
     color: rgba(212, 150, 33, 0.96);
 }
 
 .supportTitle {
     margin: 0;
-    font-size: clamp(1rem, 1.6vw, 1.2rem);
-    line-height: 1.18;
+    font-size: clamp(1.03rem, 1.22vw, 1.22rem);
+    line-height: 1.15;
     letter-spacing: -0.02em;
     color: var(--sl-platinum-050, #eef2f8);
 }
@@ -56,28 +102,28 @@
 }
 
 .supportList {
-    gap: clamp(0.5rem, 0.8vw, 0.72rem);
+    gap: clamp(0.5rem, 0.68vw, 0.68rem);
 }
 
 .supportMiniList {
-    gap: clamp(0.44rem, 0.7vw, 0.62rem);
+    gap: clamp(0.42rem, 0.58vw, 0.58rem);
 }
 
 .supportItem,
 .supportMiniItem {
     position: relative;
     padding-inline-start: 1rem;
-    line-height: 1.55;
+    line-height: 1.56;
 }
 
 .supportItem {
-    font-size: 0.9rem;
-    color: rgba(224, 230, 239, 0.84);
+    font-size: clamp(0.91rem, 0.9vw, 0.96rem);
+    color: rgba(224, 230, 239, 0.85);
 }
 
 .supportMiniItem {
-    font-size: 0.88rem;
-    color: rgba(220, 227, 236, 0.8);
+    font-size: clamp(0.87rem, 0.84vw, 0.91rem);
+    color: rgba(220, 227, 236, 0.81);
 }
 
 .supportItem::before,
@@ -85,7 +131,7 @@
     content: "";
     position: absolute;
     inset-inline-start: 0;
-    inset-block-start: 0.58em;
+    inset-block-start: 0.56em;
     inline-size: 0.42rem;
     block-size: 0.42rem;
     border-radius: 999px;
@@ -94,55 +140,96 @@
             rgb(61, 209, 135) 0%,
             rgb(229, 189, 80) 68%,
             transparent 100%);
-    box-shadow: 0 0 10px rgba(61, 209, 135, 0.22);
+    box-shadow: 0 0 9px rgba(61, 209, 135, 0.2);
 }
 
 .supportExtra {
     display: grid;
-    gap: clamp(0.58rem, 0.85vw, 0.8rem);
-    padding-top: clamp(0.1rem, 0.2vw, 0.18rem);
+    gap: clamp(0.56rem, 0.72vw, 0.72rem);
+    margin-top: auto;
+    padding-top: clamp(0.16rem, 0.3vw, 0.24rem);
 }
 
 .supportDivider {
     inline-size: 100%;
     block-size: 1px;
     background: linear-gradient(90deg,
-            rgba(199, 134, 21, 0.5) 0%,
-            rgba(46, 194, 126, 0.22) 55%,
+            rgba(199, 134, 21, 0.46) 0%,
+            rgba(46, 194, 126, 0.2) 55%,
             rgba(255, 255, 255, 0.02) 100%);
 }
 
 .supportExtraTitle {
     margin: 0;
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.145em;
     text-transform: uppercase;
     color: rgba(212, 150, 33, 0.9);
 }
 
-@media (min-width: 1350px) {
+@media (max-width: 959.98px) and (min-width: 720px) {
     .supportPanel {
-        gap: clamp(0.88rem, 1vw, 1.08rem);
+        justify-self: stretch;
+        inline-size: 100%;
+        max-inline-size: none;
+    }
+}
+
+@media (min-width: 960px) {
+    .supportPanel {
+        gap: clamp(0.8rem, 0.88vw, 0.96rem);
+        padding: clamp(1rem, 1.46vw, 1.24rem);
+    }
+
+    .supportTitle {
+        line-height: 1.14;
     }
 
     .supportList {
-        gap: clamp(0.62rem, 0.78vw, 0.86rem);
+        gap: clamp(0.54rem, 0.7vw, 0.72rem);
     }
 
     .supportExtra {
-        gap: clamp(0.68rem, 0.85vw, 0.9rem);
+        gap: clamp(0.6rem, 0.72vw, 0.76rem);
     }
 
     .supportMiniList {
-        gap: clamp(0.5rem, 0.68vw, 0.68rem);
+        gap: clamp(0.44rem, 0.6vw, 0.6rem);
     }
 }
 
 @media (max-width: 719.98px) {
+    .supportPanel {
+        max-inline-size: 100%;
+        gap: 0.72rem;
+        padding: 0.92rem;
+    }
+
+    .supportEyebrow,
+    .supportExtraTitle {
+        font-size: 0.73rem;
+        letter-spacing: 0.155em;
+    }
 
     .supportItem,
     .supportMiniItem {
-        font-size: 0.9rem;
+        font-size: 0.91rem;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .supportPanel {
+        gap: 0.68rem;
+        padding: 0.88rem;
+    }
+
+    .supportTitle {
+        font-size: 1.02rem;
+    }
+
+    .supportItem,
+    .supportMiniItem {
+        line-height: 1.52;
     }
 }

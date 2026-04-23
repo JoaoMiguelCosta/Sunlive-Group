@@ -1,0 +1,60 @@
+.header {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.58rem;
+    inline-size: 100%;
+    max-inline-size: 49rem;
+    min-inline-size: 0;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.eyebrow {
+    margin: 0;
+    color: #d8aa49;
+    font-size: 0.69rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.title {
+    margin: 0;
+    color: #eef4df;
+    font-size: clamp(1.68rem, 3vw, 2.62rem);
+    font-weight: 900;
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+}
+
+.lead {
+    margin: 0;
+    color: rgba(231, 236, 229, 0.82);
+    font-size: clamp(0.91rem, 0.95vw, 0.99rem);
+    font-weight: 500;
+    line-height: 1.58;
+    text-wrap: pretty;
+}
+
+@media (max-width: 760px) {
+    .header {
+        gap: 0.54rem;
+    }
+
+    .eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 0.16em;
+    }
+
+    .title {
+        line-height: 1;
+    }
+
+    .lead {
+        font-size: 0.9rem;
+        line-height: 1.52;
+    }
+}

@@ -35,7 +35,7 @@ export default function SportsClosingCTA({ data }) {
   );
 
   const { ref, inView } = useInView({
-    threshold: 0.16,
+    threshold: 0.14,
     once: true,
   });
 

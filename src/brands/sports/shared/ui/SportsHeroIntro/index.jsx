@@ -20,6 +20,9 @@ export default function SportsHeroIntro({
   const validProofPoints = getValidProofPoints(proofPoints);
   const validStats = getValidStats(stats);
 
+  const hasProofPoints = validProofPoints.length > 0;
+  const hasStats = validStats.length > 0;
+
   if (!title && !description) return null;
 
   return (
@@ -36,23 +39,33 @@ export default function SportsHeroIntro({
         <div className={styles.noise} aria-hidden="true" />
 
         <div className={styles.inner}>
-          <SportsHeroIntroHeader
-            eyebrow={eyebrow}
-            secondaryLine={secondaryLine}
-            title={title}
-            description={description}
-            supportingText={supportingText}
-          />
+          <div className={styles.headerBlock}>
+            <SportsHeroIntroHeader
+              eyebrow={eyebrow}
+              secondaryLine={secondaryLine}
+              title={title}
+              description={description}
+              supportingText={supportingText}
+            />
+          </div>
 
-          <SportsHeroIntroProofList
-            items={validProofPoints}
-            ariaLabel={ui?.proofListAriaLabel || "Pontos-chave"}
-          />
+          {hasProofPoints ? (
+            <div className={styles.proofBlock}>
+              <SportsHeroIntroProofList
+                items={validProofPoints}
+                ariaLabel={ui?.proofListAriaLabel || "Pontos-chave"}
+              />
+            </div>
+          ) : null}
 
-          <SportsHeroIntroStatsGrid
-            items={validStats}
-            ariaLabel={ui?.statsAriaLabel || "Destaques da secção"}
-          />
+          {hasStats ? (
+            <div className={styles.statsBlock}>
+              <SportsHeroIntroStatsGrid
+                items={validStats}
+                ariaLabel={ui?.statsAriaLabel || "Destaques da secção"}
+              />
+            </div>
+          ) : null}
         </div>
       </div>
     </section>

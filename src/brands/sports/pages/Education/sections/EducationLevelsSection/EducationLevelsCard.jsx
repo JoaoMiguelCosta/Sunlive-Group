@@ -1,8 +1,9 @@
 import styles from "./EducationLevelsCard.module.css";
-
-function hasItems(value) {
-  return Array.isArray(value) && value.length > 0;
-}
+import {
+  buildHighlightKey,
+  getStepLabel,
+  hasItems,
+} from "./educationLevelsSection.utils.js";
 
 export default function EducationLevelsCard({
   item,
@@ -10,18 +11,25 @@ export default function EducationLevelsCard({
   sectionId,
   onOpenBook,
 }) {
-  const stepLabel = item.step || String(index + 1).padStart(2, "0");
-  const hasHighlights = hasItems(item.highlights);
-  const hasBook = Boolean(item.book?.label);
+  const stepLabel = getStepLabel(item, index);
+  const highlights = hasItems(item?.highlights) ? item.highlights : [];
+  const hasBookAction = Boolean(
+    item?.book?.label &&
+      item?.book?.bookKey &&
+      typeof onOpenBook === "function",
+  );
+
+  const cardTitleId = item?.title
+    ? `${sectionId}-card-title-${stepLabel}`
+    : undefined;
 
   function handleOpenBook() {
-    if (typeof onOpenBook === "function" && item.book?.bookKey) {
-      onOpenBook(item.book.bookKey);
-    }
+    if (!hasBookAction) return;
+    onOpenBook(item.book.bookKey);
   }
 
   return (
-    <article className={styles.card}>
+    <article className={styles.card} aria-labelledby={cardTitleId}>
       <div className={styles.cardTop}>
         <span className={styles.stepBadge}>{stepLabel}</span>
 
@@ -33,7 +41,9 @@ export default function EducationLevelsCard({
       <div className={styles.cardBody}>
         <div className={styles.cardHeader}>
           {item.title ? (
-            <h3 className={styles.cardTitle}>{item.title}</h3>
+            <h3 id={cardTitleId} className={styles.cardTitle}>
+              {item.title}
+            </h3>
           ) : null}
 
           {item.subtitle ? (
@@ -45,15 +55,18 @@ export default function EducationLevelsCard({
           <p className={styles.cardDescription}>{item.description}</p>
         ) : null}
 
-        {hasHighlights ? (
+        {highlights.length > 0 ? (
           <div className={styles.group}>
             <p className={styles.groupLabel}>
               {item.highlightsLabel || "Pontos-chave:"}
             </p>
 
             <ul className={styles.featureList}>
-              {item.highlights.map((feature) => (
-                <li key={feature} className={styles.featureItem}>
+              {highlights.map((feature, featureIndex) => (
+                <li
+                  key={buildHighlightKey(feature, featureIndex)}
+                  className={styles.featureItem}
+                >
                   {feature}
                 </li>
               ))}
@@ -66,18 +79,19 @@ export default function EducationLevelsCard({
             <span className={styles.outcomeLabel}>
               {item.outcomeLabel || "Resultado"}
             </span>
+
             <p className={styles.outcomeText}>{item.outcome}</p>
           </div>
         ) : null}
       </div>
 
-      {hasBook ? (
+      {hasBookAction ? (
         <div className={styles.cardFooter}>
           <button
             type="button"
             className={styles.bookButton}
             onClick={handleOpenBook}
-            aria-label={item.book?.ariaLabel || item.book?.label}
+            aria-label={item.book.ariaLabel || item.book.label}
           >
             <span>{item.book.label}</span>
             <span className={styles.buttonArrow} aria-hidden="true">

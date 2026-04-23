@@ -1,9 +1,6 @@
 import styles from "./EducationLevelsTimeline.module.css";
 import EducationLevelsCard from "./EducationLevelsCard.jsx";
-
-function hasItems(value) {
-  return Array.isArray(value) && value.length > 0;
-}
+import { getStepKey, hasItems } from "./educationLevelsSection.utils.js";
 
 export default function EducationLevelsTimeline({
   sectionId,
@@ -13,6 +10,9 @@ export default function EducationLevelsTimeline({
   onOpenBook,
 }) {
   if (!hasItems(items)) return null;
+
+  const timelineAriaLabel =
+    journey?.ariaLabel || "Percurso educativo da Sunlive Sports";
 
   return (
     <div className={styles.timelineWrap}>
@@ -24,27 +24,19 @@ export default function EducationLevelsTimeline({
 
       <ol
         className={styles.timeline}
-        aria-label={
-          journey?.ariaLabel || "Percurso educativo da Sunlive Sports"
-        }
+        aria-label={!progressionLabelId ? timelineAriaLabel : undefined}
         aria-labelledby={progressionLabelId}
       >
-        {items.map((item, index) => {
-          const stepLabel = item.step || String(index + 1).padStart(2, "0");
-          const stepKey =
-            item.id || item.title || `${sectionId}-step-${stepLabel}`;
-
-          return (
-            <li key={stepKey} className={styles.step}>
-              <EducationLevelsCard
-                item={item}
-                index={index}
-                sectionId={sectionId}
-                onOpenBook={onOpenBook}
-              />
-            </li>
-          );
-        })}
+        {items.map((item, index) => (
+          <li key={getStepKey(item, index, sectionId)} className={styles.step}>
+            <EducationLevelsCard
+              item={item}
+              index={index}
+              sectionId={sectionId}
+              onOpenBook={onOpenBook}
+            />
+          </li>
+        ))}
       </ol>
     </div>
   );

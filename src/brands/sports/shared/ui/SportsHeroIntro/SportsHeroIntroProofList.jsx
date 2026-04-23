@@ -9,7 +9,7 @@ export default function SportsHeroIntroProofList({ items = [], ariaLabel }) {
       {items.map((item, index) => (
         <li key={buildKey(item, index)} className={styles.proofItem}>
           <span className={styles.proofDot} aria-hidden="true" />
-          <span>{item}</span>
+          <span className={styles.proofText}>{item}</span>
         </li>
       ))}
     </ul>

@@ -1,8 +1,6 @@
 import styles from "./EducationBilingualCertification.module.css";
 
-function hasItems(value) {
-  return Array.isArray(value) && value.length > 0;
-}
+import { getTextItemKey, hasItems } from "./educationBilingualSection.utils.js";
 
 export default function EducationBilingualCertification({ certification }) {
   if (!certification) return null;
@@ -10,7 +8,7 @@ export default function EducationBilingualCertification({ certification }) {
   return (
     <article
       className={styles.certification}
-      aria-label={certification.title || "Certificação Dupla"}
+      aria-label={certification.title || "Certificação dupla"}
     >
       <div className={styles.certificationContent}>
         {certification.eyebrow ? (
@@ -32,8 +30,11 @@ export default function EducationBilingualCertification({ certification }) {
 
       {hasItems(certification.badges) ? (
         <div className={styles.badges}>
-          {certification.badges.map((badge) => (
-            <span key={badge} className={styles.badge}>
+          {certification.badges.map((badge, index) => (
+            <span
+              key={getTextItemKey(badge, index, "education-bilingual-badge")}
+              className={styles.badge}
+            >
               {badge}
             </span>
           ))}

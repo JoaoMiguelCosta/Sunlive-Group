@@ -5,39 +5,61 @@
 }
 
 .surface {
+    --education-bilingual-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    --education-bilingual-column-gap: clamp(0.82rem, 0.94vw, 0.96rem);
+    --education-bilingual-row-gap: clamp(0.8rem, 0.9vw, 0.92rem);
+
     position: relative;
     display: grid;
-    gap: clamp(1rem, 1.35vw, 1.4rem);
+    grid-template-columns: var(--education-bilingual-columns);
+    grid-template-areas:
+        "intro intro"
+        "comparison comparison"
+        "certification outcomes";
+    column-gap: var(--education-bilingual-column-gap);
+    row-gap: var(--education-bilingual-row-gap);
+    align-items: stretch;
     inline-size: 100%;
     min-inline-size: 0;
     margin-inline: auto;
     padding:
-        clamp(0.98rem, 1.35vw, 1.18rem) clamp(0.9rem, 1.45vw, 1.22rem) clamp(1.02rem, 1.45vw, 1.24rem);
-    border-radius: clamp(1.35rem, 1.8vw, 1.8rem);
-    border: 1px solid rgba(46, 194, 126, 0.14);
+        clamp(0.64rem, 0.88vw, 0.78rem) clamp(0.68rem, 0.96vw, 0.84rem) clamp(0.68rem, 0.98vw, 0.82rem);
+    border-radius: clamp(1.18rem, 1.55vw, 1.5rem);
+    border: 1px solid rgba(255, 255, 255, 0.065);
     background:
-        radial-gradient(120% 150% at 0% 0%,
-            rgba(46, 194, 126, 0.09) 0%,
-            transparent 42%),
-        radial-gradient(120% 150% at 100% 100%,
-            rgba(199, 134, 21, 0.11) 0%,
-            transparent 42%),
-        radial-gradient(140% 180% at 50% 0%,
-            rgba(8, 44, 33, 0.11) 0%,
-            transparent 48%),
+        radial-gradient(88% 120% at 0% 0%,
+            rgba(24, 110, 77, 0.2) 0%,
+            transparent 44%),
+        radial-gradient(82% 118% at 100% 0%,
+            rgba(199, 134, 21, 0.14) 0%,
+            transparent 40%),
+        radial-gradient(85% 118% at 100% 100%,
+            rgba(16, 72, 54, 0.12) 0%,
+            transparent 46%),
+        radial-gradient(100% 140% at 50% 0%,
+            rgba(255, 255, 255, 0.03) 0%,
+            transparent 54%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.028) 0%,
+            rgba(255, 255, 255, 0.035) 0%,
             rgba(255, 255, 255, 0.012) 100%),
         linear-gradient(145deg,
-            rgba(8, 17, 15, 0.965) 0%,
-            rgba(10, 14, 22, 0.97) 100%);
+            rgba(6, 12, 15, 0.985) 0%,
+            rgba(8, 14, 18, 0.992) 46%,
+            rgba(7, 11, 14, 0.99) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.02),
-        0 18px 40px rgba(0, 0, 0, 0.28);
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.018),
+        0 20px 44px rgba(0, 0, 0, 0.3),
+        0 2px 10px rgba(0, 0, 0, 0.16);
     overflow: hidden;
     isolation: isolate;
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(16px);
+}
+
+.surface>* {
+    position: relative;
+    z-index: 1;
+    min-inline-size: 0;
 }
 
 .surface::before {
@@ -48,59 +70,89 @@
     background:
         linear-gradient(90deg,
             rgba(46, 194, 126, 0.3) 0%,
-            rgba(199, 134, 21, 0.34) 55%,
-            rgba(46, 194, 126, 0.18) 100%);
-    opacity: 0.92;
+            rgba(199, 134, 21, 0.34) 52%,
+            rgba(46, 194, 126, 0.22) 100%);
+    opacity: 0.95;
 }
 
 .surface::after {
     content: "";
     position: absolute;
-    inset: -16% -10% auto auto;
-    inline-size: clamp(13rem, 22vw, 20rem);
-    block-size: clamp(13rem, 22vw, 20rem);
+    inset: -16% -8% auto auto;
+    inline-size: clamp(13rem, 21vw, 19rem);
+    block-size: clamp(13rem, 21vw, 19rem);
     border-radius: 999px;
     background:
         radial-gradient(circle,
-            rgba(199, 134, 21, 0.11) 0%,
-            rgba(199, 134, 21, 0.03) 38%,
+            rgba(199, 134, 21, 0.14) 0%,
+            rgba(199, 134, 21, 0.05) 38%,
             transparent 72%);
-    filter: blur(10px);
+    filter: blur(14px);
     opacity: 0.82;
     pointer-events: none;
 }
 
-@media (min-width: 1101px) {
+@media (min-width: 1201px) {
     .surface {
-        grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-        grid-template-areas:
-            "intro intro"
-            "comparison comparison"
-            "certification outcomes";
-        align-items: start;
+        --education-bilingual-card-min-height: 19.2rem;
+    }
+}
+
+@media (min-width: 981px) and (max-width: 1200px) {
+    .surface {
+        --education-bilingual-card-min-height: 19.8rem;
+    }
+}
+
+@media (min-width: 761px) and (max-width: 980px) {
+    .surface {
+        --education-bilingual-card-min-height: 20.6rem;
+        --education-bilingual-column-gap: 0.78rem;
+        --education-bilingual-row-gap: 0.82rem;
     }
 }
 
 @media (min-width: 1101px) and (max-height: 860px) {
     .surface {
-        gap: 0.86rem;
-        padding:
-            0.88rem 0.84rem 0.92rem;
+        --education-bilingual-card-min-height: 17.2rem;
+        --education-bilingual-column-gap: 0.72rem;
+        --education-bilingual-row-gap: 0.74rem;
+        padding: 0.62rem 0.66rem 0.7rem;
     }
 }
 
 @media (max-width: 1100px) {
     .surface {
-        gap: 0.96rem;
-        padding:
-            0.94rem 0.86rem 1rem;
+        padding: 0.74rem 0.72rem 0.78rem;
     }
 }
 
 @media (max-width: 760px) {
     .surface {
-        padding:
-            0.9rem 0.8rem 0.96rem;
-        border-radius: 1.24rem;
+        --education-bilingual-columns: minmax(0, 1fr);
+        --education-bilingual-column-gap: 0rem;
+        --education-bilingual-row-gap: 0.72rem;
+
+        grid-template-columns: var(--education-bilingual-columns);
+        grid-template-areas:
+            "intro"
+            "comparison"
+            "certification"
+            "outcomes";
+        padding: 0.76rem 0.7rem 0.8rem;
+        border-radius: 1.08rem;
+    }
+
+    .surface::after {
+        inline-size: 10.5rem;
+        block-size: 10.5rem;
+        inset: -12% -18% auto auto;
+    }
+}
+
+@media (max-width: 560px) {
+    .surface {
+        --education-bilingual-row-gap: 0.68rem;
+        padding: 0.7rem 0.64rem 0.74rem;
     }
 }

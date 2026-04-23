@@ -1,0 +1,99 @@
+.section {
+    position: relative;
+    inline-size: 100%;
+    min-inline-size: 0;
+}
+
+.surface {
+    --section-radius: clamp(1.14rem, 1.38vw, 1.52rem);
+
+    position: relative;
+    display: grid;
+    gap: clamp(0.88rem, 1vw, 1.02rem);
+    inline-size: 100%;
+    min-inline-size: 0;
+    padding: clamp(0.88rem, 1vw, 1.02rem);
+    border-radius: var(--section-radius);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background:
+        radial-gradient(circle at 100% 0%,
+            rgba(31, 166, 106, 0.16) 0%,
+            rgba(31, 166, 106, 0) 36%),
+        radial-gradient(circle at 0% 100%,
+            rgba(194, 146, 54, 0.12) 0%,
+            rgba(194, 146, 54, 0) 30%),
+        linear-gradient(150deg,
+            rgba(6, 14, 14, 0.988) 0%,
+            rgba(7, 17, 16, 0.972) 48%,
+            rgba(6, 18, 17, 0.962) 100%);
+    box-shadow:
+        0 24px 58px rgba(0, 0, 0, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0) 15%);
+    pointer-events: none;
+}
+
+.surface::after {
+    content: "";
+    position: absolute;
+    inset: auto -8% -22% auto;
+    inline-size: clamp(11rem, 24vw, 18rem);
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgba(31, 166, 106, 0.14) 0%,
+            rgba(31, 166, 106, 0.05) 34%,
+            rgba(31, 166, 106, 0) 72%);
+    filter: blur(20px);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: clamp(0.82rem, 0.96vw, 0.92rem);
+    align-items: start;
+    inline-size: 100%;
+    min-inline-size: 0;
+}
+
+@media (min-width: 1280px) {
+    .layout {
+        grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+        gap: 0.8rem;
+    }
+}
+
+@media (max-width: 760px) {
+    .surface {
+        gap: 0.82rem;
+        padding: 0.82rem;
+        border-radius: 1.02rem;
+    }
+
+    .layout {
+        gap: 0.78rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .surface {
+        gap: 0.76rem;
+        padding: 0.76rem;
+    }
+}

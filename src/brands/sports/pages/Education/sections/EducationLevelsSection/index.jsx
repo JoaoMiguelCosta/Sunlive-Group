@@ -1,17 +1,14 @@
 import styles from "./EducationLevelsSection.module.css";
 import EducationLevelsIntro from "./EducationLevelsIntro.jsx";
 import EducationLevelsTimeline from "./EducationLevelsTimeline.jsx";
-
-function hasItems(value) {
-  return Array.isArray(value) && value.length > 0;
-}
+import { hasItems } from "./educationLevelsSection.utils.js";
 
 export default function EducationLevelsSection({ data, onOpenBook }) {
   if (!data) return null;
 
   const sectionId = data.id || "education-levels";
-  const intro = data.intro;
-  const journey = data.journey;
+  const intro = data.intro ?? null;
+  const journey = data.journey ?? null;
   const items = hasItems(data.items) ? data.items : [];
 
   const titleId = intro?.title ? `${sectionId}-title` : undefined;

@@ -1,12 +1,11 @@
 import styles from "./EducationBilingualSection.module.css";
+
 import EducationBilingualIntro from "./EducationBilingualIntro.jsx";
 import EducationBilingualComparison from "./EducationBilingualComparison.jsx";
 import EducationBilingualCertification from "./EducationBilingualCertification.jsx";
 import EducationBilingualOutcomes from "./EducationBilingualOutcomes.jsx";
 
-function hasItems(value) {
-  return Array.isArray(value) && value.length > 0;
-}
+import { getSectionIds, hasItems } from "./educationBilingualSection.utils.js";
 
 export default function EducationBilingualSection({ data }) {
   if (!data) return null;
@@ -18,20 +17,22 @@ export default function EducationBilingualSection({ data }) {
   const certification = data.certification;
   const outcomes = data.outcomes;
 
-  const titleId = intro?.title ? `${sectionId}-title` : undefined;
-  const leadId = intro?.lead ? `${sectionId}-lead` : undefined;
-  const comparisonLabelId = comparison?.itemsLabel
-    ? `${sectionId}-comparison-label`
-    : undefined;
+  const { titleId, leadId, comparisonLabelId } = getSectionIds(
+    sectionId,
+    intro,
+    comparison,
+  );
 
-  if (!intro && items.length === 0 && !certification && !outcomes) return null;
+  if (!intro && items.length === 0 && !certification && !outcomes) {
+    return null;
+  }
 
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
-      aria-label={!titleId ? intro?.title || "Ensino Bilingue" : undefined}
+      aria-label={!titleId ? intro?.title || "Ensino bilingue" : undefined}
     >
       <div className={styles.surface}>
         <EducationBilingualIntro

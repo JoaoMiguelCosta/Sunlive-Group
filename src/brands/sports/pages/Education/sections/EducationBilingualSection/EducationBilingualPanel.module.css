@@ -1,21 +1,38 @@
 .panel {
+    --panel-border: rgba(255, 255, 255, 0.075);
+    --panel-line-start: rgba(255, 255, 255, 0.22);
+    --panel-line-end: rgba(255, 255, 255, 0.06);
+    --panel-glow: rgba(255, 255, 255, 0.06);
+    --tag-border: rgba(255, 255, 255, 0.12);
+    --tag-bg-start: rgba(255, 255, 255, 0.08);
+    --tag-bg-end: rgba(255, 255, 255, 0.03);
+    --tag-color: rgba(246, 248, 252, 0.9);
+    --panel-intro-min-height: 5.9rem;
+
     position: relative;
     display: flex;
     flex-direction: column;
     min-inline-size: 0;
-    padding: clamp(0.9rem, 1.18vw, 1rem);
-    border-radius: clamp(1.14rem, 1.45vw, 1.34rem);
-    border: 1px solid rgba(255, 255, 255, 0.065);
+    inline-size: 100%;
+    block-size: 100%;
+    min-block-size: var(--education-bilingual-card-min-height);
+    padding: clamp(0.74rem, 0.9vw, 0.86rem);
+    border-radius: clamp(0.98rem, 1.18vw, 1.1rem);
+    border: 1px solid var(--panel-border);
     background:
+        radial-gradient(125% 150% at 0% 0%,
+            var(--panel-glow) 0%,
+            transparent 48%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0.032) 0%,
             rgba(255, 255, 255, 0.012) 100%),
         linear-gradient(145deg,
-            rgba(13, 20, 28, 0.95) 0%,
-            rgba(8, 14, 18, 0.95) 100%);
+            rgba(10, 16, 20, 0.965) 0%,
+            rgba(7, 13, 17, 0.985) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 12px 28px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.015),
+        0 14px 32px rgba(0, 0, 0, 0.24);
     overflow: hidden;
     isolation: isolate;
     transition:
@@ -30,18 +47,71 @@
     position: absolute;
     inset: 0 0 auto 0;
     block-size: 1px;
-    opacity: 0.92;
+    background:
+        linear-gradient(90deg,
+            var(--panel-line-start) 0%,
+            var(--panel-line-end) 100%);
+    opacity: 0.94;
 }
 
 .panel::after {
     content: "";
     position: absolute;
-    inset: auto -12% -18% auto;
-    inline-size: 8rem;
-    block-size: 8rem;
+    inset: auto -12% -20% auto;
+    inline-size: 9rem;
+    block-size: 9rem;
     border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            var(--panel-glow) 0%,
+            transparent 72%);
+    opacity: 0.88;
     pointer-events: none;
-    opacity: 0.82;
+    filter: blur(8px);
+}
+
+.panel[data-variant="portuguese"] {
+    --panel-border: rgba(46, 194, 126, 0.16);
+    --panel-line-start: rgba(46, 194, 126, 0.34);
+    --panel-line-end: rgba(46, 194, 126, 0.08);
+    --panel-glow: rgba(46, 194, 126, 0.09);
+    --tag-border: rgba(46, 194, 126, 0.2);
+    --tag-bg-start: rgba(46, 194, 126, 0.12);
+    --tag-bg-end: rgba(46, 194, 126, 0.05);
+    --tag-color: rgba(224, 255, 234, 0.92);
+
+    background:
+        radial-gradient(125% 150% at 0% 0%,
+            rgba(46, 194, 126, 0.11) 0%,
+            transparent 48%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.012) 100%),
+        linear-gradient(145deg,
+            rgba(8, 22, 18, 0.972) 0%,
+            rgba(8, 14, 18, 0.988) 100%);
+}
+
+.panel[data-variant="dualDiploma"] {
+    --panel-border: rgba(199, 134, 21, 0.18);
+    --panel-line-start: rgba(199, 134, 21, 0.34);
+    --panel-line-end: rgba(199, 134, 21, 0.08);
+    --panel-glow: rgba(199, 134, 21, 0.1);
+    --tag-border: rgba(199, 134, 21, 0.2);
+    --tag-bg-start: rgba(199, 134, 21, 0.13);
+    --tag-bg-end: rgba(199, 134, 21, 0.05);
+    --tag-color: rgba(255, 236, 198, 0.92);
+
+    background:
+        radial-gradient(125% 150% at 100% 0%,
+            rgba(199, 134, 21, 0.12) 0%,
+            transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.012) 100%),
+        linear-gradient(145deg,
+            rgba(15, 17, 23, 0.972) 0%,
+            rgba(8, 13, 18, 0.988) 100%);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -49,7 +119,8 @@
         transform: translateY(-3px);
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.05),
-            0 16px 34px rgba(0, 0, 0, 0.25);
+            inset 0 -1px 0 rgba(255, 255, 255, 0.02),
+            0 18px 36px rgba(0, 0, 0, 0.28);
         filter: saturate(1.03);
     }
 }
@@ -58,143 +129,88 @@
     transform: translateY(-2px);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 16px 34px rgba(0, 0, 0, 0.24);
-}
-
-.panelPortuguese {
-    border-color: rgba(46, 194, 126, 0.14);
-    background:
-        radial-gradient(130% 150% at 0% 0%,
-            rgba(46, 194, 126, 0.09) 0%,
-            transparent 44%),
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.03) 0%,
-            rgba(255, 255, 255, 0.012) 100%),
-        linear-gradient(145deg,
-            rgba(10, 21, 18, 0.965) 0%,
-            rgba(9, 15, 18, 0.965) 100%);
-}
-
-.panelPortuguese::before {
-    background:
-        linear-gradient(90deg,
-            rgba(46, 194, 126, 0.34) 0%,
-            rgba(46, 194, 126, 0.08) 100%);
-}
-
-.panelPortuguese::after {
-    background:
-        radial-gradient(circle,
-            rgba(46, 194, 126, 0.08) 0%,
-            transparent 72%);
-}
-
-.panelDualDiploma {
-    border-color: rgba(199, 134, 21, 0.16);
-    background:
-        radial-gradient(130% 150% at 100% 0%,
-            rgba(199, 134, 21, 0.12) 0%,
-            transparent 42%),
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.03) 0%,
-            rgba(255, 255, 255, 0.012) 100%),
-        linear-gradient(145deg,
-            rgba(16, 18, 25, 0.965) 0%,
-            rgba(9, 14, 18, 0.965) 100%);
-}
-
-.panelDualDiploma::before {
-    background:
-        linear-gradient(90deg,
-            rgba(199, 134, 21, 0.34) 0%,
-            rgba(199, 134, 21, 0.08) 100%);
-}
-
-.panelDualDiploma::after {
-    background:
-        radial-gradient(circle,
-            rgba(199, 134, 21, 0.08) 0%,
-            transparent 72%);
+        inset 0 -1px 0 rgba(255, 255, 255, 0.02),
+        0 18px 36px rgba(0, 0, 0, 0.28);
 }
 
 .panelTop {
     display: flex;
     justify-content: flex-start;
-    margin-block-end: 0.78rem;
+    margin-block-end: 0.6rem;
 }
 
 .panelTag {
     display: inline-flex;
     align-items: center;
-    padding: 0.4rem 0.68rem;
+    min-block-size: 1.76rem;
+    padding: 0.34rem 0.62rem;
     border-radius: 999px;
-    font-size: 0.75rem;
+    border: 1px solid var(--tag-border);
+    background:
+        linear-gradient(180deg,
+            var(--tag-bg-start) 0%,
+            var(--tag-bg-end) 100%);
+    color: var(--tag-color);
+    font-size: 0.68rem;
     font-weight: 800;
     line-height: 1;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.055em;
     text-transform: uppercase;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-.panelTagPortuguese {
-    border: 1px solid rgba(46, 194, 126, 0.18);
-    background:
-        linear-gradient(180deg,
-            rgba(46, 194, 126, 0.11) 0%,
-            rgba(46, 194, 126, 0.05) 100%);
-    color: rgba(224, 255, 234, 0.9);
-}
-
-.panelTagDualDiploma {
-    border: 1px solid rgba(199, 134, 21, 0.18);
-    background:
-        linear-gradient(180deg,
-            rgba(199, 134, 21, 0.11) 0%,
-            rgba(199, 134, 21, 0.05) 100%);
-    color: rgba(255, 236, 198, 0.9);
-}
-
 .panelBody {
     display: grid;
-    gap: 0.78rem;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: clamp(0.54rem, 0.64vw, 0.7rem);
     flex: 1;
     min-block-size: 0;
+}
+
+.panelIntro {
+    display: grid;
+    align-content: start;
+    gap: 0.5rem;
+    min-block-size: var(--panel-intro-min-height);
 }
 
 .panelTitle {
     margin: 0;
     color: rgba(248, 250, 252, 0.98);
-    font-size: clamp(1.02rem, 1.14vw, 1.16rem);
-    line-height: 1.15;
-    letter-spacing: -0.024em;
+    font-size: clamp(0.92rem, 0.96vw, 1.02rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.026em;
     text-wrap: balance;
 }
 
 .panelDescription {
     margin: 0;
-    color: rgba(216, 224, 232, 0.79);
-    font-size: 0.91rem;
-    line-height: 1.56;
+    color: rgba(216, 224, 232, 0.8);
+    font-size: 0.82rem;
+    line-height: 1.4;
 }
 
 .group {
     display: grid;
-    gap: 0.56rem;
+    align-content: start;
+    gap: 0.42rem;
 }
 
 .groupLabel {
     margin: 0;
-    color: rgba(247, 250, 252, 0.9);
-    font-size: 0.8rem;
+    color: rgba(247, 250, 252, 0.92);
+    font-size: 0.74rem;
     font-weight: 800;
-    line-height: 1.28;
-    letter-spacing: 0.05em;
+    line-height: 1.24;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
 }
 
 .featureList {
     display: grid;
-    gap: 0.46rem;
+    align-content: start;
+    gap: 0.34rem;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -202,115 +218,148 @@
 
 .featureItem {
     position: relative;
-    padding-inline-start: 0.94rem;
-    color: rgba(224, 232, 239, 0.84);
-    font-size: 0.89rem;
-    line-height: 1.42;
+    padding-inline-start: 0.86rem;
+    color: rgba(224, 232, 239, 0.86);
+    font-size: 0.8rem;
+    line-height: 1.3;
 }
 
 .featureItem::before {
     content: "";
     position: absolute;
-    inset-block-start: 0.48rem;
+    inset-block-start: 0.42rem;
     inset-inline-start: 0;
-    inline-size: 0.38rem;
-    block-size: 0.38rem;
+    inline-size: 0.34rem;
+    block-size: 0.34rem;
     border-radius: 999px;
     background:
         linear-gradient(135deg,
-            rgba(46, 194, 126, 0.96) 0%,
-            rgba(199, 134, 21, 0.94) 100%);
+            rgba(46, 194, 126, 0.98) 0%,
+            rgba(199, 134, 21, 0.95) 100%);
     box-shadow:
         0 0 0 0.2rem rgba(46, 194, 126, 0.07),
-        0 0 0.62rem rgba(199, 134, 21, 0.08);
+        0 0 0.62rem rgba(199, 134, 21, 0.1);
 }
 
 .emphasisBox {
     margin-top: auto;
-    padding: 0.72rem 0.8rem;
-    border-radius: 0.94rem;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.58rem 0.68rem;
+    border-radius: 0.84rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.045) 0%,
-            rgba(255, 255, 255, 0.018) 100%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            rgba(255, 255, 255, 0.055) 0%,
+            rgba(255, 255, 255, 0.02) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .emphasisText {
     margin: 0;
-    color: rgba(244, 247, 250, 0.9);
-    font-size: 0.87rem;
-    font-weight: 600;
-    line-height: 1.48;
+    color: rgba(244, 247, 250, 0.92);
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.34;
+}
+
+@media (min-width: 1201px) {
+    .panel {
+        --panel-intro-min-height: 5.6rem;
+    }
+}
+
+@media (min-width: 981px) and (max-width: 1200px) {
+    .panel {
+        --panel-intro-min-height: 6.1rem;
+    }
+}
+
+@media (min-width: 761px) and (max-width: 980px) {
+    .panel {
+        --panel-intro-min-height: 6.8rem;
+    }
 }
 
 @media (min-width: 1101px) and (max-height: 860px) {
     .panel {
-        padding: 0.82rem;
+        --panel-intro-min-height: 5.2rem;
+        padding: 0.7rem;
     }
 
     .panelTop {
-        margin-block-end: 0.68rem;
+        margin-block-end: 0.54rem;
     }
 
     .panelBody {
-        gap: 0.68rem;
+        gap: 0.5rem;
+    }
+
+    .panelIntro {
+        gap: 0.42rem;
     }
 
     .panelTitle {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .panelDescription,
     .featureItem,
     .emphasisText {
-        font-size: 0.86rem;
-        line-height: 1.4;
+        font-size: 0.78rem;
+        line-height: 1.28;
     }
 
     .group {
-        gap: 0.5rem;
+        gap: 0.38rem;
     }
 
     .featureList {
-        gap: 0.4rem;
+        gap: 0.3rem;
     }
 
     .emphasisBox {
-        padding: 0.66rem 0.74rem;
+        padding: 0.54rem 0.62rem;
     }
 }
 
 @media (max-width: 760px) {
     .panel {
-        padding: 0.84rem;
-        border-radius: 1.06rem;
+        min-block-size: auto;
+        block-size: auto;
+        --panel-intro-min-height: auto;
+        padding: 0.76rem;
+        border-radius: 0.96rem;
     }
 
     .panelTop {
-        margin-block-end: 0.7rem;
+        margin-block-end: 0.58rem;
     }
 
     .panelBody {
-        gap: 0.72rem;
+        gap: 0.58rem;
+    }
+
+    .panelIntro {
+        min-block-size: auto;
+        gap: 0.5rem;
     }
 
     .panelTitle {
-        font-size: 0.98rem;
+        font-size: 0.9rem;
     }
 
     .panelDescription,
     .featureItem,
     .emphasisText {
-        font-size: 0.86rem;
-        line-height: 1.42;
+        font-size: 0.8rem;
+        line-height: 1.34;
     }
 }
 
 @media (max-width: 560px) {
     .panelTag {
-        font-size: 0.72rem;
+        font-size: 0.66rem;
     }
 }
 

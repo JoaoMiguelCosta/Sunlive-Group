@@ -4,48 +4,70 @@ import EducationCareersIntro from "./EducationCareersIntro.jsx";
 import EducationCareersSelector from "./EducationCareersSelector.jsx";
 import EducationCareersPanel from "./EducationCareersPanel.jsx";
 
-function hasItems(value) {
-  return Array.isArray(value) && value.length > 0;
+function getInitialActiveId(items, defaultActiveId) {
+  if (!items.length) return "";
+
+  if (defaultActiveId && items.some((item) => item.id === defaultActiveId)) {
+    return defaultActiveId;
+  }
+
+  return items[0]?.id || "";
 }
 
 export default function EducationCareersSection({ data }) {
   if (!data) return null;
 
   const sectionId = data.id || "education-careers";
-  const intro = data.intro;
-  const selector = data.selector;
-  const detailPanel = data.detailPanel;
-  const items = hasItems(data.items) ? data.items : [];
+  const intro = data.intro ?? null;
+  const selector = data.selector ?? null;
+  const detailPanel = data.detailPanel ?? null;
+  const items = Array.isArray(data.items)
+    ? data.items.filter((item) => item?.id)
+    : [];
 
-  const initialActiveId = selector?.defaultActiveId || items[0]?.id || "";
-  const [activeId, setActiveId] = useState(initialActiveId);
-
-  const titleId = intro?.title ? `${sectionId}-title` : undefined;
-  const leadId = intro?.lead ? `${sectionId}-lead` : undefined;
+  const [activeId, setActiveId] = useState(() =>
+    getInitialActiveId(items, selector?.defaultActiveId),
+  );
 
   useEffect(() => {
-    if (!items.length) return;
-
-    const exists = items.some((item) => item.id === activeId);
-    if (!exists) {
-      setActiveId(selector?.defaultActiveId || items[0]?.id || "");
+    if (!items.length) {
+      setActiveId("");
+      return;
     }
-  }, [activeId, items, selector?.defaultActiveId]);
+
+    setActiveId((currentActiveId) => {
+      if (
+        currentActiveId &&
+        items.some((item) => item.id === currentActiveId)
+      ) {
+        return currentActiveId;
+      }
+
+      return getInitialActiveId(items, selector?.defaultActiveId);
+    });
+  }, [items, selector?.defaultActiveId]);
 
   const activeItem = useMemo(() => {
     return items.find((item) => item.id === activeId) || items[0] || null;
   }, [activeId, items]);
 
-  if (!intro && items.length === 0) return null;
+  const titleId = intro?.title ? `${sectionId}-title` : undefined;
+  const leadId = intro?.lead ? `${sectionId}-lead` : undefined;
+  const activeTabId = activeItem
+    ? `${sectionId}-tab-${activeItem.id}`
+    : undefined;
+  const activePanelId = activeItem
+    ? `${sectionId}-panel-${activeItem.id}`
+    : undefined;
+
+  if (!intro && !activeItem) return null;
 
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
-      aria-label={
-        !titleId ? intro?.title || "Percursos Profissionais" : undefined
-      }
+      aria-label={!titleId ? intro?.title : undefined}
     >
       <div className={styles.surface}>
         <EducationCareersIntro
@@ -54,9 +76,10 @@ export default function EducationCareersSection({ data }) {
           leadId={leadId}
         />
 
-        {items.length > 0 && activeItem ? (
+        {activeItem ? (
           <div className={styles.layout}>
             <EducationCareersSelector
+              sectionId={sectionId}
               selector={selector}
               items={items}
               activeItem={activeItem}
@@ -66,6 +89,8 @@ export default function EducationCareersSection({ data }) {
             <EducationCareersPanel
               item={activeItem}
               detailPanel={detailPanel}
+              panelId={activePanelId}
+              tabId={activeTabId}
             />
           </div>
         ) : null}

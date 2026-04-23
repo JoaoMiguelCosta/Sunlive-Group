@@ -1,9 +1,8 @@
 import styles from "./EducationBilingualComparison.module.css";
+
 import EducationBilingualPanel from "./EducationBilingualPanel.jsx";
 
-function hasItems(value) {
-  return Array.isArray(value) && value.length > 0;
-}
+import { getTextItemKey, hasItems } from "./educationBilingualSection.utils.js";
 
 export default function EducationBilingualComparison({
   comparison,
@@ -28,8 +27,11 @@ export default function EducationBilingualComparison({
         }
         aria-labelledby={comparisonLabelId}
       >
-        {items.map((item) => (
-          <EducationBilingualPanel key={item.id || item.title} item={item} />
+        {items.map((item, index) => (
+          <EducationBilingualPanel
+            key={getTextItemKey(item, index, "education-bilingual-panel")}
+            item={item}
+          />
         ))}
       </div>
     </div>

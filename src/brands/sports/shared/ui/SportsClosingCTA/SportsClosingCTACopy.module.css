@@ -2,23 +2,25 @@
     position: relative;
     z-index: 1;
     display: grid;
-    gap: clamp(0.85rem, 1.5vw, 1.1rem);
+    align-content: start;
+    gap: clamp(0.9rem, 1.2vw, 1.16rem);
     min-inline-size: 0;
+    max-inline-size: min(100%, 49rem);
 }
 
 .eyebrow {
     margin: 0;
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(212, 150, 33, 0.96);
+    color: rgba(212, 150, 33, 0.97);
 }
 
 .title {
     margin: 0;
     font-size: clamp(1.45rem, 2.4vw, 2.15rem);
-    line-height: 1.06;
+    line-height: 1.05;
     letter-spacing: -0.03em;
     color: var(--sl-platinum-050, #eef2f8);
     text-wrap: balance;
@@ -26,14 +28,16 @@
 
 .description {
     margin: 0;
-    font-size: 0.98rem;
-    line-height: 1.72;
+  
+    font-size: clamp(0.99rem, 1vw, 1.06rem);
+    line-height: 1.7;
     color: rgba(224, 230, 238, 0.86);
 }
 
 .highlights {
     display: grid;
-    gap: 0.58rem;
+    gap: clamp(0.58rem, 0.76vw, 0.76rem);
+    max-inline-size: 58ch;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -41,17 +45,17 @@
 
 .highlightItem {
     position: relative;
-    padding-inline-start: 1rem;
-    font-size: 0.92rem;
-    line-height: 1.55;
-    color: rgba(232, 237, 244, 0.88);
+    padding-inline-start: 1.02rem;
+    font-size: clamp(0.93rem, 0.92vw, 0.98rem);
+    line-height: 1.56;
+    color: rgba(232, 237, 244, 0.89);
 }
 
 .highlightItem::before {
     content: "";
     position: absolute;
     inset-inline-start: 0;
-    inset-block-start: 0.58em;
+    inset-block-start: 0.56em;
     inline-size: 0.42rem;
     block-size: 0.42rem;
     border-radius: 999px;
@@ -60,13 +64,101 @@
             rgb(61, 209, 135) 0%,
             rgb(229, 189, 80) 68%,
             transparent 100%);
-    box-shadow: 0 0 10px rgba(61, 209, 135, 0.22);
+    box-shadow: 0 0 9px rgba(61, 209, 135, 0.2);
+}
+
+@media (min-width: 1100px) {
+    .copy {
+        gap: clamp(0.94rem, 1.14vw, 1.18rem);
+        padding-inline-end: clamp(0.16rem, 0.58vw, 0.52rem);
+    }
+
+    .title {
+        line-height: 1.04;
+        letter-spacing: -0.032em;
+    }
+
+ 
+}
+
+@media (min-width: 1440px) {
+    .copy {
+        gap: clamp(1rem, 1.18vw, 1.24rem);
+    }
+
+
+    .highlights {
+        gap: clamp(0.62rem, 0.8vw, 0.8rem);
+    }
+}
+
+@media (max-width: 1099.98px) and (min-width: 720px) {
+    .copy {
+        gap: 0.92rem;
+    }
+
+    .description {
+     
+        line-height: 1.72;
+    }
+
+    .highlights {
+        gap: 0.6rem;
+    }
 }
 
 @media (max-width: 719.98px) {
+    .copy {
+        gap: 0.84rem;
+    }
+
+    .eyebrow {
+        font-size: 0.74rem;
+        letter-spacing: 0.17em;
+    }
+
+    .title {
+        font-size: clamp(1.45rem, 2.4vw, 2.15rem);
+        line-height: 1.06;
+    }
 
     .description,
     .highlightItem {
-        font-size: 0.9rem;
+        font-size: 0.94rem;
+    }
+
+    .description {
+        max-inline-size: none;
+        line-height: 1.68;
+    }
+
+    .highlights {
+        gap: 0.56rem;
+        max-inline-size: none;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .copy {
+        gap: 0.8rem;
+    }
+
+    .eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+    }
+
+    .title {
+        line-height: 1.07;
+    }
+
+    .description,
+    .highlightItem {
+        font-size: 0.92rem;
+    }
+
+    .highlightItem {
+        padding-inline-start: 0.98rem;
+        line-height: 1.54;
     }
 }
