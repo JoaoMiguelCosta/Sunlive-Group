@@ -1,20 +1,14 @@
 import {
   hero,
-
-
   facilitiesGrid,
- 
+  cta,
 } from "../sections/infrastructures/index.js";
 
 const infrastructures = {
   id: "infrastructures",
-  sections: {
-    hero,
-  
-   
-    facilitiesGrid,
-    
-  },
+  hero,
+  facilitiesGrid,
+  cta,
 };
 
 export default infrastructures;

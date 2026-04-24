@@ -1,101 +1,266 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import styles from "./LeisureDestinationsSection.module.css";
 
-import LeisureDestinationsIntro from "./LeisureDestinationsIntro.jsx";
-import LeisureDestinationsFeatured from "./LeisureDestinationsFeatured.jsx";
-import LeisureDestinationsList from "./LeisureDestinationsList.jsx";
+const MOBILE_SCROLL_QUERY = "(max-width: 820px)";
 
-function getValidItems(items) {
-  if (!Array.isArray(items)) return [];
-
-  return items.filter(
-    (item) =>
-      item &&
-      typeof item === "object" &&
-      (item.title || item.description || item.eyebrow),
-  );
+function isValidText(value) {
+  return typeof value === "string" && value.trim().length > 0;
 }
 
-function normalizeItems(items = [], sectionId = "leisure-destinations") {
-  return getValidItems(items).map((item, index) => ({
+function getValidTextItems(items) {
+  return Array.isArray(items) ? items.filter(isValidText) : [];
+}
+
+function getValidDestinations(items) {
+  return Array.isArray(items)
+    ? items.filter(
+        (item) =>
+          item && (isValidText(item.title) || isValidText(item.description)),
+      )
+    : [];
+}
+
+function normalizeDestinations(items, sectionId) {
+  return getValidDestinations(items).map((item, index) => ({
     ...item,
-    key: item.key || `${sectionId}-item-${index + 1}`,
+    key: isValidText(item.key)
+      ? item.key
+      : `${sectionId}-destination-${index + 1}`,
+    highlights: getValidTextItems(item.highlights),
   }));
 }
 
-function getInitialActiveKey(items) {
-  return items.find((item) => item.featured)?.key ?? items[0]?.key ?? null;
+function getInitialDestinationKey(items) {
+  return items.find((item) => item.featured)?.key || items[0]?.key || null;
 }
 
-function getSafeActiveKey(items, currentKey) {
-  if (!Array.isArray(items) || items.length === 0) return null;
+function getFallbackMark(title) {
+  if (!isValidText(title)) return "";
+  return title.slice(0, 2).toUpperCase();
+}
 
-  const hasCurrentKey = items.some((item) => item.key === currentKey);
-  return hasCurrentKey ? currentKey : getInitialActiveKey(items);
+function getSafeId(value) {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function getDestinationButtonId(sectionId, key) {
+  return `${sectionId}-destination-button-${getSafeId(key)}`;
+}
+
+function shouldScrollToPanelOnMobile() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia(MOBILE_SCROLL_QUERY).matches;
 }
 
 export default function LeisureDestinationsSection({ data }) {
-  if (!data) return null;
+  const selectedPanelRef = useRef(null);
+  const sectionId = data?.id || "leisure-sports-tourism-destinations";
 
-  const items = useMemo(
-    () => normalizeItems(data.items, data.id),
-    [data.items, data.id],
+  const destinations = useMemo(
+    () => normalizeDestinations(data?.items, sectionId),
+    [data?.items, sectionId],
   );
 
-  const [activeKey, setActiveKey] = useState(() => getInitialActiveKey(items));
+  const initialKey = useMemo(
+    () => getInitialDestinationKey(destinations),
+    [destinations],
+  );
+
+  const [selectedKey, setSelectedKey] = useState(initialKey);
 
   useEffect(() => {
-    setActiveKey((currentKey) => getSafeActiveKey(items, currentKey));
-  }, [items]);
+    const selectedExists = destinations.some(
+      (destination) => destination.key === selectedKey,
+    );
 
-  if (!data.intro && items.length === 0) return null;
+    if (!selectedExists) {
+      setSelectedKey(initialKey);
+    }
+  }, [destinations, initialKey, selectedKey]);
 
-  const activeItem =
-    items.find((item) => item.key === activeKey) ?? items[0] ?? null;
+  if (!data || destinations.length === 0) return null;
 
-  const activePosition = useMemo(() => {
-    return items.findIndex((item) => item.key === activeItem?.key);
-  }, [items, activeItem]);
+  const intro = data.intro;
 
-  const secondaryItems = useMemo(() => {
-    return items
-      .map((item, index) => ({
-        ...item,
-        position: index + 1,
-      }))
-      .filter((item) => item.key !== activeItem?.key);
-  }, [items, activeItem]);
+  const selectedDestination =
+    destinations.find((destination) => destination.key === selectedKey) ||
+    destinations[0];
 
-  const titleId = data.intro?.title ? `${data.id}-title` : undefined;
+  const titleId = intro?.title ? `${sectionId}-title` : undefined;
+  const panelId = `${sectionId}-selected-destination`;
+  const selectedButtonId = getDestinationButtonId(
+    sectionId,
+    selectedDestination.key,
+  );
+
   const ariaLabel = titleId ? undefined : data.ui?.ariaLabel;
+
+  const selectedImage = selectedDestination?.image;
+  const hasSelectedImage = isValidText(selectedImage?.src);
+
+  const hasIntro =
+    intro &&
+    (isValidText(intro.eyebrow) ||
+      isValidText(intro.title) ||
+      isValidText(intro.lead));
+
+  function handleDestinationSelect(key) {
+    setSelectedKey(key);
+
+    if (!shouldScrollToPanelOnMobile()) return;
+
+    window.requestAnimationFrame(() => {
+      selectedPanelRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }
 
   return (
     <section
-      id={data.id}
+      id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
       aria-label={ariaLabel}
     >
-      <div className={styles.surface}>
-        <LeisureDestinationsIntro
-          intro={data.intro}
-          sectionId={data.id}
-          titleId={titleId}
-        />
+      <div className={styles.shell}>
+        {hasIntro && (
+          <header className={styles.intro}>
+            {isValidText(intro.eyebrow) && (
+              <p className={styles.eyebrow}>{intro.eyebrow}</p>
+            )}
+
+            {isValidText(intro.title) && (
+              <h2 id={titleId} className={styles.title}>
+                {intro.title}
+              </h2>
+            )}
+
+            {isValidText(intro.lead) && (
+              <p className={styles.lead}>{intro.lead}</p>
+            )}
+          </header>
+        )}
 
         <div className={styles.layout}>
-          <LeisureDestinationsFeatured
-            key={activeItem?.key}
-            item={activeItem}
-            position={activePosition + 1}
-            totalItems={items.length}
-          />
+          <article
+            ref={selectedPanelRef}
+            id={panelId}
+            className={styles.featuredPanel}
+            aria-labelledby={selectedButtonId}
+            aria-live="polite"
+          >
+            <div className={styles.mediaFrame}>
+              {hasSelectedImage ? (
+                <img
+                  className={styles.image}
+                  src={selectedImage.src}
+                  alt={selectedImage.alt || selectedDestination.title || ""}
+                  loading="lazy"
+                />
+              ) : (
+                <div className={styles.visualFallback} aria-hidden="true">
+                  <span>{getFallbackMark(selectedDestination.title)}</span>
+                </div>
+              )}
+            </div>
 
-          <LeisureDestinationsList
-            items={secondaryItems}
-            onSelect={setActiveKey}
-          />
+            <div className={styles.featuredContent}>
+              <div className={styles.featuredText}>
+                {isValidText(selectedDestination.eyebrow) && (
+                  <p className={styles.featuredEyebrow}>
+                    {selectedDestination.eyebrow}
+                  </p>
+                )}
+
+                {isValidText(selectedDestination.title) && (
+                  <h3 className={styles.featuredTitle}>
+                    {selectedDestination.title}
+                  </h3>
+                )}
+
+                {isValidText(selectedDestination.description) && (
+                  <p className={styles.featuredDescription}>
+                    {selectedDestination.description}
+                  </p>
+                )}
+              </div>
+
+              {selectedDestination.highlights.length > 0 && (
+                <ul className={styles.highlights}>
+                  {selectedDestination.highlights.map((highlight, index) => (
+                    <li key={`${selectedDestination.key}-highlight-${index}`}>
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </article>
+
+          <div
+            className={styles.destinationList}
+            role="group"
+            aria-label={
+              data.ui?.destinationListAriaLabel ||
+              "Selecionar destino em destaque"
+            }
+          >
+            {destinations.map((destination, index) => {
+              const isActive = destination.key === selectedDestination.key;
+              const buttonId = getDestinationButtonId(
+                sectionId,
+                destination.key,
+              );
+
+              return (
+                <button
+                  id={buttonId}
+                  key={destination.key}
+                  type="button"
+                  className={[
+                    styles.destinationButton,
+                    isActive ? styles.isActive : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  aria-pressed={isActive}
+                  aria-controls={panelId}
+                  onClick={() => handleDestinationSelect(destination.key)}
+                >
+                  <span className={styles.cardTopline}>
+                    {isValidText(destination.eyebrow) && (
+                      <span className={styles.cardEyebrow}>
+                        {destination.eyebrow}
+                      </span>
+                    )}
+
+                    <span className={styles.cardIndex}>
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </span>
+
+                  {isValidText(destination.title) && (
+                    <span className={styles.cardTitle}>
+                      {destination.title}
+                    </span>
+                  )}
+
+                  {isValidText(destination.description) && (
+                    <span className={styles.cardDescription}>
+                      {destination.description}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

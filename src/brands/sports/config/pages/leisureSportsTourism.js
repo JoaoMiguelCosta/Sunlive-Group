@@ -3,6 +3,7 @@ import {
   experiences,
   destinations,
   benefits,
+  cta,
 } from "../sections/leisureSportsTourism/index.js";
 
 const leisureSportsTourism = {
@@ -11,6 +12,7 @@ const leisureSportsTourism = {
   experiences,
   destinations,
   benefits,
+  cta,
 };
 
 export default leisureSportsTourism;

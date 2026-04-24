@@ -1,5 +1,17 @@
-const infrastructuresFacilitiesGrid = {
+const facilitiesGrid = {
   id: "infrastructures-facilities",
+
+  intro: {
+    eyebrow: "Rede de infraestruturas",
+    title: "Infraestruturas preparadas para rendimento",
+    description:
+      "Uma rede de espaços técnicos, desportivos e complementares preparada para treino, competição, recuperação e operação em diferentes modalidades e escalas.",
+  },
+
+  ui: {
+    selectorAriaLabel: "Selecionar infraestrutura",
+  },
+
   cards: [
     {
       key: "velodrome",
@@ -8,6 +20,7 @@ const infrastructuresFacilitiesGrid = {
         "Pista coberta de ciclismo de 250m, única em Portugal, com padrões olímpicos internacionais.",
       highlight: "Capacidade para acolher 1000 pessoas",
       image: null,
+      imageAlt: "Velódromo Nacional",
       features: [
         "Pista de madeira Siberian Pine de 250m.",
         "Sistema de cronometragem eletrónica.",
@@ -22,6 +35,7 @@ const infrastructuresFacilitiesGrid = {
         "Instalação homologada com design competitivo de alto nível, preparada para receber provas internacionais e estágios de elite.",
       highlight: "Única pista BMX olímpica da Península Ibérica",
       image: null,
+      imageAlt: "Pista Olímpica de BMX",
       features: [
         "Circuito com obstáculos técnicos e zonas de sprint.",
         "Curvas inclinadas e saltos desenhados para treino de técnica.",
@@ -36,6 +50,7 @@ const infrastructuresFacilitiesGrid = {
         "Circuito técnico de Cross-Country Olímpico construído segundo os regulamentos da UCI, ideal para treinos de alto rendimento e competições oficiais.",
       highlight: "Traçado olímpico com 3,6 km de extensão",
       image: null,
+      imageAlt: "Pista XCO Mountain Bike",
       features: [
         "Percurso com desnível acumulado e subidas íngremes (>25%).",
         "Obstáculos naturais e artificiais (pedras, raízes, troncos, pontes).",
@@ -51,6 +66,7 @@ const infrastructuresFacilitiesGrid = {
       highlight:
         "Versatilidade total para modalidades indoor com apoio logístico completo.",
       image: null,
+      imageAlt: "Pavilhão Multiusos de Anadia",
       features: [
         "Bancadas para público e iluminação LED.",
         "Piso polivalente para basquetebol, voleibol, futsal e andebol.",
@@ -65,6 +81,7 @@ const infrastructuresFacilitiesGrid = {
         "Rede de infraestruturas desportivas ideais para estágios de clubes, seleções e preparação de alto rendimento.",
       highlight: "Espaços ideais para treino, recuperação e apoio técnico.",
       image: null,
+      imageAlt: "Centro de Estágios",
       features: [
         "Campos de futebol com relva natural e sintética.",
         "Alojamento próximo e restauração disponível.",
@@ -79,6 +96,7 @@ const infrastructuresFacilitiesGrid = {
         "Campus académicos com estruturas desportivas e apoio logístico, ideais para programas de formação e prática desportiva.",
       highlight: "Ambiente universitário com condições de treino e competição.",
       image: null,
+      imageAlt: "Centros Universitários",
       features: [
         "Pavilhões polivalentes e campos exteriores.",
         "Piscinas, pista de atletismo e zonas de musculação.",
@@ -94,6 +112,7 @@ const infrastructuresFacilitiesGrid = {
       highlight:
         "Preparação física integrada com apoio à recuperação muscular.",
       image: null,
+      imageAlt: "Ginásios de apoio à preparação física",
       features: [
         "Equipamentos de musculação e cardio.",
         "Acessíveis a atletas em estágio e hóspedes.",
@@ -109,6 +128,7 @@ const infrastructuresFacilitiesGrid = {
       highlight:
         "Percursos combinados e naturais para simulação real de provas.",
       image: null,
+      imageAlt: "Circuito de Triatlo",
       features: [
         "Utilizado em estágios de equipas nacionais.",
         "Ambientes variados: estrada, trilho e água.",
@@ -124,6 +144,7 @@ const infrastructuresFacilitiesGrid = {
       highlight:
         "Golfe em ambiente termal – ideal para foco, lazer e recuperação ativa.",
       image: null,
+      imageAlt: "Campo de Golfe da Curia",
       features: [
         "Campo de 9 buracos integrado na estância termal da Curia.",
         "Adequado a iniciantes e jogadores experientes.",
@@ -134,4 +155,4 @@ const infrastructuresFacilitiesGrid = {
   ],
 };
 
-export default infrastructuresFacilitiesGrid;
+export default facilitiesGrid;

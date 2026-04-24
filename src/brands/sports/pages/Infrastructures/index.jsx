@@ -3,12 +3,13 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
+import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 
-import FacilitiesSection from "./sections/FacilitiesSection.jsx";
-
+import FacilitiesGridSection from "./sections/FacilitiesGridSection/index.jsx";
 
 export default function InfrastructuresPage() {
   const data = sportsBrand.sections?.infrastructures;
+
   if (!data) return null;
 
   return (
@@ -35,9 +36,8 @@ export default function InfrastructuresPage() {
           </header>
 
           <div className={styles.sections}>
-           
-            <FacilitiesSection data={data} />
-          
+            <FacilitiesGridSection data={data.facilitiesGrid} />
+            <SportsClosingCTA data={data.cta} />
           </div>
         </div>
       </main>
