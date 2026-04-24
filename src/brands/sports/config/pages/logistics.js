@@ -1,22 +1,13 @@
-import {
-  hero,
-
-  servicesIntro,
-  
-  servicesPanels,
- 
-} from "../sections/logistics/index.js";
+import { hero, logisticsServices, cta } from "../sections/logistics/index.js";
 
 const logistics = {
-  id: "logistics",
-  sections: {
-    hero,
-   
-    servicesIntro,
-    
-    servicesPanels,
-    
+  id: "sports-logistics",
+  ui: {
+    pageAriaLabel: "Sunlive Sports — Logística",
   },
+  hero,
+  logisticsServices,
+  cta,
 };
 
 export default logistics;

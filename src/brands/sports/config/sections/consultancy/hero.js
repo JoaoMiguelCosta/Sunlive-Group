@@ -1,4 +1,5 @@
 const consultancyHero = {
+  id: "consultancy-hero",
   eyebrow: "Sunlive Sports",
   secondaryLine:
     "Experiência prática, visão estratégica e soluções aplicáveis ao contexto real do desporto.",

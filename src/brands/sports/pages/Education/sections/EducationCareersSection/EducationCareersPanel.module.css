@@ -63,9 +63,10 @@
 
 .panelHeading {
     display: grid;
-    gap: 0.4rem;
-    min-inline-size: 0;
-    max-inline-size: min(100%, 56rem);
+    justify-items: start;
+    width: fit-content;
+    min-width: 0;
+    text-align: left;
 }
 
 .panelTitle {

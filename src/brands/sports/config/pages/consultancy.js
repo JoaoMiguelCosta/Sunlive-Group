@@ -1,23 +1,17 @@
 import {
   hero,
-
-  areasIntro,
-  areasPanels,
-  entities,
- 
- 
+  consultancyAreas,
+  consultancyEntities,
+  cta,
 } from "../sections/consultancy/index.js";
 
 const consultancy = {
   id: "consultancy",
   sections: {
     hero,
- 
-    areasIntro,
-    areasPanels,
-    entities,
-   
-  
+    consultancyAreas,
+    consultancyEntities,
+    cta,
   },
 };
 

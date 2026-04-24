@@ -1,13 +1,22 @@
-const consultancyAreasPanels = {
-  id: "consultancy-areas-panels",
+const consultancyAreas = {
+  id: "consultancy-areas",
+  intro: {
+    eyebrow: "Áreas de atuação",
+    title: "Áreas de Consultoria",
+    lead: "Cobrimos as principais dimensões da gestão desportiva moderna, desde a estratégia organizacional até à implementação operacional, sempre com foco em decisões claras, execução eficiente e resultados mensuráveis.",
+  },
+  ui: {
+    ariaLabel: "Áreas de consultoria da Sunlive Sports",
+    layout: "interactive-panels",
+  },
   items: [
     {
-      key: "global",
+      key: "international-expansion",
       iconKey: "global",
       title: "Expansão Internacional",
       summary:
-        "Estratégias para internacionalização e desenvolvimento de projetos desportivos globais.",
-      items: [
+        "Estratégias para internacionalização e desenvolvimento de projetos desportivos em contextos globais.",
+      points: [
         "Análise de mercados internacionais",
         "Estratégias de entrada em novos países",
         "Parcerias estratégicas globais",
@@ -16,12 +25,12 @@ const consultancyAreasPanels = {
       ],
     },
     {
-      key: "luggage",
+      key: "sports-management",
       iconKey: "luggage",
       title: "Gestão Desportiva",
       summary:
         "Estratégias integradas para otimizar a gestão de clubes, federações e organizações desportivas.",
-      items: [
+      points: [
         "Planeamento estratégico organizacional",
         "Estruturação de departamentos técnicos",
         "Sistemas de gestão de performance",
@@ -30,12 +39,12 @@ const consultancyAreasPanels = {
       ],
     },
     {
-      key: "trendup",
+      key: "club-development",
       iconKey: "trendup",
       title: "Desenvolvimento de Clubes",
       summary:
         "Soluções personalizadas para crescimento sustentável e modernização de estruturas clubísticas.",
-      items: [
+      points: [
         "Estratégias de captação de talentos",
         "Reestruturação de modelos de negócio",
         "Expansão para novos mercados",
@@ -44,12 +53,12 @@ const consultancyAreasPanels = {
       ],
     },
     {
-      key: "building",
+      key: "infrastructure-planning",
       iconKey: "building",
       title: "Planeamento de Infraestruturas",
       summary:
-        "Conceção e desenvolvimento de instalações desportivas modernas e funcionais.",
-      items: [
+        "Conceção e desenvolvimento de instalações desportivas modernas, funcionais e ajustadas à operação real.",
+      points: [
         "Estudos de viabilidade técnica",
         "Desenho funcional de instalações",
         "Planeamento de equipamentos especializados",
@@ -58,12 +67,12 @@ const consultancyAreasPanels = {
       ],
     },
     {
-      key: "goal",
+      key: "training-systems",
       iconKey: "goal",
       title: "Sistemas de Formação",
       summary:
-        "Desenvolvimento de metodologias e programas de formação desportiva de excelência.",
-      items: [
+        "Desenvolvimento de metodologias, programas e estruturas de formação desportiva orientadas para progressão consistente.",
+      points: [
         "Metodologias de treino inovadoras",
         "Currículos de formação técnica",
         "Sistemas de avaliação de atletas",
@@ -72,12 +81,12 @@ const consultancyAreasPanels = {
       ],
     },
     {
-      key: "medal",
+      key: "modality-development",
       iconKey: "medal",
       title: "Desenvolvimento de Modalidades",
       summary:
-        "Soluções estratégicas para potenciar o crescimento sustentável e competitivo de diferentes modalidades desportivas.",
-      items: [
+        "Soluções estratégicas para potenciar o crescimento sustentável, técnico e competitivo de diferentes modalidades.",
+      points: [
         "Diagnóstico e planeamento de modalidades emergentes",
         "Definição de estruturas técnicas e competitivas",
         "Modelos de desenvolvimento por escalões",
@@ -86,12 +95,12 @@ const consultancyAreasPanels = {
       ],
     },
     {
-      key: "circus",
+      key: "event-management",
       iconKey: "circus",
       title: "Gestão de Eventos",
       summary:
-        "Organização e gestão profissional de eventos desportivos com foco em excelência operacional e impacto internacional.",
-      items: [
+        "Organização e gestão profissional de eventos desportivos com foco em excelência operacional, experiência e impacto.",
+      points: [
         "Planeamento estratégico de eventos",
         "Gestão logística e técnica integral",
         "Coordenação de stakeholders e parceiros",
@@ -100,12 +109,12 @@ const consultancyAreasPanels = {
       ],
     },
     {
-      key: "cog",
+      key: "operational-logistics",
       iconKey: "cog",
       title: "Logística Operacional",
       summary:
-        "Otimização de processos operacionais para eventos, competições e atividades desportivas regulares.",
-      items: [
+        "Otimização de processos operacionais para eventos, competições, programas e atividades desportivas regulares.",
+      points: [
         "Desenho de processos operacionais",
         "Gestão de recursos humanos especializados",
         "Sistemas de logística para eventos",
@@ -116,4 +125,4 @@ const consultancyAreasPanels = {
   ],
 };
 
-export default consultancyAreasPanels;
+export default consultancyAreas;
