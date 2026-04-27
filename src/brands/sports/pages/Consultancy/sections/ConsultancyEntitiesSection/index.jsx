@@ -16,57 +16,109 @@ function getValidEntities(items) {
     : [];
 }
 
-function getTitleId(sectionId) {
-  return isValidText(sectionId) ? `${sectionId}-title` : undefined;
+function getTitleId(sectionId, hasTitle) {
+  return isValidText(sectionId) && hasTitle ? `${sectionId}-title` : undefined;
+}
+
+function getLeadId(sectionId, hasLead) {
+  return isValidText(sectionId) && hasLead ? `${sectionId}-lead` : undefined;
+}
+
+function getEntityNumber(entity, index) {
+  return isValidText(entity?.number)
+    ? entity.number
+    : String(index + 1).padStart(2, "0");
+}
+
+function getEntityKey(entity, index) {
+  return isValidText(entity?.key) ? entity.key : `entity-${index}`;
+}
+
+function EntityCard({ entity, index }) {
+  const hasMeta = isValidText(entity.meta);
+  const hasDescription = isValidText(entity.description);
+
+  return (
+    <li className={styles.entityItem}>
+      <div className={styles.entityTopline}>
+        <span className={styles.entityIndex} aria-hidden="true">
+          {getEntityNumber(entity, index)}
+        </span>
+
+        {hasMeta ? (
+          <span className={styles.entityMeta}>{entity.meta}</span>
+        ) : null}
+      </div>
+
+      <h3 className={styles.entityTitle}>{entity.title}</h3>
+
+      {hasDescription ? (
+        <p className={styles.entityDescription}>{entity.description}</p>
+      ) : null}
+    </li>
+  );
 }
 
 export default function ConsultancyEntitiesSection({ data }) {
-  const entities = getValidEntities(data?.items);
+  if (!data) return null;
 
-  if (!data || entities.length === 0) return null;
+  const entities = getValidEntities(data.items);
 
-  const titleId = data.intro?.title ? getTitleId(data.id) : undefined;
+  if (entities.length === 0) return null;
+
+  const intro = data.intro || {};
+  const hasEyebrow = isValidText(intro.eyebrow);
+  const hasTitle = isValidText(intro.title);
+  const hasLead = isValidText(intro.lead);
+
+  const titleId = getTitleId(data.id, hasTitle);
+  const leadId = getLeadId(data.id, hasLead);
+
+  const listAriaLabel = isValidText(data.ui?.listAriaLabel)
+    ? data.ui.listAriaLabel
+    : undefined;
 
   return (
     <section
-      id={data.id}
+      id={isValidText(data.id) ? data.id : undefined}
       className={styles.section}
       aria-labelledby={titleId}
-      aria-label={titleId ? undefined : data.ui?.ariaLabel}
+      aria-describedby={leadId}
+      aria-label={!titleId ? data.ui?.ariaLabel : undefined}
       data-layout={data.ui?.layout}
     >
       <div className={styles.shell}>
         <div className={styles.panel}>
-          {data.intro ? (
+          <span className={styles.edgeLine} aria-hidden="true" />
+          <span className={styles.glow} aria-hidden="true" />
+
+          {hasEyebrow || hasTitle || hasLead ? (
             <header className={styles.header}>
-              {isValidText(data.intro.eyebrow) ? (
-                <p className={styles.eyebrow}>{data.intro.eyebrow}</p>
+              {hasEyebrow ? (
+                <p className={styles.eyebrow}>{intro.eyebrow}</p>
               ) : null}
 
-              {isValidText(data.intro.title) ? (
+              {hasTitle ? (
                 <h2 id={titleId} className={styles.title}>
-                  {data.intro.title}
+                  {intro.title}
                 </h2>
               ) : null}
 
-              {isValidText(data.intro.lead) ? (
-                <p className={styles.lead}>{data.intro.lead}</p>
+              {hasLead ? (
+                <p id={leadId} className={styles.lead}>
+                  {intro.lead}
+                </p>
               ) : null}
             </header>
           ) : null}
 
-          <ul
-            className={styles.entitiesList}
-            aria-label={data.ui?.listAriaLabel}
-          >
+          <ul className={styles.entitiesList} aria-label={listAriaLabel}>
             {entities.map((entity, index) => (
-              <li key={entity.key} className={styles.entityItem}>
-                <span className={styles.entityIndex} aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <span className={styles.entityTitle}>{entity.title}</span>
-              </li>
+              <EntityCard
+                key={getEntityKey(entity, index)}
+                entity={entity}
+                index={index}
+              />
             ))}
           </ul>
         </div>

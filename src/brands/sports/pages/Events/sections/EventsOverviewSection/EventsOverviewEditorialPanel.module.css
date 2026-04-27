@@ -6,25 +6,26 @@
     margin-top: 0;
     padding:
         clamp(1.06rem, 1.54vw, 1.22rem) clamp(1rem, 1.42vw, 1.16rem) clamp(1.08rem, 1.58vw, 1.22rem);
-    border: 1px solid rgba(199, 134, 21, 0.11);
-    border-radius: clamp(1.04rem, 1.48vw, 1.24rem);
+    overflow: hidden;
+    border-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.14);
     background:
         radial-gradient(124% 152% at 0% 100%,
-            rgba(46, 194, 126, 0.062) 0%,
-            transparent 42%),
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.035) 0%,
+            transparent 44%),
         radial-gradient(116% 138% at 100% 0%,
-            rgba(199, 134, 21, 0.058) 0%,
-            transparent 36%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.065) 0%,
+            transparent 38%),
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.034) 0%,
             rgba(255, 255, 255, 0.01) 100%),
         linear-gradient(145deg,
-            rgba(8, 16, 21, 0.94) 0%,
-            rgba(4, 10, 14, 0.985) 100%);
+            rgba(7, 13, 21, 0.95) 0%,
+            rgba(4, 9, 17, 0.988) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.026),
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
         inset 0 -1px 0 rgba(255, 255, 255, 0.01),
-        0 18px 38px rgba(0, 0, 0, 0.17);
+        0 18px 38px rgba(0, 0, 0, 0.19);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
@@ -33,35 +34,44 @@
     content: "";
     position: absolute;
     inset: 0;
-    pointer-events: none;
     border-radius: inherit;
+    pointer-events: none;
     background:
         linear-gradient(90deg,
-            rgba(199, 134, 21, 0.74) 0%,
-            rgba(46, 194, 126, 0.24) 60%,
-            rgba(255, 255, 255, 0) 100%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.78) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.2) 58%,
+            transparent 100%);
     opacity: 0.72;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 1px, transparent 2px);
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 1) 1px, transparent 2px);
+    mask-image:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 1) 0,
+            rgba(0, 0, 0, 1) 1px,
+            transparent 2px);
+    -webkit-mask-image:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 1) 0,
+            rgba(0, 0, 0, 1) 1px,
+            transparent 2px);
 }
 
 .editorialPanel::after {
     content: "";
     position: absolute;
-    inset: 0.5px;
-    pointer-events: none;
+    inset: 1px;
     border-radius: inherit;
-    border: 1px solid rgba(255, 255, 255, 0.024);
+    border: 1px solid rgba(255, 255, 255, 0.026);
     opacity: 0.52;
+    pointer-events: none;
 }
 
 .editorialLead {
     margin: 0;
     max-inline-size: 100%;
     font-size: clamp(1rem, 1.04vw, 1.09rem);
-    line-height: 1.48;
-    font-weight: 640;
-    color: rgba(255, 255, 255, 0.93);
+    line-height: 1.5;
+    font-weight: 700;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    text-wrap: pretty;
 }
 
 .editorialBody {
@@ -72,9 +82,10 @@
 .editorialBody p {
     margin: 0;
     max-inline-size: 100%;
-    font-size: 0.95rem;
+    font-size: var(--sports-support-text-size, clamp(0.91rem, 0.9vw, 0.96rem));
     line-height: 1.66;
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    text-wrap: pretty;
 }
 
 @media (min-width: 1181px) {

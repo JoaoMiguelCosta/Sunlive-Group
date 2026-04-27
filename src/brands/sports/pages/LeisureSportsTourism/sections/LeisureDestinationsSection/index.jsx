@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import styles from "./LeisureDestinationsSection.module.css";
 
-const MOBILE_SCROLL_QUERY = "(max-width: 820px)";
+const MOBILE_SCROLL_QUERY = "(max-width: 1080px)";
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -57,8 +57,28 @@ function shouldScrollToPanelOnMobile() {
   return window.matchMedia(MOBILE_SCROLL_QUERY).matches;
 }
 
+function getMobileScrollOffset() {
+  if (typeof window === "undefined") return 12;
+  return Math.max(10, Math.min(18, window.innerWidth * 0.03));
+}
+
+function scrollElementIntoMobileView(element) {
+  if (!element || typeof window === "undefined") return;
+
+  const top =
+    element.getBoundingClientRect().top +
+    window.scrollY -
+    getMobileScrollOffset();
+
+  window.scrollTo({
+    top,
+    behavior: "smooth",
+  });
+}
+
 export default function LeisureDestinationsSection({ data }) {
-  const selectedPanelRef = useRef(null);
+  const panelStackRef = useRef(null);
+  const shouldScrollAfterSelectRef = useRef(false);
   const sectionId = data?.id || "leisure-sports-tourism-destinations";
 
   const destinations = useMemo(
@@ -82,6 +102,20 @@ export default function LeisureDestinationsSection({ data }) {
       setSelectedKey(initialKey);
     }
   }, [destinations, initialKey, selectedKey]);
+
+  useEffect(() => {
+    if (!shouldScrollAfterSelectRef.current) return;
+
+    shouldScrollAfterSelectRef.current = false;
+
+    if (!shouldScrollToPanelOnMobile()) return;
+
+    const frameId = window.requestAnimationFrame(() => {
+      scrollElementIntoMobileView(panelStackRef.current);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [selectedKey]);
 
   if (!data || destinations.length === 0) return null;
 
@@ -110,16 +144,16 @@ export default function LeisureDestinationsSection({ data }) {
       isValidText(intro.lead));
 
   function handleDestinationSelect(key) {
+    const shouldScroll = shouldScrollToPanelOnMobile();
+
+    shouldScrollAfterSelectRef.current = shouldScroll;
     setSelectedKey(key);
 
-    if (!shouldScrollToPanelOnMobile()) return;
-
-    window.requestAnimationFrame(() => {
-      selectedPanelRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+    if (shouldScroll && key === selectedKey) {
+      window.requestAnimationFrame(() => {
+        scrollElementIntoMobileView(panelStackRef.current);
       });
-    });
+    }
   }
 
   return (
@@ -130,136 +164,143 @@ export default function LeisureDestinationsSection({ data }) {
       aria-label={ariaLabel}
     >
       <div className={styles.shell}>
-        {hasIntro && (
-          <header className={styles.intro}>
-            {isValidText(intro.eyebrow) && (
-              <p className={styles.eyebrow}>{intro.eyebrow}</p>
-            )}
+        <div className={styles.surface}>
+          {hasIntro ? (
+            <header className={styles.intro}>
+              {isValidText(intro.eyebrow) ? (
+                <p className={styles.eyebrow}>{intro.eyebrow}</p>
+              ) : null}
 
-            {isValidText(intro.title) && (
-              <h2 id={titleId} className={styles.title}>
-                {intro.title}
-              </h2>
-            )}
+              {isValidText(intro.title) ? (
+                <h2 id={titleId} className={styles.title}>
+                  {intro.title}
+                </h2>
+              ) : null}
 
-            {isValidText(intro.lead) && (
-              <p className={styles.lead}>{intro.lead}</p>
-            )}
-          </header>
-        )}
+              {isValidText(intro.lead) ? (
+                <p className={styles.lead}>{intro.lead}</p>
+              ) : null}
+            </header>
+          ) : null}
 
-        <div className={styles.layout}>
-          <article
-            ref={selectedPanelRef}
-            id={panelId}
-            className={styles.featuredPanel}
-            aria-labelledby={selectedButtonId}
-            aria-live="polite"
-          >
-            <div className={styles.mediaFrame}>
-              {hasSelectedImage ? (
-                <img
-                  className={styles.image}
-                  src={selectedImage.src}
-                  alt={selectedImage.alt || selectedDestination.title || ""}
-                  loading="lazy"
-                />
-              ) : (
-                <div className={styles.visualFallback} aria-hidden="true">
-                  <span>{getFallbackMark(selectedDestination.title)}</span>
+          <div className={styles.layout}>
+            <div ref={panelStackRef} className={styles.panelStack}>
+              <article
+                id={panelId}
+                className={styles.featuredPanel}
+                aria-labelledby={selectedButtonId}
+                aria-live="polite"
+              >
+                <div className={styles.mediaFrame}>
+                  {hasSelectedImage ? (
+                    <img
+                      className={styles.image}
+                      src={selectedImage.src}
+                      alt={selectedImage.alt || selectedDestination.title || ""}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className={styles.visualFallback} aria-hidden="true">
+                      <span>{getFallbackMark(selectedDestination.title)}</span>
+                    </div>
+                  )}
                 </div>
-              )}
+
+                <div className={styles.featuredContent}>
+                  <div className={styles.featuredText}>
+                    {isValidText(selectedDestination.eyebrow) ? (
+                      <p className={styles.featuredEyebrow}>
+                        {selectedDestination.eyebrow}
+                      </p>
+                    ) : null}
+
+                    {isValidText(selectedDestination.title) ? (
+                      <h3 className={styles.featuredTitle}>
+                        {selectedDestination.title}
+                      </h3>
+                    ) : null}
+
+                    {isValidText(selectedDestination.description) ? (
+                      <p className={styles.featuredDescription}>
+                        {selectedDestination.description}
+                      </p>
+                    ) : null}
+                  </div>
+
+                  {selectedDestination.highlights.length > 0 ? (
+                    <ul className={styles.highlights}>
+                      {selectedDestination.highlights.map(
+                        (highlight, index) => (
+                          <li
+                            key={`${selectedDestination.key}-highlight-${index}`}
+                          >
+                            {highlight}
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  ) : null}
+                </div>
+              </article>
             </div>
 
-            <div className={styles.featuredContent}>
-              <div className={styles.featuredText}>
-                {isValidText(selectedDestination.eyebrow) && (
-                  <p className={styles.featuredEyebrow}>
-                    {selectedDestination.eyebrow}
-                  </p>
-                )}
+            <div
+              className={styles.destinationList}
+              role="group"
+              aria-label={
+                data.ui?.destinationListAriaLabel ||
+                "Selecionar destino em destaque"
+              }
+            >
+              {destinations.map((destination, index) => {
+                const isActive = destination.key === selectedDestination.key;
+                const buttonId = getDestinationButtonId(
+                  sectionId,
+                  destination.key,
+                );
 
-                {isValidText(selectedDestination.title) && (
-                  <h3 className={styles.featuredTitle}>
-                    {selectedDestination.title}
-                  </h3>
-                )}
+                return (
+                  <button
+                    id={buttonId}
+                    key={destination.key}
+                    type="button"
+                    className={[
+                      styles.destinationButton,
+                      isActive ? styles.isActive : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                    aria-pressed={isActive}
+                    aria-controls={panelId}
+                    onClick={() => handleDestinationSelect(destination.key)}
+                  >
+                    <span className={styles.cardTopline}>
+                      {isValidText(destination.eyebrow) ? (
+                        <span className={styles.cardEyebrow}>
+                          {destination.eyebrow}
+                        </span>
+                      ) : null}
 
-                {isValidText(selectedDestination.description) && (
-                  <p className={styles.featuredDescription}>
-                    {selectedDestination.description}
-                  </p>
-                )}
-              </div>
-
-              {selectedDestination.highlights.length > 0 && (
-                <ul className={styles.highlights}>
-                  {selectedDestination.highlights.map((highlight, index) => (
-                    <li key={`${selectedDestination.key}-highlight-${index}`}>
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </article>
-
-          <div
-            className={styles.destinationList}
-            role="group"
-            aria-label={
-              data.ui?.destinationListAriaLabel ||
-              "Selecionar destino em destaque"
-            }
-          >
-            {destinations.map((destination, index) => {
-              const isActive = destination.key === selectedDestination.key;
-              const buttonId = getDestinationButtonId(
-                sectionId,
-                destination.key,
-              );
-
-              return (
-                <button
-                  id={buttonId}
-                  key={destination.key}
-                  type="button"
-                  className={[
-                    styles.destinationButton,
-                    isActive ? styles.isActive : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                  aria-pressed={isActive}
-                  aria-controls={panelId}
-                  onClick={() => handleDestinationSelect(destination.key)}
-                >
-                  <span className={styles.cardTopline}>
-                    {isValidText(destination.eyebrow) && (
-                      <span className={styles.cardEyebrow}>
-                        {destination.eyebrow}
+                      <span className={styles.cardIndex}>
+                        {String(index + 1).padStart(2, "0")}
                       </span>
-                    )}
-
-                    <span className={styles.cardIndex}>
-                      {String(index + 1).padStart(2, "0")}
                     </span>
-                  </span>
 
-                  {isValidText(destination.title) && (
-                    <span className={styles.cardTitle}>
-                      {destination.title}
-                    </span>
-                  )}
+                    {isValidText(destination.title) ? (
+                      <span className={styles.cardTitle}>
+                        {destination.title}
+                      </span>
+                    ) : null}
 
-                  {isValidText(destination.description) && (
-                    <span className={styles.cardDescription}>
-                      {destination.description}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+                    {isValidText(destination.description) ? (
+                      <span className={styles.cardDescription}>
+                        {destination.description}
+                      </span>
+                    ) : null}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

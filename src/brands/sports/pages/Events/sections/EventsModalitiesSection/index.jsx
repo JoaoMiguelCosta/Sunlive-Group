@@ -26,6 +26,9 @@ export default function EventsModalitiesSection({ data }) {
       id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
+      aria-label={
+        !titleId ? data.ariaLabel || "Modalidades em destaque" : undefined
+      }
     >
       <div className={styles.surface}>
         <div className={styles.ambientGlow} aria-hidden="true" />

@@ -1,6 +1,8 @@
 import styles from "./EducationLevelsSection.module.css";
+
 import EducationLevelsIntro from "./EducationLevelsIntro.jsx";
 import EducationLevelsTimeline from "./EducationLevelsTimeline.jsx";
+
 import { hasItems } from "./educationLevelsSection.utils.js";
 
 export default function EducationLevelsSection({ data, onOpenBook }) {

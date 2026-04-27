@@ -1,421 +1,468 @@
 .section {
     position: relative;
     isolation: isolate;
-    width: 100%;
+    inline-size: 100%;
+    overflow: clip;
   
-    overflow: hidden;
-    color: rgba(255, 255, 255, 0.92);
-}
-
-.section::before {
-    position: absolute;
-    inset: 2% auto auto 50%;
-    z-index: -3;
-    width: min(58rem, 78vw);
-    height: min(58rem, 78vw);
-    content: "";
-    background:
-        radial-gradient(circle, rgba(218, 244, 133, 0.12), transparent 58%),
-        radial-gradient(circle, rgba(218, 165, 32, 0.11), transparent 62%),
-        radial-gradient(circle, rgba(42, 168, 106, 0.13), transparent 68%);
-    transform: translateX(-50%);
-    filter: blur(14px);
-    opacity: 0.86;
-    pointer-events: none;
-}
-
-.section::after {
-    position: absolute;
-    inset: auto 4% 4% auto;
-    z-index: -3;
-    width: min(30rem, 48vw);
-    height: min(30rem, 48vw);
-    content: "";
-    background: radial-gradient(circle, rgba(45, 171, 111, 0.12), transparent 68%);
-    filter: blur(18px);
-    opacity: 0.76;
-    pointer-events: none;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
 }
 
 .shell {
-    width: min(100%, var(--sl-container-xl, 1360px));
-    margin: 0 auto;
-   
+    inline-size: 100%;
+    min-inline-size: 0;
+    margin-inline: auto;
 }
 
 .panel {
     position: relative;
     isolation: isolate;
-    display: grid;
-    grid-template-columns: minmax(21rem, 0.82fr) minmax(0, 1.18fr);
-    gap: clamp(1.4rem, 3.2vw, 4rem);
-    align-items: center;
-    min-height: clamp(28rem, 42vw, 35rem);
-   
     overflow: hidden;
+    display: grid;
+    gap: clamp(1.35rem, 2.5vw, 2.2rem);
+    min-inline-size: 0;
+    padding: clamp(1.2rem, 2.45vw, 2.15rem);
+    border: 1px solid var(--sports-border, rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.16));
+    border-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
     background:
-        radial-gradient(circle at 10% 20%, rgba(218, 244, 133, 0.13), transparent 27rem),
-        radial-gradient(circle at 88% 86%, rgba(35, 147, 92, 0.18), transparent 30rem),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.022)),
-        linear-gradient(135deg, rgba(3, 13, 15, 0.96), rgba(3, 48, 34, 0.78));
-    border: 1px solid rgba(218, 165, 32, 0.22);
-    border-radius: clamp(1.45rem, 2.4vw, 2.35rem);
-    box-shadow:
-        0 2rem 5.2rem rgba(0, 0, 0, 0.34),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        radial-gradient(120% 120% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.1) 0%,
+            transparent 46%),
+        radial-gradient(100% 120% at 100% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.045) 0%,
+            transparent 54%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.038) 0%,
+            rgba(255, 255, 255, 0.012) 100%),
+        var(--sports-surface-dark,
+            linear-gradient(180deg,
+                rgba(7, 13, 21, 0.965) 0%,
+                rgba(4, 9, 17, 0.992) 100%));
+    box-shadow: var(--sports-shadow-card,
+            inset 0 1px 0 rgba(255, 255, 255, 0.04),
+            0 22px 48px rgba(0, 0, 0, 0.36));
 }
 
 .panel::before {
+    content: "";
     position: absolute;
     inset: 0;
-    z-index: -1;
-    content: "";
-    background:
-        linear-gradient(90deg, rgba(218, 165, 32, 0.18), transparent 18%, transparent 78%, rgba(218, 244, 133, 0.08)),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.075), transparent 36%);
-    opacity: 0.72;
+    z-index: 0;
     pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.04) 1px,
+            transparent 1px),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.032) 1px,
+            transparent 1px);
+    background-size: 4.6rem 4.6rem;
+    mask-image: radial-gradient(circle at 0% 0%, black 0%, transparent 58%);
+    opacity: 0.17;
 }
 
 .panel::after {
-    position: absolute;
-    inset: 1px;
-    z-index: -1;
     content: "";
-    border-radius: inherit;
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 0;
+    block-size: 44%;
+    pointer-events: none;
     background:
-        radial-gradient(circle at 58% 42%, rgba(255, 255, 255, 0.055), transparent 24rem),
-        linear-gradient(135deg, transparent, rgba(0, 0, 0, 0.12));
+        linear-gradient(180deg,
+            transparent 0%,
+            rgba(0, 0, 0, 0.11) 42%,
+            rgba(0, 0, 0, 0.32) 100%);
+}
+
+.edgeLine {
+    position: absolute;
+    inset: 0 auto auto 0;
+    z-index: 1;
+    inline-size: min(26rem, 58vw);
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.95) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.3) 58%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+.glow {
+    position: absolute;
+    inset: -28% auto auto 48%;
+    z-index: 0;
+    inline-size: min(34rem, 64vw);
+    aspect-ratio: 1.9;
+    border-radius: 999rem;
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.105) 0%,
+            transparent 62%),
+        radial-gradient(circle,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.04) 0%,
+            transparent 72%);
+    filter: blur(40px);
+    opacity: 0.88;
     pointer-events: none;
 }
 
 .header {
     position: relative;
-    z-index: 1;
-    max-width: 39rem;
-    padding: clamp(0.8rem, 1.8vw, 1.5rem);
+    z-index: 2;
+    display: grid;
+    gap: clamp(0.58rem, 1vw, 0.82rem);
+    max-inline-size: 62rem;
 }
 
 .eyebrow {
-    margin: 0 0 clamp(0.75rem, 1vw, 0.95rem);
-    color: rgba(218, 165, 32, 0.94);
-    font-size: clamp(0.7rem, 0.82vw, 0.84rem);
-    font-weight: 850;
-    line-height: 1.1;
-    letter-spacing: 0.18em;
+    margin: 0;
+    color: var(--sports-gold, #d6a640);
+    font-size: var(--sports-kicker-size, clamp(0.7rem, 0.76vw, 0.78rem));
+    font-weight: 860;
+    letter-spacing: var(--sports-kicker-spacing, 0.22em);
+    line-height: 1.2;
     text-transform: uppercase;
 }
 
 .title {
-    max-width: 10.5ch;
+  
     margin: 0;
-    color: rgba(218, 244, 133, 0.97);
-    font-size: clamp(2.75rem, 5.15vw, 5.4rem);
-    font-weight: 950;
-    line-height: 0.9;
-    letter-spacing: -0.08em;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    font-size: clamp(2rem, 3.5vw, 3.15rem);
+    font-weight: 880;
+    letter-spacing: var(--sports-panel-title-spacing, -0.058em);
+    line-height: var(--sports-panel-title-line, 0.98);
     text-wrap: balance;
-    text-shadow:
-        0 0 30px rgba(164, 220, 96, 0.16),
-        0 1rem 3rem rgba(0, 0, 0, 0.18);
 }
 
 .lead {
-    max-width: 36rem;
-    margin: clamp(1rem, 1.8vw, 1.45rem) 0 0;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: clamp(0.98rem, 1.12vw, 1.12rem);
-    font-weight: 560;
-    line-height: 1.72;
+    max-inline-size: 58rem;
+    margin: 0;
+    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
+    font-size: var(--sports-lead-size, clamp(0.98rem, 1.08vw, 1.08rem));
+    line-height: var(--sports-lead-line, 1.66);
     text-wrap: pretty;
 }
 
 .entitiesList {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(0.72rem, 1vw, 0.95rem);
-    min-width: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.78rem, 1.15vw, 1rem);
+    min-inline-size: 0;
     margin: 0;
-    padding: clamp(0.35rem, 0.7vw, 0.6rem);
+    padding: 0;
     list-style: none;
 }
 
 .entityItem {
     position: relative;
     isolation: isolate;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: clamp(0.72rem, 1vw, 0.95rem);
-    align-items: center;
-    min-width: 0;
-    min-height: clamp(4.95rem, 6.4vw, 6.2rem);
-    padding: clamp(0.9rem, 1.25vw, 1.15rem);
     overflow: hidden;
+    display: grid;
+    align-content: start;
+    gap: clamp(0.58rem, 0.9vw, 0.75rem);
+    min-inline-size: 0;
+    min-block-size: clamp(8rem, 10vw, 9.8rem);
+    padding: clamp(0.95rem, 1.35vw, 1.18rem);
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
     background:
-        radial-gradient(circle at 90% 0%, rgba(218, 244, 133, 0.105), transparent 10rem),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.072), rgba(255, 255, 255, 0.02)),
-        rgba(0, 0, 0, 0.16);
-    border: 1px solid rgba(255, 255, 255, 0.085);
-    border-radius: clamp(1rem, 1.35vw, 1.25rem);
+        radial-gradient(105% 105% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.074) 0%,
+            transparent 48%),
+        radial-gradient(100% 110% at 100% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.028) 0%,
+            transparent 54%),
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.046) 0%,
+            rgba(255, 255, 255, 0.014) 48%,
+            rgba(255, 255, 255, 0.026) 100%),
+        rgba(6, 12, 20, 0.7);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        0 1rem 2.2rem rgba(0, 0, 0, 0.16);
+        inset 0 1px 0 rgba(255, 255, 255, 0.042),
+        0 0.82rem 1.9rem rgba(0, 0, 0, 0.2);
     transition:
         transform 180ms ease,
         border-color 180ms ease,
-        background 180ms ease,
-        box-shadow 180ms ease;
+        box-shadow 180ms ease,
+        background 180ms ease;
 }
 
 .entityItem::before {
+    content: "";
     position: absolute;
     inset: 0 auto 0 0;
-    width: 3px;
-    content: "";
-    background: linear-gradient(180deg,
-            rgba(218, 165, 32, 0.92),
-            rgba(90, 190, 121, 0.64));
+    inline-size: 2px;
+    background:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.92) 0%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.48) 100%);
     opacity: 0.86;
     pointer-events: none;
 }
 
 .entityItem::after {
-    position: absolute;
-    inset: -35% -18% auto auto;
-    z-index: -1;
-    width: 9rem;
-    height: 9rem;
     content: "";
-    background: radial-gradient(circle, rgba(218, 244, 133, 0.12), transparent 66%);
+    position: absolute;
+    inset: -42% -24% auto auto;
+    z-index: -1;
+    inline-size: 9rem;
+    block-size: 9rem;
+    border-radius: 999rem;
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.13) 0%,
+            transparent 68%);
     opacity: 0;
-    transition: opacity 180ms ease;
     pointer-events: none;
+    transition: opacity 180ms ease;
+}
+
+.entityTopline {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.58rem;
+    min-inline-size: 0;
 }
 
 .entityIndex {
     display: inline-grid;
     place-items: center;
-    width: clamp(2rem, 2.35vw, 2.3rem);
-    height: clamp(2rem, 2.35vw, 2.3rem);
-    color: rgba(218, 165, 32, 0.94);
-    font-size: clamp(0.66rem, 0.72vw, 0.74rem);
-    font-weight: 950;
-    line-height: 1;
-    letter-spacing: 0.08em;
+    flex: 0 0 auto;
+    inline-size: clamp(1.86rem, 2vw, 2.12rem);
+    block-size: clamp(1.86rem, 2vw, 2.12rem);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+    border-radius: 999rem;
     background:
-        radial-gradient(circle at 50% 20%, rgba(218, 165, 32, 0.12), transparent 64%),
-        rgba(0, 0, 0, 0.22);
-    border: 1px solid rgba(218, 165, 32, 0.24);
-    border-radius: 999px;
+        radial-gradient(circle at 50% 20%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            transparent 66%),
+        rgba(3, 7, 12, 0.5);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 0.6rem 1.4rem rgba(0, 0, 0, 0.16);
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 0.55rem 1.2rem rgba(0, 0, 0, 0.16);
+    color: var(--sports-gold, #d6a640);
+    font-size: clamp(0.62rem, 0.68vw, 0.72rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
+.entityMeta {
+    overflow: hidden;
+    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.88);
+    font-size: clamp(0.64rem, 0.68vw, 0.72rem);
+    font-weight: 820;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .entityTitle {
-    min-width: 0;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: clamp(0.98rem, 1.22vw, 1.2rem);
+    position: relative;
+    z-index: 1;
+    min-inline-size: 0;
+    margin: 0;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    font-size: clamp(1rem, 1.05vw, 1.16rem);
     font-weight: 850;
-    line-height: 1.12;
-    letter-spacing: -0.04em;
+    letter-spacing: var(--sports-card-title-spacing, -0.035em);
+    line-height: var(--sports-card-title-line, 1.08);
     text-wrap: balance;
+}
+
+.entityDescription {
+    position: relative;
+    z-index: 1;
+    max-inline-size: 34rem;
+    margin: 0;
+    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
+    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    font-weight: 540;
+    line-height: 1.52;
+    text-wrap: pretty;
 }
 
 @media (hover: hover) {
     .entityItem:hover {
+        transform: translateY(-1px);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.26);
         background:
-            radial-gradient(circle at 90% 0%, rgba(218, 244, 133, 0.16), transparent 10rem),
-            linear-gradient(135deg, rgba(218, 165, 32, 0.11), rgba(35, 147, 92, 0.065)),
-            rgba(0, 0, 0, 0.2);
-        border-color: rgba(218, 165, 32, 0.28);
+            radial-gradient(105% 105% at 0% 0%,
+                rgb(var(--sports-gold-rgb, 214 166 64) / 0.092) 0%,
+                transparent 48%),
+            radial-gradient(100% 110% at 100% 100%,
+                rgb(var(--sports-green-rgb, 46 194 126) / 0.034) 0%,
+                transparent 54%),
+            linear-gradient(145deg,
+                rgba(255, 255, 255, 0.054) 0%,
+                rgba(255, 255, 255, 0.016) 48%,
+                rgba(255, 255, 255, 0.032) 100%),
+            rgba(6, 12, 20, 0.76);
         box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.08),
-            0 1.2rem 2.6rem rgba(0, 0, 0, 0.2);
-        transform: translateY(-2px);
+            inset 0 1px 0 rgba(255, 255, 255, 0.052),
+            0 1rem 2.2rem rgba(0, 0, 0, 0.24),
+            0 0 16px rgb(var(--sports-gold-rgb, 214 166 64) / 0.045);
     }
 
     .entityItem:hover::after {
         opacity: 1;
     }
+
+    .entityItem:hover .entityDescription {
+        color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+    }
 }
 
-@media (max-height: 850px) and (min-width: 1181px) {
-
-    .panel {
-        min-height: auto;
-        padding: clamp(1rem, 1.9vw, 1.8rem);
+@media (max-width: 1180px) {
+    .entitiesList {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .title {
-        font-size: clamp(2.4rem, 4.5vw, 4.65rem);
-    }
-
-    .lead {
-        margin-top: 1rem;
-        line-height: 1.58;
+        max-inline-size: 22ch;
     }
 
     .entityItem {
-        min-height: clamp(4.45rem, 5.6vw, 5.35rem);
+        min-block-size: clamp(7.6rem, 12vw, 9.2rem);
     }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 980px) {
+    .section {
+        padding-block: clamp(1.2rem, 3.4vw, 2.2rem);
+    }
+
     .panel {
-        grid-template-columns: minmax(19rem, 0.78fr) minmax(0, 1.22fr);
-        gap: clamp(1rem, 2.5vw, 2.4rem);
-    }
-
-    .title {
-        font-size: clamp(2.35rem, 4.8vw, 4.7rem);
-    }
-
-    .entityItem {
-        min-height: clamp(4.65rem, 6vw, 5.8rem);
-    }
-
-    .entityTitle {
-        font-size: clamp(0.94rem, 1.08vw, 1.08rem);
-    }
-}
-
-@media (max-width: 1080px) {
-    .panel {
-        grid-template-columns: 1fr;
-        min-height: auto;
+        gap: clamp(1.15rem, 2.8vw, 1.7rem);
     }
 
     .header {
-        max-width: 54rem;
-        padding-bottom: 0.25rem;
+        justify-items: center;
+        max-inline-size: 48rem;
+        margin-inline: auto;
+        text-align: center;
     }
 
     .title {
-        max-width: 15ch;
-        font-size: clamp(2.2rem, 6vw, 4rem);
+        max-inline-size: 18ch;
+        font-size: clamp(1.75rem, 4.8vw, 2.75rem);
     }
 
     .lead {
-        max-width: 50rem;
-    }
-
-    .entitiesList {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        padding-top: 0.2rem;
+        max-inline-size: 42rem;
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 700px) {
     .section {
-        padding-block: clamp(2.9rem, 10vw, 4.4rem);
-    }
-
-    .shell {
-        padding-inline: clamp(0.85rem, 4vw, 1.15rem);
+        padding-block: clamp(1rem, 4vw, 1.8rem);
     }
 
     .panel {
         gap: 1rem;
-        padding: clamp(0.78rem, 2.5vw, 1rem);
-        border-radius: 1.35rem;
-    }
-
-    .header {
-        padding: 0.72rem 0.65rem 0.15rem;
-    }
-
-    .eyebrow {
-        margin-bottom: 0.65rem;
-        font-size: 0.68rem;
+        padding: clamp(1rem, 4vw, 1.2rem);
+        border-radius: var(--sports-radius-lg, 1.25rem);
     }
 
     .title {
-        max-width: 100%;
-        font-size: clamp(2rem, 9vw, 3rem);
-        letter-spacing: -0.07em;
+        max-inline-size: 14ch;
+        font-size: clamp(1.62rem, 7vw, 2.25rem);
     }
 
     .lead {
-        margin-top: 0.85rem;
-        font-size: 0.94rem;
         line-height: 1.58;
     }
 
     .entitiesList {
         grid-template-columns: 1fr;
-        gap: 0.62rem;
-        padding: 0.2rem;
+        gap: 0.68rem;
     }
 
     .entityItem {
-        min-height: 4rem;
-        padding: 0.76rem;
-        border-radius: 0.95rem;
+        min-block-size: auto;
+        padding: 0.88rem;
+        border-radius: var(--sports-radius-md, 1rem);
     }
 
     .entityIndex {
-        width: 1.9rem;
-        height: 1.9rem;
-        font-size: 0.64rem;
+        inline-size: 1.82rem;
+        block-size: 1.82rem;
+        font-size: 0.62rem;
     }
 
     .entityTitle {
-        font-size: 0.94rem;
-        line-height: 1.15;
+        font-size: 0.98rem;
+        line-height: 1.14;
+    }
+
+    .entityDescription {
+        font-size: 0.8rem;
+        line-height: 1.48;
     }
 }
 
 @media (max-width: 460px) {
     .panel {
         margin-inline: -0.08rem;
-        padding: 0.62rem;
-        border-radius: 1.2rem;
+        padding: 0.86rem;
+        border-radius: 1.12rem;
     }
 
-    .header {
-        padding-inline: 0.45rem;
+    .eyebrow {
+        font-size: 0.66rem;
     }
 
     .title {
-        font-size: clamp(1.85rem, 11vw, 2.55rem);
+        max-inline-size: 13ch;
+        font-size: clamp(1.5rem, 8.5vw, 2rem);
     }
 
     .lead {
         font-size: 0.9rem;
     }
 
-    .entityItem {
-        gap: 0.6rem;
-        min-height: 3.8rem;
+    .entityTopline {
+        gap: 0.52rem;
+    }
+
+    .entityMeta {
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
     }
 }
 
 @media (max-width: 360px) {
-    .entityItem {
-        grid-template-columns: 1fr;
-        gap: 0.55rem;
-        align-items: start;
+    .entityTopline {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .entityIndex {
-        width: 1.78rem;
-        height: 1.78rem;
+        inline-size: 1.74rem;
+        block-size: 1.74rem;
+    }
+
+    .entityMeta {
+        white-space: normal;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .entityItem {
+
+    .entityItem,
+    .entityItem::after {
         transition: none;
     }
 
     .entityItem:hover {
         transform: none;
-    }
-
-    .entityItem::after {
-        transition: none;
     }
 }

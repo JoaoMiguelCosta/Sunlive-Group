@@ -10,7 +10,7 @@ import AthletesPage from "./pages/Athletes/index.jsx";
 import SpecialisedServicesPage from "./pages/SpecialisedServices/index.jsx";
 import EducationPage from "./pages/Education/index.jsx";
 import LeisureSportsTourismPage from "./pages/LeisureSportsTourism/index.jsx";
-import DisciplinesPage from "./pages/Disciplines/index.jsx";
+import ModalitiesPage from "./pages/Modalities/index.jsx";
 import InfrastructuresPage from "./pages/Infrastructures/index.jsx";
 import LogisticsPage from "./pages/Logistics/index.jsx";
 import ConsultancyPage from "./pages/Consultancy/index.jsx";
@@ -26,11 +26,19 @@ export const sportsRoutes = [
     <Route path="sunlive-athletes" element={<AthletesPage />} />
     <Route path="specialised-services" element={<SpecialisedServicesPage />} />
     <Route path="education" element={<EducationPage />} />
+
     <Route
       path="leisure-sports-tourism"
       element={<LeisureSportsTourismPage />}
     />
-    <Route path="sports-disciplines" element={<DisciplinesPage />} />
+
+    <Route path="modalities" element={<ModalitiesPage />} />
+
+    <Route
+      path="sports-modalities"
+      element={<Navigate to="/sunlive-group/sports/modalities" replace />}
+    />
+
     <Route path="infrastructures" element={<InfrastructuresPage />} />
     <Route path="logistics" element={<LogisticsPage />} />
     <Route path="consultancy" element={<ConsultancyPage />} />

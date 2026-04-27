@@ -1,12 +1,12 @@
 .panel {
-    --panel-border: rgba(255, 255, 255, 0.075);
-    --panel-line-start: rgba(255, 255, 255, 0.22);
-    --panel-line-end: rgba(255, 255, 255, 0.06);
-    --panel-glow: rgba(255, 255, 255, 0.06);
-    --tag-border: rgba(255, 255, 255, 0.12);
-    --tag-bg-start: rgba(255, 255, 255, 0.08);
-    --tag-bg-end: rgba(255, 255, 255, 0.03);
-    --tag-color: rgba(246, 248, 252, 0.9);
+    --panel-border: var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    --panel-line-start: rgb(var(--sports-gold-rgb, 214 166 64) / 0.32);
+    --panel-line-end: rgb(var(--sports-green-rgb, 46 194 126) / 0.06);
+    --panel-glow: rgb(var(--sports-gold-rgb, 214 166 64) / 0.07);
+    --tag-border: rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
+    --tag-bg-start: rgb(var(--sports-gold-rgb, 214 166 64) / 0.13);
+    --tag-bg-end: rgb(var(--sports-gold-rgb, 214 166 64) / 0.05);
+    --tag-color: rgba(255, 236, 198, 0.94);
     --panel-intro-min-height: 5.9rem;
 
     position: relative;
@@ -17,7 +17,7 @@
     block-size: 100%;
     min-block-size: var(--education-bilingual-card-min-height);
     padding: clamp(0.74rem, 0.9vw, 0.86rem);
-    border-radius: clamp(0.98rem, 1.18vw, 1.1rem);
+    border-radius: var(--sports-radius-md, 1rem);
     border: 1px solid var(--panel-border);
     background:
         radial-gradient(125% 150% at 0% 0%,
@@ -27,31 +27,41 @@
             rgba(255, 255, 255, 0.032) 0%,
             rgba(255, 255, 255, 0.012) 100%),
         linear-gradient(145deg,
-            rgba(10, 16, 20, 0.965) 0%,
-            rgba(7, 13, 17, 0.985) 100%);
+            rgba(7, 13, 21, 0.965) 0%,
+            rgba(4, 9, 17, 0.992) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.015),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
         0 14px 32px rgba(0, 0, 0, 0.24);
     overflow: hidden;
     isolation: isolate;
     transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        filter 180ms ease;
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        filter 0.18s ease;
 }
 
 .panel::before {
     content: "";
     position: absolute;
-    inset: 0 0 auto 0;
-    block-size: 1px;
+    inset: 0;
+    border-radius: inherit;
     background:
         linear-gradient(90deg,
             var(--panel-line-start) 0%,
             var(--panel-line-end) 100%);
     opacity: 0.94;
+    pointer-events: none;
+    mask-image:
+        linear-gradient(to bottom,
+            #000 0,
+            #000 1px,
+            transparent 1px);
+    -webkit-mask-image:
+        linear-gradient(to bottom,
+            #000 0,
+            #000 1px,
+            transparent 1px);
 }
 
 .panel::after {
@@ -65,72 +75,80 @@
         radial-gradient(circle,
             var(--panel-glow) 0%,
             transparent 72%);
-    opacity: 0.88;
+    opacity: 0.82;
     pointer-events: none;
-    filter: blur(8px);
+    filter: blur(10px);
 }
 
 .panel[data-variant="portuguese"] {
-    --panel-border: rgba(46, 194, 126, 0.16);
-    --panel-line-start: rgba(46, 194, 126, 0.34);
-    --panel-line-end: rgba(46, 194, 126, 0.08);
-    --panel-glow: rgba(46, 194, 126, 0.09);
-    --tag-border: rgba(46, 194, 126, 0.2);
-    --tag-bg-start: rgba(46, 194, 126, 0.12);
-    --tag-bg-end: rgba(46, 194, 126, 0.05);
-    --tag-color: rgba(224, 255, 234, 0.92);
+    --panel-border: rgb(var(--sports-gold-rgb, 214 166 64) / 0.14);
+    --panel-line-start: rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
+    --panel-line-end: rgb(var(--sports-green-rgb, 46 194 126) / 0.07);
+    --panel-glow: rgb(var(--sports-green-rgb, 46 194 126) / 0.045);
+    --tag-border: rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
+    --tag-bg-start: rgb(var(--sports-gold-rgb, 214 166 64) / 0.12);
+    --tag-bg-end: rgb(var(--sports-gold-rgb, 214 166 64) / 0.045);
+    --tag-color: rgba(255, 236, 198, 0.94);
 
     background:
         radial-gradient(125% 150% at 0% 0%,
-            rgba(46, 194, 126, 0.11) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.04) 0%,
             transparent 48%),
+        radial-gradient(120% 145% at 100% 100%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
+            transparent 50%),
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.032) 0%,
             rgba(255, 255, 255, 0.012) 100%),
         linear-gradient(145deg,
-            rgba(8, 22, 18, 0.972) 0%,
-            rgba(8, 14, 18, 0.988) 100%);
+            rgba(7, 13, 21, 0.965) 0%,
+            rgba(4, 9, 17, 0.992) 100%);
 }
 
 .panel[data-variant="dualDiploma"] {
-    --panel-border: rgba(199, 134, 21, 0.18);
-    --panel-line-start: rgba(199, 134, 21, 0.34);
-    --panel-line-end: rgba(199, 134, 21, 0.08);
-    --panel-glow: rgba(199, 134, 21, 0.1);
-    --tag-border: rgba(199, 134, 21, 0.2);
-    --tag-bg-start: rgba(199, 134, 21, 0.13);
-    --tag-bg-end: rgba(199, 134, 21, 0.05);
-    --tag-color: rgba(255, 236, 198, 0.92);
+    --panel-border: rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
+    --panel-line-start: rgb(var(--sports-gold-rgb, 214 166 64) / 0.38);
+    --panel-line-end: rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
+    --panel-glow: rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
+    --tag-border: rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+    --tag-bg-start: rgb(var(--sports-gold-rgb, 214 166 64) / 0.14);
+    --tag-bg-end: rgb(var(--sports-gold-rgb, 214 166 64) / 0.055);
+    --tag-color: rgba(255, 236, 198, 0.95);
 
     background:
         radial-gradient(125% 150% at 100% 0%,
-            rgba(199, 134, 21, 0.12) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.105) 0%,
             transparent 46%),
+        radial-gradient(120% 150% at 0% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.025) 0%,
+            transparent 50%),
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.032) 0%,
             rgba(255, 255, 255, 0.012) 100%),
         linear-gradient(145deg,
-            rgba(15, 17, 23, 0.972) 0%,
-            rgba(8, 13, 18, 0.988) 100%);
+            rgba(7, 13, 21, 0.965) 0%,
+            rgba(4, 9, 17, 0.992) 100%);
 }
 
 @media (hover: hover) and (pointer: fine) {
     .panel:hover {
-        transform: translateY(-3px);
+        transform: translateY(-2px);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.05),
-            inset 0 -1px 0 rgba(255, 255, 255, 0.02),
-            0 18px 36px rgba(0, 0, 0, 0.28);
+            0 18px 36px rgba(0, 0, 0, 0.28),
+            0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.035);
         filter: saturate(1.03);
     }
 }
 
 .panel:focus-within {
     transform: translateY(-2px);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.02),
-        0 18px 36px rgba(0, 0, 0, 0.28);
+        0 18px 36px rgba(0, 0, 0, 0.28),
+        0 0 0 3px rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
 }
 
 .panelTop {
@@ -151,7 +169,7 @@
             var(--tag-bg-start) 0%,
             var(--tag-bg-end) 100%);
     color: var(--tag-color);
-    font-size: 0.68rem;
+    font-size: var(--sports-kicker-size, 0.68rem);
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.055em;
@@ -176,19 +194,19 @@
 
 .panelTitle {
     margin: 0;
-    color: rgba(248, 250, 252, 0.98);
-    font-size: clamp(0.92rem, 0.96vw, 1.02rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.026em;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    font-weight: 850;
+    line-height: var(--sports-card-title-line, 1.08);
+    letter-spacing: var(--sports-card-title-spacing, -0.035em);
     text-wrap: balance;
 }
 
 .panelDescription {
     margin: 0;
-    color: rgba(216, 224, 232, 0.8);
-    font-size: 0.82rem;
-    line-height: 1.4;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    line-height: var(--sports-card-text-line, 1.4);
 }
 
 .group {
@@ -199,11 +217,11 @@
 
 .groupLabel {
     margin: 0;
-    color: rgba(247, 250, 252, 0.92);
+    color: var(--sports-gold, #d6a640);
     font-size: 0.74rem;
     font-weight: 800;
     line-height: 1.24;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
@@ -219,9 +237,9 @@
 .featureItem {
     position: relative;
     padding-inline-start: 0.86rem;
-    color: rgba(224, 232, 239, 0.86);
-    font-size: 0.8rem;
-    line-height: 1.3;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    line-height: 1.34;
 }
 
 .featureItem::before {
@@ -233,23 +251,27 @@
     block-size: 0.34rem;
     border-radius: 999px;
     background:
-        linear-gradient(135deg,
-            rgba(46, 194, 126, 0.98) 0%,
-            rgba(199, 134, 21, 0.95) 100%);
+        radial-gradient(circle at 35% 35%,
+            rgba(255, 246, 214, 0.98) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.94) 48%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.82) 100%);
     box-shadow:
-        0 0 0 0.2rem rgba(46, 194, 126, 0.07),
-        0 0 0.62rem rgba(199, 134, 21, 0.1);
+        0 0 0 0.2rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
+        0 0 0.62rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.12);
 }
 
 .emphasisBox {
     margin-top: auto;
     padding: 0.58rem 0.68rem;
     border-radius: 0.84rem;
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.14);
     background:
+        radial-gradient(120% 150% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
+            transparent 46%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.055) 0%,
-            rgba(255, 255, 255, 0.02) 100%);
+            rgba(255, 255, 255, 0.044) 0%,
+            rgba(255, 255, 255, 0.016) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.035),
         0 6px 16px rgba(0, 0, 0, 0.12);
@@ -257,10 +279,10 @@
 
 .emphasisText {
     margin: 0;
-    color: rgba(244, 247, 250, 0.92);
-    font-size: 0.8rem;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
     font-weight: 700;
-    line-height: 1.34;
+    line-height: 1.36;
 }
 
 @media (min-width: 1201px) {

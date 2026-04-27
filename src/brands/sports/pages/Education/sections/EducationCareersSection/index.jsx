@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+
 import styles from "./EducationCareersSection.module.css";
+
 import EducationCareersIntro from "./EducationCareersIntro.jsx";
 import EducationCareersSelector from "./EducationCareersSelector.jsx";
 import EducationCareersPanel from "./EducationCareersPanel.jsx";

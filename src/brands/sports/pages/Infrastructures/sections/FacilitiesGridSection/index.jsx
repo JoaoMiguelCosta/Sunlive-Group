@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import styles from "./FacilitiesGridSection.module.css";
 
+const MOBILE_SCROLL_QUERY = "(max-width: 900px)";
+
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
@@ -38,30 +40,77 @@ function toDomSafeId(value) {
     .replace(/^-+|-+$/g, "");
 }
 
-function shouldScrollToPanel() {
-  return (
-    typeof window !== "undefined" &&
-    window.matchMedia("(max-width: 820px)").matches
-  );
+function getIntroDescription(intro) {
+  if (isValidText(intro?.description)) return intro.description;
+  if (isValidText(intro?.lead)) return intro.lead;
+
+  return "";
 }
 
 function prefersReducedMotion() {
-  return (
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
+  if (typeof window === "undefined") return false;
+
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function shouldScrollToPanelOnMobile() {
+  if (typeof window === "undefined") return false;
+
+  return window.matchMedia(MOBILE_SCROLL_QUERY).matches;
+}
+
+function getMobileScrollOffset() {
+  if (typeof window === "undefined") return 12;
+
+  return Math.max(10, Math.min(18, window.innerWidth * 0.03));
+}
+
+function scrollElementIntoMobileView(element) {
+  if (!element || typeof window === "undefined") return;
+
+  const top =
+    element.getBoundingClientRect().top +
+    window.scrollY -
+    getMobileScrollOffset();
+
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: prefersReducedMotion() ? "auto" : "smooth",
+  });
+}
+
+function focusSelectorButton(container, index) {
+  if (!container) return;
+
+  const buttons = Array.from(container.querySelectorAll('[role="tab"]'));
+  const button = buttons[index];
+
+  if (!button) return;
+
+  window.requestAnimationFrame(() => {
+    try {
+      button.focus({ preventScroll: true });
+    } catch {
+      button.focus();
+    }
+  });
 }
 
 export default function FacilitiesGridSection({ data }) {
   const panelRef = useRef(null);
+  const shouldScrollAfterSelectRef = useRef(false);
 
   const cards = useMemo(() => getValidCards(data?.cards), [data?.cards]);
+
   const [activeKey, setActiveKey] = useState(() => getInitialCardKey(cards));
 
   useEffect(() => {
     const initialCardKey = getInitialCardKey(cards);
 
-    if (!initialCardKey) return;
+    if (!initialCardKey) {
+      setActiveKey(null);
+      return;
+    }
 
     const hasActiveCard = cards.some(
       (card, index) => getCardKey(card, index) === activeKey,
@@ -72,17 +121,32 @@ export default function FacilitiesGridSection({ data }) {
     }
   }, [activeKey, cards]);
 
+  useEffect(() => {
+    if (!shouldScrollAfterSelectRef.current) return;
+
+    shouldScrollAfterSelectRef.current = false;
+
+    if (!shouldScrollToPanelOnMobile()) return;
+
+    const frameId = window.requestAnimationFrame(() => {
+      scrollElementIntoMobileView(panelRef.current);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [activeKey]);
+
   if (!data || cards.length === 0) return null;
 
   const sectionId = data.id || "infrastructures-facilities";
   const intro = data.intro || {};
   const ui = data.ui || {};
+  const introDescription = getIntroDescription(intro);
 
-  const activeIndex = Math.max(
-    cards.findIndex((card, index) => getCardKey(card, index) === activeKey),
-    0,
+  const foundActiveIndex = cards.findIndex(
+    (card, index) => getCardKey(card, index) === activeKey,
   );
 
+  const activeIndex = foundActiveIndex >= 0 ? foundActiveIndex : 0;
   const activeCard = cards[activeIndex];
   const activeCardKey = getCardKey(activeCard, activeIndex);
   const activeFeatures = getValidFeatures(activeCard.features);
@@ -90,36 +154,30 @@ export default function FacilitiesGridSection({ data }) {
   const hasIntro =
     isValidText(intro.eyebrow) ||
     isValidText(intro.title) ||
-    isValidText(intro.description);
+    isValidText(introDescription);
 
   const titleId = isValidText(intro.title) ? `${sectionId}-title` : undefined;
   const panelId = `${sectionId}-panel`;
   const activeTabId = `${sectionId}-tab-${toDomSafeId(activeCardKey)}`;
 
-  function scrollToPanelOnSmallScreens() {
-    if (!shouldScrollToPanel()) return;
-
-    window.requestAnimationFrame(() => {
-      panelRef.current?.scrollIntoView({
-        block: "start",
-        behavior: prefersReducedMotion() ? "auto" : "smooth",
-      });
-    });
-  }
-
   function selectCard(cardKey) {
+    const shouldScroll = shouldScrollToPanelOnMobile();
+
+    shouldScrollAfterSelectRef.current = shouldScroll;
+
+    if (cardKey === activeCardKey) {
+      shouldScrollAfterSelectRef.current = false;
+
+      if (shouldScroll) {
+        window.requestAnimationFrame(() => {
+          scrollElementIntoMobileView(panelRef.current);
+        });
+      }
+
+      return;
+    }
+
     setActiveKey(cardKey);
-    scrollToPanelOnSmallScreens();
-  }
-
-  function focusSelectorButton(container, index) {
-    if (!container) return;
-
-    const buttons = Array.from(container.querySelectorAll('[role="tab"]'));
-
-    window.requestAnimationFrame(() => {
-      buttons[index]?.focus();
-    });
   }
 
   function handleSelectorKeyDown(event, index) {
@@ -154,7 +212,10 @@ export default function FacilitiesGridSection({ data }) {
     const nextCardKey = getCardKey(cards[nextIndex], nextIndex);
 
     setActiveKey(nextCardKey);
-    focusSelectorButton(event.currentTarget.parentElement, nextIndex);
+    focusSelectorButton(
+      event.currentTarget.closest('[role="tablist"]'),
+      nextIndex,
+    );
   }
 
   return (
@@ -165,29 +226,33 @@ export default function FacilitiesGridSection({ data }) {
       aria-label={titleId ? undefined : ui.ariaLabel}
     >
       <div className={styles.inner}>
-        {hasIntro && (
+        {hasIntro ? (
           <header className={styles.header}>
-            {isValidText(intro.eyebrow) && (
+            {isValidText(intro.eyebrow) ? (
               <p className={styles.eyebrow}>{intro.eyebrow}</p>
-            )}
+            ) : null}
 
-            {isValidText(intro.title) && (
+            {isValidText(intro.title) ? (
               <h2 id={titleId} className={styles.title}>
                 {intro.title}
               </h2>
-            )}
+            ) : null}
 
-            {isValidText(intro.description) && (
-              <p className={styles.description}>{intro.description}</p>
-            )}
+            {isValidText(introDescription) ? (
+              <p className={styles.description}>{introDescription}</p>
+            ) : null}
           </header>
-        )}
+        ) : null}
 
         <div className={styles.showcase}>
           <div
             className={styles.selector}
             role="tablist"
-            aria-label={ui.selectorAriaLabel}
+            aria-label={
+              isValidText(ui.selectorAriaLabel)
+                ? ui.selectorAriaLabel
+                : undefined
+            }
           >
             {cards.map((card, index) => {
               const cardKey = getCardKey(card, index);
@@ -214,11 +279,11 @@ export default function FacilitiesGridSection({ data }) {
                   <span className={styles.selectorContent}>
                     <span className={styles.selectorTitle}>{card.title}</span>
 
-                    {isValidText(card.highlight) && (
+                    {isValidText(card.highlight) ? (
                       <span className={styles.selectorHighlight}>
                         {card.highlight}
                       </span>
-                    )}
+                    ) : null}
                   </span>
                 </button>
               );
@@ -232,6 +297,7 @@ export default function FacilitiesGridSection({ data }) {
             role="tabpanel"
             aria-labelledby={activeTabId}
             tabIndex={-1}
+            aria-live="polite"
           >
             <div className={styles.media}>
               {isValidText(activeCard.image) ? (
@@ -263,20 +329,20 @@ export default function FacilitiesGridSection({ data }) {
 
                 <h3 className={styles.panelTitle}>{activeCard.title}</h3>
 
-                {isValidText(activeCard.description) && (
+                {isValidText(activeCard.description) ? (
                   <p className={styles.panelDescription}>
                     {activeCard.description}
                   </p>
-                )}
+                ) : null}
 
-                {isValidText(activeCard.highlight) && (
+                {isValidText(activeCard.highlight) ? (
                   <p className={styles.panelHighlight}>
                     {activeCard.highlight}
                   </p>
-                )}
+                ) : null}
               </div>
 
-              {activeFeatures.length > 0 && (
+              {activeFeatures.length > 0 ? (
                 <ul className={styles.features}>
                   {activeFeatures.map((feature, index) => (
                     <li
@@ -287,7 +353,7 @@ export default function FacilitiesGridSection({ data }) {
                     </li>
                   ))}
                 </ul>
-              )}
+              ) : null}
             </div>
           </article>
         </div>

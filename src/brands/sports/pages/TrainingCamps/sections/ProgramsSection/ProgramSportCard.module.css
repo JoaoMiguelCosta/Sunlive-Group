@@ -1,91 +1,93 @@
 .card {
-    --program-accent: rgba(46, 194, 126, 0.82);
-    --program-gold: rgba(199, 134, 21, 0.88);
+    --program-accent-rgb: var(--sports-green-rgb, 46 194 126);
+    --program-gold-rgb: var(--sports-gold-rgb, 214 166 64);
 
     position: relative;
     display: grid;
-    gap: clamp(1.2rem, 2.2vw, 1.8rem);
-    min-block-size: clamp(24.25rem, 30vw, 27.5rem);
-    padding: clamp(1rem, 1.7vw, 1.3rem);
-    border-radius: clamp(1.35rem, 2vw, 1.75rem);
+    gap: clamp(1.1rem, 2vw, 1.65rem);
+    min-block-size: clamp(23.75rem, 29vw, 27.25rem);
+    padding: clamp(1rem, 1.65vw, 1.35rem);
+    border-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
     overflow: hidden;
     isolation: isolate;
+    outline: none;
     background:
-        radial-gradient(120% 140% at 0% 0%,
-            color-mix(in oklab, var(--program-accent), transparent 84%) 0%,
+        radial-gradient(110% 135% at 0% 0%,
+            rgb(var(--program-accent-rgb) / 0.065) 0%,
             transparent 48%),
-        radial-gradient(120% 140% at 100% 100%,
-            color-mix(in oklab, var(--program-gold), transparent 86%) 0%,
-            transparent 54%),
+        radial-gradient(110% 135% at 100% 100%,
+            rgb(var(--program-gold-rgb) / 0.095) 0%,
+            transparent 56%),
         linear-gradient(180deg,
             rgba(7, 13, 21, 0.965) 0%,
             rgba(4, 9, 17, 0.992) 100%);
-    border: 1px solid rgba(199, 134, 21, 0.18);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 22px 48px rgba(0, 0, 0, 0.36);
+    border: 1px solid rgb(var(--program-gold-rgb) / 0.18);
+    box-shadow: var(--sports-shadow-card,
+            inset 0 1px 0 rgba(255, 255, 255, 0.04),
+            0 22px 48px rgba(0, 0, 0, 0.36));
     transition:
-        transform 0.32s ease,
-        border-color 0.32s ease,
-        box-shadow 0.32s ease,
-        background 0.32s ease;
-    outline: none;
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease,
+        background 0.28s ease;
 }
 
 .card:hover,
 .card:focus-visible,
 .card:focus-within {
     transform: translateY(-2px);
-    border-color: rgba(214, 166, 64, 0.3);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 26px 52px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(46, 194, 126, 0.06);
+    border-color: rgb(var(--program-gold-rgb) / 0.3);
+    box-shadow: var(--sports-shadow-card-hover,
+            inset 0 1px 0 rgba(255, 255, 255, 0.05),
+            0 26px 54px rgba(0, 0, 0, 0.42),
+            0 0 0 1px rgb(var(--sports-green-rgb, 46 194 126) / 0.055));
 }
 
 .card::before {
     content: "";
     position: absolute;
     inset: 0 auto auto 0;
-    width: min(16rem, 52%);
-    height: 1px;
+    inline-size: min(17rem, 52%);
+    block-size: 1px;
     background: linear-gradient(90deg,
-            var(--program-gold) 0%,
-            var(--program-accent) 100%);
+            rgb(var(--program-gold-rgb) / 0.98) 0%,
+            rgb(var(--program-accent-rgb) / 0.42) 100%);
     pointer-events: none;
 }
 
 .card::after {
     content: "";
     position: absolute;
-    inset: auto -8% -26% auto;
-    inline-size: clamp(9rem, 18vw, 13rem);
-    block-size: clamp(9rem, 18vw, 13rem);
+    inset: auto -10% -30% auto;
+    inline-size: clamp(9rem, 17vw, 13rem);
+    block-size: clamp(9rem, 17vw, 13rem);
     border-radius: 999px;
     background: radial-gradient(circle,
-            color-mix(in oklab, var(--program-gold), transparent 84%) 0%,
+            rgb(var(--program-gold-rgb) / 0.12) 0%,
             transparent 72%);
-    filter: blur(28px);
-    opacity: 0.55;
+    filter: blur(30px);
+    opacity: 0.58;
     pointer-events: none;
-    transition: opacity 0.32s ease, transform 0.32s ease;
+    transition:
+        opacity 0.28s ease,
+        transform 0.28s ease;
 }
 
 .card:hover::after,
 .card:focus-visible::after,
 .card:focus-within::after {
-    opacity: 0.75;
+    opacity: 0.78;
     transform: scale(1.04);
 }
 
 .reveal {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(18px);
     filter: blur(3px);
     transition:
-        opacity 0.78s ease,
-        transform 0.78s ease,
-        filter 0.78s ease;
+        opacity 0.72s ease,
+        transform 0.72s ease,
+        filter 0.72s ease;
     transition-delay: var(--card-delay, 0ms);
 }
 
@@ -99,53 +101,54 @@
 .mediaPanelSlot {
     position: relative;
     z-index: 1;
-    min-width: 0;
+    min-inline-size: 0;
 }
 
 .content {
     display: grid;
     grid-template-rows: auto auto auto auto 1fr;
-    gap: clamp(0.82rem, 1.3vw, 1rem);
-    min-width: 0;
+    gap: clamp(0.8rem, 1.25vw, 1rem);
     align-content: start;
+    min-inline-size: 0;
 }
 
 .summary {
     margin: 0;
-    max-width: 44rem;
-    font-size: 0.97rem;
-    line-height: 1.72;
-    color: rgba(226, 232, 240, 0.88);
+    max-inline-size: 46rem;
+    font-size: clamp(0.91rem, 0.92vw, 0.98rem);
+    line-height: 1.68;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    text-wrap: pretty;
 }
 
 .themeEndurance {
-    --program-accent: rgba(46, 194, 126, 0.9);
-    --program-gold: rgba(199, 134, 21, 0.9);
+    --program-accent-rgb: var(--sports-green-rgb, 46 194 126);
+    --program-gold-rgb: var(--sports-gold-rgb, 214 166 64);
 }
 
 .themePrecision {
-    --program-accent: rgba(82, 181, 236, 0.82);
-    --program-gold: rgba(208, 155, 52, 0.88);
+    --program-accent-rgb: 68 178 150;
+    --program-gold-rgb: var(--sports-gold-rgb, 214 166 64);
 }
 
 .themeCollective {
-    --program-accent: rgba(42, 170, 105, 0.9);
-    --program-gold: rgba(210, 145, 33, 0.9);
+    --program-accent-rgb: 42 170 105;
+    --program-gold-rgb: var(--sports-gold-rgb, 214 166 64);
 }
 
 .themeIntensity {
-    --program-accent: rgba(56, 197, 137, 0.9);
-    --program-gold: rgba(222, 162, 52, 0.9);
+    --program-accent-rgb: 56 197 137;
+    --program-gold-rgb: var(--sports-gold-rgb, 214 166 64);
 }
 
 .themeDefault {
-    --program-accent: rgba(46, 194, 126, 0.82);
-    --program-gold: rgba(199, 134, 21, 0.88);
+    --program-accent-rgb: var(--sports-green-rgb, 46 194 126);
+    --program-gold-rgb: var(--sports-gold-rgb, 214 166 64);
 }
 
 @media (min-width: 980px) {
     .card {
-        grid-template-columns: minmax(0, 1.08fr) minmax(23rem, 0.92fr);
+        grid-template-columns: minmax(0, 1.08fr) minmax(22.5rem, 0.92fr);
         align-items: stretch;
     }
 
@@ -172,15 +175,15 @@
 
 @media (max-width: 1279.98px) {
     .card {
-        min-block-size: clamp(24.75rem, 35vw, 28rem);
+        min-block-size: clamp(23.75rem, 35vw, 27.75rem);
     }
 }
 
 @media (max-width: 979.98px) {
     .card {
         min-block-size: 0;
-        gap: 1rem;
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .content {
@@ -192,13 +195,14 @@
     }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 767.98px) {
     .card {
         padding: 1rem;
-        border-radius: 1.2rem;
+        border-radius: 1.15rem;
     }
 
     .summary {
         font-size: 0.9rem;
+        line-height: 1.62;
     }
 }

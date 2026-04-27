@@ -9,7 +9,7 @@ export const SPORTS_PAGE_PATHS = Object.freeze({
   specialisedServices: `${SPORTS_BASE_PATH}/specialised-services`,
   education: `${SPORTS_BASE_PATH}/education`,
   leisureSportsTourism: `${SPORTS_BASE_PATH}/leisure-sports-tourism`,
-  disciplines: `${SPORTS_BASE_PATH}/sports-disciplines`,
+  modalities: `${SPORTS_BASE_PATH}/modalities`,
   infrastructures: `${SPORTS_BASE_PATH}/infrastructures`,
   logistics: `${SPORTS_BASE_PATH}/logistics`,
   consultancy: `${SPORTS_BASE_PATH}/consultancy`,

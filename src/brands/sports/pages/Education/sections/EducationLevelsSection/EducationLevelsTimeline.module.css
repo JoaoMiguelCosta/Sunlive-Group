@@ -9,11 +9,11 @@
     gap: 0.5rem;
     inline-size: fit-content;
     margin: 0;
-    color: rgba(246, 248, 252, 0.94);
-    font-size: 0.76rem;
+    color: var(--sports-gold, #d6a640);
+    font-size: var(--sports-kicker-size, 0.76rem);
     font-weight: 800;
     line-height: 1.22;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
 }
 
@@ -23,12 +23,13 @@
     block-size: 0.36rem;
     border-radius: 999px;
     background:
-        linear-gradient(135deg,
-            rgba(46, 194, 126, 0.94) 0%,
-            rgba(199, 134, 21, 0.92) 100%);
+        radial-gradient(circle at 35% 35%,
+            rgba(255, 246, 214, 0.98) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.94) 46%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.82) 100%);
     box-shadow:
-        0 0 0 0.16rem rgba(46, 194, 126, 0.08),
-        0 0 0.58rem rgba(46, 194, 126, 0.08);
+        0 0 0 0.16rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.08),
+        0 0 0.58rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.14);
 }
 
 .timeline {

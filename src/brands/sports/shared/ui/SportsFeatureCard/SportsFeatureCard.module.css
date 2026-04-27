@@ -1,0 +1,113 @@
+.card {
+    --card-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
+    --card-border: var(--sports-border, rgb(199 134 21 / 0.16));
+    --card-border-strong: var(--sports-border-strong, rgb(214 166 64 / 0.28));
+    --card-accent-rgb: var(--sports-green-rgb, 46 194 126);
+    --card-gold-rgb: var(--sports-gold-rgb, 214 166 64);
+
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-block-size: 100%;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    background:
+        radial-gradient(120% 150% at 0% 0%,
+            rgb(var(--card-accent-rgb) / 0.045) 0%,
+            transparent 46%),
+        radial-gradient(125% 145% at 100% 100%,
+            rgb(var(--card-gold-rgb) / 0.105) 0%,
+            transparent 50%),
+        var(--sports-surface-dark,
+            linear-gradient(180deg,
+                rgba(7, 13, 21, 0.965) 0%,
+                rgba(4, 9, 17, 0.992) 100%));
+    box-shadow: var(--sports-shadow-card,
+            inset 0 1px 0 rgba(255, 255, 255, 0.04),
+            0 22px 48px rgba(0, 0, 0, 0.36));
+    transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease,
+        background 0.28s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background:
+        linear-gradient(135deg,
+            rgb(var(--card-gold-rgb) / 0.34) 0%,
+            rgb(var(--card-gold-rgb) / 0.07) 28%,
+            rgb(var(--card-accent-rgb) / 0.035) 70%,
+            rgb(var(--card-gold-rgb) / 0.16) 100%);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.92;
+    z-index: 0;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: var(--card-border-strong);
+    box-shadow: var(--sports-shadow-card-hover,
+            inset 0 1px 0 rgba(255, 255, 255, 0.05),
+            0 26px 54px rgba(0, 0, 0, 0.42),
+            0 0 0 1px rgb(var(--sports-green-rgb, 46 194 126) / 0.055));
+}
+
+.card:focus-within {
+    transform: translateY(-2px);
+    border-color: rgb(var(--card-gold-rgb) / 0.42);
+    box-shadow:
+        0 0 0 1px rgb(var(--card-gold-rgb) / 0.32),
+        0 0 0 7px rgb(var(--card-gold-rgb) / 0.08),
+        0 22px 48px rgba(0, 0, 0, 0.34);
+}
+
+.glow {
+    position: absolute;
+    inset: auto auto -24% -12%;
+    inline-size: clamp(9rem, 18vw, 13rem);
+    block-size: clamp(9rem, 18vw, 13rem);
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgb(var(--card-gold-rgb) / 0.11) 0%,
+            transparent 72%);
+    filter: blur(26px);
+    opacity: 0.66;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.noise {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.018) 0%,
+            rgba(255, 255, 255, 0.004) 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.themeAcademy {
+    --card-accent-rgb: var(--sports-green-rgb, 46 194 126);
+    --card-gold-rgb: var(--sports-gold-rgb, 214 166 64);
+}
+
+@media (max-width: 640px) {
+    .card {
+        --card-radius: 1.16rem;
+    }
+}

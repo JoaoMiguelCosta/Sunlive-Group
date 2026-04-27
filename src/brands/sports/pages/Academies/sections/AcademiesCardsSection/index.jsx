@@ -1,16 +1,31 @@
+import sportsBrand from "../../../../config/index.js";
+
+import SportsFeatureCard from "../../../../shared/ui/SportsFeatureCard/index.jsx";
+import { mapAcademiesToFeatureCards } from "../../../../shared/utils/mapAcademyToFeatureCard.js";
+
 import styles from "./AcademiesCardsSection.module.css";
-import AcademiesCardsGrid from "./AcademiesCardsGrid.jsx";
+
+function getCards(data) {
+  if (Array.isArray(data?.cards)) return data.cards;
+  if (Array.isArray(data)) return data;
+
+  return [];
+}
 
 export default function AcademiesCardsSection({ data }) {
-  const cards = Array.isArray(data?.cards)
-    ? data.cards
-    : Array.isArray(data)
-      ? data
-      : [];
+  const cards = getCards(data);
 
   if (!cards.length) return null;
 
   const sectionId = data?.id ? `${data.id}-cards` : "academies-cards";
+
+  const items = mapAcademiesToFeatureCards(cards, {
+    cardAriaLabelPrefix: data?.cardAriaLabelPrefix,
+    ui: data?.ui,
+    books: sportsBrand.books,
+  });
+
+  if (!items.length) return null;
 
   return (
     <section
@@ -19,10 +34,28 @@ export default function AcademiesCardsSection({ data }) {
       className={styles.cardsSection}
     >
       <div className={styles.cardsInner}>
-        <AcademiesCardsGrid
-          cards={cards}
-          cardAriaLabelPrefix={data?.cardAriaLabelPrefix}
-        />
+        <div className={styles.cardsGrid}>
+          {items.map((item) => (
+            <SportsFeatureCard
+              key={item.id}
+              id={item.id}
+              ariaLabel={item.ariaLabel}
+              eyebrow={item.eyebrow}
+              title={item.title}
+              visualTheme={item.visualTheme}
+              logo={item.logo}
+              summary={item.summary}
+              description={item.description}
+              descriptionAccent={item.descriptionAccent}
+              meta={item.meta}
+              highlights={item.highlights}
+              highlightsAriaLabel={item.highlightsAriaLabel}
+              note={item.note}
+              actions={item.actions}
+              socials={item.socials}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

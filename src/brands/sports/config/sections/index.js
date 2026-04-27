@@ -2,7 +2,7 @@ export * as academies from "./academies/index.js";
 export * as athletes from "./athletes/index.js";
 export * as consultancy from "./consultancy/index.js";
 export * as contacts from "./contacts/index.js";
-export * as disciplines from "./disciplines/index.js";
+export * as modalities from "./modalities/index.js";
 export * as education from "./education/index.js";
 export * as events from "./events/index.js";
 export * as home from "./home/index.js";

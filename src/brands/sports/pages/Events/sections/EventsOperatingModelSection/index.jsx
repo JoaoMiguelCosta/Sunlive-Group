@@ -38,6 +38,11 @@ export default function EventsOperatingModelSection({ data }) {
       id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
+      aria-label={
+        !titleId
+          ? data.ariaLabel || "Modelo operacional dos eventos"
+          : undefined
+      }
     >
       <div className={styles.surface}>
         <div className={styles.ambientGlow} aria-hidden="true" />

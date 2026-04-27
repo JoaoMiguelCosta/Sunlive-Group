@@ -1,16 +1,10 @@
-import {
-  hero,
-  areasIntro,
-  serviceAreas,
-  cta,
-} from "../sections/specialisedServices/index.js";
+import { hero, areas, cta } from "../sections/specialisedServices/index.js";
 
 const specialisedServices = {
   id: "specialised-services",
   sections: {
     hero,
-    areasIntro,
-    serviceAreas,
+    areas,
     cta,
   },
 };

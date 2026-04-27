@@ -1,10 +1,9 @@
-import { hero, journeyBlock } from "../sections/contacts/index.js";
+import { contactsSection } from "../sections/contacts/index.js";
 
 const contacts = {
   id: "contacts",
   sections: {
-    hero,
-    journeyBlock,
+    contactsSection,
   },
 };
 

@@ -1,21 +1,25 @@
 .selector {
     display: grid;
+    align-content: start;
     gap: 0.78rem;
     min-inline-size: 0;
+    min-block-size: 100%;
+    block-size: 100%;
 }
 
 .selectorLabel {
     margin: 0;
-    color: rgba(246, 248, 252, 0.94);
-    font-size: 0.8rem;
+    color: var(--sports-gold, #d6a640);
+    font-size: var(--sports-kicker-size, 0.8rem);
     font-weight: 800;
     line-height: 1.28;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
 }
 
 .selectorList {
     display: grid;
+    align-content: start;
     gap: 0.66rem;
     min-inline-size: 0;
 }
@@ -26,15 +30,18 @@
     display: block;
     inline-size: 100%;
     padding: 0;
-    border: 1px solid var(--careers-border-soft);
-    border-radius: var(--careers-radius-lg);
+    border: 1px solid var(--careers-border-soft, rgba(255, 255, 255, 0.065));
+    border-radius: var(--careers-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
     background:
+        radial-gradient(120% 145% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.035) 0%,
+            transparent 46%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.03) 0%,
             rgba(255, 255, 255, 0.012) 100%),
         linear-gradient(145deg,
-            rgba(14, 20, 26, 0.96) 0%,
-            rgba(9, 14, 18, 0.97) 100%);
+            rgba(7, 13, 21, 0.965) 0%,
+            rgba(4, 9, 17, 0.992) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.035),
         0 10px 22px rgba(0, 0, 0, 0.18);
@@ -53,13 +60,24 @@
 .selectorButton::before {
     content: "";
     position: absolute;
-    inset: 0 0 auto 0;
-    block-size: 1px;
+    inset: 0;
+    border-radius: inherit;
     background:
         linear-gradient(90deg,
-            rgba(46, 194, 126, 0.14) 0%,
-            rgba(199, 134, 21, 0.22) 100%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.32) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.07) 100%);
     opacity: 0.82;
+    pointer-events: none;
+    mask-image:
+        linear-gradient(to bottom,
+            #000 0,
+            #000 1px,
+            transparent 1px);
+    -webkit-mask-image:
+        linear-gradient(to bottom,
+            #000 0,
+            #000 1px,
+            transparent 1px);
 }
 
 .selectorButton::after {
@@ -68,11 +86,11 @@
     inset: 0;
     background:
         radial-gradient(120% 145% at 100% 0%,
-            rgba(199, 134, 21, 0.09) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.09) 0%,
             transparent 46%),
         radial-gradient(110% 140% at 0% 100%,
-            rgba(46, 194, 126, 0.05) 0%,
-            transparent 42%);
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.028) 0%,
+            transparent 44%);
     opacity: 0;
     transition: opacity 180ms ease;
     pointer-events: none;
@@ -85,9 +103,9 @@
     border-radius: 999px;
     background:
         linear-gradient(180deg,
-            rgba(46, 194, 126, 0.12) 0%,
-            rgba(199, 134, 21, 0.3) 55%,
-            rgba(46, 194, 126, 0.12) 100%);
+            transparent 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.88) 52%,
+            transparent 100%);
     opacity: 0;
     transform: scaleY(0.7);
     transform-origin: center;
@@ -114,17 +132,17 @@
 }
 
 .selectorTitle {
-    color: var(--careers-text-strong);
-    font-size: 1rem;
-    font-weight: 760;
-    line-height: 1.28;
-    letter-spacing: -0.012em;
+    color: var(--careers-text-strong, var(--sports-text, rgba(246, 248, 252, 0.96)));
+    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    font-weight: 850;
+    line-height: var(--sports-card-title-line, 1.08);
+    letter-spacing: var(--sports-card-title-spacing, -0.035em);
     text-wrap: pretty;
 }
 
 .selectorMeta {
-    color: var(--careers-text-muted);
-    font-size: 0.82rem;
+    color: var(--careers-text-muted, var(--sports-muted, rgba(186, 196, 210, 0.72)));
+    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
     font-weight: 650;
     line-height: 1.32;
     transition: color 180ms ease;
@@ -138,11 +156,11 @@
     block-size: 2.08rem;
     flex-shrink: 0;
     border-radius: 999px;
-    border: 1px solid rgba(199, 134, 21, 0.16);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
     background:
         linear-gradient(180deg,
-            rgba(199, 134, 21, 0.08) 0%,
-            rgba(199, 134, 21, 0.03) 100%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.09) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.035) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
         0 6px 14px rgba(0, 0, 0, 0.12);
@@ -154,7 +172,7 @@
 }
 
 .selectorArrow {
-    color: rgba(214, 157, 35, 0.96);
+    color: var(--sports-gold, #d6a640);
     font-size: 0.96rem;
     font-weight: 800;
     line-height: 1;
@@ -167,7 +185,7 @@
 @media (hover: hover) and (pointer: fine) {
     .selectorButton:hover {
         transform: translateY(-2px);
-        border-color: rgba(199, 134, 21, 0.18);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.22);
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.04),
             0 14px 28px rgba(0, 0, 0, 0.22);
@@ -185,7 +203,7 @@
 
     .selectorButton:hover .selectorArrowWrap {
         transform: translateX(1px);
-        border-color: rgba(199, 134, 21, 0.24);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.04),
             0 8px 18px rgba(0, 0, 0, 0.16);
@@ -197,35 +215,36 @@
 }
 
 .selectorButton:focus-visible {
-    outline: 2px solid rgba(199, 134, 21, 0.68);
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.68);
     outline-offset: 3px;
 }
 
 .selectorButtonActive {
-    border-color: rgba(199, 134, 21, 0.24);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
     background:
         radial-gradient(120% 150% at 100% 0%,
-            rgba(199, 134, 21, 0.15) 0%,
-            transparent 42%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            transparent 44%),
         radial-gradient(115% 145% at 0% 100%,
-            rgba(46, 194, 126, 0.06) 0%,
-            transparent 42%),
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.03) 0%,
+            transparent 46%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.042) 0%,
+            rgba(255, 255, 255, 0.044) 0%,
             rgba(255, 255, 255, 0.016) 100%),
         linear-gradient(145deg,
             rgba(22, 19, 12, 0.97) 0%,
-            rgba(11, 16, 22, 0.97) 100%);
+            rgba(7, 13, 21, 0.97) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 16px 30px rgba(0, 0, 0, 0.22);
+        0 16px 30px rgba(0, 0, 0, 0.22),
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
 }
 
 .selectorButtonActive::before {
     background:
         linear-gradient(90deg,
-            rgba(199, 134, 21, 0.34) 0%,
-            rgba(46, 194, 126, 0.2) 100%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.42) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.07) 100%);
 }
 
 .selectorButtonActive::after {
@@ -243,11 +262,11 @@
 
 .selectorButtonActive .selectorArrowWrap {
     transform: translateX(1px);
-    border-color: rgba(199, 134, 21, 0.26);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.32);
     background:
         linear-gradient(180deg,
-            rgba(199, 134, 21, 0.14) 0%,
-            rgba(199, 134, 21, 0.05) 100%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.15) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
         0 8px 18px rgba(0, 0, 0, 0.16);
@@ -278,6 +297,11 @@
 }
 
 @media (max-width: 1180px) {
+    .selector {
+        min-block-size: 0;
+        block-size: auto;
+    }
+
     .selectorList {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }

@@ -21,13 +21,14 @@ export default function LeisureBenefitsSection({ data }) {
   if (!data.intro && items.length === 0) return null;
 
   const titleId = data.intro?.title ? `${data.id}-title` : undefined;
+  const ariaLabel = titleId ? undefined : data.ui?.ariaLabel;
 
   return (
     <section
       id={data.id}
       className={styles.section}
       aria-labelledby={titleId}
-      aria-label={data.ui?.ariaLabel}
+      aria-label={ariaLabel}
     >
       <div className={styles.surface}>
         <LeisureBenefitsIntro

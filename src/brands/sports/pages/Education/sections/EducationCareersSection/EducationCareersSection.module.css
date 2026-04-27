@@ -5,30 +5,33 @@
 }
 
 .surface {
-    --careers-radius-xl: clamp(1.38rem, 1.9vw, 1.92rem);
-    --careers-radius-lg: clamp(1.08rem, 1.34vw, 1.3rem);
-    --careers-radius-md: clamp(0.94rem, 1.08vw, 1.08rem);
+    --careers-radius-xl: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
+    --careers-radius-lg: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
+    --careers-radius-md: var(--sports-radius-md, 1rem);
 
-    --careers-border-soft: rgba(255, 255, 255, 0.06);
-    --careers-border-medium: rgba(255, 255, 255, 0.1);
-    --careers-border-strong: rgba(255, 255, 255, 0.14);
+    --careers-border-soft: var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    --careers-border-medium: var(--sports-border, rgb(199 134 21 / 0.16));
+    --careers-border-strong: var(--sports-border-strong, rgb(214 166 64 / 0.28));
 
-    --careers-gold-soft: rgba(199, 134, 21, 0.18);
-    --careers-gold-medium: rgba(199, 134, 21, 0.28);
-    --careers-gold-strong: rgba(199, 134, 21, 0.42);
+    --careers-gold-soft: rgb(var(--sports-gold-rgb, 214 166 64) / 0.14);
+    --careers-gold-medium: rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+    --careers-gold-strong: rgb(var(--sports-gold-rgb, 214 166 64) / 0.38);
 
-    --careers-green-soft: rgba(46, 194, 126, 0.18);
-    --careers-green-medium: rgba(46, 194, 126, 0.28);
+    --careers-green-soft: rgb(var(--sports-green-rgb, 46 194 126) / 0.045);
+    --careers-green-medium: rgb(var(--sports-green-rgb, 46 194 126) / 0.07);
 
-    --careers-shadow-soft: 0 16px 36px rgba(0, 0, 0, 0.24);
-    --careers-shadow-medium: 0 20px 44px rgba(0, 0, 0, 0.32);
+    --careers-shadow-soft:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 16px 36px rgba(0, 0, 0, 0.22);
+    --careers-shadow-medium: var(--sports-shadow-card,
+            inset 0 1px 0 rgba(255, 255, 255, 0.04),
+            0 22px 48px rgba(0, 0, 0, 0.36));
 
-    --careers-text-strong: rgba(248, 250, 252, 0.985);
-    --careers-text-primary: rgba(230, 236, 243, 0.92);
-    --careers-text-secondary: rgba(214, 223, 231, 0.8);
-    --careers-text-muted: rgba(194, 203, 212, 0.7);
-    --careers-text-gold: rgba(252, 233, 194, 0.94);
-    --careers-text-green: rgba(221, 255, 238, 0.92);
+    --careers-text-strong: var(--sports-text, rgba(246, 248, 252, 0.96));
+    --careers-text-primary: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    --careers-text-secondary: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+    --careers-text-muted: var(--sports-muted, rgba(186, 196, 210, 0.72));
+    --careers-text-gold: rgba(255, 236, 198, 0.94);
 
     position: relative;
     display: grid;
@@ -39,28 +42,22 @@
     padding:
         clamp(1rem, 1.45vw, 1.22rem) clamp(0.94rem, 1.55vw, 1.28rem) clamp(1.06rem, 1.58vw, 1.3rem);
     border-radius: var(--careers-radius-xl);
-    border: 1px solid var(--careers-border-soft);
+    border: 1px solid var(--careers-border-medium);
     background:
         radial-gradient(135% 165% at 0% 100%,
-            rgba(46, 194, 126, 0.1) 0%,
-            transparent 40%),
+            var(--careers-green-soft) 0%,
+            transparent 42%),
         radial-gradient(120% 145% at 100% 0%,
-            rgba(199, 134, 21, 0.12) 0%,
-            transparent 40%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.11) 0%,
+            transparent 42%),
         radial-gradient(110% 140% at 50% 0%,
-            rgba(7, 47, 33, 0.1) 0%,
-            transparent 46%),
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.03) 0%,
-            rgba(255, 255, 255, 0.012) 100%),
-        linear-gradient(145deg,
-            rgba(7, 14, 18, 0.98) 0%,
-            rgba(9, 15, 21, 0.975) 52%,
-            rgba(6, 11, 16, 0.99) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.022),
-        var(--careers-shadow-medium);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.035) 0%,
+            transparent 48%),
+        var(--sports-surface-dark,
+            linear-gradient(180deg,
+                rgba(7, 13, 21, 0.965) 0%,
+                rgba(4, 9, 17, 0.992) 100%));
+    box-shadow: var(--careers-shadow-medium);
     overflow: hidden;
     isolation: isolate;
     backdrop-filter: blur(14px);
@@ -69,14 +66,27 @@
 .surface::before {
     content: "";
     position: absolute;
-    inset: 0 0 auto 0;
-    block-size: 1px;
+    inset: 0;
+    border-radius: inherit;
     background:
         linear-gradient(90deg,
-            rgba(46, 194, 126, 0.26) 0%,
-            rgba(199, 134, 21, 0.36) 56%,
-            rgba(46, 194, 126, 0.18) 100%);
+            transparent 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.42) 24%,
+            rgba(255, 255, 255, 0.07) 50%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.3) 76%,
+            transparent 100%);
     opacity: 0.94;
+    pointer-events: none;
+    mask-image:
+        linear-gradient(to bottom,
+            #000 0,
+            #000 1px,
+            transparent 1px);
+    -webkit-mask-image:
+        linear-gradient(to bottom,
+            #000 0,
+            #000 1px,
+            transparent 1px);
 }
 
 .surface::after {
@@ -88,11 +98,11 @@
     border-radius: 999px;
     background:
         radial-gradient(circle,
-            rgba(199, 134, 21, 0.14) 0%,
-            rgba(199, 134, 21, 0.04) 42%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.13) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.03) 42%,
             transparent 72%);
-    filter: blur(12px);
-    opacity: 0.84;
+    filter: blur(14px);
+    opacity: 0.8;
     pointer-events: none;
 }
 
@@ -105,8 +115,14 @@
     display: grid;
     grid-template-columns: minmax(17rem, 19rem) minmax(0, 1fr);
     gap: clamp(0.88rem, 1.15vw, 1.08rem);
-    align-items: start;
+    align-items: stretch;
     min-inline-size: 0;
+}
+
+.layout>* {
+    min-inline-size: 0;
+    min-block-size: 0;
+    align-self: stretch;
 }
 
 @media (min-width: 1181px) and (max-width: 1320px) {

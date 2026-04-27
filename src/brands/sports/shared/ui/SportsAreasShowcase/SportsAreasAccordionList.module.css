@@ -1,0 +1,395 @@
+.accordion {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    padding:
+        clamp(0.96rem, 2vw, 1.08rem) clamp(0.92rem, 2vw, 1.02rem) clamp(1rem, 2.1vw, 1.12rem);
+    border-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    background:
+        radial-gradient(142% 168% at 0% 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.042) 0%,
+            transparent 42%),
+        radial-gradient(120% 150% at 100% 100%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.085) 0%,
+            transparent 48%),
+        var(--sports-surface-dark,
+            linear-gradient(180deg,
+                rgba(7, 13, 21, 0.965) 0%,
+                rgba(4, 9, 17, 0.992) 100%));
+    backdrop-filter: blur(12px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 16px 34px rgba(0, 0, 0, 0.18);
+}
+
+.accordion::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.34) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.08) 100%);
+    opacity: 0.86;
+}
+
+.accordion::after {
+    content: "";
+    position: absolute;
+    inset: auto -18% -22% auto;
+    inline-size: clamp(9rem, 22vw, 14rem);
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.095) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.025) 42%,
+            transparent 72%);
+    opacity: 0.7;
+    filter: blur(16px);
+    pointer-events: none;
+}
+
+.header {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.32rem;
+}
+
+.kicker {
+    margin: 0;
+    font-size: var(--sports-kicker-size, 0.72rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sports-gold, #d6a640);
+}
+
+.title {
+    margin: 0;
+    font-size: var(--sports-support-title-size, clamp(1.03rem, 1.22vw, 1.22rem));
+    line-height: var(--sports-support-title-line, 1.15);
+    font-weight: 850;
+    letter-spacing: var(--sports-support-title-spacing, -0.02em);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+}
+
+.list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.76rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.item {
+    display: grid;
+    gap: 0.66rem;
+}
+
+.trigger {
+    position: relative;
+    overflow: hidden;
+    inline-size: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.78rem;
+    align-items: center;
+    padding: 0.86rem 0.88rem;
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border-radius: var(--sports-radius-md, 1rem);
+    background:
+        radial-gradient(110% 135% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.025) 0%,
+            transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.016) 0%,
+            rgba(255, 255, 255, 0.006) 100%),
+        linear-gradient(145deg,
+            rgba(7, 13, 21, 0.86) 0%,
+            rgba(4, 9, 17, 0.92) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.016),
+        0 7px 16px rgba(0, 0, 0, 0.11);
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition:
+        border-color 0.17s ease,
+        box-shadow 0.17s ease,
+        background 0.17s ease,
+        transform 0.17s ease;
+}
+
+.trigger::before {
+    content: "";
+    position: absolute;
+    inset: 14% auto 14% 0;
+    inline-size: 3px;
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg,
+            transparent 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.9) 50%,
+            transparent 100%);
+    opacity: 0;
+    transform: scaleY(0.45);
+    transition:
+        opacity 0.17s ease,
+        transform 0.17s ease;
+}
+
+.trigger::after {
+    content: "";
+    position: absolute;
+    inset: auto auto -42% -8%;
+    inline-size: 8rem;
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.04) 42%,
+            transparent 74%);
+    opacity: 0;
+    filter: blur(14px);
+    pointer-events: none;
+    transition:
+        opacity 0.17s ease,
+        transform 0.17s ease;
+}
+
+.trigger:hover {
+    transform: translateY(-1px);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
+    background:
+        radial-gradient(110% 135% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
+            transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.024) 0%,
+            rgba(255, 255, 255, 0.01) 100%),
+        linear-gradient(145deg,
+            rgba(10, 15, 22, 0.9) 0%,
+            rgba(5, 10, 17, 0.94) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.022),
+        0 10px 22px rgba(0, 0, 0, 0.16);
+}
+
+.trigger:hover::before {
+    opacity: 0.58;
+    transform: scaleY(0.78);
+}
+
+.trigger:hover::after {
+    opacity: 0.7;
+    transform: scale(1.03);
+}
+
+.trigger[data-active="true"] {
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
+    background:
+        radial-gradient(120% 150% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 0%,
+            transparent 46%),
+        radial-gradient(120% 150% at 100% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.025) 0%,
+            transparent 52%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.01) 100%),
+        linear-gradient(140deg,
+            rgba(18, 16, 20, 0.82) 0%,
+            rgba(5, 10, 17, 0.96) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.08),
+        0 12px 26px rgba(0, 0, 0, 0.16),
+        0 0 18px rgb(var(--sports-gold-rgb, 214 166 64) / 0.06);
+}
+
+.trigger[data-active="true"]::before {
+    opacity: 0.94;
+    transform: scaleY(1);
+}
+
+.trigger[data-active="true"]::after {
+    opacity: 0.86;
+    transform: scale(1.05);
+}
+
+.trigger:focus-visible {
+    outline: none;
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
+    box-shadow:
+        0 0 0 3px rgb(var(--sports-gold-rgb, 214 166 64) / 0.13),
+        0 0 0 6px rgb(var(--sports-gold-rgb, 214 166 64) / 0.065);
+}
+
+.triggerInner {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.74rem;
+    align-items: center;
+    min-inline-size: 0;
+}
+
+.iconWrap {
+    position: relative;
+    display: grid;
+    place-items: center;
+    inline-size: 2.32rem;
+    block-size: 2.32rem;
+    border-radius: 999px;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
+    background:
+        radial-gradient(120% 120% at 30% 25%,
+            rgba(255, 255, 255, 0.055) 0%,
+            rgba(255, 255, 255, 0.012) 56%),
+        linear-gradient(145deg,
+            rgba(26, 20, 10, 0.58) 0%,
+            rgba(10, 14, 20, 0.74) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.024),
+        0 8px 18px rgba(0, 0, 0, 0.14);
+    transition:
+        transform 0.17s ease,
+        border-color 0.17s ease,
+        box-shadow 0.17s ease,
+        background 0.17s ease;
+}
+
+.trigger:hover .iconWrap {
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 10px 22px rgba(0, 0, 0, 0.16),
+        0 0 14px rgb(var(--sports-gold-rgb, 214 166 64) / 0.055);
+}
+
+.trigger[data-active="true"] .iconWrap {
+    transform: translateY(-1px);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.34);
+    background:
+        radial-gradient(120% 120% at 30% 25%,
+            rgba(255, 255, 255, 0.07) 0%,
+            rgba(255, 255, 255, 0.016) 56%),
+        linear-gradient(145deg,
+            rgba(42, 28, 10, 0.76) 0%,
+            rgba(12, 16, 22, 0.82) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.038),
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.1),
+        0 12px 24px rgba(0, 0, 0, 0.18),
+        0 0 16px rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
+}
+
+.textWrap {
+    display: grid;
+    gap: 0.2rem;
+    min-inline-size: 0;
+}
+
+.itemTitle {
+    font-size: 0.99rem;
+    line-height: 1.3;
+    font-weight: 800;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+}
+
+.itemEyebrow {
+    font-size: 0.77rem;
+    line-height: 1.36;
+    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
+}
+
+.chevron {
+    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
+    transition:
+        transform 0.17s ease,
+        color 0.17s ease;
+}
+
+.trigger:hover .chevron {
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+}
+
+.trigger[data-active="true"] .chevron {
+    transform: rotate(180deg);
+    color: var(--sports-gold, #d6a640);
+}
+
+.panelWrap {
+    padding-top: 0.2rem;
+    padding-left: 0.62rem;
+    margin-left: 0.08rem;
+    border-left: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
+}
+
+@media (max-width: 860px) {
+    .accordion {
+        gap: 0.9rem;
+        padding: 0.9rem 0.84rem 0.96rem;
+        border-radius: 1.2rem;
+    }
+
+    .trigger {
+        padding: 0.8rem 0.82rem;
+        border-radius: 0.98rem;
+    }
+
+    .iconWrap {
+        inline-size: 2.16rem;
+        block-size: 2.16rem;
+    }
+
+    .itemTitle {
+        font-size: 0.95rem;
+    }
+
+    .itemEyebrow {
+        font-size: 0.74rem;
+    }
+
+    .panelWrap {
+        padding-left: 0.38rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .triggerInner {
+        gap: 0.64rem;
+    }
+
+    .panelWrap {
+        padding-left: 0.26rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .accordion,
+    .accordion::before,
+    .accordion::after,
+    .trigger,
+    .trigger::before,
+    .trigger::after,
+    .iconWrap,
+    .chevron {
+        transition: none;
+    }
+
+    .trigger:hover,
+    .trigger[data-active="true"] .iconWrap {
+        transform: none;
+    }
+}

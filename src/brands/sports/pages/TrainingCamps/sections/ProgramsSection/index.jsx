@@ -12,11 +12,16 @@ export default function ProgramsSection({ data }) {
   const otherSports = data.otherSports ?? null;
 
   const titleId = intro?.title ? "training-camps-programs-title" : undefined;
+  const sectionAriaLabel = data.ui?.ariaLabel;
 
   if (!items.length) return null;
 
   return (
-    <section className={styles.section} aria-labelledby={titleId}>
+    <section
+      className={styles.section}
+      aria-labelledby={titleId}
+      aria-label={!titleId ? sectionAriaLabel : undefined}
+    >
       <div className={styles.inner}>
         <ProgramsSectionHeader intro={intro} titleId={titleId} />
         <ProgramsCardsGrid items={items} />

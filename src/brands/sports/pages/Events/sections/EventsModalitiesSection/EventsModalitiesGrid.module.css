@@ -3,15 +3,18 @@
     z-index: 1;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.72rem, 0.9vw, 0.88rem);
     align-items: stretch;
+    gap: clamp(0.72rem, 0.9vw, 0.88rem);
+}
+
+.grid>* {
+    min-inline-size: 0;
 }
 
 @media (min-width: 921px) and (max-width: 1180px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.82rem;
-        align-items: stretch;
     }
 }
 
@@ -19,7 +22,6 @@
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.78rem;
-        align-items: stretch;
     }
 }
 

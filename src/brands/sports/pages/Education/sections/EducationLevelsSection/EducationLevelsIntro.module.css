@@ -11,16 +11,16 @@
     min-block-size: 1.84rem;
     padding: 0.36rem 0.72rem;
     border-radius: 999px;
-    border: 1px solid rgba(46, 194, 126, 0.2);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
     background:
         linear-gradient(180deg,
-            rgba(46, 194, 126, 0.14) 0%,
-            rgba(46, 194, 126, 0.055) 100%);
-    color: rgba(231, 255, 240, 0.92);
-    font-size: 0.71rem;
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 100%);
+    color: rgba(255, 236, 198, 0.94);
+    font-size: var(--sports-kicker-size, 0.71rem);
     font-weight: 800;
     line-height: 1;
-    letter-spacing: 0.12em;
+    letter-spacing: var(--sports-kicker-spacing, 0.22em);
     text-transform: uppercase;
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.06),
@@ -31,10 +31,11 @@
 .title {
     margin: 0;
     max-inline-size: 18ch;
-    color: rgba(248, 250, 252, 0.99);
-    font-size: clamp(1.42rem, 2.1vw, 2rem);
-    line-height: 1.02;
-    letter-spacing: -0.04em;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    font-size: var(--sports-panel-title-size, clamp(1.65rem, 2.45vw, 2.65rem));
+    font-weight: 850;
+    line-height: var(--sports-panel-title-line, 0.98);
+    letter-spacing: var(--sports-panel-title-spacing, -0.058em);
     text-wrap: balance;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.02);
 }
@@ -42,9 +43,9 @@
 .lead {
     margin: 0;
     max-inline-size: 66rem;
-    color: rgba(218, 226, 233, 0.82);
-    font-size: clamp(0.9rem, 0.95vw, 0.98rem);
-    line-height: 1.5;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    font-size: var(--sports-lead-size, clamp(0.98rem, 1.08vw, 1.08rem));
+    line-height: var(--sports-lead-line, 1.66);
     text-wrap: pretty;
 }
 
@@ -87,6 +88,7 @@
         min-block-size: 1.76rem;
         padding: 0.34rem 0.62rem;
         font-size: 0.68rem;
+        letter-spacing: 0.16em;
     }
 
     .title {

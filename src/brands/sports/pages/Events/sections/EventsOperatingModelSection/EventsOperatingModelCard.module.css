@@ -7,32 +7,76 @@
     min-inline-size: 0;
     padding:
         clamp(0.84rem, 1.18vw, 0.94rem) clamp(0.82rem, 1.18vw, 0.92rem);
-    border-radius: clamp(0.95rem, 1.3vw, 1.08rem);
-    border: 1px solid rgba(255, 255, 255, 0.075);
+    overflow: hidden;
+    border-radius: var(--sports-radius-md, 1rem);
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
     background:
+        radial-gradient(110% 140% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
+            transparent 48%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.04) 0%,
-            rgba(255, 255, 255, 0.014) 100%),
+            rgba(255, 255, 255, 0.038) 0%,
+            rgba(255, 255, 255, 0.012) 100%),
         linear-gradient(145deg,
-            rgba(7, 16, 21, 0.948) 0%,
-            rgba(4, 10, 14, 0.986) 100%);
+            rgba(7, 13, 21, 0.955) 0%,
+            rgba(4, 9, 17, 0.988) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
         0 12px 28px rgba(0, 0, 0, 0.16);
+    transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    inline-size: 100%;
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.34) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.1) 62%,
+            transparent 100%);
+    opacity: 0.68;
+    pointer-events: none;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.042),
+        0 16px 32px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.035);
+}
+
+.card:focus-within {
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
+    box-shadow:
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.22),
+        0 0 0 6px rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
+        0 14px 28px rgba(0, 0, 0, 0.18);
 }
 
 .cardPrimary {
-    border-color: rgba(199, 134, 21, 0.18);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
     background:
-        radial-gradient(120% 160% at 0% 0%,
-            rgba(46, 194, 126, 0.08) 0%,
-            transparent 44%),
+        radial-gradient(120% 150% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.075) 0%,
+            transparent 46%),
+        radial-gradient(120% 150% at 100% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.035) 0%,
+            transparent 52%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.048) 0%,
-            rgba(255, 255, 255, 0.016) 100%),
+            rgba(255, 255, 255, 0.046) 0%,
+            rgba(255, 255, 255, 0.014) 100%),
         linear-gradient(145deg,
-            rgba(8, 18, 23, 0.958) 0%,
-            rgba(4, 10, 14, 0.986) 100%);
+            rgba(8, 15, 23, 0.965) 0%,
+            rgba(4, 9, 17, 0.99) 100%);
 }
 
 .cardIndex {
@@ -42,19 +86,22 @@
     inline-size: 1.9rem;
     block-size: 1.9rem;
     border-radius: 999px;
-    border: 1px solid rgba(199, 134, 21, 0.18);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
     background:
+        radial-gradient(120% 120% at 30% 20%,
+            rgba(255, 255, 255, 0.12) 0%,
+            transparent 38%),
         linear-gradient(180deg,
-            rgba(199, 134, 21, 0.12) 0%,
-            rgba(46, 194, 126, 0.05) 100%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.06) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 8px 16px rgba(0, 0, 0, 0.16);
     font-size: 0.7rem;
     line-height: 1;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.12em;
-    color: rgba(199, 134, 21, 0.94);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 8px 16px rgba(0, 0, 0, 0.14);
+    color: var(--sports-gold, #d6a640);
 }
 
 .cardContent {
@@ -65,21 +112,27 @@
 
 .cardTitle {
     margin: 0;
-    font-size: 0.96rem;
-    line-height: 1.18;
-    letter-spacing: -0.022em;
-    color: rgba(255, 255, 255, 0.95);
+    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    line-height: var(--sports-card-title-line, 1.08);
+    letter-spacing: var(--sports-card-title-spacing, -0.035em);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
 }
 
 .cardDescription {
     margin: 0;
-    font-size: 0.89rem;
+    font-size: clamp(0.86rem, 0.86vw, 0.9rem);
     line-height: 1.54;
-    color: rgba(255, 255, 255, 0.68);
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
 }
 
 @media (max-width: 640px) {
     .card {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
     }
 }

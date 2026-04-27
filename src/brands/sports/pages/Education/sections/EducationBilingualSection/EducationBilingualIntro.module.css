@@ -18,13 +18,13 @@
     min-block-size: 1.72rem;
     padding: 0.32rem 0.6rem;
     border-radius: 999px;
-    border: 1px solid rgba(199, 134, 21, 0.2);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
     background:
         linear-gradient(180deg,
-            rgba(199, 134, 21, 0.14) 0%,
-            rgba(199, 134, 21, 0.06) 100%);
-    color: rgba(255, 236, 198, 0.92);
-    font-size: 0.66rem;
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 100%);
+    color: rgba(255, 236, 198, 0.94);
+    font-size: var(--sports-kicker-size, 0.66rem);
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.11em;
@@ -37,11 +37,11 @@
 
 .title {
     margin: 0;
-    color: rgba(248, 250, 252, 0.985);
-    font-size: clamp(1.28rem, 1.82vw, 1.88rem);
-    font-weight: 800;
-    line-height: 0.98;
-    letter-spacing: -0.04em;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    font-size: var(--sports-panel-title-size, clamp(1.65rem, 2.45vw, 2.65rem));
+    font-weight: 850;
+    line-height: var(--sports-panel-title-line, 0.98);
+    letter-spacing: var(--sports-panel-title-spacing, -0.058em);
     text-wrap: balance;
 }
 
@@ -49,9 +49,9 @@
     justify-self: center;
     max-inline-size: min(100%, 46rem);
     margin: 0;
-    color: rgba(216, 224, 232, 0.82);
-    font-size: clamp(0.82rem, 0.88vw, 0.92rem);
-    line-height: 1.36;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    font-size: var(--sports-lead-size, clamp(0.98rem, 1.08vw, 1.08rem));
+    line-height: var(--sports-lead-line, 1.66);
     text-wrap: balance;
 }
 

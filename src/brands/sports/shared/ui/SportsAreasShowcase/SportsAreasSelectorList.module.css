@@ -1,0 +1,388 @@
+.selector {
+    position: relative;
+    top: auto;
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: start;
+    gap: var(--areas-selector-gap, 1.08rem);
+    min-inline-size: 0;
+    min-block-size: 100%;
+    block-size: 100%;
+    padding:
+        var(--areas-selector-padding-block-start, clamp(1rem, 1.52vw, 1.16rem)) var(--areas-selector-padding-inline, clamp(0.98rem, 1.48vw, 1.1rem)) var(--areas-selector-padding-block-end, clamp(1.06rem, 1.56vw, 1.18rem));
+    border-radius: var(--areas-selector-radius, clamp(1.34rem, 1.9vw, 1.66rem));
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    background:
+        radial-gradient(132% 165% at 0% 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.045) 0%,
+            transparent 44%),
+        radial-gradient(120% 150% at 100% 100%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.09) 0%,
+            transparent 46%),
+        var(--sports-surface-dark,
+            linear-gradient(180deg,
+                rgba(7, 13, 21, 0.965) 0%,
+                rgba(4, 9, 17, 0.992) 100%));
+    backdrop-filter: blur(14px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 18px 38px rgba(0, 0, 0, 0.18);
+}
+
+.selector::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.36) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.08) 100%);
+    opacity: 0.86;
+}
+
+.selector::after {
+    content: "";
+    position: absolute;
+    inset: auto -18% -22% auto;
+    inline-size: clamp(10rem, 24vw, 16rem);
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.1) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.025) 42%,
+            transparent 72%);
+    opacity: 0.72;
+    filter: blur(16px);
+    pointer-events: none;
+}
+
+.selectorHeader {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: var(--areas-selector-header-gap, 0.34rem);
+    padding-bottom: 0.06rem;
+}
+
+.kicker {
+    margin: 0;
+    font-size: var(--sports-kicker-size, 0.72rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sports-gold, #d6a640);
+}
+
+.heading {
+    margin: 0;
+    font-size: var(--areas-selector-heading-size, clamp(1.06rem, 1.2vw, 1.2rem));
+    line-height: 1.2;
+    font-weight: 800;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+}
+
+.list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-auto-rows: min-content;
+    align-content: start;
+    gap: var(--areas-selector-list-gap, 0.72rem);
+    min-inline-size: 0;
+    min-block-size: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.item {
+    min-inline-size: 0;
+}
+
+.trigger {
+    position: relative;
+    overflow: hidden;
+    inline-size: 100%;
+    min-inline-size: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--areas-selector-trigger-gap, 0.8rem);
+    align-items: center;
+    padding:
+        var(--areas-selector-trigger-padding-block, 0.9rem) var(--areas-selector-trigger-padding-inline, 0.94rem);
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border-radius: var(--areas-selector-trigger-radius, 1.1rem);
+    background:
+        radial-gradient(110% 130% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.025) 0%,
+            transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.022) 0%,
+            rgba(255, 255, 255, 0.008) 100%),
+        linear-gradient(145deg,
+            rgba(8, 15, 22, 0.42) 0%,
+            rgba(5, 10, 17, 0.3) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.018),
+        0 8px 20px rgba(0, 0, 0, 0.12);
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease,
+        filter 0.18s ease;
+}
+
+.trigger::before {
+    content: "";
+    position: absolute;
+    inset: 12% auto 12% 0;
+    inline-size: 3px;
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg,
+            transparent 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.96) 50%,
+            rgba(255, 222, 138, 0.82) 72%,
+            transparent 100%);
+    opacity: 0;
+    transform: scaleY(0.42);
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
+}
+
+.trigger::after {
+    content: "";
+    position: absolute;
+    inset: auto auto -42% -8%;
+    inline-size: 9rem;
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.18) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.065) 42%,
+            transparent 74%);
+    opacity: 0;
+    filter: blur(16px);
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
+    pointer-events: none;
+}
+
+.trigger:hover {
+    transform: translateY(-1px);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+    background:
+        radial-gradient(110% 130% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.05) 0%,
+            transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.034) 0%,
+            rgba(255, 255, 255, 0.014) 100%),
+        linear-gradient(145deg,
+            rgba(22, 18, 10, 0.42) 0%,
+            rgba(15, 14, 18, 0.3) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.trigger:hover::before {
+    opacity: 0.58;
+    transform: scaleY(0.78);
+}
+
+.trigger:hover::after {
+    opacity: 0.72;
+    transform: scale(1.03);
+}
+
+.trigger[data-active="true"] {
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.36);
+    background:
+        radial-gradient(120% 150% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.09) 0%,
+            transparent 48%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.016) 100%),
+        linear-gradient(140deg,
+            rgba(36, 24, 9, 0.72) 0%,
+            rgba(18, 16, 20, 0.42) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.038),
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.12),
+        0 16px 34px rgba(0, 0, 0, 0.2),
+        0 0 22px rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
+}
+
+.trigger[data-active="true"]::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.trigger[data-active="true"]::after {
+    opacity: 0.96;
+    transform: scale(1.05);
+}
+
+.trigger[data-active="true"]:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 222, 138, 0.42);
+}
+
+.trigger:focus-visible {
+    outline: none;
+    border-color: rgba(255, 216, 122, 0.36);
+    box-shadow:
+        0 0 0 3px rgb(var(--sports-gold-rgb, 214 166 64) / 0.16),
+        0 0 0 6px rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
+}
+
+.triggerInner {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--areas-selector-trigger-inner-gap, 0.8rem);
+    align-items: center;
+    min-inline-size: 0;
+}
+
+.iconWrap {
+    position: relative;
+    display: grid;
+    place-items: center;
+    inline-size: var(--areas-selector-icon-size, 2.46rem);
+    block-size: var(--areas-selector-icon-size, 2.46rem);
+    flex: 0 0 auto;
+    border-radius: 999px;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.22);
+    background:
+        radial-gradient(120% 120% at 30% 25%,
+            rgba(255, 255, 255, 0.055) 0%,
+            rgba(255, 255, 255, 0.012) 56%),
+        linear-gradient(145deg,
+            rgba(26, 20, 10, 0.62) 0%,
+            rgba(14, 16, 22, 0.44) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        0 8px 18px rgba(0, 0, 0, 0.14);
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+}
+
+.trigger:hover .iconWrap {
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.32);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.032),
+        0 10px 22px rgba(0, 0, 0, 0.16),
+        0 0 14px rgb(var(--sports-gold-rgb, 214 166 64) / 0.055);
+}
+
+.trigger[data-active="true"] .iconWrap {
+    transform: translateY(-1px);
+    border-color: rgba(255, 222, 138, 0.42);
+    background:
+        radial-gradient(120% 120% at 30% 25%,
+            rgba(255, 255, 255, 0.075) 0%,
+            rgba(255, 255, 255, 0.016) 56%),
+        linear-gradient(145deg,
+            rgba(42, 28, 10, 0.82) 0%,
+            rgba(17, 17, 22, 0.5) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.042),
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.14),
+        0 12px 24px rgba(0, 0, 0, 0.18),
+        0 0 18px rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
+}
+
+.textWrap {
+    display: grid;
+    gap: 0.24rem;
+    min-inline-size: 0;
+}
+
+.title {
+    font-size: var(--areas-selector-title-size, 1rem);
+    line-height: var(--areas-selector-title-line-height, 1.26);
+    font-weight: 800;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    transition:
+        color 0.18s ease,
+        text-shadow 0.18s ease;
+}
+
+.eyebrow {
+    font-size: var(--areas-selector-eyebrow-size, 0.78rem);
+    line-height: var(--areas-selector-eyebrow-line-height, 1.36);
+    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
+    transition:
+        color 0.18s ease,
+        opacity 0.18s ease;
+}
+
+.trigger:hover .title {
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+}
+
+.trigger:hover .eyebrow {
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+}
+
+.trigger[data-active="true"] .title {
+    color: rgba(255, 250, 239, 0.995);
+    text-shadow: 0 0 12px rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
+}
+
+.trigger[data-active="true"] .eyebrow {
+    color: rgba(255, 216, 122, 0.92);
+}
+
+.statusDot {
+    inline-size: var(--areas-selector-status-size, 0.56rem);
+    block-size: var(--areas-selector-status-size, 0.56rem);
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.24);
+    transition:
+        background 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease,
+        opacity 0.18s ease;
+}
+
+.trigger:hover .statusDot {
+    background: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
+}
+
+.trigger[data-active="true"] .statusDot {
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgba(255, 247, 214, 1) 0%,
+            rgba(255, 210, 92, 0.98) 30%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.96) 58%,
+            rgba(144, 96, 11, 0.9) 100%);
+    box-shadow:
+        0 0 0 4px rgb(var(--sports-gold-rgb, 214 166 64) / 0.12),
+        0 0 16px rgb(var(--sports-gold-rgb, 214 166 64) / 0.22);
+    transform: scale(1.12);
+}
+
+@media (max-width: 560px) {
+    .triggerInner {
+        gap: 0.64rem;
+    }
+}

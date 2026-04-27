@@ -1,15 +1,19 @@
 import {
   hero,
-  consultancyAreas,
+  areas,
   consultancyEntities,
   cta,
 } from "../sections/consultancy/index.js";
 
 const consultancy = {
   id: "consultancy",
+  ui: {
+    pageId: "sports-consultancy",
+    pageAriaLabel: "Sunlive Sports — Consultoria",
+  },
   sections: {
     hero,
-    consultancyAreas,
+    areas,
     consultancyEntities,
     cta,
   },

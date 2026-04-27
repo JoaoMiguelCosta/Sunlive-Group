@@ -1,25 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import styles from "./LogisticsServicesSection.module.css";
 
-const MOBILE_SCROLL_QUERY = "(max-width: 760px)";
+const MOBILE_SCROLL_QUERY = "(max-width: 1080px)";
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
-}
-
-function isMobileViewport() {
-  return (
-    typeof window !== "undefined" &&
-    window.matchMedia(MOBILE_SCROLL_QUERY).matches
-  );
-}
-
-function prefersReducedMotion() {
-  return (
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
 }
 
 function getValidFeatures(features) {
@@ -53,7 +39,7 @@ function getInitialActiveKey(services, preferredKey) {
 
   if (hasPreferredService) return preferredKey;
 
-  return services[0]?.key;
+  return services[0]?.key || null;
 }
 
 function getIconComponent(iconSet, iconKey, resolveIcon) {
@@ -64,6 +50,63 @@ function getIconComponent(iconSet, iconKey, resolveIcon) {
   }
 
   return iconSet[iconKey] || null;
+}
+
+function toDomSafeId(value) {
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9-_]+/gi, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function shouldScrollToPanelOnMobile() {
+  if (typeof window === "undefined") return false;
+
+  return window.matchMedia(MOBILE_SCROLL_QUERY).matches;
+}
+
+function prefersReducedMotion() {
+  if (typeof window === "undefined") return false;
+
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getMobileScrollOffset() {
+  if (typeof window === "undefined") return 12;
+
+  return Math.max(10, Math.min(18, window.innerWidth * 0.03));
+}
+
+function scrollElementIntoMobileView(element) {
+  if (!element || typeof window === "undefined") return;
+
+  const top =
+    element.getBoundingClientRect().top +
+    window.scrollY -
+    getMobileScrollOffset();
+
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: prefersReducedMotion() ? "auto" : "smooth",
+  });
+}
+
+function focusSelectorButton(container, index) {
+  if (!container) return;
+
+  const buttons = Array.from(container.querySelectorAll('[role="tab"]'));
+  const button = buttons[index];
+
+  if (!button) return;
+
+  window.requestAnimationFrame(() => {
+    try {
+      button.focus({ preventScroll: true });
+    } catch {
+      button.focus();
+    }
+  });
 }
 
 function ServiceIconSlot({
@@ -93,6 +136,7 @@ function ServiceTab({
   iconSet,
   resolveIcon,
   onSelect,
+  onKeyDown,
 }) {
   const serviceNumber = service.number || String(index + 1).padStart(2, "0");
 
@@ -104,9 +148,11 @@ function ServiceTab({
         isActive ? styles.serviceButtonActive : ""
       }`}
       onClick={() => onSelect(service.key)}
+      onKeyDown={(event) => onKeyDown(event, index)}
       role="tab"
       aria-selected={isActive}
       aria-controls={panelId}
+      tabIndex={isActive ? 0 : -1}
     >
       <span className={styles.serviceTopline}>
         <ServiceIconSlot
@@ -120,11 +166,11 @@ function ServiceTab({
         <span className={styles.serviceNumber}>{serviceNumber}</span>
       </span>
 
-      {service.title ? (
+      {isValidText(service.title) ? (
         <span className={styles.serviceTitle}>{service.title}</span>
       ) : null}
 
-      {service.summary ? (
+      {isValidText(service.summary) ? (
         <span className={styles.serviceSummary}>{service.summary}</span>
       ) : null}
     </button>
@@ -137,7 +183,7 @@ export default function LogisticsServicesSection({
   resolveIcon,
 }) {
   const panelRef = useRef(null);
-  const shouldScrollToPanelRef = useRef(false);
+  const shouldScrollAfterSelectRef = useRef(false);
 
   const services = useMemo(() => getValidServices(data?.services), [data]);
 
@@ -154,52 +200,33 @@ export default function LogisticsServicesSection({
   const [activeKey, setActiveKey] = useState(initialActiveKey);
 
   useEffect(() => {
-    setActiveKey(initialActiveKey);
-  }, [initialActiveKey]);
+    if (!initialActiveKey) {
+      setActiveKey(null);
+      return;
+    }
 
-  const activeService = useMemo(
-    () => services.find((service) => service.key === activeKey) || services[0],
-    [activeKey, services],
-  );
+    const hasActiveService = services.some(
+      (service) => service.key === activeKey,
+    );
 
-  const activeFeatures = useMemo(
-    () => getValidFeatures(activeService?.features),
-    [activeService],
-  );
-
-  const scrollToPanel = useCallback(() => {
-    window.requestAnimationFrame(() => {
-      panelRef.current?.scrollIntoView({
-        behavior: prefersReducedMotion() ? "auto" : "smooth",
-        block: "nearest",
-      });
-    });
-  }, []);
-
-  const handleServiceSelect = useCallback(
-    (serviceKey) => {
-      const shouldScroll = isMobileViewport();
-
-      setActiveKey(serviceKey);
-
-      if (!shouldScroll) return;
-
-      shouldScrollToPanelRef.current = true;
-
-      if (serviceKey === activeKey) {
-        shouldScrollToPanelRef.current = false;
-        scrollToPanel();
-      }
-    },
-    [activeKey, scrollToPanel],
-  );
+    if (!hasActiveService) {
+      setActiveKey(initialActiveKey);
+    }
+  }, [activeKey, initialActiveKey, services]);
 
   useEffect(() => {
-    if (!shouldScrollToPanelRef.current || !panelRef.current) return;
+    if (!shouldScrollAfterSelectRef.current) return;
 
-    shouldScrollToPanelRef.current = false;
-    scrollToPanel();
-  }, [activeKey, scrollToPanel]);
+    shouldScrollAfterSelectRef.current = false;
+
+    if (!shouldScrollToPanelOnMobile()) return;
+
+    const frameId = window.requestAnimationFrame(() => {
+      scrollElementIntoMobileView(panelRef.current);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [activeKey]);
 
   if (!data) return null;
 
@@ -213,6 +240,12 @@ export default function LogisticsServicesSection({
 
   if (!hasIntro && !hasServices && !hasHighlights) return null;
 
+  const activeService =
+    services.find((service) => service.key === activeKey) || services[0];
+
+  const activeServiceKey = activeService?.key;
+  const activeFeatures = getValidFeatures(activeService?.features);
+
   const titleId = isValidText(data.intro?.title)
     ? `${data.id}-title`
     : undefined;
@@ -220,13 +253,73 @@ export default function LogisticsServicesSection({
   const panelId = activeService ? `${data.id}-active-panel` : undefined;
 
   const activeTabId = activeService
-    ? `${data.id}-tab-${activeService.key}`
+    ? `${data.id}-tab-${toDomSafeId(activeServiceKey)}`
     : undefined;
 
   const sectionAriaLabel = titleId ? undefined : data.ui?.ariaLabel;
 
   const servicesAriaLabel =
     data.ui?.servicesAriaLabel || data.ui?.ariaLabel || data.intro?.title;
+
+  function handleServiceSelect(serviceKey) {
+    const shouldScroll = shouldScrollToPanelOnMobile();
+
+    shouldScrollAfterSelectRef.current = shouldScroll;
+
+    if (serviceKey === activeServiceKey) {
+      shouldScrollAfterSelectRef.current = false;
+
+      if (shouldScroll) {
+        window.requestAnimationFrame(() => {
+          scrollElementIntoMobileView(panelRef.current);
+        });
+      }
+
+      return;
+    }
+
+    setActiveKey(serviceKey);
+  }
+
+  function handleServiceKeyDown(event, index) {
+    const lastIndex = services.length - 1;
+    let nextIndex = index;
+
+    switch (event.key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        nextIndex = index === lastIndex ? 0 : index + 1;
+        break;
+
+      case "ArrowLeft":
+      case "ArrowUp":
+        nextIndex = index === 0 ? lastIndex : index - 1;
+        break;
+
+      case "Home":
+        nextIndex = 0;
+        break;
+
+      case "End":
+        nextIndex = lastIndex;
+        break;
+
+      default:
+        return;
+    }
+
+    event.preventDefault();
+
+    const nextService = services[nextIndex];
+
+    if (!nextService) return;
+
+    setActiveKey(nextService.key);
+    focusSelectorButton(
+      event.currentTarget.closest('[role="tablist"]'),
+      nextIndex,
+    );
+  }
 
   return (
     <section
@@ -240,17 +333,17 @@ export default function LogisticsServicesSection({
       <div className={styles.container}>
         {hasIntro ? (
           <header className={styles.intro}>
-            {data.intro?.eyebrow ? (
+            {isValidText(data.intro?.eyebrow) ? (
               <p className={styles.eyebrow}>{data.intro.eyebrow}</p>
             ) : null}
 
-            {data.intro?.title ? (
+            {isValidText(data.intro?.title) ? (
               <h2 id={titleId} className={styles.title}>
                 {data.intro.title}
               </h2>
             ) : null}
 
-            {data.intro?.lead ? (
+            {isValidText(data.intro?.lead) ? (
               <p className={styles.lead}>{data.intro.lead}</p>
             ) : null}
           </header>
@@ -264,8 +357,8 @@ export default function LogisticsServicesSection({
               aria-label={servicesAriaLabel}
             >
               {services.map((service, index) => {
-                const isActive = service.key === activeService?.key;
-                const tabId = `${data.id}-tab-${service.key}`;
+                const isActive = service.key === activeServiceKey;
+                const tabId = `${data.id}-tab-${toDomSafeId(service.key)}`;
 
                 return (
                   <ServiceTab
@@ -278,6 +371,7 @@ export default function LogisticsServicesSection({
                     iconSet={iconSet}
                     resolveIcon={resolveIcon}
                     onSelect={handleServiceSelect}
+                    onKeyDown={handleServiceKeyDown}
                   />
                 );
               })}
@@ -290,6 +384,8 @@ export default function LogisticsServicesSection({
                 className={styles.activePanel}
                 role="tabpanel"
                 aria-labelledby={activeTabId}
+                aria-live="polite"
+                tabIndex={-1}
               >
                 <div className={styles.panelHeader}>
                   <ServiceIconSlot
@@ -301,13 +397,13 @@ export default function LogisticsServicesSection({
                   />
 
                   <div className={styles.panelHeading}>
-                    {activeService.number ? (
+                    {isValidText(activeService.number) ? (
                       <p className={styles.panelNumber}>
                         {activeService.number}
                       </p>
                     ) : null}
 
-                    {activeService.title ? (
+                    {isValidText(activeService.title) ? (
                       <h3 className={styles.panelTitle}>
                         {activeService.title}
                       </h3>
@@ -315,7 +411,7 @@ export default function LogisticsServicesSection({
                   </div>
                 </div>
 
-                {activeService.summary ? (
+                {isValidText(activeService.summary) ? (
                   <p className={styles.panelSummary}>{activeService.summary}</p>
                 ) : null}
 
@@ -341,13 +437,13 @@ export default function LogisticsServicesSection({
                 key={`${data.id}-highlight-${index}`}
                 className={styles.highlightCard}
               >
-                {item.value ? (
+                {isValidText(item.value) ? (
                   <strong className={styles.highlightValue}>
                     {item.value}
                   </strong>
                 ) : null}
 
-                {item.label ? (
+                {isValidText(item.label) ? (
                   <span className={styles.highlightLabel}>{item.label}</span>
                 ) : null}
               </article>

@@ -37,7 +37,8 @@
     inset: 0 auto auto 0;
     inline-size: 100%;
     block-size: 1px;
-    background: linear-gradient(90deg,
+    background:
+        linear-gradient(90deg,
             rgba(255, 255, 255, 0.085) 0%,
             rgba(255, 255, 255, 0.022) 40%,
             transparent 100%);
@@ -51,7 +52,8 @@
     inline-size: clamp(7rem, 12vw, 10rem);
     block-size: clamp(7rem, 12vw, 10rem);
     border-radius: 999px;
-    background: radial-gradient(circle,
+    background:
+        radial-gradient(circle,
             rgba(199, 134, 21, 0.07) 0%,
             transparent 72%);
     filter: blur(26px);
@@ -76,21 +78,23 @@
             rgba(5, 12, 19, 0.92) 100%);
 }
 
-.supportEyebrow {
+.supportEyebrow,
+.supportExtraTitle {
     margin: 0;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.165em;
+    color: rgba(214, 166, 64, 0.94);
+    font-size: var(--sports-kicker-size, 0.75rem);
+    font-weight: 850;
+    line-height: 1;
+    letter-spacing: calc(var(--sports-kicker-spacing, 0.18em) - 0.035em);
     text-transform: uppercase;
-    color: rgba(212, 150, 33, 0.96);
 }
 
 .supportTitle {
     margin: 0;
-    font-size: clamp(1.03rem, 1.22vw, 1.22rem);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
     color: var(--sl-platinum-050, #eef2f8);
+    font-size: var(--sports-support-title-size, clamp(1.03rem, 1.22vw, 1.22rem));
+    line-height: var(--sports-support-title-line, 1.15);
+    letter-spacing: var(--sports-support-title-spacing, -0.02em);
 }
 
 .supportList,
@@ -117,13 +121,13 @@
 }
 
 .supportItem {
-    font-size: clamp(0.91rem, 0.9vw, 0.96rem);
     color: rgba(224, 230, 239, 0.85);
+    font-size: var(--sports-support-text-size, clamp(0.91rem, 0.9vw, 0.96rem));
 }
 
 .supportMiniItem {
-    font-size: clamp(0.87rem, 0.84vw, 0.91rem);
     color: rgba(220, 227, 236, 0.81);
+    font-size: var(--sports-support-mini-text-size, clamp(0.87rem, 0.84vw, 0.91rem));
 }
 
 .supportItem::before,
@@ -153,19 +157,11 @@
 .supportDivider {
     inline-size: 100%;
     block-size: 1px;
-    background: linear-gradient(90deg,
+    background:
+        linear-gradient(90deg,
             rgba(199, 134, 21, 0.46) 0%,
             rgba(46, 194, 126, 0.2) 55%,
             rgba(255, 255, 255, 0.02) 100%);
-}
-
-.supportExtraTitle {
-    margin: 0;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.145em;
-    text-transform: uppercase;
-    color: rgba(212, 150, 33, 0.9);
 }
 
 @media (max-width: 959.98px) and (min-width: 720px) {
@@ -180,10 +176,6 @@
     .supportPanel {
         gap: clamp(0.8rem, 0.88vw, 0.96rem);
         padding: clamp(1rem, 1.46vw, 1.24rem);
-    }
-
-    .supportTitle {
-        line-height: 1.14;
     }
 
     .supportList {
@@ -205,27 +197,12 @@
         gap: 0.72rem;
         padding: 0.92rem;
     }
-
-    .supportEyebrow,
-    .supportExtraTitle {
-        font-size: 0.73rem;
-        letter-spacing: 0.155em;
-    }
-
-    .supportItem,
-    .supportMiniItem {
-        font-size: 0.91rem;
-    }
 }
 
 @media (max-width: 479.98px) {
     .supportPanel {
         gap: 0.68rem;
         padding: 0.88rem;
-    }
-
-    .supportTitle {
-        font-size: 1.02rem;
     }
 
     .supportItem,

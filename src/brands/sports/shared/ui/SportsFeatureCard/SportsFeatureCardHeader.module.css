@@ -1,0 +1,261 @@
+.header {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.78rem;
+    padding:
+        clamp(0.92rem, 1.7vw, 1.12rem) clamp(0.98rem, 1.8vw, 1.22rem) clamp(0.78rem, 1.5vw, 0.95rem);
+    border-bottom: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.12);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.024) 0%,
+            rgba(255, 255, 255, 0.007) 100%);
+}
+
+.identityBlock {
+    display: flex;
+    align-items: center;
+    gap: 0.88rem;
+    min-inline-size: 0;
+}
+
+.logoWrap {
+    position: relative;
+    flex: 0 0 auto;
+    inline-size: clamp(4.5rem, 6.8vw, 5.5rem);
+    block-size: clamp(4.5rem, 6.8vw, 5.5rem);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: var(--sports-radius-md, 1rem);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.26);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        inset 0 -10px 18px rgba(0, 0, 0, 0.16),
+        0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+.logoWrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.logoWrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.032),
+        inset 0 -1px 0 rgb(var(--sports-gold-rgb, 214 166 64) / 0.09);
+    pointer-events: none;
+}
+
+.logoThemeDefault {
+    background:
+        radial-gradient(120% 120% at 34% 24%,
+            rgba(255, 255, 255, 0.13) 0%,
+            rgba(255, 255, 255, 0.045) 22%,
+            rgba(12, 20, 27, 0.95) 56%,
+            rgba(4, 10, 15, 0.99) 100%);
+}
+
+.logoThemeDefault::before {
+    background:
+        radial-gradient(72% 72% at 50% 45%,
+            rgba(255, 255, 255, 0.07) 0%,
+            transparent 62%),
+        radial-gradient(70% 70% at 78% 82%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.085) 0%,
+            transparent 100%);
+}
+
+.logoThemeCycling {
+    background:
+        radial-gradient(122% 122% at 38% 30%,
+            rgba(171, 205, 255, 0.18) 0%,
+            rgba(112, 156, 230, 0.08) 18%,
+            rgba(18, 30, 46, 0.9) 50%,
+            rgba(5, 11, 18, 0.99) 100%);
+}
+
+.logoThemeCycling::before {
+    background:
+        radial-gradient(74% 74% at 50% 46%,
+            rgba(255, 255, 255, 0.09) 0%,
+            transparent 62%),
+        radial-gradient(70% 70% at 80% 84%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
+            transparent 100%);
+}
+
+.logoThemeKarate {
+    background:
+        radial-gradient(118% 118% at 34% 24%,
+            rgba(255, 255, 255, 0.16) 0%,
+            rgba(255, 92, 92, 0.09) 22%,
+            rgba(28, 18, 20, 0.92) 54%,
+            rgba(5, 11, 18, 0.99) 100%);
+}
+
+.logoThemeKarate::before {
+    background:
+        radial-gradient(70% 70% at 48% 42%,
+            rgba(255, 255, 255, 0.075) 0%,
+            transparent 60%),
+        radial-gradient(70% 70% at 80% 84%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.07) 0%,
+            transparent 100%);
+}
+
+.logoThemeBasketball {
+    background:
+        radial-gradient(118% 118% at 34% 24%,
+            rgba(255, 219, 146, 0.26) 0%,
+            rgba(255, 176, 69, 0.12) 22%,
+            rgba(30, 22, 12, 0.92) 54%,
+            rgba(5, 11, 18, 0.99) 100%);
+}
+
+.logoThemeBasketball::before {
+    background:
+        radial-gradient(70% 70% at 48% 42%,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 60%),
+        radial-gradient(72% 72% at 80% 84%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.11) 0%,
+            transparent 100%);
+}
+
+.logoThemeFootball {
+    background:
+        radial-gradient(125% 125% at 38% 30%,
+            rgba(255, 248, 226, 0.32) 0%,
+            rgba(233, 204, 132, 0.15) 18%,
+            rgba(44, 52, 44, 0.88) 50%,
+            rgba(7, 13, 16, 0.99) 100%);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.34);
+}
+
+.logoThemeFootball::before {
+    background:
+        radial-gradient(78% 78% at 50% 45%,
+            rgba(255, 255, 255, 0.16) 0%,
+            transparent 62%),
+        radial-gradient(74% 74% at 80% 84%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.09) 0%,
+            transparent 100%);
+}
+
+.logo {
+    position: relative;
+    z-index: 1;
+    display: block;
+    max-inline-size: 91%;
+    max-block-size: 91%;
+    object-fit: contain;
+    filter:
+        drop-shadow(0 2px 5px rgba(0, 0, 0, 0.18)) contrast(1.04) brightness(1.02);
+}
+
+.logoThemeCycling .logo {
+    max-inline-size: 93%;
+    max-block-size: 93%;
+}
+
+.logoThemeKarate .logo {
+    max-inline-size: 91%;
+    max-block-size: 91%;
+}
+
+.logoThemeBasketball .logo {
+    max-inline-size: 95%;
+    max-block-size: 95%;
+}
+
+.logoThemeFootball .logo {
+    max-inline-size: 98%;
+    max-block-size: 98%;
+    filter:
+        drop-shadow(0 2px 6px rgba(0, 0, 0, 0.14)) contrast(1.08) brightness(1.08);
+}
+
+.headingGroup {
+    display: grid;
+    gap: 0.28rem;
+    min-inline-size: 0;
+}
+
+.eyebrow {
+    margin: 0;
+    font-size: var(--sports-kicker-size, 0.72rem);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sports-gold, #d6a640);
+}
+
+.title {
+    margin: 0;
+    font-size: clamp(1.08rem, 1.75vw, 1.36rem);
+    line-height: 1.1;
+    font-weight: 850;
+    letter-spacing: -0.035em;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    text-wrap: balance;
+}
+
+.summary {
+    margin: 0;
+    max-inline-size: 58ch;
+    font-size: clamp(0.91rem, 1.12vw, 0.98rem);
+    line-height: 1.5;
+    font-weight: 600;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    text-wrap: pretty;
+}
+
+@media (max-width: 640px) {
+    .header {
+        padding: 0.88rem 0.92rem 0.76rem;
+    }
+
+    .identityBlock {
+        align-items: flex-start;
+        gap: 0.7rem;
+    }
+
+    .logoWrap {
+        inline-size: 4.2rem;
+        block-size: 4.2rem;
+        border-radius: 0.98rem;
+    }
+
+    .logo,
+    .logoThemeCycling .logo,
+    .logoThemeKarate .logo {
+        max-inline-size: 93%;
+        max-block-size: 93%;
+    }
+
+    .logoThemeBasketball .logo {
+        max-inline-size: 95%;
+        max-block-size: 95%;
+    }
+
+    .logoThemeFootball .logo {
+        max-inline-size: 97%;
+        max-block-size: 97%;
+    }
+
+    .title {
+        font-size: 1.02rem;
+    }
+
+    .summary {
+        font-size: 0.89rem;
+    }
+}

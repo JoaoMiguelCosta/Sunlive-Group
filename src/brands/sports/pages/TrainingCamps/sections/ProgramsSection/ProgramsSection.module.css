@@ -1,20 +1,25 @@
 .section {
-    width: 100%;
+    position: relative;
+    inline-size: 100%;
+    isolation: isolate;
 }
 
 .inner {
-    width: min(100%, var(--sl-container-lg, 1360px));
-    margin-inline: auto;
+    inline-size: 100%;
     display: grid;
-    gap: clamp(1.8rem, 3vw, 2.8rem);
+    gap: clamp(1.7rem, 3vw, 2.7rem);
 }
 
 .otherSportsWrap {
-    margin-top: clamp(0.25rem, 0.8vw, 0.5rem);
+    margin-top: clamp(0.15rem, 0.7vw, 0.45rem);
 }
 
-@media (max-width: 720px) {
-    .section {
-        margin-block: 2.5rem 3.25rem;
+@media (max-width: 767.98px) {
+    .inner {
+        gap: clamp(1.35rem, 5vw, 2rem);
+    }
+
+    .otherSportsWrap {
+        margin-top: 0;
     }
 }

@@ -5,24 +5,23 @@
     min-inline-size: 0;
     flex: 1;
     padding: clamp(0.82rem, 0.98vw, 0.94rem);
-    border-radius: clamp(1.08rem, 1.35vw, 1.28rem);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
     background:
         radial-gradient(135% 175% at 100% 0%,
-            rgba(199, 134, 21, 0.11) 0%,
-            transparent 42%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.105) 0%,
+            transparent 44%),
         radial-gradient(135% 175% at 0% 100%,
-            rgba(46, 194, 126, 0.09) 0%,
-            transparent 46%),
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.035) 0%,
+            transparent 48%),
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.034) 0%,
             rgba(255, 255, 255, 0.012) 100%),
         linear-gradient(145deg,
-            rgba(10, 18, 24, 0.97) 0%,
-            rgba(6, 12, 17, 0.99) 100%);
+            rgba(7, 13, 21, 0.97) 0%,
+            rgba(4, 9, 17, 0.992) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.018),
         0 14px 30px rgba(0, 0, 0, 0.22);
     overflow: hidden;
     isolation: isolate;
@@ -48,14 +47,25 @@
 .card::before {
     content: "";
     position: absolute;
-    inset: 0 0 auto 0;
-    block-size: 1px;
+    inset: 0;
+    border-radius: inherit;
     background:
         linear-gradient(90deg,
-            rgba(46, 194, 126, 0.14) 0%,
-            rgba(199, 134, 21, 0.4) 55%,
-            rgba(255, 255, 255, 0.07) 100%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.4) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.07) 58%,
+            rgba(255, 255, 255, 0.05) 100%);
     opacity: 0.96;
+    pointer-events: none;
+    mask-image:
+        linear-gradient(to bottom,
+            #000 0,
+            #000 1px,
+            transparent 1px);
+    -webkit-mask-image:
+        linear-gradient(to bottom,
+            #000 0,
+            #000 1px,
+            transparent 1px);
 }
 
 .card::after {
@@ -67,44 +77,46 @@
     border-radius: 999px;
     background:
         radial-gradient(circle,
-            rgba(46, 194, 126, 0.11) 0%,
-            transparent 70%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.085) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.025) 46%,
+            transparent 72%);
     pointer-events: none;
-    opacity: 0.86;
+    opacity: 0.82;
+    filter: blur(10px);
 }
 
 @media (hover: hover) and (pointer: fine) {
     .card:hover {
         transform: translateY(-3px);
-        border-color: rgba(199, 134, 21, 0.26);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.06),
-            inset 0 0 0 1px rgba(255, 255, 255, 0.024),
-            0 18px 36px rgba(0, 0, 0, 0.28);
+            0 18px 36px rgba(0, 0, 0, 0.28),
+            0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.04);
         filter: saturate(1.04);
     }
 
     .card:hover .cardTitle {
-        color: rgba(251, 252, 253, 0.995);
+        color: var(--sports-text, rgba(246, 248, 252, 0.96));
     }
 
     .card:hover .stepBadge {
-        border-color: rgba(199, 134, 21, 0.34);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.36);
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.07),
             0 7px 14px rgba(0, 0, 0, 0.14),
-            0 0 0.86rem rgba(199, 134, 21, 0.08);
+            0 0 0.86rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
     }
 
     .card:hover .agePill {
-        border-color: rgba(46, 194, 126, 0.26);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.045),
-            0 0 0.86rem rgba(46, 194, 126, 0.08);
+            0 0 0.86rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
     }
 
     .card:hover .outcomeBox {
-        border-color: rgba(199, 134, 21, 0.18);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.035),
             0 8px 16px rgba(0, 0, 0, 0.1);
@@ -113,14 +125,16 @@
 
 .card:focus-within {
     transform: translateY(-2px);
-    border-color: rgba(199, 134, 21, 0.28);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.024),
-        0 18px 36px rgba(0, 0, 0, 0.26);
+        0 18px 36px rgba(0, 0, 0, 0.26),
+        0 0 0 3px rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
 }
 
 .cardTop {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -136,11 +150,11 @@
     min-block-size: 2.14rem;
     padding-inline: 0.62rem;
     border-radius: 999px;
-    border: 1px solid rgba(199, 134, 21, 0.28);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
     background:
         linear-gradient(180deg,
-            rgba(199, 134, 21, 0.2) 0%,
-            rgba(199, 134, 21, 0.08) 100%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.2) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 100%);
     color: rgba(255, 236, 198, 0.98);
     font-size: 0.72rem;
     font-weight: 800;
@@ -163,12 +177,12 @@
     min-block-size: 1.78rem;
     padding: 0.34rem 0.64rem;
     border-radius: 999px;
-    border: 1px solid rgba(46, 194, 126, 0.2);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
     background:
         linear-gradient(180deg,
-            rgba(46, 194, 126, 0.13) 0%,
-            rgba(46, 194, 126, 0.055) 100%);
-    color: rgba(223, 255, 235, 0.94);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.1) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.04) 100%);
+    color: rgba(255, 236, 198, 0.94);
     font-size: 0.72rem;
     font-weight: 700;
     line-height: 1;
@@ -182,6 +196,8 @@
 }
 
 .cardBody {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-rows:
         minmax(var(--education-card-header-min-h), auto) minmax(var(--education-card-description-min-h), auto) minmax(var(--education-card-group-min-h), auto) minmax(var(--education-card-outcome-min-h), auto);
@@ -199,10 +215,11 @@
 
 .cardTitle {
     margin: 0;
-    color: rgba(246, 248, 252, 0.985);
-    font-size: clamp(0.98rem, 0.96vw, 1.08rem);
-    line-height: 1.12;
-    letter-spacing: -0.03em;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    font-weight: 850;
+    line-height: var(--sports-card-title-line, 1.08);
+    letter-spacing: var(--sports-card-title-spacing, -0.035em);
     text-wrap: balance;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.015);
     transition: color 180ms ease;
@@ -210,8 +227,8 @@
 
 .cardSubtitle {
     margin: 0;
-    color: rgba(223, 173, 61, 0.96);
-    font-size: 0.8rem;
+    color: var(--sports-gold, #d6a640);
+    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
     font-weight: 700;
     line-height: 1.34;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.16);
@@ -220,8 +237,8 @@
 .cardDescription {
     margin: 0;
     min-block-size: var(--education-card-description-min-h);
-    color: rgba(219, 226, 233, 0.82);
-    font-size: 0.87rem;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    font-size: var(--sports-support-mini-text-size, clamp(0.87rem, 0.84vw, 0.91rem));
     line-height: 1.48;
     text-wrap: pretty;
 }
@@ -236,11 +253,11 @@
 
 .groupLabel {
     margin: 0;
-    color: rgba(247, 250, 252, 0.93);
-    font-size: 0.75rem;
+    color: var(--sports-gold, #d6a640);
+    font-size: var(--sports-kicker-size, 0.75rem);
     font-weight: 800;
     line-height: 1.2;
-    letter-spacing: 0.085em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
 }
 
@@ -256,8 +273,8 @@
 .featureItem {
     position: relative;
     padding-inline-start: 0.9rem;
-    color: rgba(225, 232, 239, 0.87);
-    font-size: 0.86rem;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    font-size: var(--sports-support-mini-text-size, clamp(0.87rem, 0.84vw, 0.91rem));
     line-height: 1.4;
 }
 
@@ -270,12 +287,13 @@
     block-size: 0.34rem;
     border-radius: 999px;
     background:
-        linear-gradient(135deg,
-            rgba(46, 194, 126, 0.98) 0%,
-            rgba(199, 134, 21, 0.95) 100%);
+        radial-gradient(circle at 35% 35%,
+            rgba(255, 246, 214, 0.98) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.94) 46%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.82) 100%);
     box-shadow:
-        0 0 0 0.18rem rgba(46, 194, 126, 0.08),
-        0 0 0.6rem rgba(46, 194, 126, 0.12);
+        0 0 0 0.18rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
+        0 0 0.6rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.12);
 }
 
 .outcomeBox {
@@ -286,11 +304,14 @@
     margin-top: auto;
     padding: 0.64rem 0.72rem;
     border-radius: 0.88rem;
-    border: 1px solid rgba(199, 134, 21, 0.14);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.16);
     background:
+        radial-gradient(120% 150% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
+            transparent 46%),
         linear-gradient(180deg,
-            rgba(199, 134, 21, 0.08) 0%,
-            rgba(199, 134, 21, 0.028) 100%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.07) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.025) 100%),
         linear-gradient(145deg,
             rgba(23, 20, 14, 0.5) 0%,
             rgba(18, 16, 12, 0.28) 100%);
@@ -313,12 +334,14 @@
 
 .outcomeText {
     margin: 0;
-    color: rgba(246, 248, 251, 0.9);
-    font-size: 0.84rem;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
     line-height: 1.4;
 }
 
 .cardFooter {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -330,7 +353,7 @@
 .bookButton {
     position: relative;
     appearance: none;
-    border: 1px solid rgba(199, 134, 21, 0.24);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.34);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -347,11 +370,11 @@
             rgba(177, 118, 15, 0.99) 100%);
     color: rgba(15, 17, 19, 0.98);
     font-size: 0.8rem;
-    font-weight: 800;
+    font-weight: 850;
     line-height: 1;
     letter-spacing: 0.02em;
     box-shadow:
-        0 9px 20px rgba(199, 134, 21, 0.2),
+        0 9px 20px rgb(var(--sports-gold-rgb, 214 166 64) / 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.28);
     transition:
         transform 180ms ease,
@@ -390,8 +413,8 @@
     .bookButton:hover {
         transform: translateY(-1px);
         box-shadow:
-            0 12px 24px rgba(199, 134, 21, 0.26),
-            0 0 0.9rem rgba(199, 134, 21, 0.1),
+            0 12px 24px rgb(var(--sports-gold-rgb, 214 166 64) / 0.26),
+            0 0 0.9rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.3);
         filter: saturate(1.05) brightness(1.01);
     }
@@ -404,12 +427,12 @@
 .bookButton:active {
     transform: translateY(0);
     box-shadow:
-        0 7px 14px rgba(199, 134, 21, 0.18),
+        0 7px 14px rgb(var(--sports-gold-rgb, 214 166 64) / 0.18),
         inset 0 1px 0 rgba(255, 255, 255, 0.24);
 }
 
 .bookButton:focus-visible {
-    outline: 2px solid rgba(199, 134, 21, 0.72);
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.72);
     outline-offset: 3px;
 }
 
@@ -473,7 +496,6 @@
     }
 }
 
-/* Breakpoint dedicado para o intervalo problemático */
 @media (min-width: 1121px) and (max-width: 1247px) {
     .card {
         padding: 0.78rem;

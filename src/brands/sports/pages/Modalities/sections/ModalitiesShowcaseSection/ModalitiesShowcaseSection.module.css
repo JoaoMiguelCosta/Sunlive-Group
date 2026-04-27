@@ -1,0 +1,1045 @@
+.section {
+    --showcase-section-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
+    --showcase-card-radius: var(--sports-radius-md, 1rem);
+    --showcase-panel-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
+
+    --showcase-padding-block: clamp(1.15rem, 2vw, 1.85rem);
+    --showcase-padding-inline: clamp(1rem, 1.9vw, 1.6rem);
+    --showcase-content-gap: clamp(1.18rem, 2vw, 1.95rem);
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    inline-size: 100%;
+    min-inline-size: 0;
+    padding: var(--showcase-padding-block) var(--showcase-padding-inline);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    border: 1px solid var(--sports-border, rgb(199 134 21 / 0.16));
+    border-radius: var(--showcase-section-radius);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.012) 17%,
+            rgba(255, 255, 255, 0) 42%),
+        radial-gradient(128% 150% at 0% 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.055) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.02) 34%,
+            transparent 62%),
+        radial-gradient(118% 145% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.036) 34%,
+            transparent 64%),
+        radial-gradient(125% 145% at 100% 100%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.075) 0%,
+            transparent 60%),
+        linear-gradient(145deg,
+            rgba(3, 6, 11, 0.995) 0%,
+            rgba(5, 9, 17, 0.992) 52%,
+            rgba(9, 8, 7, 0.998) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+        0 28px 64px rgba(0, 0, 0, 0.36),
+        0 0 0 1px rgba(255, 255, 255, 0.014);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.section,
+.section * {
+    box-sizing: border-box;
+}
+
+.section::before,
+.section::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+}
+
+.section::before {
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    z-index: 0;
+    inline-size: min(34rem, 46%);
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.9) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.2) 64%,
+            transparent 100%);
+    opacity: 0.82;
+}
+
+.section::after {
+    inset-block-end: -24%;
+    inset-inline-end: -8%;
+    z-index: 0;
+    inline-size: clamp(13rem, 24vw, 20rem);
+    block-size: clamp(13rem, 24vw, 20rem);
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.04) 38%,
+            transparent 74%);
+    filter: blur(34px);
+    opacity: 0.66;
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    inline-size: 100%;
+    min-inline-size: 0;
+    gap: var(--showcase-content-gap);
+}
+
+.header {
+    display: grid;
+    justify-items: center;
+    inline-size: min(100%, 58rem);
+    margin-inline: auto;
+    text-align: center;
+}
+
+.eyebrow {
+    margin: 0 0 clamp(0.48rem, 0.72vw, 0.68rem);
+    color: var(--sports-gold, #d6a640);
+    font-size: var(--sports-kicker-size, clamp(0.7rem, 0.76vw, 0.78rem));
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: var(--sports-kicker-spacing, 0.22em);
+    text-transform: uppercase;
+}
+
+.title {
+    max-inline-size: 17ch;
+    margin: 0;
+    color: rgba(248, 250, 252, 0.99);
+    font-size: var(--sports-section-title-size, clamp(2rem, 4vw, 3.45rem));
+    font-weight: 950;
+    line-height: var(--sports-section-title-line, 0.96);
+    letter-spacing: var(--sports-section-title-spacing, -0.055em);
+    text-wrap: balance;
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.36),
+        0 16px 36px rgba(0, 0, 0, 0.24);
+}
+
+.lead {
+    max-inline-size: 50rem;
+    margin: clamp(0.78rem, 1.15vw, 1rem) auto 0;
+    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
+    font-size: var(--sports-lead-size, clamp(0.98rem, 1.08vw, 1.08rem));
+    font-weight: 560;
+    line-height: var(--sports-lead-line, 1.66);
+    text-wrap: balance;
+}
+
+.stack {
+    display: grid;
+    min-inline-size: 0;
+    gap: clamp(1rem, 1.8vw, 1.45rem);
+}
+
+.modality {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(0.92rem, 1.8vw, 1.35rem);
+    min-inline-size: 0;
+    overflow: hidden;
+    scroll-margin-top: 7rem;
+    contain: layout paint;
+    padding: clamp(0.95rem, 1.65vw, 1.35rem);
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border-radius: var(--showcase-section-radius);
+    background:
+        radial-gradient(125% 155% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.09) 0%,
+            transparent 44%),
+        radial-gradient(125% 155% at 0% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.05) 0%,
+            transparent 48%),
+        var(--sports-surface-dark,
+            linear-gradient(180deg,
+                rgba(7, 13, 21, 0.965) 0%,
+                rgba(4, 9, 17, 0.992) 100%));
+    box-shadow:
+        var(--sports-shadow-card,
+            inset 0 1px 0 rgba(255, 255, 255, 0.04),
+            0 22px 48px rgba(0, 0, 0, 0.36));
+    outline: none;
+}
+
+.modality::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    block-size: 1px;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.78) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.18) 58%,
+            transparent 100%);
+    opacity: 0.86;
+}
+
+.modality:focus-visible {
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.5);
+    outline-offset: 4px;
+}
+
+.modalityAside {
+    display: grid;
+    align-content: start;
+    justify-items: center;
+    gap: 0.72rem;
+    min-inline-size: 3rem;
+}
+
+.modalityIndex {
+    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.78);
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.14em;
+}
+
+.modalityIconWrap,
+.panelIconWrap,
+.projectIconWrap,
+.highlightIconWrap {
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 auto;
+    color: var(--sports-gold, #d6a640);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+    background:
+        radial-gradient(circle at 35% 25%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.16),
+            transparent 70%),
+        rgba(255, 255, 255, 0.045);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 0 18px rgb(var(--sports-gold-rgb, 214 166 64) / 0.055);
+}
+
+.modalityIconWrap {
+    inline-size: 3rem;
+    block-size: 3rem;
+    border-radius: 1rem;
+}
+
+.modalityIcon,
+.panelIcon,
+.projectIcon,
+.highlightIcon {
+    color: currentColor;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.modalityIcon {
+    inline-size: 1.32rem;
+    block-size: 1.32rem;
+}
+
+.modalityBody {
+    display: grid;
+    min-inline-size: 0;
+    gap: clamp(0.95rem, 1.7vw, 1.4rem);
+}
+
+.modalityHeader {
+    display: grid;
+    max-inline-size: 60rem;
+    min-inline-size: 0;
+    gap: 0.58rem;
+}
+
+.modalityTitle {
+    max-inline-size: 20ch;
+    margin: 0;
+    color: rgba(248, 250, 252, 0.99);
+    overflow-wrap: anywhere;
+    font-size: var(--sports-panel-title-size, clamp(1.65rem, 2.45vw, 2.65rem));
+    font-weight: 950;
+    line-height: var(--sports-panel-title-line, 0.98);
+    letter-spacing: var(--sports-panel-title-spacing, -0.058em);
+    text-wrap: balance;
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.36),
+        0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modalityLead {
+    max-inline-size: 58rem;
+    margin: 0;
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+    font-size: calc(var(--sports-lead-size, 1rem) - 0.08rem);
+    font-weight: 590;
+    line-height: 1.54;
+}
+
+.modalityContent {
+    display: grid;
+    min-inline-size: 0;
+    gap: 0.92rem;
+}
+
+.panel {
+    display: grid;
+    min-inline-size: 0;
+    gap: 0.92rem;
+    padding: clamp(0.84rem, 1.2vw, 1.08rem);
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border-radius: var(--showcase-panel-radius);
+    background:
+        radial-gradient(120% 150% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.036) 0%,
+            rgba(255, 255, 255, 0.012) 100%),
+        linear-gradient(145deg,
+            rgba(7, 13, 21, 0.78) 0%,
+            rgba(4, 9, 17, 0.9) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.panelHeader {
+    display: flex;
+    align-items: center;
+    min-inline-size: 0;
+    gap: 0.72rem;
+}
+
+.panelIconWrap {
+    inline-size: 2.35rem;
+    block-size: 2.35rem;
+    border-radius: 0.82rem;
+}
+
+.panelIcon {
+    inline-size: 1.05rem;
+    block-size: 1.05rem;
+}
+
+.panelTitle {
+    margin: 0;
+    color: var(--sports-gold, #d6a640);
+    font-size: var(--sports-kicker-size, clamp(0.7rem, 0.76vw, 0.78rem));
+    font-weight: 900;
+    line-height: 1.18;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.disciplinesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.72rem;
+    min-inline-size: 0;
+}
+
+.disciplineCard {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 0.5rem;
+    min-block-size: 7.8rem;
+    min-inline-size: 0;
+    overflow: hidden;
+    padding: clamp(0.84rem, 1.12vw, 1rem);
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border-radius: var(--showcase-card-radius);
+    background:
+        radial-gradient(120% 150% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.04) 0%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.01) 100%),
+        linear-gradient(145deg,
+            rgba(12, 20, 28, 0.7),
+            rgba(5, 10, 16, 0.84));
+}
+
+.disciplineCard::before {
+    content: "";
+    position: absolute;
+    inset-block: 0.7rem;
+    inset-inline-start: 0;
+    inline-size: 3px;
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg,
+            transparent,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.72),
+            transparent);
+    opacity: 0.76;
+}
+
+.disciplineTitle {
+    margin: 0;
+    color: rgba(248, 250, 252, 0.96);
+    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    font-weight: 900;
+    line-height: var(--sports-card-title-line, 1.08);
+    letter-spacing: var(--sports-card-title-spacing, -0.035em);
+    text-wrap: balance;
+}
+
+.disciplineDescription {
+    margin: 0;
+    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
+    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    font-weight: 650;
+    line-height: var(--sports-card-text-line, 1.4);
+}
+
+.projectsGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr);
+    grid-auto-rows: 1fr;
+    align-items: stretch;
+    gap: clamp(0.78rem, 1.25vw, 1rem);
+    min-inline-size: 0;
+}
+
+.projectsGrid>* {
+    min-inline-size: 0;
+}
+
+.academyCardShell {
+    display: grid;
+    min-inline-size: 0;
+    block-size: 100%;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+.academyCardShell>* {
+    min-inline-size: 0;
+    block-size: 100%;
+}
+
+.projectCard,
+.academyCompactCard {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 0.9rem;
+    min-inline-size: 0;
+    overflow: hidden;
+    padding: clamp(0.92rem, 1.35vw, 1.18rem);
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border-radius: var(--showcase-panel-radius);
+    background:
+        radial-gradient(130% 155% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
+            transparent 46%),
+        var(--sports-surface-soft,
+            linear-gradient(180deg,
+                rgba(255, 255, 255, 0.036) 0%,
+                rgba(255, 255, 255, 0.012) 100%)),
+        linear-gradient(145deg,
+            rgba(10, 17, 25, 0.94) 0%,
+            rgba(5, 10, 17, 0.982) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.projectCard {
+    min-block-size: clamp(14rem, 18vw, 17rem);
+}
+
+.academyCompactCard {
+    min-block-size: 100%;
+    gap: clamp(0.76rem, 1vw, 0.92rem);
+}
+
+.academyCompactCard::before {
+    content: "";
+    position: absolute;
+    inset-block: 0.78rem;
+    inset-inline-start: 0;
+    inline-size: 3px;
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg,
+            transparent,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.72),
+            transparent);
+    opacity: 0.82;
+}
+
+.projectGlow {
+    position: absolute;
+    inset: auto -18% -34% 18%;
+    block-size: 7rem;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.09),
+            transparent 68%);
+    filter: blur(18px);
+    pointer-events: none;
+}
+
+.projectHeader,
+.academyCompactHeader {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    min-inline-size: 0;
+}
+
+.projectHeader {
+    gap: 0.82rem;
+}
+
+.academyCompactHeader {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.76rem;
+}
+
+.projectIconWrap,
+.academyCompactLogoWrap {
+    display: grid;
+    place-items: center;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.projectIconWrap {
+    inline-size: 2.65rem;
+    block-size: 2.65rem;
+    border-radius: 0.95rem;
+}
+
+.projectIcon {
+    inline-size: 1.18rem;
+    block-size: 1.18rem;
+}
+
+.academyCompactLogoWrap {
+    inline-size: clamp(2.6rem, 3.2vw, 3.1rem);
+    block-size: clamp(2.6rem, 3.2vw, 3.1rem);
+    overflow: hidden;
+    border-radius: 0.9rem;
+}
+
+.academyCompactLogo {
+    display: block;
+    inline-size: 82%;
+    block-size: 82%;
+    object-fit: contain;
+}
+
+.academyCompactHeading {
+    display: grid;
+    min-inline-size: 0;
+    gap: 0.24rem;
+}
+
+.academyCompactEyebrow {
+    margin: 0;
+    color: var(--sports-gold, #d6a640);
+    font-size: 0.62rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.projectTitle,
+.academyCompactTitle {
+    margin: 0;
+    color: rgba(248, 250, 252, 0.98);
+    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    font-weight: 900;
+    line-height: var(--sports-card-title-line, 1.08);
+    letter-spacing: var(--sports-card-title-spacing, -0.035em);
+    text-wrap: balance;
+}
+
+.projectDescription,
+.academyCompactSummary {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
+    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.academyCompactHighlights {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.48rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.academyCompactHighlights li {
+    position: relative;
+    min-inline-size: 0;
+    padding: 0.5rem 0.56rem 0.5rem 1.42rem;
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+    font-size: 0.68rem;
+    font-weight: 720;
+    line-height: 1.28;
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border-radius: 0.76rem;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.01) 100%),
+        rgba(255, 255, 255, 0.018);
+}
+
+.academyCompactHighlights li::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0.72rem;
+    inset-inline-start: 0.58rem;
+    inline-size: 0.32rem;
+    block-size: 0.32rem;
+    border-radius: 999px;
+    background: var(--sports-gold, #d6a640);
+    box-shadow: 0 0 0.7rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+}
+
+.academyCompactActions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.58rem;
+    margin-block-start: auto;
+}
+
+.projectAction,
+.highlightAction,
+.highlightActionPrimary,
+.academyCompactAction,
+.academyCompactActionSecondary {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: fit-content;
+    min-block-size: 2.42rem;
+    padding: 0.72rem 0.9rem;
+    color: inherit;
+    font-size: 0.68rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.11em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 999px;
+    transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        background 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.projectAction,
+.highlightActionPrimary,
+.academyCompactAction {
+    color: rgba(5, 8, 12, 0.96);
+    background:
+        linear-gradient(135deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.98),
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.95));
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.projectAction {
+    align-self: end;
+    margin-block-start: auto;
+}
+
+.highlightAction,
+.academyCompactActionSecondary {
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.projectAction:hover,
+.highlightAction:hover,
+.highlightActionPrimary:hover,
+.academyCompactAction:hover,
+.academyCompactActionSecondary:hover {
+    transform: translateY(-2px);
+}
+
+.projectAction:focus-visible,
+.highlightAction:focus-visible,
+.highlightActionPrimary:focus-visible,
+.academyCompactAction:focus-visible,
+.academyCompactActionSecondary:focus-visible {
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.68);
+    outline-offset: 3px;
+}
+
+.highlight {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(0.85rem, 1.4vw, 1.12rem);
+    min-inline-size: 0;
+    padding: clamp(0.92rem, 1.45vw, 1.18rem);
+    overflow: hidden;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
+    border-radius: var(--showcase-panel-radius);
+    background:
+        radial-gradient(120% 150% at 0% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.06) 0%,
+            transparent 46%),
+        radial-gradient(120% 150% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 0%,
+            transparent 50%),
+        linear-gradient(145deg,
+            rgba(12, 20, 28, 0.78),
+            rgba(5, 10, 16, 0.92));
+}
+
+.highlightIconWrap {
+    inline-size: 3rem;
+    block-size: 3rem;
+    border-radius: 1rem;
+}
+
+.highlightIcon {
+    inline-size: 1.3rem;
+    block-size: 1.3rem;
+}
+
+.highlightContent {
+    display: grid;
+    min-inline-size: 0;
+    gap: 0.4rem;
+}
+
+.highlightTitle {
+    margin: 0;
+    color: rgba(248, 250, 252, 0.98);
+    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    font-weight: 900;
+    line-height: var(--sports-card-title-line, 1.08);
+    letter-spacing: var(--sports-card-title-spacing, -0.035em);
+}
+
+.highlightDescription {
+    margin: 0;
+    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
+    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    font-weight: 650;
+    line-height: 1.48;
+}
+
+.highlightActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    gap: 0.62rem;
+}
+
+@media (min-width: 1440px) {
+    .title {
+        max-inline-size: none;
+    }
+}
+
+@media (max-width: 1080px) {
+    .section {
+        --showcase-padding-block: clamp(1rem, 2.8vw, 1.45rem);
+        --showcase-padding-inline: clamp(0.92rem, 2.6vw, 1.2rem);
+        --showcase-content-gap: clamp(1rem, 2.8vw, 1.7rem);
+    }
+
+    .header {
+        inline-size: min(100%, 46rem);
+    }
+
+    .title {
+        max-inline-size: none;
+        white-space: normal;
+        text-wrap: balance;
+    }
+
+    .lead {
+        max-inline-size: 40rem;
+    }
+
+    .disciplinesGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 860px) {
+    .modality {
+        grid-template-columns: 1fr;
+        scroll-margin-top: 5.25rem;
+    }
+
+    .modalityAside {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        inline-size: 100%;
+    }
+
+    .modalityHeader {
+        justify-items: center;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .modalityTitle {
+        max-inline-size: 18ch;
+    }
+
+    .projectsGrid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .academyCardShell {
+        grid-column: auto;
+        grid-row: auto;
+        block-size: auto;
+    }
+
+    .academyCardShell>*,
+    .projectsGrid>* {
+        block-size: auto;
+    }
+
+    .academyCompactCard,
+    .projectCard {
+        min-block-size: auto;
+    }
+
+    .academyCompactHighlights {
+        grid-template-columns: 1fr;
+    }
+
+    .highlight {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .highlightActions,
+    .academyCompactActions {
+        justify-content: center;
+        padding-inline-start: 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .section {
+        --showcase-padding-block: clamp(0.92rem, 4vw, 1.18rem);
+        --showcase-padding-inline: clamp(0.82rem, 3.4vw, 1rem);
+        --showcase-section-radius: 1.2rem;
+        --showcase-content-gap: clamp(1rem, 4vw, 1.45rem);
+    }
+
+    .eyebrow {
+        margin-block-end: 0.44rem;
+        font-size: 0.64rem;
+        letter-spacing: 0.16em;
+    }
+
+    .title {
+        line-height: 1;
+        text-align: center;
+    }
+
+    .lead {
+        max-inline-size: 34rem;
+        font-size: 0.9rem;
+        line-height: 1.48;
+        text-align: center;
+    }
+
+    .disciplinesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .disciplineCard {
+        min-block-size: auto;
+    }
+
+    .panelHeader {
+        align-items: flex-start;
+    }
+
+    .panelTitle {
+        padding-block-start: 0.15rem;
+    }
+}
+
+@media (max-width: 620px) {
+    .section {
+        --showcase-padding-inline: 0.78rem;
+    }
+
+    .eyebrow {
+        margin-block-end: 0.4rem;
+        font-size: 0.6rem;
+        letter-spacing: 0.13em;
+    }
+
+    .title {
+        max-inline-size: 12ch;
+        letter-spacing: -0.046em;
+    }
+
+    .lead {
+        max-inline-size: 100%;
+        font-size: 0.84rem;
+        line-height: 1.42;
+    }
+
+    .modality {
+        padding: 0.86rem;
+        border-radius: 1rem;
+    }
+
+    .modalityTitle {
+        max-inline-size: 13ch;
+    }
+
+    .panel {
+        padding: 0.82rem;
+        border-radius: 1rem;
+    }
+
+    .projectsGrid {
+        gap: 0.76rem;
+    }
+
+    .projectCard,
+    .academyCompactCard,
+    .highlight {
+        border-radius: 1rem;
+    }
+
+    .projectAction,
+    .highlightAction,
+    .highlightActionPrimary,
+    .academyCompactAction,
+    .academyCompactActionSecondary {
+        min-block-size: 2.36rem;
+        padding: 0.7rem 0.84rem;
+        font-size: 0.66rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .section {
+        --showcase-padding-inline: 0.72rem;
+    }
+
+    .header {
+        gap: 0.68rem;
+    }
+
+    .title {
+        font-size: clamp(1.42rem, 8vw, 1.95rem);
+    }
+
+    .modality {
+        padding: 0.76rem;
+    }
+
+    .modalityIconWrap {
+        inline-size: 2.55rem;
+        block-size: 2.55rem;
+        border-radius: 0.9rem;
+    }
+
+    .panelIconWrap {
+        inline-size: 2.15rem;
+        block-size: 2.15rem;
+        border-radius: 0.76rem;
+    }
+
+    .disciplineCard,
+    .projectCard,
+    .academyCompactCard,
+    .highlight {
+        padding: 0.84rem;
+    }
+
+    .highlightActions,
+    .highlightAction,
+    .highlightActionPrimary,
+    .academyCompactActions,
+    .academyCompactAction,
+    .academyCompactActionSecondary {
+        inline-size: 100%;
+    }
+
+    .highlightAction,
+    .highlightActionPrimary,
+    .academyCompactAction,
+    .academyCompactActionSecondary {
+        flex: 1 1 100%;
+    }
+}
+
+@media (hover: none) {
+
+    .projectAction:hover,
+    .highlightAction:hover,
+    .highlightActionPrimary:hover,
+    .academyCompactAction:hover,
+    .academyCompactActionSecondary:hover {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .projectAction,
+    .highlightAction,
+    .highlightActionPrimary,
+    .academyCompactAction,
+    .academyCompactActionSecondary {
+        transition: none;
+    }
+
+    .projectAction:hover,
+    .highlightAction:hover,
+    .highlightActionPrimary:hover,
+    .academyCompactAction:hover,
+    .academyCompactActionSecondary:hover {
+        transform: none;
+    }
+}

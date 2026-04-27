@@ -5,31 +5,31 @@
     gap: clamp(0.72rem, 0.86vw, 0.88rem);
     min-inline-size: 0;
     block-size: 100%;
-    min-block-size: clamp(26.5rem, 29vw, 30rem);
+    min-block-size: clamp(26rem, 29vw, 29.5rem);
     padding: clamp(0.82rem, 0.92vw, 0.94rem);
-    border: 1px solid var(--card-border);
-    border-radius: var(--card-radius);
     overflow: hidden;
     isolation: isolate;
     align-self: stretch;
+    border: 1px solid var(--card-border, rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.14));
+    border-radius: var(--card-radius, var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem)));
     background:
-        linear-gradient(180deg,
-            var(--card-bg-top) 0%,
-            var(--card-bg-bottom) 100%),
-        radial-gradient(140% 170% at 0% 0%,
-            rgba(255, 255, 255, 0.022) 0%,
+        radial-gradient(120% 150% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
             transparent 48%),
         linear-gradient(180deg,
-            rgba(17, 20, 27, 0.92) 0%,
-            rgba(10, 12, 18, 0.96) 100%);
+            var(--card-bg-top, rgba(255, 255, 255, 0.028)) 0%,
+            var(--card-bg-bottom, rgba(255, 255, 255, 0.012)) 100%),
+        linear-gradient(180deg,
+            rgba(12, 18, 27, 0.92) 0%,
+            rgba(6, 10, 17, 0.97) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.03),
-        0 10px 20px rgba(0, 0, 0, 0.14);
+        inset 0 1px 0 rgba(255, 255, 255, 0.032),
+        0 10px 22px rgba(0, 0, 0, 0.16);
     transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        background 180ms ease;
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 .card::before,
@@ -46,8 +46,8 @@
             rgba(255, 255, 255, 0.016) 0%,
             transparent 28%,
             transparent 72%,
-            rgba(255, 255, 255, 0.009) 100%);
-    opacity: 0.85;
+            rgba(255, 255, 255, 0.008) 100%);
+    opacity: 0.82;
 }
 
 .card::after {
@@ -56,25 +56,27 @@
     block-size: 1px;
     background:
         linear-gradient(90deg,
-            rgba(46, 194, 126, 0.16) 0%,
-            rgba(199, 134, 21, 0.2) 58%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.32) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.12) 62%,
             transparent 100%);
-    opacity: 0.5;
+    opacity: 0.62;
 }
 
 .card:hover {
     transform: translateY(-2px);
-    border-color: var(--card-border-hover);
+    border-color: var(--card-border-hover, rgb(var(--sports-gold-rgb, 214 166 64) / 0.26));
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 14px 26px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 14px 28px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.035);
 }
 
 .card:focus-within {
-    border-color: rgba(199, 134, 21, 0.28);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.32);
     box-shadow:
-        0 0 0 1px rgba(199, 134, 21, 0.18),
-        0 14px 26px rgba(0, 0, 0, 0.18);
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.22),
+        0 0 0 6px rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
+        0 14px 28px rgba(0, 0, 0, 0.2);
 }
 
 .cardPrimary,
@@ -86,8 +88,8 @@
 .cardPrimary::after {
     background:
         linear-gradient(90deg,
-            rgba(46, 194, 126, 0.24) 0%,
-            rgba(199, 134, 21, 0.18) 62%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.38) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.14) 62%,
             transparent 100%);
 }
 
@@ -95,12 +97,14 @@
 .cardTertiary::after {
     background:
         linear-gradient(90deg,
-            rgba(46, 194, 126, 0.18) 0%,
-            rgba(199, 134, 21, 0.14) 56%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.28) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.1) 56%,
             transparent 100%);
 }
 
 .cardTop {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-rows: auto minmax(4.9rem, auto) minmax(4.7rem, auto);
     gap: clamp(0.5rem, 0.72vw, 0.64rem);
@@ -117,32 +121,33 @@
 
 .cardEyebrow {
     margin: 0;
-    font-size: 0.7rem;
+    font-size: var(--sports-kicker-size, 0.7rem);
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(199, 134, 21, 0.9);
+    color: var(--sports-gold, #d6a640);
 }
 
 .cardTitle {
     inline-size: 100%;
     min-block-size: 3.5rem;
     margin: 0;
-    font-size: clamp(1rem, 1.1vw, 1.14rem);
-    font-weight: 800;
-    line-height: 1.14;
-    letter-spacing: -0.024em;
-    color: rgba(255, 255, 255, 0.96);
+    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    font-weight: 850;
+    line-height: var(--sports-card-title-line, 1.08);
+    letter-spacing: var(--sports-card-title-spacing, -0.035em);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
     text-wrap: balance;
 }
 
 .cardDescription,
 .cardEmphasis {
     margin: 0;
-    font-size: clamp(0.9rem, 0.9vw, 0.94rem);
+    font-size: clamp(0.86rem, 0.88vw, 0.92rem);
     line-height: 1.52;
-    color: rgba(226, 230, 236, 0.74);
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+    text-wrap: pretty;
 }
 
 .cardDescription {
@@ -152,20 +157,20 @@
 .cardEmphasis {
     position: relative;
     min-block-size: 4.7rem;
-    padding-inline-start: 0.4rem;
-    color: rgba(236, 239, 244, 0.82);
+    padding-inline-start: 0.48rem;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
 }
 
 .cardEmphasis::before {
     content: "";
     position: absolute;
-    inset-block: 0.08rem 0.08rem;
+    inset-block: 0.08rem;
     inset-inline-start: 0;
     inline-size: 1px;
     border-radius: 999px;
     background:
         linear-gradient(180deg,
-            rgba(199, 134, 21, 0.34) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.36) 0%,
             rgba(255, 255, 255, 0.05) 100%);
 }
 
@@ -175,13 +180,15 @@
 }
 
 .cardBottom {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(0.68rem, 0.8vw, 0.82rem);
     align-content: start;
+    gap: clamp(0.68rem, 0.8vw, 0.82rem);
     min-inline-size: 0;
-    padding-block-start: 0.1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-block-start: 0.18rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.045);
 }
 
 .metaBlock {
@@ -195,11 +202,11 @@
 .metaLabel {
     margin: 0;
     font-size: 0.7rem;
-    font-weight: 800;
+    font-weight: 850;
     line-height: 1.15;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(199, 134, 21, 0.9);
+    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.9);
 }
 
 .metaList {
@@ -215,28 +222,28 @@
 .metaItem {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
-    gap: 0.42rem;
     align-items: start;
+    gap: 0.42rem;
     min-inline-size: 0;
-    font-size: clamp(0.86rem, 0.88vw, 0.92rem);
-    line-height: 1.38;
-    color: rgba(229, 233, 239, 0.82);
+    font-size: clamp(0.84rem, 0.86vw, 0.9rem);
+    line-height: 1.4;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
 }
 
 .metaDot {
     inline-size: 0.3rem;
     block-size: 0.3rem;
-    margin-top: 0.4rem;
+    margin-top: 0.42rem;
     border-radius: 999px;
     flex: 0 0 auto;
     background:
         radial-gradient(circle at 50% 50%,
-            rgba(231, 183, 72, 0.98) 0%,
-            rgba(199, 134, 21, 0.86) 58%,
-            rgba(199, 134, 21, 0.2) 100%);
+            rgba(255, 226, 145, 0.98) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.9) 58%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.22) 100%);
     box-shadow:
-        0 0 0 3px rgba(199, 134, 21, 0.07),
-        0 0 8px rgba(199, 134, 21, 0.1);
+        0 0 0 3px rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
+        0 0 8px rgb(var(--sports-gold-rgb, 214 166 64) / 0.12);
 }
 
 @media (min-width: 921px) and (max-width: 1180px) {
@@ -285,7 +292,7 @@
     .cardEmphasis {
         font-size: 0.87rem;
         line-height: 1.5;
-        padding-inline-start: 0.38rem;
+        padding-inline-start: 0.42rem;
     }
 
     .cardBottom {

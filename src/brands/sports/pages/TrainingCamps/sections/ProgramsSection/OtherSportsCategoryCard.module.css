@@ -1,42 +1,52 @@
 .categoryCard {
     position: relative;
     display: grid;
-    gap: 0.7rem;
+    gap: 0.72rem;
     padding: 0.95rem;
-    border-radius: 1rem;
+    border-radius: var(--sports-radius-md, 1rem);
     background:
+        radial-gradient(105% 130% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
+            transparent 48%),
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.032) 0%,
-            rgba(255, 255, 255, 0.014) 100%);
+            rgba(255, 255, 255, 0.012) 100%);
     border: 1px solid rgba(255, 255, 255, 0.065);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        0 8px 18px rgba(0, 0, 0, 0.12);
     transition:
-        transform 0.26s ease,
-        border-color 0.26s ease,
-        box-shadow 0.26s ease,
-        background 0.26s ease;
+        transform 0.24s ease,
+        border-color 0.24s ease,
+        box-shadow 0.24s ease,
+        background 0.24s ease;
     transition-delay: var(--category-delay, 0ms);
 }
 
 .categoryCard:hover,
 .categoryCard:focus-within {
     transform: translateY(-1px);
-    border-color: rgba(214, 166, 64, 0.18);
-    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.12);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.22);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.036),
+        0 12px 24px rgba(0, 0, 0, 0.16);
     background:
+        radial-gradient(105% 130% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.06) 0%,
+            transparent 48%),
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.04) 0%,
-            rgba(255, 255, 255, 0.016) 100%);
+            rgba(255, 255, 255, 0.015) 100%);
 }
 
 .categoryTitle {
     margin: 0;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: color-mix(in oklab,
-            rgb(229, 189, 80),
-            rgb(61, 209, 135) 28%);
+    color: var(--sports-gold, #d6a640);
 }
 
 .chips {
@@ -55,29 +65,28 @@
     border-radius: 999px;
     overflow: hidden;
     isolation: isolate;
+    outline: none;
     background:
         radial-gradient(120% 160% at 0% 50%,
-            rgba(199, 134, 21, 0.045) 0%,
-            rgba(199, 134, 21, 0.016) 18%,
-            transparent 44%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.016) 20%,
+            transparent 46%),
         linear-gradient(180deg,
             rgba(12, 20, 28, 0.78) 0%,
-            rgba(7, 14, 21, 0.9) 100%);
+            rgba(7, 14, 21, 0.92) 100%);
     border: 1px solid rgba(255, 255, 255, 0.075);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.028),
-        inset 0 0 0 1px rgba(255, 191, 73, 0.014),
         0 6px 14px rgba(0, 0, 0, 0.12);
-    font-size: 0.8rem;
+    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
     line-height: 1.2;
-    color: rgba(233, 238, 244, 0.88);
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
     transition:
-        transform 0.22s ease,
-        border-color 0.22s ease,
-        background 0.22s ease,
-        color 0.22s ease,
-        box-shadow 0.22s ease;
-    outline: none;
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .chip::before {
@@ -89,12 +98,11 @@
     background:
         radial-gradient(circle at 35% 35%,
             rgba(255, 244, 204, 0.98) 0%,
-            rgba(244, 198, 88, 0.96) 34%,
-            rgba(199, 134, 21, 0.94) 68%,
-            rgba(140, 92, 14, 0.98) 100%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.96) 46%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.98) 100%);
     box-shadow:
-        0 0 0 1px rgba(255, 214, 122, 0.1),
-        0 0 7px rgba(214, 166, 64, 0.18);
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.1),
+        0 0 7px rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
 }
 
 .chip::after {
@@ -109,31 +117,33 @@
             transparent 38%,
             transparent 72%,
             rgba(0, 0, 0, 0.06) 100%);
-    opacity: 0.9;
 }
 
 .chip:hover,
 .chip:focus-visible {
     transform: translateY(-1px);
-    border-color: rgba(214, 166, 64, 0.22);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
     background:
         radial-gradient(120% 160% at 0% 50%,
-            rgba(199, 134, 21, 0.065) 0%,
-            rgba(199, 134, 21, 0.022) 18%,
-            transparent 44%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.065) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.022) 20%,
+            transparent 46%),
         linear-gradient(180deg,
             rgba(14, 24, 33, 0.86) 0%,
-            rgba(8, 16, 24, 0.94) 100%);
-    color: rgba(244, 247, 251, 0.95);
+            rgba(8, 16, 24, 0.96) 100%);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.036),
-        inset 0 0 0 1px rgba(255, 191, 73, 0.022),
         0 8px 16px rgba(0, 0, 0, 0.14),
-        0 0 12px rgba(199, 134, 21, 0.05);
+        0 0 12px rgb(var(--sports-gold-rgb, 214 166 64) / 0.055);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 767.98px) {
     .categoryCard {
         padding: 0.85rem;
+    }
+
+    .chip {
+        font-size: 0.78rem;
     }
 }

@@ -21,10 +21,10 @@ export default function ConsultancyPage() {
   return (
     <div className={styles.pageWrap} data-brand="sports">
       <main
-        id="sports-consultancy"
+        id={data.ui?.pageId || data.id}
         className={styles.inner}
         role="region"
-        aria-label="Sunlive Sports — Consultoria"
+        aria-label={data.ui?.pageAriaLabel}
       >
         <div className={styles.contentFlow}>
           <header className={styles.heroSection}>
@@ -40,12 +40,10 @@ export default function ConsultancyPage() {
               ui={sections.hero?.ui}
             />
           </header>
+          <ConsultancyEntitiesSection data={sections.consultancyEntities} />
+          <ConsultancyAreasSection data={sections.areas} />
 
-          <div className={styles.sections}>
-            <ConsultancyEntitiesSection data={sections.consultancyEntities} />
-            <ConsultancyAreasSection data={sections.consultancyAreas} />
-            <SportsClosingCTA data={sections.cta} />
-          </div>
+          <SportsClosingCTA data={sections.cta} />
         </div>
       </main>
     </div>

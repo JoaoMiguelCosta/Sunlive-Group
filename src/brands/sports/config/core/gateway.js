@@ -37,9 +37,9 @@ export const SPORTS_GATEWAY = Object.freeze([
     href: SPORTS_PAGE_PATHS.leisureSportsTourism,
   },
   {
-    key: "sports-disciplines",
+    key: "sports-modalities",
     label: "Modalidades",
-    href: SPORTS_PAGE_PATHS.disciplines,
+    href: SPORTS_PAGE_PATHS.modalities,
   },
   {
     key: "infrastructures",

@@ -16,71 +16,71 @@
     min-block-size: clamp(7.05rem, 7.55vw, 7.72rem);
     padding:
         clamp(1rem, 1.22vw, 1.1rem) clamp(0.98rem, 1.22vw, 1.1rem);
-    border-radius: clamp(1rem, 1.32vw, 1.14rem);
-    border: 1px solid rgba(255, 255, 255, 0.05);
     overflow: hidden;
+    border-radius: var(--sports-radius-md, 1rem);
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
     background:
         radial-gradient(130% 142% at 100% 0%,
-            rgba(199, 134, 21, 0.03) 0%,
-            transparent 38%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
+            transparent 40%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.018) 0%,
-            rgba(255, 255, 255, 0.006) 100%),
+            rgba(255, 255, 255, 0.022) 0%,
+            rgba(255, 255, 255, 0.007) 100%),
         linear-gradient(155deg,
-            rgba(7, 15, 20, 0.875) 0%,
-            rgba(4, 10, 14, 0.952) 100%);
+            rgba(7, 13, 21, 0.9) 0%,
+            rgba(4, 9, 17, 0.965) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.018),
-        0 14px 30px rgba(0, 0, 0, 0.13);
+        inset 0 1px 0 rgba(255, 255, 255, 0.024),
+        0 14px 30px rgba(0, 0, 0, 0.16);
     transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        background 180ms ease;
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
 .capabilityCard::before {
     content: "";
     position: absolute;
-    inset: 0 0 auto 0;
+    inset: 0 0 auto;
     block-size: 1px;
     pointer-events: none;
     background:
         linear-gradient(90deg,
-            rgba(46, 194, 126, 0.16) 0%,
-            rgba(199, 134, 21, 0.16) 100%);
-    opacity: 0.62;
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.34) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.08) 100%);
+    opacity: 0.72;
 }
 
 .capabilityCard::after {
     content: "";
     position: absolute;
-    inset: 0.5px;
-    pointer-events: none;
+    inset: 1px;
     border-radius: inherit;
-    border: 1px solid rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.024);
     opacity: 0.44;
+    pointer-events: none;
 }
 
 .capabilityCardPrimary {
-    border-color: rgba(199, 134, 21, 0.16);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
     background:
         radial-gradient(124% 146% at 0% 0%,
-            rgba(46, 194, 126, 0.074) 0%,
-            transparent 42%),
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.038) 0%,
+            transparent 44%),
         radial-gradient(130% 146% at 100% 0%,
-            rgba(199, 134, 21, 0.068) 0%,
-            transparent 34%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.075) 0%,
+            transparent 36%),
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.042) 0%,
             rgba(255, 255, 255, 0.012) 100%),
         linear-gradient(145deg,
-            rgba(8, 18, 23, 0.972) 0%,
-            rgba(4, 10, 14, 0.992) 100%);
+            rgba(8, 15, 23, 0.97) 0%,
+            rgba(4, 9, 17, 0.992) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.028),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
         inset 0 -1px 0 rgba(255, 255, 255, 0.012),
-        0 14px 28px rgba(0, 0, 0, 0.17);
+        0 14px 30px rgba(0, 0, 0, 0.18);
 }
 
 .capabilityIndex {
@@ -90,19 +90,22 @@
     inline-size: 2.02rem;
     block-size: 2.02rem;
     border-radius: 999px;
-    border: 1px solid rgba(199, 134, 21, 0.16);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
     background:
+        radial-gradient(120% 120% at 30% 20%,
+            rgba(255, 255, 255, 0.12) 0%,
+            transparent 38%),
         linear-gradient(180deg,
-            rgba(199, 134, 21, 0.13) 0%,
-            rgba(46, 194, 126, 0.04) 100%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.06) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 7px 15px rgba(0, 0, 0, 0.16);
     font-size: 0.7rem;
     line-height: 1;
-    font-weight: 760;
+    font-weight: 850;
     letter-spacing: 0.12em;
-    color: rgba(199, 134, 21, 0.96);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.038),
-        0 6px 14px rgba(0, 0, 0, 0.13);
+    color: var(--sports-gold, #d6a640);
 }
 
 .capabilityContent {
@@ -114,41 +117,43 @@
 
 .capabilityTitle {
     margin: 0;
-    font-size: clamp(1rem, 1.02vw, 1.09rem);
-    line-height: 1.12;
-    letter-spacing: -0.028em;
-    font-weight: 680;
-    color: rgba(255, 255, 255, 0.958);
+    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    line-height: var(--sports-card-title-line, 1.08);
+    letter-spacing: var(--sports-card-title-spacing, -0.035em);
+    font-weight: 850;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    text-wrap: balance;
 }
 
 .capabilityDescription {
     margin: 0;
-    font-size: 0.915rem;
+    font-size: var(--sports-support-mini-text-size, clamp(0.87rem, 0.84vw, 0.91rem));
     line-height: 1.56;
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    text-wrap: pretty;
 }
 
 .capabilityCard:focus-within {
-    border-color: rgba(199, 134, 21, 0.22);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.028),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
-        0 0 0 1px rgba(199, 134, 21, 0.14),
-        0 14px 30px rgba(0, 0, 0, 0.19);
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.18),
+        0 0 0 6px rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
+        0 16px 30px rgba(0, 0, 0, 0.2);
 }
 
 @media (hover: hover) and (pointer: fine) {
     .capabilityCard:hover {
         transform: translateY(-2px);
-        border-color: rgba(199, 134, 21, 0.2);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
         box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.028),
-            inset 0 -1px 0 rgba(255, 255, 255, 0.012),
-            0 16px 30px rgba(0, 0, 0, 0.19);
+            inset 0 1px 0 rgba(255, 255, 255, 0.034),
+            0 16px 32px rgba(0, 0, 0, 0.2),
+            0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.035);
     }
 
     .capabilityCard:hover .capabilityTitle {
-        color: rgba(255, 255, 255, 0.985);
+        color: var(--sports-text, rgba(246, 248, 252, 0.96));
     }
 }
 

@@ -6,7 +6,7 @@ export { default as athletes } from "./athletes.js";
 export { default as specialisedServices } from "./specialisedServices.js";
 export { default as education } from "./education.js";
 export { default as leisureSportsTourism } from "./leisureSportsTourism.js";
-export { default as disciplines } from "./disciplines.js";
+export { default as modalities } from "./modalities.js";
 export { default as infrastructures } from "./infrastructures.js";
 export { default as logistics } from "./logistics.js";
 export { default as consultancy } from "./consultancy.js";
