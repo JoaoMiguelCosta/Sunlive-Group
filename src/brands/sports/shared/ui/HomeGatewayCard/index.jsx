@@ -36,6 +36,7 @@ export default function HomeGatewayCard({
           label={label}
           isFeatured={isFeatured}
         />
+
         <HomeGatewayCardDecorations />
       </HomeGatewayCardLink>
     </article>
