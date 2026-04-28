@@ -1,0 +1,534 @@
+.switcher {
+    position: relative;
+    z-index: 80;
+    min-width: 0;
+    flex: 0 1 auto;
+
+    --switcher-gold: #d6a640;
+    --switcher-gold-strong: #f0c76a;
+    --switcher-gold-muted: rgba(214, 166, 64, 0.34);
+    --switcher-green: #2ec27e;
+    --switcher-green-soft: rgba(46, 194, 126, 0.09);
+    --switcher-bg-top: rgba(10, 20, 19, 0.98);
+    --switcher-bg-bottom: rgba(3, 8, 9, 0.99);
+    --switcher-border: rgba(214, 166, 64, 0.38);
+    --switcher-border-hover: rgba(214, 166, 64, 0.68);
+    --switcher-text: rgba(248, 251, 246, 0.97);
+    --switcher-text-soft: rgba(226, 232, 240, 0.84);
+    --switcher-menu-width: clamp(17rem, 28vw, 22rem);
+}
+
+.toggle {
+    position: relative;
+    width: auto;
+    max-inline-size: min(22rem, calc(100vw - 2rem));
+    min-height: clamp(42px, 3vw, 48px);
+    height: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 2.45rem 0.5rem 1.45rem;
+    border: 1px solid var(--switcher-border);
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 88% 18%, var(--switcher-green-soft), transparent 34%),
+        linear-gradient(90deg, rgba(214, 166, 64, 0.1), transparent 36%),
+        linear-gradient(180deg, var(--switcher-bg-top), var(--switcher-bg-bottom));
+    color: var(--switcher-text);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        inset 0 -1px 0 rgba(214, 166, 64, 0.1),
+        0 10px 22px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+    text-align: center;
+    isolation: isolate;
+    overflow: hidden;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        color 180ms ease,
+        background-color 180ms ease;
+}
+
+.toggle::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 34%),
+        radial-gradient(circle at 82% 50%, rgba(214, 166, 64, 0.12), transparent 42%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease;
+}
+
+.toggle:hover {
+    transform: translateY(-1px);
+    border-color: var(--switcher-border-hover);
+    color: #ffffff;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(214, 166, 64, 0.14),
+        0 14px 30px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(214, 166, 64, 0.12);
+}
+
+.toggle:hover::after {
+    opacity: 1;
+}
+
+.toggle:active {
+    transform: translateY(0);
+}
+
+.toggle:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 3px rgba(214, 166, 64, 0.26),
+        0 0 0 6px rgba(255, 255, 255, 0.075),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.toggle[data-current="true"] {
+    border-color: rgba(214, 166, 64, 0.46);
+}
+
+.currentLabel {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    color: currentColor;
+    font-size: clamp(0.88rem, 0.3vw + 0.82rem, 1rem);
+    font-weight: 850;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+}
+
+.chevron {
+    position: absolute;
+    z-index: 1;
+    inset-inline-end: 1rem;
+    inset-block-start: 50%;
+    flex: 0 0 auto;
+    inline-size: 0.78rem;
+    block-size: 0.48rem;
+    color: var(--switcher-gold);
+    filter: drop-shadow(0 0 8px rgba(214, 166, 64, 0.2));
+    transform: translateY(-50%);
+    transition:
+        transform 180ms ease,
+        color 180ms ease;
+}
+
+.switcher[data-open="true"] .toggle {
+    transform: translateY(-1px);
+    border-color: rgba(214, 166, 64, 0.72);
+    color: #ffffff;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(214, 166, 64, 0.16),
+        0 16px 34px rgba(0, 0, 0, 0.34),
+        0 0 0 1px rgba(214, 166, 64, 0.14);
+}
+
+.switcher[data-open="true"] .toggle::after {
+    opacity: 1;
+}
+
+.switcher[data-open="true"] .chevron {
+    transform: translateY(-50%) rotate(180deg);
+    color: var(--switcher-gold-strong);
+}
+
+/* =========================
+   Submenu
+   ========================= */
+
+.menu {
+    position: absolute;
+    inset-block-start: calc(100% + 0.58rem);
+    inset-inline-start: 0;
+    z-index: 90;
+    inline-size: min(var(--switcher-menu-width), calc(100vw - 2rem));
+    max-block-size: min(68vh, 34rem);
+    padding: 0.5rem;
+    border: 1px solid rgba(214, 166, 64, 0.28);
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at 16% 0%, rgba(46, 194, 126, 0.1), transparent 34%),
+        radial-gradient(circle at 100% 100%, rgba(214, 166, 64, 0.1), transparent 38%),
+        linear-gradient(180deg, rgba(10, 17, 18, 0.985), rgba(3, 8, 9, 0.99));
+    box-shadow:
+        0 24px 58px rgba(0, 0, 0, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(214, 166, 64, 0.45) rgba(255, 255, 255, 0.05);
+}
+
+.menu::-webkit-scrollbar {
+    inline-size: 8px;
+}
+
+.menu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.045);
+    border-radius: 999px;
+}
+
+.menu::-webkit-scrollbar-thumb {
+    background: rgba(214, 166, 64, 0.42);
+    border-radius: 999px;
+}
+
+.menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(214, 166, 64, 0.62);
+}
+
+.menu[hidden] {
+    display: none;
+}
+
+.menuList {
+    display: grid;
+    gap: 0.22rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menuLink {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    min-height: 2.7rem;
+    padding: 0.72rem 0.82rem;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    color: var(--switcher-text-soft);
+    text-decoration: none;
+    overflow: hidden;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease,
+        transform 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.menuLink::before {
+    content: "";
+    position: absolute;
+    inset-block: 0.58rem;
+    inset-inline-start: 0;
+    inline-size: 3px;
+    border-radius: 999px;
+    background: rgba(214, 166, 64, 0.82);
+    opacity: 0;
+    transform: scaleY(0.45);
+    transition:
+        opacity 160ms ease,
+        transform 160ms ease;
+}
+
+.menuLink:hover {
+    transform: translateX(2px);
+    border-color: rgba(214, 166, 64, 0.16);
+    color: #ffffff;
+    background:
+        linear-gradient(90deg, rgba(214, 166, 64, 0.14), rgba(214, 166, 64, 0.04));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.menuLink:hover::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.menuLink:focus-visible {
+    outline: none;
+    border-color: rgba(214, 166, 64, 0.28);
+    color: #ffffff;
+    background:
+        linear-gradient(90deg, rgba(214, 166, 64, 0.16), rgba(214, 166, 64, 0.06));
+    box-shadow:
+        0 0 0 3px rgba(214, 166, 64, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.menuLink:focus-visible::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.menuLink[data-variant="cta"] {
+    color: #fff4d8;
+    background:
+        linear-gradient(90deg, rgba(214, 166, 64, 0.12), rgba(214, 166, 64, 0.04));
+}
+
+.menuLink[data-variant="cta"]:hover {
+    background:
+        linear-gradient(90deg, rgba(214, 166, 64, 0.2), rgba(214, 166, 64, 0.08));
+}
+
+.menuLabel {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    overflow: hidden;
+    font-size: clamp(0.86rem, 0.18vw + 0.82rem, 0.94rem);
+    font-weight: 760;
+    line-height: 1.15;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.menuArrow {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    inline-size: 0.86rem;
+    block-size: 0.86rem;
+    color: rgba(214, 166, 64, 0.76);
+    transition:
+        transform 160ms ease,
+        color 160ms ease;
+}
+
+.menuLink:hover .menuArrow,
+.menuLink:focus-visible .menuArrow {
+    transform: translateX(2px);
+    color: var(--switcher-gold-strong);
+}
+
+/* =========================
+   Responsive
+   ========================= */
+
+@media (max-width: 900px) {
+    .switcher {
+        --switcher-menu-width: clamp(16rem, 42vw, 20rem);
+    }
+
+    .toggle {
+        max-inline-size: min(22rem, calc(100vw - 2rem));
+        min-height: 40px;
+        padding-inline: 1.25rem 2.3rem;
+    }
+
+    .currentLabel {
+        font-size: 0.88rem;
+    }
+
+    .menu {
+        max-block-size: min(66vh, 31rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .switcher {
+        --switcher-menu-width: min(18rem, calc(100vw - 1.5rem));
+    }
+
+    .toggle {
+        min-height: 38px;
+        max-inline-size: min(100%, calc(100vw - 2rem));
+        padding: 0.42rem 2.15rem 0.42rem 1.15rem;
+    }
+
+    .currentLabel {
+        font-size: 0.84rem;
+    }
+
+    .chevron {
+        inset-inline-end: 0.9rem;
+        inline-size: 0.72rem;
+        block-size: 0.44rem;
+    }
+
+    .menu {
+        padding: 0.42rem;
+        border-radius: 18px;
+        max-block-size: min(64vh, 28rem);
+    }
+
+    .menuLink {
+        min-height: 2.65rem;
+        padding: 0.7rem 0.76rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .switcher {
+        width: 100%;
+        --switcher-menu-width: min(100%, calc(100vw - 2rem));
+    }
+
+    .toggle {
+        width: 100%;
+        max-inline-size: none;
+        padding-inline: 2.35rem;
+    }
+
+    .menu {
+        inset-inline-start: 50%;
+        inline-size: min(100%, calc(100vw - 2rem));
+        max-block-size: min(58vh, 25rem);
+        transform: translateX(-50%);
+    }
+
+    .menuList {
+        gap: 0.2rem;
+    }
+
+    .menuLink {
+        min-height: 2.75rem;
+        padding: 0.72rem 0.78rem;
+    }
+
+    .menuLabel {
+        font-size: 0.88rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .toggle {
+        min-height: 36px;
+        padding-block: 0.4rem;
+        padding-inline: 2.15rem;
+    }
+
+    .currentLabel {
+        font-size: 0.82rem;
+    }
+
+    .chevron {
+        inset-inline-end: 0.9rem;
+    }
+
+    .menu {
+        inline-size: min(100%, calc(100vw - 1.25rem));
+        max-block-size: min(56vh, 22rem);
+        padding: 0.36rem;
+        border-radius: 16px;
+    }
+
+    .menuLink {
+        min-height: 2.55rem;
+        padding: 0.64rem 0.68rem;
+        border-radius: 12px;
+    }
+
+    .menuLabel {
+        font-size: 0.85rem;
+    }
+
+    .menuArrow {
+        inline-size: 0.78rem;
+        block-size: 0.78rem;
+    }
+}
+
+@media (max-height: 620px) {
+    .menu {
+        max-block-size: min(52vh, 22rem);
+    }
+
+    .menuLink {
+        min-height: 2.45rem;
+        padding-block: 0.58rem;
+    }
+}
+
+@media (max-height: 480px) {
+    .menu {
+        max-block-size: min(48vh, 18rem);
+    }
+
+    .menuList {
+        gap: 0.14rem;
+    }
+
+    .menuLink {
+        min-height: 2.3rem;
+        padding-block: 0.5rem;
+    }
+}
+
+@supports (height: 100dvh) {
+    .menu {
+        max-block-size: min(68dvh, 34rem);
+    }
+
+    @media (max-width: 900px) {
+        .menu {
+            max-block-size: min(66dvh, 31rem);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .menu {
+            max-block-size: min(64dvh, 28rem);
+        }
+    }
+
+    @media (max-width: 500px) {
+        .menu {
+            max-block-size: min(58dvh, 25rem);
+        }
+    }
+
+    @media (max-width: 380px) {
+        .menu {
+            max-block-size: min(56dvh, 22rem);
+        }
+    }
+
+    @media (max-height: 620px) {
+        .menu {
+            max-block-size: min(52dvh, 22rem);
+        }
+    }
+
+    @media (max-height: 480px) {
+        .menu {
+            max-block-size: min(48dvh, 18rem);
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .toggle,
+    .toggle::after,
+    .chevron,
+    .menuLink,
+    .menuLink::before,
+    .menuArrow {
+        transition: none;
+    }
+
+    .toggle:hover,
+    .switcher[data-open="true"] .toggle,
+    .menuLink:hover {
+        transform: none;
+    }
+
+    .switcher[data-open="true"] .chevron {
+        transform: translateY(-50%) rotate(180deg);
+    }
+}

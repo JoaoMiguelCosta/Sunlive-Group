@@ -3,28 +3,26 @@
    ======================================================= */
 
 .utilityBar {
-    --accent: var(--sl-gold-400, #C78615);
+    --accent: var(--sl-gold-400, #c78615);
     --line-inset: clamp(12px, 2vw, 20px);
     --ub-gap: 0.14rem;
     --sl-container-lg: 1360px;
 
     position: relative;
+    z-index: 60;
     inline-size: min(100%, var(--sl-container-lg));
     margin-inline: auto;
     display: grid;
     place-items: center;
-    z-index: 60;
 }
 
-.inner,
-.inner.hasLeft,
-.inner.hasCenter {
+.inner {
     position: relative;
     inline-size: 100%;
+    min-height: 56px;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    min-height: 56px;
     padding-block: 0.35rem 0.25rem;
 }
 
@@ -64,7 +62,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: flex-end;
-  
+    gap: var(--ub-gap);
     min-width: 0;
 }
 
@@ -78,18 +76,18 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    min-height: 40px;
     min-width: 0;
     max-width: 100%;
+    min-height: 40px;
     padding: 0.5rem 0.9rem;
-    border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
     color: rgba(255, 255, 255, 0.92);
-    text-decoration: none;
-    font-weight: 700;
     font-size: clamp(0.84rem, 0.25vw + 0.82rem, 0.96rem);
+    font-weight: 700;
     line-height: 1;
     letter-spacing: 0.015em;
+    text-decoration: none;
     white-space: nowrap;
     transition:
         transform 180ms ease,
@@ -122,17 +120,17 @@
 
 .backIcon,
 .homeIcon {
+    flex: 0 0 auto;
     inline-size: 1rem;
     block-size: 1rem;
-    flex: 0 0 auto;
 }
 
 .backText,
 .homeText {
-    
+    max-inline-size: 100%;
+  
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-inline-size: 100%;
 }
 
 /* =======================================================
@@ -143,7 +141,6 @@
     display: inline-flex;
     align-items: center;
     justify-content: flex-end;
-
     min-width: 0;
     flex-wrap: nowrap;
 }
@@ -182,8 +179,8 @@
 
 .langWrap {
     position: relative;
-    min-width: 0;
     z-index: 61;
+    min-width: 0;
 }
 
 .langBtn {
@@ -214,9 +211,9 @@
 .langText {
     font-size: clamp(0.86rem, 0.2vw + 0.84rem, 0.94rem);
     font-weight: 700;
+    line-height: 1;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    line-height: 1;
     white-space: nowrap;
 }
 
@@ -244,8 +241,8 @@
     margin: 0;
     padding: 0.35rem;
     list-style: none;
-    border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
     background: linear-gradient(180deg,
             rgba(18, 22, 30, 0.96) 0%,
             rgba(8, 12, 18, 0.98) 100%);
@@ -262,12 +259,12 @@
     inline-size: 100%;
     display: grid;
     gap: 0.15rem;
-    text-align: left;
     padding: 0.65rem 0.75rem;
     border: 0;
     border-radius: 12px;
     background: transparent;
     color: rgba(255, 255, 255, 0.92);
+    text-align: left;
     cursor: pointer;
     transition:
         background-color 160ms ease,
@@ -281,9 +278,9 @@
 .langItemLabel {
     display: block;
     font-weight: 700;
+    line-height: 1.15;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    line-height: 1.15;
     white-space: nowrap;
 }
 
@@ -303,14 +300,14 @@
 }
 
 /* =======================================================
-   Base comum — brands com nav à esquerda
+   Headers com navegação à esquerda
    Logos / Travel / Sports / Hotel
    ======================================================= */
 
-.utilityBar[data-variant="logos-header"],
-.utilityBar[data-variant="travel-header"],
-.utilityBar[data-variant="sports-header"],
-.utilityBar[data-variant="hotel-header"] {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) {
     --header-divider-inner: rgba(206, 212, 219, 0.28);
     --header-divider-home: rgba(255, 162, 0, 0.85);
     --header-link-color: rgba(255, 248, 232, 0.94);
@@ -325,21 +322,17 @@
     --header-home-border-hover: rgba(244, 197, 93, 0.62);
 }
 
-.utilityBar[data-variant="logos-header"] .inner::after,
-.utilityBar[data-variant="travel-header"] .inner::after,
-.utilityBar[data-variant="sports-header"] .inner::after,
-.utilityBar[data-variant="hotel-header"] .inner::after {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .inner::after {
     content: none;
 }
 
-.utilityBar[data-variant="logos-header"] .inner,
-.utilityBar[data-variant="logos-header"] .inner.hasLeft,
-.utilityBar[data-variant="travel-header"] .inner,
-.utilityBar[data-variant="travel-header"] .inner.hasLeft,
-.utilityBar[data-variant="sports-header"] .inner,
-.utilityBar[data-variant="sports-header"] .inner.hasLeft,
-.utilityBar[data-variant="hotel-header"] .inner,
-.utilityBar[data-variant="hotel-header"] .inner.hasLeft {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .inner {
     position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -350,10 +343,10 @@
     border-bottom: 1px solid var(--header-divider-inner);
 }
 
-.utilityBar[data-variant="logos-header"] .left,
-.utilityBar[data-variant="travel-header"] .left,
-.utilityBar[data-variant="sports-header"] .left,
-.utilityBar[data-variant="hotel-header"] .left {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .left {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -362,25 +355,20 @@
     gap: clamp(0.6rem, 1vw, 0.9rem);
 }
 
-.utilityBar[data-variant="logos-header"] .right,
-.utilityBar[data-variant="travel-header"] .right,
-.utilityBar[data-variant="sports-header"] .right,
-.utilityBar[data-variant="hotel-header"] .right {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .right {
     display: inline-flex;
     align-items: center;
     justify-self: end;
-   
     min-width: 0;
 }
 
-.utilityBar[data-variant="logos-header"] .backLink,
-.utilityBar[data-variant="logos-header"] .homeLink,
-.utilityBar[data-variant="travel-header"] .backLink,
-.utilityBar[data-variant="travel-header"] .homeLink,
-.utilityBar[data-variant="sports-header"] .backLink,
-.utilityBar[data-variant="sports-header"] .homeLink,
-.utilityBar[data-variant="hotel-header"] .backLink,
-.utilityBar[data-variant="hotel-header"] .homeLink {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) :is(.backLink, .homeLink) {
     min-height: clamp(42px, 3vw, 48px);
     padding: 0.52rem 1rem;
     border-radius: 999px;
@@ -388,130 +376,112 @@
     font-weight: 700;
 }
 
-.utilityBar[data-variant="logos-header"] .backLink,
-.utilityBar[data-variant="travel-header"] .backLink,
-.utilityBar[data-variant="sports-header"] .backLink,
-.utilityBar[data-variant="hotel-header"] .backLink {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .backLink {
+    border: 1px solid var(--header-back-border);
     background: linear-gradient(180deg,
             var(--header-back-bg-top),
             var(--header-back-bg-bottom));
-    border: 1px solid var(--header-back-border);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
         0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-.utilityBar[data-variant="logos-header"] .homeLink,
-.utilityBar[data-variant="travel-header"] .homeLink,
-.utilityBar[data-variant="sports-header"] .homeLink,
-.utilityBar[data-variant="hotel-header"] .homeLink {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .homeLink {
+    border: 1px solid var(--header-home-border);
     background: linear-gradient(180deg,
             var(--header-home-bg-top),
             var(--header-home-bg-bottom));
-    border: 1px solid var(--header-home-border);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.06),
         0 8px 18px rgba(0, 0, 0, 0.16);
 }
 
-.utilityBar[data-variant="logos-header"] .backLink:hover,
-.utilityBar[data-variant="logos-header"] .homeLink:hover,
-.utilityBar[data-variant="travel-header"] .backLink:hover,
-.utilityBar[data-variant="travel-header"] .homeLink:hover,
-.utilityBar[data-variant="sports-header"] .backLink:hover,
-.utilityBar[data-variant="sports-header"] .homeLink:hover,
-.utilityBar[data-variant="hotel-header"] .backLink:hover,
-.utilityBar[data-variant="hotel-header"] .homeLink:hover {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) :is(.backLink, .homeLink):hover {
     transform: translateY(-1px);
     color: var(--header-link-hover-color);
 }
 
-.utilityBar[data-variant="logos-header"] .backLink:hover,
-.utilityBar[data-variant="travel-header"] .backLink:hover,
-.utilityBar[data-variant="sports-header"] .backLink:hover,
-.utilityBar[data-variant="hotel-header"] .backLink:hover {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .backLink:hover {
     border-color: var(--header-back-border-hover);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.07),
         0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-.utilityBar[data-variant="logos-header"] .homeLink:hover,
-.utilityBar[data-variant="travel-header"] .homeLink:hover,
-.utilityBar[data-variant="sports-header"] .homeLink:hover,
-.utilityBar[data-variant="hotel-header"] .homeLink:hover {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .homeLink:hover {
     border-color: var(--header-home-border-hover);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.08),
         0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-.utilityBar[data-variant="logos-header"] .homeIcon,
-.utilityBar[data-variant="travel-header"] .homeIcon,
-.utilityBar[data-variant="sports-header"] .homeIcon,
-.utilityBar[data-variant="hotel-header"] .homeIcon {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .homeIcon {
     inline-size: 0.98em;
     block-size: 0.98em;
     opacity: 0.92;
 }
 
-.utilityBar[data-variant="logos-header"] .homeText,
-.utilityBar[data-variant="travel-header"] .homeText,
-.utilityBar[data-variant="sports-header"] .homeText,
-.utilityBar[data-variant="hotel-header"] .homeText {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .homeText {
     line-height: 1;
     white-space: nowrap;
 }
 
-.utilityBar[data-variant="logos-header"] .langBtn[data-open="true"] .chevron,
-.utilityBar[data-variant="travel-header"] .langBtn[data-open="true"] .chevron,
-.utilityBar[data-variant="sports-header"] .langBtn[data-open="true"] .chevron,
-.utilityBar[data-variant="hotel-header"] .langBtn[data-open="true"] .chevron {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langBtn[data-open="true"] .chevron {
     color: var(--accent);
 }
 
-.utilityBar[data-variant="logos-header"] .langItem[aria-current="true"],
-.utilityBar[data-variant="travel-header"] .langItem[aria-current="true"],
-.utilityBar[data-variant="sports-header"] .langItem[aria-current="true"],
-.utilityBar[data-variant="hotel-header"] .langItem[aria-current="true"] {
+:is(.utilityBar[data-variant="logos-header"],
+    .utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langItem[aria-current="true"] {
     color: var(--accent);
 }
 
 /* =======================================================
-   Border-bottom states
+   Border states
    ======================================================= */
 
 .utilityBar[data-variant="logos-header"] .inner,
-.utilityBar[data-variant="logos-header"] .inner.hasLeft {
-    border-bottom: 2px solid var(--header-divider-home);
-}
-
 .utilityBar[data-variant="travel-header"][data-page="travel-home"] .inner,
-.utilityBar[data-variant="travel-header"][data-page="travel-home"] .inner.hasLeft {
+.utilityBar[data-variant="sports-header"][data-page="sports-home"] .inner {
     border-bottom: 2px solid var(--header-divider-home);
 }
 
-.utilityBar[data-variant="sports-header"][data-page="sports-home"] .inner,
-.utilityBar[data-variant="sports-header"][data-page="sports-home"] .inner.hasLeft {
-    border-bottom: 2px solid var(--header-divider-home);
-}
-
-.utilityBar[data-variant="hotel-header"] .inner,
-.utilityBar[data-variant="hotel-header"] .inner.hasLeft {
+.utilityBar[data-variant="hotel-header"] .inner {
     border-bottom: 1px solid var(--header-divider-inner);
 }
 
 /* =======================================================
-   Group — right only
+   Group header
    ======================================================= */
 
 .utilityBar[data-variant="group-header"] {
-    --accent: var(--sl-gold-400, #C78615);
+    --accent: var(--sl-gold-400, #c78615);
     --group-divider: rgba(255, 162, 0, 0.85);
-}
-
-.utilityBar[data-variant="group-header"] .inner::after {
-    content: none;
 }
 
 .utilityBar[data-variant="group-header"] .inner {
@@ -520,8 +490,11 @@
     border-bottom: 2px solid var(--group-divider);
 }
 
-.utilityBar[data-variant="group-header"] .left,
-.utilityBar[data-variant="group-header"] .center {
+.utilityBar[data-variant="group-header"] .inner::after {
+    content: none;
+}
+
+.utilityBar[data-variant="group-header"] :is(.left, .center) {
     display: none;
 }
 
@@ -539,11 +512,11 @@
 }
 
 /* =======================================================
-   Colors por brand
+   Cores por brand
    ======================================================= */
 
 .utilityBar[data-variant="logos-header"] {
-    --accent: #F6C05C;
+    --accent: #f6c05c;
     --header-link-color: rgba(255, 248, 232, 0.96);
     --header-back-bg-top: rgba(58, 48, 27, 0.82);
     --header-back-bg-bottom: rgba(29, 24, 14, 0.92);
@@ -560,7 +533,7 @@
 }
 
 .utilityBar[data-variant="travel-header"] {
-    --accent: var(--sl-accent-500, #2EA7E0);
+    --accent: var(--sl-accent-500, #2ea7e0);
 }
 
 .utilityBar[data-variant="travel-header"] .langItem[aria-current="true"] {
@@ -568,7 +541,7 @@
 }
 
 .utilityBar[data-variant="sports-header"] {
-    --accent: var(--sl-accent-500, #2EC27E);
+    --accent: var(--sl-accent-500, #2ec27e);
     --header-link-color: rgba(248, 251, 246, 0.94);
     --header-link-hover-color: #ffffff;
     --header-back-bg-top: rgba(16, 50, 39, 0.92);
@@ -586,7 +559,7 @@
 }
 
 .utilityBar[data-variant="hotel-header"] {
-    --accent: #E6C893;
+    --accent: #e6c893;
     --header-link-color: rgba(255, 243, 218, 0.94);
     --header-back-bg-top: rgba(40, 21, 10, 0.76);
     --header-back-bg-bottom: rgba(24, 13, 8, 0.82);
@@ -603,124 +576,94 @@
 }
 
 /* =======================================================
-   Responsive
+   Responsive — base brands
    ======================================================= */
 
 @media (max-width: 900px) {
 
-    .utilityBar[data-variant="logos-header"] .inner,
-    .utilityBar[data-variant="logos-header"] .inner.hasLeft,
-    .utilityBar[data-variant="travel-header"] .inner,
-    .utilityBar[data-variant="travel-header"] .inner.hasLeft,
-    .utilityBar[data-variant="sports-header"] .inner,
-    .utilityBar[data-variant="sports-header"] .inner.hasLeft,
-    .utilityBar[data-variant="hotel-header"] .inner,
-    .utilityBar[data-variant="hotel-header"] .inner.hasLeft {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) .inner {
         min-height: 60px;
         column-gap: 0.75rem;
         padding-block: 0.4rem 0.28rem;
     }
 
-    .utilityBar[data-variant="logos-header"] .backText,
-    .utilityBar[data-variant="logos-header"] .homeText,
-    .utilityBar[data-variant="travel-header"] .backText,
-    .utilityBar[data-variant="travel-header"] .homeText,
-    .utilityBar[data-variant="sports-header"] .backText,
-    .utilityBar[data-variant="sports-header"] .homeText,
-    .utilityBar[data-variant="hotel-header"] .backText,
-    .utilityBar[data-variant="hotel-header"] .homeText {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) :is(.backText, .homeText) {
         max-inline-size: 42vw;
     }
 }
 
 @media (max-width: 640px) {
 
-    .utilityBar[data-variant="logos-header"],
-    .utilityBar[data-variant="travel-header"],
-    .utilityBar[data-variant="sports-header"],
-    .utilityBar[data-variant="hotel-header"] {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) {
         --line-inset: clamp(12px, 4vw, 18px);
         --ub-gap: 0.45rem;
     }
 
-    .utilityBar[data-variant="logos-header"] .inner,
-    .utilityBar[data-variant="logos-header"] .inner.hasLeft,
-    .utilityBar[data-variant="travel-header"] .inner,
-    .utilityBar[data-variant="travel-header"] .inner.hasLeft,
-    .utilityBar[data-variant="sports-header"] .inner,
-    .utilityBar[data-variant="sports-header"] .inner.hasLeft,
-    .utilityBar[data-variant="hotel-header"] .inner,
-    .utilityBar[data-variant="hotel-header"] .inner.hasLeft,
-    .utilityBar[data-variant="group-header"] .inner {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) .inner {
         min-height: 56px;
         padding-block: 0.3rem 0.22rem;
     }
 
-    .utilityBar[data-variant="logos-header"] .left,
-    .utilityBar[data-variant="travel-header"] .left,
-    .utilityBar[data-variant="sports-header"] .left,
-    .utilityBar[data-variant="hotel-header"] .left {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) .left {
         gap: 0.45rem;
         padding-inline-start: 6px;
     }
 
-    .utilityBar[data-variant="logos-header"] .backLink,
-    .utilityBar[data-variant="logos-header"] .homeLink,
-    .utilityBar[data-variant="travel-header"] .backLink,
-    .utilityBar[data-variant="travel-header"] .homeLink,
-    .utilityBar[data-variant="sports-header"] .backLink,
-    .utilityBar[data-variant="sports-header"] .homeLink,
-    .utilityBar[data-variant="hotel-header"] .backLink,
-    .utilityBar[data-variant="hotel-header"] .homeLink {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) :is(.backLink, .homeLink) {
         min-height: 38px;
         padding: 0.46rem 0.82rem;
         font-size: 0.88rem;
     }
 
-    .utilityBar[data-variant="logos-header"] .socials,
-    .utilityBar[data-variant="travel-header"] .socials,
-    .utilityBar[data-variant="sports-header"] .socials,
-    .utilityBar[data-variant="hotel-header"] .socials,
-    .utilityBar[data-variant="group-header"] .socials {
-        gap: 0.28rem;
-    }
-
-    .utilityBar[data-variant="logos-header"] .socialLink,
-    .utilityBar[data-variant="travel-header"] .socialLink,
-    .utilityBar[data-variant="sports-header"] .socialLink,
-    .utilityBar[data-variant="hotel-header"] .socialLink,
-    .utilityBar[data-variant="group-header"] .socialLink,
-    .utilityBar[data-variant="logos-header"] .langBtn,
-    .utilityBar[data-variant="travel-header"] .langBtn,
-    .utilityBar[data-variant="sports-header"] .langBtn,
-    .utilityBar[data-variant="hotel-header"] .langBtn,
-    .utilityBar[data-variant="group-header"] .langBtn {
-        inline-size: 36px;
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) :is(.socialLink, .langBtn) {
         block-size: 36px;
     }
 
-    .utilityBar[data-variant="logos-header"] .langBtn,
-    .utilityBar[data-variant="travel-header"] .langBtn,
-    .utilityBar[data-variant="sports-header"] .langBtn,
-    .utilityBar[data-variant="hotel-header"] .langBtn,
-    .utilityBar[data-variant="group-header"] .langBtn {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) .langBtn {
         inline-size: auto;
     }
 
-    .utilityBar[data-variant="logos-header"] .socialIcon,
-    .utilityBar[data-variant="travel-header"] .socialIcon,
-    .utilityBar[data-variant="sports-header"] .socialIcon,
-    .utilityBar[data-variant="hotel-header"] .socialIcon,
-    .utilityBar[data-variant="group-header"] .socialIcon {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) .socialIcon {
         inline-size: 18px;
         block-size: 18px;
     }
 
-    .utilityBar[data-variant="logos-header"] .langText,
-    .utilityBar[data-variant="travel-header"] .langText,
-    .utilityBar[data-variant="sports-header"] .langText,
-    .utilityBar[data-variant="hotel-header"] .langText,
-    .utilityBar[data-variant="group-header"] .langText {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) .langText {
         font-size: 0.88rem;
     }
 
@@ -752,36 +695,28 @@
 
 @media (max-width: 500px) {
 
-    .utilityBar[data-variant="logos-header"] .inner,
-    .utilityBar[data-variant="logos-header"] .inner.hasLeft,
-    .utilityBar[data-variant="travel-header"] .inner,
-    .utilityBar[data-variant="travel-header"] .inner.hasLeft,
-    .utilityBar[data-variant="sports-header"] .inner,
-    .utilityBar[data-variant="sports-header"] .inner.hasLeft,
-    .utilityBar[data-variant="hotel-header"] .inner,
-    .utilityBar[data-variant="hotel-header"] .inner.hasLeft,
-    .utilityBar[data-variant="group-header"] .inner {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) .inner {
         grid-template-columns: 1fr;
         min-height: auto;
         row-gap: 0.5rem;
         padding-block: 0.5rem 0.3rem;
     }
 
-    .utilityBar[data-variant="logos-header"] .left,
-    .utilityBar[data-variant="logos-header"] .right,
-    .utilityBar[data-variant="travel-header"] .left,
-    .utilityBar[data-variant="travel-header"] .right,
-    .utilityBar[data-variant="sports-header"] .left,
-    .utilityBar[data-variant="sports-header"] .right,
-    .utilityBar[data-variant="hotel-header"] .left,
-    .utilityBar[data-variant="hotel-header"] .right {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) :is(.left, .right) {
         width: 100%;
     }
 
-    .utilityBar[data-variant="logos-header"] .left,
-    .utilityBar[data-variant="travel-header"] .left,
-    .utilityBar[data-variant="sports-header"] .left,
-    .utilityBar[data-variant="hotel-header"] .left {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) .left {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -792,14 +727,10 @@
         padding-inline-start: 0;
     }
 
-    .utilityBar[data-variant="logos-header"] .backLink,
-    .utilityBar[data-variant="logos-header"] .homeLink,
-    .utilityBar[data-variant="travel-header"] .backLink,
-    .utilityBar[data-variant="travel-header"] .homeLink,
-    .utilityBar[data-variant="sports-header"] .backLink,
-    .utilityBar[data-variant="sports-header"] .homeLink,
-    .utilityBar[data-variant="hotel-header"] .backLink,
-    .utilityBar[data-variant="hotel-header"] .homeLink {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) :is(.backLink, .homeLink) {
         width: 100%;
         min-height: 36px;
         justify-content: center;
@@ -808,11 +739,11 @@
         gap: 0.42rem;
     }
 
-    .utilityBar[data-variant="logos-header"] .right,
-    .utilityBar[data-variant="travel-header"] .right,
-    .utilityBar[data-variant="sports-header"] .right,
-    .utilityBar[data-variant="hotel-header"] .right,
-    .utilityBar[data-variant="group-header"] .right {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) .right {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -821,57 +752,52 @@
         width: 100%;
     }
 
-    .utilityBar[data-variant="logos-header"] .socials,
-    .utilityBar[data-variant="travel-header"] .socials,
-    .utilityBar[data-variant="sports-header"] .socials,
-    .utilityBar[data-variant="hotel-header"] .socials,
-    .utilityBar[data-variant="group-header"] .socials {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) .socials {
         gap: 0.22rem;
     }
 
-    .utilityBar[data-variant="logos-header"] .socialLink,
-    .utilityBar[data-variant="travel-header"] .socialLink,
-    .utilityBar[data-variant="sports-header"] .socialLink,
-    .utilityBar[data-variant="hotel-header"] .socialLink,
-    .utilityBar[data-variant="group-header"] .socialLink,
-    .utilityBar[data-variant="logos-header"] .langBtn,
-    .utilityBar[data-variant="travel-header"] .langBtn,
-    .utilityBar[data-variant="sports-header"] .langBtn,
-    .utilityBar[data-variant="hotel-header"] .langBtn,
-    .utilityBar[data-variant="group-header"] .langBtn {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) :is(.socialLink, .langBtn) {
         block-size: 34px;
     }
 
-    .utilityBar[data-variant="logos-header"] .socialLink,
-    .utilityBar[data-variant="travel-header"] .socialLink,
-    .utilityBar[data-variant="sports-header"] .socialLink,
-    .utilityBar[data-variant="hotel-header"] .socialLink,
-    .utilityBar[data-variant="group-header"] .socialLink {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) .socialLink {
         inline-size: 34px;
     }
 
-    .utilityBar[data-variant="logos-header"] .socialIcon,
-    .utilityBar[data-variant="travel-header"] .socialIcon,
-    .utilityBar[data-variant="sports-header"] .socialIcon,
-    .utilityBar[data-variant="hotel-header"] .socialIcon,
-    .utilityBar[data-variant="group-header"] .socialIcon {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) .socialIcon {
         inline-size: 17px;
         block-size: 17px;
     }
 
-    .utilityBar[data-variant="logos-header"] .langBtn,
-    .utilityBar[data-variant="travel-header"] .langBtn,
-    .utilityBar[data-variant="sports-header"] .langBtn,
-    .utilityBar[data-variant="hotel-header"] .langBtn,
-    .utilityBar[data-variant="group-header"] .langBtn {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) .langBtn {
         padding-inline: 0.56rem;
     }
 
-    .utilityBar[data-variant="logos-header"] .langText,
-    .utilityBar[data-variant="travel-header"] .langText,
-    .utilityBar[data-variant="sports-header"] .langText,
-    .utilityBar[data-variant="hotel-header"] .langText,
-    .utilityBar[data-variant="group-header"] .langText {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"],
+        .utilityBar[data-variant="group-header"]) .langText {
         letter-spacing: 0.06em;
     }
 }
@@ -903,30 +829,162 @@
         max-inline-size: 50vw;
     }
 
-    .utilityBar[data-variant="logos-header"] .left,
-    .utilityBar[data-variant="logos-header"] .right,
-    .utilityBar[data-variant="travel-header"] .left,
-    .utilityBar[data-variant="travel-header"] .right,
-    .utilityBar[data-variant="sports-header"] .left,
-    .utilityBar[data-variant="sports-header"] .right,
-    .utilityBar[data-variant="hotel-header"] .left,
-    .utilityBar[data-variant="hotel-header"] .right,
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) :is(.left, .right),
     .utilityBar[data-variant="group-header"] .right {
         padding-inline: 6px;
     }
 
-    .utilityBar[data-variant="logos-header"] .backLink,
-    .utilityBar[data-variant="logos-header"] .homeLink,
-    .utilityBar[data-variant="travel-header"] .backLink,
-    .utilityBar[data-variant="travel-header"] .homeLink,
-    .utilityBar[data-variant="sports-header"] .backLink,
-    .utilityBar[data-variant="sports-header"] .homeLink,
-    .utilityBar[data-variant="hotel-header"] .backLink,
-    .utilityBar[data-variant="hotel-header"] .homeLink {
+    :is(.utilityBar[data-variant="logos-header"],
+        .utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) :is(.backLink, .homeLink) {
         padding-inline: 0.68rem;
         font-size: 0.82rem;
     }
 }
+
+/* =======================================================
+   Sports Header — Home + Page Switcher
+   ======================================================= */
+
+.utilityBar[data-variant="sports-header"][data-page="sports-inner"] .inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: clamp(0.75rem, 1.6vw, 1.25rem);
+    min-height: clamp(70px, 5.1vw, 88px);
+}
+
+.utilityBar[data-variant="sports-header"][data-page="sports-inner"] .left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(0.5rem, 1vw, 0.75rem);
+    width: 100%;
+    min-width: 0;
+}
+
+.utilityBar[data-variant="sports-header"][data-page="sports-inner"] .left>* {
+    min-width: 0;
+    flex: 0 1 auto;
+}
+
+.utilityBar[data-variant="sports-header"][data-page="sports-inner"] .homeLink {
+    flex: 0 1 auto;
+    max-inline-size: min(16rem, 36vw);
+}
+
+.utilityBar[data-variant="sports-header"][data-page="sports-inner"] .homeText {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.utilityBar[data-variant="sports-header"][data-page="sports-inner"] .right {
+    gap: clamp(0.15rem, 0.6vw, 0.35rem);
+}
+
+@media (max-width: 760px) {
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .inner {
+        grid-template-columns: 1fr;
+        row-gap: 0.58rem;
+        min-height: auto;
+        padding-block: 0.55rem 0.36rem;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] :is(.left, .right) {
+        width: 100%;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .left {
+        justify-content: center;
+        max-inline-size: min(100%, 34rem);
+        margin-inline: auto;
+        padding-inline-start: 0;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .right {
+        justify-content: center;
+        padding-inline-end: 0;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .homeLink {
+        max-inline-size: min(17rem, 48vw);
+    }
+}
+
+@media (max-width: 560px) {
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .inner {
+        row-gap: 0.5rem;
+        padding-block: 0.5rem 0.34rem;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .left {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        gap: 0.5rem;
+        max-inline-size: min(100%, 25rem);
+        margin-inline: auto;
+        padding-inline-start: 0;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .left>* {
+        width: 100%;
+        max-inline-size: none;
+        flex: 0 0 auto;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .left>*>button {
+        width: 100%;
+        max-inline-size: none;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .homeLink {
+        width: 100%;
+        max-inline-size: none;
+        min-height: 38px;
+        justify-content: center;
+        padding: 0.44rem 0.86rem;
+        font-size: 0.86rem;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .homeText {
+        max-inline-size: 100%;
+        text-align: center;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .right {
+        gap: 0.34rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .left {
+        max-inline-size: 100%;
+        padding-inline: 6px;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .right {
+        padding-inline: 6px;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .homeLink {
+        min-height: 36px;
+        padding-inline: 0.72rem;
+        font-size: 0.82rem;
+    }
+
+    .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .homeIcon {
+        inline-size: 0.92rem;
+        block-size: 0.92rem;
+    }
+}
+
+/* =======================================================
+   Motion
+   ======================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 

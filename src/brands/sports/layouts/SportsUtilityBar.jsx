@@ -5,6 +5,7 @@ import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.js";
 export default function SportsUtilityBar({
   backLink,
   homeLink,
+  pageSwitcher = null,
   isHome = false,
 }) {
   const socials = sportsBrand?.header?.socials ?? [];
@@ -15,6 +16,7 @@ export default function SportsUtilityBar({
       variant="sports-header"
       backLink={backLink}
       homeLink={homeLink}
+      leftSlot={pageSwitcher}
       socials={socials}
       lang={lang}
       ariaLabel="Utility bar — Sports"
