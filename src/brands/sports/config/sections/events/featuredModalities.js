@@ -16,21 +16,82 @@ const featuredModalities = {
         "A ginástica destaca-se pela variedade de disciplinas e pela capacidade de trabalhar camps, semanas técnicas, competições e contextos de alto rendimento.",
       emphasis:
         "Mais do que uma disciplina isolada, é um universo com profundidade técnica e forte adaptação a diferentes enquadramentos competitivos.",
-      disciplinesLabel: "Disciplinas em foco",
+      disciplinesLabel: "Disciplinas",
       disciplines: [
-        "Artística Feminina",
-        "Artística Masculina",
-        "Rítmica",
-        "Trampolins",
+        "Men's Artistic Gymnastics",
+        "Women's Artistic Gymnastics",
+        "Rhythmic Gymnastics",
+        "Trampoline Gymnastics",
+        "Acrobatic Gymnastics",
+        "Aerobic Gymnastics",
+        "Gymnastics for All",
         "TeamGym",
       ],
-      eventExamplesLabel: "Formatos e eventos",
+      eventExamplesLabel: "Eventos",
       eventExamples: [
-        "International WAG Training Camp",
-        "International Coaching Academy",
-        "Continental Cup",
+        {
+          label: "International WAG Training Camp Portugal/Malta",
+          href: "https://www.wagtrainingcamp.sunlive.pt/",
+          ariaLabel: "Abrir site do International WAG Training Camp",
+          socials: [
+            {
+              type: "instagram",
+              href: "https://www.instagram.com/sunliveinternatwagtrainingcamp/",
+              ariaLabel: "Abrir Instagram do International WAG Training Camp",
+            },
+            {
+              type: "facebook",
+              href: "https://www.facebook.com/SunliveInternationalWAGTrainingCamp/",
+              ariaLabel: "Abrir Facebook do International WAG Training Camp",
+            },
+          ],
+        },
+        {
+          label: "RG Atlantic Cup",
+          href: "https://rgatlantic.sunlive.pt/",
+          ariaLabel: "Abrir site do RG Atlantic Cup",
+          socials: [
+            {
+              type: "instagram",
+              href: "https://www.instagram.com/rg_atlantic_cup/",
+              ariaLabel: "Abrir Instagram do RG Atlantic Cup",
+            },
+            {
+              type: "facebook",
+              href: "https://www.facebook.com/RG-Atlantic-Cup-International-Tournament-445873592595577/",
+              ariaLabel: "Abrir Facebook do RG Atlantic Cup",
+            },
+          ],
+        },
+        {
+          label: "International Coaching Academy",
+          href: "https://coachingacademy.sunlive.pt/",
+          ariaLabel: "Abrir site da International Coaching Academy",
+          socials: [
+            {
+              type: "facebook",
+              href: "https://www.facebook.com/ArtisticGymnasticSunlive/",
+              ariaLabel: "Abrir Facebook da International Coaching Academy",
+            },
+          ],
+        },
+        {
+          label: "International Continental Cup",
+          href: "https://continentalcup.sunlive.pt/",
+          ariaLabel: "Abrir site da International Continental Cup",
+          socials: [
+            {
+              type: "instagram",
+              href: "https://www.instagram.com/continentalcupsunlive/",
+              ariaLabel: "Abrir Instagram da International Continental Cup",
+            },
+          ],
+        },
         "EG Trampolins Training Camp",
         "Stars Challenge",
+        "BootCamp",
+        "TeamGym",
+        "Rhythmic Gymnastics Sunset Cup",
       ],
     },
     {
@@ -42,14 +103,48 @@ const featuredModalities = {
         "No ciclismo, a proposta assenta num contexto técnico forte, associado a Anadia, ao velódromo e a ambientes de preparação e competição exigentes.",
       emphasis:
         "A operação combina camps técnicos, momentos de performance especializada e eventos competitivos com enquadramento oficial.",
-      disciplinesLabel: "Disciplinas em foco",
-      disciplines: ["Pista", "BMX", "XCO", "Estrada"],
-      eventExamplesLabel: "Formatos e eventos",
+      disciplinesLabel: "Disciplinas",
+      disciplines: [
+        "Road",
+        "Track",
+        "Mountain Bike",
+        "BMX Racing",
+        "BMX Freestyle",
+        "Trials",
+        "Cyclo-cross",
+        "Gravel",
+        "Indoor Cycling",
+        "Cycling Esports",
+        "Para Cycling",
+      ],
+      eventExamplesLabel: "Eventos",
       eventExamples: [
-        "Sunlive BMX Trophy C2",
-        "Sunlive Track Trophy C2",
+        {
+          label: "The Track Camp",
+          href: "https://blacklinecoaching.com/",
+          ariaLabel: "Abrir site do The Track Camp",
+          socials: [
+            {
+              type: "instagram",
+              href: "https://www.instagram.com/blacklinecoaching/",
+              ariaLabel: "Abrir Instagram do The Track Camp",
+            },
+            {
+              type: "facebook",
+              href: "https://www.facebook.com/blacklinecoaching/",
+              ariaLabel: "Abrir Facebook do The Track Camp",
+            },
+          ],
+        },
+        {
+          label: "BMX Experience",
+          href: "https://bmxcamp.sunlive.pt/",
+          ariaLabel: "Abrir site do BMX Experience",
+        },
         "Master Track Hour World Record",
-        "The Track Camp",
+        "Sunlive BMX Trophy",
+        "Sunlive Track Trophy",
+        "Troféu Sunlive",
       ],
     },
     {
@@ -68,8 +163,22 @@ const featuredModalities = {
         "Parceria institucional",
         "Acolhimento de equipas",
       ],
-      eventExamplesLabel: "Formatos e Eventos",
-      eventExamples: ["Sunlive International Tournament"],
+      eventExamplesLabel: "Eventos",
+      eventExamples: [
+        {
+          label: "DDOSS Summer League",
+          href: "https://ddoss-sports.com/",
+          ariaLabel: "Abrir site da DDOSS Summer League",
+          socials: [
+            {
+              type: "instagram",
+              href: "https://www.instagram.com/ddoss.summer.league/",
+              ariaLabel: "Abrir Instagram da DDOSS Summer League",
+            },
+          ],
+        },
+        "Sunlive International Tournament",
+      ],
     },
   ],
 };

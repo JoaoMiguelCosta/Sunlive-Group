@@ -1,4 +1,5 @@
 import styles from "./EventsModalitiesGrid.module.css";
+
 import EventsModalitiesCard from "./EventsModalitiesCard.jsx";
 
 function hasItems(value) {

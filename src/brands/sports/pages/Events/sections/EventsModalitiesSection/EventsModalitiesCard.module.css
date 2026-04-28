@@ -5,7 +5,7 @@
     gap: clamp(0.72rem, 0.86vw, 0.88rem);
     min-inline-size: 0;
     block-size: 100%;
-    min-block-size: clamp(26rem, 29vw, 29.5rem);
+    min-block-size: clamp(30rem, 32vw, 34rem);
     padding: clamp(0.82rem, 0.92vw, 0.94rem);
     overflow: hidden;
     isolation: isolate;
@@ -17,7 +17,7 @@
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
             transparent 48%),
         linear-gradient(180deg,
-            var(--card-bg-top, rgba(255, 255, 255, 0.028)) 0%,
+            var(--card-bg-top, rgba(255, 255, 255, 0.03)) 0%,
             var(--card-bg-bottom, rgba(255, 255, 255, 0.012)) 100%),
         linear-gradient(180deg,
             rgba(12, 18, 27, 0.92) 0%,
@@ -64,17 +64,17 @@
 
 .card:hover {
     transform: translateY(-2px);
-    border-color: var(--card-border-hover, rgb(var(--sports-gold-rgb, 214 166 64) / 0.26));
+    border-color: var(--card-border-hover, rgb(var(--sports-gold-rgb, 214 166 64) / 0.28));
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.045),
         0 14px 28px rgba(0, 0, 0, 0.2),
-        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.035);
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.04);
 }
 
 .card:focus-within {
-    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.32);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.34);
     box-shadow:
-        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.22),
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.24),
         0 0 0 6px rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
         0 14px 28px rgba(0, 0, 0, 0.2);
 }
@@ -183,9 +183,9 @@
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
     align-content: start;
-    gap: clamp(0.68rem, 0.8vw, 0.82rem);
+    gap: clamp(0.72rem, 0.9vw, 0.9rem);
     min-inline-size: 0;
     padding-block-start: 0.18rem;
     border-top: 1px solid rgba(255, 255, 255, 0.045);
@@ -200,11 +200,13 @@
 }
 
 .metaLabel {
+    justify-self: center;
     margin: 0;
     font-size: 0.7rem;
     font-weight: 850;
     line-height: 1.15;
     letter-spacing: 0.16em;
+    text-align: center;
     text-transform: uppercase;
     color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.9);
 }
@@ -212,7 +214,7 @@
 .metaList {
     display: grid;
     align-content: start;
-    gap: 0.3rem;
+    gap: 0.42rem;
     min-inline-size: 0;
     margin: 0;
     padding: 0;
@@ -225,15 +227,15 @@
     align-items: start;
     gap: 0.42rem;
     min-inline-size: 0;
-    font-size: clamp(0.84rem, 0.86vw, 0.9rem);
-    line-height: 1.4;
+    font-size: clamp(0.82rem, 0.84vw, 0.88rem);
+    line-height: 1.36;
     color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
 }
 
 .metaDot {
     inline-size: 0.3rem;
     block-size: 0.3rem;
-    margin-top: 0.42rem;
+    margin-block-start: 0.48em;
     border-radius: 999px;
     flex: 0 0 auto;
     background:
@@ -246,9 +248,110 @@
         0 0 8px rgb(var(--sports-gold-rgb, 214 166 64) / 0.12);
 }
 
+.metaContent {
+    display: grid;
+    justify-items: start;
+    gap: 0.26rem;
+    min-inline-size: 0;
+}
+
+.metaText,
+.metaLink {
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    overflow: visible;
+    white-space: normal;
+    text-overflow: initial;
+}
+
+.metaText {
+    display: inline;
+}
+
+.metaLink {
+    display: inline;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    text-decoration: none;
+    text-underline-offset: 0.18em;
+    transition:
+        color 0.18s ease,
+        text-decoration-color 0.18s ease;
+}
+
+.metaLink:hover {
+    color: var(--sports-gold, #d6a640);
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.52);
+}
+
+.metaLink:focus-visible {
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.72);
+    outline-offset: 3px;
+    border-radius: 0.2rem;
+}
+
+.socialLinks {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.24rem;
+    min-inline-size: 0;
+}
+
+.socialLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 1.28rem;
+    block-size: 1.28rem;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.22);
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.075) 0%,
+            rgba(255, 255, 255, 0.02) 100%);
+    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.92);
+    text-decoration: none;
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease,
+        color 0.18s ease;
+}
+
+.socialLink:hover {
+    transform: translateY(-1px);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
+    background:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.15) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 100%);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+}
+
+.socialLink:focus-visible {
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.72);
+    outline-offset: 3px;
+}
+
+.socialSvg {
+    inline-size: 0.72rem;
+    block-size: 0.72rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.socialLinkFacebook .socialSvg {
+    fill: currentColor;
+    stroke: none;
+}
+
 @media (min-width: 921px) and (max-width: 1180px) {
     .card {
-        min-block-size: 22.8rem;
+        min-block-size: 25rem;
         padding: 0.82rem;
         gap: 0.62rem;
     }
@@ -295,15 +398,11 @@
         padding-inline-start: 0.42rem;
     }
 
-    .cardBottom {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .cardBottom,
+    .cardTertiary .cardBottom {
+        grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
         gap: 0.72rem;
         padding-block-start: 0.22rem;
-    }
-
-    .cardTertiary .cardBottom {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
     }
 
     .metaBlock {
@@ -315,23 +414,29 @@
     }
 
     .metaList {
-        gap: 0.24rem;
+        gap: 0.34rem;
     }
 
     .metaItem {
-        font-size: 0.84rem;
+        font-size: 0.82rem;
         line-height: 1.34;
         gap: 0.38rem;
     }
 
-    .metaDot {
-        margin-top: 0.36rem;
+    .socialLink {
+        inline-size: 1.22rem;
+        block-size: 1.22rem;
+    }
+
+    .socialSvg {
+        inline-size: 0.7rem;
+        block-size: 0.7rem;
     }
 }
 
 @media (min-width: 761px) and (max-width: 920px) {
     .card {
-        min-block-size: 21.9rem;
+        min-block-size: 24rem;
         gap: 0.6rem;
         padding: 0.8rem;
     }
@@ -364,7 +469,7 @@
     .cardDescription,
     .cardEmphasis,
     .metaItem {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
     }
 
     .cardDescription {
@@ -378,15 +483,11 @@
         line-height: 1.46;
     }
 
-    .cardBottom {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .cardBottom,
+    .cardTertiary .cardBottom {
+        grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
         gap: 0.68rem;
         padding-block-start: 0.2rem;
-    }
-
-    .cardTertiary .cardBottom {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.92rem;
     }
 
     .metaBlock {
@@ -398,11 +499,17 @@
     }
 
     .metaList {
-        gap: 0.24rem;
+        gap: 0.32rem;
     }
 
-    .metaDot {
-        margin-top: 0.36rem;
+    .socialLink {
+        inline-size: 1.2rem;
+        block-size: 1.2rem;
+    }
+
+    .socialSvg {
+        inline-size: 0.68rem;
+        block-size: 0.68rem;
     }
 }
 
@@ -460,17 +567,35 @@
     .cardDescription,
     .cardEmphasis,
     .metaItem {
-        font-size: 0.84rem;
+        font-size: 0.82rem;
         line-height: 1.4;
     }
 
     .metaList {
-        gap: 0.26rem;
+        gap: 0.34rem;
+    }
+
+    .socialLink {
+        inline-size: 1.18rem;
+        block-size: 1.18rem;
+    }
+
+    .socialSvg {
+        inline-size: 0.66rem;
+        block-size: 0.66rem;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .card {
+
+    .card,
+    .metaLink,
+    .socialLink {
         transition: none;
+    }
+
+    .card:hover,
+    .socialLink:hover {
+        transform: none;
     }
 }

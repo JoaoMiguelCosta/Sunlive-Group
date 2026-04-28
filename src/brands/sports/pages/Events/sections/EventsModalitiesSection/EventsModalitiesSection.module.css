@@ -14,8 +14,8 @@
 
     --card-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
     --card-border: rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.14);
-    --card-border-hover: rgb(var(--sports-gold-rgb, 214 166 64) / 0.26);
-    --card-bg-top: rgba(255, 255, 255, 0.028);
+    --card-border-hover: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
+    --card-bg-top: rgba(255, 255, 255, 0.03);
     --card-bg-bottom: rgba(255, 255, 255, 0.012);
 
     position: relative;
@@ -30,7 +30,7 @@
     box-shadow: var(--surface-shadow);
     background:
         radial-gradient(120% 145% at 0% 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.055) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.05) 0%,
             transparent 46%),
         radial-gradient(120% 145% at 100% 0%,
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.11) 0%,
@@ -89,11 +89,11 @@
     border-radius: 999px;
     background:
         radial-gradient(circle,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.09) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.04) 34%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.08) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.035) 34%,
             transparent 72%);
     filter: blur(18px);
-    opacity: 0.58;
+    opacity: 0.54;
 }
 
 .ambientGlowSecondary {
@@ -146,13 +146,13 @@
         inset-block-start: -20%;
         inset-inline-start: -22%;
         inline-size: 12.5rem;
-        opacity: 0.48;
+        opacity: 0.46;
     }
 
     .ambientGlowSecondary {
         inset-block-start: -12%;
         inset-inline-end: -22%;
         inline-size: 13rem;
-        opacity: 0.56;
+        opacity: 0.54;
     }
 }
