@@ -1,7 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
 
 const modalitiesCTA = {
-  id: "modalities-cta",
+  id: "modalidades-cta",
 
   eyebrow: "Desenvolvimento por modalidade",
   title:

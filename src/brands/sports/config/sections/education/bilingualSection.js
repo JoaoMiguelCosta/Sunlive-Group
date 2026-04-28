@@ -1,7 +1,7 @@
 const bilingualSection = {
-  id: "education-bilingual",
+  id: "educacao-bilingue",
   intro: {
-    id: "education-bilingual-intro",
+    id: "educacao-bilingue-intro",
     eyebrow: "Modelo académico",
     title: "Sistema Português e Diploma Duplo",
     lead: "A proposta educativa da Sunlive Sports combina base académica formal com maior flexibilidade para estudantes-atletas, permitindo conciliar escola, treino e progressão futura com mais estrutura.",
@@ -12,7 +12,7 @@ const bilingualSection = {
   },
   items: [
     {
-      id: "portuguese-pathway",
+      id: "percurso-portugues",
       key: "portuguese",
       title: "Sistema Português",
       description:
@@ -28,7 +28,7 @@ const bilingualSection = {
         "Uma base escolar estável para começar a equilibrar estudo e futebol de alto rendimento.",
     },
     {
-      id: "dual-diploma-pathway",
+      id: "percurso-diploma-duplo",
       key: "dualDiploma",
       title: "Diploma Duplo",
       description:
@@ -45,7 +45,7 @@ const bilingualSection = {
     },
   ],
   certification: {
-    id: "education-bilingual-certification",
+    id: "educacao-bilingue-certificacao",
     eyebrow: "Valor do modelo",
     title: "Percurso Certificado e Flexível",
     description:

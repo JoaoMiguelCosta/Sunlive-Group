@@ -1,7 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
 
 const specialisedServicesCTA = {
-  id: "specialised-services-cta",
+  id: "servicos-especializados-cta",
 
   eyebrow: "Planeamento de intervenção especializada",
 

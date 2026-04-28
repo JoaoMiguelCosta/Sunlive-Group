@@ -2,7 +2,7 @@ const trainingCampsHero = {
   eyebrow: "Sunlive Sports",
   secondaryLine:
     "Preparação, rendimento e organização em contexto real de estágio desportivo.",
-  title: "Training Camps",
+  title: "Estágios Desportivos",
   description:
     "Programas de estágio desportivo pensados para atletas, equipas, clubes e federações que procuram trabalhar rendimento, consolidar rotinas de treino e preparar momentos competitivos num contexto estruturado, exigente e operacionalmente coordenado.",
   supportingText:

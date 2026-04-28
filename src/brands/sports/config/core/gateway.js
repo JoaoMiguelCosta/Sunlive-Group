@@ -3,7 +3,7 @@ import { SPORTS_PAGE_PATHS } from "./paths.js";
 export const SPORTS_GATEWAY = Object.freeze([
   {
     key: "training-camps",
-    label: "Training Camps",
+    label: "Estágios Desportivos",
     href: SPORTS_PAGE_PATHS.trainingCamps,
   },
   {
@@ -33,7 +33,7 @@ export const SPORTS_GATEWAY = Object.freeze([
   },
   {
     key: "leisure-sports-tourism",
-    label: "Turismo Desportivo",
+    label: "Turismo Desportivo Lúdico",
     href: SPORTS_PAGE_PATHS.leisureSportsTourism,
   },
   {

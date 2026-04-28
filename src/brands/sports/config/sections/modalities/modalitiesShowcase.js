@@ -1,5 +1,5 @@
 const modalitiesShowcase = {
-  id: "modalities-showcase",
+  id: "detalhe-modalidades",
   intro: {
     eyebrow: "Modalidades",
     title: "Disciplinas, projetos e academias",
@@ -15,12 +15,12 @@ const modalitiesShowcase = {
   items: [
     {
       key: "cycling",
-      id: "modalities-cycling",
+      id: "modalidade-ciclismo",
       title: "Ciclismo",
       iconKey: "bike",
       lead: "Modalidade de referência da Sunlive, com infraestruturas de excelência, programas especializados e organização regular de eventos nacionais e internacionais.",
       disciplines: {
-        id: "modalities-cycling-disciplines",
+        id: "disciplinas-ciclismo",
         heading: "Disciplinas",
         headingIconKey: "workflow",
         items: [
@@ -57,7 +57,7 @@ const modalitiesShowcase = {
         ],
       },
       projects: {
-        id: "modalities-cycling-projects",
+        id: "projetos-ciclismo",
         heading: "Projetos",
         headingIconKey: "chart",
         items: [
@@ -89,7 +89,7 @@ const modalitiesShowcase = {
         ],
       },
       highlight: {
-        id: "modalities-cycling-highlight",
+        id: "destaque-ciclismo",
         title: "Explore o Universo Ciclismo Sunlive",
         description:
           "O universo do ciclismo na Sunlive — estágios, velódromo, programas de treino, instalações, infraestruturas e muito mais.",
@@ -101,12 +101,12 @@ const modalitiesShowcase = {
     },
     {
       key: "gymnastics",
-      id: "modalities-gymnastics",
+      id: "modalidade-ginastica",
       title: "Ginástica",
       iconKey: "medal",
       lead: "Programas dedicados à Ginástica com foco na evolução técnica, formação integral e acesso a infraestruturas especializadas para treino e desenvolvimento desportivo.",
       disciplines: {
-        id: "modalities-gymnastics-disciplines",
+        id: "disciplinas-ginastica",
         heading: "Disciplinas",
         headingIconKey: "workflow",
         items: [
@@ -167,7 +167,7 @@ const modalitiesShowcase = {
         ],
       },
       projects: {
-        id: "modalities-gymnastics-projects",
+        id: "projetos-ginastica",
         heading: "Projetos",
         headingIconKey: "chart",
         items: [],
@@ -175,12 +175,12 @@ const modalitiesShowcase = {
     },
     {
       key: "basketball",
-      id: "modalities-basketball",
+      id: "modalidade-basquetebol",
       title: "Basquetebol",
       iconKey: "goal",
       lead: "Programas da Academia Basquetebol Sunlive para a evolução técnica e competitiva. Ideal para jovens atletas em fase de crescimento desportivo.",
       projects: {
-        id: "modalities-basketball-projects",
+        id: "projetos-basquetebol",
         heading: "Projetos",
         headingIconKey: "chart",
         items: [
@@ -194,12 +194,12 @@ const modalitiesShowcase = {
     },
     {
       key: "football",
-      id: "modalities-football",
+      id: "modalidade-futebol",
       title: "Futebol",
       iconKey: "athlete",
       lead: "Programas de futebol orientados para desenvolvimento técnico, acompanhamento multidisciplinar e articulação entre treino, competição e percurso académico.",
       projects: {
-        id: "modalities-football-projects",
+        id: "projetos-futebol",
         heading: "Projetos",
         headingIconKey: "chart",
         items: [
@@ -213,12 +213,12 @@ const modalitiesShowcase = {
     },
     {
       key: "karate",
-      id: "modalities-karate",
+      id: "modalidade-karate",
       title: "Karaté",
       iconKey: "biceps",
       lead: "Formação contínua através da Sunlive Karate Academy (SKA), com treinos técnicos e valorização de princípios como disciplina, respeito e superação. Ambiente ideal para o crescimento desportivo e pessoal.",
       projects: {
-        id: "modalities-karate-projects",
+        id: "projetos-karate",
         heading: "Projetos",
         headingIconKey: "chart",
         items: [

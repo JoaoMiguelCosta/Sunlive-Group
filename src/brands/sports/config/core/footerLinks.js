@@ -1,6 +1,10 @@
 import { SPORTS_GATEWAY } from "./gateway.js";
 import { SPORTS_PAGE_PATHS } from "./paths.js";
 
+export const CONSULTANCY_ENTITIES_HASH = "entidades-consultoria";
+
+export const CONSULTANCY_ENTITIES_HREF = `${SPORTS_PAGE_PATHS.consultancy}#${CONSULTANCY_ENTITIES_HASH}`;
+
 export const SPORTS_QUICK_LINKS = Object.freeze(
   SPORTS_GATEWAY.map(({ key, label, href, variant }) => ({
     key,
@@ -9,8 +13,6 @@ export const SPORTS_QUICK_LINKS = Object.freeze(
     ...(variant ? { variant } : {}),
   })),
 );
-
-export const CONSULTANCY_ENTITIES_HREF = `${SPORTS_PAGE_PATHS.consultancy}#consultancy-entities`;
 
 export const SPORTS_COLLABS = Object.freeze([
   {

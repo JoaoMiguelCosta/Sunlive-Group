@@ -1,5 +1,5 @@
 const facilitiesGrid = {
-  id: "infrastructures-facilities",
+  id: "infraestruturas-instalacoes",
 
   intro: {
     eyebrow: "Rede de infraestruturas",

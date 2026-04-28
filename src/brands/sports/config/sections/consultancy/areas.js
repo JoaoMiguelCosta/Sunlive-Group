@@ -1,5 +1,5 @@
 const areas = {
-  id: "consultancy-areas",
+  id: "areas-consultoria",
   intro: {
     eyebrow: "Áreas de atuação",
     title: "Áreas de Consultoria",

@@ -2,18 +2,18 @@ export const SPORTS_BASE_PATH = "/sunlive-group/sports";
 
 export const SPORTS_PAGE_PATHS = Object.freeze({
   home: SPORTS_BASE_PATH,
-  trainingCamps: `${SPORTS_BASE_PATH}/training-camps`,
-  academies: `${SPORTS_BASE_PATH}/academies`,
-  events: `${SPORTS_BASE_PATH}/events`,
-  athletes: `${SPORTS_BASE_PATH}/sunlive-athletes`,
-  specialisedServices: `${SPORTS_BASE_PATH}/specialised-services`,
-  education: `${SPORTS_BASE_PATH}/education`,
-  leisureSportsTourism: `${SPORTS_BASE_PATH}/leisure-sports-tourism`,
-  modalities: `${SPORTS_BASE_PATH}/modalities`,
-  infrastructures: `${SPORTS_BASE_PATH}/infrastructures`,
-  logistics: `${SPORTS_BASE_PATH}/logistics`,
-  consultancy: `${SPORTS_BASE_PATH}/consultancy`,
-  contacts: `${SPORTS_BASE_PATH}/contacts`,
+  trainingCamps: `${SPORTS_BASE_PATH}/estagios-desportivos`,
+  academies: `${SPORTS_BASE_PATH}/academias`,
+  events: `${SPORTS_BASE_PATH}/eventos`,
+  athletes: `${SPORTS_BASE_PATH}/atletas-sunlive`,
+  specialisedServices: `${SPORTS_BASE_PATH}/servicos-especializados`,
+  education: `${SPORTS_BASE_PATH}/educacao`,
+  leisureSportsTourism: `${SPORTS_BASE_PATH}/turismo-desportivo-ludico`,
+  modalities: `${SPORTS_BASE_PATH}/modalidades`,
+  infrastructures: `${SPORTS_BASE_PATH}/infraestruturas`,
+  logistics: `${SPORTS_BASE_PATH}/logistica`,
+  consultancy: `${SPORTS_BASE_PATH}/consultoria`,
+  contacts: `${SPORTS_BASE_PATH}/contactos`,
 });
 
 export default SPORTS_PAGE_PATHS;

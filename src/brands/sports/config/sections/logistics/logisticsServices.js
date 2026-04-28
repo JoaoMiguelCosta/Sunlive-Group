@@ -1,5 +1,5 @@
 const logisticsServices = {
-  id: "logistics-services",
+  id: "servicos-logisticos",
   intro: {
     eyebrow: "Serviços integrados",
     title: "Serviços Logísticos",

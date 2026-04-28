@@ -1,7 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
 
 const eventsCTA = {
-  id: "events-cta",
+  id: "eventos-cta",
 
   eyebrow: "Planeamento de evento",
   title:

@@ -1,5 +1,5 @@
 const featuredModalities = {
-  id: "events-featured-modalities",
+  id: "modalidades-destaque-eventos",
   eyebrow: "Frentes em destaque",
   title:
     "Uma operação com maior profundidade em ginástica e ciclismo, e presença adicional noutras modalidades",

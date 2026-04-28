@@ -1,5 +1,5 @@
 const leisureSportsTourismExperiences = {
-  id: "leisure-sports-tourism-experiences",
+  id: "experiencias-turismo-desportivo-ludico",
   intro: {
     eyebrow: "Experiências complementares",
     title: "Experiências Inesquecíveis",

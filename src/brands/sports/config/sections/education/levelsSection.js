@@ -1,7 +1,7 @@
 const levelsSection = {
-  id: "education-levels",
+  id: "niveis-ensino",
   intro: {
-    id: "education-levels-intro",
+    id: "niveis-ensino-intro",
     eyebrow: "Percurso académico",
     title: "Níveis de Ensino",
     lead: "A proposta educativa da Sunlive Sports organiza-se por etapas claras, acompanhando o estudante-atleta desde a base escolar até às opções de continuidade académica e profissional.",
@@ -12,7 +12,7 @@ const levelsSection = {
   },
   items: [
     {
-      id: "middle-school",
+      id: "ensino-basico",
       step: "01",
       title: "Ensino Básico",
       ageRange: "7.º–9.º ano",
@@ -35,7 +35,7 @@ const levelsSection = {
       },
     },
     {
-      id: "high-school",
+      id: "ensino-secundario",
       step: "02",
       title: "Ensino Secundário",
       ageRange: "10.º–12.º ano",
@@ -59,7 +59,7 @@ const levelsSection = {
       },
     },
     {
-      id: "higher-education",
+      id: "ensino-superior",
       step: "03",
       title: "Ensino Superior e Continuidade Profissional",
       ageRange: "18+",

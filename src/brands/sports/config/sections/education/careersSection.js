@@ -1,7 +1,7 @@
 const careersSection = {
-  id: "education-careers",
+  id: "percursos-profissionais",
   intro: {
-    id: "education-careers-intro",
+    id: "percursos-profissionais-intro",
     eyebrow: "Especialização",
     title: "Percursos Profissionais",
     lead: "Criamos caminhos de continuidade para estudantes-atletas que pretendem transformar formação, experiência e vocação em opções académicas e profissionais ligadas ao desporto.",
@@ -9,14 +9,14 @@ const careersSection = {
   selector: {
     ariaLabel: "Selecionar percurso profissional",
     label: "Áreas de especialização",
-    defaultActiveId: "uefa-coach",
+    defaultActiveId: "treinador-uefa",
   },
   detailPanel: {
     ariaLabel: "Detalhe do percurso profissional selecionado",
   },
   items: [
     {
-      id: "uefa-coach",
+      id: "treinador-uefa",
       tabLabel: "Treino UEFA",
       title: "Treinador UEFA",
       duration: "2–4 anos",
@@ -34,7 +34,7 @@ const careersSection = {
       ],
     },
     {
-      id: "sports-management",
+      id: "gestao-desportiva",
       tabLabel: "Gestão",
       title: "Gestão Desportiva",
       duration: "3–5 anos",
@@ -52,7 +52,7 @@ const careersSection = {
       ],
     },
     {
-      id: "sports-science",
+      id: "ciencias-desporto",
       tabLabel: "Ciências",
       title: "Ciências do Desporto",
       duration: "3–8 anos",

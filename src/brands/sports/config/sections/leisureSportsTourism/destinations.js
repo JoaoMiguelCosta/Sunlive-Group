@@ -1,5 +1,5 @@
 const leisureSportsTourismDestinations = {
-  id: "leisure-sports-tourism-destinations",
+  id: "destinos-turismo-desportivo-ludico",
   intro: {
     eyebrow: "Curadoria territorial",
     title: "Destinos que Encantam",

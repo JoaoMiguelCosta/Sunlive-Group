@@ -1,5 +1,5 @@
 const operatingModel = {
-  id: "events-operating-model",
+  id: "modelo-operacional-eventos",
 
   operatingModel: {
     eyebrow: "Modelo de valor",

@@ -1,5 +1,5 @@
 const modalitiesOverview = {
-  id: "modalities-overview",
+  id: "visao-geral-modalidades",
   intro: {
     eyebrow: "Mapa de modalidades",
     title: "Áreas desportivas em desenvolvimento",
@@ -17,7 +17,7 @@ const modalitiesOverview = {
       description:
         "Modalidade de referência da Sunlive, com ligação a treino, eventos, academia, infraestruturas e projetos especializados.",
       iconKey: "bike",
-      href: "#modalities-cycling",
+      href: "#modalidade-ciclismo",
       label: "Explorar ciclismo",
     },
     {
@@ -26,7 +26,7 @@ const modalitiesOverview = {
       description:
         "Programas orientados para evolução técnica, formação integral e desenvolvimento em diferentes disciplinas da ginástica.",
       iconKey: "medal",
-      href: "#modalities-gymnastics",
+      href: "#modalidade-ginastica",
       label: "Explorar ginástica",
     },
     {
@@ -35,7 +35,7 @@ const modalitiesOverview = {
       description:
         "Programas de desenvolvimento técnico e competitivo para atletas em fase de crescimento desportivo.",
       iconKey: "goal",
-      href: "#modalities-basketball",
+      href: "#modalidade-basquetebol",
       label: "Explorar basquetebol",
     },
     {
@@ -44,7 +44,7 @@ const modalitiesOverview = {
       description:
         "Contextos de treino, formação e acompanhamento para atletas com percurso desportivo e académico estruturado.",
       iconKey: "athlete",
-      href: "#modalities-football",
+      href: "#modalidade-futebol",
       label: "Explorar futebol",
     },
     {
@@ -53,7 +53,7 @@ const modalitiesOverview = {
       description:
         "Formação contínua com foco técnico, disciplina, respeito, superação e crescimento desportivo e pessoal.",
       iconKey: "biceps",
-      href: "#modalities-karate",
+      href: "#modalidade-karate",
       label: "Explorar karaté",
     },
   ],

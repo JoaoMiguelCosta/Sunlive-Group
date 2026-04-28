@@ -17,12 +17,26 @@ const MENU_DESCRIPTIONS_BY_KEY = Object.freeze({
   "training-camps":
     "Estágios com treino, alojamento, logística e suporte técnico.",
 
+  "estagios-desportivos":
+    "Estágios com treino, alojamento, logística e suporte técnico.",
+
   academies:
+    "Formação e treino especializado por modalidade e nível competitivo.",
+
+  academias:
     "Formação e treino especializado por modalidade e nível competitivo.",
 
   events: "Eventos desportivos com operação técnica e logística integrada.",
 
+  eventos: "Eventos desportivos com operação técnica e logística integrada.",
+
   athletes:
+    "Apoio a atletas na preparação, evolução e oportunidades de carreira.",
+
+  "sunlive-athletes":
+    "Apoio a atletas na preparação, evolução e oportunidades de carreira.",
+
+  "atletas-sunlive":
     "Apoio a atletas na preparação, evolução e oportunidades de carreira.",
 
   "specialised-services":
@@ -31,7 +45,13 @@ const MENU_DESCRIPTIONS_BY_KEY = Object.freeze({
   "specialized-services":
     "Soluções técnicas para projetos desportivos exigentes.",
 
+  "servicos-especializados":
+    "Soluções técnicas para projetos desportivos exigentes.",
+
   education:
+    "Percursos educativos ligados ao desporto e à formação certificada.",
+
+  educacao:
     "Percursos educativos ligados ao desporto e à formação certificada.",
 
   "sports-tourism":
@@ -40,34 +60,57 @@ const MENU_DESCRIPTIONS_BY_KEY = Object.freeze({
   "leisure-sports-tourism":
     "Experiências desportivas com lazer, território e bem-estar.",
 
+  "turismo-desportivo-ludico":
+    "Experiências desportivas com lazer, território e bem-estar.",
+
   modalities: "Programas e projetos organizados por modalidade desportiva.",
 
+  modalidades: "Programas e projetos organizados por modalidade desportiva.",
+
+  "sports-modalities":
+    "Programas e projetos organizados por modalidade desportiva.",
+
   infrastructures:
+    "Espaços preparados para treino, competição, estágios e eventos.",
+
+  infraestruturas:
     "Espaços preparados para treino, competição, estágios e eventos.",
 
   logistics:
     "Transporte, alojamento e apoio operacional para grupos desportivos.",
 
+  logistica:
+    "Transporte, alojamento e apoio operacional para grupos desportivos.",
+
   consultancy:
     "Consultoria estratégica e operacional para organizações desportivas.",
 
+  consultoria:
+    "Consultoria estratégica e operacional para organizações desportivas.",
+
   contacts: "Fale connosco para estruturar o seu próximo projeto desportivo.",
+
+  contactos: "Fale connosco para estruturar o seu próximo projeto desportivo.",
 
   contact: "Fale connosco para estruturar o seu próximo projeto desportivo.",
 });
 
 const MENU_DESCRIPTIONS_BY_LABEL = Object.freeze({
   "training camps": MENU_DESCRIPTIONS_BY_KEY["training-camps"],
-  academias: MENU_DESCRIPTIONS_BY_KEY.academies,
-  eventos: MENU_DESCRIPTIONS_BY_KEY.events,
-  "atletas sunlive": MENU_DESCRIPTIONS_BY_KEY.athletes,
-  "serviços especializados": MENU_DESCRIPTIONS_BY_KEY["specialised-services"],
-  educação: MENU_DESCRIPTIONS_BY_KEY.education,
-  "turismo desportivo": MENU_DESCRIPTIONS_BY_KEY["leisure-sports-tourism"],
-  modalidades: MENU_DESCRIPTIONS_BY_KEY.modalities,
-  infraestruturas: MENU_DESCRIPTIONS_BY_KEY.infrastructures,
-  logística: MENU_DESCRIPTIONS_BY_KEY.logistics,
-  consultoria: MENU_DESCRIPTIONS_BY_KEY.consultancy,
+  "estágios desportivos": MENU_DESCRIPTIONS_BY_KEY["estagios-desportivos"],
+  academias: MENU_DESCRIPTIONS_BY_KEY.academias,
+  eventos: MENU_DESCRIPTIONS_BY_KEY.eventos,
+  "atletas sunlive": MENU_DESCRIPTIONS_BY_KEY["atletas-sunlive"],
+  "serviços especializados":
+    MENU_DESCRIPTIONS_BY_KEY["servicos-especializados"],
+  educação: MENU_DESCRIPTIONS_BY_KEY.educacao,
+  "turismo desportivo": MENU_DESCRIPTIONS_BY_KEY["turismo-desportivo-ludico"],
+  "turismo desportivo lúdico":
+    MENU_DESCRIPTIONS_BY_KEY["turismo-desportivo-ludico"],
+  modalidades: MENU_DESCRIPTIONS_BY_KEY.modalidades,
+  infraestruturas: MENU_DESCRIPTIONS_BY_KEY.infraestruturas,
+  logística: MENU_DESCRIPTIONS_BY_KEY.logistica,
+  consultoria: MENU_DESCRIPTIONS_BY_KEY.consultoria,
   contactar: MENU_DESCRIPTIONS_BY_KEY.contacts,
 });
 
@@ -106,7 +149,7 @@ function buildMenuItem(item, index) {
 }
 
 const menu = {
-  id: "sports-home-menu",
+  id: "menu-home-sports",
   ariaLabel: "Entradas principais Sunlive Sports",
   backgroundImage: {
     src: velodromoImage,

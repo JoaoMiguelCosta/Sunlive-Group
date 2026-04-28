@@ -2,7 +2,7 @@ import { SPORTS_COMPANY } from "../../core/company.js";
 import { SPORTS_SOCIALS } from "../../core/socials.js";
 
 const contactsSection = {
-  id: "sports-contacts",
+  id: "contactos-sports",
   intro: {
     eyebrow: "Contactos",
     title: "Vamos enquadrar o próximo projeto desportivo",

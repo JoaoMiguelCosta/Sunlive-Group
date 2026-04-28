@@ -1,5 +1,5 @@
 const modalitiesOtherSports = {
-  id: "modalities-other-sports",
+  id: "outras-modalidades",
   intro: {
     eyebrow: "Outras modalidades",
     title: "Outros enquadramentos possíveis, avaliados caso a caso",

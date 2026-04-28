@@ -1,7 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
 
 const consultancyCTA = {
-  id: "consultancy-cta",
+  id: "consultoria-cta",
 
   eyebrow: "Consultoria estratégica",
   title:

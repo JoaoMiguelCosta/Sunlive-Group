@@ -1,5 +1,5 @@
 const leisureSportsTourismBenefits = {
-  id: "leisure-sports-tourism-benefits",
+  id: "beneficios-turismo-desportivo-ludico",
   intro: {
     eyebrow: "Valor para os atletas",
     title: "Benefícios para os Atletas",

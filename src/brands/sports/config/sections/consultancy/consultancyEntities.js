@@ -1,5 +1,5 @@
 const consultancyEntities = {
-  id: "consultancy-entities",
+  id: "entidades-consultoria",
   intro: {
     eyebrow: "Quem apoiamos",
     title: "Entidades com quem colaboramos",

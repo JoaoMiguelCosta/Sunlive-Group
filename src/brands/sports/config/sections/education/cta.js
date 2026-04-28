@@ -1,7 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
 
 const educationCTA = {
-  id: "education-cta",
+  id: "educacao-cta",
 
   eyebrow: "Planeamento de percurso educativo",
   title:

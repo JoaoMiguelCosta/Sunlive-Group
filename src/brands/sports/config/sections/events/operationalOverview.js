@@ -1,5 +1,5 @@
 const operationalOverview = {
-  id: "events-overview",
+  id: "visao-operacional-eventos",
 
   sectionIntro: {
     eyebrow: "Ecossistema operativo",

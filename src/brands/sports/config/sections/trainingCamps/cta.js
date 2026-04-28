@@ -1,7 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
 
 const trainingCampsCTA = {
-  id: "training-camps-cta",
+  id: "estagios-desportivos-cta",
 
   eyebrow: "Planeamento de estágio",
   title:

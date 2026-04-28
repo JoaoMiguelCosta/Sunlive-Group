@@ -1,5 +1,5 @@
 const areas = {
-  id: "specialised-services-areas",
+  id: "areas-servicos-especializados",
   intro: {
     eyebrow: "Intervenção técnica multidisciplinar",
     title: "Áreas de Especialização",

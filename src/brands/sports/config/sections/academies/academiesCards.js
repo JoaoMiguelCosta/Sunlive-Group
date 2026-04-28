@@ -4,7 +4,7 @@ import footLogo from "../../../assets/Academies/foot.png";
 import karateLogo from "../../../assets/Academies/karate.png";
 
 const academiesCards = {
-  id: "academies",
+  id: "academias",
   ariaLabel: "Academias Sunlive — lista de academias",
   cardAriaLabelPrefix: "Academia",
   ui: {
