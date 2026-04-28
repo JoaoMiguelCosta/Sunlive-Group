@@ -1,38 +1,48 @@
 .card {
     position: relative;
+    inline-size: 100%;
     min-inline-size: 0;
-    min-block-size: clamp(6.65rem, 7.2vw, 7.45rem);
+    block-size: 100%;
+    min-block-size: clamp(5.65rem, 8vw, 7.45rem);
     border: 1px solid var(--sports-border, rgb(199 134 21 / 0.16));
     border-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
     overflow: hidden;
     isolation: isolate;
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.05) 0%,
-            rgba(255, 255, 255, 0.018) 34%,
-            rgba(255, 255, 255, 0.008) 100%),
+            rgba(255, 255, 255, 0.036) 0%,
+            rgba(255, 255, 255, 0.01) 34%,
+            rgba(255, 255, 255, 0.002) 100%),
         radial-gradient(110% 130% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.105) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.06) 0%,
             transparent 48%),
         radial-gradient(120% 150% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.048) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.024) 0%,
             transparent 56%),
         linear-gradient(145deg,
-            rgba(8, 17, 27, 0.78) 0%,
-            rgba(7, 20, 24, 0.68) 46%,
-            rgba(4, 9, 17, 0.86) 100%);
+            rgba(7, 15, 24, 0.34) 0%,
+            rgba(6, 18, 21, 0.26) 46%,
+            rgba(3, 7, 13, 0.42) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.055),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.32),
-        0 14px 30px rgba(0, 0, 0, 0.24);
-    backdrop-filter: blur(7px) saturate(1.08);
-    -webkit-backdrop-filter: blur(7px) saturate(1.08);
+        inset 0 1px 0 rgba(255, 255, 255, 0.052),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+        0 14px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1.8px) saturate(1.03);
+    -webkit-backdrop-filter: blur(1.8px) saturate(1.03);
     transition:
         transform 180ms ease,
         border-color 180ms ease,
         box-shadow 180ms ease,
         background 180ms ease,
         filter 180ms ease;
+}
+
+.card>* {
+    position: relative;
+    z-index: 2;
+    inline-size: 100%;
+    min-inline-size: 0;
+    min-block-size: 100%;
 }
 
 .card::before {
@@ -43,15 +53,15 @@
     pointer-events: none;
     background:
         linear-gradient(135deg,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.1) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.052) 0%,
             transparent 34%),
         radial-gradient(95% 115% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.065) 0%,
             transparent 50%),
         radial-gradient(115% 135% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.05) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.026) 0%,
             transparent 58%);
-    opacity: 0.78;
+    opacity: 0.48;
 }
 
 .card::after {
@@ -63,9 +73,10 @@
     border-radius: inherit;
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.06) 0%,
-            rgba(255, 255, 255, 0.022) 22%,
-            transparent 56%);
+            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.008) 28%,
+            rgba(0, 0, 0, 0.045) 72%,
+            rgba(0, 0, 0, 0.09) 100%);
 }
 
 .card:hover {
@@ -73,113 +84,114 @@
     border-color: var(--sports-border-strong, rgb(214 166 64 / 0.28));
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.062) 0%,
-            rgba(255, 255, 255, 0.022) 34%,
-            rgba(255, 255, 255, 0.01) 100%),
+            rgba(255, 255, 255, 0.046) 0%,
+            rgba(255, 255, 255, 0.014) 34%,
+            rgba(255, 255, 255, 0.004) 100%),
         radial-gradient(110% 130% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.16) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.085) 0%,
             transparent 50%),
         radial-gradient(120% 150% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.055) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.034) 0%,
             transparent 58%),
         linear-gradient(145deg,
-            rgba(10, 21, 32, 0.84) 0%,
-            rgba(8, 23, 27, 0.74) 46%,
-            rgba(4, 9, 17, 0.9) 100%);
+            rgba(8, 18, 28, 0.42) 0%,
+            rgba(7, 21, 25, 0.34) 46%,
+            rgba(3, 7, 13, 0.5) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.07),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.34),
-        0 20px 40px rgba(0, 0, 0, 0.34),
-        0 0 22px rgb(var(--sports-gold-rgb, 214 166 64) / 0.11);
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.28),
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 22px rgb(var(--sports-gold-rgb, 214 166 64) / 0.085);
 }
 
 .card:focus-within {
     transform: translateY(-3px);
     border-color: var(--sports-border-strong, rgb(214 166 64 / 0.28));
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        0 0 0 1px rgba(0, 0, 0, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.056),
+        0 0 0 1px rgba(0, 0, 0, 0.38),
         0 0 0 3px rgb(var(--sports-gold-rgb, 214 166 64) / 0.22),
-        0 18px 36px rgba(0, 0, 0, 0.34);
+        0 18px 36px rgba(0, 0, 0, 0.32);
 }
 
 .softened {
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.044) 0%,
-            rgba(255, 255, 255, 0.014) 34%,
-            rgba(255, 255, 255, 0.006) 100%),
+            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.008) 34%,
+            rgba(255, 255, 255, 0.002) 100%),
         radial-gradient(110% 130% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.085) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
             transparent 48%),
         radial-gradient(120% 150% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.038) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.022) 0%,
             transparent 56%),
         linear-gradient(145deg,
-            rgba(7, 15, 24, 0.74) 0%,
-            rgba(6, 18, 22, 0.64) 46%,
-            rgba(4, 9, 17, 0.82) 100%);
+            rgba(6, 14, 22, 0.3) 0%,
+            rgba(5, 16, 20, 0.24) 46%,
+            rgba(3, 7, 13, 0.38) 100%);
 }
 
 .softened::before {
-    opacity: 0.58;
+    opacity: 0.4;
 }
 
 .featured {
-    min-block-size: clamp(7.7rem, 8.2vw, 8.5rem);
+    min-block-size: clamp(6.35rem, 8.4vw, 8.5rem);
     border-color: var(--sports-border-strong, rgb(214 166 64 / 0.28));
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.058) 0%,
-            rgba(255, 255, 255, 0.018) 34%,
-            rgba(255, 255, 255, 0.008) 100%),
+            rgba(255, 255, 255, 0.042) 0%,
+            rgba(255, 255, 255, 0.012) 34%,
+            rgba(255, 255, 255, 0.003) 100%),
         radial-gradient(110% 130% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.13) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 0%,
             transparent 50%),
         radial-gradient(120% 150% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.048) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.028) 0%,
             transparent 58%),
         linear-gradient(145deg,
-            rgba(9, 19, 30, 0.82) 0%,
-            rgba(7, 21, 26, 0.72) 46%,
-            rgba(4, 9, 17, 0.88) 100%);
+            rgba(8, 18, 28, 0.4) 0%,
+            rgba(6, 19, 23, 0.34) 46%,
+            rgba(3, 7, 13, 0.48) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.34),
-        0 16px 34px rgba(0, 0, 0, 0.3);
+        inset 0 1px 0 rgba(255, 255, 255, 0.056),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.26),
+        0 16px 34px rgba(0, 0, 0, 0.26);
 }
 
 .cta {
+    min-block-size: clamp(6.1rem, 7.2vw, 7.95rem);
     border-color: var(--sports-border-strong, rgb(214 166 64 / 0.28));
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.062) 0%,
-            rgba(255, 255, 255, 0.02) 34%,
-            rgba(255, 255, 255, 0.008) 100%),
+            rgba(255, 255, 255, 0.044) 0%,
+            rgba(255, 255, 255, 0.014) 34%,
+            rgba(255, 255, 255, 0.004) 100%),
         radial-gradient(120% 145% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.16) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.095) 0%,
             transparent 52%),
         radial-gradient(120% 145% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.05) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.032) 0%,
             transparent 58%),
         linear-gradient(145deg,
-            rgba(11, 22, 31, 0.86) 0%,
-            rgba(8, 20, 24, 0.74) 48%,
-            rgba(4, 9, 17, 0.9) 100%);
+            rgba(10, 20, 29, 0.44) 0%,
+            rgba(7, 19, 23, 0.36) 48%,
+            rgba(3, 7, 13, 0.52) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.065),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.34),
-        0 16px 34px rgba(0, 0, 0, 0.32),
-        0 0 18px rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
+        inset 0 1px 0 rgba(255, 255, 255, 0.058),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.28),
+        0 16px 34px rgba(0, 0, 0, 0.28),
+        0 0 18px rgb(var(--sports-gold-rgb, 214 166 64) / 0.07);
 }
 
 .cta::before {
     background:
         radial-gradient(120% 145% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.17) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.1) 0%,
             transparent 52%),
         radial-gradient(120% 145% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.055) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.034) 0%,
             transparent 58%);
 }
 
@@ -188,45 +200,46 @@
     transform: translateY(-3px);
     border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.075),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.36),
-        0 22px 44px rgba(0, 0, 0, 0.36),
-        0 0 24px rgb(var(--sports-gold-rgb, 214 166 64) / 0.12);
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.34),
+        0 22px 44px rgba(0, 0, 0, 0.34),
+        0 0 24px rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
 }
 
 .cornerGlow {
     position: absolute;
     inset-block-start: -18%;
     inset-inline-end: -8%;
-    z-index: 0;
-    inline-size: clamp(3.2rem, 2vw + 2.8rem, 5.8rem);
-    block-size: clamp(3.2rem, 2vw + 2.8rem, 5.8rem);
+    z-index: 1;
+    inline-size: clamp(3rem, 4vw, 5.8rem);
+    block-size: clamp(3rem, 4vw, 5.8rem);
     border-radius: 50%;
     pointer-events: none;
     background:
         radial-gradient(circle,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.15) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 34%,
+            rgb(255 239 184 / 0.84) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 16%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.044) 42%,
             transparent 72%);
-    opacity: 0.9;
-    filter: blur(14px);
+    opacity: 0.78;
+    filter: blur(13px);
 }
 
 .energyLine {
     position: absolute;
-    inset-inline: clamp(0.78rem, 0.28vw + 0.7rem, 0.98rem);
+    inset-inline: clamp(0.68rem, 1vw, 0.98rem);
     inset-block-end: 0;
-    z-index: 0;
+    z-index: 1;
     block-size: 1px;
     pointer-events: none;
     background:
         linear-gradient(90deg,
             transparent 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.18) 16%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.56) 44%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.16) 74%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 16%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.42) 44%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.12) 74%,
             transparent 100%);
-    opacity: 0.78;
+    opacity: 0.68;
     transform: scaleX(0.82);
     transform-origin: left center;
     transition:
@@ -242,27 +255,41 @@
     transform: scaleX(1);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 640px) {
     .card {
-        min-block-size: clamp(6.65rem, 6.5vw, 7.3rem);
+        min-block-size: clamp(6rem, 13vw, 7.15rem);
     }
 
     .featured {
-        min-block-size: clamp(7.8rem, 7.4vw, 8.45rem);
+        min-block-size: clamp(6.6rem, 13vw, 7.75rem);
     }
 
     .cta {
-        min-block-size: clamp(7.15rem, 6.8vw, 7.9rem);
+        min-block-size: clamp(6.2rem, 11vw, 7.35rem);
+    }
+}
+
+@media (min-width: 1080px) {
+    .card {
+        min-block-size: clamp(6.45rem, 6.5vw, 7.3rem);
+    }
+
+    .featured {
+        min-block-size: clamp(7.15rem, 7.4vw, 8.45rem);
+    }
+
+    .cta {
+        min-block-size: clamp(6.45rem, 6.8vw, 7.9rem);
     }
 }
 
 @media (min-width: 1280px) {
     .card {
-        min-block-size: clamp(6.75rem, 5.8vw, 7.35rem);
+        min-block-size: clamp(6.65rem, 5.8vw, 7.35rem);
     }
 
     .featured {
-        min-block-size: clamp(7.95rem, 6.55vw, 8.5rem);
+        min-block-size: clamp(7.35rem, 6.55vw, 8.5rem);
     }
 }
 
@@ -272,20 +299,11 @@
     }
 
     .featured {
-        min-block-size: clamp(8rem, 5.8vw, 8.55rem);
+        min-block-size: clamp(7.55rem, 5.8vw, 8.55rem);
     }
 
     .cta {
-        min-block-size: clamp(7.2rem, 5.35vw, 7.95rem);
-    }
-}
-
-@media (max-width: 1023.98px) {
-
-    .card,
-    .featured,
-    .cta {
-        min-block-size: clamp(6rem, 11.5vw, 7rem);
+        min-block-size: clamp(6.85rem, 5.35vw, 7.95rem);
     }
 }
 
@@ -294,8 +312,29 @@
     .card,
     .featured,
     .cta {
-        min-block-size: 5.35rem;
+        min-block-size: auto;
         border-radius: 1.05rem;
+        background:
+            linear-gradient(180deg,
+                rgba(255, 255, 255, 0.044) 0%,
+                rgba(255, 255, 255, 0.014) 34%,
+                rgba(255, 255, 255, 0.004) 100%),
+            radial-gradient(110% 130% at 100% 0%,
+                rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 0%,
+                transparent 48%),
+            linear-gradient(145deg,
+                rgba(5, 11, 18, 0.68) 0%,
+                rgba(5, 15, 18, 0.6) 46%,
+                rgba(3, 7, 13, 0.78) 100%);
+        backdrop-filter: blur(4px) saturate(1.04);
+        -webkit-backdrop-filter: blur(4px) saturate(1.04);
+    }
+
+    .card:hover,
+    .card:focus-within,
+    .cta:hover,
+    .cta:focus-within {
+        transform: none;
     }
 }
 
@@ -304,26 +343,28 @@
     .card,
     .featured,
     .cta {
-        min-block-size: 5.05rem;
         border-radius: 0.98rem;
-    }
-}
-
-@media (max-width: 389.98px) {
-
-    .card,
-    .featured,
-    .cta {
-        min-block-size: 4.95rem;
     }
 
     .cornerGlow {
-        inline-size: 2.9rem;
-        block-size: 2.9rem;
+        inline-size: 3rem;
+        block-size: 3rem;
+        filter: blur(12px);
     }
 
     .energyLine {
         inset-inline: 0.68rem;
+    }
+}
+
+@media (max-width: 389.98px) {
+    .cornerGlow {
+        inline-size: 2.7rem;
+        block-size: 2.7rem;
+    }
+
+    .energyLine {
+        inset-inline: 0.62rem;
     }
 }
 

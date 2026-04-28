@@ -14,6 +14,9 @@ import {
   EyeIcon,
   GoalIcon,
   GraduationCapIcon,
+  BasketIcon,
+  GymnasticsIcon,
+
   
  
   MonitorIcon,
@@ -45,6 +48,8 @@ export const BRAND_ICONS = Object.freeze({
   EyeIcon,
   GoalIcon,
   GraduationCapIcon,
+  BasketIcon,
+  GymnasticsIcon,
 
 
   MonitorIcon,

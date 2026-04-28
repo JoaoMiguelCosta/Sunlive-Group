@@ -10,7 +10,7 @@ const trainingCampsPrograms = {
     {
       key: "cycling",
       sport: "Ciclismo",
-      iconKey: "speed",
+      iconKey: "bike",
       mediaAlign: "right",
       theme: "endurance",
       summary:
@@ -49,7 +49,7 @@ const trainingCampsPrograms = {
     {
       key: "gymnastics",
       sport: "Ginástica",
-      iconKey: "athlete",
+      iconKey: "gymnastics",
       mediaAlign: "left",
       theme: "precision",
       summary:
@@ -122,7 +122,7 @@ const trainingCampsPrograms = {
     {
       key: "basketball",
       sport: "Basquetebol",
-      iconKey: "users",
+      iconKey: "basket",
       mediaAlign: "left",
       theme: "intensity",
       summary:

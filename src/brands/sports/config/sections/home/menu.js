@@ -2,7 +2,7 @@ import velodromoImage from "../../../assets/Home/velodromo.webp";
 import { SPORTS_GATEWAY } from "../../core/index.js";
 
 const DEFAULT_MENU_COPY = {
-  kicker: "Área Sunlive Sports",
+  kicker: "Sunlive Sports",
   meta: "Explorar",
   description: "Descobrir programas, serviços e oportunidades.",
 };
@@ -13,109 +13,123 @@ const CTA_MENU_COPY = {
   description: "Fale connosco para desenhar uma solução à medida.",
 };
 
+const MENU_KICKERS_BY_KEY = Object.freeze({
+  "training-camps": "Estágios Desportivos",
+  academies: "Academias",
+  events: "Eventos",
+  athletes: "Atletas",
+  "specialised-services": "Performance",
+  education: "Educação",
+  "sports-tourism": "Turismo",
+  "leisure-sports-tourism": "Turismo",
+  modalities: "Modalidades",
+  infrastructures: "Infraestruturas",
+  logistics: "Logística",
+  consultancy: "Consultoria",
+  contact: CTA_MENU_COPY.kicker,
+  contacts: CTA_MENU_COPY.kicker,
+});
+
+const MENU_KICKERS_BY_LABEL = Object.freeze({
+  "estagios desportivos": MENU_KICKERS_BY_KEY["training-camps"],
+  "training camps": MENU_KICKERS_BY_KEY["training-camps"],
+  academias: MENU_KICKERS_BY_KEY.academies,
+  eventos: MENU_KICKERS_BY_KEY.events,
+  "atletas sunlive": MENU_KICKERS_BY_KEY.athletes,
+  "servicos especializados": MENU_KICKERS_BY_KEY["specialised-services"],
+  educacao: MENU_KICKERS_BY_KEY.education,
+  "turismo desportivo": MENU_KICKERS_BY_KEY["leisure-sports-tourism"],
+  "turismo desportivo ludico": MENU_KICKERS_BY_KEY["leisure-sports-tourism"],
+  modalidades: MENU_KICKERS_BY_KEY.modalities,
+  infraestruturas: MENU_KICKERS_BY_KEY.infrastructures,
+  logistica: MENU_KICKERS_BY_KEY.logistics,
+  consultoria: MENU_KICKERS_BY_KEY.consultancy,
+  contactar: CTA_MENU_COPY.kicker,
+});
+
 const MENU_DESCRIPTIONS_BY_KEY = Object.freeze({
   "training-camps":
-    "Estágios com treino, alojamento, logística e suporte técnico.",
-
-  "estagios-desportivos":
-    "Estágios com treino, alojamento, logística e suporte técnico.",
+    "Treino, estadia, logística e apoio técnico-operacional ajustados à modalidade e ao grupo.",
 
   academies:
-    "Formação e treino especializado por modalidade e nível competitivo.",
+    "Programas de treino e formação desportiva com acompanhamento técnico e desenvolvimento por modalidade.",
 
-  academias:
-    "Formação e treino especializado por modalidade e nível competitivo.",
-
-  events: "Eventos desportivos com operação técnica e logística integrada.",
-
-  eventos: "Eventos desportivos com operação técnica e logística integrada.",
+  events:
+    "Competições, troféus, camps e semanas técnicas com operação desportiva estruturada.",
 
   athletes:
-    "Apoio a atletas na preparação, evolução e oportunidades de carreira.",
-
-  "sunlive-athletes":
-    "Apoio a atletas na preparação, evolução e oportunidades de carreira.",
-
-  "atletas-sunlive":
-    "Apoio a atletas na preparação, evolução e oportunidades de carreira.",
+    "Disciplina, evolução e representação Sunlive em percursos desportivos acompanhados.",
 
   "specialised-services":
-    "Soluções técnicas para projetos desportivos exigentes.",
-
-  "specialized-services":
-    "Soluções técnicas para projetos desportivos exigentes.",
-
-  "servicos-especializados":
-    "Soluções técnicas para projetos desportivos exigentes.",
+    "Intervenção técnica e multidisciplinar para apoiar rendimento, prevenção, recuperação e evolução desportiva.",
 
   education:
-    "Percursos educativos ligados ao desporto e à formação certificada.",
-
-  educacao:
-    "Percursos educativos ligados ao desporto e à formação certificada.",
+    "Percursos escolares e académicos para estudantes-atletas, integrados na rotina de treino e academia.",
 
   "sports-tourism":
-    "Experiências desportivas com lazer, território e bem-estar.",
+    "Experiências complementares de recuperação, natureza, cultura e convívio para atletas e grupos desportivos.",
 
   "leisure-sports-tourism":
-    "Experiências desportivas com lazer, território e bem-estar.",
+    "Experiências complementares de recuperação, natureza, cultura e convívio para atletas e grupos desportivos.",
 
-  "turismo-desportivo-ludico":
-    "Experiências desportivas com lazer, território e bem-estar.",
-
-  modalities: "Programas e projetos organizados por modalidade desportiva.",
-
-  modalidades: "Programas e projetos organizados por modalidade desportiva.",
-
-  "sports-modalities":
-    "Programas e projetos organizados por modalidade desportiva.",
+  modalities:
+    "Treino, academias, projetos e eventos estruturados para evolução técnica e competitiva.",
 
   infrastructures:
-    "Espaços preparados para treino, competição, estágios e eventos.",
-
-  infraestruturas:
-    "Espaços preparados para treino, competição, estágios e eventos.",
+    "Rede de espaços técnicos para treino, competição, recuperação e eventos desportivos.",
 
   logistics:
-    "Transporte, alojamento e apoio operacional para grupos desportivos.",
-
-  logistica:
-    "Transporte, alojamento e apoio operacional para grupos desportivos.",
+    "Mobilidade, alojamento, refeições e suporte diário coordenados para equipas e grupos desportivos.",
 
   consultancy:
-    "Consultoria estratégica e operacional para organizações desportivas.",
+    "Estratégia, gestão, operação e desenvolvimento desportivo para clubes, federações, municípios e entidades privadas.",
 
-  consultoria:
-    "Consultoria estratégica e operacional para organizações desportivas.",
+  contact:
+    "Canal direto para enquadrar projetos, parcerias, eventos, academias, training camps e soluções desportivas.",
 
-  contacts: "Fale connosco para estruturar o seu próximo projeto desportivo.",
-
-  contactos: "Fale connosco para estruturar o seu próximo projeto desportivo.",
-
-  contact: "Fale connosco para estruturar o seu próximo projeto desportivo.",
+  contacts:
+    "Canal direto para enquadrar projetos, parcerias, eventos, academias, training camps e soluções desportivas.",
 });
 
 const MENU_DESCRIPTIONS_BY_LABEL = Object.freeze({
+  "estagios desportivos": MENU_DESCRIPTIONS_BY_KEY["training-camps"],
   "training camps": MENU_DESCRIPTIONS_BY_KEY["training-camps"],
-  "estágios desportivos": MENU_DESCRIPTIONS_BY_KEY["estagios-desportivos"],
-  academias: MENU_DESCRIPTIONS_BY_KEY.academias,
-  eventos: MENU_DESCRIPTIONS_BY_KEY.eventos,
-  "atletas sunlive": MENU_DESCRIPTIONS_BY_KEY["atletas-sunlive"],
-  "serviços especializados":
-    MENU_DESCRIPTIONS_BY_KEY["servicos-especializados"],
-  educação: MENU_DESCRIPTIONS_BY_KEY.educacao,
-  "turismo desportivo": MENU_DESCRIPTIONS_BY_KEY["turismo-desportivo-ludico"],
-  "turismo desportivo lúdico":
-    MENU_DESCRIPTIONS_BY_KEY["turismo-desportivo-ludico"],
-  modalidades: MENU_DESCRIPTIONS_BY_KEY.modalidades,
-  infraestruturas: MENU_DESCRIPTIONS_BY_KEY.infraestruturas,
-  logística: MENU_DESCRIPTIONS_BY_KEY.logistica,
-  consultoria: MENU_DESCRIPTIONS_BY_KEY.consultoria,
+  academias: MENU_DESCRIPTIONS_BY_KEY.academies,
+  eventos: MENU_DESCRIPTIONS_BY_KEY.events,
+  "atletas sunlive": MENU_DESCRIPTIONS_BY_KEY.athletes,
+  "servicos especializados": MENU_DESCRIPTIONS_BY_KEY["specialised-services"],
+  educacao: MENU_DESCRIPTIONS_BY_KEY.education,
+  "turismo desportivo": MENU_DESCRIPTIONS_BY_KEY["leisure-sports-tourism"],
+  "turismo desportivo ludico":
+    MENU_DESCRIPTIONS_BY_KEY["leisure-sports-tourism"],
+  modalidades: MENU_DESCRIPTIONS_BY_KEY.modalities,
+  infraestruturas: MENU_DESCRIPTIONS_BY_KEY.infrastructures,
+  logistica: MENU_DESCRIPTIONS_BY_KEY.logistics,
+  consultoria: MENU_DESCRIPTIONS_BY_KEY.consultancy,
   contactar: MENU_DESCRIPTIONS_BY_KEY.contacts,
 });
 
 function normalizeText(value) {
-  return typeof value === "string" ? value.trim().toLowerCase() : "";
+  return typeof value === "string"
+    ? value
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, " ")
+    : "";
+}
+
+function getMenuKicker(item, isCta) {
+  const key = normalizeText(item?.key);
+  const label = normalizeText(item?.label);
+
+  return (
+    item?.kicker ||
+    MENU_KICKERS_BY_KEY[key] ||
+    MENU_KICKERS_BY_LABEL[label] ||
+    (isCta ? CTA_MENU_COPY.kicker : DEFAULT_MENU_COPY.kicker)
+  );
 }
 
 function getMenuDescription(item, isCta) {
@@ -141,15 +155,14 @@ function buildMenuItem(item, index) {
     href: item?.href || "#",
     variant: isCta ? "cta" : "default",
     featured: isFeatured,
-    kicker:
-      item?.kicker || (isCta ? CTA_MENU_COPY.kicker : DEFAULT_MENU_COPY.kicker),
+    kicker: getMenuKicker(item, isCta),
     meta: item?.meta || (isCta ? CTA_MENU_COPY.meta : DEFAULT_MENU_COPY.meta),
     description: getMenuDescription(item, isCta),
   };
 }
 
 const menu = {
-  id: "menu-home-sports",
+  id: "sports-home-menu",
   ariaLabel: "Entradas principais Sunlive Sports",
   backgroundImage: {
     src: velodromoImage,

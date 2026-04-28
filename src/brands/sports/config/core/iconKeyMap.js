@@ -1,3 +1,5 @@
+import { GymnasticsIcon } from "../../shared/ui/icons";
+
 const BRAND_ICON_KEY_MAP = Object.freeze({
   apple: "AppleIcon",
   athlete: "AthleteBarbellIcon",
@@ -49,6 +51,8 @@ const BRAND_ICON_KEY_MAP = Object.freeze({
   users: "UsersIcon",
   video: "VideoIcon",
   workflow: "WorkflowIcon",
+  basket: "BasketIcon",
+  gymnastics: "GymnasticsIcon",
 });
 
 export function resolveSportsIconName(iconKey) {

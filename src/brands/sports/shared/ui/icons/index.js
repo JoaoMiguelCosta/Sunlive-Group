@@ -13,6 +13,7 @@ import ConsultingExperienceIcon from "./Experience.jsx";
 import EyeIcon from "./Eye.jsx";
 import GoalIcon from "./Goal.jsx";
 import GraduationCapIcon from "./GraduationCap.jsx";
+import GymnasticsIcon from "./Gymnastics.jsx";
 
 import MonitorIcon from "./Monitor.jsx";
 import PhysicalTherapyIcon from "./PhysicalTherapy.jsx";
@@ -25,6 +26,7 @@ import SunIcon from "./Sun.jsx";
 import TrendUpIcon from "./TrendUp.jsx";
 import VideoIcon from "./Video.jsx";
 import WorkflowIcon from "./WorkFlow.jsx";
+import BasketIcon from "./Basket.jsx";
 
 export {
   AppleIcon,
@@ -42,6 +44,9 @@ export {
   EyeIcon,
   GoalIcon,
   GraduationCapIcon,
+  BasketIcon,
+  GymnasticsIcon,
+  
 
   MonitorIcon,
   PhysicalTherapyIcon,
