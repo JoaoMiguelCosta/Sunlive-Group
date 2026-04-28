@@ -5,7 +5,7 @@ import sportsBrand from "../../config/index.js";
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 
-import FacilitiesGridSection from "./sections/FacilitiesGridSection/index.jsx";
+import FacilitiesGridSection from "./sections/FacilitiesShowcaseSection/index.jsx";
 
 export default function InfrastructuresPage() {
   const data = sportsBrand.sections?.infrastructures;

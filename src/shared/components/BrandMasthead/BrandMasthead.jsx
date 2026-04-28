@@ -9,13 +9,10 @@ export default function BrandMasthead({
 }) {
   if (!src) return null;
 
-  const mastheadLabel = alt ? `${alt} masthead` : "Brand masthead";
+  const mastheadClassName = [styles.wrap, className].filter(Boolean).join(" ");
 
   return (
-    <div
-      className={`${styles.wrap} ${className}`.trim()}
-      aria-label={mastheadLabel}
-    >
+    <div className={mastheadClassName}>
       <div className={styles.inner}>
         <div className={styles.logoBox} style={{ "--logo-ar": logoAr }}>
           <img

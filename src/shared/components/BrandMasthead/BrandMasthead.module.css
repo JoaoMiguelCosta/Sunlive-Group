@@ -34,6 +34,7 @@
 
 .logoBox {
     position: relative;
+    z-index: 1;
     aspect-ratio: var(--logo-ar, 2.6);
     inline-size: min(clamp(16.75rem, 34vw, 38rem), 100%);
     display: grid;

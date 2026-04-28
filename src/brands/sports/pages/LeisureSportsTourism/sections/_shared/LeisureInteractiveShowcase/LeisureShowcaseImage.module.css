@@ -1,0 +1,99 @@
+.image {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    min-block-size: 100%;
+    object-fit: cover;
+    transform: scale(1.01);
+    filter: saturate(0.98) contrast(1.06) brightness(0.92);
+}
+
+.visualFallback {
+    position: relative;
+    display: grid;
+    inline-size: 100%;
+    block-size: 100%;
+    min-block-size: clamp(19.5rem, 27vw, 25rem);
+    place-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 68% 24%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            transparent 11rem),
+        radial-gradient(circle at 24% 64%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.035) 0%,
+            transparent 14rem),
+        linear-gradient(145deg,
+            rgba(7, 13, 21, 0.98) 0%,
+            rgba(4, 9, 17, 0.996) 100%);
+}
+
+.visualFallback::before {
+    content: "";
+    position: absolute;
+    inset: 14%;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.16);
+    border-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent),
+        radial-gradient(circle, rgba(255, 255, 255, 0.045), transparent 62%);
+    box-shadow:
+        0 0 3.4rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.09),
+        inset 0 0 3rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.055);
+}
+
+.visualFallback[data-variant="experiences"]::before {
+    transform: rotate(-4deg);
+}
+
+.visualFallback span {
+    position: relative;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(3rem, 6.2vw, 5.7rem);
+    font-weight: 900;
+    letter-spacing: -0.12em;
+    opacity: 0.12;
+}
+
+@media (max-width: 1240px) {
+    .visualFallback {
+        min-block-size: clamp(19rem, 30vw, 24rem);
+    }
+}
+
+@media (max-width: 1080px) {
+    .visualFallback {
+        min-block-size: clamp(22rem, 58vw, 28rem);
+    }
+}
+
+@media (max-width: 620px) {
+    .visualFallback[data-variant="experiences"] {
+        min-block-size: 22rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .visualFallback[data-variant="experiences"] {
+        min-block-size: 20rem;
+    }
+}
+
+@media (min-width: 1024px) and (max-height: 850px) {
+    .visualFallback {
+        min-block-size: clamp(18rem, 42vh, 23rem);
+    }
+}
+
+@media (min-width: 1024px) and (max-height: 740px) {
+    .visualFallback {
+        min-block-size: clamp(17rem, 39vh, 21rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .image {
+        transition: none;
+        transform: none;
+    }
+}
