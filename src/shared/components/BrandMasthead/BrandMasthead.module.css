@@ -4,16 +4,17 @@
     display: grid;
     place-items: center;
 
-    --travel-shell-max-width: 1360px;
-    --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)));
+    --brand-masthead-max-width: 1360px;
+    --brand-masthead-inset: var(--sl-line-inset,
+            var(--line-inset, clamp(16px, 3.5vw, 44px)));
 }
 
 .inner {
     position: relative;
-    inline-size: min(calc(100% - (2 * var(--travel-shell-inset))),
-            var(--travel-shell-max-width));
-    width: min(calc(100% - (2 * var(--travel-shell-inset))),
-            var(--travel-shell-max-width));
+    inline-size: min(calc(100% - (2 * var(--brand-masthead-inset))),
+            var(--brand-masthead-max-width));
+    width: min(calc(100% - (2 * var(--brand-masthead-inset))),
+            var(--brand-masthead-max-width));
     margin-inline: auto;
     box-sizing: border-box;
     padding-block: clamp(1.25rem, 2.9vw, 2.2rem);
@@ -57,7 +58,8 @@
 
 @media (max-width: 860px) {
     .wrap {
-        --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(14px, 4vw, 24px)));
+        --brand-masthead-inset: var(--sl-line-inset,
+                var(--line-inset, clamp(14px, 4vw, 24px)));
     }
 
     .inner {
@@ -71,7 +73,8 @@
 
 @media (max-width: 560px) {
     .wrap {
-        --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(12px, 4.4vw, 18px)));
+        --brand-masthead-inset: var(--sl-line-inset,
+                var(--line-inset, clamp(12px, 4.4vw, 18px)));
     }
 
     .inner {

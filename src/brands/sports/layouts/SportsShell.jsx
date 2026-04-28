@@ -2,7 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 
 import SportsUtilityBar from "./SportsUtilityBar.jsx";
 import SportsPageSwitcher from "./SportsPageSwitcher.jsx";
-import BrandMasthead from "../shared/ui/BrandMasthead/index.jsx";
+import BrandMasthead from "../../../shared/components/BrandMasthead";
 import FooterSports from "../components/FooterSports";
 
 import sportsBrand, { SPORTS_BASE_PATH } from "../config/index.js";

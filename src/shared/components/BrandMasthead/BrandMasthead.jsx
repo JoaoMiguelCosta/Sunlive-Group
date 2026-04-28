@@ -9,10 +9,12 @@ export default function BrandMasthead({
 }) {
   if (!src) return null;
 
+  const mastheadLabel = alt ? `${alt} masthead` : "Brand masthead";
+
   return (
     <div
       className={`${styles.wrap} ${className}`.trim()}
-      aria-label={alt ? `${alt} masthead` : "Brand masthead"}
+      aria-label={mastheadLabel}
     >
       <div className={styles.inner}>
         <div className={styles.logoBox} style={{ "--logo-ar": logoAr }}>
