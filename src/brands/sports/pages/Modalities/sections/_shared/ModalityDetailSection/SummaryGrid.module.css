@@ -1,46 +1,157 @@
 .summaryGrid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.75rem, 1.4vw, 1rem);
+    gap: clamp(0.6rem, 1vw, 0.85rem);
+    min-inline-size: 0;
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
 .summaryCard {
+    position: relative;
     display: grid;
-    align-content: start;
-    gap: 0.38rem;
-    min-block-size: 6.15rem;
-    padding: clamp(0.9rem, 1.6vw, 1.15rem);
+    align-content: center;
+    gap: 0.32rem;
+    overflow: hidden;
+    isolation: isolate;
+    min-inline-size: 0;
+    min-block-size: clamp(4.8rem, 5.5vw, 5.6rem);
+    padding: clamp(0.72rem, 1.2vw, 0.95rem);
     border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
     border-radius: var(--sports-radius-md, 1rem);
     background:
+        radial-gradient(110% 130% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.06) 0%,
+            transparent 54%),
+        radial-gradient(120% 140% at 0% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.028) 0%,
+            transparent 56%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.045) 0%,
-            rgba(255, 255, 255, 0.018) 100%);
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.014) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 16px 34px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        0 12px 26px rgba(0, 0, 0, 0.18);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.summaryCard::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    z-index: -1;
+    inline-size: 2px;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.7) 0%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.24) 58%,
+            transparent 100%);
+}
+
+.summaryCard::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: -2;
+    pointer-events: none;
+    border-radius: calc(var(--sports-radius-md, 1rem) - 1px);
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.03) 0%,
+            transparent 36%);
 }
 
 .summaryValue {
+    position: relative;
+    z-index: 1;
+    overflow-wrap: anywhere;
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
-    font-size: clamp(1.05rem, 1.6vw, 1.45rem);
+    font-size: clamp(1rem, 1.25vw, 1.24rem);
     font-weight: 950;
-    line-height: 1.04;
+    line-height: 1.02;
     letter-spacing: -0.045em;
+    text-wrap: balance;
 }
 
 .summaryLabel {
+    position: relative;
+    z-index: 1;
+    max-inline-size: 22rem;
     color: var(--sports-muted, rgba(186, 196, 210, 0.72));
-    font-size: var(--sports-card-text-size, 0.8rem);
-    font-weight: 760;
-    line-height: var(--sports-card-text-line, 1.4);
+    font-size: clamp(0.68rem, 0.68vw, 0.76rem);
+    font-weight: 720;
+    line-height: 1.32;
+}
+
+@media (hover: hover) {
+    .summaryCard:hover {
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.045),
+            0 14px 30px rgba(0, 0, 0, 0.24),
+            0 0 0 1px rgb(var(--sports-green-rgb, 46 194 126) / 0.03);
+        transform: translateY(-1px);
+    }
+}
+
+@media (min-width: 1280px) and (max-height: 850px) {
+    .summaryCard {
+        min-block-size: 4.45rem;
+        padding: 0.68rem 0.85rem;
+    }
+
+    .summaryValue {
+        font-size: 1.06rem;
+    }
+
+    .summaryLabel {
+        font-size: 0.68rem;
+    }
 }
 
 @media (max-width: 900px) {
     .summaryGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 620px) {
+    .summaryGrid {
         grid-template-columns: 1fr;
+    }
+
+    .summaryCard {
+        min-block-size: auto;
+    }
+}
+
+@media (max-width: 420px) {
+    .summaryCard {
+        padding: 0.82rem;
+        border-radius: 0.92rem;
+    }
+
+    .summaryCard::after {
+        border-radius: calc(0.92rem - 1px);
+    }
+
+    .summaryValue {
+        font-size: clamp(1rem, 5.5vw, 1.18rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .summaryCard {
+        transition: none;
+    }
+
+    .summaryCard:hover {
+        transform: none;
     }
 }

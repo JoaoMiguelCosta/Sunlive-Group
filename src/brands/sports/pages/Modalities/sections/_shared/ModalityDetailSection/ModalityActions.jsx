@@ -26,7 +26,7 @@ function BaseLink({
         href={href}
         aria-label={ariaLabel}
         target={openInNewTab ? "_blank" : undefined}
-        rel={openInNewTab ? "noreferrer" : undefined}
+        rel={openInNewTab ? "noopener noreferrer" : undefined}
       >
         {children}
       </a>
@@ -142,16 +142,16 @@ function PrimaryActionLink({
   );
 }
 
-function BookActionLink({ bookKey, label = "Abrir Book" }) {
-  const book = getBookByKey(bookKey);
+function BookActionLink({ book, label = "Abrir Book" }) {
+  if (!book || !isValidText(book.href)) return null;
 
-  if (!book) return null;
+  const bookLabel = isValidText(book.label) ? book.label : label;
 
   return (
     <PrimaryActionLink
       href={book.href}
       label={label}
-      ariaLabel={`Abrir book ${book.label || label}`}
+      ariaLabel={`Abrir book ${bookLabel}`}
       variant="primary"
       icon={<BookIcon />}
       openInNewTab
@@ -164,6 +164,7 @@ function SocialActionLink({ href, network, title }) {
 
   const isInstagram = network === "instagram";
   const labelBase = isValidText(title) ? title : "projeto";
+
   const ariaLabel = isInstagram
     ? `Abrir Instagram de ${labelBase}`
     : `Abrir Facebook de ${labelBase}`;
@@ -180,6 +181,12 @@ function SocialActionLink({ href, network, title }) {
   );
 }
 
+function getValidCustomLinks(links) {
+  return getValidArray(links).filter(
+    (link) => isValidText(link?.href) && isValidText(link?.label),
+  );
+}
+
 export default function ModalityActions({
   websiteHref,
   websiteLabel,
@@ -191,57 +198,58 @@ export default function ModalityActions({
   title,
   links = [],
 }) {
-  const customLinks = getValidArray(links).filter(
-    (link) => isValidText(link?.href) && isValidText(link?.label),
-  );
+  const customLinks = getValidCustomLinks(links);
+  const book = getBookByKey(bookKey);
 
   const hasWebsite = isValidText(websiteHref);
-  const hasBook = isValidText(bookKey);
+  const hasBook = Boolean(book);
   const hasInstagram = isValidText(instagramHref);
   const hasFacebook = isValidText(facebookHref);
 
-  if (
-    customLinks.length === 0 &&
-    !hasWebsite &&
-    !hasBook &&
-    !hasInstagram &&
-    !hasFacebook
-  ) {
+  const hasMainActions = customLinks.length > 0 || hasWebsite || hasBook;
+  const hasSocialActions = hasInstagram || hasFacebook;
+
+  if (!hasMainActions && !hasSocialActions) {
     return null;
   }
 
+  const titleLabel = isValidText(title) ? title : "esta modalidade";
+  const actionsAriaLabel = `Ações relacionadas com ${titleLabel}`;
+
   return (
-    <div className={styles.actionRow}>
-      <div className={styles.mainActions}>
-        {customLinks.map((link) => (
-          <PrimaryActionLink
-            key={`${link.label}-${link.href}`}
-            href={link.href}
-            label={link.label}
-            ariaLabel={link.ariaLabel}
-            variant={link.variant || "secondary"}
-            icon={link.icon === "external" ? <ExternalArrowIcon /> : null}
-            openInNewTab={link.openInNewTab ?? isExternalHref(link.href)}
-          />
-        ))}
+    <nav className={styles.actionRow} aria-label={actionsAriaLabel}>
+      {hasMainActions ? (
+        <div className={styles.mainActions}>
+          {customLinks.map((link) => (
+            <PrimaryActionLink
+              key={`${link.label}-${link.href}`}
+              href={link.href}
+              label={link.label}
+              ariaLabel={link.ariaLabel}
+              variant={link.variant || "secondary"}
+              icon={link.icon === "external" ? <ExternalArrowIcon /> : null}
+              openInNewTab={link.openInNewTab ?? isExternalHref(link.href)}
+            />
+          ))}
 
-        {hasWebsite ? (
-          <PrimaryActionLink
-            href={websiteHref}
-            label={websiteLabel || "Ver mais"}
-            ariaLabel={websiteAriaLabel || `Ver mais sobre ${title}`}
-            variant="secondary"
-            icon={<ExternalArrowIcon />}
-            openInNewTab={isExternalHref(websiteHref)}
-          />
-        ) : null}
+          {hasWebsite ? (
+            <PrimaryActionLink
+              href={websiteHref}
+              label={websiteLabel || "Ver mais"}
+              ariaLabel={websiteAriaLabel || `Ver mais sobre ${titleLabel}`}
+              variant="secondary"
+              icon={<ExternalArrowIcon />}
+              openInNewTab={isExternalHref(websiteHref)}
+            />
+          ) : null}
 
-        {hasBook ? (
-          <BookActionLink bookKey={bookKey} label={bookLabel || "Abrir Book"} />
-        ) : null}
-      </div>
+          {hasBook ? (
+            <BookActionLink book={book} label={bookLabel || "Abrir Book"} />
+          ) : null}
+        </div>
+      ) : null}
 
-      {hasInstagram || hasFacebook ? (
+      {hasSocialActions ? (
         <div className={styles.socialActions}>
           {hasInstagram ? (
             <SocialActionLink
@@ -260,6 +268,6 @@ export default function ModalityActions({
           ) : null}
         </div>
       ) : null}
-    </div>
+    </nav>
   );
 }

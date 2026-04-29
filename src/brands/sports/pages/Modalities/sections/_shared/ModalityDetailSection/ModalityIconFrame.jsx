@@ -14,6 +14,7 @@ export default function ModalityIconFrame({
   if (!Icon) return null;
 
   const sizeClassName = size === "sm" ? styles.iconFrameSmall : "";
+
   const frameClassName = `${styles.iconFrame} ${sizeClassName} ${className}`
     .trim()
     .replace(/\s+/g, " ");

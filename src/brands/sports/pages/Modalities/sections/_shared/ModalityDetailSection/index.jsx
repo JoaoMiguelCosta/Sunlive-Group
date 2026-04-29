@@ -11,48 +11,65 @@ import HighlightPanel from "./HighlightPanel.jsx";
 export default function ModalityDetailSection({ data, className = "" }) {
   if (!data || typeof data !== "object") return null;
 
+  const sectionId = isValidText(data.id) ? data.id : undefined;
+  const modalityKey = isValidText(data.key) ? data.key : undefined;
+
+  const identity = data.identity || {};
+
+  const hasEyebrow = isValidText(identity.eyebrow);
+  const hasTitle = isValidText(identity.title);
+  const hasLead = isValidText(identity.lead);
+  const hasShortLabel = isValidText(identity.shortLabel);
+
+  const titleId = sectionId && hasTitle ? `${sectionId}-title` : undefined;
+  const leadId = sectionId && hasLead ? `${sectionId}-lead` : undefined;
+
   const sectionClassName = `${styles.section} ${className}`.trim();
 
   return (
     <section
-      id={data.id}
+      id={sectionId}
       className={sectionClassName}
-      aria-label={getSectionAriaLabel(data)}
-      data-modality={data.key}
+      aria-label={titleId ? undefined : getSectionAriaLabel(data)}
+      aria-labelledby={titleId}
+      aria-describedby={leadId}
+      data-modality={modalityKey}
     >
       <div className={styles.inner}>
         <header className={styles.hero}>
           <ModalityIconFrame
-            iconKey={data.identity?.iconKey}
+            iconKey={identity.iconKey}
             className={styles.heroIcon}
           />
 
           <div className={styles.heroContent}>
-            {isValidText(data.identity?.eyebrow) ? (
-              <p className={styles.eyebrow}>{data.identity.eyebrow}</p>
+            {hasEyebrow ? (
+              <p className={styles.eyebrow}>{identity.eyebrow}</p>
             ) : null}
 
-            {isValidText(data.identity?.title) ? (
-              <h2 className={styles.title}>{data.identity.title}</h2>
+            {hasTitle ? (
+              <h2 id={titleId} className={styles.title}>
+                {identity.title}
+              </h2>
             ) : null}
 
-            {isValidText(data.identity?.lead) ? (
-              <p className={styles.lead}>{data.identity.lead}</p>
+            {hasLead ? (
+              <p id={leadId} className={styles.lead}>
+                {identity.lead}
+              </p>
             ) : null}
           </div>
 
-          {isValidText(data.identity?.shortLabel) ? (
-            <span className={styles.shortLabel}>
-              {data.identity.shortLabel}
-            </span>
+          {hasShortLabel ? (
+            <span className={styles.shortLabel}>{identity.shortLabel}</span>
           ) : null}
         </header>
 
         <SummaryGrid items={data.summary?.items} />
 
-        <TechnicalMap technicalMap={data.technicalMap} />
-
         <RelatedAreas relatedAreas={data.relatedAreas} />
+
+        <TechnicalMap technicalMap={data.technicalMap} />
 
         <HighlightPanel highlight={data.highlight} />
       </div>

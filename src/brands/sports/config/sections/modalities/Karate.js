@@ -8,8 +8,8 @@ const karateSection = {
     title: "Karaté",
     shortLabel: "SKA / Técnica",
     eyebrow: "Formação contínua",
-    iconKey: "biceps",
-    lead: "Formação contínua através da Sunlive Karate Academy, com treinos técnicos e valorização de disciplina, respeito e superação.",
+    iconKey: "karate",
+    lead: "Modalidade desenvolvida através da Sunlive Karate Academy, com foco em formação técnica, Kata, Kumite, disciplina, progressão individual e preparação competitiva.",
   },
 
   summary: {
@@ -33,9 +33,10 @@ const karateSection = {
   },
 
   relatedAreas: {
+    eyebrow: "Frentes associadas",
     heading: "Projetos associados ao karaté",
     description:
-      "Continuidade entre formação técnica, disciplina, progressão e desenvolvimento pessoal.",
+      "O karaté é trabalhado através de uma academia própria, orientada para formação contínua, evolução técnica, disciplina, desenvolvimento pessoal e preparação para contextos competitivos.",
 
     blocks: [
       {
@@ -47,11 +48,11 @@ const karateSection = {
           {
             key: "karate-academy",
             type: "project-card",
-            iconKey: "biceps",
-            title: "Academia",
-            meta: "Desenvolvimento",
+            iconKey: "karate",
+            title: "Sunlive Karate Academy",
+            meta: "Formação técnica",
             description:
-              "Formação técnica contínua com foco em disciplina, respeito, superação e progressão pessoal.",
+              "Academia de karaté com trabalho técnico em Kata e Kumite, progressão por níveis, workshops, eventos, campos de treino e acompanhamento orientado para evolução individual.",
             links: [
               {
                 label: "Ver academias",

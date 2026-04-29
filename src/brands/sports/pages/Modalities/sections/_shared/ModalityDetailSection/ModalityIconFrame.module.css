@@ -1,19 +1,56 @@
 .iconFrame {
+    position: relative;
     display: grid;
     place-items: center;
+    overflow: hidden;
+    isolation: isolate;
     inline-size: clamp(2.85rem, 4vw, 3.7rem);
     block-size: clamp(2.85rem, 4vw, 3.7rem);
+    flex: 0 0 auto;
     border: 1px solid var(--sports-border-strong, rgba(214, 166, 64, 0.28));
     border-radius: var(--sports-radius-lg, 1.25rem);
     color: var(--sports-gold, #d6a640);
     background:
-        radial-gradient(circle at 50% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.18),
+        radial-gradient(100% 120% at 50% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.18) 0%,
             transparent 62%),
-        rgba(255, 255, 255, 0.035);
+        radial-gradient(110% 120% at 0% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.045) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.052) 0%,
+            rgba(255, 255, 255, 0.018) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        0 16px 34px rgba(0, 0, 0, 0.28);
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        0 16px 34px rgba(0, 0, 0, 0.3);
+}
+
+.iconFrame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.07) 0%,
+            transparent 34%),
+        linear-gradient(180deg,
+            transparent 0%,
+            rgba(0, 0, 0, 0.22) 100%);
+}
+
+.iconFrame::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: calc(var(--sports-radius-lg, 1.25rem) - 1px);
+    background:
+        radial-gradient(circle at 50% 50%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 0%,
+            transparent 62%);
 }
 
 .iconFrameSmall {
@@ -22,12 +59,90 @@
     border-radius: 0.9rem;
 }
 
+.iconFrameSmall::after {
+    border-radius: calc(0.9rem - 1px);
+}
+
 .icon {
-    inline-size: 1.3rem;
-    block-size: 1.3rem;
+    position: relative;
+    z-index: 1;
+    inline-size: clamp(1.18rem, 1.5vw, 1.34rem);
+    block-size: clamp(1.18rem, 1.5vw, 1.34rem);
+    filter:
+        drop-shadow(0 0 10px rgb(var(--sports-gold-rgb, 214 166 64) / 0.18)) drop-shadow(0 8px 14px rgba(0, 0, 0, 0.26));
 }
 
 .iconFrameSmall .icon {
     inline-size: 1.05rem;
     block-size: 1.05rem;
+}
+
+@media (hover: hover) {
+    .iconFrame {
+        transition:
+            border-color 180ms ease,
+            color 180ms ease,
+            box-shadow 180ms ease,
+            transform 180ms ease;
+    }
+
+    .iconFrame:hover {
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
+        color: var(--sports-gold, #d6a640);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.065),
+            0 18px 38px rgba(0, 0, 0, 0.34),
+            0 0 0 1px rgb(var(--sports-green-rgb, 46 194 126) / 0.035);
+        transform: translateY(-1px);
+    }
+}
+
+@media (max-width: 680px) {
+    .iconFrame {
+        inline-size: 3rem;
+        block-size: 3rem;
+        border-radius: var(--sports-radius-md, 1rem);
+    }
+
+    .iconFrame::after {
+        border-radius: calc(var(--sports-radius-md, 1rem) - 1px);
+    }
+
+    .icon {
+        inline-size: 1.18rem;
+        block-size: 1.18rem;
+    }
+
+    .iconFrameSmall {
+        inline-size: 2.35rem;
+        block-size: 2.35rem;
+        border-radius: 0.85rem;
+    }
+
+    .iconFrameSmall .icon {
+        inline-size: 1rem;
+        block-size: 1rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .iconFrame {
+        inline-size: 2.85rem;
+        block-size: 2.85rem;
+    }
+
+    .iconFrameSmall {
+        inline-size: 2.25rem;
+        block-size: 2.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .iconFrame {
+        transition: none;
+    }
+
+    .iconFrame:hover {
+        transform: none;
+    }
 }

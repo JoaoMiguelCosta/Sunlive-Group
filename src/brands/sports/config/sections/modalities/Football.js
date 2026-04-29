@@ -9,7 +9,7 @@ const footballSection = {
     shortLabel: "Academia / Educação",
     eyebrow: "Treino e percurso académico",
     iconKey: "football",
-    lead: "Programas de futebol orientados para desenvolvimento técnico, acompanhamento multidisciplinar e articulação entre treino, competição e percurso académico.",
+    lead: "Modalidade estruturada em torno da Pro Football Academy Portugal, com programas residenciais que articulam treino diário, acompanhamento multidisciplinar, competição e percurso académico.",
   },
 
   summary: {
@@ -33,9 +33,10 @@ const footballSection = {
   },
 
   relatedAreas: {
+    eyebrow: "Frentes associadas",
     heading: "Projetos associados ao futebol",
     description:
-      "Continuidade entre treino, acompanhamento técnico, formação pessoal e percurso académico.",
+      "O futebol é desenvolvido através de um modelo integrado que liga academia, treino, educação, acompanhamento individual e preparação para contextos competitivos futuros.",
 
     blocks: [
       {
@@ -48,15 +49,31 @@ const footballSection = {
             key: "football-academy",
             type: "project-card",
             iconKey: "football",
-            title: "Academia",
-            meta: "Desenvolvimento",
+            title: "Pro Football Academy Portugal",
+            meta: "Academia residencial",
             description:
-              "Modelo de desenvolvimento que articula treino, acompanhamento multidisciplinar e percurso académico estruturado.",
+              "Academia internacional de futebol para atletas a partir dos 13 anos, com programas de curta e longa duração, treino diário, acompanhamento de performance e integração progressiva em contexto competitivo.",
             links: [
               {
                 label: "Ver academias",
                 href: SPORTS_PAGE_PATHS.academies,
                 ariaLabel: "Ver academias Sunlive Sports",
+              },
+            ],
+          },
+          {
+            key: "football-education",
+            type: "project-card",
+            iconKey: "education",
+            title: "Educação",
+            meta: "Percurso académico",
+            description:
+              "Modelo educativo pensado para estudantes-atletas que precisam de conciliar rotina desportiva, exigência escolar e preparação para continuidade académica, universitária ou profissional.",
+            links: [
+              {
+                label: "Ver educação",
+                href: SPORTS_PAGE_PATHS.education,
+                ariaLabel: "Ver página de Educação Sunlive Sports",
               },
             ],
           },

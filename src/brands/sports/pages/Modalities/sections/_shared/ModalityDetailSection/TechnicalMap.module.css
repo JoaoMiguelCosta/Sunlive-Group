@@ -1,25 +1,81 @@
 .panel {
+    position: relative;
     display: grid;
-    gap: clamp(1rem, 2vw, 1.4rem);
+    gap: clamp(0.95rem, 1.8vw, 1.35rem);
+    overflow: hidden;
+    isolation: isolate;
+    min-inline-size: 0;
     padding: clamp(1rem, 2.2vw, 1.55rem);
     border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
     border-radius: var(--sports-radius-lg, 1.25rem);
     background:
+        radial-gradient(120% 140% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.085) 0%,
+            transparent 54%),
+        radial-gradient(110% 130% at 0% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.035) 0%,
+            transparent 52%),
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.045) 0%,
-            rgba(255, 255, 255, 0.018) 100%);
+            rgba(255, 255, 255, 0.016) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 16px 34px rgba(0, 0, 0, 0.22);
+        0 16px 34px rgba(0, 0, 0, 0.24);
+}
+
+.panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
+            transparent 42%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.025) 0%,
+            transparent 34%);
+    opacity: 0.48;
+}
+
+.panel::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: calc(var(--sports-radius-lg, 1.25rem) - 1px);
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.035) 0%,
+            transparent 36%),
+        linear-gradient(180deg,
+            rgba(3, 6, 11, 0.06) 0%,
+            rgba(3, 6, 11, 0.34) 100%);
 }
 
 .panelHeader {
+    position: relative;
     display: grid;
-    gap: 0.58rem;
-    max-inline-size: 880px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: clamp(1rem, 2vw, 1.4rem);
+    min-inline-size: 0;
+}
+
+.panelIntro {
+    display: grid;
+    gap: clamp(0.52rem, 1vw, 0.68rem);
+    min-inline-size: 0;
+    max-inline-size: 900px;
 }
 
 .panelKicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    inline-size: fit-content;
     margin: 0;
     color: var(--sports-gold, #d6a640);
     font-size: var(--sports-kicker-size, 0.72rem);
@@ -29,6 +85,15 @@
     text-transform: uppercase;
 }
 
+.panelKicker::before {
+    content: "";
+    inline-size: clamp(1.25rem, 2.4vw, 1.95rem);
+    block-size: 1px;
+    flex: 0 0 auto;
+    background: currentColor;
+    opacity: 0.72;
+}
+
 .panelTitle {
     margin: 0;
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
@@ -36,24 +101,171 @@
     font-weight: 950;
     line-height: var(--sports-panel-title-line, 0.98);
     letter-spacing: var(--sports-panel-title-spacing, -0.058em);
+    text-wrap: balance;
 }
 
 .panelLead {
+    max-inline-size: 820px;
     margin: 0;
     color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
     font-size: var(--sports-support-text-size, 0.94rem);
-    font-weight: 650;
-    line-height: 1.62;
+    font-weight: 620;
+    line-height: 1.58;
 }
 
-.blockStack {
+.panelMeta {
+    margin: 0;
+    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
+    font-size: var(--sports-card-text-size, 0.8rem);
+    font-weight: 760;
+    line-height: 1.45;
+}
+
+.toggleButton {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-block-size: 2.75rem;
+    padding: 0.76rem 1.05rem;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
+    border-radius: 999px;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    background:
+        radial-gradient(120% 160% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.1) 0%,
+            transparent 52%),
+        linear-gradient(180deg,
+            rgba(10, 18, 29, 0.96) 0%,
+            rgba(5, 10, 18, 0.985) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 14px 28px rgba(0, 0, 0, 0.22);
+    font: inherit;
+    font-size: clamp(0.84rem, 0.86vw, 0.94rem);
+    font-weight: 880;
+    line-height: 1;
+    letter-spacing: -0.018em;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.toggleIcon {
+    inline-size: 1rem;
+    block-size: 1rem;
+    flex: 0 0 auto;
+    transition: transform 180ms ease;
+}
+
+.panel[data-open="true"] .toggleIcon {
+    transform: rotate(180deg);
+}
+
+.toggleButton:hover {
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.44);
+    color: #ffffff;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        0 16px 32px rgba(0, 0, 0, 0.28);
+    transform: translateY(-1px);
+}
+
+.toggleButton:focus-visible,
+.tabButton:focus-visible {
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.78);
+    outline-offset: 3px;
+}
+
+.content {
     display: grid;
-    gap: clamp(1rem, 2vw, 1.45rem);
+    gap: clamp(0.95rem, 1.8vw, 1.25rem);
+    min-inline-size: 0;
+    padding-block-start: clamp(0.95rem, 1.8vw, 1.2rem);
+    border-block-start: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.16);
+}
+
+.tabs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    min-inline-size: 0;
+}
+
+.tabButton {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 2.35rem;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
+    border-radius: 999px;
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.035) 0%,
+            rgba(255, 255, 255, 0.012) 100%);
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 850;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        border-color 180ms ease,
+        background 180ms ease,
+        color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+.tabButton[data-active="true"] {
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.56);
+    color: #07101a;
+    background:
+        linear-gradient(180deg,
+            rgba(242, 202, 97, 0.98) 0%,
+            rgba(214, 166, 64, 1) 54%,
+            rgba(199, 134, 21, 0.98) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.32),
+        0 14px 28px rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
+}
+
+.tabButton:hover {
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.tabButton[data-active="true"]:hover {
+    color: #07101a;
+}
+
+.activePanel {
+    min-inline-size: 0;
 }
 
 .block {
     display: grid;
     gap: clamp(0.85rem, 1.6vw, 1.15rem);
+    min-inline-size: 0;
+}
+
+.blockHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-inline-size: 0;
 }
 
 .blockTitle {
@@ -63,44 +275,89 @@
     font-weight: 900;
     line-height: var(--sports-support-title-line, 1.15);
     letter-spacing: var(--sports-support-title-spacing, -0.02em);
+    text-wrap: balance;
 }
 
 .disciplineGrid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.7rem, 1.2vw, 0.95rem);
+    gap: clamp(0.72rem, 1.25vw, 0.98rem);
+    min-inline-size: 0;
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
 .disciplineCard {
+    position: relative;
     display: grid;
+    align-content: start;
     gap: 0.6rem;
-    min-block-size: 10.5rem;
-    padding: clamp(0.85rem, 1.5vw, 1.05rem);
+    overflow: hidden;
+    isolation: isolate;
+    min-inline-size: 0;
+    min-block-size: clamp(9.8rem, 13vw, 10.8rem);
+    padding: clamp(0.85rem, 1.5vw, 1.08rem);
     border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
     border-radius: var(--sports-radius-md, 1rem);
     background:
+        radial-gradient(120% 140% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.075) 0%,
+            transparent 54%),
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.045) 0%,
-            rgba(255, 255, 255, 0.018) 100%);
+            rgba(255, 255, 255, 0.016) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
         0 16px 34px rgba(0, 0, 0, 0.22);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.disciplineCard::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    z-index: -1;
+    inline-size: 2px;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.72) 0%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.26) 58%,
+            transparent 100%);
+}
+
+.disciplineCard::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: -2;
+    pointer-events: none;
+    border-radius: calc(var(--sports-radius-md, 1rem) - 1px);
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.032) 0%,
+            transparent 38%);
 }
 
 .disciplineHeader {
     display: grid;
-    gap: 0.24rem;
+    gap: 0.28rem;
+    min-inline-size: 0;
 }
 
 .disciplineTitle {
+    overflow-wrap: anywhere;
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
     font-size: var(--sports-card-title-size, 1rem);
     font-weight: 900;
     line-height: var(--sports-card-title-line, 1.08);
     letter-spacing: var(--sports-card-title-spacing, -0.035em);
+    text-wrap: balance;
 }
 
 .disciplineMeta {
@@ -115,39 +372,81 @@
 .disciplineDescription {
     color: var(--sports-muted, rgba(186, 196, 210, 0.72));
     font-size: var(--sports-card-text-size, 0.8rem);
-    font-weight: 650;
+    font-weight: 620;
     line-height: var(--sports-card-text-line, 1.4);
 }
 
 .groupGrid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(0.7rem, 1.2vw, 0.95rem);
+    gap: clamp(0.72rem, 1.25vw, 0.98rem);
+    min-inline-size: 0;
 }
 
 .groupCard {
+    position: relative;
     display: grid;
     align-content: start;
     gap: 0.7rem;
-    padding: clamp(0.85rem, 1.5vw, 1.05rem);
+    overflow: hidden;
+    isolation: isolate;
+    min-inline-size: 0;
+    padding: clamp(0.85rem, 1.5vw, 1.08rem);
     border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
     border-radius: var(--sports-radius-md, 1rem);
     background:
+        radial-gradient(120% 140% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.07) 0%,
+            transparent 54%),
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.045) 0%,
-            rgba(255, 255, 255, 0.018) 100%);
+            rgba(255, 255, 255, 0.016) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
         0 16px 34px rgba(0, 0, 0, 0.22);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.groupCard::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    z-index: -1;
+    inline-size: 2px;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.68) 0%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.24) 58%,
+            transparent 100%);
+}
+
+.groupCard::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: -2;
+    pointer-events: none;
+    border-radius: calc(var(--sports-radius-md, 1rem) - 1px);
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.032) 0%,
+            transparent 38%);
 }
 
 .groupTitle {
     margin: 0;
+    overflow-wrap: anywhere;
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
     font-size: var(--sports-card-title-size, 1rem);
     font-weight: 900;
     line-height: 1.12;
     letter-spacing: -0.035em;
+    text-wrap: balance;
 }
 
 .groupList {
@@ -160,10 +459,11 @@
 
 .groupList li {
     position: relative;
-    padding-inline-start: 0.85rem;
+    min-inline-size: 0;
+    padding-inline-start: 0.9rem;
     color: var(--sports-muted, rgba(186, 196, 210, 0.72));
     font-size: var(--sports-card-text-size, 0.8rem);
-    font-weight: 650;
+    font-weight: 620;
     line-height: var(--sports-card-text-line, 1.4);
 }
 
@@ -183,8 +483,21 @@
     margin: 0;
     color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
     font-size: 0.76rem;
-    font-weight: 650;
+    font-weight: 620;
     line-height: 1.5;
+}
+
+@media (hover: hover) {
+
+    .disciplineCard:hover,
+    .groupCard:hover {
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.26);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.05),
+            0 18px 38px rgba(0, 0, 0, 0.28),
+            0 0 0 1px rgb(var(--sports-green-rgb, 46 194 126) / 0.03);
+        transform: translateY(-1px);
+    }
 }
 
 @media (max-width: 1180px) {
@@ -198,19 +511,78 @@
 }
 
 @media (max-width: 900px) {
+    .panelHeader {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .toggleButton {
+        justify-self: start;
+    }
+
     .groupGrid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 760px) {
+    .panel {
+        padding: clamp(0.95rem, 4vw, 1.25rem);
+    }
 
     .disciplineGrid,
     .groupGrid {
         grid-template-columns: 1fr;
     }
 
-    .disciplineCard {
+    .disciplineCard,
+    .groupCard {
         min-block-size: auto;
+    }
+
+    .tabs {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .tabButton,
+    .toggleButton {
+        inline-size: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .panel {
+        border-radius: var(--sports-radius-md, 1rem);
+    }
+
+    .panel::after {
+        border-radius: calc(var(--sports-radius-md, 1rem) - 1px);
+    }
+
+    .panelKicker {
+        gap: 0.42rem;
+    }
+
+    .panelKicker::before {
+        inline-size: 1.2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .toggleButton,
+    .toggleIcon,
+    .tabButton,
+    .disciplineCard,
+    .groupCard {
+        transition: none;
+    }
+
+    .toggleButton:hover,
+    .tabButton:hover,
+    .disciplineCard:hover,
+    .groupCard:hover {
+        transform: none;
     }
 }

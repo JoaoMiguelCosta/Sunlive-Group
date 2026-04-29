@@ -5,26 +5,75 @@ import { getValidArray, isValidText } from "./modalityDetailUtils.js";
 import ModalityActions from "./ModalityActions.jsx";
 import ModalityIconFrame from "./ModalityIconFrame.jsx";
 
+const PROJECT_GRID_TYPE = "project-grid";
+
+function getValidProjects(items) {
+  return getValidArray(items).filter((item) => isValidText(item?.title));
+}
+
+function getProjectKey(project, index) {
+  if (isValidText(project?.key)) return project.key;
+  if (isValidText(project?.title)) return project.title;
+
+  return `related-project-${index + 1}`;
+}
+
+function getBlockKey(block, index) {
+  if (isValidText(block?.key)) return block.key;
+  if (isValidText(block?.heading)) return block.heading;
+
+  return `related-block-${index + 1}`;
+}
+
+function getProjectLayout(projectsCount) {
+  if (projectsCount <= 1) return "single";
+  if (projectsCount === 2) return "duo";
+  if (projectsCount === 3) return "trio";
+
+  return "grid";
+}
+
+function isRenderableBlock(block) {
+  if (!block || typeof block !== "object") return false;
+
+  if (block.type === PROJECT_GRID_TYPE) {
+    return getValidProjects(block.items).length > 0;
+  }
+
+  return false;
+}
+
 function ProjectGridBlock({ block }) {
-  const projects = getValidArray(block?.items).filter((item) =>
-    isValidText(item?.title),
-  );
+  const projects = getValidProjects(block?.items);
 
   if (projects.length === 0) return null;
 
+  const hasHeading = isValidText(block.heading);
+  const projectLayout = getProjectLayout(projects.length);
+
+  const gridAriaLabel = hasHeading
+    ? block.heading
+    : "Projetos associados à modalidade";
+
   return (
     <article className={styles.projectPanel}>
-      <div className={styles.projectPanelHeader}>
-        {isValidText(block.heading) ? (
+      {hasHeading ? (
+        <header className={styles.projectPanelHeader}>
           <h4 className={styles.blockTitle}>{block.heading}</h4>
-        ) : null}
-      </div>
+        </header>
+      ) : null}
 
-      <div className={styles.projectGrid}>
-        {projects.map((project) => (
+      <div
+        className={styles.projectGrid}
+        role="list"
+        aria-label={gridAriaLabel}
+        data-project-layout={projectLayout}
+      >
+        {projects.map((project, index) => (
           <article
-            key={project.key || project.title}
+            key={getProjectKey(project, index)}
             className={styles.projectCard}
+            role="listitem"
           >
             <div className={styles.projectTop}>
               <div className={styles.projectHeading}>
@@ -48,17 +97,19 @@ function ProjectGridBlock({ block }) {
               <p className={styles.projectDescription}>{project.description}</p>
             ) : null}
 
-            <ModalityActions
-              title={project.title}
-              websiteHref={project.websiteHref}
-              websiteLabel={project.websiteLabel}
-              websiteAriaLabel={project.websiteAriaLabel}
-              bookKey={project.bookKey}
-              bookLabel={project.bookLabel}
-              instagramHref={project.instagramHref}
-              facebookHref={project.facebookHref}
-              links={project.links}
-            />
+            <div className={styles.projectActions}>
+              <ModalityActions
+                title={project.title}
+                websiteHref={project.websiteHref}
+                websiteLabel={project.websiteLabel}
+                websiteAriaLabel={project.websiteAriaLabel}
+                bookKey={project.bookKey}
+                bookLabel={project.bookLabel}
+                instagramHref={project.instagramHref}
+                facebookHref={project.facebookHref}
+                links={project.links}
+              />
+            </div>
           </article>
         ))}
       </div>
@@ -67,38 +118,62 @@ function ProjectGridBlock({ block }) {
 }
 
 export default function RelatedAreas({ relatedAreas }) {
-  const blocks = getValidArray(relatedAreas?.blocks);
+  const blocks = getValidArray(relatedAreas?.blocks).filter(isRenderableBlock);
 
-  if (
-    !isValidText(relatedAreas?.heading) &&
-    !isValidText(relatedAreas?.description) &&
-    blocks.length === 0
-  ) {
+  const hasEyebrow = isValidText(relatedAreas?.eyebrow);
+  const hasHeading = isValidText(relatedAreas?.heading);
+  const hasDescription = isValidText(relatedAreas?.description);
+
+  if (!hasEyebrow && !hasHeading && !hasDescription && blocks.length === 0) {
     return null;
   }
 
+  const panelId = isValidText(relatedAreas?.id) ? relatedAreas.id : undefined;
+  const titleId = panelId && hasHeading ? `${panelId}-title` : undefined;
+  const descriptionId =
+    panelId && hasDescription ? `${panelId}-description` : undefined;
+
+  const fallbackAriaLabel =
+    relatedAreas?.heading || "Frentes associadas à modalidade";
+
   return (
     <article
+      id={panelId}
       className={styles.panel}
-      aria-label={relatedAreas?.heading || "Frentes associadas à modalidade"}
+      aria-labelledby={titleId}
+      aria-describedby={descriptionId}
+      aria-label={titleId ? undefined : fallbackAriaLabel}
     >
-      <div className={styles.panelHeader}>
-        <span className={styles.panelKicker}>Frentes associadas</span>
+      {hasEyebrow || hasHeading || hasDescription ? (
+        <header className={styles.panelHeader}>
+          <span className={styles.panelKicker}>
+            {hasEyebrow ? relatedAreas.eyebrow : "Frentes associadas"}
+          </span>
 
-        {isValidText(relatedAreas.heading) ? (
-          <h3 className={styles.panelTitle}>{relatedAreas.heading}</h3>
-        ) : null}
+          {hasHeading ? (
+            <h3 id={titleId} className={styles.panelTitle}>
+              {relatedAreas.heading}
+            </h3>
+          ) : null}
 
-        {isValidText(relatedAreas.description) ? (
-          <p className={styles.panelLead}>{relatedAreas.description}</p>
-        ) : null}
-      </div>
+          {hasDescription ? (
+            <p id={descriptionId} className={styles.panelLead}>
+              {relatedAreas.description}
+            </p>
+          ) : null}
+        </header>
+      ) : null}
 
       {blocks.length > 0 ? (
         <div className={styles.relatedStack}>
-          {blocks.map((block) => {
-            if (block.type === "project-grid") {
-              return <ProjectGridBlock key={block.key} block={block} />;
+          {blocks.map((block, index) => {
+            if (block.type === PROJECT_GRID_TYPE) {
+              return (
+                <ProjectGridBlock
+                  key={getBlockKey(block, index)}
+                  block={block}
+                />
+              );
             }
 
             return null;

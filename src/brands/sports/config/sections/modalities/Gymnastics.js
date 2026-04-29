@@ -32,10 +32,52 @@ const gymnasticsSection = {
     ],
   },
 
+  relatedAreas: {
+    eyebrow: "Frentes associadas",
+    heading: "Projetos associados à ginástica",
+    description:
+      "Continuidade operacional entre desenvolvimento técnico, training camps, competição e iniciativas internacionais.",
+
+    blocks: [
+      {
+        key: "gymnastics-projects",
+        type: "project-grid",
+        heading: "Projetos",
+        iconKey: "chart",
+        items: [
+          {
+            key: "gymnastics-events",
+            type: "project-card",
+            iconKey: "calendar",
+            title: "Eventos",
+            meta: "Events",
+            description:
+              "Eventos de ginástica com forte profundidade técnica e alcance internacional, incluindo training camps, competições, semanas técnicas e formatos especializados em artística, rítmica, trampolins, acrobática, aeróbica, TeamGym e Gymnastics for All.",
+            links: [
+              {
+                label: "Ver eventos",
+                href: SPORTS_PAGE_PATHS.events,
+                ariaLabel: "Ver eventos Sunlive Sports",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
   technicalMap: {
+    id: "mapa-tecnico-ginastica",
+    eyebrow: "Mapa técnico",
     heading: "Mapa técnico da ginástica",
     description:
       "Organização das disciplinas oficiais FIG e dos principais aparelhos, provas e categorias associadas.",
+    defaultOpen: false,
+    ui: {
+      expandLabel: "Ver mapa técnico",
+      collapseLabel: "Ocultar mapa técnico",
+      tabsAriaLabel: "Navegação do mapa técnico da ginástica",
+    },
 
     blocks: [
       {
@@ -184,39 +226,6 @@ const gymnasticsSection = {
             key: "parkour-events",
             title: "Parkour",
             items: ["Speed", "Freestyle"],
-          },
-        ],
-      },
-    ],
-  },
-
-  relatedAreas: {
-    heading: "Projetos associados à ginástica",
-    description:
-      "Continuidade operacional entre desenvolvimento técnico, training camps, competição e iniciativas internacionais.",
-
-    blocks: [
-      {
-        key: "gymnastics-projects",
-        type: "project-grid",
-        heading: "Projetos",
-        iconKey: "chart",
-        items: [
-          {
-            key: "gymnastics-events",
-            type: "project-card",
-            iconKey: "calendar",
-            title: "Eventos",
-            meta: "Events",
-            description:
-              "Eventos competitivos, training camps, iniciativas internacionais e formatos técnicos ligados ao desenvolvimento da ginástica.",
-            links: [
-              {
-                label: "Ver eventos",
-                href: SPORTS_PAGE_PATHS.events,
-                ariaLabel: "Ver eventos Sunlive Sports",
-              },
-            ],
           },
         ],
       },

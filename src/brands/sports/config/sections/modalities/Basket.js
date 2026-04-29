@@ -9,7 +9,7 @@ const basketSection = {
     shortLabel: "Academia / Campus",
     eyebrow: "Formação e competição",
     iconKey: "basketball",
-    lead: "Programas da Academia Basquetebol Sunlive para evolução técnica e competitiva, especialmente orientados para jovens atletas em crescimento desportivo.",
+    lead: "Modalidade desenvolvida através da Sunlive Basketball Academy, com programas flexíveis de treino, preparação física, estágios, campus e integração em contexto competitivo.",
   },
 
   summary: {
@@ -33,9 +33,10 @@ const basketSection = {
   },
 
   relatedAreas: {
+    eyebrow: "Frentes associadas",
     heading: "Projetos associados ao basquetebol",
     description:
-      "Continuidade entre academia, contexto competitivo e eventos de desenvolvimento para jovens atletas.",
+      "O basquetebol liga academia, treino técnico, preparação física, estágios, campus e eventos, criando percursos ajustáveis para jovens atletas em diferentes fases de desenvolvimento.",
 
     blocks: [
       {
@@ -48,10 +49,10 @@ const basketSection = {
             key: "basketball-academy",
             type: "project-card",
             iconKey: "basketball",
-            title: "Academia",
-            meta: "Desenvolvimento",
+            title: "Sunlive Basketball Academy",
+            meta: "Academia de basquetebol",
             description:
-              "Programas de desenvolvimento técnico e competitivo para atletas em diferentes durações e contextos de preparação.",
+              "Academia com programas de uma semana, um mês ou época completa, combinando treino técnico, trabalho individual, preparação física, campos de verão e possibilidade de integração com equipas locais.",
             links: [
               {
                 label: "Ver academias",
@@ -67,7 +68,7 @@ const basketSection = {
             title: "Eventos",
             meta: "Events",
             description:
-              "Campus, torneios e contextos competitivos estruturados que reforçam a ligação entre formação, competição e desenvolvimento.",
+              "Campus, torneios e formatos competitivos para jovens atletas, equipas e estruturas técnicas, com foco em acolhimento, organização desportiva, experiência de participação e ligação ao desenvolvimento da academia.",
             links: [
               {
                 label: "Ver eventos",
