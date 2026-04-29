@@ -1,7 +1,11 @@
 import {
   hero,
   modalitiesOverview,
-  modalitiesShowcase,
+  cycling,
+  gymnastics,
+  basket,
+  football,
+  karate,
   modalitiesOtherSports,
   cta,
 } from "../sections/modalities/index.js";
@@ -11,7 +15,11 @@ const modalities = {
   sections: {
     hero,
     modalitiesOverview,
-    modalitiesShowcase,
+    cycling,
+    gymnastics,
+    basket,
+    football,
+    karate,
     modalitiesOtherSports,
     cta,
   },

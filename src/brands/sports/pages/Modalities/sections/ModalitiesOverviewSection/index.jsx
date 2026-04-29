@@ -64,6 +64,23 @@ function updateHashWithoutNativeJump(hash) {
   window.history.pushState(null, "", nextUrl);
 }
 
+function scrollToHashTarget(href) {
+  if (typeof document === "undefined") return;
+
+  const targetId = getHashTargetId(href);
+  if (!targetId) return;
+
+  const target = document.getElementById(targetId);
+  if (!target) return;
+
+  window.requestAnimationFrame(() => {
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+}
+
 function dispatchModalitySelectEvent(item, href) {
   if (typeof window === "undefined") return;
 
@@ -86,6 +103,7 @@ function handleCardClick(event, item, href) {
 
   updateHashWithoutNativeJump(href);
   dispatchModalitySelectEvent(item, href);
+  scrollToHashTarget(href);
 }
 
 function ModalityOverviewCard({ item, index, ui }) {

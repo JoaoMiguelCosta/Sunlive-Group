@@ -87,7 +87,11 @@ const featuredModalities = {
             },
           ],
         },
-        "EG Trampolins Training Camp",
+        {
+          label: "EG Trampolines Training Camp",
+          href: "https://www.trampolines.sunlive.pt/",
+          ariaLabel: "Abrir site do EG Trampolines Training Camp",
+        },
         "Stars Challenge",
         "BootCamp",
         "TeamGym",
@@ -120,19 +124,19 @@ const featuredModalities = {
       eventExamplesLabel: "Eventos",
       eventExamples: [
         {
-          label: "The Track Camp",
+          label: "BlackLine",
           href: "https://blacklinecoaching.com/",
-          ariaLabel: "Abrir site do The Track Camp",
+          ariaLabel: "Abrir site da BlackLine",
           socials: [
             {
               type: "instagram",
               href: "https://www.instagram.com/blacklinecoaching/",
-              ariaLabel: "Abrir Instagram do The Track Camp",
+              ariaLabel: "Abrir Instagram da BlackLine",
             },
             {
               type: "facebook",
               href: "https://www.facebook.com/blacklinecoaching/",
-              ariaLabel: "Abrir Facebook do The Track Camp",
+              ariaLabel: "Abrir Facebook da BlackLine",
             },
           ],
         },
@@ -141,10 +145,15 @@ const featuredModalities = {
           href: "https://bmxcamp.sunlive.pt/",
           ariaLabel: "Abrir site do BMX Experience",
         },
+        {
+          label: "Paracycling World Premiere",
+          href: "https://paracycling.sunlive.pt/",
+          ariaLabel: "Abrir site do Paracycling World Premiere",
+        },
         "Master Track Hour World Record",
         "Sunlive BMX Trophy",
         "Sunlive Track Trophy",
-        "Troféu Sunlive",
+        "Sunlive Trophy - Cycling",
       ],
     },
     {
@@ -166,14 +175,24 @@ const featuredModalities = {
       eventExamplesLabel: "Eventos",
       eventExamples: [
         {
-          label: "DDOSS Summer League",
+          label: "DOOSS Summer League",
           href: "https://ddoss-sports.com/",
-          ariaLabel: "Abrir site da DDOSS Summer League",
+          ariaLabel: "Abrir site da DOOSS Summer League",
           socials: [
             {
               type: "instagram",
               href: "https://www.instagram.com/ddoss.summer.league/",
-              ariaLabel: "Abrir Instagram da DDOSS Summer League",
+              ariaLabel: "Abrir Instagram da DOOSS Summer League",
+            },
+          ],
+        },
+        {
+          label: "Basketball Campus",
+          socials: [
+            {
+              type: "facebook",
+              href: "https://www.facebook.com/Campusinternacionalbasket/?locale=pt_PT",
+              ariaLabel: "Abrir Facebook do Basketball Campus",
             },
           ],
         },

@@ -149,7 +149,8 @@ function EntryContent({ entry }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {label}
+          <span className={styles.metaLinkText}>{label}</span>
+          <ExternalIcon className={styles.metaLinkIcon} />
         </a>
       ) : (
         <span className={styles.metaText}>{label}</span>

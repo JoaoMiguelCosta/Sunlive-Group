@@ -1,0 +1,179 @@
+.actionRow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: clamp(0.7rem, 1vw, 0.95rem);
+    margin-block-start: auto;
+}
+
+.mainActions {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 0.64rem;
+    min-inline-size: 0;
+}
+
+.socialActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.64rem;
+}
+
+.actionButton,
+.actionButtonPrimary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-block-size: 2.9rem;
+    min-inline-size: 0;
+    padding: 0.78rem 1.15rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease,
+        color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.actionButton {
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
+    background:
+        linear-gradient(180deg,
+            rgba(10, 18, 29, 0.96) 0%,
+            rgba(5, 10, 18, 0.985) 100%);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 14px 28px rgba(0, 0, 0, 0.22);
+}
+
+.actionButtonPrimary {
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.58);
+    background:
+        linear-gradient(180deg,
+            rgba(242, 202, 97, 0.98) 0%,
+            rgba(214, 166, 64, 1) 100%);
+    color: #0a111a;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.32),
+        0 18px 32px rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+}
+
+.actionButton:hover,
+.actionButtonPrimary:hover,
+.socialButton:hover {
+    transform: translateY(-1px);
+}
+
+.actionButton:hover {
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
+    background:
+        linear-gradient(180deg,
+            rgba(13, 22, 34, 0.98) 0%,
+            rgba(7, 12, 21, 1) 100%);
+    color: #ffffff;
+}
+
+.actionButtonPrimary:hover {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.36),
+        0 20px 36px rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
+}
+
+.actionLabel {
+    overflow: hidden;
+    font-size: clamp(0.9rem, 0.92vw, 1rem);
+    font-weight: 880;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.actionIconWrap {
+    display: inline-grid;
+    place-items: center;
+    inline-size: 1rem;
+    block-size: 1rem;
+    flex: 0 0 auto;
+}
+
+.inlineIcon {
+    inline-size: 1rem;
+    block-size: 1rem;
+}
+
+.socialButton {
+    display: inline-grid;
+    place-items: center;
+    inline-size: 2.9rem;
+    block-size: 2.9rem;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.018) 100%);
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    text-decoration: none;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 14px 28px rgba(0, 0, 0, 0.18);
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease,
+        color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.socialButton:hover {
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.055) 0%,
+            rgba(255, 255, 255, 0.025) 100%);
+    color: #ffffff;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 16px 30px rgba(0, 0, 0, 0.22);
+}
+
+.socialIcon {
+    inline-size: 1.08rem;
+    block-size: 1.08rem;
+}
+
+@media (max-width: 760px) {
+    .actionRow {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .socialActions {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 520px) {
+    .mainActions {
+        inline-size: 100%;
+    }
+
+    .actionButton,
+    .actionButtonPrimary {
+        inline-size: 100%;
+        justify-content: space-between;
+    }
+
+    .socialActions {
+        inline-size: 100%;
+    }
+}

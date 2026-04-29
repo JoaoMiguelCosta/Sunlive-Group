@@ -278,10 +278,36 @@
         text-decoration-color 0.18s ease;
 }
 
+.metaLinkText {
+    display: inline;
+}
+
+.metaLinkIcon {
+    display: inline-block;
+    inline-size: 0.72rem;
+    block-size: 0.72rem;
+    margin-inline-start: 0.28rem;
+    vertical-align: -0.1em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.85;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.86;
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
+}
+
 .metaLink:hover {
     color: var(--sports-gold, #d6a640);
     text-decoration: underline;
     text-decoration-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.52);
+}
+
+.metaLink:hover .metaLinkIcon {
+    opacity: 1;
+    transform: translate(1px, -1px);
 }
 
 .metaLink:focus-visible {
@@ -423,6 +449,11 @@
         gap: 0.38rem;
     }
 
+    .metaLinkIcon {
+        inline-size: 0.7rem;
+        block-size: 0.7rem;
+    }
+
     .socialLink {
         inline-size: 1.22rem;
         block-size: 1.22rem;
@@ -502,6 +533,11 @@
         gap: 0.32rem;
     }
 
+    .metaLinkIcon {
+        inline-size: 0.68rem;
+        block-size: 0.68rem;
+    }
+
     .socialLink {
         inline-size: 1.2rem;
         block-size: 1.2rem;
@@ -575,6 +611,12 @@
         gap: 0.34rem;
     }
 
+    .metaLinkIcon {
+        inline-size: 0.66rem;
+        block-size: 0.66rem;
+        margin-inline-start: 0.24rem;
+    }
+
     .socialLink {
         inline-size: 1.18rem;
         block-size: 1.18rem;
@@ -590,11 +632,13 @@
 
     .card,
     .metaLink,
+    .metaLinkIcon,
     .socialLink {
         transition: none;
     }
 
     .card:hover,
+    .metaLink:hover .metaLinkIcon,
     .socialLink:hover {
         transform: none;
     }
