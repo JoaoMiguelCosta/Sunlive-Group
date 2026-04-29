@@ -17,17 +17,17 @@ const karateSection = {
       {
         key: "karate-context",
         value: "Academia",
-        label: "frente principal",
+        label: "Frente principal",
       },
       {
         key: "karate-model",
         value: "Kata / Kumite",
-        label: "áreas técnicas",
+        label: "Áreas Técnicas",
       },
       {
         key: "karate-focus",
         value: "Disciplina",
-        label: "foco de desenvolvimento",
+        label: "Foco de Desenvolvimento",
       },
     ],
   },
@@ -55,9 +55,9 @@ const karateSection = {
               "Academia de karaté com trabalho técnico em Kata e Kumite, progressão por níveis, workshops, eventos, campos de treino e acompanhamento orientado para evolução individual.",
             links: [
               {
-                label: "Ver academias",
+                label: "Ver academia",
                 href: SPORTS_PAGE_PATHS.academies,
-                ariaLabel: "Ver academias Sunlive Sports",
+                ariaLabel: "Ver academia Sunlive Sports",
               },
             ],
           },

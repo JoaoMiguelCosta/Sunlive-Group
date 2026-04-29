@@ -17,17 +17,17 @@ const footballSection = {
       {
         key: "football-context",
         value: "Academia",
-        label: "frente principal",
+        label: "Frente principal",
       },
       {
         key: "football-model",
         value: "Treino + Educação",
-        label: "modelo de desenvolvimento",
+        label: "Modelo de Desenvolvimento",
       },
       {
         key: "football-focus",
         value: "Percurso estruturado",
-        label: "foco de desenvolvimento",
+        label: "Foco de Desenvolvimento",
       },
     ],
   },
@@ -55,9 +55,9 @@ const footballSection = {
               "Academia internacional de futebol para atletas a partir dos 13 anos, com programas de curta e longa duração, treino diário, acompanhamento de performance e integração progressiva em contexto competitivo.",
             links: [
               {
-                label: "Ver academias",
+                label: "Ver academia",
                 href: SPORTS_PAGE_PATHS.academies,
-                ariaLabel: "Ver academias Sunlive Sports",
+                ariaLabel: "Ver academia Sunlive Sports",
               },
             ],
           },

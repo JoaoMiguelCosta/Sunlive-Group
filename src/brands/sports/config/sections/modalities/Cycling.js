@@ -17,17 +17,17 @@ const cyclingSection = {
       {
         key: "cycling-disciplines",
         value: "11",
-        label: "disciplinas oficiais UCI",
+        label: "Disciplinas oficiais UCI",
       },
       {
         key: "cycling-contexts",
         value: "Estrada / Pista / BMX / BTT",
-        label: "contextos principais",
+        label: "Contextos principais",
       },
       {
         key: "cycling-focus",
         value: "Performance",
-        label: "foco de desenvolvimento",
+        label: "Foco de Desenvolvimento",
       },
     ],
   },
@@ -55,9 +55,9 @@ const cyclingSection = {
               "Academia sediada em Anadia, orientada para desenvolvimento técnico em pista, BMX, XCO e estrada, com ligação à Sunlive Cycling, treino estruturado e utilização de infraestruturas especializadas.",
             links: [
               {
-                label: "Ver academias",
+                label: "Ver academia",
                 href: SPORTS_PAGE_PATHS.academies,
-                ariaLabel: "Ver academias Sunlive Sports",
+                ariaLabel: "Ver academia Sunlive Sports",
               },
             ],
           },
@@ -116,8 +116,8 @@ const cyclingSection = {
       "Organização das disciplinas oficiais UCI e das principais especialidades competitivas associadas ao ciclismo.",
     defaultOpen: false,
     ui: {
-      expandLabel: "Ver mapa técnico",
-      collapseLabel: "Ocultar mapa técnico",
+      expandLabel: "Ver Mapa Técnico",
+      collapseLabel: "Ocultar Mapa Técnico",
       tabsAriaLabel: "Navegação do mapa técnico do ciclismo",
     },
 

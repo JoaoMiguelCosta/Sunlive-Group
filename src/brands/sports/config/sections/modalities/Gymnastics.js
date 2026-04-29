@@ -17,17 +17,17 @@ const gymnasticsSection = {
       {
         key: "gymnastics-disciplines",
         value: "8",
-        label: "disciplinas oficiais FIG",
+        label: "Disciplinas oficiais FIG",
       },
       {
         key: "gymnastics-contexts",
         value: "Artística / Rítmica / Trampolim",
-        label: "contextos principais",
+        label: "Contextos Princípais",
       },
       {
         key: "gymnastics-focus",
         value: "Técnica",
-        label: "foco de desenvolvimento",
+        label: "Foco de Desenvolvimento",
       },
     ],
   },
@@ -74,8 +74,8 @@ const gymnasticsSection = {
       "Organização das disciplinas oficiais FIG e dos principais aparelhos, provas e categorias associadas.",
     defaultOpen: false,
     ui: {
-      expandLabel: "Ver mapa técnico",
-      collapseLabel: "Ocultar mapa técnico",
+      expandLabel: "Ver Mapa Técnico",
+      collapseLabel: "Ocultar Mapa Técnico",
       tabsAriaLabel: "Navegação do mapa técnico da ginástica",
     },
 

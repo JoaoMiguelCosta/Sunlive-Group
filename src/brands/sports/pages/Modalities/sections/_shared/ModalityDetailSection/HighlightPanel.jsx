@@ -6,7 +6,10 @@ import ModalityActions from "./ModalityActions.jsx";
 import ModalityIconFrame from "./ModalityIconFrame.jsx";
 
 function hasValidLinks(links) {
-  return Array.isArray(links) && links.some((link) => isValidText(link?.href));
+  return (
+    Array.isArray(links) &&
+    links.some((link) => isValidText(link?.href) && isValidText(link?.label))
+  );
 }
 
 function hasValidActions(highlight) {
@@ -29,15 +32,22 @@ export default function HighlightPanel({ highlight }) {
     return null;
   }
 
-  const panelId = isValidText(highlight.id) ? highlight.id : undefined;
+  const panelId = isValidText(highlight?.id) ? highlight.id : undefined;
   const titleId = panelId && hasTitle ? `${panelId}-title` : undefined;
   const descriptionId =
     panelId && hasDescription ? `${panelId}-description` : undefined;
+
+  const fallbackAriaLabel = hasTitle
+    ? undefined
+    : hasEyebrow
+      ? highlight.eyebrow
+      : "Destaque da modalidade";
 
   return (
     <aside
       id={panelId}
       className={styles.highlightPanel}
+      aria-label={titleId ? undefined : fallbackAriaLabel}
       aria-labelledby={titleId}
       aria-describedby={descriptionId}
     >

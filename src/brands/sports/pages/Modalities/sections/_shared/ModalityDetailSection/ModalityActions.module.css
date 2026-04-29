@@ -1,46 +1,53 @@
 .actionRow {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    align-items: end;
+    align-items: center;
     gap: clamp(0.5rem, 0.9vw, 0.75rem);
     min-inline-size: 0;
     margin-block-start: auto;
 }
 
-.mainActions {
+.mainActions,
+.socialActions {
     display: flex;
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
     min-inline-size: 0;
+    gap: clamp(0.44rem, 0.72vw, 0.6rem);
+}
+
+.mainActions {
+    justify-content: flex-start;
 }
 
 .socialActions {
-    display: flex;
-    align-items: center;
     justify-content: flex-end;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    min-inline-size: 0;
+}
+
+.actionButton,
+.actionButtonPrimary,
+.socialButton {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    text-decoration: none;
+    transform: translateZ(0);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .actionButton,
 .actionButtonPrimary {
-    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.42rem;
-    overflow: hidden;
-    min-block-size: 2.25rem;
     min-inline-size: 0;
     max-inline-size: 100%;
-    padding: 0.6rem 0.88rem;
+    min-block-size: clamp(2.15rem, 2.35vw, 2.4rem);
+    gap: clamp(0.38rem, 0.52vw, 0.46rem);
+    padding: clamp(0.54rem, 0.7vw, 0.66rem) clamp(0.78rem, 1vw, 0.96rem);
     border-radius: 999px;
-    text-decoration: none;
-    isolation: isolate;
-    transform: translateZ(0);
+    box-sizing: border-box;
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -50,7 +57,8 @@
 }
 
 .actionButton::before,
-.actionButtonPrimary::before {
+.actionButtonPrimary::before,
+.socialButton::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -61,95 +69,65 @@
 }
 
 .actionButton {
-    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.26);
     background:
+        radial-gradient(120% 160% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
+            transparent 56%),
         linear-gradient(180deg,
-            rgba(10, 18, 29, 0.96) 0%,
-            rgba(5, 10, 18, 0.985) 100%);
-    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+            rgba(10, 18, 29, 0.9) 0%,
+            rgba(5, 10, 18, 0.96) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 10px 20px rgba(0, 0, 0, 0.2);
+        0 10px 20px rgba(0, 0, 0, 0.19);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
 }
 
 .actionButton::before {
     background:
         radial-gradient(120% 160% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
-            transparent 52%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            transparent 54%),
         linear-gradient(180deg,
             rgba(13, 22, 34, 0.98) 0%,
             rgba(7, 12, 21, 1) 100%);
 }
 
 .actionButtonPrimary {
-    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.62);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.64);
     background:
         linear-gradient(180deg,
-            rgba(242, 202, 97, 0.98) 0%,
+            rgba(245, 210, 119, 0.98) 0%,
             rgba(214, 166, 64, 1) 52%,
             rgba(199, 134, 21, 0.98) 100%);
-    color: #07101a;
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.32),
         0 12px 24px rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
+    color: var(--sports-graphite-900, #07101a);
 }
 
 .actionButtonPrimary::before {
     background:
         linear-gradient(180deg,
-            rgba(255, 230, 159, 0.28) 0%,
+            rgba(255, 235, 175, 0.28) 0%,
             transparent 46%),
         radial-gradient(90% 140% at 100% 0%,
             rgba(255, 255, 255, 0.2) 0%,
             transparent 54%);
 }
 
-.actionButton:hover,
-.actionButtonPrimary:hover,
-.socialButton:hover {
-    transform: translateY(-1px);
-}
-
-.actionButton:hover {
-    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.44);
-    color: #ffffff;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 13px 26px rgba(0, 0, 0, 0.24);
-}
-
-.actionButton:hover::before,
-.actionButtonPrimary:hover::before {
-    opacity: 1;
-}
-
-.actionButtonPrimary:hover {
-    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.78);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.34),
-        0 14px 28px rgb(var(--sports-gold-rgb, 214 166 64) / 0.23);
-}
-
-.actionButton:focus-visible,
-.actionButtonPrimary:focus-visible,
-.socialButton:focus-visible {
-    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.78);
-    outline-offset: 3px;
-}
-
 .actionLabel {
     position: relative;
     z-index: 1;
-    overflow: hidden;
+    display: inline-block;
     min-inline-size: 0;
-    max-inline-size: 14rem;
-    font-size: clamp(0.72rem, 0.72vw, 0.82rem);
+    max-inline-size: 100%;
+    font-size: clamp(0.74rem, 0.72vw, 0.84rem);
     font-weight: 880;
-    line-height: 1;
+    line-height: 1.05;
     letter-spacing: -0.018em;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    text-align: center;
+    text-wrap: balance;
 }
 
 .actionIconWrap {
@@ -157,23 +135,22 @@
     z-index: 1;
     display: inline-grid;
     place-items: center;
-    inline-size: 0.88rem;
-    block-size: 0.88rem;
+    inline-size: 0.92rem;
+    block-size: 0.92rem;
     flex: 0 0 auto;
 }
 
 .inlineIcon {
-    inline-size: 0.88rem;
-    block-size: 0.88rem;
+    inline-size: 0.92rem;
+    block-size: 0.92rem;
 }
 
 .socialButton {
-    position: relative;
     display: inline-grid;
     place-items: center;
-    overflow: hidden;
-    inline-size: 2.25rem;
-    block-size: 2.25rem;
+    inline-size: clamp(2.15rem, 2.35vw, 2.4rem);
+    block-size: clamp(2.15rem, 2.35vw, 2.4rem);
+    flex: 0 0 auto;
     border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
     border-radius: 999px;
     background:
@@ -183,11 +160,10 @@
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.035) 0%,
             rgba(255, 255, 255, 0.016) 100%);
-    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
-    text-decoration: none;
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
         0 10px 20px rgba(0, 0, 0, 0.16);
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -197,61 +173,106 @@
 }
 
 .socialButton::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0;
     background:
         radial-gradient(120% 140% at 50% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.13) 0%,
             transparent 58%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.052) 0%,
             rgba(255, 255, 255, 0.022) 100%);
-    transition: opacity 180ms ease;
-}
-
-.socialButton:hover {
-    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.44);
-    color: #ffffff;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 13px 24px rgba(0, 0, 0, 0.22);
-}
-
-.socialButton:hover::before {
-    opacity: 1;
 }
 
 .socialIcon {
     position: relative;
     z-index: 1;
-    inline-size: 0.94rem;
-    block-size: 0.94rem;
+    inline-size: 1rem;
+    block-size: 1rem;
 }
 
-@media (min-width: 1280px) and (max-height: 850px) {
+.actionButton:focus-visible,
+.actionButtonPrimary:focus-visible,
+.socialButton:focus-visible {
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.82);
+    outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+    .actionButton:hover,
+    .actionButtonPrimary:hover,
+    .socialButton:hover {
+        transform: translateY(-1px);
+    }
+
+    .actionButton:hover {
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.44);
+        color: #ffffff;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.05),
+            0 13px 26px rgba(0, 0, 0, 0.24);
+    }
+
+    .actionButtonPrimary:hover {
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.78);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.34),
+            0 14px 28px rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+    }
+
+    .socialButton:hover {
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.44);
+        color: #ffffff;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.05),
+            0 13px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .actionButton:hover::before,
+    .actionButtonPrimary:hover::before,
+    .socialButton:hover::before {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 1280px) and (max-height: 860px) {
+    .actionRow {
+        gap: 0.45rem;
+    }
+
+    .mainActions,
+    .socialActions {
+        gap: 0.42rem;
+    }
 
     .actionButton,
     .actionButtonPrimary {
-        min-block-size: 2.05rem;
-        padding: 0.52rem 0.75rem;
+        min-block-size: 2.08rem;
+        padding: 0.5rem 0.72rem;
     }
 
     .socialButton {
-        inline-size: 2.05rem;
-        block-size: 2.05rem;
+        inline-size: 2.08rem;
+        block-size: 2.08rem;
     }
 
     .actionLabel {
-        font-size: 0.7rem;
+        font-size: 0.72rem;
+    }
+
+    .inlineIcon {
+        inline-size: 0.86rem;
+        block-size: 0.86rem;
+    }
+
+    .socialIcon {
+        inline-size: 0.92rem;
+        block-size: 0.92rem;
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
     .actionRow {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         align-items: start;
     }
 
@@ -260,7 +281,7 @@
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 640px) {
     .actionRow {
         gap: 0.62rem;
     }
@@ -271,16 +292,56 @@
 
     .actionButton,
     .actionButtonPrimary {
-        inline-size: 100%;
-        justify-content: space-between;
-    }
-
-    .actionLabel {
-        max-inline-size: 100%;
+        flex: 1 1 min(12rem, 100%);
+        min-inline-size: min(11rem, 100%);
     }
 
     .socialActions {
         inline-size: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .mainActions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .actionButton,
+    .actionButtonPrimary {
+        inline-size: 100%;
+        min-inline-size: 0;
+        justify-content: space-between;
+        padding-inline: 0.78rem;
+    }
+
+    .actionLabel {
+        text-align: left;
+    }
+
+    .socialActions {
+        gap: 0.48rem;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .actionButton,
+    .actionButtonPrimary {
+        min-block-size: 2.05rem;
+        padding-block: 0.5rem;
+        padding-inline: 0.68rem;
+    }
+
+    .actionLabel {
+        font-size: 0.7rem;
+        line-height: 1.1;
+    }
+
+    .socialButton {
+        inline-size: 2.05rem;
+        block-size: 2.05rem;
     }
 }
 

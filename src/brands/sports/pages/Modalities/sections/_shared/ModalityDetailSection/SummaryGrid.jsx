@@ -17,13 +17,17 @@ function getSummaryItemKey(item, index) {
   return `${value}-${label}-${index}`;
 }
 
-export default function SummaryGrid({ items }) {
+export default function SummaryGrid({ items, ariaLabel }) {
   const validItems = getValidSummaryItems(items);
 
   if (validItems.length === 0) return null;
 
   return (
-    <ul className={styles.summaryGrid}>
+    <ul
+      className={styles.summaryGrid}
+      aria-label={isValidText(ariaLabel) ? ariaLabel : undefined}
+      data-items-count={validItems.length}
+    >
       {validItems.map((item, index) => (
         <li key={getSummaryItemKey(item, index)} className={styles.summaryCard}>
           {isValidText(item.value) ? (

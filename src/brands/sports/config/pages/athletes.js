@@ -1,21 +1,12 @@
-import {
-  hero,
-
-
-  profilesIntro,
-  profiles,
-
-} from "../sections/athletes/index.js";
+import { hero, athletesRoster, cta } from "../sections/athletes/index.js";
 
 const athletes = {
-  id: "sunlive-athletes",
+  id: "atletas-sunlive",
+
   sections: {
     hero,
-  
-
-    profilesIntro,
-    profiles,
-   
+    athletesRoster,
+    cta,
   },
 };
 

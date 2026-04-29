@@ -24,7 +24,9 @@ export default function ModalityDetailSection({ data, className = "" }) {
   const titleId = sectionId && hasTitle ? `${sectionId}-title` : undefined;
   const leadId = sectionId && hasLead ? `${sectionId}-lead` : undefined;
 
-  const sectionClassName = `${styles.section} ${className}`.trim();
+  const sectionClassName = [styles.section, className]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <section

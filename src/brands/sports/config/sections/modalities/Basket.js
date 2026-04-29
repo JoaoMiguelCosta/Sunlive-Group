@@ -17,17 +17,17 @@ const basketSection = {
       {
         key: "basketball-context",
         value: "Academia",
-        label: "frente principal",
+        label: "Frente principal",
       },
       {
         key: "basketball-programs",
         value: "Campus / Torneios",
-        label: "formatos associados",
+        label: "Formatos Associados",
       },
       {
         key: "basketball-focus",
         value: "Evolução técnica",
-        label: "foco de desenvolvimento",
+        label: "Foco de Desenvolvimento",
       },
     ],
   },
@@ -55,9 +55,9 @@ const basketSection = {
               "Academia com programas de uma semana, um mês ou época completa, combinando treino técnico, trabalho individual, preparação física, campos de verão e possibilidade de integração com equipas locais.",
             links: [
               {
-                label: "Ver academias",
+                label: "Ver academia",
                 href: SPORTS_PAGE_PATHS.academies,
-                ariaLabel: "Ver academias Sunlive Sports",
+                ariaLabel: "Ver academia Sunlive Sports",
               },
             ],
           },

@@ -1,60 +1,56 @@
 import styles from "../../layouts/SportsPageLayout.module.css";
+
 import sportsBrand from "../../config/index.js";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
-import HeadlineBlock from "../../shared/ui/HeadlineBlock/index.jsx";
+import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 
-import ProfilesSection from "./sections/ProfilesSection.jsx";
-
+import AthletesRosterSection from "./sections/AthletesRosterSection/index.jsx";
 
 export default function AthletesPage() {
-  const data = sportsBrand.sections?.athletes;
-  if (!data) return null;
+  const pageData =
+    sportsBrand.pages?.athletes || sportsBrand.sections?.athletes;
+
+  const sections = pageData?.sections || pageData;
+
+  if (!sections) return null;
+
+  const heroData = sections.hero;
+  const athletesRosterData = sections.athletesRoster;
+  const ctaData = sections.cta || sections.athletesCTA;
 
   return (
     <div className={styles.pageWrap} data-brand="sports">
       <main
-        id="sports-athletes"
+        id={pageData?.id || "atletas-sunlive"}
         className={styles.inner}
-        role="region"
-        aria-label="Sunlive Sports — Atletas Sunlive"
+        aria-label={
+          pageData?.ui?.ariaLabel ||
+          sections.ui?.ariaLabel ||
+          "Sunlive Sports — Atletas Sunlive"
+        }
       >
         <div className={styles.contentFlow}>
-          <header className={styles.heroSection}>
-            <SportsHeroIntro
-              id="athletes-hero"
-              eyebrow={data.hero?.eyebrow}
-              secondaryLine={data.hero?.secondaryLine}
-              title={data.hero?.title}
-              description={data.hero?.description}
-              supportingText={data.hero?.supportingText}
-              proofPoints={data.hero?.proofPoints}
-              stats={data.hero?.stats}
-              ui={data.hero?.ui}
-            />
-          </header>
+          {heroData ? (
+            <header className={styles.heroSection}>
+              <SportsHeroIntro
+                id={heroData.id || "atletas-sunlive-hero"}
+                eyebrow={heroData.eyebrow}
+                secondaryLine={heroData.secondaryLine}
+                title={heroData.title}
+                description={heroData.description}
+                supportingText={heroData.supportingText}
+                proofPoints={heroData.proofPoints}
+                stats={heroData.stats}
+                ui={heroData.ui}
+              />
+            </header>
+          ) : null}
 
           <div className={styles.sections}>
-           
+            <AthletesRosterSection data={athletesRosterData} />
 
-            {data.profilesIntro ? (
-              <section
-                className={styles.heroSection}
-                aria-label="Conhece os Nossos Atletas"
-              >
-                <HeadlineBlock
-                  theme="sports"
-                  variant="banded"
-                  align="center"
-                  max="lg"
-                  title={data.profilesIntro?.title}
-                  lead={data.profilesIntro?.lead}
-                />
-              </section>
-            ) : null}
-
-            <ProfilesSection data={data} />
-            
+            {ctaData ? <SportsClosingCTA data={ctaData} /> : null}
           </div>
         </div>
       </main>

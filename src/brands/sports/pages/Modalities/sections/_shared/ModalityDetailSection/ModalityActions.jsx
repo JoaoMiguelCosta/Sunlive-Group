@@ -2,31 +2,149 @@ import { Link } from "react-router-dom";
 
 import styles from "./ModalityActions.module.css";
 
-import {
-  getBookByKey,
-  getValidArray,
-  isExternalHref,
-  isValidText,
-  shouldUseNativeAnchor,
-} from "./modalityDetailUtils.js";
+import { getValidArray, isValidText } from "./modalityDetailUtils.js";
 
-function BaseLink({
+function isExternalHref(href) {
+  return /^(https?:)?\/\//i.test(href);
+}
+
+function isHashHref(href) {
+  return typeof href === "string" && href.startsWith("#");
+}
+
+function resolveBookHref(bookKey) {
+  if (!isValidText(bookKey)) return "";
+
+  if (
+    isExternalHref(bookKey) ||
+    bookKey.startsWith("/") ||
+    bookKey.startsWith("#")
+  ) {
+    return bookKey;
+  }
+
+  return `/book/${bookKey}`;
+}
+
+function getValidLinks(links) {
+  return getValidArray(links).filter(
+    (link) => isValidText(link?.href) && isValidText(link?.label),
+  );
+}
+
+function ArrowUpRightIcon(props) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M6.25 13.75 13.75 6.25"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.5 6.25h6.25v6.25"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function BookIcon(props) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M6 4.75h6.25A1.75 1.75 0 0 1 14 6.5v8.75H7.75A1.75 1.75 0 0 0 6 17"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6 4.75A1.75 1.75 0 0 0 4.25 6.5v8.75A1.75 1.75 0 0 1 6 17"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14 15.25h1.25"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function InstagramIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <rect
+        x="3.5"
+        y="3.5"
+        width="17"
+        height="17"
+        rx="5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17.3" cy="6.7" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
+function FacebookIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M13.25 20v-7h2.35l.4-3h-2.75V8.2c0-.87.24-1.46 1.49-1.46H16.1V4.05c-.24-.03-1.06-.1-2.01-.1-1.99 0-3.34 1.21-3.34 3.45V10H8.5v3h2.25v7"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function BaseActionLink({
   href,
   ariaLabel,
   className,
   children,
-  openInNewTab = false,
+  title,
+  newTab = false,
 }) {
   if (!isValidText(href)) return null;
 
-  if (shouldUseNativeAnchor(href)) {
+  if (isExternalHref(href)) {
     return (
       <a
-        className={className}
         href={href}
-        aria-label={ariaLabel}
-        target={openInNewTab ? "_blank" : undefined}
-        rel={openInNewTab ? "noopener noreferrer" : undefined}
+        aria-label={ariaLabel || title}
+        title={title}
+        className={className}
+        target={newTab ? "_blank" : undefined}
+        rel={newTab ? "noreferrer noopener" : undefined}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  if (isHashHref(href)) {
+    return (
+      <a
+        href={href}
+        aria-label={ariaLabel || title}
+        title={title}
+        className={className}
       >
         {children}
       </a>
@@ -34,160 +152,91 @@ function BaseLink({
   }
 
   return (
-    <Link className={className} to={href} aria-label={ariaLabel}>
+    <Link
+      to={href}
+      aria-label={ariaLabel || title}
+      title={title}
+      className={className}
+    >
       {children}
     </Link>
   );
 }
 
-function ExternalArrowIcon() {
-  return (
-    <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.inlineIcon}>
-      <path
-        d="M6 14 14 6M8 6h6v6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function BookIcon() {
-  return (
-    <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.inlineIcon}>
-      <path
-        d="M6 4.75A2.75 2.75 0 0 1 8.75 2h5.5A1.75 1.75 0 0 1 16 3.75v10.5A1.75 1.75 0 0 1 14.25 16h-5.5A2.75 2.75 0 0 0 6 18"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M6 4.75v13.5M6 18H4.75A1.75 1.75 0 0 1 3 16.25v-9.5A1.75 1.75 0 0 1 4.75 5H6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function InstagramIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.socialIcon}>
-      <rect
-        x="4.5"
-        y="4.5"
-        width="15"
-        height="15"
-        rx="4.25"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-      <circle
-        cx="12"
-        cy="12"
-        r="3.6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-      <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
-    </svg>
-  );
-}
-
-function FacebookIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.socialIcon}>
-      <path
-        d="M13.3 20v-7h2.4l.4-2.9h-2.8V8.35c0-.84.24-1.4 1.45-1.4H16V4.35c-.22-.03-.98-.1-1.86-.1-1.84 0-3.1 1.12-3.1 3.18v2.67H8.5V13h2.54v7h2.26Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function PrimaryActionLink({
+function SecondaryActionButton({
   href,
   label,
   ariaLabel,
-  variant = "secondary",
-  icon = null,
-  openInNewTab = false,
+  title,
+  newTab = false,
 }) {
   if (!isValidText(href) || !isValidText(label)) return null;
 
-  const className =
-    variant === "primary" ? styles.actionButtonPrimary : styles.actionButton;
-
   return (
-    <BaseLink
-      href={href}
-      ariaLabel={ariaLabel || label}
-      className={className}
-      openInNewTab={openInNewTab}
-    >
-      <span className={styles.actionLabel}>{label}</span>
-
-      {icon ? <span className={styles.actionIconWrap}>{icon}</span> : null}
-    </BaseLink>
-  );
-}
-
-function BookActionLink({ book, label = "Abrir Book" }) {
-  if (!book || !isValidText(book.href)) return null;
-
-  const bookLabel = isValidText(book.label) ? book.label : label;
-
-  return (
-    <PrimaryActionLink
-      href={book.href}
-      label={label}
-      ariaLabel={`Abrir book ${bookLabel}`}
-      variant="primary"
-      icon={<BookIcon />}
-      openInNewTab
-    />
-  );
-}
-
-function SocialActionLink({ href, network, title }) {
-  if (!isValidText(href) || !isValidText(network)) return null;
-
-  const isInstagram = network === "instagram";
-  const labelBase = isValidText(title) ? title : "projeto";
-
-  const ariaLabel = isInstagram
-    ? `Abrir Instagram de ${labelBase}`
-    : `Abrir Facebook de ${labelBase}`;
-
-  return (
-    <BaseLink
+    <BaseActionLink
       href={href}
       ariaLabel={ariaLabel}
-      className={styles.socialButton}
-      openInNewTab
+      title={title || label}
+      className={styles.actionButton}
+      newTab={newTab}
     >
-      {isInstagram ? <InstagramIcon /> : <FacebookIcon />}
-    </BaseLink>
+      <span className={styles.actionLabel}>{label}</span>
+      <span className={styles.actionIconWrap} aria-hidden="true">
+        <ArrowUpRightIcon className={styles.inlineIcon} />
+      </span>
+    </BaseActionLink>
   );
 }
 
-function getValidCustomLinks(links) {
-  return getValidArray(links).filter(
-    (link) => isValidText(link?.href) && isValidText(link?.label),
+function PrimaryActionButton({
+  href,
+  label,
+  ariaLabel,
+  title,
+  newTab = false,
+}) {
+  if (!isValidText(href) || !isValidText(label)) return null;
+
+  return (
+    <BaseActionLink
+      href={href}
+      ariaLabel={ariaLabel}
+      title={title || label}
+      className={styles.actionButtonPrimary}
+      newTab={newTab}
+    >
+      <span className={styles.actionLabel}>{label}</span>
+      <span className={styles.actionIconWrap} aria-hidden="true">
+        <BookIcon className={styles.inlineIcon} />
+      </span>
+    </BaseActionLink>
+  );
+}
+
+function SocialActionButton({
+  href,
+  ariaLabel,
+  title,
+  icon: Icon,
+  newTab = true,
+}) {
+  if (!isValidText(href) || !Icon) return null;
+
+  return (
+    <BaseActionLink
+      href={href}
+      ariaLabel={ariaLabel}
+      title={title}
+      className={styles.socialButton}
+      newTab={newTab}
+    >
+      <Icon className={styles.socialIcon} />
+    </BaseActionLink>
   );
 }
 
 export default function ModalityActions({
+  title,
   websiteHref,
   websiteLabel,
   websiteAriaLabel,
@@ -195,79 +244,126 @@ export default function ModalityActions({
   bookLabel,
   instagramHref,
   facebookHref,
-  title,
-  links = [],
+  links,
 }) {
-  const customLinks = getValidCustomLinks(links);
-  const book = getBookByKey(bookKey);
+  const validLinks = getValidLinks(links);
+  const resolvedBookHref = resolveBookHref(bookKey);
 
-  const hasWebsite = isValidText(websiteHref);
-  const hasBook = Boolean(book);
-  const hasInstagram = isValidText(instagramHref);
-  const hasFacebook = isValidText(facebookHref);
+  const hasWebsiteAction = isValidText(websiteHref);
+  const hasBookAction = isValidText(resolvedBookHref);
+  const hasSocialActions =
+    isValidText(instagramHref) || isValidText(facebookHref);
+  const hasCustomLinks = validLinks.length > 0;
 
-  const hasMainActions = customLinks.length > 0 || hasWebsite || hasBook;
-  const hasSocialActions = hasInstagram || hasFacebook;
-
-  if (!hasMainActions && !hasSocialActions) {
+  if (
+    !hasWebsiteAction &&
+    !hasBookAction &&
+    !hasSocialActions &&
+    !hasCustomLinks
+  ) {
     return null;
   }
 
-  const titleLabel = isValidText(title) ? title : "esta modalidade";
-  const actionsAriaLabel = `Ações relacionadas com ${titleLabel}`;
+  const fallbackWebsiteLabel = "Ver mais";
+  const fallbackBookLabel = "Abrir Book";
+  const baseTitle = isValidText(title) ? title : "projeto";
 
   return (
-    <nav className={styles.actionRow} aria-label={actionsAriaLabel}>
-      {hasMainActions ? (
-        <div className={styles.mainActions}>
-          {customLinks.map((link) => (
-            <PrimaryActionLink
-              key={`${link.label}-${link.href}`}
-              href={link.href}
-              label={link.label}
-              ariaLabel={link.ariaLabel}
-              variant={link.variant || "secondary"}
-              icon={link.icon === "external" ? <ExternalArrowIcon /> : null}
-              openInNewTab={link.openInNewTab ?? isExternalHref(link.href)}
-            />
-          ))}
+    <div className={styles.actionRow}>
+      <div className={styles.mainActions}>
+        {hasWebsiteAction ? (
+          <SecondaryActionButton
+            href={websiteHref}
+            label={
+              isValidText(websiteLabel) ? websiteLabel : fallbackWebsiteLabel
+            }
+            ariaLabel={
+              isValidText(websiteAriaLabel)
+                ? websiteAriaLabel
+                : `Abrir página de ${baseTitle}`
+            }
+            title={
+              isValidText(websiteLabel) ? websiteLabel : fallbackWebsiteLabel
+            }
+            newTab={isExternalHref(websiteHref)}
+          />
+        ) : null}
 
-          {hasWebsite ? (
-            <PrimaryActionLink
-              href={websiteHref}
-              label={websiteLabel || "Ver mais"}
-              ariaLabel={websiteAriaLabel || `Ver mais sobre ${titleLabel}`}
-              variant="secondary"
-              icon={<ExternalArrowIcon />}
-              openInNewTab={isExternalHref(websiteHref)}
-            />
-          ) : null}
+        {hasBookAction ? (
+          <PrimaryActionButton
+            href={resolvedBookHref}
+            label={isValidText(bookLabel) ? bookLabel : fallbackBookLabel}
+            ariaLabel={`Abrir book de ${baseTitle}`}
+            title={isValidText(bookLabel) ? bookLabel : fallbackBookLabel}
+            newTab={isExternalHref(resolvedBookHref)}
+          />
+        ) : null}
 
-          {hasBook ? (
-            <BookActionLink book={book} label={bookLabel || "Abrir Book"} />
-          ) : null}
-        </div>
-      ) : null}
+        {hasCustomLinks
+          ? validLinks.map((link, index) => {
+              const key = isValidText(link.key)
+                ? link.key
+                : `${link.label}-${link.href}-${index}`;
+
+              const variant =
+                link.variant === "primary" ? "primary" : "default";
+
+              if (variant === "primary") {
+                return (
+                  <PrimaryActionButton
+                    key={key}
+                    href={link.href}
+                    label={link.label}
+                    ariaLabel={link.ariaLabel}
+                    title={link.label}
+                    newTab={
+                      typeof link.newTab === "boolean"
+                        ? link.newTab
+                        : isExternalHref(link.href)
+                    }
+                  />
+                );
+              }
+
+              return (
+                <SecondaryActionButton
+                  key={key}
+                  href={link.href}
+                  label={link.label}
+                  ariaLabel={link.ariaLabel}
+                  title={link.label}
+                  newTab={
+                    typeof link.newTab === "boolean"
+                      ? link.newTab
+                      : isExternalHref(link.href)
+                  }
+                />
+              );
+            })
+          : null}
+      </div>
 
       {hasSocialActions ? (
         <div className={styles.socialActions}>
-          {hasInstagram ? (
-            <SocialActionLink
+          {isValidText(instagramHref) ? (
+            <SocialActionButton
               href={instagramHref}
-              network="instagram"
-              title={title}
+              ariaLabel={`Abrir Instagram de ${baseTitle}`}
+              title="Instagram"
+              icon={InstagramIcon}
             />
           ) : null}
 
-          {hasFacebook ? (
-            <SocialActionLink
+          {isValidText(facebookHref) ? (
+            <SocialActionButton
               href={facebookHref}
-              network="facebook"
-              title={title}
+              ariaLabel={`Abrir Facebook de ${baseTitle}`}
+              title="Facebook"
+              icon={FacebookIcon}
             />
           ) : null}
         </div>
       ) : null}
-    </nav>
+    </div>
   );
 }

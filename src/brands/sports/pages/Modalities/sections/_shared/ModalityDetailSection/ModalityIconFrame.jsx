@@ -15,9 +15,9 @@ export default function ModalityIconFrame({
 
   const sizeClassName = size === "sm" ? styles.iconFrameSmall : "";
 
-  const frameClassName = `${styles.iconFrame} ${sizeClassName} ${className}`
-    .trim()
-    .replace(/\s+/g, " ");
+  const frameClassName = [styles.iconFrame, sizeClassName, className]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <span className={frameClassName} aria-hidden="true">

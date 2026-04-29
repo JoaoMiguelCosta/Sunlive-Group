@@ -1,4 +1,4 @@
-import { useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 
 import styles from "./TechnicalMap.module.css";
 
@@ -40,12 +40,25 @@ function getGroupKey(group, index) {
   return `technical-group-${index + 1}`;
 }
 
-function getDomSafeId(value) {
-  return String(value)
+function getDomSafeId(value, fallback = "item") {
+  const safeId = String(value)
     .trim()
     .toLowerCase()
     .replace(/[^a-z0-9_-]+/gi, "-")
     .replace(/^-+|-+$/g, "");
+
+  return safeId || fallback;
+}
+
+function getBlockEntry(block, index) {
+  const key = getBlockKey(block, index);
+
+  return {
+    block,
+    index,
+    key,
+    safeId: getDomSafeId(key, `technical-block-${index + 1}`),
+  };
 }
 
 function isRenderableBlock(block) {
@@ -187,12 +200,30 @@ export default function TechnicalMap({ technicalMap }) {
     [technicalMap],
   );
 
+  const blockEntries = useMemo(
+    () => blocks.map((block, index) => getBlockEntry(block, index)),
+    [blocks],
+  );
+
   const [isOpen, setIsOpen] = useState(
     () => technicalMap?.defaultOpen === true,
   );
-  const [activeKey, setActiveKey] = useState(() =>
-    blocks[0] ? getBlockKey(blocks[0], 0) : "",
-  );
+  const [activeKey, setActiveKey] = useState("");
+
+  useEffect(() => {
+    if (blockEntries.length === 0) {
+      setActiveKey("");
+      return;
+    }
+
+    setActiveKey((currentKey) => {
+      const hasCurrentKey = blockEntries.some(
+        (entry) => entry.key === currentKey,
+      );
+
+      return hasCurrentKey ? currentKey : blockEntries[0].key;
+    });
+  }, [blockEntries]);
 
   const hasEyebrow = isValidText(technicalMap?.eyebrow);
   const hasHeading = isValidText(technicalMap?.heading);
@@ -216,19 +247,19 @@ export default function TechnicalMap({ technicalMap }) {
   const fallbackAriaLabel =
     technicalMap?.heading || "Mapa técnico da modalidade";
 
-  const activeBlock =
-    blocks.find((block, index) => getBlockKey(block, index) === activeKey) ||
-    blocks[0];
+  const activeEntry =
+    blockEntries.find((entry) => entry.key === activeKey) || blockEntries[0];
 
+  const activeBlock = activeEntry?.block;
   const blocksSummary = getBlocksSummary(blocks);
 
   const expandLabel = isValidText(technicalMap?.ui?.expandLabel)
     ? technicalMap.ui.expandLabel
-    : "Ver mapa técnico";
+    : "Ver Mapa Técnico";
 
   const collapseLabel = isValidText(technicalMap?.ui?.collapseLabel)
     ? technicalMap.ui.collapseLabel
-    : "Ocultar mapa técnico";
+    : "Ocultar Mapa Técnico";
 
   const toggleLabel = isOpen ? collapseLabel : expandLabel;
 
@@ -284,30 +315,28 @@ export default function TechnicalMap({ technicalMap }) {
 
       {isOpen && blocks.length > 0 ? (
         <div id={contentId} className={styles.content}>
-          {blocks.length > 1 ? (
+          {blockEntries.length > 1 ? (
             <div
               className={styles.tabs}
               role="tablist"
               aria-label={tabsAriaLabel}
             >
-              {blocks.map((block, index) => {
-                const blockKey = getBlockKey(block, index);
-                const safeBlockId = getDomSafeId(blockKey);
-                const isActive = block === activeBlock;
+              {blockEntries.map((entry) => {
+                const isActive = entry.key === activeEntry?.key;
 
                 return (
                   <button
-                    key={blockKey}
+                    key={entry.key}
                     type="button"
-                    id={`${baseId}-${safeBlockId}-tab`}
+                    id={`${baseId}-${entry.safeId}-tab`}
                     className={styles.tabButton}
                     role="tab"
                     aria-selected={isActive}
-                    aria-controls={`${baseId}-${safeBlockId}-panel`}
+                    aria-controls={`${baseId}-${entry.safeId}-panel`}
                     data-active={isActive ? "true" : "false"}
-                    onClick={() => setActiveKey(blockKey)}
+                    onClick={() => setActiveKey(entry.key)}
                   >
-                    {block.heading || `Bloco ${index + 1}`}
+                    {entry.block.heading || `Bloco ${entry.index + 1}`}
                   </button>
                 );
               })}
@@ -316,11 +345,14 @@ export default function TechnicalMap({ technicalMap }) {
 
           {activeBlock ? (
             <div
-              id={`${baseId}-${getDomSafeId(
-                getBlockKey(activeBlock, 0),
-              )}-panel`}
+              id={`${baseId}-${activeEntry.safeId}-panel`}
               className={styles.activePanel}
               role="tabpanel"
+              aria-labelledby={
+                blockEntries.length > 1
+                  ? `${baseId}-${activeEntry.safeId}-tab`
+                  : undefined
+              }
             >
               {activeBlock.type === DISCIPLINE_GRID_TYPE ? (
                 <DisciplineGrid block={activeBlock} />

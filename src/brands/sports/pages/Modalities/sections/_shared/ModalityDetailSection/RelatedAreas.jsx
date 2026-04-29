@@ -11,6 +11,22 @@ function getValidProjects(items) {
   return getValidArray(items).filter((item) => isValidText(item?.title));
 }
 
+function getValidActionLinks(links) {
+  return getValidArray(links).filter(
+    (link) => isValidText(link?.href) && isValidText(link?.label),
+  );
+}
+
+function hasValidProjectActions(project) {
+  return (
+    isValidText(project?.websiteHref) ||
+    isValidText(project?.instagramHref) ||
+    isValidText(project?.facebookHref) ||
+    isValidText(project?.bookKey) ||
+    getValidActionLinks(project?.links).length > 0
+  );
+}
+
 function getProjectKey(project, index) {
   if (isValidText(project?.key)) return project.key;
   if (isValidText(project?.title)) return project.title;
@@ -43,6 +59,54 @@ function isRenderableBlock(block) {
   return false;
 }
 
+function ProjectCard({ project }) {
+  const hasMeta = isValidText(project.meta);
+  const hasDescription = isValidText(project.description);
+  const hasActions = hasValidProjectActions(project);
+
+  return (
+    <article className={styles.projectCard} role="listitem">
+      <div className={styles.projectTop}>
+        <div className={styles.projectHeading}>
+          {hasMeta ? (
+            <span className={styles.projectMeta}>{project.meta}</span>
+          ) : null}
+
+          <h5 className={styles.projectTitle}>
+            {project.shortTitle || project.title}
+          </h5>
+        </div>
+
+        <ModalityIconFrame
+          iconKey={project.iconKey}
+          className={styles.projectIcon}
+          size="sm"
+        />
+      </div>
+
+      {hasDescription ? (
+        <p className={styles.projectDescription}>{project.description}</p>
+      ) : null}
+
+      {hasActions ? (
+        <div className={styles.projectActions}>
+          <ModalityActions
+            title={project.title}
+            websiteHref={project.websiteHref}
+            websiteLabel={project.websiteLabel}
+            websiteAriaLabel={project.websiteAriaLabel}
+            bookKey={project.bookKey}
+            bookLabel={project.bookLabel}
+            instagramHref={project.instagramHref}
+            facebookHref={project.facebookHref}
+            links={project.links}
+          />
+        </div>
+      ) : null}
+    </article>
+  );
+}
+
 function ProjectGridBlock({ block }) {
   const projects = getValidProjects(block?.items);
 
@@ -56,7 +120,11 @@ function ProjectGridBlock({ block }) {
     : "Projetos associados à modalidade";
 
   return (
-    <article className={styles.projectPanel}>
+    <article
+      className={styles.projectPanel}
+      data-project-count={projects.length}
+      data-project-layout={projectLayout}
+    >
       {hasHeading ? (
         <header className={styles.projectPanelHeader}>
           <h4 className={styles.blockTitle}>{block.heading}</h4>
@@ -70,47 +138,7 @@ function ProjectGridBlock({ block }) {
         data-project-layout={projectLayout}
       >
         {projects.map((project, index) => (
-          <article
-            key={getProjectKey(project, index)}
-            className={styles.projectCard}
-            role="listitem"
-          >
-            <div className={styles.projectTop}>
-              <div className={styles.projectHeading}>
-                {isValidText(project.meta) ? (
-                  <span className={styles.projectMeta}>{project.meta}</span>
-                ) : null}
-
-                <h5 className={styles.projectTitle}>
-                  {project.shortTitle || project.title}
-                </h5>
-              </div>
-
-              <ModalityIconFrame
-                iconKey={project.iconKey}
-                className={styles.projectIcon}
-                size="sm"
-              />
-            </div>
-
-            {isValidText(project.description) ? (
-              <p className={styles.projectDescription}>{project.description}</p>
-            ) : null}
-
-            <div className={styles.projectActions}>
-              <ModalityActions
-                title={project.title}
-                websiteHref={project.websiteHref}
-                websiteLabel={project.websiteLabel}
-                websiteAriaLabel={project.websiteAriaLabel}
-                bookKey={project.bookKey}
-                bookLabel={project.bookLabel}
-                instagramHref={project.instagramHref}
-                facebookHref={project.facebookHref}
-                links={project.links}
-              />
-            </div>
-          </article>
+          <ProjectCard key={getProjectKey(project, index)} project={project} />
         ))}
       </div>
     </article>
