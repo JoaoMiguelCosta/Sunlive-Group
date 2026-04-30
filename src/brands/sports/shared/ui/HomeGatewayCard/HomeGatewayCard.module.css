@@ -3,30 +3,30 @@
     inline-size: 100%;
     min-inline-size: 0;
     block-size: 100%;
-    min-block-size: clamp(5.65rem, 8vw, 7.45rem);
+    min-block-size: clamp(5.1rem, 6.1vw, 6.45rem);
     border: 1px solid var(--sports-border, rgb(199 134 21 / 0.16));
-    border-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
+    border-radius: var(--sports-radius-lg, clamp(0.94rem, 1.25vw, 1.22rem));
     overflow: hidden;
     isolation: isolate;
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.036) 0%,
+            rgba(255, 255, 255, 0.034) 0%,
             rgba(255, 255, 255, 0.01) 34%,
             rgba(255, 255, 255, 0.002) 100%),
         radial-gradient(110% 130% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.06) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.056) 0%,
             transparent 48%),
         radial-gradient(120% 150% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.024) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.022) 0%,
             transparent 56%),
         linear-gradient(145deg,
-            rgba(7, 15, 24, 0.34) 0%,
-            rgba(6, 18, 21, 0.26) 46%,
-            rgba(3, 7, 13, 0.42) 100%);
+            rgba(7, 15, 24, 0.32) 0%,
+            rgba(6, 18, 21, 0.24) 46%,
+            rgba(3, 7, 13, 0.4) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.052),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
         inset 0 -1px 0 rgba(0, 0, 0, 0.22),
-        0 14px 30px rgba(0, 0, 0, 0.2);
+        0 12px 26px rgba(0, 0, 0, 0.18);
     backdrop-filter: blur(1.8px) saturate(1.03);
     -webkit-backdrop-filter: blur(1.8px) saturate(1.03);
     transition:
@@ -56,12 +56,12 @@
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.052) 0%,
             transparent 34%),
         radial-gradient(95% 115% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.065) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.06) 0%,
             transparent 50%),
         radial-gradient(115% 135% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.026) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.024) 0%,
             transparent 58%);
-    opacity: 0.48;
+    opacity: 0.46;
 }
 
 .card::after {
@@ -73,7 +73,7 @@
     border-radius: inherit;
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.03) 0%,
             rgba(255, 255, 255, 0.008) 28%,
             rgba(0, 0, 0, 0.045) 72%,
             rgba(0, 0, 0, 0.09) 100%);
@@ -84,14 +84,14 @@
     border-color: var(--sports-border-strong, rgb(214 166 64 / 0.28));
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.046) 0%,
+            rgba(255, 255, 255, 0.044) 0%,
             rgba(255, 255, 255, 0.014) 34%,
             rgba(255, 255, 255, 0.004) 100%),
         radial-gradient(110% 130% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.085) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 0%,
             transparent 50%),
         radial-gradient(120% 150% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.034) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.032) 0%,
             transparent 58%),
         linear-gradient(145deg,
             rgba(8, 18, 28, 0.42) 0%,
@@ -100,8 +100,8 @@
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.06),
         inset 0 -1px 0 rgba(0, 0, 0, 0.28),
-        0 20px 40px rgba(0, 0, 0, 0.3),
-        0 0 22px rgb(var(--sports-gold-rgb, 214 166 64) / 0.085);
+        0 18px 36px rgba(0, 0, 0, 0.28),
+        0 0 20px rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
 }
 
 .card:focus-within {
@@ -117,93 +117,114 @@
 .softened {
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.03) 0%,
             rgba(255, 255, 255, 0.008) 34%,
             rgba(255, 255, 255, 0.002) 100%),
         radial-gradient(110% 130% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.042) 0%,
             transparent 48%),
         radial-gradient(120% 150% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.022) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.02) 0%,
             transparent 56%),
         linear-gradient(145deg,
-            rgba(6, 14, 22, 0.3) 0%,
-            rgba(5, 16, 20, 0.24) 46%,
-            rgba(3, 7, 13, 0.38) 100%);
+            rgba(6, 14, 22, 0.28) 0%,
+            rgba(5, 16, 20, 0.23) 46%,
+            rgba(3, 7, 13, 0.36) 100%);
 }
 
 .softened::before {
-    opacity: 0.4;
+    opacity: 0.38;
 }
 
 .featured {
-    min-block-size: clamp(6.35rem, 8.4vw, 8.5rem);
+    min-block-size: clamp(5.55rem, 6.5vw, 6.95rem);
     border-color: var(--sports-border-strong, rgb(214 166 64 / 0.28));
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.042) 0%,
+            rgba(255, 255, 255, 0.04) 0%,
             rgba(255, 255, 255, 0.012) 34%,
             rgba(255, 255, 255, 0.003) 100%),
         radial-gradient(110% 130% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.074) 0%,
             transparent 50%),
         radial-gradient(120% 150% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.028) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.026) 0%,
             transparent 58%),
         linear-gradient(145deg,
-            rgba(8, 18, 28, 0.4) 0%,
-            rgba(6, 19, 23, 0.34) 46%,
-            rgba(3, 7, 13, 0.48) 100%);
+            rgba(8, 18, 28, 0.38) 0%,
+            rgba(6, 19, 23, 0.32) 46%,
+            rgba(3, 7, 13, 0.46) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.056),
         inset 0 -1px 0 rgba(0, 0, 0, 0.26),
-        0 16px 34px rgba(0, 0, 0, 0.26);
+        0 15px 30px rgba(0, 0, 0, 0.24);
 }
 
 .cta {
-    min-block-size: clamp(6.1rem, 7.2vw, 7.95rem);
-    border-color: var(--sports-border-strong, rgb(214 166 64 / 0.28));
+    min-block-size: clamp(5.45rem, 4.45vw, 6.55rem);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.044) 0%,
-            rgba(255, 255, 255, 0.014) 34%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.075) 0%,
+            rgba(255, 255, 255, 0.018) 34%,
             rgba(255, 255, 255, 0.004) 100%),
-        radial-gradient(120% 145% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.095) 0%,
-            transparent 52%),
-        radial-gradient(120% 145% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.032) 0%,
-            transparent 58%),
-        linear-gradient(145deg,
-            rgba(10, 20, 29, 0.44) 0%,
-            rgba(7, 19, 23, 0.36) 48%,
-            rgba(3, 7, 13, 0.52) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.058),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.28),
-        0 16px 34px rgba(0, 0, 0, 0.28),
-        0 0 18px rgb(var(--sports-gold-rgb, 214 166 64) / 0.07);
-}
-
-.cta::before {
-    background:
+        radial-gradient(90% 140% at 50% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            transparent 54%),
         radial-gradient(120% 145% at 100% 0%,
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.1) 0%,
             transparent 52%),
         radial-gradient(120% 145% at 0% 100%,
             rgb(var(--sports-green-rgb, 46 194 126) / 0.034) 0%,
-            transparent 58%);
+            transparent 58%),
+        linear-gradient(145deg,
+            rgba(12, 22, 30, 0.52) 0%,
+            rgba(8, 20, 23, 0.42) 48%,
+            rgba(3, 7, 13, 0.56) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.32),
+        0 18px 36px rgba(0, 0, 0, 0.3),
+        0 0 26px rgb(var(--sports-gold-rgb, 214 166 64) / 0.12);
+}
+
+.cta::before {
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.24) 18%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.46) 50%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.24) 82%,
+            transparent 100%),
+        radial-gradient(90% 145% at 50% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
+            transparent 56%);
+    opacity: 0.72;
+}
+
+.cta::after {
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.012) 30%,
+            rgba(0, 0, 0, 0.055) 72%,
+            rgba(0, 0, 0, 0.1) 100%);
 }
 
 .cta:hover,
 .cta:focus-within {
     transform: translateY(-3px);
-    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.58);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.07),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.34),
-        0 22px 44px rgba(0, 0, 0, 0.34),
-        0 0 24px rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.36),
+        0 22px 44px rgba(0, 0, 0, 0.36),
+        0 0 32px rgb(var(--sports-gold-rgb, 214 166 64) / 0.16);
+}
+
+.cta .cornerGlow {
+    opacity: 0.94;
+    filter: blur(12px);
 }
 
 .cornerGlow {
@@ -211,8 +232,8 @@
     inset-block-start: -18%;
     inset-inline-end: -8%;
     z-index: 1;
-    inline-size: clamp(3rem, 4vw, 5.8rem);
-    block-size: clamp(3rem, 4vw, 5.8rem);
+    inline-size: clamp(2.6rem, 3.4vw, 4.8rem);
+    block-size: clamp(2.6rem, 3.4vw, 4.8rem);
     border-radius: 50%;
     pointer-events: none;
     background:
@@ -221,13 +242,13 @@
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 16%,
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.044) 42%,
             transparent 72%);
-    opacity: 0.78;
+    opacity: 0.74;
     filter: blur(13px);
 }
 
 .energyLine {
     position: absolute;
-    inset-inline: clamp(0.68rem, 1vw, 0.98rem);
+    inset-inline: clamp(0.64rem, 0.82vw, 0.9rem);
     inset-block-end: 0;
     z-index: 1;
     block-size: 1px;
@@ -239,7 +260,7 @@
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.42) 44%,
             rgb(var(--sports-green-rgb, 46 194 126) / 0.12) 74%,
             transparent 100%);
-    opacity: 0.68;
+    opacity: 0.66;
     transform: scaleX(0.82);
     transform-origin: left center;
     transition:
@@ -257,53 +278,57 @@
 
 @media (min-width: 640px) {
     .card {
-        min-block-size: clamp(6rem, 13vw, 7.15rem);
+        min-block-size: clamp(5.55rem, 11vw, 6.65rem);
     }
 
     .featured {
-        min-block-size: clamp(6.6rem, 13vw, 7.75rem);
+        min-block-size: clamp(5.95rem, 11.5vw, 7.1rem);
     }
 
     .cta {
-        min-block-size: clamp(6.2rem, 11vw, 7.35rem);
+        min-block-size: clamp(5.65rem, 10vw, 6.85rem);
     }
 }
 
 @media (min-width: 1080px) {
     .card {
-        min-block-size: clamp(6.45rem, 6.5vw, 7.3rem);
+        min-block-size: clamp(5.1rem, 4.85vw, 6.15rem);
     }
 
     .featured {
-        min-block-size: clamp(7.15rem, 7.4vw, 8.45rem);
+        min-block-size: clamp(5.45rem, 5.25vw, 6.55rem);
     }
 
     .cta {
-        min-block-size: clamp(6.45rem, 6.8vw, 7.9rem);
+        min-block-size: clamp(5.45rem, 4.45vw, 6.55rem);
     }
 }
 
 @media (min-width: 1280px) {
     .card {
-        min-block-size: clamp(6.65rem, 5.8vw, 7.35rem);
+        min-block-size: clamp(5.25rem, 4.25vw, 6.25rem);
     }
 
     .featured {
-        min-block-size: clamp(7.35rem, 6.55vw, 8.5rem);
+        min-block-size: clamp(5.65rem, 4.75vw, 6.7rem);
+    }
+
+    .cta {
+        min-block-size: clamp(5.55rem, 4.25vw, 6.55rem);
     }
 }
 
 @media (min-width: 1440px) {
     .card {
-        min-block-size: clamp(6.85rem, 5.25vw, 7.4rem);
+        min-block-size: clamp(5.4rem, 3.95vw, 6.35rem);
     }
 
     .featured {
-        min-block-size: clamp(7.55rem, 5.8vw, 8.55rem);
+        min-block-size: clamp(5.8rem, 4.3vw, 6.8rem);
     }
 
     .cta {
-        min-block-size: clamp(6.85rem, 5.35vw, 7.95rem);
+        min-block-size: clamp(5.6rem, 4vw, 6.55rem);
     }
 }
 

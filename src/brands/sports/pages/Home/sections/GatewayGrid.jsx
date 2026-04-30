@@ -33,6 +33,7 @@ export default function GatewayGrid({ data }) {
   if (!items.length) return null;
 
   const hasBackgroundImage = Boolean(backgroundImage?.src);
+  const hasCta = items.some((item) => item?.variant === "cta");
 
   const surfaceStyle = hasBackgroundImage
     ? {
@@ -46,6 +47,8 @@ export default function GatewayGrid({ data }) {
         className={styles.surface}
         style={surfaceStyle}
         data-has-background={hasBackgroundImage ? "true" : "false"}
+        data-items-count={items.length}
+        data-has-cta={hasCta ? "true" : "false"}
       >
         {hasBackgroundImage ? (
           <span

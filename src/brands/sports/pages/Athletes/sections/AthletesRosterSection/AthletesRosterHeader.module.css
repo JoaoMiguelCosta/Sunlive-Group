@@ -1,0 +1,200 @@
+.header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.32fr);
+    align-items: end;
+    gap: clamp(1rem, 2.6vw, 2.2rem);
+    min-inline-size: 0;
+}
+
+.headerContent {
+    display: grid;
+    max-inline-size: 62rem;
+    gap: clamp(0.52rem, 0.9vw, 0.8rem);
+    min-inline-size: 0;
+}
+
+.eyebrow {
+    margin: 0;
+    color: var(--sports-gold);
+    font-size: var(--sports-kicker-size);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: var(--sports-kicker-spacing);
+    text-transform: uppercase;
+}
+
+.title {
+    margin: 0;
+    max-inline-size: 16ch;
+    color: var(--sports-text);
+    font-size: var(--sports-section-title-size);
+    font-weight: 950;
+    line-height: var(--sports-section-title-line);
+    letter-spacing: var(--sports-section-title-spacing);
+    text-wrap: balance;
+}
+
+.lead {
+    margin: 0;
+    max-inline-size: 70rem;
+    color: var(--sports-text-soft);
+    font-size: var(--sports-lead-size);
+    font-weight: 650;
+    line-height: var(--sports-lead-line);
+}
+
+.summaryGrid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, clamp(13rem, 24vw, 22rem)));
+    justify-content: center;
+    align-items: stretch;
+    gap: clamp(0.7rem, 1vw, 0.95rem);
+    inline-size: 100%;
+    max-inline-size: clamp(28rem, 64vw, 46rem);
+    margin-inline: auto;
+    min-inline-size: 0;
+    text-align: center;
+}
+
+.summaryCard {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: clamp(0.24rem, 0.42vw, 0.38rem);
+    min-inline-size: 0;
+    min-block-size: clamp(4.35rem, 5.2vw, 6rem);
+    overflow: hidden;
+    padding: clamp(0.78rem, 1.1vw, 1rem);
+    text-align: center;
+    border: 1px solid rgba(214, 166, 64, 0.2);
+    border-radius: clamp(1rem, 1.18vw, 1.28rem);
+    background:
+        radial-gradient(115% 145% at 50% 0%,
+            rgb(var(--sports-gold-rgb) / 0.13) 0%,
+            transparent 50%),
+        radial-gradient(120% 150% at 100% 0%,
+            rgb(var(--sports-green-rgb) / 0.045) 0%,
+            transparent 52%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.012) 100%),
+        linear-gradient(145deg,
+            rgba(7, 13, 21, 0.92) 0%,
+            rgba(4, 9, 17, 0.985) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.052),
+        inset 0 -1px 0 rgb(var(--sports-gold-rgb) / 0.075),
+        0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+.summaryCard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgb(var(--sports-gold-rgb) / 0.14),
+            transparent 8.5rem);
+    opacity: 0.78;
+}
+
+.summaryCard::after {
+    content: "";
+    position: absolute;
+    inset-inline: 18%;
+    inset-block-end: 0;
+    z-index: -1;
+    pointer-events: none;
+    block-size: 1px;
+    border-radius: 999px;
+    background: rgb(var(--sports-gold-rgb) / 0.62);
+    box-shadow:
+        0 0 0.8rem rgb(var(--sports-gold-rgb) / 0.32),
+        0 0 1.6rem rgb(var(--sports-gold-rgb) / 0.2);
+    opacity: 0.78;
+}
+
+.summaryCard strong {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    max-inline-size: 100%;
+    color: var(--sports-gold);
+    font-size: clamp(1.2rem, 1.55vw, 1.8rem);
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: -0.045em;
+    text-align: center;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.08),
+        0 12px 24px rgba(0, 0, 0, 0.34);
+}
+
+.summaryCard strong::after {
+    content: "";
+    display: block;
+    inline-size: min(100%, 6.5rem);
+    block-size: 1px;
+    margin-block-start: clamp(0.44rem, 0.52vw, 0.58rem);
+    border-radius: 999px;
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--sports-gold-rgb) / 0.28) 24%,
+            rgb(var(--sports-gold-rgb) / 0.72) 50%,
+            rgb(var(--sports-gold-rgb) / 0.28) 76%,
+            transparent 100%);
+    box-shadow:
+        0 0 0.55rem rgb(var(--sports-gold-rgb) / 0.3),
+        0 0 1rem rgb(var(--sports-gold-rgb) / 0.18);
+}
+
+.summaryCard span {
+    position: relative;
+    z-index: 1;
+    display: block;
+    max-inline-size: 100%;
+    margin-top: 0.04rem;
+    color: var(--sports-muted);
+    font-size: clamp(0.62rem, 0.72vw, 0.78rem);
+    font-weight: 850;
+    line-height: 1.28;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 1080px) {
+    .header {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .summaryGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-inline-size: min(100%, 42rem);
+    }
+}
+
+@media (max-width: 720px) {
+    .title {
+        max-inline-size: 13ch;
+    }
+}
+
+@media (max-width: 520px) {
+    .summaryGrid {
+        grid-template-columns: 1fr;
+        max-inline-size: min(100%, 20rem);
+    }
+}

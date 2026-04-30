@@ -5,14 +5,14 @@
     grid-template-rows: auto auto auto;
     inline-size: 100%;
     min-inline-size: 0;
-    gap: clamp(0.34rem, 0.16vw + 0.3rem, 0.52rem);
+    gap: clamp(0.26rem, 0.12vw + 0.22rem, 0.42rem);
 }
 
 .topRow {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: clamp(0.48rem, 0.36vw, 0.72rem);
+    gap: clamp(0.42rem, 0.3vw, 0.64rem);
     min-inline-size: 0;
 }
 
@@ -21,9 +21,9 @@
     align-items: center;
     justify-content: flex-start;
     inline-size: fit-content;
-    max-inline-size: calc(100% - 2.35rem);
+    max-inline-size: calc(100% - 2.1rem);
     padding:
-        clamp(0.24rem, 0.13vw + 0.2rem, 0.3rem) clamp(0.44rem, 0.24vw + 0.36rem, 0.58rem);
+        clamp(0.22rem, 0.1vw + 0.18rem, 0.28rem) clamp(0.4rem, 0.2vw + 0.32rem, 0.54rem);
     border: 1px solid var(--sports-border, rgb(199 134 21 / 0.16));
     border-radius: 999px;
     background:
@@ -33,10 +33,10 @@
     color: color-mix(in oklab,
             var(--sports-gold, #d6a640) 86%,
             white 14%);
-    font-size: clamp(0.57rem, 0.14vw + 0.53rem, 0.68rem);
+    font-size: clamp(0.52rem, 0.12vw + 0.5rem, 0.62rem);
     font-weight: 800;
     line-height: 1;
-    letter-spacing: clamp(0.052em, 0.024vw + 0.046em, 0.078em);
+    letter-spacing: clamp(0.048em, 0.018vw + 0.044em, 0.07em);
     text-transform: uppercase;
     white-space: nowrap;
     overflow: hidden;
@@ -48,8 +48,8 @@
 
 .orb {
     flex: 0 0 auto;
-    inline-size: clamp(0.54rem, 0.14vw + 0.5rem, 0.66rem);
-    block-size: clamp(0.54rem, 0.14vw + 0.5rem, 0.66rem);
+    inline-size: clamp(0.48rem, 0.12vw + 0.46rem, 0.58rem);
+    block-size: clamp(0.48rem, 0.12vw + 0.46rem, 0.58rem);
     border-radius: 50%;
     background:
         radial-gradient(circle,
@@ -68,7 +68,7 @@
     display: grid;
     align-content: start;
     min-inline-size: 0;
-    gap: clamp(0.24rem, 0.12vw + 0.2rem, 0.38rem);
+    gap: clamp(0.18rem, 0.1vw + 0.16rem, 0.32rem);
 }
 
 .label {
@@ -76,10 +76,10 @@
     min-inline-size: 0;
     max-inline-size: 100%;
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
-    font-size: clamp(0.88rem, 0.44vw + 0.76rem, 1.16rem);
+    font-size: clamp(0.82rem, 0.34vw + 0.72rem, 1.02rem);
     font-weight: 900;
     line-height: 1.02;
-    letter-spacing: clamp(0.044em, 0.024vw + 0.038em, 0.07em);
+    letter-spacing: clamp(0.038em, 0.018vw + 0.034em, 0.06em);
     text-transform: uppercase;
     text-wrap: balance;
     overflow-wrap: normal;
@@ -96,8 +96,8 @@
     min-inline-size: 0;
     max-inline-size: min(100%, 38rem);
     color: var(--sports-text-soft, rgba(226, 232, 240, 0.9));
-    font-size: clamp(0.7rem, 0.13vw + 0.66rem, 0.8rem);
-    line-height: 1.36;
+    font-size: clamp(0.68rem, 0.11vw + 0.64rem, 0.78rem);
+    line-height: 1.31;
     text-wrap: pretty;
     overflow: visible;
     text-shadow:
@@ -112,14 +112,14 @@
 .meta {
     display: inline-flex;
     align-items: center;
-    gap: clamp(0.28rem, 0.1vw + 0.24rem, 0.42rem);
-    margin-top: clamp(0.08rem, 0.12vw, 0.18rem);
+    gap: clamp(0.24rem, 0.08vw + 0.22rem, 0.36rem);
+    margin-top: clamp(0.04rem, 0.08vw, 0.12rem);
     color: color-mix(in oklab,
             var(--sports-gold, #d6a640) 88%,
             white 12%);
-    font-size: clamp(0.66rem, 0.14vw + 0.62rem, 0.78rem);
+    font-size: clamp(0.6rem, 0.1vw + 0.58rem, 0.7rem);
     font-weight: 900;
-    letter-spacing: clamp(0.052em, 0.026vw + 0.046em, 0.078em);
+    letter-spacing: clamp(0.048em, 0.02vw + 0.044em, 0.07em);
     line-height: 1;
     text-transform: uppercase;
     text-shadow:
@@ -134,10 +134,62 @@
     transform: translateY(-0.02em);
 }
 
+.contentCta {
+    place-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+.contentCta .topRow {
+    justify-content: center;
+}
+
+.contentCta .kicker {
+    justify-content: center;
+    max-inline-size: min(100%, 18rem);
+}
+
+.contentCta .orb {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+}
+
+.contentCta .mainBlock {
+    justify-items: center;
+    text-align: center;
+}
+
+.contentCta .label {
+    font-size: clamp(0.92rem, 0.42vw + 0.82rem, 1.18rem);
+    letter-spacing: clamp(0.044em, 0.022vw + 0.04em, 0.072em);
+    text-align: center;
+}
+
+.contentCta .description {
+    max-inline-size: min(100%, 42rem);
+    color: rgba(241, 245, 249, 0.94);
+    text-align: center;
+}
+
+.contentCta .meta {
+    justify-self: center;
+    font-size: clamp(0.66rem, 0.12vw + 0.62rem, 0.76rem);
+    color: color-mix(in oklab,
+            var(--sports-gold, #d6a640) 94%,
+            white 6%);
+    text-align: center;
+}
+
+.descriptionCta {
+    max-inline-size: min(100%, 42rem);
+}
+
 @media (max-width: 1023.98px) {
 
     .description,
-    .descriptionFeatured {
+    .descriptionFeatured,
+    .descriptionCta {
         max-inline-size: 100%;
     }
 }
@@ -151,11 +203,46 @@
         max-inline-size: calc(100% - 1.95rem);
     }
 
+    .contentCta {
+        place-items: start;
+        text-align: left;
+    }
+
+    .contentCta .topRow {
+        justify-content: space-between;
+        inline-size: 100%;
+    }
+
+    .contentCta .kicker {
+        justify-content: flex-start;
+        max-inline-size: calc(100% - 1.95rem);
+    }
+
+    .contentCta .orb {
+        position: static;
+    }
+
+    .contentCta .mainBlock {
+        justify-items: start;
+        text-align: left;
+    }
+
+    .contentCta .label,
+    .contentCta .description,
+    .contentCta .meta {
+        text-align: left;
+    }
+
+    .contentCta .meta {
+        justify-self: start;
+    }
+
     .description,
-    .descriptionFeatured {
+    .descriptionFeatured,
+    .descriptionCta {
         display: block;
         max-inline-size: 100%;
-        font-size: 0.68rem;
+        font-size: 0.7rem;
         line-height: 1.34;
     }
 
@@ -179,8 +266,9 @@
     }
 
     .description,
-    .descriptionFeatured {
-        font-size: 0.66rem;
+    .descriptionFeatured,
+    .descriptionCta {
+        font-size: 0.68rem;
         line-height: 1.32;
     }
 
@@ -211,8 +299,9 @@
     }
 
     .description,
-    .descriptionFeatured {
-        font-size: 0.64rem;
+    .descriptionFeatured,
+    .descriptionCta {
+        font-size: 0.66rem;
         line-height: 1.3;
     }
 

@@ -7,6 +7,7 @@ import TrainingCampsPage from "./pages/TrainingCamps/index.jsx";
 import AcademiesPage from "./pages/Academies/index.jsx";
 import EventsPage from "./pages/Events/index.jsx";
 import AthletesPage from "./pages/Athletes/index.jsx";
+import TestimonialsPage from "./pages/Testimonials/index.jsx";
 import SpecialisedServicesPage from "./pages/SpecialisedServices/index.jsx";
 import EducationPage from "./pages/Education/index.jsx";
 import LeisureSportsTourismPage from "./pages/LeisureSportsTourism/index.jsx";
@@ -24,6 +25,7 @@ export const sportsRoutes = [
     <Route path="academias" element={<AcademiesPage />} />
     <Route path="eventos" element={<EventsPage />} />
     <Route path="atletas-sunlive" element={<AthletesPage />} />
+    <Route path="testemunhos" element={<TestimonialsPage />} />
     <Route
       path="servicos-especializados"
       element={<SpecialisedServicesPage />}
@@ -59,6 +61,16 @@ export const sportsRoutes = [
     <Route
       path="sunlive-athletes"
       element={<Navigate to="/sunlive-group/sports/atletas-sunlive" replace />}
+    />
+
+    <Route
+      path="testimonials"
+      element={<Navigate to="/sunlive-group/sports/testemunhos" replace />}
+    />
+
+    <Route
+      path="depoimentos"
+      element={<Navigate to="/sunlive-group/sports/testemunhos" replace />}
     />
 
     <Route

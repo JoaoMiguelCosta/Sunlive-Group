@@ -1,0 +1,4 @@
+.rosterFlow {
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.65rem);
+}

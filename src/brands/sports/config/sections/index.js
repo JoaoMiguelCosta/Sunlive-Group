@@ -10,4 +10,5 @@ export * as infrastructures from "./infrastructures/index.js";
 export * as leisureSportsTourism from "./leisureSportsTourism/index.js";
 export * as logistics from "./logistics/index.js";
 export * as specialisedServices from "./specialisedServices/index.js";
+export * as testimonials from "./testimonials/index.js";
 export * as trainingCamps from "./trainingCamps/index.js";

@@ -5,7 +5,7 @@
     inline-size: 100%;
     min-inline-size: 0;
     block-size: 100%;
-    padding: clamp(0.82rem, 0.78vw, 1rem);
+    padding: clamp(0.64rem, 0.54vw, 0.82rem);
     text-decoration: none;
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
     box-sizing: border-box;
@@ -17,7 +17,13 @@
 
 @media (min-width: 1280px) {
     .click {
-        padding: clamp(0.86rem, 0.72vw, 1.04rem);
+        padding: clamp(0.68rem, 0.5vw, 0.86rem);
+    }
+}
+
+@media (min-width: 1440px) {
+    .click {
+        padding: clamp(0.72rem, 0.48vw, 0.9rem);
     }
 }
 

@@ -57,6 +57,11 @@ export const SPORTS_GATEWAY = Object.freeze([
     href: SPORTS_PAGE_PATHS.consultancy,
   },
   {
+    key: "testimonials",
+    label: "Testemunhos",
+    href: SPORTS_PAGE_PATHS.testimonials,
+  },
+  {
     key: "contact",
     label: "Contactar",
     href: SPORTS_PAGE_PATHS.contacts,

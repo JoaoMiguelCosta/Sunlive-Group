@@ -6,6 +6,7 @@ export const SPORTS_PAGE_PATHS = Object.freeze({
   academies: `${SPORTS_BASE_PATH}/academias`,
   events: `${SPORTS_BASE_PATH}/eventos`,
   athletes: `${SPORTS_BASE_PATH}/atletas-sunlive`,
+  testimonials: `${SPORTS_BASE_PATH}/testemunhos`,
   specialisedServices: `${SPORTS_BASE_PATH}/servicos-especializados`,
   education: `${SPORTS_BASE_PATH}/educacao`,
   leisureSportsTourism: `${SPORTS_BASE_PATH}/turismo-desportivo-ludico`,
