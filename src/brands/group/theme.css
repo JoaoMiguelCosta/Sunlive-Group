@@ -77,7 +77,7 @@ body {
     --text-2: color-mix(in oklab, var(--sl-platinum-100), black 25%);
 
     /* Accent global = ouro da marca Group */
---accent: var(--sl-gold-500);
+    --accent: var(--sl-gold-500);
     --accent-2: color-mix(in oklab, var(--sl-gold-500), white 20%);
 
     /* Escala de cinzentos (afinada ao fundo escuro) */
