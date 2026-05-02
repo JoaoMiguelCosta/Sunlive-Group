@@ -1,6 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import styles from "./TestimonialsSection.module.css";
+
+const SELECTOR_TOP_QUERY = "(max-width: 920px)";
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -69,7 +72,21 @@ function getImageStyle(image, variant = "featured") {
   };
 }
 
+function shouldScrollToFeatured() {
+  if (typeof window === "undefined") return false;
+
+  return window.matchMedia(SELECTOR_TOP_QUERY).matches;
+}
+
+function getScrollBehavior() {
+  if (typeof window === "undefined") return "auto";
+
+  return window.matchMedia(REDUCED_MOTION_QUERY).matches ? "auto" : "smooth";
+}
+
 export default function TestimonialsSection({ section }) {
+  const featuredRef = useRef(null);
+
   const sectionId = section?.id || "sunlive-sports-testemunhos";
   const intro = section?.intro || {};
   const ui = section?.ui || {};
@@ -98,6 +115,19 @@ export default function TestimonialsSection({ section }) {
       setActiveKey(defaultActiveKey);
     }
   }, [activeKey, defaultActiveKey, testimonials]);
+
+  function handleSelectorClick(itemKey) {
+    setActiveKey(itemKey);
+
+    if (!shouldScrollToFeatured()) return;
+
+    window.requestAnimationFrame(() => {
+      featuredRef.current?.scrollIntoView({
+        behavior: getScrollBehavior(),
+        block: "start",
+      });
+    });
+  }
 
   if (!testimonials.length) return null;
 
@@ -166,6 +196,7 @@ export default function TestimonialsSection({ section }) {
 
       <div className={styles.showcase}>
         <article
+          ref={featuredRef}
           id={panelId}
           className={styles.featured}
           role="tabpanel"
@@ -238,7 +269,7 @@ export default function TestimonialsSection({ section }) {
                   role="tab"
                   aria-selected={isActive}
                   aria-controls={panelId}
-                  onClick={() => setActiveKey(itemKey)}
+                  onClick={() => handleSelectorClick(itemKey)}
                 >
                   <span className={styles.selectorIndex}>
                     {String(index + 1).padStart(2, "0")}

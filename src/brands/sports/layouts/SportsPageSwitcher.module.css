@@ -4,61 +4,42 @@
     min-width: 0;
     flex: 0 1 auto;
 
-    --switcher-gold: #d6a640;
-    --switcher-gold-strong: #f0c76a;
-    --switcher-gold-muted: rgba(214, 166, 64, 0.34);
-    --switcher-green: #2ec27e;
-    --switcher-green-soft: rgba(46, 194, 126, 0.09);
-    --switcher-bg-top: rgba(10, 20, 19, 0.98);
-    --switcher-bg-bottom: rgba(3, 8, 9, 0.99);
-    --switcher-border: rgba(214, 166, 64, 0.38);
-    --switcher-border-hover: rgba(214, 166, 64, 0.68);
-    --switcher-text: rgba(248, 251, 246, 0.97);
-    --switcher-text-soft: rgba(226, 232, 240, 0.84);
     --switcher-menu-width: clamp(17rem, 28vw, 22rem);
 }
 
 .toggle {
     position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: auto;
     max-inline-size: min(22rem, calc(100vw - 2rem));
     min-height: clamp(42px, 3vw, 48px);
     height: auto;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     padding: 0.5rem 2.45rem 0.5rem 1.45rem;
-    border: 1px solid var(--switcher-border);
+    overflow: hidden;
+    border: 1px solid var(--sports-switcher-border, rgb(var(--sports-gold-rgb) / 0.3));
     border-radius: 999px;
-    background:
-        radial-gradient(circle at 88% 18%, var(--switcher-green-soft), transparent 34%),
-        linear-gradient(90deg, rgba(214, 166, 64, 0.1), transparent 36%),
-        linear-gradient(180deg, var(--switcher-bg-top), var(--switcher-bg-bottom));
-    color: var(--switcher-text);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        inset 0 -1px 0 rgba(214, 166, 64, 0.1),
-        0 10px 22px rgba(0, 0, 0, 0.24);
+    background: var(--sports-switcher-toggle-bg);
+    color: var(--sports-switcher-text, rgba(248, 238, 205, 0.96));
+    box-shadow: var(--sports-switcher-shadow);
     cursor: pointer;
     text-align: center;
-    isolation: isolate;
-    overflow: hidden;
     transition:
         transform 180ms ease,
         border-color 180ms ease,
         box-shadow 180ms ease,
-        color 180ms ease,
-        background-color 180ms ease;
+        color 180ms ease;
 }
 
 .toggle::after {
     content: "";
     position: absolute;
     inset: 1px;
+    z-index: -1;
     border-radius: inherit;
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 34%),
-        radial-gradient(circle at 82% 50%, rgba(214, 166, 64, 0.12), transparent 42%);
+    background: var(--sports-switcher-toggle-overlay);
     opacity: 0;
     pointer-events: none;
     transition: opacity 180ms ease;
@@ -66,13 +47,9 @@
 
 .toggle:hover {
     transform: translateY(-1px);
-    border-color: var(--switcher-border-hover);
-    color: #ffffff;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        inset 0 -1px 0 rgba(214, 166, 64, 0.14),
-        0 14px 30px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(214, 166, 64, 0.12);
+    border-color: var(--sports-switcher-border-hover, rgb(var(--sports-gold-rgb) / 0.52));
+    color: var(--sports-switcher-text-hover, rgba(255, 247, 221, 0.99));
+    box-shadow: var(--sports-switcher-shadow-hover);
 }
 
 .toggle:hover::after {
@@ -86,13 +63,12 @@
 .toggle:focus-visible {
     outline: none;
     box-shadow:
-        0 0 0 3px rgba(214, 166, 64, 0.26),
-        0 0 0 6px rgba(255, 255, 255, 0.075),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        var(--sports-switcher-focus-ring),
+        var(--sports-switcher-shadow-hover);
 }
 
 .toggle[data-current="true"] {
-    border-color: rgba(214, 166, 64, 0.46);
+    border-color: var(--sports-switcher-border-hover, rgb(var(--sports-gold-rgb) / 0.52));
 }
 
 .currentLabel {
@@ -102,10 +78,10 @@
     width: 100%;
     min-width: 0;
     color: currentColor;
-    font-size: clamp(0.88rem, 0.3vw + 0.82rem, 1rem);
-    font-weight: 850;
-    line-height: 1.1;
-    letter-spacing: -0.015em;
+    font-size: clamp(0.84rem, 0.25vw + 0.82rem, 0.96rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.015em;
     text-align: center;
     white-space: normal;
     overflow-wrap: break-word;
@@ -120,8 +96,8 @@
     flex: 0 0 auto;
     inline-size: 0.78rem;
     block-size: 0.48rem;
-    color: var(--switcher-gold);
-    filter: drop-shadow(0 0 8px rgba(214, 166, 64, 0.2));
+    color: var(--sports-switcher-accent, var(--sports-gold));
+    filter: drop-shadow(0 0 8px rgb(var(--sports-gold-rgb) / 0.18));
     transform: translateY(-50%);
     transition:
         transform 180ms ease,
@@ -130,13 +106,9 @@
 
 .switcher[data-open="true"] .toggle {
     transform: translateY(-1px);
-    border-color: rgba(214, 166, 64, 0.72);
-    color: #ffffff;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        inset 0 -1px 0 rgba(214, 166, 64, 0.16),
-        0 16px 34px rgba(0, 0, 0, 0.34),
-        0 0 0 1px rgba(214, 166, 64, 0.14);
+    border-color: var(--sports-switcher-border-open, rgb(var(--sports-gold-rgb) / 0.68));
+    color: var(--sports-switcher-text-hover, rgba(255, 247, 221, 0.99));
+    box-shadow: var(--sports-switcher-shadow-open);
 }
 
 .switcher[data-open="true"] .toggle::after {
@@ -144,8 +116,8 @@
 }
 
 .switcher[data-open="true"] .chevron {
+    color: var(--sports-switcher-accent-soft, var(--sports-gold-soft));
     transform: translateY(-50%) rotate(180deg);
-    color: var(--switcher-gold-strong);
 }
 
 /* =========================
@@ -154,26 +126,22 @@
 
 .menu {
     position: absolute;
+    z-index: 90;
     inset-block-start: calc(100% + 0.58rem);
     inset-inline-start: 0;
-    z-index: 90;
     inline-size: min(var(--switcher-menu-width), calc(100vw - 2rem));
     max-block-size: min(68vh, 34rem);
     padding: 0.5rem;
-    border: 1px solid rgba(214, 166, 64, 0.28);
-    border-radius: 20px;
-    background:
-        radial-gradient(circle at 16% 0%, rgba(46, 194, 126, 0.1), transparent 34%),
-        radial-gradient(circle at 100% 100%, rgba(214, 166, 64, 0.1), transparent 38%),
-        linear-gradient(180deg, rgba(10, 17, 18, 0.985), rgba(3, 8, 9, 0.99));
-    box-shadow:
-        0 24px 58px rgba(0, 0, 0, 0.42),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(16px);
     overflow-y: auto;
     overscroll-behavior: contain;
+    border: 1px solid var(--sports-switcher-menu-border, rgb(var(--sports-gold-rgb) / 0.24));
+    border-radius: 20px;
+    background: var(--sports-switcher-menu-bg);
+    box-shadow: var(--sports-switcher-menu-shadow);
+    backdrop-filter: blur(16px);
     scrollbar-width: thin;
-    scrollbar-color: rgba(214, 166, 64, 0.45) rgba(255, 255, 255, 0.05);
+    scrollbar-color:
+        rgb(var(--sports-gold-rgb) / 0.45) rgba(255, 255, 255, 0.05);
 }
 
 .menu::-webkit-scrollbar {
@@ -181,17 +149,17 @@
 }
 
 .menu::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.045);
     border-radius: 999px;
+    background: rgba(255, 255, 255, 0.045);
 }
 
 .menu::-webkit-scrollbar-thumb {
-    background: rgba(214, 166, 64, 0.42);
     border-radius: 999px;
+    background: rgb(var(--sports-gold-rgb) / 0.42);
 }
 
 .menu::-webkit-scrollbar-thumb:hover {
-    background: rgba(214, 166, 64, 0.62);
+    background: rgb(var(--sports-gold-rgb) / 0.62);
 }
 
 .menu[hidden] {
@@ -214,11 +182,11 @@
     gap: 0.8rem;
     min-height: 2.7rem;
     padding: 0.72rem 0.82rem;
+    overflow: hidden;
     border: 1px solid transparent;
     border-radius: 14px;
-    color: var(--switcher-text-soft);
+    color: var(--sports-switcher-text-soft, rgba(218, 226, 238, 0.84));
     text-decoration: none;
-    overflow: hidden;
     transition:
         background-color 160ms ease,
         border-color 160ms ease,
@@ -234,7 +202,7 @@
     inset-inline-start: 0;
     inline-size: 3px;
     border-radius: 999px;
-    background: rgba(214, 166, 64, 0.82);
+    background: var(--sports-switcher-accent, var(--sports-gold));
     opacity: 0;
     transform: scaleY(0.45);
     transition:
@@ -244,10 +212,9 @@
 
 .menuLink:hover {
     transform: translateX(2px);
-    border-color: rgba(214, 166, 64, 0.16);
-    color: #ffffff;
-    background:
-        linear-gradient(90deg, rgba(214, 166, 64, 0.14), rgba(214, 166, 64, 0.04));
+    border-color: var(--sports-switcher-menu-link-border-hover, rgb(var(--sports-gold-rgb) / 0.18));
+    color: var(--sports-switcher-text-hover, rgba(255, 247, 221, 0.99));
+    background: var(--sports-switcher-link-hover-bg);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.045),
         0 10px 22px rgba(0, 0, 0, 0.18);
@@ -260,12 +227,11 @@
 
 .menuLink:focus-visible {
     outline: none;
-    border-color: rgba(214, 166, 64, 0.28);
-    color: #ffffff;
-    background:
-        linear-gradient(90deg, rgba(214, 166, 64, 0.16), rgba(214, 166, 64, 0.06));
+    border-color: var(--sports-switcher-border-hover, rgb(var(--sports-gold-rgb) / 0.52));
+    color: var(--sports-switcher-text-hover, rgba(255, 247, 221, 0.99));
+    background: var(--sports-switcher-link-hover-bg);
     box-shadow:
-        0 0 0 3px rgba(214, 166, 64, 0.18),
+        var(--sports-switcher-focus-ring),
         inset 0 1px 0 rgba(255, 255, 255, 0.045);
 }
 
@@ -275,21 +241,20 @@
 }
 
 .menuLink[data-variant="cta"] {
-    color: #fff4d8;
-    background:
-        linear-gradient(90deg, rgba(214, 166, 64, 0.12), rgba(214, 166, 64, 0.04));
+    color: var(--sports-switcher-text, rgba(248, 238, 205, 0.96));
+    background: var(--sports-switcher-link-cta-bg);
 }
 
-.menuLink[data-variant="cta"]:hover {
-    background:
-        linear-gradient(90deg, rgba(214, 166, 64, 0.2), rgba(214, 166, 64, 0.08));
+.menuLink[data-variant="cta"]:hover,
+.menuLink[data-variant="cta"]:focus-visible {
+    background: var(--sports-switcher-link-cta-bg-hover);
 }
 
 .menuLabel {
     position: relative;
     z-index: 1;
     min-width: 0;
-    overflow: hidden;
+    
     font-size: clamp(0.86rem, 0.18vw + 0.82rem, 0.94rem);
     font-weight: 760;
     line-height: 1.15;
@@ -303,7 +268,7 @@
     flex: 0 0 auto;
     inline-size: 0.86rem;
     block-size: 0.86rem;
-    color: rgba(214, 166, 64, 0.76);
+    color: rgb(var(--sports-gold-rgb) / 0.76);
     transition:
         transform 160ms ease,
         color 160ms ease;
@@ -311,8 +276,8 @@
 
 .menuLink:hover .menuArrow,
 .menuLink:focus-visible .menuArrow {
+    color: var(--sports-switcher-accent-soft, var(--sports-gold-soft));
     transform: translateX(2px);
-    color: var(--switcher-gold-strong);
 }
 
 /* =========================
@@ -330,10 +295,6 @@
         padding-inline: 1.25rem 2.3rem;
     }
 
-    .currentLabel {
-        font-size: 0.88rem;
-    }
-
     .menu {
         max-block-size: min(66vh, 31rem);
     }
@@ -348,10 +309,6 @@
         min-height: 38px;
         max-inline-size: min(100%, calc(100vw - 2rem));
         padding: 0.42rem 2.15rem 0.42rem 1.15rem;
-    }
-
-    .currentLabel {
-        font-size: 0.84rem;
     }
 
     .chevron {
@@ -410,10 +367,6 @@
         min-height: 36px;
         padding-block: 0.4rem;
         padding-inline: 2.15rem;
-    }
-
-    .currentLabel {
-        font-size: 0.82rem;
     }
 
     .chevron {

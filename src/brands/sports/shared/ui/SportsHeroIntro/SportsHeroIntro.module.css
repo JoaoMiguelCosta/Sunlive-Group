@@ -17,25 +17,21 @@
     --hero-proof-max: 78rem;
     --hero-stats-max: 74rem;
 
-    --hero-eyebrow-border: rgba(199, 134, 21, 0.22);
-    --hero-eyebrow-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 8px 18px rgba(0, 0, 0, 0.16);
-    --hero-eyebrow-color: rgba(245, 233, 194, 0.96);
+    --hero-eyebrow-bg: var(--sports-hero-eyebrow-bg);
+    --hero-eyebrow-border: var(--sports-hero-eyebrow-border);
+    --hero-eyebrow-shadow: var(--sports-hero-eyebrow-shadow);
+    --hero-eyebrow-color: var(--sports-hero-eyebrow-color);
 
-    --hero-secondary-color: rgba(214, 154, 39, 0.97);
-    --hero-secondary-shadow:
-        0 1px 0 rgba(0, 0, 0, 0.18),
-        0 0 14px rgba(199, 134, 21, 0.08);
+    --hero-secondary-color: var(--sports-hero-secondary-color);
+    --hero-secondary-shadow: var(--sports-hero-secondary-shadow);
 
-    --hero-title-color: #b9e07d;
-    --hero-title-shadow:
-        0 0 18px rgba(131, 212, 108, 0.18),
-        0 0 34px rgba(92, 184, 101, 0.1),
-        0 8px 24px rgba(0, 0, 0, 0.28);
+    --hero-title-color: var(--sports-hero-title-color);
+    --hero-title-shadow: var(--sports-hero-title-shadow);
 
-    --hero-description-color: rgba(242, 245, 241, 0.97);
-    --hero-support-color: rgba(214, 224, 216, 0.86);
+    --hero-description-color: var(--sports-hero-description-color);
+    --hero-description-shadow: var(--sports-hero-description-shadow);
+
+    --hero-support-color: var(--sports-hero-support-color);
 
     position: relative;
     isolation: isolate;
@@ -43,37 +39,10 @@
     inline-size: 100%;
     max-inline-size: var(--sl-container-xl, 1360px);
     margin-inline: auto;
-    border: 1px solid rgba(199, 134, 21, 0.2);
+    border: 1px solid var(--sports-hero-surface-border);
     border-radius: var(--hero-radius);
-    background:
-        radial-gradient(66% 84% at 50% 23%,
-            rgba(164, 226, 110, 0.15) 0%,
-            rgba(82, 177, 97, 0.1) 30%,
-            rgba(22, 54, 38, 0.03) 50%,
-            transparent 68%),
-        radial-gradient(74% 116% at 100% 52%,
-            rgba(24, 136, 84, 0.25) 0%,
-            rgba(15, 111, 70, 0.16) 34%,
-            rgba(8, 34, 26, 0.04) 62%,
-            transparent 82%),
-        radial-gradient(80% 118% at 0% 0%,
-            rgba(18, 99, 67, 0.14) 0%,
-            transparent 42%),
-        radial-gradient(56% 84% at 100% 100%,
-            rgba(199, 134, 21, 0.075) 0%,
-            transparent 52%),
-        linear-gradient(102deg,
-            rgba(2, 7, 11, 0.995) 0%,
-            rgba(3, 9, 13, 0.992) 24%,
-            rgba(3, 14, 14, 0.988) 48%,
-            rgba(7, 27, 22, 0.978) 72%,
-            rgba(16, 101, 64, 0.946) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.28),
-        0 22px 48px rgba(0, 0, 0, 0.26),
-        0 10px 24px rgba(0, 0, 0, 0.15),
-        0 0 0 1px rgba(199, 134, 21, 0.02);
+    background: var(--sports-hero-surface-bg);
+    box-shadow: var(--sports-hero-surface-shadow);
     transition:
         border-color 220ms ease,
         box-shadow 280ms ease,
@@ -84,15 +53,19 @@
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
+    pointer-events: none;
     background:
         linear-gradient(135deg,
-            rgba(255, 255, 255, 0.042) 0%,
-            rgba(255, 255, 255, 0.014) 14%,
-            rgba(255, 255, 255, 0) 34%,
-            rgba(255, 255, 255, 0) 100%);
-    opacity: 0.7;
-    pointer-events: none;
-    z-index: 0;
+            rgba(255, 255, 255, 0.048) 0%,
+            rgba(255, 255, 255, 0.016) 16%,
+            rgba(255, 255, 255, 0) 38%),
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb) / 0.026) 0%,
+            transparent 30%,
+            transparent 72%,
+            rgb(var(--sports-green-rgb) / 0.024) 100%);
+    opacity: 0.82;
     transition: opacity 240ms ease;
 }
 
@@ -100,84 +73,74 @@
     content: "";
     position: absolute;
     inset: auto 0 0 0;
-    block-size: 43%;
+    z-index: 0;
+    block-size: 46%;
+    pointer-events: none;
     background:
         linear-gradient(180deg,
             rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 0.085) 38%,
-            rgba(0, 0, 0, 0.235) 100%);
-    pointer-events: none;
-    z-index: 0;
+            rgba(0, 0, 0, 0.18) 42%,
+            rgba(0, 0, 0, 0.38) 100%);
 }
 
 .surface:is(:hover, :focus-within) {
-    --hero-eyebrow-border: rgba(199, 134, 21, 0.28);
+    --hero-eyebrow-border: rgb(var(--sports-gold-rgb) / 0.32);
     --hero-eyebrow-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        0 10px 22px rgba(0, 0, 0, 0.18),
-        0 0 18px rgba(199, 134, 21, 0.06);
-    --hero-eyebrow-color: rgba(248, 237, 202, 0.98);
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        0 12px 26px rgba(0, 0, 0, 0.28),
+        0 0 20px rgb(var(--sports-gold-rgb) / 0.06);
 
-    --hero-secondary-color: rgba(222, 164, 50, 0.98);
-    --hero-secondary-shadow:
-        0 1px 0 rgba(0, 0, 0, 0.16),
-        0 0 16px rgba(199, 134, 21, 0.12);
+    --hero-secondary-color: var(--sports-gold-soft);
+    --hero-title-color: rgba(250, 252, 255, 0.98);
+    --hero-description-color: rgba(250, 252, 255, 0.97);
+    --hero-support-color: rgba(210, 218, 230, 0.86);
 
-    --hero-title-color: #c2e789;
-    --hero-title-shadow:
-        0 0 24px rgba(131, 212, 108, 0.22),
-        0 0 40px rgba(92, 184, 101, 0.12),
-        0 8px 24px rgba(0, 0, 0, 0.28);
-
-    --hero-description-color: rgba(246, 248, 244, 0.98);
-    --hero-support-color: rgba(219, 228, 221, 0.91);
-
-    border-color: rgba(199, 134, 21, 0.28);
+    border-color: rgb(var(--sports-gold-rgb) / 0.34);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.28),
-        0 26px 56px rgba(0, 0, 0, 0.3),
-        0 12px 28px rgba(0, 0, 0, 0.17),
-        0 0 0 1px rgba(199, 134, 21, 0.04);
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.42),
+        0 28px 64px rgba(0, 0, 0, 0.4),
+        0 14px 30px rgba(0, 0, 0, 0.24),
+        0 0 34px rgb(var(--sports-gold-rgb) / 0.045);
 }
 
 .surface:is(:hover, :focus-within)::before {
-    opacity: 0.83;
+    opacity: 0.94;
 }
 
 .topRule {
     position: absolute;
     inset: 0 0 auto 0;
-    block-size: clamp(0.27rem, 0.36vw, 0.4rem);
+    z-index: 2;
+    block-size: clamp(0.18rem, 0.24vw, 0.28rem);
     background:
         linear-gradient(90deg,
-            rgba(161, 109, 18, 0.94) 0%,
-            rgba(219, 168, 57, 0.98) 34%,
-            rgba(197, 134, 22, 0.93) 68%,
-            rgba(132, 90, 18, 0.9) 100%);
+            rgb(var(--sports-gold-deep-rgb) / 0.72) 0%,
+            rgb(var(--sports-gold-rgb) / 0.88) 34%,
+            rgb(var(--sports-gold-soft-rgb) / 0.78) 52%,
+            rgb(var(--sports-gold-rgb) / 0.7) 72%,
+            rgb(var(--sports-gold-deep-rgb) / 0.46) 100%);
     box-shadow:
-        0 1px 0 rgba(255, 239, 192, 0.16),
-        0 6px 16px rgba(199, 134, 21, 0.1);
-    z-index: 2;
+        0 1px 0 rgba(255, 239, 192, 0.12),
+        0 8px 18px rgb(var(--sports-gold-rgb) / 0.08);
 }
 
 .glowOrb {
     position: absolute;
-    inset: 10.4% auto auto 50%;
-    transform: translateX(-50%);
-    inline-size: clamp(11.8rem, 18.2vw, 17.4rem);
+    inset: 8% auto auto 50%;
+    z-index: 0;
+    inline-size: clamp(11rem, 17vw, 16rem);
     aspect-ratio: 1;
     border-radius: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
     background:
         radial-gradient(circle,
-            rgba(176, 228, 120, 0.21) 0%,
-            rgba(79, 183, 103, 0.12) 34%,
-            rgba(18, 49, 35, 0.04) 56%,
-            rgba(18, 49, 35, 0) 76%);
-    filter: blur(30px);
-    opacity: 0.88;
-    pointer-events: none;
-    z-index: 0;
+            rgb(var(--sports-gold-rgb) / 0.095) 0%,
+            rgb(var(--sports-gold-deep-rgb) / 0.045) 34%,
+            transparent 72%);
+    filter: blur(34px);
+    opacity: 0.68;
     transition:
         opacity 280ms ease,
         transform 280ms ease,
@@ -185,47 +148,47 @@
 }
 
 .surface:is(:hover, :focus-within) .glowOrb {
-    opacity: 0.98;
-    transform: translateX(-50%) scale(1.025);
-    filter: blur(32px);
+    opacity: 0.78;
+    transform: translateX(-50%) scale(1.02);
+    filter: blur(36px);
 }
 
 .glowBeam {
     position: absolute;
-    inset: 0 14% 0 auto;
-    inline-size: min(25vw, 24rem);
+    inset: 0 5% 0 auto;
+    z-index: 0;
+    inline-size: min(27vw, 25rem);
+    pointer-events: none;
     background:
         linear-gradient(180deg,
-            rgba(13, 114, 69, 0) 0%,
-            rgba(15, 126, 76, 0.075) 18%,
-            rgba(8, 136, 82, 0.16) 48%,
-            rgba(16, 124, 77, 0.075) 78%,
-            rgba(13, 114, 69, 0) 100%);
-    filter: blur(27px);
-    opacity: 0.8;
-    pointer-events: none;
-    z-index: 0;
+            transparent 0%,
+            rgb(var(--sports-green-rgb) / 0.018) 18%,
+            rgb(var(--sports-green-rgb) / 0.048) 50%,
+            rgb(var(--sports-green-rgb) / 0.02) 80%,
+            transparent 100%);
+    filter: blur(34px);
+    opacity: 0.58;
     transition:
         opacity 280ms ease,
         filter 280ms ease;
 }
 
 .surface:is(:hover, :focus-within) .glowBeam {
-    opacity: 0.92;
-    filter: blur(29px);
+    opacity: 0.66;
+    filter: blur(36px);
 }
 
 .noise {
     position: absolute;
     inset: 0;
+    z-index: 0;
+    pointer-events: none;
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.014) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
     background-size: 16px 16px;
-    opacity: 0.038;
+    opacity: 0.036;
     mix-blend-mode: soft-light;
-    pointer-events: none;
-    z-index: 0;
 }
 
 .inner {
@@ -243,9 +206,9 @@
 .headerBlock,
 .proofBlock,
 .statsBlock {
-    inline-size: 100%;
     display: flex;
     justify-content: center;
+    inline-size: 100%;
 }
 
 .headerBlock {
@@ -285,8 +248,8 @@
     }
 
     .glowBeam {
-        inset: 0 12% 0 auto;
-        inline-size: min(28vw, 22rem);
+        inset: 0 4% 0 auto;
+        inline-size: min(30vw, 22rem);
     }
 }
 
@@ -305,8 +268,8 @@
     }
 
     .glowOrb {
-        inset: 10.9% auto auto 50%;
-        inline-size: 12.3rem;
+        inset: 9% auto auto 50%;
+        inline-size: 12rem;
     }
 }
 
@@ -324,15 +287,15 @@
     }
 
     .glowOrb {
-        inset: 12.5% auto auto 50%;
-        inline-size: 10.9rem;
+        inset: 11% auto auto 50%;
+        inline-size: 10.6rem;
     }
 
     .glowBeam {
         inset: auto 0 0 0;
         inline-size: 100%;
-        block-size: 40%;
-        filter: blur(22px);
+        block-size: 38%;
+        filter: blur(26px);
     }
 }
 
@@ -344,17 +307,16 @@
         --hero-proof-max: 32rem;
         --hero-stats-max: 32rem;
         background:
-            radial-gradient(72% 76% at 50% 18%,
-                rgba(164, 224, 108, 0.135) 0%,
-                rgba(82, 178, 98, 0.078) 34%,
-                transparent 66%),
-            radial-gradient(120% 115% at 50% 100%,
-                rgba(199, 134, 21, 0.096) 0%,
-                transparent 38%),
+            radial-gradient(76% 82% at 50% 0%,
+                rgb(var(--sports-gold-rgb) / 0.07) 0%,
+                transparent 62%),
+            radial-gradient(120% 110% at 50% 100%,
+                rgb(var(--sports-green-rgb) / 0.035) 0%,
+                transparent 44%),
             linear-gradient(180deg,
-                rgba(3, 7, 11, 0.995) 0%,
-                rgba(3, 12, 13, 0.988) 46%,
-                rgba(10, 60, 42, 0.968) 100%);
+                rgba(3, 6, 11, 0.998) 0%,
+                rgba(5, 10, 18, 0.998) 52%,
+                rgba(5, 20, 22, 0.99) 100%);
     }
 
     .statsBlock {
@@ -372,12 +334,12 @@
     }
 
     .topRule {
-        block-size: 0.25rem;
+        block-size: 0.18rem;
     }
 
     .glowOrb {
-        inline-size: 8.9rem;
-        opacity: 0.86;
+        inline-size: 8.5rem;
+        opacity: 0.58;
     }
 }
 

@@ -1,22 +1,24 @@
 /* Sunlive Sports — Theme
    Base visual: Prestige Noir + Liquid Gold + verde performance controlado.
-   Ativo quando o ThemeProvider define data-brand="sports" no <html>.
+   Este ficheiro define tokens globais da brand Sports.
+   Deve ser importado uma vez na entrada da brand, por exemplo no SportsShell.jsx.
 */
 
-:root[data-brand="sports"] {
+:root[data-brand="sports"],
+[data-brand="sports"] {
     /* ===== Base Sunlive / overrides da brand ===== */
 
-    --sl-accent-400: #4cd29a;
-    --sl-accent-500: #2ec27e;
-    --sl-accent-600: #1f8d5c;
+    --sl-accent-400: #f1c86a;
+    --sl-accent-500: #d6a640;
+    --sl-accent-600: #c78615;
 
     --sl-ornament-alpha: 0.12;
 
-    --sl-glow-top: #c78615;
+    --sl-glow-top: #d6a640;
     --sl-glow-ring: #c78615;
     --sl-glow-bottom: #a16207;
 
-    --footer-accent: #2ec27e;
+    --footer-accent: #d6a640;
 
     /* ===== Sports — Cores base ===== */
 
@@ -27,8 +29,11 @@
     --sports-graphite-800: #101b28;
 
     --sports-gold: #d6a640;
+    --sports-gold-soft: #f1c86a;
     --sports-gold-deep: #c78615;
+
     --sports-gold-rgb: 214 166 64;
+    --sports-gold-soft-rgb: 241 200 106;
     --sports-gold-deep-rgb: 199 134 21;
 
     --sports-green: #2ec27e;
@@ -61,10 +66,10 @@
 
     --sports-surface-panel:
         radial-gradient(120% 140% at 0% 0%,
-            rgb(var(--sports-green-rgb) / 0.07) 0%,
+            rgb(var(--sports-green-rgb) / 0.055) 0%,
             transparent 48%),
         radial-gradient(120% 140% at 100% 100%,
-            rgb(var(--sports-gold-rgb) / 0.09) 0%,
+            rgb(var(--sports-gold-rgb) / 0.11) 0%,
             transparent 54%),
         linear-gradient(180deg,
             rgba(7, 13, 21, 0.965) 0%,
@@ -79,7 +84,8 @@
     --sports-shadow-card-hover:
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
         0 26px 54px rgba(0, 0, 0, 0.42),
-        0 0 0 1px rgb(var(--sports-green-rgb) / 0.055);
+        0 0 0 1px rgb(var(--sports-gold-rgb) / 0.08),
+        0 0 34px rgb(var(--sports-green-rgb) / 0.035);
 
     /* ===== Sports — Radius ===== */
 
@@ -120,110 +126,730 @@
 
     --sports-support-text-size: clamp(0.91rem, 0.9vw, 0.96rem);
     --sports-support-mini-text-size: clamp(0.87rem, 0.84vw, 0.91rem);
+
+    /* ===== Sports — Hero Surface ===== */
+
+    --sports-hero-surface-border: rgb(var(--sports-gold-rgb) / 0.24);
+
+    --sports-hero-surface-bg:
+        radial-gradient(70% 90% at 100% 0%,
+            rgb(var(--sports-gold-rgb) / 0.095) 0%,
+            rgb(var(--sports-gold-rgb) / 0.035) 36%,
+            transparent 66%),
+        radial-gradient(62% 82% at 0% 0%,
+            rgb(var(--sports-gold-rgb) / 0.06) 0%,
+            transparent 48%),
+        radial-gradient(80% 120% at 100% 100%,
+            rgb(var(--sports-green-rgb) / 0.018) 0%,
+            transparent 60%),
+        linear-gradient(112deg,
+            rgba(3, 6, 11, 0.998) 0%,
+            rgba(5, 9, 17, 0.998) 34%,
+            rgba(7, 13, 21, 0.996) 66%,
+            rgba(5, 10, 18, 0.994) 100%);
+
+    --sports-hero-surface-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.42),
+        0 24px 58px rgba(0, 0, 0, 0.34),
+        0 10px 24px rgba(0, 0, 0, 0.22),
+        0 0 34px rgb(var(--sports-gold-rgb) / 0.045);
+
+    --sports-hero-surface-border-hover: rgb(var(--sports-gold-rgb) / 0.32);
+
+    --sports-hero-surface-shadow-hover:
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.46),
+        0 28px 64px rgba(0, 0, 0, 0.38),
+        0 12px 28px rgba(0, 0, 0, 0.25),
+        0 0 42px rgb(var(--sports-gold-rgb) / 0.065);
+
+    /* ===== Sports — Logistics Services ===== */
+
+    --sports-logistics-section-border: rgb(var(--sports-gold-rgb) / 0.22);
+
+    --sports-logistics-section-bg:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.008) 20%,
+            transparent 46%),
+        radial-gradient(120% 140% at 0% 0%,
+            rgb(var(--sports-gold-rgb) / 0.072) 0%,
+            transparent 50%),
+        radial-gradient(120% 140% at 100% 0%,
+            rgb(var(--sports-gold-rgb) / 0.062) 0%,
+            transparent 54%),
+        radial-gradient(120% 150% at 100% 100%,
+            rgb(var(--sports-green-rgb) / 0.014) 0%,
+            transparent 62%),
+        linear-gradient(145deg,
+            rgba(3, 6, 11, 0.998) 0%,
+            rgba(5, 9, 17, 0.996) 54%,
+            rgba(8, 8, 7, 0.998) 100%);
+
+    --sports-logistics-section-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
+        0 24px 54px rgba(0, 0, 0, 0.34),
+        0 0 0 1px rgba(255, 255, 255, 0.014),
+        0 0 34px rgb(var(--sports-gold-rgb) / 0.035);
+
+    --sports-logistics-top-rule:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb) / 0.72) 0%,
+            rgb(var(--sports-gold-rgb) / 0.3) 54%,
+            transparent 100%);
+
+    --sports-logistics-ambient-glow:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb) / 0.095) 0%,
+            rgb(var(--sports-gold-rgb) / 0.03) 38%,
+            transparent 74%);
+
+    --sports-logistics-background-glow:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb) / 0.07) 0%,
+            rgb(var(--sports-gold-rgb) / 0.022) 38%,
+            transparent 72%);
+
+    --sports-logistics-eyebrow-color: var(--sports-gold);
+    --sports-logistics-title-color: rgba(248, 250, 252, 0.99);
+    --sports-logistics-lead-color: rgba(198, 207, 220, 0.82);
+
+    --sports-logistics-title-size: clamp(1.78rem, 0.98rem + 3.65vw, 3.95rem);
+    --sports-logistics-lead-size: clamp(0.9rem, 0.78rem + 0.48vw, 1.06rem);
+
+    --sports-logistics-service-title-size: clamp(0.94rem, 0.82rem + 0.42vw, 1.14rem);
+    --sports-logistics-service-summary-size: clamp(0.78rem, 0.72rem + 0.28vw, 0.9rem);
+
+    --sports-logistics-panel-title-size: clamp(1.3rem, 1rem + 1.75vw, 2.12rem);
+    --sports-logistics-panel-summary-size: clamp(0.84rem, 0.76rem + 0.32vw, 0.96rem);
+    --sports-logistics-feature-size: clamp(0.76rem, 0.7rem + 0.28vw, 0.88rem);
+
+    --sports-logistics-highlight-value-size: clamp(1.2rem, 0.88rem + 1.5vw, 1.85rem);
+
+    --sports-logistics-card-bg:
+        radial-gradient(130% 155% at 100% 0%,
+            rgb(var(--sports-gold-rgb) / 0.048) 0%,
+            transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.034) 0%,
+            rgba(255, 255, 255, 0.01) 100%),
+        linear-gradient(145deg,
+            rgba(9, 16, 25, 0.955) 0%,
+            rgba(4, 9, 16, 0.986) 100%);
+
+    --sports-logistics-card-bg-hover:
+        radial-gradient(130% 155% at 100% 0%,
+            rgb(var(--sports-gold-rgb) / 0.09) 0%,
+            transparent 46%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.048) 0%,
+            rgba(255, 255, 255, 0.014) 100%),
+        linear-gradient(145deg,
+            rgba(12, 18, 26, 0.965) 0%,
+            rgba(5, 10, 17, 0.992) 100%);
+
+    --sports-logistics-card-bg-active:
+        radial-gradient(130% 155% at 100% 0%,
+            rgb(var(--sports-gold-rgb) / 0.13) 0%,
+            transparent 44%),
+        radial-gradient(125% 145% at 0% 100%,
+            rgb(var(--sports-green-rgb) / 0.016) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.052) 0%,
+            rgba(255, 255, 255, 0.014) 100%),
+        linear-gradient(145deg,
+            rgba(24, 20, 14, 0.92) 0%,
+            rgba(6, 11, 18, 0.992) 100%);
+
+    --sports-logistics-card-border: var(--sports-border-soft);
+    --sports-logistics-card-border-hover: rgb(var(--sports-gold-rgb) / 0.3);
+    --sports-logistics-card-border-active: rgb(var(--sports-gold-rgb) / 0.34);
+
+    --sports-logistics-card-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.032),
+        0 10px 24px rgba(0, 0, 0, 0.17);
+
+    --sports-logistics-card-shadow-hover:
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        0 14px 30px rgba(0, 0, 0, 0.24),
+        0 0 18px rgb(var(--sports-gold-rgb) / 0.045);
+
+    --sports-logistics-icon-bg:
+        radial-gradient(circle at 35% 25%,
+            rgb(var(--sports-gold-rgb) / 0.16),
+            transparent 70%),
+        rgba(255, 255, 255, 0.042);
+
+    --sports-logistics-icon-border: rgb(var(--sports-gold-rgb) / 0.24);
+    --sports-logistics-icon-color: var(--sports-gold);
+
+    --sports-logistics-panel-bg:
+        radial-gradient(125% 155% at 100% 0%,
+            rgb(var(--sports-gold-rgb) / 0.09) 0%,
+            transparent 44%),
+        radial-gradient(125% 155% at 0% 100%,
+            rgb(var(--sports-green-rgb) / 0.018) 0%,
+            transparent 50%),
+        linear-gradient(180deg,
+            rgba(7, 13, 21, 0.97) 0%,
+            rgba(4, 9, 17, 0.994) 100%);
+
+    --sports-logistics-panel-border: rgb(var(--sports-gold-rgb) / 0.28);
+    --sports-logistics-panel-divider: rgb(var(--sports-gold-rgb) / 0.16);
+    --sports-logistics-panel-top-rule: rgb(var(--sports-gold-rgb) / 0.68);
+
+    --sports-logistics-highlight-bg:
+        radial-gradient(120% 150% at 100% 0%,
+            rgb(var(--sports-gold-rgb) / 0.062) 0%,
+            transparent 44%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.034) 0%,
+            rgba(255, 255, 255, 0.01) 100%),
+        linear-gradient(145deg,
+            rgba(7, 13, 21, 0.92) 0%,
+            rgba(4, 9, 17, 0.98) 100%);
+
+    --sports-logistics-highlight-border: var(--sports-border-soft);
+
+    /* ===== Sports — Hero Intro ===== */
+
+    --sports-hero-eyebrow-bg:
+        linear-gradient(180deg,
+            rgba(12, 20, 29, 0.86) 0%,
+            rgba(5, 10, 17, 0.78) 100%);
+
+    --sports-hero-eyebrow-border: rgb(var(--sports-gold-rgb) / 0.24);
+    --sports-hero-eyebrow-color: rgba(248, 238, 205, 0.96);
+
+    --sports-hero-eyebrow-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 10px 24px rgba(0, 0, 0, 0.24);
+
+    --sports-hero-secondary-color: var(--sports-gold);
+
+    --sports-hero-secondary-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.24),
+        0 0 14px rgb(var(--sports-gold-rgb) / 0.08);
+
+    --sports-hero-title-color: rgba(246, 248, 252, 0.96);
+
+    --sports-hero-title-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.035),
+        0 10px 30px rgba(0, 0, 0, 0.42);
+
+    --sports-hero-description-color: rgba(246, 248, 252, 0.94);
+    --sports-hero-description-shadow: 0 1px 0 rgba(0, 0, 0, 0.22);
+
+    --sports-hero-support-color: rgba(198, 207, 220, 0.82);
+
+    /* ===== Sports — Hero Intro Stats ===== */
+
+    --sports-hero-stat-bg:
+        radial-gradient(120% 140% at 50% 0%,
+            rgb(var(--sports-gold-rgb) / 0.035) 0%,
+            transparent 46%),
+        radial-gradient(120% 140% at 100% 100%,
+            rgb(var(--sports-green-rgb) / 0.025) 0%,
+            transparent 54%),
+        linear-gradient(180deg,
+            rgba(11, 18, 27, 0.96) 0%,
+            rgba(6, 13, 21, 0.97) 52%,
+            rgba(4, 9, 15, 0.985) 100%);
+
+    --sports-hero-stat-border: rgb(var(--sports-gold-rgb) / 0.14);
+    --sports-hero-stat-border-hover: rgb(var(--sports-gold-rgb) / 0.26);
+
+    --sports-hero-stat-value-color: var(--sports-gold-soft);
+    --sports-hero-stat-value-hover-color: rgba(255, 239, 194, 0.99);
+
+    --sports-hero-stat-label-color: rgba(172, 181, 195, 0.86);
+    --sports-hero-stat-label-hover-color: rgba(202, 211, 224, 0.9);
+
+    --sports-hero-stat-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        0 12px 28px rgba(0, 0, 0, 0.2);
+
+    --sports-hero-stat-shadow-hover:
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.32),
+        0 16px 34px rgba(0, 0, 0, 0.25),
+        0 0 22px rgb(var(--sports-gold-rgb) / 0.045);
+
+    --sports-hero-stat-value-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.22),
+        0 0 14px rgb(var(--sports-gold-rgb) / 0.12);
+
+    /* ===== Sports — UtilityBar ===== */
+
+    --sports-utility-accent: var(--sports-gold);
+    --sports-utility-accent-soft: var(--sports-gold-soft);
+
+    --sports-utility-divider-inner: rgb(var(--sports-gold-rgb) / 0.18);
+    --sports-utility-divider-home: rgb(var(--sports-gold-rgb) / 0.78);
+
+    --sports-utility-link-color: rgba(248, 238, 205, 0.95);
+    --sports-utility-link-hover-color: rgba(255, 247, 221, 0.99);
+
+    --sports-utility-back-bg:
+        radial-gradient(120% 140% at 0% 0%,
+            rgb(var(--sports-gold-rgb) / 0.08) 0%,
+            transparent 48%),
+        linear-gradient(180deg,
+            rgba(10, 18, 28, 0.96) 0%,
+            rgba(5, 10, 18, 0.985) 100%);
+
+    --sports-utility-home-bg:
+        radial-gradient(120% 140% at 100% 0%,
+            rgb(var(--sports-gold-rgb) / 0.095) 0%,
+            transparent 52%),
+        radial-gradient(120% 140% at 0% 100%,
+            rgb(var(--sports-green-rgb) / 0.035) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgba(11, 20, 31, 0.94) 0%,
+            rgba(5, 11, 19, 0.985) 100%);
+
+    --sports-utility-back-border: rgb(var(--sports-gold-rgb) / 0.24);
+    --sports-utility-back-border-hover: rgb(var(--sports-gold-rgb) / 0.42);
+
+    --sports-utility-home-border: rgb(var(--sports-gold-rgb) / 0.3);
+    --sports-utility-home-border-hover: rgb(var(--sports-gold-rgb) / 0.52);
+
+    --sports-utility-control-bg:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.035) 0%,
+            rgba(255, 255, 255, 0.01) 100%);
+
+    --sports-utility-control-bg-hover:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb) / 0.12) 0%,
+            rgb(var(--sports-gold-deep-rgb) / 0.055) 100%);
+
+    --sports-utility-menu-bg:
+        radial-gradient(120% 140% at 100% 0%,
+            rgb(var(--sports-gold-rgb) / 0.1) 0%,
+            transparent 52%),
+        linear-gradient(180deg,
+            rgba(9, 15, 24, 0.985) 0%,
+            rgba(4, 8, 14, 0.995) 100%);
+
+    --sports-utility-menu-border: rgb(var(--sports-gold-rgb) / 0.22);
+
+    --sports-utility-active-bg:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb) / 0.14) 0%,
+            rgb(var(--sports-gold-deep-rgb) / 0.07) 100%);
+
+    --sports-utility-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 12px 28px rgba(0, 0, 0, 0.24);
+
+    --sports-utility-shadow-hover:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 16px 34px rgba(0, 0, 0, 0.3),
+        0 0 24px rgb(var(--sports-gold-rgb) / 0.08);
+
+    /* ===== Sports — Page Switcher ===== */
+
+    --sports-switcher-accent: var(--sports-gold);
+    --sports-switcher-accent-soft: var(--sports-gold-soft);
+
+    --sports-switcher-text: rgba(248, 238, 205, 0.96);
+    --sports-switcher-text-hover: rgba(255, 247, 221, 0.99);
+    --sports-switcher-text-soft: rgba(218, 226, 238, 0.84);
+
+    --sports-switcher-toggle-bg:
+        radial-gradient(120% 140% at 86% 16%,
+            rgb(var(--sports-gold-rgb) / 0.09) 0%,
+            transparent 42%),
+        radial-gradient(120% 140% at 0% 100%,
+            rgb(var(--sports-green-rgb) / 0.028) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgba(10, 18, 28, 0.965) 0%,
+            rgba(5, 10, 18, 0.99) 100%);
+
+    --sports-switcher-toggle-overlay:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.075) 0%,
+            transparent 34%),
+        radial-gradient(120% 120% at 82% 50%,
+            rgb(var(--sports-gold-rgb) / 0.12) 0%,
+            transparent 44%);
+
+    --sports-switcher-menu-bg:
+        radial-gradient(120% 140% at 12% 0%,
+            rgb(var(--sports-green-rgb) / 0.04) 0%,
+            transparent 42%),
+        radial-gradient(120% 140% at 100% 100%,
+            rgb(var(--sports-gold-rgb) / 0.11) 0%,
+            transparent 46%),
+        linear-gradient(180deg,
+            rgba(8, 15, 24, 0.988) 0%,
+            rgba(3, 7, 13, 0.996) 100%);
+
+    --sports-switcher-border: rgb(var(--sports-gold-rgb) / 0.3);
+    --sports-switcher-border-hover: rgb(var(--sports-gold-rgb) / 0.52);
+    --sports-switcher-border-open: rgb(var(--sports-gold-rgb) / 0.68);
+
+    --sports-switcher-menu-border: rgb(var(--sports-gold-rgb) / 0.24);
+    --sports-switcher-menu-link-border-hover: rgb(var(--sports-gold-rgb) / 0.18);
+
+    --sports-switcher-link-hover-bg:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb) / 0.14) 0%,
+            rgb(var(--sports-gold-rgb) / 0.045) 100%);
+
+    --sports-switcher-link-cta-bg:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb) / 0.12) 0%,
+            rgb(var(--sports-gold-rgb) / 0.04) 100%);
+
+    --sports-switcher-link-cta-bg-hover:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb) / 0.2) 0%,
+            rgb(var(--sports-gold-rgb) / 0.08) 100%);
+
+    --sports-switcher-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        inset 0 -1px 0 rgb(var(--sports-gold-rgb) / 0.1),
+        0 10px 22px rgba(0, 0, 0, 0.24);
+
+    --sports-switcher-shadow-hover:
+        inset 0 1px 0 rgba(255, 255, 255, 0.075),
+        inset 0 -1px 0 rgb(var(--sports-gold-rgb) / 0.14),
+        0 14px 30px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgb(var(--sports-gold-rgb) / 0.1);
+
+    --sports-switcher-shadow-open:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgb(var(--sports-gold-rgb) / 0.16),
+        0 16px 34px rgba(0, 0, 0, 0.34),
+        0 0 0 1px rgb(var(--sports-gold-rgb) / 0.14);
+
+    --sports-switcher-menu-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        0 24px 58px rgba(0, 0, 0, 0.42),
+        0 0 34px rgb(var(--sports-gold-rgb) / 0.06);
+
+    --sports-switcher-focus-ring:
+        0 0 0 3px rgb(var(--sports-gold-rgb) / 0.24),
+        0 0 0 6px rgba(255, 255, 255, 0.075);
+
+    /* ===== Sports — Footer Link Directory ===== */
+
+    --sports-directory-text: var(--sports-text);
+    --sports-directory-title-color: rgba(246, 248, 252, 0.94);
+
+    --sports-directory-chip-text: rgba(246, 248, 252, 0.94);
+    --sports-directory-chip-text-hover: rgba(255, 247, 221, 0.99);
+
+    --sports-directory-chip-bg:
+        radial-gradient(120% 140% at 0% 0%,
+            rgb(var(--sports-gold-rgb) / 0.055) 0%,
+            transparent 48%),
+        radial-gradient(120% 140% at 100% 100%,
+            rgb(var(--sports-green-rgb) / 0.022) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgba(9, 16, 25, 0.965) 0%,
+            rgba(4, 9, 16, 0.992) 100%);
+
+    --sports-directory-chip-bg-hover:
+        radial-gradient(120% 140% at 0% 0%,
+            rgb(var(--sports-gold-rgb) / 0.12) 0%,
+            transparent 52%),
+        linear-gradient(135deg,
+            rgb(var(--sports-gold-deep-rgb) / 0.92) 0%,
+            rgb(var(--sports-gold-rgb) / 0.96) 100%);
+
+    --sports-directory-chip-highlight-bg:
+        radial-gradient(120% 140% at 100% 0%,
+            rgb(var(--sports-gold-rgb) / 0.105) 0%,
+            transparent 50%),
+        radial-gradient(120% 140% at 0% 100%,
+            rgb(var(--sports-green-rgb) / 0.04) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgba(11, 20, 31, 0.965) 0%,
+            rgba(5, 11, 19, 0.992) 100%);
+
+    --sports-directory-chip-border: rgb(var(--sports-gold-rgb) / 0.22);
+    --sports-directory-chip-border-hover: rgb(var(--sports-gold-rgb) / 0.46);
+    --sports-directory-chip-highlight-border: rgb(var(--sports-gold-rgb) / 0.34);
+
+    --sports-directory-chip-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.28),
+        0 10px 22px rgba(0, 0, 0, 0.22);
+
+    --sports-directory-chip-shadow-hover:
+        inset 0 1px 0 rgba(255, 255, 255, 0.09),
+        0 14px 28px rgba(0, 0, 0, 0.3),
+        0 0 22px rgb(var(--sports-gold-rgb) / 0.1);
+
+    --sports-directory-chip-overlay:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb) / 0.08) 0%,
+            rgba(255, 255, 255, 0.012) 52%,
+            rgb(var(--sports-green-rgb) / 0.018) 100%);
+
+    --sports-directory-energy-line:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--sports-gold-rgb) / 0.18) 18%,
+            rgb(var(--sports-gold-rgb) / 0.52) 50%,
+            rgb(var(--sports-green-rgb) / 0.08) 84%,
+            transparent 100%);
+
+    --sports-directory-focus-ring:
+        0 0 0 3px rgb(var(--sports-gold-rgb) / 0.22),
+        0 0 0 6px rgb(var(--sports-green-rgb) / 0.055);
+
+    /* ===== Sports — Footer Frame ===== */
+
+    --sports-footer-accent: var(--sports-gold);
+    --sports-footer-base: var(--sports-black);
+
+    --sports-footer-frame-bg:
+        radial-gradient(120% 140% at 0% 0%,
+            rgb(var(--sports-gold-rgb) / 0.11) 0%,
+            transparent 48%),
+        radial-gradient(120% 140% at 100% 100%,
+            rgb(var(--sports-green-rgb) / 0.035) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgba(7, 13, 21, 0.982) 0%,
+            rgba(3, 7, 13, 0.996) 100%);
+
+    --sports-footer-frame-border: rgb(var(--sports-gold-rgb) / 0.18);
+
+    --sports-footer-frame-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 0 0 1px rgba(0, 0, 0, 0.55),
+        0 16px 34px rgba(0, 0, 0, 0.32),
+        0 0 34px rgb(var(--sports-gold-rgb) / 0.045);
+
+    --sports-footer-top-rule:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--sports-gold-rgb) / 0.18) 14%,
+            rgb(var(--sports-gold-rgb) / 0.5) 50%,
+            rgb(var(--sports-gold-rgb) / 0.18) 86%,
+            transparent 100%);
+
+    --sports-footer-strip-border: rgb(var(--sports-gold-rgb) / 0.22);
 }
 
 /* ===== Melhorias quando color-mix é suportado ===== */
 
 @supports (color: color-mix(in oklab, white, black)) {
-    :root[data-brand="sports"] {
-        --sl-glow-top: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 24%);
-        --sl-glow-ring: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 18%);
-        --sl-glow-bottom: color-mix(in oklab, var(--sl-gold-500), var(--sl-accent-500) 12%);
+
+    :root[data-brand="sports"],
+    [data-brand="sports"] {
+        --sl-glow-top: color-mix(in oklab, var(--sports-gold-soft), var(--sports-green) 8%);
+        --sl-glow-ring: color-mix(in oklab, var(--sports-gold), var(--sports-green) 6%);
+        --sl-glow-bottom: color-mix(in oklab, var(--sports-gold-deep), black 8%);
+
+        --sports-hero-eyebrow-bg:
+            linear-gradient(180deg,
+                color-mix(in oklab, var(--sports-graphite-850), transparent 14%) 0%,
+                color-mix(in oklab, var(--sports-graphite-950), transparent 22%) 100%);
+
+        --sports-hero-eyebrow-border: color-mix(in oklab, var(--sports-gold), transparent 76%);
+        --sports-hero-eyebrow-color: color-mix(in oklab, var(--sports-gold-soft), white 16%);
+
+        --sports-hero-secondary-color: color-mix(in oklab, var(--sports-gold), white 6%);
+        --sports-hero-title-color: color-mix(in oklab, white, var(--sports-gold-soft) 8%);
+        --sports-hero-description-color: color-mix(in oklab, white, var(--sports-text) 10%);
+        --sports-hero-support-color: color-mix(in oklab, var(--sports-muted-strong), white 4%);
+
+        --sports-hero-stat-bg:
+            radial-gradient(120% 140% at 50% 0%,
+                color-mix(in oklab, var(--sports-gold), transparent 96.5%) 0%,
+                transparent 46%),
+            radial-gradient(120% 140% at 100% 100%,
+                color-mix(in oklab, var(--sports-green), transparent 97.5%) 0%,
+                transparent 54%),
+            linear-gradient(180deg,
+                color-mix(in oklab, var(--sports-graphite-850), black 12%) 0%,
+                color-mix(in oklab, var(--sports-graphite-900), black 18%) 52%,
+                color-mix(in oklab, var(--sports-graphite-950), black 8%) 100%);
+
+        --sports-hero-stat-border: color-mix(in oklab, var(--sports-gold), transparent 86%);
+        --sports-hero-stat-border-hover: color-mix(in oklab, var(--sports-gold), transparent 74%);
+
+        --sports-hero-stat-value-color: color-mix(in oklab, var(--sports-gold), white 12%);
+        --sports-hero-stat-value-hover-color: color-mix(in oklab, var(--sports-gold-soft), white 16%);
+
+        --sports-hero-stat-label-color: color-mix(in oklab, var(--sports-muted-strong), transparent 14%);
+        --sports-hero-stat-label-hover-color: color-mix(in oklab, var(--sports-text-soft), transparent 8%);
     }
 }
 
 /* ===== Utilitários / variantes Sports ===== */
 
-:root[data-brand="sports"] .u-badge-accent {
-    background: #0b3f2b;
-    color: var(--sl-platinum-010, #f9fafb);
-    border: 1px solid #35b77d;
+:root[data-brand="sports"] .u-badge-accent,
+[data-brand="sports"] .u-badge-accent {
+    background:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb) / 0.14) 0%,
+            rgb(var(--sports-gold-deep-rgb) / 0.08) 100%);
+    color: var(--sports-text);
+    border: 1px solid rgb(var(--sports-gold-rgb) / 0.32);
     border-radius: 999px;
     padding: 0.28rem 0.9rem;
     font-size: 1rem;
     letter-spacing: 0.08em;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 0 0 1px rgba(255, 255, 255, 0.025);
     transition:
         transform 150ms ease-out,
         background 150ms ease-out,
-        border-color 150ms ease-out;
+        border-color 150ms ease-out,
+        box-shadow 150ms ease-out,
+        color 150ms ease-out;
     cursor: pointer;
 }
 
 @supports (color: color-mix(in oklab, white, black)) {
-    :root[data-brand="sports"] .u-badge-accent {
-        background: color-mix(in oklab, var(--sl-accent-500, #2ec27e), black 70%);
-        border-color: color-mix(in oklab, var(--sl-accent-600, #16a34a), white 14%);
+
+    :root[data-brand="sports"] .u-badge-accent,
+    [data-brand="sports"] .u-badge-accent {
+        background:
+            linear-gradient(180deg,
+                color-mix(in oklab, var(--sports-gold), transparent 84%) 0%,
+                color-mix(in oklab, var(--sports-gold-deep), transparent 90%) 100%);
+        border-color: color-mix(in oklab, var(--sports-gold), transparent 68%);
     }
 }
 
 :root[data-brand="sports"] .u-badge-accent:hover,
-:root[data-brand="sports"] .u-badge-accent:focus-visible {
+:root[data-brand="sports"] .u-badge-accent:focus-visible,
+[data-brand="sports"] .u-badge-accent:hover,
+[data-brand="sports"] .u-badge-accent:focus-visible {
     transform: translateY(-1px);
-    background: linear-gradient(135deg, #925f10, #d6a640);
-    border-color: #8b5b13;
+    background:
+        linear-gradient(135deg,
+            rgb(var(--sports-gold-deep-rgb) / 0.92) 0%,
+            rgb(var(--sports-gold-rgb) / 0.96) 100%);
+    border-color: rgb(var(--sports-gold-rgb) / 0.62);
+    color: #070a10;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 12px 26px rgba(0, 0, 0, 0.26),
+        0 0 28px rgb(var(--sports-gold-rgb) / 0.14),
+        0 0 34px rgb(var(--sports-green-rgb) / 0.045);
 }
 
 @supports (color: color-mix(in oklab, white, black)) {
 
     :root[data-brand="sports"] .u-badge-accent:hover,
-    :root[data-brand="sports"] .u-badge-accent:focus-visible {
-        background: linear-gradient(135deg,
-                color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
-                color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
-        border-color: color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
+    :root[data-brand="sports"] .u-badge-accent:focus-visible,
+    [data-brand="sports"] .u-badge-accent:hover,
+    [data-brand="sports"] .u-badge-accent:focus-visible {
+        background:
+            linear-gradient(135deg,
+                color-mix(in oklab, var(--sports-gold-deep), black 4%) 0%,
+                color-mix(in oklab, var(--sports-gold), white 5%) 100%);
+        border-color: color-mix(in oklab, var(--sports-gold), white 18%);
     }
 }
 
-/* ===== Botão secundário Sports ===== */
+/* Botão secundário Sports */
 
-:root[data-brand="sports"] .button--secondary {
-    background: #209465;
-    border: 1px solid var(--sl-accent-600, #1f8d5c);
-    color: white;
+:root[data-brand="sports"] .button--secondary,
+[data-brand="sports"] .button--secondary {
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.045) 0%,
+            rgba(255, 255, 255, 0.015) 100%);
+    border: 1px solid rgb(var(--sports-gold-rgb) / 0.26);
+    color: var(--sports-text);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 12px 28px rgba(0, 0, 0, 0.22);
 }
 
-:root[data-brand="sports"] .button--secondary:hover {
-    background: #35b77d;
-    border-color: var(--sl-accent-500, #2ec27e);
+:root[data-brand="sports"] .button--secondary:hover,
+[data-brand="sports"] .button--secondary:hover {
+    background:
+        linear-gradient(135deg,
+            rgb(var(--sports-gold-deep-rgb) / 0.9) 0%,
+            rgb(var(--sports-gold-rgb) / 0.95) 100%);
+    border-color: rgb(var(--sports-gold-rgb) / 0.58);
+    color: #070a10;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        0 16px 34px rgba(0, 0, 0, 0.28),
+        0 0 28px rgb(var(--sports-gold-rgb) / 0.12);
 }
 
 @supports (color: color-mix(in oklab, white, black)) {
-    :root[data-brand="sports"] .button--secondary {
-        background: color-mix(in oklab, var(--sl-accent-500, #2ec27e) 88%, black);
+
+    :root[data-brand="sports"] .button--secondary,
+    [data-brand="sports"] .button--secondary {
+        background:
+            linear-gradient(180deg,
+                color-mix(in oklab, white, transparent 95%) 0%,
+                color-mix(in oklab, white, transparent 98%) 100%);
+        border-color: color-mix(in oklab, var(--sports-gold), transparent 74%);
     }
 
-    :root[data-brand="sports"] .button--secondary:hover {
-        background: color-mix(in oklab, var(--sl-accent-400, #4cd29a) 88%, black);
+    :root[data-brand="sports"] .button--secondary:hover,
+    [data-brand="sports"] .button--secondary:hover {
+        background:
+            linear-gradient(135deg,
+                color-mix(in oklab, var(--sports-gold-deep), black 5%) 0%,
+                color-mix(in oklab, var(--sports-gold), white 4%) 100%);
+        border-color: color-mix(in oklab, var(--sports-gold), white 15%);
     }
 }
 
-/* ===== Links acentuados Sports ===== */
+/* Links acentuados Sports */
 
-:root[data-brand="sports"] .link-accent {
-    color: var(--sl-accent-500, #2ec27e);
+:root[data-brand="sports"] .link-accent,
+[data-brand="sports"] .link-accent {
+    color: var(--sports-gold);
+    text-decoration-color: rgb(var(--sports-gold-rgb) / 0.42);
+    text-underline-offset: 0.18em;
 }
 
-:root[data-brand="sports"] .link-accent:hover {
-    color: var(--sl-accent-400, #4cd29a);
+:root[data-brand="sports"] .link-accent:hover,
+[data-brand="sports"] .link-accent:hover {
+    color: var(--sports-gold-soft);
+    text-decoration-color: rgb(var(--sports-gold-soft-rgb) / 0.62);
 }
 
-/* ===== Focus ring Sports ===== */
+/* Focus ring Sports */
 
-:root[data-brand="sports"] :is(a, button, input, textarea):focus-visible {
-    outline: 2px solid #4cd29a;
+:root[data-brand="sports"] :is(a, button, input, textarea):focus-visible,
+[data-brand="sports"] :is(a, button, input, textarea):focus-visible {
+    outline: 2px solid var(--sports-gold);
     outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgb(var(--sports-green-rgb) / 0.08);
 }
 
 @supports (color: color-mix(in oklab, white, black)) {
-    :root[data-brand="sports"] :is(a, button, input, textarea):focus-visible {
-        outline-color: color-mix(in oklab, var(--sl-accent-500, #2ec27e), white 15%);
+
+    :root[data-brand="sports"] :is(a, button, input, textarea):focus-visible,
+    [data-brand="sports"] :is(a, button, input, textarea):focus-visible {
+        outline-color: color-mix(in oklab, var(--sports-gold), white 14%);
+        box-shadow: 0 0 0 4px color-mix(in oklab, var(--sports-green), transparent 90%);
     }
 }
 
 /* ===== Responsivo — Tokens Sports ===== */
 
 @media (max-width: 1080px) {
-    :root[data-brand="sports"] {
+
+    :root[data-brand="sports"],
+    [data-brand="sports"] {
         --sports-kicker-size: 0.68rem;
         --sports-kicker-spacing: 0.2em;
 
@@ -249,7 +875,9 @@
 }
 
 @media (max-width: 820px) {
-    :root[data-brand="sports"] {
+
+    :root[data-brand="sports"],
+    [data-brand="sports"] {
         --sports-kicker-size: 0.68rem;
         --sports-kicker-spacing: 0.18em;
 
@@ -275,7 +903,9 @@
 }
 
 @media (max-width: 620px) {
-    :root[data-brand="sports"] {
+
+    :root[data-brand="sports"],
+    [data-brand="sports"] {
         --sports-section-title-size: clamp(1.65rem, 9vw, 2.25rem);
         --sports-section-title-spacing: -0.045em;
 
@@ -292,7 +922,9 @@
 }
 
 @media (max-width: 420px) {
-    :root[data-brand="sports"] {
+
+    :root[data-brand="sports"],
+    [data-brand="sports"] {
         --sports-kicker-size: 0.65rem;
         --sports-kicker-spacing: 0.16em;
 

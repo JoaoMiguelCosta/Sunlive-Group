@@ -99,7 +99,7 @@ const testimonialsSection = {
           mobile: 1,
         },
         offsetX: "0%",
-        offsetY: "-30%",
+        offsetY: "-20%",
         thumbOffsetX: "0%",
         thumbOffsetY: "0%",
       }),
@@ -125,7 +125,7 @@ const testimonialsSection = {
         scale: {
           desktop: 1.4,
           tablet: 1.2,
-          mobile: 1.12,
+          mobile: 1,
         },
         thumbScale: {
           desktop: 1.08,
@@ -133,7 +133,7 @@ const testimonialsSection = {
           mobile: 1,
         },
         offsetX: "0%",
-        offsetY: "-12%",
+        offsetY: "-6%",
         thumbOffsetX: "0%",
         thumbOffsetY: "0%",
       }),
@@ -158,7 +158,7 @@ const testimonialsSection = {
         scale: {
           desktop: 1.5,
           tablet: 1.2,
-          mobile: 1.1,
+          mobile: 0.8,
         },
         thumbScale: {
           desktop: 1.18,
@@ -166,7 +166,7 @@ const testimonialsSection = {
           mobile: 1.08,
         },
         offsetX: "0%",
-        offsetY: "-10%",
+        offsetY: "-13%",
         thumbOffsetX: "0%",
         thumbOffsetY: "0%",
       }),
@@ -195,7 +195,7 @@ const testimonialsSection = {
           mobile: 0.98,
         },
         offsetX: "1%",
-        offsetY: "-37%",
+        offsetY: "-20%",
         thumbOffsetX: "8%",
         thumbOffsetY: "-2%",
       }),
@@ -220,7 +220,7 @@ const testimonialsSection = {
         scale: {
           desktop: 1.5,
           tablet: 1.2,
-          mobile: 1.1,
+          mobile: 0.98,
         },
         thumbScale: {
           desktop: 1.08,
@@ -228,7 +228,7 @@ const testimonialsSection = {
           mobile: 1,
         },
         offsetX: "0%",
-        offsetY: "-10%",
+        offsetY: "-5%",
         thumbOffsetX: "0%",
         thumbOffsetY: "-4%",
       }),
@@ -252,7 +252,7 @@ const testimonialsSection = {
         scale: {
           desktop: 1.28,
           tablet: 1.1,
-          mobile: 1,
+          mobile: 0.9,
         },
         thumbScale: {
           desktop: 1.08,
@@ -260,7 +260,7 @@ const testimonialsSection = {
           mobile: 0.95,
         },
         offsetX: "0%",
-        offsetY: "-25%",
+        offsetY: "-15%",
         thumbOffsetX: "0%",
         thumbOffsetY: "0%",
       }),
@@ -283,9 +283,9 @@ const testimonialsSection = {
         src: francoisPervisImage,
         alt: "François Pervis",
         scale: {
-          desktop: 1.2,
+          desktop: 1.1,
           tablet: 1.2,
-          mobile: 0.95,
+          mobile: 0.9,
         },
         thumbScale: {
           desktop: 1.08,
@@ -293,7 +293,7 @@ const testimonialsSection = {
           mobile: 1,
         },
         offsetX: "0%",
-        offsetY: "-21%",
+        offsetY: "-14%",
         thumbOffsetX: "0%",
         thumbOffsetY: "0%",
       }),
@@ -319,8 +319,8 @@ const testimonialsSection = {
         alt: "Koen Beeckman",
         scale: {
           desktop: 1.6,
-          tablet: 1.4,
-          mobile: 1.1,
+          tablet: 1.2,
+          mobile: 1,
         },
         thumbScale: {
           desktop: 1.16,
@@ -349,9 +349,9 @@ const testimonialsSection = {
         src: carolAngelaOrchardImage,
         alt: "Carol-Angela Orchard",
         scale: {
-          desktop: 1.6,
-          tablet: 1.4,
-          mobile: 1.25,
+          desktop: 1.5,
+          tablet: 1.2,
+          mobile: 0.92,
         },
         thumbScale: {
           desktop: 1.16,
@@ -359,7 +359,7 @@ const testimonialsSection = {
           mobile: 1.04,
         },
         offsetX: "0%",
-        offsetY: "0%",
+        offsetY: "-13%",
         thumbOffsetX: "0%",
         thumbOffsetY: "0%",
       }),

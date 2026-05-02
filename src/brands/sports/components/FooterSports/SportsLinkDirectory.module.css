@@ -6,27 +6,25 @@
     gap: clamp(1.08rem, 1.6vw, 1.5rem);
     padding-inline: var(--section-inset);
     padding-block: clamp(0.92rem, 1.32vw, 1.22rem);
-    color: var(--sl-platinum-050, #e7ebf3);
+    color: var(--sports-directory-text, var(--sports-text));
 
-    --chip-bg:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.017) 0%,
-            rgba(255, 255, 255, 0.004) 100%),
-        linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-accent-500, #2EC27E), black 76.8%) 0%,
-            color-mix(in oklab, var(--sl-accent-500, #2EC27E), black 80.8%) 100%);
-    --chip-border: rgba(199, 134, 21, 0.2);
-    --chip-border-hover: rgba(199, 134, 21, 0.44);
-    --chip-text: var(--sl-platinum-100, #f6f7fb);
-    --chip-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.024),
-        0 0 0 1px rgba(0, 0, 0, 0.3),
-        0 9px 20px rgba(0, 0, 0, 0.22);
-    --chip-shadow-hover:
-        inset 0 1px 0 rgba(255, 255, 255, 0.036),
-        0 0 0 1px rgba(0, 0, 0, 0.36),
-        0 13px 24px rgba(0, 0, 0, 0.27),
-        0 0 15px rgba(199, 134, 21, 0.08);
+    --chip-bg: var(--sports-directory-chip-bg);
+    --chip-bg-hover: var(--sports-directory-chip-bg-hover);
+    --chip-highlight-bg: var(--sports-directory-chip-highlight-bg);
+
+    --chip-border: var(--sports-directory-chip-border);
+    --chip-border-hover: var(--sports-directory-chip-border-hover);
+    --chip-highlight-border: var(--sports-directory-chip-highlight-border);
+
+    --chip-text: var(--sports-directory-chip-text);
+    --chip-text-hover: var(--sports-directory-chip-text-hover);
+
+    --chip-shadow: var(--sports-directory-chip-shadow);
+    --chip-shadow-hover: var(--sports-directory-chip-shadow-hover);
+
+    --chip-overlay: var(--sports-directory-chip-overlay);
+    --chip-energy-line: var(--sports-directory-energy-line);
+    --chip-focus-ring: var(--sports-directory-focus-ring);
 }
 
 .block {
@@ -38,14 +36,14 @@
 
 .blockTitle {
     margin: 0;
-    font-size: clamp(0.94rem, 0.82vw, 1.04rem);
-    line-height: 1.1;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--sl-platinum-100, #ffffff);
-    text-wrap: balance;
-    text-align: center;
     justify-self: center;
+    color: var(--sports-directory-title-color, var(--sports-text));
+    font-size: var(--sports-support-title-size);
+    font-weight: 760;
+    line-height: var(--sports-support-title-line);
+    letter-spacing: var(--sports-support-title-spacing);
+    text-align: center;
+    text-wrap: balance;
 }
 
 .chipsGrid {
@@ -57,28 +55,29 @@
 
 .chip {
     position: relative;
-    min-inline-size: 0;
-    min-block-size: clamp(2.68rem, 3.02vw, 3rem);
+    isolation: isolate;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-inline-size: 0;
+    min-block-size: clamp(2.68rem, 3.02vw, 3rem);
     padding-inline: clamp(0.84rem, 0.98vw, 1rem);
     padding-block: clamp(0.56rem, 0.62vw, 0.7rem);
-    border-radius: 999px;
     overflow: hidden;
-    isolation: isolate;
-    text-decoration: none;
-    text-align: center;
-    color: var(--chip-text);
+    border: 1px solid var(--chip-border);
+    border-radius: 999px;
     background: var(--chip-bg);
-    border: 2px solid var(--chip-border);
     box-shadow: var(--chip-shadow);
+    color: var(--chip-text);
+    text-align: center;
+    text-decoration: none;
     box-sizing: border-box;
     transition:
         transform 160ms ease,
         border-color 160ms ease,
         box-shadow 160ms ease,
         background 160ms ease,
+        color 160ms ease,
         filter 160ms ease;
 }
 
@@ -86,27 +85,26 @@
     content: "";
     position: absolute;
     inset: 0;
+    z-index: -2;
     border-radius: inherit;
+    background: var(--chip-overlay);
+    opacity: 0.68;
     pointer-events: none;
-    background:
-        linear-gradient(90deg,
-            rgba(46, 194, 126, 0.13) 0%,
-            rgba(255, 255, 255, 0.01) 52%,
-            rgba(199, 134, 21, 0.07) 100%);
-    opacity: 0.58;
+    transition: opacity 160ms ease;
 }
 
 .chip::after {
     content: "";
     position: absolute;
     inset: 1px;
+    z-index: -1;
     border-radius: inherit;
-    pointer-events: none;
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.021) 0%,
-            transparent 30%,
+            rgba(255, 255, 255, 0.035) 0%,
+            transparent 34%,
             transparent 100%);
+    pointer-events: none;
 }
 
 .chipLabel {
@@ -115,14 +113,15 @@
     display: block;
     min-inline-size: 0;
     max-inline-size: 100%;
+    color: currentColor;
     font-size: clamp(0.8rem, 0.1vw + 0.79rem, 0.89rem);
+    font-weight: 700;
     line-height: 1.08;
-    font-weight: 650;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.005em;
     text-wrap: balance;
     overflow-wrap: anywhere;
     word-break: normal;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.62);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.58);
 }
 
 .energyLine {
@@ -130,31 +129,27 @@
     inset-inline: 18%;
     inset-block-end: 0;
     block-size: 1px;
-    pointer-events: none;
-    background: linear-gradient(90deg,
-            transparent 0%,
-            rgba(46, 194, 126, 0.15) 18%,
-            rgba(46, 194, 126, 0.46) 50%,
-            rgba(199, 134, 21, 0.1) 84%,
-            transparent 100%);
-    opacity: 0.7;
+    background: var(--chip-energy-line);
+    opacity: 0.72;
     transform: scaleX(0.84);
     transform-origin: center;
-    transition: opacity 160ms ease, transform 160ms ease;
+    pointer-events: none;
+    transition:
+        opacity 160ms ease,
+        transform 160ms ease;
 }
 
 .chip:hover {
     transform: translateY(-2px);
-    background:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.027) 0%,
-            rgba(255, 255, 255, 0.007) 100%),
-        linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%) 0%,
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%) 100%);
     border-color: var(--chip-border-hover);
+    background: var(--chip-bg-hover);
     box-shadow: var(--chip-shadow-hover);
+    color: #070a10;
     filter: saturate(1.03);
+}
+
+.chip:hover::before {
+    opacity: 0.3;
 }
 
 .chip:hover .energyLine {
@@ -165,12 +160,10 @@
 .chip:focus-visible {
     outline: none;
     transform: translateY(-2px);
-    border-color: color-mix(in oklab, var(--sl-accent-500, #2EC27E), white 10%);
+    border-color: var(--chip-border-hover);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.034),
-        0 0 0 1px rgba(0, 0, 0, 0.38),
-        0 0 0 3px color-mix(in oklab, var(--sl-accent-500, #2EC27E), transparent 76%),
-        0 13px 26px rgba(0, 0, 0, 0.28);
+        var(--chip-focus-ring),
+        var(--chip-shadow-hover);
 }
 
 .chip:focus-visible .energyLine {
@@ -179,41 +172,18 @@
 }
 
 .chip[data-variant="highlight"] {
-    background:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.023) 0%,
-            rgba(255, 255, 255, 0.008) 100%),
-        radial-gradient(120% 150% at 100% 0%,
-            rgba(46, 194, 126, 0.12) 0%,
-            transparent 42%),
-        radial-gradient(120% 140% at 0% 100%,
-            rgba(199, 134, 21, 0.05) 0%,
-            transparent 52%),
-        linear-gradient(135deg,
-            color-mix(in oklab, #14573a, black 20%) 0%,
-            color-mix(in oklab, #2EC27E, black 28%) 100%);
-    border-color: rgba(199, 134, 21, 0.34);
+    border-color: var(--chip-highlight-border);
+    background: var(--chip-highlight-bg);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.038),
-        0 0 0 1px rgba(0, 0, 0, 0.38),
-        0 13px 26px rgba(0, 0, 0, 0.29),
-        0 0 11px rgba(46, 194, 126, 0.05);
+        var(--chip-shadow),
+        0 0 18px rgb(var(--sports-gold-rgb) / 0.055);
 }
 
 .chip[data-variant="highlight"]:hover {
-    background:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.027) 0%,
-            rgba(255, 255, 255, 0.007) 100%),
-        linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 4%) 0%,
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 6%) 100%);
-    border-color: rgba(199, 134, 21, 0.5);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 0 0 1px rgba(0, 0, 0, 0.42),
-        0 15px 28px rgba(0, 0, 0, 0.31),
-        0 0 14px rgba(199, 134, 21, 0.1);
+    border-color: var(--chip-border-hover);
+    background: var(--chip-bg-hover);
+    box-shadow: var(--chip-shadow-hover);
+    color: #070a10;
 }
 
 @media (max-width: 1279.98px) {
@@ -245,7 +215,7 @@
     }
 
     .blockTitle {
-        font-size: 0.92rem;
+        font-size: 0.98rem;
     }
 
     .chipLabel {
@@ -264,7 +234,7 @@
     }
 
     .blockTitle {
-        font-size: 0.88rem;
+        font-size: 0.94rem;
     }
 
     .chipsGrid {
@@ -302,7 +272,13 @@
 @media (prefers-reduced-motion: reduce) {
 
     .chip,
+    .chip::before,
     .energyLine {
         transition: none;
+    }
+
+    .chip:hover,
+    .chip:focus-visible {
+        transform: none;
     }
 }

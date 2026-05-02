@@ -387,6 +387,10 @@ export default function LogisticsServicesSection({
                 aria-live="polite"
                 tabIndex={-1}
               >
+                {isValidText(activeService.number) ? (
+                  <p className={styles.panelNumber}>{activeService.number}</p>
+                ) : null}
+
                 <div className={styles.panelHeader}>
                   <ServiceIconSlot
                     iconSet={iconSet}
@@ -397,12 +401,6 @@ export default function LogisticsServicesSection({
                   />
 
                   <div className={styles.panelHeading}>
-                    {isValidText(activeService.number) ? (
-                      <p className={styles.panelNumber}>
-                        {activeService.number}
-                      </p>
-                    ) : null}
-
                     {isValidText(activeService.title) ? (
                       <h3 className={styles.panelTitle}>
                         {activeService.title}

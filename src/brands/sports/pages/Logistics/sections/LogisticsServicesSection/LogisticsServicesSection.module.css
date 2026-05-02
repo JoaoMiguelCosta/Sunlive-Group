@@ -3,9 +3,18 @@
     --logistics-card-radius: var(--sports-radius-md, 1rem);
     --logistics-panel-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
 
-    --logistics-padding-block: clamp(1.15rem, 2vw, 1.85rem);
-    --logistics-padding-inline: clamp(1rem, 1.9vw, 1.6rem);
-    --logistics-content-gap: clamp(1.18rem, 2vw, 1.95rem);
+    --logistics-padding-block: clamp(1.05rem, 1.8vw, 1.8rem);
+    --logistics-padding-inline: clamp(0.85rem, 1.6vw, 1.45rem);
+    --logistics-content-gap: clamp(0.95rem, 1.65vw, 1.72rem);
+
+    --logistics-card-min-block: clamp(6.35rem, 5.15rem + 2.25vw, 8.2rem);
+    --logistics-card-padding: clamp(0.74rem, 0.58rem + 0.58vw, 0.94rem);
+
+    --logistics-panel-min-block: clamp(8.1rem, 6.3rem + 3.2vw, 10.7rem);
+    --logistics-panel-padding: clamp(0.86rem, 0.68rem + 0.72vw, 1.42rem);
+
+    --logistics-highlight-min-block: clamp(3.85rem, 3.15rem + 1.35vw, 4.85rem);
+    --logistics-highlight-padding: clamp(0.68rem, 0.54rem + 0.52vw, 0.9rem);
 
     position: relative;
     isolation: isolate;
@@ -14,33 +23,10 @@
     min-inline-size: 0;
     padding: var(--logistics-padding-block) var(--logistics-padding-inline);
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
-    border: 1px solid var(--sports-border, rgb(199 134 21 / 0.16));
+    border: 1px solid var(--sports-logistics-section-border, var(--sports-border, rgb(199 134 21 / 0.16)));
     border-radius: var(--logistics-section-radius);
-    background:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.04) 0%,
-            rgba(255, 255, 255, 0.012) 17%,
-            rgba(255, 255, 255, 0) 42%),
-        radial-gradient(128% 150% at 0% 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.065) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.022) 34%,
-            transparent 62%),
-        radial-gradient(118% 145% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.036) 34%,
-            transparent 64%),
-        radial-gradient(125% 145% at 100% 100%,
-            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.075) 0%,
-            transparent 60%),
-        linear-gradient(145deg,
-            rgba(3, 6, 11, 0.995) 0%,
-            rgba(5, 9, 17, 0.992) 52%,
-            rgba(9, 8, 7, 0.998) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
-        0 28px 64px rgba(0, 0, 0, 0.36),
-        0 0 0 1px rgba(255, 255, 255, 0.014);
+    background: var(--sports-logistics-section-bg, var(--sports-surface-panel));
+    box-shadow: var(--sports-logistics-section-shadow, var(--sports-shadow-card));
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 }
@@ -63,28 +49,28 @@
     z-index: 0;
     inline-size: min(34rem, 46%);
     block-size: 1px;
-    background:
-        linear-gradient(90deg,
-            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.9) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.2) 64%,
-            transparent 100%);
-    opacity: 0.82;
+    background: var(--sports-logistics-top-rule,
+            linear-gradient(90deg,
+                rgb(var(--sports-gold-rgb, 214 166 64) / 0.78) 0%,
+                rgb(var(--sports-gold-rgb, 214 166 64) / 0.34) 54%,
+                transparent 100%));
+    opacity: 0.86;
 }
 
 .section::after {
     inset-block-end: -22%;
     inset-inline-end: -8%;
     z-index: 0;
-    inline-size: clamp(13rem, 24vw, 20rem);
-    block-size: clamp(13rem, 24vw, 20rem);
+    inline-size: clamp(12rem, 21vw, 18rem);
+    block-size: clamp(12rem, 21vw, 18rem);
     border-radius: 999px;
-    background:
-        radial-gradient(circle,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.04) 38%,
-            transparent 74%);
-    filter: blur(34px);
-    opacity: 0.66;
+    background: var(--sports-logistics-ambient-glow,
+            radial-gradient(circle,
+                rgb(var(--sports-gold-rgb, 214 166 64) / 0.11) 0%,
+                rgb(var(--sports-gold-rgb, 214 166 64) / 0.035) 38%,
+                transparent 74%));
+    filter: blur(32px);
+    opacity: 0.52;
 }
 
 .backgroundGlow {
@@ -92,16 +78,16 @@
     inset-block-start: 6%;
     inset-inline-start: 2%;
     z-index: 0;
-    inline-size: clamp(13rem, 26vw, 24rem);
-    block-size: clamp(13rem, 26vw, 24rem);
+    inline-size: clamp(12rem, 23vw, 21rem);
+    block-size: clamp(12rem, 23vw, 21rem);
     border-radius: 999px;
-    background:
-        radial-gradient(circle,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.1) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.036) 38%,
-            transparent 72%);
-    filter: blur(36px);
-    opacity: 0.48;
+    background: var(--sports-logistics-background-glow,
+            radial-gradient(circle,
+                rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 0%,
+                rgb(var(--sports-gold-rgb, 214 166 64) / 0.026) 38%,
+                transparent 72%));
+    filter: blur(34px);
+    opacity: 0.4;
     pointer-events: none;
 }
 
@@ -126,8 +112,8 @@
 }
 
 .eyebrow {
-    margin: 0 0 clamp(0.48rem, 0.72vw, 0.68rem);
-    color: var(--sports-gold, #d6a640);
+    margin: 0 0 clamp(0.46rem, 0.68vw, 0.62rem);
+    color: var(--sports-logistics-eyebrow-color, var(--sports-gold, #d6a640));
     font-size: var(--sports-kicker-size, clamp(0.7rem, 0.76vw, 0.78rem));
     font-weight: 900;
     line-height: 1;
@@ -136,10 +122,10 @@
 }
 
 .title {
-    max-inline-size: 15ch;
+    max-inline-size: 18ch;
     margin: 0;
-    color: rgba(248, 250, 252, 0.99);
-    font-size: var(--sports-section-title-size, clamp(2rem, 4vw, 3.45rem));
+    color: var(--sports-logistics-title-color, rgba(248, 250, 252, 0.99));
+    font-size: var(--sports-logistics-title-size, clamp(1.78rem, 0.98rem + 3.65vw, 3.95rem));
     font-weight: 950;
     line-height: var(--sports-section-title-line, 0.96);
     letter-spacing: var(--sports-section-title-spacing, -0.055em);
@@ -151,11 +137,11 @@
 
 .lead {
     max-inline-size: 48rem;
-    margin: clamp(0.78rem, 1.15vw, 1rem) auto 0;
-    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
-    font-size: var(--sports-lead-size, clamp(0.98rem, 1.08vw, 1.08rem));
-    font-weight: 560;
-    line-height: var(--sports-lead-line, 1.66);
+    margin: clamp(0.68rem, 0.96vw, 0.88rem) auto 0;
+    color: var(--sports-logistics-lead-color, var(--sports-muted-strong, rgba(210, 218, 230, 0.82)));
+    font-size: var(--sports-logistics-lead-size, clamp(0.9rem, 0.78rem + 0.48vw, 1.06rem));
+    font-weight: 620;
+    line-height: 1.48;
     text-wrap: balance;
 }
 
@@ -163,14 +149,14 @@
 
 .operationalGrid {
     display: grid;
-    gap: clamp(0.85rem, 1.45vw, 1.2rem);
+    gap: clamp(0.78rem, 1.25vw, 1.08rem);
     min-inline-size: 0;
 }
 
 .servicesSelector {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.56rem, 1vw, 0.82rem);
+    gap: clamp(0.52rem, 0.86vw, 0.72rem);
     min-inline-size: 0;
 }
 
@@ -180,30 +166,20 @@
     position: relative;
     display: grid;
     grid-template-rows: auto auto 1fr;
-    gap: clamp(0.46rem, 0.75vw, 0.66rem);
+    gap: clamp(0.4rem, 0.68vw, 0.58rem);
     min-inline-size: 0;
-    min-block-size: clamp(7rem, 8vw, 8.8rem);
+    min-block-size: var(--logistics-card-min-block);
     overflow: hidden;
-    padding: clamp(0.78rem, 1.1vw, 1rem);
+    padding: var(--logistics-card-padding);
     color: inherit;
     text-align: left;
     cursor: pointer;
-    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border: 1px solid var(--sports-logistics-card-border, var(--sports-border-soft, rgba(255, 255, 255, 0.065)));
     border-radius: var(--logistics-card-radius);
-    background:
-        radial-gradient(130% 155% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
-            transparent 46%),
-        var(--sports-surface-soft,
-            linear-gradient(180deg,
-                rgba(255, 255, 255, 0.036) 0%,
-                rgba(255, 255, 255, 0.012) 100%)),
-        linear-gradient(145deg,
-            rgba(10, 17, 25, 0.94) 0%,
-            rgba(5, 10, 17, 0.982) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.035),
-        0 12px 28px rgba(0, 0, 0, 0.18);
+    background: var(--sports-logistics-card-bg, var(--sports-surface-soft));
+    box-shadow: var(--sports-logistics-card-shadow,
+            inset 0 1px 0 rgba(255, 255, 255, 0.035),
+            0 12px 28px rgba(0, 0, 0, 0.18));
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -223,7 +199,7 @@
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.14),
             transparent 12rem),
         radial-gradient(circle at 100% 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.05),
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.022),
             transparent 12rem);
     transition: opacity 180ms ease;
 }
@@ -252,10 +228,12 @@
 .serviceButton:focus-visible {
     transform: translateY(-2px);
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
-    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
-    box-shadow:
-        0 14px 34px rgba(0, 0, 0, 0.24),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    border-color: var(--sports-logistics-card-border-hover, rgb(var(--sports-gold-rgb, 214 166 64) / 0.32));
+    background: var(--sports-logistics-card-bg-hover, var(--sports-logistics-card-bg, var(--sports-surface-soft)));
+    box-shadow: var(--sports-logistics-card-shadow-hover,
+            inset 0 1px 0 rgba(255, 255, 255, 0.06),
+            0 16px 36px rgba(0, 0, 0, 0.26),
+            0 0 22px rgb(var(--sports-gold-rgb, 214 166 64) / 0.055));
 }
 
 .serviceButton:hover::before,
@@ -278,24 +256,12 @@
 
 .serviceButtonActive {
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
-    border-color: var(--sports-border-strong, rgb(214 166 64 / 0.28));
-    background:
-        radial-gradient(130% 155% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
-            transparent 44%),
-        radial-gradient(120% 145% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.045) 0%,
-            transparent 54%),
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.052) 0%,
-            rgba(255, 255, 255, 0.016) 100%),
-        linear-gradient(145deg,
-            rgba(23, 19, 14, 0.94) 0%,
-            rgba(7, 12, 18, 0.99) 100%);
-    box-shadow:
-        0 16px 36px rgba(0, 0, 0, 0.26),
-        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.065),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    border-color: var(--sports-logistics-card-border-active, rgb(var(--sports-gold-rgb, 214 166 64) / 0.36));
+    background: var(--sports-logistics-card-bg-active, var(--sports-logistics-card-bg-hover, var(--sports-surface-panel)));
+    box-shadow: var(--sports-logistics-card-shadow-hover,
+            inset 0 1px 0 rgba(255, 255, 255, 0.06),
+            0 16px 36px rgba(0, 0, 0, 0.26),
+            0 0 22px rgb(var(--sports-gold-rgb, 214 166 64) / 0.055));
 }
 
 .serviceTopline,
@@ -308,8 +274,8 @@
 .serviceTopline {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    min-block-size: clamp(2rem, 2.4vw, 2.35rem);
+    gap: 0.72rem;
+    min-block-size: clamp(1.86rem, 2.1vw, 2.18rem);
 }
 
 .iconWrap,
@@ -317,22 +283,22 @@
     display: inline-grid;
     place-items: center;
     flex: 0 0 auto;
-    color: var(--sports-gold, #d6a640);
-    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
-    background:
-        radial-gradient(circle at 35% 25%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.16),
-            transparent 70%),
-        rgba(255, 255, 255, 0.045);
+    color: var(--sports-logistics-icon-color, var(--sports-gold, #d6a640));
+    border: 1px solid var(--sports-logistics-icon-border, rgb(var(--sports-gold-rgb, 214 166 64) / 0.26));
+    background: var(--sports-logistics-icon-bg,
+            radial-gradient(circle at 35% 25%,
+                rgb(var(--sports-gold-rgb, 214 166 64) / 0.18),
+                transparent 70%),
+            rgba(255, 255, 255, 0.045));
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.045),
         0 0 18px rgb(var(--sports-gold-rgb, 214 166 64) / 0.055);
 }
 
 .iconWrap {
-    inline-size: clamp(2.05rem, 2.4vw, 2.35rem);
-    block-size: clamp(2.05rem, 2.4vw, 2.35rem);
-    border-radius: 0.82rem;
+    inline-size: clamp(1.92rem, 2.15vw, 2.24rem);
+    block-size: clamp(1.92rem, 2.15vw, 2.24rem);
+    border-radius: 0.76rem;
 }
 
 .icon,
@@ -346,14 +312,14 @@
 }
 
 .icon {
-    inline-size: clamp(1rem, 1.2vw, 1.12rem);
-    block-size: clamp(1rem, 1.2vw, 1.12rem);
+    inline-size: clamp(0.96rem, 1.06vw, 1.08rem);
+    block-size: clamp(0.96rem, 1.06vw, 1.08rem);
 }
 
 .serviceNumber {
     margin-left: auto;
-    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.78);
-    font-size: clamp(0.68rem, 0.75vw, 0.74rem);
+    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.82);
+    font-size: clamp(0.68rem, 0.68vw, 0.76rem);
     font-weight: 900;
     line-height: 1;
     letter-spacing: 0.12em;
@@ -362,19 +328,19 @@
 .serviceTitle {
     color: rgba(248, 250, 252, 0.98);
     overflow-wrap: anywhere;
-    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    font-size: var(--sports-logistics-service-title-size, clamp(0.94rem, 0.82rem + 0.42vw, 1.14rem));
     font-weight: 900;
-    line-height: var(--sports-card-title-line, 1.08);
-    letter-spacing: var(--sports-card-title-spacing, -0.035em);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
     text-wrap: balance;
 }
 
 .serviceSummary {
     max-inline-size: 34rem;
-    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
-    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+    font-size: var(--sports-logistics-service-summary-size, clamp(0.78rem, 0.72rem + 0.28vw, 0.9rem));
     font-weight: 680;
-    line-height: var(--sports-card-text-line, 1.4);
+    line-height: 1.38;
 }
 
 /* Active panel */
@@ -383,47 +349,35 @@
     position: relative;
     display: grid;
     grid-template-columns:
-        minmax(15rem, 0.82fr) minmax(18rem, 1fr) minmax(20rem, 1.16fr);
+        minmax(14rem, 0.8fr) minmax(17rem, 1fr) minmax(19rem, 1.14fr);
     grid-template-areas: "header summary features";
     align-items: center;
-    gap: clamp(1rem, 2vw, 2.2rem);
-    min-block-size: clamp(9.25rem, 9vw, 12rem);
+    gap: clamp(0.86rem, 1.55vw, 1.8rem);
+    min-block-size: var(--logistics-panel-min-block);
     min-inline-size: 0;
     overflow: hidden;
     scroll-margin-top: clamp(0.75rem, 3vw, 1.25rem);
-    padding: clamp(1.05rem, 1.85vw, 1.7rem);
-    padding-inline-end: clamp(2.6rem, 4vw, 3.8rem);
-    border: 1px solid var(--sports-border-strong, rgb(214 166 64 / 0.28));
+    padding: var(--logistics-panel-padding);
+    padding-inline-end: clamp(2.35rem, 3.5vw, 3.45rem);
+    border: 1px solid var(--sports-logistics-panel-border, rgb(var(--sports-gold-rgb, 214 166 64) / 0.3));
     border-radius: var(--logistics-panel-radius);
-    background:
-        radial-gradient(125% 155% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.095) 0%,
-            transparent 44%),
-        radial-gradient(125% 155% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.055) 0%,
-            transparent 48%),
-        var(--sports-surface-dark,
-            linear-gradient(180deg,
-                rgba(7, 13, 21, 0.965) 0%,
-                rgba(4, 9, 17, 0.992) 100%));
-    box-shadow: var(--sports-shadow-card,
-            inset 0 1px 0 rgba(255, 255, 255, 0.04),
-            0 22px 48px rgba(0, 0, 0, 0.36));
+    background: var(--sports-logistics-panel-bg, var(--sports-surface-dark));
+    box-shadow: var(--sports-shadow-card);
     outline: none;
 }
 
 .activePanel::before {
     content: "";
     position: absolute;
-    inset-block: 1.05rem;
+    inset-block: 0.9rem;
     inset-inline-start: 33.333%;
     inline-size: 1px;
     pointer-events: none;
     background:
         linear-gradient(180deg,
             transparent,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.18),
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.1),
+            var(--sports-logistics-panel-divider, rgb(var(--sports-gold-rgb, 214 166 64) / 0.18)),
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.035),
             transparent);
 }
 
@@ -435,10 +389,10 @@
     pointer-events: none;
     background:
         linear-gradient(90deg,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.78) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.18) 58%,
+            var(--sports-logistics-panel-top-rule, rgb(var(--sports-gold-rgb, 214 166 64) / 0.72)) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.22) 58%,
             transparent 100%);
-    opacity: 0.86;
+    opacity: 0.9;
 }
 
 .panelHeader {
@@ -447,19 +401,19 @@
     grid-area: header;
     display: flex;
     align-items: center;
-    gap: clamp(0.85rem, 1.4vw, 1.12rem);
+    gap: clamp(0.78rem, 1.2vw, 1rem);
     min-inline-size: 0;
 }
 
 .panelIconWrap {
-    inline-size: clamp(3rem, 4vw, 4rem);
-    block-size: clamp(3rem, 4vw, 4rem);
-    border-radius: 1.08rem;
+    inline-size: clamp(2.68rem, 3.45vw, 3.55rem);
+    block-size: clamp(2.68rem, 3.45vw, 3.55rem);
+    border-radius: 0.98rem;
 }
 
 .panelIcon {
-    inline-size: clamp(1.35rem, 1.9vw, 1.8rem);
-    block-size: clamp(1.35rem, 1.9vw, 1.8rem);
+    inline-size: clamp(1.2rem, 1.58vw, 1.58rem);
+    block-size: clamp(1.2rem, 1.58vw, 1.58rem);
 }
 
 .panelHeading {
@@ -470,9 +424,9 @@
 
 .panelNumber {
     position: absolute;
-    inset-block-start: clamp(1rem, 1.5vw, 1.35rem);
-    inset-inline-end: clamp(1rem, 1.5vw, 1.35rem);
-    z-index: 2;
+    inset-block-start: clamp(0.85rem, 1.1vw, 1.08rem);
+    inset-inline-end: clamp(0.9rem, 1.25vw, 1.18rem);
+    z-index: 3;
     margin: 0;
     color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.84);
     font-size: var(--sports-kicker-size, clamp(0.7rem, 0.76vw, 0.78rem));
@@ -480,6 +434,7 @@
     line-height: 1;
     letter-spacing: var(--sports-kicker-spacing, 0.22em);
     text-align: right;
+    pointer-events: none;
 }
 
 .panelTitle {
@@ -487,7 +442,7 @@
     margin: 0;
     color: rgba(248, 250, 252, 0.99);
     overflow-wrap: anywhere;
-    font-size: var(--sports-panel-title-size, clamp(1.65rem, 2.45vw, 2.65rem));
+    font-size: var(--sports-logistics-panel-title-size, clamp(1.3rem, 1rem + 1.75vw, 2.12rem));
     font-weight: 950;
     line-height: var(--sports-panel-title-line, 0.98);
     letter-spacing: var(--sports-panel-title-spacing, -0.058em);
@@ -501,12 +456,12 @@
     position: relative;
     z-index: 1;
     grid-area: summary;
-    max-inline-size: 38rem;
+    max-inline-size: 36rem;
     margin: 0;
     color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
-    font-size: calc(var(--sports-lead-size, 1rem) - 0.08rem);
-    font-weight: 590;
-    line-height: 1.5;
+    font-size: var(--sports-logistics-panel-summary-size, clamp(0.84rem, 0.76rem + 0.32vw, 0.96rem));
+    font-weight: 620;
+    line-height: 1.45;
 }
 
 .featuresList {
@@ -515,7 +470,7 @@
     grid-area: features;
     display: grid;
     align-content: center;
-    gap: clamp(0.5rem, 0.82vw, 0.66rem);
+    gap: clamp(0.44rem, 0.72vw, 0.58rem);
     min-inline-size: 0;
     margin: 0;
     padding: 0;
@@ -526,18 +481,18 @@
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: start;
-    gap: 0.62rem;
+    gap: 0.58rem;
     color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
     overflow-wrap: anywhere;
-    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    font-size: var(--sports-logistics-feature-size, clamp(0.76rem, 0.7rem + 0.28vw, 0.88rem));
     font-weight: 720;
-    line-height: var(--sports-card-text-line, 1.4);
+    line-height: 1.36;
 }
 
 .featureMarker {
     inline-size: 0.4rem;
     block-size: 0.4rem;
-    margin-block-start: 0.45rem;
+    margin-block-start: 0.42rem;
     border-radius: 999px;
     background:
         radial-gradient(circle at 32% 32%,
@@ -554,7 +509,7 @@
 .highlightsGrid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.62rem, 1.15vw, 0.86rem);
+    gap: clamp(0.52rem, 0.92vw, 0.72rem);
 }
 
 .highlightCard {
@@ -562,24 +517,15 @@
     display: grid;
     align-content: center;
     justify-items: center;
-    gap: 0.24rem;
-    min-block-size: clamp(4.35rem, 5.2vw, 5.4rem);
+    gap: 0.22rem;
+    min-block-size: var(--logistics-highlight-min-block);
     min-inline-size: 0;
     overflow: hidden;
-    padding: clamp(0.78rem, 1.1vw, 1rem);
+    padding: var(--logistics-highlight-padding);
     text-align: center;
-    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border: 1px solid var(--sports-logistics-highlight-border, var(--sports-border-soft, rgba(255, 255, 255, 0.065)));
     border-radius: var(--logistics-card-radius);
-    background:
-        radial-gradient(120% 150% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
-            transparent 44%),
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.036) 0%,
-            rgba(255, 255, 255, 0.012) 100%),
-        linear-gradient(145deg,
-            rgba(7, 13, 21, 0.9) 0%,
-            rgba(4, 9, 17, 0.97) 100%);
+    background: var(--sports-logistics-highlight-bg, var(--sports-surface-soft));
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
         0 10px 24px rgba(0, 0, 0, 0.16);
@@ -605,7 +551,7 @@
 
 .highlightValue {
     color: var(--sports-gold, #d6a640);
-    font-size: clamp(1.15rem, 1.55vw, 1.6rem);
+    font-size: var(--sports-logistics-highlight-value-size, clamp(1.2rem, 0.88rem + 1.5vw, 1.85rem));
     font-weight: 950;
     line-height: 1;
     letter-spacing: -0.04em;
@@ -613,10 +559,10 @@
 }
 
 .highlightLabel {
-    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
-    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+    font-size: var(--sports-logistics-service-summary-size, clamp(0.78rem, 0.72rem + 0.28vw, 0.9rem));
     font-weight: 760;
-    line-height: 1.32;
+    line-height: 1.28;
     text-align: center;
 }
 
@@ -631,8 +577,7 @@
 
     .activePanel {
         grid-template-columns:
-            minmax(17rem, 0.86fr) minmax(20rem, 1fr) minmax(24rem, 1.22fr);
-        min-block-size: clamp(10rem, 8vw, 12.5rem);
+            minmax(15rem, 0.82fr) minmax(18rem, 1fr) minmax(21rem, 1.18fr);
     }
 }
 
@@ -640,111 +585,42 @@
 
 @media (min-width: 1181px) and (max-height: 860px) {
     .section {
-        --logistics-padding-block: clamp(1rem, 2.6vh, 1.45rem);
-        --logistics-content-gap: clamp(0.95rem, 2vh, 1.45rem);
+        --logistics-padding-block: clamp(0.86rem, 2vh, 1.28rem);
+        --logistics-content-gap: clamp(0.78rem, 1.65vh, 1.22rem);
+
+        --logistics-card-min-block: clamp(5.95rem, 7.8vh, 7.1rem);
+        --logistics-card-padding: clamp(0.64rem, 1.2vh, 0.82rem);
+
+        --logistics-panel-min-block: clamp(7.5rem, 10.8vh, 9rem);
+        --logistics-panel-padding: clamp(0.76rem, 1.45vh, 0.98rem);
+
+        --logistics-highlight-min-block: clamp(3.55rem, 5vh, 4.15rem);
+        --logistics-highlight-padding: clamp(0.58rem, 1.1vh, 0.74rem);
     }
 
     .intro {
-        inline-size: min(100%, 48rem);
-    }
-
-    .eyebrow {
-        margin-block-end: 0.45rem;
-        font-size: 0.62rem;
-    }
-
-    .title {
-        font-size: clamp(1.95rem, 3.2vw, 3.45rem);
-        line-height: 0.96;
+        inline-size: min(100%, 50rem);
     }
 
     .lead {
-        max-inline-size: 39rem;
-        margin-block-start: 0.68rem;
-        font-size: 0.86rem;
-        line-height: 1.42;
+        max-inline-size: 42rem;
+        line-height: 1.4;
     }
 
     .serviceButton {
-        min-block-size: 6.65rem;
-        padding: 0.72rem;
-        gap: 0.4rem;
-    }
-
-    .serviceTopline {
-        min-block-size: 1.95rem;
-    }
-
-    .iconWrap {
-        inline-size: 2rem;
-        block-size: 2rem;
-        border-radius: 0.75rem;
-    }
-
-    .icon {
-        inline-size: 0.98rem;
-        block-size: 0.98rem;
-    }
-
-    .serviceTitle {
-        font-size: 0.9rem;
-    }
-
-    .serviceSummary {
-        font-size: 0.7rem;
-        line-height: 1.32;
+        min-block-size: var(--logistics-card-min-block);
+        padding: var(--logistics-card-padding);
     }
 
     .activePanel {
-        grid-template-columns:
-            minmax(15rem, 0.9fr) minmax(17rem, 1fr) minmax(20rem, 1.15fr);
-        min-block-size: clamp(8.5rem, 12vh, 10rem);
-        padding: 0.92rem;
-        padding-inline-end: 2.8rem;
-        gap: clamp(0.85rem, 1.7vw, 1.45rem);
-    }
-
-    .activePanel::before {
-        inset-block: 0.9rem;
-    }
-
-    .panelNumber {
-        inset-block-start: 1rem;
-        inset-inline-end: 1rem;
-        font-size: 0.62rem;
-    }
-
-    .panelIconWrap {
-        inline-size: 2.75rem;
-        block-size: 2.75rem;
-    }
-
-    .panelIcon {
-        inline-size: 1.25rem;
-        block-size: 1.25rem;
-    }
-
-    .panelTitle {
-        font-size: clamp(1.3rem, 1.6vw, 1.75rem);
-    }
-
-    .panelSummary {
-        font-size: 0.8rem;
-        line-height: 1.38;
-    }
-
-    .featuresList {
-        gap: 0.42rem;
-    }
-
-    .featureItem {
-        font-size: 0.7rem;
-        line-height: 1.3;
+        min-block-size: var(--logistics-panel-min-block);
+        padding: var(--logistics-panel-padding);
+        padding-inline-end: 2.55rem;
     }
 
     .highlightCard {
-        min-block-size: 4.1rem;
-        padding: 0.68rem;
+        min-block-size: var(--logistics-highlight-min-block);
+        padding: var(--logistics-highlight-padding);
     }
 }
 
@@ -752,16 +628,16 @@
 
 @media (max-width: 1280px) {
     .activePanel {
-        grid-template-columns: minmax(0, 0.82fr) minmax(18rem, 1.18fr);
+        grid-template-columns: minmax(0, 0.78fr) minmax(17rem, 1.16fr);
         grid-template-areas:
             "header features"
             "summary features";
         align-items: start;
-        gap: clamp(0.85rem, 1.4vw, 1.2rem) clamp(1.35rem, 2.8vw, 2.5rem);
+        gap: clamp(0.78rem, 1.3vw, 1.08rem) clamp(1.15rem, 2.45vw, 2.15rem);
     }
 
     .activePanel::before {
-        inset-inline-start: calc(42% + 0.45rem);
+        inset-inline-start: calc(40% + 0.45rem);
     }
 }
 
@@ -772,9 +648,9 @@
             "header"
             "summary"
             "features";
-        gap: clamp(0.8rem, 1.8vw, 1.15rem);
+        gap: clamp(0.76rem, 1.6vw, 1rem);
         min-block-size: auto;
-        padding-inline-end: clamp(1.05rem, 1.85vw, 1.7rem);
+        padding-inline-end: clamp(0.92rem, 1.7vw, 1.45rem);
     }
 
     .activePanel::before {
@@ -782,15 +658,17 @@
     }
 
     .featuresList {
-        margin-block-start: clamp(0.1rem, 0.6vw, 0.35rem);
+        margin-block-start: clamp(0.08rem, 0.5vw, 0.28rem);
     }
 }
 
 @media (max-width: 1080px) {
     .section {
-        --logistics-padding-block: clamp(1rem, 2.8vw, 1.45rem);
-        --logistics-padding-inline: clamp(0.92rem, 2.6vw, 1.2rem);
-        --logistics-content-gap: clamp(1rem, 2.8vw, 1.7rem);
+        --logistics-padding-block: clamp(0.95rem, 2.5vw, 1.34rem);
+        --logistics-padding-inline: clamp(0.82rem, 2.2vw, 1.08rem);
+        --logistics-content-gap: clamp(0.95rem, 2.6vw, 1.5rem);
+
+        --logistics-card-min-block: clamp(6.2rem, 8.2vw, 7.6rem);
     }
 
     .intro {
@@ -799,23 +677,17 @@
 
     .title {
         max-inline-size: none;
-        font-size: var(--sports-section-title-size, clamp(1.9rem, 4.8vw, 3rem));
         white-space: normal;
         text-wrap: balance;
     }
 
     .lead {
-        max-inline-size: 40rem;
-        font-size: var(--sports-lead-size, 0.96rem);
-        line-height: var(--sports-lead-line, 1.6);
+        max-inline-size: 39rem;
+        line-height: 1.44;
     }
 
     .servicesSelector {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .serviceButton {
-        min-block-size: clamp(6.8rem, 10vw, 8rem);
     }
 }
 
@@ -831,10 +703,13 @@
 
 @media (max-width: 760px) {
     .section {
-        --logistics-padding-block: clamp(0.92rem, 4vw, 1.18rem);
-        --logistics-padding-inline: clamp(0.82rem, 3.4vw, 1rem);
-        --logistics-section-radius: 1.2rem;
-        --logistics-content-gap: clamp(1rem, 4vw, 1.45rem);
+        --logistics-padding-block: clamp(0.88rem, 3.5vw, 1.15rem);
+        --logistics-padding-inline: clamp(0.76rem, 3vw, 0.92rem);
+        --logistics-section-radius: 1.14rem;
+        --logistics-content-gap: clamp(0.86rem, 3.4vw, 1.28rem);
+
+        --logistics-card-min-block: auto;
+        --logistics-card-padding: clamp(0.8rem, 2.8vw, 0.92rem);
     }
 
     .intro {
@@ -844,22 +719,19 @@
     }
 
     .eyebrow {
-        margin-block-end: 0.44rem;
-        font-size: 0.64rem;
+        margin-block-end: 0.4rem;
         letter-spacing: 0.16em;
     }
 
     .title {
-        font-size: var(--sports-section-title-size, clamp(1.8rem, 7vw, 2.75rem));
         line-height: 1;
         text-align: center;
     }
 
     .lead {
-        max-inline-size: 34rem;
+        max-inline-size: 33rem;
         margin-inline: auto;
-        font-size: 0.9rem;
-        line-height: 1.48;
+        line-height: 1.42;
         text-align: center;
     }
 
@@ -869,7 +741,7 @@
 
     .serviceButton {
         min-block-size: auto;
-        padding: 0.88rem;
+        padding: var(--logistics-card-padding);
     }
 
     .serviceSummary {
@@ -878,29 +750,25 @@
 
     .activePanel {
         scroll-margin-top: 1rem;
-        padding: clamp(0.95rem, 4vw, 1.2rem);
-        padding-block-start: clamp(1.8rem, 7vw, 2.25rem);
+        padding: clamp(0.86rem, 3.4vw, 1.08rem);
+        padding-block-start: clamp(1.72rem, 6vw, 2.05rem);
         border-radius: 1rem;
     }
 
     .panelHeader {
         flex-direction: row;
         align-items: center;
-        gap: 0.85rem;
+        gap: 0.8rem;
     }
 
     .panelIconWrap {
-        inline-size: 2.8rem;
-        block-size: 2.8rem;
-    }
-
-    .panelTitle {
-        font-size: var(--sports-panel-title-size, clamp(1.55rem, 7vw, 2.35rem));
+        inline-size: clamp(2.45rem, 7vw, 2.7rem);
+        block-size: clamp(2.45rem, 7vw, 2.7rem);
     }
 
     .panelNumber {
-        inset-block-start: 1rem;
-        inset-inline-end: 1rem;
+        inset-block-start: 0.9rem;
+        inset-inline-end: 0.9rem;
     }
 
     .highlightsGrid {
@@ -914,75 +782,51 @@
 
 @media (max-width: 520px) {
     .section {
-        --logistics-padding-inline: 0.78rem;
+        --logistics-padding-inline: 0.72rem;
     }
 
     .eyebrow {
-        margin-block-end: 0.4rem;
-        font-size: 0.6rem;
+        margin-block-end: 0.38rem;
         letter-spacing: 0.13em;
     }
 
     .title {
-        font-size: var(--sports-section-title-size, clamp(1.65rem, 9vw, 2.25rem));
         letter-spacing: -0.046em;
     }
 
     .lead {
         max-inline-size: 100%;
-        font-size: 0.84rem;
-        line-height: 1.42;
+        line-height: 1.4;
     }
 
     .serviceButton,
     .activePanel,
     .highlightCard {
-        border-radius: 1rem;
-    }
-
-    .panelTitle {
-        font-size: var(--sports-panel-title-size, clamp(1.5rem, 9vw, 2.05rem));
+        border-radius: 0.94rem;
     }
 
     .panelSummary {
-        font-size: 0.84rem;
-        line-height: 1.45;
-    }
-
-    .featureItem {
-        font-size: 0.76rem;
+        line-height: 1.42;
     }
 }
 
 @media (max-width: 380px) {
     .section {
-        --logistics-padding-inline: 0.72rem;
-    }
-
-    .title {
-        font-size: clamp(1.42rem, 8vw, 1.95rem);
-    }
-
-    .lead {
-        font-size: 0.8rem;
+        --logistics-padding-inline: 0.68rem;
     }
 
     .activePanel {
-        padding: 0.88rem;
-        padding-block-start: 2rem;
+        padding: 0.82rem;
+        padding-block-start: 1.86rem;
     }
 
     .panelIconWrap {
-        inline-size: 2.55rem;
-        block-size: 2.55rem;
-    }
-
-    .panelTitle {
-        font-size: clamp(1.18rem, 7vw, 1.5rem);
+        inline-size: 2.42rem;
+        block-size: 2.42rem;
     }
 
     .featureItem {
-        gap: 0.52rem;
+        gap: 0.48rem;
     }
 }
 

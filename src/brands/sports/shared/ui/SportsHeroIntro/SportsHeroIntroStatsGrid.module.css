@@ -1,10 +1,10 @@
 .statsGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 14.8rem), 1fr));
+    align-items: stretch;
     gap: clamp(0.72rem, 1.05vw, 0.92rem);
     inline-size: min(100%, var(--hero-stats-max, 74rem));
     margin-top: 0;
-    align-items: stretch;
 }
 
 .statCard {
@@ -17,28 +17,16 @@
     gap: 0.38rem;
     min-block-size: clamp(4.78rem, 6.25vw, 5.62rem);
     padding: clamp(0.86rem, 1.1vw, 1rem);
-    border: 1px solid rgba(199, 134, 21, 0.165);
+    overflow: hidden;
+    border: 1px solid var(--sports-hero-stat-border, rgb(var(--sports-gold-rgb) / 0.14));
     border-radius: clamp(0.98rem, 1.18vw, 1.16rem);
-    background:
-        radial-gradient(120% 140% at 0% 0%,
-            rgba(24, 118, 77, 0.102) 0%,
-            transparent 42%),
-        radial-gradient(110% 130% at 100% 100%,
-            rgba(199, 134, 21, 0.058) 0%,
-            transparent 48%),
-        linear-gradient(180deg,
-            rgba(8, 16, 23, 0.9) 0%,
-            rgba(6, 14, 20, 0.872) 52%,
-            rgba(6, 18, 16, 0.888) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.038),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.22),
-        0 8px 18px rgba(0, 0, 0, 0.13),
-        0 0 0 1px rgba(199, 134, 21, 0.026);
-    backdrop-filter: blur(9px);
-    -webkit-backdrop-filter: blur(9px);
+    background: var(--sports-hero-stat-bg);
+    box-shadow: var(--sports-hero-stat-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     text-align: center;
     transition:
+        transform 220ms ease,
         border-color 220ms ease,
         box-shadow 240ms ease,
         background 240ms ease;
@@ -48,14 +36,29 @@
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     border-radius: inherit;
+    pointer-events: none;
     background:
         linear-gradient(135deg,
-            rgba(255, 255, 255, 0.03) 0%,
-            rgba(255, 255, 255, 0.01) 18%,
-            rgba(255, 255, 255, 0) 40%);
-    pointer-events: none;
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.012) 18%,
+            rgba(255, 255, 255, 0) 44%);
+}
+
+.statCard::after {
+    content: "";
+    position: absolute;
+    inset: auto 10% 0 10%;
     z-index: 0;
+    block-size: 1px;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--sports-gold-rgb) / 0.34) 50%,
+            transparent 100%);
+    opacity: 0.42;
 }
 
 .statCard>* {
@@ -64,47 +67,38 @@
 }
 
 .statCard:hover {
-    border-color: rgba(199, 134, 21, 0.22);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.042),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.22),
-        0 10px 20px rgba(0, 0, 0, 0.14),
-        0 0 0 1px rgba(199, 134, 21, 0.034),
-        0 0 14px rgba(23, 120, 78, 0.042);
+    transform: translateY(-1px);
+    border-color: var(--sports-hero-stat-border-hover, rgb(var(--sports-gold-rgb) / 0.26));
+    box-shadow: var(--sports-hero-stat-shadow-hover);
 }
 
 .statValue {
-    color: rgba(246, 240, 223, 0.98);
+    color: var(--sports-hero-stat-value-color, var(--sports-gold-soft));
     font-size: clamp(1.06rem, 1.36vw, 1.38rem);
-    font-weight: 800;
+    font-weight: 840;
     line-height: 1;
-    letter-spacing: -0.04em;
-    text-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.04),
-        0 0 14px rgba(199, 134, 21, 0.07);
+    letter-spacing: -0.045em;
+    text-shadow: var(--sports-hero-stat-value-shadow);
     transition:
         color 220ms ease,
         text-shadow 220ms ease;
 }
 
 .statCard:hover .statValue {
-    color: rgba(248, 243, 228, 0.99);
-    text-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.05),
-        0 0 16px rgba(199, 134, 21, 0.1);
+    color: var(--sports-hero-stat-value-hover-color, rgba(255, 239, 194, 0.99));
 }
 
 .statLabel {
-    color: rgba(205, 221, 209, 0.845);
+    color: var(--sports-hero-stat-label-color, rgba(172, 181, 195, 0.86));
     font-size: clamp(0.78rem, 0.85vw, 0.89rem);
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.33;
-    text-wrap: balance;
+  
     transition: color 220ms ease;
 }
 
 .statCard:hover .statLabel {
-    color: rgba(212, 226, 216, 0.885);
+    color: var(--sports-hero-stat-label-hover-color, rgba(202, 211, 224, 0.9));
 }
 
 @media (max-width: 980px) {
@@ -137,5 +131,15 @@
 
     .statLabel {
         font-size: 0.8rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .statCard {
+        transition: none;
+    }
+
+    .statCard:hover {
+        transform: none;
     }
 }
