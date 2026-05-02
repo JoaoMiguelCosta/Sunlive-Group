@@ -1,88 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
+import TestimonialsFeatured from "./TestimonialsFeatured.jsx";
+import TestimonialsSelector from "./TestimonialsSelector.jsx";
+import TestimonialsSummary from "./TestimonialsSummary.jsx";
+
+import {
+  getDefaultActiveKey,
+  getItemKey,
+  getRenderableTestimonials,
+  getScrollBehavior,
+  getValidArray,
+  isValidText,
+  shouldScrollToFeatured,
+} from "./testimonialsSection.utils.js";
+
 import styles from "./TestimonialsSection.module.css";
-
-const SELECTOR_TOP_QUERY = "(max-width: 920px)";
-const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
-
-function getValidArray(value) {
-  return Array.isArray(value) ? value.filter(Boolean) : [];
-}
-
-function getItemKey(item, index) {
-  return item?.key || `testimonial-${index + 1}`;
-}
-
-function getDefaultActiveKey(items, preferredKey) {
-  if (!items.length) return "";
-
-  const preferredItem = items.find((item) => item?.key === preferredKey);
-
-  return preferredItem?.key || getItemKey(items[0], 0);
-}
-
-function getRenderableTestimonials(items) {
-  return getValidArray(items).filter(
-    (item) => isValidText(item?.name) && item?.image?.src,
-  );
-}
-
-function getScaleValue(scale, breakpoint, fallback = 1) {
-  const value = scale?.[breakpoint];
-
-  return typeof value === "number" && Number.isFinite(value) ? value : fallback;
-}
-
-function getOffsetValue(value) {
-  if (typeof value === "number" && Number.isFinite(value)) {
-    return `${value}%`;
-  }
-
-  return isValidText(value) ? value : "0%";
-}
-
-function getImageStyle(image, variant = "featured") {
-  const scale =
-    variant === "thumb" ? image?.thumbScale || image?.scale : image?.scale;
-
-  const offsetX =
-    variant === "thumb"
-      ? (image?.thumbOffsetX ?? image?.offsetX)
-      : image?.offsetX;
-
-  const offsetY =
-    variant === "thumb"
-      ? (image?.thumbOffsetY ?? image?.offsetY)
-      : image?.offsetY;
-
-  const desktopScale = getScaleValue(scale, "desktop", 1);
-  const tabletScale = getScaleValue(scale, "tablet", desktopScale);
-  const mobileScale = getScaleValue(scale, "mobile", tabletScale);
-
-  return {
-    "--testimonial-image-scale-desktop": desktopScale,
-    "--testimonial-image-scale-tablet": tabletScale,
-    "--testimonial-image-scale-mobile": mobileScale,
-    "--testimonial-image-offset-x": getOffsetValue(offsetX),
-    "--testimonial-image-offset-y": getOffsetValue(offsetY),
-  };
-}
-
-function shouldScrollToFeatured() {
-  if (typeof window === "undefined") return false;
-
-  return window.matchMedia(SELECTOR_TOP_QUERY).matches;
-}
-
-function getScrollBehavior() {
-  if (typeof window === "undefined") return "auto";
-
-  return window.matchMedia(REDUCED_MOTION_QUERY).matches ? "auto" : "smooth";
-}
 
 export default function TestimonialsSection({ section }) {
   const featuredRef = useRef(null);
@@ -137,16 +69,13 @@ export default function TestimonialsSection({ section }) {
 
   const resolvedActiveIndex = activeIndex >= 0 ? activeIndex : 0;
   const activeTestimonial = testimonials[resolvedActiveIndex];
+  const activeItemKey = getItemKey(activeTestimonial, resolvedActiveIndex);
 
   const titleId = isValidText(intro.title) ? `${sectionId}-title` : undefined;
   const leadId = isValidText(intro.lead) ? `${sectionId}-lead` : undefined;
 
-  const activeItemKey = getItemKey(activeTestimonial, resolvedActiveIndex);
   const panelId = `${sectionId}-panel-${activeItemKey}`;
   const activeTabId = `${sectionId}-tab-${activeItemKey}`;
-
-  const activeDescription = getValidArray(activeTestimonial.description);
-  const activeQuote = getValidArray(activeTestimonial.quote);
 
   return (
     <section
@@ -174,141 +103,29 @@ export default function TestimonialsSection({ section }) {
           )}
         </div>
 
-        {summaryItems.length > 0 && (
-          <dl className={styles.summaryGrid}>
-            {summaryItems.map((item, index) => (
-              <div
-                key={item?.key || `testimonial-summary-${index + 1}`}
-                className={styles.summaryCard}
-              >
-                {isValidText(item?.value) && (
-                  <dt className={styles.summaryValue}>{item.value}</dt>
-                )}
-
-                {isValidText(item?.label) && (
-                  <dd className={styles.summaryLabel}>{item.label}</dd>
-                )}
-              </div>
-            ))}
-          </dl>
-        )}
+        <TestimonialsSummary items={summaryItems} />
       </div>
 
       <div className={styles.showcase}>
-        <article
+        <TestimonialsFeatured
           ref={featuredRef}
-          id={panelId}
-          className={styles.featured}
-          role="tabpanel"
-          aria-label={ui.featuredAriaLabel}
-          aria-labelledby={activeTabId}
-        >
-          <div className={styles.mediaColumn}>
-            <figure
-              className={styles.portraitFrame}
-              style={getImageStyle(activeTestimonial.image, "featured")}
-            >
-              <img
-                src={activeTestimonial.image.src}
-                alt={activeTestimonial.image.alt || activeTestimonial.name}
-                className={styles.portrait}
-                loading={resolvedActiveIndex === 0 ? "eager" : "lazy"}
-                decoding="async"
-              />
-            </figure>
-          </div>
+          testimonial={activeTestimonial}
+          testimonialKey={activeItemKey}
+          resolvedActiveIndex={resolvedActiveIndex}
+          panelId={panelId}
+          activeTabId={activeTabId}
+          featuredAriaLabel={ui.featuredAriaLabel}
+        />
 
-          <div className={styles.statementColumn}>
-            <div className={styles.identity}>
-              {isValidText(activeTestimonial.category) && (
-                <p className={styles.category}>{activeTestimonial.category}</p>
-              )}
-
-              <h3 className={styles.name}>{activeTestimonial.name}</h3>
-
-              {activeDescription.length > 0 && (
-                <div className={styles.description}>
-                  {activeDescription.map((line, index) => (
-                    <p key={`${activeItemKey}-description-${index}`}>{line}</p>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {activeQuote.length > 0 && (
-              <blockquote className={styles.quote}>
-                <span className={styles.quoteMark} aria-hidden="true">
-                  “
-                </span>
-
-                <div className={styles.quoteText}>
-                  {activeQuote.map((paragraph, index) => (
-                    <p key={`${activeItemKey}-quote-${index}`}>{paragraph}</p>
-                  ))}
-                </div>
-              </blockquote>
-            )}
-          </div>
-        </article>
-
-        <aside className={styles.selectorPanel} aria-label={ui.listAriaLabel}>
-          <div className={styles.selectorGrid} role="tablist">
-            {testimonials.map((item, index) => {
-              const itemKey = getItemKey(item, index);
-              const isActive = itemKey === activeItemKey;
-              const tabId = `${sectionId}-tab-${itemKey}`;
-
-              return (
-                <button
-                  key={itemKey}
-                  id={tabId}
-                  type="button"
-                  className={`${styles.selectorCard} ${
-                    isActive ? styles.selectorCardActive : ""
-                  }`}
-                  role="tab"
-                  aria-selected={isActive}
-                  aria-controls={panelId}
-                  onClick={() => handleSelectorClick(itemKey)}
-                >
-                  <span className={styles.selectorIndex}>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <span
-                    className={styles.selectorMedia}
-                    style={getImageStyle(item.image, "thumb")}
-                    aria-hidden="true"
-                  >
-                    <img
-                      src={item.image.src}
-                      alt=""
-                      className={styles.selectorImage}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </span>
-
-                  <span className={styles.selectorContent}>
-                    {isValidText(item.category) && (
-                      <span className={styles.selectorCategory}>
-                        {item.category}
-                      </span>
-                    )}
-
-                    <span className={styles.selectorName}>{item.name}</span>
-
-                    {isValidText(ui.cardActionLabel) && (
-                      <span className={styles.selectorAction}>
-                        {ui.cardActionLabel}
-                      </span>
-                    )}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </aside>
+        <TestimonialsSelector
+          items={testimonials}
+          sectionId={sectionId}
+          panelId={panelId}
+          activeItemKey={activeItemKey}
+          cardActionLabel={ui.cardActionLabel}
+          listAriaLabel={ui.listAriaLabel}
+          onSelect={handleSelectorClick}
+        />
       </div>
     </section>
   );

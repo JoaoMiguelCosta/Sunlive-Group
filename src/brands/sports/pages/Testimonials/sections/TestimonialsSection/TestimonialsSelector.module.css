@@ -1,0 +1,244 @@
+.selectorPanel {
+    min-inline-size: 0;
+}
+
+.selectorGrid {
+    display: grid;
+    gap: clamp(0.42rem, 0.54vw, 0.52rem);
+    max-block-size: var(--testimonials-featured-height);
+    overflow: auto;
+    padding-inline-end: 0.22rem;
+    scrollbar-color: rgb(var(--sports-gold-rgb) / 0.36) rgba(255, 255, 255, 0.04);
+    scrollbar-width: thin;
+}
+
+.selectorCard {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    gap: clamp(0.42rem, 0.62vw, 0.56rem);
+    align-items: center;
+    inline-size: 100%;
+    min-block-size: clamp(4.1rem, 4.35vw, 4.7rem);
+    padding: clamp(0.42rem, 0.58vw, 0.54rem);
+    border: 1px solid rgb(var(--sports-gold-rgb) / 0.12);
+    border-radius: var(--sports-radius-md);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.014) 100%);
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition:
+        border-color 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+.selectorCard::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    inline-size: 2px;
+    border-radius: inherit;
+    background: transparent;
+    transition: background 180ms ease;
+}
+
+.selectorCard:hover {
+    transform: translateY(-1px);
+    border-color: rgb(var(--sports-gold-rgb) / 0.28);
+    background:
+        radial-gradient(110% 120% at 0% 0%,
+            rgb(var(--sports-gold-rgb) / 0.075) 0%,
+            transparent 50%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.052) 0%,
+            rgba(255, 255, 255, 0.018) 100%);
+    box-shadow: var(--sports-shadow-card-hover);
+}
+
+.selectorCard:focus-visible {
+    outline: 2px solid rgb(var(--sports-gold-rgb) / 0.78);
+    outline-offset: 3px;
+}
+
+.selectorCardActive {
+    border-color: rgb(var(--sports-gold-rgb) / 0.42);
+    background:
+        radial-gradient(120% 140% at 0% 0%,
+            rgb(var(--sports-gold-rgb) / 0.12) 0%,
+            transparent 48%),
+        radial-gradient(100% 140% at 100% 100%,
+            rgb(var(--sports-green-rgb) / 0.038) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.054) 0%,
+            rgba(255, 255, 255, 0.018) 100%);
+}
+
+.selectorCardActive::before {
+    background: linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb) / 0.92),
+            rgb(var(--sports-green-rgb) / 0.18));
+}
+
+.selectorIndex {
+    display: inline-grid;
+    place-items: center;
+    inline-size: 1.78rem;
+    block-size: 1.78rem;
+    border: 1px solid rgb(var(--sports-gold-rgb) / 0.18);
+    border-radius: 999rem;
+    color: rgb(var(--sports-gold-rgb) / 0.82);
+    font-size: 0.6rem;
+    font-weight: 950;
+    letter-spacing: 0.08em;
+    line-height: 1;
+}
+
+.selectorMedia {
+    position: relative;
+    display: grid;
+    place-items: end center;
+    inline-size: clamp(2.45rem, 3.2vw, 2.95rem);
+    block-size: clamp(2.9rem, 3.75vw, 3.45rem);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.055);
+    border-radius: 0.76rem;
+    background:
+        radial-gradient(80% 80% at 50% 20%,
+            rgb(var(--sports-gold-rgb) / 0.085),
+            transparent 66%),
+        rgba(255, 255, 255, 0.034);
+}
+
+.selectorImage {
+    position: relative;
+    z-index: 1;
+    display: block;
+    inline-size: auto;
+    max-inline-size: 92%;
+    block-size: min(82%, clamp(2.3rem, 3.25vw, 3.12rem));
+    object-fit: contain;
+    object-position: center bottom;
+    transform:
+        translate3d(var(--testimonial-image-offset-x, 0%),
+            var(--testimonial-image-offset-y, 0%),
+            0) scale(var(--testimonial-image-scale-desktop, 1));
+    transform-origin: center bottom;
+    will-change: transform;
+    filter:
+        drop-shadow(0 1.15rem 1.4rem rgba(0, 0, 0, 0.42)) drop-shadow(0 0 0.9rem rgb(var(--sports-gold-rgb) / 0.04));
+}
+
+.selectorContent {
+    display: grid;
+    gap: 0.15rem;
+    min-inline-size: 0;
+}
+
+.selectorCategory {
+    color: var(--sports-gold);
+    font-size: 0.56rem;
+    font-weight: 850;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.selectorName {
+    color: var(--sports-text);
+    font-size: clamp(0.82rem, 0.82vw, 0.92rem);
+    font-weight: 900;
+    letter-spacing: var(--sports-card-title-spacing);
+    line-height: 1.08;
+}
+
+.selectorAction {
+    color: var(--sports-muted);
+    font-size: 0.64rem;
+    font-weight: 750;
+    line-height: 1.16;
+}
+
+@media (max-width: 1180px) {
+    .selectorGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        max-block-size: none;
+        overflow: visible;
+        padding-inline-end: 0;
+    }
+
+    .selectorCard {
+        grid-template-columns: auto auto minmax(0, 1fr);
+        min-block-size: 4.8rem;
+    }
+
+    .selectorImage {
+        transform:
+            translate3d(var(--testimonial-image-offset-x, 0%),
+                var(--testimonial-image-offset-y, 0%),
+                0) scale(var(--testimonial-image-scale-tablet, var(--testimonial-image-scale-desktop, 1)));
+    }
+}
+
+@media (max-width: 920px) {
+    .selectorPanel {
+        order: -1;
+    }
+
+    .selectorGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .selectorImage {
+        transform:
+            translate3d(var(--testimonial-image-offset-x, 0%),
+                var(--testimonial-image-offset-y, 0%),
+                0) scale(var(--testimonial-image-scale-mobile, var(--testimonial-image-scale-tablet, 1)));
+    }
+}
+
+@media (max-width: 620px) {
+    .selectorGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .selectorCard {
+        min-block-size: auto;
+    }
+}
+
+@media (max-width: 420px) {
+    .selectorIndex {
+        inline-size: 1.78rem;
+        block-size: 1.78rem;
+    }
+
+    .selectorMedia {
+        inline-size: 2.6rem;
+        block-size: 3.18rem;
+    }
+
+    .selectorImage {
+        block-size: min(82%, 2.9rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .selectorCard,
+    .selectorCard::before {
+        transition: none;
+    }
+
+    .selectorCard:hover {
+        transform: none;
+    }
+}

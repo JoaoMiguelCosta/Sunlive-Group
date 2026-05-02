@@ -1,5 +1,17 @@
 import styles from "./ContactsSection.module.css";
 
+const SOCIAL_ICON_KEY_ALIASES = Object.freeze({
+  fb: "facebook",
+  facebook: "facebook",
+  Facebook: "facebook",
+  FACEBOOK: "facebook",
+
+  ig: "instagram",
+  instagram: "instagram",
+  Instagram: "instagram",
+  INSTAGRAM: "instagram",
+});
+
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
@@ -46,24 +58,77 @@ function getValidSocials(items) {
 function getDisplayValue(value) {
   if (isValidText(value)) return value;
 
-  if (isValidObject(value)) {
-    return (
-      value.label ||
-      value.title ||
-      value.name ||
-      value.address ||
-      value.value ||
-      ""
-    );
-  }
+  if (!isValidObject(value)) return "";
 
-  return "";
+  const candidates = [
+    value.label,
+    value.title,
+    value.name,
+    value.address,
+    value.value,
+  ];
+
+  return candidates.find(isValidText) || "";
+}
+
+function getNormalizedSocialIconKey(iconKey) {
+  if (!isValidText(iconKey)) return "";
+
+  return SOCIAL_ICON_KEY_ALIASES[iconKey] || iconKey;
 }
 
 function getIconComponent(iconSet, iconKey) {
   if (!isValidObject(iconSet) || !isValidText(iconKey)) return null;
 
-  return iconSet[iconKey] || iconSet[`${iconKey}Icon`] || null;
+  const normalizedIconKey = getNormalizedSocialIconKey(iconKey);
+
+  return (
+    iconSet[iconKey] ||
+    iconSet[`${iconKey}Icon`] ||
+    iconSet[normalizedIconKey] ||
+    iconSet[`${normalizedIconKey}Icon`] ||
+    null
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M14.02 8.48V6.92c0-.75.18-1.16 1.2-1.16h1.56V3.1A21.4 21.4 0 0 0 14.5 3c-2.26 0-3.82 1.38-3.82 3.92v1.56H8.1v2.98h2.58V21h3.34v-9.54h2.52l.4-2.98h-2.92Z"
+      />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5Zm8.75 2.2a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6ZM12 7.1A4.9 4.9 0 1 1 12 16.9 4.9 4.9 0 0 1 12 7.1Zm0 2A2.9 2.9 0 1 0 12 14.9 2.9 2.9 0 0 0 12 9.1Z"
+      />
+    </svg>
+  );
+}
+
+function getFallbackSocialIconComponent(iconKey) {
+  const normalizedIconKey = getNormalizedSocialIconKey(iconKey);
+
+  if (normalizedIconKey === "facebook") return FacebookIcon;
+  if (normalizedIconKey === "instagram") return InstagramIcon;
+
+  return null;
+}
+
+function getSocialIconComponent(iconSet, item) {
+  const iconKey = item.iconKey || item.key;
+
+  return (
+    getIconComponent(iconSet, iconKey) ||
+    getFallbackSocialIconComponent(iconKey)
+  );
 }
 
 function getSectionTitleId(sectionId, hasTitle) {
@@ -72,6 +137,19 @@ function getSectionTitleId(sectionId, hasTitle) {
 
 function getSectionLeadId(sectionId, hasLead) {
   return isValidText(sectionId) && hasLead ? `${sectionId}-lead` : undefined;
+}
+
+function isExternalHref(href) {
+  return /^https?:\/\//i.test(href);
+}
+
+function getActionLinkProps(href) {
+  if (!isValidText(href) || !isExternalHref(href)) return {};
+
+  return {
+    target: "_blank",
+    rel: "noreferrer",
+  };
 }
 
 function IntroHeader({ intro, titleId, leadId }) {
@@ -114,6 +192,7 @@ function ActionLink({ action, iconSet }) {
       href={action.href}
       aria-label={action.ariaLabel}
       data-variant={action.variant}
+      {...getActionLinkProps(action.href)}
     >
       {Icon ? (
         <span className={styles.actionIcon} aria-hidden="true">
@@ -127,7 +206,7 @@ function ActionLink({ action, iconSet }) {
 }
 
 function PrimaryContactPanel({ data, iconSet }) {
-  if (!data) return null;
+  if (!isValidObject(data)) return null;
 
   const actions = getValidActions(data.actions);
 
@@ -210,6 +289,7 @@ function ChannelCard({ item, iconSet }) {
           href={item.href}
           aria-label={item.ariaLabel}
           className={styles.channelCard}
+          {...getActionLinkProps(item.href)}
         >
           {content}
         </a>
@@ -285,7 +365,7 @@ function ProcessStep({ item, index }) {
 }
 
 function SocialLink({ item, iconSet }) {
-  const Icon = getIconComponent(iconSet, item.iconKey || item.key);
+  const Icon = getSocialIconComponent(iconSet, item);
 
   return (
     <li className={styles.socialItem}>
@@ -335,7 +415,7 @@ function SectionHeader({ eyebrow, title, description }) {
 }
 
 export default function ContactsSection({ data, iconSet }) {
-  if (!data) return null;
+  if (!isValidObject(data)) return null;
 
   const requestTypes = getValidItems(data.requestTypes);
   const channels = getValidItems(data.channels);
@@ -434,9 +514,9 @@ export default function ContactsSection({ data, iconSet }) {
           </div>
         ) : null}
 
-        {socials.length > 0 || data.closingNote ? (
+        {socials.length > 0 || isValidObject(data.closingNote) ? (
           <footer className={styles.footerPanel}>
-            {data.closingNote ? (
+            {isValidObject(data.closingNote) ? (
               <div className={styles.closingNote}>
                 {isValidText(data.closingNote.title) ? (
                   <h2 className={styles.closingTitle}>

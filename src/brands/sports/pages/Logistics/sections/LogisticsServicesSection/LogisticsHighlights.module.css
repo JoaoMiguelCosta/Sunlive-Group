@@ -1,0 +1,82 @@
+.highlightsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.52rem, 0.92vw, 0.72rem);
+}
+
+.highlightCard {
+    position: relative;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 0.22rem;
+    min-block-size: var(--logistics-highlight-min-block);
+    min-inline-size: 0;
+    overflow: hidden;
+    padding: var(--logistics-highlight-padding);
+    text-align: center;
+    border: 1px solid var(--sports-logistics-highlight-border, var(--sports-border-soft, rgba(255, 255, 255, 0.065)));
+    border-radius: var(--logistics-card-radius);
+    background: var(--sports-logistics-highlight-bg, var(--sports-surface-soft));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.highlightCard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.1),
+            transparent 9rem);
+    opacity: 0.72;
+}
+
+.highlightValue,
+.highlightLabel {
+    position: relative;
+    z-index: 1;
+}
+
+.highlightValue {
+    color: var(--sports-gold, #d6a640);
+    font-size: var(--sports-logistics-highlight-value-size, clamp(1.2rem, 0.88rem + 1.5vw, 1.85rem));
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-align: center;
+}
+
+.highlightLabel {
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+    font-size: var(--sports-logistics-service-summary-size, clamp(0.78rem, 0.72rem + 0.28vw, 0.9rem));
+    font-weight: 760;
+    line-height: 1.28;
+    text-align: center;
+}
+
+@media (min-width: 1181px) and (max-height: 860px) {
+    .highlightCard {
+        min-block-size: var(--logistics-highlight-min-block);
+        padding: var(--logistics-highlight-padding);
+    }
+}
+
+@media (max-width: 760px) {
+    .highlightsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .highlightCard {
+        min-block-size: auto;
+    }
+}
+
+@media (max-width: 520px) {
+    .highlightCard {
+        border-radius: 0.94rem;
+    }
+}

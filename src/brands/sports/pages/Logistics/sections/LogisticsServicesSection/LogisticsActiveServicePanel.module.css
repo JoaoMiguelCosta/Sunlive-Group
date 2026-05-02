@@ -1,0 +1,245 @@
+.activePanel {
+    position: relative;
+    display: grid;
+    grid-template-columns:
+        minmax(14rem, 0.8fr) minmax(17rem, 1fr) minmax(19rem, 1.14fr);
+    grid-template-areas: "header summary features";
+    align-items: center;
+    gap: clamp(0.86rem, 1.55vw, 1.8rem);
+    min-block-size: var(--logistics-panel-min-block);
+    min-inline-size: 0;
+    overflow: hidden;
+    scroll-margin-top: clamp(0.75rem, 3vw, 1.25rem);
+    padding: var(--logistics-panel-padding);
+    padding-inline-end: clamp(2.35rem, 3.5vw, 3.45rem);
+    border: 1px solid var(--sports-logistics-panel-border, rgb(var(--sports-gold-rgb, 214 166 64) / 0.3));
+    border-radius: var(--logistics-panel-radius);
+    background: var(--sports-logistics-panel-bg, var(--sports-surface-dark));
+    box-shadow: var(--sports-shadow-card);
+    outline: none;
+}
+
+.activePanel::before {
+    content: "";
+    position: absolute;
+    inset-block: 0.9rem;
+    inset-inline-start: 33.333%;
+    inline-size: 1px;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            transparent,
+            var(--sports-logistics-panel-divider, rgb(var(--sports-gold-rgb, 214 166 64) / 0.18)),
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.035),
+            transparent);
+}
+
+.activePanel::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    block-size: 1px;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            var(--sports-logistics-panel-top-rule, rgb(var(--sports-gold-rgb, 214 166 64) / 0.72)) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.22) 58%,
+            transparent 100%);
+    opacity: 0.9;
+}
+
+.panelHeader {
+    position: relative;
+    z-index: 1;
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    gap: clamp(0.78rem, 1.2vw, 1rem);
+    min-inline-size: 0;
+}
+
+.panelHeading {
+    display: flex;
+    align-items: center;
+    min-inline-size: 0;
+}
+
+.panelNumber {
+    position: absolute;
+    inset-block-start: clamp(0.85rem, 1.1vw, 1.08rem);
+    inset-inline-end: clamp(0.9rem, 1.25vw, 1.18rem);
+    z-index: 3;
+    margin: 0;
+    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.84);
+    font-size: var(--sports-kicker-size, clamp(0.7rem, 0.76vw, 0.78rem));
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: var(--sports-kicker-spacing, 0.22em);
+    text-align: right;
+    pointer-events: none;
+}
+
+.panelTitle {
+    max-inline-size: 100%;
+    margin: 0;
+    color: rgba(248, 250, 252, 0.99);
+    overflow-wrap: anywhere;
+    font-size: var(--sports-logistics-panel-title-size, clamp(1.3rem, 1rem + 1.75vw, 2.12rem));
+    font-weight: 950;
+    line-height: var(--sports-panel-title-line, 0.98);
+    letter-spacing: var(--sports-panel-title-spacing, -0.058em);
+    text-wrap: balance;
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.36),
+        0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+.panelSummary {
+    position: relative;
+    z-index: 1;
+    grid-area: summary;
+    max-inline-size: 36rem;
+    margin: 0;
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+    font-size: var(--sports-logistics-panel-summary-size, clamp(0.84rem, 0.76rem + 0.32vw, 0.96rem));
+    font-weight: 620;
+    line-height: 1.45;
+}
+
+.featuresList {
+    position: relative;
+    z-index: 1;
+    grid-area: features;
+    display: grid;
+    align-content: center;
+    gap: clamp(0.44rem, 0.72vw, 0.58rem);
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.featureItem {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.58rem;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+    overflow-wrap: anywhere;
+    font-size: var(--sports-logistics-feature-size, clamp(0.76rem, 0.7rem + 0.28vw, 0.88rem));
+    font-weight: 720;
+    line-height: 1.36;
+}
+
+.featureMarker {
+    inline-size: 0.4rem;
+    block-size: 0.4rem;
+    margin-block-start: 0.42rem;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 32% 32%,
+            rgba(255, 246, 214, 0.98) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.94) 44%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.82) 100%);
+    box-shadow:
+        0 0 0 4px rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
+        0 0 14px rgb(var(--sports-gold-rgb, 214 166 64) / 0.14);
+}
+
+@media (min-width: 1440px) {
+    .activePanel {
+        grid-template-columns:
+            minmax(15rem, 0.82fr) minmax(18rem, 1fr) minmax(21rem, 1.18fr);
+    }
+}
+
+@media (min-width: 1181px) and (max-height: 860px) {
+    .activePanel {
+        min-block-size: var(--logistics-panel-min-block);
+        padding: var(--logistics-panel-padding);
+        padding-inline-end: 2.55rem;
+    }
+}
+
+@media (max-width: 1280px) {
+    .activePanel {
+        grid-template-columns: minmax(0, 0.78fr) minmax(17rem, 1.16fr);
+        grid-template-areas:
+            "header features"
+            "summary features";
+        align-items: start;
+        gap: clamp(0.78rem, 1.3vw, 1.08rem) clamp(1.15rem, 2.45vw, 2.15rem);
+    }
+
+    .activePanel::before {
+        inset-inline-start: calc(40% + 0.45rem);
+    }
+}
+
+@media (max-width: 1180px) {
+    .activePanel {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "summary"
+            "features";
+        gap: clamp(0.76rem, 1.6vw, 1rem);
+        min-block-size: auto;
+        padding-inline-end: clamp(0.92rem, 1.7vw, 1.45rem);
+    }
+
+    .activePanel::before {
+        display: none;
+    }
+
+    .featuresList {
+        margin-block-start: clamp(0.08rem, 0.5vw, 0.28rem);
+    }
+}
+
+@media (max-width: 860px) {
+    .panelHeader {
+        align-items: center;
+    }
+}
+
+@media (max-width: 760px) {
+    .activePanel {
+        scroll-margin-top: 1rem;
+        padding: clamp(0.86rem, 3.4vw, 1.08rem);
+        padding-block-start: clamp(1.72rem, 6vw, 2.05rem);
+        border-radius: 1rem;
+    }
+
+    .panelHeader {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .panelNumber {
+        inset-block-start: 0.9rem;
+        inset-inline-end: 0.9rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .activePanel {
+        border-radius: 0.94rem;
+    }
+
+    .panelSummary {
+        line-height: 1.42;
+    }
+}
+
+@media (max-width: 380px) {
+    .activePanel {
+        padding: 0.82rem;
+        padding-block-start: 1.86rem;
+    }
+
+    .featureItem {
+        gap: 0.48rem;
+    }
+}
