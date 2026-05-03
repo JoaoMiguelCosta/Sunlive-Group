@@ -10,17 +10,22 @@ const LANG_FALLBACK = {
   options: [{ label: "PT", name: "Português", code: "pt" }],
 };
 
+function normalizePathname(pathname) {
+  if (!pathname || pathname === "/") return "/";
+
+  return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+}
+
 export default function LogosUtilityBar() {
   const location = useLocation();
+  const pathname = normalizePathname(location.pathname);
 
   const overview = groupHomePage?.sections?.overview;
 
   const socials = overview?.socials ?? [];
   const lang = overview?.lang ?? LANG_FALLBACK;
 
-  const isLogosHome =
-    location.pathname === LOGOS_BASE_PATH ||
-    location.pathname === `${LOGOS_BASE_PATH}/`;
+  const isLogosHome = pathname === LOGOS_BASE_PATH;
 
   const utilityBarProps = isLogosHome
     ? {

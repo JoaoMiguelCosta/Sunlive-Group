@@ -1,12 +1,13 @@
-// src/brands/group/components/SectionGroup/PeopleSection/PeopleStatement.jsx
 import styles from "./PeopleStatement.module.css";
 
 import { groupHomePage } from "../../../../config/pages/index.js";
 import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
 
 export default function PeopleStatement() {
-  const src = groupHomePage?.sections?.people?.statement?.src ?? null;
-  const alt = groupHomePage?.sections?.people?.statement?.alt ?? "People statement";
+  const statement = groupHomePage?.sections?.people?.statement;
+
+  const src = statement?.src ?? null;
+  const alt = statement?.alt ?? "People statement";
 
   if (!src) return null;
 
@@ -16,5 +17,3 @@ export default function PeopleStatement() {
     </div>
   );
 }
-
-

@@ -3,24 +3,30 @@ import LogoGridSection from "../_shared/LogoGridSection";
 
 import groupLogosPage from "../../../../config/pages/logos.js";
 
+function hasItems(items) {
+  return Array.isArray(items) && items.length > 0;
+}
+
 export default function PortugueseFederations() {
   const data = groupLogosPage?.sections?.portugueseFederations;
-  if (!data) return null;
+
+  if (!data || !hasItems(data.items)) return null;
+
+  const sectionId = data.id || "federations-pt";
+  const headingId = `${sectionId}-title`;
 
   return (
     <section
-      id="federations-pt"
+      id={sectionId}
       className={styles.section}
-      aria-labelledby="federations-pt-title"
+      aria-labelledby={headingId}
     >
       <LogoGridSection
-        id="federations-pt-title"
+        id={headingId}
         title={data.title}
         items={data.items}
-        columnsMax={4}
+        columnsMax={data.columnsMax || 4}
       />
     </section>
   );
 }
-
-

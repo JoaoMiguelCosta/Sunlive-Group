@@ -1,12 +1,13 @@
-// src/brands/group/components/SectionGroup/PresenceSection/MantraHeadline.jsx
 import styles from "./MantraHeadline.module.css";
 
 import { groupHomePage } from "../../../../config/pages/index.js";
 import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
 
 export default function MantraHeadline() {
-  const src = groupHomePage?.sections?.presence?.headlineBottom?.src ?? null;
-  const alt = groupHomePage?.sections?.presence?.headlineBottom?.alt ?? "Mantra";
+  const headline = groupHomePage?.sections?.presence?.headlineBottom;
+
+  const src = headline?.src ?? null;
+  const alt = headline?.alt ?? "Mantra";
 
   if (!src) return null;
 
@@ -16,5 +17,3 @@ export default function MantraHeadline() {
     </div>
   );
 }
-
-

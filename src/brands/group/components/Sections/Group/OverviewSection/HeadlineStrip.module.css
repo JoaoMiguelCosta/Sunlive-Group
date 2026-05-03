@@ -1,29 +1,46 @@
-/* Headline Strip — imagem apenas (como We Make It Happen) */
+/* Headline Strip — imagem apenas */
 
 .wrap {
     position: relative;
+
+    inline-size: 100%;
+    min-inline-size: 0;
+    overflow: clip;
+
     display: grid;
     place-items: center;
-    width: 100%;
-    overflow: clip;
-    /* evita scroll lateral */
-    min-width: 0;
+
+    box-sizing: border-box;
+    padding-inline: clamp(0.5rem, 2.5vw, 2rem);
 }
 
-/* imagem responsiva com leve drop-shadow para legibilidade */
 .img {
     position: relative;
     z-index: 1;
+
     display: block;
-    width: min(50rem, 92vw);
-    height: auto;
+
+    inline-size: clamp(18rem, 58vw, 50rem);
+    max-inline-size: 100%;
+    block-size: auto;
+
     object-fit: contain;
     user-select: none;
     pointer-events: none;
+    -webkit-user-drag: none;
 
-    /* Drop-shadow afinado ao dourado-aurora do Group */
     filter:
-        drop-shadow(0 1px 0 color-mix(in oklab, var(--sl-gold-400, #F3C970), transparent 72%)) drop-shadow(0 8px 18px rgba(0, 0, 0, .38));
+        drop-shadow(0 1px 0 color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 72%)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.38));
 }
 
-/* (remoção de .box/.figure/.title/.subtitle porque não são precisos) */
+@media (max-width: 768px) {
+    .img {
+        inline-size: clamp(16rem, 76vw, 36rem);
+    }
+}
+
+@media (max-width: 420px) {
+    .img {
+        inline-size: min(15rem, 88vw);
+    }
+}

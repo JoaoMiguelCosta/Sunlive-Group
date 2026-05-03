@@ -1,17 +1,21 @@
 import styles from "./SectionLead.module.css";
 
+function isValidText(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
 export default function SectionLead({ id, title, subtitle }) {
-  if (!title) return null;
+  if (!isValidText(title)) return null;
 
   return (
-    <header className={styles.lead} aria-labelledby={id}>
-      <div className={styles.strip} aria-hidden="true" />
+    <header className={styles.lead}>
       <h2 id={id} className={styles.title}>
         {title}
       </h2>
-      {subtitle ? <p className={styles.subtitle}>{subtitle}</p> : null}
+
+      {isValidText(subtitle) ? (
+        <p className={styles.subtitle}>{subtitle}</p>
+      ) : null}
     </header>
   );
 }
-
-

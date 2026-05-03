@@ -1,93 +1,54 @@
-/* ============================================================================
-   LogosSection.module.css — v4.4
-   Container comum das secções de LOGOS (Partners)
-   - Mantém alinhamento com as linhas/gold rule e footer
-   - Evita sub-píxeis: largura do conteúdo baseada no CONTAINER
-============================================================================ */
+/* LogosSection — Sunlive Group */
 
-/* Tokens comuns desta família de secções */
-:root {
-    --section-inset: clamp(16px, 3.5vw, 44px);
-    /* recuo lateral */
-    --rule-thickness: 2px;
-    /* espessura da linha dourada */
-}
-
-/* ===== Secção base ===== */
 .section {
     position: relative;
-    width: 100%;
-    margin: 0;
+    isolation: isolate;
 
-    /* respiros verticais padrão da secção */
-    --pad-top: clamp(0.75rem, 1.5vw, 1rem);
-    --pad-bottom: clamp(1rem, 2.2vw, 1.4rem);
-    padding-block: var(--pad-top) var(--pad-bottom);
+    inline-size: 100%;
+    min-inline-size: 0;
+    overflow: visible;
+
+    display: grid;
+    row-gap: clamp(0.85rem, 2vw, 1.35rem);
+
+    box-sizing: border-box;
+    
+
+    background: transparent;
+
+    --logos-rule-thickness: 2px;
 }
 
-/* O filho direto ocupa o container com padding lateral consistente */
 .section>* {
-    max-width: min(var(--sl-container-lg, 90rem), 100%);
+    inline-size: 100%;
+    min-inline-size: 0;
 
-    margin-inline: auto;
-    box-sizing: border-box;
-    width: 100%;
-}
-
-/* Wrapper, Grid e Regra dourada usam SEMPRE 100% do container acima */
-.section :global(.wrap),
-.section :global(.grid),
-.section :global(.goldRule) {
-    width: 100%;
-    margin: 0;
     box-sizing: border-box;
 }
 
-/* Linha dourada coerente com o restante site */
-.section :global(.goldRule) {
-    height: var(--rule-thickness);
-    background: var(--sl-gold-400, #C78615);
-    border: 0;
-}
-
-/* ===== Variantes de densidade (opcional) ===== */
 .compact {
-    --pad-top: clamp(.5rem, 1vw, .75rem);
-    --pad-bottom: clamp(.75rem, 1.5vw, 1rem);
+    --logos-section-pad-top: clamp(0.5rem, 1vw, 0.75rem);
+    --logos-section-pad-bottom: clamp(0.75rem, 1.5vw, 1rem);
 }
 
 .cozy {
-    --pad-top: clamp(.9rem, 2vw, 1.25rem);
-    --pad-bottom: clamp(1.25rem, 2.8vw, 1.75rem);
+    --logos-section-pad-top: clamp(0.9rem, 2vw, 1.25rem);
+    --logos-section-pad-bottom: clamp(1.25rem, 2.8vw, 1.75rem);
 }
 
 .spacious {
-    --pad-top: clamp(1.25rem, 3vw, 1.75rem);
-    --pad-bottom: clamp(1.75rem, 4vw, 2.25rem);
+    --logos-section-pad-top: clamp(1.25rem, 3vw, 1.75rem);
+    --logos-section-pad-bottom: clamp(1.75rem, 4vw, 2.25rem);
 }
 
-/* ===== Colar ao bloco seguinte / Footer ===== */
-
-/* remove o “respiro” em baixo da secção */
 .flushBottom {
-    --pad-bottom: 0;
+    --logos-section-pad-bottom: 0;
 }
 
-/* garante que nenhum dos wrappers internos deixa margem/padding extra */
-.flushBottom :global(.wrap),
-.flushBottom :global(.grid),
-.flushBottom :global(.goldRule) {
-    margin-bottom: 0;
-}
-
-/* sobe a secção o equivalente à espessura da goldRule para encaixar a 2px */
 .pairNextTight {
-    margin-bottom: calc(-1 * var(--rule-thickness));
+    margin-block-end: calc(-1 * var(--logos-rule-thickness));
 }
 
-/* ajuste fino extra caso o grid tenha padding-bottom interno */
-.tightBottom :global(.wrap),
-.tightBottom :global(.grid) {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
+.tightBottom {
+    --logos-section-pad-bottom: 0;
 }

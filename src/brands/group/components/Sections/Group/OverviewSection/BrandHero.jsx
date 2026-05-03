@@ -1,4 +1,3 @@
-// OverviewSection/BrandHero.jsx
 import styles from "./BrandHero.module.css";
 import { groupHomePage } from "../../../../config/pages/index.js";
 
@@ -10,14 +9,10 @@ export default function BrandHero() {
   if (!src) return null;
 
   return (
-    <section className={styles.hero} aria-label="Sunlive Group">
-      <div className={styles.inner}>
-        <div className={styles.logoBox}>
-          <img className={styles.logoImg} src={src} alt={alt} loading="eager" />
-        </div>
+    <div className={styles.hero} aria-label="Identidade Sunlive Group">
+      <div className={styles.logoBox}>
+        <img className={styles.logoImg} src={src} alt={alt} loading="eager" />
       </div>
-    </section>
+    </div>
   );
 }
-
-

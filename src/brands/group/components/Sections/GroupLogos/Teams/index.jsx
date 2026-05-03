@@ -3,24 +3,30 @@ import LogoGridSection from "../_shared/LogoGridSection";
 
 import groupLogosPage from "../../../../config/pages/logos.js";
 
+function hasItems(items) {
+  return Array.isArray(items) && items.length > 0;
+}
+
 export default function Teams() {
   const data = groupLogosPage?.sections?.teams;
-  if (!data) return null;
+
+  if (!data || !hasItems(data.items)) return null;
+
+  const sectionId = data.id || "teams";
+  const headingId = `${sectionId}-title`;
 
   return (
     <section
-      id="teams"
+      id={sectionId}
       className={styles.section}
-      aria-labelledby="teams-title"
+      aria-labelledby={headingId}
     >
       <LogoGridSection
-        id="teams-title"
+        id={headingId}
         title={data.title}
         items={data.items}
-        columnsMax={4}
+        columnsMax={data.columnsMax || 4}
       />
     </section>
   );
 }
-
-

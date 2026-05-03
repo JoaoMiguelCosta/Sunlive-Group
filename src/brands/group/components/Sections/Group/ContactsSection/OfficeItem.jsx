@@ -1,4 +1,5 @@
 import styles from "./ContactsGrid.module.css";
+
 import OfficeCard from "./OfficeCard.jsx";
 
 export default function OfficeItem({
@@ -9,6 +10,7 @@ export default function OfficeItem({
   PhoneIcon,
 }) {
   const Flag = item.Flag || (() => null);
+  const panelId = `office-${item.key}`;
   const telHref = (item.phone || "").replace(/\s+/g, "");
 
   return (
@@ -18,18 +20,18 @@ export default function OfficeItem({
         className={styles.pill}
         onClick={toggle}
         aria-expanded={isOpen}
-        aria-controls={`office-${item.key}`}
+        aria-controls={panelId}
       >
-        <Flag className={styles.flag} />
+        <Flag className={styles.flag} aria-hidden="true" />
         <span className={styles.pillText}>{item.label}</span>
         <span className={styles.caret} aria-hidden="true">
           ➜
         </span>
       </button>
 
-      {isOpen && (
+      {isOpen ? (
         <OfficeCard
-          id={`office-${item.key}`}
+          id={panelId}
           label={item.label}
           email={item.email}
           phone={item.phone}
@@ -37,7 +39,7 @@ export default function OfficeItem({
           MailIcon={MailIcon}
           PhoneIcon={PhoneIcon}
         />
-      )}
+      ) : null}
     </div>
   );
 }

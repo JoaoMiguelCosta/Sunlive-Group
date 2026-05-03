@@ -1,6 +1,4 @@
-import styles from "./GroupPages.module.css";
-
-import GroupUtilityBar from "../layout/GroupUtilityBar.jsx";
+import styles from "../layout/GroupPageLayout.module.css";
 
 import OverviewSection from "../components/Sections/Group/OverviewSection/index.jsx";
 import PeopleSection from "../components/Sections/Group/PeopleSection/index.jsx";
@@ -14,25 +12,32 @@ import groupBrand from "../config/index.js";
 
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
-export default function GroupPage() {
+export default function GroupHome() {
   useScrollToHash(24);
 
   const footerConfig = groupBrand.sections?.footer;
 
   return (
     <div className={styles.pageWrap}>
-      <div className={styles.headerContainer}>
-        <GroupUtilityBar />
-      </div>
-
-      <main className={styles.inner}>
-        <div className={styles.sections}>
+      <main
+        id="group-page"
+        className={styles.inner}
+        role="region"
+        aria-label="Sunlive Group"
+      >
+        <div className={styles.contentFlow}>
           <OverviewSection />
           <PeopleSection />
           <PresenceSection />
           <ContactsSection />
-          <PartnersSection />
-          <BookSection />
+
+          <div className={styles.sectionGap}>
+            <PartnersSection />
+          </div>
+
+          <div className={styles.sectionGap}>
+            <BookSection />
+          </div>
         </div>
       </main>
 

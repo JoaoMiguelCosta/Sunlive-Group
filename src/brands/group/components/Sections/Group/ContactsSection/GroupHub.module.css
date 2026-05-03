@@ -1,145 +1,287 @@
-/* ================================
-   GroupHub — Prestige Noir + Liquid Gold Aurora (sem glows locais)
-=================================== */
+/* GroupHub — Sunlive Group */
 
-/* Pai: define uma “fonte de verdade” para a largura dos cards */
 .wrap {
-    --hub-w: clamp(210px, 46vw, 320px);
-    /* mesma largura dos restantes cards */
+    inline-size: min(100%, var(--contacts-card-max, clamp(15rem, 22vw, 21rem)));
+    min-inline-size: 0;
 
     display: grid;
-    grid-template-columns: minmax(0, var(--hub-w));
-    justify-content: center;
-    /* centra a coluna */
+    justify-self: center;
     justify-items: stretch;
-    /* items ocupam a coluna toda */
     gap: 0.75rem;
-    width: 100%;
+
+    box-sizing: border-box;
 }
 
-/* Botão pill (título) */
 .pill {
     position: relative;
-    overflow: visible;
+
+    inline-size: 100%;
+    min-inline-size: 0;
+    min-block-size: clamp(2.6rem, 3.2vw, 3.25rem);
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
 
-    /* deixa o aspect-ratio controlar a altura */
-    padding-inline: 1.1rem;
-    padding-block: 0;
+    box-sizing: border-box;
+    padding: 0.55rem 0.9rem;
 
-    /* Dourado-aurora na borda */
-    border: 3px solid color-mix(in oklab, var(--sl-gold-500), white 10%);
-    border-radius: 1.75rem;
+    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), white 10%);
+    border-radius: 1.35rem;
 
-    /* Noir alinhado com theme Group */
     background: rgba(4, 8, 20, 0.98);
     color: #e8edf8;
-    font-weight: 700;
+
+    font: inherit;
+    font-weight: 800;
+    line-height: 1.1;
     letter-spacing: 0.01em;
+
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
     transition:
-        transform 120ms ease,
-        box-shadow 120ms ease,
-        background-color 120ms ease,
-        border-color 120ms ease,
-        color 120ms ease;
-
-    /* mesmas dimensões dos outros cards */
-    width: 100%;
-    max-width: var(--hub-w);
-    aspect-ratio: 245 / 45;
-    box-sizing: border-box;
-    /* inclui a borda no cálculo */
-}
-
-.pill:hover {
-transform: translateY(-1px);
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
-    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
-}
-
-.pill:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 4px color-mix(in oklab, var(--sl-gold-400), transparent 45%);
+        transform 160ms ease,
+        border-color 160ms ease,
+        background 160ms ease,
+        color 160ms ease;
 }
 
 .pillText {
-    font-size: clamp(1rem, .9rem + .3vw, 1.25rem);
+    min-inline-size: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: clamp(0.9rem, 0.82rem + 0.26vw, 1.1rem);
+    line-height: 1.15;
+    text-align: center;
 }
 
 .caret {
-    color: var(--sl-gold-400);
+    flex: 0 0 auto;
+
     display: inline-block;
-    /* necessário para rodar */
-    transform: rotate(90deg);
-    /* direita → baixo */
-    transform-origin: center;
+
+    color: var(--sl-gold-400, #f3c970);
+
     line-height: 1;
+    transform: rotate(90deg);
+    transform-origin: center;
 }
 
-/* Cartão de contactos (submenu) — igual ao pill em largura */
 .card {
-    width: 100%;
-    max-width: var(--hub-w);
+    inline-size: 100%;
+    min-inline-size: 0;
+
+    display: grid;
+    gap: 0.6rem;
+
     box-sizing: border-box;
+    padding: 0.9rem 1rem;
 
-    padding: 1rem 1.25rem;
+    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), white 8%);
+    border-radius: 1rem;
 
-    border: 3px solid color-mix(in oklab, var(--sl-gold-500, #C78615), white 8%);
-    border-radius: 1.25rem;
-
-    /* 🔹 Mesmo fundo Noir + dourado-aurora dos outros cards */
     background: color-mix(in oklab,
             #020a20 82%,
-            var(--sl-gold-500, #C78615) 18%);
+            var(--sl-gold-500, #c78615) 18%);
 
-    display: grid;
-    gap: 0.75rem;
-    position: relative;
-    overflow: visible;
+    overflow: hidden;
+
+    transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        background 160ms ease;
 }
 
-.card:hover {
-transform: translateY(-1px);
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
-    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
-}
-
-/* Linhas do submenu */
 .row {
+    min-inline-size: 0;
+
     display: grid;
-    grid-template-columns: 20px 1fr;
+    grid-template-columns: 20px minmax(0, 1fr);
     align-items: center;
-    gap: 0.6rem;
-    padding: 0.4rem 0.25rem;
+    gap: 0.55rem;
+
+    box-sizing: border-box;
+    padding: 0.45rem 0.5rem;
+
+    border: 1px solid transparent;
+    border-radius: 0.65rem;
+
     color: #eef3ff;
     text-decoration: none;
-}
 
-.row:hover {
-    text-decoration: underline;
-    color: var(--sl-gold-400);
+    overflow-wrap: anywhere;
+
+    transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        background 160ms ease,
+        color 160ms ease;
 }
 
 .icon {
-    color: var(--sl-gold-400);
+    color: var(--sl-gold-400, #f3c970);
 }
 
 .muted {
-    opacity: .6;
+    opacity: 0.6;
 }
 
-/* Acessibilidade — reduzir movimento */
-@media (prefers-reduced-motion: reduce) {
+@media (hover: hover) {
+
+    .pill:hover,
+    .card:hover {
+        transform: translateY(-1px);
+
+        border-color: color-mix(in oklab,
+                var(--sl-gold-700, #92400e),
+                black 10%);
+
+        background: linear-gradient(135deg,
+                color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+                color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    }
+
+    .row[href]:hover {
+        transform: translateY(-1px);
+
+        border-color: color-mix(in oklab,
+                var(--sl-gold-500, #c78615),
+                transparent 35%);
+
+        background: color-mix(in oklab,
+                var(--sl-gold-500, #c78615),
+                transparent 86%);
+
+        color: var(--sl-gold-400, #f3c970);
+    }
+}
+
+.pill:focus-visible,
+.row:focus-visible {
+    outline: none;
+
+    box-shadow:
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900, #04060c), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 35%);
+}
+
+.row[aria-disabled="true"] {
+    pointer-events: none;
+}
+
+@media (max-width: 1200px) {
+    .wrap {
+        inline-size: min(100%, clamp(13.5rem, 34vw, 20rem));
+    }
+}
+
+@media (max-width: 900px) {
+    .wrap {
+        inline-size: min(100%, clamp(13rem, 40vw, 18.5rem));
+    }
+
     .pill {
+        min-block-size: clamp(2.45rem, 5vw, 3rem);
+    }
+
+    .pillText {
+        font-size: clamp(0.88rem, 2vw, 1rem);
+    }
+}
+
+@media (max-width: 720px) {
+    .wrap {
+        inline-size: min(100%, clamp(12rem, 42vw, 17rem));
+    }
+}
+
+@media (max-width: 640px) {
+    .wrap {
+        inline-size: min(100%, clamp(13rem, 74vw, 18rem));
+    }
+
+    .pill {
+        border-radius: 1.15rem;
+    }
+
+    .card {
+        padding: 0.8rem;
+        border-radius: 0.9rem;
+    }
+
+    .row {
+        padding: 0.45rem;
+        font-size: 0.92rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrap {
+        inline-size: min(100%, clamp(12.25rem, 70vw, 15.75rem));
+    }
+
+    .pill {
+        padding-inline: 0.8rem;
+    }
+
+    .card {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .wrap {
+        inline-size: min(100%, clamp(11.5rem, 68vw, 14.75rem));
+    }
+
+    .pill {
+        min-block-size: 2.45rem;
+        padding-inline: 0.75rem;
+    }
+
+    .pillText {
+        font-size: 0.88rem;
+    }
+
+    .card {
+        padding: 0.7rem;
+    }
+
+    .row {
+        grid-template-columns: 18px minmax(0, 1fr);
+        gap: 0.45rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .wrap {
+        inline-size: min(100%, clamp(10.75rem, 66vw, 13.25rem));
+    }
+
+    .pillText {
+        font-size: 0.82rem;
+    }
+
+    .card {
+        padding: 0.65rem;
+    }
+
+    .row {
+        font-size: 0.8rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pill,
+    .card,
+    .row {
         transition: none;
     }
 }

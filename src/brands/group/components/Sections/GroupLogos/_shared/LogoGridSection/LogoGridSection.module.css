@@ -1,114 +1,162 @@
-/* Wrapper geral (full-width) */
-.wrap {
-    width: 100%;
-    margin-inline: auto;
+/* LogoGridSection — Sunlive Group */
 
-    /* cards dimensionados pelo CONTAINER, não pelo viewport  */
-    --logo-size: clamp(176px, 20cqw, 220px);
-    --logo-pad: clamp(.34rem, .8vw, .56rem);
+.wrap {
+    position: relative;
+    isolation: isolate;
+
+    inline-size: 100%;
+    min-inline-size: 0;
+
+    display: grid;
+    row-gap: clamp(0.85rem, 2vw, 1.35rem);
+
+    box-sizing: border-box;
+    padding: clamp(0.95rem, 2.2vw, 1.45rem) clamp(0.75rem, 2vw, 1.25rem);
+
+    overflow: visible;
+
+    background: color-mix(in oklab,
+            #020a20 82%,
+            var(--sl-gold-500, #c78615) 18%);
+
+    --logo-grid-gap: clamp(0.85rem, 1.8vw, 1.25rem);
+    --logo-card-size: clamp(9.5rem, 14vw, 12.75rem);
+    --logo-pad: clamp(0.34rem, 0.8vw, 0.56rem);
     --logo-crop: 2.5%;
 }
 
-/* Título */
+.wrap::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 2;
+
+    block-size: 2px;
+    pointer-events: none;
+
+    border-radius: 999px;
+    opacity: 0.9;
+
+    background: linear-gradient(90deg,
+            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 40%),
+            color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 10%),
+            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 40%));
+}
+
 .header {
+    inline-size: 100%;
+    min-inline-size: 0;
+
     display: grid;
     place-items: center;
-    margin-block: clamp(.9rem, 2.6vw, 1.4rem) clamp(1rem, 2.6vw, 1.6rem);
+
+    box-sizing: border-box;
+    margin: 0;
 }
 
 .title {
+    margin: 0;
+
+    color: var(--sl-gold-400, #c78615);
+
     font-family: var(--sl-ff-display, var(--sl-ff-ui, Inter, system-ui, sans-serif));
-    font-weight: 800;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    color: var(--sl-gold-400, #C78615);
-    /* dourado-aurora fallback */
     font-size: clamp(1.2rem, 2.3vw, 1.85rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: 0.06em;
+
     text-align: center;
+    text-transform: uppercase;
 }
 
-/* Grid (tapete) — mesma largura visível da linha do header */
 .grid {
-    /* 🔹 habilita container queries */
-    container-type: inline-size;
-
-    --cols: min(var(--cols-max, 4), 4);
-    --zone-pad-y: clamp(.75rem, 2.1vw, 1.1rem);
-    --gap: clamp(.75rem, 1.7vw, 1.05rem);
+    inline-size: 100%;
+    min-inline-size: 0;
 
     display: grid;
-    grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
-    gap: var(--gap);
+    grid-template-columns: repeat(min(var(--cols-max, 4), 4), minmax(0, 1fr));
+    gap: var(--logo-grid-gap);
 
-    width: calc(100% - (var(--section-inset) * 2));
-    margin-inline: var(--section-inset);
-    padding-inline: clamp(.6rem, 1.6vw, .9rem);
-    padding-block: var(--zone-pad-y);
-    background: color-mix(in oklab, #020a20 82%, var(--ld-accent) 18%);
-    /* Prestige Noir */
+    align-items: start;
     justify-items: center;
+
     box-sizing: border-box;
+    padding: clamp(0.75rem, 2.1vw, 1.1rem) clamp(0.6rem, 1.6vw, 0.9rem);
+
+    background: transparent;
 }
 
-/* Célula + link */
 .cell {
+    min-inline-size: 0;
+
     display: grid;
     place-items: center;
 }
 
 .link {
     display: inline-block;
-    text-decoration: none;
+
     color: inherit;
+    text-decoration: none;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Card */
 .card {
+    inline-size: min(100%, var(--logo-card-size));
+    min-inline-size: 0;
+
     display: grid;
     justify-items: center;
-    gap: clamp(.34rem, .8vw, .54rem);
-    width: var(--logo-size);
+    gap: clamp(0.34rem, 0.8vw, 0.54rem);
+
+    box-sizing: border-box;
 }
 
-/* Moldura prestige */
 .logoFrame {
     position: relative;
-    overflow: hidden;
+
+    inline-size: min(100%, var(--logo-card-size));
+    block-size: auto;
     aspect-ratio: 1 / 1;
-    width: var(--logo-size);
-    height: var(--logo-size);
-    border-radius: 12px;
-    padding: var(--logo-pad);
-
-    /* Borda em dourado-aurora */
-    border: 1.6px solid color-mix(in oklab, var(--sl-gold-500, #C78615), white 12%);
-
-    background-color: transparent;
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .06),
-        0 14px 24px rgba(0, 0, 0, .34);
 
     display: grid;
     place-items: center;
-    transition: transform .18s ease,
-        box-shadow .18s ease,
-        border-color .18s ease;
-    will-change: transform, box-shadow, border-color;
+
+    box-sizing: border-box;
+    padding: var(--logo-pad);
+
+    overflow: hidden;
+
+    border: 1.6px solid color-mix(in oklab, var(--sl-gold-500, #c78615), white 12%);
+    border-radius: 12px;
+
+    background-color: transparent;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 14px 24px rgba(0, 0, 0, 0.34);
+
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
 }
 
-/* Tapete interno + overlay dourado-aurora */
 .logoFrame::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 0;
+
     background:
         radial-gradient(farthest-corner at 50% 32%,
-            color-mix(in oklab, var(--sl-gold-400, #F3C970), transparent 70%) 0%,
+            color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 70%) 0%,
             transparent 72%),
         linear-gradient(180deg,
-            color-mix(in oklab, var(--sl-gold-500, #C78615), white 30%) 0%,
-            color-mix(in oklab, var(--sl-gold-500, #C78615), black 12%) 100%);
+            color-mix(in oklab, var(--sl-gold-500, #c78615), white 30%) 0%,
+            color-mix(in oklab, var(--sl-gold-500, #c78615), black 12%) 100%);
 }
 
 .logoFrame::before {
@@ -116,98 +164,176 @@
     position: absolute;
     inset: 0;
     z-index: 1;
+
     pointer-events: none;
 
-    /* halo em dourado-aurora (usado no hover) */
-    background-color:
-        color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 60%);
+    background-color: color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 60%);
 
     opacity: 0;
-    transition: opacity .18s ease, z-index 0s linear .18s;
+
+    transition: opacity 180ms ease;
 }
 
-/* Logo */
 .logo {
     position: relative;
     z-index: 2;
-    width: 100%;
-    height: 100%;
+
+    display: block;
+
+    inline-size: 100%;
+    block-size: 100%;
+
     object-fit: contain;
     clip-path: inset(var(--logo-crop) round 10px);
+
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 
-/* Legenda */
 .caption {
-    width: var(--logo-size);
-    min-height: clamp(2.2rem, 3vw, 2.6rem);
+    inline-size: min(100%, var(--logo-card-size));
+    min-block-size: clamp(2.2rem, 3vw, 2.6rem);
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: var(--sl-gold-400, #C78615);
-    font-family: var(--sl-ff-ui, Inter, system-ui, sans-serif);
-    font-size: clamp(.86rem, 1.1vw, .96rem);
-    line-height: 1.25;
-    text-align: center;
-    opacity: .95;
     margin: 0;
+
+    color: var(--sl-gold-400, #c78615);
+
+    font-family: var(--sl-ff-ui, Inter, system-ui, sans-serif);
+    font-size: clamp(0.82rem, 1.05vw, 0.96rem);
+    line-height: 1.25;
+
+    text-align: center;
+
+    opacity: 0.95;
 }
 
-/* Linha dourada inferior — mesma largura da do header */
 .goldRule {
-    margin: var(--zone-pad-y) auto 0;
-    height: 0;
-    width: calc(100% - (var(--section-inset) * 2));
-    margin-inline: var(--section-inset);
-
-    border-top: 2px solid color-mix(in oklab, var(--sl-gold-500, #C78615), black 6%);
-
-    opacity: .9;
-    box-sizing: border-box;
-}
-
-/* ===== Hover / Focus ===== */
-.link:hover .logoFrame,
-.link:focus-visible .logoFrame,
-.card:hover .logoFrame,
-.logoFrame:hover {
-    border-color:
-        color-mix(in oklab, var(--sl-gold-500, #C78615), white 18%);
-
-    transform: translateY(-2px) scale(1.009);
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .10),
-        0 22px 32px rgba(0, 0, 0, .42),
-        0 0 0 3px color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 60%);
-}
-
-.link:hover .logoFrame::before,
-.link:focus-visible .logoFrame::before,
-.card:hover .logoFrame::before,
-.logoFrame:hover::before {
-    opacity: 1;
-    z-index: 3;
-    mix-blend-mode: soft-light;
+    display: none;
 }
 
 .link:focus {
     outline: none;
 }
 
-/* Mobile */
-@media (max-width: 720px) {
-    .grid {
-        --cols: 2;
-        --zone-pad-y: clamp(.65rem, 3.4vw, .9rem);
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+.link:focus-visible .logoFrame {
+    outline: none;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900, #04060c), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 35%);
+}
+
+@media (hover: hover) {
+
+    .link:hover .logoFrame,
+    .card:hover .logoFrame {
+        transform: translateY(-2px) scale(1.009);
+
+        border-color: color-mix(in oklab, var(--sl-gold-500, #c78615), white 18%);
+
+        box-shadow:
+            inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+            0 22px 32px rgba(0, 0, 0, 0.42),
+            0 0 0 3px color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 60%);
     }
 
-    .wrap {
-        --logo-size: clamp(150px, 40cqw, 188px);
+    .link:hover .logoFrame::before,
+    .card:hover .logoFrame::before {
+        opacity: 1;
+        mix-blend-mode: soft-light;
     }
 }
 
-/* Reduced motion */
+@media (max-width: 1200px) {
+    .wrap {
+        --logo-card-size: clamp(8.75rem, 20vw, 11.75rem);
+    }
+}
+
+@media (max-width: 900px) {
+    .wrap {
+        --logo-grid-gap: clamp(0.65rem, 1.7vw, 0.95rem);
+        --logo-card-size: clamp(8.5rem, 26vw, 11.25rem);
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .wrap {
+        --logo-card-size: clamp(8rem, 34vw, 10.75rem);
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .wrap {
+        row-gap: clamp(0.65rem, 3vw, 1rem);
+
+        padding: clamp(0.75rem, 4vw, 1.1rem) clamp(0.6rem, 3vw, 0.85rem);
+
+        --logo-grid-gap: 0.65rem;
+        --logo-card-size: clamp(8rem, 38vw, 10.5rem);
+    }
+
+    .grid {
+        padding-block: clamp(0.65rem, 3.4vw, 0.9rem);
+        padding-inline: clamp(0.55rem, 2.6vw, 0.8rem);
+    }
+
+    .caption {
+        font-size: clamp(0.78rem, 2vw, 0.9rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .wrap {
+        --logo-grid-gap: 0.55rem;
+        --logo-card-size: clamp(7.35rem, 36vw, 9.25rem);
+    }
+
+    .grid {
+        padding-inline: 0.55rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .wrap {
+        --logo-card-size: clamp(6.85rem, 34vw, 8.5rem);
+    }
+
+    .title {
+        font-size: clamp(1rem, 5vw, 1.2rem);
+    }
+
+    .caption {
+        min-block-size: 2rem;
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .wrap {
+        --logo-grid-gap: 0.5rem;
+        --logo-card-size: clamp(6.25rem, 32vw, 7.75rem);
+    }
+
+    .caption {
+        font-size: 0.72rem;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     .logoFrame,

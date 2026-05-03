@@ -1,137 +1,206 @@
-/* src/brands/group/components/SectionGroup/Booksection/Booksection.module.css */
+/* Book Section — Sunlive Group */
 
-/* Booksection — container igual às restantes secções */
-.sectionWrap {
+.section {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(2rem, 5vw, 4rem);
-    color: var(--sl-platinum-100);
-    overflow: clip;
 
-    /* controla a margem visível nas pontas das linhas */
-    --line-inset: clamp(12px, 4vw, 40px);
+    inline-size: 100%;
+    min-inline-size: 0;
+    overflow: visible;
+
+    display: grid;
+    place-items: center;
+
+    box-sizing: border-box;
+    padding-block: clamp(1.75rem, 3.5vw, 3rem);
+
+    color: var(--sl-platinum-100, #f4f7fc);
+    background: transparent;
+
+    --book-button-max: clamp(15rem, 22vw, 21rem);
 }
 
-/* ===== Linhas decorativas — apenas TOP com gradiente ===== */
-.sectionWrap::before,
-.sectionWrap::after {
+.section::before {
     content: "";
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-
-    /* largura alinhada ao content width, com margens proporcionais nas pontas */
-    inline-size: calc(min(var(--sl-container-lg), 100%) - 2 * var(--line-inset));
-    block-size: 2px;
-
-    border-radius: 2px;
-    opacity: 0.9;
-    pointer-events: none;
-}
-
-/* TOP — linha dourado-aurora (mesma linguagem do footer Group) */
-.sectionWrap::before {
+    inset-inline: 0;
     inset-block-start: 0;
+
+    block-size: 2px;
+    pointer-events: none;
+
+    border-radius: 999px;
+    opacity: 0.9;
+
     background: linear-gradient(90deg,
-            color-mix(in oklab, var(--sl-gold-500), transparent 40%),
-            color-mix(in oklab, var(--sl-gold-400), transparent 10%),
-            color-mix(in oklab, var(--sl-gold-500), transparent 40%));
+            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 40%),
+            color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 10%),
+            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 40%));
 }
 
-/* BOTTOM — sem linha visível */
-.sectionWrap::after {
-    inset-block-end: 0;
-    background: none;
-    block-size: 0;
-}
-
-/* Largura do conteúdo */
-.inner {
-    width: min(var(--sl-container-lg), 100%);
-    margin-inline: auto;
-
-    /* mesma grelha (12 colunas) dos outros blocos */
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.25rem 1rem;
-    align-items: start;
-    justify-items: stretch;
-    box-sizing: border-box;
-}
-
-/* ===== Pill (mesmo look & feel dos restantes) ===== */
 .button {
-    --pill-h: clamp(42px, 3.1vw, 48px);
-
-    grid-column: 1 / span 12;
-    width: 100%;
-
     position: relative;
+
+    inline-size: min(100%, var(--book-button-max));
+    min-inline-size: 0;
+    min-block-size: clamp(2.6rem, 3.2vw, 3.25rem);
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: .6rem;
+    gap: 0.6rem;
 
-    min-height: var(--pill-h);
-    padding: .5rem 1.1rem;
+    box-sizing: border-box;
+    padding: 0.55rem 0.9rem;
 
-    /* Ouro aurora na borda */
-    border: 3px solid color-mix(in oklab, var(--sl-gold-500), white 10%);
+    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), white 10%);
     border-radius: 1.35rem;
 
-    /* Noir + leve halo dourado */
-    /* 🔹 Mesmo mood de fundo que os outros cards do Group */
     background: rgba(4, 8, 20, 0.98);
-    color: var(--sl-platinum-100);
+    color: var(--sl-platinum-100, #f4f7fc);
+
+    font: inherit;
     font-weight: 800;
+    line-height: 1.1;
+
     text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 
     transition:
-        transform 120ms ease,
-        box-shadow 120ms ease,
-        background-color 120ms ease,
-        border-color 120ms ease,
-        color 120ms ease;
-    box-shadow: none;
+        transform 160ms ease,
+        border-color 160ms ease,
+        background 160ms ease,
+        color 160ms ease;
 }
 
-/* Tablet: 6/12 centrado */
-@media (min-width: 720px) {
-    .button {
-        grid-column: 4 / span 6;
+.label {
+    min-inline-size: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: clamp(0.9rem, 0.82rem + 0.26vw, 1.1rem);
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+
+    text-align: center;
+}
+
+.arrow {
+    flex: 0 0 auto;
+
+    display: inline-block;
+
+    color: var(--sl-gold-400, #f3c970);
+
+    font-size: 1.1rem;
+    line-height: 1;
+
+    transform: rotate(90deg);
+    transform-origin: center;
+}
+
+@media (hover: hover) {
+    .button:hover {
+        transform: translateY(-1px);
+
+        border-color:
+            color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
+
+        background:
+            linear-gradient(135deg,
+                color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+                color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+
+        color: var(--sl-platinum-010, #f9fafb);
     }
-}
-
-/* Desktop: 4/12 centrado (mesma largura dos outros cards) */
-@media (min-width: 1100px) {
-    .button {
-        --pill-h: 47.2px;
-        /* mesma altura dos pills em desktop */
-        grid-column: 5 / span 4;
-    }
-}
-
-.button:hover {
-    transform: translateY(-1px);
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
-    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
 }
 
 .button:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 4px color-mix(in oklab, var(--sl-gold-400), transparent 45%);
+
+    box-shadow:
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900, #04060c), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 35%);
 }
 
-.label {
-    font-size: clamp(.95rem, .85rem + .3vw, 1.25rem);
-    line-height: 1;
-    letter-spacing: .2px;
+@media (max-width: 1200px) {
+    .section {
+        --book-button-max: clamp(13.5rem, 34vw, 20rem);
+    }
 }
 
-.arrow {
-    font-size: 1.15rem;
-    line-height: 1;
-    color: var(--sl-gold-400);
+@media (max-width: 900px) {
+    .section {
+        --book-button-max: clamp(13rem, 40vw, 18.5rem);
+    }
+
+    .button {
+        min-block-size: clamp(2.45rem, 5vw, 3rem);
+    }
+
+    .label {
+        font-size: clamp(0.88rem, 2vw, 1rem);
+    }
+}
+
+@media (max-width: 720px) {
+    .section {
+        --book-button-max: clamp(12rem, 42vw, 17rem);
+    }
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding-block: clamp(1.4rem, 6vw, 2.25rem);
+
+        --book-button-max: clamp(13rem, 74vw, 18rem);
+    }
+
+    .button {
+        border-radius: 1.15rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        --book-button-max: clamp(12.25rem, 70vw, 15.75rem);
+    }
+
+    .button {
+        padding-inline: 0.8rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .section {
+        --book-button-max: clamp(11.5rem, 68vw, 14.75rem);
+    }
+
+    .button {
+        min-block-size: 2.45rem;
+        padding-inline: 0.75rem;
+    }
+
+    .label {
+        font-size: 0.88rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .section {
+        --book-button-max: clamp(10.75rem, 66vw, 13.25rem);
+    }
+
+    .label {
+        font-size: 0.82rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button {
+        transition: none;
+    }
 }

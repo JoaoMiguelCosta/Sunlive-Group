@@ -1,18 +1,200 @@
-/* =========================================
-   Contacts Grid (BusinessUnits + RegionalOffices)
-   Prestige Noir + Liquid Gold Aurora — sem glows locais
-========================================= */
+/* Contacts Grid — BusinessUnits + RegionalOffices */
 
-/* GRID */
 .grid {
+    inline-size: 100%;
+    min-inline-size: 0;
+
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    /* ligeiramente mais espaço vertical entre itens */
-    gap: clamp(1.1rem, 1.8vw, 1.6rem) 1rem;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--contacts-grid-gap, clamp(0.85rem, 1.8vw, 1.25rem));
+
+    align-items: start;
+    justify-items: center;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .item {
     grid-column: span 12;
+
+    inline-size: min(100%, var(--contacts-card-max, clamp(15rem, 22vw, 21rem)));
+    min-inline-size: 0;
+
+    justify-self: center;
+}
+
+.pill {
+    position: relative;
+
+    inline-size: 100%;
+    min-inline-size: 0;
+    min-block-size: clamp(2.6rem, 3.2vw, 3.25rem);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+
+    box-sizing: border-box;
+    padding: 0.55rem 0.9rem;
+
+    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), white 10%);
+    border-radius: 1.35rem;
+
+    background: rgba(4, 8, 20, 0.96);
+    color: #eaf0ff;
+
+    font: inherit;
+    font-weight: 800;
+    line-height: 1.1;
+
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        background 160ms ease,
+        color 160ms ease;
+}
+
+.pillText {
+    min-inline-size: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: clamp(0.9rem, 0.82rem + 0.26vw, 1.1rem);
+    line-height: 1.15;
+    text-align: center;
+}
+
+.caret {
+    flex: 0 0 auto;
+
+    display: inline-block;
+
+    color: var(--sl-gold-400, #f3c970);
+
+    line-height: 1;
+    transform: rotate(90deg);
+    transform-origin: center;
+}
+
+.flag {
+    flex: 0 0 auto;
+
+    inline-size: 18px;
+    block-size: 12px;
+
+    border-radius: 2px;
+}
+
+.card {
+    inline-size: 100%;
+    min-inline-size: 0;
+
+    display: grid;
+    gap: 0.6rem;
+
+    box-sizing: border-box;
+    margin-block-start: 0.75rem;
+    padding: 0.9rem 1rem;
+
+    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), white 8%);
+    border-radius: 1rem;
+
+    background: color-mix(in oklab,
+            #020a20 82%,
+            var(--sl-gold-500, #c78615) 18%);
+
+    overflow: hidden;
+
+    transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        background 160ms ease,
+        color 160ms ease;
+}
+
+.row {
+    min-inline-size: 0;
+
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr);
+    align-items: center;
+    gap: 0.55rem;
+
+    box-sizing: border-box;
+    padding: 0.45rem 0.5rem;
+
+    border: 1px solid transparent;
+    border-radius: 0.65rem;
+
+    color: #eef3ff;
+    text-decoration: none;
+
+    overflow-wrap: anywhere;
+
+    transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        background 160ms ease,
+        color 160ms ease;
+}
+
+.icon {
+    color: var(--sl-gold-400, #f3c970);
+}
+
+.muted {
+    opacity: 0.6;
+}
+
+@media (hover: hover) {
+
+    .pill:hover,
+    .card:hover {
+        transform: translateY(-1px);
+
+        border-color: color-mix(in oklab,
+                var(--sl-gold-700, #92400e),
+                black 10%);
+
+        background: linear-gradient(135deg,
+                color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+                color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    }
+
+    .row[href]:hover {
+        transform: translateY(-1px);
+
+        border-color: color-mix(in oklab,
+                var(--sl-gold-500, #c78615),
+                transparent 35%);
+
+        background: color-mix(in oklab,
+                var(--sl-gold-500, #c78615),
+                transparent 86%);
+
+        color: var(--sl-gold-400, #f3c970);
+    }
+}
+
+.pill:focus-visible,
+.row:focus-visible {
+    outline: none;
+
+    box-shadow:
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900, #04060c), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 35%);
+}
+
+.row[aria-disabled="true"] {
+    pointer-events: none;
 }
 
 @media (min-width: 720px) {
@@ -25,12 +207,7 @@
     .item {
         grid-column: span 4;
     }
-}
 
-/* ---------- Layout especial: 5 itens (3 em cima + 2 centrados) ---------- */
-@media (min-width: 1100px) {
-
-    /* aplica só quando o grid declara data-count="5" (RegionalOffices) */
     .grid[data-count="5"] .item:nth-child(4) {
         grid-column: 3 / span 4;
     }
@@ -40,123 +217,114 @@
     }
 }
 
-/* PILL (btn) */
-.pill {
-    position: relative;
-    overflow: visible;
-    width: 100%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: .55rem;
-
-    /* padding comum a BU/RO */
-    padding: .52rem .9rem;
-
-    /* Dourado-aurora na borda */
-    border: 3px solid color-mix(in oklab, var(--sl-gold-500, #C78615), white 10%);
-    border-radius: 1.35rem;
-
-    background: rgba(4, 8, 20, 0.96);
-   
-
-    color: #eaf0ff;
-    font-weight: 800;
-    cursor: pointer;
-    transition:
-        transform 120ms ease,
-        box-shadow 120ms ease,
-        background-color 120ms ease,
-        opacity 120ms ease,
-        border-color 120ms ease,
-        color 120ms ease;
+@media (max-width: 1200px) {
+    .item {
+        inline-size: min(100%, clamp(13.5rem, 34vw, 20rem));
+    }
 }
 
-.pill:hover {
-transform: translateY(-1px);
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
-    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
-}
+@media (max-width: 900px) {
+    .item {
+        inline-size: min(100%, clamp(13rem, 40vw, 18.5rem));
+    }
 
-.pill:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 4px color-mix(in oklab, var(--sl-gold-400), transparent 45%);
-}
-
-/* Texto e ícones do pill */
-.pillText {
-    font-size: clamp(.95rem, .85rem + .3vw, 1.28rem);
-}
-
-.caret {
-    color: var(--sl-gold-400);
-    display: inline-block;
-    /* necessário para rodar */
-    transform: rotate(90deg);
-    /* direita → baixo */
-    transform-origin: center;
-    line-height: 1;
-}
-
-.flag {
-    width: 18px;
-    height: 12px;
-    border-radius: 2px;
-}
-
-/* CARTÃO (conteúdo aberto) */
-.card {
-    /* ligeiramente mais espaço entre pill e cartão */
-    margin-top: .75rem;
-    padding: .9rem 1rem;
-
-    border: 3px solid color-mix(in oklab, var(--sl-gold-500), white 8%);
-    border-radius: 1rem;
-
-    background: color-mix(in oklab,
-                #020a20 82%,
-                var(--sl-gold-500, #C78615) 18%);
-    display: grid;
-    gap: .6rem;
-    position: relative;
-    overflow: visible;
-}
-
-.card:hover {
-    background: color-mix(in oklab, var(--sl-gold-500), transparent 82%);
-}
-
-/* Linhas/entradas dentro do cartão */
-.row {
-    display: grid;
-    grid-template-columns: 18px 1fr;
-    align-items: center;
-    gap: .5rem;
-    color: #eef3ff;
-    text-decoration: none;
-}
-
-.row:hover {
-transform: translateY(-1px);
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
-    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
-}
-
-.icon {
-    color: var(--sl-gold-400);
-}
-
-.muted {
-    opacity: .6;
-}
-
-/* Motion-safe */
-@media (prefers-reduced-motion: reduce) {
     .pill {
+        min-block-size: clamp(2.45rem, 5vw, 3rem);
+    }
+
+    .pillText {
+        font-size: clamp(0.88rem, 2vw, 1rem);
+    }
+}
+
+@media (max-width: 720px) {
+    .item {
+        inline-size: min(100%, clamp(12rem, 42vw, 17rem));
+    }
+}
+
+@media (max-width: 640px) {
+    .item {
+        inline-size: min(100%, clamp(13rem, 74vw, 18rem));
+    }
+
+    .pill {
+        border-radius: 1.15rem;
+    }
+
+    .card {
+        padding: 0.8rem;
+        border-radius: 0.9rem;
+    }
+
+    .row {
+        padding: 0.45rem;
+        font-size: 0.92rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .item {
+        inline-size: min(100%, clamp(12.25rem, 70vw, 15.75rem));
+    }
+
+    .pill {
+        padding-inline: 0.8rem;
+    }
+
+    .card {
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .item {
+        inline-size: min(100%, clamp(11.5rem, 68vw, 14.75rem));
+    }
+
+    .pill {
+        min-block-size: 2.45rem;
+        padding-inline: 0.75rem;
+    }
+
+    .pillText {
+        font-size: 0.88rem;
+    }
+
+    .card {
+        padding: 0.7rem;
+    }
+
+    .row {
+        grid-template-columns: 18px minmax(0, 1fr);
+        gap: 0.45rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .item {
+        inline-size: min(100%, clamp(10.75rem, 66vw, 13.25rem));
+    }
+
+    .pillText {
+        font-size: 0.82rem;
+    }
+
+    .card {
+        padding: 0.65rem;
+    }
+
+    .row {
+        font-size: 0.8rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pill,
+    .card,
+    .row {
         transition: none;
     }
 }

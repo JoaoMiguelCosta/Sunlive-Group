@@ -8,7 +8,7 @@ import fpa from "../../../assets/group-logos/logos/portugueseFederations/fap.png
 
 export const portugueseFederations = {
   id: "federations-pt",
-  title: "FEDERAÇÔES PORTUGUESAS",
+  title: "FEDERAÇÕES PORTUGUESAS",
   items: [
     {
       key: "fpb",

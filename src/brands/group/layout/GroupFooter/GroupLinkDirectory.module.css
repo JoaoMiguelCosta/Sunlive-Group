@@ -10,7 +10,7 @@
     --gd-accent-soft: color-mix(in oklab, var(--gd-accent), white 16%);
     --gd-accent-deep: color-mix(in oklab, var(--gd-accent), black 18%);
 
-    --gd-shell-max: 1280px;
+    --gd-shell-max: 1360px;
     --gd-inner-gutter: clamp(0.8rem, 1.8vw, 1.2rem);
     --gd-block-gap: clamp(1rem, 1.4vw, 1.3rem);
     --gd-col-gap: clamp(1rem, 1.4vw, 1.35rem);

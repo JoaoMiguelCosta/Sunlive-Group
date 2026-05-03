@@ -1,113 +1,117 @@
-// OverviewSection/DivisionsPanel.jsx
 import styles from "./DivisionsPanel.module.css";
 import { groupHomePage } from "../../../../config/pages/index.js";
 
-export default function DivisionsPanel() {
-  const overview = groupHomePage?.sections?.overview;
-  const divisions = overview?.divisions ?? [];
-  const home = overview?.homeCard ?? { renderAs: "text", href: "/" };
+function isValidText(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function isValidObject(value) {
+  return value && typeof value === "object" && !Array.isArray(value);
+}
+
+function getValidDivisions(items) {
+  return Array.isArray(items)
+    ? items.filter((item) => isValidObject(item) && isValidText(item.key))
+    : [];
+}
+
+function getCardLabel(item, fallback = "Sunlive Group") {
+  const label = isValidText(item?.label) ? item.label : fallback;
+  const sub = isValidText(item?.sub) ? item.sub : "";
+
+  return `${label}${sub ? ` — ${sub}` : ""}`;
+}
+
+function CardContent({ item, fallbackLabel }) {
+  const label = getCardLabel(item, fallbackLabel);
+  const isImage = item?.renderAs === "image" && isValidText(item?.imageSrc);
+
+  if (isImage) {
+    return (
+      <img
+        src={item.imageSrc}
+        alt={label}
+        className={styles.cardImg}
+        loading="lazy"
+        decoding="async"
+      />
+    );
+  }
 
   return (
-    <section className={styles.sectionWrap} aria-label="Divisões Sunlive Group">
-      {/* Painel com moldura fica por cima do “tapete” de gradiente */}
-      <div className={styles.panel}>
-        <div className={styles.row}>
-          {divisions.map((d) => {
-            const isImg = d.renderAs === "image" && d.imageSrc;
-            const isDisabled = Boolean(d.disabled);
-            const label = `${d.label}${d.sub ? ` — ${d.sub}` : ""}`;
+    <>
+      <span className={styles.cardTitle}>{item?.label ?? fallbackLabel}</span>
 
-            if (isDisabled) {
-              return (
-                <div
-                  key={d.key}
-                  className={`${styles.card} ${styles.cardDisabled}`}
-                  aria-label={`${label} (desativado)`}
-                  aria-disabled="true"
-                >
-                  <span
-                    className={styles.badge}
-                    aria-hidden="true"
-                    title="Brevemente"
-                  >
-                    Brevemente
-                  </span>
-
-                  {isImg ? (
-                    <img
-                      src={d.imageSrc}
-                      alt={`${d.label} ${d.sub ?? ""}`.trim()}
-                      className={styles.cardImg}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  ) : (
-                    <>
-                      <span className={styles.cardTitle}>{d.label}</span>
-                      {d.sub && (
-                        <small className={styles.cardSub}>{d.sub}</small>
-                      )}
-                    </>
-                  )}
-                </div>
-              );
-            }
-
-            return (
-              <a
-                key={d.key}
-                href={d.href}
-                className={styles.card}
-                aria-label={label}
-              >
-                {isImg ? (
-                  <img
-                    src={d.imageSrc}
-                    alt={`${d.label} ${d.sub ?? ""}`.trim()}
-                    className={styles.cardImg}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                ) : (
-                  <>
-                    <span className={styles.cardTitle}>{d.label}</span>
-                    {d.sub && <small className={styles.cardSub}>{d.sub}</small>}
-                  </>
-                )}
-              </a>
-            );
-          })}
-        </div>
-
-        <div className={styles.homeRow}>
-          <a
-            href={home.href ?? "/"}
-            className={`${styles.card} ${styles.homeCard}`}
-            aria-label={home.label ?? "Our Home"}
-          >
-            {home.renderAs === "image" && home.imageSrc ? (
-              <img
-                src={home.imageSrc}
-                alt={home.label ?? "Our Home"}
-                className={styles.cardImg}
-                loading="lazy"
-                decoding="async"
-              />
-            ) : (
-              <>
-                <span className={styles.cardTitle}>
-                  {home.label ?? "Our Home"}
-                </span>
-                {home.sub && (
-                  <small className={styles.cardSub}>{home.sub}</small>
-                )}
-              </>
-            )}
-          </a>
-        </div>
-      </div>
-    </section>
+      {isValidText(item?.sub) ? (
+        <small className={styles.cardSub}>{item.sub}</small>
+      ) : null}
+    </>
   );
 }
 
+function DivisionCard({ item }) {
+  const label = getCardLabel(item);
+  const isDisabled = Boolean(item.disabled) || !isValidText(item.href);
 
+  if (isDisabled) {
+    return (
+      <div
+        className={`${styles.card} ${styles.cardDisabled}`}
+        aria-label={`${label} — brevemente`}
+        aria-disabled="true"
+      >
+        <span className={styles.badge} aria-hidden="true">
+          Brevemente
+        </span>
+
+        <CardContent item={item} fallbackLabel="Sunlive Group" />
+      </div>
+    );
+  }
+
+  return (
+    <a href={item.href} className={styles.card} aria-label={label}>
+      <CardContent item={item} fallbackLabel="Sunlive Group" />
+    </a>
+  );
+}
+
+export default function DivisionsPanel() {
+  const overview = groupHomePage?.sections?.overview;
+
+  const divisions = getValidDivisions(overview?.divisions);
+  const home = isValidObject(overview?.homeCard)
+    ? overview.homeCard
+    : { renderAs: "text", href: "/", label: "Our Home" };
+
+  const shouldRenderHome = isValidObject(home);
+  const homeLabel = getCardLabel(home, "Our Home");
+
+  if (!divisions.length && !shouldRenderHome) return null;
+
+  return (
+    <div className={styles.sectionWrap} aria-label="Divisões Sunlive Group">
+      <div className={styles.panel}>
+        {divisions.length ? (
+          <div className={styles.row}>
+            {divisions.map((division) => (
+              <DivisionCard key={division.key} item={division} />
+            ))}
+          </div>
+        ) : null}
+
+        {shouldRenderHome ? (
+          <div className={styles.homeRow}>
+            <a
+              href={home.href ?? "/"}
+              className={`${styles.card} ${styles.homeCard}`}
+              aria-label={homeLabel}
+            >
+              <CardContent item={home} fallbackLabel="Our Home" />
+            </a>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}

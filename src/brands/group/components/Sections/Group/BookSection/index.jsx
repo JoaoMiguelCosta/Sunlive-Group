@@ -1,39 +1,65 @@
 import styles from "./BookSection.module.css";
+
 import { groupHomePage } from "../../../../config/pages/index.js";
+
+function isValidText(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function isValidObject(value) {
+  return value && typeof value === "object" && !Array.isArray(value);
+}
+
+function resolveCta(bookConfig) {
+  if (!isValidObject(bookConfig)) return null;
+
+  if (isValidObject(bookConfig.cta)) {
+    return bookConfig.cta;
+  }
+
+  return bookConfig;
+}
 
 export default function BookSection() {
   const bookConfig = groupHomePage?.sections?.book;
+  const cta = resolveCta(bookConfig);
 
-  const cta = bookConfig?.cta ?? {
-    label: "Open Book Sunlive Group",
-    href: "",
-    filename: "Sunlive-Group-Book.pdf",
-    ariaLabel: "Download Sunlive Group Book (PDF)",
-  };
+  if (!cta) return null;
 
-  if (!cta.href) return null;
+  const sectionId = isValidText(bookConfig?.id) ? bookConfig.id : "book";
+
+  const label = isValidText(cta.label) ? cta.label : "Open Book Sunlive Group";
+
+  const href = isValidText(cta.href) ? cta.href : "";
+
+  const filename = isValidText(cta.filename)
+    ? cta.filename
+    : "Sunlive-Group-Book.pdf";
+
+  const ariaLabel = isValidText(cta.ariaLabel) ? cta.ariaLabel : label;
+
+  if (!href) return null;
 
   return (
     <section
-      id={bookConfig?.id ?? "book"}
-      className={styles.sectionWrap}
+      id={sectionId}
+      className={styles.section}
       aria-label="Sunlive Group — Book"
     >
-      <div className={styles.inner}>
-        <a
-          className={styles.button}
-          href={cta.href}
-          download={cta.filename}
-          aria-label={cta.ariaLabel || cta.label}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className={styles.label}>{cta.label}</span>
-          <span className={styles.arrow} aria-hidden="true">
-            ➜
-          </span>
-        </a>
-      </div>
+      <a
+        className={styles.button}
+        href={href}
+        download={filename}
+        aria-label={ariaLabel}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span className={styles.label}>{label}</span>
+
+        <span className={styles.arrow} aria-hidden="true">
+          ➜
+        </span>
+      </a>
     </section>
   );
 }

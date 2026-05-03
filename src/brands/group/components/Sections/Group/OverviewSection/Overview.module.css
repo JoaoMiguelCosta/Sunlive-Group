@@ -1,47 +1,59 @@
-/* Overview — Sunlive “Performance Prestige” (Prestige Noir + Liquid Gold) */
+/* Overview — Sunlive Group */
+
 .section {
   position: relative;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  width: 100%;
-  min-width: 0;
-  overflow: clip;
   isolation: isolate;
 
-  /* default herdado pelos filhos que tiverem linhas/painéis */
-  --section-inset: clamp(16px, 3.5vw, 44px);
-}
+  inline-size: 100%;
+  min-inline-size: 0;
+  overflow: clip;
 
-/* Limitar a largura dos blocos internos ao small container */
-.section>* {
-  width: min(var(--sl-container-sm), 100%);
-  min-width: 0;
-  /* evita que grids/figuras alarguem o container */
-}
+  display: grid;
+  justify-items: center;
 
-/* ==== EXCEÇÃO: Divisions Panel precisa largura total para alinhar com as linhas ==== */
-/* Se a tua wrapper desta secção se chama .sectionWrap, remove a limitação aqui */
-.section>.sectionWrap {
-  width: 100%;
-  padding-inline: 0;
-  /* impede “empurrões” laterais */
+
+  /*
+    A largura máxima da página já vem de:
+    GroupPageLayout.module.css -> .contentFlow
+    Portanto esta secção só deve ocupar 100% do espaço recebido.
+  */
   box-sizing: border-box;
+
+  --overview-line-inset: clamp(0.75rem, 3.2vw, 2.75rem);
+  --overview-panel-radius: 14px;
 }
 
-/* Ajustes finos para ecrãs muito estreitos */
-@media (max-width: 480px) {
+.section>* {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.srOnly {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 980px) {
   .section {
-    gap: clamp(.6rem, 3vw, .9rem);
-    padding-block: clamp(.2rem, 2.5vw, .6rem);
+   
   }
 }
 
-/* Motion-safe */
-@media (prefers-reduced-motion: reduce) {
+@media (max-width: 640px) {
   .section {
-    box-shadow: none;
+    
+
+    --overview-line-inset: clamp(0.5rem, 4vw, 1rem);
+    --overview-panel-radius: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .section {
+  
   }
 }

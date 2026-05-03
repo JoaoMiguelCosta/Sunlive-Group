@@ -1,25 +1,51 @@
-/* Presence Headline — sem gradiente local */
+/* Presence Headline — Sunlive Group */
+
 .wrap {
     position: relative;
     isolation: isolate;
+
+    inline-size: 100%;
+    min-inline-size: 0;
+
     display: grid;
     place-items: center;
 
-    /* fundo vem da página (tapete global Group) */
+    box-sizing: border-box;
+    padding-inline: clamp(0.5rem, 2.5vw, 2rem);
+
     background: transparent;
 }
 
-/* ::before com var(--grad-hero) REMOVIDO */
-
 .img {
     position: relative;
-    /* acima de qualquer fundo global */
     z-index: 1;
-    display: block;
-    width: min(50rem, 92vw);
-    height: auto;
 
-    /* sombra afinada ao dourado-aurora Sunlive Group */
+    display: block;
+
+    inline-size: clamp(18rem, 58vw, 50rem);
+    max-inline-size: 100%;
+    block-size: auto;
+
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+
     filter:
-        drop-shadow(0 2px 0 color-mix(in oklab, var(--sl-gold-400, #F3C970), transparent 75%)) drop-shadow(0 8px 18px rgba(0, 0, 0, .40));
+        drop-shadow(0 2px 0 color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 75%)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.4));
+}
+
+@media (max-width: 768px) {
+    .img {
+        inline-size: clamp(16rem, 76vw, 38rem);
+    }
+}
+
+@media (max-width: 420px) {
+    .wrap {
+        padding-inline: 0.5rem;
+    }
+
+    .img {
+        inline-size: min(15rem, 88vw);
+    }
 }

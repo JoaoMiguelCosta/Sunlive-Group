@@ -1,59 +1,98 @@
-// src/shared/components/LogoGridSection/index.jsx
 import styles from "./LogoGridSection.module.css";
+
+function isValidText(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function isValidObject(value) {
+  return value && typeof value === "object" && !Array.isArray(value);
+}
+
+function getValidItems(items) {
+  return Array.isArray(items)
+    ? items.filter(
+        (item) =>
+          isValidObject(item) &&
+          isValidText(item.key) &&
+          isValidText(item.name) &&
+          isValidText(item.src),
+      )
+    : [];
+}
+
+function getColumnCount(columnsMax) {
+  const parsedColumns = Number(columnsMax);
+
+  if (!Number.isFinite(parsedColumns)) return 4;
+
+  return Math.max(1, Math.min(6, Math.round(parsedColumns)));
+}
+
+function getCropStyle(cropInset) {
+  return isValidText(cropInset)
+    ? { clipPath: `inset(${cropInset} round 10px)` }
+    : undefined;
+}
 
 export default function LogoGridSection({
   id,
   title,
   items = [],
   columnsMax = 4,
-  className, // <- novo
+  className,
 }) {
-  const cols = Math.max(1, Math.min(6, columnsMax));
+  const validItems = getValidItems(items);
+  const cols = getColumnCount(columnsMax);
+  const headingId = isValidText(id) ? id : undefined;
+
+  if (!validItems.length) return null;
 
   return (
-    <div className={`${styles.wrap} ${className ?? ""}`}>
-      <header className={styles.header}>
-        <h2 id={id} className={styles.title}>
-          {title}
-        </h2>
-      </header>
+    <div
+      className={`${styles.wrap} ${className ?? ""}`.trim()}
+      style={{ "--cols-max": cols }}
+    >
+      {isValidText(title) ? (
+        <header className={styles.header}>
+          <h2 id={headingId} className={styles.title}>
+            {title}
+          </h2>
+        </header>
+      ) : null}
 
-      <div
-        className={styles.grid}
-        data-cols={cols}
-        style={{ "--cols-max": cols }}
-      >
-        {items.map(({ key, name, caption, src, href, cropInset }) => {
-          const img = (
+      <div className={styles.grid} data-cols={cols}>
+        {validItems.map(({ key, name, caption, src, href, cropInset }) => {
+          const image = (
             <img
               className={styles.logo}
               src={src}
               alt={name}
               loading="lazy"
-              style={
-                cropInset
-                  ? { clipPath: `inset(${cropInset} round 10px)` }
-                  : undefined
-              }
+              decoding="async"
+              style={getCropStyle(cropInset)}
             />
           );
 
           const card = (
             <div className={styles.card} aria-label={name}>
-              <div className={styles.logoFrame}>{img}</div>
-              {caption && <p className={styles.caption}>{caption}</p>}
+              <div className={styles.logoFrame}>{image}</div>
+
+              {isValidText(caption) ? (
+                <p className={styles.caption}>{caption}</p>
+              ) : null}
             </div>
           );
 
           return (
             <div key={key} className={styles.cell}>
-              {href ? (
+              {isValidText(href) ? (
                 <a
                   className={styles.link}
                   href={href}
                   target="_blank"
                   rel="noreferrer noopener"
                   title={name}
+                  aria-label={name}
                 >
                   {card}
                 </a>
@@ -69,5 +108,3 @@ export default function LogoGridSection({
     </div>
   );
 }
-
-

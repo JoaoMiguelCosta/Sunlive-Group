@@ -1,20 +1,15 @@
 import styles from "./PresenceSection.module.css";
 
-import PresenceHeadline from "./PresenceHeadline";
-import GlobalPresencePanel from "./GlobalPresencePanel";
-import MantraHeadline from "./MantraHeadline";
+import PresenceHeadline from "./PresenceHeadline.jsx";
+import GlobalPresencePanel from "./GlobalPresencePanel.jsx";
+import MantraHeadline from "./MantraHeadline.jsx";
 
-export default function Presencesection() {
+export default function PresenceSection() {
   return (
-    <section
-      id="presence"
-      className={styles.section}
-      aria-label="Presence"
-    >
+    <section id="presence" className={styles.section} aria-label="Presence">
       <div className={styles.inner}>
         <PresenceHeadline />
 
-        {/* faixa full-bleed com o gradiente do hero por trás do painel */}
         <div className={styles.band}>
           <GlobalPresencePanel />
         </div>
@@ -24,5 +19,3 @@ export default function Presencesection() {
     </section>
   );
 }
-
-

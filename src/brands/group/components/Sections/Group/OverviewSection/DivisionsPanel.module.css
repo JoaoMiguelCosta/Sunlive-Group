@@ -1,196 +1,237 @@
-/* Divisions Panel — Sunlive “Performance Prestige” (sem glow local) */
+/* Divisions Panel — Sunlive Group */
+
 .sectionWrap {
     position: relative;
-    width: 100%;
-    padding-block: clamp(0.75rem, 2.4vw, 1.75rem);
-
-    /* usar a mesma variável das linhas laterais desta secção */
-    --section-inset: clamp(16px, 3.5vw, 44px);
+    inline-size: 100%;
+    min-inline-size: 0;
+    box-sizing: border-box;
+    padding-inline: 0;
 }
 
-/* (Opcional) Se quiseres que as próprias linhas vivam aqui: */
-.sectionWrap::before,
-.sectionWrap::after {
-    content: "";
-    position: absolute;
-    left: var(--section-inset);
-    right: var(--section-inset);
-    height: 2px;
-    pointer-events: none;
-
-    /* linha ao estilo Sunlive Group — dourado-aurora */
-    background: linear-gradient(90deg,
-            color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 40%),
-            color-mix(in oklab, var(--sl-gold-400, #F3C970), transparent 10%),
-            color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 40%));
-    opacity: 0.9;
-    border-radius: 2px;
-}
-
-.sectionWrap::before {
-    top: 0;
-}
-
-.sectionWrap::after {
-    bottom: 0;
-}
-
-/* Painel com borda alinhada às linhas laterais */
 .panel {
+    --division-grid-gap: clamp(0.75rem, 1.8vw, 1.15rem);
+    --division-card-max: clamp(13.5rem, 19vw, 18.25rem);
+
     position: relative;
+    inline-size: 100%;
+    min-inline-size: 0;
+    margin-inline: 0;
+
     display: grid;
-    gap: clamp(.6rem, 1.6vw, 1rem);
-
-    width: calc(100% - (var(--section-inset) * 2));
-    margin-inline: var(--section-inset);
-
-    padding-block: clamp(.4rem, 1.4vw, .8rem);
-    padding-inline: clamp(.75rem, 3.5vw, 2.25rem);
-
-    overflow: clip;
-    min-width: 0;
-
-  
-    border-radius: 14px;
+    gap: clamp(0.65rem, 1.35vw, 0.95rem);
 
     box-sizing: border-box;
-    /* inclui a borda no cálculo */
+    padding-block: clamp(0.45rem, 1.3vw, 0.8rem);
+    padding-inline: 0;
+
+    overflow: visible;
+    border-radius: var(--overview-panel-radius, 14px);
 }
 
 .row {
+    inline-size: 100%;
+    min-inline-size: 0;
+
     display: grid;
-    width: 100%;
-    gap: clamp(.75rem, 2vw, 1.25rem);
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    min-width: 0;
+    gap: var(--division-grid-gap);
+    align-items: center;
     justify-items: center;
 }
 
-@media (max-width: 1200px) {
-    .row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 640px) {
-    .row {
-        grid-template-columns: 1fr;
-    }
-}
-
 .homeRow {
+    inline-size: 100%;
+    min-inline-size: 0;
+
     display: grid;
     place-items: center;
-    width: 100%;
-    padding-top: clamp(.4rem, 1.2vw, .8rem);
+
+    padding-block-start: clamp(0.4rem, 1.2vw, 0.75rem);
 }
 
-/* ===== Cards (base compartilhada) ===== */
-.card,
-.homeCard {
-    --card-scale: 1.0;
+.card {
+    --card-scale: 1;
+
     position: relative;
+
+    inline-size: min(100%, var(--division-card-max));
+    min-inline-size: 0;
+
     display: grid;
     place-items: center;
-    width: 100%;
-    aspect-ratio: 245 / 97;
-    border-radius: calc(var(--sl-radius-sm) - 2px);
 
-    /* Fundo noir */
-    /* 🔹 Mesmo mood de fundo que os outros cards do Group */
-background-color: rgba(4, 8, 20, 0.98);
-    /* Borda dourado-aurora */
-    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #C78615), white 8%);
+    aspect-ratio: 245 / 97;
+    box-sizing: border-box;
+    overflow: visible;
+
+    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), white 8%);
+    border-radius: calc(var(--sl-radius-sm, 12px) - 2px);
+
+    background-color: rgba(4, 8, 20, 0.98);
 
     text-decoration: none;
+    transform: scale(var(--card-scale));
+    -webkit-tap-highlight-color: transparent;
+
     transition:
         transform var(--dur-2, 180ms) var(--ease-out, ease),
-        box-shadow var(--dur-2, 180ms) var(--ease-out, ease),
         border-color var(--dur-2, 180ms) var(--ease-out, ease),
         filter var(--dur-2, 180ms) var(--ease-out, ease),
         background 200ms ease;
-    -webkit-tap-highlight-color: transparent;
-    transform: scale(var(--card-scale));
 }
 
-/* Larguras específicas */
-.card {
-    max-width: clamp(210px, 46vw, 320px);
-}
-
-/* 4 colunas → 3 gaps: Our Home fica com a mesma largura de uma coluna */
 .homeCard {
-    max-width: calc((100% - (clamp(.75rem, 2vw, 1.25rem) * 3)) / 4);
+    inline-size: min(100%, var(--division-card-max));
+    max-inline-size: 100%;
 }
 
-/* Hover marcante + overlay dourado (ambos os tipos) */
-.card::after,
-.homeCard::after {
+.card::after {
     content: "";
     position: absolute;
     inset: 0;
+
     border-radius: inherit;
-
-    /* overlay em dourado-aurora suave, sem laranja */
-    background-color: color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 78%);
-    opacity: 0;
-    transition: opacity 180ms ease;
     pointer-events: none;
+    opacity: 0;
+
+    background-color: color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            transparent 78%);
+
+    transition: opacity 180ms ease;
 }
 
-@media (hover: hover) {
+.cardImg {
+    display: block;
 
-    .card:hover,
-    .homeCard:hover {
-transform: translateY(-1px);
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
-    border: 2px solid color-mix(in oklab, var(--sl-gold-700, #92400e), black 10%);
-    }
+    inline-size: 88%;
+    block-size: 88%;
 
-    .card:hover::after,
-    .homeCard:hover::after {
-        opacity: 1;
-    }
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
 
-    .card:hover .cardImg,
-    .homeCard:hover .cardImg {
-        filter:
-            drop-shadow(0 1px 0 rgba(255, 255, 255, .04)) drop-shadow(0 14px 28px rgba(0, 0, 0, .5)) brightness(1.03);
-    }
+    filter:
+        drop-shadow(0 1px 0 rgba(255, 255, 255, 0.03)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
 }
 
-.card:active,
-.homeCard:active {
-    --card-scale: 1.0;
+.cardTitle {
+    color: var(--text-1, #f6f7fb);
+
+    font-family: var(--sl-ff-display, "Orbitron", "Eurostile", var(--font-sans));
+    font-size: clamp(0.82rem, 0.95vw, 0.95rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.06em;
+
+    text-align: center;
+    text-transform: uppercase;
 }
 
-/* Focus acessível (ambos) */
-.card:focus-visible,
-.homeCard:focus-visible {
-    outline: 0;
+.cardSub {
+    margin-block-start: 0.35rem;
+
+    color: var(--text-2, rgba(246, 247, 251, 0.72));
+
+    font-family: var(--sl-ff-ui, var(--font-sans));
+    font-size: clamp(0.52rem, 0.68vw, 0.6rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.08em;
+
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.badge {
+    position: absolute;
+    inset-block-start: -0.8rem;
+    inset-inline-end: 0.65rem;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.2rem 0.55rem;
+
+    border: 1px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 30%);
+    border-radius: 999px;
+
+    background: linear-gradient(180deg,
+            color-mix(in oklab, var(--sl-gold-400, #f3c970), white 18%),
+            color-mix(in oklab, var(--sl-gold-500, #c78615), black 8%));
+
+    color: #121418;
+
+    font-family: var(--sl-ff-ui, var(--font-sans));
+    font-size: clamp(0.58rem, 0.78vw, 0.68rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    pointer-events: none;
+
     box-shadow:
-        0 0 0 2px color-mix(in oklab, var(--sl-navy-900, #04060C), transparent 20%),
-        0 0 0 4px color-mix(in oklab, var(--sl-gold-400, #F3C970), white 10%);
-    border-color: color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 15%);
+        0 8px 18px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
-.card:focus-visible::after,
-.homeCard:focus-visible::after {
-    opacity: 1;
-}
-
-/* Desativado */
 .cardDisabled {
     cursor: not-allowed;
-    opacity: .75;
-    filter: grayscale(.15) saturate(.9);
-    border-color: color-mix(in oklab, var(--sl-gold-500, #C78615), transparent 60%);
+    opacity: 0.75;
+    filter: grayscale(0.15) saturate(0.9);
+    border-color: color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            transparent 60%);
 }
 
 .cardDisabled::after {
-    opacity: 0 !important;
+    opacity: 0;
+}
+
+.card:focus-visible {
+    outline: 0;
+    border-color: color-mix(in oklab,
+            var(--sl-gold-500, #c78615),
+            transparent 15%);
+
+    box-shadow:
+        0 0 0 2px color-mix(in oklab, var(--sl-navy-900, #04060c), transparent 20%),
+        0 0 0 4px color-mix(in oklab, var(--sl-gold-400, #f3c970), white 10%);
+}
+
+.card:focus-visible::after {
+    opacity: 1;
+}
+
+@media (hover: hover) {
+    .card:not(.cardDisabled):hover {
+        transform: translateY(-1px);
+
+        border-color: color-mix(in oklab,
+                var(--sl-gold-700, #92400e),
+                black 10%);
+
+        background: linear-gradient(135deg,
+                color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
+                color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+    }
+
+    .card:not(.cardDisabled):hover::after {
+        opacity: 1;
+    }
+
+    .card:not(.cardDisabled):hover .cardImg {
+        filter:
+            drop-shadow(0 1px 0 rgba(255, 255, 255, 0.04)) drop-shadow(0 14px 28px rgba(0, 0, 0, 0.5)) brightness(1.03);
+    }
+}
+
+.card:active {
+    --card-scale: 1;
 }
 
 .cardDisabled:hover,
@@ -201,110 +242,131 @@ transform: translateY(-1px);
     outline: none;
 }
 
-/* Tipografia/Imagens dentro do card */
-.cardTitle {
-    color: var(--text-1);
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    font-family: var(--sl-ff-display, "Orbitron", "Eurostile", var(--font-sans));
-    font-weight: 800;
-    line-height: 1;
-    font-size: clamp(.9rem, 1.8vw, 1rem);
+@media (max-width: 1200px) {
+    .panel {
+        --division-card-max: clamp(12.75rem, 30vw, 17.25rem);
+    }
+
+    .row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
-.cardSub {
-    margin-top: .35rem;
-    color: var(--text-2);
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    font-family: var(--sl-ff-ui, var(--font-sans));
-    font-weight: 600;
-    line-height: 1;
-    font-size: clamp(.55rem, 1.2vw, .625rem);
-}
-
-.cardImg {
-    width: 92%;
-    height: 92%;
-    object-fit: contain;
-    user-select: none;
-    pointer-events: none;
-    -webkit-user-drag: none;
-    filter:
-        drop-shadow(0 1px 0 rgba(255, 255, 255, .03)) drop-shadow(0 8px 18px rgba(0, 0, 0, .35));
-}
-
-/* Badge “Brevemente” */
-.badge {
-    position: absolute;
-    top: -0.9rem;
-    right: .75rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: .22rem .6rem;
-    font-family: var(--sl-ff-ui, var(--font-sans));
-    font-weight: 900;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    font-size: clamp(.62rem, 1vw, .72rem);
-    color: #121418;
-
-    /* badge em ouro aurora */
-    background: linear-gradient(180deg,
-            color-mix(in oklab, var(--sl-gold-400, #F3C970), white 18%),
-            color-mix(in oklab, var(--sl-gold-500, #C78615), black 8%));
-    border: 1px solid color-mix(in oklab, var(--sl-gold-500, #C78615), black 30%);
-    border-radius: 999px;
-    box-shadow:
-        0 8px 18px rgba(0, 0, 0, .45),
-        inset 0 1px 0 rgba(255, 255, 255, .35);
-    pointer-events: none;
-    transform: translateY(-10%);
-}
-
-/* ===== Responsividade extra ===== */
 @media (max-width: 900px) {
     .panel {
-        padding-inline: clamp(.75rem, 3vw, 2rem);
-        padding-block: clamp(.35rem, 1vw, .6rem);
-    }
-
-    .row {
-        gap: clamp(.6rem, 1.6vw, .9rem);
-    }
-
-    .card {
-        max-width: clamp(200px, 42vw, 300px);
+        --division-grid-gap: clamp(0.6rem, 1.5vw, 0.85rem);
+        --division-card-max: clamp(12.25rem, 36vw, 16.5rem);
     }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 720px) {
     .panel {
-        padding-inline: clamp(.5rem, 4vw, 1rem);
-        border-radius: 12px;
+        --division-card-max: clamp(11.75rem, 39vw, 15.75rem);
+    }
+
+    .cardImg {
+        inline-size: 84%;
+        block-size: 84%;
+    }
+}
+
+@media (max-width: 640px) {
+    .sectionWrap {
+        padding-block: clamp(0.55rem, 2.4vw, 0.85rem);
+    }
+
+    .panel {
+        --division-grid-gap: 0.55rem;
+        --division-card-max: clamp(11.5rem, 64vw, 15.25rem);
     }
 
     .row {
-        gap: .6rem;
+        grid-template-columns: 1fr;
     }
 
-    .homeRow {
-        padding-top: .5rem;
-    }
-
-    .card {
-        max-width: clamp(190px, 86vw, 280px);
+    .homeCard {
+        inline-size: min(100%, var(--division-card-max));
     }
 
     .badge {
-        top: -0.7rem;
-        right: .5rem;
+        inset-block-start: -0.58rem;
+        inset-inline-end: 0.42rem;
+        padding: 0.17rem 0.44rem;
+        font-size: 0.54rem;
+    }
+
+    .cardImg {
+        inline-size: 82%;
+        block-size: 82%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sectionWrap {
+        padding-block: 0.5rem;
+    }
+
+    .panel {
+        --division-grid-gap: 0.5rem;
+        --division-card-max: clamp(10.75rem, 60vw, 13.75rem);
+    }
+
+    .cardImg {
+        inline-size: 80%;
+        block-size: 80%;
+    }
+}
+
+@media (max-width: 420px) {
+    .panel {
+        --division-card-max: clamp(10.25rem, 57vw, 12.75rem);
+    }
+
+    .cardTitle {
+        font-size: 0.72rem;
+    }
+
+    .cardSub {
+        font-size: 0.48rem;
+    }
+
+    .cardImg {
+        inline-size: 78%;
+        block-size: 78%;
+    }
+
+    .badge {
+        inset-block-start: -0.5rem;
+        inset-inline-end: 0.36rem;
+        font-size: 0.48rem;
     }
 }
 
 @media (max-width: 360px) {
-    .card {
-        max-width: 92vw;
+    .panel {
+        --division-grid-gap: 0.45rem;
+        --division-card-max: clamp(9.75rem, 55vw, 11.75rem);
+    }
+
+    .cardImg {
+        inline-size: 76%;
+        block-size: 76%;
+    }
+
+    .cardTitle {
+        font-size: 0.68rem;
+    }
+
+    .cardSub {
+        font-size: 0.46rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .card,
+    .card::after,
+    .cardImg {
+        transition: none;
     }
 }

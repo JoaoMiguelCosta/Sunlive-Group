@@ -1,4 +1,5 @@
 import styles from "./GroupHub.module.css";
+
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
@@ -7,22 +8,58 @@ import { GROUP_CONTACTS } from "../../../../config/index.js";
 const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
 
-export default function GroupHub({ data }) {
-  if (!data) return null;
+function isValidText(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
 
-  const { title, email, phone, defaultOpen = false } = data;
-  const { isOpen, toggle } = useDisclosure(defaultOpen);
-  const telHref = (phone || "").replace(/\s+/g, "");
+function isValidObject(value) {
+  return value && typeof value === "object" && !Array.isArray(value);
+}
+
+function getTelHref(phone) {
+  return isValidText(phone) ? phone.replace(/\s+/g, "") : "";
+}
+
+function ContactRow({ href, label, value, mutedLabel, Icon }) {
+  const hasValue = isValidText(value);
+
+  if (!hasValue) {
+    return (
+      <span className={styles.row} aria-label={mutedLabel} aria-disabled="true">
+        <Icon className={styles.icon} width={20} height={20} />
+        <span className={styles.muted}>—</span>
+      </span>
+    );
+  }
+
+  return (
+    <a href={href} className={styles.row} aria-label={label}>
+      <Icon className={styles.icon} width={20} height={20} />
+      <span>{value}</span>
+    </a>
+  );
+}
+
+export default function GroupHub({ data }) {
+  const hasData = isValidObject(data);
+  const title = isValidText(data?.title) ? data.title : "Sunlive Group";
+  const email = data?.email ?? "";
+  const phone = data?.phone ?? "";
+  const telHref = getTelHref(phone);
+
+  const { isOpen, toggle } = useDisclosure(Boolean(data?.defaultOpen));
 
   useOpenFromHash({
     routePath: "/sunlive-group",
     regex: /^#unit-(.+)$/,
-    items: [{ key: "group" }],
+    items: hasData ? [{ key: "group" }] : [],
     isOpen: (key) => key === "group" && isOpen,
     toggle: (key) => {
       if (key === "group" && !isOpen) toggle();
     },
   });
+
+  if (!hasData) return null;
 
   return (
     <div className={styles.wrap} id="unit-group">
@@ -39,34 +76,30 @@ export default function GroupHub({ data }) {
         </span>
       </button>
 
-      {isOpen && (
+      {isOpen ? (
         <div
           id="grouphub-panel"
           className={styles.card}
           role="region"
           aria-label={`${title} contacts`}
         >
-          <a
-            href={email ? `mailto:${email}` : undefined}
-            className={styles.row}
-            aria-label={email ? `Email ${email}` : "Email not available"}
-            tabIndex={0}
-          >
-            <MailIcon className={styles.icon} width={20} height={20} />
-            <span className={email ? "" : styles.muted}>{email || "—"}</span>
-          </a>
+          <ContactRow
+            href={`mailto:${email}`}
+            label={`Email ${email}`}
+            mutedLabel="Email not available"
+            value={email}
+            Icon={MailIcon}
+          />
 
-          <a
-            href={phone ? `tel:${telHref}` : undefined}
-            className={styles.row}
-            aria-label={phone ? `Call ${phone}` : "Phone not available"}
-            tabIndex={0}
-          >
-            <PhoneIcon className={styles.icon} width={20} height={20} />
-            <span className={phone ? "" : styles.muted}>{phone || "—"}</span>
-          </a>
+          <ContactRow
+            href={`tel:${telHref}`}
+            label={`Call ${phone}`}
+            mutedLabel="Phone not available"
+            value={phone}
+            Icon={PhoneIcon}
+          />
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

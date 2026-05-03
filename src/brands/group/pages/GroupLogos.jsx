@@ -1,6 +1,4 @@
-import styles from "./GroupPages.module.css";
-
-import LogosUtilityBar from "../layout/LogosUtilityBar.jsx";
+import styles from "../layout/GroupPageLayout.module.css";
 
 import Committees from "../components/Sections/GroupLogos/Committees/index.jsx";
 import PortugueseFederations from "../components/Sections/GroupLogos/PortugueseFederations/index.jsx";
@@ -13,21 +11,28 @@ import groupBrand from "../config/index.js";
 
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
-export default function PartnersLogosPage() {
-  const logosInset = "clamp(16px, 3.5vw, 44px)";
+const LOGOS_INSET = "clamp(16px, 3.5vw, 44px)";
 
+export default function GroupLogos() {
   useScrollToHash(24);
 
   const footerConfig = groupBrand.sections?.footer;
 
   return (
-    <div className={styles.pageWrap}>
-      <div className={styles.headerContainer}>
-        <LogosUtilityBar />
-      </div>
-
-      <main className={styles.inner}>
-        <div className={styles.sections}>
+    <div
+      className={styles.pageWrap}
+      style={{
+        "--section-inset": LOGOS_INSET,
+        "--sl-line-inset": LOGOS_INSET,
+      }}
+    >
+      <main
+        id="partners-logos-page"
+        className={styles.inner}
+        role="region"
+        aria-label="Sunlive Group — Logos e parceiros"
+      >
+        <div className={`${styles.contentFlow} ${styles.contentFlowWithGap}`}>
           <Committees />
           <PortugueseFederations />
           <InternationalFederations />
@@ -36,11 +41,7 @@ export default function PartnersLogosPage() {
         </div>
       </main>
 
-      <GroupFooter
-        data={footerConfig}
-        flushTop
-        style={{ "--section-inset": logosInset, "--sl-line-inset": logosInset }}
-      />
+      <GroupFooter data={footerConfig} flushTop />
     </div>
   );
 }

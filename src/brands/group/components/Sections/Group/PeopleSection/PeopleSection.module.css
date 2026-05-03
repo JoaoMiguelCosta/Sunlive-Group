@@ -1,41 +1,50 @@
-/* Wrapper da Peoplesection — coerente com o tapete global */
+/* People Section — Sunlive Group */
+
 .section {
-    /* sem backgrounds locais; o fundo é da página */
-    background: transparent;
+    position: relative;
+    isolation: isolate;
 
-    /* Stack vertical dos blocos (UtilityBar, BrandHero, etc.) */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    min-width: 0;
-    /* impede overflow por conteúdo interno */
+    inline-size: 100%;
+    min-inline-size: 0;
     overflow: clip;
-    /* protege contra halos/decorações futuras */
+
+    background: transparent;
+    box-sizing: border-box;
 }
 
 .inner {
-    width: min(var(--sl-container-lg, 90rem), 96vw);
-    margin-inline: auto;
-    display: flex;
-    flex-direction: column;
+    inline-size: 100%;
+    min-inline-size: 0;
+
+    display: grid;
+    
+
+    box-sizing: border-box;
 }
 
-/* Faixa full-bleed removida — usamos só conteúdo */
 .band {
     position: relative;
     isolation: isolate;
-}
 
-/* Removido o ::before da .band (gradiente full-bleed) */
+    inline-size: 100%;
+    min-inline-size: 0;
+
+    display: grid;
+}
 
 .band>* {
     position: relative;
     z-index: 1;
 }
 
+@media (max-width: 980px) {
+    .inner {
+       
+    }
+}
+
 @media (max-width: 640px) {
     .inner {
-        padding: 2rem 0;
+       
     }
 }

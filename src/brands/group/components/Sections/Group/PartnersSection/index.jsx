@@ -1,35 +1,41 @@
-// src/brands/group/components/SectionGroup/PartnersSection/index.jsx
 import styles from "./PartnersSection.module.css";
+
 import SectionLead from "./SectionLead.jsx";
 import PartnersGrid from "./PartnersGrid.jsx";
 
 import { groupHomePage } from "../../../../config/pages/index.js";
 
+function isValidText(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function getValidCategories(items) {
+  return Array.isArray(items)
+    ? items.filter((item) => item && typeof item === "object" && item.key)
+    : [];
+}
+
 export default function PartnersSection() {
   const partnersConfig = groupHomePage?.sections?.partners;
-  const { id, headline, categories } = partnersConfig ?? {};
 
-  if (!categories?.length) return null;
+  const id = isValidText(partnersConfig?.id) ? partnersConfig.id : "partners";
+
+  const headline = partnersConfig?.headline;
+  const categories = getValidCategories(partnersConfig?.categories);
+
+  if (!categories.length) return null;
+
+  const headingId = `${id}-title`;
 
   return (
-    <section
-      id={id}
-      className={styles.sectionWrap}
-      aria-labelledby={`${id}-title`}
-    >
-      <div className={styles.glow} aria-hidden="true" />
+    <section id={id} className={styles.section} aria-labelledby={headingId}>
+      <SectionLead
+        id={headingId}
+        title={headline?.title}
+        subtitle={headline?.subtitle}
+      />
 
-      <div className={styles.inner}>
-        <SectionLead
-          id={`${id}-title`}
-          title={headline?.title}
-          subtitle={headline?.subtitle}
-        />
-
-        <PartnersGrid items={categories} />
-      </div>
+      <PartnersGrid items={categories} />
     </section>
   );
 }
-
-

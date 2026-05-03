@@ -1,22 +1,27 @@
-import styles from "./index.module.css";
+import styles from "./ContactsSection.module.css";
+
 import GroupHub from "./GroupHub.jsx";
 import BusinessUnits from "./BusinessUnits.jsx";
 import RegionalOffices from "./RegionalOffices.jsx";
 
 import { groupHomePage } from "../../../../config/pages/index.js";
 
-/**
- * ContactsSection — orquestra os 3 blocos
- * - Acessibilidade: aria-labelledby + id estável
- * - i18n-ready: usa contacts.title se existir
- */
+function isValidObject(value) {
+  return value && typeof value === "object" && !Array.isArray(value);
+}
+
+function hasItems(items) {
+  return Array.isArray(items) && items.length > 0;
+}
+
 export default function ContactsSection() {
   const contacts = groupHomePage?.sections?.contacts;
+
   if (!contacts) return null;
 
   const {
     id = "contacts",
-    title = "Contacts Sunlive Group",
+    title = "Contactos",
     ariaLabel = "Contacts Sunlive Group",
     groupHub,
     businessUnits = [],
@@ -24,6 +29,18 @@ export default function ContactsSection() {
   } = contacts;
 
   const headingId = `${id}-heading`;
+
+  const shouldRenderGroupHub = isValidObject(groupHub);
+  const shouldRenderBusinessUnits = hasItems(businessUnits);
+  const shouldRenderRegionalOffices = hasItems(regionalOffices);
+
+  if (
+    !shouldRenderGroupHub &&
+    !shouldRenderBusinessUnits &&
+    !shouldRenderRegionalOffices
+  ) {
+    return null;
+  }
 
   return (
     <section
@@ -39,19 +56,23 @@ export default function ContactsSection() {
         </h2>
       </header>
 
-      <div className={styles.container}>
-        <GroupHub data={groupHub} />
-      </div>
+      {shouldRenderGroupHub ? (
+        <div className={styles.container}>
+          <GroupHub data={groupHub} />
+        </div>
+      ) : null}
 
-      <div className={styles.container}>
-        <BusinessUnits items={businessUnits} />
-      </div>
+      {shouldRenderBusinessUnits ? (
+        <div className={styles.container}>
+          <BusinessUnits items={businessUnits} />
+        </div>
+      ) : null}
 
-      <div className={styles.container}>
-        <RegionalOffices items={regionalOffices} />
-      </div>
+      {shouldRenderRegionalOffices ? (
+        <div className={styles.container}>
+          <RegionalOffices items={regionalOffices} />
+        </div>
+      ) : null}
     </section>
   );
 }
-
-
