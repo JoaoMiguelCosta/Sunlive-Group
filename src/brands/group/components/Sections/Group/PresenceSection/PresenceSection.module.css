@@ -17,7 +17,7 @@
     min-inline-size: 0;
 
     display: grid;
-  
+
 
     box-sizing: border-box;
 }
@@ -40,16 +40,8 @@
     z-index: 1;
 }
 
-@media (max-width: 980px) {
-    .inner {
-       
-    }
-}
 
 @media (max-width: 640px) {
-    .inner {
-       
-    }
 
     .band {
         padding-block: clamp(0.65rem, 3vw, 1rem);

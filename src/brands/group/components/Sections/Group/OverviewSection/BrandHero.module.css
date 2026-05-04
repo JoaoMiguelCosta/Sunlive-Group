@@ -46,9 +46,7 @@
 }
 
 @media (max-width: 640px) {
-    .hero {
-       
-    }
+   
 
     .logoBox {
         inline-size: clamp(13.5rem, 72vw, 24rem);

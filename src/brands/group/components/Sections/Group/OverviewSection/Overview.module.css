@@ -12,11 +12,7 @@
   justify-items: center;
 
 
-  /*
-    A largura máxima da página já vem de:
-    GroupPageLayout.module.css -> .contentFlow
-    Portanto esta secção só deve ocupar 100% do espaço recebido.
-  */
+
   box-sizing: border-box;
 
   --overview-line-inset: clamp(0.75rem, 3.2vw, 2.75rem);
@@ -37,11 +33,7 @@
   white-space: nowrap;
 }
 
-@media (max-width: 980px) {
-  .section {
-   
-  }
-}
+
 
 @media (max-width: 640px) {
   .section {
@@ -52,8 +44,3 @@
   }
 }
 
-@media (max-width: 420px) {
-  .section {
-  
-  }
-}
