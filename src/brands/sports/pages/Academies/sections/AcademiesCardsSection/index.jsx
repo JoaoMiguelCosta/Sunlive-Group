@@ -44,6 +44,7 @@ export default function AcademiesCardsSection({ data }) {
               title={item.title}
               visualTheme={item.visualTheme}
               logo={item.logo}
+              media={item.media}
               summary={item.summary}
               description={item.description}
               descriptionAccent={item.descriptionAccent}

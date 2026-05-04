@@ -1,5 +1,5 @@
 .card {
-    --card-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
+    --card-radius: var(--sports-radius-xl, clamp(1.2rem, 1.55vw, 1.55rem));
     --card-border: var(--sports-border, rgb(199 134 21 / 0.16));
     --card-border-strong: var(--sports-border-strong, rgb(214 166 64 / 0.28));
     --card-accent-rgb: var(--sports-green-rgb, 46 194 126);
@@ -7,7 +7,7 @@
 
     position: relative;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto auto 1fr auto;
     min-block-size: 100%;
     overflow: hidden;
     isolation: isolate;
@@ -77,15 +77,15 @@
 .glow {
     position: absolute;
     inset: auto auto -24% -12%;
-    inline-size: clamp(9rem, 18vw, 13rem);
-    block-size: clamp(9rem, 18vw, 13rem);
+    inline-size: clamp(8rem, 16vw, 11rem);
+    block-size: clamp(8rem, 16vw, 11rem);
     border-radius: 999px;
     background:
         radial-gradient(circle,
             rgb(var(--card-gold-rgb) / 0.11) 0%,
             transparent 72%);
-    filter: blur(26px);
-    opacity: 0.66;
+    filter: blur(24px);
+    opacity: 0.62;
     pointer-events: none;
     z-index: 0;
 }
@@ -106,8 +106,33 @@
     --card-gold-rgb: var(--sports-gold-rgb, 214 166 64);
 }
 
+@media (min-width: 1025px) and (max-height: 820px) {
+    .card {
+        --card-radius: clamp(1.08rem, 1.35vw, 1.38rem);
+    }
+
+    .glow {
+        inline-size: 8rem;
+        block-size: 8rem;
+        filter: blur(22px);
+        opacity: 0.56;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        --card-radius: 1.22rem;
+    }
+}
+
 @media (max-width: 640px) {
     .card {
-        --card-radius: 1.16rem;
+        --card-radius: 1.12rem;
+    }
+
+    .glow {
+        inline-size: 7.5rem;
+        block-size: 7.5rem;
+        filter: blur(22px);
     }
 }

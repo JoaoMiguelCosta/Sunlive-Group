@@ -3,6 +3,8 @@ import basketLogo from "../../../assets/Academies/basket.png";
 import footLogo from "../../../assets/Academies/foot.png";
 import karateLogo from "../../../assets/Academies/karate.png";
 
+const ACADEMIES_MEDIA_BASE_PATH = "/media/sports/academies";
+
 const academiesCards = {
   id: "academias",
   ariaLabel: "Academias Sunlive — lista de academias",
@@ -21,6 +23,16 @@ const academiesCards = {
       logo: {
         src: acaLogo,
         alt: "Logótipo Anadia Cycling Academy (ACA)",
+      },
+      media: {
+        type: "video",
+        previewSrc: `${ACADEMIES_MEDIA_BASE_PATH}/cycling-preview.mp4`,
+        fullSrc: `${ACADEMIES_MEDIA_BASE_PATH}/cycling-full.mp4`,
+        poster: `${ACADEMIES_MEDIA_BASE_PATH}/cycling-poster.webp`,
+        alt: "Vídeo da Anadia Cycling Academy em contexto de treino e desenvolvimento desportivo.",
+        actionLabel: "Ver vídeo",
+        closeLabel: "Fechar vídeo",
+        modalTitle: "Anadia Cycling Academy",
       },
       summary:
         "Projeto de ciclismo ligado à Sunlive Cycling, desenvolvido em Anadia e associado às disciplinas de pista, BMX, XCO e estrada.",
@@ -63,6 +75,16 @@ const academiesCards = {
       logo: {
         src: footLogo,
         alt: "Logótipo Pro Football Academy Portugal",
+      },
+      media: {
+        type: "video",
+        previewSrc: `${ACADEMIES_MEDIA_BASE_PATH}/football-preview.mp4`,
+        fullSrc: `${ACADEMIES_MEDIA_BASE_PATH}/football-full.mp4`,
+        poster: `${ACADEMIES_MEDIA_BASE_PATH}/football-poster.webp`,
+        alt: "Vídeo da Pro Football Academy Portugal em contexto de academia residencial de futebol.",
+        actionLabel: "Ver vídeo",
+        closeLabel: "Fechar vídeo",
+        modalTitle: "Pro Football Academy Portugal",
       },
       summary:
         "Academia internacional residencial de futebol que combina treino, acompanhamento multidisciplinar, programas de treino certificados e percurso académico.",
@@ -110,6 +132,16 @@ const academiesCards = {
         src: basketLogo,
         alt: "Logótipo Sunlive Basketball Academy",
       },
+      media: {
+        type: "video",
+        previewSrc: `${ACADEMIES_MEDIA_BASE_PATH}/basket-preview.mp4`,
+        fullSrc: `${ACADEMIES_MEDIA_BASE_PATH}/basket-full.mp4`,
+        poster: `${ACADEMIES_MEDIA_BASE_PATH}/basket-poster.webp`,
+        alt: "Vídeo da Sunlive Basketball Academy em contexto de treino e academia.",
+        actionLabel: "Ver vídeo",
+        closeLabel: "Fechar vídeo",
+        modalTitle: "Sunlive Basketball Academy",
+      },
       summary:
         "Academia de basquetebol com programas de curta e longa duração, estágios e apoio de estadia em Sangalhos.",
       descriptionAccent: "Sunlive Basketball Academy",
@@ -151,6 +183,16 @@ const academiesCards = {
       logo: {
         src: karateLogo,
         alt: "Logótipo Sunlive Karate Academy (SKA)",
+      },
+      media: {
+        type: "video",
+        previewSrc: `${ACADEMIES_MEDIA_BASE_PATH}/karate-preview.mp4`,
+        fullSrc: `${ACADEMIES_MEDIA_BASE_PATH}/karate-full.mp4`,
+        poster: `${ACADEMIES_MEDIA_BASE_PATH}/karate-poster.webp`,
+        alt: "Vídeo da Sunlive Karate Academy em contexto de formação e treino.",
+        actionLabel: "Ver vídeo",
+        closeLabel: "Fechar vídeo",
+        modalTitle: "Sunlive Karate Academy",
       },
       summary:
         "Academia de karaté da Sunlive Group com atividade em formação, workshops, eventos e campos de treino.",

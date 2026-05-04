@@ -1,6 +1,7 @@
 import styles from "./SportsFeatureCard.module.css";
 
 import SportsFeatureCardHeader from "./SportsFeatureCardHeader.jsx";
+import SportsFeatureCardMedia from "./SportsFeatureCardMedia.jsx";
 import SportsFeatureCardBody from "./SportsFeatureCardBody.jsx";
 import SportsFeatureCardFooter from "./SportsFeatureCardFooter.jsx";
 
@@ -22,6 +23,7 @@ export default function SportsFeatureCard({
   title,
   visualTheme = "academy",
   logo,
+  media,
   summary,
   description,
   descriptionAccent,
@@ -55,6 +57,8 @@ export default function SportsFeatureCard({
         logo={logo}
         summary={summary}
       />
+
+      {media ? <SportsFeatureCardMedia media={media} /> : null}
 
       <SportsFeatureCardBody
         description={description}

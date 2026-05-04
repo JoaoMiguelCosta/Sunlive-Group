@@ -74,6 +74,27 @@ function getSocials(card) {
   ].filter(Boolean);
 }
 
+function getMedia(card) {
+  if (
+    card.media?.type === "video" &&
+    isValidText(card.media.previewSrc) &&
+    isValidText(card.media.poster)
+  ) {
+    return {
+      type: "video",
+      previewSrc: card.media.previewSrc,
+      fullSrc: card.media.fullSrc,
+      poster: card.media.poster,
+      alt: card.media.alt,
+      actionLabel: card.media.actionLabel,
+      closeLabel: card.media.closeLabel,
+      modalTitle: card.media.modalTitle,
+    };
+  }
+
+  return null;
+}
+
 export function mapAcademyToFeatureCard(card, options = {}) {
   if (!card || typeof card !== "object") return null;
 
@@ -90,6 +111,7 @@ export function mapAcademyToFeatureCard(card, options = {}) {
       alt: card.logo?.alt,
       theme: card.logoTheme,
     },
+    media: getMedia(card),
     summary: card.summary,
     description: card.description,
     descriptionAccent: card.descriptionAccent,

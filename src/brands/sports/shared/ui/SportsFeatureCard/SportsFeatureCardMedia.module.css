@@ -1,0 +1,507 @@
+.mediaWrap {
+    position: relative;
+    z-index: 1;
+    padding: 0.72rem clamp(1rem, 1.55vw, 1.18rem) 0.68rem;
+}
+
+.mediaFrame {
+    position: relative;
+    overflow: hidden;
+    border-radius: clamp(1.08rem, 1.2vw, 1.25rem);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.16);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.012) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 14px 28px rgba(0, 0, 0, 0.18);
+    aspect-ratio: 16 / 5.75;
+}
+
+.video,
+.posterImage {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.04) 0%,
+            rgba(0, 0, 0, 0.08) 38%,
+            rgba(0, 0, 0, 0.42) 100%);
+}
+
+.mediaUi {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: clamp(0.5rem, 1vw, 0.8rem);
+    padding: clamp(0.72rem, 1.1vw, 0.95rem);
+}
+
+.badge,
+.playButton {
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    white-space: nowrap;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: clamp(1.9rem, 2.2vw, 2.08rem);
+    padding: 0.5rem clamp(0.72rem, 1vw, 0.88rem);
+    border-radius: 999px;
+    background:
+        linear-gradient(180deg,
+            rgba(18, 23, 31, 0.94) 0%,
+            rgba(10, 14, 20, 0.98) 100%);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 8px 18px rgba(0, 0, 0, 0.18);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    font-size: clamp(0.8rem, 0.86vw, 0.9rem);
+    line-height: 1;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.playButton {
+    appearance: none;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.26);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.42rem, 0.7vw, 0.52rem);
+    min-block-size: clamp(2rem, 2.35vw, 2.18rem);
+    padding: 0.56rem clamp(0.74rem, 1vw, 0.9rem);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    background:
+        linear-gradient(180deg,
+            rgba(16, 22, 30, 0.92) 0%,
+            rgba(10, 15, 22, 0.98) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 8px 18px rgba(0, 0, 0, 0.16);
+    font-family: inherit;
+    font-size: clamp(0.84rem, 0.86vw, 0.94rem);
+    line-height: 1;
+    font-weight: 800;
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.playButton:hover,
+.playButton:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
+    color: #ffffff;
+    background:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.16) 0%,
+            rgba(255, 255, 255, 0.05) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.065),
+        0 10px 22px rgba(0, 0, 0, 0.22),
+        0 0 0 3px rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
+    outline: none;
+}
+
+.playIcon {
+    inline-size: clamp(0.68rem, 0.8vw, 0.78rem);
+    block-size: clamp(0.68rem, 0.8vw, 0.78rem);
+    flex: 0 0 auto;
+    clip-path: polygon(18% 10%, 90% 50%, 18% 90%);
+    background: currentColor;
+}
+
+/* Modal / frame */
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: grid;
+    place-items: center;
+    padding: clamp(0.85rem, 2.5vw, 2rem);
+    background:
+        radial-gradient(80% 100% at 50% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
+            transparent 58%),
+        radial-gradient(72% 92% at 0% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.08) 0%,
+            transparent 62%),
+        rgba(2, 5, 10, 0.84);
+    backdrop-filter: blur(18px);
+}
+
+.modalFrame {
+    position: relative;
+    inline-size: min(100%, 78rem);
+    max-block-size: calc(100vh - clamp(1.7rem, 5vw, 4rem));
+    display: grid;
+    gap: clamp(0.72rem, 1.2vw, 0.95rem);
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(0.78rem, 1.35vw, 1.12rem);
+    border-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.22);
+    background:
+        radial-gradient(110% 130% at 0% 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.055) 0%,
+            transparent 48%),
+        radial-gradient(110% 130% at 100% 100%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.105) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgba(7, 13, 21, 0.988) 0%,
+            rgba(4, 9, 17, 0.998) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        0 32px 80px rgba(0, 0, 0, 0.58);
+}
+
+.modalFrame::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    inline-size: min(20rem, 54%);
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.95) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.38) 100%);
+    pointer-events: none;
+}
+
+.modalFrame::after {
+    content: "";
+    position: absolute;
+    inset: auto -8% -38% auto;
+    inline-size: clamp(10rem, 20vw, 16rem);
+    block-size: clamp(10rem, 20vw, 16rem);
+    border-radius: 999px;
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.13) 0%,
+            transparent 70%);
+    filter: blur(32px);
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+.modalHeader {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.modalHeading {
+    display: grid;
+    gap: 0.28rem;
+    min-inline-size: 0;
+}
+
+.modalEyebrow {
+    margin: 0;
+    font-size: var(--sports-kicker-size, 0.72rem);
+    font-weight: 850;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sports-gold, #d6a640);
+}
+
+.modalTitle {
+    margin: 0;
+    font-size: clamp(1.28rem, 2vw, 1.7rem);
+    font-weight: 900;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    text-wrap: balance;
+}
+
+.closeButton {
+    appearance: none;
+    flex: 0 0 auto;
+    inline-size: clamp(2.2rem, 2.8vw, 2.5rem);
+    block-size: clamp(2.2rem, 2.8vw, 2.5rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.25);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.016) 100%);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    font-family: inherit;
+    font-size: clamp(1.3rem, 2vw, 1.55rem);
+    line-height: 1;
+    cursor: pointer;
+    outline: none;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.closeButton:hover,
+.closeButton:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
+    background:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.96) 0%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.96) 100%);
+    color: rgba(8, 12, 16, 0.96);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        0 10px 20px rgba(0, 0, 0, 0.24);
+}
+
+.modalVideoShell {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
+    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    background: rgba(0, 0, 0, 0.78);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 18px 42px rgba(0, 0, 0, 0.36);
+}
+
+.modalVideo {
+    display: block;
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+    block-size: auto;
+    max-block-size: min(72vh, 48rem);
+    background: #000;
+}
+
+/* Responsivo */
+
+@media (min-width: 1025px) and (max-height: 820px) {
+    .mediaWrap {
+        padding: 0.52rem 0.86rem 0.5rem;
+    }
+
+    .mediaFrame {
+        border-radius: 1rem;
+        aspect-ratio: 16 / 5.15;
+    }
+
+    .mediaUi {
+        gap: 0.5rem;
+        padding: 0.62rem;
+    }
+
+    .badge {
+        min-block-size: 1.78rem;
+        padding: 0.42rem 0.72rem;
+        font-size: 0.74rem;
+    }
+
+    .playButton {
+        min-block-size: 1.9rem;
+        padding: 0.46rem 0.74rem;
+        font-size: 0.8rem;
+    }
+
+    .playIcon {
+        inline-size: 0.68rem;
+        block-size: 0.68rem;
+    }
+
+    .modalFrame {
+        inline-size: min(100%, 64rem);
+    }
+
+    .modalVideo {
+        max-block-size: min(68vh, 38rem);
+    }
+}
+
+@media (max-width: 1120px) {
+    .mediaFrame {
+        aspect-ratio: 16 / 5.45;
+    }
+
+    .mediaUi {
+        gap: 0.6rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .mediaWrap {
+        padding: 0.66rem 0.92rem 0.62rem;
+    }
+
+    .mediaFrame {
+        border-radius: 1rem;
+        aspect-ratio: 16 / 7.15;
+    }
+
+    .mediaUi {
+        align-items: flex-end;
+        gap: 0.52rem;
+        padding: 0.7rem;
+    }
+
+    .badge {
+        min-block-size: 1.86rem;
+        padding: 0.44rem 0.72rem;
+        font-size: clamp(0.72rem, 2.5vw, 0.8rem);
+        letter-spacing: 0.07em;
+    }
+
+    .playButton {
+        min-block-size: 1.96rem;
+        padding: 0.5rem 0.76rem;
+        font-size: clamp(0.76rem, 2.6vw, 0.84rem);
+    }
+
+    .playIcon {
+        inline-size: 0.68rem;
+        block-size: 0.68rem;
+    }
+
+    .modalOverlay {
+        padding: 0.7rem;
+    }
+
+    .modalFrame {
+        max-block-size: calc(100vh - 1.4rem);
+        padding: 0.72rem;
+        border-radius: 1.15rem;
+    }
+
+    .modalHeader {
+        align-items: flex-start;
+    }
+
+    .modalTitle {
+        font-size: 1.18rem;
+    }
+
+    .modalVideo {
+        max-block-size: 68vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .mediaUi {
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 0.44rem;
+    }
+
+    .badge {
+        padding-inline: 0.62rem;
+        font-size: clamp(0.68rem, 2.8vw, 0.74rem);
+    }
+
+    .playButton {
+        padding-inline: 0.66rem;
+        font-size: clamp(0.72rem, 2.9vw, 0.8rem);
+    }
+}
+
+@media (max-width: 420px) {
+    .mediaWrap {
+        padding: 0.6rem 0.86rem 0.58rem;
+    }
+
+    .mediaFrame {
+        aspect-ratio: 16 / 7.55;
+    }
+
+    .mediaUi {
+        padding: 0.62rem;
+    }
+
+    .badge {
+        min-block-size: 1.72rem;
+        padding: 0.4rem 0.56rem;
+        font-size: clamp(0.64rem, 3vw, 0.72rem);
+    }
+
+    .playButton {
+        min-block-size: 1.82rem;
+        padding: 0.44rem 0.58rem;
+        font-size: clamp(0.68rem, 3vw, 0.76rem);
+    }
+
+    .playIcon {
+        inline-size: 0.58rem;
+        block-size: 0.58rem;
+    }
+
+    .modalEyebrow {
+        font-size: 0.64rem;
+    }
+
+    .modalTitle {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .mediaUi {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 0.42rem;
+    }
+
+    .badge,
+    .playButton {
+        inline-size: fit-content;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .playButton,
+    .closeButton {
+        transition: none;
+    }
+
+    .playButton:hover,
+    .playButton:focus-visible,
+    .closeButton:hover,
+    .closeButton:focus-visible {
+        transform: none;
+    }
+}

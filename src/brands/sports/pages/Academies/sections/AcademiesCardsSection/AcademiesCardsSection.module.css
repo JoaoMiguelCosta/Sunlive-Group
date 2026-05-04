@@ -8,8 +8,8 @@
 .cardsSection::before {
     content: "";
     position: absolute;
-    inset: clamp(0.5rem, 2vw, 1.1rem) 0 auto;
-    block-size: clamp(15rem, 28vw, 23rem);
+    inset: clamp(0.25rem, 1.25vw, 0.85rem) 0 auto;
+    block-size: clamp(12rem, 23vw, 19rem);
     background:
         radial-gradient(42% 60% at 18% 46%,
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.085) 0%,
@@ -17,8 +17,8 @@
         radial-gradient(38% 58% at 82% 52%,
             rgb(var(--sports-green-rgb, 46 194 126) / 0.045) 0%,
             transparent 100%);
-    filter: blur(44px);
-    opacity: 0.9;
+    filter: blur(40px);
+    opacity: 0.88;
     pointer-events: none;
     z-index: 0;
 }
@@ -27,16 +27,17 @@
     position: relative;
     z-index: 1;
     inline-size: 100%;
-    max-inline-size: var(--sl-container-lg, 1360px);
+  
     margin-inline: auto;
+   
     box-sizing: border-box;
 }
 
 .cardsGrid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: stretch;
-    gap: clamp(1.15rem, 1.9vw, 1.7rem);
+    align-items: start;
+    gap: clamp(0.95rem, 1.35vw, 1.25rem);
 }
 
 .cardsGrid>* {
@@ -44,24 +45,66 @@
     block-size: 100%;
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1240px) {
+    .cardsInner {
+      
+        padding-inline: clamp(0.65rem, 1.35vw, 1rem);
+    }
+
     .cardsGrid {
-        gap: clamp(1rem, 1.8vw, 1.35rem);
+        gap: clamp(0.88rem, 1.25vw, 1.08rem);
     }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1120px) {
+    .cardsInner {
+     
+        padding-inline: 0.8rem;
+    }
+
+    .cardsGrid {
+        gap: 0.92rem;
+    }
+}
+
+@media (max-width: 1024px) {
     .cardsGrid {
         grid-template-columns: 1fr;
-        gap: clamp(1rem, 3vw, 1.3rem);
+        gap: 1rem;
+    }
+
+   
+}
+
+@media (max-width: 768px) {
+    .cardsInner {
+        padding-inline: 0.72rem;
     }
 }
 
 @media (max-width: 640px) {
     .cardsSection::before {
         inset: 0 0 auto;
-        block-size: 13rem;
-        filter: blur(34px);
+        block-size: 11rem;
+        filter: blur(32px);
         opacity: 0.72;
+    }
+
+    .cardsInner {
+        padding-inline: 0.62rem;
+    }
+
+    .cardsGrid {
+        gap: 0.88rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .cardsInner {
+        padding-inline: 0.5rem;
+    }
+
+    .cardsGrid {
+        gap: 0.8rem;
     }
 }
