@@ -35,6 +35,7 @@ export default function HomeGatewayCard({
           item={item}
           label={label}
           isFeatured={isFeatured}
+          isCta={isCta}
         />
 
         <HomeGatewayCardDecorations />

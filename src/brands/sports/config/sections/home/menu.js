@@ -170,7 +170,7 @@ const menu = {
   ariaLabel: "Entradas principais Sunlive Sports",
   backgroundImage: {
     src: velodromoImage,
-    alt: "Vista aérea do edifício do velódromo",
+    alt: "Velódromo interior com ciclista em pista",
   },
   items: Array.isArray(SPORTS_GATEWAY) ? SPORTS_GATEWAY.map(buildMenuItem) : [],
 };

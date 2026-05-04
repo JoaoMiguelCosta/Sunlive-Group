@@ -1,7 +1,17 @@
 import styles from "./HomeGatewayCardContent.module.css";
 
-function getDescriptionClassName(isFeatured) {
-  return [styles.description, isFeatured ? styles.descriptionFeatured : ""]
+function getContentClassName(isCta) {
+  return [styles.content, isCta ? styles.contentCta : ""]
+    .filter(Boolean)
+    .join(" ");
+}
+
+function getDescriptionClassName(isFeatured, isCta) {
+  return [
+    styles.description,
+    isFeatured ? styles.descriptionFeatured : "",
+    isCta ? styles.descriptionCta : "",
+  ]
     .filter(Boolean)
     .join(" ");
 }
@@ -10,11 +20,13 @@ export default function HomeGatewayCardContent({
   item,
   label,
   isFeatured = false,
+  isCta = false,
 }) {
-  const descriptionClassName = getDescriptionClassName(isFeatured);
+  const contentClassName = getContentClassName(isCta);
+  const descriptionClassName = getDescriptionClassName(isFeatured, isCta);
 
   return (
-    <span className={styles.content}>
+    <span className={contentClassName}>
       <span className={styles.topRow}>
         {item?.kicker ? (
           <span className={styles.kicker} aria-hidden="true">

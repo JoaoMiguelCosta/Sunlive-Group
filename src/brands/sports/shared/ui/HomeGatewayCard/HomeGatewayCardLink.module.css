@@ -5,7 +5,7 @@
     inline-size: 100%;
     min-inline-size: 0;
     block-size: 100%;
-    padding: clamp(0.64rem, 0.54vw, 0.82rem);
+    padding: clamp(0.72rem, 0.56vw, 0.9rem);
     text-decoration: none;
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
     box-sizing: border-box;
@@ -17,30 +17,30 @@
 
 @media (min-width: 1280px) {
     .click {
-        padding: clamp(0.68rem, 0.5vw, 0.86rem);
+        padding: clamp(0.74rem, 0.52vw, 0.94rem);
     }
 }
 
 @media (min-width: 1440px) {
     .click {
-        padding: clamp(0.72rem, 0.48vw, 0.9rem);
+        padding: clamp(0.78rem, 0.5vw, 0.98rem);
     }
 }
 
 @media (max-width: 639.98px) {
     .click {
-        padding: 0.74rem 0.78rem;
+        padding: 0.78rem 0.82rem;
     }
 }
 
 @media (max-width: 479.98px) {
     .click {
-        padding: 0.7rem 0.74rem;
+        padding: 0.72rem 0.76rem;
     }
 }
 
 @media (max-width: 389.98px) {
     .click {
-        padding: 0.64rem 0.68rem;
+        padding: 0.66rem 0.7rem;
     }
 }
