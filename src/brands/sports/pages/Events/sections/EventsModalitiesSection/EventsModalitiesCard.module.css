@@ -5,7 +5,7 @@
     gap: clamp(0.72rem, 0.86vw, 0.88rem);
     min-inline-size: 0;
     block-size: 100%;
-    min-block-size: clamp(30rem, 32vw, 34rem);
+    min-block-size: clamp(24rem, 27vw, 29rem);
     padding: clamp(0.82rem, 0.92vw, 0.94rem);
     overflow: hidden;
     isolation: isolate;
@@ -106,15 +106,14 @@
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-rows: auto minmax(4.9rem, auto) minmax(4.7rem, auto);
-    gap: clamp(0.5rem, 0.72vw, 0.64rem);
+    gap: clamp(0.52rem, 0.72vw, 0.66rem);
     min-inline-size: 0;
     align-content: start;
 }
 
 .cardHeader {
     display: grid;
-    gap: 0.5rem;
+    gap: 0.42rem;
     min-inline-size: 0;
     align-content: start;
 }
@@ -131,9 +130,8 @@
 
 .cardTitle {
     inline-size: 100%;
-    min-block-size: 3.5rem;
     margin: 0;
-    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    font-size: var(--sports-card-title-size, clamp(0.98rem, 1vw, 1.12rem));
     font-weight: 850;
     line-height: var(--sports-card-title-line, 1.08);
     letter-spacing: var(--sports-card-title-spacing, -0.035em);
@@ -144,20 +142,15 @@
 .cardDescription,
 .cardEmphasis {
     margin: 0;
-    font-size: clamp(0.86rem, 0.88vw, 0.92rem);
-    line-height: 1.52;
+    font-size: clamp(0.84rem, 0.84vw, 0.9rem);
+    line-height: 1.5;
     color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
     text-wrap: pretty;
 }
 
-.cardDescription {
-    min-block-size: 4.9rem;
-}
-
 .cardEmphasis {
     position: relative;
-    min-block-size: 4.7rem;
-    padding-inline-start: 0.48rem;
+    padding-inline-start: 0.5rem;
     color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
 }
 
@@ -174,46 +167,41 @@
             rgba(255, 255, 255, 0.05) 100%);
 }
 
-.cardEmphasisPlaceholder {
-    display: block;
-    min-block-size: 4.7rem;
-}
-
 .cardBottom {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
     align-content: start;
     gap: clamp(0.72rem, 0.9vw, 0.9rem);
     min-inline-size: 0;
-    padding-block-start: 0.18rem;
+    padding-block-start: 0.7rem;
     border-top: 1px solid rgba(255, 255, 255, 0.045);
 }
 
-.metaBlock {
+.metaPanel {
     display: grid;
-    grid-template-rows: auto 1fr;
     align-content: start;
-    gap: 0.4rem;
+    gap: 0.52rem;
     min-inline-size: 0;
 }
 
 .metaLabel {
-    justify-self: center;
     margin: 0;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 850;
-    line-height: 1.15;
+    line-height: 1.1;
     letter-spacing: 0.16em;
-    text-align: center;
     text-transform: uppercase;
-    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.9);
+    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.92);
 }
 
-.metaList {
-    display: grid;
-    align-content: start;
+/* Chips */
+
+.chipList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
     gap: 0.42rem;
     min-inline-size: 0;
     margin: 0;
@@ -221,14 +209,121 @@
     list-style: none;
 }
 
-.metaItem {
+.chipItem {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-inline-size: 0;
+    min-block-size: 1.84rem;
+    padding: 0.42rem 0.66rem 0.42rem 1.28rem;
+    border-radius: 999px;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.16);
+    background:
+        radial-gradient(120% 160% at 0% 50%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
+            transparent 52%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.036) 0%,
+            rgba(255, 255, 255, 0.012) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        0 5px 12px rgba(0, 0, 0, 0.1);
+    font-size: clamp(0.75rem, 0.76vw, 0.82rem);
+    line-height: 1.18;
+    font-weight: 650;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+}
+
+.chipItem::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0.58rem;
+    top: 50%;
+    inline-size: 0.28rem;
+    block-size: 0.28rem;
+    border-radius: 999px;
+    transform: translateY(-50%);
+    background:
+        radial-gradient(circle,
+            rgba(255, 234, 170, 1) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.98) 58%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.72) 100%);
+    box-shadow:
+        0 0 0 3px rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
+        0 0 8px rgb(var(--sports-gold-rgb, 214 166 64) / 0.14);
+}
+
+.chipToggleItem {
+    display: inline-flex;
+    min-inline-size: 0;
+}
+
+.chipToggle {
+    appearance: none;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-inline-size: 0;
+    min-block-size: 1.84rem;
+    padding: 0.42rem 0.72rem;
+    border-radius: 999px;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.26);
+    background:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.11) 0%,
+            rgba(255, 255, 255, 0.018) 100%);
+    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.96);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 5px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: clamp(0.75rem, 0.76vw, 0.82rem);
+    line-height: 1.18;
+    font-weight: 800;
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.chipToggle:hover,
+.chipToggle:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
+    background:
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.17) 0%,
+            rgba(255, 255, 255, 0.032) 100%);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    outline: none;
+    box-shadow:
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.24),
+        0 0 0 5px rgb(var(--sports-gold-rgb, 214 166 64) / 0.075);
+}
+
+/* Eventos */
+
+.eventList {
+    display: grid;
+    align-content: start;
+    gap: 0.5rem;
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.eventItem {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: start;
     gap: 0.42rem;
     min-inline-size: 0;
-    font-size: clamp(0.82rem, 0.84vw, 0.88rem);
-    line-height: 1.36;
+    font-size: clamp(0.8rem, 0.82vw, 0.88rem);
+    line-height: 1.35;
     color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
 }
 
@@ -237,7 +332,6 @@
     block-size: 0.3rem;
     margin-block-start: 0.48em;
     border-radius: 999px;
-    flex: 0 0 auto;
     background:
         radial-gradient(circle at 50% 50%,
             rgba(255, 226, 145, 0.98) 0%,
@@ -248,28 +342,26 @@
         0 0 8px rgb(var(--sports-gold-rgb, 214 166 64) / 0.12);
 }
 
-.metaContent {
-    display: grid;
-    justify-items: start;
-    gap: 0.26rem;
-    min-inline-size: 0;
-}
-
-.metaText,
-.metaLink {
+.eventContent {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.28rem 0.42rem;
     min-inline-size: 0;
     max-inline-size: 100%;
-    overflow: visible;
-    white-space: normal;
-    text-overflow: initial;
 }
 
-.metaText {
+.eventText,
+.eventLink {
+    min-inline-size: 0;
+    max-inline-size: 100%;
+}
+
+.eventText {
     display: inline;
 }
 
-.metaLink {
-    display: inline;
+.eventLink {
     color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
     text-decoration: none;
     text-underline-offset: 0.18em;
@@ -278,11 +370,7 @@
         text-decoration-color 0.18s ease;
 }
 
-.metaLinkText {
-    display: inline;
-}
-
-.metaLinkIcon {
+.eventIcon {
     display: inline-block;
     inline-size: 0.72rem;
     block-size: 0.72rem;
@@ -299,22 +387,58 @@
         transform 0.18s ease;
 }
 
-.metaLink:hover {
+.eventLink:hover {
     color: var(--sports-gold, #d6a640);
     text-decoration: underline;
     text-decoration-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.52);
 }
 
-.metaLink:hover .metaLinkIcon {
+.eventLink:hover .eventIcon {
     opacity: 1;
     transform: translate(1px, -1px);
 }
 
-.metaLink:focus-visible {
+.eventLink:focus-visible {
     outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.72);
     outline-offset: 3px;
     border-radius: 0.2rem;
 }
+
+.eventToggleItem {
+    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.94);
+}
+
+.eventToggle {
+    appearance: none;
+    display: inline;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.94);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: 800;
+    text-align: start;
+    text-decoration: none;
+    text-underline-offset: 0.18em;
+    transition:
+        color 0.18s ease,
+        text-decoration-color 0.18s ease;
+}
+
+.eventToggle:hover,
+.eventToggle:focus-visible {
+    color: var(--sports-gold, #d6a640);
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.52);
+    outline: none;
+}
+
+/* Redes sociais */
 
 .socialLinks {
     display: inline-flex;
@@ -322,6 +446,8 @@
     justify-content: flex-start;
     gap: 0.24rem;
     min-inline-size: 0;
+    margin-inline-start: 0.08rem;
+    vertical-align: middle;
 }
 
 .socialLink {
@@ -342,7 +468,8 @@
         transform 0.18s ease,
         border-color 0.18s ease,
         background 0.18s ease,
-        color 0.18s ease;
+        color 0.18s ease,
+        box-shadow 0.18s ease;
 }
 
 .socialLink:hover {
@@ -353,6 +480,9 @@
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.15) 0%,
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 100%);
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    box-shadow:
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.14),
+        0 6px 14px rgba(0, 0, 0, 0.16);
 }
 
 .socialLink:focus-visible {
@@ -375,9 +505,11 @@
     stroke: none;
 }
 
+/* Tablet / desktop médio */
+
 @media (min-width: 921px) and (max-width: 1180px) {
     .card {
-        min-block-size: 25rem;
+        min-block-size: 22.5rem;
         padding: 0.82rem;
         gap: 0.62rem;
     }
@@ -389,11 +521,10 @@
 
     .cardTertiary {
         grid-column: 1 / -1;
-        min-block-size: 17.4rem;
+        min-block-size: 15.5rem;
     }
 
     .cardTop {
-        grid-template-rows: auto auto auto;
         gap: 0.48rem;
     }
 
@@ -402,56 +533,32 @@
     }
 
     .cardTitle {
-        min-block-size: 0;
         font-size: clamp(0.98rem, 1.15vw, 1.08rem);
         line-height: 1.14;
     }
 
-    .cardDescription {
-        min-block-size: 0;
-        font-size: 0.88rem;
-        line-height: 1.5;
-    }
-
-    .cardEmphasis,
-    .cardEmphasisPlaceholder {
-        min-block-size: 0;
-    }
-
+    .cardDescription,
     .cardEmphasis {
-        font-size: 0.87rem;
-        line-height: 1.5;
-        padding-inline-start: 0.42rem;
+        font-size: 0.86rem;
+        line-height: 1.46;
     }
 
     .cardBottom,
     .cardTertiary .cardBottom {
-        grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
         gap: 0.72rem;
-        padding-block-start: 0.22rem;
+        padding-block-start: 0.62rem;
     }
 
-    .metaBlock {
-        gap: 0.34rem;
+    .chipItem,
+    .chipToggle {
+        min-block-size: 1.76rem;
+        font-size: 0.76rem;
     }
 
-    .metaLabel {
-        font-size: 0.68rem;
-    }
-
-    .metaList {
-        gap: 0.34rem;
-    }
-
-    .metaItem {
+    .eventItem {
         font-size: 0.82rem;
         line-height: 1.34;
-        gap: 0.38rem;
-    }
-
-    .metaLinkIcon {
-        inline-size: 0.7rem;
-        block-size: 0.7rem;
     }
 
     .socialLink {
@@ -465,9 +572,11 @@
     }
 }
 
+/* Tablet */
+
 @media (min-width: 761px) and (max-width: 920px) {
     .card {
-        min-block-size: 24rem;
+        min-block-size: 21rem;
         gap: 0.6rem;
         padding: 0.8rem;
     }
@@ -479,11 +588,10 @@
 
     .cardTertiary {
         grid-column: 1 / -1;
-        min-block-size: 16.8rem;
+        min-block-size: 15rem;
     }
 
     .cardTop {
-        grid-template-rows: auto auto auto;
         gap: 0.46rem;
     }
 
@@ -492,50 +600,27 @@
     }
 
     .cardTitle {
-        min-block-size: 0;
         font-size: 0.96rem;
         line-height: 1.15;
     }
 
     .cardDescription,
-    .cardEmphasis,
-    .metaItem {
+    .cardEmphasis {
         font-size: 0.82rem;
-    }
-
-    .cardDescription {
-        min-block-size: 0;
-        line-height: 1.46;
-    }
-
-    .cardEmphasis,
-    .cardEmphasisPlaceholder {
-        min-block-size: 0;
-        line-height: 1.46;
+        line-height: 1.44;
     }
 
     .cardBottom,
     .cardTertiary .cardBottom {
-        grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
-        gap: 0.68rem;
-        padding-block-start: 0.2rem;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.72rem;
+        padding-block-start: 0.6rem;
     }
 
-    .metaBlock {
-        gap: 0.34rem;
-    }
-
-    .metaLabel {
-        font-size: 0.67rem;
-    }
-
-    .metaList {
-        gap: 0.32rem;
-    }
-
-    .metaLinkIcon {
-        inline-size: 0.68rem;
-        block-size: 0.68rem;
+    .chipItem,
+    .chipToggle,
+    .eventItem {
+        font-size: 0.8rem;
     }
 
     .socialLink {
@@ -548,6 +633,8 @@
         block-size: 0.68rem;
     }
 }
+
+/* Mobile largo */
 
 @media (max-width: 760px) {
 
@@ -562,23 +649,17 @@
     }
 
     .cardTop {
-        grid-template-rows: auto;
         gap: 0.56rem;
-    }
-
-    .cardTitle,
-    .cardDescription,
-    .cardEmphasis,
-    .cardEmphasisPlaceholder {
-        min-block-size: 0;
     }
 
     .cardBottom,
     .cardTertiary .cardBottom {
         grid-template-columns: minmax(0, 1fr);
-        gap: 0.72rem;
+        gap: 0.78rem;
     }
 }
+
+/* Mobile */
 
 @media (max-width: 580px) {
     .card {
@@ -601,20 +682,55 @@
     }
 
     .cardDescription,
-    .cardEmphasis,
-    .metaItem {
+    .cardEmphasis {
         font-size: 0.82rem;
         line-height: 1.4;
     }
 
-    .metaList {
-        gap: 0.34rem;
+    .chipList {
+        gap: 0.36rem;
     }
 
-    .metaLinkIcon {
+    .chipItem,
+    .chipToggle {
+        min-block-size: 1.72rem;
+        padding-block: 0.4rem;
+        font-size: 0.76rem;
+    }
+
+    .chipItem {
+        padding-inline: 1.2rem 0.6rem;
+    }
+
+    .chipToggle {
+        padding-inline: 0.62rem;
+    }
+
+    .chipItem::before {
+        inset-inline-start: 0.54rem;
+    }
+
+    .eventList {
+        gap: 0.42rem;
+    }
+
+    .eventItem {
+        font-size: 0.8rem;
+        line-height: 1.34;
+    }
+
+    .eventContent {
+        gap: 0.24rem 0.36rem;
+    }
+
+    .eventIcon {
         inline-size: 0.66rem;
         block-size: 0.66rem;
         margin-inline-start: 0.24rem;
+    }
+
+    .socialLinks {
+        gap: 0.22rem;
     }
 
     .socialLink {
@@ -628,17 +744,80 @@
     }
 }
 
+/* Mobile muito estreito */
+
+@media (max-width: 390px) {
+    .card {
+        padding: 0.72rem;
+        border-radius: 0.98rem;
+    }
+
+    .cardBottom {
+        gap: 0.7rem;
+        padding-block-start: 0.62rem;
+    }
+
+    .chipList {
+        gap: 0.32rem;
+    }
+
+    .chipItem,
+    .chipToggle {
+        min-block-size: 1.66rem;
+        font-size: 0.72rem;
+        line-height: 1.16;
+    }
+
+    .chipItem {
+        padding: 0.38rem 0.56rem 0.38rem 1.12rem;
+    }
+
+    .chipToggle {
+        padding: 0.38rem 0.58rem;
+    }
+
+    .chipItem::before {
+        inset-inline-start: 0.5rem;
+        inline-size: 0.25rem;
+        block-size: 0.25rem;
+    }
+
+    .eventItem {
+        gap: 0.38rem;
+        font-size: 0.76rem;
+    }
+
+    .metaDot {
+        inline-size: 0.26rem;
+        block-size: 0.26rem;
+    }
+
+    .socialLink {
+        inline-size: 1.12rem;
+        block-size: 1.12rem;
+    }
+
+    .socialSvg {
+        inline-size: 0.62rem;
+        block-size: 0.62rem;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     .card,
-    .metaLink,
-    .metaLinkIcon,
+    .eventLink,
+    .eventIcon,
+    .chipToggle,
+    .eventToggle,
     .socialLink {
         transition: none;
     }
 
     .card:hover,
-    .metaLink:hover .metaLinkIcon,
+    .eventLink:hover .eventIcon,
+    .chipToggle:hover,
+    .chipToggle:focus-visible,
     .socialLink:hover {
         transform: none;
     }

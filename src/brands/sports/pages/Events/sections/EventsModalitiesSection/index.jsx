@@ -1,10 +1,15 @@
 import styles from "./EventsModalitiesSection.module.css";
 
 import EventsModalitiesHeader from "./EventsModalitiesHeader.jsx";
+import EventsModalitiesVideoHighlights from "./EventsModalitiesVideoHighlights.jsx";
 import EventsModalitiesGrid from "./EventsModalitiesGrid.jsx";
 
 function hasItems(value) {
   return Array.isArray(value) && value.length > 0;
+}
+
+function hasVideoHighlights(value) {
+  return value && typeof value === "object" && hasItems(value.items);
 }
 
 export default function EventsModalitiesSection({ data }) {
@@ -13,11 +18,14 @@ export default function EventsModalitiesSection({ data }) {
   const sectionId = data.id || "events-featured-modalities";
   const titleId = data.title ? `${sectionId}-title` : undefined;
   const items = hasItems(data.items) ? data.items : [];
+  const featuredVideos = hasVideoHighlights(data.featuredVideos)
+    ? data.featuredVideos
+    : null;
 
   const hasHeading =
     Boolean(data.eyebrow) || Boolean(data.title) || Boolean(data.description);
 
-  if (!hasHeading && items.length === 0) {
+  if (!hasHeading && items.length === 0 && !featuredVideos) {
     return null;
   }
 
@@ -41,6 +49,13 @@ export default function EventsModalitiesSection({ data }) {
             title={data.title}
             description={data.description}
             titleId={titleId}
+          />
+        ) : null}
+
+        {featuredVideos ? (
+          <EventsModalitiesVideoHighlights
+            data={featuredVideos}
+            sectionId={sectionId}
           />
         ) : null}
 

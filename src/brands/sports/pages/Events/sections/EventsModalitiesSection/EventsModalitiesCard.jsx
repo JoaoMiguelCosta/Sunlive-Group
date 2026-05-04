@@ -1,4 +1,20 @@
+import { useState } from "react";
+
 import styles from "./EventsModalitiesCard.module.css";
+
+const DISCIPLINE_LIMITS = {
+  gymnastics: 4,
+  cycling: 5,
+  basketball: 4,
+  default: 4,
+};
+
+const EVENT_LIMITS = {
+  gymnastics: 3,
+  cycling: 4,
+  basketball: 3,
+  default: 3,
+};
 
 function hasItems(value) {
   return Array.isArray(value) && value.length > 0;
@@ -57,6 +73,36 @@ function isValidSocial(social) {
     typeof social.type === "string" &&
     social.type.trim().length > 0
   );
+}
+
+function getDisciplineLimit(itemKey) {
+  return DISCIPLINE_LIMITS[itemKey] || DISCIPLINE_LIMITS.default;
+}
+
+function getEventLimit(itemKey) {
+  return EVENT_LIMITS[itemKey] || EVENT_LIMITS.default;
+}
+
+function getMoreLabel(type, count, label) {
+  if (count <= 0) return "";
+
+  if (type === "events") {
+    return `+${count} ${count === 1 ? "evento" : "eventos"}`;
+  }
+
+  if (label?.toLowerCase().includes("foco")) {
+    return `+${count} ${count === 1 ? "área" : "áreas"}`;
+  }
+
+  return `+${count} ${count === 1 ? "disciplina" : "disciplinas"}`;
+}
+
+function getVisibleItems(entries, limit, isExpanded) {
+  if (!hasItems(entries)) return [];
+
+  if (isExpanded) return entries;
+
+  return entries.slice(0, limit);
 }
 
 function getSocialLinkClassName(type) {
@@ -131,60 +177,156 @@ function SocialLinks({ socials }) {
   );
 }
 
-function EntryContent({ entry }) {
-  const label = getEntryLabel(entry);
-  const href = getEntryHref(entry);
-  const ariaLabel = getEntryAriaLabel(entry);
-  const socials = getEntrySocials(entry);
-
-  if (!label) return null;
-
+function ToggleButton({
+  label,
+  expandedLabel = "Mostrar menos",
+  isExpanded,
+  onClick,
+  controlsId,
+  className,
+}) {
   return (
-    <span className={styles.metaContent}>
-      {href ? (
-        <a
-          className={styles.metaLink}
-          href={href}
-          aria-label={ariaLabel || `Abrir ${label}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className={styles.metaLinkText}>{label}</span>
-          <ExternalIcon className={styles.metaLinkIcon} />
-        </a>
-      ) : (
-        <span className={styles.metaText}>{label}</span>
-      )}
-
-      <SocialLinks socials={socials} />
-    </span>
+    <button
+      type="button"
+      className={className}
+      onClick={onClick}
+      aria-expanded={isExpanded}
+      aria-controls={controlsId}
+    >
+      {isExpanded ? expandedLabel : label}
+    </button>
   );
 }
 
-function MetaList({ entries, type, itemKey, sectionId }) {
-  if (!hasItems(entries)) return null;
+function DisciplineChips({ entries, label, itemKey, sectionId }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const limit = getDisciplineLimit(itemKey);
+  const visibleItems = getVisibleItems(entries, limit, isExpanded);
+  const hiddenCount = Math.max(entries.length - limit, 0);
+  const moreLabel = getMoreLabel("disciplines", hiddenCount, label);
+  const listId = `${sectionId}-${itemKey}-disciplines-list`;
+
+  if (!visibleItems.length) return null;
+
+  function handleToggle() {
+    setIsExpanded((current) => !current);
+  }
 
   return (
-    <ul className={styles.metaList}>
-      {entries.map((entry, entryIndex) => {
-        const label = getEntryLabel(entry);
+    <div className={styles.metaPanel}>
+      {label ? <p className={styles.metaLabel}>{label}</p> : null}
 
-        if (!label) return null;
+      <ul id={listId} className={styles.chipList} aria-label={label}>
+        {visibleItems.map((entry, entryIndex) => {
+          const entryLabel = getEntryLabel(entry);
 
-        return (
-          <li
-            key={`${itemKey || sectionId}-${type}-${getEntryKey(
-              entry,
-              entryIndex,
-            )}`}
-            className={styles.metaItem}
-          >
-            <span className={styles.metaDot} aria-hidden="true" />
-            <EntryContent entry={entry} />
+          if (!entryLabel) return null;
+
+          return (
+            <li
+              key={`${itemKey || sectionId}-discipline-${getEntryKey(
+                entry,
+                entryIndex,
+              )}`}
+              className={styles.chipItem}
+            >
+              {entryLabel}
+            </li>
+          );
+        })}
+
+        {hiddenCount > 0 ? (
+          <li className={styles.chipToggleItem}>
+            <ToggleButton
+              label={moreLabel}
+              isExpanded={isExpanded}
+              onClick={handleToggle}
+              controlsId={listId}
+              className={styles.chipToggle}
+            />
           </li>
-        );
-      })}
-    </ul>
+        ) : null}
+      </ul>
+    </div>
+  );
+}
+
+function EventList({ entries, label, itemKey, sectionId }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const limit = getEventLimit(itemKey);
+  const visibleItems = getVisibleItems(entries, limit, isExpanded);
+  const hiddenCount = Math.max(entries.length - limit, 0);
+  const moreLabel = getMoreLabel("events", hiddenCount, label);
+  const listId = `${sectionId}-${itemKey}-events-list`;
+
+  if (!visibleItems.length) return null;
+
+  function handleToggle() {
+    setIsExpanded((current) => !current);
+  }
+
+  return (
+    <div className={styles.metaPanel}>
+      {label ? <p className={styles.metaLabel}>{label}</p> : null}
+
+      <ul id={listId} className={styles.eventList} aria-label={label}>
+        {visibleItems.map((entry, entryIndex) => {
+          const entryLabel = getEntryLabel(entry);
+          const href = getEntryHref(entry);
+          const ariaLabel = getEntryAriaLabel(entry);
+          const socials = getEntrySocials(entry);
+
+          if (!entryLabel) return null;
+
+          return (
+            <li
+              key={`${itemKey || sectionId}-event-${getEntryKey(
+                entry,
+                entryIndex,
+              )}`}
+              className={styles.eventItem}
+            >
+              <span className={styles.metaDot} aria-hidden="true" />
+
+              <span className={styles.eventContent}>
+                {href ? (
+                  <a
+                    className={styles.eventLink}
+                    href={href}
+                    aria-label={ariaLabel || `Abrir ${entryLabel}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className={styles.eventText}>{entryLabel}</span>
+                    <ExternalIcon className={styles.eventIcon} />
+                  </a>
+                ) : (
+                  <span className={styles.eventText}>{entryLabel}</span>
+                )}
+
+                <SocialLinks socials={socials} />
+              </span>
+            </li>
+          );
+        })}
+
+        {hiddenCount > 0 ? (
+          <li className={`${styles.eventItem} ${styles.eventToggleItem}`}>
+            <span className={styles.metaDot} aria-hidden="true" />
+
+            <ToggleButton
+              label={moreLabel}
+              isExpanded={isExpanded}
+              onClick={handleToggle}
+              controlsId={listId}
+              className={styles.eventToggle}
+            />
+          </li>
+        ) : null}
+      </ul>
+    </div>
   );
 }
 
@@ -211,42 +353,24 @@ export default function EventsModalitiesCard({ item, index, sectionId }) {
 
         {item.emphasis ? (
           <p className={styles.cardEmphasis}>{item.emphasis}</p>
-        ) : (
-          <span className={styles.cardEmphasisPlaceholder} aria-hidden="true" />
-        )}
+        ) : null}
       </div>
 
       {(disciplines.length > 0 || eventExamples.length > 0) && (
         <div className={styles.cardBottom}>
-          {disciplines.length > 0 ? (
-            <div className={styles.metaBlock}>
-              {item.disciplinesLabel ? (
-                <p className={styles.metaLabel}>{item.disciplinesLabel}</p>
-              ) : null}
+          <DisciplineChips
+            entries={disciplines}
+            label={item.disciplinesLabel}
+            itemKey={item.key}
+            sectionId={sectionId}
+          />
 
-              <MetaList
-                entries={disciplines}
-                type="discipline"
-                itemKey={item.key}
-                sectionId={sectionId}
-              />
-            </div>
-          ) : null}
-
-          {eventExamples.length > 0 ? (
-            <div className={styles.metaBlock}>
-              {item.eventExamplesLabel ? (
-                <p className={styles.metaLabel}>{item.eventExamplesLabel}</p>
-              ) : null}
-
-              <MetaList
-                entries={eventExamples}
-                type="event"
-                itemKey={item.key}
-                sectionId={sectionId}
-              />
-            </div>
-          ) : null}
+          <EventList
+            entries={eventExamples}
+            label={item.eventExamplesLabel}
+            itemKey={item.key}
+            sectionId={sectionId}
+          />
         </div>
       )}
     </article>

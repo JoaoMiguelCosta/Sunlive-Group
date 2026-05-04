@@ -1,11 +1,82 @@
+const EVENTS_MEDIA_BASE_PATH = "/media/sports/events";
+
 const featuredModalities = {
   id: "modalidades-destaque-eventos",
   eyebrow: "Frentes em destaque",
   title:
-    "Uma operação com maior profundidade em ginástica e ciclismo, e presença adicional noutras modalidades",
+    "Maior profundidade em ginástica e ciclismo, com presença noutras modalidades",
   description:
     "A leitura global dos Eventos Sunlive mostra uma estrutura particularmente sólida em ginástica e ciclismo, complementada por iniciativas noutras áreas competitivas e formativas.",
   ariaLabel: "Modalidades em destaque nos Eventos Sunlive Sports",
+
+  featuredVideos: {
+    id: "eventos-video-destaques",
+    eyebrow: "Destaques em vídeo",
+    title: "Exemplos reais da operação Sunlive em contexto de evento",
+    description:
+      "Três exemplos visuais da operação Sunlive Sports em organização, competição e enquadramento técnico.",
+    ariaLabel: "Vídeos em destaque dos Eventos Sunlive Sports",
+    ui: {
+      modalEyebrow: "Eventos Sunlive",
+      videoBadgeLabel: "Evento",
+      fallbackActionLabel: "Ver vídeo",
+      fallbackCloseLabel: "Fechar vídeo",
+      fallbackModalTitle: "Vídeo do evento",
+    },
+    items: [
+      {
+        key: "international-coaching-academy",
+        eyebrow: "Ginástica",
+        title: "International Coaching Academy",
+        description:
+          "Evento técnico de ginástica com orientação internacional, combinando sessões práticas, preparação física, clínicas especializadas e desenvolvimento de treinadores e ginastas.",
+        media: {
+          type: "video",
+          previewSrc: `${EVENTS_MEDIA_BASE_PATH}/coach-academy-preview.mp4`,
+          fullSrc: `${EVENTS_MEDIA_BASE_PATH}/coach-academy-full.mp4`,
+          poster: `${EVENTS_MEDIA_BASE_PATH}/coach-academy-poster.webp`,
+          alt: "Vídeo da International Coaching Academy em contexto de evento de ginástica.",
+          actionLabel: "Ver vídeo",
+          closeLabel: "Fechar vídeo",
+          modalTitle: "International Coaching Academy",
+        },
+      },
+      {
+        key: "trofeu-sunlive",
+        eyebrow: "Ciclismo",
+        title: "Troféu Sunlive",
+        description:
+          "Evento competitivo ligado ao ecossistema Sunlive Cycling, com contexto técnico, presença institucional e operação em ambiente de prova.",
+        media: {
+          type: "video",
+          previewSrc: `${EVENTS_MEDIA_BASE_PATH}/trofeu-sunlive-preview.mp4`,
+          fullSrc: `${EVENTS_MEDIA_BASE_PATH}/trofeu-sunlive-full.mp4`,
+          poster: `${EVENTS_MEDIA_BASE_PATH}/trofeu-sunlive-poster.webp`,
+          alt: "Vídeo do Troféu Sunlive em contexto de evento de ciclismo.",
+          actionLabel: "Ver vídeo",
+          closeLabel: "Fechar vídeo",
+          modalTitle: "Troféu Sunlive",
+        },
+      },
+      {
+        key: "ddoss-summer-league",
+        eyebrow: "Basquetebol",
+        title: "DDOSS Summer League",
+        description:
+          "Liga de verão de basquetebol criada pela DDOSS para dar ritmo competitivo a atletas nacionais e internacionais, com treinos, jogos, equipas técnicas e oportunidades de exposição profissional.",
+        media: {
+          type: "video",
+          previewSrc: `${EVENTS_MEDIA_BASE_PATH}/ddoss-preview.mp4`,
+          fullSrc: `${EVENTS_MEDIA_BASE_PATH}/ddoss-full.mp4`,
+          poster: `${EVENTS_MEDIA_BASE_PATH}/ddoss-poster.webp`,
+          alt: "Vídeo da DDOSS Summer League em contexto de evento de basquetebol.",
+          actionLabel: "Ver vídeo",
+          closeLabel: "Fechar vídeo",
+          modalTitle: "DDOSS Summer League",
+        },
+      },
+    ],
+  },
 
   items: [
     {
@@ -175,14 +246,14 @@ const featuredModalities = {
       eventExamplesLabel: "Eventos",
       eventExamples: [
         {
-          label: "DOOSS Summer League",
+          label: "DDOSS Summer League",
           href: "https://ddoss-sports.com/",
-          ariaLabel: "Abrir site da DOOSS Summer League",
+          ariaLabel: "Abrir site da DDOSS Summer League",
           socials: [
             {
               type: "instagram",
               href: "https://www.instagram.com/ddoss.summer.league/",
-              ariaLabel: "Abrir Instagram da DOOSS Summer League",
+              ariaLabel: "Abrir Instagram da DDOSS Summer League",
             },
           ],
         },

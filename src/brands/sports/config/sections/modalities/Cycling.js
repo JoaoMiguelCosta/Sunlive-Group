@@ -201,7 +201,7 @@ const cyclingSection = {
           {
             key: "para-cycling",
             title: "Paraciclismo",
-            titleEn: "Para Cycling",
+            titleEn: "ParaCycling",
             description:
               "Vertente adaptada do ciclismo competitivo, com categorias próprias em estrada e pista, ajustadas às classificações dos atletas.",
           },

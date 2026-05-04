@@ -26,7 +26,7 @@ const trainingCampsPrograms = {
         "BMX Racing",
         "BMX Freestyle",
         "Cyclo-cross / Ciclocrosse",
-        "Para Cycling",
+        "ParaCycling",
       ],
       expandAction: {
         collapsedCount: 5,
