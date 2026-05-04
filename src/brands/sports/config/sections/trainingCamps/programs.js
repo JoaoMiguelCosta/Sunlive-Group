@@ -1,3 +1,5 @@
+const TRAINING_CAMPS_MEDIA_BASE_PATH = "/media/sports/training-camps";
+
 const trainingCampsPrograms = {
   sectionIntro: {
     eyebrow: "Programas por modalidade",
@@ -41,8 +43,11 @@ const trainingCampsPrograms = {
         "Recuperação, monitorização e suporte ao rendimento",
         "Estadia, logística e operação ajustadas ao grupo",
       ],
-      image: {
-        src: null,
+      media: {
+        type: "video",
+        previewSrc: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/cycling-preview.mp4`,
+        fullSrc: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/cycling-full.mp4`,
+        poster: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/cycling-poster.webp`,
         alt: "Training camp de ciclismo em contexto de preparação desportiva.",
       },
     },
@@ -80,8 +85,11 @@ const trainingCampsPrograms = {
         "Preparação específica por disciplina e contexto competitivo",
         "Enquadramento diário com apoio logístico e organizacional",
       ],
-      image: {
-        src: null,
+      media: {
+        type: "video",
+        previewSrc: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/gymnastic-preview.mp4`,
+        fullSrc: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/gymnastic-full.mp4`,
+        poster: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/gymnastic-poster.webp`,
         alt: "Training camp de ginástica com trabalho técnico especializado.",
       },
     },
@@ -114,8 +122,11 @@ const trainingCampsPrograms = {
         "Apoio à organização do estágio e rotina diária de trabalho",
         "Estadia, alimentação, logística e operação coordenadas",
       ],
-      image: {
-        src: null,
+      media: {
+        type: "video",
+        previewSrc: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/football-preview.mp4`,
+        fullSrc: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/football-full.mp4`,
+        poster: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/football-poster.webp`,
         alt: "Training camp de futebol com preparação técnica e tática.",
       },
     },
@@ -148,8 +159,11 @@ const trainingCampsPrograms = {
         "Possibilidade de articular estágio, rotina diária e jogos-treino",
         "Acompanhamento operacional, logístico e organizacional do grupo",
       ],
-      image: {
-        src: null,
+      media: {
+        type: "video",
+        previewSrc: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/basket-preview.mp4`,
+        fullSrc: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/basket-full.mp4`,
+        poster: `${TRAINING_CAMPS_MEDIA_BASE_PATH}/basket-poster.webp`,
         alt: "Training camp de basquetebol em contexto de preparação competitiva.",
       },
     },
