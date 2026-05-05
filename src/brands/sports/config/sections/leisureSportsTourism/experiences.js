@@ -1,3 +1,8 @@
+import cycleTourismImage from "../../../assets/leisureSportsTourism/cycle.webp";
+import padelImage from "../../../assets/leisureSportsTourism/padel.webp";
+import trailsHikingImage from "../../../assets/leisureSportsTourism/trails.webp";
+import waterSportsImage from "../../../assets/leisureSportsTourism/surf.webp";
+
 const leisureSportsTourismExperiences = {
   id: "experiencias-turismo-desportivo-ludico",
   intro: {
@@ -24,8 +29,11 @@ const leisureSportsTourismExperiences = {
         "Stand-Up Paddle em ambiente de descoberta",
       ],
       image: {
-        src: null,
+        src: waterSportsImage,
         alt: "Atividades aquáticas em contexto costeiro no litoral centro de Portugal.",
+        width: 1920,
+        height: 900,
+        position: "center center",
       },
     },
     {
@@ -41,8 +49,11 @@ const leisureSportsTourismExperiences = {
         "Caminhadas panorâmicas com acompanhamento local",
       ],
       image: {
-        src: null,
+        src: trailsHikingImage,
         alt: "Trilhos e caminhadas em zonas de montanha e floresta.",
+        width: 1920,
+        height: 900,
+        position: "center center",
       },
     },
     {
@@ -58,8 +69,11 @@ const leisureSportsTourismExperiences = {
         "Rotas rurais entre aldeias e paisagem natural",
       ],
       image: {
-        src: null,
+        src: cycleTourismImage,
         alt: "Percursos de cicloturismo por natureza, costa e zonas vínicas.",
+        width: 1920,
+        height: 900,
+        position: "center center",
       },
     },
     {
@@ -75,8 +89,11 @@ const leisureSportsTourismExperiences = {
         "Aulas para iniciantes e atletas experientes",
       ],
       image: {
-        src: null,
+        src: padelImage,
         alt: "Jogo de padel em ambiente social e desportivo.",
+        width: 1920,
+        height: 900,
+        position: "center center",
       },
     },
   ],

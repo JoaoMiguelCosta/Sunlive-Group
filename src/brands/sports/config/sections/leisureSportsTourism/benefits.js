@@ -3,7 +3,7 @@ const leisureSportsTourismBenefits = {
   intro: {
     eyebrow: "Valor para os atletas",
     title: "Benefícios para os Atletas",
-    lead: "Cada experiência é pensada para complementar contextos de treino e estadia, criando valor real em termos de recuperação, equilíbrio, enriquecimento pessoal e dinâmica de grupo.",
+    lead: "Experiências pensadas para apoiar recuperação, equilíbrio e coesão, acrescentando valor humano, territorial e desportivo à estadia.",
   },
   ui: {
     layout: "compact-grid",
@@ -15,28 +15,28 @@ const leisureSportsTourismBenefits = {
       iconKey: "heart",
       title: "Recuperação Ativa",
       description:
-        "Atividades de baixo impacto que ajudam a aliviar a carga acumulada e a promover recuperação física e mental.",
+        "Atividades leves que ajudam a aliviar a carga acumulada e a promover recuperação física e mental.",
     },
     {
       key: "balance",
       iconKey: "smile",
       title: "Equilíbrio Mental",
       description:
-        "Momentos fora do foco competitivo que renovam motivação, clareza e sensação de bem-estar ao longo da estadia.",
+        "Pausas fora do foco competitivo que renovam clareza, motivação e sensação de bem-estar durante a estadia.",
     },
     {
       key: "cultural-growth",
       iconKey: "star",
       title: "Enriquecimento Cultural",
       description:
-        "Contacto com novas paisagens, tradições e referências que acrescentam profundidade à experiência global do atleta.",
+        "Contacto com paisagens, tradições e referências locais que tornam a experiência global mais completa.",
     },
     {
       key: "group-cohesion",
       iconKey: "users",
       title: "Coesão de Grupo",
       description:
-        "Experiências partilhadas que reforçam relações, confiança e ligação entre colegas, atletas e equipas técnicas.",
+        "Momentos partilhados que reforçam relações, confiança e ligação entre atletas e equipas técnicas.",
     },
   ],
 };

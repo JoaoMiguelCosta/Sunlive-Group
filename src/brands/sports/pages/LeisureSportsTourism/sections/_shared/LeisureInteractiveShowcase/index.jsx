@@ -18,6 +18,10 @@ function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
 
+function isValidNumber(value) {
+  return typeof value === "number" && Number.isFinite(value);
+}
+
 function getValidTextItems(items) {
   return Array.isArray(items) ? items.filter(isValidText) : [];
 }
@@ -67,6 +71,11 @@ function normalizeShowcaseItems(items, sectionId, itemType, listKey) {
       listItems: getValidTextItems(item[listKey]),
       imageSrc: isValidText(image.src) ? image.src : "",
       imageAlt: isValidText(image.alt) ? image.alt : title,
+      imageWidth: isValidNumber(image.width) ? image.width : undefined,
+      imageHeight: isValidNumber(image.height) ? image.height : undefined,
+      imagePosition: isValidText(image.position)
+        ? image.position
+        : "center center",
       fallbackMark: getFallbackMark(title),
     };
   });

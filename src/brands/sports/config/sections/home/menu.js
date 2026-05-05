@@ -61,8 +61,7 @@ const MENU_DESCRIPTIONS_BY_KEY = Object.freeze({
     "Disciplina, evolução e representação Sunlive em percursos desportivos acompanhados.",
 
   testimonials:
-   
-  "Prova real da confiança de atletas, treinadores e entidades internacionais.",
+    "Prova real da confiança de atletas, treinadores e entidades internacionais.",
 
   "specialised-services":
     "Intervenção técnica e multidisciplinar para apoiar rendimento, prevenção, recuperação e evolução desportiva.",

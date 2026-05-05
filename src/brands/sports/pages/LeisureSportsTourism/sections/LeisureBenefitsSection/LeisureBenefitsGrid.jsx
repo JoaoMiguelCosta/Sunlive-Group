@@ -6,9 +6,13 @@ export default function LeisureBenefitsGrid({ items = [] }) {
   if (items.length === 0) return null;
 
   return (
-    <div className={styles.grid}>
-      {items.map((item) => (
-        <LeisureBenefitsCard key={item.key} item={item} />
+    <div className={styles.grid} role="list">
+      {items.map((item, index) => (
+        <LeisureBenefitsCard
+          key={item.key || `benefit-${index + 1}`}
+          item={item}
+          index={index}
+        />
       ))}
     </div>
   );

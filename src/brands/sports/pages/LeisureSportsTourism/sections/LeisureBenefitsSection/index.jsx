@@ -27,6 +27,7 @@ export default function LeisureBenefitsSection({ data }) {
     <section
       id={data.id}
       className={styles.section}
+      data-layout={data.ui?.layout || undefined}
       aria-labelledby={titleId}
       aria-label={ariaLabel}
     >

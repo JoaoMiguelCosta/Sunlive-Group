@@ -19,69 +19,75 @@
     z-index: -1;
     pointer-events: none;
     border-radius: 999px;
-    filter: blur(30px);
+    filter: blur(34px);
 }
 
 .section::before {
-    inset-block-start: 4%;
-    inset-inline-end: 5%;
-    inline-size: clamp(11rem, 22vw, 18rem);
-    block-size: clamp(11rem, 22vw, 18rem);
+    inset-block-start: 3%;
+    inset-inline-end: 4%;
+    inline-size: clamp(10rem, 20vw, 17rem);
+    block-size: clamp(10rem, 20vw, 17rem);
     background:
         radial-gradient(circle,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.052) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.022) 38%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.045) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.018) 38%,
             transparent 72%);
-    opacity: 0.58;
+    opacity: 0.52;
 }
 
 .section::after {
-    inset-block-end: 4%;
-    inset-inline-start: 4%;
-    inline-size: clamp(13rem, 25vw, 22rem);
-    block-size: clamp(13rem, 25vw, 22rem);
+    inset-block-end: 2%;
+    inset-inline-start: 3%;
+    inline-size: clamp(12rem, 24vw, 21rem);
+    block-size: clamp(12rem, 24vw, 21rem);
     background:
         radial-gradient(circle,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.13) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 36%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.115) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.038) 36%,
             transparent 72%);
-    opacity: 0.7;
+    opacity: 0.64;
 }
 
 .shell {
     inline-size: 100%;
+    min-inline-size: 0;
     margin-inline: auto;
 }
 
 .surface {
     position: relative;
-    display: grid;
-    gap: clamp(1.28rem, 2vw, 1.95rem);
-    overflow: hidden;
     isolation: isolate;
+    display: grid;
+    gap: clamp(1.05rem, 1.58vw, 1.56rem);
+    overflow: hidden;
     inline-size: 100%;
     min-inline-size: 0;
     padding:
-        clamp(1.25rem, 2vw, 1.85rem) clamp(1.05rem, 1.9vw, 1.62rem) clamp(1.18rem, 1.85vw, 1.62rem);
+        clamp(1.18rem, 1.82vw, 1.68rem) clamp(1rem, 1.72vw, 1.48rem) clamp(1.08rem, 1.62vw, 1.46rem);
     border: 1px solid var(--sports-border, rgb(199 134 21 / 0.16));
     border-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
     background:
-        radial-gradient(128% 150% at 0% 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.04) 0%,
-            transparent 56%),
+        radial-gradient(125% 150% at 0% 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.032) 0%,
+            transparent 54%),
         radial-gradient(118% 145% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
-            transparent 58%),
-        radial-gradient(125% 145% at 100% 100%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.105) 0%,
+            transparent 56%),
+        radial-gradient(120% 145% at 100% 100%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
             transparent 62%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.038) 0%,
+            rgba(255, 255, 255, 0.01) 100%),
         var(--sports-surface-dark,
             linear-gradient(180deg,
-                rgba(7, 13, 21, 0.965) 0%,
-                rgba(4, 9, 17, 0.992) 100%));
-    box-shadow: var(--sports-shadow-card,
-            inset 0 1px 0 rgba(255, 255, 255, 0.04),
-            0 22px 48px rgba(0, 0, 0, 0.36));
+                rgba(7, 13, 21, 0.968) 0%,
+                rgba(4, 9, 17, 0.994) 100%));
+    box-shadow:
+        var(--sports-shadow-card,
+            0 22px 48px rgba(0, 0, 0, 0.36)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.014);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
@@ -100,11 +106,12 @@
     background:
         linear-gradient(90deg,
             transparent 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.46) 24%,
-            rgba(255, 255, 255, 0.07) 50%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.32) 76%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.42) 24%,
+            rgba(255, 255, 255, 0.065) 50%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.05) 66%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.24) 78%,
             transparent 100%);
-    opacity: 0.9;
+    opacity: 0.86;
     mask-image:
         linear-gradient(to bottom,
             #000 0,
@@ -118,17 +125,17 @@
 }
 
 .surface::after {
-    inset: auto -8% -28% auto;
+    inset: auto -8% -26% auto;
     inline-size: clamp(12rem, 20vw, 18rem);
     block-size: clamp(12rem, 20vw, 18rem);
     border-radius: 999px;
     background:
         radial-gradient(circle,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.022) 42%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.105) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.018) 42%,
             transparent 72%);
     filter: blur(34px);
-    opacity: 0.68;
+    opacity: 0.58;
 }
 
 .surface>* {
@@ -141,12 +148,13 @@
 .showcase {
     display: grid;
     grid-template-columns: minmax(0, 1.08fr) minmax(17rem, 0.5fr);
-    gap: clamp(0.85rem, 1.45vw, 1.2rem);
+    gap: clamp(0.78rem, 1.22vw, 1.08rem);
     align-items: stretch;
+    min-inline-size: 0;
 }
 
 .showcase {
-    margin-bottom: clamp(0.75rem, 1.35vw, 1rem);
+    margin-bottom: clamp(0.62rem, 1.05vw, 0.86rem);
     scroll-margin-top: clamp(0.75rem, 3vw, 1.25rem);
 }
 
@@ -157,11 +165,91 @@
     scroll-margin-top: clamp(0.75rem, 3vw, 1.25rem);
 }
 
+/* Destinos — superfície mais editorial sem afetar Experiências */
+.section[data-variant="destinations"]::before {
+    inset-block-start: 8%;
+    inset-inline-end: 2%;
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.032) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.012) 38%,
+            transparent 72%);
+    opacity: 0.42;
+}
+
+.section[data-variant="destinations"]::after {
+    inset-block-end: 4%;
+    inset-inline-start: 2%;
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.044) 38%,
+            transparent 74%);
+    opacity: 0.7;
+}
+
+.section[data-variant="destinations"] .surface {
+    gap: clamp(1.12rem, 1.68vw, 1.68rem);
+    background:
+        radial-gradient(125% 150% at 0% 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.024) 0%,
+            transparent 54%),
+        radial-gradient(118% 145% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.122) 0%,
+            transparent 58%),
+        radial-gradient(120% 145% at 100% 100%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.052) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.042) 0%,
+            rgba(255, 255, 255, 0.012) 100%),
+        var(--sports-surface-dark,
+            linear-gradient(180deg,
+                rgba(7, 13, 21, 0.968) 0%,
+                rgba(4, 9, 17, 0.994) 100%));
+    box-shadow:
+        var(--sports-shadow-card,
+            0 22px 48px rgba(0, 0, 0, 0.36)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.014),
+        0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.018);
+}
+
+.section[data-variant="destinations"] .surface::before {
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.46) 24%,
+            rgba(255, 255, 255, 0.066) 50%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.042) 66%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.26) 78%,
+            transparent 100%);
+    opacity: 0.9;
+}
+
+.section[data-variant="destinations"] .surface::after {
+    background:
+        radial-gradient(circle,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.014) 42%,
+            transparent 72%);
+    opacity: 0.62;
+}
+
+.section[data-variant="destinations"] .layout {
+    grid-template-columns: minmax(0, 1.08fr) minmax(16.5rem, 0.48fr);
+}
+
 @media (max-width: 1240px) {
 
     .layout,
     .showcase {
         grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.48fr);
+        gap: clamp(0.72rem, 1.16vw, 1rem);
+    }
+
+    .section[data-variant="destinations"] .layout {
+        grid-template-columns: minmax(0, 1fr) minmax(15.5rem, 0.48fr);
     }
 }
 
@@ -172,6 +260,12 @@
         border-radius: 1.28rem;
     }
 
+    .surface::after {
+        inset-block-end: -22%;
+        inset-inline-end: -18%;
+        opacity: 0.48;
+    }
+
     .layout {
         order: 2;
         grid-template-columns: 1fr;
@@ -180,48 +274,102 @@
     .showcase {
         order: 3;
         grid-template-columns: 1fr;
-        margin-top: clamp(0.75rem, 2.8vw, 1rem);
+        margin-top: clamp(0.72rem, 2.6vw, 1rem);
         margin-bottom: 0;
     }
 
     .panelStack {
         order: 2;
     }
+
+    .section[data-variant="destinations"] .surface {
+        gap: 1.05rem;
+        padding: 1rem;
+    }
+
+    .section[data-variant="destinations"] .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .section[data-variant="destinations"] .surface::after {
+        inset-block-end: -20%;
+        inset-inline-end: -18%;
+        opacity: 0.52;
+    }
 }
 
 @media (max-width: 620px) {
+
+    .section::before,
+    .section::after {
+        filter: blur(28px);
+    }
+
+    .section::before {
+        opacity: 0.42;
+    }
+
+    .section::after {
+        opacity: 0.54;
+    }
+
     .surface {
+        gap: 0.9rem;
         padding: 0.9rem;
         border-radius: 1.16rem;
+    }
+
+    .section[data-variant="destinations"] .surface {
+        gap: 0.92rem;
+        padding: 0.9rem;
     }
 }
 
 @media (max-width: 420px) {
     .surface {
+        gap: 0.82rem;
         padding: 0.82rem;
         border-radius: 1.08rem;
     }
+
+    .section[data-variant="destinations"] .surface {
+        gap: 0.84rem;
+        padding: 0.82rem;
+    }
 }
 
-@media (min-width: 1024px) and (max-height: 850px) {
+@media (min-width: 1081px) and (max-height: 850px) {
     .surface {
-        gap: clamp(1rem, 1.55vw, 1.42rem);
+        gap: clamp(0.92rem, 1.36vw, 1.22rem);
         padding:
-            clamp(1.05rem, 1.6vw, 1.42rem) clamp(0.96rem, 1.55vw, 1.35rem) clamp(1rem, 1.5vw, 1.28rem);
+            clamp(1rem, 1.48vw, 1.28rem) clamp(0.92rem, 1.42vw, 1.24rem) clamp(0.95rem, 1.38vw, 1.2rem);
     }
 
     .layout,
     .showcase {
-        gap: 1rem;
+        gap: clamp(0.72rem, 1.08vw, 0.92rem);
     }
 
     .showcase {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.66rem;
+    }
+
+    .section[data-variant="destinations"] .surface {
+        gap: clamp(0.96rem, 1.42vw, 1.28rem);
     }
 }
 
-@media (min-width: 1024px) and (max-height: 740px) {
+@media (min-width: 1081px) and (max-height: 740px) {
     .surface {
+        gap: 0.86rem;
         border-radius: 1.42rem;
+    }
+
+    .showcase {
+        margin-bottom: 0.58rem;
+    }
+
+    .section[data-variant="destinations"] .surface {
+        gap: 0.9rem;
     }
 }
