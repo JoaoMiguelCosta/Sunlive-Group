@@ -1,5 +1,17 @@
 import styles from "./FacilityPanel.module.css";
 
+const MAX_VISIBLE_IMAGES = 2;
+
+function getImageFrameClassName(index) {
+  return index === 0 ? styles.primaryImageFrame : styles.secondaryImageFrame;
+}
+
+function getImageClassName(index) {
+  return [styles.image, index === 1 ? styles.secondaryImageZoomed : ""]
+    .filter(Boolean)
+    .join(" ");
+}
+
 export default function FacilityPanel({
   panelRef,
   panelId,
@@ -8,6 +20,12 @@ export default function FacilityPanel({
   currentCounter,
   totalCounter,
 }) {
+  const images = Array.isArray(card?.images)
+    ? card.images.slice(0, MAX_VISIBLE_IMAGES)
+    : [];
+
+  const hasImages = images.length > 0;
+
   return (
     <article
       ref={panelRef}
@@ -19,15 +37,24 @@ export default function FacilityPanel({
       aria-live="polite"
     >
       <div className={styles.media}>
-        {card.image ? (
-          <img
-            key={card.key}
-            src={card.image}
-            alt={card.imageAlt}
-            className={styles.image}
-            loading="lazy"
-            decoding="async"
-          />
+        {hasImages ? (
+          <div className={styles.imageStack}>
+            {images.map((image, index) => (
+              <figure
+                key={`${card.key}-image-${index}`}
+                className={getImageFrameClassName(index)}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className={getImageClassName(index)}
+                  style={{ "--facility-image-position": image.position }}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            ))}
+          </div>
         ) : (
           <div className={styles.imagePlaceholder} aria-hidden="true">
             <span>{card.title}</span>

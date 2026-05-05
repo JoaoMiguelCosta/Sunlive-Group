@@ -1,3 +1,14 @@
+import centroEstagioImage from "../../../assets/infrastructures/centro-estagio.webp";
+import centroUniversitarioImage from "../../../assets/infrastructures/centro-universitario.webp";
+import golfeImage from "../../../assets/infrastructures/golfe.webp";
+import gymImage from "../../../assets/infrastructures/gym.webp";
+import pavilhaoAnadiaImage from "../../../assets/infrastructures/pavilhao-anadia.webp";
+import pistaBmxImage from "../../../assets/infrastructures/pista-bmx.webp";
+import pistaXcoImage from "../../../assets/infrastructures/pista-xco.webp";
+import triatloImage from "../../../assets/infrastructures/triatlo.webp";
+import velodromoExteriorImage from "../../../assets/infrastructures/velodromo-exterior.webp";
+import velodromoInteriorImage from "../../../assets/infrastructures/velodromo-interior.webp";
+
 const facilitiesGrid = {
   id: "infraestruturas-instalacoes",
 
@@ -19,8 +30,18 @@ const facilitiesGrid = {
       description:
         "Pista coberta de ciclismo de 250m, única em Portugal, com padrões olímpicos internacionais.",
       highlight: "Capacidade para acolher 1000 pessoas",
-      image: null,
-      imageAlt: "Velódromo Nacional",
+      images: [
+        {
+          src: velodromoInteriorImage,
+          alt: "Interior do Velódromo Nacional",
+          position: "center",
+        },
+        {
+          src: velodromoExteriorImage,
+          alt: "Exterior do Velódromo Nacional",
+          position: "center",
+        },
+      ],
       features: [
         "Pista de madeira Siberian Pine de 250m.",
         "Sistema de cronometragem eletrónica.",
@@ -34,8 +55,13 @@ const facilitiesGrid = {
       description:
         "Instalação homologada com design competitivo de alto nível, preparada para receber provas internacionais e estágios de elite.",
       highlight: "Única pista BMX olímpica da Península Ibérica",
-      image: null,
-      imageAlt: "Pista Olímpica de BMX",
+      images: [
+        {
+          src: pistaBmxImage,
+          alt: "Pista Olímpica de BMX",
+          position: "center",
+        },
+      ],
       features: [
         "Circuito com obstáculos técnicos e zonas de sprint.",
         "Curvas inclinadas e saltos desenhados para treino de técnica.",
@@ -49,8 +75,13 @@ const facilitiesGrid = {
       description:
         "Circuito técnico de Cross-Country Olímpico construído segundo os regulamentos da UCI, ideal para treinos de alto rendimento e competições oficiais.",
       highlight: "Traçado olímpico com 3,6 km de extensão",
-      image: null,
-      imageAlt: "Pista XCO Mountain Bike",
+      images: [
+        {
+          src: pistaXcoImage,
+          alt: "Pista XCO Mountain Bike",
+          position: "center",
+        },
+      ],
       features: [
         "Percurso com desnível acumulado e subidas íngremes (>25%).",
         "Obstáculos naturais e artificiais (pedras, raízes, troncos, pontes).",
@@ -65,8 +96,13 @@ const facilitiesGrid = {
         "Infraestrutura coberta destinada a treinos indoor, eventos desportivos e competições regionais.",
       highlight:
         "Versatilidade total para modalidades indoor com apoio logístico completo.",
-      image: null,
-      imageAlt: "Pavilhão Multiusos de Anadia",
+      images: [
+        {
+          src: pavilhaoAnadiaImage,
+          alt: "Pavilhão Multiusos de Anadia",
+          position: "center",
+        },
+      ],
       features: [
         "Bancadas para público e iluminação LED.",
         "Piso polivalente para basquetebol, voleibol, futsal e andebol.",
@@ -80,8 +116,13 @@ const facilitiesGrid = {
       description:
         "Rede de infraestruturas desportivas ideais para estágios de clubes, seleções e preparação de alto rendimento.",
       highlight: "Espaços ideais para treino, recuperação e apoio técnico.",
-      image: null,
-      imageAlt: "Centro de Estágios",
+      images: [
+        {
+          src: centroEstagioImage,
+          alt: "Centro de Estágios",
+          position: "center",
+        },
+      ],
       features: [
         "Campos de futebol com relva natural e sintética.",
         "Alojamento próximo e restauração disponível.",
@@ -95,8 +136,13 @@ const facilitiesGrid = {
       description:
         "Campus académicos com estruturas desportivas e apoio logístico, ideais para programas de formação e prática desportiva.",
       highlight: "Ambiente universitário com condições de treino e competição.",
-      image: null,
-      imageAlt: "Centros Universitários",
+      images: [
+        {
+          src: centroUniversitarioImage,
+          alt: "Centros Universitários",
+          position: "center",
+        },
+      ],
       features: [
         "Pavilhões polivalentes e campos exteriores.",
         "Piscinas, pista de atletismo e zonas de musculação.",
@@ -111,8 +157,13 @@ const facilitiesGrid = {
         "Espaços de treino funcional e musculação integrados em centros desportivos e unidades de alojamento.",
       highlight:
         "Preparação física integrada com apoio à recuperação muscular.",
-      image: null,
-      imageAlt: "Ginásios de apoio à preparação física",
+      images: [
+        {
+          src: gymImage,
+          alt: "Ginásios de apoio à preparação física",
+          position: "center",
+        },
+      ],
       features: [
         "Equipamentos de musculação e cardio.",
         "Acessíveis a atletas em estágio e hóspedes.",
@@ -127,8 +178,13 @@ const facilitiesGrid = {
         "Percurso técnico e natural preparado para treino combinado de natação, ciclismo e corrida.",
       highlight:
         "Percursos combinados e naturais para simulação real de provas.",
-      image: null,
-      imageAlt: "Circuito de Triatlo",
+      images: [
+        {
+          src: triatloImage,
+          alt: "Circuito de Triatlo",
+          position: "center",
+        },
+      ],
       features: [
         "Utilizado em estágios de equipas nacionais.",
         "Ambientes variados: estrada, trilho e água.",
@@ -143,8 +199,13 @@ const facilitiesGrid = {
         "Espaço natural e tranquilo dedicado à prática de golfe, ideal para momentos de lazer ativo e treino de foco mental.",
       highlight:
         "Golfe em ambiente termal – ideal para foco, lazer e recuperação ativa.",
-      image: null,
-      imageAlt: "Campo de Golfe da Curia",
+      images: [
+        {
+          src: golfeImage,
+          alt: "Campo de Golfe da Curia",
+          position: "center",
+        },
+      ],
       features: [
         "Campo de 9 buracos integrado na estância termal da Curia.",
         "Adequado a iniciantes e jogadores experientes.",

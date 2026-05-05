@@ -144,7 +144,7 @@
     border-color: var(--chip-border-hover);
     background: var(--chip-bg-hover);
     box-shadow: var(--chip-shadow-hover);
-    color: #070a10;
+   
     filter: saturate(1.03);
 }
 

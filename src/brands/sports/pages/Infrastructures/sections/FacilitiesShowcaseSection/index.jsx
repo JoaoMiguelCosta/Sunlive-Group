@@ -12,8 +12,12 @@ function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
 
+function isValidObject(value) {
+  return value && typeof value === "object" && !Array.isArray(value);
+}
+
 function isValidCard(card) {
-  return card && typeof card === "object" && isValidText(card.title);
+  return isValidObject(card) && isValidText(card.title);
 }
 
 function getValidCards(cards) {
@@ -22,6 +26,18 @@ function getValidCards(cards) {
 
 function getValidFeatures(features) {
   return Array.isArray(features) ? features.filter(isValidText) : [];
+}
+
+function getValidImages(images, fallbackAlt) {
+  if (!Array.isArray(images)) return [];
+
+  return images
+    .filter((image) => isValidObject(image) && isValidText(image.src))
+    .map((image) => ({
+      src: image.src,
+      alt: isValidText(image.alt) ? image.alt : fallbackAlt,
+      position: isValidText(image.position) ? image.position : "center",
+    }));
 }
 
 function formatCounter(value) {
@@ -103,8 +119,7 @@ function normalizeCards(cards, sectionId) {
       title: card.title,
       description: isValidText(card.description) ? card.description : "",
       highlight: isValidText(card.highlight) ? card.highlight : "",
-      image: isValidText(card.image) ? card.image : "",
-      imageAlt: isValidText(card.imageAlt) ? card.imageAlt : card.title,
+      images: getValidImages(card.images, card.title),
       features: getValidFeatures(card.features),
     };
   });
@@ -114,7 +129,7 @@ function getInitialCardKey(cards) {
   return cards[0]?.key || null;
 }
 
-export default function FacilitiesGridSection({ data }) {
+export default function FacilitiesShowcaseSection({ data }) {
   const panelRef = useRef(null);
   const shouldScrollAfterSelectRef = useRef(false);
 
@@ -226,6 +241,7 @@ export default function FacilitiesGridSection({ data }) {
     event.preventDefault();
 
     setActiveKey(cards[nextIndex].key);
+
     focusSelectorButton(
       event.currentTarget.closest('[role="tablist"]'),
       nextIndex,

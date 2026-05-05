@@ -1,69 +1,103 @@
 .header {
     display: grid;
     justify-items: center;
-    max-inline-size: min(100%, 72rem);
+    gap: clamp(0.58rem, 0.82vw, 0.76rem);
+    inline-size: 100%;
+    max-inline-size: 58rem;
+    min-inline-size: 0;
     margin-inline: auto;
     text-align: center;
 }
 
 .eyebrow {
-    margin: 0 0 clamp(0.48rem, 0.72vw, 0.68rem);
+    position: relative;
+    width: fit-content;
+    margin: 0;
     color: var(--sports-gold, #d6a640);
     font-size: var(--sports-kicker-size, clamp(0.7rem, 0.76vw, 0.78rem));
-    font-weight: 900;
+    font-weight: 850;
     line-height: 1;
     letter-spacing: var(--sports-kicker-spacing, 0.22em);
     text-transform: uppercase;
+    text-shadow:
+        0 0 0.5rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.14);
+}
+
+.eyebrow::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-end: -0.42rem;
+    inline-size: min(100%, 6.2rem);
+    block-size: 1px;
+    border-radius: 999px;
+    transform: translateX(-50%);
+    background:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.68) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.24) 52%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.08) 72%,
+            transparent 100%);
+    opacity: 0.8;
 }
 
 .title {
-    max-inline-size: 18ch;
+    max-inline-size: 20ch;
     margin: 0;
-    color: rgba(248, 250, 252, 0.99);
+    color: var(--sports-text, rgba(246, 248, 252, 0.96));
     font-size: var(--sports-section-title-size, clamp(2rem, 4vw, 3.45rem));
-    font-weight: 950;
+    font-weight: 860;
     line-height: var(--sports-section-title-line, 0.96);
     letter-spacing: var(--sports-section-title-spacing, -0.055em);
     text-wrap: balance;
     text-shadow:
-        0 1px 0 rgba(0, 0, 0, 0.36),
-        0 16px 36px rgba(0, 0, 0, 0.24);
+        0 1px 0 rgba(0, 0, 0, 0.38),
+        0 18px 38px rgba(0, 0, 0, 0.26),
+        0 0 1.9rem rgba(0, 0, 0, 0.16);
 }
 
 .description {
-    max-inline-size: 48rem;
-    margin: clamp(0.78rem, 1.15vw, 1rem) auto 0;
-    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
+    max-inline-size: 68ch;
+    margin: 0;
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
     font-size: var(--sports-lead-size, clamp(0.98rem, 1.08vw, 1.08rem));
     font-weight: 560;
     line-height: var(--sports-lead-line, 1.66);
     text-wrap: balance;
+    text-align: center;
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.18);
 }
 
 @media (min-width: 1180px) {
     .title {
         max-inline-size: none;
-        white-space: nowrap;
-        text-wrap: nowrap;
     }
 }
 
 @media (max-width: 1360px) {
+    .header {
+        max-inline-size: 54rem;
+    }
+
     .title {
         font-size: clamp(1.95rem, 3vw, 3rem);
     }
 
     .description {
-        max-inline-size: 42rem;
-        font-size: 0.94rem;
-        line-height: 1.54;
+        max-inline-size: 64ch;
+        font-size: var(--sports-lead-size, clamp(0.98rem, 1.08vw, 1.08rem));
+        line-height: 1.6;
     }
 }
 
 @media (max-height: 760px) and (min-width: 821px) {
-    .eyebrow {
-        margin-block-end: 0.42rem;
-        font-size: 0.62rem;
+    .header {
+        gap: 0.5rem;
+    }
+
+    .eyebrow::after {
+        inset-block-end: -0.32rem;
     }
 
     .title {
@@ -72,9 +106,8 @@
     }
 
     .description {
-        margin-block-start: 0.72rem;
-        font-size: 0.84rem;
-        line-height: 1.42;
+        font-size: var(--sports-lead-size, clamp(0.98rem, 1.08vw, 1.08rem));
+        line-height: 1.52;
     }
 }
 
@@ -84,12 +117,13 @@
     }
 
     .title {
+        max-inline-size: none;
         white-space: normal;
         text-wrap: balance;
     }
 
     .description {
-        text-align: center;
+        max-inline-size: 68ch;
     }
 }
 
@@ -99,8 +133,6 @@
     }
 
     .eyebrow {
-        margin-block-end: 0.44rem;
-        font-size: 0.64rem;
         letter-spacing: 0.16em;
     }
 
@@ -111,20 +143,24 @@
 
     .description {
         max-inline-size: 34rem;
-        font-size: 0.9rem;
-        line-height: 1.48;
+        font-size: var(--sports-lead-size, clamp(0.98rem, 1.08vw, 1.08rem));
+        line-height: 1.5;
     }
 }
 
 @media (max-width: 640px) {
     .header {
+        gap: 0.62rem;
         max-inline-size: 32rem;
     }
 
     .eyebrow {
-        margin-block-end: 0.38rem;
-        font-size: 0.6rem;
         letter-spacing: 0.13em;
+    }
+
+    .eyebrow::after {
+        inset-block-end: -0.36rem;
+        inline-size: min(100%, 5rem);
     }
 
     .title {
@@ -134,19 +170,24 @@
 
     .description {
         max-inline-size: 100%;
-        font-size: 0.84rem;
-        line-height: 1.42;
+        font-size: 0.9rem;
+        line-height: 1.46;
     }
 }
 
 @media (max-width: 420px) {
+    .header {
+        gap: 0.6rem;
+    }
+
     .title {
         font-size: var(--sports-section-title-size, clamp(1.55rem, 10vw, 2rem));
         letter-spacing: -0.042em;
     }
 
     .description {
-        font-size: 0.8rem;
+        font-size: 0.84rem;
+        line-height: 1.42;
     }
 }
 
@@ -156,6 +197,6 @@
     }
 
     .description {
-        font-size: 0.78rem;
+        font-size: 0.8rem;
     }
 }
