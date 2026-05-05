@@ -1,6 +1,7 @@
 import aliAlHitmiImage from "../../../assets/Testimonials/ali-al-hitmi.webp";
 import carolAngelaOrchardImage from "../../../assets/Testimonials/carol-angela-orchard.webp";
 import francoisPervisImage from "../../../assets/Testimonials/francois-pervis.webp";
+import franckDuriveauImage from "../../../assets/Testimonials/franck-duriveau.webp";
 import kelseyMitchellImage from "../../../assets/Testimonials/kelsey-mitchell.webp";
 import koenBeeckmanImage from "../../../assets/Testimonials/koen-beeckman.webp";
 import maxWhitlockImage from "../../../assets/Testimonials/max-whitlock.webp";
@@ -239,6 +240,36 @@ const testimonialsSection = {
       quote: [
         "O Sunlive AG Training Camp é uma equipa técnica multifacetada e de alto nível, que nos permite desenvolver diferentes abordagens, não só do ponto de vista técnico nos vários aparelhos, mas também ao nível dos trampolins artísticos, aquecimentos, flexibilidade e preparação física.",
         "É uma excelente oportunidade de treino para treinadores e um momento verdadeiramente inspirador para todos.",
+      ],
+    },
+
+    {
+      key: "franck-duriveau",
+      name: "Franck Duriveau",
+      category: "Ciclismo",
+      image: makeTestimonialImage({
+        src: franckDuriveauImage,
+        alt: "Franck Duriveau",
+        scale: {
+          desktop: 1.28,
+          tablet: 1.12,
+          mobile: 0.95,
+        },
+        thumbScale: {
+          desktop: 1.08,
+          tablet: 1.04,
+          mobile: 1,
+        },
+        offsetX: "0%",
+        offsetY: "-14%",
+        thumbOffsetX: "0%",
+        thumbOffsetY: "0%",
+      }),
+      description: ["Treinador principal de sprint", "Canadá"],
+      quote: [
+        "Obrigado pela calorosa receção, pela vossa gentileza e pela disponibilidade diária.",
+        "Fomos tratados e mimados como reis do início ao fim.",
+        "Espero que possamos regressar muito em breve ao vosso estabelecimento para voltar a desfrutar de todos os benefícios.",
       ],
     },
 
