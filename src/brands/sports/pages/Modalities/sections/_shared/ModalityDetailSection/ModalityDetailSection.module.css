@@ -16,7 +16,7 @@
 
     --detail-media-opacity: 1;
     --detail-media-tablet-opacity: 1;
-    --detail-media-mobile-opacity: 0.82;
+    --detail-media-mobile-opacity: 1;
     --detail-media-scale: 1.002;
 
     --detail-media-brightness: 1.02;
@@ -85,7 +85,7 @@
 .section[data-modality="cycling"] {
     --detail-media-opacity: 1;
     --detail-media-tablet-opacity: 1;
-    --detail-media-mobile-opacity: 0.84;
+    --detail-media-mobile-opacity: 1;
     --detail-media-scale: 1;
 
     --modality-panel-bg-alpha: 0.14;
@@ -100,7 +100,7 @@
 .section[data-modality="basketball"] {
     --detail-media-opacity: 1;
     --detail-media-tablet-opacity: 1;
-    --detail-media-mobile-opacity: 0.84;
+    --detail-media-mobile-opacity: 1;
     --detail-media-scale: 1.002;
 
     --modality-card-bg-alpha: 0.36;
@@ -111,7 +111,7 @@
 .section[data-modality="football"] {
     --detail-media-opacity: 1;
     --detail-media-tablet-opacity: 1;
-    --detail-media-mobile-opacity: 0.84;
+    --detail-media-mobile-opacity: 1;
     --detail-media-scale: 1;
 
     --modality-card-bg-alpha: 0.34;
@@ -122,7 +122,7 @@
 .section[data-modality="gymnastics"] {
     --detail-media-opacity: 1;
     --detail-media-tablet-opacity: 1;
-    --detail-media-mobile-opacity: 0.82;
+    --detail-media-mobile-opacity: 1;
     --detail-media-scale: 1.002;
 
     --modality-panel-bg-alpha: 0.18;
@@ -133,7 +133,7 @@
 .section[data-modality="karate"] {
     --detail-media-opacity: 1;
     --detail-media-tablet-opacity: 1;
-    --detail-media-mobile-opacity: 0.82;
+    --detail-media-mobile-opacity: 1;
     --detail-media-scale: 1;
 
     --modality-panel-bg-alpha: 0.2;
@@ -483,7 +483,7 @@
     }
 
     .mediaBackdrop {
-        opacity: var(--detail-media-tablet-opacity);
+        opacity: var(--detail-media-opacity);
     }
 
     .lead {
@@ -508,38 +508,6 @@
     }
 }
 
-@media (max-width: 760px) {
-    .section {
-        --modality-panel-bg-alpha: 0.54;
-        --modality-panel-bg-alpha-strong: 0.7;
-        --modality-panel-bg-alpha-deep: 0.84;
-
-        --modality-card-bg-alpha: 0.62;
-        --modality-card-bg-alpha-strong: 0.76;
-        --modality-card-bg-alpha-deep: 0.88;
-
-        --modality-summary-bg-alpha: 0.62;
-        --modality-summary-bg-alpha-strong: 0.76;
-        --modality-summary-bg-alpha-deep: 0.88;
-
-        --modality-highlight-bg-alpha: 0.62;
-        --modality-highlight-bg-alpha-strong: 0.76;
-        --modality-highlight-bg-alpha-deep: 0.88;
-
-        --modality-technical-bg-alpha: 0.64;
-        --modality-technical-bg-alpha-strong: 0.78;
-        --modality-technical-bg-alpha-deep: 0.9;
-
-        --modality-technical-card-bg-alpha: 0.64;
-        --modality-technical-card-bg-alpha-strong: 0.78;
-        --modality-technical-card-bg-alpha-deep: 0.9;
-
-        --modality-glass-blur: 4px;
-        --modality-card-glass-blur: 4px;
-        --modality-summary-glass-blur: 4px;
-    }
-}
-
 @media (max-width: 680px) {
     .section {
         --detail-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
@@ -551,20 +519,7 @@
     }
 
     .mediaBackdrop {
-        opacity: var(--detail-media-mobile-opacity);
-    }
-
-    .mediaBackdrop::before {
-        background:
-            linear-gradient(90deg,
-                rgba(3, 6, 11, 0.92) 0%,
-                rgba(3, 6, 11, 0.72) 38%,
-                rgba(3, 6, 11, 0.46) 72%,
-                rgba(3, 6, 11, 0.34) 100%),
-            linear-gradient(180deg,
-                rgba(3, 6, 11, 0.44) 0%,
-                rgba(3, 6, 11, 0.54) 48%,
-                rgba(3, 6, 11, 0.88) 100%);
+        opacity: var(--detail-media-opacity);
     }
 
     .hero {
@@ -619,32 +574,11 @@
     .section {
         --detail-padding: 0.74rem;
         --detail-gap: 0.66rem;
+        --detail-media-mobile-opacity: var(--detail-media-opacity);
+    }
 
-        --detail-media-mobile-opacity: 0.72;
-
-        --modality-panel-bg-alpha: 0.72;
-        --modality-panel-bg-alpha-strong: 0.84;
-        --modality-panel-bg-alpha-deep: 0.92;
-
-        --modality-card-bg-alpha: 0.72;
-        --modality-card-bg-alpha-strong: 0.84;
-        --modality-card-bg-alpha-deep: 0.92;
-
-        --modality-summary-bg-alpha: 0.72;
-        --modality-summary-bg-alpha-strong: 0.84;
-        --modality-summary-bg-alpha-deep: 0.92;
-
-        --modality-highlight-bg-alpha: 0.72;
-        --modality-highlight-bg-alpha-strong: 0.84;
-        --modality-highlight-bg-alpha-deep: 0.92;
-
-        --modality-technical-bg-alpha: 0.74;
-        --modality-technical-bg-alpha-strong: 0.86;
-        --modality-technical-bg-alpha-deep: 0.94;
-
-        --modality-technical-card-bg-alpha: 0.74;
-        --modality-technical-card-bg-alpha-strong: 0.86;
-        --modality-technical-card-bg-alpha-deep: 0.94;
+    .mediaBackdrop {
+        opacity: var(--detail-media-opacity);
     }
 
     .hero {

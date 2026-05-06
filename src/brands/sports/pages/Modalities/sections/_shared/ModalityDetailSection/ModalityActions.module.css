@@ -252,7 +252,6 @@
     }
 }
 
-/* Desktop / tablets largos */
 @media (min-width: 901px) {
     .actionRow {
         align-items: center;
@@ -268,7 +267,6 @@
     }
 }
 
-/* Ecrãs baixos em desktop */
 @media (min-width: 1280px) and (max-height: 860px) {
     .actionRow {
         gap: 0.38rem;
@@ -306,7 +304,6 @@
     }
 }
 
-/* Tablet */
 @media (max-width: 900px) {
     .actionRow {
         display: flex;
@@ -342,7 +339,6 @@
     }
 }
 
-/* Mobile largo */
 @media (max-width: 640px) {
     .actionRow {
         gap: 0.42rem;
@@ -375,7 +371,6 @@
     }
 }
 
-/* Mobile estreito — mantém botões lado a lado quando possível */
 @media (max-width: 520px) {
     .actionRow {
         display: flex;
@@ -430,7 +425,6 @@
     }
 }
 
-/* iPhone SE / muito estreito */
 @media (max-width: 390px) {
     .actionRow {
         gap: 0.36rem;
@@ -459,7 +453,6 @@
     }
 }
 
-/* Último fallback: evita overflow real */
 @media (max-width: 340px) {
     .actionRow {
         display: grid;

@@ -8,11 +8,11 @@
     padding: clamp(0.78rem, 1.45vw, 1.12rem);
     box-sizing: border-box;
 
-    --technical-bg-alpha: var(--modality-technical-bg-alpha, 0.42);
-    --technical-bg-alpha-strong: var(--modality-technical-bg-alpha-strong, 0.56);
+    --technical-bg-alpha: var(--modality-technical-bg-alpha, 0.36);
+    --technical-bg-alpha-strong: var(--modality-technical-bg-alpha-strong, 0.52);
     --technical-bg-alpha-deep: var(--modality-technical-bg-alpha-deep, 0.7);
 
-    --technical-card-bg-alpha: var(--modality-technical-card-bg-alpha, 0.44);
+    --technical-card-bg-alpha: var(--modality-technical-card-bg-alpha, 0.42);
     --technical-card-bg-alpha-strong: var(--modality-technical-card-bg-alpha-strong, 0.58);
     --technical-card-bg-alpha-deep: var(--modality-technical-card-bg-alpha-deep, 0.74);
 
@@ -700,25 +700,10 @@
 @media (max-width: 760px) {
     .panel {
         padding: clamp(0.72rem, 3vw, 0.95rem);
-
-        --technical-bg-alpha: 0.72;
-        --technical-bg-alpha-strong: 0.84;
-        --technical-bg-alpha-deep: 0.92;
-
-        --technical-card-bg-alpha: 0.74;
-        --technical-card-bg-alpha-strong: 0.86;
-        --technical-card-bg-alpha-deep: 0.94;
-
-        --technical-glass-blur: 6px;
-        --technical-card-blur: 6px;
     }
 
     .panel[data-open="false"] {
         padding: clamp(0.7rem, 2.8vw, 0.9rem);
-
-        --technical-bg-alpha: 0.68;
-        --technical-bg-alpha-strong: 0.8;
-        --technical-bg-alpha-deep: 0.9;
     }
 
     .panelHeader {

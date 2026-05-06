@@ -11,7 +11,7 @@
     box-sizing: border-box;
 
     --highlight-bg-alpha: var(--modality-highlight-bg-alpha, 0.34);
-    --highlight-bg-alpha-strong: var(--modality-highlight-bg-alpha-strong, 0.5);
+    --highlight-bg-alpha-strong: var(--modality-highlight-bg-alpha-strong, 0.48);
     --highlight-bg-alpha-deep: var(--modality-highlight-bg-alpha-deep, 0.66);
     --highlight-border-alpha: var(--modality-surface-border-strong-alpha, 0.22);
     --highlight-gold-alpha: var(--modality-gold-surface-alpha, 0.045);
@@ -283,11 +283,6 @@
     .highlightPanel {
         gap: clamp(0.74rem, 2vw, 1rem);
         padding: clamp(0.86rem, 2.6vw, 1.12rem);
-
-        --highlight-bg-alpha: 0.72;
-        --highlight-bg-alpha-strong: 0.84;
-        --highlight-bg-alpha-deep: 0.9;
-        --highlight-glass-blur: 7px;
     }
 
     .highlightIcon {

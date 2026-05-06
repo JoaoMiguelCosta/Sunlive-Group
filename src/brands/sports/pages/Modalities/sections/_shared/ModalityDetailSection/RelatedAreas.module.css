@@ -535,11 +535,6 @@
 @media (max-width: 760px) {
     .panel {
         padding: 0;
-        --related-card-bg-alpha: 0.78;
-        --related-card-bg-alpha-strong: 0.88;
-        --related-card-bg-alpha-deep: 0.95;
-        --related-glass-blur: 8px;
-        --related-card-blur: 7px;
     }
 
     .panelHeader {
