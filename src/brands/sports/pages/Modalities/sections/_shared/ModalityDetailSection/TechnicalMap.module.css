@@ -4,44 +4,68 @@
     display: grid;
     min-inline-size: 0;
     overflow: clip;
-    gap: clamp(0.82rem, 1.45vw, 1.15rem);
-    padding: clamp(0.9rem, 1.75vw, 1.35rem);
+    gap: clamp(0.72rem, 1.25vw, 1rem);
+    padding: clamp(0.78rem, 1.45vw, 1.12rem);
     box-sizing: border-box;
 
-    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    --technical-bg-alpha: var(--modality-technical-bg-alpha, 0.42);
+    --technical-bg-alpha-strong: var(--modality-technical-bg-alpha-strong, 0.56);
+    --technical-bg-alpha-deep: var(--modality-technical-bg-alpha-deep, 0.7);
+
+    --technical-card-bg-alpha: var(--modality-technical-card-bg-alpha, 0.44);
+    --technical-card-bg-alpha-strong: var(--modality-technical-card-bg-alpha-strong, 0.58);
+    --technical-card-bg-alpha-deep: var(--modality-technical-card-bg-alpha-deep, 0.74);
+
+    --technical-border-alpha: var(--modality-surface-border-alpha, 0.13);
+    --technical-border-strong-alpha: var(--modality-surface-border-strong-alpha, 0.22);
+    --technical-gold-alpha: var(--modality-gold-surface-alpha, 0.045);
+    --technical-green-alpha: var(--modality-green-surface-alpha, 0.018);
+    --technical-glass-blur: var(--modality-glass-blur, 1px);
+    --technical-card-blur: var(--modality-card-glass-blur, 1px);
+
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / var(--technical-border-alpha));
     border-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
     background:
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.04) 0%,
-            rgba(255, 255, 255, 0.012) 17%,
-            rgba(255, 255, 255, 0) 42%),
+            rgba(255, 255, 255, 0.028) 0%,
+            rgba(255, 255, 255, 0.008) 24%,
+            rgba(255, 255, 255, 0) 54%),
         radial-gradient(128% 150% at 0% 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.052) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.016) 34%,
-            transparent 62%),
-        radial-gradient(118% 145% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.105) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.032) 34%,
+            rgb(var(--sports-green-rgb, 46 194 126) / var(--technical-green-alpha)) 0%,
             transparent 64%),
-        radial-gradient(125% 145% at 100% 100%,
-            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.065) 0%,
-            transparent 60%),
+        radial-gradient(118% 145% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / var(--technical-gold-alpha)) 0%,
+            transparent 66%),
         linear-gradient(145deg,
-            rgba(3, 6, 11, 0.995) 0%,
-            rgba(5, 9, 17, 0.992) 52%,
-            rgba(9, 8, 7, 0.998) 100%);
+            rgba(3, 6, 11, var(--technical-bg-alpha)) 0%,
+            rgba(5, 9, 17, var(--technical-bg-alpha-strong)) 54%,
+            rgba(9, 8, 7, var(--technical-bg-alpha-deep)) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
-        0 18px 42px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.014);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.01),
+        0 18px 42px rgba(0, 0, 0, 0.22),
+        0 0 0 1px rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(var(--technical-glass-blur));
+    -webkit-backdrop-filter: blur(var(--technical-glass-blur));
 }
 
 .panel[data-open="false"] {
-    gap: clamp(0.58rem, 1vw, 0.82rem);
-    padding: clamp(0.78rem, 1.35vw, 1.05rem);
+    gap: clamp(0.52rem, 0.9vw, 0.76rem);
+    padding: clamp(0.68rem, 1.18vw, 0.92rem);
+
+    --technical-bg-alpha: 0.36;
+    --technical-bg-alpha-strong: 0.5;
+    --technical-bg-alpha-deep: 0.64;
+}
+
+.panel[data-open="true"] {
+    --technical-bg-alpha: 0.5;
+    --technical-bg-alpha-strong: 0.64;
+    --technical-bg-alpha-deep: 0.78;
+
+    --technical-card-bg-alpha: 0.5;
+    --technical-card-bg-alpha-strong: 0.64;
+    --technical-card-bg-alpha-deep: 0.78;
 }
 
 .panel::before,
@@ -59,14 +83,14 @@
     block-size: 1px;
     background:
         linear-gradient(90deg,
-            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.9) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.2) 64%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.82) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.12) 64%,
             transparent 100%);
-    opacity: 0.82;
+    opacity: 0.74;
 }
 
 .panel::after {
-    inset-block-end: -24%;
+    inset-block-end: -26%;
     inset-inline-end: -8%;
     z-index: 0;
     inline-size: clamp(13rem, 24vw, 20rem);
@@ -74,11 +98,11 @@
     border-radius: 999px;
     background:
         radial-gradient(circle,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.1) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.035) 38%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.052) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.018) 38%,
             transparent 74%);
     filter: blur(34px);
-    opacity: 0.6;
+    opacity: 0.34;
 }
 
 .panel>* {
@@ -92,18 +116,18 @@
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: end;
     min-inline-size: 0;
-    gap: clamp(0.85rem, 1.65vw, 1.25rem);
+    gap: clamp(0.72rem, 1.35vw, 1.05rem);
 }
 
 .panelIntro {
     display: grid;
     min-inline-size: 0;
     max-inline-size: 900px;
-    gap: clamp(0.4rem, 0.78vw, 0.58rem);
+    gap: clamp(0.32rem, 0.62vw, 0.48rem);
 }
 
 .panel[data-open="false"] .panelIntro {
-    gap: clamp(0.28rem, 0.55vw, 0.42rem);
+    gap: clamp(0.24rem, 0.48vw, 0.38rem);
 }
 
 .panelKicker {
@@ -111,20 +135,23 @@
     align-items: center;
     inline-size: fit-content;
     max-inline-size: 100%;
-    gap: clamp(0.4rem, 0.68vw, 0.5rem);
+    gap: clamp(0.38rem, 0.64vw, 0.48rem);
     margin: 0;
 
     color: var(--sports-gold, #d6a640);
-    font-size: var(--sports-kicker-size, clamp(0.7rem, 0.76vw, 0.78rem));
+    font-size: var(--sports-kicker-size, clamp(0.68rem, 0.74vw, 0.76rem));
     font-weight: 850;
     line-height: 1;
     letter-spacing: var(--sports-kicker-spacing, 0.22em);
     text-transform: uppercase;
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.68),
+        0 0 16px rgba(0, 0, 0, 0.42);
 }
 
 .panelKicker::before {
     content: "";
-    inline-size: clamp(1.1rem, 1.9vw, 1.75rem);
+    inline-size: clamp(1rem, 1.8vw, 1.65rem);
     block-size: 1px;
     flex: 0 0 auto;
     background: currentColor;
@@ -134,15 +161,18 @@
 .panelTitle {
     margin: 0;
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
-    font-size: var(--sports-panel-title-size, clamp(1.65rem, 2.45vw, 2.65rem));
+    font-size: var(--sports-panel-title-size, clamp(1.48rem, 2.2vw, 2.35rem));
     font-weight: 950;
     line-height: var(--sports-panel-title-line, 0.98);
-    letter-spacing: var(--sports-panel-title-spacing, -0.058em);
+    letter-spacing: var(--sports-panel-title-spacing, -0.055em);
     text-wrap: balance;
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.58),
+        0 10px 24px rgba(0, 0, 0, 0.46);
 }
 
 .panel[data-open="false"] .panelTitle {
-    font-size: clamp(1.55rem, 2.2vw, 2.25rem);
+    font-size: clamp(1.35rem, 2vw, 2.05rem);
     line-height: 1;
 }
 
@@ -150,31 +180,32 @@
     max-inline-size: 820px;
     margin: 0;
 
-    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
-    font-size: var(--sports-support-text-size, clamp(0.91rem, 0.9vw, 0.96rem));
+    color: var(--sports-muted-strong, rgba(218, 225, 236, 0.86));
+    font-size: var(--sports-support-text-size, clamp(0.86rem, 0.84vw, 0.94rem));
     font-weight: 600;
-    line-height: 1.54;
+    line-height: 1.48;
     text-wrap: pretty;
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.58),
+        0 8px 20px rgba(0, 0, 0, 0.42);
 }
 
 .panel[data-open="false"] .panelLead {
-    font-size: clamp(0.86rem, 0.84vw, 0.94rem);
-    line-height: 1.42;
+    font-size: clamp(0.8rem, 0.78vw, 0.9rem);
+    line-height: 1.38;
 }
 
 .panelMeta {
     margin: 0;
 
-    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
-    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    color: var(--sports-muted-strong, rgba(218, 225, 236, 0.8));
+    font-size: var(--sports-card-text-size, clamp(0.7rem, 0.7vw, 0.78rem));
     font-weight: 740;
-    line-height: 1.42;
-    text-wrap: pretty;
-}
-
-.panel[data-open="false"] .panelMeta {
-    font-size: clamp(0.72rem, 0.7vw, 0.78rem);
     line-height: 1.34;
+    text-wrap: pretty;
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.58),
+        0 8px 20px rgba(0, 0, 0, 0.42);
 }
 
 .toggleButton {
@@ -182,11 +213,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    inline-size: fit-content;
+    max-inline-size: 100%;
     min-inline-size: 0;
-    min-block-size: clamp(2.25rem, 2.5vw, 2.55rem);
-    gap: 0.48rem;
-    padding: clamp(0.58rem, 0.76vw, 0.72rem) clamp(0.78rem, 1vw, 0.98rem);
+    min-block-size: clamp(2.08rem, 2.32vw, 2.45rem);
+    gap: clamp(0.36rem, 0.56vw, 0.48rem);
+    padding: clamp(0.52rem, 0.7vw, 0.68rem) clamp(0.72rem, 0.94vw, 0.94rem);
     box-sizing: border-box;
+    justify-self: end;
 
     border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
     border-radius: 999px;
@@ -194,20 +228,18 @@
         radial-gradient(130% 155% at 100% 0%,
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
             transparent 46%),
-        var(--sports-surface-soft,
-            linear-gradient(180deg,
-                rgba(255, 255, 255, 0.036) 0%,
-                rgba(255, 255, 255, 0.012) 100%)),
         linear-gradient(145deg,
-            rgba(10, 17, 25, 0.94) 0%,
-            rgba(5, 10, 17, 0.982) 100%);
+            rgba(10, 17, 25, 0.62) 0%,
+            rgba(5, 10, 17, 0.82) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 12px 24px rgba(0, 0, 0, 0.2);
+        0 12px 24px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
     font: inherit;
-    font-size: clamp(0.76rem, 0.76vw, 0.86rem);
+    font-size: clamp(0.72rem, 0.72vw, 0.84rem);
     font-weight: 880;
     line-height: 1;
     letter-spacing: -0.018em;
@@ -222,13 +254,21 @@
 }
 
 .panel[data-open="false"] .toggleButton {
-    min-block-size: clamp(2.08rem, 2.2vw, 2.28rem);
-    padding: clamp(0.52rem, 0.66vw, 0.62rem) clamp(0.72rem, 0.9vw, 0.86rem);
+    min-block-size: clamp(2rem, 2.14vw, 2.24rem);
+    padding: clamp(0.48rem, 0.62vw, 0.6rem) clamp(0.68rem, 0.86vw, 0.84rem);
+}
+
+.toggleButton span {
+    display: inline-block;
+    min-inline-size: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .toggleIcon {
-    inline-size: 0.96rem;
-    block-size: 0.96rem;
+    inline-size: 0.92rem;
+    block-size: 0.92rem;
     flex: 0 0 auto;
     transition: transform 180ms ease;
 }
@@ -246,8 +286,8 @@
 .content {
     display: grid;
     min-inline-size: 0;
-    gap: clamp(0.78rem, 1.35vw, 1.05rem);
-    padding-block-start: clamp(0.78rem, 1.35vw, 1.05rem);
+    gap: clamp(0.72rem, 1.22vw, 0.96rem);
+    padding-block-start: clamp(0.72rem, 1.22vw, 0.96rem);
     border-block-start: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.16);
 }
 
@@ -256,7 +296,7 @@
     align-items: center;
     flex-wrap: wrap;
     min-inline-size: 0;
-    gap: clamp(0.44rem, 0.7vw, 0.58rem);
+    gap: clamp(0.4rem, 0.66vw, 0.54rem);
 }
 
 .tabButton {
@@ -264,23 +304,26 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-block-size: clamp(2.05rem, 2.25vw, 2.3rem);
-    padding: clamp(0.5rem, 0.65vw, 0.62rem) clamp(0.68rem, 0.9vw, 0.85rem);
+    min-inline-size: 0;
+    min-block-size: clamp(1.98rem, 2.14vw, 2.24rem);
+    padding: clamp(0.46rem, 0.62vw, 0.58rem) clamp(0.64rem, 0.84vw, 0.8rem);
     box-sizing: border-box;
 
     border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
     border-radius: 999px;
     background:
         radial-gradient(130% 155% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.04) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.035) 0%,
             transparent 46%),
         linear-gradient(145deg,
-            rgba(10, 17, 25, 0.82) 0%,
-            rgba(5, 10, 17, 0.94) 100%);
+            rgba(10, 17, 25, 0.58) 0%,
+            rgba(5, 10, 17, 0.74) 100%);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 
     color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
     font: inherit;
-    font-size: clamp(0.68rem, 0.64vw, 0.76rem);
+    font-size: clamp(0.66rem, 0.62vw, 0.74rem);
     font-weight: 850;
     line-height: 1;
     letter-spacing: 0.04em;
@@ -315,7 +358,7 @@
 .block {
     display: grid;
     min-inline-size: 0;
-    gap: clamp(0.7rem, 1.15vw, 0.95rem);
+    gap: clamp(0.64rem, 1vw, 0.82rem);
 }
 
 .blockHeader {
@@ -329,7 +372,7 @@
 .blockTitle {
     margin: 0;
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
-    font-size: var(--sports-support-title-size, clamp(1.03rem, 1.22vw, 1.22rem));
+    font-size: var(--sports-support-title-size, clamp(0.98rem, 1.14vw, 1.16rem));
     font-weight: 900;
     line-height: var(--sports-support-title-line, 1.15);
     letter-spacing: var(--sports-support-title-spacing, -0.02em);
@@ -340,18 +383,18 @@
 .groupGrid {
     display: grid;
     min-inline-size: 0;
-    gap: clamp(0.62rem, 1vw, 0.82rem);
+    gap: clamp(0.56rem, 0.9vw, 0.74rem);
 }
 
 .disciplineGrid {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
 .groupGrid {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr));
 }
 
 .disciplineCard,
@@ -362,30 +405,32 @@
     align-content: start;
     min-inline-size: 0;
     overflow: clip;
-    gap: clamp(0.5rem, 0.78vw, 0.66rem);
-    padding: clamp(0.74rem, 1.12vw, 0.92rem);
+    gap: clamp(0.46rem, 0.72vw, 0.62rem);
+    padding: clamp(0.68rem, 1vw, 0.86rem);
     box-sizing: border-box;
 
-    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / var(--technical-border-alpha));
     border-radius: var(--sports-radius-md, 1rem);
     background:
         radial-gradient(130% 155% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
-            transparent 46%),
-        var(--sports-surface-soft,
-            linear-gradient(180deg,
-                rgba(255, 255, 255, 0.036) 0%,
-                rgba(255, 255, 255, 0.012) 100%)),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.03) 0%,
+            transparent 48%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.026) 0%,
+            rgba(255, 255, 255, 0.008) 100%),
         linear-gradient(145deg,
-            rgba(10, 17, 25, 0.94) 0%,
-            rgba(5, 10, 17, 0.982) 100%);
+            rgba(8, 15, 23, var(--technical-card-bg-alpha)) 0%,
+            rgba(4, 9, 16, var(--technical-card-bg-alpha-strong)) 58%,
+            rgba(3, 7, 13, var(--technical-card-bg-alpha-deep)) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.035),
-        0 12px 28px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 12px 28px rgba(0, 0, 0, 0.13);
+    backdrop-filter: blur(var(--technical-card-blur));
+    -webkit-backdrop-filter: blur(var(--technical-card-blur));
 }
 
 .disciplineCard {
-    min-block-size: clamp(8.9rem, 11vw, 10.2rem);
+    min-block-size: clamp(8.3rem, 10vw, 9.8rem);
 }
 
 .disciplineCard::before,
@@ -401,10 +446,10 @@
     background:
         linear-gradient(180deg,
             transparent 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.9) 42%,
-            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.7) 74%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.82) 42%,
+            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.58) 74%,
             transparent 100%);
-    opacity: 0.7;
+    opacity: 0.68;
 }
 
 .disciplineCard::after,
@@ -417,10 +462,10 @@
     opacity: 0;
     background:
         radial-gradient(circle at 14% 16%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.085),
             transparent 12rem),
         radial-gradient(circle at 100% 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.045),
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.026),
             transparent 12rem);
     transition: opacity 180ms ease;
 }
@@ -434,14 +479,14 @@
 .disciplineHeader {
     display: grid;
     min-inline-size: 0;
-    gap: 0.26rem;
+    gap: 0.24rem;
 }
 
 .disciplineTitle,
 .groupTitle {
     overflow-wrap: anywhere;
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
-    font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
+    font-size: var(--sports-card-title-size, clamp(0.92rem, 0.92vw, 1.04rem));
     font-weight: 900;
     line-height: var(--sports-card-title-line, 1.08);
     letter-spacing: var(--sports-card-title-spacing, -0.035em);
@@ -450,7 +495,7 @@
 
 .disciplineMeta {
     color: var(--sports-gold, #d6a640);
-    font-size: clamp(0.6rem, 0.58vw, 0.68rem);
+    font-size: clamp(0.58rem, 0.56vw, 0.66rem);
     font-weight: 850;
     line-height: 1;
     letter-spacing: 0.14em;
@@ -458,10 +503,10 @@
 }
 
 .disciplineDescription {
-    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
-    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    color: var(--sports-muted-strong, rgba(218, 225, 236, 0.82));
+    font-size: var(--sports-card-text-size, clamp(0.72rem, 0.7vw, 0.78rem));
     font-weight: 600;
-    line-height: var(--sports-card-text-line, 1.4);
+    line-height: var(--sports-card-text-line, 1.38);
     text-wrap: pretty;
 }
 
@@ -471,7 +516,7 @@
 
 .groupList {
     display: grid;
-    gap: 0.38rem;
+    gap: 0.36rem;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -480,12 +525,12 @@
 .groupList li {
     position: relative;
     min-inline-size: 0;
-    padding-inline-start: 0.88rem;
+    padding-inline-start: 0.86rem;
 
-    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
-    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
+    color: var(--sports-muted-strong, rgba(218, 225, 236, 0.82));
+    font-size: var(--sports-card-text-size, clamp(0.72rem, 0.7vw, 0.78rem));
     font-weight: 600;
-    line-height: var(--sports-card-text-line, 1.4);
+    line-height: var(--sports-card-text-line, 1.38);
 }
 
 .groupList li::before {
@@ -493,8 +538,8 @@
     position: absolute;
     inset-inline-start: 0;
     inset-block-start: 0.55em;
-    inline-size: 0.32rem;
-    block-size: 0.32rem;
+    inline-size: 0.3rem;
+    block-size: 0.3rem;
     border-radius: 999px;
     background: var(--sports-gold, #d6a640);
     box-shadow: 0 0 14px rgb(var(--sports-gold-rgb, 214 166 64) / 0.26);
@@ -503,10 +548,10 @@
 .groupNote {
     margin: 0;
 
-    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
-    font-size: clamp(0.72rem, 0.68vw, 0.78rem);
+    color: var(--sports-muted-strong, rgba(218, 225, 236, 0.84));
+    font-size: clamp(0.7rem, 0.66vw, 0.76rem);
     font-weight: 600;
-    line-height: 1.48;
+    line-height: 1.46;
     text-wrap: pretty;
 }
 
@@ -516,7 +561,7 @@
         color: #ffffff;
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.055),
-            0 15px 30px rgba(0, 0, 0, 0.28);
+            0 15px 30px rgba(0, 0, 0, 0.24);
         transform: translateY(-1px);
     }
 
@@ -535,15 +580,27 @@
         transition:
             transform 180ms ease,
             border-color 180ms ease,
+            background 180ms ease,
             box-shadow 180ms ease;
     }
 
     .disciplineCard:hover,
     .groupCard:hover {
-        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.32);
+        background:
+            radial-gradient(130% 155% at 100% 0%,
+                rgb(var(--sports-gold-rgb, 214 166 64) / 0.048) 0%,
+                transparent 48%),
+            linear-gradient(180deg,
+                rgba(255, 255, 255, 0.034) 0%,
+                rgba(255, 255, 255, 0.01) 100%),
+            linear-gradient(145deg,
+                rgba(9, 16, 25, 0.54) 0%,
+                rgba(5, 10, 18, 0.68) 58%,
+                rgba(3, 7, 13, 0.78) 100%);
         box-shadow:
-            0 14px 34px rgba(0, 0, 0, 0.24),
-            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            0 14px 34px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.046);
         transform: translateY(-2px);
     }
 
@@ -555,97 +612,131 @@
 
 @media (min-width: 1280px) and (max-height: 860px) {
     .panel {
-        gap: 0.7rem;
-        padding: 0.86rem;
+        gap: 0.62rem;
+        padding: 0.74rem;
     }
 
     .panel[data-open="false"] {
-        padding: 0.74rem 0.82rem;
+        padding: 0.66rem 0.74rem;
     }
 
     .panelIntro {
-        gap: 0.34rem;
+        gap: 0.28rem;
     }
 
     .panelTitle {
-        font-size: clamp(1.55rem, 2.05vw, 2.25rem);
+        font-size: clamp(1.38rem, 1.9vw, 2rem);
     }
 
     .panel[data-open="false"] .panelTitle {
-        font-size: clamp(1.38rem, 1.75vw, 1.9rem);
+        font-size: clamp(1.28rem, 1.62vw, 1.72rem);
     }
 
     .panelLead {
-        font-size: 0.82rem;
-        line-height: 1.44;
+        font-size: 0.78rem;
+        line-height: 1.38;
     }
 
     .panelMeta {
-        font-size: 0.7rem;
-        line-height: 1.34;
+        font-size: 0.68rem;
+        line-height: 1.3;
     }
 
     .toggleButton {
-        min-block-size: 2.05rem;
-        padding: 0.5rem 0.72rem;
-        font-size: 0.7rem;
+        min-block-size: 1.96rem;
+        padding: 0.46rem 0.66rem;
+        font-size: 0.68rem;
     }
 
     .content {
-        gap: 0.68rem;
-        padding-block-start: 0.68rem;
+        gap: 0.62rem;
+        padding-block-start: 0.62rem;
     }
 
     .tabButton {
-        min-block-size: 1.95rem;
-        padding: 0.46rem 0.66rem;
-        font-size: 0.64rem;
+        min-block-size: 1.9rem;
+        padding: 0.44rem 0.62rem;
+        font-size: 0.62rem;
     }
 
     .block {
-        gap: 0.62rem;
+        gap: 0.56rem;
     }
 
     .disciplineGrid,
     .groupGrid {
-        gap: 0.56rem;
+        gap: 0.52rem;
     }
 
     .disciplineCard,
     .groupCard {
-        gap: 0.44rem;
-        padding: 0.64rem 0.74rem;
+        gap: 0.4rem;
+        padding: 0.6rem 0.68rem;
     }
 
     .disciplineCard {
-        min-block-size: 8.2rem;
+        min-block-size: 7.8rem;
     }
 
     .disciplineDescription,
     .groupList li {
-        font-size: 0.7rem;
-        line-height: 1.34;
+        font-size: 0.68rem;
+        line-height: 1.32;
     }
 }
 
 @media (max-width: 980px) {
     .panelHeader {
-        grid-template-columns: 1fr;
-        align-items: start;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
     }
 
     .toggleButton {
-        justify-self: start;
+        justify-self: end;
+        max-inline-size: min(100%, 13.5rem);
     }
 }
 
 @media (max-width: 760px) {
     .panel {
-        padding: clamp(0.84rem, 3.4vw, 1.05rem);
+        padding: clamp(0.72rem, 3vw, 0.95rem);
+
+        --technical-bg-alpha: 0.72;
+        --technical-bg-alpha-strong: 0.84;
+        --technical-bg-alpha-deep: 0.92;
+
+        --technical-card-bg-alpha: 0.74;
+        --technical-card-bg-alpha-strong: 0.86;
+        --technical-card-bg-alpha-deep: 0.94;
+
+        --technical-glass-blur: 6px;
+        --technical-card-blur: 6px;
     }
 
     .panel[data-open="false"] {
-        padding: clamp(0.8rem, 3.2vw, 1rem);
+        padding: clamp(0.7rem, 2.8vw, 0.9rem);
+
+        --technical-bg-alpha: 0.68;
+        --technical-bg-alpha-strong: 0.8;
+        --technical-bg-alpha-deep: 0.9;
+    }
+
+    .panelHeader {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+        gap: 0.58rem;
+    }
+
+    .toggleButton {
+        justify-self: start;
+        inline-size: fit-content;
+        max-inline-size: 100%;
+        min-block-size: 2rem;
+        padding: 0.48rem 0.68rem;
+    }
+
+    .toggleButton span {
+        font-size: 0.7rem;
     }
 
     .tabs {
@@ -653,9 +744,9 @@
         grid-template-columns: 1fr;
     }
 
-    .tabButton,
-    .toggleButton {
+    .tabButton {
         inline-size: 100%;
+        justify-content: center;
     }
 
     .disciplineCard {
@@ -669,69 +760,124 @@
     }
 
     .panelKicker {
-        gap: 0.4rem;
+        gap: 0.38rem;
+        font-size: 0.64rem;
     }
 
     .panelKicker::before {
-        inline-size: 1.12rem;
+        inline-size: 1rem;
     }
 
     .panelTitle,
     .panel[data-open="false"] .panelTitle {
-        font-size: clamp(1.42rem, 7.6vw, 1.95rem);
+        font-size: clamp(1.28rem, 6.8vw, 1.72rem);
+        letter-spacing: -0.045em;
     }
 
     .panelLead,
     .panel[data-open="false"] .panelLead {
-        font-size: 0.88rem;
-        line-height: 1.5;
+        font-size: 0.82rem;
+        line-height: 1.42;
     }
 
     .panelMeta {
-        font-size: 0.72rem;
+        font-size: 0.68rem;
     }
 
     .toggleButton {
-        justify-content: space-between;
+        min-block-size: 1.96rem;
+        padding: 0.46rem 0.64rem;
+    }
+
+    .toggleIcon {
+        inline-size: 0.86rem;
+        block-size: 0.86rem;
     }
 
     .disciplineCard,
     .groupCard {
-        padding: 0.72rem;
+        padding: 0.68rem;
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 390px) {
     .panel {
-        padding: 0.76rem;
+        padding: 0.66rem;
+        gap: 0.56rem;
+    }
+
+    .panel[data-open="false"] {
+        padding: 0.64rem;
+    }
+
+    .panelHeader {
+        gap: 0.5rem;
+    }
+
+    .panelKicker {
+        font-size: 0.6rem;
+        letter-spacing: 0.18em;
     }
 
     .panelTitle,
     .panel[data-open="false"] .panelTitle {
-        font-size: clamp(1.32rem, 8.8vw, 1.7rem);
+        font-size: clamp(1.18rem, 7.8vw, 1.52rem);
     }
 
-    .panelLead {
-        font-size: 0.84rem;
+    .panelLead,
+    .panel[data-open="false"] .panelLead {
+        font-size: 0.78rem;
+    }
+
+    .panelMeta {
+        font-size: 0.64rem;
+    }
+
+    .toggleButton {
+        max-inline-size: 100%;
+        min-block-size: 1.9rem;
+        padding: 0.44rem 0.6rem;
+    }
+
+    .toggleButton span {
+        font-size: 0.66rem;
+    }
+
+    .content {
+        gap: 0.58rem;
+        padding-block-start: 0.58rem;
     }
 
     .tabButton {
-        font-size: 0.64rem;
+        min-block-size: 1.86rem;
+        padding: 0.42rem 0.58rem;
+        font-size: 0.6rem;
     }
 
     .disciplineCard,
     .groupCard {
-        padding: 0.66rem;
+        padding: 0.62rem;
     }
 
     .disciplineTitle,
     .groupTitle {
-        font-size: 0.92rem;
+        font-size: 0.88rem;
     }
 
     .disciplineDescription,
     .groupList li {
-        font-size: 0.72rem;
+        font-size: 0.68rem;
+    }
+}
+
+@media (max-width: 340px) {
+    .toggleButton {
+        inline-size: 100%;
+        justify-content: space-between;
+    }
+
+    .toggleButton span {
+        text-align: left;
     }
 }
 

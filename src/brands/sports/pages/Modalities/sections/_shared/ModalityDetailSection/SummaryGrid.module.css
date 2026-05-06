@@ -2,10 +2,25 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
     min-inline-size: 0;
-    gap: clamp(0.56rem, 0.9vw, 0.78rem);
+    gap: clamp(0.5rem, 0.8vw, 0.72rem);
     padding: 0;
     margin: 0;
     list-style: none;
+
+    --summary-card-bg-alpha: var(--modality-summary-bg-alpha, 0.4);
+    --summary-card-bg-alpha-strong: var(--modality-summary-bg-alpha-strong, 0.54);
+    --summary-card-bg-alpha-deep: var(--modality-summary-bg-alpha-deep, 0.68);
+    --summary-border-alpha: var(--modality-summary-border-alpha, 0.14);
+    --summary-gold-alpha: var(--modality-summary-gold-alpha, 0.055);
+    --summary-green-alpha: var(--modality-summary-green-alpha, 0.018);
+    --summary-glass-blur: var(--modality-summary-glass-blur, 9px);
+
+    --summary-card-min-block: clamp(3.85rem, 4.5vw, 5rem);
+    --summary-card-padding-block: clamp(0.62rem, 0.9vw, 0.86rem);
+    --summary-card-padding-inline: clamp(0.68rem, 0.95vw, 0.92rem);
+
+    --summary-value-size: clamp(1rem, 1.28vw, 1.42rem);
+    --summary-label-size: clamp(0.68rem, 0.68vw, 0.78rem);
 }
 
 .summaryGrid[data-items-count="1"] {
@@ -17,6 +32,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.summaryGrid[data-items-count="3"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .summaryCard {
     position: relative;
     isolation: isolate;
@@ -24,28 +43,32 @@
     align-content: center;
     justify-items: center;
     min-inline-size: 0;
-    min-block-size: clamp(4.35rem, 5.15vw, 5.35rem);
+    min-block-size: var(--summary-card-min-block);
     overflow: clip;
-    gap: clamp(0.24rem, 0.38vw, 0.32rem);
-    padding: clamp(0.74rem, 1.05vw, 0.95rem);
+    gap: clamp(0.18rem, 0.3vw, 0.3rem);
+    padding-block: var(--summary-card-padding-block);
+    padding-inline: var(--summary-card-padding-inline);
     box-sizing: border-box;
     text-align: center;
 
-    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / var(--summary-border-alpha));
     border-radius: var(--sports-radius-md, 1rem);
     background:
         radial-gradient(120% 150% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
-            transparent 44%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / var(--summary-gold-alpha)) 0%,
+            transparent 48%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.036) 0%,
-            rgba(255, 255, 255, 0.012) 100%),
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0.008) 100%),
         linear-gradient(145deg,
-            rgba(7, 13, 21, 0.9) 0%,
-            rgba(4, 9, 17, 0.97) 100%);
+            rgba(7, 13, 21, var(--summary-card-bg-alpha)) 0%,
+            rgba(4, 9, 17, var(--summary-card-bg-alpha-strong)) 62%,
+            rgba(3, 7, 13, var(--summary-card-bg-alpha-deep)) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 10px 24px rgba(0, 0, 0, 0.16);
+        inset 0 1px 0 rgba(255, 255, 255, 0.036),
+        0 9px 22px rgba(0, 0, 0, 0.13);
+    backdrop-filter: blur(var(--summary-glass-blur));
+    -webkit-backdrop-filter: blur(var(--summary-glass-blur));
 }
 
 .summaryCard::before {
@@ -56,9 +79,9 @@
     pointer-events: none;
     background:
         radial-gradient(circle at 50% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.1),
-            transparent 9rem);
-    opacity: 0.72;
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.052),
+            transparent 8rem);
+    opacity: 0.54;
 }
 
 .summaryCard::after {
@@ -70,12 +93,12 @@
     border-radius: calc(var(--sports-radius-md, 1rem) - 1px);
     background:
         linear-gradient(135deg,
-            rgba(255, 255, 255, 0.026) 0%,
+            rgba(255, 255, 255, 0.022) 0%,
             transparent 38%),
         radial-gradient(120% 120% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.018) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / var(--summary-green-alpha)) 0%,
             transparent 58%);
-    opacity: 0.9;
+    opacity: 0.72;
 }
 
 .summaryValue,
@@ -91,23 +114,229 @@
 .summaryValue {
     overflow-wrap: anywhere;
     color: var(--sports-gold, #d6a640);
-    font-size: clamp(1.12rem, 1.45vw, 1.56rem);
-    font-weight: 950;
-    line-height: 1;
+    font-size: var(--summary-value-size);
+    font-weight: 930;
+    line-height: 1.02;
     letter-spacing: -0.04em;
     text-wrap: balance;
     text-shadow:
-        0 1px 0 rgba(0, 0, 0, 0.28),
-        0 0 18px rgb(var(--sports-gold-rgb, 214 166 64) / 0.14);
+        0 1px 0 rgba(0, 0, 0, 0.32),
+        0 0 16px rgb(var(--sports-gold-rgb, 214 166 64) / 0.15);
 }
 
 .summaryLabel {
-    max-inline-size: 22rem;
-    color: var(--sports-muted, rgba(186, 196, 210, 0.72));
-    font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
-    font-weight: 760;
-    line-height: 1.32;
+    max-inline-size: 20rem;
+    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
+    font-size: var(--summary-label-size);
+    font-weight: 720;
+    line-height: 1.28;
     text-wrap: pretty;
+}
+
+/* Desktop largo */
+@media (min-width: 1440px) {
+    .summaryGrid {
+        gap: clamp(0.58rem, 0.7vw, 0.82rem);
+
+        --summary-card-min-block: clamp(4rem, 4.35vw, 5.15rem);
+        --summary-card-padding-block: clamp(0.7rem, 0.88vw, 0.94rem);
+        --summary-card-padding-inline: clamp(0.78rem, 0.95vw, 1rem);
+        --summary-value-size: clamp(1.08rem, 1.22vw, 1.5rem);
+        --summary-label-size: clamp(0.7rem, 0.68vw, 0.8rem);
+    }
+}
+
+/* Desktop baixo / portátil */
+@media (min-width: 1280px) and (max-height: 860px) {
+    .summaryGrid {
+        gap: 0.5rem;
+
+        --summary-card-min-block: 3.75rem;
+        --summary-card-padding-block: 0.52rem;
+        --summary-card-padding-inline: 0.68rem;
+        --summary-value-size: clamp(0.98rem, 1.12vw, 1.28rem);
+        --summary-label-size: 0.66rem;
+    }
+
+    .summaryLabel {
+        line-height: 1.24;
+    }
+}
+
+/* 901px–1180px */
+@media (max-width: 1180px) {
+    .summaryGrid {
+        --summary-card-min-block: clamp(3.65rem, 5vw, 4.55rem);
+        --summary-card-padding-block: clamp(0.56rem, 1vw, 0.74rem);
+        --summary-card-padding-inline: clamp(0.62rem, 1vw, 0.82rem);
+        --summary-value-size: clamp(0.98rem, 1.55vw, 1.28rem);
+        --summary-label-size: clamp(0.66rem, 0.9vw, 0.74rem);
+    }
+}
+
+/* 900px para baixo: 2 cards em cima + 1 centrado em baixo */
+@media (max-width: 900px) {
+    .summaryGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(0.48rem, 1.5vw, 0.64rem);
+
+        --summary-card-bg-alpha: 0.58;
+        --summary-card-bg-alpha-strong: 0.72;
+        --summary-card-bg-alpha-deep: 0.82;
+
+        --summary-card-min-block: clamp(3.45rem, 6vw, 4.2rem);
+        --summary-card-padding-block: clamp(0.52rem, 1.6vw, 0.68rem);
+        --summary-card-padding-inline: clamp(0.58rem, 1.8vw, 0.76rem);
+        --summary-value-size: clamp(0.94rem, 2.25vw, 1.18rem);
+        --summary-label-size: clamp(0.64rem, 1.45vw, 0.72rem);
+        --summary-glass-blur: 5px;
+    }
+
+    .summaryGrid[data-items-count="1"] {
+        grid-template-columns: 1fr;
+    }
+
+    .summaryGrid[data-items-count="2"] {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .summaryGrid[data-items-count="3"] {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .summaryGrid[data-items-count="3"]>.summaryCard {
+        grid-column: span 2;
+    }
+
+    .summaryGrid[data-items-count="3"]>.summaryCard:nth-child(3) {
+        grid-column: 2 / span 2;
+    }
+
+    .summaryLabel {
+        max-inline-size: 16rem;
+        line-height: 1.24;
+    }
+}
+
+/* 700px para baixo: compacta mais */
+@media (max-width: 700px) {
+    .summaryGrid {
+        --summary-card-min-block: clamp(3.25rem, 7vw, 3.85rem);
+        --summary-card-padding-block: clamp(0.48rem, 1.8vw, 0.62rem);
+        --summary-card-padding-inline: clamp(0.52rem, 2vw, 0.68rem);
+        --summary-value-size: clamp(0.9rem, 2.6vw, 1.08rem);
+        --summary-label-size: clamp(0.62rem, 1.75vw, 0.7rem);
+    }
+
+    .summaryCard {
+        border-radius: 0.92rem;
+    }
+
+    .summaryCard::after {
+        border-radius: calc(0.92rem - 1px);
+    }
+}
+
+/* 620px para baixo: empilhado, mas sem parecer gigante */
+@media (max-width: 620px) {
+
+    .summaryGrid,
+    .summaryGrid[data-items-count="1"],
+    .summaryGrid[data-items-count="2"],
+    .summaryGrid[data-items-count="3"] {
+        grid-template-columns: 1fr;
+        gap: 0.48rem;
+
+        --summary-card-bg-alpha: 0.7;
+        --summary-card-bg-alpha-strong: 0.82;
+        --summary-card-bg-alpha-deep: 0.9;
+        --summary-glass-blur: 5px;
+
+        --summary-card-min-block: auto;
+        --summary-card-padding-block: clamp(0.52rem, 2.6vw, 0.7rem);
+        --summary-card-padding-inline: clamp(0.58rem, 3vw, 0.76rem);
+        --summary-value-size: clamp(0.96rem, 4.2vw, 1.14rem);
+        --summary-label-size: clamp(0.66rem, 2.9vw, 0.72rem);
+    }
+
+    .summaryGrid[data-items-count="3"]>.summaryCard,
+    .summaryGrid[data-items-count="3"]>.summaryCard:nth-child(3) {
+        grid-column: auto;
+    }
+
+    .summaryCard {
+        min-block-size: var(--summary-card-min-block);
+        align-content: center;
+    }
+
+    .summaryLabel {
+        max-inline-size: 18rem;
+    }
+}
+
+/* Mobile médio */
+@media (max-width: 520px) {
+    .summaryGrid {
+        gap: 0.44rem;
+
+        --summary-card-padding-block: 0.5rem;
+        --summary-card-padding-inline: 0.58rem;
+        --summary-value-size: clamp(0.92rem, 4.4vw, 1.06rem);
+        --summary-label-size: 0.66rem;
+    }
+
+    .summaryCard {
+        border-radius: 0.86rem;
+    }
+
+    .summaryCard::after {
+        border-radius: calc(0.86rem - 1px);
+    }
+
+    .summaryLabel {
+        line-height: 1.22;
+    }
+}
+
+/* iPhone SE / larguras críticas */
+@media (max-width: 390px) {
+    .summaryGrid {
+        gap: 0.42rem;
+
+        --summary-card-padding-block: 0.46rem;
+        --summary-card-padding-inline: 0.52rem;
+        --summary-value-size: clamp(0.88rem, 4.9vw, 1rem);
+        --summary-label-size: 0.63rem;
+    }
+
+    .summaryCard {
+        border-radius: 0.82rem;
+    }
+
+    .summaryCard::after {
+        border-radius: calc(0.82rem - 1px);
+    }
+
+    .summaryValue {
+        line-height: 1.04;
+    }
+
+    .summaryLabel {
+        max-inline-size: 15rem;
+        line-height: 1.2;
+    }
+}
+
+/* Telemóveis muito estreitos */
+@media (max-width: 340px) {
+    .summaryGrid {
+        gap: 0.38rem;
+
+        --summary-card-padding-block: 0.42rem;
+        --summary-card-padding-inline: 0.48rem;
+        --summary-value-size: 0.86rem;
+        --summary-label-size: 0.61rem;
+    }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -115,101 +344,27 @@
         transition:
             transform 180ms ease,
             border-color 180ms ease,
+            background 180ms ease,
             box-shadow 180ms ease;
     }
 
     .summaryCard:hover {
-        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.32);
+        background:
+            radial-gradient(120% 150% at 100% 0%,
+                rgb(var(--sports-gold-rgb, 214 166 64) / 0.075) 0%,
+                transparent 48%),
+            linear-gradient(180deg,
+                rgba(255, 255, 255, 0.038) 0%,
+                rgba(255, 255, 255, 0.012) 100%),
+            linear-gradient(145deg,
+                rgba(8, 15, 23, 0.52) 0%,
+                rgba(5, 10, 18, 0.66) 62%,
+                rgba(3, 7, 13, 0.76) 100%);
         box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.055),
-            0 14px 32px rgba(0, 0, 0, 0.24);
+            inset 0 1px 0 rgba(255, 255, 255, 0.05),
+            0 13px 30px rgba(0, 0, 0, 0.18);
         transform: translateY(-1px);
-    }
-}
-
-@media (min-width: 1280px) and (max-height: 860px) {
-    .summaryGrid {
-        gap: 0.52rem;
-    }
-
-    .summaryCard {
-        min-block-size: 4.05rem;
-        padding: 0.6rem 0.78rem;
-    }
-
-    .summaryValue {
-        font-size: clamp(1.08rem, 1.25vw, 1.34rem);
-    }
-
-    .summaryLabel {
-        font-size: 0.68rem;
-        line-height: 1.3;
-    }
-}
-
-@media (max-width: 900px) {
-    .summaryGrid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .summaryGrid[data-items-count="1"] {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 620px) {
-
-    .summaryGrid,
-    .summaryGrid[data-items-count="1"],
-    .summaryGrid[data-items-count="2"] {
-        grid-template-columns: 1fr;
-    }
-
-    .summaryCard {
-        min-block-size: auto;
-        padding: clamp(0.72rem, 3.2vw, 0.88rem);
-    }
-
-    .summaryValue {
-        font-size: clamp(1.08rem, 5vw, 1.32rem);
-    }
-}
-
-@media (max-width: 420px) {
-    .summaryGrid {
-        gap: 0.5rem;
-    }
-
-    .summaryCard {
-        padding: 0.74rem;
-        border-radius: 0.9rem;
-    }
-
-    .summaryCard::after {
-        border-radius: calc(0.9rem - 1px);
-    }
-
-    .summaryValue {
-        font-size: clamp(1.02rem, 5.6vw, 1.22rem);
-    }
-
-    .summaryLabel {
-        font-size: 0.74rem;
-        line-height: 1.34;
-    }
-}
-
-@media (max-width: 360px) {
-    .summaryCard {
-        padding: 0.68rem;
-    }
-
-    .summaryValue {
-        font-size: 1rem;
-    }
-
-    .summaryLabel {
-        font-size: 0.72rem;
     }
 }
 

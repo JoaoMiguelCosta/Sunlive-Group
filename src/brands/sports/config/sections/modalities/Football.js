@@ -1,5 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../../config/core/paths.js";
 
+import footballImage from "../../../assets/Modalities/football.webp";
+
 const footballSection = {
   key: "football",
   id: "modalidade-futebol",
@@ -12,6 +14,14 @@ const footballSection = {
     lead: "Modalidade estruturada em torno da Pro Football Academy Portugal, com programas residenciais que articulam treino diário, acompanhamento multidisciplinar, competição e percurso académico.",
   },
 
+  media: {
+    src: footballImage,
+    alt: "Atleta de futebol em contexto de treino estruturado",
+    width: 1600,
+    height: 1000,
+    objectPosition: "72% 46%",
+  },
+
   summary: {
     items: [
       {
@@ -22,12 +32,12 @@ const footballSection = {
       {
         key: "football-model",
         value: "Treino + Educação",
-        label: "Modelo de Desenvolvimento",
+        label: "Modelo de desenvolvimento",
       },
       {
         key: "football-focus",
         value: "Percurso estruturado",
-        label: "Foco de Desenvolvimento",
+        label: "Foco de desenvolvimento",
       },
     ],
   },

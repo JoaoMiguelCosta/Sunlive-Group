@@ -8,6 +8,44 @@ import TechnicalMap from "./TechnicalMap.jsx";
 import RelatedAreas from "./RelatedAreas.jsx";
 import HighlightPanel from "./HighlightPanel.jsx";
 
+const DEFAULT_MEDIA_POSITION = "center";
+
+function hasValidMedia(media) {
+  return media && typeof media === "object" && isValidText(media.src);
+}
+
+function getMediaStyle(media) {
+  const objectPosition = isValidText(media?.objectPosition)
+    ? media.objectPosition
+    : DEFAULT_MEDIA_POSITION;
+
+  return {
+    "--modality-media-position": objectPosition,
+  };
+}
+
+function ModalityMediaBackdrop({ media }) {
+  if (!hasValidMedia(media)) return null;
+
+  return (
+    <figure
+      className={styles.mediaBackdrop}
+      style={getMediaStyle(media)}
+      aria-hidden="true"
+    >
+      <img
+        className={styles.mediaImage}
+        src={media.src}
+        alt=""
+        width={media.width}
+        height={media.height}
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+  );
+}
+
 export default function ModalityDetailSection({ data, className = "" }) {
   if (!data || typeof data !== "object") return null;
 
@@ -37,6 +75,8 @@ export default function ModalityDetailSection({ data, className = "" }) {
       aria-describedby={leadId}
       data-modality={modalityKey}
     >
+      <ModalityMediaBackdrop media={data.media} />
+
       <div className={styles.inner}>
         <header className={styles.hero}>
           <ModalityIconFrame

@@ -1,5 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../../config/core/paths.js";
 
+import karateImage from "../../../assets/Modalities/karate.webp";
+
 const karateSection = {
   key: "karate",
   id: "modalidade-karate",
@@ -12,6 +14,14 @@ const karateSection = {
     lead: "Modalidade desenvolvida através da Sunlive Karate Academy, com foco em formação técnica, Kata, Kumite, disciplina, progressão individual e preparação competitiva.",
   },
 
+  media: {
+    src: karateImage,
+    alt: "Atletas de karaté em contexto técnico de treino e formação",
+    width: 1600,
+    height: 1000,
+    objectPosition: "62% 50%",
+  },
+
   summary: {
     items: [
       {
@@ -22,12 +32,12 @@ const karateSection = {
       {
         key: "karate-model",
         value: "Kata / Kumite",
-        label: "Áreas Técnicas",
+        label: "Áreas técnicas",
       },
       {
         key: "karate-focus",
         value: "Disciplina",
-        label: "Foco de Desenvolvimento",
+        label: "Foco de desenvolvimento",
       },
     ],
   },

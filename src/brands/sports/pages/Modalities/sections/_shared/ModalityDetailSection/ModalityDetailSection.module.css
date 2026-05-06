@@ -9,40 +9,140 @@
 
     --detail-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
     --detail-radius-inner: calc(var(--detail-radius) - 1px);
-    --detail-padding: clamp(0.95rem, 1.7vw, 1.45rem);
-    --detail-gap: clamp(0.9rem, 1.35vw, 1.25rem);
-    --detail-header-gap: clamp(0.8rem, 1.45vw, 1.15rem);
-    --detail-divider-opacity: 0.34;
+    --detail-padding: clamp(0.82rem, 1.35vw, 1.15rem);
+    --detail-gap: clamp(0.62rem, 0.95vw, 0.86rem);
+    --detail-header-gap: clamp(0.72rem, 1.15vw, 0.95rem);
+    --detail-divider-opacity: 0.28;
+
+    --detail-media-opacity: 1;
+    --detail-media-tablet-opacity: 1;
+    --detail-media-mobile-opacity: 0.82;
+    --detail-media-scale: 1.002;
+
+    --detail-media-brightness: 1.02;
+    --detail-media-contrast: 1.04;
+    --detail-media-saturate: 1.04;
+
+    --modality-glass-blur: 1px;
+    --modality-card-glass-blur: 1px;
+    --modality-summary-glass-blur: 1px;
+
+    --modality-panel-bg-alpha: 0.18;
+    --modality-panel-bg-alpha-strong: 0.3;
+    --modality-panel-bg-alpha-deep: 0.52;
+
+    --modality-card-bg-alpha: 0.38;
+    --modality-card-bg-alpha-strong: 0.52;
+    --modality-card-bg-alpha-deep: 0.7;
+
+    --modality-summary-bg-alpha: 0.34;
+    --modality-summary-bg-alpha-strong: 0.48;
+    --modality-summary-bg-alpha-deep: 0.66;
+
+    --modality-highlight-bg-alpha: 0.34;
+    --modality-highlight-bg-alpha-strong: 0.48;
+    --modality-highlight-bg-alpha-deep: 0.66;
+
+    --modality-technical-bg-alpha: 0.36;
+    --modality-technical-bg-alpha-strong: 0.52;
+    --modality-technical-bg-alpha-deep: 0.7;
+
+    --modality-technical-card-bg-alpha: 0.42;
+    --modality-technical-card-bg-alpha-strong: 0.58;
+    --modality-technical-card-bg-alpha-deep: 0.74;
+
+    --modality-surface-border-alpha: 0.13;
+    --modality-surface-border-strong-alpha: 0.22;
+    --modality-summary-border-alpha: 0.14;
+
+    --modality-gold-surface-alpha: 0.045;
+    --modality-green-surface-alpha: 0.018;
+    --modality-summary-gold-alpha: 0.045;
+    --modality-summary-green-alpha: 0.014;
 
     border: 1px solid var(--sports-border, rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.16));
     border-radius: var(--detail-radius);
     background:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.04) 0%,
-            rgba(255, 255, 255, 0.012) 17%,
-            rgba(255, 255, 255, 0) 42%),
-        radial-gradient(128% 150% at 0% 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.055) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.018) 34%,
+        radial-gradient(110% 140% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.035) 0%,
+            transparent 58%),
+        radial-gradient(120% 150% at 0% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.014) 0%,
             transparent 62%),
-        radial-gradient(118% 145% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.115) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.034) 34%,
-            transparent 64%),
-        radial-gradient(125% 145% at 100% 100%,
-            rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.07) 0%,
-            transparent 60%),
         linear-gradient(145deg,
-            rgba(3, 6, 11, 0.995) 0%,
-            rgba(5, 9, 17, 0.992) 52%,
-            rgba(9, 8, 7, 0.998) 100%);
+            rgba(3, 6, 11, 0.82) 0%,
+            rgba(4, 8, 15, 0.72) 48%,
+            rgba(5, 5, 4, 0.82) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.012),
-        0 24px 54px rgba(0, 0, 0, 0.34),
-        0 0 0 1px rgba(255, 255, 255, 0.014);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+        inset 0 -1px 0 rgba(255, 255, 255, 0.01),
+        0 22px 52px rgba(0, 0, 0, 0.32),
+        0 0 0 1px rgba(255, 255, 255, 0.012);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+}
+
+.section[data-modality="cycling"] {
+    --detail-media-opacity: 1;
+    --detail-media-tablet-opacity: 1;
+    --detail-media-mobile-opacity: 0.84;
+    --detail-media-scale: 1;
+
+    --modality-panel-bg-alpha: 0.14;
+    --modality-panel-bg-alpha-strong: 0.26;
+    --modality-panel-bg-alpha-deep: 0.46;
+
+    --modality-card-bg-alpha: 0.36;
+    --modality-card-bg-alpha-strong: 0.5;
+    --modality-card-bg-alpha-deep: 0.68;
+}
+
+.section[data-modality="basketball"] {
+    --detail-media-opacity: 1;
+    --detail-media-tablet-opacity: 1;
+    --detail-media-mobile-opacity: 0.84;
+    --detail-media-scale: 1.002;
+
+    --modality-card-bg-alpha: 0.36;
+    --modality-card-bg-alpha-strong: 0.5;
+    --modality-card-bg-alpha-deep: 0.68;
+}
+
+.section[data-modality="football"] {
+    --detail-media-opacity: 1;
+    --detail-media-tablet-opacity: 1;
+    --detail-media-mobile-opacity: 0.84;
+    --detail-media-scale: 1;
+
+    --modality-card-bg-alpha: 0.34;
+    --modality-card-bg-alpha-strong: 0.48;
+    --modality-card-bg-alpha-deep: 0.66;
+}
+
+.section[data-modality="gymnastics"] {
+    --detail-media-opacity: 1;
+    --detail-media-tablet-opacity: 1;
+    --detail-media-mobile-opacity: 0.82;
+    --detail-media-scale: 1.002;
+
+    --modality-panel-bg-alpha: 0.18;
+    --modality-panel-bg-alpha-strong: 0.3;
+    --modality-panel-bg-alpha-deep: 0.52;
+}
+
+.section[data-modality="karate"] {
+    --detail-media-opacity: 1;
+    --detail-media-tablet-opacity: 1;
+    --detail-media-mobile-opacity: 0.82;
+    --detail-media-scale: 1;
+
+    --modality-panel-bg-alpha: 0.2;
+    --modality-panel-bg-alpha-strong: 0.34;
+    --modality-panel-bg-alpha-deep: 0.54;
+
+    --modality-card-bg-alpha: 0.38;
+    --modality-card-bg-alpha-strong: 0.52;
+    --modality-card-bg-alpha-deep: 0.7;
 }
 
 .section::before,
@@ -55,19 +155,19 @@
 .section::before {
     inset-block-start: 0;
     inset-inline-start: 0;
-    z-index: 0;
+    z-index: 1;
     inline-size: min(34rem, 46%);
     block-size: 1px;
     background:
         linear-gradient(90deg,
             rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.9) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.2) 64%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.14) 64%,
             transparent 100%);
     opacity: 0.82;
 }
 
 .section::after {
-    inset-block-end: -24%;
+    inset-block-end: -22%;
     inset-inline-end: -8%;
     z-index: 0;
     inline-size: clamp(13rem, 24vw, 20rem);
@@ -75,16 +175,66 @@
     border-radius: 999px;
     background:
         radial-gradient(circle,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.04) 38%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.052) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.018) 38%,
             transparent 74%);
     filter: blur(34px);
-    opacity: 0.66;
+    opacity: 0.36;
+}
+
+.mediaBackdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    overflow: hidden;
+    margin: 0;
+    border-radius: var(--detail-radius-inner);
+    opacity: var(--detail-media-opacity);
+    pointer-events: none;
+    transform: translateZ(0);
+}
+
+.mediaBackdrop::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            rgba(3, 6, 11, 0.78) 0%,
+            rgba(3, 6, 11, 0.48) 32%,
+            rgba(3, 6, 11, 0.18) 64%,
+            rgba(3, 6, 11, 0.08) 100%),
+        linear-gradient(180deg,
+            rgba(3, 6, 11, 0.32) 0%,
+            rgba(3, 6, 11, 0.12) 34%,
+            rgba(3, 6, 11, 0.36) 68%,
+            rgba(3, 6, 11, 0.74) 100%),
+        radial-gradient(90% 120% at 0% 0%,
+            rgba(3, 6, 11, 0.64) 0%,
+            transparent 58%);
+}
+
+.mediaImage {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: var(--modality-media-position, center);
+    filter:
+        brightness(var(--detail-media-brightness)) contrast(var(--detail-media-contrast)) saturate(var(--detail-media-saturate));
+    transform: scale(var(--detail-media-scale));
+    transform-origin: center;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .inner {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: grid;
     min-inline-size: 0;
     gap: var(--detail-gap);
@@ -99,7 +249,7 @@
     align-items: start;
     min-inline-size: 0;
     gap: var(--detail-header-gap);
-    padding-block-end: clamp(0.8rem, 1.2vw, 1rem);
+    padding-block-end: clamp(0.62rem, 0.95vw, 0.78rem);
 }
 
 .hero::after {
@@ -111,22 +261,57 @@
     pointer-events: none;
     background:
         linear-gradient(90deg,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.34) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.13) 42%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.3) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 42%,
             transparent 100%);
     opacity: var(--detail-divider-opacity);
 }
 
 .heroIcon {
-    inline-size: clamp(2.65rem, 3.2vw, 3.25rem);
-    block-size: clamp(2.65rem, 3.2vw, 3.25rem);
+    inline-size: clamp(2.55rem, 3vw, 3.05rem);
+    block-size: clamp(2.55rem, 3vw, 3.05rem);
     flex: 0 0 auto;
 }
 
 .heroContent {
+    position: relative;
     display: grid;
+    inline-size: min(100%, 54rem);
     min-inline-size: 0;
-    gap: clamp(0.34rem, 0.58vw, 0.5rem);
+    overflow: clip;
+    gap: clamp(0.32rem, 0.58vw, 0.48rem);
+    padding: clamp(0.72rem, 1.05vw, 0.95rem) clamp(0.78rem, 1.25vw, 1.08rem);
+    box-sizing: border-box;
+
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
+    border-radius: var(--sports-radius-md, 1rem);
+    background:
+        linear-gradient(90deg,
+            rgba(3, 6, 11, 0.5) 0%,
+            rgba(5, 9, 17, 0.36) 58%,
+            rgba(5, 9, 17, 0.12) 100%),
+        radial-gradient(120% 145% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.035) 0%,
+            transparent 58%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 10px 24px rgba(0, 0, 0, 0.14);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.heroContent::after {
+    content: "";
+    position: absolute;
+    inset-inline: clamp(0.78rem, 1.25vw, 1.08rem);
+    inset-block-end: 0;
+    block-size: 1px;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.26) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 42%,
+            transparent 100%);
 }
 
 .eyebrow {
@@ -143,6 +328,9 @@
     line-height: 1;
     letter-spacing: var(--sports-kicker-spacing, 0.22em);
     text-transform: uppercase;
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.72),
+        0 0 18px rgba(0, 0, 0, 0.42);
 }
 
 .eyebrow::before {
@@ -164,17 +352,23 @@
     line-height: var(--sports-panel-title-line, 0.98);
     letter-spacing: var(--sports-panel-title-spacing, -0.058em);
     text-wrap: balance;
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.58),
+        0 12px 28px rgba(0, 0, 0, 0.52);
 }
 
 .lead {
     max-inline-size: 820px;
     margin: 0;
 
-    color: var(--sports-muted-strong, rgba(210, 218, 230, 0.82));
-    font-size: clamp(0.9rem, 0.88vw, 1rem);
-    font-weight: 610;
-    line-height: 1.55;
+    color: var(--sports-muted-strong, rgba(218, 225, 236, 0.88));
+    font-size: clamp(0.88rem, 0.86vw, 0.96rem);
+    font-weight: 630;
+    line-height: 1.52;
     text-wrap: pretty;
+    text-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.62),
+        0 10px 24px rgba(0, 0, 0, 0.48);
 }
 
 .shortLabel {
@@ -191,18 +385,16 @@
     border-radius: 999px;
     background:
         radial-gradient(130% 155% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.045) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.04) 0%,
             transparent 46%),
-        var(--sports-surface-soft,
-            linear-gradient(180deg,
-                rgba(255, 255, 255, 0.036) 0%,
-                rgba(255, 255, 255, 0.012) 100%)),
         linear-gradient(145deg,
-            rgba(10, 17, 25, 0.94) 0%,
-            rgba(5, 10, 17, 0.982) 100%);
+            rgba(10, 17, 25, 0.68) 0%,
+            rgba(5, 10, 17, 0.86) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 12px 24px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 12px 24px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 
     color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
     font-size: clamp(0.62rem, 0.58vw, 0.68rem);
@@ -222,60 +414,91 @@
             transform 180ms ease;
     }
 
+    .mediaImage {
+        transition:
+            filter 180ms ease,
+            transform 220ms ease;
+    }
+
     .section:hover {
         border-color: var(--sports-border-strong, rgb(var(--sports-gold-rgb, 214 166 64) / 0.28));
         box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.05),
+            inset 0 1px 0 rgba(255, 255, 255, 0.052),
             inset 0 -1px 0 rgba(255, 255, 255, 0.014),
-            0 28px 62px rgba(0, 0, 0, 0.4),
-            0 0 0 1px rgb(var(--sports-green-rgb, 46 194 126) / 0.045);
+            0 28px 62px rgba(0, 0, 0, 0.38),
+            0 0 0 1px rgb(var(--sports-green-rgb, 46 194 126) / 0.035);
         transform: translateY(-1px);
+    }
+
+    .section:hover .mediaImage {
+        filter:
+            brightness(calc(var(--detail-media-brightness) + 0.03)) contrast(calc(var(--detail-media-contrast) + 0.02)) saturate(calc(var(--detail-media-saturate) + 0.03));
+        transform: scale(calc(var(--detail-media-scale) + 0.004));
     }
 }
 
 @media (min-width: 1280px) and (max-height: 860px) {
     .section {
-        --detail-padding: 1rem 1.25rem;
-        --detail-gap: 0.85rem;
-        --detail-header-gap: 0.85rem;
+        --detail-padding: 0.84rem 1rem;
+        --detail-gap: 0.62rem;
+        --detail-header-gap: 0.72rem;
     }
 
     .hero {
-        padding-block-end: 0.75rem;
+        padding-block-end: 0.58rem;
+    }
+
+    .heroContent {
+        gap: 0.28rem;
+        padding: 0.58rem 0.78rem;
     }
 
     .title {
-        font-size: clamp(1.85rem, 2.55vw, 2.45rem);
+        font-size: clamp(1.7rem, 2.35vw, 2.25rem);
     }
 
     .lead {
         max-inline-size: 760px;
-        font-size: 0.86rem;
-        line-height: 1.46;
+        font-size: 0.82rem;
+        line-height: 1.42;
     }
 
     .heroIcon {
-        inline-size: 2.65rem;
-        block-size: 2.65rem;
+        inline-size: 2.45rem;
+        block-size: 2.45rem;
+    }
+
+    .shortLabel {
+        min-block-size: 1.9rem;
+        padding: 0.48rem 0.68rem;
+        font-size: 0.6rem;
     }
 }
 
 @media (max-width: 1080px) {
     .section {
-        --detail-padding: clamp(0.95rem, 2.35vw, 1.35rem);
-        --detail-gap: clamp(0.9rem, 2vw, 1.2rem);
-        --detail-header-gap: clamp(0.75rem, 1.8vw, 1rem);
+        --detail-padding: clamp(0.82rem, 2.1vw, 1.15rem);
+        --detail-gap: clamp(0.62rem, 1.6vw, 0.92rem);
+        --detail-header-gap: clamp(0.68rem, 1.5vw, 0.9rem);
+    }
+
+    .mediaBackdrop {
+        opacity: var(--detail-media-tablet-opacity);
     }
 
     .lead {
-        font-size: 0.94rem;
-        line-height: 1.56;
+        font-size: 0.92rem;
+        line-height: 1.5;
     }
 }
 
 @media (max-width: 900px) {
     .hero {
         grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .heroContent {
+        inline-size: 100%;
     }
 
     .shortLabel {
@@ -285,29 +508,86 @@
     }
 }
 
+@media (max-width: 760px) {
+    .section {
+        --modality-panel-bg-alpha: 0.54;
+        --modality-panel-bg-alpha-strong: 0.7;
+        --modality-panel-bg-alpha-deep: 0.84;
+
+        --modality-card-bg-alpha: 0.62;
+        --modality-card-bg-alpha-strong: 0.76;
+        --modality-card-bg-alpha-deep: 0.88;
+
+        --modality-summary-bg-alpha: 0.62;
+        --modality-summary-bg-alpha-strong: 0.76;
+        --modality-summary-bg-alpha-deep: 0.88;
+
+        --modality-highlight-bg-alpha: 0.62;
+        --modality-highlight-bg-alpha-strong: 0.76;
+        --modality-highlight-bg-alpha-deep: 0.88;
+
+        --modality-technical-bg-alpha: 0.64;
+        --modality-technical-bg-alpha-strong: 0.78;
+        --modality-technical-bg-alpha-deep: 0.9;
+
+        --modality-technical-card-bg-alpha: 0.64;
+        --modality-technical-card-bg-alpha-strong: 0.78;
+        --modality-technical-card-bg-alpha-deep: 0.9;
+
+        --modality-glass-blur: 4px;
+        --modality-card-glass-blur: 4px;
+        --modality-summary-glass-blur: 4px;
+    }
+}
+
 @media (max-width: 680px) {
     .section {
         --detail-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
-        --detail-padding: clamp(0.85rem, 4vw, 1.05rem);
-        --detail-gap: clamp(0.82rem, 3.2vw, 1.05rem);
-        --detail-header-gap: 0.72rem;
+        --detail-padding: clamp(0.74rem, 3.2vw, 0.95rem);
+        --detail-gap: clamp(0.58rem, 2.6vw, 0.82rem);
+        --detail-header-gap: 0.62rem;
 
         scroll-margin-top: 5.25rem;
+    }
+
+    .mediaBackdrop {
+        opacity: var(--detail-media-mobile-opacity);
+    }
+
+    .mediaBackdrop::before {
+        background:
+            linear-gradient(90deg,
+                rgba(3, 6, 11, 0.92) 0%,
+                rgba(3, 6, 11, 0.72) 38%,
+                rgba(3, 6, 11, 0.46) 72%,
+                rgba(3, 6, 11, 0.34) 100%),
+            linear-gradient(180deg,
+                rgba(3, 6, 11, 0.44) 0%,
+                rgba(3, 6, 11, 0.54) 48%,
+                rgba(3, 6, 11, 0.88) 100%);
     }
 
     .hero {
         grid-template-columns: auto minmax(0, 1fr);
         align-items: start;
-        padding-block-end: 0.82rem;
+        padding-block-end: 0.66rem;
     }
 
     .heroIcon {
-        inline-size: 2.55rem;
-        block-size: 2.55rem;
+        inline-size: 2.42rem;
+        block-size: 2.42rem;
+    }
+
+    .heroContent {
+        gap: 0.3rem;
+        padding: 0.62rem 0.72rem;
+        border-radius: 0.92rem;
     }
 
     .eyebrow {
         gap: 0.4rem;
+        font-size: 0.66rem;
+        letter-spacing: 0.16em;
     }
 
     .eyebrow::before {
@@ -315,58 +595,87 @@
     }
 
     .title {
-        font-size: clamp(1.55rem, 8.2vw, 2.15rem);
+        font-size: clamp(1.5rem, 7.6vw, 2.05rem);
         line-height: 1;
         letter-spacing: -0.05em;
     }
 
     .lead {
-        font-size: 0.9rem;
-        line-height: 1.52;
+        font-size: 0.88rem;
+        line-height: 1.48;
     }
 
     .shortLabel {
         inline-size: fit-content;
-        min-block-size: 1.95rem;
+        min-block-size: 1.9rem;
         max-inline-size: 100%;
-        padding: 0.56rem 0.72rem;
-        font-size: 0.62rem;
+        padding: 0.52rem 0.68rem;
+        font-size: 0.6rem;
         white-space: normal;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
     .section {
-        --detail-padding: 0.82rem;
-        --detail-gap: 0.78rem;
+        --detail-padding: 0.74rem;
+        --detail-gap: 0.66rem;
+
+        --detail-media-mobile-opacity: 0.72;
+
+        --modality-panel-bg-alpha: 0.72;
+        --modality-panel-bg-alpha-strong: 0.84;
+        --modality-panel-bg-alpha-deep: 0.92;
+
+        --modality-card-bg-alpha: 0.72;
+        --modality-card-bg-alpha-strong: 0.84;
+        --modality-card-bg-alpha-deep: 0.92;
+
+        --modality-summary-bg-alpha: 0.72;
+        --modality-summary-bg-alpha-strong: 0.84;
+        --modality-summary-bg-alpha-deep: 0.92;
+
+        --modality-highlight-bg-alpha: 0.72;
+        --modality-highlight-bg-alpha-strong: 0.84;
+        --modality-highlight-bg-alpha-deep: 0.92;
+
+        --modality-technical-bg-alpha: 0.74;
+        --modality-technical-bg-alpha-strong: 0.86;
+        --modality-technical-bg-alpha-deep: 0.94;
+
+        --modality-technical-card-bg-alpha: 0.74;
+        --modality-technical-card-bg-alpha-strong: 0.86;
+        --modality-technical-card-bg-alpha-deep: 0.94;
     }
 
     .hero {
         grid-template-columns: 1fr;
-        gap: 0.68rem;
+        gap: 0.58rem;
     }
 
     .heroIcon {
-        inline-size: 2.5rem;
-        block-size: 2.5rem;
+        inline-size: 2.36rem;
+        block-size: 2.36rem;
     }
 
     .heroContent {
-        gap: 0.34rem;
+        gap: 0.3rem;
+        padding: 0.64rem;
+        border-radius: var(--sports-radius-md, 1rem);
     }
 
     .eyebrow {
-        font-size: 0.64rem;
-        letter-spacing: 0.16em;
+        font-size: 0.62rem;
+        letter-spacing: 0.15em;
     }
 
     .title {
-        font-size: clamp(1.48rem, 10vw, 1.95rem);
+        font-size: clamp(1.42rem, 9.2vw, 1.85rem);
     }
 
     .lead {
-        font-size: 0.88rem;
-        font-weight: 580;
+        font-size: 0.84rem;
+        font-weight: 600;
+        line-height: 1.46;
     }
 
     .shortLabel {
@@ -374,16 +683,61 @@
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 420px) {
     .section {
-        --detail-padding: 0.72rem;
+        --detail-padding: 0.66rem;
+        --detail-gap: 0.58rem;
+    }
+
+    .heroContent {
+        padding: 0.58rem;
+    }
+
+    .heroIcon {
+        inline-size: 2.24rem;
+        block-size: 2.24rem;
+    }
+
+    .eyebrow {
+        font-size: 0.58rem;
     }
 
     .title {
-        font-size: clamp(1.38rem, 10.5vw, 1.72rem);
+        font-size: clamp(1.34rem, 9.6vw, 1.72rem);
     }
 
     .lead {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        line-height: 1.42;
+    }
+}
+
+@media (max-width: 360px) {
+    .section {
+        --detail-padding: 0.58rem;
+    }
+
+    .title {
+        font-size: clamp(1.26rem, 10vw, 1.58rem);
+    }
+
+    .lead {
+        font-size: 0.78rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .section,
+    .mediaImage {
+        transition: none;
+    }
+
+    .section:hover {
+        transform: none;
+    }
+
+    .section:hover .mediaImage {
+        transform: scale(var(--detail-media-scale));
     }
 }

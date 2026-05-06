@@ -1,5 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../../config/core/paths.js";
 
+import basketballImage from "../../../assets/Modalities/basketball.webp";
+
 const basketSection = {
   key: "basketball",
   id: "modalidade-basquetebol",
@@ -12,6 +14,14 @@ const basketSection = {
     lead: "Modalidade desenvolvida através da Sunlive Basketball Academy, com programas flexíveis de treino, preparação física, estágios, campus e integração em contexto competitivo.",
   },
 
+  media: {
+    src: basketballImage,
+    alt: "Atletas de basquetebol em contexto de treino e competição",
+    width: 1600,
+    height: 1000,
+    objectPosition: "center 46%",
+  },
+
   summary: {
     items: [
       {
@@ -22,12 +32,12 @@ const basketSection = {
       {
         key: "basketball-programs",
         value: "Campus / Torneios",
-        label: "Formatos Associados",
+        label: "Formatos associados",
       },
       {
         key: "basketball-focus",
         value: "Evolução técnica",
-        label: "Foco de Desenvolvimento",
+        label: "Foco de desenvolvimento",
       },
     ],
   },

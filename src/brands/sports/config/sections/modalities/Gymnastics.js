@@ -1,5 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../../config/core/paths.js";
 
+import gymnasticsImage from "../../../assets/Modalities/gymnastics.webp";
+
 const gymnasticsSection = {
   key: "gymnastics",
   id: "modalidade-ginastica",
@@ -12,6 +14,14 @@ const gymnasticsSection = {
     lead: "Programas dedicados à ginástica com foco na evolução técnica, formação integral e acesso a infraestruturas especializadas para treino e desenvolvimento desportivo.",
   },
 
+  media: {
+    src: gymnasticsImage,
+    alt: "Ginastas em contexto técnico de treino e performance",
+    width: 1600,
+    height: 1000,
+    objectPosition: "center 48%",
+  },
+
   summary: {
     items: [
       {
@@ -22,12 +32,12 @@ const gymnasticsSection = {
       {
         key: "gymnastics-contexts",
         value: "Artística / Rítmica / Trampolim",
-        label: "Contextos Princípais",
+        label: "Contextos principais",
       },
       {
         key: "gymnastics-focus",
         value: "Técnica",
-        label: "Foco de Desenvolvimento",
+        label: "Foco de desenvolvimento",
       },
     ],
   },

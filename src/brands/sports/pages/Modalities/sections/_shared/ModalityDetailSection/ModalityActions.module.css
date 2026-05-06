@@ -1,9 +1,11 @@
 .actionRow {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
-    gap: clamp(0.5rem, 0.9vw, 0.75rem);
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    inline-size: 100%;
     min-inline-size: 0;
+    gap: clamp(0.42rem, 0.72vw, 0.62rem);
     margin-block-start: auto;
 }
 
@@ -14,15 +16,18 @@
     align-content: center;
     flex-wrap: wrap;
     min-inline-size: 0;
-    gap: clamp(0.44rem, 0.72vw, 0.6rem);
+    gap: clamp(0.38rem, 0.64vw, 0.54rem);
 }
 
 .mainActions {
+    flex: 0 1 auto;
     justify-content: flex-start;
 }
 
 .socialActions {
+    flex: 0 0 auto;
     justify-content: flex-end;
+    margin-inline-start: auto;
 }
 
 .actionButton,
@@ -31,6 +36,8 @@
     position: relative;
     overflow: hidden;
     isolation: isolate;
+    flex: 0 0 auto;
+    max-inline-size: 100%;
     text-decoration: none;
     transform: translateZ(0);
     -webkit-tap-highlight-color: transparent;
@@ -41,13 +48,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-inline-size: 0;
-    max-inline-size: 100%;
-    min-block-size: clamp(2.15rem, 2.35vw, 2.4rem);
-    gap: clamp(0.38rem, 0.52vw, 0.46rem);
-    padding: clamp(0.54rem, 0.7vw, 0.66rem) clamp(0.78rem, 1vw, 0.96rem);
+    min-inline-size: auto;
+    min-block-size: clamp(2.05rem, 2.22vw, 2.36rem);
+    gap: clamp(0.34rem, 0.48vw, 0.44rem);
+    padding: clamp(0.5rem, 0.66vw, 0.64rem) clamp(0.72rem, 0.92vw, 0.94rem);
     border-radius: 999px;
     box-sizing: border-box;
+    white-space: nowrap;
+
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -69,28 +77,30 @@
 }
 
 .actionButton {
-    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.26);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
     background:
         radial-gradient(120% 160% at 100% 0%,
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
             transparent 56%),
         linear-gradient(180deg,
-            rgba(10, 18, 29, 0.9) 0%,
-            rgba(5, 10, 18, 0.96) 100%);
+            rgba(10, 18, 29, 0.58) 0%,
+            rgba(5, 10, 18, 0.76) 100%);
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 10px 20px rgba(0, 0, 0, 0.19);
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 10px 20px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
 }
 
 .actionButton::before {
     background:
         radial-gradient(120% 160% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.13) 0%,
             transparent 54%),
         linear-gradient(180deg,
-            rgba(13, 22, 34, 0.98) 0%,
-            rgba(7, 12, 21, 1) 100%);
+            rgba(13, 22, 34, 0.78) 0%,
+            rgba(7, 12, 21, 0.9) 100%);
 }
 
 .actionButtonPrimary {
@@ -122,12 +132,14 @@
     display: inline-block;
     min-inline-size: 0;
     max-inline-size: 100%;
-    font-size: clamp(0.74rem, 0.72vw, 0.84rem);
+
+    color: currentColor;
+    font-size: clamp(0.7rem, 0.7vw, 0.82rem);
     font-weight: 880;
     line-height: 1.05;
     letter-spacing: -0.018em;
     text-align: center;
-    text-wrap: balance;
+    text-wrap: nowrap;
 }
 
 .actionIconWrap {
@@ -135,35 +147,41 @@
     z-index: 1;
     display: inline-grid;
     place-items: center;
-    inline-size: 0.92rem;
-    block-size: 0.92rem;
+    inline-size: 0.9rem;
+    block-size: 0.9rem;
     flex: 0 0 auto;
 }
 
 .inlineIcon {
-    inline-size: 0.92rem;
-    block-size: 0.92rem;
+    inline-size: 0.9rem;
+    block-size: 0.9rem;
 }
 
 .socialButton {
     display: inline-grid;
     place-items: center;
-    inline-size: clamp(2.15rem, 2.35vw, 2.4rem);
-    block-size: clamp(2.15rem, 2.35vw, 2.4rem);
-    flex: 0 0 auto;
+    inline-size: clamp(2.05rem, 2.22vw, 2.36rem);
+    block-size: clamp(2.05rem, 2.22vw, 2.36rem);
+
     border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
     border-radius: 999px;
     background:
         radial-gradient(120% 140% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.075) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.065) 0%,
             transparent 54%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.035) 0%,
-            rgba(255, 255, 255, 0.016) 100%);
+            rgba(255, 255, 255, 0.032) 0%,
+            rgba(255, 255, 255, 0.012) 100%),
+        linear-gradient(145deg,
+            rgba(10, 17, 25, 0.46) 0%,
+            rgba(5, 10, 17, 0.68) 100%);
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
         0 10px 20px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
+
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -185,8 +203,8 @@
 .socialIcon {
     position: relative;
     z-index: 1;
-    inline-size: 1rem;
-    block-size: 1rem;
+    inline-size: 0.98rem;
+    block-size: 0.98rem;
 }
 
 .actionButton:focus-visible,
@@ -209,7 +227,7 @@
         color: #ffffff;
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.05),
-            0 13px 26px rgba(0, 0, 0, 0.24);
+            0 13px 26px rgba(0, 0, 0, 0.22);
     }
 
     .actionButtonPrimary:hover {
@@ -224,7 +242,7 @@
         color: #ffffff;
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.05),
-            0 13px 24px rgba(0, 0, 0, 0.22);
+            0 13px 24px rgba(0, 0, 0, 0.2);
     }
 
     .actionButton:hover::before,
@@ -234,86 +252,231 @@
     }
 }
 
-@media (min-width: 1280px) and (max-height: 860px) {
+/* Desktop / tablets largos */
+@media (min-width: 901px) {
     .actionRow {
-        gap: 0.45rem;
+        align-items: center;
     }
 
     .mainActions,
     .socialActions {
-        gap: 0.42rem;
+        flex-wrap: nowrap;
+    }
+
+    .socialActions {
+        margin-inline-start: 0;
+    }
+}
+
+/* Ecrãs baixos em desktop */
+@media (min-width: 1280px) and (max-height: 860px) {
+    .actionRow {
+        gap: 0.38rem;
+    }
+
+    .mainActions,
+    .socialActions {
+        gap: 0.34rem;
+    }
+
+    .actionButton,
+    .actionButtonPrimary {
+        min-block-size: 1.95rem;
+        padding: 0.44rem 0.64rem;
+    }
+
+    .socialButton {
+        inline-size: 1.95rem;
+        block-size: 1.95rem;
+    }
+
+    .actionLabel {
+        font-size: 0.67rem;
+    }
+
+    .actionIconWrap,
+    .inlineIcon {
+        inline-size: 0.82rem;
+        block-size: 0.82rem;
+    }
+
+    .socialIcon {
+        inline-size: 0.88rem;
+        block-size: 0.88rem;
+    }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .actionRow {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.46rem;
+    }
+
+    .mainActions {
+        flex: 0 1 auto;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        max-inline-size: calc(100% - 2.6rem);
+    }
+
+    .socialActions {
+        flex: 0 0 auto;
+        justify-content: flex-end;
+        margin-inline-start: auto;
     }
 
     .actionButton,
     .actionButtonPrimary {
         min-block-size: 2.08rem;
-        padding: 0.5rem 0.72rem;
+        padding-block: 0.5rem;
+        padding-inline: 0.72rem;
     }
 
     .socialButton {
         inline-size: 2.08rem;
         block-size: 2.08rem;
     }
+}
 
-    .actionLabel {
-        font-size: 0.72rem;
+/* Mobile largo */
+@media (max-width: 640px) {
+    .actionRow {
+        gap: 0.42rem;
     }
 
+    .mainActions {
+        flex: 1 1 auto;
+        max-inline-size: calc(100% - 2.48rem);
+        gap: 0.38rem;
+    }
+
+    .socialActions {
+        gap: 0.38rem;
+    }
+
+    .actionButton,
+    .actionButtonPrimary {
+        min-block-size: 2.04rem;
+        padding-block: 0.48rem;
+        padding-inline: 0.68rem;
+    }
+
+    .actionLabel {
+        font-size: 0.69rem;
+    }
+
+    .socialButton {
+        inline-size: 2.04rem;
+        block-size: 2.04rem;
+    }
+}
+
+/* Mobile estreito — mantém botões lado a lado quando possível */
+@media (max-width: 520px) {
+    .actionRow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .mainActions {
+        display: flex;
+        flex: 1 1 auto;
+        flex-wrap: nowrap;
+        max-inline-size: calc(100% - 2.42rem);
+        gap: 0.36rem;
+    }
+
+    .socialActions {
+        flex: 0 0 auto;
+        margin-inline-start: auto;
+    }
+
+    .actionButton,
+    .actionButtonPrimary {
+        flex: 1 1 0;
+        min-inline-size: 0;
+        min-block-size: 2rem;
+        padding-block: 0.46rem;
+        padding-inline: 0.58rem;
+    }
+
+    .actionLabel {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.67rem;
+    }
+
+    .actionIconWrap,
     .inlineIcon {
-        inline-size: 0.86rem;
-        block-size: 0.86rem;
+        inline-size: 0.78rem;
+        block-size: 0.78rem;
+    }
+
+    .socialButton {
+        inline-size: 2rem;
+        block-size: 2rem;
     }
 
     .socialIcon {
-        inline-size: 0.92rem;
-        block-size: 0.92rem;
+        inline-size: 0.88rem;
+        block-size: 0.88rem;
     }
 }
 
-@media (max-width: 900px) {
+/* iPhone SE / muito estreito */
+@media (max-width: 390px) {
     .actionRow {
-        grid-template-columns: minmax(0, 1fr);
-        align-items: start;
-    }
-
-    .socialActions {
-        justify-content: flex-start;
-    }
-}
-
-@media (max-width: 640px) {
-    .actionRow {
-        gap: 0.62rem;
+        gap: 0.36rem;
     }
 
     .mainActions {
-        inline-size: 100%;
+        max-inline-size: calc(100% - 2.32rem);
+        gap: 0.32rem;
     }
 
     .actionButton,
     .actionButtonPrimary {
-        flex: 1 1 min(12rem, 100%);
-        min-inline-size: min(11rem, 100%);
+        min-block-size: 1.96rem;
+        padding-block: 0.44rem;
+        padding-inline: 0.52rem;
     }
 
-    .socialActions {
-        inline-size: 100%;
+    .actionLabel {
+        font-size: 0.64rem;
+        line-height: 1.05;
+    }
+
+    .socialButton {
+        inline-size: 1.96rem;
+        block-size: 1.96rem;
     }
 }
 
-@media (max-width: 520px) {
+/* Último fallback: evita overflow real */
+@media (max-width: 340px) {
+    .actionRow {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+    }
+
     .mainActions {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 0.5rem;
+        max-inline-size: 100%;
     }
 
     .actionButton,
     .actionButtonPrimary {
         inline-size: 100%;
-        min-inline-size: 0;
         justify-content: space-between;
-        padding-inline: 0.78rem;
     }
 
     .actionLabel {
@@ -321,27 +484,8 @@
     }
 
     .socialActions {
-        gap: 0.48rem;
-    }
-}
-
-@media (max-width: 380px) {
-
-    .actionButton,
-    .actionButtonPrimary {
-        min-block-size: 2.05rem;
-        padding-block: 0.5rem;
-        padding-inline: 0.68rem;
-    }
-
-    .actionLabel {
-        font-size: 0.7rem;
-        line-height: 1.1;
-    }
-
-    .socialButton {
-        inline-size: 2.05rem;
-        block-size: 2.05rem;
+        align-self: end;
+        margin-inline-start: 0;
     }
 }
 

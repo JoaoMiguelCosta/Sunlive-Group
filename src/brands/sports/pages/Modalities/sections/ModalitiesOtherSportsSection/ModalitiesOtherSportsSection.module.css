@@ -338,7 +338,7 @@
     }
 
     .title {
-        max-inline-size: 14ch;
+     
         font-size: clamp(1.5rem, 8vw, 2rem);
     }
 

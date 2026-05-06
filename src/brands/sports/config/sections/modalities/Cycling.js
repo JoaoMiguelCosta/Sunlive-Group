@@ -1,5 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../../config/core/paths.js";
 
+import cyclingImage from "../../../assets/Modalities/cycling.webp";
+
 const cyclingSection = {
   key: "cycling",
   id: "modalidade-ciclismo",
@@ -10,6 +12,14 @@ const cyclingSection = {
     eyebrow: "Modalidade de referência",
     iconKey: "bike",
     lead: "Modalidade de referência da Sunlive Sports, com ligação direta à Anadia Cycling Academy, à Sunlive Cycling, a infraestruturas especializadas, eventos, estágios e projetos de performance.",
+  },
+
+  media: {
+    src: cyclingImage,
+    alt: "Ciclistas em contexto de treino e performance em pista",
+    width: 1600,
+    height: 1000,
+    objectPosition: "center 47%",
   },
 
   summary: {
@@ -27,7 +37,7 @@ const cyclingSection = {
       {
         key: "cycling-focus",
         value: "Performance",
-        label: "Foco de Desenvolvimento",
+        label: "Foco de desenvolvimento",
       },
     ],
   },
