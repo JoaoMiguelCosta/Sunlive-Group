@@ -1,44 +1,55 @@
 .timelineWrap {
     display: grid;
     gap: clamp(0.56rem, 0.82vw, 0.72rem);
+    min-inline-size: 0;
 }
 
 .progressionLabel {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+
     inline-size: fit-content;
     margin: 0;
+
     color: var(--sports-gold, #d6a640);
     font-size: var(--sports-kicker-size, 0.76rem);
     font-weight: 800;
     line-height: 1.22;
     letter-spacing: 0.13em;
     text-transform: uppercase;
+
+    text-shadow: 0 8px 18px rgba(0, 0, 0, 0.48);
 }
 
 .progressionLabel::before {
     content: "";
+
     inline-size: 0.36rem;
     block-size: 0.36rem;
+
     border-radius: 999px;
+
     background:
         radial-gradient(circle at 35% 35%,
             rgba(255, 246, 214, 0.98) 0%,
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.94) 46%,
             rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.82) 100%);
+
     box-shadow:
         0 0 0 0.16rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.08),
-        0 0 0.58rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.14);
+        0 0 0.58rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.16);
 }
 
 .timeline {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.72rem, 0.95vw, 0.88rem);
     align-items: stretch;
+    gap: clamp(0.72rem, 0.95vw, 0.88rem);
+
     margin: 0;
     padding: 0;
+
     list-style: none;
 }
 
@@ -59,8 +70,8 @@
 
 @media (max-width: 1120px) {
     .timeline {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.72rem;
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
     }
 }
 
@@ -70,7 +81,6 @@
     }
 
     .timeline {
-        grid-template-columns: 1fr;
         gap: 0.7rem;
     }
 }

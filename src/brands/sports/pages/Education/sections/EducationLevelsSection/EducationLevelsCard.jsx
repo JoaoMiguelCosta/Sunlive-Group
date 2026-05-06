@@ -1,4 +1,5 @@
 import styles from "./EducationLevelsCard.module.css";
+
 import {
   buildHighlightKey,
   getStepLabel,
@@ -25,6 +26,7 @@ export default function EducationLevelsCard({
 
   function handleOpenBook() {
     if (!hasBookAction) return;
+
     onOpenBook(item.book.bookKey);
   }
 

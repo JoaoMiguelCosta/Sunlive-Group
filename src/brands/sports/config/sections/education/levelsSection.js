@@ -1,5 +1,12 @@
+import educationLevelsBackground from "../../../assets/Education/education1.webp";
+
 const levelsSection = {
   id: "niveis-ensino",
+  backgroundImage: {
+    src: educationLevelsBackground,
+    position: "center 48%",
+    mobilePosition: "54% center",
+  },
   intro: {
     id: "niveis-ensino-intro",
     eyebrow: "Percurso académico",

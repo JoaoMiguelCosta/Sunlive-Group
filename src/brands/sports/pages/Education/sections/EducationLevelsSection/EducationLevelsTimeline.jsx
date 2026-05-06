@@ -1,5 +1,7 @@
 import styles from "./EducationLevelsTimeline.module.css";
+
 import EducationLevelsCard from "./EducationLevelsCard.jsx";
+
 import { getStepKey, hasItems } from "./educationLevelsSection.utils.js";
 
 export default function EducationLevelsTimeline({

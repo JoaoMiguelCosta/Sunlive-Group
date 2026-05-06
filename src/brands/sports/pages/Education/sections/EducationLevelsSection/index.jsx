@@ -3,7 +3,10 @@ import styles from "./EducationLevelsSection.module.css";
 import EducationLevelsIntro from "./EducationLevelsIntro.jsx";
 import EducationLevelsTimeline from "./EducationLevelsTimeline.jsx";
 
-import { hasItems } from "./educationLevelsSection.utils.js";
+import {
+  getSectionBackgroundStyle,
+  hasItems,
+} from "./educationLevelsSection.utils.js";
 
 export default function EducationLevelsSection({ data, onOpenBook }) {
   if (!data) return null;
@@ -19,6 +22,8 @@ export default function EducationLevelsSection({ data, onOpenBook }) {
     ? `${sectionId}-progression-label`
     : undefined;
 
+  const backgroundStyle = getSectionBackgroundStyle(data.backgroundImage);
+
   if (!intro && items.length === 0) return null;
 
   return (
@@ -28,7 +33,9 @@ export default function EducationLevelsSection({ data, onOpenBook }) {
       aria-labelledby={titleId}
       aria-label={!titleId ? intro?.title || "Níveis de Ensino" : undefined}
     >
-      <div className={styles.surface}>
+      <div className={styles.surface} style={backgroundStyle}>
+        <span className={styles.backgroundImage} aria-hidden="true" />
+
         <EducationLevelsIntro intro={intro} titleId={titleId} leadId={leadId} />
 
         <EducationLevelsTimeline

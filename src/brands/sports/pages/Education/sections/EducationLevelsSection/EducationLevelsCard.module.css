@@ -2,29 +2,35 @@
     position: relative;
     display: grid;
     grid-template-rows: auto 1fr auto;
+
     min-inline-size: 0;
     flex: 1;
-    padding: clamp(0.82rem, 0.98vw, 0.94rem);
+    padding: clamp(0.78rem, 0.92vw, 0.9rem);
+
     border-radius: var(--sports-radius-lg, clamp(1rem, 1.45vw, 1.35rem));
-    border: 1px solid var(--sports-border-soft, rgba(255, 255, 255, 0.065));
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
+
     background:
-        radial-gradient(135% 175% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.105) 0%,
-            transparent 44%),
-        radial-gradient(135% 175% at 0% 100%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.035) 0%,
+        radial-gradient(130% 165% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / var(--education-card-gold-alpha)) 0%,
+            transparent 42%),
+        radial-gradient(130% 165% at 0% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / var(--education-card-green-alpha)) 0%,
             transparent 48%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.034) 0%,
-            rgba(255, 255, 255, 0.012) 100%),
+            rgba(255, 255, 255, var(--education-card-glass-start)) 0%,
+            rgba(255, 255, 255, var(--education-card-glass-end)) 100%),
         linear-gradient(145deg,
-            rgba(7, 13, 21, 0.97) 0%,
-            rgba(4, 9, 17, 0.992) 100%);
+            rgba(5, 10, 17, var(--education-card-bg-start)) 0%,
+            rgba(3, 7, 13, var(--education-card-bg-end)) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 14px 30px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 16px 34px rgba(0, 0, 0, 0.26);
+
     overflow: hidden;
     isolation: isolate;
+
     transition:
         transform 220ms ease,
         border-color 220ms ease,
@@ -32,30 +38,35 @@
         filter 220ms ease,
         background 220ms ease;
 
-    --education-card-header-min-h: 4.2rem;
-    --education-card-description-min-h: 5.85rem;
-    --education-card-group-min-h: 9.7rem;
-    --education-card-outcome-min-h: 4.8rem;
-}
+    --education-card-header-min-h: 3.55rem;
+    --education-card-description-min-h: 4.7rem;
+    --education-card-group-min-h: 8.15rem;
+    --education-card-outcome-min-h: 3.95rem;
 
-@supports (backdrop-filter: blur(12px)) {
-    .card {
-        backdrop-filter: blur(12px);
-    }
+    --education-card-gold-alpha: 0.075;
+    --education-card-green-alpha: 0.018;
+    --education-card-glass-start: 0.018;
+    --education-card-glass-end: 0.007;
+    --education-card-bg-start: 0.36;
+    --education-card-bg-end: 0.54;
 }
 
 .card::before {
     content: "";
     position: absolute;
     inset: 0;
+
     border-radius: inherit;
+
     background:
         linear-gradient(90deg,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.4) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.07) 58%,
-            rgba(255, 255, 255, 0.05) 100%);
-    opacity: 0.96;
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.32) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.04) 58%,
+            rgba(255, 255, 255, 0.038) 100%);
+
+    opacity: 0.72;
     pointer-events: none;
+
     mask-image:
         linear-gradient(to bottom,
             #000 0,
@@ -68,102 +79,52 @@
             transparent 1px);
 }
 
-.card::after {
-    content: "";
-    position: absolute;
-    inset: auto -12% -18% auto;
-    inline-size: 8rem;
-    block-size: 8rem;
-    border-radius: 999px;
-    background:
-        radial-gradient(circle,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.085) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.025) 46%,
-            transparent 72%);
-    pointer-events: none;
-    opacity: 0.82;
-    filter: blur(10px);
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .card:hover {
-        transform: translateY(-3px);
-        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.06),
-            0 18px 36px rgba(0, 0, 0, 0.28),
-            0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.04);
-        filter: saturate(1.04);
-    }
-
-    .card:hover .cardTitle {
-        color: var(--sports-text, rgba(246, 248, 252, 0.96));
-    }
-
-    .card:hover .stepBadge {
-        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.36);
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.07),
-            0 7px 14px rgba(0, 0, 0, 0.14),
-            0 0 0.86rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
-    }
-
-    .card:hover .agePill {
-        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.045),
-            0 0 0.86rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
-    }
-
-    .card:hover .outcomeBox {
-        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.035),
-            0 8px 16px rgba(0, 0, 0, 0.1);
-    }
-}
-
-.card:focus-within {
-    transform: translateY(-2px);
-    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        0 18px 36px rgba(0, 0, 0, 0.26),
-        0 0 0 3px rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
+.cardTop,
+.cardBody,
+.cardFooter {
+    position: relative;
+    z-index: 1;
 }
 
 .cardTop {
-    position: relative;
-    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.62rem;
-    margin-block-end: 0.72rem;
+
+    margin-block-end: 0.64rem;
 }
 
 .stepBadge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-inline-size: 2.14rem;
-    min-block-size: 2.14rem;
-    padding-inline: 0.62rem;
+
+    min-inline-size: 2rem;
+    min-block-size: 2rem;
+    padding-inline: 0.58rem;
+
     border-radius: 999px;
-    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.34);
+
     background:
         linear-gradient(180deg,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.2) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 100%);
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.17) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.06) 100%),
+        rgba(3, 6, 11, 0.22);
+
     color: rgba(255, 236, 198, 0.98);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.14em;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.32);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        0 5px 12px rgba(0, 0, 0, 0.12);
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        0 5px 12px rgba(0, 0, 0, 0.13);
+
     transition:
         border-color 180ms ease,
         box-shadow 180ms ease,
@@ -174,21 +135,29 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-block-size: 1.78rem;
-    padding: 0.34rem 0.64rem;
+
+    min-block-size: 1.66rem;
+    padding: 0.3rem 0.58rem;
+
     border-radius: 999px;
-    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.22);
+
     background:
         linear-gradient(180deg,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.1) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.04) 100%);
-    color: rgba(255, 236, 198, 0.94);
-    font-size: 0.72rem;
-    font-weight: 700;
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.085) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.032) 100%),
+        rgba(3, 6, 11, 0.22);
+
+    color: rgba(255, 236, 198, 0.95);
+    font-size: 0.69rem;
+    font-weight: 750;
     line-height: 1;
     white-space: nowrap;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.14);
+
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.24);
+
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
     transition:
         border-color 180ms ease,
         box-shadow 180ms ease,
@@ -196,12 +165,11 @@
 }
 
 .cardBody {
-    position: relative;
-    z-index: 1;
     display: grid;
     grid-template-rows:
         minmax(var(--education-card-header-min-h), auto) minmax(var(--education-card-description-min-h), auto) minmax(var(--education-card-group-min-h), auto) minmax(var(--education-card-outcome-min-h), auto);
-    gap: 0.7rem;
+    gap: 0.62rem;
+
     min-block-size: 0;
     align-content: start;
 }
@@ -209,124 +177,186 @@
 .cardHeader {
     display: grid;
     align-content: start;
-    gap: 0.22rem;
+    gap: 0.2rem;
+
     min-block-size: var(--education-card-header-min-h);
 }
 
 .cardTitle {
     margin: 0;
-    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+
+    color: var(--sports-text, rgba(246, 248, 252, 0.97));
     font-size: var(--sports-card-title-size, clamp(0.95rem, 0.96vw, 1.08rem));
     font-weight: 850;
     line-height: var(--sports-card-title-line, 1.08);
     letter-spacing: var(--sports-card-title-spacing, -0.035em);
     text-wrap: balance;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.015);
+
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.018),
+        0 8px 20px rgba(0, 0, 0, 0.56);
+
     transition: color 180ms ease;
 }
 
 .cardSubtitle {
     margin: 0;
+
     color: var(--sports-gold, #d6a640);
     font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
-    font-weight: 700;
-    line-height: 1.34;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.16);
+    font-weight: 750;
+    line-height: 1.32;
+
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .cardDescription {
     margin: 0;
     min-block-size: var(--education-card-description-min-h);
-    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
-    font-size: var(--sports-support-mini-text-size, clamp(0.87rem, 0.84vw, 0.91rem));
-    line-height: 1.48;
+    padding: 0.62rem 0.7rem;
+
+    border-radius: 0.82rem;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
+
+    background:
+        radial-gradient(120% 145% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.032) 0%,
+            transparent 48%),
+        linear-gradient(180deg,
+            rgba(3, 6, 11, 0.34) 0%,
+            rgba(3, 6, 11, 0.26) 100%);
+
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.92));
+    font-size: var(--sports-support-mini-text-size, clamp(0.86rem, 0.82vw, 0.9rem));
+    line-height: 1.42;
     text-wrap: pretty;
+
+    text-shadow: 0 8px 18px rgba(0, 0, 0, 0.58);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.018),
+        0 6px 14px rgba(0, 0, 0, 0.08);
 }
 
 .group {
     display: grid;
     align-content: start;
     grid-template-rows: auto 1fr;
-    gap: 0.5rem;
+    gap: 0.46rem;
+
     min-block-size: var(--education-card-group-min-h);
+    padding: 0.62rem 0.7rem;
+
+    border-radius: 0.82rem;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
+
+    background:
+        radial-gradient(120% 145% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.028) 0%,
+            transparent 48%),
+        linear-gradient(180deg,
+            rgba(3, 6, 11, 0.32) 0%,
+            rgba(3, 6, 11, 0.24) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.018),
+        0 6px 14px rgba(0, 0, 0, 0.07);
 }
 
 .groupLabel {
     margin: 0;
+
     color: var(--sports-gold, #d6a640);
-    font-size: var(--sports-kicker-size, 0.75rem);
-    font-weight: 800;
+    font-size: var(--sports-kicker-size, 0.73rem);
+    font-weight: 850;
     line-height: 1.2;
     letter-spacing: 0.13em;
     text-transform: uppercase;
+
+    text-shadow: 0 8px 18px rgba(0, 0, 0, 0.58);
 }
 
 .featureList {
     display: grid;
     align-content: start;
-    gap: 0.44rem;
+    gap: 0.38rem;
+
     margin: 0;
     padding: 0;
+
     list-style: none;
 }
 
 .featureItem {
     position: relative;
-    padding-inline-start: 0.9rem;
-    color: var(--sports-text-soft, rgba(226, 232, 240, 0.88));
-    font-size: var(--sports-support-mini-text-size, clamp(0.87rem, 0.84vw, 0.91rem));
-    line-height: 1.4;
+
+    padding-inline-start: 0.86rem;
+
+    color: var(--sports-text-soft, rgba(226, 232, 240, 0.92));
+    font-size: var(--sports-support-mini-text-size, clamp(0.86rem, 0.82vw, 0.9rem));
+    line-height: 1.34;
+
+    text-shadow: 0 8px 18px rgba(0, 0, 0, 0.58);
 }
 
 .featureItem::before {
     content: "";
     position: absolute;
-    inset-block-start: 0.42rem;
+    inset-block-start: 0.38rem;
     inset-inline-start: 0;
-    inline-size: 0.34rem;
-    block-size: 0.34rem;
+
+    inline-size: 0.32rem;
+    block-size: 0.32rem;
+
     border-radius: 999px;
+
     background:
         radial-gradient(circle at 35% 35%,
             rgba(255, 246, 214, 0.98) 0%,
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.94) 46%,
             rgb(var(--sports-gold-deep-rgb, 199 134 21) / 0.82) 100%);
+
     box-shadow:
-        0 0 0 0.18rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
-        0 0 0.6rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.12);
+        0 0 0 0.16rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
+        0 0 0.58rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.13);
 }
 
 .outcomeBox {
     display: grid;
     align-content: start;
-    gap: 0.28rem;
+    gap: 0.24rem;
+
     min-block-size: var(--education-card-outcome-min-h);
     margin-top: auto;
-    padding: 0.64rem 0.72rem;
-    border-radius: 0.88rem;
+    padding: 0.56rem 0.64rem;
+
+    border-radius: 0.82rem;
     border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.16);
+
     background:
         radial-gradient(120% 150% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.055) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.048) 0%,
             transparent 46%),
         linear-gradient(180deg,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.07) 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.025) 100%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.05) 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.018) 100%),
         linear-gradient(145deg,
-            rgba(23, 20, 14, 0.5) 0%,
-            rgba(18, 16, 12, 0.28) 100%);
+            rgba(23, 20, 14, 0.22) 0%,
+            rgba(18, 16, 12, 0.12) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.03),
-        0 7px 14px rgba(0, 0, 0, 0.08);
+        inset 0 1px 0 rgba(255, 255, 255, 0.026),
+        0 7px 14px rgba(0, 0, 0, 0.07);
+
     transition:
         border-color 180ms ease,
         box-shadow 180ms ease;
 }
 
 .outcomeLabel {
-    color: rgba(255, 232, 188, 0.92);
-    font-size: 0.64rem;
-    font-weight: 800;
+    color: rgba(255, 232, 188, 0.94);
+    font-size: 0.62rem;
+    font-weight: 850;
     line-height: 1;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -334,48 +364,60 @@
 
 .outcomeText {
     margin: 0;
+
     color: var(--sports-text, rgba(246, 248, 252, 0.96));
     font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
-    line-height: 1.4;
+    line-height: 1.34;
+
+    text-shadow: 0 8px 18px rgba(0, 0, 0, 0.56);
 }
 
 .cardFooter {
-    position: relative;
-    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 0.72rem;
-    padding-top: 0.64rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.055);
+
+    margin-top: 0.64rem;
+    padding-top: 0.58rem;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.052);
 }
 
 .bookButton {
     position: relative;
+
     appearance: none;
-    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.34);
     cursor: pointer;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.44rem;
-    min-block-size: 2.34rem;
-    padding: 0.62rem 0.9rem;
+    gap: 0.42rem;
+
+    min-block-size: 2.18rem;
+    padding: 0.56rem 0.82rem;
+
     border-radius: 999px;
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.38);
+
     overflow: hidden;
     isolation: isolate;
+
     background:
         linear-gradient(135deg,
             rgba(219, 157, 33, 0.99) 0%,
             rgba(177, 118, 15, 0.99) 100%);
+
     color: rgba(15, 17, 19, 0.98);
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     font-weight: 850;
     line-height: 1;
     letter-spacing: 0.02em;
+
     box-shadow:
-        0 9px 20px rgb(var(--sports-gold-rgb, 214 166 64) / 0.2),
+        0 9px 20px rgb(var(--sports-gold-rgb, 214 166 64) / 0.18),
         inset 0 1px 0 rgba(255, 255, 255, 0.28);
+
     transition:
         transform 180ms ease,
         box-shadow 180ms ease,
@@ -392,29 +434,70 @@
     content: "";
     position: absolute;
     inset: 1px;
+
     border-radius: inherit;
+
     background:
         linear-gradient(180deg,
             rgba(255, 255, 255, 0.22) 0%,
             rgba(255, 255, 255, 0) 48%);
+
     opacity: 0.9;
     pointer-events: none;
 }
 
 .buttonArrow {
     display: inline-block;
-    font-size: 0.88rem;
+
+    font-size: 0.86rem;
     line-height: 1;
+
     transform: translateX(0);
     transition: transform 180ms ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
+    .card:hover {
+        transform: translateY(-3px);
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.32);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.055),
+            0 18px 36px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.05);
+        filter: saturate(1.04);
+    }
+
+    .card:hover .cardTitle {
+        color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    }
+
+    .card:hover .stepBadge {
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.4);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.07),
+            0 7px 14px rgba(0, 0, 0, 0.16),
+            0 0 0.86rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
+    }
+
+    .card:hover .agePill {
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.045),
+            0 0 0.86rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.08);
+    }
+
+    .card:hover .outcomeBox {
+        border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.035),
+            0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
     .bookButton:hover {
         transform: translateY(-1px);
         box-shadow:
-            0 12px 24px rgb(var(--sports-gold-rgb, 214 166 64) / 0.26),
-            0 0 0.9rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.1),
+            0 12px 24px rgb(var(--sports-gold-rgb, 214 166 64) / 0.24),
+            0 0 0.9rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.09),
             inset 0 1px 0 rgba(255, 255, 255, 0.3);
         filter: saturate(1.05) brightness(1.01);
     }
@@ -422,6 +505,15 @@
     .bookButton:hover .buttonArrow {
         transform: translateX(2px);
     }
+}
+
+.card:focus-within {
+    transform: translateY(-2px);
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.3);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 18px 36px rgba(0, 0, 0, 0.26),
+        0 0 0 3px rgb(var(--sports-gold-rgb, 214 166 64) / 0.1);
 }
 
 .bookButton:active {
@@ -438,169 +530,180 @@
 
 @media (min-width: 1181px) and (max-height: 860px) {
     .card {
-        padding: 0.76rem;
-        --education-card-header-min-h: 3.9rem;
-        --education-card-description-min-h: 5.3rem;
-        --education-card-group-min-h: 8.9rem;
-        --education-card-outcome-min-h: 4.4rem;
+        padding: 0.72rem;
+
+        --education-card-header-min-h: 3.35rem;
+        --education-card-description-min-h: 4.25rem;
+        --education-card-group-min-h: 7.55rem;
+        --education-card-outcome-min-h: 3.65rem;
+
+        --education-card-bg-start: 0.38;
+        --education-card-bg-end: 0.56;
     }
 
     .cardTop {
-        margin-block-end: 0.62rem;
+        margin-block-end: 0.56rem;
     }
 
     .stepBadge {
-        min-inline-size: 2.02rem;
-        min-block-size: 2.02rem;
-        font-size: 0.7rem;
+        min-inline-size: 1.92rem;
+        min-block-size: 1.92rem;
+        font-size: 0.68rem;
     }
 
     .agePill {
-        min-block-size: 1.7rem;
-        padding: 0.32rem 0.58rem;
-        font-size: 0.7rem;
+        min-block-size: 1.58rem;
+        padding: 0.28rem 0.54rem;
+        font-size: 0.68rem;
     }
 
     .cardBody {
-        gap: 0.62rem;
+        gap: 0.54rem;
     }
 
     .cardTitle {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
     }
 
     .cardSubtitle {
-        font-size: 0.77rem;
+        font-size: 0.74rem;
     }
 
     .cardDescription,
     .featureItem,
     .outcomeText {
-        font-size: 0.83rem;
-        line-height: 1.36;
+        font-size: 0.8rem;
+        line-height: 1.32;
+    }
+
+    .cardDescription,
+    .group {
+        padding: 0.54rem 0.62rem;
+    }
+
+    .featureList {
+        gap: 0.34rem;
     }
 
     .outcomeBox {
-        padding: 0.58rem 0.66rem;
+        padding: 0.52rem 0.6rem;
     }
 
     .cardFooter {
-        margin-top: 0.64rem;
-        padding-top: 0.58rem;
+        margin-top: 0.56rem;
+        padding-top: 0.52rem;
     }
 
     .bookButton {
-        min-block-size: 2.2rem;
-        padding: 0.56rem 0.82rem;
-        font-size: 0.76rem;
+        min-block-size: 2.04rem;
+        padding: 0.52rem 0.78rem;
+        font-size: 0.74rem;
     }
 }
 
 @media (min-width: 1121px) and (max-width: 1247px) {
     .card {
-        padding: 0.78rem;
-        --education-card-header-min-h: 5rem;
-        --education-card-description-min-h: 7rem;
-        --education-card-group-min-h: 11.2rem;
-        --education-card-outcome-min-h: 5.25rem;
+        padding: 0.74rem;
+
+        --education-card-header-min-h: 4.25rem;
+        --education-card-description-min-h: 5.85rem;
+        --education-card-group-min-h: 9.4rem;
+        --education-card-outcome-min-h: 4.45rem;
+
+        --education-card-bg-start: 0.42;
+        --education-card-bg-end: 0.6;
     }
 
     .cardTop {
-        margin-block-end: 0.64rem;
+        margin-block-end: 0.58rem;
     }
 
     .stepBadge {
-        min-inline-size: 2.06rem;
-        min-block-size: 2.06rem;
-        font-size: 0.7rem;
+        min-inline-size: 1.96rem;
+        min-block-size: 1.96rem;
+        font-size: 0.68rem;
     }
 
     .agePill {
-        min-block-size: 1.72rem;
-        padding: 0.32rem 0.58rem;
-        font-size: 0.69rem;
+        min-block-size: 1.6rem;
+        padding: 0.28rem 0.54rem;
+        font-size: 0.67rem;
     }
 
     .cardBody {
-        gap: 0.64rem;
+        gap: 0.58rem;
     }
 
     .cardHeader {
-        gap: 0.2rem;
+        gap: 0.18rem;
     }
 
     .cardTitle {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         line-height: 1.12;
     }
 
     .cardSubtitle {
-        font-size: 0.78rem;
-        line-height: 1.32;
+        font-size: 0.75rem;
+        line-height: 1.3;
     }
 
     .cardDescription,
     .featureItem,
     .outcomeText {
-        font-size: 0.84rem;
-        line-height: 1.4;
+        font-size: 0.81rem;
+        line-height: 1.36;
+    }
+
+    .cardDescription,
+    .group {
+        padding: 0.56rem 0.64rem;
     }
 
     .groupLabel {
-        font-size: 0.73rem;
+        font-size: 0.7rem;
     }
 
     .featureList {
-        gap: 0.42rem;
+        gap: 0.34rem;
     }
 
     .outcomeBox {
-        padding: 0.6rem 0.68rem;
+        padding: 0.54rem 0.62rem;
     }
 
     .cardFooter {
-        margin-top: 0.66rem;
-        padding-top: 0.58rem;
+        margin-top: 0.58rem;
+        padding-top: 0.52rem;
     }
 
     .bookButton {
-        min-block-size: 2.22rem;
-        padding: 0.56rem 0.84rem;
-        font-size: 0.76rem;
+        min-block-size: 2.08rem;
+        padding: 0.52rem 0.78rem;
+        font-size: 0.74rem;
     }
 }
 
 @media (max-width: 1120px) {
     .card {
-        padding: 0.8rem;
-        --education-card-header-min-h: 4.3rem;
-        --education-card-description-min-h: 6rem;
-        --education-card-group-min-h: 10rem;
-        --education-card-outcome-min-h: 4.9rem;
-    }
+        padding: 0.78rem;
 
-    .cardBody {
-        gap: 0.66rem;
-    }
-}
-
-@media (max-width: 760px) {
-    .card {
-        padding: 0.8rem;
-        border-radius: 1rem;
         --education-card-header-min-h: auto;
         --education-card-description-min-h: auto;
         --education-card-group-min-h: auto;
         --education-card-outcome-min-h: auto;
-    }
 
-    .cardTop {
-        margin-block-end: 0.66rem;
+        --education-card-gold-alpha: 0.075;
+        --education-card-green-alpha: 0.018;
+        --education-card-glass-start: 0.018;
+        --education-card-glass-end: 0.007;
+        --education-card-bg-start: 0.36;
+        --education-card-bg-end: 0.54;
     }
 
     .cardBody {
         grid-template-rows: auto;
-        gap: 0.66rem;
+        gap: 0.6rem;
     }
 
     .cardDescription,
@@ -610,23 +713,49 @@
         min-block-size: 0;
     }
 
+    .cardDescription,
+    .group {
+        padding: 0.58rem 0.66rem;
+    }
+}
+
+@media (max-width: 760px) {
+    .card {
+        padding: 0.78rem;
+        border-radius: 1rem;
+    }
+
+    .cardTop {
+        margin-block-end: 0.62rem;
+    }
+
+    .cardBody {
+        gap: 0.62rem;
+    }
+
+    .cardDescription,
+    .group {
+        padding: 0.54rem 0.6rem;
+        border-radius: 0.76rem;
+    }
+
     .cardTitle {
         font-size: 0.98rem;
     }
 
     .cardSubtitle {
-        font-size: 0.79rem;
+        font-size: 0.78rem;
     }
 
     .cardDescription,
     .featureItem,
     .outcomeText {
-        font-size: 0.85rem;
-        line-height: 1.4;
+        font-size: 0.84rem;
+        line-height: 1.38;
     }
 
     .groupLabel {
-        font-size: 0.73rem;
+        font-size: 0.71rem;
     }
 }
 
@@ -637,20 +766,20 @@
     }
 
     .stepBadge {
-        min-inline-size: 2.04rem;
-        min-block-size: 2.04rem;
-        font-size: 0.7rem;
+        min-inline-size: 1.96rem;
+        min-block-size: 1.96rem;
+        font-size: 0.68rem;
     }
 
     .agePill {
-        min-block-size: 1.7rem;
-        padding: 0.32rem 0.58rem;
-        font-size: 0.69rem;
+        min-block-size: 1.58rem;
+        padding: 0.28rem 0.54rem;
+        font-size: 0.67rem;
     }
 
     .cardFooter {
-        margin-top: 0.68rem;
-        padding-top: 0.6rem;
+        margin-top: 0.6rem;
+        padding-top: 0.54rem;
     }
 
     .bookButton {

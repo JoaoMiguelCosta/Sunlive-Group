@@ -8,58 +8,92 @@
     position: relative;
     display: grid;
     gap: clamp(0.92rem, 1.25vw, 1.24rem);
+
     inline-size: 100%;
     min-inline-size: 0;
     margin-inline: auto;
     padding: clamp(0.88rem, 1.18vw, 1.08rem);
+
     border-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
-    border: 1px solid var(--sports-border, rgb(199 134 21 / 0.16));
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.2);
+
     background:
         radial-gradient(120% 165% at 0% 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.045) 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.02) 0%,
             transparent 44%),
         radial-gradient(120% 165% at 100% 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
-            transparent 42%),
-        radial-gradient(140% 185% at 50% 100%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.035) 0%,
-            transparent 56%),
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.075) 0%,
+            transparent 44%),
         var(--sports-surface-dark,
             linear-gradient(180deg,
                 rgba(7, 13, 21, 0.965) 0%,
                 rgba(4, 9, 17, 0.992) 100%));
-    box-shadow: var(--sports-shadow-card,
+
+    box-shadow:
+        var(--sports-shadow-card,
             inset 0 1px 0 rgba(255, 255, 255, 0.04),
-            0 22px 48px rgba(0, 0, 0, 0.36));
+            0 22px 48px rgba(0, 0, 0, 0.36)),
+        inset 0 0 0 1px rgb(var(--sports-gold-rgb, 214 166 64) / 0.035);
+
     overflow: hidden;
     isolation: isolate;
+
+    --education-levels-overlay-start: 0.08;
+    --education-levels-overlay-mid: 0.18;
+    --education-levels-overlay-end: 0.36;
+
+    --education-levels-image-opacity: 1;
+    --education-levels-image-brightness: 1.18;
+    --education-levels-image-contrast: 1.08;
+    --education-levels-image-saturation: 1.1;
 }
 
-@supports (backdrop-filter: blur(16px)) {
-    .surface {
-        backdrop-filter: blur(16px);
-    }
+.backgroundImage {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    border-radius: inherit;
+
+    background-image: var(--education-levels-bg-image, none);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: var(--education-levels-bg-position, center);
+
+    opacity: var(--education-levels-image-opacity);
+    filter:
+        brightness(var(--education-levels-image-brightness)) contrast(var(--education-levels-image-contrast)) saturate(var(--education-levels-image-saturation));
+
+    transform: scale(1.012);
+    transform-origin: center;
+
+    pointer-events: none;
 }
 
-.surface>* {
+.surface> :not(.backgroundImage) {
     position: relative;
-    z-index: 1;
+    z-index: 3;
 }
 
 .surface::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 2;
+
     border-radius: inherit;
+
     background:
         linear-gradient(90deg,
             transparent 0%,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.42) 24%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.44) 24%,
             rgba(255, 255, 255, 0.07) 50%,
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.3) 76%,
             transparent 100%);
-    opacity: 0.96;
+
+    opacity: 0.9;
     pointer-events: none;
+
     mask-image:
         linear-gradient(to bottom,
             #000 0,
@@ -75,17 +109,23 @@
 .surface::after {
     content: "";
     position: absolute;
-    inset: -14% -10% auto auto;
-    inline-size: clamp(13rem, 22vw, 20rem);
-    block-size: clamp(13rem, 22vw, 20rem);
-    border-radius: 999px;
+    inset: 0;
+    z-index: 1;
+
+    border-radius: inherit;
+
     background:
-        radial-gradient(circle,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.13) 0%,
-            rgb(var(--sports-green-rgb, 46 194 126) / 0.025) 42%,
-            transparent 72%);
-    filter: blur(14px);
-    opacity: 0.82;
+        radial-gradient(100% 145% at 0% 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.01) 0%,
+            transparent 44%),
+        radial-gradient(105% 145% at 100% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.044) 0%,
+            transparent 48%),
+        linear-gradient(180deg,
+            rgba(3, 6, 11, var(--education-levels-overlay-start)) 0%,
+            rgba(3, 6, 11, var(--education-levels-overlay-mid)) 48%,
+            rgba(3, 6, 11, var(--education-levels-overlay-end)) 100%);
+
     pointer-events: none;
 }
 
@@ -93,6 +133,14 @@
     .surface {
         gap: 0.84rem;
         padding: 0.82rem;
+
+        --education-levels-overlay-start: 0.1;
+        --education-levels-overlay-mid: 0.2;
+        --education-levels-overlay-end: 0.38;
+
+        --education-levels-image-brightness: 1.16;
+        --education-levels-image-contrast: 1.07;
+        --education-levels-image-saturation: 1.08;
     }
 }
 
@@ -100,6 +148,14 @@
     .surface {
         gap: 0.9rem;
         padding: 0.84rem 0.8rem 0.88rem;
+
+        --education-levels-overlay-start: 0.1;
+        --education-levels-overlay-mid: 0.22;
+        --education-levels-overlay-end: 0.42;
+
+        --education-levels-image-brightness: 1.16;
+        --education-levels-image-contrast: 1.07;
+        --education-levels-image-saturation: 1.08;
     }
 }
 
@@ -107,6 +163,20 @@
     .surface {
         gap: 0.84rem;
         padding: 0.8rem 0.76rem 0.84rem;
+
+        --education-levels-overlay-start: 0.14;
+        --education-levels-overlay-mid: 0.3;
+        --education-levels-overlay-end: 0.52;
+
+        --education-levels-image-brightness: 1.13;
+        --education-levels-image-contrast: 1.06;
+        --education-levels-image-saturation: 1.06;
+    }
+
+    .backgroundImage {
+        background-position:
+            var(--education-levels-bg-position-mobile,
+                var(--education-levels-bg-position, center));
     }
 }
 
@@ -114,11 +184,13 @@
     .surface {
         border-radius: 1.14rem;
         padding: 0.76rem 0.72rem 0.8rem;
+
+        --education-levels-overlay-start: 0.16;
+        --education-levels-overlay-mid: 0.34;
+        --education-levels-overlay-end: 0.56;
     }
 
-    .surface::after {
-        inset: -18% -18% auto auto;
-        inline-size: 10.5rem;
-        block-size: 10.5rem;
+    .backgroundImage {
+        transform: scale(1.04);
     }
 }
