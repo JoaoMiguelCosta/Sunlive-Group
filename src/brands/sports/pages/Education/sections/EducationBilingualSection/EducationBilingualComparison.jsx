@@ -21,10 +21,7 @@ export default function EducationBilingualComparison({
 
       <div
         className={styles.comparison}
-        aria-label={
-          comparison?.ariaLabel ||
-          "Comparação entre sistema português e via de diploma duplo"
-        }
+        aria-label={!comparisonLabelId ? comparison?.ariaLabel : undefined}
         aria-labelledby={comparisonLabelId}
       >
         {items.map((item, index) => (

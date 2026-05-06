@@ -35,9 +35,9 @@ export default function EducationBilingualPanel({ item }) {
 
         {hasItems(item?.features) ? (
           <div className={styles.group}>
-            <p className={styles.groupLabel}>
-              {item.featuresLabel || "Pontos-chave:"}
-            </p>
+            {item.featuresLabel ? (
+              <p className={styles.groupLabel}>{item.featuresLabel}</p>
+            ) : null}
 
             <ul className={styles.featureList}>
               {item.features.map((feature, index) => (

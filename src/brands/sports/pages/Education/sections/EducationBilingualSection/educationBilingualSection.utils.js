@@ -27,9 +27,15 @@ export function getPanelVariant(item) {
 }
 
 export function getPanelTag(item) {
-  if (item?.key === "portuguese") return "Sistema Português";
-  if (item?.key === "dualDiploma") return "Diploma Duplo";
-  return item?.title || "Modelo académico";
+  return item?.tag || item?.title || item?.key || "Modelo académico";
+}
+
+export function getBackgroundImage(data) {
+  const backgroundImage = data?.media?.backgroundImage || data?.backgroundImage;
+
+  if (!backgroundImage?.src) return null;
+
+  return backgroundImage;
 }
 
 export function getSectionIds(sectionId, intro, comparison) {

@@ -1,5 +1,13 @@
+import educationBilingualImage from "../../../assets/Education/education2.webp";
+
 const bilingualSection = {
   id: "educacao-bilingue",
+  media: {
+    backgroundImage: {
+      src: educationBilingualImage,
+      alt: "Tutor académico a acompanhar estudante-atleta durante sessão de estudo com computador.",
+    },
+  },
   intro: {
     id: "educacao-bilingue-intro",
     eyebrow: "Modelo académico",
@@ -14,6 +22,7 @@ const bilingualSection = {
     {
       id: "percurso-portugues",
       key: "portuguese",
+      tag: "Sistema Português",
       title: "Sistema Português",
       description:
         "No ensino básico, os alunos seguem o currículo nacional português em regime presencial através do Colégio do Calvão, parceiro académico oficial.",
@@ -30,6 +39,7 @@ const bilingualSection = {
     {
       id: "percurso-diploma-duplo",
       key: "dualDiploma",
+      tag: "Diploma Duplo",
       title: "Diploma Duplo",
       description:
         "No ensino secundário, a academia disponibiliza uma via de diploma duplo que combina diploma português, em parceria com o Colégio do Calvão, com American High School Diploma através da SAI Academy.",

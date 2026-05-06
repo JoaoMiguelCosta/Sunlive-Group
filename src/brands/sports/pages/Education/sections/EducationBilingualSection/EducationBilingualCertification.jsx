@@ -8,7 +8,7 @@ export default function EducationBilingualCertification({ certification }) {
   return (
     <article
       className={styles.certification}
-      aria-label={certification.title || "Certificação dupla"}
+      aria-label={certification.title || certification.eyebrow}
     >
       <div className={styles.certificationContent}>
         {certification.eyebrow ? (
