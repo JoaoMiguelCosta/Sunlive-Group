@@ -4,7 +4,7 @@ import breakfastImage3 from "../../../assets/breakfast3.webp";
 import breakfastImage4 from "../../../assets/breakfast4.webp";
 
 export const breakfast = {
-  id: "restaurant-breakfast",
+  id: "restaurante-pequeno-almoco",
   headerLabel: "Pequeno-Almoço",
 
   intro: {

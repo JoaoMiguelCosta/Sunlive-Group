@@ -1,5 +1,5 @@
 export const contacts = {
-  id: "info-contacts",
+  id: "informacoes-contactos",
   headerLabel: "Contactos",
   description:
     "Estamos disponíveis para esclarecer dúvidas, ajudar no planeamento da sua estadia ou fornecer informações adicionais.",

@@ -2,7 +2,7 @@ import homeAboutImage from "../../../assets/home-about.webp";
 import { HOTEL_PAGE_PATHS } from "../../core/paths.js";
 
 export const overview = {
-  id: "hotel-overview",
+  id: "hotel-visao-geral",
   headerLabel: "Sobre a Estalagem",
 
   identityLabel: "Sport & Nature Hotel",

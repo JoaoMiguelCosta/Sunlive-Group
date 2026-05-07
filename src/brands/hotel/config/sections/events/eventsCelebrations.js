@@ -1,5 +1,5 @@
 const eventsCelebrations = {
-  id: "events-celebrations",
+  id: "eventos-celebracoes",
   headerLabel: "Eventos e Celebrações",
   description:
     "Momentos especiais merecem um cenário único. A Estalagem de Sangalhos é o local ideal para celebrar os seus eventos mais importantes.",
@@ -31,7 +31,7 @@ const eventsCelebrations = {
   },
 
   eventTypes: {
-    id: "events-celebrations-types",
+    id: "eventos-celebracoes-types",
     items: [
       {
         id: "weddings",
@@ -42,7 +42,7 @@ const eventsCelebrations = {
         description:
           "Para casamentos intimistas e celebrações com charme num espaço natural, reservado e com toque pessoal.",
         ctaLabel: "Ver Detalhes",
-        href: "/sunlive-group/hotel/information#info-contacts",
+        href: "/sunlive-group/hotel/information#informacoes-contactos",
         iconKey: "ring",
 
         offerPanel: {
@@ -80,7 +80,7 @@ const eventsCelebrations = {
             { id: "weddings-highlight-3", text: "Coordenação completa" },
           ],
           ctaLabel: "Pedir Orçamento",
-          ctaHref: "/sunlive-group/hotel/information#info-contacts",
+          ctaHref: "/sunlive-group/hotel/information#informacoes-contactos",
         },
       },
 
@@ -93,7 +93,7 @@ const eventsCelebrations = {
         description:
           "Ideal para jantares de grupo, festas familiares e encontros especiais num ambiente seguro, confortável e festivo.",
         ctaLabel: "Ver Detalhes",
-        href: "/sunlive-group/hotel/information#info-contacts",
+        href: "/sunlive-group/hotel/information#informacoes-contactos",
         iconKey: "celebration",
 
         offerPanel: {
@@ -131,7 +131,7 @@ const eventsCelebrations = {
             { id: "private-parties-highlight-3", text: "Decoração temática" },
           ],
           ctaLabel: "Pedir Orçamento",
-          ctaHref: "/sunlive-group/hotel/information#info-contacts",
+          ctaHref: "/sunlive-group/hotel/information#informacoes-contactos",
         },
       },
 
@@ -144,7 +144,7 @@ const eventsCelebrations = {
         description:
           "Programas especiais de Fim de Ano com festa incluída, uma forma tranquila de celebrar com qualidade e boa energia.",
         ctaLabel: "Ver Detalhes",
-        href: "/sunlive-group/hotel/information#info-contacts",
+        href: "/sunlive-group/hotel/information#informacoes-contactos",
         iconKey: "calendar",
 
         offerPanel: {
@@ -182,7 +182,7 @@ const eventsCelebrations = {
             { id: "new-year-highlight-3", text: "Ambiente familiar" },
           ],
           ctaLabel: "Pedir Orçamento",
-          ctaHref: "/sunlive-group/hotel/information#info-contacts",
+          ctaHref: "/sunlive-group/hotel/information#informacoes-contactos",
         },
       },
 
@@ -195,7 +195,7 @@ const eventsCelebrations = {
         description:
           "Para formações, reuniões, lançamentos ou retiros de equipa num espaço inspirador para empresas com visão.",
         ctaLabel: "Ver Detalhes",
-        href: "/sunlive-group/hotel/information#info-contacts",
+        href: "/sunlive-group/hotel/information#informacoes-contactos",
         iconKey: "business",
 
         offerPanel: {
@@ -239,7 +239,7 @@ const eventsCelebrations = {
             },
           ],
           ctaLabel: "Pedir Orçamento",
-          ctaHref: "/sunlive-group/hotel/information#info-contacts",
+          ctaHref: "/sunlive-group/hotel/information#informacoes-contactos",
         },
       },
     ],

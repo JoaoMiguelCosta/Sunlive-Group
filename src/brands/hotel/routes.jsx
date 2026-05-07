@@ -1,5 +1,7 @@
 import { Route, Navigate } from "react-router-dom";
 
+import { HOTEL_BASE_PATH, HOTEL_PAGE_PATHS } from "./config/core/paths.js";
+
 import HotelShell from "./layouts/HotelShell.jsx";
 
 import HomePageHotel from "./pages/Home/index.jsx";
@@ -12,19 +14,17 @@ import SustainabilityPageHotel from "./pages/Sustainability/index.jsx";
 import InformationPageHotel from "./pages/Information/index.jsx";
 
 export const hotelRoutes = [
-  <Route key="hotel" path="/sunlive-group/hotel" element={<HotelShell />}>
+  <Route key="hotel" path={HOTEL_BASE_PATH} element={<HotelShell />}>
     <Route index element={<HomePageHotel />} />
 
-    {/* ✅ Canonical EN routes */}
-    <Route path="about" element={<AboutPageHotel />} />
-    <Route path="accommodation" element={<AccommodationPageHotel />} />
-    <Route path="dining" element={<DiningPageHotel />} />
-    <Route path="facilities" element={<FacilitiesLeisurePageHotel />} />
-    <Route path="events" element={<EventsPageHotel />} />
-    <Route path="sustainability" element={<SustainabilityPageHotel />} />
-    <Route path="information" element={<InformationPageHotel />} />
+    <Route path="sobre" element={<AboutPageHotel />} />
+    <Route path="estadia" element={<AccommodationPageHotel />} />
+    <Route path="restauracao" element={<DiningPageHotel />} />
+    <Route path="instalacoes-lazer" element={<FacilitiesLeisurePageHotel />} />
+    <Route path="eventos" element={<EventsPageHotel />} />
+    <Route path="sustentabilidade" element={<SustainabilityPageHotel />} />
+    <Route path="informacoes" element={<InformationPageHotel />} />
 
-    {/* Fallback */}
-    <Route path="*" element={<Navigate to="/sunlive-group/hotel" replace />} />
+    <Route path="*" element={<Navigate to={HOTEL_PAGE_PATHS.home} replace />} />
   </Route>,
 ];

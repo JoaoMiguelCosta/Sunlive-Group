@@ -41,7 +41,7 @@ export default function TestimonialsAverageRating() {
 
   return (
     <section
-      id={content.id ?? "info-testimonials-average-rating"}
+      id={content.id ?? "informacoes-testemunhos-average-rating"}
       className={styles.card}
       aria-label="Classificação média dos testemunhos"
     >

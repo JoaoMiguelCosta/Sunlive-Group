@@ -3,8 +3,10 @@ import featuredExperiences2 from "../../../assets/featured-experiences2.webp";
 import twoRoom from "../../../assets/two-room.webp";
 import panoramicRestaurant1 from "../../../assets/panoramic-restaurant1.webp";
 
+import { HOTEL_PAGE_PATHS } from "../../core/paths.js";
+
 export const featuredExperiences = {
-  id: "hotel-featured-experiences",
+  id: "hotel-experiencias-destaque",
   header: {
     kicker: "Estadias & Momentos",
     title: "Experiências em Destaque",
@@ -24,6 +26,7 @@ export const featuredExperiences = {
       imageAlt:
         "Espaço panorâmico do hotel com vista exterior e zona de refeições",
       imagePosition: "center center",
+      href: `${HOTEL_PAGE_PATHS.dining}#restaurante-pequeno-almoco`,
       featured: true,
     },
     {
@@ -36,6 +39,7 @@ export const featuredExperiences = {
       imageSrc: featuredExperiences2,
       imageAlt: "Piscina interior e zona de bem-estar do hotel",
       imagePosition: "center center",
+      href: `${HOTEL_PAGE_PATHS.facilities}#instalacoes-bem-estar`,
       featured: false,
     },
     {
@@ -47,6 +51,7 @@ export const featuredExperiences = {
       imageSrc: featuredExperiences1,
       imageAlt: "Espaço de eventos do hotel preparado para ocasiões especiais",
       imagePosition: "center center",
+      href: HOTEL_PAGE_PATHS.events,
       featured: false,
     },
     {
@@ -59,6 +64,7 @@ export const featuredExperiences = {
       imageSrc: twoRoom,
       imageAlt: "Quarto confortável do hotel com cama e comodidades modernas",
       imagePosition: "center center",
+      href: `${HOTEL_PAGE_PATHS.accommodation}#estadia-quartos`,
       featured: false,
     },
   ],

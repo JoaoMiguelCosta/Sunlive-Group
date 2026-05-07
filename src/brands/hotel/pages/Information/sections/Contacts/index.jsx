@@ -11,7 +11,7 @@ export default function ContactsSection() {
 
   if (!section) return null;
 
-  const sectionId = section.id ?? "info-contacts";
+  const sectionId = section.id ?? "informacoes-contactos";
   const titleId = `${sectionId}-title`;
 
   const backgroundImageSrc = section?.backgroundMedia?.imageSrc ?? null;

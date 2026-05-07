@@ -9,7 +9,7 @@ export default function WellBeingSection() {
   const section = hotelBrand?.pages?.facilities?.sections?.wellBeing ?? null;
   if (!section) return null;
 
-  const sectionId = "facilities-wellbeing";
+  const sectionId = "instalacoes-bem-estar";
   const sectionAriaLabel = section?.ui?.sectionAriaLabel ?? "Bem-estar e Lazer";
 
   return (

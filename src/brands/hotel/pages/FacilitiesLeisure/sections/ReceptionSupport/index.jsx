@@ -13,7 +13,7 @@ export default function ReceptionSupportSection() {
 
   if (!section) return null;
 
-  const sectionId = "facilities-reception";
+  const sectionId = "instalacoes-rececao";
   const titleId = `${sectionId}-title`;
 
   return (

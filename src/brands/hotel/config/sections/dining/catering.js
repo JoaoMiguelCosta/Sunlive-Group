@@ -1,5 +1,5 @@
 export const catering = {
-  id: "restaurant-catering",
+  id: "restaurante-catering",
   headerLabel: "Serviço de Catering",
 
   introEyebrow: "Eventos & Catering",

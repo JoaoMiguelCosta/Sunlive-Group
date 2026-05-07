@@ -1,5 +1,7 @@
 import { SPORTS_PAGE_PATHS } from "../../core/paths.js";
 
+const CONTACTS_SECTION_ID = "contactos-desporto";
+
 const leisureSportsTourismCTA = {
   id: "leisure-sports-tourism-cta",
 
@@ -17,14 +19,14 @@ const leisureSportsTourismCTA = {
 
   primaryAction: {
     label: "Pedir proposta",
-    href: SPORTS_PAGE_PATHS.contacts,
+    href: `${SPORTS_PAGE_PATHS.contacts}#${CONTACTS_SECTION_ID}`,
     ariaLabel:
       "Pedir proposta para Turismo Desportivo Lúdico com a Sunlive Sports",
   },
 
   secondaryAction: {
     label: "Falar com a equipa",
-    href: SPORTS_PAGE_PATHS.contacts,
+    href: `${SPORTS_PAGE_PATHS.contacts}#${CONTACTS_SECTION_ID}`,
     ariaLabel:
       "Falar com a equipa Sunlive Sports sobre Turismo Desportivo Lúdico",
   },

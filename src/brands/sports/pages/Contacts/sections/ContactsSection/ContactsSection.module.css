@@ -76,6 +76,7 @@
             rgba(255, 255, 255, 0.042));
     --contacts-icon-border: var(--sports-logistics-icon-border, rgb(var(--sports-gold-rgb, 214 166 64) / 0.24));
     --contacts-icon-color: var(--sports-logistics-icon-color, var(--sports-gold, #d6a640));
+    scroll-margin-top: clamp(5.25rem, 8vw, 7rem);
 }
 
 .surface {

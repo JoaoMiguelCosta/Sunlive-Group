@@ -1,5 +1,5 @@
 export const planYourStay = {
-  id: "hotel-plan-your-stay",
+  id: "hotel-planear-estadia",
   eyebrow: "Planeie com confiança",
   boxTitle: "Tem dúvidas ou quer planear a sua estadia?",
   boxSubtitle:

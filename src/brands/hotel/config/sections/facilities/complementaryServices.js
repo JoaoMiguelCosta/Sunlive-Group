@@ -1,5 +1,5 @@
 export const complementaryServices = {
-  id: "facilities-services",
+  id: "instalacoes-servicos",
   headerLabel: "Serviços Complementares",
   description:
     "Serviços adicionais úteis para atletas, empresas ou estadias prolongadas.",

@@ -1,5 +1,5 @@
 export const sustainabilityImpact = {
-  id: "hotel-sustainability-impact",
+  id: "hotel-sustentabilidade-impacto",
   header: { label: "Sustentabilidade" },
   intro: {
     eyebrow: "Impacto positivo",
@@ -11,7 +11,7 @@ export const sustainabilityImpact = {
   },
   cta: {
     label: "Saber mais sobre Sustentabilidade",
-    href: "/sunlive-group/hotel/sustainability",
+    href: "/sunlive-group/hotel/sustentabilidade",
     ariaLabel: "Ir para a página de sustentabilidade do hotel",
   },
   stats: [

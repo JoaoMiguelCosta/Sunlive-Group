@@ -26,7 +26,7 @@ export default function BreakfastShowcase() {
     ? resolveHotelIcon(hotelBrand?.icons, highlightCard.iconKey)
     : null;
 
-  const showcaseId = `${section?.id ?? "restaurant-breakfast"}-showcase-title`;
+  const showcaseId = `${section?.id ?? "restaurante-pequeno-almoco"}-showcase-title`;
   const introHighlights = normalizeStringArray(intro?.highlights);
   const highlightsAriaLabel =
     intro?.highlightsAriaLabel ?? "Destaques do pequeno-almoço";
@@ -54,7 +54,7 @@ export default function BreakfastShowcase() {
               <div className={styles.paragraphGroup}>
                 {intro.paragraphs.map((paragraph, index) => (
                   <p
-                    key={`${section?.id ?? "restaurant-breakfast"}-intro-${index}`}
+                    key={`${section?.id ?? "restaurante-pequeno-almoco"}-intro-${index}`}
                     className={styles.paragraph}
                   >
                     {paragraph}
@@ -70,7 +70,7 @@ export default function BreakfastShowcase() {
               >
                 {introHighlights.map((item, index) => (
                   <span
-                    key={`${section?.id ?? "restaurant-breakfast"}-highlight-${index}`}
+                    key={`${section?.id ?? "restaurante-pequeno-almoco"}-highlight-${index}`}
                     className={styles.pill}
                   >
                     {item}

@@ -14,7 +14,7 @@ export default function MobilitySection() {
 
   if (!mobility) return null;
 
-  const sectionId = "facilities-mobility";
+  const sectionId = "instalacoes-mobilidade";
   const titleId = `${sectionId}-title`;
 
   return (

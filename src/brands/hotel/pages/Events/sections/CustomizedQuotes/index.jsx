@@ -10,7 +10,7 @@ import styles from "./CustomizedQuotes.module.css";
 export default function CustomizedQuotesSection() {
   const section = hotelBrand?.pages?.events?.sections?.customizedQuotes ?? null;
 
-  const sectionId = "events-quotes";
+  const sectionId = "eventos-orcamentos";
   const titleId = `${sectionId}-title`;
 
   const backgroundImageSrc = section?.backgroundMedia?.imageSrc ?? null;

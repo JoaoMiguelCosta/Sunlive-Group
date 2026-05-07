@@ -12,7 +12,7 @@ export default function ComplementaryServicesSection() {
 
   if (!section) return null;
 
-  const sectionId = section.id ?? "facilities-services";
+  const sectionId = section.id ?? "instalacoes-servicos";
   const titleId = `${sectionId}-title`;
 
   return (

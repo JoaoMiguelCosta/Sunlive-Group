@@ -11,7 +11,7 @@ export default function LocationSection() {
 
   if (!section) return null;
 
-  const sectionId = section.id ?? "info-location";
+  const sectionId = section.id ?? "informacoes-localizacao";
   const titleId = `${sectionId}-title`;
 
   const backgroundImageSrc = section?.backgroundMedia?.imageSrc ?? null;

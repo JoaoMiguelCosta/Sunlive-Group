@@ -3,7 +3,7 @@ import barLounge2 from "../../../assets/bar-lounge2.webp";
 import barLounge3 from "../../../assets/bar-lounge3.webp";
 
 export const barAndLounge = {
-  id: "restaurant-bar-lounge",
+  id: "restaurante-bar-lounge",
   headerLabel: "Bar & Lounge",
 
   intro: {

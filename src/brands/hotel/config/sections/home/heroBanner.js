@@ -4,7 +4,7 @@ import home2 from "../../../assets/home2.webp";
 import home3 from "../../../assets/home3.webp";
 
 export const heroBanner = {
-  id: "hotel-hero-banner",
+  id: "hotel-banner-principal",
 
   logo: {
     src: estalagemLogo,

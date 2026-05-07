@@ -9,7 +9,7 @@ export default function DessertsSection() {
   const section = hotelBrand?.pages?.dining?.sections?.desserts ?? null;
   if (!section) return null;
 
-  const sectionId = section?.id ?? "restaurant-desserts";
+  const sectionId = section?.id ?? "restaurante-buffet";
   const titleId = `${sectionId}-title`;
   const introEyebrow = String(section?.introEyebrow ?? "").trim();
 

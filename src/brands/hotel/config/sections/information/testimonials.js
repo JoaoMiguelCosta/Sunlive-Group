@@ -1,5 +1,5 @@
 export const testimonials = {
-  id: "info-testimonials",
+  id: "informacoes-testemunhos",
   headerLabel: "Testemunhos",
   description:
     "Ao longo dos anos, temos acolhido atletas, famílias, casais, empresas e grupos com um serviço centrado na confiança, atenção ao detalhe e conforto.",
@@ -10,7 +10,7 @@ export const testimonials = {
   },
 
   averageRating: {
-    id: "info-testimonials-average-rating",
+    id: "informacoes-testemunhos-average-rating",
     ratingValue: "4.9/5",
     ratingLabel: "Classificação Média",
     supportingText: "Baseado em mais de 200 avaliações verificadas",
@@ -30,7 +30,7 @@ export const testimonials = {
   },
 
   spotlight: {
-    id: "info-testimonials-spotlight",
+    id: "informacoes-testemunhos-spotlight",
     autoplayMs: 4500,
 
     cardsPerView: {

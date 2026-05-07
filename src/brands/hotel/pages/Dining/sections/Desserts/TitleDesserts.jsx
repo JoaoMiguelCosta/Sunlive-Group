@@ -4,7 +4,7 @@ import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSe
 import styles from "./Desserts.module.css";
 
 export default function TitleDesserts({
-  titleId = "restaurant-desserts-title",
+  titleId = "restaurante-buffet-title",
 }) {
   const content = hotelBrand?.pages?.dining?.sections?.desserts ?? null;
   const label = String(content?.headerLabel ?? "").trim();

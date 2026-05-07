@@ -15,7 +15,7 @@ export const accessibility = {
     featuresTitle: "Características Acessíveis:",
     cta: {
       label: "Contactar Receção",
-      href: `${HOTEL_PAGE_PATHS.information}#info-contacts`,
+      href: `${HOTEL_PAGE_PATHS.information}#informacoes-contactos`,
       ariaLabel: "Contactar a receção para apoio e esclarecimentos adicionais",
     },
     icon: {

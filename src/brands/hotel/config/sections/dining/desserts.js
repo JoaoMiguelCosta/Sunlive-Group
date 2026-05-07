@@ -17,7 +17,7 @@ import tarteNataImage from "../../../assets/desserts/tarte-nata.webp";
 import tarteChocolateImage from "../../../assets/desserts/tarte-chocolate.webp";
 
 export const desserts = {
-  id: "restaurant-desserts",
+  id: "restaurante-sobremesas",
   headerLabel: "Sobremesas",
   introEyebrow: "Final Doce",
 

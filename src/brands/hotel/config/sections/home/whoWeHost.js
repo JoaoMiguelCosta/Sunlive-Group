@@ -1,7 +1,7 @@
 import homeWhoWeHostImage from "../../../assets/home-who-we-host.webp";
 
 export const whoWeHost = {
-  id: "hotel-who-we-host",
+  id: "hotel-quem-recebemos",
   headerLabel: "Para quem é?",
   header: {
     title: "Estadias pensadas para diferentes ritmos e necessidades",

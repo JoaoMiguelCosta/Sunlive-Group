@@ -13,7 +13,7 @@ export default function TestimonialsSection() {
 
   if (!section) return null;
 
-  const sectionId = section.id ?? "info-testimonials";
+  const sectionId = section.id ?? "informacoes-testemunhos";
   const titleId = `${sectionId}-title`;
 
   const backgroundImageSrc = section?.backgroundMedia?.imageSrc ?? null;

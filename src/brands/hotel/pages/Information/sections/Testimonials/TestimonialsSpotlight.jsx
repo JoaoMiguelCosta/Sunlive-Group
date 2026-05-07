@@ -85,7 +85,7 @@ export default function TestimonialsSpotlight() {
 
   return (
     <div
-      id={content.id ?? "info-testimonials-spotlight"}
+      id={content.id ?? "informacoes-testemunhos-spotlight"}
       className={styles.wrapper}
       aria-label="Testemunhos em destaque"
     >

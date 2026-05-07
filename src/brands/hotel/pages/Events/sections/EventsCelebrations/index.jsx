@@ -11,7 +11,7 @@ export default function EventsCelebrationsSection() {
   const section =
     hotelBrand?.pages?.events?.sections?.eventsCelebrations ?? null;
 
-  const sectionId = section?.id ?? "events-celebrations";
+  const sectionId = section?.id ?? "eventos-celebracoes";
   const titleId = `${sectionId}-title`;
 
   const backgroundImageSrc = section?.backgroundMedia?.imageSrc ?? null;
@@ -39,8 +39,7 @@ export default function EventsCelebrationsSection() {
         <div className={styles.introBlock}>
           <TitleEventsCelebrations titleId={titleId} />
 
-            <DescriptionEventsCelebrations />
-         
+          <DescriptionEventsCelebrations />
         </div>
 
         <div className={styles.contentStack}>

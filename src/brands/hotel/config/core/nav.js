@@ -1,19 +1,31 @@
 import { HOTEL_PAGE_PATHS } from "./paths.js";
 
 export const HOTEL_QUICK_LINKS = Object.freeze([
-  { key: "about", label: "Sobre", href: HOTEL_PAGE_PATHS.about },
+  {
+    key: "about",
+    label: "Sobre",
+    href: HOTEL_PAGE_PATHS.about,
+  },
   {
     key: "accommodation",
     label: "Estadia",
     href: HOTEL_PAGE_PATHS.accommodation,
   },
-  { key: "dining", label: "Restauração", href: HOTEL_PAGE_PATHS.dining },
+  {
+    key: "dining",
+    label: "Restauração",
+    href: HOTEL_PAGE_PATHS.dining,
+  },
   {
     key: "facilities",
     label: "Instalações & Lazer",
     href: HOTEL_PAGE_PATHS.facilities,
   },
-  { key: "events", label: "Eventos", href: HOTEL_PAGE_PATHS.events },
+  {
+    key: "events",
+    label: "Eventos",
+    href: HOTEL_PAGE_PATHS.events,
+  },
   {
     key: "sustainability",
     label: "Sustentabilidade",
@@ -84,23 +96,23 @@ export const HOTEL_PRIMARY_NAV_ITEMS = Object.freeze([
       },
       {
         label: "Pequeno-Almoço",
-        href: `${HOTEL_PAGE_PATHS.dining}#restaurant-breakfast`,
+        href: `${HOTEL_PAGE_PATHS.dining}#restaurante-pequeno-almoco`,
       },
       {
         label: "Buffet de Domingo",
-        href: `${HOTEL_PAGE_PATHS.dining}#restaurant-buffet`,
+        href: `${HOTEL_PAGE_PATHS.dining}#restaurante-buffet`,
       },
       {
         label: "Sobremesas",
-        href: `${HOTEL_PAGE_PATHS.dining}#restaurant-desserts`,
+        href: `${HOTEL_PAGE_PATHS.dining}#restaurante-sobremesas`,
       },
       {
         label: "Bar & Lounge",
-        href: `${HOTEL_PAGE_PATHS.dining}#restaurant-bar-lounge`,
+        href: `${HOTEL_PAGE_PATHS.dining}#restaurante-bar-lounge`,
       },
       {
         label: "Serviço de Catering",
-        href: `${HOTEL_PAGE_PATHS.dining}#restaurant-catering`,
+        href: `${HOTEL_PAGE_PATHS.dining}#restaurante-catering`,
       },
     ],
   },
@@ -111,23 +123,23 @@ export const HOTEL_PRIMARY_NAV_ITEMS = Object.freeze([
     links: [
       {
         label: "Bem-estar e Lazer",
-        href: `${HOTEL_PAGE_PATHS.facilities}#facilities-wellbeing`,
+        href: `${HOTEL_PAGE_PATHS.facilities}#instalacoes-bem-estar`,
       },
       {
         label: "Mobilidade",
-        href: `${HOTEL_PAGE_PATHS.facilities}#facilities-mobility`,
+        href: `${HOTEL_PAGE_PATHS.facilities}#instalacoes-mobilidade`,
       },
       {
         label: "Acessibilidade",
-        href: `${HOTEL_PAGE_PATHS.facilities}#facilities-accessibility`,
+        href: `${HOTEL_PAGE_PATHS.facilities}#instalacoes-acessibilidade`,
       },
       {
         label: "Serviços Complementares",
-        href: `${HOTEL_PAGE_PATHS.facilities}#facilities-services`,
+        href: `${HOTEL_PAGE_PATHS.facilities}#instalacoes-servicos`,
       },
       {
-        label: "Recepção & Apoio",
-        href: `${HOTEL_PAGE_PATHS.facilities}#facilities-reception`,
+        label: "Receção & Apoio",
+        href: `${HOTEL_PAGE_PATHS.facilities}#instalacoes-rececao`,
       },
     ],
   },
@@ -138,11 +150,11 @@ export const HOTEL_PRIMARY_NAV_ITEMS = Object.freeze([
     links: [
       {
         label: "Tipos de Eventos",
-        href: `${HOTEL_PAGE_PATHS.events}#events-celebrations`,
+        href: `${HOTEL_PAGE_PATHS.events}#eventos-celebracoes`,
       },
       {
         label: "Orçamentos Personalizados",
-        href: `${HOTEL_PAGE_PATHS.events}#events-quotes`,
+        href: `${HOTEL_PAGE_PATHS.events}#eventos-orcamentos`,
       },
     ],
   },
@@ -176,15 +188,15 @@ export const HOTEL_PRIMARY_NAV_ITEMS = Object.freeze([
     links: [
       {
         label: "Testemunhos",
-        href: `${HOTEL_PAGE_PATHS.information}#info-testimonials`,
+        href: `${HOTEL_PAGE_PATHS.information}#informacoes-testemunhos`,
       },
       {
         label: "Localização",
-        href: `${HOTEL_PAGE_PATHS.information}#info-location`,
+        href: `${HOTEL_PAGE_PATHS.information}#informacoes-localizacao`,
       },
       {
         label: "Contactos",
-        href: `${HOTEL_PAGE_PATHS.information}#info-contacts`,
+        href: `${HOTEL_PAGE_PATHS.information}#informacoes-contactos`,
       },
     ],
   },

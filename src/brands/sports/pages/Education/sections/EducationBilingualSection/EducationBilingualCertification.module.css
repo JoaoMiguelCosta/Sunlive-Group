@@ -22,7 +22,9 @@
 
     overflow: hidden;
     grid-area: certification;
+
     backdrop-filter: blur(4px) saturate(1.03);
+    -webkit-backdrop-filter: blur(4px) saturate(1.03);
 }
 
 .certification::before {
@@ -30,12 +32,15 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
+
     background:
         linear-gradient(90deg,
             rgb(var(--sports-gold-rgb, 214 166 64) / 0.34) 0%,
             rgb(var(--sports-green-rgb, 46 194 126) / 0.06) 100%);
+
     opacity: 0.7;
     pointer-events: none;
+
     mask-image:
         linear-gradient(to bottom,
             #000 0,
@@ -52,11 +57,14 @@
     content: "";
     position: absolute;
     inset: auto 0 0;
+
     block-size: 50%;
+
     background:
         linear-gradient(180deg,
             transparent 0%,
             rgba(0, 0, 0, 0.18) 100%);
+
     opacity: 0.38;
     pointer-events: none;
 }
@@ -102,6 +110,7 @@
         0 8px 18px rgba(0, 0, 0, 0.18);
 
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .certificationTitle {
@@ -140,37 +149,95 @@
 }
 
 .badge {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     min-inline-size: 0;
     min-block-size: 2.42rem;
-    padding: 0.64rem 0.86rem;
+    padding: 0.64rem 0.9rem;
 
     border-radius: 999px;
-    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.18);
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.25);
 
     background:
+        radial-gradient(120% 160% at 18% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            transparent 48%),
+        radial-gradient(110% 150% at 100% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.035) 0%,
+            transparent 54%),
         linear-gradient(180deg,
-            rgba(255, 255, 255, 0.052) 0%,
-            rgba(255, 255, 255, 0.014) 100%);
+            rgba(255, 255, 255, 0.078) 0%,
+            rgba(255, 255, 255, 0.026) 44%,
+            rgba(255, 255, 255, 0.012) 100%),
+        linear-gradient(145deg,
+            rgba(11, 17, 26, 0.88) 0%,
+            rgba(4, 8, 15, 0.94) 100%);
 
-    color: var(--sports-text, rgba(246, 248, 252, 0.96));
+    color: rgba(246, 248, 252, 0.97);
     font-size: var(--sports-card-text-size, clamp(0.74rem, 0.74vw, 0.8rem));
-    font-weight: 750;
+    font-weight: 780;
     line-height: 1.3;
     text-align: center;
 
     text-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.82),
-        0 0 14px rgba(0, 0, 0, 0.68);
+        0 1px 2px rgba(0, 0, 0, 0.88),
+        0 0 16px rgba(0, 0, 0, 0.74);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.035),
-        0 6px 18px rgba(0, 0, 0, 0.12);
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.36),
+        inset 1px 0 0 rgb(var(--sports-gold-rgb, 214 166 64) / 0.055),
+        0 8px 22px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(0, 0, 0, 0.18);
 
-    backdrop-filter: blur(8px) saturate(1.04);
+    backdrop-filter: blur(10px) saturate(1.08);
+    -webkit-backdrop-filter: blur(10px) saturate(1.08);
+}
+
+.badge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(90deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.2) 0%,
+            transparent 34%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 42%);
+
+    opacity: 0.46;
+    pointer-events: none;
+}
+
+.badge::after {
+    content: "";
+    position: absolute;
+    inset-inline: 14%;
+    inset-block-start: 0;
+
+    block-size: 1px;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 239, 204, 0.52) 34%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.48) 50%,
+            rgba(255, 239, 204, 0.24) 70%,
+            transparent 100%);
+
+    opacity: 0.72;
+    pointer-events: none;
 }
 
 @media (min-width: 1101px) and (max-height: 860px) {
@@ -189,7 +256,7 @@
 
     .badge {
         min-block-size: 2.2rem;
-        padding: 0.56rem 0.72rem;
+        padding: 0.56rem 0.76rem;
         font-size: 0.78rem;
     }
 }
