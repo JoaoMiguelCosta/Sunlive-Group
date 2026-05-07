@@ -3,7 +3,7 @@
     isolation: isolate;
     inline-size: 100%;
     overflow: clip;
-
+   
 }
 
 .section::before {
@@ -12,37 +12,50 @@
     inset: 0;
     z-index: -2;
     pointer-events: none;
+
     background:
-        radial-gradient(56rem 22rem at 50% 0%, rgba(236, 198, 116, 0.12), transparent 62%),
-        radial-gradient(28rem 18rem at 8% 54%, rgba(199, 134, 21, 0.08), transparent 68%),
-        radial-gradient(28rem 18rem at 92% 54%, rgba(199, 134, 21, 0.08), transparent 68%);
+        radial-gradient(58rem 22rem at 50% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.105) 0%,
+            transparent 64%),
+        radial-gradient(34rem 20rem at 8% 54%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.055) 0%,
+            transparent 70%),
+        radial-gradient(34rem 20rem at 92% 56%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.05) 0%,
+            transparent 70%);
+    opacity: 0.92;
 }
 
 .section::after {
     content: "";
     position: absolute;
     inset: auto 0 0;
-    block-size: clamp(6rem, 10vw, 11rem);
     z-index: -1;
+    block-size: clamp(7rem, 10vw, 12rem);
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(18, 11, 6, 0) 0%, rgba(18, 11, 6, 0.08) 100%);
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.11) 100%);
+    opacity: 0.86;
 }
 
 .inner {
     inline-size: min(100%, 1280px);
     margin-inline: auto;
-    padding-inline: clamp(1rem, 2vw, 1.5rem);
+    padding-inline: clamp(1rem, 2.2vw, 1.65rem);
     box-sizing: border-box;
 }
 
 .introBlock {
     display: grid;
-    gap: clamp(0.72rem, 1.4vw, 1.1rem);
     justify-items: center;
+    gap: clamp(0.82rem, 1.45vw, 1.18rem);
 }
 
 .descriptionWrap {
-    inline-size: min(100%, 1180px);
+    inline-size: min(100%, 1160px);
     margin-inline: auto;
 }
 
@@ -50,16 +63,10 @@
     margin-bottom: 0;
 }
 
-@media (max-width: 1200px) {
-    .section {
-        padding-block: clamp(2.4rem, 5.6vw, 3.4rem);
-    }
-}
+
 
 @media (max-width: 900px) {
-    .section {
-        padding-block: clamp(2.4rem, 7vw, 3.6rem);
-    }
+ 
 
     .inner {
         padding-inline: clamp(0.9rem, 4vw, 1.2rem);
@@ -67,7 +74,22 @@
 }
 
 @media (max-width: 720px) {
-    .section {
-        padding-block: clamp(2.2rem, 8vw, 3rem);
+ 
+
+    .introBlock {
+        gap: 0.92rem;
+    }
+
+    .section::before {
+        background:
+            radial-gradient(34rem 17rem at 50% 0%,
+                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.095) 0%,
+                transparent 66%),
+            radial-gradient(18rem 14rem at 0% 52%,
+                rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.05) 0%,
+                transparent 72%),
+            radial-gradient(18rem 14rem at 100% 56%,
+                rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.045) 0%,
+                transparent 72%);
     }
 }

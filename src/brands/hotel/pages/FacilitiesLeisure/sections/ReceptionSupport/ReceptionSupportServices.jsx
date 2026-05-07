@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import hotelBrand, { BRAND_FLAGS } from "../../../../config/index.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
@@ -57,6 +57,10 @@ export default function ReceptionSupportServices() {
 
   const [activeLanguageKey, setActiveLanguageKey] =
     useState(initialLanguageKey);
+
+  useEffect(() => {
+    setActiveLanguageKey(initialLanguageKey);
+  }, [initialLanguageKey]);
 
   const features = resolvedContent?.features ?? [];
   const { isOpen, toggle } = useAccordion(features, { allowMultiple: false });

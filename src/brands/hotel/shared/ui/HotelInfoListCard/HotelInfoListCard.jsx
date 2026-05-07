@@ -11,9 +11,10 @@ export default function HotelInfoListCard({
   const safeDescription = String(description ?? "").trim();
 
   return (
-    <article className={`${styles.card} ${className}`.trim()}>
+    <article className={[styles.card, className].filter(Boolean).join(" ")}>
       <div className={styles.header}>
         <h3 className={styles.title}>{title}</h3>
+
         {safeDescription ? (
           <p className={styles.description}>{safeDescription}</p>
         ) : null}

@@ -1,117 +1,137 @@
+/* =========================================================
+   HotelSectionDescription — bloco editorial de apoio
+   Menos pesado, mais respirado, mais hotel boutique
+   ========================================================= */
+
 .wrap {
-    --panel-max-width: 1120px;
-    --text-max-width: 72ch;
+    --description-max-width: 1080px;
+    --description-text-width: 72ch;
 
     position: relative;
     isolation: isolate;
-    box-sizing: border-box;
-    inline-size: min(100%, var(--panel-max-width));
+
+    inline-size: min(100%, var(--description-max-width));
+    min-inline-size: 0;
     margin-inline: auto;
+
+    box-sizing: border-box;
 }
 
 .wrap::before {
     content: "";
     position: absolute;
-    inset: 0;
-    border-radius: clamp(1.3rem, 1.9vw, 2rem);
+    inset: -1px;
+    z-index: -2;
+
+    border-radius: var(--hotel-radius-xl, clamp(1.45rem, 2vw, 2.15rem));
+
     pointer-events: none;
+
     background:
-        radial-gradient(90% 140% at 0% 0%, rgba(230, 200, 147, 0.12), transparent 44%),
-        radial-gradient(80% 120% at 100% 100%, rgba(199, 134, 21, 0.1), transparent 46%);
-    opacity: 0.95;
+        radial-gradient(90% 140% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
+            transparent 52%),
+        radial-gradient(90% 130% at 100% 100%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.035) 0%,
+            transparent 58%);
 }
 
 .wrap::after {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: clamp(1.3rem, 1.9vw, 2rem);
+    z-index: -1;
+
+    border-radius: var(--hotel-radius-xl, clamp(1.45rem, 2vw, 2.15rem));
+
     pointer-events: none;
+
     box-shadow:
-        0 22px 44px rgba(0, 0, 0, 0.16),
-        0 0 0 1px rgba(255, 228, 182, 0.04);
+        0 1.1rem 2.8rem rgb(0 0 0 / 0.18),
+        0 0 0 1px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.045);
 }
 
 .inner {
     position: relative;
-    z-index: 1;
-    inline-size: 100%;
-    box-sizing: border-box;
     overflow: hidden;
 
-    padding-block: clamp(1.35rem, 2.1vw, 2rem);
-    padding-inline: clamp(1.1rem, 2.5vw, 2.2rem);
+    inline-size: 100%;
+    min-inline-size: 0;
 
-    border-radius: clamp(1.3rem, 1.9vw, 2rem);
-    border: 1px solid rgba(230, 200, 147, 0.18);
+    padding-block: clamp(1.15rem, 1.65vw, 1.68rem);
+    padding-inline: clamp(1rem, 2vw, 1.85rem);
 
-    background-color: rgba(38, 22, 13, 0.9);
-    background-image:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.045) 0%,
-            rgba(255, 248, 235, 0.014) 18%,
-            rgba(0, 0, 0, 0.08) 100%),
-        linear-gradient(135deg,
-            rgba(96, 56, 26, 0.48) 0%,
-            rgba(62, 34, 16, 0.34) 32%,
-            rgba(34, 18, 10, 0.22) 64%,
-            rgba(18, 10, 7, 0.12) 100%),
-        radial-gradient(130% 170% at 0% 0%, rgba(230, 200, 147, 0.12), transparent 40%),
-        radial-gradient(100% 150% at 100% 100%, rgba(199, 134, 21, 0.08), transparent 50%);
+    border: 1px solid var(--hotel-border, rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
+    border-radius: var(--hotel-radius-xl, clamp(1.45rem, 2vw, 2.15rem));
+
+    background:
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.072) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.032) 48%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.18) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+        inset 0 1px 0 rgb(255 255 255 / 0.048),
+        inset 0 -1px 0 rgb(0 0 0 / 0.14);
 
-    backdrop-filter: blur(12px) saturate(1.04);
-    -webkit-backdrop-filter: blur(12px) saturate(1.04);
+    backdrop-filter: blur(12px) saturate(1.02);
+    -webkit-backdrop-filter: blur(12px) saturate(1.02);
 }
 
 .inner::before {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: inherit;
+
     pointer-events: none;
+
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.08) 0%,
-            rgba(255, 248, 235, 0.022) 18%,
-            rgba(255, 255, 255, 0) 42%),
+            rgb(255 255 255 / 0.055) 0%,
+            rgb(255 255 255 / 0.012) 34%,
+            transparent 70%),
         linear-gradient(90deg,
-            rgba(255, 248, 235, 0.018) 0%,
-            rgba(255, 248, 235, 0) 15%,
-            rgba(255, 248, 235, 0) 85%,
-            rgba(255, 248, 235, 0.018) 100%);
-    opacity: 0.92;
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.048) 0%,
+            transparent 18%,
+            transparent 82%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.03) 100%);
+
+    opacity: 0.78;
 }
 
 .inner::after {
     content: "";
     position: absolute;
-    inset: 1px;
-    border-radius: inherit;
+    inset-inline: clamp(1rem, 2vw, 1.85rem);
+    inset-block-start: 0;
+
+    block-size: 1px;
+
     pointer-events: none;
-    border: 1px solid rgba(255, 228, 182, 0.05);
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34) 50%,
+            transparent 100%);
 }
 
 .text {
     position: relative;
     z-index: 1;
 
+    max-inline-size: var(--description-text-width);
     margin: 0 auto;
-    max-inline-size: var(--text-max-width);
 
-    color: rgba(255, 248, 235, 0.95);
-    font-size: clamp(1rem, 0.94rem + 0.34vw, 1.18rem);
+    color: var(--hotel-text-soft, rgba(244, 234, 216, 0.82));
+
+    font-size: var(--hotel-body-size, clamp(0.96rem, 1vw, 1.08rem));
     font-weight: 400;
-    line-height: 1.76;
-    letter-spacing: -0.014em;
+    line-height: var(--hotel-body-line, 1.72);
+    letter-spacing: -0.012em;
 
     text-wrap: pretty;
-    overflow-wrap: normal;
-    word-break: normal;
-    hyphens: manual;
+    overflow-wrap: anywhere;
 }
 
 .center {
@@ -120,111 +140,86 @@
 
 .left {
     text-align: left;
+    margin-inline: 0 auto;
 }
 
 .left .text {
     margin-inline: 0 auto;
 }
 
-/* Desktop largo */
-@media (min-width: 1280px) {
-    .wrap {
-        --panel-max-width: 1160px;
-        --text-max-width: 74ch;
-    }
+.left .inner::after {
+    background:
+        linear-gradient(90deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 38%,
+            transparent 100%);
+}
 
-    .text {
-        line-height: 1.8;
+@media (min-width: 1440px) {
+    .wrap {
+        --description-max-width: 1120px;
+        --description-text-width: 74ch;
     }
 }
 
-@media (min-width: 1600px) {
-    .wrap {
-        --panel-max-width: 1200px;
-        --text-max-width: 76ch;
-    }
-
-    .inner {
-        padding-block: 1.55rem 2.1rem;
-        padding-inline: 1.3rem 2.3rem;
-    }
-
-    .text {
-        font-size: 1.2rem;
-    }
-}
-
-/* Portátil / tablet horizontal */
 @media (max-width: 1024px) {
     .wrap {
-        --panel-max-width: 980px;
-        --text-max-width: 68ch;
+        --description-max-width: 960px;
+        --description-text-width: 68ch;
     }
 
     .inner {
-        padding-block: 1.12rem 1.42rem;
-        padding-inline: 1rem 1.4rem;
-        border-radius: 1.4rem;
-    }
-
-    .text {
-        font-size: 1rem;
-        line-height: 1.68;
+        padding-block: 1.05rem 1.35rem;
+        padding-inline: 1rem 1.35rem;
     }
 }
 
-/* Tablet */
 @media (max-width: 768px) {
     .wrap {
-        --panel-max-width: 100%;
-        --text-max-width: 100%;
+        --description-max-width: 100%;
+        --description-text-width: 100%;
     }
 
     .inner {
-        padding-block: 1rem 1.18rem;
-        padding-inline: 0.96rem 1rem;
-        border-radius: 1.18rem;
+        border-radius: var(--hotel-radius-lg, clamp(1.15rem, 1.45vw, 1.55rem));
     }
 
-    .text {
-        font-size: 0.98rem;
-        line-height: 1.62;
+    .wrap::before,
+    .wrap::after {
+        border-radius: var(--hotel-radius-lg, clamp(1.15rem, 1.45vw, 1.55rem));
     }
 }
 
-/* Mobile */
-@media (max-width: 640px) {
+@media (max-width: 620px) {
     .inner {
-        padding: 0.96rem 0.92rem 1rem;
+        padding: 0.98rem 0.92rem 1.05rem;
+        border-radius: 1.05rem;
+    }
+
+    .wrap::before,
+    .wrap::after {
         border-radius: 1.05rem;
     }
 
     .text {
-        font-size: 0.96rem;
+        font-size: 0.95rem;
+        line-height: 1.62;
+    }
+}
+
+@media (max-width: 420px) {
+    .inner {
+        padding: 0.9rem 0.82rem 0.96rem;
+        border-radius: 0.96rem;
+    }
+
+    .wrap::before,
+    .wrap::after {
+        border-radius: 0.96rem;
+    }
+
+    .text {
+        font-size: 0.93rem;
         line-height: 1.58;
-    }
-}
-
-@media (max-width: 480px) {
-    .inner {
-        padding: 0.9rem 0.84rem 0.95rem;
-        border-radius: 0.98rem;
-    }
-
-    .text {
-        font-size: 0.94rem;
-        line-height: 1.54;
-    }
-}
-
-@media (max-width: 380px) {
-    .inner {
-        padding: 0.84rem 0.76rem 0.9rem;
-        border-radius: 0.92rem;
-    }
-
-    .text {
-        font-size: 0.92rem;
-        line-height: 1.5;
     }
 }

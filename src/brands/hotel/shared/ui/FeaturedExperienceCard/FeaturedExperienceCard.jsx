@@ -56,6 +56,8 @@ export default function FeaturedExperienceCard({
             className={styles.image}
             style={{ objectPosition: imagePosition }}
             loading="lazy"
+            decoding="async"
+            draggable="false"
           />
         ) : (
           <div className={styles.imagePlaceholder}>

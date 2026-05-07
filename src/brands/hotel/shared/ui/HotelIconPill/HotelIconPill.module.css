@@ -1,200 +1,231 @@
+/* =========================================================
+   HotelIconPill — pill com ícone
+   ========================================================= */
+
 .pill {
     position: relative;
     isolation: isolate;
+    overflow: hidden;
+
     display: inline-flex;
     align-items: center;
-    gap: clamp(0.5rem, 0.65vw, 0.6rem);
-    min-width: 0;
+    gap: clamp(0.48rem, 0.65vw, 0.62rem);
+
     inline-size: 100%;
-    padding: clamp(0.56rem, 0.72vw, 0.64rem) clamp(0.78rem, 0.92vw, 0.88rem);
+    min-inline-size: 0;
+
+    border: 1px solid var(--hotel-border, rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
     border-radius: 999px;
+
+    background:
+        radial-gradient(120% 140% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.095) 0%,
+            transparent 50%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.062) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.024) 48%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.2) 100%);
+
+    color: var(--hotel-text-soft, rgba(244, 234, 216, 0.82));
     text-decoration: none;
     user-select: none;
-    color: rgba(255, 248, 240, 0.94);
-    border: 1px solid rgba(230, 200, 147, 0.24);
-    background:
-        radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.07), transparent 44%),
-        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.07), transparent 46%),
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.03) 0%,
-            rgba(255, 248, 235, 0.01) 18%,
-            rgba(0, 0, 0, 0.09) 100%),
-        linear-gradient(135deg,
-            rgba(43, 23, 11, 0.95) 0%,
-            rgba(26, 14, 8, 0.98) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 8px 18px rgba(0, 0, 0, 0.14);
+        0 0.75rem 1.7rem rgb(0 0 0 / 0.16),
+        inset 0 1px 0 rgb(255 255 255 / 0.05);
+
     transition:
-        transform 180ms ease-out,
-        box-shadow 180ms ease-out,
-        border-color 180ms ease-out,
-        color 180ms ease-out;
+        transform var(--hotel-transition-fast, 160ms ease),
+        box-shadow var(--hotel-transition-fast, 160ms ease),
+        border-color var(--hotel-transition-fast, 160ms ease),
+        background var(--hotel-transition-fast, 160ms ease),
+        color var(--hotel-transition-fast, 160ms ease);
 }
 
 .pill::before {
     content: "";
     position: absolute;
     inset: 0;
+
     pointer-events: none;
-    border-radius: inherit;
+
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.055) 0%,
-            rgba(255, 255, 255, 0) 36%);
-    opacity: 0.9;
+            rgb(255 255 255 / 0.052) 0%,
+            transparent 42%);
 }
 
 .sm {
-    padding: 0.5rem 0.72rem;
+    padding-block: 0.48rem;
+    padding-inline: 0.62rem 0.76rem;
 }
 
 .md {
-    padding: clamp(0.56rem, 0.72vw, 0.64rem) clamp(0.78rem, 0.92vw, 0.88rem);
+    padding-block: clamp(0.54rem, 0.7vw, 0.64rem);
+    padding-inline: clamp(0.68rem, 0.9vw, 0.88rem);
 }
 
 .iconCircle {
     position: relative;
     z-index: 1;
-    inline-size: clamp(1.84rem, 2vw, 2rem);
-    block-size: clamp(1.84rem, 2vw, 2rem);
-    border-radius: 999px;
-    flex-shrink: 0;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(241, 205, 132, 0.18);
+    flex: 0 0 auto;
+
+    inline-size: clamp(1.78rem, 2vw, 2rem);
+    block-size: clamp(1.78rem, 2vw, 2rem);
+
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
+    border-radius: 999px;
+
     background:
-        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.14), transparent 55%),
-        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.07), transparent 72%),
-        linear-gradient(180deg,
-            rgba(78, 42, 18, 0.91) 0%,
-            rgba(42, 21, 10, 0.96) 100%);
+        radial-gradient(circle at 30% 20%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.14) 0%,
+            transparent 56%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11),
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.18));
+
+    color: var(--hotel-champagne-soft, #ead7b0);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.08),
-        0 6px 14px rgba(0, 0, 0, 0.14);
-    color: rgba(241, 205, 132, 0.98);
+        inset 0 1px 0 rgb(255 255 255 / 0.07),
+        0 0.45rem 1rem rgb(0 0 0 / 0.14);
 }
 
 .icon {
-    inline-size: clamp(0.8rem, 0.88vw, 0.86rem);
-    block-size: clamp(0.8rem, 0.88vw, 0.86rem);
+    display: block;
+
+    inline-size: clamp(0.78rem, 0.88vw, 0.88rem);
+    block-size: clamp(0.78rem, 0.88vw, 0.88rem);
+
     color: currentColor;
     stroke: currentColor;
-    filter: drop-shadow(0 0 6px rgba(241, 205, 132, 0.12));
+
+    filter: drop-shadow(0 0 0.5rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12));
 }
 
 .text {
     position: relative;
     z-index: 1;
-    min-width: 0;
-    font-size: clamp(0.84rem, 0.12vw + 0.83rem, 0.9rem);
-    font-weight: 700;
+
+    min-inline-size: 0;
+
+    color: currentColor;
+
+    font-size: clamp(0.82rem, 0.8rem + 0.12vw, 0.9rem);
+    font-weight: 640;
     line-height: 1.22;
-    color: #fff3da;
+    letter-spacing: -0.008em;
+
     white-space: normal;
     overflow: visible;
     text-overflow: initial;
     text-wrap: balance;
 }
 
-.pill:hover {
+.pill:hover,
+.pill:focus-visible {
     transform: translateY(-2px);
-    border-color: rgba(230, 200, 147, 0.32);
+
+    border-color: var(--hotel-border-strong, rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.32));
+
+    background:
+        radial-gradient(120% 140% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14) 0%,
+            transparent 52%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.036) 48%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.16) 100%);
+
+    color: var(--hotel-ivory-050, #fbf7ef);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 12px 24px rgba(0, 0, 0, 0.18);
+        0 1rem 2.15rem rgb(0 0 0 / 0.22),
+        inset 0 1px 0 rgb(255 255 255 / 0.062);
+
+    outline: none;
 }
 
 .pill:active {
     transform: translateY(0);
 }
 
-.pill:focus-visible {
-    outline: none;
-    box-shadow:
-        0 0 0 3px rgba(230, 200, 147, 0.15),
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 12px 24px rgba(0, 0, 0, 0.18);
-}
-
 .active {
-    border-color: rgba(230, 200, 147, 0.32);
+    border-color: var(--hotel-border-strong, rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.32));
+    color: var(--hotel-ivory-050, #fbf7ef);
+
+    background:
+        radial-gradient(120% 140% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 0%,
+            transparent 52%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13),
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.18));
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 12px 24px rgba(0, 0, 0, 0.18);
+        0 1rem 2.15rem rgb(0 0 0 / 0.2),
+        0 0 1.1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06),
+        inset 0 1px 0 rgb(255 255 255 / 0.062);
 }
 
 .pill[disabled],
 .pill[aria-disabled="true"] {
-    opacity: 0.6;
+    opacity: 0.58;
     pointer-events: none;
 }
 
 @media (max-width: 920px) {
     .pill {
         gap: 0.48rem;
-        padding: 0.52rem 0.72rem;
+    }
+
+    .md,
+    .sm {
+        padding-block: 0.5rem;
+        padding-inline: 0.64rem 0.72rem;
     }
 
     .iconCircle {
-        inline-size: 1.76rem;
-        block-size: 1.76rem;
+        inline-size: 1.72rem;
+        block-size: 1.72rem;
     }
 
     .icon {
-        inline-size: 0.76rem;
-        block-size: 0.76rem;
+        inline-size: 0.74rem;
+        block-size: 0.74rem;
     }
 
     .text {
-        font-size: 0.83rem;
+        font-size: 0.82rem;
     }
 }
 
 @media (max-width: 640px) {
     .pill {
-        gap: 0.46rem;
-        padding: 0.5rem 0.68rem;
+        gap: 0.44rem;
     }
 
     .iconCircle {
-        inline-size: 1.68rem;
-        block-size: 1.68rem;
+        inline-size: 1.62rem;
+        block-size: 1.62rem;
     }
 
     .icon {
-        inline-size: 0.72rem;
-        block-size: 0.72rem;
+        inline-size: 0.7rem;
+        block-size: 0.7rem;
     }
 
     .text {
-        font-size: 0.81rem;
-    }
-}
-
-@media (max-width: 380px) {
-    .pill {
-        padding: 0.46rem 0.62rem;
-    }
-
-    .iconCircle {
-        inline-size: 1.6rem;
-        block-size: 1.6rem;
-    }
-
-    .icon {
-        inline-size: 0.68rem;
-        block-size: 0.68rem;
-    }
-
-    .text {
-        font-size: 0.78rem;
+        font-size: 0.8rem;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .pill {
-        transition: none;
+        transition-duration: 0.01ms !important;
     }
 }

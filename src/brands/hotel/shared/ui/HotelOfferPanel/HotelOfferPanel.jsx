@@ -1,5 +1,21 @@
 import styles from "./HotelOfferPanel.module.css";
 
+function isValidText(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function getValidItems(items) {
+  return Array.isArray(items)
+    ? items.filter((item) => item && isValidText(item.id))
+    : [];
+}
+
+function getValidHighlights(highlights) {
+  return Array.isArray(highlights)
+    ? highlights.filter((item) => item && isValidText(item.id))
+    : [];
+}
+
 /**
  * HotelOfferPanel
  *
@@ -27,16 +43,23 @@ export default function HotelOfferPanel({
   ctaHref,
   className = "",
 }) {
+  const safeItems = getValidItems(items);
+  const safeHighlights = getValidHighlights(highlights);
+
+  const hasItems = safeItems.length > 0;
+  const hasHighlights = safeHighlights.length > 0;
+  const hasSideColumn = Boolean(highlightsTitle || hasHighlights || ctaLabel);
+
+  if (!eyebrow && !title && !intro && !hasItems && !hasSideColumn) {
+    return null;
+  }
+
   const wrapClass = [styles.panel, className].filter(Boolean).join(" ");
 
   const CtaTag = ctaHref ? "a" : "button";
   const ctaProps = ctaHref
     ? { href: ctaHref }
     : { type: "button", onClick: onCtaClick, disabled: !onCtaClick };
-
-  const hasItems = Array.isArray(items) && items.length > 0;
-  const hasHighlights = Array.isArray(highlights) && highlights.length > 0;
-  const hasSideColumn = Boolean(highlightsTitle || hasHighlights || ctaLabel);
 
   return (
     <div className={wrapClass} role="region" aria-label={title || "Oferta"}>
@@ -63,7 +86,7 @@ export default function HotelOfferPanel({
           <div className={styles.mainColumn}>
             <div className={styles.mainInner}>
               <ul className={styles.items}>
-                {items.map((item) => (
+                {safeItems.map((item) => (
                   <li key={item.id} className={styles.item}>
                     {item.Icon ? (
                       <span className={styles.itemIcon} aria-hidden="true">
@@ -100,7 +123,7 @@ export default function HotelOfferPanel({
             {hasHighlights ? (
               <div className={styles.sideBody}>
                 <ul className={styles.highlights}>
-                  {highlights.map((highlight) => (
+                  {safeHighlights.map((highlight) => (
                     <li key={highlight.id} className={styles.highlightItem}>
                       <span className={styles.check} aria-hidden="true">
                         ✓

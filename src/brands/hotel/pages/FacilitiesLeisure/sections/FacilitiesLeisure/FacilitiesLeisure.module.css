@@ -3,7 +3,7 @@
     isolation: isolate;
     inline-size: 100%;
     overflow: clip;
-    padding-block: clamp(3.2rem, 6vw, 5.8rem);
+padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
 }
 
 .section::before {
@@ -11,69 +11,96 @@
     position: absolute;
     inset: 0;
     z-index: -2;
-    background:
-        radial-gradient(62rem 24rem at 50% 0%, rgba(236, 198, 116, 0.14), transparent 62%),
-        radial-gradient(36rem 22rem at 8% 56%, rgba(199, 134, 21, 0.08), transparent 68%),
-        radial-gradient(36rem 22rem at 92% 56%, rgba(199, 134, 21, 0.08), transparent 68%);
     pointer-events: none;
+
+    background:
+        radial-gradient(72rem 24rem at 50% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            transparent 64%),
+        radial-gradient(36rem 20rem at 7% 52%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.05) 0%,
+            transparent 72%),
+        radial-gradient(36rem 20rem at 93% 58%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.045) 0%,
+            transparent 72%);
 }
 
 .section::after {
     content: "";
     position: absolute;
-    inset: auto 0 0;
-    block-size: clamp(8rem, 12vw, 14rem);
+    inset-inline: 0;
+    inset-block-end: 0;
     z-index: -1;
+
+    block-size: clamp(8rem, 13vw, 15rem);
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(18, 11, 6, 0) 0%, rgba(18, 11, 6, 0.08) 100%);
-    opacity: 0.9;
+
+    background:
+        linear-gradient(180deg,
+            transparent 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.1) 100%);
 }
 
 .inner {
-    inline-size: min(100%, 1280px);
+    position: relative;
+    z-index: 1;
+
+    inline-size: min(100%, 1320px);
     margin-inline: auto;
     padding-inline: clamp(1rem, 2.2vw, 1.75rem);
     box-sizing: border-box;
+
+    display: grid;
+    gap: clamp(1.2rem, 2vw, 1.7rem);
 }
 
 .headerBlock {
     display: grid;
-    gap: clamp(1.1rem, 2vw, 1.65rem);
     justify-items: center;
-}
+    gap: clamp(1rem, 1.65vw, 1.35rem);
 
-.descriptionWrap {
-    inline-size: min(100%, 1160px);
+    inline-size: min(100%, 1180px);
     margin-inline: auto;
 }
 
-.descriptionWrap :global(*) {
-    margin-bottom: 0;
+.sectionTitle {
+    inline-size: min(100%, 1040px);
+}
+
+.sectionDescription {
+    inline-size: min(100%, 1120px);
+}
+
+.sectionDescription :global(*) {
+    margin-block-end: 0;
 }
 
 @media (max-width: 900px) {
-    .section {
-        padding-block: clamp(2.8rem, 8vw, 4rem);
-    }
-
     .inner {
         padding-inline: clamp(0.9rem, 4vw, 1.25rem);
+        gap: 1.1rem;
+    }
+
+    .headerBlock {
+        gap: 0.95rem;
     }
 }
 
 @media (max-width: 720px) {
-    .section {
-        padding-block: clamp(2.4rem, 8vw, 3.2rem);
-    }
-
-    .headerBlock {
-        gap: 1rem;
-    }
-
     .section::before {
         background:
-            radial-gradient(32rem 16rem at 50% 0%, rgba(236, 198, 116, 0.12), transparent 62%),
-            radial-gradient(18rem 14rem at 0% 52%, rgba(199, 134, 21, 0.08), transparent 70%),
-            radial-gradient(18rem 14rem at 100% 52%, rgba(199, 134, 21, 0.08), transparent 70%);
+            radial-gradient(34rem 16rem at 50% 0%,
+                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
+                transparent 64%),
+            radial-gradient(18rem 13rem at 0% 52%,
+                rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.05) 0%,
+                transparent 72%),
+            radial-gradient(18rem 13rem at 100% 58%,
+                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04) 0%,
+                transparent 72%);
+    }
+
+    .inner {
+        gap: 1rem;
     }
 }

@@ -1,25 +1,42 @@
 .card {
+    --card-radius: clamp(1.18rem, 1.7vw, 1.58rem);
+    --card-border: rgba(232, 205, 156, 0.2);
+    --card-border-strong: rgba(232, 205, 156, 0.32);
+    --text-main: rgba(255, 249, 240, 0.97);
+    --text-soft: rgba(250, 236, 216, 0.82);
+    --text-muted: rgba(242, 222, 195, 0.68);
+    --champagne: rgba(232, 205, 156, 0.94);
+    --champagne-soft: rgba(232, 205, 156, 0.16);
+    --warm-shadow: rgba(0, 0, 0, 0.28);
+
     position: relative;
     isolation: isolate;
     display: grid;
     grid-template-rows: auto auto 1fr auto;
-    min-height: clamp(380px, 29vw, 430px);
-    border: 1px solid rgba(230, 200, 147, 0.24);
-    border-radius: clamp(1.25rem, 1.8vw, 1.6rem);
+    min-block-size: clamp(350px, 26vw, 398px);
     overflow: hidden;
+
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+
     background:
-        radial-gradient(100% 125% at 0% 0%, rgba(241, 205, 132, 0.1), transparent 44%),
-        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.1), transparent 46%),
+        radial-gradient(120% 105% at 8% 0%,
+            rgba(232, 205, 156, 0.075) 0%,
+            transparent 46%),
+        radial-gradient(110% 115% at 100% 100%,
+            rgba(153, 112, 62, 0.06) 0%,
+            transparent 52%),
         linear-gradient(180deg,
-            rgba(255, 248, 230, 0.04) 0%,
-            rgba(255, 248, 230, 0.014) 18%,
-            rgba(0, 0, 0, 0.1) 100%),
+            rgba(255, 250, 242, 0.028) 0%,
+            rgba(255, 250, 242, 0.01) 24%,
+            rgba(0, 0, 0, 0.06) 100%),
         linear-gradient(135deg,
-            rgba(44, 23, 11, 0.96) 0%,
-            rgba(28, 14, 8, 0.98) 100%);
+            rgba(39, 31, 25, 0.97) 0%,
+            rgba(25, 20, 17, 0.992) 54%,
+            rgba(13, 11, 10, 1) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 230, 0.05),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
+        inset 0 1px 0 rgba(255, 250, 242, 0.05),
         0 18px 36px rgba(0, 0, 0, 0.18);
 }
 
@@ -27,48 +44,99 @@
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     pointer-events: none;
+
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 230, 0.08) 0%,
-            rgba(255, 248, 230, 0.02) 15%,
-            rgba(255, 255, 255, 0) 38%);
-    opacity: 0.9;
+            rgba(255, 250, 242, 0.055) 0%,
+            rgba(255, 250, 242, 0.012) 22%,
+            transparent 48%),
+        linear-gradient(90deg,
+            rgba(232, 205, 156, 0.035) 0%,
+            transparent 22%,
+            transparent 78%,
+            rgba(232, 205, 156, 0.025) 100%);
+    opacity: 0.82;
 }
 
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: 4;
+    pointer-events: none;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 239, 210, 0.04);
+}
+
+/* Header menos “faixa dourada”, mais boutique/editorial */
 .header {
     position: relative;
     z-index: 1;
     display: grid;
-    gap: 0.85rem;
-    padding: 1rem 1rem 0.95rem;
+    gap: 0.78rem;
+    padding: 0.95rem 0.96rem 0.88rem;
+
+    border-bottom: 1px solid rgba(232, 205, 156, 0.14);
+
     background:
-        linear-gradient(180deg, rgba(138, 87, 42, 0.92), rgba(88, 52, 25, 0.97));
-    border-bottom: 1px solid rgba(230, 200, 147, 0.16);
+        radial-gradient(90% 120% at 12% 0%,
+            rgba(232, 205, 156, 0.08) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgba(255, 250, 242, 0.035) 0%,
+            rgba(255, 250, 242, 0.012) 100%),
+        linear-gradient(135deg,
+            rgba(55, 40, 29, 0.86) 0%,
+            rgba(34, 26, 21, 0.94) 58%,
+            rgba(24, 20, 17, 0.98) 100%);
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 250, 242, 0.05) 0%,
+            transparent 68%);
 }
 
 .identityBlock {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    gap: 0.85rem;
+    gap: 0.76rem;
 }
 
 .avatarWrap {
-    inline-size: 3.45rem;
-    block-size: 3.45rem;
+    inline-size: 3.2rem;
+    block-size: 3.2rem;
     border-radius: 999px;
     overflow: hidden;
-    border: 1px solid rgba(230, 200, 147, 0.2);
+
+    border: 1px solid rgba(232, 205, 156, 0.18);
+
     background:
-        radial-gradient(circle at 30% 30%, rgba(255, 248, 230, 0.14), transparent 55%),
-        rgba(46, 26, 11, 0.78);
+        radial-gradient(circle at 32% 26%,
+            rgba(255, 250, 242, 0.16) 0%,
+            transparent 54%),
+        linear-gradient(180deg,
+            rgba(54, 39, 28, 0.88) 0%,
+            rgba(27, 21, 17, 0.96) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 230, 0.1),
-        0 10px 22px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgba(255, 250, 242, 0.08),
+        0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 .avatarImage {
+    display: block;
     inline-size: 100%;
     block-size: 100%;
     object-fit: cover;
@@ -81,11 +149,19 @@
     justify-content: center;
     inline-size: 100%;
     block-size: 100%;
-    color: #f8f1e4;
-    font-size: 1.02rem;
+
+    color: var(--text-main);
+    font-size: 0.94rem;
     font-weight: 800;
+    line-height: 1;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+}
+
+.avatarFallback :global(svg) {
+    inline-size: 1.06rem;
+    block-size: 1.06rem;
+    stroke: currentColor;
 }
 
 .headerContent {
@@ -94,100 +170,138 @@
 
 .organisation {
     margin: 0;
-    color: #f8f1e4;
-    font-size: clamp(1.04rem, 0.95vw, 1.24rem);
-    font-weight: 800;
+    color: var(--text-main);
+    font-size: clamp(1rem, 0.86vw, 1.14rem);
+    font-weight: 820;
     line-height: 1.08;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.026em;
     text-wrap: balance;
 }
 
 .context {
-    margin: 0.22rem 0 0;
-    color: rgba(248, 241, 228, 0.92);
-    font-size: clamp(0.92rem, 0.35vw + 0.86rem, 1rem);
-    font-weight: 600;
-    line-height: 1.2;
+    margin: 0.24rem 0 0;
+    color: var(--text-soft);
+    font-size: clamp(0.86rem, 0.28vw + 0.82rem, 0.94rem);
+    font-weight: 560;
+    line-height: 1.24;
     text-wrap: balance;
 }
 
 .categoryRow {
+    position: relative;
+    z-index: 1;
     display: inline-flex;
     align-items: center;
     gap: 0.42rem;
     justify-self: start;
-    min-height: 34px;
-    padding: 0.45rem 0.72rem;
-    border: 1px solid rgba(230, 200, 147, 0.16);
+    min-block-size: 31px;
+    padding: 0.42rem 0.68rem;
+
+    border: 1px solid rgba(232, 205, 156, 0.14);
     border-radius: 999px;
+
     background:
-        linear-gradient(180deg, rgba(255, 248, 230, 0.08), rgba(255, 248, 230, 0)),
-        rgba(63, 36, 16, 0.68);
+        linear-gradient(180deg,
+            rgba(255, 250, 242, 0.055) 0%,
+            rgba(255, 250, 242, 0.014) 100%),
+        rgba(38, 30, 24, 0.68);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 250, 242, 0.035);
 }
 
 .inlineIcon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.88rem;
-    line-height: 1;
-    color: #e0b85d;
+    inline-size: 0.9rem;
+    block-size: 0.9rem;
+    color: var(--champagne);
     flex-shrink: 0;
 }
 
+.inlineIcon :global(svg) {
+    inline-size: 0.84rem;
+    block-size: 0.84rem;
+    stroke: currentColor;
+}
+
 .category {
-    color: rgba(248, 241, 228, 0.92);
-    font-size: 0.84rem;
-    font-weight: 600;
-    line-height: 1.1;
+    color: rgba(250, 236, 216, 0.82);
+    font-size: 0.8rem;
+    font-weight: 620;
+    line-height: 1.12;
     text-wrap: balance;
 }
 
+/* Banda mais integrada, menos “bloco separado” */
 .ratingBand {
     position: relative;
     z-index: 1;
     display: grid;
-    gap: 0.55rem;
-    min-height: 64px;
-    padding: 0.7rem 1rem;
-    border-top: 1px solid rgba(230, 200, 147, 0.14);
-    border-bottom: 1px solid rgba(230, 200, 147, 0.14);
+    gap: 0.5rem;
+    min-block-size: 60px;
+    padding: 0.68rem 0.96rem;
+
+    border-top: 1px solid rgba(232, 205, 156, 0.095);
+    border-bottom: 1px solid rgba(232, 205, 156, 0.11);
+
     background:
-        linear-gradient(180deg, rgba(255, 248, 230, 0.015), rgba(255, 248, 230, 0)),
-        rgba(43, 24, 10, 0.92);
+        radial-gradient(90% 120% at 0% 0%,
+            rgba(232, 205, 156, 0.045) 0%,
+            transparent 60%),
+        linear-gradient(180deg,
+            rgba(255, 250, 242, 0.014) 0%,
+            rgba(255, 250, 242, 0.004) 100%),
+        rgba(25, 21, 18, 0.86);
 }
 
 .verifiedRow {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.65rem;
+    gap: 0.62rem;
 }
 
 .quoteIcon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.45rem;
+    inline-size: 1.24rem;
+    block-size: 1.24rem;
+    color: rgba(255, 249, 240, 0.9);
+    font-size: 1.28rem;
     font-weight: 800;
     line-height: 1;
-    color: #f8f1e4;
-    opacity: 0.92;
+}
+
+.quoteIcon :global(svg) {
+    inline-size: 1rem;
+    block-size: 1rem;
+    stroke: currentColor;
 }
 
 .verifiedBadge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 28px;
-    padding: 0.32rem 0.62rem;
+    min-block-size: 26px;
+    padding: 0.31rem 0.62rem;
+
+    border: 1px solid rgba(232, 205, 156, 0.13);
     border-radius: 999px;
-    background: rgba(255, 248, 230, 0.06);
-    color: #e4c57b;
-    font-size: 0.74rem;
-    font-weight: 700;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 250, 242, 0.055) 0%,
+            rgba(255, 250, 242, 0.012) 100%),
+        rgba(42, 32, 24, 0.68);
+
+    color: rgba(232, 205, 156, 0.94);
+    font-size: 0.68rem;
+    font-weight: 780;
     line-height: 1;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.105em;
     text-transform: uppercase;
 }
 
@@ -204,17 +318,25 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.05rem;
+    font-size: 0.98rem;
     line-height: 1;
 }
 
+.star :global(svg),
+.starEmpty :global(svg) {
+    inline-size: 0.86rem;
+    block-size: 0.86rem;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
 .star {
-    color: #f4cf63;
-    text-shadow: 0 0 12px rgba(244, 207, 99, 0.14);
+    color: rgba(232, 205, 156, 0.96);
+    text-shadow: 0 0 10px rgba(232, 205, 156, 0.12);
 }
 
 .starEmpty {
-    color: rgba(244, 207, 99, 0.24);
+    color: rgba(232, 205, 156, 0.22);
 }
 
 .quoteArea {
@@ -223,22 +345,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.15rem 1rem 1.25rem;
-    border-bottom: 1px solid rgba(230, 200, 147, 0.14);
+    padding: clamp(1rem, 1.35vw, 1.16rem) 0.96rem;
+
+    border-bottom: 1px solid rgba(232, 205, 156, 0.095);
+
     background:
-        linear-gradient(180deg, rgba(255, 248, 230, 0.012), rgba(255, 248, 230, 0)),
-        rgba(38, 23, 11, 0.94);
+        linear-gradient(180deg,
+            rgba(255, 250, 242, 0.01) 0%,
+            rgba(255, 250, 242, 0) 100%),
+        rgba(22, 19, 17, 0.9);
+}
+
+.quoteArea::before {
+    content: "";
+    position: absolute;
+    inset-inline: 50%;
+    inset-block-start: 0;
+    translate: -50% 0;
+    inline-size: min(44%, 9rem);
+    block-size: 1px;
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(232, 205, 156, 0.28) 50%,
+            transparent 100%);
+    pointer-events: none;
 }
 
 .quote {
     margin: 0;
-    max-width: 25ch;
-    color: #f8f1e4;
+    max-inline-size: 28ch;
+    color: rgba(255, 249, 240, 0.92);
     text-align: center;
-    font-size: clamp(1rem, 0.45vw + 0.94rem, 1.16rem);
-    font-weight: 600;
-    line-height: 1.28;
-    text-wrap: balance;
+    font-size: clamp(0.95rem, 0.34vw + 0.9rem, 1.05rem);
+    font-weight: 540;
+    line-height: 1.42;
+    text-wrap: pretty;
 }
 
 .footer {
@@ -247,111 +389,151 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 0.78rem 0.9rem 0.9rem;
+    padding: 0.72rem 0.86rem 0.84rem;
+
     background:
-        linear-gradient(180deg, rgba(255, 248, 230, 0.012), rgba(255, 248, 230, 0)),
-        rgba(43, 24, 10, 0.92);
+        linear-gradient(180deg,
+            rgba(255, 250, 242, 0.008) 0%,
+            rgba(255, 250, 242, 0) 100%),
+        rgba(25, 21, 18, 0.88);
 }
 
 .footerBadge {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    min-height: 36px;
-    padding: 0.38rem 0.84rem;
-    border: 1px solid rgba(230, 200, 147, 0.2);
+    gap: 0.42rem;
+    min-block-size: 33px;
+    padding: 0.36rem 0.78rem;
+
+    border: 1px solid rgba(232, 205, 156, 0.15);
     border-radius: 999px;
+
     background:
-        linear-gradient(180deg, rgba(255, 248, 230, 0.08), rgba(255, 248, 230, 0)),
-        rgba(82, 46, 18, 0.74);
+        linear-gradient(180deg,
+            rgba(255, 250, 242, 0.052) 0%,
+            rgba(255, 250, 242, 0.012) 100%),
+        rgba(42, 32, 24, 0.64);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 230, 0.08),
-        0 8px 18px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgba(255, 250, 242, 0.045),
+        0 7px 15px rgba(0, 0, 0, 0.14);
 }
 
 .dateLabel {
-    color: #f8f1e4;
-    font-size: 0.88rem;
-    font-weight: 600;
+    color: rgba(250, 236, 216, 0.86);
+    font-size: 0.82rem;
+    font-weight: 620;
     line-height: 1.1;
+}
+
+@media (hover: hover) {
+    .card {
+        transition:
+            transform 220ms ease,
+            border-color 220ms ease,
+            box-shadow 220ms ease;
+    }
+
+    .card:hover {
+        transform: translateY(-2px);
+        border-color: var(--card-border-strong);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 250, 242, 0.055),
+            0 22px 42px rgba(0, 0, 0, 0.22);
+    }
 }
 
 @media (max-width: 1220px) {
     .card {
-        min-height: 390px;
+        min-block-size: 365px;
     }
 
     .quote {
-        max-width: 28ch;
+        max-inline-size: 31ch;
     }
 }
 
 @media (max-width: 860px) {
     .card {
-        min-height: auto;
+        min-block-size: auto;
     }
 
     .quote {
-        max-width: 30ch;
-        font-size: 1rem;
+        max-inline-size: 32ch;
+        font-size: 0.98rem;
     }
 }
 
 @media (max-width: 640px) {
     .card {
-        border-radius: 1.25rem;
+        border-radius: 1.12rem;
     }
 
     .header {
-        padding: 0.9rem 0.9rem 0.85rem;
+        padding: 0.86rem 0.84rem 0.8rem;
     }
 
     .identityBlock {
-        gap: 0.72rem;
+        gap: 0.7rem;
     }
 
     .avatarWrap {
-        inline-size: 3rem;
-        block-size: 3rem;
+        inline-size: 2.85rem;
+        block-size: 2.85rem;
     }
 
     .organisation {
-        font-size: 1rem;
-    }
-
-    .context {
-        font-size: 0.92rem;
-    }
-
-    .quoteArea {
-        padding: 1rem 0.9rem 1.05rem;
-    }
-
-    .quote {
-        max-width: 24ch;
         font-size: 0.98rem;
     }
 
+    .context {
+        font-size: 0.86rem;
+    }
+
+    .categoryRow {
+        min-block-size: 30px;
+        padding: 0.38rem 0.64rem;
+    }
+
+    .quoteArea {
+        padding: 0.95rem 0.86rem 1rem;
+    }
+
+    .quote {
+        max-inline-size: 25ch;
+        font-size: 0.94rem;
+    }
+
     .footer {
-        padding: 0.74rem 0.8rem 0.85rem;
+        padding: 0.7rem 0.78rem 0.8rem;
     }
 }
 
 @media (max-width: 420px) {
     .category {
-        font-size: 0.8rem;
+        font-size: 0.76rem;
     }
 
     .verifiedBadge {
-        font-size: 0.68rem;
+        font-size: 0.64rem;
     }
 
     .quote {
-        max-width: 20ch;
-        font-size: 0.94rem;
+        max-inline-size: 22ch;
+        font-size: 0.92rem;
     }
 
     .dateLabel {
-        font-size: 0.82rem;
+        font-size: 0.78rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
+
+    .card:hover {
+        transform: none;
     }
 }

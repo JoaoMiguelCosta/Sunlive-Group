@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import hotelBrand from "../../../../config/index.js";
 import HotelInfoListCard from "../../../../shared/ui/HotelInfoListCard/HotelInfoListCard.jsx";
@@ -15,10 +15,25 @@ export default function CateringInfoLists() {
       Array.isArray(infoLists?.items) ? infoLists.items.filter(Boolean) : [],
     [infoLists?.items],
   );
+
   const cta = infoLists?.cta ?? null;
   const ariaLabel = infoLists?.ariaLabel ?? "Informação do serviço de catering";
 
   const [activeId, setActiveId] = useState(items[0]?.id ?? null);
+
+  useEffect(() => {
+    if (!items.length) {
+      setActiveId(null);
+      return;
+    }
+
+    const activeStillExists = items.some((item) => item.id === activeId);
+
+    if (!activeStillExists) {
+      setActiveId(items[0]?.id ?? null);
+    }
+  }, [activeId, items]);
+
   const activeItem =
     items.find((item) => item.id === activeId) ?? items[0] ?? null;
 
@@ -31,16 +46,23 @@ export default function CateringInfoLists() {
           <div className={styles.tabs} role="tablist" aria-label={ariaLabel}>
             {items.map((item) => {
               const isActive = item.id === activeItem?.id;
+              const tabId = `${item.id}-tab`;
+              const panelId = `${item.id}-panel`;
 
               return (
                 <button
                   key={item.id}
+                  id={tabId}
                   type="button"
                   role="tab"
                   aria-selected={isActive}
-                  className={`${styles.tabButton} ${
-                    isActive ? styles.tabButtonActive : ""
-                  }`}
+                  aria-controls={panelId}
+                  className={[
+                    styles.tabButton,
+                    isActive ? styles.tabButtonActive : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
                   onClick={() => setActiveId(item.id)}
                 >
                   {item.tabLabel ?? item.title}
@@ -50,12 +72,18 @@ export default function CateringInfoLists() {
           </div>
 
           {activeItem ? (
-            <HotelInfoListCard
-              title={activeItem.title}
-              description={activeItem.description}
-              items={activeItem.entries}
-              className={styles.infoCard}
-            />
+            <div
+              id={`${activeItem.id}-panel`}
+              role="tabpanel"
+              aria-labelledby={`${activeItem.id}-tab`}
+            >
+              <HotelInfoListCard
+                title={activeItem.title}
+                description={activeItem.description}
+                items={activeItem.entries}
+                className={styles.infoCard}
+              />
+            </div>
           ) : null}
         </div>
       ) : null}

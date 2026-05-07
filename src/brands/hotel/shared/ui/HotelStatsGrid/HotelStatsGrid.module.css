@@ -1,162 +1,216 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(0.85rem, 1.45vw, 1.15rem);
+    gap: clamp(0.85rem, 1.45vw, 1.18rem);
     align-items: stretch;
+
+    min-inline-size: 0;
 }
 
 .card {
     position: relative;
     isolation: isolate;
     overflow: hidden;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    min-width: 0;
-    min-height: clamp(9.25rem, 11.5vw, 11.5rem);
+    justify-content: space-between;
+
+    min-inline-size: 0;
+    min-block-size: clamp(9.1rem, 11.5vw, 11.3rem);
+
     padding:
-        clamp(0.9rem, 1.2vw, 1.05rem) clamp(0.9rem, 1.15vw, 1.05rem) clamp(0.92rem, 1.2vw, 1.08rem);
-    text-align: center;
-    border: 1px solid rgba(230, 200, 147, 0.18);
-    border-radius: clamp(1rem, 1.35vw, 1.35rem);
+        clamp(0.9rem, 1.18vw, 1.08rem) clamp(0.85rem, 1.12vw, 1rem) clamp(0.94rem, 1.22vw, 1.12rem);
+
+    border: 1px solid var(--hotel-border, rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
+    border-radius: var(--hotel-radius-lg, clamp(1.15rem, 1.45vw, 1.55rem));
+
     background:
-        radial-gradient(120% 120% at 0% 0%, rgba(255, 214, 145, 0.08), transparent 42%),
-        linear-gradient(180deg, rgba(58, 25, 10, 0.82), rgba(21, 10, 7, 0.95));
+        radial-gradient(120% 145% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.095) 0%,
+            transparent 48%),
+        radial-gradient(110% 145% at 100% 100%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.035) 0%,
+            transparent 58%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.062) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.024) 46%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.22) 100%);
+
+    color: var(--hotel-text, rgba(251, 247, 239, 0.96));
+    text-align: center;
+
     box-shadow:
-        0 14px 32px rgba(0, 0, 0, 0.22),
-        inset 0 1px 0 rgba(255, 243, 220, 0.08);
+        0 1rem 2.55rem rgb(0 0 0 / 0.24),
+        inset 0 1px 0 rgb(255 255 255 / 0.052);
+
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease;
+        transform var(--hotel-transition-base, 240ms ease),
+        border-color var(--hotel-transition-base, 240ms ease),
+        box-shadow var(--hotel-transition-base, 240ms ease);
 }
 
 .card::before {
     content: "";
     position: absolute;
     inset: 0;
-    pointer-events: none;
     z-index: 0;
+
+    pointer-events: none;
+
     background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 28%),
-        radial-gradient(circle at 100% 100%, rgba(230, 200, 147, 0.08), transparent 38%);
+        linear-gradient(180deg,
+            rgb(255 255 255 / 0.052) 0%,
+            rgb(255 255 255 / 0.012) 32%,
+            transparent 72%);
 }
 
 .card::after {
     content: "";
     position: absolute;
-    inset: auto 0 0;
+    inset-inline: 18%;
+    inset-block-end: 0;
+    z-index: 1;
+
     block-size: 1px;
+
     pointer-events: none;
+
+    opacity: 0.85;
     background:
         linear-gradient(90deg,
-            rgba(230, 200, 147, 0) 0%,
-            rgba(230, 200, 147, 0.34) 50%,
-            rgba(230, 200, 147, 0) 100%);
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42) 50%,
+            transparent 100%);
 }
 
 .card:hover {
     transform: translateY(-4px);
-    border-color: rgba(230, 200, 147, 0.3);
+    border-color: var(--hotel-border-strong, rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.32));
     box-shadow:
-        0 18px 38px rgba(0, 0, 0, 0.26),
-        inset 0 1px 0 rgba(255, 243, 220, 0.1);
+        0 1.35rem 3.2rem rgb(0 0 0 / 0.3),
+        0 0 1.35rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.045),
+        inset 0 1px 0 rgb(255 255 255 / 0.065);
 }
 
 .card>* {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .cardTop {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(0.58rem, 0.8vw, 0.72rem);
+    gap: clamp(0.56rem, 0.78vw, 0.72rem);
 }
 
 .iconWrap {
-    inline-size: clamp(2.55rem, 3vw, 3.15rem);
-    block-size: clamp(2.55rem, 3vw, 3.15rem);
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    inline-size: clamp(2.45rem, 3vw, 3.1rem);
+    block-size: clamp(2.45rem, 3vw, 3.1rem);
+
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
     border-radius: 999px;
-    border: 1px solid rgba(241, 205, 132, 0.22);
+
     background:
-        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.16), transparent 55%),
-        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.08), transparent 72%),
-        linear-gradient(180deg,
-            rgba(78, 42, 18, 0.92) 0%,
-            rgba(42, 21, 10, 0.96) 100%);
+        radial-gradient(circle at 30% 20%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
+            transparent 56%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11),
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.18));
+
+    color: var(--hotel-champagne-soft, #ead7b0);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.12),
-        0 8px 18px rgba(0, 0, 0, 0.2),
-        0 0 0 1px rgba(255, 220, 140, 0.04),
-        0 0 18px rgba(230, 200, 147, 0.08);
-    color: #f1cd84;
+        inset 0 1px 0 rgb(255 255 255 / 0.075),
+        0 0.6rem 1.35rem rgb(0 0 0 / 0.18);
 }
 
 .statIcon {
-    inline-size: clamp(1.08rem, 1.25vw, 1.35rem);
-    block-size: clamp(1.08rem, 1.25vw, 1.35rem);
     display: block;
     flex: 0 0 auto;
+
+    inline-size: clamp(1.02rem, 1.25vw, 1.3rem);
+    block-size: clamp(1.02rem, 1.25vw, 1.3rem);
+
+    color: currentColor;
     stroke: currentColor;
-    filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.12));
+
+    filter: drop-shadow(0 0 0.5rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12));
 }
 
 .label {
     margin: 0;
-    font-size: clamp(0.66rem, 0.1vw + 0.64rem, 0.74rem);
-    font-weight: 700;
-    line-height: 1.1;
+
+    color: var(--hotel-champagne-soft, #ead7b0);
+
+    font-size: clamp(0.62rem, 0.1vw + 0.6rem, 0.72rem);
+    font-weight: 760;
+    line-height: 1.12;
     letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(230, 200, 147, 0.92);
     text-align: center;
+    text-transform: uppercase;
 }
 
 .metricBlock {
     display: flex;
     flex-direction: column;
-    gap: clamp(0.28rem, 0.45vw, 0.42rem);
-    margin-top: clamp(0.62rem, 0.9vw, 0.8rem);
     align-items: center;
+    gap: clamp(0.28rem, 0.45vw, 0.42rem);
+
+    margin-block-start: clamp(0.62rem, 0.9vw, 0.82rem);
 }
 
 .value {
     margin: 0;
-    font-size: clamp(1.65rem, 1.8vw, 2.15rem);
+
+    color: var(--hotel-heading, #fbf7ef);
+
+    font-family: var(--sl-ff-display, inherit);
+    font-size: clamp(1.65rem, 1.8vw, 2.18rem);
+    font-weight: 650;
     line-height: 0.95;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    color: #fff7ea;
-    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.25);
+    letter-spacing: -0.05em;
+
+    text-shadow:
+        0 1px 0 rgb(255 255 255 / 0.035),
+        0 0.9rem 2rem rgb(0 0 0 / 0.24);
 }
 
 .description {
+    max-inline-size: 20ch;
     margin: 0;
-    max-width: 100%;
-    text-align: center;
-    font-size: clamp(0.84rem, 0.12vw + 0.82rem, 0.9rem);
+
+    color: var(--hotel-text-soft, rgba(244, 234, 216, 0.82));
+
+    font-size: clamp(0.82rem, 0.12vw + 0.8rem, 0.9rem);
+    font-weight: 430;
     line-height: 1.34;
-    font-weight: 500;
-    color: rgba(255, 245, 232, 0.9);
+    text-align: center;
+
     text-wrap: balance;
     overflow-wrap: break-word;
 }
 
-/* Variant opcional para secções que precisam de cards mais compactos e equilibrados */
+/* Variant opcional para secções que precisam de cards mais compactos */
 .compactBalancedGrid {
-    gap: clamp(0.9rem, 1.35vw, 1.12rem);
+    gap: clamp(0.85rem, 1.3vw, 1.08rem);
 }
 
 .compactBalancedCard {
     justify-content: flex-start;
-    min-height: clamp(8.1rem, 9.2vw, 9.4rem);
+
+    min-block-size: clamp(8rem, 9.2vw, 9.3rem);
+
     padding:
         clamp(0.78rem, 1vw, 0.92rem) clamp(0.82rem, 1vw, 0.92rem) clamp(0.82rem, 1vw, 0.94rem);
 }
@@ -166,34 +220,34 @@
 }
 
 .compactBalancedCard .iconWrap {
-    inline-size: clamp(2.35rem, 2.5vw, 2.8rem);
-    block-size: clamp(2.35rem, 2.5vw, 2.8rem);
+    inline-size: clamp(2.25rem, 2.5vw, 2.75rem);
+    block-size: clamp(2.25rem, 2.5vw, 2.75rem);
 }
 
 .compactBalancedCard .statIcon {
-    inline-size: clamp(0.96rem, 1vw, 1.12rem);
-    block-size: clamp(0.96rem, 1vw, 1.12rem);
+    inline-size: clamp(0.94rem, 1vw, 1.1rem);
+    block-size: clamp(0.94rem, 1vw, 1.1rem);
 }
 
 .compactBalancedCard .label {
-    font-size: clamp(0.6rem, 0.08vw + 0.6rem, 0.68rem);
+    font-size: clamp(0.58rem, 0.08vw + 0.58rem, 0.66rem);
     line-height: 1.06;
     letter-spacing: 0.13em;
 }
 
 .compactBalancedCard .metricBlock {
     gap: 0.24rem;
-    margin-top: 0.58rem;
+    margin-block-start: 0.58rem;
 }
 
 .compactBalancedCard .value {
-    font-size: clamp(1.55rem, 1.45vw, 1.95rem);
+    font-size: clamp(1.5rem, 1.45vw, 1.92rem);
 }
 
 .compactBalancedCard .description {
-    max-width: 18ch;
-    font-size: clamp(0.8rem, 0.1vw + 0.78rem, 0.86rem);
-    line-height: 1.26;
+    max-inline-size: 18ch;
+    font-size: clamp(0.78rem, 0.1vw + 0.76rem, 0.84rem);
+    line-height: 1.28;
 }
 
 @media (max-width: 1180px) {
@@ -202,15 +256,15 @@
     }
 
     .card {
-        min-height: clamp(8.9rem, 15vw, 10.4rem);
+        min-block-size: clamp(8.8rem, 15vw, 10.3rem);
     }
 
     .compactBalancedCard {
-        min-height: 8.6rem;
+        min-block-size: 8.5rem;
     }
 
     .compactBalancedCard .description {
-        max-width: 20ch;
+        max-inline-size: 20ch;
     }
 }
 
@@ -221,19 +275,19 @@
     }
 
     .card {
-        min-height: 8.8rem;
-        padding: 0.86rem 0.84rem 0.9rem;
-        border-radius: 1.08rem;
+        min-block-size: 8.7rem;
+        padding: 0.84rem 0.82rem 0.9rem;
+        border-radius: var(--hotel-radius-md, 1.08rem);
     }
 
     .iconWrap {
-        inline-size: 2.45rem;
-        block-size: 2.45rem;
+        inline-size: 2.42rem;
+        block-size: 2.42rem;
     }
 
     .statIcon {
-        inline-size: 1.02rem;
-        block-size: 1.02rem;
+        inline-size: 1rem;
+        block-size: 1rem;
     }
 
     .cardTop {
@@ -242,112 +296,7 @@
 
     .metricBlock {
         gap: 0.26rem;
-        margin-top: 0.58rem;
-    }
-
-    .label {
-        font-size: 0.62rem;
-    }
-
-    .value {
-        font-size: clamp(1.45rem, 4.2vw, 1.82rem);
-    }
-
-    .description {
-        max-width: 17ch;
-        font-size: 0.8rem;
-        line-height: 1.3;
-    }
-
-    .compactBalancedCard {
-        min-height: auto;
-        padding: 0.8rem 0.8rem 0.86rem;
-    }
-
-    .compactBalancedCard .iconWrap {
-        inline-size: 2.28rem;
-        block-size: 2.28rem;
-    }
-
-    .compactBalancedCard .statIcon {
-        inline-size: 0.94rem;
-        block-size: 0.94rem;
-    }
-
-    .compactBalancedCard .label {
-        font-size: 0.58rem;
-    }
-
-    .compactBalancedCard .value {
-        font-size: clamp(1.34rem, 4vw, 1.65rem);
-    }
-
-    .compactBalancedCard .description {
-        max-width: 16ch;
-        font-size: 0.76rem;
-        line-height: 1.24;
-    }
-}
-
-@media (max-width: 480px) {
-    .grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 0.78rem;
-    }
-
-    .card {
-        min-height: auto;
-        padding: 0.88rem 0.84rem 0.92rem;
-    }
-
-    .iconWrap {
-        inline-size: 2.5rem;
-        block-size: 2.5rem;
-    }
-
-    .statIcon {
-        inline-size: 1.05rem;
-        block-size: 1.05rem;
-    }
-
-    .value {
-        font-size: clamp(1.52rem, 5vw, 1.9rem);
-    }
-
-    .description {
-        max-width: 20ch;
-        font-size: 0.84rem;
-        line-height: 1.32;
-    }
-
-    .compactBalancedCard {
-        padding: 0.84rem 0.82rem 0.88rem;
-    }
-
-    .compactBalancedCard .description {
-        max-width: 22ch;
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 380px) {
-    .grid {
-        gap: 0.72rem;
-    }
-
-    .card {
-        padding: 0.82rem 0.78rem 0.88rem;
-        border-radius: 0.96rem;
-    }
-
-    .iconWrap {
-        inline-size: 2.32rem;
-        block-size: 2.32rem;
-    }
-
-    .statIcon {
-        inline-size: 0.96rem;
-        block-size: 0.96rem;
+        margin-block-start: 0.58rem;
     }
 
     .label {
@@ -355,26 +304,131 @@
     }
 
     .value {
-        font-size: 1.4rem;
+        font-size: clamp(1.42rem, 4.2vw, 1.8rem);
     }
 
     .description {
+        max-inline-size: 18ch;
         font-size: 0.8rem;
+        line-height: 1.3;
+    }
+
+    .compactBalancedCard {
+        min-block-size: auto;
+        padding: 0.78rem 0.78rem 0.84rem;
+    }
+
+    .compactBalancedCard .iconWrap {
+        inline-size: 2.24rem;
+        block-size: 2.24rem;
+    }
+
+    .compactBalancedCard .statIcon {
+        inline-size: 0.92rem;
+        block-size: 0.92rem;
+    }
+
+    .compactBalancedCard .label {
+        font-size: 0.56rem;
+    }
+
+    .compactBalancedCard .value {
+        font-size: clamp(1.3rem, 4vw, 1.62rem);
+    }
+
+    .compactBalancedCard .description {
+        max-inline-size: 16ch;
+        font-size: 0.74rem;
+        line-height: 1.24;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.76rem;
+    }
+
+    .card {
+        min-block-size: auto;
+        padding: 0.86rem 0.82rem 0.9rem;
+    }
+
+    .iconWrap {
+        inline-size: 2.46rem;
+        block-size: 2.46rem;
+    }
+
+    .statIcon {
+        inline-size: 1.03rem;
+        block-size: 1.03rem;
+    }
+
+    .value {
+        font-size: clamp(1.5rem, 5vw, 1.88rem);
+    }
+
+    .description {
+        max-inline-size: 22ch;
+        font-size: 0.82rem;
+        line-height: 1.32;
+    }
+
+    .compactBalancedCard {
+        padding: 0.82rem 0.8rem 0.86rem;
+    }
+
+    .compactBalancedCard .description {
+        max-inline-size: 22ch;
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .grid {
+        gap: 0.7rem;
+    }
+
+    .card {
+        padding: 0.8rem 0.76rem 0.86rem;
+        border-radius: 0.96rem;
+    }
+
+    .iconWrap {
+        inline-size: 2.3rem;
+        block-size: 2.3rem;
+    }
+
+    .statIcon {
+        inline-size: 0.94rem;
+        block-size: 0.94rem;
+    }
+
+    .label {
+        font-size: 0.58rem;
+    }
+
+    .value {
+        font-size: 1.38rem;
+    }
+
+    .description {
+        font-size: 0.78rem;
         line-height: 1.28;
     }
 
     .compactBalancedCard .value {
-        font-size: 1.28rem;
+        font-size: 1.26rem;
     }
 
     .compactBalancedCard .description {
-        font-size: 0.76rem;
+        font-size: 0.74rem;
         line-height: 1.22;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .card {
-        transition: none;
+        transition-duration: 0.01ms !important;
     }
 }

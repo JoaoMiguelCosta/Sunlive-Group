@@ -9,6 +9,7 @@ import ScrollToTopOnRouteChange from "./ScrollToTopOnRouteChange.jsx";
 import hotelBrand, { HOTEL_BASE_PATH } from "../config/index.js";
 import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.js";
 
+import "../theme.css";
 import styles from "./HotelShell.module.css";
 
 export default function HotelShell() {

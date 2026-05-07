@@ -1,10 +1,23 @@
-import { ICONS, resolveHotelIcon } from "../../../../config/index.js";
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 
 import HotelRegionHighlightCard from "./HotelRegionHighlightCard.jsx";
+
 import styles from "./HotelRegionHighlightsGrid.module.css";
 
+function getValidItems(items) {
+  return Array.isArray(items)
+    ? items.filter(
+        (item) =>
+          item &&
+          typeof item === "object" &&
+          (item.title || item.description || item.iconKey),
+      )
+    : [];
+}
+
 export default function HotelRegionHighlightsGrid({ items = [] }) {
-  const safeItems = Array.isArray(items) ? items : [];
+  const safeItems = getValidItems(items);
+  const icons = hotelBrand?.icons ?? {};
 
   if (!safeItems.length) return null;
 
@@ -12,7 +25,9 @@ export default function HotelRegionHighlightsGrid({ items = [] }) {
     <div className={styles.wrap}>
       <div className={styles.grid}>
         {safeItems.map((item, index) => {
-          const Icon = resolveHotelIcon(ICONS, item.iconKey);
+          const Icon = item.iconKey
+            ? resolveHotelIcon(icons, item.iconKey)
+            : null;
 
           return (
             <div

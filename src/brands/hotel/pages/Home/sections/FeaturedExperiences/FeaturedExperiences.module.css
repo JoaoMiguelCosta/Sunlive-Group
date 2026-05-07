@@ -1,35 +1,64 @@
 .sectionWrap {
     position: relative;
     isolation: isolate;
+
     inline-size: 100%;
-    color: var(--sl-platinum-100, #f9fafb);
+    min-inline-size: 0;
+
+    color: var(--hotel-text, rgba(251, 247, 239, 0.96));
     background: transparent;
-    padding-block: 0;
 }
 
 .sectionWrap::before {
     content: "";
     position: absolute;
-    inset: clamp(1rem, 2vw, 1.5rem) 50% auto;
-    translate: -50% 0;
-    inline-size: min(100%, 1280px);
-    block-size: clamp(240px, 26vw, 360px);
-    pointer-events: none;
+    inset-inline: 50%;
+    inset-block-start: clamp(0.8rem, 2vw, 1.4rem);
     z-index: 0;
-    opacity: 0.75;
-    filter: blur(28px);
+
+    inline-size: min(100%, 76rem);
+    block-size: clamp(14rem, 25vw, 22rem);
+
+    pointer-events: none;
+
+    opacity: 0.62;
+    transform: translateX(-50%);
+    filter: blur(30px);
+
     background:
-        radial-gradient(circle at 18% 48%, rgba(244, 197, 99, 0.22), transparent 34%),
-        radial-gradient(circle at 82% 58%, rgba(120, 58, 18, 0.18), transparent 36%),
-        radial-gradient(circle at 50% 100%, rgba(230, 200, 147, 0.12), transparent 48%);
+        radial-gradient(circle at 18% 42%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14) 0%,
+            transparent 36%),
+        radial-gradient(circle at 82% 58%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.09) 0%,
+            transparent 40%),
+        radial-gradient(circle at 50% 100%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.045) 0%,
+            transparent 52%);
 }
 
 .inner {
     position: relative;
     z-index: 1;
-    inline-size: 100%;
-    box-sizing: border-box;
+
     display: grid;
-    gap: clamp(1.15rem, 2.3vw, 1.7rem);
     align-content: start;
+    gap: clamp(1.15rem, 2.3vw, 1.9rem);
+
+    inline-size: 100%;
+    min-inline-size: 0;
+    box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+    .sectionWrap::before {
+        inset-block-start: 1rem;
+        block-size: 13rem;
+        opacity: 0.5;
+        filter: blur(24px);
+    }
+
+    .inner {
+        gap: 1.05rem;
+    }
 }

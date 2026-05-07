@@ -13,7 +13,7 @@ export default function AboutPageHotel() {
         id="about-page"
         className={styles.inner}
         role="region"
-        aria-label="Estalagem de Sangalhos — About"
+        aria-label="Estalagem de Sangalhos — Sobre"
       >
         <div className={styles.contentFlow}>
           <AboutTheHotel />

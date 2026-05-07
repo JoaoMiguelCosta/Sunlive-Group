@@ -6,5 +6,12 @@ export default function TitleContacts({ titleId }) {
 
   if (!section?.headerLabel) return null;
 
-  return <HotelSectionHeader id={titleId} label={section.headerLabel} />;
+  return (
+    <HotelSectionHeader
+      id={titleId}
+      label={section.headerLabel}
+      align="center"
+      as="h2"
+    />
+  );
 }

@@ -2,6 +2,10 @@ import HotelStatsGrid from "../../../../shared/ui/HotelStatsGrid/HotelStatsGrid.
 
 export default function HotelSustainabilityStats({ stats = [] }) {
   return (
-    <HotelStatsGrid items={stats} ariaLabel="Indicadores de sustentabilidade" />
+    <HotelStatsGrid
+      items={stats}
+      ariaLabel="Indicadores de sustentabilidade"
+      variant="compactBalanced"
+    />
   );
 }

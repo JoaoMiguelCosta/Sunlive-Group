@@ -1,12 +1,12 @@
 import hotelBrand from "../../../../config/index.js";
 import TitleBreakfast from "./TitleBreakfast.jsx";
-
 import BreakfastShowcase from "./BreakfastShowcase.jsx";
 
 import styles from "./Breakfast.module.css";
 
 export default function BreakfastSection() {
   const section = hotelBrand?.pages?.dining?.sections?.breakfast ?? null;
+
   if (!section) return null;
 
   const sectionId = section?.id ?? "restaurante-pequeno-almoco";

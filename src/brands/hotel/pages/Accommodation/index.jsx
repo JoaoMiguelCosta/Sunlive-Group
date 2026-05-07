@@ -1,6 +1,3 @@
-// src/brands/hotel/pages/Accommodation/index.jsx
-// Estalagem de Sangalhos — AccommodationPage (reutiliza Home.module.css como layout)
-
 import styles from "../../layouts/HotelPageLayout.module.css";
 
 import Accommodations from "./sections/Accommodations/index.jsx";
@@ -18,11 +15,13 @@ export default function AccommodationPageHotel() {
         role="region"
         aria-label="Estalagem de Sangalhos — Accommodation"
       >
-        <Accommodations />
-        <Amenities />
-        <StayPolicies />
-        <ForWhom />
-        <WhyChooseUs />
+        <div className={styles.contentFlow}>
+          <Accommodations />
+          <Amenities />
+          <StayPolicies />
+          <ForWhom />
+          <WhyChooseUs />
+        </div>
       </main>
     </div>
   );

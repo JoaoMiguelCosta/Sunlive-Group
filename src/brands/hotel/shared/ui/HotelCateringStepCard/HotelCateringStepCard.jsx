@@ -9,17 +9,30 @@ export default function HotelCateringStepCard({
   className = "",
   isActive = false,
   onClick,
+  ariaControls,
+  ariaLabel,
 }) {
   if (!title || !description) return null;
 
-  const Tag = typeof onClick === "function" ? "button" : "article";
+  const isButton = typeof onClick === "function";
+  const Tag = isButton ? "button" : "article";
+
+  const buttonProps = isButton
+    ? {
+        type: "button",
+        onClick,
+        "aria-pressed": isActive,
+        "aria-controls": ariaControls,
+        "aria-label": ariaLabel ?? title,
+      }
+    : {};
 
   return (
     <Tag
-      className={`${styles.card} ${isActive ? styles.active : ""} ${className}`.trim()}
-      onClick={onClick}
-      type={Tag === "button" ? "button" : undefined}
-      aria-pressed={Tag === "button" ? isActive : undefined}
+      className={[styles.card, isActive ? styles.active : "", className]
+        .filter(Boolean)
+        .join(" ")}
+      {...buttonProps}
     >
       <div className={styles.topBar}>
         {stepNumber ? (

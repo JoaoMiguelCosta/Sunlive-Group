@@ -1,11 +1,9 @@
 import hotelBrand from "../../../../config/index.js";
 import FeaturedExperiencesHeader from "./FeaturedExperiencesHeader.jsx";
 import HotelFeaturedExperiencesGrid from "./HotelFeaturedExperiencesGrid.jsx";
+
 import styles from "./FeaturedExperiences.module.css";
 
-/**
- * Secção "Experiências em Destaque" na Home do Hotel.
- */
 export default function FeaturedExperiencesSection() {
   const featuredSection =
     hotelBrand?.pages?.home?.sections?.featuredExperiences ?? null;
@@ -13,15 +11,16 @@ export default function FeaturedExperiencesSection() {
   if (!featuredSection) return null;
 
   const sectionId = featuredSection.id || "hotel-featured-experiences";
+  const titleId = `${sectionId}-title`;
 
   return (
     <section
       id={sectionId}
       className={styles.sectionWrap}
-      aria-labelledby={`${sectionId}-title`}
+      aria-labelledby={titleId}
     >
       <div className={styles.inner}>
-        <FeaturedExperiencesHeader />
+        <FeaturedExperiencesHeader titleId={titleId} />
         <HotelFeaturedExperiencesGrid />
       </div>
     </section>

@@ -22,8 +22,10 @@ export default function Accommodations() {
   const roomsAndSuites = content.roomsAndSuites ?? null;
   const sectionId = content.id ?? "accommodation-accommodations";
   const titleId = `${sectionId}-title`;
+  const roomsTitleId = `${sectionId}-rooms-title`;
+
   const gallery = content.gallery ?? {};
-  const galleryItems = gallery.items ?? [];
+  const galleryItems = Array.isArray(gallery.items) ? gallery.items : [];
 
   return (
     <section
@@ -44,35 +46,37 @@ export default function Accommodations() {
           </DescriptionAccommodations>
         </div>
 
-        <div className={styles.galleryWrap}>
-          <HotelPhotoCarouselBase
-            items={galleryItems}
-            fallbackLabel={gallery.fallbackLabel ?? "Galeria de alojamento"}
-            fallbackEyebrow={gallery.fallbackEyebrow ?? "Alojamento"}
-            fallbackTitle={gallery.fallbackTitle ?? "Galeria de alojamento"}
-            previousLabel={gallery.previousLabel ?? "Imagem anterior"}
-            nextLabel={gallery.nextLabel ?? "Imagem seguinte"}
-            indicatorsLabel={
-              gallery.indicatorsLabel ?? "Navegação da galeria de alojamento"
-            }
-            showIndicators
-            showCaption
-            showImageBackdrop
-            backdropBlur="20px"
-            backdropScale={1.16}
-            backdropOpacity={0.52}
-            className={styles.carouselStage}
-          />
-        </div>
+        {galleryItems.length > 0 ? (
+          <div className={styles.galleryWrap}>
+            <HotelPhotoCarouselBase
+              items={galleryItems}
+              fallbackLabel={gallery.fallbackLabel ?? "Galeria de alojamento"}
+              fallbackEyebrow={gallery.fallbackEyebrow ?? "Alojamento"}
+              fallbackTitle={gallery.fallbackTitle ?? "Galeria de alojamento"}
+              previousLabel={gallery.previousLabel ?? "Imagem anterior"}
+              nextLabel={gallery.nextLabel ?? "Imagem seguinte"}
+              indicatorsLabel={
+                gallery.indicatorsLabel ?? "Navegação da galeria de alojamento"
+              }
+              showIndicators
+              showCaption
+              showImageBackdrop
+              backdropBlur="20px"
+              backdropScale={1.16}
+              backdropOpacity={0.52}
+              className={styles.carouselStage}
+            />
+          </div>
+        ) : null}
 
         {roomsAndSuites ? (
           <section
             id={roomsAndSuites.id ?? "accommodation-rooms-and-suites"}
             className={styles.roomsSection}
-            aria-labelledby={`${sectionId}-rooms-title`}
+            aria-labelledby={roomsTitleId}
           >
             <TitleRoomsAndSuites
-              id={`${sectionId}-rooms-title`}
+              id={roomsTitleId}
               label={roomsAndSuites.headerLabel}
               className={styles.titleWrap}
             />

@@ -1,5 +1,6 @@
 import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
+
 import styles from "./AboutTheHotelContent.module.css";
 
 const BRAND_NAME = "Estalagem de Sangalhos – Sport & Nature Hotel";
@@ -33,21 +34,29 @@ function highlightPillText(text) {
   );
 }
 
+function getValidParagraphs(paragraphs) {
+  return Array.isArray(paragraphs)
+    ? paragraphs.filter(
+        (paragraph) =>
+          typeof paragraph === "string" && paragraph.trim().length > 0,
+      )
+    : [];
+}
+
 export default function AboutTheHotelContent() {
   const aboutSection =
     hotelBrand?.pages?.about?.sections?.aboutTheHotel ?? null;
 
   if (!aboutSection) return null;
 
-  const paragraphs = Array.isArray(aboutSection?.text?.paragraphs)
-    ? aboutSection.text.paragraphs
-    : [];
+  const paragraphs = getValidParagraphs(aboutSection?.text?.paragraphs);
 
   const highlightText = aboutSection?.text?.highlightPill?.text ?? "";
   const imageSrc = aboutSection?.media?.imageSrc ?? null;
   const imageAlt =
     aboutSection?.media?.imageAlt ??
-    "Imagem da Estalagem de Sangalhos – Sport & Nature Hotel";
+    "Imagem da Estalagem de Sangalhos – Sport & Nature Hotel.";
+  const mediaCaption = aboutSection?.media?.caption ?? "Sport & Nature Hotel";
 
   const [firstParagraph, ...otherParagraphs] = paragraphs;
 
@@ -61,8 +70,8 @@ export default function AboutTheHotelContent() {
             </p>
           ) : null}
 
-          {otherParagraphs.map((paragraph, index) => (
-            <p key={`${index}-${paragraph}`} className={styles.paragraph}>
+          {otherParagraphs.map((paragraph) => (
+            <p key={paragraph} className={styles.paragraph}>
               {paragraph}
             </p>
           ))}
@@ -70,7 +79,12 @@ export default function AboutTheHotelContent() {
 
         {highlightText ? (
           <div className={styles.highlightWrap}>
-            <HotelHighlightPill className={styles.highlightPill}>
+            <HotelHighlightPill
+              className={styles.highlightPill}
+              cardClassName={styles.highlightCard}
+              innerClassName={styles.highlightInner}
+              textClassName={styles.highlightText}
+            >
               {highlightPillText(highlightText)}
             </HotelHighlightPill>
           </div>
@@ -87,9 +101,14 @@ export default function AboutTheHotelContent() {
                 className={styles.mediaImage}
                 loading="lazy"
                 decoding="async"
+                draggable="false"
               />
             ) : (
-              <div className={styles.mediaPlaceholder}>
+              <div
+                className={styles.mediaPlaceholder}
+                role="img"
+                aria-label="Imagem brevemente"
+              >
                 <span className={styles.mediaLabel}>Imagem brevemente</span>
               </div>
             )}
@@ -97,11 +116,11 @@ export default function AboutTheHotelContent() {
             <div className={styles.mediaOverlay} aria-hidden="true" />
             <div className={styles.mediaGlow} aria-hidden="true" />
 
-            <figcaption className={styles.mediaCaption}>
-              <span className={styles.mediaCaptionText}>
-                Sport & Nature Hotel
-              </span>
-            </figcaption>
+            {mediaCaption ? (
+              <figcaption className={styles.mediaCaption}>
+                <span className={styles.mediaCaptionText}>{mediaCaption}</span>
+              </figcaption>
+            ) : null}
           </div>
         </figure>
       </div>

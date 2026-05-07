@@ -5,7 +5,6 @@ import facilitiesLeisure4 from "../../../assets/facilities-leisure4.webp";
 import facilitiesLeisure5 from "../../../assets/facilities-leisure5.webp";
 import facilitiesLeisure6 from "../../../assets/facilities-leisure6.webp";
 import facilitiesLeisure7 from "../../../assets/facilities-leisure7.webp";
-
 import facilitiesLeisure9 from "../../../assets/facilities-leisure9.webp";
 
 import home2 from "../../../assets/home2.webp";
@@ -22,6 +21,8 @@ export const facilitiesLeisure = {
     galleryAriaLabel: "Galeria de instalações e lazer",
     previousLabel: "Imagem anterior da galeria",
     nextLabel: "Imagem seguinte da galeria",
+    previousText: "Anterior",
+    nextText: "Seguinte",
     thumbnailsLabel: "Miniaturas da galeria de instalações e lazer",
     counterPrefix: "Imagem",
     overviewEyebrow: "Experiência Sunlive",
@@ -102,7 +103,7 @@ export const facilitiesLeisure = {
         label: "Jardim Exterior",
         description:
           "Um enquadramento exterior cuidado, onde os jardins, o relvado e a envolvente natural reforçam a sensação de tranquilidade, espaço e bem-estar que define a experiência de lazer da estalagem.",
-        thumbAlt: "Miniatura — Detalhes",
+        thumbAlt: "Miniatura — Jardim Exterior",
         imagePosition: "left",
         fitMode: "contain",
       },

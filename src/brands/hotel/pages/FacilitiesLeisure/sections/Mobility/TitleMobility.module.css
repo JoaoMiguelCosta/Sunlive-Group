@@ -3,5 +3,32 @@
     inline-size: 100%;
     display: flex;
     justify-content: center;
-    margin-block-end: clamp(0.2rem, 0.6vw, 0.4rem);
+    margin-block-end: clamp(0.16rem, 0.5vw, 0.34rem);
+}
+
+.wrap::after {
+    content: "";
+    position: absolute;
+    inset-inline: 50%;
+    inset-block-end: -0.48rem;
+    translate: -50% 0;
+
+    inline-size: min(18rem, 42vw);
+    block-size: 1px;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 22%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28) 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 78%,
+            transparent 100%);
+
+    pointer-events: none;
+}
+
+@media (max-width: 640px) {
+    .wrap::after {
+        inline-size: min(14rem, 58vw);
+    }
 }

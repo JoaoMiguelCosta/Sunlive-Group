@@ -3,105 +3,177 @@
     isolation: isolate;
     inline-size: 100%;
     overflow: clip;
-    padding-block: clamp(4rem, 6.5vw, 6.4rem) clamp(1.4rem, 2.7vw, 2.2rem);
+    padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
+    
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: clamp(1.2rem, 2vw, 1.8rem) 50% auto;
+    translate: -50% 0;
     z-index: 0;
+
+    inline-size: min(94vw, 1320px);
+    block-size: clamp(260px, 29vw, 420px);
+
     pointer-events: none;
-  ;
+    border-radius: 999px;
+
+
 }
 
 .section::after {
     content: "";
     position: absolute;
-    inset-inline: 0;
-    top: clamp(2.2rem, 5vw, 4.2rem);
-    block-size: clamp(10rem, 24vw, 18rem);
+    inset: 0;
     z-index: 0;
     pointer-events: none;
+
     background:
-        radial-gradient(circle at 50% 0%, rgba(255, 228, 170, 0.1), transparent 56%);
-    filter: blur(36px);
-    opacity: 0.7;
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 0%,
+            transparent 22%,
+            rgb(0 0 0 / 0.055) 100%);
 }
 
 .inner {
     position: relative;
     z-index: 1;
+
     inline-size: min(100%, 1440px);
     margin-inline: auto;
-    padding-inline: clamp(1rem, 2.2vw, 2rem);
+    padding-inline: clamp(0.82rem, 2vw, 1.6rem);
+
+    display: grid;
+    gap: clamp(1.25rem, 2.4vw, 2rem);
 }
 
 .introShell {
     position: relative;
-    inline-size: min(100%, 1180px);
+    isolation: isolate;
+    overflow: hidden;
+
+    inline-size: min(100%, 1160px);
     margin-inline: auto;
+
     display: grid;
-    gap: clamp(1rem, 1.7vw, 1.35rem);
+    justify-items: center;
+    gap: clamp(0.95rem, 1.55vw, 1.28rem);
+
     padding:
-        clamp(1.15rem, 2vw, 1.55rem) clamp(1rem, 2.2vw, 1.65rem) clamp(1.2rem, 2.1vw, 1.7rem);
-    border-radius: clamp(1.35rem, 2vw, 2rem);
-    border: 1px solid rgba(230, 200, 147, 0.16);
+        clamp(1.08rem, 1.8vw, 1.48rem) clamp(0.92rem, 2vw, 1.55rem) clamp(1.12rem, 1.9vw, 1.55rem);
+
+    border-radius: clamp(1.24rem, 1.9vw, 1.8rem);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
+
     background:
+        radial-gradient(118% 145% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.092) 0%,
+            transparent 44%),
+        radial-gradient(130% 150% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.065) 0%,
+            transparent 50%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.04) 0%,
-            rgba(255, 248, 235, 0.012) 18%,
-            rgba(0, 0, 0, 0.06) 100%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 20%,
+            rgb(0 0 0 / 0.09) 100%),
         linear-gradient(135deg,
-            rgba(86, 48, 20, 0.24) 0%,
-            rgba(42, 24, 12, 0.16) 46%,
-            rgba(22, 12, 7, 0.08) 100%);
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.76) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.94) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 18px 44px rgba(0, 0, 0, 0.12);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05),
+        inset 0 -1px 0 rgb(0 0 0 / 0.16),
+        0 20px 52px rgb(0 0 0 / 0.18);
+
+    backdrop-filter: blur(12px) saturate(1.02);
+    -webkit-backdrop-filter: blur(12px) saturate(1.02);
 }
 
 .introShell::before {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: inherit;
+    z-index: 0;
+
     pointer-events: none;
+    border-radius: inherit;
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 18%,
+            transparent 44%),
+        linear-gradient(90deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 0%,
+            transparent 18%,
+            transparent 82%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 100%);
+
+    opacity: 0.92;
+}
+
+.introShell::after {
+    content: "";
+    position: absolute;
+    inset: auto 12% 0;
+    z-index: 0;
+
+    block-size: 1px;
+    pointer-events: none;
+
     background:
         linear-gradient(90deg,
-            rgba(255, 248, 235, 0.015) 0%,
-            rgba(255, 248, 235, 0) 16%,
-            rgba(255, 248, 235, 0) 84%,
-            rgba(255, 248, 235, 0.015) 100%);
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34) 24%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 58%,
+            transparent 100%);
+}
+
+.eyebrow,
+.headerBlock,
+.highlightsList {
+    position: relative;
+    z-index: 1;
 }
 
 .eyebrow {
     margin: 0 auto;
     inline-size: fit-content;
     max-inline-size: 100%;
-    padding: 0.56rem 0.9rem;
+
+    padding: 0.52rem 0.86rem;
     border-radius: 999px;
-    border: 1px solid rgba(224, 184, 103, 0.24);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+
     background:
-        linear-gradient(180deg, rgba(88, 49, 21, 0.78), rgba(40, 22, 11, 0.9));
-    box-shadow:
-        inset 0 1px 0 rgba(255, 246, 224, 0.08),
-        0 10px 24px rgba(0, 0, 0, 0.12);
-    color: rgba(255, 234, 191, 0.92);
-    font-size: 0.8rem;
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.016) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.5);
+
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.94);
+    font-size: clamp(0.7rem, 0.12vw + 0.68rem, 0.78rem);
     font-weight: 800;
-    letter-spacing: 0.16em;
     line-height: 1;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     text-align: center;
     white-space: nowrap;
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
+        0 10px 24px rgb(0 0 0 / 0.14);
+
+    backdrop-filter: blur(8px) saturate(1.02);
+    -webkit-backdrop-filter: blur(8px) saturate(1.02);
 }
 
 .headerBlock {
     display: grid;
-    gap: clamp(0.9rem, 1.35vw, 1.1rem);
+    gap: clamp(0.82rem, 1.25vw, 1.05rem);
+    inline-size: 100%;
 }
 
 .sectionTitle {
@@ -109,14 +181,15 @@
 }
 
 .sectionDescription {
-    inline-size: min(100%, 1140px);
+    inline-size: min(100%, 1080px);
 }
 
 .highlightsList {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.72rem;
+    gap: clamp(0.54rem, 0.9vw, 0.72rem);
+
     margin: 0;
     padding: 0;
     list-style: none;
@@ -124,97 +197,100 @@
 
 .highlightItem {
     display: flex;
+    min-inline-size: 0;
 }
 
 .highlightPill {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-block-size: 2.7rem;
-    padding: 0.72rem 1rem;
+
+    min-block-size: clamp(2.36rem, 2.8vw, 2.7rem);
+    padding: 0.66rem clamp(0.78rem, 1vw, 1rem);
+
     border-radius: 999px;
-    border: 1px solid rgba(226, 185, 103, 0.2);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.19);
+
     background:
-        radial-gradient(circle at 50% 0%, rgba(255, 232, 184, 0.07), transparent 60%),
-        linear-gradient(180deg, rgba(72, 37, 16, 0.84), rgba(31, 15, 8, 0.92));
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 12px 24px rgba(0, 0, 0, 0.12);
-    color: rgba(255, 245, 230, 0.96);
-    font-size: 0.95rem;
-    font-weight: 700;
-    line-height: 1.2;
+        radial-gradient(circle at 50% 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.24) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.62) 100%);
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.94);
+    font-size: clamp(0.84rem, 0.16vw + 0.82rem, 0.94rem);
+    font-weight: 750;
+    line-height: 1.22;
     text-align: center;
+    text-wrap: balance;
     white-space: nowrap;
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055),
+        0 12px 24px rgb(0 0 0 / 0.12);
 }
 
 .galleryBlock {
-    margin-top: clamp(1.5rem, 2.6vw, 2.2rem);
+    margin-block-start: clamp(0.2rem, 0.6vw, 0.42rem);
 }
 
 @media (max-width: 1024px) {
     .section {
-        padding-block: clamp(3.4rem, 7vw, 5rem) clamp(1.2rem, 2.2vw, 1.8rem);
+        padding-block: clamp(3rem, 6.5vw, 4.6rem) clamp(1.1rem, 2vw, 1.65rem);
     }
 
     .introShell {
-        padding:
-            1rem clamp(0.95rem, 2vw, 1.25rem) 1.2rem;
-        border-radius: 1.4rem;
+        padding: 1rem clamp(0.88rem, 2vw, 1.18rem) 1.12rem;
+        border-radius: 1.32rem;
     }
 
     .highlightPill {
-        min-block-size: 2.55rem;
-        padding-inline: 0.92rem;
-        font-size: 0.92rem;
+        white-space: normal;
     }
 }
 
 @media (max-width: 768px) {
     .inner {
-        padding-inline: 0.9rem;
+        padding-inline: 0.82rem;
+        gap: 1.05rem;
     }
 
     .introShell {
-        gap: 0.9rem;
-        padding:
-            0.95rem 0.9rem 1rem;
-        border-radius: 1.18rem;
+        gap: 0.86rem;
+        padding: 0.9rem 0.82rem 0.96rem;
+        border-radius: 1.12rem;
     }
 
     .eyebrow {
-        padding: 0.52rem 0.82rem;
-        font-size: 0.74rem;
+        padding: 0.5rem 0.78rem;
+        font-size: 0.7rem;
         letter-spacing: 0.14em;
     }
 
     .highlightsList {
-        gap: 0.6rem;
+        gap: 0.54rem;
     }
 
     .highlightPill {
-        min-block-size: 2.44rem;
-        padding: 0.68rem 0.88rem;
-        font-size: 0.9rem;
-        white-space: normal;
-    }
-
-    .galleryBlock {
-        margin-top: 1.2rem;
+        min-block-size: 2.32rem;
+        padding: 0.62rem 0.78rem;
+        font-size: 0.86rem;
     }
 }
 
 @media (max-width: 560px) {
     .section {
-        padding-block: 3rem 1rem;
+        padding-block: 2.65rem 0.92rem;
     }
 
     .inner {
-        padding-inline: 0.8rem;
+        padding-inline: 0.74rem;
     }
 
     .introShell {
-        padding: 0.88rem 0.82rem 0.94rem;
+        padding: 0.82rem 0.74rem 0.88rem;
         border-radius: 1rem;
     }
 
@@ -226,14 +302,29 @@
     .highlightsList {
         display: grid;
         grid-template-columns: 1fr;
+        inline-size: 100%;
     }
 
-    .highlightItem {
+    .highlightItem,
+    .highlightPill {
         inline-size: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .section {
+        padding-block-start: 2.4rem;
+    }
+
+    .inner {
+        padding-inline: 0.68rem;
+    }
+
+    .introShell {
+        padding: 0.76rem 0.68rem 0.82rem;
     }
 
     .highlightPill {
-        inline-size: 100%;
-        min-block-size: 2.42rem;
+        font-size: 0.84rem;
     }
 }

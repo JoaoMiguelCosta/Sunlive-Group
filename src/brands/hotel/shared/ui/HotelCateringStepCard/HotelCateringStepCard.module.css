@@ -1,82 +1,167 @@
 .card {
+    appearance: none;
+    position: relative;
+    isolation: isolate;
+
     display: flex;
     flex-direction: column;
+
     min-width: 0;
     min-height: 100%;
     overflow: hidden;
-    border-radius: clamp(1.2rem, 1.7vw, 1.75rem);
-    border: 1px solid rgba(214, 166, 74, 0.4);
+
+    padding: 0;
+
+    border-radius: clamp(1.16rem, 1.65vw, 1.6rem);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+
     background:
-        linear-gradient(180deg, rgba(58, 32, 12, 0.74), rgba(33, 19, 10, 0.9)),
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.12), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.08), transparent 60%),
-        #26170b;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 36px rgba(0, 0, 0, 0.18);
+        radial-gradient(120% 145% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.072) 0%,
+            transparent 44%),
+        radial-gradient(130% 150% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.052) 0%,
+            transparent 50%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.032) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.01) 20%,
+            rgb(0 0 0 / 0.09) 100%),
+        linear-gradient(135deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.76) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.96) 100%);
+
+    color: inherit;
+    font: inherit;
     text-align: left;
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.046),
+        inset 0 -1px 0 rgb(0 0 0 / 0.14),
+        0 16px 36px rgb(0 0 0 / 0.17);
+
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 18%,
+            transparent 42%);
 }
 
 button.card {
     cursor: pointer;
-    transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease;
 }
 
 button.card:hover {
     transform: translateY(-2px);
-    border-color: rgba(233, 192, 109, 0.46);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 22px 42px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052),
+        inset 0 -1px 0 rgb(0 0 0 / 0.14),
+        0 22px 46px rgb(0 0 0 / 0.22);
 }
 
 button.card:focus-visible {
-    outline: 2px solid rgba(255, 233, 184, 0.92);
+    outline: 2px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.72);
     outline-offset: 4px;
 }
 
 .active {
-    border-color: rgba(233, 192, 109, 0.52);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
+
+    background:
+        radial-gradient(120% 145% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.095) 0%,
+            transparent 44%),
+        radial-gradient(130% 150% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.062) 0%,
+            transparent 50%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 20%,
+            rgb(0 0 0 / 0.09) 100%),
+        linear-gradient(135deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.8) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.97) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 22px 44px rgba(0, 0, 0, 0.24),
-        0 0 0 1px rgba(255, 230, 164, 0.08);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.058),
+        inset 0 -1px 0 rgb(0 0 0 / 0.14),
+        0 22px 48px rgb(0 0 0 / 0.24),
+        0 0 20px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075);
+}
+
+.topBar,
+.main,
+.footer {
+    position: relative;
+    z-index: 1;
 }
 
 .topBar {
-    position: relative;
-    min-height: 3rem;
+    min-block-size: 3rem;
     padding: 0.58rem 0.68rem;
+
+    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13);
+
     background:
-        radial-gradient(600px 140px at 20% 50%, rgba(230, 200, 147, 0.1), transparent 58%),
-        linear-gradient(90deg, rgba(92, 58, 20, 0.94) 0%, rgba(52, 30, 10, 0.96) 100%);
-    border-bottom: 1px solid rgba(214, 166, 74, 0.28);
+        radial-gradient(100% 130% at 50% -18%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.15) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.09) 58%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.12) 100%);
 }
 
 .stepBadge {
     position: absolute;
-    top: 0.6rem;
-    right: 0.62rem;
-    min-width: 2.8rem;
-    block-size: 2.8rem;
-    padding-inline: 0.68rem;
+    inset-block-start: 0.6rem;
+    inset-inline-end: 0.62rem;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    min-inline-size: 2.72rem;
+    block-size: 2.72rem;
+    padding-inline: 0.68rem;
+
     border-radius: 999px;
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+
     background:
-        linear-gradient(180deg, rgba(184, 132, 49, 0.97) 0%, rgba(135, 88, 18, 0.97) 100%);
-    color: rgba(255, 248, 240, 0.98);
-    font-size: clamp(1.2rem, 1vw, 1.42rem);
+        radial-gradient(circle at 35% 24%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.2) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.64);
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.98);
+    font-size: clamp(1.12rem, 0.92vw, 1.32rem);
     font-weight: 900;
     line-height: 1;
-    border: 1px solid rgba(255, 231, 184, 0.18);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 8px 18px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+        0 8px 18px rgb(0 0 0 / 0.18),
+        0 0 14px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
 }
 
 .main {
@@ -85,31 +170,54 @@ button.card:focus-visible {
     align-items: center;
     justify-content: center;
     gap: 0.84rem;
-    min-height: 12rem;
-    padding: 1.4rem 1rem 1rem;
+
+    min-height: 11.4rem;
+    padding: 1.35rem 1rem 1rem;
+
+    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12);
+
     background:
-        linear-gradient(180deg, rgba(184, 132, 49, 0.97) 0%, rgba(135, 88, 18, 0.97) 100%);
+        radial-gradient(90% 130% at 50% -10%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08) 0%,
+            transparent 56%),
+        radial-gradient(90% 120% at 50% 100%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06) 0%,
+            transparent 70%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.1) 52%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.18) 100%);
 }
 
 .iconCircle {
-    inline-size: clamp(3rem, 3.6vw, 3.55rem);
-    block-size: clamp(3rem, 3.6vw, 3.55rem);
-    border-radius: 999px;
-    flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(241, 205, 132, 0.2);
+    flex-shrink: 0;
+
+    inline-size: clamp(3rem, 3.6vw, 3.45rem);
+    block-size: clamp(3rem, 3.6vw, 3.45rem);
+
+    border-radius: 999px;
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+
     background:
-        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.16), transparent 55%),
-        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.08), transparent 72%),
-        linear-gradient(180deg, rgba(78, 42, 18, 0.92) 0%, rgba(42, 21, 10, 0.96) 100%);
+        radial-gradient(circle at 30% 22%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
+            transparent 55%),
+        radial-gradient(circle at 50% 58%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            transparent 72%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.28) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.82) 100%);
+
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.98);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.12),
-        0 10px 24px rgba(0, 0, 0, 0.22),
-        0 0 0 1px rgba(255, 220, 140, 0.04),
-        0 0 18px rgba(230, 200, 147, 0.07);
-    color: #f1cd84;
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+        0 10px 24px rgb(0 0 0 / 0.18),
+        0 0 18px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
 }
 
 .iconInner {
@@ -120,46 +228,52 @@ button.card:focus-visible {
 }
 
 .iconCircle :global(svg) {
-    inline-size: clamp(1.15rem, 1.4vw, 1.38rem);
-    block-size: clamp(1.15rem, 1.4vw, 1.38rem);
+    inline-size: clamp(1.1rem, 1.35vw, 1.3rem);
+    block-size: clamp(1.1rem, 1.35vw, 1.3rem);
     stroke: currentColor;
-    filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.12));
+    filter: drop-shadow(0 0 8px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12));
 }
 
 .title {
     margin: 0;
-    color: rgba(255, 248, 240, 0.98);
-    font-size: clamp(1.16rem, 1.05vw, 1.34rem);
-    font-weight: 900;
-    line-height: 1.08;
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.985);
+    font-size: clamp(1.1rem, 0.88vw + 0.98rem, 1.28rem);
+    font-weight: 880;
+    line-height: 1.1;
     text-align: center;
     text-wrap: balance;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.028em;
 }
 
 .footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 5.4rem;
-    padding: 1rem 0.96rem 1.06rem;
+
+    min-height: 5.15rem;
+    padding: 0.96rem;
+
     background:
-        radial-gradient(600px 140px at 20% 50%, rgba(230, 200, 147, 0.08), transparent 58%),
-        linear-gradient(90deg, rgba(70, 40, 14, 0.9) 0%, rgba(38, 23, 11, 0.98) 100%);
-    border-top: 1px solid rgba(214, 166, 74, 0.28);
+        radial-gradient(680px 180px at 50% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.048),
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.022),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.006));
 }
 
 .description {
     margin: 0;
-    color: rgba(255, 246, 235, 0.94);
-    font-size: clamp(0.94rem, 0.8vw, 0.98rem);
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.86);
+    font-size: clamp(0.9rem, 0.12vw + 0.88rem, 0.96rem);
     font-weight: 600;
-    line-height: 1.36;
+    line-height: 1.42;
     text-align: center;
     text-wrap: balance;
 }
 
-/* Tablet vertical e widths intermédios */
 @media (max-width: 980px) {
     .card {
         border-radius: 1.18rem;
@@ -171,9 +285,9 @@ button.card:focus-visible {
     }
 
     .stepBadge {
-        top: 0.46rem;
-        right: 0.5rem;
-        min-width: 2.28rem;
+        inset-block-start: 0.46rem;
+        inset-inline-end: 0.5rem;
+        min-inline-size: 2.28rem;
         block-size: 2.28rem;
         padding-inline: 0.5rem;
         font-size: 1rem;
@@ -211,7 +325,6 @@ button.card:focus-visible {
     }
 }
 
-/* Mobile */
 @media (max-width: 720px) {
     .card {
         border-radius: 1.06rem;
@@ -223,9 +336,9 @@ button.card:focus-visible {
     }
 
     .stepBadge {
-        top: 0.4rem;
-        right: 0.44rem;
-        min-width: 2.1rem;
+        inset-block-start: 0.4rem;
+        inset-inline-end: 0.44rem;
+        min-inline-size: 2.1rem;
         block-size: 2.1rem;
         font-size: 0.94rem;
     }
@@ -272,7 +385,7 @@ button.card:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    button.card {
+    .card {
         transition: none;
     }
 }

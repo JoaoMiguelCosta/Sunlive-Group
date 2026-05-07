@@ -29,22 +29,23 @@ export default function RoomProfileFilterBar({
         </div>
 
         <div className={styles.chipsScroller}>
-          <div className={styles.chips} role="tablist" aria-label={ariaLabel}>
-            {options.map((opt) => {
-              const isActive = opt.id === active;
+          <div className={styles.chips} role="group" aria-label={ariaLabel}>
+            {options.map((option) => {
+              const isActive = option.id === active;
 
               return (
                 <button
-                  key={opt.id}
+                  key={option.id}
                   type="button"
                   className={[styles.chip, isActive ? styles.active : ""]
                     .filter(Boolean)
                     .join(" ")}
-                  onClick={() => onChange?.(opt.id)}
-                  role="tab"
-                  aria-selected={isActive}
+                  onClick={() => {
+                    if (!isActive) onChange?.(option.id);
+                  }}
+                  aria-pressed={isActive}
                 >
-                  <span className={styles.chipLabel}>{opt.label}</span>
+                  <span className={styles.chipLabel}>{option.label}</span>
                 </button>
               );
             })}

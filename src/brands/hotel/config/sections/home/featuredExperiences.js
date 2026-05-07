@@ -7,6 +7,7 @@ import { HOTEL_PAGE_PATHS } from "../../core/paths.js";
 
 export const featuredExperiences = {
   id: "hotel-experiencias-destaque",
+
   header: {
     kicker: "Estadias & Momentos",
     title: "Experiências em Destaque",
@@ -14,6 +15,7 @@ export const featuredExperiences = {
       "Serviços pensados para atletas, famílias, equipas e grupos que procuram conforto e bem-estar.",
     align: "center",
   },
+
   items: [
     {
       id: "panoramic-breakfast",

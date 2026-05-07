@@ -1,14 +1,19 @@
 .section {
     position: relative;
     isolation: isolate;
+
     inline-size: 100%;
+    min-inline-size: 0;
+
     padding-block: 0;
     background: transparent;
 }
 
 .inner {
-    inline-size: 100%;
     display: grid;
-    gap: clamp(0.95rem, 1.6vw, 1.2rem);
     align-content: start;
+    gap: clamp(1rem, 1.8vw, 1.55rem);
+
+    inline-size: 100%;
+    min-inline-size: 0;
 }

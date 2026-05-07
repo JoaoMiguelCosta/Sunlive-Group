@@ -1,225 +1,270 @@
+/* =========================================================
+   HotelDirectory — links rápidos do Footer Hotel
+   Direção: boutique, quente, editorial, contido
+   ========================================================= */
+
 .directory {
     position: relative;
+    isolation: isolate;
+
+    display: grid;
+    gap: clamp(1.05rem, 1.55vw, 1.55rem);
+
     inline-size: 100%;
     min-inline-size: 0;
-    display: grid;
-    gap: clamp(1.08rem, 1.6vw, 1.5rem);
-    padding-inline: var(--footer-inner-pad, clamp(16px, 2.4vw, 32px));
-    padding-block: clamp(0.92rem, 1.32vw, 1.22rem);
-    color: var(--sl-platinum-050, #e7ebf3);
 
-    --chip-bg:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.03) 0%,
-            rgba(255, 248, 235, 0.008) 100%),
-        linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-accent-500, #E6C893), black 77%) 0%,
-            color-mix(in oklab, var(--sl-accent-500, #E6C893), black 81%) 100%);
-    --chip-border:
-        color-mix(in oklab, var(--sl-accent-500, #E6C893) 52%, black 48%);
-    --chip-border-hover:
-        color-mix(in oklab, var(--sl-gold-400, #C78615) 68%, black 32%);
-    --chip-text: #fff7ea;
-    --chip-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 0 0 1px rgba(0, 0, 0, 0.24),
-        0 9px 20px rgba(0, 0, 0, 0.18);
-    --chip-shadow-hover:
-        inset 0 1px 0 rgba(255, 248, 235, 0.055),
-        0 0 0 1px rgba(0, 0, 0, 0.3),
-        0 13px 24px rgba(0, 0, 0, 0.22),
-        0 0 15px rgba(199, 134, 21, 0.08);
+    padding-block: clamp(0.95rem, 1.45vw, 1.35rem);
+    padding-inline: var(--footer-inner-pad, clamp(1rem, 2.4vw, 2rem));
+
+    color: var(--hotel-text, rgba(251, 247, 239, 0.96));
+}
+
+.directory::before {
+    content: "";
+    position: absolute;
+    inset-inline: var(--footer-inner-pad, clamp(1rem, 2.4vw, 2rem));
+    inset-block-start: 0;
+
+    block-size: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28) 50%,
+            transparent 100%);
 }
 
 .block {
     display: grid;
-    gap: clamp(0.68rem, 0.92vw, 0.86rem);
-    min-inline-size: 0;
+    gap: clamp(0.72rem, 1vw, 0.95rem);
+
     inline-size: 100%;
+    min-inline-size: 0;
 }
 
 .blockTitle {
-    margin: 0;
-    font-size: clamp(0.94rem, 0.82vw, 1.04rem);
-    line-height: 1.1;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--sl-platinum-100, #ffffff);
-    text-wrap: balance;
-    text-align: center;
     justify-self: center;
+
+    margin: 0;
+
+    color: var(--hotel-heading, #fbf7ef);
+
+    font-family: var(--sl-ff-display, inherit);
+    font-size: clamp(0.92rem, 0.88vw, 1.08rem);
+    font-weight: 680;
+    line-height: 1.12;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+
+    text-wrap: balance;
 }
 
 .chipsGrid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(0.64rem, 0.86vw, 0.82rem);
+    gap: clamp(0.62rem, 0.92vw, 0.88rem);
+
+    inline-size: 100%;
     min-inline-size: 0;
 }
 
 .chip {
     position: relative;
-    min-inline-size: 0;
-    min-block-size: clamp(2.68rem, 3.02vw, 3rem);
+    isolation: isolate;
+    overflow: hidden;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding-inline: clamp(0.84rem, 0.98vw, 1rem);
-    padding-block: clamp(0.56rem, 0.62vw, 0.7rem);
+
+    min-inline-size: 0;
+    min-block-size: clamp(2.55rem, 3vw, 2.95rem);
+
+    padding-block: clamp(0.58rem, 0.72vw, 0.72rem);
+    padding-inline: clamp(0.82rem, 1vw, 1rem);
+
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16);
     border-radius: 999px;
-    overflow: hidden;
-    isolation: isolate;
-    text-decoration: none;
+
+    background:
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.022) 48%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.18) 100%);
+
+    color: var(--hotel-text-soft, rgba(244, 234, 216, 0.82));
+
     text-align: center;
-    color: var(--chip-text);
-    background: var(--chip-bg);
-    border: 1px solid var(--chip-border);
-    box-shadow: var(--chip-shadow);
+    text-decoration: none;
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.045),
+        0 0.75rem 1.65rem rgb(0 0 0 / 0.16);
+
     box-sizing: border-box;
+
     transition:
-        transform 160ms ease,
-        border-color 160ms ease,
-        box-shadow 160ms ease,
-        background 160ms ease,
-        filter 160ms ease;
+        transform var(--hotel-transition-fast, 160ms ease),
+        color var(--hotel-transition-fast, 160ms ease),
+        border-color var(--hotel-transition-fast, 160ms ease),
+        background var(--hotel-transition-fast, 160ms ease),
+        box-shadow var(--hotel-transition-fast, 160ms ease);
 }
 
 .chip::before {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: inherit;
+    z-index: -2;
+
     pointer-events: none;
+
     background:
-        linear-gradient(90deg,
-            rgba(230, 200, 147, 0.15) 0%,
-            rgba(255, 248, 235, 0.012) 52%,
-            rgba(199, 134, 21, 0.08) 100%);
-    opacity: 0.58;
+        radial-gradient(100% 150% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            transparent 52%),
+        radial-gradient(90% 140% at 100% 100%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.035) 0%,
+            transparent 58%);
+
+    opacity: 0.72;
 }
 
 .chip::after {
     content: "";
     position: absolute;
     inset: 1px;
+    z-index: -1;
+
     border-radius: inherit;
     pointer-events: none;
+
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.028) 0%,
-            transparent 30%,
+            rgb(255 255 255 / 0.045) 0%,
+            transparent 36%,
             transparent 100%);
+
+    opacity: 0.78;
 }
 
 .chipLabel {
     position: relative;
     z-index: 1;
+
     display: block;
+
     min-inline-size: 0;
     max-inline-size: 100%;
-    font-size: clamp(0.8rem, 0.1vw + 0.79rem, 0.89rem);
-    line-height: 1.08;
-    font-weight: 650;
-    letter-spacing: -0.01em;
-    text-wrap: balance;
+
     overflow-wrap: anywhere;
-    word-break: normal;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.58);
+
+    color: currentColor;
+
+    font-size: clamp(0.8rem, 0.78rem + 0.12vw, 0.9rem);
+    font-weight: 620;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+
+    text-wrap: balance;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 0.42);
 }
 
 .energyLine {
     position: absolute;
-    inset-inline: 18%;
+    inset-inline: 20%;
     inset-block-end: 0;
+
     block-size: 1px;
+
     pointer-events: none;
-    background: linear-gradient(90deg,
-            transparent 0%,
-            rgba(230, 200, 147, 0.16) 18%,
-            rgba(230, 200, 147, 0.46) 50%,
-            rgba(199, 134, 21, 0.12) 84%,
-            transparent 100%);
-    opacity: 0.7;
-    transform: scaleX(0.84);
+
+    opacity: 0.58;
+    transform: scaleX(0.74);
     transform-origin: center;
-    transition: opacity 160ms ease, transform 160ms ease;
-}
 
-.chip:hover {
-    transform: translateY(-2px);
     background:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.036) 0%,
-            rgba(255, 248, 235, 0.01) 100%),
-        linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 8%) 0%,
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 10%) 100%);
-    border-color: var(--chip-border-hover);
-    box-shadow: var(--chip-shadow-hover);
-    filter: saturate(1.02);
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 18%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.58) 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 84%,
+            transparent 100%);
+
+    transition:
+        opacity var(--hotel-transition-fast, 160ms ease),
+        transform var(--hotel-transition-fast, 160ms ease);
 }
 
-.chip:hover .energyLine {
+.chip:hover,
+.chip:focus-visible {
+    transform: translateY(-2px);
+
+    border-color: var(--hotel-border-strong, rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.32));
+
+    background:
+        linear-gradient(145deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052) 46%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.16) 100%);
+
+    color: var(--hotel-ivory-050, #fbf7ef);
+
+    box-shadow:
+        0 1rem 2.15rem rgb(0 0 0 / 0.22),
+        0 0 0 1px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04),
+        inset 0 1px 0 rgb(255 255 255 / 0.062);
+}
+
+.chip:hover .energyLine,
+.chip:focus-visible .energyLine {
     opacity: 1;
     transform: scaleX(1);
 }
 
 .chip:focus-visible {
     outline: none;
-    transform: translateY(-2px);
-    border-color: color-mix(in oklab, var(--sl-accent-500, #E6C893), white 10%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 0 0 1px rgba(0, 0, 0, 0.32),
-        0 0 0 3px color-mix(in oklab, var(--sl-accent-500, #E6C893), transparent 74%),
-        0 13px 26px rgba(0, 0, 0, 0.24);
 }
 
-.chip:focus-visible .energyLine {
-    opacity: 1;
-    transform: scaleX(1);
-}
-
+/* Destaque sem virar botão dourado pesado */
 .chip[data-variant="highlight"] {
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28);
+
     background:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.034) 0%,
-            rgba(255, 248, 235, 0.01) 100%),
         radial-gradient(120% 150% at 100% 0%,
-            rgba(230, 200, 147, 0.14) 0%,
-            transparent 42%),
-        radial-gradient(120% 140% at 0% 100%,
-            rgba(199, 134, 21, 0.06) 0%,
-            transparent 52%),
-        linear-gradient(135deg,
-            color-mix(in oklab, #3b2413, black 8%) 0%,
-            color-mix(in oklab, #1a0f08, black 6%) 100%);
-    border-color: color-mix(in oklab,
-            var(--sl-accent-500, #E6C893) 58%,
-            var(--sl-gold-400, #C78615) 42%);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 0%,
+            transparent 46%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075) 0%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.2) 100%);
+
+    color: var(--hotel-ivory-050, #fbf7ef);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 0 0 1px rgba(0, 0, 0, 0.28),
-        0 13px 26px rgba(0, 0, 0, 0.22),
-        0 0 11px rgba(230, 200, 147, 0.05);
+        inset 0 1px 0 rgb(255 255 255 / 0.052),
+        0 0.9rem 1.9rem rgb(0 0 0 / 0.18),
+        0 0 1.25rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.045);
 }
 
-.chip[data-variant="highlight"]:hover {
+.chip[data-variant="highlight"]:hover,
+.chip[data-variant="highlight"]:focus-visible {
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
+
     background:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.04) 0%,
-            rgba(255, 248, 235, 0.012) 100%),
-        linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-gold-600, #a16207), black 5%) 0%,
-            color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 7%) 100%);
-    border-color: color-mix(in oklab,
-            var(--sl-gold-400, #fbbf24) 72%,
-            black 28%);
+        radial-gradient(120% 150% at 100% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2) 0%,
+            transparent 48%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.085) 0%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.16) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 0 0 1px rgba(0, 0, 0, 0.34),
-        0 15px 28px rgba(0, 0, 0, 0.26),
-        0 0 14px rgba(199, 134, 21, 0.1);
+        0 1.05rem 2.3rem rgb(0 0 0 / 0.24),
+        0 0 1.55rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08),
+        inset 0 1px 0 rgb(255 255 255 / 0.065);
 }
 
 @media (max-width: 1279.98px) {
@@ -228,30 +273,25 @@
     }
 
     .chipsGrid {
-        gap: 0.7rem;
-    }
-
-    .chip {
-        min-block-size: 2.82rem;
+        gap: 0.72rem;
     }
 }
 
 @media (max-width: 1023.98px) {
     .directory {
-        padding-block: 0.86rem 1.04rem;
+        padding-block: 0.88rem 1.05rem;
     }
 
     .chipsGrid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.72rem;
-    }
-
-    .chip {
-        min-block-size: 2.76rem;
     }
 
     .blockTitle {
-        font-size: 0.92rem;
+        font-size: 0.9rem;
+    }
+
+    .chip {
+        min-block-size: 2.7rem;
     }
 
     .chipLabel {
@@ -261,8 +301,8 @@
 
 @media (max-width: 639.98px) {
     .directory {
-        gap: 0.96rem;
-        padding-block: 0.82rem 0.96rem;
+        gap: 0.92rem;
+        padding-block: 0.82rem 0.95rem;
     }
 
     .block {
@@ -270,34 +310,34 @@
     }
 
     .blockTitle {
-        font-size: 0.88rem;
+        font-size: 0.84rem;
+        letter-spacing: 0.07em;
     }
 
     .chipsGrid {
         grid-template-columns: 1fr;
-        gap: 0.64rem;
+        gap: 0.6rem;
     }
 
     .chip {
-        min-block-size: 2.64rem;
-        padding-inline: 0.84rem;
-        padding-block: 0.62rem;
+        min-block-size: 2.58rem;
+        padding-block: 0.6rem;
+        padding-inline: 0.82rem;
     }
 
     .chipLabel {
         font-size: 0.82rem;
-        line-height: 1.08;
     }
 }
 
 @media (max-width: 399.98px) {
     .directory {
-        padding-block: 0.76rem 0.9rem;
+        padding-block: 0.76rem 0.88rem;
     }
 
     .chip {
-        min-block-size: 2.56rem;
-        border-radius: 1.08rem;
+        min-block-size: 2.5rem;
+        border-radius: 1rem;
     }
 
     .chipLabel {
@@ -309,7 +349,6 @@
 
     .chip,
     .energyLine {
-        transition: none;
+        transition-duration: 0.01ms !important;
     }
 }
-

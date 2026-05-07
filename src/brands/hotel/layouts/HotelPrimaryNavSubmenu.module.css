@@ -1,188 +1,272 @@
-/* =========================
-   Mega-submenu
-   - menos pesado
-   - melhor leitura
-   - um cartão contextual por item
-   ========================= */
+/* =========================================================
+   HotelPrimaryNavSubmenu — submenu contextual desktop
+   Estilo: Boutique Luxury Bronze / Quiet Warmth
+   ========================================================= */
 
 .submenuWrap {
     position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, -6px);
+    inset-inline: 0;
+    inset-block-start: calc(100% + 0.46rem);
+    z-index: 45;
 
-    --line-inset: var(--section-inset, clamp(0.75rem, 4vw, 2.5rem));
-    inline-size: calc(min(var(--sl-container-lg, 1360px), 100%) - 2 * var(--line-inset));
-
-    padding-block: 0.32rem 1rem;
+    inline-size: 100%;
+    max-inline-size: 1360px;
+    margin-inline: auto;
 
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    transform: translateY(-0.28rem);
+
+    transition:
+        opacity var(--hotel-transition-base, 240ms ease),
+        transform var(--hotel-transition-base, 240ms ease);
 }
 
 .submenuVisible {
     opacity: 1;
     pointer-events: auto;
-    transform: translate(-50%, 0);
+    transform: translateY(0);
 }
 
 .submenuInner {
-    display: block;
     position: relative;
-    min-height: 0;
-}
 
-.columnCard[aria-hidden="true"] {
-    display: none;
+    inline-size: 100%;
+    min-block-size: 0;
+
+    --submenu-card-width: 22rem;
 }
 
 .columnCard {
     position: absolute;
-    top: 0;
-    left: clamp(0px,
-            calc(var(--submenu-anchor-x, 50%) - 170px),
-            calc(100% - 340px));
+    isolation: isolate;
+    inset-block-start: 0;
+    inset-inline-start: clamp(0rem,
+            calc(var(--submenu-anchor-x, 50%) - 11rem),
+            calc(100% - var(--submenu-card-width)));
 
-    inline-size: 340px;
-    max-inline-size: 100%;
+    inline-size: min(var(--submenu-card-width), 100%);
+
+    overflow: hidden;
+
     margin: 0;
-    padding: 0.95rem 1rem 1rem;
-    border-radius: 20px;
+    padding: clamp(0.78rem, 1vw, 0.95rem);
+
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+    border-radius: var(--hotel-radius-lg, 1.45rem);
 
     background:
+        radial-gradient(95% 150% at 6% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 0%,
+            transparent 48%),
+        radial-gradient(88% 140% at 96% 100%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.07) 0%,
+            transparent 58%),
+        radial-gradient(72% 120% at 52% 100%,
+            rgb(155 106 51 / 0.095) 0%,
+            transparent 62%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.035) 0%,
-            rgba(255, 248, 235, 0.01) 18%,
-            rgba(0, 0, 0, 0.08) 100%),
-        linear-gradient(135deg,
-            rgba(44, 24, 11, 0.96) 0%,
-            rgba(25, 14, 8, 0.98) 100%);
-
-    border: 1px solid rgba(230, 200, 147, 0.18);
+            rgb(47 37 27 / 0.94) 0%,
+            rgb(24 19 14 / 0.965) 48%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.985) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        0 16px 28px rgba(0, 0, 0, 0.18);
+        0 1.35rem 3.2rem rgb(0 0 0 / 0.34),
+        0 0.35rem 1.1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04),
+        inset 0 1px 0 rgb(255 244 220 / 0.072),
+        inset 0 -1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075);
 
-    opacity: 0.92;
-    transform: translateY(4px);
+    backdrop-filter: blur(18px) saturate(1.08);
+    -webkit-backdrop-filter: blur(18px) saturate(1.08);
+
+    opacity: 0.96;
+    transform: translateY(0.18rem) scale(0.985);
+
     transition:
-        opacity 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
+        opacity var(--hotel-transition-base, 240ms ease),
+        transform var(--hotel-transition-base, 240ms ease),
+        border-color var(--hotel-transition-base, 240ms ease),
+        box-shadow var(--hotel-transition-base, 240ms ease);
+}
+
+.columnCard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(90% 150% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.115) 0%,
+            transparent 50%),
+        radial-gradient(82% 135% at 100% 100%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.06) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.028) 0%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.115) 100%);
+}
+
+.columnCard::after {
+    content: "";
+    position: absolute;
+    inset-inline: 1rem;
+    inset-block-start: 0;
+    z-index: 0;
+
+    block-size: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 18%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.62) 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 82%,
+            transparent 100%);
+
+    box-shadow:
+        0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16);
 }
 
 .columnCardActive {
     opacity: 1;
-    transform: translateY(0);
-    border-color: rgba(230, 200, 147, 0.3);
+    transform: translateY(0) scale(1);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.36);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 34px rgba(0, 0, 0, 0.22);
+        0 1.55rem 3.7rem rgb(0 0 0 / 0.38),
+        0 0 0 1px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.045),
+        0 0.5rem 1.8rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.055),
+        inset 0 1px 0 rgb(255 244 220 / 0.082),
+        inset 0 -1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.085);
 }
 
 .linkList {
-    list-style: none;
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    gap: 0.28rem;
+
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
-.linkItem+.linkItem {
-    margin-top: 0.28rem;
+.linkItem {
+    min-inline-size: 0;
 }
 
 .linkItem a {
     position: relative;
-    display: block;
-    padding: 0.42rem 0.55rem 0.42rem 1rem;
-    border-radius: 12px;
 
-    color: rgba(255, 248, 240, 0.9);
-    font-size: 0.84rem;
-    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.62rem;
+
+    inline-size: 100%;
+    min-inline-size: 0;
+
+    padding-block: 0.58rem;
+    padding-inline: 0.7rem 0.78rem;
+
+    border: 1px solid transparent;
+    border-radius: var(--hotel-radius-sm, 0.85rem);
+
+    background:
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018),
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.035));
+
+    color: var(--hotel-text-soft, rgba(244, 234, 216, 0.82));
+
+    font-size: 0.86rem;
+    font-weight: 520;
+    line-height: 1.24;
     text-decoration: none;
-    opacity: 0.86;
+
+    opacity: 0.88;
 
     transition:
-        opacity 0.18s ease,
-        transform 0.18s ease,
-        color 0.18s ease,
-        background 0.18s ease;
+        transform var(--hotel-transition-fast, 160ms ease),
+        opacity var(--hotel-transition-fast, 160ms ease),
+        color var(--hotel-transition-fast, 160ms ease),
+        border-color var(--hotel-transition-fast, 160ms ease),
+        background var(--hotel-transition-fast, 160ms ease),
+        box-shadow var(--hotel-transition-fast, 160ms ease);
 }
 
 .linkItem a::before {
     content: "";
-    position: absolute;
-    left: 0.24rem;
-    top: 50%;
-    transform: translateY(-50%) rotate(-45deg);
 
-    inline-size: 6px;
-    block-size: 6px;
+    flex: 0 0 auto;
 
-    border-right: 1.5px solid rgba(255, 223, 160, 0.92);
-    border-bottom: 1.5px solid rgba(255, 223, 160, 0.92);
+    inline-size: 0.28rem;
+    block-size: 0.28rem;
 
-    opacity: 0.9;
-    pointer-events: none;
-    transition: transform 0.18s ease, border-color 0.18s ease;
+    border-radius: 999px;
+    background: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.78);
+
+    box-shadow:
+        0 0 0.75rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22),
+        0 0 0.2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12);
+
+    transition:
+        transform var(--hotel-transition-fast, 160ms ease),
+        background var(--hotel-transition-fast, 160ms ease),
+        box-shadow var(--hotel-transition-fast, 160ms ease);
 }
 
 .linkItem a:hover,
 .linkItem a:focus-visible {
+    transform: translateX(3px);
     opacity: 1;
-    transform: translateX(2px);
-    color: rgba(255, 250, 244, 0.98);
+
+    color: var(--hotel-ivory-050, #fbf7ef);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
 
     background:
-        linear-gradient(180deg, rgba(96, 59, 29, 0.34), rgba(50, 30, 16, 0.48));
+        radial-gradient(90% 140% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.105) 0%,
+            transparent 54%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13),
+            rgb(155 106 51 / 0.06) 52%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.035));
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 244 220 / 0.048),
+        0 0.72rem 1.35rem rgb(0 0 0 / 0.16),
+        0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.055);
 }
 
 .linkItem a:hover::before,
 .linkItem a:focus-visible::before {
-    transform: translateY(-50%) translateX(2px) rotate(-45deg);
-    border-color: rgba(255, 232, 196, 0.98);
+    transform: scale(1.22);
+    background: var(--hotel-champagne-soft, #ead7b0);
+
+    box-shadow:
+        0 0 0.95rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.36),
+        0 0 0.22rem rgb(255 244 220 / 0.24);
 }
 
 @media (max-width: 1180px) {
     .submenuWrap {
-        inline-size: calc(min(var(--sl-container-lg, 1360px), 100%) - 2 * var(--line-inset));
-        left: 50%;
-        transform: translate(-50%, -4px);
-    }
-
-    .submenuVisible {
-        transform: translate(-50%, 0);
-    }
-
-    .submenuInner {
-        position: static;
-    }
-
-    .columnCard {
-        position: static;
-        inline-size: 100%;
-        max-inline-size: 560px;
-        margin-inline: auto;
+        display: none;
     }
 }
 
-@media (max-width: 640px) {
-    .submenuWrap {
-        padding-block: 0.25rem 0.8rem;
-    }
+@media (prefers-reduced-motion: reduce) {
 
-    .columnCard {
-        max-inline-size: 100%;
-        margin-inline: 0;
-        padding: 0.85rem 0.9rem 0.92rem;
-        border-radius: 18px;
-    }
-
-    .linkItem a {
-        font-size: 0.8rem;
-        padding-left: 0.92rem;
+    .submenuWrap,
+    .columnCard,
+    .linkItem a,
+    .linkItem a::before {
+        transition-duration: 0.01ms !important;
     }
 }

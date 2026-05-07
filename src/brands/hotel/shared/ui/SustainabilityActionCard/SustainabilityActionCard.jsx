@@ -1,5 +1,12 @@
 import styles from "./SustainabilityActionCard.module.css";
 
+function getVariantClassName(baseName, variant) {
+  if (!variant || variant === "default") return "";
+
+  const variantName = `${variant[0].toUpperCase()}${variant.slice(1)}`;
+  return styles[`${baseName}${variantName}`] ?? "";
+}
+
 export default function SustainabilityActionCard({
   title,
   description,
@@ -10,51 +17,48 @@ export default function SustainabilityActionCard({
   className = "",
   ariaLabel,
 }) {
+  if (!title && !description) return null;
+
   const cardLabel = ariaLabel || title || "Ação sustentável";
 
-  const variantCardClass =
-    variant !== "default"
-      ? styles[`card${variant[0].toUpperCase()}${variant.slice(1)}`]
-      : "";
-
-  const variantHeaderClass =
-    variant !== "default"
-      ? styles[`header${variant[0].toUpperCase()}${variant.slice(1)}`]
-      : "";
-
-  const variantBodyClass =
-    variant !== "default"
-      ? styles[`body${variant[0].toUpperCase()}${variant.slice(1)}`]
-      : "";
-
-  const variantTitleClass =
-    variant !== "default"
-      ? styles[`title${variant[0].toUpperCase()}${variant.slice(1)}`]
-      : "";
-
-  const variantDescriptionClass =
-    variant !== "default"
-      ? styles[`description${variant[0].toUpperCase()}${variant.slice(1)}`]
-      : "";
-
-  const classNames = [styles.card, variantCardClass, className]
+  const classNames = [
+    styles.card,
+    getVariantClassName("card", variant),
+    className,
+  ]
     .filter(Boolean)
     .join(" ");
 
-  if (!title && !description) return null;
+  const headerClassName = [
+    styles.header,
+    getVariantClassName("header", variant),
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const bodyClassName = [styles.body, getVariantClassName("body", variant)]
+    .filter(Boolean)
+    .join(" ");
+
+  const titleClassName = [styles.title, getVariantClassName("title", variant)]
+    .filter(Boolean)
+    .join(" ");
+
+  const descriptionClassName = [
+    styles.description,
+    getVariantClassName("description", variant),
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <article className={classNames} aria-label={cardLabel}>
-      <header
-        className={[styles.header, variantHeaderClass]
-          .filter(Boolean)
-          .join(" ")}
-      >
+      <header className={headerClassName}>
         <div className={styles.headerTop}>
           {eyebrow ? (
             <span className={styles.eyebrow}>{eyebrow}</span>
           ) : (
-            <span />
+            <span aria-hidden="true" />
           )}
 
           {step ? <span className={styles.step}>{step}</span> : null}
@@ -67,31 +71,15 @@ export default function SustainabilityActionCard({
         ) : null}
       </header>
 
-      <div
-        className={[styles.body, variantBodyClass].filter(Boolean).join(" ")}
-      >
-        {title ? (
-          <h3
-            className={[styles.title, variantTitleClass]
-              .filter(Boolean)
-              .join(" ")}
-          >
-            {title}
-          </h3>
-        ) : null}
+      <div className={bodyClassName}>
+        {title ? <h3 className={titleClassName}>{title}</h3> : null}
 
         {title && description ? (
           <div className={styles.divider} aria-hidden="true" />
         ) : null}
 
         {description ? (
-          <p
-            className={[styles.description, variantDescriptionClass]
-              .filter(Boolean)
-              .join(" ")}
-          >
-            {description}
-          </p>
+          <p className={descriptionClassName}>{description}</p>
         ) : null}
       </div>
     </article>

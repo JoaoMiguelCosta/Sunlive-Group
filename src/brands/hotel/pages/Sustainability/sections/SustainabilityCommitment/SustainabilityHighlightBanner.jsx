@@ -35,6 +35,7 @@ export default function SustainabilityHighlightBanner() {
   return (
     <div className={styles.wrapper}>
       <HotelHighlightBanner
+        eyebrow={resolvedBanner.eyebrow}
         title={resolvedBanner.title}
         description={resolvedBanner.description}
         variant={resolvedBanner.variant ?? "centered"}

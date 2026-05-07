@@ -8,9 +8,10 @@ import styles from "./CateringService.module.css";
 
 export default function CateringServiceSection() {
   const section = hotelBrand?.pages?.dining?.sections?.catering ?? null;
+
   if (!section) return null;
 
-  const sectionId = section?.id ?? "restaurant-catering";
+  const sectionId = section?.id ?? "restaurante-catering";
   const titleId = `${sectionId}-title`;
   const introEyebrow = String(section?.introEyebrow ?? "").trim();
 

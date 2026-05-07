@@ -1,5 +1,6 @@
 import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import HotelWhoWeHostCard from "../../../../shared/ui/HotelWhoWeHostCard/HotelWhoWeHostCard.jsx";
+
 import styles from "./WhoWeHostCards.module.css";
 
 function mapItemsWithIcons(items, icons) {
@@ -15,11 +16,18 @@ function mapItemsWithIcons(items, icons) {
   });
 }
 
+function getValidItems(items) {
+  return Array.isArray(items)
+    ? items.filter((item) => item && typeof item === "object" && item.id)
+    : [];
+}
+
 export default function WhoWeHostCards({ items = [] }) {
-  if (!Array.isArray(items) || !items.length) return null;
+  const validItems = getValidItems(items);
+  if (!validItems.length) return null;
 
   const icons = hotelBrand?.icons ?? {};
-  const mappedItems = mapItemsWithIcons(items, icons);
+  const mappedItems = mapItemsWithIcons(validItems, icons);
 
   const featuredItem =
     mappedItems.find((item) => item.featured) ?? mappedItems[0] ?? null;
@@ -47,7 +55,7 @@ export default function WhoWeHostCards({ items = [] }) {
           </div>
         ) : null}
 
-        {secondaryItems.length ? (
+        {secondaryItems.length > 0 ? (
           <div className={styles.secondaryGrid}>
             {secondaryItems.map((item, index) => (
               <div

@@ -5,20 +5,24 @@
 .cardsGrid {
     inline-size: min(100%, 1360px);
     margin-inline: auto;
-    margin-top: clamp(0.15rem, 0.5vw, 0.35rem);
+    margin-top: clamp(0.1rem, 0.45vw, 0.3rem);
+
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(1rem, 1.5vw, 1.35rem);
+    gap: clamp(0.95rem, 1.55vw, 1.28rem);
     align-items: start;
 }
 
 .cardCell {
-    min-width: 0;
+    min-inline-size: 0;
 }
 
 .offerPanelWrap {
     grid-column: 1 / -1;
-    margin-top: clamp(0.15rem, 0.5vw, 0.3rem);
+
+    margin-top: clamp(0.08rem, 0.45vw, 0.25rem);
+    scroll-margin-top: 1rem;
+
     animation: offerReveal 260ms ease;
 }
 
@@ -28,17 +32,22 @@
 
 .cardActive::after {
     content: "";
+
     position: absolute;
-    inset: auto 10% -0.7rem 10%;
-    block-size: 1.3rem;
+    inset: auto 10% -0.72rem 10%;
+
+    block-size: 1.25rem;
+
     pointer-events: none;
+
     background:
         radial-gradient(circle,
-            rgba(230, 200, 147, 0.22) 0%,
-            rgba(230, 200, 147, 0.08) 42%,
-            rgba(230, 200, 147, 0) 78%);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.065) 42%,
+            transparent 78%);
+
     filter: blur(12px);
-    opacity: 0.95;
+    opacity: 0.9;
 }
 
 @keyframes offerReveal {
@@ -58,6 +67,10 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
     }
+
+    .offerPanelWrap {
+        scroll-margin-top: 5.5rem;
+    }
 }
 
 @media (max-width: 760px) {
@@ -68,7 +81,7 @@
     }
 
     .offerPanelWrap {
-        margin-top: -0.05rem;
+        margin-top: -0.04rem;
     }
 }
 

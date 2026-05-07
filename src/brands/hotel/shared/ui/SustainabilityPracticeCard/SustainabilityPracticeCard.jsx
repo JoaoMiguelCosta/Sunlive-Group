@@ -31,19 +31,19 @@ export default function SustainabilityPracticeCard({
   media = null,
   className = "",
 }) {
-  const classNames = [styles.card, featured ? styles.featured : "", className]
-    .filter(Boolean)
-    .join(" ");
-
   if (!title) return null;
 
   const hasMedia = Boolean(media?.imageSrc);
+
+  const classNames = [styles.card, featured ? styles.featured : "", className]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <article className={classNames} aria-label={title}>
       <header className={styles.header}>
         <div className={styles.topIconWrap} aria-hidden="true">
-          {topIcon}
+          {topIcon ? topIcon : <span className={styles.iconFallback} />}
         </div>
 
         <div className={styles.headerText}>
@@ -82,7 +82,7 @@ export default function SustainabilityPracticeCard({
 
           {metricText ? (
             <div className={styles.metric}>
-              <span className={styles.check} aria-hidden="true">
+              <span className={styles.metricCheck} aria-hidden="true">
                 ✓
               </span>
               <span className={styles.metricText}>{metricText}</span>
@@ -97,6 +97,10 @@ export default function SustainabilityPracticeCard({
                 src={media.imageSrc}
                 alt={media.imageAlt ?? ""}
                 className={styles.mediaImage}
+                loading="lazy"
+                style={{
+                  objectPosition: media.imagePosition ?? "center center",
+                }}
               />
 
               <div className={styles.mediaOverlay} aria-hidden="true" />

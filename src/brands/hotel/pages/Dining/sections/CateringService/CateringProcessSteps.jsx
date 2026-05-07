@@ -5,20 +5,28 @@ import HotelCateringStepCard from "../../../../shared/ui/HotelCateringStepCard/H
 
 import styles from "./CateringProcessSteps.module.css";
 
-function DetailsPanel({ item, detailsPanelLabel, panelRef = null }) {
+function DetailsPanel({
+  item,
+  detailsPanelLabel,
+  panelRef = null,
+  panelId,
+  titleId,
+}) {
   if (!item) return null;
 
   return (
     <article
+      id={panelId}
       ref={panelRef}
       className={styles.detailsPanel}
       aria-label={detailsPanelLabel}
+      aria-labelledby={titleId}
       tabIndex={-1}
     >
       <div className={styles.detailsHeader}>
         <span className={styles.detailsBadge}>Etapa {item.stepNumber}</span>
 
-        <h3 className={styles.detailsTitle}>
+        <h3 id={titleId} className={styles.detailsTitle}>
           {item.detailTitle ?? item.title}
         </h3>
       </div>
@@ -45,14 +53,20 @@ function DetailsPanel({ item, detailsPanelLabel, panelRef = null }) {
 
 export default function CateringProcessSteps() {
   const section = hotelBrand?.pages?.dining?.sections?.catering ?? null;
+
   const items = Array.isArray(section?.processSteps?.items)
     ? section.processSteps.items
     : [];
 
   const ariaLabel =
     section?.processSteps?.ariaLabel ?? "Etapas do serviço de catering";
+
   const detailsPanelLabel =
     section?.processSteps?.detailsPanelLabel ?? "Detalhe da etapa selecionada";
+
+  const sectionId = section?.id ?? "restaurante-catering";
+  const detailsPanelId = `${sectionId}-step-details`;
+  const detailsTitleId = `${sectionId}-step-details-title`;
 
   const safeItems = useMemo(() => items.filter(Boolean), [items]);
 
@@ -78,12 +92,14 @@ export default function CateringProcessSteps() {
   useEffect(() => {
     if (!shouldScrollToPanel) return;
     if (typeof window === "undefined") return;
+
     if (window.innerWidth > 980) {
       setShouldScrollToPanel(false);
       return;
     }
 
     const panelElement = detailsPanelRef.current;
+
     if (!panelElement) {
       setShouldScrollToPanel(false);
       return;
@@ -139,6 +155,8 @@ export default function CateringProcessSteps() {
               iconKey={item.iconKey}
               className={styles.stepCard}
               isActive={isActive}
+              ariaControls={detailsPanelId}
+              ariaLabel={`Ver detalhe da etapa ${item.stepNumber}: ${item.title}`}
               onClick={() => handleSelectStep(item.id)}
             />
           );
@@ -147,6 +165,8 @@ export default function CateringProcessSteps() {
 
       <DetailsPanel
         item={activeItem}
+        panelId={detailsPanelId}
+        titleId={detailsTitleId}
         detailsPanelLabel={detailsPanelLabel}
         panelRef={detailsPanelRef}
       />

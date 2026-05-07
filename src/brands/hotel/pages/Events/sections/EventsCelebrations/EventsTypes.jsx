@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
@@ -8,25 +8,38 @@ import HotelOfferPanel from "../../../../shared/ui/HotelOfferPanel/HotelOfferPan
 
 import styles from "./EventsTypes.module.css";
 
-const getColumnsFromViewport = () => {
+function getColumnsFromViewport() {
   if (typeof window === "undefined") return 4;
   if (window.innerWidth <= 760) return 1;
   if (window.innerWidth <= 1180) return 2;
   return 4;
-};
+}
+
+function getPanelRowEndIndex({ activeIndex, columns, totalItems }) {
+  if (activeIndex < 0) return -1;
+
+  if (columns >= 4) {
+    return totalItems - 1;
+  }
+
+  const rowStart = Math.floor(activeIndex / columns) * columns;
+  return Math.min(rowStart + columns - 1, totalItems - 1);
+}
 
 export default function EventsTypes() {
   const eventTypes =
     hotelBrand?.pages?.events?.sections?.eventsCelebrations?.eventTypes ?? null;
 
-  const items = Array.isArray(eventTypes?.items) ? eventTypes.items : [];
+  const sourceItems = Array.isArray(eventTypes?.items) ? eventTypes.items : [];
 
   const [columns, setColumns] = useState(getColumnsFromViewport);
+  const offerPanelRef = useRef(null);
+  const shouldRevealPanelRef = useRef(false);
 
   useEffect(() => {
-    const handleResize = () => {
+    function handleResize() {
       setColumns(getColumnsFromViewport());
-    };
+    }
 
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -38,44 +51,46 @@ export default function EventsTypes() {
 
   const accordionItems = useMemo(
     () =>
-      items.map((item) => ({
+      sourceItems.map((item) => ({
         key: item.key,
         defaultOpen: Boolean(item.defaultOpen),
       })),
-    [items],
+    [sourceItems],
   );
 
   const resolvedItems = useMemo(() => {
-    return items.map((item) => {
-      const CardIcon = item?.iconKey
-        ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
-        : null;
+    return sourceItems
+      .filter((item) => item?.key && item?.title)
+      .map((item) => {
+        const CardIcon = item?.iconKey
+          ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+          : null;
 
-      return {
-        ...item,
-        panelId: `${eventTypes?.id ?? "events-types"}-${item.key}-panel`,
-        triggerId: `${eventTypes?.id ?? "events-types"}-${item.key}-trigger`,
-        ResolvedIcon: CardIcon ?? null,
-        offerPanel: item?.offerPanel
-          ? {
-              ...item.offerPanel,
-              items: Array.isArray(item.offerPanel.items)
-                ? item.offerPanel.items.map((entry) => {
-                    const EntryIcon = entry?.iconKey
-                      ? resolveHotelIcon(hotelBrand?.icons, entry.iconKey)
-                      : null;
+        return {
+          ...item,
+          panelId: `${eventTypes?.id ?? "events-types"}-${item.key}-panel`,
+          triggerId: `${eventTypes?.id ?? "events-types"}-${item.key}-trigger`,
+          ResolvedIcon: CardIcon ?? null,
+          offerPanel: item?.offerPanel
+            ? {
+                ...item.offerPanel,
+                items: Array.isArray(item.offerPanel.items)
+                  ? item.offerPanel.items.map((entry) => {
+                      const EntryIcon = entry?.iconKey
+                        ? resolveHotelIcon(hotelBrand?.icons, entry.iconKey)
+                        : null;
 
-                    return {
-                      ...entry,
-                      Icon: EntryIcon ?? null,
-                    };
-                  })
-                : [],
-            }
-          : null,
-      };
-    });
-  }, [eventTypes?.id, items]);
+                      return {
+                        ...entry,
+                        Icon: EntryIcon ?? null,
+                      };
+                    })
+                  : [],
+              }
+            : null,
+        };
+      });
+  }, [eventTypes?.id, sourceItems]);
 
   const { isOpen, toggle } = useAccordion(accordionItems, {
     allowMultiple: false,
@@ -91,33 +106,66 @@ export default function EventsTypes() {
   const panelRowEndIndex = useMemo(() => {
     if (!activeItem?.offerPanel || activeIndex < 0) return -1;
 
-    if (columns >= 4) {
-      return resolvedItems.length - 1;
+    return getPanelRowEndIndex({
+      activeIndex,
+      columns,
+      totalItems: resolvedItems.length,
+    });
+  }, [activeItem, activeIndex, columns, resolvedItems.length]);
+
+  useEffect(() => {
+    if (!shouldRevealPanelRef.current) return;
+    if (typeof window === "undefined") return;
+    if (window.innerWidth > 1180) {
+      shouldRevealPanelRef.current = false;
+      return;
     }
 
-    const rowStart = Math.floor(activeIndex / columns) * columns;
-    return Math.min(rowStart + columns - 1, resolvedItems.length - 1);
-  }, [activeItem, activeIndex, columns, resolvedItems.length]);
+    const node = offerPanelRef.current;
+    if (!node) {
+      shouldRevealPanelRef.current = false;
+      return;
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      node.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+
+      shouldRevealPanelRef.current = false;
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeItem]);
+
+  function handleToggle(itemKey) {
+    shouldRevealPanelRef.current = true;
+    toggle(itemKey);
+  }
 
   if (!resolvedItems.length) return null;
 
   return (
     <div className={styles.block}>
-      <div className={styles.cardsGrid}>
+      <div
+        className={styles.cardsGrid}
+        aria-label={eventTypes?.ariaLabel ?? "Tipos de eventos"}
+      >
         {resolvedItems.map((item, index) => {
           const open = isOpen(item.key);
           const shouldRenderPanelHere =
             activeItem?.offerPanel && panelRowEndIndex === index;
 
           return (
-            <Fragment key={item.id}>
+            <Fragment key={item.id ?? item.key}>
               <div className={styles.cardCell}>
                 <HotelProfileCard
                   title={item.title}
                   subtitle={item.subtitle}
                   description={item.description}
-                  ctaLabel={item.ctaLabel ?? "Ver Detalhes"}
-                  onClick={() => toggle(item.key)}
+                  ctaLabel={item.ctaLabel ?? "Ver detalhes"}
+                  onClick={() => handleToggle(item.key)}
                   detailsOpen={open}
                   controlsId={item.panelId}
                   buttonId={item.triggerId}
@@ -130,6 +178,7 @@ export default function EventsTypes() {
               {shouldRenderPanelHere ? (
                 <div
                   id={activeItem.panelId}
+                  ref={offerPanelRef}
                   className={styles.offerPanelWrap}
                   role="region"
                   aria-labelledby={activeItem.triggerId}

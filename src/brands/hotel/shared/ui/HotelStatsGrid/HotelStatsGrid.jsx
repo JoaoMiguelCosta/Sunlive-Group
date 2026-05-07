@@ -30,7 +30,9 @@ export default function HotelStatsGrid({
   ariaLabel = "Indicadores",
   variant = "default",
 }) {
-  const safeItems = Array.isArray(items) ? items : [];
+  const safeItems = Array.isArray(items)
+    ? items.filter((item) => item?.id && (item.value || item.description))
+    : [];
 
   if (!safeItems.length) return null;
 
@@ -64,14 +66,16 @@ export default function HotelStatsGrid({
             aria-label={itemAria}
           >
             <div className={styles.cardTop}>
-              <div className={styles.iconWrap}>{icon}</div>
+              {icon ? <div className={styles.iconWrap}>{icon}</div> : null}
 
               {item.label ? <p className={styles.label}>{item.label}</p> : null}
             </div>
 
             <div className={styles.metricBlock}>
-              <p className={styles.value}>{item.value}</p>
-              <p className={styles.description}>{item.description}</p>
+              {item.value ? <p className={styles.value}>{item.value}</p> : null}
+              {item.description ? (
+                <p className={styles.description}>{item.description}</p>
+              ) : null}
             </div>
           </article>
         );

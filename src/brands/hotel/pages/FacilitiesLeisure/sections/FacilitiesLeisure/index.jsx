@@ -12,22 +12,22 @@ export default function FacilitiesLeisureSection() {
   if (!section) return null;
 
   const sectionId = section.id ?? "facilities-leisure";
-  const sectionAriaLabel =
-    section?.ui?.sectionAriaLabel ?? "Instalações e Lazer";
+  const titleId = `${sectionId}-title`;
 
   return (
     <section
       id={sectionId}
       className={styles.section}
-      aria-label={sectionAriaLabel}
+      aria-labelledby={titleId}
     >
       <div className={styles.inner}>
         <div className={styles.headerBlock}>
-          <TitleFacilitiesLeisure />
+          <TitleFacilitiesLeisure
+            titleId={titleId}
+            className={styles.sectionTitle}
+          />
 
-          <div className={styles.descriptionWrap}>
-            <DescriptionFacilitiesLeisure />
-          </div>
+          <DescriptionFacilitiesLeisure className={styles.sectionDescription} />
         </div>
 
         <FacilitiesLeisureGallery />

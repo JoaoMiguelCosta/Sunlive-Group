@@ -1,268 +1,146 @@
 .card {
-    --card-radius: clamp(1.35rem, 1.7vw, 1.7rem);
+    --card-radius: clamp(1.18rem, 1.65vw, 1.55rem);
 
-    --text-main: rgba(255, 248, 240, 0.96);
-    --text-soft: rgba(255, 241, 224, 0.82);
+    --text-main: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.965);
+    --text-soft: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.74);
+    --text-muted: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.64);
 
-    --gold-line: rgba(230, 200, 147, 0.24);
+    --line-soft: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16);
+    --line-medium: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
 
     --card-background:
-        radial-gradient(120% 120% at 0% 0%, rgba(241, 205, 132, 0.08), transparent 42%),
-        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.09), transparent 48%),
-        linear-gradient(180deg, rgba(255, 248, 235, 0.03) 0%, rgba(255, 248, 235, 0.01) 18%, rgba(0, 0, 0, 0.1) 100%),
-        linear-gradient(135deg, rgba(50, 27, 13, 0.97) 0%, rgba(30, 16, 9, 0.985) 55%, rgba(22, 12, 8, 1) 100%);
+        radial-gradient(120% 130% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075) 0%,
+            transparent 42%),
+        radial-gradient(130% 145% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.052) 0%,
+            transparent 50%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.03) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.01) 20%,
+            rgb(0 0 0 / 0.105) 100%),
+        linear-gradient(135deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.84) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.97) 100%);
 
     --card-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.04),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
-        0 14px 28px rgba(0, 0, 0, 0.14);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.044),
+        inset 0 -1px 0 rgb(0 0 0 / 0.14),
+        0 16px 36px rgb(0 0 0 / 0.17);
 
     --card-hover-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
-        0 18px 34px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.054),
+        inset 0 -1px 0 rgb(0 0 0 / 0.14),
+        0 22px 48px rgb(0 0 0 / 0.22),
+        0 0 0 1px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.024);
 
     --card-open-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.14),
-        0 20px 40px rgba(0, 0, 0, 0.2),
-        0 0 16px rgba(230, 200, 147, 0.06);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.058),
+        inset 0 -1px 0 rgb(0 0 0 / 0.14),
+        0 24px 52px rgb(0 0 0 / 0.24),
+        0 0 22px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07);
 
-    --top-band-height: clamp(2.7rem, 2.7vw, 3rem);
+    --top-band-height: clamp(2.45rem, 2.6vw, 2.85rem);
+
     --top-band-background:
-        linear-gradient(180deg, rgba(139, 87, 42, 0.92) 0%, rgba(100, 61, 29, 0.96) 55%, rgba(79, 47, 23, 0.98) 100%);
+        radial-gradient(90% 140% at 50% -20%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.11) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.078) 58%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.26) 100%);
 
-    --medallion-size: clamp(3.15rem, 3.2vw, 3.4rem);
+    --medallion-size: clamp(3.05rem, 3.2vw, 3.35rem);
+
     --medallion-background:
-        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.16), transparent 55%),
-        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.08), transparent 72%),
-        linear-gradient(180deg, rgba(78, 42, 18, 0.92) 0%, rgba(42, 21, 10, 0.96) 100%);
+        radial-gradient(circle at 30% 20%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
+            transparent 55%),
+        radial-gradient(circle at 50% 58%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            transparent 72%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.24) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.82) 100%);
 
-    --header-min-height: clamp(7.2rem, 8vw, 7.9rem);
-    --header-padding: clamp(1.9rem, 2vw, 2rem) 1rem 0.82rem;
+    --header-min-height: clamp(6.9rem, 7.6vw, 7.6rem);
+    --header-padding: clamp(1.8rem, 1.9vw, 1.95rem) 1rem 0.78rem;
+
     --header-background:
-        linear-gradient(180deg, rgba(135, 82, 38, 0.92) 0%, rgba(98, 58, 28, 0.96) 52%, rgba(79, 47, 23, 0.98) 100%);
+        radial-gradient(90% 120% at 50% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.034) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 100%);
 
     --title-max-width: 14ch;
-    --title-size: clamp(1.12rem, 0.42vw + 1rem, 1.32rem);
+    --title-size: clamp(1.08rem, 0.42vw + 0.98rem, 1.26rem);
     --title-weight: 800;
-    --title-min-height: calc(1.32rem * 1.12 * 2);
+    --title-min-height: calc(1.26rem * 1.12 * 2);
 
     --subtitle-max-width: 24ch;
-    --subtitle-size: clamp(0.9rem, 0.16vw + 0.87rem, 0.97rem);
-    --subtitle-min-height: calc(0.97rem * 1.26 * 2);
+    --subtitle-size: clamp(0.88rem, 0.16vw + 0.84rem, 0.95rem);
+    --subtitle-min-height: calc(0.95rem * 1.28 * 2);
 
-    --body-padding: 0.98rem 1rem 0.92rem;
+    --body-padding: 0.92rem 1rem 0.9rem;
+
     --body-background:
-        radial-gradient(680px 220px at 50% 0%, rgba(230, 200, 147, 0.06), transparent 58%),
-        linear-gradient(180deg, rgba(70, 43, 21, 0.3), rgba(38, 23, 11, 0.14));
+        radial-gradient(680px 220px at 50% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.046) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 0%,
+            rgb(0 0 0 / 0.035) 100%);
 
-    --description-size: clamp(0.92rem, 0.1vw + 0.9rem, 0.98rem);
+    --description-size: clamp(0.9rem, 0.1vw + 0.88rem, 0.96rem);
     --description-line-clamp: 3;
-    --description-min-height: calc(0.98rem * 1.48 * 3);
+    --description-min-height: calc(0.96rem * 1.48 * 3);
 
-    --footer-padding: 0.86rem 1rem 1rem;
+    --footer-padding: 0.84rem 1rem 1rem;
+
     --footer-background:
-        linear-gradient(180deg, rgba(47, 29, 15, 0.76), rgba(35, 21, 11, 0.96));
+        linear-gradient(180deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.26) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.7) 100%);
 
     --cta-min-height: 2.55rem;
     --cta-padding: 0.62rem 1rem;
-    --cta-border: 1px solid rgba(230, 200, 147, 0.3);
+
+    --cta-border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+
     --cta-background:
-        linear-gradient(180deg, rgba(92, 57, 28, 0.68), rgba(42, 25, 13, 0.9));
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.016) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.52);
+
     --cta-hover-background:
-        linear-gradient(180deg, rgba(112, 69, 34, 0.8), rgba(50, 30, 15, 0.94));
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.135) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.09) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.62);
 
     position: relative;
     isolation: isolate;
-    inline-size: 100%;
-    min-width: 0;
-    block-size: 100%;
     overflow: hidden;
-    border-radius: var(--card-radius);
+
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--gold-line);
+
+    inline-size: 100%;
+    min-inline-size: 0;
+    block-size: 100%;
+
+    border-radius: var(--card-radius);
+    border: 1px solid var(--line-soft);
+
     background: var(--card-background);
     box-shadow: var(--card-shadow);
+
     color: var(--text-main);
-    transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease;
-}
 
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(180deg, rgba(255, 248, 235, 0.06) 0%, rgba(255, 248, 235, 0.016) 16%, rgba(255, 255, 255, 0) 38%);
-    opacity: 0.95;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(230, 200, 147, 0.4);
-    box-shadow: var(--card-hover-shadow);
-}
-
-.cardOpen {
-    border-color: rgba(230, 200, 147, 0.5);
-    box-shadow: var(--card-open-shadow);
-}
-
-.topBand {
-    position: relative;
-    block-size: var(--top-band-height);
-    background: var(--top-band-background);
-    border-bottom: 1px solid rgba(255, 248, 235, 0.07);
-}
-
-.topGlow {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(90deg, transparent 0%, rgba(230, 200, 147, 0.1) 50%, transparent 100%);
-    opacity: 0.7;
-}
-
-.medallion {
-    position: absolute;
-    inset-inline-start: 50%;
-    inset-block-start: 100%;
-    transform: translate(-50%, -50%);
-    inline-size: var(--medallion-size);
-    block-size: var(--medallion-size);
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(241, 205, 132, 0.22);
-    background: var(--medallion-background);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.08),
-        0 8px 20px rgba(0, 0, 0, 0.18);
-    color: rgba(241, 205, 132, 0.98);
-}
-
-.icon {
-    inline-size: clamp(1.04rem, 1.12vw, 1.18rem);
-    block-size: clamp(1.04rem, 1.12vw, 1.18rem);
-    color: currentColor;
-    stroke: currentColor;
-    filter: drop-shadow(0 0 8px rgba(241, 205, 132, 0.14));
-}
-
-.iconPlaceholder {
-    inline-size: 1.02rem;
-    block-size: 1.02rem;
-    border-radius: 0.4rem;
-    background: rgba(255, 248, 235, 0.14);
-    box-shadow: inset 0 0 0 1px rgba(255, 248, 235, 0.08);
-}
-
-.header {
-    display: grid;
-    align-content: start;
-    justify-items: center;
-    min-block-size: var(--header-min-height);
-    padding: var(--header-padding);
-    background: var(--header-background);
-    border-bottom: 1px solid rgba(230, 200, 147, 0.14);
-    text-align: center;
-}
-
-.title {
-    margin: 0;
-    max-inline-size: var(--title-max-width);
-    font-size: var(--title-size);
-    font-weight: var(--title-weight);
-    line-height: 1.12;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-    display: -webkit-box;
-    display: box;
-    -webkit-box-orient: vertical;
-    box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    overflow: hidden;
-    min-block-size: var(--title-min-height);
-}
-
-.subtitle {
-    margin: 0.42rem 0 0;
-    max-inline-size: var(--subtitle-max-width);
-    color: var(--text-soft);
-    font-size: var(--subtitle-size);
-    line-height: 1.26;
-    text-wrap: balance;
-    display: -webkit-box;
-    display: box;
-    -webkit-box-orient: vertical;
-    box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    overflow: hidden;
-    min-block-size: var(--subtitle-min-height);
-}
-
-.body {
-    flex: 1 1 auto;
-    display: flex;
-    align-items: flex-start;
-    padding: var(--body-padding);
-    background: var(--body-background);
-    border-bottom: 1px solid rgba(230, 200, 147, 0.08);
-}
-
-.description {
-    margin: 0;
-    inline-size: 100%;
-    color: rgba(255, 248, 240, 0.9);
-    font-size: var(--description-size);
-    line-height: 1.48;
-    text-align: center;
-    text-wrap: pretty;
-    display: -webkit-box;
-    display: box;
-    -webkit-box-orient: vertical;
-    box-orient: vertical;
-    -webkit-line-clamp: var(--description-line-clamp);
-    line-clamp: var(--description-line-clamp);
-    overflow: hidden;
-    min-block-size: var(--description-min-height);
-    word-break: break-word;
-}
-
-.footer {
-    padding: var(--footer-padding);
-    background: var(--footer-background);
-    display: flex;
-    justify-content: center;
-}
-
-.cta {
-    appearance: none;
-    border: var(--cta-border);
-    outline: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.44rem;
-    min-block-size: var(--cta-min-height);
-    padding: var(--cta-padding);
-    border-radius: 999px;
-    background: var(--cta-background);
-    color: rgba(255, 248, 240, 0.95);
-    text-decoration: none;
-    cursor: pointer;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 7px 16px rgba(0, 0, 0, 0.16);
     transition:
         transform 180ms ease,
         border-color 180ms ease,
@@ -270,40 +148,296 @@
         background 180ms ease;
 }
 
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.056) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.016) 16%,
+            transparent 40%),
+        linear-gradient(90deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 0%,
+            transparent 18%,
+            transparent 82%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 100%);
+
+    opacity: 0.95;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: 0;
+
+    border-radius: inherit;
+    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.024);
+    pointer-events: none;
+}
+
+.cardOpen {
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.36);
+    box-shadow: var(--card-open-shadow);
+}
+
+.topBand {
+    position: relative;
+    z-index: 1;
+
+    block-size: var(--top-band-height);
+
+    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.105);
+    background: var(--top-band-background);
+}
+
+.topGlow {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 50%,
+            transparent 100%);
+    opacity: 0.68;
+}
+
+.medallion {
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-start: 100%;
+
+    transform: translate(-50%, -50%);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    inline-size: var(--medallion-size);
+    block-size: var(--medallion-size);
+
+    border-radius: 999px;
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+
+    background: var(--medallion-background);
+
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.98);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+        0 10px 22px rgb(0 0 0 / 0.17),
+        0 0 18px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075);
+}
+
+.icon {
+    inline-size: clamp(1rem, 1.12vw, 1.16rem);
+    block-size: clamp(1rem, 1.12vw, 1.16rem);
+
+    color: currentColor;
+    stroke: currentColor;
+
+    filter: drop-shadow(0 0 8px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13));
+}
+
+.iconPlaceholder {
+    inline-size: 1rem;
+    block-size: 1rem;
+
+    border-radius: 0.38rem;
+    background: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.12);
+    box-shadow: inset 0 0 0 1px rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08);
+}
+
+.header {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    align-content: start;
+    justify-items: center;
+
+    min-block-size: var(--header-min-height);
+    padding: var(--header-padding);
+
+    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.105);
+    background: var(--header-background);
+
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+
+    max-inline-size: var(--title-max-width);
+    min-block-size: var(--title-min-height);
+
+    color: var(--text-main);
+    font-size: var(--title-size);
+    font-weight: var(--title-weight);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+.subtitle {
+    margin: 0.42rem 0 0;
+
+    max-inline-size: var(--subtitle-max-width);
+    min-block-size: var(--subtitle-min-height);
+
+    color: var(--text-soft);
+    font-size: var(--subtitle-size);
+    line-height: 1.28;
+    text-wrap: balance;
+
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+.body {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: flex-start;
+    flex: 1 1 auto;
+
+    padding: var(--body-padding);
+
+    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075);
+    background: var(--body-background);
+}
+
+.description {
+    margin: 0;
+
+    inline-size: 100%;
+    min-block-size: var(--description-min-height);
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.82);
+    font-size: var(--description-size);
+    line-height: 1.48;
+    text-align: center;
+    text-wrap: pretty;
+
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: var(--description-line-clamp);
+    line-clamp: var(--description-line-clamp);
+    overflow: hidden;
+
+    word-break: break-word;
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+
+    padding: var(--footer-padding);
+    background: var(--footer-background);
+}
+
+.cta {
+    appearance: none;
+    outline: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.44rem;
+
+    min-block-size: var(--cta-min-height);
+    padding: var(--cta-padding);
+
+    border-radius: 999px;
+    border: var(--cta-border);
+
+    background: var(--cta-background);
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.93);
+
+    text-decoration: none;
+    cursor: pointer;
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.046),
+        0 8px 18px rgb(0 0 0 / 0.15);
+
+    backdrop-filter: blur(8px) saturate(1.02);
+    -webkit-backdrop-filter: blur(8px) saturate(1.02);
+
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease,
+        color 180ms ease;
+}
+
 .cta:hover {
     transform: translateY(-1px);
-    border-color: rgba(230, 200, 147, 0.5);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
     background: var(--cta-hover-background);
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.98);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 9px 18px rgba(0, 0, 0, 0.2),
-        0 0 12px rgba(230, 200, 147, 0.05);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.056),
+        0 10px 22px rgb(0 0 0 / 0.2),
+        0 0 14px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06);
 }
 
 .cta:focus-visible {
-    border-color: rgba(255, 223, 160, 0.82);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.72);
     box-shadow:
-        0 0 0 3px rgba(230, 200, 147, 0.16),
-        0 9px 18px rgba(0, 0, 0, 0.2);
+        0 0 0 3px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14),
+        0 10px 22px rgb(0 0 0 / 0.2);
 }
 
 .cta:disabled {
-    opacity: 0.56;
+    opacity: 0.55;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
 
 .ctaLabel {
-    font-size: clamp(0.92rem, 0.1vw + 0.9rem, 0.98rem);
+    font-size: clamp(0.9rem, 0.1vw + 0.88rem, 0.96rem);
     font-weight: 800;
+    line-height: 1;
     letter-spacing: 0.01em;
 }
 
 .ctaChevron {
-    color: rgba(255, 214, 140, 0.96);
     display: inline-flex;
     align-items: center;
+
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.92);
+
     transition: transform 180ms ease;
 }
 
@@ -315,12 +449,20 @@
     --card-radius: clamp(1.45rem, 1.75vw, 1.8rem);
 }
 
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-3px);
+        border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
+        box-shadow: var(--card-hover-shadow);
+    }
+}
+
 @media (min-width: 681px) and (max-width: 980px) {
     .card {
-        --header-min-height: 7.7rem;
-        --title-min-height: calc(1.32rem * 1.12 * 2);
-        --subtitle-min-height: calc(0.97rem * 1.26 * 2);
-        --description-min-height: calc(0.98rem * 1.48 * 3);
+        --header-min-height: 7.35rem;
+        --title-min-height: calc(1.26rem * 1.12 * 2);
+        --subtitle-min-height: calc(0.95rem * 1.28 * 2);
+        --description-min-height: calc(0.96rem * 1.48 * 3);
     }
 }
 
@@ -334,7 +476,7 @@
     }
 
     .subtitle {
-        min-block-size: calc(var(--subtitle-size) * 1.26 * 2);
+        min-block-size: calc(var(--subtitle-size) * 1.28 * 2);
     }
 
     .description {
@@ -344,11 +486,11 @@
 
 @media (max-width: 700px) {
     .card {
-        border-radius: 1.2rem;
+        border-radius: 1.18rem;
     }
 
     .header {
-        padding: 1.78rem 0.9rem 0.76rem;
+        padding: 1.72rem 0.9rem 0.74rem;
     }
 
     .body {
@@ -361,7 +503,7 @@
 
     .title {
         max-inline-size: 100%;
-        font-size: 1.06rem;
+        font-size: 1.04rem;
     }
 
     .subtitle {
@@ -369,7 +511,7 @@
     }
 
     .description {
-        font-size: 0.92rem;
+        font-size: 0.9rem;
         -webkit-line-clamp: 4;
         line-clamp: 4;
     }
@@ -379,12 +521,61 @@
     }
 
     .medallion {
-        inline-size: 3rem;
-        block-size: 3rem;
+        inline-size: 2.95rem;
+        block-size: 2.95rem;
     }
 
     .icon {
-        inline-size: 1rem;
-        block-size: 1rem;
+        inline-size: 0.98rem;
+        block-size: 0.98rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .card {
+        border-radius: 1.06rem;
+    }
+
+    .header {
+        padding: 1.62rem 0.8rem 0.7rem;
+    }
+
+    .body {
+        padding: 0.78rem 0.8rem 0.74rem;
+    }
+
+    .footer {
+        padding: 0.72rem 0.8rem 0.86rem;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
+
+    .subtitle {
+        font-size: 0.86rem;
+    }
+
+    .description {
+        font-size: 0.88rem;
+        line-height: 1.44;
+    }
+
+    .ctaLabel {
+        font-size: 0.88rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .card,
+    .cta,
+    .ctaChevron {
+        transition: none;
+    }
+
+    .card:hover,
+    .cta:hover {
+        transform: none;
     }
 }

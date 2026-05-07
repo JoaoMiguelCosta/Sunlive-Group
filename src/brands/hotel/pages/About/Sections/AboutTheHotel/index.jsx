@@ -1,6 +1,7 @@
 import hotelBrand from "../../../../config/index.js";
 import AboutTheHotelHeader from "./AboutTheHotelHeader.jsx";
 import AboutTheHotelContent from "./AboutTheHotelContent.jsx";
+
 import styles from "./AboutTheHotel.module.css";
 
 export default function AboutTheHotel() {
@@ -9,7 +10,7 @@ export default function AboutTheHotel() {
 
   if (!aboutSection) return null;
 
-  const sectionId = aboutSection?.id ?? "about-the-hotel";
+  const sectionId = aboutSection.id ?? "about-the-hotel";
   const titleId = `${sectionId}-title`;
 
   return (

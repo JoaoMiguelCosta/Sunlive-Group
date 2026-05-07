@@ -48,8 +48,10 @@ export default function ComplementaryServicesGrid() {
   }, [services]);
 
   const { isOpen, open } = useAccordion(items, { allowMultiple: false });
+
   const detailPanelRef = useRef(null);
-  const activeItem = items.find((item) => isOpen(item.key)) ?? items[0];
+
+  const activeItem = items.find((item) => isOpen(item.key)) ?? items[0] ?? null;
   const activeKey = activeItem?.key ?? null;
   const detailPanelId = `${services?.id ?? "complementary-services-grid"}-detail`;
 
@@ -79,7 +81,7 @@ export default function ComplementaryServicesGrid() {
     <div id={services?.id} className={styles.block}>
       <div className={styles.grid}>
         {items.map((item) => {
-          const selected = isOpen(item.key);
+          const selected = item.key === activeKey;
 
           return (
             <HotelComplementaryServiceCard
@@ -122,7 +124,7 @@ export default function ComplementaryServicesGrid() {
                     </div>
 
                     <h3 className={styles.detailTitle}>
-                      {activeItem.detailTitle}
+                      {activeItem.detailTitle ?? activeItem.title}
                     </h3>
                   </div>
                 </div>
@@ -147,11 +149,11 @@ export default function ComplementaryServicesGrid() {
                 ) : null}
               </div>
 
-              <aside className={styles.detailHighlights}>
-                <h4 className={styles.highlightsTitle}>O que inclui</h4>
+              {Array.isArray(activeItem.highlights) &&
+              activeItem.highlights.length ? (
+                <aside className={styles.detailHighlights}>
+                  <h4 className={styles.highlightsTitle}>O que inclui</h4>
 
-                {Array.isArray(activeItem.highlights) &&
-                activeItem.highlights.length ? (
                   <ul className={styles.highlightsList}>
                     {activeItem.highlights.map((point, index) => (
                       <li
@@ -166,8 +168,8 @@ export default function ComplementaryServicesGrid() {
                       </li>
                     ))}
                   </ul>
-                ) : null}
-              </aside>
+                </aside>
+              ) : null}
             </div>
           </div>
         </section>

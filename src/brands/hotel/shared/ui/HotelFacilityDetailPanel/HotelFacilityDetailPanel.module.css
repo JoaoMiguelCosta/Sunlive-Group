@@ -1,32 +1,80 @@
 .panel {
     display: grid;
     grid-template-columns: minmax(280px, 390px) minmax(320px, 1fr);
-    gap: clamp(0.85rem, 1.35vw, 1rem);
+    gap: clamp(0.86rem, 1.36vw, 1.08rem);
     align-items: stretch;
 }
 
 .infoCard {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
     min-inline-size: 0;
     block-size: 100%;
-    border: 1px solid rgba(199, 134, 21, 0.5);
-    border-radius: clamp(1rem, 1.35vw, 1.18rem);
+
+    border-radius: clamp(1.12rem, 1.5vw, 1.38rem);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+
     background:
-        radial-gradient(120% 140% at 0% 0%, rgba(241, 205, 132, 0.1), transparent 42%),
-        radial-gradient(120% 140% at 100% 100%, rgba(199, 134, 21, 0.1), transparent 48%),
-        linear-gradient(180deg, rgba(56, 29, 11, 0.98), rgba(30, 18, 10, 1));
-    overflow: hidden;
+        radial-gradient(120% 135% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
+            transparent 42%),
+        radial-gradient(130% 150% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.064) 0%,
+            transparent 48%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.032) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.01) 20%,
+            rgb(0 0 0 / 0.1) 100%),
+        linear-gradient(135deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.84) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.97) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 38px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.048),
+        inset 0 -1px 0 rgb(0 0 0 / 0.14),
+        0 18px 40px rgb(0 0 0 / 0.2);
+}
+
+.infoCard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.064) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 18%,
+            transparent 42%);
+}
+
+.header,
+.featureList {
+    position: relative;
+    z-index: 1;
 }
 
 .header {
     display: grid;
-    gap: 0.72rem;
-    padding: 0.88rem 0.88rem 0.82rem;
+    gap: 0.76rem;
+    padding: clamp(0.92rem, 1.18vw, 1.08rem);
+
+    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16);
+
     background:
-        linear-gradient(180deg, rgba(191, 137, 50, 0.98) 0%, rgba(142, 92, 18, 0.98) 100%);
-    border-bottom: 1px solid rgba(255, 231, 184, 0.18);
+        radial-gradient(92% 130% at 50% -16%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.105) 0%,
+            transparent 56%),
+        radial-gradient(80% 112% at 50% 100%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.074) 0%,
+            transparent 70%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.15) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.105) 58%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.22) 100%);
 }
 
 .headerTop {
@@ -40,85 +88,118 @@
 .eyebrow {
     display: inline-flex;
     align-items: center;
-    min-block-size: 1.56rem;
-    padding-inline: 0.64rem;
+
+    min-block-size: 1.6rem;
+    padding-inline: 0.66rem;
     border-radius: 999px;
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
+
     font-size: 0.66rem;
     font-weight: 800;
     line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .badge {
-    background: rgba(78, 42, 18, 0.28);
-    border: 1px solid rgba(255, 240, 214, 0.16);
-    color: rgba(255, 248, 236, 0.94);
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.068) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.38);
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.92);
 }
 
 .eyebrow {
-    background: rgba(255, 248, 236, 0.12);
-    border: 1px solid rgba(255, 248, 236, 0.14);
-    color: rgba(255, 248, 236, 0.92);
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.055) 100%);
+
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.94);
 }
 
 .headerMain {
     display: flex;
     align-items: center;
-    gap: 0.72rem;
+    gap: 0.74rem;
+    min-inline-size: 0;
 }
 
 .iconCircle {
-    inline-size: clamp(2.35rem, 2.5vw, 2.7rem);
-    block-size: clamp(2.35rem, 2.5vw, 2.7rem);
-    border-radius: 999px;
-    flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(241, 205, 132, 0.22);
+    flex-shrink: 0;
+
+    inline-size: clamp(2.5rem, 2.7vw, 2.9rem);
+    block-size: clamp(2.5rem, 2.7vw, 2.9rem);
+    border-radius: 999px;
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+
     background:
-        radial-gradient(circle at 30% 20%, rgba(255, 248, 235, 0.18), transparent 55%),
-        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.1), transparent 72%),
-        linear-gradient(180deg, rgba(78, 42, 18, 0.92) 0%, rgba(42, 21, 10, 0.96) 100%);
+        radial-gradient(circle at 30% 22%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
+            transparent 55%),
+        radial-gradient(circle at 50% 58%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            transparent 72%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.28) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.82) 100%);
+
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.98);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.12),
-        0 8px 18px rgba(0, 0, 0, 0.18);
-    color: #f1cd84;
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+        0 9px 20px rgb(0 0 0 / 0.18),
+        0 0 16px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075);
 }
 
 .iconCircle :global(svg) {
-    inline-size: clamp(0.92rem, 0.9vw, 1.04rem);
-    block-size: clamp(0.92rem, 0.9vw, 1.04rem);
+    display: block;
+    inline-size: clamp(0.96rem, 1vw, 1.12rem);
+    block-size: clamp(0.96rem, 1vw, 1.12rem);
+    color: currentColor;
     stroke: currentColor;
-    filter: drop-shadow(0 0 6px rgba(241, 205, 132, 0.1));
+    filter: drop-shadow(0 0 7px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12));
 }
 
 .iconPlaceholder {
-    inline-size: 0.82rem;
-    block-size: 0.82rem;
+    inline-size: 0.86rem;
+    block-size: 0.86rem;
     border-radius: 999px;
-    background: rgba(255, 248, 236, 0.88);
+    background: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.78);
 }
 
 .title {
     margin: 0;
-    color: #ffffff;
-    font-size: clamp(1rem, 0.78vw, 1.16rem);
-    font-weight: 800;
-    line-height: 1.08;
+    min-inline-size: 0;
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.985);
+    font-size: clamp(1.04rem, 0.38vw + 0.96rem, 1.24rem);
+    font-weight: 850;
+    line-height: 1.12;
+    letter-spacing: -0.028em;
+    text-wrap: balance;
 }
 
 .description {
     margin: 0;
-    color: rgba(255, 247, 234, 0.92);
-    font-size: 0.9rem;
-    line-height: 1.46;
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.84);
+    font-size: clamp(0.9rem, 0.1vw + 0.88rem, 0.96rem);
+    line-height: 1.56;
+    text-wrap: pretty;
 }
 
 .featureList {
     display: grid;
-    gap: 0.72rem;
+    gap: 0.76rem;
+
     margin: 0;
-    padding: 0.88rem 0.88rem 0.94rem;
+    padding: clamp(0.92rem, 1.16vw, 1.08rem);
     list-style: none;
 }
 
@@ -126,62 +207,102 @@
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: start;
-    gap: 0.62rem;
-    color: rgba(245, 237, 227, 0.95);
-    font-size: 0.9rem;
-    line-height: 1.34;
+    gap: 0.64rem;
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.88);
+    font-size: clamp(0.9rem, 0.08vw + 0.88rem, 0.95rem);
+    line-height: 1.42;
+    text-wrap: pretty;
 }
 
 .check {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    inline-size: 22px;
-    block-size: 22px;
-    flex-shrink: 0;
+
+    inline-size: 1.35rem;
+    block-size: 1.35rem;
+    flex: 0 0 1.35rem;
+    margin-top: 0.08rem;
+
     border-radius: 999px;
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26);
+
     background:
-        linear-gradient(180deg, rgba(230, 183, 83, 1) 0%, rgba(199, 134, 21, 1) 100%);
-    color: #3b220d;
-    font-weight: 800;
-    border: 1px solid rgba(255, 231, 184, 0.18);
+        radial-gradient(circle at 30% 24%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.22) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.92) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.82) 100%);
+
+    color: rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.92);
+    font-size: 0.78rem;
+    font-weight: 900;
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.18),
-        0 6px 14px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.18),
+        0 7px 15px rgb(0 0 0 / 0.16);
 }
 
 .media {
     position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
     min-inline-size: 0;
     min-block-size: 100%;
     block-size: 100%;
     align-self: stretch;
-    border: 1px solid rgba(199, 134, 21, 0.5);
-    border-radius: clamp(1rem, 1.35vw, 1.18rem);
-    overflow: hidden;
+
+    border-radius: clamp(1.12rem, 1.5vw, 1.38rem);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+
     background:
-        radial-gradient(130% 140% at 0% 0%, rgba(241, 205, 132, 0.08), transparent 42%),
-        linear-gradient(180deg, rgba(70, 40, 14, 0.96), rgba(38, 23, 11, 1));
+        radial-gradient(120% 135% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
+            transparent 42%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.78) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.96) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 18px 38px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.048),
+        0 18px 40px rgb(0 0 0 / 0.2);
 }
 
-.media::after {
+.media::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
+
     background:
-        linear-gradient(180deg, rgba(255, 248, 235, 0.03), rgba(255, 248, 235, 0) 24%),
-        linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.02));
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.034) 0%,
+            transparent 24%),
+        radial-gradient(circle at center,
+            transparent 56%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.14) 100%);
+}
+
+.media::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: 2;
+    pointer-events: none;
+
+    border-radius: inherit;
+    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.026);
 }
 
 .image,
 .imagePlaceholder {
     position: absolute;
     inset: 0;
+
     inline-size: 100%;
     block-size: 100%;
 }
@@ -189,39 +310,58 @@
 .image {
     display: block;
     object-fit: cover;
+    filter: saturate(1.02) contrast(1.02) brightness(0.96);
 }
 
 .imagePlaceholder {
     display: grid;
     place-items: center;
     gap: 0.7rem;
+
     padding: 1.2rem;
     text-align: center;
+
     background:
-        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.08), rgba(255, 255, 255, 0) 55%),
-        linear-gradient(180deg, rgba(70, 40, 14, 0.96), rgba(38, 23, 11, 1));
-    color: rgba(255, 248, 236, 0.92);
+        radial-gradient(circle at 30% 30%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
+            transparent 55%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.9) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.98) 100%);
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.9);
 }
 
 .placeholderBadge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-block-size: 1.7rem;
-    padding-inline: 0.74rem;
+
+    min-block-size: 1.75rem;
+    padding-inline: 0.76rem;
+
     border-radius: 999px;
-    border: 1px solid rgba(255, 240, 214, 0.16);
-    background: rgba(255, 248, 236, 0.08);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.062) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.42);
+
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.92);
     font-size: 0.7rem;
     font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
 }
 
 .placeholderText {
     font-size: clamp(0.96rem, 1.6vw, 1.1rem);
     font-weight: 700;
     line-height: 1.3;
+    text-wrap: balance;
 }
 
 @media (max-width: 1200px) {
@@ -237,20 +377,34 @@
 
 @media (max-width: 720px) {
     .panel {
-        gap: 0.85rem;
+        gap: 0.82rem;
+    }
+
+    .infoCard,
+    .media {
+        border-radius: 1.08rem;
     }
 
     .header {
-        padding: 0.86rem;
+        padding: 0.9rem;
+    }
+
+    .headerMain {
+        gap: 0.66rem;
+    }
+
+    .iconCircle {
+        inline-size: 2.42rem;
+        block-size: 2.42rem;
     }
 
     .featureList {
-        gap: 0.76rem;
-        padding: 0.9rem 0.86rem 0.95rem;
+        gap: 0.74rem;
+        padding: 0.9rem;
     }
 
     .featureItem {
-        font-size: 0.92rem;
+        font-size: 0.91rem;
     }
 
     .media {

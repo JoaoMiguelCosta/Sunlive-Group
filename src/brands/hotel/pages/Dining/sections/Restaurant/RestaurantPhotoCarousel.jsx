@@ -21,6 +21,9 @@ export default function RestaurantPhotoCarousel() {
             fallbackLabel={fallbackLabel}
             fallbackEyebrow={fallbackEyebrow}
             fallbackTitle={fallbackTitle}
+            previousLabel="Imagem anterior da restauração"
+            nextLabel="Imagem seguinte da restauração"
+            indicatorsLabel="Navegação da galeria de restauração"
             className={styles.carouselStage}
             captionClassName={styles.restaurantCaption}
             indicatorDockClassName={styles.restaurantIndicatorDock}
@@ -29,11 +32,11 @@ export default function RestaurantPhotoCarousel() {
             showCaption
             fitMode="cover"
             imagePosition="center center"
-            imageBackground="#170d07"
+            imageBackground="#130c08"
             showImageBackdrop
             backdropBlur="20px"
             backdropScale={1.16}
-            backdropOpacity={0.56}
+            backdropOpacity={0.54}
           />
         </div>
       </div>

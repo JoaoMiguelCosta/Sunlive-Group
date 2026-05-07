@@ -6,6 +6,10 @@ const clampIndex = (index, length) => {
   return ((index % length) + length) % length;
 };
 
+function joinClassNames(...classNames) {
+  return classNames.filter(Boolean).join(" ");
+}
+
 export default function HotelPhotoCarouselBase({
   items = [],
   fallbackLabel = "Fotos",
@@ -15,6 +19,9 @@ export default function HotelPhotoCarouselBase({
   nextLabel = "Foto seguinte",
   indicatorsLabel = "Indicadores da galeria",
   className = "",
+  captionClassName = "",
+  indicatorDockClassName = "",
+  indicatorRailClassName = "",
   showIndicators = true,
   showCaption = false,
   initialIndex = 0,
@@ -55,6 +62,7 @@ export default function HotelPhotoCarouselBase({
     : clampIndex(internalActiveIndex, normalizedItems.length);
 
   const activeItem = hasItems ? normalizedItems[resolvedIndex] : null;
+
   const activeSrc = activeItem?.src ?? null;
   const activeAlt = activeItem?.alt ?? fallbackLabel;
   const activeLabel = activeItem?.label ?? fallbackLabel;
@@ -64,16 +72,30 @@ export default function HotelPhotoCarouselBase({
   const resolvedImageBackground =
     activeItem?.imageBackground ?? imageBackground;
 
+  const shouldShowCaption = showCaption && Boolean(activeItem?.label);
+  const shouldShowIndicators =
+    showIndicators && hasItems && normalizedItems.length > 1;
+
   const imageClassName =
     resolvedFitMode === "contain"
-      ? `${styles.image} ${styles.imageContain}`
-      : `${styles.image} ${styles.imageCover}`;
+      ? joinClassNames(styles.image, styles.imageContain)
+      : joinClassNames(styles.image, styles.imageCover);
+
+  const stageStyle = {
+    "--carousel-image-bg": resolvedImageBackground,
+    "--carousel-image-position": resolvedImagePosition,
+    "--carousel-backdrop-blur": backdropBlur,
+    "--carousel-backdrop-scale": String(backdropScale),
+    "--carousel-backdrop-current-scale": String(backdropScale),
+    "--carousel-backdrop-opacity": String(backdropOpacity),
+    background: resolvedImageBackground,
+  };
 
   const setIndex = useCallback(
     (index) => {
-      const safeIndex = clampIndex(index, normalizedItems.length);
-
       if (!hasItems) return;
+
+      const safeIndex = clampIndex(index, normalizedItems.length);
 
       if (!isControlled) {
         setInternalActiveIndex(safeIndex);
@@ -106,31 +128,24 @@ export default function HotelPhotoCarouselBase({
     setIndex(resolvedIndex + 1);
   }, [hasItems, onNext, resolvedIndex, setIndex]);
 
-  const shouldShowCaption = showCaption && Boolean(activeItem?.label);
-
   return (
     <div
-      className={`${styles.stage} ${className}`.trim()}
-      style={{ background: resolvedImageBackground }}
+      className={joinClassNames(styles.stage, className)}
+      style={stageStyle}
+      data-has-caption={shouldShowCaption ? "true" : "false"}
+      data-has-indicators={shouldShowIndicators ? "true" : "false"}
     >
       {activeSrc ? (
         <>
           {showImageBackdrop ? (
-            <div
-              className={styles.backdropLayer}
-              aria-hidden="true"
-              style={{ opacity: backdropOpacity }}
-            >
+            <div className={styles.backdropLayer} aria-hidden="true">
               <img
                 className={styles.backdropImage}
                 src={activeSrc}
                 alt=""
                 loading="lazy"
-                style={{
-                  objectPosition: resolvedImagePosition,
-                  filter: `blur(${backdropBlur}) saturate(1.04) brightness(0.72)`,
-                  transform: `scale(${backdropScale})`,
-                }}
+                decoding="async"
+                draggable="false"
               />
               <div className={styles.backdropTint} />
             </div>
@@ -141,7 +156,8 @@ export default function HotelPhotoCarouselBase({
             src={activeSrc}
             alt={activeAlt}
             loading={resolvedIndex === 0 ? "eager" : "lazy"}
-            style={{ objectPosition: resolvedImagePosition }}
+            decoding="async"
+            draggable="false"
           />
 
           <div className={styles.imageOverlay} aria-hidden="true" />
@@ -156,7 +172,10 @@ export default function HotelPhotoCarouselBase({
       )}
 
       {shouldShowCaption ? (
-        <div className={styles.caption} aria-label={activeLabel}>
+        <div
+          className={joinClassNames(styles.caption, captionClassName)}
+          aria-label={activeLabel}
+        >
           <span className={styles.captionText}>{activeLabel}</span>
         </div>
       ) : null}
@@ -165,7 +184,7 @@ export default function HotelPhotoCarouselBase({
         <>
           <button
             type="button"
-            className={`${styles.navButton} ${styles.navLeft}`}
+            className={joinClassNames(styles.navButton, styles.navLeft)}
             onClick={goPrev}
             aria-label={previousLabel}
           >
@@ -176,7 +195,7 @@ export default function HotelPhotoCarouselBase({
 
           <button
             type="button"
-            className={`${styles.navButton} ${styles.navRight}`}
+            className={joinClassNames(styles.navButton, styles.navRight)}
             onClick={goNext}
             aria-label={nextLabel}
           >
@@ -187,9 +206,20 @@ export default function HotelPhotoCarouselBase({
         </>
       ) : null}
 
-      {showIndicators && hasItems && normalizedItems.length > 1 ? (
-        <div className={styles.indicatorDock} aria-label={indicatorsLabel}>
-          <div className={styles.indicatorRail}>
+      {shouldShowIndicators ? (
+        <div
+          className={joinClassNames(
+            styles.indicatorDock,
+            indicatorDockClassName,
+          )}
+          aria-label={indicatorsLabel}
+        >
+          <div
+            className={joinClassNames(
+              styles.indicatorRail,
+              indicatorRailClassName,
+            )}
+          >
             {normalizedItems.map((item, index) => {
               const isActive = index === resolvedIndex;
 
@@ -197,9 +227,10 @@ export default function HotelPhotoCarouselBase({
                 <button
                   key={item.id ?? `carousel-dot-${index}`}
                   type="button"
-                  className={`${styles.indicatorDot} ${
-                    isActive ? styles.indicatorDotActive : ""
-                  }`}
+                  className={joinClassNames(
+                    styles.indicatorDot,
+                    isActive ? styles.indicatorDotActive : "",
+                  )}
                   onClick={() => setIndex(index)}
                   aria-label={`Ver imagem ${index + 1}`}
                   aria-pressed={isActive}

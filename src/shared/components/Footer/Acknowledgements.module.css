@@ -25,9 +25,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     padding: 0.05rem;
     border-radius: 14px;
     text-decoration: none;
+
     transition:
         transform 120ms ease,
         filter 120ms ease,
@@ -42,25 +44,154 @@
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .click {
-        transition: none;
-    }
-}
-
 .img {
     display: block;
+
     width: 100%;
     height: auto;
     max-width: min(100%, 1120px);
     max-height: clamp(40px, 4vw, 64px);
+
     object-fit: contain;
     image-rendering: auto;
 }
 
+/* =========================================================
+   Hotel — ESTILO HOTEL NOVO
+   Boutique Luxury Editorial / Cinematic Quiet Warmth
+   ========================================================= */
+
+:global([data-brand="hotel"]) .sectionWrap {
+    --ack-accent: var(--hotel-champagne, #e8cd9c);
+    --ack-border: rgba(232, 205, 156, 0.16);
+    --ack-border-strong: rgba(232, 205, 156, 0.24);
+    --ack-surface: rgba(255, 250, 242, 0.018);
+    --ack-surface-hover: rgba(255, 250, 242, 0.04);
+
+    isolation: isolate;
+    overflow: hidden;
+
+    padding-block: clamp(0.58rem, 0.9vw, 0.78rem);
+
+    border-top: 1px solid var(--ack-border);
+    border-bottom: 1px solid var(--ack-border);
+
+    background:
+        radial-gradient(760px 160px at 50% 0%,
+            rgba(232, 205, 156, 0.055) 0%,
+            transparent 66%),
+        linear-gradient(180deg,
+            rgba(255, 250, 242, 0.018) 0%,
+            rgba(255, 250, 242, 0.006) 100%);
+}
+
+:global([data-brand="hotel"]) .sectionWrap::before {
+    content: "";
+    position: absolute;
+    inset-inline: clamp(0.9rem, 3vw, 2.4rem);
+    inset-block-start: 0;
+    block-size: 1px;
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(232, 205, 156, 0.08) 14%,
+            rgba(232, 205, 156, 0.24) 50%,
+            rgba(232, 205, 156, 0.08) 86%,
+            transparent 100%);
+}
+
+:global([data-brand="hotel"]) .sectionWrap::after {
+    content: "";
+    position: absolute;
+    inset-inline: clamp(0.9rem, 3vw, 2.4rem);
+    inset-block-end: 0;
+    block-size: 1px;
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(232, 205, 156, 0.06) 16%,
+            rgba(232, 205, 156, 0.18) 50%,
+            rgba(232, 205, 156, 0.06) 84%,
+            transparent 100%);
+}
+
+:global([data-brand="hotel"]) .inner {
+    position: relative;
+    z-index: 1;
+}
+
+:global([data-brand="hotel"]) .click {
+    padding: clamp(0.12rem, 0.35vw, 0.22rem);
+    border: 1px solid transparent;
+    border-radius: clamp(0.82rem, 1vw, 1rem);
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 250, 242, 0.018) 0%,
+            rgba(255, 250, 242, 0.004) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 250, 242, 0),
+        0 0 0 rgba(0, 0, 0, 0);
+}
+
+:global([data-brand="hotel"]) .click:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.015);
+
+    border-color: var(--ack-border-strong);
+
+    background:
+        radial-gradient(520px 120px at 50% 50%,
+            rgba(232, 205, 156, 0.055) 0%,
+            transparent 66%),
+        linear-gradient(180deg,
+            var(--ack-surface-hover) 0%,
+            rgba(255, 250, 242, 0.012) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 250, 242, 0.045),
+        0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+:global([data-brand="hotel"]) .img {
+    max-height: clamp(38px, 3.7vw, 60px);
+    opacity: 0.92;
+
+    filter:
+        saturate(0.94) contrast(1.02) brightness(0.98);
+
+    transition:
+        opacity 160ms ease,
+        filter 160ms ease;
+}
+
+:global([data-brand="hotel"]) .click:hover .img {
+    opacity: 0.98;
+
+    filter:
+        saturate(0.98) contrast(1.03) brightness(1.02);
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
 @media (max-width: 640px) {
     .img {
         max-height: clamp(36px, 8vw, 56px);
+    }
+
+    :global([data-brand="hotel"]) .sectionWrap {
+        padding-block: 0.52rem;
+    }
+
+    :global([data-brand="hotel"]) .img {
+        max-height: clamp(34px, 7.5vw, 52px);
     }
 }
 
@@ -71,5 +202,58 @@
 
     .img {
         max-height: clamp(32px, 10vw, 48px);
+    }
+
+    :global([data-brand="hotel"]) .sectionWrap {
+        padding-block: 0.44rem;
+    }
+
+    :global([data-brand="hotel"]) .img {
+        max-height: clamp(30px, 9.5vw, 46px);
+    }
+}
+
+/* =========================================================
+   Motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .click,
+    .img {
+        transition: none;
+    }
+
+    .click:hover,
+    :global([data-brand="hotel"]) .click:hover {
+        transform: none;
+    }
+}
+
+/* =========================================================
+   Fallback sem color-mix
+   ========================================================= */
+
+@supports not (background: color-mix(in oklab, white, black)) {
+    .sectionWrap {
+        border-top-color: rgba(199, 134, 21, 0.28);
+        border-bottom-color: rgba(199, 134, 21, 0.28);
+    }
+
+    .click:hover {
+        background: rgba(199, 134, 21, 0.08);
+    }
+
+    :global([data-brand="hotel"]) .sectionWrap {
+        border-top-color: rgba(232, 205, 156, 0.16);
+        border-bottom-color: rgba(232, 205, 156, 0.16);
+    }
+
+    :global([data-brand="hotel"]) .click:hover {
+        background:
+            radial-gradient(520px 120px at 50% 50%,
+                rgba(232, 205, 156, 0.055),
+                transparent 66%),
+            rgba(255, 250, 242, 0.03);
     }
 }

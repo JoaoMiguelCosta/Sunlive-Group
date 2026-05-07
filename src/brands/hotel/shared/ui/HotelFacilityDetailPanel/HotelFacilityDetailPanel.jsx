@@ -40,6 +40,10 @@ export default function HotelFacilityDetailPanel({
   imagePosition = "center center",
   fallbackLabel = "Imagem ilustrativa indisponível",
 }) {
+  const safeFeatures = Array.isArray(features) ? features.filter(Boolean) : [];
+
+  if (!title && !description && !safeFeatures.length && !image) return null;
+
   return (
     <div
       id={id}
@@ -56,7 +60,7 @@ export default function HotelFacilityDetailPanel({
 
           <div className={styles.headerMain}>
             <IconSlot icon={icon} iconLabel={iconLabel} />
-            <h3 className={styles.title}>{title}</h3>
+            {title ? <h3 className={styles.title}>{title}</h3> : null}
           </div>
 
           {description ? (
@@ -64,16 +68,18 @@ export default function HotelFacilityDetailPanel({
           ) : null}
         </header>
 
-        <ul className={styles.featureList}>
-          {features.map((feature) => (
-            <li key={feature} className={styles.featureItem}>
-              <span className={styles.check} aria-hidden="true">
-                ✓
-              </span>
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
+        {safeFeatures.length ? (
+          <ul className={styles.featureList}>
+            {safeFeatures.map((feature) => (
+              <li key={feature} className={styles.featureItem}>
+                <span className={styles.check} aria-hidden="true">
+                  ✓
+                </span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </article>
 
       <div className={styles.media}>

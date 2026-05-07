@@ -7,9 +7,10 @@ import styles from "./Desserts.module.css";
 
 export default function DessertsSection() {
   const section = hotelBrand?.pages?.dining?.sections?.desserts ?? null;
+
   if (!section) return null;
 
-  const sectionId = section?.id ?? "restaurante-buffet";
+  const sectionId = section?.id ?? "restaurante-sobremesas";
   const titleId = `${sectionId}-title`;
   const introEyebrow = String(section?.introEyebrow ?? "").trim();
 

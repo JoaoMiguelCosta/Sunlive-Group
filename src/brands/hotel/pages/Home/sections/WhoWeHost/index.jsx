@@ -10,10 +10,10 @@ export default function WhoWeHostSection() {
 
   const sectionId = section.id ?? "hotel-who-we-host";
   const titleId = `${sectionId}-title`;
+  const visualTitleId = `${sectionId}-visual-title`;
   const descriptionId = `${sectionId}-description`;
 
   const backgroundImageSrc = section?.backgroundMedia?.imageSrc ?? null;
-  const backgroundImageAlt = section?.backgroundMedia?.imageAlt ?? "";
 
   const headerLabel = section?.headerLabel ?? "";
   const headerTitle = section?.header?.title ?? "";
@@ -36,19 +36,22 @@ export default function WhoWeHostSection() {
             <div className={styles.mediaLayer} aria-hidden="true">
               <img
                 src={backgroundImageSrc}
-                alt={backgroundImageAlt}
+                alt=""
                 className={styles.backgroundImage}
+                loading="lazy"
+                decoding="async"
+                draggable="false"
               />
             </div>
           ) : null}
 
           <div className={styles.overlayLayer} aria-hidden="true" />
-          <div className={styles.frameGlow} aria-hidden="true" />
+          <div className={styles.lightLayer} aria-hidden="true" />
 
           <div className={styles.inner}>
             <header className={styles.sectionHeader}>
               {headerTitle ? (
-                <h3 id={titleId} className={styles.sectionTitle}>
+                <h3 id={visualTitleId} className={styles.sectionTitle}>
                   {headerTitle}
                 </h3>
               ) : null}

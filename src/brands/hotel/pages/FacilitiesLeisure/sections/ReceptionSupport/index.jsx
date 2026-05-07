@@ -28,6 +28,7 @@ export default function ReceptionSupportSection() {
       <div className={styles.inner}>
         <header className={styles.introBlock}>
           <TitleReceptionSupport titleId={titleId} />
+
           <div className={styles.descriptionWrap}>
             <DescriptionReceptionSupport />
           </div>

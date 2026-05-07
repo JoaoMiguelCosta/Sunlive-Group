@@ -4,7 +4,9 @@ import { ICONS, resolveHotelIcon } from "../../../../config/index.js";
 import SustainabilityActionCard from "../../../../shared/ui/SustainabilityActionCard/SustainabilityActionCard.jsx";
 
 export default function WhyChooseUsGrid({ items = [] }) {
-  const safeItems = Array.isArray(items) ? items : [];
+  const safeItems = Array.isArray(items)
+    ? items.filter((item) => item?.id && (item.title || item.description))
+    : [];
 
   if (!safeItems.length) return null;
 

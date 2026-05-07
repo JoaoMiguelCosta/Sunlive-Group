@@ -6,39 +6,81 @@
 
 .shell {
     position: relative;
+    isolation: isolate;
     inline-size: min(100%, 1360px);
 }
 
 .shell::before {
     content: "";
     position: absolute;
-    inset-inline: clamp(2%, 4vw, 5%);
-    top: -1.2rem;
-    block-size: clamp(4rem, 8vw, 6rem);
+    inset-inline: clamp(4%, 7vw, 10%);
+    inset-block-start: -1.2rem;
     z-index: 0;
+
+    block-size: clamp(4.5rem, 8vw, 7rem);
     pointer-events: none;
+    border-radius: 999px;
+
     background:
-        radial-gradient(circle at 50% 50%, rgba(241, 205, 132, 0.18), transparent 70%);
-    filter: blur(22px);
+        radial-gradient(circle at 50% 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07) 38%,
+            transparent 72%);
+
+    filter: blur(24px);
     opacity: 0.72;
+}
+
+.shell::after {
+    content: "";
+    position: absolute;
+    inset-inline: 8%;
+    inset-block-end: -1.15rem;
+    z-index: 0;
+
+    block-size: clamp(3.5rem, 6vw, 5.5rem);
+    pointer-events: none;
+    border-radius: 999px;
+
+    background:
+        radial-gradient(circle at 50% 50%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.13) 0%,
+            transparent 72%);
+
+    filter: blur(26px);
+    opacity: 0.64;
 }
 
 .card {
     position: relative;
     z-index: 1;
-    inline-size: 100%;
+    isolation: isolate;
     overflow: hidden;
-    border-radius: clamp(1.5rem, 1.9vw, 2.3rem);
-    border: 1px solid rgba(230, 200, 147, 0.28);
+
+    inline-size: 100%;
+    border-radius: clamp(1.35rem, 1.9vw, 2.1rem);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28);
+
     background:
-        linear-gradient(180deg, rgba(52, 29, 12, 0.66), rgba(30, 18, 10, 0.82)),
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.14), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.08), transparent 60%),
-        #26170b;
+        radial-gradient(120% 120% at 50% -10%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 0%,
+            transparent 58%),
+        radial-gradient(110% 110% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.08) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 20%,
+            rgb(0 0 0 / 0.12) 100%),
+        linear-gradient(135deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.88) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.98) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 22px 54px rgba(0, 0, 0, 0.28),
-        0 0 0 1px rgba(255, 255, 255, 0.015);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052),
+        inset 0 -1px 0 rgb(0 0 0 / 0.16),
+        0 24px 58px rgb(0 0 0 / 0.25),
+        0 0 0 1px rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014);
 }
 
 .card::before {
@@ -46,14 +88,19 @@
     position: absolute;
     inset: 0;
     z-index: 2;
+
     pointer-events: none;
     border-radius: inherit;
+
     background:
         linear-gradient(180deg,
-            rgba(255, 247, 228, 0.04) 0%,
-            rgba(255, 247, 228, 0) 16%,
-            rgba(255, 247, 228, 0) 84%,
-            rgba(255, 247, 228, 0.03) 100%);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052) 0%,
+            transparent 18%,
+            transparent 82%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.025) 100%),
+        radial-gradient(80% 80% at 50% 50%,
+            transparent 58%,
+            rgb(0 0 0 / 0.12) 100%);
 }
 
 .card::after {
@@ -61,9 +108,10 @@
     position: absolute;
     inset: 1px;
     z-index: 2;
+
     pointer-events: none;
     border-radius: inherit;
-    border: 1px solid rgba(255, 228, 182, 0.04);
+    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.038);
 }
 
 .carouselStage {
@@ -72,28 +120,46 @@
 }
 
 .restaurantCaption {
-    left: clamp(0.85rem, 1.1vw, 1.1rem);
-    bottom: clamp(0.82rem, 1vw, 1.05rem);
+    left: clamp(0.84rem, 1.1vw, 1.08rem);
+    bottom: clamp(0.8rem, 1vw, 1rem);
+
     max-inline-size: min(78%, 24rem);
-    padding: 0.76rem 1.08rem;
-    border-color: rgba(214, 166, 74, 0.28);
+    padding: 0.72rem 1rem;
+
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.34) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.88) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 246, 225, 0.08),
-        0 12px 28px rgba(0, 0, 0, 0.26);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+        0 12px 28px rgb(0 0 0 / 0.26);
 }
 
 .restaurantIndicatorDock {
-    bottom: clamp(0.82rem, 1vw, 1.02rem);
+    bottom: clamp(0.8rem, 1vw, 1rem);
 }
 
 .restaurantIndicatorRail {
-    padding: 0.38rem 0.58rem;
-    border-color: rgba(209, 156, 70, 0.24);
+    padding: 0.36rem 0.58rem;
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+
     background:
-        linear-gradient(180deg, rgba(68, 39, 17, 0.84), rgba(28, 16, 8, 0.9));
+        linear-gradient(180deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.8) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.9) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 10px 22px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
+        0 10px 22px rgb(0 0 0 / 0.2);
+
+    backdrop-filter: blur(10px) saturate(1.02);
+    -webkit-backdrop-filter: blur(10px) saturate(1.02);
 }
 
 @media (max-width: 1180px) {
@@ -110,7 +176,7 @@
 
 @media (max-width: 720px) {
     .card {
-        border-radius: 1.2rem;
+        border-radius: 1.18rem;
     }
 
     .carouselStage {
@@ -119,13 +185,13 @@
 
     .restaurantCaption {
         max-inline-size: min(80%, 18rem);
-        padding: 0.68rem 0.92rem;
+        padding: 0.64rem 0.88rem;
     }
 }
 
 @media (max-width: 560px) {
     .card {
-        border-radius: 0.98rem;
+        border-radius: 1rem;
     }
 
     .carouselStage {
@@ -133,18 +199,18 @@
     }
 
     .restaurantCaption {
-        left: 0.62rem;
-        bottom: 0.62rem;
-        max-inline-size: calc(100% - 4.7rem);
-        padding: 0.6rem 0.84rem;
+        left: 0.58rem;
+        bottom: 0.58rem;
+        max-inline-size: calc(100% - 4.6rem);
+        padding: 0.56rem 0.78rem;
     }
 
     .restaurantIndicatorDock {
-        bottom: 0.56rem;
+        bottom: 0.52rem;
     }
 
     .restaurantIndicatorRail {
-        padding: 0.28rem 0.44rem;
+        padding: 0.28rem 0.42rem;
     }
 }
 
@@ -154,6 +220,6 @@
     }
 
     .restaurantCaption {
-        max-inline-size: calc(100% - 4.2rem);
+        max-inline-size: calc(100% - 4.1rem);
     }
 }

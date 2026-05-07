@@ -9,10 +9,13 @@ export default function HotelRoomCard({
   imageAlt,
   imageComingSoonLabel = "Imagem disponível em breve",
 }) {
+  if (!title) return null;
+
+  const safeId = id || title.toLowerCase().replace(/\s+/g, "-");
   const imageLabel = imageAlt || title || "Imagem do quarto";
 
   return (
-    <article className={styles.card} aria-labelledby={`${id}-title`}>
+    <article className={styles.card} aria-labelledby={`${safeId}-title`}>
       <div className={styles.mediaWrap}>
         {badge ? (
           <span className={styles.badge} aria-label={`Categoria: ${badge}`}>
@@ -26,6 +29,8 @@ export default function HotelRoomCard({
             src={imageSrc}
             alt={imageLabel}
             loading="lazy"
+            decoding="async"
+            draggable="false"
           />
         ) : (
           <div
@@ -36,10 +41,12 @@ export default function HotelRoomCard({
             <span>{imageComingSoonLabel}</span>
           </div>
         )}
+
+        <span className={styles.mediaOverlay} aria-hidden="true" />
       </div>
 
       <div className={styles.titleBand}>
-        <h3 id={`${id}-title`} className={styles.title}>
+        <h3 id={`${safeId}-title`} className={styles.title}>
           {title}
         </h3>
       </div>

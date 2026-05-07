@@ -1,12 +1,19 @@
-import styles from "./HotelDirectory.module.css";
-import useLocalSmoothAnchors from "../../../../shared/hooks/useLocalSmoothAnchors.js";
 import { Link, useLocation } from "react-router-dom";
+
+import useLocalSmoothAnchors from "../../../../shared/hooks/useLocalSmoothAnchors.js";
+
+import styles from "./HotelDirectory.module.css";
 
 function normalizePath(pathname) {
   if (!pathname) return "/";
+
   return pathname.endsWith("/") && pathname !== "/"
     ? pathname.slice(0, -1)
     : pathname;
+}
+
+function isValidText(value) {
+  return typeof value === "string" && value.trim().length > 0;
 }
 
 function isExternalHref(href = "") {
@@ -18,25 +25,38 @@ function isExternalHref(href = "") {
   );
 }
 
-function scrollTopSmooth() {
-  if (typeof window === "undefined") return;
-  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+function isWebExternalHref(href = "") {
+  return href.startsWith("http://") || href.startsWith("https://");
 }
 
-function isValidHref(value) {
-  return typeof value === "string" && value.trim().length > 0;
+function scrollTopSmooth() {
+  if (typeof window === "undefined") return;
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+}
+
+function getValidItems(items) {
+  return Array.isArray(items)
+    ? items.filter((item) => isValidText(item?.key) && isValidText(item?.label))
+    : [];
 }
 
 function renderChip({ item, currentPath, handleAnchorClick }) {
-  if (!item?.key || !item?.label) return null;
+  const href = String(item.href ?? "").trim();
 
-  const href = String(item.href ?? "");
+  if (!isValidText(href)) return null;
+
   const variant = item.variant || "default";
   const external = isExternalHref(href);
+  const webExternal = isWebExternalHref(href);
   const hasHash = href.includes("#");
+
   const hrefPath = normalizePath(href.split("#")[0]);
-  const isSamePage =
-    isValidHref(href) && !external && !hasHash && hrefPath === currentPath;
+  const isSamePage = !external && !hasHash && hrefPath === currentPath;
 
   const content = (
     <>
@@ -52,6 +72,8 @@ function renderChip({ item, currentPath, handleAnchorClick }) {
         href={href}
         className={styles.chip}
         data-variant={variant}
+        target={webExternal ? "_blank" : undefined}
+        rel={webExternal ? "noreferrer" : undefined}
       >
         {content}
       </a>
@@ -79,10 +101,10 @@ function renderChip({ item, currentPath, handleAnchorClick }) {
       className={styles.chip}
       data-variant={variant}
       onClick={(event) => {
-        if (isSamePage) {
-          event.preventDefault();
-          scrollTopSmooth();
-        }
+        if (!isSamePage) return;
+
+        event.preventDefault();
+        scrollTopSmooth();
       }}
     >
       {content}
@@ -91,51 +113,51 @@ function renderChip({ item, currentPath, handleAnchorClick }) {
 }
 
 export default function HotelDirectory({ data }) {
-  if (!data) return null;
-
-  const leftCols = data.left?.columns ?? [];
   const { handleAnchorClick } = useLocalSmoothAnchors();
   const location = useLocation();
 
+  if (!data) return null;
+
+  const columns = Array.isArray(data.left?.columns) ? data.left.columns : [];
   const currentPath = normalizePath(location.pathname);
 
-  const hasColumns = leftCols.some(
-    (column) =>
-      column?.title ||
-      (Array.isArray(column?.items) && column.items.length > 0),
-  );
+  const validColumns = columns
+    .map((column) => ({
+      ...column,
+      items: getValidItems(column?.items),
+    }))
+    .filter((column) => isValidText(column?.title) || column.items.length > 0);
 
-  if (!hasColumns) return null;
+  if (validColumns.length === 0) return null;
 
   return (
-    <div
+    <nav
       className={styles.directory}
-      aria-label="Links Rápidos — Estalagem de Sangalhos"
+      aria-label="Links rápidos da Estalagem de Sangalhos"
     >
-      {leftCols.map((col) => {
-        const items = Array.isArray(col?.items) ? col.items : [];
-        if (!col?.title && items.length === 0) return null;
+      {validColumns.map((column) => (
+        <section
+          key={column.key || column.title}
+          className={styles.block}
+          aria-label={column.title}
+        >
+          {isValidText(column.title) ? (
+            <h3 className={styles.blockTitle}>{column.title}</h3>
+          ) : null}
 
-        return (
-          <div key={col.key || col.title} className={styles.block}>
-            {col.title ? (
-              <h3 className={styles.blockTitle}>{col.title}</h3>
-            ) : null}
-
-            {items.length > 0 ? (
-              <div className={styles.chipsGrid}>
-                {items.map((item) =>
-                  renderChip({
-                    item,
-                    currentPath,
-                    handleAnchorClick,
-                  }),
-                )}
-              </div>
-            ) : null}
-          </div>
-        );
-      })}
-    </div>
+          {column.items.length > 0 ? (
+            <div className={styles.chipsGrid}>
+              {column.items.map((item) =>
+                renderChip({
+                  item,
+                  currentPath,
+                  handleAnchorClick,
+                }),
+              )}
+            </div>
+          ) : null}
+        </section>
+      ))}
+    </nav>
   );
 }

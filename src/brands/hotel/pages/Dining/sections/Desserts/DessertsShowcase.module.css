@@ -1,61 +1,87 @@
 .block {
-    --desserts-showcase-height: clamp(23.94rem, 37.62vw, 35.91rem);
-    --desserts-thumb-media-height: 7.36rem;
+    --desserts-showcase-height: clamp(24rem, 37vw, 36rem);
+    --desserts-thumb-media-height: 7.2rem;
 
     position: relative;
     isolation: isolate;
+
     display: grid;
-    gap: clamp(1rem, 1.8vw, 1.35rem);
+    gap: clamp(0.95rem, 1.75vw, 1.32rem);
+
+    inline-size: 100%;
 }
 
 .filterBar {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.72rem;
+    gap: 0.62rem;
 }
 
 .filterButton {
-    min-block-size: 2.8rem;
-    padding: 0.72rem 1rem;
-    border: 1px solid rgba(214, 166, 74, 0.22);
+    appearance: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-block-size: 2.52rem;
+    padding: 0.62rem 0.96rem;
+
     border-radius: 999px;
-    cursor: pointer;
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
+
     background:
-        radial-gradient(circle at 50% 0%, rgba(255, 234, 191, 0.08), transparent 58%),
-        linear-gradient(180deg, rgba(72, 36, 15, 0.86), rgba(28, 13, 7, 0.92));
-    color: rgba(255, 243, 228, 0.92);
-    font-size: 0.92rem;
-    font-weight: 700;
-    line-height: 1.2;
+        radial-gradient(circle at 50% 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.058) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.18) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.58) 100%);
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.88);
+    font-size: 0.88rem;
+    font-weight: 750;
+    line-height: 1.16;
+    cursor: pointer;
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 246, 225, 0.06),
-        0 10px 20px rgba(0, 0, 0, 0.12);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.045),
+        0 9px 18px rgb(0 0 0 / 0.11);
+
     transition:
         transform 180ms ease,
         border-color 180ms ease,
         box-shadow 180ms ease,
-        background 180ms ease;
+        background 180ms ease,
+        color 180ms ease;
 }
 
 .filterButton:hover {
     transform: translateY(-1px);
-    border-color: rgba(233, 192, 109, 0.34);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
 }
 
 .filterButton:focus-visible {
-    outline: 2px solid rgba(255, 233, 184, 0.92);
+    outline: 2px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86);
     outline-offset: 4px;
 }
 
 .filterButtonActive {
-    border-color: rgba(233, 192, 109, 0.42);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.36);
+
     background:
-        linear-gradient(180deg, rgba(194, 143, 54, 0.98) 0%, rgba(145, 95, 23, 0.98) 100%);
-    color: rgba(255, 248, 240, 0.98);
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.32) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.24) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.62);
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.98);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 245, 222, 0.16),
-        0 12px 24px rgba(0, 0, 0, 0.16);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075),
+        0 12px 24px rgb(0 0 0 / 0.15),
+        0 0 18px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07);
 }
 
 .layout {
@@ -67,21 +93,57 @@
 
 .spotlight {
     position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
     min-inline-size: 0;
     min-block-size: 0;
     block-size: 100%;
+
     display: grid;
-    overflow: hidden;
-    border-radius: clamp(1.3rem, 1.9vw, 1.9rem);
-    border: 1px solid rgba(214, 166, 74, 0.28);
+
+    border-radius: clamp(1.22rem, 1.85vw, 1.78rem);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+
     background:
-        linear-gradient(180deg, rgba(58, 32, 12, 0.74), rgba(26, 15, 10, 0.92)),
-        radial-gradient(1200px 420px at 50% -10%, rgba(230, 200, 147, 0.12), transparent 60%),
-        radial-gradient(900px 380px at 70% 115%, rgba(230, 200, 147, 0.08), transparent 60%),
-        #26170b;
+        radial-gradient(120% 130% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
+            transparent 44%),
+        radial-gradient(130% 150% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.06) 0%,
+            transparent 50%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.034) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.01) 20%,
+            rgb(0 0 0 / 0.1) 100%),
+        linear-gradient(135deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.82) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.96) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 20px 46px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05),
+        inset 0 -1px 0 rgb(0 0 0 / 0.15),
+        0 22px 52px rgb(0 0 0 / 0.22);
+}
+
+.spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    pointer-events: none;
+    border-radius: inherit;
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.045) 0%,
+            transparent 18%,
+            transparent 82%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.024) 100%),
+        radial-gradient(80% 80% at 50% 50%,
+            transparent 58%,
+            rgb(0 0 0 / 0.12) 100%);
 }
 
 .spotlightMedia {
@@ -92,96 +154,128 @@
 }
 
 .spotlightImage {
+    display: block;
+
     inline-size: 100%;
     block-size: 100%;
-    display: block;
+
     object-fit: cover;
-    transform: scale(1.02);
-    filter: saturate(1.03) contrast(1.02);
-    transition: transform 260ms ease, filter 260ms ease;
+
+    filter:
+        saturate(1.03) contrast(1.03) brightness(0.9);
+
+    transform: scale(1.018);
+
+    transition:
+        transform 300ms ease,
+        filter 300ms ease;
 }
 
 .spotlightOverlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
+
     background:
-        linear-gradient(180deg, rgba(16, 9, 5, 0.05) 0%, rgba(16, 9, 5, 0.18) 100%),
-        linear-gradient(0deg, rgba(18, 10, 6, 0.76) 0%, rgba(18, 10, 6, 0.12) 42%, rgba(18, 10, 6, 0.02) 72%);
+        linear-gradient(180deg,
+            rgb(12 8 5 / 0.02) 0%,
+            rgb(12 8 5 / 0.12) 42%,
+            rgb(12 8 5 / 0.72) 100%),
+        radial-gradient(80% 82% at 50% 40%,
+            transparent 42%,
+            rgb(0 0 0 / 0.16) 100%);
 }
 
 .spotlightContent {
     position: absolute;
     inset-inline: 0;
     inset-block-end: 0;
-    z-index: 1;
+    z-index: 3;
+
     display: grid;
-    gap: 0.72rem;
-    padding: clamp(1rem, 1.5vw, 1.35rem);
+    gap: 0.68rem;
+
+    padding: clamp(0.96rem, 1.45vw, 1.28rem);
 }
 
 .spotlightBadge {
-    inline-size: fit-content;
-    max-inline-size: 100%;
-    min-block-size: 1.95rem;
-    padding: 0.46rem 0.76rem;
-    border-radius: 999px;
-    border: 1px solid rgba(226, 185, 103, 0.18);
-    background:
-        linear-gradient(180deg, rgba(80, 44, 18, 0.82), rgba(34, 18, 10, 0.9));
-    color: rgba(255, 234, 191, 0.92);
-    font-size: 0.74rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    line-height: 1;
     display: inline-flex;
     align-items: center;
+
+    inline-size: fit-content;
+    max-inline-size: 100%;
+    min-block-size: 1.82rem;
+    padding: 0.4rem 0.72rem;
+
+    border-radius: 999px;
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.56);
+
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.94);
+    font-size: 0.7rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+
+    backdrop-filter: blur(8px) saturate(1.02);
+    -webkit-backdrop-filter: blur(8px) saturate(1.02);
 }
 
 .spotlightTitle {
     margin: 0;
-    color: rgba(255, 248, 240, 0.98);
-    font-size: clamp(1.3rem, 1.1rem + 0.5vw, 1.8rem);
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.985);
+    font-size: clamp(1.25rem, 1.02rem + 0.58vw, 1.78rem);
     font-weight: 900;
     line-height: 1.08;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.034em;
     text-wrap: balance;
-    text-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+
+    text-shadow: 0 10px 24px rgb(0 0 0 / 0.26);
 }
 
 .spotlightText {
     margin: 0;
     max-inline-size: 58ch;
-    color: rgba(255, 243, 228, 0.9);
-    font-size: 1rem;
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.84);
+    font-size: clamp(0.92rem, 0.14vw + 0.9rem, 1rem);
     line-height: 1.58;
     text-wrap: pretty;
+
+    text-shadow: 0 8px 22px rgb(0 0 0 / 0.26);
 }
 
 @media (hover: hover) {
     .spotlight:hover .spotlightImage {
         transform: scale(1.04);
-        filter: saturate(1.05) brightness(1.02);
+
+        filter:
+            saturate(1.05) contrast(1.04) brightness(0.98);
     }
 }
 
 @media (max-width: 1180px) {
     .block {
-        --desserts-showcase-height: clamp(20.52rem, 35.91vw, 29.07rem);
+        --desserts-showcase-height: clamp(20.5rem, 36vw, 29rem);
         --desserts-thumb-media-height: 6.75rem;
     }
 
     .layout {
         grid-template-columns: minmax(0, 1fr) minmax(300px, 0.92fr);
-        align-items: stretch;
     }
 }
 
 @media (max-width: 980px) {
     .block {
-        --desserts-showcase-height: clamp(18.81rem, 63.18vw, 25.65rem);
-        --desserts-thumb-media-height: 6.56rem;
+        --desserts-showcase-height: clamp(18.8rem, 63vw, 25.6rem);
+        --desserts-thumb-media-height: 6.5rem;
     }
 
     .layout {
@@ -200,45 +294,46 @@
 
 @media (max-width: 720px) {
     .block {
-        --desserts-showcase-height: clamp(15.39rem, 66.5vw, 20.52rem);
-        --desserts-thumb-media-height: 6.08rem;
-        gap: 0.9rem;
+        --desserts-showcase-height: clamp(15.4rem, 66vw, 20.5rem);
+        --desserts-thumb-media-height: 6.05rem;
+
+        gap: 0.88rem;
     }
 
     .filterBar {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 0.58rem;
+        gap: 0.54rem;
     }
 
     .filterButton {
         inline-size: 100%;
-        min-block-size: 2.65rem;
-        font-size: 0.88rem;
+        min-block-size: 2.42rem;
+        font-size: 0.86rem;
     }
 
     .spotlight {
-        border-radius: 1.08rem;
+        border-radius: 1.04rem;
     }
 
     .spotlightContent {
-        padding: 0.9rem;
-        gap: 0.62rem;
+        padding: 0.88rem;
+        gap: 0.58rem;
     }
 
     .spotlightTitle {
-        font-size: clamp(1.14rem, 4.6vw, 1.42rem);
+        font-size: clamp(1.1rem, 4.6vw, 1.38rem);
     }
 
     .spotlightText {
-        font-size: 0.92rem;
+        font-size: 0.9rem;
         line-height: 1.5;
     }
 }
 
 @media (max-width: 420px) {
     .block {
-        --desserts-showcase-height: clamp(13.87rem, 72.2vw, 17.1rem);
+        --desserts-showcase-height: clamp(13.9rem, 72vw, 17.1rem);
         --desserts-thumb-media-height: 5.7rem;
     }
 }
@@ -248,5 +343,9 @@
     .filterButton,
     .spotlightImage {
         transition: none;
+    }
+
+    .spotlight:hover .spotlightImage {
+        transform: scale(1.018);
     }
 }

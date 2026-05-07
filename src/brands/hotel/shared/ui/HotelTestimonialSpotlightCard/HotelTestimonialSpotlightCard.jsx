@@ -57,6 +57,7 @@ export default function HotelTestimonialSpotlightCard({
                 src={imageSrc}
                 alt={imageAlt}
                 className={styles.avatarImage}
+                loading="lazy"
               />
             ) : (
               <span className={styles.avatarFallback}>
@@ -99,16 +100,18 @@ export default function HotelTestimonialSpotlightCard({
       </div>
 
       <div className={styles.quoteArea}>
-        {quote ? <p className={styles.quote}>"{quote}"</p> : null}
+        {quote ? <p className={styles.quote}>“{quote}”</p> : null}
       </div>
 
       <footer className={styles.footer}>
-        <div className={styles.footerBadge}>
-          <span className={styles.inlineIcon} aria-hidden="true">
-            {dateIcon ?? "◫"}
-          </span>
-          <span className={styles.dateLabel}>{dateLabel}</span>
-        </div>
+        {dateLabel ? (
+          <div className={styles.footerBadge}>
+            <span className={styles.inlineIcon} aria-hidden="true">
+              {dateIcon ?? "◫"}
+            </span>
+            <span className={styles.dateLabel}>{dateLabel}</span>
+          </div>
+        ) : null}
       </footer>
     </article>
   );

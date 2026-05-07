@@ -2,6 +2,7 @@ export const storyMilestones = {
   id: "sobre-historia",
   headerLabel: "A nossa História",
   layout: "text-milestones",
+
   text: {
     paragraphs: [
       "Desde 2007, a Estalagem tem desempenhado um papel central no acolhimento de visitantes na região da Bairrada, destacando-se pela hospitalidade.",
@@ -12,14 +13,23 @@ export const storyMilestones = {
       text: "Hoje, é reconhecida como uma unidade flexível, com forte vocação humana e uma sólida reputação de serviço.",
     },
   },
+
   milestones: [
-    { id: "milestone-2007", label: "2007", description: "Início da atividade" },
+    {
+      id: "milestone-2007",
+      label: "2007",
+      description: "Início da atividade",
+    },
     {
       id: "milestone-2009",
       label: "2009",
       description: "Início do Pilar Desportivo",
     },
-    { id: "milestone-today", label: "Hoje", description: "Referência Mundial" },
+    {
+      id: "milestone-today",
+      label: "Hoje",
+      description: "Referência desportiva",
+    },
   ],
 };
 

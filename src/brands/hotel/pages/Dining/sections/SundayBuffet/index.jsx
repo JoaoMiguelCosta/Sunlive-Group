@@ -32,6 +32,7 @@ function normalizeHighlights(items) {
 
 export default function SundayBuffetSection() {
   const section = hotelBrand?.pages?.dining?.sections?.sundayBuffet ?? null;
+
   if (!section) return null;
 
   const sectionId = section?.id ?? "restaurant-buffet";

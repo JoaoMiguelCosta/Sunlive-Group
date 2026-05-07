@@ -1,9 +1,7 @@
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
+
 import styles from "./TheBairradaRegionHeader.module.css";
 
-/**
- * Header da secção "A Região da Bairrada"
- */
 export default function TheBairradaRegionHeader({ header, titleId }) {
   if (!header) return null;
 

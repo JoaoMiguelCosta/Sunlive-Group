@@ -1,53 +1,86 @@
+/* =========================================================
+   HotelPageLayout — Ritmo base das páginas Hotel
+   Mantém largura máxima a 1360px
+   ========================================================= */
+
 .pageWrap {
     position: relative;
+    isolation: isolate;
+
     inline-size: 100%;
     overflow: clip;
+
+    color: var(--hotel-text, rgba(251, 247, 239, 0.96));
     background: transparent;
-    color: var(--sl-color-text, #f6f7fb);
+}
+
+.pageWrap::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    block-size: clamp(18rem, 34vw, 34rem);
+
+    background:
+        radial-gradient(58rem 26rem at 50% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
+            transparent 72%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0) 0%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.16) 100%);
 }
 
 .inner {
     position: relative;
     z-index: 1;
+
     inline-size: 100%;
-    padding-block: 0 clamp(2.4rem, 5vw, 4rem);
+    padding-block: 0 clamp(3rem, 6vw, 5.5rem);
+
     box-sizing: border-box;
 }
 
 .contentFlow {
-    inline-size: min(
-        calc(100% - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem))),
-        1360px
-    );
-    max-inline-size: 1360px;
-    margin-inline: auto;
-   
+    position: relative;
 
     display: grid;
-    row-gap: clamp(3rem, 6vw, 4.8rem);
+    row-gap: var(--hotel-section-gap, clamp(3.2rem, 6vw, 7.2rem));
+
+    inline-size: min(calc(100% - (2 * var(--section-inset, clamp(1rem, 4vw, 4.5rem)))),
+            1360px);
+
+    max-inline-size: 1360px;
+    margin-inline: auto;
+}
+
+.contentFlow>* {
+    min-inline-size: 0;
 }
 
 @media (max-width: 980px) {
     .contentFlow {
-        margin-block-start: clamp(2.6rem, 6vw, 3.4rem);
-        row-gap: clamp(2.6rem, 6vw, 3.6rem);
+        row-gap: clamp(2.75rem, 6vw, 4.6rem);
     }
 }
 
 @media (max-width: 767.98px) {
     .inner {
-        padding-block-end: 2.2rem;
+        padding-block-end: clamp(2.4rem, 8vw, 3.6rem);
     }
 
     .contentFlow {
-        margin-block-start: clamp(2.2rem, 7vw, 3rem);
-        row-gap: clamp(2.2rem, 7vw, 3rem);
+        row-gap: clamp(2.35rem, 7vw, 3.4rem);
     }
 }
 
 @media (max-width: 420px) {
     .contentFlow {
-        margin-block-start: 2rem;
-        row-gap: 2rem;
+        inline-size: min(calc(100% - 1.7rem),
+                1360px);
+
+        row-gap: 2.15rem;
     }
 }

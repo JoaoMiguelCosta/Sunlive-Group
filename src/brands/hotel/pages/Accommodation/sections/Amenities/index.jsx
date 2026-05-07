@@ -13,17 +13,27 @@ export default function Amenities() {
 
   const sectionId = content.id ?? "accommodation-amenities";
   const titleId = `${sectionId}-title`;
+  const descriptionId = content.description
+    ? `${sectionId}-description`
+    : undefined;
 
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
+      aria-describedby={descriptionId}
     >
       <div className={styles.inner}>
         <div className={styles.headerBlock}>
           <TitleAmenities id={titleId} label={content.headerLabel} />
-          <DescriptionAmenities>{content.description}</DescriptionAmenities>
+
+          <DescriptionAmenities
+            id={descriptionId}
+            className={styles.descriptionPanel}
+          >
+            {content.description}
+          </DescriptionAmenities>
         </div>
 
         <div className={styles.pillsWrap}>

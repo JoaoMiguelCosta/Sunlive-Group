@@ -15,7 +15,7 @@ export const wellBeing = {
     openLabel: "Ver detalhes",
     closeLabel: "Ocultar detalhes",
     detailRegionLabel: "Detalhes da experiência selecionada",
-    detailBadge: "Experiência em Destaque",
+    detailBadge: "Experiência em destaque",
     detailFallbackLabel: "Imagem ilustrativa indisponível",
     scrollRevealBreakpoint: 1200,
   },

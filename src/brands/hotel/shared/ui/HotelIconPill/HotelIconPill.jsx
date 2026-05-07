@@ -1,22 +1,5 @@
 import styles from "./HotelIconPill.module.css";
 
-/**
- * HotelIconPill
- *
- * Props:
- * - label: string
- * - Icon?: React component
- * - as?: "div" | "button" | "a"
- * - href?: string
- * - onClick?: fn
- * - active?: boolean
- * - size?: "sm" | "md"
- * - className?: string
- * - ariaLabel?: string
- * - iconClassName?: string
- * - iconCircleClassName?: string
- * - ...restProps
- */
 export default function HotelIconPill({
   label,
   Icon,
@@ -35,25 +18,30 @@ export default function HotelIconPill({
 
   const sizeClass = styles[size] ?? styles.md;
 
-  const cls = [styles.pill, sizeClass, active ? styles.active : "", className]
+  const classNames = [
+    styles.pill,
+    sizeClass,
+    active ? styles.active : "",
+    className,
+  ]
     .filter(Boolean)
     .join(" ");
 
-  const iconCircleCls = [styles.iconCircle, iconCircleClassName]
+  const iconCircleClassNames = [styles.iconCircle, iconCircleClassName]
     .filter(Boolean)
     .join(" ");
 
-  const iconCls = [styles.icon, iconClassName].filter(Boolean).join(" ");
+  const iconClassNames = [styles.icon, iconClassName].filter(Boolean).join(" ");
 
   const commonProps = {
-    className: cls,
+    className: classNames,
     "aria-label": ariaLabel || label,
     ...restProps,
   };
 
   const iconContent = Icon ? (
-    <span className={iconCircleCls} aria-hidden="true">
-      <Icon className={iconCls} />
+    <span className={iconCircleClassNames} aria-hidden="true">
+      <Icon className={iconClassNames} />
     </span>
   ) : null;
 

@@ -1,19 +1,17 @@
 import hotelBrand from "../../../../config/index.js";
+
 import OurStoryMilestonesHeader from "./OurStoryMilestonesHeader.jsx";
 import OurStoryMilestonesContent from "./OurStoryMilestonesContent.jsx";
+
 import styles from "./OurStoryMilestones.module.css";
 
-/**
- * OurStoryMilestonesSection
- * Secção "A Nossa História" da página About.
- */
 export default function OurStoryMilestonesSection() {
   const section =
     hotelBrand?.pages?.about?.sections?.ourStoryMilestones ?? null;
 
   if (!section) return null;
 
-  const sectionId = section?.id ?? "our-story-milestones";
+  const sectionId = section.id ?? "our-story-milestones";
   const titleId = `${sectionId}-title`;
 
   return (

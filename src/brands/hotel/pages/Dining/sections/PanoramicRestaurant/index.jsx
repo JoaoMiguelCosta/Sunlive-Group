@@ -11,10 +11,14 @@ function normalizeHighlights(items) {
   return items
     .map((item, index) => {
       if (typeof item === "string") {
-        return {
-          id: `panoramic-highlight-${index}`,
-          label: item.trim(),
-        };
+        const label = item.trim();
+
+        return label
+          ? {
+              id: `panoramic-highlight-${index}`,
+              label,
+            }
+          : null;
       }
 
       if (!item || typeof item !== "object") return null;

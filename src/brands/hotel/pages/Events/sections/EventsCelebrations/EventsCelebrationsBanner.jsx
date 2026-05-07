@@ -37,7 +37,7 @@ export default function EventsCelebrationsBanner() {
   if (!resolvedBanner?.title && !resolvedBanner?.description) return null;
 
   return (
-    <div className={styles.wrapper}>
+    <div id={resolvedBanner.id} className={styles.wrapper}>
       <HotelHighlightBanner
         eyebrow={resolvedBanner.eyebrow}
         title={resolvedBanner.title}

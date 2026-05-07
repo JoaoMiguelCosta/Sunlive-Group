@@ -29,24 +29,29 @@ export default function HotelFacilitySummaryCard({
   openLabel = "Ver detalhes",
   closeLabel = "Ocultar detalhes",
 }) {
+  if (!title && !summary) return null;
+
   return (
     <article className={`${styles.card} ${isOpen ? styles.cardOpen : ""}`}>
       <div className={styles.header}>
         <IconSlot icon={icon} iconLabel={iconLabel} />
 
         <div className={styles.titleWrap}>
-          <h3 className={styles.title}>{title}</h3>
           {shortTitle ? (
             <span className={styles.kicker} aria-hidden="true">
               {shortTitle}
             </span>
           ) : null}
+
+          {title ? <h3 className={styles.title}>{title}</h3> : null}
         </div>
       </div>
 
-      <div className={styles.body}>
-        <p className={styles.summary}>{summary}</p>
-      </div>
+      {summary ? (
+        <div className={styles.body}>
+          <p className={styles.summary}>{summary}</p>
+        </div>
+      ) : null}
 
       <div className={styles.footer}>
         <button

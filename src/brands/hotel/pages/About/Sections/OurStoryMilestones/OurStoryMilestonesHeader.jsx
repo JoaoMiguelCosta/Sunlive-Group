@@ -1,11 +1,8 @@
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
+
 import styles from "./OurStoryMilestonesHeader.module.css";
 
-/**
- * OurStoryMilestonesHeader
- * Header da secção "A Nossa História".
- */
 export default function OurStoryMilestonesHeader({ titleId }) {
   const section =
     hotelBrand?.pages?.about?.sections?.ourStoryMilestones ?? null;

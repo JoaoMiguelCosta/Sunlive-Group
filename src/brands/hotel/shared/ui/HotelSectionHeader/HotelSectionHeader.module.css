@@ -1,56 +1,84 @@
+/* =========================================================
+   HotelSectionHeader — título editorial premium
+   Direção: boutique luxury, quente, contido, elegante
+   ========================================================= */
+
 .wrap {
     position: relative;
     isolation: isolate;
-    inline-size: min(100%, 1040px);
+
+    display: grid;
+    gap: clamp(0.82rem, 1.15vw, 1.08rem);
+
+    inline-size: min(100%, 980px);
+    min-inline-size: 0;
     margin-inline: auto;
 }
 
 .wrap::before {
     content: "";
     position: absolute;
-    inset: auto 0 -0.28rem 0;
-    block-size: 2.2rem;
+    inset-inline: 50%;
+    inset-block-start: 50%;
+    z-index: -1;
+
+    inline-size: clamp(12rem, 28vw, 26rem);
+    block-size: clamp(4rem, 8vw, 7rem);
+
     pointer-events: none;
-    opacity: 0.22;
-    filter: blur(16px);
+    border-radius: 999px;
+
+    opacity: 0.42;
+    transform: translate(-50%, -50%);
+
     background:
-        radial-gradient(circle at 50% 50%,
-            rgba(241, 205, 132, 0.34) 0%,
-            rgba(241, 205, 132, 0.08) 42%,
-            rgba(241, 205, 132, 0) 74%);
+        radial-gradient(closest-side,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.05) 42%,
+            transparent 74%);
+
+    filter: blur(18px);
 }
 
 .wrap::after {
     content: "";
     display: block;
-    inline-size: clamp(84px, 10vw, 138px);
-    block-size: 2px;
-    margin-block-start: clamp(0.72rem, 1.05vw, 0.9rem);
+
+    inline-size: clamp(5.4rem, 8vw, 8.6rem);
+    block-size: 1px;
+
+    margin-block-start: clamp(0.12rem, 0.45vw, 0.32rem);
     border-radius: 999px;
 
     background:
         linear-gradient(90deg,
-            rgba(241, 205, 132, 0) 0%,
-            rgba(241, 205, 132, 0.42) 16%,
-            rgba(241, 205, 132, 0.98) 50%,
-            rgba(241, 205, 132, 0.42) 84%,
-            rgba(241, 205, 132, 0) 100%);
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26) 16%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.82) 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26) 84%,
+            transparent 100%);
 
     box-shadow:
-        0 0 16px rgba(241, 205, 132, 0.16),
-        0 0 28px rgba(241, 205, 132, 0.08);
+        0 0 1.2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11),
+        0 0 2.2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.055);
 }
 
 .title {
     margin: 0;
-    color: rgba(255, 248, 235, 0.98);
-    font-weight: 750;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-size: clamp(1.08rem, 0.92rem + 0.55vw, 1.62rem);
-    line-height: 1.14;
+
+    color: var(--hotel-heading, #fbf7ef);
+
+    font-family: var(--sl-ff-display, inherit);
+    font-size: var(--hotel-section-title-size, clamp(2rem, 3.6vw, 4.75rem));
+    font-weight: 650;
+    line-height: var(--hotel-section-title-line, 0.98);
+    letter-spacing: var(--hotel-section-title-spacing, -0.052em);
+
     text-wrap: balance;
-    text-shadow: 0 1px 0 rgba(255, 248, 235, 0.04);
+
+    text-shadow:
+        0 1px 0 rgb(255 255 255 / 0.035),
+        0 1.2rem 3rem rgb(0 0 0 / 0.28);
 }
 
 .center {
@@ -63,68 +91,61 @@
 
 .left {
     text-align: left;
-}
-
-.left::after {
-    margin-inline: 0;
+    margin-inline: 0 auto;
 }
 
 .left::before {
-    inset-inline-start: 0;
-    inset-inline-end: auto;
-    inline-size: clamp(8rem, 18vw, 14rem);
+    inset-inline: 0 auto;
+    transform: translate(0, -50%);
 }
 
-@media (min-width: 1280px) {
+.left::after {
+    margin-inline: 0 auto;
+}
+
+@media (min-width: 1440px) {
     .wrap {
-        inline-size: min(100%, 1080px);
-    }
-
-    .title {
-        font-size: clamp(1.12rem, 0.94rem + 0.5vw, 1.72rem);
-        letter-spacing: 0.16em;
+        inline-size: min(100%, 1040px);
     }
 }
 
-@media (min-width: 1600px) {
+@media (max-width: 900px) {
     .wrap {
-        inline-size: min(100%, 1120px);
+        gap: 0.78rem;
+        inline-size: min(100%, 820px);
     }
 
-    .title {
-        font-size: 1.78rem;
+    .wrap::before {
+        inline-size: clamp(10rem, 48vw, 20rem);
+        block-size: clamp(3.6rem, 12vw, 6rem);
+        opacity: 0.34;
     }
-}
 
-@media (max-width: 768px) {
     .wrap::after {
-        inline-size: 82px;
-        margin-block-start: 0.68rem;
-    }
-
-    .title {
-        letter-spacing: 0.13em;
-        font-size: clamp(1rem, 0.92rem + 0.45vw, 1.2rem);
-        line-height: 1.12;
+        inline-size: clamp(4.6rem, 18vw, 7rem);
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 620px) {
+    .title {
+        letter-spacing: -0.044em;
+    }
+
     .wrap::after {
-        inline-size: 74px;
-        margin-block-start: 0.62rem;
-    }
-
-    .title {
-        letter-spacing: 0.11em;
-        font-size: 0.96rem;
-        line-height: 1.1;
+        margin-block-start: 0.02rem;
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 420px) {
+    .wrap {
+        gap: 0.68rem;
+    }
+
     .title {
-        font-size: 0.92rem;
-        letter-spacing: 0.1em;
+        letter-spacing: -0.038em;
+    }
+
+    .wrap::after {
+        inline-size: 4.5rem;
     }
 }

@@ -15,17 +15,25 @@ export default function StayPolicies() {
   const items = Array.isArray(content.items) ? content.items : [];
   const sectionId = content.id ?? "accommodation-stay-policies";
   const titleId = `${sectionId}-title`;
+  const descriptionId = content.description
+    ? `${sectionId}-description`
+    : undefined;
 
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
+      aria-describedby={descriptionId}
     >
       <div className={styles.inner}>
         <div className={styles.headerBlock}>
           <TitleStayPolicies id={titleId} label={content.headerLabel} />
-          <DescriptionStayPolicies>
+
+          <DescriptionStayPolicies
+            id={descriptionId}
+            className={styles.descriptionPanel}
+          >
             {content.description}
           </DescriptionStayPolicies>
         </div>

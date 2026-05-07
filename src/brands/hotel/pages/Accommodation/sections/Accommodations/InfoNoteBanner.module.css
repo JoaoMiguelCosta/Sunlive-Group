@@ -1,101 +1,235 @@
 .wrap {
+    --note-radius: clamp(1.05rem, 1.45vw, 1.45rem);
+    --note-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
+    --note-border-strong: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.32);
+    --note-text: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.88);
+    --note-text-strong: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.96);
+    --note-champagne: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.96);
+
     position: relative;
     isolation: isolate;
+
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    gap: 14px;
-    inline-size: min(100%, 1280px);
+    gap: clamp(0.78rem, 1vw, 0.95rem);
+
+    inline-size: 100%;
+    max-inline-size: 1180px;
     margin-inline: auto;
-    margin-top: clamp(18px, 2.6vw, 26px);
-    padding: 16px 18px;
-    border-radius: 22px;
-    border: 1px solid rgba(230, 200, 147, 0.24);
+    margin-block-start: clamp(1.1rem, 2vw, 1.5rem);
+    padding: clamp(0.9rem, 1.15vw, 1.05rem) clamp(0.95rem, 1.45vw, 1.25rem);
+
+    overflow: hidden;
+    border-radius: var(--note-radius);
+    border: 1px solid var(--note-border);
+
     background:
-        radial-gradient(100% 120% at 0% 0%, rgba(241, 205, 132, 0.11), transparent 44%),
-        radial-gradient(120% 130% at 100% 100%, rgba(199, 134, 21, 0.10), transparent 46%),
+        radial-gradient(120% 150% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
+            transparent 42%),
+        radial-gradient(110% 150% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.06) 0%,
+            transparent 48%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.04) 0%,
-            rgba(255, 248, 235, 0.014) 18%,
-            rgba(0, 0, 0, 0.10) 100%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 34%,
+            rgb(0 0 0 / 0.08) 100%),
         linear-gradient(135deg,
-            rgba(44, 23, 11, 0.96) 0%,
-            rgba(28, 14, 8, 0.98) 100%);
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.9) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.96) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.045),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
-        0 16px 38px rgba(0, 0, 0, 0.20);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055),
+        inset 0 -1px 0 rgb(0 0 0 / 0.16),
+        0 18px 42px rgb(0 0 0 / 0.18);
+
+    backdrop-filter: blur(10px) saturate(1.02);
+    -webkit-backdrop-filter: blur(10px) saturate(1.02);
 }
 
 .wrap::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     pointer-events: none;
     border-radius: inherit;
+
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.07) 0%,
-            rgba(255, 248, 235, 0.02) 15%,
-            rgba(255, 255, 255, 0) 38%);
-    opacity: 0.92;
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 22%,
+            transparent 48%),
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.035) 50%,
+            transparent 100%);
+
+    opacity: 0.82;
+}
+
+.wrap::after {
+    content: "";
+    position: absolute;
+    inset-block: 18%;
+    inset-inline-start: 0;
+    z-index: 1;
+
+    inline-size: 1px;
+    border-radius: 999px;
+
+    background:
+        linear-gradient(180deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24) 22%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.56) 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 78%,
+            transparent 100%);
+
+    box-shadow: 0 0 18px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12);
+    pointer-events: none;
 }
 
 .icon {
     position: relative;
-    z-index: 1;
-    inline-size: 40px;
-    block-size: 40px;
-    border-radius: 999px;
-    display: grid;
+    z-index: 2;
+
+    display: inline-grid;
     place-items: center;
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 1;
-    color: rgba(255, 214, 140, 0.98);
-    border: 1px solid rgba(230, 200, 147, 0.34);
+    flex: 0 0 auto;
+
+    inline-size: clamp(2.35rem, 2.6vw, 2.7rem);
+    block-size: clamp(2.35rem, 2.6vw, 2.7rem);
+
+    border-radius: 999px;
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26);
+
     background:
-        radial-gradient(circle at 30% 30%, rgba(230, 200, 147, 0.20), transparent 62%),
-        linear-gradient(180deg, rgba(74, 44, 19, 0.92), rgba(38, 23, 11, 0.96));
+        radial-gradient(circle at 32% 22%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
+            transparent 52%),
+        radial-gradient(circle at 50% 58%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
+            transparent 68%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.08) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.46);
+
+    color: var(--note-champagne);
+    font-size: clamp(0.96rem, 1vw, 1.08rem);
+    font-weight: 800;
+    line-height: 1;
+    font-style: italic;
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.08),
-        0 8px 18px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.09),
+        inset 0 -1px 0 rgb(0 0 0 / 0.14),
+        0 10px 22px rgb(0 0 0 / 0.16),
+        0 0 0 1px rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.025);
 }
 
 .text {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+
     margin: 0;
-    font-size: clamp(0.98rem, 0.35vw + 0.94rem, 1.04rem);
-    line-height: 1.58;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    color: rgba(255, 248, 240, 0.92);
+    max-inline-size: 82ch;
+
+    color: var(--note-text);
+    font-size: clamp(0.94rem, 0.18vw + 0.9rem, 1rem);
+    font-weight: 500;
+    line-height: 1.62;
+    letter-spacing: -0.005em;
+
     text-wrap: pretty;
+    overflow-wrap: break-word;
 }
 
-@media (max-width: 640px) {
+.text strong {
+    color: var(--note-text-strong);
+    font-weight: 700;
+}
+
+@media (hover: hover) {
     .wrap {
-        padding: 14px;
-        gap: 12px;
-        border-radius: 18px;
+        transition:
+            border-color 180ms ease,
+            box-shadow 180ms ease,
+            transform 180ms ease;
     }
 
-    .icon {
-        inline-size: 36px;
-        block-size: 36px;
-        font-size: 17px;
+    .wrap:hover {
+        transform: translateY(-1px);
+        border-color: var(--note-border-strong);
+        box-shadow:
+            inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.065),
+            inset 0 -1px 0 rgb(0 0 0 / 0.16),
+            0 22px 48px rgb(0 0 0 / 0.22),
+            0 0 24px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04);
+    }
+}
+
+@media (max-width: 768px) {
+    .wrap {
+        max-inline-size: 100%;
+        padding: 0.88rem 0.9rem;
+        border-radius: 1.05rem;
     }
 
     .text {
-        font-size: 0.95rem;
+        font-size: 0.93rem;
+        line-height: 1.56;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrap {
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: start;
+        gap: 0.72rem;
+        padding: 0.82rem;
+        border-radius: 0.96rem;
+    }
+
+    .icon {
+        inline-size: 2.12rem;
+        block-size: 2.12rem;
+        font-size: 0.9rem;
+        margin-block-start: 0.08rem;
+    }
+
+    .text {
+        font-size: 0.9rem;
         line-height: 1.5;
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 360px) {
     .wrap {
-        grid-template-columns: 1fr;
-        justify-items: start;
+        gap: 0.64rem;
+        padding: 0.76rem;
+    }
+
+    .icon {
+        inline-size: 2rem;
+        block-size: 2rem;
+        font-size: 0.86rem;
+    }
+
+    .text {
+        font-size: 0.88rem;
+        line-height: 1.46;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wrap {
+        transition: none;
+    }
+
+    .wrap:hover {
+        transform: none;
     }
 }

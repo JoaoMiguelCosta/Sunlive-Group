@@ -1,15 +1,5 @@
 import styles from "./HotelMilestoneCard.module.css";
 
-/**
- * HotelMilestoneCard
- * Card para marcos cronológicos.
- *
- * Props:
- * - title: string
- * - subtitle?: string
- * - featured?: boolean
- * - className?: string
- */
 export default function HotelMilestoneCard({
   title,
   subtitle,
@@ -27,6 +17,7 @@ export default function HotelMilestoneCard({
       <article className={styles.card}>
         <div className={styles.inner}>
           <h3 className={styles.title}>{title}</h3>
+
           {subtitle ? <p className={styles.subtitle}>{subtitle}</p> : null}
         </div>
       </article>

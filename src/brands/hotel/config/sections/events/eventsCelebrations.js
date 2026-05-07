@@ -1,12 +1,14 @@
+const CONTACTS_HREF = "/sunlive-group/hotel/information#informacoes-contactos";
+
 const eventsCelebrations = {
   id: "eventos-celebracoes",
   headerLabel: "Eventos e Celebrações",
   description:
-    "Momentos especiais merecem um cenário único. A Estalagem de Sangalhos é o local ideal para celebrar os seus eventos mais importantes.",
+    "Momentos especiais merecem um cenário cuidado. A Estalagem de Sangalhos oferece um ambiente acolhedor, elegante e versátil para celebrar eventos importantes.",
 
   backgroundMedia: {
     imageSrc: null,
-    imageAlt: "Ambiente elegante para eventos na Estalagem",
+    imageAlt: "Ambiente elegante para eventos na Estalagem de Sangalhos",
   },
 
   customizedBanner: {
@@ -14,7 +16,7 @@ const eventsCelebrations = {
     eyebrow: "Experiências à medida",
     title: "Eventos Personalizados",
     description:
-      "Desde casamentos intimistas a eventos corporativos, criamos experiências únicas adaptadas às suas necessidades.",
+      "Desde celebrações intimistas a eventos corporativos, criamos propostas adaptadas ao contexto, ao número de convidados e ao estilo pretendido.",
     icons: {
       left: {
         key: "star",
@@ -32,6 +34,7 @@ const eventsCelebrations = {
 
   eventTypes: {
     id: "eventos-celebracoes-types",
+    ariaLabel: "Tipos de eventos e celebrações",
     items: [
       {
         id: "weddings",
@@ -40,13 +43,13 @@ const eventsCelebrations = {
         title: "Casamentos",
         subtitle: "Celebrações com charme e intimidade",
         description:
-          "Para casamentos intimistas e celebrações com charme num espaço natural, reservado e com toque pessoal.",
-        ctaLabel: "Ver Detalhes",
-        href: "/sunlive-group/hotel/information#informacoes-contactos",
+          "Para casamentos intimistas e celebrações com charme, num espaço natural, reservado e com acompanhamento personalizado.",
+        ctaLabel: "Ver detalhes",
+        href: CONTACTS_HREF,
         iconKey: "ring",
 
         offerPanel: {
-          title: "O que disponibilizamos:",
+          title: "O que disponibilizamos",
           items: [
             {
               id: "weddings-accommodation",
@@ -73,14 +76,14 @@ const eventsCelebrations = {
               iconKey: "star",
             },
           ],
-          highlightsTitle: "Destaques:",
+          highlightsTitle: "Destaques",
           highlights: [
             { id: "weddings-highlight-1", text: "Cerimónia civil no local" },
             { id: "weddings-highlight-2", text: "Fotógrafo recomendado" },
             { id: "weddings-highlight-3", text: "Coordenação completa" },
           ],
-          ctaLabel: "Pedir Orçamento",
-          ctaHref: "/sunlive-group/hotel/information#informacoes-contactos",
+          ctaLabel: "Pedir orçamento",
+          ctaHref: CONTACTS_HREF,
         },
       },
 
@@ -91,13 +94,13 @@ const eventsCelebrations = {
         title: "Aniversários & Festas Privadas",
         subtitle: "Encontros especiais em ambiente acolhedor",
         description:
-          "Ideal para jantares de grupo, festas familiares e encontros especiais num ambiente seguro, confortável e festivo.",
-        ctaLabel: "Ver Detalhes",
-        href: "/sunlive-group/hotel/information#informacoes-contactos",
+          "Ideal para jantares de grupo, festas familiares e encontros especiais num ambiente seguro, confortável e reservado.",
+        ctaLabel: "Ver detalhes",
+        href: CONTACTS_HREF,
         iconKey: "celebration",
 
         offerPanel: {
-          title: "O que disponibilizamos:",
+          title: "O que disponibilizamos",
           items: [
             {
               id: "private-parties-music",
@@ -108,30 +111,30 @@ const eventsCelebrations = {
             {
               id: "private-parties-menu",
               title: "Ementas Flexíveis",
-              description: "Formais ou informais, à vossa escolha",
+              description: "Formatos formais ou informais",
               iconKey: "cutlery",
             },
             {
               id: "private-parties-rooms",
               title: "Salas Reservadas",
-              description: "Espaços privados para o vosso grupo",
+              description: "Espaços privados para o grupo",
               iconKey: "groups",
             },
             {
               id: "private-parties-support",
               title: "Apoio Técnico",
-              description: "Suporte logístico completo",
+              description: "Suporte logístico complementar",
               iconKey: "wrench",
             },
           ],
-          highlightsTitle: "Destaques:",
+          highlightsTitle: "Destaques",
           highlights: [
             { id: "private-parties-highlight-1", text: "Bolo personalizado" },
             { id: "private-parties-highlight-2", text: "Horários flexíveis" },
             { id: "private-parties-highlight-3", text: "Decoração temática" },
           ],
-          ctaLabel: "Pedir Orçamento",
-          ctaHref: "/sunlive-group/hotel/information#informacoes-contactos",
+          ctaLabel: "Pedir orçamento",
+          ctaHref: CONTACTS_HREF,
         },
       },
 
@@ -142,24 +145,24 @@ const eventsCelebrations = {
         title: "Passagens de Ano",
         subtitle: "Celebre com qualidade e boa energia",
         description:
-          "Programas especiais de Fim de Ano com festa incluída, uma forma tranquila de celebrar com qualidade e boa energia.",
-        ctaLabel: "Ver Detalhes",
-        href: "/sunlive-group/hotel/information#informacoes-contactos",
+          "Programas especiais de fim de ano com jantar, convívio e ambiente festivo, pensados para celebrar com conforto.",
+        ctaLabel: "Ver detalhes",
+        href: CONTACTS_HREF,
         iconKey: "calendar",
 
         offerPanel: {
-          title: "O que disponibilizamos:",
+          title: "O que disponibilizamos",
           items: [
             {
               id: "new-year-music",
               title: "Música e Animação",
-              description: "DJ e ambiente festivo garantido",
+              description: "Ambiente festivo durante a noite",
               iconKey: "celebration",
             },
             {
               id: "new-year-menu",
               title: "Menu Festivo",
-              description: "Jantar especial de Fim de Ano",
+              description: "Jantar especial de fim de ano",
               iconKey: "cutlery",
             },
             {
@@ -175,14 +178,14 @@ const eventsCelebrations = {
               iconKey: "coffee",
             },
           ],
-          highlightsTitle: "Destaques:",
+          highlightsTitle: "Destaques",
           highlights: [
             { id: "new-year-highlight-1", text: "Programa completo" },
             { id: "new-year-highlight-2", text: "Alojamento opcional" },
             { id: "new-year-highlight-3", text: "Ambiente familiar" },
           ],
-          ctaLabel: "Pedir Orçamento",
-          ctaHref: "/sunlive-group/hotel/information#informacoes-contactos",
+          ctaLabel: "Pedir orçamento",
+          ctaHref: CONTACTS_HREF,
         },
       },
 
@@ -191,15 +194,15 @@ const eventsCelebrations = {
         key: "corporate-events",
         defaultOpen: false,
         title: "Eventos Corporativos",
-        subtitle: "Espaço inspirador para empresas com visão",
+        subtitle: "Espaço funcional para empresas",
         description:
-          "Para formações, reuniões, lançamentos ou retiros de equipa num espaço inspirador para empresas com visão.",
-        ctaLabel: "Ver Detalhes",
-        href: "/sunlive-group/hotel/information#informacoes-contactos",
+          "Para formações, reuniões, lançamentos, retiros de equipa e momentos corporativos num ambiente tranquilo e profissional.",
+        ctaLabel: "Ver detalhes",
+        href: CONTACTS_HREF,
         iconKey: "business",
 
         offerPanel: {
-          title: "O que disponibilizamos:",
+          title: "O que disponibilizamos",
           items: [
             {
               id: "corporate-events-rooms",
@@ -210,13 +213,13 @@ const eventsCelebrations = {
             {
               id: "corporate-events-breaks",
               title: "Coffee Breaks",
-              description: "Pausas e refeições incluídas",
+              description: "Pausas e refeições organizadas",
               iconKey: "coffee",
             },
             {
               id: "corporate-events-support",
               title: "Apoio Técnico",
-              description: "Suporte logístico completo",
+              description: "Suporte logístico complementar",
               iconKey: "wrench",
             },
             {
@@ -226,7 +229,7 @@ const eventsCelebrations = {
               iconKey: "trail",
             },
           ],
-          highlightsTitle: "Destaques:",
+          highlightsTitle: "Destaques",
           highlights: [
             { id: "corporate-events-highlight-1", text: "Ambiente tranquilo" },
             {
@@ -238,8 +241,8 @@ const eventsCelebrations = {
               text: "Atividades na natureza",
             },
           ],
-          ctaLabel: "Pedir Orçamento",
-          ctaHref: "/sunlive-group/hotel/information#informacoes-contactos",
+          ctaLabel: "Pedir orçamento",
+          ctaHref: CONTACTS_HREF,
         },
       },
     ],

@@ -27,7 +27,9 @@ function getVisibleCards(cards, activeFilter) {
   if (!cards.length) return [];
   if (activeFilter === "all") return cards;
 
-  return cards.filter((card) => (card.profiles ?? []).includes(activeFilter));
+  return cards.filter((card) =>
+    Array.isArray(card.profiles) ? card.profiles.includes(activeFilter) : false,
+  );
 }
 
 function getGridCountClass(length) {
@@ -49,6 +51,7 @@ export default function RoomCardsGrid() {
 
   const filterConfig = sectionContent.roomProfilesFilter ?? null;
   const uiText = sectionContent.roomCardsUi ?? {};
+
   const roomCards = Array.isArray(sectionContent.roomCards)
     ? sectionContent.roomCards
     : [];
@@ -95,9 +98,13 @@ export default function RoomCardsGrid() {
       />
 
       {visibleCards.length > 0 ? (
-        <div className={gridClassName} aria-label={roomListAriaLabel}>
+        <div
+          className={gridClassName}
+          role="list"
+          aria-label={roomListAriaLabel}
+        >
           {visibleCards.map((room) => (
-            <div key={room._uiId} className={styles.cardItem}>
+            <div key={room._uiId} className={styles.cardItem} role="listitem">
               <HotelRoomCard
                 id={room._uiId}
                 badge={room.badge}

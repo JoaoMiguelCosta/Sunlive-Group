@@ -4,9 +4,17 @@ const sustainabilityCommitment = {
   id: "sustentabilidade-compromisso",
   headerLabel: "Sustentabilidade",
   description:
-    "O nosso compromisso com práticas responsáveis e ambientalmente conscientes para um futuro mais sustentável.",
+    "O nosso compromisso com práticas responsáveis e ambientalmente conscientes para uma experiência hoteleira mais equilibrada, eficiente e respeitadora da envolvente.",
+
+  ui: {
+    sectionAriaLabel:
+      "Compromisso de sustentabilidade da Estalagem de Sangalhos",
+    practicesAriaLabel:
+      "Práticas de sustentabilidade da Estalagem de Sangalhos",
+  },
 
   highlightBanner: {
+    eyebrow: "Turismo responsável",
     title: "Compromisso com a Sustentabilidade",
     description:
       "Na Estalagem de Sangalhos, acreditamos que o turismo responsável é fundamental para preservar a beleza natural da Bairrada para as gerações futuras.",
@@ -30,6 +38,7 @@ const sustainabilityCommitment = {
           imageSrc: sustainabilityImage,
           imageAlt:
             "Painéis solares instalados na Estalagem de Sangalhos com vista sobre a envolvente natural e piscina exterior",
+          imagePosition: "center 42%",
           eyebrow: "Infraestrutura Sustentável",
           caption:
             "Painéis solares instalados no hotel para uma operação mais eficiente e responsável.",

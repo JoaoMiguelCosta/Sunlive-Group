@@ -7,6 +7,8 @@ export default function DescriptionContacts() {
   if (!section?.description) return null;
 
   return (
-    <HotelSectionDescription>{section.description}</HotelSectionDescription>
+    <HotelSectionDescription align="center">
+      {section.description}
+    </HotelSectionDescription>
   );
 }

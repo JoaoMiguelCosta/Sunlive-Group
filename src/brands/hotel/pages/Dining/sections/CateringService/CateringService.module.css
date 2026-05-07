@@ -3,70 +3,161 @@
     isolation: isolate;
     inline-size: 100%;
     overflow: clip;
-    
+  
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: clamp(0.6rem, 1.8vw, 1.4rem) 50% auto;
+    translate: -50% 0;
     z-index: 0;
+
+    inline-size: min(94vw, 1260px);
+    block-size: clamp(230px, 26vw, 360px);
+
     pointer-events: none;
+    border-radius: 999px;
+
     background:
-        radial-gradient(70% 52% at 18% 16%, rgba(241, 205, 132, 0.12), transparent 58%),
-        radial-gradient(56% 42% at 82% 84%, rgba(199, 134, 21, 0.08), transparent 62%);
-    opacity: 0.92;
+        radial-gradient(circle at 18% 20%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.085) 0%,
+            transparent 58%),
+        radial-gradient(circle at 82% 72%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.052) 0%,
+            transparent 64%),
+        radial-gradient(circle at 50% 12%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.038) 0%,
+            transparent 68%);
+
+    filter: blur(34px);
+    opacity: 0.64;
 }
 
 .section::after {
     content: "";
     position: absolute;
-    inset-inline: 0;
-    top: clamp(12rem, 18vw, 18rem);
-    block-size: clamp(10rem, 16vw, 14rem);
+    inset: 0;
     z-index: 0;
+
     pointer-events: none;
+
     background:
-        radial-gradient(circle at 50% 50%, rgba(255, 222, 162, 0.1), transparent 62%);
-    filter: blur(36px);
-    opacity: 0.72;
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 0%,
+            transparent 24%,
+            rgb(0 0 0 / 0.055) 100%);
 }
 
 .inner {
     position: relative;
     z-index: 1;
+
     inline-size: min(100%, 1440px);
     margin-inline: auto;
-    padding-inline: clamp(1rem, 2.2vw, 2rem);
+    padding-inline: clamp(0.82rem, 2vw, 1.6rem);
+
+    display: grid;
+    gap: clamp(1.2rem, 2.4vw, 1.95rem);
 }
 
 .headerBlock {
+    position: relative;
+    isolation: isolate;
+
     inline-size: min(100%, 1180px);
     margin-inline: auto;
+
     display: grid;
-    gap: clamp(1rem, 1.6vw, 1.3rem);
-    margin-bottom: clamp(1.8rem, 3vw, 2.6rem);
+    gap: clamp(0.95rem, 1.55vw, 1.2rem);
+
+    padding: clamp(1rem, 1.55vw, 1.22rem) clamp(0.9rem, 1.8vw, 1.34rem) clamp(1.08rem, 1.75vw, 1.36rem);
+
+    border-radius: clamp(1.18rem, 1.75vw, 1.65rem);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.145);
+
+    background:
+        radial-gradient(120% 145% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.055) 0%,
+            transparent 44%),
+        radial-gradient(130% 150% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.04) 0%,
+            transparent 50%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.026) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.008) 20%,
+            rgb(0 0 0 / 0.055) 100%),
+        linear-gradient(135deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.4) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.66) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.038),
+        0 18px 42px rgb(0 0 0 / 0.13);
+
+    backdrop-filter: blur(10px) saturate(1.02);
+    -webkit-backdrop-filter: blur(10px) saturate(1.02);
+}
+
+.headerBlock::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    pointer-events: none;
+    border-radius: inherit;
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 18%,
+            transparent 42%);
 }
 
 .eyebrow {
-    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     inline-size: fit-content;
     max-inline-size: 100%;
-    padding: 0.56rem 0.9rem;
+    min-block-size: 1.9rem;
+    margin: 0 auto;
+    padding: 0.46rem 0.78rem;
+
     border-radius: 999px;
-    border: 1px solid rgba(224, 184, 103, 0.24);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+
     background:
-        linear-gradient(180deg, rgba(92, 53, 24, 0.72), rgba(38, 21, 11, 0.84));
-    box-shadow:
-        inset 0 1px 0 rgba(255, 246, 224, 0.08),
-        0 10px 24px rgba(0, 0, 0, 0.1);
-    color: rgba(255, 234, 191, 0.92);
-    font-size: 0.78rem;
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.065) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.46);
+
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.94);
+    font-size: 0.74rem;
     font-weight: 800;
-    letter-spacing: 0.16em;
     line-height: 1;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     text-align: center;
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055),
+        0 8px 18px rgb(0 0 0 / 0.12);
+
+    backdrop-filter: blur(8px) saturate(1.02);
+    -webkit-backdrop-filter: blur(8px) saturate(1.02);
+}
+
+.sectionTitle,
+.sectionDescription {
+    position: relative;
+    z-index: 1;
 }
 
 .sectionTitle {
@@ -79,35 +170,52 @@
 
 .contentStack {
     display: grid;
-    gap: clamp(1.9rem, 3vw, 2.6rem);
+    gap: clamp(1.45rem, 2.8vw, 2.3rem);
 }
 
 @media (max-width: 768px) {
+  
+
     .inner {
-        padding-inline: 0.9rem;
+        padding-inline: 0.82rem;
+        gap: 1.05rem;
     }
 
     .headerBlock {
-        margin-bottom: 1.5rem;
+        padding: 0.9rem 0.82rem 0.98rem;
+        border-radius: 1.14rem;
     }
 
     .eyebrow {
-        font-size: 0.72rem;
-        letter-spacing: 0.14em;
-        padding: 0.5rem 0.82rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.13em;
     }
 }
 
 @media (max-width: 560px) {
-    .section {
-        padding-block: 3rem 1rem;
-    }
+ 
 
     .inner {
-        padding-inline: 0.8rem;
+        padding-inline: 0.74rem;
+    }
+
+    .headerBlock {
+        border-radius: 1rem;
     }
 
     .eyebrow {
         inline-size: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+   
+
+    .inner {
+        padding-inline: 0.68rem;
+    }
+
+    .headerBlock {
+        padding: 0.82rem 0.72rem 0.9rem;
     }
 }

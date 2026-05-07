@@ -6,19 +6,22 @@ import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase
 
 import styles from "./BarLoungeShowcase.module.css";
 
-const clampIndex = (index, length) => {
+function clampIndex(index, length) {
   if (length <= 0) return 0;
   return ((index % length) + length) % length;
-};
+}
 
 export default function BarLoungeShowcase() {
   const section = hotelBrand?.pages?.dining?.sections?.barAndLounge ?? null;
+
   if (!section) return null;
 
   const intro = section?.intro ?? null;
+
   const features = Array.isArray(section?.features?.items)
     ? section.features.items
     : [];
+
   const atmosphereCard = section?.atmosphereCard ?? null;
   const highlightCard = section?.highlightCard ?? null;
   const gallery = section?.gallery ?? null;
@@ -139,17 +142,15 @@ export default function BarLoungeShowcase() {
             ) : null}
 
             {highlightCard?.title || highlightCard?.text ? (
-              <div className={styles.highlightCard}>
+              <article className={styles.highlightCard}>
                 <div className={styles.highlightCardInner}>
                   <div className={styles.highlightHeader}>
                     {HighlightIcon ? (
                       <span
-                        className={styles.highlightIconSlot}
+                        className={styles.highlightIconCircle}
                         aria-hidden="true"
                       >
-                        <span className={styles.highlightIconCircle}>
-                          <HighlightIcon className={styles.highlightIcon} />
-                        </span>
+                        <HighlightIcon className={styles.highlightIcon} />
                       </span>
                     ) : null}
 
@@ -164,7 +165,7 @@ export default function BarLoungeShowcase() {
                     <p className={styles.highlightText}>{highlightCard.text}</p>
                   ) : null}
                 </div>
-              </div>
+              </article>
             ) : null}
           </div>
         </div>
@@ -177,6 +178,7 @@ export default function BarLoungeShowcase() {
                 activeIndex={activeIndex}
                 onPrev={goPrev}
                 onNext={goNext}
+                onSelectIndex={setActiveIndex}
                 fallbackLabel={fallbackLabel}
                 fallbackEyebrow={fallbackEyebrow}
                 fallbackTitle={fallbackTitle}
@@ -189,7 +191,7 @@ export default function BarLoungeShowcase() {
                 showImageBackdrop
                 backdropBlur="18px"
                 backdropScale={1.12}
-                backdropOpacity={0.48}
+                backdropOpacity={0.46}
                 captionClassName={styles.galleryCaption}
                 indicatorDockClassName={styles.galleryIndicatorDock}
                 indicatorRailClassName={styles.galleryIndicatorRail}

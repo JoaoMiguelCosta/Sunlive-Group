@@ -1,6 +1,11 @@
 import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
+
 import styles from "./UniqueNaturalSetting.module.css";
+
+function isValidText(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
 
 export default function UniqueNaturalSetting() {
   const block =
@@ -8,8 +13,11 @@ export default function UniqueNaturalSetting() {
 
   if (!block) return null;
 
-  const sectionId = block?.id ?? "sobre-envolvente-natural";
-  const ariaLabel = block?.ariaLabel ?? "Envolvente natural da Estalagem";
+  const sectionId = block.id ?? "sobre-envolvente-natural";
+  const titleId = `${sectionId}-title`;
+  const descriptionId = `${sectionId}-description`;
+
+  const ariaLabel = block.ariaLabel ?? "Envolvente natural da Estalagem";
 
   const kicker = block?.header?.kicker ?? "";
   const title = block?.header?.title ?? "";
@@ -23,30 +31,45 @@ export default function UniqueNaturalSetting() {
   const overlayEyebrow = block?.overlay?.eyebrow ?? "";
   const pillText = block?.highlightPill?.text ?? "";
 
-  const hasContent = Boolean(
-    kicker || title || description || overlayEyebrow || pillText,
-  );
+  const hasHeaderContent =
+    isValidText(kicker) || isValidText(title) || isValidText(description);
 
-  const hasImage = Boolean(imageSrc);
+  const hasOverlayContent =
+    isValidText(overlayEyebrow) || isValidText(pillText);
+  const hasImage = isValidText(imageSrc);
 
-  if (!hasContent) return null;
+  if (!hasHeaderContent && !hasOverlayContent && !hasImage) return null;
 
   return (
-    <section id={sectionId} aria-label={ariaLabel} className={styles.section}>
+    <section
+      id={sectionId}
+      className={styles.section}
+      aria-label={!title ? ariaLabel : undefined}
+      aria-labelledby={title ? titleId : undefined}
+      aria-describedby={description ? descriptionId : undefined}
+    >
       <div className={styles.inner}>
         <div className={styles.shell}>
-          <div className={styles.contentColumn}>
-            {kicker ? <p className={styles.kicker}>{kicker}</p> : null}
+          {hasHeaderContent ? (
+            <div className={styles.contentColumn}>
+              {kicker ? <p className={styles.kicker}>{kicker}</p> : null}
 
-            {title ? <h2 className={styles.title}>{title}</h2> : null}
+              {title ? (
+                <h2 id={titleId} className={styles.title}>
+                  {title}
+                </h2>
+              ) : null}
 
-            {description ? (
-              <p className={styles.description}>{description}</p>
-            ) : null}
-          </div>
+              {description ? (
+                <p id={descriptionId} className={styles.description}>
+                  {description}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
 
           <div className={styles.mediaColumn}>
-            <div className={styles.mediaFrame}>
+            <figure className={styles.mediaFrame}>
               <div className={styles.mediaGlow} aria-hidden="true" />
 
               <div className={styles.mediaCard}>
@@ -56,17 +79,22 @@ export default function UniqueNaturalSetting() {
                     src={imageSrc}
                     alt={imageAlt}
                     loading="lazy"
+                    decoding="async"
                   />
                 ) : (
-                  <div className={styles.imageFallback} aria-hidden="true" />
+                  <div
+                    className={styles.imageFallback}
+                    role="img"
+                    aria-label="Imagem da envolvente disponível em breve"
+                  />
                 )}
 
                 <div className={styles.imageOverlay} aria-hidden="true" />
                 <div className={styles.imageVignette} aria-hidden="true" />
                 <div className={styles.imageInnerBorder} aria-hidden="true" />
 
-                {(overlayEyebrow || pillText) && (
-                  <div className={styles.overlayContent}>
+                {hasOverlayContent ? (
+                  <figcaption className={styles.overlayContent}>
                     {overlayEyebrow ? (
                       <span className={styles.overlayEyebrow}>
                         {overlayEyebrow}
@@ -75,15 +103,20 @@ export default function UniqueNaturalSetting() {
 
                     {pillText ? (
                       <div className={styles.pillWrap}>
-                        <HotelHighlightPill className={styles.highlightPill}>
+                        <HotelHighlightPill
+                          className={styles.highlightPill}
+                          cardClassName={styles.highlightPillCard}
+                          innerClassName={styles.highlightPillInner}
+                          textClassName={styles.highlightPillText}
+                        >
                           {pillText}
                         </HotelHighlightPill>
                       </div>
                     ) : null}
-                  </div>
-                )}
+                  </figcaption>
+                ) : null}
               </div>
-            </div>
+            </figure>
           </div>
         </div>
       </div>

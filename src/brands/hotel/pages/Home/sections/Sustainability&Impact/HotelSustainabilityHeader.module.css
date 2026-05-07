@@ -1,13 +1,17 @@
 .headerWrap {
     position: relative;
     isolation: isolate;
-    inline-size: 100%;
+
     display: block;
+
+    inline-size: 100%;
+    min-inline-size: 0;
+
     margin-block-end: clamp(1rem, 2vw, 1.35rem);
 }
 
 @media (max-width: 640px) {
     .headerWrap {
-        margin-block-end: 0.95rem;
+        margin-block-end: 0.82rem;
     }
 }

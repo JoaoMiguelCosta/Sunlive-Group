@@ -29,7 +29,9 @@ export default function HotelSelectableMediaGrid({
             <button
               key={item.id}
               type="button"
-              className={`${styles.card} ${isActive ? styles.cardActive : ""}`}
+              className={[styles.card, isActive ? styles.cardActive : ""]
+                .filter(Boolean)
+                .join(" ")}
               onClick={() => onSelect?.(item.id)}
               aria-pressed={isActive}
             >
@@ -42,7 +44,9 @@ export default function HotelSelectableMediaGrid({
                     objectPosition: item.imagePosition ?? "center center",
                   }}
                   loading="lazy"
+                  decoding="async"
                 />
+
                 <div className={styles.overlay} aria-hidden="true" />
               </div>
 

@@ -19,6 +19,7 @@ export const heroBanner = {
       imageSrc: home1,
       imageAlt:
         "Vista exterior ampla da Estalagem de Sangalhos, com a entrada principal ao fundo.",
+      imagePosition: "center center",
       title: "Chegada à Estalagem",
       description:
         "Uma primeira impressão marcada pela tranquilidade, luz natural e envolvente cuidada.",
@@ -30,6 +31,7 @@ export const heroBanner = {
       imageSrc: home2,
       imageAlt:
         "Vista intermédia da entrada da Estalagem de Sangalhos, com enquadramento mais próximo do acesso principal.",
+      imagePosition: "center center",
       title: "Mais perto da experiência",
       description:
         "A aproximação revela a identidade do hotel, o ambiente acolhedor e a atenção ao detalhe.",
@@ -41,6 +43,7 @@ export const heroBanner = {
       imageSrc: home3,
       imageAlt:
         "Vista próxima do logótipo e da entrada da Estalagem de Sangalhos – Sport & Nature Hotel.",
+      imagePosition: "center center",
       title: "Bem-vindo à Estalagem",
       description:
         "Descubra um espaço pensado para conforto, estadia premium e experiências memoráveis.",
@@ -60,7 +63,7 @@ export const heroBanner = {
 
   exploreAction: {
     label: "Ver alojamentos",
-    href: "/sunlive-group/hotel/accommodation",
+    href: "/sunlive-group/hotel/estadia",
     ariaLabel: "Ver página de alojamento da Estalagem de Sangalhos",
   },
 };

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import useSpotlightCycle from "../../../../../../shared/hooks/useSpotlightCycle.js";
 
 import HotelTestimonialSpotlightCard from "../../../../shared/ui/HotelTestimonialSpotlightCard/HotelTestimonialSpotlightCard.jsx";
@@ -21,7 +21,17 @@ function chunkItems(items = [], size = 3) {
 function getCardsPerView(viewportWidth, cardsPerView = {}) {
   if (viewportWidth <= 760) return cardsPerView.mobile ?? 1;
   if (viewportWidth <= 1220) return cardsPerView.tablet ?? 2;
+
   return cardsPerView.desktop ?? 3;
+}
+
+function resolveNavigationIcon(iconNode, iconName) {
+  if (iconNode) return iconNode;
+  if (!iconName) return null;
+
+  const Icon = resolveHotelIcon(hotelBrand?.icons, iconName);
+
+  return Icon ? <Icon /> : null;
 }
 
 export default function TestimonialsSpotlight() {
@@ -69,10 +79,45 @@ export default function TestimonialsSpotlight() {
     }
   }, [index, slides.length, setIndex]);
 
+  const navigation = content?.navigation ?? {};
+
+  const resolvedNavigation = useMemo(
+    () => ({
+      previousIcon:
+        resolveNavigationIcon(
+          navigation.previousIcon,
+          navigation.previousIconName,
+        ) ?? "‹",
+      nextIcon:
+        resolveNavigationIcon(navigation.nextIcon, navigation.nextIconName) ??
+        "›",
+      profileIcon: resolveNavigationIcon(
+        navigation.profileIcon,
+        navigation.profileIconName,
+      ),
+      quoteIcon: resolveNavigationIcon(
+        navigation.quoteIcon,
+        navigation.quoteIconName,
+      ),
+      locationIcon: resolveNavigationIcon(
+        navigation.locationIcon,
+        navigation.locationIconName,
+      ),
+      dateIcon: resolveNavigationIcon(
+        navigation.dateIcon,
+        navigation.dateIconName,
+      ),
+      starIcon: resolveNavigationIcon(
+        navigation.starIcon,
+        navigation.starIconName,
+      ),
+    }),
+    [navigation],
+  );
+
   if (!content || !items.length || !slides.length) return null;
 
   const activeSlide = slides[index] ?? [];
-  const navigation = content?.navigation ?? {};
   const labels = content?.labels ?? {};
 
   const handlePrevious = () => {
@@ -110,7 +155,9 @@ export default function TestimonialsSpotlight() {
           onClick={handlePrevious}
           aria-label="Ver testemunhos anteriores"
         >
-          {navigation.previousIcon ?? "‹"}
+          <span className={styles.navIcon} aria-hidden="true">
+            {resolvedNavigation.previousIcon}
+          </span>
         </button>
 
         <div className={styles.viewport}>
@@ -127,11 +174,11 @@ export default function TestimonialsSpotlight() {
                 imageSrc={item.imageSrc}
                 imageAlt={item.imageAlt}
                 verifiedLabel={labels.verifiedLabel}
-                profileIcon={navigation.profileIcon}
-                quoteIcon={navigation.quoteIcon}
-                locationIcon={navigation.locationIcon}
-                dateIcon={navigation.dateIcon}
-                starIcon={navigation.starIcon}
+                profileIcon={resolvedNavigation.profileIcon}
+                quoteIcon={resolvedNavigation.quoteIcon}
+                locationIcon={resolvedNavigation.locationIcon}
+                dateIcon={resolvedNavigation.dateIcon}
+                starIcon={resolvedNavigation.starIcon}
               />
             ))}
           </div>
@@ -166,7 +213,9 @@ export default function TestimonialsSpotlight() {
           onClick={handleNext}
           aria-label="Ver próximos testemunhos"
         >
-          {navigation.nextIcon ?? "›"}
+          <span className={styles.navIcon} aria-hidden="true">
+            {resolvedNavigation.nextIcon}
+          </span>
         </button>
       </div>
     </div>

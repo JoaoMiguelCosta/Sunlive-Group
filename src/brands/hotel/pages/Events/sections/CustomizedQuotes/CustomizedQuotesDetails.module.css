@@ -1,33 +1,191 @@
 .grid {
     inline-size: min(100%, 1360px);
     margin-inline: auto;
+
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(0.95rem, 1.8vw, 1.35rem);
+    gap: clamp(0.95rem, 1.7vw, 1.3rem);
     align-items: stretch;
 }
 
-.grid>* {
-    min-width: 0;
-}
-
-.detailCard {
+.card {
     position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+
+    min-inline-size: 0;
+    min-block-size: 100%;
+
+    border-radius: clamp(1.25rem, 1.65vw, 1.55rem);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+
+    background:
+        radial-gradient(120% 130% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075) 0%,
+            transparent 44%),
+        radial-gradient(130% 150% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.052) 0%,
+            transparent 50%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.034) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 20%,
+            rgb(0 0 0 / 0.08) 100%),
+        linear-gradient(135deg,
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.82) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.96) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.046),
+        inset 0 -1px 0 rgb(0 0 0 / 0.16),
+        0 18px 38px rgb(0 0 0 / 0.18);
+
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
 }
 
-.detailCard::after {
+.card::before {
     content: "";
+
     position: absolute;
-    inset: auto 10% -0.7rem 10%;
-    block-size: 1.35rem;
+    inset: 0;
+    z-index: 0;
+
     pointer-events: none;
+
     background:
-        radial-gradient(circle,
-            rgba(230, 200, 147, 0.18) 0%,
-            rgba(230, 200, 147, 0.06) 42%,
-            rgba(230, 200, 147, 0) 78%);
-    filter: blur(12px);
-    opacity: 0.92;
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 22%,
+            transparent 48%);
+}
+
+.topBand {
+    position: relative;
+    z-index: 1;
+
+    min-block-size: clamp(4.1rem, 5vw, 4.9rem);
+
+    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13);
+
+    background:
+        radial-gradient(80% 120% at 50% -10%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.1) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.13) 58%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.22) 100%);
+}
+
+.iconWrap {
+    position: absolute;
+    inset-block-start: clamp(2.45rem, 3vw, 2.8rem);
+    inset-inline-start: 50%;
+    z-index: 2;
+
+    translate: -50% 0;
+}
+
+.iconCircle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    inline-size: clamp(3rem, 3.5vw, 3.45rem);
+    block-size: clamp(3rem, 3.5vw, 3.45rem);
+
+    border-radius: 999px;
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.25);
+
+    background:
+        radial-gradient(circle at 30% 22%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.15) 0%,
+            transparent 56%),
+        radial-gradient(circle at 50% 56%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            transparent 72%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.28) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.86) 100%);
+
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.98);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+        0 10px 24px rgb(0 0 0 / 0.18),
+        0 0 18px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075);
+}
+
+.iconCircle :global(svg) {
+    inline-size: clamp(1.08rem, 1.2vw, 1.22rem);
+    block-size: clamp(1.08rem, 1.2vw, 1.22rem);
+
+    stroke: currentColor;
+}
+
+.iconPlaceholder {
+    inline-size: 0.9rem;
+    block-size: 0.9rem;
+
+    border-radius: 999px;
+
+    background: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.82);
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    align-content: start;
+    justify-items: center;
+    gap: 0.62rem;
+
+    padding: clamp(2.1rem, 2.6vw, 2.45rem) clamp(0.92rem, 1.2vw, 1.08rem) clamp(1rem, 1.35vw, 1.22rem);
+
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+
+    max-inline-size: 15ch;
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.98);
+    font-size: clamp(1.02rem, 0.52vw + 0.92rem, 1.18rem);
+    font-weight: 850;
+    line-height: 1.1;
+    letter-spacing: -0.028em;
+    text-wrap: balance;
+}
+
+.description {
+    margin: 0;
+
+    max-inline-size: 24ch;
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.78);
+    font-size: clamp(0.88rem, 0.12vw + 0.86rem, 0.94rem);
+    line-height: 1.46;
+    text-wrap: pretty;
+}
+
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-3px);
+        border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
+
+        box-shadow:
+            inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052),
+            inset 0 -1px 0 rgb(0 0 0 / 0.16),
+            0 24px 48px rgb(0 0 0 / 0.22),
+            0 0 0 1px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.024);
+    }
 }
 
 @media (max-width: 1200px) {
@@ -40,5 +198,33 @@
     .grid {
         grid-template-columns: 1fr;
         gap: 0.9rem;
+    }
+
+    .card {
+        border-radius: 1.1rem;
+    }
+
+    .topBand {
+        min-block-size: 4rem;
+    }
+
+    .content {
+        padding-block-end: 1rem;
+    }
+
+    .title {
+        max-inline-size: 100%;
+        font-size: 1rem;
+    }
+
+    .description {
+        max-inline-size: 32ch;
+        font-size: 0.9rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
     }
 }

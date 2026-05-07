@@ -7,6 +7,8 @@ export default function DescriptionWellBeing() {
   if (!content?.description) return null;
 
   return (
-    <HotelSectionDescription>{content.description}</HotelSectionDescription>
+    <HotelSectionDescription align="center">
+      {content.description}
+    </HotelSectionDescription>
   );
 }

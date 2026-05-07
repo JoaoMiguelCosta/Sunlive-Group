@@ -4,7 +4,7 @@ import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSe
 import styles from "./BarLounge.module.css";
 
 export default function TitleBarLounge({
-  titleId = "restaurant-bar-lounge-title",
+  titleId = "restaurante-bar-lounge-title",
 }) {
   const content = hotelBrand?.pages?.dining?.sections?.barAndLounge ?? null;
   const label = String(content?.headerLabel ?? "").trim();

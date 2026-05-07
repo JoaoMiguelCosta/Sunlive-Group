@@ -6,9 +6,10 @@ import styles from "./BarLounge.module.css";
 
 export default function BarLoungeSection() {
   const section = hotelBrand?.pages?.dining?.sections?.barAndLounge ?? null;
+
   if (!section) return null;
 
-  const sectionId = section?.id ?? "restaurant-bar-lounge";
+  const sectionId = section?.id ?? "restaurante-bar-lounge";
   const titleId = `${sectionId}-title`;
 
   return (

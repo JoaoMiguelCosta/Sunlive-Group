@@ -1,17 +1,5 @@
 import styles from "./HotelHighlightPill.module.css";
 
-/**
- * HotelHighlightPill
- * Bloco premium reutilizável para frases de destaque.
- *
- * Props:
- * - children: conteúdo interno
- * - className?: classes extra no wrapper
- * - cardClassName?: classes extra no card
- * - innerClassName?: classes extra no inner
- * - textClassName?: classes extra no text
- * - as?: tag HTML opcional
- */
 export default function HotelHighlightPill({
   children,
   className = "",

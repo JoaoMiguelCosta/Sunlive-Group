@@ -1,3 +1,121 @@
 .grid {
+    inline-size: min(100%, 1180px);
+    margin-inline: auto;
     margin-top: clamp(1.1rem, 2vw, 1.75rem);
+}
+
+.card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    border: 1px solid rgba(232, 204, 158, 0.2);
+    border-radius: clamp(1.12rem, 1.55vw, 1.55rem);
+
+    background:
+        radial-gradient(120% 115% at 0% 0%,
+            rgba(232, 204, 158, 0.082) 0%,
+            transparent 42%),
+        radial-gradient(120% 120% at 100% 100%,
+            rgba(139, 105, 66, 0.07) 0%,
+            transparent 52%),
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.03) 0%,
+            rgba(255, 248, 235, 0.01) 22%,
+            rgba(0, 0, 0, 0.085) 100%),
+        linear-gradient(145deg,
+            rgba(40, 32, 26, 0.97) 0%,
+            rgba(23, 18, 15, 0.992) 58%,
+            rgba(12, 10, 9, 1) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 248, 235, 0.05),
+        0 18px 38px rgba(0, 0, 0, 0.22);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 248, 235, 0.055) 0%,
+            rgba(255, 248, 235, 0.014) 18%,
+            transparent 44%);
+    opacity: 0.82;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: 3;
+    pointer-events: none;
+
+    border-radius: inherit;
+    border: 1px solid rgba(255, 238, 205, 0.045);
+}
+
+.card :global(svg) {
+    stroke: currentColor;
+    filter: drop-shadow(0 0 8px rgba(232, 204, 158, 0.12));
+}
+
+.card :global([class*="icon"]),
+.card :global([class*="Icon"]) {
+    color: rgba(232, 204, 158, 0.95);
+}
+
+.card :global([class*="value"]),
+.card :global([class*="Value"]) {
+    color: rgba(255, 249, 240, 0.98);
+    letter-spacing: -0.045em;
+}
+
+.card :global([class*="label"]),
+.card :global([class*="Label"]) {
+    color: rgba(232, 204, 158, 0.92);
+}
+
+.card :global([class*="description"]),
+.card :global([class*="Description"]) {
+    color: rgba(244, 231, 212, 0.8);
+}
+
+@media (hover: hover) {
+    .card {
+        transition:
+            transform 180ms ease,
+            border-color 180ms ease,
+            box-shadow 180ms ease,
+            background 180ms ease;
+    }
+
+    .card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(232, 204, 158, 0.32);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 248, 235, 0.06),
+            0 22px 44px rgba(0, 0, 0, 0.26),
+            0 0 24px rgba(232, 204, 158, 0.04);
+    }
+}
+
+@media (max-width: 680px) {
+    .grid {
+        margin-top: 1rem;
+    }
+
+    .card {
+        border-radius: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
 }

@@ -1,96 +1,399 @@
-:root[data-brand="hotel"] {
-    /* Acentos Hotel — champanhe-quente */
-    --sl-accent-400: #EBD3A8;
-    /* ligeiramente mais claro */
-    --sl-accent-500: #E6C893;
-    /* champanhe-quente (principal) */
-    --sl-accent-600: #B8A075;
-    /* mais profundo para bordas/focus */
+/* Sunlive Hotel — Theme
+   Direção visual: Boutique Luxury Editorial / Cinematic Quiet Warmth.
+   Base: grafite quente, preto suave, marfim, areia e champagne.
+   Uso: importar uma vez dentro da brand Hotel, idealmente no HotelShell.jsx.
+*/
 
-    /* Halo / ornamentos (um pouco mais presente, sensação de calor) */
-    --sl-ornament-alpha: .14;
+:root[data-brand="hotel"],
+[data-brand="hotel"] {
+    color-scheme: dark;
 
-    /* ===== Glow (fallbacks + color-mix) ===== */
-    /* Fallbacks imediatos (sem color-mix) */
-    --sl-glow-top: #C78615;
-    /* gold-400 */
-    --sl-glow-ring: #C78615;
-    /* gold-400 */
-    --sl-glow-bottom: #A16207;
-    /* gold-500 */
+    /* =============================
+       Base Sunlive / overrides brand
+       ============================= */
 
-    /* Versão melhorada (quando suportado) */
-    @supports (color: color-mix(in oklab, white, black)) {
-        /* Mistura o ouro com o champanhe para um brilho mais “hotel” */
-        --sl-glow-top: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 22%);
-        --sl-glow-ring: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 18%);
-        --sl-glow-bottom: color-mix(in oklab, var(--sl-gold-500), var(--sl-accent-500) 12%);
+    --sl-accent-400: #ead7b0;
+    --sl-accent-500: #d9b978;
+    --sl-accent-600: #aa8750;
+
+    --sl-ornament-alpha: 0.1;
+
+    --sl-glow-top: #d9b978;
+    --sl-glow-ring: #b9965c;
+    --sl-glow-bottom: #7d5a31;
+
+    --footer-accent: var(--sl-accent-500);
+
+    /* =============================
+       Hotel — cores principais
+       ============================= */
+
+    --hotel-black: #080604;
+    --hotel-graphite-980: #0d0b09;
+    --hotel-graphite-950: #12100d;
+    --hotel-graphite-900: #17130f;
+    --hotel-graphite-850: #1d1812;
+    --hotel-graphite-800: #261f17;
+    --hotel-graphite-700: #33291e;
+
+    --hotel-ivory-050: #fbf7ef;
+    --hotel-ivory-100: #f4ead8;
+    --hotel-ivory-200: #e8d7bd;
+    --hotel-sand-300: #d7bd91;
+    --hotel-sand-400: #bf9d68;
+
+    --hotel-champagne: #d9b978;
+    --hotel-champagne-soft: #ead7b0;
+    --hotel-champagne-muted: #aa8750;
+    --hotel-bronze: #7d5a31;
+    --hotel-olive: #6f7354;
+
+    /* RGB para gradients com alpha */
+    --hotel-black-rgb: 8 6 4;
+    --hotel-graphite-rgb: 18 16 13;
+    --hotel-ivory-rgb: 251 247 239;
+    --hotel-champagne-rgb: 217 185 120;
+    --hotel-sand-rgb: 191 157 104;
+    --hotel-bronze-rgb: 125 90 49;
+    --hotel-olive-rgb: 111 115 84;
+
+    /* =============================
+       Texto
+       ============================= */
+
+    --hotel-text: rgba(251, 247, 239, 0.96);
+    --hotel-text-soft: rgba(244, 234, 216, 0.82);
+    --hotel-muted: rgba(232, 215, 189, 0.66);
+    --hotel-muted-strong: rgba(232, 215, 189, 0.54);
+    --hotel-heading: var(--hotel-ivory-050);
+    --hotel-kicker: var(--hotel-champagne-soft);
+
+    /* =============================
+       Fundos / superfícies
+       ============================= */
+
+    --hotel-page-bg:
+        radial-gradient(90rem 48rem at 50% -14rem,
+            rgb(var(--hotel-champagne-rgb) / 0.105) 0%,
+            rgb(var(--hotel-bronze-rgb) / 0.055) 34%,
+            transparent 68%),
+        radial-gradient(56rem 34rem at 8% 18%,
+            rgb(var(--hotel-olive-rgb) / 0.065) 0%,
+            transparent 64%),
+        linear-gradient(180deg,
+            var(--hotel-graphite-950) 0%,
+            var(--hotel-black) 100%);
+
+    --hotel-surface:
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb) / 0.07) 0%,
+            rgb(var(--hotel-ivory-rgb) / 0.025) 44%,
+            rgb(var(--hotel-black-rgb) / 0.16) 100%);
+
+    --hotel-surface-warm:
+        radial-gradient(110% 140% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb) / 0.105) 0%,
+            transparent 52%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb) / 0.075) 0%,
+            rgb(var(--hotel-black-rgb) / 0.24) 100%);
+
+    --hotel-surface-panel:
+        radial-gradient(115% 145% at 100% 0%,
+            rgb(var(--hotel-champagne-rgb) / 0.095) 0%,
+            transparent 50%),
+        radial-gradient(95% 120% at 0% 100%,
+            rgb(var(--hotel-olive-rgb) / 0.04) 0%,
+            transparent 62%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb) / 0.058) 0%,
+            rgb(var(--hotel-black-rgb) / 0.34) 100%);
+
+    --hotel-surface-elevated:
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb) / 0.105) 0%,
+            rgb(var(--hotel-ivory-rgb) / 0.042) 48%,
+            rgb(var(--hotel-black-rgb) / 0.22) 100%);
+
+    --hotel-image-overlay:
+        linear-gradient(180deg,
+            rgb(var(--hotel-black-rgb) / 0.08) 0%,
+            rgb(var(--hotel-black-rgb) / 0.38) 100%);
+
+    --hotel-image-filter: brightness(0.92) contrast(1.04) saturate(0.94);
+
+    /* =============================
+       Borders / sombras / radii
+       ============================= */
+
+    --hotel-border-soft: rgb(var(--hotel-ivory-rgb) / 0.08);
+    --hotel-border: rgb(var(--hotel-champagne-rgb) / 0.18);
+    --hotel-border-strong: rgb(var(--hotel-champagne-rgb) / 0.32);
+
+    --hotel-shadow-soft:
+        0 1rem 2.6rem rgb(0 0 0 / 0.28),
+        inset 0 1px 0 rgb(255 255 255 / 0.045);
+
+    --hotel-shadow-card:
+        0 1.35rem 3.6rem rgb(0 0 0 / 0.34),
+        inset 0 1px 0 rgb(255 255 255 / 0.052);
+
+    --hotel-shadow-card-hover:
+        0 1.65rem 4.8rem rgb(0 0 0 / 0.42),
+        0 0 0 1px rgb(var(--hotel-champagne-rgb) / 0.08),
+        inset 0 1px 0 rgb(255 255 255 / 0.07);
+
+    --hotel-glow-soft:
+        0 0 2.4rem rgb(var(--hotel-champagne-rgb) / 0.08);
+
+    --hotel-radius-sm: clamp(0.7rem, 0.8vw, 0.85rem);
+    --hotel-radius-md: clamp(0.95rem, 1vw, 1.15rem);
+    --hotel-radius-lg: clamp(1.15rem, 1.45vw, 1.55rem);
+    --hotel-radius-xl: clamp(1.45rem, 2vw, 2.15rem);
+    --hotel-radius-2xl: clamp(1.8rem, 2.8vw, 3rem);
+
+    /* =============================
+       Layout / espaçamento
+       ============================= */
+
+    --hotel-page-max-width: 118rem;
+    --hotel-content-max-width: 86rem;
+    --hotel-readable-width: 58rem;
+
+    --hotel-page-padding-inline: clamp(1rem, 4vw, 4.5rem);
+    --hotel-section-gap: clamp(3.2rem, 6vw, 7.2rem);
+    --hotel-section-padding: clamp(1.05rem, 1.7vw, 1.65rem);
+    --hotel-card-padding: clamp(1rem, 1.5vw, 1.45rem);
+
+    /* =============================
+       Tipografia
+       ============================= */
+
+    --hotel-kicker-size: clamp(0.72rem, 0.74vw, 0.82rem);
+    --hotel-kicker-line: 1.2;
+    --hotel-kicker-spacing: 0.16em;
+
+    --hotel-hero-title-size: clamp(2.55rem, 6vw, 6.9rem);
+    --hotel-hero-title-line: 0.94;
+    --hotel-hero-title-spacing: -0.065em;
+
+    --hotel-section-title-size: clamp(2rem, 3.6vw, 4.75rem);
+    --hotel-section-title-line: 0.98;
+    --hotel-section-title-spacing: -0.052em;
+
+    --hotel-panel-title-size: clamp(1.35rem, 2vw, 2.35rem);
+    --hotel-panel-title-line: 1.04;
+    --hotel-panel-title-spacing: -0.035em;
+
+    --hotel-card-title-size: clamp(1.02rem, 1.25vw, 1.32rem);
+    --hotel-card-title-line: 1.12;
+    --hotel-card-title-spacing: -0.018em;
+
+    --hotel-body-size: clamp(0.96rem, 1vw, 1.08rem);
+    --hotel-body-line: 1.72;
+
+    --hotel-small-size: clamp(0.82rem, 0.86vw, 0.92rem);
+    --hotel-small-line: 1.55;
+
+    /* =============================
+       Interação
+       ============================= */
+
+    --hotel-transition-fast: 160ms ease;
+    --hotel-transition-base: 240ms ease;
+    --hotel-transition-slow: 420ms cubic-bezier(0.22, 1, 0.36, 1);
+
+    --hotel-focus-ring:
+        0 0 0 2px rgb(var(--hotel-black-rgb) / 0.96),
+        0 0 0 4px rgb(var(--hotel-champagne-rgb) / 0.86);
+}
+
+/* Melhorias quando color-mix estiver disponível */
+@supports (color: color-mix(in oklab, white, black)) {
+
+    :root[data-brand="hotel"],
+    [data-brand="hotel"] {
+        --sl-glow-top: color-mix(in oklab, var(--hotel-champagne), white 12%);
+        --sl-glow-ring: color-mix(in oklab, var(--hotel-champagne), var(--hotel-sand-400) 18%);
+        --sl-glow-bottom: color-mix(in oklab, var(--hotel-bronze), black 8%);
+
+        --hotel-border: color-mix(in oklab, var(--hotel-champagne), transparent 78%);
+        --hotel-border-strong: color-mix(in oklab, var(--hotel-champagne), transparent 64%);
     }
 }
 
 /* =============================
-   Utilitários/variantes Hotel
+   Base da brand
    ============================= */
 
-/* Badge de destaque (ex: “Hospitalidade 24/7”) */
-:root[data-brand="hotel"] .u-badge-accent {
-    /* fundo champanhe escurecido – discreto mas sofisticado */
-    background: color-mix(in oklab, var(--sl-accent-500, #E6C893), black 70%);
-    color: var(--sl-platinum-010, #f9fafb);
+[data-brand="hotel"] {
+    background: var(--hotel-page-bg);
+    color: var(--hotel-text);
+    font-synthesis-weight: none;
+    text-rendering: geometricPrecision;
+}
 
-    border: 1px solid color-mix(in oklab, var(--sl-accent-600, #B8A075), white 18%);
+[data-brand="hotel"] ::selection {
+    background: rgb(var(--hotel-champagne-rgb) / 0.26);
+    color: var(--hotel-ivory-050);
+}
+
+[data-brand="hotel"] :is(a, button, input, textarea, select, summary):focus-visible {
+    outline: none;
+    box-shadow: var(--hotel-focus-ring);
+}
+
+[data-brand="hotel"] img {
+    max-inline-size: 100%;
+}
+
+/* =============================
+   Utilitários globais Hotel
+   ============================= */
+
+[data-brand="hotel"] .u-hotel-surface {
+    border: 1px solid var(--hotel-border);
+    border-radius: var(--hotel-radius-xl);
+    background: var(--hotel-surface-panel);
+    box-shadow: var(--hotel-shadow-card);
+}
+
+[data-brand="hotel"] .u-hotel-kicker {
+    margin: 0;
+
+    color: var(--hotel-kicker);
+    font-size: var(--hotel-kicker-size);
+    font-weight: 750;
+    line-height: var(--hotel-kicker-line);
+    letter-spacing: var(--hotel-kicker-spacing);
+    text-transform: uppercase;
+}
+
+[data-brand="hotel"] .u-badge-accent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.42rem;
+
+    inline-size: fit-content;
+    min-block-size: 2rem;
+    padding: 0.36rem 0.82rem;
+
+    border: 1px solid var(--hotel-border);
     border-radius: 999px;
 
-    padding: 0.26rem 0.85rem;
-    font-size: 0.9rem;
+    background:
+        linear-gradient(135deg,
+            rgb(var(--hotel-champagne-rgb) / 0.16),
+            rgb(var(--hotel-ivory-rgb) / 0.045));
+
+    color: var(--hotel-ivory-050);
+    font-size: var(--hotel-small-size);
+    font-weight: 700;
+    line-height: 1;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.055);
+
     transition:
-        transform 150ms ease-out,
-        background 150ms ease-out,
-        border-color 150ms ease-out;
-
-    cursor: pointer;
+        transform var(--hotel-transition-fast),
+        border-color var(--hotel-transition-fast),
+        background var(--hotel-transition-fast),
+        box-shadow var(--hotel-transition-fast);
 }
 
-/* Hover + foco teclado com brilho champanhe/dourado */
-:root[data-brand="hotel"] .u-badge-accent:hover,
-:root[data-brand="hotel"] .u-badge-accent:focus-visible {
+[data-brand="hotel"] .u-badge-accent:hover,
+[data-brand="hotel"] .u-badge-accent:focus-visible {
     transform: translateY(-1px);
-    background: linear-gradient(135deg,
-            color-mix(in oklab, var(--sl-accent-600, #B8A075), black 4%),
-            color-mix(in oklab, var(--sl-accent-400, #EBD3A8), black 10%));
-    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #C78615), black 8%);
+    border-color: var(--hotel-border-strong);
+    background:
+        linear-gradient(135deg,
+            rgb(var(--hotel-champagne-rgb) / 0.24),
+            rgb(var(--hotel-ivory-rgb) / 0.075));
+    box-shadow:
+        var(--hotel-glow-soft),
+        inset 0 1px 0 rgb(255 255 255 / 0.075);
 }
 
-/* Botão secundário Hotel (ex: “Ver quartos”, “Pedir proposta”) */
-:root[data-brand="hotel"] .button--secondary {
-    background: color-mix(in oklab, var(--sl-accent-500) 88%, black);
-    border: 1px solid var(--sl-accent-600);
-    color: white;
+[data-brand="hotel"] .button--secondary {
+    border: 1px solid var(--hotel-border);
+    border-radius: 999px;
+
+    background:
+        linear-gradient(135deg,
+            rgb(var(--hotel-ivory-rgb) / 0.08),
+            rgb(var(--hotel-black-rgb) / 0.16));
+
+    color: var(--hotel-text);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.055);
+
+    transition:
+        transform var(--hotel-transition-fast),
+        border-color var(--hotel-transition-fast),
+        background var(--hotel-transition-fast),
+        box-shadow var(--hotel-transition-fast);
 }
 
-:root[data-brand="hotel"] .button--secondary:hover {
-    background: color-mix(in oklab, var(--sl-accent-400) 88%, black);
-    border-color: var(--sl-accent-500);
+[data-brand="hotel"] .button--secondary:hover,
+[data-brand="hotel"] .button--secondary:focus-visible {
+    transform: translateY(-1px);
+    border-color: var(--hotel-border-strong);
+    background:
+        linear-gradient(135deg,
+            rgb(var(--hotel-champagne-rgb) / 0.18),
+            rgb(var(--hotel-ivory-rgb) / 0.06));
+    box-shadow: var(--hotel-shadow-soft);
 }
 
-/* Links acentuados Hotel (reservas, contactos, etc.) */
-:root[data-brand="hotel"] .link-accent {
-    color: var(--sl-accent-500);
+[data-brand="hotel"] .link-accent {
+    color: var(--hotel-champagne-soft);
+    text-decoration-color: rgb(var(--hotel-champagne-rgb) / 0.42);
+    text-underline-offset: 0.18em;
 }
 
-:root[data-brand="hotel"] .link-accent:hover {
-    color: var(--sl-accent-400);
+[data-brand="hotel"] .link-accent:hover,
+[data-brand="hotel"] .link-accent:focus-visible {
+    color: var(--hotel-ivory-050);
+    text-decoration-color: rgb(var(--hotel-champagne-rgb) / 0.78);
 }
 
-/* Focus ring coerente com o champanhe (acessibilidade) */
-:root[data-brand="hotel"] :is(a, button, input, textarea):focus-visible {
-    outline: 2px solid color-mix(in oklab, var(--sl-accent-500), white 14%);
-    outline-offset: 2px;
+/* =============================
+   Responsividade base
+   ============================= */
+
+@media (max-width: 900px) {
+
+    :root[data-brand="hotel"],
+    [data-brand="hotel"] {
+        --hotel-page-padding-inline: clamp(0.9rem, 4.8vw, 2rem);
+        --hotel-section-gap: clamp(2.5rem, 8vw, 4.2rem);
+
+        --hotel-hero-title-size: clamp(2.45rem, 12vw, 5.1rem);
+        --hotel-section-title-size: clamp(1.9rem, 8vw, 3.4rem);
+    }
 }
 
-:global([data-brand="hotel"]) {
-    --footer-accent: var(--sl-accent-500, #E6C893);
+@media (max-width: 620px) {
+
+    :root[data-brand="hotel"],
+    [data-brand="hotel"] {
+        --hotel-card-padding: clamp(0.9rem, 4vw, 1.15rem);
+        --hotel-section-padding: clamp(0.9rem, 4vw, 1.15rem);
+
+        --hotel-body-size: 0.96rem;
+        --hotel-body-line: 1.66;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    [data-brand="hotel"] *,
+    [data-brand="hotel"] *::before,
+    [data-brand="hotel"] *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }

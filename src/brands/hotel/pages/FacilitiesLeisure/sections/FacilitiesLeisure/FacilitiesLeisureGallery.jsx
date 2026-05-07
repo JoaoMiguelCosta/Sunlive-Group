@@ -4,6 +4,9 @@ import hotelBrand from "../../../../config/index.js";
 
 import styles from "./FacilitiesLeisureGallery.module.css";
 
+const FADE_DURATION_MS = 560;
+const STACKED_BREAKPOINT = 1180;
+
 function clampIndex(index, length) {
   if (length <= 0) return 0;
   return ((index % length) + length) % length;
@@ -29,9 +32,6 @@ function getImageFitMode(item) {
 function getImagePosition(item) {
   return item?.imagePosition ?? "center";
 }
-
-const FADE_DURATION_MS = 560;
-const STACKED_BREAKPOINT = 1180;
 
 export default function FacilitiesLeisureGallery() {
   const section =
@@ -125,6 +125,7 @@ export default function FacilitiesLeisureGallery() {
     if (typeof window === "undefined") return;
 
     const isStackedLayout = window.innerWidth <= STACKED_BREAKPOINT;
+
     if (!isStackedLayout) {
       shouldRevealMediaRef.current = false;
       return;
@@ -156,20 +157,27 @@ export default function FacilitiesLeisureGallery() {
 
   const activeItem = items[activeIndex] ?? null;
   const totalItems = items.length;
+  const hasMultipleItems = totalItems > 1;
 
   const goPrev = useCallback(() => {
+    if (!hasMultipleItems) return;
+
     shouldRevealMediaRef.current = true;
+
     setActiveIndex((previousIndex) =>
       clampIndex(previousIndex - 1, totalItems),
     );
-  }, [totalItems]);
+  }, [hasMultipleItems, totalItems]);
 
   const goNext = useCallback(() => {
+    if (!hasMultipleItems) return;
+
     shouldRevealMediaRef.current = true;
+
     setActiveIndex((previousIndex) =>
       clampIndex(previousIndex + 1, totalItems),
     );
-  }, [totalItems]);
+  }, [hasMultipleItems, totalItems]);
 
   const handleSelectItem = useCallback((index) => {
     shouldRevealMediaRef.current = true;
@@ -186,18 +194,22 @@ export default function FacilitiesLeisureGallery() {
       <div className={styles.galleryShell}>
         <div className={styles.galleryLayout}>
           <div className={styles.overviewBlock}>
-            <span className={styles.overviewEyebrow}>
-              {ui.overviewEyebrow ?? "Experiência"}
-            </span>
+            {ui.overviewEyebrow ? (
+              <span className={styles.overviewEyebrow}>
+                {ui.overviewEyebrow}
+              </span>
+            ) : null}
 
-            <h3 className={styles.overviewTitle}>
-              {ui.overviewTitle ?? "Galeria"}
-            </h3>
+            {ui.overviewTitle ? (
+              <h3 className={styles.overviewTitle}>{ui.overviewTitle}</h3>
+            ) : null}
 
-            <p className={styles.overviewText}>{ui.overviewText ?? ""}</p>
+            {ui.overviewText ? (
+              <p className={styles.overviewText}>{ui.overviewText}</p>
+            ) : null}
           </div>
 
-          <div className={styles.activeInfoCard}>
+          <article className={styles.activeInfoCard} aria-live="polite">
             <div className={styles.activeMetaRow}>
               <span className={styles.counterPill}>
                 {ui.counterPrefix ?? "Imagem"} {activeIndex + 1}/{totalItems}
@@ -210,45 +222,59 @@ export default function FacilitiesLeisureGallery() {
 
             <div className={styles.activeCopy}>
               <h4 className={styles.activeTitle}>{activeItem.label}</h4>
-              <p className={styles.activeDescription}>
-                {activeItem.description}
-              </p>
+
+              {activeItem.description ? (
+                <p className={styles.activeDescription}>
+                  {activeItem.description}
+                </p>
+              ) : null}
             </div>
 
-            <div className={styles.controlsRow}>
-              <button
-                type="button"
-                className={styles.navButton}
-                onClick={goPrev}
-                aria-label={ui.previousLabel ?? "Imagem anterior"}
-              >
-                <span className={styles.navGlyph} aria-hidden="true">
-                  ‹
-                </span>
-                <span className={styles.navText}>Anterior</span>
-              </button>
+            {hasMultipleItems ? (
+              <div className={styles.controlsRow}>
+                <button
+                  type="button"
+                  className={styles.navButton}
+                  onClick={goPrev}
+                  aria-label={ui.previousLabel ?? "Imagem anterior"}
+                >
+                  <span className={styles.navGlyph} aria-hidden="true">
+                    ‹
+                  </span>
+                  <span className={styles.navText}>
+                    {ui.previousText ?? "Anterior"}
+                  </span>
+                </button>
 
-              <button
-                type="button"
-                className={styles.navButton}
-                onClick={goNext}
-                aria-label={ui.nextLabel ?? "Imagem seguinte"}
-              >
-                <span className={styles.navText}>Seguinte</span>
-                <span className={styles.navGlyph} aria-hidden="true">
-                  ›
-                </span>
-              </button>
-            </div>
-          </div>
+                <button
+                  type="button"
+                  className={styles.navButton}
+                  onClick={goNext}
+                  aria-label={ui.nextLabel ?? "Imagem seguinte"}
+                >
+                  <span className={styles.navText}>
+                    {ui.nextText ?? "Seguinte"}
+                  </span>
+                  <span className={styles.navGlyph} aria-hidden="true">
+                    ›
+                  </span>
+                </button>
+              </div>
+            ) : null}
+          </article>
 
           <div ref={mediaPanelRef} className={styles.mediaPanel}>
             <div className={styles.mediaCard}>
               {previousItem ? (
                 <div
-                  className={`${styles.mediaBackdrop} ${styles.transitionLayer} ${
-                    styles.previousBackdrop
-                  } ${isFading ? styles.previousBackdropHidden : ""}`}
+                  className={[
+                    styles.mediaBackdrop,
+                    styles.transitionLayer,
+                    styles.previousBackdrop,
+                    isFading ? styles.previousBackdropHidden : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
                   aria-hidden="true"
                 >
                   <img
@@ -258,16 +284,22 @@ export default function FacilitiesLeisureGallery() {
                     loading="lazy"
                     style={{
                       objectPosition: getImagePosition(previousItem),
-                      objectFit: "cover",
                     }}
                   />
                 </div>
               ) : null}
 
               <div
-                className={`${styles.mediaBackdrop} ${styles.transitionLayer} ${
-                  styles.currentBackdrop
-                } ${!previousItem || isFading ? styles.currentBackdropVisible : ""}`}
+                className={[
+                  styles.mediaBackdrop,
+                  styles.transitionLayer,
+                  styles.currentBackdrop,
+                  !previousItem || isFading
+                    ? styles.currentBackdropVisible
+                    : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
                 aria-hidden="true"
               >
                 <img
@@ -277,16 +309,20 @@ export default function FacilitiesLeisureGallery() {
                   loading="lazy"
                   style={{
                     objectPosition: getImagePosition(displayItem),
-                    objectFit: "cover",
                   }}
                 />
               </div>
 
               {previousItem ? (
                 <img
-                  className={`${styles.mainImage} ${styles.transitionLayer} ${
-                    styles.previousImage
-                  } ${isFading ? styles.previousImageHidden : ""}`}
+                  className={[
+                    styles.mainImage,
+                    styles.transitionLayer,
+                    styles.previousImage,
+                    isFading ? styles.previousImageHidden : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
                   src={previousItem.src}
                   alt=""
                   aria-hidden="true"
@@ -299,9 +335,14 @@ export default function FacilitiesLeisureGallery() {
               ) : null}
 
               <img
-                className={`${styles.mainImage} ${styles.transitionLayer} ${
-                  styles.currentImage
-                } ${!previousItem || isFading ? styles.currentImageVisible : ""}`}
+                className={[
+                  styles.mainImage,
+                  styles.transitionLayer,
+                  styles.currentImage,
+                  !previousItem || isFading ? styles.currentImageVisible : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
                 src={displayItem.src}
                 alt={displayItem.alt}
                 loading="eager"
@@ -321,42 +362,46 @@ export default function FacilitiesLeisureGallery() {
             </div>
           </div>
 
-          <div
-            className={styles.thumbnailsBlock}
-            aria-label={ui.thumbnailsLabel ?? "Miniaturas da galeria"}
-          >
-            {items.map((item, index) => {
-              const isActive = index === activeIndex;
+          {hasMultipleItems ? (
+            <div
+              className={styles.thumbnailsBlock}
+              aria-label={ui.thumbnailsLabel ?? "Miniaturas da galeria"}
+            >
+              {items.map((item, index) => {
+                const isActive = index === activeIndex;
 
-              return (
-                <button
-                  key={item.id ?? `facilities-thumb-${index}`}
-                  type="button"
-                  className={`${styles.thumbnailButton} ${
-                    isActive ? styles.thumbnailButtonActive : ""
-                  }`}
-                  onClick={() => handleSelectItem(index)}
-                  aria-label={`Ver ${item.label}`}
-                  aria-pressed={isActive}
-                >
-                  <span className={styles.thumbnailMedia}>
-                    <img
-                      className={styles.thumbnailImage}
-                      src={item.src}
-                      alt={item.thumbAlt ?? item.alt ?? item.label}
-                      loading="lazy"
-                      style={{
-                        objectPosition: getImagePosition(item),
-                        objectFit: "cover",
-                      }}
-                    />
-                  </span>
+                return (
+                  <button
+                    key={item.id ?? `facilities-thumb-${index}`}
+                    type="button"
+                    className={[
+                      styles.thumbnailButton,
+                      isActive ? styles.thumbnailButtonActive : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                    onClick={() => handleSelectItem(index)}
+                    aria-label={`Ver ${item.label}`}
+                    aria-pressed={isActive}
+                  >
+                    <span className={styles.thumbnailMedia}>
+                      <img
+                        className={styles.thumbnailImage}
+                        src={item.src}
+                        alt={item.thumbAlt ?? item.alt ?? item.label}
+                        loading="lazy"
+                        style={{
+                          objectPosition: getImagePosition(item),
+                        }}
+                      />
+                    </span>
 
-                  <span className={styles.thumbnailLabel}>{item.label}</span>
-                </button>
-              );
-            })}
-          </div>
+                    <span className={styles.thumbnailLabel}>{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
 import styles from "./StayPoliciesAccordion.module.css";
 import { ICONS, resolveHotelIcon } from "../../../../config/index.js";
 
@@ -24,9 +25,30 @@ function Chevron({ open }) {
   );
 }
 
-function getInitialActiveKey(items = []) {
+function getValidItems(items) {
+  return Array.isArray(items)
+    ? items.filter((item) => item?.key && item?.title)
+    : [];
+}
+
+function getInitialActiveKey(items) {
   const defaultItem = items.find((item) => item?.defaultOpen);
   return defaultItem?.key ?? items[0]?.key ?? null;
+}
+
+function getInitialOpenKeys(items, allowMultiple) {
+  if (!items.length) return [];
+
+  if (!allowMultiple) {
+    const activeKey = getInitialActiveKey(items);
+    return activeKey ? [activeKey] : [];
+  }
+
+  const defaultOpenKeys = items
+    .filter((item) => item?.defaultOpen)
+    .map((item) => item.key);
+
+  return defaultOpenKeys.length ? defaultOpenKeys : [items[0].key];
 }
 
 export default function StayPoliciesAccordion({
@@ -34,24 +56,61 @@ export default function StayPoliciesAccordion({
   allowMultiple = false,
   ui = {},
 }) {
-  const safeItems = Array.isArray(items) ? items : [];
-  const initialKey = getInitialActiveKey(safeItems);
+  const safeItems = useMemo(() => getValidItems(items), [items]);
 
-  const [activeKey, setActiveKey] = useState(initialKey);
+  const initialActiveKey = useMemo(
+    () => getInitialActiveKey(safeItems),
+    [safeItems],
+  );
+
+  const initialOpenKeys = useMemo(
+    () => getInitialOpenKeys(safeItems, allowMultiple),
+    [safeItems, allowMultiple],
+  );
+
+  const [activeKey, setActiveKey] = useState(initialActiveKey);
+  const [openKeys, setOpenKeys] = useState(initialOpenKeys);
+
+  useEffect(() => {
+    const validKeys = new Set(safeItems.map((item) => item.key));
+
+    setActiveKey((currentKey) => {
+      if (currentKey && validKeys.has(currentKey)) return currentKey;
+      return getInitialActiveKey(safeItems);
+    });
+
+    setOpenKeys((currentKeys) => {
+      const filteredKeys = currentKeys.filter((key) => validKeys.has(key));
+      if (filteredKeys.length) return filteredKeys;
+
+      return getInitialOpenKeys(safeItems, allowMultiple);
+    });
+  }, [safeItems, allowMultiple]);
 
   const activeItem = useMemo(() => {
     return (
-      safeItems.find((item) => item.key === activeKey) ?? safeItems[0] ?? null
+      safeItems.find((item) => item.key === activeKey) ??
+      safeItems.find((item) => openKeys.includes(item.key)) ??
+      safeItems[0] ??
+      null
     );
-  }, [activeKey, safeItems]);
+  }, [activeKey, openKeys, safeItems]);
 
   function handleToggle(key) {
-    if (allowMultiple) {
-      setActiveKey((prev) => (prev === key ? null : key));
-      return;
-    }
+    setActiveKey(key);
 
-    setActiveKey((prev) => (prev === key ? null : key));
+    setOpenKeys((currentKeys) => {
+      if (!allowMultiple) return [key];
+
+      const isOpen = currentKeys.includes(key);
+
+      if (isOpen) {
+        const nextKeys = currentKeys.filter((itemKey) => itemKey !== key);
+        return nextKeys.length ? nextKeys : [key];
+      }
+
+      return [...currentKeys, key];
+    });
   }
 
   if (!safeItems.length || !activeItem) return null;
@@ -64,6 +123,8 @@ export default function StayPoliciesAccordion({
         className={styles.spotlight}
         aria-label={ui.spotlightAriaLabel ?? "Destaque da política selecionada"}
       >
+        <div className={styles.spotlightDecor} aria-hidden="true" />
+
         <div className={styles.spotlightTop}>
           <span className={styles.spotlightBadge}>
             {ui.spotlightBadge ?? "Informação Essencial"}
@@ -90,7 +151,9 @@ export default function StayPoliciesAccordion({
           <p className={styles.spotlightSummary}>{activeItem.summary}</p>
         ) : null}
 
-        <p className={styles.spotlightBody}>{activeItem.body}</p>
+        {activeItem.body ? (
+          <p className={styles.spotlightBody}>{activeItem.body}</p>
+        ) : null}
 
         {Array.isArray(activeItem.highlights) &&
         activeItem.highlights.length ? (
@@ -119,7 +182,7 @@ export default function StayPoliciesAccordion({
         aria-label={ui.accordionAriaLabel ?? "Lista de políticas de estadia"}
       >
         {safeItems.map((item) => {
-          const open = item.key === activeKey;
+          const open = openKeys.includes(item.key);
           const panelId = `${item.key}-panel`;
           const triggerId = `${item.key}-trigger`;
           const Icon = resolveHotelIcon(ICONS, item.iconKey);
@@ -148,6 +211,7 @@ export default function StayPoliciesAccordion({
 
                   <span className={styles.titleWrap}>
                     <span className={styles.title}>{item.title}</span>
+
                     {item.summary ? (
                       <span className={styles.inlineSummary}>
                         {item.summary}

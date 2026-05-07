@@ -1,5 +1,16 @@
 import hotelBrand from "../../../../config/index.js";
+
 import styles from "./LocationDetails.module.css";
+
+function hasValidHref(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function getValidItems(items) {
+  return Array.isArray(items)
+    ? items.filter((item) => item?.id && item?.label)
+    : [];
+}
 
 export default function LocationDetails() {
   const section = hotelBrand?.pages?.information?.sections?.location ?? null;
@@ -7,11 +18,12 @@ export default function LocationDetails() {
 
   if (!details) return null;
 
-  const quickAccessPills = Array.isArray(details?.quickAccessPills)
-    ? details.quickAccessPills
-    : [];
+  const quickAccessPills = getValidItems(details.quickAccessPills);
 
   const { addressCard, gpsCard, contact, map } = details;
+
+  const hasContactAction = hasValidHref(contact?.href) && contact?.label;
+  const hasMapAction = hasValidHref(map?.href) && map?.googleMapsLabel;
 
   return (
     <div className={styles.wrapper}>
@@ -51,15 +63,17 @@ export default function LocationDetails() {
               </div>
             </header>
 
-            <div className={styles.cardBody}>
-              <div className={styles.addressBox}>
-                {addressCard?.lines?.map((line, index) => (
-                  <p key={`${line}-${index}`} className={styles.addressLine}>
-                    {line}
-                  </p>
-                ))}
+            {Array.isArray(addressCard?.lines) && addressCard.lines.length ? (
+              <div className={styles.cardBody}>
+                <div className={styles.addressBox}>
+                  {addressCard.lines.map((line, index) => (
+                    <p key={`${line}-${index}`} className={styles.addressLine}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : null}
           </article>
 
           <article className={styles.infoCard} aria-label={gpsCard?.title}>
@@ -106,59 +120,73 @@ export default function LocationDetails() {
             </div>
           </article>
 
-          <div className={styles.actionsRow}>
-            <a
-              className={`${styles.actionButton} ${styles.actionPrimary}`}
-              href={contact?.href}
-              aria-label={contact?.ariaLabel || contact?.label}
-            >
-              {contact?.icon ? (
-                <span className={styles.actionIcon} aria-hidden="true">
-                  {contact.icon}
-                </span>
+          {hasContactAction || hasMapAction ? (
+            <div className={styles.actionsRow}>
+              {hasContactAction ? (
+                <a
+                  className={`${styles.actionButton} ${styles.actionPrimary}`}
+                  href={contact.href}
+                  aria-label={contact.ariaLabel || contact.label}
+                >
+                  {contact.icon ? (
+                    <span className={styles.actionIcon} aria-hidden="true">
+                      {contact.icon}
+                    </span>
+                  ) : null}
+
+                  <span className={styles.actionLabel}>{contact.label}</span>
+                </a>
               ) : null}
 
-              <span className={styles.actionLabel}>{contact?.label}</span>
-            </a>
+              {hasMapAction ? (
+                <a
+                  className={`${styles.actionButton} ${styles.actionSecondary}`}
+                  href={map.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={map.googleMapsAriaLabel || map.googleMapsLabel}
+                >
+                  {map.ctaIcon ? (
+                    <span className={styles.actionIcon} aria-hidden="true">
+                      {map.ctaIcon}
+                    </span>
+                  ) : null}
 
-            <a
-              className={`${styles.actionButton} ${styles.actionSecondary}`}
-              href={map?.href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={map?.googleMapsAriaLabel || map?.googleMapsLabel}
-            >
-              {map?.ctaIcon ? (
-                <span className={styles.actionIcon} aria-hidden="true">
-                  {map.ctaIcon}
-                </span>
+                  <span className={styles.actionLabel}>
+                    {map.googleMapsLabel}
+                  </span>
+                </a>
               ) : null}
-
-              <span className={styles.actionLabel}>{map?.googleMapsLabel}</span>
-            </a>
-          </div>
+            </div>
+          ) : null}
         </div>
 
         <article className={styles.mapCard} aria-label={map?.title}>
           <div className={styles.mapFrameWrap}>
-            <iframe
-              className={styles.mapFrame}
-              src={map?.embedSrc}
-              title={map?.title}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            {map?.embedSrc ? (
+              <iframe
+                className={styles.mapFrame}
+                src={map.embedSrc}
+                title={map?.title ?? "Mapa da localização"}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            ) : null}
+
             <div className={styles.mapOverlay} aria-hidden="true" />
           </div>
 
-          <span className={styles.mapBadge}>
-            {map?.badgeIcon ? (
-              <span className={styles.badgeIcon} aria-hidden="true">
-                {map.badgeIcon}
-              </span>
-            ) : null}
-            <span>{map?.badge}</span>
-          </span>
+          {map?.badge ? (
+            <span className={styles.mapBadge}>
+              {map.badgeIcon ? (
+                <span className={styles.badgeIcon} aria-hidden="true">
+                  {map.badgeIcon}
+                </span>
+              ) : null}
+
+              <span>{map.badge}</span>
+            </span>
+          ) : null}
 
           <div className={styles.mapContent}>
             {map?.title ? (
@@ -169,15 +197,17 @@ export default function LocationDetails() {
               <p className={styles.mapSupportingText}>{map.supportingText}</p>
             ) : null}
 
-            <a
-              className={styles.mapAction}
-              href={map?.href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={map?.ariaLabel || map?.title}
-            >
-              {map?.ctaLabel}
-            </a>
+            {map?.href && map?.ctaLabel ? (
+              <a
+                className={styles.mapAction}
+                href={map.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={map.ariaLabel || map.title}
+              >
+                {map.ctaLabel}
+              </a>
+            ) : null}
           </div>
         </article>
       </div>

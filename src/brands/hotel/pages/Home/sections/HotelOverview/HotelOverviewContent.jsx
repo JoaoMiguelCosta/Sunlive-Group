@@ -1,4 +1,5 @@
 import HotelInlineActionButton from "../../../../shared/ui/HotelInlineActionButton/HotelInlineActionButton.jsx";
+
 import styles from "./HotelOverviewContent.module.css";
 
 function buildFallbackContent(section) {
@@ -27,6 +28,10 @@ function buildFallbackPanel(section) {
   };
 }
 
+function getValidItems(items) {
+  return Array.isArray(items) ? items.filter(Boolean) : [];
+}
+
 export default function HotelOverviewContent({ section }) {
   if (!section) return null;
 
@@ -36,16 +41,10 @@ export default function HotelOverviewContent({ section }) {
   const cta = section?.cta ?? null;
   const backgroundMedia = section?.backgroundMedia ?? null;
 
-  const tags = Array.isArray(section?.audienceTags)
-    ? section.audienceTags.filter(Boolean)
-    : [];
-
-  const paragraphs = Array.isArray(content?.paragraphs)
-    ? content.paragraphs.filter(Boolean)
-    : [];
+  const tags = getValidItems(section?.audienceTags);
+  const paragraphs = getValidItems(content?.paragraphs);
 
   const backgroundImageSrc = backgroundMedia?.imageSrc ?? null;
-  const backgroundImageAlt = backgroundMedia?.imageAlt ?? "";
 
   return (
     <div className={styles.outer}>
@@ -54,14 +53,17 @@ export default function HotelOverviewContent({ section }) {
           <div className={styles.mediaLayer} aria-hidden="true">
             <img
               src={backgroundImageSrc}
-              alt={backgroundImageAlt}
+              alt=""
               className={styles.backgroundImage}
+              loading="lazy"
+              decoding="async"
+              draggable="false"
             />
           </div>
         ) : null}
 
         <div className={styles.overlayLayer} aria-hidden="true" />
-        <div className={styles.glowLayer} aria-hidden="true" />
+        <div className={styles.lightLayer} aria-hidden="true" />
 
         <aside className={styles.side}>
           <div className={styles.sideInner}>
@@ -87,7 +89,7 @@ export default function HotelOverviewContent({ section }) {
               </div>
             ) : null}
 
-            {tags.length ? (
+            {tags.length > 0 ? (
               <ul className={styles.tagList} aria-label="Perfis de hóspedes">
                 {tags.map((tag) => (
                   <li key={tag} className={styles.tagItem}>
@@ -97,7 +99,7 @@ export default function HotelOverviewContent({ section }) {
               </ul>
             ) : null}
 
-            {cta?.href ? (
+            {cta?.href && cta?.label ? (
               <div className={styles.ctaWrap}>
                 <HotelInlineActionButton
                   href={cta.href}
@@ -131,13 +133,11 @@ export default function HotelOverviewContent({ section }) {
                 </p>
               )}
 
-              {paragraphs.length
-                ? paragraphs.map((paragraph) => (
-                    <p key={paragraph} className={styles.body}>
-                      {paragraph}
-                    </p>
-                  ))
-                : null}
+              {paragraphs.map((paragraph) => (
+                <p key={paragraph} className={styles.body}>
+                  {paragraph}
+                </p>
+              ))}
 
               {content?.highlightPill ? (
                 <div className={styles.contentHighlight}>

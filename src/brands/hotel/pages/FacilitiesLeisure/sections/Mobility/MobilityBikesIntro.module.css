@@ -1,16 +1,22 @@
 .block {
     display: grid;
-    gap: clamp(0.9rem, 1.8vw, 1.25rem);
     justify-items: center;
+    gap: clamp(0.82rem, 1.55vw, 1.12rem);
 }
 
 .descriptionWrap {
     inline-size: 100%;
-    max-inline-size: min(1260px, 100%);
+    max-inline-size: min(1180px, 100%);
     margin-inline: auto;
 }
 
 .descriptionWrap :global(*) {
     margin-bottom: 0;
     text-align: center;
+}
+
+@media (max-width: 640px) {
+    .block {
+        gap: 0.78rem;
+    }
 }

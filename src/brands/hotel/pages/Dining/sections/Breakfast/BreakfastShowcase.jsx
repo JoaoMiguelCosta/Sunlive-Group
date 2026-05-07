@@ -1,4 +1,8 @@
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import hotelBrand, {
+  ICONS,
+  resolveHotelIcon,
+} from "../../../../config/index.js";
+
 import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
 
 import styles from "./BreakfastShowcase.module.css";
@@ -11,6 +15,7 @@ function normalizeStringArray(items = []) {
 
 export default function BreakfastShowcase() {
   const section = hotelBrand?.pages?.dining?.sections?.breakfast ?? null;
+
   if (!section) return null;
 
   const intro = section?.intro ?? null;
@@ -18,15 +23,18 @@ export default function BreakfastShowcase() {
   const gallery = section?.gallery ?? null;
 
   const items = Array.isArray(gallery?.items) ? gallery.items : [];
+
   const fallbackLabel = gallery?.fallbackLabel ?? "Pequeno-almoço";
   const fallbackEyebrow = gallery?.fallbackEyebrow ?? "Galeria";
   const fallbackTitle = gallery?.fallbackTitle ?? "Pequeno-Almoço";
 
   const HighlightIcon = highlightCard?.iconKey
-    ? resolveHotelIcon(hotelBrand?.icons, highlightCard.iconKey)
+    ? resolveHotelIcon(ICONS, highlightCard.iconKey)
     : null;
 
-  const showcaseId = `${section?.id ?? "restaurante-pequeno-almoco"}-showcase-title`;
+  const sectionId = section?.id ?? "restaurante-pequeno-almoco";
+  const showcaseId = `${sectionId}-showcase-title`;
+
   const introHighlights = normalizeStringArray(intro?.highlights);
   const highlightsAriaLabel =
     intro?.highlightsAriaLabel ?? "Destaques do pequeno-almoço";
@@ -54,7 +62,7 @@ export default function BreakfastShowcase() {
               <div className={styles.paragraphGroup}>
                 {intro.paragraphs.map((paragraph, index) => (
                   <p
-                    key={`${section?.id ?? "restaurante-pequeno-almoco"}-intro-${index}`}
+                    key={`${sectionId}-intro-${index}`}
                     className={styles.paragraph}
                   >
                     {paragraph}
@@ -70,7 +78,7 @@ export default function BreakfastShowcase() {
               >
                 {introHighlights.map((item, index) => (
                   <span
-                    key={`${section?.id ?? "restaurante-pequeno-almoco"}-highlight-${index}`}
+                    key={`${sectionId}-highlight-${index}`}
                     className={styles.pill}
                   >
                     {item}
@@ -110,19 +118,22 @@ export default function BreakfastShowcase() {
         </article>
 
         <div className={styles.carouselPanel}>
-          <div className={styles.carouselCard}>
+          <div className={styles.carouselCard} aria-label={fallbackLabel}>
             <HotelPhotoCarouselBase
               items={items}
               fallbackLabel={fallbackLabel}
               fallbackEyebrow={fallbackEyebrow}
               fallbackTitle={fallbackTitle}
+              previousLabel="Imagem anterior do pequeno-almoço"
+              nextLabel="Imagem seguinte do pequeno-almoço"
+              indicatorsLabel="Navegação da galeria do pequeno-almoço"
               className={styles.carouselStage}
               showCaption
               showIndicators
               showImageBackdrop
               backdropBlur="22px"
               backdropScale={1.15}
-              backdropOpacity={0.64}
+              backdropOpacity={0.58}
               fitMode="cover"
               imagePosition="center center"
               imageBackground="#120b06"

@@ -2,12 +2,17 @@
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: clamp(0.9rem, 1.45vw, 1.2rem);
-    margin-top: clamp(1.1rem, 2vw, 1.75rem);
     align-items: stretch;
+    margin-top: clamp(1rem, 1.8vw, 1.5rem);
 }
 
 .item {
-    min-width: 0;
+    min-inline-size: 0;
+    display: flex;
+}
+
+.item>* {
+    inline-size: 100%;
 }
 
 .featured {
@@ -18,15 +23,14 @@
     grid-column: span 4;
 }
 
-.item:nth-child(2).standard {
+.wideStandard {
     grid-column: span 5;
 }
 
-/* Ajuste crítico para larguras intermédias */
 @media (max-width: 1180px) and (min-width: 769px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        align-items: start;
+        align-items: stretch;
     }
 
     .featured {
@@ -34,7 +38,7 @@
     }
 
     .standard,
-    .item:nth-child(2).standard {
+    .wideStandard {
         grid-column: auto;
     }
 }
@@ -43,6 +47,12 @@
     .grid {
         grid-template-columns: 1fr;
         gap: 0.95rem;
-        margin-top: 1rem;
+        margin-top: 0.95rem;
+    }
+
+    .featured,
+    .standard,
+    .wideStandard {
+        grid-column: auto;
     }
 }

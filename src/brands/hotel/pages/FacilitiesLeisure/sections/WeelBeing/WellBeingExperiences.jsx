@@ -10,8 +10,10 @@ import styles from "./WellBeingExperiences.module.css";
 
 function getColumnsFromViewport() {
   if (typeof window === "undefined") return 4;
+
   if (window.innerWidth <= 720) return 1;
   if (window.innerWidth <= 1200) return 2;
+
   return 4;
 }
 
@@ -40,6 +42,7 @@ function getPanelRowEndIndex({ activeIndex, columns, totalItems }) {
   }
 
   const rowStart = Math.floor(activeIndex / columns) * columns;
+
   return Math.min(rowStart + columns - 1, totalItems - 1);
 }
 
@@ -50,15 +53,17 @@ export default function WellBeingExperiences() {
   const ui = content?.ui ?? {};
 
   const [columns, setColumns] = useState(getColumnsFromViewport);
+
   const detailsRef = useRef(null);
   const shouldRevealPanelRef = useRef(false);
 
   useEffect(() => {
-    const handleResize = () => {
+    function handleResize() {
       setColumns(getColumnsFromViewport());
-    };
+    }
 
     handleResize();
+
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -66,12 +71,13 @@ export default function WellBeingExperiences() {
     };
   }, []);
 
-  const items = useMemo(
-    () => enrichItemsWithIcons(rawItems, hotelBrand?.icons),
-    [rawItems],
-  );
+  const items = useMemo(() => {
+    return enrichItemsWithIcons(rawItems, hotelBrand?.icons);
+  }, [rawItems]);
 
-  const accordionItems = useMemo(() => buildAccordionItems(items), [items]);
+  const accordionItems = useMemo(() => {
+    return buildAccordionItems(items);
+  }, [items]);
 
   const { isOpen, toggle } = useAccordion(accordionItems, {
     allowMultiple: false,
@@ -80,22 +86,21 @@ export default function WellBeingExperiences() {
   const activeIndex = items.findIndex((item) => isOpen(item.key));
   const activeItem = activeIndex >= 0 ? items[activeIndex] : null;
 
-  const panelRowEndIndex = useMemo(
-    () =>
-      getPanelRowEndIndex({
-        activeIndex,
-        columns,
-        totalItems: items.length,
-      }),
-    [activeIndex, columns, items.length],
-  );
+  const panelRowEndIndex = useMemo(() => {
+    return getPanelRowEndIndex({
+      activeIndex,
+      columns,
+      totalItems: items.length,
+    });
+  }, [activeIndex, columns, items.length]);
 
   useEffect(() => {
     if (!shouldRevealPanelRef.current) return;
     if (!activeItem) return;
     if (typeof window === "undefined") return;
 
-    const breakpoint = ui?.scrollRevealBreakpoint ?? 1200;
+    const breakpoint = ui.scrollRevealBreakpoint ?? 1200;
+
     if (window.innerWidth > breakpoint) {
       shouldRevealPanelRef.current = false;
       return;
@@ -107,7 +112,7 @@ export default function WellBeingExperiences() {
     });
 
     shouldRevealPanelRef.current = false;
-  }, [activeItem, ui?.scrollRevealBreakpoint]);
+  }, [activeItem, ui.scrollRevealBreakpoint]);
 
   if (!items.length) return null;
 
@@ -115,14 +120,18 @@ export default function WellBeingExperiences() {
     <div className={styles.content}>
       <div
         className={styles.cardsGrid}
-        aria-label={ui.summaryGridAriaLabel ?? "Lista de experiências"}
+        aria-label={
+          ui.summaryGridAriaLabel ??
+          "Lista de experiências de bem-estar e lazer"
+        }
       >
         {items.map((item, index) => {
           const panelId = `${sectionId}-panel-${item.key}`;
           const buttonId = `${sectionId}-button-${item.key}`;
           const open = isOpen(item.key);
+
           const shouldRenderPanelHere =
-            panelRowEndIndex === index && activeItem;
+            panelRowEndIndex === index && Boolean(activeItem);
 
           return (
             <div key={item.key} className={styles.cardCell}>
@@ -148,10 +157,8 @@ export default function WellBeingExperiences() {
                   <HotelFacilityDetailPanel
                     id={`${sectionId}-panel-${activeItem.key}`}
                     labelledBy={`${sectionId}-button-${activeItem.key}`}
-                    badge={ui.detailBadge ?? "Experiência em Destaque"}
-                    eyebrow={
-                      activeItem.details?.eyebrow ?? activeItem.shortTitle ?? ""
-                    }
+                    badge={ui.detailBadge ?? "Experiência em destaque"}
+                    eyebrow={activeItem.details?.eyebrow ?? ""}
                     title={activeItem.details?.title ?? activeItem.title}
                     description={activeItem.details?.description ?? ""}
                     icon={activeItem.icon?.component ?? null}

@@ -23,15 +23,6 @@
     text-align: center;
 }
 
-@media (min-width: 900px) {
-    .inner {
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        place-items: initial;
-        text-align: initial;
-    }
-}
-
 .links {
     display: flex;
     flex-wrap: wrap;
@@ -52,6 +43,11 @@
     white-space: nowrap;
     font-size: clamp(0.82rem, 0.16vw + 0.8rem, 0.9rem);
     line-height: 1.15;
+
+    transition:
+        color 140ms ease,
+        text-decoration-color 140ms ease,
+        box-shadow 140ms ease;
 }
 
 .link:hover {
@@ -78,12 +74,6 @@
     flex-wrap: wrap;
 }
 
-@media (min-width: 900px) {
-    .copyWrap {
-        justify-content: flex-end;
-    }
-}
-
 .shield {
     display: inline-flex;
     align-items: center;
@@ -97,6 +87,13 @@
     flex: 0 0 auto;
 }
 
+.shield :global(svg) {
+    display: block;
+    inline-size: 0.72em;
+    block-size: 0.72em;
+    stroke: currentColor;
+}
+
 .copyText {
     font-weight: 600;
     opacity: 0.92;
@@ -104,9 +101,164 @@
     white-space: nowrap;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .link {
-        transition: none;
+/* =========================================================
+   Hotel — ESTILO HOTEL NOVO
+   Boutique Luxury Editorial / Cinematic Quiet Warmth
+   ========================================================= */
+
+:global([data-brand="hotel"]) .sectionWrap {
+    --policies-accent: var(--hotel-champagne, #e8cd9c);
+    --policies-border: rgba(232, 205, 156, 0.13);
+    --policies-border-strong: rgba(232, 205, 156, 0.22);
+    --policies-text-main: rgba(255, 249, 241, 0.94);
+    --policies-text-soft: rgba(248, 234, 215, 0.76);
+    --policies-text-muted: rgba(238, 218, 190, 0.48);
+
+    isolation: isolate;
+    overflow: hidden;
+
+    padding-block: clamp(0.54rem, 0.82vw, 0.76rem);
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(0.54rem, 0.82vw, 0.76rem));
+
+    border-top: 1px solid var(--policies-border);
+
+    background:
+        radial-gradient(720px 160px at 12% 0%,
+            rgba(232, 205, 156, 0.04) 0%,
+            transparent 66%),
+        radial-gradient(620px 160px at 88% 100%,
+            rgba(153, 112, 62, 0.032) 0%,
+            transparent 64%),
+        linear-gradient(180deg,
+            rgba(255, 250, 242, 0.012) 0%,
+            rgba(255, 250, 242, 0.004) 100%);
+}
+
+:global([data-brand="hotel"]) .sectionWrap::before {
+    content: "";
+    position: absolute;
+    inset-inline: clamp(0.9rem, 3vw, 2.4rem);
+    inset-block-start: 0;
+    block-size: 1px;
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(232, 205, 156, 0.04) 14%,
+            rgba(232, 205, 156, 0.14) 50%,
+            rgba(232, 205, 156, 0.04) 86%,
+            transparent 100%);
+}
+
+:global([data-brand="hotel"]) .inner {
+    position: relative;
+    z-index: 1;
+    gap: clamp(0.5rem, 0.76vw, 0.68rem);
+}
+
+:global([data-brand="hotel"]) .links {
+    gap: 0.22rem 0.62rem;
+}
+
+:global([data-brand="hotel"]) .link {
+    color: var(--policies-text-soft);
+    font-size: clamp(0.8rem, 0.14vw + 0.78rem, 0.88rem);
+    font-weight: 640;
+    letter-spacing: -0.004em;
+}
+
+:global([data-brand="hotel"]) .link:hover {
+    color: var(--policies-text-main);
+    text-decoration: underline;
+    text-decoration-color: rgba(232, 205, 156, 0.45);
+    text-underline-offset: 0.18em;
+}
+
+:global([data-brand="hotel"]) .link:focus-visible {
+    box-shadow:
+        0 0 0 2px rgba(232, 205, 156, 0.2),
+        0 0 0 5px rgba(232, 205, 156, 0.07);
+}
+
+:global([data-brand="hotel"]) .divider {
+    color: var(--policies-text-muted);
+    opacity: 1;
+}
+
+:global([data-brand="hotel"]) .copyWrap {
+    gap: 0.44rem;
+}
+
+:global([data-brand="hotel"]) .shield {
+    inline-size: clamp(17px, 1.15vw, 20px);
+    block-size: clamp(17px, 1.15vw, 20px);
+
+    border: 1px solid rgba(232, 205, 156, 0.18);
+
+    color: rgba(232, 205, 156, 0.88);
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgba(255, 250, 242, 0.12) 0%,
+            transparent 58%),
+        rgba(44, 32, 24, 0.58);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 250, 242, 0.06),
+        0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+:global([data-brand="hotel"]) .shield :global(svg) {
+    inline-size: 0.68em;
+    block-size: 0.68em;
+}
+
+:global([data-brand="hotel"]) .copyText {
+    color: var(--policies-text-soft);
+    opacity: 1;
+    font-size: clamp(0.78rem, 0.12vw + 0.76rem, 0.86rem);
+    font-weight: 620;
+    letter-spacing: -0.004em;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (min-width: 900px) {
+    .inner {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        place-items: initial;
+        text-align: initial;
+    }
+
+    .copyWrap {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 640px) {
+    :global([data-brand="hotel"]) .sectionWrap {
+        padding-block: 0.5rem;
+        padding-bottom: max(env(safe-area-inset-bottom, 0px), 0.5rem);
+    }
+
+    :global([data-brand="hotel"]) .inner {
+        gap: 0.52rem;
+    }
+
+    :global([data-brand="hotel"]) .links {
+        gap: 0.18rem 0.5rem;
+    }
+
+    :global([data-brand="hotel"]) .link {
+        font-size: 0.8rem;
+    }
+
+    :global([data-brand="hotel"]) .copyText {
+        font-size: 0.78rem;
     }
 }
 
@@ -121,5 +273,63 @@
 
     .copyText {
         white-space: normal;
+    }
+
+    :global([data-brand="hotel"]) .sectionWrap {
+        padding-block: 0.42rem;
+    }
+
+    :global([data-brand="hotel"]) .copyText {
+        white-space: normal;
+    }
+}
+
+/* =========================================================
+   Motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .link {
+        transition: none;
+    }
+}
+
+/* =========================================================
+   Fallback sem color-mix
+   ========================================================= */
+
+@supports not (background: color-mix(in oklab, white, black)) {
+    .sectionWrap {
+        border-top-color: rgba(199, 134, 21, 0.16);
+    }
+
+    .shield {
+        border-color: rgba(199, 134, 21, 0.62);
+        background: rgba(199, 134, 21, 0.09);
+    }
+
+    .link:focus-visible {
+        box-shadow: 0 0 0 3px rgba(199, 134, 21, 0.28);
+    }
+
+    :global([data-brand="hotel"]) .sectionWrap {
+        border-top-color: rgba(232, 205, 156, 0.13);
+
+        background:
+            radial-gradient(720px 160px at 12% 0%,
+                rgba(232, 205, 156, 0.04),
+                transparent 66%),
+            linear-gradient(180deg,
+                rgba(255, 250, 242, 0.012),
+                rgba(255, 250, 242, 0.004));
+    }
+
+    :global([data-brand="hotel"]) .shield {
+        border-color: rgba(232, 205, 156, 0.18);
+        background:
+            radial-gradient(circle at 30% 30%,
+                rgba(255, 250, 242, 0.12),
+                transparent 58%),
+            rgba(44, 32, 24, 0.58);
     }
 }

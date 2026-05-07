@@ -1,74 +1,63 @@
 .section {
     position: relative;
     isolation: isolate;
+
     inline-size: 100%;
-   
- 
-   
+    min-inline-size: 0;
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 0 auto auto 50%;
+    inset-inline: 50% auto;
+    inset-block-start: clamp(0.4rem, 1vw, 0.9rem);
+    z-index: 0;
+
     translate: -50% 0;
-    inline-size: min(92vw, 1220px);
-    block-size: clamp(170px, 20vw, 280px);
+
+    inline-size: min(86vw, 1080px);
+    block-size: clamp(9rem, 18vw, 15rem);
+
     pointer-events: none;
-    opacity: 0.9;
+
+    opacity: 0.48;
+
     background:
-        radial-gradient(58% 100% at 50% 0%, rgba(241, 205, 132, 0.2) 0%, rgba(241, 205, 132, 0.1) 34%, rgba(241, 205, 132, 0) 76%),
-        linear-gradient(180deg, rgba(241, 205, 132, 0.06) 0%, rgba(241, 205, 132, 0) 100%);
-    filter: blur(8px);
+        radial-gradient(circle at 50% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06) 42%,
+            transparent 74%);
+
+    filter: blur(26px);
 }
 
 .inner {
     position: relative;
     z-index: 1;
-    inline-size: 100%;
-    box-sizing: border-box;
+
     display: grid;
-    gap: clamp(1rem, 1.6vw, 1.4rem);
-}
+    gap: clamp(1rem, 1.8vw, 1.4rem);
 
-@media (max-width: 1024px) {
-    .section::before {
-        block-size: clamp(150px, 22vw, 230px);
-        inline-size: min(94vw, 100%);
-    }
+    inline-size: 100%;
+    min-inline-size: 0;
 
-    .inner {
-        gap: clamp(0.95rem, 1.5vw, 1.2rem);
-    }
+    box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
     .section::before {
-        block-size: clamp(132px, 24vw, 180px);
         inline-size: 100%;
+        block-size: 9rem;
+        opacity: 0.38;
     }
 
     .inner {
-        gap: 0.9rem;
+        gap: 0.92rem;
     }
 }
 
-@media (max-width: 480px) {
-    .section::before {
-        block-size: 140px;
-    }
-
+@media (max-width: 420px) {
     .inner {
         gap: 0.82rem;
-    }
-}
-
-@media (max-width: 380px) {
-    .section::before {
-        block-size: 126px;
-    }
-
-    .inner {
-        gap: 0.76rem;
     }
 }

@@ -13,6 +13,7 @@ function normalizeItems(items = []) {
 function findFirstMatchingItem(items, categoryId) {
   if (!items.length) return null;
   if (!categoryId || categoryId === "all") return items[0] ?? null;
+
   return items.find((item) => item.category === categoryId) ?? items[0] ?? null;
 }
 
@@ -26,16 +27,19 @@ function getThumbnailCategoryLabel(item) {
 
 export default function DessertsShowcase() {
   const section = hotelBrand?.pages?.dining?.sections?.desserts ?? null;
+
   if (!section) return null;
 
   const categories = Array.isArray(section?.categories)
     ? section.categories
     : [];
+
   const items = normalizeItems(section?.items);
   const showcase = section?.showcase ?? null;
 
   const ariaLabel = showcase?.ariaLabel ?? "Galeria de sobremesas";
   const filterLabel = showcase?.filterLabel ?? "Filtrar sobremesas";
+
   const thumbnailsLabel =
     showcase?.thumbnailsLabel ?? "Selecionar sobremesa em destaque";
 
@@ -46,6 +50,7 @@ export default function DessertsShowcase() {
     "all";
 
   const [activeCategory, setActiveCategory] = useState(defaultCategory);
+
   const [activeItemId, setActiveItemId] = useState(
     showcase?.defaultItemId ?? items[0]?.id ?? null,
   );
@@ -91,9 +96,12 @@ export default function DessertsShowcase() {
                 type="button"
                 role="tab"
                 aria-selected={isActive}
-                className={`${styles.filterButton} ${
-                  isActive ? styles.filterButtonActive : ""
-                }`}
+                className={[
+                  styles.filterButton,
+                  isActive ? styles.filterButtonActive : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
                 onClick={() => setActiveCategory(category.id)}
               >
                 {category.label}
@@ -116,7 +124,9 @@ export default function DessertsShowcase() {
                     objectPosition: activeItem.imagePosition ?? "center center",
                   }}
                   loading="eager"
+                  decoding="async"
                 />
+
                 <div className={styles.spotlightOverlay} aria-hidden="true" />
               </div>
 

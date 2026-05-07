@@ -8,6 +8,8 @@ export default function DescriptionAccessibility() {
   if (!content?.description) return null;
 
   return (
-    <HotelSectionDescription>{content.description}</HotelSectionDescription>
+    <HotelSectionDescription align="center">
+      {content.description}
+    </HotelSectionDescription>
   );
 }

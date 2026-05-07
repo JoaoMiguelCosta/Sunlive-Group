@@ -1,7 +1,8 @@
-export const qualityCommitment = {
+export const ourQualityCommitment = {
   id: "sobre-qualidade",
   headerLabel: "Compromisso com a Qualidade",
   layout: "text-checklist",
+
   text: {
     paragraphs: [
       "A qualidade da Estalagem de Sangalhos reflete-se em cada detalhe da experiência do hóspede.",
@@ -11,15 +12,26 @@ export const qualityCommitment = {
       text: '"Este compromisso traduz-se num ambiente acolhedor, onde cada hóspede sente que está em casa, longe de casa."',
     },
   },
+
   commitmentsPanel: {
     ariaLabel: "Comprometemo-nos com",
     kicker: "Padrão de serviço",
     title: "Comprometemo-nos com:",
   },
+
   commitments: [
-    { id: "spaces", text: "Espaços limpos, funcionais e bem mantidos" },
-    { id: "meals", text: "Refeições equilibradas, saborosas e adaptáveis" },
-    { id: "service", text: "Atendimento próximo, disponível e profissional" },
+    {
+      id: "spaces",
+      text: "Espaços limpos, funcionais e bem mantidos",
+    },
+    {
+      id: "meals",
+      text: "Refeições equilibradas, saborosas e adaptáveis",
+    },
+    {
+      id: "service",
+      text: "Atendimento próximo, disponível e profissional",
+    },
     {
       id: "improvement",
       text: "Melhoria contínua, ouvindo o feedback dos nossos clientes",
@@ -27,4 +39,6 @@ export const qualityCommitment = {
   ],
 };
 
-export default qualityCommitment;
+
+
+export default ourQualityCommitment;

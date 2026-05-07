@@ -1,6 +1,16 @@
 import hotelBrand from "../../../../config/index.js";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
+
 import styles from "./PlanYourStay.module.css";
+
+function getValidActions(actions) {
+  return Array.isArray(actions)
+    ? actions.filter(
+        (action) =>
+          action && typeof action === "object" && action.href && action.label,
+      )
+    : [];
+}
 
 export default function PlanYourStaySection() {
   const section = hotelBrand?.pages?.home?.sections?.planYourStay ?? null;
@@ -18,13 +28,13 @@ export default function PlanYourStaySection() {
 
   const sectionId = id ?? "hotel-plan-your-stay";
   const titleId = `${sectionId}-title`;
-  const actionItems = Array.isArray(actions) ? actions : [];
+  const actionItems = getValidActions(actions);
 
   const hasMeta =
     availability?.label ||
     availability?.value ||
     supportNote ||
-    actionItems.length;
+    actionItems.length > 0;
 
   return (
     <section
@@ -37,9 +47,11 @@ export default function PlanYourStaySection() {
           <div className={styles.contentColumn}>
             {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
 
-            <h2 id={titleId} className={styles.title}>
-              {boxTitle}
-            </h2>
+            {boxTitle ? (
+              <h2 id={titleId} className={styles.title}>
+                {boxTitle}
+              </h2>
+            ) : null}
 
             {boxSubtitle ? (
               <p className={styles.subtitle}>{boxSubtitle}</p>

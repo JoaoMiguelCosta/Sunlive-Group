@@ -29,9 +29,7 @@ export default function HotelComplementaryServiceCard({
   if (!title) return null;
 
   return (
-    <article
-      className={`${styles.card} ${isActive ? styles.cardActive : ""}`}
-    >
+    <article className={`${styles.card} ${isActive ? styles.cardActive : ""}`}>
       <button
         type="button"
         className={styles.trigger}

@@ -1,4 +1,28 @@
 .block {
+    position: relative;
+    isolation: isolate;
     inline-size: 100%;
-    margin-top: clamp(1.1rem, 2.4vw, 1.9rem);
+    margin-top: clamp(1.08rem, 2.2vw, 1.72rem);
+}
+
+.block::before {
+    content: "";
+    position: absolute;
+    inset: -1rem 8% auto;
+    z-index: -1;
+    block-size: clamp(8rem, 15vw, 12rem);
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 50% 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075) 0%,
+            transparent 70%);
+    filter: blur(30px);
+    opacity: 0.72;
+}
+
+@media (max-width: 640px) {
+    .block {
+        margin-top: 1rem;
+    }
 }

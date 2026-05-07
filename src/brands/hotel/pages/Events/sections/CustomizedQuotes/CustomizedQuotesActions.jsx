@@ -4,15 +4,11 @@ import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 import styles from "./CustomizedQuotesActions.module.css";
 
 export default function CustomizedQuotesActions() {
-  const includedInQuote =
-    hotelBrand?.pages?.events?.sections?.customizedQuotes?.includedInQuote ??
-    null;
+  const section = hotelBrand?.pages?.events?.sections?.customizedQuotes ?? null;
 
-  const quoteCallout =
-    hotelBrand?.pages?.events?.sections?.customizedQuotes?.quoteCallout ?? null;
-
-  const actions =
-    hotelBrand?.pages?.events?.sections?.customizedQuotes?.actions ?? [];
+  const includedInQuote = section?.includedInQuote ?? null;
+  const quoteCallout = section?.quoteCallout ?? null;
+  const actions = Array.isArray(section?.actions) ? section.actions : [];
 
   const includedItems = Array.isArray(includedInQuote?.items)
     ? includedInQuote.items
@@ -27,38 +23,49 @@ export default function CustomizedQuotesActions() {
   return (
     <div className={styles.block}>
       {hasIncluded ? (
-        <div
+        <section
+          id={includedInQuote?.id}
           className={styles.includesPanel}
-          aria-label={includedInQuote?.title || "O que incluímos no orçamento"}
+          aria-label={
+            section?.ui?.includedAriaLabel ??
+            includedInQuote?.title ??
+            "O que incluímos no orçamento"
+          }
         >
           {includedInQuote?.title ? (
-            <div className={styles.includesHeader}>
+            <header className={styles.includesHeader}>
               <h3 className={styles.includesTitle}>{includedInQuote.title}</h3>
-            </div>
+            </header>
           ) : null}
 
           {includedItems.length ? (
             <div className={styles.includesBody}>
-              <div className={styles.includesGrid}>
+              <ul className={styles.includesGrid}>
                 {includedItems.map((item) => (
-                  <div key={item.id} className={styles.includeItem}>
+                  <li key={item.id} className={styles.includeItem}>
                     <span className={styles.check} aria-hidden="true">
                       ✓
                     </span>
 
                     <span className={styles.includeLabel}>{item.label}</span>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ) : null}
-        </div>
+        </section>
       ) : null}
 
       {(hasCallout || hasActions) && (
-        <div className={styles.bottomPanel}>
+        <section
+          className={styles.bottomPanel}
+          aria-label={
+            section?.ui?.actionsAriaLabel ??
+            "Ações para pedir orçamento personalizado"
+          }
+        >
           {hasCallout ? (
-            <div className={styles.callout}>
+            <div id={quoteCallout?.id} className={styles.callout}>
               <p className={styles.calloutText}>{quoteCallout.text}</p>
             </div>
           ) : null}
@@ -80,7 +87,7 @@ export default function CustomizedQuotesActions() {
               ))}
             </div>
           ) : null}
-        </div>
+        </section>
       )}
     </div>
   );

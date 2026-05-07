@@ -1,18 +1,31 @@
 import styles from "./HotelInlineActionButton.module.css";
 
+function isExternalHref(href = "") {
+  return href.startsWith("http://") || href.startsWith("https://");
+}
+
 export default function HotelInlineActionButton({
   href,
   label,
   ariaLabel,
   className = "",
   icon = true,
+  ...restProps
 }) {
   if (!href || !label) return null;
 
   const classNames = [styles.button, className].filter(Boolean).join(" ");
+  const isExternal = isExternalHref(href);
 
   return (
-    <a href={href} aria-label={ariaLabel || label} className={classNames}>
+    <a
+      href={href}
+      aria-label={ariaLabel || label}
+      className={classNames}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noreferrer" : undefined}
+      {...restProps}
+    >
       <span className={styles.label}>{label}</span>
 
       {icon ? (

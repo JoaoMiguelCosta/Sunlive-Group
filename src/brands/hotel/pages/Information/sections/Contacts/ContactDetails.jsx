@@ -1,8 +1,24 @@
-import hotelBrand, {
-  ICONS,
-  resolveHotelIcon,
-} from "../../../../config/index.js";
+import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+
 import styles from "./ContactDetails.module.css";
+
+function getValidItems(items) {
+  return Array.isArray(items) ? items.filter((item) => item?.id) : [];
+}
+
+function hasValidHref(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function TitleIcon({ icon = null }) {
+  if (!icon) return null;
+
+  return (
+    <span className={styles.titleIcon} aria-hidden="true">
+      {icon}
+    </span>
+  );
+}
 
 export default function ContactDetails() {
   const section = hotelBrand?.pages?.information?.sections?.contacts ?? null;
@@ -10,14 +26,15 @@ export default function ContactDetails() {
 
   if (!details) return null;
 
-  const quickAccessPills = Array.isArray(details?.quickAccessPills)
-    ? details.quickAccessPills
-    : [];
+  const quickAccessPills = getValidItems(details.quickAccessPills);
 
   const { contactInfo, receptionHours, address, social } = details;
 
+  const contactItems = getValidItems(contactInfo?.items);
+  const socialItems = getValidItems(social?.items);
+
   const SocialTitleIcon = social?.iconKey
-    ? resolveHotelIcon(ICONS, social.iconKey)
+    ? resolveHotelIcon(hotelBrand?.icons, social.iconKey)
     : null;
 
   return (
@@ -37,64 +54,71 @@ export default function ContactDetails() {
 
       <div className={styles.grid}>
         <article
-          className={[styles.card, styles.cardContact].join(" ")}
+          className={`${styles.card} ${styles.cardContact}`}
           aria-label={contactInfo?.title}
         >
           <header className={styles.cardHeader}>
             <div className={styles.titleRow}>
-              {contactInfo?.icon ? (
-                <span className={styles.titleIcon} aria-hidden="true">
-                  {contactInfo.icon}
-                </span>
-              ) : null}
+              <TitleIcon icon={contactInfo?.icon} />
 
               <div className={styles.titleGroup}>
                 {contactInfo?.eyebrow ? (
                   <span className={styles.eyebrow}>{contactInfo.eyebrow}</span>
                 ) : null}
-                <h3 className={styles.cardTitle}>{contactInfo?.title}</h3>
+
+                {contactInfo?.title ? (
+                  <h3 className={styles.cardTitle}>{contactInfo.title}</h3>
+                ) : null}
               </div>
             </div>
           </header>
 
-          <div className={styles.cardBody}>
-            <div className={styles.contactList}>
-              {contactInfo?.items?.map((item) => (
-                <div key={item.id} className={styles.contactItem}>
-                  <div className={styles.contactItemTop}>
-                    {item?.icon ? (
-                      <span className={styles.itemIcon} aria-hidden="true">
-                        {item.icon}
-                      </span>
-                    ) : null}
+          {contactItems.length ? (
+            <div className={styles.cardBody}>
+              <div className={styles.contactList}>
+                {contactItems.map((item) => {
+                  const hasLink = hasValidHref(item.href);
 
-                    <span className={styles.itemLabel}>{item?.label}</span>
-                  </div>
+                  return (
+                    <div key={item.id} className={styles.contactItem}>
+                      <div className={styles.contactItemTop}>
+                        {item.icon ? (
+                          <span className={styles.itemIcon} aria-hidden="true">
+                            {item.icon}
+                          </span>
+                        ) : null}
 
-                  <a
-                    className={styles.itemValueLink}
-                    href={item?.href}
-                    aria-label={item?.ariaLabel || item?.value}
-                  >
-                    {item?.value}
-                  </a>
-                </div>
-              ))}
+                        {item.label ? (
+                          <span className={styles.itemLabel}>{item.label}</span>
+                        ) : null}
+                      </div>
+
+                      {hasLink ? (
+                        <a
+                          className={styles.itemValueLink}
+                          href={item.href}
+                          aria-label={item.ariaLabel || item.value}
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <span className={styles.itemValue}>{item.value}</span>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          ) : null}
         </article>
 
         <article
-          className={[styles.card, styles.cardHours].join(" ")}
+          className={`${styles.card} ${styles.cardHours}`}
           aria-label={receptionHours?.title}
         >
           <header className={styles.cardHeader}>
             <div className={styles.titleRow}>
-              {receptionHours?.icon ? (
-                <span className={styles.titleIcon} aria-hidden="true">
-                  {receptionHours.icon}
-                </span>
-              ) : null}
+              <TitleIcon icon={receptionHours?.icon} />
 
               <div className={styles.titleGroup}>
                 {receptionHours?.eyebrow ? (
@@ -102,7 +126,10 @@ export default function ContactDetails() {
                     {receptionHours.eyebrow}
                   </span>
                 ) : null}
-                <h3 className={styles.cardTitle}>{receptionHours?.title}</h3>
+
+                {receptionHours?.title ? (
+                  <h3 className={styles.cardTitle}>{receptionHours.title}</h3>
+                ) : null}
               </div>
             </div>
           </header>
@@ -110,36 +137,48 @@ export default function ContactDetails() {
           <div className={styles.cardBody}>
             <div className={styles.hoursContent}>
               <div className={styles.receptionTop}>
-                <span className={styles.itemLabel}>
-                  {receptionHours?.scheduleLabel}
-                </span>
+                {receptionHours?.scheduleLabel ? (
+                  <span className={styles.itemLabel}>
+                    {receptionHours.scheduleLabel}
+                  </span>
+                ) : null}
 
-                <p className={styles.receptionMainValue}>
-                  {receptionHours?.scheduleValue}
-                </p>
+                {receptionHours?.scheduleValue ? (
+                  <p className={styles.receptionMainValue}>
+                    {receptionHours.scheduleValue}
+                  </p>
+                ) : null}
               </div>
 
               <div className={styles.divider} aria-hidden="true" />
 
               <div className={styles.checkGrid}>
                 <div className={styles.checkBlock}>
-                  <span className={styles.itemLabel}>
-                    {receptionHours?.checkInLabel}
-                  </span>
+                  {receptionHours?.checkInLabel ? (
+                    <span className={styles.itemLabel}>
+                      {receptionHours.checkInLabel}
+                    </span>
+                  ) : null}
 
-                  <p className={styles.checkValue}>
-                    {receptionHours?.checkInValue}
-                  </p>
+                  {receptionHours?.checkInValue ? (
+                    <p className={styles.checkValue}>
+                      {receptionHours.checkInValue}
+                    </p>
+                  ) : null}
                 </div>
 
                 <div className={styles.checkBlock}>
-                  <span className={styles.itemLabel}>
-                    {receptionHours?.checkOutLabel}
-                  </span>
+                  {receptionHours?.checkOutLabel ? (
+                    <span className={styles.itemLabel}>
+                      {receptionHours.checkOutLabel}
+                    </span>
+                  ) : null}
 
-                  <p className={styles.checkValue}>
-                    {receptionHours?.checkOutValue}
-                  </p>
+                  {receptionHours?.checkOutValue ? (
+                    <p className={styles.checkValue}>
+                      {receptionHours.checkOutValue}
+                    </p>
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -147,57 +186,60 @@ export default function ContactDetails() {
         </article>
 
         <article
-          className={[styles.card, styles.cardAddress].join(" ")}
+          className={`${styles.card} ${styles.cardAddress}`}
           aria-label={address?.title}
         >
           <header className={styles.cardHeader}>
             <div className={styles.titleRow}>
-              {address?.icon ? (
-                <span className={styles.titleIcon} aria-hidden="true">
-                  {address.icon}
-                </span>
-              ) : null}
+              <TitleIcon icon={address?.icon} />
 
               <div className={styles.titleGroup}>
                 {address?.eyebrow ? (
                   <span className={styles.eyebrow}>{address.eyebrow}</span>
                 ) : null}
-                <h3 className={styles.cardTitle}>{address?.title}</h3>
+
+                {address?.title ? (
+                  <h3 className={styles.cardTitle}>{address.title}</h3>
+                ) : null}
               </div>
             </div>
           </header>
 
           <div className={styles.cardBody}>
             <div className={styles.addressContent}>
-              <div className={styles.addressLines}>
-                {address?.lines?.map((line, index) => (
-                  <p key={`${line}-${index}`} className={styles.addressLine}>
-                    {line}
-                  </p>
-                ))}
-              </div>
+              {Array.isArray(address?.lines) && address.lines.length ? (
+                <div className={styles.addressLines}>
+                  {address.lines.map((line, index) => (
+                    <p key={`${line}-${index}`} className={styles.addressLine}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
 
-              <a
-                className={styles.mapButton}
-                href={address?.buttonHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={address?.buttonAriaLabel || address?.buttonLabel}
-              >
-                {address?.buttonIcon ? (
-                  <span className={styles.buttonIcon} aria-hidden="true">
-                    {address.buttonIcon}
-                  </span>
-                ) : null}
+              {hasValidHref(address?.buttonHref) && address?.buttonLabel ? (
+                <a
+                  className={styles.mapButton}
+                  href={address.buttonHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={address.buttonAriaLabel || address.buttonLabel}
+                >
+                  {address.buttonIcon ? (
+                    <span className={styles.buttonIcon} aria-hidden="true">
+                      {address.buttonIcon}
+                    </span>
+                  ) : null}
 
-                <span>{address?.buttonLabel}</span>
-              </a>
+                  <span>{address.buttonLabel}</span>
+                </a>
+              ) : null}
             </div>
           </div>
         </article>
 
         <article
-          className={[styles.card, styles.cardSocial].join(" ")}
+          className={`${styles.card} ${styles.cardSocial}`}
           aria-label={social?.title}
         >
           <header className={styles.cardHeader}>
@@ -212,7 +254,10 @@ export default function ContactDetails() {
                 {social?.eyebrow ? (
                   <span className={styles.eyebrow}>{social.eyebrow}</span>
                 ) : null}
-                <h3 className={styles.cardTitle}>{social?.title}</h3>
+
+                {social?.title ? (
+                  <h3 className={styles.cardTitle}>{social.title}</h3>
+                ) : null}
               </div>
             </div>
           </header>
@@ -225,33 +270,38 @@ export default function ContactDetails() {
                 </p>
               ) : null}
 
-              <div className={styles.socialList}>
-                {social?.items?.map((item) => {
-                  const SocialIcon = item?.iconKey
-                    ? resolveHotelIcon(ICONS, item.iconKey)
-                    : null;
+              {socialItems.length ? (
+                <div className={styles.socialList}>
+                  {socialItems.map((item) => {
+                    const SocialIcon = item?.iconKey
+                      ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+                      : null;
 
-                  return (
-                    <a
-                      key={item.id}
-                      className={styles.socialLink}
-                      href={item?.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={item?.ariaLabel || item?.label}
-                      title={item?.label}
-                    >
-                      {SocialIcon ? (
-                        <span className={styles.socialIcon} aria-hidden="true">
-                          <SocialIcon />
-                        </span>
-                      ) : null}
+                    return (
+                      <a
+                        key={item.id}
+                        className={styles.socialLink}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={item.ariaLabel || item.label}
+                        title={item.label}
+                      >
+                        {SocialIcon ? (
+                          <span
+                            className={styles.socialIcon}
+                            aria-hidden="true"
+                          >
+                            <SocialIcon />
+                          </span>
+                        ) : null}
 
-                      <span className={styles.socialText}>{item?.label}</span>
-                    </a>
-                  );
-                })}
-              </div>
+                        <span className={styles.socialText}>{item.label}</span>
+                      </a>
+                    );
+                  })}
+                </div>
+              ) : null}
             </div>
           </div>
         </article>

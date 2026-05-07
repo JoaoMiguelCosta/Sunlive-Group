@@ -5,6 +5,7 @@ import styles from "./SundayBuffetGalleryCta.module.css";
 
 export default function SundayBuffetGalleryCta() {
   const section = hotelBrand?.pages?.dining?.sections?.sundayBuffet ?? null;
+
   if (!section) return null;
 
   const gallery = section?.gallery ?? null;
@@ -17,8 +18,16 @@ export default function SundayBuffetGalleryCta() {
 
   const hasFeaturedImage = Boolean(featuredImage?.src);
   const hasSecondaryImage = Boolean(secondaryImage?.src);
+  const hasDetailsCard = Boolean(detailsCard?.title || detailsCard?.text);
 
-  if (!hasFeaturedImage && !hasSecondaryImage && !cta?.label) return null;
+  if (
+    !hasFeaturedImage &&
+    !hasSecondaryImage &&
+    !hasDetailsCard &&
+    !cta?.label
+  ) {
+    return null;
+  }
 
   return (
     <div className={styles.block}>
@@ -31,6 +40,7 @@ export default function SundayBuffetGalleryCta() {
                 alt={featuredImage.alt ?? "Buffet de Domingo"}
                 className={styles.featuredImage}
                 loading="eager"
+                decoding="async"
                 style={{
                   objectPosition:
                     featuredImage.imagePosition ?? "center center",
@@ -53,6 +63,7 @@ export default function SundayBuffetGalleryCta() {
                   alt={secondaryImage.alt ?? "Buffet de Domingo"}
                   className={styles.secondaryImage}
                   loading="lazy"
+                  decoding="async"
                   style={{
                     objectPosition:
                       secondaryImage.imagePosition ?? "center center",
@@ -67,7 +78,7 @@ export default function SundayBuffetGalleryCta() {
               </figure>
             ) : null}
 
-            {detailsCard?.title || detailsCard?.text ? (
+            {hasDetailsCard ? (
               <article className={styles.detailsCard}>
                 {detailsCard?.eyebrow ? (
                   <span className={styles.detailsEyebrow}>

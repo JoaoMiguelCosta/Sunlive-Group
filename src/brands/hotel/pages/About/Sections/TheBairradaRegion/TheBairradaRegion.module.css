@@ -1,128 +1,205 @@
 .section {
-    --section-radius: clamp(1.2rem, 2vw, 1.85rem);
-    --section-inset: clamp(0.8rem, 1.45vw, 1.15rem);
-
     position: relative;
     isolation: isolate;
+
     inline-size: 100%;
-    border-radius: var(--section-radius);
+    min-inline-size: 0;
+}
+
+.visualBlock {
+    position: relative;
+    isolation: isolate;
     overflow: hidden;
+
+    inline-size: min(100%, 1360px);
+    min-inline-size: 0;
+    margin-inline: auto;
+
+    border: 1px solid var(--hotel-border, rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
+    border-radius: var(--hotel-radius-2xl, clamp(1.8rem, 2.8vw, 3rem));
+
+    background:
+        radial-gradient(120% 145% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
+            transparent 48%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 44%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.28) 100%);
+
+    color: var(--hotel-text, rgba(251, 247, 239, 0.96));
+
+    box-shadow:
+        0 1.35rem 3.7rem rgb(0 0 0 / 0.3),
+        inset 0 1px 0 rgb(255 255 255 / 0.052);
 }
 
-.section::before {
+.visualBlock::after {
     content: "";
     position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
+    inset-inline: clamp(1rem, 2vw, 1.8rem);
+    inset-block-start: 0;
+    z-index: 3;
 
-    background-image: var(--bairrada-region-bg-image);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 58%;
-    opacity: 0.72;
-    filter: saturate(1.04) contrast(1.08) brightness(0.9);
-    transform: scale(1.025);
-}
+    block-size: 1px;
 
-.section::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
     pointer-events: none;
 
     background:
-        radial-gradient(circle at 50% 44%, rgba(255, 244, 223, 0.03) 16%, rgba(29, 17, 10, 0.12) 36%, rgba(18, 10, 6, 0.3) 64%, rgba(14, 8, 5, 0.54) 100%),
-        linear-gradient(180deg, rgba(18, 10, 6, 0.14) 0%, rgba(18, 10, 6, 0.1) 28%, rgba(18, 10, 6, 0.2) 52%, rgba(14, 8, 5, 0.4) 100%);
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42) 50%,
+            transparent 100%);
+}
+
+.mediaLayer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.backgroundImage {
+    display: block;
+
+    inline-size: 100%;
+    block-size: 100%;
+
+    object-fit: cover;
+    object-position: center 56%;
+
+    opacity: 0.78;
+    transform: scale(1.035);
+
+    filter:
+        brightness(0.68) contrast(1.04) saturate(0.96);
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.overlayLayer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.58) 0%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.42) 30%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.48) 68%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.68) 100%),
+        linear-gradient(90deg,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.46) 0%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.2) 32%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.2) 68%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.46) 100%),
+        radial-gradient(circle at 50% 10%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.045) 0%,
+            transparent 42%),
+        radial-gradient(circle at 50% 100%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075) 0%,
+            transparent 54%);
+}
+
+.glowLayer {
+    position: absolute;
+    inset-inline: 10%;
+    inset-block-end: 0;
+    z-index: 1;
+
+    block-size: clamp(7rem, 13vw, 11rem);
+
+    pointer-events: none;
+
+    opacity: 0.5;
+
+    background:
+        radial-gradient(circle,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06) 42%,
+            transparent 72%);
+
+    filter: blur(28px);
 }
 
 .inner {
     position: relative;
-    z-index: 1;
-    inline-size: min(100%, 1360px);
-    margin-inline: auto;
+    z-index: 2;
+
     display: grid;
-    gap: clamp(0.72rem, 1vw, 0.88rem);
-    padding: clamp(0.8rem, 1.05vw, 0.96rem) var(--section-inset) clamp(0.84rem, 1.12vw, 1rem);
-}
+    align-content: start;
+    gap: clamp(1rem, 1.8vw, 1.4rem);
 
-@media (min-width: 1600px) {
-    .section {
-        --section-radius: 1.85rem;
-        --section-inset: 1.3rem;
-    }
+    inline-size: 100%;
+    min-inline-size: 0;
+    margin-inline: auto;
+    padding: clamp(1rem, 1.65vw, 1.45rem);
 
-    .inner {
-        gap: 0.9rem;
-        padding: 0.84rem var(--section-inset) 0.96rem;
-    }
-}
-
-@media (max-width: 1200px) {
-    .inner {
-        gap: 0.82rem;
-        padding: 0.82rem 0.96rem 0.9rem;
-    }
+    box-sizing: border-box;
 }
 
 @media (max-width: 1024px) {
-    .section {
-        --section-inset: 0.9rem;
+    .backgroundImage {
+        object-position: center 52%;
+        transform: scale(1.045);
+        opacity: 0.7;
     }
 
-    .section::before {
-        background-position: center 54%;
-        transform: scale(1.02);
-    }
-
-    .inner {
-        gap: 0.78rem;
-        padding: 0.78rem var(--section-inset) 0.86rem;
+    .overlayLayer {
+        background:
+            linear-gradient(180deg,
+                rgb(var(--hotel-black-rgb, 8 6 4) / 0.66) 0%,
+                rgb(var(--hotel-black-rgb, 8 6 4) / 0.48) 34%,
+                rgb(var(--hotel-black-rgb, 8 6 4) / 0.54) 68%,
+                rgb(var(--hotel-black-rgb, 8 6 4) / 0.72) 100%),
+            linear-gradient(90deg,
+                rgb(var(--hotel-black-rgb, 8 6 4) / 0.46) 0%,
+                rgb(var(--hotel-black-rgb, 8 6 4) / 0.18) 50%,
+                rgb(var(--hotel-black-rgb, 8 6 4) / 0.46) 100%);
     }
 }
 
 @media (max-width: 768px) {
-    .section {
-        --section-radius: 1.08rem;
-        --section-inset: 0.78rem;
-    }
-
-    .section::before {
-        background-position: center 50%;
-        transform: scale(1.015);
+    .visualBlock {
+        border-radius: var(--hotel-radius-xl, 1.45rem);
     }
 
     .inner {
-        gap: 0.72rem;
-        padding: 0.74rem var(--section-inset) 0.8rem;
+        gap: 0.95rem;
+        padding: 0.88rem;
+    }
+
+    .backgroundImage {
+        opacity: 0.62;
+        filter:
+            brightness(0.56) contrast(1.03) saturate(0.94) blur(1px);
     }
 }
 
-@media (max-width: 480px) {
-    .section {
-        --section-radius: 1rem;
-        --section-inset: 0.7rem;
-    }
-
-    .section::before {
-        background-position: center 48%;
-        transform: scale(1.01);
+@media (max-width: 560px) {
+    .visualBlock {
+        border-radius: var(--hotel-radius-lg, 1.15rem);
     }
 
     .inner {
-        gap: 0.66rem;
-        padding: 0.68rem var(--section-inset) 0.74rem;
+        gap: 0.86rem;
+        padding: 0.78rem;
+    }
+
+    .backgroundImage {
+        object-position: center 50%;
+        transform: scale(1.055);
     }
 }
 
 @media (max-width: 380px) {
-    .section {
-        --section-inset: 0.64rem;
-    }
-
     .inner {
-        gap: 0.6rem;
-        padding: 0.62rem var(--section-inset) 0.68rem;
+        gap: 0.78rem;
+        padding: 0.72rem;
     }
 }

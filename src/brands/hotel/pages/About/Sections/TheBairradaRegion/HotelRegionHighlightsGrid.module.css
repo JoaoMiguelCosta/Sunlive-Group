@@ -3,55 +3,36 @@
     isolation: isolate;
 
     inline-size: 100%;
-    max-inline-size: 1220px;
-    margin-inline: auto;
-    margin-block-start: clamp(0.9rem, 1.8vw, 1.25rem);
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
+    min-inline-size: 0;
+    margin-block-start: clamp(0.15rem, 0.8vw, 0.45rem);
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.8rem, 1.15vw, 1rem);
     align-items: stretch;
+    gap: clamp(0.72rem, 1.1vw, 0.96rem);
+
     inline-size: 100%;
+    min-inline-size: 0;
 }
 
 .item {
     display: flex;
-    min-width: 0;
+
+    min-inline-size: 0;
 }
 
 .item>* {
     inline-size: 100%;
-    min-width: 0;
+    min-inline-size: 0;
     block-size: 100%;
-}
-
-@media (max-width: 1200px) {
-    .grid {
-        gap: 0.9rem;
-    }
 }
 
 @media (max-width: 1024px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.88rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .wrap {
-        margin-block-start: 1rem;
-    }
-
-    .grid {
-        gap: 0.8rem;
+        gap: 0.82rem;
     }
 }
 
@@ -64,6 +45,6 @@
 
 @media (max-width: 380px) {
     .grid {
-        gap: 0.66rem;
+        gap: 0.64rem;
     }
 }

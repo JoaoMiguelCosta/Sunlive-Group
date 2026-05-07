@@ -4,6 +4,7 @@ export const aboutTheHotel = {
   id: "sobre-estalagem",
   headerLabel: "Sobre a Estalagem",
   layout: "text-media",
+
   text: {
     paragraphs: [
       "A Estalagem de Sangalhos – Sport & Nature Hotel é uma unidade de referência na Região Centro de Portugal, distinguida pela sua localização tranquila, serviços integrados e ambiente acolhedor.",
@@ -14,9 +15,11 @@ export const aboutTheHotel = {
       text: 'O seu conceito "Sport & Nature" traduz o equilíbrio entre tranquilidade, vitalidade e experiência autêntica.',
     },
   },
+
   media: {
     imageSrc: aboutImage,
     imageAlt: "Vista geral da Estalagem de Sangalhos – Sport & Nature Hotel.",
+    caption: "Sport & Nature Hotel",
   },
 };
 

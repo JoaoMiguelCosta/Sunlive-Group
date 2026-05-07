@@ -39,7 +39,9 @@ export default function AccessibilitySupport() {
       ? resolveHotelIcon(hotelBrand?.icons, supportIconKey)
       : null;
 
-    const features = Array.isArray(support.features) ? support.features : [];
+    const features = Array.isArray(support.features)
+      ? support.features.filter(Boolean)
+      : [];
 
     return {
       ...support,
@@ -52,7 +54,6 @@ export default function AccessibilitySupport() {
   }, [support]);
 
   const features = resolvedSupport?.features ?? [];
-
   const { isOpen, toggle } = useAccordion(features, { allowMultiple: false });
 
   if (!resolvedSupport) return null;

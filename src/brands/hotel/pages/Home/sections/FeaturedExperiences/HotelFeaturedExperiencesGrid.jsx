@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 
 import hotelBrand from "../../../../config/index.js";
 import FeaturedExperienceCard from "../../../../shared/ui/FeaturedExperienceCard/FeaturedExperienceCard.jsx";
+
 import styles from "./HotelFeaturedExperiencesGrid.module.css";
 
 function isValidItem(item) {
   return item && typeof item === "object" && item.id;
 }
 
-/**
- * Grelha editorial da secção "Experiências em Destaque"
- * - Todos os cards têm o mesmo peso visual
- * - Cada card pode navegar para uma página/secção interna
- */
+function isExternalHref(href = "") {
+  return href.startsWith("http://") || href.startsWith("https://");
+}
+
 export default function HotelFeaturedExperiencesGrid() {
   const featuredSection =
     hotelBrand?.pages?.home?.sections?.featuredExperiences ?? null;
@@ -27,20 +27,38 @@ export default function HotelFeaturedExperiencesGrid() {
     <div className={styles.gridWrap}>
       <div className={styles.grid}>
         {items.map((item) => {
-          const hasHref = typeof item.href === "string" && item.href.trim();
+          const href =
+            typeof item.href === "string" && item.href.trim()
+              ? item.href.trim()
+              : "";
+
+          const hasHref = href.length > 0;
+          const external = isExternalHref(href);
+
+          const card = <FeaturedExperienceCard {...item} />;
 
           return (
             <div key={item.id} className={styles.cell}>
-              {hasHref ? (
+              {hasHref && external ? (
+                <a
+                  href={href}
+                  className={styles.cardLink}
+                  aria-label={`Ver ${item.title}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {card}
+                </a>
+              ) : hasHref ? (
                 <Link
-                  to={item.href}
+                  to={href}
                   className={styles.cardLink}
                   aria-label={`Ver ${item.title}`}
                 >
-                  <FeaturedExperienceCard {...item} />
+                  {card}
                 </Link>
               ) : (
-                <FeaturedExperienceCard {...item} />
+                card
               )}
             </div>
           );

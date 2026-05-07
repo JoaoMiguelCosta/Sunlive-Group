@@ -38,8 +38,11 @@ export default function TestimonialsSection() {
       <div className={styles.overlayLayer} aria-hidden="true" />
 
       <div className={styles.inner}>
-        <TitleTestimonials titleId={titleId} />
-        <DescriptionTestimonials />
+        <div className={styles.headerBlock}>
+          <TitleTestimonials titleId={titleId} />
+          <DescriptionTestimonials />
+        </div>
+
         <TestimonialsAverageRating />
         <TestimonialsSpotlight />
       </div>

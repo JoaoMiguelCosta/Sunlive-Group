@@ -27,6 +27,7 @@ export default function ComplementaryServicesSection() {
       <div className={styles.inner}>
         <header className={styles.introBlock}>
           <TitleComplementaryServices titleId={titleId} />
+
           <div className={styles.descriptionWrap}>
             <DescriptionComplementaryServices />
           </div>

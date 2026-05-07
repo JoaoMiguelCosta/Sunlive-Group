@@ -1,30 +1,29 @@
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
+
 import styles from "./FeaturedExperiencesHeader.module.css";
 
-/**
- * Header da secção "Experiências em Destaque"
- * Mostra apenas o título principal.
- */
-export default function FeaturedExperiencesHeader() {
+export default function FeaturedExperiencesHeader({ titleId }) {
   const featuredSection =
     hotelBrand?.pages?.home?.sections?.featuredExperiences ?? null;
 
   const header = featuredSection?.header ?? null;
   if (!header) return null;
 
-  const { title, align = "center" } = header;
-  const sectionId = featuredSection.id || "hotel-featured-experiences";
-  const alignClass = styles[align] ?? "";
+  const { kicker, title, subtitle, align = "center" } = header;
+  const alignClass = styles[align] ?? styles.center;
 
-  if (!title) return null;
+  if (!title && !kicker && !subtitle) return null;
 
   return (
-    <header
-      className={[styles.header, alignClass].filter(Boolean).join(" ")}
-      id={`${sectionId}-title`}
-    >
-      <HotelSectionHeader label={title} as="h2" align={align} />
+    <header className={[styles.header, alignClass].filter(Boolean).join(" ")}>
+      {kicker ? <p className={styles.kicker}>{kicker}</p> : null}
+
+      {title ? (
+        <HotelSectionHeader id={titleId} label={title} as="h2" align={align} />
+      ) : null}
+
+      {subtitle ? <p className={styles.subtitle}>{subtitle}</p> : null}
     </header>
   );
 }

@@ -1,14 +1,15 @@
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
-import hotelBrand from "../../../../config/index.js";
 
-export default function TitleRoomsAndSuites() {
-  const content =
-    hotelBrand?.pages?.accommodation?.sections?.accommodations
-      ?.roomsAndSuites ?? null;
-
-  if (!content?.headerLabel) return null;
+export default function TitleRoomsAndSuites({
+  id,
+  label = "Quartos e Suítes",
+  className = "",
+}) {
+  if (!label) return null;
 
   return (
-    <HotelSectionHeader label={content.headerLabel} align="center" as="h2" />
+    <div className={className}>
+      <HotelSectionHeader id={id} label={label} align="center" as="h2" />
+    </div>
   );
 }

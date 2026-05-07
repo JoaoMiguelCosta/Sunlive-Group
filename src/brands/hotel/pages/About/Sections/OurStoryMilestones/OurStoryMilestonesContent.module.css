@@ -3,126 +3,139 @@
     isolation: isolate;
     overflow: hidden;
 
-    inline-size: 100%;
-    max-inline-size: 1200px;
+    inline-size: min(100%, 1220px);
+    min-inline-size: 0;
     margin-inline: auto;
-    padding: clamp(1rem, 1.5vw, 1.3rem);
-    border-radius: clamp(24px, 2.2vw, 34px);
+
+    padding: clamp(1rem, 1.7vw, 1.45rem);
+
+    border: 1px solid var(--hotel-border, rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
+    border-radius: var(--hotel-radius-2xl, clamp(1.7rem, 2.45vw, 2.45rem));
 
     background:
-        radial-gradient(78% 120% at 0% 0%, rgba(241, 205, 132, 0.13), transparent 50%),
-        radial-gradient(82% 118% at 100% 100%, rgba(199, 134, 21, 0.12), transparent 52%),
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.045) 0%,
-            rgba(255, 248, 235, 0.012) 16%,
-            rgba(0, 0, 0, 0.13) 100%),
-        linear-gradient(90deg,
-            #2b170b 0%,
-            #34190b 30%,
-            #241208 66%,
-            #180c06 100%);
+        radial-gradient(120% 145% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.095) 0%,
+            transparent 48%),
+        radial-gradient(115% 140% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 176 122 55) / 0.08) 0%,
+            transparent 52%),
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.02) 36%,
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.18) 100%);
 
-    border: 1px solid rgba(230, 200, 147, 0.28);
+    color: var(--hotel-text, rgba(251, 247, 239, 0.96));
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.065),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-        0 24px 56px rgba(0, 0, 0, 0.24);
+        0 1.35rem 3.5rem rgb(0 0 0 / 0.24),
+        inset 0 1px 0 rgb(255 255 255 / 0.055);
 }
 
 .content::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
+
     pointer-events: none;
+
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.075) 0%,
-            rgba(255, 248, 235, 0.022) 10%,
-            rgba(255, 255, 255, 0) 26%),
-        linear-gradient(90deg,
-            rgba(255, 255, 255, 0.022) 0%,
-            rgba(255, 255, 255, 0) 18%,
-            rgba(255, 255, 255, 0) 82%,
-            rgba(255, 255, 255, 0.018) 100%);
-    opacity: 0.92;
+            rgb(255 255 255 / 0.055) 0%,
+            rgb(255 255 255 / 0.014) 32%,
+            transparent 74%);
 }
 
 .content::after {
     content: "";
     position: absolute;
-    inset: auto auto -12% 8%;
-    inline-size: clamp(220px, 26vw, 420px);
-    block-size: clamp(90px, 11vw, 150px);
+    inset-inline: clamp(1rem, 2vw, 1.8rem);
+    inset-block-start: 0;
+    z-index: 1;
+
+    block-size: 1px;
+
     pointer-events: none;
-    background: radial-gradient(circle,
-            rgba(199, 134, 21, 0.16) 0%,
-            rgba(199, 134, 21, 0.08) 44%,
-            rgba(199, 134, 21, 0) 76%);
-    filter: blur(28px);
-    opacity: 0.72;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.4) 50%,
+            transparent 100%);
+}
+
+.intro,
+.timelineStage {
+    position: relative;
+    z-index: 2;
 }
 
 .intro {
-    position: relative;
-    z-index: 1;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: clamp(0.95rem, 1.45vw, 1.3rem);
-    align-items: start;
-    padding:
-        clamp(0.28rem, 0.56vw, 0.58rem) clamp(0.14rem, 0.3vw, 0.34rem) clamp(0.4rem, 0.8vw, 0.6rem);
+    gap: clamp(1rem, 1.5vw, 1.3rem);
+    align-items: center;
+
+    min-inline-size: 0;
 }
 
 .copy {
     display: grid;
-    gap: clamp(0.78rem, 1vw, 0.98rem);
-    max-inline-size: 64ch;
-    min-width: 0;
+    gap: clamp(0.78rem, 1.05vw, 0.95rem);
+
+    min-inline-size: 0;
+    max-inline-size: 72ch;
 }
 
 .paragraph {
     margin: 0;
-    font-size: clamp(0.98rem, 0.22vw + 0.93rem, 1.05rem);
+
+    color: var(--hotel-text-soft, rgba(244, 234, 216, 0.84));
+
+    font-size: clamp(0.92rem, 0.18vw + 0.88rem, 1rem);
+    font-weight: 400;
     line-height: 1.68;
-    color: rgba(255, 248, 235, 0.9);
+    letter-spacing: -0.012em;
+
     text-wrap: pretty;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .lead {
     position: relative;
-    padding-block-start: clamp(0.76rem, 0.82vw, 0.88rem);
-    color: rgba(255, 248, 235, 0.98);
-    font-size: clamp(1.02rem, 0.3vw + 0.96rem, 1.14rem);
-    line-height: 1.6;
+
+    padding-block-start: clamp(0.74rem, 0.95vw, 0.92rem);
+
+    color: var(--hotel-text, rgba(251, 247, 239, 0.94));
+
+    font-size: clamp(0.98rem, 0.24vw + 0.92rem, 1.08rem);
+    line-height: 1.62;
 }
 
 .lead::before {
     content: "";
     position: absolute;
-    inset: 0 auto auto 0;
-    inline-size: clamp(76px, 7vw, 106px);
-    block-size: 2px;
-    border-radius: 999px;
-    background: linear-gradient(90deg,
-            rgba(241, 205, 132, 0.96) 0%,
-            rgba(241, 205, 132, 0.34) 74%,
-            rgba(241, 205, 132, 0) 100%);
-    box-shadow: 0 0 14px rgba(241, 205, 132, 0.18);
-}
+    inset-block-start: 0;
+    inset-inline-start: 0;
 
-.paragraphSecondary {
-    margin-block-start: 0.02rem;
+    inline-size: clamp(4.4rem, 7vw, 6.4rem);
+    block-size: 2px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(90deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.9) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34) 70%,
+            transparent 100%);
+
+    box-shadow: 0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12);
 }
 
 .highlightWrap {
-    inline-size: 100%;
-    max-inline-size: 100%;
-    justify-self: stretch;
-    align-self: start;
     display: grid;
+
+    inline-size: 100%;
     min-inline-size: 0;
 }
 
@@ -132,147 +145,161 @@
 }
 
 .highlightPill :global(.card) {
-    border-radius: clamp(24px, 2vw, 32px);
-    border-color: rgba(230, 200, 147, 0.26);
+    border-radius: var(--hotel-radius-xl, clamp(1.25rem, 1.8vw, 1.8rem));
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.07),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.22),
-        0 16px 34px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgb(255 255 255 / 0.06),
+        0 1rem 2.2rem rgb(0 0 0 / 0.18);
 }
 
 .highlightPill :global(.inner) {
-    padding-block: clamp(0.9rem, 1vw, 1.04rem);
-    padding-inline: clamp(1.08rem, 1.8vw, 1.6rem);
+    padding-block: clamp(0.9rem, 1.25vw, 1.08rem);
+    padding-inline: clamp(1rem, 1.8vw, 1.45rem);
 }
 
 .highlightPill :global(.text) {
-    max-inline-size: 42ch;
-    font-size: clamp(0.92rem, 0.14vw + 0.9rem, 1rem);
-    line-height: 1.48;
-    font-weight: 600;
+    max-inline-size: 38ch;
+
+    font-size: clamp(0.88rem, 0.16vw + 0.84rem, 0.96rem);
+    font-weight: 520;
+    line-height: 1.52;
 }
 
 .timelineStage {
-    position: relative;
-    z-index: 1;
-    margin-block-start: clamp(1rem, 1.6vw, 1.5rem);
-    padding:
-        clamp(0.98rem, 1.3vw, 1.15rem) clamp(0.82rem, 1.2vw, 1rem) clamp(0.86rem, 1.3vw, 1rem);
-    border-radius: clamp(22px, 2vw, 30px);
+    overflow: hidden;
+
+    margin-block-start: clamp(1.15rem, 2vw, 1.65rem);
+    padding: clamp(1rem, 1.5vw, 1.25rem);
+
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13);
+    border-radius: var(--hotel-radius-xl, clamp(1.35rem, 2vw, 2rem));
 
     background:
-        radial-gradient(80% 130% at 50% 0%, rgba(241, 205, 132, 0.08), transparent 54%),
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.04) 0%,
-            rgba(255, 248, 235, 0.012) 18%,
-            rgba(0, 0, 0, 0.08) 100%),
-        linear-gradient(135deg,
-            rgba(44, 23, 11, 0.92) 0%,
-            rgba(26, 13, 7, 0.96) 100%);
-
-    border: 1px solid rgba(230, 200, 147, 0.14);
+        linear-gradient(145deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055),
+            rgb(var(--hotel-black-rgb, 8 6 4) / 0.14));
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.045),
-        0 18px 40px rgba(0, 0, 0, 0.16);
+        inset 0 1px 0 rgb(255 255 255 / 0.042),
+        0 1rem 2.4rem rgb(0 0 0 / 0.16);
 }
 
 .timelineStage::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
+
     pointer-events: none;
-    border-radius: inherit;
+
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.055) 0%,
-            rgba(255, 248, 235, 0.018) 14%,
-            rgba(255, 255, 255, 0) 32%);
-    opacity: 0.9;
+            rgb(255 255 255 / 0.045) 0%,
+            rgb(255 255 255 / 0.012) 36%,
+            transparent 76%),
+        radial-gradient(circle at 50% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
+            transparent 44%);
 }
 
 .timelineTrack {
     position: absolute;
-    inset: clamp(1.4rem, 2.4vw, 1.8rem) clamp(9%, 8vw, 13%) auto;
-    block-size: 2px;
-    border-radius: 999px;
+    inset-inline: clamp(8%, 8vw, 12%);
+    inset-block-start: clamp(1.74rem, 2.25vw, 2.05rem);
+    z-index: 1;
+
+    block-size: 1px;
+
     pointer-events: none;
 
     background:
         linear-gradient(90deg,
-            rgba(230, 200, 147, 0.1) 0%,
-            rgba(230, 200, 147, 0.46) 18%,
-            rgba(199, 134, 21, 0.62) 50%,
-            rgba(230, 200, 147, 0.46) 82%,
-            rgba(230, 200, 147, 0.1) 100%);
-
-    box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.014),
-        0 0 18px rgba(199, 134, 21, 0.12);
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22) 14%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.5) 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22) 86%,
+            transparent 100%);
 }
 
 .timelineGrid {
     position: relative;
+    z-index: 2;
+
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(0.9rem, 1.25vw, 1.1rem);
-    align-items: stretch;
+    gap: clamp(0.8rem, 1.2vw, 1rem);
+
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
 }
 
 .timelineItem {
     position: relative;
+
     display: grid;
     gap: clamp(0.62rem, 0.9vw, 0.78rem);
-    min-width: 0;
-    padding-block-start: clamp(1.15rem, 1.8vw, 1.35rem);
+
+    min-inline-size: 0;
+    padding-block-start: clamp(1.1rem, 1.55vw, 1.3rem);
 }
 
 .timelineItem::before {
     content: "";
     position: absolute;
-    inset: clamp(0.56rem, 0.9vw, 0.72rem) auto auto 50%;
+    inset-block-start: clamp(0.48rem, 0.7vw, 0.58rem);
+    inset-inline-start: 50%;
+
     translate: -50% 0;
-    inline-size: 2px;
-    block-size: clamp(0.56rem, 1vw, 0.74rem);
+
+    inline-size: 1px;
+    block-size: clamp(0.55rem, 0.9vw, 0.72rem);
+
     border-radius: 999px;
-    background: linear-gradient(180deg,
-            rgba(241, 205, 132, 0.92) 0%,
-            rgba(199, 134, 21, 0.28) 100%);
-    box-shadow: 0 0 14px rgba(241, 205, 132, 0.16);
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.64),
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12));
 }
 
 .timelineDot {
     position: absolute;
-    inset: 0 auto auto 50%;
+    inset-block-start: 0;
+    inset-inline-start: 50%;
+
     translate: -50% 0;
 
-    inline-size: 14px;
-    block-size: 14px;
-    border-radius: 50%;
+    inline-size: 0.72rem;
+    block-size: 0.72rem;
+
+    border-radius: 999px;
 
     background:
         radial-gradient(circle at 35% 35%,
-            rgba(255, 248, 235, 0.98) 0%,
-            rgba(241, 205, 132, 0.96) 28%,
-            rgba(199, 134, 21, 0.96) 72%,
-            rgba(161, 98, 7, 0.98) 100%);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.98) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.96) 34%,
+            rgb(var(--hotel-bronze-rgb, 176 122 55) / 0.98) 100%);
 
     box-shadow:
-        0 0 0 5px rgba(199, 134, 21, 0.12),
-        0 0 18px rgba(241, 205, 132, 0.2);
+        0 0 0 0.32rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1),
+        0 0 1.2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16);
 }
 
 .timelineItemFeatured {
-    z-index: 1;
-    transform: translateY(-0.18rem);
+    z-index: 2;
 }
 
 .timelineItemFeatured .timelineDot {
-    inline-size: 16px;
-    block-size: 16px;
+    inline-size: 0.84rem;
+    block-size: 0.84rem;
+
     box-shadow:
-        0 0 0 6px rgba(199, 134, 21, 0.16),
-        0 0 24px rgba(241, 205, 132, 0.26);
+        0 0 0 0.38rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13),
+        0 0 1.5rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
 }
 
 .milestoneCard {
@@ -286,73 +313,36 @@
 .milestoneCardFeatured::before {
     content: "";
     position: absolute;
-    inset: -10% -2% auto;
-    block-size: clamp(56px, 7vw, 82px);
+    inset-inline: 8%;
+    inset-block-start: -0.8rem;
+    z-index: 0;
+
+    block-size: 4rem;
+
     pointer-events: none;
-    background: radial-gradient(circle,
-            rgba(241, 205, 132, 0.16) 0%,
-            rgba(241, 205, 132, 0.06) 44%,
-            rgba(241, 205, 132, 0) 74%);
-    filter: blur(16px);
-    opacity: 0.9;
+
+    opacity: 0.56;
+
+    background:
+        radial-gradient(circle,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 0%,
+            transparent 72%);
+
+    filter: blur(18px);
 }
 
 @media (min-width: 1081px) {
-.intro {
-        grid-template-columns: minmax(0, 64ch) clamp(320px, 29vw, 430px);
-        justify-content: space-around;
-        align-items: center;
-        gap: clamp(1rem, 1.6vw, 1.5rem);
-    }
-
-    .copy {
-        max-inline-size: 66ch;
-    }
-
-.highlightWrap {
-    justify-self: end;
-    align-self: center;
-    padding-block-start: 0;
-}
-
-    .highlightPill {
-        inline-size: clamp(320px, 29vw, 430px);
-    }
-
-    .highlightPill :global(.inner) {
-        padding-block: clamp(1rem, 1.12vw, 1.16rem);
-        padding-inline: clamp(1.12rem, 1.8vw, 1.55rem);
-    }
-
-    .highlightPill :global(.text) {
-        max-inline-size: 32ch;
-        font-size: clamp(0.94rem, 0.14vw + 0.91rem, 1rem);
-        line-height: 1.5;
-    }
-}
-
-@media (max-width: 1080px) {
-
-    .copy,
-    .highlightWrap {
-        max-inline-size: 100%;
+    .intro {
+        grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.46fr);
+        gap: clamp(1.4rem, 2.4vw, 2.4rem);
     }
 
     .highlightWrap {
-        justify-self: stretch;
-        align-self: start;
+        justify-self: end;
     }
 
     .highlightPill {
-        inline-size: 100%;
-    }
-
-    .highlightPill :global(.text) {
-        max-inline-size: 100%;
-    }
-
-    .timelineGrid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        inline-size: min(100%, 25rem);
     }
 }
 
@@ -362,50 +352,38 @@
     }
 
     .timelineGrid {
-        gap: 0.84rem;
+        gap: 0.78rem;
     }
 }
 
 @media (max-width: 768px) {
     .content {
-        padding: 0.9rem;
-        border-radius: 24px;
+        padding: 0.88rem;
+        border-radius: var(--hotel-radius-xl, 1.45rem);
     }
 
     .intro {
-        padding-inline: 0;
-        padding-block-end: 0.08rem;
+        gap: 0.9rem;
     }
 
     .copy {
-        gap: 0.86rem;
+        gap: 0.78rem;
     }
 
     .paragraph {
-        font-size: 0.97rem;
-        line-height: 1.64;
+        font-size: 0.9rem;
+        line-height: 1.58;
     }
 
     .lead {
-        font-size: 0.99rem;
-        line-height: 1.58;
-        padding-block-start: 0.76rem;
-    }
-
-    .highlightPill :global(.inner) {
-        padding-block: 0.84rem;
-        padding-inline: 0.98rem;
-    }
-
-    .highlightPill :global(.text) {
-        font-size: 0.93rem;
-        line-height: 1.42;
+        font-size: 0.94rem;
+        line-height: 1.54;
     }
 
     .timelineStage {
-        margin-block-start: 0.96rem;
-        padding: 0.92rem 0.84rem 0.86rem;
-        border-radius: 22px;
+        margin-block-start: 1rem;
+        padding: 0.82rem;
+        border-radius: var(--hotel-radius-lg, 1.15rem);
     }
 
     .timelineTrack {
@@ -414,129 +392,101 @@
 
     .timelineGrid {
         grid-template-columns: minmax(0, 1fr);
-        gap: 0.76rem;
+        gap: 0.7rem;
     }
 
     .timelineItem {
+        gap: 0;
         padding-block-start: 0;
         padding-inline-start: 1rem;
     }
 
     .timelineItem::before {
-        inset: 0.82rem auto 0.82rem 0.26rem;
-        translate: 0 0;
-        inline-size: 2px;
+        inset-block: 0.75rem;
+        inset-inline-start: 0.25rem;
+
+        translate: 0;
+
+        inline-size: 1px;
         block-size: auto;
-        background: linear-gradient(180deg,
-                rgba(230, 200, 147, 0.1) 0%,
-                rgba(230, 200, 147, 0.46) 18%,
-                rgba(199, 134, 21, 0.62) 50%,
-                rgba(230, 200, 147, 0.34) 82%,
-                rgba(230, 200, 147, 0.08) 100%);
-        box-shadow:
-            0 0 0 1px rgba(255, 255, 255, 0.012),
-            0 0 18px rgba(199, 134, 21, 0.12);
+
+        background:
+            linear-gradient(180deg,
+                transparent 0%,
+                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42) 28%,
+                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42) 72%,
+                transparent 100%);
     }
 
     .timelineDot {
-        inset: 50% auto auto 0.26rem;
-        translate: -50% -50%;
-        inline-size: 12px;
-        block-size: 12px;
-    }
+        inset-block-start: 50%;
+        inset-inline-start: 0.25rem;
 
-    .timelineItemFeatured {
-        transform: none;
+        translate: -50% -50%;
+
+        inline-size: 0.62rem;
+        block-size: 0.62rem;
     }
 
     .timelineItemFeatured .timelineDot {
-        inline-size: 14px;
-        block-size: 14px;
+        inline-size: 0.72rem;
+        block-size: 0.72rem;
     }
 }
 
 @media (max-width: 560px) {
     .content {
-        padding: 0.82rem;
-        border-radius: 20px;
+        padding: 0.78rem;
+        border-radius: var(--hotel-radius-lg, 1.15rem);
     }
 
     .paragraph {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-
-    .lead {
-        font-size: 0.96rem;
+        font-size: 0.86rem;
         line-height: 1.54;
     }
 
+    .lead {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
     .lead::before {
-        inline-size: 64px;
+        inline-size: 4rem;
+    }
+
+    .highlightPill :global(.inner) {
+        padding-block: 0.82rem;
+        padding-inline: 0.9rem;
+    }
+
+    .highlightPill :global(.text) {
+        font-size: 0.84rem;
+        line-height: 1.44;
     }
 
     .timelineStage {
-        padding: 0.84rem 0.76rem 0.8rem;
-        border-radius: 18px;
+        padding: 0.74rem;
     }
 
     .timelineItem {
-        padding-inline-start: 0.92rem;
-    }
-
-    .timelineItem::before {
-        inset-inline-start: 0.24rem;
-    }
-
-    .timelineDot {
-        inset-inline-start: 0.24rem;
-        inline-size: 11px;
-        block-size: 11px;
-    }
-
-    .timelineItemFeatured .timelineDot {
-        inline-size: 13px;
-        block-size: 13px;
+        padding-inline-start: 0.9rem;
     }
 }
 
 @media (max-width: 380px) {
     .content {
-        padding: 0.74rem;
-        border-radius: 18px;
+        padding: 0.7rem;
     }
 
     .paragraph {
-        font-size: 0.91rem;
-        line-height: 1.56;
+        font-size: 0.82rem;
     }
 
     .lead {
-        font-size: 0.93rem;
-        line-height: 1.5;
+        font-size: 0.86rem;
     }
 
     .timelineStage {
-        padding: 0.76rem 0.68rem 0.74rem;
-        border-radius: 16px;
-    }
-
-    .timelineItem {
-        padding-inline-start: 0.86rem;
-    }
-
-    .timelineItem::before {
-        inset-inline-start: 0.22rem;
-    }
-
-    .timelineDot {
-        inset-inline-start: 0.22rem;
-        inline-size: 10px;
-        block-size: 10px;
-    }
-
-    .timelineItemFeatured .timelineDot {
-        inline-size: 12px;
-        block-size: 12px;
+        padding: 0.68rem;
     }
 }

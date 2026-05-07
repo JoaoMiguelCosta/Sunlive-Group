@@ -1,6 +1,10 @@
 export const sustainabilityImpact = {
   id: "hotel-sustentabilidade-impacto",
-  header: { label: "Sustentabilidade" },
+
+  header: {
+    label: "Sustentabilidade",
+  },
+
   intro: {
     eyebrow: "Impacto positivo",
     title: "Comprometidos com um futuro mais verde",
@@ -9,11 +13,13 @@ export const sustainabilityImpact = {
     noteText:
       "Cada decisão procura equilibrar conforto, eficiência e responsabilidade ambiental.",
   },
+
   cta: {
     label: "Saber mais sobre Sustentabilidade",
     href: "/sunlive-group/hotel/sustentabilidade",
     ariaLabel: "Ir para a página de sustentabilidade do hotel",
   },
+
   stats: [
     {
       id: "waste-recycled",

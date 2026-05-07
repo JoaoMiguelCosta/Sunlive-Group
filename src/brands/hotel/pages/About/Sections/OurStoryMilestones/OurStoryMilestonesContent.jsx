@@ -1,30 +1,38 @@
 import hotelBrand from "../../../../config/index.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import HotelMilestoneCard from "../../../../shared/ui/HotelMilestoneCard/HotelMilestoneCard.jsx";
+
 import styles from "./OurStoryMilestonesContent.module.css";
 
-/**
- * OurStoryMilestonesContent
- * Layout:
- * - bloco editorial superior mais limpo
- * - timeline principal em grelha premium
- * - destaque final mais forte no último marco
- */
+function getValidParagraphs(paragraphs) {
+  return Array.isArray(paragraphs)
+    ? paragraphs.filter(
+        (paragraph) =>
+          typeof paragraph === "string" && paragraph.trim().length > 0,
+      )
+    : [];
+}
+
+function getValidMilestones(milestones) {
+  return Array.isArray(milestones)
+    ? milestones.filter(
+        (milestone) =>
+          milestone &&
+          typeof milestone === "object" &&
+          (milestone.label || milestone.description),
+      )
+    : [];
+}
+
 export default function OurStoryMilestonesContent() {
   const section =
     hotelBrand?.pages?.about?.sections?.ourStoryMilestones ?? null;
 
   if (!section) return null;
 
-  const paragraphs = Array.isArray(section?.text?.paragraphs)
-    ? section.text.paragraphs
-    : [];
-
+  const paragraphs = getValidParagraphs(section?.text?.paragraphs);
   const highlightText = section?.text?.highlightPill?.text ?? "";
-
-  const milestones = Array.isArray(section?.milestones)
-    ? section.milestones
-    : [];
+  const milestones = getValidMilestones(section?.milestones);
 
   const [firstParagraph, ...otherParagraphs] = paragraphs;
 
@@ -38,13 +46,8 @@ export default function OurStoryMilestonesContent() {
             </p>
           ) : null}
 
-          {otherParagraphs.map((paragraph, index) => (
-            <p
-              key={`${index}-${paragraph}`}
-              className={`${styles.paragraph} ${
-                index === 0 ? styles.paragraphSecondary : ""
-              }`}
-            >
+          {otherParagraphs.map((paragraph) => (
+            <p key={paragraph} className={styles.paragraph}>
               {paragraph}
             </p>
           ))}
@@ -63,12 +66,12 @@ export default function OurStoryMilestonesContent() {
         <div className={styles.timelineStage}>
           <div className={styles.timelineTrack} aria-hidden="true" />
 
-          <div className={styles.timelineGrid}>
+          <ol className={styles.timelineGrid} aria-label="Marcos da história">
             {milestones.map((item, index) => {
               const isFeatured = index === milestones.length - 1;
 
               return (
-                <div
+                <li
                   key={item.id ?? `${item.label}-${index}`}
                   className={[
                     styles.timelineItem,
@@ -90,10 +93,10 @@ export default function OurStoryMilestonesContent() {
                       .filter(Boolean)
                       .join(" ")}
                   />
-                </div>
+                </li>
               );
             })}
-          </div>
+          </ol>
         </div>
       ) : null}
     </div>

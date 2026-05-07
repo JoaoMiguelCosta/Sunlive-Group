@@ -3,11 +3,13 @@ import homeWhoWeHostImage from "../../../assets/home-who-we-host.webp";
 export const whoWeHost = {
   id: "hotel-quem-recebemos",
   headerLabel: "Para quem é?",
+
   header: {
     title: "Estadias pensadas para diferentes ritmos e necessidades",
     description:
       "Da performance desportiva ao descanso em casal, a Estalagem adapta a experiência ao contexto de cada hóspede com conforto, tranquilidade e apoio próximo.",
   },
+
   introPanel: {
     eyebrow: "Hospitalidade com direção",
     title: "Recebemos cada estadia com o enquadramento certo",
@@ -16,11 +18,13 @@ export const whoWeHost = {
     highlight:
       'O conceito "Sport & Nature" traduz-se numa estadia equilibrada entre funcionalidade, bem-estar e autenticidade.',
   },
+
   backgroundMedia: {
     imageSrc: homeWhoWeHostImage,
     imageAlt:
       "Momento de lazer junto à piscina da Estalagem, usado como fundo subtil da secção",
   },
+
   items: [
     {
       id: "athletes-clubs",
