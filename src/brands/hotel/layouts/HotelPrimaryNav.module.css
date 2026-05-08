@@ -1,9 +1,3 @@
-/* =========================================================
-   HotelPrimaryNav — navegação principal Hotel
-   Máximo visual: 1360px
-   Estilo: Boutique Luxury Bronze / Quiet Warmth
-   ========================================================= */
-
 .nav {
     position: relative;
     z-index: 40;
@@ -26,41 +20,56 @@
     overflow: hidden;
     box-sizing: border-box;
 
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.36);
     border-radius: var(--nav-radius);
 
     background:
-        radial-gradient(90% 150% at 8% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14) 0%,
-            transparent 46%),
-        radial-gradient(82% 135% at 94% 8%,
-            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.085) 0%,
-            transparent 54%),
-        radial-gradient(75% 120% at 50% 100%,
-            rgb(155 106 51 / 0.105) 0%,
-            transparent 62%),
+        radial-gradient(122% 156% at -4% -28%,
+            rgb(255 235 196 / 0.145) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.092) 32%,
+            transparent 58%),
+        radial-gradient(114% 154% at 104% -12%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.135) 0%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.038) 44%,
+            transparent 66%),
+        radial-gradient(88% 124% at 50% 124%,
+            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.105) 0%,
+            transparent 68%),
         linear-gradient(180deg,
-            rgb(47 37 27 / 0.94) 0%,
-            rgb(24 19 14 / 0.965) 48%,
-            rgb(var(--hotel-black-rgb, 8 6 4) / 0.985) 100%);
+            rgb(64 43 27 / 0.82) 0%,
+            rgb(41 26 17 / 0.91) 45%,
+            rgb(14 8 5 / 0.965) 100%);
 
     box-shadow:
-        0 1.2rem 3rem rgb(0 0 0 / 0.3),
-        0 0.25rem 0.9rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.035),
-        inset 0 1px 0 rgb(255 244 220 / 0.075),
-        inset 0 -1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.085);
+        0 1.6rem 3.9rem rgb(0 0 0 / 0.48),
+        0 0.55rem 1.45rem rgb(0 0 0 / 0.3),
+        0 0 2.8rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.088),
+        0 0 3.8rem rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.045),
+        0 0 0 1px rgb(255 247 229 / 0.03),
+        inset 0 1px 0 rgb(255 247 229 / 0.12),
+        inset 0 -1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.105);
 
-    backdrop-filter: blur(18px) saturate(1.08);
-    -webkit-backdrop-filter: blur(18px) saturate(1.08);
+    backdrop-filter: blur(22px) saturate(1.18);
+    -webkit-backdrop-filter: blur(22px) saturate(1.18);
 }
 
 .navInner::before {
     content: "";
     position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    pointer-events: none;
+
+}
+
+.navInner::after {
+    content: "";
+    position: absolute;
     inset-inline: clamp(1rem, 2vw, 1.8rem);
     inset-block-start: 0;
+    z-index: 1;
 
-    z-index: -1;
     block-size: 1px;
 
     pointer-events: none;
@@ -68,30 +77,20 @@
     background:
         linear-gradient(90deg,
             transparent 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 20%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.58) 50%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 80%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28) 18%,
+            rgb(255 247 229 / 0.72) 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28) 82%,
             transparent 100%);
+
+    box-shadow:
+        0 0 1.6rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24),
+        0 0 3rem rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.075);
 }
 
-.navInner::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-
-    pointer-events: none;
-
-    background:
-        radial-gradient(85% 155% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.105) 0%,
-            transparent 48%),
-        radial-gradient(80% 140% at 100% 100%,
-            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.06) 0%,
-            transparent 58%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.026) 0%,
-            rgb(var(--hotel-black-rgb, 8 6 4) / 0.105) 100%);
+.navTopRow,
+.navListWrap {
+    position: relative;
+    z-index: 2;
 }
 
 .navTopRow {
@@ -107,22 +106,26 @@
 .navTitle {
     min-inline-size: 0;
 
-    color: var(--hotel-kicker, #ead7b0);
+    color: var(--hotel-champagne-soft, #ead7b0);
 
     font-size: var(--hotel-kicker-size, 0.78rem);
-    font-weight: 760;
+    font-weight: 780;
     line-height: 1.1;
     letter-spacing: 0.16em;
     text-transform: uppercase;
 
     text-wrap: balance;
-    text-shadow: 0 0.75rem 1.8rem rgb(0 0 0 / 0.44);
+    text-shadow:
+        0 0.75rem 1.8rem rgb(0 0 0 / 0.58),
+        0 0 1.2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
 }
 
 /* ===== Burger ===== */
 
 .burgerButton {
     position: relative;
+    isolation: isolate;
+    overflow: hidden;
 
     display: inline-flex;
     align-items: center;
@@ -133,60 +136,79 @@
     block-size: 2.55rem;
     padding: 0;
 
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.38);
     border-radius: 999px;
 
     background:
-        radial-gradient(80% 100% at 35% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 0%,
-            transparent 54%),
-        linear-gradient(145deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.078),
-            rgb(var(--hotel-black-rgb, 8 6 4) / 0.2));
+        radial-gradient(118% 140% at 35% 0%,
+            rgb(255 236 196 / 0.14) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.086) 44%,
+            transparent 68%),
+        linear-gradient(180deg,
+            rgb(64 43 27 / 0.6) 0%,
+            rgb(41 26 17 / 0.68) 48%,
+            rgb(19 11 8 / 0.76) 100%);
 
     color: var(--hotel-text, rgba(251, 247, 239, 0.96));
     cursor: pointer;
 
     box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.058),
-        0 0.8rem 1.6rem rgb(0 0 0 / 0.2);
+        0 0.95rem 1.9rem rgb(0 0 0 / 0.34),
+        0 0 1.6rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09),
+        inset 0 1px 0 rgb(255 247 229 / 0.12),
+        inset 0 -1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09);
+
+    backdrop-filter: blur(10px) saturate(1.12);
+    -webkit-backdrop-filter: blur(10px) saturate(1.12);
 
     transition:
         transform var(--hotel-transition-fast, 160ms ease),
         border-color var(--hotel-transition-fast, 160ms ease),
         background var(--hotel-transition-fast, 160ms ease),
-        box-shadow var(--hotel-transition-fast, 160ms ease);
+        box-shadow var(--hotel-transition-fast, 160ms ease),
+        filter var(--hotel-transition-fast, 160ms ease);
 }
 
 .burgerButton:hover,
 .burgerButton:focus-visible {
     transform: translateY(-1px);
-    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.38);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.54);
+    filter: saturate(1.07) contrast(1.014);
 
     background:
-        radial-gradient(85% 105% at 35% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24) 0%,
-            transparent 56%),
-        linear-gradient(145deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18),
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.058));
+        radial-gradient(118% 140% at 35% 0%,
+            rgb(255 236 196 / 0.19) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 44%,
+            transparent 68%),
+        linear-gradient(180deg,
+            rgb(70 47 30 / 0.68) 0%,
+            rgb(45 29 19 / 0.74) 48%,
+            rgb(20 12 8 / 0.8) 100%);
 
     box-shadow:
-        0 1rem 2rem rgb(0 0 0 / 0.26),
-        0 0 1.5rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.085),
-        inset 0 1px 0 rgb(255 255 255 / 0.066);
+        0 1.1rem 2.25rem rgb(0 0 0 / 0.38),
+        0 0 2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16),
+        inset 0 1px 0 rgb(255 247 229 / 0.14),
+        inset 0 -1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11);
+}
+
+.burgerButton:focus-visible {
+    outline: 2px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.44);
+    outline-offset: 3px;
 }
 
 .burgerButtonActive {
-    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.56);
 
     background:
-        radial-gradient(85% 105% at 35% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26) 0%,
-            transparent 56%),
-        linear-gradient(145deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22),
-            rgb(var(--hotel-black-rgb, 8 6 4) / 0.22));
+        radial-gradient(118% 140% at 35% 0%,
+            rgb(255 236 196 / 0.24) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.145) 44%,
+            transparent 68%),
+        linear-gradient(180deg,
+            rgb(72 48 30 / 0.74) 0%,
+            rgb(46 30 19 / 0.8) 48%,
+            rgb(20 12 8 / 0.84) 100%);
 }
 
 .burgerBox {
@@ -208,7 +230,8 @@
 
     background: var(--hotel-ivory-050, #fbf7ef);
 
-    box-shadow: 0 0 0.8rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16);
+    box-shadow:
+        0 0 0.9rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26);
 
     transition:
         transform var(--hotel-transition-fast, 160ms ease),
@@ -285,24 +308,30 @@
     position: absolute;
     inset: 0.1rem 0.05rem;
 
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.17);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.4);
     border-radius: calc(var(--nav-radius) - 0.42rem);
 
     pointer-events: none;
 
     background:
-        radial-gradient(85% 140% at 20% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11) 0%,
-            transparent 54%),
-        linear-gradient(145deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.15),
-            rgb(155 106 51 / 0.08) 52%,
-            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.035));
+        radial-gradient(118% 140% at 12% 0%,
+            rgb(255 236 196 / 0.15) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.098) 34%,
+            transparent 58%),
+        radial-gradient(96% 128% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.145) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgb(64 43 27 / 0.62) 0%,
+            rgb(41 26 17 / 0.68) 46%,
+            rgb(19 11 8 / 0.74) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgb(255 244 220 / 0.055),
-        inset 0 -1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.05),
-        0 0.9rem 1.6rem rgb(0 0 0 / 0.16);
+        0 1.05rem 2rem rgb(0 0 0 / 0.28),
+        0 0 1.75rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12),
+        0 0 0 1px rgb(255 247 229 / 0.025),
+        inset 0 1px 0 rgb(255 247 229 / 0.12),
+        inset 0 -1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09);
 }
 
 .navItemRow {
@@ -335,22 +364,23 @@
     border-radius: 999px;
     background: transparent;
 
-    color: var(--hotel-text-soft, rgba(244, 234, 216, 0.82));
+    color: var(--hotel-text-soft, rgba(244, 234, 216, 0.84));
     cursor: pointer;
 
     font-size: clamp(0.78rem, 0.72rem + 0.2vw, 0.94rem);
-    font-weight: 620;
+    font-weight: 660;
     line-height: 1.1;
-    letter-spacing: 0.012em;
+    letter-spacing: 0.01em;
     text-decoration: none;
 
-    opacity: 0.86;
+    opacity: 0.9;
 
     transition:
         transform var(--hotel-transition-fast, 160ms ease),
         opacity var(--hotel-transition-fast, 160ms ease),
         color var(--hotel-transition-fast, 160ms ease),
-        text-shadow var(--hotel-transition-fast, 160ms ease);
+        text-shadow var(--hotel-transition-fast, 160ms ease),
+        filter var(--hotel-transition-fast, 160ms ease);
 }
 
 .navButton::after {
@@ -369,10 +399,11 @@
     background:
         linear-gradient(90deg,
             transparent 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.9) 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.96) 50%,
             transparent 100%);
 
-    box-shadow: 0 0 0.9rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
+    box-shadow:
+        0 0 1.1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.32);
 
     transition:
         opacity var(--hotel-transition-fast, 160ms ease),
@@ -384,17 +415,25 @@
     transform: translateY(-1px);
     color: var(--hotel-ivory-050, #fbf7ef);
     opacity: 1;
-    text-shadow: 0 0.75rem 1.8rem rgb(0 0 0 / 0.42);
+    filter: saturate(1.06);
+    text-shadow:
+        0 0.75rem 1.8rem rgb(0 0 0 / 0.54),
+        0 0 1.1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14);
+}
+
+.navButton:focus-visible {
+    outline: 2px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.44);
+    outline-offset: 3px;
 }
 
 .navButtonActive,
 .navButtonActive:hover,
 .navButtonActive:focus-visible {
-    color: var(--hotel-ivory-050, #fbf7ef);
+    color: var(--hotel-champagne-soft, #ead7b0);
     opacity: 1;
     text-shadow:
-        0 0.75rem 1.8rem rgb(0 0 0 / 0.45),
-        0 0 1.15rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.095);
+        0 0.75rem 1.8rem rgb(0 0 0 / 0.6),
+        0 0 1.45rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
 }
 
 .navButtonActive::after {
@@ -431,7 +470,7 @@
     background: transparent;
 
     cursor: pointer;
-    opacity: 0.76;
+    opacity: 0.8;
 
     transition:
         transform var(--hotel-transition-fast, 160ms ease),
@@ -448,11 +487,18 @@
 
     background:
         radial-gradient(circle at 50% 35%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14) 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.065) 58%,
+            rgb(255 236 194 / 0.18) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.092) 58%,
             transparent 100%);
 
-    box-shadow: inset 0 1px 0 rgb(255 244 220 / 0.04);
+    box-shadow:
+        inset 0 1px 0 rgb(255 244 220 / 0.085),
+        0 0 1.12rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11);
+}
+
+.navToggle:focus-visible {
+    outline: 2px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
+    outline-offset: 2px;
 }
 
 .chevron {
@@ -464,7 +510,8 @@
 
     transform: translateY(-1px) rotate(45deg);
 
-    filter: drop-shadow(0 0 0.45rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
+    filter:
+        drop-shadow(0 0 0.58rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34));
 
     transition: transform var(--hotel-transition-fast, 160ms ease);
 }
@@ -529,27 +576,37 @@
     padding-block: 0.56rem;
     padding-inline: 1rem 0.86rem;
 
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
     border-radius: var(--hotel-radius-sm, 0.85rem);
 
     background:
-        radial-gradient(85% 140% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.065) 0%,
-            transparent 52%),
-        linear-gradient(145deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052),
-            rgb(var(--hotel-black-rgb, 8 6 4) / 0.18));
+        radial-gradient(118% 142% at 12% 0%,
+            rgb(255 236 196 / 0.086) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.052) 34%,
+            transparent 58%),
+        radial-gradient(96% 128% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.075) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgb(64 43 27 / 0.48) 0%,
+            rgb(41 26 17 / 0.54) 48%,
+            rgb(19 11 8 / 0.6) 100%);
 
-    color: var(--hotel-text-soft, rgba(244, 234, 216, 0.82));
+    color: var(--hotel-text-soft, rgba(244, 234, 216, 0.84));
 
     font-size: 0.86rem;
-    font-weight: 520;
+    font-weight: 560;
     line-height: 1.24;
     text-decoration: none;
 
-    opacity: 0.88;
+    opacity: 0.94;
 
-    box-shadow: inset 0 1px 0 rgb(255 244 220 / 0.032);
+    box-shadow:
+        inset 0 1px 0 rgb(255 244 220 / 0.055),
+        0 0.45rem 1rem rgb(0 0 0 / 0.12);
+
+    backdrop-filter: blur(8px) saturate(1.08);
+    -webkit-backdrop-filter: blur(8px) saturate(1.08);
 
     transition:
         transform var(--hotel-transition-fast, 160ms ease),
@@ -557,7 +614,8 @@
         color var(--hotel-transition-fast, 160ms ease),
         border-color var(--hotel-transition-fast, 160ms ease),
         background var(--hotel-transition-fast, 160ms ease),
-        box-shadow var(--hotel-transition-fast, 160ms ease);
+        box-shadow var(--hotel-transition-fast, 160ms ease),
+        text-shadow var(--hotel-transition-fast, 160ms ease);
 }
 
 .drawerSubmenuItem a::before {
@@ -570,9 +628,11 @@
     block-size: 0.28rem;
 
     border-radius: 999px;
-    background: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.78);
+    background: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86);
 
-    box-shadow: 0 0 0.65rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26);
+    box-shadow:
+        0 0 0.8rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34),
+        0 0 0.2rem rgb(255 244 220 / 0.18);
 
     transform: translateY(-50%);
 }
@@ -582,19 +642,34 @@
     transform: translateX(3px);
     opacity: 1;
     color: var(--hotel-ivory-050, #fbf7ef);
-    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
 
     background:
-        radial-gradient(85% 140% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11) 0%,
-            transparent 52%),
-        linear-gradient(145deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.125),
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.045));
+        radial-gradient(118% 142% at 12% 0%,
+            rgb(255 236 196 / 0.125) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.078) 34%,
+            transparent 58%),
+        radial-gradient(96% 128% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgb(70 47 30 / 0.6) 0%,
+            rgb(45 29 19 / 0.66) 48%,
+            rgb(20 12 8 / 0.72) 100%);
+
+    text-shadow:
+        0 0.72rem 1.45rem rgb(0 0 0 / 0.42),
+        0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12);
 
     box-shadow:
-        inset 0 1px 0 rgb(255 244 220 / 0.048),
-        0 0.7rem 1.4rem rgb(0 0 0 / 0.14);
+        inset 0 1px 0 rgb(255 244 220 / 0.085),
+        0 0.85rem 1.65rem rgb(0 0 0 / 0.26),
+        0 0 1.45rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.105);
+}
+
+.drawerSubmenuItem a:focus-visible {
+    outline: 2px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
+    outline-offset: 2px;
 }
 
 /* ===== Drawer ===== */
@@ -609,7 +684,7 @@
 
         background:
             linear-gradient(180deg,
-                rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.024) 0%,
+                rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.03) 0%,
                 transparent 100%);
     }
 
@@ -663,12 +738,14 @@
 
     .navItemRow:hover {
         background:
-            radial-gradient(80% 140% at 0% 0%,
-                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.085) 0%,
-                transparent 55%),
-            linear-gradient(145deg,
-                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075),
-                rgb(var(--hotel-black-rgb, 8 6 4) / 0.14));
+            radial-gradient(118% 142% at 12% 0%,
+                rgb(255 236 196 / 0.095) 0%,
+                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06) 34%,
+                transparent 58%),
+            linear-gradient(180deg,
+                rgb(64 43 27 / 0.44) 0%,
+                rgb(41 26 17 / 0.5) 48%,
+                rgb(19 11 8 / 0.56) 100%);
     }
 
     .navButton {

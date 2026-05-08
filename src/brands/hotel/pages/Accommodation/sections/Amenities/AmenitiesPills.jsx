@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./AmenitiesPills.module.css";
 
 import HotelIconPill from "../../../../shared/ui/HotelIconPill/HotelIconPill.jsx";
@@ -20,9 +20,27 @@ function getInitialActiveId(items, preferredId) {
   return hasPreferredItem ? preferredId : items[0].id;
 }
 
+function shouldScrollToSpotlight() {
+  if (typeof window === "undefined") return false;
+
+  return window.matchMedia("(max-width: 900px)").matches;
+}
+
+function getPreferredScrollBehavior() {
+  if (typeof window === "undefined") return "smooth";
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  return prefersReducedMotion ? "auto" : "smooth";
+}
+
 export default function AmenitiesPills() {
   const content = hotelBrand?.pages?.accommodation?.sections?.amenities ?? null;
   const ui = content?.ui ?? {};
+
+  const spotlightRef = useRef(null);
 
   const items = useMemo(() => getValidItems(content?.items), [content?.items]);
 
@@ -40,6 +58,23 @@ export default function AmenitiesPills() {
   const activeItem = useMemo(() => {
     return items.find((item) => item.id === activeId) ?? items[0] ?? null;
   }, [activeId, items]);
+
+  function scrollToSpotlight() {
+    if (!shouldScrollToSpotlight()) return;
+
+    window.requestAnimationFrame(() => {
+      spotlightRef.current?.scrollIntoView({
+        behavior: getPreferredScrollBehavior(),
+        block: "start",
+        inline: "nearest",
+      });
+    });
+  }
+
+  function handlePillClick(itemId) {
+    setActiveId(itemId);
+    scrollToSpotlight();
+  }
 
   if (!items.length || !activeItem) return null;
 
@@ -74,9 +109,7 @@ export default function AmenitiesPills() {
                 iconClassName={styles.icon}
                 ariaLabel={item.label}
                 aria-pressed={isActive}
-                onClick={() => {
-                  if (!isActive) setActiveId(item.id);
-                }}
+                onClick={() => handlePillClick(item.id)}
               />
             </div>
           );
@@ -84,6 +117,7 @@ export default function AmenitiesPills() {
       </div>
 
       <article
+        ref={spotlightRef}
         className={styles.spotlight}
         aria-label={
           ui.spotlightAriaLabel ?? "Detalhe da comodidade selecionada"

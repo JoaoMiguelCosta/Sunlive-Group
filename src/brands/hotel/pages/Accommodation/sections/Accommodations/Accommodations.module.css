@@ -3,48 +3,75 @@
 
     position: relative;
     isolation: isolate;
+
     inline-size: 100%;
-padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
+    padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
+
     overflow: clip;
 }
 
 .section::before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset-inline: 50% auto;
+    inset-block-start: clamp(-7.5rem, -8vw, -4rem);
+    z-index: 0;
+
+    translate: -50% 0;
+
+    inline-size: min(118vw, 1680px);
+    block-size: clamp(32rem, 52vw, 54rem);
+
     pointer-events: none;
+
     background:
-        radial-gradient(960px 340px at 50% 0%,
-            rgba(230, 200, 147, 0.105),
-            transparent 66%),
-        radial-gradient(620px 260px at 10% 28%,
-            rgba(199, 134, 21, 0.055),
-            transparent 70%),
-        radial-gradient(620px 260px at 90% 32%,
-            rgba(230, 200, 147, 0.05),
-            transparent 70%);
-    opacity: 0.95;
+        radial-gradient(44% 28% at 50% 7%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.13) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 24%,
+            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.07) 48%,
+            transparent 76%),
+        radial-gradient(32% 24% at 16% 34%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.055) 0%,
+            transparent 72%),
+        radial-gradient(34% 26% at 86% 28%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.07) 0%,
+            transparent 74%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.08) 0%,
+            transparent 58%);
+
+    opacity: 0.98;
+    filter: blur(10px) saturate(1.08);
 }
 
 .section::after {
     content: "";
     position: absolute;
-    inset: auto 50% 10% auto;
-    translate: 50% 0;
-    inline-size: min(92vw, 1160px);
-    block-size: clamp(220px, 28vw, 360px);
+    inset-inline: 50% auto;
+    inset-block-end: clamp(3rem, 8vw, 8rem);
+    z-index: 0;
+
+    translate: -50% 0;
+
+    inline-size: min(92vw, 1180px);
+    block-size: clamp(14rem, 28vw, 24rem);
+
     pointer-events: none;
+
     background:
-        radial-gradient(60% 100% at 50% 50%,
-            rgba(199, 134, 21, 0.1),
-            transparent 72%);
-    filter: blur(46px);
-    opacity: 0.72;
+        radial-gradient(54% 76% at 50% 50%,
+            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.09) 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.055) 42%,
+            transparent 78%);
+
+    opacity: 0.7;
+    filter: blur(52px) saturate(1.08);
 }
 
 .inner {
     position: relative;
     z-index: 1;
+    isolation: isolate;
 
     inline-size: 100%;
     max-inline-size: var(--accommodation-max-width);
@@ -54,6 +81,29 @@ padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
     gap: clamp(1.2rem, 2vw, 1.6rem);
 }
 
+.inner::before {
+    content: "";
+    position: absolute;
+    inset-inline: 8%;
+    inset-block-start: clamp(4rem, 9vw, 8rem);
+    z-index: -1;
+
+    block-size: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 24%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.12) 50%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.08) 76%,
+            transparent 100%);
+
+    opacity: 0.9;
+    filter: blur(0.2px);
+}
+
 .headerBlock,
 .roomsSection {
     display: grid;
@@ -61,9 +111,45 @@ padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
 }
 
 .titleWrap {
+    position: relative;
+    isolation: isolate;
+
     inline-size: 100%;
 }
 
+.titleWrap::before {
+    content: "";
+    position: absolute;
+    inset-inline: 50% auto;
+    inset-block-start: 50%;
+    z-index: -1;
+
+    translate: -50% -50%;
+
+    inline-size: min(68vw, 680px);
+    block-size: clamp(4.8rem, 8vw, 7.8rem);
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(52% 70% at 50% 48%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.115) 0%,
+            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.06) 44%,
+            transparent 76%);
+
+    opacity: 0.86;
+    filter: blur(26px);
+}
+
+.titleWrap :where(h1, h2, h3) {
+    text-shadow:
+        0 0.9rem 2.4rem rgb(0 0 0 / 0.52),
+        0 0 2.1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18),
+        0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08);
+}
+
+.headerBlock> :where(:not(.titleWrap)),
+.roomsSection> :where(:not(.titleWrap)),
 .introPanel,
 .roomsIntroPanel {
     position: relative;
@@ -73,47 +159,98 @@ padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
     margin-inline: auto;
     padding: clamp(1.45rem, 2.3vw, 2rem) clamp(1.2rem, 3vw, 2.4rem);
 
+    overflow: hidden;
+
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
     border-radius: clamp(1.45rem, 2vw, 2.1rem);
-    border: 1px solid rgba(230, 200, 147, 0.22);
 
     background:
-        radial-gradient(120% 120% at 0% 0%,
-            rgba(241, 205, 132, 0.11),
-            transparent 42%),
-        radial-gradient(130% 140% at 100% 100%,
-            rgba(199, 134, 21, 0.11),
-            transparent 46%),
+        radial-gradient(120% 150% at 0% 0%,
+            rgb(255 238 205 / 0.18) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 30%,
+            transparent 58%),
+        radial-gradient(116% 138% at 100% 100%,
+            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.14) 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.105) 42%,
+            transparent 66%),
+        radial-gradient(92% 120% at 50% 100%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.05) 0%,
+            transparent 70%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.038) 0%,
-            rgba(255, 248, 235, 0.012) 18%,
-            rgba(0, 0, 0, 0.1) 100%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.072) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.025) 20%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.2) 100%),
         linear-gradient(135deg,
-            rgba(48, 25, 12, 0.97) 0%,
-            rgba(27, 14, 8, 0.99) 100%);
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.92) 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.24) 44%,
+            rgb(var(--hotel-noir-rgb, 13 9 6) / 0.985) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.16),
-        0 18px 42px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.13),
+        inset 0 -1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12),
+        0 1.75rem 4.5rem rgb(0 0 0 / 0.42),
+        0 0 3rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09),
+        0 0 0 1px rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.026);
 
-    overflow: hidden;
+    backdrop-filter: blur(14px) saturate(1.12);
+    -webkit-backdrop-filter: blur(14px) saturate(1.12);
 }
 
+.headerBlock> :where(:not(.titleWrap))::before,
+.roomsSection> :where(:not(.titleWrap))::before,
 .introPanel::before,
 .roomsIntroPanel::before {
     content: "";
     position: absolute;
     inset: 0;
-    pointer-events: none;
+    z-index: 0;
+
     border-radius: inherit;
+    pointer-events: none;
+
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.08) 0%,
-            rgba(255, 248, 235, 0.02) 14%,
-            rgba(255, 255, 255, 0) 38%);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.12) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.036) 15%,
+            transparent 44%),
+        linear-gradient(90deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
+            transparent 24%,
+            transparent 74%,
+            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.06) 100%);
+
     opacity: 0.94;
 }
 
+.headerBlock> :where(:not(.titleWrap))::after,
+.roomsSection> :where(:not(.titleWrap))::after,
+.introPanel::after,
+.roomsIntroPanel::after {
+    content: "";
+    position: absolute;
+    inset-inline: 12%;
+    inset-block-end: 0;
+    z-index: 0;
+
+    block-size: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.22) 18%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.74) 50%,
+            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.24) 82%,
+            transparent 100%);
+
+    box-shadow:
+        0 0 1.15rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2),
+        0 0 2.2rem rgb(var(--hotel-amber-rgb, 200 137 63) / 0.09);
+}
+
+.headerBlock> :where(:not(.titleWrap)) :where(p),
+.roomsSection> :where(:not(.titleWrap)) :where(p),
 .introPanel p,
 .roomsIntroPanel p {
     position: relative;
@@ -122,45 +259,124 @@ padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
     margin: 0 auto;
     max-inline-size: 60ch;
 
-    text-align: center;
-    color: rgba(255, 247, 236, 0.94);
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.94);
     font-size: clamp(1.08rem, 0.6vw + 0.98rem, 1.34rem);
+    font-weight: 500;
     line-height: 1.7;
+    text-align: center;
     text-wrap: balance;
+
+    text-shadow:
+        0 1px 1px rgb(0 0 0 / 0.56),
+        0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08),
+        0 1rem 2rem rgb(0 0 0 / 0.3);
 }
 
 .galleryWrap {
+    position: relative;
+    isolation: isolate;
+
     inline-size: min(100%, 1220px);
     margin-inline: auto;
     margin-block-start: clamp(0.2rem, 0.5vw, 0.4rem);
 }
 
+.galleryWrap::before {
+    content: "";
+    position: absolute;
+    inset-inline: 5%;
+    inset-block: auto -1.6rem;
+    z-index: -1;
+
+    block-size: clamp(6rem, 10vw, 9rem);
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(58% 78% at 50% 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11) 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.08) 44%,
+            transparent 76%);
+
+    opacity: 0.75;
+    filter: blur(34px);
+}
+
 .carouselStage {
+    --carousel-image-brightness: 0.96;
+    --carousel-image-saturation: 1.08;
+    --carousel-image-contrast: 1.055;
+
     position: relative;
     inline-size: 100%;
     aspect-ratio: 16 / 8.3;
 
     overflow: hidden;
+
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
     border-radius: clamp(1.5rem, 2vw, 2.35rem);
-    border: 1px solid rgba(199, 134, 21, 0.48);
+
+    background:
+        radial-gradient(120% 90% at 50% -10%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 0%,
+            transparent 58%),
+        radial-gradient(90% 80% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.115) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012)),
+        linear-gradient(135deg,
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.98) 0%,
+            rgb(var(--hotel-noir-rgb, 13 9 6) / 0.99) 100%);
+
+    box-shadow:
+        0 2rem 5rem rgb(0 0 0 / 0.42),
+        0 0 2.2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075),
+        0 0 0 1px rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.025),
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07),
+        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.12);
+}
+
+.carouselStage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+
+    pointer-events: none;
 
     background:
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.035),
-            rgba(255, 248, 235, 0.012)),
-        radial-gradient(120% 90% at 50% -10%,
-            rgba(230, 200, 147, 0.16),
-            transparent 58%),
-        radial-gradient(90% 80% at 100% 100%,
-            rgba(199, 134, 21, 0.09),
-            transparent 62%),
-        linear-gradient(135deg,
-            rgba(58, 30, 10, 0.98) 0%,
-            rgba(36, 18, 8, 0.985) 100%);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.045) 0%,
+            transparent 18%,
+            transparent 64%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.18) 100%),
+        radial-gradient(84% 78% at 50% 50%,
+            transparent 48%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.18) 100%);
 
-    box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.05),
-        0 22px 52px rgba(0, 0, 0, 0.25);
+    opacity: 0.82;
+}
+
+.carouselStage::after {
+    content: "";
+    position: absolute;
+    inset-inline: 8%;
+    inset-block-start: 0;
+    z-index: 4;
+
+    block-size: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28) 22%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.34) 50%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.18) 78%,
+            transparent 100%);
 }
 
 .roomsSection {
@@ -169,6 +385,8 @@ padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
 
 @media (max-width: 1180px) {
 
+    .headerBlock> :where(:not(.titleWrap)),
+    .roomsSection> :where(:not(.titleWrap)),
     .introPanel,
     .roomsIntroPanel,
     .galleryWrap {
@@ -189,12 +407,16 @@ padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
         gap: 1.15rem;
     }
 
+    .headerBlock> :where(:not(.titleWrap)),
+    .roomsSection> :where(:not(.titleWrap)),
     .introPanel,
     .roomsIntroPanel {
         padding: 1.25rem 1.1rem 1.35rem;
         border-radius: 1.4rem;
     }
 
+    .headerBlock> :where(:not(.titleWrap)) :where(p),
+    .roomsSection> :where(:not(.titleWrap)) :where(p),
     .introPanel p,
     .roomsIntroPanel p {
         max-inline-size: 46ch;
@@ -217,12 +439,16 @@ padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
         gap: 1rem;
     }
 
+    .headerBlock> :where(:not(.titleWrap)),
+    .roomsSection> :where(:not(.titleWrap)),
     .introPanel,
     .roomsIntroPanel {
         padding: 1rem 0.95rem 1.08rem;
         border-radius: 1.12rem;
     }
 
+    .headerBlock> :where(:not(.titleWrap)) :where(p),
+    .roomsSection> :where(:not(.titleWrap)) :where(p),
     .introPanel p,
     .roomsIntroPanel p {
         font-size: 0.96rem;
@@ -245,6 +471,8 @@ padding-block-start: clamp(3.4rem, 6vw, 5.8rem);
 
 @media (max-width: 420px) {
 
+    .headerBlock> :where(:not(.titleWrap)) :where(p),
+    .roomsSection> :where(:not(.titleWrap)) :where(p),
     .introPanel p,
     .roomsIntroPanel p {
         font-size: 0.93rem;

@@ -10,6 +10,7 @@ import HotelPrimaryNavSubmenu from "./HotelPrimaryNavSubmenu.jsx";
 import navStyles from "./HotelPrimaryNav.module.css";
 
 const NAV_ITEMS = HOTEL_PRIMARY_NAV_ITEMS;
+const SUBMENU_CLOSE_DELAY = 180;
 
 function getValidLinks(item) {
   return Array.isArray(item?.links) ? item.links : [];
@@ -24,10 +25,30 @@ export default function HotelPrimaryNav() {
   const navRootRef = useRef(null);
   const navInnerRef = useRef(null);
   const buttonRefs = useRef({});
+  const closeTimerRef = useRef(null);
+
+  const clearCloseTimer = () => {
+    if (closeTimerRef.current) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
 
   const closeAll = () => {
+    clearCloseTimer();
     setIsNavOpen(false);
     setOpenId(null);
+  };
+
+  const scheduleCloseAll = () => {
+    if (isDrawer) return;
+
+    clearCloseTimer();
+
+    closeTimerRef.current = window.setTimeout(() => {
+      closeTimerRef.current = null;
+      setOpenId(null);
+    }, SUBMENU_CLOSE_DELAY);
   };
 
   useOutsideClick(navRootRef, closeAll, isNavOpen || Boolean(openId));
@@ -36,6 +57,12 @@ export default function HotelPrimaryNav() {
     offset: 88,
     closeOverlays: closeAll,
   });
+
+  useEffect(() => {
+    return () => {
+      clearCloseTimer();
+    };
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -81,17 +108,28 @@ export default function HotelPrimaryNav() {
   }, [openId, isDrawer]);
 
   const handleEnterItem = (id, hasLinks) => {
+    clearCloseTimer();
+
     if (!hasLinks) return;
+
     setOpenId(id);
   };
 
   const handleToggleClick = (id) => {
+    clearCloseTimer();
     setOpenId((currentId) => (currentId === id ? null : id));
+  };
+
+  const handleMouseEnter = () => {
+    if (isDrawer) return;
+
+    clearCloseTimer();
   };
 
   const handleMouseLeave = () => {
     if (isDrawer) return;
-    setOpenId(null);
+
+    scheduleCloseAll();
   };
 
   const handlePrimaryNavClick = (event, to) => {
@@ -114,6 +152,7 @@ export default function HotelPrimaryNav() {
       ref={navRootRef}
       className={navStyles.nav}
       aria-label="Navegação principal da Estalagem"
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className={navStyles.navInner} ref={navInnerRef}>
@@ -255,6 +294,8 @@ export default function HotelPrimaryNav() {
           hasOpen={hasOpen}
           submenuAnchorX={submenuAnchorX}
           onAnchorClick={handleSmartAnchorClick}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         />
       ) : null}
     </nav>

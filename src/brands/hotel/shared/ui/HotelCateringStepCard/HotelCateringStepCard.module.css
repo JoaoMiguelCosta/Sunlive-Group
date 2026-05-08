@@ -1,4 +1,12 @@
 .card {
+    --hotel-step-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+    --hotel-step-border-hover: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.36);
+    --hotel-step-border-active: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.46);
+
+    --hotel-step-title: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.99);
+    --hotel-step-text: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.87);
+    --hotel-step-accent: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.99);
+
     appearance: none;
     position: relative;
     isolation: isolate;
@@ -13,37 +21,42 @@
     padding: 0;
 
     border-radius: clamp(1.16rem, 1.65vw, 1.6rem);
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+    border: 1px solid var(--hotel-step-border);
 
     background:
         radial-gradient(120% 145% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.072) 0%,
-            transparent 44%),
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.082) 0%,
+            transparent 42%),
         radial-gradient(130% 150% at 100% 100%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.052) 0%,
-            transparent 50%),
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.062) 0%,
+            transparent 48%),
+        radial-gradient(90% 80% at 50% -8%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052) 0%,
+            transparent 54%),
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.032) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.01) 20%,
-            rgb(0 0 0 / 0.09) 100%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.038) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 18%,
+            rgb(0 0 0 / 0.1) 100%),
         linear-gradient(135deg,
-            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.76) 0%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.96) 100%);
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.8) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.98) 100%);
 
     color: inherit;
     font: inherit;
     text-align: left;
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.046),
-        inset 0 -1px 0 rgb(0 0 0 / 0.14),
-        0 16px 36px rgb(0 0 0 / 0.17);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05),
+        inset 0 -1px 0 rgb(0 0 0 / 0.16),
+        0 18px 40px rgb(0 0 0 / 0.2),
+        0 0 0 1px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.026);
 
     transition:
         transform 180ms ease,
         border-color 180ms ease,
         box-shadow 180ms ease,
-        background 180ms ease;
+        background 180ms ease,
+        filter 180ms ease;
 }
 
 .card::before {
@@ -51,14 +64,29 @@
     position: absolute;
     inset: 0;
     z-index: 0;
-
     pointer-events: none;
 
     background:
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 18%,
-            transparent 42%);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.016) 18%,
+            transparent 40%);
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+
+    background:
+        linear-gradient(135deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.03),
+            transparent 24%,
+            transparent 70%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.03));
 }
 
 button.card {
@@ -67,12 +95,14 @@ button.card {
 
 button.card:hover {
     transform: translateY(-2px);
-    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
+    border-color: var(--hotel-step-border-hover);
+    filter: saturate(1.04);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052),
-        inset 0 -1px 0 rgb(0 0 0 / 0.14),
-        0 22px 46px rgb(0 0 0 / 0.22);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.056),
+        inset 0 -1px 0 rgb(0 0 0 / 0.16),
+        0 24px 48px rgb(0 0 0 / 0.24),
+        0 0 18px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04);
 }
 
 button.card:focus-visible {
@@ -81,28 +111,31 @@ button.card:focus-visible {
 }
 
 .active {
-    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
+    border-color: var(--hotel-step-border-active);
 
     background:
         radial-gradient(120% 145% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.095) 0%,
-            transparent 44%),
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11) 0%,
+            transparent 42%),
         radial-gradient(130% 150% at 100% 100%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.062) 0%,
-            transparent 50%),
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.075) 0%,
+            transparent 48%),
+        radial-gradient(90% 80% at 50% -8%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.058) 0%,
+            transparent 54%),
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 20%,
-            rgb(0 0 0 / 0.09) 100%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.044) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 18%,
+            rgb(0 0 0 / 0.1) 100%),
         linear-gradient(135deg,
-            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.8) 0%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.97) 100%);
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.82) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.99) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.058),
-        inset 0 -1px 0 rgb(0 0 0 / 0.14),
-        0 22px 48px rgb(0 0 0 / 0.24),
-        0 0 20px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
+        inset 0 -1px 0 rgb(0 0 0 / 0.16),
+        0 24px 50px rgb(0 0 0 / 0.26),
+        0 0 22px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.085);
 }
 
 .topBar,
@@ -116,16 +149,16 @@ button.card:focus-visible {
     min-block-size: 3rem;
     padding: 0.58rem 0.68rem;
 
-    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13);
+    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14);
 
     background:
         radial-gradient(100% 130% at 50% -18%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.095) 0%,
             transparent 58%),
         linear-gradient(180deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.15) 0%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.09) 58%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.12) 100%);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.17) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.1) 58%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.14) 100%);
 }
 
 .stepBadge {
@@ -142,26 +175,29 @@ button.card:focus-visible {
     padding-inline: 0.68rem;
 
     border-radius: 999px;
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26);
 
     background:
         radial-gradient(circle at 35% 24%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.18) 0%,
             transparent 56%),
+        radial-gradient(circle at 50% 100%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
+            transparent 70%),
         linear-gradient(180deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24) 0%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.2) 100%),
-        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.64);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.25) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.22) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.66);
 
-    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.98);
+    color: var(--hotel-step-title);
     font-size: clamp(1.12rem, 0.92vw, 1.32rem);
     font-weight: 900;
     line-height: 1;
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.09),
         0 8px 18px rgb(0 0 0 / 0.18),
-        0 0 14px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
+        0 0 16px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09);
 }
 
 .main {
@@ -174,18 +210,18 @@ button.card:focus-visible {
     min-height: 11.4rem;
     padding: 1.35rem 1rem 1rem;
 
-    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12);
+    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13);
 
     background:
         radial-gradient(90% 130% at 50% -10%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.09) 0%,
             transparent 56%),
         radial-gradient(90% 120% at 50% 100%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07) 0%,
             transparent 70%),
         linear-gradient(180deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 0%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.1) 52%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.17) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.11) 52%,
             rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.18) 100%);
 }
 
@@ -199,25 +235,25 @@ button.card:focus-visible {
     block-size: clamp(3rem, 3.6vw, 3.45rem);
 
     border-radius: 999px;
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26);
 
     background:
         radial-gradient(circle at 30% 22%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.18) 0%,
             transparent 55%),
         radial-gradient(circle at 50% 58%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 0%,
             transparent 72%),
         linear-gradient(180deg,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.28) 0%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.82) 100%);
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.3) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.84) 100%);
 
-    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.98);
+    color: var(--hotel-step-accent);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.09),
         0 10px 24px rgb(0 0 0 / 0.18),
-        0 0 18px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
+        0 0 18px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.085);
 }
 
 .iconInner {
@@ -231,19 +267,21 @@ button.card:focus-visible {
     inline-size: clamp(1.1rem, 1.35vw, 1.3rem);
     block-size: clamp(1.1rem, 1.35vw, 1.3rem);
     stroke: currentColor;
-    filter: drop-shadow(0 0 8px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12));
+    filter: drop-shadow(0 0 8px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14));
 }
 
 .title {
     margin: 0;
 
-    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.985);
+    color: var(--hotel-step-title);
     font-size: clamp(1.1rem, 0.88vw + 0.98rem, 1.28rem);
     font-weight: 880;
     line-height: 1.1;
     text-align: center;
     text-wrap: balance;
     letter-spacing: -0.028em;
+
+    text-shadow: 0 1px 0 rgb(0 0 0 / 0.16);
 }
 
 .footer {
@@ -256,17 +294,17 @@ button.card:focus-visible {
 
     background:
         radial-gradient(680px 180px at 50% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.048),
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.052),
             transparent 58%),
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.022),
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.006));
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.024),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.008));
 }
 
 .description {
     margin: 0;
 
-    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.86);
+    color: var(--hotel-step-text);
     font-size: clamp(0.9rem, 0.12vw + 0.88rem, 0.96rem);
     font-weight: 600;
     line-height: 1.42;

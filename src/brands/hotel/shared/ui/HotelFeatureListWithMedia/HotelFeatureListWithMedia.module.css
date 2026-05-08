@@ -1,7 +1,29 @@
 .wrapper {
+    position: relative;
+    isolation: isolate;
+
     display: grid;
     grid-template-columns: minmax(340px, 0.98fr) minmax(380px, 1.02fr);
     gap: clamp(1rem, 1.8vw, 1.5rem);
+}
+
+.wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -1rem 7% auto;
+    z-index: -1;
+
+    block-size: clamp(8rem, 14vw, 12rem);
+    pointer-events: none;
+
+    background:
+        radial-gradient(closest-side at 50% 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.056) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.026) 46%,
+            transparent 78%);
+
+    filter: blur(28px);
+    opacity: 0.72;
 }
 
 .wrapperStretch {
@@ -27,27 +49,33 @@
     overflow: hidden;
 
     border-radius: clamp(1.3rem, 2.1vw, 1.85rem);
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
 
     background:
-        radial-gradient(120% 160% at 18% 8%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.085) 0%,
-            transparent 44%),
+        radial-gradient(122% 164% at 18% 4%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.098) 28%,
+            transparent 46%),
         radial-gradient(120% 130% at 100% 100%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.05) 0%,
-            transparent 52%),
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.062) 0%,
+            transparent 54%),
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.032) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.01) 22%,
-            rgb(0 0 0 / 0.09) 100%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.036) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 24%,
+            rgb(0 0 0 / 0.12) 100%),
         linear-gradient(135deg,
-            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.84) 0%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.97) 100%);
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.86) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.98) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.046),
-        inset 0 -1px 0 rgb(0 0 0 / 0.14),
-        0 17px 38px rgb(0 0 0 / 0.18);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.056),
+        inset 0 -1px 0 rgb(0 0 0 / 0.18),
+        0 1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07),
+        0 18px 42px rgb(0 0 0 / 0.22),
+        0 38px 86px rgb(0 0 0 / 0.1);
+
+    backdrop-filter: blur(10px) saturate(1.04);
+    -webkit-backdrop-filter: blur(10px) saturate(1.04);
 }
 
 .listCard::before {
@@ -59,9 +87,14 @@
 
     background:
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.068) 0%,
             rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.016) 20%,
-            transparent 44%);
+            transparent 44%),
+        linear-gradient(120deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.034) 22%,
+            transparent 44%,
+            transparent 100%);
 }
 
 .listCard::after {
@@ -71,7 +104,19 @@
     z-index: 0;
     pointer-events: none;
     border-radius: inherit;
-    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.024);
+
+    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.028);
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04) 50%,
+            transparent 100%);
+
+    mask-image:
+        linear-gradient(180deg,
+            black 0%,
+            transparent 46%);
 }
 
 .listCardStretch {
@@ -91,7 +136,31 @@
     list-style: none;
 }
 
+.list::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: clamp(2.24rem, 2.5vw, 2.68rem);
+    inset-block: clamp(1rem, 1.25vw, 1.12rem);
+    z-index: -1;
+
+    inline-size: 1px;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 16%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 50%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16) 84%,
+            transparent 100%);
+
+    opacity: 0.52;
+}
+
 .item {
+    position: relative;
+    isolation: isolate;
+
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
@@ -104,7 +173,24 @@
 
     transition:
         background-color 180ms ease,
-        transform 180ms ease;
+        transform 180ms ease,
+        border-color 180ms ease;
+}
+
+.item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        linear-gradient(90deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.052) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.022) 36%,
+            transparent 100%);
+
+    opacity: 0;
+    transition: opacity 180ms ease;
 }
 
 .item:last-child {
@@ -117,6 +203,9 @@
 }
 
 .iconCircle {
+    position: relative;
+    isolation: isolate;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -125,25 +214,43 @@
     inline-size: clamp(2.72rem, 2.9vw, 3.14rem);
     block-size: clamp(2.72rem, 2.9vw, 3.14rem);
     border-radius: 999px;
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26);
 
     background:
         radial-gradient(circle at 30% 22%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
-            transparent 55%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.2) 0%,
+            transparent 56%),
         radial-gradient(circle at 50% 58%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.095) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 0%,
             transparent 72%),
         linear-gradient(180deg,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.25) 0%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.82) 100%);
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.3) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.86) 100%);
 
     color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.98);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
-        0 10px 22px rgb(0 0 0 / 0.18),
-        0 0 16px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.065);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.11),
+        inset 0 -1px 0 rgb(0 0 0 / 0.16),
+        0 10px 22px rgb(0 0 0 / 0.2),
+        0 0 18px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
+}
+
+.iconCircle::before {
+    content: "";
+    position: absolute;
+    inset: -0.28rem;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 0%,
+            transparent 68%);
+
+    opacity: 0.38;
+    filter: blur(8px);
 }
 
 .iconCircle :global(svg) {
@@ -152,15 +259,17 @@
     block-size: clamp(1rem, 1.04vw, 1.16rem);
     color: currentColor;
     stroke: currentColor;
-    filter: drop-shadow(0 0 7px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12));
+    filter: drop-shadow(0 0 8px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16));
 }
 
 .iconPlaceholder {
     inline-size: 0.84rem;
     block-size: 0.84rem;
     border-radius: 999px;
-    background: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.76);
-    box-shadow: 0 0 10px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1);
+    background: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.8);
+    box-shadow:
+        0 0 10px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14),
+        0 0 22px rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.08);
 }
 
 .textContent {
@@ -172,15 +281,16 @@
 }
 
 .label {
-    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.94);
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.96);
     font-size: clamp(0.98rem, 0.12vw + 0.95rem, 1.08rem);
     font-weight: 750;
     line-height: 1.24;
     text-wrap: balance;
+    text-shadow: 0 0 16px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
 }
 
 .description {
-    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.78);
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.8);
     font-size: clamp(0.88rem, 0.08vw + 0.86rem, 0.94rem);
     font-weight: 500;
     line-height: 1.4;
@@ -198,19 +308,21 @@
     overflow: hidden;
 
     border-radius: clamp(1.3rem, 2.1vw, 1.85rem);
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
 
     background:
         radial-gradient(120% 135% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
-            transparent 42%),
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
+            transparent 44%),
         linear-gradient(180deg,
-            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.8) 0%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.96) 100%);
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.84) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.98) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.046),
-        0 17px 38px rgb(0 0 0 / 0.17);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052),
+        0 1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07),
+        0 18px 42px rgb(0 0 0 / 0.22),
+        0 38px 86px rgb(0 0 0 / 0.1);
 }
 
 .media::before {
@@ -222,11 +334,16 @@
 
     background:
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.032) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04) 0%,
             transparent 24%),
+        linear-gradient(90deg,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.16) 0%,
+            transparent 24%,
+            transparent 76%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.18) 100%),
         radial-gradient(circle at center,
-            transparent 56%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.13) 100%);
+            transparent 54%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.18) 100%);
 }
 
 .media::after {
@@ -236,7 +353,19 @@
     z-index: 3;
     pointer-events: none;
     border-radius: inherit;
-    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.024);
+
+    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.03);
+
+    background:
+        linear-gradient(135deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06) 0%,
+            transparent 28%,
+            transparent 100%);
+
+    mask-image:
+        linear-gradient(180deg,
+            black 0%,
+            transparent 58%);
 }
 
 .mediaStretch {
@@ -270,7 +399,8 @@
     object-fit: cover;
     background: rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 1);
     transform: scale(1.012);
-    filter: saturate(1.02) contrast(1.02) brightness(0.96);
+    filter:
+        saturate(1.04) contrast(1.04) brightness(0.96) sepia(0.04);
 
     transition:
         transform 360ms ease,
@@ -286,30 +416,58 @@
 
     background:
         radial-gradient(circle at 30% 30%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
             transparent 55%),
         linear-gradient(180deg,
-            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.9) 0%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.98) 100%);
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.92) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.99) 100%);
 
     color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.9);
 }
 
 .placeholderLabel {
-    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86);
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.88);
     font-size: clamp(1.5rem, 2.6vw, 2.3rem);
     font-weight: 600;
     letter-spacing: -0.02em;
+    text-shadow: 0 0 20px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12);
 }
 
 @media (hover: hover) {
+
+    .listCard,
+    .media {
+        transition:
+            border-color 220ms ease,
+            box-shadow 220ms ease;
+    }
+
+    .wrapper:hover .listCard,
+    .wrapper:hover .media {
+        border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.32);
+    }
+
     .item:hover {
         background-color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018);
+        border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
+    }
+
+    .item:hover::before {
+        opacity: 1;
+    }
+
+    .item:hover .iconCircle {
+        box-shadow:
+            inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.13),
+            inset 0 -1px 0 rgb(0 0 0 / 0.18),
+            0 12px 24px rgb(0 0 0 / 0.22),
+            0 0 24px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13);
     }
 
     .wrapper:hover .image {
         transform: scale(1.035);
-        filter: saturate(1.04) contrast(1.025) brightness(0.99);
+        filter:
+            saturate(1.07) contrast(1.05) brightness(0.99) sepia(0.035);
     }
 }
 
@@ -323,7 +481,8 @@
 
     .wrapper:hover .image {
         transform: scale(1.01);
-        filter: saturate(1.02) contrast(1.01) brightness(0.96);
+        filter:
+            saturate(1.03) contrast(1.02) brightness(0.96) sepia(0.035);
     }
 }
 
@@ -366,11 +525,21 @@
         gap: 0.95rem;
     }
 
+    .wrapper::before {
+        inset-inline: 0;
+        opacity: 0.54;
+    }
+
     .listCard,
     .media,
     .image,
     .imagePlaceholder {
         border-radius: 1.12rem;
+    }
+
+    .list::before {
+        inset-inline-start: 2.14rem;
+        opacity: 0.4;
     }
 
     .item {
@@ -413,7 +582,9 @@
 @media (prefers-reduced-motion: reduce) {
 
     .item,
-    .image {
+    .image,
+    .listCard,
+    .media {
         transition: none;
     }
 

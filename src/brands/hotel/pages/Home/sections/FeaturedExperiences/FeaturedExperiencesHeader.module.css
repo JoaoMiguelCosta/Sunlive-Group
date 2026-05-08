@@ -12,18 +12,79 @@
     margin-block-end: clamp(0.1rem, 0.5vw, 0.25rem);
 }
 
+.header::before {
+    content: "";
+    position: absolute;
+    inset-inline: 50%;
+    inset-block-start: 50%;
+    z-index: -1;
+
+    inline-size: min(88%, 42rem);
+    block-size: clamp(5.4rem, 10vw, 8.6rem);
+
+    pointer-events: none;
+    border-radius: 999px;
+
+    opacity: 0.5;
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(closest-side,
+            rgb(255 238 205 / 0.14) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.105) 34%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.07) 58%,
+            transparent 82%);
+
+    filter: blur(28px) saturate(1.08);
+}
+
 .kicker {
+    position: relative;
+
     margin: 0;
 
     color: var(--hotel-champagne-soft, #ead7b0);
 
     font-size: var(--hotel-kicker-size, clamp(0.72rem, 0.74vw, 0.82rem));
-    font-weight: 760;
+    font-weight: 780;
     line-height: var(--hotel-kicker-line, 1.2);
     letter-spacing: var(--hotel-kicker-spacing, 0.16em);
     text-transform: uppercase;
 
     text-align: center;
+
+    text-shadow:
+        0 1px 1px rgb(0 0 0 / 0.64),
+        0 0.82rem 1.6rem rgb(0 0 0 / 0.38),
+        0 0 1.25rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16);
+}
+
+.kicker::after {
+    content: "";
+    position: absolute;
+    inset-inline: 50%;
+    inset-block-end: -0.44rem;
+
+    inline-size: min(100%, 5.8rem);
+    block-size: 1px;
+
+    pointer-events: none;
+    border-radius: 999px;
+
+    opacity: 0.58;
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.36) 18%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.58) 50%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.36) 82%,
+            transparent 100%);
+
+    box-shadow:
+        0 0 1.1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18),
+        0 0 1.8rem rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1);
 }
 
 .subtitle {
@@ -33,12 +94,16 @@
     color: var(--hotel-text-soft, rgba(244, 234, 216, 0.82));
 
     font-size: var(--hotel-body-size, clamp(0.96rem, 1vw, 1.08rem));
-    font-weight: 400;
+    font-weight: 410;
     line-height: 1.68;
     letter-spacing: -0.012em;
 
     text-align: center;
     text-wrap: pretty;
+
+    text-shadow:
+        0 1px 1px rgb(0 0 0 / 0.52),
+        0 1rem 2.2rem rgb(0 0 0 / 0.34);
 }
 
 .center {
@@ -51,14 +116,29 @@
     text-align: left;
 }
 
+.left::before {
+    inset-inline: 0 auto;
+    transform: translate(0, -50%);
+}
+
 .left .kicker,
 .left .subtitle {
     text-align: left;
 }
 
+.left .kicker::after {
+    inset-inline: 0 auto;
+    transform: none;
+}
+
 @media (max-width: 640px) {
     .header {
         gap: 0.62rem;
+    }
+
+    .header::before {
+        opacity: 0.42;
+        filter: blur(24px) saturate(1.06);
     }
 
     .subtitle {

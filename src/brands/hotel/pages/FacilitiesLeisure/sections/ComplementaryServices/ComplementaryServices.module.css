@@ -3,7 +3,55 @@
     isolation: isolate;
     inline-size: 100%;
     overflow: clip;
-    
+
+    --section-noir: var(--hotel-graphite-deep-rgb, 13 10 8);
+    --section-graphite: var(--hotel-graphite-rgb, 24 19 16);
+    --section-ivory: var(--hotel-ivory-rgb, 251 247 239);
+    --section-champagne: var(--hotel-champagne-rgb, 217 185 120);
+    --section-bronze: var(--hotel-bronze-rgb, 160 103 46);
+}
+
+.section::before,
+.section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.section::before {
+    background:
+        radial-gradient(70rem 28rem at 50% -8%,
+            rgb(var(--section-champagne) / 0.105) 0%,
+            rgb(var(--section-bronze) / 0.042) 34%,
+            transparent 72%),
+        radial-gradient(42rem 24rem at -4% 58%,
+            rgb(var(--section-bronze) / 0.055) 0%,
+            transparent 70%),
+        radial-gradient(40rem 24rem at 104% 56%,
+            rgb(var(--section-champagne) / 0.048) 0%,
+            transparent 72%);
+    opacity: 0.9;
+    filter: saturate(1.05);
+}
+
+.section::after {
+    background:
+        linear-gradient(180deg,
+            rgb(var(--section-ivory) / 0.018) 0%,
+            transparent 28%,
+            rgb(0 0 0 / 0.12) 100%),
+        linear-gradient(90deg,
+            rgb(var(--section-champagne) / 0.016) 0%,
+            transparent 18%,
+            transparent 82%,
+            rgb(var(--section-bronze) / 0.018) 100%),
+        repeating-linear-gradient(90deg,
+            rgb(var(--section-ivory) / 0.012) 0 1px,
+            transparent 1px 96px);
+    opacity: 0.34;
+    mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 86%, transparent 100%);
 }
 
 .backgroundGlow,
@@ -16,30 +64,39 @@
 
 .backgroundGlow {
     background:
-        radial-gradient(58rem 23rem at 50% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
-            transparent 64%),
-        radial-gradient(30rem 18rem at 14% 72%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.048) 0%,
-            transparent 72%),
-        radial-gradient(30rem 18rem at 86% 72%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04) 0%,
-            transparent 74%);
-    opacity: 0.92;
+        radial-gradient(64rem 25rem at 50% -2%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.038) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.118) 22%,
+            transparent 66%),
+        radial-gradient(34rem 19rem at 13% 72%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.058) 0%,
+            transparent 74%),
+        radial-gradient(34rem 19rem at 87% 72%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.048) 0%,
+            transparent 76%),
+        radial-gradient(48rem 20rem at 50% 100%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.34) 0%,
+            transparent 70%);
+    opacity: 0.96;
+    filter: saturate(1.08) contrast(1.02);
 }
 
 .backgroundGlowSecondary {
     background:
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 0%,
-            transparent 24%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.08) 100%),
-        linear-gradient(90deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.018) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 0%,
             transparent 22%,
-            transparent 78%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.014) 100%);
-    opacity: 0.86;
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.11) 100%),
+        linear-gradient(90deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.022) 0%,
+            transparent 24%,
+            transparent 76%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.02) 100%),
+        radial-gradient(38rem 16rem at 50% 18%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.024) 0%,
+            transparent 72%);
+    opacity: 0.9;
+    mix-blend-mode: screen;
 }
 
 .inner {
@@ -59,9 +116,32 @@
 }
 
 .descriptionWrap {
+    position: relative;
     inline-size: 100%;
     max-inline-size: min(1320px, 100%);
     margin-inline: auto;
+}
+
+.descriptionWrap::before {
+    content: "";
+    position: absolute;
+    inset-inline: 50%;
+    inset-block-start: -0.85rem;
+    translate: -50% 0;
+
+    inline-size: min(28rem, 46vw);
+    block-size: 1px;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.14) 18%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34) 50%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.14) 82%,
+            transparent 100%);
+
+    opacity: 0.72;
+    pointer-events: none;
 }
 
 .descriptionWrap :global(*) {
@@ -69,30 +149,36 @@
 }
 
 @media (max-width: 960px) {
- 
-
     .inner {
         padding-inline: clamp(0.9rem, 4vw, 1.35rem);
     }
 }
 
 @media (max-width: 640px) {
-  
+    .section::after {
+        opacity: 0.25;
+    }
 
     .backgroundGlow {
         background:
-            radial-gradient(34rem 17rem at 50% 0%,
-                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.086) 0%,
-                transparent 66%),
-            radial-gradient(18rem 14rem at 0% 70%,
-                rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.04) 0%,
-                transparent 72%),
-            radial-gradient(18rem 14rem at 100% 70%,
-                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.035) 0%,
-                transparent 72%);
+            radial-gradient(38rem 18rem at 50% -2%,
+                rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.03) 0%,
+                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.098) 28%,
+                transparent 68%),
+            radial-gradient(20rem 14rem at 0% 70%,
+                rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.048) 0%,
+                transparent 74%),
+            radial-gradient(20rem 14rem at 100% 70%,
+                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.042) 0%,
+                transparent 74%);
     }
 
     .introBlock {
         gap: 0.9rem;
+    }
+
+    .descriptionWrap::before {
+        inline-size: min(16rem, 62vw);
+        opacity: 0.58;
     }
 }

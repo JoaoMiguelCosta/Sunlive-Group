@@ -1,6 +1,7 @@
 .section {
     position: relative;
     isolation: isolate;
+    overflow: clip;
 
     inline-size: 100%;
     min-inline-size: 0;
@@ -9,7 +10,63 @@
     background: transparent;
 }
 
+.section::before {
+    content: "";
+    position: absolute;
+    inset-inline: 50% auto;
+    inset-block-start: clamp(-5.4rem, -7vw, -3.4rem);
+    z-index: 0;
+
+    inline-size: min(92vw, 76rem);
+    block-size: clamp(13rem, 24vw, 22rem);
+
+    pointer-events: none;
+
+    opacity: 0.76;
+    transform: translateX(-50%);
+    filter: blur(34px) saturate(1.08);
+
+    background:
+        radial-gradient(circle at 50% 14%,
+            rgb(255 241 211 / 0.22) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 24%,
+            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.075) 44%,
+            transparent 70%),
+        radial-gradient(circle at 18% 54%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.075) 0%,
+            transparent 48%),
+        radial-gradient(circle at 82% 58%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.038) 0%,
+            transparent 52%);
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    inset-inline: 50% auto;
+    inset-block-end: clamp(-8rem, -10vw, -4.8rem);
+    z-index: 0;
+
+    inline-size: min(94vw, 82rem);
+    block-size: clamp(12rem, 22vw, 19rem);
+
+    pointer-events: none;
+
+    opacity: 0.42;
+    transform: translateX(-50%);
+    filter: blur(42px);
+
+    background:
+        radial-gradient(ellipse at 50% 50%,
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.72) 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.12) 42%,
+            transparent 74%);
+}
+
 .inner {
+    position: relative;
+    z-index: 1;
+
     display: grid;
     align-content: start;
     gap: clamp(1rem, 1.8vw, 1.55rem);

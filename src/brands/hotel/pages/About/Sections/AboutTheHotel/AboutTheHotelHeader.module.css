@@ -8,8 +8,77 @@
     margin-block-end: clamp(0.6rem, 1.3vw, 1rem);
 }
 
+.wrap::before {
+    content: "";
+    position: absolute;
+    inset-inline: 50%;
+    inset-block-start: 50%;
+    z-index: -2;
+
+    inline-size: min(100%, 76rem);
+    block-size: 8rem;
+
+    pointer-events: none;
+
+    opacity: 0.7;
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(44% 98% at 50% 50%,
+            rgb(255 244 220 / 0.16) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.095) 34%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.055) 58%,
+            transparent 74%),
+        radial-gradient(36% 86% at 18% 50%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.105) 0%,
+            transparent 74%),
+        radial-gradient(36% 86% at 82% 50%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.052) 0%,
+            transparent 76%);
+
+    filter: blur(31px) saturate(1.16) contrast(1.04);
+}
+
+.wrap::after {
+    content: "";
+    position: absolute;
+    inset-inline: 50%;
+    inset-block-end: 0;
+    z-index: -1;
+
+    inline-size: min(100%, 62rem);
+    block-size: 1px;
+
+    pointer-events: none;
+
+    opacity: 0.76;
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.18) 18%,
+            rgb(255 244 220 / 0.58) 50%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.18) 82%,
+            transparent 100%);
+
+    box-shadow:
+        0 0 1.55rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22),
+        0 0 2.8rem rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.07),
+        0 0 0.24rem rgb(255 247 229 / 0.14);
+}
+
 @media (max-width: 640px) {
     .wrap {
         margin-block-end: 0.62rem;
+    }
+
+    .wrap::before {
+        opacity: 0.5;
+        filter: blur(24px) saturate(1.1);
+    }
+
+    .wrap::after {
+        opacity: 0.54;
     }
 }

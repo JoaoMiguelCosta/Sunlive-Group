@@ -3,7 +3,46 @@
     isolation: isolate;
     inline-size: 100%;
     overflow: clip;
- 
+}
+
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(72rem 24rem at 50% -8%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.028) 32%,
+            transparent 66%),
+        radial-gradient(42rem 22rem at 0% 52%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.026) 0%,
+            transparent 72%),
+        radial-gradient(42rem 22rem at 100% 54%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.022) 0%,
+            transparent 74%);
+    opacity: 0.9;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgb(0 0 0 / 0.02) 0%,
+            transparent 22%,
+            transparent 72%,
+            rgb(0 0 0 / 0.13) 100%),
+        radial-gradient(120% 90% at 50% 50%,
+            transparent 48%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.12) 100%);
+    opacity: 0.9;
 }
 
 .backgroundGlow,
@@ -17,29 +56,37 @@
 .backgroundGlow {
     background:
         radial-gradient(58rem 24rem at 50% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.096) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.052) 28%,
             transparent 64%),
         radial-gradient(30rem 18rem at 12% 70%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.046) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.058) 0%,
             transparent 72%),
         radial-gradient(32rem 20rem at 88% 74%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04) 0%,
-            transparent 74%);
-    opacity: 0.92;
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.052) 0%,
+            transparent 74%),
+        radial-gradient(28rem 12rem at 50% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.03) 0%,
+            transparent 78%);
+    opacity: 0.98;
+    filter: saturate(1.08) contrast(1.02);
 }
 
 .backgroundGlowSecondary {
     background:
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 0%,
-            transparent 25%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.08) 100%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 0%,
+            transparent 20%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.095) 100%),
         linear-gradient(90deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.018) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.024) 0%,
             transparent 22%,
             transparent 78%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.014) 100%);
-    opacity: 0.86;
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.018) 100%),
+        radial-gradient(80% 70% at 50% 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 0%,
+            transparent 60%);
+    opacity: 0.92;
 }
 
 .inner {
@@ -87,9 +134,6 @@
 }
 
 @media (max-width: 640px) {
-    
-
-
     .inner {
         gap: 1.15rem;
         padding-inline: 0.9rem;
@@ -106,13 +150,14 @@
     .backgroundGlow {
         background:
             radial-gradient(34rem 17rem at 50% 0%,
-                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.084) 0%,
+                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.102) 0%,
+                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04) 34%,
                 transparent 66%),
             radial-gradient(18rem 14rem at 0% 70%,
-                rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.04) 0%,
+                rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.05) 0%,
                 transparent 72%),
             radial-gradient(18rem 14rem at 100% 72%,
-                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.035) 0%,
+                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.044) 0%,
                 transparent 72%);
     }
 }

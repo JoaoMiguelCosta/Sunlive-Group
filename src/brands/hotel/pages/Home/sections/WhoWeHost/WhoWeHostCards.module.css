@@ -6,6 +6,29 @@
     min-inline-size: 0;
 }
 
+.wrap::before {
+    content: "";
+    position: absolute;
+    inset: clamp(-0.6rem, -0.8vw, -0.35rem);
+    z-index: -1;
+
+    pointer-events: none;
+
+    opacity: 0.62;
+    filter: blur(26px);
+
+    background:
+        radial-gradient(ellipse at 34% 14%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
+            transparent 52%),
+        radial-gradient(ellipse at 86% 76%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.08) 0%,
+            transparent 58%),
+        radial-gradient(ellipse at 18% 88%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.035) 0%,
+            transparent 54%);
+}
+
 .layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -18,7 +41,7 @@
 .secondaryItem {
     min-inline-size: 0;
 
-    animation: whoCardFadeUp 520ms ease both;
+    animation: whoCardFadeUp 520ms var(--hotel-transition-slow, cubic-bezier(0.22, 1, 0.36, 1)) both;
     animation-delay: var(--who-card-delay, 0ms);
 }
 
@@ -34,11 +57,13 @@
     from {
         opacity: 0;
         transform: translateY(0.75rem);
+        filter: blur(2px);
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
+        filter: blur(0);
     }
 }
 

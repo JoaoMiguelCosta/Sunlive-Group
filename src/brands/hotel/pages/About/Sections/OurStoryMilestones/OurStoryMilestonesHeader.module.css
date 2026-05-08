@@ -8,8 +8,92 @@
     margin-block-end: clamp(0.35rem, 0.9vw, 0.65rem);
 }
 
+.wrap::before {
+    content: "";
+    position: absolute;
+    inset-inline: 50% auto;
+    inset-block-start: clamp(-1.1rem, -1.4vw, -0.65rem);
+    z-index: 0;
+
+    translate: -50% 0;
+
+    inline-size: min(92vw, 1180px);
+    block-size: clamp(8rem, 16vw, 13rem);
+
+    pointer-events: none;
+
+    opacity: 0.56;
+
+    background:
+        radial-gradient(ellipse at 50% 0%,
+            rgb(255 246 229 / 0.18) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.092) 34%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.05) 56%,
+            transparent 78%),
+        radial-gradient(ellipse at 18% 38%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.044) 0%,
+            transparent 62%),
+        radial-gradient(ellipse at 82% 44%,
+            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.052) 0%,
+            transparent 64%),
+        radial-gradient(ellipse at 50% 100%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.2) 0%,
+            transparent 70%);
+
+    filter: blur(30px) saturate(1.14) contrast(1.04);
+}
+
+.wrap::after {
+    content: "";
+    position: absolute;
+    inset-inline: 50% auto;
+    inset-block-end: clamp(-0.85rem, -1.2vw, -0.45rem);
+    z-index: 0;
+
+    translate: -50% 0;
+
+    inline-size: min(88vw, 1080px);
+    block-size: clamp(5rem, 10vw, 8rem);
+
+    pointer-events: none;
+
+    opacity: 0.38;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.052) 18%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.072) 50%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.045) 82%,
+            transparent 100%),
+        radial-gradient(ellipse at 50% 100%,
+            rgb(24 14 8 / 0.25) 0%,
+            transparent 72%);
+
+    filter: blur(22px);
+}
+
 @media (max-width: 640px) {
     .wrap {
         margin-block-end: 0.42rem;
+    }
+
+    .wrap::before {
+        inset-block-start: -0.75rem;
+
+        inline-size: 100%;
+        block-size: 7.5rem;
+
+        opacity: 0.4;
+
+        filter: blur(26px) saturate(1.08);
+    }
+
+    .wrap::after {
+        block-size: 5.5rem;
+
+        opacity: 0.28;
+
+        filter: blur(20px);
     }
 }

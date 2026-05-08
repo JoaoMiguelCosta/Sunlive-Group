@@ -14,27 +14,35 @@
     block-size: 100%;
 
     border-radius: clamp(1.12rem, 1.5vw, 1.38rem);
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
 
     background:
-        radial-gradient(120% 135% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
-            transparent 42%),
-        radial-gradient(130% 150% at 100% 100%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.064) 0%,
-            transparent 48%),
+        radial-gradient(122% 138% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.04) 36%,
+            transparent 52%),
+        radial-gradient(132% 150% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.086) 0%,
+            transparent 50%),
+        radial-gradient(80% 96% at 50% 112%,
+            rgb(0 0 0 / 0.18) 0%,
+            transparent 72%),
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.032) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.01) 20%,
-            rgb(0 0 0 / 0.1) 100%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.038) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 20%,
+            rgb(0 0 0 / 0.12) 100%),
         linear-gradient(135deg,
-            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.84) 0%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.97) 100%);
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.86) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.99) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.048),
-        inset 0 -1px 0 rgb(0 0 0 / 0.14),
-        0 18px 40px rgb(0 0 0 / 0.2);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.058),
+        inset 0 -1px 0 rgb(0 0 0 / 0.18),
+        0 20px 44px rgb(0 0 0 / 0.24),
+        0 0 0 1px rgb(0 0 0 / 0.12);
+
+    backdrop-filter: blur(14px) saturate(1.06);
+    -webkit-backdrop-filter: blur(14px) saturate(1.06);
 }
 
 .infoCard::before {
@@ -46,9 +54,33 @@
 
     background:
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.064) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 18%,
-            transparent 42%);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.076) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.022) 16%,
+            transparent 42%),
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.028) 50%,
+            transparent 100%),
+        repeating-linear-gradient(135deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 0 1px,
+            transparent 1px 10px);
+    opacity: 0.84;
+    mix-blend-mode: screen;
+}
+
+.infoCard::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+
+    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.03);
+
+    box-shadow:
+        inset 0 0 0 1px rgb(255 255 255 / 0.012),
+        inset 0 0 34px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.018);
 }
 
 .header,
@@ -62,19 +94,39 @@
     gap: 0.76rem;
     padding: clamp(0.92rem, 1.18vw, 1.08rem);
 
-    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16);
+    border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
 
     background:
         radial-gradient(92% 130% at 50% -16%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.105) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.14) 0%,
             transparent 56%),
         radial-gradient(80% 112% at 50% 100%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.074) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.096) 0%,
             transparent 70%),
         linear-gradient(180deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.15) 0%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.105) 58%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.22) 100%);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.19) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.13) 56%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.3) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052),
+        inset 0 -1px 0 rgb(0 0 0 / 0.14);
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    inset-inline: 12%;
+    inset-block-start: 0;
+    block-size: 1px;
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.22),
+            transparent);
+    opacity: 0.78;
 }
 
 .headerTop {
@@ -92,32 +144,39 @@
     min-block-size: 1.6rem;
     padding-inline: 0.66rem;
     border-radius: 999px;
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
 
     font-size: 0.66rem;
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+
+    backdrop-filter: blur(9px) saturate(1.04);
+    -webkit-backdrop-filter: blur(9px) saturate(1.04);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04),
+        0 5px 12px rgb(0 0 0 / 0.12);
 }
 
 .badge {
     background:
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.068) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 100%),
-        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.38);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.074) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.022) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.42);
 
-    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.92);
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.94);
 }
 
 .eyebrow {
     background:
         linear-gradient(180deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11) 0%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.055) 100%);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.066) 100%);
 
-    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.94);
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.96);
 }
 
 .headerMain {
@@ -136,25 +195,26 @@
     inline-size: clamp(2.5rem, 2.7vw, 2.9rem);
     block-size: clamp(2.5rem, 2.7vw, 2.9rem);
     border-radius: 999px;
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
 
     background:
         radial-gradient(circle at 30% 22%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
-            transparent 55%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.21) 0%,
+            transparent 54%),
         radial-gradient(circle at 50% 58%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.15) 0%,
             transparent 72%),
         linear-gradient(180deg,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.28) 0%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.82) 100%);
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.34) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.86) 100%);
 
-    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.98);
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 1);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
-        0 9px 20px rgb(0 0 0 / 0.18),
-        0 0 16px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.075);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.11),
+        inset 0 -1px 0 rgb(0 0 0 / 0.2),
+        0 9px 20px rgb(0 0 0 / 0.2),
+        0 0 20px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11);
 }
 
 .iconCircle :global(svg) {
@@ -163,7 +223,7 @@
     block-size: clamp(0.96rem, 1vw, 1.12rem);
     color: currentColor;
     stroke: currentColor;
-    filter: drop-shadow(0 0 7px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12));
+    filter: drop-shadow(0 0 8px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
 }
 
 .iconPlaceholder {
@@ -177,18 +237,21 @@
     margin: 0;
     min-inline-size: 0;
 
-    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.985);
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.99);
     font-size: clamp(1.04rem, 0.38vw + 0.96rem, 1.24rem);
     font-weight: 850;
     line-height: 1.12;
     letter-spacing: -0.028em;
     text-wrap: balance;
+    text-shadow:
+        0 1px 10px rgb(0 0 0 / 0.18),
+        0 0 18px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.045);
 }
 
 .description {
     margin: 0;
 
-    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.84);
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.86);
     font-size: clamp(0.9rem, 0.1vw + 0.88rem, 0.96rem);
     line-height: 1.56;
     text-wrap: pretty;
@@ -209,7 +272,7 @@
     align-items: start;
     gap: 0.64rem;
 
-    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.88);
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.9);
     font-size: clamp(0.9rem, 0.08vw + 0.88rem, 0.95rem);
     line-height: 1.42;
     text-wrap: pretty;
@@ -226,23 +289,25 @@
     margin-top: 0.08rem;
 
     border-radius: 999px;
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
 
     background:
         radial-gradient(circle at 30% 24%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.22) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.28) 0%,
             transparent 58%),
         linear-gradient(180deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.92) 0%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.82) 100%);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.98) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.88) 100%);
 
-    color: rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.92);
+    color: rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.96);
     font-size: 0.78rem;
     font-weight: 900;
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.18),
-        0 7px 15px rgb(0 0 0 / 0.16);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.2),
+        inset 0 -1px 0 rgb(0 0 0 / 0.12),
+        0 7px 15px rgb(0 0 0 / 0.18),
+        0 0 14px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
 }
 
 .media {
@@ -256,19 +321,23 @@
     align-self: stretch;
 
     border-radius: clamp(1.12rem, 1.5vw, 1.38rem);
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
 
     background:
         radial-gradient(120% 135% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.115) 0%,
             transparent 42%),
+        radial-gradient(90% 90% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.064) 0%,
+            transparent 70%),
         linear-gradient(180deg,
-            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.78) 0%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.96) 100%);
+            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.8) 0%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.98) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.048),
-        0 18px 40px rgb(0 0 0 / 0.2);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.058),
+        0 20px 44px rgb(0 0 0 / 0.24),
+        0 0 0 1px rgb(0 0 0 / 0.12);
 }
 
 .media::before {
@@ -280,11 +349,16 @@
 
     background:
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.034) 0%,
-            transparent 24%),
-        radial-gradient(circle at center,
-            transparent 56%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.14) 100%);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05) 0%,
+            transparent 22%),
+        radial-gradient(circle at 50% 48%,
+            transparent 48%,
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.22) 100%),
+        linear-gradient(90deg,
+            rgb(0 0 0 / 0.12) 0%,
+            transparent 22%,
+            transparent 78%,
+            rgb(0 0 0 / 0.16) 100%);
 }
 
 .media::after {
@@ -295,7 +369,11 @@
     pointer-events: none;
 
     border-radius: inherit;
-    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.026);
+    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.03);
+
+    box-shadow:
+        inset 0 0 0 1px rgb(255 255 255 / 0.01),
+        inset 0 0 42px rgb(0 0 0 / 0.1);
 }
 
 .image,
@@ -310,7 +388,8 @@
 .image {
     display: block;
     object-fit: cover;
-    filter: saturate(1.02) contrast(1.02) brightness(0.96);
+    filter: saturate(1.08) contrast(1.06) brightness(0.92);
+    transform: scale(1.012);
 }
 
 .imagePlaceholder {
@@ -323,13 +402,13 @@
 
     background:
         radial-gradient(circle at 30% 30%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.105) 0%,
             transparent 55%),
         linear-gradient(180deg,
             rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.9) 0%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.98) 100%);
+            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.99) 100%);
 
-    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.9);
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.92);
 }
 
 .placeholderBadge {
@@ -341,20 +420,24 @@
     padding-inline: 0.76rem;
 
     border-radius: 999px;
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26);
 
     background:
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.062) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 100%),
-        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.42);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.074) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.022) 100%),
+        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.46);
 
-    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.92);
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.95);
     font-size: 0.7rem;
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.09em;
     text-transform: uppercase;
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04),
+        0 6px 14px rgb(0 0 0 / 0.14);
 }
 
 .placeholderText {
@@ -385,6 +468,10 @@
         border-radius: 1.08rem;
     }
 
+    .infoCard::before {
+        opacity: 0.72;
+    }
+
     .header {
         padding: 0.9rem;
     }
@@ -409,5 +496,9 @@
 
     .media {
         min-block-size: clamp(210px, 62vw, 280px);
+    }
+
+    .image {
+        filter: saturate(1.06) contrast(1.04) brightness(0.93);
     }
 }

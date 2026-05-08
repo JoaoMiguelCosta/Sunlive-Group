@@ -10,6 +10,8 @@ export default function HotelPrimaryNavSubmenu({
   hasOpen,
   submenuAnchorX,
   onAnchorClick,
+  onMouseEnter,
+  onMouseLeave,
 }) {
   const activeGroup = Array.isArray(items)
     ? items.find((item) => item.id === openId)
@@ -32,6 +34,8 @@ export default function HotelPrimaryNavSubmenu({
           : undefined
       }
       aria-hidden={!isVisible}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <div className={submenuStyles.submenuInner}>
         {activeGroup ? (

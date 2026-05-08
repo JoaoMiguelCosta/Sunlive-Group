@@ -8,8 +8,70 @@
     margin-block-end: clamp(0.6rem, 1.3vw, 1rem);
 }
 
+.headerWrap::before {
+    content: "";
+    position: absolute;
+    inset-inline: 50%;
+    inset-block-start: 50%;
+    z-index: -1;
+
+    inline-size: min(86%, 54rem);
+    block-size: clamp(3.8rem, 8vw, 7.2rem);
+
+    pointer-events: none;
+
+    opacity: 0.52;
+    transform: translate(-50%, -50%);
+    filter: blur(32px) saturate(1.18) contrast(1.04);
+
+    background:
+        radial-gradient(closest-side,
+            rgb(255 246 226 / 0.22) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 42%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.07) 62%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.028) 74%,
+            transparent 86%);
+}
+
+.headerWrap::after {
+    content: "";
+    position: absolute;
+    inset-inline: 50%;
+    inset-block-end: -0.35rem;
+    z-index: -1;
+
+    inline-size: min(44%, 24rem);
+    block-size: 1px;
+
+    pointer-events: none;
+
+    opacity: 0.42;
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.28) 24%,
+            rgb(255 246 226 / 0.76) 50%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.28) 76%,
+            transparent 100%);
+
+    box-shadow:
+        0 0 1.7rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22),
+        0 0 2.8rem rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.075);
+}
+
 @media (max-width: 640px) {
     .headerWrap {
         margin-block-end: 0.62rem;
+    }
+
+    .headerWrap::before {
+        opacity: 0.3;
+        filter: blur(24px) saturate(1.08);
+    }
+
+    .headerWrap::after {
+        opacity: 0.24;
     }
 }
