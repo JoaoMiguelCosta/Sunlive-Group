@@ -1,21 +1,27 @@
 .wrap {
     position: relative;
+    z-index: 10;
+
     inline-size: 100%;
     width: 100%;
+
     border-bottom: none;
-    z-index: 10;
 }
 
 .wrap::after {
     content: none;
 }
+
 .container {
-    --travel-shell-max-width: 1360px;
-    --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(16px, 3.5vw, 44px)));
     --travel-header-stack-gap: clamp(0.7rem, 1.4vw, 1.25rem);
 
-    inline-size: min(calc(100% - (2 * var(--travel-shell-inset))), var(--travel-shell-max-width));
-    width: min(calc(100% - (2 * var(--travel-shell-inset))), var(--travel-shell-max-width));
+    position: relative;
+    z-index: 1;
+
+    inline-size: 100%;
+    width: 100%;
+    max-inline-size: 100%;
+    max-width: 100%;
 
     margin-inline: auto;
     box-sizing: border-box;
@@ -31,6 +37,7 @@
 .primaryRow {
     inline-size: 100%;
     width: 100%;
+
     display: grid;
     place-items: center;
 }
@@ -38,8 +45,11 @@
 .primaryInner {
     position: relative;
     isolation: isolate;
+
     inline-size: 100%;
     width: 100%;
+    max-inline-size: 100%;
+
     margin-inline: auto;
     box-sizing: border-box;
 
@@ -51,20 +61,34 @@
     padding-block: clamp(0.82rem, 1.2vw, 0.96rem);
     padding-inline: clamp(0.82rem, 1.45vw, 1.18rem);
 
-    border: 1px solid rgba(223, 178, 74, 0.28);
+    border: 1px solid rgba(224, 167, 43, 0.28);
     border-radius: clamp(1.45rem, 2vw, 2rem);
 
     background:
-        radial-gradient(110% 135% at 0% 0%, rgba(32, 77, 139, 0.3) 0%, transparent 34%),
-        radial-gradient(72% 88% at 100% 100%, rgba(38, 103, 190, 0.22) 0%, transparent 42%),
-        radial-gradient(42% 44% at 67% 20%, rgba(219, 171, 64, 0.1) 0%, transparent 68%),
-        radial-gradient(30% 36% at 18% 78%, rgba(97, 177, 255, 0.1) 0%, transparent 74%),
-        linear-gradient(125deg, #102947 0%, #041425 33%, #02111f 58%, #092644 100%);
+        radial-gradient(110% 135% at 0% 0%,
+            rgba(224, 167, 43, 0.105) 0%,
+            transparent 38%),
+        radial-gradient(82% 92% at 100% 100%,
+            rgba(79, 195, 247, 0.16) 0%,
+            transparent 46%),
+        radial-gradient(42% 44% at 67% 20%,
+            rgba(224, 167, 43, 0.08) 0%,
+            transparent 68%),
+        radial-gradient(30% 36% at 18% 78%,
+            rgba(79, 195, 247, 0.085) 0%,
+            transparent 74%),
+        linear-gradient(125deg,
+            rgba(10, 29, 52, 0.96) 0%,
+            rgba(4, 16, 32, 0.98) 36%,
+            rgba(2, 8, 20, 0.99) 64%,
+            rgba(8, 29, 52, 0.96) 100%);
+
     box-shadow:
         0 22px 58px rgba(0, 0, 0, 0.28),
         0 10px 24px rgba(2, 12, 24, 0.2),
+        0 0 0 1px rgba(79, 195, 247, 0.035),
         inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        inset 0 -1px 0 rgba(85, 153, 221, 0.08);
+        inset 0 -1px 0 rgba(79, 195, 247, 0.08);
 }
 
 .primaryInner::before {
@@ -72,21 +96,53 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
+
     background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, transparent 20%, transparent 78%, rgba(119, 186, 255, 0.04) 100%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, transparent 22%, transparent 78%, rgba(255, 255, 255, 0.03) 100%);
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            transparent 20%,
+            transparent 78%,
+            rgba(79, 195, 247, 0.04) 100%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.045) 0%,
+            transparent 22%,
+            transparent 78%,
+            rgba(255, 255, 255, 0.03) 100%);
+
     pointer-events: none;
 }
 
+.primaryInner::after {
+    content: "";
+    position: absolute;
+    inset-inline: clamp(1rem, 3vw, 2.4rem);
+    inset-block-end: 0;
+
+    block-size: 1px;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(79, 195, 247, 0.18) 16%,
+            rgba(224, 167, 43, 0.36) 50%,
+            rgba(79, 195, 247, 0.16) 84%,
+            transparent 100%);
+
+    pointer-events: none;
+}
 
 .navSlot {
+    position: relative;
+    z-index: 2;
+
     min-width: 0;
     width: 100%;
 }
 
 .ctaSlot {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+
     display: grid;
     place-items: center;
     flex-shrink: 0;
@@ -96,17 +152,26 @@
 .ctaSlot :global(button) {
     min-height: clamp(50px, 4.4vw, 60px);
     padding-inline: clamp(1.18rem, 1.8vw, 1.5rem);
+
+    border: 1px solid rgba(224, 167, 43, 0.46);
     border-radius: 999px;
-    border: 1px solid rgba(232, 185, 78, 0.46);
+
     background:
-        radial-gradient(circle at 50% 0%, rgba(255, 240, 206, 0.2) 0%, transparent 42%),
-        linear-gradient(180deg, rgba(239, 191, 79, 0.99) 0%, rgba(196, 131, 17, 0.99) 100%);
+        radial-gradient(circle at 50% 0%,
+            rgba(255, 240, 206, 0.2) 0%,
+            transparent 42%),
+        linear-gradient(180deg,
+            rgba(243, 196, 95, 0.99) 0%,
+            rgba(185, 121, 17, 0.99) 100%);
+
     box-shadow:
         0 12px 20px rgba(171, 109, 10, 0.18),
-        0 0 18px rgba(214, 158, 35, 0.08),
+        0 0 18px rgba(224, 167, 43, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.28);
+
     color: #fff8ea;
     font-weight: 860;
+
     transition:
         transform 180ms ease,
         box-shadow 180ms ease,
@@ -120,9 +185,12 @@
 .ctaSlot :global(button:focus-visible) {
     transform: translateY(-2px);
     filter: brightness(1.03);
+
+    border-color: rgba(243, 196, 95, 0.68);
+
     box-shadow:
         0 16px 24px rgba(171, 109, 10, 0.22),
-        0 0 22px rgba(214, 158, 35, 0.1),
+        0 0 22px rgba(224, 167, 43, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
@@ -132,14 +200,11 @@
 }
 
 @media (max-width: 860px) {
-    .container {
-        --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(14px, 4vw, 24px)));
-    }
-
     .primaryInner {
         grid-template-columns: 1fr;
         justify-items: stretch;
         gap: clamp(0.7rem, 2.2vw, 0.96rem);
+
         padding-block: clamp(0.78rem, 2.4vw, 1rem);
     }
 
@@ -149,10 +214,6 @@
 }
 
 @media (max-width: 560px) {
-    .container {
-        --travel-shell-inset: var(--sl-line-inset, var(--line-inset, clamp(12px, 4.4vw, 18px)));
-    }
-
     .primaryInner {
         padding-inline: clamp(0.72rem, 3.8vw, 0.95rem);
         border-radius: clamp(1.2rem, 5vw, 1.45rem);

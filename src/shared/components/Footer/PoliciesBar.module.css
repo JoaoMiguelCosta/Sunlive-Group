@@ -1,13 +1,15 @@
 .sectionWrap {
     position: relative;
-    background: transparent;
-    color: var(--sl-platinum-100);
+
     padding-block: clamp(0.5rem, 0.8vw, 0.72rem);
     padding-bottom: max(env(safe-area-inset-bottom, 0px), clamp(0.5rem, 0.8vw, 0.72rem));
 
-    --policies-accent: var(--footer-accent, var(--sl-gold-400, #c78615));
-
     border-top: 1px solid color-mix(in oklab, var(--policies-accent), transparent 74%);
+
+    background: transparent;
+    color: var(--sl-platinum-100);
+
+    --policies-accent: var(--footer-accent, var(--sl-gold-400, #c78615));
 }
 
 .inner {
@@ -20,6 +22,7 @@
     grid-template-columns: 1fr;
     gap: 0.55rem;
     place-items: center;
+
     text-align: center;
 }
 
@@ -37,12 +40,12 @@
 }
 
 .link {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    font-weight: 600;
-    white-space: nowrap;
+    color: rgb(255 255 255 / 0.9);
     font-size: clamp(0.82rem, 0.16vw + 0.8rem, 0.9rem);
+    font-weight: 600;
     line-height: 1.15;
+    white-space: nowrap;
+    text-decoration: none;
 
     transition:
         color 140ms ease,
@@ -56,63 +59,72 @@
 
 .link:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--policies-accent), transparent 64%);
     border-radius: 6px;
     padding-inline: 0.15rem;
+
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--policies-accent), transparent 64%);
 }
 
 .divider {
     margin: 0 0.22rem 0 0.48rem;
+
     opacity: 0.28;
 }
 
 .copyWrap {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 0.42rem;
-    flex-wrap: wrap;
 }
 
 .shield {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     inline-size: clamp(16px, 1.1vw, 20px);
     block-size: clamp(16px, 1.1vw, 20px);
+    flex: 0 0 auto;
+
     border: 1px solid color-mix(in oklab, var(--policies-accent), transparent 38%);
     border-radius: 999px;
+
     color: var(--policies-accent);
     background: color-mix(in oklab, var(--policies-accent) 9%, transparent);
-    flex: 0 0 auto;
 }
 
 .shield :global(svg) {
     display: block;
+
     inline-size: 0.72em;
     block-size: 0.72em;
+
     stroke: currentColor;
 }
 
 .copyText {
-    font-weight: 600;
-    opacity: 0.92;
     font-size: clamp(0.8rem, 0.14vw + 0.78rem, 0.88rem);
+    font-weight: 600;
     white-space: nowrap;
+
+    opacity: 0.92;
 }
 
 /* =========================================================
-   Hotel — ESTILO HOTEL NOVO
-   Boutique Luxury Editorial / Cinematic Quiet Warmth
+   Hotel
    ========================================================= */
 
 :global([data-brand="hotel"]) .sectionWrap {
-    --policies-accent: var(--hotel-champagne, #e8cd9c);
-    --policies-border: rgba(232, 205, 156, 0.13);
-    --policies-border-strong: rgba(232, 205, 156, 0.22);
-    --policies-text-main: rgba(255, 249, 241, 0.94);
-    --policies-text-soft: rgba(248, 234, 215, 0.76);
-    --policies-text-muted: rgba(238, 218, 190, 0.48);
+    --policies-accent: var(--hotel-champagne, #d9b978);
+    --policies-border: var(--hotel-footer-section-border,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
+    --policies-border-strong: var(--hotel-footer-section-border-strong,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3));
+    --policies-text-main: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.94);
+    --policies-text-soft: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.76);
+    --policies-text-muted: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.46);
 
     isolation: isolate;
     overflow: hidden;
@@ -122,38 +134,13 @@
 
     border-top: 1px solid var(--policies-border);
 
-    background:
-        radial-gradient(720px 160px at 12% 0%,
-            rgba(232, 205, 156, 0.04) 0%,
-            transparent 66%),
-        radial-gradient(620px 160px at 88% 100%,
-            rgba(153, 112, 62, 0.032) 0%,
-            transparent 64%),
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.012) 0%,
-            rgba(255, 250, 242, 0.004) 100%);
-}
-
-:global([data-brand="hotel"]) .sectionWrap::before {
-    content: "";
-    position: absolute;
-    inset-inline: clamp(0.9rem, 3vw, 2.4rem);
-    inset-block-start: 0;
-    block-size: 1px;
-    pointer-events: none;
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgba(232, 205, 156, 0.04) 14%,
-            rgba(232, 205, 156, 0.14) 50%,
-            rgba(232, 205, 156, 0.04) 86%,
-            transparent 100%);
+    background: var(--hotel-footer-section-bg-soft);
 }
 
 :global([data-brand="hotel"]) .inner {
     position: relative;
     z-index: 1;
+
     gap: clamp(0.5rem, 0.76vw, 0.68rem);
 }
 
@@ -164,21 +151,31 @@
 :global([data-brand="hotel"]) .link {
     color: var(--policies-text-soft);
     font-size: clamp(0.8rem, 0.14vw + 0.78rem, 0.88rem);
-    font-weight: 640;
+    font-weight: 650;
     letter-spacing: -0.004em;
+
+    transition:
+        color var(--hotel-transition-fast, 160ms ease),
+        text-decoration-color var(--hotel-transition-fast, 160ms ease),
+        text-shadow var(--hotel-transition-fast, 160ms ease),
+        box-shadow var(--hotel-transition-fast, 160ms ease);
 }
 
 :global([data-brand="hotel"]) .link:hover {
     color: var(--policies-text-main);
     text-decoration: underline;
-    text-decoration-color: rgba(232, 205, 156, 0.45);
+    text-decoration-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.46);
     text-underline-offset: 0.18em;
+
+    text-shadow:
+        0 1px 0 rgb(0 0 0 / 0.42),
+        0 0 0.9rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
 }
 
 :global([data-brand="hotel"]) .link:focus-visible {
     box-shadow:
-        0 0 0 2px rgba(232, 205, 156, 0.2),
-        0 0 0 5px rgba(232, 205, 156, 0.07);
+        0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.92),
+        0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.58);
 }
 
 :global([data-brand="hotel"]) .divider {
@@ -194,19 +191,23 @@
     inline-size: clamp(17px, 1.15vw, 20px);
     block-size: clamp(17px, 1.15vw, 20px);
 
-    border: 1px solid rgba(232, 205, 156, 0.18);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
 
-    color: rgba(232, 205, 156, 0.88);
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.9);
 
     background:
         radial-gradient(circle at 30% 30%,
-            rgba(255, 250, 242, 0.12) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.13) 0%,
             transparent 58%),
-        rgba(44, 32, 24, 0.58);
+        radial-gradient(circle at 80% 80%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.12) 0%,
+            transparent 62%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.58);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.06),
-        0 6px 14px rgba(0, 0, 0, 0.12);
+        inset 0 1px 0 rgb(255 247 229 / 0.065),
+        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.08),
+        0 0.42rem 0.95rem rgb(0 0 0 / 0.15);
 }
 
 :global([data-brand="hotel"]) .shield :global(svg) {
@@ -216,10 +217,12 @@
 
 :global([data-brand="hotel"]) .copyText {
     color: var(--policies-text-soft);
-    opacity: 1;
     font-size: clamp(0.78rem, 0.12vw + 0.76rem, 0.86rem);
-    font-weight: 620;
+    font-weight: 630;
     letter-spacing: -0.004em;
+
+    opacity: 1;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 0.32);
 }
 
 /* =========================================================
@@ -231,6 +234,7 @@
         grid-template-columns: 1fr auto;
         align-items: center;
         place-items: initial;
+
         text-align: initial;
     }
 
@@ -300,36 +304,35 @@
 
 @supports not (background: color-mix(in oklab, white, black)) {
     .sectionWrap {
-        border-top-color: rgba(199, 134, 21, 0.16);
+        border-top-color: rgb(199 134 21 / 0.16);
     }
 
     .shield {
-        border-color: rgba(199, 134, 21, 0.62);
-        background: rgba(199, 134, 21, 0.09);
+        border-color: rgb(199 134 21 / 0.62);
+        background: rgb(199 134 21 / 0.09);
     }
 
     .link:focus-visible {
-        box-shadow: 0 0 0 3px rgba(199, 134, 21, 0.28);
+        box-shadow: 0 0 0 3px rgb(199 134 21 / 0.28);
     }
 
     :global([data-brand="hotel"]) .sectionWrap {
-        border-top-color: rgba(232, 205, 156, 0.13);
+        border-top-color: rgb(217 185 120 / 0.18);
 
         background:
-            radial-gradient(720px 160px at 12% 0%,
-                rgba(232, 205, 156, 0.04),
-                transparent 66%),
             linear-gradient(180deg,
-                rgba(255, 250, 242, 0.012),
-                rgba(255, 250, 242, 0.004));
+                rgb(251 247 239 / 0.026) 0%,
+                rgb(7 4 2 / 0.04) 100%),
+            rgb(41 26 17 / 0.34);
     }
 
     :global([data-brand="hotel"]) .shield {
-        border-color: rgba(232, 205, 156, 0.18);
+        border-color: rgb(217 185 120 / 0.2);
+
         background:
             radial-gradient(circle at 30% 30%,
-                rgba(255, 250, 242, 0.12),
+                rgb(251 247 239 / 0.13),
                 transparent 58%),
-            rgba(44, 32, 24, 0.58);
+            rgb(41 26 17 / 0.58);
     }
 }

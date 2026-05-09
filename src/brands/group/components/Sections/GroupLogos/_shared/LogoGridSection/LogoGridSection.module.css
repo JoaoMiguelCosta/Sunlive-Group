@@ -15,9 +15,7 @@
 
     overflow: visible;
 
-    background: color-mix(in oklab,
-            #020a20 82%,
-            var(--sl-gold-500, #c78615) 18%);
+   
 
     --logo-grid-gap: clamp(0.85rem, 1.8vw, 1.25rem);
     --logo-card-size: clamp(9.5rem, 14vw, 12.75rem);

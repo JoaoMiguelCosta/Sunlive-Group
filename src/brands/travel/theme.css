@@ -1,67 +1,156 @@
-/* Sunlive Travel — Overrides de tema
-   Mantém a base Prestige Noir + Liquid Gold (group/theme.css)
-   e só troca/acrescenta tokens quando data-brand="travel".
+/* Sunlive Travel — Theme Overrides
+   Estilo: azul-noite/navy + dourado solar + ciano técnico discreto
 */
 
 :root[data-brand="travel"] {
-    /* Acentos Travel */
-    --sl-accent-400: #56BCEB;
-    /* util p/ hover/focus */
-    --sl-accent-500: #2EA7E0;
-    /* azul-atlântico */
-    --sl-accent-600: #1F7FAB;
+    /* =========================
+       Base Travel
+       ========================= */
 
-    /* Halo / ornamentos */
-    --sl-ornament-alpha: .12;
+    --travel-navy-950: #020814;
+    --travel-navy-925: #041020;
+    --travel-navy-900: #061525;
+    --travel-navy-850: #0a1d34;
+    --travel-navy-800: #0f2948;
 
-    /* ===== Glow (fallbacks + color-mix) ===== */
-    /* Fallbacks imediatos */
-    --sl-glow-top: #C78615;
-    /* gold-400 */
-    --sl-glow-ring: #C78615;
-    --sl-glow-bottom: #A16207;
-    /* gold-500 */
+    --travel-gold: #e0a72b;
+    --travel-gold-soft: #f3c45f;
+    --travel-gold-deep: #b97911;
 
-    /* Melhora se o browser suportar color-mix/oklab */
-    @supports (color: color-mix(in oklab, white, black)) {
-        --sl-glow-top: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 20%);
-        --sl-glow-ring: color-mix(in oklab, var(--sl-gold-400), var(--sl-accent-500) 15%);
-        --sl-glow-bottom: color-mix(in oklab, var(--sl-gold-500), var(--sl-accent-500) 10%);
+    --travel-cyan: #4fc3f7;
+    --travel-cyan-soft: #7fd8ff;
+    --travel-cyan-deep: #2ea7e0;
+
+    --travel-text: rgba(248, 251, 255, 0.96);
+    --travel-text-soft: rgba(224, 235, 246, 0.84);
+    --travel-muted: rgba(180, 201, 220, 0.68);
+
+    /* =========================
+       Global background
+       ========================= */
+
+    --sl-body-bg:
+        radial-gradient(74rem 34rem at 50% -12%,
+            rgba(224, 167, 43, 0.12) 0%,
+            rgba(224, 167, 43, 0.045) 34%,
+            transparent 68%),
+        radial-gradient(46rem 30rem at 8% 20%,
+            rgba(79, 195, 247, 0.07) 0%,
+            transparent 70%),
+        radial-gradient(48rem 32rem at 92% 42%,
+            rgba(224, 167, 43, 0.065) 0%,
+            transparent 72%),
+        radial-gradient(60rem 36rem at 50% 108%,
+            rgba(79, 195, 247, 0.045) 0%,
+            transparent 74%),
+        linear-gradient(180deg,
+            #020814 0%,
+            #06101f 34%,
+            #071525 68%,
+            #020814 100%);
+
+    --sl-color-text: var(--travel-text);
+
+    /* =========================
+       Acentos Travel
+       ========================= */
+
+    --sl-accent-400: var(--travel-cyan-soft);
+    --sl-accent-500: var(--travel-cyan-deep);
+    --sl-accent-600: #1f7fab;
+
+    --footer-accent: var(--travel-cyan-deep);
+
+    /* =========================
+       Halo / ornamentos
+       ========================= */
+
+    --sl-ornament-alpha: 0.12;
+
+    --sl-glow-top: var(--travel-gold);
+    --sl-glow-ring: var(--travel-gold-soft);
+    --sl-glow-bottom: var(--travel-gold-deep);
+}
+
+@supports (color: color-mix(in oklab, white, black)) {
+    :root[data-brand="travel"] {
+        --sl-glow-top: color-mix(in oklab, var(--travel-gold), var(--travel-cyan) 14%);
+        --sl-glow-ring: color-mix(in oklab, var(--travel-gold-soft), var(--travel-cyan) 12%);
+        --sl-glow-bottom: color-mix(in oklab, var(--travel-gold-deep), var(--travel-cyan-deep) 8%);
     }
 }
 
-/* Utilitários/variantes Travel */
+/* =========================
+   Utilitários Travel
+   ========================= */
+
 :root[data-brand="travel"] .u-badge-accent {
-    background: color-mix(in oklab, var(--sl-accent-500), black 82%);
-    color: var(--sl-platinum-100);
-    border: 1px solid color-mix(in oklab, var(--sl-accent-600), white 18%);
+    color: var(--travel-text);
+
+    border: 1px solid rgba(79, 195, 247, 0.28);
     border-radius: 999px;
-    padding: .25rem .6rem;
-    font-size: .8rem;
-    letter-spacing: .02em;
+
+    background:
+        radial-gradient(120% 140% at 0% 0%,
+            rgba(224, 167, 43, 0.14) 0%,
+            transparent 68%),
+        rgba(7, 21, 37, 0.82);
+
+    padding: 0.25rem 0.6rem;
+
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
 }
 
-/* Botão secundário Travel */
+/* =========================
+   Botão secundário Travel
+   ========================= */
+
 :root[data-brand="travel"] .button--secondary {
-    background: color-mix(in oklab, var(--sl-accent-500) 88%, black);
-    border: 1px solid var(--sl-accent-600);
     color: white;
+
+    border: 1px solid rgba(79, 195, 247, 0.34);
+
+    background:
+        radial-gradient(120% 140% at 0% 0%,
+            rgba(224, 167, 43, 0.12) 0%,
+            transparent 66%),
+        linear-gradient(180deg,
+            rgba(14, 41, 72, 0.92) 0%,
+            rgba(3, 11, 24, 0.98) 100%);
 }
 
 :root[data-brand="travel"] .button--secondary:hover {
-    background: color-mix(in oklab, var(--sl-accent-400) 88%, black);
-    border-color: var(--sl-accent-500);
+    border-color: rgba(224, 167, 43, 0.52);
+
+    background:
+        radial-gradient(120% 140% at 0% 0%,
+            rgba(224, 167, 43, 0.18) 0%,
+            transparent 66%),
+        radial-gradient(120% 140% at 100% 100%,
+            rgba(79, 195, 247, 0.1) 0%,
+            transparent 70%),
+        linear-gradient(180deg,
+            rgba(15, 50, 86, 0.96) 0%,
+            rgba(3, 11, 24, 0.99) 100%);
 }
 
-/* Links acentuados Travel */
+/* =========================
+   Links acentuados Travel
+   ========================= */
+
 :root[data-brand="travel"] .link-accent {
-    color: var(--sl-accent-500);
+    color: var(--travel-cyan-deep);
 }
 
 :root[data-brand="travel"] .link-accent:hover {
-    color: var(--sl-accent-400);
+    color: var(--travel-cyan-soft);
 }
 
+/* =========================
+   Travel footer accent
+   ========================= */
+
 :global([data-brand="travel"]) {
-    --footer-accent: #2EA7E0;
+    --footer-accent: var(--travel-cyan-deep);
 }

@@ -16,6 +16,7 @@ export const heroBanner = {
   scenes: [
     {
       id: "arrival-view",
+      mediaType: "image",
       imageSrc: home1,
       imageAlt:
         "Vista exterior ampla da Estalagem de Sangalhos, com a entrada principal ao fundo.",
@@ -28,6 +29,7 @@ export const heroBanner = {
     },
     {
       id: "approach-view",
+      mediaType: "image",
       imageSrc: home2,
       imageAlt:
         "Vista intermédia da entrada da Estalagem de Sangalhos, com enquadramento mais próximo do acesso principal.",
@@ -39,10 +41,12 @@ export const heroBanner = {
       actionLabel: "Entrar",
     },
     {
-      id: "entrance-view",
-      imageSrc: home3,
+      id: "entrance-video",
+      mediaType: "video",
+      videoSrc: "/media/hotel/home/estalagem-hero-light.mp4",
+      posterSrc: home3,
       imageAlt:
-        "Vista próxima do logótipo e da entrada da Estalagem de Sangalhos – Sport & Nature Hotel.",
+        "Vídeo de apresentação da entrada da Estalagem de Sangalhos – Sport & Nature Hotel.",
       imagePosition: "center center",
       title: "Bem-vindo à Estalagem",
       description:

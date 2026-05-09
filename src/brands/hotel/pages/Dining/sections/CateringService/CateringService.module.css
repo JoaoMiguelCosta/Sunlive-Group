@@ -37,51 +37,7 @@
     overflow: clip;
 }
 
-.section::before {
-    content: "";
-    position: absolute;
-    inset: clamp(0.6rem, 1.8vw, 1.4rem) 50% auto;
-    translate: -50% 0;
-    z-index: 0;
 
-    inline-size: min(94vw, 1260px);
-    block-size: clamp(230px, 26vw, 360px);
-
-    pointer-events: none;
-    border-radius: 999px;
-
-    background:
-        radial-gradient(circle at 18% 18%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.115) 0%,
-            transparent 38%),
-        radial-gradient(circle at 82% 74%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.078) 0%,
-            transparent 44%),
-        radial-gradient(circle at 50% 10%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055) 0%,
-            transparent 46%),
-        radial-gradient(circle at 50% 100%,
-            rgb(var(--hotel-graphite-rgb, 24 19 16) / 0.12) 0%,
-            transparent 64%);
-
-    filter: blur(42px) saturate(1.08);
-    opacity: 0.82;
-}
-
-.section::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    background:
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 0%,
-            transparent 22%,
-            rgb(0 0 0 / 0.04) 62%,
-            rgb(0 0 0 / 0.078) 100%);
-}
 
 .inner {
     position: relative;
@@ -118,37 +74,6 @@
     -webkit-backdrop-filter: blur(12px) saturate(1.05);
 }
 
-.headerBlock::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    border-radius: inherit;
-
-    background:
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.065) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.02) 16%,
-            transparent 42%);
-}
-
-.headerBlock::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 0;
-    pointer-events: none;
-    border-radius: inherit;
-
-    background:
-        linear-gradient(135deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.035),
-            transparent 26%,
-            transparent 74%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.03));
-    opacity: 0.86;
-}
 
 .eyebrow {
     position: relative;

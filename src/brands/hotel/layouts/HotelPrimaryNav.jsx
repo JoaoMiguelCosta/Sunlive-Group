@@ -11,6 +11,7 @@ import navStyles from "./HotelPrimaryNav.module.css";
 
 const NAV_ITEMS = HOTEL_PRIMARY_NAV_ITEMS;
 const SUBMENU_CLOSE_DELAY = 180;
+const NAV_LIST_ID = "hotel-primary-nav-list";
 
 function getValidLinks(item) {
   return Array.isArray(item?.links) ? item.links : [];
@@ -143,6 +144,7 @@ export default function HotelPrimaryNav() {
 
   const handleDrawerSubLinkClick = (event, href) => {
     handleSmartAnchorClick?.(event, href);
+    closeAll();
   };
 
   const hasOpen = Boolean(openId);
@@ -167,8 +169,11 @@ export default function HotelPrimaryNav() {
             ]
               .filter(Boolean)
               .join(" ")}
-            aria-label="Alternar menu de navegação"
+            aria-label={
+              isNavOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"
+            }
             aria-expanded={isNavOpen}
+            aria-controls={NAV_LIST_ID}
             onClick={() => setIsNavOpen((currentState) => !currentState)}
           >
             <span className={navStyles.burgerBox} aria-hidden="true">
@@ -178,12 +183,14 @@ export default function HotelPrimaryNav() {
         </div>
 
         <div
+          id={NAV_LIST_ID}
           className={[
             navStyles.navListWrap,
             isNavOpen ? navStyles.navListWrapOpen : "",
           ]
             .filter(Boolean)
             .join(" ")}
+          aria-hidden={isDrawer && !isNavOpen}
         >
           <ul className={navStyles.navList}>
             {NAV_ITEMS.map((item) => {
@@ -217,7 +224,11 @@ export default function HotelPrimaryNav() {
                       onMouseEnter={() => {
                         if (!isDrawer) handleEnterItem(item.id, hasLinks);
                       }}
-                      onFocus={() => handleEnterItem(item.id, hasLinks)}
+                      onFocus={() => {
+                        if (!isDrawer || isNavOpen) {
+                          handleEnterItem(item.id, hasLinks);
+                        }
+                      }}
                       onClick={(event) => handlePrimaryNavClick(event, item.to)}
                     >
                       <span>{item.label}</span>
@@ -232,12 +243,20 @@ export default function HotelPrimaryNav() {
                         ]
                           .filter(Boolean)
                           .join(" ")}
-                        aria-label={`Abrir submenu ${item.label}`}
+                        aria-label={
+                          isOpen
+                            ? `Fechar submenu ${item.label}`
+                            : `Abrir submenu ${item.label}`
+                        }
                         aria-expanded={isOpen}
                         onMouseEnter={() => {
                           if (!isDrawer) handleEnterItem(item.id, hasLinks);
                         }}
-                        onFocus={() => handleEnterItem(item.id, hasLinks)}
+                        onFocus={() => {
+                          if (!isDrawer || isNavOpen) {
+                            handleEnterItem(item.id, hasLinks);
+                          }
+                        }}
                         onClick={() => handleToggleClick(item.id)}
                         ref={(element) => {
                           buttonRefs.current[item.id] = element;

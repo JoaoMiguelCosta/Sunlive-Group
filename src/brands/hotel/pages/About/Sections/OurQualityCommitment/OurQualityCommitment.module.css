@@ -6,65 +6,7 @@
     min-inline-size: 0;
 }
 
-.section::before {
-    content: "";
-    position: absolute;
-    inset-inline: 50%;
-    inset-block-start: clamp(0.8rem, 2vw, 1.4rem);
-    z-index: 0;
 
-    inline-size: min(100%, 78rem);
-    block-size: clamp(13rem, 24vw, 21rem);
-
-    pointer-events: none;
-
-    opacity: 0.68;
-    transform: translateX(-50%);
-    filter: blur(38px) saturate(1.16) contrast(1.04);
-
-    background:
-        radial-gradient(circle at 18% 38%,
-            rgb(255 239 203 / 0.2) 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 27%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.052) 42%,
-            transparent 52%),
-        radial-gradient(circle at 84% 54%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.15) 0%,
-            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.05) 30%,
-            transparent 48%),
-        radial-gradient(circle at 50% 100%,
-            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.062) 0%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.16) 44%,
-            transparent 60%);
-}
-
-.section::after {
-    content: "";
-    position: absolute;
-    inset-inline: 50%;
-    inset-block-start: clamp(0.2rem, 0.7vw, 0.55rem);
-    z-index: 0;
-
-    inline-size: min(82%, 58rem);
-    block-size: 1px;
-
-    pointer-events: none;
-
-    opacity: 0.44;
-    transform: translateX(-50%);
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.2) 18%,
-            rgb(255 244 220 / 0.64) 50%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.2) 82%,
-            transparent 100%);
-
-    box-shadow:
-        0 0 1.9rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16),
-        0 0 3.2rem rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.06);
-}
 
 .inner {
     position: relative;
@@ -80,16 +22,7 @@
 }
 
 @media (max-width: 640px) {
-    .section::before {
-        inset-block-start: 1rem;
-        block-size: 12rem;
-        opacity: 0.48;
-        filter: blur(28px) saturate(1.08);
-    }
-
-    .section::after {
-        opacity: 0.28;
-    }
+  
 
     .inner {
         gap: 0.95rem;

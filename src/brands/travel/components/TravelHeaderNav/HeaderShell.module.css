@@ -5,15 +5,14 @@
     --header-pad-y: clamp(0.55rem, 1.9vw, 0.9rem);
     --header-pad-x: clamp(0.75rem, 3vw, 1.5rem);
 
-    --travel-shell-max-width: 1360px;
-    --travel-shell-inline-padding: clamp(1rem, 2.4vw, 1.6rem);
-
     position: relative;
     isolation: isolate;
+
     inline-size: 100%;
     width: 100%;
-    max-width: none;
+
     margin-inline: 0;
+
     color: var(--sl-platinum-100, #f5f5f5);
 }
 

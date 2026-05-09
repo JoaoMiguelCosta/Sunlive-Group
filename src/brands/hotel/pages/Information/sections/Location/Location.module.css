@@ -3,62 +3,13 @@
     isolation: isolate;
     inline-size: 100%;
     overflow: clip;
+ 
 }
 
-.mediaLayer,
-.overlayLayer {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
 
-.mediaLayer {
-    z-index: 0;
-}
 
-.backgroundImage {
-    display: block;
-    inline-size: 100%;
-    block-size: 100%;
-    object-fit: cover;
-    object-position: center;
-    filter: saturate(0.9) brightness(0.42) blur(2px);
-    transform: scale(1.045);
-}
 
-.overlayLayer {
-    z-index: 0;
-    background:
-        radial-gradient(58% 48% at 18% 42%,
-            rgba(232, 205, 156, 0.095) 0%,
-            transparent 72%),
-        radial-gradient(44% 46% at 82% 24%,
-            rgba(153, 112, 62, 0.072) 0%,
-            transparent 74%),
-        radial-gradient(70% 56% at 50% 100%,
-            rgba(232, 205, 156, 0.045) 0%,
-            transparent 70%),
-        linear-gradient(90deg,
-            rgba(12, 10, 9, 0.1) 0%,
-            rgba(12, 10, 9, 0.02) 20%,
-            rgba(12, 10, 9, 0.02) 80%,
-            rgba(12, 10, 9, 0.1) 100%);
-    opacity: 0.94;
-}
 
-.section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.034) 0%,
-            rgba(255, 250, 242, 0.01) 18%,
-            rgba(0, 0, 0, 0.035) 100%);
-    opacity: 0.86;
-}
 
 .inner {
     position: relative;
@@ -71,11 +22,11 @@
 }
 
 @media (max-width: 768px) {
-    .section {
-        padding-block: clamp(2.65rem, 8vw, 3.8rem);
-    }
+ 
 
     .inner {
         gap: 1rem;
     }
+
+  
 }

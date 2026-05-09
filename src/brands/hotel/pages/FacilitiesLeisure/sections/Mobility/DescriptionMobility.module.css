@@ -37,48 +37,8 @@
     -webkit-backdrop-filter: blur(11px) saturate(1.04);
 }
 
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
 
-    background:
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.068) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 18%,
-            transparent 42%),
-        linear-gradient(120deg,
-            transparent 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.038) 20%,
-            transparent 42%,
-            transparent 100%);
 
-    opacity: 0.94;
-}
-
-.card::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 0;
-    border-radius: inherit;
-    pointer-events: none;
-
-    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.028);
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.045) 50%,
-            transparent 100%);
-
-    mask-image:
-        linear-gradient(180deg,
-            black 0%,
-            transparent 46%);
-}
 
 .inner {
     position: relative;

@@ -1,29 +1,26 @@
 .wrapper {
-    position: relative;
-    inline-size: 100%;
-}
+    --banner-champagne: 241 205 132;
+    --banner-amber: 199 134 21;
+    --banner-bronze: 126 82 36;
+    --banner-olive: 104 112 78;
+    --banner-noir: 8 7 6;
 
-.wrapper::before {
-    content: "";
-    position: absolute;
-    inset-inline: 8%;
-    inset-block-start: 50%;
-    translate: 0 -50%;
-    z-index: 0;
-    block-size: clamp(5rem, 10vw, 8rem);
-    pointer-events: none;
-    background:
-        radial-gradient(circle at 50% 50%,
-            rgba(241, 205, 132, 0.11) 0%,
-            rgba(241, 205, 132, 0.035) 44%,
-            transparent 72%);
-    filter: blur(26px);
-    opacity: 0.75;
+    position: relative;
+    isolation: isolate;
+
+    inline-size: 100%;
 }
 
 .banner {
     position: relative;
     z-index: 1;
+
     inline-size: min(100%, 1360px);
     margin-inline: auto;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        inline-size: 100%;
+    }
 }

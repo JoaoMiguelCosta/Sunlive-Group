@@ -1,14 +1,13 @@
 .wrapper {
     --spotlight-radius-lg: clamp(1.24rem, 1.85vw, 1.78rem);
-    --spotlight-border: rgba(232, 205, 156, 0.18);
-    --spotlight-border-strong: rgba(232, 205, 156, 0.28);
-    --spotlight-text-main: rgba(255, 249, 241, 0.97);
-    --spotlight-text-soft: rgba(248, 234, 215, 0.82);
-    --spotlight-text-muted: rgba(238, 218, 190, 0.68);
-    --spotlight-champagne: rgba(232, 205, 156, 0.96);
-    --spotlight-champagne-soft: rgba(232, 205, 156, 0.11);
-    --spotlight-warm-graphite: rgba(38, 30, 24, 0.96);
-    --spotlight-deep-graphite: rgba(17, 13, 11, 0.98);
+    --spotlight-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+    --spotlight-border-strong: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.38);
+
+    --spotlight-text-main: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.98);
+    --spotlight-text-soft: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.82);
+    --spotlight-text-muted: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.64);
+
+    --spotlight-champagne: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.97);
 
     inline-size: min(100%, 1320px);
     margin-inline: auto;
@@ -18,6 +17,8 @@
 }
 
 .stageHeader {
+    position: relative;
+
     display: grid;
     justify-items: center;
     gap: 0.52rem;
@@ -35,11 +36,13 @@
     line-height: 1.1;
     letter-spacing: 0.22em;
     text-transform: uppercase;
+
+   
 }
 
 .stageTitle {
+   
     margin: 0;
-    max-inline-size: 18ch;
 
     color: var(--spotlight-text-main);
     font-size: clamp(1.34rem, 2vw, 2.1rem);
@@ -47,17 +50,20 @@
     line-height: 1.04;
     letter-spacing: -0.036em;
     text-wrap: balance;
+
 }
 
 .stageDescription {
-    margin: 0;
     max-inline-size: 64ch;
+    margin: 0;
 
     color: var(--spotlight-text-soft);
     font-size: clamp(0.93rem, 0.82vw, 1.02rem);
     font-weight: 480;
     line-height: 1.5;
     text-wrap: pretty;
+
+   
 }
 
 .stage {
@@ -72,66 +78,20 @@
 .viewport {
     position: relative;
     isolation: isolate;
+
     min-inline-size: 0;
-    overflow: hidden;
+    overflow: visible;
 
-    padding: clamp(0.94rem, 1.42vw, 1.14rem);
+    padding: 0;
 
-    border: 1px solid var(--spotlight-border);
-    border-radius: var(--spotlight-radius-lg);
+    border: 0;
+    border-radius: 0;
 
-    background:
-        radial-gradient(76% 132% at 8% 8%,
-            rgba(232, 205, 156, 0.07) 0%,
-            transparent 58%),
-        radial-gradient(72% 122% at 94% 100%,
-            rgba(153, 112, 62, 0.048) 0%,
-            transparent 60%),
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.03) 0%,
-            rgba(255, 250, 242, 0.01) 26%,
-            rgba(0, 0, 0, 0.065) 100%),
-        linear-gradient(135deg,
-            rgba(39, 31, 25, 0.88) 0%,
-            rgba(25, 20, 17, 0.95) 56%,
-            rgba(13, 11, 10, 0.98) 100%);
+   
+    box-shadow: none;
 
-    box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.045),
-        0 18px 34px rgba(0, 0, 0, 0.15);
-}
-
-.viewport::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    border-radius: inherit;
-
-    background:
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.052) 0%,
-            rgba(255, 250, 242, 0.012) 22%,
-            transparent 48%),
-        linear-gradient(90deg,
-            rgba(232, 205, 156, 0.026) 0%,
-            transparent 22%,
-            transparent 78%,
-            rgba(232, 205, 156, 0.018) 100%);
-    opacity: 0.9;
-}
-
-.viewport::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 2;
-    pointer-events: none;
-
-    border-radius: inherit;
-    border: 1px solid rgba(255, 239, 210, 0.038);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .grid {
@@ -152,55 +112,59 @@
     inline-size: clamp(2.86rem, 3.35vw, 3.35rem);
     block-size: clamp(2.86rem, 3.35vw, 3.35rem);
 
-    border: 1px solid rgba(232, 205, 156, 0.22);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.25);
     border-radius: 999px;
 
     background:
-        radial-gradient(circle at 30% 28%,
-            rgba(255, 250, 242, 0.12) 0%,
-            transparent 56%),
         linear-gradient(180deg,
-            rgba(232, 205, 156, 0.068) 0%,
-            rgba(232, 205, 156, 0.012) 100%),
-        rgba(30, 23, 18, 0.94);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17));
 
     color: var(--spotlight-champagne);
     cursor: pointer;
 
     box-shadow:
-        0 12px 24px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 250, 242, 0.065);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+        inset 0 -1px 0 rgb(0 0 0 / 0.18),
+        0 0.95rem 2rem rgb(0 0 0 / 0.3);
 
     transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        background 180ms ease,
-        color 180ms ease;
+        transform var(--hotel-transition-fast, 180ms ease),
+        border-color var(--hotel-transition-fast, 180ms ease),
+        box-shadow var(--hotel-transition-fast, 180ms ease),
+        background var(--hotel-transition-fast, 180ms ease),
+        color var(--hotel-transition-fast, 180ms ease),
+        filter var(--hotel-transition-fast, 180ms ease);
 }
 
 .navButton:hover {
     transform: translateY(-1px) scale(1.02);
+
     border-color: var(--spotlight-border-strong);
-    color: rgba(255, 231, 185, 0.98);
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.98);
+    filter: saturate(1.04) contrast(1.01);
 
     background:
-        radial-gradient(circle at 30% 28%,
-            rgba(255, 250, 242, 0.14) 0%,
-            transparent 56%),
         linear-gradient(180deg,
-            rgba(232, 205, 156, 0.084) 0%,
-            rgba(232, 205, 156, 0.016) 100%),
-        rgba(35, 27, 21, 0.96);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.095) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17));
 
     box-shadow:
-        0 15px 28px rgba(0, 0, 0, 0.24),
-        inset 0 1px 0 rgba(255, 250, 242, 0.08);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.1),
+        inset 0 -1px 0 rgb(0 0 0 / 0.2),
+        0 1.12rem 2.25rem rgb(0 0 0 / 0.36),
+        0 0 1.4rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06);
 }
 
 .navButton:focus-visible {
-    outline: 2px solid rgba(232, 205, 156, 0.82);
-    outline-offset: 3px;
+    outline: none;
+
+    box-shadow:
+        var(--hotel-focus-ring, 0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.96), 0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86)),
+        0 1.12rem 2.25rem rgb(0 0 0 / 0.36),
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.1);
 }
 
 .navIcon {
@@ -218,6 +182,7 @@
 .navIcon :global(svg) {
     inline-size: 1rem;
     block-size: 1rem;
+
     stroke: currentColor;
 }
 
@@ -252,35 +217,60 @@
     inline-size: 10px;
     block-size: 10px;
 
-    border: 1px solid rgba(232, 205, 156, 0.26);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
     border-radius: 999px;
 
-    background: rgba(255, 250, 242, 0.42);
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.52) 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.34) 100%);
+
     cursor: pointer;
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.08);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.1),
+        0 0.28rem 0.75rem rgb(0 0 0 / 0.22);
 
     transition:
-        transform 180ms ease,
-        background-color 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease;
+        transform var(--hotel-transition-fast, 180ms ease),
+        background-color var(--hotel-transition-fast, 180ms ease),
+        border-color var(--hotel-transition-fast, 180ms ease),
+        box-shadow var(--hotel-transition-fast, 180ms ease),
+        opacity var(--hotel-transition-fast, 180ms ease);
 }
 
 .dot:hover {
     transform: scale(1.08);
-    border-color: rgba(232, 205, 156, 0.42);
-    background: rgba(255, 250, 242, 0.54);
+
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.46);
+    opacity: 0.96;
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.12),
+        0 0.34rem 0.84rem rgb(0 0 0 / 0.25),
+        0 0 0.7rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06);
+}
+
+.dot:focus-visible {
+    outline: none;
+
+    box-shadow:
+        var(--hotel-focus-ring, 0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.96), 0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86)),
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.12);
 }
 
 .dotActive {
-    background: var(--spotlight-champagne);
-    border-color: rgba(232, 205, 156, 0.68);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.76);
+
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.98) 0%,
+            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.72) 100%);
 
     box-shadow:
-        0 0 12px rgba(232, 205, 156, 0.16),
-        inset 0 1px 0 rgba(255, 250, 242, 0.18);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.22),
+        0 0 0.9rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16),
+        0 0.28rem 0.8rem rgb(0 0 0 / 0.26);
 }
 
 .counter {
@@ -295,25 +285,11 @@
     font-weight: 740;
     line-height: 1;
     letter-spacing: 0.08em;
+
 }
 
 .counterDivider {
-    color: rgba(232, 205, 156, 0.48);
-}
-
-@media (hover: hover) {
-    .viewport {
-        transition:
-            border-color 220ms ease,
-            box-shadow 220ms ease;
-    }
-
-    .viewport:hover {
-        border-color: rgba(232, 205, 156, 0.24);
-        box-shadow:
-            inset 0 1px 0 rgba(255, 250, 242, 0.05),
-            0 21px 38px rgba(0, 0, 0, 0.18);
-    }
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.52);
 }
 
 @media (max-width: 1220px) {
@@ -341,13 +317,14 @@
 
     .stageDescription {
         max-inline-size: 29ch;
+
         font-size: 0.91rem;
         line-height: 1.46;
     }
 
     .viewport {
-        padding: 0.8rem;
-        border-radius: 1.18rem;
+        padding: 0;
+        border-radius: 0;
     }
 
     .grid {
@@ -367,7 +344,6 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-    .viewport,
     .navButton,
     .dot {
         transition: none;

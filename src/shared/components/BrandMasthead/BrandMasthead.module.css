@@ -20,17 +20,7 @@
     padding-block: clamp(1.25rem, 2.9vw, 2.2rem);
 }
 
-.inner::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border-radius: clamp(1.5rem, 2.2vw, 2rem);
-    background:
-        radial-gradient(120% 160% at 50% 20%,
-            rgba(255, 255, 255, 0.03) 0%,
-            transparent 52%);
-}
+
 
 .logoBox {
     position: relative;

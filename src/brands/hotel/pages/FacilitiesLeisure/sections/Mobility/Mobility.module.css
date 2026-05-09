@@ -6,115 +6,11 @@
     padding-block: clamp(2.8rem, 5.6vw, 4.9rem);
 }
 
-.backgroundGlow,
-.backgroundGlowSecondary {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-}
 
-.backgroundGlow {
-    background:
-        radial-gradient(66rem 26rem at 50% -4%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.036) 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.118) 30%,
-            transparent 66%),
-        radial-gradient(38rem 22rem at 7% 44%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.06) 0%,
-            transparent 72%),
-        radial-gradient(38rem 22rem at 93% 56%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.052) 0%,
-            transparent 72%),
-        radial-gradient(40rem 18rem at 50% 100%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.46) 0%,
-            transparent 70%);
-    opacity: 0.94;
-}
 
-.backgroundGlow::before {
-    content: "";
-    position: absolute;
-    inset-inline: 50%;
-    inset-block-start: 0;
-    translate: -50% 0;
 
-    inline-size: min(82rem, 92vw);
-    block-size: clamp(8rem, 15vw, 13rem);
 
-    border-radius: 0 0 999px 999px;
-    pointer-events: none;
 
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06) 18%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.105) 50%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06) 82%,
-            transparent 100%);
-
-    filter: blur(18px);
-    opacity: 0.62;
-    mask-image: linear-gradient(180deg, black 0%, transparent 82%);
-}
-
-.backgroundGlow::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(115deg,
-            transparent 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 18%,
-            transparent 34%,
-            transparent 100%),
-        repeating-linear-gradient(90deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 0 1px,
-            transparent 1px 64px);
-
-    opacity: 0.2;
-    mask-image:
-        radial-gradient(circle at 50% 10%,
-            black 0%,
-            transparent 62%);
-}
-
-.backgroundGlowSecondary {
-    background:
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 0%,
-            transparent 24%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.1) 100%),
-        linear-gradient(90deg,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.22) 0%,
-            transparent 18%,
-            transparent 82%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.22) 100%);
-    opacity: 0.92;
-}
-
-.backgroundGlowSecondary::before {
-    content: "";
-    position: absolute;
-    inset-inline: 8%;
-    inset-block-start: 0;
-
-    block-size: 1px;
-    pointer-events: none;
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 20%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.18) 50%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 80%,
-            transparent 100%);
-
-    opacity: 0.66;
-}
 
 .inner {
     position: relative;
@@ -154,23 +50,7 @@
     min-inline-size: 0;
 }
 
-.subsection::before {
-    content: "";
-    position: absolute;
-    inset-inline: 10%;
-    inset-block-start: -1.15rem;
-    z-index: -1;
 
-    block-size: clamp(3rem, 6vw, 5rem);
-    pointer-events: none;
-
-    background:
-        radial-gradient(closest-side at 50% 50%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.042) 0%,
-            transparent 74%);
-    filter: blur(22px);
-    opacity: 0.58;
-}
 
 @media (max-width: 960px) {
     .section {
@@ -192,22 +72,9 @@
         padding-block: clamp(2.15rem, 8vw, 3rem);
     }
 
-    .backgroundGlow {
-        background:
-            radial-gradient(34rem 17rem at 50% 0%,
-                rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
-                transparent 66%),
-            radial-gradient(18rem 14rem at 0% 50%,
-                rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.05) 0%,
-                transparent 72%),
-            radial-gradient(18rem 14rem at 100% 54%,
-                rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.044) 0%,
-                transparent 72%);
-    }
 
-    .backgroundGlow::after {
-        opacity: 0.12;
-    }
+
+
 
     .introBlock {
         gap: 0.9rem;
@@ -218,8 +85,5 @@
         margin-top: 1.55rem;
     }
 
-    .subsection::before {
-        inset-inline: 2%;
-        opacity: 0.44;
-    }
+ 
 }

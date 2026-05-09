@@ -85,25 +85,35 @@
     --hotel-kicker: var(--hotel-champagne-soft);
 
     /* =============================
-       Fundos / superfícies
+       Fundo global quente
+       Aplicado apenas no HotelShell.module.css
        ============================= */
 
-    --hotel-page-bg:
-        radial-gradient(92rem 54rem at 50% -16rem,
-            rgb(var(--hotel-champagne-rgb) / 0.16) 0%,
-            rgb(var(--hotel-amber-rgb) / 0.09) 30%,
-            rgb(var(--hotel-bronze-rgb) / 0.055) 52%,
+--hotel-page-bg:
+        radial-gradient(92rem 48rem at 50% -18rem,
+            rgb(var(--hotel-champagne-rgb) / 0.115) 0%,
+            rgb(var(--hotel-amber-rgb) / 0.058) 30%,
+            rgb(var(--hotel-bronze-rgb) / 0.034) 54%,
+            transparent 76%),
+        radial-gradient(66rem 40rem at 7% 18%,
+            rgb(var(--hotel-olive-rgb) / 0.028) 0%,
+            transparent 70%),
+        radial-gradient(62rem 38rem at 94% 18%,
+            rgb(var(--hotel-bronze-rgb) / 0.052) 0%,
             transparent 72%),
-        radial-gradient(62rem 38rem at 6% 16%,
-            rgb(var(--hotel-olive-rgb) / 0.07) 0%,
-            transparent 66%),
-        radial-gradient(58rem 36rem at 94% 12%,
-            rgb(var(--hotel-bronze-rgb) / 0.065) 0%,
-            transparent 68%),
+        radial-gradient(80rem 48rem at 50% 108%,
+            rgb(var(--hotel-espresso-rgb) / 0.32) 0%,
+            rgb(var(--hotel-bronze-rgb) / 0.115) 38%,
+            transparent 78%),
         linear-gradient(180deg,
-            var(--hotel-graphite-950) 0%,
-            var(--hotel-espresso-950) 46%,
-            var(--hotel-black) 100%);
+            #170f09 0%,
+            #130a06 34%,
+            #0f0704 68%,
+            #080402 100%);
+
+    /* =============================
+       Fundos / superfícies
+       ============================= */
 
     --hotel-surface:
         radial-gradient(118% 148% at -2% -4%,
@@ -291,7 +301,6 @@
         0 0 0 4px rgb(var(--hotel-champagne-rgb) / 0.86);
 }
 
-/* Melhorias quando color-mix estiver disponível */
 @supports (color: color-mix(in oklab, white, black)) {
 
     :root[data-brand="hotel"],
@@ -311,7 +320,6 @@
    ============================= */
 
 [data-brand="hotel"] {
-    background: var(--hotel-page-bg);
     color: var(--hotel-text);
     font-synthesis-weight: none;
     text-rendering: geometricPrecision;
@@ -338,9 +346,7 @@
 [data-brand="hotel"] .u-hotel-surface {
     border: 1px solid var(--hotel-border);
     border-radius: var(--hotel-radius-xl);
-
     background: var(--hotel-surface-panel);
-
     box-shadow: var(--hotel-shadow-card);
 
     backdrop-filter: blur(14px) saturate(1.12);

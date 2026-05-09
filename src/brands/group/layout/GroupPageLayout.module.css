@@ -1,30 +1,86 @@
 .shell {
+    --group-page-max-width: 1360px;
+    --section-inset: clamp(0.75rem, 4vw, 2.5rem);
+
     position: relative;
+    isolation: isolate;
+
     inline-size: 100%;
-    min-block-size: 100%;
-    background: transparent;
+    min-block-size: 100dvh;
+    overflow: clip;
+
     color: var(--sl-color-text, #f6f7fb);
+
+    background-color: #030302;
+    background-image:
+        radial-gradient(96rem 50rem at 50% -18rem,
+            rgb(246 192 92 / 0.24) 0%,
+            rgb(199 134 21 / 0.14) 32%,
+            rgb(199 134 21 / 0.055) 56%,
+            transparent 76%),
+        radial-gradient(72rem 42rem at 4% 18%,
+            rgb(246 192 92 / 0.105) 0%,
+            rgb(199 134 21 / 0.045) 38%,
+            transparent 70%),
+        radial-gradient(70rem 42rem at 96% 22%,
+            rgb(199 134 21 / 0.125) 0%,
+            rgb(246 192 92 / 0.052) 42%,
+            transparent 72%),
+        radial-gradient(88rem 54rem at 50% 112%,
+            rgb(199 134 21 / 0.12) 0%,
+            rgb(199 134 21 / 0.052) 38%,
+            transparent 78%),
+        linear-gradient(180deg,
+            #0a0804 0%,
+            #070604 34%,
+            #040403 70%,
+            #020202 100%);
+
+    background-attachment: fixed;
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
+}
+
+.shell::before,
+.shell::after {
+    content: none;
+}
+
+.shell>* {
+    position: relative;
+    z-index: 1;
 }
 
 .pageWrap {
     position: relative;
-    inline-size: 100%;
+    isolation: isolate;
+
+    inline-size: min(calc(100% - (2 * var(--section-inset))),
+            var(--group-page-max-width));
+    max-inline-size: var(--group-page-max-width);
+    margin-inline: auto;
+
     overflow: clip;
-    background: transparent;
+    box-sizing: border-box;
+
     color: var(--sl-color-text, #f6f7fb);
+    background: transparent;
 }
 
 .headerContainer {
     position: relative;
     z-index: 10;
+
     inline-size: 100%;
+    background: transparent;
 }
 
 .headerInner {
-    inline-size: min(calc(100% - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem))),
-            1360px);
-    max-inline-size: 1360px;
+    inline-size: min(calc(100% - (2 * var(--section-inset))),
+            var(--group-page-max-width));
+    max-inline-size: var(--group-page-max-width);
     margin-inline: auto;
+    box-sizing: border-box;
 }
 
 .headerInner :global(.utilityBar),
@@ -37,27 +93,29 @@
     z-index: 1;
 
     inline-size: 100%;
-
     box-sizing: border-box;
-    
+    background: transparent;
 }
 
 .contentFlow {
-    inline-size: min(calc(100% - 2 * var(--section-inset, clamp(0.75rem, 4vw, 2.5rem))),
-            1360px);
-    max-inline-size: 1360px;
+    inline-size: 100%;
+    max-inline-size: 100%;
     margin-inline: auto;
 
     display: grid;
     row-gap: 0;
+
+    box-sizing: border-box;
 }
 
-/* Para páginas onde o espaçamento deve ser aplicado entre todas as secções */
+.contentFlow>* {
+    min-inline-size: 0;
+}
+
 .contentFlowWithGap {
     row-gap: clamp(3rem, 6vw, 4.8rem);
 }
 
-/* Para páginas onde o espaçamento deve ser aplicado só em pontos específicos */
 .sectionGap {
     inline-size: 100%;
     min-inline-size: 0;
@@ -84,8 +142,6 @@
 }
 
 @media (max-width: 767.98px) {
-    
-
     .contentFlow {
         margin-block-start: clamp(2.2rem, 7vw, 3rem);
         row-gap: 0;
@@ -101,6 +157,10 @@
 }
 
 @media (max-width: 420px) {
+    .shell {
+        --section-inset: 0.75rem;
+    }
+
     .contentFlow {
         margin-block-start: 2rem;
         row-gap: 0;

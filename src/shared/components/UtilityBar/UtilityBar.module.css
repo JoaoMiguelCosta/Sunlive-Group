@@ -10,19 +10,23 @@
 
     position: relative;
     z-index: 60;
-    inline-size: min(100%, var(--sl-container-lg));
-    margin-inline: auto;
+
     display: grid;
     place-items: center;
+
+    inline-size: min(100%, var(--sl-container-lg));
+    margin-inline: auto;
 }
 
 .inner {
     position: relative;
-    inline-size: 100%;
-    min-height: 56px;
+
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
+
+    inline-size: 100%;
+    min-height: 56px;
     padding-block: 0.35rem 0.25rem;
 }
 
@@ -31,14 +35,18 @@
     position: absolute;
     inset-inline: var(--line-inset);
     inset-block-end: 0;
+
     block-size: 1px;
-    background: linear-gradient(90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.14) 12%,
-            rgba(255, 255, 255, 0.18) 50%,
-            rgba(255, 255, 255, 0.14) 88%,
-            transparent 100%);
+
     pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.12) 12%,
+            rgba(255, 255, 255, 0.17) 50%,
+            rgba(255, 255, 255, 0.12) 88%,
+            transparent 100%);
 }
 
 .left,
@@ -63,6 +71,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: var(--ub-gap);
+
     min-width: 0;
 }
 
@@ -76,12 +85,15 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+
     min-width: 0;
     max-width: 100%;
     min-height: 40px;
     padding: 0.5rem 0.9rem;
+
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 999px;
+
     color: rgba(255, 255, 255, 0.92);
     font-size: clamp(0.84rem, 0.25vw + 0.82rem, 0.96rem);
     font-weight: 700;
@@ -89,12 +101,14 @@
     letter-spacing: 0.015em;
     text-decoration: none;
     white-space: nowrap;
+
     transition:
         transform 180ms ease,
         border-color 180ms ease,
         background-color 180ms ease,
         box-shadow 180ms ease,
-        color 180ms ease;
+        color 180ms ease,
+        filter 180ms ease;
 }
 
 .backLink:hover,
@@ -121,6 +135,7 @@
 .backIcon,
 .homeIcon {
     flex: 0 0 auto;
+
     inline-size: 1rem;
     block-size: 1rem;
 }
@@ -140,8 +155,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: flex-end;
-    min-width: 0;
     flex-wrap: nowrap;
+
+    min-width: 0;
 }
 
 .socialLink {
@@ -149,17 +165,22 @@
     align-items: center;
     justify-content: center;
     flex: 0 0 auto;
+
     inline-size: clamp(34px, 2.8vw, 40px);
     block-size: clamp(34px, 2.8vw, 40px);
+
     border-radius: 999px;
+
     color: rgba(255, 255, 255, 0.84);
     text-decoration: none;
+
     transition:
         transform 180ms ease,
         background-color 180ms ease,
         border-color 180ms ease,
         color 180ms ease,
-        box-shadow 180ms ease;
+        box-shadow 180ms ease,
+        filter 180ms ease;
 }
 
 .socialLink:hover {
@@ -180,6 +201,7 @@
 .langWrap {
     position: relative;
     z-index: 61;
+
     min-width: 0;
 }
 
@@ -188,20 +210,26 @@
     align-items: center;
     justify-content: center;
     gap: 0.45rem;
+
     min-width: 0;
     min-height: clamp(36px, 2.8vw, 40px);
     padding-inline: 0.72rem;
+
     border: 1px solid transparent;
     border-radius: 999px;
+
     background: transparent;
     color: rgba(255, 255, 255, 0.92);
+
     cursor: pointer;
+
     transition:
         transform 180ms ease,
         background-color 180ms ease,
         border-color 180ms ease,
         color 180ms ease,
-        box-shadow 180ms ease;
+        box-shadow 180ms ease,
+        filter 180ms ease;
 }
 
 .langBtn:hover {
@@ -220,7 +248,9 @@
 .chevron {
     inline-size: 0.72rem;
     block-size: 0.42rem;
+
     color: currentColor;
+
     transition:
         transform 180ms ease,
         color 180ms ease;
@@ -235,17 +265,24 @@
     inset-inline-end: 0;
     inset-block-start: calc(100% + 0.45rem);
     z-index: 70;
+
     inline-size: min(18rem, calc(100vw - 24px));
     min-inline-size: 0;
     max-inline-size: calc(100vw - 24px);
+
     margin: 0;
     padding: 0.35rem;
+
     list-style: none;
+
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 16px;
-    background: linear-gradient(180deg,
+
+    background:
+        linear-gradient(180deg,
             rgba(18, 22, 30, 0.96) 0%,
             rgba(8, 12, 18, 0.98) 100%);
+
     box-shadow:
         0 18px 40px rgba(0, 0, 0, 0.28),
         inset 0 1px 0 rgba(255, 255, 255, 0.04);
@@ -256,19 +293,25 @@
 }
 
 .langItem {
-    inline-size: 100%;
     display: grid;
     gap: 0.15rem;
+
+    inline-size: 100%;
     padding: 0.65rem 0.75rem;
+
     border: 0;
     border-radius: 12px;
+
     background: transparent;
     color: rgba(255, 255, 255, 0.92);
+
     text-align: left;
     cursor: pointer;
+
     transition:
         background-color 160ms ease,
-        color 160ms ease;
+        color 160ms ease,
+        filter 160ms ease;
 }
 
 .langItem:hover {
@@ -277,6 +320,7 @@
 
 .langItemLabel {
     display: block;
+
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: 0.06em;
@@ -286,7 +330,9 @@
 
 .langItemName {
     display: block;
+
     opacity: 0.9;
+
     font-size: clamp(0.9rem, 1vw, 0.95rem);
     line-height: 1.2;
     white-space: normal;
@@ -310,12 +356,15 @@
     .utilityBar[data-variant="hotel-header"]) {
     --header-divider-inner: rgba(206, 212, 219, 0.28);
     --header-divider-home: rgba(255, 162, 0, 0.85);
+
     --header-link-color: rgba(255, 248, 232, 0.94);
     --header-link-hover-color: #fff3da;
+
     --header-back-bg-top: rgba(24, 39, 65, 0.9);
     --header-back-bg-bottom: rgba(10, 18, 34, 0.95);
     --header-back-border: rgba(236, 184, 77, 0.34);
     --header-back-border-hover: rgba(244, 197, 93, 0.52);
+
     --header-home-bg-top: rgba(27, 44, 72, 0.72);
     --header-home-bg-bottom: rgba(9, 18, 34, 0.9);
     --header-home-border: rgba(236, 184, 77, 0.42);
@@ -334,12 +383,15 @@
     .utilityBar[data-variant="sports-header"],
     .utilityBar[data-variant="hotel-header"]) .inner {
     position: relative;
+
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     column-gap: clamp(1rem, 1.8vw, 1.6rem);
+
     min-height: clamp(76px, 5.6vw, 96px);
     padding-block: clamp(0.45rem, 0.7vw, 0.65rem) clamp(0.2rem, 0.35vw, 0.3rem);
+
     border-bottom: 1px solid var(--header-divider-inner);
 }
 
@@ -350,9 +402,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    gap: clamp(0.6rem, 1vw, 0.9rem);
+
     width: 100%;
     min-width: 0;
-    gap: clamp(0.6rem, 1vw, 0.9rem);
 }
 
 :is(.utilityBar[data-variant="logos-header"],
@@ -362,6 +415,7 @@
     display: inline-flex;
     align-items: center;
     justify-self: end;
+
     min-width: 0;
 }
 
@@ -371,7 +425,9 @@
     .utilityBar[data-variant="hotel-header"]) :is(.backLink, .homeLink) {
     min-height: clamp(42px, 3vw, 48px);
     padding: 0.52rem 1rem;
+
     border-radius: 999px;
+
     color: var(--header-link-color);
     font-weight: 700;
 }
@@ -381,9 +437,12 @@
     .utilityBar[data-variant="sports-header"],
     .utilityBar[data-variant="hotel-header"]) .backLink {
     border: 1px solid var(--header-back-border);
-    background: linear-gradient(180deg,
+
+    background:
+        linear-gradient(180deg,
             var(--header-back-bg-top),
             var(--header-back-bg-bottom));
+
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.05),
         0 8px 18px rgba(0, 0, 0, 0.18);
@@ -394,9 +453,12 @@
     .utilityBar[data-variant="sports-header"],
     .utilityBar[data-variant="hotel-header"]) .homeLink {
     border: 1px solid var(--header-home-border);
-    background: linear-gradient(180deg,
+
+    background:
+        linear-gradient(180deg,
             var(--header-home-bg-top),
             var(--header-home-bg-bottom));
+
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.06),
         0 8px 18px rgba(0, 0, 0, 0.16);
@@ -415,6 +477,7 @@
     .utilityBar[data-variant="sports-header"],
     .utilityBar[data-variant="hotel-header"]) .backLink:hover {
     border-color: var(--header-back-border-hover);
+
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.07),
         0 12px 24px rgba(0, 0, 0, 0.2);
@@ -425,6 +488,7 @@
     .utilityBar[data-variant="sports-header"],
     .utilityBar[data-variant="hotel-header"]) .homeLink:hover {
     border-color: var(--header-home-border-hover);
+
     box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.08),
         0 12px 24px rgba(0, 0, 0, 0.2);
@@ -436,6 +500,7 @@
     .utilityBar[data-variant="hotel-header"]) .homeIcon {
     inline-size: 0.98em;
     block-size: 0.98em;
+
     opacity: 0.92;
 }
 
@@ -465,7 +530,6 @@
    Border states
    ======================================================= */
 
-.utilityBar[data-variant="logos-header"] .inner,
 .utilityBar[data-variant="travel-header"][data-page="travel-home"] .inner,
 .utilityBar[data-variant="sports-header"][data-page="sports-home"] .inner {
     border-bottom: 2px solid var(--header-divider-home);
@@ -476,18 +540,88 @@
 }
 
 /* =======================================================
-   Group header
+   Sunlive Group / Logos Header — Prestige Noir Liquid Gold
    ======================================================= */
 
-.utilityBar[data-variant="group-header"] {
-    --accent: var(--sl-gold-400, #c78615);
-    --group-divider: rgba(255, 162, 0, 0.85);
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) {
+    --accent: #f6c05c;
+
+    --group-gold: #f6c05c;
+    --group-gold-core: #c78615;
+    --group-gold-deep: #8a570b;
+
+    --group-noir: #020306;
+    --group-noir-soft: #05070b;
+    --group-surface: rgba(8, 9, 11, 0.72);
+
+    --group-text: rgba(255, 248, 232, 0.96);
+    --group-text-soft: rgba(246, 236, 213, 0.78);
+    --group-muted: rgba(228, 211, 178, 0.58);
+
+    --header-divider-inner: rgba(246, 192, 92, 0.26);
+    --header-divider-home: rgba(246, 192, 92, 0.86);
+
+    --header-link-color: var(--group-text);
+    --header-link-hover-color: #fff8e8;
+
+    --header-back-border: rgba(246, 192, 92, 0.46);
+    --header-back-border-hover: rgba(246, 192, 92, 0.76);
+
+    --header-home-border: rgba(246, 192, 92, 0.52);
+    --header-home-border-hover: rgba(246, 192, 92, 0.82);
+
+    --header-back-bg-top: rgba(42, 31, 13, 0.74);
+    --header-back-bg-bottom: rgba(8, 7, 5, 0.94);
+
+    --header-home-bg-top: rgba(58, 39, 12, 0.78);
+    --header-home-bg-bottom: rgba(10, 8, 5, 0.96);
+
+    --group-control-bg-hover:
+        radial-gradient(95% 145% at 50% 0%,
+            rgba(246, 192, 92, 0.13) 0%,
+            transparent 66%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.045) 0%,
+            rgba(255, 255, 255, 0.014) 100%),
+        rgba(12, 10, 7, 0.74);
+
+    --group-menu-bg:
+        radial-gradient(140% 150% at 0% 0%,
+            rgba(246, 192, 92, 0.16) 0%,
+            transparent 48%),
+        radial-gradient(130% 160% at 100% 100%,
+            rgba(199, 134, 21, 0.12) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgba(18, 14, 8, 0.985) 0%,
+            rgba(5, 5, 6, 0.995) 100%);
+
+    --group-active-bg:
+        radial-gradient(115% 145% at 0% 0%,
+            rgba(246, 192, 92, 0.22) 0%,
+            transparent 68%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.052),
+            rgba(255, 255, 255, 0.016));
+
+    --group-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 0.75rem 1.55rem rgba(0, 0, 0, 0.3),
+        0 0 1.15rem rgba(246, 192, 92, 0.055);
+
+    --group-shadow-hover:
+        inset 0 1px 0 rgba(255, 255, 255, 0.085),
+        0 1rem 2rem rgba(0, 0, 0, 0.38),
+        0 0 1.55rem rgba(246, 192, 92, 0.105);
 }
 
 .utilityBar[data-variant="group-header"] .inner {
     grid-template-columns: minmax(0, 1fr) auto;
+
     min-height: clamp(64px, 5vw, 82px);
-    border-bottom: 2px solid var(--group-divider);
+
+    border-bottom: 0;
 }
 
 .utilityBar[data-variant="group-header"] .inner::after {
@@ -502,42 +636,731 @@
     width: auto;
 }
 
-.utilityBar[data-variant="group-header"] .langMenu [aria-selected="true"] .langItem {
-    color: var(--accent);
-    background: color-mix(in oklab, var(--accent), transparent 82%);
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .inner {
+    isolation: isolate;
 }
 
-.utilityBar[data-variant="group-header"] .langBtn[data-open="true"] .chevron {
-    color: var(--accent);
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .inner::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -1px;
+    z-index: 0;
+
+    block-size: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(199, 134, 21, 0.18) 14%,
+            rgba(246, 192, 92, 0.58) 50%,
+            rgba(199, 134, 21, 0.18) 86%,
+            transparent 100%);
+
+    opacity: 0.96;
+
+    filter:
+        drop-shadow(0 0 14px rgba(246, 192, 92, 0.12));
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(46rem 9rem at 12% 0%,
+            rgba(246, 192, 92, 0.08) 0%,
+            transparent 72%),
+        radial-gradient(38rem 9rem at 88% 0%,
+            rgba(199, 134, 21, 0.07) 0%,
+            transparent 76%);
+
+    opacity: 0.92;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink) {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    color: var(--group-text);
+    border-color: var(--header-back-border);
+
+    font-weight: 760;
+    letter-spacing: 0.006em;
+
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.035),
+        0 0.45rem 0.85rem rgba(0, 0, 0, 0.32);
+
+    box-shadow: var(--group-shadow);
+
+    backdrop-filter: blur(12px) saturate(1.12);
+    -webkit-backdrop-filter: blur(12px) saturate(1.12);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.064) 0%,
+            rgba(255, 255, 255, 0.018) 34%,
+            transparent 72%),
+        radial-gradient(100% 140% at 0% 0%,
+            rgba(246, 192, 92, 0.12) 0%,
+            transparent 66%),
+        radial-gradient(100% 140% at 100% 100%,
+            rgba(199, 134, 21, 0.075) 0%,
+            transparent 70%);
+
+    opacity: 0.96;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink)::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: 2;
+
+    border: 1px solid rgba(255, 255, 255, 0.036);
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        inset 0 -1px 0 rgba(246, 192, 92, 0.06);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink)>* {
+    position: relative;
+    z-index: 1;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .backLink {
+    background:
+        radial-gradient(120% 150% at 0% 0%,
+            rgba(246, 192, 92, 0.15) 0%,
+            transparent 52%),
+        radial-gradient(110% 140% at 100% 100%,
+            rgba(199, 134, 21, 0.09) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            var(--header-back-bg-top) 0%,
+            var(--header-back-bg-bottom) 100%);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .homeLink {
+    border-color: var(--header-home-border);
+
+    background:
+        radial-gradient(120% 150% at 0% 0%,
+            rgba(246, 192, 92, 0.19) 0%,
+            transparent 54%),
+        radial-gradient(120% 150% at 100% 100%,
+            rgba(199, 134, 21, 0.105) 0%,
+            transparent 64%),
+        linear-gradient(180deg,
+            var(--header-home-bg-top) 0%,
+            var(--header-home-bg-bottom) 100%);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink):hover {
+    transform: translateY(-1px);
+
+    color: var(--header-link-hover-color);
+    filter: saturate(1.04) contrast(1.018);
+
+    box-shadow: var(--group-shadow-hover);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .backLink:hover {
+    border-color: var(--header-back-border-hover);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .homeLink:hover {
+    border-color: var(--header-home-border-hover);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) :is(.backIcon, .homeIcon) {
+    color: var(--group-gold);
+
+    opacity: 0.96;
+
+    filter:
+        drop-shadow(0 0 0.45rem rgba(246, 192, 92, 0.18)) drop-shadow(0 0.2rem 0.5rem rgba(0, 0, 0, 0.3));
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .socialLink {
+    position: relative;
+    isolation: isolate;
+
+    color: var(--group-text-soft);
+    border: 1px solid transparent;
+    background: transparent;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .socialLink::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    z-index: -1;
+
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(246, 192, 92, 0.09) 0%,
+            transparent 65%),
+        rgba(12, 10, 7, 0.32);
+
+    opacity: 0;
+
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .socialLink:hover {
+    color: var(--header-link-hover-color);
+    border-color: rgba(246, 192, 92, 0.36);
+    background: var(--group-control-bg-hover);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 0.7rem 1.45rem rgba(0, 0, 0, 0.24),
+        0 0 1rem rgba(246, 192, 92, 0.07);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .socialLink:hover::before {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .socialIcon {
+    color: currentColor;
+    filter: drop-shadow(0 0.35rem 0.7rem rgba(0, 0, 0, 0.25));
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langWrap {
+    z-index: 90;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langBtn {
+    color: var(--group-text-soft);
+    border-color: transparent;
+    background: transparent;
+
+    text-shadow: 0 0.45rem 0.9rem rgba(0, 0, 0, 0.28);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langBtn:hover,
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langBtn[data-open="true"] {
+    color: var(--header-link-hover-color);
+    border-color: rgba(246, 192, 92, 0.36);
+    background: var(--group-control-bg-hover);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 0.72rem 1.45rem rgba(0, 0, 0, 0.22),
+        0 0 1rem rgba(246, 192, 92, 0.06);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .chevron {
+    color: currentColor;
+    opacity: 0.92;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langBtn[data-open="true"] .chevron {
+    color: var(--group-gold);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langMenu {
+    z-index: 100;
+    overflow: hidden;
+
+    border-color: rgba(246, 192, 92, 0.28);
+    background: var(--group-menu-bg);
+
+    box-shadow:
+        0 1.4rem 3rem rgba(0, 0, 0, 0.5),
+        0 0 2rem rgba(246, 192, 92, 0.09),
+        0 0 1.4rem rgba(199, 134, 21, 0.07),
+        0 0 0 1px rgba(255, 255, 255, 0.025),
+        inset 0 1px 0 rgba(255, 255, 255, 0.065),
+        inset 0 -1px 0 rgba(246, 192, 92, 0.08);
+
+    backdrop-filter: blur(16px) saturate(1.14);
+    -webkit-backdrop-filter: blur(16px) saturate(1.14);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langItem {
+    color: var(--group-text-soft);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langItem:hover {
+    color: var(--group-text);
+
+    background:
+        radial-gradient(110% 140% at 0% 0%,
+            rgba(246, 192, 92, 0.12) 0%,
+            transparent 66%),
+        rgba(255, 255, 255, 0.04);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langMenu [aria-selected="true"] .langItem {
+    color: var(--group-gold);
+    background: var(--group-active-bg);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langItemName {
+    color: var(--group-muted);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink, .socialLink, .langBtn):focus-visible {
+    box-shadow:
+        0 0 0 2px rgba(2, 3, 6, 0.96),
+        0 0 0 4px rgba(246, 192, 92, 0.76),
+        0 0 1.25rem rgba(246, 192, 92, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 /* =======================================================
-   Cores por brand
+   Travel Header — Midnight Atlas Gold
    ======================================================= */
 
-.utilityBar[data-variant="logos-header"] {
-    --accent: #f6c05c;
-    --header-link-color: rgba(255, 248, 232, 0.96);
-    --header-back-bg-top: rgba(58, 48, 27, 0.82);
-    --header-back-bg-bottom: rgba(29, 24, 14, 0.92);
-    --header-back-border: rgba(246, 192, 92, 0.62);
-    --header-back-border-hover: rgba(246, 192, 92, 0.82);
-    --header-home-bg-top: rgba(58, 48, 27, 0.78);
-    --header-home-bg-bottom: rgba(29, 24, 14, 0.9);
-    --header-home-border: rgba(246, 192, 92, 0.56);
-    --header-home-border-hover: rgba(246, 192, 92, 0.78);
-}
-
-.utilityBar[data-variant="logos-header"] .langMenu [aria-selected="true"] .langItem {
-    background: rgba(246, 192, 92, 0.14);
-}
-
 .utilityBar[data-variant="travel-header"] {
-    --accent: var(--sl-accent-500, #2ea7e0);
+    --accent: var(--travel-gold, #e0a72b);
+
+    --travel-gold: #e0a72b;
+    --travel-gold-soft: #f3c45f;
+    --travel-cyan: #4fc3f7;
+
+    --travel-header-text: rgba(248, 251, 255, 0.96);
+    --travel-header-text-soft: rgba(224, 235, 246, 0.84);
+    --travel-header-muted: rgba(180, 201, 220, 0.68);
+
+    --header-divider-inner: rgba(79, 195, 247, 0.22);
+    --header-divider-home: rgba(224, 167, 43, 0.82);
+
+    --header-link-color: rgba(248, 251, 255, 0.92);
+    --header-link-hover-color: rgba(255, 249, 230, 0.99);
+
+    --header-back-border: rgba(79, 195, 247, 0.22);
+    --header-back-border-hover: rgba(224, 167, 43, 0.48);
+
+    --header-home-border: rgba(224, 167, 43, 0.34);
+    --header-home-border-hover: rgba(243, 196, 95, 0.62);
+
+    --header-back-bg-top: rgba(10, 31, 55, 0.9);
+    --header-back-bg-bottom: rgba(3, 11, 24, 0.98);
+
+    --header-home-bg-top: rgba(12, 37, 64, 0.92);
+    --header-home-bg-bottom: rgba(3, 11, 24, 0.985);
+
+    --travel-control-border-hover: rgba(224, 167, 43, 0.38);
+
+    --travel-control-bg-hover:
+        radial-gradient(95% 130% at 50% 0%,
+            rgba(224, 167, 43, 0.11) 0%,
+            transparent 68%),
+        radial-gradient(100% 140% at 100% 100%,
+            rgba(79, 195, 247, 0.08) 0%,
+            transparent 72%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.048) 0%,
+            rgba(255, 255, 255, 0.016) 100%),
+        rgba(7, 21, 37, 0.74);
+
+    --travel-menu-border: rgba(79, 195, 247, 0.24);
+
+    --travel-menu-bg:
+        radial-gradient(140% 150% at 0% 0%,
+            rgba(224, 167, 43, 0.12) 0%,
+            transparent 52%),
+        radial-gradient(130% 160% at 100% 100%,
+            rgba(79, 195, 247, 0.09) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgba(10, 31, 55, 0.98) 0%,
+            rgba(3, 11, 24, 0.995) 100%);
+
+    --travel-active-bg:
+        radial-gradient(115% 145% at 0% 0%,
+            rgba(224, 167, 43, 0.18) 0%,
+            transparent 68%),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.018));
+
+    --travel-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        0 0.7rem 1.45rem rgba(0, 0, 0, 0.28),
+        0 0 1rem rgba(79, 195, 247, 0.045);
+
+    --travel-shadow-hover:
+        inset 0 1px 0 rgba(255, 255, 255, 0.075),
+        0 1rem 1.95rem rgba(0, 0, 0, 0.36),
+        0 0 1.35rem rgba(224, 167, 43, 0.085);
+
+    z-index: 80;
+}
+
+.utilityBar[data-variant="travel-header"] .inner {
+    isolation: isolate;
+    border-bottom-color: var(--header-divider-inner);
+}
+
+.utilityBar[data-variant="travel-header"][data-page="travel-home"] .inner {
+    border-bottom-color: var(--header-divider-home);
+}
+
+.utilityBar[data-variant="travel-header"] .inner::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -1px;
+    z-index: 0;
+
+    block-size: 1px;
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgba(79, 195, 247, 0.12) 12%,
+            rgba(224, 167, 43, 0.42) 50%,
+            rgba(79, 195, 247, 0.18) 76%,
+            transparent 100%);
+
+    opacity: 0.95;
+}
+
+.utilityBar[data-variant="travel-header"] .inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    border-radius: 0 0 1.45rem 1.45rem;
+    pointer-events: none;
+
+    background:
+        radial-gradient(44rem 8rem at 12% 0%,
+            rgba(224, 167, 43, 0.07) 0%,
+            transparent 72%),
+        radial-gradient(38rem 9rem at 88% 0%,
+            rgba(79, 195, 247, 0.06) 0%,
+            transparent 76%);
+
+    opacity: 0.9;
+}
+
+.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink) {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    color: var(--header-link-color);
+    border-color: var(--header-back-border);
+
+    font-weight: 760;
+    letter-spacing: 0.006em;
+
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.035),
+        0 0.45rem 0.85rem rgba(0, 0, 0, 0.32);
+
+    box-shadow: var(--travel-shadow);
+
+    backdrop-filter: blur(12px) saturate(1.12);
+    -webkit-backdrop-filter: blur(12px) saturate(1.12);
+}
+
+.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(255, 255, 255, 0.018) 34%,
+            transparent 72%),
+        radial-gradient(100% 140% at 0% 0%,
+            rgba(224, 167, 43, 0.08) 0%,
+            transparent 66%),
+        radial-gradient(100% 140% at 100% 100%,
+            rgba(79, 195, 247, 0.055) 0%,
+            transparent 70%);
+
+    opacity: 0.95;
+}
+
+.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink)::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: 2;
+
+    border: 1px solid rgba(255, 255, 255, 0.035);
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        inset 0 -1px 0 rgba(79, 195, 247, 0.05);
+}
+
+.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink)>* {
+    position: relative;
+    z-index: 1;
+}
+
+.utilityBar[data-variant="travel-header"] .backLink {
+    background:
+        radial-gradient(120% 150% at 0% 0%,
+            rgba(224, 167, 43, 0.105) 0%,
+            transparent 52%),
+        radial-gradient(110% 140% at 100% 100%,
+            rgba(79, 195, 247, 0.07) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            var(--header-back-bg-top) 0%,
+            var(--header-back-bg-bottom) 100%);
+}
+
+.utilityBar[data-variant="travel-header"] .homeLink {
+    border-color: var(--header-home-border);
+
+    background:
+        radial-gradient(120% 150% at 0% 0%,
+            rgba(224, 167, 43, 0.145) 0%,
+            transparent 54%),
+        radial-gradient(120% 150% at 100% 100%,
+            rgba(79, 195, 247, 0.08) 0%,
+            transparent 64%),
+        linear-gradient(180deg,
+            var(--header-home-bg-top) 0%,
+            var(--header-home-bg-bottom) 100%);
+}
+
+.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink):hover {
+    transform: translateY(-1px);
+
+    color: var(--header-link-hover-color);
+    filter: saturate(1.045) contrast(1.018);
+
+    box-shadow: var(--travel-shadow-hover);
+}
+
+.utilityBar[data-variant="travel-header"] .backLink:hover {
+    border-color: var(--header-back-border-hover);
+}
+
+.utilityBar[data-variant="travel-header"] .homeLink:hover {
+    border-color: var(--header-home-border-hover);
+}
+
+.utilityBar[data-variant="travel-header"] :is(.backIcon, .homeIcon) {
+    color: var(--travel-gold-soft);
+
+    opacity: 0.96;
+
+    filter:
+        drop-shadow(0 0 0.45rem rgba(224, 167, 43, 0.16)) drop-shadow(0 0.2rem 0.5rem rgba(0, 0, 0, 0.3));
+}
+
+.utilityBar[data-variant="travel-header"] :is(.backText, .homeText) {
+    color: currentColor;
+}
+
+.utilityBar[data-variant="travel-header"] .socialLink {
+    position: relative;
+    isolation: isolate;
+
+    color: var(--travel-header-text-soft);
+    border: 1px solid transparent;
+    background: transparent;
+}
+
+.utilityBar[data-variant="travel-header"] .socialLink::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    z-index: -1;
+
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(224, 167, 43, 0.08) 0%,
+            transparent 65%),
+        rgba(7, 21, 37, 0.32);
+
+    opacity: 0;
+
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
+}
+
+.utilityBar[data-variant="travel-header"] .socialLink:hover {
+    color: var(--header-link-hover-color);
+    border-color: var(--travel-control-border-hover);
+    background: var(--travel-control-bg-hover);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 0.7rem 1.45rem rgba(0, 0, 0, 0.24),
+        0 0 1rem rgba(224, 167, 43, 0.055);
+}
+
+.utilityBar[data-variant="travel-header"] .socialLink:hover::before {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.utilityBar[data-variant="travel-header"] .socialIcon {
+    color: currentColor;
+    filter: drop-shadow(0 0.35rem 0.7rem rgba(0, 0, 0, 0.25));
+}
+
+.utilityBar[data-variant="travel-header"] .langWrap {
+    z-index: 90;
+}
+
+.utilityBar[data-variant="travel-header"] .langBtn {
+    color: var(--travel-header-text-soft);
+    border-color: transparent;
+    background: transparent;
+
+    text-shadow: 0 0.45rem 0.9rem rgba(0, 0, 0, 0.28);
+}
+
+.utilityBar[data-variant="travel-header"] .langBtn:hover,
+.utilityBar[data-variant="travel-header"] .langBtn[data-open="true"] {
+    color: var(--header-link-hover-color);
+    border-color: var(--travel-control-border-hover);
+    background: var(--travel-control-bg-hover);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 0.72rem 1.45rem rgba(0, 0, 0, 0.2),
+        0 0 1rem rgba(224, 167, 43, 0.045);
+}
+
+.utilityBar[data-variant="travel-header"] .chevron {
+    color: currentColor;
+    opacity: 0.92;
+}
+
+.utilityBar[data-variant="travel-header"] .langBtn[data-open="true"] .chevron {
+    color: var(--travel-gold-soft);
+}
+
+.utilityBar[data-variant="travel-header"] .langMenu {
+    z-index: 100;
+    overflow: hidden;
+
+    border-color: var(--travel-menu-border);
+    background: var(--travel-menu-bg);
+
+    box-shadow:
+        0 1.4rem 3rem rgba(0, 0, 0, 0.5),
+        0 0 2rem rgba(79, 195, 247, 0.08),
+        0 0 1.4rem rgba(224, 167, 43, 0.06),
+        0 0 0 1px rgba(255, 255, 255, 0.025),
+        inset 0 1px 0 rgba(255, 255, 255, 0.065),
+        inset 0 -1px 0 rgba(79, 195, 247, 0.08);
+
+    backdrop-filter: blur(16px) saturate(1.14);
+    -webkit-backdrop-filter: blur(16px) saturate(1.14);
+}
+
+.utilityBar[data-variant="travel-header"] .langItem {
+    color: var(--travel-header-text-soft);
+}
+
+.utilityBar[data-variant="travel-header"] .langItem:hover {
+    color: var(--travel-header-text);
+
+    background:
+        radial-gradient(110% 140% at 0% 0%,
+            rgba(224, 167, 43, 0.1) 0%,
+            transparent 66%),
+        radial-gradient(110% 140% at 100% 100%,
+            rgba(79, 195, 247, 0.06) 0%,
+            transparent 68%),
+        rgba(255, 255, 255, 0.045);
 }
 
 .utilityBar[data-variant="travel-header"] .langMenu [aria-selected="true"] .langItem {
-    background: rgba(46, 167, 224, 0.12);
+    color: var(--travel-gold-soft);
+    background: var(--travel-active-bg);
+}
+
+.utilityBar[data-variant="travel-header"] .langItemName {
+    color: var(--travel-header-muted);
+}
+
+.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink, .socialLink, .langBtn):focus-visible {
+    box-shadow:
+        0 0 0 2px rgba(2, 8, 20, 0.96),
+        0 0 0 4px rgba(224, 167, 43, 0.74),
+        0 0 1.25rem rgba(79, 195, 247, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 /* =======================================================
@@ -545,28 +1368,96 @@
    ======================================================= */
 
 .utilityBar[data-variant="sports-header"] {
-    --accent: var(--sports-utility-accent, var(--sports-gold, #d6a640));
+    --accent: var(--sports-gold, #d6a640);
 
-    --header-divider-inner: var(--sports-utility-divider-inner, rgba(214, 166, 64, 0.18));
-    --header-divider-home: var(--sports-utility-divider-home, rgba(214, 166, 64, 0.78));
+    --sports-utility-accent: var(--sports-gold, #d6a640);
+    --sports-utility-accent-soft: rgb(var(--sports-gold-rgb, 214 166 64) / 0.94);
 
-    --header-link-color: var(--sports-utility-link-color, rgba(248, 238, 205, 0.95));
-    --header-link-hover-color: var(--sports-utility-link-hover-color, rgba(255, 247, 221, 0.99));
+    --sports-utility-text: var(--sports-text, rgba(246, 247, 251, 0.96));
+    --sports-utility-text-soft: var(--sports-text-soft, rgba(224, 230, 238, 0.82));
+    --sports-utility-muted: var(--sports-muted, rgba(177, 187, 202, 0.68));
 
-    --header-back-border: var(--sports-utility-back-border, rgba(214, 166, 64, 0.24));
-    --header-back-border-hover: var(--sports-utility-back-border-hover, rgba(214, 166, 64, 0.42));
+    --sports-utility-divider-inner: rgb(var(--sports-gold-rgb, 214 166 64) / 0.22);
+    --sports-utility-divider-home: rgb(var(--sports-gold-rgb, 214 166 64) / 0.72);
 
-    --header-home-border: var(--sports-utility-home-border, rgba(214, 166, 64, 0.3));
-    --header-home-border-hover: var(--sports-utility-home-border-hover, rgba(214, 166, 64, 0.52));
+    --sports-utility-link-color: rgb(248 238 205 / 0.94);
+    --sports-utility-link-hover-color: rgb(255 248 225 / 0.99);
 
-    --header-back-bg-top: rgba(10, 18, 28, 0.96);
-    --header-back-bg-bottom: rgba(5, 10, 18, 0.985);
+    --sports-utility-back-border: rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+    --sports-utility-back-border-hover: rgb(var(--sports-gold-rgb, 214 166 64) / 0.44);
 
-    --header-home-bg-top: rgba(11, 20, 31, 0.94);
-    --header-home-bg-bottom: rgba(5, 11, 19, 0.985);
+    --sports-utility-home-border: rgb(var(--sports-gold-rgb, 214 166 64) / 0.32);
+    --sports-utility-home-border-hover: rgb(var(--sports-gold-rgb, 214 166 64) / 0.58);
+
+    --sports-utility-control-border-hover: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
+
+    --sports-utility-back-bg:
+        radial-gradient(120% 150% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.105) 0%,
+            transparent 52%),
+        radial-gradient(110% 140% at 100% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.038) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(16 27 40 / 0.92) 0%,
+            rgb(7 16 26 / 0.98) 100%);
+
+    --sports-utility-home-bg:
+        radial-gradient(120% 150% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.14) 0%,
+            transparent 54%),
+        radial-gradient(120% 150% at 100% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.045) 0%,
+            transparent 64%),
+        linear-gradient(180deg,
+            rgb(18 31 46 / 0.94) 0%,
+            rgb(6 14 24 / 0.99) 100%);
+
+    --sports-utility-control-bg-hover:
+        radial-gradient(95% 130% at 50% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.09) 0%,
+            transparent 70%),
+        linear-gradient(180deg,
+            rgb(255 255 255 / 0.045) 0%,
+            rgb(255 255 255 / 0.018) 100%),
+        rgb(8 18 30 / 0.72);
+
+    --sports-utility-active-bg:
+        radial-gradient(115% 145% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.16) 0%,
+            transparent 68%),
+        linear-gradient(180deg,
+            rgb(255 255 255 / 0.048),
+            rgb(255 255 255 / 0.018));
+
+    --sports-utility-menu-border: rgb(var(--sports-gold-rgb, 214 166 64) / 0.24);
+
+    --sports-utility-menu-bg:
+        radial-gradient(140% 150% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.12) 0%,
+            transparent 50%),
+        radial-gradient(130% 160% at 100% 100%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.045) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(10 20 32 / 0.98) 0%,
+            rgb(5 11 19 / 0.995) 100%);
+
+    --sports-utility-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.055),
+        0 0.65rem 1.35rem rgb(0 0 0 / 0.26),
+        0 0 1rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.035);
+
+    --sports-utility-shadow-hover:
+        inset 0 1px 0 rgb(255 255 255 / 0.07),
+        0 0.95rem 1.85rem rgb(0 0 0 / 0.34),
+        0 0 1.35rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.075);
+
+    z-index: 80;
 }
 
 .utilityBar[data-variant="sports-header"] .inner {
+    isolation: isolate;
     border-bottom-color: var(--sports-utility-divider-inner);
 }
 
@@ -574,10 +1465,104 @@
     border-bottom-color: var(--sports-utility-divider-home);
 }
 
+.utilityBar[data-variant="sports-header"] .inner::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -1px;
+    z-index: 0;
+
+    block-size: 1px;
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 12%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.34) 50%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.06) 72%,
+            transparent 100%);
+
+    opacity: 0.95;
+}
+
+.utilityBar[data-variant="sports-header"] .inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(44rem 8rem at 10% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.05) 0%,
+            transparent 72%),
+        radial-gradient(36rem 9rem at 90% 0%,
+            rgb(var(--sports-green-rgb, 46 194 126) / 0.026) 0%,
+            transparent 76%);
+
+    opacity: 0.95;
+}
+
 .utilityBar[data-variant="sports-header"] :is(.backLink, .homeLink) {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
     color: var(--sports-utility-link-color);
     border-color: var(--sports-utility-back-border);
+
+    font-weight: 760;
+    letter-spacing: 0.006em;
+
+    text-shadow:
+        0 1px 0 rgb(255 255 255 / 0.035),
+        0 0.45rem 0.85rem rgb(0 0 0 / 0.3);
+
     box-shadow: var(--sports-utility-shadow);
+
+    backdrop-filter: blur(12px) saturate(1.12);
+    -webkit-backdrop-filter: blur(12px) saturate(1.12);
+}
+
+.utilityBar[data-variant="sports-header"] :is(.backLink, .homeLink)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        linear-gradient(180deg,
+            rgb(255 255 255 / 0.06) 0%,
+            rgb(255 255 255 / 0.018) 34%,
+            transparent 72%);
+
+    opacity: 0.9;
+}
+
+.utilityBar[data-variant="sports-header"] :is(.backLink, .homeLink)::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: 2;
+
+    border: 1px solid rgb(255 255 255 / 0.035);
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.055),
+        inset 0 -1px 0 rgb(var(--sports-gold-rgb, 214 166 64) / 0.045);
+}
+
+.utilityBar[data-variant="sports-header"] :is(.backLink, .homeLink)>* {
+    position: relative;
+    z-index: 1;
 }
 
 .utilityBar[data-variant="sports-header"] .backLink {
@@ -590,7 +1575,11 @@
 }
 
 .utilityBar[data-variant="sports-header"] :is(.backLink, .homeLink):hover {
+    transform: translateY(-1px);
+
     color: var(--sports-utility-link-hover-color);
+    filter: saturate(1.04) contrast(1.02);
+
     box-shadow: var(--sports-utility-shadow-hover);
 }
 
@@ -604,68 +1593,132 @@
 
 .utilityBar[data-variant="sports-header"] :is(.backIcon, .homeIcon) {
     color: var(--sports-utility-accent);
+
+    opacity: 0.96;
+
+    filter:
+        drop-shadow(0 0 0.45rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.14)) drop-shadow(0 0.2rem 0.5rem rgb(0 0 0 / 0.28));
+}
+
+.utilityBar[data-variant="sports-header"] :is(.backText, .homeText) {
+    color: currentColor;
 }
 
 .utilityBar[data-variant="sports-header"] .socialLink {
-    color: var(--sports-utility-link-color);
-    background: transparent;
+    position: relative;
+    isolation: isolate;
+
+    color: var(--sports-utility-text-soft);
     border: 1px solid transparent;
+    background: transparent;
 }
 
-.utilityBar[data-variant="sports-header"] .socialIcon {
-    color: currentColor;
+.utilityBar[data-variant="sports-header"] .socialLink::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    z-index: -1;
+
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.08) 0%,
+            transparent 65%),
+        rgb(8 18 30 / 0.28);
+
+    opacity: 0;
+
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease;
 }
 
 .utilityBar[data-variant="sports-header"] .socialLink:hover {
     color: var(--sports-utility-link-hover-color);
-    border-color: rgb(var(--sports-gold-rgb) / 0.2);
+    border-color: var(--sports-utility-control-border-hover);
     background: var(--sports-utility-control-bg-hover);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        0 10px 22px rgba(0, 0, 0, 0.22),
-        0 0 18px rgb(var(--sports-gold-rgb) / 0.07);
+        inset 0 1px 0 rgb(255 255 255 / 0.045),
+        0 0.7rem 1.45rem rgb(0 0 0 / 0.24),
+        0 0 1rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.055);
+}
+
+.utilityBar[data-variant="sports-header"] .socialLink:hover::before {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.utilityBar[data-variant="sports-header"] .socialIcon {
+    color: currentColor;
+    filter: drop-shadow(0 0.35rem 0.7rem rgb(0 0 0 / 0.25));
+}
+
+.utilityBar[data-variant="sports-header"] .langWrap {
+    z-index: 90;
 }
 
 .utilityBar[data-variant="sports-header"] .langBtn {
-    color: var(--sports-utility-link-color);
-    background: transparent;
+    color: var(--sports-utility-text-soft);
     border-color: transparent;
+    background: transparent;
+
+    text-shadow: 0 0.45rem 0.9rem rgb(0 0 0 / 0.28);
 }
 
 .utilityBar[data-variant="sports-header"] .langBtn:hover,
 .utilityBar[data-variant="sports-header"] .langBtn[data-open="true"] {
     color: var(--sports-utility-link-hover-color);
-    border-color: rgb(var(--sports-gold-rgb) / 0.2);
+    border-color: var(--sports-utility-control-border-hover);
     background: var(--sports-utility-control-bg-hover);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        0 10px 22px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgb(255 255 255 / 0.045),
+        0 0.72rem 1.45rem rgb(0 0 0 / 0.2),
+        0 0 1rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.045);
 }
 
 .utilityBar[data-variant="sports-header"] .chevron {
     color: currentColor;
+    opacity: 0.92;
 }
 
 .utilityBar[data-variant="sports-header"] .langBtn[data-open="true"] .chevron {
-    color: currentColor;
+    color: var(--sports-utility-accent);
 }
 
 .utilityBar[data-variant="sports-header"] .langMenu {
+    z-index: 100;
+    overflow: hidden;
+
     border-color: var(--sports-utility-menu-border);
     background: var(--sports-utility-menu-bg);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        0 22px 46px rgba(0, 0, 0, 0.36),
-        0 0 28px rgb(var(--sports-gold-rgb) / 0.055);
+        0 1.4rem 3rem rgb(0 0 0 / 0.5),
+        0 0 2rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.07),
+        0 0 0 1px rgb(255 255 255 / 0.025),
+        inset 0 1px 0 rgb(255 255 255 / 0.065),
+        inset 0 -1px 0 rgb(var(--sports-gold-rgb, 214 166 64) / 0.075);
+
+    backdrop-filter: blur(16px) saturate(1.14);
+    -webkit-backdrop-filter: blur(16px) saturate(1.14);
 }
 
 .utilityBar[data-variant="sports-header"] .langItem {
-    color: var(--sports-text-soft);
+    color: var(--sports-utility-text-soft);
 }
 
 .utilityBar[data-variant="sports-header"] .langItem:hover {
-    color: var(--sports-text);
-    background: var(--sports-utility-control-bg-hover);
+    color: var(--sports-utility-text);
+
+    background:
+        radial-gradient(110% 140% at 0% 0%,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.09) 0%,
+            transparent 66%),
+        rgb(255 255 255 / 0.045);
 }
 
 .utilityBar[data-variant="sports-header"] .langMenu [aria-selected="true"] .langItem {
@@ -674,41 +1727,149 @@
 }
 
 .utilityBar[data-variant="sports-header"] .langItemName {
-    color: var(--sports-muted);
+    color: var(--sports-utility-muted);
+}
+
+.utilityBar[data-variant="sports-header"] :is(.backLink, .homeLink, .socialLink, .langBtn):focus-visible {
+    box-shadow:
+        0 0 0 2px rgb(3 6 11 / 0.96),
+        0 0 0 4px rgb(var(--sports-gold-rgb, 214 166 64) / 0.74),
+        0 0 1.25rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.14),
+        inset 0 1px 0 rgb(255 255 255 / 0.06);
 }
 
 /* =======================================================
-   Hotel Header — ESTILO HOTEL NOVO
-   Apenas botões Voltar / Início
+   Hotel Header — Amber Noir Sport Lodge
    ======================================================= */
 
 .utilityBar[data-variant="hotel-header"] {
-    --accent: rgba(232, 205, 156, 0.96);
+    --accent: var(--hotel-champagne-soft, #ead7b0);
 
-    --header-divider-inner: rgba(232, 205, 156, 0.2);
+    --hotel-header-text: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.98);
+    --hotel-header-text-soft: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.82);
+    --hotel-header-muted: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.62);
+    --hotel-header-champagne: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.94);
 
-    --hotel-header-text: rgba(255, 249, 241, 0.97);
-    --hotel-header-text-soft: rgba(248, 234, 215, 0.86);
-    --hotel-header-champagne: rgba(232, 205, 156, 0.94);
+    --header-divider-inner: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.17);
+    --header-divider-home: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
 
     --header-link-color: var(--hotel-header-text-soft);
     --header-link-hover-color: var(--hotel-header-text);
 
-    --header-back-border: rgba(232, 205, 156, 0.19);
-    --header-back-border-hover: rgba(232, 205, 156, 0.34);
+    --header-back-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
+    --header-back-border-hover: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.36);
 
-    --header-home-border: rgba(232, 205, 156, 0.24);
-    --header-home-border-hover: rgba(232, 205, 156, 0.42);
+    --header-home-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+    --header-home-border-hover: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.44);
 
-    --header-back-bg-top: rgba(43, 32, 24, 0.92);
-    --header-back-bg-bottom: rgba(18, 14, 12, 0.98);
+    --header-back-bg-top: rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.58);
+    --header-back-bg-bottom: rgb(var(--hotel-black-rgb, 7 4 2) / 0.9);
 
-    --header-home-bg-top: rgba(52, 39, 28, 0.94);
-    --header-home-bg-bottom: rgba(20, 15, 12, 0.99);
+    --header-home-bg-top: rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.68);
+    --header-home-bg-bottom: rgb(var(--hotel-black-rgb, 7 4 2) / 0.94);
+
+    --hotel-control-border-hover: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
+
+    --hotel-control-bg-hover:
+        radial-gradient(95% 145% at 50% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06) 0%,
+            transparent 68%),
+        radial-gradient(110% 150% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.07) 0%,
+            transparent 72%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.032) 0%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.14) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.22);
+
+    --hotel-active-bg:
+        radial-gradient(120% 145% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 0%,
+            transparent 68%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.042),
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.055));
+
+    --hotel-menu-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+
+    --hotel-menu-bg:
+        radial-gradient(140% 150% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
+            transparent 46%),
+        radial-gradient(130% 150% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1) 0%,
+            transparent 54%),
+        radial-gradient(96% 130% at 50% 100%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.03) 0%,
+            transparent 68%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.94) 0%,
+            rgb(var(--hotel-graphite-rgb, 26 18 12) / 0.985) 48%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.995) 100%);
+
+    --hotel-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055),
+        0 0.75rem 1.65rem rgb(0 0 0 / 0.24),
+        0 0 1.1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.035);
+
+    --hotel-shadow-hover:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075),
+        0 1rem 2rem rgb(0 0 0 / 0.3),
+        0 0 1.45rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07);
+
+    z-index: 80;
 }
 
 .utilityBar[data-variant="hotel-header"] .inner {
-    border-bottom-color: rgba(232, 205, 156, 0.2);
+    isolation: isolate;
+    border-bottom-color: transparent;
+}
+
+.utilityBar[data-variant="hotel-header"] .inner::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -1px;
+    z-index: 0;
+
+    block-size: 1px;
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1) 16%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28) 50%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1) 84%,
+            transparent 100%);
+
+    opacity: 0.95;
+
+    filter:
+        drop-shadow(0 0 14px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.055));
+}
+
+.utilityBar[data-variant="hotel-header"] .inner::after {
+    content: "";
+    position: absolute;
+    inset: clamp(0.2rem, 0.45vw, 0.38rem) 0 0;
+    z-index: -1;
+
+    border-radius: 0 0 var(--hotel-radius-lg, 1.4rem) var(--hotel-radius-lg, 1.4rem);
+    pointer-events: none;
+
+    background:
+        radial-gradient(42rem 8rem at 12% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.035) 0%,
+            transparent 72%),
+        radial-gradient(34rem 9rem at 88% 10%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.052) 0%,
+            transparent 74%),
+        radial-gradient(24rem 7rem at 58% 100%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.026) 0%,
+            transparent 78%);
+
+    opacity: 0.92;
 }
 
 .utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink) {
@@ -716,25 +1877,20 @@
     isolation: isolate;
     overflow: hidden;
 
-    min-height: clamp(42px, 3vw, 46px);
-    padding: 0.56rem 1rem;
-
-    border-radius: 999px;
-
     color: var(--hotel-header-text-soft);
+    border-color: var(--header-back-border);
+
     font-weight: 730;
     letter-spacing: 0.002em;
 
     text-shadow:
-        0 1px 0 rgba(255, 250, 242, 0.04),
-        0 6px 14px rgba(0, 0, 0, 0.16);
+        0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035),
+        0 0.55rem 1.05rem rgb(0 0 0 / 0.34);
 
-    transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        color 180ms ease,
-        background 180ms ease;
+    box-shadow: var(--hotel-shadow);
+
+    backdrop-filter: blur(12px) saturate(1.14);
+    -webkit-backdrop-filter: blur(12px) saturate(1.14);
 }
 
 .utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink)::before {
@@ -748,17 +1904,17 @@
 
     background:
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.06) 0%,
-            rgba(255, 250, 242, 0.014) 22%,
-            transparent 48%),
-        radial-gradient(90% 150% at 0% 50%,
-            rgba(232, 205, 156, 0.045) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.016) 24%,
+            transparent 52%),
+        radial-gradient(105% 150% at 0% 42%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.052) 0%,
             transparent 72%),
-        radial-gradient(70% 130% at 100% 50%,
-            rgba(232, 205, 156, 0.032) 0%,
-            transparent 72%);
+        radial-gradient(85% 140% at 100% 62%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.058) 0%,
+            transparent 74%);
 
-    opacity: 0.95;
+    opacity: 0.98;
 }
 
 .utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink)::after {
@@ -767,9 +1923,14 @@
     inset: 1px;
     z-index: 3;
 
-    border: 1px solid rgba(255, 239, 210, 0.035);
+    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035);
     border-radius: inherit;
+
     pointer-events: none;
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.048),
+        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.06);
 }
 
 .utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink)>* {
@@ -778,24 +1939,21 @@
 }
 
 .utilityBar[data-variant="hotel-header"] .backLink {
-    border-color: var(--header-back-border);
-
     background:
         radial-gradient(120% 145% at 0% 0%,
-            rgba(232, 205, 156, 0.058) 0%,
-            transparent 44%),
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.055) 0%,
+            transparent 46%),
+        radial-gradient(110% 140% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.052) 0%,
+            transparent 58%),
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.028) 0%,
-            rgba(255, 250, 242, 0.008) 24%,
-            rgba(0, 0, 0, 0.08) 100%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.026) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.008) 26%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.09) 100%),
         linear-gradient(135deg,
             var(--header-back-bg-top) 0%,
-            rgba(28, 21, 17, 0.975) 56%,
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.7) 56%,
             var(--header-back-bg-bottom) 100%);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.045),
-        0 10px 22px rgba(0, 0, 0, 0.16);
 }
 
 .utilityBar[data-variant="hotel-header"] .homeLink {
@@ -803,99 +1961,303 @@
 
     background:
         radial-gradient(120% 145% at 0% 0%,
-            rgba(232, 205, 156, 0.078) 0%,
-            transparent 44%),
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.078) 0%,
+            transparent 46%),
         radial-gradient(120% 145% at 100% 100%,
-            rgba(126, 94, 58, 0.05) 0%,
-            transparent 52%),
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.07) 0%,
+            transparent 56%),
+        radial-gradient(90% 130% at 50% 100%,
+            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.03) 0%,
+            transparent 68%),
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.036) 0%,
-            rgba(255, 250, 242, 0.01) 24%,
-            rgba(0, 0, 0, 0.075) 100%),
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.01) 24%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.08) 100%),
         linear-gradient(135deg,
             var(--header-home-bg-top) 0%,
-            rgba(31, 23, 18, 0.985) 58%,
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.76) 58%,
             var(--header-home-bg-bottom) 100%);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.055),
-        0 12px 26px rgba(0, 0, 0, 0.18),
-        0 0 0 1px rgba(232, 205, 156, 0.025);
 }
 
 .utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink):hover {
     transform: translateY(-1px);
+
     color: var(--hotel-header-text);
+    filter: saturate(1.035) contrast(1.012);
+
+    box-shadow: var(--hotel-shadow-hover);
 }
 
 .utilityBar[data-variant="hotel-header"] .backLink:hover {
     border-color: var(--header-back-border-hover);
-
-    background:
-        radial-gradient(120% 145% at 0% 0%,
-            rgba(232, 205, 156, 0.076) 0%,
-            transparent 44%),
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.036) 0%,
-            rgba(255, 250, 242, 0.012) 24%,
-            rgba(0, 0, 0, 0.065) 100%),
-        linear-gradient(135deg,
-            rgba(49, 37, 28, 0.96) 0%,
-            rgba(31, 24, 19, 0.985) 56%,
-            rgba(15, 12, 10, 1) 100%);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.06),
-        0 14px 28px rgba(0, 0, 0, 0.2),
-        0 0 0 1px rgba(232, 205, 156, 0.04);
 }
 
 .utilityBar[data-variant="hotel-header"] .homeLink:hover {
     border-color: var(--header-home-border-hover);
-
-    background:
-        radial-gradient(120% 145% at 0% 0%,
-            rgba(232, 205, 156, 0.1) 0%,
-            transparent 44%),
-        radial-gradient(120% 145% at 100% 100%,
-            rgba(126, 94, 58, 0.06) 0%,
-            transparent 52%),
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.048) 0%,
-            rgba(255, 250, 242, 0.014) 24%,
-            rgba(0, 0, 0, 0.06) 100%),
-        linear-gradient(135deg,
-            rgba(56, 43, 31, 0.97) 0%,
-            rgba(34, 26, 20, 0.99) 58%,
-            rgba(16, 13, 11, 1) 100%);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.07),
-        0 16px 32px rgba(0, 0, 0, 0.23),
-        0 0 0 1px rgba(232, 205, 156, 0.06);
 }
 
 .utilityBar[data-variant="hotel-header"] :is(.backIcon, .homeIcon) {
     color: var(--hotel-header-champagne);
+
     opacity: 0.94;
-    filter: drop-shadow(0 0 7px rgba(232, 205, 156, 0.09));
+
+    filter:
+        drop-shadow(0 0 0.42rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1)) drop-shadow(0 0.25rem 0.55rem rgb(0 0 0 / 0.28));
 }
 
 .utilityBar[data-variant="hotel-header"] :is(.backText, .homeText) {
-   
     color: currentColor;
 }
 
-.utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink):focus-visible {
+.utilityBar[data-variant="hotel-header"] .socialLink {
+    position: relative;
+    isolation: isolate;
+
+    color: var(--hotel-header-muted);
+    border: 1px solid transparent;
+    background: transparent;
+}
+
+.utilityBar[data-variant="hotel-header"] .socialLink::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    z-index: -1;
+
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.062) 0%,
+            transparent 62%),
+        rgb(var(--hotel-black-rgb, 7 4 2) / 0.12);
+
+    opacity: 0;
+
+    transition:
+        opacity var(--hotel-transition-fast, 180ms ease),
+        transform var(--hotel-transition-fast, 180ms ease);
+}
+
+.utilityBar[data-variant="hotel-header"] .socialLink:hover {
+    color: var(--hotel-header-text);
+    border-color: var(--hotel-control-border-hover);
+    background: var(--hotel-control-bg-hover);
+
     box-shadow:
-        0 0 0 3px rgba(232, 205, 156, 0.18),
-        0 0 0 6px rgba(255, 250, 242, 0.08),
-        inset 0 1px 0 rgba(255, 250, 242, 0.06),
-        0 16px 32px rgba(0, 0, 0, 0.24);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04),
+        0 0.7rem 1.45rem rgb(0 0 0 / 0.18),
+        0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04);
+}
+
+.utilityBar[data-variant="hotel-header"] .socialLink:hover::before {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.utilityBar[data-variant="hotel-header"] .socialIcon {
+    color: currentColor;
+    filter: drop-shadow(0 0.35rem 0.7rem rgb(0 0 0 / 0.24));
+}
+
+.utilityBar[data-variant="hotel-header"] .langWrap {
+    z-index: 90;
+}
+
+.utilityBar[data-variant="hotel-header"] .langBtn {
+    position: relative;
+    isolation: isolate;
+
+    min-height: 42px;
+    padding-inline: 0.9rem;
+
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
+    border-radius: 999px;
+
+    color: var(--hotel-header-text-soft);
+
+    background:
+        radial-gradient(120% 150% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
+            transparent 52%),
+        radial-gradient(110% 140% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.08) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.03) 0%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.08) 100%),
+        linear-gradient(135deg,
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.62) 0%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.9) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
+        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.08),
+        0 0.7rem 1.5rem rgb(0 0 0 / 0.24);
+
+    text-shadow: 0 0.4rem 0.85rem rgb(0 0 0 / 0.28);
+
+    backdrop-filter: blur(12px) saturate(1.12);
+    -webkit-backdrop-filter: blur(12px) saturate(1.12);
+}
+
+.utilityBar[data-variant="hotel-header"] .langBtn:hover,
+.utilityBar[data-variant="hotel-header"] .langBtn[data-open="true"] {
+    color: var(--hotel-header-text);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.36);
+
+    background:
+        radial-gradient(120% 150% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            transparent 52%),
+        radial-gradient(110% 140% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.038) 0%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.09) 100%),
+        linear-gradient(135deg,
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.68) 0%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.92) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075),
+        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1),
+        0 0.85rem 1.7rem rgb(0 0 0 / 0.26),
+        0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07);
+}
+
+.utilityBar[data-variant="hotel-header"] .langText {
+    color: currentColor;
+}
+
+.utilityBar[data-variant="hotel-header"] .chevron {
+    color: currentColor;
+    opacity: 0.92;
+}
+
+.utilityBar[data-variant="hotel-header"] .langBtn[data-open="true"] .chevron {
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.96);
+}
+
+.utilityBar[data-variant="hotel-header"] .langMenu {
+    z-index: 100;
+    overflow: hidden;
+
+    inset-block-start: calc(100% + 0.55rem);
+
+    padding: 0.5rem;
+
+    border: 1px solid var(--hotel-menu-border);
+    border-radius: 1.45rem;
+
+    background: var(--hotel-menu-bg);
+
+    box-shadow:
+        0 1.35rem 3rem rgb(0 0 0 / 0.46),
+        0 0 2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06),
+        0 0 0 1px rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.025),
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
+        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.08);
+
+    backdrop-filter: blur(16px) saturate(1.12);
+    -webkit-backdrop-filter: blur(16px) saturate(1.12);
+}
+
+.utilityBar[data-variant="hotel-header"] .langItem {
+    position: relative;
+
+    gap: 0.18rem;
+
+    padding: 0.8rem 0.9rem;
+
+    border: 1px solid transparent;
+    border-radius: 1.1rem;
+
+    color: var(--hotel-header-text-soft);
+    background: transparent;
+
+    transition:
+        background-color 160ms ease,
+        color 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        filter 160ms ease;
+}
+
+.utilityBar[data-variant="hotel-header"] .langItem:hover {
+    color: var(--hotel-header-text);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12);
+
+    background:
+        radial-gradient(120% 140% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.055) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.03) 0%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.06) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035);
+
+    filter: saturate(1.02);
 }
 
 .utilityBar[data-variant="hotel-header"] .langMenu [aria-selected="true"] .langItem {
-    background: color-mix(in oklab, var(--accent), transparent 84%);
+    color: var(--hotel-header-text);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
+
+    background:
+        radial-gradient(120% 145% at 0% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 0%,
+            transparent 54%),
+        radial-gradient(120% 145% at 100% 100%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.07) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04) 0%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.08) 100%),
+        linear-gradient(135deg,
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.46) 0%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.22) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055),
+        0 0 0 1px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04);
+}
+
+.utilityBar[data-variant="hotel-header"] .langMenu [aria-selected="true"] .langItemLabel {
+    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.98);
+}
+
+.utilityBar[data-variant="hotel-header"] .langMenu [aria-selected="true"] .langItemName {
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.78);
+}
+
+.utilityBar[data-variant="hotel-header"] .langItemLabel {
+    display: block;
+
+    color: currentColor;
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+}
+
+.utilityBar[data-variant="hotel-header"] .langItemName {
+    display: block;
+
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.58);
+    font-size: clamp(0.9rem, 1vw, 0.95rem);
+    line-height: 1.2;
+}
+
+.utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink, .socialLink, .langBtn, .langItem):focus-visible {
+    box-shadow:
+        0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.96),
+        0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.7),
+        0 0 1.15rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
 }
 
 /* =======================================================
@@ -1014,6 +2376,16 @@
     .langItemName {
         font-size: 0.88rem;
     }
+
+    .utilityBar[data-variant="hotel-header"] .langMenu {
+        border-radius: 1.15rem;
+        padding: 0.38rem;
+    }
+
+    .utilityBar[data-variant="hotel-header"] .langItem {
+        padding: 0.68rem 0.74rem;
+        border-radius: 0.9rem;
+    }
 }
 
 @media (max-width: 500px) {
@@ -1045,6 +2417,7 @@
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
+
         max-width: 320px;
         margin-inline: auto;
         padding-inline-start: 0;
@@ -1054,12 +2427,14 @@
         .utilityBar[data-variant="travel-header"],
         .utilityBar[data-variant="sports-header"],
         .utilityBar[data-variant="hotel-header"]) :is(.backLink, .homeLink) {
+        justify-content: center;
+        gap: 0.42rem;
+
         width: 100%;
         min-height: 36px;
-        justify-content: center;
         padding: 0.42rem 0.7rem;
+
         font-size: 0.82rem;
-        gap: 0.42rem;
     }
 
     :is(.utilityBar[data-variant="logos-header"],
@@ -1071,8 +2446,9 @@
         align-items: center;
         justify-content: center;
         gap: 0.4rem;
-        padding-inline-end: 0;
+
         width: 100%;
+        padding-inline-end: 0;
     }
 
     :is(.utilityBar[data-variant="logos-header"],
@@ -1176,6 +2552,7 @@
 .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .inner {
     grid-template-columns: minmax(0, 1fr) auto;
     column-gap: clamp(0.75rem, 1.6vw, 1.25rem);
+
     min-height: clamp(70px, 5.1vw, 88px);
 }
 
@@ -1184,13 +2561,15 @@
     align-items: center;
     justify-content: flex-start;
     gap: clamp(0.5rem, 1vw, 0.75rem);
+
     width: 100%;
     min-width: 0;
 }
 
 .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .left>* {
-    min-width: 0;
     flex: 0 1 auto;
+
+    min-width: 0;
 }
 
 .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .homeLink {
@@ -1211,6 +2590,7 @@
     .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .inner {
         grid-template-columns: 1fr;
         row-gap: 0.58rem;
+
         min-height: auto;
         padding-block: 0.55rem 0.36rem;
     }
@@ -1221,6 +2601,7 @@
 
     .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .left {
         justify-content: center;
+
         max-inline-size: min(100%, 34rem);
         margin-inline: auto;
         padding-inline-start: 0;
@@ -1247,15 +2628,17 @@
         align-items: stretch;
         justify-content: center;
         gap: 0.5rem;
+
         max-inline-size: min(100%, 25rem);
         margin-inline: auto;
         padding-inline-start: 0;
     }
 
     .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .left>* {
+        flex: 0 0 auto;
+
         width: 100%;
         max-inline-size: none;
-        flex: 0 0 auto;
     }
 
     .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .left>*>button {
@@ -1264,11 +2647,13 @@
     }
 
     .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .homeLink {
+        justify-content: center;
+
         width: 100%;
         max-inline-size: none;
         min-height: 38px;
-        justify-content: center;
         padding: 0.44rem 0.86rem;
+
         font-size: 0.86rem;
     }
 
@@ -1295,6 +2680,7 @@
     .utilityBar[data-variant="sports-header"][data-page="sports-inner"] .homeLink {
         min-height: 36px;
         padding-inline: 0.72rem;
+
         font-size: 0.82rem;
     }
 

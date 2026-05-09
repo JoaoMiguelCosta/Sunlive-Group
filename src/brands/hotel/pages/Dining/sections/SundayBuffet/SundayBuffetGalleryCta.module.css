@@ -4,25 +4,6 @@
     inline-size: 100%;
 }
 
-.block::before {
-    content: "";
-    position: absolute;
-    inset: -1rem 8% auto;
-    z-index: 0;
-
-    block-size: clamp(4.5rem, 8vw, 7rem);
-    pointer-events: none;
-    border-radius: 999px;
-
-    background:
-        radial-gradient(circle at 50% 50%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 0%,
-            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.07) 34%,
-            transparent 72%);
-
-    filter: blur(28px);
-    opacity: 0.72;
-}
 
 .layout {
     position: relative;
@@ -77,40 +58,7 @@
         filter 180ms ease;
 }
 
-.featuredCard::before,
-.secondaryCard::before,
-.detailsCard::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
 
-    pointer-events: none;
-    border-radius: inherit;
-
-    background:
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06) 0%,
-            transparent 18%,
-            transparent 82%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.028) 100%),
-        radial-gradient(80% 80% at 50% 50%,
-            transparent 58%,
-            rgb(0 0 0 / 0.12) 100%);
-}
-
-.featuredCard::after,
-.secondaryCard::after,
-.detailsCard::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 2;
-
-    pointer-events: none;
-    border-radius: inherit;
-    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.045);
-}
 
 .featuredCard {
     min-block-size: clamp(28rem, 46vw, 42rem);
@@ -141,7 +89,7 @@
     inset: auto auto clamp(0.72rem, 1vw, 0.95rem) clamp(0.72rem, 1vw, 0.95rem);
     z-index: 3;
 
-    max-inline-size: min(76%, 24rem);
+  
     padding: 0.62rem 0.9rem;
 
     border-radius: 999px;

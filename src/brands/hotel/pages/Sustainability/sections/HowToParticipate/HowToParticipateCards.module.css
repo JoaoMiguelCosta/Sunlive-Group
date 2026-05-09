@@ -1,4 +1,10 @@
 .grid {
+    --grid-champagne-rgb: 232 204 158;
+    --grid-bronze-rgb: 139 105 66;
+
+    position: relative;
+    isolation: isolate;
+
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: clamp(0.95rem, 1.5vw, 1.2rem);
@@ -8,6 +14,9 @@
 }
 
 .item {
+    position: relative;
+    isolation: isolate;
+
     display: flex;
     min-inline-size: 0;
     grid-column: span 3;

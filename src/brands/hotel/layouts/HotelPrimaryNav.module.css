@@ -7,6 +7,7 @@
 
     --nav-max-width: 1360px;
     --nav-radius: clamp(1rem, 1.45vw, 1.55rem);
+    --nav-mobile-drawer-max-height: calc(100dvh - 7.25rem);
 }
 
 .navInner {
@@ -61,6 +62,17 @@
 
     pointer-events: none;
 
+    background:
+        linear-gradient(90deg,
+            rgb(255 247 229 / 0.022) 0%,
+            transparent 18%,
+            transparent 82%,
+            rgb(255 247 229 / 0.016) 100%),
+        repeating-linear-gradient(90deg,
+            rgb(255 247 229 / 0.012) 0,
+            rgb(255 247 229 / 0.012) 1px,
+            transparent 1px,
+            transparent 8px);
 }
 
 .navInner::after {
@@ -114,7 +126,10 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
 
-    text-wrap: balance;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     text-shadow:
         0 0.75rem 1.8rem rgb(0 0 0 / 0.58),
         0 0 1.2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
@@ -520,12 +535,12 @@
     transform: translateY(1px) rotate(225deg);
 }
 
-/* ===== Ajustes desktop intermédio ===== */
+/* ===== Desktop intermédio ===== */
 
 @media (max-width: 1360px) and (min-width: 1181px) {
     .navButton {
-        font-size: clamp(0.76rem, 0.68rem + 0.16vw, 0.88rem);
-        padding-inline: 0.16rem;
+        font-size: clamp(0.74rem, 0.68rem + 0.16vw, 0.88rem);
+        padding-inline: 0.14rem;
     }
 
     .navToggle {
@@ -543,15 +558,20 @@
     inline-size: 100%;
 
     opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
     transition:
         grid-template-rows var(--hotel-transition-base, 240ms ease),
-        opacity var(--hotel-transition-base, 240ms ease);
+        opacity var(--hotel-transition-base, 240ms ease),
+        visibility var(--hotel-transition-base, 240ms ease);
 }
 
 .drawerSubmenuOpen {
     grid-template-rows: 1fr;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .drawerSubmenuList {
@@ -561,6 +581,10 @@
     margin: 0;
     padding: 0.16rem 0 0.66rem;
     list-style: none;
+}
+
+.drawerSubmenuOpen .drawerSubmenuList {
+    overflow: visible;
 }
 
 .drawerSubmenuItem+.drawerSubmenuItem {
@@ -672,11 +696,15 @@
     outline-offset: 2px;
 }
 
-/* ===== Drawer ===== */
+/* ===== Drawer/tablet ===== */
 
 @media (max-width: 1180px) {
     .nav {
         --nav-radius: clamp(0.95rem, 2.5vw, 1.25rem);
+    }
+
+    .navInner {
+        max-block-size: calc(100dvh - 1.25rem);
     }
 
     .navTopRow {
@@ -692,16 +720,45 @@
         display: grid;
         grid-template-rows: 0fr;
 
+        max-block-size: 0;
+        overflow: hidden;
+
         opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
 
         transition:
             grid-template-rows var(--hotel-transition-base, 240ms ease),
-            opacity var(--hotel-transition-base, 240ms ease);
+            max-block-size var(--hotel-transition-base, 240ms ease),
+            opacity var(--hotel-transition-base, 240ms ease),
+            visibility var(--hotel-transition-base, 240ms ease);
     }
 
     .navListWrapOpen {
         grid-template-rows: 1fr;
+
+        max-block-size: min(36rem, var(--nav-mobile-drawer-max-height));
+        overflow: hidden auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+
         opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .navListWrapOpen::-webkit-scrollbar {
+        inline-size: 0.42rem;
+    }
+
+    .navListWrapOpen::-webkit-scrollbar-track {
+        background: rgb(0 0 0 / 0.18);
+        border-radius: 999px;
+    }
+
+    .navListWrapOpen::-webkit-scrollbar-thumb {
+        background: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28);
+        border-radius: 999px;
     }
 
     .navList {
@@ -713,6 +770,10 @@
 
         gap: 0.32rem;
         padding: 0 0.86rem 0.9rem;
+    }
+
+    .navListWrapOpen .navList {
+        overflow: visible;
     }
 
     .navListItem {
@@ -777,7 +838,54 @@
     }
 }
 
+/* ===== Tablet pequeno / mobile grande ===== */
+
+@media (max-width: 820px) {
+    .nav {
+        --nav-mobile-drawer-max-height: calc(100dvh - 6.5rem);
+    }
+
+    .navTopRow {
+        padding-block: 0.72rem;
+        padding-inline: 0.84rem;
+    }
+
+    .navList {
+        gap: 0.3rem;
+        padding-inline: 0.78rem;
+        padding-block-end: 0.82rem;
+    }
+
+    .navButton {
+        font-size: 0.92rem;
+        padding-block: 0.68rem;
+        padding-inline: 0.68rem;
+    }
+
+    .drawerSubmenuList {
+        padding-block-end: 0.58rem;
+    }
+}
+
+/* ===== Mobile ===== */
+
 @media (max-width: 640px) {
+    .nav {
+        --nav-radius: 1.05rem;
+        --nav-mobile-drawer-max-height: calc(100dvh - 5.85rem);
+    }
+
+    .navInner {
+        border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
+
+        box-shadow:
+            0 1.15rem 2.7rem rgb(0 0 0 / 0.52),
+            0 0.42rem 1.1rem rgb(0 0 0 / 0.3),
+            0 0 1.8rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07),
+            inset 0 1px 0 rgb(255 247 229 / 0.1),
+            inset 0 -1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
+    }
+
     .navTopRow {
         padding-block: 0.68rem;
         padding-inline: 0.78rem;
@@ -794,20 +902,183 @@
     }
 
     .navList {
+        gap: 0.26rem;
         padding-inline: 0.72rem;
         padding-block-end: 0.76rem;
     }
 
+    .navItemRow {
+        gap: 0.48rem;
+        padding-inline: 0.12rem;
+        border-radius: 0.95rem;
+    }
+
     .navButton {
-        font-size: 0.9rem;
-        padding-block: 0.66rem;
-        padding-inline: 0.62rem;
+        font-size: 0.88rem;
+        line-height: 1.16;
+
+        padding-block: 0.64rem;
+        padding-inline: 0.58rem;
+    }
+
+    .navToggle {
+        inline-size: 2.08rem;
+        block-size: 2.08rem;
+        margin-inline-end: 0.04rem;
+    }
+
+    .drawerSubmenuList {
+        padding-block-start: 0.1rem;
+        padding-block-end: 0.52rem;
+    }
+
+    .drawerSubmenuItem+.drawerSubmenuItem {
+        margin-block-start: 0.24rem;
     }
 
     .drawerSubmenuItem a {
         padding-block: 0.52rem;
-        padding-inline-end: 0.7rem;
-        font-size: 0.84rem;
+        padding-inline: 0.92rem 0.7rem;
+
+        border-radius: 0.78rem;
+
+        font-size: 0.82rem;
+        line-height: 1.22;
+    }
+
+    .drawerSubmenuItem a:hover,
+    .drawerSubmenuItem a:focus-visible {
+        transform: none;
+    }
+}
+
+/* ===== Mobile pequeno ===== */
+
+@media (max-width: 420px) {
+    .nav {
+        --nav-radius: 0.95rem;
+        --nav-mobile-drawer-max-height: calc(100dvh - 5.25rem);
+    }
+
+    .navTopRow {
+        gap: 0.7rem;
+        padding-block: 0.62rem;
+        padding-inline: 0.64rem;
+    }
+
+    .navTitle {
+        font-size: 0.66rem;
+        letter-spacing: 0.115em;
+    }
+
+    .burgerButton {
+        inline-size: 2.2rem;
+        block-size: 2.2rem;
+    }
+
+    .burgerBox {
+        inline-size: 1rem;
+        block-size: 0.82rem;
+    }
+
+    .burgerLine::before {
+        transform: translateY(-0.3rem);
+    }
+
+    .burgerLine::after {
+        transform: translateY(0.3rem);
+    }
+
+    .navList {
+        gap: 0.22rem;
+        padding-inline: 0.58rem;
+        padding-block-end: 0.62rem;
+    }
+
+    .navItemRow {
+        gap: 0.38rem;
+        border-radius: 0.86rem;
+    }
+
+    .navButton {
+        font-size: 0.82rem;
+        padding-block: 0.56rem;
+        padding-inline: 0.5rem;
+    }
+
+    .navToggle {
+        inline-size: 1.94rem;
+        block-size: 1.94rem;
+    }
+
+    .chevron {
+        inline-size: 0.38rem;
+        block-size: 0.38rem;
+    }
+
+    .drawerSubmenuList {
+        padding-block-end: 0.46rem;
+    }
+
+    .drawerSubmenuItem a {
+        padding-block: 0.48rem;
+        padding-inline: 0.86rem 0.62rem;
+
+        font-size: 0.78rem;
+    }
+
+    .drawerSubmenuItem a::before {
+        inset-inline-start: 0.48rem;
+
+        inline-size: 0.24rem;
+        block-size: 0.24rem;
+    }
+}
+
+/* ===== Mobile muito estreito ===== */
+
+@media (max-width: 360px) {
+    .navTopRow {
+        padding-inline: 0.52rem;
+    }
+
+    .navTitle {
+        max-inline-size: 11.5rem;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+    }
+
+    .burgerButton {
+        inline-size: 2.08rem;
+        block-size: 2.08rem;
+    }
+
+    .navList {
+        padding-inline: 0.48rem;
+        padding-block-end: 0.56rem;
+    }
+
+    .navButton {
+        font-size: 0.76rem;
+        padding-block: 0.52rem;
+        padding-inline: 0.44rem;
+    }
+
+    .navToggle {
+        inline-size: 1.84rem;
+        block-size: 1.84rem;
+    }
+
+    .drawerSubmenuItem a {
+        padding-block: 0.44rem;
+        padding-inline: 0.78rem 0.56rem;
+
+        font-size: 0.74rem;
+    }
+
+    .drawerSubmenuItem a::before {
+        inset-inline-start: 0.42rem;
     }
 }
 

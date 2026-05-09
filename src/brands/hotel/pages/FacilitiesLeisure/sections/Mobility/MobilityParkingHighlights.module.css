@@ -5,54 +5,13 @@
     margin-top: clamp(1.12rem, 2.35vw, 1.82rem);
 }
 
-.block::before {
-    content: "";
-    position: absolute;
-    inset: -1rem 10% auto;
-    z-index: -1;
-    block-size: clamp(8rem, 15vw, 12rem);
-    pointer-events: none;
 
-    background:
-        radial-gradient(circle at 50% 42%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.045) 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.082) 34%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.034) 58%,
-            transparent 76%);
-    filter: blur(32px);
-    opacity: 0.76;
-}
 
-.block::after {
-    content: "";
-    position: absolute;
-    inset: -0.35rem 18% auto;
-    z-index: -1;
-    block-size: 1px;
-    pointer-events: none;
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 18%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.22) 50%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 82%,
-            transparent 100%);
-
-    opacity: 0.82;
-}
 
 @media (max-width: 640px) {
     .block {
         margin-top: 1rem;
     }
 
-    .block::before {
-        inset-inline: 2%;
-        opacity: 0.58;
-    }
-
-    .block::after {
-        inset-inline: 12%;
-    }
+ 
 }

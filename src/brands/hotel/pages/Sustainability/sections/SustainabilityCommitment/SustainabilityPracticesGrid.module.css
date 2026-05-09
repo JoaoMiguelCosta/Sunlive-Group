@@ -1,14 +1,22 @@
 .grid {
+    position: relative;
+    isolation: isolate;
+
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: clamp(0.9rem, 1.45vw, 1.2rem);
     align-items: stretch;
+
     margin-top: clamp(1rem, 1.8vw, 1.5rem);
 }
 
 .item {
-    min-inline-size: 0;
+    position: relative;
+    z-index: 1;
+
     display: flex;
+
+    min-inline-size: 0;
 }
 
 .item>* {
@@ -47,6 +55,7 @@
     .grid {
         grid-template-columns: 1fr;
         gap: 0.95rem;
+
         margin-top: 0.95rem;
     }
 

@@ -2,21 +2,16 @@
     --contacts-radius-lg: clamp(1.2rem, 1.65vw, 1.58rem);
     --contacts-radius-md: clamp(0.9rem, 1.15vw, 1.08rem);
 
-    --contacts-bg-deep: rgba(13, 12, 11, 0.99);
-    --contacts-bg-main: rgba(24, 22, 20, 0.96);
-    --contacts-bg-soft: rgba(38, 34, 29, 0.74);
-    --contacts-bg-glass: rgba(255, 250, 242, 0.035);
+    --contacts-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
+    --contacts-border-soft: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14);
+    --contacts-border-strong: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
 
-    --contacts-border: rgba(232, 205, 156, 0.16);
-    --contacts-border-soft: rgba(232, 205, 156, 0.1);
-    --contacts-border-strong: rgba(232, 205, 156, 0.26);
+    --contacts-text-main: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.97);
+    --contacts-text-soft: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.82);
+    --contacts-text-muted: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.62);
 
-    --contacts-text-main: rgba(255, 250, 244, 0.97);
-    --contacts-text-soft: rgba(246, 235, 219, 0.82);
-    --contacts-text-muted: rgba(235, 218, 193, 0.64);
-
-    --contacts-champagne: rgba(232, 205, 156, 0.94);
-    --contacts-champagne-soft: rgba(232, 205, 156, 0.68);
+    --contacts-champagne: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.96);
+    --contacts-champagne-soft: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.72);
 
     inline-size: min(100%, 1360px);
     margin: clamp(1.3rem, 2.1vw, 1.85rem) auto 0;
@@ -46,19 +41,24 @@
 
     background:
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.05) 0%,
-            rgba(255, 250, 242, 0.012) 100%),
-        rgba(28, 25, 22, 0.72);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.74);
 
     color: var(--contacts-text-soft);
     font-size: clamp(0.8rem, 0.16vw + 0.78rem, 0.88rem);
-    font-weight: 650;
+    font-weight: 690;
     line-height: 1.1;
     text-align: center;
 
+    text-shadow: 0 1px 1px rgb(0 0 0 / 0.52);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.04),
-        0 8px 18px rgba(0, 0, 0, 0.12);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
+        0 0.65rem 1.35rem rgb(0 0 0 / 0.18);
+
+    backdrop-filter: blur(8px) saturate(1.06);
+    -webkit-backdrop-filter: blur(8px) saturate(1.06);
 }
 
 .grid {
@@ -71,7 +71,6 @@
 
 .card {
     position: relative;
-    isolation: isolate;
     display: flex;
     flex-direction: column;
 
@@ -83,49 +82,22 @@
     border-radius: var(--contacts-radius-lg);
 
     background:
-        radial-gradient(110% 120% at 0% 0%,
-            rgba(232, 205, 156, 0.055) 0%,
-            transparent 44%),
-        radial-gradient(120% 130% at 100% 100%,
-            rgba(118, 92, 59, 0.055) 0%,
-            transparent 48%),
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.028) 0%,
-            rgba(255, 250, 242, 0.008) 24%,
-            rgba(0, 0, 0, 0.08) 100%),
+        radial-gradient(120% 135% at 50% -18%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.045) 38%,
+            transparent 68%),
         linear-gradient(135deg,
-            rgba(31, 28, 25, 0.96) 0%,
-            rgba(20, 18, 16, 0.985) 58%,
-            rgba(12, 10, 9, 1) 100%);
+            rgb(var(--hotel-graphite-rgb, 26 18 12) / 0.96) 0%,
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.84) 48%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.99) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.04),
-        0 18px 36px rgba(0, 0, 0, 0.18);
-}
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.065),
+        inset 0 -1px 0 rgb(0 0 0 / 0.22),
+        0 1.25rem 2.8rem rgb(0 0 0 / 0.32);
 
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    background:
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.05) 0%,
-            rgba(255, 250, 242, 0.01) 18%,
-            transparent 44%);
-}
-
-.card::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 3;
-    pointer-events: none;
-
-    border: 1px solid rgba(255, 239, 210, 0.035);
-    border-radius: inherit;
+    backdrop-filter: blur(12px) saturate(1.06);
+    -webkit-backdrop-filter: blur(12px) saturate(1.06);
 }
 
 .cardHeader {
@@ -135,25 +107,10 @@
     border-bottom: 1px solid var(--contacts-border-soft);
 
     background:
-        radial-gradient(120% 180% at 50% -40%,
-            rgba(232, 205, 156, 0.08) 0%,
-            transparent 54%),
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.045) 0%,
-            rgba(255, 250, 242, 0.016) 100%),
-        rgba(28, 25, 22, 0.82);
-}
-
-.cardHeader::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-
-    background:
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.045) 0%,
-            transparent 72%);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11) 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.052) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.86);
 }
 
 .titleRow {
@@ -177,20 +134,19 @@
     block-size: 38px;
     flex: 0 0 38px;
 
-    border: 1px solid rgba(232, 205, 156, 0.18);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
     border-radius: 999px;
 
     background:
-        radial-gradient(circle at 30% 30%,
-            rgba(255, 250, 242, 0.12) 0%,
-            transparent 58%),
-        rgba(20, 18, 16, 0.72);
+        linear-gradient(180deg,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.26) 0%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.58) 100%);
 
     color: var(--contacts-champagne);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.08),
-        0 8px 18px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.1),
+        0 0.72rem 1.35rem rgb(0 0 0 / 0.25);
 }
 
 .titleIcon :global(svg) {
@@ -209,10 +165,14 @@
 .eyebrow {
     color: var(--contacts-champagne-soft);
     font-size: 0.7rem;
-    font-weight: 800;
+    font-weight: 820;
     line-height: 1.1;
     letter-spacing: 0.15em;
     text-transform: uppercase;
+
+    text-shadow:
+        0 1px 1px rgb(0 0 0 / 0.5),
+        0 0 0.9rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1);
 }
 
 .cardTitle {
@@ -224,6 +184,10 @@
     line-height: 1.1;
     letter-spacing: -0.024em;
     text-wrap: balance;
+
+    text-shadow:
+        0 1px 1px rgb(0 0 0 / 0.56),
+        0 0.75rem 1.5rem rgb(0 0 0 / 0.28);
 }
 
 .cardBody {
@@ -263,11 +227,20 @@
     block-size: 28px;
     flex: 0 0 28px;
 
-    border: 1px solid rgba(232, 205, 156, 0.13);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16);
     border-radius: 999px;
 
-    background: rgba(232, 205, 156, 0.045);
+    background:
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.045) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.035) 100%),
+        rgb(var(--hotel-black-rgb, 7 4 2) / 0.34);
+
     color: var(--contacts-champagne);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055),
+        0 0.45rem 0.9rem rgb(0 0 0 / 0.14);
 }
 
 .itemIcon :global(svg) {
@@ -279,9 +252,13 @@
 .itemLabel {
     color: var(--contacts-champagne);
     font-size: 0.84rem;
-    font-weight: 740;
+    font-weight: 760;
     line-height: 1.2;
     text-wrap: balance;
+
+    text-shadow:
+        0 1px 1px rgb(0 0 0 / 0.5),
+        0 0 0.8rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07);
 }
 
 .itemValue,
@@ -290,21 +267,28 @@
 
     color: var(--contacts-text-main);
     font-size: clamp(0.96rem, 0.88vw, 1.05rem);
-    font-weight: 700;
+    font-weight: 720;
     line-height: 1.3;
     text-decoration: none;
     word-break: break-word;
 
+    text-shadow: 0 1px 1px rgb(0 0 0 / 0.54);
+
     transition:
-        color 160ms ease,
-        text-decoration-color 160ms ease;
+        color var(--hotel-transition-fast, 160ms ease),
+        text-decoration-color var(--hotel-transition-fast, 160ms ease),
+        text-shadow var(--hotel-transition-fast, 160ms ease);
 }
 
-.itemValueLink:hover {
-    color: #ffffff;
+.itemValueLink:hover,
+.itemValueLink:focus-visible {
+    color: var(--hotel-ivory-050, #fbf7ef);
     text-decoration: underline;
-    text-decoration-color: rgba(232, 205, 156, 0.58);
+    text-decoration-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.7);
     text-underline-offset: 0.16em;
+    text-shadow:
+        0 1px 1px rgb(0 0 0 / 0.58),
+        0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12);
 }
 
 .hoursContent {
@@ -325,10 +309,14 @@
 
     color: var(--contacts-text-main);
     font-size: clamp(1.6rem, 1.65vw, 1.94rem);
-    font-weight: 820;
+    font-weight: 840;
     line-height: 0.98;
     letter-spacing: -0.045em;
     text-wrap: balance;
+
+    text-shadow:
+        0 1px 1px rgb(0 0 0 / 0.58),
+        0 0 1.2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06);
 }
 
 .divider {
@@ -336,10 +324,11 @@
 
     background:
         linear-gradient(90deg,
-            rgba(232, 205, 156, 0) 0%,
-            rgba(232, 205, 156, 0.18) 18%,
-            rgba(232, 205, 156, 0.18) 82%,
-            rgba(232, 205, 156, 0) 100%);
+            transparent 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.16) 16%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22) 50%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.16) 84%,
+            transparent 100%);
 }
 
 .checkGrid {
@@ -358,7 +347,7 @@
 }
 
 .checkBlock:first-child {
-    border-right: 1px solid rgba(232, 205, 156, 0.09);
+    border-right: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.105);
 }
 
 .checkValue {
@@ -366,9 +355,11 @@
 
     color: var(--contacts-text-main);
     font-size: clamp(0.96rem, 0.9vw, 1.06rem);
-    font-weight: 700;
+    font-weight: 720;
     line-height: 1.32;
     text-wrap: balance;
+
+    text-shadow: 0 1px 1px rgb(0 0 0 / 0.54);
 }
 
 .addressContent {
@@ -390,9 +381,11 @@
 
     color: var(--contacts-text-main);
     font-size: clamp(0.96rem, 0.86vw, 1.04rem);
-    font-weight: 680;
+    font-weight: 700;
     line-height: 1.38;
     text-wrap: balance;
+
+    text-shadow: 0 1px 1px rgb(0 0 0 / 0.54);
 }
 
 .mapButton {
@@ -406,45 +399,53 @@
     min-block-size: 44px;
     padding: 0.72rem 1rem;
 
-    border: 1px solid rgba(232, 205, 156, 0.24);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28);
     border-radius: 999px;
 
     background:
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.052) 0%,
-            rgba(255, 250, 242, 0.014) 100%),
-        rgba(32, 28, 24, 0.86);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.058) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.016) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.84);
 
     color: var(--contacts-text-main);
     font-size: 0.9rem;
-    font-weight: 720;
+    font-weight: 740;
     line-height: 1;
     text-decoration: none;
 
+    text-shadow: 0 1px 1px rgb(0 0 0 / 0.52);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.055),
-        0 10px 22px rgba(0, 0, 0, 0.16);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07),
+        0 0.8rem 1.65rem rgb(0 0 0 / 0.22);
 
     transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        background 180ms ease;
+        transform var(--hotel-transition-fast, 160ms ease),
+        border-color var(--hotel-transition-fast, 160ms ease),
+        box-shadow var(--hotel-transition-fast, 160ms ease),
+        background var(--hotel-transition-fast, 160ms ease),
+        color var(--hotel-transition-fast, 160ms ease),
+        filter var(--hotel-transition-fast, 160ms ease);
 }
 
-.mapButton:hover {
+.mapButton:hover,
+.mapButton:focus-visible {
     transform: translateY(-2px);
-    border-color: rgba(232, 205, 156, 0.36);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
+    color: var(--hotel-ivory-050, #fbf7ef);
+    filter: saturate(1.04) contrast(1.01);
 
     background:
         linear-gradient(180deg,
-            rgba(232, 205, 156, 0.115) 0%,
-            rgba(255, 250, 242, 0.03) 100%),
-        rgba(38, 33, 28, 0.94);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.022) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.94);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.07),
-        0 14px 28px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.085),
+        0 1rem 2rem rgb(0 0 0 / 0.3),
+        0 0 1.45rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.065);
 }
 
 .buttonIcon {
@@ -475,6 +476,8 @@
     font-size: 0.9rem;
     line-height: 1.5;
     text-wrap: pretty;
+
+    text-shadow: 0 1px 1px rgb(0 0 0 / 0.48);
 }
 
 .socialList {
@@ -490,42 +493,46 @@
     min-block-size: 52px;
     padding: 0.68rem 0.78rem;
 
-    border: 1px solid rgba(232, 205, 156, 0.14);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16);
     border-radius: var(--contacts-radius-md);
 
     background:
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.04) 0%,
-            rgba(255, 250, 242, 0.008) 100%),
-        rgba(26, 23, 20, 0.58);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.045) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 100%),
+        rgb(var(--hotel-black-rgb, 7 4 2) / 0.36);
 
     color: var(--contacts-text-main);
     text-decoration: none;
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.04),
-        0 8px 16px rgba(0, 0, 0, 0.12);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05),
+        0 0.65rem 1.2rem rgb(0 0 0 / 0.16);
 
     transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        background 180ms ease,
-        box-shadow 180ms ease;
+        transform var(--hotel-transition-fast, 160ms ease),
+        border-color var(--hotel-transition-fast, 160ms ease),
+        background var(--hotel-transition-fast, 160ms ease),
+        box-shadow var(--hotel-transition-fast, 160ms ease),
+        filter var(--hotel-transition-fast, 160ms ease);
 }
 
-.socialLink:hover {
+.socialLink:hover,
+.socialLink:focus-visible {
     transform: translateY(-2px);
-    border-color: rgba(232, 205, 156, 0.28);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
+    filter: saturate(1.04) contrast(1.01);
 
     background:
         linear-gradient(180deg,
-            rgba(232, 205, 156, 0.1) 0%,
-            rgba(255, 250, 242, 0.026) 100%),
-        rgba(36, 31, 26, 0.92);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.02) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.76);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.055),
-        0 12px 22px rgba(0, 0, 0, 0.16);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07),
+        0 0.85rem 1.65rem rgb(0 0 0 / 0.24),
+        0 0 1.35rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.055);
 }
 
 .socialIcon {
@@ -537,16 +544,20 @@
     block-size: 32px;
     flex: 0 0 32px;
 
-    border: 1px solid rgba(232, 205, 156, 0.15);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
     border-radius: 999px;
 
     background:
-        radial-gradient(circle at 30% 30%,
-            rgba(255, 250, 242, 0.11) 0%,
-            transparent 58%),
-        rgba(19, 17, 15, 0.7);
+        linear-gradient(180deg,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055) 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.035) 100%),
+        rgb(var(--hotel-black-rgb, 7 4 2) / 0.48);
 
     color: var(--contacts-champagne);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07),
+        0 0.5rem 1rem rgb(0 0 0 / 0.16);
 }
 
 .socialIcon :global(svg) {
@@ -559,9 +570,11 @@
 .socialText {
     color: var(--contacts-text-main);
     font-size: 0.94rem;
-    font-weight: 700;
+    font-weight: 720;
     line-height: 1.2;
     text-wrap: balance;
+
+    text-shadow: 0 1px 1px rgb(0 0 0 / 0.52);
 }
 
 @media (hover: hover) {
@@ -569,21 +582,33 @@
     .card,
     .quickAccessPill {
         transition:
-            transform 200ms ease,
-            border-color 200ms ease,
-            box-shadow 200ms ease;
+            transform var(--hotel-transition-base, 240ms ease),
+            border-color var(--hotel-transition-base, 240ms ease),
+            box-shadow var(--hotel-transition-base, 240ms ease),
+            filter var(--hotel-transition-base, 240ms ease);
     }
 
     .card:hover {
+        transform: translateY(-1px);
         border-color: var(--contacts-border-strong);
+        filter: saturate(1.025) contrast(1.01);
+
         box-shadow:
-            inset 0 1px 0 rgba(255, 250, 242, 0.05),
-            0 20px 40px rgba(0, 0, 0, 0.2);
+            inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+            inset 0 -1px 0 rgb(0 0 0 / 0.26),
+            0 1.45rem 3.2rem rgb(0 0 0 / 0.38),
+            0 0 2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06);
     }
 
     .quickAccessPill:hover {
         transform: translateY(-1px);
-        border-color: rgba(232, 205, 156, 0.24);
+        border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28);
+        color: var(--hotel-ivory-050, #fbf7ef);
+
+        box-shadow:
+            inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+            0 0.85rem 1.6rem rgb(0 0 0 / 0.23),
+            0 0 1.2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.045);
     }
 }
 
@@ -624,7 +649,7 @@
 
     .checkBlock:first-child {
         border-right: 0;
-        border-bottom: 1px solid rgba(232, 205, 156, 0.09);
+        border-bottom: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.105);
     }
 
     .mapButton {

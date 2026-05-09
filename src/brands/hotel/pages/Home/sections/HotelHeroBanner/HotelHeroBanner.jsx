@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import hotelBrand from "../../../../config/index.js";
 import HotelSectionShell from "../../../../shared/ui/HotelSectionShell/HotelSectionShell.jsx";
@@ -7,12 +7,14 @@ import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 import styles from "./HotelHeroBanner.module.css";
 
-function preloadSceneImages(scenes) {
+function preloadSceneMedia(scenes) {
   scenes.forEach((scene) => {
-    if (!scene?.imageSrc) return;
+    const imageSrc = scene?.imageSrc ?? scene?.posterSrc;
+
+    if (!imageSrc) return;
 
     const img = new Image();
-    img.src = scene.imageSrc;
+    img.src = imageSrc;
   });
 }
 
@@ -20,10 +22,26 @@ function isInternalHref(href = "") {
   return href.startsWith("/") && !href.startsWith("//");
 }
 
+function isVideoScene(scene) {
+  return scene?.mediaType === "video" && Boolean(scene?.videoSrc);
+}
+
 function getValidScenes(scenes) {
-  return Array.isArray(scenes)
-    ? scenes.filter((scene) => scene?.id && scene?.imageSrc)
-    : [];
+  if (!Array.isArray(scenes)) return [];
+
+  return scenes.filter((scene) => {
+    if (!scene?.id) return false;
+
+    if (isVideoScene(scene)) {
+      return Boolean(scene.videoSrc);
+    }
+
+    return Boolean(scene.imageSrc);
+  });
+}
+
+function joinClassNames(...classNames) {
+  return classNames.filter(Boolean).join(" ");
 }
 
 export default function HotelHeroBanner() {
@@ -35,10 +53,12 @@ export default function HotelHeroBanner() {
   );
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const videoRefs = useRef({});
 
   useEffect(() => {
     if (!scenes.length) return;
-    preloadSceneImages(scenes);
+
+    preloadSceneMedia(scenes);
   }, [scenes]);
 
   useEffect(() => {
@@ -49,6 +69,14 @@ export default function HotelHeroBanner() {
     );
   }, [scenes]);
 
+  useEffect(() => {
+    return () => {
+      Object.values(videoRefs.current).forEach((video) => {
+        video.pause();
+      });
+    };
+  }, []);
+
   if (!section || !scenes.length) return null;
 
   const logoSrc = section?.logo?.src ?? "";
@@ -58,26 +86,80 @@ export default function HotelHeroBanner() {
   const exploreAction = section?.exploreAction ?? null;
 
   const activeScene = scenes[activeIndex] ?? scenes[0];
+  const activeSceneIsVideo = isVideoScene(activeScene);
+
   const isFirstScene = activeIndex === 0;
   const isLastScene = activeIndex === scenes.length - 1;
 
-  const goToScene = (index) => {
+  const registerVideoRef = (sceneId) => (node) => {
+    if (node) {
+      videoRefs.current[sceneId] = node;
+      return;
+    }
+
+    delete videoRefs.current[sceneId];
+  };
+
+  const pauseAllSceneVideos = () => {
+    Object.values(videoRefs.current).forEach((video) => {
+      video.pause();
+    });
+  };
+
+  const playSceneVideo = (scene) => {
+    if (!isVideoScene(scene)) return;
+
+    const video = videoRefs.current[scene.id];
+
+    if (!video) return;
+
+    video.pause();
+    video.currentTime = 0;
+    video.muted = false;
+    video.volume = 0.82;
+
+    const playPromise = video.play();
+
+    if (playPromise?.catch) {
+      playPromise.catch(() => {
+        video.muted = true;
+
+        const mutedPlayPromise = video.play();
+
+        if (mutedPlayPromise?.catch) {
+          mutedPlayPromise.catch(() => {
+            video.pause();
+          });
+        }
+      });
+    }
+  };
+
+  const activateScene = (index) => {
     if (index < 0 || index >= scenes.length) return;
+
+    const nextScene = scenes[index];
+
+    pauseAllSceneVideos();
     setActiveIndex(index);
+
+    if (isVideoScene(nextScene)) {
+      window.requestAnimationFrame(() => {
+        playSceneVideo(nextScene);
+      });
+    }
   };
 
   const handleAdvance = () => {
     if (isLastScene) return;
 
-    setActiveIndex((currentIndex) =>
-      Math.min(currentIndex + 1, scenes.length - 1),
-    );
+    activateScene(activeIndex + 1);
   };
 
   const handleBack = () => {
     if (isFirstScene) return;
 
-    setActiveIndex((currentIndex) => Math.max(currentIndex - 1, 0));
+    activateScene(activeIndex - 1);
   };
 
   const renderExploreAction = () => {
@@ -85,7 +167,6 @@ export default function HotelHeroBanner() {
       return null;
     }
 
-    const className = styles.journeyButton;
     const ariaLabel = exploreAction.ariaLabel ?? exploreAction.label;
 
     if (isInternalHref(exploreAction.href)) {
@@ -93,7 +174,7 @@ export default function HotelHeroBanner() {
         <Link
           to={exploreAction.href}
           aria-label={ariaLabel}
-          className={className}
+          className={styles.journeyButton}
         >
           <span>{exploreAction.label}</span>
         </Link>
@@ -101,7 +182,11 @@ export default function HotelHeroBanner() {
     }
 
     return (
-      <a href={exploreAction.href} aria-label={ariaLabel} className={className}>
+      <a
+        href={exploreAction.href}
+        aria-label={ariaLabel}
+        className={styles.journeyButton}
+      >
         <span>{exploreAction.label}</span>
       </a>
     );
@@ -113,69 +198,90 @@ export default function HotelHeroBanner() {
         <div className={styles.mediaLayer} aria-hidden="true">
           {scenes.map((scene, index) => {
             const isActive = index === activeIndex;
+            const isVideo = isVideoScene(scene);
 
             return (
               <div
                 key={scene.id}
-                className={[
+                className={joinClassNames(
                   styles.sceneLayer,
-                  isActive ? styles.sceneLayerActive : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
+                  isVideo && styles.sceneLayerVideo,
+                  isActive && styles.sceneLayerActive,
+                )}
               >
-                <img
-                  src={scene.imageSrc}
-                  alt=""
-                  className={styles.sceneImage}
-                  style={{
-                    objectPosition: scene.imagePosition ?? "center center",
-                  }}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fetchPriority={index === 0 ? "high" : "auto"}
-                  decoding="async"
-                  draggable="false"
-                />
+                {isVideo ? (
+                  <video
+                    ref={registerVideoRef(scene.id)}
+                    className={joinClassNames(
+                      styles.sceneImage,
+                      styles.sceneVideo,
+                    )}
+                    poster={scene.posterSrc}
+                    playsInline
+                    preload={isActive ? "auto" : "metadata"}
+                    style={{
+                      objectPosition: scene.imagePosition ?? "center center",
+                    }}
+                  >
+                    <source src={scene.videoSrc} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img
+                    src={scene.imageSrc}
+                    alt=""
+                    className={styles.sceneImage}
+                    style={{
+                      objectPosition: scene.imagePosition ?? "center center",
+                    }}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    decoding="async"
+                    draggable="false"
+                  />
+                )}
               </div>
             );
           })}
         </div>
 
         <div
-          className={[styles.overlay, isLastScene ? styles.overlayFinal : ""]
-            .filter(Boolean)
-            .join(" ")}
+          className={joinClassNames(
+            styles.overlay,
+            activeSceneIsVideo && styles.overlayVideo,
+          )}
           aria-hidden="true"
         />
 
         <div
-          className={[styles.glow, isLastScene ? styles.glowFinal : ""]
-            .filter(Boolean)
-            .join(" ")}
+          className={joinClassNames(
+            styles.glow,
+            activeSceneIsVideo && styles.glowVideo,
+          )}
           aria-hidden="true"
         />
 
         <div
-          className={[
+          className={joinClassNames(
             styles.contentShell,
-            isLastScene ? styles.contentShellFinal : "",
-          ]
-            .filter(Boolean)
-            .join(" ")}
+            activeSceneIsVideo && styles.contentShellVideo,
+          )}
         >
           <div className={styles.topMeta}>
             {eyebrow ? <span className={styles.eyebrow}>{eyebrow}</span> : null}
           </div>
 
-          <div className={styles.centerStage}>
+          <div
+            className={joinClassNames(
+              styles.centerStage,
+              activeSceneIsVideo && styles.centerStageVideo,
+            )}
+          >
             {logoSrc ? (
               <div
-                className={[
+                className={joinClassNames(
                   styles.logoWrap,
-                  isLastScene ? styles.logoWrapFinal : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
+                  activeSceneIsVideo && styles.logoWrapVideo,
+                )}
               >
                 <img
                   src={logoSrc}
@@ -189,21 +295,17 @@ export default function HotelHeroBanner() {
             ) : null}
 
             <div
-              className={[
+              className={joinClassNames(
                 styles.copyBlock,
-                isLastScene ? styles.copyBlockFinal : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
+                activeSceneIsVideo && styles.copyBlockVideo,
+              )}
             >
               {activeScene?.accentLabel ? (
                 <span
-                  className={[
+                  className={joinClassNames(
                     styles.sceneLabel,
-                    isLastScene ? styles.sceneLabelFinal : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
+                    activeSceneIsVideo && styles.sceneLabelVideo,
+                  )}
                 >
                   {activeScene.accentLabel}
                 </span>
@@ -215,12 +317,10 @@ export default function HotelHeroBanner() {
 
               {activeScene?.description ? (
                 <p
-                  className={[
+                  className={joinClassNames(
                     styles.description,
-                    isLastScene ? styles.descriptionFinal : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
+                    activeSceneIsVideo && styles.descriptionVideo,
+                  )}
                 >
                   {activeScene.description}
                 </p>
@@ -228,12 +328,10 @@ export default function HotelHeroBanner() {
             </div>
 
             <div
-              className={[
+              className={joinClassNames(
                 styles.actions,
-                isLastScene ? styles.actionsFinal : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
+                activeSceneIsVideo && styles.actionsVideo,
+              )}
             >
               {!isLastScene ? (
                 <button
@@ -255,11 +353,11 @@ export default function HotelHeroBanner() {
                   href={cta.href}
                   label={cta.label}
                   ariaLabel={cta.ariaLabel ?? cta.label}
-                  icon="phone"
+                  icon={cta.iconKey ?? "phone"}
                   blink={false}
-                  compact={false}
+                  compact={activeSceneIsVideo}
                   variant="hotel"
-                  tone="strong"
+                  tone={cta.tone ?? "strong"}
                   className={styles.ctaButton}
                 />
               ) : null}
@@ -284,10 +382,11 @@ export default function HotelHeroBanner() {
                     aria-label={`Mostrar ${
                       scene.accentLabel ?? `vista ${index + 1}`
                     }`}
-                    className={[styles.dot, isActive ? styles.dotActive : ""]
-                      .filter(Boolean)
-                      .join(" ")}
-                    onClick={() => goToScene(index)}
+                    className={joinClassNames(
+                      styles.dot,
+                      isActive && styles.dotActive,
+                    )}
+                    onClick={() => activateScene(index)}
                   />
                 );
               })}

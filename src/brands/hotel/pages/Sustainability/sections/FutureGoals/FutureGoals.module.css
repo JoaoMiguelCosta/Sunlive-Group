@@ -1,53 +1,14 @@
 .section {
+    --module-champagne-rgb: var(--hotel-champagne-rgb, 232 204 158);
+    --module-ivory-rgb: var(--hotel-ivory-rgb, 255 248 235);
+    --module-bronze-rgb: var(--hotel-bronze-rgb, 139 105 66);
+    --module-espresso-rgb: var(--hotel-espresso-rgb, 38 31 26);
+    --module-noir-rgb: 12 10 9;
+
     position: relative;
     isolation: isolate;
     inline-size: 100%;
     overflow: clip;
-    
-}
-
-.section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    background:
-        radial-gradient(48% 34% at 50% 8%,
-            rgba(232, 204, 158, 0.12) 0%,
-            transparent 72%),
-        radial-gradient(32% 28% at 16% 86%,
-            rgba(139, 105, 66, 0.075) 0%,
-            transparent 76%),
-        radial-gradient(32% 28% at 84% 86%,
-            rgba(232, 204, 158, 0.052) 0%,
-            transparent 78%),
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.012) 0%,
-            transparent 44%);
-    opacity: 0.9;
-}
-
-.section::after {
-    content: "";
-    position: absolute;
-    inset-inline: 50% auto;
-    inset-block-start: 0;
-    z-index: 0;
-    translate: -50% 0;
-
-    inline-size: min(92vw, 72rem);
-    block-size: 1px;
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgba(232, 204, 158, 0.18) 24%,
-            rgba(255, 238, 205, 0.38) 50%,
-            rgba(232, 204, 158, 0.18) 76%,
-            transparent 100%);
-    pointer-events: none;
 }
 
 .inner {
@@ -81,76 +42,47 @@
 .introPanel {
     position: relative;
     isolation: isolate;
+    overflow: hidden;
 
     inline-size: min(100%, 74rem);
-    overflow: hidden;
 
     padding:
         clamp(1.18rem, 2vw, 1.65rem) clamp(1rem, 2.3vw, 1.6rem);
 
     border-radius: clamp(1.12rem, 1.55vw, 1.55rem);
-    border: 1px solid rgba(232, 204, 158, 0.2);
+    border: 1px solid rgb(var(--module-champagne-rgb) / 0.26);
 
     background:
-        radial-gradient(115% 135% at 50% -20%,
-            rgba(232, 204, 158, 0.105) 0%,
-            rgba(232, 204, 158, 0.028) 38%,
-            transparent 66%),
-        radial-gradient(100% 120% at 100% 100%,
-            rgba(139, 105, 66, 0.09) 0%,
+        radial-gradient(120% 140% at 50% -18%,
+            rgb(var(--module-champagne-rgb) / 0.16) 0%,
+            rgb(var(--module-bronze-rgb) / 0.07) 32%,
+            transparent 62%),
+        radial-gradient(105% 125% at 0% 100%,
+            rgb(var(--module-bronze-rgb) / 0.08) 0%,
+            transparent 58%),
+        radial-gradient(105% 125% at 100% 100%,
+            rgb(var(--module-champagne-rgb) / 0.06) 0%,
             transparent 58%),
         linear-gradient(180deg,
-            rgba(255, 248, 235, 0.035) 0%,
-            rgba(255, 248, 235, 0.012) 28%,
-            rgba(0, 0, 0, 0.08) 100%),
-        linear-gradient(145deg,
-            rgba(38, 31, 26, 0.97) 0%,
-            rgba(22, 18, 15, 0.995) 60%,
-            rgba(12, 10, 9, 1) 100%);
+            rgb(var(--module-ivory-rgb) / 0.04) 0%,
+            rgb(var(--module-ivory-rgb) / 0.012) 24%,
+            rgb(0 0 0 / 0.14) 100%),
+        linear-gradient(135deg,
+            rgb(52 36 24 / 0.98) 0%,
+            rgb(28 19 13 / 0.995) 48%,
+            rgb(var(--module-noir-rgb) / 1) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.052),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.24),
-        0 22px 48px rgba(0, 0, 0, 0.26);
+        inset 0 1px 0 rgb(var(--module-ivory-rgb) / 0.06),
+        inset 0 -1px 0 rgb(0 0 0 / 0.3),
+        0 24px 56px rgb(0 0 0 / 0.3),
+        0 0 0 1px rgb(var(--module-champagne-rgb) / 0.025);
 
     text-align: center;
-}
 
-.introPanel::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    background:
-        linear-gradient(180deg,
-            rgba(255, 248, 235, 0.048) 0%,
-            rgba(255, 248, 235, 0.012) 24%,
-            transparent 58%),
-        linear-gradient(90deg,
-            rgba(255, 248, 235, 0.012) 0%,
-            transparent 22%,
-            transparent 78%,
-            rgba(255, 248, 235, 0.01) 100%);
-    opacity: 0.82;
-}
-
-.introPanel::after {
-    content: "";
-    position: absolute;
-    inset-inline: clamp(1.2rem, 5vw, 4rem);
-    inset-block-start: 0;
-    z-index: 1;
-
-    block-size: 1px;
-
-    background:
-        linear-gradient(90deg,
-            transparent,
-            rgba(232, 204, 158, 0.42),
-            transparent);
-    pointer-events: none;
+    backdrop-filter: blur(14px) saturate(108%);
+    -webkit-backdrop-filter: blur(14px) saturate(108%);
+    transform: translateZ(0);
 }
 
 .introEyebrow {
@@ -165,14 +97,18 @@
     padding-inline: 0.9rem;
 
     border-radius: 999px;
-    border: 1px solid rgba(232, 204, 158, 0.18);
+    border: 1px solid rgb(var(--module-champagne-rgb) / 0.26);
 
     background:
+        radial-gradient(120% 160% at 50% 0%,
+            rgb(var(--module-champagne-rgb) / 0.16) 0%,
+            transparent 52%),
         linear-gradient(180deg,
-            rgba(33, 25, 19, 0.86) 0%,
-            rgba(16, 12, 10, 0.94) 100%);
+            rgb(40 28 19 / 0.92) 0%,
+            rgb(17 12 9 / 0.97) 100%);
 
-    color: rgba(232, 204, 158, 0.94);
+    color: rgb(var(--module-champagne-rgb) / 0.98);
+
     font-size: clamp(0.68rem, 0.64rem + 0.14vw, 0.78rem);
     font-weight: 800;
     line-height: 1;
@@ -180,23 +116,30 @@
     text-transform: uppercase;
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 248, 235, 0.06),
-        0 8px 18px rgba(0, 0, 0, 0.16);
+        inset 0 1px 0 rgb(var(--module-ivory-rgb) / 0.08),
+        inset 0 -1px 0 rgb(0 0 0 / 0.28),
+        0 10px 22px rgb(0 0 0 / 0.2);
+
+    text-shadow: 0 0 14px rgb(var(--module-champagne-rgb) / 0.14);
 }
 
 .introTitle {
     position: relative;
     z-index: 2;
 
-    max-inline-size: 24ch;
     margin: clamp(0.85rem, 1vw, 1rem) auto 0;
 
-    color: rgba(255, 249, 240, 0.97);
+    color: rgb(255 249 240 / 0.98);
+
     font-size: clamp(1.25rem, 1rem + 1vw, 2rem);
     font-weight: 850;
     line-height: 1.08;
     letter-spacing: -0.034em;
     text-wrap: balance;
+
+    text-shadow:
+        0 1px 0 rgb(255 255 255 / 0.035),
+        0 18px 42px rgb(0 0 0 / 0.42);
 }
 
 .introText {
@@ -206,19 +149,21 @@
     max-inline-size: 54rem;
     margin: clamp(0.72rem, 1vw, 0.9rem) auto 0;
 
-    color: rgba(244, 231, 212, 0.82);
+    color: rgb(244 231 212 / 0.84);
+
     font-size: clamp(0.96rem, 0.9rem + 0.22vw, 1.1rem);
     line-height: 1.54;
     text-wrap: pretty;
 }
 
 .cardsWrap {
+    position: relative;
+
     display: grid;
     gap: clamp(1rem, 1.6vw, 1.25rem);
 }
 
 @media (max-width: 980px) {
-
     .inner {
         gap: 1.2rem;
     }
@@ -238,8 +183,7 @@
     }
 }
 
-@media (max-width: 640px) {
- 
+@media (max-width: 768px) {
     .inner {
         gap: 1rem;
     }
@@ -256,6 +200,7 @@
     .introEyebrow {
         min-block-size: 1.85rem;
         padding-inline: 0.8rem;
+
         font-size: 0.66rem;
         letter-spacing: 0.15em;
     }

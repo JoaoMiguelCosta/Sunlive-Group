@@ -670,9 +670,7 @@
         max-inline-size: 100%;
     }
 
-    .panelTitle {
-        max-inline-size: 24ch;
-    }
+  
 
     .panelDescription {
         max-inline-size: 34ch;

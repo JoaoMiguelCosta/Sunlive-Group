@@ -1,9 +1,9 @@
 .block {
-    --hotel-tab-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
-    --hotel-tab-border-hover: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
-    --hotel-tab-border-active: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.46);
+    --hotel-tab-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
+    --hotel-tab-border-hover: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.38);
+    --hotel-tab-border-active: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.54);
 
-    --hotel-tab-text: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.88);
+    --hotel-tab-text: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.86);
     --hotel-tab-text-hover: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.97);
     --hotel-tab-text-active: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.99);
 
@@ -20,14 +20,44 @@
 }
 
 .tabs {
+    position: relative;
+    isolation: isolate;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.68rem;
 }
 
+.tabs::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline: 50%;
+    z-index: -1;
+
+    inline-size: min(34rem, 86vw);
+    block-size: 5.2rem;
+
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(closest-side,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 0%,
+            transparent 72%);
+
+    filter: blur(18px);
+    opacity: 0.82;
+}
+
 .tabButton {
     appearance: none;
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
 
     display: inline-flex;
     align-items: center;
@@ -36,34 +66,30 @@
     min-block-size: 2.72rem;
     padding: 0.68rem 1rem;
 
-    border-radius: 999px;
     border: 1px solid var(--hotel-tab-border);
+    border-radius: 999px;
     outline: none;
 
     background:
-        radial-gradient(circle at 50% 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
-            transparent 54%),
-        radial-gradient(circle at 50% 100%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06),
-            transparent 66%),
+        radial-gradient(115% 145% at 50% 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075) 0%,
+            transparent 56%),
         linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04),
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012)),
-        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.62);
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.74) 0%,
+            rgb(var(--hotel-noir-rgb, 13 9 6) / 0.9) 100%);
 
     color: var(--hotel-tab-text);
     font: inherit;
     font-size: 0.9rem;
-    font-weight: 750;
+    font-weight: 780;
     line-height: 1.2;
     text-align: center;
 
     cursor: pointer;
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05),
-        0 8px 18px rgb(0 0 0 / 0.14);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
+        0 0.7rem 1.4rem rgb(0 0 0 / 0.22);
 
     transition:
         transform 180ms ease,
@@ -74,16 +100,44 @@
         filter 180ms ease;
 }
 
+.tabButton::before {
+    content: "";
+    position: absolute;
+    inset-inline: 16%;
+    inset-block-start: 0;
+
+    block-size: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.18) 18%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.48) 50%,
+            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.18) 82%,
+            transparent 100%);
+}
+
 .tabButton:hover {
     transform: translateY(-1px);
+
     border-color: var(--hotel-tab-border-hover);
     color: var(--hotel-tab-text-hover);
     filter: saturate(1.04);
 
+    background:
+        radial-gradient(115% 145% at 50% 0%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.78) 0%,
+            rgb(var(--hotel-noir-rgb, 13 9 6) / 0.88) 100%);
+
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
-        0 12px 24px rgb(0 0 0 / 0.16),
-        0 0 16px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075),
+        0 0.9rem 1.8rem rgb(0 0 0 / 0.26),
+        0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06);
 }
 
 .tabButton:focus-visible {
@@ -95,24 +149,24 @@
     border-color: var(--hotel-tab-border-active);
 
     background:
-        radial-gradient(circle at 50% 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.14),
-            transparent 56%),
-        radial-gradient(circle at 50% 100%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1),
+        radial-gradient(120% 150% at 50% 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
+            transparent 54%),
+        radial-gradient(100% 140% at 50% 100%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14) 0%,
             transparent 66%),
         linear-gradient(180deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24) 0%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.16) 58%,
-            rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.18) 100%),
-        rgb(var(--hotel-graphite-deep-rgb, 13 10 8) / 0.7);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28) 0%,
+            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.2) 48%,
+            rgb(var(--hotel-noir-rgb, 13 9 6) / 0.82) 100%);
 
     color: var(--hotel-tab-text-active);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07),
-        0 12px 24px rgb(0 0 0 / 0.18),
-        0 0 20px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.12),
+        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.14),
+        0 1rem 2rem rgb(0 0 0 / 0.3),
+        0 0 1.45rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.13);
 }
 
 .infoCard {
@@ -136,6 +190,11 @@
         gap: 0.58rem;
     }
 
+    .tabs::before {
+        inline-size: 100%;
+        block-size: 8rem;
+    }
+
     .tabButton {
         inline-size: 100%;
         min-block-size: 2.55rem;
@@ -150,5 +209,9 @@
 @media (prefers-reduced-motion: reduce) {
     .tabButton {
         transition: none;
+    }
+
+    .tabButton:hover {
+        transform: none;
     }
 }

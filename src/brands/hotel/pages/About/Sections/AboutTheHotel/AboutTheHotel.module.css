@@ -8,73 +8,6 @@
     min-inline-size: 0;
 }
 
-.section::before {
-    content: "";
-    position: absolute;
-    inset-inline: 50%;
-    inset-block-start: clamp(0.8rem, 2vw, 1.4rem);
-    z-index: 0;
-
-    inline-size: min(100%, 78rem);
-    block-size: clamp(13rem, 24vw, 21rem);
-
-    pointer-events: none;
-
-    opacity: 0.88;
-    transform: translateX(-50%);
-    filter: blur(42px) saturate(1.22) contrast(1.04);
-
-    background:
-        radial-gradient(circle at 13% 34%,
-            rgb(255 238 204 / 0.22) 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.145) 18%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.052) 34%,
-            transparent 46%),
-        radial-gradient(circle at 86% 48%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.205) 0%,
-            rgb(89 56 31 / 0.12) 28%,
-            transparent 52%),
-        radial-gradient(circle at 50% 104%,
-            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.074) 0%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.042) 34%,
-            transparent 60%),
-        radial-gradient(circle at 50% 18%,
-            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.095) 0%,
-            transparent 60%);
-}
-
-.section::after {
-    content: "";
-    position: absolute;
-    inset-inline: 50%;
-    inset-block-start: clamp(1.2rem, 3vw, 2.4rem);
-    z-index: 0;
-
-    inline-size: min(100%, 88rem);
-    block-size: clamp(16rem, 30vw, 26rem);
-
-    pointer-events: none;
-
-    opacity: 0.78;
-    transform: translateX(-50%);
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.062) 16%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.086) 50%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.066) 84%,
-            transparent 100%),
-        radial-gradient(ellipse at 50% 10%,
-            rgb(255 241 212 / 0.078) 0%,
-            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.036) 42%,
-            transparent 70%),
-        radial-gradient(ellipse at 50% 100%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.18) 0%,
-            transparent 66%);
-
-    filter: blur(25px) saturate(1.14);
-}
 
 .inner {
     position: relative;
@@ -90,17 +23,7 @@
 }
 
 @media (max-width: 640px) {
-    .section::before {
-        inset-block-start: 1rem;
-        block-size: 12rem;
-        opacity: 0.64;
-        filter: blur(30px) saturate(1.1);
-    }
 
-    .section::after {
-        opacity: 0.56;
-        filter: blur(20px);
-    }
 
     .inner {
         gap: 0.95rem;

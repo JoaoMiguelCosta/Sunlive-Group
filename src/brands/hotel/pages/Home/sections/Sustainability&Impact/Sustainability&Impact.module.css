@@ -445,7 +445,7 @@
     }
 
     .introTitle {
-        max-inline-size: 24ch;
+       
         font-size: clamp(1.2rem, 5.2vw, 1.8rem);
     }
 

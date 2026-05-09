@@ -1,6 +1,7 @@
 .block {
     position: relative;
     isolation: isolate;
+
     inline-size: 100%;
     margin-top: clamp(1.35rem, 2.4vw, 2rem);
 
@@ -9,44 +10,8 @@
     --detail-ivory: var(--hotel-ivory-rgb, 251 247 239);
     --detail-champagne: var(--hotel-champagne-rgb, 217 185 120);
     --detail-bronze: var(--hotel-bronze-rgb, 160 103 46);
-}
-
-.block::before {
-    content: "";
-    position: absolute;
-    inset: -1rem 8% auto;
-    z-index: -1;
-    block-size: clamp(8rem, 15vw, 12rem);
-    pointer-events: none;
-
-    background:
-        radial-gradient(circle at 50% 42%,
-            rgb(var(--detail-ivory) / 0.028) 0%,
-            rgb(var(--detail-champagne) / 0.11) 24%,
-            rgb(var(--detail-bronze) / 0.045) 50%,
-            transparent 76%);
-    filter: blur(38px) saturate(1.12);
-    opacity: 0.82;
-}
-
-.block::after {
-    content: "";
-    position: absolute;
-    inset-inline: 7%;
-    inset-block-start: clamp(2rem, 5vw, 4rem);
-    z-index: -1;
-
-    block-size: 1px;
-    pointer-events: none;
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--detail-bronze) / 0.16) 19%,
-            rgb(var(--detail-champagne) / 0.44) 50%,
-            rgb(var(--detail-bronze) / 0.16) 81%,
-            transparent 100%);
-    opacity: 0.54;
+    --detail-amber: var(--hotel-amber-rgb, 200 137 63);
+    --detail-olive: var(--hotel-olive-rgb, 111 115 84);
 }
 
 .grid {
@@ -58,32 +23,11 @@
 
 .detailPanel {
     position: relative;
+
     margin-top: clamp(1rem, 1.8vw, 1.4rem);
     scroll-margin-top: 6rem;
+
     animation: detailPanelReveal 260ms ease;
-}
-
-.detailPanel::before {
-    content: "";
-    position: absolute;
-    inset-inline: 50%;
-    inset-block-start: -0.7rem;
-    z-index: 0;
-    translate: -50% 0;
-
-    inline-size: min(42rem, 74vw);
-    block-size: 1px;
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--detail-bronze) / 0.2) 18%,
-            rgb(var(--detail-champagne) / 0.56) 50%,
-            rgb(var(--detail-bronze) / 0.2) 82%,
-            transparent 100%);
-
-    pointer-events: none;
-    opacity: 0.78;
 }
 
 .detailShell {
@@ -91,34 +35,24 @@
     isolation: isolate;
     overflow: hidden;
 
+    border: 1px solid rgb(var(--detail-champagne) / 0.36);
     border-radius: clamp(1.25rem, 2.1vw, 1.75rem);
-    border: 1px solid rgb(var(--detail-champagne) / 0.34);
 
     background:
-        radial-gradient(160% 190% at 8% -16%,
-            rgb(var(--detail-ivory) / 0.06) 0%,
-            rgb(var(--detail-champagne) / 0.14) 20%,
-            transparent 48%),
-        radial-gradient(120% 150% at 94% 112%,
+        radial-gradient(120% 145% at 0% 0%,
+            rgb(var(--detail-champagne) / 0.13) 0%,
+            transparent 46%),
+        radial-gradient(115% 130% at 100% 100%,
             rgb(var(--detail-bronze) / 0.09) 0%,
-            transparent 55%),
-        radial-gradient(100% 120% at 50% 48%,
-            rgb(var(--detail-champagne) / 0.034) 0%,
-            transparent 70%),
-        linear-gradient(180deg,
-            rgb(var(--detail-ivory) / 0.052) 0%,
-            rgb(var(--detail-ivory) / 0.014) 24%,
-            rgb(0 0 0 / 0.16) 100%),
+            transparent 56%),
         linear-gradient(135deg,
-            rgb(var(--detail-graphite) / 0.92) 0%,
+            rgb(var(--detail-graphite) / 0.9) 0%,
             rgb(var(--detail-noir) / 0.995) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--detail-ivory) / 0.085),
-        inset 0 -1px 0 rgb(0 0 0 / 0.2),
-        0 26px 58px rgb(0 0 0 / 0.32),
-        0 0 0 1px rgb(var(--detail-champagne) / 0.04),
-        0 0 68px rgb(var(--detail-champagne) / 0.045);
+        inset 0 1px 0 rgb(var(--detail-ivory) / 0.07),
+        0 26px 58px rgb(0 0 0 / 0.34),
+        0 0 34px rgb(var(--detail-champagne) / 0.05);
 }
 
 .detailShell::before {
@@ -126,102 +60,64 @@
     position: absolute;
     inset: 0;
     z-index: 0;
+
     pointer-events: none;
 
     background:
         linear-gradient(180deg,
-            rgb(var(--detail-ivory) / 0.09) 0%,
-            rgb(var(--detail-ivory) / 0.022) 17%,
-            transparent 42%),
-        linear-gradient(90deg,
-            rgb(var(--detail-champagne) / 0.045) 0%,
-            transparent 22%,
-            transparent 78%,
-            rgb(var(--detail-bronze) / 0.038) 100%),
-        repeating-linear-gradient(90deg,
-            rgb(var(--detail-ivory) / 0.014) 0 1px,
-            transparent 1px 84px);
-    opacity: 0.72;
-    mask-image: linear-gradient(180deg, #000 0%, #000 58%, transparent 100%);
-}
-
-.detailShell::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 0;
-    border-radius: inherit;
-    border: 1px solid rgb(var(--detail-ivory) / 0.05);
-    pointer-events: none;
-
-    background:
-        linear-gradient(135deg,
-            rgb(var(--detail-ivory) / 0.04) 0%,
-            transparent 20%,
-            transparent 74%,
-            rgb(var(--detail-champagne) / 0.032) 100%);
-    mask-image: linear-gradient(180deg, #000 0%, transparent 76%);
+            rgb(var(--detail-ivory) / 0.06) 0%,
+            transparent 34%);
 }
 
 .detailHero {
     position: relative;
     z-index: 1;
 
-    border-bottom: 1px solid rgb(var(--detail-champagne) / 0.22);
+    border-bottom: 1px solid rgb(var(--detail-champagne) / 0.34);
 
     background:
-        radial-gradient(94% 140% at 14% -20%,
-            rgb(var(--detail-ivory) / 0.16) 0%,
-            transparent 58%),
-        radial-gradient(56rem 13rem at 50% -8%,
+        radial-gradient(90% 145% at 18% 0%,
+            rgb(var(--detail-ivory) / 0.13) 0%,
+            transparent 54%),
+        radial-gradient(96% 140% at 50% 0%,
             rgb(var(--detail-champagne) / 0.18) 0%,
-            transparent 74%),
-        linear-gradient(180deg,
-            rgb(var(--detail-champagne) / 0.23) 0%,
-            rgb(var(--detail-bronze) / 0.15) 54%,
-            rgb(var(--detail-noir) / 0.28) 100%);
+            transparent 64%),
+        linear-gradient(135deg,
+            rgb(var(--detail-bronze) / 0.32) 0%,
+            rgb(var(--detail-graphite) / 0.74) 48%,
+            rgb(var(--detail-noir) / 0.95) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--detail-ivory) / 0.1),
+        0 0 1.35rem rgb(var(--detail-champagne) / 0.055);
 }
 
 .detailHero::before {
     content: "";
     position: absolute;
-    inset: 0;
-    pointer-events: none;
-
-    background:
-        linear-gradient(180deg,
-            rgb(var(--detail-ivory) / 0.105) 0%,
-            rgb(var(--detail-ivory) / 0.024) 30%,
-            transparent 100%),
-        linear-gradient(90deg,
-            rgb(var(--detail-champagne) / 0.052) 0%,
-            transparent 26%,
-            transparent 74%,
-            rgb(var(--detail-bronze) / 0.04) 100%);
-}
-
-.detailHero::after {
-    content: "";
-    position: absolute;
-    inset-inline: clamp(1rem, 1.8vw, 1.35rem);
-    inset-block-end: 0;
+    inset-inline: 16%;
+    inset-block-start: 0;
 
     block-size: 1px;
+
     pointer-events: none;
 
     background:
         linear-gradient(90deg,
             transparent 0%,
-            rgb(var(--detail-champagne) / 0.34) 22%,
-            rgb(var(--detail-ivory) / 0.16) 50%,
-            rgb(var(--detail-champagne) / 0.28) 78%,
+            rgb(var(--detail-bronze) / 0.28) 18%,
+            rgb(var(--detail-champagne) / 0.78) 50%,
+            rgb(var(--detail-amber) / 0.28) 82%,
             transparent 100%);
-    opacity: 0.8;
+
+    box-shadow:
+        0 0 1rem rgb(var(--detail-champagne) / 0.18);
 }
 
 .detailHeroInner {
     position: relative;
     z-index: 1;
+
     padding: clamp(1rem, 1.8vw, 1.35rem);
 }
 
@@ -235,6 +131,7 @@
 .detailHeroContent {
     display: grid;
     gap: 0.58rem;
+
     min-inline-size: 0;
 }
 
@@ -252,46 +149,44 @@
     min-block-size: 2.05rem;
     padding: 0.2rem 0.86rem;
 
+    border: 1px solid rgb(var(--detail-champagne) / 0.42);
     border-radius: 999px;
-    border: 1px solid rgb(var(--detail-champagne) / 0.36);
 
     background:
-        radial-gradient(120% 160% at 50% 0%,
-            rgb(var(--detail-ivory) / 0.095) 0%,
-            transparent 54%),
+        radial-gradient(110% 140% at 50% 0%,
+            rgb(var(--detail-ivory) / 0.12) 0%,
+            transparent 58%),
         linear-gradient(180deg,
-            rgb(var(--detail-ivory) / 0.09) 0%,
-            rgb(var(--detail-ivory) / 0.024) 100%),
-        rgb(var(--detail-noir) / 0.58);
+            rgb(var(--detail-champagne) / 0.18) 0%,
+            rgb(var(--detail-noir) / 0.56) 100%);
 
     color: rgb(var(--detail-champagne) / 1);
+
     font-size: 0.8rem;
-    font-weight: 800;
+    font-weight: 820;
     line-height: 1;
     white-space: nowrap;
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--detail-ivory) / 0.085),
-        0 9px 20px rgb(0 0 0 / 0.16),
-        0 0 18px rgb(var(--detail-champagne) / 0.07);
-
-    backdrop-filter: blur(11px) saturate(1.12);
-    -webkit-backdrop-filter: blur(11px) saturate(1.12);
+        inset 0 1px 0 rgb(var(--detail-ivory) / 0.08),
+        0 8px 18px rgb(0 0 0 / 0.18),
+        0 0 14px rgb(var(--detail-champagne) / 0.08);
 }
 
 .detailTitle {
     margin: 0;
 
     color: rgb(var(--detail-ivory) / 0.995);
+
     font-size: clamp(1.18rem, 0.62vw + 1rem, 1.5rem);
-    font-weight: 850;
+    font-weight: 880;
     line-height: 1.12;
-    letter-spacing: -0.026em;
+    letter-spacing: -0.028em;
     text-wrap: balance;
 
     text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.2),
-        0 16px 34px rgb(0 0 0 / 0.3);
+        0 1px 1px rgb(0 0 0 / 0.38),
+        0 12px 26px rgb(0 0 0 / 0.28);
 }
 
 .detailBody {
@@ -301,26 +196,19 @@
     display: grid;
     grid-template-columns: minmax(300px, 1.05fr) minmax(280px, 0.95fr);
     gap: clamp(1rem, 1.8vw, 1.4rem);
+
     padding: clamp(1rem, 1.8vw, 1.35rem);
-}
-
-.detailBody::before {
-    content: "";
-    position: absolute;
-    inset-inline: clamp(1rem, 1.8vw, 1.35rem);
-    inset-block-start: 0;
-
-    block-size: 1px;
-    pointer-events: none;
 
     background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--detail-champagne) / 0.18) 28%,
-            rgb(var(--detail-ivory) / 0.08) 50%,
-            rgb(var(--detail-bronze) / 0.14) 72%,
-            transparent 100%);
-    opacity: 0.68;
+        radial-gradient(90% 125% at 18% 0%,
+            rgb(var(--detail-olive) / 0.045) 0%,
+            transparent 66%),
+        radial-gradient(90% 125% at 100% 100%,
+            rgb(var(--detail-bronze) / 0.055) 0%,
+            transparent 64%),
+        linear-gradient(180deg,
+            rgb(var(--detail-noir) / 0.18) 0%,
+            rgb(0 0 0 / 0.24) 100%);
 }
 
 .detailMain,
@@ -333,13 +221,15 @@
     display: grid;
     align-content: start;
     gap: 1rem;
+
     animation: detailContentFade 300ms ease;
 }
 
 .detailDescription {
     margin: 0;
 
-    color: rgb(var(--detail-ivory) / 0.86);
+    color: rgb(var(--detail-ivory) / 0.87);
+
     font-size: clamp(0.94rem, 0.1vw + 0.9rem, 1rem);
     line-height: 1.62;
     text-wrap: pretty;
@@ -354,77 +244,66 @@
 
     padding: 0.95rem 1rem;
 
+    border: 1px solid rgb(var(--detail-champagne) / 0.28);
     border-radius: 1rem;
-    border: 1px solid rgb(var(--detail-champagne) / 0.22);
 
     background:
-        radial-gradient(120% 160% at 50% -20%,
-            rgb(var(--detail-champagne) / 0.075) 0%,
-            transparent 48%),
+        radial-gradient(100% 135% at 0% 0%,
+            rgb(var(--detail-olive) / 0.08) 0%,
+            transparent 58%),
+        radial-gradient(100% 135% at 100% 100%,
+            rgb(var(--detail-bronze) / 0.075) 0%,
+            transparent 62%),
         linear-gradient(180deg,
-            rgb(var(--detail-ivory) / 0.032) 0%,
-            rgb(var(--detail-ivory) / 0.01) 100%);
+            rgb(var(--detail-ivory) / 0.03) 0%,
+            rgb(var(--detail-noir) / 0.34) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--detail-ivory) / 0.055),
-        0 11px 24px rgb(0 0 0 / 0.16);
-}
-
-.detailNoteCard::before {
-    content: "";
-    position: absolute;
-    inset-block: 0;
-    inset-inline-start: 0;
-
-    inline-size: 3px;
-
-    background:
-        linear-gradient(180deg,
-            transparent 0%,
-            rgb(var(--detail-champagne) / 0.72) 28%,
-            rgb(var(--detail-bronze) / 0.46) 72%,
-            transparent 100%);
-    opacity: 0.78;
+        inset 0 1px 0 rgb(var(--detail-ivory) / 0.05),
+        0 10px 22px rgb(0 0 0 / 0.18);
 }
 
 .detailNoteLabel {
-    color: rgb(var(--detail-champagne) / 0.96);
+    color: rgb(var(--detail-champagne) / 0.98);
+
     font-size: 0.76rem;
-    font-weight: 800;
+    font-weight: 820;
     line-height: 1;
-    text-transform: uppercase;
     letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .detailNote {
     margin: 0;
 
-    color: rgb(var(--detail-ivory) / 0.82);
+    color: rgb(var(--detail-ivory) / 0.83);
+
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 620;
     line-height: 1.52;
 }
 
 .detailHighlights {
     padding: clamp(0.95rem, 1.4vw, 1.15rem);
 
+    border: 1px solid rgb(var(--detail-champagne) / 0.32);
     border-radius: clamp(1rem, 1.8vw, 1.35rem);
-    border: 1px solid rgb(var(--detail-champagne) / 0.24);
 
     background:
-        radial-gradient(125% 165% at 50% -24%,
-            rgb(var(--detail-champagne) / 0.085) 0%,
-            transparent 48%),
-        radial-gradient(100% 130% at 100% 100%,
-            rgb(var(--detail-bronze) / 0.052) 0%,
-            transparent 58%),
+        radial-gradient(100% 135% at 50% 0%,
+            rgb(var(--detail-champagne) / 0.09) 0%,
+            transparent 60%),
+        radial-gradient(110% 130% at 100% 100%,
+            rgb(var(--detail-bronze) / 0.09) 0%,
+            transparent 62%),
         linear-gradient(180deg,
-            rgb(var(--detail-ivory) / 0.035) 0%,
-            rgb(var(--detail-ivory) / 0.011) 100%);
+            rgb(var(--detail-graphite) / 0.62) 0%,
+            rgb(var(--detail-noir) / 0.78) 100%);
 
     box-shadow:
         inset 0 1px 0 rgb(var(--detail-ivory) / 0.06),
-        0 13px 30px rgb(0 0 0 / 0.19);
+        0 14px 30px rgb(0 0 0 / 0.22),
+        0 0 20px rgb(var(--detail-champagne) / 0.035);
 
     animation: detailContentFade 320ms ease;
 }
@@ -432,18 +311,24 @@
 .highlightsTitle {
     margin: 0 0 0.9rem;
 
-    color: rgb(var(--detail-ivory) / 0.985);
+    color: rgb(var(--detail-ivory) / 0.99);
+
     font-size: clamp(0.98rem, 0.18vw + 0.94rem, 1.1rem);
-    font-weight: 850;
+    font-weight: 860;
     line-height: 1.14;
     letter-spacing: -0.018em;
+
+    text-shadow:
+        0 1px 1px rgb(0 0 0 / 0.32);
 }
 
 .highlightsList {
     display: grid;
     gap: 0.78rem;
+
     margin: 0;
     padding: 0;
+
     list-style: none;
 }
 
@@ -455,28 +340,31 @@
 }
 
 .highlightDot {
-    inline-size: 0.58rem;
-    block-size: 0.58rem;
+    inline-size: 0.62rem;
+    block-size: 0.62rem;
     margin-top: 0.42rem;
+
     border-radius: 999px;
 
     background:
         radial-gradient(circle at 35% 25%,
-            rgb(var(--detail-ivory) / 0.86) 0%,
-            transparent 34%),
+            rgb(var(--detail-ivory) / 0.9) 0%,
+            transparent 36%),
         linear-gradient(180deg,
             rgb(var(--detail-champagne) / 1) 0%,
+            rgb(var(--detail-amber) / 0.94) 52%,
             rgb(var(--detail-bronze) / 0.9) 100%);
 
     box-shadow:
-        0 0 12px rgb(var(--detail-champagne) / 0.22),
-        0 0 24px rgb(var(--detail-bronze) / 0.1);
+        0 0 0 3px rgb(var(--detail-champagne) / 0.075),
+        0 0 14px rgb(var(--detail-champagne) / 0.2);
 }
 
 .highlightText {
-    color: rgb(var(--detail-ivory) / 0.88);
+    color: rgb(var(--detail-ivory) / 0.89);
+
     font-size: clamp(0.9rem, 0.1vw + 0.88rem, 0.96rem);
-    font-weight: 620;
+    font-weight: 630;
     line-height: 1.52;
     text-wrap: pretty;
 }
@@ -490,44 +378,44 @@
     inline-size: clamp(3rem, 2.8vw, 3.25rem);
     block-size: clamp(3rem, 2.8vw, 3.25rem);
 
+    border: 1px solid rgb(var(--detail-champagne) / 0.42);
     border-radius: 999px;
-    border: 1px solid rgb(var(--detail-champagne) / 0.38);
 
     background:
-        radial-gradient(circle at 30% 22%,
-            rgb(var(--detail-ivory) / 0.24) 0%,
+        radial-gradient(circle at 32% 24%,
+            rgb(var(--detail-ivory) / 0.22) 0%,
             transparent 56%),
-        radial-gradient(circle at 50% 58%,
-            rgb(var(--detail-champagne) / 0.14) 0%,
-            transparent 72%),
+        radial-gradient(circle at 70% 78%,
+            rgb(var(--detail-amber) / 0.16) 0%,
+            transparent 62%),
         linear-gradient(180deg,
-            rgb(var(--detail-bronze) / 0.34) 0%,
+            rgb(var(--detail-bronze) / 0.4) 0%,
             rgb(var(--detail-noir) / 0.9) 100%);
 
     color: rgb(var(--detail-champagne) / 1);
 
     box-shadow:
         inset 0 1px 0 rgb(var(--detail-ivory) / 0.12),
-        0 11px 24px rgb(0 0 0 / 0.22),
-        0 0 24px rgb(var(--detail-champagne) / 0.1);
+        0 10px 24px rgb(0 0 0 / 0.24),
+        0 0 18px rgb(var(--detail-champagne) / 0.075);
 }
 
 .detailIconCircle :global(svg) {
     display: block;
+
     inline-size: clamp(1rem, 1.02vw, 1.16rem);
     block-size: clamp(1rem, 1.02vw, 1.16rem);
+
     color: currentColor;
     stroke: currentColor;
-    filter:
-        drop-shadow(0 0 8px rgb(var(--detail-champagne) / 0.18)) drop-shadow(0 1px 0 rgb(0 0 0 / 0.24));
 }
 
 .detailIconPlaceholder {
     inline-size: 0.82rem;
     block-size: 0.82rem;
+
     border-radius: 999px;
     background: rgb(var(--detail-ivory) / 0.8);
-    box-shadow: 0 0 14px rgb(var(--detail-champagne) / 0.16);
 }
 
 @keyframes detailPanelReveal {
@@ -569,10 +457,6 @@
         margin-top: 1.15rem;
     }
 
-    .block::before {
-        opacity: 0.64;
-    }
-
     .detailShell {
         border-radius: 1.15rem;
     }
@@ -585,12 +469,17 @@
     .detailHeroLeft {
         grid-template-columns: 1fr;
         justify-items: center;
-        text-align: center;
         gap: 0.8rem;
+
+        text-align: center;
     }
 
     .detailHeroContent {
         justify-items: center;
+    }
+
+    .detailTop {
+        justify-content: center;
     }
 
     .detailHighlights {

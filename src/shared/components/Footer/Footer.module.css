@@ -21,7 +21,7 @@
   position: relative;
   overflow: clip;
 
-  inline-size: min(calc(100% - (2 * var(--section-inset))), var(--footer-max-width));
+
   max-inline-size: var(--footer-max-width);
   margin-inline: auto;
   box-sizing: border-box;
@@ -39,8 +39,8 @@
     var(--footer-base);
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.025),
-    0 10px 20px rgba(0, 0, 0, 0.2);
+    inset 0 1px 0 rgb(255 255 255 / 0.025),
+    0 10px 20px rgb(0 0 0 / 0.2);
 }
 
 .frame::before {
@@ -48,7 +48,9 @@
   position: absolute;
   inset-block-start: 0;
   inset-inline: 0;
+
   block-size: var(--rule-thickness);
+
   background: color-mix(in oklab, var(--footer-brand-accent), transparent 78%);
   pointer-events: none;
 }
@@ -78,27 +80,75 @@
   max-inline-size: var(--footer-max-width);
   margin-inline: auto;
   box-sizing: border-box;
-  border-top: var(--rule-thickness) solid color-mix(in oklab, var(--footer-brand-accent), transparent 78%);
+
+  border-top: var(--rule-thickness) solid color-mix(in oklab,
+      var(--footer-brand-accent),
+      transparent 78%);
 }
 
 /* =========================================================
-   Travel Footer
+   Travel Footer — Midnight Atlas Gold
    ========================================================= */
 
+:global([data-brand="travel"]) .footerWrap {
+  --section-inset: 0px;
+  --footer-max-width: 100%;
+  --footer-brand-accent: var(--travel-gold, #e0a72b);
+  --footer-base: var(--travel-navy-950, #020814);
+
+  color: var(--travel-text, rgb(248 251 255 / 0.96));
+  background: transparent;
+}
+
 :global([data-brand="travel"]) .footerWrap .frame {
+  inline-size: 100%;
+  max-inline-size: 100%;
+
+  border: 1px solid rgb(79 195 247 / 0.18);
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+
   background:
-    radial-gradient(132% 108% at 50% -12%,
-      rgba(46, 167, 224, 0.07),
-      transparent 58%),
-    linear-gradient(180deg, #0b142b 0%, #060e22 100%);
+    radial-gradient(1120px 360px at 50% -14%,
+      rgb(224 167 43 / 0.105) 0%,
+      transparent 60%),
+    radial-gradient(860px 320px at 82% 112%,
+      rgb(79 195 247 / 0.095) 0%,
+      transparent 62%),
+    radial-gradient(720px 280px at 6% 88%,
+      rgb(224 167 43 / 0.045) 0%,
+      transparent 66%),
+    linear-gradient(180deg,
+      rgb(10 29 52 / 0.98) 0%,
+      rgb(4 16 32 / 0.99) 44%,
+      rgb(2 8 20 / 1) 100%);
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.025),
-    0 8px 18px rgba(0, 0, 0, 0.22);
+    inset 0 1px 0 rgb(255 255 255 / 0.055),
+    inset 0 -1px 0 rgb(79 195 247 / 0.065),
+    0 1rem 2.6rem rgb(0 0 0 / 0.28),
+    0 0 2rem rgb(79 195 247 / 0.045);
+}
+
+:global([data-brand="travel"]) .footerWrap .frame::before {
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgb(79 195 247 / 0.16) 14%,
+      rgb(224 167 43 / 0.42) 50%,
+      rgb(79 195 247 / 0.16) 86%,
+      transparent 100%);
+}
+
+:global([data-brand="travel"]) .footerWrap .strip {
+  inline-size: 100%;
+  max-inline-size: 100%;
+
+  border-top-color: rgb(79 195 247 / 0.2);
 }
 
 /* =========================================================
-   Sports Footer — ESTILO SPORTS
+   Sports Footer
    ========================================================= */
 
 :global([data-brand="sports"]) .footerWrap {
@@ -107,8 +157,10 @@
 }
 
 :global([data-brand="sports"]) .footerWrap .frame {
-  border: 1px solid var(--sports-footer-frame-border, rgb(var(--sports-gold-rgb) / 0.18));
+  border: 1px solid var(--sports-footer-frame-border,
+      rgb(var(--sports-gold-rgb) / 0.18));
   border-bottom: 0;
+
   background: var(--sports-footer-frame-bg);
   box-shadow: var(--sports-footer-frame-shadow);
 }
@@ -118,7 +170,8 @@
 }
 
 :global([data-brand="sports"]) .footerWrap .strip {
-  border-top-color: var(--sports-footer-strip-border, rgb(var(--sports-gold-rgb) / 0.22));
+  border-top-color: var(--sports-footer-strip-border,
+      rgb(var(--sports-gold-rgb) / 0.22));
 }
 
 /* =========================================================
@@ -128,83 +181,79 @@
 :global([data-brand="group"]) .footerWrap .frame {
   background:
     radial-gradient(140% 112% at 50% -12%,
-      rgba(199, 134, 21, 0.08),
+      rgb(199 134 21 / 0.08),
       transparent 58%),
     linear-gradient(180deg,
-      rgba(8, 12, 22, 0.98) 0%,
-      rgba(3, 5, 10, 0.98) 100%);
+      rgb(8 12 22 / 0.98) 0%,
+      rgb(3 5 10 / 0.98) 100%);
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.022),
-    0 8px 18px rgba(0, 0, 0, 0.2);
+    inset 0 1px 0 rgb(255 255 255 / 0.022),
+    0 8px 18px rgb(0 0 0 / 0.2);
 }
 
 /* =========================================================
-   Hotel Footer — ESTILO HOTEL NOVO
-   Boutique Luxury Editorial / Cinematic Quiet Warmth
+   Hotel Footer — Amber Noir Sport Lodge
    ========================================================= */
 
 :global([data-brand="hotel"]) .footerWrap {
-  --footer-brand-accent: var(--hotel-champagne, #e8cd9c);
-  --footer-base: var(--hotel-graphite-950, #100d0b);
+  --footer-brand-accent: var(--hotel-champagne, #d9b978);
+  --footer-base: var(--hotel-black, #070402);
+  --footer-max-width: 1360px;
 
-  color: rgba(255, 249, 241, 0.96);
+  color: var(--hotel-text, rgb(251 247 239 / 0.96));
+  background: transparent;
 }
 
 :global([data-brand="hotel"]) .footerWrap .frame {
-  border: 1px solid rgba(232, 205, 156, 0.16);
+  --hotel-footer-section-bg:
+    radial-gradient(920px 280px at 50% -16%,
+      rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+      transparent 62%),
+    linear-gradient(180deg,
+      rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035) 0%,
+      rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 22%,
+      rgb(0 0 0 / 0.14) 100%),
+    linear-gradient(135deg,
+      rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.98) 0%,
+      rgb(var(--hotel-graphite-rgb, 26 18 12) / 0.99) 48%,
+      rgb(var(--hotel-black-rgb, 7 4 2) / 1) 100%);
+
+  --hotel-footer-section-bg-soft:
+    linear-gradient(180deg,
+      rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.026) 0%,
+      rgb(var(--hotel-black-rgb, 7 4 2) / 0.04) 100%),
+    rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.34);
+
+  --hotel-footer-section-border:
+    rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
+
+  --hotel-footer-section-border-strong:
+    rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
+
+  border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
   border-bottom: 0;
 
-  background:
-    radial-gradient(1180px 380px at 50% -14%,
-      rgba(232, 205, 156, 0.105) 0%,
-      rgba(232, 205, 156, 0.035) 34%,
-      transparent 62%),
-    radial-gradient(880px 320px at 86% 108%,
-      rgba(153, 112, 62, 0.075) 0%,
-      transparent 60%),
-    radial-gradient(760px 280px at 8% 88%,
-      rgba(255, 250, 242, 0.032) 0%,
-      transparent 58%),
-    linear-gradient(180deg,
-      rgba(255, 250, 242, 0.034) 0%,
-      rgba(255, 250, 242, 0.012) 18%,
-      rgba(0, 0, 0, 0.075) 100%),
-    linear-gradient(135deg,
-      rgba(35, 27, 22, 0.985) 0%,
-      rgba(23, 18, 15, 0.992) 52%,
-      rgba(13, 10, 9, 1) 100%);
+  background: var(--hotel-footer-section-bg);
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 250, 242, 0.045),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
-    0 18px 42px rgba(0, 0, 0, 0.2),
-    0 0 34px rgba(232, 205, 156, 0.035);
+    inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
+    inset 0 -1px 0 rgb(0 0 0 / 0.22),
+    0 1.1rem 2.8rem rgb(0 0 0 / 0.26);
 }
 
 :global([data-brand="hotel"]) .footerWrap .frame::before {
   background:
     linear-gradient(90deg,
       transparent 0%,
-      rgba(232, 205, 156, 0.12) 14%,
-      rgba(232, 205, 156, 0.38) 50%,
-      rgba(232, 205, 156, 0.12) 86%,
+      rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.14) 16%,
+      rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42) 50%,
+      rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.14) 84%,
       transparent 100%);
 }
 
-:global([data-brand="hotel"]) .footerWrap .frame::after {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  z-index: 0;
-  border: 1px solid rgba(255, 239, 210, 0.035);
-  border-bottom: 0;
-  border-radius: inherit;
-  pointer-events: none;
-}
-
 :global([data-brand="hotel"]) .footerWrap .strip {
-  border-top-color: rgba(232, 205, 156, 0.2);
+  border-top-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
 }
 
 /* =========================================================
@@ -222,12 +271,28 @@
     border-radius: 16px 16px 0 0;
   }
 
+  :global([data-brand="travel"]) .footerWrap {
+    --section-inset: 0px;
+  }
+
+  :global([data-brand="travel"]) .footerWrap .frame {
+    inline-size: 100%;
+    max-inline-size: 100%;
+    border-radius: 16px 16px 0 0;
+
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.05),
+      inset 0 -1px 0 rgb(79 195 247 / 0.055),
+      0 0.9rem 2.1rem rgb(0 0 0 / 0.24);
+  }
+
   :global([data-brand="hotel"]) .footerWrap .frame {
     border-radius: 16px 16px 0 0;
+
     box-shadow:
-      inset 0 1px 0 rgba(255, 250, 242, 0.04),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.16),
-      0 14px 30px rgba(0, 0, 0, 0.18);
+      inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05),
+      inset 0 -1px 0 rgb(0 0 0 / 0.18),
+      0 0.9rem 2.1rem rgb(0 0 0 / 0.24);
   }
 }
 
@@ -238,115 +303,165 @@
 @supports not (background: color-mix(in oklab, white, black)) {
   .frame {
     background:
-      radial-gradient(1100px 360px at 50% -10%, rgba(255, 255, 255, 0.03), transparent 58%),
-      radial-gradient(820px 320px at 70% 115%, rgba(255, 255, 255, 0.02), transparent 58%),
+      radial-gradient(1100px 360px at 50% -10%,
+        rgb(255 255 255 / 0.03),
+        transparent 58%),
+      radial-gradient(820px 320px at 70% 115%,
+        rgb(255 255 255 / 0.02),
+        transparent 58%),
       var(--footer-base);
 
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.025),
-      0 10px 20px rgba(0, 0, 0, 0.2);
+      inset 0 1px 0 rgb(255 255 255 / 0.025),
+      0 10px 20px rgb(0 0 0 / 0.2);
   }
 
   .frame::before {
-    background: rgba(199, 134, 21, 0.2);
+    background: rgb(199 134 21 / 0.2);
   }
 
   .strip {
-    border-top: var(--rule-thickness) solid rgba(199, 134, 21, 0.2);
+    border-top: var(--rule-thickness) solid rgb(199 134 21 / 0.2);
   }
 
   :global([data-brand="travel"]) .footerWrap .frame {
-    background:
-      radial-gradient(1100px 360px at 50% -10%, rgba(46, 167, 224, 0.11), transparent 58%),
-      radial-gradient(820px 320px at 70% 115%, rgba(46, 167, 224, 0.07), transparent 58%),
-      linear-gradient(180deg, #0b142b 0%, #060e22 100%);
-  }
+    inline-size: 100%;
+    max-inline-size: 100%;
 
-  :global([data-brand="sports"]) .footerWrap .frame {
-    border: 1px solid rgba(214, 166, 64, 0.18);
+    border: 1px solid rgb(79 195 247 / 0.18);
     border-bottom: 0;
 
     background:
-      radial-gradient(1100px 360px at 0% 0%, rgba(214, 166, 64, 0.11), transparent 58%),
-      radial-gradient(820px 320px at 100% 115%, rgba(46, 194, 126, 0.035), transparent 60%),
+      radial-gradient(1120px 360px at 50% -14%,
+        rgb(224 167 43 / 0.105),
+        transparent 60%),
+      radial-gradient(860px 320px at 82% 112%,
+        rgb(79 195 247 / 0.095),
+        transparent 62%),
+      linear-gradient(180deg,
+        rgb(10 29 52 / 0.98) 0%,
+        rgb(4 16 32 / 0.99) 44%,
+        rgb(2 8 20 / 1) 100%);
+
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.055),
+      inset 0 -1px 0 rgb(79 195 247 / 0.065),
+      0 1rem 2.6rem rgb(0 0 0 / 0.28);
+  }
+
+  :global([data-brand="travel"]) .footerWrap .frame::before {
+    background:
+      linear-gradient(90deg,
+        transparent 0%,
+        rgb(79 195 247 / 0.16) 14%,
+        rgb(224 167 43 / 0.42) 50%,
+        rgb(79 195 247 / 0.16) 86%,
+        transparent 100%);
+  }
+
+  :global([data-brand="travel"]) .footerWrap .strip {
+    inline-size: 100%;
+    max-inline-size: 100%;
+    border-top-color: rgb(79 195 247 / 0.2);
+  }
+
+  :global([data-brand="sports"]) .footerWrap .frame {
+    border: 1px solid rgb(214 166 64 / 0.18);
+    border-bottom: 0;
+
+    background:
+      radial-gradient(1100px 360px at 0% 0%,
+        rgb(214 166 64 / 0.11),
+        transparent 58%),
+      radial-gradient(820px 320px at 100% 115%,
+        rgb(46 194 126 / 0.035),
+        transparent 60%),
       linear-gradient(180deg, #07101a 0%, #03070d 100%);
 
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.04),
-      0 0 0 1px rgba(0, 0, 0, 0.55),
-      0 16px 34px rgba(0, 0, 0, 0.32),
-      0 0 34px rgba(214, 166, 64, 0.045);
+      inset 0 1px 0 rgb(255 255 255 / 0.04),
+      0 0 0 1px rgb(0 0 0 / 0.55),
+      0 16px 34px rgb(0 0 0 / 0.32),
+      0 0 34px rgb(214 166 64 / 0.045);
   }
 
   :global([data-brand="sports"]) .footerWrap .frame::before {
     background:
       linear-gradient(90deg,
         transparent 0%,
-        rgba(214, 166, 64, 0.18) 14%,
-        rgba(214, 166, 64, 0.5) 50%,
-        rgba(214, 166, 64, 0.18) 86%,
+        rgb(214 166 64 / 0.18) 14%,
+        rgb(214 166 64 / 0.5) 50%,
+        rgb(214 166 64 / 0.18) 86%,
         transparent 100%);
   }
 
   :global([data-brand="sports"]) .footerWrap .strip {
-    border-top-color: rgba(214, 166, 64, 0.22);
+    border-top-color: rgb(214 166 64 / 0.22);
   }
 
   :global([data-brand="group"]) .footerWrap .frame {
     background:
       radial-gradient(140% 112% at 50% -12%,
-        rgba(199, 134, 21, 0.08),
+        rgb(199 134 21 / 0.08),
         transparent 58%),
       linear-gradient(180deg,
-        rgba(8, 12, 22, 0.98) 0%,
-        rgba(3, 5, 10, 0.98) 100%);
+        rgb(8 12 22 / 0.98) 0%,
+        rgb(3 5 10 / 0.98) 100%);
 
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.022),
-      0 8px 18px rgba(0, 0, 0, 0.2);
+      inset 0 1px 0 rgb(255 255 255 / 0.022),
+      0 8px 18px rgb(0 0 0 / 0.2);
+  }
+
+  :global([data-brand="hotel"]) .footerWrap {
+    background: transparent;
   }
 
   :global([data-brand="hotel"]) .footerWrap .frame {
-    border: 1px solid rgba(232, 205, 156, 0.16);
+    --hotel-footer-section-bg:
+      radial-gradient(920px 280px at 50% -16%,
+        rgb(217 185 120 / 0.1),
+        transparent 62%),
+      linear-gradient(180deg,
+        rgb(251 247 239 / 0.035) 0%,
+        rgb(251 247 239 / 0.012) 22%,
+        rgb(0 0 0 / 0.14) 100%),
+      linear-gradient(135deg,
+        rgb(41 26 17 / 0.98) 0%,
+        rgb(26 18 12 / 0.99) 48%,
+        rgb(7 4 2 / 1) 100%);
+
+    --hotel-footer-section-bg-soft:
+      linear-gradient(180deg,
+        rgb(251 247 239 / 0.026) 0%,
+        rgb(7 4 2 / 0.04) 100%),
+      rgb(41 26 17 / 0.34);
+
+    --hotel-footer-section-border: rgb(217 185 120 / 0.18);
+    --hotel-footer-section-border-strong: rgb(217 185 120 / 0.3);
+
+    border: 1px solid rgb(217 185 120 / 0.2);
     border-bottom: 0;
 
-    background:
-      radial-gradient(1180px 380px at 50% -14%,
-        rgba(232, 205, 156, 0.105),
-        transparent 62%),
-      radial-gradient(880px 320px at 86% 108%,
-        rgba(153, 112, 62, 0.075),
-        transparent 60%),
-      radial-gradient(760px 280px at 8% 88%,
-        rgba(255, 250, 242, 0.032),
-        transparent 58%),
-      linear-gradient(180deg,
-        rgba(255, 250, 242, 0.034) 0%,
-        rgba(255, 250, 242, 0.012) 18%,
-        rgba(0, 0, 0, 0.075) 100%),
-      linear-gradient(135deg,
-        rgba(35, 27, 22, 0.985) 0%,
-        rgba(23, 18, 15, 0.992) 52%,
-        rgba(13, 10, 9, 1) 100%);
+    background: var(--hotel-footer-section-bg);
 
     box-shadow:
-      inset 0 1px 0 rgba(255, 250, 242, 0.045),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.18),
-      0 18px 42px rgba(0, 0, 0, 0.2),
-      0 0 34px rgba(232, 205, 156, 0.035);
+      inset 0 1px 0 rgb(251 247 239 / 0.06),
+      inset 0 -1px 0 rgb(0 0 0 / 0.22),
+      0 1.1rem 2.8rem rgb(0 0 0 / 0.26);
   }
 
   :global([data-brand="hotel"]) .footerWrap .frame::before {
     background:
       linear-gradient(90deg,
         transparent 0%,
-        rgba(232, 205, 156, 0.12) 14%,
-        rgba(232, 205, 156, 0.38) 50%,
-        rgba(232, 205, 156, 0.12) 86%,
+        rgb(125 90 49 / 0.14) 16%,
+        rgb(217 185 120 / 0.42) 50%,
+        rgb(125 90 49 / 0.14) 84%,
         transparent 100%);
   }
 
   :global([data-brand="hotel"]) .footerWrap .strip {
-    border-top-color: rgba(232, 205, 156, 0.2);
+    border-top-color: rgb(217 185 120 / 0.2);
   }
 }

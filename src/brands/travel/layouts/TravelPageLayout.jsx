@@ -15,9 +15,9 @@ export default function TravelPageLayout() {
       <div className={styles.layout}>
         <TravelHeaderNav />
 
-        <main className={styles.main}>
+        <div className={styles.main}>
           <Outlet />
-        </main>
+        </div>
 
         <TravelFooter />
       </div>

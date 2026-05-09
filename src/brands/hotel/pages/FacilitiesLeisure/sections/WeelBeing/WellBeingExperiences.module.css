@@ -7,45 +7,7 @@
     margin-top: clamp(1.05rem, 1.9vw, 1.5rem);
 }
 
-.content::before {
-    content: "";
-    position: absolute;
-    inset-inline: 4%;
-    inset-block-start: -0.1rem;
-    z-index: -2;
 
-    block-size: clamp(6rem, 10vw, 8.4rem);
-    pointer-events: none;
-    border-radius: 999px;
-
-    background:
-        radial-gradient(64% 100% at 50% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.115) 0%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.048) 42%,
-            transparent 80%);
-    filter: blur(30px);
-    opacity: 0.86;
-}
-
-.content::after {
-    content: "";
-    position: absolute;
-    inset-inline: clamp(0.4rem, 2vw, 1.2rem);
-    inset-block-start: 0;
-    z-index: -1;
-
-    block-size: 1px;
-    pointer-events: none;
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 20%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.15) 50%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.1) 80%,
-            transparent 100%);
-    opacity: 0.68;
-}
 
 .cardsGrid {
     display: grid;
@@ -69,24 +31,7 @@
     animation: detailReveal 360ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.detailsArea::before {
-    content: "";
-    position: absolute;
-    inset-inline: clamp(1rem, 6vw, 4rem);
-    inset-block-start: -0.5rem;
-    z-index: -1;
 
-    block-size: clamp(2.8rem, 5vw, 4.2rem);
-    pointer-events: none;
-    border-radius: 999px;
-
-    background:
-        radial-gradient(closest-side,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
-            transparent 78%);
-    filter: blur(22px);
-    opacity: 0.78;
-}
 
 @keyframes detailReveal {
     from {
@@ -114,15 +59,7 @@
         margin-top: 0.95rem;
     }
 
-    .content::before {
-        inset-inline: 0;
-        block-size: 5rem;
-        opacity: 0.72;
-    }
 
-    .content::after {
-        opacity: 0.5;
-    }
 
     .cardsGrid {
         grid-template-columns: 1fr;
@@ -134,11 +71,7 @@
         margin-top: 0.78rem;
     }
 
-    .detailsArea::before {
-        inset-inline: 1rem;
-        block-size: 3.2rem;
-        opacity: 0.56;
-    }
+    
 }
 
 @media (prefers-reduced-motion: reduce) {

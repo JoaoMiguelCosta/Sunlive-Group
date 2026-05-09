@@ -12,6 +12,8 @@
 
     overflow: hidden;
     box-sizing: border-box;
+
+    border-radius: 10px;
 }
 
 .image {
@@ -24,6 +26,8 @@
     margin-inline: auto;
 
     object-fit: contain;
+    object-position: center center;
+
     user-select: none;
     -webkit-user-drag: none;
 
@@ -79,7 +83,16 @@
 @media (max-width: 768px) {
     .frame {
         inline-size: 100%;
+        aspect-ratio: 16 / 8.2;
+        min-block-size: 210px;
         border-radius: 10px;
+    }
+
+    .image {
+        inline-size: 100%;
+        block-size: 100%;
+        object-fit: cover;
+        object-position: center center;
     }
 
     .caption {
@@ -92,6 +105,12 @@
     .frame {
         inline-size: calc(100% + 0.75rem);
         margin-inline: -0.375rem;
+        aspect-ratio: 4 / 2.35;
+        min-block-size: 235px;
+    }
+
+    .image {
+        object-position: center center;
     }
 }
 
@@ -99,6 +118,8 @@
     .frame {
         inline-size: calc(100% + 1rem);
         margin-inline: -0.5rem;
+        aspect-ratio: 4 / 2.55;
+        min-block-size: 250px;
     }
 
     .caption {
@@ -112,5 +133,13 @@
     .frame {
         inline-size: calc(100% + 0.75rem);
         margin-inline: -0.375rem;
+        aspect-ratio: 4 / 2.6;
+        min-block-size: 230px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .image {
+        transition: none;
     }
 }

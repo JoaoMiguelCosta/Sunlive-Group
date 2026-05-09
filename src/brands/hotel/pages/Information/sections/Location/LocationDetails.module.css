@@ -3,25 +3,19 @@
     --location-radius-xl: clamp(1.36rem, 1.95vw, 1.88rem);
     --location-radius-md: clamp(0.9rem, 1.15vw, 1.08rem);
 
-    --location-bg-deep: rgba(13, 12, 11, 0.99);
-    --location-bg-main: rgba(24, 22, 20, 0.96);
-    --location-bg-soft: rgba(38, 34, 29, 0.74);
-    --location-bg-glass: rgba(255, 250, 242, 0.034);
+    --location-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
+    --location-border-soft: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14);
+    --location-border-strong: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
 
-    --location-border: rgba(232, 205, 156, 0.16);
-    --location-border-soft: rgba(232, 205, 156, 0.1);
-    --location-border-strong: rgba(232, 205, 156, 0.26);
+    --location-text-main: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.98);
+    --location-text-soft: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.84);
+    --location-text-muted: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.62);
 
-    --location-text-main: rgba(255, 250, 244, 0.97);
-    --location-text-soft: rgba(246, 235, 219, 0.82);
-    --location-text-muted: rgba(235, 218, 193, 0.64);
-
-    --location-champagne: rgba(232, 205, 156, 0.94);
-    --location-champagne-soft: rgba(232, 205, 156, 0.68);
+    --location-champagne: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.96);
+    --location-champagne-soft: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.72);
 
     inline-size: min(100%, 1360px);
     margin: clamp(1.3rem, 2.1vw, 1.85rem) auto 0;
-
     box-sizing: border-box;
 }
 
@@ -58,19 +52,24 @@
 
     background:
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.05) 0%,
-            rgba(255, 250, 242, 0.012) 100%),
-        rgba(28, 25, 22, 0.72);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.76);
 
     color: var(--location-text-soft);
     font-size: clamp(0.8rem, 0.16vw + 0.78rem, 0.88rem);
-    font-weight: 650;
+    font-weight: 700;
     line-height: 1.1;
     text-align: center;
 
+    text-shadow: 0 1px 1px rgb(var(--hotel-black-rgb, 7 4 2) / 0.48);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.04),
-        0 8px 18px rgba(0, 0, 0, 0.12);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
+        0 0.72rem 1.45rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.24);
+
+    backdrop-filter: blur(8px) saturate(1.04);
+    -webkit-backdrop-filter: blur(8px) saturate(1.04);
 }
 
 .infoCard {
@@ -84,49 +83,22 @@
     border-radius: var(--location-radius-lg);
 
     background:
-        radial-gradient(110% 120% at 0% 0%,
-            rgba(232, 205, 156, 0.055) 0%,
-            transparent 44%),
-        radial-gradient(120% 130% at 100% 100%,
-            rgba(118, 92, 59, 0.055) 0%,
-            transparent 48%),
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.028) 0%,
-            rgba(255, 250, 242, 0.008) 24%,
-            rgba(0, 0, 0, 0.08) 100%),
+        radial-gradient(120% 135% at 50% -18%,
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.045) 38%,
+            transparent 68%),
         linear-gradient(135deg,
-            rgba(31, 28, 25, 0.96) 0%,
-            rgba(20, 18, 16, 0.985) 58%,
-            rgba(12, 10, 9, 1) 100%);
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.94) 0%,
+            rgb(var(--hotel-graphite-rgb, 26 18 12) / 0.98) 58%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.99) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.04),
-        0 18px 36px rgba(0, 0, 0, 0.18);
-}
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.065),
+        inset 0 -1px 0 rgb(0 0 0 / 0.22),
+        0 1.35rem 3.4rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.36);
 
-.infoCard::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    background:
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.05) 0%,
-            rgba(255, 250, 242, 0.01) 18%,
-            transparent 44%);
-}
-
-.infoCard::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 3;
-    pointer-events: none;
-
-    border: 1px solid rgba(255, 239, 210, 0.035);
-    border-radius: inherit;
+    backdrop-filter: blur(12px) saturate(1.06);
+    -webkit-backdrop-filter: blur(12px) saturate(1.06);
 }
 
 .cardHeader {
@@ -136,25 +108,10 @@
     border-bottom: 1px solid var(--location-border-soft);
 
     background:
-        radial-gradient(120% 180% at 50% -40%,
-            rgba(232, 205, 156, 0.08) 0%,
-            transparent 54%),
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.045) 0%,
-            rgba(255, 250, 242, 0.016) 100%),
-        rgba(28, 25, 22, 0.82);
-}
-
-.cardHeader::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-
-    background:
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.045) 0%,
-            transparent 72%);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11) 0%,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.055) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.86);
 }
 
 .cardHeaderInner {
@@ -181,10 +138,14 @@
 
     color: var(--location-champagne-soft);
     font-size: 0.72rem;
-    font-weight: 800;
+    font-weight: 820;
     line-height: 1.1;
     letter-spacing: 0.16em;
     text-transform: uppercase;
+
+    text-shadow:
+        0 1px 1px rgb(var(--hotel-black-rgb, 7 4 2) / 0.52),
+        0 0 0.9rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12);
 }
 
 .headerIcon {
@@ -196,20 +157,19 @@
     block-size: 40px;
     flex: 0 0 40px;
 
-    border: 1px solid rgba(232, 205, 156, 0.18);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
     border-radius: 999px;
 
     background:
-        radial-gradient(circle at 30% 30%,
-            rgba(255, 250, 242, 0.12) 0%,
-            transparent 58%),
-        rgba(20, 18, 16, 0.72);
+        linear-gradient(180deg,
+            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.28) 0%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.58) 100%);
 
     color: var(--location-champagne);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.08),
-        0 8px 18px rgba(0, 0, 0, 0.18);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.1),
+        0 0.7rem 1.4rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.28);
 }
 
 .headerIcon :global(svg) {
@@ -224,10 +184,14 @@
 
     color: var(--location-text-main);
     font-size: clamp(1.04rem, 0.44vw + 0.98rem, 1.24rem);
-    font-weight: 820;
+    font-weight: 840;
     line-height: 1.1;
-    letter-spacing: -0.024em;
+    letter-spacing: -0.026em;
     text-wrap: balance;
+
+    text-shadow:
+        0 1px 1px rgb(var(--hotel-black-rgb, 7 4 2) / 0.52),
+        0 1rem 1.6rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.3);
 }
 
 .cardBody {
@@ -249,6 +213,8 @@
     font-size: clamp(0.96rem, 0.88vw, 1.04rem);
     line-height: 1.58;
     text-wrap: balance;
+
+    text-shadow: 0 1px 1px rgb(var(--hotel-black-rgb, 7 4 2) / 0.42);
 }
 
 .coordinatesGrid {
@@ -264,23 +230,24 @@
     min-inline-size: 0;
     padding: 0.9rem 0.95rem;
 
-    border: 1px solid rgba(232, 205, 156, 0.14);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.16);
     border-radius: var(--location-radius-md);
 
     background:
-        radial-gradient(120% 160% at 50% 0%,
-            rgba(232, 205, 156, 0.045) 0%,
-            transparent 52%),
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.03) 0%,
-            rgba(255, 250, 242, 0.008) 100%),
-        rgba(19, 17, 15, 0.38);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.01) 100%),
+        rgb(var(--hotel-black-rgb, 7 4 2) / 0.34);
+
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05),
+        0 0.7rem 1.4rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.16);
 }
 
 .coordinateLabel {
     color: var(--location-text-muted);
     font-size: 0.72rem;
-    font-weight: 800;
+    font-weight: 820;
     line-height: 1.2;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -289,8 +256,10 @@
 .coordinateValue {
     color: var(--location-text-main);
     font-size: clamp(0.96rem, 0.22vw + 0.94rem, 1.04rem);
-    font-weight: 700;
+    font-weight: 740;
     line-height: 1.35;
+
+    text-shadow: 0 1px 1px rgb(var(--hotel-black-rgb, 7 4 2) / 0.48);
 }
 
 .actionsRow {
@@ -301,6 +270,9 @@
 }
 
 .actionButton {
+    position: relative;
+    isolation: isolate;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -314,63 +286,70 @@
     color: var(--location-text-main);
     text-decoration: none;
     font-size: 0.92rem;
-    font-weight: 700;
+    font-weight: 760;
     line-height: 1;
 
+    text-shadow: 0 1px 1px rgb(var(--hotel-black-rgb, 7 4 2) / 0.5);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.055),
-        0 10px 22px rgba(0, 0, 0, 0.16);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07),
+        0 0.75rem 1.6rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.26);
 
     transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        background 180ms ease,
-        color 180ms ease;
+        transform var(--hotel-transition-fast, 180ms ease),
+        border-color var(--hotel-transition-fast, 180ms ease),
+        box-shadow var(--hotel-transition-fast, 180ms ease),
+        background var(--hotel-transition-fast, 180ms ease),
+        color var(--hotel-transition-fast, 180ms ease),
+        filter var(--hotel-transition-fast, 180ms ease);
 }
 
 .actionPrimary {
-    border: 1px solid rgba(232, 205, 156, 0.26);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.31);
 
     background:
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.055) 0%,
-            rgba(255, 250, 242, 0.014) 100%),
-        rgba(32, 28, 24, 0.88);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.9);
 }
 
 .actionSecondary {
-    border: 1px solid rgba(232, 205, 156, 0.18);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
 
     background:
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.042) 0%,
-            rgba(255, 250, 242, 0.01) 100%),
-        rgba(25, 22, 19, 0.82);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.045) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 100%),
+        rgb(var(--hotel-graphite-rgb, 26 18 12) / 0.82);
 
-    color: rgba(255, 244, 232, 0.9);
+    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.92);
 }
 
 .actionButton:hover,
 .mapAction:hover {
     transform: translateY(-2px);
-    border-color: rgba(232, 205, 156, 0.36);
+    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
+    filter: saturate(1.04) contrast(1.01);
 
     background:
         linear-gradient(180deg,
-            rgba(232, 205, 156, 0.11) 0%,
-            rgba(255, 250, 242, 0.028) 100%),
-        rgba(38, 33, 28, 0.94);
+            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.02) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.94);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.07),
-        0 14px 28px rgba(0, 0, 0, 0.2);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.095),
+        0 1rem 2.1rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.34),
+        0 0 1.35rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06);
 }
 
 .actionButton:focus-visible,
 .mapAction:focus-visible {
-    outline: 2px solid rgba(232, 205, 156, 0.78);
-    outline-offset: 3px;
+    outline: none;
+    box-shadow:
+        var(--hotel-focus-ring, 0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.96), 0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86)),
+        0 1rem 2.15rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.36);
 }
 
 .actionIcon,
@@ -406,35 +385,15 @@
     border-radius: var(--location-radius-xl);
 
     background:
-        radial-gradient(110% 120% at 0% 0%,
-            rgba(232, 205, 156, 0.06) 0%,
-            transparent 44%),
-        radial-gradient(120% 130% at 100% 100%,
-            rgba(118, 92, 59, 0.055) 0%,
-            transparent 48%),
-        linear-gradient(180deg,
-            rgba(255, 250, 242, 0.028) 0%,
-            rgba(255, 250, 242, 0.008) 24%,
-            rgba(0, 0, 0, 0.08) 100%),
         linear-gradient(135deg,
-            rgba(31, 28, 25, 0.96) 0%,
-            rgba(20, 18, 16, 0.985) 58%,
-            rgba(12, 10, 9, 1) 100%);
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.96) 0%,
+            rgb(var(--hotel-graphite-rgb, 26 18 12) / 0.985) 58%,
+            rgb(var(--hotel-black-rgb, 7 4 2) / 1) 100%);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.04),
-        0 22px 46px rgba(0, 0, 0, 0.2);
-}
-
-.mapCard::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 4;
-    pointer-events: none;
-
-    border: 1px solid rgba(255, 239, 210, 0.035);
-    border-radius: inherit;
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075),
+        inset 0 -1px 0 rgb(0 0 0 / 0.24),
+        0 1.7rem 4.4rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.42);
 }
 
 .mapFrameWrap {
@@ -449,7 +408,7 @@
 
     border: 0;
 
-    filter: saturate(0.86) contrast(1.02) brightness(0.92);
+    filter: saturate(0.74) contrast(1.05) brightness(0.82) sepia(0.08);
 }
 
 .mapOverlay {
@@ -458,23 +417,17 @@
     pointer-events: none;
 
     background:
-        linear-gradient(180deg,
-            rgba(14, 12, 10, 0.12) 0%,
-            rgba(14, 12, 10, 0.02) 24%),
         linear-gradient(0deg,
-            rgba(14, 12, 10, 0.88) 0%,
-            rgba(14, 12, 10, 0.22) 34%,
-            rgba(14, 12, 10, 0) 60%),
-        radial-gradient(circle at 50% 18%,
-            rgba(232, 205, 156, 0.045) 0%,
-            transparent 36%);
+            rgb(var(--hotel-black-rgb, 7 4 2) / 0.84) 0%,
+            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.38) 32%,
+            transparent 62%);
 }
 
 .mapBadge {
     position: absolute;
     inset-block-start: 1rem;
     inset-inline-start: 1rem;
-    z-index: 2;
+    z-index: 5;
 
     display: inline-flex;
     align-items: center;
@@ -483,54 +436,56 @@
     min-block-size: 38px;
     padding: 0.52rem 0.82rem;
 
-    border: 1px solid rgba(232, 205, 156, 0.18);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
     border-radius: 999px;
 
     background:
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.08) 0%,
-            rgba(255, 250, 242, 0.012) 100%),
-        rgba(24, 21, 18, 0.76);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.016) 100%),
+        rgb(var(--hotel-graphite-rgb, 26 18 12) / 0.84);
 
     color: var(--location-text-main);
     font-size: 0.82rem;
-    font-weight: 700;
+    font-weight: 760;
     line-height: 1;
 
-    box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.055),
-        0 12px 26px rgba(0, 0, 0, 0.22);
+    text-shadow: 0 1px 1px rgb(var(--hotel-black-rgb, 7 4 2) / 0.52);
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+        0 0.85rem 1.8rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.32);
+
+    backdrop-filter: blur(12px) saturate(1.08);
+    -webkit-backdrop-filter: blur(12px) saturate(1.08);
 }
 
 .mapContent {
     position: absolute;
     inset-inline: 1rem;
     inset-block-end: 1rem;
-    z-index: 2;
+    z-index: 5;
 
     display: grid;
     gap: 0.64rem;
 
     padding: 0.96rem 1rem 1.02rem;
 
-    border: 1px solid rgba(232, 205, 156, 0.16);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
     border-radius: 18px;
 
     background:
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.06) 0%,
-            rgba(255, 250, 242, 0.012) 100%),
-        rgba(19, 17, 15, 0.74);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 100%),
+        rgb(var(--hotel-black-rgb, 7 4 2) / 0.76);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.06),
-        0 14px 32px rgba(0, 0, 0, 0.22);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+        0 1rem 2.5rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.4);
 
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px) saturate(1.1);
+    -webkit-backdrop-filter: blur(16px) saturate(1.1);
 }
 
 .mapTitle {
@@ -538,9 +493,13 @@
 
     color: var(--location-text-main);
     font-size: clamp(1.04rem, 0.42vw + 0.98rem, 1.18rem);
-    font-weight: 820;
+    font-weight: 840;
     line-height: 1.16;
-    letter-spacing: -0.024em;
+    letter-spacing: -0.026em;
+
+    text-shadow:
+        0 1px 1px rgb(var(--hotel-black-rgb, 7 4 2) / 0.54),
+        0 1rem 1.6rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.32);
 }
 
 .mapSupportingText {
@@ -551,9 +510,14 @@
     font-size: 0.92rem;
     line-height: 1.48;
     text-wrap: pretty;
+
+    text-shadow: 0 1px 1px rgb(var(--hotel-black-rgb, 7 4 2) / 0.44);
 }
 
 .mapAction {
+    position: relative;
+    isolation: isolate;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -562,30 +526,33 @@
     min-block-size: 44px;
     padding: 0.72rem 1rem;
 
-    border: 1px solid rgba(232, 205, 156, 0.22);
+    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28);
     border-radius: 999px;
 
     background:
         linear-gradient(180deg,
-            rgba(255, 250, 242, 0.052) 0%,
-            rgba(255, 250, 242, 0.012) 100%),
-        rgba(25, 22, 19, 0.84);
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055) 0%,
+            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 100%),
+        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.86);
 
     color: var(--location-text-main);
     text-decoration: none;
     font-size: 0.9rem;
-    font-weight: 700;
+    font-weight: 760;
     line-height: 1;
 
+    text-shadow: 0 1px 1px rgb(var(--hotel-black-rgb, 7 4 2) / 0.5);
+
     box-shadow:
-        inset 0 1px 0 rgba(255, 250, 242, 0.055),
-        0 10px 22px rgba(0, 0, 0, 0.16);
+        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07),
+        0 0.75rem 1.6rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.26);
 
     transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        box-shadow 180ms ease,
-        background 180ms ease;
+        transform var(--hotel-transition-fast, 180ms ease),
+        border-color var(--hotel-transition-fast, 180ms ease),
+        box-shadow var(--hotel-transition-fast, 180ms ease),
+        background var(--hotel-transition-fast, 180ms ease),
+        filter var(--hotel-transition-fast, 180ms ease);
 }
 
 @media (hover: hover) {
@@ -595,23 +562,32 @@
     .quickAccessPill,
     .coordinateCard {
         transition:
-            border-color 200ms ease,
-            box-shadow 200ms ease,
-            transform 200ms ease;
+            border-color var(--hotel-transition-base, 200ms ease),
+            box-shadow var(--hotel-transition-base, 200ms ease),
+            transform var(--hotel-transition-base, 200ms ease),
+            filter var(--hotel-transition-base, 200ms ease);
     }
 
     .infoCard:hover,
     .mapCard:hover {
         border-color: var(--location-border-strong);
+        filter: saturate(1.02) contrast(1.01);
+
         box-shadow:
-            inset 0 1px 0 rgba(255, 250, 242, 0.05),
-            0 20px 40px rgba(0, 0, 0, 0.2);
+            inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.08),
+            inset 0 -1px 0 rgb(0 0 0 / 0.26),
+            0 1.8rem 4.6rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.46),
+            0 0 2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06);
     }
 
     .quickAccessPill:hover,
     .coordinateCard:hover {
         transform: translateY(-1px);
-        border-color: rgba(232, 205, 156, 0.24);
+        border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
+
+        box-shadow:
+            inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075),
+            0 0.9rem 1.75rem rgb(var(--hotel-black-rgb, 7 4 2) / 0.26);
     }
 }
 

@@ -321,7 +321,7 @@
 
 .contentGrid {
     display: grid;
-    align-items: stretch;
+    align-items: start;
     gap: clamp(0.9rem, 1.35vw, 1.18rem);
 
     min-inline-size: 0;
@@ -335,9 +335,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    align-self: start;
     gap: clamp(0.72rem, 1vw, 0.9rem);
 
     min-inline-size: 0;
+    block-size: fit-content;
     padding: clamp(0.95rem, 1.45vw, 1.2rem);
 
     border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.26);
@@ -431,7 +433,6 @@
 }
 
 .introTitle {
-    max-inline-size: 22ch;
     margin: 0;
 
     color: var(--hotel-heading, #fbf7ef);
@@ -465,7 +466,7 @@
 
 .introHighlight {
     inline-size: 100%;
-    margin-block-start: auto;
+    margin-block-start: clamp(0.4rem, 0.8vw, 0.7rem);
     padding: 0.78rem 0.9rem;
 
     border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
@@ -504,10 +505,13 @@
 @media (min-width: 1180px) {
     .contentGrid {
         grid-template-columns: minmax(16rem, 0.72fr) minmax(0, 1.28fr);
+        align-items: center;
     }
 
     .introPanel {
-        justify-content: center;
+        align-self: center;
+        justify-content: flex-start;
+        transform: translateY(clamp(0.75rem, 1.1vw, 1.35rem));
     }
 }
 
@@ -523,10 +527,6 @@
         opacity: 0.66;
         filter:
             blur(0.45px) brightness(0.74) contrast(1.09) saturate(1.04);
-    }
-
-    .introTitle {
-        max-inline-size: 36ch;
     }
 }
 
@@ -554,10 +554,6 @@
         padding: 0.92rem 0.86rem;
         gap: 0.74rem;
         border-radius: var(--hotel-radius-lg, 1.18rem);
-    }
-
-    .introTitle {
-        max-inline-size: 24ch;
     }
 
     .introDescription {
@@ -598,10 +594,6 @@
 
     .inner {
         padding: 0.82rem 0.68rem 0.68rem;
-    }
-
-    .sectionTitle {
-        max-inline-size: 24ch;
     }
 
     .sectionDescription {
@@ -662,6 +654,10 @@
 
 @media (prefers-reduced-motion: reduce) {
     .backgroundImage {
+        transform: none;
+    }
+
+    .introPanel {
         transform: none;
     }
 }

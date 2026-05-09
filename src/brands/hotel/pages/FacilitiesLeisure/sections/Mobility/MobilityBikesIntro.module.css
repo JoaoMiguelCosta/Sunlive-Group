@@ -7,30 +7,7 @@
     gap: clamp(0.82rem, 1.55vw, 1.12rem);
 }
 
-.block::before {
-    content: "";
-    position: absolute;
-    inset-inline: 50%;
-    inset-block-start: 50%;
-    z-index: -1;
 
-    translate: -50% -50%;
-
-    inline-size: min(54rem, 82vw);
-    block-size: clamp(5rem, 9vw, 8rem);
-
-    pointer-events: none;
-    border-radius: 999px;
-
-    background:
-        radial-gradient(closest-side at 50% 50%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.05) 0%,
-            rgb(var(--hotel-bronze-rgb, 160 103 46) / 0.024) 46%,
-            transparent 78%);
-
-    filter: blur(24px);
-    opacity: 0.72;
-}
 
 .descriptionWrap {
     position: relative;
@@ -41,31 +18,9 @@
     margin-inline: auto;
 }
 
-.descriptionWrap::before {
-    content: "";
-    position: absolute;
-    inset-inline: 12%;
-    inset-block-start: -0.68rem;
-    z-index: -1;
 
-    block-size: 1px;
-    pointer-events: none;
 
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 20%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 50%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 80%,
-            transparent 100%);
 
-    opacity: 0.72;
-}
-
-.descriptionWrap :global(*) {
-    margin-bottom: 0;
-    text-align: center;
-}
 
 .descriptionWrap :global(strong) {
     color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.94);
@@ -77,12 +32,7 @@
         gap: 0.78rem;
     }
 
-    .block::before {
-        inline-size: min(26rem, 94vw);
-        opacity: 0.56;
-    }
 
-    .descriptionWrap::before {
-        inset-inline: 18%;
-    }
+
+  
 }

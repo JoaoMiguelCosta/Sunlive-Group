@@ -43,52 +43,7 @@
    
 }
 
-.section::before {
-    content: "";
-    position: absolute;
-    inset: clamp(3.4rem, 5.6vw, 5.4rem) auto auto 50%;
-    z-index: 0;
 
-    translate: -50% 0;
-
-    inline-size: min(92vw, 1220px);
-    block-size: clamp(220px, 28vw, 350px);
-
-    pointer-events: none;
-    border-radius: 999px;
-
-    background:
-        radial-gradient(circle,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.085) 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.028) 42%,
-            transparent 72%);
-
-    filter: blur(34px);
-    opacity: 0.82;
-}
-
-.section::after {
-    content: "";
-    position: absolute;
-    inset: auto 50% 0 auto;
-    z-index: 0;
-
-    translate: 50% 0;
-
-    inline-size: min(90vw, 1080px);
-    block-size: clamp(180px, 22vw, 280px);
-
-    pointer-events: none;
-    border-radius: 999px;
-
-    background:
-        radial-gradient(circle,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035) 0%,
-            transparent 70%);
-
-    filter: blur(28px);
-    opacity: 0.5;
-}
 
 .inner {
     position: relative;
@@ -110,28 +65,11 @@
     margin-block-start: clamp(0.32rem, 0.78vw, 0.58rem);
 }
 
-@media (max-width: 1100px) {
 
-
-    .section::before {
-        inset-block-start: 4.8rem;
-        block-size: clamp(210px, 34vw, 310px);
-    }
-}
 
 @media (max-width: 640px) {
  
-    .section::before {
-        inset-block-start: 3.25rem;
-        inline-size: 100%;
-        block-size: 190px;
-        filter: blur(24px);
-    }
-
-    .section::after {
-        block-size: 150px;
-        filter: blur(22px);
-    }
+ 
 
     .backgroundImage {
         opacity: 0.14;
