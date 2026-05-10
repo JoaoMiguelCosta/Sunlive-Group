@@ -311,9 +311,7 @@
         gap: 0.92rem;
     }
 
-    .stageTitle {
-        max-inline-size: 14ch;
-    }
+
 
     .stageDescription {
         max-inline-size: 29ch;

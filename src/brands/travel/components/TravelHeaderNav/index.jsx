@@ -61,7 +61,7 @@ export default function TravelHeaderNav() {
 
             {header.cta ? (
               <div className={styles.ctaSlot}>
-                <CTAButton cta={header.cta} />
+                <CTAButton cta={header.cta} variant="travel" />
               </div>
             ) : null}
           </div>

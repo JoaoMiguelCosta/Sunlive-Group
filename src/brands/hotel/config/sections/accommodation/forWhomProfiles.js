@@ -1,4 +1,4 @@
-const CONTACTS_HREF = "/sunlive-group/hotel/information#informacoes-contactos";
+const CONTACTS_HREF = "/sunlive-group/hotel/informacoes#informacoes-contactos";
 
 export const forWhomProfiles = {
   id: "estadia-perfis",

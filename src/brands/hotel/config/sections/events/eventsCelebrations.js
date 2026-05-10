@@ -1,4 +1,4 @@
-const CONTACTS_HREF = "/sunlive-group/hotel/information#informacoes-contactos";
+const CONTACTS_HREF = "/sunlive-group/hotel/informacoes#informacoes-contactos";
 
 const eventsCelebrations = {
   id: "eventos-celebracoes",

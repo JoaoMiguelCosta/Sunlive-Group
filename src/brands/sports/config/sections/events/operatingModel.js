@@ -40,7 +40,7 @@ const operatingModel = {
       "A Sunlive Sports apresenta-se como uma estrutura com capacidade real para trabalhar competições, troféus, camps especializados, semanas técnicas e formatos multidisciplinares, com especial força em ginástica e ciclismo.",
     conclusion:
       "O fator distintivo está na combinação entre variedade disciplinar, enquadramento técnico, parceiros, infraestrutura e operação no terreno, que transforma cada evento num contexto mais completo e credível.",
-    note: "A principal fragilidade continua a estar mais na consistência digital e na uniformidade da comunicação pública do que na substância da operação.",
+    note: "A comunicação pública deve continuar a ganhar consistência para refletir, com maior clareza, a estrutura operacional, os parceiros e a capacidade real da Sunlive Sports no terreno.",
   },
 };
 

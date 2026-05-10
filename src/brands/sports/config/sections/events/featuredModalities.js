@@ -230,10 +230,9 @@ const featuredModalities = {
     {
       key: "basketball",
       eyebrow: "Basquetebol",
-      title:
-        "Uma presença mais concentrada, mas coerente com a lógica da marca",
+      title: "Uma atuação seletiva com foco em estrutura competitiva",
       description:
-        "No basquetebol, a presença pública é mais contida, mas mantém a mesma lógica de organização, enquadramento competitivo e parceria institucional.",
+        "No basquetebol, a Sunlive Sports centra a sua proposta em competições, camps e iniciativas com organização técnica, enquadramento competitivo e parceria institucional.",
       emphasis:
         "O valor está em criar contexto operacional preparado para acolher equipas, atletas e estruturas técnicas.",
       disciplinesLabel: "Foco operacional",

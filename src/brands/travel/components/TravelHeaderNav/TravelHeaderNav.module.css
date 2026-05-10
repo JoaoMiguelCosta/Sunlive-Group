@@ -35,16 +35,22 @@
 }
 
 .primaryRow {
+    position: relative;
+    z-index: 2;
+
     inline-size: 100%;
     width: 100%;
 
     display: grid;
     place-items: center;
+
+    overflow: visible;
 }
 
 .primaryInner {
     position: relative;
     isolation: isolate;
+    z-index: 1;
 
     inline-size: 100%;
     width: 100%;
@@ -63,6 +69,8 @@
 
     border: 1px solid rgba(224, 167, 43, 0.28);
     border-radius: clamp(1.45rem, 2vw, 2rem);
+
+    overflow: visible;
 
     background:
         radial-gradient(110% 135% at 0% 0%,
@@ -95,6 +103,8 @@
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
+
     border-radius: inherit;
 
     background:
@@ -117,6 +127,7 @@
     position: absolute;
     inset-inline: clamp(1rem, 3vw, 2.4rem);
     inset-block-end: 0;
+    z-index: 0;
 
     block-size: 1px;
 
@@ -133,15 +144,17 @@
 
 .navSlot {
     position: relative;
-    z-index: 2;
+    z-index: 20;
 
     min-width: 0;
     width: 100%;
+
+    overflow: visible;
 }
 
 .ctaSlot {
     position: relative;
-    z-index: 2;
+    z-index: 1;
 
     display: grid;
     place-items: center;
@@ -150,6 +163,9 @@
 
 .ctaSlot :global(a),
 .ctaSlot :global(button) {
+    position: relative;
+    z-index: 1;
+
     min-height: clamp(50px, 4.4vw, 60px);
     padding-inline: clamp(1.18rem, 1.8vw, 1.5rem);
 
@@ -208,7 +224,12 @@
         padding-block: clamp(0.78rem, 2.4vw, 1rem);
     }
 
+    .navSlot {
+        z-index: 20;
+    }
+
     .ctaSlot {
+        z-index: 1;
         justify-self: center;
     }
 }

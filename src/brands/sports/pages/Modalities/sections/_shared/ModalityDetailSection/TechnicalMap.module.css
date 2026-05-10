@@ -261,7 +261,7 @@
 .toggleButton span {
     display: inline-block;
     min-inline-size: 0;
-    overflow: hidden;
+
     text-overflow: ellipsis;
     white-space: nowrap;
 }
