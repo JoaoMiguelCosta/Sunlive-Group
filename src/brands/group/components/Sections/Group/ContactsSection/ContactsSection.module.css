@@ -1,4 +1,4 @@
-/* Contacts section — Sunlive Group */
+/* Contacts Section — Sunlive Group / Executive Eclipse Gold */
 
 .section {
     position: relative;
@@ -11,11 +11,17 @@
     box-sizing: border-box;
 
     scroll-margin-top: var(--sl-anchor-offset, 96px);
+
     color: var(--sl-platinum-100, #f4f7fc);
     background: transparent;
 
-    --line-inset: clamp(12px, 4vw, 40px);
-    --sep-gap: clamp(2rem, 3.4vw, 3rem);
+    --contacts-section-max: 1360px;
+    --contacts-line-inset: clamp(0.85rem, 4vw, 4.5rem);
+
+    --contacts-gold-soft: 255 239 188;
+    --contacts-gold: 226 198 130;
+    --contacts-gold-core: 199 134 21;
+    --contacts-gold-deep: 151 104 40;
 }
 
 .section>* {
@@ -23,111 +29,220 @@
     z-index: 1;
 }
 
-/* Cabeçalho */
+/* =========================================================
+   Header
+   ========================================================= */
+
 .header {
-    inline-size: 100%;
+    inline-size: min(100%, var(--contacts-section-max));
     min-inline-size: 0;
 
     display: grid;
     place-items: center;
 
     box-sizing: border-box;
-    margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
-    padding-block-start: clamp(0.65rem, 1.6vw, 1rem);
+    margin-inline: auto;
+    margin-block-end: clamp(1.35rem, 3vw, 2.45rem);
+    padding-inline: clamp(0.75rem, 3vw, 2.5rem);
+    padding-block-start: clamp(0.45rem, 1vw, 0.8rem);
 
     text-align: center;
 }
 
 .title {
+    position: relative;
+    isolation: isolate;
+
     inline-size: fit-content;
-    max-inline-size: 52rem;
+    max-inline-size: min(100%, 52rem);
 
     margin: 0;
 
-    color: var(--sl-gold-400, #f3c970);
+    color: rgb(var(--contacts-gold-soft) / 0.96);
 
     font-family: var(--sl-ff-display, "Orbitron", system-ui, sans-serif);
-    font-size: clamp(1.35rem, 1.1rem + 1.15vw, 2.25rem);
-    font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: 0.02em;
+    font-size: clamp(1.55rem, 1.14rem + 1.45vw, 2.65rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.018em;
 
     text-align: center;
+
+    text-shadow:
+        0 1px 0 rgb(0 0 0 / 0.65),
+        0 0.7rem 1.4rem rgb(0 0 0 / 0.34),
+        0 0 1.25rem rgb(var(--contacts-gold) / 0.1);
 }
 
-/* Wrappers dos blocos */
+/* =========================================================
+   Containers
+   ========================================================= */
+
 .container {
     position: relative;
+    isolation: isolate;
 
-    inline-size: 100%;
+    inline-size: min(100%, var(--contacts-section-max));
     min-inline-size: 0;
 
+    margin-inline: auto;
+
     box-sizing: border-box;
+    padding-inline: clamp(0.75rem, 3vw, 2.5rem);
 }
 
-/* Separadores internos entre GroupHub / BusinessUnits / RegionalOffices */
 .container+.container {
-    margin-block-start: clamp(2.6rem, 4vw, 4.5rem);
-    padding-block-start: clamp(1.15rem, 2vw, 1.6rem);
+    margin-block-start: clamp(3rem, 4.8vw, 5rem);
+    padding-block-start: clamp(1.35rem, 2.2vw, 1.9rem);
 }
 
 .container+.container::before {
     content: "";
     position: absolute;
-    inset-inline: 0;
+    inset-inline: clamp(0.75rem, 3vw, 2.5rem);
     inset-block-start: 0;
+    z-index: 0;
 
-    block-size: 2px;
+    block-size: 1px;
+
     pointer-events: none;
 
-    border-radius: 999px;
-    opacity: 0.9;
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--contacts-gold-deep) / 0.18) 14%,
+            rgb(var(--contacts-gold-soft) / 0.5) 50%,
+            rgb(var(--contacts-gold-deep) / 0.18) 86%,
+            transparent 100%);
 
-    background: linear-gradient(90deg,
-            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 40%),
-            color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 10%),
-            color-mix(in oklab, var(--sl-gold-500, #c78615), transparent 40%));
+    opacity: 0.66;
+
+    filter:
+        drop-shadow(0 0 0.7rem rgb(var(--contacts-gold-soft) / 0.08));
 }
 
-/* Responsivo */
-@media (max-width: 900px) {
-    .header {
-        margin-block-end: clamp(1.25rem, 4vw, 1.85rem);
-    }
-
-    .container+.container {
-        margin-block-start: clamp(2rem, 5vw, 3rem);
-        padding-block-start: clamp(1rem, 2.8vw, 1.35rem);
-    }
+.container>* {
+    position: relative;
+    z-index: 1;
 }
 
-@media (max-width: 640px) {
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (min-width: 1440px) {
     .section {
-        --line-inset: clamp(10px, 4vw, 20px);
-        --sep-gap: clamp(1.5rem, 5vw, 2rem);
+        --contacts-line-inset: clamp(2rem, 5vw, 5.5rem);
     }
 
     .header {
-        padding-block-start: 0.6rem;
-        margin-block-end: 1.25rem;
-    }
-
-    .container+.container {
-        margin-block-start: 1.75rem;
-        padding-block-start: 0.95rem;
+        margin-block-end: clamp(1.55rem, 2.8vw, 2.75rem);
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 1279.98px) {
+    .container+.container {
+        margin-block-start: clamp(2.65rem, 4.6vw, 4.2rem);
+    }
+}
+
+@media (max-width: 1023.98px) {
+    .section {
+        padding-block: clamp(0.85rem, 3vw, 2.1rem) clamp(1.05rem, 3.8vw, 2.7rem);
+
+        --contacts-line-inset: clamp(0.75rem, 4vw, 2.25rem);
+    }
+
+    .header {
+        margin-block-end: clamp(1.15rem, 3.4vw, 1.85rem);
+    }
+
+    .container+.container {
+        margin-block-start: clamp(2.25rem, 5vw, 3.4rem);
+        padding-block-start: clamp(1.1rem, 2.8vw, 1.55rem);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .section {
+        --contacts-line-inset: clamp(0.75rem, 5vw, 1.5rem);
+    }
+
     .title {
-        font-size: clamp(1.15rem, 5.2vw, 1.45rem);
+        font-size: clamp(1.32rem, 5.2vw, 2rem);
+    }
+
+    .header {
+        margin-block-end: 1.1rem;
+        padding-block-start: 0.35rem;
+    }
+
+    .container {
+        padding-inline: clamp(0.7rem, 4vw, 1.25rem);
     }
 
     .container+.container {
-        margin-block-start: 1.5rem;
-        padding-block-start: 0.85rem;
+        margin-block-start: clamp(2rem, 6vw, 2.8rem);
+        padding-block-start: clamp(0.95rem, 3vw, 1.25rem);
+    }
+
+    .container+.container::before {
+        inset-inline: clamp(0.7rem, 4vw, 1.25rem);
+        opacity: 0.52;
     }
 }
+
+@media (max-width: 479.98px) {
+    .section {
+        --contacts-line-inset: 0.85rem;
+    }
+
+    .header {
+        margin-block-end: 0.95rem;
+        padding-inline: 0.85rem;
+    }
+
+    .title {
+        font-size: clamp(1.16rem, 6vw, 1.58rem);
+    }
+
+    .container {
+        padding-inline: 0.85rem;
+    }
+
+    .container+.container {
+        margin-block-start: 1.8rem;
+        padding-block-start: 0.86rem;
+    }
+
+    .container+.container::before {
+        inset-inline: 0.85rem;
+        opacity: 0.42;
+    }
+}
+
+@media (max-width: 379.98px) {
+    .section {
+        --contacts-line-inset: 0.7rem;
+    }
+
+    .container {
+        padding-inline: 0.65rem;
+    }
+
+    .container+.container {
+        margin-block-start: 1.55rem;
+        padding-block-start: 0.78rem;
+    }
+
+    .container+.container::before {
+        inset-inline: 0.65rem;
+    }
+}
+
+/* =========================================================
+   Print
+   ========================================================= */
 
 @media print {
     .section {
@@ -135,12 +250,12 @@
         color: #111;
     }
 
-    .title {
-        color: #111;
+    .container+.container::before {
+        content: none;
     }
 
-    .container+.container::before {
-        background: #ddd;
-        opacity: 1;
+    .title {
+        color: #111;
+        text-shadow: none;
     }
 }

@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import styles from "./ContactsGrid.module.css";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
@@ -8,6 +10,11 @@ import { GROUP_CONTACTS } from "../../../../config/index.js";
 const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
 
+const GROUP_ROUTE_PATH = "/sunlive-group";
+const BUSINESS_UNIT_ANCHOR_PREFIX = "unidade-";
+const HASH_OPEN_DELAY = 220;
+const HASH_SCROLL_OFFSET = 24;
+
 const BUSINESS_UNIT_ORDER = [
   "travel",
   "sports",
@@ -16,6 +23,15 @@ const BUSINESS_UNIT_ORDER = [
   "international",
   "business",
 ];
+
+const BUSINESS_UNIT_SLUGS_PT = {
+  travel: "viagens",
+  sports: "desporto",
+  hotel: "hotel",
+  commercial: "comercial",
+  international: "internacional",
+  business: "negocios",
+};
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -44,6 +60,38 @@ function getTelHref(phone) {
   return isValidText(phone) ? phone.replace(/\s+/g, "") : "";
 }
 
+function getItemSlug(item) {
+  if (isValidText(item?.slug)) return item.slug;
+
+  return BUSINESS_UNIT_SLUGS_PT[item.key] ?? item.key;
+}
+
+function getAnchorId(item) {
+  if (isValidText(item?.anchorId)) return item.anchorId;
+
+  return `${BUSINESS_UNIT_ANCHOR_PREFIX}${getItemSlug(item)}`;
+}
+
+function getHashKey(item) {
+  const anchorId = getAnchorId(item);
+
+  if (anchorId.startsWith(BUSINESS_UNIT_ANCHOR_PREFIX)) {
+    return anchorId.slice(BUSINESS_UNIT_ANCHOR_PREFIX.length);
+  }
+
+  return getItemSlug(item);
+}
+
+function getItemByHashKey(items, hashKey) {
+  if (!isValidText(hashKey)) return null;
+
+  return (
+    items.find((item) => getHashKey(item) === hashKey) ||
+    items.find((item) => getItemSlug(item) === hashKey) ||
+    null
+  );
+}
+
 function ContactRow({ href, label, value, mutedLabel, Icon }) {
   const hasValue = isValidText(value);
 
@@ -65,18 +113,37 @@ function ContactRow({ href, label, value, mutedLabel, Icon }) {
 }
 
 export default function BusinessUnits({ items = [] }) {
-  const orderedItems = getOrderedItems(items);
+  const orderedItems = useMemo(() => getOrderedItems(items), [items]);
+
+  const hashItems = useMemo(
+    () =>
+      orderedItems.map((item) => ({
+        ...item,
+        key: getHashKey(item),
+      })),
+    [orderedItems],
+  );
 
   const { isOpen, toggle } = useAccordion(orderedItems, {
     allowMultiple: true,
   });
 
   useOpenFromHash({
-    routePath: "/sunlive-group",
-    regex: /^#unit-(.+)$/,
-    items: orderedItems,
-    isOpen,
-    toggle,
+    routePath: GROUP_ROUTE_PATH,
+    regex: /^#unidade-(.+)$/,
+    items: hashItems,
+    isOpen: (hashKey) => {
+      const item = getItemByHashKey(orderedItems, hashKey);
+
+      return item ? isOpen(item.key) : false;
+    },
+    toggle: (hashKey) => {
+      const item = getItemByHashKey(orderedItems, hashKey);
+
+      if (item) toggle(item.key);
+    },
+    delay: HASH_OPEN_DELAY,
+    offset: HASH_SCROLL_OFFSET,
   });
 
   if (!orderedItems.length) return null;
@@ -85,6 +152,7 @@ export default function BusinessUnits({ items = [] }) {
     <div className={styles.grid} role="list" data-count={orderedItems.length}>
       {orderedItems.map((item) => {
         const open = isOpen(item.key);
+        const anchorId = getAnchorId(item);
         const panelId = `bu-${item.key}`;
         const telHref = getTelHref(item.phone);
 
@@ -93,7 +161,7 @@ export default function BusinessUnits({ items = [] }) {
             key={item.key}
             role="listitem"
             className={styles.item}
-            id={`unit-${item.key}`}
+            id={anchorId}
           >
             <button
               type="button"
@@ -103,8 +171,9 @@ export default function BusinessUnits({ items = [] }) {
               aria-controls={panelId}
             >
               <span className={styles.pillText}>{item.label}</span>
+
               <span className={styles.caret} aria-hidden="true">
-                ➜
+                ⌄
               </span>
             </button>
 
@@ -113,20 +182,20 @@ export default function BusinessUnits({ items = [] }) {
                 id={panelId}
                 className={styles.card}
                 role="region"
-                aria-label={`${item.label} contacts`}
+                aria-label={`Contactos de ${item.label}`}
               >
                 <ContactRow
                   href={`mailto:${item.email}`}
-                  label={`Email ${item.email}`}
-                  mutedLabel="Email not available"
+                  label={`Enviar email para ${item.email}`}
+                  mutedLabel="Email indisponível"
                   value={item.email}
                   Icon={MailIcon}
                 />
 
                 <ContactRow
                   href={`tel:${telHref}`}
-                  label={`Call ${item.phone}`}
-                  mutedLabel="Phone not available"
+                  label={`Ligar para ${item.phone}`}
+                  mutedLabel="Telefone indisponível"
                   value={item.phone}
                   Icon={PhoneIcon}
                 />

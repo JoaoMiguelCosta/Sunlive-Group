@@ -12,7 +12,7 @@ export default function Teams() {
 
   if (!data || !hasItems(data.items)) return null;
 
-  const sectionId = data.id || "teams";
+  const sectionId = data.id || "equipas";
   const headingId = `${sectionId}-title`;
 
   return (

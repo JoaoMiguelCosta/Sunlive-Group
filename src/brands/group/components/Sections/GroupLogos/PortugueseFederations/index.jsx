@@ -12,7 +12,7 @@ export default function PortugueseFederations() {
 
   if (!data || !hasItems(data.items)) return null;
 
-  const sectionId = data.id || "federations-pt";
+  const sectionId = data.id || "federacoes-portuguesas";
   const headingId = `${sectionId}-title`;
 
   return (

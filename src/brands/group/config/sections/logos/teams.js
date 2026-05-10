@@ -35,7 +35,7 @@ import utto from "../../../assets/group-logos/logos/teams/utto.png";
 import woking from "../../../assets/group-logos/logos/teams/woking.png";
 
 export const teams = {
-  id: "teams",
+  id: "equipas",
   title: "EQUIPAS",
   items: [
     { key: "ads", name: "ADS Team", caption: "ADS Team", src: ads },

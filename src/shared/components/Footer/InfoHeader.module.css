@@ -223,7 +223,468 @@
 }
 
 /* =========================================================
-   Hotel
+   Travel — Midnight Atlas Gold
+   ========================================================= */
+
+:global([data-brand="travel"]) .strip {
+    --info-accent: var(--travel-gold, #e0a72b);
+    --info-accent-bright: #f3c45f;
+    --info-border: rgb(79 195 247 / 0.2);
+    --info-border-strong: rgb(224 167 43 / 0.38);
+    --info-text-main: rgb(248 251 255 / 0.96);
+    --info-text-soft: rgb(224 235 246 / 0.82);
+    --info-text-muted: rgb(180 201 220 / 0.64);
+
+    isolation: isolate;
+    overflow: hidden;
+
+    padding-block: clamp(0.9rem, 1.18vw, 1.08rem);
+
+    border-top: 1px solid var(--info-border-strong);
+    border-bottom: 1px solid var(--info-border);
+
+    background: transparent;
+}
+
+:global([data-brand="travel"]) .inner {
+    gap: clamp(0.92rem, 1.35vw, 1.25rem);
+}
+
+:global([data-brand="travel"]) .title {
+    color: var(--info-text-main);
+    font-weight: 840;
+    letter-spacing: -0.006em;
+
+    text-shadow:
+        0 1px 0 rgb(0 0 0 / 0.48),
+        0 0.8rem 1.25rem rgb(0 0 0 / 0.28);
+}
+
+:global([data-brand="travel"]) .icon {
+    inline-size: 24px;
+    block-size: 24px;
+
+    border: 1px solid rgb(224 167 43 / 0.28);
+
+    color: var(--info-accent-bright);
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgb(255 255 255 / 0.14) 0%,
+            transparent 58%),
+        rgb(7 21 37 / 0.58);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.07),
+        0 0.46rem 1rem rgb(0 0 0 / 0.18);
+}
+
+:global([data-brand="travel"]) .brandEmph,
+:global([data-brand="travel"]) .tagline {
+    color: var(--info-accent-bright);
+}
+
+:global([data-brand="travel"]) .about p,
+:global([data-brand="travel"]) .address {
+    color: var(--info-text-soft);
+}
+
+:global([data-brand="travel"]) .subtleLink,
+:global([data-brand="travel"]) .textMuted {
+    color: var(--info-text-muted);
+    opacity: 1;
+}
+
+:global([data-brand="travel"]) .subtleLink:hover,
+:global([data-brand="travel"]) .link:hover {
+    color: var(--info-accent-bright);
+}
+
+:global([data-brand="travel"]) .link {
+    color: var(--info-text-soft);
+    font-weight: 640;
+}
+
+:global([data-brand="travel"]) .cIcon {
+    color: var(--info-accent-bright);
+}
+
+:global([data-brand="travel"]) .socialBtn {
+    inline-size: 34px;
+    block-size: 34px;
+
+    border-color: rgb(224 167 43 / 0.3);
+
+    color: var(--info-text-main);
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgb(255 255 255 / 0.12) 0%,
+            transparent 58%),
+        rgb(7 21 37 / 0.58);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.06),
+        0 0.48rem 1rem rgb(0 0 0 / 0.16);
+}
+
+:global([data-brand="travel"]) .socialBtn:hover,
+:global([data-brand="travel"]) .socialBtn:focus-visible {
+    transform: translateY(-1px);
+
+    border-color: rgb(243 196 95 / 0.54);
+    color: #fff8e8;
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgb(255 255 255 / 0.16) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(224 167 43 / 0.26) 0%,
+            rgb(7 21 37 / 0.72) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.08),
+        0 0.68rem 1.35rem rgb(0 0 0 / 0.2);
+}
+
+/* =========================================================
+   Sports
+   ========================================================= */
+
+:global([data-brand="sports"]) .strip {
+    --info-accent: var(--sports-gold, #d6a640);
+    --info-border: rgb(var(--sports-gold-rgb, 214 166 64) / 0.22);
+    --info-border-strong: rgb(var(--sports-gold-rgb, 214 166 64) / 0.34);
+    --info-text-main: var(--sports-text, rgb(246 247 251 / 0.96));
+    --info-text-soft: var(--sports-text-soft, rgb(224 230 238 / 0.82));
+    --info-text-muted: var(--sports-muted, rgb(177 187 202 / 0.66));
+
+    isolation: isolate;
+    overflow: hidden;
+
+    padding-block: clamp(0.9rem, 1.18vw, 1.08rem);
+
+    border-top: 1px solid var(--info-border-strong);
+    border-bottom: 1px solid var(--info-border);
+
+    background: transparent;
+}
+
+:global([data-brand="sports"]) .inner {
+    gap: clamp(0.92rem, 1.35vw, 1.25rem);
+}
+
+:global([data-brand="sports"]) .title {
+    color: var(--info-text-main);
+    font-weight: 840;
+    letter-spacing: -0.006em;
+
+    text-shadow:
+        0 1px 0 rgb(0 0 0 / 0.48),
+        0 0.8rem 1.25rem rgb(0 0 0 / 0.28);
+}
+
+:global([data-brand="sports"]) .icon {
+    inline-size: 24px;
+    block-size: 24px;
+
+    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
+
+    color: var(--info-accent);
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgb(255 255 255 / 0.12) 0%,
+            transparent 58%),
+        rgb(8 18 30 / 0.58);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.06),
+        0 0.46rem 1rem rgb(0 0 0 / 0.18);
+}
+
+:global([data-brand="sports"]) .brandEmph,
+:global([data-brand="sports"]) .tagline {
+    color: var(--info-accent);
+}
+
+:global([data-brand="sports"]) .about p,
+:global([data-brand="sports"]) .address {
+    color: var(--info-text-soft);
+}
+
+:global([data-brand="sports"]) .subtleLink,
+:global([data-brand="sports"]) .textMuted {
+    color: var(--info-text-muted);
+    opacity: 1;
+}
+
+:global([data-brand="sports"]) .subtleLink:hover,
+:global([data-brand="sports"]) .link:hover {
+    color: var(--info-accent);
+}
+
+:global([data-brand="sports"]) .link {
+    color: var(--info-text-soft);
+    font-weight: 640;
+}
+
+:global([data-brand="sports"]) .cIcon {
+    color: var(--info-accent);
+}
+
+:global([data-brand="sports"]) .socialBtn {
+    inline-size: 34px;
+    block-size: 34px;
+
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
+
+    color: var(--info-text-main);
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgb(255 255 255 / 0.11) 0%,
+            transparent 58%),
+        rgb(8 18 30 / 0.58);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.06),
+        0 0.48rem 1rem rgb(0 0 0 / 0.16);
+}
+
+:global([data-brand="sports"]) .socialBtn:hover,
+:global([data-brand="sports"]) .socialBtn:focus-visible {
+    transform: translateY(-1px);
+
+    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.5);
+    color: rgb(255 248 225 / 0.98);
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            rgb(255 255 255 / 0.15) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(var(--sports-gold-rgb, 214 166 64) / 0.18) 0%,
+            rgb(8 18 30 / 0.72) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.08),
+        0 0.68rem 1.35rem rgb(0 0 0 / 0.2);
+}
+
+/* =========================================================
+   Group — Executive Eclipse Gold
+   ========================================================= */
+
+:global([data-brand="group"]) .strip {
+    --info-accent: var(--group-gold-400, #d8bd78);
+    --info-accent-bright: var(--group-gold-300, #f0dda6);
+    --info-border: rgb(216 189 120 / 0.26);
+    --info-border-strong: rgb(240 221 166 / 0.42);
+    --info-text-main: var(--group-platinum-100, #f7f4ec);
+    --info-text-soft: rgb(247 244 236 / 0.82);
+    --info-text-muted: rgb(233 228 216 / 0.62);
+
+    isolation: isolate;
+    overflow: hidden;
+
+    padding-block: clamp(1.05rem, 1.35vw, 1.35rem);
+
+    border-top: 1px solid var(--info-border-strong);
+    border-bottom: 1px solid var(--info-border);
+
+    background: transparent;
+}
+
+:global([data-brand="group"]) .inner {
+    gap: clamp(1rem, 1.8vw, 1.65rem);
+}
+
+:global([data-brand="group"]) .col {
+    gap: 0.18rem;
+}
+
+:global([data-brand="group"]) .title {
+    gap: 0.52rem;
+
+    margin-bottom: 0.5rem;
+
+    color: var(--info-text-main);
+    font-size: clamp(0.96rem, 0.24vw + 0.92rem, 1.08rem);
+    font-weight: 850;
+    letter-spacing: -0.01em;
+
+    text-shadow:
+        0 1px 0 rgb(0 0 0 / 0.48),
+        0 0 1.1rem rgb(216 189 120 / 0.1);
+}
+
+:global([data-brand="group"]) .icon {
+    inline-size: 25px;
+    block-size: 25px;
+
+    border: 1px solid rgb(240 221 166 / 0.34);
+
+    color: var(--info-accent-bright);
+
+    background:
+        radial-gradient(circle at 30% 28%,
+            rgb(255 242 191 / 0.22) 0%,
+            transparent 54%),
+        linear-gradient(180deg,
+            rgb(64 49 25 / 0.64) 0%,
+            rgb(10 10 9 / 0.82) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(247 244 236 / 0.08),
+        inset 0 -1px 0 rgb(216 189 120 / 0.08),
+        0 0.5rem 1.05rem rgb(0 0 0 / 0.22),
+        0 0 0.9rem rgb(216 189 120 / 0.08);
+}
+
+:global([data-brand="group"]) .brandEmph {
+    color: var(--info-accent-bright);
+    font-weight: 850;
+}
+
+:global([data-brand="group"]) .tagline {
+    margin-bottom: 0.48rem;
+
+    color: var(--info-accent-bright);
+    font-size: clamp(0.88rem, 0.14vw + 0.84rem, 0.96rem);
+    font-weight: 830;
+    line-height: 1.26;
+
+    text-shadow:
+        0 1px 0 rgb(0 0 0 / 0.48),
+        0 0 1rem rgb(240 221 166 / 0.1);
+}
+
+:global([data-brand="group"]) .about {
+    max-width: 39ch;
+
+    font-size: clamp(0.84rem, 0.12vw + 0.8rem, 0.92rem);
+    line-height: 1.44;
+}
+
+:global([data-brand="group"]) .about p,
+:global([data-brand="group"]) .address {
+    color: var(--info-text-soft);
+    text-shadow: 0 1px 0 rgb(0 0 0 / 0.34);
+}
+
+:global([data-brand="group"]) .about p+p {
+    margin-top: 0.42rem;
+}
+
+:global([data-brand="group"]) .contentBlock {
+    font-size: clamp(0.84rem, 0.12vw + 0.8rem, 0.92rem);
+}
+
+:global([data-brand="group"]) .address {
+    margin-bottom: 0.3rem;
+
+    line-height: 1.44;
+}
+
+:global([data-brand="group"]) .subtleLink {
+    color: var(--info-text-soft);
+    font-weight: 720;
+}
+
+:global([data-brand="group"]) .subtleLink:hover,
+:global([data-brand="group"]) .subtleLink:focus-visible {
+    color: var(--info-accent-bright);
+    text-decoration: underline;
+    text-decoration-color: rgb(240 221 166 / 0.48);
+    text-underline-offset: 0.18em;
+}
+
+:global([data-brand="group"]) .contactRow {
+    grid-template-columns: 16px 1fr;
+    gap: 0.44rem;
+
+    margin-block: 0.22rem;
+}
+
+:global([data-brand="group"]) .cIcon {
+    color: var(--info-accent-bright);
+}
+
+:global([data-brand="group"]) .link {
+    color: var(--info-text-soft);
+    font-weight: 650;
+}
+
+:global([data-brand="group"]) .link:hover,
+:global([data-brand="group"]) .link:focus-visible {
+    color: var(--info-text-main);
+    text-decoration: underline;
+    text-decoration-color: rgb(240 221 166 / 0.5);
+    text-underline-offset: 0.16em;
+}
+
+:global([data-brand="group"]) .textMuted {
+    color: var(--info-text-muted);
+    opacity: 1;
+}
+
+:global([data-brand="group"]) .socials {
+    gap: 0.44rem;
+
+    margin-top: 0.06rem;
+}
+
+:global([data-brand="group"]) .socialBtn {
+    inline-size: 35px;
+    block-size: 35px;
+
+    border: 1px solid rgb(240 221 166 / 0.34);
+
+    color: var(--info-text-main);
+
+    background:
+        radial-gradient(circle at 30% 28%,
+            rgb(255 242 191 / 0.18) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgb(54 42 20 / 0.62) 0%,
+            rgb(8 8 8 / 0.9) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(247 244 236 / 0.07),
+        inset 0 -1px 0 rgb(216 189 120 / 0.08),
+        0 0.5rem 1rem rgb(0 0 0 / 0.2),
+        0 0 0.8rem rgb(216 189 120 / 0.065);
+}
+
+:global([data-brand="group"]) .socialBtn:hover,
+:global([data-brand="group"]) .socialBtn:focus-visible {
+    transform: translateY(-1px);
+
+    border-color: rgb(255 242 191 / 0.58);
+    color: #fff2bf;
+
+    background:
+        radial-gradient(circle at 30% 28%,
+            rgb(255 242 191 / 0.26) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(72 54 25 / 0.78) 0%,
+            rgb(10 10 9 / 0.94) 100%);
+
+    filter: saturate(1.04) contrast(1.015);
+
+    box-shadow:
+        inset 0 1px 0 rgb(247 244 236 / 0.09),
+        inset 0 -1px 0 rgb(216 189 120 / 0.1),
+        0 0.7rem 1.35rem rgb(0 0 0 / 0.24),
+        0 0 1rem rgb(240 221 166 / 0.1);
+}
+
+/* =========================================================
+   Hotel — Amber Noir Sport Lodge
    ========================================================= */
 
 :global([data-brand="hotel"]) .strip {
@@ -244,13 +705,10 @@
     border-top: 1px solid var(--info-border);
     border-bottom: 1px solid var(--info-border);
 
-    background: var(--hotel-footer-section-bg-soft);
+    background: transparent;
 }
 
 :global([data-brand="hotel"]) .inner {
-    position: relative;
-    z-index: 1;
-
     gap: clamp(0.92rem, 1.25vw, 1.16rem);
 }
 
@@ -294,12 +752,6 @@
         inset 0 1px 0 rgb(255 247 229 / 0.09),
         inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1),
         0 0.46rem 1rem rgb(0 0 0 / 0.18);
-}
-
-:global([data-brand="hotel"]) .icon :global(svg),
-:global([data-brand="hotel"]) .cIcon :global(svg),
-:global([data-brand="hotel"]) .sIcon {
-    stroke: currentColor;
 }
 
 :global([data-brand="hotel"]) .brandEmph {
@@ -350,11 +802,6 @@
 :global([data-brand="hotel"]) .subtleLink {
     color: var(--info-text-muted);
     font-weight: 700;
-
-    transition:
-        color var(--hotel-transition-fast, 160ms ease),
-        opacity var(--hotel-transition-fast, 160ms ease),
-        text-decoration-color var(--hotel-transition-fast, 160ms ease);
 }
 
 :global([data-brand="hotel"]) .subtleLink:hover,
@@ -363,14 +810,6 @@
     text-decoration: underline;
     text-decoration-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
     text-underline-offset: 0.18em;
-}
-
-:global([data-brand="hotel"]) .subtleLink:focus-visible {
-    outline: none;
-    border-radius: 0.35rem;
-    box-shadow: var(--hotel-focus-ring,
-            0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.96),
-            0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86));
 }
 
 :global([data-brand="hotel"]) .contactRow {
@@ -387,11 +826,6 @@
 :global([data-brand="hotel"]) .link {
     color: var(--info-text-soft);
     font-weight: 640;
-
-    transition:
-        color var(--hotel-transition-fast, 160ms ease),
-        text-decoration-color var(--hotel-transition-fast, 160ms ease),
-        text-shadow var(--hotel-transition-fast, 160ms ease);
 }
 
 :global([data-brand="hotel"]) .link:hover,
@@ -400,14 +834,6 @@
     text-decoration: underline;
     text-decoration-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.5);
     text-underline-offset: 0.16em;
-}
-
-:global([data-brand="hotel"]) .link:focus-visible {
-    outline: none;
-    border-radius: 0.35rem;
-    box-shadow: var(--hotel-focus-ring,
-            0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.96),
-            0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86));
 }
 
 :global([data-brand="hotel"]) .textMuted {
@@ -445,14 +871,6 @@
         inset 0 1px 0 rgb(255 247 229 / 0.065),
         inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.09),
         0 0.48rem 1rem rgb(0 0 0 / 0.16);
-
-    transition:
-        transform var(--hotel-transition-fast, 160ms ease),
-        background var(--hotel-transition-fast, 160ms ease),
-        box-shadow var(--hotel-transition-fast, 160ms ease),
-        border-color var(--hotel-transition-fast, 160ms ease),
-        color var(--hotel-transition-fast, 160ms ease),
-        filter var(--hotel-transition-fast, 160ms ease);
 }
 
 :global([data-brand="hotel"]) .socialBtn:hover,
@@ -483,23 +901,49 @@
         0 0.68rem 1.35rem rgb(0 0 0 / 0.2);
 }
 
-:global([data-brand="hotel"]) .socialBtn:focus-visible {
+/* =========================================================
+   Shared brand focus states
+   ========================================================= */
+
+:global([data-brand="travel"]) .subtleLink:focus-visible,
+:global([data-brand="travel"]) .link:focus-visible,
+:global([data-brand="sports"]) .subtleLink:focus-visible,
+:global([data-brand="sports"]) .link:focus-visible,
+:global([data-brand="group"]) .subtleLink:focus-visible,
+:global([data-brand="group"]) .link:focus-visible,
+:global([data-brand="hotel"]) .subtleLink:focus-visible,
+:global([data-brand="hotel"]) .link:focus-visible {
     outline: none;
+    border-radius: 0.35rem;
+}
+
+:global([data-brand="travel"]) .subtleLink:focus-visible,
+:global([data-brand="travel"]) .link:focus-visible {
+    box-shadow:
+        0 0 0 2px rgb(2 8 20 / 0.96),
+        0 0 0 4px rgb(224 167 43 / 0.58);
+}
+
+:global([data-brand="sports"]) .subtleLink:focus-visible,
+:global([data-brand="sports"]) .link:focus-visible {
+    box-shadow:
+        0 0 0 2px rgb(3 6 11 / 0.96),
+        0 0 0 4px rgb(var(--sports-gold-rgb, 214 166 64) / 0.58);
+}
+
+:global([data-brand="group"]) .subtleLink:focus-visible,
+:global([data-brand="group"]) .link:focus-visible {
+    box-shadow:
+        0 0 0 2px rgb(3 3 3 / 0.96),
+        0 0 0 4px rgb(240 221 166 / 0.58);
+}
+
+:global([data-brand="hotel"]) .subtleLink:focus-visible,
+:global([data-brand="hotel"]) .link:focus-visible {
     box-shadow:
         var(--hotel-focus-ring,
             0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.96),
-            0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86)),
-        0 0.68rem 1.35rem rgb(0 0 0 / 0.2);
-}
-
-:global([data-brand="hotel"]) .sIcon {
-    width: 14px;
-    height: 14px;
-}
-
-:global([data-brand="hotel"]) .sFallback {
-    color: var(--info-text-main);
-    font-weight: 820;
+            0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86));
 }
 
 /* =========================================================
@@ -512,6 +956,9 @@
     }
 
     .about,
+    :global([data-brand="travel"]) .about,
+    :global([data-brand="sports"]) .about,
+    :global([data-brand="group"]) .about,
     :global([data-brand="hotel"]) .about {
         max-width: none;
     }
@@ -570,14 +1017,23 @@
         justify-content: center;
     }
 
+    :global([data-brand="travel"]) .strip,
+    :global([data-brand="sports"]) .strip,
+    :global([data-brand="group"]) .strip,
     :global([data-brand="hotel"]) .strip {
-        padding-block: 0.78rem;
+        padding-block: 0.82rem;
     }
 
+    :global([data-brand="travel"]) .inner,
+    :global([data-brand="sports"]) .inner,
+    :global([data-brand="group"]) .inner,
     :global([data-brand="hotel"]) .inner {
         gap: 0.95rem;
     }
 
+    :global([data-brand="travel"]) .contactRow,
+    :global([data-brand="sports"]) .contactRow,
+    :global([data-brand="group"]) .contactRow,
     :global([data-brand="hotel"]) .contactRow {
         grid-template-columns: 1fr;
         gap: 0.24rem;
@@ -585,6 +1041,12 @@
         margin-block: 0.16rem;
     }
 
+    :global([data-brand="travel"]) .about,
+    :global([data-brand="travel"]) .address,
+    :global([data-brand="sports"]) .about,
+    :global([data-brand="sports"]) .address,
+    :global([data-brand="group"]) .about,
+    :global([data-brand="group"]) .address,
     :global([data-brand="hotel"]) .about,
     :global([data-brand="hotel"]) .address {
         max-width: min(100%, 34rem);
@@ -605,6 +1067,9 @@
     }
 
     .socialBtn:hover,
+    :global([data-brand="travel"]) .socialBtn:hover,
+    :global([data-brand="sports"]) .socialBtn:hover,
+    :global([data-brand="group"]) .socialBtn:hover,
     :global([data-brand="hotel"]) .socialBtn:hover {
         transform: none;
     }
@@ -634,31 +1099,10 @@
         background: rgb(199 134 21 / 0.15);
     }
 
+    :global([data-brand="travel"]) .strip,
+    :global([data-brand="sports"]) .strip,
+    :global([data-brand="group"]) .strip,
     :global([data-brand="hotel"]) .strip {
-        border-top-color: rgb(217 185 120 / 0.18);
-        border-bottom-color: rgb(217 185 120 / 0.18);
-
-        background:
-            linear-gradient(180deg,
-                rgb(251 247 239 / 0.026) 0%,
-                rgb(7 4 2 / 0.04) 100%),
-            rgb(41 26 17 / 0.34);
-    }
-
-    :global([data-brand="hotel"]) .icon,
-    :global([data-brand="hotel"]) .socialBtn {
-        background:
-            radial-gradient(circle at 30% 30%,
-                rgb(251 247 239 / 0.13),
-                transparent 58%),
-            rgb(41 26 17 / 0.62);
-    }
-
-    :global([data-brand="hotel"]) .socialBtn:hover {
-        background:
-            linear-gradient(180deg,
-                rgb(200 137 63 / 0.34),
-                rgb(125 90 49 / 0.22)),
-            rgb(41 26 17 / 0.72);
+        background: transparent;
     }
 }

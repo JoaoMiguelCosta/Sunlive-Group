@@ -1,4 +1,4 @@
-/* LogosSection — Sunlive Group */
+/* LogosSection — Sunlive Group / Executive Eclipse Gold */
 
 .section {
     position: relative;
@@ -9,17 +9,25 @@
     overflow: visible;
 
     display: grid;
-    row-gap: clamp(0.85rem, 2vw, 1.35rem);
+   
 
     box-sizing: border-box;
-    
-
+   
+    color: var(--group-platinum-100, #f7f4ec);
     background: transparent;
 
     --logos-rule-thickness: 2px;
+    --logos-line-inset: clamp(0.85rem, 4vw, 4.5rem);
+
+    --logos-gold-soft: 255 239 188;
+    --logos-gold: 226 198 130;
+    --logos-gold-deep: 151 104 40;
 }
 
 .section>* {
+    position: relative;
+    z-index: 1;
+
     inline-size: 100%;
     min-inline-size: 0;
 
@@ -27,18 +35,18 @@
 }
 
 .compact {
-    --logos-section-pad-top: clamp(0.5rem, 1vw, 0.75rem);
-    --logos-section-pad-bottom: clamp(0.75rem, 1.5vw, 1rem);
+    --logos-section-pad-top: clamp(0.9rem, 2vw, 1.35rem);
+    --logos-section-pad-bottom: clamp(1.1rem, 2.4vw, 1.6rem);
 }
 
 .cozy {
-    --logos-section-pad-top: clamp(0.9rem, 2vw, 1.25rem);
-    --logos-section-pad-bottom: clamp(1.25rem, 2.8vw, 1.75rem);
+    --logos-section-pad-top: clamp(1.35rem, 3vw, 2rem);
+    --logos-section-pad-bottom: clamp(1.55rem, 3.4vw, 2.35rem);
 }
 
 .spacious {
-    --logos-section-pad-top: clamp(1.25rem, 3vw, 1.75rem);
-    --logos-section-pad-bottom: clamp(1.75rem, 4vw, 2.25rem);
+    --logos-section-pad-top: clamp(1.75rem, 4vw, 2.9rem);
+    --logos-section-pad-bottom: clamp(2.1rem, 4.6vw, 3.35rem);
 }
 
 .flushBottom {
@@ -51,4 +59,57 @@
 
 .tightBottom {
     --logos-section-pad-bottom: 0;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (min-width: 1440px) {
+    .section {
+        --logos-line-inset: clamp(2rem, 5vw, 5.5rem);
+    }
+}
+
+@media (max-width: 1023.98px) {
+    .section {
+        --logos-line-inset: clamp(0.75rem, 4vw, 2.25rem);
+
+       
+    }
+}
+
+@media (max-width: 767.98px) {
+    .section {
+        --logos-line-inset: clamp(0.75rem, 5vw, 1.5rem);
+
+     
+        
+    }
+}
+
+@media (max-width: 479.98px) {
+    .section {
+        --logos-line-inset: 0.85rem;
+
+       
+       
+    }
+}
+
+@media (max-width: 379.98px) {
+    .section {
+        --logos-line-inset: 0.65rem;
+    }
+}
+
+/* =========================================================
+   Print
+   ========================================================= */
+
+@media print {
+    .section {
+        background: #fff !important;
+        color: #111;
+    }
 }

@@ -37,6 +37,8 @@ export const GROUP_BUSINESS_UNITS = Object.freeze(
   makeBusinessUnits([
     {
       key: "travel",
+      slug: "viagens",
+      anchorId: "unidade-viagens",
       label: "Travel",
       email: BUSINESS_UNIT_CONTACTS_DEFAULT.travel.email,
       phone: BUSINESS_UNIT_CONTACTS_DEFAULT.travel.phone,
@@ -44,6 +46,8 @@ export const GROUP_BUSINESS_UNITS = Object.freeze(
     },
     {
       key: "business",
+      slug: "negocios",
+      anchorId: "unidade-negocios",
       label: "Business",
       email: BUSINESS_UNIT_CONTACTS_DEFAULT.business.email,
       phone: BUSINESS_UNIT_CONTACTS_DEFAULT.business.phone,
@@ -51,6 +55,8 @@ export const GROUP_BUSINESS_UNITS = Object.freeze(
     },
     {
       key: "sports",
+      slug: "desporto",
+      anchorId: "unidade-desporto",
       label: "Sports",
       email: BUSINESS_UNIT_CONTACTS_DEFAULT.sports.email,
       phone: BUSINESS_UNIT_CONTACTS_DEFAULT.sports.phone,
@@ -58,6 +64,8 @@ export const GROUP_BUSINESS_UNITS = Object.freeze(
     },
     {
       key: "international",
+      slug: "internacional",
+      anchorId: "unidade-internacional",
       label: "International",
       email: BUSINESS_UNIT_CONTACTS_DEFAULT.international.email,
       phone: BUSINESS_UNIT_CONTACTS_DEFAULT.international.phone,
@@ -65,6 +73,8 @@ export const GROUP_BUSINESS_UNITS = Object.freeze(
     },
     {
       key: "hotel",
+      slug: "hotel",
+      anchorId: "unidade-hotel",
       label: "Hotel",
       email: BUSINESS_UNIT_CONTACTS_DEFAULT.hotel.email,
       phone: BUSINESS_UNIT_CONTACTS_DEFAULT.hotel.phone,
@@ -72,6 +82,8 @@ export const GROUP_BUSINESS_UNITS = Object.freeze(
     },
     {
       key: "commercial",
+      slug: "comercial",
+      anchorId: "unidade-comercial",
       label: "Commercial",
       email: BUSINESS_UNIT_CONTACTS_DEFAULT.commercial.email,
       phone: BUSINESS_UNIT_CONTACTS_DEFAULT.commercial.phone,
@@ -83,6 +95,8 @@ export const GROUP_BUSINESS_UNITS = Object.freeze(
 export const GROUP_REGIONAL_OFFICES = Object.freeze([
   {
     key: "malta",
+    slug: "malta",
+    anchorId: "pais-malta",
     label: "Malta",
     flagKey: "malta",
     Flag: FLAGS.malta,
@@ -92,7 +106,9 @@ export const GROUP_REGIONAL_OFFICES = Object.freeze([
   },
   {
     key: "qatar",
-    label: "Qatar",
+    slug: "catar",
+    anchorId: "pais-catar",
+    label: "Catar",
     flagKey: "qatar",
     Flag: FLAGS.qatar,
     email: "qatar@sunlive.pt",
@@ -101,6 +117,8 @@ export const GROUP_REGIONAL_OFFICES = Object.freeze([
   },
   {
     key: "kuwait",
+    slug: "kuwait",
+    anchorId: "pais-kuwait",
     label: "Kuwait",
     flagKey: "kuwait",
     Flag: FLAGS.kuwait,
@@ -110,7 +128,9 @@ export const GROUP_REGIONAL_OFFICES = Object.freeze([
   },
   {
     key: "lebanon",
-    label: "Lebanon",
+    slug: "libano",
+    anchorId: "pais-libano",
+    label: "Líbano",
     flagKey: "lebanon",
     Flag: FLAGS.lebanon,
     email: "lebanon@sunlive.pt",
@@ -119,7 +139,9 @@ export const GROUP_REGIONAL_OFFICES = Object.freeze([
   },
   {
     key: "iraq",
-    label: "Iraq",
+    slug: "iraque",
+    anchorId: "pais-iraque",
+    label: "Iraque",
     flagKey: "iraq",
     Flag: FLAGS.iraq,
     email: "iraq@sunlive.pt",
@@ -133,6 +155,8 @@ export const GROUP_CONTACTS = Object.freeze({
 
   groupHub: {
     title: "Sunlive Group",
+    slug: "grupo",
+    anchorId: "unidade-grupo",
     email: GROUP_HUB_CONTACTS.email,
     phone: GROUP_HUB_CONTACTS.phone,
     defaultOpen: false,

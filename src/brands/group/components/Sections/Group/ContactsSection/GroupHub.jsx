@@ -8,6 +8,10 @@ import { GROUP_CONTACTS } from "../../../../config/index.js";
 const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
 
+const GROUP_ROUTE_PATH = "/sunlive-group";
+const HASH_OPEN_DELAY = 220;
+const HASH_SCROLL_OFFSET = 24;
+
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
@@ -46,23 +50,28 @@ export default function GroupHub({ data }) {
   const email = data?.email ?? "";
   const phone = data?.phone ?? "";
   const telHref = getTelHref(phone);
+  const anchorId = isValidText(data?.anchorId)
+    ? data.anchorId
+    : "unidade-grupo";
 
   const { isOpen, toggle } = useDisclosure(Boolean(data?.defaultOpen));
 
   useOpenFromHash({
-    routePath: "/sunlive-group",
-    regex: /^#unit-(.+)$/,
-    items: hasData ? [{ key: "group" }] : [],
-    isOpen: (key) => key === "group" && isOpen,
+    routePath: GROUP_ROUTE_PATH,
+    regex: /^#unidade-(.+)$/,
+    items: hasData ? [{ key: "grupo" }] : [],
+    isOpen: (key) => key === "grupo" && isOpen,
     toggle: (key) => {
-      if (key === "group" && !isOpen) toggle();
+      if (key === "grupo" && !isOpen) toggle();
     },
+    delay: HASH_OPEN_DELAY,
+    offset: HASH_SCROLL_OFFSET,
   });
 
   if (!hasData) return null;
 
   return (
-    <div className={styles.wrap} id="unit-group">
+    <div className={styles.wrap} id={anchorId}>
       <button
         type="button"
         className={styles.pill}
@@ -71,8 +80,9 @@ export default function GroupHub({ data }) {
         aria-controls="grouphub-panel"
       >
         <span className={styles.pillText}>{title}</span>
+
         <span className={styles.caret} aria-hidden="true">
-          ➜
+          ⌄
         </span>
       </button>
 
@@ -81,20 +91,20 @@ export default function GroupHub({ data }) {
           id="grouphub-panel"
           className={styles.card}
           role="region"
-          aria-label={`${title} contacts`}
+          aria-label={`Contactos de ${title}`}
         >
           <ContactRow
             href={`mailto:${email}`}
-            label={`Email ${email}`}
-            mutedLabel="Email not available"
+            label={`Enviar email para ${email}`}
+            mutedLabel="Email indisponível"
             value={email}
             Icon={MailIcon}
           />
 
           <ContactRow
             href={`tel:${telHref}`}
-            label={`Call ${phone}`}
-            mutedLabel="Phone not available"
+            label={`Ligar para ${phone}`}
+            mutedLabel="Telefone indisponível"
             value={phone}
             Icon={PhoneIcon}
           />

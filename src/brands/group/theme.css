@@ -1,201 +1,314 @@
-/* ==========================================================================
-   Sunlive Group — theme.css
-   Tema: Prestige Noir + Liquid Gold Aurora (Performance Prestige)
-   Mantém os mesmos nomes de variáveis para não quebrar nada no projeto.
-   ========================================================================== */
-
-/* Layout safety */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-html,
-body {
+html {
+    min-inline-size: 320px;
     overflow-x: clip;
+    color-scheme: dark;
+    background: #030303;
 }
 
-/* ===== Tokens de Marca (SL) ===== */
+body {
+    min-inline-size: 320px;
+    min-block-size: 100dvh;
+
+    margin: 0;
+    padding: 0;
+    overflow-x: clip;
+
+    color: var(--sl-color-text, #f4f4f1);
+    background: var(--sl-body-bg, #030303);
+
+    font-family: var(--sl-ff-ui);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+    display: block;
+    max-inline-size: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#root,
+#app {
+    position: relative;
+    min-block-size: 100dvh;
+}
+
+/* =========================================================
+   Sunlive Group — Executive Eclipse Gold
+   Marca-mãe institucional premium.
+   Preto/grafite neutro + dourado executivo forte.
+   Sem azul Travel, sem calor Hotel, sem técnica Sports.
+========================================================= */
+
 :root {
-    /* Cores base — Noir alinhado com o footer Group */
-    --sl-navy-900: #04060C;
-    /* fundo profundo */
-    --sl-navy-800: #070B16;
-    /* camadas acima */
+    /* Base neutra */
+    --group-black: #030303;
+    --group-eclipse-990: #050505;
+    --group-eclipse-970: #080808;
+    --group-eclipse-950: #0b0b0b;
+    --group-graphite-930: #111111;
+    --group-graphite-900: #161616;
+    --group-graphite-860: #1d1d1d;
+    --group-charcoal-820: #282725;
 
-    --sl-ink-900: rgba(0, 0, 0, .30);
-    --sl-platinum-100: #F4F7FC;
-    --sl-platinum-300: #D9E0EE;
+    /* Texto */
+    --group-platinum-100: #f7f4ec;
+    --group-platinum-200: #e9e4d8;
+    --group-platinum-300: #d3cab8;
+    --group-muted: rgb(233 228 216 / 0.74);
+    --group-muted-strong: rgb(233 228 216 / 0.58);
+    --group-muted-soft: rgb(233 228 216 / 0.4);
 
-    /* Ouro (accent) — Dourado Aurora */
-    --sl-gold-500: #C78615;
-    /* dourado-aurora (principal) */
-    --sl-gold-400: #F3C970;
-    /* ouro líquido mais claro / halo */
+    /* Dourado executivo — assinatura principal */
+    --group-gold-800: #4c3514;
+    --group-gold-700: #6f4d1d;
+    --group-gold-600: #8f6a2f;
+    --group-gold-500: #b89455;
+    --group-gold-400: #d8bd78;
+    --group-gold-300: #f0dda6;
+    --group-gold-200: #fff2bf;
+
+    /* Superfícies */
+    --group-surface-dark: rgb(7 7 7 / 0.92);
+    --group-surface-panel: rgb(17 17 17 / 0.84);
+    --group-surface-soft: rgb(29 29 29 / 0.68);
+    --group-surface-glass: rgb(247 244 236 / 0.052);
+    --group-surface-gold: rgb(216 189 120 / 0.09);
+
+    /* Bordas */
+    --group-border-soft: rgb(247 244 236 / 0.09);
+    --group-border: rgb(216 189 120 / 0.34);
+    --group-border-strong: rgb(240 221 166 / 0.54);
+    --group-border-bright: rgb(255 242 191 / 0.68);
+
+    /* Linhas e brilhos */
+    --group-gold-glow-soft: rgb(216 189 120 / 0.14);
+    --group-gold-glow-medium: rgb(184 148 85 / 0.22);
+    --group-gold-glow-strong: rgb(240 221 166 / 0.28);
+
+    --group-gold-line:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(240 221 166 / 0.72) 18%,
+            rgb(184 148 85 / 0.72) 50%,
+            rgb(240 221 166 / 0.72) 82%,
+            transparent 100%);
+
+    --group-gold-line-soft:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(216 189 120 / 0.42) 24%,
+            rgb(240 221 166 / 0.52) 50%,
+            rgb(216 189 120 / 0.42) 76%,
+            transparent 100%);
+
+    /* Sombras */
+    --group-shadow-soft:
+        0 18px 54px rgb(0 0 0 / 0.36),
+        0 0 0 1px rgb(216 189 120 / 0.1);
+
+    --group-shadow-card:
+        0 24px 70px rgb(0 0 0 / 0.44),
+        0 0 0 1px rgb(216 189 120 / 0.14),
+        0 0 42px rgb(184 148 85 / 0.08);
+
+    --group-shadow-hover:
+        0 30px 88px rgb(0 0 0 / 0.54),
+        0 0 0 1px rgb(240 221 166 / 0.24),
+        0 0 54px rgb(216 189 120 / 0.14);
+
+    --group-shadow-gold:
+        0 0 0 1px rgb(240 221 166 / 0.32),
+        0 14px 42px rgb(0 0 0 / 0.42),
+        0 0 32px rgb(216 189 120 / 0.16);
+
+    /* Radius */
+    --group-radius-sm: 0.65rem;
+    --group-radius-md: 1rem;
+    --group-radius-lg: 1.35rem;
+    --group-radius-xl: 1.8rem;
+    --group-radius-2xl: 2.35rem;
 
     /* Tipografia */
-    --sl-ff-ui: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --sl-ff-ui: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --sl-ff-display: "Orbitron", "Eurostile", var(--sl-ff-ui);
 
     /* Layout */
     --sl-container-sm: 78rem;
     --sl-container-lg: 90rem;
     --sl-baseline: 1.25rem;
-    --sl-radius-sm: 8px;
+    --sl-radius-sm: var(--group-radius-sm);
 
-    /* Efeitos */
-    --sl-focus: 0 0 0 2px color-mix(in oklab, var(--sl-gold-400), transparent 35%);
-    --sl-shadow-gold:
-        0 0 0 1px color-mix(in oklab, var(--sl-gold-500), transparent 55%),
-        0 12px 32px rgba(0, 0, 0, .45);
+    /* Bridge antiga SL — manter para não partir componentes existentes */
+    --sl-navy-900: var(--group-eclipse-990);
+    --sl-navy-800: var(--group-eclipse-950);
+    --sl-ink-900: rgb(0 0 0 / 0.3);
 
-    /* Fundo / texto da página */
-    --sl-body-bg: var(--sl-navy-800);
-    --sl-color-text: var(--sl-platinum-100);
+    --sl-platinum-100: var(--group-platinum-100);
+    --sl-platinum-300: var(--group-platinum-300);
 
-    /* Gradiente base da página */
-    --sl-bg-gradient: linear-gradient(180deg, var(--sl-navy-800) 0%, var(--sl-navy-900) 100%);
+    --sl-gold-500: var(--group-gold-500);
+    --sl-gold-400: var(--group-gold-400);
 
-    /* Gradiente hero — só ouro (sem azuis), alinhado ao footer Group */
-    --grad-hero:
-        radial-gradient(1200px 800px at 72% -12%,
-            color-mix(in oklab, var(--sl-gold-400), transparent 65%),
-            transparent 60%),
-        conic-gradient(from 210deg at 50% 42%,
-            color-mix(in oklab, var(--sl-gold-400), transparent 80%) 0%,
-            color-mix(in oklab, var(--sl-gold-500), transparent 82%) 30%,
-            transparent 62%,
-            color-mix(in oklab, var(--sl-gold-400), transparent 82%) 85%,
-            color-mix(in oklab, var(--sl-gold-500), transparent 80%) 100%),
-        linear-gradient(180deg, var(--sl-navy-800) 0%, var(--sl-navy-900) 60%);
-}
+    --sl-body-bg: var(--group-black);
+    --sl-color-text: var(--group-platinum-100);
 
-/* ===== Bridge para tokens globais ===== */
-:root {
-    --text-1: var(--sl-platinum-100);
-    --text-2: color-mix(in oklab, var(--sl-platinum-100), black 25%);
+    /* Bridge global */
+    --text-1: var(--group-platinum-100);
+    --text-2: var(--group-muted);
 
-    /* Accent global = ouro da marca Group */
-    --accent: var(--sl-gold-500);
-    --accent-2: color-mix(in oklab, var(--sl-gold-500), white 20%);
+    --accent: var(--group-gold-500);
+    --accent-2: var(--group-gold-400);
 
-    /* Escala de cinzentos (afinada ao fundo escuro) */
-    --gray-0: color-mix(in oklab, var(--sl-navy-900), black 6%);
-    --gray-1: var(--sl-navy-800);
-    --gray-2: color-mix(in oklab, var(--sl-navy-800), white 6%);
-    --gray-3: color-mix(in oklab, var(--sl-navy-800), white 12%);
-    --gray-4: color-mix(in oklab, var(--sl-navy-800), white 20%);
-    --gray-5: color-mix(in oklab, var(--sl-navy-800), white 28%);
-    --gray-6: color-mix(in oklab, var(--sl-navy-800), white 38%);
+    --gray-0: var(--group-black);
+    --gray-1: var(--group-eclipse-970);
+    --gray-2: var(--group-graphite-930);
+    --gray-3: var(--group-graphite-900);
+    --gray-4: var(--group-graphite-860);
+    --gray-5: var(--group-muted-soft);
+    --gray-6: var(--group-muted-strong);
 
-    /* Gradiente hero global (mantém o mesmo token, mas já com o novo ouro) */
-    --grad-hero:
-        radial-gradient(1200px 800px at 72% -12%,
-            color-mix(in oklab, var(--sl-gold-400), transparent 65%),
-            transparent 60%),
-        conic-gradient(from 210deg at 50% 42%,
-            color-mix(in oklab, var(--sl-gold-400), transparent 80%) 0%,
-            color-mix(in oklab, var(--sl-gold-500), transparent 82%) 30%,
-            transparent 62%,
-            color-mix(in oklab, var(--sl-gold-400), transparent 82%) 85%,
-            color-mix(in oklab, var(--sl-gold-500), transparent 80%) 100%),
-        linear-gradient(180deg, var(--sl-navy-800) 0%, var(--sl-navy-900) 60%);
-
-    /* Font family global */
     --font-sans: var(--sl-ff-ui);
+
+    /* Focus */
+    --sl-focus:
+        0 0 0 2px var(--group-black),
+        0 0 0 4px rgb(240 221 166 / 0.72);
+
+    /* Sombra antiga adaptada */
+    --sl-shadow-gold: var(--group-shadow-gold);
+
+    /* Fundo institucional */
+    --sl-bg-gradient:
+        linear-gradient(180deg,
+            var(--group-eclipse-970) 0%,
+            var(--group-eclipse-990) 52%,
+            var(--group-black) 100%);
+
+    /* Hero global Executive Eclipse Gold */
+    --grad-hero:
+        radial-gradient(88rem 44rem at 50% -20%,
+            rgb(240 221 166 / 0.22) 0%,
+            rgb(216 189 120 / 0.13) 32%,
+            rgb(184 148 85 / 0.065) 58%,
+            transparent 78%),
+        radial-gradient(70rem 36rem at 16% 4%,
+            rgb(216 189 120 / 0.095) 0%,
+            transparent 70%),
+        radial-gradient(70rem 36rem at 84% 4%,
+            rgb(240 221 166 / 0.085) 0%,
+            transparent 72%),
+        linear-gradient(180deg,
+            var(--group-eclipse-970) 0%,
+            var(--group-eclipse-990) 62%,
+            var(--group-black) 100%);
 }
 
-/* ===== Aplicação imediata no body ===== */
-html,
-body {
-    background: var(--sl-body-bg);
-    color: var(--sl-color-text);
-    font-family: var(--sl-ff-ui);
-    margin: 0;
-    padding: 0;
+[data-brand="group"] {
+    --footer-accent: var(--group-gold-400);
+    --footer-base: var(--group-black);
 }
 
-/* Conteúdo acima do glow */
-body {
-    position: relative;
+[data-brand="group"] ::selection {
+    color: var(--group-black);
+    background: var(--group-gold-300);
 }
 
-#root,
-#app {
-    position: relative;
-    z-index: 1;
-}
-
-/* ===== Glow global por trás do conteúdo ===== */
-:root {
-    /* Controlos rápidos de intensidade/temperatura com o novo ouro */
-    --sl-glow-top: color-mix(in oklab, var(--sl-gold-400), transparent 68%);
-    --sl-glow-ring: color-mix(in oklab, var(--sl-gold-400), transparent 82%);
-    --sl-glow-bottom: color-mix(in oklab, var(--sl-gold-500), transparent 78%);
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    /* cobre o viewport inteiro */
-    inset: 0;
-    z-index: 0;
-    /* atrás do conteúdo; acima do background do body */
-    pointer-events: none;
-
-    /* 3 camadas de glow + gradiente base */
-    background:
-        radial-gradient(110rem 55rem at 50% -14%, var(--sl-glow-top), transparent 62%),
-        conic-gradient(from 220deg at 50% 22%,
-            var(--sl-glow-ring),
-            transparent 32%,
-            color-mix(in oklab, var(--sl-gold-400), transparent 88%) 58%,
-            transparent 92%,
-            var(--sl-glow-ring) 100%),
-        radial-gradient(95rem 45rem at 50% 112%, var(--sl-glow-bottom), transparent 64%),
-        var(--sl-bg-gradient);
-
-    filter: saturate(1.08) contrast(1.03);
-}
-
-/* Fallback sem color-mix */
-@supports not (background: color-mix(in oklab, white, black)) {
-    body::before {
-        background:
-            radial-gradient(110rem 55rem at 50% -14%, rgba(243, 201, 112, .30), transparent 62%),
-            conic-gradient(from 220deg at 50% 22%, rgba(243, 201, 112, .18), transparent 32%, rgba(243, 201, 112, .10) 58%, transparent 92%, rgba(243, 201, 112, .18) 100%),
-            radial-gradient(95rem 45rem at 50% 112%, rgba(199, 134, 21, .22), transparent 64%),
-            var(--sl-bg-gradient);
-    }
-}
-
-/* Headings “display” opcionais */
+/* Display opcional */
 .sl-display {
     font-family: var(--sl-ff-display);
-    text-transform: uppercase;
-    letter-spacing: .04em;
     font-weight: 800;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
 }
 
-/* ===== Utilitários ===== */
+/* Utilitários antigos refinados */
 .u-card-prestige {
-    background: linear-gradient(180deg,
-            color-mix(in oklab, var(--gray-1), white 4%) 0%,
-            var(--gray-2) 100%);
-    box-shadow: var(--sl-shadow-gold);
-    border: 1px solid color-mix(in oklab, var(--sl-gold-500), transparent 70%);
-    border-radius: var(--sl-radius-sm);
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+
+    border: 1px solid var(--group-border);
+    border-radius: var(--group-radius-lg);
+
+    background:
+        radial-gradient(120% 140% at 0% 0%,
+            rgb(240 221 166 / 0.095) 0%,
+            transparent 46%),
+        linear-gradient(180deg,
+            rgb(247 244 236 / 0.062) 0%,
+            rgb(247 244 236 / 0.026) 100%),
+        var(--group-surface-dark);
+
+    box-shadow: var(--group-shadow-card);
+}
+
+.u-card-prestige::before {
+    content: "";
+    position: absolute;
+    inset-inline: 1.1rem;
+    inset-block-start: 0;
+    block-size: 1px;
+
+    pointer-events: none;
+    background: var(--group-gold-line-soft);
+    opacity: 0.82;
+}
+
+.u-cta {
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease;
 }
 
 .u-cta:hover {
-    box-shadow:
-        0 0 0 1px color-mix(in oklab, var(--sl-gold-400), transparent 55%),
-        0 10px 28px rgba(0, 0, 0, .35);
     transform: translateY(-1px);
-    transition: box-shadow .2s ease, transform .2s ease;
+    box-shadow: var(--group-shadow-hover);
 }
 
-:global([data-brand="group"]) {
-    --footer-accent: var(--sl-gold-400, #c78615);
+.u-cta:focus-visible {
+    outline: none;
+    box-shadow: var(--sl-focus);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

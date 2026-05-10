@@ -1,31 +1,45 @@
-/* Partners Section Lead — Sunlive Group */
+/* Partners Section Lead — Sunlive Group / Executive Eclipse Gold */
 
 .lead {
+    --partners-gold-soft: 255 239 188;
+    --partners-gold: 226 198 130;
+    --partners-gold-core: 199 134 21;
+    --partners-gold-deep: 151 104 40;
+
     inline-size: 100%;
     min-inline-size: 0;
 
     display: grid;
     justify-items: center;
-    row-gap: clamp(0.45rem, 1.2vw, 0.75rem);
+    row-gap: clamp(0.5rem, 1.2vw, 0.78rem);
 
     box-sizing: border-box;
     text-align: center;
 }
 
 .title {
+    position: relative;
+    isolation: isolate;
+
+    inline-size: fit-content;
+    max-inline-size: min(100%, 52rem);
+
     margin: 0;
 
-    max-inline-size: 52rem;
-
-    color: var(--sl-gold-400, #f3c970);
+    color: rgb(var(--partners-gold-soft) / 0.96);
 
     font-family: var(--sl-ff-display, "Orbitron", system-ui, sans-serif);
-    font-size: clamp(1.35rem, 1.1rem + 1.15vw, 2.15rem);
-    font-weight: 800;
-    line-height: 1.12;
-    letter-spacing: 0.02em;
+    font-size: clamp(1.55rem, 1.14rem + 1.45vw, 2.65rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.018em;
 
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    text-align: center;
+
+    text-shadow:
+        0 1px 0 rgb(0 0 0 / 0.65),
+        0 0.7rem 1.4rem rgb(0 0 0 / 0.34),
+        0 0 1.25rem rgb(var(--partners-gold) / 0.1);
 }
 
 .subtitle {
@@ -33,18 +47,55 @@
 
     max-inline-size: 48rem;
 
-    color: var(--sl-platinum-300, rgba(244, 247, 252, 0.72));
+    color: rgb(244 239 228 / 0.72);
 
     font-size: clamp(0.9rem, 0.82rem + 0.28vw, 1rem);
-    line-height: 1.55;
+    font-weight: 500;
+    line-height: 1.58;
+
+    text-shadow:
+        0 1px 0 rgb(0 0 0 / 0.48),
+        0 0.65rem 1.2rem rgb(0 0 0 / 0.22);
 }
 
-@media (max-width: 640px) {
+/* Responsive */
+
+@media (max-width: 767.98px) {
     .title {
-        font-size: clamp(1.2rem, 7vw, 1.6rem);
+        font-size: clamp(1.32rem, 5.2vw, 2rem);
     }
 
     .subtitle {
         font-size: 0.92rem;
+        line-height: 1.52;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .lead {
+        row-gap: 0.5rem;
+    }
+
+    .title {
+        font-size: clamp(1.16rem, 6vw, 1.58rem);
+    }
+
+    .subtitle {
+        max-inline-size: 34rem;
+        font-size: 0.88rem;
+    }
+}
+
+/* Print */
+
+@media print {
+    .title {
+        color: #111;
+        text-shadow: none;
+    }
+
+    .subtitle {
+        color: #333;
+        text-shadow: none;
     }
 }

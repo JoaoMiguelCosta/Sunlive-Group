@@ -32,12 +32,17 @@ export default function GlobalPresencePanel() {
       <ul className={styles.grid} aria-label="Countries">
         {countries.map(({ key, label, src }) => (
           <li key={key} className={styles.item}>
-            <img
-              src={src}
-              alt={isValidText(label) ? label : key}
-              {...IMG_COMMON}
-              className={styles.logo}
-            />
+            <span className={styles.cardInner}>
+              <img
+                src={src}
+                alt={isValidText(label) ? label : key}
+                width="652"
+                height="304"
+                {...IMG_COMMON}
+                className={styles.logo}
+                draggable="false"
+              />
+            </span>
           </li>
         ))}
       </ul>

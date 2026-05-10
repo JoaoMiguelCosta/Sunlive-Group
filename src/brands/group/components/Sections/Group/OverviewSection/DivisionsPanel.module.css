@@ -1,31 +1,44 @@
-/* Divisions Panel — Sunlive Group */
+/* Divisions Panel — Sunlive Group / Executive Eclipse Gold */
 
 .sectionWrap {
     position: relative;
+    isolation: isolate;
+
     inline-size: 100%;
     min-inline-size: 0;
-    box-sizing: border-box;
-    padding-inline: 0;
-}
-
-.panel {
-    --division-grid-gap: clamp(0.75rem, 1.8vw, 1.15rem);
-    --division-card-max: clamp(13.5rem, 19vw, 18.25rem);
-
-    position: relative;
-    inline-size: 100%;
-    min-inline-size: 0;
-    margin-inline: 0;
-
-    display: grid;
-    gap: clamp(0.65rem, 1.35vw, 0.95rem);
 
     box-sizing: border-box;
-    padding-block: clamp(0.45rem, 1.3vw, 0.8rem);
     padding-inline: 0;
 
     overflow: visible;
-    border-radius: var(--overview-panel-radius, 14px);
+    background: transparent;
+}
+
+.panel {
+    --division-grid-gap: clamp(1rem, 2.35vw, 2rem);
+    --division-row-gap: clamp(1.05rem, 2.2vw, 1.8rem);
+    --division-card-max: clamp(15rem, 19.8vw, 19.5rem);
+    --division-home-card-max: clamp(15.5rem, 21.5vw, 20.75rem);
+    --division-card-radius: clamp(0.76rem, 1vw, 1.05rem);
+
+    position: relative;
+    z-index: 1;
+
+    inline-size: 100%;
+    min-inline-size: 0;
+    margin-inline: auto;
+
+    display: grid;
+    gap: var(--division-row-gap);
+
+    box-sizing: border-box;
+    padding-block: clamp(0.7rem, 1.55vw, 1.2rem);
+    padding-inline: 0;
+
+    overflow: visible;
+    background: transparent;
+
+    perspective: 1200px;
 }
 
 .row {
@@ -35,6 +48,7 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--division-grid-gap);
+
     align-items: center;
     justify-items: center;
 }
@@ -46,15 +60,24 @@
     display: grid;
     place-items: center;
 
-    padding-block-start: clamp(0.4rem, 1.2vw, 0.75rem);
+    padding-block-start: clamp(0.65rem, 1.55vw, 1.05rem);
 }
 
 .card {
-    --card-scale: 1;
+    --card-brand-primary: 255 235 176;
+    --card-brand-secondary: 216 189 120;
+    --card-brand-depth: 150 107 38;
+    --card-brand-side: 216 189 120;
+
+    --card-border: rgb(var(--card-brand-secondary) / 0.5);
+    --card-border-hover: rgb(var(--card-brand-primary) / 0.92);
+    --card-final-opacity: 1;
 
     position: relative;
+    isolation: isolate;
 
     inline-size: min(100%, var(--division-card-max));
+    max-inline-size: 100%;
     min-inline-size: 0;
 
     display: grid;
@@ -62,62 +85,226 @@
 
     aspect-ratio: 245 / 97;
     box-sizing: border-box;
+
     overflow: visible;
 
-    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), white 8%);
-    border-radius: calc(var(--sl-radius-sm, 12px) - 2px);
+    padding: clamp(0.28rem, 0.48vw, 0.42rem);
 
-    background-color: rgba(4, 8, 20, 0.98);
+    border: 1px solid var(--card-border);
+    border-radius: var(--division-card-radius);
 
+    background:
+        radial-gradient(120% 150% at 50% 0%,
+            rgb(var(--card-brand-primary) / 0.085) 0%,
+            rgb(var(--card-brand-secondary) / 0.04) 36%,
+            transparent 68%),
+        radial-gradient(110% 140% at 50% 100%,
+            rgb(var(--card-brand-depth) / 0.065) 0%,
+            transparent 72%),
+        radial-gradient(85% 130% at 100% 50%,
+            rgb(var(--card-brand-side) / 0.032) 0%,
+            transparent 70%),
+        linear-gradient(180deg,
+            rgb(13 13 12 / 0.92) 0%,
+            rgb(4 4 4 / 0.99) 100%);
+
+    color: var(--sl-color-text, #f7f4ec);
     text-decoration: none;
-    transform: scale(var(--card-scale));
+
+    box-shadow:
+        inset 0 1px 0 rgb(247 244 236 / 0.055),
+        inset 0 -1px 0 rgb(var(--card-brand-secondary) / 0.065),
+        0 0.7rem 1.35rem rgb(0 0 0 / 0.28),
+        0 0 0.9rem rgb(var(--card-brand-secondary) / 0.035);
+
+    cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.965);
+    transform-origin: center;
+
+    animation:
+        divisionEntrance 560ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+
     transition:
-        transform var(--dur-2, 180ms) var(--ease-out, ease),
-        border-color var(--dur-2, 180ms) var(--ease-out, ease),
-        filter var(--dur-2, 180ms) var(--ease-out, ease),
-        background 200ms ease;
+        transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 240ms ease,
+        background 240ms ease,
+        box-shadow 300ms ease,
+        filter 240ms ease,
+        opacity 240ms ease;
 }
 
-.homeCard {
-    inline-size: min(100%, var(--division-card-max));
-    max-inline-size: 100%;
+/* Micro-identidade por submarca — contida dentro do estilo Group */
+
+.card[data-key="travel"] {
+    --card-brand-primary: 255 231 171;
+    --card-brand-secondary: 218 190 120;
+    --card-brand-depth: 126 93 42;
+    --card-brand-side: 94 116 116;
+}
+
+.card[data-key="business"] {
+    --card-brand-primary: 241 222 174;
+    --card-brand-secondary: 196 174 124;
+    --card-brand-depth: 112 91 55;
+    --card-brand-side: 178 160 120;
+}
+
+.card[data-key="sports"] {
+    --card-brand-primary: 255 234 172;
+    --card-brand-secondary: 220 190 112;
+    --card-brand-depth: 122 91 40;
+    --card-brand-side: 92 118 90;
+}
+
+.card[data-key="international"] {
+    --card-brand-primary: 238 222 184;
+    --card-brand-secondary: 190 170 124;
+    --card-brand-depth: 103 87 60;
+    --card-brand-side: 155 145 126;
+}
+
+.card[data-key="home"] {
+    --card-brand-primary: 255 239 188;
+    --card-brand-secondary: 226 198 130;
+    --card-brand-depth: 151 104 40;
+    --card-brand-side: 226 198 130;
+}
+
+.card[data-state="disabled"] {
+    --card-final-opacity: 0.78;
+}
+
+.row .card:nth-child(1) {
+    animation-delay: 80ms;
+}
+
+.row .card:nth-child(2) {
+    animation-delay: 150ms;
+}
+
+.row .card:nth-child(3) {
+    animation-delay: 220ms;
+}
+
+.row .card:nth-child(4) {
+    animation-delay: 290ms;
+}
+
+.homeRow .card {
+    animation-delay: 380ms;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: 0;
+
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        radial-gradient(78% 112% at 50% -14%,
+            rgb(var(--card-brand-primary) / 0.16) 0%,
+            rgb(var(--card-brand-secondary) / 0.065) 34%,
+            transparent 68%),
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(var(--card-brand-secondary) / 0.055) 18%,
+            rgb(var(--card-brand-primary) / 0.12) 50%,
+            rgb(var(--card-brand-secondary) / 0.055) 82%,
+            transparent 100%);
+
+    opacity: 0.34;
+    filter: blur(0.2px);
+
+    transition:
+        opacity 280ms ease,
+        filter 280ms ease,
+        transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .card::after {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: 1px;
+    z-index: 1;
 
-    border-radius: inherit;
+    border-radius: calc(var(--division-card-radius) - 1px);
     pointer-events: none;
+
+    background:
+        linear-gradient(112deg,
+            transparent 0%,
+            transparent 42%,
+            rgb(255 248 214 / 0.08) 47%,
+            rgb(var(--card-brand-primary) / 0.2) 50%,
+            rgb(255 248 214 / 0.07) 53%,
+            transparent 60%,
+            transparent 100%),
+        linear-gradient(180deg,
+            rgb(255 255 255 / 0.035) 0%,
+            transparent 30%,
+            transparent 100%);
+
     opacity: 0;
+    transform: translateX(-54%) skewX(-12deg);
 
-    background-color: color-mix(in oklab,
-            var(--sl-gold-500, #c78615),
-            transparent 78%);
+    transition:
+        opacity 240ms ease,
+        transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
 
-    transition: opacity 180ms ease;
+.homeCard {
+    inline-size: min(100%, var(--division-home-card-max));
+    max-inline-size: 100%;
+
+    border-color: rgb(var(--card-brand-secondary) / 0.62);
+
+    box-shadow:
+        inset 0 1px 0 rgb(247 244 236 / 0.065),
+        inset 0 -1px 0 rgb(var(--card-brand-secondary) / 0.09),
+        0 0.8rem 1.55rem rgb(0 0 0 / 0.3),
+        0 0 1.25rem rgb(var(--card-brand-secondary) / 0.055);
+}
+
+.homeCard::before {
+    opacity: 0.46;
 }
 
 .cardImg {
+    position: relative;
+    z-index: 2;
+
     display: block;
 
-    inline-size: 88%;
-    block-size: 88%;
+    inline-size: 92%;
+    block-size: 92%;
 
     object-fit: contain;
     user-select: none;
     pointer-events: none;
     -webkit-user-drag: none;
 
+    transform: translate3d(0, 0, 0) scale(1);
+    transform-origin: center;
+
     filter:
-        drop-shadow(0 1px 0 rgba(255, 255, 255, 0.03)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+        saturate(1.03) contrast(1.035) brightness(1.015) drop-shadow(0 0.42rem 0.78rem rgb(0 0 0 / 0.42));
+
+    transition:
+        transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        filter 300ms ease;
 }
 
 .cardTitle {
-    color: var(--text-1, #f6f7fb);
+    position: relative;
+    z-index: 2;
+
+    color: var(--sl-color-text, #f7f4ec);
 
     font-family: var(--sl-ff-display, "Orbitron", "Eurostile", var(--font-sans));
     font-size: clamp(0.82rem, 0.95vw, 0.95rem);
@@ -130,9 +317,12 @@
 }
 
 .cardSub {
+    position: relative;
+    z-index: 2;
+
     margin-block-start: 0.35rem;
 
-    color: var(--text-2, rgba(246, 247, 251, 0.72));
+    color: rgb(247 244 236 / 0.72);
 
     font-family: var(--sl-ff-ui, var(--font-sans));
     font-size: clamp(0.52rem, 0.68vw, 0.6rem);
@@ -146,227 +336,559 @@
 
 .badge {
     position: absolute;
-    inset-block-start: -0.8rem;
-    inset-inline-end: 0.65rem;
-    z-index: 2;
+    inset-block-start: clamp(-0.78rem, -0.82vw, -0.58rem);
+    inset-inline-end: clamp(0.58rem, 0.85vw, 0.82rem);
+    z-index: 5;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    padding: 0.2rem 0.55rem;
+    min-block-size: 1.16rem;
+    padding-block: 0.16rem;
+    padding-inline: clamp(0.52rem, 0.7vw, 0.66rem);
 
-    border: 1px solid color-mix(in oklab, var(--sl-gold-500, #c78615), black 30%);
+    border: 1px solid rgb(255 235 176 / 0.46);
     border-radius: 999px;
 
-    background: linear-gradient(180deg,
-            color-mix(in oklab, var(--sl-gold-400, #f3c970), white 18%),
-            color-mix(in oklab, var(--sl-gold-500, #c78615), black 8%));
+    background:
+        radial-gradient(120% 140% at 50% 0%,
+            rgb(255 248 214 / 0.3) 0%,
+            transparent 56%),
+        linear-gradient(180deg,
+            rgb(255 235 176 / 0.94) 0%,
+            rgb(216 189 120 / 0.92) 46%,
+            rgb(129 91 34 / 0.96) 100%);
 
-    color: #121418;
+    color: #15120b;
 
     font-family: var(--sl-ff-ui, var(--font-sans));
-    font-size: clamp(0.58rem, 0.78vw, 0.68rem);
+    font-size: clamp(0.54rem, 0.58vw, 0.66rem);
     font-weight: 900;
     line-height: 1;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.055em;
     text-transform: uppercase;
 
     pointer-events: none;
 
     box-shadow:
-        0 8px 18px rgba(0, 0, 0, 0.45),
-        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        0 0.46rem 0.95rem rgb(0 0 0 / 0.4),
+        0 0 0.65rem rgb(255 235 176 / 0.1),
+        inset 0 1px 0 rgb(255 255 255 / 0.45),
+        inset 0 -1px 0 rgb(0 0 0 / 0.18);
 }
 
 .cardDisabled {
     cursor: not-allowed;
-    opacity: 0.75;
-    filter: grayscale(0.15) saturate(0.9);
-    border-color: color-mix(in oklab,
-            var(--sl-gold-500, #c78615),
-            transparent 60%);
+
+    border-color: rgb(var(--card-brand-secondary) / 0.28);
+
+    filter:
+        grayscale(0.08) saturate(0.88);
+
+    box-shadow:
+        inset 0 1px 0 rgb(247 244 236 / 0.04),
+        inset 0 -1px 0 rgb(var(--card-brand-secondary) / 0.045),
+        0 0.55rem 1.15rem rgb(0 0 0 / 0.22);
+}
+
+.cardDisabled::before {
+    opacity: 0.24;
 }
 
 .cardDisabled::after {
     opacity: 0;
 }
 
+.cardDisabled .cardImg {
+    filter:
+        grayscale(0.04) saturate(0.88) contrast(1) brightness(0.94) drop-shadow(0 0.34rem 0.68rem rgb(0 0 0 / 0.36));
+}
+
+/* =========================================================
+   Focus
+   ========================================================= */
+
 .card:focus-visible {
-    outline: 0;
-    border-color: color-mix(in oklab,
-            var(--sl-gold-500, #c78615),
-            transparent 15%);
+    outline: none;
+
+    transform: translate3d(0, -5px, 0) scale(1.035);
+
+    border-color: var(--card-border-hover);
+
+    background:
+        radial-gradient(120% 145% at 50% 0%,
+            rgb(var(--card-brand-primary) / 0.15) 0%,
+            rgb(var(--card-brand-secondary) / 0.07) 34%,
+            transparent 68%),
+        radial-gradient(115% 145% at 50% 100%,
+            rgb(var(--card-brand-depth) / 0.1) 0%,
+            transparent 72%),
+        radial-gradient(80% 130% at 100% 50%,
+            rgb(var(--card-brand-side) / 0.06) 0%,
+            transparent 68%),
+        linear-gradient(180deg,
+            rgb(16 14 10 / 0.97) 0%,
+            rgb(3 3 3 / 0.995) 100%);
 
     box-shadow:
-        0 0 0 2px color-mix(in oklab, var(--sl-navy-900, #04060c), transparent 20%),
-        0 0 0 4px color-mix(in oklab, var(--sl-gold-400, #f3c970), white 10%);
+        0 0 0 2px rgb(3 3 3 / 0.96),
+        0 0 0 4px rgb(var(--card-brand-primary) / 0.72),
+        inset 0 1px 0 rgb(247 244 236 / 0.08),
+        inset 0 -1px 0 rgb(var(--card-brand-secondary) / 0.1),
+        0 1.1rem 2.1rem rgb(0 0 0 / 0.42),
+        0 0 1.55rem rgb(var(--card-brand-primary) / 0.15),
+        0 0 3rem rgb(var(--card-brand-secondary) / 0.075);
+}
+
+.card:focus-visible::before {
+    opacity: 0.78;
+    filter: blur(0);
+    transform: scale(1.012);
 }
 
 .card:focus-visible::after {
-    opacity: 1;
+    opacity: 0.82;
+    transform: translateX(44%) skewX(-12deg);
 }
 
-@media (hover: hover) {
+.card:focus-visible .cardImg {
+    transform: translate3d(0, 0, 0) scale(1.05);
+
+    filter:
+        saturate(1.12) contrast(1.08) brightness(1.075) drop-shadow(0 0.68rem 1.15rem rgb(0 0 0 / 0.48)) drop-shadow(0 0 0.95rem rgb(var(--card-brand-primary) / 0.17));
+}
+
+.cardDisabled:focus-visible {
+    transform: none;
+
+    border-color: rgb(var(--card-brand-secondary) / 0.28);
+
+    background:
+        radial-gradient(120% 150% at 50% 0%,
+            rgb(var(--card-brand-primary) / 0.08) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(12 13 14 / 0.9) 0%,
+            rgb(5 5 5 / 0.98) 100%);
+
+    box-shadow:
+        inset 0 1px 0 rgb(247 244 236 / 0.04),
+        inset 0 -1px 0 rgb(var(--card-brand-secondary) / 0.045),
+        0 0.55rem 1.15rem rgb(0 0 0 / 0.22);
+}
+
+.cardDisabled:focus-visible::before {
+    opacity: 0.24;
+    transform: none;
+}
+
+.cardDisabled:focus-visible::after {
+    opacity: 0;
+    transform: translateX(-54%) skewX(-12deg);
+}
+
+/* =========================================================
+   Desktop hover
+   ========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
     .card:not(.cardDisabled):hover {
-        transform: translateY(-1px);
+        transform: translate3d(0, -7px, 0) scale(1.045);
 
-        border-color: color-mix(in oklab,
-                var(--sl-gold-700, #92400e),
-                black 10%);
+        border-color: var(--card-border-hover);
 
-        background: linear-gradient(135deg,
-                color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
-                color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+        background:
+            radial-gradient(120% 145% at 50% 0%,
+                rgb(var(--card-brand-primary) / 0.16) 0%,
+                rgb(var(--card-brand-secondary) / 0.072) 35%,
+                transparent 70%),
+            radial-gradient(115% 145% at 50% 100%,
+                rgb(var(--card-brand-depth) / 0.11) 0%,
+                transparent 72%),
+            radial-gradient(80% 130% at 100% 50%,
+                rgb(var(--card-brand-side) / 0.065) 0%,
+                transparent 68%),
+            linear-gradient(180deg,
+                rgb(18 15 10 / 0.98) 0%,
+                rgb(3 3 3 / 0.995) 100%);
+
+        box-shadow:
+            inset 0 1px 0 rgb(247 244 236 / 0.085),
+            inset 0 -1px 0 rgb(var(--card-brand-secondary) / 0.105),
+            0 1.22rem 2.35rem rgb(0 0 0 / 0.46),
+            0 0 1.75rem rgb(var(--card-brand-primary) / 0.16),
+            0 0 3.6rem rgb(var(--card-brand-secondary) / 0.08);
+    }
+
+    .card:not(.cardDisabled):hover::before {
+        opacity: 0.82;
+        filter: blur(0);
+        transform: scale(1.014);
     }
 
     .card:not(.cardDisabled):hover::after {
-        opacity: 1;
+        opacity: 0.86;
+        transform: translateX(44%) skewX(-12deg);
     }
 
     .card:not(.cardDisabled):hover .cardImg {
+        transform: translate3d(0, 0, 0) scale(1.06);
+
         filter:
-            drop-shadow(0 1px 0 rgba(255, 255, 255, 0.04)) drop-shadow(0 14px 28px rgba(0, 0, 0, 0.5)) brightness(1.03);
+            saturate(1.14) contrast(1.08) brightness(1.085) drop-shadow(0 0.72rem 1.22rem rgb(0 0 0 / 0.5)) drop-shadow(0 0 1rem rgb(var(--card-brand-primary) / 0.2));
+    }
+
+    .homeCard:not(.cardDisabled):hover {
+        transform: translate3d(0, -8px, 0) scale(1.055);
+
+        box-shadow:
+            inset 0 1px 0 rgb(247 244 236 / 0.09),
+            inset 0 -1px 0 rgb(var(--card-brand-secondary) / 0.12),
+            0 1.35rem 2.55rem rgb(0 0 0 / 0.48),
+            0 0 2rem rgb(var(--card-brand-primary) / 0.18),
+            0 0 4rem rgb(var(--card-brand-secondary) / 0.09);
+    }
+
+    .cardDisabled:hover {
+        transform: none;
+
+        border-color: rgb(var(--card-brand-secondary) / 0.28);
+
+        box-shadow:
+            inset 0 1px 0 rgb(247 244 236 / 0.04),
+            inset 0 -1px 0 rgb(var(--card-brand-secondary) / 0.045),
+            0 0.55rem 1.15rem rgb(0 0 0 / 0.22);
+    }
+
+    .cardDisabled:hover::before {
+        opacity: 0.24;
+        transform: none;
+    }
+
+    .cardDisabled:hover::after {
+        opacity: 0;
+        transform: translateX(-54%) skewX(-12deg);
+    }
+}
+
+/* =========================================================
+   Touch / Mobile interaction
+   ========================================================= */
+
+@media (hover: none),
+(pointer: coarse) {
+    .card {
+        transition:
+            transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1),
+            border-color 180ms ease,
+            background 180ms ease,
+            box-shadow 180ms ease,
+            filter 180ms ease;
+    }
+
+    .card:not(.cardDisabled):active {
+        transform: translate3d(0, -3px, 0) scale(1.022);
+
+        border-color: rgb(var(--card-brand-primary) / 0.78);
+
+        background:
+            radial-gradient(125% 150% at 50% 0%,
+                rgb(var(--card-brand-primary) / 0.15) 0%,
+                rgb(var(--card-brand-secondary) / 0.07) 34%,
+                transparent 68%),
+            radial-gradient(115% 145% at 50% 100%,
+                rgb(var(--card-brand-depth) / 0.1) 0%,
+                transparent 72%),
+            linear-gradient(180deg,
+                rgb(16 14 10 / 0.97) 0%,
+                rgb(3 3 3 / 0.995) 100%);
+
+        box-shadow:
+            inset 0 1px 0 rgb(247 244 236 / 0.08),
+            inset 0 -1px 0 rgb(var(--card-brand-secondary) / 0.1),
+            0 0.95rem 1.75rem rgb(0 0 0 / 0.36),
+            0 0 1.25rem rgb(var(--card-brand-primary) / 0.13),
+            0 0 2.4rem rgb(var(--card-brand-secondary) / 0.07);
+    }
+
+    .card:not(.cardDisabled):active::before {
+        opacity: 0.76;
+        filter: blur(0);
+        transform: scale(1.01);
+    }
+
+    .card:not(.cardDisabled):active::after {
+        opacity: 0.72;
+        transform: translateX(28%) skewX(-12deg);
+    }
+
+    .card:not(.cardDisabled):active .cardImg {
+        transform: translate3d(0, 0, 0) scale(1.035);
+
+        filter:
+            saturate(1.11) contrast(1.065) brightness(1.065) drop-shadow(0 0.62rem 1rem rgb(0 0 0 / 0.46)) drop-shadow(0 0 0.8rem rgb(var(--card-brand-primary) / 0.15));
     }
 }
 
 .card:active {
-    --card-scale: 1;
+    transform: translate3d(0, -2px, 0) scale(1.016);
+
+    transition-duration: 120ms;
 }
 
-.cardDisabled:hover,
-.cardDisabled:active,
-.cardDisabled:focus-visible {
+.card:active .cardImg {
+    transform: translate3d(0, 0, 0) scale(1.032);
+
+    transition-duration: 120ms;
+}
+
+.cardDisabled:active {
     transform: none;
-    box-shadow: none;
-    outline: none;
 }
 
-@media (max-width: 1200px) {
-    .panel {
-        --division-card-max: clamp(12.75rem, 30vw, 17.25rem);
-    }
+/* =========================================================
+   Responsive
+   ========================================================= */
 
+@media (min-width: 1440px) {
+    .panel {
+        --division-grid-gap: clamp(1.35rem, 2.25vw, 2.25rem);
+        --division-card-max: clamp(16.75rem, 18.7vw, 20.1rem);
+        --division-home-card-max: clamp(17.25rem, 20.5vw, 21.35rem);
+    }
+}
+
+@media (max-width: 1279.98px) {
+    .panel {
+        --division-grid-gap: clamp(0.9rem, 1.8vw, 1.35rem);
+        --division-card-max: clamp(13.85rem, 22vw, 17.35rem);
+        --division-home-card-max: clamp(14.45rem, 28vw, 18.25rem);
+    }
+}
+
+@media (max-width: 1199.98px) {
     .row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 900px) {
-    .panel {
-        --division-grid-gap: clamp(0.6rem, 1.5vw, 0.85rem);
-        --division-card-max: clamp(12.25rem, 36vw, 16.5rem);
-    }
-}
-
-@media (max-width: 720px) {
-    .panel {
-        --division-card-max: clamp(11.75rem, 39vw, 15.75rem);
-    }
-
-    .cardImg {
-        inline-size: 84%;
-        block-size: 84%;
-    }
-}
-
-@media (max-width: 640px) {
-    .sectionWrap {
-        padding-block: clamp(0.55rem, 2.4vw, 0.85rem);
+        row-gap: clamp(1.1rem, 2.2vw, 1.5rem);
     }
 
     .panel {
-        --division-grid-gap: 0.55rem;
-        --division-card-max: clamp(11.5rem, 64vw, 15.25rem);
+        --division-card-max: clamp(14.35rem, 32vw, 18.6rem);
+        --division-home-card-max: clamp(15rem, 34vw, 19.25rem);
     }
+}
 
-    .row {
-        grid-template-columns: 1fr;
+@media (max-width: 1023.98px) {
+    .panel {
+        --division-grid-gap: clamp(0.8rem, 1.7vw, 1.1rem);
+        --division-row-gap: clamp(0.95rem, 2vw, 1.25rem);
+        --division-card-max: clamp(13.5rem, 36vw, 17.25rem);
+        --division-home-card-max: clamp(14rem, 38vw, 18rem);
     }
+}
 
-    .homeCard {
-        inline-size: min(100%, var(--division-card-max));
+@media (max-width: 899.98px) {
+    .panel {
+        --division-card-max: clamp(12.85rem, 39vw, 16.6rem);
+        --division-home-card-max: clamp(13.5rem, 42vw, 17.5rem);
     }
 
     .badge {
         inset-block-start: -0.58rem;
-        inset-inline-end: 0.42rem;
-        padding: 0.17rem 0.44rem;
-        font-size: 0.54rem;
-    }
-
-    .cardImg {
-        inline-size: 82%;
-        block-size: 82%;
+        inset-inline-end: 0.52rem;
     }
 }
 
-@media (max-width: 480px) {
-    .sectionWrap {
-        padding-block: 0.5rem;
+@media (max-width: 719.98px) {
+    .panel {
+        --division-grid-gap: 0.78rem;
+        --division-row-gap: 0.95rem;
+        --division-card-max: clamp(12.35rem, 43vw, 15.85rem);
+        --division-home-card-max: clamp(13rem, 46vw, 16.75rem);
     }
 
-    .panel {
-        --division-grid-gap: 0.5rem;
-        --division-card-max: clamp(10.75rem, 60vw, 13.75rem);
+    .card {
+        padding: clamp(0.26rem, 0.76vw, 0.38rem);
     }
 
     .cardImg {
-        inline-size: 80%;
-        block-size: 80%;
+        inline-size: 91%;
+        block-size: 91%;
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 639.98px) {
+    .row {
+        grid-template-columns: 1fr;
+        gap: clamp(0.88rem, 3.4vw, 1.08rem);
+    }
+
+    .homeRow {
+        padding-block-start: clamp(0.45rem, 2.4vw, 0.66rem);
+    }
+
     .panel {
-        --division-card-max: clamp(10.25rem, 57vw, 12.75rem);
-    }
-
-    .cardTitle {
-        font-size: 0.72rem;
-    }
-
-    .cardSub {
-        font-size: 0.48rem;
-    }
-
-    .cardImg {
-        inline-size: 78%;
-        block-size: 78%;
+        --division-row-gap: clamp(0.92rem, 3.3vw, 1.18rem);
+        --division-card-max: clamp(13.5rem, 76vw, 18.6rem);
+        --division-home-card-max: clamp(14rem, 78vw, 19.25rem);
     }
 
     .badge {
-        inset-block-start: -0.5rem;
-        inset-inline-end: 0.36rem;
-        font-size: 0.48rem;
+        inset-block-start: -0.52rem;
+        inset-inline-end: 0.58rem;
+
+        min-block-size: 1rem;
+        padding-block: 0.14rem;
+        padding-inline: 0.48rem;
+
+        font-size: 0.52rem;
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 479.98px) {
     .panel {
-        --division-grid-gap: 0.45rem;
-        --division-card-max: clamp(9.75rem, 55vw, 11.75rem);
+        --division-card-max: clamp(12.45rem, 80vw, 16.5rem);
+        --division-home-card-max: clamp(12.95rem, 82vw, 17.25rem);
+        --division-row-gap: 0.9rem;
+    }
+
+    .row {
+        gap: 0.78rem;
+    }
+
+    .card {
+        padding: 0.26rem;
+        border-radius: 0.64rem;
     }
 
     .cardImg {
-        inline-size: 76%;
-        block-size: 76%;
+        inline-size: 90%;
+        block-size: 90%;
     }
 
-    .cardTitle {
-        font-size: 0.68rem;
-    }
+    .badge {
+        inset-block-start: -0.48rem;
+        inset-inline-end: 0.5rem;
 
-    .cardSub {
-        font-size: 0.46rem;
+        font-size: 0.48rem;
+        letter-spacing: 0.045em;
     }
 }
+
+@media (max-width: 419.98px) {
+    .panel {
+        --division-card-max: clamp(11.75rem, 78vw, 14.75rem);
+        --division-home-card-max: clamp(12.15rem, 80vw, 15.35rem);
+        --division-row-gap: 0.78rem;
+    }
+
+    .row {
+        gap: 0.68rem;
+    }
+
+    .badge {
+        inset-block-start: -0.44rem;
+        inset-inline-end: 0.42rem;
+
+        min-block-size: 0.92rem;
+        padding-inline: 0.4rem;
+
+        font-size: 0.44rem;
+    }
+}
+
+@media (max-width: 359.98px) {
+    .panel {
+        --division-card-max: clamp(10.9rem, 76vw, 13.25rem);
+        --division-home-card-max: clamp(11.35rem, 78vw, 13.85rem);
+        --division-row-gap: 0.66rem;
+    }
+
+    .row {
+        gap: 0.6rem;
+    }
+
+    .card {
+        padding: 0.22rem;
+        border-radius: 0.56rem;
+    }
+
+    .badge {
+        inset-block-start: -0.4rem;
+        inset-inline-end: 0.34rem;
+
+        padding-inline: 0.34rem;
+
+        font-size: 0.4rem;
+    }
+}
+
+/* =========================================================
+   Animations
+   ========================================================= */
+
+@keyframes divisionEntrance {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0) scale(0.965);
+        filter: blur(3px);
+    }
+
+    58% {
+        opacity: var(--card-final-opacity, 1);
+    }
+
+    100% {
+        opacity: var(--card-final-opacity, 1);
+        transform: translate3d(0, 0, 0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* =========================================================
+   Motion
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
     .card,
+    .card::before,
     .card::after,
     .cardImg {
+        animation: none;
         transition: none;
+    }
+
+    .card {
+        opacity: var(--card-final-opacity, 1);
+        transform: none;
+        filter: none;
+    }
+
+    .card,
+    .card:active,
+    .card:focus-visible,
+    .card:not(.cardDisabled):hover {
+        transform: none;
+    }
+
+    .card::before,
+    .card:focus-visible::before,
+    .card:not(.cardDisabled):hover::before {
+        transform: none;
+    }
+
+    .card::after,
+    .card:focus-visible::after,
+    .card:not(.cardDisabled):hover::after {
+        transform: translateX(0) skewX(0);
+    }
+
+    .cardImg,
+    .card:active .cardImg,
+    .card:focus-visible .cardImg,
+    .card:not(.cardDisabled):hover .cardImg {
+        transform: none;
     }
 }

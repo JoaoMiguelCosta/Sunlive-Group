@@ -11,7 +11,14 @@ export default function BrandHero() {
   return (
     <div className={styles.hero} aria-label="Identidade Sunlive Group">
       <div className={styles.logoBox}>
-        <img className={styles.logoImg} src={src} alt={alt} loading="eager" />
+        <img
+          className={styles.logoImg}
+          src={src}
+          alt={alt}
+          loading="eager"
+          decoding="async"
+          draggable="false"
+        />
       </div>
     </div>
   );

@@ -13,7 +13,17 @@ export default function PresenceHeadline() {
 
   return (
     <div className={styles.wrap} aria-label={alt}>
-      <img src={src} alt={alt} {...IMG_COMMON} className={styles.img} />
+      <div className={styles.frame}>
+        <img src={src} alt={alt} {...IMG_COMMON} className={styles.img} />
+
+        <img
+          src={src}
+          alt=""
+          aria-hidden="true"
+          {...IMG_COMMON}
+          className={styles.shineImg}
+        />
+      </div>
     </div>
   );
 }

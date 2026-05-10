@@ -1,63 +1,115 @@
-/* Contacts Grid — BusinessUnits + RegionalOffices */
+/* Contacts Grid — BusinessUnits + RegionalOffices / Executive Eclipse Gold */
 
 .grid {
-    inline-size: 100%;
+    --contacts-grid-gap: clamp(0.85rem, 1.8vw, 1.45rem);
+    --contacts-card-max: clamp(17rem, 23vw, 25.5rem);
+
+    --contacts-gold-soft: 255 239 188;
+    --contacts-gold: 226 198 130;
+    --contacts-gold-core: 199 134 21;
+    --contacts-gold-deep: 151 104 40;
+
+    --contacts-noir-950: 2 2 1;
+    --contacts-noir-900: 5 4 3;
+    --contacts-noir-850: 8 7 5;
+    --contacts-noir-800: 12 10 7;
+    --contacts-noir-750: 17 14 9;
+
+    inline-size: min(100%, 104rem);
     min-inline-size: 0;
 
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: var(--contacts-grid-gap, clamp(0.85rem, 1.8vw, 1.25rem));
+    gap: var(--contacts-grid-gap);
 
     align-items: start;
     justify-items: center;
 
     list-style: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
 }
 
 .item {
     grid-column: span 12;
 
-    inline-size: min(100%, var(--contacts-card-max, clamp(15rem, 22vw, 21rem)));
+    inline-size: min(100%, var(--contacts-card-max));
     min-inline-size: 0;
 
+    display: grid;
     justify-self: center;
+    justify-items: stretch;
+
+    box-sizing: border-box;
 }
 
 .pill {
     position: relative;
+    isolation: isolate;
+    overflow: hidden;
 
     inline-size: 100%;
     min-inline-size: 0;
-    min-block-size: clamp(2.6rem, 3.2vw, 3.25rem);
+    min-block-size: clamp(3.05rem, 3.55vw, 3.65rem);
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.55rem;
+    gap: clamp(0.42rem, 0.8vw, 0.68rem);
 
     box-sizing: border-box;
-    padding: 0.55rem 0.9rem;
+    padding: clamp(0.62rem, 0.78vw, 0.78rem) clamp(1rem, 1.5vw, 1.35rem);
 
-    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), white 10%);
-    border-radius: 1.35rem;
+    border: 1px solid rgb(var(--contacts-gold) / 0.46);
+    border-radius: clamp(1.05rem, 1.5vw, 1.45rem);
 
-    background: rgba(4, 8, 20, 0.96);
-    color: #eaf0ff;
+    background:
+        radial-gradient(115% 145% at 50% 0%,
+            rgb(var(--contacts-gold-soft) / 0.07) 0%,
+            rgb(var(--contacts-gold) / 0.028) 36%,
+            transparent 70%),
+        linear-gradient(180deg,
+            rgb(255 255 255 / 0.024) 0%,
+            transparent 42%,
+            rgb(0 0 0 / 0.24) 100%),
+        linear-gradient(135deg,
+            rgb(var(--contacts-noir-800) / 0.98) 0%,
+            rgb(var(--contacts-noir-900) / 0.99) 54%,
+            rgb(var(--contacts-noir-950) / 1) 100%);
+
+    color: rgb(244 239 228 / 0.94);
 
     font: inherit;
-    font-weight: 800;
+    font-weight: 850;
     line-height: 1.1;
+    letter-spacing: -0.012em;
 
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.055),
+        inset 0 -1px 0 rgb(0 0 0 / 0.44),
+        0 0.85rem 1.9rem rgb(0 0 0 / 0.3),
+        0 0 1.15rem rgb(var(--contacts-gold) / 0.055),
+        0 0 0 1px rgb(255 255 255 / 0.014);
+
+    transform: translateZ(0);
+
     transition:
-        transform 160ms ease,
-        border-color 160ms ease,
-        background 160ms ease,
-        color 160ms ease;
+        transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        background 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        filter 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pillText,
+.caret,
+.flag {
+    position: relative;
+    z-index: 2;
 }
 
 .pillText {
@@ -67,9 +119,13 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    font-size: clamp(0.9rem, 0.82rem + 0.26vw, 1.1rem);
+    font-size: clamp(0.96rem, 0.86rem + 0.28vw, 1.14rem);
     line-height: 1.15;
     text-align: center;
+
+    text-shadow:
+        0 1px 0 rgb(0 0 0 / 0.62),
+        0 0.75rem 1.4rem rgb(0 0 0 / 0.38);
 }
 
 .caret {
@@ -77,47 +133,112 @@
 
     display: inline-block;
 
-    color: var(--sl-gold-400, #f3c970);
+    color: rgb(var(--contacts-gold-soft) / 0.82);
 
+    font-size: 1em;
     line-height: 1;
-    transform: rotate(90deg);
+
+    transform: rotate(0deg);
     transform-origin: center;
+
+    filter: drop-shadow(0 0 0.35rem rgb(var(--contacts-gold-soft) / 0.1));
+
+    transition:
+        transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        color 320ms ease,
+        filter 320ms ease;
+}
+
+.pill[aria-expanded="true"] {
+    border-color: rgb(var(--contacts-gold-soft) / 0.72);
+
+    background:
+        radial-gradient(115% 145% at 50% 0%,
+            rgb(var(--contacts-gold-soft) / 0.11) 0%,
+            rgb(var(--contacts-gold) / 0.044) 36%,
+            transparent 70%),
+        linear-gradient(180deg,
+            rgb(255 255 255 / 0.036) 0%,
+            transparent 40%,
+            rgb(0 0 0 / 0.22) 100%),
+        linear-gradient(135deg,
+            rgb(var(--contacts-noir-750) / 0.98) 0%,
+            rgb(var(--contacts-noir-850) / 0.99) 54%,
+            rgb(var(--contacts-noir-950) / 1) 100%);
+
+    color: #fff7e8;
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.08),
+        inset 0 -1px 0 rgb(0 0 0 / 0.46),
+        0 1rem 2.2rem rgb(0 0 0 / 0.36),
+        0 0 1.65rem rgb(var(--contacts-gold) / 0.105),
+        0 0 0 1px rgb(var(--contacts-gold-soft) / 0.045);
+}
+
+.pill[aria-expanded="true"] .caret {
+    color: rgb(var(--contacts-gold-soft) / 0.96);
+    transform: rotate(180deg);
 }
 
 .flag {
     flex: 0 0 auto;
 
-    inline-size: 18px;
-    block-size: 12px;
+    inline-size: clamp(18px, 1.45vw, 22px);
+    block-size: clamp(12px, 1vw, 15px);
 
+    overflow: hidden;
     border-radius: 2px;
+
+    box-shadow:
+        0 0 0 1px rgb(255 255 255 / 0.12),
+        0 0.35rem 0.85rem rgb(0 0 0 / 0.24);
 }
 
 .card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
     inline-size: 100%;
     min-inline-size: 0;
 
     display: grid;
-    gap: 0.6rem;
+    gap: clamp(0.5rem, 0.75vw, 0.68rem);
 
     box-sizing: border-box;
-    margin-block-start: 0.75rem;
-    padding: 0.9rem 1rem;
+    margin-block-start: clamp(0.65rem, 1vw, 0.9rem);
+    padding: clamp(0.82rem, 1vw, 1rem);
 
-    border: 2px solid color-mix(in oklab, var(--sl-gold-500, #c78615), white 8%);
-    border-radius: 1rem;
+    border: 1px solid rgb(var(--contacts-gold) / 0.34);
+    border-radius: clamp(0.9rem, 1.2vw, 1.15rem);
 
-    background: color-mix(in oklab,
-            #020a20 82%,
-            var(--sl-gold-500, #c78615) 18%);
+    background:
+        radial-gradient(120% 145% at 50% 0%,
+            rgb(var(--contacts-gold-soft) / 0.07) 0%,
+            rgb(var(--contacts-gold) / 0.028) 34%,
+            transparent 68%),
+        linear-gradient(180deg,
+            rgb(255 255 255 / 0.024) 0%,
+            transparent 42%,
+            rgb(0 0 0 / 0.24) 100%),
+        linear-gradient(135deg,
+            rgb(var(--contacts-noir-800) / 0.97) 0%,
+            rgb(var(--contacts-noir-900) / 0.99) 58%,
+            rgb(var(--contacts-noir-950) / 1) 100%);
 
-    overflow: hidden;
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.052),
+        inset 0 -1px 0 rgb(0 0 0 / 0.42),
+        0 0.8rem 1.65rem rgb(0 0 0 / 0.28),
+        0 0 0.9rem rgb(var(--contacts-gold) / 0.055);
 
-    transition:
-        transform 160ms ease,
-        border-color 160ms ease,
-        background 160ms ease,
-        color 160ms ease;
+    animation: contactCardIn 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.card>* {
+    position: relative;
+    z-index: 1;
 }
 
 .row {
@@ -126,28 +247,40 @@
     display: grid;
     grid-template-columns: 20px minmax(0, 1fr);
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.58rem;
 
     box-sizing: border-box;
-    padding: 0.45rem 0.5rem;
+    padding: clamp(0.48rem, 0.7vw, 0.6rem) clamp(0.55rem, 0.85vw, 0.72rem);
 
-    border: 1px solid transparent;
-    border-radius: 0.65rem;
+    border: 1px solid rgb(var(--contacts-gold) / 0.1);
+    border-radius: 0.78rem;
 
-    color: #eef3ff;
+    background:
+        linear-gradient(180deg,
+            rgb(255 255 255 / 0.022) 0%,
+            rgb(255 255 255 / 0.007) 100%);
+
+    color: rgb(244 239 228 / 0.86);
     text-decoration: none;
+
+    font-size: clamp(0.84rem, 0.78rem + 0.16vw, 0.94rem);
+    font-weight: 650;
+    line-height: 1.22;
 
     overflow-wrap: anywhere;
 
     transition:
-        transform 160ms ease,
-        border-color 160ms ease,
-        background 160ms ease,
-        color 160ms ease;
+        transform 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease,
+        color 180ms ease,
+        box-shadow 180ms ease;
 }
 
 .icon {
-    color: var(--sl-gold-400, #f3c970);
+    color: rgb(var(--contacts-gold-soft) / 0.82);
+
+    filter: drop-shadow(0 0 0.32rem rgb(var(--contacts-gold-soft) / 0.07));
 }
 
 .muted {
@@ -155,32 +288,66 @@
 }
 
 @media (hover: hover) {
+    .pill:hover {
+        transform: translateY(-2px);
 
-    .pill:hover,
+        color: #fff2bf;
+        border-color: rgb(240 221 166 / 0.68);
+
+        background:
+            radial-gradient(110% 150% at 50% 0%,
+                rgb(255 242 191 / 0.22) 0%,
+                rgb(216 189 120 / 0.12) 36%,
+                transparent 66%),
+            linear-gradient(180deg,
+                rgb(64 49 25 / 0.98) 0%,
+                rgb(34 27 17 / 0.99) 48%,
+                rgb(10 10 9 / 0.99) 100%);
+
+        box-shadow:
+            inset 0 1px 0 rgb(247 244 236 / 0.12),
+            inset 0 -1px 0 rgb(216 189 120 / 0.16),
+            0 14px 30px rgb(0 0 0 / 0.3),
+            0 0 0 1px rgb(255 242 191 / 0.12),
+            0 0 1.55rem rgb(240 221 166 / 0.16);
+
+        filter: saturate(1.04) brightness(1.03);
+    }
+
+    .pill:hover .caret {
+        color: #fff2bf;
+        filter: drop-shadow(0 0 0.5rem rgb(255 242 191 / 0.22));
+    }
+
     .card:hover {
-        transform: translateY(-1px);
+        border-color: rgb(var(--contacts-gold-soft) / 0.46);
 
-        border-color: color-mix(in oklab,
-                var(--sl-gold-700, #92400e),
-                black 10%);
-
-        background: linear-gradient(135deg,
-                color-mix(in oklab, var(--sl-gold-600, #a16207), black 6%),
-                color-mix(in oklab, var(--sl-gold-400, #fbbf24), black 8%));
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.065),
+            inset 0 -1px 0 rgb(0 0 0 / 0.44),
+            0 1rem 2rem rgb(0 0 0 / 0.32),
+            0 0 1.15rem rgb(var(--contacts-gold) / 0.085);
     }
 
     .row[href]:hover {
         transform: translateY(-1px);
 
-        border-color: color-mix(in oklab,
-                var(--sl-gold-500, #c78615),
-                transparent 35%);
+        border-color: rgb(var(--contacts-gold-soft) / 0.28);
 
-        background: color-mix(in oklab,
-                var(--sl-gold-500, #c78615),
-                transparent 86%);
+        background:
+            radial-gradient(100% 120% at 50% 0%,
+                rgb(var(--contacts-gold-soft) / 0.065) 0%,
+                transparent 64%),
+            linear-gradient(180deg,
+                rgb(255 255 255 / 0.032) 0%,
+                rgb(255 255 255 / 0.01) 100%);
 
-        color: var(--sl-gold-400, #f3c970);
+        color: #fff8e8;
+
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.052),
+            0 0.55rem 1.2rem rgb(0 0 0 / 0.22),
+            0 0 0.82rem rgb(var(--contacts-gold-soft) / 0.055);
     }
 }
 
@@ -189,13 +356,16 @@
     outline: none;
 
     box-shadow:
-        0 0 0 2px color-mix(in oklab, var(--sl-navy-900, #04060c), transparent 20%),
-        0 0 0 4px color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 35%);
+        0 0 0 2px rgb(var(--contacts-noir-950) / 0.96),
+        0 0 0 4px rgb(var(--contacts-gold-soft) / 0.7),
+        0 0 1.25rem rgb(var(--contacts-gold-soft) / 0.14);
 }
 
 .row[aria-disabled="true"] {
     pointer-events: none;
 }
+
+/* Layout */
 
 @media (min-width: 720px) {
     .item {
@@ -217,114 +387,142 @@
     }
 }
 
-@media (max-width: 1200px) {
-    .item {
-        inline-size: min(100%, clamp(13.5rem, 34vw, 20rem));
+/* Responsive */
+
+@media (max-width: 1279.98px) {
+    .grid {
+        --contacts-card-max: clamp(15.25rem, 29vw, 22rem);
+        --contacts-grid-gap: clamp(0.8rem, 1.6vw, 1.2rem);
     }
 }
 
-@media (max-width: 900px) {
-    .item {
-        inline-size: min(100%, clamp(13rem, 40vw, 18.5rem));
+@media (max-width: 1023.98px) {
+    .grid {
+        --contacts-card-max: clamp(15rem, 40vw, 21rem);
     }
 
     .pill {
-        min-block-size: clamp(2.45rem, 5vw, 3rem);
+        min-block-size: clamp(2.9rem, 5vw, 3.35rem);
     }
 
     .pillText {
-        font-size: clamp(0.88rem, 2vw, 1rem);
+        font-size: clamp(0.9rem, 1.6vw, 1.04rem);
     }
 }
 
-@media (max-width: 720px) {
-    .item {
-        inline-size: min(100%, clamp(12rem, 42vw, 17rem));
-    }
-}
+@media (max-width: 719.98px) {
+    .grid {
+        --contacts-card-max: min(100%, 23rem);
+        --contacts-grid-gap: clamp(0.72rem, 2.8vw, 0.95rem);
 
-@media (max-width: 640px) {
+        inline-size: min(100%, 25rem);
+        grid-template-columns: 1fr;
+    }
+
     .item {
-        inline-size: min(100%, clamp(13rem, 74vw, 18rem));
+        grid-column: auto;
+        inline-size: min(100%, var(--contacts-card-max));
     }
 
     .pill {
-        border-radius: 1.15rem;
+        min-block-size: 2.95rem;
+        border-radius: 1.1rem;
     }
 
     .card {
-        padding: 0.8rem;
-        border-radius: 0.9rem;
-    }
-
-    .row {
-        padding: 0.45rem;
-        font-size: 0.92rem;
+        margin-block-start: 0.58rem;
     }
 }
 
-@media (max-width: 480px) {
-    .item {
-        inline-size: min(100%, clamp(12.25rem, 70vw, 15.75rem));
+@media (max-width: 479.98px) {
+    .grid {
+        --contacts-card-max: min(100%, 20.5rem);
+        --contacts-grid-gap: 0.62rem;
+
+        inline-size: min(100%, 21.5rem);
     }
 
     .pill {
-        padding-inline: 0.8rem;
-    }
-
-    .card {
-        padding: 0.75rem;
-    }
-}
-
-@media (max-width: 420px) {
-    .item {
-        inline-size: min(100%, clamp(11.5rem, 68vw, 14.75rem));
-    }
-
-    .pill {
-        min-block-size: 2.45rem;
-        padding-inline: 0.75rem;
+        min-block-size: 2.75rem;
+        padding-inline: 0.85rem;
+        border-radius: 0.95rem;
     }
 
     .pillText {
-        font-size: 0.88rem;
+        font-size: 0.9rem;
     }
 
     .card {
-        padding: 0.7rem;
+        padding: 0.72rem;
+        border-radius: 0.86rem;
     }
 
     .row {
         grid-template-columns: 18px minmax(0, 1fr);
-        gap: 0.45rem;
-        font-size: 0.85rem;
-    }
-}
+        gap: 0.46rem;
+        padding: 0.46rem 0.5rem;
 
-@media (max-width: 360px) {
-    .item {
-        inline-size: min(100%, clamp(10.75rem, 66vw, 13.25rem));
-    }
-
-    .pillText {
         font-size: 0.82rem;
     }
 
+    .flag {
+        inline-size: 17px;
+        block-size: 11px;
+    }
+}
+
+@media (max-width: 379.98px) {
+    .grid {
+        --contacts-card-max: min(100%, 18.5rem);
+        inline-size: min(100%, 19.5rem);
+    }
+
+    .pill {
+        min-block-size: 2.62rem;
+        padding-inline: 0.72rem;
+    }
+
+    .pillText {
+        font-size: 0.84rem;
+    }
+
     .card {
-        padding: 0.65rem;
+        padding: 0.66rem;
     }
 
     .row {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
     }
 }
+
+/* Animations */
+
+@keyframes contactCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Motion */
 
 @media (prefers-reduced-motion: reduce) {
 
     .pill,
+    .caret,
     .card,
     .row {
+        animation: none;
         transition: none;
+    }
+
+    .pill:hover,
+    .row[href]:hover {
+        transform: none;
     }
 }

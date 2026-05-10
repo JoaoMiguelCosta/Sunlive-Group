@@ -21,12 +21,14 @@
   position: relative;
   overflow: clip;
 
-
+  inline-size: min(calc(100% - (2 * var(--section-inset))),
+      var(--footer-max-width));
   max-inline-size: var(--footer-max-width);
   margin-inline: auto;
   box-sizing: border-box;
   padding: 0;
 
+  border-top: var(--rule-thickness) solid color-mix(in oklab, var(--footer-brand-accent), transparent 78%);
   border-radius: 18px 18px 0 0;
 
   background:
@@ -43,28 +45,13 @@
     0 10px 20px rgb(0 0 0 / 0.2);
 }
 
-.frame::before {
-  content: "";
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline: 0;
-
-  block-size: var(--rule-thickness);
-
-  background: color-mix(in oklab, var(--footer-brand-accent), transparent 78%);
-  pointer-events: none;
-}
-
 .flushTop .frame {
   margin-top: calc(-1 * var(--rule-thickness));
 }
 
 .noTopRule {
   --rule-thickness: 0px;
-}
-
-.noTopRule::before {
-  content: none;
+  border-top: 0;
 }
 
 .flushTop .noTopRule {
@@ -76,14 +63,13 @@
 }
 
 .strip {
-  inline-size: min(calc(100% - (2 * var(--section-inset))), var(--footer-max-width));
+  inline-size: min(calc(100% - (2 * var(--section-inset))),
+      var(--footer-max-width));
   max-inline-size: var(--footer-max-width);
   margin-inline: auto;
   box-sizing: border-box;
 
-  border-top: var(--rule-thickness) solid color-mix(in oklab,
-      var(--footer-brand-accent),
-      transparent 78%);
+  border-top: var(--rule-thickness) solid color-mix(in oklab, var(--footer-brand-accent), transparent 78%);
 }
 
 /* =========================================================
@@ -109,35 +95,25 @@
   border-radius: 18px 18px 0 0;
 
   background:
-    radial-gradient(1120px 360px at 50% -14%,
-      rgb(224 167 43 / 0.105) 0%,
-      transparent 60%),
-    radial-gradient(860px 320px at 82% 112%,
+    radial-gradient(132% 108% at 50% -12%,
+      rgb(46 167 224 / 0.1) 0%,
+      transparent 58%),
+    radial-gradient(980px 320px at 78% 112%,
       rgb(79 195 247 / 0.095) 0%,
       transparent 62%),
-    radial-gradient(720px 280px at 6% 88%,
-      rgb(224 167 43 / 0.045) 0%,
+    radial-gradient(760px 280px at 8% 88%,
+      rgb(224 167 43 / 0.055) 0%,
       transparent 66%),
     linear-gradient(180deg,
-      rgb(10 29 52 / 0.98) 0%,
-      rgb(4 16 32 / 0.99) 44%,
-      rgb(2 8 20 / 1) 100%);
+      #0b142b 0%,
+      #060e22 46%,
+      #020814 100%);
 
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.055),
     inset 0 -1px 0 rgb(79 195 247 / 0.065),
     0 1rem 2.6rem rgb(0 0 0 / 0.28),
     0 0 2rem rgb(79 195 247 / 0.045);
-}
-
-:global([data-brand="travel"]) .footerWrap .frame::before {
-  background:
-    linear-gradient(90deg,
-      transparent 0%,
-      rgb(79 195 247 / 0.16) 14%,
-      rgb(224 167 43 / 0.42) 50%,
-      rgb(79 195 247 / 0.16) 86%,
-      transparent 100%);
 }
 
 :global([data-brand="travel"]) .footerWrap .strip {
@@ -148,52 +124,107 @@
 }
 
 /* =========================================================
-   Sports Footer
+   Sports Footer — max 1360px
    ========================================================= */
 
 :global([data-brand="sports"]) .footerWrap {
-  --footer-brand-accent: var(--sports-footer-accent, var(--sports-gold, #d6a640));
+  --footer-max-width: 1360px;
+  --footer-brand-accent: var(--sports-footer-accent,
+      var(--sports-gold, #d6a640));
   --footer-base: var(--sports-footer-base, var(--sports-black, #03060b));
+
+  color: var(--sports-text, rgb(246 247 251 / 0.96));
+  background: transparent;
 }
 
 :global([data-brand="sports"]) .footerWrap .frame {
+  inline-size: min(calc(100% - (2 * var(--section-inset))),
+      var(--footer-max-width));
+  max-inline-size: var(--footer-max-width);
+
   border: 1px solid var(--sports-footer-frame-border,
-      rgb(var(--sports-gold-rgb) / 0.18));
+      rgb(var(--sports-gold-rgb, 214 166 64) / 0.18));
   border-bottom: 0;
+  border-radius: 18px 18px 0 0;
 
-  background: var(--sports-footer-frame-bg);
-  box-shadow: var(--sports-footer-frame-shadow);
-}
+  background: var(--sports-footer-frame-bg,
+      radial-gradient(1120px 360px at 0% 0%,
+        rgb(var(--sports-gold-rgb, 214 166 64) / 0.11) 0%,
+        transparent 58%),
+      radial-gradient(820px 320px at 100% 115%,
+        rgb(var(--sports-green-rgb, 46 194 126) / 0.035) 0%,
+        transparent 60%),
+      linear-gradient(180deg,
+        var(--sports-graphite-900, #07101a) 0%,
+        var(--sports-black, #03060b) 100%));
 
-:global([data-brand="sports"]) .footerWrap .frame::before {
-  background: var(--sports-footer-top-rule);
+  box-shadow: var(--sports-footer-frame-shadow,
+      inset 0 1px 0 rgb(255 255 255 / 0.04),
+      0 0 0 1px rgb(0 0 0 / 0.55),
+      0 16px 34px rgb(0 0 0 / 0.32),
+      0 0 34px rgb(var(--sports-gold-rgb, 214 166 64) / 0.045));
 }
 
 :global([data-brand="sports"]) .footerWrap .strip {
+  inline-size: min(calc(100% - (2 * var(--section-inset))),
+      var(--footer-max-width));
+  max-inline-size: var(--footer-max-width);
+
   border-top-color: var(--sports-footer-strip-border,
-      rgb(var(--sports-gold-rgb) / 0.22));
+      rgb(var(--sports-gold-rgb, 214 166 64) / 0.22));
 }
 
 /* =========================================================
-   Group Footer
+   Group Footer — Executive Eclipse Gold
    ========================================================= */
 
+:global([data-brand="group"]) .footerWrap {
+  --section-inset: 0px;
+  --footer-max-width: 100%;
+  --footer-brand-accent: var(--group-gold-400, #d8bd78);
+  --footer-base: var(--group-black, #030303);
+
+  color: var(--group-platinum-100, #f7f4ec);
+  background: transparent;
+}
+
 :global([data-brand="group"]) .footerWrap .frame {
+  inline-size: 100%;
+  max-inline-size: 100%;
+
+  border: 1px solid rgb(216 189 120 / 0.3);
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+
   background:
-    radial-gradient(140% 112% at 50% -12%,
-      rgb(199 134 21 / 0.08),
-      transparent 58%),
+    radial-gradient(120% 112% at 50% -12%,
+      rgb(240 221 166 / 0.13) 0%,
+      rgb(216 189 120 / 0.065) 34%,
+      transparent 62%),
+    radial-gradient(86rem 32rem at 50% 48%,
+      rgb(184 148 85 / 0.06) 0%,
+      transparent 72%),
     linear-gradient(180deg,
-      rgb(8 12 22 / 0.98) 0%,
-      rgb(3 5 10 / 0.98) 100%);
+      rgb(24 22 18 / 0.96) 0%,
+      rgb(12 12 11 / 0.985) 42%,
+      rgb(4 4 4 / 0.995) 100%);
 
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.022),
-    0 8px 18px rgb(0 0 0 / 0.2);
+    inset 0 1px 0 rgb(247 244 236 / 0.055),
+    inset 0 -1px 0 rgb(216 189 120 / 0.12),
+    0 1.1rem 2.6rem rgb(0 0 0 / 0.3),
+    0 0 2rem rgb(216 189 120 / 0.075);
+}
+
+:global([data-brand="group"]) .footerWrap .strip {
+  inline-size: 100%;
+  max-inline-size: 100%;
+
+  border-top-color: rgb(216 189 120 / 0.24);
 }
 
 /* =========================================================
-   Hotel Footer — Amber Noir Sport Lodge
+   Hotel Footer — max 1360px
    ========================================================= */
 
 :global([data-brand="hotel"]) .footerWrap {
@@ -219,11 +250,7 @@
       rgb(var(--hotel-graphite-rgb, 26 18 12) / 0.99) 48%,
       rgb(var(--hotel-black-rgb, 7 4 2) / 1) 100%);
 
-  --hotel-footer-section-bg-soft:
-    linear-gradient(180deg,
-      rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.026) 0%,
-      rgb(var(--hotel-black-rgb, 7 4 2) / 0.04) 100%),
-    rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.34);
+  --hotel-footer-section-bg-soft: transparent;
 
   --hotel-footer-section-border:
     rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
@@ -231,8 +258,13 @@
   --hotel-footer-section-border-strong:
     rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
 
+  inline-size: min(calc(100% - (2 * var(--section-inset))),
+      var(--footer-max-width));
+  max-inline-size: var(--footer-max-width);
+
   border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
   border-bottom: 0;
+  border-radius: 18px 18px 0 0;
 
   background: var(--hotel-footer-section-bg);
 
@@ -242,17 +274,11 @@
     0 1.1rem 2.8rem rgb(0 0 0 / 0.26);
 }
 
-:global([data-brand="hotel"]) .footerWrap .frame::before {
-  background:
-    linear-gradient(90deg,
-      transparent 0%,
-      rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.14) 16%,
-      rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42) 50%,
-      rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.14) 84%,
-      transparent 100%);
-}
-
 :global([data-brand="hotel"]) .footerWrap .strip {
+  inline-size: min(calc(100% - (2 * var(--section-inset))),
+      var(--footer-max-width));
+  max-inline-size: var(--footer-max-width);
+
   border-top-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
 }
 
@@ -267,28 +293,54 @@
   }
 
   .frame {
-    inline-size: min(calc(100% - (2 * var(--section-inset))), var(--footer-max-width));
+    inline-size: min(calc(100% - (2 * var(--section-inset))),
+        var(--footer-max-width));
     border-radius: 16px 16px 0 0;
   }
 
-  :global([data-brand="travel"]) .footerWrap {
+  :global([data-brand="travel"]) .footerWrap,
+  :global([data-brand="group"]) .footerWrap {
     --section-inset: 0px;
   }
 
-  :global([data-brand="travel"]) .footerWrap .frame {
+  :global([data-brand="travel"]) .footerWrap .frame,
+  :global([data-brand="group"]) .footerWrap .frame {
     inline-size: 100%;
     max-inline-size: 100%;
     border-radius: 16px 16px 0 0;
+  }
 
+  :global([data-brand="sports"]) .footerWrap .frame,
+  :global([data-brand="hotel"]) .footerWrap .frame {
+    inline-size: min(calc(100% - (2 * var(--section-inset))),
+        var(--footer-max-width));
+    max-inline-size: var(--footer-max-width);
+    border-radius: 16px 16px 0 0;
+  }
+
+  :global([data-brand="travel"]) .footerWrap .frame {
     box-shadow:
       inset 0 1px 0 rgb(255 255 255 / 0.05),
       inset 0 -1px 0 rgb(79 195 247 / 0.055),
       0 0.9rem 2.1rem rgb(0 0 0 / 0.24);
   }
 
-  :global([data-brand="hotel"]) .footerWrap .frame {
-    border-radius: 16px 16px 0 0;
+  :global([data-brand="sports"]) .footerWrap .frame {
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.04),
+      0 0 0 1px rgb(0 0 0 / 0.5),
+      0 0.9rem 2.1rem rgb(0 0 0 / 0.28);
+  }
 
+  :global([data-brand="group"]) .footerWrap .frame {
+    box-shadow:
+      inset 0 1px 0 rgb(247 244 236 / 0.045),
+      inset 0 -1px 0 rgb(216 189 120 / 0.1),
+      0 0.9rem 2.1rem rgb(0 0 0 / 0.26),
+      0 0 1.5rem rgb(216 189 120 / 0.055);
+  }
+
+  :global([data-brand="hotel"]) .footerWrap .frame {
     box-shadow:
       inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05),
       inset 0 -1px 0 rgb(0 0 0 / 0.18),
@@ -302,6 +354,8 @@
 
 @supports not (background: color-mix(in oklab, white, black)) {
   .frame {
+    border-top-color: rgb(199 134 21 / 0.2);
+
     background:
       radial-gradient(1100px 360px at 50% -10%,
         rgb(255 255 255 / 0.03),
@@ -316,152 +370,39 @@
       0 10px 20px rgb(0 0 0 / 0.2);
   }
 
-  .frame::before {
-    background: rgb(199 134 21 / 0.2);
-  }
-
   .strip {
-    border-top: var(--rule-thickness) solid rgb(199 134 21 / 0.2);
+    border-top-color: rgb(199 134 21 / 0.2);
   }
 
   :global([data-brand="travel"]) .footerWrap .frame {
-    inline-size: 100%;
-    max-inline-size: 100%;
-
-    border: 1px solid rgb(79 195 247 / 0.18);
-    border-bottom: 0;
-
     background:
-      radial-gradient(1120px 360px at 50% -14%,
-        rgb(224 167 43 / 0.105),
-        transparent 60%),
-      radial-gradient(860px 320px at 82% 112%,
-        rgb(79 195 247 / 0.095),
-        transparent 62%),
-      linear-gradient(180deg,
-        rgb(10 29 52 / 0.98) 0%,
-        rgb(4 16 32 / 0.99) 44%,
-        rgb(2 8 20 / 1) 100%);
-
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.055),
-      inset 0 -1px 0 rgb(79 195 247 / 0.065),
-      0 1rem 2.6rem rgb(0 0 0 / 0.28);
-  }
-
-  :global([data-brand="travel"]) .footerWrap .frame::before {
-    background:
-      linear-gradient(90deg,
-        transparent 0%,
-        rgb(79 195 247 / 0.16) 14%,
-        rgb(224 167 43 / 0.42) 50%,
-        rgb(79 195 247 / 0.16) 86%,
-        transparent 100%);
-  }
-
-  :global([data-brand="travel"]) .footerWrap .strip {
-    inline-size: 100%;
-    max-inline-size: 100%;
-    border-top-color: rgb(79 195 247 / 0.2);
+      radial-gradient(132% 108% at 50% -12%,
+        rgb(46 167 224 / 0.1),
+        transparent 58%),
+      linear-gradient(180deg, #0b142b, #020814);
   }
 
   :global([data-brand="sports"]) .footerWrap .frame {
-    border: 1px solid rgb(214 166 64 / 0.18);
-    border-bottom: 0;
-
     background:
-      radial-gradient(1100px 360px at 0% 0%,
+      radial-gradient(1120px 360px at 0% 0%,
         rgb(214 166 64 / 0.11),
         transparent 58%),
-      radial-gradient(820px 320px at 100% 115%,
-        rgb(46 194 126 / 0.035),
-        transparent 60%),
-      linear-gradient(180deg, #07101a 0%, #03070d 100%);
-
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.04),
-      0 0 0 1px rgb(0 0 0 / 0.55),
-      0 16px 34px rgb(0 0 0 / 0.32),
-      0 0 34px rgb(214 166 64 / 0.045);
-  }
-
-  :global([data-brand="sports"]) .footerWrap .frame::before {
-    background:
-      linear-gradient(90deg,
-        transparent 0%,
-        rgb(214 166 64 / 0.18) 14%,
-        rgb(214 166 64 / 0.5) 50%,
-        rgb(214 166 64 / 0.18) 86%,
-        transparent 100%);
-  }
-
-  :global([data-brand="sports"]) .footerWrap .strip {
-    border-top-color: rgb(214 166 64 / 0.22);
+      linear-gradient(180deg, #07101a, #03060b);
   }
 
   :global([data-brand="group"]) .footerWrap .frame {
     background:
-      radial-gradient(140% 112% at 50% -12%,
-        rgb(199 134 21 / 0.08),
-        transparent 58%),
-      linear-gradient(180deg,
-        rgb(8 12 22 / 0.98) 0%,
-        rgb(3 5 10 / 0.98) 100%);
-
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.022),
-      0 8px 18px rgb(0 0 0 / 0.2);
-  }
-
-  :global([data-brand="hotel"]) .footerWrap {
-    background: transparent;
+      radial-gradient(120% 112% at 50% -12%,
+        rgb(240 221 166 / 0.13),
+        transparent 62%),
+      linear-gradient(180deg, rgb(24 22 18 / 0.96), rgb(4 4 4 / 0.995));
   }
 
   :global([data-brand="hotel"]) .footerWrap .frame {
-    --hotel-footer-section-bg:
+    background:
       radial-gradient(920px 280px at 50% -16%,
         rgb(217 185 120 / 0.1),
         transparent 62%),
-      linear-gradient(180deg,
-        rgb(251 247 239 / 0.035) 0%,
-        rgb(251 247 239 / 0.012) 22%,
-        rgb(0 0 0 / 0.14) 100%),
-      linear-gradient(135deg,
-        rgb(41 26 17 / 0.98) 0%,
-        rgb(26 18 12 / 0.99) 48%,
-        rgb(7 4 2 / 1) 100%);
-
-    --hotel-footer-section-bg-soft:
-      linear-gradient(180deg,
-        rgb(251 247 239 / 0.026) 0%,
-        rgb(7 4 2 / 0.04) 100%),
-      rgb(41 26 17 / 0.34);
-
-    --hotel-footer-section-border: rgb(217 185 120 / 0.18);
-    --hotel-footer-section-border-strong: rgb(217 185 120 / 0.3);
-
-    border: 1px solid rgb(217 185 120 / 0.2);
-    border-bottom: 0;
-
-    background: var(--hotel-footer-section-bg);
-
-    box-shadow:
-      inset 0 1px 0 rgb(251 247 239 / 0.06),
-      inset 0 -1px 0 rgb(0 0 0 / 0.22),
-      0 1.1rem 2.8rem rgb(0 0 0 / 0.26);
-  }
-
-  :global([data-brand="hotel"]) .footerWrap .frame::before {
-    background:
-      linear-gradient(90deg,
-        transparent 0%,
-        rgb(125 90 49 / 0.14) 16%,
-        rgb(217 185 120 / 0.42) 50%,
-        rgb(125 90 49 / 0.14) 84%,
-        transparent 100%);
-  }
-
-  :global([data-brand="hotel"]) .footerWrap .strip {
-    border-top-color: rgb(217 185 120 / 0.2);
+      linear-gradient(135deg, rgb(41 26 17 / 0.98), rgb(7 4 2 / 1));
   }
 }

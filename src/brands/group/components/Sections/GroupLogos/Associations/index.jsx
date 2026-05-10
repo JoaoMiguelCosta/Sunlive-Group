@@ -12,7 +12,7 @@ export default function Associations() {
 
   if (!data || !hasItems(data.items)) return null;
 
-  const sectionId = data.id || "associations";
+  const sectionId = data.id || "associacoes";
   const headingId = `${sectionId}-title`;
 
   return (

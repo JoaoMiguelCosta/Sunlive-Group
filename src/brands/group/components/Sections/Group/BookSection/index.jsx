@@ -28,7 +28,9 @@ export default function BookSection() {
 
   const sectionId = isValidText(bookConfig?.id) ? bookConfig.id : "book";
 
-  const label = isValidText(cta.label) ? cta.label : "Open Book Sunlive Group";
+  const label = isValidText(cta.label)
+    ? cta.label
+    : "Download Book Sunlive Group";
 
   const href = isValidText(cta.href) ? cta.href : "";
 
@@ -36,7 +38,9 @@ export default function BookSection() {
     ? cta.filename
     : "Sunlive-Group-Book.pdf";
 
-  const ariaLabel = isValidText(cta.ariaLabel) ? cta.ariaLabel : label;
+  const ariaLabel = isValidText(cta.ariaLabel)
+    ? cta.ariaLabel
+    : `Descarregar ${label}`;
 
   if (!href) return null;
 
@@ -51,13 +55,11 @@ export default function BookSection() {
         href={href}
         download={filename}
         aria-label={ariaLabel}
-        target="_blank"
-        rel="noopener noreferrer"
       >
         <span className={styles.label}>{label}</span>
 
         <span className={styles.arrow} aria-hidden="true">
-          ➜
+          ⬇
         </span>
       </a>
     </section>

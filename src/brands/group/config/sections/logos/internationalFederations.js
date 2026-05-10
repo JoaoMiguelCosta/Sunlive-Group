@@ -19,7 +19,7 @@ import saudi from "../../../assets/group-logos/logos/internationalFederations/sa
 import uggf from "../../../assets/group-logos/logos/internationalFederations/uggf.png";
 
 export const internationalFederations = {
-  id: "federations-intl",
+  id: "federacoes-internacionais",
   title: "FEDERAÇÕES INTERNACIONAIS",
   items: [
     {

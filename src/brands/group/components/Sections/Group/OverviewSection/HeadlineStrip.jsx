@@ -13,13 +13,31 @@ export default function HeadlineStrip() {
 
   return (
     <div className={styles.wrap} aria-label="Headline Sunlive Group">
-      <img
-        className={styles.img}
-        src={img}
-        alt={alt}
-        loading="lazy"
-        decoding="async"
-      />
+      <div className={styles.frame}>
+        <img
+          className={styles.img}
+          src={img}
+          alt={alt}
+          width="2400"
+          height="390"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+          draggable="false"
+        />
+
+        <img
+          className={styles.shineImg}
+          src={img}
+          alt=""
+          width="2400"
+          height="390"
+          aria-hidden="true"
+          loading="eager"
+          decoding="async"
+          draggable="false"
+        />
+      </div>
     </div>
   );
 }

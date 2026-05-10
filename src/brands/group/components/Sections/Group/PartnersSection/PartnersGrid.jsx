@@ -65,7 +65,7 @@ export default function PartnersGrid({ items = [] }) {
             <span className={styles.label}>{label}</span>
 
             <span className={styles.arrow} aria-hidden="true">
-              ➜
+              →
             </span>
           </a>
         );

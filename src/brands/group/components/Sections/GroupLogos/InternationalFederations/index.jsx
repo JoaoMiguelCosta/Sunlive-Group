@@ -12,7 +12,7 @@ export default function InternationalFederations() {
 
   if (!data || !hasItems(data.items)) return null;
 
-  const sectionId = data.id || "federations-intl";
+  const sectionId = data.id || "federacoes-internacionais";
   const headingId = `${sectionId}-title`;
 
   return (

@@ -9,41 +9,35 @@
     min-block-size: 100dvh;
     overflow: clip;
 
-    color: var(--sl-color-text, #f6f7fb);
+    color: var(--group-platinum-100, var(--sl-color-text, #f7f4ec));
 
-    background-color: #030302;
+    background-color: var(--group-black, #030303);
     background-image:
-        radial-gradient(96rem 50rem at 50% -18rem,
-            rgb(246 192 92 / 0.24) 0%,
-            rgb(199 134 21 / 0.14) 32%,
-            rgb(199 134 21 / 0.055) 56%,
-            transparent 76%),
-        radial-gradient(72rem 42rem at 4% 18%,
-            rgb(246 192 92 / 0.105) 0%,
-            rgb(199 134 21 / 0.045) 38%,
-            transparent 70%),
-        radial-gradient(70rem 42rem at 96% 22%,
-            rgb(199 134 21 / 0.125) 0%,
-            rgb(246 192 92 / 0.052) 42%,
+        radial-gradient(92rem 48rem at 50% -18rem,
+            rgb(240 221 166 / 0.24) 0%,
+            rgb(216 189 120 / 0.16) 28%,
+            rgb(184 148 85 / 0.075) 54%,
+            transparent 78%),
+        radial-gradient(74rem 42rem at 5% 18%,
+            rgb(216 189 120 / 0.13) 0%,
+            rgb(184 148 85 / 0.05) 40%,
             transparent 72%),
+        radial-gradient(74rem 42rem at 95% 18%,
+            rgb(240 221 166 / 0.11) 0%,
+            rgb(216 189 120 / 0.046) 42%,
+            transparent 74%),
         radial-gradient(88rem 54rem at 50% 112%,
-            rgb(199 134 21 / 0.12) 0%,
-            rgb(199 134 21 / 0.052) 38%,
+            rgb(184 148 85 / 0.13) 0%,
+            rgb(216 189 120 / 0.058) 38%,
             transparent 78%),
         linear-gradient(180deg,
-            #0a0804 0%,
-            #070604 34%,
-            #040403 70%,
-            #020202 100%);
+            var(--group-eclipse-970, #080808) 0%,
+            var(--group-eclipse-990, #050505) 42%,
+            var(--group-black, #030303) 100%);
 
     background-attachment: fixed;
     background-size: 100% 100vh;
     background-repeat: no-repeat;
-}
-
-.shell::before,
-.shell::after {
-    content: none;
 }
 
 .shell>* {
@@ -63,7 +57,7 @@
     overflow: clip;
     box-sizing: border-box;
 
-    color: var(--sl-color-text, #f6f7fb);
+    color: var(--group-platinum-100, var(--sl-color-text, #f7f4ec));
     background: transparent;
 }
 
@@ -72,7 +66,12 @@
     z-index: 10;
 
     inline-size: 100%;
-    background: transparent;
+
+    background:
+        linear-gradient(180deg,
+            rgb(3 3 3 / 0.76) 0%,
+            rgb(3 3 3 / 0.46) 58%,
+            transparent 100%);
 }
 
 .headerInner {
@@ -80,6 +79,7 @@
             var(--group-page-max-width));
     max-inline-size: var(--group-page-max-width);
     margin-inline: auto;
+
     box-sizing: border-box;
 }
 
@@ -94,6 +94,7 @@
 
     inline-size: 100%;
     box-sizing: border-box;
+
     background: transparent;
 }
 
@@ -101,6 +102,7 @@
     inline-size: 100%;
     max-inline-size: 100%;
     margin-inline: auto;
+    margin-block-start: clamp(3rem, 4.8vw, 4.8rem);
 
     display: grid;
     row-gap: 0;
@@ -142,6 +144,26 @@
 }
 
 @media (max-width: 767.98px) {
+    .shell {
+        background-attachment: scroll;
+        background-size: 100% 100%;
+        background-image:
+            radial-gradient(58rem 34rem at 50% -12rem,
+                rgb(240 221 166 / 0.2) 0%,
+                rgb(216 189 120 / 0.11) 34%,
+                transparent 76%),
+            radial-gradient(38rem 28rem at 0% 16%,
+                rgb(216 189 120 / 0.085) 0%,
+                transparent 74%),
+            radial-gradient(38rem 28rem at 100% 18%,
+                rgb(240 221 166 / 0.075) 0%,
+                transparent 76%),
+            linear-gradient(180deg,
+                var(--group-eclipse-970, #080808) 0%,
+                var(--group-eclipse-990, #050505) 48%,
+                var(--group-black, #030303) 100%);
+    }
+
     .contentFlow {
         margin-block-start: clamp(2.2rem, 7vw, 3rem);
         row-gap: 0;

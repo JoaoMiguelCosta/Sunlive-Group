@@ -12,7 +12,7 @@ export default function Committees() {
 
   if (!data || !hasItems(data.items)) return null;
 
-  const sectionId = data.id || "committees";
+  const sectionId = data.id || "comites";
   const headingId = `${sectionId}-title`;
 
   return (

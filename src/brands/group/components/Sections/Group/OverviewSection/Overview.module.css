@@ -1,4 +1,4 @@
-/* Overview — Sunlive Group */
+/* Overview — Sunlive Group / Executive Eclipse Gold */
 
 .section {
   position: relative;
@@ -10,37 +10,63 @@
 
   display: grid;
   justify-items: center;
-
-
+  align-content: start;
 
   box-sizing: border-box;
+  padding-inline: 0;
 
-  --overview-line-inset: clamp(0.75rem, 3.2vw, 2.75rem);
-  --overview-panel-radius: 14px;
+  color: var(--sl-color-text, #f7f4ec);
+  background: transparent;
+
+  --overview-panel-radius: clamp(1.1rem, 2.2vw, 2.25rem);
+
+  --overview-gold-soft: 255 239 188;
+  --overview-gold: 226 198 130;
+  --overview-gold-deep: 151 104 40;
+  --overview-noir: 4 4 4;
 }
 
 .section>* {
+  position: relative;
+  z-index: 1;
+
   inline-size: 100%;
   min-inline-size: 0;
 }
 
+.section> :not(.srOnly) {
+  max-inline-size: 100%;
+}
+
 .srOnly {
   position: absolute;
+
   inline-size: 1px;
   block-size: 1px;
+
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
 }
 
+/* =========================================================
+   Responsive
+   ========================================================= */
 
-
-@media (max-width: 640px) {
+@media (max-width: 1023.98px) {
   .section {
-    
-
-    --overview-line-inset: clamp(0.5rem, 4vw, 1rem);
-    --overview-panel-radius: 12px;
+    --overview-panel-radius: clamp(0.95rem, 2vw, 1.6rem);
   }
 }
 
+@media (max-width: 767.98px) {
+  .section {
+    --overview-panel-radius: 1.2rem;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .section {
+    --overview-panel-radius: 1rem;
+  }
+}

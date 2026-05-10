@@ -1,8 +1,11 @@
-/* Mantra Headline — Sunlive Group */
+/* Mantra Headline — Sunlive Group / Executive Eclipse Gold */
 
 .wrap {
     position: relative;
     isolation: isolate;
+
+    --mantra-image-width: clamp(26rem, 62vw, 70rem);
+    --mantra-safe-inset: clamp(0.75rem, 3vw, 2.5rem);
 
     inline-size: 100%;
     min-inline-size: 0;
@@ -11,41 +14,425 @@
     place-items: center;
 
     box-sizing: border-box;
-    padding-inline: clamp(0.5rem, 2.5vw, 2rem);
+    overflow: visible;
+
+    padding-inline: var(--mantra-safe-inset);
 
     background: transparent;
+}
+
+.wrap::before {
+    content: "";
+    position: absolute;
+    inset-inline: 50%;
+    inset-block-start: 52%;
+    z-index: 0;
+
+    inline-size: min(96vw, 82rem);
+    block-size: clamp(5.8rem, 13vw, 11.5rem);
+
+    pointer-events: none;
+    border-radius: 999px;
+
+    background:
+        radial-gradient(42% 58% at 50% 48%,
+            rgb(255 239 188 / 0.18) 0%,
+            rgb(226 198 130 / 0.078) 34%,
+            rgb(151 104 40 / 0.036) 56%,
+            transparent 78%),
+        radial-gradient(78% 86% at 50% 54%,
+            rgb(255 235 176 / 0.052) 0%,
+            transparent 72%);
+
+    opacity: 0.84;
+    filter: blur(20px) saturate(1.05);
+    transform: translate(-50%, -50%);
+
+    animation: mantraAura 6200ms ease-in-out infinite;
+}
+
+.frame {
+    position: relative;
+    isolation: isolate;
+    z-index: 1;
+
+    min-inline-size: 0;
+
+    display: grid;
+    place-items: center;
+
+    box-sizing: border-box;
+    padding: clamp(0.08rem, 0.35vw, 0.32rem);
+
+    overflow: visible;
+    border-radius: clamp(0.75rem, 1.4vw, 1.35rem);
+
+    background: transparent;
+
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.975);
+
+    filter:
+        drop-shadow(0 0.8rem 1.45rem rgb(0 0 0 / 0.32)) drop-shadow(0 0 1.1rem rgb(226 198 130 / 0.05));
+
+    animation:
+        mantraEntrance 680ms cubic-bezier(0.2, 0.8, 0.2, 1) 220ms forwards,
+        mantraPresence 6800ms ease-in-out 1100ms infinite;
+}
+
+.frame::before {
+    content: "";
+    position: absolute;
+    inset-inline: -4%;
+    inset-block: 5%;
+    z-index: -1;
+
+    pointer-events: none;
+    border-radius: inherit;
+
+    background:
+        radial-gradient(58% 82% at 50% 48%,
+            rgb(255 239 188 / 0.105) 0%,
+            rgb(226 198 130 / 0.042) 38%,
+            transparent 78%),
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(255 239 188 / 0.035) 48%,
+            transparent 100%);
+
+    opacity: 0.66;
+    filter: blur(17px);
+
+    animation: mantraInnerGlow 5400ms ease-in-out infinite;
+}
+
+.frame::after {
+    content: "";
+    position: absolute;
+    inset-inline: 5%;
+    inset-block-end: 6%;
+    z-index: 0;
+
+    block-size: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            rgb(151 104 40 / 0.08) 16%,
+            rgb(255 239 188 / 0.36) 50%,
+            rgb(151 104 40 / 0.08) 84%,
+            transparent 100%);
+
+    opacity: 0.34;
+    transform: scaleX(0.9);
+    transform-origin: center;
+
+    filter: drop-shadow(0 0 0.55rem rgb(255 235 176 / 0.08));
+
+    animation: mantraRulePulse 5200ms ease-in-out infinite;
+}
+
+.img,
+.shineImg {
+    grid-area: 1 / 1;
+
+    display: block;
+
+    inline-size: min(var(--mantra-image-width), calc(100vw - (2 * var(--mantra-safe-inset))));
+    block-size: auto;
+
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
 }
 
 .img {
     position: relative;
     z-index: 1;
 
-    display: block;
-
-    inline-size: clamp(17rem, 54vw, 46rem);
-    max-inline-size: 100%;
-    block-size: auto;
-
-    user-select: none;
-    pointer-events: none;
-    -webkit-user-drag: none;
+    transform: translate3d(0, 0, 0);
 
     filter:
-        drop-shadow(0 2px 0 color-mix(in oklab, var(--sl-gold-400, #f3c970), transparent 75%)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.4));
+        saturate(1.045) contrast(1.045) brightness(1.028) drop-shadow(0 1px 0 rgb(255 248 214 / 0.16)) drop-shadow(0 0.46rem 0.9rem rgb(0 0 0 / 0.46)) drop-shadow(0 0 0.78rem rgb(255 235 176 / 0.085));
+
+    animation:
+        mantraFloat 7600ms ease-in-out 1150ms infinite,
+        mantraMetalPulse 4600ms ease-in-out 1300ms infinite;
 }
 
-@media (max-width: 768px) {
-    .img {
-        inline-size: clamp(15rem, 72vw, 34rem);
-    }
+.shineImg {
+    position: relative;
+    z-index: 2;
+
+    opacity: 0;
+
+    filter:
+        saturate(1.18) contrast(1.1) brightness(1.26) drop-shadow(0 0 0.42rem rgb(255 239 188 / 0.12));
+
+    mix-blend-mode: screen;
+
+    clip-path: polygon(-28% 0%,
+            -15% 0%,
+            2% 100%,
+            -12% 100%);
+
+    animation: mantraSheen 2450ms cubic-bezier(0.55, 0, 0.25, 1) infinite;
 }
 
-@media (max-width: 420px) {
+/* Responsive */
+
+@media (min-width: 1440px) {
     .wrap {
-        padding-inline: 0.5rem;
+        --mantra-image-width: clamp(46rem, 60vw, 74rem);
+    }
+}
+
+@media (max-width: 1279.98px) {
+    .wrap {
+        --mantra-image-width: clamp(33rem, 68vw, 62rem);
+    }
+
+    .wrap::before {
+        inline-size: min(96vw, 66rem);
+        block-size: clamp(5.2rem, 14vw, 9.8rem);
+    }
+}
+
+@media (max-width: 1023.98px) {
+    .wrap {
+        --mantra-image-width: clamp(28.5rem, 78vw, 52rem);
+    }
+
+    .wrap::before {
+        inline-size: min(96vw, 54rem);
+        block-size: clamp(4.8rem, 15vw, 8.8rem);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .wrap {
+        --mantra-safe-inset: clamp(0.75rem, 4vw, 1.5rem);
+        --mantra-image-width: clamp(22rem, 90vw, 39rem);
+    }
+
+    .frame {
+        padding: clamp(0.06rem, 0.6vw, 0.22rem);
+
+        filter:
+            drop-shadow(0 0.62rem 1.2rem rgb(0 0 0 / 0.3)) drop-shadow(0 0 0.9rem rgb(226 198 130 / 0.045));
+    }
+
+    .frame::before {
+        filter: blur(14px);
+        opacity: 0.58;
     }
 
     .img {
-        inline-size: min(14rem, 86vw);
+        filter:
+            saturate(1.035) contrast(1.035) brightness(1.02) drop-shadow(0 1px 0 rgb(255 248 214 / 0.12)) drop-shadow(0 0.38rem 0.76rem rgb(0 0 0 / 0.44)) drop-shadow(0 0 0.6rem rgb(255 235 176 / 0.07));
+    }
+
+    .shineImg {
+        filter:
+            saturate(1.14) contrast(1.07) brightness(1.18) drop-shadow(0 0 0.34rem rgb(255 239 188 / 0.1));
+
+        animation-duration: 2950ms;
+    }
+}
+
+@media (max-width: 500px) {
+    .wrap {
+        --mantra-safe-inset: 0.7rem;
+        --mantra-image-width: clamp(19rem, 98vw, 29.5rem);
+    }
+
+    .wrap::before {
+        inline-size: 98vw;
+        block-size: clamp(4.35rem, 20vw, 6.9rem);
+        opacity: 0.72;
+        filter: blur(14px) saturate(1.02);
+    }
+
+    .wrap::after {
+        inset-inline: 1rem;
+        opacity: 0.34;
+    }
+
+    .frame {
+        border-radius: 0.85rem;
+    }
+
+    .frame::after {
+        opacity: 0.24;
+    }
+
+    .shineImg {
+        animation-duration: 3400ms;
+    }
+}
+
+/* Animations */
+
+@keyframes mantraEntrance {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 14px, 0) scale(0.975);
+        filter:
+            blur(3px) drop-shadow(0 0.45rem 0.9rem rgb(0 0 0 / 0.22));
+    }
+
+    58% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+        filter:
+            drop-shadow(0 0.8rem 1.45rem rgb(0 0 0 / 0.32)) drop-shadow(0 0 1.1rem rgb(226 198 130 / 0.05));
+    }
+}
+
+@keyframes mantraSheen {
+    0% {
+        opacity: 0;
+        clip-path: polygon(-28% 0%,
+                -15% 0%,
+                2% 100%,
+                -12% 100%);
+    }
+
+    12% {
+        opacity: 0.34;
+    }
+
+    48% {
+        opacity: 0.66;
+    }
+
+    82% {
+        opacity: 0.34;
+    }
+
+    100% {
+        opacity: 0;
+        clip-path: polygon(104% 0%,
+                118% 0%,
+                136% 100%,
+                122% 100%);
+    }
+}
+
+@keyframes mantraAura {
+
+    0%,
+    100% {
+        opacity: 0.68;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(1.035);
+    }
+}
+
+@keyframes mantraInnerGlow {
+
+    0%,
+    100% {
+        opacity: 0.54;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.78;
+        transform: scale(1.032);
+    }
+}
+
+@keyframes mantraRulePulse {
+
+    0%,
+    100% {
+        opacity: 0.22;
+        transform: scaleX(0.82);
+    }
+
+    50% {
+        opacity: 0.42;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes mantraFloat {
+
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(0, -2px, 0);
+    }
+}
+
+@keyframes mantraMetalPulse {
+
+    0%,
+    100% {
+        filter:
+            saturate(1.045) contrast(1.045) brightness(1.028) drop-shadow(0 1px 0 rgb(255 248 214 / 0.16)) drop-shadow(0 0.46rem 0.9rem rgb(0 0 0 / 0.46)) drop-shadow(0 0 0.78rem rgb(255 235 176 / 0.085));
+    }
+
+    50% {
+        filter:
+            saturate(1.07) contrast(1.058) brightness(1.045) drop-shadow(0 1px 0 rgb(255 248 214 / 0.2)) drop-shadow(0 0.5rem 1rem rgb(0 0 0 / 0.48)) drop-shadow(0 0 0.95rem rgb(255 235 176 / 0.12));
+    }
+}
+
+@keyframes mantraPresence {
+
+    0%,
+    100% {
+        filter:
+            drop-shadow(0 0.8rem 1.45rem rgb(0 0 0 / 0.32)) drop-shadow(0 0 1.1rem rgb(226 198 130 / 0.05));
+    }
+
+    50% {
+        filter:
+            drop-shadow(0 0.86rem 1.6rem rgb(0 0 0 / 0.36)) drop-shadow(0 0 1.35rem rgb(226 198 130 / 0.072));
+    }
+}
+
+/* Motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .wrap::before,
+    .frame,
+    .frame::before,
+    .frame::after,
+    .img,
+    .shineImg {
+        animation: none;
+        transition: none;
+    }
+
+    .frame {
+        opacity: 1;
+        transform: none;
+    }
+
+    .img {
+        transform: none;
+    }
+
+    .shineImg {
+        opacity: 0;
+        clip-path: none;
     }
 }

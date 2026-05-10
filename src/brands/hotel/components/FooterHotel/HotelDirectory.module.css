@@ -16,7 +16,7 @@
     border-bottom: 1px solid var(--hotel-footer-section-border,
             rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
 
-    background: var(--hotel-footer-section-bg-soft);
+    background: transparent;
 
     color: var(--hotel-text, rgb(251 247 239 / 0.96));
 }

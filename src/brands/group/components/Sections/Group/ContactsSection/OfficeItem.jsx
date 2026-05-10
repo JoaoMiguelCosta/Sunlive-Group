@@ -4,6 +4,7 @@ import OfficeCard from "./OfficeCard.jsx";
 
 export default function OfficeItem({
   item,
+  anchorId,
   isOpen,
   toggle,
   MailIcon,
@@ -12,9 +13,10 @@ export default function OfficeItem({
   const Flag = item.Flag || (() => null);
   const panelId = `office-${item.key}`;
   const telHref = (item.phone || "").replace(/\s+/g, "");
+  const itemId = anchorId || `pais-${item.key}`;
 
   return (
-    <div role="listitem" className={styles.item} id={`country-${item.key}`}>
+    <div role="listitem" className={styles.item} id={itemId}>
       <button
         type="button"
         className={styles.pill}
@@ -23,9 +25,11 @@ export default function OfficeItem({
         aria-controls={panelId}
       >
         <Flag className={styles.flag} aria-hidden="true" />
+
         <span className={styles.pillText}>{item.label}</span>
+
         <span className={styles.caret} aria-hidden="true">
-          ➜
+          ⌄
         </span>
       </button>
 

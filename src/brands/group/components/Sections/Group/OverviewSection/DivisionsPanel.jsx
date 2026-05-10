@@ -34,6 +34,7 @@ function CardContent({ item, fallbackLabel }) {
         className={styles.cardImg}
         loading="lazy"
         decoding="async"
+        draggable="false"
       />
     );
   }
@@ -57,6 +58,8 @@ function DivisionCard({ item }) {
     return (
       <div
         className={`${styles.card} ${styles.cardDisabled}`}
+        data-key={item.key}
+        data-state="disabled"
         aria-label={`${label} — brevemente`}
         aria-disabled="true"
       >
@@ -70,7 +73,13 @@ function DivisionCard({ item }) {
   }
 
   return (
-    <a href={item.href} className={styles.card} aria-label={label}>
+    <a
+      href={item.href}
+      className={styles.card}
+      data-key={item.key}
+      data-state="active"
+      aria-label={label}
+    >
       <CardContent item={item} fallbackLabel="Sunlive Group" />
     </a>
   );
@@ -105,6 +114,8 @@ export default function DivisionsPanel() {
             <a
               href={home.href ?? "/"}
               className={`${styles.card} ${styles.homeCard}`}
+              data-key={home.key ?? "home"}
+              data-state="active"
               aria-label={homeLabel}
             >
               <CardContent item={home} fallbackLabel="Our Home" />

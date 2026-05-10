@@ -4,7 +4,7 @@ import ace from "../../../assets/group-logos/logos/associations/ace.png";
 import afa from "../../../assets/group-logos/logos/associations/afa.png";
 
 export const associations = {
-  id: "associations",
+  id: "associacoes",
   title: "ASSOCIAÇÕES",
   items: [
     {
