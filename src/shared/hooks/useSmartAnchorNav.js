@@ -2,17 +2,29 @@
 import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-/**
- * Navegação/scroll com offset e suporte a alvos dentro de submenus/colapsáveis.
- *
- * Opções extra:
- * - revealById?: (id: string) => void
- * - onBeforeNavigate?: (info) => void
- * - onAfterNavigate?: (info) => void
- * - closeOverlays?: () => void
- * - maxScrollRetries?: number (default 3)
- * - retryDelayMs?: number (default 60)
- */
+const SMART_ANCHOR_STATE_KEY = "__smartAnchorNav";
+
+function normalizePath(path = "") {
+  const cleanPath = path.replace(/#.*$/, "").replace(/\/+$/, "");
+
+  return cleanPath || "/";
+}
+
+function getStateWithoutSmartAnchor(state) {
+  if (!state || typeof state !== "object") return null;
+
+  const nextState = { ...state };
+  delete nextState[SMART_ANCHOR_STATE_KEY];
+
+  return Object.keys(nextState).length > 0 ? nextState : null;
+}
+
+function shouldReduceMotion() {
+  if (typeof window === "undefined") return false;
+
+  return window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+}
+
 export default function useSmartAnchorNav({
   targetPath,
   offset = 72,
@@ -21,134 +33,234 @@ export default function useSmartAnchorNav({
   onBeforeNavigate,
   onAfterNavigate,
   closeOverlays,
-  maxScrollRetries = 3,
-  retryDelayMs = 60,
+  maxScrollRetries = 6,
+  retryDelayMs = 80,
+  crossPageDelayMs = 650,
 } = {}) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const curPath = () => location.pathname.replace(/\/+$/, "");
-  const normalizePath = (p = "") => p.replace(/#.*$/, "").replace(/\/+$/, "");
+  const lastHandledRef = useRef("");
+
+  const currentPath = normalizePath(location.pathname);
 
   const parseHref = (href = "") => {
-    if (href.startsWith("#")) return { path: curPath(), hash: href };
+    if (href.startsWith("#")) {
+      return {
+        path: currentPath,
+        hash: href,
+      };
+    }
+
     const url = new URL(href, window.location.origin);
-    return { path: normalizePath(url.pathname), hash: url.hash || "" };
+
+    return {
+      path: normalizePath(url.pathname),
+      hash: url.hash || "",
+    };
   };
 
   const shouldIntercept = (hrefPath) => {
-    const wanted = targetPath ? normalizePath(targetPath) : curPath();
-    return normalizePath(hrefPath) === wanted;
+    const wantedPath = targetPath ? normalizePath(targetPath) : currentPath;
+
+    return normalizePath(hrefPath) === wantedPath;
   };
 
-  const prefersReduce =
-    typeof window !== "undefined" &&
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isVisible = (element) => {
+    if (!element) return false;
 
-  const isVisible = (el) => {
-    if (!el) return false;
-    const style = window.getComputedStyle(el);
-    const notHidden =
+    const style = window.getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+
+    return (
       style.display !== "none" &&
       style.visibility !== "hidden" &&
-      style.opacity !== "0";
-    const rect = el.getBoundingClientRect();
-    return (
-      notHidden && !!el.offsetParent && rect.width >= 1 && rect.height >= 1
+      style.opacity !== "0" &&
+      rect.width >= 1 &&
+      rect.height >= 1
     );
   };
 
   const revealIfNeeded = (id) => {
     revealById?.(id);
 
-    let el = document.getElementById(id);
-    let parent = el?.parentElement;
+    let element = document.getElementById(id);
+    let parent = element?.parentElement;
+
     while (parent) {
-      if (parent.tagName === "DETAILS" && !parent.open) parent.open = true;
+      if (parent.tagName === "DETAILS" && !parent.open) {
+        parent.open = true;
+      }
+
       parent = parent.parentElement;
     }
 
-    if (!el) el = document.getElementById(id);
-    if (el && !isVisible(el)) {
-      const btn = document.querySelector(`[data-controls="${id}"]`);
-      if (btn) btn.click();
+    element = document.getElementById(id);
+
+    if (element && !isVisible(element)) {
+      const button = document.querySelector(`[data-controls="${id}"]`);
+
+      if (button) {
+        button.click();
+      }
     }
   };
 
-  const scrollToEl = (el) => {
-    if (!el) return;
+  const scrollToElement = (element) => {
+    if (!element) return;
+
     const top =
-      el.getBoundingClientRect().top + window.scrollY - Math.max(0, offset);
-    window.scrollTo({ top, behavior: prefersReduce ? "auto" : behavior });
-    if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
-    el.focus({ preventScroll: true });
+      element.getBoundingClientRect().top +
+      window.scrollY -
+      Math.max(0, Number(offset) || 0);
+
+    window.scrollTo({
+      top: Math.max(0, top),
+      left: 0,
+      behavior: shouldReduceMotion() ? "auto" : behavior,
+    });
+
+    if (!element.hasAttribute("tabindex")) {
+      element.setAttribute("tabindex", "-1");
+    }
+
+    element.focus({ preventScroll: true });
   };
 
   const scrollToHash = async (hash, tries = 0) => {
     if (!hash) return;
+
     const id = decodeURIComponent(hash.replace(/^#/, ""));
-    let el = document.getElementById(id);
+    let element = document.getElementById(id);
 
-    if (!isVisible(el)) revealIfNeeded(id);
+    if (!isVisible(element)) {
+      revealIfNeeded(id);
+    }
 
-    el = document.getElementById(id);
+    element = document.getElementById(id);
 
-    if (el && isVisible(el)) {
-      await new Promise((r) => requestAnimationFrame(() => r()));
+    if (element && isVisible(element)) {
+      await new Promise((resolve) => {
+        requestAnimationFrame(resolve);
+      });
+
       closeOverlays?.();
-      await new Promise((r) => requestAnimationFrame(() => r()));
-      scrollToEl(el);
+
+      await new Promise((resolve) => {
+        requestAnimationFrame(resolve);
+      });
+
+      scrollToElement(element);
       return;
     }
 
     if (tries < maxScrollRetries) {
-      await new Promise((r) => setTimeout(r, retryDelayMs));
+      await new Promise((resolve) => {
+        setTimeout(resolve, retryDelayMs);
+      });
+
       return scrollToHash(hash, tries + 1);
     }
   };
 
-  const handleSmartAnchorClick = async (e, href, disabled) => {
+  const handleSmartAnchorClick = async (event, href, disabled) => {
     if (disabled || !href) return;
 
-    if (e?.metaKey || e?.ctrlKey || e?.shiftKey || e?.altKey || e?.button === 1)
-      return;
-
-    const { path, hash } = parseHref(href);
-    if (!shouldIntercept(path) || !hash) return;
-
-    e.preventDefault();
-    onBeforeNavigate?.({ path, hash });
-
-    if (normalizePath(path) === curPath()) {
-      navigate(`${path}${hash}`, { replace: false });
-      await scrollToHash(hash);
-      onAfterNavigate?.({ path, hash });
+    if (
+      event?.metaKey ||
+      event?.ctrlKey ||
+      event?.shiftKey ||
+      event?.altKey ||
+      event?.button === 1
+    ) {
       return;
     }
 
-    navigate(`${path}${hash}`);
+    const { path, hash } = parseHref(href);
+
+    if (!shouldIntercept(path) || !hash) return;
+
+    event.preventDefault();
+
+    onBeforeNavigate?.({ path, hash });
+
+    const isSamePage = normalizePath(path) === currentPath;
+
+    if (isSamePage) {
+      navigate(`${path}${hash}`, {
+        replace: false,
+      });
+
+      await scrollToHash(hash);
+
+      onAfterNavigate?.({ path, hash });
+
+      return;
+    }
+
+    navigate(path, {
+      replace: false,
+      state: {
+        ...(location.state && typeof location.state === "object"
+          ? location.state
+          : {}),
+        [SMART_ANCHOR_STATE_KEY]: {
+          hash,
+          path,
+        },
+      },
+    });
+
     onAfterNavigate?.({ path, hash });
   };
 
-  // ✅ Só auto-scroll quando o URL (pathname/hash) muda
-  const lastHandledRef = useRef("");
+  useEffect(() => {
+    const pendingAnchor = location.state?.[SMART_ANCHOR_STATE_KEY];
+
+    if (!pendingAnchor?.hash) return;
+
+    const wantedPath = targetPath
+      ? normalizePath(targetPath)
+      : normalizePath(pendingAnchor.path);
+
+    if (currentPath !== wantedPath) return;
+
+    const timerId = window.setTimeout(
+      () => {
+        navigate(`${currentPath}${pendingAnchor.hash}`, {
+          replace: true,
+          state: getStateWithoutSmartAnchor(location.state),
+        });
+      },
+      Math.max(0, Number(crossPageDelayMs) || 0),
+    );
+
+    return () => {
+      window.clearTimeout(timerId);
+    };
+  }, [currentPath, location.state, navigate, targetPath, crossPageDelayMs]);
 
   useEffect(() => {
-    const ok = targetPath ? normalizePath(targetPath) === curPath() : true;
-    if (!ok) return;
+    const wantedPath = targetPath ? normalizePath(targetPath) : currentPath;
+
+    if (currentPath !== wantedPath) return;
     if (!location.hash) return;
 
-    const key = `${location.pathname}${location.hash}`;
+    const key = `${currentPath}${location.hash}`;
+
     if (lastHandledRef.current === key) return;
     lastHandledRef.current = key;
 
     closeOverlays?.();
+
     requestAnimationFrame(() => {
       scrollToHash(location.hash);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname, location.hash, targetPath]);
+  }, [currentPath, location.hash, targetPath]);
 
-  return { handleSmartAnchorClick, scrollToHash };
+  return {
+    handleSmartAnchorClick,
+    scrollToHash,
+  };
 }

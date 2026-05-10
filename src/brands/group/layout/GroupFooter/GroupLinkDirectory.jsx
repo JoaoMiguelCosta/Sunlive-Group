@@ -1,11 +1,20 @@
 import styles from "./GroupLinkDirectory.module.css";
+
 import PillLink from "../../../../shared/components/Footer/PillLink.jsx";
 import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
+
 import {
   buildFlagMap,
   getFlagComp,
   modClassFor,
 } from "../../../../shared/components/Footer/utils/flagHelpers.js";
+
+const DEFAULT_GROUP_PATH = "/sunlive-group";
+const DEFAULT_LOGOS_PATH = "/sunlive-group/logos";
+const DEFAULT_ANCHOR_OFFSET = 24;
+
+const RETRY_DELAY_MS = 80;
+const CROSS_PAGE_DELAY_MS = 650;
 
 function renderPill({ item, onSmartClick, flagMap, styles }) {
   if (!item?.key || !item?.label) return null;
@@ -43,23 +52,29 @@ export default function GroupLinkDirectory({ data }) {
   const { left, right, meta } = data;
 
   const anchors = meta?.anchors ?? {};
-  const targetGroupPath = anchors.groupPath || "/sunlive-group";
-  const targetLogosPath = anchors.logosPath || "/sunlive-group/logos";
-  const offset = typeof anchors.offset === "number" ? anchors.offset : 24;
+  const targetGroupPath = anchors.groupPath || DEFAULT_GROUP_PATH;
+  const targetLogosPath = anchors.logosPath || DEFAULT_LOGOS_PATH;
+  const offset =
+    typeof anchors.offset === "number" ? anchors.offset : DEFAULT_ANCHOR_OFFSET;
 
   const { handleSmartAnchorClick: toLogos } = useSmartAnchorNav({
     targetPath: targetLogosPath,
     offset,
+    retryDelayMs: RETRY_DELAY_MS,
+    crossPageDelayMs: CROSS_PAGE_DELAY_MS,
   });
 
   const { handleSmartAnchorClick: toGroup } = useSmartAnchorNav({
     targetPath: targetGroupPath,
     offset,
+    retryDelayMs: RETRY_DELAY_MS,
+    crossPageDelayMs: CROSS_PAGE_DELAY_MS,
   });
 
   const regionalOffices = Array.isArray(meta?.regionalOffices)
     ? meta.regionalOffices
     : [];
+
   const flagMap = buildFlagMap(regionalOffices);
 
   const leftColumns = Array.isArray(left?.columns) ? left.columns : [];
@@ -68,7 +83,7 @@ export default function GroupLinkDirectory({ data }) {
   const hasLeft =
     Boolean(left?.title) ||
     leftColumns.some(
-      (col) => Array.isArray(col?.items) && col.items.length > 0,
+      (column) => Array.isArray(column?.items) && column.items.length > 0,
     );
 
   const hasRight = Boolean(right?.title) || rightItems.length > 0;
@@ -88,21 +103,25 @@ export default function GroupLinkDirectory({ data }) {
             ) : null}
 
             <div className={styles.leftGrid}>
-              {leftColumns.map((col) => {
-                const items = Array.isArray(col?.items) ? col.items : [];
-                if (items.length === 0) return null;
+              {leftColumns.map((column) => {
+                const items = Array.isArray(column?.items) ? column.items : [];
 
-                const onSmartClick =
-                  col?.key === "countries" || col?.key === "units"
-                    ? toGroup
-                    : undefined;
+                if (!items.length) return null;
+
+                const shouldNavigateToGroup =
+                  column?.key === "countries" || column?.key === "units";
 
                 return (
-                  <div key={col.key || col.title} className={styles.column}>
+                  <div
+                    key={column.key || column.title}
+                    className={styles.column}
+                  >
                     {items.map((item) =>
                       renderPill({
                         item,
-                        onSmartClick,
+                        onSmartClick: shouldNavigateToGroup
+                          ? toGroup
+                          : undefined,
                         flagMap,
                         styles,
                       }),

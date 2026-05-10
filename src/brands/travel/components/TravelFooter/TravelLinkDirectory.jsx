@@ -1,15 +1,27 @@
 import styles from "./TravelLinkDirectory.module.css";
+
 import PillLink from "../../../../shared/components/Footer/PillLink.jsx";
 import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
 
+const DEFAULT_TARGET_PATH = "/sunlive-group/travel";
+const DEFAULT_ANCHOR_OFFSET = 72;
+
+const RETRY_DELAY_MS = 80;
+const CROSS_PAGE_DELAY_MS = 650;
+
 function resolveFlagIcon(flags, flagKey) {
   if (!flagKey) return null;
+
   return flags?.[flagKey] ?? null;
 }
 
 function resolveHref(itemHref, targetPath) {
   if (!itemHref || typeof itemHref !== "string") return "#";
-  if (itemHref.startsWith("#")) return `${targetPath}${itemHref}`;
+
+  if (itemHref.startsWith("#")) {
+    return `${targetPath}${itemHref}`;
+  }
+
   return itemHref;
 }
 
@@ -67,12 +79,19 @@ export default function TravelLinkDirectory({ data }) {
   const anchors = meta?.anchors ?? {};
   const flags = meta?.flags ?? {};
 
-  const targetPath = anchors.targetPath ?? "/sunlive-group/travel";
-  const offset = typeof anchors.offset === "number" ? anchors.offset : 72;
+  const targetPath = anchors.targetPath ?? DEFAULT_TARGET_PATH;
+  const offset =
+    typeof anchors.offset === "number" ? anchors.offset : DEFAULT_ANCHOR_OFFSET;
 
-  const { handleSmartAnchorClick: toTravel } = useSmartAnchorNav({ offset });
+  const { handleSmartAnchorClick: toTravel } = useSmartAnchorNav({
+    targetPath,
+    offset,
+    retryDelayMs: RETRY_DELAY_MS,
+    crossPageDelayMs: CROSS_PAGE_DELAY_MS,
+  });
 
   const leftColumns = Array.isArray(left?.columns) ? left.columns : [];
+
   const hasLeftColumns = leftColumns.some(
     (column) =>
       column?.title ||
@@ -102,6 +121,7 @@ export default function TravelLinkDirectory({ data }) {
           <div className={styles.columns}>
             {leftColumns.map((column) => {
               const items = Array.isArray(column?.items) ? column.items : [];
+
               if (!column?.title && items.length === 0) return null;
 
               const isInternational = column.key === "international";

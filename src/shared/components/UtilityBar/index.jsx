@@ -6,6 +6,12 @@ const LANG_FALLBACK = {
   options: [{ label: "PT", name: "Português", code: "pt" }],
 };
 
+const ACTIVE_LANG_CODE = "pt";
+
+function isActiveLanguage(option) {
+  return option?.code === ACTIVE_LANG_CODE;
+}
+
 function DefaultBackIcon({ className }) {
   return (
     <svg className={className} viewBox="0 0 24 24" aria-hidden="true">
@@ -97,6 +103,12 @@ export default function UtilityBar({
     if (event.key === "Escape") close();
   }
 
+  function handleLanguageChoose(option) {
+    if (!isActiveLanguage(option)) return;
+
+    choose(option);
+  }
+
   return (
     <aside
       className={styles.utilityBar}
@@ -182,29 +194,39 @@ export default function UtilityBar({
                 aria-label="Opções de idioma"
                 hidden={!isOpen}
               >
-                {options.map((option) => (
-                  <li
-                    key={option.code}
-                    role="option"
-                    aria-selected={selected.code === option.code}
-                  >
-                    <button
-                      type="button"
-                      className={styles.langItem}
-                      onClick={() => choose(option)}
+                {options.map((option) => {
+                  const isSelected = selected.code === option.code;
+                  const isDisabled = !isActiveLanguage(option);
+
+                  return (
+                    <li
+                      key={option.code}
+                      role="option"
+                      aria-selected={isSelected}
+                      aria-disabled={isDisabled}
+                      data-disabled={isDisabled ? "true" : "false"}
                     >
-                      <span className={styles.langItemLabel}>
-                        {option.label}
-                      </span>
-                      <span
-                        className={styles.langItemName}
-                        dir={option.dir === "rtl" ? "rtl" : "ltr"}
+                      <button
+                        type="button"
+                        className={styles.langItem}
+                        disabled={isDisabled}
+                        aria-disabled={isDisabled}
+                        onClick={() => handleLanguageChoose(option)}
                       >
-                        {option.name}
-                      </span>
-                    </button>
-                  </li>
-                ))}
+                        <span className={styles.langItemLabel}>
+                          {option.label}
+                        </span>
+
+                        <span
+                          className={styles.langItemName}
+                          dir={option.dir === "rtl" ? "rtl" : "ltr"}
+                        >
+                          {option.name}
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>

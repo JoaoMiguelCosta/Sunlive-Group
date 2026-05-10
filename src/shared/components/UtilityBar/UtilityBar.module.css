@@ -132,6 +132,20 @@
         0 0 0 6px color-mix(in oklab, white, transparent 88%);
 }
 
+.langItem:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+    filter: grayscale(0.35) saturate(0.65);
+}
+
+.langItem:disabled:hover {
+    color: rgba(255, 255, 255, 0.62);
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    filter: grayscale(0.35) saturate(0.65);
+}
+
 .backIcon,
 .homeIcon {
     flex: 0 0 auto;
@@ -291,6 +305,8 @@
 .langMenu[hidden] {
     display: none;
 }
+
+
 
 .langItem {
     display: grid;
