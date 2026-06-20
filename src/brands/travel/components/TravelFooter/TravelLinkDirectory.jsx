@@ -28,12 +28,14 @@ function resolveHref(itemHref, targetPath) {
 function renderPillItems({
   items,
   targetPath,
-  toTravel,
+  navigateToTravel,
   flags,
   showFlags = false,
   extraClassName = "",
 }) {
-  if (!Array.isArray(items) || items.length === 0) return null;
+  if (!Array.isArray(items) || items.length === 0) {
+    return null;
+  }
 
   return items
     .filter((item) => item?.key && item?.label)
@@ -48,7 +50,7 @@ function renderPillItems({
           key={key}
           href={finalHref}
           disabled={disabled}
-          onSmartClick={toTravel}
+          onSmartClick={navigateToTravel}
           className={[
             styles.pill,
             extraClassName,
@@ -72,9 +74,7 @@ function renderPillItems({
 }
 
 export default function TravelLinkDirectory({ data }) {
-  if (!data) return null;
-
-  const { left, partners, meta } = data;
+  const { left, partners, meta } = data ?? {};
 
   const anchors = meta?.anchors ?? {};
   const flags = meta?.flags ?? {};
@@ -83,12 +83,16 @@ export default function TravelLinkDirectory({ data }) {
   const offset =
     typeof anchors.offset === "number" ? anchors.offset : DEFAULT_ANCHOR_OFFSET;
 
-  const { handleSmartAnchorClick: toTravel } = useSmartAnchorNav({
+  const { handleSmartAnchorClick: navigateToTravel } = useSmartAnchorNav({
     targetPath,
     offset,
     retryDelayMs: RETRY_DELAY_MS,
     crossPageDelayMs: CROSS_PAGE_DELAY_MS,
   });
+
+  if (!data) {
+    return null;
+  }
 
   const leftColumns = Array.isArray(left?.columns) ? left.columns : [];
 
@@ -109,7 +113,9 @@ export default function TravelLinkDirectory({ data }) {
 
   const hasPartners = Boolean(hasHotels || hasTrips);
 
-  if (!hasLeftColumns && !hasPartners) return null;
+  if (!hasLeftColumns && !hasPartners) {
+    return null;
+  }
 
   return (
     <div
@@ -122,7 +128,9 @@ export default function TravelLinkDirectory({ data }) {
             {leftColumns.map((column) => {
               const items = Array.isArray(column?.items) ? column.items : [];
 
-              if (!column?.title && items.length === 0) return null;
+              if (!column?.title && items.length === 0) {
+                return null;
+              }
 
               const isInternational = column.key === "international";
 
@@ -137,7 +145,7 @@ export default function TravelLinkDirectory({ data }) {
                       {renderPillItems({
                         items,
                         targetPath,
-                        toTravel,
+                        navigateToTravel,
                         flags,
                         showFlags: isInternational,
                       })}
@@ -167,7 +175,7 @@ export default function TravelLinkDirectory({ data }) {
                     {renderPillItems({
                       items: partners.hotels.items,
                       targetPath,
-                      toTravel,
+                      navigateToTravel,
                       flags,
                       extraClassName: styles.partnerPill,
                     })}
@@ -188,7 +196,7 @@ export default function TravelLinkDirectory({ data }) {
                     {renderPillItems({
                       items: partners.trips.items,
                       targetPath,
-                      toTravel,
+                      navigateToTravel,
                       flags,
                       extraClassName: styles.partnerPill,
                     })}
