@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import HotelIconPill from "../../../../shared/ui/HotelIconPill/HotelIconPill.jsx";
@@ -7,14 +7,15 @@ import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase
 import styles from "./BarLoungeShowcase.module.css";
 
 function clampIndex(index, length) {
-  if (length <= 0) return 0;
+  if (length <= 0) {
+    return 0;
+  }
+
   return ((index % length) + length) % length;
 }
 
 export default function BarLoungeShowcase() {
   const section = hotelBrand?.pages?.dining?.sections?.barAndLounge ?? null;
-
-  if (!section) return null;
 
   const intro = section?.intro ?? null;
 
@@ -26,10 +27,19 @@ export default function BarLoungeShowcase() {
   const highlightCard = section?.highlightCard ?? null;
   const gallery = section?.gallery ?? null;
 
-  const items = useMemo(
-    () => (Array.isArray(gallery?.items) ? gallery.items : []),
-    [gallery?.items],
-  );
+  const items = Array.isArray(gallery?.items) ? gallery.items : [];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    setActiveIndex((currentIndex) => clampIndex(currentIndex, items.length));
+  }, [items.length]);
+
+  if (!section) {
+    return null;
+  }
+
+  const hasItems = items.length > 0;
 
   const fallbackLabel = gallery?.fallbackLabel ?? "Bar & Lounge";
   const fallbackEyebrow = gallery?.ui?.fallbackEyebrow ?? "Lounge";
@@ -43,49 +53,59 @@ export default function BarLoungeShowcase() {
     ? resolveHotelIcon(hotelBrand?.icons, highlightCard.iconKey)
     : null;
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const goToPreviousItem = () => {
+    if (!hasItems) {
+      return;
+    }
 
-  useEffect(() => {
-    setActiveIndex((prev) => clampIndex(prev, items.length));
-  }, [items.length]);
+    setActiveIndex((currentIndex) =>
+      clampIndex(currentIndex - 1, items.length),
+    );
+  };
 
-  const hasItems = items.length > 0;
+  const goToNextItem = () => {
+    if (!hasItems) {
+      return;
+    }
 
-  const goPrev = useCallback(() => {
-    if (!hasItems) return;
-    setActiveIndex((prev) => clampIndex(prev - 1, items.length));
-  }, [hasItems, items.length]);
+    setActiveIndex((currentIndex) =>
+      clampIndex(currentIndex + 1, items.length),
+    );
+  };
 
-  const goNext = useCallback(() => {
-    if (!hasItems) return;
-    setActiveIndex((prev) => clampIndex(prev + 1, items.length));
-  }, [hasItems, items.length]);
+  const hasContent =
+    Boolean(intro) ||
+    features.length > 0 ||
+    Boolean(highlightCard) ||
+    Boolean(gallery);
 
-  if (!intro && !features.length && !highlightCard && !gallery) return null;
+  if (!hasContent) {
+    return null;
+  }
 
   return (
     <div className={styles.block}>
       <div className={styles.grid}>
         <div className={styles.leftPanel}>
-          {(intro?.eyebrow || intro?.title || intro?.description) && (
+          {intro?.eyebrow || intro?.title || intro?.description ? (
             <div className={styles.introCard}>
               <div className={styles.introInner}>
-                {intro?.eyebrow ? (
+                {intro.eyebrow ? (
                   <span className={styles.eyebrow}>{intro.eyebrow}</span>
                 ) : null}
 
-                {intro?.title ? (
+                {intro.title ? (
                   <h3 className={styles.title}>{intro.title}</h3>
                 ) : null}
 
-                {intro?.description ? (
+                {intro.description ? (
                   <p className={styles.description}>{intro.description}</p>
                 ) : null}
               </div>
             </div>
-          )}
+          ) : null}
 
-          {features.length ? (
+          {features.length > 0 ? (
             <div className={styles.pillsSection}>
               <div className={styles.pillsGrid}>
                 {features.map((item) => {
@@ -112,7 +132,7 @@ export default function BarLoungeShowcase() {
           <div className={styles.bottomCards}>
             {atmosphereCard?.title || atmosphereCard?.text ? (
               <article className={styles.atmosphereCard}>
-                {atmosphereCard?.eyebrow ? (
+                {atmosphereCard.eyebrow ? (
                   <span className={styles.atmosphereEyebrow}>
                     {atmosphereCard.eyebrow}
                   </span>
@@ -128,14 +148,14 @@ export default function BarLoungeShowcase() {
                     </span>
                   ) : null}
 
-                  {atmosphereCard?.title ? (
+                  {atmosphereCard.title ? (
                     <h4 className={styles.atmosphereTitle}>
                       {atmosphereCard.title}
                     </h4>
                   ) : null}
                 </div>
 
-                {atmosphereCard?.text ? (
+                {atmosphereCard.text ? (
                   <p className={styles.atmosphereText}>{atmosphereCard.text}</p>
                 ) : null}
               </article>
@@ -154,14 +174,14 @@ export default function BarLoungeShowcase() {
                       </span>
                     ) : null}
 
-                    {highlightCard?.title ? (
+                    {highlightCard.title ? (
                       <h4 className={styles.highlightTitle}>
                         {highlightCard.title}
                       </h4>
                     ) : null}
                   </div>
 
-                  {highlightCard?.text ? (
+                  {highlightCard.text ? (
                     <p className={styles.highlightText}>{highlightCard.text}</p>
                   ) : null}
                 </div>
@@ -176,8 +196,8 @@ export default function BarLoungeShowcase() {
               <HotelPhotoCarouselBase
                 items={items}
                 activeIndex={activeIndex}
-                onPrev={goPrev}
-                onNext={goNext}
+                onPrev={goToPreviousItem}
+                onNext={goToNextItem}
                 onSelectIndex={setActiveIndex}
                 fallbackLabel={fallbackLabel}
                 fallbackEyebrow={fallbackEyebrow}
