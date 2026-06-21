@@ -8,10 +8,13 @@ import HotelOfferPanel from "../../../../shared/ui/HotelOfferPanel/HotelOfferPan
 
 import styles from "./EventsTypes.module.css";
 
+const EMPTY_ITEMS = Object.freeze([]);
+
 function getColumnsFromViewport() {
   if (typeof window === "undefined") return 4;
   if (window.innerWidth <= 760) return 1;
   if (window.innerWidth <= 1180) return 2;
+
   return 4;
 }
 
@@ -23,6 +26,7 @@ function getPanelRowEndIndex({ activeIndex, columns, totalItems }) {
   }
 
   const rowStart = Math.floor(activeIndex / columns) * columns;
+
   return Math.min(rowStart + columns - 1, totalItems - 1);
 }
 
@@ -30,9 +34,12 @@ export default function EventsTypes() {
   const eventTypes =
     hotelBrand?.pages?.events?.sections?.eventsCelebrations?.eventTypes ?? null;
 
-  const sourceItems = Array.isArray(eventTypes?.items) ? eventTypes.items : [];
+  const sourceItems = Array.isArray(eventTypes?.items)
+    ? eventTypes.items
+    : EMPTY_ITEMS;
 
   const [columns, setColumns] = useState(getColumnsFromViewport);
+
   const offerPanelRef = useRef(null);
   const shouldRevealPanelRef = useRef(false);
 
@@ -42,6 +49,7 @@ export default function EventsTypes() {
     }
 
     handleResize();
+
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -104,7 +112,9 @@ export default function EventsTypes() {
   const activeIndex = resolvedItems.findIndex((item) => isOpen(item.key));
 
   const panelRowEndIndex = useMemo(() => {
-    if (!activeItem?.offerPanel || activeIndex < 0) return -1;
+    if (!activeItem?.offerPanel || activeIndex < 0) {
+      return -1;
+    }
 
     return getPanelRowEndIndex({
       activeIndex,
@@ -116,12 +126,14 @@ export default function EventsTypes() {
   useEffect(() => {
     if (!shouldRevealPanelRef.current) return;
     if (typeof window === "undefined") return;
+
     if (window.innerWidth > 1180) {
       shouldRevealPanelRef.current = false;
       return;
     }
 
     const node = offerPanelRef.current;
+
     if (!node) {
       shouldRevealPanelRef.current = false;
       return;
@@ -136,7 +148,9 @@ export default function EventsTypes() {
       shouldRevealPanelRef.current = false;
     });
 
-    return () => window.cancelAnimationFrame(frame);
+    return () => {
+      window.cancelAnimationFrame(frame);
+    };
   }, [activeItem]);
 
   function handleToggle(itemKey) {
@@ -144,7 +158,9 @@ export default function EventsTypes() {
     toggle(itemKey);
   }
 
-  if (!resolvedItems.length) return null;
+  if (!resolvedItems.length) {
+    return null;
+  }
 
   return (
     <div className={styles.block}>
@@ -154,6 +170,7 @@ export default function EventsTypes() {
       >
         {resolvedItems.map((item, index) => {
           const open = isOpen(item.key);
+
           const shouldRenderPanelHere =
             activeItem?.offerPanel && panelRowEndIndex === index;
 
