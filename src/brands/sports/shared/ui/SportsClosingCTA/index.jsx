@@ -1,13 +1,21 @@
-import styles from "./SportsClosingCTA.module.css";
 import useInView from "../../hooks/useInView.js";
-
-import { getTitleId, getValidItems } from "./sportsClosingCTA.utils.js";
 
 import SportsClosingCTACopy from "./SportsClosingCTACopy.jsx";
 import SportsClosingCTASupportPanel from "./SportsClosingCTASupportPanel.jsx";
+import { getTitleId, getValidItems } from "./sportsClosingCTA.utils.js";
+
+import styles from "./SportsClosingCTA.module.css";
 
 export default function SportsClosingCTA({ data }) {
-  if (!data) return null;
+  const { ref, inView } = useInView({
+    threshold: 0.14,
+    once: true,
+    enabled: Boolean(data),
+  });
+
+  if (!data) {
+    return null;
+  }
 
   const {
     id,
@@ -33,11 +41,6 @@ export default function SportsClosingCTA({ data }) {
       supportPanel?.extraTitle ||
       validSupportExtraItems.length > 0,
   );
-
-  const { ref, inView } = useInView({
-    threshold: 0.14,
-    once: true,
-  });
 
   const sectionClassName = [
     styles.section,
