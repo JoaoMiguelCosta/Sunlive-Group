@@ -1,12 +1,11 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
-import styles from "./ProgramSportCard.module.css";
 import sportsBrand, { resolveSportsIcon } from "../../../../config/index.js";
 import useInView from "../../../../shared/hooks/useInView.js";
 
-import ProgramSportCardHeader from "./ProgramSportCardHeader.jsx";
-import ProgramSportCardFocusBlock from "./ProgramSportCardFocusBlock.jsx";
 import ProgramSportCardDetailsBlock from "./ProgramSportCardDetailsBlock.jsx";
+import ProgramSportCardFocusBlock from "./ProgramSportCardFocusBlock.jsx";
+import ProgramSportCardHeader from "./ProgramSportCardHeader.jsx";
 import ProgramSportCardMedia from "./ProgramSportCardMedia.jsx";
 
 import {
@@ -16,8 +15,20 @@ import {
   shouldEnableExpansion,
 } from "./programSportCard.helpers.js";
 
+import styles from "./ProgramSportCard.module.css";
+
 export default function ProgramSportCard({ item, index = 0 }) {
-  if (!item) return null;
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const { ref, inView } = useInView({
+    threshold: 0.18,
+    once: true,
+    enabled: Boolean(item),
+  });
+
+  if (!item) {
+    return null;
+  }
 
   const itemKey = item.key || `training-camp-program-${index}`;
   const Icon = resolveSportsIcon(sportsBrand.icons, item.iconKey);
@@ -28,21 +39,14 @@ export default function ProgramSportCard({ item, index = 0 }) {
   const expandable = shouldEnableExpansion(item);
   const collapsedCount = getCollapsedCount(item, 6);
 
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const visibleFocusItems = useMemo(() => {
-    if (!expandable || isExpanded) return focusItems;
-    return focusItems.slice(0, collapsedCount);
-  }, [collapsedCount, expandable, focusItems, isExpanded]);
+  const visibleFocusItems =
+    expandable && !isExpanded
+      ? focusItems.slice(0, collapsedCount)
+      : focusItems;
 
   const hiddenItemsCount = Math.max(focusItems.length - collapsedCount, 0);
 
-  const { ref, inView } = useInView({
-    threshold: 0.18,
-    once: true,
-  });
-
-  const cardClasses = [
+  const cardClassName = [
     styles.card,
     item.mediaAlign === "left" ? styles.mediaLeft : styles.mediaRight,
     getThemeClass(item.theme, styles),
@@ -52,10 +56,14 @@ export default function ProgramSportCard({ item, index = 0 }) {
     .filter(Boolean)
     .join(" ");
 
+  const handleToggleExpand = () => {
+    setIsExpanded((currentValue) => !currentValue);
+  };
+
   return (
     <article
       ref={ref}
-      className={cardClasses}
+      className={cardClassName}
       aria-labelledby={`${itemKey}-title`}
       tabIndex={0}
       style={{ "--card-delay": `${index * 70}ms` }}
@@ -79,7 +87,7 @@ export default function ProgramSportCard({ item, index = 0 }) {
           hiddenItemsCount={hiddenItemsCount}
           isExpanded={isExpanded}
           expandAction={item.expandAction}
-          onToggleExpand={() => setIsExpanded((prev) => !prev)}
+          onToggleExpand={handleToggleExpand}
         />
 
         <ProgramSportCardDetailsBlock
