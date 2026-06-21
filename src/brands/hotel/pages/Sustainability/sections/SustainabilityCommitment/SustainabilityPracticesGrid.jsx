@@ -1,33 +1,35 @@
-import { useMemo } from "react";
-
 import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import SustainabilityPracticeCard from "../../../../shared/ui/SustainabilityPracticeCard/SustainabilityPracticeCard.jsx";
 
 import styles from "./SustainabilityPracticesGrid.module.css";
+
+function buildPracticeItems(practiceItems) {
+  if (!Array.isArray(practiceItems)) {
+    return [];
+  }
+
+  return practiceItems.map((item) => {
+    const TopIcon = item?.topIconKey
+      ? resolveHotelIcon(hotelBrand?.icons, item.topIconKey)
+      : null;
+
+    return {
+      ...item,
+      resolvedTopIcon: TopIcon ? <TopIcon /> : null,
+    };
+  });
+}
 
 export default function SustainabilityPracticesGrid() {
   const section =
     hotelBrand?.pages?.sustainability?.sections?.sustainabilityCommitment ??
     null;
 
-  const rawItems = Array.isArray(section?.practices?.items)
-    ? section.practices.items
-    : [];
+  const items = buildPracticeItems(section?.practices?.items);
 
-  const items = useMemo(() => {
-    return rawItems.map((item) => {
-      const TopIcon = item?.topIconKey
-        ? resolveHotelIcon(hotelBrand?.icons, item.topIconKey)
-        : null;
-
-      return {
-        ...item,
-        resolvedTopIcon: TopIcon ? <TopIcon /> : null,
-      };
-    });
-  }, [rawItems]);
-
-  if (!items.length) return null;
+  if (items.length === 0) {
+    return null;
+  }
 
   const ariaLabel =
     section?.ui?.practicesAriaLabel ?? "Práticas de sustentabilidade";
@@ -61,3 +63,4 @@ export default function SustainabilityPracticesGrid() {
     </div>
   );
 }
+
