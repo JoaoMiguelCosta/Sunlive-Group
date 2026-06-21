@@ -1,31 +1,37 @@
-import { useMemo } from "react";
-
 import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
 import SustainabilityActionCard from "../../../../shared/ui/SustainabilityActionCard/SustainabilityActionCard.jsx";
 
 import styles from "./HowToParticipateCards.module.css";
 
+function buildParticipationItems(participationItems) {
+  if (!Array.isArray(participationItems)) {
+    return [];
+  }
+
+  return participationItems.map((item, index) => {
+    const IconComponent = item?.iconKey
+      ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+      : null;
+
+    return {
+      ...item,
+      step: String(index + 1).padStart(2, "0"),
+      resolvedIcon: IconComponent ? <IconComponent /> : null,
+    };
+  });
+}
+
 export default function HowToParticipateCards() {
   const section =
     hotelBrand?.pages?.sustainability?.sections?.howToParticipate ?? null;
 
-  const rawItems = section?.participationCards?.items ?? [];
+  const items = buildParticipationItems(
+    section?.participationCards?.items,
+  );
 
-  const items = useMemo(() => {
-    return rawItems.map((item, index) => {
-      const IconComponent = item?.iconKey
-        ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
-        : null;
-
-      return {
-        ...item,
-        step: String(index + 1).padStart(2, "0"),
-        resolvedIcon: IconComponent ? <IconComponent /> : null,
-      };
-    });
-  }, [rawItems]);
-
-  if (!items.length) return null;
+  if (items.length === 0) {
+    return null;
+  }
 
   return (
     <div className={styles.grid} aria-label="Formas de participar">
@@ -45,3 +51,4 @@ export default function HowToParticipateCards() {
     </div>
   );
 }
+
