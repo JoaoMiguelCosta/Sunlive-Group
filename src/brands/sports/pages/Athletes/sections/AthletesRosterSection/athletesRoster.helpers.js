@@ -1,4 +1,7 @@
-import sportsBrand, { resolveSportsIcon } from "../../../../config/index.js";
+import {
+  ICONS,
+  resolveSportsIcon,
+} from "../../../../config/core/index.js";
 
 export function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -39,7 +42,7 @@ export function getValidMarkers(markers) {
 export function getIconComponent(iconKey) {
   if (!isValidText(iconKey)) return null;
 
-  return resolveSportsIcon(sportsBrand.icons, iconKey);
+  return resolveSportsIcon(ICONS, iconKey);
 }
 
 export function getTargetId(modality) {
@@ -138,3 +141,4 @@ function getSummaryValue(item, modalities) {
 
   return "";
 }
+
