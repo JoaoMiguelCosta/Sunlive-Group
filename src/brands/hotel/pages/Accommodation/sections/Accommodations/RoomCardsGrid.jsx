@@ -1,7 +1,8 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import hotelBrand from "../../../../config/index.js";
 import HotelRoomCard from "../../../../shared/ui/HotelRoomCard/HotelRoomCard.jsx";
+
 import RoomProfileFilterBar from "./RoomProfileFilterBar.jsx";
 
 import styles from "./RoomCardsGrid.module.css";
@@ -23,9 +24,25 @@ function buildCardUiId(card, index) {
   return `${baseId}-${index}`;
 }
 
+function normalizeRoomCards(roomCards) {
+  if (!Array.isArray(roomCards)) {
+    return [];
+  }
+
+  return roomCards.map((card, index) => ({
+    ...card,
+    _uiId: buildCardUiId(card, index),
+  }));
+}
+
 function getVisibleCards(cards, activeFilter) {
-  if (!cards.length) return [];
-  if (activeFilter === "all") return cards;
+  if (cards.length === 0) {
+    return [];
+  }
+
+  if (activeFilter === "all") {
+    return cards;
+  }
 
   return cards.filter((card) =>
     Array.isArray(card.profiles) ? card.profiles.includes(activeFilter) : false,
@@ -47,28 +64,18 @@ export default function RoomCardsGrid() {
   const sectionContent =
     hotelBrand?.pages?.accommodation?.sections?.accommodations ?? null;
 
-  if (!sectionContent) return null;
-
-  const filterConfig = sectionContent.roomProfilesFilter ?? null;
-  const uiText = sectionContent.roomCardsUi ?? {};
-
-  const roomCards = Array.isArray(sectionContent.roomCards)
-    ? sectionContent.roomCards
-    : [];
-
-  const normalizedCards = useMemo(() => {
-    return roomCards.map((card, index) => ({
-      ...card,
-      _uiId: buildCardUiId(card, index),
-    }));
-  }, [roomCards]);
-
+  const filterConfig = sectionContent?.roomProfilesFilter ?? null;
   const defaultActiveFilter = filterConfig?.options?.[0]?.id ?? "all";
+
   const [activeFilter, setActiveFilter] = useState(defaultActiveFilter);
 
-  const visibleCards = useMemo(() => {
-    return getVisibleCards(normalizedCards, activeFilter);
-  }, [normalizedCards, activeFilter]);
+  if (!sectionContent) {
+    return null;
+  }
+
+  const uiText = sectionContent.roomCardsUi ?? {};
+  const normalizedCards = normalizeRoomCards(sectionContent.roomCards);
+  const visibleCards = getVisibleCards(normalizedCards, activeFilter);
 
   const gridClassName = [styles.grid, getGridCountClass(visibleCards.length)]
     .filter(Boolean)
