@@ -70,8 +70,10 @@ export default function HotelHeroBanner() {
   }, [scenes]);
 
   useEffect(() => {
+    const registeredVideos = videoRefs.current;
+
     return () => {
-      Object.values(videoRefs.current).forEach((video) => {
+      Object.values(registeredVideos).forEach((video) => {
         video.pause();
       });
     };
