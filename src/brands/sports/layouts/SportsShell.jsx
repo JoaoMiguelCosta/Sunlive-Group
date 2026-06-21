@@ -1,12 +1,19 @@
 import { Outlet, useLocation } from "react-router-dom";
 
-import SportsUtilityBar from "./SportsUtilityBar.jsx";
-import SportsPageSwitcher from "./SportsPageSwitcher.jsx";
 import BrandMasthead from "../../../shared/components/BrandMasthead";
 import FooterSports from "../components/FooterSports";
 
-import sportsBrand, { SPORTS_BASE_PATH } from "../config/index.js";
+import {
+  footer,
+  header,
+  SPORTS_BASE_PATH,
+  SPORTS_PRIMARY_NAV_ITEMS,
+} from "../config/core/index.js";
+
 import sportsLogo from "../assets/LogoSunliveSports/sports.png";
+
+import SportsPageSwitcher from "./SportsPageSwitcher.jsx";
+import SportsUtilityBar from "./SportsUtilityBar.jsx";
 
 import styles from "./SportsShell.module.css";
 
@@ -21,9 +28,12 @@ function normalizePath(path) {
 export default function SportsShell() {
   const location = useLocation();
 
-  const footerData = sportsBrand.sections?.footer;
-  const header = sportsBrand?.header ?? {};
-  const navItems = sportsBrand.nav?.primaryItems ?? [];
+  const headerData = header ?? {};
+  const footerData = footer ?? null;
+
+  const navItems = Array.isArray(SPORTS_PRIMARY_NAV_ITEMS)
+    ? SPORTS_PRIMARY_NAV_ITEMS
+    : [];
 
   const normalizedPathname = normalizePath(location.pathname);
   const normalizedSportsBasePath = normalizePath(SPORTS_BASE_PATH);
@@ -32,7 +42,7 @@ export default function SportsShell() {
 
   const utilityBarProps = isSportsHome
     ? {
-        backLink: header.backLink ?? null,
+        backLink: headerData.backLink ?? null,
       }
     : {
         homeLink: {

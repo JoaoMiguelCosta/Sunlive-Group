@@ -1,9 +1,11 @@
+import home from "../../config/pages/home.js";
+
 import styles from "../../layouts/SportsPageLayout.module.css";
+
 import GatewayGrid from "./sections/GatewayGrid.jsx";
-import sportsBrand from "../../config/index.js";
 
 export default function HomePageSports() {
-  const menuSection = sportsBrand.pages?.home?.sections?.menu;
+  const menuSection = home.sections?.menu;
 
   return (
     <div className={styles.pageWrap} data-brand="sports">
@@ -20,3 +22,4 @@ export default function HomePageSports() {
     </div>
   );
 }
+
