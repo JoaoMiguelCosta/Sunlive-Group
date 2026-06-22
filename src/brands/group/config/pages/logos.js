@@ -6,7 +6,6 @@ import {
   internationalFederations,
   teams,
   associations,
-  others,
 } from "../sections/logos/index.js";
 
 const logos = {
@@ -18,7 +17,6 @@ const logos = {
     internationalFederations,
     teams,
     associations,
-    others,
   },
 };
 
