@@ -3,7 +3,7 @@ import { GROUP_SOCIALS } from "../../core/socials.js";
 import { GROUP_BASE_PATH } from "../../core/paths.js";
 
 /* ---------- Assets Overview ---------- */
-import logoGroup from "../../../assets/group/logo/logo-group.png";
+import logoGroup from "../../../assets/group/logo/logo-group.webp";
 import headlineImage from "../../../assets/group/phrases/phrase-our-network.png";
 
 import travelImg from "../../../assets/group/brands/travel.png";
