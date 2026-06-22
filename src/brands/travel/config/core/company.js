@@ -28,5 +28,3 @@ export const TRAVEL_COMPANY = Object.freeze({
     extraPhones: [],
   },
 });
-
-export default TRAVEL_COMPANY;
