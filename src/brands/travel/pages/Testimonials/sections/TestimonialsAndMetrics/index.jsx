@@ -1,4 +1,5 @@
-import travelBrand from "../../../../config/index.js";
+import testimonialsAndMetrics from "../../../../config/sections/testimonials/testimonialsAndMetrics.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import TravelIntroPanel from "../../../../shared/ui/TravelIntroPanel/TravelIntroPanel.jsx";
 
 import TestimonialsGrid from "./TestimonialsGrid.jsx";
@@ -7,8 +8,7 @@ import KeyMetricsBar from "./KeyMetricsBar.jsx";
 import styles from "./TestimonialsAndMetricsSection.module.css";
 
 export default function TestimonialsAndMetricsSection() {
-  const section =
-    travelBrand?.pages?.testimonials?.sections?.testimonialsAndMetrics ?? null;
+  const section = testimonialsAndMetrics;
 
   if (!section) return null;
 
@@ -22,7 +22,7 @@ export default function TestimonialsAndMetricsSection() {
     ? section.testimonials
     : [];
   const metrics = Array.isArray(section?.metrics) ? section.metrics : [];
-  const icons = travelBrand?.icons ?? {};
+  const icons = ICONS;
 
   return (
     <section
