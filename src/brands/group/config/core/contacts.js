@@ -171,5 +171,3 @@ export const GROUP_CONTACTS = Object.freeze({
 
   regionalOffices: GROUP_REGIONAL_OFFICES,
 });
-
-export default GROUP_CONTACTS;

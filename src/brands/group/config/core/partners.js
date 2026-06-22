@@ -35,5 +35,3 @@ export const PARTNER_LINKS = Object.freeze([
     disabled: true,
   },
 ]);
-
-export default PARTNER_LINKS;
