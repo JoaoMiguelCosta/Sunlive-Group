@@ -1,4 +1,4 @@
-export const HOTEL_BASE_PATH = "/sunlive-group/hotel";
+﻿export const HOTEL_BASE_PATH = "/sunlive-group/hotel";
 
 export const HOTEL_PAGE_PATHS = Object.freeze({
   home: HOTEL_BASE_PATH,
@@ -10,7 +10,3 @@ export const HOTEL_PAGE_PATHS = Object.freeze({
   information: `${HOTEL_BASE_PATH}/informacoes`,
   sustainability: `${HOTEL_BASE_PATH}/sustentabilidade`,
 });
-
-export const HOTEL_SECTION_PATHS = HOTEL_PAGE_PATHS;
-
-export default HOTEL_PAGE_PATHS;

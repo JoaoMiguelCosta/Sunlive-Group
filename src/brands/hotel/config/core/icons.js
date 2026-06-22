@@ -1,4 +1,4 @@
-import {
+﻿import {
   AirVentIcon,
   BathIcon,
   BrushCleaningIcon,
@@ -97,5 +97,3 @@ export const BRAND_ICONS = Object.freeze({
   TrashIcon,
 
 });
-
-export default BRAND_ICONS;

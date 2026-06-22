@@ -1,4 +1,4 @@
-import { withSocialIcons } from "../../../../shared/config/index.js";
+﻿import { withSocialIcons } from "../../../../shared/config/index.js";
 
 export const HOTEL_SOCIALS = Object.freeze([
   ...withSocialIcons([
@@ -14,5 +14,3 @@ export const HOTEL_SOCIALS = Object.freeze([
     },
   ]),
 ]);
-
-export default HOTEL_SOCIALS;
