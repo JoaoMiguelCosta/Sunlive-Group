@@ -12,5 +12,3 @@ export const TRAVEL_SOCIALS = withSocialIcons([
     href: "https://www.instagram.com/sunlivetravel/",
   },
 ]);
-
-export default TRAVEL_SOCIALS;

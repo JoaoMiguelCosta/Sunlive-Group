@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import receptionSupport from "../../../../config/sections/facilities/receptionSupport.js";
 
 import TitleReceptionSupport from "./TitleReceptionSupport.jsx";
 import DescriptionReceptionSupport from "./DescriptionReceptionSupport.jsx";
@@ -8,8 +8,7 @@ import ReceptionSupportAvailability from "./ReceptionSupportAvailability.jsx";
 import styles from "./ReceptionSupport.module.css";
 
 export default function ReceptionSupportSection() {
-  const section =
-    hotelBrand?.pages?.facilities?.sections?.receptionSupport ?? null;
+  const section = receptionSupport;
 
   if (!section) return null;
 

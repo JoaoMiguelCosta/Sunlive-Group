@@ -1,10 +1,10 @@
-import hotelBrand from "../../../../config/index.js";
+import customizedQuotes from "../../../../config/sections/events/customizedQuotes.js";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 import styles from "./CustomizedQuotesActions.module.css";
 
 export default function CustomizedQuotesActions() {
-  const section = hotelBrand?.pages?.events?.sections?.customizedQuotes ?? null;
+  const section = customizedQuotes;
 
   const includedInQuote = section?.includedInQuote ?? null;
   const quoteCallout = section?.quoteCallout ?? null;

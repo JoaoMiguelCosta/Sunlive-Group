@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import sundayBuffet from "../../../../config/sections/dining/sundayBuffet.js";
 import TitleSundayBuffet from "./TitleSundayBuffet.jsx";
 import DescriptionSundayBuffet from "./DescriptionSundayBuffet.jsx";
 import SundayBuffetGalleryCta from "./SundayBuffetGalleryCta.jsx";
@@ -31,7 +31,7 @@ function normalizeHighlights(items) {
 }
 
 export default function SundayBuffetSection() {
-  const section = hotelBrand?.pages?.dining?.sections?.sundayBuffet ?? null;
+  const section = sundayBuffet;
 
   if (!section) return null;
 

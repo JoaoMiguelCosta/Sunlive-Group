@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import restaurant from "../../../../config/sections/dining/restaurant.js";
 import TitleRestaurant from "./TitleRestaurant.jsx";
 import DescriptionRestaurant from "./DescriptionRestaurant.jsx";
 import RestaurantPhotoCarousel from "./RestaurantPhotoCarousel.jsx";
@@ -31,7 +31,7 @@ function normalizeHighlights(items) {
 }
 
 export default function RestaurantSection() {
-  const section = hotelBrand?.pages?.dining?.sections?.restaurant ?? null;
+  const section = restaurant;
   if (!section) return null;
 
   const sectionId = section?.id ?? "restauracao";

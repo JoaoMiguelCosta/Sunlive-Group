@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import testimonials from "../../../../config/sections/information/testimonials.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 import styles from "./TestimonialsAverageRating.module.css";
 
@@ -30,14 +32,12 @@ function RatingStars({
 }
 
 export default function TestimonialsAverageRating() {
-  const content =
-    hotelBrand?.pages?.information?.sections?.testimonials?.averageRating ??
-    null;
+  const content = testimonials?.averageRating ?? null;
 
   const starIcon = useMemo(() => {
     const iconName = content?.stars?.iconName ?? null;
     const Icon = iconName
-      ? resolveHotelIcon(hotelBrand?.icons, iconName)
+      ? resolveHotelIcon(ICONS, iconName)
       : null;
 
     return Icon ? <Icon /> : null;

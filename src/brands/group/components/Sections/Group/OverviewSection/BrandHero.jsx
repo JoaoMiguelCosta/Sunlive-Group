@@ -1,10 +1,9 @@
 import styles from "./BrandHero.module.css";
-import { groupHomePage } from "../../../../config/pages/index.js";
+import overview from "../../../../config/sections/home/overview.js";
 
 export default function BrandHero() {
-  const src = groupHomePage?.sections?.overview?.brandHero?.imageSrc ?? null;
-  const alt =
-    groupHomePage?.sections?.overview?.brandHero?.alt ?? "Sunlive Group";
+  const src = overview?.brandHero?.imageSrc ?? null;
+  const alt = overview?.brandHero?.alt ?? "Sunlive Group";
 
   if (!src) return null;
 

@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import storyMilestones from "../../../../config/sections/about/storyMilestones.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import HotelMilestoneCard from "../../../../shared/ui/HotelMilestoneCard/HotelMilestoneCard.jsx";
 
@@ -25,8 +25,7 @@ function getValidMilestones(milestones) {
 }
 
 export default function OurStoryMilestonesContent() {
-  const section =
-    hotelBrand?.pages?.about?.sections?.ourStoryMilestones ?? null;
+  const section = storyMilestones;
 
   if (!section) return null;
 

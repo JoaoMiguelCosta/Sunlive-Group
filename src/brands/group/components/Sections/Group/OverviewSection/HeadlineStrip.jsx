@@ -1,8 +1,7 @@
 import styles from "./HeadlineStrip.module.css";
-import { groupHomePage } from "../../../../config/pages/index.js";
+import overview from "../../../../config/sections/home/overview.js";
 
 export default function HeadlineStrip() {
-  const overview = groupHomePage?.sections?.overview;
   const img = overview?.headline?.imageSrc ?? null;
 
   if (!img) return null;

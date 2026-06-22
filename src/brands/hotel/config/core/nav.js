@@ -1,4 +1,4 @@
-import { HOTEL_PAGE_PATHS } from "./paths.js";
+﻿import { HOTEL_PAGE_PATHS } from "./paths.js";
 
 export const HOTEL_QUICK_LINKS = Object.freeze([
   {
@@ -201,5 +201,3 @@ export const HOTEL_PRIMARY_NAV_ITEMS = Object.freeze([
     ],
   },
 ]);
-
-export default HOTEL_PRIMARY_NAV_ITEMS;

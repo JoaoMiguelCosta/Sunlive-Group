@@ -1,10 +1,10 @@
 import styles from "./TeamCollage.module.css";
 
-import { groupHomePage } from "../../../../config/pages/index.js";
+import people from "../../../../config/sections/home/people.js";
 import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
 
 export default function TeamCollage() {
-  const collage = groupHomePage?.sections?.people?.collage;
+  const collage = people?.collage;
 
   const src = collage?.src ?? null;
   const mobileSrc = collage?.mobileSrc ?? null;

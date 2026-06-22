@@ -4,10 +4,10 @@ import TitleWhyChooseUs from "./TitleWhyChooseUs.jsx";
 import DescriptionWhyChooseUs from "./DescriptionWhyChooseUs.jsx";
 import WhyChooseUsGrid from "./WhyChooseUsGrid.jsx";
 
-import hotelBrand from "../../../../config/index.js";
+import whyChoose from "../../../../config/sections/accommodation/whyChoose.js";
 
 export default function WhyChooseUs() {
-  const content = hotelBrand?.pages?.accommodation?.sections?.whyChoose ?? null;
+  const content = whyChoose;
 
   if (!content) return null;
 

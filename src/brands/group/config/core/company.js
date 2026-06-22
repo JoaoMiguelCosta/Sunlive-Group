@@ -33,5 +33,3 @@ export const GROUP_COMPANY = Object.freeze({
     href: "/",
   },
 });
-
-export default GROUP_COMPANY;

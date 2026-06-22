@@ -16,5 +16,3 @@ export const TRAVEL_CONTACT_CHANNELS = Object.freeze([
     ariaLabel: TRAVEL_COMPANY.contacts.email.ariaLabel,
   },
 ]);
-
-export default TRAVEL_CONTACT_CHANNELS;

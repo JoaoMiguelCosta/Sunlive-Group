@@ -1,4 +1,4 @@
-import {
+﻿import {
   CONTACTS_SECTION_TITLE,
   SUNLIVE_HQ_LOCATION,
 } from "../../../../shared/config/index.js";
@@ -37,5 +37,3 @@ export const HOTEL_COMPANY = Object.freeze({
     href: "/sunlive-group/hotel",
   },
 });
-
-export default HOTEL_COMPANY;

@@ -1,6 +1,7 @@
 import styles from "./WhyChooseUsGrid.module.css";
 
-import { ICONS, resolveHotelIcon } from "../../../../config/index.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import SustainabilityActionCard from "../../../../shared/ui/SustainabilityActionCard/SustainabilityActionCard.jsx";
 
 export default function WhyChooseUsGrid({ items = [] }) {

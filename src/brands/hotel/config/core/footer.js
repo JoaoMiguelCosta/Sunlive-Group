@@ -5,7 +5,7 @@ import {
   makeAcknowledgements,
 } from "../../../../shared/config/index.js";
 
-import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
+import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.webp";
 
 import { ICONS } from "./resolvedVisuals.js";
 import { HOTEL_BASE_PATH } from "./paths.js";

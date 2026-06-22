@@ -7,7 +7,7 @@ import OfficeItem from "./OfficeItem.jsx";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
-import { GROUP_CONTACTS } from "../../../../config/index.js";
+import { GROUP_CONTACTS } from "../../../../config/core/contacts.js";
 
 const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);

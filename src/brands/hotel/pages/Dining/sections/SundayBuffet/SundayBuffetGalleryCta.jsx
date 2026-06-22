@@ -1,10 +1,10 @@
-import hotelBrand from "../../../../config/index.js";
+import sundayBuffet from "../../../../config/sections/dining/sundayBuffet.js";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 import styles from "./SundayBuffetGalleryCta.module.css";
 
 export default function SundayBuffetGalleryCta() {
-  const section = hotelBrand?.pages?.dining?.sections?.sundayBuffet ?? null;
+  const section = sundayBuffet;
 
   if (!section) return null;
 

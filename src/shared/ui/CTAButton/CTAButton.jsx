@@ -1,32 +1,9 @@
-import styles from "./CTAButton.module.css";
-
-/* Hooks (rota certa a partir de shared/ui/CTAButton) */
 import { useBlink } from "../../hooks/useBlink.js";
 import useLocalSmoothAnchors from "../../hooks/useLocalSmoothAnchors.js";
+import { MailIcon, PhoneIcon } from "../icons/index.js";
 
-/* Ícones */
-import { PhoneIcon, MailIcon } from "../icons";
+import styles from "./CTAButton.module.css";
 
-/**
- * CTAButton (shared)
- *
- * Compatível com:
- *  - cta: { href, label, ariaLabel? }
- *
- * Também aceita props diretas:
- *  - href, label, ariaLabel
- *
- * Extras:
- *  - as: "a" | "button"                      // default: "a"
- *  - type: button type (se as="button")
- *  - Icon: React.FC (preferível)
- *  - icon: string (ex: "phone", "mail", "email")
- *  - blink?: boolean                         // default: true
- *  - compact?: "auto" | true | false         // default: "auto"
- *  - scrollOffset?: number                   // default: 72
- *  - variant?: "default" | "hero" | "sports" | "hotel" | "travel"
- *  - tone?: "default" | "strong" | "soft"
- */
 const ICON_MAP = {
   phone: PhoneIcon,
   mail: MailIcon,
@@ -65,76 +42,99 @@ export default function CTAButton({
   const href = hrefProp ?? cta?.href;
   const label = labelProp ?? cta?.label ?? children;
 
-  if (!href && as !== "button") return null;
-  if (!label) return null;
+  const isButton = as === "button";
+  const shouldRender = Boolean(label) && (isButton || Boolean(href));
+
+  const { on, bind } = useBlink({
+    cycleMs: 1800,
+    disabled: !blink || !shouldRender,
+  });
+
+  const { isSamePageHash } = useLocalSmoothAnchors();
+
+  if (!shouldRender) {
+    return null;
+  }
 
   const ariaLabel = ariaLabelProp || cta?.ariaLabel || label || "Contactar";
 
-  const IconComp =
+  const IconComponent =
     Icon ||
     (typeof icon === "string" && ICON_MAP[icon] ? ICON_MAP[icon] : null);
 
   const isExternal = typeof href === "string" && /^https?:\/\//i.test(href);
 
-  const { on, bind } = useBlink({ cycleMs: 1800, disabled: !blink });
-  const { isSamePageHash } = useLocalSmoothAnchors();
-
-  const prefersReduce =
+  const prefersReducedMotion =
     typeof window !== "undefined" &&
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
   const resolvedTone = VALID_TONES.has(tone) ? tone : "default";
 
   const scrollToHashWithOffset = (hash) => {
-    if (typeof window === "undefined" || !hash) return;
+    if (typeof window === "undefined" || !hash) {
+      return;
+    }
 
     const id = decodeURIComponent(hash.replace(/^#/, ""));
-    const el =
+
+    const element =
       document.getElementById(id) ||
       (hash.startsWith("#") ? document.querySelector(hash) : null);
 
-    if (!el) return;
+    if (!element) {
+      return;
+    }
 
-    const rect = el.getBoundingClientRect();
-    const targetY = rect.top + window.pageYOffset - Number(scrollOffset || 0);
+    const elementRect = element.getBoundingClientRect();
+    const targetY =
+      elementRect.top +
+      window.pageYOffset -
+      Math.max(0, Number(scrollOffset) || 0);
 
     try {
       window.history.pushState({}, "", `#${id}`);
-    } catch (_) {
-      // noop
+    } catch {
+      // A navegação continua mesmo que o histórico não possa ser atualizado.
     }
 
     window.scrollTo({
-      top: targetY,
-      behavior: prefersReduce ? "auto" : "smooth",
+      top: Math.max(0, targetY),
+      behavior: prefersReducedMotion ? "auto" : "smooth",
     });
   };
 
   const handleClick = (event) => {
-    if (typeof onClickProp === "function") onClickProp(event);
-    if (event.defaultPrevented) return;
+    if (typeof onClickProp === "function") {
+      onClickProp(event);
+    }
 
-    if (as === "button") return;
-    if (isExternal) return;
+    if (event.defaultPrevented || isButton || isExternal) {
+      return;
+    }
 
     if (typeof href === "string" && isSamePageHash(href)) {
       event.preventDefault();
+
       const url = new URL(href, window.location.href);
+
       scrollToHashWithOffset(url.hash || href);
     }
   };
 
   const variantClassKey = VARIANT_CLASS_MAP[variant] ?? "";
-  const classes = [styles.button];
 
-  if (blink) classes.push(styles["button--blink"]);
-  if (variantClassKey) classes.push(styles[variantClassKey]);
-  if (className) classes.push(className);
+  const classNames = [
+    styles.button,
+    blink ? styles["button--blink"] : "",
+    variantClassKey ? styles[variantClassKey] : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   const commonProps = {
     "aria-label": ariaLabel,
-    className: classes.join(" "),
+    className: classNames,
     "data-compact": compact,
     "data-on": on ? "true" : "false",
     "data-variant": variant,
@@ -148,15 +148,15 @@ export default function CTAButton({
     <>
       <span className={styles.sheen} aria-hidden="true" />
 
-      {IconComp ? (
-        <IconComp className={styles.icon} aria-hidden="true" />
+      {IconComponent ? (
+        <IconComponent className={styles.icon} aria-hidden="true" />
       ) : null}
 
       <span className={styles.label}>{label}</span>
     </>
   );
 
-  if (as === "button") {
+  if (isButton) {
     return (
       <button type={type} {...commonProps}>
         {content}

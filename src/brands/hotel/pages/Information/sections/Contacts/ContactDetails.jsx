@@ -1,4 +1,6 @@
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import contacts from "../../../../config/sections/information/contacts.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 import styles from "./ContactDetails.module.css";
 
@@ -21,7 +23,7 @@ function TitleIcon({ icon = null }) {
 }
 
 export default function ContactDetails() {
-  const section = hotelBrand?.pages?.information?.sections?.contacts ?? null;
+  const section = contacts;
   const details = section?.details ?? null;
 
   if (!details) return null;
@@ -34,7 +36,7 @@ export default function ContactDetails() {
   const socialItems = getValidItems(social?.items);
 
   const SocialTitleIcon = social?.iconKey
-    ? resolveHotelIcon(hotelBrand?.icons, social.iconKey)
+    ? resolveHotelIcon(ICONS, social.iconKey)
     : null;
 
   return (
@@ -274,7 +276,7 @@ export default function ContactDetails() {
                 <div className={styles.socialList}>
                   {socialItems.map((item) => {
                     const SocialIcon = item?.iconKey
-                      ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+                      ? resolveHotelIcon(ICONS, item.iconKey)
                       : null;
 
                     return (

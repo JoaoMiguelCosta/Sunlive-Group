@@ -68,5 +68,3 @@ export const SPORTS_GATEWAY = Object.freeze([
     variant: "cta",
   },
 ]);
-
-export default SPORTS_GATEWAY;

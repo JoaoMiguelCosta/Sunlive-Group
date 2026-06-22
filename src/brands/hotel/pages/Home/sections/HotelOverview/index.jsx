@@ -1,11 +1,11 @@
 import styles from "./HotelOverviewSection.module.css";
 
-import hotelBrand from "../../../../config/index.js";
+import overview from "../../../../config/sections/home/overview.js";
 import HotelOverviewHeader from "./HotelOverviewHeader.jsx";
 import HotelOverviewContent from "./HotelOverviewContent.jsx";
 
 export default function HotelOverviewSection() {
-  const section = hotelBrand?.pages?.home?.sections?.overview ?? null;
+  const section = overview;
   if (!section) return null;
 
   const sectionId = section.id ?? "hotel-overview";

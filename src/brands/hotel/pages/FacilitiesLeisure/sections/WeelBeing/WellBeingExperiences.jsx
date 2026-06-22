@@ -1,12 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import wellBeing from "../../../../config/sections/facilities/wellBeing.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
 import HotelFacilitySummaryCard from "../../../../shared/ui/HotelFacilitySummaryCard/HotelFacilitySummaryCard.jsx";
 import HotelFacilityDetailPanel from "../../../../shared/ui/HotelFacilityDetailPanel/HotelFacilityDetailPanel.jsx";
 
 import styles from "./WellBeingExperiences.module.css";
+
+const EMPTY_ITEMS = Object.freeze([]);
 
 function getColumnsFromViewport() {
   if (typeof window === "undefined") return 4;
@@ -22,7 +26,9 @@ function enrichItemsWithIcons(items, icons) {
     ...item,
     icon: {
       ...item.icon,
-      component: item.icon?.key ? resolveHotelIcon(icons, item.icon.key) : null,
+      component: item.icon?.key
+        ? resolveHotelIcon(icons, item.icon.key)
+        : null,
     },
   }));
 }
@@ -47,8 +53,12 @@ function getPanelRowEndIndex({ activeIndex, columns, totalItems }) {
 }
 
 export default function WellBeingExperiences() {
-  const content = hotelBrand?.pages?.facilities?.sections?.wellBeing ?? null;
-  const rawItems = Array.isArray(content?.items) ? content.items : [];
+  const content = wellBeing;
+
+  const rawItems = Array.isArray(content?.items)
+    ? content.items
+    : EMPTY_ITEMS;
+
   const sectionId = content?.id ?? "well-being";
   const ui = content?.ui ?? {};
 
@@ -72,7 +82,7 @@ export default function WellBeingExperiences() {
   }, []);
 
   const items = useMemo(() => {
-    return enrichItemsWithIcons(rawItems, hotelBrand?.icons);
+    return enrichItemsWithIcons(rawItems, ICONS);
   }, [rawItems]);
 
   const accordionItems = useMemo(() => {
@@ -162,10 +172,14 @@ export default function WellBeingExperiences() {
                     title={activeItem.details?.title ?? activeItem.title}
                     description={activeItem.details?.description ?? ""}
                     icon={activeItem.icon?.component ?? null}
-                    iconLabel={activeItem.icon?.ariaLabel ?? activeItem.title}
+                    iconLabel={
+                      activeItem.icon?.ariaLabel ?? activeItem.title
+                    }
                     features={activeItem.details?.features ?? []}
                     image={activeItem.details?.image ?? null}
-                    imageAlt={activeItem.details?.imageAlt ?? activeItem.title}
+                    imageAlt={
+                      activeItem.details?.imageAlt ?? activeItem.title
+                    }
                     imagePosition={
                       activeItem.details?.imagePosition ?? "center center"
                     }
@@ -183,3 +197,4 @@ export default function WellBeingExperiences() {
     </div>
   );
 }
+

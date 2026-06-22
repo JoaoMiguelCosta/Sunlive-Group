@@ -1,4 +1,5 @@
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 import HotelRegionHighlightCard from "./HotelRegionHighlightCard.jsx";
 
@@ -17,7 +18,7 @@ function getValidItems(items) {
 
 export default function HotelRegionHighlightsGrid({ items = [] }) {
   const safeItems = getValidItems(items);
-  const icons = hotelBrand?.icons ?? {};
+  const icons = ICONS;
 
   if (!safeItems.length) return null;
 

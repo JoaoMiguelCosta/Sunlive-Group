@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import eventsCelebrations from "../../../../config/sections/events/eventsCelebrations.js";
 
 import TitleEventsCelebrations from "./TitleEventsCelebrations.jsx";
 import DescriptionEventsCelebrations from "./DescriptionEventsCelebrations.jsx";
@@ -8,8 +8,7 @@ import EventsTypes from "./EventsTypes.jsx";
 import styles from "./EventsCelebrations.module.css";
 
 export default function EventsCelebrationsSection() {
-  const section =
-    hotelBrand?.pages?.events?.sections?.eventsCelebrations ?? null;
+  const section = eventsCelebrations;
 
   if (!section) return null;
 
@@ -31,6 +30,8 @@ export default function EventsCelebrationsSection() {
             src={backgroundImageSrc}
             alt={backgroundImageAlt}
             className={styles.backgroundImage}
+            loading="lazy"
+            decoding="async"
           />
         </div>
       ) : null}

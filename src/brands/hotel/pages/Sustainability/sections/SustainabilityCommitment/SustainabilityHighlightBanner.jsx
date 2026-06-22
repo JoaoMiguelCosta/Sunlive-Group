@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import sustainabilityCommitment from "../../../../config/sections/sustainability/sustainabilityCommitment.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelHighlightBanner from "../../../../shared/ui/HotelHighlightBanner/HotelHighlightBanner.jsx";
 
 import styles from "./SustainabilityHighlightBanner.module.css";
 
 export default function SustainabilityHighlightBanner() {
-  const section =
-    hotelBrand?.pages?.sustainability?.sections?.sustainabilityCommitment ??
-    null;
+  const section = sustainabilityCommitment;
 
   const banner = section?.highlightBanner ?? null;
 
@@ -16,11 +16,11 @@ export default function SustainabilityHighlightBanner() {
     if (!banner) return null;
 
     const LeftIcon = banner?.leftIconKey
-      ? resolveHotelIcon(hotelBrand?.icons, banner.leftIconKey)
+      ? resolveHotelIcon(ICONS, banner.leftIconKey)
       : null;
 
     const RightIcon = banner?.rightIconKey
-      ? resolveHotelIcon(hotelBrand?.icons, banner.rightIconKey)
+      ? resolveHotelIcon(ICONS, banner.rightIconKey)
       : null;
 
     return {

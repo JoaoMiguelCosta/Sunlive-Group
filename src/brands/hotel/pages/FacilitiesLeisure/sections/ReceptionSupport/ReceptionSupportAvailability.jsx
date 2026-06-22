@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import receptionSupport from "../../../../config/sections/facilities/receptionSupport.js";
 
 import styles from "./ReceptionSupportAvailability.module.css";
 
@@ -28,9 +28,7 @@ function MediaSlot({ image, fallbackLabel }) {
 }
 
 export default function ReceptionSupportAvailability() {
-  const availability =
-    hotelBrand?.pages?.facilities?.sections?.receptionSupport?.availability ??
-    null;
+  const availability = receptionSupport?.availability ?? null;
 
   const images = useMemo(
     () => (Array.isArray(availability?.images) ? availability.images : []),

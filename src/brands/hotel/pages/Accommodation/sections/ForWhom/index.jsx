@@ -5,10 +5,10 @@ import DescriptionForWhom from "./DescriptionForWhom.jsx";
 import ForWhomHero from "./ForWhomHero.jsx";
 import ForWhomProfilesGrid from "./ForWhomProfilesGrid.jsx";
 
-import hotelBrand from "../../../../config/index.js";
+import forWhom from "../../../../config/sections/accommodation/forWhom.js";
 
 export default function ForWhom() {
-  const content = hotelBrand?.pages?.accommodation?.sections?.forWhom ?? null;
+  const content = forWhom;
 
   if (!content) return null;
 
@@ -30,6 +30,8 @@ export default function ForWhom() {
             src={backgroundImageSrc}
             alt={backgroundImageAlt}
             className={styles.backgroundImage}
+            loading="lazy"
+            decoding="async"
           />
         </div>
       ) : null}

@@ -1,10 +1,10 @@
-import hotelBrand from "../../../../config/index.js";
+import restaurant from "../../../../config/sections/dining/restaurant.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 import styles from "./Restaurant.module.css";
 
 export default function DescriptionRestaurant() {
-  const content = hotelBrand?.pages?.dining?.sections?.restaurant ?? null;
+  const content = restaurant;
   const description = String(content?.description ?? "").trim();
 
   if (!description) return null;

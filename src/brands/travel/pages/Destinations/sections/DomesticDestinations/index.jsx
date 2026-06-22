@@ -1,12 +1,11 @@
-import travelBrand from "../../../../config/index.js";
+import domesticDestinations from "../../../../config/sections/destinations/domesticDestinations.js";
 
 import styles from "./DomesticDestinationsSection.module.css";
 import DomesticEditorialHero from "./DomesticEditorialHero.jsx";
 import DomesticDestinationsShowcase from "./DomesticDestinationsShowcase.jsx";
 
 export default function DomesticDestinationsSection() {
-  const section =
-    travelBrand?.pages?.destinations?.sections?.domesticDestinations ?? null;
+  const section = domesticDestinations;
 
   if (!section) return null;
 

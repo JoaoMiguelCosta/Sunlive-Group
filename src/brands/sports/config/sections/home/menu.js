@@ -1,5 +1,5 @@
 import velodromoImage from "../../../assets/Home/velodromo.webp";
-import { SPORTS_GATEWAY } from "../../core/index.js";
+import { SPORTS_GATEWAY } from "../../core/gateway.js";
 
 const DEFAULT_MENU_COPY = {
   kicker: "Sunlive Sports",

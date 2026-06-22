@@ -1,11 +1,9 @@
-import hotelBrand from "../../../../config/index.js";
+import mobility from "../../../../config/sections/facilities/mobility.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 import styles from "./DescriptionMobility.module.css";
 
 export default function DescriptionMobility() {
-  const mobility = hotelBrand?.pages?.facilities?.sections?.mobility ?? null;
-
   if (!mobility?.description) return null;
 
   return (

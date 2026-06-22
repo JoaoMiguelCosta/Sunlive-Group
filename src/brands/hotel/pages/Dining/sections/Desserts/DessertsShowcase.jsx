@@ -1,18 +1,26 @@
 import { useEffect, useMemo, useState } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import desserts from "../../../../config/sections/dining/desserts.js";
 import HotelSelectableMediaGrid from "../../../../shared/ui/HotelSelectableMediaGrid/HotelSelectableMediaGrid.jsx";
 
 import styles from "./DessertsShowcase.module.css";
 
 function normalizeItems(items = []) {
-  if (!Array.isArray(items)) return [];
+  if (!Array.isArray(items)) {
+    return [];
+  }
+
   return items.filter(Boolean);
 }
 
 function findFirstMatchingItem(items, categoryId) {
-  if (!items.length) return null;
-  if (!categoryId || categoryId === "all") return items[0] ?? null;
+  if (items.length === 0) {
+    return null;
+  }
+
+  if (!categoryId || categoryId === "all") {
+    return items[0] ?? null;
+  }
 
   return items.find((item) => item.category === categoryId) ?? items[0] ?? null;
 }
@@ -26,22 +34,15 @@ function getThumbnailCategoryLabel(item) {
 }
 
 export default function DessertsShowcase() {
-  const section = hotelBrand?.pages?.dining?.sections?.desserts ?? null;
-
-  if (!section) return null;
+  const section = desserts;
 
   const categories = Array.isArray(section?.categories)
     ? section.categories
     : [];
 
-  const items = normalizeItems(section?.items);
   const showcase = section?.showcase ?? null;
 
-  const ariaLabel = showcase?.ariaLabel ?? "Galeria de sobremesas";
-  const filterLabel = showcase?.filterLabel ?? "Filtrar sobremesas";
-
-  const thumbnailsLabel =
-    showcase?.thumbnailsLabel ?? "Selecionar sobremesa em destaque";
+  const items = useMemo(() => normalizeItems(section?.items), [section?.items]);
 
   const defaultCategory =
     categories.find((category) => category.id === showcase?.defaultCategory)
@@ -56,32 +57,51 @@ export default function DessertsShowcase() {
   );
 
   const filteredItems = useMemo(() => {
-    if (activeCategory === "all") return items;
+    if (activeCategory === "all") {
+      return items;
+    }
+
     return items.filter((item) => item.category === activeCategory);
   }, [activeCategory, items]);
 
   useEffect(() => {
-    if (!filteredItems.length) {
-      setActiveItemId(null);
-      return;
-    }
+    setActiveItemId((currentActiveItemId) => {
+      if (filteredItems.length === 0) {
+        return null;
+      }
 
-    const stillExists = filteredItems.some((item) => item.id === activeItemId);
-    if (stillExists) return;
+      const activeItemStillExists = filteredItems.some(
+        (item) => item.id === currentActiveItemId,
+      );
 
-    const fallbackItem = findFirstMatchingItem(filteredItems, activeCategory);
-    setActiveItemId(fallbackItem?.id ?? null);
-  }, [activeCategory, activeItemId, filteredItems]);
+      if (activeItemStillExists) {
+        return currentActiveItemId;
+      }
+
+      const fallbackItem = findFirstMatchingItem(filteredItems, activeCategory);
+
+      return fallbackItem?.id ?? null;
+    });
+  }, [activeCategory, filteredItems]);
+
+  if (!section || items.length === 0) {
+    return null;
+  }
+
+  const ariaLabel = showcase?.ariaLabel ?? "Galeria de sobremesas";
+
+  const filterLabel = showcase?.filterLabel ?? "Filtrar sobremesas";
+
+  const thumbnailsLabel =
+    showcase?.thumbnailsLabel ?? "Selecionar sobremesa em destaque";
 
   const activeItem =
     filteredItems.find((item) => item.id === activeItemId) ??
     findFirstMatchingItem(filteredItems, activeCategory);
 
-  if (!items.length) return null;
-
   return (
     <div className={styles.block} aria-label={ariaLabel}>
-      {categories.length ? (
+      {categories.length > 0 ? (
         <div
           className={styles.filterBar}
           role="tablist"

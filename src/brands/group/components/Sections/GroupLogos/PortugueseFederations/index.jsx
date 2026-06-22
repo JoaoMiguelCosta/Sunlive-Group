@@ -1,14 +1,14 @@
 import styles from "../_shared/LogosSection.module.css";
 import LogoGridSection from "../_shared/LogoGridSection";
 
-import groupLogosPage from "../../../../config/pages/logos.js";
+import portugueseFederations from "../../../../config/sections/logos/portugueseFederations.js";
 
 function hasItems(items) {
   return Array.isArray(items) && items.length > 0;
 }
 
 export default function PortugueseFederations() {
-  const data = groupLogosPage?.sections?.portugueseFederations;
+  const data = portugueseFederations;
 
   if (!data || !hasItems(data.items)) return null;
 

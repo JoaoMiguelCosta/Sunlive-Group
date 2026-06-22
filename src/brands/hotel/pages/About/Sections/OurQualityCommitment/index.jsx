@@ -1,12 +1,11 @@
-import hotelBrand from "../../../../config/index.js";
+import ourQualityCommitment from "../../../../config/sections/about/qualityCommitment.js";
 import OurQualityCommitmentHeader from "./OurQualityCommitmentHeader.jsx";
 import OurQualityCommitmentContent from "./OurQualityCommitmentContent.jsx";
 
 import styles from "./OurQualityCommitment.module.css";
 
 export default function OurQualityCommitmentSection() {
-  const section =
-    hotelBrand?.pages?.about?.sections?.ourQualityCommitment ?? null;
+  const section = ourQualityCommitment;
 
   if (!section) return null;
 

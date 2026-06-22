@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import planYourStay from "../../../../config/sections/home/planYourStay.js";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 import styles from "./PlanYourStay.module.css";
@@ -13,7 +13,7 @@ function getValidActions(actions) {
 }
 
 export default function PlanYourStaySection() {
-  const section = hotelBrand?.pages?.home?.sections?.planYourStay ?? null;
+  const section = planYourStay;
   if (!section) return null;
 
   const {

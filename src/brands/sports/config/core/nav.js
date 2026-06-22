@@ -8,5 +8,3 @@ export const SPORTS_PRIMARY_NAV_ITEMS = Object.freeze(
     variant: item.variant || "default",
   })),
 );
-
-export default SPORTS_PRIMARY_NAV_ITEMS;

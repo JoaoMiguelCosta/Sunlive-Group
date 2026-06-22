@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { useBrand } from "./BrandProvider.jsx";
+
+import { useBrand } from "./BrandContext.js";
 
 export default function ThemeProvider({ children }) {
   const { prefix } = useBrand();
@@ -8,5 +9,5 @@ export default function ThemeProvider({ children }) {
     document.documentElement.setAttribute("data-brand", prefix);
   }, [prefix]);
 
-  return <>{children}</>;
+  return children;
 }

@@ -1,5 +1,3 @@
-import { GymnasticsIcon } from "../../shared/ui/icons";
-
 const BRAND_ICON_KEY_MAP = Object.freeze({
   apple: "AppleIcon",
   athlete: "AthleteBarbellIcon",
@@ -55,17 +53,20 @@ const BRAND_ICON_KEY_MAP = Object.freeze({
   gymnastics: "GymnasticsIcon",
 });
 
-export function resolveSportsIconName(iconKey) {
-  if (!iconKey) return null;
+function resolveSportsIconName(iconKey) {
+  if (!iconKey) {
+    return null;
+  }
+
   return BRAND_ICON_KEY_MAP[iconKey] ?? iconKey;
 }
 
 export function resolveSportsIcon(icons, iconKey) {
-  if (!icons || !iconKey) return null;
+  if (!icons || !iconKey) {
+    return null;
+  }
 
   const resolvedIconName = resolveSportsIconName(iconKey);
+
   return icons[resolvedIconName] ?? null;
 }
-
-export { BRAND_ICON_KEY_MAP };
-export default BRAND_ICON_KEY_MAP;

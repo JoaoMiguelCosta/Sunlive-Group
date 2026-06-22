@@ -1,10 +1,10 @@
-import hotelBrand from "../../../../config/index.js";
+import restaurant from "../../../../config/sections/dining/restaurant.js";
 import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
 
 import styles from "./RestaurantPhotoCarousel.module.css";
 
 export default function RestaurantPhotoCarousel() {
-  const section = hotelBrand?.pages?.dining?.sections?.restaurant ?? null;
+  const section = restaurant;
   const gallery = section?.gallery ?? null;
   const items = Array.isArray(gallery?.items) ? gallery.items : [];
 

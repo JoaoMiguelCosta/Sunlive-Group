@@ -16,5 +16,3 @@ export const SPORTS_PAGE_PATHS = Object.freeze({
   consultancy: `${SPORTS_BASE_PATH}/consultoria`,
   contacts: `${SPORTS_BASE_PATH}/contactos`,
 });
-
-export default SPORTS_PAGE_PATHS;

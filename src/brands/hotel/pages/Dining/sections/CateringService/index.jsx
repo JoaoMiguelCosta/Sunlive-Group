@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import catering from "../../../../config/sections/dining/catering.js";
 import TitleCateringService from "./TitleCateringService.jsx";
 import DescriptionCateringService from "./DescriptionCateringService.jsx";
 import CateringProcessSteps from "./CateringProcessSteps.jsx";
@@ -7,7 +7,7 @@ import CateringInfoLists from "./CateringInfoLists.jsx";
 import styles from "./CateringService.module.css";
 
 export default function CateringServiceSection() {
-  const section = hotelBrand?.pages?.dining?.sections?.catering ?? null;
+  const section = catering;
 
   if (!section) return null;
 

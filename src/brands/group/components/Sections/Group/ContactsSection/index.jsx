@@ -4,7 +4,7 @@ import GroupHub from "./GroupHub.jsx";
 import BusinessUnits from "./BusinessUnits.jsx";
 import RegionalOffices from "./RegionalOffices.jsx";
 
-import { groupHomePage } from "../../../../config/pages/index.js";
+import contactsSection from "../../../../config/sections/home/contacts.js";
 
 function isValidObject(value) {
   return value && typeof value === "object" && !Array.isArray(value);
@@ -15,7 +15,7 @@ function hasItems(items) {
 }
 
 export default function ContactsSection() {
-  const contacts = groupHomePage?.sections?.contacts;
+  const contacts = contactsSection;
 
   if (!contacts) return null;
 

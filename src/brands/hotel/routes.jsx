@@ -1,17 +1,36 @@
-import { Route, Navigate } from "react-router-dom";
+import { lazy } from "react";
+import { Navigate, Route } from "react-router-dom";
 
-import { HOTEL_BASE_PATH, HOTEL_PAGE_PATHS } from "./config/core/paths.js";
+import {
+  HOTEL_BASE_PATH,
+  HOTEL_PAGE_PATHS,
+} from "./config/core/paths.js";
 
-import HotelShell from "./layouts/HotelShell.jsx";
+const HotelShell = lazy(() => import("./layouts/HotelShell.jsx"));
 
-import HomePageHotel from "./pages/Home/index.jsx";
-import AboutPageHotel from "./pages/About/index.jsx";
-import AccommodationPageHotel from "./pages/Accommodation/index.jsx";
-import DiningPageHotel from "./pages/Dining/index.jsx";
-import FacilitiesLeisurePageHotel from "./pages/FacilitiesLeisure/index.jsx";
-import EventsPageHotel from "./pages/Events/index.jsx";
-import SustainabilityPageHotel from "./pages/Sustainability/index.jsx";
-import InformationPageHotel from "./pages/Information/index.jsx";
+const HomePageHotel = lazy(() => import("./pages/Home/index.jsx"));
+
+const AboutPageHotel = lazy(() => import("./pages/About/index.jsx"));
+
+const AccommodationPageHotel = lazy(() =>
+  import("./pages/Accommodation/index.jsx"),
+);
+
+const DiningPageHotel = lazy(() => import("./pages/Dining/index.jsx"));
+
+const FacilitiesLeisurePageHotel = lazy(() =>
+  import("./pages/FacilitiesLeisure/index.jsx"),
+);
+
+const EventsPageHotel = lazy(() => import("./pages/Events/index.jsx"));
+
+const SustainabilityPageHotel = lazy(() =>
+  import("./pages/Sustainability/index.jsx"),
+);
+
+const InformationPageHotel = lazy(() =>
+  import("./pages/Information/index.jsx"),
+);
 
 export const hotelRoutes = [
   <Route key="hotel" path={HOTEL_BASE_PATH} element={<HotelShell />}>
@@ -20,11 +39,21 @@ export const hotelRoutes = [
     <Route path="sobre" element={<AboutPageHotel />} />
     <Route path="estadia" element={<AccommodationPageHotel />} />
     <Route path="restauracao" element={<DiningPageHotel />} />
-    <Route path="instalacoes-lazer" element={<FacilitiesLeisurePageHotel />} />
+    <Route
+      path="instalacoes-lazer"
+      element={<FacilitiesLeisurePageHotel />}
+    />
     <Route path="eventos" element={<EventsPageHotel />} />
-    <Route path="sustentabilidade" element={<SustainabilityPageHotel />} />
+    <Route
+      path="sustentabilidade"
+      element={<SustainabilityPageHotel />}
+    />
     <Route path="informacoes" element={<InformationPageHotel />} />
 
-    <Route path="*" element={<Navigate to={HOTEL_PAGE_PATHS.home} replace />} />
+    <Route
+      path="*"
+      element={<Navigate to={HOTEL_PAGE_PATHS.home} replace />}
+    />
   </Route>,
 ];
+

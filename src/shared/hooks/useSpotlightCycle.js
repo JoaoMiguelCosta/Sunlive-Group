@@ -1,77 +1,108 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 /**
- * useSpotlightCycle
- * - Autoplay cíclico com pausa em hover
- * - Respeita prefers-reduced-motion
- * - Pausa quando o separador fica oculto (visibilitychange)
+ * Autoplay cíclico com:
+ * - pausa em hover;
+ * - respeito por prefers-reduced-motion;
+ * - pausa quando o separador fica oculto.
  */
-export default function useSpotlightCycle(len = 0, ms = 4500) {
+export default function useSpotlightCycle(length = 0, intervalMs = 4500) {
   const [index, setIndex] = useState(0);
-  const pause = useRef(false);
-  const timer = useRef(null);
 
-  const reduceMotion = useMemo(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return false;
+  const isPausedRef = useRef(false);
+  const timerRef = useRef(null);
+
+  const prefersReducedMotion = useMemo(() => {
+    if (typeof window === "undefined" || !window.matchMedia) {
+      return false;
+    }
+
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }, []);
 
-  // limpa intervalo
-  const clear = () => {
-    if (timer.current) {
-      clearInterval(timer.current);
-      timer.current = null;
+  const clearCycle = useCallback(() => {
+    if (!timerRef.current) {
+      return;
     }
-  };
 
-  // arranca intervalo
-  const start = () => {
-    if (!len || reduceMotion || pause.current || timer.current) return;
-    timer.current = setInterval(
+    window.clearInterval(timerRef.current);
+    timerRef.current = null;
+  }, []);
+
+  const startCycle = useCallback(() => {
+    if (
+      !length ||
+      prefersReducedMotion ||
+      isPausedRef.current ||
+      timerRef.current
+    ) {
+      return;
+    }
+
+    timerRef.current = window.setInterval(
       () => {
-        if (!pause.current) setIndex((v) => (v + 1) % len);
+        if (isPausedRef.current) {
+          return;
+        }
+
+        setIndex((currentIndex) => (currentIndex + 1) % length);
       },
-      Math.max(2000, ms)
+      Math.max(2000, intervalMs),
     );
-  };
+  }, [intervalMs, length, prefersReducedMotion]);
 
   useEffect(() => {
-    start();
-    return clear;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [len, ms, reduceMotion]);
+    startCycle();
 
-  // se o índice ultrapassar len (quando dados mudam)
-  useEffect(() => {
-    if (index >= len) setIndex(0);
-  }, [index, len]);
+    return clearCycle;
+  }, [clearCycle, startCycle]);
 
-  // pausa quando o separador perde visibilidade
   useEffect(() => {
-    const onVis = () => {
-      if (document.hidden) {
-        pause.current = true;
-        clear();
-      } else {
-        pause.current = false;
-        start();
-      }
-    };
-    if (typeof document !== "undefined") {
-      document.addEventListener("visibilitychange", onVis);
-      return () => document.removeEventListener("visibilitychange", onVis);
+    if (length <= 0) {
+      setIndex(0);
+      return;
     }
-  }, [len, ms, reduceMotion]);
 
-  // handlers de hover
-  const onMouseEnter = () => {
-    pause.current = true;
-    clear();
-  };
-  const onMouseLeave = () => {
-    pause.current = false;
-    start();
-  };
+    setIndex((currentIndex) => (currentIndex >= length ? 0 : currentIndex));
+  }, [length]);
 
-  return { index, setIndex, onMouseEnter, onMouseLeave };
+  useEffect(() => {
+    if (typeof document === "undefined") {
+      return undefined;
+    }
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        isPausedRef.current = true;
+        clearCycle();
+        return;
+      }
+
+      isPausedRef.current = false;
+      startCycle();
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [clearCycle, startCycle]);
+
+  const handleMouseEnter = useCallback(() => {
+    isPausedRef.current = true;
+    clearCycle();
+  }, [clearCycle]);
+
+  const handleMouseLeave = useCallback(() => {
+    isPausedRef.current = false;
+    startCycle();
+  }, [startCycle]);
+
+  return {
+    index,
+    setIndex,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+  };
 }

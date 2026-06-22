@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import uniqueNaturalSetting from "../../../../config/sections/about/uniqueNaturalSetting.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 
 import styles from "./UniqueNaturalSetting.module.css";
@@ -8,8 +8,7 @@ function isValidText(value) {
 }
 
 export default function UniqueNaturalSetting() {
-  const block =
-    hotelBrand?.pages?.about?.sections?.uniqueNaturalSetting ?? null;
+  const block = uniqueNaturalSetting;
 
   if (!block) return null;
 

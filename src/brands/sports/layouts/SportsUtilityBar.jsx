@@ -1,6 +1,7 @@
 import UtilityBar from "../../../shared/components/UtilityBar";
-import sportsBrand from "../config/index.js";
 import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.js";
+
+import header from "../config/core/header.js";
 
 export default function SportsUtilityBar({
   backLink,
@@ -8,8 +9,8 @@ export default function SportsUtilityBar({
   pageSwitcher = null,
   isHome = false,
 }) {
-  const socials = sportsBrand?.header?.socials ?? [];
-  const lang = sportsBrand?.header?.lang ?? LANG_DEFAULT;
+  const socials = header?.socials ?? [];
+  const lang = header?.lang ?? LANG_DEFAULT;
 
   return (
     <UtilityBar

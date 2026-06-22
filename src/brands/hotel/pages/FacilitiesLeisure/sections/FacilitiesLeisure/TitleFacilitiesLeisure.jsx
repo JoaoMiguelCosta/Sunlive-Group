@@ -1,12 +1,11 @@
-import hotelBrand from "../../../../config/index.js";
+import facilitiesLeisure from "../../../../config/sections/facilities/facilitiesLeisure.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleFacilitiesLeisure({
   titleId = "facilities-leisure-title",
   className = "",
 }) {
-  const content =
-    hotelBrand?.pages?.facilities?.sections?.facilitiesLeisure ?? null;
+  const content = facilitiesLeisure;
 
   if (!content?.headerLabel) return null;
 

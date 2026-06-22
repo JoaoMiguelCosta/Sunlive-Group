@@ -1,6 +1,6 @@
 import styles from "./BookSection.module.css";
 
-import { groupHomePage } from "../../../../config/pages/index.js";
+import bookSection from "../../../../config/sections/home/book.js";
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -21,7 +21,7 @@ function resolveCta(bookConfig) {
 }
 
 export default function BookSection() {
-  const bookConfig = groupHomePage?.sections?.book;
+  const bookConfig = bookSection;
   const cta = resolveCta(bookConfig);
 
   if (!cta) return null;

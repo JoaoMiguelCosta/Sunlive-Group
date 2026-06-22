@@ -1,4 +1,6 @@
-import { hero, athletesRoster, cta } from "../sections/athletes/index.js";
+import hero from "../sections/athletes/hero.js";
+import athletesRoster from "../sections/athletes/athletesRoster.js";
+import cta from "../sections/athletes/cta.js";
 
 const athletes = {
   id: "atletas-sunlive",
@@ -11,3 +13,4 @@ const athletes = {
 };
 
 export default athletes;
+

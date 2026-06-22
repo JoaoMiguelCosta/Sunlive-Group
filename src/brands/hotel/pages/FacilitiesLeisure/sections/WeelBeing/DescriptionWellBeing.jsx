@@ -1,8 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import wellBeing from "../../../../config/sections/facilities/wellBeing.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function DescriptionWellBeing() {
-  const content = hotelBrand?.pages?.facilities?.sections?.wellBeing ?? null;
+  const content = wellBeing;
 
   if (!content?.description) return null;
 

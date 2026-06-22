@@ -1,31 +1,28 @@
+import academies from "../../config/pages/academies.js";
 import styles from "../../layouts/SportsPageLayout.module.css";
-
-import sportsBrand from "../../config/index.js";
-
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
-
 import AcademiesCardsSection from "./sections/AcademiesCardsSection/index.jsx";
-
 export default function AcademiesPage() {
-  const data = sportsBrand.sections?.academies;
-
+  const data = academies.sections || academies;
   if (!data) return null;
-
   const pageId = data.ui?.pageId || "sports-academies";
   const pageAriaLabel = data.ui?.pageAriaLabel || "Sunlive Sports — Academias";
   const heroId = data.hero?.id || "academies-hero";
-
   return (
     <div className={styles.pageWrap} data-brand="sports">
+      {" "}
       <main
         id={pageId}
         className={styles.inner}
         role="region"
         aria-label={pageAriaLabel}
       >
+        {" "}
         <div className={styles.contentFlow}>
+          {" "}
           <header className={styles.heroSection}>
+            {" "}
             <SportsHeroIntro
               id={heroId}
               eyebrow={data.hero?.eyebrow}
@@ -36,15 +33,15 @@ export default function AcademiesPage() {
               proofPoints={data.hero?.proofPoints}
               stats={data.hero?.stats}
               ui={data.hero?.ui}
-            />
-          </header>
-
+            />{" "}
+          </header>{" "}
           <div className={styles.sections}>
-            <AcademiesCardsSection data={data.academiesCards} />
-            <SportsClosingCTA data={data.cta} />
-          </div>
-        </div>
-      </main>
+            {" "}
+            <AcademiesCardsSection data={data.academiesCards} />{" "}
+            <SportsClosingCTA data={data.cta} />{" "}
+          </div>{" "}
+        </div>{" "}
+      </main>{" "}
     </div>
   );
 }

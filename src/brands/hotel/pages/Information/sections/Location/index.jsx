@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import location from "../../../../config/sections/information/location.js";
 
 import TitleLocation from "./TitleLocation.jsx";
 import DescriptionLocation from "./DescriptionLocation.jsx";
@@ -7,7 +7,7 @@ import LocationDetails from "./LocationDetails.jsx";
 import styles from "./Location.module.css";
 
 export default function LocationSection() {
-  const section = hotelBrand?.pages?.information?.sections?.location ?? null;
+  const section = location;
 
   if (!section) return null;
 

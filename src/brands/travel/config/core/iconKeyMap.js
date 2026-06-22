@@ -8,7 +8,7 @@ const BRAND_ICON_KEY_MAP = Object.freeze({
   "tour-bus": "TourBusIcon",
 });
 
-export function resolveTravelIconName(iconKey) {
+function resolveTravelIconName(iconKey) {
   if (!iconKey) return null;
   return BRAND_ICON_KEY_MAP[iconKey] ?? iconKey;
 }
@@ -19,6 +19,3 @@ export function resolveTravelIcon(icons, iconKey) {
   const resolvedIconName = resolveTravelIconName(iconKey);
   return icons[resolvedIconName] ?? null;
 }
-
-export { BRAND_ICON_KEY_MAP };
-export default BRAND_ICON_KEY_MAP;

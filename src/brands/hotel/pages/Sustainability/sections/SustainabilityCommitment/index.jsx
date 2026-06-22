@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import sustainabilityCommitment from "../../../../config/sections/sustainability/sustainabilityCommitment.js";
 
 import SustainabilityTitle from "./SustainabilityTitle.jsx";
 import SustainabilityDescription from "./SustainabilityDescription.jsx";
@@ -8,9 +8,7 @@ import SustainabilityPracticesGrid from "./SustainabilityPracticesGrid.jsx";
 import styles from "./SustainabilityCommitment.module.css";
 
 export default function SustainabilityCommitmentSection() {
-  const section =
-    hotelBrand?.pages?.sustainability?.sections?.sustainabilityCommitment ??
-    null;
+  const section = sustainabilityCommitment;
 
   if (!section) return null;
 

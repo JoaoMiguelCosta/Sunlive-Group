@@ -16,7 +16,3 @@ export const TRAVEL_PAGE_PATHS = Object.freeze({
   testimonials: `${TRAVEL_BASE_PATH}/testemunhos`,
   contacts: `${TRAVEL_BASE_PATH}/contactos`,
 });
-
-export const TRAVEL_SECTION_PATHS = TRAVEL_PAGE_PATHS;
-
-export default TRAVEL_PAGE_PATHS;

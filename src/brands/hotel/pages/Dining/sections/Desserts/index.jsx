@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import desserts from "../../../../config/sections/dining/desserts.js";
 import TitleDesserts from "./TitleDesserts.jsx";
 import DescriptionDesserts from "./DescriptionDesserts.jsx";
 import DessertsShowcase from "./DessertsShowcase.jsx";
@@ -6,7 +6,7 @@ import DessertsShowcase from "./DessertsShowcase.jsx";
 import styles from "./Desserts.module.css";
 
 export default function DessertsSection() {
-  const section = hotelBrand?.pages?.dining?.sections?.desserts ?? null;
+  const section = desserts;
 
   if (!section) return null;
 

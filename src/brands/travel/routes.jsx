@@ -1,16 +1,33 @@
+import { lazy } from "react";
 import { Route } from "react-router-dom";
 
-import { TRAVEL_BASE_PATH } from "./config/index.js";
-import TravelPageLayout from "./layouts/TravelPageLayout.jsx";
+import { TRAVEL_BASE_PATH } from "./config/core/paths.js";
 
-import {
-  HomePage,
-  LogisticsPage,
-  DestinationsPage,
-  PartnersPage,
-  TestimonialsPage,
-  ContactsPage,
-} from "./pages/index.jsx";
+const TravelPageLayout = lazy(() =>
+  import("./layouts/TravelPageLayout.jsx"),
+);
+
+const HomePage = lazy(() => import("./pages/Home/index.jsx"));
+
+const LogisticsPage = lazy(() =>
+  import("./pages/Logistics/index.jsx"),
+);
+
+const DestinationsPage = lazy(() =>
+  import("./pages/Destinations/index.jsx"),
+);
+
+const PartnersPage = lazy(() =>
+  import("./pages/Partners/index.jsx"),
+);
+
+const TestimonialsPage = lazy(() =>
+  import("./pages/Testimonials/index.jsx"),
+);
+
+const ContactsPage = lazy(() =>
+  import("./pages/Contacts/index.jsx"),
+);
 
 export const travelRoutes = (
   <Route path={TRAVEL_BASE_PATH} element={<TravelPageLayout />}>

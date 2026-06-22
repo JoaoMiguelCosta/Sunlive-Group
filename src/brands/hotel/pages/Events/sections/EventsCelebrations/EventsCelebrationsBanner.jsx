@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import eventsCelebrations from "../../../../config/sections/events/eventsCelebrations.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelHighlightBanner from "../../../../shared/ui/HotelHighlightBanner/HotelHighlightBanner.jsx";
 
 import styles from "./EventsCelebrationsBanner.module.css";
 
 export default function EventsCelebrationsBanner() {
-  const banner =
-    hotelBrand?.pages?.events?.sections?.eventsCelebrations?.customizedBanner ??
-    null;
+  const banner = eventsCelebrations?.customizedBanner ?? null;
 
   const resolvedBanner = useMemo(() => {
     if (!banner) return null;
@@ -17,11 +17,11 @@ export default function EventsCelebrationsBanner() {
     const rightIconKey = banner?.icons?.right?.key ?? null;
 
     const LeftIcon = leftIconKey
-      ? resolveHotelIcon(hotelBrand?.icons, leftIconKey)
+      ? resolveHotelIcon(ICONS,leftIconKey)
       : null;
 
     const RightIcon = rightIconKey
-      ? resolveHotelIcon(hotelBrand?.icons, rightIconKey)
+      ? resolveHotelIcon(ICONS,rightIconKey)
       : null;
 
     return {

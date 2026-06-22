@@ -1,22 +1,26 @@
-import styles from "./LinkDirectory.module.css";
 import { contacts } from "../../../brands/group/ConfigGroup.jsx";
-import useSmartAnchorNav from "../../../shared/hooks/useSmartAnchorNav.js";
+import useSmartAnchorNav from "../../hooks/useSmartAnchorNav.js";
+
 import PillLink from "./PillLink.jsx";
+import styles from "./LinkDirectory.module.css";
 import { buildFlagMap, getFlagComp, modClassFor } from "./utils/flagHelpers";
 
 export default function LinkDirectory({ data }) {
-  if (!data) return null;
-  const { left, right } = data;
-
-  const { handleSmartAnchorClick: toLogos } = useSmartAnchorNav({
+  const { handleSmartAnchorClick: navigateToLogos } = useSmartAnchorNav({
     targetPath: "/sunlive-group/logos",
     offset: 24,
   });
-  const { handleSmartAnchorClick: toGroup } = useSmartAnchorNav({
+
+  const { handleSmartAnchorClick: navigateToGroup } = useSmartAnchorNav({
     targetPath: "/sunlive-group",
     offset: 24,
   });
 
+  if (!data) {
+    return null;
+  }
+
+  const { left, right } = data;
   const flagMap = buildFlagMap(contacts?.regionalOffices || []);
 
   return (
@@ -30,16 +34,16 @@ export default function LinkDirectory({ data }) {
           )}
 
           <div className={styles.gridLeft}>
-            {(left?.columns || []).map((col) => (
-              <div key={col.key} className={styles.col}>
-                {(col.items || []).map((item) => {
+            {(left?.columns || []).map((column) => (
+              <div key={column.key} className={styles.col}>
+                {(column.items || []).map((item) => {
                   const { key, label, href, disabled } = item;
                   const Flag = getFlagComp(flagMap, item);
-                  const mod = modClassFor(styles, key);
+                  const modifierClass = modClassFor(styles, key);
 
-                  const onSmartClick =
-                    col.key === "countries" || col.key === "units"
-                      ? toGroup
+                  const handleSmartClick =
+                    column.key === "countries" || column.key === "units"
+                      ? navigateToGroup
                       : undefined;
 
                   return (
@@ -47,10 +51,10 @@ export default function LinkDirectory({ data }) {
                       key={key}
                       href={href}
                       disabled={disabled}
-                      className={`${styles.pill} ${mod} ${
+                      className={`${styles.pill} ${modifierClass} ${
                         disabled ? styles.disabled : ""
                       }`}
-                      onSmartClick={onSmartClick}
+                      onSmartClick={handleSmartClick}
                     >
                       <span className={styles.pillContent}>
                         {Flag && (
@@ -58,6 +62,7 @@ export default function LinkDirectory({ data }) {
                             <Flag />
                           </span>
                         )}
+
                         <span className={styles.pillLabel}>{label}</span>
                       </span>
                     </PillLink>
@@ -84,7 +89,7 @@ export default function LinkDirectory({ data }) {
                 href={href}
                 disabled={disabled}
                 className={`${styles.pill} ${disabled ? styles.disabled : ""}`}
-                onSmartClick={toLogos}
+                onSmartClick={navigateToLogos}
               >
                 <span className={styles.pillContent}>
                   <span className={styles.pillLabel}>{label}</span>

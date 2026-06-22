@@ -1,5 +1,5 @@
 import styles from "./HomeHeroSection.module.css";
-import travelBrand from "../../../../config/index.js";
+import homeHero from "../../../../config/sections/home/homeHero.js";
 
 function escapeRegExp(value = "") {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -45,7 +45,7 @@ function renderAction(action, variant = "primary") {
 }
 
 export default function HomeHeroSection() {
-  const section = travelBrand?.pages?.home?.sections?.homeHero ?? null;
+  const section = homeHero;
   if (!section) return null;
 
   const cfg = section?.editorialHero ?? {};

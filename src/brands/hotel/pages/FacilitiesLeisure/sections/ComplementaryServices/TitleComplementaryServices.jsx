@@ -1,9 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import complementaryServices from "../../../../config/sections/facilities/complementaryServices.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleComplementaryServices({ titleId }) {
-  const content =
-    hotelBrand?.pages?.facilities?.sections?.complementaryServices ?? null;
+  const content = complementaryServices;
 
   if (!content?.headerLabel) return null;
 

@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import aboutTheHotel from "../../../../config/sections/about/aboutTheHotel.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 
 import styles from "./AboutTheHotelContent.module.css";
@@ -44,8 +44,7 @@ function getValidParagraphs(paragraphs) {
 }
 
 export default function AboutTheHotelContent() {
-  const aboutSection =
-    hotelBrand?.pages?.about?.sections?.aboutTheHotel ?? null;
+  const aboutSection = aboutTheHotel;
 
   if (!aboutSection) return null;
 

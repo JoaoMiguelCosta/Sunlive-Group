@@ -1,11 +1,10 @@
-import hotelBrand from "../../../../config/index.js";
+import panoramicRestaurant from "../../../../config/sections/dining/panoramicRestaurant.js";
 import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
 
 import styles from "./PanoramicRestaurantPhotoCarousel.module.css";
 
 export default function PanoramicRestaurantPhotoCarousel() {
-  const section =
-    hotelBrand?.pages?.dining?.sections?.panoramicRestaurant ?? null;
+  const section = panoramicRestaurant;
 
   const gallery = section?.gallery ?? null;
   const items = Array.isArray(gallery?.items) ? gallery.items : [];

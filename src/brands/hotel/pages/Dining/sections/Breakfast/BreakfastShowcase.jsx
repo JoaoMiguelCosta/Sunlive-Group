@@ -1,7 +1,6 @@
-import hotelBrand, {
-  ICONS,
-  resolveHotelIcon,
-} from "../../../../config/index.js";
+import breakfast from "../../../../config/sections/dining/breakfast.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
 
@@ -14,7 +13,7 @@ function normalizeStringArray(items = []) {
 }
 
 export default function BreakfastShowcase() {
-  const section = hotelBrand?.pages?.dining?.sections?.breakfast ?? null;
+  const section = breakfast;
 
   if (!section) return null;
 

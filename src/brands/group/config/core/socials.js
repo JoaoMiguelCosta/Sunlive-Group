@@ -10,5 +10,3 @@ export const GROUP_SOCIALS = Object.freeze(
     },
   ]),
 );
-
-export default GROUP_SOCIALS;

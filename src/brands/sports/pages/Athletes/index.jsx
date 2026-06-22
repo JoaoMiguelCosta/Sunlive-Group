@@ -1,6 +1,6 @@
-import styles from "../../layouts/SportsPageLayout.module.css";
+import athletes from "../../config/pages/athletes.js";
 
-import sportsBrand from "../../config/index.js";
+import styles from "../../layouts/SportsPageLayout.module.css";
 
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
@@ -8,9 +8,7 @@ import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 import AthletesRosterSection from "./sections/AthletesRosterSection/index.jsx";
 
 export default function AthletesPage() {
-  const pageData =
-    sportsBrand.pages?.athletes || sportsBrand.sections?.athletes;
-
+  const pageData = athletes;
   const sections = pageData?.sections || pageData;
 
   if (!sections) return null;
@@ -57,3 +55,4 @@ export default function AthletesPage() {
     </div>
   );
 }
+

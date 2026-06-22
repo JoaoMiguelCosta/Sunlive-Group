@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import panoramicRestaurant from "../../../../config/sections/dining/panoramicRestaurant.js";
 import TitlePanoramicRestaurant from "./TitlePanoramicRestaurant.jsx";
 import DescriptionPanoramicRestaurant from "./DescriptionPanoramicRestaurant.jsx";
 import PanoramicRestaurantPhotoCarousel from "./PanoramicRestaurantPhotoCarousel.jsx";
@@ -35,8 +35,7 @@ function normalizeHighlights(items) {
 }
 
 export default function PanoramicRestaurantSection() {
-  const section =
-    hotelBrand?.pages?.dining?.sections?.panoramicRestaurant ?? null;
+  const section = panoramicRestaurant;
 
   if (!section) return null;
 

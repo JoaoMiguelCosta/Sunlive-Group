@@ -1,5 +1,5 @@
 import styles from "./ContactCTASection.module.css";
-import travelBrand from "../../../../config/index.js";
+import contactCTA from "../../../../config/sections/contacts/contactCTA.js";
 
 import ContactIntroPanel from "./ContactIntroPanel.jsx";
 import ContactPanelIntro from "./ContactPanelIntro.jsx";
@@ -26,7 +26,7 @@ function hasPanelIntro(panel) {
 }
 
 export default function ContactCTASection() {
-  const section = travelBrand?.pages?.contacts?.sections?.contactCTA ?? null;
+  const section = contactCTA;
   if (!section) return null;
 
   const sectionId = section?.id ?? "contactar";

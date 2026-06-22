@@ -7,12 +7,12 @@ import cfg from "../../../assets/group-logos/logos/internationalFederations/cfg.
 import ci from "../../../assets/group-logos/logos/internationalFederations/ci.png";
 import fab from "../../../assets/group-logos/logos/internationalFederations/fab.png";
 import fag from "../../../assets/group-logos/logos/internationalFederations/fag.png";
-import fcc from "../../../assets/group-logos/logos/internationalFederations/fcc.png";
+import fcc from "../../../assets/group-logos/logos/internationalFederations/fcc.webp";
 import fec from "../../../assets/group-logos/logos/internationalFederations/fec.png";
 import ffc from "../../../assets/group-logos/logos/internationalFederations/ffc.png";
 import ftgym from "../../../assets/group-logos/logos/internationalFederations/ftgym.png";
 import icf from "../../../assets/group-logos/logos/internationalFederations/icf.png";
-import malta from "../../../assets/group-logos/logos/internationalFederations/malta.png";
+import malta from "../../../assets/group-logos/logos/internationalFederations/malta.webp";
 import pc from "../../../assets/group-logos/logos/internationalFederations/pc.png";
 import pi from "../../../assets/group-logos/logos/internationalFederations/pi.png";
 import saudi from "../../../assets/group-logos/logos/internationalFederations/saudi.png";

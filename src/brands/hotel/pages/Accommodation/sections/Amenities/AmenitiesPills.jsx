@@ -2,10 +2,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./AmenitiesPills.module.css";
 
 import HotelIconPill from "../../../../shared/ui/HotelIconPill/HotelIconPill.jsx";
-import hotelBrand, {
-  ICONS,
-  resolveHotelIcon,
-} from "../../../../config/index.js";
+import amenities from "../../../../config/sections/accommodation/amenities.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 function getValidItems(items) {
   return Array.isArray(items)
@@ -37,7 +36,7 @@ function getPreferredScrollBehavior() {
 }
 
 export default function AmenitiesPills() {
-  const content = hotelBrand?.pages?.accommodation?.sections?.amenities ?? null;
+  const content = amenities;
   const ui = content?.ui ?? {};
 
   const spotlightRef = useRef(null);

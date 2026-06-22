@@ -6,7 +6,9 @@ import HotelFooter from "../components/FooterHotel";
 import HotelPrimaryNav from "./HotelPrimaryNav.jsx";
 import ScrollToTopOnRouteChange from "./ScrollToTopOnRouteChange.jsx";
 
-import hotelBrand, { HOTEL_BASE_PATH } from "../config/index.js";
+import footerData from "../config/core/footer.js";
+import header from "../config/core/header.js";
+import { HOTEL_BASE_PATH } from "../config/core/paths.js";
 import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.js";
 
 import "../theme.css";
@@ -15,14 +17,12 @@ import styles from "./HotelShell.module.css";
 export default function HotelShell() {
   const location = useLocation();
 
-  const footerData = hotelBrand.sections?.footer;
-
   const socials =
-    hotelBrand?.header?.socials ??
-    hotelBrand?.sections?.footer?.infoHeader?.socials?.items ??
+    header?.socials ??
+    footerData?.infoHeader?.socials?.items ??
     [];
 
-  const lang = hotelBrand?.header?.lang ?? hotelBrand?.lang ?? LANG_DEFAULT;
+  const lang = header?.lang ?? LANG_DEFAULT;
 
   const isHotelHome =
     location.pathname === HOTEL_BASE_PATH ||

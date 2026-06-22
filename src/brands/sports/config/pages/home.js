@@ -1,10 +1,12 @@
-import { home as homeSections } from "../sections/index.js";
+import menu from "../sections/home/menu.js";
 
 const home = {
   id: "home",
+
   sections: {
-    menu: homeSections.menu,
+    menu,
   },
 };
 
 export default home;
+

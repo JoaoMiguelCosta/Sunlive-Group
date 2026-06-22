@@ -9,9 +9,7 @@ import {
  * Ícones globais (2+ brands) devem ficar no shared.
  */
 export const BRAND_ICONS = Object.freeze({
- 
+
   PackageIcon,
   TravelVector,
 });
-
-export default BRAND_ICONS;

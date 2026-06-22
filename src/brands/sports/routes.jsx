@@ -1,21 +1,41 @@
-import { Route, Navigate } from "react-router-dom";
+import { lazy } from "react";
+import { Navigate, Route } from "react-router-dom";
 
-import SportsShell from "./layouts/SportsShell.jsx";
+const SportsShell = lazy(() => import("./layouts/SportsShell.jsx"));
 
-import HomePageSports from "./pages/Home/index.jsx";
-import TrainingCampsPage from "./pages/TrainingCamps/index.jsx";
-import AcademiesPage from "./pages/Academies/index.jsx";
-import EventsPage from "./pages/Events/index.jsx";
-import AthletesPage from "./pages/Athletes/index.jsx";
-import TestimonialsPage from "./pages/Testimonials/index.jsx";
-import SpecialisedServicesPage from "./pages/SpecialisedServices/index.jsx";
-import EducationPage from "./pages/Education/index.jsx";
-import LeisureSportsTourismPage from "./pages/LeisureSportsTourism/index.jsx";
-import ModalitiesPage from "./pages/Modalities/index.jsx";
-import InfrastructuresPage from "./pages/Infrastructures/index.jsx";
-import LogisticsPage from "./pages/Logistics/index.jsx";
-import ConsultancyPage from "./pages/Consultancy/index.jsx";
-import ContactsPage from "./pages/Contacts/index.jsx";
+const HomePageSports = lazy(() => import("./pages/Home/index.jsx"));
+
+const TrainingCampsPage = lazy(() => import("./pages/TrainingCamps/index.jsx"));
+
+const AcademiesPage = lazy(() => import("./pages/Academies/index.jsx"));
+
+const EventsPage = lazy(() => import("./pages/Events/index.jsx"));
+
+const AthletesPage = lazy(() => import("./pages/Athletes/index.jsx"));
+
+const TestimonialsPage = lazy(() => import("./pages/Testimonials/index.jsx"));
+
+const SpecialisedServicesPage = lazy(
+  () => import("./pages/SpecialisedServices/index.jsx"),
+);
+
+const EducationPage = lazy(() => import("./pages/Education/index.jsx"));
+
+const LeisureSportsTourismPage = lazy(
+  () => import("./pages/LeisureSportsTourism/index.jsx"),
+);
+
+const ModalitiesPage = lazy(() => import("./pages/Modalities/index.jsx"));
+
+const InfrastructuresPage = lazy(
+  () => import("./pages/Infrastructures/index.jsx"),
+);
+
+const LogisticsPage = lazy(() => import("./pages/Logistics/index.jsx"));
+
+const ConsultancyPage = lazy(() => import("./pages/Consultancy/index.jsx"));
+
+const ContactsPage = lazy(() => import("./pages/Contacts/index.jsx"));
 
 export const sportsRoutes = [
   <Route key="sports" path="/sunlive-group/sports" element={<SportsShell />}>
@@ -26,15 +46,19 @@ export const sportsRoutes = [
     <Route path="eventos" element={<EventsPage />} />
     <Route path="atletas-sunlive" element={<AthletesPage />} />
     <Route path="testemunhos" element={<TestimonialsPage />} />
+
     <Route
       path="servicos-especializados"
       element={<SpecialisedServicesPage />}
     />
+
     <Route path="educacao" element={<EducationPage />} />
+
     <Route
       path="turismo-desportivo-ludico"
       element={<LeisureSportsTourismPage />}
     />
+
     <Route path="modalidades" element={<ModalitiesPage />} />
     <Route path="infraestruturas" element={<InfrastructuresPage />} />
     <Route path="logistica" element={<LogisticsPage />} />

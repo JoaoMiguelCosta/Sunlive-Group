@@ -1,9 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import facilitiesLeisure from "../../../../config/sections/facilities/facilitiesLeisure.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function DescriptionFacilitiesLeisure({ className = "" }) {
-  const content =
-    hotelBrand?.pages?.facilities?.sections?.facilitiesLeisure ?? null;
+  const content = facilitiesLeisure;
 
   if (!content?.description) return null;
 

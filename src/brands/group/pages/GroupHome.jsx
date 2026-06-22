@@ -1,4 +1,4 @@
-import styles from "../layout/GroupPageLayout.module.css";
+import styles from "../layouts/GroupPageLayout.module.css";
 
 import OverviewSection from "../components/Sections/Group/OverviewSection/index.jsx";
 import PeopleSection from "../components/Sections/Group/PeopleSection/index.jsx";
@@ -7,15 +7,13 @@ import ContactsSection from "../components/Sections/Group/ContactsSection/index.
 import PartnersSection from "../components/Sections/Group/PartnersSection/index.jsx";
 import BookSection from "../components/Sections/Group/BookSection/index.jsx";
 
-import GroupFooter from "../layout/GroupFooter/GroupFooter.jsx";
-import groupBrand from "../config/index.js";
+import GroupFooter from "../layouts/GroupFooter/GroupFooter.jsx";
+import { groupFooter as footerConfig } from "../config/core/footer.js";
 
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
 export default function GroupHome() {
   useScrollToHash(24);
-
-  const footerConfig = groupBrand.sections?.footer;
 
   return (
     <div className={styles.pageWrap}>

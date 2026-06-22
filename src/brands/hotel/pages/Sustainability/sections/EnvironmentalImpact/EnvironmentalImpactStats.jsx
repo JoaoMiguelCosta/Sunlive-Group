@@ -1,10 +1,9 @@
-import hotelBrand from "../../../../config/index.js";
+import environmentalImpact from "../../../../config/sections/sustainability/environmentalImpact.js";
 import HotelStatsGrid from "../../../../shared/ui/HotelStatsGrid/HotelStatsGrid.jsx";
 import styles from "./EnvironmentalImpactStats.module.css";
 
 export default function EnvironmentalImpactStats() {
-  const section =
-    hotelBrand?.pages?.sustainability?.sections?.environmentalImpact ?? null;
+  const section = environmentalImpact;
 
   const items = Array.isArray(section?.stats?.items) ? section.stats.items : [];
 

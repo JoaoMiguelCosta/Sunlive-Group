@@ -1,4 +1,5 @@
-import sportsBrand, { resolveSportsIcon } from "../../../../config/index.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
+import { resolveSportsIcon } from "../../../../config/core/iconKeyMap.js";
 
 export function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -39,7 +40,7 @@ export function getValidMarkers(markers) {
 export function getIconComponent(iconKey) {
   if (!isValidText(iconKey)) return null;
 
-  return resolveSportsIcon(sportsBrand.icons, iconKey);
+  return resolveSportsIcon(ICONS, iconKey);
 }
 
 export function getTargetId(modality) {

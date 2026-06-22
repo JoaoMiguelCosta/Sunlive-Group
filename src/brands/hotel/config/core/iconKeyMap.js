@@ -1,4 +1,4 @@
-const BRAND_ICON_KEY_MAP = Object.freeze({
+﻿const BRAND_ICON_KEY_MAP = Object.freeze({
   water: "WaterIcon",
   "local-products": "FruitBasketIcon",
   celebration: "CelebrationIcon",
@@ -65,7 +65,7 @@ const BRAND_ICON_KEY_MAP = Object.freeze({
   "circle-off": "CircleOffIcon",
 });
 
-export function resolveHotelIconName(iconKey) {
+function resolveHotelIconName(iconKey) {
   if (!iconKey) return null;
   return BRAND_ICON_KEY_MAP[iconKey] ?? iconKey;
 }
@@ -76,6 +76,3 @@ export function resolveHotelIcon(icons, iconKey) {
   const resolvedIconName = resolveHotelIconName(iconKey);
   return icons[resolvedIconName] ?? null;
 }
-
-export { BRAND_ICON_KEY_MAP };
-export default BRAND_ICON_KEY_MAP;

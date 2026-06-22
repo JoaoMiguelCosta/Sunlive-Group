@@ -1,25 +1,5 @@
 import { TRAVEL_PAGE_PATHS } from "./paths.js";
 
-export const TRAVEL_QUICK_LINKS = Object.freeze([
-  { key: "logistics", label: "Logística", href: TRAVEL_PAGE_PATHS.logistics },
-  {
-    key: "destinations",
-    label: "Destinos",
-    href: TRAVEL_PAGE_PATHS.destinations,
-  },
-  { key: "partners", label: "Parceiros", href: TRAVEL_PAGE_PATHS.partners },
-  {
-    key: "testimonials",
-    label: "Testemunhos",
-    href: TRAVEL_PAGE_PATHS.testimonials,
-  },
-  {
-    key: "contacts",
-    label: "Contactar",
-    href: TRAVEL_PAGE_PATHS.contacts,
-  },
-]);
-
 export const TRAVEL_NAV = Object.freeze([
   {
     key: "logistics",
@@ -66,5 +46,3 @@ export const TRAVEL_NAV = Object.freeze([
     href: TRAVEL_PAGE_PATHS.testimonials,
   },
 ]);
-
-export default TRAVEL_NAV;

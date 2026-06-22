@@ -1,13 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import testimonials from "../../../../config/sections/information/testimonials.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import useSpotlightCycle from "../../../../../../shared/hooks/useSpotlightCycle.js";
 
 import HotelTestimonialSpotlightCard from "../../../../shared/ui/HotelTestimonialSpotlightCard/HotelTestimonialSpotlightCard.jsx";
 
 import styles from "./TestimonialsSpotlight.module.css";
 
-function chunkItems(items = [], size = 3) {
+const EMPTY_ITEMS = Object.freeze([]);
+const EMPTY_NAVIGATION = Object.freeze({});
+
+function chunkItems(items = EMPTY_ITEMS, size = 3) {
   const safeSize = Math.max(1, size);
   const chunks = [];
 
@@ -29,16 +34,17 @@ function resolveNavigationIcon(iconNode, iconName) {
   if (iconNode) return iconNode;
   if (!iconName) return null;
 
-  const Icon = resolveHotelIcon(hotelBrand?.icons, iconName);
+  const Icon = resolveHotelIcon(ICONS, iconName);
 
   return Icon ? <Icon /> : null;
 }
 
 export default function TestimonialsSpotlight() {
-  const content =
-    hotelBrand?.pages?.information?.sections?.testimonials?.spotlight ?? null;
+  const content = testimonials?.spotlight ?? null;
 
-  const items = Array.isArray(content?.items) ? content.items : [];
+  const items = Array.isArray(content?.items) ? content.items : EMPTY_ITEMS;
+
+  const navigation = content?.navigation ?? EMPTY_NAVIGATION;
 
   const [cardsPerView, setCardsPerView] = useState(() =>
     typeof window === "undefined"
@@ -47,6 +53,10 @@ export default function TestimonialsSpotlight() {
   );
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
     const handleResize = () => {
       setCardsPerView(
         getCardsPerView(window.innerWidth, content?.cardsPerView),
@@ -54,6 +64,7 @@ export default function TestimonialsSpotlight() {
     };
 
     handleResize();
+
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -63,7 +74,7 @@ export default function TestimonialsSpotlight() {
 
   const slides = useMemo(
     () => chunkItems(items, cardsPerView),
-    [items, cardsPerView],
+    [cardsPerView, items],
   );
 
   const { index, setIndex } = useSpotlightCycle(
@@ -72,14 +83,14 @@ export default function TestimonialsSpotlight() {
   );
 
   useEffect(() => {
-    if (!slides.length) return;
+    if (slides.length === 0) {
+      return;
+    }
 
     if (index > slides.length - 1) {
       setIndex(0);
     }
-  }, [index, slides.length, setIndex]);
-
-  const navigation = content?.navigation ?? {};
+  }, [index, setIndex, slides.length]);
 
   const resolvedNavigation = useMemo(
     () => ({
@@ -88,25 +99,31 @@ export default function TestimonialsSpotlight() {
           navigation.previousIcon,
           navigation.previousIconName,
         ) ?? "‹",
+
       nextIcon:
         resolveNavigationIcon(navigation.nextIcon, navigation.nextIconName) ??
         "›",
+
       profileIcon: resolveNavigationIcon(
         navigation.profileIcon,
         navigation.profileIconName,
       ),
+
       quoteIcon: resolveNavigationIcon(
         navigation.quoteIcon,
         navigation.quoteIconName,
       ),
+
       locationIcon: resolveNavigationIcon(
         navigation.locationIcon,
         navigation.locationIconName,
       ),
+
       dateIcon: resolveNavigationIcon(
         navigation.dateIcon,
         navigation.dateIconName,
       ),
+
       starIcon: resolveNavigationIcon(
         navigation.starIcon,
         navigation.starIconName,
@@ -115,17 +132,21 @@ export default function TestimonialsSpotlight() {
     [navigation],
   );
 
-  if (!content || !items.length || !slides.length) return null;
+  if (!content || items.length === 0 || slides.length === 0) {
+    return null;
+  }
 
   const activeSlide = slides[index] ?? [];
   const labels = content?.labels ?? {};
 
   const handlePrevious = () => {
-    setIndex((current) => (current - 1 + slides.length) % slides.length);
+    setIndex(
+      (currentIndex) => (currentIndex - 1 + slides.length) % slides.length,
+    );
   };
 
   const handleNext = () => {
-    setIndex((current) => (current + 1) % slides.length);
+    setIndex((currentIndex) => (currentIndex + 1) % slides.length);
   };
 
   return (

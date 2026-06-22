@@ -1,9 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import accessibility from "../../../../config/sections/facilities/accessibility.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleAccessibility({ titleId }) {
-  const content =
-    hotelBrand?.pages?.facilities?.sections?.accessibility ?? null;
+  const content = accessibility;
 
   if (!content?.headerLabel) return null;
 

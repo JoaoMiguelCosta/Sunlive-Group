@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import storyMilestones from "../../../../config/sections/about/storyMilestones.js";
 
 import OurStoryMilestonesHeader from "./OurStoryMilestonesHeader.jsx";
 import OurStoryMilestonesContent from "./OurStoryMilestonesContent.jsx";
@@ -6,8 +6,7 @@ import OurStoryMilestonesContent from "./OurStoryMilestonesContent.jsx";
 import styles from "./OurStoryMilestones.module.css";
 
 export default function OurStoryMilestonesSection() {
-  const section =
-    hotelBrand?.pages?.about?.sections?.ourStoryMilestones ?? null;
+  const section = storyMilestones;
 
   if (!section) return null;
 

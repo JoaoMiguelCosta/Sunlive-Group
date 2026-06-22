@@ -1,9 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import receptionSupport from "../../../../config/sections/facilities/receptionSupport.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleReceptionSupport({ titleId }) {
-  const content =
-    hotelBrand?.pages?.facilities?.sections?.receptionSupport ?? null;
+  const content = receptionSupport;
 
   if (!content?.headerLabel) return null;
 

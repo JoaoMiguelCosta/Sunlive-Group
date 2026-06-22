@@ -1,11 +1,16 @@
-// src/shared/hooks/useInView.js
 import { useEffect, useRef, useState } from "react";
 
 /**
- * useInView
- * - devolve { ref, inView }
- * - se once = true, só dispara 1 vez
- * - se once = false, alterna true/false sempre que entra/sai do viewport
+ * Observa quando um elemento entra ou sai do viewport.
+ *
+ * @param {object} options
+ * @param {number|number[]} options.threshold
+ * @param {Element|null} options.root
+ * @param {string} options.rootMargin
+ * @param {boolean} options.once
+ * @param {boolean} options.enabled
+ *
+ * @returns {{ ref: import("react").RefObject<HTMLElement|null>, inView: boolean }}
  */
 export default function useInView(options = {}) {
   const {
@@ -13,34 +18,58 @@ export default function useInView(options = {}) {
     root = null,
     rootMargin = "0px",
     once = false,
+    enabled = true,
   } = options;
 
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
+    if (!enabled) {
+      setInView(false);
+      return undefined;
+    }
+
     const node = ref.current;
-    if (!node || typeof IntersectionObserver === "undefined") return;
+
+    if (!node || typeof IntersectionObserver === "undefined") {
+      return undefined;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setInView(true);
-            if (once) observer.unobserve(entry.target);
-          } else if (!once) {
-            // 👈 volta a false quando sai do viewport
+
+            if (once) {
+              observer.unobserve(entry.target);
+            }
+
+            return;
+          }
+
+          if (!once) {
             setInView(false);
           }
         });
       },
-      { threshold, root, rootMargin }
+      {
+        threshold,
+        root,
+        rootMargin,
+      },
     );
 
     observer.observe(node);
 
-    return () => observer.disconnect();
-  }, [threshold, root, rootMargin, once]);
+    return () => {
+      observer.disconnect();
+    };
+  }, [enabled, once, root, rootMargin, threshold]);
 
-  return { ref, inView };
+  return {
+    ref,
+    inView,
+  };
 }

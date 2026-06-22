@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import futureGoals from "../../../../config/sections/sustainability/futureGoals.js";
 
 import FutureGoalsTitle from "./FutureGoalsTitle.jsx";
 import FutureGoalsDescription from "./FutureGoalsDescription.jsx";
@@ -7,8 +7,7 @@ import FutureGoalsCards from "./FutureGoalsCards.jsx";
 import styles from "./FutureGoals.module.css";
 
 export default function FutureGoalsSection() {
-  const section =
-    hotelBrand?.pages?.sustainability?.sections?.futureGoals ?? null;
+  const section = futureGoals;
 
   if (!section) return null;
 

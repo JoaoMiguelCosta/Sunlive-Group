@@ -1,10 +1,10 @@
 import styles from "./MantraHeadline.module.css";
 
-import { groupHomePage } from "../../../../config/pages/index.js";
+import presence from "../../../../config/sections/home/presence.js";
 import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
 
 export default function MantraHeadline() {
-  const headline = groupHomePage?.sections?.presence?.headlineBottom;
+  const headline = presence?.headlineBottom;
 
   const src = headline?.src ?? null;
   const alt = headline?.alt ?? "Mantra";

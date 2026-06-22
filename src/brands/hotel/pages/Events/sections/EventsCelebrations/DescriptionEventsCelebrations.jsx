@@ -1,9 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import eventsCelebrations from "../../../../config/sections/events/eventsCelebrations.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function DescriptionEventsCelebrations() {
-  const section =
-    hotelBrand?.pages?.events?.sections?.eventsCelebrations ?? null;
+  const section = eventsCelebrations;
 
   if (!section?.description) return null;
 

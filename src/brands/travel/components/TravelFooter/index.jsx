@@ -1,5 +1,5 @@
 import Footer from "../../../../shared/components/Footer";
-import travelBrand from "../../config/index.js";
+import footer from "../../config/core/footer.js";
 import TravelLinkDirectory from "./TravelLinkDirectory.jsx";
 
 export default function TravelFooter({
@@ -7,7 +7,7 @@ export default function TravelFooter({
   variant = "default",
   ...rest
 }) {
-  const data = travelBrand?.footer ?? null;
+  const data = footer;
   if (!data) return null;
 
   return (

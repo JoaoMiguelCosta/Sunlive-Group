@@ -1,28 +1,34 @@
-import styles from "./OtherSportsPanel.module.css";
 import useInView from "../../../../shared/hooks/useInView.js";
+
 import OtherSportsCategoryCard from "./OtherSportsCategoryCard.jsx";
 
-export default function OtherSportsPanel({ data }) {
-  if (!data) return null;
+import styles from "./OtherSportsPanel.module.css";
 
-  const categories = Array.isArray(data.categories) ? data.categories : [];
-  const titleId = data.title ? "training-camps-other-sports-title" : undefined;
+export default function OtherSportsPanel({ data }) {
+  const categories = Array.isArray(data?.categories) ? data.categories : [];
 
   const { ref, inView } = useInView({
     threshold: 0.12,
     once: true,
+    enabled: Boolean(data) && categories.length > 0,
   });
 
-  if (!categories.length) return null;
+  if (!data || categories.length === 0) {
+    return null;
+  }
+
+  const titleId = data.title ? "training-camps-other-sports-title" : undefined;
+
+  const panelClassName = [
+    styles.panel,
+    styles.reveal,
+    inView ? styles.isVisible : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <div
-      ref={ref}
-      className={`${styles.panel} ${styles.reveal} ${
-        inView ? styles.isVisible : ""
-      }`}
-      aria-labelledby={titleId}
-    >
+    <div ref={ref} className={panelClassName} aria-labelledby={titleId}>
       <div className={styles.header}>
         {data.eyebrow ? <p className={styles.eyebrow}>{data.eyebrow}</p> : null}
 

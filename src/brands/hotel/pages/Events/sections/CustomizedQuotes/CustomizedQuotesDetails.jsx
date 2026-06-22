@@ -1,6 +1,6 @@
-import { useMemo } from "react";
-
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import customizedQuotes from "../../../../config/sections/events/customizedQuotes.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 import styles from "./CustomizedQuotesDetails.module.css";
 
@@ -20,37 +20,40 @@ function DetailIcon({ icon = null, label = "" }) {
   );
 }
 
+function buildDetailCards(detailsCards) {
+  if (!Array.isArray(detailsCards)) {
+    return [];
+  }
+
+  return detailsCards
+    .filter((card) => card?.id && card?.title)
+    .map((card) => {
+      const Icon = card?.icon
+        ? resolveHotelIcon(ICONS, card.icon)
+        : null;
+
+      return {
+        ...card,
+        iconComponent: Icon ? <Icon /> : null,
+      };
+    });
+}
+
 export default function CustomizedQuotesDetails() {
-  const section = hotelBrand?.pages?.events?.sections?.customizedQuotes ?? null;
-  const rawCards = Array.isArray(section?.detailsCards)
-    ? section.detailsCards
-    : [];
+  const section = customizedQuotes;
 
-  const cards = useMemo(() => {
-    return rawCards
-      .filter((card) => card?.id && card?.title)
-      .map((card) => {
-        const Icon = card?.icon
-          ? resolveHotelIcon(hotelBrand?.icons, card.icon)
-          : null;
+  const cards = buildDetailCards(section?.detailsCards);
 
-        return {
-          ...card,
-          iconComponent: Icon ? <Icon /> : null,
-        };
-      });
-  }, [rawCards]);
+  if (cards.length === 0) {
+    return null;
+  }
 
-  if (!cards.length) return null;
+  const detailsAriaLabel =
+    section?.ui?.detailsAriaLabel ??
+    "Detalhes necessários para orçamento personalizado";
 
   return (
-    <div
-      className={styles.grid}
-      aria-label={
-        section?.ui?.detailsAriaLabel ??
-        "Detalhes necessários para orçamento personalizado"
-      }
-    >
+    <div className={styles.grid} aria-label={detailsAriaLabel}>
       {cards.map((card) => (
         <article key={card.id} className={styles.card}>
           <div className={styles.topBand} aria-hidden="true" />

@@ -1,9 +1,9 @@
 import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
 
-import curiaImg from "../../../assets/PartnerHotels/curia.png";
-import pateiraImg from "../../../assets/PartnerHotels/pateira.png";
-import estanciaImg from "../../../assets/PartnerHotels/estancia.png";
-import goldImg from "../../../assets/PartnerHotels/gold.png";
+import curiaImg from "../../../assets/PartnerHotels/curia.webp";
+import pateiraImg from "../../../assets/PartnerHotels/pateira.webp";
+import estanciaImg from "../../../assets/PartnerHotels/estancia.webp";
+import goldImg from "../../../assets/PartnerHotels/gold.webp";
 import grandImg from "../../../assets/PartnerHotels/grand.png";
 
 const partnerHotels = {

@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 
 import styles from "./StayPoliciesAccordion.module.css";
-import { ICONS, resolveHotelIcon } from "../../../../config/index.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 function Chevron({ open }) {
   return (

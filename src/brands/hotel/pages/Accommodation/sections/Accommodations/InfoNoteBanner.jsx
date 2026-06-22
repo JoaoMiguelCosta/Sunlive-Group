@@ -1,10 +1,8 @@
 import styles from "./InfoNoteBanner.module.css";
-import hotelBrand from "../../../../config/index.js";
+import accommodations from "../../../../config/sections/accommodation/accommodations.js";
 
 export default function InfoNoteBanner({ className = "" }) {
-  const note =
-    hotelBrand?.pages?.accommodation?.sections?.accommodations?.infoNote ??
-    null;
+  const note = accommodations?.infoNote ?? null;
 
   if (!note?.text) return null;
 

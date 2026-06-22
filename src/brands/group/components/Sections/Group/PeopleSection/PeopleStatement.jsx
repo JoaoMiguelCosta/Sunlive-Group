@@ -1,10 +1,10 @@
 import styles from "./PeopleStatement.module.css";
 
-import { groupHomePage } from "../../../../config/pages/index.js";
+import people from "../../../../config/sections/home/people.js";
 import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
 
 export default function PeopleStatement() {
-  const statement = groupHomePage?.sections?.people?.statement;
+  const statement = people?.statement;
 
   const src = statement?.src ?? null;
   const alt = statement?.alt ?? "People statement";

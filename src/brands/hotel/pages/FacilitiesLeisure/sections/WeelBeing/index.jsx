@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import wellBeing from "../../../../config/sections/facilities/wellBeing.js";
 import TitleWellBeing from "./TitleWellBeing.jsx";
 import DescriptionWellBeing from "./DescriptionWellBeing.jsx";
 import WellBeingExperiences from "./WellBeingExperiences.jsx";
@@ -6,7 +6,7 @@ import WellBeingExperiences from "./WellBeingExperiences.jsx";
 import styles from "./WellBeing.module.css";
 
 export default function WellBeingSection() {
-  const section = hotelBrand?.pages?.facilities?.sections?.wellBeing ?? null;
+  const section = wellBeing;
 
   if (!section) return null;
 

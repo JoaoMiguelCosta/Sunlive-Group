@@ -1,12 +1,11 @@
-import hotelBrand from "../../../../config/index.js";
+import aboutTheHotel from "../../../../config/sections/about/aboutTheHotel.js";
 import AboutTheHotelHeader from "./AboutTheHotelHeader.jsx";
 import AboutTheHotelContent from "./AboutTheHotelContent.jsx";
 
 import styles from "./AboutTheHotel.module.css";
 
 export default function AboutTheHotel() {
-  const aboutSection =
-    hotelBrand?.pages?.about?.sections?.aboutTheHotel ?? null;
+  const aboutSection = aboutTheHotel;
 
   if (!aboutSection) return null;
 

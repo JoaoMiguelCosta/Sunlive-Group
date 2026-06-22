@@ -4,44 +4,77 @@ import { useLocation } from "react-router-dom";
 /**
  * Abre automaticamente um acordeão quando o hash corresponde ao regex.
  *
- * Ex.: regex = /^#unit-(.+)$/     → abre "unit-<key>"
- *      regex = /^#country-(.+)$/  → abre "country-<key>"
+ * Exemplos:
+ * - /^#unit-(.+)$/ abre "unit-<key>"
+ * - /^#country-(.+)$/ abre "country-<key>"
  *
- * - Só corre na rota `routePath` (default: "/sunlive-group")
- * - Só processa 1x por hash (permite fechar manualmente depois)
+ * Regras:
+ * - Só executa na rota definida em routePath.
+ * - Só processa cada hash uma vez.
+ * - Permite fechar manualmente depois da abertura automática.
  */
 export default function useOpenFromHash({
   routePath = "/sunlive-group",
-  regex, // ex.: /^#unit-(.+)$/
-  items, // array com objetos { key }
-  isOpen, // função: (key) => boolean
-  toggle, // função: (key) => void
+  regex,
+  items,
+  isOpen,
+  toggle,
 }) {
   const { hash, pathname } = useLocation();
+
   const lastHashHandledRef = useRef("");
+  const isOpenRef = useRef(isOpen);
+  const toggleRef = useRef(toggle);
 
   useEffect(() => {
-    if (pathname !== routePath) return;
-    if (!regex) return;
+    isOpenRef.current = isOpen;
+    toggleRef.current = toggle;
+  }, [isOpen, toggle]);
 
-    const m = (hash || "").match(regex);
-    if (!m) return;
+  useEffect(() => {
+    if (pathname !== routePath || !regex) {
+      return undefined;
+    }
 
-    const key = m[1];
-    if (!items?.some?.((it) => it?.key === key)) return;
+    const match = (hash || "").match(regex);
 
-    // evita reprocessar o mesmo hash
-    if (lastHashHandledRef.current === hash) return;
+    if (!match) {
+      return undefined;
+    }
+
+    const itemKey = match[1];
+
+    const itemExists = items?.some?.((item) => item?.key === itemKey);
+
+    if (!itemExists) {
+      return undefined;
+    }
+
+    if (
+      typeof isOpenRef.current !== "function" ||
+      typeof toggleRef.current !== "function"
+    ) {
+      return undefined;
+    }
+
+    if (lastHashHandledRef.current === hash) {
+      return undefined;
+    }
+
     lastHashHandledRef.current = hash;
 
-    // abre apenas se ainda estiver fechado
-    if (!isOpen(key)) {
-      setTimeout(() => {
-        if (!isOpen(key)) toggle(key);
-      }, 0);
+    if (isOpenRef.current(itemKey)) {
+      return undefined;
     }
-    // deps estáveis: reagir apenas a hash/rota/itens/config
-  }, [hash, pathname, items, routePath, regex]);
+
+    const timeoutId = window.setTimeout(() => {
+      if (!isOpenRef.current(itemKey)) {
+        toggleRef.current(itemKey);
+      }
+    }, 0);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [hash, items, pathname, regex, routePath]);
 }
-
-

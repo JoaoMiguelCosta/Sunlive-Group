@@ -1,6 +1,6 @@
 import uec from "../../../assets/group-logos/logos/committes/uec.png";
 import cob from "../../../assets/group-logos/logos/committes/cob.png";
-import cop from "../../../assets/group-logos/logos/committes/cop.png";
+import cop from "../../../assets/group-logos/logos/committes/cop.webp";
 import coa from "../../../assets/group-logos/logos/committes/coa.png";
 
 export const committees = {

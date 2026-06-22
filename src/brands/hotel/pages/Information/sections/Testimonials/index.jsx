@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import testimonials from "../../../../config/sections/information/testimonials.js";
 
 import TitleTestimonials from "./TitleTestimonials.jsx";
 import DescriptionTestimonials from "./DescriptionTestimonials.jsx";
@@ -8,8 +8,7 @@ import TestimonialsSpotlight from "./TestimonialsSpotlight.jsx";
 import styles from "./Testimonials.module.css";
 
 export default function TestimonialsSection() {
-  const section =
-    hotelBrand?.pages?.information?.sections?.testimonials ?? null;
+  const section = testimonials;
 
   if (!section) return null;
 

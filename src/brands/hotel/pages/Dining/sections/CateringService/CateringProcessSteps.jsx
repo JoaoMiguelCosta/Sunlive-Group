@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import catering from "../../../../config/sections/dining/catering.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelCateringStepCard from "../../../../shared/ui/HotelCateringStepCard/HotelCateringStepCard.jsx";
 
 import styles from "./CateringProcessSteps.module.css";
@@ -12,7 +14,9 @@ function DetailsPanel({
   panelId,
   titleId,
 }) {
-  if (!item) return null;
+  if (!item) {
+    return null;
+  }
 
   return (
     <article
@@ -35,7 +39,7 @@ function DetailsPanel({
         <p className={styles.detailsText}>{item.detailText}</p>
       ) : null}
 
-      {Array.isArray(item.highlights) && item.highlights.length ? (
+      {Array.isArray(item.highlights) && item.highlights.length > 0 ? (
         <div className={styles.detailsHighlights}>
           {item.highlights.map((highlight, index) => (
             <span
@@ -52,11 +56,17 @@ function DetailsPanel({
 }
 
 export default function CateringProcessSteps() {
-  const section = hotelBrand?.pages?.dining?.sections?.catering ?? null;
+  const section = catering;
 
-  const items = Array.isArray(section?.processSteps?.items)
-    ? section.processSteps.items
-    : [];
+  const processStepItems = section?.processSteps?.items;
+
+  const safeItems = useMemo(() => {
+    if (!Array.isArray(processStepItems)) {
+      return [];
+    }
+
+    return processStepItems.filter(Boolean);
+  }, [processStepItems]);
 
   const ariaLabel =
     section?.processSteps?.ariaLabel ?? "Etapas do serviço de catering";
@@ -68,8 +78,6 @@ export default function CateringProcessSteps() {
   const detailsPanelId = `${sectionId}-step-details`;
   const detailsTitleId = `${sectionId}-step-details-title`;
 
-  const safeItems = useMemo(() => items.filter(Boolean), [items]);
-
   const [activeId, setActiveId] = useState(safeItems[0]?.id ?? null);
   const [shouldScrollToPanel, setShouldScrollToPanel] = useState(false);
 
@@ -79,36 +87,46 @@ export default function CateringProcessSteps() {
     safeItems.find((item) => item.id === activeId) ?? safeItems[0] ?? null;
 
   useEffect(() => {
-    if (!safeItems.length && activeId !== null) {
-      setActiveId(null);
+    if (safeItems.length === 0) {
+      if (activeId !== null) {
+        setActiveId(null);
+      }
+
       return;
     }
 
-    if (!safeItems.some((item) => item.id === activeId)) {
+    const activeItemStillExists = safeItems.some(
+      (item) => item.id === activeId,
+    );
+
+    if (!activeItemStillExists) {
       setActiveId(safeItems[0]?.id ?? null);
     }
   }, [activeId, safeItems]);
 
   useEffect(() => {
-    if (!shouldScrollToPanel) return;
-    if (typeof window === "undefined") return;
+    if (!shouldScrollToPanel || typeof window === "undefined") {
+      return undefined;
+    }
 
     if (window.innerWidth > 980) {
       setShouldScrollToPanel(false);
-      return;
+      return undefined;
     }
 
     const panelElement = detailsPanelRef.current;
 
     if (!panelElement) {
       setShouldScrollToPanel(false);
-      return;
+      return undefined;
     }
 
     const timeoutId = window.setTimeout(() => {
       const mobileOffset = 96;
+
       const panelTop =
         panelElement.getBoundingClientRect().top + window.scrollY;
+
       const targetY = Math.max(panelTop - mobileOffset, 0);
 
       window.scrollTo({
@@ -119,14 +137,18 @@ export default function CateringProcessSteps() {
       setShouldScrollToPanel(false);
     }, 60);
 
-    return () => window.clearTimeout(timeoutId);
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
   }, [activeItem, shouldScrollToPanel]);
 
-  if (!safeItems.length) return null;
+  if (safeItems.length === 0) {
+    return null;
+  }
 
   const handleSelectStep = (itemId) => {
     const isMobileViewport =
-      typeof window !== "undefined" ? window.innerWidth <= 980 : false;
+      typeof window !== "undefined" && window.innerWidth <= 980;
 
     setActiveId(itemId);
 
@@ -140,7 +162,7 @@ export default function CateringProcessSteps() {
       <div className={styles.grid}>
         {safeItems.map((item) => {
           const Icon = item?.iconKey
-            ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+            ? resolveHotelIcon(ICONS, item.iconKey)
             : null;
 
           const isActive = item.id === activeItem?.id;

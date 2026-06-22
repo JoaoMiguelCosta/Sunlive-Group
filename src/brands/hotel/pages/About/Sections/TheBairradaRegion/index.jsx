@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import bairradaRegion from "../../../../config/sections/about/bairradaRegion.js";
 
 import TheBairradaRegionHeader from "./TheBairradaRegionHeader.jsx";
 import HotelAboutRegionBairrada from "./HotelAboutRegionBairrada.jsx";
@@ -18,7 +18,7 @@ function getValidHighlights(items) {
 }
 
 export default function TheBairradaRegion() {
-  const section = hotelBrand?.pages?.about?.sections?.bairradaRegion ?? null;
+  const section = bairradaRegion;
 
   if (!section) return null;
 

@@ -10,10 +10,3 @@ export const CONTACT_UNIT_SLUGS = Object.freeze({
   hotel: `${GROUP_BASE_PATH}#unidade-hotel`,
   commercial: `${GROUP_BASE_PATH}#unidade-comercial`,
 });
-
-export const GROUP_PAGE_PATHS = Object.freeze({
-  home: GROUP_BASE_PATH,
-  logos: GROUP_LOGOS_PATH,
-});
-
-export default GROUP_PAGE_PATHS;

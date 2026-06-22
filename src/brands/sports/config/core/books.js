@@ -9,7 +9,7 @@ import middleSchoolPdf from "../../assets/books/middle-school.pdf";
 import trainingFromProPdf from "../../assets/books/training-from-pro.pdf";
 import universityPdf from "../../assets/books/university.pdf";
 
-export const SPORTS_BOOKS = Object.freeze({
+const SPORTS_BOOKS = Object.freeze({
   aeroEdge: makeBook({
     id: "aero-edge",
     label: "Aero Edge",

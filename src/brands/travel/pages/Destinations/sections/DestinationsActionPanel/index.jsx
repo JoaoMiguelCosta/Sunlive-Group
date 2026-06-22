@@ -1,9 +1,8 @@
-import travelBrand from "../../../../config/index.js";
+import destinationsActionPanel from "../../../../config/sections/destinations/destinationsActionPanel.js";
 import TravelActionPanel from "../../../../shared/ui/TravelActionPanel/TravelActionPanel.jsx";
 
 export default function DestinationsActionPanelSection() {
-  const section =
-    travelBrand?.pages?.destinations?.sections?.actionPanel ?? null;
+  const section = destinationsActionPanel;
 
   if (!section) return null;
 

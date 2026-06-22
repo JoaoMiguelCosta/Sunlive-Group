@@ -2,16 +2,21 @@ import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import eventsCelebrations from "../../../../config/sections/events/eventsCelebrations.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelProfileCard from "../../../../shared/ui/HotelProfileCard/HotelProfileCard.jsx";
 import HotelOfferPanel from "../../../../shared/ui/HotelOfferPanel/HotelOfferPanel.jsx";
 
 import styles from "./EventsTypes.module.css";
 
+const EMPTY_ITEMS = Object.freeze([]);
+
 function getColumnsFromViewport() {
   if (typeof window === "undefined") return 4;
   if (window.innerWidth <= 760) return 1;
   if (window.innerWidth <= 1180) return 2;
+
   return 4;
 }
 
@@ -23,16 +28,19 @@ function getPanelRowEndIndex({ activeIndex, columns, totalItems }) {
   }
 
   const rowStart = Math.floor(activeIndex / columns) * columns;
+
   return Math.min(rowStart + columns - 1, totalItems - 1);
 }
 
 export default function EventsTypes() {
-  const eventTypes =
-    hotelBrand?.pages?.events?.sections?.eventsCelebrations?.eventTypes ?? null;
+  const eventTypes = eventsCelebrations?.eventTypes ?? null;
 
-  const sourceItems = Array.isArray(eventTypes?.items) ? eventTypes.items : [];
+  const sourceItems = Array.isArray(eventTypes?.items)
+    ? eventTypes.items
+    : EMPTY_ITEMS;
 
   const [columns, setColumns] = useState(getColumnsFromViewport);
+
   const offerPanelRef = useRef(null);
   const shouldRevealPanelRef = useRef(false);
 
@@ -42,6 +50,7 @@ export default function EventsTypes() {
     }
 
     handleResize();
+
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -63,7 +72,7 @@ export default function EventsTypes() {
       .filter((item) => item?.key && item?.title)
       .map((item) => {
         const CardIcon = item?.iconKey
-          ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+          ? resolveHotelIcon(ICONS,item.iconKey)
           : null;
 
         return {
@@ -77,7 +86,7 @@ export default function EventsTypes() {
                 items: Array.isArray(item.offerPanel.items)
                   ? item.offerPanel.items.map((entry) => {
                       const EntryIcon = entry?.iconKey
-                        ? resolveHotelIcon(hotelBrand?.icons, entry.iconKey)
+                        ? resolveHotelIcon(ICONS,entry.iconKey)
                         : null;
 
                       return {
@@ -104,7 +113,9 @@ export default function EventsTypes() {
   const activeIndex = resolvedItems.findIndex((item) => isOpen(item.key));
 
   const panelRowEndIndex = useMemo(() => {
-    if (!activeItem?.offerPanel || activeIndex < 0) return -1;
+    if (!activeItem?.offerPanel || activeIndex < 0) {
+      return -1;
+    }
 
     return getPanelRowEndIndex({
       activeIndex,
@@ -116,12 +127,14 @@ export default function EventsTypes() {
   useEffect(() => {
     if (!shouldRevealPanelRef.current) return;
     if (typeof window === "undefined") return;
+
     if (window.innerWidth > 1180) {
       shouldRevealPanelRef.current = false;
       return;
     }
 
     const node = offerPanelRef.current;
+
     if (!node) {
       shouldRevealPanelRef.current = false;
       return;
@@ -136,7 +149,9 @@ export default function EventsTypes() {
       shouldRevealPanelRef.current = false;
     });
 
-    return () => window.cancelAnimationFrame(frame);
+    return () => {
+      window.cancelAnimationFrame(frame);
+    };
   }, [activeItem]);
 
   function handleToggle(itemKey) {
@@ -144,7 +159,9 @@ export default function EventsTypes() {
     toggle(itemKey);
   }
 
-  if (!resolvedItems.length) return null;
+  if (!resolvedItems.length) {
+    return null;
+  }
 
   return (
     <div className={styles.block}>
@@ -154,6 +171,7 @@ export default function EventsTypes() {
       >
         {resolvedItems.map((item, index) => {
           const open = isOpen(item.key);
+
           const shouldRenderPanelHere =
             activeItem?.offerPanel && panelRowEndIndex === index;
 

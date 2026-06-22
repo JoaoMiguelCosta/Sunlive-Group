@@ -1,6 +1,6 @@
 /* ---------- Assets PeopleSection ---------- */
 import phraseWeMake from "../../../assets/group/phrases/phrase-we-make.png";
-import teamCollage from "../../../assets/group/people/people.png";
+import teamCollage from "../../../assets/group/people/people.webp";
 
 export const people = {
   id: "people",
