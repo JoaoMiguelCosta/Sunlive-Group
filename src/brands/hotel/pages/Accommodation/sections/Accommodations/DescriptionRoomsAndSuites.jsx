@@ -1,10 +1,8 @@
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
-import hotelBrand from "../../../../config/index.js";
+import accommodations from "../../../../config/sections/accommodation/accommodations.js";
 
 export default function DescriptionRoomsAndSuites() {
-  const content =
-    hotelBrand?.pages?.accommodation?.sections?.accommodations
-      ?.roomsAndSuites ?? null;
+  const content = accommodations?.roomsAndSuites ?? null;
 
   if (!content?.description) return null;
 

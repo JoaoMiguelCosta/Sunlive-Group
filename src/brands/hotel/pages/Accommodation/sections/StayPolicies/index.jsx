@@ -4,11 +4,10 @@ import TitleStayPolicies from "./TitleStayPolicies.jsx";
 import DescriptionStayPolicies from "./DescriptionStayPolicies.jsx";
 import StayPoliciesAccordion from "./StayPoliciesAccordion.jsx";
 
-import hotelBrand from "../../../../config/index.js";
+import stayPolicies from "../../../../config/sections/accommodation/stayPolicies.js";
 
 export default function StayPolicies() {
-  const content =
-    hotelBrand?.pages?.accommodation?.sections?.stayPolicies ?? null;
+  const content = stayPolicies;
 
   if (!content) return null;
 

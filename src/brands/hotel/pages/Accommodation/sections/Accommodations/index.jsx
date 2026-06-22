@@ -11,11 +11,10 @@ import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase
 import InfoNoteBanner from "./InfoNoteBanner.jsx";
 import RoomCardsGrid from "./RoomCardsGrid.jsx";
 
-import hotelBrand from "../../../../config/index.js";
+import accommodations from "../../../../config/sections/accommodation/accommodations.js";
 
 export default function Accommodations() {
-  const content =
-    hotelBrand?.pages?.accommodation?.sections?.accommodations ?? null;
+  const content = accommodations;
 
   if (!content) return null;
 

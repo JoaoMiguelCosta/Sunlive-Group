@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import accommodations from "../../../../config/sections/accommodation/accommodations.js";
 import HotelRoomCard from "../../../../shared/ui/HotelRoomCard/HotelRoomCard.jsx";
 
 import RoomProfileFilterBar from "./RoomProfileFilterBar.jsx";
@@ -61,8 +61,7 @@ function getGridCountClass(length) {
 }
 
 export default function RoomCardsGrid() {
-  const sectionContent =
-    hotelBrand?.pages?.accommodation?.sections?.accommodations ?? null;
+  const sectionContent = accommodations;
 
   const filterConfig = sectionContent?.roomProfilesFilter ?? null;
   const defaultActiveFilter = filterConfig?.options?.[0]?.id ?? "all";

@@ -1,10 +1,9 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 
 import styles from "./ForWhomProfilesGrid.module.css";
-import hotelBrand, {
-  ICONS,
-  resolveHotelIcon,
-} from "../../../../config/index.js";
+import forWhomProfiles from "../../../../config/sections/accommodation/forWhomProfiles.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 import HotelProfileCard from "../../../../shared/ui/HotelProfileCard/HotelProfileCard.jsx";
 import HotelOfferPanel from "../../../../shared/ui/HotelOfferPanel/HotelOfferPanel.jsx";
@@ -63,8 +62,7 @@ function DetailsPanel({ card, className = "", panelRef = null, panelId }) {
 }
 
 export default function ForWhomProfilesGrid() {
-  const content =
-    hotelBrand?.pages?.accommodation?.sections?.forWhomProfiles ?? null;
+  const content = forWhomProfiles;
 
   const cards = useMemo(() => {
     const rawCards = Array.isArray(content?.items) ? content.items : [];

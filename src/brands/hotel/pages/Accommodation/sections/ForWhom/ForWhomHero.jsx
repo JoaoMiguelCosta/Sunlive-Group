@@ -1,12 +1,10 @@
 import HotelHighlightBanner from "../../../../shared/ui/HotelHighlightBanner/HotelHighlightBanner.jsx";
-import hotelBrand, {
-  ICONS,
-  resolveHotelIcon,
-} from "../../../../config/index.js";
+import forAllProfiles from "../../../../config/sections/accommodation/forAllProfiles.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 export default function ForWhomHero() {
-  const content =
-    hotelBrand?.pages?.accommodation?.sections?.forAllProfiles ?? null;
+  const content = forAllProfiles;
 
   if (!content) return null;
 
