@@ -1,8 +1,8 @@
 import styles from "./SolutionPathsSection.module.css";
-import travelBrand from "../../../../config/index.js";
+import solutionPaths from "../../../../config/sections/home/solutionPaths.js";
 
 export default function SolutionPathsSection() {
-  const section = travelBrand?.pages?.home?.sections?.solutionPaths ?? null;
+  const section = solutionPaths;
   if (!section) return null;
 
   const showcase = section?.showcase ?? {};

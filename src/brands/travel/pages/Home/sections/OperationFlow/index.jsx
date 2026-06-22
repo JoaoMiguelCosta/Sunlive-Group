@@ -1,8 +1,8 @@
 import styles from "./OperationFlowSection.module.css";
-import travelBrand from "../../../../config/index.js";
+import operationFlow from "../../../../config/sections/home/operationFlow.js";
 
 export default function OperationFlowSection() {
-  const section = travelBrand?.pages?.home?.sections?.operationFlow ?? null;
+  const section = operationFlow;
   if (!section) return null;
 
   const editorial = section?.editorial ?? {};
