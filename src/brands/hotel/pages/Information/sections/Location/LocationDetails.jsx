@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import location from "../../../../config/sections/information/location.js";
 
 import styles from "./LocationDetails.module.css";
 
@@ -13,7 +13,7 @@ function getValidItems(items) {
 }
 
 export default function LocationDetails() {
-  const section = hotelBrand?.pages?.information?.sections?.location ?? null;
+  const section = location;
   const details = section?.details ?? null;
 
   if (!details) return null;

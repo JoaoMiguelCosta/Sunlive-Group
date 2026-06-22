@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import contacts from "../../../../config/sections/information/contacts.js";
 
 import TitleContacts from "./TitleContacts.jsx";
 import DescriptionContacts from "./DescriptionContacts.jsx";
@@ -7,7 +7,7 @@ import ContactDetails from "./ContactDetails.jsx";
 import styles from "./Contacts.module.css";
 
 export default function ContactsSection() {
-  const section = hotelBrand?.pages?.information?.sections?.contacts ?? null;
+  const section = contacts;
 
   if (!section) return null;
 

@@ -1,8 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import location from "../../../../config/sections/information/location.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleLocation({ titleId }) {
-  const content = hotelBrand?.pages?.information?.sections?.location ?? null;
+  const content = location;
 
   if (!content?.headerLabel) return null;
 

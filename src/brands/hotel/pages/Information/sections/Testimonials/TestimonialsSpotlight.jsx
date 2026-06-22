@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import testimonials from "../../../../config/sections/information/testimonials.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import useSpotlightCycle from "../../../../../../shared/hooks/useSpotlightCycle.js";
 
 import HotelTestimonialSpotlightCard from "../../../../shared/ui/HotelTestimonialSpotlightCard/HotelTestimonialSpotlightCard.jsx";
@@ -32,14 +34,13 @@ function resolveNavigationIcon(iconNode, iconName) {
   if (iconNode) return iconNode;
   if (!iconName) return null;
 
-  const Icon = resolveHotelIcon(hotelBrand?.icons, iconName);
+  const Icon = resolveHotelIcon(ICONS, iconName);
 
   return Icon ? <Icon /> : null;
 }
 
 export default function TestimonialsSpotlight() {
-  const content =
-    hotelBrand?.pages?.information?.sections?.testimonials?.spotlight ?? null;
+  const content = testimonials?.spotlight ?? null;
 
   const items = Array.isArray(content?.items) ? content.items : EMPTY_ITEMS;
 

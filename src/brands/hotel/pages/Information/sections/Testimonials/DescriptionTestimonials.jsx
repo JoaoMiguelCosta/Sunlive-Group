@@ -1,9 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import testimonials from "../../../../config/sections/information/testimonials.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function DescriptionTestimonials() {
-  const section =
-    hotelBrand?.pages?.information?.sections?.testimonials ?? null;
+  const section = testimonials;
 
   if (!section?.description) return null;
 

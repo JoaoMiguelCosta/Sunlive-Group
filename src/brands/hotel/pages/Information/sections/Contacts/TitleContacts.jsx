@@ -1,8 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import contacts from "../../../../config/sections/information/contacts.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleContacts({ titleId }) {
-  const section = hotelBrand?.pages?.information?.sections?.contacts ?? null;
+  const section = contacts;
 
   if (!section?.headerLabel) return null;
 
