@@ -1,4 +1,5 @@
-import { ICONS, resolveSportsIcon } from "../../../../config/core/index.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
+import { resolveSportsIcon } from "../../../../config/core/iconKeyMap.js";
 
 export function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;

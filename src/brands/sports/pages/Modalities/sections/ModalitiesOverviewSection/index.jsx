@@ -1,4 +1,5 @@
-import { ICONS, resolveSportsIcon } from "../../../../config/core/index.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
+import { resolveSportsIcon } from "../../../../config/core/iconKeyMap.js";
 import styles from "./ModalitiesOverviewSection.module.css";
 const MODALITY_SELECT_EVENT = "sunlive:modalities-select";
 function isValidText(value) {
