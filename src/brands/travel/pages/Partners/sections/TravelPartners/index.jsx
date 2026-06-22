@@ -1,4 +1,4 @@
-import travelBrand from "../../../../config/index.js";
+import travelPartners from "../../../../config/sections/partners/travelPartners.js";
 
 import TravelPartnersHero from "./TravelPartnersHero.jsx";
 import TravelPartnersNetworkPanel from "./TravelPartnersNetworkPanel.jsx";
@@ -6,8 +6,7 @@ import TravelPartnersNetworkPanel from "./TravelPartnersNetworkPanel.jsx";
 import styles from "./TravelPartnersSection.module.css";
 
 export default function TravelPartnersSection() {
-  const section =
-    travelBrand?.pages?.partners?.sections?.travelPartners ?? null;
+  const section = travelPartners;
 
   if (!section) return null;
 
