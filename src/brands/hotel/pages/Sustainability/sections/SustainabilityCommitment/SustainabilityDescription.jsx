@@ -1,10 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import sustainabilityCommitment from "../../../../config/sections/sustainability/sustainabilityCommitment.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function SustainabilityDescription() {
-  const section =
-    hotelBrand?.pages?.sustainability?.sections?.sustainabilityCommitment ??
-    null;
+  const section = sustainabilityCommitment;
 
   if (!section?.description) return null;
 

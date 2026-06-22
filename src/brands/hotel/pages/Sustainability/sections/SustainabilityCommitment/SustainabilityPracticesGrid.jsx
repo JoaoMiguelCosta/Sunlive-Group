@@ -1,4 +1,6 @@
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import sustainabilityCommitment from "../../../../config/sections/sustainability/sustainabilityCommitment.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import SustainabilityPracticeCard from "../../../../shared/ui/SustainabilityPracticeCard/SustainabilityPracticeCard.jsx";
 
 import styles from "./SustainabilityPracticesGrid.module.css";
@@ -10,7 +12,7 @@ function buildPracticeItems(practiceItems) {
 
   return practiceItems.map((item) => {
     const TopIcon = item?.topIconKey
-      ? resolveHotelIcon(hotelBrand?.icons, item.topIconKey)
+      ? resolveHotelIcon(ICONS, item.topIconKey)
       : null;
 
     return {
@@ -21,9 +23,7 @@ function buildPracticeItems(practiceItems) {
 }
 
 export default function SustainabilityPracticesGrid() {
-  const section =
-    hotelBrand?.pages?.sustainability?.sections?.sustainabilityCommitment ??
-    null;
+  const section = sustainabilityCommitment;
 
   const items = buildPracticeItems(section?.practices?.items);
 

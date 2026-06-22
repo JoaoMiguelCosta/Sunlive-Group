@@ -1,9 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import futureGoals from "../../../../config/sections/sustainability/futureGoals.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function FutureGoalsTitle({ titleId }) {
-  const section =
-    hotelBrand?.pages?.sustainability?.sections?.futureGoals ?? null;
+  const section = futureGoals;
 
   if (!section?.headerLabel) return null;
 

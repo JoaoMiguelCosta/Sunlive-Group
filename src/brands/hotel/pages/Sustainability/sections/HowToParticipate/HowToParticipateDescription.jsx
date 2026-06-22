@@ -1,9 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import howToParticipate from "../../../../config/sections/sustainability/howToParticipate.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function HowToParticipateDescription() {
-  const section =
-    hotelBrand?.pages?.sustainability?.sections?.howToParticipate ?? null;
+  const section = howToParticipate;
 
   if (!section?.description) return null;
 

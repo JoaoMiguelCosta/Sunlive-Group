@@ -1,4 +1,6 @@
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import futureGoals from "../../../../config/sections/sustainability/futureGoals.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import SustainabilityActionCard from "../../../../shared/ui/SustainabilityActionCard/SustainabilityActionCard.jsx";
 
 import styles from "./FutureGoalsCards.module.css";
@@ -10,7 +12,7 @@ function buildFutureGoalItems(goalItems) {
 
   return goalItems.map((item, index) => {
     const IconComponent = item?.iconKey
-      ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+      ? resolveHotelIcon(ICONS, item.iconKey)
       : null;
 
     return {
@@ -22,8 +24,7 @@ function buildFutureGoalItems(goalItems) {
 }
 
 export default function FutureGoalsCards() {
-  const section =
-    hotelBrand?.pages?.sustainability?.sections?.futureGoals ?? null;
+  const section = futureGoals;
 
   const items = buildFutureGoalItems(section?.goalCards?.items);
 

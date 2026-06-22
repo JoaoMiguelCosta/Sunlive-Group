@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import environmentalImpact from "../../../../config/sections/sustainability/environmentalImpact.js";
 import EnvironmentalImpactTitle from "./EnvironmentalImpactTitle.jsx";
 import EnvironmentalImpactDescription from "./EnvironmentalImpactDescription.jsx";
 import EnvironmentalImpactStats from "./EnvironmentalImpactStats.jsx";
@@ -6,8 +6,7 @@ import EnvironmentalImpactStats from "./EnvironmentalImpactStats.jsx";
 import styles from "./EnvironmentalImpact.module.css";
 
 export default function EnvironmentalImpactSection() {
-  const section =
-    hotelBrand?.pages?.sustainability?.sections?.environmentalImpact ?? null;
+  const section = environmentalImpact;
 
   if (!section) return null;
 
