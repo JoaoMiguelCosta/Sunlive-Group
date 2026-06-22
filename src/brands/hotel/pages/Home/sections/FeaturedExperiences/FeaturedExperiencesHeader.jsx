@@ -1,11 +1,10 @@
-import hotelBrand from "../../../../config/index.js";
+import featuredExperiences from "../../../../config/sections/home/featuredExperiences.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./FeaturedExperiencesHeader.module.css";
 
 export default function FeaturedExperiencesHeader({ titleId }) {
-  const featuredSection =
-    hotelBrand?.pages?.home?.sections?.featuredExperiences ?? null;
+  const featuredSection = featuredExperiences;
 
   const header = featuredSection?.header ?? null;
   if (!header) return null;

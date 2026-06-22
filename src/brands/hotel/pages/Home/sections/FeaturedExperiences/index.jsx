@@ -1,12 +1,11 @@
-import hotelBrand from "../../../../config/index.js";
+import featuredExperiences from "../../../../config/sections/home/featuredExperiences.js";
 import FeaturedExperiencesHeader from "./FeaturedExperiencesHeader.jsx";
 import HotelFeaturedExperiencesGrid from "./HotelFeaturedExperiencesGrid.jsx";
 
 import styles from "./FeaturedExperiences.module.css";
 
 export default function FeaturedExperiencesSection() {
-  const featuredSection =
-    hotelBrand?.pages?.home?.sections?.featuredExperiences ?? null;
+  const featuredSection = featuredExperiences;
 
   if (!featuredSection) return null;
 

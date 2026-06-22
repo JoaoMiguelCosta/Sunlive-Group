@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useCallback, useMemo } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import featuredExperiences from "../../../../config/sections/home/featuredExperiences.js";
 import FeaturedExperienceCard from "../../../../shared/ui/FeaturedExperienceCard/FeaturedExperienceCard.jsx";
 import useInfiniteHorizontalLoop from "./useInfiniteHorizontalLoop.js";
 
@@ -155,8 +155,7 @@ function renderExperienceCard(item, isVisualDuplicate, onInternalNavigation) {
 export default function HotelFeaturedExperiencesGrid() {
   const navigate = useNavigate();
 
-  const featuredSection =
-    hotelBrand?.pages?.home?.sections?.featuredExperiences ?? null;
+  const featuredSection = featuredExperiences;
 
   const items = useMemo(
     () =>
