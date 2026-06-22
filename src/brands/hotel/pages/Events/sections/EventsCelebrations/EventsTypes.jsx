@@ -2,7 +2,9 @@ import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import eventsCelebrations from "../../../../config/sections/events/eventsCelebrations.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelProfileCard from "../../../../shared/ui/HotelProfileCard/HotelProfileCard.jsx";
 import HotelOfferPanel from "../../../../shared/ui/HotelOfferPanel/HotelOfferPanel.jsx";
 
@@ -31,8 +33,7 @@ function getPanelRowEndIndex({ activeIndex, columns, totalItems }) {
 }
 
 export default function EventsTypes() {
-  const eventTypes =
-    hotelBrand?.pages?.events?.sections?.eventsCelebrations?.eventTypes ?? null;
+  const eventTypes = eventsCelebrations?.eventTypes ?? null;
 
   const sourceItems = Array.isArray(eventTypes?.items)
     ? eventTypes.items
@@ -71,7 +72,7 @@ export default function EventsTypes() {
       .filter((item) => item?.key && item?.title)
       .map((item) => {
         const CardIcon = item?.iconKey
-          ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+          ? resolveHotelIcon(ICONS,item.iconKey)
           : null;
 
         return {
@@ -85,7 +86,7 @@ export default function EventsTypes() {
                 items: Array.isArray(item.offerPanel.items)
                   ? item.offerPanel.items.map((entry) => {
                       const EntryIcon = entry?.iconKey
-                        ? resolveHotelIcon(hotelBrand?.icons, entry.iconKey)
+                        ? resolveHotelIcon(ICONS,entry.iconKey)
                         : null;
 
                       return {

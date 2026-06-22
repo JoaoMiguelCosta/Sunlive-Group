@@ -1,4 +1,6 @@
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import customizedQuotes from "../../../../config/sections/events/customizedQuotes.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 import styles from "./CustomizedQuotesDetails.module.css";
 
@@ -27,7 +29,7 @@ function buildDetailCards(detailsCards) {
     .filter((card) => card?.id && card?.title)
     .map((card) => {
       const Icon = card?.icon
-        ? resolveHotelIcon(hotelBrand?.icons, card.icon)
+        ? resolveHotelIcon(ICONS, card.icon)
         : null;
 
       return {
@@ -38,7 +40,7 @@ function buildDetailCards(detailsCards) {
 }
 
 export default function CustomizedQuotesDetails() {
-  const section = hotelBrand?.pages?.events?.sections?.customizedQuotes ?? null;
+  const section = customizedQuotes;
 
   const cards = buildDetailCards(section?.detailsCards);
 

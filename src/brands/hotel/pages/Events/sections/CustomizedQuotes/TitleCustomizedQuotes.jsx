@@ -1,8 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import customizedQuotes from "../../../../config/sections/events/customizedQuotes.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleCustomizedQuotes({ titleId }) {
-  const section = hotelBrand?.pages?.events?.sections?.customizedQuotes ?? null;
+  const section = customizedQuotes;
 
   if (!section?.headerLabel) return null;
 

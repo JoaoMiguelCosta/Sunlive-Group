@@ -1,8 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import customizedQuotes from "../../../../config/sections/events/customizedQuotes.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function DescriptionCustomizedQuotes() {
-  const section = hotelBrand?.pages?.events?.sections?.customizedQuotes ?? null;
+  const section = customizedQuotes;
 
   if (!section?.description) return null;
 

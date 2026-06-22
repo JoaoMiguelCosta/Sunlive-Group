@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import customizedQuotes from "../../../../config/sections/events/customizedQuotes.js";
 
 import TitleCustomizedQuotes from "./TitleCustomizedQuotes.jsx";
 import DescriptionCustomizedQuotes from "./DescriptionCustomizedQuotes.jsx";
@@ -8,7 +8,7 @@ import CustomizedQuotesActions from "./CustomizedQuotesActions.jsx";
 import styles from "./CustomizedQuotes.module.css";
 
 export default function CustomizedQuotesSection() {
-  const section = hotelBrand?.pages?.events?.sections?.customizedQuotes ?? null;
+  const section = customizedQuotes;
 
   if (!section) return null;
 
