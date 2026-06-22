@@ -1,5 +1,5 @@
 import UtilityBar from "../../../shared/components/UtilityBar/index.jsx";
-import { groupHomePage } from "../config/pages/home.js";
+import overview from "../config/sections/home/overview.js";
 
 const LANG_FALLBACK = {
   current: "pt",
@@ -7,10 +7,8 @@ const LANG_FALLBACK = {
 };
 
 export default function GroupUtilityBar() {
-  const overview = groupHomePage?.sections?.overview;
-
-  const socials = overview?.socials ?? [];
-  const lang = overview?.lang ?? LANG_FALLBACK;
+  const socials = overview.socials ?? [];
+  const lang = overview.lang ?? LANG_FALLBACK;
 
   return (
     <UtilityBar
