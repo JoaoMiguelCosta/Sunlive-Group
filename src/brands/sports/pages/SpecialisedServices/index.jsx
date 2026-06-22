@@ -1,20 +1,15 @@
+import specialisedServices from "../../config/pages/specialisedServices.js";
 import styles from "../../layouts/SportsPageLayout.module.css";
-
-import sportsBrand from "../../config/index.js";
-
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
-
 import AreasSection from "./sections/SpecialisedServicesAreasSection/index.jsx";
-
 export default function SpecialisedServicesPage() {
-  const data = sportsBrand.pages?.specialisedServices;
+  const data = specialisedServices;
   const sections = data?.sections;
-
   if (!sections) return null;
-
   return (
     <div className={styles.pageWrap} data-brand="sports">
+      {" "}
       <main
         id={data.ui?.pageId || data.id}
         className={styles.inner}
@@ -23,8 +18,11 @@ export default function SpecialisedServicesPage() {
           data.ui?.pageAriaLabel || "Sunlive Sports — Serviços Especializados"
         }
       >
+        {" "}
         <div className={styles.contentFlow}>
+          {" "}
           <header className={styles.heroSection}>
+            {" "}
             <SportsHeroIntro
               id={sections.hero?.id}
               eyebrow={sections.hero?.eyebrow}
@@ -35,14 +33,12 @@ export default function SpecialisedServicesPage() {
               proofPoints={sections.hero?.proofPoints}
               stats={sections.hero?.stats}
               ui={sections.hero?.ui}
-            />
-          </header>
-
-          <AreasSection data={sections.areas} />
-
-          {sections.cta ? <SportsClosingCTA data={sections.cta} /> : null}
-        </div>
-      </main>
+            />{" "}
+          </header>{" "}
+          <AreasSection data={sections.areas} />{" "}
+          {sections.cta ? <SportsClosingCTA data={sections.cta} /> : null}{" "}
+        </div>{" "}
+      </main>{" "}
     </div>
   );
 }
