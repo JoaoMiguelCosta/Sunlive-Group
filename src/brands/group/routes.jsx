@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { Navigate, Route } from "react-router-dom";
-const GroupShell = lazy(() => import("./layout/GroupShell.jsx"));
+const GroupShell = lazy(() => import("./layouts/GroupShell.jsx"));
 const GroupHome = lazy(() => import("./pages/GroupHome.jsx"));
 const GroupLogos = lazy(() => import("./pages/GroupLogos.jsx"));
 export const groupRoutes = [
