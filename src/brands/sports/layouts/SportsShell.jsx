@@ -3,12 +3,10 @@ import { Outlet, useLocation } from "react-router-dom";
 import BrandMasthead from "../../../shared/components/BrandMasthead";
 import FooterSports from "../components/FooterSports";
 
-import {
-  footer,
-  header,
-  SPORTS_BASE_PATH,
-  SPORTS_PRIMARY_NAV_ITEMS,
-} from "../config/core/index.js";
+import footer from "../config/core/footer.js";
+import header from "../config/core/header.js";
+import { SPORTS_BASE_PATH } from "../config/core/paths.js";
+import { SPORTS_PRIMARY_NAV_ITEMS } from "../config/core/nav.js";
 
 import sportsLogo from "../assets/LogoSunliveSports/sports.png";
 
