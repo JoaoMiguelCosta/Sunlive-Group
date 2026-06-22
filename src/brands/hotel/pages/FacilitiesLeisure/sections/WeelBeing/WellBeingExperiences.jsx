@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import wellBeing from "../../../../config/sections/facilities/wellBeing.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
 import HotelFacilitySummaryCard from "../../../../shared/ui/HotelFacilitySummaryCard/HotelFacilitySummaryCard.jsx";
@@ -51,8 +53,7 @@ function getPanelRowEndIndex({ activeIndex, columns, totalItems }) {
 }
 
 export default function WellBeingExperiences() {
-  const content =
-    hotelBrand?.pages?.facilities?.sections?.wellBeing ?? null;
+  const content = wellBeing;
 
   const rawItems = Array.isArray(content?.items)
     ? content.items
@@ -81,7 +82,7 @@ export default function WellBeingExperiences() {
   }, []);
 
   const items = useMemo(() => {
-    return enrichItemsWithIcons(rawItems, hotelBrand?.icons);
+    return enrichItemsWithIcons(rawItems, ICONS);
   }, [rawItems]);
 
   const accordionItems = useMemo(() => {

@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import accessibility from "../../../../config/sections/facilities/accessibility.js";
 
 import TitleAccessibility from "./TitleAccessibility.jsx";
 import DescriptionAccessibility from "./DescriptionAccessibility.jsx";
@@ -7,9 +7,6 @@ import AccessibilitySupport from "./AccessibilitySupport.jsx";
 import styles from "./Accessibility.module.css";
 
 export default function AccessibilitySection() {
-  const accessibility =
-    hotelBrand?.pages?.facilities?.sections?.accessibility ?? null;
-
   if (!accessibility) return null;
 
   const sectionId = "instalacoes-acessibilidade";

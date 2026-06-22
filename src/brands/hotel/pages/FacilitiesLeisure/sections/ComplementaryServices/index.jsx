@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import complementaryServices from "../../../../config/sections/facilities/complementaryServices.js";
 
 import TitleComplementaryServices from "./TitleComplementaryServices.jsx";
 import DescriptionComplementaryServices from "./DescriptionComplementaryServices.jsx";
@@ -7,8 +7,7 @@ import ComplementaryServicesGrid from "./ComplementaryServicesGrid.jsx";
 import styles from "./ComplementaryServices.module.css";
 
 export default function ComplementaryServicesSection() {
-  const section =
-    hotelBrand?.pages?.facilities?.sections?.complementaryServices ?? null;
+  const section = complementaryServices;
 
   if (!section) return null;
 

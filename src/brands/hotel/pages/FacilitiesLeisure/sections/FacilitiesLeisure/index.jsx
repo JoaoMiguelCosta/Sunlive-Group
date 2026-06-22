@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import facilitiesLeisure from "../../../../config/sections/facilities/facilitiesLeisure.js";
 import TitleFacilitiesLeisure from "./TitleFacilitiesLeisure.jsx";
 import DescriptionFacilitiesLeisure from "./DescriptionFacilitiesLeisure.jsx";
 import FacilitiesLeisureGallery from "./FacilitiesLeisureGallery.jsx";
@@ -6,8 +6,7 @@ import FacilitiesLeisureGallery from "./FacilitiesLeisureGallery.jsx";
 import styles from "./FacilitiesLeisure.module.css";
 
 export default function FacilitiesLeisureSection() {
-  const section =
-    hotelBrand?.pages?.facilities?.sections?.facilitiesLeisure ?? null;
+  const section = facilitiesLeisure;
 
   if (!section) return null;
 

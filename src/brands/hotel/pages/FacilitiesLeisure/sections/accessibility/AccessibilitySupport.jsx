@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import accessibility from "../../../../config/sections/facilities/accessibility.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
 import styles from "./AccessibilitySupport.module.css";
@@ -28,15 +30,14 @@ function SupportIconSlot({ icon = null, iconLabel = "" }) {
 }
 
 export default function AccessibilitySupport() {
-  const support =
-    hotelBrand?.pages?.facilities?.sections?.accessibility?.support ?? null;
+  const support = accessibility?.support ?? null;
 
   const resolvedSupport = useMemo(() => {
     if (!support) return null;
 
     const supportIconKey = support?.icon?.key ?? null;
     const SupportIcon = supportIconKey
-      ? resolveHotelIcon(hotelBrand?.icons, supportIconKey)
+      ? resolveHotelIcon(ICONS, supportIconKey)
       : null;
 
     const features = Array.isArray(support.features)

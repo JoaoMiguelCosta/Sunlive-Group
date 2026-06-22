@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
-import hotelBrand, { BRAND_FLAGS } from "../../../../config/index.js";
+import receptionSupport from "../../../../config/sections/facilities/receptionSupport.js";
+import { BRAND_FLAGS } from "../../../../config/core/flags.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
@@ -24,8 +25,7 @@ function FlagSlot({ flag = null, flagLabel = "" }) {
 }
 
 export default function ReceptionSupportServices() {
-  const content =
-    hotelBrand?.pages?.facilities?.sections?.receptionSupport?.services ?? null;
+  const content = receptionSupport?.services ?? null;
 
   const resolvedContent = useMemo(() => {
     if (!content) return null;

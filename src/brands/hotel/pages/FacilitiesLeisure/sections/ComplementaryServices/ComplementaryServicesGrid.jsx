@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import complementaryServices from "../../../../config/sections/facilities/complementaryServices.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 
 import HotelComplementaryServiceCard from "../../../../shared/ui/HotelComplementaryServiceCard/HotelComplementaryServiceCard.jsx";
@@ -24,9 +26,7 @@ function DetailIconSlot({ icon = null, iconLabel = "" }) {
 }
 
 export default function ComplementaryServicesGrid() {
-  const services =
-    hotelBrand?.pages?.facilities?.sections?.complementaryServices?.services ??
-    null;
+  const services = complementaryServices?.services ?? null;
 
   const items = useMemo(() => {
     const sourceItems = Array.isArray(services?.items) ? services.items : [];
@@ -34,7 +34,7 @@ export default function ComplementaryServicesGrid() {
     return sourceItems.map((item) => {
       const iconKey = item?.icon?.key ?? null;
       const Icon = iconKey
-        ? resolveHotelIcon(hotelBrand?.icons, iconKey)
+        ? resolveHotelIcon(ICONS, iconKey)
         : null;
 
       return {

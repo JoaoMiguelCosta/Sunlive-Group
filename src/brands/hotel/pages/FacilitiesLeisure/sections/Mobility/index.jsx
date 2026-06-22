@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import mobility from "../../../../config/sections/facilities/mobility.js";
 
 import TitleMobility from "./TitleMobility.jsx";
 import DescriptionMobility from "./DescriptionMobility.jsx";
@@ -10,8 +10,6 @@ import MobilityParkingHighlights from "./MobilityParkingHighlights.jsx";
 import styles from "./Mobility.module.css";
 
 export default function MobilitySection() {
-  const mobility = hotelBrand?.pages?.facilities?.sections?.mobility ?? null;
-
   if (!mobility) return null;
 
   const sectionId = "instalacoes-mobilidade";

@@ -1,8 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import wellBeing from "../../../../config/sections/facilities/wellBeing.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleWellBeing({ id }) {
-  const content = hotelBrand?.pages?.facilities?.sections?.wellBeing ?? null;
+  const content = wellBeing;
 
   if (!content?.headerLabel) return null;
 

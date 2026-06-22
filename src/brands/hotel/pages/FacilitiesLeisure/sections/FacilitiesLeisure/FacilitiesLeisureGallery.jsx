@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import facilitiesLeisure from "../../../../config/sections/facilities/facilitiesLeisure.js";
 
 import styles from "./FacilitiesLeisureGallery.module.css";
 
@@ -34,8 +34,7 @@ function getImagePosition(item) {
 }
 
 export default function FacilitiesLeisureGallery() {
-  const section =
-    hotelBrand?.pages?.facilities?.sections?.facilitiesLeisure ?? null;
+  const section = facilitiesLeisure;
 
   const ui = section?.ui ?? {};
   const gallery = section?.gallery ?? null;

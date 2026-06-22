@@ -1,11 +1,10 @@
-import hotelBrand from "../../../../config/index.js";
+import mobility from "../../../../config/sections/facilities/mobility.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./MobilityParkingIntro.module.css";
 
 export default function MobilityParkingIntro({ titleId }) {
-  const parking =
-    hotelBrand?.pages?.facilities?.sections?.mobility?.parking ?? null;
+  const parking = mobility?.parking ?? null;
 
   if (!parking) return null;
 

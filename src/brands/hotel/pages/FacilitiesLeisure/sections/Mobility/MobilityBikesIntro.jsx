@@ -1,12 +1,11 @@
-import hotelBrand from "../../../../config/index.js";
+import mobility from "../../../../config/sections/facilities/mobility.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 import styles from "./MobilityBikesIntro.module.css";
 
 export default function MobilityBikesIntro({ titleId }) {
-  const bikes =
-    hotelBrand?.pages?.facilities?.sections?.mobility?.bikes ?? null;
+  const bikes = mobility?.bikes ?? null;
 
   if (!bikes) return null;
 

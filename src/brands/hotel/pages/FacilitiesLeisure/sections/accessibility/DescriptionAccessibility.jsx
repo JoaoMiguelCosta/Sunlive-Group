@@ -1,9 +1,8 @@
-import hotelBrand from "../../../../config/index.js";
+import accessibility from "../../../../config/sections/facilities/accessibility.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function DescriptionAccessibility() {
-  const content =
-    hotelBrand?.pages?.facilities?.sections?.accessibility ?? null;
+  const content = accessibility;
 
   if (!content?.description) return null;
 

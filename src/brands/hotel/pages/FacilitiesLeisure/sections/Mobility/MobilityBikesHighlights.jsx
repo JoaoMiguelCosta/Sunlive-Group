@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import mobility from "../../../../config/sections/facilities/mobility.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelFeatureListWithMedia from "../../../../shared/ui/HotelFeatureListWithMedia/HotelFeatureListWithMedia.jsx";
 
 import styles from "./MobilityBikesHighlights.module.css";
 
 export default function MobilityBikesHighlights() {
-  const highlights =
-    hotelBrand?.pages?.facilities?.sections?.mobility?.bikes?.highlights ??
-    null;
+  const highlights = mobility?.bikes?.highlights ?? null;
 
   const items = useMemo(() => {
     if (!highlights?.items?.length) return [];
@@ -16,7 +16,7 @@ export default function MobilityBikesHighlights() {
     return highlights.items.map((item) => {
       const iconKey = item?.icon?.key ?? null;
       const Icon = iconKey
-        ? resolveHotelIcon(hotelBrand?.icons, iconKey)
+        ? resolveHotelIcon(ICONS, iconKey)
         : null;
 
       return {
