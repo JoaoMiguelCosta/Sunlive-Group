@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import catering from "../../../../config/sections/dining/catering.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelCateringStepCard from "../../../../shared/ui/HotelCateringStepCard/HotelCateringStepCard.jsx";
 
 import styles from "./CateringProcessSteps.module.css";
@@ -54,7 +56,7 @@ function DetailsPanel({
 }
 
 export default function CateringProcessSteps() {
-  const section = hotelBrand?.pages?.dining?.sections?.catering ?? null;
+  const section = catering;
 
   const processStepItems = section?.processSteps?.items;
 
@@ -160,7 +162,7 @@ export default function CateringProcessSteps() {
       <div className={styles.grid}>
         {safeItems.map((item) => {
           const Icon = item?.iconKey
-            ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+            ? resolveHotelIcon(ICONS, item.iconKey)
             : null;
 
           const isActive = item.id === activeItem?.id;

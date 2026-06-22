@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import sundayBuffet from "../../../../config/sections/dining/sundayBuffet.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./SundayBuffet.module.css";
@@ -6,7 +6,7 @@ import styles from "./SundayBuffet.module.css";
 export default function TitleSundayBuffet({
   titleId = "restaurant-buffet-title",
 }) {
-  const content = hotelBrand?.pages?.dining?.sections?.sundayBuffet ?? null;
+  const content = sundayBuffet;
   const label = String(content?.headerLabel ?? "").trim();
 
   if (!label) return null;

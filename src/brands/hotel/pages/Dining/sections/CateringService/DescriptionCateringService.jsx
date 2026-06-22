@@ -1,10 +1,10 @@
-import hotelBrand from "../../../../config/index.js";
+import catering from "../../../../config/sections/dining/catering.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 import styles from "./CateringService.module.css";
 
 export default function DescriptionCateringService() {
-  const content = hotelBrand?.pages?.dining?.sections?.catering ?? null;
+  const content = catering;
   const text = String(content?.description ?? "").trim();
 
   if (!text) return null;

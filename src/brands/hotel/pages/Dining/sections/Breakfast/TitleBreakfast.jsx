@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import breakfast from "../../../../config/sections/dining/breakfast.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./Breakfast.module.css";
@@ -6,7 +6,7 @@ import styles from "./Breakfast.module.css";
 export default function TitleBreakfast({
   titleId = "restaurante-pequeno-almoco-title",
 }) {
-  const content = hotelBrand?.pages?.dining?.sections?.breakfast ?? null;
+  const content = breakfast;
   const label = String(content?.headerLabel ?? "").trim();
 
   if (!label) return null;

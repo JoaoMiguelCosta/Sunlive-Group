@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import barAndLounge from "../../../../config/sections/dining/barAndLounge.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelIconPill from "../../../../shared/ui/HotelIconPill/HotelIconPill.jsx";
 import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase/HotelPhotoCarouselBase.jsx";
 
@@ -15,7 +17,7 @@ function clampIndex(index, length) {
 }
 
 export default function BarLoungeShowcase() {
-  const section = hotelBrand?.pages?.dining?.sections?.barAndLounge ?? null;
+  const section = barAndLounge;
 
   const intro = section?.intro ?? null;
 
@@ -46,11 +48,11 @@ export default function BarLoungeShowcase() {
   const fallbackTitle = gallery?.ui?.fallbackTitle ?? "Ambiente interior";
 
   const AtmosphereIcon = atmosphereCard?.iconKey
-    ? resolveHotelIcon(hotelBrand?.icons, atmosphereCard.iconKey)
+    ? resolveHotelIcon(ICONS,atmosphereCard.iconKey)
     : null;
 
   const HighlightIcon = highlightCard?.iconKey
-    ? resolveHotelIcon(hotelBrand?.icons, highlightCard.iconKey)
+    ? resolveHotelIcon(ICONS,highlightCard.iconKey)
     : null;
 
   const goToPreviousItem = () => {
@@ -110,7 +112,7 @@ export default function BarLoungeShowcase() {
               <div className={styles.pillsGrid}>
                 {features.map((item) => {
                   const Icon = item?.iconKey
-                    ? resolveHotelIcon(hotelBrand?.icons, item.iconKey)
+                    ? resolveHotelIcon(ICONS,item.iconKey)
                     : null;
 
                   return (

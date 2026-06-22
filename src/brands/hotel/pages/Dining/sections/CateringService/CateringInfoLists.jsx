@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import catering from "../../../../config/sections/dining/catering.js";
 import HotelInfoListCard from "../../../../shared/ui/HotelInfoListCard/HotelInfoListCard.jsx";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 import styles from "./CateringInfoLists.module.css";
 
 export default function CateringInfoLists() {
-  const section = hotelBrand?.pages?.dining?.sections?.catering ?? null;
+  const section = catering;
   const infoLists = section?.infoLists ?? null;
 
   const items = useMemo(

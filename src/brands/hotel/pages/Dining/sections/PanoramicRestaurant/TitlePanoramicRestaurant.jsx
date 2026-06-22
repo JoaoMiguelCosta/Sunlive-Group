@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import panoramicRestaurant from "../../../../config/sections/dining/panoramicRestaurant.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./PanoramicRestaurant.module.css";
@@ -6,8 +6,7 @@ import styles from "./PanoramicRestaurant.module.css";
 export default function TitlePanoramicRestaurant({
   titleId = "restaurante-panoramico-title",
 }) {
-  const content =
-    hotelBrand?.pages?.dining?.sections?.panoramicRestaurant ?? null;
+  const content = panoramicRestaurant;
 
   const label = String(content?.headerLabel ?? "").trim();
 

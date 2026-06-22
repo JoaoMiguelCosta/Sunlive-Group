@@ -1,11 +1,11 @@
-import hotelBrand from "../../../../config/index.js";
+import barAndLounge from "../../../../config/sections/dining/barAndLounge.js";
 import TitleBarLounge from "./TitleBarLounge.jsx";
 import BarLoungeShowcase from "./BarLoungeShowcase.jsx";
 
 import styles from "./BarLounge.module.css";
 
 export default function BarLoungeSection() {
-  const section = hotelBrand?.pages?.dining?.sections?.barAndLounge ?? null;
+  const section = barAndLounge;
 
   if (!section) return null;
 

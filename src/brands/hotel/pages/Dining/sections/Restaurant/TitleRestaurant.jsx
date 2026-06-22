@@ -1,10 +1,10 @@
-import hotelBrand from "../../../../config/index.js";
+import restaurant from "../../../../config/sections/dining/restaurant.js";
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./Restaurant.module.css";
 
 export default function TitleRestaurant({ titleId = "restauracao-title" }) {
-  const content = hotelBrand?.pages?.dining?.sections?.restaurant ?? null;
+  const content = restaurant;
   const label = String(content?.headerLabel ?? "").trim();
 
   if (!label) return null;

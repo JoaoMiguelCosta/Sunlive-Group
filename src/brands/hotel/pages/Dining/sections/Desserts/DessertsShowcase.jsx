@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import desserts from "../../../../config/sections/dining/desserts.js";
 import HotelSelectableMediaGrid from "../../../../shared/ui/HotelSelectableMediaGrid/HotelSelectableMediaGrid.jsx";
 
 import styles from "./DessertsShowcase.module.css";
@@ -34,7 +34,7 @@ function getThumbnailCategoryLabel(item) {
 }
 
 export default function DessertsShowcase() {
-  const section = hotelBrand?.pages?.dining?.sections?.desserts ?? null;
+  const section = desserts;
 
   const categories = Array.isArray(section?.categories)
     ? section.categories

@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import sundayBuffet from "../../../../config/sections/dining/sundayBuffet.js";
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 import styles from "./SundayBuffet.module.css";
@@ -10,7 +10,7 @@ const splitParagraphs = (text) =>
     .filter(Boolean);
 
 export default function DescriptionSundayBuffet() {
-  const content = hotelBrand?.pages?.dining?.sections?.sundayBuffet ?? null;
+  const content = sundayBuffet;
   const description = String(content?.description ?? "").trim();
 
   if (!description) return null;
