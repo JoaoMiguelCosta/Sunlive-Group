@@ -1,4 +1,5 @@
-import travelBrand from "../../../../config/index.js";
+import logisticsSolutions from "../../../../config/sections/logistics/logisticsSolutions.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 import LogisticsOperationalHero from "./LogisticsOperationalHero.jsx";
 import LogisticsActionPanel from "./LogisticsActionPanel.jsx";
@@ -7,8 +8,7 @@ import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
 import styles from "./LogisticsSolutionsSection.module.css";
 
 export default function LogisticsSolutionsSection() {
-  const section =
-    travelBrand?.pages?.logistics?.sections?.logisticsSolutions ?? null;
+  const section = logisticsSolutions;
 
   if (!section) return null;
 
@@ -21,7 +21,7 @@ export default function LogisticsSolutionsSection() {
   const services = Array.isArray(section?.services) ? section.services : [];
   const actionPanel = section?.actionPanel ?? null;
   const cta = section?.cta ?? null;
-  const icons = travelBrand?.icons ?? {};
+  const icons = ICONS;
 
   return (
     <section

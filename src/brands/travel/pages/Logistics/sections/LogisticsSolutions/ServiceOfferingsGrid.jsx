@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
-import { resolveTravelIcon } from "../../../../config/index.js";
+import { resolveTravelIcon } from "../../../../config/core/iconKeyMap.js";
 
 import LogisticsServiceCard from "./LogisticsServiceCard.jsx";
 import styles from "./ServiceOfferingsGrid.module.css";
