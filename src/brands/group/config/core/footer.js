@@ -93,4 +93,6 @@ export function makeGroupFooter({ contacts = GROUP_CONTACTS } = {}) {
   };
 }
 
+export const groupFooter = makeGroupFooter();
+
 export default makeGroupFooter;

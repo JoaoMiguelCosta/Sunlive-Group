@@ -2,7 +2,7 @@ export { default as GROUP_BOOKS } from "./books.js";
 export { default as GROUP_COMPANY } from "./company.js";
 export { default as GROUP_CONTACTS } from "./contacts.js";
 export { default as BRAND_FLAGS } from "./flags.js";
-export { makeGroupFooter } from "./footer.js";
+export { makeGroupFooter, groupFooter } from "./footer.js";
 export { default as header } from "./header.js";
 export { default as PARTNER_LINKS } from "./partners.js";
 export { PARTNERS_TITLE } from "./partners.js";

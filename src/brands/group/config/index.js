@@ -2,7 +2,7 @@ import { LANG_DEFAULT } from "../../../shared/config/index.js";
 
 import {
   header,
-  makeGroupFooter,
+  groupFooter,
   GROUP_BOOKS,
   GROUP_COMPANY,
   GROUP_CONTACTS,
@@ -50,9 +50,7 @@ const groupBrand = {
   },
 
   sections: {
-    footer: makeGroupFooter({
-      contacts: GROUP_CONTACTS,
-    }),
+    footer: groupFooter,
   },
 
   icons: ICONS,

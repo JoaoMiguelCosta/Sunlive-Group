@@ -7,7 +7,7 @@ import Teams from "../components/Sections/GroupLogos/Teams/index.jsx";
 import Associations from "../components/Sections/GroupLogos/Associations/index.jsx";
 
 import GroupFooter from "../layout/GroupFooter/GroupFooter.jsx";
-import groupBrand from "../config/index.js";
+import { groupFooter as footerConfig } from "../config/core/footer.js";
 
 import useScrollToHash from "../../../shared/hooks/useScrollToHash.js";
 
@@ -15,8 +15,6 @@ const LOGOS_INSET = "clamp(16px, 3.5vw, 44px)";
 
 export default function GroupLogos() {
   useScrollToHash(24);
-
-  const footerConfig = groupBrand.sections?.footer;
 
   return (
     <div
