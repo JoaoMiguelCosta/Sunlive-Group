@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import hotelBrand from "../../../../config/index.js";
+import heroBanner from "../../../../config/sections/home/heroBanner.js";
 import HotelSectionShell from "../../../../shared/ui/HotelSectionShell/HotelSectionShell.jsx";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
@@ -45,7 +45,7 @@ function joinClassNames(...classNames) {
 }
 
 export default function HotelHeroBanner() {
-  const section = hotelBrand?.pages?.home?.sections?.heroBanner ?? null;
+  const section = heroBanner;
 
   const scenes = useMemo(
     () => getValidScenes(section?.scenes),

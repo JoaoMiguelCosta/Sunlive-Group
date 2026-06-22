@@ -1,11 +1,11 @@
 import styles from "./WhoWeHost.module.css";
 
-import hotelBrand from "../../../../config/index.js";
+import whoWeHost from "../../../../config/sections/home/whoWeHost.js";
 import WhoWeHostHeader from "./WhoWeHostHeader.jsx";
 import WhoWeHostCards from "./WhoWeHostCards.jsx";
 
 export default function WhoWeHostSection() {
-  const section = hotelBrand?.pages?.home?.sections?.whoWeHost ?? null;
+  const section = whoWeHost;
   if (!section) return null;
 
   const sectionId = section.id ?? "hotel-who-we-host";
