@@ -7,14 +7,14 @@ import HeaderShell from "./HeaderShell.jsx";
 
 import PrimaryNav from "./PrimaryNav.jsx";
 import CTAButton from "../../../../shared/ui/CTAButton/CTAButton.jsx";
-import travelBrand from "../../config/index.js";
+import header from "../../config/core/header.js";
+import { TRAVEL_NAV } from "../../config/core/nav.js";
 import { TRAVEL_BASE_PATH } from "../../config/core/paths.js";
 
 export default function TravelHeaderNav() {
   const location = useLocation();
 
-  const header = travelBrand?.header ?? {};
-  const navItems = travelBrand?.nav?.primaryItems ?? [];
+  const navItems = TRAVEL_NAV;
 
   const isTravelHome =
     location.pathname === TRAVEL_BASE_PATH ||

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { useOutsideClick } from "../../../../shared/hooks/useOutsideClick.js";
 import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
-import travelBrand from "../../config/index.js";
+import { ICONS } from "../../config/core/resolvedVisuals.js";
 import styles from "./PrimaryNav.module.css";
 
 function Submenu({ items = [], onAnchorClick, onClose, id, isOpen = false }) {
@@ -137,7 +137,7 @@ export default function PrimaryNav({ items = [] }) {
     onDone?.();
   };
 
-  const ChevIcon = travelBrand?.icons?.chevronDown || null;
+  const ChevIcon = ICONS?.chevronDown || null;
 
   return (
     <nav ref={navRef} className={styles.nav} aria-label="Navegação principal">

@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Route } from "react-router-dom";
 
-import { TRAVEL_BASE_PATH } from "./config/index.js";
+import { TRAVEL_BASE_PATH } from "./config/core/paths.js";
 
 const TravelPageLayout = lazy(() =>
   import("./layouts/TravelPageLayout.jsx"),
