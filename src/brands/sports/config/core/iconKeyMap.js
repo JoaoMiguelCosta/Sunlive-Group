@@ -53,7 +53,7 @@ const BRAND_ICON_KEY_MAP = Object.freeze({
   gymnastics: "GymnasticsIcon",
 });
 
-export function resolveSportsIconName(iconKey) {
+function resolveSportsIconName(iconKey) {
   if (!iconKey) {
     return null;
   }
@@ -70,6 +70,3 @@ export function resolveSportsIcon(icons, iconKey) {
 
   return icons[resolvedIconName] ?? null;
 }
-
-export { BRAND_ICON_KEY_MAP };
-export default BRAND_ICON_KEY_MAP;

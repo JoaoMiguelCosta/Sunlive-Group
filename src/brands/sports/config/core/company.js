@@ -27,5 +27,3 @@ export const SPORTS_COMPANY = Object.freeze({
     extraPhones: [],
   },
 });
-
-export default SPORTS_COMPANY;

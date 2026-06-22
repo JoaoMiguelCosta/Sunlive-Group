@@ -14,5 +14,3 @@ export const SPORTS_SOCIALS = Object.freeze(
     },
   ]),
 );
-
-export default SPORTS_SOCIALS;
