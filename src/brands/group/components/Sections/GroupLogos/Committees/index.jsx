@@ -1,14 +1,14 @@
 import styles from "../_shared/LogosSection.module.css";
 import LogoGridSection from "../_shared/LogoGridSection";
 
-import groupLogosPage from "../../../../config/pages/logos.js";
+import committees from "../../../../config/sections/logos/committees.js";
 
 function hasItems(items) {
   return Array.isArray(items) && items.length > 0;
 }
 
 export default function Committees() {
-  const data = groupLogosPage?.sections?.committees;
+  const data = committees;
 
   if (!data || !hasItems(data.items)) return null;
 

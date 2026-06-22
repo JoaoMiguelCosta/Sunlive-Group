@@ -1,6 +1,6 @@
 import styles from "./GlobalPresencePanel.module.css";
 
-import { groupHomePage } from "../../../../config/pages/home.js";
+import presence from "../../../../config/sections/home/presence.js";
 import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
 
 function isValidText(value) {
@@ -22,7 +22,7 @@ function getValidCountries(countries) {
 
 export default function GlobalPresencePanel() {
   const countries = getValidCountries(
-    groupHomePage?.sections?.presence?.countries,
+    presence?.countries,
   );
 
   if (!countries.length) return null;

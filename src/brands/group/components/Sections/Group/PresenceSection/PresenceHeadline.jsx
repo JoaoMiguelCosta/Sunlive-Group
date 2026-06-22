@@ -1,10 +1,10 @@
 import styles from "./PresenceHeadline.module.css";
 
-import { groupHomePage } from "../../../../config/pages/home.js";
+import presence from "../../../../config/sections/home/presence.js";
 import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
 
 export default function PresenceHeadline() {
-  const headline = groupHomePage?.sections?.presence?.headlineTop;
+  const headline = presence?.headlineTop;
 
   const src = headline?.src ?? null;
   const alt = headline?.alt ?? "Presence";

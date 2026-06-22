@@ -3,7 +3,7 @@ import styles from "./PartnersSection.module.css";
 import SectionLead from "./SectionLead.jsx";
 import PartnersGrid from "./PartnersGrid.jsx";
 
-import { groupHomePage } from "../../../../config/pages/home.js";
+import partnersSection from "../../../../config/sections/home/partners.js";
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -16,7 +16,7 @@ function getValidCategories(items) {
 }
 
 export default function PartnersSection() {
-  const partnersConfig = groupHomePage?.sections?.partners;
+  const partnersConfig = partnersSection;
 
   const id = isValidText(partnersConfig?.id) ? partnersConfig.id : "partners";
 

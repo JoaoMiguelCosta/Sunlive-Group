@@ -1,5 +1,5 @@
 import styles from "./DivisionsPanel.module.css";
-import { groupHomePage } from "../../../../config/pages/home.js";
+import overview from "../../../../config/sections/home/overview.js";
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -86,8 +86,6 @@ function DivisionCard({ item }) {
 }
 
 export default function DivisionsPanel() {
-  const overview = groupHomePage?.sections?.overview;
-
   const divisions = getValidDivisions(overview?.divisions);
   const home = isValidObject(overview?.homeCard)
     ? overview.homeCard

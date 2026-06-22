@@ -1,14 +1,14 @@
 import styles from "../_shared/LogosSection.module.css";
 import LogoGridSection from "../_shared/LogoGridSection";
 
-import groupLogosPage from "../../../../config/pages/logos.js";
+import teams from "../../../../config/sections/logos/teams.js";
 
 function hasItems(items) {
   return Array.isArray(items) && items.length > 0;
 }
 
 export default function Teams() {
-  const data = groupLogosPage?.sections?.teams;
+  const data = teams;
 
   if (!data || !hasItems(data.items)) return null;
 
