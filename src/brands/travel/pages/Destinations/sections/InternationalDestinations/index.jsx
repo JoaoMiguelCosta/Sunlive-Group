@@ -1,13 +1,12 @@
-import travelBrand from "../../../../config/index.js";
+import internationalDestinations from "../../../../config/sections/destinations/internationalDestinations.js";
+import { FLAGS } from "../../../../config/core/resolvedVisuals.js";
 
 import styles from "./InternationalDestinationsSection.module.css";
 import InternationalEditorialHero from "./InternationalEditorialHero.jsx";
 import InternationalDestinationsShowcase from "./InternationalDestinationsShowcase.jsx";
 
 export default function InternationalDestinationsSection() {
-  const section =
-    travelBrand?.pages?.destinations?.sections?.internationalDestinations ??
-    null;
+  const section = internationalDestinations;
 
   if (!section) return null;
 
@@ -20,7 +19,7 @@ export default function InternationalDestinationsSection() {
   const destinations = Array.isArray(section?.destinations)
     ? section.destinations
     : [];
-  const flags = travelBrand?.flags ?? {};
+  const flags = FLAGS;
 
   return (
     <section
