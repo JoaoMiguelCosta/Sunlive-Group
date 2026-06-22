@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 
 import UtilityBar from "../../../shared/components/UtilityBar/index.jsx";
-import { groupHomePage } from "../config/pages/home.js";
+import overview from "../config/sections/home/overview.js";
 
 const LOGOS_BASE_PATH = "/sunlive-group/logos";
 
@@ -20,10 +20,8 @@ export default function LogosUtilityBar() {
   const location = useLocation();
   const pathname = normalizePathname(location.pathname);
 
-  const overview = groupHomePage?.sections?.overview;
-
-  const socials = overview?.socials ?? [];
-  const lang = overview?.lang ?? LANG_FALLBACK;
+  const socials = overview.socials ?? [];
+  const lang = overview.lang ?? LANG_FALLBACK;
 
   const isLogosHome = pathname === LOGOS_BASE_PATH;
 
