@@ -5,7 +5,7 @@ import {
   makePoliciesBar,
 } from "../../../../shared/config/index.js";
 
-import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
+import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.webp";
 
 import { TRAVEL_COMPANY } from "./company.js";
 import { TRAVEL_SOCIALS } from "./socials.js";

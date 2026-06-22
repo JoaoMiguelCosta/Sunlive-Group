@@ -7,7 +7,7 @@ import {
   countriesToFooterGeneric,
 } from "../../../../shared/config/index.js";
 
-import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.png";
+import acknowledgementsImg from "../../../../shared/assets/acknowledgementsImg.webp";
 
 import { GROUP_COMPANY } from "./company.js";
 import { GROUP_SOCIALS } from "./socials.js";
