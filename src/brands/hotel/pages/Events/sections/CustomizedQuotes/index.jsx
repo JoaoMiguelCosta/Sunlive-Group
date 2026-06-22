@@ -30,6 +30,8 @@ export default function CustomizedQuotesSection() {
             src={backgroundImageSrc}
             alt={backgroundImageAlt}
             className={styles.backgroundImage}
+            loading="lazy"
+            decoding="async"
           />
         </div>
       ) : null}
