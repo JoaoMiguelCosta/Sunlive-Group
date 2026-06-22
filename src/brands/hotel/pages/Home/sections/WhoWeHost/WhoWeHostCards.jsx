@@ -1,4 +1,5 @@
-import hotelBrand, { resolveHotelIcon } from "../../../../config/index.js";
+import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelWhoWeHostCard from "../../../../shared/ui/HotelWhoWeHostCard/HotelWhoWeHostCard.jsx";
 
 import styles from "./WhoWeHostCards.module.css";
@@ -26,7 +27,7 @@ export default function WhoWeHostCards({ items = [] }) {
   const validItems = getValidItems(items);
   if (!validItems.length) return null;
 
-  const icons = hotelBrand?.icons ?? {};
+  const icons = ICONS;
   const mappedItems = mapItemsWithIcons(validItems, icons);
 
   const featuredItem =
