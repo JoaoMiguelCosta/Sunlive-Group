@@ -3,7 +3,7 @@ import fpc from "../../../assets/group-logos/logos/portugueseFederations/fdc.png
 import fpg from "../../../assets/group-logos/logos/portugueseFederations/fgp.png";
 import fpj from "../../../assets/group-logos/logos/portugueseFederations/fpj.png";
 import fnkp from "../../../assets/group-logos/logos/portugueseFederations/fpk.png";
-import fpe from "../../../assets/group-logos/logos/portugueseFederations/fpe.png";
+import fpe from "../../../assets/group-logos/logos/portugueseFederations/fpe.webp";
 import fpa from "../../../assets/group-logos/logos/portugueseFederations/fap.png";
 
 export const portugueseFederations = {

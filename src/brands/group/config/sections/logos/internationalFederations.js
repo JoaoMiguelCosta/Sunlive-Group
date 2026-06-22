@@ -7,7 +7,7 @@ import cfg from "../../../assets/group-logos/logos/internationalFederations/cfg.
 import ci from "../../../assets/group-logos/logos/internationalFederations/ci.png";
 import fab from "../../../assets/group-logos/logos/internationalFederations/fab.png";
 import fag from "../../../assets/group-logos/logos/internationalFederations/fag.png";
-import fcc from "../../../assets/group-logos/logos/internationalFederations/fcc.png";
+import fcc from "../../../assets/group-logos/logos/internationalFederations/fcc.webp";
 import fec from "../../../assets/group-logos/logos/internationalFederations/fec.png";
 import ffc from "../../../assets/group-logos/logos/internationalFederations/ffc.png";
 import ftgym from "../../../assets/group-logos/logos/internationalFederations/ftgym.png";
