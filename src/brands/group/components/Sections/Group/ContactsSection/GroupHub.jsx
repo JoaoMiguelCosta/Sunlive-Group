@@ -3,7 +3,7 @@ import styles from "./GroupHub.module.css";
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
-import { GROUP_CONTACTS } from "../../../../config/index.js";
+import { GROUP_CONTACTS } from "../../../../config/core/contacts.js";
 
 const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);

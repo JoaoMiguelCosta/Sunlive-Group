@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 
 import UtilityBar from "../../../shared/components/UtilityBar/index.jsx";
-import { groupHomePage } from "../config/pages/index.js";
+import { groupHomePage } from "../config/pages/home.js";
 
 const LOGOS_BASE_PATH = "/sunlive-group/logos";
 

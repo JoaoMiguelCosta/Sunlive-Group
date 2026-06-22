@@ -1,6 +1,6 @@
 import styles from "./GlobalPresencePanel.module.css";
 
-import { groupHomePage } from "../../../../config/pages/index.js";
+import { groupHomePage } from "../../../../config/pages/home.js";
 import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
 
 function isValidText(value) {

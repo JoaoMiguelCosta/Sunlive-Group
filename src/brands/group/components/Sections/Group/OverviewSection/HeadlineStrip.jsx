@@ -1,5 +1,5 @@
 import styles from "./HeadlineStrip.module.css";
-import { groupHomePage } from "../../../../config/pages/index.js";
+import { groupHomePage } from "../../../../config/pages/home.js";
 
 export default function HeadlineStrip() {
   const overview = groupHomePage?.sections?.overview;

@@ -1,5 +1,5 @@
 import styles from "./DivisionsPanel.module.css";
-import { groupHomePage } from "../../../../config/pages/index.js";
+import { groupHomePage } from "../../../../config/pages/home.js";
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;

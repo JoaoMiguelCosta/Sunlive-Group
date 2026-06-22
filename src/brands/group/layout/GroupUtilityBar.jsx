@@ -1,5 +1,5 @@
 import UtilityBar from "../../../shared/components/UtilityBar/index.jsx";
-import { groupHomePage } from "../config/pages/index.js";
+import { groupHomePage } from "../config/pages/home.js";
 
 const LANG_FALLBACK = {
   current: "pt",

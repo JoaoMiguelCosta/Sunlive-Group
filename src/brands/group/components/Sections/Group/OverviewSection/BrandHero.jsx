@@ -1,5 +1,5 @@
 import styles from "./BrandHero.module.css";
-import { groupHomePage } from "../../../../config/pages/index.js";
+import { groupHomePage } from "../../../../config/pages/home.js";
 
 export default function BrandHero() {
   const src = groupHomePage?.sections?.overview?.brandHero?.imageSrc ?? null;

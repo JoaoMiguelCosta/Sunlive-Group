@@ -4,7 +4,7 @@ import GroupHub from "./GroupHub.jsx";
 import BusinessUnits from "./BusinessUnits.jsx";
 import RegionalOffices from "./RegionalOffices.jsx";
 
-import { groupHomePage } from "../../../../config/pages/index.js";
+import { groupHomePage } from "../../../../config/pages/home.js";
 
 function isValidObject(value) {
   return value && typeof value === "object" && !Array.isArray(value);

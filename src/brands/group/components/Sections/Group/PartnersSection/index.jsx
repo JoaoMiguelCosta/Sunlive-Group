@@ -3,7 +3,7 @@ import styles from "./PartnersSection.module.css";
 import SectionLead from "./SectionLead.jsx";
 import PartnersGrid from "./PartnersGrid.jsx";
 
-import { groupHomePage } from "../../../../config/pages/index.js";
+import { groupHomePage } from "../../../../config/pages/home.js";
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
