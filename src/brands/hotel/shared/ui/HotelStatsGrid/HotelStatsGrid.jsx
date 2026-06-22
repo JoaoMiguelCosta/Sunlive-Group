@@ -1,11 +1,12 @@
 import styles from "./HotelStatsGrid.module.css";
 
-import hotelBrand, { resolveHotelIcon } from "../../../config/index.js";
+import { resolveHotelIcon } from "../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../config/core/resolvedVisuals.js";
 
 function resolveStatIcon(iconKey, iconClassName = "") {
   if (!iconKey) return null;
 
-  const icons = hotelBrand?.icons ?? {};
+  const icons = ICONS;
   const Icon = resolveHotelIcon(icons, iconKey);
 
   const classNames = [styles.statIcon, iconClassName].filter(Boolean).join(" ");
