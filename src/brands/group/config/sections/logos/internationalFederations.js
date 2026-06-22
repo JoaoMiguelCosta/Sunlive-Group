@@ -12,7 +12,7 @@ import fec from "../../../assets/group-logos/logos/internationalFederations/fec.
 import ffc from "../../../assets/group-logos/logos/internationalFederations/ffc.png";
 import ftgym from "../../../assets/group-logos/logos/internationalFederations/ftgym.png";
 import icf from "../../../assets/group-logos/logos/internationalFederations/icf.png";
-import malta from "../../../assets/group-logos/logos/internationalFederations/malta.png";
+import malta from "../../../assets/group-logos/logos/internationalFederations/malta.webp";
 import pc from "../../../assets/group-logos/logos/internationalFederations/pc.png";
 import pi from "../../../assets/group-logos/logos/internationalFederations/pi.png";
 import saudi from "../../../assets/group-logos/logos/internationalFederations/saudi.png";
