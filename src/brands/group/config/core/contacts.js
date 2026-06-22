@@ -6,7 +6,7 @@ const GROUP_HUB_CONTACTS = Object.freeze({
   phone: "+351 933 600 364",
 });
 
-export const BUSINESS_UNIT_CONTACTS_DEFAULT = Object.freeze({
+const BUSINESS_UNIT_CONTACTS_DEFAULT = Object.freeze({
   travel: {
     email: "travel@sunlive.pt",
     phone: "+351 935 630 798",
@@ -33,7 +33,7 @@ export const BUSINESS_UNIT_CONTACTS_DEFAULT = Object.freeze({
   },
 });
 
-export const GROUP_BUSINESS_UNITS = Object.freeze(
+const GROUP_BUSINESS_UNITS = Object.freeze(
   makeBusinessUnits([
     {
       key: "travel",
@@ -92,7 +92,7 @@ export const GROUP_BUSINESS_UNITS = Object.freeze(
   ]),
 );
 
-export const GROUP_REGIONAL_OFFICES = Object.freeze([
+const GROUP_REGIONAL_OFFICES = Object.freeze([
   {
     key: "malta",
     slug: "malta",
