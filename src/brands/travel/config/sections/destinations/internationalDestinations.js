@@ -1,8 +1,8 @@
-import maltaImg from "../../../assets/InternationalDestinations/malta.png";
-import qatarImg from "../../../assets/InternationalDestinations/catar.png";
-import saudiImg from "../../../assets/InternationalDestinations/arabia.png";
-import kuwaitImg from "../../../assets/InternationalDestinations/kuwait.png";
-import brazilImg from "../../../assets/InternationalDestinations/brasil.png";
+import maltaImg from "../../../assets/InternationalDestinations/malta.webp";
+import qatarImg from "../../../assets/InternationalDestinations/catar.webp";
+import saudiImg from "../../../assets/InternationalDestinations/arabia.webp";
+import kuwaitImg from "../../../assets/InternationalDestinations/kuwait.webp";
+import brazilImg from "../../../assets/InternationalDestinations/brasil.webp";
 
 const internationalDestinations = {
   id: "destinos-internacionais",
