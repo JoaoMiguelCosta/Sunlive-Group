@@ -1,4 +1,4 @@
-import hotelBrand from "../../../../config/index.js";
+import ourQualityCommitment from "../../../../config/sections/about/qualityCommitment.js";
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 
 import styles from "./OurQualityCommitmentContent.module.css";
@@ -25,8 +25,7 @@ function getValidCommitments(commitments) {
 }
 
 export default function OurQualityCommitmentContent() {
-  const section =
-    hotelBrand?.pages?.about?.sections?.ourQualityCommitment ?? null;
+  const section = ourQualityCommitment;
 
   if (!section) return null;
 
