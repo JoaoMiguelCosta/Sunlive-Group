@@ -1,6 +1,6 @@
 import acaLogo from "../../../assets/Academies/aca.webp";
-import basketLogo from "../../../assets/Academies/basket.png";
-import footLogo from "../../../assets/Academies/foot.png";
+import basketLogo from "../../../assets/Academies/basket.webp";
+import footLogo from "../../../assets/Academies/foot.webp";
 import karateLogo from "../../../assets/Academies/karate.webp";
 
 const ACADEMIES_MEDIA_BASE_PATH = "/media/sports/academies";
