@@ -7,11 +7,11 @@ import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
 import { GROUP_CONTACTS } from "../../../../config/core/contacts.js";
+import { GROUP_BASE_PATH } from "../../../../config/core/paths.js";
 
 const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
 
-const GROUP_ROUTE_PATH = "/sunlive-group";
 const BUSINESS_UNIT_ANCHOR_PREFIX = "unidade-";
 
 const BUSINESS_UNIT_ORDER = [
@@ -108,7 +108,7 @@ export default function BusinessUnits({ items = [] }) {
   });
 
   useOpenFromHash({
-    routePath: GROUP_ROUTE_PATH,
+    routePath: GROUP_BASE_PATH,
     regex: /^#unidade-(.+)$/,
     items: hashItems,
     isOpen: (hashKey) => {

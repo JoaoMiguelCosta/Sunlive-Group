@@ -4,11 +4,10 @@ import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 
 import { GROUP_CONTACTS } from "../../../../config/core/contacts.js";
+import { GROUP_BASE_PATH } from "../../../../config/core/paths.js";
 
 const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
-
-const GROUP_ROUTE_PATH = "/sunlive-group";
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -55,7 +54,7 @@ export default function GroupHub({ data }) {
   const { isOpen, toggle } = useDisclosure(Boolean(data?.defaultOpen));
 
   useOpenFromHash({
-    routePath: GROUP_ROUTE_PATH,
+    routePath: GROUP_BASE_PATH,
     regex: /^#unidade-(.+)$/,
     items: hasData ? [{ key: "grupo" }] : [],
     isOpen: (key) => key === "grupo" && isOpen,
