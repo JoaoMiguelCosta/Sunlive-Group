@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
+import { useVideoDialogBehavior } from "../../../../shared/hooks/useVideoDialogBehavior.js";
 import styles from "./EventsModalitiesVideoHighlights.module.css";
 
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
@@ -48,48 +49,11 @@ function VideoModal({ isOpen, item, titleId, ui, onClose }) {
     media?.modalTitle || item?.title || ui?.fallbackModalTitle || "Vídeo";
   const modalEyebrow = media?.modalEyebrow || ui?.modalEyebrow;
 
-  useEffect(() => {
-    if (!isOpen) return undefined;
-
-    const previousOverflow = document.body.style.overflow;
-
-    document.body.style.overflow = "hidden";
-
-    function handleKeyDown(event) {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose]);
-
-  useEffect(() => {
-    if (!isOpen || !videoRef.current) return;
-
-    const playPromise = videoRef.current.play();
-
-    if (playPromise?.catch) {
-      playPromise.catch(() => {});
-    }
-  }, [isOpen]);
+  // Comportamento partilhado: scroll lock, Escape, autoplay, handleClose
+  const { handleClose } = useVideoDialogBehavior(isOpen, videoRef, onClose);
 
   if (!isOpen || !isValidText(fullSrc) || typeof document === "undefined") {
     return null;
-  }
-
-  function handleClose() {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-
-    onClose();
   }
 
   function handleOverlayClick(event) {
@@ -158,6 +122,7 @@ function VideoCard({ item, index, ui }) {
   const badgeLabel = media.badgeLabel || item.eyebrow || ui?.videoBadgeLabel;
   const cardLabel = `${actionLabel}: ${item.title}`;
 
+  // IntersectionObserver de preview — threshold 0.32 específico desta secção
   useEffect(() => {
     if (!previewRef.current || !frameRef.current) return undefined;
     if (typeof window === "undefined") return undefined;
@@ -196,9 +161,7 @@ function VideoCard({ item, index, ui }) {
           pauseVideo();
         }
       },
-      {
-        threshold: VIDEO_VIEW_THRESHOLD,
-      },
+      { threshold: VIDEO_VIEW_THRESHOLD },
     );
 
     observer.observe(frame);

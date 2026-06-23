@@ -1,6 +1,7 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
+import { useVideoDialogBehavior } from "../../hooks/useVideoDialogBehavior.js";
 import styles from "./SportsFeatureCardMedia.module.css";
 
 function isValidText(value) {
@@ -42,36 +43,8 @@ function VideoFrame({ isOpen, media, titleId, onClose }) {
   const title = media?.modalTitle || media?.title || "Vídeo da academia";
   const closeLabel = media?.closeLabel || "Fechar vídeo";
 
-  useEffect(() => {
-    if (!isOpen) return undefined;
-
-    const previousOverflow = document.body.style.overflow;
-
-    document.body.style.overflow = "hidden";
-
-    function handleKeyDown(event) {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose]);
-
-  useEffect(() => {
-    if (!isOpen || !videoRef.current) return;
-
-    const playPromise = videoRef.current.play();
-
-    if (playPromise?.catch) {
-      playPromise.catch(() => {});
-    }
-  }, [isOpen]);
+  // Comportamento partilhado: scroll lock, Escape, autoplay, handleClose
+  const { handleClose } = useVideoDialogBehavior(isOpen, videoRef, onClose);
 
   if (!isOpen || !isValidText(fullSrc)) return null;
 
@@ -79,15 +52,6 @@ function VideoFrame({ isOpen, media, titleId, onClose }) {
     if (event.target === event.currentTarget) {
       handleClose();
     }
-  }
-
-  function handleClose() {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-
-    onClose();
   }
 
   return createPortal(
@@ -167,6 +131,7 @@ export default function SportsFeatureCardMedia({ media }) {
   function handleCloseVideo() {
     setIsVideoOpen(false);
 
+    // Retoma o preview após fechar o dialog — comportamento específico desta card
     window.requestAnimationFrame(() => {
       if (previewVideoRef.current) {
         const playPromise = previewVideoRef.current.play();

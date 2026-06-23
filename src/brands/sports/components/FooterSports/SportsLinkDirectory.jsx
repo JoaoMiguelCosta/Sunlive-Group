@@ -31,7 +31,6 @@ function renderChip(item, handleAnchorClick) {
       key={item.key}
       className={styles.chip}
       data-variant={variant}
-      role="text"
     >
       <span className={styles.chipLabel}>{item.label}</span>
       <span className={styles.energyLine} aria-hidden="true" />

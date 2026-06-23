@@ -5,7 +5,7 @@ import styles from "./ProgramDetailSection.module.css";
 import useAccordion from "../../../../../shared/hooks/useAccordion.js";
 import useInView from "../../../shared/hooks/useInView.js";
 import { ChevronDownIcon } from "../../../../../shared/ui/icons/index.js";
-import { splitPrefixByDash } from "../../../../../shared/utils/splitPrefixByDash.js";
+import { splitPrefixByDash } from "../../utils/splitPrefixByDash.js";
 
 /**
  * Secção de detalhe de programa (ex.: Estágios, Pré-Época, etc.)
