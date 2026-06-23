@@ -1,3 +1,9 @@
 import testimonialsSection from "../sections/testimonials/testimonialsSection.js";
-const testimonials = { id: "testemunhos", sections: { testimonialsSection } };
+const testimonials = {
+  id: "testemunhos",
+  ui: {
+    pageAriaLabel: "Sunlive Sports — Testemunhos",
+  },
+  sections: { testimonialsSection },
+};
 export default testimonials;

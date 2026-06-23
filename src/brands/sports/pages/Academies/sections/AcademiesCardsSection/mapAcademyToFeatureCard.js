@@ -136,9 +136,3 @@ export function mapAcademiesToFeatureCards(cards = [], options = {}) {
     .map((card) => mapAcademyToFeatureCard(card, options))
     .filter(Boolean);
 }
-
-export function findAcademyCardByKey(cards = [], key) {
-  if (!Array.isArray(cards) || !isValidText(key)) return null;
-
-  return cards.find((card) => card?.key === key) || null;
-}

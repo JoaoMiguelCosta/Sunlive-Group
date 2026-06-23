@@ -8,24 +8,21 @@ import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 import AthletesRosterSection from "./sections/AthletesRosterSection/index.jsx";
 
 export default function AthletesPage() {
-  const pageData = athletes;
-  const sections = pageData?.sections || pageData;
+  const sections = athletes?.sections;
 
   if (!sections) return null;
 
   const heroData = sections.hero;
   const athletesRosterData = sections.athletesRoster;
-  const ctaData = sections.cta || sections.athletesCTA;
+  const ctaData = sections.cta;
 
   return (
     <div className={styles.pageWrap} data-brand="sports">
       <main
-        id={pageData?.id || "atletas-sunlive"}
+        id={athletes?.id || "atletas-sunlive"}
         className={styles.inner}
         aria-label={
-          pageData?.ui?.ariaLabel ||
-          sections.ui?.ariaLabel ||
-          "Sunlive Sports — Atletas Sunlive"
+          athletes?.ui?.pageAriaLabel || "Sunlive Sports — Atletas Sunlive"
         }
       >
         <div className={styles.contentFlow}>
@@ -55,4 +52,3 @@ export default function AthletesPage() {
     </div>
   );
 }
-

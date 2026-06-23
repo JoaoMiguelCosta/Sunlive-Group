@@ -5,6 +5,10 @@ import careersSection from "../sections/education/careersSection.js";
 import cta from "../sections/education/cta.js";
 const education = {
   id: "education",
+  ui: {
+    pageId: "sports-education",
+    pageAriaLabel: "Sunlive Sports — Educação",
+  },
   hero,
   levelsSection,
   bilingualSection,

@@ -1,4 +1,5 @@
 const educationHero = {
+  id: "education-hero",
   eyebrow: "Sunlive Sports",
   secondaryLine:
     "Uma proposta educativa integrada no universo Sunlive Group, com destaque para a Pro Football Academy Portugal.",

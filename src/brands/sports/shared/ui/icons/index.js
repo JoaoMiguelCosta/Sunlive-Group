@@ -14,7 +14,6 @@ import EyeIcon from "./Eye.jsx";
 import GoalIcon from "./Goal.jsx";
 import GraduationCapIcon from "./GraduationCap.jsx";
 import GymnasticsIcon from "./Gymnastics.jsx";
-
 import MonitorIcon from "./Monitor.jsx";
 import PhysicalTherapyIcon from "./PhysicalTherapy.jsx";
 import SearchIcon from "./Search.jsx";
@@ -46,8 +45,6 @@ export {
   GraduationCapIcon,
   BasketIcon,
   GymnasticsIcon,
-  
-
   MonitorIcon,
   PhysicalTherapyIcon,
   SearchIcon,

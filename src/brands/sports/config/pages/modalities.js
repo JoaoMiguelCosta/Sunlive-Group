@@ -9,6 +9,9 @@ import modalitiesOtherSports from "../sections/modalities/modalitiesOtherSports.
 import cta from "../sections/modalities/cta.js";
 const modalities = {
   id: "modalities",
+  ui: {
+    pageAriaLabel: "Sunlive Sports — Modalidades",
+  },
   sections: {
     hero,
     modalitiesOverview,

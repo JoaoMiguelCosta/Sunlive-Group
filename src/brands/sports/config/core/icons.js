@@ -16,9 +16,6 @@ import {
   GraduationCapIcon,
   BasketIcon,
   GymnasticsIcon,
-
-  
- 
   MonitorIcon,
   PhysicalTherapyIcon,
   SearchIcon,
@@ -50,8 +47,6 @@ export const BRAND_ICONS = Object.freeze({
   GraduationCapIcon,
   BasketIcon,
   GymnasticsIcon,
-
-
   MonitorIcon,
   PhysicalTherapyIcon,
   SearchIcon,
