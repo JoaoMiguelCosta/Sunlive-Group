@@ -1,6 +1,4 @@
 import logistics from "../../config/pages/logistics.js";
-import { resolveSportsIcon } from "../../config/core/iconKeyMap.js";
-import { ICONS } from "../../config/core/resolvedVisuals.js";
 import styles from "../../layouts/SportsPageLayout.module.css";
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
@@ -14,13 +12,12 @@ export default function LogisticsPage() {
       <main
         id={data.id}
         className={styles.inner}
-        role="region"
         aria-label={data.ui?.pageAriaLabel}
       >
         {" "}
         <div className={styles.contentFlow}>
           {" "}
-          <header className={styles.heroSection}>
+          <header>
             {" "}
             <SportsHeroIntro
               id={data.hero?.id}
@@ -38,8 +35,6 @@ export default function LogisticsPage() {
             {" "}
             <LogisticsServicesSection
               data={data.logisticsServices}
-              iconSet={ICONS}
-              resolveIcon={resolveSportsIcon}
             />{" "}
             <SportsClosingCTA data={data.cta} />{" "}
           </div>{" "}

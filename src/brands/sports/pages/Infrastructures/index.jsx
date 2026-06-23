@@ -12,13 +12,12 @@ export default function InfrastructuresPage() {
       <main
         id="sports-infrastructures"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Sports — Infraestruturas"
       >
         {" "}
         <div className={styles.contentFlow}>
           {" "}
-          <header className={styles.heroSection}>
+          <header>
             {" "}
             <SportsHeroIntro
               id="infrastructures-hero"

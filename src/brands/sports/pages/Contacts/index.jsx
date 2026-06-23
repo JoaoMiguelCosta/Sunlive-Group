@@ -53,7 +53,6 @@ export default function ContactsPage() {
       <main
         id={pageId}
         className={styles.inner}
-        role="region"
         aria-label={data.ui?.ariaLabel}
       >
         {" "}

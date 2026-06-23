@@ -13,7 +13,6 @@ export default function SpecialisedServicesPage() {
       <main
         id={data.ui?.pageId || data.id}
         className={styles.inner}
-        role="region"
         aria-label={
           data.ui?.pageAriaLabel || "Sunlive Sports — Serviços Especializados"
         }
@@ -21,7 +20,7 @@ export default function SpecialisedServicesPage() {
         {" "}
         <div className={styles.contentFlow}>
           {" "}
-          <header className={styles.heroSection}>
+          <header>
             {" "}
             <SportsHeroIntro
               id={sections.hero?.id}

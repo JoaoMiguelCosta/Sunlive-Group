@@ -14,23 +14,24 @@ export default function LeisureSportsTourismPage() {
       <main
         id="sports-leisure-tourism"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Sports — Turismo Desportivo Lúdico"
       >
         {" "}
         <div className={styles.contentFlow}>
           {" "}
-          <SportsHeroIntro
-            id={data.hero?.id}
-            eyebrow={data.hero?.eyebrow}
-            secondaryLine={data.hero?.secondaryLine}
-            title={data.hero?.title}
-            description={data.hero?.description}
-            supportingText={data.hero?.supportingText}
-            proofPoints={data.hero?.proofPoints}
-            stats={data.hero?.stats}
-            ui={data.hero?.ui}
-          />{" "}
+          <header>{" "}
+            <SportsHeroIntro
+              id={data.hero?.id}
+              eyebrow={data.hero?.eyebrow}
+              secondaryLine={data.hero?.secondaryLine}
+              title={data.hero?.title}
+              description={data.hero?.description}
+              supportingText={data.hero?.supportingText}
+              proofPoints={data.hero?.proofPoints}
+              stats={data.hero?.stats}
+              ui={data.hero?.ui}
+            />{" "}
+          </header>{" "}
           <LeisureExperiencesSection data={data.experiences} />{" "}
           <LeisureDestinationsSection data={data.destinations} />{" "}
           <LeisureBenefitsSection data={data.benefits} />{" "}

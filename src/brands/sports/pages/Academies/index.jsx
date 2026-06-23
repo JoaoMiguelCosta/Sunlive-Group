@@ -15,13 +15,12 @@ export default function AcademiesPage() {
       <main
         id={pageId}
         className={styles.inner}
-        role="region"
         aria-label={pageAriaLabel}
       >
         {" "}
         <div className={styles.contentFlow}>
           {" "}
-          <header className={styles.heroSection}>
+          <header>
             {" "}
             <SportsHeroIntro
               id={heroId}

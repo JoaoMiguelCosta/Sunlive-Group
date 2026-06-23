@@ -16,13 +16,12 @@ export default function ConsultancyPage() {
       <main
         id={data.ui?.pageId || data.id}
         className={styles.inner}
-        role="region"
         aria-label={data.ui?.pageAriaLabel}
       >
         {" "}
         <div className={styles.contentFlow}>
           {" "}
-          <header className={styles.heroSection}>
+          <header>
             {" "}
             <SportsHeroIntro
               id={sections.hero?.id}

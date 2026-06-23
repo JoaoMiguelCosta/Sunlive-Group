@@ -12,13 +12,12 @@ export default function TrainingCampsPage() {
       <main
         id="sports-training-camps"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Sports — Training Camps"
       >
         {" "}
         <div className={styles.contentFlow}>
           {" "}
-          <header className={styles.heroSection}>
+          <header>
             {" "}
             <SportsHeroIntro
               id="training-camps-hero"

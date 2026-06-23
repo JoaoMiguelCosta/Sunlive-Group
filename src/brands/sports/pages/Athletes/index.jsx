@@ -30,7 +30,7 @@ export default function AthletesPage() {
       >
         <div className={styles.contentFlow}>
           {heroData ? (
-            <header className={styles.heroSection}>
+            <header>
               <SportsHeroIntro
                 id={heroData.id || "atletas-sunlive-hero"}
                 eyebrow={heroData.eyebrow}

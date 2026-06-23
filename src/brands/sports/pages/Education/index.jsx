@@ -1,5 +1,5 @@
 import education from "../../config/pages/education.js";
-import SPORTS_BOOKS from "../../config/core/books.js";
+import { openEducationBook } from "./educationBook.actions.js";
 import styles from "../../layouts/SportsPageLayout.module.css";
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import EducationLevelsSection from "./sections/EducationLevelsSection/index.jsx";
@@ -9,27 +9,18 @@ import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 export default function EducationPage() {
   const data = education;
   if (!data) return null;
-  function handleOpenEducationBook(bookKey) {
-    const book = SPORTS_BOOKS?.[bookKey];
-    if (!book?.href) {
-      console.error(`Book não encontrado para a key: ${bookKey}`);
-      return;
-    }
-    window.open(book.href, "_blank", "noopener,noreferrer");
-  }
   return (
     <div className={styles.pageWrap} data-brand="sports">
       {" "}
       <main
         id="sports-education"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Sports — Educação"
       >
         {" "}
         <div className={styles.contentFlow}>
           {" "}
-          <header className={styles.heroSection}>
+          <header>
             {" "}
             <SportsHeroIntro
               id={data.hero?.id || "education-hero"}
@@ -47,7 +38,7 @@ export default function EducationPage() {
             {" "}
             <EducationLevelsSection
               data={data.levelsSection}
-              onOpenBook={handleOpenEducationBook}
+              onOpenBook={openEducationBook}
             />{" "}
             <EducationBilingualSection data={data.bilingualSection} />{" "}
             <EducationCareersSection data={data.careersSection} />{" "}

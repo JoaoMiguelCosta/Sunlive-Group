@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
+import { resolveSportsIcon } from "../../../../config/core/iconKeyMap.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
+
 import LogisticsActiveServicePanel from "./LogisticsActiveServicePanel.jsx";
 import LogisticsHighlights from "./LogisticsHighlights.jsx";
 import LogisticsServiceSelector from "./LogisticsServiceSelector.jsx";
@@ -18,11 +21,9 @@ import {
 
 import styles from "./LogisticsServicesSection.module.css";
 
-export default function LogisticsServicesSection({
-  data,
-  iconSet = {},
-  resolveIcon,
-}) {
+export default function LogisticsServicesSection({ data }) {
+  const iconSet = ICONS;
+  const resolveIcon = resolveSportsIcon;
   const panelRef = useRef(null);
   const shouldScrollAfterSelectRef = useRef(false);
 
