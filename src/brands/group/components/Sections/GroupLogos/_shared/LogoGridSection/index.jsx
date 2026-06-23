@@ -74,7 +74,7 @@ export default function LogoGridSection({
           );
 
           const card = (
-            <div className={styles.card} aria-label={name}>
+            <div className={styles.card}>
               <div className={styles.logoFrame}>{image}</div>
 
               {isValidText(caption) ? (

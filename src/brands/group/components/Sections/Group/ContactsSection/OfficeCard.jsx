@@ -15,20 +15,20 @@ export default function OfficeCard({
       id={id}
       className={styles.card}
       role="region"
-      aria-label={`${label} contacts`}
+      aria-label={`Contactos de ${label}`}
     >
       <ContactRow
         href={`mailto:${email}`}
-        label={`Email ${email}`}
-        mutedLabel="Email not available"
+        label={`Enviar email para ${email}`}
+        mutedLabel="Email indisponível"
         value={email}
         Icon={MailIcon}
       />
 
       <ContactRow
         href={`tel:${telHref}`}
-        label={`Call ${phone}`}
-        mutedLabel="Phone not available"
+        label={`Ligar para ${phone}`}
+        mutedLabel="Telefone indisponível"
         value={phone}
         Icon={PhoneIcon}
       />

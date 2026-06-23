@@ -8,7 +8,7 @@ export default function BrandHero() {
   if (!src) return null;
 
   return (
-    <div className={styles.hero} aria-label="Identidade Sunlive Group">
+    <div className={styles.hero}>
       <div className={styles.logoBox}>
         <img
           className={styles.logoImg}
