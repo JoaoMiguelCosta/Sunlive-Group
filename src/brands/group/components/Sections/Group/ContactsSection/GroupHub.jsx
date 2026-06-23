@@ -9,8 +9,6 @@ const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
 
 const GROUP_ROUTE_PATH = "/sunlive-group";
-const HASH_OPEN_DELAY = 220;
-const HASH_SCROLL_OFFSET = 24;
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -64,8 +62,6 @@ export default function GroupHub({ data }) {
     toggle: (key) => {
       if (key === "grupo" && !isOpen) toggle();
     },
-    delay: HASH_OPEN_DELAY,
-    offset: HASH_SCROLL_OFFSET,
   });
 
   if (!hasData) return null;

@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 import styles from "./ContactsGrid.module.css";
+import ContactRow from "./ContactRow.jsx";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
@@ -12,8 +13,6 @@ const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
 
 const GROUP_ROUTE_PATH = "/sunlive-group";
 const BUSINESS_UNIT_ANCHOR_PREFIX = "unidade-";
-const HASH_OPEN_DELAY = 220;
-const HASH_SCROLL_OFFSET = 24;
 
 const BUSINESS_UNIT_ORDER = [
   "travel",
@@ -92,26 +91,6 @@ function getItemByHashKey(items, hashKey) {
   );
 }
 
-function ContactRow({ href, label, value, mutedLabel, Icon }) {
-  const hasValue = isValidText(value);
-
-  if (!hasValue) {
-    return (
-      <span className={styles.row} aria-label={mutedLabel} aria-disabled="true">
-        <Icon className={styles.icon} width={20} height={20} />
-        <span className={styles.muted}>—</span>
-      </span>
-    );
-  }
-
-  return (
-    <a href={href} className={styles.row} aria-label={label}>
-      <Icon className={styles.icon} width={20} height={20} />
-      <span>{value}</span>
-    </a>
-  );
-}
-
 export default function BusinessUnits({ items = [] }) {
   const orderedItems = useMemo(() => getOrderedItems(items), [items]);
 
@@ -142,8 +121,6 @@ export default function BusinessUnits({ items = [] }) {
 
       if (item) toggle(item.key);
     },
-    delay: HASH_OPEN_DELAY,
-    offset: HASH_SCROLL_OFFSET,
   });
 
   if (!orderedItems.length) return null;

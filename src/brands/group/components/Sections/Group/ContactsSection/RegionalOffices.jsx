@@ -14,8 +14,6 @@ const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
 
 const GROUP_ROUTE_PATH = "/sunlive-group";
 const REGIONAL_OFFICE_ANCHOR_PREFIX = "pais-";
-const HASH_OPEN_DELAY = 220;
-const HASH_SCROLL_OFFSET = 24;
 
 const REGIONAL_OFFICE_SLUGS_PT = {
   malta: "malta",
@@ -104,8 +102,6 @@ export default function RegionalOffices({ items = [] }) {
 
       if (item) toggle(item.key);
     },
-    delay: HASH_OPEN_DELAY,
-    offset: HASH_SCROLL_OFFSET,
   });
 
   if (!validItems.length) return null;
