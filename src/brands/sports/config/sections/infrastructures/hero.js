@@ -1,4 +1,5 @@
 const infrastructuresHero = {
+  id: "infrastructures-hero",
   eyebrow: "Sunlive Sports",
   secondaryLine:
     "Instalações, contexto e capacidade operacional ao serviço do rendimento.",

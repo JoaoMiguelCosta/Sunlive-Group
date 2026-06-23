@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
+import { useVideoDialogBehavior } from "../../../../shared/hooks/useVideoDialogBehavior.js";
 import styles from "./ProgramSportCardMedia.module.css";
 
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
@@ -52,52 +53,16 @@ function getMediaData(item) {
 function VideoDialog({ isOpen, media, sport, titleId, onClose }) {
   const videoRef = useRef(null);
 
-  useEffect(() => {
-    if (!isOpen) return undefined;
-
-    const previousOverflow = document.body.style.overflow;
-
-    document.body.style.overflow = "hidden";
-
-    function handleKeyDown(event) {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose]);
-
-  useEffect(() => {
-    if (!isOpen || !videoRef.current) return;
-
-    const playPromise = videoRef.current.play();
-
-    if (playPromise?.catch) {
-      playPromise.catch(() => {});
-    }
-  }, [isOpen]);
+  // Comportamento partilhado: scroll lock, Escape, autoplay, handleClose
+  const { handleClose } = useVideoDialogBehavior(isOpen, videoRef, onClose);
 
   if (!isOpen || !isValidText(media?.fullSrc)) return null;
 
+  // Overlay click chama onClose directamente (preserva comportamento original)
   function handleOverlayClick(event) {
     if (event.target === event.currentTarget) {
       onClose();
     }
-  }
-
-  function handleClose() {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-
-    onClose();
   }
 
   return createPortal(
@@ -160,6 +125,7 @@ export default function ProgramSportCardMedia({ item, className = "" }) {
   const hasFullVideo = hasVideo && isValidText(media.fullSrc);
   const hasVisibleMedia = hasVideo || hasImage;
 
+  // IntersectionObserver de preview — threshold e lógica de pausa específicos deste card
   useEffect(() => {
     if (!hasVideo || !previewVideoRef.current || !mediaPanelRef.current) {
       return undefined;
@@ -199,9 +165,7 @@ export default function ProgramSportCardMedia({ item, className = "" }) {
           pauseVideo();
         }
       },
-      {
-        threshold: VIDEO_VIEW_THRESHOLD,
-      },
+      { threshold: VIDEO_VIEW_THRESHOLD },
     );
 
     observer.observe(target);

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import styles from "./SportsPageSwitcher.module.css";
@@ -35,7 +35,10 @@ export default function SportsPageSwitcher({
 }) {
   const location = useLocation();
   const switcherRef = useRef(null);
+  const menuRef = useRef(null);
+  const buttonRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+  const navId = "sports-page-switcher-nav";
 
   const normalizedPathname = normalizePath(location.pathname);
 
@@ -71,6 +74,7 @@ export default function SportsPageSwitcher({
     function handleKeyDown(event) {
       if (event.key === "Escape") {
         setIsOpen(false);
+        buttonRef.current?.focus();
       }
     }
 
@@ -87,6 +91,12 @@ export default function SportsPageSwitcher({
     setIsOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!isOpen || !menuRef.current) return;
+    const firstLink = menuRef.current.querySelector("a");
+    firstLink?.focus();
+  }, [isOpen]);
+
   if (!currentItem || !hasMenu) return null;
 
   return (
@@ -96,11 +106,12 @@ export default function SportsPageSwitcher({
       data-open={isOpen ? "true" : "false"}
     >
       <button
+        ref={buttonRef}
         type="button"
         className={styles.toggle}
         aria-label={`${ariaLabel}. Página selecionada: ${currentItem.label}`}
-        aria-haspopup="menu"
         aria-expanded={isOpen}
+        aria-controls={navId}
         data-current="true"
         onClick={() => setIsOpen((currentValue) => !currentValue)}
       >
@@ -118,13 +129,12 @@ export default function SportsPageSwitcher({
         </svg>
       </button>
 
-      <nav className={styles.menu} aria-label={ariaLabel} hidden={!isOpen}>
-        <ul className={styles.menuList} role="menu">
+      <nav ref={menuRef} id={navId} className={styles.menu} aria-label={ariaLabel} hidden={!isOpen}>
+        <ul className={styles.menuList}>
           {availableItems.map((item, index) => (
-            <li key={getItemKey(item, index)} role="none">
+            <li key={getItemKey(item, index)}>
               <Link
                 to={item.href}
-                role="menuitem"
                 className={styles.menuLink}
                 data-variant={item.variant || "default"}
                 onClick={() => setIsOpen(false)}

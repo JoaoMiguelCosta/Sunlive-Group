@@ -17,7 +17,7 @@ export default function OtherSportsCategoryCard({ category, index = 0 }) {
 
       <div className={styles.chips}>
         {items.map((item) => (
-          <span key={item} className={styles.chip} tabIndex={0}>
+          <span key={item} className={styles.chip}>
             {item}
           </span>
         ))}

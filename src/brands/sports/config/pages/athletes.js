@@ -4,7 +4,9 @@ import cta from "../sections/athletes/cta.js";
 
 const athletes = {
   id: "atletas-sunlive",
-
+  ui: {
+    pageAriaLabel: "Sunlive Sports — Atletas Sunlive",
+  },
   sections: {
     hero,
     athletesRoster,

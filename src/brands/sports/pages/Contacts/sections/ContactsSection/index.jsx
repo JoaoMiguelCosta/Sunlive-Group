@@ -1,155 +1,35 @@
+import {
+  getActionLinkProps,
+  getDisplayValue,
+  getIconComponent,
+  getNormalizedSocialIconKey,
+  getSectionLeadId,
+  getSectionTitleId,
+  getValidActions,
+  getValidItems,
+  getValidSocials,
+  isValidObject,
+  isValidText,
+} from "./contactsSection.helpers.js";
+import {
+  FacebookIcon,
+  InstagramIcon,
+} from "./contactsSection.icons.jsx";
 import styles from "./ContactsSection.module.css";
 
-const SOCIAL_ICON_KEY_ALIASES = Object.freeze({
-  fb: "facebook",
-  facebook: "facebook",
-  Facebook: "facebook",
-  FACEBOOK: "facebook",
-
-  ig: "instagram",
-  instagram: "instagram",
-  Instagram: "instagram",
-  INSTAGRAM: "instagram",
-});
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
-
-function isValidObject(value) {
-  return value && typeof value === "object" && !Array.isArray(value);
-}
-
-function getValidItems(items) {
-  return Array.isArray(items)
-    ? items.filter(
-        (item) =>
-          isValidObject(item) &&
-          isValidText(item.key) &&
-          isValidText(item.title),
-      )
-    : [];
-}
-
-function getValidActions(actions) {
-  return Array.isArray(actions)
-    ? actions.filter(
-        (action) =>
-          isValidObject(action) &&
-          isValidText(action.key) &&
-          isValidText(action.label) &&
-          isValidText(action.href),
-      )
-    : [];
-}
-
-function getValidSocials(items) {
-  return Array.isArray(items)
-    ? items.filter(
-        (item) =>
-          isValidObject(item) &&
-          isValidText(item.key) &&
-          isValidText(item.label) &&
-          isValidText(item.href),
-      )
-    : [];
-}
-
-function getDisplayValue(value) {
-  if (isValidText(value)) return value;
-
-  if (!isValidObject(value)) return "";
-
-  const candidates = [
-    value.label,
-    value.title,
-    value.name,
-    value.address,
-    value.value,
-  ];
-
-  return candidates.find(isValidText) || "";
-}
-
-function getNormalizedSocialIconKey(iconKey) {
-  if (!isValidText(iconKey)) return "";
-
-  return SOCIAL_ICON_KEY_ALIASES[iconKey] || iconKey;
-}
-
-function getIconComponent(iconSet, iconKey) {
-  if (!isValidObject(iconSet) || !isValidText(iconKey)) return null;
-
-  const normalizedIconKey = getNormalizedSocialIconKey(iconKey);
-
-  return (
-    iconSet[iconKey] ||
-    iconSet[`${iconKey}Icon`] ||
-    iconSet[normalizedIconKey] ||
-    iconSet[`${normalizedIconKey}Icon`] ||
-    null
-  );
-}
-
-function FacebookIcon() {
-  return (
-    <svg viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M14.02 8.48V6.92c0-.75.18-1.16 1.2-1.16h1.56V3.1A21.4 21.4 0 0 0 14.5 3c-2.26 0-3.82 1.38-3.82 3.92v1.56H8.1v2.98h2.58V21h3.34v-9.54h2.52l.4-2.98h-2.92Z"
-      />
-    </svg>
-  );
-}
-
-function InstagramIcon() {
-  return (
-    <svg viewBox="0 0 24 24" role="img" focusable="false" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5Zm8.75 2.2a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6ZM12 7.1A4.9 4.9 0 1 1 12 16.9 4.9 4.9 0 0 1 12 7.1Zm0 2A2.9 2.9 0 1 0 12 14.9 2.9 2.9 0 0 0 12 9.1Z"
-      />
-    </svg>
-  );
-}
-
-function getFallbackSocialIconComponent(iconKey) {
-  const normalizedIconKey = getNormalizedSocialIconKey(iconKey);
-
-  if (normalizedIconKey === "facebook") return FacebookIcon;
-  if (normalizedIconKey === "instagram") return InstagramIcon;
-
-  return null;
-}
+const SOCIAL_FALLBACK_ICONS = {
+  facebook: FacebookIcon,
+  instagram: InstagramIcon,
+};
 
 function getSocialIconComponent(iconSet, item) {
   const iconKey = item.iconKey || item.key;
 
   return (
     getIconComponent(iconSet, iconKey) ||
-    getFallbackSocialIconComponent(iconKey)
+    SOCIAL_FALLBACK_ICONS[getNormalizedSocialIconKey(iconKey)] ||
+    null
   );
-}
-
-function getSectionTitleId(sectionId, hasTitle) {
-  return isValidText(sectionId) && hasTitle ? `${sectionId}-title` : undefined;
-}
-
-function getSectionLeadId(sectionId, hasLead) {
-  return isValidText(sectionId) && hasLead ? `${sectionId}-lead` : undefined;
-}
-
-function isExternalHref(href) {
-  return /^https?:\/\//i.test(href);
-}
-
-function getActionLinkProps(href) {
-  if (!isValidText(href) || !isExternalHref(href)) return {};
-
-  return {
-    target: "_blank",
-    rel: "noreferrer",
-  };
 }
 
 function IntroHeader({ intro, titleId, leadId }) {
@@ -374,7 +254,7 @@ function SocialLink({ item, iconSet }) {
         href={item.href}
         aria-label={item.ariaLabel || item.label}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
       >
         {Icon ? (
           <span className={styles.socialIcon} aria-hidden="true">

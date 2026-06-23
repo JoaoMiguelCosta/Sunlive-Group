@@ -3,32 +3,27 @@ import styles from "../../layouts/SportsPageLayout.module.css";
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
 import ModalitiesOverviewSection from "./sections/ModalitiesOverviewSection/index.jsx";
-import CyclingSection from "./sections/CyclingSection/index.jsx";
-import GymnasticsSection from "./sections/GymnasticsSection/index.jsx";
-import BasketSection from "./sections/BasketSection/index.jsx";
-import FootballSection from "./sections/FootballSection/index.jsx";
-import KarateSection from "./sections/KarateSection/index.jsx";
+import ModalityDetailSection from "./sections/_shared/ModalityDetailSection/index.jsx";
 import ModalitiesOtherSportsSection from "./sections/ModalitiesOtherSportsSection/index.jsx";
 import useScrollToHash from "../../../../shared/hooks/useScrollToHash.js";
+
 export default function ModalitiesPage() {
   useScrollToHash(96);
+
   const data = modalities;
-  const sections = data?.sections || data;
+  const sections = data?.sections;
+
   if (!sections) return null;
+
   return (
     <div className={styles.pageWrap} data-brand="sports">
-      {" "}
       <main
         id={data?.id || "sports-modalities"}
         className={styles.inner}
-        role="region"
-        aria-label="Sunlive Sports — Modalidades"
+        aria-label={data?.ui?.pageAriaLabel || "Sunlive Sports — Modalidades"}
       >
-        {" "}
         <div className={styles.contentFlow}>
-          {" "}
-          <header className={styles.heroSection}>
-            {" "}
+          <header>
             <SportsHeroIntro
               id={sections.hero?.id}
               eyebrow={sections.hero?.eyebrow}
@@ -39,24 +34,23 @@ export default function ModalitiesPage() {
               proofPoints={sections.hero?.proofPoints}
               stats={sections.hero?.stats}
               ui={sections.hero?.ui}
-            />{" "}
-          </header>{" "}
-          <ModalitiesOverviewSection data={sections.modalitiesOverview} />{" "}
-          <div
-            className={styles.sections}
-            aria-label="Detalhe técnico das modalidades Sunlive Sports"
-          >
-            {" "}
-            <CyclingSection data={sections.cycling} />{" "}
-            <GymnasticsSection data={sections.gymnastics} />{" "}
-            <BasketSection data={sections.basket} />{" "}
-            <FootballSection data={sections.football} />{" "}
-            <KarateSection data={sections.karate} />{" "}
-          </div>{" "}
-          <ModalitiesOtherSportsSection data={sections.modalitiesOtherSports} />{" "}
-          <SportsClosingCTA data={sections.cta} />{" "}
-        </div>{" "}
-      </main>{" "}
+            />
+          </header>
+
+          <ModalitiesOverviewSection data={sections.modalitiesOverview} />
+
+          <div className={styles.sections}>
+            <ModalityDetailSection data={sections.cycling} />
+            <ModalityDetailSection data={sections.gymnastics} />
+            <ModalityDetailSection data={sections.basket} />
+            <ModalityDetailSection data={sections.football} />
+            <ModalityDetailSection data={sections.karate} />
+          </div>
+
+          <ModalitiesOtherSportsSection data={sections.modalitiesOtherSports} />
+          <SportsClosingCTA data={sections.cta} />
+        </div>
+      </main>
     </div>
   );
 }

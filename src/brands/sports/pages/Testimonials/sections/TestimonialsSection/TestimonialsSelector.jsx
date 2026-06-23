@@ -17,6 +17,32 @@ export default function TestimonialsSelector({
 }) {
   if (!items?.length) return null;
 
+  const handleKeyDown = (event, currentIndex) => {
+    let nextIndex = -1;
+    switch (event.key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        nextIndex = currentIndex === items.length - 1 ? 0 : currentIndex + 1;
+        break;
+      case "ArrowLeft":
+      case "ArrowUp":
+        nextIndex = currentIndex === 0 ? items.length - 1 : currentIndex - 1;
+        break;
+      case "Home":
+        nextIndex = 0;
+        break;
+      case "End":
+        nextIndex = items.length - 1;
+        break;
+      default:
+        return;
+    }
+    event.preventDefault();
+    const nextKey = getItemKey(items[nextIndex], nextIndex);
+    onSelect(nextKey);
+    document.getElementById(`${sectionId}-tab-${nextKey}`)?.focus();
+  };
+
   return (
     <aside className={styles.selectorPanel} aria-label={listAriaLabel}>
       <div className={styles.selectorGrid} role="tablist">
@@ -36,7 +62,9 @@ export default function TestimonialsSelector({
               role="tab"
               aria-selected={isActive}
               aria-controls={panelId}
+              tabIndex={isActive ? 0 : -1}
               onClick={() => onSelect(itemKey)}
+              onKeyDown={(event) => handleKeyDown(event, index)}
             >
               <span className={styles.selectorIndex}>
                 {String(index + 1).padStart(2, "0")}

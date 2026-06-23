@@ -12,7 +12,6 @@ export default function HomePageSports() {
       <main
         id="sports-home"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Sports — Página Inicial"
       >
         <div className={styles.contentFlow}>

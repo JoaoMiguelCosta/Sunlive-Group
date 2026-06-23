@@ -6,7 +6,9 @@ import cta from "../sections/events/cta.js";
 
 const events = {
   id: "events",
-
+  ui: {
+    pageAriaLabel: "Sunlive Sports — Eventos",
+  },
   sections: {
     hero,
     operationalOverview,

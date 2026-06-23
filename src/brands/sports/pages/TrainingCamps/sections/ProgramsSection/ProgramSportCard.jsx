@@ -13,6 +13,7 @@ import {
   shouldEnableExpansion,
 } from "./programSportCard.helpers.js";
 import styles from "./ProgramSportCard.module.css";
+
 export default function ProgramSportCard({ item, index = 0 }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const { ref, inView } = useInView({
@@ -20,9 +21,11 @@ export default function ProgramSportCard({ item, index = 0 }) {
     once: true,
     enabled: Boolean(item),
   });
+
   if (!item) {
     return null;
   }
+
   const itemKey = item.key || `training-camp-program-${index}`;
   const Icon = resolveSportsIcon(ICONS, item.iconKey);
   const focusItems = Array.isArray(item.focusItems) ? item.focusItems : [];
@@ -30,9 +33,7 @@ export default function ProgramSportCard({ item, index = 0 }) {
   const expandable = shouldEnableExpansion(item);
   const collapsedCount = getCollapsedCount(item, 6);
   const visibleFocusItems =
-    expandable && !isExpanded
-      ? focusItems.slice(0, collapsedCount)
-      : focusItems;
+    expandable && !isExpanded ? focusItems.slice(0, collapsedCount) : focusItems;
   const hiddenItemsCount = Math.max(focusItems.length - collapsedCount, 0);
   const cardClassName = [
     styles.card,
@@ -43,9 +44,11 @@ export default function ProgramSportCard({ item, index = 0 }) {
   ]
     .filter(Boolean)
     .join(" ");
-  const handleToggleExpand = () => {
+
+  function handleToggleExpand() {
     setIsExpanded((currentValue) => !currentValue);
-  };
+  }
+
   return (
     <article
       ref={ref}
@@ -54,17 +57,17 @@ export default function ProgramSportCard({ item, index = 0 }) {
       tabIndex={0}
       style={{ "--card-delay": `${index * 70}ms` }}
     >
-      {" "}
       <div className={styles.content}>
-        {" "}
         <ProgramSportCardHeader
           item={item}
           itemKey={itemKey}
           index={index}
           Icon={Icon}
           initial={getInitial(item.sport)}
-        />{" "}
-        {item.summary ? <p className={styles.summary}>{item.summary}</p> : null}{" "}
+        />
+
+        {item.summary ? <p className={styles.summary}>{item.summary}</p> : null}
+
         <ProgramSportCardFocusBlock
           itemKey={itemKey}
           focusLabel={item.focusLabel}
@@ -74,18 +77,17 @@ export default function ProgramSportCard({ item, index = 0 }) {
           isExpanded={isExpanded}
           expandAction={item.expandAction}
           onToggleExpand={handleToggleExpand}
-        />{" "}
+        />
+
         <ProgramSportCardDetailsBlock
           audienceLabel={item.audienceLabel}
           audience={item.audience}
           pillarsLabel={item.pillarsLabel}
           pillars={pillars}
-        />{" "}
-      </div>{" "}
-      <ProgramSportCardMedia
-        item={item}
-        className={styles.mediaPanelSlot}
-      />{" "}
+        />
+      </div>
+
+      <ProgramSportCardMedia item={item} className={styles.mediaPanelSlot} />
     </article>
   );
 }

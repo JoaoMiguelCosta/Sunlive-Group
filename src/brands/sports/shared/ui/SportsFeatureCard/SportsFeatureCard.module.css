@@ -136,3 +136,14 @@
         filter: blur(22px);
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
+
+    .card:hover,
+    .card:focus-within {
+        transform: none;
+    }
+}

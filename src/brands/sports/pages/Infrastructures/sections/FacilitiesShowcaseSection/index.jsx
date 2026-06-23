@@ -4,130 +4,21 @@ import FacilitiesIntro from "./FacilitiesIntro";
 import FacilitiesSelector from "./FacilitiesSelector";
 import FacilityPanel from "./FacilityPanel";
 
+import {
+  focusSelectorButton,
+  scrollElementIntoMobileView,
+  shouldScrollToPanelOnMobile,
+} from "./facilitiesShowcaseSection.dom.js";
+
+import {
+  formatCounter,
+  getInitialCardKey,
+  getIntroDescription,
+  isValidText,
+  normalizeCards,
+} from "./facilitiesShowcaseSection.utils.js";
+
 import styles from "./FacilitiesShowcaseSection.module.css";
-
-const MOBILE_SCROLL_QUERY = "(max-width: 900px)";
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
-
-function isValidObject(value) {
-  return value && typeof value === "object" && !Array.isArray(value);
-}
-
-function isValidCard(card) {
-  return isValidObject(card) && isValidText(card.title);
-}
-
-function getValidCards(cards) {
-  return Array.isArray(cards) ? cards.filter(isValidCard) : [];
-}
-
-function getValidFeatures(features) {
-  return Array.isArray(features) ? features.filter(isValidText) : [];
-}
-
-function getValidImages(images, fallbackAlt) {
-  if (!Array.isArray(images)) return [];
-
-  return images
-    .filter((image) => isValidObject(image) && isValidText(image.src))
-    .map((image) => ({
-      src: image.src,
-      alt: isValidText(image.alt) ? image.alt : fallbackAlt,
-      position: isValidText(image.position) ? image.position : "center",
-    }));
-}
-
-function formatCounter(value) {
-  return String(value).padStart(2, "0");
-}
-
-function toDomSafeId(value) {
-  return String(value)
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9-_]+/gi, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-function getIntroDescription(intro) {
-  if (isValidText(intro?.description)) return intro.description;
-  if (isValidText(intro?.lead)) return intro.lead;
-
-  return "";
-}
-
-function prefersReducedMotion() {
-  if (typeof window === "undefined") return false;
-
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
-function shouldScrollToPanelOnMobile() {
-  if (typeof window === "undefined") return false;
-
-  return window.matchMedia(MOBILE_SCROLL_QUERY).matches;
-}
-
-function getMobileScrollOffset() {
-  if (typeof window === "undefined") return 12;
-
-  return Math.max(10, Math.min(18, window.innerWidth * 0.03));
-}
-
-function scrollElementIntoMobileView(element) {
-  if (!element || typeof window === "undefined") return;
-
-  const top =
-    element.getBoundingClientRect().top +
-    window.scrollY -
-    getMobileScrollOffset();
-
-  window.scrollTo({
-    top: Math.max(0, top),
-    behavior: prefersReducedMotion() ? "auto" : "smooth",
-  });
-}
-
-function focusSelectorButton(container, index) {
-  if (!container || typeof window === "undefined") return;
-
-  const buttons = Array.from(container.querySelectorAll('[role="tab"]'));
-  const button = buttons[index];
-
-  if (!button) return;
-
-  window.requestAnimationFrame(() => {
-    try {
-      button.focus({ preventScroll: true });
-    } catch {
-      button.focus();
-    }
-  });
-}
-
-function normalizeCards(cards, sectionId) {
-  return getValidCards(cards).map((card, index) => {
-    const key = isValidText(card.key) ? card.key : `facility-${index + 1}`;
-
-    return {
-      key,
-      tabId: `${sectionId}-tab-${toDomSafeId(key)}`,
-      counter: formatCounter(index + 1),
-      title: card.title,
-      description: isValidText(card.description) ? card.description : "",
-      highlight: isValidText(card.highlight) ? card.highlight : "",
-      images: getValidImages(card.images, card.title),
-      features: getValidFeatures(card.features),
-    };
-  });
-}
-
-function getInitialCardKey(cards) {
-  return cards[0]?.key || null;
-}
 
 export default function FacilitiesShowcaseSection({ data }) {
   const panelRef = useRef(null);

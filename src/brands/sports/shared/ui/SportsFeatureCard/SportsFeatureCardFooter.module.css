@@ -273,3 +273,18 @@
         block-size: 0.9rem;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .socialLink,
+    .ctaButton,
+    .ctaIcon {
+        transition: none;
+    }
+
+    .socialLink:hover,
+    .ctaButton:hover,
+    .ctaButton:active,
+    .ctaButton:hover .ctaIcon {
+        transform: none;
+    }
+}

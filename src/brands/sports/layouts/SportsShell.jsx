@@ -65,9 +65,9 @@ export default function SportsShell() {
         ) : null}
       </div>
 
-      <main className={styles.main} aria-label="Sunlive Sports — Conteúdo">
+      <div className={styles.main}>
         <Outlet />
-      </main>
+      </div>
 
       <FooterSports data={footerData} flushTop />
     </div>

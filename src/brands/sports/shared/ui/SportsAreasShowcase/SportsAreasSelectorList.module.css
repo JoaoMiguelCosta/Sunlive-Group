@@ -386,3 +386,27 @@
         gap: 0.64rem;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .trigger,
+    .trigger::before,
+    .trigger::after,
+    .iconWrap,
+    .statusDot {
+        transition: none;
+    }
+
+    .trigger:hover,
+    .trigger[data-active="true"]:hover {
+        transform: none;
+    }
+
+    .trigger:hover::before,
+    .trigger:hover::after {
+        transform: none;
+    }
+
+    .trigger[data-active="true"] .iconWrap {
+        transform: none;
+    }
+}

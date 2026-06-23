@@ -14,7 +14,7 @@ export default function HomeGatewayCardLink({
         className={styles.click}
         aria-label={label}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
       >
         {children}
       </a>

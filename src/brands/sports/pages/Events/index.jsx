@@ -11,7 +11,7 @@ import EventsModalitiesSection from "./sections/EventsModalitiesSection/index.js
 
 export default function EventsPage() {
   const data = events;
-  const sections = data?.sections || data;
+  const sections = data?.sections;
 
   if (!sections) return null;
 
@@ -20,11 +20,10 @@ export default function EventsPage() {
       <main
         id={data?.id || "sports-events"}
         className={styles.inner}
-        role="region"
-        aria-label="Sunlive Sports — Eventos"
+        aria-label={data?.ui?.pageAriaLabel || "Sunlive Sports — Eventos"}
       >
         <div className={styles.contentFlow}>
-          <header className={styles.heroSection}>
+          <header>
             <SportsHeroIntro
               id={sections.hero?.id || "events-hero"}
               eyebrow={sections.hero?.eyebrow}

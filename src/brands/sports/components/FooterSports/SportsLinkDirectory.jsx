@@ -31,7 +31,6 @@ function renderChip(item, handleAnchorClick) {
       key={item.key}
       className={styles.chip}
       data-variant={variant}
-      role="text"
     >
       <span className={styles.chipLabel}>{item.label}</span>
       <span className={styles.energyLine} aria-hidden="true" />
@@ -63,7 +62,7 @@ export default function SportsLinkDirectory({ data }) {
   if (!hasLeftColumns && !hasCollaborators) return null;
 
   return (
-    <div
+    <section
       className={styles.directory}
       aria-label="Links rápidos e colaborações Sunlive Sports"
     >
@@ -103,6 +102,6 @@ export default function SportsLinkDirectory({ data }) {
           ) : null}
         </div>
       ) : null}
-    </div>
+    </section>
   );
 }

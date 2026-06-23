@@ -22,7 +22,7 @@ export default function EducationBilingualComparison({
       <div
         className={styles.comparison}
         aria-label={!comparisonLabelId ? comparison?.ariaLabel : undefined}
-        aria-labelledby={comparisonLabelId}
+        aria-labelledby={comparisonLabelId || undefined}
       >
         {items.map((item, index) => (
           <EducationBilingualPanel

@@ -16,17 +16,17 @@ import {
 
 import styles from "./TestimonialsSection.module.css";
 
-export default function TestimonialsSection({ section }) {
+export default function TestimonialsSection({ data }) {
   const featuredRef = useRef(null);
 
-  const sectionId = section?.id || "sunlive-sports-testemunhos";
-  const intro = section?.intro || {};
-  const ui = section?.ui || {};
-  const summaryItems = getValidArray(section?.summary?.items);
+  const sectionId = data?.id || "sunlive-sports-testemunhos";
+  const intro = data?.intro || {};
+  const ui = data?.ui || {};
+  const summaryItems = getValidArray(data?.summary?.items);
 
   const testimonials = useMemo(
-    () => getRenderableTestimonials(section?.items),
-    [section?.items],
+    () => getRenderableTestimonials(data?.items),
+    [data?.items],
   );
 
   const defaultActiveKey = useMemo(

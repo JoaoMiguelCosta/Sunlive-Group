@@ -16,7 +16,7 @@ export default function EducationBilingualPanel({ item }) {
     <article
       className={styles.panel}
       data-variant={variant}
-      aria-label={panelLabel}
+      aria-label={panelLabel || undefined}
     >
       <div className={styles.panelTop}>
         <span className={styles.panelTag}>{panelTag}</span>

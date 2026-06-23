@@ -91,7 +91,7 @@ export default function AthleteCard({ athlete, modality, ui }) {
               className={styles.instagramLink}
               href={instagram.href}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               aria-label={
                 isValidText(instagramAriaLabel) ? instagramAriaLabel : undefined
               }

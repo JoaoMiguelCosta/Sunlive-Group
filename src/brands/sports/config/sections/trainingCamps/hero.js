@@ -1,4 +1,5 @@
 const trainingCampsHero = {
+  id: "training-camps-hero",
   eyebrow: "Sunlive Sports",
   secondaryLine:
     "Preparação, rendimento e organização em contexto real de estágio desportivo.",

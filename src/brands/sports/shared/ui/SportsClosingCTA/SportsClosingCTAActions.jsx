@@ -25,7 +25,7 @@ function SportsClosingCTAActionLink({ action, variant }) {
         className={className}
         aria-label={ariaLabel}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
       >
         {label}
       </a>
