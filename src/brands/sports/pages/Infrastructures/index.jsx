@@ -2,7 +2,7 @@ import infrastructures from "../../config/pages/infrastructures.js";
 import styles from "../../layouts/SportsPageLayout.module.css";
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
-import FacilitiesGridSection from "./sections/FacilitiesShowcaseSection/index.jsx";
+import FacilitiesShowcaseSection from "./sections/FacilitiesShowcaseSection/index.jsx";
 export default function InfrastructuresPage() {
   const data = infrastructures;
   if (!data) return null;
@@ -33,7 +33,7 @@ export default function InfrastructuresPage() {
           </header>{" "}
           <div className={styles.sections}>
             {" "}
-            <FacilitiesGridSection data={data.facilitiesGrid} />{" "}
+            <FacilitiesShowcaseSection data={data.facilitiesGrid} />{" "}
             <SportsClosingCTA data={data.cta} />{" "}
           </div>{" "}
         </div>{" "}

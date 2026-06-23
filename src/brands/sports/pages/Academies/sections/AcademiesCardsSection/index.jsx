@@ -1,6 +1,6 @@
 import SPORTS_BOOKS from "../../../../config/core/books.js";
 import SportsFeatureCard from "../../../../shared/ui/SportsFeatureCard/index.jsx";
-import { mapAcademiesToFeatureCards } from "../../../../shared/utils/mapAcademyToFeatureCard.js";
+import { mapAcademiesToFeatureCards } from "./mapAcademyToFeatureCard.js";
 import styles from "./AcademiesCardsSection.module.css";
 function getCards(data) {
   if (Array.isArray(data?.cards)) return data.cards;

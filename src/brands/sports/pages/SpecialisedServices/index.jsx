@@ -2,7 +2,8 @@ import specialisedServices from "../../config/pages/specialisedServices.js";
 import styles from "../../layouts/SportsPageLayout.module.css";
 import SportsHeroIntro from "../../shared/ui/SportsHeroIntro/index.jsx";
 import SportsClosingCTA from "../../shared/ui/SportsClosingCTA/index.jsx";
-import AreasSection from "./sections/SpecialisedServicesAreasSection/index.jsx";
+import SportsAreasShowcase from "../../shared/ui/SportsAreasShowcase/index.jsx";
+import { resolveSportsAreaIcon } from "../../shared/utils/resolveSportsAreaIcon.jsx";
 export default function SpecialisedServicesPage() {
   const data = specialisedServices;
   const sections = data?.sections;
@@ -34,7 +35,13 @@ export default function SpecialisedServicesPage() {
               ui={sections.hero?.ui}
             />{" "}
           </header>{" "}
-          <AreasSection data={sections.areas} />{" "}
+          <SportsAreasShowcase
+            id={sections.areas?.id}
+            intro={sections.areas?.intro}
+            areas={sections.areas?.items}
+            ui={sections.areas?.ui}
+            resolveIcon={resolveSportsAreaIcon}
+          />{" "}
           {sections.cta ? <SportsClosingCTA data={sections.cta} /> : null}{" "}
         </div>{" "}
       </main>{" "}

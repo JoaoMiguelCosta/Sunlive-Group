@@ -24,7 +24,7 @@ export default function TestimonialsPage() {
           {" "}
           <div className={styles.sections}>
             {" "}
-            <TestimonialsSection section={testimonialsSection} />{" "}
+            <TestimonialsSection data={testimonialsSection} />{" "}
           </div>{" "}
         </div>{" "}
       </main>{" "}
