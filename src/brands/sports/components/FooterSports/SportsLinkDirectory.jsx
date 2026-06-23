@@ -62,7 +62,7 @@ export default function SportsLinkDirectory({ data }) {
   if (!hasLeftColumns && !hasCollaborators) return null;
 
   return (
-    <div
+    <section
       className={styles.directory}
       aria-label="Links rápidos e colaborações Sunlive Sports"
     >
@@ -102,6 +102,6 @@ export default function SportsLinkDirectory({ data }) {
           ) : null}
         </div>
       ) : null}
-    </div>
+    </section>
   );
 }

@@ -254,7 +254,7 @@ function SocialLink({ item, iconSet }) {
         href={item.href}
         aria-label={item.ariaLabel || item.label}
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
       >
         {Icon ? (
           <span className={styles.socialIcon} aria-hidden="true">

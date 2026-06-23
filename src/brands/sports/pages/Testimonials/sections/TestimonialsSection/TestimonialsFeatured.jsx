@@ -15,7 +15,6 @@ const TestimonialsFeatured = forwardRef(function TestimonialsFeatured(
     resolvedActiveIndex,
     panelId,
     activeTabId,
-    featuredAriaLabel,
   },
   ref,
 ) {
@@ -28,7 +27,7 @@ const TestimonialsFeatured = forwardRef(function TestimonialsFeatured(
       id={panelId}
       className={styles.featured}
       role="tabpanel"
-      aria-label={featuredAriaLabel}
+      tabIndex={-1}
       aria-labelledby={activeTabId}
     >
       <div className={styles.mediaColumn}>

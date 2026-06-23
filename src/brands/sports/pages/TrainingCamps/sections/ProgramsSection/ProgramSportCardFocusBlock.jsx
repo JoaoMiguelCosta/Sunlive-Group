@@ -22,7 +22,6 @@ export default function ProgramSportCardFocusBlock({
           <span
             key={focusItem}
             className={styles.chip}
-            tabIndex={0}
             role="listitem"
           >
             {focusItem}

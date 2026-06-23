@@ -27,7 +27,11 @@
         0 16px 34px rgba(0, 0, 0, 0.26);
     overflow: hidden;
     isolation: isolate;
-    outline: none;
+}
+
+.panel:focus-visible {
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.6);
+    outline-offset: 2px;
 }
 
 .panel::before {

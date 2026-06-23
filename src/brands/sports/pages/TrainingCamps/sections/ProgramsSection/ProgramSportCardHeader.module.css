@@ -174,3 +174,17 @@
         font-size: 0.7rem;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .iconBox,
+    .indexTag {
+        transition: none;
+    }
+
+    .topRow:hover .iconBox,
+    .topRow:focus-within .iconBox,
+    .topRow:hover .indexTag,
+    .topRow:focus-within .indexTag {
+        transform: none;
+    }
+}

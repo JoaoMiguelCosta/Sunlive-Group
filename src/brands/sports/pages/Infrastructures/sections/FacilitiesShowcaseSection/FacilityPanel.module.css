@@ -29,7 +29,11 @@
             0 22px 48px rgba(0, 0, 0, 0.36)),
         inset 0 1px 0 rgba(255, 255, 255, 0.04),
         inset 0 -1px 0 rgba(255, 255, 255, 0.012);
-    outline: none;
+}
+
+.panel:focus-visible {
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.6);
+    outline-offset: 2px;
 }
 
 .panel::before {

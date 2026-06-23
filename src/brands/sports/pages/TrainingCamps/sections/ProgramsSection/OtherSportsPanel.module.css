@@ -50,6 +50,15 @@
     filter: blur(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        transition: none;
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}
+
 .header {
     display: grid;
     gap: 0.6rem;

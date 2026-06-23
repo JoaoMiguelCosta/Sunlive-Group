@@ -304,6 +304,12 @@
         0 0 0 5px rgb(var(--sports-gold-rgb, 214 166 64) / 0.075);
 }
 
+@media (forced-colors: active) {
+    .chipToggle:focus-visible {
+        outline: 2px solid ButtonText;
+    }
+}
+
 /* Eventos */
 
 .eventList {
@@ -430,12 +436,18 @@
         text-decoration-color 0.18s ease;
 }
 
-.eventToggle:hover,
+.eventToggle:hover {
+    color: var(--sports-gold, #d6a640);
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.52);
+}
+
 .eventToggle:focus-visible {
     color: var(--sports-gold, #d6a640);
     text-decoration: underline;
     text-decoration-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.52);
-    outline: none;
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.7);
+    outline-offset: 2px;
 }
 
 /* Redes sociais */

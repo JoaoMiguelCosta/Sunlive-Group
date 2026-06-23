@@ -37,10 +37,11 @@ export default function EducationCareersSelector({
 
     event.preventDefault();
     onSelect(items[nextIndex].id);
+    document.getElementById(`${sectionId}-tab-${items[nextIndex].id}`)?.focus();
   };
 
   return (
-    <aside className={styles.selector} aria-label={selector?.ariaLabel}>
+    <aside className={styles.selector} aria-label={selector?.ariaLabel || undefined}>
       {selector?.label ? (
         <p className={styles.selectorLabel}>{selector.label}</p>
       ) : null}

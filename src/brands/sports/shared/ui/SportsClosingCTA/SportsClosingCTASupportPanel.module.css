@@ -210,3 +210,14 @@
         line-height: 1.52;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .supportPanel {
+        transition: none;
+    }
+
+    .supportPanel:hover,
+    .supportPanel:focus-within {
+        transform: none;
+    }
+}

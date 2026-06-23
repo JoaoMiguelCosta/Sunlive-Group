@@ -16,7 +16,11 @@
     border-radius: var(--logistics-panel-radius);
     background: var(--sports-logistics-panel-bg, var(--sports-surface-dark));
     box-shadow: var(--sports-shadow-card);
-    outline: none;
+}
+
+.activePanel:focus-visible {
+    outline: 2px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.6);
+    outline-offset: 2px;
 }
 
 .activePanel::before {

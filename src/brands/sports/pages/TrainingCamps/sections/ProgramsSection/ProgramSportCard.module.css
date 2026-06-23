@@ -10,7 +10,6 @@
     border-radius: var(--sports-radius-xl, clamp(1.25rem, 1.8vw, 1.7rem));
     overflow: hidden;
     isolation: isolate;
-    outline: none;
     background:
         radial-gradient(110% 135% at 0% 0%,
             rgb(var(--program-accent-rgb) / 0.065) 0%,
@@ -41,6 +40,11 @@
             inset 0 1px 0 rgba(255, 255, 255, 0.05),
             0 26px 54px rgba(0, 0, 0, 0.42),
             0 0 0 1px rgb(var(--sports-green-rgb, 46 194 126) / 0.055));
+}
+
+.card:focus-visible {
+    outline: 2px solid rgb(var(--program-gold-rgb) / 0.6);
+    outline-offset: 2px;
 }
 
 .card::before {

@@ -162,6 +162,17 @@
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .action {
+        transition: none;
+    }
+
+    .action:hover,
+    .action:active {
+        transform: none;
+    }
+}
+
 @media (max-width: 719.98px) {
     .actions {
         flex-direction: column;

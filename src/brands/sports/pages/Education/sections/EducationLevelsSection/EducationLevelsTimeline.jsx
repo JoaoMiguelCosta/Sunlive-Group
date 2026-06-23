@@ -27,7 +27,7 @@ export default function EducationLevelsTimeline({
       <ol
         className={styles.timeline}
         aria-label={!progressionLabelId ? timelineAriaLabel : undefined}
-        aria-labelledby={progressionLabelId}
+        aria-labelledby={progressionLabelId || undefined}
       >
         {items.map((item, index) => (
           <li key={getStepKey(item, index, sectionId)} className={styles.step}>
