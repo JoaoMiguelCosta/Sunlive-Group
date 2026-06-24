@@ -3,7 +3,7 @@ import HotelInlineActionButton from "../../../../shared/ui/HotelInlineActionButt
 import HotelSustainabilityHeader from "./HotelSustainabilityHeader.jsx";
 import HotelSustainabilityStats from "./HotelSustainabilityStats.jsx";
 
-import styles from "./Sustainability&Impact.module.css";
+import styles from "./SustainabilityAndImpact.module.css";
 
 export default function SustainabilityAndImpactSection() {
   const section = sustainabilityImpact;

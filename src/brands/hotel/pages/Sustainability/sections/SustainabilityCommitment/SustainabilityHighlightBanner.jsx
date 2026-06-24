@@ -42,6 +42,7 @@ export default function SustainabilityHighlightBanner() {
         iconsEnabled={resolvedBanner.iconsEnabled ?? false}
         leftIcon={resolvedBanner.leftIcon}
         rightIcon={resolvedBanner.rightIcon}
+        headingAs="h3"
         className={styles.banner}
       />
     </div>

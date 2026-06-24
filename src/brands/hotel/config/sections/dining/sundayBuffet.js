@@ -1,5 +1,6 @@
 import sundayBuffet1 from "../../../assets/sunday-buffet1.webp";
 import sundayBuffet2 from "../../../assets/sunday-buffet2.webp";
+import { HOTEL_COMPANY } from "../../core/company.js";
 
 export const sundayBuffet = {
   id: "restaurant-buffet",
@@ -54,7 +55,7 @@ export const sundayBuffet = {
 
   cta: {
     label: "Contactar para mais informações",
-    href: "tel:+351234745133",
+    href: HOTEL_COMPANY.contacts.extraPhones[0].href,
     ariaLabel: "Ligar para o número +351 234 745 133 para mais informações",
     external: false,
   },

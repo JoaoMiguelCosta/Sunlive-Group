@@ -1,3 +1,5 @@
+import { HOTEL_COMPANY } from "../../core/company.js";
+
 const customizedQuotes = {
   id: "eventos-orcamentos",
   headerLabel: "Orçamentos personalizados",
@@ -88,7 +90,7 @@ const customizedQuotes = {
       id: "request-quote",
       key: "phone",
       label: "Pedir orçamento personalizado",
-      href: "tel:+351933600337",
+      href: HOTEL_COMPANY.contacts.phone.href,
       ariaLabel:
         "Ligar para +351 933 600 337 para pedir orçamento personalizado",
       icon: {

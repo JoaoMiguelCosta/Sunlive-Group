@@ -3,6 +3,9 @@ import home1 from "../../../assets/home1.webp";
 import home2 from "../../../assets/home2.webp";
 import home3 from "../../../assets/home3.webp";
 
+import { HOTEL_PAGE_PATHS } from "../../core/paths.js";
+import { HOTEL_COMPANY } from "../../core/company.js";
+
 export const heroBanner = {
   id: "hotel-banner-principal",
 
@@ -58,7 +61,7 @@ export const heroBanner = {
 
   cta: {
     label: "Contactar",
-    href: "tel:+351234745133",
+    href: HOTEL_COMPANY.contacts.extraPhones[0].href,
     iconKey: "phone",
     ariaLabel:
       "Ligar para a Estalagem de Sangalhos através do número +351 234 745 133",
@@ -67,7 +70,7 @@ export const heroBanner = {
 
   exploreAction: {
     label: "Ver alojamentos",
-    href: "/sunlive-group/hotel/estadia",
+    href: HOTEL_PAGE_PATHS.accommodation,
     ariaLabel: "Ver página de alojamento da Estalagem de Sangalhos",
   },
 };

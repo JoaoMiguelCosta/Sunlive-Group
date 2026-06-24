@@ -14,16 +14,12 @@ export default function SustainabilityCommitmentSection() {
 
   const sectionId = section.id ?? "sustentabilidade-compromisso";
   const titleId = `${sectionId}-title`;
-  const sectionAriaLabel =
-    section?.ui?.sectionAriaLabel ??
-    "Compromisso de sustentabilidade da Estalagem de Sangalhos";
 
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
-      aria-label={sectionAriaLabel}
     >
       <div className={styles.inner}>
         <div className={styles.headingStack}>

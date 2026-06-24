@@ -1,5 +1,6 @@
 import receptionSupport1 from "../../../assets/reception-support1.webp";
 import receptionSupport2 from "../../../assets/reception-support2.webp";
+import { HOTEL_COMPANY } from "../../core/company.js";
 
 export const receptionSupport = {
   id: "receptionSupport",
@@ -49,7 +50,7 @@ export const receptionSupport = {
       {
         key: "phone",
         label: "Contactar",
-        href: "tel:+351933600337",
+        href: HOTEL_COMPANY.contacts.phone.href,
         ariaLabel: "Ligar para +351 933 600 337",
         icon: {
           key: "phone",
@@ -60,7 +61,7 @@ export const receptionSupport = {
       {
         key: "email",
         label: "Email",
-        href: "mailto:hotel@sunlive.pt",
+        href: HOTEL_COMPANY.contacts.email.href,
         ariaLabel: "Enviar email para hotel@sunlive.pt",
         icon: {
           key: "mail",

@@ -12,14 +12,11 @@ export default function WellBeingSection() {
 
   const sectionId = section.id ?? "well-being";
   const titleId = `${sectionId}-title`;
-  const sectionAriaLabel = section?.ui?.sectionAriaLabel ?? "Bem-estar e Lazer";
-
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-labelledby={titleId}
-      aria-label={sectionAriaLabel}
     >
       <div className={styles.inner}>
         <div className={styles.introBlock}>

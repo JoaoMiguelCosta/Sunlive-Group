@@ -6,16 +6,12 @@ import useSmartAnchorNav from "../../../shared/hooks/useSmartAnchorNav.js";
 
 import { HOTEL_PRIMARY_NAV_ITEMS } from "../config/core/nav.js";
 import HotelPrimaryNavSubmenu from "./HotelPrimaryNavSubmenu.jsx";
+import { getHotelNavLinks } from "./hotelNavUtils.js";
 
 import navStyles from "./HotelPrimaryNav.module.css";
 
-const NAV_ITEMS = HOTEL_PRIMARY_NAV_ITEMS;
 const SUBMENU_CLOSE_DELAY = 180;
 const NAV_LIST_ID = "hotel-primary-nav-list";
-
-function getValidLinks(item) {
-  return Array.isArray(item?.links) ? item.links : [];
-}
 
 export default function HotelPrimaryNav() {
   const [openId, setOpenId] = useState(null);
@@ -27,6 +23,7 @@ export default function HotelPrimaryNav() {
   const navInnerRef = useRef(null);
   const buttonRefs = useRef({});
   const closeTimerRef = useRef(null);
+  const burgerButtonRef = useRef(null);
 
   const clearCloseTimer = () => {
     if (closeTimerRef.current) {
@@ -64,6 +61,31 @@ export default function HotelPrimaryNav() {
       clearCloseTimer();
     };
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!isNavOpen && !openId) return;
+
+    const onKeyDown = (event) => {
+      if (event.key !== "Escape") return;
+
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+
+      if (isNavOpen) {
+        setIsNavOpen(false);
+        setOpenId(null);
+        burgerButtonRef.current?.focus();
+      } else if (openId) {
+        const trigger = buttonRefs.current[openId];
+        setOpenId(null);
+        trigger?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isNavOpen, openId]);
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -174,6 +196,7 @@ export default function HotelPrimaryNav() {
             }
             aria-expanded={isNavOpen}
             aria-controls={NAV_LIST_ID}
+            ref={burgerButtonRef}
             onClick={() => setIsNavOpen((currentState) => !currentState)}
           >
             <span className={navStyles.burgerBox} aria-hidden="true">
@@ -193,8 +216,8 @@ export default function HotelPrimaryNav() {
           aria-hidden={isDrawer && !isNavOpen}
         >
           <ul className={navStyles.navList}>
-            {NAV_ITEMS.map((item) => {
-              const links = getValidLinks(item);
+            {HOTEL_PRIMARY_NAV_ITEMS.map((item) => {
+              const links = getHotelNavLinks(item);
               const hasLinks = links.length > 0;
               const isOpen = openId === item.id;
 
@@ -308,7 +331,7 @@ export default function HotelPrimaryNav() {
 
       {!isDrawer ? (
         <HotelPrimaryNavSubmenu
-          items={NAV_ITEMS}
+          items={HOTEL_PRIMARY_NAV_ITEMS}
           openId={openId}
           hasOpen={hasOpen}
           submenuAnchorX={submenuAnchorX}

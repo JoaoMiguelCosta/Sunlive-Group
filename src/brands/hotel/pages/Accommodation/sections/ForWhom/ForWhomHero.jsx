@@ -26,6 +26,7 @@ export default function ForWhomHero() {
       leftIcon={leftIcon}
       rightIcon={rightIcon}
       iconsEnabled={Boolean(Icon)}
+      headingAs="h3"
     />
   );
 }

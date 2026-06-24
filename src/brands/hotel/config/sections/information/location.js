@@ -1,3 +1,5 @@
+import { HOTEL_COMPANY } from "../../core/company.js";
+
 export const location = {
   id: "informacoes-localizacao",
   headerLabel: "Localização",
@@ -40,7 +42,7 @@ export const location = {
     contact: {
       label: "Contactar",
       icon: null,
-      href: "tel:+351933600337",
+      href: HOTEL_COMPANY.contacts.phone.href,
       ariaLabel: "Ligar para a Estalagem de Sangalhos",
     },
 

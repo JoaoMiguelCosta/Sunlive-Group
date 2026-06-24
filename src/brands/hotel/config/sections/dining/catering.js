@@ -1,3 +1,5 @@
+import { HOTEL_COMPANY } from "../../core/company.js";
+
 export const catering = {
   id: "restaurante-catering",
   headerLabel: "Serviço de Catering",
@@ -93,7 +95,7 @@ export const catering = {
     ],
     cta: {
       label: "Contactar para pedir orçamento",
-      href: "tel:+351234745133",
+      href: HOTEL_COMPANY.contacts.extraPhones[0].href,
       ariaLabel: "Ligar para o número +351 234 745 133 para pedir orçamento",
       external: false,
     },

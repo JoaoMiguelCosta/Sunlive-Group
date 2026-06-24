@@ -369,7 +369,6 @@ export default function HotelHeroBanner() {
           <div className={styles.bottomBar}>
             <div
               className={styles.sceneDots}
-              role="tablist"
               aria-label="Navegação entre vistas do hero"
             >
               {scenes.map((scene, index) => {
@@ -379,11 +378,10 @@ export default function HotelHeroBanner() {
                   <button
                     key={scene.id}
                     type="button"
-                    role="tab"
-                    aria-selected={isActive}
                     aria-label={`Mostrar ${
                       scene.accentLabel ?? `vista ${index + 1}`
                     }`}
+                    aria-current={isActive ? "true" : undefined}
                     className={joinClassNames(
                       styles.dot,
                       isActive && styles.dotActive,

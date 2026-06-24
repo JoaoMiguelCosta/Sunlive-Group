@@ -10,10 +10,9 @@ import ContactsSection from "./sections/Contacts/index.jsx";
 export default function InformationPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
-      <main
+      <section
         id="information-page"
         className={styles.inner}
-        role="region"
         aria-label="Estalagem de Sangalhos — Information"
       >
         <div className={styles.contentFlow}>
@@ -21,7 +20,7 @@ export default function InformationPageHotel() {
           <LocationSection />
           <ContactsSection />
         </div>
-      </main>
+      </section>
     </div>
   );
 }

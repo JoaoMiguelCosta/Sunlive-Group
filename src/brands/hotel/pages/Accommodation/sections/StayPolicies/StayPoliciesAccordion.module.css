@@ -598,17 +598,20 @@
 
     transition:
         grid-template-rows 260ms cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 220ms ease;
+        opacity 220ms ease,
+        visibility 260ms ease;
 }
 
 .panelClosed {
     grid-template-rows: 0fr;
     opacity: 0;
+    visibility: hidden;
 }
 
 .panelOpen {
     grid-template-rows: 1fr;
     opacity: 1;
+    visibility: visible;
 }
 
 .panelInner {

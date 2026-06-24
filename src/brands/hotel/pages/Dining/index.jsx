@@ -14,10 +14,9 @@ import CateringServiceSection from "./sections/CateringService/index.jsx";
 export default function DiningPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
-      <main
+      <section
         id="dining"
         className={styles.inner}
-        role="region"
         aria-label="Estalagem de Sangalhos — Restauração"
       >
         <div className={styles.contentFlow}>
@@ -29,7 +28,7 @@ export default function DiningPageHotel() {
           <BarLoungeSection />
           <CateringServiceSection />
         </div>
-      </main>
+      </section>
     </div>
   );
 }

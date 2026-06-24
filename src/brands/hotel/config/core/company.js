@@ -3,6 +3,8 @@
   SUNLIVE_HQ_LOCATION,
 } from "../../../../shared/config/index.js";
 
+import { HOTEL_BASE_PATH } from "./paths.js";
+
 export const HOTEL_COMPANY = Object.freeze({
   key: "hotel",
   brandName: "Estalagem de Sangalhos - Sports & Nature Hotel",
@@ -34,6 +36,6 @@ export const HOTEL_COMPANY = Object.freeze({
   },
   footerLink: {
     label: "Estalagem de Sangalhos",
-    href: "/sunlive-group/hotel",
+    href: HOTEL_BASE_PATH,
   },
 });

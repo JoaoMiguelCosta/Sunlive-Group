@@ -66,7 +66,7 @@ export const testimonials = {
 
     items: [
       {
-        id: "testimonial-federacao-ginastica-1",
+        id: "testimonial-federacao-ginastica-artistica",
         organisation: "Federação Desportiva",
         context: "Estágio Nacional",
         category: "Ginástica Artística",
@@ -78,7 +78,7 @@ export const testimonials = {
         imageAlt: "",
       },
       {
-        id: "testimonial-federacao-ginastica-2",
+        id: "testimonial-federacao-ginastica-ritmica",
         organisation: "Federação Desportiva",
         context: "Estágio Nacional",
         category: "Ginástica Rítmica",
@@ -90,7 +90,7 @@ export const testimonials = {
         imageAlt: "",
       },
       {
-        id: "testimonial-federacao-ginastica-3",
+        id: "testimonial-clube-alto-rendimento-natacao",
         organisation: "Clube de Alto Rendimento",
         context: "Concentração Pré-Competitiva",
         category: "Natação",
@@ -102,7 +102,7 @@ export const testimonials = {
         imageAlt: "",
       },
       {
-        id: "testimonial-federacao-ginastica-4",
+        id: "testimonial-associacao-regional-atletismo",
         organisation: "Associação Regional",
         context: "Estágio de Preparação",
         category: "Atletismo",
@@ -114,7 +114,7 @@ export const testimonials = {
         imageAlt: "",
       },
       {
-        id: "testimonial-federacao-ginastica-5",
+        id: "testimonial-equipa-universitaria-voleibol",
         organisation: "Equipa Universitária",
         context: "Retiro Desportivo",
         category: "Voleibol",
@@ -126,7 +126,7 @@ export const testimonials = {
         imageAlt: "",
       },
       {
-        id: "testimonial-federacao-ginastica-6",
+        id: "testimonial-federacao-desportiva-judo",
         organisation: "Federação Desportiva",
         context: "Estágio Nacional",
         category: "Judo",
@@ -138,7 +138,7 @@ export const testimonials = {
         imageAlt: "",
       },
       {
-        id: "testimonial-federacao-ginastica-7",
+        id: "testimonial-clube-profissional-futebol",
         organisation: "Clube Profissional",
         context: "Pré-Época",
         category: "Futebol",
@@ -150,7 +150,7 @@ export const testimonials = {
         imageAlt: "",
       },
       {
-        id: "testimonial-federacao-ginastica-8",
+        id: "testimonial-delegacao-internacional-ciclismo",
         organisation: "Delegação Internacional",
         context: "Programa de Estadia",
         category: "Ciclismo",
@@ -162,7 +162,7 @@ export const testimonials = {
         imageAlt: "",
       },
       {
-        id: "testimonial-federacao-ginastica-9",
+        id: "testimonial-academia-desportiva-basquetebol",
         organisation: "Academia Desportiva",
         context: "Campus de Treino",
         category: "Basquetebol",

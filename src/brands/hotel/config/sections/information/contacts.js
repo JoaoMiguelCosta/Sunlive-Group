@@ -1,3 +1,5 @@
+import { HOTEL_COMPANY } from "../../core/company.js";
+
 export const contacts = {
   id: "informacoes-contactos",
   headerLabel: "Contactos",
@@ -24,24 +26,24 @@ export const contacts = {
         {
           id: "mobile-phone",
           label: "Telemóvel",
-          value: "+351 933 600 337",
-          href: "tel:+351933600337",
+          value: HOTEL_COMPANY.contacts.phone.label,
+          href: HOTEL_COMPANY.contacts.phone.href,
           icon: null,
           ariaLabel: "Ligar para o telemóvel da Estalagem de Sangalhos",
         },
         {
           id: "email",
           label: "Email",
-          value: "hotel@sunlive.pt",
-          href: "mailto:hotel@sunlive.pt",
+          value: HOTEL_COMPANY.contacts.email.label,
+          href: HOTEL_COMPANY.contacts.email.href,
           icon: null,
           ariaLabel: "Enviar email para hotel@sunlive.pt",
         },
         {
           id: "landline",
           label: "Telefone Fixo",
-          value: "+351 234 745 133",
-          href: "tel:+351234745133",
+          value: HOTEL_COMPANY.contacts.extraPhones[0].label,
+          href: HOTEL_COMPANY.contacts.extraPhones[0].href,
           icon: null,
           ariaLabel: "Ligar para o telefone fixo da Estalagem de Sangalhos",
         },

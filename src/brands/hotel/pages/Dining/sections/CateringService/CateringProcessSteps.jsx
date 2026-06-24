@@ -9,7 +9,6 @@ import styles from "./CateringProcessSteps.module.css";
 
 function DetailsPanel({
   item,
-  detailsPanelLabel,
   panelRef = null,
   panelId,
   titleId,
@@ -23,7 +22,6 @@ function DetailsPanel({
       id={panelId}
       ref={panelRef}
       className={styles.detailsPanel}
-      aria-label={detailsPanelLabel}
       aria-labelledby={titleId}
       tabIndex={-1}
     >
@@ -70,9 +68,6 @@ export default function CateringProcessSteps() {
 
   const ariaLabel =
     section?.processSteps?.ariaLabel ?? "Etapas do serviço de catering";
-
-  const detailsPanelLabel =
-    section?.processSteps?.detailsPanelLabel ?? "Detalhe da etapa selecionada";
 
   const sectionId = section?.id ?? "restaurante-catering";
   const detailsPanelId = `${sectionId}-step-details`;
@@ -189,7 +184,6 @@ export default function CateringProcessSteps() {
         item={activeItem}
         panelId={detailsPanelId}
         titleId={detailsTitleId}
-        detailsPanelLabel={detailsPanelLabel}
         panelRef={detailsPanelRef}
       />
     </div>
