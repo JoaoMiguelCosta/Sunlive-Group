@@ -11,7 +11,7 @@ export default function HeadlineStrip() {
   const alt = `${title} ${subtitle}`.trim() || "Headline Sunlive Group";
 
   return (
-    <div className={styles.wrap} aria-label="Headline Sunlive Group">
+    <div className={styles.wrap}>
       <div className={styles.frame}>
         <img
           className={styles.img}

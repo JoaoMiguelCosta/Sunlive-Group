@@ -5,7 +5,7 @@ import TeamCollage from "./TeamCollage.jsx";
 
 export default function PeopleSection() {
   return (
-    <section id="people" className={styles.section} aria-label="People">
+    <section id="people" className={styles.section} aria-label="Equipa">
       <div className={styles.inner}>
         <PeopleStatement />
 

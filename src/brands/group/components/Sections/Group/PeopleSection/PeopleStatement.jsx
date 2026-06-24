@@ -12,7 +12,7 @@ export default function PeopleStatement() {
   if (!src) return null;
 
   return (
-    <div className={styles.wrap} aria-label={alt}>
+    <div className={styles.wrap}>
       <div className={styles.frame}>
         <img src={src} alt={alt} {...IMG_COMMON} className={styles.img} />
 

@@ -5,11 +5,10 @@ import {
   modClassFor,
 } from "../../../../shared/components/Footer/utils/flagHelpers.js";
 import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
+import { GROUP_BASE_PATH, GROUP_LOGOS_PATH } from "../../config/core/paths.js";
 
 import styles from "./GroupLinkDirectory.module.css";
 
-const DEFAULT_GROUP_PATH = "/sunlive-group";
-const DEFAULT_LOGOS_PATH = "/sunlive-group/logos";
 const DEFAULT_ANCHOR_OFFSET = 24;
 
 const RETRY_DELAY_MS = 80;
@@ -56,8 +55,8 @@ export default function GroupLinkDirectory({ data }) {
 
   const anchors = meta?.anchors ?? {};
 
-  const targetGroupPath = anchors.groupPath || DEFAULT_GROUP_PATH;
-  const targetLogosPath = anchors.logosPath || DEFAULT_LOGOS_PATH;
+  const targetGroupPath = anchors.groupPath || GROUP_BASE_PATH;
+  const targetLogosPath = anchors.logosPath || GROUP_LOGOS_PATH;
 
   const offset =
     typeof anchors.offset === "number" ? anchors.offset : DEFAULT_ANCHOR_OFFSET;

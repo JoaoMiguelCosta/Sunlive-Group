@@ -10,8 +10,7 @@ export const groupRoutes = [
     element={<Navigate to="/sunlive-group" replace />}
   />,
   <Route key="group-shell" path="/sunlive-group" element={<GroupShell />}>
-    {" "}
-    <Route index element={<GroupHome />} />{" "}
-    <Route path="logos" element={<GroupLogos />} />{" "}
+    <Route index element={<GroupHome />} />
+    <Route path="logos" element={<GroupLogos />} />
   </Route>,
 ];

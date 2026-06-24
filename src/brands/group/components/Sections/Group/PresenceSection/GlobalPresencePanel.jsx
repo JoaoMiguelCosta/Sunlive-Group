@@ -28,8 +28,8 @@ export default function GlobalPresencePanel() {
   if (!countries.length) return null;
 
   return (
-    <div className={styles.panel} role="group" aria-label="Global Presence">
-      <ul className={styles.grid} aria-label="Countries">
+    <div className={styles.panel} role="group" aria-label="Presença Global">
+      <ul className={styles.grid} aria-label="Países">
         {countries.map(({ key, label, src }) => (
           <li key={key} className={styles.item}>
             <span className={styles.cardInner}>

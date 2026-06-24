@@ -67,7 +67,6 @@ export function makeGroupFooter({ contacts = GROUP_CONTACTS } = {}) {
             items: countriesToFooterGeneric(
               contacts.regionalOffices || [],
               GROUP_BASE_PATH,
-              "country",
             ),
           },
         ],

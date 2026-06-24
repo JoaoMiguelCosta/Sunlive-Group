@@ -1,6 +1,7 @@
 import styles from "./PartnersGrid.module.css";
 
 import useSmartAnchorNav from "../../../../../../shared/hooks/useSmartAnchorNav.js";
+import { GROUP_LOGOS_PATH } from "../../../../config/core/paths.js";
 
 const ANCHOR_OFFSET = 24;
 const CROSS_PAGE_DELAY_MS = 650;
@@ -29,7 +30,7 @@ export default function PartnersGrid({ items = [] }) {
   const validItems = getValidItems(items);
 
   const { handleSmartAnchorClick: toLogos } = useSmartAnchorNav({
-    targetPath: "/sunlive-group/logos",
+    targetPath: GROUP_LOGOS_PATH,
     offset: ANCHOR_OFFSET,
     retryDelayMs: RETRY_DELAY_MS,
     crossPageDelayMs: CROSS_PAGE_DELAY_MS,

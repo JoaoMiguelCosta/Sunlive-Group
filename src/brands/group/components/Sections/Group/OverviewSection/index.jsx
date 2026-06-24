@@ -9,7 +9,6 @@ export default function OverviewSection() {
     <section
       id="overview"
       className={styles.section}
-      role="region"
       aria-labelledby="overview-title"
     >
       <h1 id="overview-title" className={styles.srOnly}>

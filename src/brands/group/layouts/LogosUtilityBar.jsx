@@ -2,8 +2,7 @@ import { useLocation } from "react-router-dom";
 
 import UtilityBar from "../../../shared/components/UtilityBar/index.jsx";
 import overview from "../config/sections/home/overview.js";
-
-const LOGOS_BASE_PATH = "/sunlive-group/logos";
+import { GROUP_BASE_PATH, GROUP_LOGOS_PATH } from "../config/core/paths.js";
 
 const LANG_FALLBACK = {
   current: "pt",
@@ -23,18 +22,18 @@ export default function LogosUtilityBar() {
   const socials = overview.socials ?? [];
   const lang = overview.lang ?? LANG_FALLBACK;
 
-  const isLogosHome = pathname === LOGOS_BASE_PATH;
+  const isLogosHome = pathname === GROUP_LOGOS_PATH;
 
   const utilityBarProps = isLogosHome
     ? {
         backLink: {
-          href: "/sunlive-group",
+          href: GROUP_BASE_PATH,
           label: "Voltar Sunlive Group",
         },
       }
     : {
         homeLink: {
-          href: LOGOS_BASE_PATH,
+          href: GROUP_LOGOS_PATH,
           label: "Início Logos",
         },
       };

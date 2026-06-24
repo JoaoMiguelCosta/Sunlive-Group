@@ -27,7 +27,6 @@ export default function GroupLogos() {
       <main
         id="partners-logos-page"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Group — Logos e parceiros"
       >
         <div className={`${styles.contentFlow} ${styles.contentFlowWithGap}`}>

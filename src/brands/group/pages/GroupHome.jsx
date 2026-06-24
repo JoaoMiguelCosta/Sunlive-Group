@@ -20,7 +20,6 @@ export default function GroupHome() {
       <main
         id="group-page"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Group"
       >
         <div className={styles.contentFlow}>

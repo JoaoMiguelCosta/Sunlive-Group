@@ -22,7 +22,6 @@ export default function ContactsSection() {
   const {
     id = "contacts",
     title = "Contactos",
-    ariaLabel = "Contacts Sunlive Group",
     groupHub,
     businessUnits = [],
     regionalOffices = [],
@@ -46,7 +45,6 @@ export default function ContactsSection() {
     <section
       id={id}
       className={styles.section}
-      aria-label={ariaLabel}
       aria-labelledby={headingId}
       data-theme="prestige-noir"
     >

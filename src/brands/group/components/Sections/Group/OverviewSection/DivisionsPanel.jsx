@@ -97,7 +97,7 @@ export default function DivisionsPanel() {
   if (!divisions.length && !shouldRenderHome) return null;
 
   return (
-    <div className={styles.sectionWrap} aria-label="Divisões Sunlive Group">
+    <div className={styles.sectionWrap}>
       <div className={styles.panel}>
         {divisions.length ? (
           <div className={styles.row}>

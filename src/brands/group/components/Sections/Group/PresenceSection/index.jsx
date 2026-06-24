@@ -6,7 +6,7 @@ import MantraHeadline from "./MantraHeadline.jsx";
 
 export default function PresenceSection() {
   return (
-    <section id="presence" className={styles.section} aria-label="Presence">
+    <section id="presence" className={styles.section} aria-label="Presença">
       <div className={styles.inner}>
         <PresenceHeadline />
 

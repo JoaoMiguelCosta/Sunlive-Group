@@ -1,28 +1,5 @@
 import styles from "./ContactsGrid.module.css";
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
-
-function ContactRow({ href, label, value, mutedLabel, Icon }) {
-  const hasValue = isValidText(value);
-
-  if (!hasValue) {
-    return (
-      <span className={styles.row} aria-label={mutedLabel} aria-disabled="true">
-        <Icon className={styles.icon} width={20} height={20} />
-        <span className={styles.muted}>—</span>
-      </span>
-    );
-  }
-
-  return (
-    <a href={href} className={styles.row} aria-label={label}>
-      <Icon className={styles.icon} width={20} height={20} />
-      <span>{value}</span>
-    </a>
-  );
-}
+import ContactRow from "./ContactRow.jsx";
 
 export default function OfficeCard({
   id,
@@ -38,20 +15,20 @@ export default function OfficeCard({
       id={id}
       className={styles.card}
       role="region"
-      aria-label={`${label} contacts`}
+      aria-label={`Contactos de ${label}`}
     >
       <ContactRow
         href={`mailto:${email}`}
-        label={`Email ${email}`}
-        mutedLabel="Email not available"
+        label={`Enviar email para ${email}`}
+        mutedLabel="Email indisponível"
         value={email}
         Icon={MailIcon}
       />
 
       <ContactRow
         href={`tel:${telHref}`}
-        label={`Call ${phone}`}
-        mutedLabel="Phone not available"
+        label={`Ligar para ${phone}`}
+        mutedLabel="Telefone indisponível"
         value={phone}
         Icon={PhoneIcon}
       />

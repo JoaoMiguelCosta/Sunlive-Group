@@ -4,8 +4,7 @@ import styles from "./GroupPageLayout.module.css";
 
 import GroupUtilityBar from "./GroupUtilityBar.jsx";
 import LogosUtilityBar from "./LogosUtilityBar.jsx";
-
-const LOGOS_BASE_PATH = "/sunlive-group/logos";
+import { GROUP_LOGOS_PATH } from "../config/core/paths.js";
 
 function normalizePathname(pathname) {
   if (!pathname || pathname === "/") return "/";
@@ -15,7 +14,7 @@ function normalizePathname(pathname) {
 
 function isLogosRoute(pathname) {
   return (
-    pathname === LOGOS_BASE_PATH || pathname.startsWith(`${LOGOS_BASE_PATH}/`)
+    pathname === GROUP_LOGOS_PATH || pathname.startsWith(`${GROUP_LOGOS_PATH}/`)
   );
 }
 
