@@ -1,6 +1,6 @@
-import styles from "./ContactPanelIntro.module.css";
+import styles from "./ContactSectionHeader.module.css";
 
-export default function ContactPanelIntro({ id, eyebrow, title, description }) {
+export default function ContactSectionHeader({ id, eyebrow, title, description }) {
   const hasContent = eyebrow || title || description;
   if (!hasContent) return null;
 

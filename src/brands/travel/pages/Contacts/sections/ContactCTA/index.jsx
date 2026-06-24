@@ -4,7 +4,7 @@ import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import { resolveTravelIcon } from "../../../../config/core/iconKeyMap.js";
 
 import ContactIntroPanel from "./ContactIntroPanel.jsx";
-import ContactPanelIntro from "./ContactPanelIntro.jsx";
+import ContactSectionHeader from "./ContactSectionHeader.jsx";
 import QuoteRequestChecklist from "./QuoteRequestChecklist.jsx";
 import ContactChannels from "./ContactChannels.jsx";
 
@@ -77,7 +77,7 @@ export default function ContactCTASection() {
                 aria-labelledby={checklistTitleId}
               >
                 {hasPanelIntro(checklistPanel) ? (
-                  <ContactPanelIntro
+                  <ContactSectionHeader
                     id={checklistTitleId}
                     eyebrow={checklistPanel?.eyebrow}
                     title={checklistPanel?.title}
@@ -101,7 +101,7 @@ export default function ContactCTASection() {
                 aria-labelledby={channelsTitleId}
               >
                 {hasPanelIntro(channelsPanel) ? (
-                  <ContactPanelIntro
+                  <ContactSectionHeader
                     id={channelsTitleId}
                     eyebrow={channelsPanel?.eyebrow}
                     title={channelsPanel?.title}
