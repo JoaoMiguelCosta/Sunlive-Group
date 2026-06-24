@@ -1,4 +1,4 @@
-import logisticsSolutions from "../../../../config/sections/logistics/logisticsSolutions.js";
+import logistics from "../../../../config/pages/logistics.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 import LogisticsOperationalHero from "./LogisticsOperationalHero.jsx";
@@ -8,7 +8,7 @@ import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
 import styles from "./LogisticsSolutionsSection.module.css";
 
 export default function LogisticsSolutionsSection() {
-  const section = logisticsSolutions;
+  const section = logistics.sections.logisticsSolutions;
 
   if (!section) return null;
 

@@ -1,6 +1,6 @@
 import { useId, useState } from "react";
 
-import TestimonialCard from "../../../../shared/ui/TestemonialCard/index.jsx";
+import TestimonialCard from "../../../../shared/ui/TestimonialCard/index.jsx";
 import useSpotlightCycle from "../../../../../../shared/hooks/useSpotlightCycle.js";
 import { resolveTravelIcon } from "../../../../config/core/iconKeyMap.js";
 

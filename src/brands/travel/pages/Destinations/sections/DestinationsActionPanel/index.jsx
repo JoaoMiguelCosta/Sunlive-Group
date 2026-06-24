@@ -1,8 +1,8 @@
-import destinationsActionPanel from "../../../../config/sections/destinations/destinationsActionPanel.js";
+import destinations from "../../../../config/pages/destinations.js";
 import TravelActionPanel from "../../../../shared/ui/TravelActionPanel/TravelActionPanel.jsx";
 
 export default function DestinationsActionPanelSection() {
-  const section = destinationsActionPanel;
+  const section = destinations.sections.destinationsActionPanel;
 
   if (!section) return null;
 

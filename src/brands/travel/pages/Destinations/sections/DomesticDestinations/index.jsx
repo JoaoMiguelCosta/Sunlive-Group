@@ -1,11 +1,11 @@
-import domesticDestinations from "../../../../config/sections/destinations/domesticDestinations.js";
+import destinationsPage from "../../../../config/pages/destinations.js";
 
 import styles from "./DomesticDestinationsSection.module.css";
 import DomesticEditorialHero from "./DomesticEditorialHero.jsx";
 import DomesticDestinationsShowcase from "./DomesticDestinationsShowcase.jsx";
 
 export default function DomesticDestinationsSection() {
-  const section = domesticDestinations;
+  const section = destinationsPage.sections.domesticDestinations;
 
   if (!section) return null;
 

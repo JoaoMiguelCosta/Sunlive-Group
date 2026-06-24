@@ -1,3 +1,4 @@
+import home from "../../config/pages/home.js";
 import styles from "../../layouts/TravelPageLayout.module.css";
 
 import {
@@ -10,9 +11,9 @@ export default function HomePage() {
   return (
     <div className={styles.pageWrap} data-brand="travel">
       <main
-        id="travel-home"
+        id={home.id}
         className={styles.inner}
-        aria-label="Sunlive Travel — Página Inicial"
+        aria-label={home.ui.pageAriaLabel}
       >
         <div className={styles.contentFlow}>
           <HomeHeroSection />

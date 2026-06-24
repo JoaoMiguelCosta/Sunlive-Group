@@ -1,3 +1,4 @@
+import partners from "../../config/pages/partners.js";
 import styles from "../../layouts/TravelPageLayout.module.css";
 
 import PartnerHotelsSection from "./sections/PartnerHotels/index.jsx";
@@ -7,9 +8,9 @@ export default function PartnersPage() {
   return (
     <div className={styles.pageWrap} data-brand="travel">
       <main
-        id="partners"
+        id={partners.id}
         className={styles.inner}
-        aria-label="Sunlive Travel — Parceiros"
+        aria-label={partners.ui.pageAriaLabel}
       >
         <div className={styles.contentFlow}>
           <PartnerHotelsSection />

@@ -1,5 +1,5 @@
 import styles from "./ContactCTASection.module.css";
-import contactCTA from "../../../../config/sections/contacts/contactCTA.js";
+import contacts from "../../../../config/pages/contacts.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import { resolveTravelIcon } from "../../../../config/core/iconKeyMap.js";
 
@@ -28,7 +28,7 @@ function hasPanelIntro(panel) {
 }
 
 export default function ContactCTASection() {
-  const section = contactCTA;
+  const section = contacts.sections.contactCTA;
   if (!section) return null;
 
   const sectionId = section?.id ?? "contactar";

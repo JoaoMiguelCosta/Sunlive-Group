@@ -4,7 +4,7 @@ import styles from "./TravelPageLayout.module.css";
 import TravelShell from "./TravelShell.jsx";
 import ScrollToTopOnRouteChange from "./ScrollToTopOnRouteChange.jsx";
 
-import TravelHeaderNav from "../components/TravelHeaderNav/index.jsx";
+import TravelHeaderNav from "./TravelHeaderNav/index.jsx";
 import TravelFooter from "../components/TravelFooter/index.jsx";
 
 export default function TravelPageLayout() {

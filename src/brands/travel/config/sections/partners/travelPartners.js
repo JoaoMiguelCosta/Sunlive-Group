@@ -1,7 +1,7 @@
-import portugalissimoImg from "../../../assets/TravelPartners/portugalissimo.png";
-import vagoImg from "../../../assets/TravelPartners/vago.png";
-import vagoBus01Img from "../../../assets/TravelPartners/vago-bus-01.webp";
-import vagoBus02Img from "../../../assets/TravelPartners/vago-bus-02.webp";
+import portugalissimoImg from "../../../assets/travel-partners/portugalissimo.png";
+import vagoImg from "../../../assets/travel-partners/vago.png";
+import vagoBus01Img from "../../../assets/travel-partners/vago-bus-01.webp";
+import vagoBus02Img from "../../../assets/travel-partners/vago-bus-02.webp";
 
 const travelPartners = {
   id: "parceiros-viagens",

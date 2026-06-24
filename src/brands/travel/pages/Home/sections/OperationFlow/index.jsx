@@ -1,8 +1,8 @@
 import styles from "./OperationFlowSection.module.css";
-import operationFlow from "../../../../config/sections/home/operationFlow.js";
+import home from "../../../../config/pages/home.js";
 
 export default function OperationFlowSection() {
-  const section = operationFlow;
+  const section = home.sections.operationFlow;
   if (!section) return null;
 
   const editorial = section?.editorial ?? {};
