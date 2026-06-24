@@ -1,7 +1,7 @@
-import uec from "../../../assets/group-logos/logos/committes/uec.png";
-import cob from "../../../assets/group-logos/logos/committes/cob.png";
-import cop from "../../../assets/group-logos/logos/committes/cop.webp";
-import coa from "../../../assets/group-logos/logos/committes/coa.png";
+import uec from "../../../assets/group-logos/committees/uec.png";
+import cob from "../../../assets/group-logos/committees/cob.png";
+import cop from "../../../assets/group-logos/committees/cop.webp";
+import coa from "../../../assets/group-logos/committees/coa.png";
 
 export const committees = {
   id: "comites",
