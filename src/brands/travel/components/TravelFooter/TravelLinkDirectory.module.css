@@ -439,3 +439,12 @@
         transform: none;
     }
 }
+
+@media (forced-colors: active) {
+
+    .pill:focus-visible {
+        outline: 3px solid ButtonText;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+}

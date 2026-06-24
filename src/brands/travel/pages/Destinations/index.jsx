@@ -10,7 +10,6 @@ export default function DestinationsPage() {
       <main
         id="destinations"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Travel — Destinos"
       >
         <div className={styles.contentFlow}>

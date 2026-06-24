@@ -49,8 +49,6 @@ export default function ServiceOfferingsGrid({
   return (
     <div
       className={styles.block}
-      role="group"
-      aria-label={ui?.servicesAriaLabel}
     >
       {hasIntro ? (
         <header className={styles.sectionHead}>
@@ -62,7 +60,7 @@ export default function ServiceOfferingsGrid({
             ) : null}
 
             {intro?.title ? (
-              <h3 className={styles.sectionTitle}>{intro.title}</h3>
+              <h2 className={styles.sectionTitle}>{intro.title}</h2>
             ) : null}
 
             {intro?.description ? (

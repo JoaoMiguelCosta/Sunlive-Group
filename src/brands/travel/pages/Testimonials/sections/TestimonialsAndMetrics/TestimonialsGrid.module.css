@@ -504,6 +504,18 @@ color: #f1c765;
     }
 }
 
+.srOnly {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     .shell,
@@ -512,5 +524,20 @@ color: #f1c765;
     .arrowBtn,
     .item {
         transition: none;
+    }
+}
+
+@media (forced-colors: active) {
+
+    .arrowBtn:focus-visible,
+    .dot:focus-visible {
+        outline: 3px solid ButtonText;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .dot[data-active="true"] {
+        outline: 2px solid Highlight;
+        outline-offset: 1px;
     }
 }

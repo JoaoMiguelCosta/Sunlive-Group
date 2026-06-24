@@ -22,6 +22,8 @@ export default function TravelShowcaseHero({
   content = {},
   className = "",
   sectionKey = "travel-showcase-hero",
+  titleAs: TitleTag = "h2",
+  insightTitleAs: InsightTag = "h3",
 }) {
   const safeMetrics = getSafeMetrics(content?.metrics);
   const safeInsights = getSafeInsights(content?.insights);
@@ -67,7 +69,7 @@ export default function TravelShowcaseHero({
         ) : null}
 
         {content?.title ? (
-          <h2 className={styles.title}>{content.title}</h2>
+          <TitleTag className={styles.title}>{content.title}</TitleTag>
         ) : null}
 
         {content?.lead ? <p className={styles.lead}>{content.lead}</p> : null}
@@ -101,7 +103,7 @@ export default function TravelShowcaseHero({
                 key={insight?.key ?? insight.title}
                 className={styles.insightCard}
               >
-                <h3 className={styles.insightTitle}>{insight.title}</h3>
+                <InsightTag className={styles.insightTitle}>{insight.title}</InsightTag>
                 <p className={styles.insightDescription}>
                   {insight.description}
                 </p>

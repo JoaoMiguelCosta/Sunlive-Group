@@ -67,7 +67,7 @@ export default function ContactCTASection() {
       data-section="contact-cta"
     >
       <div className={styles.inner}>
-        {hasHero ? <ContactIntroPanel hero={hero} /> : null}
+        {hasHero ? <ContactIntroPanel hero={hero} titleAs="h1" /> : null}
 
         {hasChecklist || hasChannels ? (
           <div className={styles.contentGrid}>

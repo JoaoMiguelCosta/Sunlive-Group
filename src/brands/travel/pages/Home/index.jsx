@@ -12,7 +12,6 @@ export default function HomePage() {
       <main
         id="travel-home"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Travel — Página Inicial"
       >
         <div className={styles.contentFlow}>

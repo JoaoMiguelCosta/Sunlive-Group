@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 import styles from "./KeyMetricsBar.module.css";
 
 function MetricItem({ value, label, ariaLabel }) {
@@ -15,6 +17,8 @@ function MetricItem({ value, label, ariaLabel }) {
 }
 
 export default function KeyMetricsBar({ metrics = [] }) {
+  const metricsHeadingId = useId();
+
   if (!Array.isArray(metrics) || metrics.length === 0) return null;
 
   const validMetrics = metrics.filter(
@@ -24,8 +28,8 @@ export default function KeyMetricsBar({ metrics = [] }) {
   if (validMetrics.length === 0) return null;
 
   return (
-    <div className={styles.root} aria-labelledby="metrics-heading">
-      <h2 id="metrics-heading" className={styles.visuallyHidden}>
+    <div className={styles.root} aria-labelledby={metricsHeadingId}>
+      <h2 id={metricsHeadingId} className={styles.visuallyHidden}>
         Indicadores de desempenho
       </h2>
 

@@ -8,7 +8,6 @@ export default function HeaderShell({ className = "", children, ...rest }) {
       className={mergedClass}
       data-theme="prestige-noir"
       data-brand="travel"
-      role="banner"
       {...rest}
     >
       {children}
