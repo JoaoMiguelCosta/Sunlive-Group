@@ -1,5 +1,6 @@
 import TestimonialCard from "../../../../shared/ui/TestemonialCard/index.jsx";
 import useSpotlightCycle from "../../../../../../shared/hooks/useSpotlightCycle.js";
+import { resolveTravelIcon } from "../../../../config/core/iconKeyMap.js";
 
 import styles from "./TestimonialsGrid.module.css";
 
@@ -76,7 +77,7 @@ export default function TestimonialsGrid({
     setIndex((currentIndex) => (currentIndex + 1) % itemCount);
   };
 
-  const resolveIcon = (iconKey) => icons?.[iconKey] || icons?.star || null;
+  const resolveIcon = (iconKey) => resolveTravelIcon(icons, iconKey);
 
   const regionLabel =
     spotlight?.regionLabel ??

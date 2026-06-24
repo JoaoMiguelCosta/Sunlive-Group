@@ -1,5 +1,3 @@
-import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
-
 import portugalissimoImg from "../../../assets/TravelPartners/portugalissimo.png";
 import vagoImg from "../../../assets/TravelPartners/vago.png";
 import vagoBus01Img from "../../../assets/TravelPartners/vago-bus-01.webp";
@@ -130,13 +128,6 @@ const travelPartners = {
     },
   ],
 
-  cta: {
-    label: "Contactar",
-    href: TRAVEL_PAGE_PATHS.contacts,
-    ariaLabel: "Contactar a Sunlive Travel sobre parceiros de viagem",
-    iconKey: "phone",
-  },
 };
 
 export default travelPartners;
-export { travelPartners };

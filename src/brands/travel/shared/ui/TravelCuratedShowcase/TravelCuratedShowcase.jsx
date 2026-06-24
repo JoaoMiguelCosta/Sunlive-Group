@@ -99,24 +99,6 @@ export default function TravelCuratedShowcase({
   const activeItem =
     safeItems.find((item) => item.key === activeKey) ?? safeItems[0] ?? null;
 
-  useEffect(() => {
-    if (!activeItem || !hash) return;
-
-    const decodedHash = decodeURIComponent(hash.replace(/^#/, ""));
-    if (decodedHash !== activeItem.anchorId) return;
-
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
-        const spotlightElement = spotlightRef.current;
-        if (!spotlightElement) return;
-
-        if (!isElementSufficientlyVisible(spotlightElement)) {
-          scrollSpotlightIntoView(spotlightElement);
-        }
-      });
-    });
-  }, [activeItem, hash]);
-
   if (!activeItem) return null;
 
   const rootClassName = [styles.root, className].filter(Boolean).join(" ");

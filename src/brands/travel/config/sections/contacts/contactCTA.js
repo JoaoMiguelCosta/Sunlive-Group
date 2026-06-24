@@ -70,4 +70,3 @@ const contactCTA = {
 };
 
 export default contactCTA;
-export { contactCTA };

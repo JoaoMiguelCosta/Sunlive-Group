@@ -180,4 +180,3 @@ const partnerHotels = {
 };
 
 export default partnerHotels;
-export { partnerHotels };

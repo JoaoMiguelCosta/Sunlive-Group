@@ -62,4 +62,3 @@ const operationFlow = {
 };
 
 export default operationFlow;
-export { operationFlow };
