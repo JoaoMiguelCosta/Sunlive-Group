@@ -4,7 +4,7 @@ import HotelHeroBanner from "./sections/HotelHeroBanner/HotelHeroBanner.jsx";
 import HotelOverviewSection from "./sections/HotelOverview/index.jsx";
 import WhoWeHostSection from "./sections/WhoWeHost/index.jsx";
 import FeaturedExperiencesSection from "./sections/FeaturedExperiences/index.jsx";
-import SustainabilityImpactSection from "./sections/Sustainability&Impact/index.jsx";
+import SustainabilityImpactSection from "./sections/SustainabilityAndImpact/index.jsx";
 import PlanYourStaySection from "./sections/PlanYourStay/index.jsx";
 
 export default function HomePageHotel() {

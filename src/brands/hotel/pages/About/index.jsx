@@ -1,10 +1,10 @@
 import styles from "../../layouts/HotelPageLayout.module.css";
 
-import AboutTheHotel from "./Sections/AboutTheHotel";
-import OurStoryMilestonesSection from "./Sections/OurStoryMilestones";
-import OurQualityCommitmentSection from "./Sections/OurQualityCommitment";
-import TheBairradaRegion from "./Sections/TheBairradaRegion";
-import UniqueNaturalSetting from "./Sections/UniqueNaturalSetting";
+import AboutTheHotel from "./sections/AboutTheHotel";
+import OurStoryMilestonesSection from "./sections/OurStoryMilestones";
+import OurQualityCommitmentSection from "./sections/OurQualityCommitment";
+import TheBairradaRegion from "./sections/TheBairradaRegion";
+import UniqueNaturalSetting from "./sections/UniqueNaturalSetting";
 
 export default function AboutPageHotel() {
   return (

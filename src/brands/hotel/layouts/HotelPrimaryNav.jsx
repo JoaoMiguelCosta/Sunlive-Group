@@ -10,7 +10,6 @@ import { getHotelNavLinks } from "./hotelNavUtils.js";
 
 import navStyles from "./HotelPrimaryNav.module.css";
 
-const NAV_ITEMS = HOTEL_PRIMARY_NAV_ITEMS;
 const SUBMENU_CLOSE_DELAY = 180;
 const NAV_LIST_ID = "hotel-primary-nav-list";
 
@@ -217,7 +216,7 @@ export default function HotelPrimaryNav() {
           aria-hidden={isDrawer && !isNavOpen}
         >
           <ul className={navStyles.navList}>
-            {NAV_ITEMS.map((item) => {
+            {HOTEL_PRIMARY_NAV_ITEMS.map((item) => {
               const links = getHotelNavLinks(item);
               const hasLinks = links.length > 0;
               const isOpen = openId === item.id;
@@ -332,7 +331,7 @@ export default function HotelPrimaryNav() {
 
       {!isDrawer ? (
         <HotelPrimaryNavSubmenu
-          items={NAV_ITEMS}
+          items={HOTEL_PRIMARY_NAV_ITEMS}
           openId={openId}
           hasOpen={hasOpen}
           submenuAnchorX={submenuAnchorX}

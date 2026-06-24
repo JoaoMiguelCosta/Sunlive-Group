@@ -9,7 +9,7 @@ export { default as CircleOffIcon } from "./CircleOff.jsx";
 export { default as ClockIcon } from "./Clock.jsx";
 export { default as DeskIcon } from "./Desk.jsx";
 export { default as FruitBasketIcon } from "./FruitBasket.jsx";
-export { default as MountainIcon } from "./Montain.jsx";
+export { default as MountainIcon } from "./Mountain.jsx";
 export { default as ThermalIcon } from "./Thermal.jsx";
 export { default as TowelRackIcon } from "./TowelRack.jsx";
 export { default as TrophyIcon } from "./Trophy.jsx";

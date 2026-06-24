@@ -4,7 +4,7 @@
 import styles from "../../layouts/HotelPageLayout.module.css";
 
 import FacilitiesLeisureSection from "./sections/FacilitiesLeisure/index.jsx";
-import WellBeingSection from "./sections/WeelBeing/index.jsx";
+import WellBeingSection from "./sections/WellBeing/index.jsx";
 import MobilitySection from "./sections/Mobility/index.jsx";
 import AccessibilitySection from "./sections/accessibility/index.jsx";
 import ComplementaryServicesSection from "./sections/ComplementaryServices/index.jsx";

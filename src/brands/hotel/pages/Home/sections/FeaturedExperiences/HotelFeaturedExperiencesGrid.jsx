@@ -166,12 +166,7 @@ export default function HotelFeaturedExperiencesGrid() {
   );
 
   const { groups, trackRef, viewportProps, trackProps } =
-    useInfiniteHorizontalLoop({
-      items,
-      pixelsPerSecond: 42,
-      minDuration: 28,
-      copiesPerGroup: 3,
-    });
+    useInfiniteHorizontalLoop({ items });
 
   const handleInternalNavigation = useCallback(
     (event, href) => {
