@@ -1,3 +1,5 @@
+import { HOTEL_PAGE_PATHS } from "../../core/paths.js";
+
 export const sustainabilityImpact = {
   id: "hotel-sustentabilidade-impacto",
 
@@ -16,7 +18,7 @@ export const sustainabilityImpact = {
 
   cta: {
     label: "Saber mais sobre Sustentabilidade",
-    href: "/sunlive-group/hotel/sustentabilidade",
+    href: HOTEL_PAGE_PATHS.sustainability,
     ariaLabel: "Ir para a página de sustentabilidade do hotel",
   },
 

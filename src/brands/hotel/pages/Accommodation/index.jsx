@@ -9,10 +9,9 @@ import WhyChooseUs from "./sections/WhyChooseUs/index.jsx";
 export default function AccommodationPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
-      <main
+      <section
         id="accommodation-page"
         className={styles.inner}
-        role="region"
         aria-label="Estalagem de Sangalhos — Accommodation"
       >
         <div className={styles.contentFlow}>
@@ -22,7 +21,7 @@ export default function AccommodationPageHotel() {
           <ForWhom />
           <WhyChooseUs />
         </div>
-      </main>
+      </section>
     </div>
   );
 }

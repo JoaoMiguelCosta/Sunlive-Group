@@ -10,10 +10,9 @@ import PlanYourStaySection from "./sections/PlanYourStay/index.jsx";
 export default function HomePageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
-      <main
+      <section
         id="home-page"
         className={styles.inner}
-        role="region"
         aria-label="Estalagem de Sangalhos — Home"
       >
         <HotelHeroBanner />
@@ -25,7 +24,7 @@ export default function HomePageHotel() {
           <SustainabilityImpactSection />
           <PlanYourStaySection />
         </div>
-      </main>
+      </section>
     </div>
   );
 }

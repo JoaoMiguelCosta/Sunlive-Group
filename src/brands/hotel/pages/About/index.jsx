@@ -9,10 +9,9 @@ import UniqueNaturalSetting from "./Sections/UniqueNaturalSetting";
 export default function AboutPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
-      <main
+      <section
         id="about-page"
         className={styles.inner}
-        role="region"
         aria-label="Estalagem de Sangalhos — Sobre"
       >
         <div className={styles.contentFlow}>
@@ -22,7 +21,7 @@ export default function AboutPageHotel() {
           <TheBairradaRegion />
           <UniqueNaturalSetting />
         </div>
-      </main>
+      </section>
     </div>
   );
 }

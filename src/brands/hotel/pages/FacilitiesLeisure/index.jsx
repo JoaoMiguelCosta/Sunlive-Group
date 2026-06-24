@@ -13,10 +13,9 @@ import ReceptionSupportSection from "./sections/ReceptionSupport/index.jsx";
 export default function FacilitiesLeisurePageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
-      <main
+      <section
         id="facilities-page"
         className={styles.inner}
-        role="region"
         aria-label="Estalagem de Sangalhos — Facilities & Leisure"
       >
         <div className={styles.contentFlow}>
@@ -27,7 +26,7 @@ export default function FacilitiesLeisurePageHotel() {
           <ComplementaryServicesSection />
           <ReceptionSupportSection />
         </div>
-      </main>
+      </section>
     </div>
   );
 }

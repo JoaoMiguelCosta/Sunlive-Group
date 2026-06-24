@@ -29,18 +29,8 @@ export default function HotelShell() {
     location.pathname === `${HOTEL_BASE_PATH}/`;
 
   const utilityBarProps = isHotelHome
-    ? {
-        backLink: {
-          href: "/sunlive-group",
-          label: "Voltar Sunlive Group",
-        },
-      }
-    : {
-        homeLink: {
-          href: HOTEL_BASE_PATH,
-          label: "Início Estalagem",
-        },
-      };
+    ? { backLink: header.backLink }
+    : { homeLink: { href: HOTEL_BASE_PATH, label: "Início Estalagem" } };
 
   return (
     <div className={styles.shell} data-brand="hotel" data-shell="hotel">

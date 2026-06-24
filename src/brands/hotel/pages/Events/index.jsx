@@ -8,17 +8,16 @@ import CustomizedQuotesSection from "./sections/CustomizedQuotes/index.jsx";
 export default function EventsPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
-      <main
+      <section
         id="events-page"
         className={styles.inner}
-        role="region"
         aria-label="Estalagem de Sangalhos — Events"
       >
         <div className={styles.contentFlow}>
           <EventsCelebrationsSection />
           <CustomizedQuotesSection />
         </div>
-      </main>
+      </section>
     </div>
   );
 }

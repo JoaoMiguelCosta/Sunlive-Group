@@ -1,4 +1,6 @@
-const CONTACTS_HREF = "/sunlive-group/hotel/informacoes#informacoes-contactos";
+import { HOTEL_PAGE_PATHS } from "../../core/paths.js";
+
+const CONTACTS_HREF = `${HOTEL_PAGE_PATHS.information}#informacoes-contactos`;
 
 const eventsCelebrations = {
   id: "eventos-celebracoes",

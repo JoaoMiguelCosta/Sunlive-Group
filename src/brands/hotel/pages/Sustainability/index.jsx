@@ -11,10 +11,9 @@ import FutureGoalsSection from "./sections/FutureGoals/index.jsx";
 export default function SustainabilityPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
-      <main
+      <section
         id="sustainability-page"
         className={styles.inner}
-        role="region"
         aria-label="Estalagem de Sangalhos — Sustentabilidade"
       >
         <div className={styles.contentFlow}>
@@ -23,7 +22,7 @@ export default function SustainabilityPageHotel() {
           <EnvironmentalImpactSection />
           <FutureGoalsSection />
         </div>
-      </main>
+      </section>
     </div>
   );
 }
