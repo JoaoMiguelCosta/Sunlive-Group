@@ -1,8 +1,6 @@
-import submenuStyles from "./HotelPrimaryNavSubmenu.module.css";
+import { getHotelNavLinks } from "./hotelNavUtils.js";
 
-function getValidLinks(group) {
-  return Array.isArray(group?.links) ? group.links : [];
-}
+import submenuStyles from "./HotelPrimaryNavSubmenu.module.css";
 
 export default function HotelPrimaryNavSubmenu({
   items,
@@ -17,7 +15,7 @@ export default function HotelPrimaryNavSubmenu({
     ? items.find((item) => item.id === openId)
     : null;
 
-  const activeLinks = getValidLinks(activeGroup);
+  const activeLinks = getHotelNavLinks(activeGroup);
   const isVisible = Boolean(hasOpen && activeGroup && activeLinks.length > 0);
 
   return (

@@ -6,16 +6,13 @@ import useSmartAnchorNav from "../../../shared/hooks/useSmartAnchorNav.js";
 
 import { HOTEL_PRIMARY_NAV_ITEMS } from "../config/core/nav.js";
 import HotelPrimaryNavSubmenu from "./HotelPrimaryNavSubmenu.jsx";
+import { getHotelNavLinks } from "./hotelNavUtils.js";
 
 import navStyles from "./HotelPrimaryNav.module.css";
 
 const NAV_ITEMS = HOTEL_PRIMARY_NAV_ITEMS;
 const SUBMENU_CLOSE_DELAY = 180;
 const NAV_LIST_ID = "hotel-primary-nav-list";
-
-function getValidLinks(item) {
-  return Array.isArray(item?.links) ? item.links : [];
-}
 
 export default function HotelPrimaryNav() {
   const [openId, setOpenId] = useState(null);
@@ -194,7 +191,7 @@ export default function HotelPrimaryNav() {
         >
           <ul className={navStyles.navList}>
             {NAV_ITEMS.map((item) => {
-              const links = getValidLinks(item);
+              const links = getHotelNavLinks(item);
               const hasLinks = links.length > 0;
               const isOpen = openId === item.id;
 

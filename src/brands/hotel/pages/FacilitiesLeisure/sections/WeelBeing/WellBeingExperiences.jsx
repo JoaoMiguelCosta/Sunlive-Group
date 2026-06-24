@@ -81,13 +81,9 @@ export default function WellBeingExperiences() {
     };
   }, []);
 
-  const items = useMemo(() => {
-    return enrichItemsWithIcons(rawItems, ICONS);
-  }, [rawItems]);
+  const items = enrichItemsWithIcons(rawItems, ICONS);
 
-  const accordionItems = useMemo(() => {
-    return buildAccordionItems(items);
-  }, [items]);
+  const accordionItems = buildAccordionItems(items);
 
   const { isOpen, toggle } = useAccordion(accordionItems, {
     allowMultiple: false,

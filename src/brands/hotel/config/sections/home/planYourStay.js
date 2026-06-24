@@ -1,3 +1,5 @@
+import { HOTEL_COMPANY } from "../../core/company.js";
+
 export const planYourStay = {
   id: "hotel-planear-estadia",
 
@@ -18,7 +20,7 @@ export const planYourStay = {
     {
       id: "phone",
       label: "Contactar por Telefone",
-      href: "tel:+351234745133",
+      href: HOTEL_COMPANY.contacts.extraPhones[0].href,
       iconKey: "phone",
       ariaLabel: "Ligar para +351 234 745 133",
       tone: "strong",
@@ -26,7 +28,7 @@ export const planYourStay = {
     {
       id: "email",
       label: "Contactar por Email",
-      href: "mailto:hotel@sunlive.pt",
+      href: HOTEL_COMPANY.contacts.email.href,
       iconKey: "mail",
       ariaLabel: "Enviar email para hotel@sunlive.pt",
       tone: "soft",
