@@ -47,6 +47,7 @@ export default function EventsCelebrationsBanner() {
         leftIcon={resolvedBanner.icons?.left ?? null}
         rightIcon={resolvedBanner.icons?.right ?? null}
         iconsEnabled={resolvedBanner.icons?.enabled ?? false}
+        headingAs="h3"
         className={styles.banner}
       />
     </div>

@@ -24,6 +24,7 @@ export default function HotelPrimaryNav() {
   const navInnerRef = useRef(null);
   const buttonRefs = useRef({});
   const closeTimerRef = useRef(null);
+  const burgerButtonRef = useRef(null);
 
   const clearCloseTimer = () => {
     if (closeTimerRef.current) {
@@ -61,6 +62,31 @@ export default function HotelPrimaryNav() {
       clearCloseTimer();
     };
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!isNavOpen && !openId) return;
+
+    const onKeyDown = (event) => {
+      if (event.key !== "Escape") return;
+
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+
+      if (isNavOpen) {
+        setIsNavOpen(false);
+        setOpenId(null);
+        burgerButtonRef.current?.focus();
+      } else if (openId) {
+        const trigger = buttonRefs.current[openId];
+        setOpenId(null);
+        trigger?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isNavOpen, openId]);
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -171,6 +197,7 @@ export default function HotelPrimaryNav() {
             }
             aria-expanded={isNavOpen}
             aria-controls={NAV_LIST_ID}
+            ref={burgerButtonRef}
             onClick={() => setIsNavOpen((currentState) => !currentState)}
           >
             <span className={navStyles.burgerBox} aria-hidden="true">

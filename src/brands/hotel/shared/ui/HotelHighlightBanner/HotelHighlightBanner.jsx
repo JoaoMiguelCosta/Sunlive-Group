@@ -17,9 +17,12 @@ export default function HotelHighlightBanner({
   leftIcon = null,
   rightIcon = null,
   iconsEnabled = false,
+  headingAs = "h2",
   className = "",
 }) {
   if (!title && !description && !eyebrow) return null;
+
+  const HeadingTag = headingAs;
 
   const classNames = [
     styles.banner,
@@ -43,7 +46,7 @@ export default function HotelHighlightBanner({
               </span>
             ) : null}
 
-            <h2 className={styles.title}>{title}</h2>
+            <HeadingTag className={styles.title}>{title}</HeadingTag>
 
             {iconsEnabled && rightIcon ? (
               <span className={styles.icon} aria-hidden="true">
