@@ -103,7 +103,6 @@ export default function ServiceOfferingsGrid({
                 closeLabel={ui?.collapseLabel}
                 openDetailsLabel={ui?.openDetailsLabel}
                 closeDetailsLabel={ui?.closeDetailsLabel}
-                surfaceTone={service.surfaceTone}
               />
             </div>
           );

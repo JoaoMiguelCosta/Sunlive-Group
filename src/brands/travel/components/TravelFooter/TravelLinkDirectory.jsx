@@ -2,8 +2,8 @@ import styles from "./TravelLinkDirectory.module.css";
 
 import PillLink from "../../../../shared/components/Footer/PillLink.jsx";
 import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
+import { TRAVEL_BASE_PATH } from "../../config/core/paths.js";
 
-const DEFAULT_TARGET_PATH = "/sunlive-group/travel";
 const DEFAULT_ANCHOR_OFFSET = 72;
 
 const RETRY_DELAY_MS = 80;
@@ -79,7 +79,7 @@ export default function TravelLinkDirectory({ data }) {
   const anchors = meta?.anchors ?? {};
   const flags = meta?.flags ?? {};
 
-  const targetPath = anchors.targetPath ?? DEFAULT_TARGET_PATH;
+  const targetPath = anchors.targetPath ?? TRAVEL_BASE_PATH;
   const offset =
     typeof anchors.offset === "number" ? anchors.offset : DEFAULT_ANCHOR_OFFSET;
 

@@ -72,4 +72,3 @@ const solutionPaths = {
 };
 
 export default solutionPaths;
-export { solutionPaths };

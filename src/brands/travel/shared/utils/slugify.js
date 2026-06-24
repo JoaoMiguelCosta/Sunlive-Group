@@ -1,4 +1,3 @@
-// shared/ui/ServiceCard/utils/slugify.js
 export function slugify(s = "") {
   return s
     .toString()

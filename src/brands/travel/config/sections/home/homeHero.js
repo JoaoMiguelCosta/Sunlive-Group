@@ -96,4 +96,3 @@ const homeHero = {
 };
 
 export default homeHero;
-export { homeHero };
