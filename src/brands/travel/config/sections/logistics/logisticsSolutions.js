@@ -88,7 +88,6 @@ const logisticsSolutions = {
       title: "Transfers de Aeroporto",
       summary:
         "Serviço de ligação de e para aeroportos com monitorização de voos, coordenação antecipada e enquadramento com os horários reais da operação.",
-      surfaceTone: "petrol",
       items: [
         "Motoristas profissionais",
         "Monitorização de voos em tempo real",
@@ -104,7 +103,6 @@ const logisticsSolutions = {
       title: "Transporte Equipas",
       summary:
         "Soluções de mobilidade para equipas desportivas e grupos organizados, com capacidade para passageiros, bagagem e equipamentos, numa lógica de coordenação eficiente.",
-      surfaceTone: "slate",
       items: [
         "Autocarros e viaturas de grupo",
         "Espaço para bagagem e equipamentos",
@@ -120,7 +118,6 @@ const logisticsSolutions = {
       title: "Alojamentos",
       summary:
         "Unidades selecionadas em função da localização, capacidade de resposta, conforto e enquadramento com o perfil da viagem e do grupo.",
-      surfaceTone: "steel",
       items: [
         "Hotéis parceiros selecionados",
         "Localizações ajustadas ao programa",
@@ -136,7 +133,6 @@ const logisticsSolutions = {
       title: "Tours Turísticos",
       summary:
         "Programas turísticos e culturais desenhados de forma flexível, com acompanhamento e roteiros adaptados ao ritmo, interesse e objetivo da viagem.",
-      surfaceTone: "teal",
       items: [
         "Guias e acompanhamento local",
         "Roteiros ajustados ao grupo",
@@ -152,7 +148,6 @@ const logisticsSolutions = {
       title: "Pacotes Completos",
       summary:
         "Operações chave-na-mão para grupos, equipas e acompanhantes que combinam transporte, estadia, apoio local e atividades numa proposta única e coordenada.",
-      surfaceTone: "graphite",
       items: [
         "Serviços integrados numa única operação",
         "Coordenação centralizada",

@@ -9,9 +9,9 @@ export default function ContactPanelIntro({ id, eyebrow, title, description }) {
       {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
 
       {title ? (
-        <h3 id={id} className={styles.title}>
+        <h2 id={id} className={styles.title}>
           {title}
-        </h3>
+        </h2>
       ) : null}
 
       {description ? <p className={styles.description}>{description}</p> : null}

@@ -5,6 +5,7 @@ const BRAND_ICON_KEY_MAP = Object.freeze({
   phone: "PhoneIcon",
   pin: "PinIcon",
   plane: "PlaneIcon",
+  star: "StarIcon",
   "tour-bus": "TourBusIcon",
 });
 

@@ -1,5 +1,7 @@
 import styles from "./ContactCTASection.module.css";
 import contactCTA from "../../../../config/sections/contacts/contactCTA.js";
+import { ICONS } from "../../../../config/core/resolvedVisuals.js";
+import { resolveTravelIcon } from "../../../../config/core/iconKeyMap.js";
 
 import ContactIntroPanel from "./ContactIntroPanel.jsx";
 import ContactPanelIntro from "./ContactPanelIntro.jsx";
@@ -41,9 +43,12 @@ export default function ContactCTASection() {
     (item) => item?.label,
   );
 
-  const channels = getValidArray(section?.channels).filter(
-    (item) => item?.label && item?.href,
-  );
+  const channels = getValidArray(section?.channels)
+    .filter((item) => item?.label && item?.href)
+    .map((item) => ({
+      ...item,
+      Icon: resolveTravelIcon(ICONS, item.iconKey),
+    }));
 
   const hasHero = hasHeroContent(hero);
   const hasChecklist = checklist.length > 0;
@@ -62,7 +67,7 @@ export default function ContactCTASection() {
       data-section="contact-cta"
     >
       <div className={styles.inner}>
-        {hasHero ? <ContactIntroPanel hero={hero} /> : null}
+        {hasHero ? <ContactIntroPanel hero={hero} titleAs="h1" /> : null}
 
         {hasChecklist || hasChannels ? (
           <div className={styles.contentGrid}>

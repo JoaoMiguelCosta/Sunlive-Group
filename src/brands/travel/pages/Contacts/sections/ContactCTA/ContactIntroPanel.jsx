@@ -10,7 +10,7 @@ function getValidStats(stats) {
     : [];
 }
 
-export default function ContactIntroPanel({ hero = {}, as = "header" }) {
+export default function ContactIntroPanel({ hero = {}, as = "header", titleAs = "h2" }) {
   const pills = getValidPills(hero?.trustPoints);
   const stats = getValidStats(hero?.stats);
 
@@ -27,6 +27,7 @@ export default function ContactIntroPanel({ hero = {}, as = "header" }) {
   return (
     <TravelIntroPanel
       as={as}
+      titleAs={titleAs}
       eyebrow={hero?.eyebrow}
       title={hero?.title}
       lead={hero?.lead}

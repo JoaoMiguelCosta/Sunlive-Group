@@ -1,5 +1,8 @@
+import { useId, useState } from "react";
+
 import TestimonialCard from "../../../../shared/ui/TestemonialCard/index.jsx";
 import useSpotlightCycle from "../../../../../../shared/hooks/useSpotlightCycle.js";
+import { resolveTravelIcon } from "../../../../config/core/iconKeyMap.js";
 
 import styles from "./TestimonialsGrid.module.css";
 
@@ -11,11 +14,19 @@ function normalizeTestimonials(items = []) {
   return items.filter((item) => item?.quote && item?.author?.name);
 }
 
+function buildAnnouncement(idx, total, itemsList) {
+  const item = itemsList[idx];
+  if (!item) return "";
+  return `Testemunho ${idx + 1} de ${total}: ${item.author?.name ?? ""}`;
+}
+
 export default function TestimonialsGrid({
   spotlight = {},
   testimonials = [],
   icons = {},
 }) {
+  const gridId = useId();
+  const [liveMessage, setLiveMessage] = useState("");
   const items = normalizeTestimonials(testimonials);
   const itemCount = items.length;
 
@@ -41,26 +52,32 @@ export default function TestimonialsGrid({
     }
 
     switch (event.key) {
-      case "ArrowRight":
+      case "ArrowRight": {
         event.preventDefault();
-
-        setIndex((currentIndex) => (currentIndex + 1) % itemCount);
+        const next = (index + 1) % itemCount;
+        setIndex(next);
+        setLiveMessage(buildAnnouncement(next, itemCount, items));
         break;
+      }
 
-      case "ArrowLeft":
+      case "ArrowLeft": {
         event.preventDefault();
-
-        setIndex((currentIndex) => (currentIndex - 1 + itemCount) % itemCount);
+        const prev = (index - 1 + itemCount) % itemCount;
+        setIndex(prev);
+        setLiveMessage(buildAnnouncement(prev, itemCount, items));
         break;
+      }
 
       case "Home":
         event.preventDefault();
         setIndex(0);
+        setLiveMessage(buildAnnouncement(0, itemCount, items));
         break;
 
       case "End":
         event.preventDefault();
         setIndex(itemCount - 1);
+        setLiveMessage(buildAnnouncement(itemCount - 1, itemCount, items));
         break;
 
       default:
@@ -69,14 +86,18 @@ export default function TestimonialsGrid({
   };
 
   const goToPreviousTestimonial = () => {
-    setIndex((currentIndex) => (currentIndex - 1 + itemCount) % itemCount);
+    const prev = (index - 1 + itemCount) % itemCount;
+    setIndex(prev);
+    setLiveMessage(buildAnnouncement(prev, itemCount, items));
   };
 
   const goToNextTestimonial = () => {
-    setIndex((currentIndex) => (currentIndex + 1) % itemCount);
+    const next = (index + 1) % itemCount;
+    setIndex(next);
+    setLiveMessage(buildAnnouncement(next, itemCount, items));
   };
 
-  const resolveIcon = (iconKey) => icons?.[iconKey] || icons?.star || null;
+  const resolveIcon = (iconKey) => resolveTravelIcon(icons, iconKey);
 
   const regionLabel =
     spotlight?.regionLabel ??
@@ -107,8 +128,13 @@ export default function TestimonialsGrid({
       onKeyDown={handleKeyDown}
       tabIndex={0}
       role="region"
+      aria-roledescription="carousel"
       aria-label={regionLabel}
     >
+      <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
+        {liveMessage}
+      </div>
+
       <div className={styles.shell}>
         <div className={styles.topbar}>
           <div className={styles.topbarInner}>
@@ -133,10 +159,11 @@ export default function TestimonialsGrid({
               type="button"
               className={`${styles.arrowBtn} ${styles.prev}`}
               aria-label={previousLabel}
+              aria-controls={gridId}
               onClick={goToPreviousTestimonial}
             />
 
-            <div className={styles.dots} role="tablist" aria-label={dotsLabel}>
+            <div className={styles.dots} aria-label={dotsLabel}>
               {items.map((testimonial, itemIndex) => {
                 const isActive = itemIndex === index;
 
@@ -150,10 +177,13 @@ export default function TestimonialsGrid({
                     className={styles.dot}
                     data-active={isActive || undefined}
                     aria-label={`Ver testemunho ${itemIndex + 1}`}
-                    aria-controls={`testimonial-card-${itemIndex}`}
-                    aria-selected={isActive}
-                    role="tab"
-                    onClick={() => setIndex(itemIndex)}
+                    aria-pressed={isActive}
+                    onClick={() => {
+                      setIndex(itemIndex);
+                      setLiveMessage(
+                        buildAnnouncement(itemIndex, itemCount, items),
+                      );
+                    }}
                   />
                 );
               })}
@@ -163,15 +193,15 @@ export default function TestimonialsGrid({
               type="button"
               className={`${styles.arrowBtn} ${styles.next}`}
               aria-label={nextLabel}
+              aria-controls={gridId}
               onClick={goToNextTestimonial}
             />
           </div>
         </div>
 
-        <div className={styles.grid} role="list">
+        <div className={styles.grid} id={gridId}>
           {items.map((testimonial, itemIndex) => {
             const isActive = itemIndex === index;
-            const cardId = `testimonial-card-${itemIndex}`;
             const Icon = resolveIcon(testimonial.iconKey);
 
             return (
@@ -186,7 +216,6 @@ export default function TestimonialsGrid({
                 className={styles.item}
                 data-active={isActive || undefined}
                 aria-current={isActive ? "true" : undefined}
-                id={cardId}
               />
             );
           })}

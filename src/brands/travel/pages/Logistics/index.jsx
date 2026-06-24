@@ -8,7 +8,6 @@ export default function LogisticsPage() {
       <main
         id="logistics"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Travel — Logística"
       >
         <div className={styles.contentFlow}>

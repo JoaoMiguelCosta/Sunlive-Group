@@ -506,3 +506,19 @@
         transition: none;
     }
 }
+
+@media (forced-colors: active) {
+
+    .navLink:focus-visible,
+    .navToggle:focus-visible,
+    .subLink:focus-visible {
+        outline: 3px solid ButtonText;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    .navLinkActive {
+        outline: 2px solid Highlight;
+        outline-offset: 1px;
+    }
+}

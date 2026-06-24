@@ -9,7 +9,6 @@ export default function PartnersPage() {
       <main
         id="partners"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Travel — Parceiros"
       >
         <div className={styles.contentFlow}>

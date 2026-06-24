@@ -1,4 +1,3 @@
-// src/shared/ui/icons/TravelVector.jsx
 export default function TravelVector({
   className = "",
   size = 24,

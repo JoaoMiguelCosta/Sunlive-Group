@@ -1,5 +1,6 @@
 import styles from "./HomeHeroSection.module.css";
 import homeHero from "../../../../config/sections/home/homeHero.js";
+import { TRAVEL_COMPANY } from "../../../../config/core/company.js";
 
 function escapeRegExp(value = "") {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -101,7 +102,7 @@ export default function HomeHeroSection() {
                     <p className={styles.supportingText}>
                       {highlightBrand(
                         cfg.supportingText,
-                        "Sunlive Travel",
+                        TRAVEL_COMPANY.brandName,
                         styles.brandHighlight,
                       )}
                     </p>

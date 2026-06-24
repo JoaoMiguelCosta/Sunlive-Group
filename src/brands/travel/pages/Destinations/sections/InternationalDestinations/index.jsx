@@ -1,5 +1,4 @@
 import internationalDestinations from "../../../../config/sections/destinations/internationalDestinations.js";
-import { FLAGS } from "../../../../config/core/resolvedVisuals.js";
 
 import styles from "./InternationalDestinationsSection.module.css";
 import InternationalEditorialHero from "./InternationalEditorialHero.jsx";
@@ -19,7 +18,6 @@ export default function InternationalDestinationsSection() {
   const destinations = Array.isArray(section?.destinations)
     ? section.destinations
     : [];
-  const flags = FLAGS;
 
   return (
     <section
@@ -34,7 +32,6 @@ export default function InternationalDestinationsSection() {
         <InternationalDestinationsShowcase
           showcase={showcase}
           destinations={destinations}
-          flags={flags}
         />
       </div>
     </section>

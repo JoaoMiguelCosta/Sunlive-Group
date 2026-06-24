@@ -51,13 +51,17 @@ function isElementSufficientlyVisible(element) {
 function scrollSpotlightIntoView(element) {
   if (!element || typeof window === "undefined") return;
 
+  const prefersReducedMotion = window.matchMedia?.(
+    "(prefers-reduced-motion: reduce)",
+  )?.matches;
+
   const topOffset = 88;
   const rect = element.getBoundingClientRect();
   const scrollTop = window.scrollY + rect.top - topOffset;
 
   window.scrollTo({
     top: Math.max(0, scrollTop),
-    behavior: "smooth",
+    behavior: prefersReducedMotion ? "auto" : "smooth",
   });
 }
 
@@ -98,24 +102,6 @@ export default function TravelCuratedShowcase({
 
   const activeItem =
     safeItems.find((item) => item.key === activeKey) ?? safeItems[0] ?? null;
-
-  useEffect(() => {
-    if (!activeItem || !hash) return;
-
-    const decodedHash = decodeURIComponent(hash.replace(/^#/, ""));
-    if (decodedHash !== activeItem.anchorId) return;
-
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
-        const spotlightElement = spotlightRef.current;
-        if (!spotlightElement) return;
-
-        if (!isElementSufficientlyVisible(spotlightElement)) {
-          scrollSpotlightIntoView(spotlightElement);
-        }
-      });
-    });
-  }, [activeItem, hash]);
 
   if (!activeItem) return null;
 
@@ -228,15 +214,15 @@ export default function TravelCuratedShowcase({
             </div>
           </aside>
 
-          <div
-            ref={spotlightRef}
-            id={activeItem.anchorId}
-            className={styles.spotlightCard}
-            role="tabpanel"
-            aria-labelledby={`${instanceId}-tab-${activeItem.key}`}
-            data-anchor-id={activeItem.anchorId}
-          >
-            <div id={spotlightPanelId} className={styles.spotlightPanelInner}>
+          <div id={activeItem.anchorId} data-anchor-id={activeItem.anchorId}>
+            <div
+              ref={spotlightRef}
+              id={spotlightPanelId}
+              className={styles.spotlightCard}
+              role="tabpanel"
+              aria-labelledby={`${instanceId}-tab-${activeItem.key}`}
+            >
+            <div className={styles.spotlightPanelInner}>
               <div className={styles.spotlightMediaColumn}>
                 <div className={styles.mediaWrap}>
                   {activeItem?.picture?.src ? (
@@ -336,6 +322,7 @@ export default function TravelCuratedShowcase({
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>

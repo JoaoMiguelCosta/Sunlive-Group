@@ -1,24 +1,16 @@
 import { useMemo } from "react";
 
 import CuratedSpotlightCollection from "../../../../shared/ui/CuratedSpotlightCollection/CuratedSpotlightCollection.jsx";
-
-function normalizeHotels(hotels = []) {
-  if (!Array.isArray(hotels)) return [];
-
-  return hotels
-    .filter((item) => item?.key)
-    .map((item, index) => ({
-      ...item,
-      anchorId:
-        item?.anchorId || item?.id || item?.key || `partner-hotel-${index + 1}`,
-    }));
-}
+import { normalizeCollectionItems } from "../../../../shared/utils/normalizeCollectionItems.js";
 
 export default function PartnerHotelsCuratedCollection({
   collection = {},
   hotels = [],
 }) {
-  const normalizedHotels = useMemo(() => normalizeHotels(hotels), [hotels]);
+  const normalizedHotels = useMemo(
+    () => normalizeCollectionItems(hotels, { fallbackPrefix: "partner-hotel" }),
+    [hotels],
+  );
 
   return (
     <CuratedSpotlightCollection

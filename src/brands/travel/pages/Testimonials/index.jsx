@@ -8,7 +8,6 @@ export default function TestimonialsPage() {
       <main
         id="testimonials"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Travel — Testemunhos"
       >
         <div className={styles.contentFlow}>

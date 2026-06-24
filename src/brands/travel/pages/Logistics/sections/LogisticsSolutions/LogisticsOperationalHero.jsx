@@ -70,7 +70,7 @@ export default function LogisticsOperationalHero({ hero = {} }) {
           {(hero?.title || hero?.lead) && (
             <div className={styles.headingBlock}>
               {hero?.title ? (
-                <h2 className={styles.title}>{hero.title}</h2>
+                <h1 className={styles.title}>{hero.title}</h1>
               ) : null}
               {hero?.lead ? <p className={styles.lead}>{hero.lead}</p> : null}
             </div>
@@ -134,7 +134,7 @@ export default function LogisticsOperationalHero({ hero = {} }) {
                       aria-hidden="true"
                     />
                     <div className={styles.assuranceContent}>
-                      <h3 className={styles.assuranceTitle}>{item.title}</h3>
+                      <h2 className={styles.assuranceTitle}>{item.title}</h2>
                       <p className={styles.assuranceDescription}>
                         {item.description}
                       </p>

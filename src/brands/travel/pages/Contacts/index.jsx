@@ -8,7 +8,6 @@ export default function ContactsPage() {
       <main
         id="contacts"
         className={styles.inner}
-        role="region"
         aria-label="Sunlive Travel — Contactos"
       >
         <div className={styles.contentFlow}>

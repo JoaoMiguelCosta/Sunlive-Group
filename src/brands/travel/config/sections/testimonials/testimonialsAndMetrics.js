@@ -1,5 +1,3 @@
-import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
-
 const testimonialsAndMetrics = {
   id: "testemunhos",
 
@@ -147,13 +145,6 @@ const testimonialsAndMetrics = {
     },
   ],
 
-  cta: {
-    label: "Contactar",
-    href: TRAVEL_PAGE_PATHS.contacts,
-    ariaLabel: "Contactar a Sunlive Travel",
-    iconKey: "phone",
-  },
 };
 
 export default testimonialsAndMetrics;
-export { testimonialsAndMetrics };

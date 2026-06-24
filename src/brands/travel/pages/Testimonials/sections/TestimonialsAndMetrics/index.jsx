@@ -34,6 +34,7 @@ export default function TestimonialsAndMetricsSection() {
       <div className={styles.inner}>
         <TravelIntroPanel
           as="header"
+          titleAs="h1"
           eyebrow={headline?.eyebrow}
           title={headline?.title}
           lead={headline?.lead}

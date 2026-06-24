@@ -20,6 +20,7 @@ export default function TravelIntroPanel({
   pillsAriaLabel = "Pontos-chave",
   statsAriaLabel = "Destaques da secção",
   as: Tag = "header",
+  titleAs: TitleTag = "h2",
 }) {
   const safePills = getValidPills(pills);
   const safeStats = getValidStats(stats);
@@ -40,7 +41,7 @@ export default function TravelIntroPanel({
         <div className={styles.copy}>
           {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
 
-          {title ? <h2 className={styles.title}>{title}</h2> : null}
+          {title ? <TitleTag className={styles.title}>{title}</TitleTag> : null}
 
           {lead ? <p className={styles.lead}>{lead}</p> : null}
 

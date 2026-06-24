@@ -155,7 +155,6 @@ const footer = {
     partners: {
       trips: {
         title: "Viagens em colaboração",
-        iconKeys: ["PlaneIcon", "BusIcon"],
         items: [
           {
             key: "portugalissimo",
