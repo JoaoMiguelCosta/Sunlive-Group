@@ -1,6 +1,6 @@
 import { SPORTS_PAGE_PATHS } from "../../../config/core/paths.js";
 
-import footballImage from "../../../assets/Modalities/football.webp";
+import footballImage from "../../../assets/modalities/football.webp";
 
 const footballSection = {
   key: "football",

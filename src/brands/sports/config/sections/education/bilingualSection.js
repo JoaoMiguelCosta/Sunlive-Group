@@ -1,4 +1,4 @@
-import educationBilingualImage from "../../../assets/Education/education2.webp";
+import educationBilingualImage from "../../../assets/education/education2.webp";
 
 const bilingualSection = {
   id: "educacao-bilingue",

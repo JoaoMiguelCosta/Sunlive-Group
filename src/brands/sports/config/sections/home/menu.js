@@ -1,4 +1,4 @@
-import velodromoImage from "../../../assets/Home/velodromo.webp";
+import velodromoImage from "../../../assets/home/velodromo.webp";
 import { SPORTS_GATEWAY } from "../../core/gateway.js";
 
 const DEFAULT_MENU_COPY = {

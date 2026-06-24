@@ -1,4 +1,4 @@
-import educationLevelsBackground from "../../../assets/Education/education1.webp";
+import educationLevelsBackground from "../../../assets/education/education1.webp";
 
 const levelsSection = {
   id: "niveis-ensino",

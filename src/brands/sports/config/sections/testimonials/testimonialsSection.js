@@ -1,13 +1,13 @@
-import aliAlHitmiImage from "../../../assets/Testimonials/ali-al-hitmi.webp";
-import carolAngelaOrchardImage from "../../../assets/Testimonials/carol-angela-orchard.webp";
-import francoisPervisImage from "../../../assets/Testimonials/francois-pervis.webp";
-import franckDuriveauImage from "../../../assets/Testimonials/franck-duriveau.webp";
-import kelseyMitchellImage from "../../../assets/Testimonials/kelsey-mitchell.webp";
-import koenBeeckmanImage from "../../../assets/Testimonials/koen-beeckman.webp";
-import maxWhitlockImage from "../../../assets/Testimonials/max-whitlock.webp";
-import pedroRoqueImage from "../../../assets/Testimonials/pedro-roque.webp";
-import rebeccaAndradeImage from "../../../assets/Testimonials/rebecca-andrade.webp";
-import vicentPelluardMarianaPajonImage from "../../../assets/Testimonials/vicent-pelluard-mariana-pajon.webp";
+import aliAlHitmiImage from "../../../assets/testimonials/ali-al-hitmi.webp";
+import carolAngelaOrchardImage from "../../../assets/testimonials/carol-angela-orchard.webp";
+import francoisPervisImage from "../../../assets/testimonials/francois-pervis.webp";
+import franckDuriveauImage from "../../../assets/testimonials/franck-duriveau.webp";
+import kelseyMitchellImage from "../../../assets/testimonials/kelsey-mitchell.webp";
+import koenBeeckmanImage from "../../../assets/testimonials/koen-beeckman.webp";
+import maxWhitlockImage from "../../../assets/testimonials/max-whitlock.webp";
+import pedroRoqueImage from "../../../assets/testimonials/pedro-roque.webp";
+import rebeccaAndradeImage from "../../../assets/testimonials/rebecca-andrade.webp";
+import vicentPelluardMarianaPajonImage from "../../../assets/testimonials/vicent-pelluard-mariana-pajon.webp";
 
 function makeResponsiveScale({
   desktop = 1,

@@ -1,6 +1,6 @@
 import { SPORTS_PAGE_PATHS } from "../../../config/core/paths.js";
 
-import gymnasticsImage from "../../../assets/Modalities/gymnastics.webp";
+import gymnasticsImage from "../../../assets/modalities/gymnastics.webp";
 
 const gymnasticsSection = {
   key: "gymnastics",
