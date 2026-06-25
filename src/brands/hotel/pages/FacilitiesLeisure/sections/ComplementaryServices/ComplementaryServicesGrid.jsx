@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
 
-import complementaryServices from "../../../../config/sections/facilities/complementaryServices.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const complementaryServices = facilitiesLeisurePage.sections.complementaryServices;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";

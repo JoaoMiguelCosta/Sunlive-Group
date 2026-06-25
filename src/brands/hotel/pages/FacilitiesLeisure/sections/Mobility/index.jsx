@@ -1,4 +1,5 @@
-import mobility from "../../../../config/sections/facilities/mobility.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const mobility = facilitiesLeisurePage.sections.mobility;
 
 import TitleMobility from "./TitleMobility.jsx";
 import DescriptionMobility from "./DescriptionMobility.jsx";

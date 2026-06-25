@@ -1,4 +1,4 @@
-import bairradaRegionImage from "../../../assets/bairrada-region.webp";
+import bairradaRegionImage from "../../../assets/about/bairrada-region.webp";
 
 export const bairradaRegion = {
   id: "sobre-bairrada",

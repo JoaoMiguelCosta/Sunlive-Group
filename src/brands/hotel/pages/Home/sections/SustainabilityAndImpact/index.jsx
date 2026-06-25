@@ -1,4 +1,5 @@
-import sustainabilityImpact from "../../../../config/sections/home/sustainabilityImpact.js";
+import home from "../../../../config/pages/home.js";
+const sustainabilityImpact = home.sections.sustainabilityImpact;
 import HotelInlineActionButton from "../../../../shared/ui/HotelInlineActionButton/HotelInlineActionButton.jsx";
 import HotelSustainabilityHeader from "./HotelSustainabilityHeader.jsx";
 import HotelSustainabilityStats from "./HotelSustainabilityStats.jsx";

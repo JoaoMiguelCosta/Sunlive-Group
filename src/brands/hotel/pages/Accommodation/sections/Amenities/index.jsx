@@ -4,7 +4,8 @@ import TitleAmenities from "./TitleAmenities.jsx";
 import DescriptionAmenities from "./DescriptionAmenities.jsx";
 import AmenitiesPills from "./AmenitiesPills.jsx";
 
-import amenities from "../../../../config/sections/accommodation/amenities.js";
+import accommodation from "../../../../config/pages/accommodation.js";
+const amenities = accommodation.sections.amenities;
 
 export default function Amenities() {
   const content = amenities;

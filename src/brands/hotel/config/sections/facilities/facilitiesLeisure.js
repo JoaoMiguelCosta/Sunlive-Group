@@ -1,14 +1,14 @@
-import facilitiesLeisure1 from "../../../assets/facilities-leisure1.webp";
-import facilitiesLeisure2 from "../../../assets/facilities-leisure2.webp";
-import facilitiesLeisure3 from "../../../assets/facilities-leisure3.webp";
-import facilitiesLeisure4 from "../../../assets/facilities-leisure4.webp";
-import facilitiesLeisure5 from "../../../assets/facilities-leisure5.webp";
-import facilitiesLeisure6 from "../../../assets/facilities-leisure6.webp";
-import facilitiesLeisure7 from "../../../assets/facilities-leisure7.webp";
-import facilitiesLeisure9 from "../../../assets/facilities-leisure9.webp";
+import facilitiesLeisure1 from "../../../assets/facilities/facilities-leisure1.webp";
+import facilitiesLeisure2 from "../../../assets/facilities/facilities-leisure2.webp";
+import facilitiesLeisure3 from "../../../assets/facilities/facilities-leisure3.webp";
+import facilitiesLeisure4 from "../../../assets/facilities/facilities-leisure4.webp";
+import facilitiesLeisure5 from "../../../assets/facilities/facilities-leisure5.webp";
+import facilitiesLeisure6 from "../../../assets/facilities/facilities-leisure6.webp";
+import facilitiesLeisure7 from "../../../assets/facilities/facilities-leisure7.webp";
+import facilitiesLeisure9 from "../../../assets/facilities/facilities-leisure9.webp";
 
-import home2 from "../../../assets/home2.webp";
-import barlounge1 from "../../../assets/bar-lounge1.webp";
+import home2 from "../../../assets/home/home2.webp";
+import barlounge1 from "../../../assets/dining/bar-lounge/bar-lounge1.webp";
 
 export const facilitiesLeisure = {
   id: "facilities-leisure",

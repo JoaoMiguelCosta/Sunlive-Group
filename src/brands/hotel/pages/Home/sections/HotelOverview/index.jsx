@@ -1,6 +1,7 @@
 import styles from "./HotelOverviewSection.module.css";
 
-import overview from "../../../../config/sections/home/overview.js";
+import home from "../../../../config/pages/home.js";
+const overview = home.sections.overview;
 import HotelOverviewHeader from "./HotelOverviewHeader.jsx";
 import HotelOverviewContent from "./HotelOverviewContent.jsx";
 

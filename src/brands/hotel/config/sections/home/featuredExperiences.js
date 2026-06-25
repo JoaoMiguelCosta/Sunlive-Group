@@ -1,7 +1,7 @@
-import featuredExperiences1 from "../../../assets/featured-experiences1.webp";
-import featuredExperiences2 from "../../../assets/featured-experiences2.webp";
-import twoRoom from "../../../assets/two-room.webp";
-import panoramicRestaurant1 from "../../../assets/panoramic-restaurant1.webp";
+import featuredExperiences1 from "../../../assets/home/featured-experiences1.webp";
+import featuredExperiences2 from "../../../assets/home/featured-experiences2.webp";
+import twoRoom from "../../../assets/accommodation/two-room.webp";
+import panoramicRestaurant1 from "../../../assets/dining/panoramic-restaurant/panoramic-restaurant1.webp";
 
 import { HOTEL_PAGE_PATHS } from "../../core/paths.js";
 

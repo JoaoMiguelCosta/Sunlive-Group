@@ -1,4 +1,5 @@
-import facilitiesLeisure from "../../../../config/sections/facilities/facilitiesLeisure.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const facilitiesLeisure = facilitiesLeisurePage.sections.facilitiesLeisure;
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function DescriptionFacilitiesLeisure({ className = "" }) {

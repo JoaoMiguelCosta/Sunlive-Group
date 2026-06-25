@@ -1,4 +1,5 @@
-import breakfast from "../../../../config/sections/dining/breakfast.js";
+import dining from "../../../../config/pages/dining.js";
+const breakfast = dining.sections.breakfast;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 

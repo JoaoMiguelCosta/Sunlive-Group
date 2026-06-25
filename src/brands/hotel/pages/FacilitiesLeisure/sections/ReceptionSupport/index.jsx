@@ -1,4 +1,5 @@
-import receptionSupport from "../../../../config/sections/facilities/receptionSupport.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const receptionSupport = facilitiesLeisurePage.sections.receptionSupport;
 
 import TitleReceptionSupport from "./TitleReceptionSupport.jsx";
 import DescriptionReceptionSupport from "./DescriptionReceptionSupport.jsx";

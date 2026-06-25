@@ -1,3 +1,4 @@
+import accommodation from "../../config/pages/accommodation.js";
 import styles from "../../layouts/HotelPageLayout.module.css";
 
 import Accommodations from "./sections/Accommodations/index.jsx";
@@ -10,9 +11,9 @@ export default function AccommodationPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
       <section
-        id="accommodation-page"
+        id={accommodation.id}
         className={styles.inner}
-        aria-label="Estalagem de Sangalhos — Accommodation"
+        aria-label={accommodation.ui.pageAriaLabel}
       >
         <div className={styles.contentFlow}>
           <Accommodations />

@@ -1,4 +1,4 @@
-import homeWhoWeHostImage from "../../../assets/home-who-we-host.webp";
+import homeWhoWeHostImage from "../../../assets/home/home-who-we-host.webp";
 
 export const whoWeHost = {
   id: "hotel-quem-recebemos",

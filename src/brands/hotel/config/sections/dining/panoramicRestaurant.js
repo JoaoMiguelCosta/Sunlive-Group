@@ -1,6 +1,6 @@
-import panoramicRestaurantImage1 from "../../../assets/panoramic-restaurant1.webp";
-import panoramicRestaurantImage2 from "../../../assets/panoramic-restaurant2.webp";
-import panoramicRestaurantImage3 from "../../../assets/panoramic-restaurant3.webp";
+import panoramicRestaurantImage1 from "../../../assets/dining/panoramic-restaurant/panoramic-restaurant1.webp";
+import panoramicRestaurantImage2 from "../../../assets/dining/panoramic-restaurant/panoramic-restaurant2.webp";
+import panoramicRestaurantImage3 from "../../../assets/dining/panoramic-restaurant/panoramic-restaurant3.webp";
 
 export const panoramicRestaurant = {
   id: "restaurante-panoramico",

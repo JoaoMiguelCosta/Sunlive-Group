@@ -1,5 +1,5 @@
-import sundayBuffet1 from "../../../assets/sunday-buffet1.webp";
-import sundayBuffet2 from "../../../assets/sunday-buffet2.webp";
+import sundayBuffet1 from "../../../assets/dining/sunday-buffet/sunday-buffet1.webp";
+import sundayBuffet2 from "../../../assets/dining/sunday-buffet/sunday-buffet2.webp";
 import { HOTEL_COMPANY } from "../../core/company.js";
 
 export const sundayBuffet = {

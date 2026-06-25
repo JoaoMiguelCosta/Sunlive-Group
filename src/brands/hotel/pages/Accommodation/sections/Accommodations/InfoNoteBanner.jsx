@@ -1,5 +1,6 @@
 import styles from "./InfoNoteBanner.module.css";
-import accommodations from "../../../../config/sections/accommodation/accommodations.js";
+import accommodation from "../../../../config/pages/accommodation.js";
+const accommodations = accommodation.sections.accommodations;
 
 export default function InfoNoteBanner({ className = "" }) {
   const note = accommodations?.infoNote ?? null;

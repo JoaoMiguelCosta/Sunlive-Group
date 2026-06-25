@@ -1,3 +1,4 @@
+import home from "../../config/pages/home.js";
 import styles from "../../layouts/HotelPageLayout.module.css";
 
 import HotelHeroBanner from "./sections/HotelHeroBanner/HotelHeroBanner.jsx";
@@ -11,9 +12,9 @@ export default function HomePageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
       <section
-        id="home-page"
+        id={home.id}
         className={styles.inner}
-        aria-label="Estalagem de Sangalhos — Home"
+        aria-label={home.ui.pageAriaLabel}
       >
         <HotelHeroBanner />
 

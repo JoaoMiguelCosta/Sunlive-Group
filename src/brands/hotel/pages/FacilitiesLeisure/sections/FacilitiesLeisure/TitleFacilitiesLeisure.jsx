@@ -1,4 +1,5 @@
-import facilitiesLeisure from "../../../../config/sections/facilities/facilitiesLeisure.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const facilitiesLeisure = facilitiesLeisurePage.sections.facilitiesLeisure;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleFacilitiesLeisure({

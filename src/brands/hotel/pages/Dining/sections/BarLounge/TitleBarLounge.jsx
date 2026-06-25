@@ -1,4 +1,5 @@
-import barAndLounge from "../../../../config/sections/dining/barAndLounge.js";
+import dining from "../../../../config/pages/dining.js";
+const barAndLounge = dining.sections.barAndLounge;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./BarLounge.module.css";

@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useCallback, useMemo } from "react";
 
-import featuredExperiences from "../../../../config/sections/home/featuredExperiences.js";
+import home from "../../../../config/pages/home.js";
+const featuredExperiences = home.sections.featuredExperiences;
 import FeaturedExperienceCard from "../../../../shared/ui/FeaturedExperienceCard/FeaturedExperienceCard.jsx";
 import useInfiniteHorizontalLoop from "./useInfiniteHorizontalLoop.js";
 

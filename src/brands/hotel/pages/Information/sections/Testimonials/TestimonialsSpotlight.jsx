@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
-import testimonials from "../../../../config/sections/information/testimonials.js";
+import information from "../../../../config/pages/information.js";
+const testimonials = information.sections.testimonials;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import useSpotlightCycle from "../../../../../../shared/hooks/useSpotlightCycle.js";

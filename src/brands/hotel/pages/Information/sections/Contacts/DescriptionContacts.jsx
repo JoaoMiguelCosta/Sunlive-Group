@@ -1,4 +1,5 @@
-import contacts from "../../../../config/sections/information/contacts.js";
+import information from "../../../../config/pages/information.js";
+const contacts = information.sections.contacts;
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function DescriptionContacts() {

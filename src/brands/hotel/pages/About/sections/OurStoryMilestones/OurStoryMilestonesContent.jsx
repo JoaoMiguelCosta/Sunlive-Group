@@ -1,4 +1,5 @@
-import storyMilestones from "../../../../config/sections/about/storyMilestones.js";
+import about from "../../../../config/pages/about.js";
+const storyMilestones = about.sections.storyMilestones;
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 import HotelMilestoneCard from "../../../../shared/ui/HotelMilestoneCard/HotelMilestoneCard.jsx";
 

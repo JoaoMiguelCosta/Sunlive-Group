@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-import barAndLounge from "../../../../config/sections/dining/barAndLounge.js";
+import dining from "../../../../config/pages/dining.js";
+const barAndLounge = dining.sections.barAndLounge;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelIconPill from "../../../../shared/ui/HotelIconPill/HotelIconPill.jsx";

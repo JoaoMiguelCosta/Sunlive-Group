@@ -1,4 +1,4 @@
-import sustainabilityImage from "../../../assets/sustainability.webp";
+import sustainabilityImage from "../../../assets/sustainability/sustainability.webp";
 
 const sustainabilityCommitment = {
   id: "sustentabilidade-compromisso",

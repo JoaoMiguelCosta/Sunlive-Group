@@ -1,4 +1,5 @@
-import customizedQuotes from "../../../../config/sections/events/customizedQuotes.js";
+import events from "../../../../config/pages/events.js";
+const customizedQuotes = events.sections.customizedQuotes;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 

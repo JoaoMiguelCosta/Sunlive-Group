@@ -1,4 +1,5 @@
-import location from "../../../../config/sections/information/location.js";
+import information from "../../../../config/pages/information.js";
+const location = information.sections.location;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleLocation({ titleId }) {

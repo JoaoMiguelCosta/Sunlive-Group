@@ -1,7 +1,7 @@
-import breakfastImage1 from "../../../assets/breakfast1.webp";
-import breakfastImage2 from "../../../assets/breakfast2.webp";
-import breakfastImage3 from "../../../assets/breakfast3.webp";
-import breakfastImage4 from "../../../assets/breakfast4.webp";
+import breakfastImage1 from "../../../assets/dining/breakfast/breakfast1.webp";
+import breakfastImage2 from "../../../assets/dining/breakfast/breakfast2.webp";
+import breakfastImage3 from "../../../assets/dining/breakfast/breakfast3.webp";
+import breakfastImage4 from "../../../assets/dining/breakfast/breakfast4.webp";
 
 export const breakfast = {
   id: "restaurante-pequeno-almoco",

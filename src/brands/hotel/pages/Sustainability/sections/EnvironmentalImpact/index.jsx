@@ -1,4 +1,5 @@
-import environmentalImpact from "../../../../config/sections/sustainability/environmentalImpact.js";
+import sustainability from "../../../../config/pages/sustainability.js";
+const environmentalImpact = sustainability.sections.environmentalImpact;
 import EnvironmentalImpactTitle from "./EnvironmentalImpactTitle.jsx";
 import EnvironmentalImpactDescription from "./EnvironmentalImpactDescription.jsx";
 import EnvironmentalImpactStats from "./EnvironmentalImpactStats.jsx";

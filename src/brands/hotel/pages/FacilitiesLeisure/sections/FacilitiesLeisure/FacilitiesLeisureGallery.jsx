@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import facilitiesLeisure from "../../../../config/sections/facilities/facilitiesLeisure.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const facilitiesLeisure = facilitiesLeisurePage.sections.facilitiesLeisure;
 
 import styles from "./FacilitiesLeisureGallery.module.css";
 

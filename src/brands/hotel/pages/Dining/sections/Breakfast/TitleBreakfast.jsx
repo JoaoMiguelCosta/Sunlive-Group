@@ -1,4 +1,5 @@
-import breakfast from "../../../../config/sections/dining/breakfast.js";
+import dining from "../../../../config/pages/dining.js";
+const breakfast = dining.sections.breakfast;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./Breakfast.module.css";

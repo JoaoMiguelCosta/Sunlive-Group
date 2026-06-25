@@ -1,4 +1,5 @@
-import bairradaRegion from "../../../../config/sections/about/bairradaRegion.js";
+import about from "../../../../config/pages/about.js";
+const bairradaRegion = about.sections.bairradaRegion;
 
 import TheBairradaRegionHeader from "./TheBairradaRegionHeader.jsx";
 import HotelAboutRegionBairrada from "./HotelAboutRegionBairrada.jsx";

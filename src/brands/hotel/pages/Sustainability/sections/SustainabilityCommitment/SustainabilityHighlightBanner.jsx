@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
-import sustainabilityCommitment from "../../../../config/sections/sustainability/sustainabilityCommitment.js";
+import sustainability from "../../../../config/pages/sustainability.js";
+const sustainabilityCommitment = sustainability.sections.sustainabilityCommitment;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelHighlightBanner from "../../../../shared/ui/HotelHighlightBanner/HotelHighlightBanner.jsx";

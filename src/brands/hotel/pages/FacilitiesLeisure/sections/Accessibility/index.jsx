@@ -1,4 +1,5 @@
-import accessibility from "../../../../config/sections/facilities/accessibility.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const accessibility = facilitiesLeisurePage.sections.accessibility;
 
 import TitleAccessibility from "./TitleAccessibility.jsx";
 import DescriptionAccessibility from "./DescriptionAccessibility.jsx";

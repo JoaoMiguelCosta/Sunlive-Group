@@ -1,20 +1,20 @@
-import arrozDoceImage from "../../../assets/desserts/arroz-doce.webp";
-import boloAmendoaImage from "../../../assets/desserts/bolo-amêndoa.webp";
-import boloChocolateImage from "../../../assets/desserts/bolo-chocolate.webp";
-import cheesecakeFrutosVermelhosImage from "../../../assets/desserts/cheesecake-frutos-vermelhos.webp";
-import crepesImage from "../../../assets/desserts/crepes.webp";
-import frutaLaminada1Image from "../../../assets/desserts/fruta-lâminada1.webp";
-import frutaLaminada2Image from "../../../assets/desserts/fruta-lâminada2.webp";
-import frutaImage from "../../../assets/desserts/fruta.webp";
-import gelatinaImage from "../../../assets/desserts/gelatina.webp";
-import mangaLaminada3Image from "../../../assets/desserts/manga-lâminada3.webp";
-import profiterolesChocolateImage from "../../../assets/desserts/profiteroles-chocolate.webp";
-import pudimCaseiroImage from "../../../assets/desserts/pudim-caseiro.webp";
-import pudimOvosImage from "../../../assets/desserts/pudim-ovos.webp";
-import semiFrioBolachaImage from "../../../assets/desserts/semi-frio-bolacha.webp";
-import semiFrioChocolateImage from "../../../assets/desserts/semi-frio-chocolate.webp";
-import tarteNataImage from "../../../assets/desserts/tarte-nata.webp";
-import tarteChocolateImage from "../../../assets/desserts/tarte-chocolate.webp";
+import arrozDoceImage from "../../../assets/dining/desserts/arroz-doce.webp";
+import boloAmendoaImage from "../../../assets/dining/desserts/bolo-amendoa.webp";
+import boloChocolateImage from "../../../assets/dining/desserts/bolo-chocolate.webp";
+import cheesecakeFrutosVermelhosImage from "../../../assets/dining/desserts/cheesecake-frutos-vermelhos.webp";
+import crepesImage from "../../../assets/dining/desserts/crepes.webp";
+import frutaLaminada1Image from "../../../assets/dining/desserts/fruta-laminada1.webp";
+import frutaLaminada2Image from "../../../assets/dining/desserts/fruta-laminada2.webp";
+import frutaImage from "../../../assets/dining/desserts/fruta.webp";
+import gelatinaImage from "../../../assets/dining/desserts/gelatina.webp";
+import mangaLaminada3Image from "../../../assets/dining/desserts/manga-laminada3.webp";
+import profiterolesChocolateImage from "../../../assets/dining/desserts/profiteroles-chocolate.webp";
+import pudimCaseiroImage from "../../../assets/dining/desserts/pudim-caseiro.webp";
+import pudimOvosImage from "../../../assets/dining/desserts/pudim-ovos.webp";
+import semiFrioBolachaImage from "../../../assets/dining/desserts/semi-frio-bolacha.webp";
+import semiFrioChocolateImage from "../../../assets/dining/desserts/semi-frio-chocolate.webp";
+import tarteNataImage from "../../../assets/dining/desserts/tarte-nata.webp";
+import tarteChocolateImage from "../../../assets/dining/desserts/tarte-chocolate.webp";
 
 export const desserts = {
   id: "restaurante-sobremesas",

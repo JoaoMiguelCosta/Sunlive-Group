@@ -1,6 +1,6 @@
-import barLounge1 from "../../../assets/bar-lounge1.webp";
-import barLounge2 from "../../../assets/bar-lounge2.webp";
-import barLounge3 from "../../../assets/bar-lounge3.webp";
+import barLounge1 from "../../../assets/dining/bar-lounge/bar-lounge1.webp";
+import barLounge2 from "../../../assets/dining/bar-lounge/bar-lounge2.webp";
+import barLounge3 from "../../../assets/dining/bar-lounge/bar-lounge3.webp";
 
 export const barAndLounge = {
   id: "restaurante-bar-lounge",

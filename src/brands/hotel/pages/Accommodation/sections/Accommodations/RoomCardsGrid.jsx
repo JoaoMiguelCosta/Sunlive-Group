@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import accommodations from "../../../../config/sections/accommodation/accommodations.js";
+import accommodation from "../../../../config/pages/accommodation.js";
+const accommodations = accommodation.sections.accommodations;
 import HotelRoomCard from "../../../../shared/ui/HotelRoomCard/HotelRoomCard.jsx";
 
 import RoomProfileFilterBar from "./RoomProfileFilterBar.jsx";

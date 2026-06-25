@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
-import catering from "../../../../config/sections/dining/catering.js";
+import dining from "../../../../config/pages/dining.js";
+const catering = dining.sections.catering;
 import HotelInfoListCard from "../../../../shared/ui/HotelInfoListCard/HotelInfoListCard.jsx";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 

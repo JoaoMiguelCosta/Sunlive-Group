@@ -1,7 +1,8 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 
 import styles from "./ForWhomProfilesGrid.module.css";
-import forWhomProfiles from "../../../../config/sections/accommodation/forWhomProfiles.js";
+import accommodation from "../../../../config/pages/accommodation.js";
+const forWhomProfiles = accommodation.sections.forWhomProfiles;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 

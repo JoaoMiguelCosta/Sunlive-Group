@@ -1,4 +1,5 @@
-import catering from "../../../../config/sections/dining/catering.js";
+import dining from "../../../../config/pages/dining.js";
+const catering = dining.sections.catering;
 import TitleCateringService from "./TitleCateringService.jsx";
 import DescriptionCateringService from "./DescriptionCateringService.jsx";
 import CateringProcessSteps from "./CateringProcessSteps.jsx";

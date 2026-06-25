@@ -1,7 +1,7 @@
-import wellBeing1 from "../../../assets/well-being1.webp";
-import wellBeing2 from "../../../assets/well-being2.webp";
-import wellBeing3 from "../../../assets/well-being3.webp";
-import wellBeing4 from "../../../assets/well-being4.webp";
+import wellBeing1 from "../../../assets/facilities/well-being1.webp";
+import wellBeing2 from "../../../assets/facilities/well-being2.webp";
+import wellBeing3 from "../../../assets/facilities/well-being3.webp";
+import wellBeing4 from "../../../assets/facilities/well-being4.webp";
 
 export const wellBeing = {
   id: "well-being",

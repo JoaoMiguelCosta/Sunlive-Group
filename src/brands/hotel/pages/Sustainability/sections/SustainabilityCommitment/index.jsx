@@ -1,4 +1,5 @@
-import sustainabilityCommitment from "../../../../config/sections/sustainability/sustainabilityCommitment.js";
+import sustainability from "../../../../config/pages/sustainability.js";
+const sustainabilityCommitment = sustainability.sections.sustainabilityCommitment;
 
 import SustainabilityTitle from "./SustainabilityTitle.jsx";
 import SustainabilityDescription from "./SustainabilityDescription.jsx";

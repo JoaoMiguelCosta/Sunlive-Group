@@ -1,4 +1,5 @@
-import sundayBuffet from "../../../../config/sections/dining/sundayBuffet.js";
+import dining from "../../../../config/pages/dining.js";
+const sundayBuffet = dining.sections.sundayBuffet;
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 import styles from "./SundayBuffet.module.css";

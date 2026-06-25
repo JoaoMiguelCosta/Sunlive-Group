@@ -2,7 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./AmenitiesPills.module.css";
 
 import HotelIconPill from "../../../../shared/ui/HotelIconPill/HotelIconPill.jsx";
-import amenities from "../../../../config/sections/accommodation/amenities.js";
+import accommodation from "../../../../config/pages/accommodation.js";
+const amenities = accommodation.sections.amenities;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 

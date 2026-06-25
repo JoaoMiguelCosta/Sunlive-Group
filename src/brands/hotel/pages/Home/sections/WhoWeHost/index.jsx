@@ -1,6 +1,7 @@
 import styles from "./WhoWeHost.module.css";
 
-import whoWeHost from "../../../../config/sections/home/whoWeHost.js";
+import home from "../../../../config/pages/home.js";
+const whoWeHost = home.sections.whoWeHost;
 import WhoWeHostHeader from "./WhoWeHostHeader.jsx";
 import WhoWeHostCards from "./WhoWeHostCards.jsx";
 

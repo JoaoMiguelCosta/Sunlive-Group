@@ -1,4 +1,5 @@
-import aboutTheHotel from "../../../../config/sections/about/aboutTheHotel.js";
+import about from "../../../../config/pages/about.js";
+const aboutTheHotel = about.sections.aboutTheHotel;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./AboutTheHotelHeader.module.css";

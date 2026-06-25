@@ -1,6 +1,7 @@
 // src/brands/hotel/pages/Dining/index.jsx
 // Estalagem de Sangalhos — DiningPage
 
+import dining from "../../config/pages/dining.js";
 import styles from "../../layouts/HotelPageLayout.module.css";
 
 import RestaurantSection from "./sections/Restaurant/index.jsx";
@@ -15,9 +16,9 @@ export default function DiningPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
       <section
-        id="dining"
+        id={dining.id}
         className={styles.inner}
-        aria-label="Estalagem de Sangalhos — Restauração"
+        aria-label={dining.ui.pageAriaLabel}
       >
         <div className={styles.contentFlow}>
           <RestaurantSection />

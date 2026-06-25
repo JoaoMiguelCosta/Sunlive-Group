@@ -1,4 +1,5 @@
-import sundayBuffet from "../../../../config/sections/dining/sundayBuffet.js";
+import dining from "../../../../config/pages/dining.js";
+const sundayBuffet = dining.sections.sundayBuffet;
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 import styles from "./SundayBuffetGalleryCta.module.css";

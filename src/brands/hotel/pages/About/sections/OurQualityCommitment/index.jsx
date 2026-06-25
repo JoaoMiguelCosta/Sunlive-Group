@@ -1,4 +1,5 @@
-import ourQualityCommitment from "../../../../config/sections/about/qualityCommitment.js";
+import about from "../../../../config/pages/about.js";
+const ourQualityCommitment = about.sections.qualityCommitment;
 import OurQualityCommitmentHeader from "./OurQualityCommitmentHeader.jsx";
 import OurQualityCommitmentContent from "./OurQualityCommitmentContent.jsx";
 

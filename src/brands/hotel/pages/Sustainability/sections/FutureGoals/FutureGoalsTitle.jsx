@@ -1,4 +1,5 @@
-import futureGoals from "../../../../config/sections/sustainability/futureGoals.js";
+import sustainability from "../../../../config/pages/sustainability.js";
+const futureGoals = sustainability.sections.futureGoals;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function FutureGoalsTitle({ titleId }) {

@@ -1,4 +1,4 @@
-import aboutImage from "../../../assets/about.webp";
+import aboutImage from "../../../assets/about/about.webp";
 
 export const aboutTheHotel = {
   id: "sobre-estalagem",

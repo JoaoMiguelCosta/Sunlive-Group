@@ -1,4 +1,5 @@
-import featuredExperiences from "../../../../config/sections/home/featuredExperiences.js";
+import home from "../../../../config/pages/home.js";
+const featuredExperiences = home.sections.featuredExperiences;
 import FeaturedExperiencesHeader from "./FeaturedExperiencesHeader.jsx";
 import HotelFeaturedExperiencesGrid from "./HotelFeaturedExperiencesGrid.jsx";
 

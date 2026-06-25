@@ -1,4 +1,5 @@
-import environmentalImpact from "../../../../config/sections/sustainability/environmentalImpact.js";
+import sustainability from "../../../../config/pages/sustainability.js";
+const environmentalImpact = sustainability.sections.environmentalImpact;
 import HotelStatsGrid from "../../../../shared/ui/HotelStatsGrid/HotelStatsGrid.jsx";
 import styles from "./EnvironmentalImpactStats.module.css";
 

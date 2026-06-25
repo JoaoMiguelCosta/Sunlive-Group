@@ -1,7 +1,7 @@
-import estalagemLogo from "../../../assets/estalagem.png";
-import home1 from "../../../assets/home1.webp";
-import home2 from "../../../assets/home2.webp";
-import home3 from "../../../assets/home3.webp";
+import estalagemLogo from "../../../assets/logo/estalagem.png";
+import home1 from "../../../assets/home/home1.webp";
+import home2 from "../../../assets/home/home2.webp";
+import home3 from "../../../assets/home/home3.webp";
 
 import { HOTEL_PAGE_PATHS } from "../../core/paths.js";
 import { HOTEL_COMPANY } from "../../core/company.js";

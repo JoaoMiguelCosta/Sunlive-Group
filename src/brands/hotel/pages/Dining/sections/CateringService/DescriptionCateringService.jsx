@@ -1,4 +1,5 @@
-import catering from "../../../../config/sections/dining/catering.js";
+import dining from "../../../../config/pages/dining.js";
+const catering = dining.sections.catering;
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 import styles from "./CateringService.module.css";

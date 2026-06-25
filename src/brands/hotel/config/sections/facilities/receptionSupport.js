@@ -1,5 +1,5 @@
-import receptionSupport1 from "../../../assets/reception-support1.webp";
-import receptionSupport2 from "../../../assets/reception-support2.webp";
+import receptionSupport1 from "../../../assets/facilities/reception-support1.webp";
+import receptionSupport2 from "../../../assets/facilities/reception-support2.webp";
 import { HOTEL_COMPANY } from "../../core/company.js";
 
 export const receptionSupport = {
