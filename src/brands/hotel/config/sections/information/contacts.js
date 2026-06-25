@@ -67,8 +67,8 @@ export const contacts = {
       eyebrow: "Localização privilegiada",
       icon: null,
       lines: [
-        "Rua da Estalagem, n.º 23",
-        "3780-124 Sangalhos",
+        "Rua Narciso da Marça,",
+        "3780-101 Sangalhos,",
         "Anadia – Aveiro, Portugal",
       ],
       buttonLabel: "Ver no Google Maps",

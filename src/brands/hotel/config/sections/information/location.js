@@ -23,9 +23,9 @@ export const location = {
       eyebrow: "Referência local",
       icon: null,
       lines: [
-        "Rua da Estalagem, n.º 23",
-        "Sangalhos – 3780-124 Anadia",
-        "Portugal",
+        "Rua Narciso da Marça,",
+        "3780-101 Sangalhos,",
+        "Anadia – Aveiro, Portugal",
       ],
     },
 
@@ -34,9 +34,9 @@ export const location = {
       eyebrow: "Navegação direta",
       icon: null,
       latitudeLabel: "Latitude",
-      latitude: "40.4668 N",
+      latitude: "40.477198 N",
       longitudeLabel: "Longitude",
-      longitude: "-8.4561 W",
+      longitude: "-8.459766 W",
     },
 
     contact: {
@@ -54,12 +54,13 @@ export const location = {
         "Consulte a localização exata e abra direções imediatas no Google Maps.",
       ctaLabel: "Abrir no Google Maps",
       ctaIcon: null,
-      href: "https://maps.app.goo.gl/pvkGhuMEs4Gwaeif9",
+      href: "https://maps.app.goo.gl/nTX2XFhr8hS9EK7eA",
       embedSrc:
-        "https://www.google.com/maps?q=40.4668,-8.4561&z=16&output=embed",
-      ariaLabel: "Abrir localização da Estalagem de Sangalhos no Google Maps",
+        "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1517.456813434538!2d-8.459624466853285!3d40.47717581216034!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2307ef312f4a0f%3A0xa68997fed9ddee50!2sEstalagem%20De%20Sangalhos!5e0!3m2!1spt-PT!2spt!4v1782404118896!5m2!1spt-PT!2spt",
+      ariaLabel: "Mapa interativo da Estalagem de Sangalhos",
       googleMapsLabel: "Ver no Google Maps",
-      googleMapsAriaLabel: "Abrir Google Maps da Estalagem de Sangalhos",
+      googleMapsAriaLabel:
+        "Abrir a localização da Estalagem de Sangalhos no Google Maps",
     },
   },
 };
