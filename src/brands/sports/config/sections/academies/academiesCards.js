@@ -1,7 +1,7 @@
-import acaLogo from "../../../assets/Academies/aca.webp";
-import basketLogo from "../../../assets/Academies/basket.webp";
-import footLogo from "../../../assets/Academies/foot.webp";
-import karateLogo from "../../../assets/Academies/karate.webp";
+import acaLogo from "../../../assets/academies/aca.webp";
+import basketLogo from "../../../assets/academies/basket.webp";
+import footLogo from "../../../assets/academies/foot.webp";
+import karateLogo from "../../../assets/academies/karate.webp";
 
 const ACADEMIES_MEDIA_BASE_PATH = "/media/sports/academies";
 

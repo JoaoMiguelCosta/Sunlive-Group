@@ -1,10 +1,10 @@
-import fpb from "../../../assets/group-logos/logos/portugueseFederations/fpb.png";
-import fpc from "../../../assets/group-logos/logos/portugueseFederations/fdc.png";
-import fpg from "../../../assets/group-logos/logos/portugueseFederations/fgp.png";
-import fpj from "../../../assets/group-logos/logos/portugueseFederations/fpj.webp";
-import fnkp from "../../../assets/group-logos/logos/portugueseFederations/fpk.png";
-import fpe from "../../../assets/group-logos/logos/portugueseFederations/fpe.webp";
-import fpa from "../../../assets/group-logos/logos/portugueseFederations/fap.png";
+import fpb from "../../../assets/group-logos/portuguese-federations/fpb.png";
+import fpc from "../../../assets/group-logos/portuguese-federations/fdc.png";
+import fpg from "../../../assets/group-logos/portuguese-federations/fgp.png";
+import fpj from "../../../assets/group-logos/portuguese-federations/fpj.webp";
+import fnkp from "../../../assets/group-logos/portuguese-federations/fpk.png";
+import fpe from "../../../assets/group-logos/portuguese-federations/fpe.webp";
+import fpa from "../../../assets/group-logos/portuguese-federations/fap.png";
 
 export const portugueseFederations = {
   id: "federacoes-portuguesas",

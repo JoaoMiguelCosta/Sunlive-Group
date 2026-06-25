@@ -1,4 +1,5 @@
-import wellBeing from "../../../../config/sections/facilities/wellBeing.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const wellBeing = facilitiesLeisurePage.sections.wellBeing;
 import TitleWellBeing from "./TitleWellBeing.jsx";
 import DescriptionWellBeing from "./DescriptionWellBeing.jsx";
 import WellBeingExperiences from "./WellBeingExperiences.jsx";

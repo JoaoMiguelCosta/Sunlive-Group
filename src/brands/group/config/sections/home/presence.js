@@ -1,12 +1,12 @@
 /* ---------- Assets PresenceSection ---------- */
-import phraseTogether from "../../../assets/group/phrases/phrase-together.png";
-import phraseDream from "../../../assets/group/phrases/phrase-dream.png";
+import phraseTogether from "../../../assets/phrases/phrase-together.png";
+import phraseDream from "../../../assets/phrases/phrase-dream.png";
 
-import qatar from "../../../assets/group/countries/qatar.png";
-import malta from "../../../assets/group/countries/malta.png";
-import kuwait from "../../../assets/group/countries/kuwait.png";
-import iraq from "../../../assets/group/countries/iraq.png";
-import lebanon from "../../../assets/group/countries/lebanon.png";
+import qatar from "../../../assets/countries/qatar.png";
+import malta from "../../../assets/countries/malta.png";
+import kuwait from "../../../assets/countries/kuwait.png";
+import iraq from "../../../assets/countries/iraq.png";
+import lebanon from "../../../assets/countries/lebanon.png";
 
 export const presence = {
   id: "presence",

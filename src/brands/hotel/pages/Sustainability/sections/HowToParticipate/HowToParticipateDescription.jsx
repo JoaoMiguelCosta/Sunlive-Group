@@ -1,4 +1,5 @@
-import howToParticipate from "../../../../config/sections/sustainability/howToParticipate.js";
+import sustainability from "../../../../config/pages/sustainability.js";
+const howToParticipate = sustainability.sections.howToParticipate;
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function HowToParticipateDescription() {

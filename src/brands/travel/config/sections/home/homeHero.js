@@ -1,4 +1,4 @@
-import homeTravelImage from "../../../assets/HomeTravel/home-travel.webp";
+import homeTravelImage from "../../../assets/home/home-travel.webp";
 import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
 
 const homeHero = {

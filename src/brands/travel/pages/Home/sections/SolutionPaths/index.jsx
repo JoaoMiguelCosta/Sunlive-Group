@@ -1,8 +1,8 @@
 import styles from "./SolutionPathsSection.module.css";
-import solutionPaths from "../../../../config/sections/home/solutionPaths.js";
+import home from "../../../../config/pages/home.js";
 
 export default function SolutionPathsSection() {
-  const section = solutionPaths;
+  const section = home.sections.solutionPaths;
   if (!section) return null;
 
   const showcase = section?.showcase ?? {};

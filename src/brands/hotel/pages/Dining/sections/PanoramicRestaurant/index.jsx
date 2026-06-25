@@ -1,4 +1,5 @@
-import panoramicRestaurant from "../../../../config/sections/dining/panoramicRestaurant.js";
+import dining from "../../../../config/pages/dining.js";
+const panoramicRestaurant = dining.sections.panoramicRestaurant;
 import TitlePanoramicRestaurant from "./TitlePanoramicRestaurant.jsx";
 import DescriptionPanoramicRestaurant from "./DescriptionPanoramicRestaurant.jsx";
 import PanoramicRestaurantPhotoCarousel from "./PanoramicRestaurantPhotoCarousel.jsx";

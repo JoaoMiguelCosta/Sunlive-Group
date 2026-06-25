@@ -1,7 +1,7 @@
-import aca from "../../../assets/group-logos/logos/associations/aca.png";
-import aba from "../../../assets/group-logos/logos/associations/abv.webp";
-import ace from "../../../assets/group-logos/logos/associations/ace.png";
-import afa from "../../../assets/group-logos/logos/associations/afa.webp";
+import aca from "../../../assets/group-logos/associations/aca.png";
+import aba from "../../../assets/group-logos/associations/abv.webp";
+import ace from "../../../assets/group-logos/associations/ace.png";
+import afa from "../../../assets/group-logos/associations/afa.webp";
 
 export const associations = {
   id: "associacoes",

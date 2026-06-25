@@ -1,4 +1,4 @@
-import testimonialsAndMetrics from "../../../../config/sections/testimonials/testimonialsAndMetrics.js";
+import testimonialsPage from "../../../../config/pages/testimonials.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import TravelIntroPanel from "../../../../shared/ui/TravelIntroPanel/TravelIntroPanel.jsx";
 
@@ -8,7 +8,7 @@ import KeyMetricsBar from "./KeyMetricsBar.jsx";
 import styles from "./TestimonialsAndMetricsSection.module.css";
 
 export default function TestimonialsAndMetricsSection() {
-  const section = testimonialsAndMetrics;
+  const section = testimonialsPage.sections.testimonialsAndMetrics;
 
   if (!section) return null;
 

@@ -1,4 +1,5 @@
-import featuredExperiences from "../../../../config/sections/home/featuredExperiences.js";
+import home from "../../../../config/pages/home.js";
+const featuredExperiences = home.sections.featuredExperiences;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./FeaturedExperiencesHeader.module.css";

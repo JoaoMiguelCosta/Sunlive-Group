@@ -1,11 +1,11 @@
-import internationalDestinations from "../../../../config/sections/destinations/internationalDestinations.js";
+import destinationsPage from "../../../../config/pages/destinations.js";
 
 import styles from "./InternationalDestinationsSection.module.css";
 import InternationalEditorialHero from "./InternationalEditorialHero.jsx";
 import InternationalDestinationsShowcase from "./InternationalDestinationsShowcase.jsx";
 
 export default function InternationalDestinationsSection() {
-  const section = internationalDestinations;
+  const section = destinationsPage.sections.internationalDestinations;
 
   if (!section) return null;
 

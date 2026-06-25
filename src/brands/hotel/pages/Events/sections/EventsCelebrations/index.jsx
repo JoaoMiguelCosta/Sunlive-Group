@@ -1,4 +1,5 @@
-import eventsCelebrations from "../../../../config/sections/events/eventsCelebrations.js";
+import events from "../../../../config/pages/events.js";
+const eventsCelebrations = events.sections.eventsCelebrations;
 
 import TitleEventsCelebrations from "./TitleEventsCelebrations.jsx";
 import DescriptionEventsCelebrations from "./DescriptionEventsCelebrations.jsx";

@@ -1,4 +1,5 @@
-import planYourStay from "../../../../config/sections/home/planYourStay.js";
+import home from "../../../../config/pages/home.js";
+const planYourStay = home.sections.planYourStay;
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 import styles from "./PlanYourStay.module.css";

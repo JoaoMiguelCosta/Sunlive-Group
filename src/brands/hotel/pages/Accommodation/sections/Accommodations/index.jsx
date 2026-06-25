@@ -11,7 +11,8 @@ import HotelPhotoCarouselBase from "../../../../shared/ui/HotelPhotoCarouselBase
 import InfoNoteBanner from "./InfoNoteBanner.jsx";
 import RoomCardsGrid from "./RoomCardsGrid.jsx";
 
-import accommodations from "../../../../config/sections/accommodation/accommodations.js";
+import accommodation from "../../../../config/pages/accommodation.js";
+const accommodations = accommodation.sections.accommodations;
 
 export default function Accommodations() {
   const content = accommodations;

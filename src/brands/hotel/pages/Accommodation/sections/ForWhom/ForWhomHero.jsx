@@ -1,5 +1,6 @@
 import HotelHighlightBanner from "../../../../shared/ui/HotelHighlightBanner/HotelHighlightBanner.jsx";
-import forAllProfiles from "../../../../config/sections/accommodation/forAllProfiles.js";
+import accommodation from "../../../../config/pages/accommodation.js";
+const forAllProfiles = accommodation.sections.forAllProfiles;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 

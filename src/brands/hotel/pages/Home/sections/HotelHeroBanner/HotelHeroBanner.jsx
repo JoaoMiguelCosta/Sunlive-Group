@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import heroBanner from "../../../../config/sections/home/heroBanner.js";
+import home from "../../../../config/pages/home.js";
+const heroBanner = home.sections.heroBanner;
 import HotelSectionShell from "../../../../shared/ui/HotelSectionShell/HotelSectionShell.jsx";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 

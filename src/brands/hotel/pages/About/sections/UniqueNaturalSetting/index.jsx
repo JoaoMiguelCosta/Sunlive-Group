@@ -1,4 +1,5 @@
-import uniqueNaturalSetting from "../../../../config/sections/about/uniqueNaturalSetting.js";
+import about from "../../../../config/pages/about.js";
+const uniqueNaturalSetting = about.sections.uniqueNaturalSetting;
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 
 import styles from "./UniqueNaturalSetting.module.css";

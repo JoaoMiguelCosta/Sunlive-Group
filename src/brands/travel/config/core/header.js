@@ -4,7 +4,7 @@ import {
   makeBackLink,
 } from "../../../../shared/config/index.js";
 
-import logoTravel from "../../assets/LogoSunliveTravel/travel.png";
+import logoTravel from "../../assets/logo/travel.png";
 
 import { TRAVEL_BASE_PATH, TRAVEL_PAGE_PATHS } from "./paths.js";
 import { TRAVEL_SOCIALS } from "./socials.js";

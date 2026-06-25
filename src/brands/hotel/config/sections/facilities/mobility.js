@@ -1,5 +1,5 @@
-import mobility1 from "../../../assets/mobility1.webp";
-import mobility2 from "../../../assets/mobility2.webp";
+import mobility1 from "../../../assets/facilities/mobility1.webp";
+import mobility2 from "../../../assets/facilities/mobility2.webp";
 
 export const mobility = {
   id: "mobility",

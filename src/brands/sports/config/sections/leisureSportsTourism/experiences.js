@@ -1,7 +1,7 @@
-import cycleTourismImage from "../../../assets/leisureSportsTourism/cycle.webp";
-import padelImage from "../../../assets/leisureSportsTourism/padel.webp";
-import trailsHikingImage from "../../../assets/leisureSportsTourism/trails.webp";
-import waterSportsImage from "../../../assets/leisureSportsTourism/surf.webp";
+import cycleTourismImage from "../../../assets/leisure-sports-tourism/cycle.webp";
+import padelImage from "../../../assets/leisure-sports-tourism/padel.webp";
+import trailsHikingImage from "../../../assets/leisure-sports-tourism/trails.webp";
+import waterSportsImage from "../../../assets/leisure-sports-tourism/surf.webp";
 
 const leisureSportsTourismExperiences = {
   id: "experiencias-turismo-desportivo-ludico",

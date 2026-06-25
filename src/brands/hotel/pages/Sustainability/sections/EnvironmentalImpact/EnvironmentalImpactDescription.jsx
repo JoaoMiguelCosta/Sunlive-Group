@@ -1,4 +1,5 @@
-import environmentalImpact from "../../../../config/sections/sustainability/environmentalImpact.js";
+import sustainability from "../../../../config/pages/sustainability.js";
+const environmentalImpact = sustainability.sections.environmentalImpact;
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 export default function EnvironmentalImpactDescription() {

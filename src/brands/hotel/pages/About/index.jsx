@@ -1,3 +1,4 @@
+import about from "../../config/pages/about.js";
 import styles from "../../layouts/HotelPageLayout.module.css";
 
 import AboutTheHotel from "./sections/AboutTheHotel";
@@ -10,9 +11,9 @@ export default function AboutPageHotel() {
   return (
     <div className={styles.pageWrap} data-brand="hotel">
       <section
-        id="about-page"
+        id={about.id}
         className={styles.inner}
-        aria-label="Estalagem de Sangalhos — Sobre"
+        aria-label={about.ui.pageAriaLabel}
       >
         <div className={styles.contentFlow}>
           <AboutTheHotel />

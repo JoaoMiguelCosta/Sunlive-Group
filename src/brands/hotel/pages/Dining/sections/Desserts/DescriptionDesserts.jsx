@@ -1,4 +1,5 @@
-import desserts from "../../../../config/sections/dining/desserts.js";
+import dining from "../../../../config/pages/dining.js";
+const desserts = dining.sections.desserts;
 import HotelSectionDescription from "../../../../shared/ui/HotelSectionDescription/HotelSectionDescription.jsx";
 
 import styles from "./Desserts.module.css";

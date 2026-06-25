@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import catering from "../../../../config/sections/dining/catering.js";
+import dining from "../../../../config/pages/dining.js";
+const catering = dining.sections.catering;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelCateringStepCard from "../../../../shared/ui/HotelCateringStepCard/HotelCateringStepCard.jsx";

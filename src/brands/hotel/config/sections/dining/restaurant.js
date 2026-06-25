@@ -1,6 +1,6 @@
-import buffetStartersImage from "../../../assets/buffet-starters.webp";
-import hotBuffetMainDishesImage from "../../../assets/hot-buffet-main-dishes.webp";
-import buffetDessertsImage from "../../../assets/buffet-desserts.webp";
+import buffetStartersImage from "../../../assets/dining/sunday-buffet/buffet-starters.webp";
+import hotBuffetMainDishesImage from "../../../assets/dining/sunday-buffet/hot-buffet-main-dishes.webp";
+import buffetDessertsImage from "../../../assets/dining/sunday-buffet/buffet-desserts.webp";
 
 export const restaurant = {
   id: "restauracao",

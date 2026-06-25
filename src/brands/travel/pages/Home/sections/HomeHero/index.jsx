@@ -1,5 +1,5 @@
 import styles from "./HomeHeroSection.module.css";
-import homeHero from "../../../../config/sections/home/homeHero.js";
+import home from "../../../../config/pages/home.js";
 import { TRAVEL_COMPANY } from "../../../../config/core/company.js";
 
 function escapeRegExp(value = "") {
@@ -46,7 +46,7 @@ function renderAction(action, variant = "primary") {
 }
 
 export default function HomeHeroSection() {
-  const section = homeHero;
+  const section = home.sections.homeHero;
   if (!section) return null;
 
   const cfg = section?.editorialHero ?? {};

@@ -1,4 +1,5 @@
-import customizedQuotes from "../../../../config/sections/events/customizedQuotes.js";
+import events from "../../../../config/pages/events.js";
+const customizedQuotes = events.sections.customizedQuotes;
 
 import TitleCustomizedQuotes from "./TitleCustomizedQuotes.jsx";
 import DescriptionCustomizedQuotes from "./DescriptionCustomizedQuotes.jsx";

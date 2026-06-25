@@ -1,6 +1,6 @@
 import { SPORTS_PAGE_PATHS } from "../../../config/core/paths.js";
 
-import cyclingImage from "../../../assets/Modalities/cycling.webp";
+import cyclingImage from "../../../assets/modalities/cycling.webp";
 
 const cyclingSection = {
   key: "cycling",

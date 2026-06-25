@@ -1,4 +1,4 @@
-import uniqueNaturalSettingImage from "../../../assets/unique-natural-setting.webp";
+import uniqueNaturalSettingImage from "../../../assets/about/unique-natural-setting.webp";
 
 export const uniqueNaturalSetting = {
   id: "sobre-envolvente-natural",

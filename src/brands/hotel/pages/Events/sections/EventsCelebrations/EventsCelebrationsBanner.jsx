@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
-import eventsCelebrations from "../../../../config/sections/events/eventsCelebrations.js";
+import events from "../../../../config/pages/events.js";
+const eventsCelebrations = events.sections.eventsCelebrations;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelHighlightBanner from "../../../../shared/ui/HotelHighlightBanner/HotelHighlightBanner.jsx";

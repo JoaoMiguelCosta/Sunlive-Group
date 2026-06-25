@@ -3,14 +3,14 @@ import { GROUP_SOCIALS } from "../../core/socials.js";
 import { GROUP_BASE_PATH } from "../../core/paths.js";
 
 /* ---------- Assets Overview ---------- */
-import logoGroup from "../../../assets/group/logo/logo-group.webp";
-import headlineImage from "../../../assets/group/phrases/phrase-our-network.webp";
+import logoGroup from "../../../assets/logo/logo-group.webp";
+import headlineImage from "../../../assets/phrases/phrase-our-network.webp";
 
-import travelImg from "../../../assets/group/brands/travel.png";
-import businessImg from "../../../assets/group/brands/business.png";
-import sportsImg from "../../../assets/group/brands/sports.png";
-import internationalImg from "../../../assets/group/brands/international.png";
-import homeImg from "../../../assets/group/brands/our-home.png";
+import travelImg from "../../../assets/brands/travel.png";
+import businessImg from "../../../assets/brands/business.png";
+import sportsImg from "../../../assets/brands/sports.png";
+import internationalImg from "../../../assets/brands/international.png";
+import homeImg from "../../../assets/brands/our-home.png";
 
 export const overview = {
   id: "overview",

@@ -1,4 +1,5 @@
-import restaurant from "../../../../config/sections/dining/restaurant.js";
+import dining from "../../../../config/pages/dining.js";
+const restaurant = dining.sections.restaurant;
 import TitleRestaurant from "./TitleRestaurant.jsx";
 import DescriptionRestaurant from "./DescriptionRestaurant.jsx";
 import RestaurantPhotoCarousel from "./RestaurantPhotoCarousel.jsx";

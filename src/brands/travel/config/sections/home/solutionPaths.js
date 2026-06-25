@@ -1,4 +1,4 @@
-import homeTravel2Image from "../../../assets/HomeTravel/home-travel2.webp";
+import homeTravel2Image from "../../../assets/home/home-travel2.webp";
 import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
 
 const solutionPaths = {

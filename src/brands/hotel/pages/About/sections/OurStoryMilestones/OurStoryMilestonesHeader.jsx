@@ -1,4 +1,5 @@
-import storyMilestones from "../../../../config/sections/about/storyMilestones.js";
+import about from "../../../../config/pages/about.js";
+const storyMilestones = about.sections.storyMilestones;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./OurStoryMilestonesHeader.module.css";

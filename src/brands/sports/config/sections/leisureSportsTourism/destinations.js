@@ -1,8 +1,8 @@
-import aveiroImage from "../../../assets/leisureSportsTourism/aveiro.webp";
-import bairradaImage from "../../../assets/leisureSportsTourism/bairrada.webp";
-import coimbraImage from "../../../assets/leisureSportsTourism/coimbra.webp";
-import praiasImage from "../../../assets/leisureSportsTourism/farol.webp";
-import serrasImage from "../../../assets/leisureSportsTourism/serra.webp";
+import aveiroImage from "../../../assets/leisure-sports-tourism/aveiro.webp";
+import bairradaImage from "../../../assets/leisure-sports-tourism/bairrada.webp";
+import coimbraImage from "../../../assets/leisure-sports-tourism/coimbra.webp";
+import praiasImage from "../../../assets/leisure-sports-tourism/farol.webp";
+import serrasImage from "../../../assets/leisure-sports-tourism/serra.webp";
 
 const DESTINATION_IMAGE_SIZE = {
   width: 1600,

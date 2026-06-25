@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
-import accessibility from "../../../../config/sections/facilities/accessibility.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const accessibility = facilitiesLeisurePage.sections.accessibility;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";

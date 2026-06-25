@@ -1,4 +1,5 @@
-import breakfast from "../../../../config/sections/dining/breakfast.js";
+import dining from "../../../../config/pages/dining.js";
+const breakfast = dining.sections.breakfast;
 import TitleBreakfast from "./TitleBreakfast.jsx";
 import BreakfastShowcase from "./BreakfastShowcase.jsx";
 

@@ -1,4 +1,5 @@
-import panoramicRestaurant from "../../../../config/sections/dining/panoramicRestaurant.js";
+import dining from "../../../../config/pages/dining.js";
+const panoramicRestaurant = dining.sections.panoramicRestaurant;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 import styles from "./PanoramicRestaurant.module.css";

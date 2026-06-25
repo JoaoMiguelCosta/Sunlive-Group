@@ -1,6 +1,6 @@
 import { SPORTS_PAGE_PATHS } from "../../../config/core/paths.js";
 
-import karateImage from "../../../assets/Modalities/karate.webp";
+import karateImage from "../../../assets/modalities/karate.webp";
 
 const karateSection = {
   key: "karate",

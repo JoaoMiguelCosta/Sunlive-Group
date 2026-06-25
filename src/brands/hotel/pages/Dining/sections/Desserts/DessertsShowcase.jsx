@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
-import desserts from "../../../../config/sections/dining/desserts.js";
+import dining from "../../../../config/pages/dining.js";
+const desserts = dining.sections.desserts;
 import HotelSelectableMediaGrid from "../../../../shared/ui/HotelSelectableMediaGrid/HotelSelectableMediaGrid.jsx";
 
 import styles from "./DessertsShowcase.module.css";

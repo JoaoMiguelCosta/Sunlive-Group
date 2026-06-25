@@ -1,4 +1,5 @@
-import complementaryServices from "../../../../config/sections/facilities/complementaryServices.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const complementaryServices = facilitiesLeisurePage.sections.complementaryServices;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleComplementaryServices({ titleId }) {

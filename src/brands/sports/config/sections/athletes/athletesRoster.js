@@ -1,25 +1,25 @@
-import cyclingAlanBanaszekImage from "../../../assets/Athletes/ciclismo-alan-banaszek.webp";
-import cyclingArinaKorotieievaImage from "../../../assets/Athletes/ciclismo-arina-korotieieva.webp";
-import cyclingKaterynaVelychkoImage from "../../../assets/Athletes/ciclismo-kateryna-velychko.webp";
-import cyclingMikhailYakovlevImage from "../../../assets/Athletes/ciclismo-mikhail-yakovlev.webp";
-import cyclingTimWaflerImage from "../../../assets/Athletes/ciclismo-tim-wafler.webp";
-import cyclingYareliSalazarImage from "../../../assets/Athletes/ciclismo-yareli-salazar.webp";
+import cyclingAlanBanaszekImage from "../../../assets/athletes/ciclismo-alan-banaszek.webp";
+import cyclingArinaKorotieievaImage from "../../../assets/athletes/ciclismo-arina-korotieieva.webp";
+import cyclingKaterynaVelychkoImage from "../../../assets/athletes/ciclismo-kateryna-velychko.webp";
+import cyclingMikhailYakovlevImage from "../../../assets/athletes/ciclismo-mikhail-yakovlev.webp";
+import cyclingTimWaflerImage from "../../../assets/athletes/ciclismo-tim-wafler.webp";
+import cyclingYareliSalazarImage from "../../../assets/athletes/ciclismo-yareli-salazar.webp";
 
-import bmxCarlaGomezImage from "../../../assets/Athletes/bmx-carla-gomez.webp";
-import bmxEddyClerteImage from "../../../assets/Athletes/bmx-eddy-clerte.webp";
-import bmxMartynaSzczesnaImage from "../../../assets/Athletes/bmx-martyna-szczesna.webp";
-import bmxNielsAppermontImage from "../../../assets/Athletes/bmx-niels-appermont.webp";
-import bmxRubenGommersImage from "../../../assets/Athletes/bmx-ruben-gommers.webp";
+import bmxCarlaGomezImage from "../../../assets/athletes/bmx-carla-gomez.webp";
+import bmxEddyClerteImage from "../../../assets/athletes/bmx-eddy-clerte.webp";
+import bmxMartynaSzczesnaImage from "../../../assets/athletes/bmx-martyna-szczesna.webp";
+import bmxNielsAppermontImage from "../../../assets/athletes/bmx-niels-appermont.webp";
+import bmxRubenGommersImage from "../../../assets/athletes/bmx-ruben-gommers.webp";
 
-import gymnasticsLeoJasonTrandaburuImage from "../../../assets/Athletes/ginastica-leo-jason-trandaburu.webp";
-import gymnasticsLeticiaPintoImage from "../../../assets/Athletes/ginastica-leticia-pinto.webp";
-import gymnasticsPalomaMarochiImage from "../../../assets/Athletes/ginastica-paloma-marochi.webp";
-import gymnasticsSophieBarbeletImage from "../../../assets/Athletes/ginastica-sophie-barbelet.webp";
+import gymnasticsLeoJasonTrandaburuImage from "../../../assets/athletes/ginastica-leo-jason-trandaburu.webp";
+import gymnasticsLeticiaPintoImage from "../../../assets/athletes/ginastica-leticia-pinto.webp";
+import gymnasticsPalomaMarochiImage from "../../../assets/athletes/ginastica-paloma-marochi.webp";
+import gymnasticsSophieBarbeletImage from "../../../assets/athletes/ginastica-sophie-barbelet.webp";
 
-import karateDiegoSantosImage from "../../../assets/Athletes/karate-diego-santos.webp";
-import karateVictoriaBazyukImage from "../../../assets/Athletes/karate-victoria-bazyuk.webp";
+import karateDiegoSantosImage from "../../../assets/athletes/karate-diego-santos.webp";
+import karateVictoriaBazyukImage from "../../../assets/athletes/karate-victoria-bazyuk.webp";
 
-import padelBeatrizFerreiraImage from "../../../assets/Athletes/padel-beatriz-ferreira.webp";
+import padelBeatrizFerreiraImage from "../../../assets/athletes/padel-beatriz-ferreira.webp";
 
 const athletesRoster = {
   id: "atletas-por-modalidade",

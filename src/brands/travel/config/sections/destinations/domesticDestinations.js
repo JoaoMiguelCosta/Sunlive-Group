@@ -1,9 +1,9 @@
-import aveiroImg from "../../../assets/DomesticDestinations/aveiro.webp";
-import portoImg from "../../../assets/DomesticDestinations/porto.webp";
-import lisboaImg from "../../../assets/DomesticDestinations/lisboa.webp";
-import coimbraImg from "../../../assets/DomesticDestinations/coimbra.webp";
-import sintraImg from "../../../assets/DomesticDestinations/sintra.webp";
-import obidosImg from "../../../assets/DomesticDestinations/obidos.webp";
+import aveiroImg from "../../../assets/domestic-destinations/aveiro.webp";
+import portoImg from "../../../assets/domestic-destinations/porto.webp";
+import lisboaImg from "../../../assets/domestic-destinations/lisboa.webp";
+import coimbraImg from "../../../assets/domestic-destinations/coimbra.webp";
+import sintraImg from "../../../assets/domestic-destinations/sintra.webp";
+import obidosImg from "../../../assets/domestic-destinations/obidos.webp";
 
 const domesticDestinations = {
   id: "destinos-nacionais",

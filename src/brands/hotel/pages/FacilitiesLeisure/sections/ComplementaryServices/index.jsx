@@ -1,4 +1,5 @@
-import complementaryServices from "../../../../config/sections/facilities/complementaryServices.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const complementaryServices = facilitiesLeisurePage.sections.complementaryServices;
 
 import TitleComplementaryServices from "./TitleComplementaryServices.jsx";
 import DescriptionComplementaryServices from "./DescriptionComplementaryServices.jsx";

@@ -4,7 +4,8 @@ import TitleStayPolicies from "./TitleStayPolicies.jsx";
 import DescriptionStayPolicies from "./DescriptionStayPolicies.jsx";
 import StayPoliciesAccordion from "./StayPoliciesAccordion.jsx";
 
-import stayPolicies from "../../../../config/sections/accommodation/stayPolicies.js";
+import accommodation from "../../../../config/pages/accommodation.js";
+const stayPolicies = accommodation.sections.stayPolicies;
 
 export default function StayPolicies() {
   const content = stayPolicies;

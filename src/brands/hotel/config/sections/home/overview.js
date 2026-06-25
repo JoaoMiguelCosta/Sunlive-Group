@@ -1,4 +1,4 @@
-import homeAboutImage from "../../../assets/home-about.webp";
+import homeAboutImage from "../../../assets/home/home-about.webp";
 import { HOTEL_PAGE_PATHS } from "../../core/paths.js";
 
 export const overview = {

@@ -4,7 +4,8 @@ import TitleWhyChooseUs from "./TitleWhyChooseUs.jsx";
 import DescriptionWhyChooseUs from "./DescriptionWhyChooseUs.jsx";
 import WhyChooseUsGrid from "./WhyChooseUsGrid.jsx";
 
-import whyChoose from "../../../../config/sections/accommodation/whyChoose.js";
+import accommodation from "../../../../config/pages/accommodation.js";
+const whyChoose = accommodation.sections.whyChoose;
 
 export default function WhyChooseUs() {
   const content = whyChoose;

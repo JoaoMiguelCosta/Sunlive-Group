@@ -1,4 +1,5 @@
-import accessibility from "../../../../config/sections/facilities/accessibility.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const accessibility = facilitiesLeisurePage.sections.accessibility;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleAccessibility({ titleId }) {

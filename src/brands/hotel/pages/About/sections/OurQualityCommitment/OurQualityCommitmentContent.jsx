@@ -1,4 +1,5 @@
-import ourQualityCommitment from "../../../../config/sections/about/qualityCommitment.js";
+import about from "../../../../config/pages/about.js";
+const ourQualityCommitment = about.sections.qualityCommitment;
 import HotelHighlightPill from "../../../../shared/ui/HotelHighlightPill/HotelHighlightPill.jsx";
 
 import styles from "./OurQualityCommitmentContent.module.css";

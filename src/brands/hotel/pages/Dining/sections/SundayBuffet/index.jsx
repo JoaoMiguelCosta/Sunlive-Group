@@ -1,4 +1,5 @@
-import sundayBuffet from "../../../../config/sections/dining/sundayBuffet.js";
+import dining from "../../../../config/pages/dining.js";
+const sundayBuffet = dining.sections.sundayBuffet;
 import TitleSundayBuffet from "./TitleSundayBuffet.jsx";
 import DescriptionSundayBuffet from "./DescriptionSundayBuffet.jsx";
 import SundayBuffetGalleryCta from "./SundayBuffetGalleryCta.jsx";

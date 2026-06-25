@@ -1,4 +1,5 @@
-import barAndLounge from "../../../../config/sections/dining/barAndLounge.js";
+import dining from "../../../../config/pages/dining.js";
+const barAndLounge = dining.sections.barAndLounge;
 import TitleBarLounge from "./TitleBarLounge.jsx";
 import BarLoungeShowcase from "./BarLoungeShowcase.jsx";
 

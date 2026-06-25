@@ -8,7 +8,7 @@ import header from "../config/core/header.js";
 import { SPORTS_BASE_PATH } from "../config/core/paths.js";
 import { SPORTS_PRIMARY_NAV_ITEMS } from "../config/core/nav.js";
 
-import sportsLogo from "../assets/LogoSunliveSports/sports.png";
+import sportsLogo from "../assets/logo/sports.png";
 
 import SportsPageSwitcher from "./SportsPageSwitcher.jsx";
 import SportsUtilityBar from "./SportsUtilityBar.jsx";

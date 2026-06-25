@@ -5,7 +5,8 @@ import DescriptionForWhom from "./DescriptionForWhom.jsx";
 import ForWhomHero from "./ForWhomHero.jsx";
 import ForWhomProfilesGrid from "./ForWhomProfilesGrid.jsx";
 
-import forWhom from "../../../../config/sections/accommodation/forWhom.js";
+import accommodation from "../../../../config/pages/accommodation.js";
+const forWhom = accommodation.sections.forWhom;
 
 export default function ForWhom() {
   const content = forWhom;

@@ -1,4 +1,5 @@
-import testimonials from "../../../../config/sections/information/testimonials.js";
+import information from "../../../../config/pages/information.js";
+const testimonials = information.sections.testimonials;
 import HotelSectionHeader from "../../../../shared/ui/HotelSectionHeader/HotelSectionHeader.jsx";
 
 export default function TitleTestimonials({ titleId }) {

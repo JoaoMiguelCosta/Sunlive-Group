@@ -1,4 +1,5 @@
-import howToParticipate from "../../../../config/sections/sustainability/howToParticipate.js";
+import sustainability from "../../../../config/pages/sustainability.js";
+const howToParticipate = sustainability.sections.howToParticipate;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import SustainabilityActionCard from "../../../../shared/ui/SustainabilityActionCard/SustainabilityActionCard.jsx";

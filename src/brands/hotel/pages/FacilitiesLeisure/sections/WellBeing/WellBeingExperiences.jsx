@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import wellBeing from "../../../../config/sections/facilities/wellBeing.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const wellBeing = facilitiesLeisurePage.sections.wellBeing;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";

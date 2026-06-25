@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
-import receptionSupport from "../../../../config/sections/facilities/receptionSupport.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const receptionSupport = facilitiesLeisurePage.sections.receptionSupport;
 import { BRAND_FLAGS } from "../../../../config/core/flags.js";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 

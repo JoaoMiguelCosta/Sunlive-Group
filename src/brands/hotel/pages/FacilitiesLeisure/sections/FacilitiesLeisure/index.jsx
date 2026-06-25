@@ -1,4 +1,5 @@
-import facilitiesLeisure from "../../../../config/sections/facilities/facilitiesLeisure.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const facilitiesLeisure = facilitiesLeisurePage.sections.facilitiesLeisure;
 import TitleFacilitiesLeisure from "./TitleFacilitiesLeisure.jsx";
 import DescriptionFacilitiesLeisure from "./DescriptionFacilitiesLeisure.jsx";
 import FacilitiesLeisureGallery from "./FacilitiesLeisureGallery.jsx";

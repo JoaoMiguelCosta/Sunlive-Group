@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
-import mobility from "../../../../config/sections/facilities/mobility.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const mobility = facilitiesLeisurePage.sections.mobility;
 import { resolveHotelIcon } from "../../../../config/core/iconKeyMap.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import HotelFeatureListWithMedia from "../../../../shared/ui/HotelFeatureListWithMedia/HotelFeatureListWithMedia.jsx";

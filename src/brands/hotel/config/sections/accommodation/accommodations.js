@@ -1,16 +1,16 @@
-import suiteImage from "../../../assets/suíte.webp";
-import singleImage from "../../../assets/single-room.webp";
-import twoRoomImage from "../../../assets/two-room.webp";
-import twinRoomImage from "../../../assets/twin-room.webp";
-import tripleRoomImage from "../../../assets/triple-room.webp";
+import suiteImage from "../../../assets/accommodation/suite.webp";
+import singleImage from "../../../assets/accommodation/single-room.webp";
+import twoRoomImage from "../../../assets/accommodation/two-room.webp";
+import twinRoomImage from "../../../assets/accommodation/twin-room.webp";
+import tripleRoomImage from "../../../assets/accommodation/triple-room.webp";
 
-import accommodation1 from "../../../assets/accommodation1.webp";
-import accommodation2 from "../../../assets/accommodation2.webp";
-import accommodation3 from "../../../assets/accommodation3.webp";
-import accommodation5 from "../../../assets/accommodation5.webp";
-import accommodation6 from "../../../assets/accommodation6.webp";
-import accommodation7 from "../../../assets/accommodation7.webp";
-import accommodation8 from "../../../assets/accommodation8.webp";
+import accommodation1 from "../../../assets/accommodation/accommodation1.webp";
+import accommodation2 from "../../../assets/accommodation/accommodation2.webp";
+import accommodation3 from "../../../assets/accommodation/accommodation3.webp";
+import accommodation5 from "../../../assets/accommodation/accommodation5.webp";
+import accommodation6 from "../../../assets/accommodation/accommodation6.webp";
+import accommodation7 from "../../../assets/accommodation/accommodation7.webp";
+import accommodation8 from "../../../assets/accommodation/accommodation8.webp";
 
 export const accommodations = {
   id: "estadia-accommodations",

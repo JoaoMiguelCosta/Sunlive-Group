@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
-import receptionSupport from "../../../../config/sections/facilities/receptionSupport.js";
+import facilitiesLeisurePage from "../../../../config/pages/facilitiesLeisure.js";
+const receptionSupport = facilitiesLeisurePage.sections.receptionSupport;
 
 import styles from "./ReceptionSupportAvailability.module.css";
 
