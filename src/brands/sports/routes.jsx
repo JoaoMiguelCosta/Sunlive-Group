@@ -1,6 +1,8 @@
 import { lazy } from "react";
 import { Navigate, Route } from "react-router-dom";
 
+import { SPORTS_BASE_PATH } from "./config/core/paths.js";
+
 const SportsShell = lazy(() => import("./layouts/SportsShell.jsx"));
 
 const HomePageSports = lazy(() => import("./pages/Home/index.jsx"));
@@ -38,7 +40,7 @@ const ConsultancyPage = lazy(() => import("./pages/Consultancy/index.jsx"));
 const ContactsPage = lazy(() => import("./pages/Contacts/index.jsx"));
 
 export const sportsRoutes = [
-  <Route key="sports" path="/sunlive-group/sports" element={<SportsShell />}>
+  <Route key="sports" path={SPORTS_BASE_PATH} element={<SportsShell />}>
     <Route index element={<HomePageSports />} />
 
     <Route path="estagios-desportivos" element={<TrainingCampsPage />} />
