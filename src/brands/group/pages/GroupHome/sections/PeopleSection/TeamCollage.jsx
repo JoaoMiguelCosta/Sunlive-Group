@@ -2,7 +2,7 @@ import styles from "./TeamCollage.module.css";
 
 import homePage from "../../../../config/pages/home.js";
 const people = homePage.sections.people;
-import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
+import { IMG_COMMON } from "../../../../../../shared/config/index.js";
 
 export default function TeamCollage() {
   const collage = people?.collage;

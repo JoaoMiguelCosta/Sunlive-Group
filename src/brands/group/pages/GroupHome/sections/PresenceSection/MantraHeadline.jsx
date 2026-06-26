@@ -2,7 +2,7 @@ import styles from "./MantraHeadline.module.css";
 
 import homePage from "../../../../config/pages/home.js";
 const presence = homePage.sections.presence;
-import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
+import { IMG_COMMON } from "../../../../../../shared/config/index.js";
 
 export default function MantraHeadline() {
   const headline = presence?.headlineBottom;

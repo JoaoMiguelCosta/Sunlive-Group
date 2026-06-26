@@ -1,4 +1,4 @@
-import { makeBook } from "../../../../../shared/config/BrandDefault.js";
+import { makeBook } from "../../../../../shared/config/index.js";
 import { GROUP_BOOKS } from "../../core/books.js";
 
 const groupBook = GROUP_BOOKS.company;
