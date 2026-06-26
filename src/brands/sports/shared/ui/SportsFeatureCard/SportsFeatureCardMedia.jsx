@@ -37,14 +37,15 @@ function getVideoType(src) {
 
 function VideoFrame({ isOpen, media, titleId, onClose }) {
   const videoRef = useRef(null);
+  const dialogRef = useRef(null);
 
   const posterSrc = getPosterSrc(media);
   const fullSrc = getFullSrc(media);
   const title = media?.modalTitle || media?.title || "Vídeo da academia";
   const closeLabel = media?.closeLabel || "Fechar vídeo";
 
-  // Comportamento partilhado: scroll lock, Escape, autoplay, handleClose
-  const { handleClose } = useVideoDialogBehavior(isOpen, videoRef, onClose);
+  // Comportamento partilhado: scroll lock, Escape, focus trap, autoplay, handleClose
+  const { handleClose } = useVideoDialogBehavior(isOpen, videoRef, onClose, dialogRef);
 
   if (!isOpen || !isValidText(fullSrc)) return null;
 
@@ -57,10 +58,12 @@ function VideoFrame({ isOpen, media, titleId, onClose }) {
   return createPortal(
     <div className={styles.modalOverlay} onClick={handleOverlayClick}>
       <div
+        ref={dialogRef}
         className={styles.modalFrame}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        tabIndex={-1}
       >
         <div className={styles.modalHeader}>
           <div className={styles.modalHeading}>

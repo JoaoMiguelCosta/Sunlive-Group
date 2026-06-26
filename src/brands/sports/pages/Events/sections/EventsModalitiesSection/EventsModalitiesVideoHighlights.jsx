@@ -40,6 +40,7 @@ function getValidVideos(items) {
 
 function VideoModal({ isOpen, item, titleId, ui, onClose }) {
   const videoRef = useRef(null);
+  const dialogRef = useRef(null);
 
   const media = item?.media;
   const fullSrc = media?.fullSrc;
@@ -49,8 +50,8 @@ function VideoModal({ isOpen, item, titleId, ui, onClose }) {
     media?.modalTitle || item?.title || ui?.fallbackModalTitle || "Vídeo";
   const modalEyebrow = media?.modalEyebrow || ui?.modalEyebrow;
 
-  // Comportamento partilhado: scroll lock, Escape, autoplay, handleClose
-  const { handleClose } = useVideoDialogBehavior(isOpen, videoRef, onClose);
+  // Comportamento partilhado: scroll lock, Escape, focus trap, autoplay, handleClose
+  const { handleClose } = useVideoDialogBehavior(isOpen, videoRef, onClose, dialogRef);
 
   if (!isOpen || !isValidText(fullSrc) || typeof document === "undefined") {
     return null;
@@ -65,10 +66,12 @@ function VideoModal({ isOpen, item, titleId, ui, onClose }) {
   return createPortal(
     <div className={styles.modalOverlay} onClick={handleOverlayClick}>
       <div
+        ref={dialogRef}
         className={styles.modalFrame}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        tabIndex={-1}
       >
         <div className={styles.modalHeader}>
           <div className={styles.modalHeading}>

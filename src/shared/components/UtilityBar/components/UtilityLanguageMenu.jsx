@@ -23,8 +23,8 @@ export default function UtilityLanguageMenu({
       <button
         type="button"
         className={styles.langBtn}
-        aria-haspopup="listbox"
         aria-expanded={isOpen}
+        aria-controls="lang-menu"
         aria-label="Selecionar idioma"
         onClick={onToggle}
         data-open={isOpen ? "true" : "false"}
@@ -48,9 +48,8 @@ export default function UtilityLanguageMenu({
       </button>
 
       <ul
+        id="lang-menu"
         className={styles.langMenu}
-        role="listbox"
-        aria-label="Opções de idioma"
         hidden={!isOpen}
       >
         {options.map((option) => {
@@ -58,18 +57,12 @@ export default function UtilityLanguageMenu({
           const isDisabled = !isActiveLanguage(option);
 
           return (
-            <li
-              key={option.code}
-              role="option"
-              aria-selected={isSelected}
-              aria-disabled={isDisabled}
-              data-disabled={isDisabled ? "true" : "false"}
-            >
+            <li key={option.code}>
               <button
                 type="button"
                 className={styles.langItem}
                 disabled={isDisabled}
-                aria-disabled={isDisabled}
+                aria-current={isSelected ? "true" : undefined}
                 onClick={() => handleChoose(option)}
               >
                 <span className={styles.langItemLabel}>{option.label}</span>
