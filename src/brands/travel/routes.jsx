@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Route } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 
 import { TRAVEL_BASE_PATH } from "./config/core/paths.js";
 
@@ -37,7 +37,6 @@ export const travelRoutes = (
     <Route path="parceiros" element={<PartnersPage />} />
     <Route path="testemunhos" element={<TestimonialsPage />} />
     <Route path="contactos" element={<ContactsPage />} />
+    <Route path="*" element={<Navigate to={TRAVEL_BASE_PATH} replace />} />
   </Route>
 );
-
-export default travelRoutes;

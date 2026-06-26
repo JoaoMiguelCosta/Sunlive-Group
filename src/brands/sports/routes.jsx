@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Navigate, Route } from "react-router-dom";
 
-import { SPORTS_BASE_PATH } from "./config/core/paths.js";
+import { SPORTS_BASE_PATH, SPORTS_PAGE_PATHS } from "./config/core/paths.js";
 
 const SportsShell = lazy(() => import("./layouts/SportsShell.jsx"));
 
@@ -69,98 +69,84 @@ export const sportsRoutes = [
 
     <Route
       path="training-camps"
-      element={
-        <Navigate to="/sunlive-group/sports/estagios-desportivos" replace />
-      }
+      element={<Navigate to={SPORTS_PAGE_PATHS.trainingCamps} replace />}
     />
 
     <Route
       path="academies"
-      element={<Navigate to="/sunlive-group/sports/academias" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.academies} replace />}
     />
 
     <Route
       path="events"
-      element={<Navigate to="/sunlive-group/sports/eventos" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.events} replace />}
     />
 
     <Route
       path="sunlive-athletes"
-      element={<Navigate to="/sunlive-group/sports/atletas-sunlive" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.athletes} replace />}
     />
 
     <Route
       path="testimonials"
-      element={<Navigate to="/sunlive-group/sports/testemunhos" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.testimonials} replace />}
     />
 
     <Route
       path="depoimentos"
-      element={<Navigate to="/sunlive-group/sports/testemunhos" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.testimonials} replace />}
     />
 
     <Route
       path="specialised-services"
-      element={
-        <Navigate to="/sunlive-group/sports/servicos-especializados" replace />
-      }
+      element={<Navigate to={SPORTS_PAGE_PATHS.specialisedServices} replace />}
     />
 
     <Route
       path="education"
-      element={<Navigate to="/sunlive-group/sports/educacao" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.education} replace />}
     />
 
     <Route
       path="leisure-sports-tourism"
-      element={
-        <Navigate
-          to="/sunlive-group/sports/turismo-desportivo-ludico"
-          replace
-        />
-      }
+      element={<Navigate to={SPORTS_PAGE_PATHS.leisureSportsTourism} replace />}
     />
 
     <Route
       path="turismo-desportivo-e-lazer"
-      element={
-        <Navigate
-          to="/sunlive-group/sports/turismo-desportivo-ludico"
-          replace
-        />
-      }
+      element={<Navigate to={SPORTS_PAGE_PATHS.leisureSportsTourism} replace />}
     />
 
     <Route
       path="modalities"
-      element={<Navigate to="/sunlive-group/sports/modalidades" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.modalities} replace />}
     />
 
     <Route
       path="sports-modalities"
-      element={<Navigate to="/sunlive-group/sports/modalidades" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.modalities} replace />}
     />
 
     <Route
       path="infrastructures"
-      element={<Navigate to="/sunlive-group/sports/infraestruturas" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.infrastructures} replace />}
     />
 
     <Route
       path="logistics"
-      element={<Navigate to="/sunlive-group/sports/logistica" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.logistics} replace />}
     />
 
     <Route
       path="consultancy"
-      element={<Navigate to="/sunlive-group/sports/consultoria" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.consultancy} replace />}
     />
 
     <Route
       path="contacts"
-      element={<Navigate to="/sunlive-group/sports/contactos" replace />}
+      element={<Navigate to={SPORTS_PAGE_PATHS.contacts} replace />}
     />
 
-    <Route path="*" element={<Navigate to="/sunlive-group/sports" replace />} />
+    <Route path="*" element={<Navigate to={SPORTS_BASE_PATH} replace />} />
   </Route>,
 ];

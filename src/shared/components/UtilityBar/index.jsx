@@ -1,6 +1,13 @@
+import { Link } from "react-router-dom";
+
 import styles from "./UtilityBar.module.css";
 import { useLangMenu } from "../../hooks/useLangMenu.js";
 import UtilityLanguageMenu from "./components/UtilityLanguageMenu.jsx";
+
+function isInternalSpaPath(href) {
+  if (typeof href !== "string" || !href) return false;
+  return href.startsWith("/") && !href.startsWith("//");
+}
 
 const LANG_FALLBACK = {
   current: "pt",
@@ -54,12 +61,13 @@ function UtilityLink({ link, type }) {
   const iconClassName = isHome ? styles.homeIcon : styles.backIcon;
   const textClassName = isHome ? styles.homeText : styles.backText;
 
-  return (
-    <a
-      href={link.href}
-      className={linkClassName}
-      aria-label={link.ariaLabel || link.label}
-    >
+  const sharedProps = {
+    className: linkClassName,
+    "aria-label": link.ariaLabel || link.label,
+  };
+
+  const children = (
+    <>
       {LinkIcon ? (
         <LinkIcon className={iconClassName} />
       ) : isHome ? (
@@ -69,6 +77,20 @@ function UtilityLink({ link, type }) {
       )}
 
       <span className={textClassName}>{link.label}</span>
+    </>
+  );
+
+  if (isInternalSpaPath(link.href)) {
+    return (
+      <Link to={link.href} {...sharedProps}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={link.href} {...sharedProps}>
+      {children}
     </a>
   );
 }
