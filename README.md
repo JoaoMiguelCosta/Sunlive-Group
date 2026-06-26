@@ -267,15 +267,37 @@ Os vídeos públicos estão em `public/media/` e são referenciados diretamente 
 
 Estes ficheiros não são processados pelo Vite.
 
-Tamanhos atuais considerados dívida técnica:
+### Estratégia de carregamento de vídeos
 
-| Pasta                      | Tipo             | Dimensão aproximada   |
+**Vídeos de preview (Sports):** Exibidos como cards animados nas páginas de academias, training camps e eventos. Carregam com `preload="none"` e iniciam playback via `IntersectionObserver` quando o card entra no viewport. Controlados por componentes `SportsFeatureCardMedia`, `ProgramSportCardMedia` e `EventsModalitiesVideoHighlights`.
+
+**Vídeos completos (Sports):** Exibidos apenas em modais após clique do utilizador. O elemento `<video>` só é inserido no DOM quando o modal abre — nenhuma transferência ocorre antes de interação. Usam `preload="metadata"` e o hook `useVideoDialogBehavior` para autoplay, focus trap e limpeza ao fechar.
+
+**Vídeo hero (Hotel):** Terceira cena do banner hero da página Hotel. Usa `preload="none"` enquanto inativo e `preload="auto"` ao tornar-se ativo (requer 2 cliques em "Avançar"). O poster é pré-carregado via `preloadSceneMedia`.
+
+### Tamanhos atuais dos vídeos
+
+| Pasta                      | Tipo             | Dimensão após Fase 8  |
 | -------------------------- | ---------------- | --------------------- |
-| `public/media/sports/*/`   | Previews         | 3–6 MB por ficheiro   |
-| `public/media/sports/*/`   | Vídeos completos | 13–31 MB por ficheiro |
-| `public/media/hotel/home/` | Vídeo hero       | Aproximadamente 14 MB |
+| `public/media/sports/*/`   | Previews         | 0.6–1.6 MB por ficheiro |
+| `public/media/sports/*/`   | Vídeos completos | 12–30 MB por ficheiro (originais mantidos — já têm faststart) |
+| `public/media/hotel/home/` | Vídeo hero       | 10 MB (sem áudio) |
 
-É recomendada a compressão dos vídeos e/ou a utilização de uma CDN antes de o projeto receber tráfego elevado.
+### Posters
+
+Cada vídeo de preview e modal tem um poster `.webp` (60–181 KB) referenciado no atributo `poster`. Os posters evitam flash preto e são exibidos enquanto o vídeo carrega.
+
+### Lazy loading de imagens
+
+A maioria das imagens utiliza a constante `IMG_COMMON` (`loading: "lazy"`, `decoding: "async"`). As imagens acima da dobra usam `loading="eager"` e `fetchPriority="high"` onde apropriado.
+
+### Limitações restantes
+
+* Vídeos completos Sports (12–30 MB) apenas descarregam ao abrir o modal. Re-encoding com qualidade visualmente equivalente produzia ficheiros maiores — originais mantidos.
+* CDN de vídeo não implementada. Os assets são servidos diretamente pela Vercel.
+* Imagens WebP existentes (242 ficheiros, 49 MB em src/) não foram recomprimidas — sem ferramentas de compressão de imagem no ambiente atual.
+
+Consultar `docs/PERFORMANCE_MEDIA_AUDIT.md` para relatório completo.
 
 ## Acessibilidade
 
@@ -360,7 +382,7 @@ Não deve ser definido um único canonical para `/sunlive-group` no `index.html`
 * Traduções para inglês e árabe ainda não implementadas
 * Conteúdo atualmente disponível apenas em português
 * Layout RTL da futura versão árabe ainda não implementado
-* Vídeos de grande dimensão sem compressão ou CDN
+* Vídeos completos Sports (12–30 MB) sem CDN especializada em streaming
 * Conformidade WCAG não auditada formalmente
 * Validação manual com screen reader ainda não realizada
 
