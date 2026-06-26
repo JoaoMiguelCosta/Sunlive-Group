@@ -127,7 +127,7 @@ export const internationalFederations = {
     {
       key: "pi",
       name: "Paralympics Ireland",
-      caption: "Paralymics Ireland",
+      caption: "Paralympics Ireland",
       src: pi,
     },
     {
