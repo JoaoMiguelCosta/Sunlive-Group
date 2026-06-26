@@ -1,7 +1,8 @@
 import styles from "../_shared/LogosSection.module.css";
 import LogoGridSection from "../_shared/LogoGridSection";
 
-import committees from "../../../../config/sections/logos/committees.js";
+import logosPage from "../../../../config/pages/logos.js";
+const committees = logosPage.sections.committees;
 
 function hasItems(items) {
   return Array.isArray(items) && items.length > 0;

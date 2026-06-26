@@ -60,7 +60,7 @@ export default function WellBeingExperiences() {
     ? content.items
     : EMPTY_ITEMS;
 
-  const sectionId = content?.id ?? "well-being";
+  const sectionId = content?.id ?? "instalacoes-bem-estar";
   const ui = content?.ui ?? {};
 
   const [columns, setColumns] = useState(getColumnsFromViewport);

@@ -1,6 +1,7 @@
 import styles from "./BookSection.module.css";
 
-import bookSection from "../../../../config/sections/home/book.js";
+import homePage from "../../../../config/pages/home.js";
+const bookSection = homePage.sections.book;
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
