@@ -2,6 +2,7 @@ import { useBlink } from "../../hooks/useBlink.js";
 import useLocalSmoothAnchors from "../../hooks/useLocalSmoothAnchors.js";
 import { MailIcon, PhoneIcon } from "../icons/index.js";
 
+import { scrollToHashWithOffset } from "./CTAButton.helpers.js";
 import styles from "./CTAButton.module.css";
 
 const ICON_MAP = {
@@ -70,39 +71,6 @@ export default function CTAButton({
 
   const resolvedTone = VALID_TONES.has(tone) ? tone : "default";
 
-  const scrollToHashWithOffset = (hash) => {
-    if (typeof window === "undefined" || !hash) {
-      return;
-    }
-
-    const id = decodeURIComponent(hash.replace(/^#/, ""));
-
-    const element =
-      document.getElementById(id) ||
-      (hash.startsWith("#") ? document.querySelector(hash) : null);
-
-    if (!element) {
-      return;
-    }
-
-    const elementRect = element.getBoundingClientRect();
-    const targetY =
-      elementRect.top +
-      window.pageYOffset -
-      Math.max(0, Number(scrollOffset) || 0);
-
-    try {
-      window.history.pushState({}, "", `#${id}`);
-    } catch {
-      // A navegação continua mesmo que o histórico não possa ser atualizado.
-    }
-
-    window.scrollTo({
-      top: Math.max(0, targetY),
-      behavior: prefersReducedMotion ? "auto" : "smooth",
-    });
-  };
-
   const handleClick = (event) => {
     if (typeof onClickProp === "function") {
       onClickProp(event);
@@ -117,7 +85,7 @@ export default function CTAButton({
 
       const url = new URL(href, window.location.href);
 
-      scrollToHashWithOffset(url.hash || href);
+      scrollToHashWithOffset(url.hash || href, { scrollOffset, prefersReducedMotion });
     }
   };
 

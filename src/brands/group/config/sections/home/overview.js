@@ -1,4 +1,4 @@
-import { LANG_DEFAULT } from "../../../../../shared/config/BrandDefault.js";
+import { LANG_DEFAULT } from "../../../../../shared/config/index.js";
 import { GROUP_SOCIALS } from "../../core/socials.js";
 import { GROUP_BASE_PATH } from "../../core/paths.js";
 

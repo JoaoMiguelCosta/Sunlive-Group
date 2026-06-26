@@ -1,4 +1,4 @@
-// src/brands/group/hooks/useLangMenu.js
+// src/shared/hooks/useLangMenu.js
 import { useRef, useState, useMemo } from "react";
 import useDisclosure from "./useDisclosure.js"; // <- default import
 import { useOutsideClick } from "./useOutsideClick.js";

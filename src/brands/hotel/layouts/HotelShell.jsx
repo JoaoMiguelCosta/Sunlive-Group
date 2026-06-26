@@ -9,9 +9,8 @@ import ScrollToTopOnRouteChange from "./ScrollToTopOnRouteChange.jsx";
 import footerData from "../config/core/footer.js";
 import header from "../config/core/header.js";
 import { HOTEL_BASE_PATH } from "../config/core/paths.js";
-import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.js";
+import { LANG_DEFAULT } from "../../../shared/config/index.js";
 
-import "../theme.css";
 import styles from "./HotelShell.module.css";
 
 export default function HotelShell() {

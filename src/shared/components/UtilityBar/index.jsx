@@ -1,16 +1,11 @@
 import styles from "./UtilityBar.module.css";
 import { useLangMenu } from "../../hooks/useLangMenu.js";
+import UtilityLanguageMenu from "./components/UtilityLanguageMenu.jsx";
 
 const LANG_FALLBACK = {
   current: "pt",
   options: [{ label: "PT", name: "Português", code: "pt" }],
 };
-
-const ACTIVE_LANG_CODE = "pt";
-
-function isActiveLanguage(option) {
-  return option?.code === ACTIVE_LANG_CODE;
-}
 
 function DefaultBackIcon({ className }) {
   return (
@@ -91,7 +86,7 @@ export default function UtilityBar({
 }) {
   const normalizedLang = lang ?? LANG_FALLBACK;
 
-  const { ref, isOpen, selected, options, toggle, choose, close } =
+  const { ref: langContainerRef, isOpen, selected, options, toggle, choose, close } =
     useLangMenu(normalizedLang);
 
   const hasLeft = Boolean(backLink || homeLink || leftSlot);
@@ -101,12 +96,6 @@ export default function UtilityBar({
 
   function handleKeyDown(event) {
     if (event.key === "Escape") close();
-  }
-
-  function handleLanguageChoose(option) {
-    if (!isActiveLanguage(option)) return;
-
-    choose(option);
   }
 
   return (
@@ -160,75 +149,15 @@ export default function UtilityBar({
               </nav>
             ) : null}
 
-            <div className={styles.langWrap} ref={ref}>
-              <button
-                type="button"
-                className={styles.langBtn}
-                aria-haspopup="listbox"
-                aria-expanded={isOpen}
-                aria-label="Selecionar idioma"
-                onClick={toggle}
-                data-open={isOpen ? "true" : "false"}
-              >
-                <span className={styles.langText}>{selected.label}</span>
-
-                <svg
-                  className={styles.chevron}
-                  viewBox="0 0 12 6"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M1 1 L6 5 L11 1"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-
-              <ul
-                className={styles.langMenu}
-                role="listbox"
-                aria-label="Opções de idioma"
-                hidden={!isOpen}
-              >
-                {options.map((option) => {
-                  const isSelected = selected.code === option.code;
-                  const isDisabled = !isActiveLanguage(option);
-
-                  return (
-                    <li
-                      key={option.code}
-                      role="option"
-                      aria-selected={isSelected}
-                      aria-disabled={isDisabled}
-                      data-disabled={isDisabled ? "true" : "false"}
-                    >
-                      <button
-                        type="button"
-                        className={styles.langItem}
-                        disabled={isDisabled}
-                        aria-disabled={isDisabled}
-                        onClick={() => handleLanguageChoose(option)}
-                      >
-                        <span className={styles.langItemLabel}>
-                          {option.label}
-                        </span>
-
-                        <span
-                          className={styles.langItemName}
-                          dir={option.dir === "rtl" ? "rtl" : "ltr"}
-                        >
-                          {option.name}
-                        </span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+            <UtilityLanguageMenu
+              containerRef={langContainerRef}
+              isOpen={isOpen}
+              selected={selected}
+              options={options}
+              onToggle={toggle}
+              onChoose={choose}
+              styles={styles}
+            />
           </div>
         ) : null}
       </div>

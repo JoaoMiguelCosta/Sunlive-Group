@@ -5,10 +5,11 @@ import { groupRoutes } from "../../brands/group/routes.jsx";
 import { hotelRoutes } from "../../brands/hotel/routes.jsx";
 import { sportsRoutes } from "../../brands/sports/routes.jsx";
 import { travelRoutes } from "../../brands/travel/routes.jsx";
+import AppLoadingFallback from "./AppLoadingFallback.jsx";
 
 export default function AppRoutes() {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<AppLoadingFallback />}>
       <Routes>
         {groupRoutes}
         {travelRoutes}

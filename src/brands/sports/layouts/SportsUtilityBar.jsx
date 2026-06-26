@@ -1,5 +1,5 @@
 import UtilityBar from "../../../shared/components/UtilityBar";
-import { LANG_DEFAULT } from "../../../shared/config/BrandDefault.js";
+import { LANG_DEFAULT } from "../../../shared/config/index.js";
 
 import header from "../config/core/header.js";
 

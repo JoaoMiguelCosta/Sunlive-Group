@@ -1,4 +1,4 @@
-import { withSocialIcons } from "../../../../shared/config/BrandDefault.js";
+import { withSocialIcons } from "../../../../shared/config/index.js";
 
 export const TRAVEL_SOCIALS = withSocialIcons([
   {
