@@ -4,7 +4,7 @@ import wellBeing3 from "../../../assets/facilities/well-being3.webp";
 import wellBeing4 from "../../../assets/facilities/well-being4.webp";
 
 export const wellBeing = {
-  id: "well-being",
+  id: "instalacoes-bem-estar",
   headerLabel: "Bem-estar e Lazer",
   description:
     "Infraestruturas que promovem relaxamento, descompressão e recuperação — ideais para todos os perfis de hóspedes.",

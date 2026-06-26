@@ -4,7 +4,8 @@ import GroupHub from "./GroupHub.jsx";
 import BusinessUnits from "./BusinessUnits.jsx";
 import RegionalOffices from "./RegionalOffices.jsx";
 
-import contactsSection from "../../../../config/sections/home/contacts.js";
+import homePage from "../../../../config/pages/home.js";
+const contactsSection = homePage.sections.contacts;
 
 function isValidObject(value) {
   return value && typeof value === "object" && !Array.isArray(value);

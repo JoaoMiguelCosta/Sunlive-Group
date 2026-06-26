@@ -1,5 +1,6 @@
 import styles from "./DivisionsPanel.module.css";
-import overview from "../../../../config/sections/home/overview.js";
+import homePage from "../../../../config/pages/home.js";
+const overview = homePage.sections.overview;
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;

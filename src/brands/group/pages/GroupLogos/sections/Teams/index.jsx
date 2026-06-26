@@ -1,7 +1,8 @@
 import styles from "../_shared/LogosSection.module.css";
 import LogoGridSection from "../_shared/LogoGridSection";
 
-import teams from "../../../../config/sections/logos/teams.js";
+import logosPage from "../../../../config/pages/logos.js";
+const teams = logosPage.sections.teams;
 
 function hasItems(items) {
   return Array.isArray(items) && items.length > 0;

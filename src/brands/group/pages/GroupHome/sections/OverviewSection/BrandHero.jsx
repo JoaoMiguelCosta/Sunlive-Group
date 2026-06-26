@@ -1,5 +1,6 @@
 import styles from "./BrandHero.module.css";
-import overview from "../../../../config/sections/home/overview.js";
+import homePage from "../../../../config/pages/home.js";
+const overview = homePage.sections.overview;
 
 export default function BrandHero() {
   const src = overview?.brandHero?.imageSrc ?? null;

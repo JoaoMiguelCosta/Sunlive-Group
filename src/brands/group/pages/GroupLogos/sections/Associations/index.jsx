@@ -1,7 +1,8 @@
 import styles from "../_shared/LogosSection.module.css";
 import LogoGridSection from "../_shared/LogoGridSection";
 
-import associations from "../../../../config/sections/logos/associations.js";
+import logosPage from "../../../../config/pages/logos.js";
+const associations = logosPage.sections.associations;
 
 function hasItems(items) {
   return Array.isArray(items) && items.length > 0;

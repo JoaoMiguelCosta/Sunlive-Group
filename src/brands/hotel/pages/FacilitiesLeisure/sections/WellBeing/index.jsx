@@ -11,7 +11,7 @@ export default function WellBeingSection() {
 
   if (!section) return null;
 
-  const sectionId = section.id ?? "well-being";
+  const sectionId = section.id ?? "instalacoes-bem-estar";
   const titleId = `${sectionId}-title`;
   return (
     <section

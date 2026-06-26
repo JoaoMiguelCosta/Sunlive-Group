@@ -1,6 +1,7 @@
 import styles from "./GlobalPresencePanel.module.css";
 
-import presence from "../../../../config/sections/home/presence.js";
+import homePage from "../../../../config/pages/home.js";
+const presence = homePage.sections.presence;
 import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
 
 function isValidText(value) {

@@ -1,7 +1,8 @@
 import styles from "../_shared/LogosSection.module.css";
 import LogoGridSection from "../_shared/LogoGridSection";
 
-import portugueseFederations from "../../../../config/sections/logos/portugueseFederations.js";
+import logosPage from "../../../../config/pages/logos.js";
+const portugueseFederations = logosPage.sections.portugueseFederations;
 
 function hasItems(items) {
   return Array.isArray(items) && items.length > 0;

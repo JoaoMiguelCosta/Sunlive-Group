@@ -1,6 +1,7 @@
 import styles from "./PeopleStatement.module.css";
 
-import people from "../../../../config/sections/home/people.js";
+import homePage from "../../../../config/pages/home.js";
+const people = homePage.sections.people;
 import { IMG_COMMON } from "../../../../../../shared/config/BrandDefault.js";
 
 export default function PeopleStatement() {
