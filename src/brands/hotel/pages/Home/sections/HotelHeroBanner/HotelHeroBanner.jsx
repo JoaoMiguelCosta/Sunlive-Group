@@ -221,7 +221,7 @@ export default function HotelHeroBanner() {
                     )}
                     poster={scene.posterSrc}
                     playsInline
-                    preload={isActive ? "auto" : "metadata"}
+                    preload={isActive ? "auto" : "none"}
                     style={{
                       objectPosition: scene.imagePosition ?? "center center",
                     }}
