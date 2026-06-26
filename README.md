@@ -30,7 +30,7 @@ Aplicação web multi-brand para o grupo Sunlive, desenvolvida como SPA (Single 
 - Error Boundary global com fallback visual
 - React StrictMode ativo
 - Scroll para o topo em cada mudança de rota
-- Gestão de idioma com `useLangMenu`
+- Traduções para inglês e árabe ainda não implementadas; atualmente, o conteúdo do site está disponível apenas em português
 - Modais de vídeo com focus trap e restauração de foco
 - UtilityBar partilhado com `<Link>` para rotas internas e `<a>` para externas
 
@@ -239,12 +239,14 @@ Recomenda-se compressão e/ou CDN antes de produção com tráfego elevado.
 - Sitemap não gerado — domínio de produção não confirmado
 - SEO por rota não disponível — esta é uma SPA sem prerendering
 
+
 ## Limitações conhecidas
 
 - Sem testes automatizados (unitários, integração ou e2e)
 - Sem variáveis de ambiente configuradas
 - Sem SSR nem prerendering
 - Sitemap ausente (domínio de produção não confirmado)
+- Traduções para inglês e árabe ainda não implementadas; atualmente, o conteúdo do site está disponível apenas em português
 - Vídeos de grande dimensão sem compressão ou CDN
 - Conformidade WCAG não auditada formalmente
 
