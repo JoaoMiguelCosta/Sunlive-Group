@@ -267,37 +267,159 @@ Os vídeos públicos estão em `public/media/` e são referenciados diretamente 
 
 Estes ficheiros não são processados pelo Vite.
 
+A auditoria da Fase 8 identificou:
+
+* 23 ficheiros de vídeo;
+* aproximadamente 298,94 MB de vídeo no total;
+* 242 imagens em `src/`, com aproximadamente 49,2 MB;
+* imagens raster já armazenadas em formato WebP;
+* 12 posters WebP entre aproximadamente 60 KB e 181 KB.
+
 ### Estratégia de carregamento de vídeos
 
-**Vídeos de preview (Sports):** Exibidos como cards animados nas páginas de academias, training camps e eventos. Carregam com `preload="none"` e iniciam playback via `IntersectionObserver` quando o card entra no viewport. Controlados por componentes `SportsFeatureCardMedia`, `ProgramSportCardMedia` e `EventsModalitiesVideoHighlights`.
+#### Vídeos de preview da Sunlive Sports
 
-**Vídeos completos (Sports):** Exibidos apenas em modais após clique do utilizador. O elemento `<video>` só é inserido no DOM quando o modal abre — nenhuma transferência ocorre antes de interação. Usam `preload="metadata"` e o hook `useVideoDialogBehavior` para autoplay, focus trap e limpeza ao fechar.
+Os vídeos de preview são apresentados em cards animados nas páginas de academias, estágios desportivos e eventos.
 
-**Vídeo hero (Hotel):** Terceira cena do banner hero da página Hotel. Usa `preload="none"` enquanto inativo e `preload="auto"` ao tornar-se ativo (requer 2 cliques em "Avançar"). O poster é pré-carregado via `preloadSceneMedia`.
+Estes vídeos:
+
+* utilizam `preload="none"`;
+* são observados através de `IntersectionObserver`;
+* iniciam a reprodução quando o respetivo card entra no viewport;
+* não são todos descarregados imediatamente durante o carregamento inicial;
+* utilizam posters WebP enquanto o conteúdo de vídeo não está disponível.
+
+O comportamento é gerido, consoante a página, por componentes como:
+
+* `SportsFeatureCardMedia`;
+* `ProgramSportCardMedia`;
+* `EventsModalitiesVideoHighlights`.
+
+#### Vídeos completos da Sunlive Sports
+
+Os vídeos completos são apresentados apenas em modais, depois de uma interação do utilizador.
+
+O elemento `<video>` é inserido no DOM apenas quando o modal é aberto. Desta forma, os ficheiros completos não são descarregados antecipadamente.
+
+Estes vídeos utilizam:
+
+* `preload="metadata"`;
+* reprodução iniciada após interação;
+* focus trap;
+* fecho com `Escape`;
+* restauração do foco;
+* limpeza e pausa ao fechar o modal.
+
+Este comportamento é suportado pelo hook `useVideoDialogBehavior`.
+
+#### Vídeo hero da Sunlive Hotel
+
+O vídeo do Hotel corresponde à terceira cena do banner principal.
+
+Enquanto a cena está inativa, o vídeo utiliza:
+
+```html
+preload="none"
+```
+
+Quando a cena se torna ativa, passa a utilizar:
+
+```html
+preload="auto"
+```
+
+O respetivo poster é pré-carregado através de `preloadSceneMedia`.
+
+A reprodução é iniciada diretamente no contexto da interação do utilizador, sem adiamento através de `requestAnimationFrame`. Esta abordagem permite que o browser reconheça o gesto do utilizador e autorize a reprodução com áudio.
+
+O vídeo utiliza:
+
+* `playsInline`;
+* poster WebP;
+* volume definido em `0.82`;
+* áudio AAC;
+* frequência de áudio de 48 kHz;
+* dois canais de áudio.
+
+Caso o browser bloqueie a reprodução automática com som, existe um fallback para reprodução silenciosa.
+
+### Resultados da otimização dos vídeos
+
+Os 11 vídeos de preview da Sunlive Sports foram comprimidos e mantiveram qualidade visual adequada.
+
+| Media                  |    Antes |   Depois |          Redução |
+| ---------------------- | -------: | -------: | ---------------: |
+| 11 previews Sports     | 47,54 MB | 11,07 MB | 36,47 MB — 76,7% |
+| Vídeo hero Hotel       | 13,59 MB | 13,59 MB |             0 MB |
+| Total destes ficheiros | 61,13 MB | 24,66 MB | 36,47 MB — 59,7% |
+
+A primeira versão otimizada do vídeo hero do Hotel reduziu o ficheiro para aproximadamente 10,04 MB, mas removeu a faixa de áudio.
+
+Essa versão não foi mantida.
+
+O ficheiro original foi restaurado, preservando:
+
+* aproximadamente 13,59 MB;
+* áudio AAC;
+* frequência de 48 kHz;
+* dois canais de áudio;
+* reprodução com som após interação do utilizador.
 
 ### Tamanhos atuais dos vídeos
 
-| Pasta                      | Tipo             | Dimensão após Fase 8  |
-| -------------------------- | ---------------- | --------------------- |
-| `public/media/sports/*/`   | Previews         | 0.6–1.6 MB por ficheiro |
-| `public/media/sports/*/`   | Vídeos completos | 12–30 MB por ficheiro (originais mantidos — já têm faststart) |
-| `public/media/hotel/home/` | Vídeo hero       | 10 MB (sem áudio) |
+| Pasta                      | Tipo             | Dimensão após a Fase 8                  |
+| -------------------------- | ---------------- | --------------------------------------- |
+| `public/media/sports/*/`   | Previews         | Aproximadamente 0,6–1,6 MB por ficheiro |
+| `public/media/sports/*/`   | Vídeos completos | Aproximadamente 12–30 MB por ficheiro   |
+| `public/media/hotel/home/` | Vídeo hero       | Aproximadamente 13,59 MB, com áudio     |
+
+Os vídeos completos da Sunlive Sports foram mantidos porque novas tentativas de codificação com qualidade visual equivalente produziram ficheiros maiores.
 
 ### Posters
 
-Cada vídeo de preview e modal tem um poster `.webp` (60–181 KB) referenciado no atributo `poster`. Os posters evitam flash preto e são exibidos enquanto o vídeo carrega.
+Cada vídeo de preview e modal possui um poster `.webp`, com tamanhos entre aproximadamente 60 KB e 181 KB.
+
+Os posters:
+
+* evitam um fundo preto antes do carregamento;
+* apresentam uma imagem estável enquanto o vídeo não está disponível;
+* reduzem a perceção de espera;
+* preservam o enquadramento visual do card ou modal.
 
 ### Lazy loading de imagens
 
-A maioria das imagens utiliza a constante `IMG_COMMON` (`loading: "lazy"`, `decoding: "async"`). As imagens acima da dobra usam `loading="eager"` e `fetchPriority="high"` onde apropriado.
+A maioria das imagens utiliza a configuração partilhada `IMG_COMMON`, com:
 
-### Limitações restantes
+```js
+{
+  loading: "lazy",
+  decoding: "async"
+}
+```
 
-* Vídeos completos Sports (12–30 MB) apenas descarregam ao abrir o modal. Re-encoding com qualidade visualmente equivalente produzia ficheiros maiores — originais mantidos.
-* CDN de vídeo não implementada. Os assets são servidos diretamente pela Vercel.
-* Imagens WebP existentes (242 ficheiros, 49 MB em src/) não foram recomprimidas — sem ferramentas de compressão de imagem no ambiente atual.
+As imagens acima da dobra utilizam carregamento imediato quando necessário.
 
-Consultar `docs/PERFORMANCE_MEDIA_AUDIT.md` para relatório completo.
+Foram também aplicados, consoante o contexto:
+
+* `loading="lazy"` em imagens secundárias;
+* `decoding="async"`;
+* `loading="eager"` em imagens críticas;
+* `fetchPriority="high"` apenas quando apropriado para conteúdo inicial.
+
+### Limitações de performance restantes
+
+* Os vídeos completos da Sunlive Sports continuam a ter aproximadamente 12–30 MB por ficheiro.
+* Estes vídeos apenas são descarregados quando o utilizador abre o respetivo modal.
+* O vídeo hero do Hotel mantém aproximadamente 13,59 MB.
+* Uma futura otimização do vídeo do Hotel deverá preservar obrigatoriamente a faixa de áudio.
+* Não está implementada uma CDN especializada em vídeo ou streaming.
+* Os media são servidos diretamente pela Vercel.
+* As 242 imagens WebP em `src/`, com aproximadamente 49,2 MB, não foram recomprimidas.
+* Não estavam disponíveis ferramentas específicas de compressão de imagem durante esta fase.
+* Não foi executada uma auditoria Lighthouse.
+* Não foram recolhidos valores formais de LCP, CLS, TBT ou INP.
+
+Consultar `docs/PERFORMANCE_MEDIA_AUDIT.md` para o relatório técnico completo.
 
 ## Acessibilidade
 
@@ -382,7 +504,12 @@ Não deve ser definido um único canonical para `/sunlive-group` no `index.html`
 * Traduções para inglês e árabe ainda não implementadas
 * Conteúdo atualmente disponível apenas em português
 * Layout RTL da futura versão árabe ainda não implementado
-* Vídeos completos Sports (12–30 MB) sem CDN especializada em streaming
+* Vídeos completos Sports entre aproximadamente 12 MB e 30 MB
+* Vídeo hero do Hotel com aproximadamente 13,59 MB
+* CDN especializada em vídeo ou streaming ainda não implementada
+* Imagens WebP ainda não recomprimidas
+* Lighthouse ainda não executado
+* Métricas formais de Core Web Vitals ainda não recolhidas
 * Conformidade WCAG não auditada formalmente
 * Validação manual com screen reader ainda não realizada
 
