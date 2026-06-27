@@ -252,6 +252,7 @@ export default function ProgramSportCardMedia({ item, className = "" }) {
             alt={media.alt}
             className={styles.image}
             loading="lazy"
+            decoding="async"
           />
 
           <span className={styles.mediaOverlay} aria-hidden="true" />

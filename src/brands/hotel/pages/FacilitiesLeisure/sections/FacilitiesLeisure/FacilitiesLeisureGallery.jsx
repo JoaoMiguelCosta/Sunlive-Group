@@ -327,6 +327,7 @@ export default function FacilitiesLeisureGallery() {
                   alt=""
                   aria-hidden="true"
                   loading="lazy"
+                  decoding="async"
                   style={{
                     objectPosition: getImagePosition(previousItem),
                     objectFit: getImageFitMode(previousItem),
@@ -346,6 +347,7 @@ export default function FacilitiesLeisureGallery() {
                 src={displayItem.src}
                 alt={displayItem.alt}
                 loading="eager"
+                decoding="async"
                 style={{
                   objectPosition: getImagePosition(displayItem),
                   objectFit: getImageFitMode(displayItem),

@@ -53,7 +53,13 @@ export default function TestimonialCard({
       <footer className={styles.footer}>
         <div className={styles.avatarWrap} aria-hidden="true">
           {avatar ? (
-            <img src={avatar} alt="" className={styles.avatarImg} />
+            <img
+              src={avatar}
+              alt=""
+              className={styles.avatarImg}
+              loading="lazy"
+              decoding="async"
+            />
           ) : (
             <span className={styles.avatarFallback}>
               <span className={styles.avatarInitial}>

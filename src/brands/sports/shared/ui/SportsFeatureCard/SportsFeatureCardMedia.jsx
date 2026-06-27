@@ -1,8 +1,11 @@
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { useVideoDialogBehavior } from "../../hooks/useVideoDialogBehavior.js";
 import styles from "./SportsFeatureCardMedia.module.css";
+
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+const VIDEO_VIEW_THRESHOLD = 0.35;
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;
@@ -105,15 +108,66 @@ function VideoFrame({ isOpen, media, titleId, onClose }) {
 export default function SportsFeatureCardMedia({ media }) {
   const modalTitleId = useId();
   const previewVideoRef = useRef(null);
+  const mediaFrameRef = useRef(null);
 
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-
-  if (!media) return null;
 
   const previewSrc = getPreviewSrc(media);
   const posterSrc = getPosterSrc(media);
   const posterAlt = getPosterAlt(media);
   const fullSrc = getFullSrc(media);
+
+  useEffect(() => {
+    if (!previewSrc || !previewVideoRef.current || !mediaFrameRef.current) {
+      return undefined;
+    }
+
+    const video = previewVideoRef.current;
+    const frame = mediaFrameRef.current;
+    const motionQuery = window.matchMedia(REDUCED_MOTION_QUERY);
+
+    function pauseVideo() {
+      video.pause();
+    }
+
+    function playVideo() {
+      if (motionQuery.matches || isVideoOpen) {
+        pauseVideo();
+        return;
+      }
+
+      const playPromise = video.play();
+
+      if (playPromise?.catch) {
+        playPromise.catch(() => {});
+      }
+    }
+
+    if (motionQuery.matches) {
+      pauseVideo();
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          playVideo();
+        } else {
+          pauseVideo();
+        }
+      },
+      { threshold: VIDEO_VIEW_THRESHOLD },
+    );
+
+    observer.observe(frame);
+
+    return () => {
+      observer.disconnect();
+      pauseVideo();
+    };
+  }, [previewSrc, isVideoOpen]);
+
+  if (!media) return null;
 
   const badgeLabel = media?.badgeLabel || media?.label || "Academia";
   const ctaLabel = media?.ctaLabel || media?.actionLabel || "Ver vídeo";
@@ -149,24 +203,25 @@ export default function SportsFeatureCardMedia({ media }) {
   return (
     <>
       <div className={styles.mediaWrap}>
-        <div className={styles.mediaFrame}>
+        <div ref={mediaFrameRef} className={styles.mediaFrame}>
           {previewSrc ? (
             <video
               ref={previewVideoRef}
               className={styles.video}
               src={previewSrc}
               poster={posterSrc || undefined}
-              autoPlay={media?.autoPlay ?? true}
-              muted={media?.muted ?? true}
-              loop={media?.loop ?? true}
+              muted
+              loop
               playsInline
-              preload="metadata"
+              preload="none"
             />
           ) : posterSrc ? (
             <img
               className={styles.posterImage}
               src={posterSrc}
               alt={posterAlt}
+              loading="lazy"
+              decoding="async"
             />
           ) : null}
 

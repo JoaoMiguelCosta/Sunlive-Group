@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import home from "../../../../config/pages/home.js";
-const heroBanner = home.sections.heroBanner;
 import HotelSectionShell from "../../../../shared/ui/HotelSectionShell/HotelSectionShell.jsx";
 import CTAButton from "../../../../../../shared/ui/CTAButton/CTAButton.jsx";
 
 import styles from "./HotelHeroBanner.module.css";
+
+const heroBanner = home.sections.heroBanner;
 
 function preloadSceneMedia(scenes) {
   scenes.forEach((scene) => {
@@ -147,9 +148,7 @@ export default function HotelHeroBanner() {
     setActiveIndex(index);
 
     if (isVideoScene(nextScene)) {
-      window.requestAnimationFrame(() => {
-        playSceneVideo(nextScene);
-      });
+      playSceneVideo(nextScene);
     }
   };
 
@@ -221,7 +220,7 @@ export default function HotelHeroBanner() {
                     )}
                     poster={scene.posterSrc}
                     playsInline
-                    preload={isActive ? "auto" : "metadata"}
+                    preload={isActive ? "auto" : "none"}
                     style={{
                       objectPosition: scene.imagePosition ?? "center center",
                     }}
@@ -420,3 +419,4 @@ export default function HotelHeroBanner() {
     </section>
   );
 }
+
