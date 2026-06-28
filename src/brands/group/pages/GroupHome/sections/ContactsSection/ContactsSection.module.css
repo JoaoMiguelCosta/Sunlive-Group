@@ -53,10 +53,10 @@
     color: var(--group-accent-primary);
 
     font-family: var(--group-font-display);
-    font-size: clamp(1.55rem, 1.14rem + 1.45vw, 2.65rem);
-    font-weight: 900;
+    font-size: var(--group-section-title-size);
+    font-weight: var(--group-font-weight-black);
     line-height: 1.05;
-    letter-spacing: -0.018em;
+    letter-spacing: var(--group-section-title-tracking);
 
     text-align: center;
 
@@ -139,7 +139,7 @@
 
 @media (max-width: 767.98px) {
     .title {
-        font-size: clamp(1.32rem, 5.2vw, 2rem);
+        font-size: var(--group-section-title-size-md);
     }
 
     .header {
@@ -168,7 +168,7 @@
     }
 
     .title {
-        font-size: clamp(1.16rem, 6vw, 1.58rem);
+        font-size: var(--group-section-title-size-sm);
     }
 
     .container {
