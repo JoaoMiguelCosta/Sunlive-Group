@@ -1,4 +1,5 @@
 import styles from "./GroupHub.module.css";
+import ContactRow from "./ContactRow.jsx";
 
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
@@ -19,26 +20,6 @@ function isValidObject(value) {
 
 function getTelHref(phone) {
   return isValidText(phone) ? phone.replace(/\s+/g, "") : "";
-}
-
-function ContactRow({ href, label, value, mutedLabel, Icon }) {
-  const hasValue = isValidText(value);
-
-  if (!hasValue) {
-    return (
-      <span className={styles.row} aria-label={mutedLabel} aria-disabled="true">
-        <Icon className={styles.icon} width={20} height={20} />
-        <span className={styles.muted}>—</span>
-      </span>
-    );
-  }
-
-  return (
-    <a href={href} className={styles.row} aria-label={label}>
-      <Icon className={styles.icon} width={20} height={20} />
-      <span>{value}</span>
-    </a>
-  );
 }
 
 export default function GroupHub({ data }) {
