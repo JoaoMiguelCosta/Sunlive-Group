@@ -1,4 +1,5 @@
 import styles from "./GroupHub.module.css";
+import disclosureStyles from "./ContactDisclosure.module.css";
 import ContactRow from "./ContactRow.jsx";
 
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
@@ -47,17 +48,17 @@ export default function GroupHub({ data }) {
   if (!hasData) return null;
 
   return (
-    <div className={styles.wrap} id={anchorId}>
+    <div className={`${styles.wrap} ${disclosureStyles.featured}`} id={anchorId}>
       <button
         type="button"
-        className={styles.pill}
+        className={disclosureStyles.pill}
         onClick={toggle}
         aria-expanded={isOpen}
         aria-controls="grouphub-panel"
       >
-        <span className={styles.pillText}>{title}</span>
+        <span className={disclosureStyles.pillText}>{title}</span>
 
-        <span className={styles.caret} aria-hidden="true">
+        <span className={disclosureStyles.caret} aria-hidden="true">
           ⌄
         </span>
       </button>
@@ -65,7 +66,7 @@ export default function GroupHub({ data }) {
       {isOpen ? (
         <div
           id="grouphub-panel"
-          className={styles.card}
+          className={disclosureStyles.card}
           role="region"
           aria-label={`Contactos de ${title}`}
         >

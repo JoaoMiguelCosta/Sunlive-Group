@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 
 import styles from "./ContactsGrid.module.css";
+import disclosureStyles from "./ContactDisclosure.module.css";
 import ContactRow from "./ContactRow.jsx";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
@@ -142,14 +143,14 @@ export default function BusinessUnits({ items = [] }) {
           >
             <button
               type="button"
-              className={styles.pill}
+              className={disclosureStyles.pill}
               onClick={() => toggle(item.key)}
               aria-expanded={open}
               aria-controls={panelId}
             >
-              <span className={styles.pillText}>{item.label}</span>
+              <span className={disclosureStyles.pillText}>{item.label}</span>
 
-              <span className={styles.caret} aria-hidden="true">
+              <span className={disclosureStyles.caret} aria-hidden="true">
                 ⌄
               </span>
             </button>
@@ -157,7 +158,7 @@ export default function BusinessUnits({ items = [] }) {
             {open ? (
               <div
                 id={panelId}
-                className={styles.card}
+                className={disclosureStyles.card}
                 role="region"
                 aria-label={`Contactos de ${item.label}`}
               >
