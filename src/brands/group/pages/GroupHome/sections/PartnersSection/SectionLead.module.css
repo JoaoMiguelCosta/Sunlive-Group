@@ -21,9 +21,9 @@
 
     margin: 0;
 
-    color: var(--group-accent-primary, #daddc0);
+    color: var(--group-accent-primary);
 
-    font-family: var(--sl-ff-display, "Orbitron", system-ui, sans-serif);
+    font-family: var(--group-font-display);
     font-size: clamp(1.55rem, 1.14rem + 1.45vw, 2.65rem);
     font-weight: 900;
     line-height: 1.05;
@@ -41,7 +41,7 @@
 
     max-inline-size: 48rem;
 
-    color: var(--group-text-secondary, #ced8cf);
+    color: var(--group-text-secondary);
 
     font-size: clamp(0.9rem, 0.82rem + 0.28vw, 1rem);
     font-weight: 500;

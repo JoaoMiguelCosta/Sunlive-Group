@@ -14,10 +14,8 @@
 
   box-sizing: border-box;
 
-  color: var(--group-text-primary, var(--sl-color-text, #f6f7ed));
+  color: var(--group-text-primary);
   background: transparent;
-
-  --partners-section-max: 1360px;
 
   --partners-card-max: clamp(14rem, 24vw, 25rem);
   --partners-grid-gap: clamp(0.85rem, 1.8vw, 1.25rem);

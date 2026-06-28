@@ -1,6 +1,7 @@
 .shell {
-    --group-page-max-width: 1360px;
-    --section-inset: clamp(0.75rem, 4vw, 2.5rem);
+    /* --section-inset mantido como alias local para compatibilidade com
+       componentes partilhados (Footer, UtilityBar) que herdam esta var. */
+    --section-inset: var(--group-section-inset);
 
     position: relative;
     isolation: isolate;
@@ -9,8 +10,8 @@
     min-block-size: 100dvh;
     overflow: clip;
 
-    color: var(--group-text-primary, var(--sl-color-text, #f6f7ed));
-    background-color: var(--group-background, #1e2e24);
+    color: var(--group-text-primary);
+    background-color: var(--group-background);
 }
 
 .shell>* {
@@ -22,7 +23,7 @@
     position: relative;
     isolation: isolate;
 
-    inline-size: min(calc(100% - (2 * var(--section-inset))),
+    inline-size: min(calc(100% - (2 * var(--group-section-inset))),
             var(--group-page-max-width));
     max-inline-size: var(--group-page-max-width);
     margin-inline: auto;
@@ -30,7 +31,7 @@
     overflow: clip;
     box-sizing: border-box;
 
-    color: var(--group-text-primary, var(--sl-color-text, #f6f7ed));
+    color: var(--group-text-primary);
     background: transparent;
 }
 
@@ -43,7 +44,7 @@
 }
 
 .headerInner {
-    inline-size: min(calc(100% - (2 * var(--section-inset))),
+    inline-size: min(calc(100% - (2 * var(--group-section-inset))),
             var(--group-page-max-width));
     max-inline-size: var(--group-page-max-width);
     margin-inline: auto;
@@ -53,6 +54,8 @@
 
 .headerInner :global(.utilityBar),
 .headerInner :global(aside[class*="utilityBar"]) {
+    /* Dívida técnica: seletor frágil que depende do nome da classe gerada
+   pelo CSS Module. Não há alternativa sem alterar o JSX. */
     inline-size: 100%;
 }
 
@@ -129,6 +132,7 @@
 @media (max-width: 420px) {
     .shell {
         --section-inset: 0.75rem;
+        --group-section-inset: 0.75rem;
     }
 
     .contentFlow {
