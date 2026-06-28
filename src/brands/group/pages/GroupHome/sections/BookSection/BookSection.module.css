@@ -63,9 +63,9 @@
     color: var(--group-text-primary);
 
     font: inherit;
-    font-weight: 850;
+    font-weight: var(--group-font-weight-heavy);
     line-height: 1.1;
-    letter-spacing: -0.012em;
+    letter-spacing: var(--group-control-label-tracking);
 
     text-decoration: none;
     cursor: pointer;
@@ -97,9 +97,9 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    font-size: clamp(0.96rem, 0.86rem + 0.28vw, 1.14rem);
+    font-size: var(--group-control-label-size);
     line-height: 1.15;
-    letter-spacing: -0.012em;
+    letter-spacing: var(--group-control-label-tracking);
 
     text-align: center;
 
@@ -183,7 +183,7 @@
     }
 
     .label {
-        font-size: clamp(0.9rem, 1.6vw, 1.04rem);
+        font-size: var(--group-control-label-size-md);
     }
 }
 
@@ -226,7 +226,7 @@
     }
 
     .label {
-        font-size: 0.9rem;
+        font-size: var(--group-control-label-size-sm);
     }
 
     .arrow {
@@ -251,7 +251,7 @@
     }
 
     .label {
-        font-size: 0.84rem;
+        font-size: var(--group-control-label-size-xs);
     }
 
     .arrow {
