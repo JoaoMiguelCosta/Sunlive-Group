@@ -248,25 +248,19 @@
     filter: saturate(0.62);
 }
 
-.pill--malta .pillContent {
-    transform: translateX(2px);
-}
+
 
 .pill--qatar .pillContent {
-    transform: translateX(1px);
+    transform: translateX(-2px);
 }
 
 .pill--kuwait .pillContent {
-    transform: translateX(6px);
+    transform: translateX(1px);
 }
 
-.pill--lebanon .pillContent {
-    transform: translateX(13px);
-}
 
-.pill--iraq .pillContent {
-    transform: translateX(-5px);
-}
+
+
 
 @media (max-width: 1099px) {
     .directory {
