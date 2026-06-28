@@ -1,6 +1,6 @@
 import styles from "./GroupHub.module.css";
 import disclosureStyles from "./ContactDisclosure.module.css";
-import ContactRow from "./ContactRow.jsx";
+import OfficeCard from "./OfficeCard.jsx";
 
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
@@ -64,28 +64,15 @@ export default function GroupHub({ data }) {
       </button>
 
       {isOpen ? (
-        <div
+        <OfficeCard
           id="grouphub-panel"
-          className={disclosureStyles.card}
-          role="region"
-          aria-label={`Contactos de ${title}`}
-        >
-          <ContactRow
-            href={`mailto:${email}`}
-            label={`Enviar email para ${email}`}
-            mutedLabel="Email indisponível"
-            value={email}
-            Icon={MailIcon}
-          />
-
-          <ContactRow
-            href={`tel:${telHref}`}
-            label={`Ligar para ${phone}`}
-            mutedLabel="Telefone indisponível"
-            value={phone}
-            Icon={PhoneIcon}
-          />
-        </div>
+          label={title}
+          email={email}
+          phone={phone}
+          telHref={telHref}
+          MailIcon={MailIcon}
+          PhoneIcon={PhoneIcon}
+        />
       ) : null}
     </div>
   );
