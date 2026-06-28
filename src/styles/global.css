@@ -1,0 +1,100 @@
+/* =========================================================
+   Sunlive — Global reset e baseline da aplicação
+
+   Importado uma vez em src/app/main.jsx, antes de brands.css.
+   Contém apenas regras verdadeiramente globais que se aplicam
+   a todas as brands sem excepção.
+
+   Não inclui tokens de brand, paletas ou estilos temáticos.
+   ========================================================= */
+
+/* Tokens partilhados por todas as brands
+   Tipografia e famílias de fonte comuns ao sistema */
+:root {
+    --sl-ff-ui: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --sl-ff-display: "Orbitron", "Eurostile", var(--sl-ff-ui);
+}
+
+/* Reset universal */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Baseline do documento */
+html {
+    min-inline-size: 320px;
+    overflow-x: clip;
+    color-scheme: dark;
+    background: var(--sl-body-bg, #1e2e24);
+}
+
+/* Baseline do body
+   color e background dependem dos bridge tokens definidos
+   por cada brand em [data-brand="xxx"] no html element */
+body {
+    min-inline-size: 320px;
+    min-block-size: 100dvh;
+
+    margin: 0;
+    padding: 0;
+    overflow-x: clip;
+
+    color: var(--sl-color-text, #f6f7ed);
+    background: var(--sl-body-bg, #1e2e24);
+
+    font-family: var(--sl-ff-ui);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Media inline */
+img,
+picture,
+svg,
+video,
+canvas {
+    display: block;
+    max-inline-size: 100%;
+}
+
+/* Elementos de formulário herdam tipografia do contexto */
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Links sem estilo de agente de utilizador */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Raiz da aplicação */
+#root,
+#app {
+    position: relative;
+    min-block-size: 100dvh;
+}
+
+/* Preferência de movimento reduzido — global */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

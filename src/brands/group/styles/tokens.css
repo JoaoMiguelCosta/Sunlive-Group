@@ -1,0 +1,267 @@
+/* =========================================================
+   Sunlive Group — Design Tokens
+   Deep Forest visual identity
+
+   Todos os tokens estão scoped em [data-brand="group"].
+   data-brand="group" é aplicado em html (ThemeProvider)
+   e no div.shell (GroupShell) — herança total garantida.
+
+   Arquitectura de dois níveis:
+     Primitive  → valores puros da paleta
+     Semantic   → significado visual, consumido pelos componentes
+   ========================================================= */
+
+[data-brand="group"] {
+
+    /* =====================================================
+       1. PRIMITIVE COLORS
+       ===================================================== */
+
+    /* Forest — fundo e superfícies */
+    --group-color-forest-950: #1e2e24;
+    --group-color-forest-800: #294332;
+    --group-color-forest-700: #345640;
+
+    /* Acre — acento principal (creme vegetal) */
+    --group-color-acre-100: #daddc0;
+    --group-color-acre-50:  #edf0d7;
+
+    /* Mint — acento fresco (verde menta) */
+    --group-color-mint-400: #8dd9b4;
+    --group-color-mint-300: #a7e6c7;
+
+    /* Sage — texto secundário e muted */
+    --group-color-sage-200: #ced8cf;
+    --group-color-sage-400: #a7b5aa;
+
+    /* Text on light — escuro profundo para texto sobre acre */
+    --group-color-text-on-light: #f6f7ed;
+
+
+    /* =====================================================
+       2. RGB CHANNELS
+       Usados para composição com opacidade variável.
+       Formato: valores separados por espaço (CSS Color Level 4)
+       ===================================================== */
+
+    --group-accent-primary-rgb:    218 221 192;
+    --group-accent-fresh-rgb:      141 217 180;
+    --group-background-rgb:         30  46  36;
+    --group-surface-primary-rgb:    41  67  50;
+    --group-surface-secondary-rgb:  52  86  64;
+
+
+    /* =====================================================
+       3. BACKGROUNDS E SURFACES
+       ===================================================== */
+
+    --group-background:        var(--group-color-forest-950);
+    --group-surface-primary:   var(--group-color-forest-800);
+    --group-surface-secondary: var(--group-color-forest-700);
+    --group-surface-light:     var(--group-color-acre-100);
+
+
+    /* =====================================================
+       4. TEXT
+       ===================================================== */
+
+    --group-text-primary:   var(--group-color-text-on-light);
+    --group-text-secondary: var(--group-color-sage-200);
+    --group-text-muted:     var(--group-color-sage-400);
+    --group-text-dark:      var(--group-color-forest-950);
+
+
+    /* =====================================================
+       5. ACCENTS
+       ===================================================== */
+
+    --group-accent-primary:       var(--group-color-acre-100);
+    --group-accent-primary-hover: var(--group-color-acre-50);
+    --group-accent-fresh:         var(--group-color-mint-400);
+    --group-accent-fresh-hover:   var(--group-color-mint-300);
+
+
+    /* =====================================================
+       6. BORDERS
+       ===================================================== */
+
+    --group-border-subtle:  rgb(218 221 192 / 14%);
+    --group-border-default: rgb(218 221 192 / 28%);
+    --group-border-strong:  rgb(218 221 192 / 48%);
+
+
+    /* =====================================================
+       7. CARDS
+       ===================================================== */
+
+    --group-card-background:       var(--group-surface-primary);
+    --group-card-background-hover: var(--group-surface-secondary);
+    --group-card-text:             var(--group-text-primary);
+    --group-card-border:           var(--group-border-subtle);
+
+
+    /* =====================================================
+       8. CONTROLS
+       Superfícies interativas leves (hover states em botões
+       ghost, dropdowns, lang switcher)
+       ===================================================== */
+
+    --group-control-bg-hover: rgb(218 221 192 / 10%);
+
+
+    /* =====================================================
+       9. BUTTONS
+       ===================================================== */
+
+    /* Primário — preenchido com acre */
+    --group-button-primary-background:       var(--group-accent-primary);
+    --group-button-primary-background-hover: var(--group-accent-primary-hover);
+    --group-button-primary-text:             var(--group-text-dark);
+    --group-button-primary-border:           var(--group-accent-primary);
+
+    /* Secundário — contorno transparente */
+    --group-button-secondary-background:       transparent;
+    --group-button-secondary-background-hover: var(--group-control-bg-hover);
+    --group-button-secondary-text:             var(--group-accent-primary);
+    --group-button-secondary-border:           var(--group-accent-primary);
+
+
+    /* =====================================================
+       10. FOCUS
+       ===================================================== */
+
+    --group-focus-outline: var(--group-accent-fresh);
+    --group-focus-ring:    rgb(141 217 180 / 30%);
+    --group-focus-shadow:
+        0 0 0 2px var(--group-background),
+        0 0 0 4px var(--group-focus-outline),
+        0 0 1.25rem var(--group-focus-ring);
+
+
+    /* =====================================================
+       11. SHADOWS
+       ===================================================== */
+
+    --group-shadow-xs:           0 2px 6px rgb(8 18 12 / 12%);
+    --group-shadow-sm:           0 6px 16px rgb(8 18 12 / 14%);
+    --group-shadow-card:         0 12px 30px rgb(8 18 12 / 18%);
+    --group-shadow-card-strong:  0 16px 38px rgb(8 18 12 / 22%);
+    --group-shadow-hover:        0 18px 42px rgb(8 18 12 / 24%);
+    --group-shadow-inset-top:    inset 0 1px 0 rgb(218 221 192 / 6%);
+    --group-shadow-inset-bottom: inset 0 -1px 0 rgb(0 0 0 / 12%);
+
+
+    /* =====================================================
+       12. RADII
+       ===================================================== */
+
+    --group-radius-xs:   0.4rem;
+    --group-radius-sm:   0.65rem;
+    --group-radius-md:   1rem;
+    --group-radius-lg:   1.35rem;
+    --group-radius-xl:   1.8rem;
+    --group-radius-2xl:  2.35rem;
+    --group-radius-pill: 999px;
+
+
+    /* =====================================================
+       13. TYPOGRAPHY
+       --group-font-ui e --group-font-display são aliases
+       semânticos sobre os tokens globais --sl-ff-*.
+       Os módulos partilhados podem continuar a usar --sl-ff-*.
+       ===================================================== */
+
+    --group-font-ui:      var(--sl-ff-ui);
+    --group-font-display: var(--sl-ff-display);
+
+    --group-font-weight-normal:    400;
+    --group-font-weight-medium:    500;
+    --group-font-weight-semibold:  600;
+    --group-font-weight-bold:      700;
+    --group-font-weight-extrabold: 800;
+    --group-font-weight-black:     900;
+
+
+    /* =====================================================
+       14. LAYOUT
+       ===================================================== */
+
+    --group-page-max-width: 1360px;
+
+
+    /* =====================================================
+       15. SPACING ESTRUTURAL REUTILIZÁVEL
+       ===================================================== */
+
+    --group-section-inset:   clamp(0.75rem, 4vw, 2.5rem);
+    --group-content-gap-sm:  clamp(1rem, 2vw, 1.5rem);
+    --group-content-gap-md:  clamp(1.5rem, 3vw, 2.5rem);
+    --group-content-gap-lg:  clamp(2rem, 4vw, 4rem);
+
+
+    /* =====================================================
+       16. MOTION
+       ===================================================== */
+
+    --group-duration-fast:     150ms;
+    --group-duration-normal:   240ms;
+    --group-duration-slow:     360ms;
+    --group-duration-entrance: 680ms;
+
+    --group-ease-standard:   cubic-bezier(0.4, 0, 0.2, 1);
+    --group-ease-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+
+    /* =====================================================
+       17. MEDIA EFFECTS
+       Filtros e sombras para imagens e vídeos da brand
+       ===================================================== */
+
+    --group-media-filter:       saturate(1.04) contrast(1.035) brightness(1.02);
+    --group-media-filter-hover: saturate(1.08) contrast(1.05) brightness(1.035);
+    --group-media-drop-shadow:  drop-shadow(0 0.4rem 0.85rem rgb(0 0 0 / 38%));
+
+
+    /* =====================================================
+       18. DIVISION IDENTITIES
+       RGB channels das micro-identidades de cada divisão.
+       Usados em DivisionsPanel para bordas e sombras compostas.
+       Formato: valores separados por espaço (CSS Color Level 4)
+       ===================================================== */
+
+    /* Default / Group */
+    --group-division-default-primary-rgb:   218 221 192;
+    --group-division-default-secondary-rgb: 186 192 168;
+    --group-division-default-depth-rgb:     129 134 113;
+    --group-division-default-side-rgb:      186 192 168;
+
+    /* Travel */
+    --group-division-travel-primary-rgb:    100 160 180;
+    --group-division-travel-secondary-rgb:   80 130 150;
+    --group-division-travel-depth-rgb:       55  95 110;
+    --group-division-travel-side-rgb:        90 140 160;
+
+    /* Business */
+    --group-division-business-primary-rgb:  180 190 175;
+    --group-division-business-secondary-rgb:150 162 148;
+    --group-division-business-depth-rgb:    110 122 108;
+    --group-division-business-side-rgb:     160 172 158;
+
+    /* Sports */
+    --group-division-sports-primary-rgb:    130 200 160;
+    --group-division-sports-secondary-rgb:  100 168 132;
+    --group-division-sports-depth-rgb:       72 124  96;
+    --group-division-sports-side-rgb:       110 180 145;
+
+    /* International */
+    --group-division-international-primary-rgb:    155 175 195;
+    --group-division-international-secondary-rgb:  125 145 165;
+    --group-division-international-depth-rgb:       92 112 132;
+    --group-division-international-side-rgb:       140 160 180;
+
+    /* Home */
+    --group-division-home-primary-rgb:    190 210 195;
+    --group-division-home-secondary-rgb:  158 178 163;
+    --group-division-home-depth-rgb:      118 138 122;
+    --group-division-home-side-rgb:       172 192 177;
+}
