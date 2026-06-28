@@ -230,14 +230,14 @@
 }
 
 /* =========================================================
-   Group — Executive Eclipse Gold
+   Group — Deep Forest
    ========================================================= */
 
 :global([data-brand="group"]) .sectionWrap {
-    --ack-accent: var(--group-gold-400, #d8bd78);
-    --ack-accent-bright: var(--group-gold-300, #f0dda6);
-    --ack-border: rgb(216 189 120 / 0.24);
-    --ack-border-strong: rgb(240 221 166 / 0.38);
+    --ack-accent: var(--group-accent-fresh);
+    --ack-accent-bright: var(--group-accent-primary);
+    --ack-border: var(--group-border-subtle);
+    --ack-border-strong: var(--group-border-default);
 
     isolation: isolate;
     overflow: hidden;
@@ -266,24 +266,20 @@
 
     border-color: var(--ack-border-strong);
 
-    background:
-        linear-gradient(180deg,
-            rgb(247 244 236 / 0.045) 0%,
-            rgb(247 244 236 / 0.012) 100%),
-        rgb(30 27 21 / 0.3);
+    background: var(--group-card-background);
 
     box-shadow:
-        inset 0 1px 0 rgb(247 244 236 / 0.05),
-        0 0.6rem 1.25rem rgb(0 0 0 / 0.18),
-        0 0 1rem rgb(216 189 120 / 0.08);
+        inset 0 1px 0 rgb(218 221 192 / 0.04),
+        0 0.6rem 1.25rem rgb(0 0 0 / 0.18);
 }
 
 :global([data-brand="group"]) .click:focus-visible {
     outline: none;
 
     box-shadow:
-        0 0 0 2px rgb(3 3 3 / 0.96),
-        0 0 0 4px rgb(240 221 166 / 0.64),
+        0 0 0 2px var(--group-background),
+        0 0 0 4px var(--group-focus-outline),
+        0 0 1.25rem var(--group-focus-ring),
         0 0.6rem 1.25rem rgb(0 0 0 / 0.18);
 }
 
@@ -488,8 +484,8 @@
     }
 
     :global([data-brand="group"]) .sectionWrap {
-        border-top-color: rgb(216 189 120 / 0.24);
-        border-bottom-color: rgb(216 189 120 / 0.24);
+        border-top-color: rgb(218 221 192 / 0.14);
+        border-bottom-color: rgb(218 221 192 / 0.14);
         background: transparent;
     }
 

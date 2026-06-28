@@ -1,11 +1,6 @@
-/* Partners Section Lead — Sunlive Group / Executive Eclipse Gold */
+/* Partners Section Lead — Sunlive Group / Deep Forest */
 
 .lead {
-    --partners-gold-soft: 255 239 188;
-    --partners-gold: 226 198 130;
-    --partners-gold-core: 199 134 21;
-    --partners-gold-deep: 151 104 40;
-
     inline-size: 100%;
     min-inline-size: 0;
 
@@ -26,7 +21,7 @@
 
     margin: 0;
 
-    color: rgb(var(--partners-gold-soft) / 0.96);
+    color: var(--group-accent-primary, #daddc0);
 
     font-family: var(--sl-ff-display, "Orbitron", system-ui, sans-serif);
     font-size: clamp(1.55rem, 1.14rem + 1.45vw, 2.65rem);
@@ -38,8 +33,7 @@
 
     text-shadow:
         0 1px 0 rgb(0 0 0 / 0.65),
-        0 0.7rem 1.4rem rgb(0 0 0 / 0.34),
-        0 0 1.25rem rgb(var(--partners-gold) / 0.1);
+        0 0.7rem 1.4rem rgb(0 0 0 / 0.34);
 }
 
 .subtitle {
@@ -47,7 +41,7 @@
 
     max-inline-size: 48rem;
 
-    color: rgb(244 239 228 / 0.72);
+    color: var(--group-text-secondary, #ced8cf);
 
     font-size: clamp(0.9rem, 0.82rem + 0.28vw, 1rem);
     font-weight: 500;

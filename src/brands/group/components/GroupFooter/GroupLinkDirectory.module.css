@@ -7,13 +7,7 @@
     padding-block: clamp(1rem, 2vw, 1.45rem);
     padding-inline: clamp(0.9rem, 2.2vw, 1.4rem);
 
-    color: var(--group-platinum-100, var(--sl-platinum-100, #f7f4ec));
-
-    --gd-accent: var(--group-gold-400, #d8bd78);
-    --gd-accent-bright: var(--group-gold-300, #f0dda6);
-    --gd-accent-soft: rgb(240 221 166 / 0.72);
-    --gd-accent-muted: rgb(216 189 120 / 0.34);
-    --gd-accent-deep: var(--group-gold-600, #8f6a2f);
+    color: var(--group-text-primary);
 
     --gd-shell-max: 1360px;
     --gd-inner-gutter: clamp(0.8rem, 1.8vw, 1.2rem);
@@ -78,7 +72,7 @@
 .blockTitle {
     margin: 0;
 
-    color: var(--group-platinum-100, #f7f4ec);
+    color: var(--group-text-primary);
 
     font-size: var(--gd-title-size);
     font-weight: 820;
@@ -87,9 +81,7 @@
     text-align: center;
     text-wrap: balance;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.35),
-        0 0 1.2rem rgb(216 189 120 / 0.11);
+    text-shadow: 0 1px 0 rgb(0 0 0 / 0.35);
 }
 
 .leftGrid {
@@ -148,26 +140,17 @@
 
     padding: var(--gd-pill-pad-y) var(--gd-pill-pad-x);
 
-    border: 1px solid var(--gd-accent-muted);
+    border: 1px solid var(--group-border-default);
     border-radius: var(--gd-pill-radius);
     box-sizing: border-box;
 
-    color: var(--group-platinum-100, #f7f4ec);
-    background:
-        radial-gradient(110% 150% at 50% 0%,
-            rgb(240 221 166 / 0.105) 0%,
-            transparent 58%),
-        linear-gradient(180deg,
-            rgb(30 27 21 / 0.96) 0%,
-            rgb(13 13 12 / 0.98) 54%,
-            rgb(6 6 6 / 0.99) 100%);
+    color: var(--group-text-primary);
+    background: var(--group-card-background);
 
     box-shadow:
-        inset 0 1px 0 rgb(247 244 236 / 0.06),
+        inset 0 1px 0 rgb(255 255 255 / 0.04),
         inset 0 -1px 0 rgb(0 0 0 / 0.34),
-        0 0 0 1px rgb(240 221 166 / 0.04),
-        0 10px 22px rgb(0 0 0 / 0.22),
-        0 0 1.1rem rgb(216 189 120 / 0.055);
+        0 10px 22px rgb(0 0 0 / 0.22);
 
     font-size: var(--gd-pill-text-size);
     font-weight: 730;
@@ -189,50 +172,31 @@
     .pill:hover {
         transform: translateY(-2px);
 
-        color: #fff2bf;
-        border-color: rgb(240 221 166 / 0.68);
-
-        background:
-            radial-gradient(110% 150% at 50% 0%,
-                rgb(255 242 191 / 0.22) 0%,
-                rgb(216 189 120 / 0.12) 36%,
-                transparent 66%),
-            linear-gradient(180deg,
-                rgb(64 49 25 / 0.98) 0%,
-                rgb(34 27 17 / 0.99) 48%,
-                rgb(10 10 9 / 0.99) 100%);
+        color: var(--group-accent-primary);
+        border-color: var(--group-border-strong);
+        background: var(--group-card-background-hover);
 
         box-shadow:
-            inset 0 1px 0 rgb(247 244 236 / 0.12),
-            inset 0 -1px 0 rgb(216 189 120 / 0.16),
+            inset 0 1px 0 rgb(255 255 255 / 0.06),
+            inset 0 -1px 0 rgb(0 0 0 / 0.36),
             0 14px 30px rgb(0 0 0 / 0.3),
-            0 0 0 1px rgb(255 242 191 / 0.12),
-            0 0 1.55rem rgb(240 221 166 / 0.16);
+            var(--group-shadow-hover);
 
-        filter: saturate(1.04) brightness(1.03);
+        filter: saturate(1.04) brightness(1.02);
     }
 }
 
 .pill:focus-visible {
     outline: none;
 
-    color: #fff2bf;
-    border-color: rgb(255 242 191 / 0.78);
-
-    background:
-        radial-gradient(110% 150% at 50% 0%,
-            rgb(255 242 191 / 0.18) 0%,
-            rgb(216 189 120 / 0.095) 34%,
-            transparent 66%),
-        linear-gradient(180deg,
-            rgb(38 32 22 / 0.98) 0%,
-            rgb(16 16 15 / 0.99) 100%);
+    color: var(--group-accent-primary);
+    border-color: var(--group-focus-outline, #8dd9b4);
+    background: var(--group-card-background-hover);
 
     box-shadow:
-        0 0 0 3px rgb(240 221 166 / 0.22),
-        0 0 0 6px rgb(255 242 191 / 0.08),
-        0 14px 30px rgb(0 0 0 / 0.32),
-        inset 0 1px 0 rgb(247 244 236 / 0.12);
+        0 0 0 2px var(--group-background, #1e2e24),
+        0 0 0 4px var(--group-focus-outline, #8dd9b4),
+        0 0 1.25rem var(--group-focus-ring, rgb(141 217 180 / 30%));
 }
 
 .pillContent {
@@ -376,11 +340,9 @@
 
     .pill {
         box-shadow:
-            inset 0 1px 0 rgb(247 244 236 / 0.055),
+            inset 0 1px 0 rgb(255 255 255 / 0.03),
             inset 0 -1px 0 rgb(0 0 0 / 0.32),
-            0 0 0 1px rgb(240 221 166 / 0.035),
-            0 8px 18px rgb(0 0 0 / 0.18),
-            0 0 0.9rem rgb(216 189 120 / 0.045);
+            0 8px 18px rgb(0 0 0 / 0.18);
     }
 }
 

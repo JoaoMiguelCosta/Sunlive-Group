@@ -8,7 +8,7 @@ html {
     min-inline-size: 320px;
     overflow-x: clip;
     color-scheme: dark;
-    background: #030303;
+    background: #1e2e24;
 }
 
 body {
@@ -19,8 +19,8 @@ body {
     padding: 0;
     overflow-x: clip;
 
-    color: var(--sl-color-text, #f4f4f1);
-    background: var(--sl-body-bg, #030303);
+    color: var(--sl-color-text, #f6f7ed);
+    background: var(--sl-body-bg, #1e2e24);
 
     font-family: var(--sl-ff-ui);
     font-synthesis: none;
@@ -62,93 +62,61 @@ a {
 }
 
 /* =========================================================
-   Sunlive Group — Executive Eclipse Gold
+   Sunlive Group — Deep Forest
    Marca-mãe institucional premium.
-   Preto/grafite neutro + dourado executivo forte.
+   Verde floresta profundo + acre claro.
    Sem azul Travel, sem calor Hotel, sem técnica Sports.
 ========================================================= */
 
 :root {
-    /* Base neutra */
-    --group-black: #030303;
-    --group-eclipse-990: #050505;
-    --group-eclipse-970: #080808;
-    --group-eclipse-950: #0b0b0b;
-    --group-graphite-930: #111111;
-    --group-graphite-900: #161616;
-    --group-graphite-860: #1d1d1d;
-    --group-charcoal-820: #282725;
+    /* Fundos */
+    --group-background: #1e2e24;
+    --group-surface-primary: #294332;
+    --group-surface-secondary: #345640;
+    --group-surface-light: #daddc0;
 
     /* Texto */
-    --group-platinum-100: #f7f4ec;
-    --group-platinum-200: #e9e4d8;
-    --group-platinum-300: #d3cab8;
-    --group-muted: rgb(233 228 216 / 0.74);
-    --group-muted-strong: rgb(233 228 216 / 0.58);
-    --group-muted-soft: rgb(233 228 216 / 0.4);
+    --group-text-primary: #f6f7ed;
+    --group-text-secondary: #ced8cf;
+    --group-text-muted: #a7b5aa;
+    --group-text-dark: #1e2e24;
 
-    /* Dourado executivo — assinatura principal */
-    --group-gold-800: #4c3514;
-    --group-gold-700: #6f4d1d;
-    --group-gold-600: #8f6a2f;
-    --group-gold-500: #b89455;
-    --group-gold-400: #d8bd78;
-    --group-gold-300: #f0dda6;
-    --group-gold-200: #fff2bf;
-
-    /* Superfícies */
-    --group-surface-dark: rgb(7 7 7 / 0.92);
-    --group-surface-panel: rgb(17 17 17 / 0.84);
-    --group-surface-soft: rgb(29 29 29 / 0.68);
-    --group-surface-glass: rgb(247 244 236 / 0.052);
-    --group-surface-gold: rgb(216 189 120 / 0.09);
+    /* Acre — assinatura principal */
+    --group-accent-primary: #daddc0;
+    --group-accent-primary-hover: #edf0d7;
+    --group-accent-fresh: #8dd9b4;
+    --group-accent-fresh-hover: #a7e6c7;
 
     /* Bordas */
-    --group-border-soft: rgb(247 244 236 / 0.09);
-    --group-border: rgb(216 189 120 / 0.34);
-    --group-border-strong: rgb(240 221 166 / 0.54);
-    --group-border-bright: rgb(255 242 191 / 0.68);
+    --group-border-subtle: rgb(218 221 192 / 14%);
+    --group-border-default: rgb(218 221 192 / 28%);
+    --group-border-strong: rgb(218 221 192 / 48%);
 
-    /* Linhas e brilhos */
-    --group-gold-glow-soft: rgb(216 189 120 / 0.14);
-    --group-gold-glow-medium: rgb(184 148 85 / 0.22);
-    --group-gold-glow-strong: rgb(240 221 166 / 0.28);
+    /* Botão primário */
+    --group-button-primary-background: var(--group-accent-primary);
+    --group-button-primary-background-hover: var(--group-accent-primary-hover);
+    --group-button-primary-text: var(--group-text-dark);
+    --group-button-primary-border: var(--group-accent-primary);
 
-    --group-gold-line:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(240 221 166 / 0.72) 18%,
-            rgb(184 148 85 / 0.72) 50%,
-            rgb(240 221 166 / 0.72) 82%,
-            transparent 100%);
+    /* Botão secundário */
+    --group-button-secondary-background: transparent;
+    --group-button-secondary-background-hover: rgb(218 221 192 / 10%);
+    --group-button-secondary-text: var(--group-accent-primary);
+    --group-button-secondary-border: var(--group-accent-primary);
 
-    --group-gold-line-soft:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(216 189 120 / 0.42) 24%,
-            rgb(240 221 166 / 0.52) 50%,
-            rgb(216 189 120 / 0.42) 76%,
-            transparent 100%);
+    /* Cartões */
+    --group-card-background: var(--group-surface-primary);
+    --group-card-background-hover: var(--group-surface-secondary);
+    --group-card-text: var(--group-text-primary);
+    --group-card-border: var(--group-border-subtle);
+
+    /* Foco */
+    --group-focus-outline: var(--group-accent-fresh);
+    --group-focus-ring: rgb(141 217 180 / 30%);
 
     /* Sombras */
-    --group-shadow-soft:
-        0 18px 54px rgb(0 0 0 / 0.36),
-        0 0 0 1px rgb(216 189 120 / 0.1);
-
-    --group-shadow-card:
-        0 24px 70px rgb(0 0 0 / 0.44),
-        0 0 0 1px rgb(216 189 120 / 0.14),
-        0 0 42px rgb(184 148 85 / 0.08);
-
-    --group-shadow-hover:
-        0 30px 88px rgb(0 0 0 / 0.54),
-        0 0 0 1px rgb(240 221 166 / 0.24),
-        0 0 54px rgb(216 189 120 / 0.14);
-
-    --group-shadow-gold:
-        0 0 0 1px rgb(240 221 166 / 0.32),
-        0 14px 42px rgb(0 0 0 / 0.42),
-        0 0 32px rgb(216 189 120 / 0.16);
+    --group-shadow-card: 0 12px 30px rgb(8 18 12 / 18%);
+    --group-shadow-hover: 0 18px 42px rgb(8 18 12 / 24%);
 
     /* Radius */
     --group-radius-sm: 0.65rem;
@@ -167,79 +135,38 @@ a {
     --sl-baseline: 1.25rem;
     --sl-radius-sm: var(--group-radius-sm);
 
-    /* Bridge antiga SL — manter para não partir componentes existentes */
-    --sl-navy-900: var(--group-eclipse-990);
-    --sl-navy-800: var(--group-eclipse-950);
-    --sl-ink-900: rgb(0 0 0 / 0.3);
+    /* Bridge tokens — consumidores nos componentes partilhados */
+    --sl-platinum-100: var(--group-text-primary);
+    --sl-platinum-300: var(--group-text-secondary);
+    --sl-gold-500: var(--group-accent-primary);
+    --sl-gold-400: var(--group-accent-primary);
 
-    --sl-platinum-100: var(--group-platinum-100);
-    --sl-platinum-300: var(--group-platinum-300);
+    --sl-body-bg: var(--group-background);
+    --sl-color-text: var(--group-text-primary);
 
-    --sl-gold-500: var(--group-gold-500);
-    --sl-gold-400: var(--group-gold-400);
+    --accent: var(--group-accent-primary);
+    --accent-2: var(--group-accent-fresh);
 
-    --sl-body-bg: var(--group-black);
-    --sl-color-text: var(--group-platinum-100);
-
-    /* Bridge global */
-    --text-1: var(--group-platinum-100);
-    --text-2: var(--group-muted);
-
-    --accent: var(--group-gold-500);
-    --accent-2: var(--group-gold-400);
-
-    --gray-0: var(--group-black);
-    --gray-1: var(--group-eclipse-970);
-    --gray-2: var(--group-graphite-930);
-    --gray-3: var(--group-graphite-900);
-    --gray-4: var(--group-graphite-860);
-    --gray-5: var(--group-muted-soft);
-    --gray-6: var(--group-muted-strong);
+    --text-1: var(--group-text-primary);
+    --text-2: var(--group-text-secondary);
 
     --font-sans: var(--sl-ff-ui);
 
-    /* Focus */
+
+    /* Foco global */
     --sl-focus:
-        0 0 0 2px var(--group-black),
-        0 0 0 4px rgb(240 221 166 / 0.72);
-
-    /* Sombra antiga adaptada */
-    --sl-shadow-gold: var(--group-shadow-gold);
-
-    /* Fundo institucional */
-    --sl-bg-gradient:
-        linear-gradient(180deg,
-            var(--group-eclipse-970) 0%,
-            var(--group-eclipse-990) 52%,
-            var(--group-black) 100%);
-
-    /* Hero global Executive Eclipse Gold */
-    --grad-hero:
-        radial-gradient(88rem 44rem at 50% -20%,
-            rgb(240 221 166 / 0.22) 0%,
-            rgb(216 189 120 / 0.13) 32%,
-            rgb(184 148 85 / 0.065) 58%,
-            transparent 78%),
-        radial-gradient(70rem 36rem at 16% 4%,
-            rgb(216 189 120 / 0.095) 0%,
-            transparent 70%),
-        radial-gradient(70rem 36rem at 84% 4%,
-            rgb(240 221 166 / 0.085) 0%,
-            transparent 72%),
-        linear-gradient(180deg,
-            var(--group-eclipse-970) 0%,
-            var(--group-eclipse-990) 62%,
-            var(--group-black) 100%);
+        0 0 0 2px var(--group-background),
+        0 0 0 4px var(--group-focus-outline);
 }
 
 [data-brand="group"] {
-    --footer-accent: var(--group-gold-400);
-    --footer-base: var(--group-black);
+    --footer-accent: var(--group-accent-primary);
+    --footer-base: var(--group-background);
 }
 
 [data-brand="group"] ::selection {
-    color: var(--group-black);
-    background: var(--group-gold-300);
+    color: var(--group-text-dark);
+    background: var(--group-accent-primary);
 }
 
 /* Display opcional */
@@ -250,39 +177,19 @@ a {
     text-transform: uppercase;
 }
 
-/* Utilitários antigos refinados */
+/* Cartão padrão Group */
 .u-card-prestige {
     position: relative;
     isolation: isolate;
     overflow: clip;
 
-    border: 1px solid var(--group-border);
+    border: 1px solid var(--group-border-default);
     border-radius: var(--group-radius-lg);
-
-    background:
-        radial-gradient(120% 140% at 0% 0%,
-            rgb(240 221 166 / 0.095) 0%,
-            transparent 46%),
-        linear-gradient(180deg,
-            rgb(247 244 236 / 0.062) 0%,
-            rgb(247 244 236 / 0.026) 100%),
-        var(--group-surface-dark);
-
+    background: var(--group-card-background);
     box-shadow: var(--group-shadow-card);
 }
 
-.u-card-prestige::before {
-    content: "";
-    position: absolute;
-    inset-inline: 1.1rem;
-    inset-block-start: 0;
-    block-size: 1px;
-
-    pointer-events: none;
-    background: var(--group-gold-line-soft);
-    opacity: 0.82;
-}
-
+/* CTA utilitário */
 .u-cta {
     transition:
         transform 180ms ease,

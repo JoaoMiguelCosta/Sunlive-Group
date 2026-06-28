@@ -1,4 +1,4 @@
-/* Partners Section — Sunlive Group / Executive Eclipse Gold */
+/* Partners Section — Sunlive Group / Deep Forest */
 
 .section {
   position: relative;
@@ -14,23 +14,13 @@
 
   box-sizing: border-box;
 
-  color: var(--sl-platinum-100, #f4f7fc);
+  color: var(--group-text-primary, var(--sl-color-text, #f6f7ed));
   background: transparent;
 
   --partners-section-max: 1360px;
 
   --partners-card-max: clamp(14rem, 24vw, 25rem);
   --partners-grid-gap: clamp(0.85rem, 1.8vw, 1.25rem);
-
-  --partners-gold-soft: 255 239 188;
-  --partners-gold: 226 198 130;
-  --partners-gold-core: 199 134 21;
-  --partners-gold-deep: 151 104 40;
-
-  --partners-noir-950: 2 2 1;
-  --partners-noir-900: 5 4 3;
-  --partners-noir-850: 8 7 5;
-  --partners-noir-800: 12 10 7;
 }
 
 .section>* {
