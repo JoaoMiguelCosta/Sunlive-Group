@@ -523,9 +523,9 @@
     inline-size: 25px;
     block-size: 25px;
 
-    border: 1px solid var(--group-border-default);
+    border: 1px solid var(--info-border-strong);
 
-    color: var(--group-accent-fresh);
+    color: var(--info-accent);
 
     background: var(--group-card-background);
 
@@ -630,9 +630,9 @@
     inline-size: 35px;
     block-size: 35px;
 
-    border: 1px solid var(--group-border-default);
+    border: 1px solid var(--info-border-strong);
 
-    color: var(--group-accent-fresh);
+    color: var(--info-accent);
 
     background: var(--group-card-background);
 
@@ -646,7 +646,7 @@
     transform: translateY(-1px);
 
     border-color: var(--group-border-strong);
-    color: var(--group-accent-primary);
+    color: var(--info-accent-bright);
 
     background: var(--group-card-background-hover);
 
