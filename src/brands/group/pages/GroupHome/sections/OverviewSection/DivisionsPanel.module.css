@@ -228,7 +228,7 @@
 
     font-family: var(--sl-ff-display, "Orbitron", "Eurostile", var(--sl-ff-ui));
     font-size: clamp(0.82rem, 0.95vw, 0.95rem);
-    font-weight: 800;
+    font-weight: var(--group-font-weight-extrabold);
     line-height: 1;
     letter-spacing: 0.06em;
 
@@ -246,7 +246,7 @@
 
     font-family: var(--sl-ff-ui, system-ui);
     font-size: clamp(0.52rem, 0.68vw, 0.6rem);
-    font-weight: 600;
+    font-weight: var(--group-font-weight-semibold);
     line-height: 1;
     letter-spacing: 0.08em;
 
@@ -277,7 +277,7 @@
 
     font-family: var(--sl-ff-ui, system-ui);
     font-size: clamp(0.54rem, 0.58vw, 0.66rem);
-    font-weight: 900;
+    font-weight: var(--group-font-weight-black);
     line-height: 1;
     letter-spacing: 0.055em;
     text-transform: uppercase;

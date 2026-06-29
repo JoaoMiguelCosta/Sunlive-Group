@@ -44,7 +44,7 @@
     color: var(--group-text-secondary);
 
     font-size: clamp(0.9rem, 0.82rem + 0.28vw, 1rem);
-    font-weight: 500;
+    font-weight: var(--group-font-weight-medium);
     line-height: 1.58;
 
     text-shadow:
