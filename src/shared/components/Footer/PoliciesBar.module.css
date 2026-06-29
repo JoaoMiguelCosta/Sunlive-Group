@@ -342,9 +342,9 @@
     inline-size: clamp(17px, 1.15vw, 20px);
     block-size: clamp(17px, 1.15vw, 20px);
 
-    border: 1px solid var(--group-border-default);
+    border: 1px solid var(--policies-border-strong);
 
-    color: var(--group-accent-fresh);
+    color: var(--policies-accent);
 
     background: var(--group-card-background);
 
