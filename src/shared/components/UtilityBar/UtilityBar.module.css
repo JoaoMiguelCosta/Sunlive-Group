@@ -575,8 +575,6 @@
     --header-home-border: var(--group-border-default);
     --header-home-border-hover: var(--group-border-strong);
 
-    --group-control-bg-hover: rgb(218 221 192 / 0.10);
-
     --header-menu-bg: var(--group-card-background);
 
     --header-active-bg: var(--group-accent-primary);
