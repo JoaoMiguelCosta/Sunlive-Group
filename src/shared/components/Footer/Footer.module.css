@@ -182,10 +182,10 @@
   --section-inset: 0px;
   --footer-max-width: 100%;
   --footer-brand-accent: var(--group-accent-primary);
-  --footer-base: var(--group-background);
+  --footer-base: var(--group-surface-footer);
 
   color: var(--group-text-secondary);
-  background: var(--group-background);
+  background: var(--group-surface-footer);
 }
 
 :global([data-brand="group"]) .footerWrap .frame {

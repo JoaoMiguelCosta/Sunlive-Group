@@ -50,7 +50,7 @@
        ------------------------------------------------- */
 
     --footer-accent: var(--group-accent-primary);
-    --footer-base:   var(--group-background);
+    --footer-base:   var(--group-surface-footer);
 
     /* -------------------------------------------------
        Tokens de compatibilidade — anteriormente em :root.

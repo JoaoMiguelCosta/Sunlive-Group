@@ -18,9 +18,10 @@
        ===================================================== */
 
     /* Forest — fundo e superfícies */
-    --group-color-forest-950: #1e2e24;
-    --group-color-forest-800: #294332;
-    --group-color-forest-700: #345640;
+    --group-color-forest-950: #19271e;
+    --group-color-forest-900: #1d2c22;
+    --group-color-forest-800: #2e4d3b;
+    --group-color-forest-700: #3c6148;
 
     /* Acre — acento principal (creme vegetal) */
     --group-color-acre-100: #daddc0;
@@ -46,9 +47,9 @@
 
     --group-accent-primary-rgb:    218 221 192;
     --group-accent-fresh-rgb:      141 217 180;
-    --group-background-rgb:         30  46  36;
-    --group-surface-primary-rgb:    41  67  50;
-    --group-surface-secondary-rgb:  52  86  64;
+    --group-background-rgb:         25  39  30;
+    --group-surface-primary-rgb:    46  77  59;
+    --group-surface-secondary-rgb:  60  97  72;
 
 
     /* =====================================================
@@ -58,6 +59,7 @@
     --group-background:        var(--group-color-forest-950);
     --group-surface-primary:   var(--group-color-forest-800);
     --group-surface-secondary: var(--group-color-forest-700);
+    --group-surface-footer:    var(--group-color-forest-900);
     --group-surface-light:     var(--group-color-acre-100);
 
 
@@ -86,8 +88,8 @@
        ===================================================== */
 
     --group-border-subtle:  rgb(218 221 192 / 14%);
-    --group-border-default: rgb(218 221 192 / 28%);
-    --group-border-strong:  rgb(218 221 192 / 48%);
+    --group-border-default: rgb(218 221 192 / 35%);
+    --group-border-strong:  rgb(218 221 192 / 58%);
 
 
     /* =====================================================
