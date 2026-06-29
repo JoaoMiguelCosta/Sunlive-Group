@@ -512,7 +512,7 @@
 
     color: var(--info-text-main);
     font-size: clamp(0.96rem, 0.24vw + 0.92rem, 1.08rem);
-    font-weight: 850;
+    font-weight: var(--group-font-weight-heavy);
     letter-spacing: -0.01em;
 
     text-shadow:
@@ -536,7 +536,7 @@
 
 :global([data-brand="group"]) .brandEmph {
     color: var(--info-accent-bright);
-    font-weight: 850;
+    font-weight: var(--group-font-weight-heavy);
 }
 
 :global([data-brand="group"]) .tagline {
