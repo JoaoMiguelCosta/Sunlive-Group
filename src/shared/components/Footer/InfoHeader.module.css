@@ -907,10 +907,7 @@
 
 :global([data-brand="group"]) .subtleLink:focus-visible,
 :global([data-brand="group"]) .link:focus-visible {
-    box-shadow:
-        0 0 0 2px var(--group-background),
-        0 0 0 4px var(--group-focus-outline),
-        0 0 1.25rem var(--group-focus-ring);
+    box-shadow: var(--group-focus-shadow);
 }
 
 :global([data-brand="hotel"]) .subtleLink:focus-visible,
