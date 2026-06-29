@@ -807,10 +807,7 @@
 
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink, .socialLink, .langBtn):focus-visible {
-    box-shadow:
-        0 0 0 2px var(--group-background, #1e2e24),
-        0 0 0 4px var(--group-focus-outline, #8dd9b4),
-        0 0 1.25rem var(--group-focus-ring, rgb(141 217 180 / 30%));
+    box-shadow: var(--group-focus-shadow);
 }
 
 /* =======================================================
