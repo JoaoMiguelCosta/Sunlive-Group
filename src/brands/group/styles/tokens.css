@@ -59,7 +59,7 @@
     --group-background:        var(--group-color-forest-950);
     --group-surface-primary:   var(--group-color-forest-800);
     --group-surface-secondary: var(--group-color-forest-700);
-    --group-surface-footer:    var(--group-color-forest-900);
+    --group-surface-footer:    #142119;
     --group-surface-light:     var(--group-color-acre-100);
 
 
@@ -100,6 +100,8 @@
     --group-card-background-hover: var(--group-surface-secondary);
     --group-card-text:             var(--group-text-primary);
     --group-card-border:           var(--group-border-subtle);
+
+    --group-disclosure-panel-background: #22372b;
 
 
     /* =====================================================

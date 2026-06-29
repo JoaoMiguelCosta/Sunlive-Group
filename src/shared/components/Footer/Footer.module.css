@@ -186,6 +186,8 @@
 
   color: var(--group-text-secondary);
   background: var(--group-surface-footer);
+
+  border-top: 1px solid var(--group-border-subtle);
 }
 
 :global([data-brand="group"]) .footerWrap .frame {

@@ -145,7 +145,7 @@
     box-sizing: border-box;
 
     color: var(--group-text-secondary);
-    background: var(--group-card-background);
+    background: rgb(255 255 255 / 0.025);
 
     box-shadow:
         inset 0 1px 0 rgb(255 255 255 / 0.03),
@@ -172,7 +172,7 @@
     .pill:hover {
         color: var(--group-text-primary);
         border-color: var(--group-border-default);
-        background: var(--group-card-background-hover);
+        background: var(--group-card-background);
 
         box-shadow:
             inset 0 1px 0 rgb(255 255 255 / 0.04),

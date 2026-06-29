@@ -246,7 +246,6 @@
     border-top: 1px solid var(--ack-border);
     border-bottom: 1px solid var(--ack-border);
 
-    background: rgb(46 77 59 / 0.22);
 }
 
 :global([data-brand="group"]) .click {
