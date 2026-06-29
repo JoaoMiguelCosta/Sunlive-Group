@@ -235,7 +235,6 @@
 
 :global([data-brand="group"]) .sectionWrap {
     --ack-accent: var(--group-accent-fresh);
-    --ack-accent-bright: var(--group-accent-primary);
     --ack-border: var(--group-border-subtle);
     --ack-border-strong: var(--group-border-default);
 
@@ -277,9 +276,7 @@
     outline: none;
 
     box-shadow:
-        0 0 0 2px var(--group-background),
-        0 0 0 4px var(--group-focus-outline),
-        0 0 1.25rem var(--group-focus-ring),
+        var(--group-focus-shadow),
         0 0.6rem 1.25rem rgb(0 0 0 / 0.18);
 }
 
