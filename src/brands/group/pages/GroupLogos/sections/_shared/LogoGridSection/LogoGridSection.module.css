@@ -250,12 +250,10 @@
 .link:focus-visible .logoFrame {
     outline: none;
 
-    border-color: var(--group-focus-outline, #8dd9b4);
+    border-color: var(--group-focus-outline);
 
     box-shadow:
-        0 0 0 2px var(--group-background, #1e2e24),
-        0 0 0 4px var(--group-focus-outline, #8dd9b4),
-        0 0 1.25rem var(--group-focus-ring, rgb(141 217 180 / 30%)),
+        var(--group-focus-shadow),
         inset 0 1px 0 rgb(255 255 255 / 0.18),
         0 1.05rem 2.1rem rgb(0 0 0 / 0.42);
 }
