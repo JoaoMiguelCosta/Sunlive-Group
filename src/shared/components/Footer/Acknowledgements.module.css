@@ -241,12 +241,12 @@
     isolation: isolate;
     overflow: hidden;
 
-    padding-block: clamp(0.72rem, 1vw, 0.92rem);
+    padding-block: clamp(0.82rem, 1.1vw, 1rem);
 
     border-top: 1px solid var(--ack-border);
     border-bottom: 1px solid var(--ack-border);
 
-    background: transparent;
+    background: rgb(46 77 59 / 0.22);
 }
 
 :global([data-brand="group"]) .click {
@@ -282,10 +282,10 @@
 
 :global([data-brand="group"]) .img {
     max-height: clamp(44px, 4.4vw, 72px);
-    opacity: 0.82;
+    opacity: 0.9;
 
     filter:
-        saturate(0.94) contrast(1.04) brightness(1.04);
+        saturate(0.96) contrast(1.03) brightness(1.06);
 
     transition:
         opacity 150ms ease,
