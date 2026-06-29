@@ -55,12 +55,12 @@
     box-sizing: border-box;
     padding: clamp(0.62rem, 0.78vw, 0.78rem) clamp(1rem, 1.5vw, 1.35rem);
 
-    border: 1px solid var(--group-border-default);
+    border: 1px solid var(--group-border-strong);
     border-radius: clamp(1.05rem, 1.5vw, 1.45rem);
 
     background: var(--group-card-background);
 
-    color: var(--group-text-primary);
+    color: var(--group-accent-primary);
 
     font: inherit;
     font-weight: var(--group-font-weight-heavy);
@@ -71,7 +71,9 @@
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 
-    box-shadow: var(--group-shadow-control);
+    box-shadow:
+        var(--group-shadow-control),
+        inset 0 0 0 1px rgb(218 221 192 / 0.06);
 
     transform: translateZ(0);
 
@@ -129,16 +131,19 @@
 
 @media (hover: hover) {
     .button:hover {
-        transform: translateY(-2px);
+        transform: translateY(-3px);
 
         color: var(--group-accent-primary);
         border-color: var(--group-border-strong);
 
         background: var(--group-card-background-hover);
 
-        box-shadow: var(--group-shadow-control-hover);
+        box-shadow:
+            var(--group-shadow-control-hover),
+            inset 0 0 0 1px rgb(218 221 192 / 0.1),
+            0 0 1.2rem rgb(218 221 192 / 0.06);
 
-        filter: saturate(1.04) brightness(1.02);
+        filter: saturate(1.05) brightness(1.03);
     }
 
     .button:hover .arrow {

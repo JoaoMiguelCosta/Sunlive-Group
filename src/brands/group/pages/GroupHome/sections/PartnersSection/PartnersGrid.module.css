@@ -27,7 +27,7 @@
 
     inline-size: min(100%, var(--partners-card-max));
     min-inline-size: 0;
-    min-block-size: clamp(3.05rem, 3.55vw, 3.65rem);
+    min-block-size: clamp(2.85rem, 3.3vw, 3.4rem);
 
     justify-self: center;
 
@@ -37,17 +37,17 @@
     gap: clamp(0.42rem, 0.8vw, 0.68rem);
 
     box-sizing: border-box;
-    padding: clamp(0.62rem, 0.78vw, 0.78rem) clamp(1rem, 1.5vw, 1.35rem);
+    padding: clamp(0.54rem, 0.68vw, 0.68rem) clamp(1rem, 1.5vw, 1.35rem);
 
-    border: 1px solid var(--group-border-default);
-    border-radius: clamp(1.05rem, 1.5vw, 1.45rem);
+    border: 1px solid var(--group-border-subtle);
+    border-radius: var(--group-radius-md);
 
     background: var(--group-card-background);
 
-    color: var(--group-text-primary);
+    color: var(--group-text-secondary);
 
     font: inherit;
-    font-weight: var(--group-font-weight-heavy);
+    font-weight: var(--group-font-weight-bold);
     line-height: 1.1;
     letter-spacing: var(--group-control-label-tracking);
 
@@ -136,16 +136,17 @@
 
 @media (hover: hover) {
     .card:not(.disabled):hover {
-        transform: translateY(-2px);
-
-        color: var(--group-accent-primary);
-        border-color: var(--group-border-strong);
+        color: var(--group-text-primary);
+        border-color: var(--group-border-default);
 
         background: var(--group-card-background-hover);
 
-        box-shadow: var(--group-shadow-control-hover);
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.04),
+            inset 0 -1px 0 rgb(0 0 0 / 0.22),
+            0 0.6rem 1.4rem rgb(0 0 0 / 0.2);
 
-        filter: saturate(1.04) brightness(1.02);
+        filter: saturate(1.03) brightness(1.01);
     }
 
     .card:not(.disabled):hover .arrow {
@@ -237,8 +238,8 @@
     .card {
         grid-column: auto;
         inline-size: min(100%, var(--partners-card-max));
-        min-block-size: 2.95rem;
-        border-radius: 1.1rem;
+        min-block-size: 2.72rem;
+        border-radius: var(--group-radius-md);
     }
 }
 
@@ -251,9 +252,9 @@
     }
 
     .card {
-        min-block-size: 2.75rem;
+        min-block-size: 2.6rem;
         padding-inline: 0.85rem;
-        border-radius: 0.95rem;
+        border-radius: 0.85rem;
     }
 
     .label {
