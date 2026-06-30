@@ -1,0 +1,342 @@
+/* ============================================================
+   AboutSection — Sunlive Group / Deep Forest
+   ============================================================ */
+
+.section {
+    position: relative;
+    isolation: isolate;
+
+    inline-size: 100%;
+    min-inline-size: 0;
+
+    box-sizing: border-box;
+    padding-block: clamp(2rem, 4vw, 3.75rem);
+
+    color: var(--group-text-primary);
+}
+
+/* ── Inner — reading width ── */
+
+.inner {
+    position: relative;
+    z-index: 1;
+
+    inline-size: 100%;
+    max-inline-size: 1200px;
+    margin-inline: auto;
+
+    box-sizing: border-box;
+}
+
+/* ── Accordion list ── */
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+/* ── Item ── */
+
+.item {
+    overflow: clip;
+
+    border: 1px solid var(--group-border-default);
+    border-radius: var(--group-radius-md);
+    background: var(--group-card-background);
+
+    transition:
+        border-color var(--group-duration-fast) var(--group-ease-standard);
+}
+
+.itemOpen {
+    border-color: var(--group-border-strong);
+}
+
+/* ── Trigger ── */
+
+.trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    width: 100%;
+    padding-block: clamp(0.85rem, 1.6vw, 1.05rem);
+    padding-inline: clamp(1rem, 2.5vw, 1.35rem);
+
+    border: none;
+    border-radius: var(--group-radius-md);
+    background: transparent;
+
+    color: var(--group-text-primary);
+    font-family: var(--group-font-ui);
+    font-size: var(--group-control-label-size);
+    font-weight: var(--group-font-weight-medium);
+    letter-spacing: var(--group-control-label-tracking);
+    text-align: start;
+
+    cursor: pointer;
+
+    transition:
+        background var(--group-duration-fast) var(--group-ease-standard);
+}
+
+.trigger:focus-visible {
+    outline: none;
+    box-shadow: var(--group-focus-shadow);
+}
+
+.itemOpen .trigger {
+    border-radius:
+        var(--group-radius-md) var(--group-radius-md) 0 0;
+
+    background: var(--group-card-background-hover);
+}
+
+.triggerLabel {
+    flex: 1;
+    min-inline-size: 0;
+}
+
+/* ── Caret ── */
+
+.caret {
+    flex-shrink: 0;
+
+    inline-size: 0.6rem;
+    block-size: 0.6rem;
+
+    color: var(--group-accent-fresh);
+
+    transition:
+        transform var(--group-duration-fast) var(--group-ease-standard);
+}
+
+.caretOpen {
+    transform: rotate(180deg);
+}
+
+/* ── Panel ── */
+
+.panel {
+    border-block-start: 1px solid var(--group-border-subtle);
+    background: var(--group-disclosure-panel-background);
+}
+
+.panelBody {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.85rem, 1.8vw, 1.2rem);
+
+    padding-block:
+        clamp(1rem, 2vw, 1.4rem) clamp(1.25rem, 2.5vw, 1.75rem);
+    padding-inline: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+.panelText {
+    margin: 0;
+
+    color: var(--group-text-secondary);
+    font-family: var(--group-font-ui);
+    font-size: var(--group-control-label-size-md);
+    font-weight: var(--group-font-weight-normal);
+    line-height: 1.72;
+}
+
+/* ── Services grid — 2 cols ── */
+
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+}
+
+/* ── Why grid — 3 cols ── */
+
+.whyGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+}
+
+/* ── Info card — base visual ── */
+
+.infoCard {
+    padding: clamp(0.85rem, 1.8vw, 1.1rem);
+
+    border: 1px solid var(--group-border-subtle);
+    border-inline-start: 2px solid rgb(218 221 192 / 32%);
+    border-radius: var(--group-radius-md);
+
+    background: var(--group-card-background);
+}
+
+/* ── Service card — link navegável ── */
+
+.serviceCardLink {
+    display: flex;
+    flex-direction: column;
+
+    text-decoration: none;
+    color: inherit;
+
+    transition:
+        border-color var(--group-duration-fast) var(--group-ease-standard),
+        background var(--group-duration-fast) var(--group-ease-standard),
+        box-shadow var(--group-duration-fast) var(--group-ease-standard),
+        transform var(--group-duration-fast) var(--group-ease-standard);
+}
+
+.serviceCardLink:focus-visible {
+    outline: none;
+    box-shadow: var(--group-focus-shadow);
+}
+
+.cardArrow {
+    align-self: flex-end;
+    margin-block-start: auto;
+    padding-block-start: 0.5rem;
+
+    inline-size: 0.75rem;
+    block-size: 0.75rem;
+
+    color: var(--group-accent-fresh);
+
+    transition: transform var(--group-duration-fast) var(--group-ease-standard);
+}
+
+.cardTitle {
+    margin: 0 0 0.35rem;
+
+    color: var(--group-text-primary);
+    font-family: var(--group-font-ui);
+    font-size: var(--group-control-label-size-md);
+    font-weight: var(--group-font-weight-semibold);
+    letter-spacing: var(--group-control-label-tracking);
+}
+
+.cardBody {
+    margin: 0;
+
+    color: var(--group-text-secondary);
+    font-family: var(--group-font-ui);
+    font-size: var(--group-control-label-size-sm);
+    font-weight: var(--group-font-weight-normal);
+    line-height: 1.65;
+}
+
+/* ── Mission block ── */
+
+.missionBlock {
+    margin: 0;
+    padding-block: clamp(1rem, 2vw, 1.25rem);
+    padding-inline: clamp(1.1rem, 2.5vw, 1.4rem);
+
+    border: 1px solid var(--group-border-subtle);
+    border-inline-start: 3px solid var(--group-accent-fresh);
+    border-radius: var(--group-radius-md);
+
+    background: var(--group-card-background);
+}
+
+.missionText {
+    margin: 0;
+
+    color: var(--group-text-primary);
+    font-family: var(--group-font-display);
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    font-style: italic;
+    font-weight: var(--group-font-weight-medium);
+    line-height: 1.62;
+}
+
+/* ============================================================
+   Hover — Book-style lift (apenas rato)
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+    .serviceCardLink:hover {
+        transform: translateY(-3px);
+        background: var(--group-card-background-hover);
+        border-color: var(--group-border-strong);
+        box-shadow: var(--group-shadow-card);
+    }
+
+    .serviceCardLink:hover .cardArrow {
+        transform: translateX(3px);
+    }
+
+    .item:not(.itemOpen) {
+        transition:
+            border-color var(--group-duration-slow) var(--group-ease-emphasized),
+            background var(--group-duration-slow) var(--group-ease-emphasized),
+            box-shadow var(--group-duration-slow) var(--group-ease-emphasized),
+            transform var(--group-duration-slow) var(--group-ease-emphasized),
+            filter var(--group-duration-slow) var(--group-ease-emphasized);
+    }
+
+    .item:not(.itemOpen):hover {
+        transform: translateY(-3px);
+
+        border-color: var(--group-border-strong);
+        background: var(--group-card-background-hover);
+
+        box-shadow:
+            var(--group-shadow-control-hover),
+            inset 0 0 0 1px rgb(218 221 192 / 10%),
+            0 0 1.2rem rgb(218 221 192 / 6%);
+
+        filter: saturate(1.05) brightness(1.03);
+    }
+
+    .item:not(.itemOpen):hover .caret {
+        transform: translateY(2px);
+    }
+}
+
+/* ============================================================
+   Responsividade
+   ============================================================ */
+
+/* Tablet — why grid passa a 2 colunas */
+
+@media (max-width: 767.98px) {
+    .whyGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile — ambas as grelhas passam a 1 coluna */
+
+@media (max-width: 479.98px) {
+
+    .servicesGrid,
+    .whyGrid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .item,
+    .trigger,
+    .caret,
+    .serviceCardLink,
+    .cardArrow {
+        transition: none;
+    }
+
+    .serviceCardLink:hover {
+        transform: none;
+    }
+
+    .serviceCardLink:hover .cardArrow {
+        transform: none;
+    }
+}

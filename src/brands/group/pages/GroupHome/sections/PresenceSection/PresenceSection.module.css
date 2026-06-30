@@ -38,40 +38,14 @@
     box-sizing: border-box;
 }
 
-.band::after {
-    content: "";
-    position: absolute;
-    inset-inline: clamp(1.25rem, 6vw, 6rem);
-    inset-block-end: 0;
-    z-index: 0;
 
-    block-size: 1px;
-
-    pointer-events: none;
-
-    background: var(--group-border-subtle, rgb(218 221 192 / 14%));
-}
 
 .band>* {
     position: relative;
     z-index: 1;
 }
 
-/* =========================================================
-   Responsive
-   ========================================================= */
 
-@media (max-width: 767.98px) {
-    .band::after {
-        inset-inline: 1rem;
-    }
-}
-
-@media (max-width: 479.98px) {
-    .band::after {
-        inset-inline: 1rem;
-    }
-}
 
 /* =========================================================
    Motion

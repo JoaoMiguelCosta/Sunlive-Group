@@ -7,13 +7,14 @@
 
     inline-size: 100%;
     min-inline-size: 0;
-    overflow: clip;
+  
     box-sizing: border-box;
 
     scroll-margin-top: var(--sl-anchor-offset, 96px);
 
     color: var(--group-text-primary);
     background: transparent;
+    
 }
 
 .section>* {
@@ -28,6 +29,7 @@
 .header {
     inline-size: min(100%, var(--group-page-max-width));
     min-inline-size: 0;
+    
 
     display: grid;
     place-items: center;
@@ -197,6 +199,73 @@
 
     .container+.container::before {
         inset-inline: 0.65rem;
+    }
+}
+
+/* =========================================================
+   Disclosure — trigger card + panel
+   ========================================================= */
+
+.triggerCard {
+    border: 1px solid var(--group-border-default);
+    border-radius: var(--group-radius-md);
+    background: var(--group-card-background);
+
+    transition:
+        border-color var(--group-duration-fast) var(--group-ease-standard),
+        background var(--group-duration-fast) var(--group-ease-standard);
+}
+
+.triggerCardOpen {
+    border-color: var(--group-border-strong);
+    background: var(--group-card-background-hover);
+    border-radius: var(--group-radius-md) var(--group-radius-md) 0 0;
+}
+
+.panel {
+    border: 1px solid var(--group-border-strong);
+    border-block-start: none;
+    border-radius: 0 0 var(--group-radius-md) var(--group-radius-md);
+    background: transparent;
+
+    padding-block-start: clamp(1.35rem, 3vw, 2.45rem);
+    padding-block-end: clamp(1.35rem, 3vw, 2.5rem);
+}
+
+/* ── Hover — Book-style lift (apenas rato) ── */
+
+@media (hover: hover) and (pointer: fine) {
+    .triggerCard:not(.triggerCardOpen) {
+        transition:
+            transform var(--group-duration-slow) var(--group-ease-emphasized),
+            border-color var(--group-duration-slow) var(--group-ease-emphasized),
+            background var(--group-duration-slow) var(--group-ease-emphasized),
+            box-shadow var(--group-duration-slow) var(--group-ease-emphasized),
+            filter var(--group-duration-slow) var(--group-ease-emphasized);
+    }
+
+    .triggerCard:not(.triggerCardOpen):hover {
+        transform: translateY(-3px);
+
+        border-color: var(--group-border-strong);
+        background: var(--group-card-background-hover);
+
+        box-shadow:
+            var(--group-shadow-control-hover),
+            inset 0 0 0 1px rgb(218 221 192 / 0.1),
+            0 0 1.2rem rgb(218 221 192 / 0.06);
+
+        filter: saturate(1.05) brightness(1.03);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .triggerCard {
+        transition: none;
+    }
+
+    .triggerCard:not(.triggerCardOpen):hover {
+        transform: none;
     }
 }
 

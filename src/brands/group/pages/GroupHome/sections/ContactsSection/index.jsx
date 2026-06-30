@@ -1,10 +1,14 @@
-import styles from "./ContactsSection.module.css";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
+import styles from "./ContactsSection.module.css";
+import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
+import SectionDisclosureTrigger from "../_shared/SectionDisclosureTrigger.jsx";
 import GroupHub from "./GroupHub.jsx";
 import BusinessUnits from "./BusinessUnits.jsx";
 import RegionalOffices from "./RegionalOffices.jsx";
-
 import homePage from "../../../../config/pages/home.js";
+
 const contactsSection = homePage.sections.contacts;
 
 function isValidObject(value) {
@@ -16,8 +20,20 @@ function hasItems(items) {
 }
 
 export default function ContactsSection() {
-  const contacts = contactsSection;
+  const { isOpen, toggle, open } = useDisclosure(false);
+  const location = useLocation();
 
+  useEffect(() => {
+    if (
+      location.hash === "#contacts" ||
+      location.hash.startsWith("#unidade-") ||
+      location.hash.startsWith("#pais-")
+    ) {
+      open();
+    }
+  }, [location.hash, location.key, open]);
+
+  const contacts = contactsSection;
   if (!contacts) return null;
 
   const {
@@ -28,7 +44,8 @@ export default function ContactsSection() {
     regionalOffices = [],
   } = contacts;
 
-  const headingId = `${id}-heading`;
+  const triggerId = `${id}-btn`;
+  const panelId = `${id}-panel`;
 
   const shouldRenderGroupHub = isValidObject(groupHub);
   const shouldRenderBusinessUnits = hasItems(businessUnits);
@@ -46,32 +63,45 @@ export default function ContactsSection() {
     <section
       id={id}
       className={styles.section}
-      aria-labelledby={headingId}
+      aria-labelledby={triggerId}
       data-theme="prestige-noir"
     >
-      <header className={styles.header}>
-        <h2 id={headingId} className={styles.title}>
-          {title}
-        </h2>
-      </header>
+      <div
+        className={`${styles.triggerCard}${isOpen ? ` ${styles.triggerCardOpen}` : ""}`}
+      >
+        <SectionDisclosureTrigger
+          id={triggerId}
+          label={title}
+          panelId={panelId}
+          isOpen={isOpen}
+          onToggle={toggle}
+        />
+      </div>
 
-      {shouldRenderGroupHub ? (
-        <div className={styles.container}>
-          <GroupHub data={groupHub} />
+      {isOpen && (
+        <div
+          id={panelId}
+          role="region"
+          aria-labelledby={triggerId}
+          className={styles.panel}
+        >
+          {shouldRenderGroupHub && (
+            <div className={styles.container}>
+              <GroupHub data={groupHub} />
+            </div>
+          )}
+          {shouldRenderBusinessUnits && (
+            <div className={styles.container}>
+              <BusinessUnits items={businessUnits} />
+            </div>
+          )}
+          {shouldRenderRegionalOffices && (
+            <div className={styles.container}>
+              <RegionalOffices items={regionalOffices} />
+            </div>
+          )}
         </div>
-      ) : null}
-
-      {shouldRenderBusinessUnits ? (
-        <div className={styles.container}>
-          <BusinessUnits items={businessUnits} />
-        </div>
-      ) : null}
-
-      {shouldRenderRegionalOffices ? (
-        <div className={styles.container}>
-          <RegionalOffices items={regionalOffices} />
-        </div>
-      ) : null}
+      )}
     </section>
   );
 }

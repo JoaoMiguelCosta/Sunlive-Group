@@ -62,6 +62,11 @@
     --group-surface-footer:    #142119;
     --group-surface-light:     var(--group-color-acre-100);
 
+    /* Superfície neutra para grelha de logótipos de terceiros */
+    --group-logo-surface:        #d4d6cf;
+    --group-logo-surface-hover:  #e2e4dd;
+    --group-logo-surface-border: rgb(25 39 30 / 28%);
+
 
     /* =====================================================
        4. TEXT
