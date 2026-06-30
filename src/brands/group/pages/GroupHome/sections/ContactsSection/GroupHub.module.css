@@ -1,23 +1,36 @@
-/* GroupHub — Sunlive Group / Deep Forest */
+/* ============================================================
+   GroupHub — Sunlive Group / Light Forest
+   ============================================================ */
 
 .wrap {
-    --contact-row-padding: clamp(0.5rem, 0.7vw, 0.62rem) clamp(0.56rem, 0.85vw, 0.74rem);
-    --hub-card-width: clamp(17.5rem, 30vw, 29rem);
+    --contact-row-padding:
+        clamp(0.5rem, 0.7vw, 0.62rem) clamp(0.56rem, 0.85vw, 0.74rem);
 
-    inline-size: min(100%, var(--hub-card-width));
-    max-inline-size: var(--hub-card-width);
-    min-inline-size: 0;
+    --hub-card-width:
+        clamp(17.5rem, 30vw, 29rem);
 
     display: grid;
     justify-self: center;
     justify-items: stretch;
     gap: clamp(0.65rem, 1vw, 0.9rem);
 
+    inline-size:
+        min(100%, var(--hub-card-width));
+
+    max-inline-size:
+        var(--hub-card-width);
+
+    min-inline-size: 0;
+
     margin-inline: auto;
+
     box-sizing: border-box;
 }
 
-/* Responsive */
+
+/* ============================================================
+   Responsive
+   ============================================================ */
 
 @media (min-width: 1440px) {
     .wrap {
@@ -27,30 +40,35 @@
 
 @media (max-width: 1279.98px) {
     .wrap {
-        --hub-card-width: clamp(17rem, 34vw, 27rem);
+        --hub-card-width:
+            clamp(17rem, 34vw, 27rem);
     }
 }
 
 @media (max-width: 1023.98px) {
     .wrap {
-        --hub-card-width: clamp(16rem, 48vw, 25rem);
+        --hub-card-width:
+            clamp(16rem, 48vw, 25rem);
     }
 }
 
 @media (max-width: 719.98px) {
     .wrap {
-        --hub-card-width: min(100%, 23rem);
+        --hub-card-width:
+            min(100%, 23rem);
     }
 }
 
 @media (max-width: 479.98px) {
     .wrap {
-        --hub-card-width: min(100%, 20.5rem);
+        --hub-card-width:
+            min(100%, 20.5rem);
     }
 }
 
 @media (max-width: 379.98px) {
     .wrap {
-        --hub-card-width: min(100%, 18.5rem);
+        --hub-card-width:
+            min(100%, 18.5rem);
     }
 }

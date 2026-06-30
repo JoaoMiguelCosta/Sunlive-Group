@@ -1,24 +1,35 @@
-/* Partners Section — Sunlive Group / Deep Forest */
+/* ============================================================
+   PartnersSection — Sunlive Group / Light Forest
+
+   Versão estática:
+   - sem sombras;
+   - sem movimento;
+   - sem animações.
+   ============================================================ */
 
 .section {
+  --partners-card-max:
+    clamp(14rem, 24vw, 25rem);
+
+  --partners-grid-gap:
+    clamp(0.85rem, 1.8vw, 1.25rem);
+
   position: relative;
   isolation: isolate;
   z-index: 0;
-  
 
   inline-size: 100%;
   min-inline-size: 0;
-  
 
   box-sizing: border-box;
 
-  scroll-margin-top: var(--sl-anchor-offset, 96px);
+  color:
+    var(--group-text-primary);
 
-  color: var(--group-text-primary);
   background: transparent;
 
-  --partners-card-max: clamp(14rem, 24vw, 25rem);
-  --partners-grid-gap: clamp(0.85rem, 1.8vw, 1.25rem);
+  scroll-margin-top:
+    var(--sl-anchor-offset, 96px);
 }
 
 .section>* {
@@ -26,114 +37,126 @@
   z-index: 1;
 }
 
-/* Responsive */
+
+/* ============================================================
+   Disclosure
+   ============================================================ */
+
+.disclosureWrap {
+  position: relative;
+  z-index: 1;
+
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.triggerCard {
+  border:
+    1px solid var(--group-border-default);
+
+  border-radius:
+    var(--group-radius-md);
+
+  background-color:
+    var(--group-card-background);
+
+  box-shadow: none;
+}
+
+.triggerCardOpen {
+  border-color:
+    var(--group-border-default);
+
+  border-radius:
+    var(--group-radius-md) var(--group-radius-md) 0 0;
+
+  background-color:
+    var(--group-surface-elevated);
+}
+
+.panel {
+  padding-block:
+    clamp(1.25rem, 3vw, 2.25rem);
+
+  border:
+    1px solid var(--group-border-default);
+
+  border-block-start: 0;
+
+  border-radius:
+    0 0 var(--group-radius-md) var(--group-radius-md);
+
+  background-color:
+    var(--group-disclosure-panel-background);
+}
+
+
+/* ============================================================
+   Hover
+   Sem elevação, sombra ou alteração da cor dos textos.
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+  .triggerCard:not(.triggerCardOpen):hover {
+    border-color:
+      var(--group-border-strong);
+
+    background-color:
+      var(--group-card-background-hover);
+  }
+}
+
+
+/* ============================================================
+   Responsive
+   ============================================================ */
 
 @media (max-width: 1279.98px) {
   .section {
-    --partners-card-max: clamp(15.25rem, 29vw, 22rem);
-    --partners-grid-gap: clamp(0.8rem, 1.6vw, 1.2rem);
+    --partners-card-max:
+      clamp(15.25rem, 29vw, 22rem);
+
+    --partners-grid-gap:
+      clamp(0.8rem, 1.6vw, 1.2rem);
   }
 }
 
 @media (max-width: 767.98px) {
   .section {
-    --partners-card-max: min(100%, 23rem);
-    --partners-grid-gap: clamp(0.72rem, 2.8vw, 0.95rem);
+    --partners-card-max:
+      min(100%, 23rem);
+
+    --partners-grid-gap:
+      clamp(0.72rem, 2.8vw, 0.95rem);
   }
 }
 
 @media (max-width: 479.98px) {
   .section {
-    --partners-card-max: min(100%, 20.5rem);
+    --partners-card-max:
+      min(100%, 20.5rem);
+
     --partners-grid-gap: 0.62rem;
   }
 }
 
 @media (max-width: 379.98px) {
   .section {
-    --partners-card-max: min(100%, 18.5rem);
+    --partners-card-max:
+      min(100%, 18.5rem);
+
     --partners-grid-gap: 0.58rem;
   }
 }
 
-/* =========================================================
-   Disclosure — wrap + trigger card + panel
-   ========================================================= */
 
-.disclosureWrap {
-  position: relative;
-  z-index: 1;
-  inline-size: 100%;
-  min-inline-size: 0;
-}
-
-.triggerCard {
-  border: 1px solid var(--group-border-default);
-  border-radius: var(--group-radius-md);
-  background: var(--group-card-background);
-
-  transition:
-    border-color var(--group-duration-fast) var(--group-ease-standard),
-    background var(--group-duration-fast) var(--group-ease-standard);
-}
-
-.triggerCardOpen {
-  border-color: var(--group-border-strong);
-  background: var(--group-card-background-hover);
-  border-radius: var(--group-radius-md) var(--group-radius-md) 0 0;
-}
-
-.panel {
-  border: 1px solid var(--group-border-strong);
-  border-block-start: none;
-  border-radius: 0 0 var(--group-radius-md) var(--group-radius-md);
-  background: transparent;
-
-  padding-block: clamp(1.25rem, 3vw, 2.25rem);
-}
-
-/* ── Hover — Book-style lift (apenas rato) ── */
-
-@media (hover: hover) and (pointer: fine) {
-  .triggerCard:not(.triggerCardOpen) {
-    transition:
-      transform var(--group-duration-slow) var(--group-ease-emphasized),
-      border-color var(--group-duration-slow) var(--group-ease-emphasized),
-      background var(--group-duration-slow) var(--group-ease-emphasized),
-      box-shadow var(--group-duration-slow) var(--group-ease-emphasized),
-      filter var(--group-duration-slow) var(--group-ease-emphasized);
-  }
-
-  .triggerCard:not(.triggerCardOpen):hover {
-    transform: translateY(-3px);
-
-    border-color: var(--group-border-strong);
-    background: var(--group-card-background-hover);
-
-    box-shadow:
-      var(--group-shadow-control-hover),
-      inset 0 0 0 1px rgb(218 221 192 / 0.1),
-      0 0 1.2rem rgb(218 221 192 / 0.06);
-
-    filter: saturate(1.05) brightness(1.03);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .triggerCard {
-    transition: none;
-  }
-
-  .triggerCard:not(.triggerCardOpen):hover {
-    transform: none;
-  }
-}
-
-/* Print */
+/* ============================================================
+   Print
+   ============================================================ */
 
 @media print {
   .section {
-    background: #fff !important;
     color: #111;
+    background: #fff !important;
   }
 }

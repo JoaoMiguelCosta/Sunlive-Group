@@ -175,41 +175,120 @@
 }
 
 /* =========================================================
-   Group Footer — Deep Forest
+   Group Footer — Light Forest / unified light surface
    ========================================================= */
 
 :global([data-brand="group"]) .footerWrap {
-  --section-inset: 0px;
-  --footer-max-width: 100%;
-  --footer-brand-accent: var(--group-accent-primary);
-  --footer-base: var(--group-surface-footer);
+  --section-inset:
+    var(--group-section-inset, clamp(16px, 3.2vw, 40px));
 
-  color: var(--group-text-secondary);
-  background: var(--group-surface-footer);
+  --footer-max-width:
+    var(--group-page-max-width, 1360px);
 
-  border-top: 1px solid var(--group-border-subtle);
+  --footer-inner-pad:
+    clamp(1rem, 2.2vw, 2rem);
+
+  /*
+   * Bridge tokens para os componentes partilhados.
+   * O footer permanece no contexto claro Light Forest.
+   */
+  --sl-platinum-100:
+    var(--group-text-primary);
+
+  --sl-platinum-300:
+    var(--group-text-secondary);
+
+  --sl-gold-500:
+    var(--group-accent-primary);
+
+  --sl-gold-400:
+    var(--group-accent-primary);
+
+  /*
+   * Tokens próprios do footer.
+   */
+  --footer-brand-accent:
+    var(--group-accent-primary);
+
+  --footer-accent:
+    var(--group-accent-primary);
+
+  --footer-base:
+    var(--group-logo-surface);
+
+  --footer-text-primary:
+    var(--group-text-primary);
+
+  --footer-text-secondary:
+    var(--group-text-secondary);
+
+  --footer-text-muted:
+    var(--group-text-muted);
+
+  --footer-border-subtle:
+    var(--group-border-subtle);
+
+  --footer-border-default:
+    var(--group-border-default);
+
+  --footer-border-strong:
+    var(--group-border-strong);
+
+  /*
+   * O focus ring deve fundir-se com a superfície clara
+   * unificada do footer.
+   */
+  --group-focus-offset-color:
+    var(--group-logo-surface);
+
+  color:
+    var(--group-text-secondary);
+
+  background: transparent;
 }
 
 :global([data-brand="group"]) .footerWrap .frame {
-  inline-size: 100%;
-  max-inline-size: 100%;
+  inline-size:
+    min(
+      calc(100% - (2 * var(--section-inset))),
+      var(--footer-max-width)
+    );
 
-  border: 1px solid var(--group-border-default);
+  max-inline-size: var(--footer-max-width);
+
+  border:
+    1px solid var(--group-border-default);
+
   border-bottom: 0;
-  border-radius: 14px 14px 0 0;
 
-  background: transparent;
+  border-radius:
+    var(--group-radius-xl)
+    var(--group-radius-xl)
+    0
+    0;
+
+  color:
+    var(--group-text-secondary);
+
+  background:
+    var(--group-logo-surface);
 
   box-shadow:
-    inset 0 1px 0 rgb(218 221 192 / 0.08),
-    0 1.1rem 2.6rem rgb(0 0 0 / 0.22);
+    inset 0 1px 0 rgb(255 255 255 / 0.72),
+    0 1.35rem 3.2rem rgb(30 46 36 / 0.14);
 }
 
 :global([data-brand="group"]) .footerWrap .strip {
-  inline-size: 100%;
-  max-inline-size: 100%;
+  inline-size:
+    min(
+      calc(100% - (2 * var(--section-inset))),
+      var(--footer-max-width)
+    );
 
-  border-top-color: var(--group-border-subtle);
+  max-inline-size: var(--footer-max-width);
+
+  border-top-color:
+    var(--group-border-subtle);
 }
 
 /* =========================================================
@@ -282,27 +361,49 @@
   }
 
   .frame {
-    inline-size: min(calc(100% - (2 * var(--section-inset))),
-        var(--footer-max-width));
+    inline-size:
+      min(
+        calc(100% - (2 * var(--section-inset))),
+        var(--footer-max-width)
+      );
+
     border-radius: 16px 16px 0 0;
   }
 
-  :global([data-brand="travel"]) .footerWrap,
-  :global([data-brand="group"]) .footerWrap {
+  :global([data-brand="travel"]) .footerWrap {
     --section-inset: 0px;
   }
 
-  :global([data-brand="travel"]) .footerWrap .frame,
-  :global([data-brand="group"]) .footerWrap .frame {
+  :global([data-brand="travel"]) .footerWrap .frame {
     inline-size: 100%;
     max-inline-size: 100%;
     border-radius: 16px 16px 0 0;
   }
 
+  :global([data-brand="group"]) .footerWrap {
+    --section-inset: clamp(10px, 3vw, 16px);
+    --footer-inner-pad: clamp(12px, 4vw, 18px);
+  }
+
+  :global([data-brand="group"]) .footerWrap .frame {
+    inline-size:
+      min(
+        calc(100% - (2 * var(--section-inset))),
+        var(--footer-max-width)
+      );
+
+    max-inline-size: var(--footer-max-width);
+    border-radius: 16px 16px 0 0;
+  }
+
   :global([data-brand="sports"]) .footerWrap .frame,
   :global([data-brand="hotel"]) .footerWrap .frame {
-    inline-size: min(calc(100% - (2 * var(--section-inset))),
-        var(--footer-max-width));
+    inline-size:
+      min(
+        calc(100% - (2 * var(--section-inset))),
+        var(--footer-max-width)
+      );
+
     max-inline-size: var(--footer-max-width);
     border-radius: 16px 16px 0 0;
   }
@@ -323,13 +424,14 @@
 
   :global([data-brand="group"]) .footerWrap .frame {
     box-shadow:
-      inset 0 1px 0 rgb(218 221 192 / 0.04),
-      0 0.9rem 2.1rem rgb(0 0 0 / 0.22);
+      inset 0 1px 0 rgb(255 255 255 / 0.68),
+      0 0.9rem 2.1rem rgb(30 46 36 / 0.12);
   }
 
   :global([data-brand="hotel"]) .footerWrap .frame {
     box-shadow:
-      inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05),
+      inset 0 1px 0
+        rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05),
       inset 0 -1px 0 rgb(0 0 0 / 0.18),
       0 0.9rem 2.1rem rgb(0 0 0 / 0.24);
   }
@@ -378,7 +480,7 @@
   }
 
   :global([data-brand="group"]) .footerWrap .frame {
-    background: transparent;
+    background: var(--group-logo-surface);
   }
 
   :global([data-brand="hotel"]) .footerWrap .frame {

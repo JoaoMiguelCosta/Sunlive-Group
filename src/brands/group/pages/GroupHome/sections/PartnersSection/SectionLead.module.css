@@ -1,14 +1,19 @@
-/* Partners Section Lead — Sunlive Group / Deep Forest */
+/* ============================================================
+   SectionLead — Sunlive Group / Light Forest
+   Lead de secção para parceiros e conteúdos institucionais.
+   ============================================================ */
 
 .lead {
+    display: grid;
+    justify-items: center;
+    row-gap:
+        clamp(0.5rem, 1.2vw, 0.78rem);
+
     inline-size: 100%;
     min-inline-size: 0;
 
-    display: grid;
-    justify-items: center;
-    row-gap: clamp(0.5rem, 1.2vw, 0.78rem);
-
     box-sizing: border-box;
+
     text-align: center;
 }
 
@@ -21,42 +26,55 @@
 
     margin: 0;
 
-    color: var(--group-accent-primary);
+    color:
+        var(--group-accent-primary);
 
-    font-family: var(--group-font-display);
-    font-size: var(--group-section-title-size);
-    font-weight: var(--group-font-weight-black);
+    font-family:
+        var(--group-font-display);
+
+    font-size:
+        var(--group-section-title-size);
+
+    font-weight:
+        var(--group-font-weight-black);
+
     line-height: 1.05;
-    letter-spacing: var(--group-section-title-tracking);
+    letter-spacing:
+        var(--group-section-title-tracking);
 
     text-align: center;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.65),
-        0 0.7rem 1.4rem rgb(0 0 0 / 0.34);
+    text-shadow: none;
 }
 
 .subtitle {
-    margin: 0;
-
     max-inline-size: 48rem;
 
-    color: var(--group-text-secondary);
+    margin: 0;
 
-    font-size: clamp(0.9rem, 0.82rem + 0.28vw, 1rem);
-    font-weight: var(--group-font-weight-medium);
+    color:
+        var(--group-text-secondary);
+
+    font-size:
+        clamp(0.9rem, 0.82rem + 0.28vw, 1rem);
+
+    font-weight:
+        var(--group-font-weight-medium);
+
     line-height: 1.58;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.48),
-        0 0.65rem 1.2rem rgb(0 0 0 / 0.22);
+    text-shadow: none;
 }
 
-/* Responsive */
+
+/* ============================================================
+   Responsive
+   ============================================================ */
 
 @media (max-width: 767.98px) {
     .title {
-        font-size: var(--group-section-title-size-md);
+        font-size:
+            var(--group-section-title-size-md);
     }
 
     .subtitle {
@@ -71,16 +89,21 @@
     }
 
     .title {
-        font-size: var(--group-section-title-size-sm);
+        font-size:
+            var(--group-section-title-size-sm);
     }
 
     .subtitle {
         max-inline-size: 34rem;
+
         font-size: 0.88rem;
     }
 }
 
-/* Print */
+
+/* ============================================================
+   Print
+   ============================================================ */
 
 @media print {
     .title {

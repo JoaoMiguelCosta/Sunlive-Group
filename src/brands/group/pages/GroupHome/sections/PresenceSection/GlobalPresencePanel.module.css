@@ -1,11 +1,28 @@
-/* Global Presence Panel — Sunlive Group / Deep Forest */
+/* ============================================================
+   GlobalPresencePanel — Sunlive Group / Light Forest
+
+   Cards inversos para melhorar o contraste dos logótipos
+   metálicos claros.
+
+   Versão estática:
+   - sem sombras;
+   - sem animações;
+   - sem overlays decorativos;
+   - sem movimentos.
+   ============================================================ */
 
 .panel {
-    --presence-grid-gap-x: clamp(0.9rem, 2vw, 1.9rem);
-    --presence-grid-gap-y: clamp(0.9rem, 1.8vw, 1.55rem);
+    --presence-grid-gap-x:
+        clamp(0.9rem, 2vw, 1.9rem);
 
-    --presence-card-width: clamp(12.5rem, 16.5vw, 17.25rem);
-    --presence-card-radius: clamp(0.85rem, 1.15vw, 1.15rem);
+    --presence-grid-gap-y:
+        clamp(0.9rem, 1.8vw, 1.55rem);
+
+    --presence-card-width:
+        clamp(12.5rem, 16.5vw, 17.25rem);
+
+    --presence-card-radius:
+        clamp(0.85rem, 1.15vw, 1.15rem);
 
     position: relative;
     isolation: isolate;
@@ -14,36 +31,52 @@
     min-inline-size: 0;
 
     box-sizing: border-box;
-    padding-block: clamp(0.5rem, 1.2vw, 0.95rem) clamp(0.75rem, 1.7vw, 1.35rem);
-    padding-inline: clamp(0.75rem, 3vw, 2.25rem);
+
+    padding-block:
+        clamp(0.5rem, 1.2vw, 0.95rem) clamp(0.75rem, 1.7vw, 1.35rem);
+
+    padding-inline:
+        clamp(0.75rem, 3vw, 2.25rem);
 
     overflow: visible;
 }
 
 
+/* ============================================================
+   Grid
+   ============================================================ */
+
 .grid {
     position: relative;
     z-index: 1;
 
-    inline-size: min(100%, 92rem);
-    min-inline-size: 0;
-
-    margin: 0;
-    margin-inline: auto;
-    padding: 0;
-
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    column-gap: var(--presence-grid-gap-x);
-    row-gap: var(--presence-grid-gap-y);
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
 
     align-items: center;
     justify-items: center;
 
+    column-gap:
+        var(--presence-grid-gap-x);
+
+    row-gap:
+        var(--presence-grid-gap-y);
+
+    inline-size:
+        min(100%, 92rem);
+
+    min-inline-size: 0;
+
+    margin: 0 auto;
+    padding: 0;
+
     list-style: none;
 }
 
-/* 3 cards em cima */
+
+/* Três cards na primeira linha */
+
 .grid>li:nth-child(1) {
     grid-column: 1 / span 2;
 }
@@ -56,7 +89,9 @@
     grid-column: 5 / span 2;
 }
 
-/* 2 cards centrados em baixo */
+
+/* Dois cards centrados na segunda linha */
+
 .grid>li:nth-child(4) {
     grid-column: 2 / span 2;
 }
@@ -65,125 +100,68 @@
     grid-column: 4 / span 2;
 }
 
+
+/* ============================================================
+   Card
+   ============================================================ */
+
 .item {
     position: relative;
     isolation: isolate;
 
-    inline-size: min(100%, var(--presence-card-width));
-    min-inline-size: 0;
-
     display: grid;
     place-items: center;
 
-    aspect-ratio: 245 / 97;
-    box-sizing: border-box;
+    inline-size:
+        min(100%, var(--presence-card-width));
 
+    min-inline-size: 0;
+
+    aspect-ratio: 245 / 97;
+
+    box-sizing: border-box;
     overflow: hidden;
 
-    border: 1px solid var(--group-border-default, rgb(218 221 192 / 28%));
-    border-radius: var(--presence-card-radius);
+    border:
+        1px solid var(--group-card-border-inverse);
 
-    background: var(--group-card-background, #294332);
+    border-radius:
+        var(--presence-card-radius);
 
-    box-shadow:
-        inset 0 1px 0 rgb(218 221 192 / 0.06),
-        inset 0 -1px 0 rgb(0 0 0 / 0.28),
-        0 0.8rem 1.9rem rgb(0 0 0 / 0.24),
-        0 0 0 1px rgb(255 255 255 / 0.02);
+    color:
+        var(--group-card-text-inverse);
 
-    transform: translateZ(0);
+    background-color:
+        var(--group-card-background-inverse);
 
-    transition:
-        transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
-        border-color 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
-        box-shadow 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
-        background 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
-        filter 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: none;
 }
 
-.item::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 4;
 
-    pointer-events: none;
-
-    border: 1px solid rgb(218 221 192 / 0.06);
-    border-radius: calc(var(--presence-card-radius) - 2px);
-
-    box-shadow:
-        inset 0 0 0 1px rgb(0 0 0 / 0.14),
-        inset 0 0 1.35rem rgb(0 0 0 / 0.1),
-        inset 0 1px 0 rgb(255 255 255 / 0.04);
-}
+/* ============================================================
+   Card content
+   ============================================================ */
 
 .cardInner {
     position: relative;
     isolation: isolate;
     z-index: 1;
 
-    inline-size: 100%;
-    block-size: 100%;
-
     display: grid;
     place-items: center;
 
+    inline-size: 100%;
+    block-size: 100%;
+
     overflow: hidden;
+
     border-radius: inherit;
 }
 
-.cardInner::before {
-    content: "";
-    position: absolute;
-    inset-block: -34%;
-    inset-inline-start: -46%;
-    z-index: 3;
 
-    inline-size: 30%;
-    block-size: 168%;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(112deg,
-            transparent 0%,
-            rgb(255 255 255 / 0.014) 20%,
-            rgb(218 221 192 / 0.08) 42%,
-            rgb(255 255 255 / 0.18) 50%,
-            rgb(218 221 192 / 0.06) 58%,
-            rgb(255 255 255 / 0.014) 74%,
-            transparent 100%);
-
-    opacity: 0.42;
-    mix-blend-mode: screen;
-    filter: blur(0.35px);
-    transform: translateX(-150%) skewX(-15deg);
-
-    animation: presenceCardSheen 4600ms cubic-bezier(0.55, 0, 0.25, 1) infinite;
-}
-
-.cardInner::after {
-    content: "";
-    position: absolute;
-    inset-inline: 15%;
-    inset-block-end: 10%;
-    z-index: 2;
-
-    block-size: 1px;
-
-    pointer-events: none;
-
-    background: var(--group-border-subtle, rgb(218 221 192 / 14%));
-
-    opacity: 0.22;
-    transform: scaleX(0.72);
-    transform-origin: center;
-
-    transition:
-        opacity 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
-        transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
+/* ============================================================
+   Logo
+   ============================================================ */
 
 .logo {
     position: relative;
@@ -191,48 +169,53 @@
 
     display: block;
 
-    inline-size: 78%;
+    inline-size: 80%;
     max-inline-size: 12.5rem;
     block-size: auto;
 
     object-fit: contain;
+
     user-select: none;
     pointer-events: none;
     -webkit-user-drag: none;
 
-    opacity: 0.92;
+    opacity: 1;
 
+    /*
+     * Correção cromática ligeira para destacar o acabamento
+     * metálico sobre o fundo verde, sem sombra exterior.
+     */
     filter:
-        saturate(1.015) contrast(1.028) brightness(1.018) drop-shadow(0 1px 0 rgb(255 255 255 / 0.04)) drop-shadow(0 0.5rem 0.95rem rgb(0 0 0 / 0.38));
-
-    transform: translate3d(0, 0, 0) scale(1);
-
-    transition:
-        transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
-        filter 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
-        opacity 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+        saturate(1.08) contrast(1.1) brightness(1.07);
 }
 
 
-/* =========================================================
+/* ============================================================
    Responsive
-   ========================================================= */
+   ============================================================ */
 
 @media (min-width: 1440px) {
     .grid {
-        inline-size: min(100%, 94rem);
+        inline-size:
+            min(100%, 94rem);
     }
 
     .panel {
-        --presence-card-width: clamp(13.25rem, 15.5vw, 17.75rem);
+        --presence-card-width:
+            clamp(13.25rem, 15.5vw, 17.75rem);
     }
 }
 
 @media (max-width: 1279.98px) {
     .panel {
-        --presence-card-width: clamp(12rem, 23vw, 16rem);
-        --presence-grid-gap-x: clamp(0.8rem, 1.8vw, 1.35rem);
-        --presence-grid-gap-y: clamp(0.8rem, 1.6vw, 1.2rem);
+        --presence-card-width:
+            clamp(12rem, 23vw, 16rem);
+
+        --presence-grid-gap-x:
+            clamp(0.8rem, 1.8vw, 1.35rem);
+
+        --presence-grid-gap-y:
+            clamp(0.8rem, 1.6vw, 1.2rem);
     }
 
     .logo {
@@ -242,16 +225,25 @@
 
 @media (max-width: 1023.98px) {
     .panel {
-        --presence-card-width: clamp(12rem, 34vw, 16rem);
-        --presence-grid-gap-x: clamp(0.75rem, 2.2vw, 1.15rem);
-        --presence-grid-gap-y: clamp(0.75rem, 2vw, 1.1rem);
+        --presence-card-width:
+            clamp(12rem, 34vw, 16rem);
 
-        padding-inline: clamp(0.75rem, 3vw, 1.5rem);
+        --presence-grid-gap-x:
+            clamp(0.75rem, 2.2vw, 1.15rem);
+
+        --presence-grid-gap-y:
+            clamp(0.75rem, 2vw, 1.1rem);
+
+        padding-inline:
+            clamp(0.75rem, 3vw, 1.5rem);
     }
 
     .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        inline-size: min(100%, 44rem);
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        inline-size:
+            min(100%, 44rem);
     }
 
     .grid>li {
@@ -259,66 +251,76 @@
     }
 
     .grid>li:last-child:nth-child(odd) {
-        grid-column: 1 / -1;
+        grid-column: 1 / -1 !important;
     }
 
     .logo {
-        inline-size: 78%;
+        inline-size: 80%;
         max-inline-size: 11.5rem;
     }
 }
 
 @media (max-width: 767.98px) {
     .panel {
-        --presence-card-width: clamp(11.75rem, 42vw, 15.25rem);
+        --presence-card-width:
+            clamp(11.75rem, 42vw, 15.25rem);
+
         --presence-grid-gap-x: 0.72rem;
         --presence-grid-gap-y: 0.72rem;
 
-        padding-block: clamp(0.45rem, 2vw, 0.8rem) clamp(0.7rem, 2.8vw, 1.1rem);
-        padding-inline: clamp(0.65rem, 3.5vw, 1.15rem);
+        padding-block:
+            clamp(0.45rem, 2vw, 0.8rem) clamp(0.7rem, 2.8vw, 1.1rem);
+
+        padding-inline:
+            clamp(0.65rem, 3.5vw, 1.15rem);
     }
 
     .item {
-        border-radius: clamp(0.75rem, 2vw, 1rem);
+        border-radius:
+            clamp(0.75rem, 2vw, 1rem);
     }
 
     .logo {
-        inline-size: 76%;
+        inline-size: 78%;
         max-inline-size: 10.75rem;
-    }
-
-    .cardInner::before {
-        opacity: 0.36;
-        animation-duration: 5000ms;
     }
 }
 
 @media (max-width: 639.98px) {
     .panel {
-        --presence-card-width: min(100%, 16.75rem);
+        --presence-card-width:
+            min(100%, 16.75rem);
+
         --presence-grid-gap-y: 0.66rem;
 
-        padding-inline: clamp(0.75rem, 4vw, 1rem);
+        padding-inline:
+            clamp(0.75rem, 4vw, 1rem);
     }
 
     .grid {
-        grid-template-columns: 1fr;
-        inline-size: min(100%, 18.5rem);
+        grid-template-columns:
+            minmax(0, 1fr);
+
+        inline-size:
+            min(100%, 18.5rem);
     }
 
     .item {
-        inline-size: min(100%, var(--presence-card-width));
+        inline-size:
+            min(100%, var(--presence-card-width));
     }
 
     .logo {
-        inline-size: 76%;
+        inline-size: 78%;
         max-inline-size: 10.75rem;
     }
 }
 
 @media (max-width: 479.98px) {
     .panel {
-        --presence-card-width: min(100%, 15.25rem);
+        --presence-card-width:
+            min(100%, 15.25rem);
+
         --presence-grid-gap-y: 0.58rem;
 
         padding-block: 0.48rem 0.85rem;
@@ -326,7 +328,8 @@
     }
 
     .grid {
-        inline-size: min(100%, 16.5rem);
+        inline-size:
+            min(100%, 16.5rem);
     }
 
     .item {
@@ -334,89 +337,45 @@
     }
 
     .logo {
-        inline-size: 74%;
+        inline-size: 76%;
         max-inline-size: 9.65rem;
-    }
-
-    .cardInner::after {
-        inset-inline: 17%;
-        opacity: 0.18;
     }
 }
 
 @media (max-width: 419.98px) {
     .panel {
-        --presence-card-width: min(100%, 14.25rem);
+        --presence-card-width:
+            min(100%, 14.25rem);
+
         --presence-grid-gap-y: 0.52rem;
     }
 
     .grid {
-        inline-size: min(100%, 15.5rem);
+        inline-size:
+            min(100%, 15.5rem);
     }
 
     .logo {
-        inline-size: 74%;
+        inline-size: 76%;
         max-inline-size: 9rem;
     }
 }
 
 @media (max-width: 359.98px) {
     .panel {
-        --presence-card-width: min(100%, 13.5rem);
+        --presence-card-width:
+            min(100%, 13.5rem);
+
         padding-inline: 0.65rem;
     }
 
     .grid {
-        inline-size: min(100%, 14.5rem);
+        inline-size:
+            min(100%, 14.5rem);
     }
 
     .logo {
-        inline-size: 72%;
+        inline-size: 74%;
         max-inline-size: 8.4rem;
-    }
-}
-
-/* =========================================================
-   Animations
-   ========================================================= */
-
-@keyframes presenceCardSheen {
-    0% {
-        opacity: 0;
-        transform: translateX(-150%) skewX(-15deg);
-    }
-
-    12% {
-        opacity: 0.28;
-    }
-
-    48% {
-        opacity: 0.62;
-    }
-
-    78% {
-        opacity: 0.3;
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateX(430%) skewX(-15deg);
-    }
-}
-
-/* =========================================================
-   Motion
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .panel::after,
-    .item,
-    .item::after,
-    .cardInner::before,
-    .cardInner::after,
-    .logo {
-        animation: none;
-        transition: none;
     }
 }

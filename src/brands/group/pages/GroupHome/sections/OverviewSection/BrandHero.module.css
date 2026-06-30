@@ -1,62 +1,88 @@
-/* Brand Hero — Sunlive Group / Deep Forest */
+/* ============================================================
+   BrandHero — Sunlive Group / Light Forest
+   ============================================================ */
 
 .hero {
     position: relative;
     isolation: isolate;
 
-    inline-size: 100%;
-    min-inline-size: 0;
-
     display: grid;
     place-items: center;
 
-    box-sizing: border-box;
-    overflow: visible;
+    inline-size: 100%;
+    min-inline-size: 0;
 
-    padding-inline: clamp(0.75rem, 3vw, 2.5rem);
+    box-sizing: border-box;
+    padding-inline:
+        clamp(0.75rem, 3vw, 2.5rem);
+
+    overflow: visible;
 
     background: transparent;
 }
+
+
+/* ============================================================
+   Logo container
+   ============================================================ */
 
 .logoBox {
     position: relative;
     isolation: isolate;
     z-index: 1;
 
-    inline-size: clamp(21rem, 46vw, 50rem);
-    max-inline-size: min(100%, 50rem);
-    min-inline-size: 0;
-
     display: grid;
     place-items: center;
 
+    inline-size:
+        clamp(21rem, 46vw, 50rem);
+
+    max-inline-size:
+        min(100%, 50rem);
+
+    min-inline-size: 0;
+
     box-sizing: border-box;
-    padding: clamp(0.18rem, 0.55vw, 0.55rem);
+
+    padding:
+        clamp(0.18rem, 0.55vw, 0.55rem);
 
     overflow: hidden;
-    border-radius: clamp(1.1rem, 2vw, 2rem);
 
-    background: transparent;
+    border-radius:
+        clamp(1.1rem, 2vw, 2rem);
+
+    background:
+        radial-gradient(ellipse at center,
+            rgb(246 247 237 / 34%) 0%,
+            transparent 72%);
 
     opacity: 0;
-    transform: translate3d(0, 18px, 0) scale(0.965);
+
+    transform:
+        translate3d(0, 10px, 0) scale(0.986);
 
     filter:
-        drop-shadow(0 1.25rem 2.6rem rgb(0 0 0 / 0.3));
+        drop-shadow(0 0.48rem 1rem rgb(30 46 36 / 13%));
 
     animation:
-        logoEntrance 760ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms forwards,
-        logoPresence 7200ms ease-in-out 1100ms infinite;
+        logoEntrance 640ms var(--group-ease-emphasized) 100ms forwards;
 }
+
+
+/* ============================================================
+   One-time sheen
+   ============================================================ */
 
 .logoBox::after {
     content: "";
+
     position: absolute;
     inset-block: -18%;
     inset-inline-start: -48%;
     z-index: 2;
 
-    inline-size: 42%;
+    inline-size: 36%;
     block-size: 140%;
 
     pointer-events: none;
@@ -64,21 +90,26 @@
     background:
         linear-gradient(112deg,
             transparent 0%,
-            rgb(255 255 255 / 0.02) 24%,
-            rgb(255 255 255 / 0.14) 42%,
-            rgb(255 255 255 / 0.32) 50%,
-            rgb(255 255 255 / 0.12) 58%,
-            rgb(255 255 255 / 0.02) 74%,
+            rgb(255 255 255 / 1.5%) 28%,
+            rgb(255 255 255 / 11%) 48%,
+            rgb(255 255 255 / 2%) 68%,
             transparent 100%);
 
-    opacity: 0.52;
-    transform: translateX(-140%) skewX(-16deg);
+    opacity: 0;
+
+    transform:
+        translateX(-145%) skewX(-16deg);
 
     mix-blend-mode: screen;
-    filter: blur(0.2px);
 
-    animation: logoSheenContinuous 2600ms cubic-bezier(0.55, 0, 0.25, 1) infinite;
+    animation:
+        logoSheen 1500ms var(--group-ease-emphasized) 700ms both;
 }
+
+
+/* ============================================================
+   Logo image
+   ============================================================ */
 
 .logoImg {
     position: relative;
@@ -90,6 +121,7 @@
     block-size: auto;
 
     object-fit: contain;
+
     user-select: none;
     pointer-events: none;
     -webkit-user-drag: none;
@@ -97,62 +129,63 @@
     transform: translate3d(0, 0, 0);
 
     filter:
-        saturate(1.07) contrast(1.06) brightness(1.05) drop-shadow(0 0.95rem 1.85rem rgb(0 0 0 / 0.52));
-
-    animation:
-        logoFloat 7400ms ease-in-out 950ms infinite,
-        logoPulse 4200ms ease-in-out 1200ms infinite;
+        saturate(1.04) contrast(1.055) brightness(1.01) drop-shadow(0 0.3rem 0.58rem rgb(30 46 36 / 17%));
 }
 
-/* =========================================================
+
+/* ============================================================
    Responsive
-   ========================================================= */
+   ============================================================ */
 
 @media (min-width: 1440px) {
     .logoBox {
-        inline-size: clamp(36rem, 44vw, 52rem);
+        inline-size:
+            clamp(36rem, 44vw, 52rem);
+
         max-inline-size: 52rem;
     }
 }
 
 @media (max-width: 1279.98px) {
     .logoBox {
-        inline-size: clamp(25rem, 52vw, 43rem);
+        inline-size:
+            clamp(25rem, 52vw, 43rem);
+
         max-inline-size: 43rem;
     }
 }
 
 @media (max-width: 1023.98px) {
     .logoBox {
-        inline-size: clamp(22rem, 62vw, 37rem);
+        inline-size:
+            clamp(22rem, 62vw, 37rem);
+
         max-inline-size: 37rem;
     }
 }
 
 @media (max-width: 767.98px) {
     .hero {
-        padding-inline: clamp(0.75rem, 4vw, 1.5rem);
+        padding-inline:
+            clamp(0.75rem, 4vw, 1.5rem);
     }
 
     .logoBox {
-        inline-size: clamp(18rem, 78vw, 30.5rem);
+        inline-size:
+            clamp(18rem, 78vw, 30.5rem);
+
         max-inline-size: 30.5rem;
 
-        padding: clamp(0.1rem, 0.7vw, 0.3rem);
+        padding:
+            clamp(0.1rem, 0.7vw, 0.3rem);
 
         filter:
-            drop-shadow(0 0.9rem 2rem rgb(0 0 0 / 0.28));
-    }
-
-    .logoBox::after {
-        inline-size: 48%;
-        opacity: 0.42;
-        animation-duration: 3000ms;
+            drop-shadow(0 0.36rem 0.78rem rgb(30 46 36 / 12%));
     }
 
     .logoImg {
         filter:
-            saturate(1.045) contrast(1.04) brightness(1.03) drop-shadow(0 0.72rem 1.35rem rgb(0 0 0 / 0.48));
+            saturate(1.035) contrast(1.045) brightness(1.01) drop-shadow(0 0.24rem 0.46rem rgb(30 46 36 / 15%));
     }
 }
 
@@ -162,123 +195,79 @@
     }
 
     .logoBox {
-        inline-size: clamp(15.8rem, 88vw, 23.5rem);
-        max-inline-size: 23.5rem;
-        border-radius: 1rem;
-    }
+        inline-size:
+            clamp(15.8rem, 88vw, 23.5rem);
 
-    .logoBox::after {
-        inline-size: 54%;
-        opacity: 0.38;
-        animation-duration: 3400ms;
+        max-inline-size: 23.5rem;
+
+        border-radius: 1rem;
     }
 }
 
 @media (max-width: 379.98px) {
     .logoBox {
-        inline-size: min(14.75rem, 89vw);
+        inline-size:
+            min(14.75rem, 89vw);
     }
 }
 
-/* =========================================================
+
+/* ============================================================
    Animations
-   ========================================================= */
+   ============================================================ */
 
 @keyframes logoEntrance {
+    from {
+        opacity: 0;
+
+        transform:
+            translate3d(0, 10px, 0) scale(0.986);
+
+        filter:
+            blur(1.5px) drop-shadow(0 0.24rem 0.52rem rgb(30 46 36 / 9%));
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translate3d(0, 0, 0) scale(1);
+
+        filter:
+            drop-shadow(0 0.48rem 1rem rgb(30 46 36 / 13%));
+    }
+}
+
+@keyframes logoSheen {
     0% {
         opacity: 0;
-        transform: translate3d(0, 18px, 0) scale(0.965);
-        filter:
-            blur(3px) drop-shadow(0 0.7rem 1.4rem rgb(0 0 0 / 0.22));
+
+        transform:
+            translateX(-145%) skewX(-16deg);
     }
 
-    58% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate3d(0, 0, 0) scale(1);
-        filter:
-            drop-shadow(0 1.25rem 2.6rem rgb(0 0 0 / 0.3));
-    }
-}
-
-@keyframes logoSheenContinuous {
-    0% {
-        opacity: 0;
-        transform: translateX(-145%) skewX(-16deg);
-    }
-
-    12% {
-        opacity: 0.46;
-    }
-
-    48% {
-        opacity: 0.68;
-    }
-
-    82% {
-        opacity: 0.38;
+    30% {
+        opacity: 0.24;
     }
 
     100% {
         opacity: 0;
-        transform: translateX(355%) skewX(-16deg);
+
+        transform:
+            translateX(355%) skewX(-16deg);
     }
 }
 
-@keyframes logoFloat {
 
-    0%,
-    100% {
-        transform: translate3d(0, 0, 0);
-    }
-
-    50% {
-        transform: translate3d(0, -4px, 0);
-    }
-}
-
-@keyframes logoPulse {
-
-    0%,
-    100% {
-        filter:
-            saturate(1.07) contrast(1.06) brightness(1.045) drop-shadow(0 0.95rem 1.85rem rgb(0 0 0 / 0.52));
-    }
-
-    50% {
-        filter:
-            saturate(1.1) contrast(1.075) brightness(1.065) drop-shadow(0 1rem 1.95rem rgb(0 0 0 / 0.54));
-    }
-}
-
-@keyframes logoPresence {
-
-    0%,
-    100% {
-        filter:
-            drop-shadow(0 1.25rem 2.6rem rgb(0 0 0 / 0.3));
-    }
-
-    50% {
-        filter:
-            drop-shadow(0 1.35rem 2.8rem rgb(0 0 0 / 0.34));
-    }
-}
-
-/* =========================================================
-   Motion
-   ========================================================= */
+/* ============================================================
+   Reduced motion
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
 
     .logoBox,
-    .logoBox::after,
-    .logoImg {
+    .logoBox::after {
         animation: none;
-        transition: none;
     }
 
     .logoBox {
@@ -288,10 +277,6 @@
 
     .logoBox::after {
         opacity: 0;
-        transform: none;
-    }
-
-    .logoImg {
         transform: none;
     }
 }

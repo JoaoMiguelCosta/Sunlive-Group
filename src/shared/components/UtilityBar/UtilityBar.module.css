@@ -556,44 +556,68 @@
 }
 
 /* =======================================================
-   Sunlive Group / Logos Header — Deep Forest
+   Sunlive Group / Logos Header — Light Forest
    ======================================================= */
 
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) {
     --accent: var(--group-accent-primary);
 
-    --header-divider-inner: var(--group-border-default);
-    --header-divider-home: var(--group-border-strong);
+    --group-focus-offset-color:
+        var(--group-surface-elevated);
 
-    --header-link-color: var(--group-text-primary);
-    --header-link-hover-color: var(--group-accent-primary);
+    --header-divider-inner:
+        var(--group-border-subtle);
 
-    --header-back-border: var(--group-border-default);
-    --header-back-border-hover: var(--group-border-strong);
+    --header-divider-home:
+        var(--group-border-default);
 
-    --header-home-border: var(--group-border-default);
-    --header-home-border-hover: var(--group-border-strong);
+    --header-link-color:
+        var(--group-text-secondary);
 
-    --header-menu-bg: var(--group-card-background);
+    --header-link-hover-color:
+        var(--group-accent-primary-hover);
 
-    --header-active-bg: var(--group-accent-primary);
+    --header-back-border:
+        var(--group-border-subtle);
+
+    --header-back-border-hover:
+        var(--group-border-default);
+
+    --header-home-border:
+        var(--group-border-subtle);
+
+    --header-home-border-hover:
+        var(--group-border-default);
+
+    --header-menu-bg:
+        var(--group-surface-elevated);
+
+    --header-active-bg:
+        var(--group-control-bg-active);
 
     --header-control-shadow:
-        inset 0 1px 0 rgb(218 221 192 / 0.05),
-        0 0.75rem 1.55rem rgb(0 0 0 / 0.28);
+        inset 0 1px 0 rgb(255 255 255 / 0.46),
+        0 0.18rem 0.48rem rgb(30 46 36 / 0.07);
 
     --header-control-shadow-hover:
-        inset 0 1px 0 rgb(218 221 192 / 0.07),
-        0 1rem 2rem rgb(0 0 0 / 0.36);
+        inset 0 1px 0 rgb(255 255 255 / 0.52),
+        0 0.34rem 0.8rem rgb(30 46 36 / 0.1);
+
+    z-index: 80;
 }
 
 .utilityBar[data-variant="group-header"] .inner {
     grid-template-columns: minmax(0, 1fr) auto;
 
-    min-height: clamp(64px, 5vw, 82px);
+    min-height:
+        clamp(62px, 4.6vw, 72px);
 
-    border-bottom: 1px solid var(--header-divider-inner);
+    padding-block: 0.42rem;
+    padding-inline:
+        clamp(0.15rem, 0.5vw, 0.4rem);
+
+    border-bottom: 0;
 }
 
 .utilityBar[data-variant="group-header"] .inner::before,
@@ -611,8 +635,8 @@
 }
 
 .utilityBar[data-variant="group-header"] .right {
-    width: auto;
-    gap: clamp(0.45rem, 0.6vw, 0.65rem);
+    inline-size: auto;
+    gap: 0.28rem;
 }
 
 :is(.utilityBar[data-variant="group-header"],
@@ -621,86 +645,105 @@
 }
 
 :is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink) {
-    color: var(--group-text-primary);
+    .utilityBar[data-variant="logos-header"]) :is(
+        .backLink,
+        .homeLink
+    ) {
+    color: var(--header-link-color);
 
-    border-color: var(--header-back-border);
+    border-color:
+        var(--header-back-border);
 
-    background: var(--group-card-background);
+    background:
+        var(--group-surface-secondary);
 
-    box-shadow: var(--header-control-shadow);
+    box-shadow:
+        var(--header-control-shadow);
 
-    font-weight: 760;
-    letter-spacing: 0.006em;
+    font-weight: var(--group-font-weight-semibold);
+    letter-spacing: var(--group-control-label-tracking);
 
-    text-shadow:
-        0 1px 0 rgb(218 221 192 / 0.035),
-        0 0.45rem 0.85rem rgb(0 0 0 / 0.34);
+    text-shadow: none;
 
-    backdrop-filter: blur(12px) saturate(1.12);
-    -webkit-backdrop-filter: blur(12px) saturate(1.12);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) .homeLink {
-    border-color: var(--header-home-border);
+    border-color:
+        var(--header-home-border);
 
-    background: var(--group-surface-primary);
+    background:
+        var(--group-surface-primary);
 }
 
 :is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink)::before,
+    .utilityBar[data-variant="logos-header"]) :is(
+        .backLink,
+        .homeLink
+    )::before,
 :is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink)::after {
+    .utilityBar[data-variant="logos-header"]) :is(
+        .backLink,
+        .homeLink
+    )::after {
     content: none;
 }
 
 :is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink):hover {
+    .utilityBar[data-variant="logos-header"]) :is(
+        .backLink,
+        .homeLink
+    ):hover {
     transform: translateY(-1px);
 
-    color: var(--header-link-hover-color);
-    filter: saturate(1.04) contrast(1.018);
+    color:
+        var(--header-link-hover-color);
 
-    box-shadow: var(--header-control-shadow-hover);
+    border-color:
+        var(--group-border-default);
+
+    filter: none;
+
+    box-shadow:
+        var(--header-control-shadow-hover);
 }
 
 :is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) .backLink:hover {
-    border-color: var(--header-back-border-hover);
-}
-
-:is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) .homeLink:hover {
-    border-color: var(--header-home-border-hover);
-}
-
-:is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) :is(.backIcon, .homeIcon) {
+    .utilityBar[data-variant="logos-header"]) :is(
+        .backIcon,
+        .homeIcon
+    ) {
     color: var(--group-accent-fresh);
-
-    opacity: 0.96;
-
-    filter:
-        drop-shadow(0 0.2rem 0.5rem rgb(0 0 0 / 0.3));
+    opacity: 1;
+    filter: none;
 }
 
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) .socials {
-    gap: clamp(0.45rem, 0.6vw, 0.65rem);
+    gap: 0.24rem;
 }
 
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) .socialLink {
-    color: var(--group-accent-fresh);
+    inline-size: 40px;
+    block-size: 40px;
 
+    border: 1px solid transparent;
+    border-radius: var(--group-radius-md);
 
+    color: var(--group-text-secondary);
+    background: transparent;
 
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 
-
-
-    backdrop-filter: blur(8px) saturate(1.1);
-    -webkit-backdrop-filter: blur(8px) saturate(1.1);
+    transition:
+        color var(--group-duration-fast) var(--group-ease-standard),
+        background-color var(--group-duration-fast) var(--group-ease-standard),
+        border-color var(--group-duration-fast) var(--group-ease-standard),
+        box-shadow var(--group-duration-fast) var(--group-ease-standard);
 }
 
 :is(.utilityBar[data-variant="group-header"],
@@ -710,21 +753,27 @@
 
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) .socialLink:hover {
-    transform: translateY(-1px);
+    transform: none;
 
-    color: var(--header-link-hover-color);
-    border-color: rgb(var(--group-accent-fresh-rgb) / 52%);
-    background: var(--group-card-background-hover);
+    color: var(--group-accent-primary-hover);
 
-    box-shadow: var(--header-control-shadow-hover);
+    border-color:
+        var(--group-border-subtle);
+
+    background:
+        var(--group-surface-primary);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.42);
 }
 
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) .socialIcon {
-    color: currentColor;
+    inline-size: 1.08rem;
+    block-size: 1.08rem;
 
-    filter:
-        drop-shadow(0 0.35rem 0.7rem rgb(0 0 0 / 0.25));
+    color: currentColor;
+    filter: none;
 }
 
 :is(.utilityBar[data-variant="group-header"],
@@ -734,180 +783,49 @@
 
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) .langBtn {
-    inline-size: clamp(34px, 2.8vw, 40px);
-    block-size: clamp(34px, 2.8vw, 40px);
+    inline-size: auto;
+    block-size: auto;
+    min-block-size: 40px;
 
-    padding-inline: 0;
-    gap: 0.2rem;
+    gap: 0.4rem;
 
-    color: var(--group-accent-fresh);
+    padding-block: 0.32rem;
+    padding-inline: 0.68rem;
 
+    border: 1px solid transparent;
+    border-radius: var(--group-radius-md);
 
+    color: var(--group-text-secondary);
+    background: transparent;
 
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 
-
-    backdrop-filter: blur(8px) saturate(1.1);
-    -webkit-backdrop-filter: blur(8px) saturate(1.1);
+    transition:
+        color var(--group-duration-fast) var(--group-ease-standard),
+        background-color var(--group-duration-fast) var(--group-ease-standard),
+        border-color var(--group-duration-fast) var(--group-ease-standard),
+        box-shadow var(--group-duration-fast) var(--group-ease-standard);
 }
 
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) .langBtn:hover,
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) .langBtn[data-open="true"] {
-    color: var(--header-link-hover-color);
-    border-color: rgb(var(--group-accent-fresh-rgb) / 52%);
-    background: var(--group-card-background-hover);
+    color: var(--group-accent-primary-hover);
 
-    box-shadow: var(--header-control-shadow-hover);
-}
+    border-color:
+        var(--group-border-subtle);
 
-:is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) .chevron {
-    inline-size: 0.52rem;
-    block-size: 0.3rem;
+    background:
+        var(--group-surface-primary);
 
-    color: currentColor;
-    opacity: 0.92;
-}
-
-:is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) .langBtn[data-open="true"] .chevron {
-    color: var(--group-accent-fresh);
-}
-
-:is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) .langMenu {
-    z-index: 100;
-    overflow: hidden;
-
-    border-color: rgb(218 221 192 / 0.22);
-    background: var(--header-menu-bg);
     box-shadow:
-        0 1.4rem 3rem rgb(0 0 0 / 0.52),
-        0 0 0 1px rgb(218 221 192 / 0.04),
-        inset 0 1px 0 rgb(218 221 192 / 0.05),
-        inset 0 -1px 0 rgb(0 0 0 / 0.12);
-
-    backdrop-filter: blur(16px) saturate(1.14);
-    -webkit-backdrop-filter: blur(16px) saturate(1.14);
-}
-
-/* Apenas Sunlive Group — shadow reforçado */
-.utilityBar[data-variant="group-header"] .langMenu {
-    box-shadow:
-        0 1.5rem 3.25rem rgb(0 0 0 / 0.66),
-        0 0 0 1px rgb(218 221 192 / 0.03),
-        inset 0 1px 0 rgb(218 221 192 / 0.04),
-        inset 0 -1px 0 rgb(0 0 0 / 0.14);
-
-    backdrop-filter: blur(18px) saturate(1.08);
-    -webkit-backdrop-filter: blur(18px) saturate(1.08);
+        inset 0 1px 0 rgb(255 255 255 / 0.42);
 }
 
 :is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) .langItem {
-    color: var(--group-text-secondary);
-}
-
-:is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) .langItem:hover {
-    color: var(--group-text-primary);
-
-    background: rgb(218 221 192 / 0.06);
-}
-
-:is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) .langMenu [aria-selected="true"] .langItem {
-    color: var(--group-text-dark);
-    background: var(--header-active-bg);
-}
-
-:is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) .langItemName {
-    color: var(--group-text-muted);
-}
-
-:is(.utilityBar[data-variant="group-header"],
-    .utilityBar[data-variant="logos-header"]) :is(.backLink, .homeLink, .socialLink, .langBtn):focus-visible {
-    box-shadow: var(--group-focus-shadow);
-}
-
-/* =======================================================
-   Sunlive Group — refinamento controlos utilitários
-   Sobrepõe a regra combinada group+logos exclusivamente
-   para group-header; logos-header não é afectado
-   ======================================================= */
-
-.utilityBar[data-variant="group-header"] .right {
-    gap: 0.4rem;
-}
-
-.utilityBar[data-variant="group-header"] .socials {
-    gap: 0.4rem;
-}
-
-.utilityBar[data-variant="group-header"] .socialLink {
-    inline-size: 40px;
-    block-size: 40px;
-    border-radius: var(--group-radius-sm);
-
-    color: var(--group-text-secondary);
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-
-    transition:
-        background var(--group-duration-fast) var(--group-ease-standard),
-        color var(--group-duration-fast) var(--group-ease-standard);
-}
-
-.utilityBar[data-variant="group-header"] .socialLink:hover {
-    transform: none;
-
-    color: var(--group-text-primary);
-    border-color: transparent;
-    background: var(--group-control-bg-hover);
-    box-shadow: none;
-}
-
-.utilityBar[data-variant="group-header"] .socialIcon {
-    inline-size: 1.1rem;
-    block-size: 1.1rem;
-    filter: none;
-}
-
-.utilityBar[data-variant="group-header"] .langBtn {
-    inline-size: auto;
-    block-size: auto;
-    min-block-size: 40px;
-    padding-block: 0.3rem;
-    padding-inline: 0.6rem;
-    border-radius: var(--group-radius-sm);
-    gap: 0.4rem;
-
-    color: var(--group-text-secondary);
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-
-    transition:
-        background var(--group-duration-fast) var(--group-ease-standard),
-        color var(--group-duration-fast) var(--group-ease-standard);
-}
-
-.utilityBar[data-variant="group-header"] .langBtn:hover,
-.utilityBar[data-variant="group-header"] .langBtn[data-open="true"] {
-    color: var(--group-text-primary);
-    border-color: transparent;
-    background: var(--group-control-bg-hover);
-    box-shadow: none;
-}
-
-.utilityBar[data-variant="group-header"] .langBtn[data-open="true"] .chevron {
-    color: var(--group-accent-fresh);
-}
-
-.utilityBar[data-variant="group-header"] .langText {
+    .utilityBar[data-variant="logos-header"]) .langText {
     font-family: var(--group-font-ui);
     font-size: var(--group-control-label-size-md);
     font-weight: var(--group-font-weight-medium);
@@ -915,9 +833,101 @@
     text-transform: none;
 }
 
-.utilityBar[data-variant="group-header"] .chevron {
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .chevron {
     inline-size: 0.5rem;
     block-size: 0.5rem;
+
+    color: var(--group-accent-fresh);
+    opacity: 1;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langBtn[data-open="true"] .chevron {
+    color: var(--group-accent-primary);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langMenu {
+    z-index: 100;
+    overflow: hidden;
+
+    border:
+        1px solid var(--group-border-default);
+
+    border-radius:
+        var(--group-radius-lg);
+
+    background:
+        var(--header-menu-bg);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.5),
+        0 0.9rem 2rem rgb(30 46 36 / 0.14);
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langItem {
+    border: 1px solid transparent;
+
+    color: var(--group-text-secondary);
+    background: transparent;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langItem:hover {
+    color: var(--group-accent-primary-hover);
+
+    background:
+        var(--group-control-bg-hover);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langMenu
+    [aria-selected="true"] .langItem {
+    color: var(--group-accent-primary);
+
+    background:
+        var(--header-active-bg);
+
+    font-weight:
+        var(--group-font-weight-semibold);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langItemName {
+    color: var(--group-text-muted);
+    opacity: 1;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langItem:disabled {
+    color: var(--group-text-muted);
+    opacity: 0.58;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langItem:disabled:hover {
+    color: var(--group-text-muted);
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    filter: none;
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) :is(
+        .backLink,
+        .homeLink,
+        .socialLink,
+        .langBtn,
+        .langItem
+    ):focus-visible {
+    outline: none;
+    box-shadow: var(--group-focus-shadow);
 }
 
 @media (max-width: 768px) {

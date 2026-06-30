@@ -1,6 +1,6 @@
 /* =========================================================
    Sunlive Group — Theme
-   Deep Forest brand context
+   Light Forest brand context
 
    Importa os tokens e aplica o contexto visual base
    exclusivamente dentro de [data-brand="group"].
@@ -12,16 +12,23 @@
 @import "./tokens.css";
 
 [data-brand="group"] {
-   color-scheme: dark;
+   color-scheme: light;
+
    color: var(--group-text-primary);
+   background-color: var(--group-background);
 
    /* -------------------------------------------------
-       Bridge tokens — consumidos pelos componentes
-       partilhados (Footer, UtilityBar, shared UI).
-       ------------------------------------------------- */
+      Bridge tokens — consumidos pelos componentes
+      partilhados (Footer, UtilityBar, shared UI).
+
+      Estes aliases existem apenas por compatibilidade.
+      Componentes novos da Group devem consumir tokens
+      --group-* diretamente.
+      ------------------------------------------------- */
 
    --sl-platinum-100: var(--group-text-primary);
    --sl-platinum-300: var(--group-text-secondary);
+
    --sl-gold-500: var(--group-accent-primary);
    --sl-gold-400: var(--group-accent-primary);
 
@@ -38,32 +45,92 @@
 
    --font-sans: var(--group-font-ui);
 
+   /*
+    * O offset pode ser redefinido localmente por cards,
+    * superfícies elevadas ou componentes inversos.
+    */
+   --group-focus-offset-color: var(--group-background);
+
    --sl-focus:
-      0 0 0 2px var(--group-background),
+      0 0 0 2px var(--group-focus-offset-color),
       0 0 0 4px var(--group-focus-outline);
 
    /* -------------------------------------------------
-       Footer tokens
-       ------------------------------------------------- */
+      Contexto inverso
 
-   --footer-accent: var(--group-accent-primary);
-   --footer-base: var(--group-surface-footer);
+      Usado pelos componentes que mantêm superfícies
+      escuras, como hero, media, footer e determinados
+      cards institucionais.
+      ------------------------------------------------- */
+
+   --sl-inverse-bg: var(--group-surface-inverse);
+
+   --sl-inverse-surface:
+      var(--group-surface-inverse-primary);
+
+   --sl-inverse-text:
+      var(--group-text-on-dark);
+
+   --sl-inverse-text-secondary:
+      var(--group-text-on-dark-secondary);
+
+   --sl-inverse-accent:
+      var(--group-accent-on-dark);
+
+   --sl-inverse-accent-fresh:
+      var(--group-accent-fresh-on-dark);
 
    /* -------------------------------------------------
-       Tokens de compatibilidade
-       ------------------------------------------------- */
+      Footer tokens
+
+      O footer mantém o contexto escuro e deverá
+      consumir estes aliases próprios.
+      ------------------------------------------------- */
+
+   --footer-base: var(--group-surface-footer);
+
+   --footer-accent:
+      var(--group-accent-on-dark);
+
+   --footer-accent-fresh:
+      var(--group-accent-fresh-on-dark);
+
+   --footer-text-primary:
+      var(--group-text-on-dark);
+
+   --footer-text-secondary:
+      var(--group-text-on-dark-secondary);
+
+   --footer-text-muted:
+      var(--group-text-on-dark-muted);
+
+   --footer-border-subtle:
+      var(--group-border-on-dark-subtle);
+
+   --footer-border-default:
+      var(--group-border-on-dark-default);
+
+   --footer-border-strong:
+      var(--group-border-on-dark-strong);
+
+   /* -------------------------------------------------
+      Tokens de compatibilidade
+      ------------------------------------------------- */
 
    --sl-radius-sm: var(--group-radius-sm);
+
    --sl-container-sm: 78rem;
    --sl-container-lg: 90rem;
+
    --sl-baseline: 1.25rem;
 }
+
 
 /* =========================================================
    Seleção de texto
    ========================================================= */
 
 [data-brand="group"] ::selection {
-   color: var(--group-text-dark);
-   background: var(--group-accent-primary);
+   color: var(--group-text-on-dark);
+   background-color: var(--group-accent-primary);
 }

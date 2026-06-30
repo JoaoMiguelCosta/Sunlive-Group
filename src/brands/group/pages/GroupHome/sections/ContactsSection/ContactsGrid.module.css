@@ -1,33 +1,43 @@
-/* Contacts Grid — BusinessUnits + RegionalOffices / Deep Forest */
+/* ============================================================
+   ContactsGrid — Sunlive Group / Light Forest
+   Business units and regional offices
+   ============================================================ */
 
 .grid {
-    --contacts-grid-gap: clamp(0.85rem, 1.8vw, 1.45rem);
-    --contacts-card-max: clamp(17rem, 23vw, 25.5rem);
+    --contacts-grid-gap:
+        clamp(0.85rem, 1.8vw, 1.45rem);
+
+    --contacts-card-max:
+        clamp(17rem, 23vw, 25.5rem);
+
+    display: grid;
+    grid-template-columns:
+        repeat(12, minmax(0, 1fr));
+
+    align-items: start;
+    justify-items: center;
+    gap: var(--contacts-grid-gap);
 
     inline-size: min(100%, 104rem);
     min-inline-size: 0;
 
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: var(--contacts-grid-gap);
-
-    align-items: start;
-    justify-items: center;
-
-    list-style: none;
     margin: 0 auto;
     padding: 0;
+
+    list-style: none;
 }
 
 .item {
-    grid-column: span 12;
-
-    inline-size: min(100%, var(--contacts-card-max));
-    min-inline-size: 0;
-
     display: grid;
     justify-self: center;
     justify-items: stretch;
+
+    grid-column: span 12;
+
+    inline-size:
+        min(100%, var(--contacts-card-max));
+
+    min-inline-size: 0;
 
     box-sizing: border-box;
 }
@@ -35,23 +45,30 @@
 .flag {
     position: relative;
     z-index: 2;
-}
 
-.flag {
     flex: 0 0 auto;
 
-    inline-size: clamp(18px, 1.45vw, 22px);
-    block-size: clamp(12px, 1vw, 15px);
+    inline-size:
+        clamp(18px, 1.45vw, 22px);
+
+    block-size:
+        clamp(12px, 1vw, 15px);
 
     overflow: hidden;
+
+    border:
+        1px solid rgb(var(--group-surface-inverse-rgb) / 14%);
+
     border-radius: 2px;
 
     box-shadow:
-        0 0 0 1px rgb(255 255 255 / 0.12),
-        0 0.35rem 0.85rem rgb(0 0 0 / 0.24);
+        0 0.08rem 0.2rem rgb(30 46 36 / 0.065);
 }
 
-/* Layout */
+
+/* ============================================================
+   Layout
+   ============================================================ */
 
 @media (min-width: 720px) {
     .item {
@@ -73,42 +90,60 @@
     }
 }
 
-/* Responsive */
+
+/* ============================================================
+   Responsive
+   ============================================================ */
 
 @media (max-width: 1279.98px) {
     .grid {
-        --contacts-card-max: clamp(15.25rem, 29vw, 22rem);
-        --contacts-grid-gap: clamp(0.8rem, 1.6vw, 1.2rem);
+        --contacts-card-max:
+            clamp(15.25rem, 29vw, 22rem);
+
+        --contacts-grid-gap:
+            clamp(0.8rem, 1.6vw, 1.2rem);
     }
 }
 
 @media (max-width: 1023.98px) {
     .grid {
-        --contacts-card-max: clamp(15rem, 40vw, 21rem);
+        --contacts-card-max:
+            clamp(15rem, 40vw, 21rem);
     }
 }
 
 @media (max-width: 719.98px) {
     .grid {
-        --contacts-card-max: min(100%, 23rem);
-        --contacts-grid-gap: clamp(0.72rem, 2.8vw, 0.95rem);
+        --contacts-card-max:
+            min(100%, 23rem);
 
-        inline-size: min(100%, 25rem);
-        grid-template-columns: 1fr;
+        --contacts-grid-gap:
+            clamp(0.72rem, 2.8vw, 0.95rem);
+
+        grid-template-columns:
+            minmax(0, 1fr);
+
+        inline-size:
+            min(100%, 25rem);
     }
 
     .item {
         grid-column: auto;
-        inline-size: min(100%, var(--contacts-card-max));
+
+        inline-size:
+            min(100%, var(--contacts-card-max));
     }
 }
 
 @media (max-width: 479.98px) {
     .grid {
-        --contacts-card-max: min(100%, 20.5rem);
+        --contacts-card-max:
+            min(100%, 20.5rem);
+
         --contacts-grid-gap: 0.62rem;
 
-        inline-size: min(100%, 21.5rem);
+        inline-size:
+            min(100%, 21.5rem);
     }
 
     .flag {
@@ -119,7 +154,10 @@
 
 @media (max-width: 379.98px) {
     .grid {
-        --contacts-card-max: min(100%, 18.5rem);
-        inline-size: min(100%, 19.5rem);
+        --contacts-card-max:
+            min(100%, 18.5rem);
+
+        inline-size:
+            min(100%, 19.5rem);
     }
 }

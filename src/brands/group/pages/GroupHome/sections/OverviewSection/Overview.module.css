@@ -1,24 +1,31 @@
-/* Overview — Sunlive Group / Deep Forest */
+/* ============================================================
+   Overview — Sunlive Group / Light Forest
+   ============================================================ */
 
 .section {
+  --overview-panel-radius:
+    clamp(1.1rem, 2.2vw, 2.25rem);
+
   position: relative;
   isolation: isolate;
-
-  inline-size: 100%;
-  min-inline-size: 0;
-  overflow: clip;
 
   display: grid;
   justify-items: center;
   align-content: start;
 
+  inline-size: 100%;
+  min-inline-size: 0;
+
+  overflow: clip;
+
   box-sizing: border-box;
   padding-inline: 0;
 
-  color: var(--group-text-primary, var(--sl-color-text, #f6f7ed));
-  background: transparent;
+  color:
+    var(--group-text-primary,
+      var(--sl-color-text, #1e2e24));
 
-  --overview-panel-radius: clamp(1.1rem, 2.2vw, 2.25rem);
+  background: transparent;
 }
 
 .section>* {
@@ -33,6 +40,11 @@
   max-inline-size: 100%;
 }
 
+
+/* ============================================================
+   Screen-reader-only content
+   ============================================================ */
+
 .srOnly {
   position: absolute;
 
@@ -40,17 +52,21 @@
   block-size: 1px;
 
   overflow: hidden;
+
   clip-path: inset(50%);
+
   white-space: nowrap;
 }
 
-/* =========================================================
+
+/* ============================================================
    Responsive
-   ========================================================= */
+   ============================================================ */
 
 @media (max-width: 1023.98px) {
   .section {
-    --overview-panel-radius: clamp(0.95rem, 2vw, 1.6rem);
+    --overview-panel-radius:
+      clamp(0.95rem, 2vw, 1.6rem);
   }
 }
 
