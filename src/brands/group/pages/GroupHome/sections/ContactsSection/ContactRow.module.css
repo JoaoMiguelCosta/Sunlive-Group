@@ -1,37 +1,49 @@
+/* ============================================================
+   ContactRow — Sunlive Group / Light Forest
+   ============================================================ */
+
 .row {
-    min-inline-size: 0;
+    --group-focus-offset-color:
+        var(--group-disclosure-panel-background);
 
     display: grid;
     grid-template-columns: 20px minmax(0, 1fr);
     align-items: center;
     gap: 0.58rem;
 
-    box-sizing: border-box;
-    padding: var(
-        --contact-row-padding,
-        clamp(0.48rem, 0.7vw, 0.6rem) clamp(0.55rem, 0.85vw, 0.72rem)
-    );
+    min-inline-size: 0;
 
-    border: 1px solid var(--group-border-subtle);
+    box-sizing: border-box;
+
+    padding:
+        var(--contact-row-padding,
+            clamp(0.48rem, 0.7vw, 0.6rem) clamp(0.55rem, 0.85vw, 0.72rem));
+
+    border:
+        1px solid var(--group-border-subtle);
+
     border-radius: 0.78rem;
 
-    background: transparent;
     color: var(--group-text-secondary);
 
-    text-decoration: none;
+    background-color:
+        rgb(255 255 255 / 12%);
 
-    font-size: clamp(0.84rem, 0.78rem + 0.16vw, 0.94rem);
-    font-weight: 650;
+    font-size:
+        clamp(0.84rem, 0.78rem + 0.16vw, 0.94rem);
+
+    font-weight:
+        var(--group-font-weight-semibold);
+
     line-height: 1.22;
-
+    text-decoration: none;
     overflow-wrap: anywhere;
 
     transition:
-        transform 180ms ease,
-        border-color 180ms ease,
-        background 180ms ease,
-        color 180ms ease,
-        box-shadow 180ms ease;
+        transform var(--group-duration-fast) var(--group-ease-standard),
+        border-color var(--group-duration-fast) var(--group-ease-standard),
+        background-color var(--group-duration-fast) var(--group-ease-standard),
+        box-shadow var(--group-duration-fast) var(--group-ease-standard);
 }
 
 .icon {
@@ -39,37 +51,61 @@
 }
 
 .muted {
-    opacity: 0.6;
+    color: var(--group-text-muted);
+    opacity: 1;
 }
 
-@media (hover: hover) {
+
+/* ============================================================
+   Hover
+   A cor do texto permanece inalterada.
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
     .row[href]:hover {
         transform: translateY(-1px);
 
-        border-color: var(--group-border-default);
+        border-color:
+            var(--group-border-default);
 
-        background: rgb(255 255 255 / 0.018);
-        color: var(--group-text-primary);
+        background-color:
+            var(--group-surface-secondary);
 
         box-shadow:
-            inset 0 1px 0 rgb(255 255 255 / 0.04),
-            0 0.55rem 1.2rem rgb(0 0 0 / 0.2);
+            inset 0 1px 0 rgb(255 255 255 / 0.4),
+            0 0.14rem 0.34rem rgb(30 46 36 / 0.055);
     }
 }
 
+
+/* ============================================================
+   Focus and disabled
+   ============================================================ */
+
 .row:focus-visible {
     outline: none;
-
     box-shadow: var(--group-focus-shadow);
 }
 
 .row[aria-disabled="true"] {
     pointer-events: none;
+
+    color: var(--group-text-muted);
+
+    background-color:
+        rgb(255 255 255 / 8%);
 }
+
+
+/* ============================================================
+   Responsive
+   ============================================================ */
 
 @media (max-width: 479.98px) {
     .row {
-        grid-template-columns: 18px minmax(0, 1fr);
+        grid-template-columns:
+            18px minmax(0, 1fr);
+
         gap: 0.46rem;
         padding: 0.46rem 0.5rem;
 
@@ -83,9 +119,13 @@
     }
 }
 
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+
 @media (prefers-reduced-motion: reduce) {
     .row {
-        animation: none;
         transition: none;
     }
 

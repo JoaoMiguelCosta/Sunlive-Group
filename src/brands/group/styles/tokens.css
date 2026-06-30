@@ -1,6 +1,6 @@
 /* =========================================================
    Sunlive Group — Design Tokens
-   Deep Forest visual identity
+   Light Forest visual identity
 
    Todos os tokens estão scoped em [data-brand="group"].
    data-brand="group" é aplicado em html (ThemeProvider)
@@ -14,117 +14,193 @@
 [data-brand="group"] {
 
    /* =====================================================
-       1. PRIMITIVE COLORS
-       ===================================================== */
+      1. PRIMITIVE COLORS
+      ===================================================== */
 
-   /* Forest — fundo e superfícies */
+   /* Forest — contraste, texto e superfícies inversas */
    --group-color-forest-950: #1e2e24;
    --group-color-forest-900: #1d2c22;
    --group-color-forest-800: #2e4d3b;
    --group-color-forest-700: #3c6148;
 
-   /* Acre — acento principal (creme vegetal) */
+   /* Acre — fundo principal e superfícies claras */
    --group-color-acre-100: #daddc0;
    --group-color-acre-50: #edf0d7;
 
-   /* Mint — acento fresco (verde menta) */
+   /* Light surfaces */
+   --group-color-light-100: #e6e8d1;
+   --group-color-light-50: #f0f1e2;
+   --group-color-light-0: #f6f7ed;
+
+   /* Mint — acento sobre superfícies escuras */
    --group-color-mint-400: #8dd9b4;
    --group-color-mint-300: #a7e6c7;
 
-   /* Sage — texto secundário e muted */
+   /* Deep mint — acento acessível sobre superfícies claras */
+   --group-color-mint-700: #2d6b4f;
+   --group-color-mint-800: #24573f;
+
+   /* Sage */
    --group-color-sage-200: #ced8cf;
    --group-color-sage-400: #a7b5aa;
+   --group-color-sage-700: #536456;
 
-   /* Texto claro principal */
-   --group-color-text-on-light: #f6f7ed;
-
-
-   /* =====================================================
-       2. RGB CHANNELS
-       Usados para composição com opacidade variável.
-       Formato CSS Color Level 4.
-       ===================================================== */
-
-   --group-accent-primary-rgb: 218 221 192;
-   --group-accent-fresh-rgb: 141 217 180;
-
-   /* Cor correspondente a #1e2e24 */
-   --group-background-rgb: 30 46 36;
-
-   --group-surface-primary-rgb: 46 77 59;
-   --group-surface-secondary-rgb: 60 97 72;
+   /* Texto por contexto */
+   --group-color-text-on-light: #1e2e24;
+   --group-color-text-on-dark: #f6f7ed;
 
 
    /* =====================================================
-       3. BACKGROUNDS E SURFACES
-       ===================================================== */
+      2. RGB CHANNELS
+      Usados para composição com opacidade variável.
+      Formato CSS Color Level 4.
+      ===================================================== */
 
-   --group-background: var(--group-color-forest-950);
-   --group-surface-primary: var(--group-color-forest-800);
-   --group-surface-secondary: var(--group-color-forest-700);
+   --group-accent-primary-rgb: 46 77 59;
+   --group-accent-fresh-rgb: 45 107 79;
+
+   /* Cor correspondente a #daddc0 */
+   --group-background-rgb: 218 221 192;
+
+   --group-surface-primary-rgb: 230 232 209;
+   --group-surface-secondary-rgb: 240 241 226;
+
+   /* Canais das superfícies inversas */
+   --group-surface-inverse-rgb: 30 46 36;
+   --group-surface-inverse-primary-rgb: 46 77 59;
+   --group-surface-inverse-secondary-rgb: 60 97 72;
+
+
+   /* =====================================================
+      3. BACKGROUNDS E SURFACES
+      ===================================================== */
+
+   /* Contexto principal claro */
+   --group-background: var(--group-color-acre-100);
+   --group-surface-primary: var(--group-color-light-100);
+   --group-surface-secondary: var(--group-color-light-50);
+   --group-surface-elevated: var(--group-color-light-0);
+   --group-surface-light: var(--group-color-light-0);
+
+   /* Contexto inverso para hero, media e zonas escuras */
+   --group-surface-inverse: var(--group-color-forest-950);
+   --group-surface-inverse-primary: var(--group-color-forest-800);
+   --group-surface-inverse-secondary: var(--group-color-forest-700);
+
+   /* Footer mantém encerramento escuro */
    --group-surface-footer: #142119;
-   --group-surface-light: var(--group-color-acre-100);
 
    /* Superfície neutra para grelha de logótipos */
-   --group-logo-surface: #d4d6cf;
-   --group-logo-surface-hover: #e2e4dd;
+   --group-logo-surface: var(--group-color-light-0);
+   --group-logo-surface-hover: #ffffff;
    --group-logo-surface-border:
-      rgb(var(--group-background-rgb) / 28%);
+      rgb(var(--group-surface-inverse-rgb) / 28%);
 
 
    /* =====================================================
-       4. TEXT
-       ===================================================== */
+      4. TEXT
+      ===================================================== */
 
+   /* Texto no contexto principal claro */
    --group-text-primary: var(--group-color-text-on-light);
-   --group-text-secondary: var(--group-color-sage-200);
-   --group-text-muted: var(--group-color-sage-400);
+   --group-text-secondary: var(--group-color-forest-800);
+   --group-text-muted: var(--group-color-sage-700);
    --group-text-dark: var(--group-color-forest-950);
 
-
-   /* =====================================================
-       5. ACCENTS
-       ===================================================== */
-
-   --group-accent-primary: var(--group-color-acre-100);
-   --group-accent-primary-hover: var(--group-color-acre-50);
-   --group-accent-fresh: var(--group-color-mint-400);
-   --group-accent-fresh-hover: var(--group-color-mint-300);
+   /* Texto para componentes sobre superfícies escuras */
+   --group-text-on-dark: var(--group-color-text-on-dark);
+   --group-text-on-dark-secondary: var(--group-color-sage-200);
+   --group-text-on-dark-muted: var(--group-color-sage-400);
 
 
    /* =====================================================
-       6. BORDERS
-       ===================================================== */
+      5. ACCENTS
+      ===================================================== */
 
-   --group-border-subtle: rgb(218 221 192 / 14%);
-   --group-border-default: rgb(218 221 192 / 35%);
-   --group-border-strong: rgb(218 221 192 / 58%);
+   /* Acentos acessíveis sobre o fundo claro */
+   --group-accent-primary: var(--group-color-forest-800);
+   --group-accent-primary-hover: var(--group-color-forest-950);
+
+   --group-accent-fresh: var(--group-color-mint-700);
+   --group-accent-fresh-hover: var(--group-color-mint-800);
+
+   /* Acentos preservados para superfícies escuras */
+   --group-accent-on-dark: var(--group-color-acre-100);
+   --group-accent-on-dark-hover: var(--group-color-acre-50);
+
+   --group-accent-fresh-on-dark: var(--group-color-mint-400);
+   --group-accent-fresh-on-dark-hover: var(--group-color-mint-300);
 
 
    /* =====================================================
-       7. CARDS
-       ===================================================== */
+      6. BORDERS
+      ===================================================== */
 
-   --group-card-background: var(--group-surface-primary);
-   --group-card-background-hover: var(--group-surface-secondary);
+   --group-border-subtle:
+      rgb(var(--group-surface-inverse-rgb) / 14%);
+
+   --group-border-default:
+      rgb(var(--group-surface-inverse-rgb) / 28%);
+
+   --group-border-strong:
+      rgb(var(--group-surface-inverse-rgb) / 46%);
+
+   /* Borders para componentes sobre superfícies escuras */
+   --group-border-on-dark-subtle:
+      rgb(218 221 192 / 14%);
+
+   --group-border-on-dark-default:
+      rgb(218 221 192 / 35%);
+
+   --group-border-on-dark-strong:
+      rgb(218 221 192 / 58%);
+
+
+   /* =====================================================
+      7. CARDS
+      ===================================================== */
+
+   --group-card-background: var(--group-surface-secondary);
+   --group-card-background-hover: var(--group-surface-elevated);
    --group-card-text: var(--group-text-primary);
    --group-card-border: var(--group-border-subtle);
 
-   --group-disclosure-panel-background: #22372b;
+   --group-disclosure-panel-background:
+      var(--group-surface-primary);
+
+   /* Cards inversos para assets claros/metálicos */
+   --group-card-background-inverse:
+      var(--group-surface-inverse-primary);
+
+   --group-card-background-inverse-hover:
+      var(--group-surface-inverse-secondary);
+
+   --group-card-text-inverse:
+      var(--group-text-on-dark);
+
+   --group-card-border-inverse:
+      var(--group-border-on-dark-subtle);
 
 
    /* =====================================================
-       8. CONTROLS
-       ===================================================== */
+      8. CONTROLS
+      ===================================================== */
 
-   --group-control-bg-hover: rgb(218 221 192 / 10%);
+   --group-control-bg-hover:
+      rgb(var(--group-accent-primary-rgb) / 10%);
+
+   --group-control-bg-active:
+      rgb(var(--group-accent-primary-rgb) / 15%);
+
+   --group-control-bg-hover-on-dark:
+      rgb(218 221 192 / 10%);
 
 
    /* =====================================================
-       9. BUTTONS
-       ===================================================== */
+      9. BUTTONS
+      ===================================================== */
 
-   /* Primário */
+   /* Primário — verde profundo sobre o fundo claro */
    --group-button-primary-background:
       var(--group-accent-primary);
 
@@ -132,7 +208,7 @@
       var(--group-accent-primary-hover);
 
    --group-button-primary-text:
-      var(--group-text-dark);
+      var(--group-text-on-dark);
 
    --group-button-primary-border:
       var(--group-accent-primary);
@@ -152,57 +228,73 @@
 
 
    /* =====================================================
-       10. FOCUS
-       ===================================================== */
+      10. FOCUS
+      ===================================================== */
 
    --group-focus-outline: var(--group-accent-fresh);
-   --group-focus-ring: rgb(141 217 180 / 30%);
+
+   --group-focus-ring:
+      rgb(var(--group-accent-fresh-rgb) / 30%);
+
+   /*
+    * Valor contextual. Componentes sobre cards ou superfícies
+    * inversas podem sobrescrever este token localmente.
+    */
+   --group-focus-offset-color:
+      var(--group-background);
 
    --group-focus-shadow:
-      0 0 0 2px var(--group-background),
+      0 0 0 2px var(--group-focus-offset-color),
       0 0 0 4px var(--group-focus-outline),
       0 0 1.25rem var(--group-focus-ring);
 
+   --group-focus-shadow-on-dark:
+      0 0 0 2px var(--group-surface-inverse),
+      0 0 0 4px var(--group-accent-fresh-on-dark),
+      0 0 1.25rem rgb(141 217 180 / 30%);
+
 
    /* =====================================================
-       11. SHADOWS
-       ===================================================== */
+      11. SHADOWS
+      Apenas os valores cromáticos foram adaptados.
+      A geometria das sombras permanece inalterada.
+      ===================================================== */
 
    --group-shadow-xs:
-      0 2px 6px rgb(8 18 12 / 12%);
+      0 2px 6px rgb(30 46 36 / 12%);
 
    --group-shadow-sm:
-      0 6px 16px rgb(8 18 12 / 14%);
+      0 6px 16px rgb(30 46 36 / 14%);
 
    --group-shadow-card:
-      0 12px 30px rgb(8 18 12 / 18%);
+      0 12px 30px rgb(30 46 36 / 18%);
 
    --group-shadow-card-strong:
-      0 16px 38px rgb(8 18 12 / 22%);
+      0 16px 38px rgb(30 46 36 / 22%);
 
    --group-shadow-hover:
-      0 18px 42px rgb(8 18 12 / 24%);
+      0 18px 42px rgb(30 46 36 / 24%);
 
    --group-shadow-inset-top:
-      inset 0 1px 0 rgb(218 221 192 / 6%);
+      inset 0 1px 0 rgb(255 255 255 / 42%);
 
    --group-shadow-inset-bottom:
-      inset 0 -1px 0 rgb(0 0 0 / 12%);
+      inset 0 -1px 0 rgb(30 46 36 / 12%);
 
    --group-shadow-control:
-      inset 0 1px 0 rgb(255 255 255 / 0.04),
-      inset 0 -1px 0 rgb(0 0 0 / 0.28),
-      0 0.85rem 1.9rem rgb(0 0 0 / 0.22);
+      inset 0 1px 0 rgb(255 255 255 / 45%),
+      inset 0 -1px 0 rgb(30 46 36 / 14%),
+      0 0.85rem 1.9rem rgb(30 46 36 / 16%);
 
    --group-shadow-control-hover:
-      inset 0 1px 0 rgb(255 255 255 / 0.06),
-      inset 0 -1px 0 rgb(0 0 0 / 0.3),
+      inset 0 1px 0 rgb(255 255 255 / 56%),
+      inset 0 -1px 0 rgb(30 46 36 / 18%),
       var(--group-shadow-hover);
 
 
    /* =====================================================
-       12. RADII
-       ===================================================== */
+      12. RADII
+      ===================================================== */
 
    --group-radius-xs: 0.4rem;
    --group-radius-sm: 0.65rem;
@@ -214,8 +306,8 @@
 
 
    /* =====================================================
-       13. TYPOGRAPHY
-       ===================================================== */
+      13. TYPOGRAPHY
+      ===================================================== */
 
    --group-font-ui: var(--sl-ff-ui);
    --group-font-display: var(--sl-ff-display);
@@ -251,15 +343,15 @@
 
 
    /* =====================================================
-       14. LAYOUT
-       ===================================================== */
+      14. LAYOUT
+      ===================================================== */
 
    --group-page-max-width: 1360px;
 
 
    /* =====================================================
-       15. SPACING
-       ===================================================== */
+      15. SPACING
+      ===================================================== */
 
    --group-section-inset:
       clamp(0.75rem, 4vw, 2.5rem);
@@ -275,8 +367,8 @@
 
 
    /* =====================================================
-       16. MOTION
-       ===================================================== */
+      16. MOTION
+      ===================================================== */
 
    --group-duration-fast: 150ms;
    --group-duration-normal: 240ms;
@@ -291,8 +383,8 @@
 
 
    /* =====================================================
-       17. MEDIA EFFECTS
-       ===================================================== */
+      17. MEDIA EFFECTS
+      ===================================================== */
 
    --group-media-filter:
       saturate(1.04) contrast(1.035) brightness(1.02);
@@ -301,18 +393,21 @@
       saturate(1.08) contrast(1.05) brightness(1.035);
 
    --group-media-drop-shadow:
-      drop-shadow(0 0.4rem 0.85rem rgb(0 0 0 / 38%));
+      drop-shadow(
+         0 0.4rem 0.85rem
+         rgb(var(--group-surface-inverse-rgb) / 30%)
+      );
 
 
    /* =====================================================
-       18. DIVISION IDENTITIES
-       ===================================================== */
+      18. DIVISION IDENTITIES
+      ===================================================== */
 
-   /* Default / Group */
-   --group-division-default-primary-rgb: 218 221 192;
-   --group-division-default-secondary-rgb: 186 192 168;
-   --group-division-default-depth-rgb: 129 134 113;
-   --group-division-default-side-rgb: 186 192 168;
+   /* Default / Group — adaptado ao contexto claro */
+   --group-division-default-primary-rgb: 46 77 59;
+   --group-division-default-secondary-rgb: 60 97 72;
+   --group-division-default-depth-rgb: 30 46 36;
+   --group-division-default-side-rgb: 45 107 79;
 
    /* Travel */
    --group-division-travel-primary-rgb: 100 160 180;

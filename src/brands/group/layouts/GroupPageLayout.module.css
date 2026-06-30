@@ -1,65 +1,110 @@
 .shell {
-    /* Alias local para componentes partilhados que
-       continuam a consumir --section-inset. */
-    --section-inset: var(--group-section-inset);
+    /*
+     * Alias local para componentes partilhados
+     * que continuam a consumir --section-inset.
+     */
+    --section-inset:
+        var(--group-section-inset);
 
     position: relative;
     isolation: isolate;
 
     inline-size: 100%;
     min-block-size: 100dvh;
-    overflow: clip;
+    overflow-x: clip;
 
     color: var(--group-text-primary);
+    background-color: var(--group-background);
 }
 
-.shell>* {
+.shell > * {
     position: relative;
     z-index: 1;
 }
 
-.pageWrap {
-    position: relative;
-    isolation: isolate;
 
-    inline-size:
-        min(calc(100% - (2 * var(--group-section-inset))),
-            var(--group-page-max-width));
-
-    max-inline-size: var(--group-page-max-width);
-    margin-inline: auto;
-
-    overflow: clip;
-    box-sizing: border-box;
-
-    color: var(--group-text-primary);
-    background: transparent;
-}
+/* =========================================================
+   Header
+   ========================================================= */
 
 .headerContainer {
     position: relative;
-    z-index: 10;
+    z-index: 20;
 
     inline-size: 100%;
+
+    padding-block-start:
+        clamp(0.6rem, 1.2vw, 0.95rem);
+
     background: transparent;
 }
 
 .headerInner {
+    --group-focus-offset-color:
+        var(--group-surface-elevated);
+
     inline-size:
-        min(calc(100% - (2 * var(--group-section-inset))),
-            var(--group-page-max-width));
+        min(
+            calc(100% - (2 * var(--group-section-inset))),
+            var(--group-page-max-width)
+        );
 
     max-inline-size: var(--group-page-max-width);
     margin-inline: auto;
+    padding-inline:
+        clamp(0.45rem, 1vw, 0.8rem);
 
     box-sizing: border-box;
+
+    border:
+        1px solid var(--group-border-subtle);
+
+    border-radius:
+        var(--group-radius-xl);
+
+    color: var(--group-text-primary);
+    background-color: var(--group-surface-elevated);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.5),
+        0 0.5rem 1.35rem rgb(30 46 36 / 0.09);
 }
 
 .headerInner :global(.utilityBar),
 .headerInner :global(aside[class*="utilityBar"]) {
-    /* Dívida técnica: seletor dependente do nome
-       gerado pelo CSS Module. */
+    /*
+     * Compatibilidade com o componente partilhado.
+     * O seletor por nome gerado continua a ser dívida técnica.
+     */
     inline-size: 100%;
+}
+
+
+/* =========================================================
+   Page surface
+   ========================================================= */
+
+.pageWrap {
+    --group-focus-offset-color:
+        var(--group-background);
+
+    position: relative;
+    isolation: isolate;
+
+    inline-size:
+        min(
+            calc(100% - (2 * var(--group-section-inset))),
+            var(--group-page-max-width)
+        );
+
+    max-inline-size: var(--group-page-max-width);
+    margin-inline: auto;
+    overflow: clip;
+
+    box-sizing: border-box;
+
+    color: var(--group-text-primary);
+    background: transparent;
 }
 
 .inner {
@@ -67,81 +112,102 @@
     z-index: 1;
 
     inline-size: 100%;
-    box-sizing: border-box;
 
+    box-sizing: border-box;
     background: transparent;
 }
 
+
+/* =========================================================
+   Content flow
+   ========================================================= */
+
 .contentFlow {
-    inline-size: 100%;
-    max-inline-size: 100%;
-
-    margin-inline: auto;
-    margin-block-start:
-        clamp(2.6rem, 4.2vw, 4.2rem);
-
     display: grid;
     row-gap: 0;
+
+    inline-size: 100%;
+    max-inline-size: 100%;
+    margin-inline: auto;
+
+    margin-block-start:
+        clamp(2.3rem, 4vw, 3.8rem);
 
     box-sizing: border-box;
 }
 
-.contentFlow>* {
+.contentFlow > * {
     min-inline-size: 0;
 }
 
 .contentFlowWithGap {
     row-gap:
-        clamp(2.6rem, 5.2vw, 4.2rem);
+        clamp(2.4rem, 5vw, 4rem);
 }
 
 .sectionGap {
+    display: grid;
+
     inline-size: 100%;
     min-inline-size: 0;
 
-    display: grid;
-
     margin-block-start:
-        clamp(2.6rem, 5.2vw, 4.2rem);
+        clamp(2.4rem, 5vw, 4rem);
 
     box-sizing: border-box;
 }
 
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
 @media (max-width: 980px) {
     .contentFlow {
         margin-block-start:
-            clamp(2.2rem, 5vw, 3rem);
-
-        row-gap: 0;
+            clamp(2.1rem, 4.8vw, 3rem);
     }
 
     .contentFlowWithGap {
         row-gap:
-            clamp(2.2rem, 5.2vw, 3.2rem);
+            clamp(2.1rem, 5vw, 3.2rem);
     }
 
     .sectionGap {
         margin-block-start:
-            clamp(2.2rem, 5.2vw, 3.2rem);
+            clamp(2.1rem, 5vw, 3.2rem);
     }
 }
 
 @media (max-width: 767.98px) {
+    .headerContainer {
+        padding-block-start: 0.5rem;
+    }
+
+    .headerInner {
+        padding-inline: 0.35rem;
+
+        border-radius:
+            var(--group-radius-lg);
+
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.48),
+            0 0.32rem 0.9rem rgb(30 46 36 / 0.075);
+    }
+
     .contentFlow {
         margin-block-start:
-            clamp(1.9rem, 6vw, 2.65rem);
-
-        row-gap: 0;
+            clamp(1.8rem, 6vw, 2.5rem);
     }
 
     .contentFlowWithGap {
         row-gap:
-            clamp(1.9rem, 6vw, 2.65rem);
+            clamp(1.9rem, 6vw, 2.6rem);
     }
 
     .sectionGap {
         margin-block-start:
-            clamp(1.9rem, 6vw, 2.65rem);
+            clamp(1.9rem, 6vw, 2.6rem);
     }
 }
 
@@ -151,9 +217,13 @@
         --group-section-inset: 0.75rem;
     }
 
+    .headerInner {
+        border-radius:
+            var(--group-radius-md);
+    }
+
     .contentFlow {
-        margin-block-start: 2rem;
-        row-gap: 0;
+        margin-block-start: 1.8rem;
     }
 
     .contentFlowWithGap {

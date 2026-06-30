@@ -474,31 +474,53 @@
 }
 
 /* =========================================================
-   Group — Deep Forest
+   Group — Light Forest
    ========================================================= */
 
 :global([data-brand="group"]) .strip {
     --info-accent: var(--group-accent-fresh);
     --info-accent-bright: var(--group-accent-primary);
-    --info-border: var(--group-border-subtle);
-    --info-border-strong: var(--group-border-default);
-    --info-text-main: var(--group-text-primary);
-    --info-text-soft: var(--group-text-secondary);
-    --info-text-muted: var(--group-text-muted);
+
+    --info-border:
+        var(--group-border-subtle);
+
+    --info-border-strong:
+        var(--group-border-default);
+
+    --info-text-main:
+        var(--group-text-primary);
+
+    --info-text-soft:
+        var(--group-text-secondary);
+
+    --info-text-muted:
+        var(--group-text-muted);
+
+    /*
+     * O InfoHeader está dentro da superfície clara do footer.
+     * Este valor garante que o anel de focus acompanha o fundo.
+     */
+    --group-focus-offset-color:
+        var(--group-logo-surface);
 
     isolation: isolate;
     overflow: hidden;
 
-    padding-block: clamp(0.9rem, 1.15vw, 1.15rem);
+    padding-block:
+        clamp(0.9rem, 1.15vw, 1.15rem);
 
-    border-top: 1px solid var(--info-border-strong);
-    border-bottom: 1px solid var(--info-border);
+    border-top: 0;
 
+    border-bottom:
+        1px solid var(--info-border);
+
+    color: var(--info-text-soft);
     background: transparent;
 }
 
 :global([data-brand="group"]) .inner {
-    gap: clamp(1rem, 1.8vw, 1.65rem);
+    gap:
+        clamp(1rem, 1.8vw, 1.65rem);
 }
 
 :global([data-brand="group"]) .col {
@@ -510,58 +532,69 @@
 
     margin-bottom: 0.5rem;
 
-    color: var(--info-text-main);
-    font-size: clamp(0.96rem, 0.24vw + 0.92rem, 1.08rem);
-    font-weight: var(--group-font-weight-heavy);
-    letter-spacing: -0.01em;
+    color: var(--group-accent-primary);
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.48);
+    font-size:
+        clamp(0.96rem, 0.24vw + 0.92rem, 1.08rem);
+
+    font-weight:
+        var(--group-font-weight-heavy);
+
+    letter-spacing: -0.01em;
+    text-shadow: none;
 }
 
 :global([data-brand="group"]) .icon {
     inline-size: 25px;
     block-size: 25px;
 
-    border: 1px solid var(--info-border-strong);
+    border:
+        1px solid var(--info-border);
 
-    color: var(--info-accent);
+    color: var(--info-accent-fresh, var(--info-accent));
 
-    background: var(--group-card-background);
+    background:
+        var(--group-surface-primary);
 
     box-shadow:
-        inset 0 1px 0 rgb(218 221 192 / 0.06),
-        0 0.5rem 1.05rem rgb(0 0 0 / 0.22);
+        inset 0 1px 0 rgb(255 255 255 / 0.44),
+        0 0.16rem 0.42rem rgb(30 46 36 / 0.07);
 }
 
 :global([data-brand="group"]) .brandEmph {
     color: var(--info-accent-bright);
-    font-weight: var(--group-font-weight-heavy);
+
+    font-weight:
+        var(--group-font-weight-heavy);
 }
 
 :global([data-brand="group"]) .tagline {
     margin-bottom: 0.48rem;
 
     color: var(--info-accent-bright);
-    font-size: clamp(0.88rem, 0.14vw + 0.84rem, 0.96rem);
+
+    font-size:
+        clamp(0.88rem, 0.14vw + 0.84rem, 0.96rem);
+
     font-weight: 830;
     line-height: 1.26;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.48);
+    text-shadow: none;
 }
 
 :global([data-brand="group"]) .about {
     max-width: 39ch;
 
-    font-size: clamp(0.84rem, 0.12vw + 0.8rem, 0.92rem);
+    font-size:
+        clamp(0.84rem, 0.12vw + 0.8rem, 0.92rem);
+
     line-height: 1.44;
 }
 
 :global([data-brand="group"]) .about p,
 :global([data-brand="group"]) .address {
     color: var(--info-text-soft);
-    text-shadow: 0 1px 0 rgb(0 0 0 / 0.34);
+    text-shadow: none;
 }
 
 :global([data-brand="group"]) .about p+p {
@@ -569,7 +602,8 @@
 }
 
 :global([data-brand="group"]) .contentBlock {
-    font-size: clamp(0.84rem, 0.12vw + 0.8rem, 0.92rem);
+    font-size:
+        clamp(0.84rem, 0.12vw + 0.8rem, 0.92rem);
 }
 
 :global([data-brand="group"]) .address {
@@ -579,15 +613,20 @@
 }
 
 :global([data-brand="group"]) .subtleLink {
-    color: var(--info-text-soft);
+    color: var(--info-accent-bright);
     font-weight: 720;
 }
 
 :global([data-brand="group"]) .subtleLink:hover,
 :global([data-brand="group"]) .subtleLink:focus-visible {
-    color: var(--info-accent-bright);
+    color:
+        var(--group-accent-primary-hover);
+
     text-decoration: underline;
-    text-decoration-color: rgb(218 221 192 / 0.48);
+
+    text-decoration-color:
+        rgb(var(--group-accent-primary-rgb) / 42%);
+
     text-underline-offset: 0.18em;
 }
 
@@ -609,9 +648,13 @@
 
 :global([data-brand="group"]) .link:hover,
 :global([data-brand="group"]) .link:focus-visible {
-    color: var(--info-text-main);
+    color: var(--info-accent-bright);
+
     text-decoration: underline;
-    text-decoration-color: rgb(218 221 192 / 0.5);
+
+    text-decoration-color:
+        rgb(var(--group-accent-primary-rgb) / 42%);
+
     text-underline-offset: 0.16em;
 }
 
@@ -630,31 +673,74 @@
     inline-size: 35px;
     block-size: 35px;
 
-    border: 1px solid var(--info-border-strong);
+    border:
+        1px solid var(--info-border);
 
-    color: var(--info-accent);
-
-    background: var(--group-card-background);
-
-    box-shadow:
-        inset 0 1px 0 rgb(218 221 192 / 0.06),
-        0 0.5rem 1rem rgb(0 0 0 / 0.2);
-}
-
-:global([data-brand="group"]) .socialBtn:hover,
-:global([data-brand="group"]) .socialBtn:focus-visible {
-    transform: translateY(-1px);
-
-    border-color: var(--group-border-strong);
     color: var(--info-accent-bright);
 
-    background: var(--group-card-background-hover);
-
-    filter: saturate(1.04) contrast(1.015);
+    background:
+        var(--group-surface-primary);
 
     box-shadow:
-        inset 0 1px 0 rgb(218 221 192 / 0.08),
-        0 0.7rem 1.35rem rgb(0 0 0 / 0.24);
+        inset 0 1px 0 rgb(255 255 255 / 0.46),
+        0 0.18rem 0.46rem rgb(30 46 36 / 0.075);
+
+    transition:
+        transform var(--group-duration-fast) var(--group-ease-standard),
+        background-color var(--group-duration-fast) var(--group-ease-standard),
+        box-shadow var(--group-duration-fast) var(--group-ease-standard),
+        border-color var(--group-duration-fast) var(--group-ease-standard),
+        color var(--group-duration-fast) var(--group-ease-standard);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :global([data-brand="group"]) .socialBtn:hover {
+        transform: translateY(-1px);
+
+        border-color:
+            var(--info-border-strong);
+
+        color:
+            var(--group-accent-primary-hover);
+
+        background:
+            var(--group-surface-secondary);
+
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.52),
+            0 0.32rem 0.72rem rgb(30 46 36 / 0.1);
+    }
+}
+
+:global([data-brand="group"]) .socialBtn:active {
+    transform: translateY(0);
+
+    border-color:
+        var(--info-border);
+
+    background:
+        var(--group-surface-primary);
+
+    box-shadow:
+        inset 0 2px 4px rgb(30 46 36 / 0.09);
+}
+
+:global([data-brand="group"]) .socialBtn:focus-visible {
+    transform: none;
+
+    outline: none;
+
+    border-color:
+        var(--group-focus-outline);
+
+    color:
+        var(--group-accent-primary-hover);
+
+    background:
+        var(--group-surface-secondary);
+
+    box-shadow:
+        var(--group-focus-shadow);
 }
 
 /* =========================================================
@@ -1076,5 +1162,15 @@
     :global([data-brand="group"]) .strip,
     :global([data-brand="hotel"]) .strip {
         background: transparent;
+    }
+
+    :global([data-brand="group"]) .icon,
+    :global([data-brand="group"]) .socialBtn {
+        background: var(--group-surface-primary);
+    }
+
+    :global([data-brand="group"]) .socialBtn:hover,
+    :global([data-brand="group"]) .socialBtn:focus-visible {
+        background: var(--group-surface-secondary);
     }
 }

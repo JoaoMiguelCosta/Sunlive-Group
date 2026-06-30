@@ -1,25 +1,42 @@
+/* ============================================================
+   ContactDisclosure — Sunlive Group / Light Forest
+   ============================================================ */
+
 .pill {
+    --group-focus-offset-color:
+        var(--group-card-background);
+
     position: relative;
     isolation: isolate;
     overflow: hidden;
-
-    inline-size: 100%;
-    min-inline-size: 0;
-    min-block-size: clamp(3.05rem, 3.55vw, 3.65rem);
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: clamp(0.42rem, 0.8vw, 0.68rem);
 
+    inline-size: 100%;
+    min-inline-size: 0;
+    min-block-size:
+        clamp(3.05rem, 3.55vw, 3.65rem);
+
     box-sizing: border-box;
-    padding: clamp(0.62rem, 0.78vw, 0.78rem) clamp(1rem, 1.5vw, 1.35rem);
 
-    border: 1px solid var(--group-border-default);
-    border-radius: clamp(1.05rem, 1.5vw, 1.45rem);
+    padding:
+        clamp(0.62rem, 0.78vw, 0.78rem) clamp(1rem, 1.5vw, 1.35rem);
 
-    background: var(--group-card-background);
-    color: var(--group-text-primary);
+    border:
+        1px solid var(--group-border-default);
+
+    border-radius:
+        clamp(1.05rem, 1.5vw, 1.45rem);
+
+    color: var(--group-accent-primary);
+    background-color: var(--group-card-background);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.46),
+        0 0.16rem 0.4rem rgb(30 46 36 / 0.055);
 
     font: inherit;
     font-weight: var(--group-font-weight-heavy);
@@ -29,17 +46,11 @@
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 
-    box-shadow: var(--group-shadow-control);
-
-    transform: translateZ(0);
-
     transition:
-        transform var(--group-duration-slow) var(--group-ease-emphasized),
-        border-color var(--group-duration-slow) var(--group-ease-emphasized),
-        background var(--group-duration-slow) var(--group-ease-emphasized),
-        box-shadow var(--group-duration-slow) var(--group-ease-emphasized),
-        color var(--group-duration-slow) var(--group-ease-emphasized),
-        filter var(--group-duration-slow) var(--group-ease-emphasized);
+        transform var(--group-duration-fast) var(--group-ease-standard),
+        border-color var(--group-duration-fast) var(--group-ease-standard),
+        background-color var(--group-duration-fast) var(--group-ease-standard),
+        box-shadow var(--group-duration-fast) var(--group-ease-standard);
 }
 
 .pillText,
@@ -52,16 +63,15 @@
     min-inline-size: 0;
     overflow: hidden;
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    color: inherit;
 
     font-size: var(--group-control-label-size);
     line-height: 1.15;
     text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.52),
-        0 0.75rem 1.4rem rgb(0 0 0 / 0.28);
+    text-shadow: none;
 }
 
 .caret {
@@ -78,151 +88,186 @@
     transform-origin: center;
 
     transition:
-        transform 320ms var(--group-ease-emphasized),
-        color 320ms ease,
-        filter 320ms ease;
+        transform var(--group-duration-fast) var(--group-ease-standard);
 }
 
-.pill[aria-expanded="true"] {
-    border-color: var(--group-border-strong);
 
-    background: var(--group-card-background-hover);
+/* ============================================================
+   Expanded state
+   ============================================================ */
+
+.pill[aria-expanded="true"] {
+    --group-focus-offset-color:
+        var(--group-card-background-hover);
+
+    border-color:
+        var(--group-border-strong);
+
     color: var(--group-accent-primary);
+    background-color:
+        var(--group-card-background-hover);
 
     box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.06),
-        inset 0 -1px 0 rgb(0 0 0 / 0.3),
-        0 1rem 2.2rem rgb(0 0 0 / 0.28);
+        inset 0 1px 0 rgb(255 255 255 / 0.5),
+        0 0.22rem 0.52rem rgb(30 46 36 / 0.07);
 }
 
 .pill[aria-expanded="true"] .caret {
-    color: var(--group-accent-fresh);
     transform: rotate(180deg);
 }
 
+
+/* ============================================================
+   Disclosure card
+   ============================================================ */
+
 .card {
+    --group-focus-offset-color:
+        var(--group-disclosure-panel-background);
+
     position: relative;
     isolation: isolate;
     overflow: hidden;
 
-    inline-size: 100%;
-    min-inline-size: 0;
-
     display: grid;
     gap: clamp(0.5rem, 0.75vw, 0.68rem);
 
+    inline-size: 100%;
+    min-inline-size: 0;
+
     box-sizing: border-box;
-    margin-block-start: clamp(0.65rem, 1vw, 0.9rem);
-    padding: clamp(0.82rem, 1vw, 1rem);
 
-    border: 1px solid var(--group-border-subtle);
-    border-radius: clamp(0.9rem, 1.2vw, 1.15rem);
+    margin-block-start:
+        clamp(0.65rem, 1vw, 0.9rem);
 
-    background: var(--group-disclosure-panel-background);
+    padding:
+        clamp(0.82rem, 1vw, 1rem);
+
+    border:
+        1px solid var(--group-border-subtle);
+
+    border-radius:
+        clamp(0.9rem, 1.2vw, 1.15rem);
+
+    color: var(--group-text-secondary);
+    background-color:
+        var(--group-disclosure-panel-background);
 
     box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.03),
-        inset 0 -1px 0 rgb(0 0 0 / 0.18);
+        inset 0 1px 0 rgb(255 255 255 / 0.36),
+        0 0.1rem 0.26rem rgb(30 46 36 / 0.045);
 
-    animation: contactDisclosureCardIn 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation:
+        contactDisclosureCardIn 240ms var(--group-ease-emphasized) both;
 }
 
-.card > * {
+.card>* {
     position: relative;
     z-index: 1;
 }
 
-/* Featured variant for the primary Group contact. */
+
+/* ============================================================
+   Featured contact
+   ============================================================ */
 
 .featured .pill {
-    min-block-size: clamp(3rem, 3.45vw, 3.6rem);
-    gap: clamp(0.48rem, 0.8vw, 0.72rem);
+    min-block-size:
+        clamp(3rem, 3.45vw, 3.6rem);
+
+    gap:
+        clamp(0.48rem, 0.8vw, 0.72rem);
 
     padding:
-        clamp(0.66rem, 0.82vw, 0.82rem)
-        clamp(1rem, 1.6vw, 1.45rem);
+        clamp(0.66rem, 0.82vw, 0.82rem) clamp(1rem, 1.6vw, 1.45rem);
 
-    border-radius: clamp(1rem, 1.4vw, 1.45rem);
-
-    font-weight: var(--group-font-weight-black);
+    border-radius:
+        clamp(1rem, 1.4vw, 1.45rem);
 
     box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.04),
-        inset 0 -1px 0 rgb(0 0 0 / 0.28),
-        0 1rem 2.2rem rgb(0 0 0 / 0.24);
+        inset 0 1px 0 rgb(255 255 255 / 0.48),
+        0 0.18rem 0.44rem rgb(30 46 36 / 0.06);
+
+    font-weight:
+        var(--group-font-weight-black);
 }
 
 .featured .pillText {
-    font-size: clamp(1rem, 0.9rem + 0.28vw, 1.18rem);
-
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.52),
-        0 0.8rem 1.45rem rgb(0 0 0 / 0.28);
+    font-size:
+        clamp(1rem, 0.9rem + 0.28vw, 1.18rem);
 }
 
 .featured .pill[aria-expanded="true"] {
     box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.06),
-        inset 0 -1px 0 rgb(0 0 0 / 0.3),
-        0 1.1rem 2.4rem rgb(0 0 0 / 0.28);
+        inset 0 1px 0 rgb(255 255 255 / 0.5),
+        0 0.24rem 0.58rem rgb(30 46 36 / 0.075);
 }
 
 .featured .card {
     margin-block-start: 0;
-    padding: clamp(0.88rem, 1vw, 1.05rem);
 
-    border-radius: clamp(0.92rem, 1.25vw, 1.2rem);
+    padding:
+        clamp(0.88rem, 1vw, 1.05rem);
+
+    border-radius:
+        clamp(0.92rem, 1.25vw, 1.2rem);
 
     box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.03),
-        inset 0 -1px 0 rgb(0 0 0 / 0.18);
+        inset 0 1px 0 rgb(255 255 255 / 0.36),
+        0 0.1rem 0.26rem rgb(30 46 36 / 0.045);
 }
 
-@media (hover: hover) {
+
+/* ============================================================
+   Hover
+   A cor do texto permanece inalterada.
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
     .pill:hover {
-        transform: translateY(-2px);
+        transform: translateY(-1px);
 
-        border-color: var(--group-border-strong);
+        border-color:
+            var(--group-border-strong);
 
-        background: var(--group-card-background-hover);
-        color: var(--group-accent-primary);
-
-        box-shadow: var(--group-shadow-control-hover);
-
-        filter: saturate(1.04) brightness(1.02);
-    }
-
-    .pill:hover .caret {
-        color: var(--group-accent-fresh);
-    }
-
-    .card:hover {
-        border-color: var(--group-border-default);
+        background-color:
+            var(--group-card-background-hover);
 
         box-shadow:
-            inset 0 1px 0 rgb(255 255 255 / 0.05),
-            inset 0 -1px 0 rgb(0 0 0 / 0.3),
-            0 1rem 2rem rgb(0 0 0 / 0.28);
+            inset 0 1px 0 rgb(255 255 255 / 0.5),
+            0 0.28rem 0.64rem rgb(30 46 36 / 0.08);
     }
 }
+
+
+/* ============================================================
+   Focus
+   ============================================================ */
 
 .pill:focus-visible {
     outline: none;
-
     box-shadow: var(--group-focus-shadow);
 }
 
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
 @media (max-width: 1023.98px) {
     .pill {
-        min-block-size: clamp(2.9rem, 5vw, 3.35rem);
+        min-block-size:
+            clamp(2.9rem, 5vw, 3.35rem);
     }
 
     .pillText {
-        font-size: var(--group-control-label-size-md);
+        font-size:
+            var(--group-control-label-size-md);
     }
 
     .featured .pillText {
-        font-size: clamp(0.94rem, 1.8vw, 1.08rem);
+        font-size:
+            clamp(0.94rem, 1.8vw, 1.08rem);
     }
 }
 
@@ -254,7 +299,8 @@
     }
 
     .pillText {
-        font-size: var(--group-control-label-size-sm);
+        font-size:
+            var(--group-control-label-size-sm);
     }
 
     .card {
@@ -278,7 +324,8 @@
     }
 
     .pillText {
-        font-size: var(--group-control-label-size-xs);
+        font-size:
+            var(--group-control-label-size-xs);
     }
 
     .card {
@@ -290,7 +337,13 @@
     }
 }
 
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+
 @media (prefers-reduced-motion: reduce) {
+
     .pill,
     .caret,
     .card {
@@ -303,14 +356,19 @@
     }
 }
 
+
+/* ============================================================
+   Animations
+   ============================================================ */
+
 @keyframes contactDisclosureCardIn {
     from {
         opacity: 0;
-        transform: translateY(-6px) scale(0.985);
+        transform: translateY(-3px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
 }

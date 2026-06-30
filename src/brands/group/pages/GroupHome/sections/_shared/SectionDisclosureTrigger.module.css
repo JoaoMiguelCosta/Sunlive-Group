@@ -1,6 +1,8 @@
 /* ============================================================
-   SectionDisclosureTrigger — Sunlive Group / Deep Forest
-   Trigger de heading-level para disclosure de secções
+   SectionDisclosureTrigger — Sunlive Group / Light Forest
+
+   Trigger de nível heading para disclosures de secção.
+   O hover não altera a cor do texto.
    ============================================================ */
 
 .heading {
@@ -8,25 +10,32 @@
 }
 
 .trigger {
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: clamp(0.75rem, 2vw, 1.25rem);
 
+    inline-size: 100%;
+    min-inline-size: 0;
+
+    box-sizing: border-box;
     padding-block: clamp(0.9rem, 1.8vw, 1.2rem);
     padding-inline: clamp(1rem, 3vw, 2rem);
 
-    border: none;
+    border: 0;
     border-radius: inherit;
-    background: transparent;
 
     color: var(--group-accent-primary);
+    background-color: transparent;
+
     font: inherit;
     text-align: start;
 
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+
+    transition:
+        background-color var(--group-duration-fast) var(--group-ease-standard);
 }
 
 .trigger:focus-visible {
@@ -35,29 +44,56 @@
 }
 
 .label {
+    min-inline-size: 0;
+
+    color: inherit;
+
     font-family: var(--group-font-display);
     font-size: var(--group-section-title-size-md);
     font-weight: var(--group-font-weight-black);
-    letter-spacing: var(--group-section-title-tracking);
     line-height: 1.1;
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.65),
-        0 0.7rem 1.4rem rgb(0 0 0 / 0.34);
+    letter-spacing: var(--group-section-title-tracking);
+
+    text-shadow: none;
 }
 
 .caret {
-    flex-shrink: 0;
+    flex: 0 0 auto;
+
     inline-size: 1.05rem;
     block-size: 1.05rem;
+
     color: var(--group-accent-fresh);
-    transition: transform var(--group-duration-fast) var(--group-ease-standard);
+
+    transition:
+        transform var(--group-duration-fast) var(--group-ease-standard);
 }
 
 .caretOpen {
     transform: rotate(180deg);
 }
 
-/* ── Responsive ── */
+
+/* ============================================================
+   Hover
+   Apenas fundo e movimento subtil do caret.
+   A cor do texto permanece inalterada.
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+    .trigger:hover {
+        background-color: var(--group-control-bg-hover);
+    }
+
+    .trigger:hover .caret:not(.caretOpen) {
+        transform: translateY(1px);
+    }
+}
+
+
+/* ============================================================
+   Responsive
+   ============================================================ */
 
 @media (max-width: 767.98px) {
     .label {
@@ -65,17 +101,14 @@
     }
 }
 
-/* ── Hover — caret (apenas rato, apenas quando fechado) ── */
 
-@media (hover: hover) and (pointer: fine) {
-    .trigger:hover .caret:not(.caretOpen) {
-        transform: translateY(2px);
-    }
-}
-
-/* ── Reduced motion ── */
+/* ============================================================
+   Reduced motion
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
+
+    .trigger,
     .caret {
         transition: none;
     }

@@ -1,4 +1,6 @@
-/* Contacts Section — Sunlive Group / Deep Forest */
+/* ============================================================
+   ContactsSection — Sunlive Group / Light Forest
+   ============================================================ */
 
 .section {
     position: relative;
@@ -7,14 +9,14 @@
 
     inline-size: 100%;
     min-inline-size: 0;
-  
-    box-sizing: border-box;
 
-    scroll-margin-top: var(--sl-anchor-offset, 96px);
+    box-sizing: border-box;
 
     color: var(--group-text-primary);
     background: transparent;
-    
+
+    scroll-margin-top:
+        var(--sl-anchor-offset, 96px);
 }
 
 .section>* {
@@ -22,23 +24,31 @@
     z-index: 1;
 }
 
-/* =========================================================
+
+/* ============================================================
    Header
-   ========================================================= */
+   ============================================================ */
 
 .header {
-    inline-size: min(100%, var(--group-page-max-width));
-    min-inline-size: 0;
-    
-
     display: grid;
     place-items: center;
 
+    inline-size:
+        min(100%, var(--group-page-max-width));
+
+    min-inline-size: 0;
+
     box-sizing: border-box;
+
     margin-inline: auto;
-    margin-block-end: clamp(1.35rem, 3vw, 2.45rem);
-    padding-inline: clamp(0.75rem, 3vw, 2.5rem);
-    padding-block-start: clamp(0.45rem, 1vw, 0.8rem);
+    margin-block-end:
+        clamp(1.35rem, 3vw, 2.45rem);
+
+    padding-inline:
+        clamp(0.75rem, 3vw, 2.5rem);
+
+    padding-block-start:
+        clamp(0.45rem, 1vw, 0.8rem);
 
     text-align: center;
 }
@@ -59,48 +69,58 @@
     font-weight: var(--group-font-weight-black);
     line-height: 1.05;
     letter-spacing: var(--group-section-title-tracking);
-
     text-align: center;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.65),
-        0 0.7rem 1.4rem rgb(0 0 0 / 0.34);
+    text-shadow: none;
 }
 
-/* =========================================================
+
+/* ============================================================
    Containers
-   ========================================================= */
+   ============================================================ */
 
 .container {
     position: relative;
     isolation: isolate;
 
-    inline-size: min(100%, var(--group-page-max-width));
+    inline-size:
+        min(100%, var(--group-page-max-width));
+
     min-inline-size: 0;
 
     margin-inline: auto;
 
     box-sizing: border-box;
-    padding-inline: clamp(0.75rem, 3vw, 2.5rem);
+
+    padding-inline:
+        clamp(0.75rem, 3vw, 2.5rem);
 }
 
 .container+.container {
-    margin-block-start: clamp(3rem, 4.8vw, 5rem);
-    padding-block-start: clamp(1.35rem, 2.2vw, 1.9rem);
+    margin-block-start:
+        clamp(3rem, 4.8vw, 5rem);
+
+    padding-block-start:
+        clamp(1.35rem, 2.2vw, 1.9rem);
 }
 
 .container+.container::before {
     content: "";
+
     position: absolute;
-    inset-inline: clamp(0.75rem, 3vw, 2.5rem);
     inset-block-start: 0;
+    inset-inline:
+        clamp(0.75rem, 3vw, 2.5rem);
+
     z-index: 0;
 
     block-size: 1px;
 
-    pointer-events: none;
+    background-color:
+        var(--group-border-default);
 
-    background: var(--group-border-default);
+    opacity: 0.72;
+    pointer-events: none;
 }
 
 .container>* {
@@ -108,40 +128,141 @@
     z-index: 1;
 }
 
-/* =========================================================
+
+/* ============================================================
+   Disclosure
+   ============================================================ */
+
+.triggerCard {
+    --group-focus-offset-color:
+        var(--group-card-background);
+
+    border:
+        1px solid var(--group-border-default);
+
+    border-radius:
+        var(--group-radius-md);
+
+    background-color:
+        var(--group-card-background);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.4),
+        0 0.12rem 0.32rem rgb(30 46 36 / 0.045);
+
+    transition:
+        transform var(--group-duration-fast) var(--group-ease-standard),
+        border-color var(--group-duration-fast) var(--group-ease-standard),
+        background-color var(--group-duration-fast) var(--group-ease-standard),
+        box-shadow var(--group-duration-fast) var(--group-ease-standard);
+}
+
+.triggerCardOpen {
+    --group-focus-offset-color:
+        var(--group-surface-elevated);
+
+    border-color:
+        var(--group-border-default);
+
+    border-radius:
+        var(--group-radius-md) var(--group-radius-md) 0 0;
+
+    background-color:
+        var(--group-surface-elevated);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.44),
+        0 0.14rem 0.36rem rgb(30 46 36 / 0.05);
+}
+
+.panel {
+    --group-focus-offset-color:
+        var(--group-disclosure-panel-background);
+
+    padding-block-start:
+        clamp(1.35rem, 3vw, 2.45rem);
+
+    padding-block-end:
+        clamp(1.35rem, 3vw, 2.5rem);
+
+    border:
+        1px solid var(--group-border-default);
+
+    border-block-start: 0;
+
+    border-radius:
+        0 0 var(--group-radius-md) var(--group-radius-md);
+
+    background-color:
+        var(--group-disclosure-panel-background);
+}
+
+
+/* ============================================================
+   Hover
+   A cor dos textos é controlada pelos componentes internos
+   e permanece inalterada.
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+    .triggerCard:not(.triggerCardOpen):hover {
+        transform: translateY(-1px);
+
+        border-color:
+            var(--group-border-strong);
+
+        background-color:
+            var(--group-card-background-hover);
+
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.46),
+            0 0.28rem 0.66rem rgb(30 46 36 / 0.075);
+    }
+}
+
+
+/* ============================================================
    Responsive
-   ========================================================= */
+   ============================================================ */
 
 @media (min-width: 1440px) {
     .header {
-        margin-block-end: clamp(1.55rem, 2.8vw, 2.75rem);
+        margin-block-end:
+            clamp(1.55rem, 2.8vw, 2.75rem);
     }
 }
 
 @media (max-width: 1279.98px) {
     .container+.container {
-        margin-block-start: clamp(2.65rem, 4.6vw, 4.2rem);
+        margin-block-start:
+            clamp(2.65rem, 4.6vw, 4.2rem);
     }
 }
 
 @media (max-width: 1023.98px) {
     .section {
-        padding-block: clamp(0.85rem, 3vw, 2.1rem) clamp(1.05rem, 3.8vw, 2.7rem);
+        padding-block:
+            clamp(0.85rem, 3vw, 2.1rem) clamp(1.05rem, 3.8vw, 2.7rem);
     }
 
     .header {
-        margin-block-end: clamp(1.15rem, 3.4vw, 1.85rem);
+        margin-block-end:
+            clamp(1.15rem, 3.4vw, 1.85rem);
     }
 
     .container+.container {
-        margin-block-start: clamp(2.25rem, 5vw, 3.4rem);
-        padding-block-start: clamp(1.1rem, 2.8vw, 1.55rem);
+        margin-block-start:
+            clamp(2.25rem, 5vw, 3.4rem);
+
+        padding-block-start:
+            clamp(1.1rem, 2.8vw, 1.55rem);
     }
 }
 
 @media (max-width: 767.98px) {
     .title {
-        font-size: var(--group-section-title-size-md);
+        font-size:
+            var(--group-section-title-size-md);
     }
 
     .header {
@@ -150,16 +271,21 @@
     }
 
     .container {
-        padding-inline: clamp(0.7rem, 4vw, 1.25rem);
+        padding-inline:
+            clamp(0.7rem, 4vw, 1.25rem);
     }
 
     .container+.container {
-        margin-block-start: clamp(2rem, 6vw, 2.8rem);
-        padding-block-start: clamp(0.95rem, 3vw, 1.25rem);
+        margin-block-start:
+            clamp(2rem, 6vw, 2.8rem);
+
+        padding-block-start:
+            clamp(0.95rem, 3vw, 1.25rem);
     }
 
     .container+.container::before {
-        inset-inline: clamp(0.7rem, 4vw, 1.25rem);
+        inset-inline:
+            clamp(0.7rem, 4vw, 1.25rem);
     }
 }
 
@@ -170,7 +296,8 @@
     }
 
     .title {
-        font-size: var(--group-section-title-size-sm);
+        font-size:
+            var(--group-section-title-size-sm);
     }
 
     .container {
@@ -202,62 +329,10 @@
     }
 }
 
-/* =========================================================
-   Disclosure — trigger card + panel
-   ========================================================= */
 
-.triggerCard {
-    border: 1px solid var(--group-border-default);
-    border-radius: var(--group-radius-md);
-    background: var(--group-card-background);
-
-    transition:
-        border-color var(--group-duration-fast) var(--group-ease-standard),
-        background var(--group-duration-fast) var(--group-ease-standard);
-}
-
-.triggerCardOpen {
-    border-color: var(--group-border-strong);
-    background: var(--group-card-background-hover);
-    border-radius: var(--group-radius-md) var(--group-radius-md) 0 0;
-}
-
-.panel {
-    border: 1px solid var(--group-border-strong);
-    border-block-start: none;
-    border-radius: 0 0 var(--group-radius-md) var(--group-radius-md);
-    background: transparent;
-
-    padding-block-start: clamp(1.35rem, 3vw, 2.45rem);
-    padding-block-end: clamp(1.35rem, 3vw, 2.5rem);
-}
-
-/* ── Hover — Book-style lift (apenas rato) ── */
-
-@media (hover: hover) and (pointer: fine) {
-    .triggerCard:not(.triggerCardOpen) {
-        transition:
-            transform var(--group-duration-slow) var(--group-ease-emphasized),
-            border-color var(--group-duration-slow) var(--group-ease-emphasized),
-            background var(--group-duration-slow) var(--group-ease-emphasized),
-            box-shadow var(--group-duration-slow) var(--group-ease-emphasized),
-            filter var(--group-duration-slow) var(--group-ease-emphasized);
-    }
-
-    .triggerCard:not(.triggerCardOpen):hover {
-        transform: translateY(-3px);
-
-        border-color: var(--group-border-strong);
-        background: var(--group-card-background-hover);
-
-        box-shadow:
-            var(--group-shadow-control-hover),
-            inset 0 0 0 1px rgb(218 221 192 / 0.1),
-            0 0 1.2rem rgb(218 221 192 / 0.06);
-
-        filter: saturate(1.05) brightness(1.03);
-    }
-}
+/* ============================================================
+   Reduced motion
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
     .triggerCard {
@@ -269,14 +344,15 @@
     }
 }
 
-/* =========================================================
+
+/* ============================================================
    Print
-   ========================================================= */
+   ============================================================ */
 
 @media print {
     .section {
-        background: #fff !important;
         color: #111;
+        background: #fff !important;
     }
 
     .container+.container::before {
