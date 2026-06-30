@@ -1,6 +1,7 @@
 .shell {
-    --group-page-max-width: 1360px;
-    --section-inset: clamp(0.75rem, 4vw, 2.5rem);
+    /* --section-inset mantido como alias local para compatibilidade com
+       componentes partilhados (Footer, UtilityBar) que herdam esta var. */
+    --section-inset: var(--group-section-inset);
 
     position: relative;
     isolation: isolate;
@@ -9,35 +10,8 @@
     min-block-size: 100dvh;
     overflow: clip;
 
-    color: var(--group-platinum-100, var(--sl-color-text, #f7f4ec));
-
-    background-color: var(--group-black, #030303);
-    background-image:
-        radial-gradient(92rem 48rem at 50% -18rem,
-            rgb(240 221 166 / 0.24) 0%,
-            rgb(216 189 120 / 0.16) 28%,
-            rgb(184 148 85 / 0.075) 54%,
-            transparent 78%),
-        radial-gradient(74rem 42rem at 5% 18%,
-            rgb(216 189 120 / 0.13) 0%,
-            rgb(184 148 85 / 0.05) 40%,
-            transparent 72%),
-        radial-gradient(74rem 42rem at 95% 18%,
-            rgb(240 221 166 / 0.11) 0%,
-            rgb(216 189 120 / 0.046) 42%,
-            transparent 74%),
-        radial-gradient(88rem 54rem at 50% 112%,
-            rgb(184 148 85 / 0.13) 0%,
-            rgb(216 189 120 / 0.058) 38%,
-            transparent 78%),
-        linear-gradient(180deg,
-            var(--group-eclipse-970, #080808) 0%,
-            var(--group-eclipse-990, #050505) 42%,
-            var(--group-black, #030303) 100%);
-
-    background-attachment: fixed;
-    background-size: 100% 100vh;
-    background-repeat: no-repeat;
+    color: var(--group-text-primary);
+    background-color: var(--group-background);
 }
 
 .shell>* {
@@ -49,7 +23,7 @@
     position: relative;
     isolation: isolate;
 
-    inline-size: min(calc(100% - (2 * var(--section-inset))),
+    inline-size: min(calc(100% - (2 * var(--group-section-inset))),
             var(--group-page-max-width));
     max-inline-size: var(--group-page-max-width);
     margin-inline: auto;
@@ -57,7 +31,7 @@
     overflow: clip;
     box-sizing: border-box;
 
-    color: var(--group-platinum-100, var(--sl-color-text, #f7f4ec));
+    color: var(--group-text-primary);
     background: transparent;
 }
 
@@ -66,16 +40,11 @@
     z-index: 10;
 
     inline-size: 100%;
-
-    background:
-        linear-gradient(180deg,
-            rgb(3 3 3 / 0.76) 0%,
-            rgb(3 3 3 / 0.46) 58%,
-            transparent 100%);
+    background: transparent;
 }
 
 .headerInner {
-    inline-size: min(calc(100% - (2 * var(--section-inset))),
+    inline-size: min(calc(100% - (2 * var(--group-section-inset))),
             var(--group-page-max-width));
     max-inline-size: var(--group-page-max-width);
     margin-inline: auto;
@@ -85,6 +54,8 @@
 
 .headerInner :global(.utilityBar),
 .headerInner :global(aside[class*="utilityBar"]) {
+    /* Dívida técnica: seletor frágil que depende do nome da classe gerada
+   pelo CSS Module. Não há alternativa sem alterar o JSX. */
     inline-size: 100%;
 }
 
@@ -102,7 +73,7 @@
     inline-size: 100%;
     max-inline-size: 100%;
     margin-inline: auto;
-    margin-block-start: clamp(3rem, 4.8vw, 4.8rem);
+    margin-block-start: clamp(2.6rem, 4.2vw, 4.2rem);
 
     display: grid;
     row-gap: 0;
@@ -115,7 +86,7 @@
 }
 
 .contentFlowWithGap {
-    row-gap: clamp(3rem, 6vw, 4.8rem);
+    row-gap: clamp(2.6rem, 5.2vw, 4.2rem);
 }
 
 .sectionGap {
@@ -125,62 +96,43 @@
     display: grid;
 
     box-sizing: border-box;
-    margin-block-start: clamp(3rem, 6vw, 4.8rem);
+    margin-block-start: clamp(2.6rem, 5.2vw, 4.2rem);
 }
 
 @media (max-width: 980px) {
     .contentFlow {
-        margin-block-start: clamp(2.6rem, 6vw, 3.4rem);
+        margin-block-start: clamp(2.2rem, 5vw, 3rem);
         row-gap: 0;
     }
 
     .contentFlowWithGap {
-        row-gap: clamp(2.6rem, 6vw, 3.6rem);
+        row-gap: clamp(2.2rem, 5.2vw, 3.2rem);
     }
 
     .sectionGap {
-        margin-block-start: clamp(2.6rem, 6vw, 3.6rem);
+        margin-block-start: clamp(2.2rem, 5.2vw, 3.2rem);
     }
 }
 
 @media (max-width: 767.98px) {
-    .shell {
-        background-attachment: scroll;
-        background-size: 100% 100%;
-        background-image:
-            radial-gradient(58rem 34rem at 50% -12rem,
-                rgb(240 221 166 / 0.2) 0%,
-                rgb(216 189 120 / 0.11) 34%,
-                transparent 76%),
-            radial-gradient(38rem 28rem at 0% 16%,
-                rgb(216 189 120 / 0.085) 0%,
-                transparent 74%),
-            radial-gradient(38rem 28rem at 100% 18%,
-                rgb(240 221 166 / 0.075) 0%,
-                transparent 76%),
-            linear-gradient(180deg,
-                var(--group-eclipse-970, #080808) 0%,
-                var(--group-eclipse-990, #050505) 48%,
-                var(--group-black, #030303) 100%);
-    }
-
     .contentFlow {
-        margin-block-start: clamp(2.2rem, 7vw, 3rem);
+        margin-block-start: clamp(1.9rem, 6vw, 2.65rem);
         row-gap: 0;
     }
 
     .contentFlowWithGap {
-        row-gap: clamp(2.2rem, 7vw, 3rem);
+        row-gap: clamp(1.9rem, 6vw, 2.65rem);
     }
 
     .sectionGap {
-        margin-block-start: clamp(2.2rem, 7vw, 3rem);
+        margin-block-start: clamp(1.9rem, 6vw, 2.65rem);
     }
 }
 
 @media (max-width: 420px) {
     .shell {
         --section-inset: 0.75rem;
+        --group-section-inset: 0.75rem;
     }
 
     .contentFlow {

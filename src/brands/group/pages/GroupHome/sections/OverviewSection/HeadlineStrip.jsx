@@ -1,4 +1,4 @@
-import styles from "./HeadlineStrip.module.css";
+import styles from "../../../../shared/components/GroupImageHeadline.module.css";
 import homePage from "../../../../config/pages/home.js";
 const overview = homePage.sections.overview;
 

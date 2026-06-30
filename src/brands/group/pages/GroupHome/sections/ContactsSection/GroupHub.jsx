@@ -1,4 +1,6 @@
 import styles from "./GroupHub.module.css";
+import disclosureStyles from "./ContactDisclosure.module.css";
+import OfficeCard from "./OfficeCard.jsx";
 
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
@@ -19,26 +21,6 @@ function isValidObject(value) {
 
 function getTelHref(phone) {
   return isValidText(phone) ? phone.replace(/\s+/g, "") : "";
-}
-
-function ContactRow({ href, label, value, mutedLabel, Icon }) {
-  const hasValue = isValidText(value);
-
-  if (!hasValue) {
-    return (
-      <span className={styles.row} aria-label={mutedLabel} aria-disabled="true">
-        <Icon className={styles.icon} width={20} height={20} />
-        <span className={styles.muted}>—</span>
-      </span>
-    );
-  }
-
-  return (
-    <a href={href} className={styles.row} aria-label={label}>
-      <Icon className={styles.icon} width={20} height={20} />
-      <span>{value}</span>
-    </a>
-  );
 }
 
 export default function GroupHub({ data }) {
@@ -66,44 +48,31 @@ export default function GroupHub({ data }) {
   if (!hasData) return null;
 
   return (
-    <div className={styles.wrap} id={anchorId}>
+    <div className={`${styles.wrap} ${disclosureStyles.featured}`} id={anchorId}>
       <button
         type="button"
-        className={styles.pill}
+        className={disclosureStyles.pill}
         onClick={toggle}
         aria-expanded={isOpen}
         aria-controls="grouphub-panel"
       >
-        <span className={styles.pillText}>{title}</span>
+        <span className={disclosureStyles.pillText}>{title}</span>
 
-        <span className={styles.caret} aria-hidden="true">
+        <span className={disclosureStyles.caret} aria-hidden="true">
           ⌄
         </span>
       </button>
 
       {isOpen ? (
-        <div
+        <OfficeCard
           id="grouphub-panel"
-          className={styles.card}
-          role="region"
-          aria-label={`Contactos de ${title}`}
-        >
-          <ContactRow
-            href={`mailto:${email}`}
-            label={`Enviar email para ${email}`}
-            mutedLabel="Email indisponível"
-            value={email}
-            Icon={MailIcon}
-          />
-
-          <ContactRow
-            href={`tel:${telHref}`}
-            label={`Ligar para ${phone}`}
-            mutedLabel="Telefone indisponível"
-            value={phone}
-            Icon={PhoneIcon}
-          />
-        </div>
+          label={title}
+          email={email}
+          phone={phone}
+          telHref={telHref}
+          MailIcon={MailIcon}
+          PhoneIcon={PhoneIcon}
+        />
       ) : null}
     </div>
   );

@@ -175,52 +175,41 @@
 }
 
 /* =========================================================
-   Group Footer — Executive Eclipse Gold
+   Group Footer — Deep Forest
    ========================================================= */
 
 :global([data-brand="group"]) .footerWrap {
   --section-inset: 0px;
   --footer-max-width: 100%;
-  --footer-brand-accent: var(--group-gold-400, #d8bd78);
-  --footer-base: var(--group-black, #030303);
+  --footer-brand-accent: var(--group-accent-primary);
+  --footer-base: var(--group-surface-footer);
 
-  color: var(--group-platinum-100, #f7f4ec);
-  background: transparent;
+  color: var(--group-text-secondary);
+  background: var(--group-surface-footer);
+
+  border-top: 1px solid var(--group-border-subtle);
 }
 
 :global([data-brand="group"]) .footerWrap .frame {
   inline-size: 100%;
   max-inline-size: 100%;
 
-  border: 1px solid rgb(216 189 120 / 0.3);
+  border: 1px solid var(--group-border-default);
   border-bottom: 0;
-  border-radius: 18px 18px 0 0;
+  border-radius: 14px 14px 0 0;
 
-  background:
-    radial-gradient(120% 112% at 50% -12%,
-      rgb(240 221 166 / 0.13) 0%,
-      rgb(216 189 120 / 0.065) 34%,
-      transparent 62%),
-    radial-gradient(86rem 32rem at 50% 48%,
-      rgb(184 148 85 / 0.06) 0%,
-      transparent 72%),
-    linear-gradient(180deg,
-      rgb(24 22 18 / 0.96) 0%,
-      rgb(12 12 11 / 0.985) 42%,
-      rgb(4 4 4 / 0.995) 100%);
+  background: transparent;
 
   box-shadow:
-    inset 0 1px 0 rgb(247 244 236 / 0.055),
-    inset 0 -1px 0 rgb(216 189 120 / 0.12),
-    0 1.1rem 2.6rem rgb(0 0 0 / 0.3),
-    0 0 2rem rgb(216 189 120 / 0.075);
+    inset 0 1px 0 rgb(218 221 192 / 0.08),
+    0 1.1rem 2.6rem rgb(0 0 0 / 0.22);
 }
 
 :global([data-brand="group"]) .footerWrap .strip {
   inline-size: 100%;
   max-inline-size: 100%;
 
-  border-top-color: rgb(216 189 120 / 0.24);
+  border-top-color: var(--group-border-subtle);
 }
 
 /* =========================================================
@@ -334,10 +323,8 @@
 
   :global([data-brand="group"]) .footerWrap .frame {
     box-shadow:
-      inset 0 1px 0 rgb(247 244 236 / 0.045),
-      inset 0 -1px 0 rgb(216 189 120 / 0.1),
-      0 0.9rem 2.1rem rgb(0 0 0 / 0.26),
-      0 0 1.5rem rgb(216 189 120 / 0.055);
+      inset 0 1px 0 rgb(218 221 192 / 0.04),
+      0 0.9rem 2.1rem rgb(0 0 0 / 0.22);
   }
 
   :global([data-brand="hotel"]) .footerWrap .frame {
@@ -391,11 +378,7 @@
   }
 
   :global([data-brand="group"]) .footerWrap .frame {
-    background:
-      radial-gradient(120% 112% at 50% -12%,
-        rgb(240 221 166 / 0.13),
-        transparent 62%),
-      linear-gradient(180deg, rgb(24 22 18 / 0.96), rgb(4 4 4 / 0.995));
+    background: transparent;
   }
 
   :global([data-brand="hotel"]) .footerWrap .frame {

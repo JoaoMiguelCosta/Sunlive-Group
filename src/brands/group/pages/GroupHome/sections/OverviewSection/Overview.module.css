@@ -1,4 +1,4 @@
-/* Overview — Sunlive Group / Executive Eclipse Gold */
+/* Overview — Sunlive Group / Deep Forest */
 
 .section {
   position: relative;
@@ -15,15 +15,10 @@
   box-sizing: border-box;
   padding-inline: 0;
 
-  color: var(--sl-color-text, #f7f4ec);
+  color: var(--group-text-primary, var(--sl-color-text, #f6f7ed));
   background: transparent;
 
   --overview-panel-radius: clamp(1.1rem, 2.2vw, 2.25rem);
-
-  --overview-gold-soft: 255 239 188;
-  --overview-gold: 226 198 130;
-  --overview-gold-deep: 151 104 40;
-  --overview-noir: 4 4 4;
 }
 
 .section>* {

@@ -1,0 +1,75 @@
+/* =========================================================
+   Sunlive Group — Theme
+   Deep Forest brand context
+
+   Importa os tokens e aplica o contexto visual base
+   exclusivamente dentro de [data-brand="group"].
+
+   data-brand="group" é aplicado em html (ThemeProvider)
+   e no div.shell (GroupShell) — cascade completo.
+   ========================================================= */
+
+@import "./tokens.css";
+
+[data-brand="group"] {
+    color-scheme: dark;
+    color: var(--group-text-primary);
+    background: var(--group-background);
+
+    /* -------------------------------------------------
+       Bridge tokens — consumidos pelos componentes
+       partilhados (Footer, UtilityBar, shared UI).
+       Permitem que esses componentes funcionem
+       sem depender da paleta Group diretamente.
+       ------------------------------------------------- */
+
+    --sl-platinum-100: var(--group-text-primary);
+    --sl-platinum-300: var(--group-text-secondary);
+    --sl-gold-500:     var(--group-accent-primary);
+    --sl-gold-400:     var(--group-accent-primary);
+
+    --sl-body-bg:    var(--group-background);
+    --sl-color-text: var(--group-text-primary);
+
+    --accent:   var(--group-accent-primary);
+    --accent-2: var(--group-accent-fresh);
+
+    --text-1: var(--group-text-primary);
+    --text-2: var(--group-text-secondary);
+
+    --font-sans: var(--group-font-ui);
+
+    --sl-focus:
+        0 0 0 2px var(--group-background),
+        0 0 0 4px var(--group-focus-outline);
+
+    /* -------------------------------------------------
+       Footer tokens — consumidos pelo GroupFooter
+       e pelos seletores [data-brand="group"] do Footer
+       partilhado.
+       ------------------------------------------------- */
+
+    --footer-accent: var(--group-accent-primary);
+    --footer-base:   var(--group-surface-footer);
+
+    /* -------------------------------------------------
+       Tokens de compatibilidade — anteriormente em :root.
+       Nenhum consumidor externo confirmado; mantidos
+       por precaução para não quebrar nada nesta fase.
+       Candidatos a remoção numa fase de limpeza futura.
+       ------------------------------------------------- */
+
+    --sl-radius-sm:   var(--group-radius-sm);
+    --sl-container-sm: 78rem;
+    --sl-container-lg: 90rem;
+    --sl-baseline:     1.25rem;
+}
+
+/* =========================================================
+   Seleção de texto — identidade visual Group
+   ========================================================= */
+
+[data-brand="group"] ::selection {
+    color:      var(--group-text-dark);
+    background: var(--group-accent-primary);
+}

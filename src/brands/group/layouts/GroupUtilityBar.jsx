@@ -1,5 +1,6 @@
 import UtilityBar from "../../../shared/components/UtilityBar/index.jsx";
 import overview from "../config/sections/home/overview.js";
+import GroupHeaderNav from "./GroupHeaderNav.jsx";
 
 const LANG_FALLBACK = {
   current: "pt",
@@ -13,6 +14,7 @@ export default function GroupUtilityBar() {
   return (
     <UtilityBar
       variant="group-header"
+      centerSlot={<GroupHeaderNav socials={socials} lang={lang} />}
       socials={socials}
       lang={lang}
       ariaLabel="Utility bar — Group"

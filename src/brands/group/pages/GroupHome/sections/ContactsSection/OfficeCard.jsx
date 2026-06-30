@@ -1,4 +1,4 @@
-import styles from "./ContactsGrid.module.css";
+import styles from "./ContactDisclosure.module.css";
 import ContactRow from "./ContactRow.jsx";
 
 export default function OfficeCard({

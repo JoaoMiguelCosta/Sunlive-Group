@@ -273,17 +273,17 @@
 }
 
 /* =========================================================
-   Group — Executive Eclipse Gold
+   Group — Deep Forest
    ========================================================= */
 
 :global([data-brand="group"]) .sectionWrap {
-    --policies-accent: var(--group-gold-400, #d8bd78);
-    --policies-accent-bright: var(--group-gold-300, #f0dda6);
-    --policies-border: rgb(216 189 120 / 0.24);
-    --policies-border-strong: rgb(240 221 166 / 0.38);
-    --policies-text-main: var(--group-platinum-100, #f7f4ec);
-    --policies-text-soft: rgb(247 244 236 / 0.76);
-    --policies-text-muted: rgb(233 228 216 / 0.48);
+    --policies-accent: var(--group-accent-fresh);
+    --policies-accent-bright: var(--group-accent-primary);
+    --policies-border: var(--group-border-subtle);
+    --policies-border-strong: var(--group-border-default);
+    --policies-text-main: var(--group-text-primary);
+    --policies-text-soft: var(--group-text-secondary);
+    --policies-text-muted: var(--group-text-muted);
 
     isolation: isolate;
     overflow: hidden;
@@ -315,18 +315,15 @@
 :global([data-brand="group"]) .link:hover {
     color: var(--policies-accent-bright);
     text-decoration: underline;
-    text-decoration-color: rgb(240 221 166 / 0.5);
+    text-decoration-color: rgb(218 221 192 / 0.5);
     text-underline-offset: 0.18em;
 
     text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.42),
-        0 0 0.9rem rgb(240 221 166 / 0.08);
+        0 1px 0 rgb(0 0 0 / 0.42);
 }
 
 :global([data-brand="group"]) .link:focus-visible {
-    box-shadow:
-        0 0 0 2px rgb(3 3 3 / 0.92),
-        0 0 0 4px rgb(240 221 166 / 0.58);
+    box-shadow: var(--group-focus-shadow);
 }
 
 :global([data-brand="group"]) .divider {
@@ -342,23 +339,15 @@
     inline-size: clamp(17px, 1.15vw, 20px);
     block-size: clamp(17px, 1.15vw, 20px);
 
-    border: 1px solid rgb(240 221 166 / 0.34);
+    border: 1px solid var(--policies-border-strong);
 
-    color: var(--policies-accent-bright);
+    color: var(--policies-accent);
 
-    background:
-        radial-gradient(circle at 30% 28%,
-            rgb(255 242 191 / 0.18) 0%,
-            transparent 56%),
-        linear-gradient(180deg,
-            rgb(54 42 20 / 0.56) 0%,
-            rgb(8 8 8 / 0.88) 100%);
+    background: var(--group-card-background);
 
     box-shadow:
-        inset 0 1px 0 rgb(247 244 236 / 0.07),
-        inset 0 -1px 0 rgb(216 189 120 / 0.08),
-        0 0.42rem 0.95rem rgb(0 0 0 / 0.16),
-        0 0 0.75rem rgb(216 189 120 / 0.06);
+        inset 0 1px 0 rgb(218 221 192 / 0.05),
+        0 0.42rem 0.95rem rgb(0 0 0 / 0.16);
 }
 
 :global([data-brand="group"]) .shield :global(svg) {
@@ -610,7 +599,7 @@
     }
 
     :global([data-brand="group"]) .sectionWrap {
-        border-top-color: rgb(216 189 120 / 0.24);
+        border-top-color: rgb(218 221 192 / 0.14);
     }
 
     :global([data-brand="hotel"]) .sectionWrap {

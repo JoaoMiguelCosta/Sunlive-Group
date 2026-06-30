@@ -1,4 +1,4 @@
-import styles from "./ContactsGrid.module.css";
+import styles from "./ContactRow.module.css";
 
 function isValidText(value) {
   return typeof value === "string" && value.trim().length > 0;

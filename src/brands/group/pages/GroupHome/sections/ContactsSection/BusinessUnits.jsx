@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 
 import styles from "./ContactsGrid.module.css";
-import ContactRow from "./ContactRow.jsx";
+import disclosureStyles from "./ContactDisclosure.module.css";
+import OfficeCard from "./OfficeCard.jsx";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
@@ -142,41 +143,28 @@ export default function BusinessUnits({ items = [] }) {
           >
             <button
               type="button"
-              className={styles.pill}
+              className={disclosureStyles.pill}
               onClick={() => toggle(item.key)}
               aria-expanded={open}
               aria-controls={panelId}
             >
-              <span className={styles.pillText}>{item.label}</span>
+              <span className={disclosureStyles.pillText}>{item.label}</span>
 
-              <span className={styles.caret} aria-hidden="true">
+              <span className={disclosureStyles.caret} aria-hidden="true">
                 ⌄
               </span>
             </button>
 
             {open ? (
-              <div
+              <OfficeCard
                 id={panelId}
-                className={styles.card}
-                role="region"
-                aria-label={`Contactos de ${item.label}`}
-              >
-                <ContactRow
-                  href={`mailto:${item.email}`}
-                  label={`Enviar email para ${item.email}`}
-                  mutedLabel="Email indisponível"
-                  value={item.email}
-                  Icon={MailIcon}
-                />
-
-                <ContactRow
-                  href={`tel:${telHref}`}
-                  label={`Ligar para ${item.phone}`}
-                  mutedLabel="Telefone indisponível"
-                  value={item.phone}
-                  Icon={PhoneIcon}
-                />
-              </div>
+                label={item.label}
+                email={item.email}
+                phone={item.phone}
+                telHref={telHref}
+                MailIcon={MailIcon}
+                PhoneIcon={PhoneIcon}
+              />
             ) : null}
           </div>
         );

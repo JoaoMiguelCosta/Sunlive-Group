@@ -1,8 +1,6 @@
 import styles from "./Overview.module.css";
 
 import BrandHero from "./BrandHero.jsx";
-import HeadlineStrip from "./HeadlineStrip.jsx";
-import DivisionsPanel from "./DivisionsPanel.jsx";
 
 export default function OverviewSection() {
   return (
@@ -16,8 +14,6 @@ export default function OverviewSection() {
       </h1>
 
       <BrandHero />
-      <HeadlineStrip />
-      <DivisionsPanel />
     </section>
   );
 }

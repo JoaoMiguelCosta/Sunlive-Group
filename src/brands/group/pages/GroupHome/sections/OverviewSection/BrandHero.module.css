@@ -1,4 +1,4 @@
-/* Brand Hero — Sunlive Group / Executive Eclipse Gold */
+/* Brand Hero — Sunlive Group / Deep Forest */
 
 .hero {
     position: relative;
@@ -36,49 +36,19 @@
     overflow: hidden;
     border-radius: clamp(1.1rem, 2vw, 2rem);
 
-    background:
-        radial-gradient(115% 145% at 50% 0%,
-            rgb(255 239 188 / 0.064) 0%,
-            rgb(226 198 130 / 0.03) 36%,
-            transparent 72%),
-        linear-gradient(180deg,
-            rgb(255 255 255 / 0.02) 0%,
-            transparent 42%,
-            rgb(0 0 0 / 0.04) 100%);
+    background: transparent;
 
     opacity: 0;
     transform: translate3d(0, 18px, 0) scale(0.965);
 
     filter:
-        drop-shadow(0 1.25rem 2.6rem rgb(0 0 0 / 0.3)) drop-shadow(0 0 2.4rem rgb(226 198 130 / 0.08));
+        drop-shadow(0 1.25rem 2.6rem rgb(0 0 0 / 0.3));
 
     animation:
         logoEntrance 760ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms forwards,
         logoPresence 7200ms ease-in-out 1100ms infinite;
 }
 
-.logoBox::before {
-    content: "";
-    position: absolute;
-    inset: 2% 6%;
-    z-index: -1;
-
-    pointer-events: none;
-    border-radius: inherit;
-
-    background:
-        radial-gradient(60% 80% at 50% 45%,
-            rgb(255 239 188 / 0.14) 0%,
-            rgb(226 198 130 / 0.065) 38%,
-            transparent 78%);
-
-    opacity: 0.78;
-    filter: blur(22px);
-
-    animation: logoInnerGlow 5200ms ease-in-out infinite;
-}
-
-/* brilho principal — sempre a passar */
 .logoBox::after {
     content: "";
     position: absolute;
@@ -94,14 +64,14 @@
     background:
         linear-gradient(112deg,
             transparent 0%,
-            rgb(255 248 214 / 0.02) 24%,
-            rgb(255 248 214 / 0.18) 42%,
-            rgb(255 239 188 / 0.42) 50%,
-            rgb(255 248 214 / 0.16) 58%,
-            rgb(255 248 214 / 0.02) 74%,
+            rgb(255 255 255 / 0.02) 24%,
+            rgb(255 255 255 / 0.14) 42%,
+            rgb(255 255 255 / 0.32) 50%,
+            rgb(255 255 255 / 0.12) 58%,
+            rgb(255 255 255 / 0.02) 74%,
             transparent 100%);
 
-    opacity: 0.72;
+    opacity: 0.52;
     transform: translateX(-140%) skewX(-16deg);
 
     mix-blend-mode: screen;
@@ -127,11 +97,11 @@
     transform: translate3d(0, 0, 0);
 
     filter:
-        saturate(1.07) contrast(1.06) brightness(1.05) drop-shadow(0 1px 0 rgb(255 248 214 / 0.22)) drop-shadow(0 0.95rem 1.85rem rgb(0 0 0 / 0.52)) drop-shadow(0 0 1.35rem rgb(255 235 176 / 0.14));
+        saturate(1.07) contrast(1.06) brightness(1.05) drop-shadow(0 0.95rem 1.85rem rgb(0 0 0 / 0.52));
 
     animation:
         logoFloat 7400ms ease-in-out 950ms infinite,
-        logoMetalPulse 4200ms ease-in-out 1200ms infinite;
+        logoPulse 4200ms ease-in-out 1200ms infinite;
 }
 
 /* =========================================================
@@ -171,23 +141,18 @@
         padding: clamp(0.1rem, 0.7vw, 0.3rem);
 
         filter:
-            drop-shadow(0 0.9rem 2rem rgb(0 0 0 / 0.28)) drop-shadow(0 0 1.8rem rgb(226 198 130 / 0.07));
-    }
-
-    .logoBox::before {
-        filter: blur(18px);
-        opacity: 0.68;
+            drop-shadow(0 0.9rem 2rem rgb(0 0 0 / 0.28));
     }
 
     .logoBox::after {
         inline-size: 48%;
-        opacity: 0.58;
+        opacity: 0.42;
         animation-duration: 3000ms;
     }
 
     .logoImg {
         filter:
-            saturate(1.045) contrast(1.04) brightness(1.03) drop-shadow(0 1px 0 rgb(255 248 214 / 0.15)) drop-shadow(0 0.72rem 1.35rem rgb(0 0 0 / 0.48)) drop-shadow(0 0 1rem rgb(255 235 176 / 0.1));
+            saturate(1.045) contrast(1.04) brightness(1.03) drop-shadow(0 0.72rem 1.35rem rgb(0 0 0 / 0.48));
     }
 }
 
@@ -204,7 +169,7 @@
 
     .logoBox::after {
         inline-size: 54%;
-        opacity: 0.5;
+        opacity: 0.38;
         animation-duration: 3400ms;
     }
 }
@@ -235,7 +200,7 @@
         opacity: 1;
         transform: translate3d(0, 0, 0) scale(1);
         filter:
-            drop-shadow(0 1.25rem 2.6rem rgb(0 0 0 / 0.3)) drop-shadow(0 0 2.4rem rgb(226 198 130 / 0.08));
+            drop-shadow(0 1.25rem 2.6rem rgb(0 0 0 / 0.3));
     }
 }
 
@@ -246,34 +211,20 @@
     }
 
     12% {
-        opacity: 0.62;
+        opacity: 0.46;
     }
 
     48% {
-        opacity: 0.86;
+        opacity: 0.68;
     }
 
     82% {
-        opacity: 0.54;
+        opacity: 0.38;
     }
 
     100% {
         opacity: 0;
         transform: translateX(355%) skewX(-16deg);
-    }
-}
-
-@keyframes logoInnerGlow {
-
-    0%,
-    100% {
-        opacity: 0.68;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: 0.88;
-        transform: scale(1.035);
     }
 }
 
@@ -289,17 +240,17 @@
     }
 }
 
-@keyframes logoMetalPulse {
+@keyframes logoPulse {
 
     0%,
     100% {
         filter:
-            saturate(1.07) contrast(1.06) brightness(1.045) drop-shadow(0 1px 0 rgb(255 248 214 / 0.22)) drop-shadow(0 0.95rem 1.85rem rgb(0 0 0 / 0.52)) drop-shadow(0 0 1.35rem rgb(255 235 176 / 0.14));
+            saturate(1.07) contrast(1.06) brightness(1.045) drop-shadow(0 0.95rem 1.85rem rgb(0 0 0 / 0.52));
     }
 
     50% {
         filter:
-            saturate(1.1) contrast(1.075) brightness(1.065) drop-shadow(0 1px 0 rgb(255 248 214 / 0.26)) drop-shadow(0 1rem 1.95rem rgb(0 0 0 / 0.54)) drop-shadow(0 0 1.65rem rgb(255 235 176 / 0.18));
+            saturate(1.1) contrast(1.075) brightness(1.065) drop-shadow(0 1rem 1.95rem rgb(0 0 0 / 0.54));
     }
 }
 
@@ -308,12 +259,12 @@
     0%,
     100% {
         filter:
-            drop-shadow(0 1.25rem 2.6rem rgb(0 0 0 / 0.3)) drop-shadow(0 0 2.4rem rgb(226 198 130 / 0.08));
+            drop-shadow(0 1.25rem 2.6rem rgb(0 0 0 / 0.3));
     }
 
     50% {
         filter:
-            drop-shadow(0 1.35rem 2.8rem rgb(0 0 0 / 0.34)) drop-shadow(0 0 2.9rem rgb(226 198 130 / 0.12));
+            drop-shadow(0 1.35rem 2.8rem rgb(0 0 0 / 0.34));
     }
 }
 
@@ -324,7 +275,6 @@
 @media (prefers-reduced-motion: reduce) {
 
     .logoBox,
-    .logoBox::before,
     .logoBox::after,
     .logoImg {
         animation: none;

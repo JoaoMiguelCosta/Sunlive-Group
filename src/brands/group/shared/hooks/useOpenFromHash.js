@@ -20,7 +20,7 @@ export default function useOpenFromHash({
   isOpen,
   toggle,
 }) {
-  const { hash, pathname } = useLocation();
+  const { hash, pathname, key } = useLocation();
 
   const lastHashHandledRef = useRef("");
   const isOpenRef = useRef(isOpen);
@@ -57,11 +57,13 @@ export default function useOpenFromHash({
       return undefined;
     }
 
-    if (lastHashHandledRef.current === hash) {
+    const handleKey = `${hash}:${key}`;
+
+    if (lastHashHandledRef.current === handleKey) {
       return undefined;
     }
 
-    lastHashHandledRef.current = hash;
+    lastHashHandledRef.current = handleKey;
 
     if (isOpenRef.current(itemKey)) {
       return undefined;
@@ -76,5 +78,5 @@ export default function useOpenFromHash({
     return () => {
       window.clearTimeout(timeoutId);
     };
-  }, [hash, items, pathname, regex, routePath]);
+  }, [hash, key, items, pathname, regex, routePath]);
 }

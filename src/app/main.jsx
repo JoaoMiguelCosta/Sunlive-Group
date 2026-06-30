@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./router/App.jsx";
 import { BrandProvider, ThemeProvider } from "./providers";
 
+import "../styles/global.css";
 import "../styles/brands.css";
 
 createRoot(document.getElementById("root")).render(

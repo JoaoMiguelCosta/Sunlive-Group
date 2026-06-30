@@ -4,29 +4,23 @@
     inline-size: 100%;
     min-inline-size: 0;
 
-    padding-block: clamp(1rem, 2vw, 1.45rem);
+    padding-block: clamp(0.85rem, 1.7vw, 1.25rem);
     padding-inline: clamp(0.9rem, 2.2vw, 1.4rem);
 
-    color: var(--group-platinum-100, var(--sl-platinum-100, #f7f4ec));
-
-    --gd-accent: var(--group-gold-400, #d8bd78);
-    --gd-accent-bright: var(--group-gold-300, #f0dda6);
-    --gd-accent-soft: rgb(240 221 166 / 0.72);
-    --gd-accent-muted: rgb(216 189 120 / 0.34);
-    --gd-accent-deep: var(--group-gold-600, #8f6a2f);
+    color: var(--group-text-primary);
 
     --gd-shell-max: 1360px;
     --gd-inner-gutter: clamp(0.8rem, 1.8vw, 1.2rem);
     --gd-block-gap: clamp(1rem, 1.4vw, 1.3rem);
     --gd-col-gap: clamp(1rem, 1.4vw, 1.35rem);
     --gd-row-gap: clamp(0.72rem, 0.92vw, 0.92rem);
-    --gd-title-size: clamp(1rem, 0.92rem + 0.34vw, 1.22rem);
+    --gd-title-size: clamp(0.94rem, 0.86rem + 0.3vw, 1.12rem);
 
-    --gd-pill-h: clamp(2.58rem, 2.82vw, 2.98rem);
-    --gd-pill-pad-y: clamp(0.3rem, 0.4vw, 0.4rem);
-    --gd-pill-pad-x: clamp(0.86rem, 0.9vw, 0.96rem);
-    --gd-pill-radius: 999px;
-    --gd-pill-text-size: clamp(0.82rem, 0.78rem + 0.12vw, 0.94rem);
+    --gd-pill-h: clamp(2.32rem, 2.55vw, 2.72rem);
+    --gd-pill-pad-y: clamp(0.24rem, 0.32vw, 0.34rem);
+    --gd-pill-pad-x: clamp(0.78rem, 0.82vw, 0.88rem);
+    --gd-pill-radius: var(--group-radius-md);
+    --gd-pill-text-size: clamp(0.8rem, 0.74rem + 0.1vw, 0.9rem);
 
     --gd-left-col-max: 16.5rem;
     --gd-right-col-max: 29rem;
@@ -67,10 +61,7 @@
     min-inline-size: 0;
 }
 
-.block:first-child {
-    justify-items: center;
-}
-
+.block:first-child,
 .block:last-child {
     justify-items: center;
 }
@@ -78,7 +69,7 @@
 .blockTitle {
     margin: 0;
 
-    color: var(--group-platinum-100, #f7f4ec);
+    color: var(--group-text-primary);
 
     font-size: var(--gd-title-size);
     font-weight: 820;
@@ -87,9 +78,7 @@
     text-align: center;
     text-wrap: balance;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.35),
-        0 0 1.2rem rgb(216 189 120 / 0.11);
+    text-shadow: 0 1px 0 rgb(0 0 0 / 0.35);
 }
 
 .leftGrid {
@@ -135,6 +124,11 @@
     min-inline-size: 0;
 }
 
+/* =========================================================
+   Directory Pill
+   Fundo base: var(--group-card-background) / #2e4d3b
+   ========================================================= */
+
 .pill {
     position: relative;
 
@@ -148,91 +142,72 @@
 
     padding: var(--gd-pill-pad-y) var(--gd-pill-pad-x);
 
-    border: 1px solid var(--gd-accent-muted);
+    border: 1px solid var(--group-border-default);
     border-radius: var(--gd-pill-radius);
     box-sizing: border-box;
 
-    color: var(--group-platinum-100, #f7f4ec);
-    background:
-        radial-gradient(110% 150% at 50% 0%,
-            rgb(240 221 166 / 0.105) 0%,
-            transparent 58%),
-        linear-gradient(180deg,
-            rgb(30 27 21 / 0.96) 0%,
-            rgb(13 13 12 / 0.98) 54%,
-            rgb(6 6 6 / 0.99) 100%);
-
-    box-shadow:
-        inset 0 1px 0 rgb(247 244 236 / 0.06),
-        inset 0 -1px 0 rgb(0 0 0 / 0.34),
-        0 0 0 1px rgb(240 221 166 / 0.04),
-        0 10px 22px rgb(0 0 0 / 0.22),
-        0 0 1.1rem rgb(216 189 120 / 0.055);
+    color: var(--group-text-secondary);
+    background: var(--group-card-background);
 
     font-size: var(--gd-pill-text-size);
-    font-weight: 730;
+    font-weight: 680;
     line-height: 1.1;
     letter-spacing: -0.006em;
     text-align: center;
     text-decoration: none;
 
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.045),
+        inset 0 -1px 0 rgb(0 0 0 / 0.24),
+        0 6px 14px rgb(0 0 0 / 0.17);
+
     transition:
         transform 160ms ease,
-        background 160ms ease,
+        background-color 160ms ease,
         box-shadow 160ms ease,
         border-color 160ms ease,
         color 160ms ease,
         filter 160ms ease;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .pill:hover {
         transform: translateY(-2px);
 
-        color: #fff2bf;
-        border-color: rgb(240 221 166 / 0.68);
-
-        background:
-            radial-gradient(110% 150% at 50% 0%,
-                rgb(255 242 191 / 0.22) 0%,
-                rgb(216 189 120 / 0.12) 36%,
-                transparent 66%),
-            linear-gradient(180deg,
-                rgb(64 49 25 / 0.98) 0%,
-                rgb(34 27 17 / 0.99) 48%,
-                rgb(10 10 9 / 0.99) 100%);
+        color: var(--group-text-primary);
+        border-color: var(--group-accent-primary);
+        background: var(--group-card-background-hover,
+                var(--group-card-background));
 
         box-shadow:
-            inset 0 1px 0 rgb(247 244 236 / 0.12),
-            inset 0 -1px 0 rgb(216 189 120 / 0.16),
-            0 14px 30px rgb(0 0 0 / 0.3),
-            0 0 0 1px rgb(255 242 191 / 0.12),
-            0 0 1.55rem rgb(240 221 166 / 0.16);
-
-        filter: saturate(1.04) brightness(1.03);
+            inset 0 1px 0 rgb(255 255 255 / 0.07),
+            inset 0 -1px 0 rgb(0 0 0 / 0.26),
+            0 10px 22px rgb(0 0 0 / 0.24);
     }
+}
+
+.pill:active {
+    transform: translateY(0);
+
+    color: var(--group-text-primary);
+    border-color: var(--group-border-default);
+    background: var(--group-card-background);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.035),
+        inset 0 -1px 0 rgb(0 0 0 / 0.3),
+        0 3px 8px rgb(0 0 0 / 0.2);
 }
 
 .pill:focus-visible {
     outline: none;
 
-    color: #fff2bf;
-    border-color: rgb(255 242 191 / 0.78);
+    color: var(--group-text-primary);
+    border-color: var(--group-focus-outline);
+    background: var(--group-card-background-hover,
+            var(--group-card-background));
 
-    background:
-        radial-gradient(110% 150% at 50% 0%,
-            rgb(255 242 191 / 0.18) 0%,
-            rgb(216 189 120 / 0.095) 34%,
-            transparent 66%),
-        linear-gradient(180deg,
-            rgb(38 32 22 / 0.98) 0%,
-            rgb(16 16 15 / 0.99) 100%);
-
-    box-shadow:
-        0 0 0 3px rgb(240 221 166 / 0.22),
-        0 0 0 6px rgb(255 242 191 / 0.08),
-        0 14px 30px rgb(0 0 0 / 0.32),
-        inset 0 1px 0 rgb(247 244 236 / 0.12);
+    box-shadow: var(--group-focus-shadow);
 }
 
 .pillContent {
@@ -249,6 +224,8 @@
 }
 
 .pillLabel {
+    min-inline-size: 0;
+
     font-size: var(--gd-pill-text-size);
     line-height: 1.12;
     text-wrap: balance;
@@ -261,11 +238,14 @@
     block-size: 16px;
     overflow: hidden;
 
+    border: 1px solid rgb(255 255 255 / 0.08);
     border-radius: 2px;
 
+    background: rgb(0 0 0 / 0.12);
+
     box-shadow:
-        0 0 0 1px rgb(0 0 0 / 0.32) inset,
-        0 0.35rem 0.7rem rgb(0 0 0 / 0.22);
+        0 0 0 1px rgb(0 0 0 / 0.24) inset,
+        0 0.3rem 0.65rem rgb(0 0 0 / 0.2);
 }
 
 .flagBox>svg,
@@ -275,34 +255,41 @@
     inline-size: 100%;
     block-size: 100%;
 
+    object-fit: cover;
     shape-rendering: crispEdges;
 }
 
 .disabled {
-    opacity: 0.52;
+    opacity: 0.48;
     pointer-events: none;
-    filter: saturate(0.62);
+
+    color: var(--group-text-secondary);
+    border-color: var(--group-border-subtle);
+    background: var(--group-card-background);
+
+    filter: saturate(0.55) brightness(0.9);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.025),
+        inset 0 -1px 0 rgb(0 0 0 / 0.2),
+        0 3px 8px rgb(0 0 0 / 0.12);
 }
 
-.pill--malta .pillContent {
-    transform: translateX(2px);
-}
+/* =========================================================
+   Ajustes óticos por país
+   ========================================================= */
 
 .pill--qatar .pillContent {
-    transform: translateX(1px);
+    transform: translateX(-2px);
 }
 
 .pill--kuwait .pillContent {
-    transform: translateX(6px);
+    transform: translateX(1px);
 }
 
-.pill--lebanon .pillContent {
-    transform: translateX(13px);
-}
-
-.pill--iraq .pillContent {
-    transform: translateX(-5px);
-}
+/* =========================================================
+   Responsividade
+   ========================================================= */
 
 @media (max-width: 1099px) {
     .directory {
@@ -376,11 +363,16 @@
 
     .pill {
         box-shadow:
-            inset 0 1px 0 rgb(247 244 236 / 0.055),
-            inset 0 -1px 0 rgb(0 0 0 / 0.32),
-            0 0 0 1px rgb(240 221 166 / 0.035),
-            0 8px 18px rgb(0 0 0 / 0.18),
-            0 0 0.9rem rgb(216 189 120 / 0.045);
+            inset 0 1px 0 rgb(255 255 255 / 0.04),
+            inset 0 -1px 0 rgb(0 0 0 / 0.23),
+            0 5px 12px rgb(0 0 0 / 0.16);
+    }
+
+    .pill:active {
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.03),
+            inset 0 -1px 0 rgb(0 0 0 / 0.28),
+            0 2px 6px rgb(0 0 0 / 0.18);
     }
 }
 
@@ -397,14 +389,24 @@
     .pillContent {
         gap: 0.34rem;
     }
+
+    .flagBox {
+        inline-size: 22px;
+        block-size: 15px;
+    }
 }
+
+/* =========================================================
+   Acessibilidade
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
     .pill {
         transition: none;
     }
 
-    .pill:hover {
+    .pill:hover,
+    .pill:active {
         transform: none;
     }
 }

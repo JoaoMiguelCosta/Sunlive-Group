@@ -474,22 +474,22 @@
 }
 
 /* =========================================================
-   Group — Executive Eclipse Gold
+   Group — Deep Forest
    ========================================================= */
 
 :global([data-brand="group"]) .strip {
-    --info-accent: var(--group-gold-400, #d8bd78);
-    --info-accent-bright: var(--group-gold-300, #f0dda6);
-    --info-border: rgb(216 189 120 / 0.26);
-    --info-border-strong: rgb(240 221 166 / 0.42);
-    --info-text-main: var(--group-platinum-100, #f7f4ec);
-    --info-text-soft: rgb(247 244 236 / 0.82);
-    --info-text-muted: rgb(233 228 216 / 0.62);
+    --info-accent: var(--group-accent-fresh);
+    --info-accent-bright: var(--group-accent-primary);
+    --info-border: var(--group-border-subtle);
+    --info-border-strong: var(--group-border-default);
+    --info-text-main: var(--group-text-primary);
+    --info-text-soft: var(--group-text-secondary);
+    --info-text-muted: var(--group-text-muted);
 
     isolation: isolate;
     overflow: hidden;
 
-    padding-block: clamp(1.05rem, 1.35vw, 1.35rem);
+    padding-block: clamp(0.9rem, 1.15vw, 1.15rem);
 
     border-top: 1px solid var(--info-border-strong);
     border-bottom: 1px solid var(--info-border);
@@ -512,40 +512,31 @@
 
     color: var(--info-text-main);
     font-size: clamp(0.96rem, 0.24vw + 0.92rem, 1.08rem);
-    font-weight: 850;
+    font-weight: var(--group-font-weight-heavy);
     letter-spacing: -0.01em;
 
     text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.48),
-        0 0 1.1rem rgb(216 189 120 / 0.1);
+        0 1px 0 rgb(0 0 0 / 0.48);
 }
 
 :global([data-brand="group"]) .icon {
     inline-size: 25px;
     block-size: 25px;
 
-    border: 1px solid rgb(240 221 166 / 0.34);
+    border: 1px solid var(--info-border-strong);
 
-    color: var(--info-accent-bright);
+    color: var(--info-accent);
 
-    background:
-        radial-gradient(circle at 30% 28%,
-            rgb(255 242 191 / 0.22) 0%,
-            transparent 54%),
-        linear-gradient(180deg,
-            rgb(64 49 25 / 0.64) 0%,
-            rgb(10 10 9 / 0.82) 100%);
+    background: var(--group-card-background);
 
     box-shadow:
-        inset 0 1px 0 rgb(247 244 236 / 0.08),
-        inset 0 -1px 0 rgb(216 189 120 / 0.08),
-        0 0.5rem 1.05rem rgb(0 0 0 / 0.22),
-        0 0 0.9rem rgb(216 189 120 / 0.08);
+        inset 0 1px 0 rgb(218 221 192 / 0.06),
+        0 0.5rem 1.05rem rgb(0 0 0 / 0.22);
 }
 
 :global([data-brand="group"]) .brandEmph {
     color: var(--info-accent-bright);
-    font-weight: 850;
+    font-weight: var(--group-font-weight-heavy);
 }
 
 :global([data-brand="group"]) .tagline {
@@ -557,8 +548,7 @@
     line-height: 1.26;
 
     text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.48),
-        0 0 1rem rgb(240 221 166 / 0.1);
+        0 1px 0 rgb(0 0 0 / 0.48);
 }
 
 :global([data-brand="group"]) .about {
@@ -597,7 +587,7 @@
 :global([data-brand="group"]) .subtleLink:focus-visible {
     color: var(--info-accent-bright);
     text-decoration: underline;
-    text-decoration-color: rgb(240 221 166 / 0.48);
+    text-decoration-color: rgb(218 221 192 / 0.48);
     text-underline-offset: 0.18em;
 }
 
@@ -621,7 +611,7 @@
 :global([data-brand="group"]) .link:focus-visible {
     color: var(--info-text-main);
     text-decoration: underline;
-    text-decoration-color: rgb(240 221 166 / 0.5);
+    text-decoration-color: rgb(218 221 192 / 0.5);
     text-underline-offset: 0.16em;
 }
 
@@ -640,47 +630,31 @@
     inline-size: 35px;
     block-size: 35px;
 
-    border: 1px solid rgb(240 221 166 / 0.34);
+    border: 1px solid var(--info-border-strong);
 
-    color: var(--info-text-main);
+    color: var(--info-accent);
 
-    background:
-        radial-gradient(circle at 30% 28%,
-            rgb(255 242 191 / 0.18) 0%,
-            transparent 56%),
-        linear-gradient(180deg,
-            rgb(54 42 20 / 0.62) 0%,
-            rgb(8 8 8 / 0.9) 100%);
+    background: var(--group-card-background);
 
     box-shadow:
-        inset 0 1px 0 rgb(247 244 236 / 0.07),
-        inset 0 -1px 0 rgb(216 189 120 / 0.08),
-        0 0.5rem 1rem rgb(0 0 0 / 0.2),
-        0 0 0.8rem rgb(216 189 120 / 0.065);
+        inset 0 1px 0 rgb(218 221 192 / 0.06),
+        0 0.5rem 1rem rgb(0 0 0 / 0.2);
 }
 
 :global([data-brand="group"]) .socialBtn:hover,
 :global([data-brand="group"]) .socialBtn:focus-visible {
     transform: translateY(-1px);
 
-    border-color: rgb(255 242 191 / 0.58);
-    color: #fff2bf;
+    border-color: var(--group-border-strong);
+    color: var(--info-accent-bright);
 
-    background:
-        radial-gradient(circle at 30% 28%,
-            rgb(255 242 191 / 0.26) 0%,
-            transparent 58%),
-        linear-gradient(180deg,
-            rgb(72 54 25 / 0.78) 0%,
-            rgb(10 10 9 / 0.94) 100%);
+    background: var(--group-card-background-hover);
 
     filter: saturate(1.04) contrast(1.015);
 
     box-shadow:
-        inset 0 1px 0 rgb(247 244 236 / 0.09),
-        inset 0 -1px 0 rgb(216 189 120 / 0.1),
-        0 0.7rem 1.35rem rgb(0 0 0 / 0.24),
-        0 0 1rem rgb(240 221 166 / 0.1);
+        inset 0 1px 0 rgb(218 221 192 / 0.08),
+        0 0.7rem 1.35rem rgb(0 0 0 / 0.24);
 }
 
 /* =========================================================
@@ -933,9 +907,7 @@
 
 :global([data-brand="group"]) .subtleLink:focus-visible,
 :global([data-brand="group"]) .link:focus-visible {
-    box-shadow:
-        0 0 0 2px rgb(3 3 3 / 0.96),
-        0 0 0 4px rgb(240 221 166 / 0.58);
+    box-shadow: var(--group-focus-shadow);
 }
 
 :global([data-brand="hotel"]) .subtleLink:focus-visible,
