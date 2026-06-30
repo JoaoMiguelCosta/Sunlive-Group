@@ -924,6 +924,14 @@
     .utilityBar[data-variant="group-header"] .right {
         display: none;
     }
+
+    .utilityBar[data-variant="group-header"] .inner {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .utilityBar[data-variant="group-header"] .center {
+        inline-size: 100%;
+    }
 }
 
 /* =======================================================
@@ -2396,8 +2404,7 @@
     :is(.utilityBar[data-variant="logos-header"],
         .utilityBar[data-variant="travel-header"],
         .utilityBar[data-variant="sports-header"],
-        .utilityBar[data-variant="hotel-header"],
-        .utilityBar[data-variant="group-header"]) .right {
+        .utilityBar[data-variant="hotel-header"]) .right {
         display: flex;
         align-items: center;
         justify-content: center;
