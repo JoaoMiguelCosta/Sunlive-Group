@@ -12,64 +12,58 @@
 @import "./tokens.css";
 
 [data-brand="group"] {
-    color-scheme: dark;
-    color: var(--group-text-primary);
-    background: var(--group-background);
+   color-scheme: dark;
+   color: var(--group-text-primary);
 
-    /* -------------------------------------------------
+   /* -------------------------------------------------
        Bridge tokens — consumidos pelos componentes
        partilhados (Footer, UtilityBar, shared UI).
-       Permitem que esses componentes funcionem
-       sem depender da paleta Group diretamente.
        ------------------------------------------------- */
 
-    --sl-platinum-100: var(--group-text-primary);
-    --sl-platinum-300: var(--group-text-secondary);
-    --sl-gold-500:     var(--group-accent-primary);
-    --sl-gold-400:     var(--group-accent-primary);
+   --sl-platinum-100: var(--group-text-primary);
+   --sl-platinum-300: var(--group-text-secondary);
+   --sl-gold-500: var(--group-accent-primary);
+   --sl-gold-400: var(--group-accent-primary);
 
-    --sl-body-bg:    var(--group-background);
-    --sl-color-text: var(--group-text-primary);
+   /* Fundo global da página */
+   --sl-body-bg: var(--group-background);
 
-    --accent:   var(--group-accent-primary);
-    --accent-2: var(--group-accent-fresh);
+   --sl-color-text: var(--group-text-primary);
 
-    --text-1: var(--group-text-primary);
-    --text-2: var(--group-text-secondary);
+   --accent: var(--group-accent-primary);
+   --accent-2: var(--group-accent-fresh);
 
-    --font-sans: var(--group-font-ui);
+   --text-1: var(--group-text-primary);
+   --text-2: var(--group-text-secondary);
 
-    --sl-focus:
-        0 0 0 2px var(--group-background),
-        0 0 0 4px var(--group-focus-outline);
+   --font-sans: var(--group-font-ui);
 
-    /* -------------------------------------------------
-       Footer tokens — consumidos pelo GroupFooter
-       e pelos seletores [data-brand="group"] do Footer
-       partilhado.
+   --sl-focus:
+      0 0 0 2px var(--group-background),
+      0 0 0 4px var(--group-focus-outline);
+
+   /* -------------------------------------------------
+       Footer tokens
        ------------------------------------------------- */
 
-    --footer-accent: var(--group-accent-primary);
-    --footer-base:   var(--group-surface-footer);
+   --footer-accent: var(--group-accent-primary);
+   --footer-base: var(--group-surface-footer);
 
-    /* -------------------------------------------------
-       Tokens de compatibilidade — anteriormente em :root.
-       Nenhum consumidor externo confirmado; mantidos
-       por precaução para não quebrar nada nesta fase.
-       Candidatos a remoção numa fase de limpeza futura.
+   /* -------------------------------------------------
+       Tokens de compatibilidade
        ------------------------------------------------- */
 
-    --sl-radius-sm:   var(--group-radius-sm);
-    --sl-container-sm: 78rem;
-    --sl-container-lg: 90rem;
-    --sl-baseline:     1.25rem;
+   --sl-radius-sm: var(--group-radius-sm);
+   --sl-container-sm: 78rem;
+   --sl-container-lg: 90rem;
+   --sl-baseline: 1.25rem;
 }
 
 /* =========================================================
-   Seleção de texto — identidade visual Group
+   Seleção de texto
    ========================================================= */
 
 [data-brand="group"] ::selection {
-    color:      var(--group-text-dark);
-    background: var(--group-accent-primary);
+   color: var(--group-text-dark);
+   background: var(--group-accent-primary);
 }
