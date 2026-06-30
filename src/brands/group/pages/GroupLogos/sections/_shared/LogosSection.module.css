@@ -1,23 +1,37 @@
-/* LogosSection — Sunlive Group / Deep Forest */
+/* ============================================================
+   LogosSection — Sunlive Group / Light Forest
+
+   Estrutura visual das secções da página de logótipos.
+   ============================================================ */
 
 .section {
+    --logos-rule-thickness: 1px;
+
+    --logos-line-inset:
+        clamp(0.85rem, 4vw, 4.5rem);
+
+    --logos-section-pad-top: 0;
+    --logos-section-pad-bottom: 0;
+
     position: relative;
     isolation: isolate;
 
+    display: grid;
+
     inline-size: 100%;
     min-inline-size: 0;
+
     overflow: visible;
 
-    display: grid;
-   
-
     box-sizing: border-box;
-   
-    color: var(--group-text-primary);
-    background: transparent;
 
-    --logos-rule-thickness: 2px;
-    --logos-line-inset: clamp(0.85rem, 4vw, 4.5rem);
+    padding-block:
+        var(--logos-section-pad-top) var(--logos-section-pad-bottom);
+
+    color:
+        var(--group-text-primary);
+
+    background: transparent;
 }
 
 .section>* {
@@ -30,52 +44,68 @@
     box-sizing: border-box;
 }
 
+
+/* ============================================================
+   Density variants
+   ============================================================ */
+
 .compact {
-    --logos-section-pad-top: clamp(0.9rem, 2vw, 1.35rem);
-    --logos-section-pad-bottom: clamp(1.1rem, 2.4vw, 1.6rem);
+    --logos-section-pad-top:
+        clamp(0.9rem, 2vw, 1.35rem);
+
+    --logos-section-pad-bottom:
+        clamp(1.1rem, 2.4vw, 1.6rem);
 }
 
 .cozy {
-    --logos-section-pad-top: clamp(1.35rem, 3vw, 2rem);
-    --logos-section-pad-bottom: clamp(1.55rem, 3.4vw, 2.35rem);
+    --logos-section-pad-top:
+        clamp(1.35rem, 3vw, 2rem);
+
+    --logos-section-pad-bottom:
+        clamp(1.55rem, 3.4vw, 2.35rem);
 }
 
 .spacious {
-    --logos-section-pad-top: clamp(1.75rem, 4vw, 2.9rem);
-    --logos-section-pad-bottom: clamp(2.1rem, 4.6vw, 3.35rem);
+    --logos-section-pad-top:
+        clamp(1.75rem, 4vw, 2.9rem);
+
+    --logos-section-pad-bottom:
+        clamp(2.1rem, 4.6vw, 3.35rem);
 }
 
-.flushBottom {
-    --logos-section-pad-bottom: 0;
-}
-
-.pairNextTight {
-    margin-block-end: calc(-1 * var(--logos-rule-thickness));
-}
-
+.flushBottom,
 .tightBottom {
     --logos-section-pad-bottom: 0;
 }
 
-/* =========================================================
+.pairNextTight {
+    margin-block-end:
+        calc(-1 * var(--logos-rule-thickness));
+}
+
+
+/* ============================================================
    Responsive
-   ========================================================= */
+   ============================================================ */
 
 @media (min-width: 1440px) {
     .section {
-        --logos-line-inset: clamp(2rem, 5vw, 5.5rem);
+        --logos-line-inset:
+            clamp(2rem, 5vw, 5.5rem);
     }
 }
 
 @media (max-width: 1023.98px) {
     .section {
-        --logos-line-inset: clamp(0.75rem, 4vw, 2.25rem);
+        --logos-line-inset:
+            clamp(0.75rem, 4vw, 2.25rem);
     }
 }
 
 @media (max-width: 767.98px) {
     .section {
-        --logos-line-inset: clamp(0.75rem, 5vw, 1.5rem);
+        --logos-line-inset:
+            clamp(0.75rem, 5vw, 1.5rem);
     }
 }
 
@@ -91,13 +121,14 @@
     }
 }
 
-/* =========================================================
+
+/* ============================================================
    Print
-   ========================================================= */
+   ============================================================ */
 
 @media print {
     .section {
-        background: #fff !important;
         color: #111;
+        background: #fff !important;
     }
 }
