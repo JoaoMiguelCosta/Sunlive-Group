@@ -1,16 +1,16 @@
 import styles from "./TeamCollage.module.css";
 
 import homePage from "../../../../config/pages/home.js";
-const people = homePage.sections.people;
 import { IMG_COMMON } from "../../../../../../shared/config/index.js";
+
+const people = homePage.sections.people;
 
 export default function TeamCollage() {
   const collage = people?.collage;
 
   const src = collage?.src ?? null;
   const mobileSrc = collage?.mobileSrc ?? null;
-  const alt = collage?.alt ?? "Team collage";
-  const caption = collage?.caption ?? null;
+  const alt = collage?.alt ?? "Equipa Sunlive Group";
 
   if (!src) return null;
 
@@ -31,10 +31,6 @@ export default function TeamCollage() {
           draggable="false"
         />
       </picture>
-
-      {caption ? (
-        <figcaption className={styles.caption}>{caption}</figcaption>
-      ) : null}
     </figure>
   );
 }

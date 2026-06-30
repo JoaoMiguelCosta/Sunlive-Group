@@ -3,20 +3,15 @@ import { GROUP_BOOKS } from "../../core/books.js";
 
 const groupBook = GROUP_BOOKS.company;
 
-const bookSectionConfig = makeBook({
-  id: groupBook.id,
-  label: "Open Book Sunlive Group",
+const book = makeBook({
+  id: "book",
+  label: "Abrir livro Sunlive Group",
   href: groupBook.href,
-  filename: "Sunlive-Group-Book.pdf",
-  ariaLabel: "Download Sunlive Group Book (PDF)",
+  filename: groupBook.filename,
+  ariaLabel: "Descarregar o livro da Sunlive Group em formato PDF",
   meta: {
     filetype: groupBook.type,
   },
 });
-
-export const book = {
-  ...bookSectionConfig,
-  id: "book",
-};
 
 export default book;

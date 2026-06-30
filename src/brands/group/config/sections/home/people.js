@@ -12,10 +12,7 @@ export const people = {
   collage: {
     src: teamCollage,
     alt: "Equipa Sunlive — juntos fazemos acontecer.",
-    caption: "Together we are stronger",
   },
 };
 
 export default people;
-
-
