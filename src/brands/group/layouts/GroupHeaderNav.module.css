@@ -60,7 +60,6 @@
 }
 
 .brandBtn:hover {
-    color: var(--group-accent-primary-hover);
     background-color: var(--group-control-bg-hover);
 }
 
@@ -132,7 +131,6 @@ color: var(--group-accent-fresh);
 }
 
 .brandItem:hover {
-    color: var(--group-accent-primary-hover);
     background-color: var(--group-control-bg-hover);
 }
 
@@ -152,8 +150,6 @@ color: var(--group-accent-fresh);
 }
 
 .brandItemActive:hover {
-    color: var(--group-accent-primary-hover);
-
     background-color:
         var(--group-control-bg-active);
 }
@@ -193,7 +189,6 @@ color: var(--group-accent-fresh);
 }
 
 .anchorLink:hover {
-    color: var(--group-accent-primary-hover);
     background-color: var(--group-control-bg-hover);
 }
 
@@ -233,7 +228,6 @@ color: var(--group-accent-fresh);
 }
 
 .hamburger:hover {
-    color: var(--group-accent-primary-hover);
     background-color: var(--group-control-bg-hover);
 }
 
@@ -364,7 +358,6 @@ color: var(--group-accent-fresh);
 }
 
 .closeBtn:hover {
-    color: var(--group-accent-primary-hover);
     background-color: var(--group-control-bg-hover);
 }
 
@@ -434,7 +427,6 @@ color: var(--group-accent-fresh);
 }
 
 .panelLink:hover {
-    color: var(--group-accent-primary-hover);
     background-color: var(--group-control-bg-hover);
 }
 
@@ -454,8 +446,6 @@ color: var(--group-accent-fresh);
 }
 
 .panelLinkActive:hover {
-    color: var(--group-accent-primary-hover);
-
     background-color:
         var(--group-control-bg-active);
 }
@@ -526,7 +516,6 @@ color: var(--group-accent-fresh);
 }
 
 .panelSocialBtn:hover {
-    color: var(--group-accent-primary-hover);
     background-color: var(--group-control-bg-hover);
 }
 
@@ -574,7 +563,6 @@ color: var(--group-accent-fresh);
 }
 
 .panelLangBtn:hover {
-    color: var(--group-accent-primary-hover);
     background-color: var(--group-control-bg-hover);
 }
 
@@ -647,7 +635,6 @@ color: var(--group-accent-fresh);
 }
 
 .panelLangItem:hover {
-    color: var(--group-accent-primary-hover);
     background-color: var(--group-control-bg-hover);
 }
 

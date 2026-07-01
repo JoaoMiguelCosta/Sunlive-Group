@@ -230,8 +230,6 @@
     .pill:hover {
         transform: translateY(-1px);
 
-        color: var(--group-text-primary);
-
         border-color:
             var(--group-accent-primary);
 
