@@ -16,7 +16,6 @@ export const overview = {
   id: "overview",
 
   brandHero: {
-    renderAs: "image",
     imageSrc: logoGroup,
     alt: "Sunlive Group",
   },

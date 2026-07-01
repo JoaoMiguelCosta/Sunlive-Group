@@ -4,7 +4,6 @@ export const partners = {
   id: "partners",
   headline: {
     title: PARTNERS_TITLE,
-    subtitle: null,
   },
   categories: PARTNER_LINKS,
 };

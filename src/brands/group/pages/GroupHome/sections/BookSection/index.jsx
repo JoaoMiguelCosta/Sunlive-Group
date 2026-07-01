@@ -8,13 +8,7 @@ import {
 const bookSection = homePage.sections.book;
 
 function resolveCta(bookConfig) {
-  if (!isValidObject(bookConfig)) return null;
-
-  if (isValidObject(bookConfig.cta)) {
-    return bookConfig.cta;
-  }
-
-  return bookConfig;
+  return isValidObject(bookConfig) ? bookConfig : null;
 }
 
 export default function BookSection() {
