@@ -4,12 +4,12 @@ import styles from "./ContactsGrid.module.css";
 import disclosureStyles from "./ContactDisclosure.module.css";
 import OfficeCard from "./OfficeCard.jsx";
 
-import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
-import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 import { isValidText } from "../../../../shared/utils/contentGuards.js";
 
 import { GROUP_CONTACTS } from "../../../../config/core/contacts.js";
 import { GROUP_BASE_PATH } from "../../../../config/core/paths.js";
+
+import useContactsAccordionHash from "./useContactsAccordionHash.js";
 
 const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
@@ -48,64 +48,13 @@ function getTelHref(phone) {
   return isValidText(phone) ? phone.replace(/\s+/g, "") : "";
 }
 
-function getItemSlug(item) {
-  return item.slug;
-}
-
-function getAnchorId(item) {
-  return item.anchorId;
-}
-
-function getHashKey(item) {
-  const anchorId = getAnchorId(item);
-
-  if (anchorId.startsWith(BUSINESS_UNIT_ANCHOR_PREFIX)) {
-    return anchorId.slice(BUSINESS_UNIT_ANCHOR_PREFIX.length);
-  }
-
-  return getItemSlug(item);
-}
-
-function getItemByHashKey(items, hashKey) {
-  if (!isValidText(hashKey)) return null;
-
-  return (
-    items.find((item) => getHashKey(item) === hashKey) ||
-    items.find((item) => getItemSlug(item) === hashKey) ||
-    null
-  );
-}
-
 export default function BusinessUnits({ items = [] }) {
   const orderedItems = useMemo(() => getOrderedItems(items), [items]);
 
-  const hashItems = useMemo(
-    () =>
-      orderedItems.map((item) => ({
-        ...item,
-        key: getHashKey(item),
-      })),
-    [orderedItems],
-  );
-
-  const { isOpen, toggle } = useAccordion(orderedItems, {
-    allowMultiple: true,
-  });
-
-  useOpenFromHash({
+  const { isOpen, toggle } = useContactsAccordionHash({
+    items: orderedItems,
+    prefix: BUSINESS_UNIT_ANCHOR_PREFIX,
     routePath: GROUP_BASE_PATH,
-    regex: /^#unidade-(.+)$/,
-    items: hashItems,
-    isOpen: (hashKey) => {
-      const item = getItemByHashKey(orderedItems, hashKey);
-
-      return item ? isOpen(item.key) : false;
-    },
-    toggle: (hashKey) => {
-      const item = getItemByHashKey(orderedItems, hashKey);
-
-      if (item) toggle(item.key);
-    },
   });
 
   if (!orderedItems.length) return null;
@@ -114,7 +63,7 @@ export default function BusinessUnits({ items = [] }) {
     <div className={styles.grid} role="list" data-count={orderedItems.length}>
       {orderedItems.map((item) => {
         const open = isOpen(item.key);
-        const anchorId = getAnchorId(item);
+        const anchorId = item.anchorId;
         const panelId = `bu-${item.key}`;
         const telHref = getTelHref(item.phone);
 
