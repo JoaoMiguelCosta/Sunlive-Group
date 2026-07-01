@@ -25,15 +25,6 @@ const BUSINESS_UNIT_ORDER = [
   "business",
 ];
 
-const BUSINESS_UNIT_SLUGS_PT = {
-  travel: "viagens",
-  sports: "desporto",
-  hotel: "hotel",
-  commercial: "comercial",
-  international: "internacional",
-  business: "negocios",
-};
-
 function isValidItem(item) {
   return item && typeof item === "object" && isValidText(item.key);
 }
@@ -58,15 +49,11 @@ function getTelHref(phone) {
 }
 
 function getItemSlug(item) {
-  if (isValidText(item?.slug)) return item.slug;
-
-  return BUSINESS_UNIT_SLUGS_PT[item.key] ?? item.key;
+  return item.slug;
 }
 
 function getAnchorId(item) {
-  if (isValidText(item?.anchorId)) return item.anchorId;
-
-  return `${BUSINESS_UNIT_ANCHOR_PREFIX}${getItemSlug(item)}`;
+  return item.anchorId;
 }
 
 function getHashKey(item) {

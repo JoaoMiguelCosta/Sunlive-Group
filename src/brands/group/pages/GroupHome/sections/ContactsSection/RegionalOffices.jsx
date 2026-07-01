@@ -15,14 +15,6 @@ const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
 const REGIONAL_OFFICE_ANCHOR_PREFIX = "pais-";
 
-const REGIONAL_OFFICE_SLUGS_PT = {
-  malta: "malta",
-  qatar: "catar",
-  kuwait: "kuwait",
-  lebanon: "libano",
-  iraq: "iraque",
-};
-
 function isValidOffice(item) {
   return (
     item &&
@@ -37,15 +29,11 @@ function getValidOffices(items) {
 }
 
 function getOfficeSlug(item) {
-  if (isValidText(item?.slug)) return item.slug;
-
-  return REGIONAL_OFFICE_SLUGS_PT[item.key] ?? item.key;
+  return item.slug;
 }
 
 function getOfficeAnchorId(item) {
-  if (isValidText(item?.anchorId)) return item.anchorId;
-
-  return `${REGIONAL_OFFICE_ANCHOR_PREFIX}${getOfficeSlug(item)}`;
+  return item.anchorId;
 }
 
 function getOfficeHashKey(item) {
