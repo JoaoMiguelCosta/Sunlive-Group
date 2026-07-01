@@ -1,12 +1,8 @@
 import styles from "./LogoGridSection.module.css";
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
-
-function isValidObject(value) {
-  return value && typeof value === "object" && !Array.isArray(value);
-}
+import {
+  isValidText,
+  isValidObject,
+} from "../../../../../shared/utils/contentGuards.js";
 
 function getValidItems(items) {
   return Array.isArray(items)

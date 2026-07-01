@@ -1,8 +1,5 @@
 import styles from "./SectionLead.module.css";
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
+import { isValidText } from "../../../../shared/utils/contentGuards.js";
 
 export default function SectionLead({ id, title, subtitle }) {
   if (!isValidText(title)) return null;

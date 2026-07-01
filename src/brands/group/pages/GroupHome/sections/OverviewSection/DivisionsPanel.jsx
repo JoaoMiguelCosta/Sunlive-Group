@@ -1,14 +1,10 @@
 import styles from "./DivisionsPanel.module.css";
 import homePage from "../../../../config/pages/home.js";
+import {
+  isValidText,
+  isValidObject,
+} from "../../../../shared/utils/contentGuards.js";
 const overview = homePage.sections.overview;
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
-
-function isValidObject(value) {
-  return value && typeof value === "object" && !Array.isArray(value);
-}
 
 function getValidDivisions(items) {
   return Array.isArray(items)

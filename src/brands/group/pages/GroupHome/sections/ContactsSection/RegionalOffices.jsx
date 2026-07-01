@@ -6,6 +6,7 @@ import OfficeItem from "./OfficeItem.jsx";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
+import { isValidText } from "../../../../shared/utils/contentGuards.js";
 
 import { GROUP_CONTACTS } from "../../../../config/core/contacts.js";
 import { GROUP_BASE_PATH } from "../../../../config/core/paths.js";
@@ -21,10 +22,6 @@ const REGIONAL_OFFICE_SLUGS_PT = {
   lebanon: "libano",
   iraq: "iraque",
 };
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
 
 function isValidOffice(item) {
   return (

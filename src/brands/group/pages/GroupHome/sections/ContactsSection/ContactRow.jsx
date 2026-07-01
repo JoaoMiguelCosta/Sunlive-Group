@@ -1,8 +1,5 @@
 import styles from "./ContactRow.module.css";
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
+import { isValidText } from "../../../../shared/utils/contentGuards.js";
 
 export default function ContactRow({ href, label, value, mutedLabel, Icon }) {
   const hasValue = isValidText(value);

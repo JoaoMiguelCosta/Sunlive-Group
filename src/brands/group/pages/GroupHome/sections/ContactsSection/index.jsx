@@ -8,12 +8,9 @@ import GroupHub from "./GroupHub.jsx";
 import BusinessUnits from "./BusinessUnits.jsx";
 import RegionalOffices from "./RegionalOffices.jsx";
 import homePage from "../../../../config/pages/home.js";
+import { isValidObject } from "../../../../shared/utils/contentGuards.js";
 
 const contactsSection = homePage.sections.contacts;
-
-function isValidObject(value) {
-  return value && typeof value === "object" && !Array.isArray(value);
-}
 
 function hasItems(items) {
   return Array.isArray(items) && items.length > 0;
