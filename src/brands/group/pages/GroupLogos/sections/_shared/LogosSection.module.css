@@ -5,8 +5,6 @@
    ============================================================ */
 
 .section {
-    --logos-rule-thickness: 1px;
-
     --logos-line-inset:
         clamp(0.85rem, 4vw, 4.5rem);
 
@@ -42,45 +40,6 @@
     min-inline-size: 0;
 
     box-sizing: border-box;
-}
-
-
-/* ============================================================
-   Density variants
-   ============================================================ */
-
-.compact {
-    --logos-section-pad-top:
-        clamp(0.9rem, 2vw, 1.35rem);
-
-    --logos-section-pad-bottom:
-        clamp(1.1rem, 2.4vw, 1.6rem);
-}
-
-.cozy {
-    --logos-section-pad-top:
-        clamp(1.35rem, 3vw, 2rem);
-
-    --logos-section-pad-bottom:
-        clamp(1.55rem, 3.4vw, 2.35rem);
-}
-
-.spacious {
-    --logos-section-pad-top:
-        clamp(1.75rem, 4vw, 2.9rem);
-
-    --logos-section-pad-bottom:
-        clamp(2.1rem, 4.6vw, 3.35rem);
-}
-
-.flushBottom,
-.tightBottom {
-    --logos-section-pad-bottom: 0;
-}
-
-.pairNextTight {
-    margin-block-end:
-        calc(-1 * var(--logos-rule-thickness));
 }
 
 
