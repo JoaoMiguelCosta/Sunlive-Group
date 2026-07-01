@@ -1,24 +1,5 @@
 import styles from "./SectionDisclosureTrigger.module.css";
-
-function ChevronDown({ className }) {
-  return (
-    <svg
-      viewBox="0 0 10 6"
-      aria-hidden="true"
-      focusable="false"
-      className={className}
-    >
-      <path
-        d="M1 1l4 4 4-4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-  );
-}
+import ChevronDownIcon from "../../../../shared/components/ChevronDownIcon.jsx";
 
 export default function SectionDisclosureTrigger({
   id,
@@ -37,7 +18,7 @@ export default function SectionDisclosureTrigger({
         onClick={onToggle}
       >
         <span className={styles.label}>{label}</span>
-        <ChevronDown
+        <ChevronDownIcon
           className={`${styles.caret}${isOpen ? ` ${styles.caretOpen}` : ""}`}
         />
       </button>

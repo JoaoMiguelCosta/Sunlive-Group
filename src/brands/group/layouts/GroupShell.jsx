@@ -5,12 +5,7 @@ import styles from "./GroupPageLayout.module.css";
 import GroupUtilityBar from "./GroupUtilityBar.jsx";
 import LogosUtilityBar from "./LogosUtilityBar.jsx";
 import { GROUP_LOGOS_PATH } from "../config/core/paths.js";
-
-function normalizePathname(pathname) {
-  if (!pathname || pathname === "/") return "/";
-
-  return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
-}
+import { normalizePathname } from "../shared/utils/pathname.js";
 
 function isLogosRoute(pathname) {
   return (

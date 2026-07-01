@@ -1,11 +1,7 @@
 import UtilityBar from "../../../shared/components/UtilityBar/index.jsx";
 import overview from "../config/sections/home/overview.js";
 import GroupHeaderNav from "./GroupHeaderNav.jsx";
-
-const LANG_FALLBACK = {
-  current: "pt",
-  options: [{ label: "PT", name: "Português", code: "pt" }],
-};
+import { LANG_FALLBACK } from "../config/core/language.js";
 
 export default function GroupUtilityBar() {
   const socials = overview.socials ?? [];

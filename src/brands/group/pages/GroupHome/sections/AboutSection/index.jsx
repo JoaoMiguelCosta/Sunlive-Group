@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import { ABOUT_SECTION } from "./aboutSection.config.js";
 import styles from "./AboutSection.module.css";
+import ChevronDownIcon from "../../../../shared/components/ChevronDownIcon.jsx";
 
 function ArrowRight({ className }) {
   return (
@@ -13,26 +14,6 @@ function ArrowRight({ className }) {
     >
       <path
         d="M1 5h8M6 2l3 3-3 3"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-  );
-}
-
-function ChevronDown({ className }) {
-  return (
-    <svg
-      viewBox="0 0 10 6"
-      aria-hidden="true"
-      focusable="false"
-      className={className}
-    >
-      <path
-        d="M1 1l4 4 4-4"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
@@ -148,7 +129,7 @@ export default function AboutSection() {
                 >
                   <span className={styles.triggerLabel}>{item.label}</span>
 
-                  <ChevronDown
+                  <ChevronDownIcon
                     className={`${styles.caret}${
                       open ? ` ${styles.caretOpen}` : ""
                     }`}
