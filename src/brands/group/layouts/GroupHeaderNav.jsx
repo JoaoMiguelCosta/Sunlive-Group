@@ -10,6 +10,7 @@ import { GROUP_NAV_BRANDS, GROUP_NAV_ANCHORS } from "../config/core/nav.js";
 import { GROUP_BASE_PATH } from "../config/core/paths.js";
 import { LANG_FALLBACK } from "../config/core/language.js";
 import ChevronDownIcon from "../shared/components/ChevronDownIcon.jsx";
+import useGroupMobileNavigation from "./useGroupMobileNavigation.js";
 
 import styles from "./GroupHeaderNav.module.css";
 
@@ -51,8 +52,6 @@ function XIcon({ className }) {
 
 export default function GroupHeaderNav({ socials = [], lang }) {
   const dropdownRef = useRef(null);
-  const hamburgerRef = useRef(null);
-  const panelRef = useRef(null);
 
   const {
     isOpen: dropdownOpen,
@@ -61,10 +60,13 @@ export default function GroupHeaderNav({ socials = [], lang }) {
   } = useDisclosure();
 
   const {
-    isOpen: panelOpen,
-    toggle: togglePanel,
-    close: closePanel,
-  } = useDisclosure();
+    panelOpen,
+    togglePanel,
+    closePanel,
+    closePanelAndFocus,
+    hamburgerRef,
+    panelRef,
+  } = useGroupMobileNavigation();
 
   // Mobile language menu — separate instance and id from desktop
   const {
@@ -90,69 +92,16 @@ export default function GroupHeaderNav({ socials = [], lang }) {
     if (!panelOpen) closeMobileLang();
   }, [panelOpen, closeMobileLang]);
 
-  // Escape — closes dropdown or mobile panel
+  // Escape — closes the brand dropdown
   useEffect(() => {
-    if (!dropdownOpen && !panelOpen) return;
+    if (!dropdownOpen) return;
     const onKey = (e) => {
       if (e.key !== "Escape") return;
-      if (dropdownOpen) closeDropdown();
-      if (panelOpen) {
-        closePanel();
-        hamburgerRef.current?.focus();
-      }
+      closeDropdown();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [dropdownOpen, panelOpen, closeDropdown, closePanel]);
-
-  // Scroll lock while panel is open
-  useEffect(() => {
-    if (!panelOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [panelOpen]);
-
-  // Move focus to first item when panel opens
-  useEffect(() => {
-    if (!panelOpen) return;
-    const first = panelRef.current?.querySelector(
-      "a[href], button:not([disabled])"
-    );
-    first?.focus();
-  }, [panelOpen]);
-
-  // Focus trap inside panel
-  useEffect(() => {
-    if (!panelOpen) return;
-    const onTab = (e) => {
-      if (e.key !== "Tab") return;
-      const panel = panelRef.current;
-      if (!panel) return;
-      const nodes = Array.from(
-        panel.querySelectorAll("a[href], button:not([disabled])")
-      );
-      if (nodes.length === 0) return;
-      const first = nodes[0];
-      const last = nodes[nodes.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    };
-    document.addEventListener("keydown", onTab);
-    return () => document.removeEventListener("keydown", onTab);
-  }, [panelOpen]);
-
-  function closePanelAndFocus() {
-    closePanel();
-    hamburgerRef.current?.focus();
-  }
+  }, [dropdownOpen, closeDropdown]);
 
   const hasMobileSocials = Array.isArray(socials) && socials.length > 0;
   const hasMobileLang = mobileLangOptions.length > 0;
