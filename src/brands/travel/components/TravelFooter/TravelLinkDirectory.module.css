@@ -217,6 +217,8 @@
     inline-size: var(--flag-w);
     block-size: var(--flag-h);
     flex: 0 0 auto;
+    align-self: center;
+    line-height: 1;
 
     border: 1px solid var(--sl-footer-border-strong);
     border-radius: 0.2rem;
@@ -226,7 +228,7 @@
 .flagSvg {
     display: block;
 
-    inline-size: auto;
+    inline-size: 100%;
     block-size: 100%;
 
     flex-shrink: 0;

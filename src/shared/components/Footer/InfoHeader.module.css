@@ -251,7 +251,7 @@
 }
 
 :global([data-brand="travel"]) .title {
-    color: var(--info-text-main);
+    color: var(--info-accent-bright);
     font-weight: 840;
     letter-spacing: -0.006em;
 
@@ -281,7 +281,10 @@
     color: var(--info-text-soft);
 }
 
-:global([data-brand="travel"]) .subtleLink,
+:global([data-brand="travel"]) .subtleLink {
+    color: var(--info-accent-bright);
+}
+
 :global([data-brand="travel"]) .textMuted {
     color: var(--info-text-muted);
     opacity: 1;
@@ -354,6 +357,7 @@
 
 :global([data-brand="sports"]) .strip {
     --info-accent: var(--sl-footer-accent);
+    --info-accent-bright: var(--sl-footer-accent-strong);
     --info-border: rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.22);
     --info-border-strong: rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.34);
     --info-text-main: var(--sl-footer-text);
@@ -376,7 +380,7 @@
 }
 
 :global([data-brand="sports"]) .title {
-    color: var(--info-text-main);
+    color: var(--info-accent-bright);
     font-weight: 840;
     letter-spacing: -0.006em;
 
@@ -398,7 +402,7 @@
 
 :global([data-brand="sports"]) .brandEmph,
 :global([data-brand="sports"]) .tagline {
-    color: var(--info-accent);
+    color: var(--info-accent-bright);
 }
 
 :global([data-brand="sports"]) .about p,
@@ -406,7 +410,10 @@
     color: var(--info-text-soft);
 }
 
-:global([data-brand="sports"]) .subtleLink,
+:global([data-brand="sports"]) .subtleLink {
+    color: var(--info-accent-bright);
+}
+
 :global([data-brand="sports"]) .textMuted {
     color: var(--info-text-muted);
     opacity: 1;
@@ -414,7 +421,7 @@
 
 :global([data-brand="sports"]) .subtleLink:hover,
 :global([data-brand="sports"]) .link:hover {
-    color: var(--info-accent);
+    color: var(--info-accent-bright);
 }
 
 :global([data-brand="sports"]) .link {
@@ -423,7 +430,7 @@
 }
 
 :global([data-brand="sports"]) .cIcon {
-    color: var(--info-accent);
+    color: var(--info-accent-bright);
 }
 
 :global([data-brand="sports"]) .socialBtn {
@@ -748,6 +755,7 @@
 
 :global([data-brand="hotel"]) .strip {
     --info-accent: var(--sl-footer-accent);
+    --info-accent-bright: var(--sl-footer-accent-strong);
     --info-border: rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.18);
     --info-border-strong: rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.3);
     --info-text-main: var(--sl-footer-text);
@@ -778,7 +786,7 @@
 
     margin-bottom: 0.46rem;
 
-    color: var(--info-text-main);
+    color: var(--info-accent-bright);
     font-size: clamp(0.92rem, 0.2vw + 0.88rem, 1rem);
     font-weight: 850;
     letter-spacing: -0.012em;
@@ -800,14 +808,14 @@
 }
 
 :global([data-brand="hotel"]) .brandEmph {
-    color: var(--info-accent);
+    color: var(--info-accent-bright);
     font-weight: 850;
 }
 
 :global([data-brand="hotel"]) .tagline {
     margin-bottom: 0.42rem;
 
-    color: rgb(var(--sl-footer-accent-rgb, 217 185 120) / 0.92);
+    color: var(--info-accent-bright);
     font-size: clamp(0.84rem, 0.12vw + 0.82rem, 0.92rem);
     font-weight: 800;
     line-height: 1.28;
@@ -843,13 +851,13 @@
 }
 
 :global([data-brand="hotel"]) .subtleLink {
-    color: var(--info-text-muted);
+    color: var(--info-accent-bright);
     font-weight: 700;
 }
 
 :global([data-brand="hotel"]) .subtleLink:hover,
 :global([data-brand="hotel"]) .subtleLink:focus-visible {
-    color: var(--info-accent);
+    color: var(--info-accent-bright);
     text-decoration: underline;
     text-decoration-color: rgb(var(--sl-footer-accent-rgb, 217 185 120) / 0.42);
     text-underline-offset: 0.18em;
@@ -863,7 +871,7 @@
 }
 
 :global([data-brand="hotel"]) .cIcon {
-    color: rgb(var(--sl-footer-accent-rgb, 217 185 120) / 0.88);
+    color: var(--info-accent-bright);
 }
 
 :global([data-brand="hotel"]) .link {
@@ -873,7 +881,7 @@
 
 :global([data-brand="hotel"]) .link:hover,
 :global([data-brand="hotel"]) .link:focus-visible {
-    color: var(--info-text-main);
+    color: var(--info-accent-bright);
     text-decoration: underline;
     text-decoration-color: rgb(var(--sl-footer-accent-rgb, 217 185 120) / 0.5);
     text-underline-offset: 0.16em;

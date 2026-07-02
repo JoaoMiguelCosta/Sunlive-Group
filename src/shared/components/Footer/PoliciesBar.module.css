@@ -224,7 +224,7 @@
 }
 
 :global([data-brand="sports"]) .link:hover {
-    color: var(--policies-text-main);
+    color: var(--policies-accent-strong);
     text-decoration: underline;
     text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.46);
     text-underline-offset: 0.18em;
@@ -432,7 +432,7 @@
 }
 
 :global([data-brand="hotel"]) .link:hover {
-    color: var(--policies-text-main);
+    color: var(--policies-accent-strong);
     text-decoration: underline;
     text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.46);
     text-underline-offset: 0.18em;
