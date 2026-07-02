@@ -24,49 +24,48 @@
        Consumidos por src/shared/components/Footer/* e por
        HotelDirectory.module.css.
 
-       Lote 2A.2: o footer converge para a linguagem visual
-       Light Forest da brand Group — os valores abaixo reproduzem
-       literalmente as cores computadas do footer Group
-       (src/brands/group/styles/tokens.css) porque tokens
-       --group-* não podem ser referenciados a partir daqui
-       (scoped a [data-brand="group"]). Não são primitivas
-       Hotel — não usar para nada fora do footer. O resto do
-       tema Hotel (hero, cards, nav) mantém-se dark-first e
-       fora do âmbito deste lote.
+       Lote 2A.3: os valores deixam de estar duplicados como
+       literais — agora são aliases da fundação global Light
+       Forest (src/styles/tokens.css), importada antes de
+       brands.css e por isso disponível em :root, logo também
+       dentro de :root[data-brand="hotel"]. Fallbacks literais
+       mantidos por segurança caso a fundação global falhe. O
+       resto do tema Hotel (hero, cards, nav) mantém-se
+       dark-first e fora do âmbito deste lote.
        ============================= */
 
-    --sl-footer-accent: #2d6b4f;
-    --sl-footer-accent-strong: #2e4d3b;
-    --sl-footer-accent-rgb: 45 107 79;
+    --sl-footer-accent: var(--sl-accent, #2d6b4f);
+    --sl-footer-accent-strong: var(--sl-accent-strong, #2e4d3b);
+    --sl-footer-accent-rgb: var(--sl-accent-rgb, 45 107 79);
 
-    --sl-footer-text: #1e2e24;
-    --sl-footer-text-soft: #2e4d3b;
-    --sl-footer-text-muted: #536456;
-    --sl-footer-text-rgb: 30 46 36;
+    --sl-footer-text: var(--sl-text-primary, #1e2e24);
+    --sl-footer-text-soft: var(--sl-text-secondary, #2e4d3b);
+    --sl-footer-text-muted: var(--sl-text-muted, #536456);
+    --sl-footer-text-rgb: var(--sl-text-rgb, 30 46 36);
 
-    --sl-footer-border: rgb(30 46 36 / 0.14);
-    --sl-footer-border-rgb: 30 46 36;
-    --sl-footer-border-strong: rgb(30 46 36 / 0.28);
+    --sl-footer-border: var(--sl-border-subtle, rgb(30 46 36 / 0.14));
+    --sl-footer-border-rgb: var(--sl-text-rgb, 30 46 36);
+    --sl-footer-border-strong: var(--sl-border-default, rgb(30 46 36 / 0.28));
 
-    --sl-footer-bg: #f6f7ed;
-    --sl-footer-frame-border: rgb(30 46 36 / 0.28);
+    --sl-footer-bg: var(--sl-surface-footer, #f6f7ed);
+    --sl-footer-frame-border: var(--sl-border-default, rgb(30 46 36 / 0.28));
 
     --sl-footer-frame-shadow:
         inset 0 1px 0 rgb(255 255 255 / 0.72),
-        0 1.35rem 3.2rem rgb(30 46 36 / 0.14);
+        0 1.35rem 3.2rem rgb(var(--sl-text-rgb, 30 46 36) / 0.14);
 
-    --sl-footer-strip-border: rgb(30 46 36 / 0.14);
+    --sl-footer-strip-border: var(--sl-border-subtle, rgb(30 46 36 / 0.14));
 
     --sl-footer-focus-ring:
-        0 0 0 2px #f6f7ed,
-        0 0 0 4px #2d6b4f,
-        0 0 1.25rem rgb(45 107 79 / 0.3);
+        0 0 0 2px var(--sl-surface-footer, #f6f7ed),
+        0 0 0 4px var(--sl-accent, #2d6b4f),
+        0 0 1.25rem var(--sl-focus-ring-color, rgb(45 107 79 / 0.3));
 
-    --sl-footer-chip-bg: #e6e8d1;
-    --sl-footer-social-bg: #e6e8d1;
-    --sl-footer-social-bg-hover: #f0f1e2;
-    --sl-footer-shield-bg: #f0f1e2;
-    --sl-footer-hover-surface: #f0f1e2;
+    --sl-footer-chip-bg: var(--sl-surface-primary, #e6e8d1);
+    --sl-footer-social-bg: var(--sl-surface-primary, #e6e8d1);
+    --sl-footer-social-bg-hover: var(--sl-surface-secondary, #f0f1e2);
+    --sl-footer-shield-bg: var(--sl-surface-secondary, #f0f1e2);
+    --sl-footer-hover-surface: var(--sl-surface-secondary, #f0f1e2);
 
     /*
      * Alias de compatibilidade: estes nomes eram antes definidos
@@ -74,8 +73,8 @@
      * são consumidos por HotelDirectory.module.css (fora do âmbito
      * deste lote). Valores agora Light Forest.
      */
-    --hotel-footer-section-border: rgb(30 46 36 / 0.14);
-    --hotel-footer-section-border-strong: rgb(30 46 36 / 0.28);
+    --hotel-footer-section-border: var(--sl-border-subtle, rgb(30 46 36 / 0.14));
+    --hotel-footer-section-border-strong: var(--sl-border-default, rgb(30 46 36 / 0.28));
 
     /* =============================
        Paleta base
