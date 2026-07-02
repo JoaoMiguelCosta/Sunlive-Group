@@ -75,6 +75,7 @@ export default function GroupHeaderNav({ socials = [], lang }) {
           {/* Brand dropdown — desktop */}
           <div className={styles.brand} ref={dropdownRef}>
             <button
+              type="button"
               className={styles.brandBtn}
               aria-expanded={dropdownOpen}
               aria-controls="group-brand-menu"
@@ -124,6 +125,7 @@ export default function GroupHeaderNav({ socials = [], lang }) {
 
           {/* Hamburger — mobile only */}
           <button
+            type="button"
             ref={hamburgerRef}
             className={styles.hamburger}
             aria-expanded={panelOpen}

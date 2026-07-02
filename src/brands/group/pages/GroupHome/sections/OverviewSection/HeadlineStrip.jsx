@@ -25,18 +25,6 @@ export default function HeadlineStrip() {
           fetchPriority="high"
           draggable="false"
         />
-
-        <img
-          className={styles.shineImg}
-          src={img}
-          alt=""
-          width="2400"
-          height="390"
-          aria-hidden="true"
-          loading="eager"
-          decoding="async"
-          draggable="false"
-        />
       </div>
     </div>
   );

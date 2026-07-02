@@ -11,6 +11,7 @@ export default function SectionDisclosureTrigger({
   return (
     <h2 className={styles.heading}>
       <button
+        type="button"
         id={id}
         className={styles.trigger}
         aria-expanded={isOpen}

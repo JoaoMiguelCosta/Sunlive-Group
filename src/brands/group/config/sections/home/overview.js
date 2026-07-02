@@ -21,7 +21,6 @@ export const overview = {
   },
 
   headline: {
-    renderAs: "svg",
     title: "OUR NETWORK OF EXCELLENCE",
     subtitle: "GIVES US OPPORTUNITIES TO CREATE SOLUTIONS SINCE 2007",
     imageSrc: headlineImage,

@@ -24,9 +24,11 @@ export default function useContactsAccordionHash({
 
   const { isOpen, toggle } = useAccordion(items, { allowMultiple: true });
 
+  const hashRegex = useMemo(() => new RegExp(`^#${prefix}(.+)$`), [prefix]);
+
   useOpenFromHash({
     routePath,
-    regex: new RegExp(`^#${prefix}(.+)$`),
+    regex: hashRegex,
     items: hashItems,
     isOpen: (hashKey) => {
       const item = findItemByAnchorHashKey(items, hashKey, prefix);

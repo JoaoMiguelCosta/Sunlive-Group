@@ -64,6 +64,7 @@ export default function GroupMobileNavPanel({
       >
         <div className={styles.panelHead}>
           <button
+            type="button"
             className={styles.closeBtn}
             aria-label="Fechar menu de navegação"
             onClick={onCloseAndFocus}

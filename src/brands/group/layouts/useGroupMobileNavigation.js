@@ -2,6 +2,21 @@ import { useEffect, useRef } from "react";
 
 import useDisclosure from "../../../shared/hooks/useDisclosure.js";
 
+const FOCUSABLE_SELECTOR = "a[href], button:not([disabled])";
+
+// Excludes elements hidden via `hidden`, display:none or a hidden
+// ancestor (e.g. a closed dropdown) — such elements match the
+// selector above but are not reachable through real Tab navigation.
+function isReachableByTab(el) {
+  return el.getClientRects().length > 0;
+}
+
+function getFocusableElements(container) {
+  return Array.from(container.querySelectorAll(FOCUSABLE_SELECTOR)).filter(
+    isReachableByTab
+  );
+}
+
 export default function useGroupMobileNavigation() {
   const hamburgerRef = useRef(null);
   const panelRef = useRef(null);
@@ -42,9 +57,9 @@ export default function useGroupMobileNavigation() {
   // Move focus to first item when panel opens
   useEffect(() => {
     if (!panelOpen) return;
-    const first = panelRef.current?.querySelector(
-      "a[href], button:not([disabled])"
-    );
+    const panel = panelRef.current;
+    if (!panel) return;
+    const [first] = getFocusableElements(panel);
     first?.focus();
   }, [panelOpen]);
 
@@ -55,9 +70,7 @@ export default function useGroupMobileNavigation() {
       if (e.key !== "Tab") return;
       const panel = panelRef.current;
       if (!panel) return;
-      const nodes = Array.from(
-        panel.querySelectorAll("a[href], button:not([disabled])")
-      );
+      const nodes = getFocusableElements(panel);
       if (nodes.length === 0) return;
       const first = nodes[0];
       const last = nodes[nodes.length - 1];
