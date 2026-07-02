@@ -91,9 +91,6 @@
 
 .card {
     --card-brand-primary: 218 221 192;
-    --card-brand-secondary: 186 192 168;
-    --card-brand-depth: 129 134 113;
-    --card-brand-side: 186 192 168;
 
     --card-border:
         rgb(var(--card-brand-primary) / 38%);
@@ -148,37 +145,22 @@
 
 .card[data-key="travel"] {
     --card-brand-primary: 100 160 180;
-    --card-brand-secondary: 80 130 150;
-    --card-brand-depth: 55 95 110;
-    --card-brand-side: 90 140 160;
 }
 
 .card[data-key="business"] {
     --card-brand-primary: 180 190 175;
-    --card-brand-secondary: 150 162 148;
-    --card-brand-depth: 110 122 108;
-    --card-brand-side: 160 172 158;
 }
 
 .card[data-key="sports"] {
     --card-brand-primary: 130 200 160;
-    --card-brand-secondary: 100 168 132;
-    --card-brand-depth: 72 124 96;
-    --card-brand-side: 110 180 145;
 }
 
 .card[data-key="international"] {
     --card-brand-primary: 155 175 195;
-    --card-brand-secondary: 125 145 165;
-    --card-brand-depth: 92 112 132;
-    --card-brand-side: 140 160 180;
 }
 
 .card[data-key="home"] {
     --card-brand-primary: 190 210 195;
-    --card-brand-secondary: 158 178 163;
-    --card-brand-depth: 118 138 122;
-    --card-brand-side: 172 192 177;
 }
 
 .homeCard {

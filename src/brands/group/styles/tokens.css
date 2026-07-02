@@ -224,9 +224,6 @@
    --group-font-weight-heavy: 850;
    --group-font-weight-black: 900;
 
-   --group-section-title-size:
-      clamp(1.55rem, 1.14rem + 1.45vw, 2.65rem);
-
    --group-section-title-size-md:
       clamp(1.32rem, 5.2vw, 2rem);
 

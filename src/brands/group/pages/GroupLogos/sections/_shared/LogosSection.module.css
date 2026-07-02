@@ -5,9 +5,6 @@
    ============================================================ */
 
 .section {
-    --logos-line-inset:
-        clamp(0.85rem, 4vw, 4.5rem);
-
     --logos-section-pad-top: 0;
     --logos-section-pad-bottom: 0;
 
@@ -40,44 +37,6 @@
     min-inline-size: 0;
 
     box-sizing: border-box;
-}
-
-
-/* ============================================================
-   Responsive
-   ============================================================ */
-
-@media (min-width: 1440px) {
-    .section {
-        --logos-line-inset:
-            clamp(2rem, 5vw, 5.5rem);
-    }
-}
-
-@media (max-width: 1023.98px) {
-    .section {
-        --logos-line-inset:
-            clamp(0.75rem, 4vw, 2.25rem);
-    }
-}
-
-@media (max-width: 767.98px) {
-    .section {
-        --logos-line-inset:
-            clamp(0.75rem, 5vw, 1.5rem);
-    }
-}
-
-@media (max-width: 479.98px) {
-    .section {
-        --logos-line-inset: 0.85rem;
-    }
-}
-
-@media (max-width: 379.98px) {
-    .section {
-        --logos-line-inset: 0.65rem;
-    }
 }
 
 
