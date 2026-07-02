@@ -19,13 +19,11 @@
 
    /* Forest — contraste, texto e superfícies inversas */
    --group-color-forest-950: #1e2e24;
-   --group-color-forest-900: #1d2c22;
    --group-color-forest-800: #2e4d3b;
    --group-color-forest-700: #3c6148;
 
    /* Acre — fundo principal e superfícies claras */
    --group-color-acre-100: #daddc0;
-   --group-color-acre-50: #edf0d7;
 
    /* Light surfaces */
    --group-color-light-100: #e6e8d1;
@@ -34,15 +32,12 @@
 
    /* Mint — acento sobre superfícies escuras */
    --group-color-mint-400: #8dd9b4;
-   --group-color-mint-300: #a7e6c7;
 
    /* Deep mint — acento acessível sobre superfícies claras */
    --group-color-mint-700: #2d6b4f;
-   --group-color-mint-800: #24573f;
 
    /* Sage */
    --group-color-sage-200: #ced8cf;
-   --group-color-sage-400: #a7b5aa;
    --group-color-sage-700: #536456;
 
    /* Texto por contexto */
@@ -59,16 +54,8 @@
    --group-accent-primary-rgb: 46 77 59;
    --group-accent-fresh-rgb: 45 107 79;
 
-   /* Cor correspondente a #daddc0 */
-   --group-background-rgb: 218 221 192;
-
-   --group-surface-primary-rgb: 230 232 209;
-   --group-surface-secondary-rgb: 240 241 226;
-
    /* Canais das superfícies inversas */
    --group-surface-inverse-rgb: 30 46 36;
-   --group-surface-inverse-primary-rgb: 46 77 59;
-   --group-surface-inverse-secondary-rgb: 60 97 72;
 
 
    /* =====================================================
@@ -80,7 +67,6 @@
    --group-surface-primary: var(--group-color-light-100);
    --group-surface-secondary: var(--group-color-light-50);
    --group-surface-elevated: var(--group-color-light-0);
-   --group-surface-light: var(--group-color-light-0);
 
    /* Contexto inverso para hero, media e zonas escuras */
    --group-surface-inverse: var(--group-color-forest-950);
@@ -92,9 +78,6 @@
 
    /* Superfície neutra para grelha de logótipos */
    --group-logo-surface: var(--group-color-light-0);
-   --group-logo-surface-hover: #ffffff;
-   --group-logo-surface-border:
-      rgb(var(--group-surface-inverse-rgb) / 28%);
 
 
    /* =====================================================
@@ -105,12 +88,10 @@
    --group-text-primary: var(--group-color-text-on-light);
    --group-text-secondary: var(--group-color-forest-800);
    --group-text-muted: var(--group-color-sage-700);
-   --group-text-dark: var(--group-color-forest-950);
 
    /* Texto para componentes sobre superfícies escuras */
    --group-text-on-dark: var(--group-color-text-on-dark);
    --group-text-on-dark-secondary: var(--group-color-sage-200);
-   --group-text-on-dark-muted: var(--group-color-sage-400);
 
 
    /* =====================================================
@@ -122,14 +103,11 @@
    --group-accent-primary-hover: var(--group-color-forest-950);
 
    --group-accent-fresh: var(--group-color-mint-700);
-   --group-accent-fresh-hover: var(--group-color-mint-800);
 
    /* Acentos preservados para superfícies escuras */
    --group-accent-on-dark: var(--group-color-acre-100);
-   --group-accent-on-dark-hover: var(--group-color-acre-50);
 
    --group-accent-fresh-on-dark: var(--group-color-mint-400);
-   --group-accent-fresh-on-dark-hover: var(--group-color-mint-300);
 
 
    /* =====================================================
@@ -152,9 +130,6 @@
    --group-border-on-dark-default:
       rgb(218 221 192 / 35%);
 
-   --group-border-on-dark-strong:
-      rgb(218 221 192 / 58%);
-
 
    /* =====================================================
       7. CARDS
@@ -162,8 +137,6 @@
 
    --group-card-background: var(--group-surface-secondary);
    --group-card-background-hover: var(--group-surface-elevated);
-   --group-card-text: var(--group-text-primary);
-   --group-card-border: var(--group-border-subtle);
 
    --group-disclosure-panel-background:
       var(--group-surface-primary);
@@ -192,43 +165,9 @@
    --group-control-bg-active:
       rgb(var(--group-accent-primary-rgb) / 15%);
 
-   --group-control-bg-hover-on-dark:
-      rgb(218 221 192 / 10%);
-
 
    /* =====================================================
-      9. BUTTONS
-      ===================================================== */
-
-   /* Primário — verde profundo sobre o fundo claro */
-   --group-button-primary-background:
-      var(--group-accent-primary);
-
-   --group-button-primary-background-hover:
-      var(--group-accent-primary-hover);
-
-   --group-button-primary-text:
-      var(--group-text-on-dark);
-
-   --group-button-primary-border:
-      var(--group-accent-primary);
-
-   /* Secundário */
-   --group-button-secondary-background:
-      transparent;
-
-   --group-button-secondary-background-hover:
-      var(--group-control-bg-hover);
-
-   --group-button-secondary-text:
-      var(--group-accent-primary);
-
-   --group-button-secondary-border:
-      var(--group-accent-primary);
-
-
-   /* =====================================================
-      10. FOCUS
+      9. FOCUS
       ===================================================== */
 
    --group-focus-outline: var(--group-accent-fresh);
@@ -248,65 +187,30 @@
       0 0 0 4px var(--group-focus-outline),
       0 0 1.25rem var(--group-focus-ring);
 
-   --group-focus-shadow-on-dark:
-      0 0 0 2px var(--group-surface-inverse),
-      0 0 0 4px var(--group-accent-fresh-on-dark),
-      0 0 1.25rem rgb(141 217 180 / 30%);
-
 
    /* =====================================================
-      11. SHADOWS
+      10. SHADOWS
       Apenas os valores cromáticos foram adaptados.
       A geometria das sombras permanece inalterada.
       ===================================================== */
 
-   --group-shadow-xs:
-      0 2px 6px rgb(30 46 36 / 12%);
-
    --group-shadow-sm:
       0 6px 16px rgb(30 46 36 / 14%);
 
-   --group-shadow-card:
-      0 12px 30px rgb(30 46 36 / 18%);
-
-   --group-shadow-card-strong:
-      0 16px 38px rgb(30 46 36 / 22%);
-
-   --group-shadow-hover:
-      0 18px 42px rgb(30 46 36 / 24%);
-
-   --group-shadow-inset-top:
-      inset 0 1px 0 rgb(255 255 255 / 42%);
-
-   --group-shadow-inset-bottom:
-      inset 0 -1px 0 rgb(30 46 36 / 12%);
-
-   --group-shadow-control:
-      inset 0 1px 0 rgb(255 255 255 / 45%),
-      inset 0 -1px 0 rgb(30 46 36 / 14%),
-      0 0.85rem 1.9rem rgb(30 46 36 / 16%);
-
-   --group-shadow-control-hover:
-      inset 0 1px 0 rgb(255 255 255 / 56%),
-      inset 0 -1px 0 rgb(30 46 36 / 18%),
-      var(--group-shadow-hover);
-
 
    /* =====================================================
-      12. RADII
+      11. RADII
       ===================================================== */
 
-   --group-radius-xs: 0.4rem;
    --group-radius-sm: 0.65rem;
    --group-radius-md: 1rem;
    --group-radius-lg: 1.35rem;
    --group-radius-xl: 1.8rem;
-   --group-radius-2xl: 2.35rem;
    --group-radius-pill: 999px;
 
 
    /* =====================================================
-      13. TYPOGRAPHY
+      12. TYPOGRAPHY
       ===================================================== */
 
    --group-font-ui: var(--sl-ff-ui);
@@ -319,9 +223,6 @@
    --group-font-weight-extrabold: 800;
    --group-font-weight-heavy: 850;
    --group-font-weight-black: 900;
-
-   --group-section-title-size:
-      clamp(1.55rem, 1.14rem + 1.45vw, 2.65rem);
 
    --group-section-title-size-md:
       clamp(1.32rem, 5.2vw, 2rem);
@@ -343,99 +244,30 @@
 
 
    /* =====================================================
-      14. LAYOUT
+      13. LAYOUT
       ===================================================== */
 
    --group-page-max-width: 1360px;
 
 
    /* =====================================================
-      15. SPACING
+      14. SPACING
       ===================================================== */
 
    --group-section-inset:
       clamp(0.75rem, 4vw, 2.5rem);
 
-   --group-content-gap-sm:
-      clamp(1rem, 2vw, 1.5rem);
-
-   --group-content-gap-md:
-      clamp(1.5rem, 3vw, 2.5rem);
-
-   --group-content-gap-lg:
-      clamp(2rem, 4vw, 4rem);
-
 
    /* =====================================================
-      16. MOTION
+      15. MOTION
       ===================================================== */
 
    --group-duration-fast: 150ms;
    --group-duration-normal: 240ms;
-   --group-duration-slow: 360ms;
-   --group-duration-entrance: 680ms;
 
    --group-ease-standard:
       cubic-bezier(0.4, 0, 0.2, 1);
 
    --group-ease-emphasized:
       cubic-bezier(0.2, 0.8, 0.2, 1);
-
-
-   /* =====================================================
-      17. MEDIA EFFECTS
-      ===================================================== */
-
-   --group-media-filter:
-      saturate(1.04) contrast(1.035) brightness(1.02);
-
-   --group-media-filter-hover:
-      saturate(1.08) contrast(1.05) brightness(1.035);
-
-   --group-media-drop-shadow:
-      drop-shadow(
-         0 0.4rem 0.85rem
-         rgb(var(--group-surface-inverse-rgb) / 30%)
-      );
-
-
-   /* =====================================================
-      18. DIVISION IDENTITIES
-      ===================================================== */
-
-   /* Default / Group — adaptado ao contexto claro */
-   --group-division-default-primary-rgb: 46 77 59;
-   --group-division-default-secondary-rgb: 60 97 72;
-   --group-division-default-depth-rgb: 30 46 36;
-   --group-division-default-side-rgb: 45 107 79;
-
-   /* Travel */
-   --group-division-travel-primary-rgb: 100 160 180;
-   --group-division-travel-secondary-rgb: 80 130 150;
-   --group-division-travel-depth-rgb: 55 95 110;
-   --group-division-travel-side-rgb: 90 140 160;
-
-   /* Business */
-   --group-division-business-primary-rgb: 180 190 175;
-   --group-division-business-secondary-rgb: 150 162 148;
-   --group-division-business-depth-rgb: 110 122 108;
-   --group-division-business-side-rgb: 160 172 158;
-
-   /* Sports */
-   --group-division-sports-primary-rgb: 130 200 160;
-   --group-division-sports-secondary-rgb: 100 168 132;
-   --group-division-sports-depth-rgb: 72 124 96;
-   --group-division-sports-side-rgb: 110 180 145;
-
-   /* International */
-   --group-division-international-primary-rgb: 155 175 195;
-   --group-division-international-secondary-rgb: 125 145 165;
-   --group-division-international-depth-rgb: 92 112 132;
-   --group-division-international-side-rgb: 140 160 180;
-
-   /* Home */
-   --group-division-home-primary-rgb: 190 210 195;
-   --group-division-home-secondary-rgb: 158 178 163;
-   --group-division-home-depth-rgb: 118 138 122;
-   --group-division-home-side-rgb: 172 192 177;
 }

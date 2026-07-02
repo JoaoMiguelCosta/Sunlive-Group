@@ -11,7 +11,6 @@ import lebanon from "../../../assets/countries/lebanon.png";
 export const presence = {
   id: "presence",
   headlineTop: {
-    renderAs: "image",
     src: phraseTogether,
     alt: "Together we are stronger",
   },
@@ -23,7 +22,6 @@ export const presence = {
     { key: "lebanon", label: "Lebanon — Sunlive", src: lebanon },
   ],
   headlineBottom: {
-    renderAs: "image",
     src: phraseDream,
     alt: "Dream, Dare and Do",
   },

@@ -65,8 +65,10 @@
     filter: none;
 }
 
-.img,
-.shineImg {
+.img {
+    position: relative;
+    z-index: 1;
+
     grid-area: 1 / 1;
 
     display: block;
@@ -87,11 +89,6 @@
     user-select: none;
     pointer-events: none;
     -webkit-user-drag: none;
-}
-
-.img {
-    position: relative;
-    z-index: 1;
 
     transform: none;
 
@@ -99,10 +96,6 @@
         saturate(1.035)
         contrast(1.05)
         brightness(1.015);
-}
-
-.shineImg {
-    display: none;
 }
 
 @media (min-width: 1440px) {

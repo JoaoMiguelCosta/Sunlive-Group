@@ -1,15 +1,12 @@
 import styles from "./PartnersGrid.module.css";
 
 import useSmartAnchorNav from "../../../../../../shared/hooks/useSmartAnchorNav.js";
+import { isValidText } from "../../../../shared/utils/contentGuards.js";
 import { GROUP_LOGOS_PATH } from "../../../../config/core/paths.js";
 
 const ANCHOR_OFFSET = 24;
 const CROSS_PAGE_DELAY_MS = 650;
 const RETRY_DELAY_MS = 80;
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
 
 function getValidItems(items) {
   return Array.isArray(items)

@@ -5,7 +5,6 @@ import teamCollage from "../../../assets/people/people.webp";
 export const people = {
   id: "people",
   statement: {
-    renderAs: "image",
     src: phraseWeMake,
     alt: "We Make It Happen",
   },

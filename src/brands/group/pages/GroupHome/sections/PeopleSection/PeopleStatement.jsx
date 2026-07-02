@@ -16,14 +16,6 @@ export default function PeopleStatement() {
     <div className={styles.wrap}>
       <div className={styles.frame}>
         <img src={src} alt={alt} {...IMG_COMMON} className={styles.img} />
-
-        <img
-          src={src}
-          alt=""
-          aria-hidden="true"
-          {...IMG_COMMON}
-          className={styles.shineImg}
-        />
       </div>
     </div>
   );

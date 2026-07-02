@@ -4,11 +4,12 @@ import styles from "./ContactsGrid.module.css";
 import disclosureStyles from "./ContactDisclosure.module.css";
 import OfficeCard from "./OfficeCard.jsx";
 
-import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
-import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
+import { isValidText } from "../../../../shared/utils/contentGuards.js";
 
 import { GROUP_CONTACTS } from "../../../../config/core/contacts.js";
 import { GROUP_BASE_PATH } from "../../../../config/core/paths.js";
+
+import useContactsAccordionHash from "./useContactsAccordionHash.js";
 
 const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
@@ -23,19 +24,6 @@ const BUSINESS_UNIT_ORDER = [
   "international",
   "business",
 ];
-
-const BUSINESS_UNIT_SLUGS_PT = {
-  travel: "viagens",
-  sports: "desporto",
-  hotel: "hotel",
-  commercial: "comercial",
-  international: "internacional",
-  business: "negocios",
-};
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
 
 function isValidItem(item) {
   return item && typeof item === "object" && isValidText(item.key);
@@ -60,68 +48,13 @@ function getTelHref(phone) {
   return isValidText(phone) ? phone.replace(/\s+/g, "") : "";
 }
 
-function getItemSlug(item) {
-  if (isValidText(item?.slug)) return item.slug;
-
-  return BUSINESS_UNIT_SLUGS_PT[item.key] ?? item.key;
-}
-
-function getAnchorId(item) {
-  if (isValidText(item?.anchorId)) return item.anchorId;
-
-  return `${BUSINESS_UNIT_ANCHOR_PREFIX}${getItemSlug(item)}`;
-}
-
-function getHashKey(item) {
-  const anchorId = getAnchorId(item);
-
-  if (anchorId.startsWith(BUSINESS_UNIT_ANCHOR_PREFIX)) {
-    return anchorId.slice(BUSINESS_UNIT_ANCHOR_PREFIX.length);
-  }
-
-  return getItemSlug(item);
-}
-
-function getItemByHashKey(items, hashKey) {
-  if (!isValidText(hashKey)) return null;
-
-  return (
-    items.find((item) => getHashKey(item) === hashKey) ||
-    items.find((item) => getItemSlug(item) === hashKey) ||
-    null
-  );
-}
-
 export default function BusinessUnits({ items = [] }) {
   const orderedItems = useMemo(() => getOrderedItems(items), [items]);
 
-  const hashItems = useMemo(
-    () =>
-      orderedItems.map((item) => ({
-        ...item,
-        key: getHashKey(item),
-      })),
-    [orderedItems],
-  );
-
-  const { isOpen, toggle } = useAccordion(orderedItems, {
-    allowMultiple: true,
-  });
-
-  useOpenFromHash({
+  const { isOpen, toggle } = useContactsAccordionHash({
+    items: orderedItems,
+    prefix: BUSINESS_UNIT_ANCHOR_PREFIX,
     routePath: GROUP_BASE_PATH,
-    regex: /^#unidade-(.+)$/,
-    items: hashItems,
-    isOpen: (hashKey) => {
-      const item = getItemByHashKey(orderedItems, hashKey);
-
-      return item ? isOpen(item.key) : false;
-    },
-    toggle: (hashKey) => {
-      const item = getItemByHashKey(orderedItems, hashKey);
-
-      if (item) toggle(item.key);
-    },
   });
 
   if (!orderedItems.length) return null;
@@ -130,7 +63,7 @@ export default function BusinessUnits({ items = [] }) {
     <div className={styles.grid} role="list" data-count={orderedItems.length}>
       {orderedItems.map((item) => {
         const open = isOpen(item.key);
-        const anchorId = getAnchorId(item);
+        const anchorId = item.anchorId;
         const panelId = `bu-${item.key}`;
         const telHref = getTelHref(item.phone);
 

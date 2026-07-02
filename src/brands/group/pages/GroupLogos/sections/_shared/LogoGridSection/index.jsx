@@ -1,12 +1,8 @@
 import styles from "./LogoGridSection.module.css";
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
-
-function isValidObject(value) {
-  return value && typeof value === "object" && !Array.isArray(value);
-}
+import {
+  isValidText,
+  isValidObject,
+} from "../../../../../shared/utils/contentGuards.js";
 
 function getValidItems(items) {
   return Array.isArray(items)
@@ -39,7 +35,6 @@ export default function LogoGridSection({
   title,
   items = [],
   columnsMax = 4,
-  className,
 }) {
   const validItems = getValidItems(items);
   const cols = getColumnCount(columnsMax);
@@ -48,10 +43,7 @@ export default function LogoGridSection({
   if (!validItems.length) return null;
 
   return (
-    <div
-      className={`${styles.wrap} ${className ?? ""}`.trim()}
-      style={{ "--cols-max": cols }}
-    >
+    <div className={styles.wrap} style={{ "--cols-max": cols }}>
       {isValidText(title) ? (
         <header className={styles.header}>
           <h2 id={headingId} className={styles.title}>
@@ -60,7 +52,11 @@ export default function LogoGridSection({
         </header>
       ) : null}
 
-      <div className={styles.grid} data-cols={cols}>
+      <div
+        className={styles.grid}
+        data-cols={cols}
+        role="list"
+      >
         {validItems.map(({ key, name, caption, src, href, cropInset }) => {
           const image = (
             <img
@@ -84,7 +80,7 @@ export default function LogoGridSection({
           );
 
           return (
-            <div key={key} className={styles.cell}>
+            <div key={key} className={styles.cell} role="listitem">
               {isValidText(href) ? (
                 <a
                   className={styles.link}

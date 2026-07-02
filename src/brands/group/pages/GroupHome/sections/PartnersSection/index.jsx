@@ -6,12 +6,9 @@ import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import SectionDisclosureTrigger from "../_shared/SectionDisclosureTrigger.jsx";
 import PartnersGrid from "./PartnersGrid.jsx";
 import homePage from "../../../../config/pages/home.js";
+import { isValidText } from "../../../../shared/utils/contentGuards.js";
 
 const partnersSection = homePage.sections.partners;
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
 
 function getValidCategories(items) {
   return Array.isArray(items)

@@ -3,10 +3,7 @@ import styles from "./GlobalPresencePanel.module.css";
 import homePage from "../../../../config/pages/home.js";
 const presence = homePage.sections.presence;
 import { IMG_COMMON } from "../../../../../../shared/config/index.js";
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
+import { isValidText } from "../../../../shared/utils/contentGuards.js";
 
 function isValidCountry(country) {
   return (

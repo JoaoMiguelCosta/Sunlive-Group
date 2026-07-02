@@ -27,7 +27,6 @@
       ------------------------------------------------- */
 
    --sl-platinum-100: var(--group-text-primary);
-   --sl-platinum-300: var(--group-text-secondary);
 
    --sl-gold-500: var(--group-accent-primary);
    --sl-gold-400: var(--group-accent-primary);
@@ -38,47 +37,12 @@
    --sl-color-text: var(--group-text-primary);
 
    --accent: var(--group-accent-primary);
-   --accent-2: var(--group-accent-fresh);
-
-   --text-1: var(--group-text-primary);
-   --text-2: var(--group-text-secondary);
-
-   --font-sans: var(--group-font-ui);
 
    /*
     * O offset pode ser redefinido localmente por cards,
     * superfícies elevadas ou componentes inversos.
     */
    --group-focus-offset-color: var(--group-background);
-
-   --sl-focus:
-      0 0 0 2px var(--group-focus-offset-color),
-      0 0 0 4px var(--group-focus-outline);
-
-   /* -------------------------------------------------
-      Contexto inverso
-
-      Usado pelos componentes que mantêm superfícies
-      escuras, como hero, media, footer e determinados
-      cards institucionais.
-      ------------------------------------------------- */
-
-   --sl-inverse-bg: var(--group-surface-inverse);
-
-   --sl-inverse-surface:
-      var(--group-surface-inverse-primary);
-
-   --sl-inverse-text:
-      var(--group-text-on-dark);
-
-   --sl-inverse-text-secondary:
-      var(--group-text-on-dark-secondary);
-
-   --sl-inverse-accent:
-      var(--group-accent-on-dark);
-
-   --sl-inverse-accent-fresh:
-      var(--group-accent-fresh-on-dark);
 
    /* -------------------------------------------------
       Footer tokens
@@ -92,37 +56,11 @@
    --footer-accent:
       var(--group-accent-on-dark);
 
-   --footer-accent-fresh:
-      var(--group-accent-fresh-on-dark);
-
-   --footer-text-primary:
-      var(--group-text-on-dark);
-
-   --footer-text-secondary:
-      var(--group-text-on-dark-secondary);
-
-   --footer-text-muted:
-      var(--group-text-on-dark-muted);
-
-   --footer-border-subtle:
-      var(--group-border-on-dark-subtle);
-
-   --footer-border-default:
-      var(--group-border-on-dark-default);
-
-   --footer-border-strong:
-      var(--group-border-on-dark-strong);
-
    /* -------------------------------------------------
       Tokens de compatibilidade
       ------------------------------------------------- */
 
-   --sl-radius-sm: var(--group-radius-sm);
-
-   --sl-container-sm: 78rem;
    --sl-container-lg: 90rem;
-
-   --sl-baseline: 1.25rem;
 }
 
 

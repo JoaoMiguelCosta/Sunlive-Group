@@ -575,8 +575,13 @@
     --header-link-color:
         var(--group-text-secondary);
 
+    /*
+     * Igual a --header-link-color: a regra partilhada de
+     * :hover consome este token, mas o texto da Group não
+     * muda de cor no hover (feedback fica no border/background).
+     */
     --header-link-hover-color:
-        var(--group-accent-primary-hover);
+        var(--group-text-secondary);
 
     --header-back-border:
         var(--group-border-subtle);
@@ -698,9 +703,6 @@
     ):hover {
     transform: translateY(-1px);
 
-    color:
-        var(--header-link-hover-color);
-
     border-color:
         var(--group-border-default);
 
@@ -754,8 +756,6 @@
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) .socialLink:hover {
     transform: none;
-
-    color: var(--group-accent-primary-hover);
 
     border-color:
         var(--group-border-subtle);
@@ -812,8 +812,6 @@
     .utilityBar[data-variant="logos-header"]) .langBtn:hover,
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) .langBtn[data-open="true"] {
-    color: var(--group-accent-primary-hover);
-
     border-color:
         var(--group-border-subtle);
 
@@ -822,6 +820,11 @@
 
     box-shadow:
         inset 0 1px 0 rgb(255 255 255 / 0.42);
+}
+
+:is(.utilityBar[data-variant="group-header"],
+    .utilityBar[data-variant="logos-header"]) .langBtn[data-open="true"] {
+    color: var(--group-accent-primary-hover);
 }
 
 :is(.utilityBar[data-variant="group-header"],
@@ -879,8 +882,6 @@
 
 :is(.utilityBar[data-variant="group-header"],
     .utilityBar[data-variant="logos-header"]) .langItem:hover {
-    color: var(--group-accent-primary-hover);
-
     background:
         var(--group-control-bg-hover);
 }

@@ -4,20 +4,16 @@ import OfficeCard from "./OfficeCard.jsx";
 
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
+import {
+  isValidText,
+  isValidObject,
+} from "../../../../shared/utils/contentGuards.js";
 
 import { GROUP_CONTACTS } from "../../../../config/core/contacts.js";
 import { GROUP_BASE_PATH } from "../../../../config/core/paths.js";
 
 const MailIcon = GROUP_CONTACTS?.icons?.Mail || (() => null);
 const PhoneIcon = GROUP_CONTACTS?.icons?.Phone || (() => null);
-
-function isValidText(value) {
-  return typeof value === "string" && value.trim().length > 0;
-}
-
-function isValidObject(value) {
-  return value && typeof value === "object" && !Array.isArray(value);
-}
 
 function getTelHref(phone) {
   return isValidText(phone) ? phone.replace(/\s+/g, "") : "";

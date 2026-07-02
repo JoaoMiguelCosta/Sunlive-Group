@@ -16,13 +16,11 @@ export const overview = {
   id: "overview",
 
   brandHero: {
-    renderAs: "image",
     imageSrc: logoGroup,
     alt: "Sunlive Group",
   },
 
   headline: {
-    renderAs: "svg",
     title: "OUR NETWORK OF EXCELLENCE",
     subtitle: "GIVES US OPPORTUNITIES TO CREATE SOLUTIONS SINCE 2007",
     imageSrc: headlineImage,

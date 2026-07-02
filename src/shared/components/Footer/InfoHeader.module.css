@@ -619,15 +619,17 @@
 
 :global([data-brand="group"]) .subtleLink:hover,
 :global([data-brand="group"]) .subtleLink:focus-visible {
-    color:
-        var(--group-accent-primary-hover);
-
     text-decoration: underline;
 
     text-decoration-color:
         rgb(var(--group-accent-primary-rgb) / 42%);
 
     text-underline-offset: 0.18em;
+}
+
+:global([data-brand="group"]) .subtleLink:focus-visible {
+    color:
+        var(--group-accent-primary-hover);
 }
 
 :global([data-brand="group"]) .contactRow {
@@ -699,9 +701,6 @@
 
         border-color:
             var(--info-border-strong);
-
-        color:
-            var(--group-accent-primary-hover);
 
         background:
             var(--group-surface-secondary);
