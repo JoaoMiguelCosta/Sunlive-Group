@@ -54,21 +54,20 @@ html {
     overflow-x: clip;
 
     /*
-     * Fallback global para brands escuras.
-     * As brands podem substituir esta propriedade diretamente.
+     * Fallback global Light Forest.
      *
-     * A Sunlive Group aplica color-scheme: light no seu
-     * contexto [data-brand="group"].
-     */
-    color-scheme: dark;
-
-    /*
-     * O fundo semântico é definido pela brand ativa.
+     * Group é a brand de fallback da aplicação (resolveBrandFromPath
+     * devolve "group" por omissão), por isso o fallback pré-brand tem de
+     * refletir a direção Light Forest, não um tema escuro genérico.
      *
-     * Na Sunlive Group:
-     * --sl-body-bg → --group-background → #daddc0
+     * Cada [data-brand="x"] pode substituir estas propriedades
+     * diretamente (a Sunlive Group fá-lo com o mesmo par de valores).
+     *
+     * Nota: não usar --sl-body-bg aqui — nalgumas brands o token pode
+     * conter um gradiente, o que tornaria background-color inválido.
      */
-
+    color-scheme: light;
+    background-color: #daddc0;
 }
 
 
@@ -96,9 +95,11 @@ body {
      *
      * Na Sunlive Group:
      * --sl-color-text → --group-text-primary
+     *
+     * Fallback Light Forest (texto forest sobre fundo claro).
      */
     color:
-        var(--sl-color-text, #f6f7ed);
+        var(--sl-color-text, #1e2e24);
 
     font-family: var(--sl-ff-ui);
     font-synthesis: none;
