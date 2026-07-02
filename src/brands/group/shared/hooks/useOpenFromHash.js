@@ -63,13 +63,13 @@ export default function useOpenFromHash({
       return undefined;
     }
 
-    lastHashHandledRef.current = handleKey;
-
     if (isOpenRef.current(itemKey)) {
       return undefined;
     }
 
     const timeoutId = window.setTimeout(() => {
+      lastHashHandledRef.current = handleKey;
+
       if (!isOpenRef.current(itemKey)) {
         toggleRef.current(itemKey);
       }
