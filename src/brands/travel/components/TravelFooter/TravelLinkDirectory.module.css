@@ -30,6 +30,8 @@
 
     --flag-h: clamp(0.82rem, 1vw, 1rem);
     --flag-w: clamp(1.15rem, 1.55vw, 1.5rem);
+    --ld-pill-gap: 0.46rem;
+    --ld-pill-label-w: clamp(7.6rem, 6.7rem + 2.3vw, 8.9rem);
 }
 
 .inner {
@@ -194,13 +196,24 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.46rem;
+    gap: var(--ld-pill-gap);
 
     inline-size: 100%;
     min-inline-size: 0;
 
     text-align: center;
     line-height: 1.15;
+}
+
+.pillContentFlagged {
+    display: inline-grid;
+    grid-template-columns: var(--flag-w) var(--ld-pill-label-w);
+    column-gap: var(--ld-pill-gap);
+    justify-content: center;
+}
+
+.pillContentFlagged .pillLabel {
+    text-align: left;
 }
 
 .pillLabel {
@@ -328,6 +341,7 @@
         --ld-pill-text-size: 0.85rem;
         --flag-h: 0.8rem;
         --flag-w: 1.1rem;
+        --ld-pill-gap: 0.42rem;
 
         padding-block: 0.95rem;
         padding-inline: clamp(0.75rem, 3vw, 1rem);
@@ -339,10 +353,6 @@
 
     .blockTitle {
         margin-bottom: 0.68rem;
-    }
-
-    .pillContent {
-        gap: 0.42rem;
     }
 }
 
@@ -372,12 +382,9 @@
         --ld-pill-text-size: 0.78rem;
         --flag-h: 0.75rem;
         --flag-w: 1.02rem;
+        --ld-pill-gap: 0.34rem;
 
         padding-inline: 0.7rem;
-    }
-
-    .pillContent {
-        gap: 0.34rem;
     }
 }
 

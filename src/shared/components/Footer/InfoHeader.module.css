@@ -283,6 +283,14 @@
 
 :global([data-brand="travel"]) .subtleLink {
     color: var(--info-accent-bright);
+    font-weight: 720;
+}
+
+:global([data-brand="travel"]) .subtleLink:hover,
+:global([data-brand="travel"]) .subtleLink:focus-visible {
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.42);
+    text-underline-offset: 0.18em;
 }
 
 :global([data-brand="travel"]) .textMuted {
@@ -290,14 +298,17 @@
     opacity: 1;
 }
 
-:global([data-brand="travel"]) .subtleLink:hover,
-:global([data-brand="travel"]) .link:hover {
-    color: var(--info-accent-bright);
-}
-
 :global([data-brand="travel"]) .link {
     color: var(--info-text-soft);
-    font-weight: 640;
+    font-weight: 650;
+}
+
+:global([data-brand="travel"]) .link:hover,
+:global([data-brand="travel"]) .link:focus-visible {
+    color: var(--info-accent-bright);
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.42);
+    text-underline-offset: 0.16em;
 }
 
 :global([data-brand="travel"]) .cIcon {
@@ -412,6 +423,14 @@
 
 :global([data-brand="sports"]) .subtleLink {
     color: var(--info-accent-bright);
+    font-weight: 720;
+}
+
+:global([data-brand="sports"]) .subtleLink:hover,
+:global([data-brand="sports"]) .subtleLink:focus-visible {
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.42);
+    text-underline-offset: 0.18em;
 }
 
 :global([data-brand="sports"]) .textMuted {
@@ -419,14 +438,17 @@
     opacity: 1;
 }
 
-:global([data-brand="sports"]) .subtleLink:hover,
-:global([data-brand="sports"]) .link:hover {
-    color: var(--info-accent-bright);
-}
-
 :global([data-brand="sports"]) .link {
     color: var(--info-text-soft);
-    font-weight: 640;
+    font-weight: 650;
+}
+
+:global([data-brand="sports"]) .link:hover,
+:global([data-brand="sports"]) .link:focus-visible {
+    color: var(--info-accent-bright);
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.42);
+    text-underline-offset: 0.16em;
 }
 
 :global([data-brand="sports"]) .cIcon {
@@ -852,14 +874,14 @@
 
 :global([data-brand="hotel"]) .subtleLink {
     color: var(--info-accent-bright);
-    font-weight: 700;
+    font-weight: 720;
 }
 
 :global([data-brand="hotel"]) .subtleLink:hover,
 :global([data-brand="hotel"]) .subtleLink:focus-visible {
     color: var(--info-accent-bright);
     text-decoration: underline;
-    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 217 185 120) / 0.42);
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.42);
     text-underline-offset: 0.18em;
 }
 
@@ -876,14 +898,14 @@
 
 :global([data-brand="hotel"]) .link {
     color: var(--info-text-soft);
-    font-weight: 640;
+    font-weight: 650;
 }
 
 :global([data-brand="hotel"]) .link:hover,
 :global([data-brand="hotel"]) .link:focus-visible {
     color: var(--info-accent-bright);
     text-decoration: underline;
-    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 217 185 120) / 0.5);
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.5);
     text-underline-offset: 0.16em;
 }
 
