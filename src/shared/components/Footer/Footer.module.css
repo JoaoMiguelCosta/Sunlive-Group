@@ -409,19 +409,11 @@
   }
 
   :global([data-brand="travel"]) .footerWrap .frame {
-    background:
-      radial-gradient(132% 108% at 50% -12%,
-        rgb(46 167 224 / 0.1),
-        transparent 58%),
-      linear-gradient(180deg, #0b142b, #020814);
+    background: var(--sl-footer-bg);
   }
 
   :global([data-brand="sports"]) .footerWrap .frame {
-    background:
-      radial-gradient(1120px 360px at 0% 0%,
-        rgb(214 166 64 / 0.11),
-        transparent 58%),
-      linear-gradient(180deg, #07101a, #03060b);
+    background: var(--sl-footer-bg);
   }
 
   :global([data-brand="group"]) .footerWrap .frame {
@@ -429,10 +421,6 @@
   }
 
   :global([data-brand="hotel"]) .footerWrap .frame {
-    background:
-      radial-gradient(920px 280px at 50% -16%,
-        rgb(217 185 120 / 0.1),
-        transparent 62%),
-      linear-gradient(135deg, rgb(41 26 17 / 0.98), rgb(7 4 2 / 1));
+    background: var(--sl-footer-bg);
   }
 }

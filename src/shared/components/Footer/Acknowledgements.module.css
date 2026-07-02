@@ -474,15 +474,11 @@
         background: rgb(199 134 21 / 0.08);
     }
 
-    :global([data-brand="travel"]) .sectionWrap {
-        border-top-color: rgb(79 195 247 / 0.2);
-        border-bottom-color: rgb(79 195 247 / 0.2);
-        background: transparent;
-    }
-
-    :global([data-brand="sports"]) .sectionWrap {
-        border-top-color: rgb(214 166 64 / 0.22);
-        border-bottom-color: rgb(214 166 64 / 0.22);
+    :global([data-brand="travel"]) .sectionWrap,
+    :global([data-brand="sports"]) .sectionWrap,
+    :global([data-brand="hotel"]) .sectionWrap {
+        border-top-color: rgb(30 46 36 / 0.28);
+        border-bottom-color: rgb(30 46 36 / 0.28);
         background: transparent;
     }
 
@@ -490,11 +486,5 @@
         border-top-color: rgb(30 46 36 / 0.28);
         border-bottom-color: rgb(30 46 36 / 0.28);
         background: var(--group-logo-surface);
-    }
-
-    :global([data-brand="hotel"]) .sectionWrap {
-        border-top-color: rgb(217 185 120 / 0.18);
-        border-bottom-color: rgb(217 185 120 / 0.18);
-        background: transparent;
     }
 }

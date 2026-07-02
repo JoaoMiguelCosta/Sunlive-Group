@@ -10,25 +10,30 @@
     padding-inline: var(--section-inset);
     padding-block: clamp(0.92rem, 1.32vw, 1.22rem);
 
-    color: var(--sports-directory-text, var(--sports-text));
+    color: var(--sl-footer-text);
     background: transparent;
 
-    --chip-bg: var(--sports-directory-chip-bg);
-    --chip-bg-hover: var(--sports-directory-chip-bg-hover);
-    --chip-highlight-bg: var(--sports-directory-chip-highlight-bg);
+    --chip-bg: var(--sl-footer-chip-bg);
+    --chip-bg-hover: var(--sl-footer-hover-surface);
+    --chip-highlight-bg: var(--sl-footer-hover-surface);
 
-    --chip-border: var(--sports-directory-chip-border);
-    --chip-border-hover: var(--sports-directory-chip-border-hover);
-    --chip-highlight-border: var(--sports-directory-chip-highlight-border);
+    --chip-border: var(--sl-footer-border-strong);
+    --chip-border-hover: var(--sl-footer-accent-strong);
+    --chip-highlight-border: var(--sl-footer-accent-strong);
 
-    --chip-text: var(--sports-directory-chip-text);
-    --chip-text-hover: var(--sports-directory-chip-text-hover);
+    --chip-text: var(--sl-footer-text-soft);
+    --chip-text-hover: var(--sl-footer-text);
 
-    --chip-shadow: var(--sports-directory-chip-shadow);
-    --chip-shadow-hover: var(--sports-directory-chip-shadow-hover);
+    --chip-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.56),
+        0 0.35rem 0.8rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.1);
 
-    --chip-energy-line: var(--sports-directory-energy-line);
-    --chip-focus-ring: var(--sports-directory-focus-ring);
+    --chip-shadow-hover:
+        inset 0 1px 0 rgb(255 255 255 / 0.62),
+        0 0.65rem 1.2rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.14);
+
+    --chip-energy-line: var(--sl-footer-accent-strong);
+    --chip-focus-ring: var(--sl-footer-focus-ring);
 }
 
 .block {
@@ -43,7 +48,7 @@
     margin: 0;
     justify-self: center;
 
-    color: var(--sports-directory-title-color, var(--sports-text));
+    color: var(--sl-footer-accent-strong);
     font-size: var(--sports-support-title-size);
     font-weight: 760;
     line-height: var(--sports-support-title-line);
@@ -115,7 +120,7 @@
     overflow-wrap: anywhere;
     word-break: normal;
 
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.58);
+    text-shadow: none;
 }
 
 .energyLine {
@@ -172,9 +177,7 @@
     border-color: var(--chip-highlight-border);
     background: var(--chip-highlight-bg);
 
-    box-shadow:
-        var(--chip-shadow),
-        0 0 18px rgb(var(--sports-gold-rgb) / 0.055);
+    box-shadow: var(--chip-shadow);
 }
 
 .chip[data-variant="highlight"]:hover {
@@ -182,7 +185,7 @@
     background: var(--chip-bg-hover);
     box-shadow: var(--chip-shadow-hover);
 
-    color: #070a10;
+    color: var(--chip-text-hover);
 }
 
 @media (max-width: 1279.98px) {

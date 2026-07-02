@@ -11,14 +11,12 @@
     padding-block: clamp(0.95rem, 1.45vw, 1.25rem);
     padding-inline: var(--footer-inner-pad, clamp(1rem, 2.4vw, 2rem));
 
-    border-top: 1px solid var(--hotel-footer-section-border,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
-    border-bottom: 1px solid var(--hotel-footer-section-border,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
+    border-top: 1px solid var(--sl-footer-border);
+    border-bottom: 1px solid var(--sl-footer-border);
 
     background: transparent;
 
-    color: var(--hotel-text, rgb(251 247 239 / 0.96));
+    color: var(--sl-footer-text);
 }
 
 .block {
@@ -34,7 +32,7 @@
 
     margin: 0;
 
-    color: var(--hotel-heading, #fbf7ef);
+    color: var(--sl-footer-accent-strong);
     font-family: var(--sl-ff-display, inherit);
     font-size: clamp(0.9rem, 0.82vw, 1.02rem);
     font-weight: 740;
@@ -44,9 +42,7 @@
     text-transform: uppercase;
     text-wrap: balance;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.5),
-        0 0.85rem 1.4rem rgb(0 0 0 / 0.3);
+    text-shadow: none;
 }
 
 .chipsGrid {
@@ -73,28 +69,20 @@
     padding-block: clamp(0.56rem, 0.7vw, 0.68rem);
     padding-inline: clamp(0.8rem, 1vw, 0.96rem);
 
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
+    border: 1px solid var(--sl-footer-border-strong);
     border-radius: 999px;
 
-    background:
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.052) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.014) 100%),
-        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.74);
+    background: var(--sl-footer-chip-bg);
 
-    color: var(--hotel-text-soft, rgb(244 234 216 / 0.82));
+    color: var(--sl-footer-text-soft);
     text-align: center;
     text-decoration: none;
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055),
-        inset 0 -1px 0 rgb(0 0 0 / 0.16),
-        0 0.72rem 1.5rem rgb(0 0 0 / 0.2);
+        inset 0 1px 0 rgb(255 255 255 / 0.56),
+        0 0.35rem 0.8rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.1);
 
     box-sizing: border-box;
-
-    backdrop-filter: blur(8px) saturate(1.04);
-    -webkit-backdrop-filter: blur(8px) saturate(1.04);
 
     transition:
         transform var(--hotel-transition-fast, 160ms ease),
@@ -123,7 +111,7 @@
     letter-spacing: -0.012em;
     text-wrap: balance;
 
-    text-shadow: 0 1px 0 rgb(0 0 0 / 0.5);
+    text-shadow: none;
 }
 
 .energyLine {
@@ -142,9 +130,9 @@
     background:
         linear-gradient(90deg,
             transparent 0%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.22) 16%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.58) 50%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.22) 84%,
+            rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.22) 16%,
+            rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.58) 50%,
+            rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.22) 84%,
             transparent 100%);
 
     transition:
@@ -152,80 +140,59 @@
         transform var(--hotel-transition-fast, 160ms ease);
 }
 
-.chip:hover,
-.chip:focus-visible {
-    transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+    .chip:hover {
+        transform: translateY(-2px);
 
-    border-color: var(--hotel-border-strong,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.38));
+        border-color: var(--sl-footer-accent-strong);
+        background: var(--sl-footer-hover-surface);
+        color: var(--sl-footer-text);
 
-    background:
-        linear-gradient(180deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.11) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.018) 100%),
-        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.86);
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.62),
+            0 0.65rem 1.2rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.14);
+    }
 
-    color: var(--hotel-ivory-050, #fbf7ef);
-
-    filter: saturate(1.035) contrast(1.01);
-
-    box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075),
-        inset 0 -1px 0 rgb(0 0 0 / 0.18),
-        0 0.9rem 2rem rgb(0 0 0 / 0.28),
-        0 0 1.25rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.065);
+    .chip:hover .energyLine {
+        opacity: 0.95;
+        transform: scaleX(1);
+    }
 }
 
-.chip:hover .energyLine,
+.chip:focus-visible {
+    outline: none;
+    transform: translateY(-2px);
+
+    border-color: var(--sl-footer-accent-strong);
+    background: var(--sl-footer-hover-surface);
+    color: var(--sl-footer-text);
+
+    box-shadow: var(--sl-footer-focus-ring);
+}
+
 .chip:focus-visible .energyLine {
     opacity: 0.95;
     transform: scaleX(1);
 }
 
-.chip:focus-visible {
-    outline: none;
-
-    box-shadow:
-        var(--hotel-focus-ring,
-            0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.96),
-            0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86)),
-        0 0.9rem 2rem rgb(0 0 0 / 0.28),
-        0 0 1.25rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.065);
-}
-
 .chip[data-variant="highlight"] {
-    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
-
-    background:
-        linear-gradient(180deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.14) 0%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.045) 100%),
-        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.82);
-
-    color: var(--hotel-ivory-050, #fbf7ef);
+    border-color: var(--sl-footer-accent-strong);
+    background: var(--sl-footer-hover-surface);
+    color: var(--sl-footer-text);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.07),
-        inset 0 -1px 0 rgb(0 0 0 / 0.18),
-        0 0.85rem 1.8rem rgb(0 0 0 / 0.24),
-        0 0 1.15rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06);
+        inset 0 1px 0 rgb(255 255 255 / 0.56),
+        0 0.35rem 0.8rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.1);
 }
 
 .chip[data-variant="highlight"]:hover,
 .chip[data-variant="highlight"]:focus-visible {
-    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.44);
-
-    background:
-        linear-gradient(180deg,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18) 0%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.06) 100%),
-        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.9);
+    border-color: var(--sl-footer-accent-strong);
+    background: var(--sl-footer-hover-surface);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.085),
-        inset 0 -1px 0 rgb(0 0 0 / 0.2),
-        0 1rem 2.2rem rgb(0 0 0 / 0.3),
-        0 0 1.55rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09);
+        inset 0 1px 0 rgb(255 255 255 / 0.62),
+        0 0.65rem 1.2rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.14);
 }
 
 /* =========================================================
