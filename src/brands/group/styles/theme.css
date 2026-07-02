@@ -57,6 +57,44 @@
       var(--group-accent-on-dark);
 
    /* -------------------------------------------------
+      Footer — tokens semânticos partilhados (--sl-footer-*)
+
+      Consumidos por src/shared/components/Footer/*.
+      Mapeiam para os tokens --group-* já existentes; não
+      introduzem nenhum valor novo (Lote 2A).
+      ------------------------------------------------- */
+
+   --sl-footer-accent: var(--group-accent-fresh);
+   --sl-footer-accent-strong: var(--group-accent-primary);
+   --sl-footer-accent-rgb: var(--group-accent-fresh-rgb);
+
+   --sl-footer-text: var(--group-text-primary);
+   --sl-footer-text-soft: var(--group-text-secondary);
+   --sl-footer-text-muted: var(--group-text-muted);
+   --sl-footer-text-rgb: var(--group-surface-inverse-rgb);
+
+   --sl-footer-border: var(--group-border-subtle);
+   --sl-footer-border-rgb: var(--group-surface-inverse-rgb);
+   --sl-footer-border-strong: var(--group-border-default);
+
+   --sl-footer-bg: var(--group-logo-surface);
+   --sl-footer-frame-border: var(--group-border-default);
+
+   --sl-footer-frame-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.72),
+      0 1.35rem 3.2rem rgb(30 46 36 / 0.14);
+
+   --sl-footer-strip-border: var(--group-border-subtle);
+
+   --sl-footer-focus-ring: var(--group-focus-shadow);
+
+   --sl-footer-chip-bg: var(--group-surface-primary);
+   --sl-footer-social-bg: var(--group-surface-primary);
+   --sl-footer-social-bg-hover: var(--group-surface-secondary);
+   --sl-footer-shield-bg: var(--group-surface-secondary);
+   --sl-footer-hover-surface: var(--group-surface-secondary);
+
+   /* -------------------------------------------------
       Tokens de compatibilidade
       ------------------------------------------------- */
 

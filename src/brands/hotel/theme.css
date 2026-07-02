@@ -19,6 +19,108 @@
     --footer-accent: var(--sl-accent-500);
 
     /* =============================
+       Footer — tokens semânticos partilhados (--sl-footer-*)
+
+       Consumidos por src/shared/components/Footer/*.
+       Os valores replicam exatamente o que já estava hardcoded
+       nesses ficheiros (Lote 2A) — nenhuma cor nova foi introduzida.
+       ============================= */
+
+    --sl-footer-accent: var(--hotel-champagne);
+    --sl-footer-accent-strong: var(--hotel-champagne-soft);
+    --sl-footer-accent-rgb: 217 185 120;
+
+    --sl-footer-text: var(--hotel-text);
+    --sl-footer-text-soft: var(--hotel-text-soft);
+    --sl-footer-text-muted: var(--hotel-muted);
+    --sl-footer-text-rgb: 251 247 239;
+
+    --sl-footer-border: var(--hotel-champagne);
+    --sl-footer-border-rgb: 217 185 120;
+    --sl-footer-border-strong: var(--hotel-champagne);
+
+    --sl-footer-bg:
+        radial-gradient(920px 280px at 50% -16%,
+            rgb(217 185 120 / 0.1) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(251 247 239 / 0.035) 0%,
+            rgb(251 247 239 / 0.012) 22%,
+            rgb(0 0 0 / 0.14) 100%),
+        linear-gradient(135deg,
+            rgb(41 26 17 / 0.98) 0%,
+            rgb(26 18 12 / 0.99) 48%,
+            rgb(7 4 2 / 1) 100%);
+
+    --sl-footer-frame-border: rgb(217 185 120 / 0.2);
+
+    --sl-footer-frame-shadow:
+        inset 0 1px 0 rgb(251 247 239 / 0.06),
+        inset 0 -1px 0 rgb(0 0 0 / 0.22),
+        0 1.1rem 2.8rem rgb(0 0 0 / 0.26);
+
+    --sl-footer-strip-border: rgb(217 185 120 / 0.2);
+
+    --sl-footer-focus-ring: var(--hotel-focus-ring);
+
+    --sl-footer-chip-bg:
+        radial-gradient(circle at 30% 30%,
+            rgb(251 247 239 / 0.15) 0%,
+            transparent 58%),
+        radial-gradient(circle at 76% 76%,
+            rgb(125 90 49 / 0.18) 0%,
+            transparent 62%),
+        rgb(41 26 17 / 0.62);
+
+    --sl-footer-social-bg:
+        radial-gradient(circle at 30% 30%,
+            rgb(251 247 239 / 0.13) 0%,
+            transparent 58%),
+        radial-gradient(circle at 80% 80%,
+            rgb(125 90 49 / 0.16) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(251 247 239 / 0.05) 0%,
+            rgb(251 247 239 / 0.012) 100%),
+        rgb(41 26 17 / 0.62);
+
+    --sl-footer-social-bg-hover:
+        radial-gradient(circle at 30% 30%,
+            rgb(251 247 239 / 0.16) 0%,
+            transparent 58%),
+        radial-gradient(circle at 80% 80%,
+            rgb(125 90 49 / 0.18) 0%,
+            transparent 62%),
+        linear-gradient(180deg,
+            rgb(200 137 63 / 0.34) 0%,
+            rgb(125 90 49 / 0.22) 100%),
+        rgb(41 26 17 / 0.72);
+
+    --sl-footer-shield-bg:
+        radial-gradient(circle at 30% 30%,
+            rgb(251 247 239 / 0.13) 0%,
+            transparent 58%),
+        radial-gradient(circle at 80% 80%,
+            rgb(125 90 49 / 0.12) 0%,
+            transparent 62%),
+        rgb(41 26 17 / 0.58);
+
+    --sl-footer-hover-surface:
+        linear-gradient(180deg,
+            rgb(251 247 239 / 0.04) 0%,
+            rgb(251 247 239 / 0.012) 100%),
+        rgb(41 26 17 / 0.28);
+
+    /*
+     * Alias de compatibilidade: estes nomes eram antes definidos
+     * localmente dentro de Footer.module.css (.footerWrap .frame) e
+     * são consumidos por HotelDirectory.module.css (fora do âmbito
+     * deste lote). Passam a viver aqui, no tema da brand.
+     */
+    --hotel-footer-section-border: rgb(217 185 120 / 0.18);
+    --hotel-footer-section-border-strong: rgb(217 185 120 / 0.3);
+
+    /* =============================
        Paleta base
        ============================= */
 

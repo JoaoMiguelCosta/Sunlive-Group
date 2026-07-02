@@ -62,6 +62,88 @@
     --footer-accent: var(--travel-cyan-deep);
 
     /* =========================
+       Footer — tokens semânticos partilhados (--sl-footer-*)
+
+       Consumidos por src/shared/components/Footer/*.
+       Os valores replicam exatamente o que já estava hardcoded
+       nesses ficheiros (Lote 2A) — nenhuma cor nova foi introduzida.
+       ========================= */
+
+    --sl-footer-accent: var(--travel-gold);
+    --sl-footer-accent-strong: var(--travel-gold-soft);
+    --sl-footer-accent-rgb: 224 167 43;
+
+    --sl-footer-text: var(--travel-text);
+    --sl-footer-text-soft: var(--travel-text-soft);
+    --sl-footer-text-muted: var(--travel-muted);
+    --sl-footer-text-rgb: 248 251 255;
+
+    --sl-footer-border: var(--travel-cyan);
+    --sl-footer-border-rgb: 79 195 247;
+    --sl-footer-border-strong: var(--travel-gold);
+
+    --sl-footer-bg:
+        radial-gradient(132% 108% at 50% -12%,
+            rgb(46 167 224 / 0.1) 0%,
+            transparent 58%),
+        radial-gradient(980px 320px at 78% 112%,
+            rgb(79 195 247 / 0.095) 0%,
+            transparent 62%),
+        radial-gradient(760px 280px at 8% 88%,
+            rgb(224 167 43 / 0.055) 0%,
+            transparent 66%),
+        linear-gradient(180deg,
+            #0b142b 0%,
+            #060e22 46%,
+            #020814 100%);
+
+    --sl-footer-frame-border: rgb(79 195 247 / 0.18);
+
+    --sl-footer-frame-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.055),
+        inset 0 -1px 0 rgb(79 195 247 / 0.065),
+        0 1rem 2.6rem rgb(0 0 0 / 0.28),
+        0 0 2rem rgb(79 195 247 / 0.045);
+
+    --sl-footer-strip-border: rgb(79 195 247 / 0.2);
+
+    --sl-footer-focus-ring:
+        0 0 0 2px rgb(2 8 20 / 0.96),
+        0 0 0 4px rgb(224 167 43 / 0.58);
+
+    --sl-footer-chip-bg:
+        radial-gradient(circle at 30% 30%,
+            rgb(255 255 255 / 0.14) 0%,
+            transparent 58%),
+        rgb(7 21 37 / 0.58);
+
+    --sl-footer-social-bg:
+        radial-gradient(circle at 30% 30%,
+            rgb(255 255 255 / 0.12) 0%,
+            transparent 58%),
+        rgb(7 21 37 / 0.58);
+
+    --sl-footer-social-bg-hover:
+        radial-gradient(circle at 30% 30%,
+            rgb(255 255 255 / 0.16) 0%,
+            transparent 58%),
+        linear-gradient(180deg,
+            rgb(224 167 43 / 0.26) 0%,
+            rgb(7 21 37 / 0.72) 100%);
+
+    --sl-footer-shield-bg:
+        radial-gradient(circle at 30% 30%,
+            rgb(255 255 255 / 0.13) 0%,
+            transparent 58%),
+        rgb(7 21 37 / 0.58);
+
+    --sl-footer-hover-surface:
+        linear-gradient(180deg,
+            rgb(255 255 255 / 0.045) 0%,
+            rgb(255 255 255 / 0.012) 100%),
+        rgb(7 21 37 / 0.32);
+
+    /* =========================
        Halo / ornamentos
        ========================= */
 
