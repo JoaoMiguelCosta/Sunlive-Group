@@ -15,6 +15,67 @@
 
   --footer-inner-pad: clamp(14px, 1.8vw, 26px);
   --footer-max-width: 1360px;
+
+  /*
+   * Contrato dimensional partilhado do Footer (Lote 2A.3).
+   *
+   * As dimensões não variam por brand — só a cor variava
+   * historicamente. Valores copiados literalmente de
+   * GroupLinkDirectory.module.css e dos blocos Group de
+   * InfoHeader/PoliciesBar.module.css (referência visual),
+   * que continuam com os seus próprios valores locais
+   * inalterados. Consumidos por TravelLinkDirectory,
+   * SportsLinkDirectory e HotelDirectory, e pelos blocos
+   * Travel/Sports/Hotel de InfoHeader/PoliciesBar.
+   */
+  --sl-footer-pill-min-height: clamp(2.55rem, 2.75vw, 2.9rem);
+  --sl-footer-pill-padding-block: clamp(0.28rem, 0.35vw, 0.38rem);
+  --sl-footer-pill-padding-inline: clamp(0.85rem, 1vw, 1.05rem);
+  --sl-footer-pill-radius: 1rem;
+  --sl-footer-pill-border-width: 1px;
+  --sl-footer-pill-font-size: clamp(0.82rem, 0.77rem + 0.12vw, 0.91rem);
+  --sl-footer-pill-font-weight: 600;
+  --sl-footer-pill-line-height: 1.1;
+
+  --sl-footer-pill-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.56),
+    0 0.35rem 0.8rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.1);
+
+  --sl-footer-pill-shadow-hover:
+    inset 0 1px 0 rgb(255 255 255 / 0.62),
+    0 0.65rem 1.2rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.14);
+
+  --sl-footer-pill-shadow-active:
+    inset 0 2px 5px rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.12),
+    0 0.18rem 0.45rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.08);
+
+  --sl-footer-title-font-size: clamp(1rem, 0.92rem + 0.26vw, 1.16rem);
+  --sl-footer-title-font-weight: 700;
+
+  --sl-footer-grid-row-gap: clamp(0.68rem, 0.9vw, 0.82rem);
+  --sl-footer-grid-column-gap: clamp(0.9rem, 1.4vw, 1.25rem);
+
+  --sl-footer-icon-size: 25px;
+
+  --sl-footer-icon-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.44),
+    0 0.16rem 0.42rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.07);
+
+  --sl-footer-social-size: 35px;
+
+  --sl-footer-social-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.46),
+    0 0.18rem 0.46rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.075);
+
+  --sl-footer-social-shadow-hover:
+    inset 0 1px 0 rgb(255 255 255 / 0.52),
+    0 0.32rem 0.72rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.1);
+
+  --sl-footer-social-shadow-active:
+    inset 0 2px 4px rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.09);
+
+  --sl-footer-shield-size: clamp(18px, 1.15vw, 21px);
+  --sl-footer-shield-shadow: inset 0 1px 0 rgb(255 255 255 / 0.52);
 }
 
 .frame {

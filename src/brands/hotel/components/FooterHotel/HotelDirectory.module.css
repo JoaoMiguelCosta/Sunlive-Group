@@ -33,13 +33,11 @@
     margin: 0;
 
     color: var(--sl-footer-accent-strong);
-    font-family: var(--sl-ff-display, inherit);
-    font-size: clamp(0.9rem, 0.82vw, 1.02rem);
-    font-weight: 740;
-    line-height: 1.12;
-    letter-spacing: 0.085em;
+    font-size: var(--sl-footer-title-font-size, clamp(1rem, 0.92rem + 0.26vw, 1.16rem));
+    font-weight: var(--sl-footer-title-font-weight, 700);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
     text-align: center;
-    text-transform: uppercase;
     text-wrap: balance;
 
     text-shadow: none;
@@ -64,13 +62,13 @@
     justify-content: center;
 
     min-inline-size: 0;
-    min-block-size: clamp(2.5rem, 2.85vw, 2.82rem);
+    min-block-size: var(--sl-footer-pill-min-height, clamp(2.55rem, 2.75vw, 2.9rem));
 
-    padding-block: clamp(0.56rem, 0.7vw, 0.68rem);
-    padding-inline: clamp(0.8rem, 1vw, 0.96rem);
+    padding-block: var(--sl-footer-pill-padding-block, clamp(0.28rem, 0.35vw, 0.38rem));
+    padding-inline: var(--sl-footer-pill-padding-inline, clamp(0.85rem, 1vw, 1.05rem));
 
     border: 1px solid var(--sl-footer-border-strong);
-    border-radius: 999px;
+    border-radius: var(--sl-footer-pill-radius, 1rem);
 
     background: var(--sl-footer-chip-bg);
 
@@ -78,9 +76,7 @@
     text-align: center;
     text-decoration: none;
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.56),
-        0 0.35rem 0.8rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.1);
+    box-shadow: var(--sl-footer-pill-shadow);
 
     box-sizing: border-box;
 
@@ -105,39 +101,23 @@
     overflow-wrap: anywhere;
 
     color: currentColor;
-    font-size: clamp(0.8rem, 0.78rem + 0.12vw, 0.9rem);
-    font-weight: 660;
-    line-height: 1.12;
+    font-size: var(--sl-footer-pill-font-size, clamp(0.82rem, 0.77rem + 0.12vw, 0.91rem));
+    font-weight: var(--sl-footer-pill-font-weight, 600);
+    line-height: var(--sl-footer-pill-line-height, 1.1);
     letter-spacing: -0.012em;
     text-wrap: balance;
 
     text-shadow: none;
 }
 
+/*
+ * O pill Group não tem nenhum traço decorativo na base — a
+ * superfície do chip Light Forest deve ser uniforme. Elemento
+ * mantido no JSX (fora do âmbito deste lote) mas visualmente
+ * desligado.
+ */
 .energyLine {
-    position: absolute;
-    inset-inline: 22%;
-    inset-block-end: 0;
-
-    block-size: 1px;
-
-    pointer-events: none;
-
-    opacity: 0.54;
-    transform: scaleX(0.72);
-    transform-origin: center;
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.22) 16%,
-            rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.58) 50%,
-            rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.22) 84%,
-            transparent 100%);
-
-    transition:
-        opacity var(--hotel-transition-fast, 160ms ease),
-        transform var(--hotel-transition-fast, 160ms ease);
+    display: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -148,15 +128,9 @@
         background: var(--sl-footer-hover-surface);
         color: var(--sl-footer-text);
 
-        box-shadow:
-            inset 0 1px 0 rgb(255 255 255 / 0.62),
-            0 0.65rem 1.2rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.14);
+        box-shadow: var(--sl-footer-pill-shadow-hover);
     }
 
-    .chip:hover .energyLine {
-        opacity: 0.95;
-        transform: scaleX(1);
-    }
 }
 
 .chip:focus-visible {
@@ -170,19 +144,12 @@
     box-shadow: var(--sl-footer-focus-ring);
 }
 
-.chip:focus-visible .energyLine {
-    opacity: 0.95;
-    transform: scaleX(1);
-}
-
 .chip[data-variant="highlight"] {
     border-color: var(--sl-footer-accent-strong);
     background: var(--sl-footer-hover-surface);
     color: var(--sl-footer-text);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.56),
-        0 0.35rem 0.8rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.1);
+    box-shadow: var(--sl-footer-pill-shadow);
 }
 
 .chip[data-variant="highlight"]:hover,
@@ -190,9 +157,7 @@
     border-color: var(--sl-footer-accent-strong);
     background: var(--sl-footer-hover-surface);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.62),
-        0 0.65rem 1.2rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.14);
+    box-shadow: var(--sl-footer-pill-shadow-hover);
 }
 
 /* =========================================================

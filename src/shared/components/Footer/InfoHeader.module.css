@@ -231,9 +231,9 @@
     --info-accent-bright: var(--sl-footer-accent-strong);
     --info-border: rgb(var(--sl-footer-border-rgb, 79 195 247) / 0.2);
     --info-border-strong: rgb(var(--sl-footer-accent-rgb, 224 167 43) / 0.38);
-    --info-text-main: rgb(var(--sl-footer-text-rgb, 248 251 255) / 0.96);
-    --info-text-soft: rgb(224 235 246 / 0.82);
-    --info-text-muted: rgb(180 201 220 / 0.64);
+    --info-text-main: var(--sl-footer-text);
+    --info-text-soft: var(--sl-footer-text-soft);
+    --info-text-muted: var(--sl-footer-text-muted);
 
     isolation: isolate;
     overflow: hidden;
@@ -259,18 +259,16 @@
 }
 
 :global([data-brand="travel"]) .icon {
-    inline-size: 24px;
-    block-size: 24px;
+    inline-size: var(--sl-footer-icon-size);
+    block-size: var(--sl-footer-icon-size);
 
-    border: 1px solid rgb(var(--sl-footer-accent-rgb, 224 167 43) / 0.28);
+    border: 1px solid var(--info-border);
 
     color: var(--info-accent-bright);
 
     background: var(--sl-footer-chip-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.07),
-        0 0.46rem 1rem rgb(0 0 0 / 0.18);
+    box-shadow: var(--sl-footer-icon-shadow);
 }
 
 :global([data-brand="travel"]) .brandEmph,
@@ -304,32 +302,50 @@
 }
 
 :global([data-brand="travel"]) .socialBtn {
-    inline-size: 34px;
-    block-size: 34px;
+    inline-size: var(--sl-footer-social-size);
+    block-size: var(--sl-footer-social-size);
 
-    border-color: rgb(var(--sl-footer-accent-rgb, 224 167 43) / 0.3);
+    border: 1px solid var(--info-border);
 
     color: var(--info-text-main);
 
     background: var(--sl-footer-social-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.06),
-        0 0.48rem 1rem rgb(0 0 0 / 0.16);
+    box-shadow: var(--sl-footer-social-shadow);
 }
 
-:global([data-brand="travel"]) .socialBtn:hover,
-:global([data-brand="travel"]) .socialBtn:focus-visible {
-    transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+    :global([data-brand="travel"]) .socialBtn:hover {
+        transform: translateY(-1px);
 
-    border-color: var(--sl-footer-border-strong);
+        border-color: var(--info-border-strong);
+        color: var(--info-text-main);
+
+        background: var(--sl-footer-social-bg-hover);
+
+        box-shadow: var(--sl-footer-social-shadow-hover);
+    }
+}
+
+:global([data-brand="travel"]) .socialBtn:active {
+    transform: translateY(0);
+
+    border-color: var(--info-border);
+    background: var(--sl-footer-social-bg);
+
+    box-shadow: var(--sl-footer-social-shadow-active);
+}
+
+:global([data-brand="travel"]) .socialBtn:focus-visible {
+    transform: none;
+    outline: none;
+
+    border-color: var(--info-border-strong);
     color: var(--info-text-main);
 
     background: var(--sl-footer-social-bg-hover);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.08),
-        0 0.68rem 1.35rem rgb(0 0 0 / 0.2);
+    box-shadow: var(--sl-footer-focus-ring);
 }
 
 /* =========================================================
@@ -368,18 +384,16 @@
 }
 
 :global([data-brand="sports"]) .icon {
-    inline-size: 24px;
-    block-size: 24px;
+    inline-size: var(--sl-footer-icon-size);
+    block-size: var(--sl-footer-icon-size);
 
-    border: 1px solid rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.28);
+    border: 1px solid var(--info-border);
 
     color: var(--info-accent);
 
     background: var(--sl-footer-chip-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.06),
-        0 0.46rem 1rem rgb(0 0 0 / 0.18);
+    box-shadow: var(--sl-footer-icon-shadow);
 }
 
 :global([data-brand="sports"]) .brandEmph,
@@ -413,32 +427,50 @@
 }
 
 :global([data-brand="sports"]) .socialBtn {
-    inline-size: 34px;
-    block-size: 34px;
+    inline-size: var(--sl-footer-social-size);
+    block-size: var(--sl-footer-social-size);
 
-    border-color: rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.28);
+    border: 1px solid var(--info-border);
 
     color: var(--info-text-main);
 
     background: var(--sl-footer-social-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.06),
-        0 0.48rem 1rem rgb(0 0 0 / 0.16);
+    box-shadow: var(--sl-footer-social-shadow);
 }
 
-:global([data-brand="sports"]) .socialBtn:hover,
-:global([data-brand="sports"]) .socialBtn:focus-visible {
-    transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+    :global([data-brand="sports"]) .socialBtn:hover {
+        transform: translateY(-1px);
 
-    border-color: var(--sl-footer-border-strong);
+        border-color: var(--info-border-strong);
+        color: var(--info-text-main);
+
+        background: var(--sl-footer-social-bg-hover);
+
+        box-shadow: var(--sl-footer-social-shadow-hover);
+    }
+}
+
+:global([data-brand="sports"]) .socialBtn:active {
+    transform: translateY(0);
+
+    border-color: var(--info-border);
+    background: var(--sl-footer-social-bg);
+
+    box-shadow: var(--sl-footer-social-shadow-active);
+}
+
+:global([data-brand="sports"]) .socialBtn:focus-visible {
+    transform: none;
+    outline: none;
+
+    border-color: var(--info-border-strong);
     color: var(--info-text-main);
 
     background: var(--sl-footer-social-bg-hover);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.08),
-        0 0.68rem 1.35rem rgb(0 0 0 / 0.2);
+    box-shadow: var(--sl-footer-focus-ring);
 }
 
 /* =========================================================
@@ -718,9 +750,9 @@
     --info-accent: var(--sl-footer-accent);
     --info-border: rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.18);
     --info-border-strong: rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.3);
-    --info-text-main: rgb(var(--sl-footer-text-rgb, 251 247 239) / 0.97);
-    --info-text-soft: rgb(var(--sl-footer-text-rgb, 251 247 239) / 0.82);
-    --info-text-muted: rgb(var(--sl-footer-text-rgb, 251 247 239) / 0.62);
+    --info-text-main: var(--sl-footer-text);
+    --info-text-soft: var(--sl-footer-text-soft);
+    --info-text-muted: var(--sl-footer-text-muted);
 
     isolation: isolate;
     overflow: hidden;
@@ -755,19 +787,16 @@
 }
 
 :global([data-brand="hotel"]) .icon {
-    inline-size: 24px;
-    block-size: 24px;
+    inline-size: var(--sl-footer-icon-size);
+    block-size: var(--sl-footer-icon-size);
 
-    border: 1px solid rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.2);
+    border: 1px solid var(--info-border);
 
     color: var(--info-accent);
 
     background: var(--sl-footer-chip-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 247 229 / 0.09),
-        inset 0 -1px 0 rgb(125 90 49 / 0.1),
-        0 0.46rem 1rem rgb(0 0 0 / 0.18);
+    box-shadow: var(--sl-footer-icon-shadow);
 }
 
 :global([data-brand="hotel"]) .brandEmph {
@@ -862,37 +891,50 @@
 }
 
 :global([data-brand="hotel"]) .socialBtn {
-    inline-size: 34px;
-    block-size: 34px;
+    inline-size: var(--sl-footer-social-size);
+    block-size: var(--sl-footer-social-size);
 
-    border: 1px solid rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.2);
+    border: 1px solid var(--info-border);
 
     color: var(--info-text-main);
 
     background: var(--sl-footer-social-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 247 229 / 0.065),
-        inset 0 -1px 0 rgb(125 90 49 / 0.09),
-        0 0.48rem 1rem rgb(0 0 0 / 0.16);
+    box-shadow: var(--sl-footer-social-shadow);
 }
 
-:global([data-brand="hotel"]) .socialBtn:hover,
+@media (hover: hover) and (pointer: fine) {
+    :global([data-brand="hotel"]) .socialBtn:hover {
+        transform: translateY(-1px);
+
+        border-color: var(--info-border-strong);
+        color: var(--info-text-main);
+
+        background: var(--sl-footer-social-bg-hover);
+
+        box-shadow: var(--sl-footer-social-shadow-hover);
+    }
+}
+
+:global([data-brand="hotel"]) .socialBtn:active {
+    transform: translateY(0);
+
+    border-color: var(--info-border);
+    background: var(--sl-footer-social-bg);
+
+    box-shadow: var(--sl-footer-social-shadow-active);
+}
+
 :global([data-brand="hotel"]) .socialBtn:focus-visible {
-    transform: translateY(-1px);
+    transform: none;
+    outline: none;
 
-    border-color: var(--sl-footer-border-strong);
-
+    border-color: var(--info-border-strong);
     color: var(--info-text-main);
 
     background: var(--sl-footer-social-bg-hover);
 
-    filter: saturate(1.06) contrast(1.015);
-
-    box-shadow:
-        inset 0 1px 0 rgb(255 247 229 / 0.085),
-        inset 0 -1px 0 rgb(var(--sl-footer-accent-rgb, 217 185 120) / 0.09),
-        0 0.68rem 1.35rem rgb(0 0 0 / 0.2);
+    box-shadow: var(--sl-footer-focus-ring);
 }
 
 /* =========================================================

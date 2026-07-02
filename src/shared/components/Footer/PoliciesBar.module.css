@@ -122,9 +122,10 @@
     --policies-accent-bright: var(--sl-footer-accent-strong);
     --policies-border: rgb(var(--sl-footer-border-rgb, 79 195 247) / 0.2);
     --policies-border-strong: rgb(var(--sl-footer-accent-rgb, 224 167 43) / 0.38);
-    --policies-text-main: rgb(var(--sl-footer-text-rgb, 248 251 255) / 0.94);
-    --policies-text-soft: rgb(224 235 246 / 0.76);
-    --policies-text-muted: rgb(180 201 220 / 0.48);
+    --policies-text-main: var(--sl-footer-text);
+    --policies-text-soft: var(--sl-footer-text-soft);
+    --policies-text-muted: var(--sl-footer-text-muted);
+    --policies-accent-strong: var(--sl-footer-accent-strong);
 
     isolation: isolate;
     overflow: hidden;
@@ -168,15 +169,16 @@
 }
 
 :global([data-brand="travel"]) .shield {
-    border-color: rgb(var(--sl-footer-accent-rgb, 224 167 43) / 0.28);
+    inline-size: var(--sl-footer-shield-size);
+    block-size: var(--sl-footer-shield-size);
 
-    color: var(--policies-accent-bright);
+    border: 1px solid var(--sl-footer-border-strong);
+
+    color: var(--policies-accent-strong);
 
     background: var(--sl-footer-shield-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.06),
-        0 0.42rem 0.95rem rgb(0 0 0 / 0.15);
+    box-shadow: var(--sl-footer-shield-shadow);
 }
 
 :global([data-brand="travel"]) .copyText {
@@ -191,6 +193,7 @@
 
 :global([data-brand="sports"]) .sectionWrap {
     --policies-accent: var(--sl-footer-accent);
+    --policies-accent-strong: var(--sl-footer-accent-strong);
     --policies-border: rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.22);
     --policies-border-strong: rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.38);
     --policies-text-main: var(--sl-footer-text);
@@ -239,15 +242,16 @@
 }
 
 :global([data-brand="sports"]) .shield {
-    border-color: rgb(var(--sl-footer-accent-rgb, 214 166 64) / 0.28);
+    inline-size: var(--sl-footer-shield-size);
+    block-size: var(--sl-footer-shield-size);
 
-    color: var(--policies-accent);
+    border: 1px solid var(--sl-footer-border-strong);
+
+    color: var(--policies-accent-strong);
 
     background: var(--sl-footer-shield-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.06),
-        0 0.42rem 0.95rem rgb(0 0 0 / 0.15);
+    box-shadow: var(--sl-footer-shield-shadow);
 }
 
 :global([data-brand="sports"]) .copyText {
@@ -395,9 +399,10 @@
     --policies-accent: var(--sl-footer-accent);
     --policies-border: rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.18);
     --policies-border-strong: rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.3);
-    --policies-text-main: rgb(var(--sl-footer-text-rgb, 251 247 239) / 0.94);
-    --policies-text-soft: rgb(var(--sl-footer-text-rgb, 251 247 239) / 0.76);
-    --policies-text-muted: rgb(var(--sl-footer-text-rgb, 251 247 239) / 0.46);
+    --policies-text-main: var(--sl-footer-text);
+    --policies-text-soft: var(--sl-footer-text-soft);
+    --policies-text-muted: var(--sl-footer-text-muted);
+    --policies-accent-strong: var(--sl-footer-accent-strong);
 
     isolation: isolate;
     overflow: hidden;
@@ -449,19 +454,16 @@
 }
 
 :global([data-brand="hotel"]) .shield {
-    inline-size: clamp(17px, 1.15vw, 20px);
-    block-size: clamp(17px, 1.15vw, 20px);
+    inline-size: var(--sl-footer-shield-size);
+    block-size: var(--sl-footer-shield-size);
 
-    border: 1px solid rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.2);
+    border: 1px solid var(--sl-footer-border-strong);
 
-    color: rgb(var(--sl-footer-accent-rgb, 217 185 120) / 0.9);
+    color: var(--policies-accent-strong);
 
     background: var(--sl-footer-shield-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 247 229 / 0.065),
-        inset 0 -1px 0 rgb(125 90 49 / 0.08),
-        0 0.42rem 0.95rem rgb(0 0 0 / 0.15);
+    box-shadow: var(--sl-footer-shield-shadow);
 }
 
 :global([data-brand="hotel"]) .shield :global(svg) {
