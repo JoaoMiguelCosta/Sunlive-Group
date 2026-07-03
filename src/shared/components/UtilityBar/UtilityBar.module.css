@@ -546,10 +546,6 @@
    Border states
    ======================================================= */
 
-.utilityBar[data-variant="hotel-header"] .inner {
-    border-bottom: 1px solid var(--header-divider-inner);
-}
-
 /* =======================================================
    Sunlive Group / Logos Header — Light Forest
    ======================================================= */
@@ -1377,326 +1373,85 @@
 }
 
 /* =======================================================
-   Hotel Header — Amber Noir Sport Lodge
+   Hotel Header — Light Forest (paridade com Group/Travel/Sports)
    ======================================================= */
 
 .utilityBar[data-variant="hotel-header"] {
-    --accent: var(--hotel-champagne-soft, #ead7b0);
+    --accent: var(--sl-accent-strong);
 
-    --hotel-header-text: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.98);
-    --hotel-header-text-soft: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.82);
-    --hotel-header-muted: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.62);
-    --hotel-header-champagne: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.94);
-
-    --header-divider-inner: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.17);
-    --header-divider-home: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
-
-    --header-link-color: var(--hotel-header-text-soft);
-    --header-link-hover-color: var(--hotel-header-text);
-
-    --header-back-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
-    --header-back-border-hover: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.36);
-
-    --header-home-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.24);
-    --header-home-border-hover: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.44);
-
-    --header-back-bg-top: rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.58);
-    --header-back-bg-bottom: rgb(var(--hotel-black-rgb, 7 4 2) / 0.9);
-
-    --header-home-bg-top: rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.68);
-    --header-home-bg-bottom: rgb(var(--hotel-black-rgb, 7 4 2) / 0.94);
-
-    --hotel-control-border-hover: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3);
-
-    --hotel-control-bg-hover:
-        radial-gradient(95% 145% at 50% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06) 0%,
-            transparent 68%),
-        radial-gradient(110% 150% at 100% 100%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.07) 0%,
-            transparent 72%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.032) 0%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.14) 100%),
-        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.22);
-
-    --hotel-active-bg:
-        radial-gradient(120% 145% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 0%,
-            transparent 68%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.042),
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.055));
-
-    --hotel-menu-border: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
-
-    --hotel-menu-bg:
-        radial-gradient(140% 150% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09) 0%,
-            transparent 46%),
-        radial-gradient(130% 150% at 100% 100%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1) 0%,
-            transparent 54%),
-        radial-gradient(96% 130% at 50% 100%,
-            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.03) 0%,
-            transparent 68%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.94) 0%,
-            rgb(var(--hotel-graphite-rgb, 26 18 12) / 0.985) 48%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.995) 100%);
-
-    --hotel-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055),
-        0 0.75rem 1.65rem rgb(0 0 0 / 0.24),
-        0 0 1.1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.035);
-
-    --hotel-shadow-hover:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075),
-        0 1rem 2rem rgb(0 0 0 / 0.3),
-        0 0 1.45rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07);
+    --header-menu-bg: var(--sl-surface-footer);
+    --header-active-bg: rgb(var(--sl-accent-strong-rgb) / 15%);
 
     z-index: 80;
 }
 
 .utilityBar[data-variant="hotel-header"] .inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    min-height: clamp(62px, 4.6vw, 72px);
+    padding-block: 0.42rem;
+
     isolation: isolate;
-    border-bottom-color: transparent;
+    border-bottom: 0;
 }
 
-.utilityBar[data-variant="hotel-header"] .inner::before {
-    content: "";
-    position: absolute;
-    inset-inline: 0;
-    inset-block-end: -1px;
-    z-index: 0;
-
-    block-size: 1px;
-    pointer-events: none;
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1) 16%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.28) 50%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1) 84%,
-            transparent 100%);
-
-    opacity: 0.95;
-
-    filter:
-        drop-shadow(0 0 14px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.055));
-}
-
+.utilityBar[data-variant="hotel-header"] .inner::before,
 .utilityBar[data-variant="hotel-header"] .inner::after {
-    content: "";
-    position: absolute;
-    inset: clamp(0.2rem, 0.45vw, 0.38rem) 0 0;
-    z-index: -1;
-
-    border-radius: 0 0 var(--hotel-radius-lg, 1.4rem) var(--hotel-radius-lg, 1.4rem);
-    pointer-events: none;
-
-    background:
-        radial-gradient(42rem 8rem at 12% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.035) 0%,
-            transparent 72%),
-        radial-gradient(34rem 9rem at 88% 10%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.052) 0%,
-            transparent 74%),
-        radial-gradient(24rem 7rem at 58% 100%,
-            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.026) 0%,
-            transparent 78%);
-
-    opacity: 0.92;
+    content: none;
 }
 
-.utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink) {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-
-    color: var(--hotel-header-text-soft);
-    border-color: var(--header-back-border);
-
-    font-weight: 730;
-    letter-spacing: 0.002em;
-
-    text-shadow:
-        0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035),
-        0 0.55rem 1.05rem rgb(0 0 0 / 0.34);
-
-    box-shadow: var(--hotel-shadow);
-
-    backdrop-filter: blur(12px) saturate(1.14);
-    -webkit-backdrop-filter: blur(12px) saturate(1.14);
+.utilityBar[data-variant="hotel-header"] .left {
+    display: none;
 }
 
-.utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink)::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-
-    border-radius: inherit;
-    pointer-events: none;
-
-    background:
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.016) 24%,
-            transparent 52%),
-        radial-gradient(105% 150% at 0% 42%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.052) 0%,
-            transparent 72%),
-        radial-gradient(85% 140% at 100% 62%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.058) 0%,
-            transparent 74%);
-
-    opacity: 0.98;
+.utilityBar[data-variant="hotel-header"] .center {
+    justify-content: flex-start;
+    overflow: visible;
 }
 
-.utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink)::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 3;
-
-    border: 1px solid rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035);
-    border-radius: inherit;
-
-    pointer-events: none;
-
-    box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.048),
-        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.06);
-}
-
-.utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink)>* {
-    position: relative;
-    z-index: 1;
-}
-
-.utilityBar[data-variant="hotel-header"] .backLink {
-    background:
-        radial-gradient(120% 145% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.055) 0%,
-            transparent 46%),
-        radial-gradient(110% 140% at 100% 100%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.052) 0%,
-            transparent 58%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.026) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.008) 26%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.09) 100%),
-        linear-gradient(135deg,
-            var(--header-back-bg-top) 0%,
-            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.7) 56%,
-            var(--header-back-bg-bottom) 100%);
-}
-
-.utilityBar[data-variant="hotel-header"] .homeLink {
-    border-color: var(--header-home-border);
-
-    background:
-        radial-gradient(120% 145% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.078) 0%,
-            transparent 46%),
-        radial-gradient(120% 145% at 100% 100%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.07) 0%,
-            transparent 56%),
-        radial-gradient(90% 130% at 50% 100%,
-            rgb(var(--hotel-olive-rgb, 111 115 84) / 0.03) 0%,
-            transparent 68%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.01) 24%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.08) 100%),
-        linear-gradient(135deg,
-            var(--header-home-bg-top) 0%,
-            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.76) 58%,
-            var(--header-home-bg-bottom) 100%);
-}
-
-.utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink):hover {
-    transform: translateY(-1px);
-
-    color: var(--hotel-header-text);
-    filter: saturate(1.035) contrast(1.012);
-
-    box-shadow: var(--hotel-shadow-hover);
-}
-
-.utilityBar[data-variant="hotel-header"] .backLink:hover {
-    border-color: var(--header-back-border-hover);
-}
-
-.utilityBar[data-variant="hotel-header"] .homeLink:hover {
-    border-color: var(--header-home-border-hover);
-}
-
-.utilityBar[data-variant="hotel-header"] :is(.backIcon, .homeIcon) {
-    color: var(--hotel-header-champagne);
-
-    opacity: 0.94;
-
-    filter:
-        drop-shadow(0 0 0.42rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1)) drop-shadow(0 0.25rem 0.55rem rgb(0 0 0 / 0.28));
-}
-
-.utilityBar[data-variant="hotel-header"] :is(.backText, .homeText) {
-    color: currentColor;
+.utilityBar[data-variant="hotel-header"] .socials {
+    gap: 0.24rem;
 }
 
 .utilityBar[data-variant="hotel-header"] .socialLink {
-    position: relative;
-    isolation: isolate;
+    inline-size: 40px;
+    block-size: 40px;
 
-    color: var(--hotel-header-muted);
     border: 1px solid transparent;
+    border-radius: 1rem;
+
+    color: var(--sl-text-secondary);
     background: transparent;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    transition:
+        color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .utilityBar[data-variant="hotel-header"] .socialLink::before {
-    content: "";
-    position: absolute;
-    inset: 4px;
-    z-index: -1;
-
-    border-radius: inherit;
-    pointer-events: none;
-
-    background:
-        radial-gradient(circle at 50% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.062) 0%,
-            transparent 62%),
-        rgb(var(--hotel-black-rgb, 7 4 2) / 0.12);
-
-    opacity: 0;
-
-    transition:
-        opacity var(--hotel-transition-fast, 180ms ease),
-        transform var(--hotel-transition-fast, 180ms ease);
+    content: none;
 }
 
 .utilityBar[data-variant="hotel-header"] .socialLink:hover {
-    color: var(--hotel-header-text);
-    border-color: var(--hotel-control-border-hover);
-    background: var(--hotel-control-bg-hover);
+    transform: none;
 
-    box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04),
-        0 0.7rem 1.45rem rgb(0 0 0 / 0.18),
-        0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04);
-}
+    border-color: var(--sl-border-subtle);
+    background: var(--sl-surface-primary);
 
-.utilityBar[data-variant="hotel-header"] .socialLink:hover::before {
-    opacity: 1;
-    transform: scale(1.02);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.42);
 }
 
 .utilityBar[data-variant="hotel-header"] .socialIcon {
+    inline-size: 1.08rem;
+    block-size: 1.08rem;
+
     color: currentColor;
-    filter: drop-shadow(0 0.35rem 0.7rem rgb(0 0 0 / 0.24));
+    filter: none;
 }
 
 .utilityBar[data-variant="hotel-header"] .langWrap {
@@ -1704,198 +1459,121 @@
 }
 
 .utilityBar[data-variant="hotel-header"] .langBtn {
-    position: relative;
-    isolation: isolate;
+    inline-size: auto;
+    block-size: auto;
+    min-block-size: 40px;
 
-    min-height: 42px;
-    padding-inline: 0.9rem;
+    gap: 0.4rem;
 
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.22);
-    border-radius: 999px;
+    padding-block: 0.32rem;
+    padding-inline: 0.68rem;
 
-    color: var(--hotel-header-text-soft);
+    border: 1px solid transparent;
+    border-radius: 1rem;
 
-    background:
-        radial-gradient(120% 150% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08) 0%,
-            transparent 52%),
-        radial-gradient(110% 140% at 100% 100%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.08) 0%,
-            transparent 62%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.03) 0%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.08) 100%),
-        linear-gradient(135deg,
-            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.62) 0%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.9) 100%);
+    color: var(--sl-text-secondary);
+    background: transparent;
 
-    box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
-        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.08),
-        0 0.7rem 1.5rem rgb(0 0 0 / 0.24);
+    text-shadow: none;
 
-    text-shadow: 0 0.4rem 0.85rem rgb(0 0 0 / 0.28);
-
-    backdrop-filter: blur(12px) saturate(1.12);
-    -webkit-backdrop-filter: blur(12px) saturate(1.12);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .utilityBar[data-variant="hotel-header"] .langBtn:hover,
 .utilityBar[data-variant="hotel-header"] .langBtn[data-open="true"] {
-    color: var(--hotel-header-text);
-    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.36);
+    color: var(--sl-text-secondary);
+    border-color: var(--sl-border-subtle);
+    background: var(--sl-surface-primary);
 
-    background:
-        radial-gradient(120% 150% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.1) 0%,
-            transparent 52%),
-        radial-gradient(110% 140% at 100% 100%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1) 0%,
-            transparent 62%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.038) 0%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.09) 100%),
-        linear-gradient(135deg,
-            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.68) 0%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.92) 100%);
-
-    box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.075),
-        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1),
-        0 0.85rem 1.7rem rgb(0 0 0 / 0.26),
-        0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.07);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.42);
 }
 
 .utilityBar[data-variant="hotel-header"] .langText {
-    color: currentColor;
+    font-family: var(--sl-ff-ui);
+    text-transform: none;
 }
 
 .utilityBar[data-variant="hotel-header"] .chevron {
-    color: currentColor;
-    opacity: 0.92;
+    color: var(--sl-accent);
+    opacity: 1;
 }
 
 .utilityBar[data-variant="hotel-header"] .langBtn[data-open="true"] .chevron {
-    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.96);
+    color: var(--sl-accent-strong);
 }
 
 .utilityBar[data-variant="hotel-header"] .langMenu {
     z-index: 100;
     overflow: hidden;
 
-    inset-block-start: calc(100% + 0.55rem);
+    border: 1px solid var(--sl-border-default);
+    border-radius: 1.35rem;
 
-    padding: 0.5rem;
-
-    border: 1px solid var(--hotel-menu-border);
-    border-radius: 1.45rem;
-
-    background: var(--hotel-menu-bg);
+    background: var(--header-menu-bg);
 
     box-shadow:
-        0 1.35rem 3rem rgb(0 0 0 / 0.46),
-        0 0 2rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.06),
-        0 0 0 1px rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.025),
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.06),
-        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.08);
+        inset 0 1px 0 rgb(255 255 255 / 0.5),
+        0 0.9rem 2rem rgb(30 46 36 / 0.14);
 
-    backdrop-filter: blur(16px) saturate(1.12);
-    -webkit-backdrop-filter: blur(16px) saturate(1.12);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .utilityBar[data-variant="hotel-header"] .langItem {
-    position: relative;
-
-    gap: 0.18rem;
-
-    padding: 0.8rem 0.9rem;
-
     border: 1px solid transparent;
-    border-radius: 1.1rem;
-
-    color: var(--hotel-header-text-soft);
+    color: var(--sl-text-secondary);
     background: transparent;
-
-    transition:
-        background-color 160ms ease,
-        color 160ms ease,
-        border-color 160ms ease,
-        box-shadow 160ms ease,
-        filter 160ms ease;
 }
 
 .utilityBar[data-variant="hotel-header"] .langItem:hover {
-    color: var(--hotel-header-text);
-    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12);
-
-    background:
-        radial-gradient(120% 140% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.055) 0%,
-            transparent 62%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.03) 0%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.06) 100%);
-
-    box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.035);
-
-    filter: saturate(1.02);
+    background: rgb(var(--sl-accent-strong-rgb) / 10%);
 }
 
 .utilityBar[data-variant="hotel-header"] .langMenu [aria-selected="true"] .langItem {
-    color: var(--hotel-header-text);
-    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18);
-
-    background:
-        radial-gradient(120% 145% at 0% 0%,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.12) 0%,
-            transparent 54%),
-        radial-gradient(120% 145% at 100% 100%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.07) 0%,
-            transparent 62%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04) 0%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.08) 100%),
-        linear-gradient(135deg,
-            rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.46) 0%,
-            rgb(var(--hotel-black-rgb, 7 4 2) / 0.22) 100%);
-
-    box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.055),
-        0 0 0 1px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.04);
-}
-
-.utilityBar[data-variant="hotel-header"] .langMenu [aria-selected="true"] .langItemLabel {
-    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.98);
-}
-
-.utilityBar[data-variant="hotel-header"] .langMenu [aria-selected="true"] .langItemName {
-    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.78);
-}
-
-.utilityBar[data-variant="hotel-header"] .langItemLabel {
-    display: block;
-
-    color: currentColor;
-    font-weight: 800;
-    line-height: 1.12;
-    letter-spacing: 0.055em;
-    text-transform: uppercase;
+    color: var(--sl-accent-strong);
+    background: var(--header-active-bg);
+    font-weight: 600;
 }
 
 .utilityBar[data-variant="hotel-header"] .langItemName {
-    display: block;
-
-    color: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.58);
-    font-size: clamp(0.9rem, 1vw, 0.95rem);
-    line-height: 1.2;
+    color: var(--sl-text-muted);
+    opacity: 1;
 }
 
-.utilityBar[data-variant="hotel-header"] :is(.backLink, .homeLink, .socialLink, .langBtn, .langItem):focus-visible {
+.utilityBar[data-variant="hotel-header"] .langItem:disabled {
+    color: var(--sl-text-muted);
+    opacity: 0.58;
+}
+
+.utilityBar[data-variant="hotel-header"] .langItem:disabled:hover {
+    color: var(--sl-text-muted);
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    filter: none;
+}
+
+.utilityBar[data-variant="hotel-header"] :is(.socialLink, .langBtn, .langItem):focus-visible {
+    outline: none;
     box-shadow:
-        0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.96),
-        0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.7),
-        0 0 1.15rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
+        0 0 0 2px var(--sl-surface-footer),
+        0 0 0 4px var(--sl-accent),
+        0 0 1.25rem var(--sl-focus-ring-color);
+}
+
+@media (max-width: 768px) {
+    .utilityBar[data-variant="hotel-header"] .right {
+        display: none;
+    }
+
+    .utilityBar[data-variant="hotel-header"] .inner {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .utilityBar[data-variant="hotel-header"] .center {
+        inline-size: 100%;
+    }
 }
 
 /* =======================================================
@@ -2140,15 +1818,16 @@
 
 /*
  * O bloco partilhado acima (max-width: 500px) empilha .left/.right
- * para Logos/Hotel, que mostram essa navegação sem hamburger, e por
- * isso volta a exibir .right ali. A Travel e a Sports usam
+ * para Logos, que mostra essa navegação sem hamburger, e por isso
+ * volta a exibir .right ali. Travel, Sports e Hotel usam
  * hamburger+drawer (redes sociais e idioma já disponíveis dentro
  * dele) desde 768px, por isso .right tem de continuar escondido
- * também abaixo de 500px nestas duas variantes.
+ * também abaixo de 500px nestas três variantes.
  */
 @media (max-width: 500px) {
     .utilityBar[data-variant="travel-header"] .right,
-    .utilityBar[data-variant="sports-header"] .right {
+    .utilityBar[data-variant="sports-header"] .right,
+    .utilityBar[data-variant="hotel-header"] .right {
         display: none;
     }
 }
