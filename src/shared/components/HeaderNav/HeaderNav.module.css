@@ -46,6 +46,8 @@
         0 0 0 4px var(--hn-focus-outline),
         0 0 1.25rem var(--hn-focus-ring);
 
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -187,6 +189,38 @@
 }
 
 .megaPanel[hidden] {
+    display: none;
+}
+
+/*
+ * .megaPanelCapsule — variante de .megaPanel para
+ * item.panelPlacement === "capsule": em vez de ficar ancorado ao
+ * trigger (estreito), é irmão de .items dentro de .inner (agora
+ * position:relative) e ocupa toda a largura útil da cápsula,
+ * respeitando as mesmas margens que o resto da navegação.
+ */
+.megaPanelCapsule {
+    position: absolute;
+    inset-block-start: calc(100% + 0.5rem);
+    inset-inline: 0;
+    z-index: 200;
+
+    max-block-size: min(70vh, 32rem);
+    overflow-y: auto;
+
+    padding: 0.9rem;
+
+    border: 1px solid var(--hn-border-default);
+    border-radius: var(--hn-radius-lg);
+
+    background: var(--hn-surface-elevated);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.5),
+        0 0.9rem 2rem rgb(30 46 36 / 0.14);
+}
+
+.megaPanelCapsule[hidden] {
     display: none;
 }
 

@@ -11,6 +11,9 @@ function isHashOnly(href) {
 export default function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick }) {
   const hasSub = Array.isArray(item.submenu) && item.submenu.length > 0;
   const hasPanel = typeof item.renderPanel === "function";
+  // "capsule": o painel é renderizado pela HeaderNav (alinhado à
+  // cápsula inteira), não aqui — este item só fornece o trigger.
+  const rendersOwnPanel = hasPanel && item.panelPlacement !== "capsule";
   const hasDropdown = hasSub || hasPanel;
   const href = item.href || "#";
 
@@ -112,7 +115,7 @@ export default function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick
         </ul>
       ) : null}
 
-      {hasPanel ? (
+      {rendersOwnPanel ? (
         <div id={submenuId} className={styles.megaPanel} role="menu" hidden={!isOpen}>
           {item.renderPanel({
             isOpen,

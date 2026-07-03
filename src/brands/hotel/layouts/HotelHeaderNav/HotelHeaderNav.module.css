@@ -1,4 +1,13 @@
-.wrap {
+/*
+ * Seletor "header.wrap" (não ".wrap") de propósito: HotelShell.module.css
+ * define ".shell > * { z-index: 1 }" com a mesma especificidade de uma
+ * classe simples — dependendo da ordem de carregamento dos módulos CSS
+ * no bundle, essa regra pode ganhar o empate e achatar este z-index a 1,
+ * igual ao de .main, deixando o hero (que vem depois no DOM) pintar por
+ * cima dos menus abertos. Adicionar o tipo do elemento ao seletor
+ * garante especificidade mais alta, sem depender da ordem do bundle.
+ */
+header.wrap {
     position: relative;
     isolation: isolate;
     z-index: 10;

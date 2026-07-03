@@ -64,6 +64,14 @@ export default function HeaderNav({
   const brandMenuId = `${idPrefix}-brand-menu`;
   const mobilePanelId = `${idPrefix}-mobile-panel`;
 
+  // Item cujo painel deve alinhar-se à cápsula inteira (não ao seu
+  // próprio trigger, estreito) — ver panelPlacement em NavItem.jsx.
+  const capsulePanelItem = navItems.find(
+    (item) =>
+      typeof item.renderPanel === "function" &&
+      item.panelPlacement === "capsule",
+  );
+
   return (
     <>
       <nav ref={navRef} className={styles.nav} aria-label={ariaLabel}>
@@ -101,6 +109,23 @@ export default function HeaderNav({
           >
             <MenuIcon className={styles.btnIcon} />
           </button>
+
+          {capsulePanelItem ? (
+            <div
+              id={`nav-submenu-${capsulePanelItem.key}`}
+              className={styles.megaPanelCapsule}
+              role="menu"
+              hidden={!isOpen(capsulePanelItem.key)}
+            >
+              {capsulePanelItem.renderPanel({
+                isOpen: isOpen(capsulePanelItem.key),
+                onNavigate: (event, targetHref) => {
+                  close();
+                  handleSmartAnchorClick(event, targetHref);
+                },
+              })}
+            </div>
+          ) : null}
         </div>
       </nav>
 

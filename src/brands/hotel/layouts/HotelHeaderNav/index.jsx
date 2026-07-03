@@ -20,6 +20,7 @@ export default function HotelHeaderNav() {
       key: "hotel-nav",
       label: activeSection ? activeSection.label : "Explorar o Hotel",
       href: activeSection ? activeSection.href : HOTEL_BASE_PATH,
+      panelPlacement: "capsule",
       renderPanel: ({ onNavigate }) => (
         <NavPanelGrid
           sections={HOTEL_NAV_SECTIONS}
