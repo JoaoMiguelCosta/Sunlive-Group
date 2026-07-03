@@ -88,7 +88,14 @@
     border-radius: var(--hn-radius-md);
 
     color: var(--hn-accent);
-    background: transparent;
+    /*
+     * Trigger da brand ativa: fundo sage sempre ligado (fechado,
+     * aberto, hover ou focus), igual ao estado ativo já usado nos
+     * itens do dropdown (--hn-active-bg). Não é um estado — é o
+     * único visual que este botão tem, porque representa sempre a
+     * brand atual.
+     */
+    background-color: var(--hn-active-bg);
 
     font-family: var(--sl-ff-ui);
     font-size: var(--hn-label-size);
@@ -107,7 +114,7 @@
 }
 
 .brandBtn:hover {
-    background-color: var(--hn-hover-bg);
+    background-color: var(--hn-active-bg);
 }
 
 .brandBtn:focus-visible {
