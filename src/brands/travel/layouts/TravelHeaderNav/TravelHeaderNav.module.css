@@ -51,16 +51,6 @@
 }
 
 .capsule {
-    /*
-     * Container nomeado: a navegação partilhada (HeaderNav) usa
-     * este nome para decidir, via @container, quando trocar o
-     * menu desktop pelo hamburger com base na largura real da
-     * cápsula — não na largura da viewport. Como o nome só existe
-     * aqui, a query correspondente nunca se aplica ao Group.
-     */
-    container-type: inline-size;
-    container-name: travel-utility;
-
     inline-size: min(calc(100% - (2 * var(--capsule-inset))), 1360px);
     max-inline-size: 1360px;
 
@@ -105,5 +95,23 @@
 
     .capsule {
         border-radius: 1rem;
+    }
+}
+
+/*
+ * Faixa compacta — a navegação Travel (brand switcher + 5 links,
+ * 2 com dropdown + CTA) tem mais conteúdo do que a cápsula do Group
+ * e precisa de mais espaço horizontal livre. Entre 769px (limite
+ * inferior do menu desktop) e ~1024px, reduz a margem exterior da
+ * cápsula para dar mais largura útil ao conteúdo, em vez de deixar
+ * os itens colidir. Acima de 1024px mantém-se o espaçamento actual.
+ */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        --capsule-inset: clamp(0.5rem, 1.8vw, 1rem);
+    }
+
+    .capsule {
+        padding-inline: clamp(0.2rem, 0.5vw, 0.4rem);
     }
 }

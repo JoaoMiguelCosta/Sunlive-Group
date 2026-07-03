@@ -373,31 +373,43 @@
 }
 
 /*
- * Container query nomeada — só se aplica quando HeaderNav está
- * dentro de um container "travel-utility" (ver .capsule em
- * TravelHeaderNav.module.css). A Travel tem mais itens do que o
- * Group (brand switcher + 5 links, 2 com dropdown) e por isso
- * precisa de trocar para hamburger com espaço real de sobra, não
- * apenas com base na largura da viewport. Como o nome do container
- * não existe em nenhum wrapper do Group/Sports/Hotel, esta regra
- * nunca os afeta.
- *
- * 1180px = largura mínima estimada da cápsula para caber "Sunlive
- * Travel ▴ Logística Destinos ▴ Parceiros ▴ Testemunhos Contactar"
- * mais redes sociais e idioma (~1000px de conteúdo real) com
- * margem de segurança para fontes, zoom, scrollbar e tradução.
+ * Faixa compacta — entre 769px (limite inferior do menu desktop
+ * completo) e ~1024px não há espaço suficiente para os triggers,
+ * gaps e labels no seu tamanho máximo. Em vez de esconder itens ou
+ * deixá-los colidir, reduz label, padding e gaps de forma fluida
+ * (clamp), convergindo para o resultado desktop já aprovado a
+ * partir de ~1024px.
  */
-@container travel-utility (max-width: 1180px) {
-    .items {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
+@media (min-width: 769px) and (max-width: 1024px) {
     .inner {
-        justify-content: flex-end;
+        --hn-label-size: clamp(0.6rem, 1.35vw, 0.86rem);
+    }
+
+    .items {
+        gap: clamp(0.02rem, 0.1vw, 0.12rem);
+    }
+
+    .brandBtn {
+        gap: clamp(0.16rem, 0.3vw, 0.28rem);
+        padding-inline: clamp(0.2rem, 0.45vw, 0.4rem);
+    }
+
+    .navLink {
+        padding-inline: clamp(0.2rem, 0.45vw, 0.4rem);
+    }
+
+    .navLinkWithToggle {
+        padding-inline-end: clamp(0.14rem, 0.3vw, 0.28rem);
+    }
+
+    .chevron {
+        inline-size: clamp(0.4rem, 0.45vw, 0.48rem);
+        block-size: clamp(0.4rem, 0.45vw, 0.48rem);
+    }
+
+    .navToggle {
+        min-inline-size: clamp(20px, 2.2vw, 24px);
+        padding-inline: clamp(0.16rem, 0.28vw, 0.28rem);
     }
 }
 

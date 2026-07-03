@@ -1134,12 +1134,6 @@
         0 0 1.25rem var(--sl-focus-ring-color);
 }
 
-/*
- * Rede de segurança para browsers sem suporte a container queries
- * (a query real está abaixo). Como a viewport nunca é mais estreita
- * que a cápsula, isto nunca contradiz a container query — apenas
- * cobre navegadores antigos com o limiar antigo, mais conservador.
- */
 @media (max-width: 768px) {
     .utilityBar[data-variant="travel-header"] .right {
         display: none;
@@ -1155,24 +1149,30 @@
 }
 
 /*
- * Container query nomeada — ver .capsule em TravelHeaderNav.module.css
- * e a mesma query em shared/components/HeaderNav/HeaderNav.module.css.
- * Troca para o mesmo limiar (1180px de largura da cápsula) em que a
- * navegação desktop dá lugar ao hamburger, escondendo redes sociais e
- * idioma da barra (já disponíveis dentro do drawer) e devolvendo a
- * grid a uma única coluna.
+ * Faixa compacta — ver a mesma media query em
+ * shared/components/HeaderNav/HeaderNav.module.css e em
+ * TravelHeaderNav.module.css. Reduz redes sociais e idioma de forma
+ * fluida entre 769px e ~1024px, para libertar espaço à navegação
+ * sem esconder nada nem introduzir scroll horizontal.
  */
-@container travel-utility (max-width: 1180px) {
-    .utilityBar[data-variant="travel-header"] .right {
-        display: none;
+@media (min-width: 769px) and (max-width: 1024px) {
+    .utilityBar[data-variant="travel-header"] .socials {
+        gap: clamp(0.1rem, 0.18vw, 0.2rem);
     }
 
-    .utilityBar[data-variant="travel-header"] .inner {
-        grid-template-columns: minmax(0, 1fr);
+    .utilityBar[data-variant="travel-header"] .socialLink {
+        inline-size: clamp(26px, 3vw, 32px);
+        block-size: clamp(26px, 3vw, 32px);
     }
 
-    .utilityBar[data-variant="travel-header"] .center {
-        inline-size: 100%;
+    .utilityBar[data-variant="travel-header"] .socialIcon {
+        inline-size: clamp(0.88rem, 1vw, 1.02rem);
+        block-size: clamp(0.88rem, 1vw, 1.02rem);
+    }
+
+    .utilityBar[data-variant="travel-header"] .langBtn {
+        gap: clamp(0.16rem, 0.25vw, 0.28rem);
+        padding-inline: clamp(0.2rem, 0.45vw, 0.4rem);
     }
 }
 
