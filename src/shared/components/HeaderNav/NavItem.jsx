@@ -10,9 +10,11 @@ function isHashOnly(href) {
 
 export default function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick }) {
   const hasSub = Array.isArray(item.submenu) && item.submenu.length > 0;
+  const hasPanel = typeof item.renderPanel === "function";
+  const hasDropdown = hasSub || hasPanel;
   const href = item.href || "#";
 
-  if (!hasSub && isHashOnly(href)) {
+  if (!hasDropdown && isHashOnly(href)) {
     return (
       <a
         href={href}
@@ -27,10 +29,10 @@ export default function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick
     );
   }
 
-  const submenuId = hasSub ? `nav-submenu-${item.key}` : undefined;
+  const submenuId = hasDropdown ? `nav-submenu-${item.key}` : undefined;
 
   const handleMainClick = (event) => {
-    if (hasSub) {
+    if (hasDropdown) {
       event.preventDefault();
       onToggle(item.key);
       return;
@@ -49,20 +51,20 @@ export default function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick
   return (
     <div
       className={styles.navItem}
-      data-has-submenu={hasSub || undefined}
+      data-has-submenu={hasDropdown || undefined}
       data-open={isOpen || undefined}
     >
       <div className={styles.navItemRow}>
         <NavLink
           to={href}
-          end={!hasSub}
-          aria-expanded={hasSub ? isOpen : undefined}
-          aria-haspopup={hasSub ? "menu" : undefined}
-          aria-controls={hasSub ? submenuId : undefined}
+          end={!hasDropdown}
+          aria-expanded={hasDropdown ? isOpen : undefined}
+          aria-haspopup={hasDropdown ? "menu" : undefined}
+          aria-controls={hasDropdown ? submenuId : undefined}
           className={({ isActive }) =>
             [
               styles.navLink,
-              hasSub ? styles.navLinkWithToggle : "",
+              hasDropdown ? styles.navLinkWithToggle : "",
               isActive ? styles.navLinkActive : "",
               isOpen ? styles.navLinkOpen : "",
             ]
@@ -74,7 +76,7 @@ export default function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick
           {item.label}
         </NavLink>
 
-        {hasSub ? (
+        {hasDropdown ? (
           <button
             type="button"
             className={`${styles.navToggle}${isOpen ? ` ${styles.navToggleActive}` : ""}`}
@@ -108,6 +110,18 @@ export default function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick
             </li>
           ))}
         </ul>
+      ) : null}
+
+      {hasPanel ? (
+        <div id={submenuId} className={styles.megaPanel} role="menu" hidden={!isOpen}>
+          {item.renderPanel({
+            isOpen,
+            onNavigate: (event, targetHref) => {
+              onClose?.();
+              onAnchorClick?.(event, targetHref);
+            },
+          })}
+        </div>
       ) : null}
     </div>
   );

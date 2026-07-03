@@ -33,6 +33,7 @@ export default function HeaderNav({
   brands,
   activeBrandKey,
   navItems,
+  mobileNavItems,
   socials = [],
   lang,
   smartAnchorTargetPath,
@@ -108,7 +109,7 @@ export default function HeaderNav({
           panelId={mobilePanelId}
           brands={brands}
           activeBrandKey={activeBrandKey}
-          navItems={navItems}
+          navItems={mobileNavItems ?? navItems}
           socials={socials}
           lang={lang}
           panelRef={panelRef}

@@ -1,10 +1,3 @@
-export function makeBackLink({
-  href = "/sunlive-group",
-  label = "Voltar Sunlive Group",
-} = {}) {
-  return { href, label };
-}
-
 export function makeBook({
   id = "book",
   label = "Open Book",

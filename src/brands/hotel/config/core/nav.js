@@ -201,3 +201,45 @@ export const HOTEL_PRIMARY_NAV_ITEMS = Object.freeze([
     ],
   },
 ]);
+
+function normalizePath(path) {
+  if (typeof path !== "string") return "";
+  if (path === "/") return path;
+  return path.replace(/\/+$/, "");
+}
+
+/**
+ * HOTEL_NAV_SECTIONS — HOTEL_PRIMARY_NAV_ITEMS adaptado para o shape
+ * consumido pela HeaderNav/MobileNavPanel partilhadas ({key, label,
+ * href, submenu}). Única fonte usada pelo painel geral (desktop) e
+ * pelos accordions do drawer (mobile) — não duplica a lista.
+ */
+export const HOTEL_NAV_SECTIONS = Object.freeze(
+  HOTEL_PRIMARY_NAV_ITEMS.map((item) => ({
+    key: item.id,
+    label: item.label,
+    href: item.to,
+    submenu: (Array.isArray(item.links) ? item.links : []).map(
+      (link, index) => ({
+        key: `${item.id}-${index}`,
+        label: link.label,
+        href: link.href,
+      }),
+    ),
+  })),
+);
+
+/**
+ * Deriva a secção Hotel ativa a partir do pathname atual, usando
+ * HOTEL_NAV_SECTIONS como única fonte — sem condições manuais por
+ * rota. Devolve null na home (ou fora do conjunto de secções).
+ */
+export function getHotelActiveSection(pathname) {
+  const normalizedPathname = normalizePath(pathname);
+
+  return (
+    HOTEL_NAV_SECTIONS.find(
+      (section) => normalizePath(section.href) === normalizedPathname,
+    ) ?? null
+  );
+}

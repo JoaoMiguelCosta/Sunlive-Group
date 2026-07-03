@@ -29,7 +29,7 @@ export {
 
 export { SHARED_BOOKS } from "./core/books.js";
 
-export { makeBackLink, makeBook, makeDefaultCTA } from "./factories/brand.js";
+export { makeBook, makeDefaultCTA } from "./factories/brand.js";
 
 export { GLOBAL_ICONS } from "./icons/global.icons.js";
 export { GLOBAL_FLAGS } from "./icons/flags.icons.js";
