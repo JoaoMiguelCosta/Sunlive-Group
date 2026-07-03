@@ -68,7 +68,12 @@ export default function NavItem({ item, isOpen, onToggle, onClose, onAnchorClick
             [
               styles.navLink,
               hasDropdown ? styles.navLinkWithToggle : "",
-              isActive ? styles.navLinkActive : "",
+              // Um href só de hash resolve sempre para o pathname
+              // atual — o isActive do NavLink seria permanentemente
+              // verdadeiro e não reflete nenhuma rota real. Para
+              // esses triggers, o destaque vem só de hover/focus/
+              // dropdown aberto (.navLinkOpen).
+              isActive && !isHashOnly(href) ? styles.navLinkActive : "",
               isOpen ? styles.navLinkOpen : "",
             ]
               .filter(Boolean)

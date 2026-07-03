@@ -332,6 +332,21 @@
     background-color: var(--hn-active-bg);
 }
 
+/*
+ * Destaque do trigger enquanto o próprio dropdown está aberto —
+ * independente de isActive (ver NavItem.jsx), para triggers cujo
+ * href é só um hash (ex. Parceiros) e não uma rota distinta.
+ */
+.navLinkOpen {
+    color: var(--hn-accent);
+    background-color: var(--hn-active-bg);
+    font-weight: var(--hn-weight-semibold);
+}
+
+.navLinkOpen:hover {
+    background-color: var(--hn-active-bg);
+}
+
 .navItem {
     position: relative;
     flex: 0 0 auto;

@@ -55,8 +55,6 @@ export default function PartnerLogoGrid({
           </div>
         ))}
       </div>
-
-      <div className={styles.goldRule} aria-hidden="true" />
     </div>
   );
 }

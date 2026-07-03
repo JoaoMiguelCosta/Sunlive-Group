@@ -234,31 +234,6 @@
 
 
 /* ============================================================
-   Section rule
-   ============================================================ */
-
-.goldRule {
-    justify-self: center;
-
-    inline-size:
-        min(100%, 100rem);
-
-    block-size: 1px;
-
-    margin-block-start:
-        clamp(0.35rem, 1.2vw, 0.75rem);
-
-    border-radius:
-        var(--group-radius-pill);
-
-    background-color:
-        var(--group-border-default);
-
-    opacity: 0.72;
-}
-
-
-/* ============================================================
    Hover
    Sem movimento, sombra ou alteração da cor do texto.
    ============================================================ */
@@ -416,10 +391,6 @@
         font-size: 0.8rem;
         line-height: 1.2;
     }
-
-    .goldRule {
-        opacity: 0.62;
-    }
 }
 
 @media (max-width: 399.98px) {
@@ -467,10 +438,6 @@
     .caption {
         color: #111;
         text-shadow: none;
-    }
-
-    .goldRule {
-        display: none;
     }
 
     .logoFrame {

@@ -222,6 +222,17 @@
     flex: 1;
 }
 
+/*
+ * Destaque do trigger enquanto o próprio acordeão está aberto —
+ * mesmo tratamento do .navLinkOpen desktop, para triggers cujo
+ * href é só um hash e por isso não têm isActive de rota real.
+ */
+.accordion[data-open] .accordionTrigger {
+    color: var(--hn-accent);
+    background-color: var(--hn-active-bg);
+    font-weight: var(--hn-weight-semibold);
+}
+
 .accordionToggle {
     display: inline-flex;
     align-items: center;

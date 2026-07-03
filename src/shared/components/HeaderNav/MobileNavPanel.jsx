@@ -67,7 +67,11 @@ function MobileNavItem({ item, isOpen, onToggle, onAnchorClick }) {
         <NavLink
           to={href}
           className={({ isActive }) =>
-            `${styles.panelLink} ${styles.accordionTrigger}${isActive ? ` ${styles.panelLinkActive}` : ""}`
+            // Href só de hash (ex. Parceiros) resolve sempre para o
+            // pathname atual — isActive seria permanentemente
+            // verdadeiro. O destaque vem então só de hover/focus/
+            // acordeão aberto (data-open no wrapper .accordion).
+            `${styles.panelLink} ${styles.accordionTrigger}${isActive && !isHashOnly(href) ? ` ${styles.panelLinkActive}` : ""}`
           }
           aria-expanded={isOpen}
           aria-controls={submenuId}
