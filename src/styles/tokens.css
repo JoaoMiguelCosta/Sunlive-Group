@@ -27,6 +27,8 @@
     --sl-color-forest-700: #2e4d3b;
     --sl-color-forest-600: #2d6b4f;
 
+    --sl-color-forest-700-rgb: 46 77 59;
+
     --sl-color-sage-100: #f6f7ed;
     --sl-color-sage-200: #f0f1e2;
     --sl-color-sage-300: #e6e8d1;
@@ -58,6 +60,7 @@
     --sl-accent: var(--sl-color-forest-600);
     --sl-accent-strong: var(--sl-color-forest-700);
     --sl-accent-rgb: var(--sl-color-forest-600-rgb);
+    --sl-accent-strong-rgb: var(--sl-color-forest-700-rgb);
 
     --sl-border-subtle: rgb(var(--sl-color-forest-900-rgb) / 14%);
     --sl-border-default: rgb(var(--sl-color-forest-900-rgb) / 28%);

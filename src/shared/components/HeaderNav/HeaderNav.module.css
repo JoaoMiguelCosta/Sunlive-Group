@@ -1,0 +1,389 @@
+/* =========================================================
+   HeaderNav — navegação partilhada (desktop + mobile trigger)
+   Consome apenas tokens globais (--sl-*), não scoped a nenhuma
+   brand, para poder ser usado sob qualquer [data-brand].
+   ========================================================= */
+
+.nav {
+    display: flex;
+    align-items: center;
+
+    inline-size: 100%;
+    min-inline-size: 0;
+}
+
+.inner {
+    --hn-radius-sm: 0.65rem;
+    --hn-radius-md: 1rem;
+    --hn-radius-lg: 1.35rem;
+
+    --hn-duration-fast: 150ms;
+    --hn-duration-normal: 240ms;
+    --hn-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --hn-ease-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    --hn-weight-medium: 500;
+    --hn-weight-semibold: 600;
+
+    --hn-label-size: clamp(0.9rem, 1.6vw, 1.04rem);
+    --hn-label-tracking: -0.012em;
+
+    --hn-text: var(--sl-text-secondary);
+    --hn-accent: var(--sl-accent-strong);
+    --hn-accent-fresh: var(--sl-accent);
+    --hn-surface-elevated: var(--sl-surface-footer);
+    --hn-surface-secondary: var(--sl-surface-secondary);
+    --hn-border-default: var(--sl-border-default);
+
+    --hn-hover-bg: rgb(var(--sl-accent-strong-rgb) / 10%);
+    --hn-active-bg: rgb(var(--sl-accent-strong-rgb) / 15%);
+
+    --hn-focus-outline: var(--sl-accent);
+    --hn-focus-ring: var(--sl-focus-ring-color);
+    --hn-focus-offset-color: var(--sl-surface-footer);
+    --hn-focus-shadow:
+        0 0 0 2px var(--hn-focus-offset-color),
+        0 0 0 4px var(--hn-focus-outline),
+        0 0 1.25rem var(--hn-focus-ring);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+
+    inline-size: 100%;
+    min-inline-size: 0;
+}
+
+.items {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.12rem, 0.3vw, 0.24rem);
+
+    min-inline-size: 0;
+}
+
+
+/* =========================================================
+   Brand dropdown
+   ========================================================= */
+
+.brand {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.brandBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+
+    min-block-size: 42px;
+    padding-block: 0.42rem;
+    padding-inline: 0.72rem;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-md);
+
+    color: var(--hn-accent);
+    background: transparent;
+
+    font-family: var(--sl-ff-ui);
+    font-size: var(--hn-label-size);
+    font-weight: var(--hn-weight-semibold);
+    line-height: 1;
+    letter-spacing: var(--hn-label-tracking);
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        color var(--hn-duration-fast) var(--hn-ease-standard),
+        background-color var(--hn-duration-fast) var(--hn-ease-standard),
+        border-color var(--hn-duration-fast) var(--hn-ease-standard),
+        box-shadow var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.brandBtn:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.brandBtn:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.chevron {
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    flex: 0 0 auto;
+
+    color: var(--hn-accent-fresh);
+
+    transition: transform var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.chevronOpen {
+    transform: rotate(180deg);
+}
+
+.brandMenu,
+.submenu {
+    position: absolute;
+    inset-block-start: calc(100% + 0.5rem);
+    inset-inline-start: 0;
+    z-index: 200;
+
+    min-inline-size: 14rem;
+    margin: 0;
+    padding: 0.4rem;
+
+    list-style: none;
+
+    border: 1px solid var(--hn-border-default);
+    border-radius: var(--hn-radius-lg);
+
+    background: var(--hn-surface-elevated);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.5),
+        0 0.9rem 2rem rgb(30 46 36 / 0.14);
+}
+
+.submenu[hidden] {
+    display: none;
+}
+
+.brandItem,
+.subLink {
+    display: block;
+
+    padding-block: 0.62rem;
+    padding-inline: 0.8rem;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-sm);
+
+    color: var(--hn-accent);
+    background: transparent;
+
+    font-family: var(--sl-ff-ui);
+    font-size: var(--hn-label-size);
+    font-weight: var(--hn-weight-medium);
+    line-height: 1.2;
+    text-decoration: none;
+
+    transition:
+        color var(--hn-duration-fast) var(--hn-ease-standard),
+        background-color var(--hn-duration-fast) var(--hn-ease-standard),
+        border-color var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.brandItem:hover,
+.subLink:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.brandItem:focus-visible,
+.subLink:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.brandItemActive {
+    color: var(--hn-accent);
+    background-color: var(--hn-active-bg);
+    font-weight: var(--hn-weight-semibold);
+}
+
+.brandItemActive:hover {
+    background-color: var(--hn-active-bg);
+}
+
+
+/* =========================================================
+   Nav items — link simples ou link + dropdown de submenu
+   ========================================================= */
+
+.navLink {
+    display: inline-flex;
+    align-items: center;
+
+    min-block-size: 42px;
+    padding-block: 0.42rem;
+    padding-inline: 0.72rem;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-md);
+
+    color: var(--hn-text);
+    background: transparent;
+
+    font-family: var(--sl-ff-ui);
+    font-size: var(--hn-label-size);
+    font-weight: var(--hn-weight-medium);
+    line-height: 1;
+    letter-spacing: var(--hn-label-tracking);
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        color var(--hn-duration-fast) var(--hn-ease-standard),
+        background-color var(--hn-duration-fast) var(--hn-ease-standard),
+        border-color var(--hn-duration-fast) var(--hn-ease-standard),
+        box-shadow var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.navLink:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.navLink:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.navLinkActive {
+    color: var(--hn-accent);
+    background-color: var(--hn-active-bg);
+    font-weight: var(--hn-weight-semibold);
+}
+
+.navLinkActive:hover {
+    background-color: var(--hn-active-bg);
+}
+
+.navItem {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.navItemRow {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.05rem;
+}
+
+.navLinkWithToggle {
+    padding-inline-end: 0.45rem;
+}
+
+.navToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-block-size: 42px;
+    min-inline-size: 30px;
+    padding-inline: 0.3rem;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-md);
+
+    color: var(--hn-accent-fresh);
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--hn-duration-fast) var(--hn-ease-standard),
+        border-color var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.navToggle:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.navToggle:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.navToggleActive .chevron {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   Hamburger
+   ========================================================= */
+
+.hamburger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    min-block-size: 42px;
+    min-inline-size: 42px;
+    padding: 0.45rem;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-md);
+
+    color: var(--hn-text);
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        color var(--hn-duration-fast) var(--hn-ease-standard),
+        background-color var(--hn-duration-fast) var(--hn-ease-standard),
+        border-color var(--hn-duration-fast) var(--hn-ease-standard),
+        box-shadow var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.hamburger:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.hamburger:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.btnIcon {
+    inline-size: 1.2rem;
+    block-size: 1.2rem;
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .items {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .inner {
+        justify-content: flex-end;
+    }
+}
+
+
+/* =========================================================
+   Reduced motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .chevron,
+    .brandBtn,
+    .brandItem,
+    .navLink,
+    .navToggle,
+    .hamburger {
+        transition: none;
+    }
+}

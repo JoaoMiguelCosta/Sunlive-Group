@@ -1,12 +1,10 @@
 import { NavLink } from "react-router-dom";
 
-import { useLangMenu } from "../../../shared/hooks/useLangMenu.js";
+import { useLangMenu } from "../../hooks/useLangMenu.js";
+import useMenuGroup from "../../hooks/useMenuGroup.js";
+import ChevronDownIcon from "../ChevronDownIcon.jsx";
 
-import { GROUP_NAV_BRANDS, GROUP_NAV_ANCHORS } from "../config/core/nav.js";
-import { LANG_FALLBACK } from "../config/core/language.js";
-import ChevronDownIcon from "../shared/components/ChevronDownIcon.jsx";
-
-import styles from "./GroupHeaderNav.module.css";
+import styles from "./MobileNavPanel.module.css";
 
 function XIcon({ className }) {
   return (
@@ -26,7 +24,97 @@ function XIcon({ className }) {
   );
 }
 
-export default function GroupMobileNavPanel({
+function isHashOnly(href) {
+  return typeof href === "string" && href.startsWith("#");
+}
+
+function MobileNavItem({ item, isOpen, onToggle, onAnchorClick }) {
+  const hasSub = Array.isArray(item.submenu) && item.submenu.length > 0;
+  const href = item.href || "#";
+
+  if (!hasSub) {
+    if (isHashOnly(href)) {
+      return (
+        <a
+          href={href}
+          className={styles.panelLink}
+          onClick={(event) => onAnchorClick(event, href)}
+        >
+          {item.label}
+        </a>
+      );
+    }
+
+    return (
+      <NavLink
+        to={href}
+        end
+        className={({ isActive }) =>
+          `${styles.panelLink}${isActive ? ` ${styles.panelLinkActive}` : ""}`
+        }
+        onClick={(event) => onAnchorClick(event, href)}
+      >
+        {item.label}
+      </NavLink>
+    );
+  }
+
+  const submenuId = `mobile-submenu-${item.key}`;
+
+  return (
+    <div className={styles.accordion} data-open={isOpen || undefined}>
+      <div className={styles.accordionHead}>
+        <NavLink
+          to={href}
+          className={({ isActive }) =>
+            `${styles.panelLink} ${styles.accordionTrigger}${isActive ? ` ${styles.panelLinkActive}` : ""}`
+          }
+          aria-expanded={isOpen}
+          aria-controls={submenuId}
+          onClick={(event) => {
+            event.preventDefault();
+            onToggle(item.key);
+          }}
+        >
+          {item.label}
+        </NavLink>
+
+        <button
+          type="button"
+          className={`${styles.accordionToggle}${isOpen ? ` ${styles.accordionToggleActive}` : ""}`}
+          aria-label={`${isOpen ? "Fechar" : "Abrir"} submenu ${item.label}`}
+          aria-expanded={isOpen}
+          aria-controls={submenuId}
+          onClick={() => onToggle(item.key)}
+        >
+          <ChevronDownIcon
+            className={`${styles.accordionChevron}${isOpen ? ` ${styles.accordionChevronOpen}` : ""}`}
+          />
+        </button>
+      </div>
+
+      <ul id={submenuId} className={styles.accordionList} hidden={!isOpen}>
+        {item.submenu.map((sub) => (
+          <li key={sub.key}>
+            <a
+              href={sub.href}
+              className={styles.accordionLink}
+              onClick={(event) => onAnchorClick(event, sub.href)}
+            >
+              {sub.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default function MobileNavPanel({
+  panelId,
+  brands,
+  activeBrandKey,
+  navItems,
   socials = [],
   lang,
   panelRef,
@@ -34,6 +122,8 @@ export default function GroupMobileNavPanel({
   onCloseAndFocus,
   onAnchorClick,
 }) {
+  const { isOpen, toggle } = useMenuGroup();
+
   // Mobile language menu — separate instance and id from desktop
   const {
     ref: mobileLangRef,
@@ -42,10 +132,11 @@ export default function GroupMobileNavPanel({
     options: mobileLangOptions,
     toggle: toggleMobileLang,
     choose: chooseMobileLang,
-  } = useLangMenu(lang ?? LANG_FALLBACK);
+  } = useLangMenu(lang);
 
   const hasMobileSocials = Array.isArray(socials) && socials.length > 0;
   const hasMobileLang = mobileLangOptions.length > 0;
+  const mobileLangMenuId = `${panelId}-lang-menu`;
 
   return (
     <>
@@ -55,7 +146,7 @@ export default function GroupMobileNavPanel({
         onClick={onCloseAndFocus}
       />
       <div
-        id="group-mobile-panel"
+        id={panelId}
         role="dialog"
         aria-modal="true"
         aria-label="Menu de navegação"
@@ -76,13 +167,13 @@ export default function GroupMobileNavPanel({
         <div className={styles.panelBody}>
           {/* Brand links — lista directa, sem dropdown aninhado */}
           <ul className={styles.panelBrands}>
-            {GROUP_NAV_BRANDS.map((b) => (
+            {brands.map((b) => (
               <li key={b.key}>
                 <NavLink
                   to={b.href}
                   end={b.end}
                   className={({ isActive }) =>
-                    `${styles.panelLink}${isActive ? ` ${styles.panelLinkActive}` : ""}`
+                    `${styles.panelLink}${isActive || b.key === activeBrandKey ? ` ${styles.panelLinkActive}` : ""}`
                   }
                   onClick={onClose}
                 >
@@ -94,17 +185,16 @@ export default function GroupMobileNavPanel({
 
           <div className={styles.panelDivider} aria-hidden="true" />
 
-          {/* Anchor links */}
-          <ul className={styles.panelAnchors}>
-            {GROUP_NAV_ANCHORS.map((a) => (
-              <li key={a.key}>
-                <a
-                  href={a.href}
-                  className={styles.panelLink}
-                  onClick={(e) => onAnchorClick(e, a.href)}
-                >
-                  {a.label}
-                </a>
+          {/* Navigation items — accordions quando têm submenu */}
+          <ul className={styles.panelNavItems}>
+            {navItems.map((item) => (
+              <li key={item.key}>
+                <MobileNavItem
+                  item={item}
+                  isOpen={isOpen(item.key)}
+                  onToggle={toggle}
+                  onAnchorClick={onAnchorClick}
+                />
               </li>
             ))}
           </ul>
@@ -150,7 +240,7 @@ export default function GroupMobileNavPanel({
                       className={styles.panelLangBtn}
                       aria-expanded={mobileLangOpen}
                       aria-haspopup="listbox"
-                      aria-controls="group-mobile-lang-menu"
+                      aria-controls={mobileLangMenuId}
                       aria-label="Selecionar idioma"
                       data-open={mobileLangOpen ? "true" : "false"}
                       onClick={toggleMobileLang}
@@ -168,7 +258,7 @@ export default function GroupMobileNavPanel({
                     </button>
 
                     <ul
-                      id="group-mobile-lang-menu"
+                      id={mobileLangMenuId}
                       role="listbox"
                       className={styles.panelLangMenu}
                       hidden={!mobileLangOpen}

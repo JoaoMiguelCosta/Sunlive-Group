@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import useDisclosure from "../../../shared/hooks/useDisclosure.js";
+import useDisclosure from "./useDisclosure.js";
 
 const FOCUSABLE_SELECTOR = "a[href], button:not([disabled])";
 
@@ -17,7 +17,7 @@ function getFocusableElements(container) {
   );
 }
 
-export default function useGroupMobileNavigation() {
+export default function useMobileNavigation() {
   const hamburgerRef = useRef(null);
   const panelRef = useRef(null);
 
