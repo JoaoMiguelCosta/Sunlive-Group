@@ -2313,6 +2313,19 @@
     }
 }
 
+/*
+ * O bloco partilhado acima (max-width: 500px) empilha .left/.right
+ * para Logos/Sports/Hotel, que mostram essa navegação sem hamburger,
+ * e por isso volta a exibir .right ali. A Travel usa hamburger+drawer
+ * (redes sociais e idioma já disponíveis dentro dele) desde 768px, por
+ * isso .right tem de continuar escondido também abaixo de 500px.
+ */
+@media (max-width: 500px) {
+    .utilityBar[data-variant="travel-header"] .right {
+        display: none;
+    }
+}
+
 @media (max-width: 480px) {
     .langMenu {
         inline-size: min(14.5rem, calc(100vw - 16px));

@@ -381,14 +381,6 @@
  * partir de ~1024px.
  */
 @media (min-width: 769px) and (max-width: 1024px) {
-    .inner {
-        --hn-label-size: clamp(0.6rem, 1.35vw, 0.86rem);
-    }
-
-    .items {
-        gap: clamp(0.02rem, 0.1vw, 0.12rem);
-    }
-
     .brandBtn {
         gap: clamp(0.16rem, 0.3vw, 0.28rem);
         padding-inline: clamp(0.2rem, 0.45vw, 0.4rem);
