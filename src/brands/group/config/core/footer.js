@@ -13,11 +13,7 @@ import { GROUP_COMPANY } from "./company.js";
 import { GROUP_SOCIALS } from "./socials.js";
 import { PARTNERS_TITLE, PARTNER_LINKS } from "./partners.js";
 import { GROUP_CONTACTS } from "./contacts.js";
-import {
-  GROUP_BASE_PATH,
-  GROUP_LOGOS_PATH,
-  CONTACT_UNIT_SLUGS,
-} from "./paths.js";
+import { GROUP_BASE_PATH, CONTACT_UNIT_SLUGS } from "./paths.js";
 
 export function makeGroupFooter({ contacts = GROUP_CONTACTS } = {}) {
   return {
@@ -42,7 +38,6 @@ export function makeGroupFooter({ contacts = GROUP_CONTACTS } = {}) {
       meta: {
         anchors: {
           groupPath: GROUP_BASE_PATH,
-          logosPath: GROUP_LOGOS_PATH,
           offset: 24,
         },
         regionalOffices: contacts.regionalOffices || [],

@@ -1,5 +1,5 @@
 /* ============================================================
-   PartnersGrid — Sunlive Group / Light Forest
+   PartnerCategorySelector — Sunlive Group / Light Forest
 
    Versão estática:
    - sem sombras;
@@ -36,7 +36,7 @@
 
 
 /* ============================================================
-   Partner card
+   Category button
    ============================================================ */
 
 .card {
@@ -94,13 +94,10 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-.label,
-.arrow {
+.label {
     position: relative;
     z-index: 2;
-}
 
-.label {
     min-inline-size: 0;
     overflow: hidden;
 
@@ -120,44 +117,17 @@
     text-shadow: none;
 }
 
-.arrow {
-    flex: 0 0 auto;
-
-    display: inline-block;
-
-    color:
-        var(--group-accent-fresh);
-
-    font-size: 1em;
-    line-height: 1;
-
-    transform: none;
-}
-
 
 /* ============================================================
-   Disabled
+   Active
    ============================================================ */
 
-.disabled {
-    pointer-events: none;
-    cursor: not-allowed;
-
-    color:
-        var(--group-text-muted);
-
+.active {
     border-color:
-        var(--group-border-subtle);
+        var(--group-border-default);
 
     background-color:
-        var(--group-surface-primary);
-
-    box-shadow: none;
-}
-
-.disabled .arrow {
-    color:
-        var(--group-text-muted);
+        var(--group-control-bg-active);
 }
 
 
@@ -167,12 +137,17 @@
    ============================================================ */
 
 @media (hover: hover) and (pointer: fine) {
-    .card:not(.disabled):hover {
+    .card:hover {
         border-color:
             var(--group-border-default);
 
         background-color:
             var(--group-card-background-hover);
+    }
+
+    .active:hover {
+        background-color:
+            var(--group-control-bg-active);
     }
 }
 
@@ -186,10 +161,6 @@
         2px solid var(--group-focus-outline);
 
     outline-offset: 3px;
-}
-
-.disabled:focus-visible {
-    outline: none;
 }
 
 
@@ -314,10 +285,6 @@
         font-size:
             var(--group-control-label-size-sm);
     }
-
-    .arrow {
-        font-size: 0.92em;
-    }
 }
 
 @media (max-width: 379.98px) {
@@ -337,9 +304,5 @@
     .label {
         font-size:
             var(--group-control-label-size-xs);
-    }
-
-    .arrow {
-        font-size: 0.88em;
     }
 }

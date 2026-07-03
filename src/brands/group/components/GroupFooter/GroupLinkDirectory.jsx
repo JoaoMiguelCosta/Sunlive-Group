@@ -5,7 +5,7 @@ import {
   modClassFor,
 } from "../../../../shared/components/Footer/utils/flagHelpers.js";
 import useSmartAnchorNav from "../../../../shared/hooks/useSmartAnchorNav.js";
-import { GROUP_BASE_PATH, GROUP_LOGOS_PATH } from "../../config/core/paths.js";
+import { GROUP_BASE_PATH } from "../../config/core/paths.js";
 
 import styles from "./GroupLinkDirectory.module.css";
 
@@ -56,19 +56,11 @@ export default function GroupLinkDirectory({ data }) {
   const anchors = meta?.anchors ?? {};
 
   const targetGroupPath = anchors.groupPath || GROUP_BASE_PATH;
-  const targetLogosPath = anchors.logosPath || GROUP_LOGOS_PATH;
 
   const offset =
     typeof anchors.offset === "number" ? anchors.offset : DEFAULT_ANCHOR_OFFSET;
 
-  const { handleSmartAnchorClick: navigateToLogos } = useSmartAnchorNav({
-    targetPath: targetLogosPath,
-    offset,
-    retryDelayMs: RETRY_DELAY_MS,
-    crossPageDelayMs: CROSS_PAGE_DELAY_MS,
-  });
-
-  const { handleSmartAnchorClick: navigateToGroup } = useSmartAnchorNav({
+  const { handleSmartAnchorClick: navigateWithinGroup } = useSmartAnchorNav({
     targetPath: targetGroupPath,
     offset,
     retryDelayMs: RETRY_DELAY_MS,
@@ -120,9 +112,6 @@ export default function GroupLinkDirectory({ data }) {
                   return null;
                 }
 
-                const shouldNavigateToGroup =
-                  column?.key === "countries" || column?.key === "units";
-
                 return (
                   <div
                     key={column.key || column.title}
@@ -131,9 +120,7 @@ export default function GroupLinkDirectory({ data }) {
                     {items.map((item) =>
                       renderPill({
                         item,
-                        onSmartClick: shouldNavigateToGroup
-                          ? navigateToGroup
-                          : undefined,
+                        onSmartClick: navigateWithinGroup,
                         flagMap,
                         styleClasses: styles,
                       }),
@@ -156,7 +143,7 @@ export default function GroupLinkDirectory({ data }) {
                 {rightItems.map((item) =>
                   renderPill({
                     item,
-                    onSmartClick: navigateToLogos,
+                    onSmartClick: navigateWithinGroup,
                     flagMap,
                     styleClasses: styles,
                   }),

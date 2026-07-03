@@ -90,6 +90,11 @@
     var(--group-disclosure-panel-background);
 }
 
+.gridWrap {
+  margin-block-start:
+    clamp(1.75rem, 3.6vw, 2.75rem);
+}
+
 
 /* ============================================================
    Hover
