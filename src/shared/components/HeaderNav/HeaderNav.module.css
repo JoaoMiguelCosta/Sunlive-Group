@@ -372,6 +372,35 @@
     }
 }
 
+/*
+ * Container query nomeada — só se aplica quando HeaderNav está
+ * dentro de um container "travel-utility" (ver .capsule em
+ * TravelHeaderNav.module.css). A Travel tem mais itens do que o
+ * Group (brand switcher + 5 links, 2 com dropdown) e por isso
+ * precisa de trocar para hamburger com espaço real de sobra, não
+ * apenas com base na largura da viewport. Como o nome do container
+ * não existe em nenhum wrapper do Group/Sports/Hotel, esta regra
+ * nunca os afeta.
+ *
+ * 1180px = largura mínima estimada da cápsula para caber "Sunlive
+ * Travel ▴ Logística Destinos ▴ Parceiros ▴ Testemunhos Contactar"
+ * mais redes sociais e idioma (~1000px de conteúdo real) com
+ * margem de segurança para fontes, zoom, scrollbar e tradução.
+ */
+@container travel-utility (max-width: 1180px) {
+    .items {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .inner {
+        justify-content: flex-end;
+    }
+}
+
 
 /* =========================================================
    Reduced motion

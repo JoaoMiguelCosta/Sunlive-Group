@@ -1134,7 +1134,35 @@
         0 0 1.25rem var(--sl-focus-ring-color);
 }
 
+/*
+ * Rede de segurança para browsers sem suporte a container queries
+ * (a query real está abaixo). Como a viewport nunca é mais estreita
+ * que a cápsula, isto nunca contradiz a container query — apenas
+ * cobre navegadores antigos com o limiar antigo, mais conservador.
+ */
 @media (max-width: 768px) {
+    .utilityBar[data-variant="travel-header"] .right {
+        display: none;
+    }
+
+    .utilityBar[data-variant="travel-header"] .inner {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .utilityBar[data-variant="travel-header"] .center {
+        inline-size: 100%;
+    }
+}
+
+/*
+ * Container query nomeada — ver .capsule em TravelHeaderNav.module.css
+ * e a mesma query em shared/components/HeaderNav/HeaderNav.module.css.
+ * Troca para o mesmo limiar (1180px de largura da cápsula) em que a
+ * navegação desktop dá lugar ao hamburger, escondendo redes sociais e
+ * idioma da barra (já disponíveis dentro do drawer) e devolvendo a
+ * grid a uma única coluna.
+ */
+@container travel-utility (max-width: 1180px) {
     .utilityBar[data-variant="travel-header"] .right {
         display: none;
     }

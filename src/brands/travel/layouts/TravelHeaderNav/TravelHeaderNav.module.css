@@ -51,6 +51,16 @@
 }
 
 .capsule {
+    /*
+     * Container nomeado: a navegação partilhada (HeaderNav) usa
+     * este nome para decidir, via @container, quando trocar o
+     * menu desktop pelo hamburger com base na largura real da
+     * cápsula — não na largura da viewport. Como o nome só existe
+     * aqui, a query correspondente nunca se aplica ao Group.
+     */
+    container-type: inline-size;
+    container-name: travel-utility;
+
     inline-size: min(calc(100% - (2 * var(--capsule-inset))), 1360px);
     max-inline-size: 1360px;
 
