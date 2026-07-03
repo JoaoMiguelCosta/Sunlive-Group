@@ -4,12 +4,7 @@ export default function HeaderShell({ className = "", children, ...rest }) {
   const mergedClass = className ? `${styles.shell} ${className}` : styles.shell;
 
   return (
-    <header
-      className={mergedClass}
-      data-theme="prestige-noir"
-      data-brand="travel"
-      {...rest}
-    >
+    <header className={mergedClass} data-brand="travel" {...rest}>
       {children}
     </header>
   );

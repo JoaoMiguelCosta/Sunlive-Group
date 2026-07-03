@@ -27,36 +27,31 @@ export default function TravelHeaderNav() {
     location.pathname === TRAVEL_BASE_PATH ||
     location.pathname === `${TRAVEL_BASE_PATH}/`;
 
-  const utilityBarProps = isTravelHome
-    ? {
-        backLink: header.backLink,
-      }
-    : {
-        homeLink: header.homeLink,
-      };
-
   return (
     <HeaderShell className={styles.wrap} aria-label="Header — Sunlive Travel">
       <div className={styles.container}>
-        <UtilityBar
-          variant="travel-header"
-          data-page={isTravelHome ? "travel-home" : "travel-inner"}
-          ariaLabel="Header — Sunlive Travel"
-          socials={header.socials}
-          lang={header.lang}
-          centerSlot={
-            <HeaderNav
-              brands={GROUP_NAV_BRANDS}
-              activeBrandKey="travel"
-              navItems={TRAVEL_NAV_ITEMS}
+        <div className={styles.capsuleRow}>
+          <div className={styles.capsule}>
+            <UtilityBar
+              variant="travel-header"
+              data-page={isTravelHome ? "travel-home" : "travel-inner"}
+              ariaLabel="Header — Sunlive Travel"
               socials={header.socials}
               lang={header.lang}
-              idPrefix="travel"
-              ariaLabel="Navegação — Sunlive Travel"
+              centerSlot={
+                <HeaderNav
+                  brands={GROUP_NAV_BRANDS}
+                  activeBrandKey="travel"
+                  navItems={TRAVEL_NAV_ITEMS}
+                  socials={header.socials}
+                  lang={header.lang}
+                  idPrefix="travel"
+                  ariaLabel="Navegação — Sunlive Travel"
+                />
+              }
             />
-          }
-          {...utilityBarProps}
-        />
+          </div>
+        </div>
 
         {isTravelHome ? (
           <BrandMasthead

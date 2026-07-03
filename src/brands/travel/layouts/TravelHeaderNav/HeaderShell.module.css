@@ -1,10 +1,4 @@
 .shell {
-    --header-height: clamp(68px, 7.6vw, 92px);
-    --header-logo-h: clamp(46px, 5.2vw, 66px);
-    --header-gap: clamp(0.5rem, 2.2vw, 1.25rem);
-    --header-pad-y: clamp(0.55rem, 1.9vw, 0.9rem);
-    --header-pad-x: clamp(0.75rem, 3vw, 1.5rem);
-
     position: relative;
     isolation: isolate;
 
@@ -12,44 +6,4 @@
     width: 100%;
 
     margin-inline: 0;
-
-    color: var(--sl-platinum-100, #f5f5f5);
-}
-
-@media (min-width: 861px) {
-    .shell {
-        --header-logo-h: clamp(44px, 4.9vw, 60px);
-        --header-gap: clamp(0.45rem, 1.6vw, 1rem);
-        --header-pad-y: clamp(0.55rem, 1.9vw, 0.9rem);
-    }
-}
-
-@media (max-width: 844px) {
-    .shell {
-        --header-logo-h: clamp(38px, 10vw, 52px);
-        --header-gap: clamp(0.4rem, 2.4vw, 0.75rem);
-        --header-pad-y: clamp(0.5rem, 2.4vw, 0.8rem);
-    }
-}
-
-@media (max-width: 680px) {
-    .shell {
-        --header-logo-h: clamp(30px, 8vw, 44px);
-        --header-gap: clamp(0.38rem, 2.6vw, 0.66rem);
-        --header-pad-y: clamp(0.45rem, 2.2vw, 0.7rem);
-    }
-}
-
-@media (max-width: 560px) {
-    .shell {
-        --header-logo-h: clamp(52px, 20vw, 84px);
-        --header-gap: clamp(0.42rem, 3vw, 0.8rem);
-        --header-pad-y: clamp(0.5rem, 3vw, 0.9rem);
-    }
-}
-
-@media (max-width: 390px) {
-    .shell {
-        --header-logo-h: clamp(56px, 22vw, 92px);
-    }
 }

@@ -1,8 +1,4 @@
-import {
-  IMG_COMMON,
-  LANG_DEFAULT,
-  makeBackLink,
-} from "../../../../shared/config/index.js";
+import { IMG_COMMON, LANG_DEFAULT } from "../../../../shared/config/index.js";
 
 import logoTravel from "../../assets/logo/travel.png";
 
@@ -10,16 +6,6 @@ import { TRAVEL_BASE_PATH, TRAVEL_PAGE_PATHS } from "./paths.js";
 import { TRAVEL_SOCIALS } from "./socials.js";
 
 const header = {
-  backLink: makeBackLink({
-    href: "/sunlive-group",
-    label: "Voltar Sunlive Group",
-  }),
-
-  homeLink: {
-    href: TRAVEL_PAGE_PATHS.home,
-    label: "Início Sunlive Travel",
-  },
-
   logo: {
     src: logoTravel,
     alt: "Sunlive Travel",
