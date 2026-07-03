@@ -546,7 +546,6 @@
    Border states
    ======================================================= */
 
-.utilityBar[data-variant="travel-header"][data-page="travel-home"] .inner,
 .utilityBar[data-variant="sports-header"][data-page="sports-home"] .inner {
     border-bottom: 2px solid var(--header-divider-home);
 }
@@ -946,237 +945,92 @@
 }
 
 /* =======================================================
-   Travel Header — Midnight Atlas Gold
+   Travel Header — Light Forest (paridade com Group)
    ======================================================= */
 
 .utilityBar[data-variant="travel-header"] {
-    --accent: var(--travel-gold, #e0a72b);
+    --accent: var(--sl-accent-strong);
 
-    --travel-gold: #e0a72b;
-    --travel-gold-soft: #f3c45f;
-    --travel-cyan: #4fc3f7;
+    --header-divider-inner: var(--sl-border-subtle);
+    --header-divider-home: var(--sl-border-default);
 
-    --travel-header-text: rgba(248, 251, 255, 0.96);
-    --travel-header-text-soft: rgba(224, 235, 246, 0.84);
-    --travel-header-muted: rgba(180, 201, 220, 0.68);
+    --header-link-color: var(--sl-text-secondary);
+    --header-link-hover-color: var(--sl-text-secondary);
 
-    --header-divider-inner: rgba(79, 195, 247, 0.22);
-    --header-divider-home: rgba(224, 167, 43, 0.82);
+    --header-back-border: var(--sl-border-subtle);
+    --header-back-border-hover: var(--sl-border-default);
 
-    --header-link-color: rgba(248, 251, 255, 0.92);
-    --header-link-hover-color: rgba(255, 249, 230, 0.99);
+    --header-home-border: var(--sl-border-subtle);
+    --header-home-border-hover: var(--sl-border-default);
 
-    --header-back-border: rgba(79, 195, 247, 0.22);
-    --header-back-border-hover: rgba(224, 167, 43, 0.48);
+    --header-menu-bg: var(--sl-surface-footer);
+    --header-active-bg: rgb(var(--sl-accent-strong-rgb) / 15%);
 
-    --header-home-border: rgba(224, 167, 43, 0.34);
-    --header-home-border-hover: rgba(243, 196, 95, 0.62);
+    --header-control-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.46),
+        0 0.18rem 0.48rem rgb(30 46 36 / 0.07);
 
-    --header-back-bg-top: rgba(10, 31, 55, 0.9);
-    --header-back-bg-bottom: rgba(3, 11, 24, 0.98);
-
-    --header-home-bg-top: rgba(12, 37, 64, 0.92);
-    --header-home-bg-bottom: rgba(3, 11, 24, 0.985);
-
-    --travel-control-border-hover: rgba(224, 167, 43, 0.38);
-
-    --travel-control-bg-hover:
-        radial-gradient(95% 130% at 50% 0%,
-            rgba(224, 167, 43, 0.11) 0%,
-            transparent 68%),
-        radial-gradient(100% 140% at 100% 100%,
-            rgba(79, 195, 247, 0.08) 0%,
-            transparent 72%),
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.048) 0%,
-            rgba(255, 255, 255, 0.016) 100%),
-        rgba(7, 21, 37, 0.74);
-
-    --travel-menu-border: rgba(79, 195, 247, 0.24);
-
-    --travel-menu-bg:
-        radial-gradient(140% 150% at 0% 0%,
-            rgba(224, 167, 43, 0.12) 0%,
-            transparent 52%),
-        radial-gradient(130% 160% at 100% 100%,
-            rgba(79, 195, 247, 0.09) 0%,
-            transparent 58%),
-        linear-gradient(180deg,
-            rgba(10, 31, 55, 0.98) 0%,
-            rgba(3, 11, 24, 0.995) 100%);
-
-    --travel-active-bg:
-        radial-gradient(115% 145% at 0% 0%,
-            rgba(224, 167, 43, 0.18) 0%,
-            transparent 68%),
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.05),
-            rgba(255, 255, 255, 0.018));
-
-    --travel-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.055),
-        0 0.7rem 1.45rem rgba(0, 0, 0, 0.28),
-        0 0 1rem rgba(79, 195, 247, 0.045);
-
-    --travel-shadow-hover:
-        inset 0 1px 0 rgba(255, 255, 255, 0.075),
-        0 1rem 1.95rem rgba(0, 0, 0, 0.36),
-        0 0 1.35rem rgba(224, 167, 43, 0.085);
+    --header-control-shadow-hover:
+        inset 0 1px 0 rgb(255 255 255 / 0.52),
+        0 0.34rem 0.8rem rgb(30 46 36 / 0.1);
 
     z-index: 80;
 }
 
 .utilityBar[data-variant="travel-header"] .inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+
+    min-height: clamp(62px, 4.6vw, 72px);
+    padding-block: 0.42rem;
+
     isolation: isolate;
-    border-bottom-color: var(--header-divider-inner);
+    border-bottom: 0;
 }
 
-.utilityBar[data-variant="travel-header"][data-page="travel-home"] .inner {
-    border-bottom-color: var(--header-divider-home);
-}
-
-.utilityBar[data-variant="travel-header"] .inner::before {
-    content: "";
-    position: absolute;
-    inset-inline: 0;
-    inset-block-end: -1px;
-    z-index: 0;
-
-    block-size: 1px;
-    pointer-events: none;
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgba(79, 195, 247, 0.12) 12%,
-            rgba(224, 167, 43, 0.42) 50%,
-            rgba(79, 195, 247, 0.18) 76%,
-            transparent 100%);
-
-    opacity: 0.95;
-}
-
+.utilityBar[data-variant="travel-header"] .inner::before,
 .utilityBar[data-variant="travel-header"] .inner::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
+    content: none;
+}
 
-    border-radius: 0 0 1.45rem 1.45rem;
-    pointer-events: none;
-
-    background:
-        radial-gradient(44rem 8rem at 12% 0%,
-            rgba(224, 167, 43, 0.07) 0%,
-            transparent 72%),
-        radial-gradient(38rem 9rem at 88% 0%,
-            rgba(79, 195, 247, 0.06) 0%,
-            transparent 76%);
-
-    opacity: 0.9;
+.utilityBar[data-variant="travel-header"] .center {
+    justify-content: flex-start;
+    overflow: visible;
 }
 
 .utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink) {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-
     color: var(--header-link-color);
     border-color: var(--header-back-border);
 
-    font-weight: 760;
-    letter-spacing: 0.006em;
+    background: var(--sl-surface-secondary);
 
-    text-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.035),
-        0 0.45rem 0.85rem rgba(0, 0, 0, 0.32);
+    box-shadow: var(--header-control-shadow);
 
-    box-shadow: var(--travel-shadow);
+    font-weight: 600;
+    letter-spacing: -0.012em;
 
-    backdrop-filter: blur(12px) saturate(1.12);
-    -webkit-backdrop-filter: blur(12px) saturate(1.12);
-}
+    text-shadow: none;
 
-.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink)::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-
-    border-radius: inherit;
-    pointer-events: none;
-
-    background:
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.06) 0%,
-            rgba(255, 255, 255, 0.018) 34%,
-            transparent 72%),
-        radial-gradient(100% 140% at 0% 0%,
-            rgba(224, 167, 43, 0.08) 0%,
-            transparent 66%),
-        radial-gradient(100% 140% at 100% 100%,
-            rgba(79, 195, 247, 0.055) 0%,
-            transparent 70%);
-
-    opacity: 0.95;
-}
-
-.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink)::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: 2;
-
-    border: 1px solid rgba(255, 255, 255, 0.035);
-    border-radius: inherit;
-
-    pointer-events: none;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.055),
-        inset 0 -1px 0 rgba(79, 195, 247, 0.05);
-}
-
-.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink)>* {
-    position: relative;
-    z-index: 1;
-}
-
-.utilityBar[data-variant="travel-header"] .backLink {
-    background:
-        radial-gradient(120% 150% at 0% 0%,
-            rgba(224, 167, 43, 0.105) 0%,
-            transparent 52%),
-        radial-gradient(110% 140% at 100% 100%,
-            rgba(79, 195, 247, 0.07) 0%,
-            transparent 62%),
-        linear-gradient(180deg,
-            var(--header-back-bg-top) 0%,
-            var(--header-back-bg-bottom) 100%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .utilityBar[data-variant="travel-header"] .homeLink {
     border-color: var(--header-home-border);
+    background: var(--sl-surface-primary);
+}
 
-    background:
-        radial-gradient(120% 150% at 0% 0%,
-            rgba(224, 167, 43, 0.145) 0%,
-            transparent 54%),
-        radial-gradient(120% 150% at 100% 100%,
-            rgba(79, 195, 247, 0.08) 0%,
-            transparent 64%),
-        linear-gradient(180deg,
-            var(--header-home-bg-top) 0%,
-            var(--header-home-bg-bottom) 100%);
+.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink)::before,
+.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink)::after {
+    content: none;
 }
 
 .utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink):hover {
     transform: translateY(-1px);
 
     color: var(--header-link-hover-color);
-    filter: saturate(1.045) contrast(1.018);
+    filter: none;
 
-    box-shadow: var(--travel-shadow-hover);
+    box-shadow: var(--header-control-shadow-hover);
 }
 
 .utilityBar[data-variant="travel-header"] .backLink:hover {
@@ -1188,68 +1042,58 @@
 }
 
 .utilityBar[data-variant="travel-header"] :is(.backIcon, .homeIcon) {
-    color: var(--travel-gold-soft);
-
-    opacity: 0.96;
-
-    filter:
-        drop-shadow(0 0 0.45rem rgba(224, 167, 43, 0.16)) drop-shadow(0 0.2rem 0.5rem rgba(0, 0, 0, 0.3));
+    color: var(--sl-accent);
+    opacity: 1;
+    filter: none;
 }
 
 .utilityBar[data-variant="travel-header"] :is(.backText, .homeText) {
     color: currentColor;
 }
 
-.utilityBar[data-variant="travel-header"] .socialLink {
-    position: relative;
-    isolation: isolate;
+.utilityBar[data-variant="travel-header"] .socials {
+    gap: 0.24rem;
+}
 
-    color: var(--travel-header-text-soft);
+.utilityBar[data-variant="travel-header"] .socialLink {
+    inline-size: 40px;
+    block-size: 40px;
+
     border: 1px solid transparent;
+    border-radius: 1rem;
+
+    color: var(--sl-text-secondary);
     background: transparent;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    transition:
+        color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .utilityBar[data-variant="travel-header"] .socialLink::before {
-    content: "";
-    position: absolute;
-    inset: 4px;
-    z-index: -1;
-
-    border-radius: inherit;
-    pointer-events: none;
-
-    background:
-        radial-gradient(circle at 50% 0%,
-            rgba(224, 167, 43, 0.08) 0%,
-            transparent 65%),
-        rgba(7, 21, 37, 0.32);
-
-    opacity: 0;
-
-    transition:
-        opacity 180ms ease,
-        transform 180ms ease;
+    content: none;
 }
 
 .utilityBar[data-variant="travel-header"] .socialLink:hover {
-    color: var(--header-link-hover-color);
-    border-color: var(--travel-control-border-hover);
-    background: var(--travel-control-bg-hover);
+    transform: none;
 
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        0 0.7rem 1.45rem rgba(0, 0, 0, 0.24),
-        0 0 1rem rgba(224, 167, 43, 0.055);
-}
+    border-color: var(--sl-border-subtle);
+    background: var(--sl-surface-primary);
 
-.utilityBar[data-variant="travel-header"] .socialLink:hover::before {
-    opacity: 1;
-    transform: scale(1.02);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.42);
 }
 
 .utilityBar[data-variant="travel-header"] .socialIcon {
+    inline-size: 1.08rem;
+    block-size: 1.08rem;
+
     color: currentColor;
-    filter: drop-shadow(0 0.35rem 0.7rem rgba(0, 0, 0, 0.25));
+    filter: none;
 }
 
 .utilityBar[data-variant="travel-header"] .langWrap {
@@ -1257,85 +1101,117 @@
 }
 
 .utilityBar[data-variant="travel-header"] .langBtn {
-    color: var(--travel-header-text-soft);
-    border-color: transparent;
+    inline-size: auto;
+    block-size: auto;
+    min-block-size: 40px;
+
+    gap: 0.4rem;
+
+    padding-block: 0.32rem;
+    padding-inline: 0.68rem;
+
+    border: 1px solid transparent;
+    border-radius: 1rem;
+
+    color: var(--sl-text-secondary);
     background: transparent;
 
-    text-shadow: 0 0.45rem 0.9rem rgba(0, 0, 0, 0.28);
+    text-shadow: none;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .utilityBar[data-variant="travel-header"] .langBtn:hover,
 .utilityBar[data-variant="travel-header"] .langBtn[data-open="true"] {
-    color: var(--header-link-hover-color);
-    border-color: var(--travel-control-border-hover);
-    background: var(--travel-control-bg-hover);
+    color: var(--sl-text-secondary);
+    border-color: var(--sl-border-subtle);
+    background: var(--sl-surface-primary);
 
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        0 0.72rem 1.45rem rgba(0, 0, 0, 0.2),
-        0 0 1rem rgba(224, 167, 43, 0.045);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.42);
+}
+
+.utilityBar[data-variant="travel-header"] .langText {
+    font-family: var(--sl-ff-ui);
+    text-transform: none;
 }
 
 .utilityBar[data-variant="travel-header"] .chevron {
-    color: currentColor;
-    opacity: 0.92;
+    color: var(--sl-accent);
+    opacity: 1;
 }
 
 .utilityBar[data-variant="travel-header"] .langBtn[data-open="true"] .chevron {
-    color: var(--travel-gold-soft);
+    color: var(--sl-accent-strong);
 }
 
 .utilityBar[data-variant="travel-header"] .langMenu {
     z-index: 100;
     overflow: hidden;
 
-    border-color: var(--travel-menu-border);
-    background: var(--travel-menu-bg);
+    border: 1px solid var(--sl-border-default);
+    border-radius: 1.35rem;
+
+    background: var(--header-menu-bg);
 
     box-shadow:
-        0 1.4rem 3rem rgba(0, 0, 0, 0.5),
-        0 0 2rem rgba(79, 195, 247, 0.08),
-        0 0 1.4rem rgba(224, 167, 43, 0.06),
-        0 0 0 1px rgba(255, 255, 255, 0.025),
-        inset 0 1px 0 rgba(255, 255, 255, 0.065),
-        inset 0 -1px 0 rgba(79, 195, 247, 0.08);
+        inset 0 1px 0 rgb(255 255 255 / 0.5),
+        0 0.9rem 2rem rgb(30 46 36 / 0.14);
 
-    backdrop-filter: blur(16px) saturate(1.14);
-    -webkit-backdrop-filter: blur(16px) saturate(1.14);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .utilityBar[data-variant="travel-header"] .langItem {
-    color: var(--travel-header-text-soft);
+    border: 1px solid transparent;
+    color: var(--sl-text-secondary);
+    background: transparent;
 }
 
 .utilityBar[data-variant="travel-header"] .langItem:hover {
-    color: var(--travel-header-text);
-
-    background:
-        radial-gradient(110% 140% at 0% 0%,
-            rgba(224, 167, 43, 0.1) 0%,
-            transparent 66%),
-        radial-gradient(110% 140% at 100% 100%,
-            rgba(79, 195, 247, 0.06) 0%,
-            transparent 68%),
-        rgba(255, 255, 255, 0.045);
+    background: rgb(46 77 59 / 10%);
 }
 
 .utilityBar[data-variant="travel-header"] .langMenu [aria-selected="true"] .langItem {
-    color: var(--travel-gold-soft);
-    background: var(--travel-active-bg);
+    color: var(--sl-accent-strong);
+    background: var(--header-active-bg);
+    font-weight: 600;
 }
 
 .utilityBar[data-variant="travel-header"] .langItemName {
-    color: var(--travel-header-muted);
+    color: var(--sl-text-muted);
+    opacity: 1;
 }
 
-.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink, .socialLink, .langBtn):focus-visible {
+.utilityBar[data-variant="travel-header"] .langItem:disabled {
+    color: var(--sl-text-muted);
+    opacity: 0.58;
+}
+
+.utilityBar[data-variant="travel-header"] .langItem:disabled:hover {
+    color: var(--sl-text-muted);
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    filter: none;
+}
+
+.utilityBar[data-variant="travel-header"] :is(.backLink, .homeLink, .socialLink, .langBtn, .langItem):focus-visible {
+    outline: none;
     box-shadow:
-        0 0 0 2px rgba(2, 8, 20, 0.96),
-        0 0 0 4px rgba(224, 167, 43, 0.74),
-        0 0 1.25rem rgba(79, 195, 247, 0.16),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        0 0 0 2px var(--sl-surface-footer),
+        0 0 0 4px var(--sl-accent),
+        0 0 1.25rem var(--sl-focus-ring-color);
+}
+
+@media (max-width: 768px) {
+    .utilityBar[data-variant="travel-header"] .right {
+        display: none;
+    }
+
+    .utilityBar[data-variant="travel-header"] .inner {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
 }
 
 /* =======================================================

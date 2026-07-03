@@ -3,18 +3,25 @@ import { useLocation } from "react-router-dom";
 import styles from "./TravelHeaderNav.module.css";
 import UtilityBar from "../../../../shared/components/UtilityBar";
 import BrandMasthead from "../../../../shared/components/BrandMasthead";
+import HeaderNav from "../../../../shared/components/HeaderNav/HeaderNav.jsx";
 import HeaderShell from "./HeaderShell.jsx";
 
-import PrimaryNav from "./PrimaryNav.jsx";
-import CTAButton from "../../../../shared/ui/CTAButton/CTAButton.jsx";
 import header from "../../config/core/header.js";
 import { TRAVEL_NAV } from "../../config/core/nav.js";
 import { TRAVEL_BASE_PATH } from "../../config/core/paths.js";
+import { GROUP_NAV_BRANDS } from "../../../group/config/core/nav.js";
+
+const TRAVEL_NAV_ITEMS = [
+  ...TRAVEL_NAV,
+  {
+    key: "contact",
+    label: header.cta.label,
+    href: header.cta.href,
+  },
+];
 
 export default function TravelHeaderNav() {
   const location = useLocation();
-
-  const navItems = TRAVEL_NAV;
 
   const isTravelHome =
     location.pathname === TRAVEL_BASE_PATH ||
@@ -37,6 +44,17 @@ export default function TravelHeaderNav() {
           ariaLabel="Header — Sunlive Travel"
           socials={header.socials}
           lang={header.lang}
+          centerSlot={
+            <HeaderNav
+              brands={GROUP_NAV_BRANDS}
+              activeBrandKey="travel"
+              navItems={TRAVEL_NAV_ITEMS}
+              socials={header.socials}
+              lang={header.lang}
+              idPrefix="travel"
+              ariaLabel="Navegação — Sunlive Travel"
+            />
+          }
           {...utilityBarProps}
         />
 
@@ -49,23 +67,6 @@ export default function TravelHeaderNav() {
             className={styles.masthead}
           />
         ) : null}
-
-        <div
-          className={styles.primaryRow}
-          aria-label="Navegação — Sunlive Travel"
-        >
-          <div className={styles.primaryInner}>
-            <div className={styles.navSlot}>
-              <PrimaryNav items={navItems} />
-            </div>
-
-            {header.cta ? (
-              <div className={styles.ctaSlot}>
-                <CTAButton cta={header.cta} variant="travel" />
-              </div>
-            ) : null}
-          </div>
-        </div>
       </div>
     </HeaderShell>
   );
