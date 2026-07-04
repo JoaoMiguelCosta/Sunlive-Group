@@ -179,6 +179,8 @@
     border-block-start:
         1px solid var(--group-border-subtle);
 
+    color: var(--group-text-secondary);
+
     background-color:
         var(--group-disclosure-panel-background);
 }
