@@ -11,7 +11,7 @@
    Não scoped a nenhum [data-brand]: estes tokens estão
    disponíveis em toda a aplicação, mas só são efetivamente
    consumidos onde uma brand os referenciar explicitamente
-   (Group via alias, Travel/Sports/Hotel no contrato do Footer).
+   (Group via alias, Travel/Sports/Hotel no contrato partilhado).
 
    Não promove tokens de layout, radius, motion, tipografia de
    secção ou componentes específicos do Group — esses continuam
@@ -19,55 +19,78 @@
    ========================================================= */
 
 :root {
-    /* =====================================================
+   /* =====================================================
        Primitivas
        ===================================================== */
 
-    --sl-color-forest-900: #1e2e24;
-    --sl-color-forest-700: #2e4d3b;
-    --sl-color-forest-600: #2d6b4f;
+   --sl-color-forest-900: #1e2e24;
+   --sl-color-forest-700: #2e4d3b;
+   --sl-color-forest-800: #2e4d3b;
 
-    --sl-color-forest-700-rgb: 46 77 59;
+   --sl-color-forest-600: #2d6b4f;
 
-    --sl-color-sage-100: #f6f7ed;
-    --sl-color-sage-200: #f0f1e2;
-    --sl-color-sage-300: #e6e8d1;
+   --sl-color-muted-700: #536456;
 
-    --sl-color-muted-700: #536456;
+   --sl-color-sage-100: #f6f7ed;
+   --sl-color-sage-200: #f0f1e2;
+   --sl-color-sage-300: #e6e8d1;
 
-    /* Fundo da página (Group --group-color-acre-100) */
-    --sl-color-page-100: #daddc0;
+   /* Fundo da página — equivalente a Group --group-color-acre-100 */
+   --sl-color-page-100: #daddc0;
 
-    /* Canais RGB, para composição com opacidade variável */
-    --sl-color-forest-900-rgb: 30 46 36;
-    --sl-color-forest-600-rgb: 45 107 79;
+   /* Canais RGB para composição com opacidade variável */
+   --sl-color-forest-900-rgb: 30 46 36;
+   --sl-color-forest-700-rgb: 46 77 59;
+   --sl-color-forest-600-rgb: 45 107 79;
 
-
-    /* =====================================================
-       Semânticos globais
+   /* =====================================================
+       Superfícies semânticas globais
        ===================================================== */
 
-    --sl-surface-page: var(--sl-color-page-100);
-    --sl-surface-primary: var(--sl-color-sage-300);
-    --sl-surface-secondary: var(--sl-color-sage-200);
-    --sl-surface-footer: var(--sl-color-sage-100);
+   --sl-surface-page: var(--sl-color-page-100);
+   --sl-surface-primary: var(--sl-color-sage-300);
+   --sl-surface-secondary: var(--sl-color-sage-200);
+   --sl-surface-footer: var(--sl-color-sage-100);
 
-    --sl-text-primary: var(--sl-color-forest-900);
-    --sl-text-secondary: var(--sl-color-forest-700);
-    --sl-text-muted: var(--sl-color-muted-700);
-    --sl-text-rgb: var(--sl-color-forest-900-rgb);
+   /* =====================================================
+       Texto semântico global
+       ===================================================== */
 
-    --sl-accent: var(--sl-color-forest-600);
-    --sl-accent-strong: var(--sl-color-forest-700);
-    --sl-accent-rgb: var(--sl-color-forest-600-rgb);
-    --sl-accent-strong-rgb: var(--sl-color-forest-700-rgb);
+   --sl-text-primary: var(--sl-color-forest-800);
+   --sl-text-secondary: var(--sl-color-forest-700);
+   --sl-text-muted: var(--sl-color-forest-600);
+   --sl-text-rgb: var(--sl-color-forest-700-rgb);
 
-    --sl-border-subtle: rgb(var(--sl-color-forest-900-rgb) / 14%);
-    --sl-border-default: rgb(var(--sl-color-forest-900-rgb) / 28%);
-    --sl-border-strong: rgb(var(--sl-color-forest-900-rgb) / 46%);
+   /* =====================================================
+       Acentos semânticos globais
+       ===================================================== */
 
-    --sl-focus-ring-color: rgb(var(--sl-color-forest-600-rgb) / 30%);
+   --sl-accent: var(--sl-color-forest-600);
+   --sl-accent-strong: var(--sl-color-forest-700);
+   --sl-accent-rgb: var(--sl-color-forest-600-rgb);
+   --sl-accent-strong-rgb: var(--sl-color-forest-700-rgb);
 
-    /* Sombra estrutural partilhada (elevação suave sobre superfícies claras) */
-    --sl-shadow-sm: 0 6px 16px rgb(var(--sl-color-forest-900-rgb) / 14%);
+   /* =====================================================
+       Bordas e foco
+       ===================================================== */
+
+   --sl-border-subtle:
+      rgb(var(--sl-color-forest-900-rgb) / 14%);
+
+   --sl-border-default:
+      rgb(var(--sl-color-forest-900-rgb) / 28%);
+
+   --sl-border-strong:
+      rgb(var(--sl-color-forest-900-rgb) / 46%);
+
+   --sl-focus-ring-color:
+      rgb(var(--sl-color-forest-600-rgb) / 30%);
+
+   /* =====================================================
+       Sombras
+       ===================================================== */
+
+   /* Elevação suave sobre superfícies claras */
+   --sl-shadow-sm:
+      0 6px 16px rgb(var(--sl-color-forest-900-rgb) / 14%);
 }

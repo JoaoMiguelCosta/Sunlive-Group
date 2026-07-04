@@ -41,7 +41,7 @@
    --group-color-sage-700: #536456;
 
    /* Texto por contexto */
-   --group-color-text-on-light: #1e2e24;
+   --group-color-text-on-light: #2e4d3b;
    --group-color-text-on-dark: #f6f7ed;
 
 
@@ -63,35 +63,61 @@
       ===================================================== */
 
    /* Contexto principal claro — alias da fundação global Light Forest */
-   --group-background: var(--sl-surface-page, var(--group-color-acre-100));
-   --group-surface-primary: var(--sl-surface-primary, var(--group-color-light-100));
-   --group-surface-secondary: var(--sl-surface-secondary, var(--group-color-light-50));
-   --group-surface-elevated: var(--sl-surface-footer, var(--group-color-light-0));
+   --group-background:
+      var(--sl-surface-page, var(--group-color-acre-100));
+
+   --group-surface-primary:
+      var(--sl-surface-primary, var(--group-color-light-100));
+
+   --group-surface-secondary:
+      var(--sl-surface-secondary, var(--group-color-light-50));
+
+   --group-surface-elevated:
+      var(--sl-surface-footer, var(--group-color-light-0));
 
    /* Contexto inverso para hero, media e zonas escuras */
-   --group-surface-inverse: var(--group-color-forest-950);
-   --group-surface-inverse-primary: var(--group-color-forest-800);
-   --group-surface-inverse-secondary: var(--group-color-forest-700);
+   --group-surface-inverse:
+      var(--group-color-forest-950);
+
+   --group-surface-inverse-primary:
+      var(--group-color-forest-800);
+
+   --group-surface-inverse-secondary:
+      var(--group-color-forest-700);
 
    /* Footer mantém encerramento escuro */
    --group-surface-footer: #142119;
 
    /* Superfície neutra para grelha de logótipos — alias da fundação global */
-   --group-logo-surface: var(--sl-surface-footer, var(--group-color-light-0));
+   --group-logo-surface:
+      var(--sl-surface-footer, var(--group-color-light-0));
 
 
    /* =====================================================
       4. TEXT
       ===================================================== */
 
-   /* Texto no contexto principal claro — alias da fundação global */
-   --group-text-primary: var(--sl-text-primary, var(--group-color-text-on-light));
-   --group-text-secondary: var(--sl-text-secondary, var(--group-color-forest-800));
-   --group-text-muted: var(--sl-text-muted, var(--group-color-sage-700));
+   /*
+    * Texto no contexto principal claro.
+    * O valor principal global resolve para Forest 800:
+    * #2e4d3b.
+    */
+   --group-text-primary:
+      var(--sl-text-primary, var(--group-color-text-on-light));
+
+   --group-text-secondary:
+      var(--sl-text-secondary, var(--group-color-sage-700));
+
+   --group-text-muted:
+      var(--sl-text-muted,
+         rgb(var(--group-accent-primary-rgb) / 72%));
 
    /* Texto para componentes sobre superfícies escuras */
-   --group-text-on-dark: var(--group-color-text-on-dark);
-   --group-text-on-dark-secondary: var(--group-color-sage-200);
+   --group-text-on-dark:
+      var(--group-color-text-on-dark);
+
+   --group-text-on-dark-secondary:
+      var(--group-color-sage-200);
 
 
    /* =====================================================
@@ -99,15 +125,21 @@
       ===================================================== */
 
    /* Acentos acessíveis sobre o fundo claro — alias da fundação global */
-   --group-accent-primary: var(--sl-accent-strong, var(--group-color-forest-800));
-   --group-accent-primary-hover: var(--group-color-forest-950);
+   --group-accent-primary:
+      var(--sl-accent-strong, var(--group-color-forest-800));
 
-   --group-accent-fresh: var(--sl-accent, var(--group-color-mint-700));
+   --group-accent-primary-hover:
+      var(--group-color-forest-950);
+
+   --group-accent-fresh:
+      var(--sl-accent, var(--group-color-mint-700));
 
    /* Acentos preservados para superfícies escuras */
-   --group-accent-on-dark: var(--group-color-acre-100);
+   --group-accent-on-dark:
+      var(--group-color-acre-100);
 
-   --group-accent-fresh-on-dark: var(--group-color-mint-400);
+   --group-accent-fresh-on-dark:
+      var(--group-color-mint-400);
 
 
    /* =====================================================
@@ -115,13 +147,16 @@
       ===================================================== */
 
    --group-border-subtle:
-      var(--sl-border-subtle, rgb(var(--group-surface-inverse-rgb) / 14%));
+      var(--sl-border-subtle,
+         rgb(var(--group-surface-inverse-rgb) / 14%));
 
    --group-border-default:
-      var(--sl-border-default, rgb(var(--group-surface-inverse-rgb) / 28%));
+      var(--sl-border-default,
+         rgb(var(--group-surface-inverse-rgb) / 28%));
 
    --group-border-strong:
-      var(--sl-border-strong, rgb(var(--group-surface-inverse-rgb) / 46%));
+      var(--sl-border-strong,
+         rgb(var(--group-surface-inverse-rgb) / 46%));
 
    /* Borders para componentes sobre superfícies escuras */
    --group-border-on-dark-subtle:
@@ -135,8 +170,11 @@
       7. CARDS
       ===================================================== */
 
-   --group-card-background: var(--group-surface-secondary);
-   --group-card-background-hover: var(--group-surface-elevated);
+   --group-card-background:
+      var(--group-surface-secondary);
+
+   --group-card-background-hover:
+      var(--group-surface-elevated);
 
    --group-disclosure-panel-background:
       var(--group-surface-primary);
@@ -170,10 +208,12 @@
       9. FOCUS
       ===================================================== */
 
-   --group-focus-outline: var(--group-accent-fresh);
+   --group-focus-outline:
+      var(--group-accent-fresh);
 
    --group-focus-ring:
-      var(--sl-focus-ring-color, rgb(var(--group-accent-fresh-rgb) / 30%));
+      var(--sl-focus-ring-color,
+         rgb(var(--group-accent-fresh-rgb) / 30%));
 
    /*
     * Valor contextual. Componentes sobre cards ou superfícies
@@ -195,7 +235,8 @@
       ===================================================== */
 
    --group-shadow-sm:
-      var(--sl-shadow-sm, 0 6px 16px rgb(30 46 36 / 14%));
+      var(--sl-shadow-sm,
+         0 6px 16px rgb(30 46 36 / 14%));
 
 
    /* =====================================================
@@ -213,8 +254,11 @@
       12. TYPOGRAPHY
       ===================================================== */
 
-   --group-font-ui: var(--sl-ff-ui);
-   --group-font-display: var(--sl-ff-display);
+   --group-font-ui:
+      var(--sl-ff-ui);
+
+   --group-font-display:
+      var(--sl-ff-display);
 
    --group-font-weight-normal: 400;
    --group-font-weight-medium: 500;
@@ -230,7 +274,8 @@
    --group-section-title-size-sm:
       clamp(1.16rem, 6vw, 1.58rem);
 
-   --group-section-title-tracking: -0.018em;
+   --group-section-title-tracking:
+      -0.018em;
 
    --group-control-label-size:
       clamp(0.96rem, 0.86rem + 0.28vw, 1.14rem);
@@ -240,7 +285,9 @@
 
    --group-control-label-size-sm: 0.9rem;
    --group-control-label-size-xs: 0.84rem;
-   --group-control-label-tracking: -0.012em;
+
+   --group-control-label-tracking:
+      -0.012em;
 
 
    /* =====================================================
