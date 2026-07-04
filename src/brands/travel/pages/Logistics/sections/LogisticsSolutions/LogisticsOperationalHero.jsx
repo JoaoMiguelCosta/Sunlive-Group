@@ -1,75 +1,48 @@
 import styles from "./LogisticsOperationalHero.module.css";
 
 export default function LogisticsOperationalHero({ hero = {} }) {
-  const assurances = Array.isArray(hero?.assurances)
+  const benefits = Array.isArray(hero?.assurances)
     ? hero.assurances.filter((item) => item?.title && item?.description)
     : [];
 
-  const hasAside = assurances.length > 0;
+  const hasBenefits = benefits.length > 0;
 
   const hasContent = Boolean(
-    hero?.title || hero?.lead || hero?.supportingText || hasAside,
+    hero?.title || hero?.lead || hero?.supportingText || hasBenefits,
   );
 
   if (!hasContent) return null;
 
-  const assurancesAriaLabel =
+  const benefitsAriaLabel =
     hero?.ui?.assurancesAriaLabel ?? "Garantias operacionais";
-
-  const heroGridClassName = [
-    styles.heroGrid,
-    !hasAside ? styles.heroGridSingleColumn : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
 
   return (
     <header className={styles.hero}>
-      <div className={heroGridClassName}>
-        <div className={styles.primaryColumn}>
-          {(hero?.title || hero?.lead) && (
-            <div className={styles.headingBlock}>
-              {hero?.title ? (
-                <h1 className={styles.title}>{hero.title}</h1>
-              ) : null}
-              {hero?.lead ? <p className={styles.lead}>{hero.lead}</p> : null}
-            </div>
-          )}
-
-          {hero?.supportingText ? (
-            <div className={styles.copyPanel}>
-              <p className={styles.supportingText}>{hero.supportingText}</p>
-            </div>
-          ) : null}
-        </div>
-
-        {hasAside ? (
-          <aside className={styles.asideColumn}>
-            <div
-              className={styles.assurancesPanel}
-              aria-label={assurancesAriaLabel}
-            >
-              {assurances.map((item) => (
-                <article
-                  key={item?.key ?? item.title}
-                  className={styles.assuranceCard}
-                >
-                  <span
-                    className={styles.assuranceAccent}
-                    aria-hidden="true"
-                  />
-                  <div className={styles.assuranceContent}>
-                    <h2 className={styles.assuranceTitle}>{item.title}</h2>
-                    <p className={styles.assuranceDescription}>
-                      {item.description}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </aside>
+      <div className={styles.intro}>
+        {hero?.title ? <h1 className={styles.title}>{hero.title}</h1> : null}
+        {hero?.lead ? <p className={styles.lead}>{hero.lead}</p> : null}
+        {hero?.supportingText ? (
+          <p className={styles.supportingText}>{hero.supportingText}</p>
         ) : null}
       </div>
+
+      {hasBenefits ? (
+        <ol className={styles.benefits} aria-label={benefitsAriaLabel}>
+          {benefits.map((item, index) => (
+            <li key={item?.key ?? item.title} className={styles.benefit}>
+              <span className={styles.benefitNumber} aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div className={styles.benefitContent}>
+                <h2 className={styles.benefitTitle}>{item.title}</h2>
+                <p className={styles.benefitDescription}>
+                  {item.description}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      ) : null}
     </header>
   );
 }

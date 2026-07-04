@@ -1,4 +1,3 @@
-import { slugify } from "../../../../shared/utils/slugify.js";
 import styles from "./LogisticsServiceCard.module.css";
 
 export default function LogisticsServiceCard({
@@ -7,14 +6,6 @@ export default function LogisticsServiceCard({
   summary,
   items = [],
   includesLabel,
-  interactive = false,
-  isOpen = false,
-  onToggle,
-  id,
-  openLabel,
-  closeLabel,
-  openDetailsLabel,
-  closeDetailsLabel,
 }) {
   if (!title) return null;
 
@@ -23,90 +14,37 @@ export default function LogisticsServiceCard({
     : [];
 
   const hasDetails = safeItems.length > 0;
-  const cardId = id || `logistics-card-${slugify(title)}`;
-  const detailsId = `${cardId}-details`;
 
   return (
-    <article
-      className={[
-        styles.card,
-        interactive ? styles.isInteractive : "",
-        isOpen ? styles.isOpen : "",
-      ]
-        .filter(Boolean)
-        .join(" ")}
-      aria-labelledby={`${cardId}-title`}
-      data-open={isOpen ? "true" : "false"}
-    >
-      <div className={styles.shell}>
-        <div className={styles.topRow}>
-          <div className={styles.identity}>
-            <h3 id={`${cardId}-title`} className={styles.title}>
-              {title}
-            </h3>
-          </div>
+    <div className={styles.content}>
+      <div className={styles.header}>
+        {Icon ? (
+          <span className={styles.iconWrap} aria-hidden="true">
+            <Icon className={styles.icon} />
+          </span>
+        ) : null}
 
-          {Icon ? (
-            <span className={styles.iconWrap} aria-hidden="true">
-              <span className={styles.iconAura} aria-hidden="true" />
-              <Icon className={styles.icon} />
-            </span>
-          ) : null}
-        </div>
-
-        {summary ? <p className={styles.summary}>{summary}</p> : null}
+        <h4 className={styles.title}>{title}</h4>
       </div>
 
-      {interactive && hasDetails ? (
-        <div className={styles.actions}>
-          <button
-            type="button"
-            className={styles.toggleBtn}
-            aria-expanded={isOpen}
-            aria-controls={detailsId}
-            aria-label={
-              isOpen
-                ? `${closeDetailsLabel} ${title}`
-                : `${openDetailsLabel} ${title}`
-            }
-            onClick={onToggle}
-          >
-            <span className={styles.toggleBtnLabel}>
-              {isOpen ? closeLabel : openLabel}
-            </span>
-
-            <span
-              className={[styles.chevron, isOpen ? styles.chevronOpen : ""]
-                .filter(Boolean)
-                .join(" ")}
-              aria-hidden="true"
-            />
-          </button>
-        </div>
-      ) : null}
+      {summary ? <p className={styles.summary}>{summary}</p> : null}
 
       {hasDetails ? (
-        <div
-          id={detailsId}
-          className={styles.details}
-          aria-hidden={interactive ? !isOpen : false}
-        >
-          <div className={styles.detailsInner}>
-            {includesLabel ? (
-              <p className={styles.includesLabel}>{includesLabel}</p>
-            ) : null}
+        <div className={styles.details}>
+          {includesLabel ? (
+            <p className={styles.includesLabel}>{includesLabel}</p>
+          ) : null}
 
-            <ul className={styles.list}>
-              {safeItems.map((text, index) => (
-                <li key={`${cardId}-item-${index}`} className={styles.listItem}>
-                  <span className={styles.bullet} aria-hidden="true" />
-                  <span className={styles.listText}>{text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul className={styles.list}>
+            {safeItems.map((text, index) => (
+              <li key={`item-${index}`} className={styles.listItem}>
+                <span className={styles.bullet} aria-hidden="true" />
+                <span className={styles.listText}>{text}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       ) : null}
-    </article>
+    </div>
   );
 }

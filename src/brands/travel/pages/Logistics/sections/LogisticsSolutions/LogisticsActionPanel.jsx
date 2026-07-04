@@ -13,6 +13,7 @@ export default function LogisticsActionPanel({
       cta={cta}
       className={className}
       sectionKey="logistics-action-panel"
+      layout="compact"
     />
   );
 }

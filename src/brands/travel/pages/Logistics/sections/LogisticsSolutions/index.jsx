@@ -39,7 +39,6 @@ export default function LogisticsSolutionsSection() {
             intro={servicesIntro}
             icons={icons}
             ui={section?.ui}
-            allowMultiple={false}
           />
 
           <LogisticsActionPanel panel={actionPanel} cta={cta} />

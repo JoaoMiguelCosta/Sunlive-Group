@@ -18,6 +18,7 @@ export default function TravelActionPanel({
   cta = null,
   className = "",
   sectionKey = "travel-action-panel",
+  layout = "default",
 }) {
   const eyebrow = getFirstNonEmpty(panel?.eyebrow);
   const title = getFirstNonEmpty(panel?.title);
@@ -36,7 +37,13 @@ export default function TravelActionPanel({
 
   if (!hasContent) return null;
 
-  const rootClassName = [styles.root, className].filter(Boolean).join(" ");
+  const rootClassName = [
+    styles.root,
+    layout === "compact" ? styles.compact : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <div className={rootClassName} data-travel-action-panel={sectionKey}>

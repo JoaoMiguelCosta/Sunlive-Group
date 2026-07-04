@@ -428,3 +428,51 @@
         transition: none;
     }
 }
+
+/*
+ * Layout "compact" (opt-in via prop `layout="compact"`): painel mais baixo,
+ * texto e botão alinhados lado a lado. O layout "default" acima mantém-se
+ * inalterado para as restantes páginas Travel que não passam esta prop.
+ */
+.root.compact .panel {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    padding: clamp(1rem, 1.7vw, 1.35rem) clamp(1.2rem, 2vw, 1.6rem);
+}
+
+.root.compact .copyColumn {
+    align-content: center;
+    gap: 0.45rem;
+    max-inline-size: 48ch;
+}
+
+.root.compact .title {
+    font-size: clamp(1.35rem, 2vw, 1.8rem);
+    line-height: 1.12;
+}
+
+.root.compact .description {
+    font-size: clamp(0.92rem, 1vw, 1rem);
+    line-height: 1.5;
+}
+
+.root.compact .actionColumn {
+    align-content: center;
+    justify-items: end;
+}
+
+.root.compact .actionArea {
+    padding-top: 0;
+}
+
+@media (max-width: 1080px) {
+    .root.compact .panel {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .root.compact .actionColumn {
+        justify-items: start;
+    }
+}
