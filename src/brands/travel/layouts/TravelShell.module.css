@@ -7,27 +7,6 @@
     overflow: clip;
 
     color: var(--travel-text, var(--sl-color-text, rgb(248 251 255 / 0.96)));
-
-    background:
-        radial-gradient(76rem 36rem at 50% -14%,
-            rgb(224 167 43 / 0.13) 0%,
-            rgb(224 167 43 / 0.052) 34%,
-            transparent 70%),
-        radial-gradient(48rem 30rem at 7% 20%,
-            rgb(79 195 247 / 0.075) 0%,
-            transparent 72%),
-        radial-gradient(52rem 34rem at 94% 42%,
-            rgb(79 195 247 / 0.055) 0%,
-            transparent 74%),
-        radial-gradient(54rem 34rem at 86% 104%,
-            rgb(224 167 43 / 0.055) 0%,
-            transparent 72%),
-        linear-gradient(180deg,
-            #020814 0%,
-            #051122 28%,
-            #071a2d 58%,
-            #03101f 78%,
-            #020814 100%);
 }
 
 .shell::before {
@@ -73,14 +52,4 @@
 .shell>* {
     position: relative;
     z-index: 1;
-}
-
-/*
- * Route-scoped: enquanto data-page-theme="light-forest" estiver ativo no
- * html (ver Logistics/index.jsx), o fundo navy do shell dá lugar ao fundo
- * Light Forest definido em --sl-body-bg (travel/theme.css). Não afeta o
- * fundo default do shell nas restantes páginas Travel.
- */
-:global([data-brand="travel"][data-page-theme="light-forest"]) .shell {
-    background: transparent;
 }

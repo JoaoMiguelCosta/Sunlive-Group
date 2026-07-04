@@ -15,7 +15,7 @@
    color-scheme: light;
 
    color: var(--group-text-primary);
-   background-color: var(--group-background);
+
 
    /* -------------------------------------------------
       Bridge tokens — consumidos pelos componentes

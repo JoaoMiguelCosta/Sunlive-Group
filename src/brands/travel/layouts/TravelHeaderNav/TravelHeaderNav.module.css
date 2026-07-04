@@ -47,7 +47,6 @@
     padding-block-start: clamp(0.6rem, 1.2vw, 0.95rem);
     box-sizing: border-box;
 
-    background-color: var(--sl-surface-page);
 }
 
 .capsule {
