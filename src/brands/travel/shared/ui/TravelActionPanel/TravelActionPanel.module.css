@@ -435,11 +435,22 @@
  * inalterado para as restantes páginas Travel que não passam esta prop.
  */
 .root.compact .panel {
-    grid-template-columns: minmax(0, 60ch) auto;
-    justify-content: start;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    column-gap: clamp(1rem, 2vw, 1.75rem);
     padding: clamp(1rem, 1.7vw, 1.35rem) clamp(1.2rem, 2vw, 1.6rem);
+}
+
+/*
+ * Agrupa copy + botão para limitar e centrar o conjunto dentro do painel
+ * (que mantém a largura total), sem percentagens nem transforms.
+ */
+.root.compact .compactGroup {
+    display: grid;
+    grid-template-columns: minmax(0, 60ch) auto;
+    align-items: center;
+    column-gap: clamp(3rem, 5vw, 6rem);
+    max-inline-size: 72rem;
 }
 
 .root.compact .copyColumn {
@@ -471,8 +482,13 @@
 /* Alinhado com o breakpoint partilhado pelo hero e pelo explorador (860px) */
 @media (max-width: 860px) {
     .root.compact .panel {
+        display: block;
+    }
+
+    .root.compact .compactGroup {
         grid-template-columns: 1fr;
-        align-items: start;
+        row-gap: 1rem;
+        max-inline-size: none;
     }
 
     .root.compact .actionColumn {
