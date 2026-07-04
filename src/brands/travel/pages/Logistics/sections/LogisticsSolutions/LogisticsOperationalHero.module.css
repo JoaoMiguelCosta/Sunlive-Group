@@ -16,7 +16,7 @@
 
 .title {
     margin: 0;
-    color: #f8fbff;
+    color: var(--sl-text-primary, #1e2e24);
     font-size: clamp(1.9rem, 3.2vw, 2.85rem);
     font-weight: 900;
     letter-spacing: -0.03em;
@@ -26,7 +26,7 @@
 
 .lead {
     margin: 0;
-    color: rgba(240, 244, 249, 0.94);
+    color: var(--sl-text-secondary, #2e4d3b);
     font-size: clamp(1.02rem, 1.15vw, 1.16rem);
     font-weight: 700;
     letter-spacing: -0.01em;
@@ -36,7 +36,7 @@
 
 .supportingText {
     margin: 0;
-    color: rgba(206, 217, 232, 0.82);
+    color: var(--sl-text-muted, #536456);
     font-size: clamp(0.92rem, 1vw, 1rem);
     font-weight: 460;
     line-height: 1.6;
@@ -58,7 +58,7 @@
     gap: 0.85rem;
     align-items: start;
     padding-block-start: clamp(1.05rem, 1.6vw, 1.4rem);
-    border-block-start: 1px solid rgba(255, 255, 255, 0.1);
+    border-block-start: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
 }
 
 .benefit:first-child {
@@ -67,7 +67,7 @@
 }
 
 .benefitNumber {
-    color: rgba(223, 178, 74, 0.9);
+    color: var(--sl-text-muted, #536456);
     font-size: 0.82rem;
     font-weight: 900;
     letter-spacing: 0.02em;
@@ -80,7 +80,7 @@
 
 .benefitTitle {
     margin: 0 0 0.3rem;
-    color: #f0d58f;
+    color: var(--sl-text-primary, #1e2e24);
     font-size: 0.98rem;
     font-weight: 800;
     letter-spacing: -0.01em;
@@ -90,7 +90,7 @@
 
 .benefitDescription {
     margin: 0;
-    color: rgba(209, 219, 233, 0.84);
+    color: var(--sl-text-muted, #536456);
     font-size: 0.9rem;
     line-height: 1.55;
     text-wrap: pretty;
