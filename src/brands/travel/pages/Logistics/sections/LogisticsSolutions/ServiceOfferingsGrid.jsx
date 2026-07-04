@@ -89,7 +89,6 @@ export default function ServiceOfferingsGrid({
               <LogisticsServiceCard
                 id={service.id}
                 icon={Icon}
-                tag={service.tag}
                 title={service.title}
                 summary={service.summary}
                 items={service.items}

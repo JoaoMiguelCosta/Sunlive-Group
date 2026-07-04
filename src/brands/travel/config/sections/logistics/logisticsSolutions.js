@@ -4,69 +4,39 @@ const logisticsSolutions = {
   id: "logistica",
 
   operationalHero: {
-    eyebrow: "Logística de Grupo",
-    title: "Operação de Viagem Integrada para Turismo, Equipas e Grupos",
-    lead: "Coordenamos transporte, estadia e apoio operacional numa solução única, com foco em organização, fluidez e resposta ajustada ao grupo.",
+    title: "Logística Integrada para Viagens em Grupo",
+    lead: "Soluções de viagem coordenadas para turismo, equipas desportivas e grupos empresariais.",
     supportingText:
-      "Da chegada ao destino à gestão diária da operação, estruturamos cada percurso com acompanhamento próximo, parceiros selecionados e capacidade de adaptação a viagens de grupo, equipas desportivas, programas culturais e deslocações com necessidades específicas.",
-    statusBadge: "Operação coordenada",
-    trustChips: [
-      "Coordenação dedicada",
-      "Soluções para grupos e equipas",
-      "Transporte, estadia e rotas articuladas",
-    ],
-    metrics: [
-      {
-        value: "24/7",
-        label: "Acompanhamento operacional contínuo",
-      },
-      {
-        value: "360º",
-        label: "Planeamento logístico completo",
-      },
-      {
-        value: "Ajustada",
-        label: "Solução alinhada com o grupo",
-      },
-    ],
+      "Combinamos transporte, alojamento e apoio diário num único plano. Desde o momento em que o seu grupo chega até ao dia da partida, tratamos de todos os detalhes para que a sua viagem decorra sem problemas e sem stress.",
     assurances: [
       {
         key: "coordination",
-        title: "Coordenação centralizada",
+        title: "Coordenação Centralizada",
         description:
-          "Toda a operação é organizada de forma articulada, reduzindo falhas de comunicação e simplificando a gestão da viagem.",
+          "Um único ponto de contacto gere toda a operação, eliminando erros de comunicação.",
       },
       {
         key: "timing",
-        title: "Timing controlado",
+        title: "Tempo otimizado",
         description:
-          "Rotas, horários e ajustes são definidos com foco na pontualidade, na fluidez da operação e no contexto real do grupo.",
+          "Os percursos e horários são rigorosamente geridos de acordo com as necessidades reais do seu grupo, para garantir a pontualidade.",
       },
       {
         key: "support",
-        title: "Apoio contínuo",
+        title: "Apoio no local 24 horas por dia, 7 dias por semana",
         description:
-          "Mantemos acompanhamento antes, durante e após a viagem, com capacidade de resposta perante alterações e necessidades operacionais.",
-      },
-      {
-        key: "adapted",
-        title: "Solução ajustada",
-        description:
-          "Cada proposta é desenhada em função do perfil do grupo, do destino, da duração da viagem e do nível de serviço pretendido.",
+          "Prestamos assistência contínua antes, durante e após a sua viagem, para lidar instantaneamente com alterações inesperadas.",
       },
     ],
     ui: {
-      trustChipsAriaLabel: "Pontos-chave operacionais",
-      metricsAriaLabel: "Indicadores operacionais",
       assurancesAriaLabel: "Garantias operacionais",
     },
   },
 
   servicesIntro: {
-    eyebrow: "Módulos operacionais",
-    title: "Serviços desenhados para uma execução fluida e coordenada",
+    title: "Os nossos serviços",
     description:
-      "Cada módulo responde a uma necessidade concreta da viagem e pode ser integrado numa operação única, com acompanhamento próximo e articulação entre transporte, estadia e apoio no destino.",
+      "Cada um destes serviços pode funcionar de forma independente ou ser integrado num único programa de viagem.",
   },
 
   ui: {
@@ -84,99 +54,75 @@ const logisticsSolutions = {
       key: "transfers-aeroporto",
       anchorId: "transfers-aeroporto",
       iconKey: "plane",
-      tag: "Chegada & Partida",
-      title: "Transfers de Aeroporto",
+      title: "Chegadas e Partidas (Transfers de Aeroporto)",
       summary:
-        "Serviço de ligação de e para aeroportos com monitorização de voos, coordenação antecipada e enquadramento com os horários reais da operação.",
+        "Serviços fiáveis de recolha e entrega no aeroporto, perfeitamente sincronizados com o seu horário de viagem.",
       items: [
-        "Motoristas profissionais",
-        "Monitorização de voos em tempo real",
-        "Viaturas adequadas ao perfil do grupo",
-        "Disponibilidade ajustada à operação",
+        "Acompanhamento de voos em tempo real para nos adaptarmos a eventuais atrasos.",
+        "Motoristas profissionais e acolhedores.",
+        "Veículos com dimensões adequadas para acomodar confortavelmente o seu grupo e bagagem.",
       ],
     },
     {
       key: "transporte-equipas",
       anchorId: "transporte-equipas",
       iconKey: "bus",
-      tag: "Mobilidade de Grupo",
-      title: "Transporte Equipas",
+      title: "Mobilidade de grupos (transporte de equipas)",
       summary:
-        "Soluções de mobilidade para equipas desportivas e grupos organizados, com capacidade para passageiros, bagagem e equipamentos, numa lógica de coordenação eficiente.",
+        "Soluções de transporte dedicadas para equipas desportivas e grandes grupos organizados.",
       items: [
-        "Autocarros e viaturas de grupo",
-        "Espaço para bagagem e equipamentos",
-        "Conforto adequado à duração da viagem",
-        "Gestão logística articulada",
+        "Autocarros e carrinhas modernos com espaço amplo para malas e equipamento desportivo.",
+        "Viagens confortáveis concebidas tanto para transferências curtas como para viagens longas.",
       ],
     },
     {
       key: "lodging",
       anchorId: "alojamentos",
       iconKey: "pin",
-      tag: "Estadia Selecionada",
-      title: "Alojamentos",
+      title: "Estadias selecionadas (hotéis parceiros)",
       summary:
-        "Unidades selecionadas em função da localização, capacidade de resposta, conforto e enquadramento com o perfil da viagem e do grupo.",
+        "Alojamentos escolhidos especificamente pela sua capacidade de receber grandes grupos e delegações desportivas.",
       items: [
-        "Hotéis parceiros selecionados",
-        "Localizações ajustadas ao programa",
-        "Opções com diferentes tipologias e serviços",
-        "Soluções para grupos, famílias ou equipas",
+        "Hotéis parceiros de confiança em localizações estratégicas.",
+        "Configurações de quartos adaptadas a grupos, famílias ou equipas.",
       ],
     },
     {
       key: "tours",
       anchorId: "tours-turisticos",
       iconKey: "tour-bus",
-      tag: "Experiência no Destino",
-      title: "Tours Turísticos",
+      title: "Experiências no Destino (Excursões e Guias)",
       summary:
-        "Programas turísticos e culturais desenhados de forma flexível, com acompanhamento e roteiros adaptados ao ritmo, interesse e objetivo da viagem.",
+        "Excursões turísticas e culturais flexíveis, concebidas para se adaptarem ao ritmo e aos interesses do seu grupo.",
       items: [
-        "Guias e acompanhamento local",
-        "Roteiros ajustados ao grupo",
-        "Opções para diferentes perfis de viagem",
-        "Experiências integradas no programa",
+        "Guias e anfitriões locais especializados.",
+        "Itinerários personalizados que se encaixam perfeitamente na sua programação principal.",
       ],
     },
     {
       key: "full-packages",
       anchorId: "pacotes-completos",
       iconKey: "package",
-      tag: "Solução Integrada",
-      title: "Pacotes Completos",
+      title: "Pacotes «Tudo em Um» (Soluções Chave na Mão)",
       summary:
-        "Operações chave-na-mão para grupos, equipas e acompanhantes que combinam transporte, estadia, apoio local e atividades numa proposta única e coordenada.",
+        "Pacotes completos «prontos a usar» que combinam todos os nossos serviços num único contrato integrado.",
       items: [
-        "Serviços integrados numa única operação",
-        "Coordenação centralizada",
-        "Acompanhamento contínuo",
-        "Estrutura ajustada ao contexto da viagem",
+        "Transporte, hotéis, atividades locais e pessoal geridos em conjunto.",
+        "Uma experiência totalmente sem complicações para líderes e gestores de grupos.",
       ],
     },
   ],
 
   actionPanel: {
-    eyebrow: "Planeamento operacional",
-    title:
-      "Peça uma proposta ajustada à operação, ao destino e ao perfil do grupo",
+    title: "Pronto para planear a tua viagem?",
     description:
-      "Estruturamos soluções logísticas em função do número de participantes, tipologia da viagem, necessidades de mobilidade, estadia, apoio local e nível de acompanhamento pretendido, para garantir uma operação coordenada do início ao fim.",
-    proofPoints: [
-      "Solução ajustada à operação real",
-      "Planeamento logístico coordenado",
-      "Acompanhamento próximo em todas as fases",
-    ],
-    ui: {
-      proofListAriaLabel: "Vantagens do pedido de proposta",
-    },
+      "Obtenha um orçamento personalizado. Cada grupo é único. Indique-nos o número de participantes, o destino, as necessidades de mobilidade e o tipo de alojamento preferido, e elaboraremos um plano logístico claro e coordenado do início ao fim.",
   },
 
   cta: {
-    label: "Pedir proposta",
+    label: "Solicitar um orçamento",
     href: TRAVEL_PAGE_PATHS.contacts,
-    ariaLabel: "Pedir proposta de logística à Sunlive Travel",
+    ariaLabel: "Solicitar um orçamento de logística à Sunlive Travel",
     iconKey: "phone",
   },
 };

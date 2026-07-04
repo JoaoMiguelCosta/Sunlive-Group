@@ -3,7 +3,6 @@ import styles from "./LogisticsServiceCard.module.css";
 
 export default function LogisticsServiceCard({
   icon: Icon,
-  tag,
   title,
   summary,
   items = [],
@@ -42,8 +41,6 @@ export default function LogisticsServiceCard({
       <div className={styles.shell}>
         <div className={styles.topRow}>
           <div className={styles.identity}>
-            {tag ? <span className={styles.tag}>{tag}</span> : null}
-
             <h3 id={`${cardId}-title`} className={styles.title}>
               {title}
             </h3>
