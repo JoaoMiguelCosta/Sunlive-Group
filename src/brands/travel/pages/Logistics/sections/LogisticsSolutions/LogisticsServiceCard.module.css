@@ -93,11 +93,27 @@
     background: linear-gradient(180deg, rgba(244, 208, 117, 0.9) 0%, rgba(227, 180, 69, 0.96) 100%);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 859px) {
+    /*
+     * No accordion mobile o painel surge imediatamente sob o trigger, que já
+     * apresenta o título completo. Evita repetir o texto visualmente, mas
+     * mantém o elemento no DOM/árvore de acessibilidade (sem aria-hidden,
+     * sem display:none) — apenas escondido do ecrã.
+     */
     .title {
-        font-size: 1.08rem;
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
     }
+}
 
+@media (max-width: 640px) {
     .summary {
         font-size: 0.9rem;
     }

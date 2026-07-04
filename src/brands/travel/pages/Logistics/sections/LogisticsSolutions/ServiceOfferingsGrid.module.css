@@ -74,7 +74,7 @@
 
 .trigger {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.9rem;
     inline-size: 100%;
     padding: 0.9rem 1.05rem;
@@ -109,6 +109,7 @@
 
 .triggerNumber {
     flex: 0 0 auto;
+    margin-top: 0.15rem;
     color: rgba(223, 178, 74, 0.85);
     font-size: 0.8rem;
     font-weight: 900;
@@ -124,20 +125,28 @@
     line-height: 1.32;
 }
 
-.triggerIndicator {
+.chevron {
     flex: 0 0 auto;
     inline-size: 0.5rem;
     block-size: 0.5rem;
-    border-radius: 50%;
-    background: transparent;
-    transition: background 180ms ease;
+    margin-top: 0.32rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    color: rgba(236, 242, 248, 0.45);
+    transform: rotate(45deg);
+    transition:
+        transform 200ms ease,
+        color 180ms ease;
 }
 
-.trigger[data-active="true"] .triggerIndicator {
-    background: linear-gradient(180deg, rgba(223, 178, 74, 0.92) 0%, rgba(93, 193, 255, 0.92) 100%);
+.trigger[data-active="true"] .chevron {
+    color: rgba(223, 178, 74, 0.92);
+    transform: rotate(225deg);
 }
 
 .panel {
+    display: flex;
+    flex-direction: column;
     margin-top: 0.65rem;
     padding: clamp(1.1rem, 1.8vw, 1.5rem);
     border-radius: 20px;
@@ -160,7 +169,7 @@
         grid-template-rows: repeat(5, auto);
         column-gap: clamp(1.5rem, 3vw, 2.5rem);
         row-gap: 0.6rem;
-        align-items: start;
+        align-items: stretch;
     }
 
     .item {
@@ -176,7 +185,8 @@
         grid-column: 2;
         grid-row: 1 / -1;
         margin-top: 0;
-        align-self: start;
+        align-self: stretch;
+        justify-content: flex-start;
     }
 }
 

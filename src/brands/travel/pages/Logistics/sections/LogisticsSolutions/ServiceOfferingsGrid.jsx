@@ -91,10 +91,7 @@ export default function ServiceOfferingsGrid({
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span className={styles.triggerTitle}>{service.title}</span>
-                  <span
-                    className={styles.triggerIndicator}
-                    aria-hidden="true"
-                  />
+                  <span className={styles.chevron} aria-hidden="true" />
                 </button>
               </h3>
 
