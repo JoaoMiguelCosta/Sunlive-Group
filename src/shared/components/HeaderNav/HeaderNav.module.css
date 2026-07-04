@@ -87,7 +87,7 @@
     border: 1px solid transparent;
     border-radius: var(--hn-radius-md);
 
-    color: var(--hn-accent);
+    color: var(--sl-text-primary);
     /*
      * Trigger da brand ativa: fundo sage sempre ligado (fechado,
      * aberto, hover ou focus), igual ao estado ativo já usado nos
