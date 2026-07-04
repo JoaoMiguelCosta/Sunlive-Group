@@ -82,7 +82,7 @@ export default function TravelActionPanel({
             cta={cta}
             className={styles.ctaButton}
             variant="travel"
-            tone="strong"
+            tone={isCompact ? "lightForest" : "strong"}
             blink
             compact="auto"
             scrollOffset={72}

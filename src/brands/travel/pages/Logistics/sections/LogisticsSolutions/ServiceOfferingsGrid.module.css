@@ -21,9 +21,9 @@
     margin: 0;
     padding: 0.34rem 0.6rem 0.32rem;
     border-radius: 999px;
-    border: 1px solid rgba(226, 186, 88, 0.2);
-    background: linear-gradient(180deg, rgba(225, 177, 63, 0.14) 0%, rgba(225, 177, 63, 0.06) 100%);
-    color: rgba(244, 204, 105, 0.98);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-secondary, #f0f1e2);
+    color: var(--sl-text-secondary, #2e4d3b);
     font-size: 0.64rem;
     font-weight: 900;
     letter-spacing: 0.2em;
@@ -33,7 +33,7 @@
 
 .sectionTitle {
     margin: 0;
-    color: #f7f8fc;
+    color: var(--sl-text-primary, #1e2e24);
     font-size: clamp(1.4rem, 2.2vw, 1.9rem);
     line-height: 1.1;
     font-weight: 800;
@@ -43,7 +43,7 @@
 
 .sectionDescription {
     margin: 0;
-    color: rgba(223, 231, 243, 0.84);
+    color: var(--sl-text-muted, #536456);
     font-size: clamp(0.9rem, 0.95vw, 1rem);
     line-height: 1.5;
     text-wrap: pretty;
@@ -78,10 +78,10 @@
     gap: 0.9rem;
     inline-size: 100%;
     padding: 0.9rem 1.05rem;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
     border-radius: 14px;
-    background: rgba(9, 21, 40, 0.55);
-    color: rgba(236, 242, 248, 0.86);
+    background: var(--sl-surface-footer, #f6f7ed);
+    color: var(--sl-text-secondary, #2e4d3b);
     font: inherit;
     text-align: left;
     appearance: none;
@@ -93,24 +93,25 @@
 }
 
 .trigger:hover {
-    border-color: rgba(214, 166, 77, 0.3);
+    background: var(--sl-surface-secondary, #f0f1e2);
+    border-color: var(--sl-border-default, rgba(30, 46, 36, 0.28));
 }
 
 .trigger[data-active="true"] {
-    background: linear-gradient(180deg, rgba(24, 52, 88, 0.85) 0%, rgba(9, 22, 40, 0.92) 100%);
-    border-color: rgba(214, 166, 77, 0.42);
-    color: #ffffff;
+    background: var(--sl-surface-primary, #e6e8d1);
+    border-color: var(--sl-accent, #2d6b4f);
+    color: var(--sl-text-primary, #1e2e24);
 }
 
 .trigger:focus-visible {
-    outline: 2px solid rgba(93, 193, 255, 0.75);
+    outline: 2px solid var(--sl-focus-ring-color, rgba(45, 107, 79, 0.3));
     outline-offset: 3px;
 }
 
 .triggerNumber {
     flex: 0 0 auto;
     margin-top: 0.15rem;
-    color: rgba(223, 178, 74, 0.85);
+    color: var(--sl-text-muted, #536456);
     font-size: 0.8rem;
     font-weight: 900;
     letter-spacing: 0.02em;
@@ -132,7 +133,7 @@
     margin-top: 0.32rem;
     border-right: 2px solid currentColor;
     border-bottom: 2px solid currentColor;
-    color: rgba(236, 242, 248, 0.45);
+    color: var(--sl-text-muted, #536456);
     transform: rotate(45deg);
     transition:
         transform 200ms ease,
@@ -140,7 +141,7 @@
 }
 
 .trigger[data-active="true"] .chevron {
-    color: rgba(223, 178, 74, 0.92);
+    color: var(--sl-accent-strong, #2e4d3b);
     transform: rotate(225deg);
 }
 
@@ -150,13 +151,9 @@
     margin-top: 0.65rem;
     padding: clamp(1.1rem, 1.8vw, 1.5rem);
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background:
-        radial-gradient(120% 150% at 0% 0%, rgba(84, 179, 219, 0.1) 0%, transparent 42%),
-        linear-gradient(180deg, rgba(10, 24, 44, 0.92) 0%, rgba(4, 12, 26, 0.96) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.05),
-        0 12px 24px rgba(0, 0, 0, 0.18);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-footer, #f6f7ed);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
 }
 
 .panel[hidden] {

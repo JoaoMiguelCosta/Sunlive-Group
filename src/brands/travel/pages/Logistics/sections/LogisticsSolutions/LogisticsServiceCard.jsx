@@ -24,7 +24,10 @@ export default function LogisticsServiceCard({
           </span>
         ) : null}
 
-        <h4 className={styles.title}>{title}</h4>
+        {/* aria-hidden: aria-labelledby no painel já usa este texto */}
+        <h4 className={styles.title} aria-hidden="true">
+          {title}
+        </h4>
       </div>
 
       {summary ? <p className={styles.summary}>{summary}</p> : null}

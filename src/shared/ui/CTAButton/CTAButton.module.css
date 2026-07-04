@@ -920,6 +920,33 @@
         0 12px 26px rgba(0, 0, 0, 0.24);
 }
 
+/*
+ * Tone opt-in "lightForest" — usado apenas pela página Logística (via
+ * layout="compact" no TravelActionPanel). Os restantes tones (default,
+ * strong, soft) mantêm a paleta navy/dourado inalterada.
+ */
+.button--travel[data-tone="lightForest"] {
+    --travel-border: var(--sl-border-default, rgba(30, 46, 36, 0.28));
+    --travel-border-hover: var(--sl-border-strong, rgba(30, 46, 36, 0.46));
+    --travel-halo-soft: rgb(var(--sl-color-forest-600-rgb, 45 107 79) / 0.12);
+    --travel-halo-strong: var(--sl-focus-ring-color, rgba(45, 107, 79, 0.3));
+
+    color: var(--sl-color-sage-100, #f6f7ed);
+    font-weight: 800;
+
+    background: var(--sl-accent-strong, #2e4d3b);
+    text-shadow: none;
+}
+
+.button--travel[data-tone="lightForest"]::before,
+.button--travel[data-tone="lightForest"]::after {
+    background: none;
+}
+
+.button--travel[data-tone="lightForest"] .icon {
+    filter: none;
+}
+
 /* =========================================================
    HOTEL RESPONSIVE
    ========================================================= */

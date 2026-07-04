@@ -439,6 +439,18 @@
     justify-content: center;
     align-items: center;
     padding: clamp(1rem, 1.7vw, 1.35rem) clamp(1.2rem, 2vw, 1.6rem);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-secondary, #f0f1e2);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
+}
+
+.root.compact .panel::before,
+.root.compact .panel::after {
+    background: none;
+}
+
+.root.compact .panelGlow {
+    display: none;
 }
 
 /*
@@ -459,15 +471,28 @@
     max-inline-size: 60ch;
 }
 
+.root.compact .eyebrow {
+    border-color: var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-footer, #f6f7ed);
+    color: var(--sl-text-secondary, #2e4d3b);
+}
+
 .root.compact .title {
+    color: var(--sl-text-primary, #1e2e24);
     font-size: clamp(1.35rem, 2vw, 1.8rem);
     line-height: 1.12;
+    text-shadow: none;
 }
 
 .root.compact .description {
+    color: var(--sl-text-secondary, #2e4d3b);
     font-size: clamp(0.92rem, 1vw, 1rem);
     font-weight: 400;
     line-height: 1.5;
+}
+
+.root.compact .supportingText {
+    color: var(--sl-text-muted, #536456);
 }
 
 .root.compact .actionColumn {
