@@ -74,3 +74,13 @@
     position: relative;
     z-index: 1;
 }
+
+/*
+ * Route-scoped: enquanto data-page-theme="light-forest" estiver ativo no
+ * html (ver Logistics/index.jsx), o fundo navy do shell dá lugar ao fundo
+ * Light Forest definido em --sl-body-bg (travel/theme.css). Não afeta o
+ * fundo default do shell nas restantes páginas Travel.
+ */
+:global([data-brand="travel"][data-page-theme="light-forest"]) .shell {
+    background: transparent;
+}

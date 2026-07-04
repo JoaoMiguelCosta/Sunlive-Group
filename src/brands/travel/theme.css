@@ -202,3 +202,18 @@
 :global([data-brand="travel"]) {
     --footer-accent: var(--travel-cyan-deep);
 }
+
+/* =========================
+   Page theme override — Logistics (Light Forest)
+
+   Ativado/removido em document.documentElement pela própria página
+   (ver src/brands/travel/pages/Logistics/index.jsx). Scoped às duas
+   condições em simultâneo, por isso não afeta o resto da Travel.
+   ========================= */
+
+:root[data-brand="travel"][data-page-theme="light-forest"] {
+    --sl-body-bg: var(--sl-surface-page);
+
+    color-scheme: light;
+    background: var(--sl-body-bg);
+}

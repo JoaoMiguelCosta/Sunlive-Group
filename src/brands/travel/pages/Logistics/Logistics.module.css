@@ -1,14 +1,13 @@
 /*
- * Fundo Light Forest exclusivo desta página. O TravelShell partilhado
- * continua navy (fora de âmbito) — este wrapper cobre-o com uma
- * superfície opaca própria, do topo até onde o Footer começa.
- * min-block-size: 100dvh garante que a página cobre pelo menos um
- * ecrã completo mesmo quando o conteúdo é mais curto que o viewport.
+ * O fundo Light Forest vem agora do html (data-page-theme="light-forest",
+ * ver Logistics/index.jsx + travel/theme.css) — este wrapper já não pinta
+ * a sua própria superfície. min-block-size garante que a página cobre
+ * pelo menos um ecrã completo mesmo quando o conteúdo é mais curto que o
+ * viewport.
  */
 .page {
     position: relative;
     isolation: isolate;
     min-block-size: 100dvh;
-    background: var(--sl-surface-page, #daddc0);
     color: var(--sl-text-primary, #1e2e24);
 }
