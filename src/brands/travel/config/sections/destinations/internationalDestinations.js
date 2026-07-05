@@ -9,11 +9,8 @@ const internationalDestinations = {
 
   showcaseHero: {
     eyebrow: "Seleção internacional",
-    title:
-      "Destinos Internacionais com seleção criteriosa e operação personalizada",
-    lead: "Expandimos o programa da sua viagem com destinos internacionais escolhidos pela relevância, impacto visual e adequação ao perfil do grupo.",
-    supportingText:
-      "Cada proposta é desenhada com foco em conforto, contexto cultural, fluidez logística e experiências bem estruturadas, para que a viagem internacional mantenha o mesmo nível de execução cuidada do início ao fim.",
+    title: "Viagens internacionais",
+    lead: "Ampliamos os seus horizontes com destinos internacionais escolhidos pelo seu impacto cultural, beleza e facilidade logística.",
     highlightsLabel: "Escala internacional",
     highlightPills: [
       "Destinos além-fronteiras",
@@ -79,7 +76,7 @@ const internationalDestinations = {
       city: "Malta",
       badge: "Malta",
       summary:
-        "Uma ilha encantadora no Mediterrâneo, com praias deslumbrantes, vilas históricas e clima agradável ao longo do ano.",
+        "Uma encantadora ilha mediterrânica com belas praias, cidades históricas antigas e um clima excelente durante todo o ano.",
       duration: "Programa flexível",
       highlights: ["Valeta", "Costa mediterrânica", "Centros históricos"],
       picture: {
@@ -95,7 +92,7 @@ const internationalDestinations = {
       city: "Catar",
       badge: "Catar",
       summary:
-        "Combina modernidade e tradição no coração do Golfo, ideal para grupos que procuram cultura, arquitetura e experiências distintas.",
+        "Uma mistura impressionante de arquitetura ultramoderna e tradição profunda, mesmo no coração do Golfo.",
       duration: "Programa flexível",
       highlights: ["Doha", "Skyline", "Cultura do Golfo"],
       picture: {
@@ -111,7 +108,7 @@ const internationalDestinations = {
       city: "Arábia Saudita",
       badge: "Arábia Saudita",
       summary:
-        "Um destino de grande escala que cruza tradição e modernidade com cidades icónicas, património e paisagens desérticas.",
+        "Um destino de grande escala onde cidades modernas em expansão se encontram com paisagens desérticas antigas e um rico património.",
       duration: "Programa flexível",
       highlights: [
         "Arquitetura marcante",
@@ -131,7 +128,7 @@ const internationalDestinations = {
       city: "Kuwait",
       badge: "Kuwait",
       summary:
-        "Destino com forte identidade regional, mercados tradicionais, zonas urbanas modernas e proximidade ao Golfo Pérsico.",
+        "Um destino com forte identidade regional, mercados tradicionais vibrantes e áreas urbanas modernas.",
       duration: "Programa flexível",
       highlights: ["Museus", "Mercados tradicionais", "Vista urbana"],
       picture: {
@@ -147,7 +144,7 @@ const internationalDestinations = {
       city: "Brasil",
       badge: "Brasil",
       summary:
-        "Diversidade em estado puro, combinando praias, natureza, ritmo urbano e uma energia cultural muito própria.",
+        "Diversidade pura que combina praias mundialmente famosas, natureza de tirar o fôlego e uma energia cultural inesquecível.",
       duration: "Programa flexível",
       highlights: ["Rio de Janeiro", "Paisagem natural", "Cultura vibrante"],
       picture: {

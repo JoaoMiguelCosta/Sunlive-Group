@@ -3,10 +3,9 @@ import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
 const destinationsActionPanel = {
   actionPanel: {
     eyebrow: "Planeamento de destinos",
-    title:
-      "Peça uma proposta ajustada ao destino, ao grupo e ao formato da viagem",
+    title: "Obtenha um itinerário personalizado",
     description:
-      "Desenhamos programas nacionais e internacionais em função do destino pretendido, número de participantes, objetivos da deslocação, ritmo da viagem e enquadramento logístico necessário para uma execução fluida e consistente.",
+      "Pronto para explorar? Diga-nos o seu destino, o tamanho do grupo, os objetivos e o ritmo de viagem preferido. Iremos criar um programa de viagem coordenado e de alta qualidade, feito à medida do seu grupo.",
     proofPoints: [
       "Proposta ajustada ao perfil do grupo",
       "Seleção criteriosa de destinos e programa",
@@ -18,7 +17,7 @@ const destinationsActionPanel = {
   },
 
   cta: {
-    label: "Pedir proposta",
+    label: "Solicitar uma proposta",
     href: TRAVEL_PAGE_PATHS.contacts,
     ariaLabel: "Pedir proposta de viagem à Sunlive Travel",
     iconKey: "phone",
