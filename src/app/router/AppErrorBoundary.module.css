@@ -1,22 +1,25 @@
 .root {
   /*
-   * Variáveis locais consumindo tokens globais --sl-*, não tokens de
-   * brand específica (--group-*), porque o error boundary é global e
-   * pode ser renderizado em qualquer contexto de brand.
+   * Variáveis locais — contrato interno do componente, não espalhado
+   * pelas regras abaixo. Consomem tokens globais --sl-*, não tokens de
+   * brand específica (--group-*), porque o error boundary é um estado
+   * global e pode ser renderizado em qualquer contexto de brand.
    *
-   * --aeb-bg só pode ser usada na propriedade "background" (shorthand):
-   * em algumas brands --sl-body-bg é um gradiente, que é inválido em
-   * background-color.
+   * Onde já existe um token semântico global com o mesmo propósito
+   * (fundo, texto, borda, focus), a variável local aponta diretamente
+   * para ele em vez de derivar por color-mix. --aeb-surface e o grupo
+   * --aeb-action-* não têm equivalente semântico global ainda, por
+   * isso continuam derivados de --aeb-text.
    */
-  --aeb-bg: var(--sl-body-bg, #daddc0);
-  --aeb-text: var(--sl-color-text, #1e2e24);
-  --aeb-text-secondary: color-mix(in oklab, var(--aeb-text), transparent 32%);
-  --aeb-border: color-mix(in oklab, var(--aeb-text), transparent 86%);
+  --aeb-bg: var(--sl-document-background-color);
+  --aeb-text: var(--sl-text-primary);
+  --aeb-text-secondary: var(--sl-text-secondary);
+  --aeb-border: var(--sl-border-subtle);
   --aeb-surface: color-mix(in oklab, var(--aeb-text), transparent 96%);
   --aeb-action-bg: color-mix(in oklab, var(--aeb-text), transparent 92%);
   --aeb-action-bg-hover: color-mix(in oklab, var(--aeb-text), transparent 84%);
   --aeb-action-border-hover: color-mix(in oklab, var(--aeb-text), transparent 68%);
-  --aeb-focus: color-mix(in oklab, var(--aeb-text), transparent 40%);
+  --aeb-focus: var(--sl-focus-ring-color);
 
   display: flex;
   align-items: center;

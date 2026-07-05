@@ -5,13 +5,13 @@
   min-height: 100dvh;
   padding: 2rem 1.25rem;
   box-sizing: border-box;
-  background: var(--sl-body-bg, #daddc0);
+  background: var(--sl-document-background-color);
+  color: var(--sl-text-primary);
 }
 
 .text {
   font-family: var(--sl-ff-ui, system-ui, sans-serif);
   font-size: 1rem;
   font-weight: 400;
-  color: var(--sl-color-text, #1e2e24);
   letter-spacing: 0.01em;
 }
