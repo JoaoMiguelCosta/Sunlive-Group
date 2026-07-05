@@ -51,9 +51,15 @@
    --sl-surface-primary: var(--sl-color-sage-300);
    --sl-surface-secondary: var(--sl-color-sage-200);
    --sl-surface-footer: var(--sl-color-sage-100);
+   --sl-surface-elevated: var(--sl-surface-footer);
 
    /* Cor base sólida do documento — ver uso em src/styles/global.css */
    --sl-document-background-color: var(--sl-surface-page);
+
+   /* Contratos de superfície partilhados por cards e disclosures */
+   --sl-card-background: var(--sl-surface-secondary);
+   --sl-card-background-hover: var(--sl-surface-elevated);
+   --sl-disclosure-panel-background: var(--sl-surface-primary);
 
    /* =====================================================
        Texto semântico global

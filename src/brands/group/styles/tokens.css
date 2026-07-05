@@ -73,7 +73,7 @@
       var(--sl-surface-secondary, var(--group-color-light-50));
 
    --group-surface-elevated:
-      var(--sl-surface-footer, var(--group-color-light-0));
+      var(--sl-surface-elevated, var(--group-color-light-0));
 
    /* Contexto inverso para hero, media e zonas escuras */
    --group-surface-inverse:
