@@ -25,7 +25,7 @@
 
    --sl-color-forest-900: #1e2e24;
    --sl-color-forest-700: #2e4d3b;
-   --sl-color-forest-800: #2e4d3b;
+   --sl-color-forest-800: var(--sl-color-forest-700);
 
    --sl-color-forest-600: #2d6b4f;
 
