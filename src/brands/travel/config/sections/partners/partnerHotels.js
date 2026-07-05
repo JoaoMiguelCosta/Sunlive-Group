@@ -1,5 +1,3 @@
-import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
-
 import curiaImg from "../../../assets/partner-hotels/curia.webp";
 import pateiraImg from "../../../assets/partner-hotels/pateira.webp";
 import estanciaImg from "../../../assets/partner-hotels/estancia.webp";
@@ -10,82 +8,40 @@ const partnerHotels = {
   id: "parceiros-hoteis",
 
   showcaseHero: {
-    eyebrow: "Alojamento selecionado",
-    title:
-      "Hotéis parceiros com conforto, localização e consistência de serviço",
-    lead: "Trabalhamos com unidades selecionadas para integrar alojamento adequado em programas de viagem para grupos, equipas e deslocações organizadas, com maior comodidade e melhor articulação operacional.",
+    eyebrow: "Alojamentos Selecionados",
+    title: "Hotéis Parceiros",
+    lead: "Estadias confortáveis, bem localizadas e fiáveis para grupos e equipas.",
     supportingText:
-      "Cada parceiro é escolhido pela localização, capacidade de resposta, conforto e enquadramento com o perfil do grupo, permitindo combinar alojamento, mobilidade e experiência numa solução mais coesa e bem estruturada.",
-    highlightsLabel: "Seleção de alojamento",
-    highlightPills: [
-      "Hotéis criteriosamente selecionados",
-      "Conforto e boa localização",
-      "Alojamento integrado na operação",
-    ],
-    metrics: [
-      {
-        value: "5",
-        label: "Hotéis parceiros",
-      },
-      {
-        value: "Criteriosa",
-        label: "Seleção e conforto",
-      },
-      {
-        value: "Flexível",
-        label: "Ajustada ao grupo",
-      },
-    ],
+      "Trabalhamos com uma rede seleta de hotéis especificamente escolhidos para receber grupos, famílias e equipas desportivas. Ao combinar o hotel certo com o perfil do seu grupo, garantimos que a sua estadia se adapta na perfeição aos seus transportes e horários diários.",
     insights: [
       {
-        key: "context",
-        title: "Enquadramento certo",
+        key: "localizacoes-estrategicas",
+        title: "Localizações Estratégicas",
         description:
-          "Cada unidade é escolhida pela localização, contexto e capacidade de responder bem ao perfil da viagem e do grupo.",
+          "Cada hotel é escolhido pela sua proximidade ao seu itinerário de viagem e às instalações.",
       },
       {
-        key: "comfort",
+        key: "conforto-consistente",
         title: "Conforto consistente",
         description:
-          "A seleção privilegia estadias confortáveis, fiáveis e alinhadas com o nível de serviço pretendido para a operação.",
+          "Damos prioridade a estadias fiáveis e confortáveis que cumpram os padrões de serviço que espera.",
+      },
+      {
+        key: "integracao-perfeita",
+        title: "Integração perfeita",
+        description:
+          "A sua reserva de hotel é totalmente coordenada com o seu transporte local e atividades.",
       },
     ],
     ui: {
-      highlightsAriaLabel: "Critérios da seleção de alojamento",
-      metricsAriaLabel: "Indicadores da secção de hotéis parceiros",
-      insightsAriaLabel: "Princípios da curadoria de hotéis",
+      insightsAriaLabel: "Benefícios dos hotéis parceiros",
     },
   },
 
   collection: {
-    ariaLabel: "Explorar hotéis parceiros",
-    railAriaLabel: "Selecionar hotel em destaque",
-    kicker: "Seleção hoteleira",
-    title:
-      "Unidades escolhidas para estadias com conforto, contexto e boa execução",
-    description:
-      "Uma seleção pensada para apoiar programas turísticos, grupos e operações com necessidade de alojamento fiável, bem localizado e coerente com o nível de serviço e o formato da viagem.",
-    spotlightLabel: "Seleção principal",
-    summaryLabel: "Visão da unidade",
-    primaryMetaLabel: "Localização",
-    highlightsLabel: "Destaques",
-    railLabel: "Hotéis disponíveis",
-    railCountSuffix: "hotéis selecionados",
-    ctaLabel: "Saiba Mais",
-    initialKey: "curia",
-  },
-
-  planningPanel: {
-    eyebrow: "Planeamento personalizado",
-    title:
-      "Fale connosco para integrar o alojamento certo no programa do seu grupo",
-    description:
-      "Ajudamos a articular hotel, mobilidade e enquadramento da estadia numa proposta ajustada ao número de participantes, ao objetivo da viagem e ao nível de conforto pretendido.",
-    proofPoints: [
-      "Alojamento ajustado ao perfil do grupo",
-      "Estadia integrada na operação",
-      "Proposta coordenada e personalizada",
-    ],
+    ariaLabel: "Hotéis em destaque",
+    title: "Hotéis em destaque",
+    indicator: "5 locais selecionados",
   },
 
   hotels: [
@@ -93,12 +49,9 @@ const partnerHotels = {
       key: "curia",
       anchorId: "parceiros-hoteis-curia",
       city: "Hotel Termas da Curia",
-      badge: "Curia",
       location: "Curia",
-      summary:
-        "Rodeado por natureza, jardins e ambiente termal, ideal para estadias tranquilas com conforto e enquadramento relaxante.",
-      href: "https://www.termasdacuria.com/",
-      ctaLabel: "Saiba Mais",
+      description:
+        "Rodeado por uma natureza tranquila e jardins termais. Ideal para estadias tranquilas, relaxantes e confortáveis.",
       picture: {
         src: curiaImg,
         alt: "Fachada do Hotel Termas da Curia",
@@ -109,12 +62,9 @@ const partnerHotels = {
       key: "estancia",
       anchorId: "parceiros-hoteis-estancia",
       city: "Residencial Estância",
-      badge: "Oliveira do Bairro",
       location: "Oliveira do Bairro",
-      summary:
-        "Uma opção de ambiente familiar e tranquilo, indicada para quem valoriza simplicidade, conforto e boa localização.",
-      href: "https://www.facebook.com/residencial.estancia/?locale=pt_PT",
-      ctaLabel: "Saiba Mais",
+      description:
+        "Uma opção tranquila e familiar para grupos que valorizam a simplicidade, o conforto e uma excelente localização central.",
       picture: {
         src: estanciaImg,
         alt: "Residencial Estância em Oliveira do Bairro",
@@ -125,12 +75,9 @@ const partnerHotels = {
       key: "pateira",
       anchorId: "parceiros-hoteis-pateira",
       city: "Estalagem da Pateira",
-      badge: "Fermentelos",
       location: "Fermentelos",
-      summary:
-        "Junto à Lagoa da Pateira, oferece vistas amplas e uma estadia calma em contacto direto com a natureza envolvente.",
-      href: "https://pateira.com/",
-      ctaLabel: "Saiba Mais",
+      description:
+        "Situada mesmo junto à Lagoa da Pateira, oferecendo vistas panorâmicas e uma estadia tranquila em contacto direto com a natureza.",
       picture: {
         src: pateiraImg,
         alt: "Vista para a lagoa e Estalagem da Pateira",
@@ -141,12 +88,9 @@ const partnerHotels = {
       key: "gold",
       anchorId: "parceiros-hoteis-gold",
       city: "In Gold Hotel & Spa",
-      badge: "Águeda",
       location: "Águeda",
-      summary:
-        "Hotel contemporâneo com spa, piscina e restaurante, adequado para estadias de lazer ou contexto profissional.",
-      href: "https://www.ingoldhotel.pt/pt/Menu/Home.aspx",
-      ctaLabel: "Saiba Mais",
+      description:
+        "Um hotel moderno e contemporâneo com spa, piscina e restaurante. Perfeito tanto para grupos de lazer como para viagens de negócios.",
       picture: {
         src: goldImg,
         alt: "In Gold Hotel & Spa em Águeda",
@@ -157,12 +101,9 @@ const partnerHotels = {
       key: "grand",
       anchorId: "parceiros-hoteis-grand",
       city: "Grande Hotel de Luso",
-      badge: "Luso",
       location: "Luso",
-      summary:
-        "Uma unidade de referência junto às Termas do Luso, com tradição, spa e acesso privilegiado a uma experiência de bem-estar.",
-      href: "https://www.hoteluso.com/pt/",
-      ctaLabel: "Saiba Mais",
+      description:
+        "Um hotel emblemático junto às Termas de Luso, com charme tradicional, um spa e experiências de bem-estar de excelência.",
       picture: {
         src: grandImg,
         alt: "Grande Hotel de Luso à noite",
@@ -170,13 +111,6 @@ const partnerHotels = {
       imagePosition: "center",
     },
   ],
-
-  cta: {
-    label: "Contactar",
-    href: TRAVEL_PAGE_PATHS.contacts,
-    ariaLabel: "Contactar a Sunlive Travel sobre hotéis parceiros",
-    iconKey: "phone",
-  },
 };
 
 export default partnerHotels;

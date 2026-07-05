@@ -1,0 +1,104 @@
+.wrap {
+    display: grid;
+    gap: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+.title {
+    margin: 0;
+    color: #f8fbff;
+    font-size: clamp(1.6rem, 2.6vw, 2.35rem);
+    line-height: 1.08;
+    font-weight: 850;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.card {
+    position: relative;
+    overflow: clip;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    border-radius: 1.35rem;
+    border: 1px solid rgba(223, 178, 74, 0.2);
+    background: linear-gradient(155deg, rgba(21, 43, 74, 0.9) 0%, rgba(6, 16, 31, 0.96) 100%);
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.mediaWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: clamp(140px, 16vw, 190px);
+    padding: 1.4rem;
+    background: linear-gradient(180deg, rgba(246, 247, 251, 0.96) 0%, rgba(226, 231, 240, 0.9) 100%);
+}
+
+.media {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+    display: block;
+}
+
+.cardBody {
+    display: grid;
+    gap: 0.4rem;
+    align-content: start;
+    padding: 1.05rem 1.1rem 1.2rem;
+}
+
+.cardType {
+    margin: 0;
+    color: rgba(240, 191, 93, 0.96);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.cardTitle {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.16;
+}
+
+.cardSpecialty {
+    justify-self: start;
+    margin: 0;
+    padding: 0.32rem 0.68rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(18, 40, 69, 0.7) 0%, rgba(8, 19, 35, 0.88) 100%);
+    color: rgba(223, 232, 243, 0.92);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: -0.006em;
+    line-height: 1.2;
+}
+
+.cardDescription {
+    margin: 0.2rem 0 0;
+    color: rgba(223, 232, 243, 0.86);
+    font-size: 0.92rem;
+    line-height: 1.56;
+}
+
+@media (max-width: 767px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

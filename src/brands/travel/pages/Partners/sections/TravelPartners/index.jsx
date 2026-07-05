@@ -1,7 +1,7 @@
 import partnersPage from "../../../../config/pages/partners.js";
 
 import TravelPartnersHero from "./TravelPartnersHero.jsx";
-import TravelPartnersNetworkPanel from "./TravelPartnersNetworkPanel.jsx";
+import TravelPartnersGrid from "./TravelPartnersGrid.jsx";
 
 import styles from "./TravelPartnersSection.module.css";
 
@@ -28,7 +28,7 @@ export default function TravelPartnersSection() {
       <div className={styles.inner}>
         <TravelPartnersHero hero={hero} />
 
-        <TravelPartnersNetworkPanel network={network} partners={partners} />
+        <TravelPartnersGrid network={network} partners={partners} />
       </div>
     </section>
   );

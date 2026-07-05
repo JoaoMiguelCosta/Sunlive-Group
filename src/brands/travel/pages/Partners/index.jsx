@@ -3,6 +3,7 @@ import styles from "../../layouts/TravelPageLayout.module.css";
 
 import PartnerHotelsSection from "./sections/PartnerHotels/index.jsx";
 import TravelPartnersSection from "./sections/TravelPartners/index.jsx";
+import PartnersActionPanelSection from "./sections/PartnersActionPanel/index.jsx";
 
 export default function PartnersPage() {
   return (
@@ -15,6 +16,7 @@ export default function PartnersPage() {
         <div className={styles.contentFlow}>
           <PartnerHotelsSection />
           <TravelPartnersSection />
+          <PartnersActionPanelSection />
         </div>
       </main>
     </div>

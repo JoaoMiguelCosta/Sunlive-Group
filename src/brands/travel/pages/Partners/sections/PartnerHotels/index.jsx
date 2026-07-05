@@ -1,8 +1,7 @@
 import partners from "../../../../config/pages/partners.js";
 
 import PartnerHotelsHero from "./PartnerHotelsHero.jsx";
-import PartnerHotelsCuratedCollection from "./PartnerHotelsCuratedCollection.jsx";
-import PartnerHotelsPlanningPanel from "./PartnerHotelsPlanningPanel.jsx";
+import PartnerHotelsGrid from "./PartnerHotelsGrid.jsx";
 
 import styles from "./PartnerHotelsSection.module.css";
 
@@ -18,8 +17,6 @@ export default function PartnerHotelsSection() {
   const hero = section?.showcaseHero ?? {};
   const collection = section?.collection ?? {};
   const hotels = Array.isArray(section?.hotels) ? section.hotels : [];
-  const planningPanel = section?.planningPanel ?? null;
-  const cta = section?.cta ?? null;
 
   return (
     <section
@@ -31,12 +28,7 @@ export default function PartnerHotelsSection() {
       <div className={styles.inner}>
         <PartnerHotelsHero hero={hero} />
 
-        <PartnerHotelsCuratedCollection
-          collection={collection}
-          hotels={hotels}
-        />
-
-        <PartnerHotelsPlanningPanel panel={planningPanel} cta={cta} />
+        <PartnerHotelsGrid collection={collection} hotels={hotels} />
       </div>
     </section>
   );
