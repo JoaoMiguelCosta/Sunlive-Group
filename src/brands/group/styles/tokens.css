@@ -171,13 +171,22 @@
       ===================================================== */
 
    --group-card-background:
-      var(--group-surface-secondary);
+      var(
+         --sl-card-background,
+         var(--group-surface-secondary)
+      );
 
    --group-card-background-hover:
-      var(--group-surface-elevated);
+      var(
+         --sl-card-background-hover,
+         var(--group-surface-elevated)
+      );
 
    --group-disclosure-panel-background:
-      var(--group-surface-primary);
+      var(
+         --sl-disclosure-panel-background,
+         var(--group-surface-primary)
+      );
 
    /* Cards inversos para assets claros/metálicos */
    --group-card-background-inverse:
