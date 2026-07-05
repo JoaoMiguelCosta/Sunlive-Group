@@ -57,8 +57,7 @@
     min-inline-size: 0;
 }
 
-.gridBlock,
-.indicatorsBlock {
+.gridBlock {
     inline-size: 100%;
     min-inline-size: 0;
 }

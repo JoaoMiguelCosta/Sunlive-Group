@@ -1,11 +1,37 @@
 const testimonialsAndMetrics = {
   id: "testemunhos",
 
+  headline: {
+    eyebrow: "Prova de Confiança",
+    title:
+      "A confiança dos nossos clientes reflete a fiabilidade das nossas operações.",
+    lead: "Concebemos programas de viagem inteiramente centrados na coordenação, no conforto e no apoio direto. O feedback dos nossos clientes confirma a elevada qualidade e consistência que oferecemos em cada viagem.",
+    description:
+      "Desde a gestão de logística complexa até à coordenação de transportes, hotéis e horários diários, estes testemunhos mostram como a Sunlive Travel transforma viagens de grupo numa experiência tranquila e fiável.",
+    stats: [
+      {
+        value: "4,8 / 5",
+        label: "Classificação média",
+      },
+      {
+        value: "Mais de 1.000",
+        label: "clientes atendidos",
+      },
+      {
+        value: "Mais de 2.000",
+        label: "operações concluídas",
+      },
+    ],
+    ui: {
+      statsAriaLabel: "Indicadores da Sunlive Travel",
+    },
+  },
+
   spotlight: {
     kicker: "Testemunhos verificados",
-    title: "O que dizem sobre a experiência Sunlive Travel",
+    title: "O que dizem sobre a Sunlive Travel",
     description:
-      "Uma seleção de opiniões que destaca organização, conforto, capacidade de resposta e consistência operacional em diferentes contextos de viagem.",
+      "Uma seleção de comentários que destacam a nossa organização, conforto, rapidez de resposta e qualidade consistente em diferentes contextos de viagem.",
     resultsLabel: "Testemunhos disponíveis",
     previousLabel: "Testemunho anterior",
     nextLabel: "Próximo testemunho",
@@ -86,24 +112,6 @@ const testimonialsAndMetrics = {
         role: "Gestora de Eventos",
         avatar: "",
       },
-    },
-  ],
-
-  indicators: [
-    {
-      key: "rating",
-      value: "4,8 / 5",
-      label: "Classificação média",
-    },
-    {
-      key: "clients",
-      value: "Mais de 1.000",
-      label: "clientes atendidos",
-    },
-    {
-      key: "operations",
-      value: "Mais de 2.000",
-      label: "operações concluídas",
     },
   ],
 };
