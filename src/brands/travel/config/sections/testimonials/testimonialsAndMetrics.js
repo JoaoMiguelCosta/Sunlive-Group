@@ -1,37 +1,6 @@
 const testimonialsAndMetrics = {
   id: "testemunhos",
 
-  headline: {
-    eyebrow: "Prova de confiança",
-    title: "A confiança dos nossos clientes reflete a consistência da operação",
-    lead: "Desenhamos programas de viagem com coordenação, conforto e acompanhamento próximo. O reconhecimento dos clientes confirma a solidez da experiência que entregamos em cada operação.",
-    description:
-      "Da organização logística à articulação entre transporte, estadia, parceiros e ritmo da viagem, os testemunhos mostram como a Sunlive Travel transforma necessidades complexas em programas mais fluidos, fiáveis e bem acompanhados.",
-    featuredPills: [
-      "Operação bem coordenada",
-      "Conforto e fiabilidade",
-      "Acompanhamento próximo",
-    ],
-    stats: [
-      {
-        value: "4.8/5",
-        label: "avaliação média",
-      },
-      {
-        value: "1000+",
-        label: "clientes acompanhados",
-      },
-      {
-        value: "2000+",
-        label: "operações realizadas",
-      },
-    ],
-    ui: {
-      pillsAriaLabel: "Pontos-chave",
-      statsAriaLabel: "Destaques da secção",
-    },
-  },
-
   spotlight: {
     kicker: "Testemunhos verificados",
     title: "O que dizem sobre a experiência Sunlive Travel",
@@ -120,31 +89,23 @@ const testimonialsAndMetrics = {
     },
   ],
 
-  metrics: [
+  indicators: [
+    {
+      key: "rating",
+      value: "4,8 / 5",
+      label: "Classificação média",
+    },
     {
       key: "clients",
-      value: "1000+",
-      label: "Clientes acompanhados",
+      value: "Mais de 1.000",
+      label: "clientes atendidos",
     },
     {
       key: "operations",
-      value: "2000+",
-      label: "Operações realizadas",
-    },
-    {
-      key: "groups",
-      value: "1000+",
-      label: "Grupos e equipas apoiados",
-    },
-    {
-      key: "rating",
-      value: "4.8 ★",
-      label: "Avaliação média",
-      iconKey: "star",
-      ariaLabel: "Avaliação média 4.8 em 5",
+      value: "Mais de 2.000",
+      label: "operações concluídas",
     },
   ],
-
 };
 
 export default testimonialsAndMetrics;

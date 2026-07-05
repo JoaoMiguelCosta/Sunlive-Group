@@ -1,9 +1,8 @@
 import testimonialsPage from "../../../../config/pages/testimonials.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
-import TravelIntroPanel from "../../../../shared/ui/TravelIntroPanel/TravelIntroPanel.jsx";
 
 import TestimonialsGrid from "./TestimonialsGrid.jsx";
-import KeyMetricsBar from "./KeyMetricsBar.jsx";
+import TestimonialsIndicators from "./TestimonialsIndicators.jsx";
 
 import styles from "./TestimonialsAndMetricsSection.module.css";
 
@@ -14,14 +13,15 @@ export default function TestimonialsAndMetricsSection() {
 
   const sectionId = section?.id ?? "testemunhos";
   const sectionLabel =
-    section?.spotlight?.regionLabel ?? "Testemunhos e métricas";
+    section?.spotlight?.regionLabel ?? "Testemunhos e indicadores";
 
-  const headline = section?.headline ?? {};
   const spotlight = section?.spotlight ?? {};
   const testimonials = Array.isArray(section?.testimonials)
     ? section.testimonials
     : [];
-  const metrics = Array.isArray(section?.metrics) ? section.metrics : [];
+  const indicators = Array.isArray(section?.indicators)
+    ? section.indicators
+    : [];
   const icons = ICONS;
 
   return (
@@ -32,19 +32,6 @@ export default function TestimonialsAndMetricsSection() {
       data-section="testimonials-and-metrics"
     >
       <div className={styles.inner}>
-        <TravelIntroPanel
-          as="header"
-          titleAs="h1"
-          eyebrow={headline?.eyebrow}
-          title={headline?.title}
-          lead={headline?.lead}
-          supportingText={headline?.description}
-          pills={headline?.featuredPills}
-          stats={headline?.stats}
-          pillsAriaLabel={headline?.ui?.pillsAriaLabel ?? "Pontos-chave"}
-          statsAriaLabel={headline?.ui?.statsAriaLabel ?? "Destaques da secção"}
-        />
-
         <div className={styles.gridBlock}>
           <TestimonialsGrid
             spotlight={spotlight}
@@ -53,8 +40,8 @@ export default function TestimonialsAndMetricsSection() {
           />
         </div>
 
-        <div className={styles.metricsBlock}>
-          <KeyMetricsBar metrics={metrics} />
+        <div className={styles.indicatorsBlock}>
+          <TestimonialsIndicators indicators={indicators} />
         </div>
       </div>
     </section>
