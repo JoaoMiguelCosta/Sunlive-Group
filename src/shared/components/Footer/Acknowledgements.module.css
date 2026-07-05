@@ -270,7 +270,7 @@
     background: var(--ack-surface-hover);
 
     box-shadow:
-        var(--group-shadow-sm);
+        var(--sl-shadow-sm);
 }
 
 :global([data-brand="group"]) .click:focus-visible {
@@ -283,7 +283,7 @@
 
     box-shadow:
         var(--sl-footer-focus-ring),
-        var(--group-shadow-sm);
+        var(--sl-shadow-sm);
 }
 
 :global([data-brand="group"]) .img {
