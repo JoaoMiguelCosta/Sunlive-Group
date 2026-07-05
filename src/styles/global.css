@@ -56,20 +56,21 @@ html {
     overflow-x: clip;
 
     /*
-     * Fallback global Light Forest.
+     * Cor base sólida e sempre válida do documento, vinda do contrato
+     * semântico global (--sl-document-background-color). Garante que o
+     * html nunca fica sem fundo — Group é a brand de fallback da
+     * aplicação (resolveBrandFromPath devolve "group" por omissão), por
+     * isso este valor reflete a direção Light Forest, não um tema
+     * escuro genérico.
      *
-     * Group é a brand de fallback da aplicação (resolveBrandFromPath
-     * devolve "group" por omissão), por isso o fallback pré-brand tem de
-     * refletir a direção Light Forest, não um tema escuro genérico.
+     * Gradientes, texturas e decoração por brand não pertencem aqui —
+     * continuam exclusivamente nos Shells de cada brand.
      *
-     * Cada [data-brand="x"] pode substituir estas propriedades
-     * diretamente (a Sunlive Group fá-lo com o mesmo par de valores).
-     *
-     * Nota: não usar --sl-body-bg aqui — nalgumas brands o token pode
-     * conter um gradiente, o que tornaria background-color inválido.
+     * Nota: --sl-body-bg não é este contrato — nalgumas brands é um
+     * gradiente, o que tornaria background-color inválido.
      */
     color-scheme: light;
-    background-color: #daddc0;
+    background-color: var(--sl-document-background-color);
 }
 
 

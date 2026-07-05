@@ -52,6 +52,9 @@
    --sl-surface-secondary: var(--sl-color-sage-200);
    --sl-surface-footer: var(--sl-color-sage-100);
 
+   /* Cor base sólida do documento — ver uso em src/styles/global.css */
+   --sl-document-background-color: var(--sl-surface-page);
+
    /* =====================================================
        Texto semântico global
        ===================================================== */
