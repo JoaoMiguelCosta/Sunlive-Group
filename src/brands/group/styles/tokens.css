@@ -241,7 +241,6 @@
       11. RADII
       ===================================================== */
 
-   --group-radius-sm: 0.65rem;
    --group-radius-md: 1rem;
    --group-radius-lg: 1.35rem;
    --group-radius-xl: 1.8rem;
@@ -308,7 +307,6 @@
       ===================================================== */
 
    --group-duration-fast: 150ms;
-   --group-duration-normal: 240ms;
 
    --group-ease-standard:
       cubic-bezier(0.4, 0, 0.2, 1);
