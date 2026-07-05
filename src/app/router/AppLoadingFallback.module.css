@@ -13,5 +13,6 @@
   font-family: var(--sl-ff-ui, system-ui, sans-serif);
   font-size: 1rem;
   font-weight: 400;
+  color: var(--sl-text-secondary);
   letter-spacing: 0.01em;
 }

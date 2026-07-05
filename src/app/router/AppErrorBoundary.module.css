@@ -6,19 +6,24 @@
    * global e pode ser renderizado em qualquer contexto de brand.
    *
    * Onde já existe um token semântico global com o mesmo propósito
-   * (fundo, texto, borda, focus), a variável local aponta diretamente
-   * para ele em vez de derivar por color-mix. --aeb-surface e o grupo
-   * --aeb-action-* não têm equivalente semântico global ainda, por
-   * isso continuam derivados de --aeb-text.
+   * (fundo, texto, superfície, borda, focus), a variável local aponta
+   * diretamente para ele em vez de derivar por color-mix.
+   *
+   * --aeb-action-bg/-bg-hover ficam derivados de --aeb-text: o texto do
+   * botão (.reloadButton) não muda de cor consoante o estado, e
+   * --sl-accent/--sl-accent-strong são escuros de mais para manter
+   * contraste como fundo sólido atrás desse texto. --sl-accent-strong
+   * só é seguro aqui como --aeb-action-border-hover (cor de contorno,
+   * não preenchimento atrás de texto).
    */
   --aeb-bg: var(--sl-document-background-color);
   --aeb-text: var(--sl-text-primary);
   --aeb-text-secondary: var(--sl-text-secondary);
   --aeb-border: var(--sl-border-subtle);
-  --aeb-surface: color-mix(in oklab, var(--aeb-text), transparent 96%);
+  --aeb-surface: var(--sl-surface-footer);
   --aeb-action-bg: color-mix(in oklab, var(--aeb-text), transparent 92%);
   --aeb-action-bg-hover: color-mix(in oklab, var(--aeb-text), transparent 84%);
-  --aeb-action-border-hover: color-mix(in oklab, var(--aeb-text), transparent 68%);
+  --aeb-action-border-hover: var(--sl-accent-strong);
   --aeb-focus: var(--sl-focus-ring-color);
 
   display: flex;
