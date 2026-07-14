@@ -13,7 +13,7 @@
 .surface {
     position: relative;
     display: grid;
-    gap: clamp(1.7rem, 3.2vw, 2.6rem);
+    gap: clamp(1.4rem, 2.6vw, 2.1rem);
     padding: clamp(1.2rem, 2.6vw, 2rem);
     border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
     border-radius: clamp(1.45rem, 2.2vw, 2.3rem);
@@ -21,19 +21,26 @@
     box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
 }
 
+/*
+ * Introdução centrada — evita a área morta que sobrava quando o
+ * cabeçalho ficava confinado a uma coluna estreita à esquerda.
+ */
 .introPanel {
     position: relative;
     display: grid;
-    align-content: start;
-    gap: clamp(0.6rem, 1.1vw, 0.85rem);
+    justify-items: center;
+    text-align: center;
+    gap: clamp(0.7rem, 1.4vw, 1rem);
+    inline-size: min(100%, 56rem);
+    margin-inline: auto;
     min-width: 0;
 }
 
 .header {
     position: relative;
     display: grid;
+    justify-items: center;
     gap: clamp(0.55rem, 1vw, 0.75rem);
-    inline-size: min(100%, 60ch);
     min-width: 0;
 }
 
@@ -58,6 +65,7 @@
 .title {
     margin: 0;
     min-width: 0;
+    max-inline-size: 20ch;
     color: var(--sl-text-primary, #1e2e24);
     font-size: clamp(1.6rem, 1.15rem + 1.9vw, 2.4rem);
     line-height: 1.12;
@@ -68,7 +76,7 @@
 
 .description {
     margin: 0;
-    inline-size: min(100%, 62ch);
+    inline-size: min(100%, 64ch);
     min-width: 0;
     color: var(--sl-text-secondary, #2e4d3b);
     font-size: clamp(0.92rem, 0.85rem + 0.3vw, 1.02rem);
@@ -106,17 +114,6 @@
         border-color 180ms ease,
         background 180ms ease,
         box-shadow 180ms ease;
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto 0;
-    block-size: 2px;
-    border-radius: clamp(1rem, 1.2vw, 1.25rem) clamp(1rem, 1.2vw, 1.25rem) 0 0;
-    background: linear-gradient(90deg, var(--travel-gold-deep, #b97911) 0%, var(--travel-cyan-deep, #2ea7e0) 100%);
-    opacity: 0.85;
-    pointer-events: none;
 }
 
 .card:hover,
