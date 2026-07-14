@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import partners from "../../config/pages/partners.js";
 import styles from "../../layouts/TravelPageLayout.module.css";
 
@@ -8,14 +6,6 @@ import TravelPartnersSection from "./sections/TravelPartners/index.jsx";
 import PartnersActionPanelSection from "./sections/PartnersActionPanel/index.jsx";
 
 export default function PartnersPage() {
-  useEffect(() => {
-    document.documentElement.setAttribute("data-page-theme", "light-forest");
-
-    return () => {
-      document.documentElement.removeAttribute("data-page-theme");
-    };
-  }, []);
-
   return (
     <div className={styles.pageWrap} data-brand="travel">
       <main

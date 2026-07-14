@@ -1,17 +1,18 @@
 /* Sunlive Travel — Theme Overrides
-   Estilo: azul-noite/navy + dourado solar + ciano técnico discreto
+
+   Fundação visual: Light Forest (fundo/texto/superfícies partilhados
+   com as restantes brands via src/styles/tokens.css). O navy/gold/ciano
+   original da Travel foi migrado — dourado e ciano mantêm-se apenas
+   como acentos reais da marca (badges, linhas de destaque, ícones),
+   nunca como grande superfície ou fundo de página.
 */
 
 :root[data-brand="travel"] {
+    color-scheme: light;
+
     /* =========================
        Base Travel
        ========================= */
-
-    --travel-navy-950: #020814;
-    --travel-navy-925: #041020;
-    --travel-navy-900: #061525;
-    --travel-navy-850: #0a1d34;
-    --travel-navy-800: #0f2948;
 
     --travel-gold: #e0a72b;
     --travel-gold-soft: #f3c45f;
@@ -21,33 +22,16 @@
     --travel-cyan-soft: #7fd8ff;
     --travel-cyan-deep: #2ea7e0;
 
-    --travel-text: rgba(248, 251, 255, 0.96);
-    --travel-text-soft: rgba(224, 235, 246, 0.84);
-    --travel-muted: rgba(180, 201, 220, 0.68);
+    --travel-text: var(--sl-text-primary, #1e2e24);
+    --travel-text-soft: var(--sl-text-secondary, #2e4d3b);
+    --travel-muted: var(--sl-text-muted, #536456);
 
     /* =========================
        Global background
        ========================= */
 
-    --sl-body-bg:
-        radial-gradient(74rem 34rem at 50% -12%,
-            rgba(224, 167, 43, 0.12) 0%,
-            rgba(224, 167, 43, 0.045) 34%,
-            transparent 68%),
-        radial-gradient(46rem 30rem at 8% 20%,
-            rgba(79, 195, 247, 0.07) 0%,
-            transparent 70%),
-        radial-gradient(48rem 32rem at 92% 42%,
-            rgba(224, 167, 43, 0.065) 0%,
-            transparent 72%),
-        radial-gradient(60rem 36rem at 50% 108%,
-            rgba(79, 195, 247, 0.045) 0%,
-            transparent 74%),
-        linear-gradient(180deg,
-            #020814 0%,
-            #06101f 34%,
-            #071525 68%,
-            #020814 100%);
+    --sl-body-bg: var(--sl-surface-page);
+    background: var(--sl-body-bg);
 
     --sl-color-text: var(--travel-text);
 
@@ -201,28 +185,4 @@
 
 :global([data-brand="travel"]) {
     --footer-accent: var(--travel-cyan-deep);
-}
-
-/* =========================
-   Page theme override — Logistics (Light Forest)
-
-   Ativado/removido em document.documentElement pela própria página
-   (ver src/brands/travel/pages/Logistics/index.jsx). Scoped às duas
-   condições em simultâneo, por isso não afeta o resto da Travel.
-   ========================= */
-
-:root[data-brand="travel"][data-page-theme="light-forest"] {
-    --sl-body-bg: var(--sl-surface-page);
-    --sl-color-text: var(--sl-text-primary);
-
-    /*
-     * --travel-text é o token efetivamente lido por TravelShell/
-     * TravelPageLayout (var(--travel-text, var(--sl-color-text, ...))).
-     * Sem esta linha, o fallback --sl-color-text acima nunca seria
-     * alcançado, porque --travel-text está sempre definido na base.
-     */
-    --travel-text: var(--sl-text-primary);
-
-    color-scheme: light;
-    background: var(--sl-body-bg);
 }

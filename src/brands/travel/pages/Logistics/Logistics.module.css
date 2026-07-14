@@ -1,9 +1,8 @@
 /*
- * O fundo Light Forest vem agora do html (data-page-theme="light-forest",
- * ver Logistics/index.jsx + travel/theme.css) — este wrapper já não pinta
- * a sua própria superfície. min-block-size garante que a página cobre
- * pelo menos um ecrã completo mesmo quando o conteúdo é mais curto que o
- * viewport.
+ * Light Forest é o fundo por omissão de toda a Travel (travel/theme.css),
+ * por isso este wrapper não pinta a sua própria superfície. min-block-size
+ * garante que a página cobre pelo menos um ecrã completo mesmo quando o
+ * conteúdo é mais curto que o viewport.
  */
 .page {
     position: relative;

@@ -6,58 +6,7 @@
     min-block-size: 100dvh;
     overflow: clip;
 
-    color: var(--travel-text, var(--sl-color-text, rgb(248 251 255 / 0.96)));
-}
-
-.shell::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    opacity: 0.26;
-
-    background-image:
-        linear-gradient(rgb(79 195 247 / 0.052) 1px, transparent 1px),
-        linear-gradient(90deg, rgb(79 195 247 / 0.045) 1px, transparent 1px);
-
-    background-size: 76px 76px;
-
-    mask-image: linear-gradient(180deg,
-            transparent 0%,
-            black 12%,
-            black 78%,
-            transparent 100%);
-}
-
-.shell::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    opacity: 0.92;
-
-    background:
-        linear-gradient(180deg,
-            rgb(2 8 20 / 0.08) 0%,
-            rgb(2 8 20 / 0.32) 100%),
-        radial-gradient(76% 48% at 50% 0%,
-            transparent 0%,
-            rgb(2 8 20 / 0.42) 100%);
-}
-
-/*
- * A grelha ciano e a vinheta escura acima foram desenhadas para o fundo
- * navy legacy. Sob o contrato Light Forest (data-page-theme="light-forest"
- * no documentElement, ver ThemeProvider + Logistics/index.jsx) deixam de
- * fazer sentido visualmente e são neutralizadas aqui.
- */
-:global(html[data-page-theme="light-forest"]) .shell::before,
-:global(html[data-page-theme="light-forest"]) .shell::after {
-    content: none;
+    color: var(--travel-text, var(--sl-color-text, #1e2e24));
 }
 
 .shell>* {
