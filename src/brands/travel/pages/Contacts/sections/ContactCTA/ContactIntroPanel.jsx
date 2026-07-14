@@ -36,7 +36,6 @@ export default function ContactIntroPanel({ hero = {}, as = "header", titleAs = 
       stats={stats}
       pillsAriaLabel={hero?.ui?.trustPointsAriaLabel ?? "Vantagens do contacto"}
       statsAriaLabel={hero?.ui?.statsAriaLabel ?? "Destaques do contacto"}
-      tone="lightForest"
     />
   );
 }

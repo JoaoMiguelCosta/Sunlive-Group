@@ -21,7 +21,6 @@ export default function TravelIntroPanel({
   statsAriaLabel = "Destaques da secção",
   as: Tag = "header",
   titleAs: TitleTag = "h2",
-  tone = "navy",
 }) {
   const safePills = getValidPills(pills);
   const safeStats = getValidStats(stats);
@@ -36,14 +35,8 @@ export default function TravelIntroPanel({
 
   if (!hasContent) return null;
 
-  const isLightForest = tone === "lightForest";
-
-  const heroClassName = [styles.hero, isLightForest ? styles.lightForest : ""]
-    .filter(Boolean)
-    .join(" ");
-
   return (
-    <Tag className={heroClassName}>
+    <Tag className={styles.hero}>
       <div className={styles.panel}>
         <div className={styles.copy}>
           {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}

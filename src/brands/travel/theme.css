@@ -113,61 +113,6 @@
 }
 
 /* =========================
-   Utilitários Travel
-   ========================= */
-
-:root[data-brand="travel"] .u-badge-accent {
-    color: var(--travel-text);
-
-    border: 1px solid rgba(79, 195, 247, 0.28);
-    border-radius: 999px;
-
-    background:
-        radial-gradient(120% 140% at 0% 0%,
-            rgba(224, 167, 43, 0.14) 0%,
-            transparent 68%),
-        rgba(7, 21, 37, 0.82);
-
-    padding: 0.25rem 0.6rem;
-
-    font-size: 0.8rem;
-    letter-spacing: 0.02em;
-}
-
-/* =========================
-   Botão secundário Travel
-   ========================= */
-
-:root[data-brand="travel"] .button--secondary {
-    color: white;
-
-    border: 1px solid rgba(79, 195, 247, 0.34);
-
-    background:
-        radial-gradient(120% 140% at 0% 0%,
-            rgba(224, 167, 43, 0.12) 0%,
-            transparent 66%),
-        linear-gradient(180deg,
-            rgba(14, 41, 72, 0.92) 0%,
-            rgba(3, 11, 24, 0.98) 100%);
-}
-
-:root[data-brand="travel"] .button--secondary:hover {
-    border-color: rgba(224, 167, 43, 0.52);
-
-    background:
-        radial-gradient(120% 140% at 0% 0%,
-            rgba(224, 167, 43, 0.18) 0%,
-            transparent 66%),
-        radial-gradient(120% 140% at 100% 100%,
-            rgba(79, 195, 247, 0.1) 0%,
-            transparent 70%),
-        linear-gradient(180deg,
-            rgba(15, 50, 86, 0.96) 0%,
-            rgba(3, 11, 24, 0.99) 100%);
-}
-
-/* =========================
    Links acentuados Travel
    ========================= */
 
