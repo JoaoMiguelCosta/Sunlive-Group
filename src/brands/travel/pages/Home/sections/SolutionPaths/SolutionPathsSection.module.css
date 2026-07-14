@@ -65,7 +65,6 @@
 .title {
     margin: 0;
     min-width: 0;
-    max-inline-size: 20ch;
     color: var(--sl-text-primary, #1e2e24);
     font-size: clamp(1.6rem, 1.15rem + 1.9vw, 2.4rem);
     line-height: 1.12;
