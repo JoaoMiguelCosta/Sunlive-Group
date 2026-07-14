@@ -3,6 +3,7 @@
     isolation: isolate;
     inline-size: 100%;
     overflow: clip;
+    padding-block: clamp(3rem, 6vw, 5.5rem);
 }
 
 .inner {
@@ -12,7 +13,7 @@
     margin-inline: auto;
     box-sizing: border-box;
     display: grid;
-    gap: clamp(1.15rem, 2vw, 1.65rem);
+    gap: clamp(3rem, 6vw, 5rem);
 }
 
 .inner>* {
@@ -25,6 +26,7 @@
     }
 
     .inner {
+        gap: clamp(2.4rem, 5vw, 3.4rem);
         padding-inline: 1rem;
     }
 }
@@ -35,7 +37,7 @@
     }
 
     .inner {
-        gap: 0.95rem;
+        gap: 2rem;
         padding-inline: 0.92rem;
     }
 }
