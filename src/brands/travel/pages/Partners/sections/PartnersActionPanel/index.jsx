@@ -11,6 +11,7 @@ export default function PartnersActionPanelSection() {
       panel={section?.actionPanel}
       cta={section?.cta}
       sectionKey="partners-action-panel"
+      tone="lightForest"
     />
   );
 }

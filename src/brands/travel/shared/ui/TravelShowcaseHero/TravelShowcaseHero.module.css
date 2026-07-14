@@ -1,11 +1,10 @@
 .hero {
-    --hero-border: rgba(223, 178, 74, 0.22);
-    --hero-border-soft: rgba(255, 255, 255, 0.07);
-    --hero-text-strong: #f8fbff;
-    --hero-text-body: rgba(240, 244, 249, 0.94);
-    --hero-text-soft: rgba(206, 217, 232, 0.82);
-    --hero-cyan: rgba(93, 193, 255, 0.72);
-    --hero-gold: rgba(223, 178, 74, 0.88);
+    --hero-border: var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    --hero-text-strong: var(--sl-text-primary, #1e2e24);
+    --hero-text-body: var(--sl-text-secondary, #2e4d3b);
+    --hero-text-soft: var(--sl-text-muted, #536456);
+    --hero-cyan: var(--travel-cyan-deep, #2ea7e0);
+    --hero-gold: var(--travel-gold-deep, #b97911);
 
     position: relative;
     isolation: isolate;
@@ -18,63 +17,17 @@
     padding: clamp(1.15rem, 2vw, 1.55rem);
     border: 1px solid var(--hero-border);
     border-radius: clamp(1.45rem, 2.2vw, 2.3rem);
-    background:
-        radial-gradient(110% 135% at 0% 0%, rgba(32, 77, 139, 0.34) 0%, transparent 34%),
-        radial-gradient(72% 88% at 100% 100%, rgba(38, 103, 190, 0.3) 0%, transparent 42%),
-        radial-gradient(42% 44% at 67% 20%, rgba(219, 171, 64, 0.12) 0%, transparent 68%),
-        radial-gradient(30% 36% at 18% 78%, rgba(97, 177, 255, 0.12) 0%, transparent 74%),
-        linear-gradient(125deg, #122b4c 0%, #041425 33%, #02111f 58%, #0a2a4c 100%);
-    box-shadow:
-        0 26px 72px rgba(0, 0, 0, 0.3),
-        0 12px 26px rgba(2, 12, 24, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        inset 0 -1px 0 rgba(85, 153, 221, 0.08);
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(90deg,
-            rgba(255, 255, 255, 0.04) 0%,
-            transparent 20%,
-            transparent 78%,
-            rgba(119, 186, 255, 0.04) 100%),
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.045) 0%,
-            transparent 22%,
-            transparent 78%,
-            rgba(255, 255, 255, 0.03) 100%);
+    background: var(--sl-surface-primary, #e6e8d1);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
 }
 
 .hero::after {
     content: "";
     position: absolute;
     inset: auto 0 0;
-    block-size: 1px;
+    block-size: 2px;
     pointer-events: none;
-    background:
-        linear-gradient(90deg,
-            rgba(224, 180, 76, 0.68) 0%,
-            rgba(98, 189, 255, 0.58) 52%,
-            rgba(255, 255, 255, 0.08) 100%);
-}
-
-.heroGlow {
-    position: absolute;
-    inset: auto -8% -16% auto;
-    inline-size: min(26rem, 42%);
-    aspect-ratio: 1;
-    border-radius: 999px;
-    background: radial-gradient(circle,
-            rgba(46, 167, 224, 0.14) 0%,
-            rgba(46, 167, 224, 0.06) 34%,
-            rgba(46, 167, 224, 0) 72%);
-    filter: blur(10px);
-    pointer-events: none;
-    z-index: 0;
+    background: linear-gradient(90deg, var(--hero-gold) 0%, var(--hero-cyan) 100%);
 }
 
 .copyColumn {
@@ -95,16 +48,9 @@
     margin: 0;
     padding: 0.38rem 0.62rem 0.36rem;
     border-radius: 999px;
-    border: 1px solid rgba(226, 186, 88, 0.2);
-    background:
-        linear-gradient(180deg, rgba(225, 177, 63, 0.14) 0%, rgba(225, 177, 63, 0.06) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.09),
-        inset 0 -1px 0 rgba(225, 177, 63, 0.04),
-        0 6px 16px rgba(0, 0, 0, 0.12);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    color: rgba(244, 204, 105, 0.98);
+    border: 1px solid var(--hero-border);
+    background: var(--sl-surface-footer, #f6f7ed);
+    color: var(--hero-gold);
     font-size: 0.66rem;
     font-weight: 900;
     letter-spacing: 0.22em;
@@ -114,19 +60,18 @@
 
 .title {
     margin: 0;
-    color: #f8fbff;
+    color: var(--hero-text-strong);
     font-size: clamp(2rem, 4vw, 4.15rem);
     line-height: 0.93;
     font-weight: 900;
     letter-spacing: -0.06em;
     text-wrap: balance;
-    text-shadow: 0 10px 26px rgba(1, 8, 18, 0.18);
 }
 
 .lead {
     margin: 0;
     max-inline-size: 58ch;
-    color: rgba(240, 244, 249, 0.94);
+    color: var(--hero-text-body);
     font-size: clamp(0.98rem, 1.08vw, 1.08rem);
     font-weight: 760;
     letter-spacing: -0.012em;
@@ -136,7 +81,7 @@
 .supportingText {
     margin: 0;
     max-inline-size: 60ch;
-    color: rgba(206, 217, 232, 0.82);
+    color: var(--hero-text-soft);
     font-size: clamp(0.9rem, 0.94vw, 0.95rem);
     font-weight: 460;
     letter-spacing: -0.006em;
@@ -152,39 +97,9 @@
     gap: 0.72rem;
     padding: clamp(0.82rem, 1.2vw, 0.92rem);
     border-radius: clamp(1.1rem, 1.6vw, 1.7rem);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    background:
-        linear-gradient(180deg, rgba(12, 28, 48, 0.82) 0%, rgba(5, 16, 31, 0.9) 100%);
-    box-shadow:
-        0 16px 34px rgba(0, 0, 0, 0.18),
-        0 1px 0 rgba(255, 255, 255, 0.02),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        inset 0 -1px 0 rgba(82, 146, 213, 0.05);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-.sideColumn::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background:
-        linear-gradient(135deg,
-            rgba(255, 255, 255, 0.06) 0%,
-            transparent 28%,
-            transparent 72%,
-            rgba(94, 182, 255, 0.06) 100%);
-    pointer-events: none;
-}
-
-.sideColumn::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    border-radius: inherit;
-    border: 1px solid rgba(255, 255, 255, 0.025);
-    pointer-events: none;
+    border: 1px solid var(--hero-border);
+    background: var(--sl-surface-elevated, #f6f7ed);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
 }
 
 .metricsPanel {
@@ -211,30 +126,13 @@
     min-height: clamp(5.4rem, 9vw, 6rem);
     padding: 0.82rem 0.84rem 0.86rem;
     border-radius: 1.16rem;
-    border: 1px solid rgba(225, 179, 72, 0.16);
-    background:
-        linear-gradient(155deg, rgba(21, 43, 74, 0.9) 0%, rgba(6, 16, 31, 0.96) 100%);
-    box-shadow:
-        0 14px 24px rgba(0, 0, 0, 0.16),
-        0 0 0 1px rgba(255, 255, 255, 0.02),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--hero-border);
+    background: var(--sl-card-background, #f0f1e2);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
     transition:
         transform 180ms ease,
         border-color 180ms ease,
-        box-shadow 220ms ease,
-        background 220ms ease;
-}
-
-.metricCard::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.09), transparent 42%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 28%);
-    pointer-events: none;
+        box-shadow 220ms ease;
 }
 
 .metricCard::after {
@@ -242,28 +140,23 @@
     position: absolute;
     inset: auto 0 0;
     block-size: 2px;
-    background:
-        linear-gradient(90deg,
-            rgba(223, 178, 74, 0.88) 0%,
-            rgba(93, 193, 255, 0.72) 100%);
+    background: linear-gradient(90deg, var(--hero-gold) 0%, var(--hero-cyan) 100%);
     pointer-events: none;
 }
 
 .metricValue {
     display: block;
-    color: #f0d58f;
+    color: var(--hero-gold);
     font-size: clamp(1.34rem, 1.7vw, 1.74rem);
     font-weight: 900;
     line-height: 1;
     letter-spacing: -0.045em;
-    text-shadow: 0 6px 16px rgba(2, 10, 20, 0.14);
 }
 
 .metricLabel {
     display: block;
     align-self: end;
-  
-    color: #d6eaff;
+    color: var(--hero-text-body);
     font-size: 0.82rem;
     font-weight: 720;
     letter-spacing: -0.01em;
@@ -283,22 +176,15 @@
     grid-template-columns: 1fr;
     gap: 0.34rem;
     align-content: start;
-padding: 0.86rem 0.84rem 0.88rem 1.45rem;
+    padding: 0.86rem 0.84rem 0.88rem 1.45rem;
     border-radius: 1.16rem;
-    border: 1px solid rgba(225, 179, 72, 0.16);
-    background:
-        linear-gradient(155deg, rgba(21, 43, 74, 0.9) 0%, rgba(6, 16, 31, 0.96) 100%);
-    box-shadow:
-        0 14px 24px rgba(0, 0, 0, 0.16),
-        0 0 0 1px rgba(255, 255, 255, 0.02),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--hero-border);
+    background: var(--sl-card-background, #f0f1e2);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
     transition:
         transform 180ms ease,
         border-color 180ms ease,
-        box-shadow 220ms ease,
-        background 220ms ease;
+        box-shadow 220ms ease;
 }
 
 .insightCard::before {
@@ -307,27 +193,13 @@ padding: 0.86rem 0.84rem 0.88rem 1.45rem;
     inset: 0.96rem auto 0.96rem 0.82rem;
     inline-size: 0.3rem;
     border-radius: 999px;
-    background:
-        linear-gradient(180deg, rgba(232, 185, 78, 0.98) 0%, rgba(93, 193, 255, 0.92) 100%);
-    box-shadow:
-        0 0 12px rgba(93, 193, 255, 0.16),
-        0 0 10px rgba(232, 185, 78, 0.14);
+    background: linear-gradient(180deg, var(--hero-gold) 0%, var(--hero-cyan) 100%);
     opacity: 0.92;
-}
-
-.insightCard::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.09), transparent 42%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 28%);
-    pointer-events: none;
 }
 
 .insightTitle {
     margin: 0 0 0.28rem;
-    color: #f0d58f;
+    color: var(--hero-text-strong);
     font-size: 0.96rem;
     font-weight: 840;
     letter-spacing: -0.012em;
@@ -337,7 +209,7 @@ padding: 0.86rem 0.84rem 0.88rem 1.45rem;
 
 .insightDescription {
     margin: 0;
-    color: rgba(209, 219, 233, 0.84);
+    color: var(--hero-text-body);
     font-size: 0.88rem;
     font-weight: 460;
     letter-spacing: -0.006em;
@@ -351,7 +223,7 @@ padding: 0.86rem 0.84rem 0.88rem 1.45rem;
 
 .highlightsLabel {
     margin: 0;
-    color: rgba(244, 204, 105, 0.98);
+    color: var(--hero-gold);
     font-size: 0.74rem;
     font-weight: 860;
     letter-spacing: 0.12em;
@@ -375,17 +247,12 @@ padding: 0.86rem 0.84rem 0.88rem 1.45rem;
     min-height: 2.26rem;
     padding-inline: 0.82rem;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    background:
-        linear-gradient(180deg, rgba(18, 40, 69, 0.62) 0%, rgba(8, 19, 35, 0.82) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.015);
+    border: 1px solid var(--hero-border);
+    background: var(--sl-surface-secondary, #f0f1e2);
     transition:
         transform 180ms ease,
         border-color 180ms ease,
-        box-shadow 220ms ease,
-        background 220ms ease;
+        box-shadow 220ms ease;
 }
 
 .highlightPill::before {
@@ -395,24 +262,7 @@ padding: 0.86rem 0.84rem 0.88rem 1.45rem;
     margin-right: 0.5rem;
     flex: 0 0 auto;
     border-radius: 50%;
-    background:
-        radial-gradient(circle at 35% 35%,
-            rgba(255, 244, 214, 0.92) 0%,
-            rgba(244, 208, 117, 0.88) 22%,
-            rgba(227, 180, 69, 0.96) 48%,
-            rgba(155, 97, 10, 1) 100%);
-    box-shadow:
-        0 0 0 4px rgba(223, 173, 60, 0.06),
-        0 0 12px rgba(223, 173, 60, 0.12);
-}
-
-.highlightPill::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    border-radius: inherit;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, transparent 58%);
-    pointer-events: none;
+    background: var(--hero-gold);
 }
 
 .highlightPillDot {
@@ -420,7 +270,7 @@ padding: 0.86rem 0.84rem 0.88rem 1.45rem;
 }
 
 .highlightPillLabel {
-    color: rgba(236, 242, 248, 0.92);
+    color: var(--hero-text-body);
     font-size: 0.85rem;
     font-weight: 740;
     letter-spacing: -0.008em;
@@ -428,37 +278,17 @@ padding: 0.86rem 0.84rem 0.88rem 1.45rem;
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .metricCard:hover {
-        transform: translateY(-2px);
-        border-color: rgba(111, 203, 255, 0.26);
-        background:
-            radial-gradient(circle at 0% 0%, rgba(111, 203, 255, 0.16) 0%, transparent 44%),
-            linear-gradient(155deg, rgba(24, 50, 86, 0.94) 0%, rgba(8, 21, 40, 0.98) 100%);
-        box-shadow:
-            0 16px 28px rgba(0, 0, 0, 0.18),
-            0 0 0 1px rgba(111, 203, 255, 0.05),
-            inset 0 1px 0 rgba(255, 255, 255, 0.07);
-    }
-
+    .metricCard:hover,
     .insightCard:hover {
         transform: translateY(-2px);
-        border-color: rgba(111, 203, 255, 0.26);
-        background:
-            radial-gradient(circle at 0% 0%, rgba(111, 203, 255, 0.12) 0%, transparent 44%),
-            linear-gradient(155deg, rgba(24, 50, 86, 0.94) 0%, rgba(8, 21, 40, 0.98) 100%);
-        box-shadow:
-            0 16px 28px rgba(0, 0, 0, 0.18),
-            0 0 0 1px rgba(111, 203, 255, 0.05),
-            inset 0 1px 0 rgba(255, 255, 255, 0.07);
+        border-color: var(--sl-border-strong, rgba(30, 46, 36, 0.28));
+        box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
     }
 
     .highlightPill:hover {
         transform: translateY(-1px);
-        border-color: rgba(223, 178, 74, 0.22);
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.05),
-            inset 0 -1px 0 rgba(255, 255, 255, 0.02),
-            0 10px 18px rgba(0, 0, 0, 0.14);
+        border-color: var(--sl-border-strong, rgba(30, 46, 36, 0.28));
+        box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
     }
 
     .highlightPill:active,
