@@ -49,6 +49,17 @@
             rgb(2 8 20 / 0.42) 100%);
 }
 
+/*
+ * A grelha ciano e a vinheta escura acima foram desenhadas para o fundo
+ * navy legacy. Sob o contrato Light Forest (data-page-theme="light-forest"
+ * no documentElement, ver ThemeProvider + Logistics/index.jsx) deixam de
+ * fazer sentido visualmente e são neutralizadas aqui.
+ */
+:global(html[data-page-theme="light-forest"]) .shell::before,
+:global(html[data-page-theme="light-forest"]) .shell::after {
+    content: none;
+}
+
 .shell>* {
     position: relative;
     z-index: 1;

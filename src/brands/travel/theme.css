@@ -213,6 +213,15 @@
 
 :root[data-brand="travel"][data-page-theme="light-forest"] {
     --sl-body-bg: var(--sl-surface-page);
+    --sl-color-text: var(--sl-text-primary);
+
+    /*
+     * --travel-text é o token efetivamente lido por TravelShell/
+     * TravelPageLayout (var(--travel-text, var(--sl-color-text, ...))).
+     * Sem esta linha, o fallback --sl-color-text acima nunca seria
+     * alcançado, porque --travel-text está sempre definido na base.
+     */
+    --travel-text: var(--sl-text-primary);
 
     color-scheme: light;
     background: var(--sl-body-bg);
