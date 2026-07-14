@@ -1,8 +1,8 @@
 .hero {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr);
-    gap: clamp(3rem, 7vw, 7rem);
+    grid-template-columns: minmax(0, 0.95fr) minmax(28rem, 0.8fr);
+    gap: clamp(3rem, 7vw, 8rem);
     align-items: center;
     inline-size: 100%;
 }
@@ -12,6 +12,18 @@
     gap: clamp(1.15rem, 2vw, 1.6rem);
     max-inline-size: 60ch;
     min-inline-size: 0;
+}
+
+/*
+ * Sem margin-block-end próprio: .intro já é display:grid com gap
+ * (~1.15–1.6rem, muito próximo do 1.5rem pedido) — juntar um margin
+ * duplicaria o espaço entre o traço e o título.
+ */
+.titleAccent {
+    display: block;
+    inline-size: 3rem;
+    block-size: 2px;
+    background: var(--travel-gold-deep, #b97911);
 }
 
 /*
@@ -51,13 +63,21 @@
     text-wrap: pretty;
 }
 
+/*
+ * Superfície única e contínua a agrupar os 3 benefícios — substitui o
+ * conjunto "solto sobre o fundo" por um painel claro e diferenciado.
+ */
 .benefits {
     display: grid;
     gap: clamp(1.4rem, 2.4vw, 2rem);
     margin: 0;
-    padding: 0;
+    padding: clamp(2rem, 4vw, 4rem);
     list-style: none;
     min-inline-size: 0;
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    border-radius: clamp(1.25rem, 2vw, 2rem);
+    background: var(--sl-surface-primary, #e6e8d1);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
 }
 
 .benefit {
@@ -113,6 +133,10 @@
     .intro {
         max-inline-size: none;
     }
+
+    .benefits {
+        padding: clamp(1.5rem, 4vw, 2.25rem);
+    }
 }
 
 @media (max-width: 560px) {
@@ -131,6 +155,8 @@
 
     .benefits {
         gap: 1.2rem;
+        padding: 1.25rem;
+        border-radius: 1.1rem;
     }
 
     .benefit {

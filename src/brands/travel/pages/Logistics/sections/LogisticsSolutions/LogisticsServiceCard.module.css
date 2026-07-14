@@ -38,6 +38,7 @@
 
 .summary {
     margin: 0;
+    max-inline-size: 68ch;
     color: var(--sl-text-secondary, #2e4d3b);
     font-size: 1rem;
     line-height: 1.62;
@@ -47,6 +48,7 @@
 .details {
     display: grid;
     gap: 0.85rem;
+    max-inline-size: 68ch;
     padding-top: 0.9rem;
     border-top: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
 }
