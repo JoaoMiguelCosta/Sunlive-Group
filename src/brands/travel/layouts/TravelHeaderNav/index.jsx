@@ -57,7 +57,7 @@ export default function TravelHeaderNav() {
           <BrandMasthead
             src={header.logo?.src}
             alt={header.logo?.alt ?? "Sunlive Travel"}
-            logoAr={2.6}
+            logoAr={2.16}
             loading="eager"
             className={styles.masthead}
           />

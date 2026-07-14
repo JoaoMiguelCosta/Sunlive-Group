@@ -13,7 +13,13 @@
 }
 
 .container {
-    --travel-header-stack-gap: clamp(0.7rem, 1.4vw, 1.25rem);
+    /*
+     * Alinhado com o espaçamento header → primeira secção da Home Group
+     * (GroupPageLayout.module.css .contentFlow margin-block-start), já
+     * que na Group o logótipo (BrandHero) É a primeira secção depois do
+     * header. Mesmos breakpoints e valores nas media queries abaixo.
+     */
+    --travel-header-stack-gap: clamp(2.3rem, 4vw, 3.8rem);
     --capsule-inset: clamp(0.75rem, 4vw, 2.5rem);
 
     position: relative;
@@ -72,7 +78,17 @@
     padding-block: clamp(14px, 2.6vw, 32px);
 }
 
+@media (max-width: 980px) {
+    .container {
+        --travel-header-stack-gap: clamp(2.1rem, 4.8vw, 3rem);
+    }
+}
+
 @media (max-width: 767.98px) {
+    .container {
+        --travel-header-stack-gap: clamp(1.8rem, 6vw, 2.5rem);
+    }
+
     .capsuleRow {
         padding-block-start: 0.5rem;
     }
@@ -90,6 +106,7 @@
 @media (max-width: 420px) {
     .container {
         --capsule-inset: 0.75rem;
+        --travel-header-stack-gap: 1.8rem;
     }
 
     .capsule {

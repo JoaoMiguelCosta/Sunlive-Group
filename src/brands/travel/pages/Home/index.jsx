@@ -1,11 +1,7 @@
 import home from "../../config/pages/home.js";
 import styles from "../../layouts/TravelPageLayout.module.css";
 
-import {
-  HomeHeroSection,
-  SolutionPathsSection,
-  OperationFlowSection,
-} from "./sections/index.jsx";
+import { SolutionPathsSection } from "./sections/index.jsx";
 
 export default function HomePage() {
   return (
@@ -16,9 +12,7 @@ export default function HomePage() {
         aria-label={home.ui.pageAriaLabel}
       >
         <div className={styles.contentFlow}>
-          <HomeHeroSection />
           <SolutionPathsSection />
-          <OperationFlowSection />
         </div>
       </main>
     </div>

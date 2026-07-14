@@ -9,17 +9,12 @@ export default function SolutionPathsSection() {
   const paths = Array.isArray(section?.paths) ? section.paths : [];
   const sectionId = section?.id ?? "travel-home-solution-paths";
 
-  const sectionStyle = showcase?.backgroundImage
-    ? { "--solution-paths-bg-image": `url(${showcase.backgroundImage})` }
-    : undefined;
-
   return (
     <section
       id={sectionId}
       className={styles.section}
       aria-label={showcase?.title ?? "Soluções disponíveis"}
       data-section="solution-paths"
-      style={sectionStyle}
     >
       <div className={styles.inner}>
         <div className={styles.surface}>
@@ -47,8 +42,6 @@ export default function SolutionPathsSection() {
               >
                 {paths.map((item) => (
                   <article key={item.key} className={styles.card}>
-                    <div className={styles.cardGlow} aria-hidden="true" />
-
                     <div className={styles.cardTop}>
                       {item?.eyebrow ? (
                         <p className={styles.cardEyebrow}>{item.eyebrow}</p>

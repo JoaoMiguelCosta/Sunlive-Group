@@ -954,6 +954,8 @@
 
     min-height: clamp(62px, 4.6vw, 72px);
     padding-block: 0.42rem;
+    /* Paridade com .utilityBar[data-variant="group-header"] .inner */
+    padding-inline: clamp(0.15rem, 0.5vw, 0.4rem);
 
     isolation: isolate;
     border-bottom: 0;
