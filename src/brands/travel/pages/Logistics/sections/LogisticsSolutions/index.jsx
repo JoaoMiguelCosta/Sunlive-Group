@@ -2,7 +2,6 @@ import logistics from "../../../../config/pages/logistics.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
 import LogisticsOperationalHero from "./LogisticsOperationalHero.jsx";
-import LogisticsActionPanel from "./LogisticsActionPanel.jsx";
 import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
 
 import styles from "./LogisticsSolutionsSection.module.css";
@@ -19,8 +18,6 @@ export default function LogisticsSolutionsSection() {
   const operationalHero = section?.operationalHero ?? {};
   const servicesIntro = section?.servicesIntro ?? null;
   const services = Array.isArray(section?.services) ? section.services : [];
-  const actionPanel = section?.actionPanel ?? null;
-  const cta = section?.cta ?? null;
   const icons = ICONS;
 
   return (
@@ -40,8 +37,6 @@ export default function LogisticsSolutionsSection() {
             icons={icons}
             ui={section?.ui}
           />
-
-          <LogisticsActionPanel panel={actionPanel} cta={cta} />
         </div>
       </div>
     </section>

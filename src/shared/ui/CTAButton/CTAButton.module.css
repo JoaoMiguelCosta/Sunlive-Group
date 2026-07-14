@@ -921,9 +921,9 @@
 }
 
 /*
- * Tone opt-in "lightForest" — usado apenas pela página Logística (via
- * layout="compact" no TravelActionPanel). Os restantes tones (default,
- * strong, soft) mantêm a paleta navy/dourado inalterada.
+ * Tone opt-in "lightForest" — usado pelos CTAs partilhados da Sunlive
+ * Travel (TravelActionPanel). Os restantes tones (default, strong, soft)
+ * mantêm a paleta navy/dourado inalterada.
  */
 .button--travel[data-tone="lightForest"] {
     --travel-border: var(--sl-border-default, rgba(30, 46, 36, 0.28));

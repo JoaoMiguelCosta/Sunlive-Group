@@ -1,8 +1,8 @@
-import partners from "../../../../config/pages/partners.js";
+import logistics from "../../../../config/pages/logistics.js";
 import TravelActionPanel from "../../../../shared/ui/TravelActionPanel/TravelActionPanel.jsx";
 
-export default function PartnersActionPanelSection() {
-  const section = partners.sections.partnersActionPanel;
+export default function LogisticsActionPanelSection() {
+  const section = logistics.sections.logisticsActionPanel;
 
   if (!section) return null;
 
@@ -10,7 +10,7 @@ export default function PartnersActionPanelSection() {
     <TravelActionPanel
       panel={section?.actionPanel}
       cta={section?.cta}
-      sectionKey="partners-action-panel"
+      sectionKey="logistics-action-panel"
     />
   );
 }

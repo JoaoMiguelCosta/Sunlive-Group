@@ -18,7 +18,6 @@ export default function TravelActionPanel({
   cta = null,
   className = "",
   sectionKey = "travel-action-panel",
-  layout = "default",
 }) {
   const eyebrow = getFirstNonEmpty(panel?.eyebrow);
   const title = getFirstNonEmpty(panel?.title);
@@ -37,15 +36,7 @@ export default function TravelActionPanel({
 
   if (!hasContent) return null;
 
-  const isCompact = layout === "compact";
-
-  const rootClassName = [
-    styles.root,
-    isCompact ? styles.compact : "",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const rootClassName = [styles.root, className].filter(Boolean).join(" ");
 
   const copyColumn = (
     <div className={styles.copyColumn}>
@@ -97,17 +88,8 @@ export default function TravelActionPanel({
       <div className={styles.panel}>
         <div className={styles.panelGlow} aria-hidden="true" />
 
-        {isCompact ? (
-          <div className={styles.compactGroup}>
-            {copyColumn}
-            {actionColumn}
-          </div>
-        ) : (
-          <>
-            {copyColumn}
-            {actionColumn}
-          </>
-        )}
+        {copyColumn}
+        {actionColumn}
       </div>
     </div>
   );

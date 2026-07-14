@@ -11,7 +11,6 @@ export default function DestinationsActionPanelSection() {
       panel={section?.actionPanel}
       cta={section?.cta}
       sectionKey="destinations-action-panel"
-      tone="lightForest"
     />
   );
 }

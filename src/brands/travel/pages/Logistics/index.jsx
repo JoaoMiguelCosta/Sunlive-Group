@@ -3,6 +3,7 @@ import styles from "../../layouts/TravelPageLayout.module.css";
 import pageStyles from "./Logistics.module.css";
 
 import LogisticsSolutionsSection from "./sections/LogisticsSolutions/index.jsx";
+import LogisticsActionPanelSection from "./sections/LogisticsActionPanel/index.jsx";
 
 export default function LogisticsPage() {
   return (
@@ -15,6 +16,7 @@ export default function LogisticsPage() {
         >
           <div className={styles.contentFlow}>
             <LogisticsSolutionsSection />
+            <LogisticsActionPanelSection />
           </div>
         </main>
       </div>
