@@ -458,3 +458,93 @@
         font-size: 0.8rem;
     }
 }
+
+/*
+ * Tone "lightForest" (opt-in via prop `tone="lightForest"`): mesma
+ * estrutura de grelha (copy + stats), só troca as superfícies
+ * navy-dourado pelos tokens --sl-* globais. O tone "navy" (omitido, por
+ * omissão) mantém-se inalterado — continua a ser consumido por Contacts
+ * até este migrar (Lote 3K.6).
+ */
+.hero.lightForest .panel {
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-primary, #e6e8d1);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
+}
+
+.hero.lightForest .panel::before,
+.hero.lightForest .panel::after {
+    background: none;
+    box-shadow: none;
+}
+
+.hero.lightForest .eyebrow {
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-footer, #f6f7ed);
+    color: var(--travel-gold-deep, #b97911);
+}
+
+.hero.lightForest .title {
+    color: var(--sl-text-primary, #1e2e24);
+}
+
+.hero.lightForest .lead {
+    color: var(--sl-text-secondary, #2e4d3b);
+}
+
+.hero.lightForest .supportingText {
+    color: var(--sl-text-muted, #536456);
+}
+
+.hero.lightForest .pill {
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-secondary, #f0f1e2);
+    color: var(--sl-text-secondary, #2e4d3b);
+    box-shadow: none;
+}
+
+.hero.lightForest .pill:hover {
+    border-color: var(--sl-border-strong, rgba(30, 46, 36, 0.28));
+    background: var(--sl-surface-elevated, #f6f7ed);
+    box-shadow: none;
+    filter: none;
+}
+
+.hero.lightForest .pill::before {
+    background: var(--travel-gold-deep, #b97911);
+    box-shadow: none;
+}
+
+.hero.lightForest .pill:hover::before {
+    box-shadow: none;
+    filter: none;
+}
+
+.hero.lightForest .statCard {
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-card-background, #f0f1e2);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
+}
+
+.hero.lightForest .statCard:hover {
+    border-color: var(--sl-border-strong, rgba(30, 46, 36, 0.28));
+    background: var(--sl-surface-elevated, #f6f7ed);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
+    filter: none;
+}
+
+.hero.lightForest .statCard::before {
+    background: linear-gradient(90deg, var(--travel-gold-deep, #b97911) 0%, var(--travel-cyan-deep, #2ea7e0) 100%);
+}
+
+.hero.lightForest .statCard::after {
+    background: none;
+}
+
+.hero.lightForest .statValue {
+    color: var(--travel-gold-deep, #b97911);
+}
+
+.hero.lightForest .statLabel {
+    color: var(--sl-text-secondary, #2e4d3b);
+}

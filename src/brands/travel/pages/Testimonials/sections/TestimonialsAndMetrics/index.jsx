@@ -39,6 +39,7 @@ export default function TestimonialsAndMetricsSection() {
           supportingText={headline?.description}
           stats={headline?.stats}
           statsAriaLabel={headline?.ui?.statsAriaLabel ?? "Destaques da secção"}
+          tone="lightForest"
         />
 
         <div className={styles.gridBlock}>
