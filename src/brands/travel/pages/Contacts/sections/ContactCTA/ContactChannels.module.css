@@ -3,7 +3,6 @@
     inline-size: 100%;
     min-inline-size: 0;
     block-size: 100%;
-    
 }
 
 .list {
@@ -35,22 +34,11 @@
     min-block-size: clamp(4rem, 4.6vw, 4.5rem);
     padding: clamp(0.86rem, 1.2vw, 1rem) clamp(0.94rem, 1.5vw, 1.1rem);
     border-radius: 1.05rem;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background:
-        radial-gradient(140% 120% at 0% 0%,
-            rgba(199, 134, 21, 0.08) 0%,
-            transparent 44%),
-        radial-gradient(120% 120% at 100% 0%,
-            rgba(46, 167, 224, 0.08) 0%,
-            transparent 42%),
-        linear-gradient(180deg,
-            rgba(9, 23, 43, 0.98) 0%,
-            rgba(5, 14, 28, 0.985) 100%);
-    color: var(--sl-platinum-100, #eef3fb);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-secondary, #f0f1e2);
+    color: var(--sl-text-primary, #1e2e24);
     text-decoration: none;
-    box-shadow:
-        0 8px 22px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    box-shadow: none;
     transition:
         transform 0.18s ease,
         box-shadow 0.18s ease,
@@ -58,34 +46,13 @@
         background 0.18s ease;
 }
 
-.link::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.18s ease;
-    background:
-        linear-gradient(90deg,
-            rgba(199, 134, 21, 0.18) 0%,
-            rgba(46, 167, 224, 0.12) 100%);
-}
-
 .link:hover,
 .link:focus-visible {
     transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.16);
-    box-shadow:
-        0 0 0 2px rgba(199, 134, 21, 0.14),
-        0 18px 34px rgba(0, 0, 0, 0.4),
-        0 0 36px rgba(199, 134, 21, 0.12);
+    border-color: var(--sl-border-strong, rgba(30, 46, 36, 0.28));
+    background: var(--sl-surface-elevated, #f6f7ed);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
     outline: none;
-}
-
-.link:hover::before,
-.link:focus-visible::before {
-    opacity: 1;
 }
 
 .iconWrap {
@@ -94,26 +61,15 @@
     inline-size: clamp(2.18rem, 2.5vw, 2.35rem);
     block-size: clamp(2.18rem, 2.5vw, 2.35rem);
     border-radius: 999px;
-    border: 1px solid rgba(199, 134, 21, 0.22);
-    background:
-        radial-gradient(100% 100% at 50% 30%,
-            rgba(199, 134, 21, 0.18) 0%,
-            rgba(199, 134, 21, 0.08) 52%,
-            rgba(199, 134, 21, 0) 100%),
-        linear-gradient(180deg,
-            rgba(10, 22, 40, 0.94) 0%,
-            rgba(6, 15, 29, 0.98) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 10px 24px rgba(0, 0, 0, 0.24);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-footer, #f6f7ed);
     flex-shrink: 0;
 }
 
 .icon {
     inline-size: clamp(17px, 1.55vw, 19px);
     block-size: clamp(17px, 1.55vw, 19px);
-    color: var(--sl-gold-400, #c78615);
-    filter: drop-shadow(0 0 10px rgba(199, 134, 21, 0.2));
+    color: var(--travel-gold-deep, #b97911);
 }
 
 .content {
@@ -130,11 +86,11 @@
     line-height: 1.2;
     text-wrap: balance;
     overflow-wrap: anywhere;
-    color: #E3AD45
+    color: var(--sl-text-primary, #1e2e24);
 }
 
 .helper {
-  
+    color: var(--sl-text-muted, #536456);
     font-size: clamp(0.8rem, 0.82vw, 0.85rem);
     line-height: 1.35;
     text-wrap: pretty;
@@ -144,15 +100,14 @@
 .chevron {
     inline-size: 0.68rem;
     block-size: 0.68rem;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
+    border-right: 2px solid var(--travel-gold-deep, #b97911);
+    border-bottom: 2px solid var(--travel-gold-deep, #b97911);
     transform: rotate(-45deg);
     opacity: 0.88;
     flex-shrink: 0;
     transition:
         transform 0.18s ease,
         opacity 0.18s ease;
-        color: #E3AD45
 }
 
 .link:hover .chevron,
