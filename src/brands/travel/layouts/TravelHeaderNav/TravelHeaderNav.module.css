@@ -56,7 +56,15 @@
 }
 
 .capsule {
-    inline-size: min(calc(100% - (2 * var(--capsule-inset))), 1360px);
+    /*
+     * inline-size: auto (em vez de min(calc(100% - 2*inset), 1360px)) —
+     * o TravelHeaderNav já vive dentro de .layout (TravelPageLayout.
+     * module.css), que aplica o seu próprio inset e já limita a 1360px.
+     * Subtrair --capsule-inset aqui duplicava o inset sobre uma largura
+     * já estreitada, deixando a cápsula mais estreita do que a da Group
+     * (cujo header vive fora de qualquer wrapper com largura máxima).
+     */
+    inline-size: auto;
     max-inline-size: 1360px;
 
     margin-inline: auto;
