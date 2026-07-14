@@ -1,29 +1,19 @@
 .hero {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(28rem, 0.8fr);
-    gap: clamp(3rem, 7vw, 8rem);
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(30rem, 0.92fr);
+    gap: clamp(2rem, 3.5vw, 4rem);
+    align-items: start;
     inline-size: 100%;
 }
 
 .intro {
     display: grid;
+    align-self: start;
     gap: clamp(1.15rem, 2vw, 1.6rem);
+    margin-block: 0;
     max-inline-size: 60ch;
     min-inline-size: 0;
-}
-
-/*
- * Sem margin-block-end próprio: .intro já é display:grid com gap
- * (~1.15–1.6rem, muito próximo do 1.5rem pedido) — juntar um margin
- * duplicaria o espaço entre o traço e o título.
- */
-.titleAccent {
-    display: block;
-    inline-size: 3rem;
-    block-size: 2px;
-    background: var(--travel-gold-deep, #b97911);
 }
 
 /*
@@ -69,9 +59,12 @@
  */
 .benefits {
     display: grid;
+    align-self: start;
+    justify-self: stretch;
     gap: clamp(1.4rem, 2.4vw, 2rem);
     margin: 0;
     padding: clamp(2rem, 4vw, 4rem);
+    inline-size: 100%;
     list-style: none;
     min-inline-size: 0;
     border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));

@@ -19,12 +19,7 @@ export default function LogisticsOperationalHero({ hero = {} }) {
   return (
     <header className={styles.hero}>
       <div className={styles.intro}>
-        {hero?.title ? (
-          <>
-            <span className={styles.titleAccent} aria-hidden="true" />
-            <h1 className={styles.title}>{hero.title}</h1>
-          </>
-        ) : null}
+        {hero?.title ? <h1 className={styles.title}>{hero.title}</h1> : null}
         {hero?.lead ? <p className={styles.lead}>{hero.lead}</p> : null}
         {hero?.supportingText ? (
           <p className={styles.supportingText}>{hero.supportingText}</p>
