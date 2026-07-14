@@ -25,9 +25,9 @@ export default function PartnerHotelsSection() {
       data-section="partner-hotels"
       aria-label={sectionLabel}
     >
-      <div className={styles.inner}>
-        <PartnerHotelsHero hero={hero} />
+      <PartnerHotelsHero hero={hero} />
 
+      <div className={styles.inner}>
         <PartnerHotelsGrid collection={collection} hotels={hotels} />
       </div>
     </section>

@@ -1,6 +1,5 @@
 import destinationsPage from "../../../../config/pages/destinations.js";
-
-import styles from "./DestinationsHighlightSection.module.css";
+import TravelFeaturePanel from "../../../../shared/ui/TravelFeaturePanel/TravelFeaturePanel.jsx";
 
 export default function DestinationsHighlightSection() {
   const section = destinationsPage.sections.destinationsHighlight;
@@ -19,41 +18,18 @@ export default function DestinationsHighlightSection() {
 
   return (
     <section
-      className={styles.section}
       data-section="destinations-highlight"
       aria-label={section?.eyebrow || section?.title || "Destaque geral"}
     >
-      <div className={styles.inner}>
-        <div className={styles.copyColumn}>
-          {section?.eyebrow ? (
-            <p className={styles.eyebrow}>{section.eyebrow}</p>
-          ) : null}
-
-          {section?.title ? (
-            <h1 className={styles.title}>{section.title}</h1>
-          ) : null}
-
-          {section?.description ? (
-            <p className={styles.description}>{section.description}</p>
-          ) : null}
-        </div>
-
-        {benefits.length > 0 ? (
-          <ul
-            className={styles.benefits}
-            aria-label={section?.ui?.benefitsAriaLabel ?? "Benefícios"}
-          >
-            {benefits.map((benefit) => (
-              <li key={benefit?.key ?? benefit.title} className={styles.benefitCard}>
-                <h2 className={styles.benefitTitle}>{benefit.title}</h2>
-                <p className={styles.benefitDescription}>
-                  {benefit.description}
-                </p>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </div>
+      <TravelFeaturePanel
+        eyebrow={section?.eyebrow}
+        title={section?.title}
+        description={section?.description}
+        items={benefits}
+        sectionKey="destinations-highlight"
+        titleAs="h1"
+        itemTitleAs="h2"
+      />
     </section>
   );
 }

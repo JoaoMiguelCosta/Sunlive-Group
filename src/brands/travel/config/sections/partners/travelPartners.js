@@ -5,6 +5,7 @@ const travelPartners = {
   id: "parceiros-viagens",
 
   showcaseHero: {
+    eyebrow: "PARCEIROS SELECIONADOS",
     title: "Parcerias Estratégicas",
     lead: "A nossa rede de parceiros que reforça as nossas operações e acrescenta valor real à sua viagem.",
     supportingText:

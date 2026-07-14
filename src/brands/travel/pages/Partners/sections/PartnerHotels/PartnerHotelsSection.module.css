@@ -2,6 +2,8 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
+    display: grid;
+    gap: clamp(1.15rem, 2vw, 1.65rem);
     color: var(--sl-text-secondary, #2e4d3b);
     overflow: clip;
 }
@@ -12,8 +14,6 @@
     inline-size: min(100%, 1360px);
     margin-inline: auto;
     box-sizing: border-box;
-    display: grid;
-    gap: clamp(1.15rem, 2vw, 1.65rem);
 }
 
 @media (max-width: 1024px) {
@@ -29,10 +29,10 @@
 @media (max-width: 640px) {
     .section {
         padding-block: 1.9rem;
+        gap: 0.95rem;
     }
 
     .inner {
-        gap: 0.95rem;
         padding-inline: 0.92rem;
     }
 }

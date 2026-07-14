@@ -25,9 +25,9 @@ export default function TravelPartnersSection() {
       data-section="travel-partners"
       aria-label={sectionLabel}
     >
-      <div className={styles.inner}>
-        <TravelPartnersHero hero={hero} />
+      <TravelPartnersHero hero={hero} />
 
+      <div className={styles.inner}>
         <TravelPartnersGrid network={network} partners={partners} />
       </div>
     </section>
