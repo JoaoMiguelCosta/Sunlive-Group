@@ -19,6 +19,7 @@ export default function TravelActionPanel({
   className = "",
   sectionKey = "travel-action-panel",
   layout = "default",
+  tone = "navy",
 }) {
   const eyebrow = getFirstNonEmpty(panel?.eyebrow);
   const title = getFirstNonEmpty(panel?.title);
@@ -38,10 +39,12 @@ export default function TravelActionPanel({
   if (!hasContent) return null;
 
   const isCompact = layout === "compact";
+  const isLightForest = tone === "lightForest";
 
   const rootClassName = [
     styles.root,
     isCompact ? styles.compact : "",
+    isLightForest ? styles.lightForest : "",
     className,
   ]
     .filter(Boolean)
@@ -82,7 +85,7 @@ export default function TravelActionPanel({
             cta={cta}
             className={styles.ctaButton}
             variant="travel"
-            tone={isCompact ? "lightForest" : "strong"}
+            tone={isCompact || isLightForest ? "lightForest" : "strong"}
             blink
             compact="auto"
             scrollOffset={72}

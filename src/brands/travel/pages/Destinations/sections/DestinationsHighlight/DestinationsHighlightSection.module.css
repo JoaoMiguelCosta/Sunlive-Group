@@ -2,26 +2,8 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
-    color: var(--sl-platinum-100, #f6f7fb);
+    color: var(--sl-text-secondary, #2e4d3b);
     overflow: clip;
-}
-
-.section::before {
-    content: "";
-    position: absolute;
-    inset: 7% auto auto 50%;
-    translate: -50% 0;
-    inline-size: min(90vw, 1160px);
-    block-size: clamp(170px, 22vw, 290px);
-    pointer-events: none;
-    opacity: 0.76;
-    background:
-        radial-gradient(60% 100% at 50% 50%,
-            rgba(255, 228, 168, 0.16) 0%,
-            rgba(194, 136, 33, 0.08) 34%,
-            rgba(74, 172, 215, 0.08) 62%,
-            rgba(74, 172, 215, 0) 100%);
-    filter: blur(26px);
 }
 
 .inner {
@@ -33,16 +15,10 @@
     display: grid;
     gap: clamp(1.6rem, 3vw, 2.4rem);
     padding: clamp(1.15rem, 2vw, 1.55rem);
-    border: 1px solid rgba(223, 178, 74, 0.22);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
     border-radius: clamp(1.45rem, 2.2vw, 2.3rem);
-    background:
-        radial-gradient(110% 135% at 0% 0%, rgba(32, 77, 139, 0.34) 0%, transparent 34%),
-        radial-gradient(72% 88% at 100% 100%, rgba(38, 103, 190, 0.3) 0%, transparent 42%),
-        linear-gradient(125deg, #122b4c 0%, #041425 33%, #02111f 58%, #0a2a4c 100%);
-    box-shadow:
-        0 26px 72px rgba(0, 0, 0, 0.3),
-        0 12px 26px rgba(2, 12, 24, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    background: var(--sl-surface-primary, #e6e8d1);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
 }
 
 .copyColumn {
@@ -62,9 +38,9 @@
     margin: 0;
     padding: 0.38rem 0.62rem 0.36rem;
     border-radius: 999px;
-    border: 1px solid rgba(226, 186, 88, 0.2);
-    background: linear-gradient(180deg, rgba(225, 177, 63, 0.14) 0%, rgba(225, 177, 63, 0.06) 100%);
-    color: rgba(244, 204, 105, 0.98);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-footer, #f6f7ed);
+    color: var(--travel-gold-deep, #b97911);
     font-size: 0.66rem;
     font-weight: 900;
     letter-spacing: 0.22em;
@@ -74,19 +50,18 @@
 
 .title {
     margin: 0;
-    color: #f8fbff;
+    color: var(--sl-text-primary, #1e2e24);
     font-size: clamp(2rem, 3.4vw, 3.4rem);
     line-height: 1.02;
     font-weight: 900;
     letter-spacing: -0.05em;
     text-wrap: balance;
-    text-shadow: 0 10px 26px rgba(1, 8, 18, 0.18);
 }
 
 .description {
     margin: 0;
     max-inline-size: 68ch;
-    color: rgba(240, 244, 249, 0.94);
+    color: var(--sl-text-secondary, #2e4d3b);
     font-size: clamp(0.98rem, 1.08vw, 1.08rem);
     font-weight: 500;
     letter-spacing: -0.006em;
@@ -112,11 +87,9 @@
     align-content: start;
     padding: 1rem 1.05rem 1.1rem;
     border-radius: 1.16rem;
-    border: 1px solid rgba(225, 179, 72, 0.16);
-    background: linear-gradient(155deg, rgba(21, 43, 74, 0.9) 0%, rgba(6, 16, 31, 0.96) 100%);
-    box-shadow:
-        0 14px 24px rgba(0, 0, 0, 0.16),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-card-background, #f0f1e2);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
 }
 
 .benefitCard::after {
@@ -124,13 +97,13 @@
     position: absolute;
     inset: auto 0 0;
     block-size: 2px;
-    background: linear-gradient(90deg, rgba(223, 178, 74, 0.88) 0%, rgba(93, 193, 255, 0.72) 100%);
+    background: linear-gradient(90deg, var(--travel-gold-deep, #b97911) 0%, var(--travel-cyan-deep, #2ea7e0) 100%);
     pointer-events: none;
 }
 
 .benefitTitle {
     margin: 0;
-    color: #f0d58f;
+    color: var(--sl-text-primary, #1e2e24);
     font-size: 1rem;
     font-weight: 840;
     letter-spacing: -0.012em;
@@ -140,7 +113,7 @@
 
 .benefitDescription {
     margin: 0;
-    color: rgba(209, 219, 233, 0.84);
+    color: var(--sl-text-secondary, #2e4d3b);
     font-size: 0.9rem;
     font-weight: 460;
     letter-spacing: -0.006em;

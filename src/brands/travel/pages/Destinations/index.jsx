@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import destinations from "../../config/pages/destinations.js";
 import styles from "../../layouts/TravelPageLayout.module.css";
 
@@ -7,6 +9,14 @@ import InternationalDestinationsSection from "./sections/InternationalDestinatio
 import DestinationsActionPanelSection from "./sections/DestinationsActionPanel/index.jsx";
 
 export default function DestinationsPage() {
+  useEffect(() => {
+    document.documentElement.setAttribute("data-page-theme", "light-forest");
+
+    return () => {
+      document.documentElement.removeAttribute("data-page-theme");
+    };
+  }, []);
+
   return (
     <div className={styles.pageWrap} data-brand="travel">
       <main

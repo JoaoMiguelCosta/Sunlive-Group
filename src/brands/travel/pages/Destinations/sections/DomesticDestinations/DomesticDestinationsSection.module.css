@@ -2,26 +2,8 @@
     position: relative;
     isolation: isolate;
     inline-size: 100%;
-    color: var(--sl-platinum-100, #f6f7fb);
+    color: var(--sl-text-secondary, #2e4d3b);
     overflow: clip;
-}
-
-.section::before {
-    content: "";
-    position: absolute;
-    inset: 7% auto auto 50%;
-    translate: -50% 0;
-    inline-size: min(90vw, 1160px);
-    block-size: clamp(170px, 22vw, 290px);
-    pointer-events: none;
-    opacity: 0.76;
-    background:
-        radial-gradient(60% 100% at 50% 50%,
-            rgba(255, 228, 168, 0.16) 0%,
-            rgba(194, 136, 33, 0.08) 34%,
-            rgba(74, 172, 215, 0.08) 62%,
-            rgba(74, 172, 215, 0) 100%);
-    filter: blur(26px);
 }
 
 .inner {
@@ -42,7 +24,7 @@
 
 .title {
     margin: 0;
-    color: #f8fbff;
+    color: var(--sl-text-primary, #1e2e24);
     font-size: clamp(1.6rem, 2.6vw, 2.35rem);
     line-height: 1.08;
     font-weight: 850;
@@ -52,7 +34,7 @@
 
 .indicator {
     margin: 0;
-    color: rgba(240, 191, 93, 0.96);
+    color: var(--travel-gold-deep, #b97911);
     font-size: 0.82rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -61,7 +43,7 @@
 
 .intro {
     margin: 0;
-    color: rgba(223, 232, 243, 0.86);
+    color: var(--sl-text-secondary, #2e4d3b);
     font-size: clamp(0.95rem, 1vw, 1.02rem);
     line-height: 1.6;
 }
@@ -81,11 +63,9 @@
     display: grid;
     grid-template-rows: auto 1fr;
     border-radius: 1.35rem;
-    border: 1px solid rgba(223, 178, 74, 0.2);
-    background: linear-gradient(155deg, rgba(21, 43, 74, 0.9) 0%, rgba(6, 16, 31, 0.96) 100%);
-    box-shadow:
-        0 16px 34px rgba(0, 0, 0, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-card-background, #f0f1e2);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
 }
 
 .mediaWrap {
@@ -101,6 +81,11 @@
     object-fit: cover;
 }
 
+/*
+ * Legenda sobre fotografia: o scrim escuro + texto branco garantem
+ * legibilidade sobre a imagem do destino, independentemente do tema da
+ * página — não é uma superfície de página, por isso mantém-se inalterado.
+ */
 .mediaOverlay {
     position: absolute;
     inset: 0;
@@ -132,7 +117,7 @@
 
 .cardDescription {
     margin: 0;
-    color: rgba(223, 232, 243, 0.86);
+    color: var(--sl-text-secondary, #2e4d3b);
     font-size: 0.92rem;
     line-height: 1.56;
 }
@@ -142,9 +127,9 @@
     margin: 0;
     padding: 0.32rem 0.68rem;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(180deg, rgba(18, 40, 69, 0.7) 0%, rgba(8, 19, 35, 0.88) 100%);
-    color: rgba(240, 191, 93, 0.96);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-secondary, #f0f1e2);
+    color: var(--travel-gold-deep, #b97911);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: -0.006em;

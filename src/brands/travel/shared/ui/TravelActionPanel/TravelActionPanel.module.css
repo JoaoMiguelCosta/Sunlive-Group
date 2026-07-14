@@ -524,3 +524,75 @@
         inline-size: 100%;
     }
 }
+
+/*
+ * Tone "lightForest" (opt-in via prop `tone="lightForest"`): mantém a
+ * grelha de duas colunas do layout "default" (copyColumn + actionColumn),
+ * apenas troca as superfícies/cores navy-dourado pelos tokens --sl-*
+ * globais. Usado por páginas já migradas (Destinations, Partners); o
+ * layout "default" sem este tone e o "compact" continuam inalterados.
+ */
+.root.lightForest .panel {
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-card-background, #f0f1e2);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
+}
+
+.root.lightForest .panel::before,
+.root.lightForest .panel::after {
+    background: none;
+}
+
+.root.lightForest .panelGlow {
+    display: none;
+}
+
+.root.lightForest .eyebrow {
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-footer, #f6f7ed);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    color: var(--sl-text-secondary, #2e4d3b);
+}
+
+.root.lightForest .title {
+    color: var(--sl-text-primary, #1e2e24);
+    text-shadow: none;
+}
+
+.root.lightForest .description {
+    color: var(--sl-text-secondary, #2e4d3b);
+    font-weight: 500;
+}
+
+.root.lightForest .supportingText {
+    color: var(--sl-text-muted, #536456);
+}
+
+.root.lightForest .proofItem {
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    background: var(--sl-surface-secondary, #f0f1e2);
+    box-shadow: none;
+}
+
+.root.lightForest .proofItem::after {
+    background: none;
+}
+
+.root.lightForest .proofDot {
+    background: var(--travel-gold-deep, #b97911);
+    box-shadow: none;
+}
+
+.root.lightForest .proofLabel {
+    color: var(--sl-text-secondary, #2e4d3b);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .root.lightForest .proofItem:hover {
+        border-color: var(--sl-border-strong, rgba(30, 46, 36, 0.28));
+        background: var(--sl-surface-elevated, #f6f7ed);
+        box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
+    }
+}
