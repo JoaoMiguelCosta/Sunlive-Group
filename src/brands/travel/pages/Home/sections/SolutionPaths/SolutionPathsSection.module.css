@@ -115,7 +115,6 @@
         box-shadow 180ms ease;
 }
 
-.card:hover,
 .card:focus-within {
     transform: translateY(-3px);
     border-color: var(--sl-border-default, rgba(30, 46, 36, 0.28));
@@ -200,12 +199,6 @@
     flex-shrink: 0;
 }
 
-.cardLink:hover {
-    border-color: var(--travel-gold-deep, #b97911);
-    background: color-mix(in oklab, var(--travel-gold-deep, #b97911), transparent 88%);
-    color: var(--travel-gold-deep, #b97911);
-}
-
 .cardLink:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px var(--sl-focus-ring-color, rgba(45, 107, 79, 0.3));
@@ -218,6 +211,21 @@
     font-weight: 700;
     letter-spacing: -0.008em;
     text-wrap: balance;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .card:hover {
+        transform: translateY(-3px);
+        border-color: var(--sl-border-default, rgba(30, 46, 36, 0.28));
+        background: var(--sl-card-background-hover, #f6f7ed);
+        box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
+    }
+
+    .cardLink:hover {
+        border-color: var(--travel-gold-deep, #b97911);
+        background: color-mix(in oklab, var(--travel-gold-deep, #b97911), transparent 88%);
+        color: var(--travel-gold-deep, #b97911);
+    }
 }
 
 /* Desktop médio / tablet horizontal — 2 colunas × 3 linhas */
