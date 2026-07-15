@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
 import { resolveTravelIcon } from "../../../../config/core/iconKeyMap.js";
@@ -40,6 +40,31 @@ export default function ServiceOfferingsGrid({
     allowMultiple: false,
   });
 
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const openFromHash = () => {
+      const hash = window.location.hash.replace(/^#/, "");
+      if (!hash) return;
+
+      const matched = normalizedServices.find(
+        (service) => service.id === hash,
+      );
+
+      if (matched) {
+        open(matched.id);
+      }
+    };
+
+    openFromHash();
+
+    window.addEventListener("hashchange", openFromHash);
+
+    return () => {
+      window.removeEventListener("hashchange", openFromHash);
+    };
+  }, [normalizedServices, open]);
+
   if (normalizedServices.length === 0) return null;
 
   const hasIntro = Boolean(
@@ -76,7 +101,11 @@ export default function ServiceOfferingsGrid({
           const panelId = `${service.id}-panel`;
 
           return (
-            <li key={service.key} className={styles.item}>
+            <li
+              key={service.key}
+              id={service.anchorId ?? service.id}
+              className={styles.item}
+            >
               <h3 className={styles.itemHeading}>
                 <button
                   type="button"

@@ -1,7 +1,7 @@
 import logistics from "../../../../config/pages/logistics.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
-import LogisticsOperationalHero from "./LogisticsOperationalHero.jsx";
+import TravelFeaturePanel from "../../../../shared/ui/TravelFeaturePanel/TravelFeaturePanel.jsx";
 import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
 
 import styles from "./LogisticsSolutionsSection.module.css";
@@ -29,7 +29,16 @@ export default function LogisticsSolutionsSection() {
     >
       <div className={styles.sectionFrame}>
         <div className={styles.inner}>
-          <LogisticsOperationalHero hero={operationalHero} />
+          <TravelFeaturePanel
+            eyebrow={operationalHero?.eyebrow}
+            title={operationalHero?.title}
+            description={operationalHero?.lead}
+            supportingText={operationalHero?.supportingText}
+            items={operationalHero?.assurances}
+            sectionKey="logistics-overview"
+            titleAs="h1"
+            itemTitleAs="h3"
+          />
 
           <ServiceOfferingsGrid
             services={services}

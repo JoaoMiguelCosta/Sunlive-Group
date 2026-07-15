@@ -1,38 +1,27 @@
 /*
- * Sem fundo/moldura próprios: esta secção deixou de ser um grande
- * cartão exterior — o fundo da página (--sl-surface-page) fica visível
- * à volta dos dois blocos reais (cabeçalho + moldura do explorer).
- * Mantém-se apenas o padding vertical que separa a secção das
- * anteriores/seguintes.
+ * Superfície Light Forest única: cabeçalho, navegação e painel ativo
+ * partilham o mesmo contentor (fundo/radius/sombra), em vez de serem
+ * dois cartões separados sobre o fundo da página.
  */
 .block {
-    position: relative;
-    display: grid;
     inline-size: 100%;
-    padding-block: clamp(2.2rem, 4.5vw, 3.4rem);
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
+    max-inline-size: 75rem;
+    margin-inline: auto;
+    box-sizing: border-box;
+    display: grid;
+    gap: clamp(2rem, 4vw, 3rem);
+    padding: clamp(1.4rem, 3vw, 2.6rem);
+    background: var(--sl-surface-secondary, #f0f1e2);
+    border-radius: clamp(1.6rem, 3vw, 2.4rem);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
 }
 
-/*
- * Superfície própria do cabeçalho: painel pequeno e centrado,
- * claramente subordinado à moldura do explorer (principal card da
- * secção, logo abaixo).
- */
 .sectionHead {
     display: grid;
     justify-items: center;
     gap: clamp(0.75rem, 1.5vw, 1rem);
     inline-size: min(100%, 50rem);
     margin-inline: auto;
-    margin-block-end: clamp(2rem, 4vw, 3rem);
-    padding: clamp(1.75rem, 3vw, 2.5rem);
-    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
-    border-radius: clamp(1rem, 1.5vw, 1.25rem);
-    background: var(--sl-surface-primary, #e6e8d1);
-    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
     text-align: center;
 }
 
@@ -56,23 +45,19 @@
 }
 
 /*
- * Moldura única: nav (triggers) e conteúdo do serviço ativo partilham
- * a mesma superfície/borda/sombra em vez de serem cartões separados.
- * Em desktop, .trigger ocupa a coluna 1 e .panel a coluna 2, com um
- * divisor vertical (border-inline-start no .panel) entre ambos.
+ * Grelha funcional partilhada pela navegação e pelo painel ativo — a
+ * superfície (fundo/radius/sombra) já vem de .block; aqui fica só a
+ * estrutura. Em desktop, .itemHeading ocupa a coluna 1 e .panel a
+ * coluna 2, com um divisor vertical (border-inline-start no .panel)
+ * entre ambos.
  */
 .explorer {
     position: relative;
     list-style: none;
     margin: 0;
-    padding: clamp(0.6rem, 1.2vw, 1rem);
+    padding: 0;
     display: grid;
     gap: 0;
-    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
-    border-radius: clamp(1rem, 1.5vw, 1.5rem);
-    background: var(--sl-surface-elevated, #f6f7ed);
-    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
-    overflow: hidden;
 }
 
 .item {
@@ -107,10 +92,6 @@
     border-block-end: none;
 }
 
-.trigger:hover {
-    background: var(--sl-surface-secondary, #f0f1e2);
-}
-
 .trigger[data-active="true"] {
     position: relative;
     background: var(--sl-surface-primary, #e6e8d1);
@@ -129,8 +110,8 @@
 }
 
 .trigger:focus-visible {
-    outline: 2px solid var(--sl-focus-ring-color, rgba(45, 107, 79, 0.3));
-    outline-offset: -2px;
+    outline: 3px solid var(--sl-focus-ring-color, rgba(45, 107, 79, 0.3));
+    outline-offset: 3px;
 }
 
 .triggerNumber {
@@ -213,7 +194,8 @@
     .panel {
         grid-column: 2;
         grid-row: 1 / -1;
-        align-self: stretch;
+        align-self: start;
+        min-block-size: 0;
         justify-content: flex-start;
         border-block-end: none;
         border-inline-start: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
@@ -221,16 +203,13 @@
     }
 }
 
+@media (hover: hover) and (pointer: fine) {
+    .trigger:hover {
+        background: var(--sl-surface-secondary, #f0f1e2);
+    }
+}
+
 @media (max-width: 640px) {
-    .block {
-        padding-block: 1.5rem;
-    }
-
-    .sectionHead {
-        padding: 1.35rem;
-        margin-block-end: 1.5rem;
-    }
-
     .sectionTitle {
         font-size: clamp(1.35rem, 1.1rem + 4vw, 1.7rem);
     }

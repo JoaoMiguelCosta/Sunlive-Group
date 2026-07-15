@@ -2,6 +2,7 @@ const logisticsSolutions = {
   id: "logistica",
 
   operationalHero: {
+    eyebrow: "SOLUÇÕES COORDENADAS",
     title: "Logística Integrada para Viagens em Grupo",
     lead: "Soluções de viagem coordenadas para turismo, equipas desportivas e grupos empresariais.",
     supportingText:
@@ -40,10 +41,6 @@ const logisticsSolutions = {
   ui: {
     sectionAriaLabel: "Soluções integradas de logística",
     servicesAriaLabel: "Serviços de logística e apoio à viagem",
-    openDetailsLabel: "Abrir detalhes de",
-    closeDetailsLabel: "Fechar detalhes de",
-    expandLabel: "Ver detalhes",
-    collapseLabel: "Recolher",
     includesLabel: "Inclui:",
   },
 

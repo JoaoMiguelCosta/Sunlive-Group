@@ -175,3 +175,16 @@
         text-wrap: balance;
     }
 }
+
+/*
+ * Ajuste apenas para os títulos dos cartões de Logística: em desktop, um
+ * dos três títulos ocupa duas linhas enquanto os outros ocupam uma, o que
+ * desalinha o início das descrições mesmo com os cartões já com a mesma
+ * altura. Reserva-se a altura de 2 linhas (line-height: 1.2) só para esta
+ * instância.
+ */
+@media (min-width: 1025px) {
+    .root[data-section="logistics-overview"] .itemTitle {
+        min-block-size: 2.4em;
+    }
+}
