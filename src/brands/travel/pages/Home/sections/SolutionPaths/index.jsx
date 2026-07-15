@@ -25,7 +25,7 @@ export default function SolutionPathsSection() {
               ) : null}
 
               {showcase?.title ? (
-                <h2 className={styles.title}>{showcase.title}</h2>
+                <h1 className={styles.title}>{showcase.title}</h1>
               ) : null}
 
               {showcase?.description ? (
