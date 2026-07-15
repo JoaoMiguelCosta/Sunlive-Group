@@ -12,7 +12,6 @@ const partnersActionPanel = {
     label: "Contacte-nos",
     href: TRAVEL_PAGE_PATHS.contacts,
     ariaLabel: "Contactar a Sunlive Travel sobre hotéis e parceiros",
-    iconKey: "phone",
   },
 };
 

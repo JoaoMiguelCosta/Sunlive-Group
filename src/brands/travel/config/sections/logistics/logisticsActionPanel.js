@@ -12,7 +12,6 @@ const logisticsActionPanel = {
     label: "Solicitar um orçamento",
     href: TRAVEL_PAGE_PATHS.contacts,
     ariaLabel: "Solicitar um orçamento de logística à Sunlive Travel",
-    iconKey: "phone",
   },
 };
 

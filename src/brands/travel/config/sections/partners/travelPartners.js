@@ -48,8 +48,6 @@ const travelPartners = {
         src: vagoImg,
         alt: "Logótipo Vago Viagens",
       },
-      imageFit: "cover",
-      imagePosition: "center center",
     },
     {
       key: "portugalissimo",
@@ -64,8 +62,6 @@ const travelPartners = {
         src: portugalissimoImg,
         alt: "Logótipo Portugalíssimo",
       },
-      imageFit: "contain",
-      imagePosition: "center",
     },
   ],
 };

@@ -12,7 +12,6 @@ const destinationsActionPanel = {
     label: "Solicitar uma proposta",
     href: TRAVEL_PAGE_PATHS.contacts,
     ariaLabel: "Pedir proposta de viagem à Sunlive Travel",
-    iconKey: "phone",
   },
 };
 
