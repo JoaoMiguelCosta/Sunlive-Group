@@ -46,13 +46,9 @@
         background 0.18s ease;
 }
 
-.link:hover,
 .link:focus-visible {
-    transform: translateY(-2px);
-    border-color: var(--sl-border-strong, rgba(30, 46, 36, 0.28));
-    background: var(--sl-surface-elevated, #f6f7ed);
-    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
-    outline: none;
+    outline: 3px solid var(--sl-focus-ring-color, rgba(45, 107, 79, 0.3));
+    outline-offset: 3px;
 }
 
 .iconWrap {
@@ -110,10 +106,18 @@
         opacity 0.18s ease;
 }
 
-.link:hover .chevron,
-.link:focus-visible .chevron {
-    transform: translateX(2px) rotate(-45deg);
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+    .link:hover {
+        transform: translateY(-2px);
+        border-color: var(--sl-border-strong, rgba(30, 46, 36, 0.28));
+        background: var(--sl-surface-elevated, #f6f7ed);
+        box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
+    }
+
+    .link:hover .chevron {
+        transform: translateX(2px) rotate(-45deg);
+        opacity: 1;
+    }
 }
 
 @media (max-width: 980px) {
@@ -188,12 +192,7 @@
     }
 
     .link:hover,
-    .link:focus-visible {
+    .link:hover .chevron {
         transform: none;
-    }
-
-    .link:hover .chevron,
-    .link:focus-visible .chevron {
-        transform: rotate(-45deg);
     }
 }
