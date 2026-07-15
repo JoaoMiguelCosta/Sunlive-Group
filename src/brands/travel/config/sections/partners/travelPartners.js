@@ -38,6 +38,7 @@ const travelPartners = {
     {
       key: "vago",
       anchorId: "parceiros-viagens-vago",
+      href: "https://vagoviagens.pt/",
       type: "Parceiro de mobilidade",
       name: "Vago Viagens",
       specialty: "Transporte turístico",
@@ -53,6 +54,7 @@ const travelPartners = {
     {
       key: "portugalissimo",
       anchorId: "parceiros-viagens-portugalissimo",
+      href: "https://www.portugalissimmo.com/",
       type: "Parceiro local",
       name: "Portugalíssimo",
       specialty: "Contexto local e território",

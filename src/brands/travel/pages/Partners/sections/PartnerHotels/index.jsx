@@ -1,7 +1,7 @@
 import partners from "../../../../config/pages/partners.js";
 
 import PartnerHotelsHero from "./PartnerHotelsHero.jsx";
-import PartnerHotelsGrid from "./PartnerHotelsGrid.jsx";
+import TravelCollectionSection from "../../../../shared/ui/TravelCollectionSection/TravelCollectionSection.jsx";
 
 import styles from "./PartnerHotelsSection.module.css";
 
@@ -28,7 +28,13 @@ export default function PartnerHotelsSection() {
       <PartnerHotelsHero hero={hero} />
 
       <div className={styles.inner}>
-        <PartnerHotelsGrid collection={collection} hotels={hotels} />
+        <TravelCollectionSection
+          eyebrow={collection?.eyebrow}
+          title={collection?.title}
+          description={collection?.description}
+          items={hotels}
+          sectionKey="partner-hotels"
+        />
       </div>
     </section>
   );

@@ -13,3 +13,14 @@
     position: relative;
     z-index: 1;
 }
+
+/*
+ * useSmartAnchorNav foca programaticamente o alvo de um hash (header/footer),
+ * atribuindo tabindex="-1" quando o elemento não é nativamente focável. Isso
+ * não deve mostrar o outline nativo de :focus — o indicador de foco por
+ * teclado (Tab) em elementos reais permanece intacto, porque este seletor só
+ * atinge tabindex="-1".
+ */
+.shell [tabindex="-1"]:focus {
+    outline: none;
+}

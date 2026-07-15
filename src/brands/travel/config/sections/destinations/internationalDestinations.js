@@ -8,70 +8,70 @@ const internationalDestinations = {
   id: "destinos-internacionais",
   ariaLabel: "Viagens internacionais",
   title: "Viagens internacionais",
-  indicator: "5 destinos selecionados",
-  intro:
+  eyebrow: "5 destinos selecionados",
+  description:
     "Ampliamos os seus horizontes com destinos internacionais escolhidos pelo seu impacto cultural, beleza e facilidade logística.",
 
   destinations: [
     {
       key: "malta",
       anchorId: "destinos-internacionais-malta",
-      city: "Malta",
+      title: "Malta",
       description:
         "Uma encantadora ilha mediterrânica com belas praias, cidades históricas antigas e um clima excelente durante todo o ano.",
-      picture: {
+      image: {
         src: maltaImg,
         alt: "Vista de Valeta, Malta",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "qatar",
       anchorId: "destinos-internacionais-qatar",
-      city: "Catar",
+      title: "Catar",
       description:
         "Uma mistura impressionante de arquitetura ultramoderna e tradição profunda, mesmo no coração do Golfo.",
-      picture: {
+      image: {
         src: qatarImg,
         alt: "Skyline de Doha, Catar",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "saudi-arabia",
       anchorId: "destinos-internacionais-saudi-arabia",
-      city: "Arábia Saudita",
+      title: "Arábia Saudita",
       description:
         "Um destino de grande escala onde cidades modernas em expansão se encontram com paisagens desérticas antigas e um rico património.",
-      picture: {
+      image: {
         src: saudiImg,
         alt: "Arquitetura e arranha-céus na Arábia Saudita",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "kuwait",
       anchorId: "destinos-internacionais-kuwait",
-      city: "Kuwait",
+      title: "Kuwait",
       description:
         "Um destino com forte identidade regional, mercados tradicionais vibrantes e áreas urbanas modernas.",
-      picture: {
+      image: {
         src: kuwaitImg,
         alt: "Skyline noturno de Kuwait City",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "brazil",
       anchorId: "destinos-internacionais-brazil",
-      city: "Brasil",
+      title: "Brasil",
       description:
         "Diversidade pura que combina praias mundialmente famosas, natureza de tirar o fôlego e uma energia cultural inesquecível.",
-      picture: {
+      image: {
         src: brazilImg,
         alt: "Pão de Açúcar e Baía de Guanabara, Rio de Janeiro",
+        position: "center",
       },
-      imagePosition: "center",
     },
   ],
 };

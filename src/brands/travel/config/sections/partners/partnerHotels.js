@@ -41,74 +41,79 @@ const partnerHotels = {
   collection: {
     ariaLabel: "Hotéis em destaque",
     title: "Hotéis em destaque",
-    indicator: "5 locais selecionados",
+    eyebrow: "5 locais selecionados",
   },
 
   hotels: [
     {
       key: "curia",
       anchorId: "parceiros-hoteis-curia",
-      city: "Hotel Termas da Curia",
-      location: "Curia",
+      href: "https://www.termasdacuria.com/",
+      title: "Hotel Termas da Curia",
+      meta: "Curia",
       description:
         "Rodeado por uma natureza tranquila e jardins termais. Ideal para estadias tranquilas, relaxantes e confortáveis.",
-      picture: {
+      image: {
         src: curiaImg,
         alt: "Fachada do Hotel Termas da Curia",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "estancia",
       anchorId: "parceiros-hoteis-estancia",
-      city: "Residencial Estância",
-      location: "Oliveira do Bairro",
+      href: "https://www.facebook.com/residencial.estancia/",
+      title: "Residencial Estância",
+      meta: "Oliveira do Bairro",
       description:
         "Uma opção tranquila e familiar para grupos que valorizam a simplicidade, o conforto e uma excelente localização central.",
-      picture: {
+      image: {
         src: estanciaImg,
         alt: "Residencial Estância em Oliveira do Bairro",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "pateira",
       anchorId: "parceiros-hoteis-pateira",
-      city: "Estalagem da Pateira",
-      location: "Fermentelos",
+      href: "https://www.wotsoul.com/nossos-hoteis/wot-soul-pateira-soul/",
+      title: "Estalagem da Pateira",
+      meta: "Fermentelos",
       description:
         "Situada mesmo junto à Lagoa da Pateira, oferecendo vistas panorâmicas e uma estadia tranquila em contacto direto com a natureza.",
-      picture: {
+      image: {
         src: pateiraImg,
         alt: "Vista para a lagoa e Estalagem da Pateira",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "gold",
       anchorId: "parceiros-hoteis-gold",
-      city: "In Gold Hotel & Spa",
-      location: "Águeda",
+      href: "https://www.ingoldhotel.pt/",
+      title: "In Gold Hotel & Spa",
+      meta: "Águeda",
       description:
         "Um hotel moderno e contemporâneo com spa, piscina e restaurante. Perfeito tanto para grupos de lazer como para viagens de negócios.",
-      picture: {
+      image: {
         src: goldImg,
         alt: "In Gold Hotel & Spa em Águeda",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "grand",
       anchorId: "parceiros-hoteis-grand",
-      city: "Grande Hotel de Luso",
-      location: "Luso",
+      href: "https://www.hoteluso.com/",
+      title: "Grande Hotel de Luso",
+      meta: "Luso",
       description:
         "Um hotel emblemático junto às Termas de Luso, com charme tradicional, um spa e experiências de bem-estar de excelência.",
-      picture: {
+      image: {
         src: grandImg,
         alt: "Grande Hotel de Luso à noite",
+        position: "center",
       },
-      imagePosition: "center",
     },
   ],
 };

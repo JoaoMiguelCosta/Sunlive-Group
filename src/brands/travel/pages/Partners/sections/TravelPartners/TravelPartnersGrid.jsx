@@ -15,46 +15,58 @@ export default function TravelPartnersGrid({ network = {}, partners = [] }) {
 
       {safePartners.length > 0 ? (
         <ul className={styles.grid}>
-          {safePartners.map((partner) => (
-            <li
-              key={partner.key}
-              id={partner.anchorId}
-              className={styles.card}
-            >
-              {partner?.picture?.src ? (
-                <div className={styles.mediaWrap}>
-                  <img
-                    src={partner.picture.src}
-                    alt={partner?.picture?.alt ?? partner.name}
-                    className={styles.media}
-                    style={{
-                      objectFit: partner?.imageFit ?? "contain",
-                      objectPosition: partner?.imagePosition ?? "center",
-                    }}
-                    loading="lazy"
-                  />
-                </div>
-              ) : null}
+          {safePartners.map((partner) => {
+            const CardTag = partner?.href ? "a" : "div";
+            const cardLinkProps = partner?.href
+              ? {
+                  href: partner.href,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                }
+              : {};
 
-              <div className={styles.cardBody}>
-                {partner?.type ? (
-                  <p className={styles.cardType}>{partner.type}</p>
-                ) : null}
+            return (
+              <li
+                key={partner.key}
+                id={partner.anchorId}
+                className={styles.item}
+              >
+                <CardTag className={styles.card} {...cardLinkProps}>
+                  {partner?.picture?.src ? (
+                    <div className={styles.mediaWrap}>
+                      <img
+                        src={partner.picture.src}
+                        alt={partner?.picture?.alt ?? partner.name}
+                        className={styles.media}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  ) : null}
 
-                <h3 className={styles.cardTitle}>{partner.name}</h3>
+                  <div className={styles.cardBody}>
+                    {partner?.type ? (
+                      <p className={styles.cardType}>{partner.type}</p>
+                    ) : null}
 
-                {partner?.specialty ? (
-                  <p className={styles.cardSpecialty}>{partner.specialty}</p>
-                ) : null}
+                    <h3 className={styles.cardTitle}>{partner.name}</h3>
 
-                {partner?.description ? (
-                  <p className={styles.cardDescription}>
-                    {partner.description}
-                  </p>
-                ) : null}
-              </div>
-            </li>
-          ))}
+                    {partner?.specialty ? (
+                      <p className={styles.cardSpecialty}>
+                        {partner.specialty}
+                      </p>
+                    ) : null}
+
+                    {partner?.description ? (
+                      <p className={styles.cardDescription}>
+                        {partner.description}
+                      </p>
+                    ) : null}
+                  </div>
+                </CardTag>
+              </li>
+            );
+          })}
         </ul>
       ) : null}
     </div>
