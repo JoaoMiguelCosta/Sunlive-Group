@@ -37,7 +37,6 @@ const testimonialsAndMetrics = {
     nextLabel: "Próximo testemunho",
     dotsLabel: "Selecionar testemunho",
     regionLabel: "Testemunhos — usar setas esquerda e direita para navegar",
-    autoplayMs: 3000,
   },
 
   testimonials: [

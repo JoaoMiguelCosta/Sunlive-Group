@@ -1,8 +1,8 @@
 import testimonialsPage from "../../../../config/pages/testimonials.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
-import TravelIntroPanel from "../../../../shared/ui/TravelIntroPanel/TravelIntroPanel.jsx";
+import TravelTrustPanel from "../../../../shared/ui/TravelTrustPanel/TravelTrustPanel.jsx";
 
-import TestimonialsGrid from "./TestimonialsGrid.jsx";
+import TestimonialsCarousel from "./TestimonialsCarousel.jsx";
 
 import styles from "./TestimonialsAndMetricsSection.module.css";
 
@@ -30,19 +30,18 @@ export default function TestimonialsAndMetricsSection() {
       data-section="testimonials-and-metrics"
     >
       <div className={styles.inner}>
-        <TravelIntroPanel
-          as="header"
+        <TravelTrustPanel
           titleAs="h1"
           eyebrow={headline?.eyebrow}
           title={headline?.title}
           lead={headline?.lead}
-          supportingText={headline?.description}
+          description={headline?.description}
           stats={headline?.stats}
-          statsAriaLabel={headline?.ui?.statsAriaLabel ?? "Destaques da secção"}
+          statsAriaLabel={headline?.ui?.statsAriaLabel}
         />
 
         <div className={styles.gridBlock}>
-          <TestimonialsGrid
+          <TestimonialsCarousel
             spotlight={spotlight}
             testimonials={testimonials}
             icons={icons}
