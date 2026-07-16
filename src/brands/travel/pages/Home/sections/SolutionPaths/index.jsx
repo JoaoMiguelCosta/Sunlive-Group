@@ -1,3 +1,5 @@
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
+
 import styles from "./SolutionPathsSection.module.css";
 import home from "../../../../config/pages/home.js";
 
@@ -19,7 +21,7 @@ export default function SolutionPathsSection() {
       <div className={styles.inner}>
         <div className={styles.surface}>
           <div className={styles.introPanel}>
-            <header className={styles.header}>
+            <ScrollReveal as="header" className={styles.header}>
               {showcase?.eyebrow ? (
                 <p className={styles.eyebrow}>{showcase.eyebrow}</p>
               ) : null}
@@ -31,7 +33,7 @@ export default function SolutionPathsSection() {
               {showcase?.description ? (
                 <p className={styles.description}>{showcase.description}</p>
               ) : null}
-            </header>
+            </ScrollReveal>
           </div>
 
           {paths.length ? (
@@ -40,37 +42,42 @@ export default function SolutionPathsSection() {
                 className={styles.grid}
                 aria-label={showcase?.cardsAriaLabel ?? "Soluções disponíveis"}
               >
-                {paths.map((item) => (
+                {paths.map((item, index) => (
                   <article key={item.key} className={styles.card}>
-                    <div className={styles.cardTop}>
-                      {item?.eyebrow ? (
-                        <p className={styles.cardEyebrow}>{item.eyebrow}</p>
-                      ) : null}
+                    <ScrollReveal
+                      className={styles.cardContent}
+                      staggerIndex={index}
+                    >
+                      <div className={styles.cardTop}>
+                        {item?.eyebrow ? (
+                          <p className={styles.cardEyebrow}>{item.eyebrow}</p>
+                        ) : null}
 
-                      {item?.title ? (
-                        <h3 className={styles.cardTitle}>{item.title}</h3>
-                      ) : null}
+                        {item?.title ? (
+                          <h3 className={styles.cardTitle}>{item.title}</h3>
+                        ) : null}
 
-                      {item?.description ? (
-                        <p className={styles.cardDescription}>
-                          {item.description}
-                        </p>
-                      ) : null}
-                    </div>
+                        {item?.description ? (
+                          <p className={styles.cardDescription}>
+                            {item.description}
+                          </p>
+                        ) : null}
+                      </div>
 
-                    {item?.href && item?.ctaLabel ? (
-                      <a
-                        href={item.href}
-                        className={styles.cardLink}
-                        aria-label={`${item.ctaLabel} — ${
-                          item.title ?? "solução"
-                        }`}
-                      >
-                        <span className={styles.cardLinkLabel}>
-                          {item.ctaLabel}
-                        </span>
-                      </a>
-                    ) : null}
+                      {item?.href && item?.ctaLabel ? (
+                        <a
+                          href={item.href}
+                          className={styles.cardLink}
+                          aria-label={`${item.ctaLabel} — ${
+                            item.title ?? "solução"
+                          }`}
+                        >
+                          <span className={styles.cardLinkLabel}>
+                            {item.ctaLabel}
+                          </span>
+                        </a>
+                      ) : null}
+                    </ScrollReveal>
                   </article>
                 ))}
               </div>
