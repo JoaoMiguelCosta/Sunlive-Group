@@ -4,6 +4,7 @@ import {
   isValidText,
   isValidObject,
 } from "../../../../shared/utils/contentGuards.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 const overview = homePage.sections.overview;
 
 function getValidDivisions(items) {
@@ -47,7 +48,7 @@ function CardContent({ item, fallbackLabel }) {
   );
 }
 
-function DivisionCard({ item }) {
+function DivisionCard({ item, index }) {
   const label = getCardLabel(item);
   const isDisabled = Boolean(item.disabled) || !isValidText(item.href);
 
@@ -64,7 +65,9 @@ function DivisionCard({ item }) {
           Brevemente
         </span>
 
-        <CardContent item={item} fallbackLabel="Sunlive Group" />
+        <ScrollReveal staggerIndex={index} className={styles.cardContent}>
+          <CardContent item={item} fallbackLabel="Sunlive Group" />
+        </ScrollReveal>
       </div>
     );
   }
@@ -77,7 +80,9 @@ function DivisionCard({ item }) {
       data-state="active"
       aria-label={label}
     >
-      <CardContent item={item} fallbackLabel="Sunlive Group" />
+      <ScrollReveal staggerIndex={index} className={styles.cardContent}>
+        <CardContent item={item} fallbackLabel="Sunlive Group" />
+      </ScrollReveal>
     </a>
   );
 }
@@ -98,8 +103,8 @@ export default function DivisionsPanel() {
       <div className={styles.panel}>
         {divisions.length ? (
           <div className={styles.row}>
-            {divisions.map((division) => (
-              <DivisionCard key={division.key} item={division} />
+            {divisions.map((division, index) => (
+              <DivisionCard key={division.key} item={division} index={index} />
             ))}
           </div>
         ) : null}
@@ -113,7 +118,9 @@ export default function DivisionsPanel() {
               data-state="active"
               aria-label={homeLabel}
             >
-              <CardContent item={home} fallbackLabel="Our Home" />
+              <ScrollReveal className={styles.cardContent}>
+                <CardContent item={home} fallbackLabel="Our Home" />
+              </ScrollReveal>
             </a>
           </div>
         ) : null}

@@ -4,6 +4,7 @@ import homePage from "../../../../config/pages/home.js";
 const presence = homePage.sections.presence;
 import { IMG_COMMON } from "../../../../../../shared/config/index.js";
 import { isValidText } from "../../../../shared/utils/contentGuards.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 
 function isValidCountry(country) {
   return (
@@ -28,8 +29,13 @@ export default function GlobalPresencePanel() {
   return (
     <div className={styles.panel} role="group" aria-label="Presença Global">
       <ul className={styles.grid} aria-label="Países">
-        {countries.map(({ key, label, src }) => (
-          <li key={key} className={styles.item}>
+        {countries.map(({ key, label, src }, index) => (
+          <ScrollReveal
+            key={key}
+            as="li"
+            className={styles.item}
+            staggerIndex={index}
+          >
             <span className={styles.cardInner}>
               <img
                 src={src}
@@ -41,7 +47,7 @@ export default function GlobalPresencePanel() {
                 draggable="false"
               />
             </span>
-          </li>
+          </ScrollReveal>
         ))}
       </ul>
     </div>
