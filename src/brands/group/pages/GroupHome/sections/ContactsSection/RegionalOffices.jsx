@@ -41,7 +41,7 @@ export default function RegionalOffices({ items = [] }) {
 
   return (
     <div className={styles.grid} role="list" data-count={validItems.length}>
-      {validItems.map((item) => (
+      {validItems.map((item, index) => (
         <OfficeItem
           key={item.key}
           item={item}
@@ -50,6 +50,7 @@ export default function RegionalOffices({ items = [] }) {
           toggle={() => toggle(item.key)}
           MailIcon={MailIcon}
           PhoneIcon={PhoneIcon}
+          staggerIndex={index}
         />
       ))}
     </div>

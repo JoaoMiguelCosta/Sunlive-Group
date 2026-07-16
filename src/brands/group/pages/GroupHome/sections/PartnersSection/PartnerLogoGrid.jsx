@@ -1,5 +1,6 @@
 import styles from "./PartnerLogoGrid.module.css";
 import PartnerLogoCard from "./PartnerLogoCard.jsx";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import {
   isValidText,
   isValidObject,
@@ -49,10 +50,16 @@ export default function PartnerLogoGrid({
         role="list"
         aria-label={ariaLabel}
       >
-        {validItems.map((item) => (
-          <div key={item.key} className={styles.cell} role="listitem">
+        {validItems.map((item, index) => (
+          <ScrollReveal
+            key={item.key}
+            as="div"
+            role="listitem"
+            className={styles.cell}
+            staggerIndex={index}
+          >
             <PartnerLogoCard {...item} />
-          </div>
+          </ScrollReveal>
         ))}
       </div>
     </div>

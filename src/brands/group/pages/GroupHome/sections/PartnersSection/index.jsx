@@ -93,11 +93,13 @@ export default function PartnersSection() {
             aria-labelledby={triggerId}
             className={styles.panel}
           >
-            <PartnerCategorySelector
-              items={categories}
-              activeKey={activeKey}
-              onSelect={handleSelectCategory}
-            />
+            <ScrollReveal as="div">
+              <PartnerCategorySelector
+                items={categories}
+                activeKey={activeKey}
+                onSelect={handleSelectCategory}
+              />
+            </ScrollReveal>
 
             {activeCategory && (
               <div className={styles.gridWrap}>

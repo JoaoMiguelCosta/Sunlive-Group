@@ -2,6 +2,7 @@ import styles from "./GroupHub.module.css";
 import disclosureStyles from "./ContactDisclosure.module.css";
 import OfficeCard from "./OfficeCard.jsx";
 
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
 import {
@@ -44,7 +45,11 @@ export default function GroupHub({ data }) {
   if (!hasData) return null;
 
   return (
-    <div className={`${styles.wrap} ${disclosureStyles.featured}`} id={anchorId}>
+    <ScrollReveal
+      as="div"
+      className={`${styles.wrap} ${disclosureStyles.featured}`}
+      id={anchorId}
+    >
       <button
         type="button"
         className={disclosureStyles.pill}
@@ -70,6 +75,6 @@ export default function GroupHub({ data }) {
           PhoneIcon={PhoneIcon}
         />
       ) : null}
-    </div>
+    </ScrollReveal>
   );
 }

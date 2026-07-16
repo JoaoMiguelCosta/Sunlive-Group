@@ -4,6 +4,7 @@ import styles from "./ContactsGrid.module.css";
 import disclosureStyles from "./ContactDisclosure.module.css";
 import OfficeCard from "./OfficeCard.jsx";
 
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import { isValidText } from "../../../../shared/utils/contentGuards.js";
 
 import { GROUP_CONTACTS } from "../../../../config/core/contacts.js";
@@ -61,18 +62,20 @@ export default function BusinessUnits({ items = [] }) {
 
   return (
     <div className={styles.grid} role="list" data-count={orderedItems.length}>
-      {orderedItems.map((item) => {
+      {orderedItems.map((item, index) => {
         const open = isOpen(item.key);
         const anchorId = item.anchorId;
         const panelId = `bu-${item.key}`;
         const telHref = getTelHref(item.phone);
 
         return (
-          <div
+          <ScrollReveal
             key={item.key}
+            as="div"
             role="listitem"
             className={styles.item}
             id={anchorId}
+            staggerIndex={index}
           >
             <button
               type="button"
@@ -99,7 +102,7 @@ export default function BusinessUnits({ items = [] }) {
                 PhoneIcon={PhoneIcon}
               />
             ) : null}
-          </div>
+          </ScrollReveal>
         );
       })}
     </div>
