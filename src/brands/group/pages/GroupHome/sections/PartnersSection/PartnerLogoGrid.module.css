@@ -1,0 +1,454 @@
+/* ============================================================
+   PartnerLogoGrid — Sunlive Group / Light Forest
+
+   Cards inversos para garantir contraste dos logótipos
+   claros, brancos e metálicos.
+
+   Versão estática:
+   - sem sombras;
+   - sem animações;
+   - sem brilho automático;
+   - sem movimento no hover;
+   - sem alteração da cor do texto no hover.
+   ============================================================ */
+
+.wrap {
+    --logo-grid-gap-x:
+        clamp(1.35rem, 4vw, 4.25rem);
+
+    --logo-grid-gap-y:
+        clamp(1.55rem, 3.6vw, 3.25rem);
+
+    --logo-card-size:
+        clamp(12.75rem, 15.6vw, 17.35rem);
+
+    --logo-pad:
+        clamp(0.78rem, 1.25vw, 1.05rem);
+
+    --logo-crop: 2%;
+
+    position: relative;
+    isolation: isolate;
+
+    display: grid;
+    row-gap:
+        clamp(1.35rem, 2.4vw, 2.1rem);
+
+    inline-size: 100%;
+    min-inline-size: 0;
+
+    box-sizing: border-box;
+
+    padding-inline:
+        clamp(0.75rem, 3vw, 2.25rem);
+
+    overflow: visible;
+
+    color: var(--group-text-primary);
+    background: transparent;
+}
+
+
+/* ============================================================
+   Grid
+   ============================================================ */
+
+.grid {
+    display: grid;
+
+    /*
+     * --cols-max deve receber um número inteiro válido,
+     * normalmente entre 1 e 4.
+     */
+    grid-template-columns:
+        repeat(var(--cols-max, 4), minmax(0, 1fr));
+
+    align-items: start;
+    justify-items: center;
+
+    column-gap:
+        var(--logo-grid-gap-x);
+
+    row-gap:
+        var(--logo-grid-gap-y);
+
+    inline-size: 100%;
+    min-inline-size: 0;
+
+    box-sizing: border-box;
+
+    padding-block:
+        clamp(1rem, 2.4vw, 1.85rem);
+
+    padding-inline:
+        clamp(0.6rem, 2vw, 1rem);
+
+    background: transparent;
+}
+
+.cell {
+    display: grid;
+    place-items: center;
+
+    min-inline-size: 0;
+}
+
+
+/* ============================================================
+   Link and card
+   ============================================================ */
+
+.link {
+    display: inline-block;
+
+    color: inherit;
+    text-decoration: none;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.card {
+    display: grid;
+    justify-items: center;
+    gap:
+        clamp(0.72rem, 1.35vw, 1rem);
+
+    inline-size:
+        min(100%, var(--logo-card-size));
+
+    min-inline-size: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   Logo frame
+   ============================================================ */
+
+.logoFrame {
+    position: relative;
+    isolation: isolate;
+
+    display: grid;
+    place-items: center;
+
+    inline-size:
+        min(100%, var(--logo-card-size));
+
+    block-size: auto;
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+    padding: var(--logo-pad);
+
+    border:
+        1px solid var(--group-card-border-inverse);
+
+    border-radius:
+        clamp(0.9rem, 1.25vw, 1.2rem);
+
+    background-color:
+        var(--group-card-background-inverse);
+
+    box-shadow: none;
+    transform: none;
+}
+
+
+/* ============================================================
+   Logo asset
+   ============================================================ */
+
+.logo {
+    position: relative;
+    z-index: 1;
+
+    display: block;
+
+    inline-size: 100%;
+    block-size: 100%;
+
+    object-fit: contain;
+
+    clip-path:
+        inset(var(--logo-crop) round 10px);
+
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+
+    /*
+     * Apenas correção cromática.
+     * Não existe drop-shadow.
+     */
+    filter:
+        saturate(1.06) contrast(1.08) brightness(1.06);
+
+    transform: none;
+}
+
+
+/* ============================================================
+   Caption
+   ============================================================ */
+
+.caption {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    inline-size:
+        min(100%,
+            calc(var(--logo-card-size) + 1.5rem));
+
+    min-block-size:
+        clamp(2.65rem, 3.4vw, 3.25rem);
+
+    margin: 0;
+
+    color:
+        var(--group-text-secondary);
+
+    font-family:
+        var(--sl-ff-ui,
+            Inter,
+            system-ui,
+            sans-serif);
+
+    font-size:
+        clamp(0.9rem, 0.76rem + 0.32vw, 1.08rem);
+
+    font-weight:
+        var(--group-font-weight-semibold);
+
+    line-height: 1.24;
+    letter-spacing: -0.01em;
+
+    text-align: center;
+
+    text-shadow: none;
+}
+
+
+/* ============================================================
+   Hover
+   Sem movimento, sombra ou alteração da cor do texto.
+   ============================================================ */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .link:hover .logoFrame,
+    .card:hover .logoFrame {
+        border-color:
+            var(--group-border-on-dark-default);
+
+        background-color:
+            var(--group-card-background-inverse-hover);
+    }
+}
+
+
+/* ============================================================
+   Focus
+   ============================================================ */
+
+.link:focus {
+    outline: none;
+}
+
+.link:focus-visible {
+    outline:
+        2px solid var(--group-focus-outline);
+
+    outline-offset: 4px;
+
+    border-radius:
+        clamp(0.9rem, 1.25vw, 1.2rem);
+}
+
+.link:focus-visible .logoFrame {
+    border-color:
+        var(--group-accent-fresh-on-dark);
+
+    background-color:
+        var(--group-card-background-inverse-hover);
+}
+
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (min-width: 1440px) {
+    .wrap {
+        --logo-card-size:
+            clamp(14rem, 14.8vw, 18.25rem);
+
+        --logo-grid-gap-x:
+            clamp(2.5rem, 4.5vw, 5.25rem);
+
+        --logo-grid-gap-y:
+            clamp(2rem, 3.7vw, 3.5rem);
+    }
+}
+
+@media (max-width: 1279.98px) {
+    .wrap {
+        --logo-card-size:
+            clamp(11.75rem, 17vw, 15rem);
+
+        --logo-grid-gap-x:
+            clamp(1.25rem, 3.4vw, 3.1rem);
+
+        --logo-grid-gap-y:
+            clamp(1.45rem, 3vw, 2.5rem);
+    }
+}
+
+@media (max-width: 1023.98px) {
+    .wrap {
+        --logo-card-size:
+            clamp(10.5rem, 21vw, 13.5rem);
+
+        --logo-grid-gap-x:
+            clamp(1rem, 2.5vw, 2rem);
+
+        --logo-grid-gap-y:
+            clamp(1.35rem, 2.8vw, 2.1rem);
+    }
+
+    .grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767.98px) {
+    .wrap {
+        --logo-card-size:
+            clamp(10rem, 35vw, 12.75rem);
+
+        --logo-grid-gap-x:
+            clamp(0.85rem, 3vw, 1.35rem);
+
+        --logo-grid-gap-y:
+            clamp(1.15rem, 4vw, 1.75rem);
+
+        row-gap:
+            clamp(1rem, 3.4vw, 1.45rem);
+
+        padding-inline:
+            clamp(0.7rem, 4vw, 1.25rem);
+    }
+
+    .grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        padding-inline: 0;
+    }
+
+    .caption {
+        font-size:
+            clamp(0.84rem, 2.4vw, 0.96rem);
+    }
+}
+
+@media (max-width: 560px) {
+    .wrap {
+        --logo-card-size:
+            clamp(9.5rem, 42vw, 12rem);
+
+        --logo-grid-gap-x: 0.9rem;
+        --logo-grid-gap-y: 1.18rem;
+    }
+
+    .logoFrame {
+        border-radius: 0.85rem;
+    }
+
+    .caption {
+        min-block-size: 2.35rem;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .wrap {
+        --logo-card-size:
+            clamp(9.15rem, 43vw, 10.75rem);
+
+        --logo-grid-gap-x: 0.74rem;
+        --logo-grid-gap-y: 1.05rem;
+        --logo-pad: 0.64rem;
+
+        padding-inline: 0.85rem;
+    }
+
+    .caption {
+        font-size: 0.8rem;
+        line-height: 1.2;
+    }
+}
+
+@media (max-width: 399.98px) {
+    .wrap {
+        --logo-card-size:
+            clamp(8.35rem, 42vw, 9.5rem);
+
+        --logo-grid-gap-x: 0.58rem;
+        --logo-grid-gap-y: 0.95rem;
+        --logo-pad: 0.56rem;
+
+        padding-inline: 0.65rem;
+    }
+
+    .caption {
+        min-block-size: 2.15rem;
+        font-size: 0.74rem;
+    }
+}
+
+@media (max-width: 359.98px) {
+    .wrap {
+        --logo-card-size:
+            clamp(7.75rem, 41vw, 8.75rem);
+
+        --logo-grid-gap-x: 0.48rem;
+    }
+
+    .caption {
+        font-size: 0.7rem;
+    }
+}
+
+
+/* ============================================================
+   Print
+   ============================================================ */
+
+@media print {
+    .wrap {
+        color: #111;
+        background: #fff;
+    }
+
+    .caption {
+        color: #111;
+        text-shadow: none;
+    }
+
+    .logoFrame {
+        border-color: #999;
+
+        background: #fff;
+
+        box-shadow: none;
+    }
+
+    .logo {
+        filter: none;
+    }
+}

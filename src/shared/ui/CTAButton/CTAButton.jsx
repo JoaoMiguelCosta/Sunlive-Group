@@ -19,7 +19,7 @@ const VARIANT_CLASS_MAP = {
   travel: "button--travel",
 };
 
-const VALID_TONES = new Set(["default", "strong", "soft"]);
+const VALID_TONES = new Set(["default", "strong", "soft", "lightForest"]);
 
 export default function CTAButton({
   cta,

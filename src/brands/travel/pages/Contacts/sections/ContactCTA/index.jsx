@@ -3,7 +3,7 @@ import contacts from "../../../../config/pages/contacts.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import { resolveTravelIcon } from "../../../../config/core/iconKeyMap.js";
 
-import ContactIntroPanel from "./ContactIntroPanel.jsx";
+import TravelTrustPanel from "../../../../shared/ui/TravelTrustPanel/TravelTrustPanel.jsx";
 import ContactSectionHeader from "./ContactSectionHeader.jsx";
 import QuoteRequestChecklist from "./QuoteRequestChecklist.jsx";
 import ContactChannels from "./ContactChannels.jsx";
@@ -18,7 +18,6 @@ function hasHeroContent(hero) {
       hero?.title ||
       hero?.lead ||
       hero?.supportingText ||
-      (Array.isArray(hero?.trustPoints) && hero.trustPoints.length > 0) ||
       (Array.isArray(hero?.stats) && hero.stats.length > 0),
   );
 }
@@ -67,7 +66,17 @@ export default function ContactCTASection() {
       data-section="contact-cta"
     >
       <div className={styles.inner}>
-        {hasHero ? <ContactIntroPanel hero={hero} titleAs="h1" /> : null}
+        {hasHero ? (
+          <TravelTrustPanel
+            eyebrow={hero?.eyebrow}
+            title={hero?.title}
+            lead={hero?.lead}
+            description={hero?.supportingText}
+            stats={hero?.stats}
+            statsAriaLabel={hero?.ui?.statsAriaLabel}
+            titleAs="h1"
+          />
+        ) : null}
 
         {hasChecklist || hasChannels ? (
           <div className={styles.contentGrid}>

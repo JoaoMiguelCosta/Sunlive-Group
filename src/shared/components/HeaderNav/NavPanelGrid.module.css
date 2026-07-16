@@ -1,0 +1,90 @@
+/* =========================================================
+   NavPanelGrid — conteúdo do painel geral (mega-menu).
+   Consome os tokens --hn-* já herdados de .inner (HeaderNav.module.css)
+   por via da árvore DOM — não redeclara nada, não é brand-específico.
+   ========================================================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1.1rem 1.5rem;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    min-inline-size: 0;
+}
+
+.columnTitle {
+    display: block;
+
+    padding-block-end: 0.5rem;
+
+    border-block-end: 1px solid var(--hn-border-default);
+
+    color: var(--hn-text);
+
+    font-family: var(--sl-ff-ui);
+    font-size: 0.94rem;
+    font-weight: var(--hn-weight-semibold);
+    letter-spacing: var(--hn-label-tracking);
+    text-decoration: none;
+
+    transition: color var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.columnTitle:hover {
+    color: var(--hn-accent);
+}
+
+.columnTitle:focus-visible {
+    outline: none;
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.columnTitle[data-active] {
+    color: var(--hn-accent);
+}
+
+.columnList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+
+    margin: 0.2rem 0 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.columnLink {
+    display: block;
+
+    padding-block: 0.38rem;
+    padding-inline: 0.4rem;
+
+    border-radius: var(--hn-radius-sm);
+
+    color: var(--hn-text);
+    background: transparent;
+
+    font-family: var(--sl-ff-ui);
+    font-size: 0.86rem;
+    font-weight: var(--hn-weight-medium);
+    line-height: 1.25;
+    text-decoration: none;
+
+    transition: background-color var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.columnLink:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.columnLink:focus-visible {
+    outline: none;
+    box-shadow: var(--hn-focus-shadow);
+}

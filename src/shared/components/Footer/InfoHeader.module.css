@@ -227,13 +227,13 @@
    ========================================================= */
 
 :global([data-brand="travel"]) .strip {
-    --info-accent: var(--travel-gold, #e0a72b);
-    --info-accent-bright: #f3c45f;
-    --info-border: rgb(79 195 247 / 0.2);
-    --info-border-strong: rgb(224 167 43 / 0.38);
-    --info-text-main: rgb(248 251 255 / 0.96);
-    --info-text-soft: rgb(224 235 246 / 0.82);
-    --info-text-muted: rgb(180 201 220 / 0.64);
+    --info-accent: var(--sl-footer-accent);
+    --info-accent-bright: var(--sl-footer-accent-strong);
+    --info-border: rgb(var(--sl-footer-border-rgb, 79 195 247) / 0.2);
+    --info-border-strong: rgb(var(--sl-footer-accent-rgb, 224 167 43) / 0.38);
+    --info-text-main: var(--sl-footer-text);
+    --info-text-soft: var(--sl-footer-text-soft);
+    --info-text-muted: var(--sl-footer-text-muted);
 
     isolation: isolate;
     overflow: hidden;
@@ -251,32 +251,24 @@
 }
 
 :global([data-brand="travel"]) .title {
-    color: var(--info-text-main);
+    color: var(--info-accent-bright);
     font-weight: 840;
     letter-spacing: -0.006em;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.48),
-        0 0.8rem 1.25rem rgb(0 0 0 / 0.28);
+    text-shadow: none;
 }
 
 :global([data-brand="travel"]) .icon {
-    inline-size: 24px;
-    block-size: 24px;
+    inline-size: var(--sl-footer-icon-size);
+    block-size: var(--sl-footer-icon-size);
 
-    border: 1px solid rgb(224 167 43 / 0.28);
+    border: 1px solid var(--info-border);
 
     color: var(--info-accent-bright);
 
-    background:
-        radial-gradient(circle at 30% 30%,
-            rgb(255 255 255 / 0.14) 0%,
-            transparent 58%),
-        rgb(7 21 37 / 0.58);
+    background: var(--sl-footer-chip-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.07),
-        0 0.46rem 1rem rgb(0 0 0 / 0.18);
+    box-shadow: var(--sl-footer-icon-shadow);
 }
 
 :global([data-brand="travel"]) .brandEmph,
@@ -289,20 +281,34 @@
     color: var(--info-text-soft);
 }
 
-:global([data-brand="travel"]) .subtleLink,
+:global([data-brand="travel"]) .subtleLink {
+    color: var(--info-accent-bright);
+    font-weight: 720;
+}
+
+:global([data-brand="travel"]) .subtleLink:hover,
+:global([data-brand="travel"]) .subtleLink:focus-visible {
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.42);
+    text-underline-offset: 0.18em;
+}
+
 :global([data-brand="travel"]) .textMuted {
     color: var(--info-text-muted);
     opacity: 1;
 }
 
-:global([data-brand="travel"]) .subtleLink:hover,
-:global([data-brand="travel"]) .link:hover {
-    color: var(--info-accent-bright);
-}
-
 :global([data-brand="travel"]) .link {
     color: var(--info-text-soft);
-    font-weight: 640;
+    font-weight: 650;
+}
+
+:global([data-brand="travel"]) .link:hover,
+:global([data-brand="travel"]) .link:focus-visible {
+    color: var(--info-accent-bright);
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.42);
+    text-underline-offset: 0.16em;
 }
 
 :global([data-brand="travel"]) .cIcon {
@@ -310,42 +316,50 @@
 }
 
 :global([data-brand="travel"]) .socialBtn {
-    inline-size: 34px;
-    block-size: 34px;
+    inline-size: var(--sl-footer-social-size);
+    block-size: var(--sl-footer-social-size);
 
-    border-color: rgb(224 167 43 / 0.3);
+    border: 1px solid var(--info-border);
 
     color: var(--info-text-main);
 
-    background:
-        radial-gradient(circle at 30% 30%,
-            rgb(255 255 255 / 0.12) 0%,
-            transparent 58%),
-        rgb(7 21 37 / 0.58);
+    background: var(--sl-footer-social-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.06),
-        0 0.48rem 1rem rgb(0 0 0 / 0.16);
+    box-shadow: var(--sl-footer-social-shadow);
 }
 
-:global([data-brand="travel"]) .socialBtn:hover,
+@media (hover: hover) and (pointer: fine) {
+    :global([data-brand="travel"]) .socialBtn:hover {
+        transform: translateY(-1px);
+
+        border-color: var(--info-border-strong);
+        color: var(--info-text-main);
+
+        background: var(--sl-footer-social-bg-hover);
+
+        box-shadow: var(--sl-footer-social-shadow-hover);
+    }
+}
+
+:global([data-brand="travel"]) .socialBtn:active {
+    transform: translateY(0);
+
+    border-color: var(--info-border);
+    background: var(--sl-footer-social-bg);
+
+    box-shadow: var(--sl-footer-social-shadow-active);
+}
+
 :global([data-brand="travel"]) .socialBtn:focus-visible {
-    transform: translateY(-1px);
+    transform: none;
+    outline: none;
 
-    border-color: rgb(243 196 95 / 0.54);
-    color: #fff8e8;
+    border-color: var(--info-border-strong);
+    color: var(--info-text-main);
 
-    background:
-        radial-gradient(circle at 30% 30%,
-            rgb(255 255 255 / 0.16) 0%,
-            transparent 58%),
-        linear-gradient(180deg,
-            rgb(224 167 43 / 0.26) 0%,
-            rgb(7 21 37 / 0.72) 100%);
+    background: var(--sl-footer-social-bg-hover);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.08),
-        0 0.68rem 1.35rem rgb(0 0 0 / 0.2);
+    box-shadow: var(--sl-footer-focus-ring);
 }
 
 /* =========================================================
@@ -353,12 +367,13 @@
    ========================================================= */
 
 :global([data-brand="sports"]) .strip {
-    --info-accent: var(--sports-gold, #d6a640);
-    --info-border: rgb(var(--sports-gold-rgb, 214 166 64) / 0.22);
-    --info-border-strong: rgb(var(--sports-gold-rgb, 214 166 64) / 0.34);
-    --info-text-main: var(--sports-text, rgb(246 247 251 / 0.96));
-    --info-text-soft: var(--sports-text-soft, rgb(224 230 238 / 0.82));
-    --info-text-muted: var(--sports-muted, rgb(177 187 202 / 0.66));
+    --info-accent: var(--sl-footer-accent);
+    --info-accent-bright: var(--sl-footer-accent-strong);
+    --info-border: rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.22);
+    --info-border-strong: rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.34);
+    --info-text-main: var(--sl-footer-text);
+    --info-text-soft: var(--sl-footer-text-soft);
+    --info-text-muted: var(--sl-footer-text-muted);
 
     isolation: isolate;
     overflow: hidden;
@@ -376,37 +391,29 @@
 }
 
 :global([data-brand="sports"]) .title {
-    color: var(--info-text-main);
+    color: var(--info-accent-bright);
     font-weight: 840;
     letter-spacing: -0.006em;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.48),
-        0 0.8rem 1.25rem rgb(0 0 0 / 0.28);
+    text-shadow: none;
 }
 
 :global([data-brand="sports"]) .icon {
-    inline-size: 24px;
-    block-size: 24px;
+    inline-size: var(--sl-footer-icon-size);
+    block-size: var(--sl-footer-icon-size);
 
-    border: 1px solid rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
+    border: 1px solid var(--info-border);
 
     color: var(--info-accent);
 
-    background:
-        radial-gradient(circle at 30% 30%,
-            rgb(255 255 255 / 0.12) 0%,
-            transparent 58%),
-        rgb(8 18 30 / 0.58);
+    background: var(--sl-footer-chip-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.06),
-        0 0.46rem 1rem rgb(0 0 0 / 0.18);
+    box-shadow: var(--sl-footer-icon-shadow);
 }
 
 :global([data-brand="sports"]) .brandEmph,
 :global([data-brand="sports"]) .tagline {
-    color: var(--info-accent);
+    color: var(--info-accent-bright);
 }
 
 :global([data-brand="sports"]) .about p,
@@ -414,63 +421,85 @@
     color: var(--info-text-soft);
 }
 
-:global([data-brand="sports"]) .subtleLink,
+:global([data-brand="sports"]) .subtleLink {
+    color: var(--info-accent-bright);
+    font-weight: 720;
+}
+
+:global([data-brand="sports"]) .subtleLink:hover,
+:global([data-brand="sports"]) .subtleLink:focus-visible {
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.42);
+    text-underline-offset: 0.18em;
+}
+
 :global([data-brand="sports"]) .textMuted {
     color: var(--info-text-muted);
     opacity: 1;
 }
 
-:global([data-brand="sports"]) .subtleLink:hover,
-:global([data-brand="sports"]) .link:hover {
-    color: var(--info-accent);
-}
-
 :global([data-brand="sports"]) .link {
     color: var(--info-text-soft);
-    font-weight: 640;
+    font-weight: 650;
+}
+
+:global([data-brand="sports"]) .link:hover,
+:global([data-brand="sports"]) .link:focus-visible {
+    color: var(--info-accent-bright);
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.42);
+    text-underline-offset: 0.16em;
 }
 
 :global([data-brand="sports"]) .cIcon {
-    color: var(--info-accent);
+    color: var(--info-accent-bright);
 }
 
 :global([data-brand="sports"]) .socialBtn {
-    inline-size: 34px;
-    block-size: 34px;
+    inline-size: var(--sl-footer-social-size);
+    block-size: var(--sl-footer-social-size);
 
-    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.28);
+    border: 1px solid var(--info-border);
 
     color: var(--info-text-main);
 
-    background:
-        radial-gradient(circle at 30% 30%,
-            rgb(255 255 255 / 0.11) 0%,
-            transparent 58%),
-        rgb(8 18 30 / 0.58);
+    background: var(--sl-footer-social-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.06),
-        0 0.48rem 1rem rgb(0 0 0 / 0.16);
+    box-shadow: var(--sl-footer-social-shadow);
 }
 
-:global([data-brand="sports"]) .socialBtn:hover,
+@media (hover: hover) and (pointer: fine) {
+    :global([data-brand="sports"]) .socialBtn:hover {
+        transform: translateY(-1px);
+
+        border-color: var(--info-border-strong);
+        color: var(--info-text-main);
+
+        background: var(--sl-footer-social-bg-hover);
+
+        box-shadow: var(--sl-footer-social-shadow-hover);
+    }
+}
+
+:global([data-brand="sports"]) .socialBtn:active {
+    transform: translateY(0);
+
+    border-color: var(--info-border);
+    background: var(--sl-footer-social-bg);
+
+    box-shadow: var(--sl-footer-social-shadow-active);
+}
+
 :global([data-brand="sports"]) .socialBtn:focus-visible {
-    transform: translateY(-1px);
+    transform: none;
+    outline: none;
 
-    border-color: rgb(var(--sports-gold-rgb, 214 166 64) / 0.5);
-    color: rgb(255 248 225 / 0.98);
+    border-color: var(--info-border-strong);
+    color: var(--info-text-main);
 
-    background:
-        radial-gradient(circle at 30% 30%,
-            rgb(255 255 255 / 0.15) 0%,
-            transparent 58%),
-        linear-gradient(180deg,
-            rgb(var(--sports-gold-rgb, 214 166 64) / 0.18) 0%,
-            rgb(8 18 30 / 0.72) 100%);
+    background: var(--sl-footer-social-bg-hover);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.08),
-        0 0.68rem 1.35rem rgb(0 0 0 / 0.2);
+    box-shadow: var(--sl-footer-focus-ring);
 }
 
 /* =========================================================
@@ -478,23 +507,23 @@
    ========================================================= */
 
 :global([data-brand="group"]) .strip {
-    --info-accent: var(--group-accent-fresh);
-    --info-accent-bright: var(--group-accent-primary);
+    --info-accent: var(--sl-footer-accent);
+    --info-accent-bright: var(--sl-footer-accent-strong);
 
     --info-border:
-        var(--group-border-subtle);
+        var(--sl-footer-border);
 
     --info-border-strong:
-        var(--group-border-default);
+        var(--sl-footer-border-strong);
 
     --info-text-main:
-        var(--group-text-primary);
+        var(--sl-footer-text);
 
     --info-text-soft:
-        var(--group-text-secondary);
+        var(--sl-footer-text-soft);
 
     --info-text-muted:
-        var(--group-text-muted);
+        var(--sl-footer-text-muted);
 
     /*
      * O InfoHeader está dentro da superfície clara do footer.
@@ -554,7 +583,7 @@
     color: var(--info-accent-fresh, var(--info-accent));
 
     background:
-        var(--group-surface-primary);
+        var(--sl-footer-chip-bg);
 
     box-shadow:
         inset 0 1px 0 rgb(255 255 255 / 0.44),
@@ -681,7 +710,7 @@
     color: var(--info-accent-bright);
 
     background:
-        var(--group-surface-primary);
+        var(--sl-footer-social-bg);
 
     box-shadow:
         inset 0 1px 0 rgb(255 255 255 / 0.46),
@@ -703,7 +732,7 @@
             var(--info-border-strong);
 
         background:
-            var(--group-surface-secondary);
+            var(--sl-footer-social-bg-hover);
 
         box-shadow:
             inset 0 1px 0 rgb(255 255 255 / 0.52),
@@ -718,7 +747,7 @@
         var(--info-border);
 
     background:
-        var(--group-surface-primary);
+        var(--sl-footer-social-bg);
 
     box-shadow:
         inset 0 2px 4px rgb(30 46 36 / 0.09);
@@ -747,14 +776,13 @@
    ========================================================= */
 
 :global([data-brand="hotel"]) .strip {
-    --info-accent: var(--hotel-champagne, #d9b978);
-    --info-border: var(--hotel-footer-section-border,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
-    --info-border-strong: var(--hotel-footer-section-border-strong,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3));
-    --info-text-main: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.97);
-    --info-text-soft: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.82);
-    --info-text-muted: rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.62);
+    --info-accent: var(--sl-footer-accent);
+    --info-accent-bright: var(--sl-footer-accent-strong);
+    --info-border: rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.18);
+    --info-border-strong: rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.3);
+    --info-text-main: var(--sl-footer-text);
+    --info-text-soft: var(--sl-footer-text-soft);
+    --info-text-muted: var(--sl-footer-text-muted);
 
     isolation: isolate;
     overflow: hidden;
@@ -780,55 +808,41 @@
 
     margin-bottom: 0.46rem;
 
-    color: var(--info-text-main);
+    color: var(--info-accent-bright);
     font-size: clamp(0.92rem, 0.2vw + 0.88rem, 1rem);
     font-weight: 850;
     letter-spacing: -0.012em;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.55),
-        0 0.75rem 1.35rem rgb(0 0 0 / 0.34);
+    text-shadow: none;
 }
 
 :global([data-brand="hotel"]) .icon {
-    inline-size: 24px;
-    block-size: 24px;
+    inline-size: var(--sl-footer-icon-size);
+    block-size: var(--sl-footer-icon-size);
 
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
+    border: 1px solid var(--info-border);
 
     color: var(--info-accent);
 
-    background:
-        radial-gradient(circle at 30% 30%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.15) 0%,
-            transparent 58%),
-        radial-gradient(circle at 76% 76%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.18) 0%,
-            transparent 62%),
-        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.62);
+    background: var(--sl-footer-chip-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 247 229 / 0.09),
-        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.1),
-        0 0.46rem 1rem rgb(0 0 0 / 0.18);
+    box-shadow: var(--sl-footer-icon-shadow);
 }
 
 :global([data-brand="hotel"]) .brandEmph {
-    color: var(--info-accent);
+    color: var(--info-accent-bright);
     font-weight: 850;
 }
 
 :global([data-brand="hotel"]) .tagline {
     margin-bottom: 0.42rem;
 
-    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.92);
+    color: var(--info-accent-bright);
     font-size: clamp(0.84rem, 0.12vw + 0.82rem, 0.92rem);
     font-weight: 800;
     line-height: 1.28;
 
-    text-shadow:
-        0 1px 0 rgb(0 0 0 / 0.48),
-        0 0 1rem rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.08);
+    text-shadow: none;
 }
 
 :global([data-brand="hotel"]) .about {
@@ -841,7 +855,7 @@
 :global([data-brand="hotel"]) .about p,
 :global([data-brand="hotel"]) .address {
     color: var(--info-text-soft);
-    text-shadow: 0 1px 0 rgb(0 0 0 / 0.36);
+    text-shadow: none;
 }
 
 :global([data-brand="hotel"]) .about p+p {
@@ -859,15 +873,15 @@
 }
 
 :global([data-brand="hotel"]) .subtleLink {
-    color: var(--info-text-muted);
-    font-weight: 700;
+    color: var(--info-accent-bright);
+    font-weight: 720;
 }
 
 :global([data-brand="hotel"]) .subtleLink:hover,
 :global([data-brand="hotel"]) .subtleLink:focus-visible {
-    color: var(--info-accent);
+    color: var(--info-accent-bright);
     text-decoration: underline;
-    text-decoration-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.42);
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.42);
     text-underline-offset: 0.18em;
 }
 
@@ -879,19 +893,19 @@
 }
 
 :global([data-brand="hotel"]) .cIcon {
-    color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.88);
+    color: var(--info-accent-bright);
 }
 
 :global([data-brand="hotel"]) .link {
     color: var(--info-text-soft);
-    font-weight: 640;
+    font-weight: 650;
 }
 
 :global([data-brand="hotel"]) .link:hover,
 :global([data-brand="hotel"]) .link:focus-visible {
-    color: var(--info-text-main);
+    color: var(--info-accent-bright);
     text-decoration: underline;
-    text-decoration-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.5);
+    text-decoration-color: rgb(var(--sl-footer-accent-rgb, 45 107 79) / 0.5);
     text-underline-offset: 0.16em;
 }
 
@@ -907,57 +921,50 @@
 }
 
 :global([data-brand="hotel"]) .socialBtn {
-    inline-size: 34px;
-    block-size: 34px;
+    inline-size: var(--sl-footer-social-size);
+    block-size: var(--sl-footer-social-size);
 
-    border: 1px solid rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.2);
+    border: 1px solid var(--info-border);
 
     color: var(--info-text-main);
 
-    background:
-        radial-gradient(circle at 30% 30%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.13) 0%,
-            transparent 58%),
-        radial-gradient(circle at 80% 80%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.16) 0%,
-            transparent 62%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 100%),
-        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.62);
+    background: var(--sl-footer-social-bg);
 
-    box-shadow:
-        inset 0 1px 0 rgb(255 247 229 / 0.065),
-        inset 0 -1px 0 rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.09),
-        0 0.48rem 1rem rgb(0 0 0 / 0.16);
+    box-shadow: var(--sl-footer-social-shadow);
 }
 
-:global([data-brand="hotel"]) .socialBtn:hover,
+@media (hover: hover) and (pointer: fine) {
+    :global([data-brand="hotel"]) .socialBtn:hover {
+        transform: translateY(-1px);
+
+        border-color: var(--info-border-strong);
+        color: var(--info-text-main);
+
+        background: var(--sl-footer-social-bg-hover);
+
+        box-shadow: var(--sl-footer-social-shadow-hover);
+    }
+}
+
+:global([data-brand="hotel"]) .socialBtn:active {
+    transform: translateY(0);
+
+    border-color: var(--info-border);
+    background: var(--sl-footer-social-bg);
+
+    box-shadow: var(--sl-footer-social-shadow-active);
+}
+
 :global([data-brand="hotel"]) .socialBtn:focus-visible {
-    transform: translateY(-1px);
+    transform: none;
+    outline: none;
 
-    border-color: rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.34);
+    border-color: var(--info-border-strong);
+    color: var(--info-text-main);
 
-    color: var(--hotel-ivory-050, #fbf7ef);
+    background: var(--sl-footer-social-bg-hover);
 
-    background:
-        radial-gradient(circle at 30% 30%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.16) 0%,
-            transparent 58%),
-        radial-gradient(circle at 80% 80%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.18) 0%,
-            transparent 62%),
-        linear-gradient(180deg,
-            rgb(var(--hotel-amber-rgb, 200 137 63) / 0.34) 0%,
-            rgb(var(--hotel-bronze-rgb, 125 90 49) / 0.22) 100%),
-        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.72);
-
-    filter: saturate(1.06) contrast(1.015);
-
-    box-shadow:
-        inset 0 1px 0 rgb(255 247 229 / 0.085),
-        inset 0 -1px 0 rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.09),
-        0 0.68rem 1.35rem rgb(0 0 0 / 0.2);
+    box-shadow: var(--sl-footer-focus-ring);
 }
 
 /* =========================================================
@@ -977,30 +984,14 @@
 }
 
 :global([data-brand="travel"]) .subtleLink:focus-visible,
-:global([data-brand="travel"]) .link:focus-visible {
-    box-shadow:
-        0 0 0 2px rgb(2 8 20 / 0.96),
-        0 0 0 4px rgb(224 167 43 / 0.58);
-}
-
+:global([data-brand="travel"]) .link:focus-visible,
 :global([data-brand="sports"]) .subtleLink:focus-visible,
-:global([data-brand="sports"]) .link:focus-visible {
-    box-shadow:
-        0 0 0 2px rgb(3 6 11 / 0.96),
-        0 0 0 4px rgb(var(--sports-gold-rgb, 214 166 64) / 0.58);
-}
-
+:global([data-brand="sports"]) .link:focus-visible,
 :global([data-brand="group"]) .subtleLink:focus-visible,
-:global([data-brand="group"]) .link:focus-visible {
-    box-shadow: var(--group-focus-shadow);
-}
-
+:global([data-brand="group"]) .link:focus-visible,
 :global([data-brand="hotel"]) .subtleLink:focus-visible,
 :global([data-brand="hotel"]) .link:focus-visible {
-    box-shadow:
-        var(--hotel-focus-ring,
-            0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.96),
-            0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86));
+    box-shadow: var(--sl-footer-focus-ring);
 }
 
 /* =========================================================

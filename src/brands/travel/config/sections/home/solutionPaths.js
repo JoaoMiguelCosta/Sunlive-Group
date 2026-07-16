@@ -1,4 +1,3 @@
-import homeTravel2Image from "../../../assets/home/home-travel2.webp";
 import { TRAVEL_PAGE_PATHS } from "../../core/paths.js";
 
 const solutionPaths = {
@@ -10,7 +9,6 @@ const solutionPaths = {
     description:
       "Desenvolvemos soluções de viagem para grupos com diferentes necessidades, combinando operação, destinos, alojamento, rede parceira e acompanhamento direto numa resposta coordenada e ajustada.",
     cardsAriaLabel: "Soluções disponíveis na página inicial",
-    backgroundImage: homeTravel2Image,
   },
 
   paths: [

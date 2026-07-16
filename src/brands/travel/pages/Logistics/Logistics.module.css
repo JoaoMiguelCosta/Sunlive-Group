@@ -1,0 +1,12 @@
+/*
+ * Light Forest é o fundo por omissão de toda a Travel (travel/theme.css),
+ * por isso este wrapper não pinta a sua própria superfície. min-block-size
+ * garante que a página cobre pelo menos um ecrã completo mesmo quando o
+ * conteúdo é mais curto que o viewport.
+ */
+.page {
+    position: relative;
+    isolation: isolate;
+    min-block-size: 100dvh;
+    color: var(--sl-text-primary, #1e2e24);
+}

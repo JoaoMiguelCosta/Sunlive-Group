@@ -19,6 +19,64 @@
     --footer-accent: var(--sl-accent-500);
 
     /* =============================
+       Footer — tokens semânticos partilhados (--sl-footer-*)
+
+       Consumidos por src/shared/components/Footer/* e por
+       HotelDirectory.module.css.
+
+       Lote 2A.3: os valores deixam de estar duplicados como
+       literais — agora são aliases da fundação global Light
+       Forest (src/styles/tokens.css), importada antes de
+       brands.css e por isso disponível em :root, logo também
+       dentro de :root[data-brand="hotel"]. Fallbacks literais
+       mantidos por segurança caso a fundação global falhe. O
+       resto do tema Hotel (hero, cards, nav) mantém-se
+       dark-first e fora do âmbito deste lote.
+       ============================= */
+
+    --sl-footer-accent: var(--sl-accent, #2d6b4f);
+    --sl-footer-accent-strong: var(--sl-accent-strong, #2e4d3b);
+    --sl-footer-accent-rgb: var(--sl-accent-rgb, 45 107 79);
+
+    --sl-footer-text: var(--sl-text-primary, #1e2e24);
+    --sl-footer-text-soft: var(--sl-text-secondary, #2e4d3b);
+    --sl-footer-text-muted: var(--sl-text-muted, #536456);
+    --sl-footer-text-rgb: var(--sl-text-rgb, 30 46 36);
+
+    --sl-footer-border: var(--sl-border-subtle, rgb(30 46 36 / 0.14));
+    --sl-footer-border-rgb: var(--sl-text-rgb, 30 46 36);
+    --sl-footer-border-strong: var(--sl-border-default, rgb(30 46 36 / 0.28));
+
+    --sl-footer-bg: var(--sl-surface-footer, #f6f7ed);
+    --sl-footer-frame-border: var(--sl-border-default, rgb(30 46 36 / 0.28));
+
+    --sl-footer-frame-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.72),
+        0 1.35rem 3.2rem rgb(var(--sl-text-rgb, 30 46 36) / 0.14);
+
+    --sl-footer-strip-border: var(--sl-border-subtle, rgb(30 46 36 / 0.14));
+
+    --sl-footer-focus-ring:
+        0 0 0 2px var(--sl-surface-footer, #f6f7ed),
+        0 0 0 4px var(--sl-accent, #2d6b4f),
+        0 0 1.25rem var(--sl-focus-ring-color, rgb(45 107 79 / 0.3));
+
+    --sl-footer-chip-bg: var(--sl-surface-primary, #e6e8d1);
+    --sl-footer-social-bg: var(--sl-surface-primary, #e6e8d1);
+    --sl-footer-social-bg-hover: var(--sl-surface-secondary, #f0f1e2);
+    --sl-footer-shield-bg: var(--sl-surface-secondary, #f0f1e2);
+    --sl-footer-hover-surface: var(--sl-surface-secondary, #f0f1e2);
+
+    /*
+     * Alias de compatibilidade: estes nomes eram antes definidos
+     * localmente dentro de Footer.module.css (.footerWrap .frame) e
+     * são consumidos por HotelDirectory.module.css (fora do âmbito
+     * deste lote). Valores agora Light Forest.
+     */
+    --hotel-footer-section-border: var(--sl-border-subtle, rgb(30 46 36 / 0.14));
+    --hotel-footer-section-border-strong: var(--sl-border-default, rgb(30 46 36 / 0.28));
+
+    /* =============================
        Paleta base
        ============================= */
 

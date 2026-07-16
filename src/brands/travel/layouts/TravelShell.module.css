@@ -6,71 +6,21 @@
     min-block-size: 100dvh;
     overflow: clip;
 
-    color: var(--travel-text, var(--sl-color-text, rgb(248 251 255 / 0.96)));
-
-    background:
-        radial-gradient(76rem 36rem at 50% -14%,
-            rgb(224 167 43 / 0.13) 0%,
-            rgb(224 167 43 / 0.052) 34%,
-            transparent 70%),
-        radial-gradient(48rem 30rem at 7% 20%,
-            rgb(79 195 247 / 0.075) 0%,
-            transparent 72%),
-        radial-gradient(52rem 34rem at 94% 42%,
-            rgb(79 195 247 / 0.055) 0%,
-            transparent 74%),
-        radial-gradient(54rem 34rem at 86% 104%,
-            rgb(224 167 43 / 0.055) 0%,
-            transparent 72%),
-        linear-gradient(180deg,
-            #020814 0%,
-            #051122 28%,
-            #071a2d 58%,
-            #03101f 78%,
-            #020814 100%);
-}
-
-.shell::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    opacity: 0.26;
-
-    background-image:
-        linear-gradient(rgb(79 195 247 / 0.052) 1px, transparent 1px),
-        linear-gradient(90deg, rgb(79 195 247 / 0.045) 1px, transparent 1px);
-
-    background-size: 76px 76px;
-
-    mask-image: linear-gradient(180deg,
-            transparent 0%,
-            black 12%,
-            black 78%,
-            transparent 100%);
-}
-
-.shell::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    opacity: 0.92;
-
-    background:
-        linear-gradient(180deg,
-            rgb(2 8 20 / 0.08) 0%,
-            rgb(2 8 20 / 0.32) 100%),
-        radial-gradient(76% 48% at 50% 0%,
-            transparent 0%,
-            rgb(2 8 20 / 0.42) 100%);
+    color: var(--travel-text, var(--sl-color-text, #1e2e24));
 }
 
 .shell>* {
     position: relative;
     z-index: 1;
+}
+
+/*
+ * useSmartAnchorNav foca programaticamente o alvo de um hash (header/footer),
+ * atribuindo tabindex="-1" quando o elemento não é nativamente focável. Isso
+ * não deve mostrar o outline nativo de :focus — o indicador de foco por
+ * teclado (Tab) em elementos reais permanece intacto, porque este seletor só
+ * atinge tabindex="-1".
+ */
+.shell [tabindex="-1"]:focus {
+    outline: none;
 }

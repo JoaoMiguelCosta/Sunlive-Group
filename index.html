@@ -6,7 +6,37 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="theme-color" content="#030303" />
+  <meta name="theme-color" content="#daddc0" />
+
+  <script>
+    // Aplica data-brand em document.documentElement de forma síncrona,
+    // antes do primeiro paint e antes do React montar, para evitar que a
+    // página seja pintada com o contexto visual errado enquanto o
+    // BrandProvider/ThemeProvider ainda não correu. Espelha a resolução
+    // pública de resolveBrandFromPath em src/app/providers/BrandProvider.jsx.
+    (function () {
+      var KNOWN_BRAND_IDS = ["group", "sports", "hotel", "travel"];
+      var FALLBACK_BRAND_ID = "group";
+      var pathSegments = window.location.pathname.split("/").filter(Boolean);
+      var resolvedBrandId = FALLBACK_BRAND_ID;
+
+      if (pathSegments[0] === "sunlive-group") {
+        var subBrandId = pathSegments[1];
+
+        if (subBrandId && KNOWN_BRAND_IDS.indexOf(subBrandId) !== -1) {
+          resolvedBrandId = subBrandId;
+        }
+      } else {
+        var directBrandId = pathSegments[0];
+
+        if (directBrandId && KNOWN_BRAND_IDS.indexOf(directBrandId) !== -1) {
+          resolvedBrandId = directBrandId;
+        }
+      }
+
+      document.documentElement.dataset.brand = resolvedBrandId;
+    })();
+  </script>
 
   <title>Sunlive Group — Desporto, Turismo, Educação e Negócio</title>
 

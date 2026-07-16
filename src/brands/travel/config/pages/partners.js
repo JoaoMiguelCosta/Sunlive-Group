@@ -1,4 +1,5 @@
 import partnerHotels from "../sections/partners/partnerHotels.js";
+import partnersActionPanel from "../sections/partners/partnersActionPanel.js";
 import travelPartners from "../sections/partners/travelPartners.js";
 
 const partners = {
@@ -9,6 +10,7 @@ const partners = {
   sections: {
     partnerHotels,
     travelPartners,
+    partnersActionPanel,
   },
 };
 

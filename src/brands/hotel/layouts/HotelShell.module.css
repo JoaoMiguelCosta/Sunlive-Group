@@ -16,9 +16,6 @@
 
     --section-inset: var(--hotel-page-padding-inline, clamp(1rem, 4vw, 4.5rem));
     --sl-container-lg: 1360px;
-
-    --hotel-shell-max-width: 1360px;
-    --hotel-shell-inset: var(--hotel-page-padding-inline, clamp(1rem, 4vw, 4.5rem));
 }
 
 .shell::before,
@@ -29,25 +26,6 @@
 .shell>* {
     position: relative;
     z-index: 1;
-}
-
-.headerContainer {
-    position: relative;
-    z-index: 50;
-
-    inline-size: min(calc(100% - (2 * var(--hotel-shell-inset))),
-            var(--hotel-shell-max-width));
-
-    margin-inline: auto;
-    padding-block-start: clamp(0.45rem, 1vw, 0.9rem);
-}
-
-.navWrap {
-    position: relative;
-    z-index: 40;
-
-    inline-size: 100%;
-    padding-block-start: clamp(0.25rem, 0.65vw, 0.55rem);
 }
 
 .main {
@@ -63,28 +41,11 @@
     z-index: 2;
 }
 
-@media (max-width: 900px) {
-    .headerContainer {
-        padding-block-start: 0.5rem;
-    }
-
-    .navWrap {
-        padding-block-start: 0.25rem;
-    }
-}
-
 @media (max-width: 620px) {
     .shell {
-        --hotel-shell-inset: clamp(0.85rem, 4vw, 1.2rem);
-
         background-attachment: scroll;
         background-size: 100% 100%;
         background-repeat: repeat-y;
-    }
-
-    .headerContainer {
-        inline-size: min(calc(100% - (2 * var(--hotel-shell-inset))),
-                var(--hotel-shell-max-width));
     }
 }
 

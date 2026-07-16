@@ -1,0 +1,190 @@
+.root {
+    position: relative;
+    isolation: isolate;
+    inline-size: 100%;
+    max-inline-size: 72rem;
+    margin-inline: auto;
+    box-sizing: border-box;
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.25rem);
+    padding: clamp(1.15rem, 2vw, 1.55rem);
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    border-radius: clamp(1.45rem, 2.2vw, 2.3rem);
+    background: var(--sl-surface-primary, #e6e8d1);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
+}
+
+.header {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    gap: clamp(1rem, 1.8vw, 1.5rem);
+    max-inline-size: 76rem;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.eyebrow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin: 0;
+    padding: 0.38rem 0.62rem 0.36rem;
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    border-radius: 999px;
+    background: var(--sl-surface-footer, #f6f7ed);
+    color: var(--travel-gold-deep, #b97911);
+    font-size: 0.66rem;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.title {
+    margin: 0;
+    max-inline-size: 25ch;
+    color: var(--sl-text-primary, #1e2e24);
+    font-size: clamp(2.5rem, 4vw, 4.15rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+    text-wrap: balance;
+}
+
+.descriptionGroup {
+    display: grid;
+    gap: clamp(0.65rem, 1vw, 0.9rem);
+    margin-inline: auto;
+}
+
+.description {
+    margin: 0;
+    color: var(--sl-text-secondary, #2e4d3b);
+    font-size: clamp(1rem, 1.15vw, 1.15rem);
+    font-weight: 500;
+    letter-spacing: -0.006em;
+    line-height: 1.62;
+}
+
+.items {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.item {
+    position: relative;
+    display: grid;
+    gap: 0.4rem;
+    align-content: start;
+    padding: 1rem 1.05rem 1.1rem;
+    border: 1px solid var(--sl-border-subtle, rgba(30, 46, 36, 0.14));
+    border-radius: 1.16rem;
+    background: var(--sl-card-background, #f0f1e2);
+    box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
+}
+
+.itemTitle {
+    margin: 0;
+    color: var(--sl-text-primary, #1e2e24);
+    font-size: 1rem;
+    font-weight: 840;
+    letter-spacing: -0.012em;
+    line-height: 1.2;
+    text-wrap: balance;
+}
+
+.itemDescription {
+    margin: 0;
+    color: var(--sl-text-secondary, #2e4d3b);
+    font-size: 0.9rem;
+    font-weight: 460;
+    letter-spacing: -0.006em;
+    line-height: 1.54;
+}
+
+/* Desktop: duas entradas ocupam duas colunas equivalentes. */
+@media (min-width: 1025px) {
+    .items:has(> .item:nth-child(2):last-child) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Tablet: duas colunas; uma terceira entrada ocupa a linha seguinte. */
+@media (max-width: 1024px) {
+    .items {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .item:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Mobile: cabeçalho compacto e cartões numa coluna. */
+@media (max-width: 640px) {
+    .root {
+        gap: 1.75rem;
+        padding: 0.92rem;
+    }
+
+    .header {
+        gap: 0.9rem;
+    }
+
+    .title {
+        max-inline-size: none;
+        line-height: 1;
+        text-wrap: pretty;
+    }
+
+    .descriptionGroup {
+        max-inline-size: none;
+    }
+
+    .items {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .item:last-child:nth-child(odd) {
+        grid-column: auto;
+    }
+}
+
+/* Até 544px, anula o font-size definido no estilo base. */
+@media (max-width: 544px) {
+    .title {
+        font-size: revert;
+    }
+}
+
+/* Ajuste apenas para o título de Destinos entre 641px e 720px. */
+@media (min-width: 641px) and (max-width: 720px) {
+    .root[data-section="destinations-highlight"] .title {
+        max-inline-size: 28ch;
+        font-size: clamp(2.25rem, 5.8vw, 2.5rem);
+        line-height: 1;
+        text-wrap: balance;
+    }
+}
+
+/*
+ * Ajuste apenas para os títulos dos cartões de Logística: em desktop, um
+ * dos três títulos ocupa duas linhas enquanto os outros ocupam uma, o que
+ * desalinha o início das descrições mesmo com os cartões já com a mesma
+ * altura. Reserva-se a altura de 2 linhas (line-height: 1.2) só para esta
+ * instância.
+ */
+@media (min-width: 1025px) {
+    .root[data-section="logistics-overview"] .itemTitle {
+        min-block-size: 2.4em;
+    }
+}

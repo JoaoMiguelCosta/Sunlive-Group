@@ -59,7 +59,11 @@ function renderPillItems({
             .filter(Boolean)
             .join(" ")}
         >
-          <span className={styles.pillContent}>
+          <span
+            className={[styles.pillContent, FlagIcon ? styles.pillContentFlagged : ""]
+              .filter(Boolean)
+              .join(" ")}
+          >
             {FlagIcon ? (
               <span className={styles.flagWrap} aria-hidden="true">
                 <FlagIcon className={styles.flagSvg} focusable="false" />

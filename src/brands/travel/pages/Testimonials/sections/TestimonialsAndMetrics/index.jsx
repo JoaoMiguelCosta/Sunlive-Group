@@ -1,9 +1,8 @@
 import testimonialsPage from "../../../../config/pages/testimonials.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
-import TravelIntroPanel from "../../../../shared/ui/TravelIntroPanel/TravelIntroPanel.jsx";
+import TravelTrustPanel from "../../../../shared/ui/TravelTrustPanel/TravelTrustPanel.jsx";
 
-import TestimonialsGrid from "./TestimonialsGrid.jsx";
-import KeyMetricsBar from "./KeyMetricsBar.jsx";
+import TestimonialsCarousel from "./TestimonialsCarousel.jsx";
 
 import styles from "./TestimonialsAndMetricsSection.module.css";
 
@@ -21,7 +20,6 @@ export default function TestimonialsAndMetricsSection() {
   const testimonials = Array.isArray(section?.testimonials)
     ? section.testimonials
     : [];
-  const metrics = Array.isArray(section?.metrics) ? section.metrics : [];
   const icons = ICONS;
 
   return (
@@ -32,29 +30,22 @@ export default function TestimonialsAndMetricsSection() {
       data-section="testimonials-and-metrics"
     >
       <div className={styles.inner}>
-        <TravelIntroPanel
-          as="header"
+        <TravelTrustPanel
           titleAs="h1"
           eyebrow={headline?.eyebrow}
           title={headline?.title}
           lead={headline?.lead}
-          supportingText={headline?.description}
-          pills={headline?.featuredPills}
+          description={headline?.description}
           stats={headline?.stats}
-          pillsAriaLabel={headline?.ui?.pillsAriaLabel ?? "Pontos-chave"}
-          statsAriaLabel={headline?.ui?.statsAriaLabel ?? "Destaques da secção"}
+          statsAriaLabel={headline?.ui?.statsAriaLabel}
         />
 
         <div className={styles.gridBlock}>
-          <TestimonialsGrid
+          <TestimonialsCarousel
             spotlight={spotlight}
             testimonials={testimonials}
             icons={icons}
           />
-        </div>
-
-        <div className={styles.metricsBlock}>
-          <KeyMetricsBar metrics={metrics} />
         </div>
       </div>
     </section>

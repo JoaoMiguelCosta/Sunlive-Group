@@ -7,186 +7,90 @@ import obidosImg from "../../../assets/domestic-destinations/obidos.webp";
 
 const domesticDestinations = {
   id: "destinos-nacionais",
-
-  showcaseHero: {
-    eyebrow: "Seleção nacional",
-    title: "Destinos Nacionais com seleção criteriosa e execução consistente",
-    lead: "Descubra alguns dos locais mais emblemáticos de Portugal com programas desenhados à medida, ritmo equilibrado e uma experiência cuidada do início ao fim.",
-    supportingText:
-      "Cada destino é pensado para entregar valor real ao grupo, combinando património, cultura, autenticidade local e uma operação organizada com elevado nível de conforto.",
-    highlightsLabel: "Seleção nacional",
-    highlightPills: [
-      "Património e identidade",
-      "Ritmo equilibrado",
-      "Operação cuidada",
-    ],
-    metrics: [
-      {
-        value: "6",
-        label: "Destinos selecionados",
-      },
-      {
-        value: "1/2 dia",
-        label: "Até dia completo",
-      },
-      {
-        value: "Ajustado",
-        label: "Planeamento e serviço",
-      },
-    ],
-    insights: [
-      {
-        key: "programas",
-        title: "Programas com critério",
-        description:
-          "Cada proposta é desenhada com atenção ao ritmo, à logística e ao valor real de cada paragem.",
-      },
-      {
-        key: "experiencia",
-        title: "Experiência contextualizada",
-        description:
-          "Os percursos privilegiam autenticidade local, enquadramento cultural e leitura clara do destino.",
-      },
-    ],
-    ui: {
-      highlightsAriaLabel: "Destaques da seleção nacional",
-      metricsAriaLabel: "Indicadores da secção de destinos nacionais",
-      insightsAriaLabel: "Princípios da seleção nacional",
-    },
-  },
-
-  showcase: {
-    ariaLabel: "Explorar destinos nacionais",
-    railAriaLabel: "Selecionar destino em destaque",
-    kicker: "Seleção editorial",
-    title:
-      "Destinos selecionados para programas com identidade, valor e execução cuidada",
-    description:
-      "Escolha um destino para explorar o seu enquadramento, duração ideal e principais pontos de interesse. A apresentação privilegia leitura, contexto e diferenciação entre opções.",
-    spotlightLabel: "Destino em destaque",
-    summaryLabel: "Visão do destino",
-    primaryMetaLabel: "Duração ideal",
-    highlightsLabel: "Pontos de interesse",
-    railLabel: "Destinos disponíveis",
-    railCountSuffix: "destinos selecionados",
-    initialKey: "aveiro",
-  },
+  ariaLabel: "Viagens em Portugal",
+  title: "Viagens em Portugal",
+  eyebrow: "6 destinos selecionados",
+  description:
+    "Oferecemos excursões de meio dia e de dia inteiro aos locais mais emblemáticos de Portugal.",
 
   destinations: [
     {
       key: "aveiro",
       anchorId: "destinos-nacionais-aveiro",
-      city: "Aveiro",
-      badge: "Aveiro",
-      summary:
-        "Cidade luminosa junto à ria, ideal para programas com identidade portuguesa, tradição marítima e experiências autênticas.",
-      duration: "Meio dia / Dia completo",
-      highlights: [
-        "Ovos Moles",
-        "Barcos Moliceiros",
-        "Canais de Aveiro",
-        "Costa Nova",
-      ],
-      picture: {
+      title: "Aveiro",
+      description:
+        "Uma cidade costeira vibrante, famosa pelos seus canais, tradições marítimas e autêntico charme português.",
+      meta: "Meio dia ou dia inteiro",
+      image: {
         src: aveiroImg,
         alt: "Canais de Aveiro com moliceiros",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "porto",
       anchorId: "destinos-nacionais-porto",
-      city: "Porto",
-      badge: "Porto",
-      summary:
-        "Destino urbano de grande valor cultural, com património marcante, vistas sobre o Douro e experiências muito procuradas.",
-      duration: "Dia completo",
-      highlights: ["Torres dos Clérigos", "Caves Vinho do Porto", "Ribeira"],
-      picture: {
+      title: "Porto",
+      description:
+        "Uma cidade histórica ribeirinha que oferece uma cultura incrível, vistas deslumbrantes sobre o rio Douro e um património mundialmente famoso.",
+      meta: "Dia inteiro",
+      image: {
         src: portoImg,
         alt: "Vista do Rio Douro e Ribeira do Porto",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "lisboa",
       anchorId: "destinos-nacionais-lisboa",
-      city: "Lisboa",
-      badge: "Lisboa",
-      summary:
-        "Capital vibrante com história, monumentos icónicos e percursos ideais para grupos que procuram variedade e energia.",
-      duration: "Dia completo",
-      highlights: [
-        "Mosteiro dos Jerónimos",
-        "Tram 28",
-        "Alfama",
-        "Torre de Belém",
-      ],
-      picture: {
+      title: "Lisboa",
+      description:
+        "A vibrante capital de Portugal, repleta de história rica, monumentos icónicos e energia para grupos que procuram variedade.",
+      meta: "Dia inteiro",
+      image: {
         src: lisboaImg,
         alt: "Elétrico amarelo a passar em Lisboa",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "coimbra",
       anchorId: "destinos-nacionais-coimbra",
-      city: "Coimbra",
-      badge: "Coimbra",
-      summary:
-        "Cidade académica de enorme valor histórico, perfeita para visitas com foco cultural, tradição e património universitário.",
-      duration: "Meio dia / Dia completo",
-      highlights: [
-        "Sé Velha",
-        "Universidade de Coimbra",
-        "Fado de Coimbra",
-        "Biblioteca Joanina",
-      ],
-      picture: {
+      title: "Coimbra",
+      description:
+        "Uma cidade universitária histórica, perfeita para visitas culturais centradas em tradições antigas e património académico.",
+      meta: "Meio dia ou dia inteiro",
+      image: {
         src: coimbraImg,
         alt: "Pátio da Universidade de Coimbra",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "sintra",
       anchorId: "destinos-nacionais-sintra",
-      city: "Sintra",
-      badge: "Sintra",
-      summary:
-        "Destino distintivo com paisagens únicas, palácios emblemáticos e uma atmosfera que valoriza qualquer programa turístico.",
-      duration: "Dia completo",
-      highlights: [
-        "Palácio da Pena",
-        "Quinta da Regaleira",
-        "Cabo da Roca",
-        "Convento dos Capuchos",
-      ],
-      picture: {
+      title: "Sintra",
+      description:
+        "Um destino mágico repleto de paisagens únicas, palácios de contos de fadas e uma atmosfera verdadeiramente distinta.",
+      meta: "Dia inteiro",
+      image: {
         src: sintraImg,
         alt: "Palácio da Pena em Sintra",
+        position: "center",
       },
-      imagePosition: "center",
     },
     {
       key: "obidos",
       anchorId: "destinos-nacionais-obidos",
-      city: "Óbidos",
-      badge: "Óbidos",
-      summary:
-        "Vila medieval de forte caráter visual, excelente para experiências culturais com ambiente histórico e autenticidade.",
-      duration: "Dia completo",
-      highlights: [
-        "Castelo",
-        "Muralhas medievais",
-        "Rua Direita",
-        "Ginjinha de Óbidos",
-      ],
-      picture: {
+      title: "Óbidos",
+      description:
+        "Uma vila medieval fortificada e maravilhosamente preservada, excelente para uma viagem histórica ao passado.",
+      meta: "Dia inteiro",
+      image: {
         src: obidosImg,
         alt: "Muralhas e vistas de Óbidos",
+        position: "center",
       },
-      imagePosition: "center",
     },
   ],
 };

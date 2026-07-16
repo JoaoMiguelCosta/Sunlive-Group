@@ -1,11 +1,7 @@
-import { LANG_DEFAULT, makeBackLink } from "../../../../shared/config/index.js";
+import { LANG_DEFAULT } from "../../../../shared/config/index.js";
 import { SPORTS_SOCIALS } from "./socials.js";
 
 const header = {
-  backLink: makeBackLink({
-    href: "/sunlive-group",
-    label: "Voltar ao Sunlive Group",
-  }),
   lang: LANG_DEFAULT,
   socials: SPORTS_SOCIALS,
 };

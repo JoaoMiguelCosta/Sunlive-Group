@@ -1,0 +1,98 @@
+/*
+ * Seletor "header.wrap" (não ".wrap") de propósito: HotelShell.module.css
+ * define ".shell > * { z-index: 1 }" com a mesma especificidade de uma
+ * classe simples — dependendo da ordem de carregamento dos módulos CSS
+ * no bundle, essa regra pode ganhar o empate e achatar este z-index a 1,
+ * igual ao de .main, deixando o hero (que vem depois no DOM) pintar por
+ * cima dos menus abertos. Adicionar o tipo do elemento ao seletor
+ * garante especificidade mais alta, sem depender da ordem do bundle.
+ */
+header.wrap {
+    position: relative;
+    isolation: isolate;
+    z-index: 10;
+
+    inline-size: 100%;
+    width: 100%;
+}
+
+.container {
+    --hotel-header-stack-gap: clamp(0.7rem, 1.4vw, 1.25rem);
+    --capsule-inset: clamp(0.75rem, 4vw, 2.5rem);
+
+    position: relative;
+    z-index: 1;
+
+    inline-size: 100%;
+    width: 100%;
+    max-inline-size: 100%;
+    max-width: 100%;
+
+    margin-inline: auto;
+    box-sizing: border-box;
+
+    display: grid;
+    row-gap: var(--hotel-header-stack-gap);
+}
+
+/* =========================================================
+   Capsule — mesma cápsula clara usada pelo Group/Travel/Sports
+   (headerInner). .capsuleRow ocupa a largura total da linha do
+   header com o fundo normal da página, para que não reste
+   nenhuma faixa escura por trás/à volta da cápsula. .capsule é
+   o cartão claro centrado, elevado, que envolve a UtilityBar.
+   ========================================================= */
+
+.capsuleRow {
+    inline-size: 100%;
+    width: 100%;
+
+    padding-block-start: clamp(0.6rem, 1.2vw, 0.95rem);
+    box-sizing: border-box;
+
+    background-color: var(--sl-surface-page);
+}
+
+.capsule {
+    inline-size: min(calc(100% - (2 * var(--capsule-inset))), 1360px);
+    max-inline-size: 1360px;
+
+    margin-inline: auto;
+    padding-inline: clamp(0.45rem, 1vw, 0.8rem);
+    box-sizing: border-box;
+
+    border: 1px solid var(--sl-border-subtle);
+    border-radius: 1.8rem;
+
+    color: var(--sl-text-primary);
+    background-color: var(--sl-surface-footer);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.5),
+        0 0.5rem 1.35rem rgb(var(--sl-color-forest-900-rgb) / 0.09);
+}
+
+@media (max-width: 767.98px) {
+    .capsuleRow {
+        padding-block-start: 0.5rem;
+    }
+
+    .capsule {
+        padding-inline: 0.35rem;
+        border-radius: 1.35rem;
+
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.48),
+            0 0.32rem 0.9rem rgb(var(--sl-color-forest-900-rgb) / 0.075);
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        --capsule-inset: 0.75rem;
+    }
+
+    .capsule {
+        border-radius: 1rem;
+    }
+}

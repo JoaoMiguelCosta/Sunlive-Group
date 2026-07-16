@@ -1,8 +1,7 @@
 import logistics from "../../../../config/pages/logistics.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
-import LogisticsOperationalHero from "./LogisticsOperationalHero.jsx";
-import LogisticsActionPanel from "./LogisticsActionPanel.jsx";
+import TravelFeaturePanel from "../../../../shared/ui/TravelFeaturePanel/TravelFeaturePanel.jsx";
 import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
 
 import styles from "./LogisticsSolutionsSection.module.css";
@@ -19,8 +18,6 @@ export default function LogisticsSolutionsSection() {
   const operationalHero = section?.operationalHero ?? {};
   const servicesIntro = section?.servicesIntro ?? null;
   const services = Array.isArray(section?.services) ? section.services : [];
-  const actionPanel = section?.actionPanel ?? null;
-  const cta = section?.cta ?? null;
   const icons = ICONS;
 
   return (
@@ -32,17 +29,23 @@ export default function LogisticsSolutionsSection() {
     >
       <div className={styles.sectionFrame}>
         <div className={styles.inner}>
-          <LogisticsOperationalHero hero={operationalHero} />
+          <TravelFeaturePanel
+            eyebrow={operationalHero?.eyebrow}
+            title={operationalHero?.title}
+            description={operationalHero?.lead}
+            supportingText={operationalHero?.supportingText}
+            items={operationalHero?.assurances}
+            sectionKey="logistics-overview"
+            titleAs="h1"
+            itemTitleAs="h3"
+          />
 
           <ServiceOfferingsGrid
             services={services}
             intro={servicesIntro}
             icons={icons}
             ui={section?.ui}
-            allowMultiple={false}
           />
-
-          <LogisticsActionPanel panel={actionPanel} cta={cta} />
         </div>
       </div>
     </section>

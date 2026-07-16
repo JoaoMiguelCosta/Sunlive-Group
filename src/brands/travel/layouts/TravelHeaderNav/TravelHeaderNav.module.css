@@ -13,7 +13,14 @@
 }
 
 .container {
-    --travel-header-stack-gap: clamp(0.7rem, 1.4vw, 1.25rem);
+    /*
+     * Alinhado com o espaçamento header → primeira secção da Home Group
+     * (GroupPageLayout.module.css .contentFlow margin-block-start), já
+     * que na Group o logótipo (BrandHero) É a primeira secção depois do
+     * header. Mesmos breakpoints e valores nas media queries abaixo.
+     */
+    --travel-header-stack-gap: clamp(2.3rem, 4vw, 3.8rem);
+    --capsule-inset: clamp(0.75rem, 4vw, 2.5rem);
 
     position: relative;
     z-index: 1;
@@ -30,219 +37,105 @@
     row-gap: var(--travel-header-stack-gap);
 }
 
+/* =========================================================
+   Capsule — mesma cápsula clara usada pelo Group (headerInner)
+
+   .capsuleRow ocupa a largura total da linha do header com o
+   fundo normal da página (tal como no Group), para que não reste
+   nenhuma faixa escura por trás/à volta da cápsula. .capsule é o
+   cartão claro centrado, elevado, que envolve a UtilityBar.
+   ========================================================= */
+
+.capsuleRow {
+    inline-size: 100%;
+    width: 100%;
+
+    padding-block-start: clamp(0.6rem, 1.2vw, 0.95rem);
+    box-sizing: border-box;
+
+}
+
+.capsule {
+    /*
+     * inline-size: auto (em vez de min(calc(100% - 2*inset), 1360px)) —
+     * o TravelHeaderNav já vive dentro de .layout (TravelPageLayout.
+     * module.css), que aplica o seu próprio inset e já limita a 1360px.
+     * Subtrair --capsule-inset aqui duplicava o inset sobre uma largura
+     * já estreitada, deixando a cápsula mais estreita do que a da Group
+     * (cujo header vive fora de qualquer wrapper com largura máxima).
+     */
+    inline-size: auto;
+    max-inline-size: 1360px;
+
+    margin-inline: auto;
+    padding-inline: clamp(0.45rem, 1vw, 0.8rem);
+    box-sizing: border-box;
+
+    border: 1px solid var(--sl-border-subtle);
+    border-radius: 1.8rem;
+
+    color: var(--sl-text-primary);
+    background-color: var(--sl-surface-footer);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.5),
+        0 0.5rem 1.35rem rgb(var(--sl-color-forest-900-rgb) / 0.09);
+}
+
 .masthead :global(.inner) {
     padding-block: clamp(14px, 2.6vw, 32px);
 }
 
-.primaryRow {
-    position: relative;
-    z-index: 2;
-
-    inline-size: 100%;
-    width: 100%;
-
-    display: grid;
-    place-items: center;
-
-    overflow: visible;
-}
-
-.primaryInner {
-    position: relative;
-    isolation: isolate;
-    z-index: 1;
-
-    inline-size: 100%;
-    width: 100%;
-    max-inline-size: 100%;
-
-    margin-inline: auto;
-    box-sizing: border-box;
-
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: clamp(0.72rem, 1.2vw, 1rem);
-
-    padding-block: clamp(0.82rem, 1.2vw, 0.96rem);
-    padding-inline: clamp(0.82rem, 1.45vw, 1.18rem);
-
-    border: 1px solid rgba(224, 167, 43, 0.28);
-    border-radius: clamp(1.45rem, 2vw, 2rem);
-
-    overflow: visible;
-
-    background:
-        radial-gradient(110% 135% at 0% 0%,
-            rgba(224, 167, 43, 0.105) 0%,
-            transparent 38%),
-        radial-gradient(82% 92% at 100% 100%,
-            rgba(79, 195, 247, 0.16) 0%,
-            transparent 46%),
-        radial-gradient(42% 44% at 67% 20%,
-            rgba(224, 167, 43, 0.08) 0%,
-            transparent 68%),
-        radial-gradient(30% 36% at 18% 78%,
-            rgba(79, 195, 247, 0.085) 0%,
-            transparent 74%),
-        linear-gradient(125deg,
-            rgba(10, 29, 52, 0.96) 0%,
-            rgba(4, 16, 32, 0.98) 36%,
-            rgba(2, 8, 20, 0.99) 64%,
-            rgba(8, 29, 52, 0.96) 100%);
-
-    box-shadow:
-        0 22px 58px rgba(0, 0, 0, 0.28),
-        0 10px 24px rgba(2, 12, 24, 0.2),
-        0 0 0 1px rgba(79, 195, 247, 0.035),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        inset 0 -1px 0 rgba(79, 195, 247, 0.08);
-}
-
-.primaryInner::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-
-    border-radius: inherit;
-
-    background:
-        linear-gradient(90deg,
-            rgba(255, 255, 255, 0.04) 0%,
-            transparent 20%,
-            transparent 78%,
-            rgba(79, 195, 247, 0.04) 100%),
-        linear-gradient(180deg,
-            rgba(255, 255, 255, 0.045) 0%,
-            transparent 22%,
-            transparent 78%,
-            rgba(255, 255, 255, 0.03) 100%);
-
-    pointer-events: none;
-}
-
-.primaryInner::after {
-    content: "";
-    position: absolute;
-    inset-inline: clamp(1rem, 3vw, 2.4rem);
-    inset-block-end: 0;
-    z-index: 0;
-
-    block-size: 1px;
-
-    background:
-        linear-gradient(90deg,
-            transparent 0%,
-            rgba(79, 195, 247, 0.18) 16%,
-            rgba(224, 167, 43, 0.36) 50%,
-            rgba(79, 195, 247, 0.16) 84%,
-            transparent 100%);
-
-    pointer-events: none;
-}
-
-.navSlot {
-    position: relative;
-    z-index: 20;
-
-    min-width: 0;
-    width: 100%;
-
-    overflow: visible;
-}
-
-.ctaSlot {
-    position: relative;
-    z-index: 1;
-
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-}
-
-.ctaSlot :global(a),
-.ctaSlot :global(button) {
-    position: relative;
-    z-index: 1;
-
-    min-height: clamp(50px, 4.4vw, 60px);
-    padding-inline: clamp(1.18rem, 1.8vw, 1.5rem);
-
-    border: 1px solid rgba(224, 167, 43, 0.46);
-    border-radius: 999px;
-
-    background:
-        radial-gradient(circle at 50% 0%,
-            rgba(255, 240, 206, 0.2) 0%,
-            transparent 42%),
-        linear-gradient(180deg,
-            rgba(243, 196, 95, 0.99) 0%,
-            rgba(185, 121, 17, 0.99) 100%);
-
-    box-shadow:
-        0 12px 20px rgba(171, 109, 10, 0.18),
-        0 0 18px rgba(224, 167, 43, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.28);
-
-    color: #fff8ea;
-    font-weight: 860;
-
-    transition:
-        transform 180ms ease,
-        box-shadow 180ms ease,
-        filter 180ms ease,
-        border-color 180ms ease;
-}
-
-.ctaSlot :global(a:hover),
-.ctaSlot :global(a:focus-visible),
-.ctaSlot :global(button:hover),
-.ctaSlot :global(button:focus-visible) {
-    transform: translateY(-2px);
-    filter: brightness(1.03);
-
-    border-color: rgba(243, 196, 95, 0.68);
-
-    box-shadow:
-        0 16px 24px rgba(171, 109, 10, 0.22),
-        0 0 22px rgba(224, 167, 43, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
-
-.ctaSlot :global(a:active),
-.ctaSlot :global(button:active) {
-    transform: translateY(0);
-}
-
-@media (max-width: 860px) {
-    .primaryInner {
-        grid-template-columns: 1fr;
-        justify-items: stretch;
-        gap: clamp(0.7rem, 2.2vw, 0.96rem);
-
-        padding-block: clamp(0.78rem, 2.4vw, 1rem);
-    }
-
-    .navSlot {
-        z-index: 20;
-    }
-
-    .ctaSlot {
-        z-index: 1;
-        justify-self: center;
+@media (max-width: 980px) {
+    .container {
+        --travel-header-stack-gap: clamp(2.1rem, 4.8vw, 3rem);
     }
 }
 
-@media (max-width: 560px) {
-    .primaryInner {
-        padding-inline: clamp(0.72rem, 3.8vw, 0.95rem);
-        border-radius: clamp(1.2rem, 5vw, 1.45rem);
+@media (max-width: 767.98px) {
+    .container {
+        --travel-header-stack-gap: clamp(1.8rem, 6vw, 2.5rem);
     }
 
-    .ctaSlot :global(a),
-    .ctaSlot :global(button) {
-        inline-size: 100%;
-        min-width: min(100%, 14rem);
+    .capsuleRow {
+        padding-block-start: 0.5rem;
+    }
+
+    .capsule {
+        padding-inline: 0.35rem;
+        border-radius: 1.35rem;
+
+        box-shadow:
+            inset 0 1px 0 rgb(255 255 255 / 0.48),
+            0 0.32rem 0.9rem rgb(var(--sl-color-forest-900-rgb) / 0.075);
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        --capsule-inset: 0.75rem;
+        --travel-header-stack-gap: 1.8rem;
+    }
+
+    .capsule {
+        border-radius: 1rem;
+    }
+}
+
+/*
+ * Faixa compacta — a navegação Travel (brand switcher + 5 links,
+ * 2 com dropdown + CTA) tem mais conteúdo do que a cápsula do Group
+ * e precisa de mais espaço horizontal livre. Entre 769px (limite
+ * inferior do menu desktop) e ~1024px, reduz a margem exterior da
+ * cápsula para dar mais largura útil ao conteúdo, em vez de deixar
+ * os itens colidir. Acima de 1024px mantém-se o espaçamento actual.
+ */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        --capsule-inset: clamp(0.5rem, 1.8vw, 1rem);
+    }
+
+    .capsule {
+        padding-inline: clamp(0.2rem, 0.5vw, 0.4rem);
     }
 }

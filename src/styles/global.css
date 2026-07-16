@@ -8,6 +8,8 @@
    através dos respetivos tokens semânticos.
    ========================================================= */
 
+@import "./tokens.css";
+
 
 /* =========================================================
    Tokens tipográficos partilhados
@@ -54,21 +56,21 @@ html {
     overflow-x: clip;
 
     /*
-     * Fallback global para brands escuras.
-     * As brands podem substituir esta propriedade diretamente.
+     * Cor base sólida e sempre válida do documento, vinda do contrato
+     * semântico global (--sl-document-background-color). Garante que o
+     * html nunca fica sem fundo — Group é a brand de fallback da
+     * aplicação (resolveBrandFromPath devolve "group" por omissão), por
+     * isso este valor reflete a direção Light Forest, não um tema
+     * escuro genérico.
      *
-     * A Sunlive Group aplica color-scheme: light no seu
-     * contexto [data-brand="group"].
-     */
-    color-scheme: dark;
-
-    /*
-     * O fundo semântico é definido pela brand ativa.
+     * Gradientes, texturas e decoração por brand não pertencem aqui —
+     * continuam exclusivamente nos Shells de cada brand.
      *
-     * Na Sunlive Group:
-     * --sl-body-bg → --group-background → #daddc0
+     * Nota: --sl-body-bg não é este contrato — nalgumas brands é um
+     * gradiente, o que tornaria background-color inválido.
      */
-
+    color-scheme: light;
+    background-color: var(--sl-document-background-color);
 }
 
 
@@ -96,9 +98,11 @@ body {
      *
      * Na Sunlive Group:
      * --sl-color-text → --group-text-primary
+     *
+     * Fallback Light Forest (texto forest sobre fundo claro).
      */
     color:
-        var(--sl-color-text, #f6f7ed);
+        var(--sl-color-text, #1e2e24);
 
     font-family: var(--sl-ff-ui);
     font-synthesis: none;

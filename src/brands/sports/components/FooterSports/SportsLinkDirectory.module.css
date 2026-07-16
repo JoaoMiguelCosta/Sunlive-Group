@@ -10,25 +10,30 @@
     padding-inline: var(--section-inset);
     padding-block: clamp(0.92rem, 1.32vw, 1.22rem);
 
-    color: var(--sports-directory-text, var(--sports-text));
+    color: var(--sl-footer-text);
     background: transparent;
 
-    --chip-bg: var(--sports-directory-chip-bg);
-    --chip-bg-hover: var(--sports-directory-chip-bg-hover);
-    --chip-highlight-bg: var(--sports-directory-chip-highlight-bg);
+    --chip-bg: var(--sl-footer-chip-bg);
+    --chip-bg-hover: var(--sl-footer-hover-surface);
+    --chip-highlight-bg: var(--sl-footer-hover-surface);
 
-    --chip-border: var(--sports-directory-chip-border);
-    --chip-border-hover: var(--sports-directory-chip-border-hover);
-    --chip-highlight-border: var(--sports-directory-chip-highlight-border);
+    --chip-border: var(--sl-footer-border-strong);
+    --chip-border-hover: var(--sl-footer-accent-strong);
+    --chip-highlight-border: var(--sl-footer-accent-strong);
 
-    --chip-text: var(--sports-directory-chip-text);
-    --chip-text-hover: var(--sports-directory-chip-text-hover);
+    --chip-text: var(--sl-footer-text-soft);
+    --chip-text-hover: var(--sl-footer-text);
 
-    --chip-shadow: var(--sports-directory-chip-shadow);
-    --chip-shadow-hover: var(--sports-directory-chip-shadow-hover);
+    --chip-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.56),
+        0 0.35rem 0.8rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.1);
 
-    --chip-energy-line: var(--sports-directory-energy-line);
-    --chip-focus-ring: var(--sports-directory-focus-ring);
+    --chip-shadow-hover:
+        inset 0 1px 0 rgb(255 255 255 / 0.62),
+        0 0.65rem 1.2rem rgb(var(--sl-footer-text-rgb, 30 46 36) / 0.14);
+
+    --chip-energy-line: var(--sl-footer-accent-strong);
+    --chip-focus-ring: var(--sl-footer-focus-ring);
 }
 
 .block {
@@ -43,11 +48,11 @@
     margin: 0;
     justify-self: center;
 
-    color: var(--sports-directory-title-color, var(--sports-text));
-    font-size: var(--sports-support-title-size);
-    font-weight: 760;
-    line-height: var(--sports-support-title-line);
-    letter-spacing: var(--sports-support-title-spacing);
+    color: var(--sl-footer-accent-strong);
+    font-size: var(--sl-footer-title-font-size, clamp(1rem, 0.92rem + 0.26vw, 1.16rem));
+    font-weight: var(--sl-footer-title-font-weight, 700);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
     text-align: center;
     text-wrap: balance;
 }
@@ -69,15 +74,15 @@
     justify-content: center;
 
     min-inline-size: 0;
-    min-block-size: clamp(2.68rem, 3.02vw, 3rem);
+    min-block-size: var(--sl-footer-pill-min-height, clamp(2.55rem, 2.75vw, 2.9rem));
 
-    padding-inline: clamp(0.84rem, 0.98vw, 1rem);
-    padding-block: clamp(0.56rem, 0.62vw, 0.7rem);
+    padding-inline: var(--sl-footer-pill-padding-inline, clamp(0.85rem, 1vw, 1.05rem));
+    padding-block: var(--sl-footer-pill-padding-block, clamp(0.28rem, 0.35vw, 0.38rem));
 
     overflow: hidden;
 
     border: 1px solid var(--chip-border);
-    border-radius: 999px;
+    border-radius: var(--sl-footer-pill-radius, 1rem);
 
     background: var(--chip-bg);
     box-shadow: var(--chip-shadow);
@@ -107,34 +112,25 @@
     max-inline-size: 100%;
 
     color: currentColor;
-    font-size: clamp(0.8rem, 0.1vw + 0.79rem, 0.89rem);
-    font-weight: 700;
-    line-height: 1.08;
+    font-size: var(--sl-footer-pill-font-size, clamp(0.82rem, 0.77rem + 0.12vw, 0.91rem));
+    font-weight: var(--sl-footer-pill-font-weight, 600);
+    line-height: var(--sl-footer-pill-line-height, 1.1);
     letter-spacing: 0.005em;
     text-wrap: balance;
     overflow-wrap: anywhere;
     word-break: normal;
 
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.58);
+    text-shadow: none;
 }
 
+/*
+ * O pill Group não tem nenhum traço decorativo na base — a
+ * superfície do chip Light Forest deve ser uniforme. Elemento
+ * mantido no JSX (fora do âmbito deste lote) mas visualmente
+ * desligado.
+ */
 .energyLine {
-    position: absolute;
-    inset-inline: 18%;
-    inset-block-end: 0;
-
-    block-size: 1px;
-
-    background: var(--chip-energy-line);
-    opacity: 0.72;
-    transform: scaleX(0.84);
-    transform-origin: center;
-
-    pointer-events: none;
-
-    transition:
-        opacity 160ms ease,
-        transform 160ms ease;
+    display: none;
 }
 
 .chip:hover {
@@ -145,11 +141,6 @@
     box-shadow: var(--chip-shadow-hover);
 
     filter: saturate(1.03);
-}
-
-.chip:hover .energyLine {
-    opacity: 1;
-    transform: scaleX(1);
 }
 
 .chip:focus-visible {
@@ -163,18 +154,11 @@
         var(--chip-shadow-hover);
 }
 
-.chip:focus-visible .energyLine {
-    opacity: 1;
-    transform: scaleX(1);
-}
-
 .chip[data-variant="highlight"] {
     border-color: var(--chip-highlight-border);
     background: var(--chip-highlight-bg);
 
-    box-shadow:
-        var(--chip-shadow),
-        0 0 18px rgb(var(--sports-gold-rgb) / 0.055);
+    box-shadow: var(--chip-shadow);
 }
 
 .chip[data-variant="highlight"]:hover {
@@ -182,7 +166,7 @@
     background: var(--chip-bg-hover);
     box-shadow: var(--chip-shadow-hover);
 
-    color: #070a10;
+    color: var(--chip-text-hover);
 }
 
 @media (max-width: 1279.98px) {

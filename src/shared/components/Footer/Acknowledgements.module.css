@@ -80,9 +80,9 @@
    ========================================================= */
 
 :global([data-brand="travel"]) .sectionWrap {
-    --ack-accent: var(--travel-gold, #e0a72b);
-    --ack-border: rgb(79 195 247 / 0.2);
-    --ack-border-strong: rgb(224 167 43 / 0.42);
+    --ack-accent: var(--sl-footer-accent);
+    --ack-border: rgb(var(--sl-footer-border-rgb, 79 195 247) / 0.2);
+    --ack-border-strong: rgb(var(--sl-footer-accent-rgb, 224 167 43) / 0.42);
 
     isolation: isolate;
     overflow: hidden;
@@ -111,16 +111,12 @@
 
     border-color: var(--ack-border-strong);
 
-    background:
-        linear-gradient(180deg,
-            rgb(255 255 255 / 0.045) 0%,
-            rgb(255 255 255 / 0.012) 100%),
-        rgb(7 21 37 / 0.32);
+    background: var(--sl-footer-hover-surface);
 
     box-shadow:
         inset 0 1px 0 rgb(255 255 255 / 0.05),
         0 0.6rem 1.25rem rgb(0 0 0 / 0.18),
-        0 0 1rem rgb(79 195 247 / 0.07);
+        0 0 1rem rgb(var(--sl-footer-border-rgb, 79 195 247) / 0.07);
 }
 
 :global([data-brand="travel"]) .click:focus-visible {
@@ -128,7 +124,7 @@
 
     box-shadow:
         0 0 0 2px rgb(2 8 20 / 0.96),
-        0 0 0 4px rgb(224 167 43 / 0.62),
+        0 0 0 4px rgb(var(--sl-footer-accent-rgb, 224 167 43) / 0.62),
         0 0.6rem 1.25rem rgb(0 0 0 / 0.18);
 }
 
@@ -157,9 +153,9 @@
    ========================================================= */
 
 :global([data-brand="sports"]) .sectionWrap {
-    --ack-accent: var(--sports-gold, #d6a640);
-    --ack-border: rgb(var(--sports-gold-rgb, 214 166 64) / 0.22);
-    --ack-border-strong: rgb(var(--sports-gold-rgb, 214 166 64) / 0.42);
+    --ack-accent: var(--sl-footer-accent);
+    --ack-border: rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.22);
+    --ack-border-strong: rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.42);
 
     isolation: isolate;
     overflow: hidden;
@@ -188,16 +184,12 @@
 
     border-color: var(--ack-border-strong);
 
-    background:
-        linear-gradient(180deg,
-            rgb(255 255 255 / 0.04) 0%,
-            rgb(255 255 255 / 0.012) 100%),
-        rgb(8 18 30 / 0.32);
+    background: var(--sl-footer-hover-surface);
 
     box-shadow:
         inset 0 1px 0 rgb(255 255 255 / 0.05),
         0 0.6rem 1.25rem rgb(0 0 0 / 0.18),
-        0 0 1rem rgb(var(--sports-gold-rgb, 214 166 64) / 0.07);
+        0 0 1rem rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.07);
 }
 
 :global([data-brand="sports"]) .click:focus-visible {
@@ -205,7 +197,7 @@
 
     box-shadow:
         0 0 0 2px rgb(3 6 11 / 0.96),
-        0 0 0 4px rgb(var(--sports-gold-rgb, 214 166 64) / 0.62),
+        0 0 0 4px rgb(var(--sl-footer-border-rgb, 214 166 64) / 0.62),
         0 0.6rem 1.25rem rgb(0 0 0 / 0.18);
 }
 
@@ -237,10 +229,10 @@
    ========================================================= */
 
 :global([data-brand="group"]) .sectionWrap {
-    --ack-accent: var(--group-accent-primary);
-    --ack-border: var(--group-border-subtle);
-    --ack-border-strong: var(--group-border-default);
-    --ack-surface-hover: var(--group-surface-secondary);
+    --ack-accent: var(--sl-footer-accent-strong);
+    --ack-border: var(--sl-footer-border);
+    --ack-border-strong: var(--sl-footer-border-strong);
+    --ack-surface-hover: var(--sl-footer-social-bg-hover);
 
     isolation: isolate;
     overflow: hidden;
@@ -254,7 +246,7 @@
     border-bottom:
         1px solid var(--ack-border);
 
-    color: var(--group-text-primary);
+    color: var(--sl-footer-text);
     background: transparent;
 }
 
@@ -278,7 +270,7 @@
     background: var(--ack-surface-hover);
 
     box-shadow:
-        var(--group-shadow-sm);
+        var(--sl-shadow-sm);
 }
 
 :global([data-brand="group"]) .click:focus-visible {
@@ -290,8 +282,8 @@
     border-color: var(--group-focus-outline);
 
     box-shadow:
-        var(--group-focus-shadow),
-        var(--group-shadow-sm);
+        var(--sl-footer-focus-ring),
+        var(--sl-shadow-sm);
 }
 
 :global([data-brand="group"]) .img {
@@ -327,11 +319,9 @@
    ========================================================= */
 
 :global([data-brand="hotel"]) .sectionWrap {
-    --ack-accent: var(--hotel-champagne, #d9b978);
-    --ack-border: var(--hotel-footer-section-border,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.18));
-    --ack-border-strong: var(--hotel-footer-section-border-strong,
-            rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.3));
+    --ack-accent: var(--sl-footer-accent);
+    --ack-border: rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.18);
+    --ack-border-strong: rgb(var(--sl-footer-border-rgb, 217 185 120) / 0.3);
 
     isolation: isolate;
     overflow: hidden;
@@ -367,14 +357,10 @@
 
     border-color: var(--ack-border-strong);
 
-    background:
-        linear-gradient(180deg,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.04) 0%,
-            rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.012) 100%),
-        rgb(var(--hotel-espresso-rgb, 41 26 17) / 0.28);
+    background: var(--sl-footer-hover-surface);
 
     box-shadow:
-        inset 0 1px 0 rgb(var(--hotel-ivory-rgb, 251 247 239) / 0.05),
+        inset 0 1px 0 rgb(var(--sl-footer-text-rgb, 251 247 239) / 0.05),
         0 0.55rem 1.2rem rgb(0 0 0 / 0.16);
 }
 
@@ -382,9 +368,7 @@
     outline: none;
 
     box-shadow:
-        var(--hotel-focus-ring,
-            0 0 0 2px rgb(var(--hotel-black-rgb, 7 4 2) / 0.96),
-            0 0 0 4px rgb(var(--hotel-champagne-rgb, 217 185 120) / 0.86)),
+        var(--sl-footer-focus-ring),
         0 0.55rem 1.2rem rgb(0 0 0 / 0.16);
 }
 
@@ -490,15 +474,11 @@
         background: rgb(199 134 21 / 0.08);
     }
 
-    :global([data-brand="travel"]) .sectionWrap {
-        border-top-color: rgb(79 195 247 / 0.2);
-        border-bottom-color: rgb(79 195 247 / 0.2);
-        background: transparent;
-    }
-
-    :global([data-brand="sports"]) .sectionWrap {
-        border-top-color: rgb(214 166 64 / 0.22);
-        border-bottom-color: rgb(214 166 64 / 0.22);
+    :global([data-brand="travel"]) .sectionWrap,
+    :global([data-brand="sports"]) .sectionWrap,
+    :global([data-brand="hotel"]) .sectionWrap {
+        border-top-color: rgb(30 46 36 / 0.28);
+        border-bottom-color: rgb(30 46 36 / 0.28);
         background: transparent;
     }
 
@@ -506,11 +486,5 @@
         border-top-color: rgb(30 46 36 / 0.28);
         border-bottom-color: rgb(30 46 36 / 0.28);
         background: var(--group-logo-surface);
-    }
-
-    :global([data-brand="hotel"]) .sectionWrap {
-        border-top-color: rgb(217 185 120 / 0.18);
-        border-bottom-color: rgb(217 185 120 / 0.18);
-        background: transparent;
     }
 }

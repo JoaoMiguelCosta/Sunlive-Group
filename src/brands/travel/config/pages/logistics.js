@@ -1,3 +1,4 @@
+import logisticsActionPanel from "../sections/logistics/logisticsActionPanel.js";
 import logisticsSolutions from "../sections/logistics/logisticsSolutions.js";
 
 const logistics = {
@@ -7,6 +8,7 @@ const logistics = {
   },
   sections: {
     logisticsSolutions,
+    logisticsActionPanel,
   },
 };
 

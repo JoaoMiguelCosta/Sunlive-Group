@@ -21,11 +21,13 @@ const footer = {
       title: TRAVEL_COMPANY.brandName,
       tagline: TRAVEL_COMPANY.tagline,
       about: TRAVEL_COMPANY.about,
-      aboutIntro: TRAVEL_COMPANY.aboutIntro,
       link: {
         label: TRAVEL_COMPANY.brandName,
         href: TRAVEL_BASE_PATH,
       },
+    },
+    options: {
+      keepOriginalAboutFirstLine: true,
     },
     location: TRAVEL_COMPANY.location,
     contacts: TRAVEL_COMPANY.contacts,

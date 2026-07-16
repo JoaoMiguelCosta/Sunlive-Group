@@ -25,9 +25,8 @@
     overflow: clip;
 
     background: transparent;
-    color: var(--travel-text, var(--sl-color-text, #f6f7fb));
+    color: var(--travel-text, var(--sl-color-text, #1e2e24));
 
-    --section-inset: clamp(0.75rem, 4vw, 2.5rem);
     --header-content-gap: clamp(1rem, 2.2vw, 1.9rem);
 }
 

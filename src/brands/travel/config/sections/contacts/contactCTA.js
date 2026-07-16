@@ -9,11 +9,6 @@ const contactCTA = {
     lead: "Partilhe o contexto da viagem e receba um enquadramento claro, uma resposta rápida e uma proposta pensada com critério.",
     supportingText:
       "A Sunlive Travel estrutura soluções ajustadas ao perfil do grupo, ao destino, ao formato da deslocação e ao nível de serviço pretendido, com foco em organização, conforto e execução consistente do início ao fim.",
-    trustPoints: [
-      "Resposta com rapidez",
-      "Proposta ajustada ao grupo",
-      "Acompanhamento próximo",
-    ],
     stats: [
       {
         value: "Rápido",
@@ -29,7 +24,6 @@ const contactCTA = {
       },
     ],
     ui: {
-      trustPointsAriaLabel: "Vantagens do contacto",
       statsAriaLabel: "Destaques do contacto",
     },
   },

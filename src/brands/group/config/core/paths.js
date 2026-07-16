@@ -1,5 +1,4 @@
 export const GROUP_BASE_PATH = "/sunlive-group";
-export const GROUP_LOGOS_PATH = "/sunlive-group/logos";
 
 export const CONTACT_UNIT_SLUGS = Object.freeze({
   group: `${GROUP_BASE_PATH}#unidade-grupo`,

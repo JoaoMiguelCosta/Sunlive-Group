@@ -1,0 +1,570 @@
+/* =========================================================
+   MobileNavPanel — drawer partilhado (brands + navegação +
+   social + idioma). Consome apenas tokens globais (--sl-*).
+   ========================================================= */
+
+.panel {
+    --hn-radius-sm: 0.65rem;
+    --hn-radius-md: 1rem;
+
+    --hn-duration-fast: 150ms;
+    --hn-duration-normal: 240ms;
+    --hn-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --hn-ease-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    --hn-weight-medium: 500;
+    --hn-weight-semibold: 600;
+    --hn-label-tracking: -0.012em;
+
+    --hn-text: var(--sl-text-secondary);
+    --hn-text-muted: var(--sl-text-muted);
+    --hn-accent: var(--sl-accent-strong);
+    --hn-accent-fresh: var(--sl-accent);
+    --hn-surface-elevated: var(--sl-surface-footer);
+    --hn-surface-secondary: var(--sl-surface-secondary);
+    --hn-border-default: var(--sl-border-default);
+    --hn-border-subtle: var(--sl-border-subtle);
+
+    --hn-hover-bg: rgb(var(--sl-accent-strong-rgb) / 10%);
+    --hn-active-bg: rgb(var(--sl-accent-strong-rgb) / 15%);
+
+    --hn-focus-outline: var(--sl-accent);
+    --hn-focus-ring: var(--sl-focus-ring-color);
+    --hn-focus-offset-color: var(--sl-surface-footer);
+    --hn-focus-shadow:
+        0 0 0 2px var(--hn-focus-offset-color),
+        0 0 0 4px var(--hn-focus-outline),
+        0 0 1.25rem var(--hn-focus-ring);
+
+    position: fixed;
+    inset-block: 0;
+    inset-inline-end: 0;
+    z-index: 101;
+
+    display: flex;
+    flex-direction: column;
+
+    inline-size: min(22rem, calc(100vw - 2rem));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    border-inline-start: 1px solid var(--hn-border-default);
+
+    color: var(--hn-text);
+    background: var(--hn-surface-elevated);
+
+    box-shadow: -1rem 0 2.6rem rgb(30 46 36 / 0.18);
+
+    animation: slidePanel var(--hn-duration-normal) var(--hn-ease-emphasized) both;
+}
+
+@keyframes slidePanel {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+
+    background: rgb(30 46 36 / 42%);
+
+    cursor: pointer;
+
+    animation: fadeOverlay var(--hn-duration-fast, 150ms) ease both;
+}
+
+@keyframes fadeOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.panelHead {
+    display: flex;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+
+    padding: max(0.9rem, env(safe-area-inset-top)) 0.9rem 0.4rem;
+}
+
+.closeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-block-size: 42px;
+    min-inline-size: 42px;
+    padding: 0.4rem;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-md);
+
+    color: var(--hn-text);
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        color var(--hn-duration-fast) var(--hn-ease-standard),
+        background-color var(--hn-duration-fast) var(--hn-ease-standard),
+        border-color var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.closeBtn:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.closeBtn:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.btnIcon {
+    inline-size: 1.2rem;
+    block-size: 1.2rem;
+    flex: 0 0 auto;
+}
+
+.panelBody {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1.3rem;
+
+    padding-block-start: 0.25rem;
+    padding-block-end: max(2rem, env(safe-area-inset-bottom));
+    padding-inline: 1rem;
+}
+
+.panelBrands,
+.panelNavItems {
+    display: flex;
+    flex-direction: column;
+    gap: 0.16rem;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.panelDivider {
+    flex: 0 0 auto;
+    block-size: 1px;
+    background: var(--hn-border-subtle);
+}
+
+.panelLink {
+    display: block;
+
+    padding-block: 0.76rem;
+    padding-inline: 0.82rem;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-md);
+
+    color: var(--hn-text);
+    background: transparent;
+
+    font-family: var(--sl-ff-ui);
+    font-size: clamp(0.93rem, 2.4vw, 1rem);
+    font-weight: var(--hn-weight-medium);
+    line-height: 1.2;
+    letter-spacing: var(--hn-label-tracking);
+    text-decoration: none;
+
+    transition:
+        color var(--hn-duration-fast) var(--hn-ease-standard),
+        background-color var(--hn-duration-fast) var(--hn-ease-standard),
+        border-color var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.panelLink:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.panelLink:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.panelLinkActive {
+    color: var(--hn-accent);
+    background-color: var(--hn-active-bg);
+    font-weight: var(--hn-weight-semibold);
+}
+
+.panelLinkActive:hover {
+    background-color: var(--hn-active-bg);
+}
+
+
+/* =========================================================
+   Accordions — nav items com submenu (Destinos / Parceiros)
+   ========================================================= */
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+}
+
+.accordionHead {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 0.15rem;
+}
+
+.accordionTrigger {
+    flex: 1;
+}
+
+/*
+ * Destaque do trigger enquanto o próprio acordeão está aberto —
+ * mesmo tratamento do .navLinkOpen desktop, para triggers cujo
+ * href é só um hash e por isso não têm isActive de rota real.
+ */
+.accordion[data-open] .accordionTrigger {
+    color: var(--hn-accent);
+    background-color: var(--hn-active-bg);
+    font-weight: var(--hn-weight-semibold);
+}
+
+.accordionToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-block-size: 44px;
+    min-inline-size: 44px;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-md);
+
+    color: var(--hn-accent-fresh);
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--hn-duration-fast) var(--hn-ease-standard),
+        border-color var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.accordionToggle:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.accordionToggle:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.accordionChevron {
+    inline-size: 0.55rem;
+    block-size: 0.55rem;
+    flex: 0 0 auto;
+
+    color: var(--hn-accent-fresh);
+
+    transition: transform var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.accordionChevronOpen,
+.accordionToggleActive .accordionChevron {
+    transform: rotate(180deg);
+}
+
+.accordionList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+
+    margin: 0.15rem 0 0.3rem;
+    padding-inline-start: 0.9rem;
+
+    list-style: none;
+
+    border-inline-start: 1px solid var(--hn-border-subtle);
+}
+
+.accordionList[hidden] {
+    display: none;
+}
+
+.accordionLink {
+    display: block;
+
+    padding-block: 0.62rem;
+    padding-inline: 0.82rem;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-sm);
+
+    color: var(--hn-text-muted);
+    background: transparent;
+
+    font-family: var(--sl-ff-ui);
+    font-size: clamp(0.9rem, 2.2vw, 0.96rem);
+    font-weight: var(--hn-weight-medium);
+    line-height: 1.2;
+    text-decoration: none;
+
+    transition:
+        color var(--hn-duration-fast) var(--hn-ease-standard),
+        background-color var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.accordionLink:hover {
+    color: var(--hn-text);
+    background-color: var(--hn-hover-bg);
+}
+
+.accordionLink:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+
+/* =========================================================
+   Panel utility — social + idioma
+   ========================================================= */
+
+.panelUtil {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+
+    margin-block-start: auto;
+    padding-block: 1rem 0.25rem;
+
+    border-block-start: 1px solid var(--hn-border-subtle);
+}
+
+.panelUtilGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.42rem;
+}
+
+.panelUtilLabel {
+    margin: 0;
+    padding-inline: 0.78rem;
+
+    color: var(--hn-text-muted);
+
+    font-family: var(--sl-ff-ui);
+    font-size: 0.84rem;
+    font-weight: var(--hn-weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.panelUtilSocials {
+    display: flex;
+    gap: 0.24rem;
+
+    padding-inline: 0.35rem;
+}
+
+.panelSocialBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-block-size: 44px;
+    min-inline-size: 44px;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-md);
+
+    color: var(--hn-text);
+    background: transparent;
+
+    text-decoration: none;
+
+    transition:
+        color var(--hn-duration-fast) var(--hn-ease-standard),
+        background-color var(--hn-duration-fast) var(--hn-ease-standard),
+        border-color var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.panelSocialBtn:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.panelSocialBtn:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.panelSocialIcon {
+    inline-size: 1.2rem;
+    block-size: 1.2rem;
+}
+
+.panelLangWrap {
+    padding-inline: 0.35rem;
+}
+
+.panelLangBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+
+    min-block-size: 44px;
+    padding-block: 0.34rem;
+    padding-inline: 0.78rem;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-md);
+
+    color: var(--hn-text);
+    background: transparent;
+
+    font-family: var(--sl-ff-ui);
+    font-size: var(--hn-label-size, clamp(0.9rem, 1.6vw, 1.04rem));
+    font-weight: var(--hn-weight-medium);
+    letter-spacing: var(--hn-label-tracking);
+
+    cursor: pointer;
+
+    transition:
+        color var(--hn-duration-fast) var(--hn-ease-standard),
+        background-color var(--hn-duration-fast) var(--hn-ease-standard),
+        border-color var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.panelLangBtn:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.panelLangBtn:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.panelLangText {
+    font-family: var(--sl-ff-ui);
+    font-size: var(--hn-label-size, clamp(0.9rem, 1.6vw, 1.04rem));
+    font-weight: var(--hn-weight-medium);
+    letter-spacing: var(--hn-label-tracking);
+}
+
+.panelLangChevron {
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    flex: 0 0 auto;
+
+    color: var(--hn-accent-fresh);
+
+    transition: transform var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.panelLangChevronOpen {
+    transform: rotate(180deg);
+}
+
+.panelLangMenu {
+    margin: 0.35rem 0 0;
+    padding: 0.38rem;
+
+    border: 1px solid var(--hn-border-default);
+    border-radius: var(--hn-radius-md);
+
+    background: var(--hn-surface-secondary);
+
+    list-style: none;
+}
+
+.panelLangMenu[hidden] {
+    display: none;
+}
+
+.panelLangItem {
+    display: grid;
+    gap: 0.12rem;
+
+    inline-size: 100%;
+    padding-block: 0.62rem;
+    padding-inline: 0.78rem;
+
+    border: 1px solid transparent;
+    border-radius: var(--hn-radius-sm);
+
+    color: var(--hn-text);
+    background: transparent;
+
+    text-align: start;
+
+    cursor: pointer;
+
+    transition:
+        color var(--hn-duration-fast) var(--hn-ease-standard),
+        background-color var(--hn-duration-fast) var(--hn-ease-standard),
+        border-color var(--hn-duration-fast) var(--hn-ease-standard);
+}
+
+.panelLangItem:hover {
+    background-color: var(--hn-hover-bg);
+}
+
+.panelLangItem:focus-visible {
+    outline: none;
+    border-color: var(--hn-focus-outline);
+    box-shadow: var(--hn-focus-shadow);
+}
+
+.panelLangItem:disabled {
+    color: var(--hn-text-muted);
+    opacity: 0.58;
+    cursor: not-allowed;
+}
+
+.panelLangItemLabel {
+    display: block;
+
+    font-weight: var(--hn-weight-semibold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.panelLangItemName {
+    display: block;
+
+    color: var(--hn-text-muted);
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   Reduced motion
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .chevron,
+    .closeBtn,
+    .panelLink,
+    .accordionToggle,
+    .accordionChevron,
+    .accordionLink,
+    .panelSocialBtn,
+    .panelLangBtn,
+    .panelLangChevron,
+    .panelLangItem {
+        transition: none;
+    }
+
+    .overlay,
+    .panel {
+        animation: none;
+    }
+}

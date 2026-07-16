@@ -1,5 +1,14 @@
-import TravelShowcaseHero from "../../../../shared/ui/TravelShowcaseHero/TravelShowcaseHero.jsx";
+import TravelFeaturePanel from "../../../../shared/ui/TravelFeaturePanel/TravelFeaturePanel.jsx";
 
 export default function TravelPartnersHero({ hero = {} }) {
-  return <TravelShowcaseHero content={hero} sectionKey="travel-partners" />;
+  return (
+    <TravelFeaturePanel
+      eyebrow={hero?.eyebrow}
+      title={hero?.title}
+      description={hero?.lead}
+      supportingText={hero?.supportingText}
+      items={hero?.insights}
+      sectionKey="travel-partners-feature-panel"
+    />
+  );
 }

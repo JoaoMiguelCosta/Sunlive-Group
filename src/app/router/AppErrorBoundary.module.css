@@ -1,12 +1,39 @@
 .root {
+  /*
+   * Variáveis locais — contrato interno do componente, não espalhado
+   * pelas regras abaixo. Consomem tokens globais --sl-*, não tokens de
+   * brand específica (--group-*), porque o error boundary é um estado
+   * global e pode ser renderizado em qualquer contexto de brand.
+   *
+   * Onde já existe um token semântico global com o mesmo propósito
+   * (fundo, texto, superfície, borda, focus), a variável local aponta
+   * diretamente para ele em vez de derivar por color-mix.
+   *
+   * --aeb-action-bg/-bg-hover ficam derivados de --aeb-text: o texto do
+   * botão (.reloadButton) não muda de cor consoante o estado, e
+   * --sl-accent/--sl-accent-strong são escuros de mais para manter
+   * contraste como fundo sólido atrás desse texto. --sl-accent-strong
+   * só é seguro aqui como --aeb-action-border-hover (cor de contorno,
+   * não preenchimento atrás de texto).
+   */
+  --aeb-bg: var(--sl-document-background-color);
+  --aeb-text: var(--sl-text-primary);
+  --aeb-text-secondary: var(--sl-text-secondary);
+  --aeb-border: var(--sl-border-subtle);
+  --aeb-surface: var(--sl-surface-footer);
+  --aeb-action-bg: color-mix(in oklab, var(--aeb-text), transparent 92%);
+  --aeb-action-bg-hover: color-mix(in oklab, var(--aeb-text), transparent 84%);
+  --aeb-action-border-hover: var(--sl-accent-strong);
+  --aeb-focus: var(--sl-focus-ring-color);
+
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100dvh;
   padding: 2rem 1.25rem;
   box-sizing: border-box;
-  background: #0b0b0b;
-  color: #e9e4d8;
+  background: var(--aeb-bg);
+  color: var(--aeb-text);
   font-family: var(--sl-ff-ui, system-ui, -apple-system, sans-serif);
 }
 
@@ -14,9 +41,9 @@
   width: 100%;
   max-width: 36rem;
   padding: 2.5rem 2rem;
-  border: 1px solid rgb(255 255 255 / 0.1);
+  border: 1px solid var(--aeb-border);
   border-radius: 1rem;
-  background: rgb(255 255 255 / 0.04);
+  background: var(--aeb-surface);
 }
 
 .title {
@@ -25,14 +52,14 @@
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: #f4f4f1;
+  color: var(--aeb-text);
 }
 
 .description {
   margin: 0 0 2rem;
   font-size: clamp(0.9rem, 2vw, 1rem);
   line-height: 1.65;
-  color: rgb(233 228 216 / 0.72);
+  color: var(--aeb-text-secondary);
 }
 
 .actions {
@@ -44,10 +71,10 @@
 
 .reloadButton {
   padding: 0.6rem 1.25rem;
-  border: 1px solid rgb(255 255 255 / 0.2);
+  border: 1px solid var(--aeb-border);
   border-radius: 0.5rem;
-  background: rgb(255 255 255 / 0.08);
-  color: #f4f4f1;
+  background: var(--aeb-action-bg);
+  color: var(--aeb-text);
   font-family: inherit;
   font-size: 0.9rem;
   font-weight: 500;
@@ -56,21 +83,21 @@
 }
 
 .reloadButton:hover {
-  background: rgb(255 255 255 / 0.14);
-  border-color: rgb(255 255 255 / 0.32);
+  background: var(--aeb-action-bg-hover);
+  border-color: var(--aeb-action-border-hover);
 }
 
 .reloadButton:focus-visible {
-  outline: 2px solid rgb(255 255 255 / 0.6);
+  outline: 2px solid var(--aeb-focus);
   outline-offset: 3px;
 }
 
 .homeLink {
   padding: 0.6rem 1.25rem;
-  border: 1px solid rgb(255 255 255 / 0.1);
+  border: 1px solid var(--aeb-border);
   border-radius: 0.5rem;
   background: transparent;
-  color: rgb(233 228 216 / 0.72);
+  color: var(--aeb-text-secondary);
   font-size: 0.9rem;
   font-weight: 400;
   text-decoration: none;
@@ -78,12 +105,12 @@
 }
 
 .homeLink:hover {
-  color: #f4f4f1;
-  border-color: rgb(255 255 255 / 0.24);
+  color: var(--aeb-text);
+  border-color: var(--aeb-action-border-hover);
 }
 
 .homeLink:focus-visible {
-  outline: 2px solid rgb(255 255 255 / 0.6);
+  outline: 2px solid var(--aeb-focus);
   outline-offset: 3px;
 }
 

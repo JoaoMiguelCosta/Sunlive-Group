@@ -1,39 +1,37 @@
 import destinationsPage from "../../../../config/pages/destinations.js";
-
-import styles from "./InternationalDestinationsSection.module.css";
-import InternationalEditorialHero from "./InternationalEditorialHero.jsx";
-import InternationalDestinationsShowcase from "./InternationalDestinationsShowcase.jsx";
+import TravelCollectionSection from "../../../../shared/ui/TravelCollectionSection/TravelCollectionSection.jsx";
 
 export default function InternationalDestinationsSection() {
   const section = destinationsPage.sections.internationalDestinations;
 
   if (!section) return null;
 
-  const sectionId = section?.id ?? "destinos-internacionais";
-  const sectionLabel =
-    section?.showcase?.ariaLabel ?? "Explorar destinos internacionais";
-
-  const hero = section?.showcaseHero ?? {};
-  const showcase = section?.showcase ?? {};
-  const destinations = Array.isArray(section?.destinations)
+  const items = Array.isArray(section?.destinations)
     ? section.destinations
     : [];
+
+  const hasContent =
+    section?.title || section?.description || items.length > 0;
+
+  if (!hasContent) return null;
+
+  const sectionId = section?.id ?? "destinos-internacionais";
+  const sectionLabel =
+    section?.ariaLabel ?? section?.title ?? "Viagens internacionais";
 
   return (
     <section
       id={sectionId}
-      className={styles.section}
       data-section="international-destinations"
       aria-label={sectionLabel}
     >
-      <div className={styles.inner}>
-        <InternationalEditorialHero hero={hero} />
-
-        <InternationalDestinationsShowcase
-          showcase={showcase}
-          destinations={destinations}
-        />
-      </div>
+      <TravelCollectionSection
+        eyebrow={section?.eyebrow}
+        title={section?.title}
+        description={section?.description}
+        items={items}
+        sectionKey="international-destinations"
+      />
     </section>
   );
 }

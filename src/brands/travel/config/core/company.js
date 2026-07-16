@@ -6,12 +6,11 @@ import {
 export const TRAVEL_COMPANY = Object.freeze({
   key: "travel",
   brandName: "Sunlive Travel",
-  tagline: "Transformando viagens em experiências memoráveis.",
-  aboutIntro:
-    "Na Sunlive Travel, acreditamos que viajar é mais do que deslocar-se. É criar ligações, conhecer culturas e viver experiências com significado.",
+  tagline:
+    "Acreditamos que viajar é mais do que simplesmente deslocar-se de um lugar para outro.",
   about:
-    "Na Sunlive Travel, acreditamos que viajar é mais do que deslocar-se. É criar ligações, conhecer culturas e viver experiências com significado.\n\n" +
-    "Comprometemo-nos a oferecer soluções de mobilidade e alojamento com qualidade, conforto e segurança.",
+    "Trata-se de estabelecer laços, descobrir novas culturas e criar memórias.\n\n" +
+    "Estamos totalmente empenhados em proporcionar transporte e alojamento seguros, confortáveis e de qualidade a cada um dos nossos clientes.",
   location: SUNLIVE_HQ_LOCATION,
   contacts: {
     title: CONTACTS_SECTION_TITLE,

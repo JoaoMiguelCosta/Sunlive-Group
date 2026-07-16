@@ -86,8 +86,15 @@
   border-radius:
     0 0 var(--group-radius-md) var(--group-radius-md);
 
+  color: var(--group-text-secondary);
+
   background-color:
     var(--group-disclosure-panel-background);
+}
+
+.gridWrap {
+  margin-block-start:
+    clamp(1.75rem, 3.6vw, 2.75rem);
 }
 
 
