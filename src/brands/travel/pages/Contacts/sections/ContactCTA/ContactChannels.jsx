@@ -1,3 +1,4 @@
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import styles from "./ContactChannels.module.css";
 
 function isExternalUrl(href) {
@@ -25,9 +26,11 @@ export default function ContactChannels({
           const isExternal = isExternalUrl(href);
 
           return (
-            <li
+            <ScrollReveal
+              as="li"
               key={channel.key || `${channel.label}-${index}`}
               className={styles.item}
+              staggerIndex={index}
             >
               <a
                 href={href}
@@ -52,7 +55,7 @@ export default function ContactChannels({
 
                 <span className={styles.chevron} aria-hidden="true" />
               </a>
-            </li>
+            </ScrollReveal>
           );
         })}
       </ul>

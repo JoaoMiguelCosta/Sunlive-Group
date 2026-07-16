@@ -1,5 +1,6 @@
 import testimonialsPage from "../../../../config/pages/testimonials.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import TravelTrustPanel from "../../../../shared/ui/TravelTrustPanel/TravelTrustPanel.jsx";
 
 import TestimonialsCarousel from "./TestimonialsCarousel.jsx";
@@ -30,22 +31,26 @@ export default function TestimonialsAndMetricsSection() {
       data-section="testimonials-and-metrics"
     >
       <div className={styles.inner}>
-        <TravelTrustPanel
-          titleAs="h1"
-          eyebrow={headline?.eyebrow}
-          title={headline?.title}
-          lead={headline?.lead}
-          description={headline?.description}
-          stats={headline?.stats}
-          statsAriaLabel={headline?.ui?.statsAriaLabel}
-        />
+        <ScrollReveal>
+          <TravelTrustPanel
+            titleAs="h1"
+            eyebrow={headline?.eyebrow}
+            title={headline?.title}
+            lead={headline?.lead}
+            description={headline?.description}
+            stats={headline?.stats}
+            statsAriaLabel={headline?.ui?.statsAriaLabel}
+          />
+        </ScrollReveal>
 
         <div className={styles.gridBlock}>
-          <TestimonialsCarousel
-            spotlight={spotlight}
-            testimonials={testimonials}
-            icons={icons}
-          />
+          <ScrollReveal>
+            <TestimonialsCarousel
+              spotlight={spotlight}
+              testimonials={testimonials}
+              icons={icons}
+            />
+          </ScrollReveal>
         </div>
       </div>
     </section>

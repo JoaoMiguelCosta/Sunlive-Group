@@ -1,3 +1,4 @@
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import styles from "./QuoteRequestChecklist.module.css";
 
 export default function QuoteRequestChecklist({
@@ -10,7 +11,7 @@ export default function QuoteRequestChecklist({
   if (validItems.length === 0) return null;
 
   return (
-    <div className={styles.wrap}>
+    <ScrollReveal className={styles.wrap}>
       <ul className={styles.list} role="list" aria-label={ariaLabel}>
         {validItems.map(({ key, label }, index) => (
           <li key={key || `${label}-${index}`} className={styles.item}>
@@ -19,6 +20,6 @@ export default function QuoteRequestChecklist({
           </li>
         ))}
       </ul>
-    </div>
+    </ScrollReveal>
   );
 }

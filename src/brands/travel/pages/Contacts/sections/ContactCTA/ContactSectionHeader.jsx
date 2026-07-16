@@ -1,3 +1,4 @@
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import styles from "./ContactSectionHeader.module.css";
 
 export default function ContactSectionHeader({ id, eyebrow, title, description }) {
@@ -5,7 +6,7 @@ export default function ContactSectionHeader({ id, eyebrow, title, description }
   if (!hasContent) return null;
 
   return (
-    <div className={styles.root}>
+    <ScrollReveal className={styles.root}>
       {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
 
       {title ? (
@@ -15,6 +16,6 @@ export default function ContactSectionHeader({ id, eyebrow, title, description }
       ) : null}
 
       {description ? <p className={styles.description}>{description}</p> : null}
-    </div>
+    </ScrollReveal>
   );
 }
