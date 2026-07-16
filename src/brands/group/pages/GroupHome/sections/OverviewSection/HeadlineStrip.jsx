@@ -1,5 +1,6 @@
 import styles from "../../../../shared/components/GroupImageHeadline.module.css";
 import homePage from "../../../../config/pages/home.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 const overview = homePage.sections.overview;
 
 export default function HeadlineStrip() {
@@ -12,7 +13,7 @@ export default function HeadlineStrip() {
   const alt = `${title} ${subtitle}`.trim() || "Headline Sunlive Group";
 
   return (
-    <div className={styles.wrap}>
+    <ScrollReveal as="div" className={styles.wrap}>
       <div className={styles.frame}>
         <img
           className={styles.img}
@@ -26,6 +27,6 @@ export default function HeadlineStrip() {
           draggable="false"
         />
       </div>
-    </div>
+    </ScrollReveal>
   );
 }

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import { ABOUT_SECTION } from "./aboutSection.config.js";
 import styles from "./AboutSection.module.css";
 import ChevronDownIcon from "../../../../shared/components/ChevronDownIcon.jsx";
@@ -109,7 +110,7 @@ export default function AboutSection() {
       aria-label={ABOUT_SECTION.ariaLabel}
     >
       <div className={styles.inner}>
-        <div className={styles.accordion}>
+        <ScrollReveal as="div" className={styles.accordion}>
           {ABOUT_SECTION.items.map((item) => {
             const open = isOpen(item.key);
             const triggerId = `about-btn-${item.key}`;
@@ -149,7 +150,7 @@ export default function AboutSection() {
               </div>
             );
           })}
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
