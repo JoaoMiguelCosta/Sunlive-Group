@@ -1,6 +1,7 @@
 import logistics from "../../../../config/pages/logistics.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import TravelFeaturePanel from "../../../../shared/ui/TravelFeaturePanel/TravelFeaturePanel.jsx";
 import ServiceOfferingsGrid from "./ServiceOfferingsGrid.jsx";
 
@@ -29,16 +30,18 @@ export default function LogisticsSolutionsSection() {
     >
       <div className={styles.sectionFrame}>
         <div className={styles.inner}>
-          <TravelFeaturePanel
-            eyebrow={operationalHero?.eyebrow}
-            title={operationalHero?.title}
-            description={operationalHero?.lead}
-            supportingText={operationalHero?.supportingText}
-            items={operationalHero?.assurances}
-            sectionKey="logistics-overview"
-            titleAs="h1"
-            itemTitleAs="h3"
-          />
+          <ScrollReveal>
+            <TravelFeaturePanel
+              eyebrow={operationalHero?.eyebrow}
+              title={operationalHero?.title}
+              description={operationalHero?.lead}
+              supportingText={operationalHero?.supportingText}
+              items={operationalHero?.assurances}
+              sectionKey="logistics-overview"
+              titleAs="h1"
+              itemTitleAs="h3"
+            />
+          </ScrollReveal>
 
           <ServiceOfferingsGrid
             services={services}
