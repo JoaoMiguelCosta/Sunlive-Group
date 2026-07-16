@@ -1,4 +1,5 @@
 import destinations from "../../../../config/pages/destinations.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import TravelActionPanel from "../../../../shared/ui/TravelActionPanel/TravelActionPanel.jsx";
 
 export default function DestinationsActionPanelSection() {
@@ -7,10 +8,12 @@ export default function DestinationsActionPanelSection() {
   if (!section) return null;
 
   return (
-    <TravelActionPanel
-      panel={section?.actionPanel}
-      cta={section?.cta}
-      sectionKey="destinations-action-panel"
-    />
+    <ScrollReveal>
+      <TravelActionPanel
+        panel={section?.actionPanel}
+        cta={section?.cta}
+        sectionKey="destinations-action-panel"
+      />
+    </ScrollReveal>
   );
 }

@@ -1,6 +1,7 @@
+import ScrollReveal from "../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import styles from "./TravelCollectionSection.module.css";
 
-export default function TravelCollectionCard({ item }) {
+export default function TravelCollectionCard({ item, staggerIndex = 0 }) {
   const { anchorId, title, description, image, meta, href } = item;
 
   const content = (
@@ -31,7 +32,12 @@ export default function TravelCollectionCard({ item }) {
   );
 
   return (
-    <li id={anchorId} className={styles.item}>
+    <ScrollReveal
+      as="li"
+      id={anchorId}
+      className={styles.item}
+      staggerIndex={staggerIndex}
+    >
       {href ? (
         <a
           className={`${styles.card} ${styles.cardLink}`}
@@ -44,6 +50,6 @@ export default function TravelCollectionCard({ item }) {
       ) : (
         <article className={styles.card}>{content}</article>
       )}
-    </li>
+    </ScrollReveal>
   );
 }
