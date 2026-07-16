@@ -133,12 +133,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-inline-size: 0;
+    max-inline-size: 100%;
     padding-top: 0.1rem;
 }
 
 .ctaButton {
     inline-size: auto;
     min-inline-size: clamp(12rem, 18vw, 15rem);
+    max-inline-size: 100%;
 }
 
 /* Desktop largo */
