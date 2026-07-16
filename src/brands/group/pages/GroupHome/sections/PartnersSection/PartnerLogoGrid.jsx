@@ -50,17 +50,21 @@ export default function PartnerLogoGrid({
         role="list"
         aria-label={ariaLabel}
       >
-        {validItems.map((item, index) => (
-          <ScrollReveal
-            key={item.key}
-            as="div"
-            role="listitem"
-            className={styles.cell}
-            staggerIndex={index}
-          >
-            <PartnerLogoCard {...item} />
-          </ScrollReveal>
-        ))}
+        {validItems.map((item, index) => {
+          const { key: itemKey, ...cardProps } = item;
+
+          return (
+            <ScrollReveal
+              key={itemKey}
+              as="div"
+              role="listitem"
+              className={styles.cell}
+              staggerIndex={index}
+            >
+              <PartnerLogoCard {...cardProps} />
+            </ScrollReveal>
+          );
+        })}
       </div>
     </div>
   );
