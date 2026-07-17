@@ -49,12 +49,12 @@
         0 8px 20px rgba(0, 0, 0, .28);
 
     transition:
-        transform .16s ease,
-        box-shadow .16s ease,
-        border-color .16s ease,
-        color .16s ease,
-        background .16s ease,
-        opacity .16s ease;
+        transform var(--sl-duration-fast, .16s) ease,
+        box-shadow var(--sl-duration-fast, .16s) ease,
+        border-color var(--sl-duration-fast, .16s) ease,
+        color var(--sl-duration-fast, .16s) ease,
+        background var(--sl-duration-fast, .16s) ease,
+        opacity var(--sl-duration-fast, .16s) ease;
 }
 
 .button>* {

@@ -937,10 +937,21 @@
 }
 
 /* =======================================================
-   Travel Header — Light Forest (paridade com Group)
+   Travel / Sports / Hotel Header — Light Forest
+   (paridade com Group)
+
+   Travel, Sports e Hotel partilham exatamente as mesmas
+   declarações de social/idioma — consolidados aqui via
+   :is() com a mesma especificidade que os seletores
+   individuais que substituem. Diferenças reais e
+   deliberadas entre marcas (padding extra do Travel, faixa
+   compacta exclusiva do Travel) mantêm-se em blocos
+   próprios, depois do bloco partilhado.
    ======================================================= */
 
-.utilityBar[data-variant="travel-header"] {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) {
     --accent: var(--sl-accent-strong);
 
     --header-menu-bg: var(--sl-surface-footer);
@@ -949,37 +960,57 @@
     z-index: 80;
 }
 
-.utilityBar[data-variant="travel-header"] .inner {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .inner {
     grid-template-columns: minmax(0, 1fr) auto;
 
     min-height: clamp(62px, 4.6vw, 72px);
     padding-block: 0.42rem;
-    /* Paridade com .utilityBar[data-variant="group-header"] .inner */
-    padding-inline: clamp(0.15rem, 0.5vw, 0.4rem);
 
     isolation: isolate;
     border-bottom: 0;
 }
 
-.utilityBar[data-variant="travel-header"] .inner::before,
-.utilityBar[data-variant="travel-header"] .inner::after {
+/*
+ * Travel — paridade com .utilityBar[data-variant="group-header"]
+ * .inner: mantém-se como regra própria (não existe em Sports/Hotel).
+ */
+.utilityBar[data-variant="travel-header"] .inner {
+    padding-inline: clamp(0.15rem, 0.5vw, 0.4rem);
+}
+
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .inner::before,
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .inner::after {
     content: none;
 }
 
-.utilityBar[data-variant="travel-header"] .left {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .left {
     display: none;
 }
 
-.utilityBar[data-variant="travel-header"] .center {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .center {
     justify-content: flex-start;
     overflow: visible;
 }
 
-.utilityBar[data-variant="travel-header"] .socials {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .socials {
     gap: 0.24rem;
 }
 
-.utilityBar[data-variant="travel-header"] .socialLink {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .socialLink {
     inline-size: 40px;
     block-size: 40px;
 
@@ -999,11 +1030,15 @@
         box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.utilityBar[data-variant="travel-header"] .socialLink::before {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .socialLink::before {
     content: none;
 }
 
-.utilityBar[data-variant="travel-header"] .socialLink:hover {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .socialLink:hover {
     transform: none;
 
     border-color: var(--sl-border-subtle);
@@ -1012,7 +1047,9 @@
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.42);
 }
 
-.utilityBar[data-variant="travel-header"] .socialIcon {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .socialIcon {
     inline-size: 1.08rem;
     block-size: 1.08rem;
 
@@ -1020,11 +1057,15 @@
     filter: none;
 }
 
-.utilityBar[data-variant="travel-header"] .langWrap {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langWrap {
     z-index: 90;
 }
 
-.utilityBar[data-variant="travel-header"] .langBtn {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langBtn {
     inline-size: auto;
     block-size: auto;
     min-block-size: 40px;
@@ -1046,8 +1087,12 @@
     -webkit-backdrop-filter: none;
 }
 
-.utilityBar[data-variant="travel-header"] .langBtn:hover,
-.utilityBar[data-variant="travel-header"] .langBtn[data-open="true"] {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langBtn:hover,
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langBtn[data-open="true"] {
     color: var(--sl-text-secondary);
     border-color: var(--sl-border-subtle);
     background: var(--sl-surface-primary);
@@ -1055,21 +1100,29 @@
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.42);
 }
 
-.utilityBar[data-variant="travel-header"] .langText {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langText {
     font-family: var(--sl-ff-ui);
     text-transform: none;
 }
 
-.utilityBar[data-variant="travel-header"] .chevron {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .chevron {
     color: var(--sl-accent);
     opacity: 1;
 }
 
-.utilityBar[data-variant="travel-header"] .langBtn[data-open="true"] .chevron {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langBtn[data-open="true"] .chevron {
     color: var(--sl-accent-strong);
 }
 
-.utilityBar[data-variant="travel-header"] .langMenu {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langMenu {
     z-index: 100;
     overflow: hidden;
 
@@ -1086,33 +1139,50 @@
     -webkit-backdrop-filter: none;
 }
 
-.utilityBar[data-variant="travel-header"] .langItem {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langItem {
     border: 1px solid transparent;
     color: var(--sl-text-secondary);
     background: transparent;
 }
 
-.utilityBar[data-variant="travel-header"] .langItem:hover {
-    background: rgb(46 77 59 / 10%);
+/*
+ * Travel usava rgb(46 77 59 / 10%) hardcoded — valor idêntico ao
+ * de --sl-accent-strong-rgb (46 77 59), por isso consolidado no
+ * token sem alterar a cor computada.
+ */
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langItem:hover {
+    background: rgb(var(--sl-accent-strong-rgb) / 10%);
 }
 
-.utilityBar[data-variant="travel-header"] .langMenu [aria-selected="true"] .langItem {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langMenu [aria-selected="true"] .langItem {
     color: var(--sl-accent-strong);
     background: var(--header-active-bg);
     font-weight: 600;
 }
 
-.utilityBar[data-variant="travel-header"] .langItemName {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langItemName {
     color: var(--sl-text-muted);
     opacity: 1;
 }
 
-.utilityBar[data-variant="travel-header"] .langItem:disabled {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langItem:disabled {
     color: var(--sl-text-muted);
     opacity: 0.58;
 }
 
-.utilityBar[data-variant="travel-header"] .langItem:disabled:hover {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) .langItem:disabled:hover {
     color: var(--sl-text-muted);
     background: transparent;
     border-color: transparent;
@@ -1120,7 +1190,9 @@
     filter: none;
 }
 
-.utilityBar[data-variant="travel-header"] :is(.socialLink, .langBtn, .langItem):focus-visible {
+:is(.utilityBar[data-variant="travel-header"],
+    .utilityBar[data-variant="sports-header"],
+    .utilityBar[data-variant="hotel-header"]) :is(.socialLink, .langBtn, .langItem):focus-visible {
     outline: none;
     box-shadow:
         0 0 0 2px var(--sl-surface-footer),
@@ -1129,15 +1201,21 @@
 }
 
 @media (max-width: 768px) {
-    .utilityBar[data-variant="travel-header"] .right {
+    :is(.utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) .right {
         display: none;
     }
 
-    .utilityBar[data-variant="travel-header"] .inner {
+    :is(.utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) .inner {
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .utilityBar[data-variant="travel-header"] .center {
+    :is(.utilityBar[data-variant="travel-header"],
+        .utilityBar[data-variant="sports-header"],
+        .utilityBar[data-variant="hotel-header"]) .center {
         inline-size: 100%;
     }
 }
@@ -1148,6 +1226,8 @@
  * TravelHeaderNav.module.css. Reduz redes sociais e idioma de forma
  * fluida entre 769px e ~1024px, para libertar espaço à navegação
  * sem esconder nada nem introduzir scroll horizontal.
+ *
+ * Exclusivo do Travel — Sports e Hotel não tinham esta media query.
  */
 @media (min-width: 769px) and (max-width: 1024px) {
     .utilityBar[data-variant="travel-header"] .socials {
@@ -1167,414 +1247,6 @@
     .utilityBar[data-variant="travel-header"] .langBtn {
         gap: clamp(0.16rem, 0.25vw, 0.28rem);
         padding-inline: clamp(0.2rem, 0.45vw, 0.4rem);
-    }
-}
-
-/* =======================================================
-   Sports Header — ESTILO SPORTS
-   ======================================================= */
-
-.utilityBar[data-variant="sports-header"] {
-    --accent: var(--sl-accent-strong);
-
-    --header-menu-bg: var(--sl-surface-footer);
-    --header-active-bg: rgb(var(--sl-accent-strong-rgb) / 15%);
-
-    z-index: 80;
-}
-
-.utilityBar[data-variant="sports-header"] .inner {
-    grid-template-columns: minmax(0, 1fr) auto;
-
-    min-height: clamp(62px, 4.6vw, 72px);
-    padding-block: 0.42rem;
-
-    isolation: isolate;
-    border-bottom: 0;
-}
-
-.utilityBar[data-variant="sports-header"] .inner::before,
-.utilityBar[data-variant="sports-header"] .inner::after {
-    content: none;
-}
-
-.utilityBar[data-variant="sports-header"] .left {
-    display: none;
-}
-
-.utilityBar[data-variant="sports-header"] .center {
-    justify-content: flex-start;
-    overflow: visible;
-}
-
-.utilityBar[data-variant="sports-header"] .socials {
-    gap: 0.24rem;
-}
-
-.utilityBar[data-variant="sports-header"] .socialLink {
-    inline-size: 40px;
-    block-size: 40px;
-
-    border: 1px solid transparent;
-    border-radius: 1rem;
-
-    color: var(--sl-text-secondary);
-    background: transparent;
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-
-    transition:
-        color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-        background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-        border-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.utilityBar[data-variant="sports-header"] .socialLink::before {
-    content: none;
-}
-
-.utilityBar[data-variant="sports-header"] .socialLink:hover {
-    transform: none;
-
-    border-color: var(--sl-border-subtle);
-    background: var(--sl-surface-primary);
-
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.42);
-}
-
-.utilityBar[data-variant="sports-header"] .socialIcon {
-    inline-size: 1.08rem;
-    block-size: 1.08rem;
-
-    color: currentColor;
-    filter: none;
-}
-
-.utilityBar[data-variant="sports-header"] .langWrap {
-    z-index: 90;
-}
-
-.utilityBar[data-variant="sports-header"] .langBtn {
-    inline-size: auto;
-    block-size: auto;
-    min-block-size: 40px;
-
-    gap: 0.4rem;
-
-    padding-block: 0.32rem;
-    padding-inline: 0.68rem;
-
-    border: 1px solid transparent;
-    border-radius: 1rem;
-
-    color: var(--sl-text-secondary);
-    background: transparent;
-
-    text-shadow: none;
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-}
-
-.utilityBar[data-variant="sports-header"] .langBtn:hover,
-.utilityBar[data-variant="sports-header"] .langBtn[data-open="true"] {
-    color: var(--sl-text-secondary);
-    border-color: var(--sl-border-subtle);
-    background: var(--sl-surface-primary);
-
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.42);
-}
-
-.utilityBar[data-variant="sports-header"] .langText {
-    font-family: var(--sl-ff-ui);
-    text-transform: none;
-}
-
-.utilityBar[data-variant="sports-header"] .chevron {
-    color: var(--sl-accent);
-    opacity: 1;
-}
-
-.utilityBar[data-variant="sports-header"] .langBtn[data-open="true"] .chevron {
-    color: var(--sl-accent-strong);
-}
-
-.utilityBar[data-variant="sports-header"] .langMenu {
-    z-index: 100;
-    overflow: hidden;
-
-    border: 1px solid var(--sl-border-default);
-    border-radius: 1.35rem;
-
-    background: var(--header-menu-bg);
-
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.5),
-        0 0.9rem 2rem rgb(30 46 36 / 0.14);
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-}
-
-.utilityBar[data-variant="sports-header"] .langItem {
-    border: 1px solid transparent;
-    color: var(--sl-text-secondary);
-    background: transparent;
-}
-
-.utilityBar[data-variant="sports-header"] .langItem:hover {
-    background: rgb(var(--sl-accent-strong-rgb) / 10%);
-}
-
-.utilityBar[data-variant="sports-header"] .langMenu [aria-selected="true"] .langItem {
-    color: var(--sl-accent-strong);
-    background: var(--header-active-bg);
-    font-weight: 600;
-}
-
-.utilityBar[data-variant="sports-header"] .langItemName {
-    color: var(--sl-text-muted);
-    opacity: 1;
-}
-
-.utilityBar[data-variant="sports-header"] .langItem:disabled {
-    color: var(--sl-text-muted);
-    opacity: 0.58;
-}
-
-.utilityBar[data-variant="sports-header"] .langItem:disabled:hover {
-    color: var(--sl-text-muted);
-    background: transparent;
-    border-color: transparent;
-    box-shadow: none;
-    filter: none;
-}
-
-.utilityBar[data-variant="sports-header"] :is(.socialLink, .langBtn, .langItem):focus-visible {
-    outline: none;
-    box-shadow:
-        0 0 0 2px var(--sl-surface-footer),
-        0 0 0 4px var(--sl-accent),
-        0 0 1.25rem var(--sl-focus-ring-color);
-}
-
-@media (max-width: 768px) {
-    .utilityBar[data-variant="sports-header"] .right {
-        display: none;
-    }
-
-    .utilityBar[data-variant="sports-header"] .inner {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .utilityBar[data-variant="sports-header"] .center {
-        inline-size: 100%;
-    }
-}
-
-/* =======================================================
-   Hotel Header — Light Forest (paridade com Group/Travel/Sports)
-   ======================================================= */
-
-.utilityBar[data-variant="hotel-header"] {
-    --accent: var(--sl-accent-strong);
-
-    --header-menu-bg: var(--sl-surface-footer);
-    --header-active-bg: rgb(var(--sl-accent-strong-rgb) / 15%);
-
-    z-index: 80;
-}
-
-.utilityBar[data-variant="hotel-header"] .inner {
-    grid-template-columns: minmax(0, 1fr) auto;
-
-    min-height: clamp(62px, 4.6vw, 72px);
-    padding-block: 0.42rem;
-
-    isolation: isolate;
-    border-bottom: 0;
-}
-
-.utilityBar[data-variant="hotel-header"] .inner::before,
-.utilityBar[data-variant="hotel-header"] .inner::after {
-    content: none;
-}
-
-.utilityBar[data-variant="hotel-header"] .left {
-    display: none;
-}
-
-.utilityBar[data-variant="hotel-header"] .center {
-    justify-content: flex-start;
-    overflow: visible;
-}
-
-.utilityBar[data-variant="hotel-header"] .socials {
-    gap: 0.24rem;
-}
-
-.utilityBar[data-variant="hotel-header"] .socialLink {
-    inline-size: 40px;
-    block-size: 40px;
-
-    border: 1px solid transparent;
-    border-radius: 1rem;
-
-    color: var(--sl-text-secondary);
-    background: transparent;
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-
-    transition:
-        color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-        background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-        border-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.utilityBar[data-variant="hotel-header"] .socialLink::before {
-    content: none;
-}
-
-.utilityBar[data-variant="hotel-header"] .socialLink:hover {
-    transform: none;
-
-    border-color: var(--sl-border-subtle);
-    background: var(--sl-surface-primary);
-
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.42);
-}
-
-.utilityBar[data-variant="hotel-header"] .socialIcon {
-    inline-size: 1.08rem;
-    block-size: 1.08rem;
-
-    color: currentColor;
-    filter: none;
-}
-
-.utilityBar[data-variant="hotel-header"] .langWrap {
-    z-index: 90;
-}
-
-.utilityBar[data-variant="hotel-header"] .langBtn {
-    inline-size: auto;
-    block-size: auto;
-    min-block-size: 40px;
-
-    gap: 0.4rem;
-
-    padding-block: 0.32rem;
-    padding-inline: 0.68rem;
-
-    border: 1px solid transparent;
-    border-radius: 1rem;
-
-    color: var(--sl-text-secondary);
-    background: transparent;
-
-    text-shadow: none;
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-}
-
-.utilityBar[data-variant="hotel-header"] .langBtn:hover,
-.utilityBar[data-variant="hotel-header"] .langBtn[data-open="true"] {
-    color: var(--sl-text-secondary);
-    border-color: var(--sl-border-subtle);
-    background: var(--sl-surface-primary);
-
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.42);
-}
-
-.utilityBar[data-variant="hotel-header"] .langText {
-    font-family: var(--sl-ff-ui);
-    text-transform: none;
-}
-
-.utilityBar[data-variant="hotel-header"] .chevron {
-    color: var(--sl-accent);
-    opacity: 1;
-}
-
-.utilityBar[data-variant="hotel-header"] .langBtn[data-open="true"] .chevron {
-    color: var(--sl-accent-strong);
-}
-
-.utilityBar[data-variant="hotel-header"] .langMenu {
-    z-index: 100;
-    overflow: hidden;
-
-    border: 1px solid var(--sl-border-default);
-    border-radius: 1.35rem;
-
-    background: var(--header-menu-bg);
-
-    box-shadow:
-        inset 0 1px 0 rgb(255 255 255 / 0.5),
-        0 0.9rem 2rem rgb(30 46 36 / 0.14);
-
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-}
-
-.utilityBar[data-variant="hotel-header"] .langItem {
-    border: 1px solid transparent;
-    color: var(--sl-text-secondary);
-    background: transparent;
-}
-
-.utilityBar[data-variant="hotel-header"] .langItem:hover {
-    background: rgb(var(--sl-accent-strong-rgb) / 10%);
-}
-
-.utilityBar[data-variant="hotel-header"] .langMenu [aria-selected="true"] .langItem {
-    color: var(--sl-accent-strong);
-    background: var(--header-active-bg);
-    font-weight: 600;
-}
-
-.utilityBar[data-variant="hotel-header"] .langItemName {
-    color: var(--sl-text-muted);
-    opacity: 1;
-}
-
-.utilityBar[data-variant="hotel-header"] .langItem:disabled {
-    color: var(--sl-text-muted);
-    opacity: 0.58;
-}
-
-.utilityBar[data-variant="hotel-header"] .langItem:disabled:hover {
-    color: var(--sl-text-muted);
-    background: transparent;
-    border-color: transparent;
-    box-shadow: none;
-    filter: none;
-}
-
-.utilityBar[data-variant="hotel-header"] :is(.socialLink, .langBtn, .langItem):focus-visible {
-    outline: none;
-    box-shadow:
-        0 0 0 2px var(--sl-surface-footer),
-        0 0 0 4px var(--sl-accent),
-        0 0 1.25rem var(--sl-focus-ring-color);
-}
-
-@media (max-width: 768px) {
-    .utilityBar[data-variant="hotel-header"] .right {
-        display: none;
-    }
-
-    .utilityBar[data-variant="hotel-header"] .inner {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .utilityBar[data-variant="hotel-header"] .center {
-        inline-size: 100%;
     }
 }
 
