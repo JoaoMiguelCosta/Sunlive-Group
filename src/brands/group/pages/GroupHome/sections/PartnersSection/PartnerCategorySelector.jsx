@@ -41,16 +41,16 @@ export default function PartnerCategorySelector({
         const isActive = item.key === activeKey;
 
         return (
-          <button
-            key={item.key}
-            type="button"
-            role="listitem"
-            className={`${styles.card}${isActive ? ` ${styles.active}` : ""}`}
-            aria-pressed={isActive}
-            onClick={() => onSelect?.(item)}
-          >
-            <span className={styles.label}>{label}</span>
-          </button>
+          <div key={item.key} role="listitem" className={styles.listItem}>
+            <button
+              type="button"
+              className={`${styles.card}${isActive ? ` ${styles.active}` : ""}`}
+              aria-pressed={isActive}
+              onClick={() => onSelect?.(item)}
+            >
+              <span className={styles.label}>{label}</span>
+            </button>
+          </div>
         );
       })}
     </div>

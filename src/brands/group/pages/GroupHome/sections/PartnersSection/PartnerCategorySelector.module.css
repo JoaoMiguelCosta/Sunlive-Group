@@ -35,6 +35,22 @@
 }
 
 
+/*
+ * .listItem — wrapper com role="listitem" (ver PartnerCategorySelector.jsx).
+ * É o item de grid real: recebe spanning/posicionamento e a largura
+ * máxima do card. .card preenche 100% da área de .listItem.
+ */
+.listItem {
+    min-inline-size: 0;
+
+    grid-column: span 12;
+    justify-self: center;
+
+    inline-size:
+        min(100%, var(--partners-card-max));
+}
+
+
 /* ============================================================
    Category button
    ============================================================ */
@@ -43,16 +59,13 @@
     position: relative;
     isolation: isolate;
 
-    grid-column: span 12;
-    justify-self: center;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: clamp(0.42rem, 0.8vw, 0.68rem);
 
-    inline-size:
-        min(100%, var(--partners-card-max));
+    inline-size: 100%;
+    block-size: 100%;
 
     min-inline-size: 0;
 
@@ -169,37 +182,41 @@
    ============================================================ */
 
 @media (min-width: 720px) {
-    .card {
+    .listItem {
         grid-column: span 6;
     }
 }
 
 @media (min-width: 1100px) {
-    .card {
+    .listItem {
         grid-column: span 4;
     }
 
-    .countOne .card:nth-child(1) {
+    /*
+     * .listItem é o item de grid real, por isso o :nth-child conta
+     * a sua própria posição dentro de .grid diretamente.
+     */
+    .countOne .listItem:nth-child(1) {
         grid-column: 5 / span 4;
     }
 
-    .countTwo .card:nth-child(1) {
+    .countTwo .listItem:nth-child(1) {
         grid-column: 3 / span 4;
     }
 
-    .countTwo .card:nth-child(2) {
+    .countTwo .listItem:nth-child(2) {
         grid-column: 7 / span 4;
     }
 
-    .countFour .card:nth-child(4) {
+    .countFour .listItem:nth-child(4) {
         grid-column: 5 / span 4;
     }
 
-    .countFive .card:nth-child(4) {
+    .countFive .listItem:nth-child(4) {
         grid-column: 3 / span 4;
     }
 
-    .countFive .card:nth-child(5) {
+    .countFive .listItem:nth-child(5) {
         grid-column: 7 / span 4;
     }
 }
@@ -251,12 +268,11 @@
             min(100%, 25rem);
     }
 
-    .card {
+    .listItem {
         grid-column: auto;
+    }
 
-        inline-size:
-            min(100%, var(--partners-card-max));
-
+    .card {
         min-block-size: 2.72rem;
 
         border-radius:

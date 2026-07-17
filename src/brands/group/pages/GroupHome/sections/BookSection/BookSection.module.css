@@ -179,6 +179,24 @@
     }
 }
 
+.button:active {
+    transform: translateY(0);
+
+    border-color:
+        var(--group-border-strong);
+
+    background-color:
+        var(--group-card-background-hover);
+
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.48),
+        0 0.16rem 0.36rem rgb(30 46 36 / 0.06);
+}
+
+.button:active .arrow {
+    transform: none;
+}
+
 
 /* ============================================================
    Responsive
@@ -322,7 +340,9 @@
     }
 
     .button:hover,
-    .button:hover .arrow {
+    .button:hover .arrow,
+    .button:active,
+    .button:active .arrow {
         transform: none;
     }
 }
