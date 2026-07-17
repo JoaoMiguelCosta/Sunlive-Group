@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from "react";
 
 import useAccordion from "../../../../../../shared/hooks/useAccordion.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import { resolveTravelIcon } from "../../../../config/core/iconKeyMap.js";
 
 import LogisticsServiceCard from "./LogisticsServiceCard.jsx";
@@ -74,7 +75,7 @@ export default function ServiceOfferingsGrid({
   return (
     <div className={styles.block}>
       {hasIntro ? (
-        <header className={styles.sectionHead}>
+        <ScrollReveal as="header" className={styles.sectionHead}>
           {intro?.eyebrow ? (
             <p className={styles.sectionKicker}>{intro.eyebrow}</p>
           ) : null}
@@ -86,63 +87,67 @@ export default function ServiceOfferingsGrid({
           {intro?.description ? (
             <p className={styles.sectionDescription}>{intro.description}</p>
           ) : null}
-        </header>
+        </ScrollReveal>
       ) : null}
 
-      <ul
-        className={styles.explorer}
-        role="list"
-        aria-label={ui?.servicesAriaLabel}
-      >
-        {normalizedServices.map((service, index) => {
-          const Icon = resolveTravelIcon(icons, service.iconKey);
-          const active = isOpen(service.id);
-          const triggerId = `${service.id}-trigger`;
-          const panelId = `${service.id}-panel`;
+      <ScrollReveal>
+        <ul
+          className={styles.explorer}
+          role="list"
+          aria-label={ui?.servicesAriaLabel}
+        >
+          {normalizedServices.map((service, index) => {
+            const Icon = resolveTravelIcon(icons, service.iconKey);
+            const active = isOpen(service.id);
+            const triggerId = `${service.id}-trigger`;
+            const panelId = `${service.id}-panel`;
 
-          return (
-            <li
-              key={service.key}
-              id={service.anchorId ?? service.id}
-              className={styles.item}
-            >
-              <h3 className={styles.itemHeading}>
-                <button
-                  type="button"
-                  id={triggerId}
-                  className={styles.trigger}
-                  aria-expanded={active}
-                  aria-controls={panelId}
-                  data-active={active ? "true" : "false"}
-                  onClick={() => open(service.id)}
-                >
-                  <span className={styles.triggerNumber} aria-hidden="true">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className={styles.triggerTitle}>{service.title}</span>
-                  <span className={styles.chevron} aria-hidden="true" />
-                </button>
-              </h3>
-
-              <div
-                id={panelId}
-                role="region"
-                aria-labelledby={triggerId}
-                className={styles.panel}
-                hidden={!active}
+            return (
+              <li
+                key={service.key}
+                id={service.anchorId ?? service.id}
+                className={styles.item}
               >
-                <LogisticsServiceCard
-                  icon={Icon}
-                  title={service.title}
-                  summary={service.summary}
-                  items={service.items}
-                  includesLabel={service.includesLabel ?? ui?.includesLabel}
-                />
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+                <h3 className={styles.itemHeading}>
+                  <button
+                    type="button"
+                    id={triggerId}
+                    className={styles.trigger}
+                    aria-expanded={active}
+                    aria-controls={panelId}
+                    data-active={active ? "true" : "false"}
+                    onClick={() => open(service.id)}
+                  >
+                    <span className={styles.triggerNumber} aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className={styles.triggerTitle}>
+                      {service.title}
+                    </span>
+                    <span className={styles.chevron} aria-hidden="true" />
+                  </button>
+                </h3>
+
+                <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={triggerId}
+                  className={styles.panel}
+                  hidden={!active}
+                >
+                  <LogisticsServiceCard
+                    icon={Icon}
+                    title={service.title}
+                    summary={service.summary}
+                    items={service.items}
+                    includesLabel={service.includesLabel ?? ui?.includesLabel}
+                  />
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </ScrollReveal>
     </div>
   );
 }

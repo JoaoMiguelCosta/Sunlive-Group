@@ -1,3 +1,4 @@
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import styles from "./TravelPartnersGrid.module.css";
 
 export default function TravelPartnersGrid({ network = {}, partners = [] }) {
@@ -10,12 +11,14 @@ export default function TravelPartnersGrid({ network = {}, partners = [] }) {
   return (
     <div className={styles.wrap}>
       {network?.title ? (
-        <h2 className={styles.title}>{network.title}</h2>
+        <ScrollReveal as="h2" className={styles.title}>
+          {network.title}
+        </ScrollReveal>
       ) : null}
 
       {safePartners.length > 0 ? (
         <ul className={styles.grid}>
-          {safePartners.map((partner) => {
+          {safePartners.map((partner, index) => {
             const CardTag = partner?.href ? "a" : "div";
             const cardLinkProps = partner?.href
               ? {
@@ -26,10 +29,12 @@ export default function TravelPartnersGrid({ network = {}, partners = [] }) {
               : {};
 
             return (
-              <li
+              <ScrollReveal
+                as="li"
                 key={partner.key}
                 id={partner.anchorId}
                 className={styles.item}
+                staggerIndex={index}
               >
                 <CardTag className={styles.card} {...cardLinkProps}>
                   {partner?.picture?.src ? (
@@ -64,7 +69,7 @@ export default function TravelPartnersGrid({ network = {}, partners = [] }) {
                     ) : null}
                   </div>
                 </CardTag>
-              </li>
+              </ScrollReveal>
             );
           })}
         </ul>

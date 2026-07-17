@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./PartnersSection.module.css";
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
 import useOpenFromHash from "../../../../shared/hooks/useOpenFromHash.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import SectionDisclosureTrigger from "../_shared/SectionDisclosureTrigger.jsx";
 import PartnerCategorySelector from "./PartnerCategorySelector.jsx";
 import PartnerLogoGrid from "./PartnerLogoGrid.jsx";
@@ -71,17 +72,19 @@ export default function PartnersSection() {
   return (
     <section id={id} className={styles.section} aria-labelledby={triggerId}>
       <div className={styles.disclosureWrap}>
-        <div
-          className={`${styles.triggerCard}${isOpen ? ` ${styles.triggerCardOpen}` : ""}`}
-        >
-          <SectionDisclosureTrigger
-            id={triggerId}
-            label={title}
-            panelId={panelId}
-            isOpen={isOpen}
-            onToggle={toggle}
-          />
-        </div>
+        <ScrollReveal>
+          <div
+            className={`${styles.triggerCard}${isOpen ? ` ${styles.triggerCardOpen}` : ""}`}
+          >
+            <SectionDisclosureTrigger
+              id={triggerId}
+              label={title}
+              panelId={panelId}
+              isOpen={isOpen}
+              onToggle={toggle}
+            />
+          </div>
+        </ScrollReveal>
 
         {isOpen && (
           <div
@@ -90,11 +93,13 @@ export default function PartnersSection() {
             aria-labelledby={triggerId}
             className={styles.panel}
           >
-            <PartnerCategorySelector
-              items={categories}
-              activeKey={activeKey}
-              onSelect={handleSelectCategory}
-            />
+            <ScrollReveal as="div">
+              <PartnerCategorySelector
+                items={categories}
+                activeKey={activeKey}
+                onSelect={handleSelectCategory}
+              />
+            </ScrollReveal>
 
             {activeCategory && (
               <div className={styles.gridWrap}>

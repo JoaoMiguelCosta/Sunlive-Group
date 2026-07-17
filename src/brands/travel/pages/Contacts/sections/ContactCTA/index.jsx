@@ -3,6 +3,7 @@ import contacts from "../../../../config/pages/contacts.js";
 import { ICONS } from "../../../../config/core/resolvedVisuals.js";
 import { resolveTravelIcon } from "../../../../config/core/iconKeyMap.js";
 
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import TravelTrustPanel from "../../../../shared/ui/TravelTrustPanel/TravelTrustPanel.jsx";
 import ContactSectionHeader from "./ContactSectionHeader.jsx";
 import QuoteRequestChecklist from "./QuoteRequestChecklist.jsx";
@@ -67,15 +68,17 @@ export default function ContactCTASection() {
     >
       <div className={styles.inner}>
         {hasHero ? (
-          <TravelTrustPanel
-            eyebrow={hero?.eyebrow}
-            title={hero?.title}
-            lead={hero?.lead}
-            description={hero?.supportingText}
-            stats={hero?.stats}
-            statsAriaLabel={hero?.ui?.statsAriaLabel}
-            titleAs="h1"
-          />
+          <ScrollReveal>
+            <TravelTrustPanel
+              eyebrow={hero?.eyebrow}
+              title={hero?.title}
+              lead={hero?.lead}
+              description={hero?.supportingText}
+              stats={hero?.stats}
+              statsAriaLabel={hero?.ui?.statsAriaLabel}
+              titleAs="h1"
+            />
+          </ScrollReveal>
         ) : null}
 
         {hasChecklist || hasChannels ? (

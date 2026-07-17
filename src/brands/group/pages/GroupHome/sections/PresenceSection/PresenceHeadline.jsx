@@ -3,6 +3,7 @@ import styles from "../../../../shared/components/GroupImageHeadline.module.css"
 import homePage from "../../../../config/pages/home.js";
 const presence = homePage.sections.presence;
 import { IMG_COMMON } from "../../../../../../shared/config/index.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 
 export default function PresenceHeadline() {
   const headline = presence?.headlineTop;
@@ -13,10 +14,17 @@ export default function PresenceHeadline() {
   if (!src) return null;
 
   return (
-    <div className={styles.wrap}>
+    <ScrollReveal as="div" className={styles.wrap}>
       <div className={styles.frame}>
-        <img src={src} alt={alt} {...IMG_COMMON} className={styles.img} />
+        <img
+          src={src}
+          alt={alt}
+          width="2400"
+          height="390"
+          {...IMG_COMMON}
+          className={styles.img}
+        />
       </div>
-    </div>
+    </ScrollReveal>
   );
 }

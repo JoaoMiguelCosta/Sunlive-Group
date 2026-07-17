@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import styles from "./ContactsSection.module.css";
 import useDisclosure from "../../../../../../shared/hooks/useDisclosure.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import SectionDisclosureTrigger from "../_shared/SectionDisclosureTrigger.jsx";
 import GroupHub from "./GroupHub.jsx";
 import BusinessUnits from "./BusinessUnits.jsx";
@@ -63,17 +64,19 @@ export default function ContactsSection() {
       aria-labelledby={triggerId}
       data-theme="prestige-noir"
     >
-      <div
-        className={`${styles.triggerCard}${isOpen ? ` ${styles.triggerCardOpen}` : ""}`}
-      >
-        <SectionDisclosureTrigger
-          id={triggerId}
-          label={title}
-          panelId={panelId}
-          isOpen={isOpen}
-          onToggle={toggle}
-        />
-      </div>
+      <ScrollReveal>
+        <div
+          className={`${styles.triggerCard}${isOpen ? ` ${styles.triggerCardOpen}` : ""}`}
+        >
+          <SectionDisclosureTrigger
+            id={triggerId}
+            label={title}
+            panelId={panelId}
+            isOpen={isOpen}
+            onToggle={toggle}
+          />
+        </div>
+      </ScrollReveal>
 
       {isOpen && (
         <div

@@ -2,6 +2,7 @@ import styles from "./TeamCollage.module.css";
 
 import homePage from "../../../../config/pages/home.js";
 import { IMG_COMMON } from "../../../../../../shared/config/index.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 
 const people = homePage.sections.people;
 
@@ -15,7 +16,7 @@ export default function TeamCollage() {
   if (!src) return null;
 
   return (
-    <figure className={styles.frame}>
+    <ScrollReveal as="figure" className={styles.frame}>
       <picture className={styles.picture}>
         {mobileSrc ? (
           <source media="(max-width: 640px)" srcSet={mobileSrc} />
@@ -31,6 +32,6 @@ export default function TeamCollage() {
           draggable="false"
         />
       </picture>
-    </figure>
+    </ScrollReveal>
   );
 }

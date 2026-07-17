@@ -122,6 +122,20 @@
     box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
 }
 
+/*
+ * Wrapper interno do ScrollReveal dentro de .card — replica o
+ * flex column + gap de .card para preservar o CTA empurrado
+ * para o fundo (margin-block-start: auto em .cardLink) agora
+ * que .card passa a ter um único filho direto.
+ */
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: clamp(0.9rem, 1.6vw, 1.2rem);
+    min-width: 0;
+}
+
 .cardTop {
     position: relative;
     display: grid;

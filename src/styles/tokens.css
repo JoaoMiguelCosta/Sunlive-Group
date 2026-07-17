@@ -13,9 +13,14 @@
    consumidos onde uma brand os referenciar explicitamente
    (Group via alias, Travel/Sports/Hotel no contrato partilhado).
 
-   Não promove tokens de layout, radius, motion, tipografia de
-   secção ou componentes específicos do Group — esses continuam
-   a viver em src/brands/group/styles/tokens.css.
+   Não promove tokens de layout, radius, tipografia de secção ou
+   componentes específicos do Group — esses continuam a viver em
+   src/brands/group/styles/tokens.css.
+
+   Exceção: os tokens de motion abaixo são a fundação global
+   partilhada (Lote 1). Não substituem tokens locais existentes
+   (--group-duration-*, --hotel-transition-*, --hn-duration-*,
+   etc.) — esse alinhamento fica para um lote futuro de migração.
    ========================================================= */
 
 :root {
@@ -102,4 +107,23 @@
    /* Elevação suave sobre superfícies claras */
    --sl-shadow-sm:
       0 6px 16px rgb(var(--sl-color-forest-900-rgb) / 14%);
+
+   /* =====================================================
+       Motion — fundação global (Lote 1)
+
+       Escala mínima para futuros efeitos de entrada no
+       viewport (ScrollReveal). Consumida por
+       src/shared/ui/ScrollReveal e pelos hooks associados
+       em src/shared/hooks. Não migra CSS de marca existente.
+       ===================================================== */
+
+   --sl-duration-fast: 160ms;
+   --sl-duration-base: 220ms;
+   --sl-duration-slow: 320ms;
+
+   --sl-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+   --sl-ease-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+   --sl-reveal-distance: 1rem;
+   --sl-stagger-base: 60ms;
 }

@@ -1,6 +1,7 @@
 import styles from "./BookSection.module.css";
 
 import homePage from "../../../../config/pages/home.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import {
   isValidText,
   isValidObject,
@@ -41,18 +42,20 @@ export default function BookSection() {
       className={styles.section}
       aria-label="Sunlive Group — Book"
     >
-      <a
-        className={styles.button}
-        href={href}
-        download={filename}
-        aria-label={ariaLabel}
-      >
-        <span className={styles.label}>{label}</span>
+      <ScrollReveal>
+        <a
+          className={styles.button}
+          href={href}
+          download={filename}
+          aria-label={ariaLabel}
+        >
+          <span className={styles.label}>{label}</span>
 
-        <span className={styles.arrow} aria-hidden="true">
-          ⬇
-        </span>
-      </a>
+          <span className={styles.arrow} aria-hidden="true">
+            ⬇
+          </span>
+        </a>
+      </ScrollReveal>
     </section>
   );
 }

@@ -1,3 +1,4 @@
+import ScrollReveal from "../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import TravelCollectionCard from "./TravelCollectionCard.jsx";
 import styles from "./TravelCollectionSection.module.css";
 
@@ -16,7 +17,7 @@ export default function TravelCollectionSection({
 
   return (
     <div className={styles.root} data-section={sectionKey}>
-      <header className={styles.header}>
+      <ScrollReveal as="header" className={styles.header}>
         {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
 
         {title ? <h2 className={styles.title}>{title}</h2> : null}
@@ -24,12 +25,16 @@ export default function TravelCollectionSection({
         {description ? (
           <p className={styles.description}>{description}</p>
         ) : null}
-      </header>
+      </ScrollReveal>
 
       {safeItems.length > 0 ? (
         <ul className={styles.grid}>
-          {safeItems.map((item) => (
-            <TravelCollectionCard key={item.key} item={item} />
+          {safeItems.map((item, index) => (
+            <TravelCollectionCard
+              key={item.key}
+              item={item}
+              staggerIndex={index}
+            />
           ))}
         </ul>
       ) : null}

@@ -1,4 +1,5 @@
 import destinationsPage from "../../../../config/pages/destinations.js";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 import TravelFeaturePanel from "../../../../shared/ui/TravelFeaturePanel/TravelFeaturePanel.jsx";
 
 export default function DestinationsHighlightSection() {
@@ -21,15 +22,17 @@ export default function DestinationsHighlightSection() {
       data-section="destinations-highlight"
       aria-label={section?.eyebrow || section?.title || "Destaque geral"}
     >
-      <TravelFeaturePanel
-        eyebrow={section?.eyebrow}
-        title={section?.title}
-        description={section?.description}
-        items={benefits}
-        sectionKey="destinations-highlight"
-        titleAs="h1"
-        itemTitleAs="h2"
-      />
+      <ScrollReveal>
+        <TravelFeaturePanel
+          eyebrow={section?.eyebrow}
+          title={section?.title}
+          description={section?.description}
+          items={benefits}
+          sectionKey="destinations-highlight"
+          titleAs="h1"
+          itemTitleAs="h2"
+        />
+      </ScrollReveal>
     </section>
   );
 }

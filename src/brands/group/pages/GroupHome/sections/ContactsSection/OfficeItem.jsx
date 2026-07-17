@@ -2,6 +2,7 @@ import styles from "./ContactsGrid.module.css";
 import disclosureStyles from "./ContactDisclosure.module.css";
 
 import OfficeCard from "./OfficeCard.jsx";
+import ScrollReveal from "../../../../../../shared/ui/ScrollReveal/ScrollReveal.jsx";
 
 export default function OfficeItem({
   item,
@@ -10,6 +11,7 @@ export default function OfficeItem({
   toggle,
   MailIcon,
   PhoneIcon,
+  staggerIndex,
 }) {
   const Flag = item.Flag || (() => null);
   const panelId = `office-${item.key}`;
@@ -17,7 +19,13 @@ export default function OfficeItem({
   const itemId = anchorId || `pais-${item.key}`;
 
   return (
-    <div role="listitem" className={styles.item} id={itemId}>
+    <ScrollReveal
+      as="div"
+      role="listitem"
+      className={styles.item}
+      id={itemId}
+      staggerIndex={staggerIndex}
+    >
       <button
         type="button"
         className={disclosureStyles.pill}
@@ -45,6 +53,6 @@ export default function OfficeItem({
           PhoneIcon={PhoneIcon}
         />
       ) : null}
-    </div>
+    </ScrollReveal>
   );
 }

@@ -1,0 +1,71 @@
+/* =========================================================
+   ScrollReveal — fundação global de movimento (Lote 1)
+
+   Usa apenas opacity/transform (sem propriedades que
+   provoquem layout). O estado inicial oculto (.hidden) só é
+   aplicado pelo componente React depois de confirmar JS ativo,
+   IntersectionObserver disponível e reduced motion inativo —
+   nunca por defeito via esta folha de estilos.
+
+   O atraso de stagger usa classes explícitas (.stagger0..6) em
+   vez de multiplicação CSS (custom property * índice), para não
+   depender de typed arithmetic recente do calc(). Cada classe
+   soma --sl-stagger-base o número de vezes correspondente ao
+   seu índice — --sl-stagger-base continua a ser a única fonte
+   de verdade para a duração base do stagger.
+   ========================================================= */
+
+.reveal {
+   transition-property: opacity, transform;
+   transition-duration: var(--sl-duration-slow);
+   transition-timing-function: var(--sl-ease-emphasized);
+}
+
+.hidden {
+   opacity: 0;
+   transform: translateY(var(--sl-reveal-distance));
+}
+
+.visible {
+   opacity: 1;
+   transform: translateY(0);
+}
+
+.stagger0 {
+   transition-delay: 0ms;
+}
+
+.stagger1 {
+   transition-delay: var(--sl-stagger-base);
+}
+
+.stagger2 {
+   transition-delay: calc(var(--sl-stagger-base) + var(--sl-stagger-base));
+}
+
+.stagger3 {
+   transition-delay: calc(
+      var(--sl-stagger-base) + var(--sl-stagger-base) + var(--sl-stagger-base)
+   );
+}
+
+.stagger4 {
+   transition-delay: calc(
+      var(--sl-stagger-base) + var(--sl-stagger-base) + var(--sl-stagger-base) +
+         var(--sl-stagger-base)
+   );
+}
+
+.stagger5 {
+   transition-delay: calc(
+      var(--sl-stagger-base) + var(--sl-stagger-base) + var(--sl-stagger-base) +
+         var(--sl-stagger-base) + var(--sl-stagger-base)
+   );
+}
+
+.stagger6 {
+   transition-delay: calc(
+      var(--sl-stagger-base) + var(--sl-stagger-base) + var(--sl-stagger-base) +
+         var(--sl-stagger-base) + var(--sl-stagger-base) + var(--sl-stagger-base)
+   );
+}
