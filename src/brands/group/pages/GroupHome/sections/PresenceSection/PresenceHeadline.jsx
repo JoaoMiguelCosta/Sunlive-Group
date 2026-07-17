@@ -16,7 +16,14 @@ export default function PresenceHeadline() {
   return (
     <ScrollReveal as="div" className={styles.wrap}>
       <div className={styles.frame}>
-        <img src={src} alt={alt} {...IMG_COMMON} className={styles.img} />
+        <img
+          src={src}
+          alt={alt}
+          width="2400"
+          height="390"
+          {...IMG_COMMON}
+          className={styles.img}
+        />
       </div>
     </ScrollReveal>
   );
