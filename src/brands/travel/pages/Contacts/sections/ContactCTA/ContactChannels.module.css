@@ -120,6 +120,14 @@
     }
 }
 
+.link:active {
+    transform: translateY(0);
+}
+
+.link:active .chevron {
+    transform: rotate(-45deg);
+}
+
 @media (max-width: 980px) {
 
     .wrap,
@@ -192,7 +200,9 @@
     }
 
     .link:hover,
-    .link:hover .chevron {
+    .link:hover .chevron,
+    .link:active,
+    .link:active .chevron {
         transform: none;
     }
 }

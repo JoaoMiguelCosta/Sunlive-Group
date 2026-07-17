@@ -116,7 +116,7 @@
 }
 
 .card:focus-within {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     border-color: var(--sl-border-default, rgba(30, 46, 36, 0.28));
     background: var(--sl-card-background-hover, #f6f7ed);
     box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
@@ -229,7 +229,7 @@
 
 @media (hover: hover) and (pointer: fine) {
     .card:hover {
-        transform: translateY(-3px);
+        transform: translateY(-2px);
         border-color: var(--sl-border-default, rgba(30, 46, 36, 0.28));
         background: var(--sl-card-background-hover, #f6f7ed);
         box-shadow: var(--sl-shadow-sm, 0 6px 16px rgba(30, 46, 36, 0.14));
@@ -240,6 +240,19 @@
         background: color-mix(in oklab, var(--travel-gold-deep, #b97911), transparent 88%);
         color: var(--travel-gold-deep, #b97911);
     }
+}
+
+/*
+ * .card não tem href/onClick próprio — quem é clicável é o
+ * .cardLink interno. :active propaga aos antecessores enquanto o
+ * botão do rato estiver premido sobre o link, por isso esta regra
+ * dá o retorno visual ao plano base durante o clique real. Colocada
+ * depois do bloco :hover para vencer o empate de especificidade
+ * quando hover e active se aplicam em simultâneo (rato pressionado
+ * sobre o card em hover).
+ */
+.card:active {
+    transform: translateY(0);
 }
 
 /* Desktop médio / tablet horizontal — 2 colunas × 3 linhas */
@@ -336,5 +349,11 @@
     .card,
     .cardLink {
         transition: none;
+    }
+
+    .card:hover,
+    .card:focus-within,
+    .card:active {
+        transform: none;
     }
 }

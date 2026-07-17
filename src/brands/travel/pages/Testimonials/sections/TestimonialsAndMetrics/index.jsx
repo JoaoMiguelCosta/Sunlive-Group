@@ -23,17 +23,26 @@ export default function TestimonialsAndMetricsSection() {
     : [];
   const icons = ICONS;
 
+  const titleId = `${sectionId}-title`;
+  // Quando existe headline.title, a section passa a ser identificada pelo
+  // heading real (aria-labelledby) em vez de repetir a instrução do
+  // carrossel (aria-label) — evita dois landmarks aninhados com o mesmo
+  // nome acessível. Sem título, mantém-se o aria-label como recurso.
+  const hasTitleHeading = Boolean(headline?.title);
+
   return (
     <section
       id={sectionId}
       className={styles.section}
-      aria-label={sectionLabel}
+      aria-labelledby={hasTitleHeading ? titleId : undefined}
+      aria-label={hasTitleHeading ? undefined : sectionLabel}
       data-section="testimonials-and-metrics"
     >
       <div className={styles.inner}>
         <ScrollReveal>
           <TravelTrustPanel
             titleAs="h1"
+            titleId={hasTitleHeading ? titleId : undefined}
             eyebrow={headline?.eyebrow}
             title={headline?.title}
             lead={headline?.lead}

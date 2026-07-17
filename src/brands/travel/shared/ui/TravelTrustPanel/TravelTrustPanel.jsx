@@ -9,6 +9,7 @@ function getValidStats(stats) {
 export default function TravelTrustPanel({
   eyebrow,
   title,
+  titleId,
   lead,
   description,
   stats = [],
@@ -27,7 +28,11 @@ export default function TravelTrustPanel({
       <header className={styles.header}>
         {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
 
-        {title ? <TitleTag className={styles.title}>{title}</TitleTag> : null}
+        {title ? (
+          <TitleTag id={titleId} className={styles.title}>
+            {title}
+          </TitleTag>
+        ) : null}
 
         {lead || description ? (
           <div className={styles.copy}>

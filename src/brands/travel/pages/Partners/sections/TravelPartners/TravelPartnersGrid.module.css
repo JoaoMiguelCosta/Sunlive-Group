@@ -83,8 +83,6 @@
 
     object-fit: contain;
     object-position: center;
-
-    transition: transform 220ms ease;
 }
 
 .cardBody {
@@ -140,13 +138,18 @@
 
 @media (hover: hover) and (pointer: fine) {
     .card:hover {
-        transform: translateY(-0.2rem);
+        transform: translateY(-2px);
         box-shadow: 0 10px 24px rgba(30, 46, 36, 0.2);
     }
+}
 
-    .card:hover .media {
-        transform: scale(1.025);
-    }
+/*
+ * Retorno ao plano base no clique — apenas para cards com link real
+ * (partner.href); cards sem link (CardTag="div") são puramente
+ * informativos e não recebem feedback de pressão.
+ */
+.card[href]:active {
+    transform: translateY(0);
 }
 
 @media (max-width: 768px) {
@@ -157,13 +160,12 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-    .card,
-    .media {
+    .card {
         transition: none;
     }
 
     .card:hover,
-    .card:hover .media {
+    .card[href]:active {
         transform: none;
     }
 }

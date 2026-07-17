@@ -110,10 +110,6 @@
     object-fit: cover;
 }
 
-.cardLink .media {
-    transition: transform 220ms ease;
-}
-
 /*
  * Legenda sobre fotografia: o scrim escuro + texto branco garantem
  * legibilidade sobre a imagem, independentemente do tema da página — não é
@@ -176,13 +172,13 @@
 
 @media (hover: hover) and (pointer: fine) {
     .cardLink:hover {
-        transform: translateY(-0.2rem);
+        transform: translateY(-2px);
         box-shadow: 0 10px 24px rgba(30, 46, 36, 0.2);
     }
+}
 
-    .cardLink:hover .media {
-        transform: scale(1.025);
-    }
+.cardLink:active {
+    transform: translateY(0);
 }
 
 @media (max-width: 1024px) {
@@ -218,13 +214,12 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-    .cardLink,
-    .cardLink .media {
+    .cardLink {
         transition: none;
     }
 
     .cardLink:hover,
-    .cardLink:hover .media {
+    .cardLink:active {
         transform: none;
     }
 }
