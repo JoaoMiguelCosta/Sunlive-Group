@@ -1,335 +1,122 @@
 # Sunlive Group
 
-Aplicação web multi-brand para o ecossistema Sunlive, desenvolvida como SPA com React e Vite.
+Aplicação web multi-brand para o ecossistema Sunlive, construída como uma single-page application com React e Vite.
 
-> **Estado do projeto:** em refatoração ativa.  
-> A arquitetura, os componentes partilhados e a identidade visual estão a ser revistos de forma faseada. A nova direção de estilo está a ser aplicada de acordo com os requisitos e o feedback do cliente, pelo que a interface pública pode continuar a evoluir até à aprovação final.
+> **Estado do projeto:** este projeto encontra-se atualmente em refatoração. A arquitetura, a organização do código, o desempenho, a acessibilidade e a interface estão a ser melhorados progressivamente, pelo que algumas funcionalidades e elementos visuais ainda podem sofrer alterações. O conteúdo está atualmente disponível principalmente em português; o seletor de idioma já existe na interface, mas a tradução completa do conteúdo ainda está pendente. Está previsto suporte completo para inglês e árabe, incluindo layout RTL (right-to-left) para árabe, mas estas versões ainda não foram implementadas.
+
+**Demo publicada:** [sunlive-group.vercel.app/sunlive-group](https://sunlive-group.vercel.app/sunlive-group)
+
+---
 
 ## Visão geral
 
-O projeto reúne várias experiências de marca numa única base de código, preservando uma identidade visual e uma navegação próprias para cada área:
+A Sunlive Group reúne várias experiências de marca numa única base de código, cada uma com identidade visual, navegação e conteúdo próprios, partilhando infraestrutura comum:
 
-- Sunlive Group;
-- Sunlive Travel;
-- Sunlive Sports;
-- Sunlive Hotel;
-- galeria institucional de logótipos e parceiros.
+- **Sunlive Group** — marca-mãe, apresentação das unidades de negócio e galeria de logótipos de federações, equipas e parceiros.
+- **Sunlive Travel** — logística de viagens desportivas, destinos, parceiros e testemunhos.
+- **Sunlive Sports** — estágios desportivos, academias, eventos, educação e consultoria desportiva.
+- **Sunlive Hotel** — Estalagem de Sangalhos: alojamento, restauração, lazer e eventos.
 
-A aplicação utiliza carregamento assíncrono por rota, componentes partilhados e uma arquitetura orientada ao isolamento entre brands. O objetivo é permitir evolução independente de cada identidade sem duplicar infraestrutura comum.
+Cada brand está isolada através de rotas, layouts e tokens visuais próprios (`data-brand`), reutilizando componentes partilhados (layout, hooks, ícones) a partir de `src/shared`.
 
-## Ambiente público
+## Funcionalidades
 
-A aplicação encontra-se publicada na Vercel para demonstração, validação contínua e acompanhamento do projeto:
+- Code splitting por rota com React `lazy` e `Suspense`.
+- Error Boundary global com ecrã de fallback e ações de recarregar/voltar ao início.
+- `StrictMode` do React ativo na raiz da aplicação.
+- Navegação client-side com React Router 7, fallbacks de rota por brand e redirecionamento global para `/sunlive-group`.
+- Aliases de rota em inglês na área Sports (compatibilidade com URLs antigos), redirecionados para as rotas equivalentes em português.
+- Modais de vídeo com focus trap, fecho por `Escape`, bloqueio de scroll e restauração de foco (`useVideoDialogBehavior`).
+- Carregamento diferido de vídeo via `IntersectionObserver` nos previews dos cards (Sports), iniciando a reprodução apenas quando o card entra no viewport.
+- Scroll para o topo em mudanças de rota (Travel, Hotel) e scroll suave para âncoras (`#hash`) em várias brands.
+- Seletor de idioma (`useLangMenu`) — o menu e o estado de seleção estão implementados; a tradução de conteúdo ainda não está ligada.
+- Temas por brand através de custom properties CSS e de um atributo `data-brand` definido em runtime.
+- Imagens com carregamento diferido por predefinição (`loading="lazy"`, `decoding="async"`), com carregamento imediato e `fetchPriority="high"` reservados para conteúdo acima da dobra.
 
-- URL base: `https://sunlive-group.vercel.app`
-- Entrada principal: `https://sunlive-group.vercel.app/sunlive-group`
+## Tecnologias
 
-A versão publicada pode não refletir imediatamente alterações que ainda estejam em branches de desenvolvimento ou em processo de aprovação.
+- **React 19** com **React Router 7**
+- **Vite 7** como build tool e servidor de desenvolvimento
+- **JavaScript (ES Modules)** — sem TypeScript
+- **CSS Modules** para estilos isolados por componente (298 ficheiros `.module.css`) mais tokens de design globais
+- **ESLint 9** (regras recommended + React Hooks + React Refresh) e **Prettier**
+- **Vercel** para alojamento e deploy
 
-## Estado atual da refatoração
-
-O projeto continua em evolução e não deve ser considerado visual ou tecnicamente encerrado.
-
-O trabalho em curso inclui:
-
-- consolidação da arquitetura transversal;
-- redução de duplicação entre brands;
-- centralização de tokens semânticos;
-- revisão de componentes partilhados;
-- normalização de layouts, rotas e fallbacks;
-- melhoria progressiva de responsividade e acessibilidade;
-- revisão do carregamento de imagens e vídeos;
-- atualização da identidade visual em função das exigências do cliente;
-- validação contínua através de lint, build e revisão manual.
-
-As alterações são desenvolvidas em branches isoladas e integradas na `main` através de Pull Requests após validação.
-
-## Nova direção visual
-
-A identidade da Sunlive Group está a ser migrada para uma direção visual **Light Forest**, substituindo progressivamente a abordagem anterior mais escura.
-
-A nova linguagem visual privilegia:
-
-- fundo principal verde-claro;
-- tipografia em verde profundo;
-- superfícies claras e hierarquia visual mais limpa;
-- componentes estáticos e menos decorativos;
-- redução de sombras pesadas, brilhos e animações contínuas;
-- estados de hover discretos;
-- focus visível e acessível;
-- superfícies inversas apenas quando necessárias para preservar o contraste de logótipos claros ou metálicos;
-- utilização de tokens semânticos em vez de cores hardcoded.
-
-As restantes brands mantêm as respetivas identidades e continuam isoladas através de `data-brand`, temas e configurações próprias.
-
-## Brands
-
-| Brand | Rota base | Descrição |
-| --- | --- | --- |
-| Sunlive Group | `/sunlive-group` | Marca-mãe institucional e apresentação das unidades de negócio. |
-| Sunlive Group Logos | `/sunlive-group/logos` | Galeria de federações, equipas, associações e parceiros. |
-| Sunlive Travel | `/sunlive-group/travel` | Logística, destinos, parceiros e soluções de viagem desportiva. |
-| Sunlive Sports | `/sunlive-group/sports` | Estágios desportivos, academias, eventos, educação e modalidades. |
-| Sunlive Hotel | `/sunlive-group/hotel` | Estalagem de Sangalhos: alojamento, restauração, lazer e eventos. |
-
-## Stack
-
-- React 19
-- Vite 7
-- JavaScript com ES Modules
-- CSS Modules
-- React Router 7
-- ESLint 9
-- Prettier
-- Vercel
-
-## Funcionalidades principais
-
-- lazy loading por rota com React `lazy` e `Suspense`;
-- Error Boundary global com fallback visual;
-- React StrictMode;
-- scroll para o topo em mudanças de rota;
-- navegação interna com React Router;
-- ligações externas com elementos semânticos `<a>`;
-- fallbacks de rota por brand;
-- redirecionamento global para a página principal da Sunlive Group;
-- modais de vídeo com focus trap e restauração de foco;
-- seletor de idioma preparado através de `useLangMenu`;
-- carregamento diferido de media quando tecnicamente apropriado;
-- temas isolados por brand através de tokens e `data-brand`.
+Não existe backend, API externa, base de dados ou camada de autenticação — o projeto é uma SPA totalmente estática.
 
 ## Arquitetura
 
 ```text
 src/
 ├── app/
-│   ├── main.jsx          # Entrada da aplicação
-│   └── router/           # Rotas, Error Boundary e loading fallback
+│   ├── main.jsx          # Ponto de entrada da aplicação
+│   ├── providers/        # BrandProvider, ThemeProvider
+│   └── router/           # Rotas, error boundary, loading fallback
 ├── brands/
-│   ├── group/            # Sunlive Group e página de logótipos
-│   ├── hotel/            # Sunlive Hotel
-│   ├── sports/           # Sunlive Sports
-│   └── travel/           # Sunlive Travel
+│   ├── group/            # Sunlive Group + galeria de logótipos
+│   ├── hotel/             # Sunlive Hotel
+│   ├── sports/            # Sunlive Sports
+│   └── travel/             # Sunlive Travel
 └── shared/
-    ├── components/       # Componentes transversais
-    ├── config/           # Configuração partilhada
+    ├── components/       # Componentes transversais (masthead, footer, utility bar)
+    ├── config/           # Configuração partilhada, factories de brand, ícones
     ├── hooks/            # Hooks reutilizáveis
-    └── ui/               # Elementos de interface partilhados
+    └── ui/               # Elementos de UI partilhados
 ```
 
-Cada brand segue, de forma geral, esta organização:
+Cada brand segue a mesma organização interna:
 
 ```text
 brands/<brand>/
-├── assets/               # Imagens, logótipos e recursos da marca
-├── components/           # Componentes específicos
-├── config/               # Dados, paths e navegação
-├── layouts/              # Shells, headers e estruturas de página
-├── pages/                # Páginas carregadas por rota
-├── shared/               # Hooks e UI internos da brand
+├── assets/               # Imagens, logótipos e media da marca
+├── components/           # Componentes específicos da marca
+├── config/               # Rotas, paths e dados de navegação
+├── layouts/              # Shells, headers e estrutura de página
+├── pages/                # Páginas por rota
+├── shared/               # Hooks e UI internos da marca
 └── routes.jsx            # Definição das rotas
 ```
 
-### Princípios arquiteturais
+**Princípios:** isolamento visual e funcional entre brands; código específico junto da respetiva área; promoção para `shared/` apenas quando a responsabilidade é verdadeiramente transversal; estilos encapsulados com CSS Modules e tokens semânticos em vez de valores fixos.
 
-- isolamento visual e funcional entre brands;
-- componentes específicos junto da respetiva área;
-- partilha apenas quando existe uma responsabilidade verdadeiramente transversal;
-- CSS Modules para encapsulamento de estilos;
-- tokens semânticos para cores, tipografia, espaçamento e estados;
-- páginas finas e responsabilidades distribuídas por componentes menores;
-- refatoração incremental, sem reescritas desnecessárias;
-- preservação do comportamento existente durante alterações estruturais.
+### Rotas
 
-## Estrutura da raiz
-
-```text
-Sunlive/
-├── index.html
-├── vite.config.js
-├── eslint.config.js
-├── package.json
-├── package-lock.json
-├── vercel.json
-├── public/
-│   ├── favicon.webp
-│   ├── robots.txt
-│   └── media/
-└── src/
-```
-
-## Rotas
-
-### Global
-
-| Rota | Destino |
+| Brand | Rota base |
 | --- | --- |
-| `/` | Redireciona para `/sunlive-group` |
-| `/*` sem correspondência | Redireciona para `/sunlive-group` |
+| Sunlive Group | `/sunlive-group` |
+| Sunlive Group Logos | `/sunlive-group/logos` |
+| Sunlive Travel | `/sunlive-group/travel` |
+| Sunlive Sports | `/sunlive-group/sports` |
+| Sunlive Hotel | `/sunlive-group/hotel` |
 
-### Group
-
-| Rota | Página |
-| --- | --- |
-| `/sunlive-group` | Página principal da Sunlive Group |
-| `/sunlive-group/logos` | Logótipos, federações, equipas e parceiros |
-
-### Travel
-
-| Rota | Página |
-| --- | --- |
-| `/sunlive-group/travel` | Página principal da Sunlive Travel |
-| `/sunlive-group/travel/logistica` | Logística |
-| `/sunlive-group/travel/destinos` | Destinos |
-| `/sunlive-group/travel/parceiros` | Parceiros |
-| `/sunlive-group/travel/testemunhos` | Testemunhos |
-| `/sunlive-group/travel/contactos` | Contactos |
-| `/sunlive-group/travel/*` | Redireciona para `/sunlive-group/travel` |
-
-### Sports
-
-| Rota | Página |
-| --- | --- |
-| `/sunlive-group/sports` | Página principal da Sunlive Sports |
-| `/sunlive-group/sports/estagios-desportivos` | Estágios desportivos |
-| `/sunlive-group/sports/academias` | Academias |
-| `/sunlive-group/sports/eventos` | Eventos |
-| `/sunlive-group/sports/atletas-sunlive` | Atletas Sunlive |
-| `/sunlive-group/sports/testemunhos` | Testemunhos |
-| `/sunlive-group/sports/servicos-especializados` | Serviços especializados |
-| `/sunlive-group/sports/educacao` | Educação |
-| `/sunlive-group/sports/turismo-desportivo-ludico` | Turismo desportivo e lúdico |
-| `/sunlive-group/sports/modalidades` | Modalidades |
-| `/sunlive-group/sports/infraestruturas` | Infraestruturas |
-| `/sunlive-group/sports/logistica` | Logística |
-| `/sunlive-group/sports/consultoria` | Consultoria |
-| `/sunlive-group/sports/contactos` | Contactos |
-| `/sunlive-group/sports/*` | Redireciona para `/sunlive-group/sports` |
-
-A área Sports também mantém aliases em inglês, como `/training-camps`, para compatibilidade com URLs anteriores. Esses aliases redirecionam para as rotas correspondentes em português.
-
-### Hotel
-
-| Rota | Página |
-| --- | --- |
-| `/sunlive-group/hotel` | Página principal da Sunlive Hotel |
-| `/sunlive-group/hotel/sobre` | Sobre |
-| `/sunlive-group/hotel/estadia` | Estadia |
-| `/sunlive-group/hotel/restauracao` | Restauração |
-| `/sunlive-group/hotel/instalacoes-lazer` | Instalações e lazer |
-| `/sunlive-group/hotel/eventos` | Eventos |
-| `/sunlive-group/hotel/sustentabilidade` | Sustentabilidade |
-| `/sunlive-group/hotel/informacoes` | Informações |
-| `/sunlive-group/hotel/*` | Redireciona para `/sunlive-group/hotel` |
-
-## Requisitos
-
-- Node.js 24.x
-- npm 9 ou superior
+`/` e qualquer rota sem correspondência redirecionam para `/sunlive-group`. Cada brand define as suas páginas internas e um fallback que redireciona para a página principal da brand.
 
 ## Instalação
 
-Instalação normal durante o desenvolvimento:
+**Requisitos:** Node.js 24.x e npm 9+.
 
 ```bash
+# Instalar dependências
 npm install
-```
-
-Instalação limpa e reprodutível com base no `package-lock.json`:
-
-```bash
+# ou, para uma instalação limpa e reprodutível a partir do package-lock.json
 npm ci
-```
 
-## Desenvolvimento
-
-```bash
+# Iniciar o servidor de desenvolvimento (http://localhost:5173)
 npm run dev
 ```
 
-Servidor local por predefinição:
+## Scripts disponíveis
 
-```text
-http://localhost:5173
-```
+| Script | Comando | Descrição |
+| --- | --- | --- |
+| Desenvolvimento | `npm run dev` | Inicia o servidor de desenvolvimento com HMR |
+| Build | `npm run build` | Gera o build de produção em `dist/` |
+| Preview | `npm run preview` | Serve localmente o build de `dist/` (http://localhost:4173) |
+| Lint | `npm run lint` | Executa o ESLint em todo o projeto |
 
-## Validação técnica
+## Deploy
 
-Antes de criar um commit ou uma Pull Request:
-
-```bash
-git diff --check
-npm run lint
-npm run build
-```
-
-### Lint
-
-```bash
-npm run lint
-```
-
-Executa o ESLint em todo o projeto. O comando deve terminar sem erros.
-
-### Build
-
-```bash
-npm run build
-```
-
-Gera o build de produção em:
-
-```text
-dist/
-```
-
-### Preview
-
-```bash
-npm run preview
-```
-
-Serve localmente o conteúdo de `dist/` para validação antes do deploy.
-
-Endereço normalmente utilizado:
-
-```text
-http://localhost:4173
-```
-
-## Fluxo de desenvolvimento
-
-O fluxo recomendado é:
-
-1. atualizar a `main`;
-2. criar uma branch específica;
-3. implementar alterações de forma incremental;
-4. executar lint e build;
-5. rever o diff;
-6. criar commits pequenos e descritivos;
-7. enviar a branch para o GitHub;
-8. abrir uma Pull Request;
-9. integrar apenas após validação.
-
-Exemplo:
-
-```bash
-git switch main
-git pull origin main
-git switch -c feat/nome-da-alteracao
-```
-
-As alterações visuais de maior dimensão devem permanecer isoladas para permitir revisão, comparação e eventual reversão através de `git revert`.
-
-## Deploy na Vercel
-
-A aplicação encontra-se publicada através da Vercel.
-
-- Plataforma: Vercel
-- URL base: `https://sunlive-group.vercel.app`
-- Página principal: `https://sunlive-group.vercel.app/sunlive-group`
-
-O ficheiro `vercel.json` contém o rewrite necessário para o funcionamento da SPA:
+A aplicação está publicada na **Vercel** como build estático de SPA. O `vercel.json` reencaminha todos os paths para `/index.html`, permitindo que deep links e atualizações de página sejam resolvidos no cliente pelo React Router:
 
 ```json
 {
@@ -342,249 +129,209 @@ O ficheiro `vercel.json` contém o rewrite necessário para o funcionamento da S
 }
 ```
 
-Este rewrite garante que deep links e atualizações diretas são servidos pelo `index.html` e posteriormente resolvidos pelo React Router no cliente.
+Não existe server-side rendering nem prerendering; o HTML inicial é partilhado entre todas as rotas.
 
-## SPA fallback
+## Decisões técnicas
 
-A aplicação não utiliza Server-Side Rendering nem prerendering.
-
-A navegação é processada no cliente e o `index.html` funciona como ponto de entrada único.
-
-Em desenvolvimento, o Vite trata automaticamente o fallback da SPA. Em produção, o mesmo comportamento é garantido pelo rewrite da Vercel.
-
-## Assets e media
-
-Os vídeos públicos encontram-se em `public/media/` e são referenciados diretamente por URL. Estes ficheiros não são processados pelo Vite.
-
-A auditoria técnica de media identificou:
-
-- 23 ficheiros de vídeo;
-- aproximadamente 298,94 MB de vídeo;
-- 242 imagens em `src/`, com aproximadamente 49,2 MB;
-- imagens raster armazenadas em WebP;
-- 12 posters WebP entre aproximadamente 60 KB e 181 KB.
-
-### Estratégia de carregamento dos vídeos
-
-#### Previews da Sunlive Sports
-
-Os previews presentes em cards:
-
-- utilizam `preload="none"`;
-- são observados através de `IntersectionObserver`;
-- iniciam reprodução apenas quando entram no viewport;
-- não são descarregados em simultâneo no carregamento inicial;
-- utilizam posters WebP enquanto o vídeo não está disponível.
-
-O comportamento é gerido, consoante a página, por componentes como:
-
-- `SportsFeatureCardMedia`;
-- `ProgramSportCardMedia`;
-- `EventsModalitiesVideoHighlights`.
-
-#### Vídeos completos da Sunlive Sports
-
-Os vídeos completos são apresentados em modais após interação do utilizador.
-
-O elemento `<video>` é inserido no DOM apenas quando o modal é aberto. Estes vídeos utilizam:
-
-- `preload="metadata"`;
-- reprodução após interação;
-- focus trap;
-- fecho com `Escape`;
-- restauração do foco;
-- pausa e limpeza ao fechar o modal.
-
-Este comportamento é suportado pelo hook `useVideoDialogBehavior`.
-
-#### Vídeo hero da Sunlive Hotel
-
-O vídeo do Hotel corresponde à terceira cena do banner principal.
-
-Enquanto a cena está inativa, utiliza:
-
-```html
-preload="none"
-```
-
-Quando a cena se torna ativa, passa a utilizar:
-
-```html
-preload="auto"
-```
-
-O poster é pré-carregado através de `preloadSceneMedia`.
-
-A reprodução é iniciada no contexto da interação do utilizador, permitindo que o browser reconheça o gesto e autorize áudio quando aplicável.
-
-O vídeo utiliza:
-
-- `playsInline`;
-- poster WebP;
-- volume definido em `0.82`;
-- áudio AAC;
-- frequência de 48 kHz;
-- dois canais de áudio.
-
-Caso o browser bloqueie a reprodução automática com som, existe fallback para reprodução silenciosa.
-
-### Resultados da otimização
-
-| Media | Antes | Depois | Redução |
-| --- | ---: | ---: | ---: |
-| 11 previews Sports | 47,54 MB | 11,07 MB | 36,47 MB — 76,7% |
-| Vídeo hero Hotel | 13,59 MB | 13,59 MB | 0 MB |
-| Total destes ficheiros | 61,13 MB | 24,66 MB | 36,47 MB — 59,7% |
-
-A primeira versão otimizada do vídeo hero do Hotel reduziu o ficheiro para aproximadamente 10,04 MB, mas removeu a faixa de áudio. Essa versão não foi mantida.
-
-### Tamanhos atuais
-
-| Pasta | Tipo | Dimensão |
-| --- | --- | --- |
-| `public/media/sports/*/` | Previews | Aproximadamente 0,6–1,6 MB por ficheiro |
-| `public/media/sports/*/` | Vídeos completos | Aproximadamente 12–30 MB por ficheiro |
-| `public/media/hotel/home/` | Vídeo hero | Aproximadamente 13,59 MB, com áudio |
-
-Os vídeos completos da Sunlive Sports foram mantidos porque novas codificações com qualidade visual equivalente produziram ficheiros maiores.
-
-### Posters
-
-Cada preview e modal possui um poster `.webp`.
-
-Os posters:
-
-- evitam fundos vazios ou pretos antes do carregamento;
-- apresentam uma imagem estável;
-- reduzem a perceção de espera;
-- preservam o enquadramento do card ou modal.
-
-### Imagens
-
-A maioria das imagens utiliza a configuração partilhada `IMG_COMMON`:
-
-```js
-{
-  loading: "lazy",
-  decoding: "async"
-}
-```
-
-As imagens críticas acima da dobra utilizam carregamento imediato quando necessário.
-
-Também são aplicados, consoante o contexto:
-
-- `loading="lazy"`;
-- `decoding="async"`;
-- `loading="eager"`;
-- `fetchPriority="high"` apenas em conteúdo inicial relevante.
-
-### Limitações de performance
-
-- vídeos completos da Sunlive Sports entre aproximadamente 12 MB e 30 MB;
-- vídeo hero do Hotel com aproximadamente 13,59 MB;
-- ausência de CDN especializada em vídeo ou streaming;
-- media servido diretamente pela Vercel;
-- imagens WebP ainda não submetidas a uma nova fase de compressão;
-- auditoria Lighthouse ainda não executada;
-- métricas formais de LCP, CLS, TBT e INP ainda não recolhidas.
-
-Consultar `docs/PERFORMANCE_MEDIA_AUDIT.md` para o relatório técnico completo.
-
-## Acessibilidade
-
-A aplicação inclui atualmente:
-
-- focus trap em modais de vídeo;
-- navegação por `Tab` e `Shift + Tab`;
-- foco movido para o modal quando este é aberto;
-- restauração do foco no elemento de origem;
-- fecho com `Escape`;
-- bloqueio do scroll do `body` durante modais;
-- estrutura semântica no seletor de idioma;
-- `aria-current` no idioma ativo;
-- `aria-expanded` e `aria-controls` no seletor;
-- `aria-label` em controlos sem texto visível;
-- navegação interna sem recarregamento completo;
-- estados `:focus-visible` nos principais componentes interativos;
-- suporte global para `prefers-reduced-motion`.
-
-A aplicação ainda não foi formalmente validada com screen reader e não é afirmada conformidade integral com WCAG.
-
-## Internacionalização
-
-A estrutura do seletor de idioma está preparada, mas a tradução integral do conteúdo ainda não está implementada.
-
-O site encontra-se atualmente disponível em português.
-
-Idiomas planeados:
-
-- inglês;
-- árabe.
-
-A versão árabe deverá incluir:
-
-- tradução integral;
-- suporte RTL;
-- adaptação dos layouts;
-- validação de navegação e responsividade;
-- revisão tipográfica para caracteres árabes.
-
-## SEO
-
-O ambiente público utiliza:
-
-```text
-https://sunlive-group.vercel.app
-```
-
-A aplicação inclui atualmente:
-
-- título institucional no `index.html`;
-- meta description;
-- Open Graph;
-- Twitter Card;
-- `theme-color`;
-- `favicon.webp`;
-- `robots.txt` com `Allow: /`.
-
-Ainda não estão implementados:
-
-- sitemap XML;
-- metadados específicos por rota;
-- títulos e descrições específicos por página;
-- canonical por rota;
-- `og:url` por rota;
-- `og:image` oficial;
-- SSR ou prerendering.
-
-Como a aplicação é uma SPA, o HTML inicial é partilhado entre as rotas. Não deve ser definido um único canonical global para `/sunlive-group`, porque seria aplicado incorretamente às áreas Sports, Travel, Hotel e Logos.
+- **Isolamento entre brands em vez de um tema único configurável:** cada brand mantém as suas próprias rotas, layouts e tokens CSS, aceitando alguma duplicação em troca de evolução independente de cada identidade.
+- **Lazy loading por rota:** o shell e as páginas de cada brand são importados dinamicamente para manter o bundle inicial reduzido numa SPA multi-brand.
+- **Carregamento diferido de media:** os previews de vídeo usam `IntersectionObserver` e `preload="none"`; os vídeos completos só carregam dentro de modais, após interação do utilizador. A auditoria completa está documentada em [`docs/PERFORMANCE_MEDIA_AUDIT.md`](docs/PERFORMANCE_MEDIA_AUDIT.md).
+- **Sem biblioteca de i18n por agora:** a UI do seletor de idioma foi implementada antes da tradução de conteúdo, para validar o padrão de interação antecipadamente.
 
 ## Limitações conhecidas
 
-- refatoração estrutural ainda em curso;
-- nova direção visual ainda sujeita a revisão e aprovação do cliente;
-- possibilidade de alterações adicionais em componentes, tokens e layouts;
-- ausência de testes automatizados unitários, de integração e end-to-end;
-- ausência de SSR ou prerendering;
-- sitemap ainda não implementado;
-- metadados e canonical específicos por rota ainda não implementados;
-- traduções para inglês e árabe ainda não implementadas;
-- layout RTL ainda não implementado;
-- vídeos completos Sports com dimensões elevadas;
-- vídeo hero Hotel com aproximadamente 13,59 MB;
-- ausência de CDN especializada em vídeo;
-- imagens WebP ainda não recomprimidas;
-- Lighthouse ainda não executado;
-- Core Web Vitals ainda não recolhidos formalmente;
-- conformidade WCAG ainda não auditada;
-- validação manual com screen reader ainda não realizada.
+- Ausência de testes automatizados (unitários, integração ou end-to-end).
+- Ausência de server-side rendering ou prerendering.
+- Ausência de tradução completa para inglês e árabe; o conteúdo da aplicação está disponível apenas em português.
+- O seletor de idioma é atualmente funcional apenas ao nível de interface e do estado selecionado, sem estar ligado a conteúdo traduzido.
+- Suporte a layout RTL (right-to-left) para árabe ainda não implementado.
+- Sem sitemap, metadados por rota, canonical ou `og:image` — a SPA partilha atualmente um único `index.html` com metadados Open Graph/Twitter genéricos em todas as rotas.
+- Sem CDN dedicada a streaming de vídeo; o media é servido diretamente pela Vercel.
+- Sem auditoria formal de acessibilidade (WCAG) nem validação com screen reader, além do trabalho de gestão de foco e navegação por teclado já implementado em modais e menus.
+- Sem execução de Lighthouse nem métricas de Core Web Vitals registadas até ao momento.
 
-## Scripts disponíveis
+## Melhorias futuras
 
-| Script | Comando | Descrição |
+- Adicionar testes automatizados (unitários e end-to-end).
+- Ligar o seletor de idioma existente a conteúdo totalmente traduzido em inglês e árabe.
+- Implementar suporte RTL (right-to-left) para a versão árabe.
+- Adicionar sitemap e metadados de SEO por rota (título, descrição, canonical, `og:url`, `og:image`).
+- Executar Lighthouse e acompanhar Core Web Vitals (LCP, CLS, INP) antes e depois de alterações futuras.
+- Avaliar uma CDN dedicada a vídeo para os vídeos completos da Sports.
+
+## Competências demonstradas
+
+- Desenho de arquitetura de SPA multi-brand com routing, temas e infraestrutura partilhada isolados, em React.
+- Gestão de performance de media: lazy loading de rotas e imagens, carregamento de vídeo orientado por `IntersectionObserver`, e um processo de compressão de vídeo documentado.
+- Padrões de UI acessíveis implementados de raiz: focus trap em modais, navegação por teclado, restauração de foco e suporte a `prefers-reduced-motion`.
+- Refatoração incremental, por Pull Request, de uma aplicação em produção sem quebrar comportamento existente.
+
+---
+
+# Sunlive Group
+
+Multi-brand web application for the Sunlive ecosystem, built as a single-page application with React and Vite.
+
+> **Project status:** this project is currently being refactored. Its architecture, code organisation, performance, accessibility and user interface are being improved progressively, so some features and visual elements may still change. Content is currently available mainly in Portuguese; the language switcher already exists in the interface, but full content translation is still pending. Full support for English and Arabic is planned, including RTL (right-to-left) layout for Arabic, but these versions have not yet been implemented.
+
+**Live demo:** [sunlive-group.vercel.app/sunlive-group](https://sunlive-group.vercel.app/sunlive-group)
+
+---
+
+## Overview
+
+Sunlive Group brings together several brand experiences in a single codebase, each with its own visual identity, navigation and content, while sharing common infrastructure:
+
+- **Sunlive Group** — parent brand and presentation of the business units, plus a logos gallery for federations, teams and partners.
+- **Sunlive Travel** — sports travel logistics, destinations, partners and testimonials.
+- **Sunlive Sports** — training camps, academies, events, education and sports consultancy.
+- **Sunlive Hotel** — Estalagem de Sangalhos: accommodation, dining, leisure and events.
+
+Each brand is isolated through its own routes, layouts and design tokens (`data-brand`), while reusing shared building blocks (layout primitives, hooks, icons) from `src/shared`.
+
+## Features
+
+- Route-based code splitting with React `lazy` and `Suspense`.
+- Global error boundary with a fallback screen and reload/home actions.
+- React `StrictMode` enabled at the application root.
+- Client-side routing with React Router 7, per-brand route fallbacks and a global redirect to `/sunlive-group`.
+- Legacy English-language route aliases in the Sports section, redirected to their Portuguese equivalents.
+- Video modals with focus trap, `Escape` handling, scroll lock and focus restoration (`useVideoDialogBehavior`).
+- Deferred video loading via `IntersectionObserver` for card previews (Sports), so playback only starts once a card enters the viewport.
+- Scroll-to-top on route change (Travel, Hotel) and smooth scroll-to-hash navigation across brands.
+- Language switcher UI (`useLangMenu`) — the menu and selection state are implemented; content translation is not yet wired in.
+- Per-brand theming through CSS custom properties and a `data-brand` attribute set at runtime.
+- Lazy-loaded images by default (`loading="lazy"`, `decoding="async"`), with eager loading and `fetchPriority="high"` reserved for above-the-fold content.
+
+## Tech Stack
+
+- **React 19** with **React Router 7**
+- **Vite 7** as build tool and dev server
+- **JavaScript (ES Modules)** — no TypeScript
+- **CSS Modules** for component-scoped styling (298 module files) plus global design tokens
+- **ESLint 9** (recommended + React Hooks + React Refresh rules) and **Prettier**
+- **Vercel** for hosting and deployment
+
+There is no backend, external API, database or authentication layer — the project is a fully static SPA.
+
+## Architecture
+
+```text
+src/
+├── app/
+│   ├── main.jsx          # Application entry point
+│   ├── providers/        # BrandProvider, ThemeProvider
+│   └── router/           # Routes, error boundary, loading fallback
+├── brands/
+│   ├── group/            # Sunlive Group + logos gallery
+│   ├── hotel/             # Sunlive Hotel
+│   ├── sports/            # Sunlive Sports
+│   └── travel/             # Sunlive Travel
+└── shared/
+    ├── components/       # Cross-brand components (masthead, footer, utility bar)
+    ├── config/           # Shared config, brand factories, icons
+    ├── hooks/            # Reusable hooks
+    └── ui/               # Shared UI primitives
+```
+
+Each brand follows the same internal layout:
+
+```text
+brands/<brand>/
+├── assets/               # Brand images, logos and media
+├── components/           # Brand-specific components
+├── config/               # Routes, paths and navigation data
+├── layouts/              # Shells, headers and page structure
+├── pages/                # Route-level pages
+├── shared/               # Brand-local hooks and UI
+└── routes.jsx            # Route definitions
+```
+
+**Guiding principles:** visual and functional isolation between brands; brand-specific code lives next to the brand it belongs to; code is promoted to `shared/` only when the responsibility is genuinely cross-brand; styling is encapsulated with CSS Modules and semantic design tokens rather than hardcoded values.
+
+### Routing
+
+| Brand | Base route |
+| --- | --- |
+| Sunlive Group | `/sunlive-group` |
+| Sunlive Group Logos | `/sunlive-group/logos` |
+| Sunlive Travel | `/sunlive-group/travel` |
+| Sunlive Sports | `/sunlive-group/sports` |
+| Sunlive Hotel | `/sunlive-group/hotel` |
+
+`/` and any unmatched route redirect to `/sunlive-group`. Each brand defines its own nested pages and a catch-all fallback that redirects to the brand's home route.
+
+## Getting Started
+
+**Requirements:** Node.js 24.x and npm 9+.
+
+```bash
+# Install dependencies
+npm install
+# or, for a clean/reproducible install from package-lock.json
+npm ci
+
+# Start the dev server (http://localhost:5173)
+npm run dev
+```
+
+## Available Scripts
+
+| Script | Command | Description |
 | --- | --- | --- |
-| Desenvolvimento | `npm run dev` | Inicia o servidor de desenvolvimento com HMR |
-| Build | `npm run build` | Cria o build de produção em `dist/` |
-| Preview | `npm run preview` | Serve localmente o build da pasta `dist/` |
-| Lint | `npm run lint` | Executa o ESLint em todo o projeto |
+| Development | `npm run dev` | Starts the Vite dev server with HMR |
+| Build | `npm run build` | Creates the production build in `dist/` |
+| Preview | `npm run preview` | Serves the `dist/` build locally (http://localhost:4173) |
+| Lint | `npm run lint` | Runs ESLint across the project |
+
+## Deployment
+
+The application is deployed on **Vercel** as a static SPA build. `vercel.json` rewrites all paths to `/index.html`, so deep links and page refreshes are resolved client-side by React Router:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+
+There is no server-side rendering or prerendering; the initial HTML is shared across all routes.
+
+## Technical Decisions
+
+- **Brand isolation over a shared theme system:** each brand keeps its own routes, layouts and CSS tokens instead of a single configurable theme, trading some duplication for independent evolution of each brand's identity.
+- **Route-based lazy loading:** every brand's shell and pages are dynamically imported to keep the initial bundle small in a multi-brand SPA.
+- **Deferred media loading:** video previews use `IntersectionObserver` and `preload="none"`; full videos load only inside modals, opened on user interaction. A full audit of this work is documented in [`docs/PERFORMANCE_MEDIA_AUDIT.md`](docs/PERFORMANCE_MEDIA_AUDIT.md).
+- **No i18n library yet:** the language switcher UI exists ahead of the translation work so the interaction pattern is validated before content is translated.
+
+## Known Limitations
+
+- No automated tests (unit, integration or end-to-end).
+- No server-side rendering or prerendering.
+- No full English or Arabic translation yet; application content is available in Portuguese only.
+- The language switcher is currently functional only at the interface and selection-state level, and is not yet connected to translated content.
+- RTL (right-to-left) layout support for Arabic has not yet been implemented.
+- No sitemap, per-route metadata, canonical URLs or `og:image` yet — the SPA currently shares a single `index.html` with generic Open Graph/Twitter metadata across all routes.
+- No CDN dedicated to video streaming; media is served directly from Vercel.
+- No formal accessibility audit (WCAG) or screen-reader validation has been performed, beyond the focus-management and keyboard-navigation work already implemented in modals and menus.
+- No Lighthouse run or Core Web Vitals measurements recorded yet.
+
+## Future Improvements
+
+- Add automated testing (unit and end-to-end).
+- Connect the existing language switcher to fully translated English and Arabic content.
+- Implement RTL (right-to-left) layout support for the Arabic version.
+- Add a sitemap and per-route SEO metadata (title, description, canonical, `og:url`, `og:image`).
+- Run Lighthouse and track Core Web Vitals (LCP, CLS, INP) before and after future changes.
+- Evaluate a dedicated video CDN for the full-length Sports videos.
+
+## Skills Demonstrated
+
+- Designing a multi-brand SPA architecture with isolated routing, theming and shared infrastructure in React.
+- Performance-conscious media handling: lazy route/image loading, `IntersectionObserver`-driven video loading, and a documented video compression pass.
+- Accessible UI patterns implemented from scratch: modal focus trap, keyboard navigation, focus restoration and `prefers-reduced-motion` support.
+- Incremental, PR-based refactoring of a live production application without breaking existing behaviour.
